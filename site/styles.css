@@ -79,7 +79,10 @@ a {
 
 .toplinks {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
+  max-width: 100%;
+  width: 100%;
 }
 
 .toplinks a {
@@ -251,6 +254,7 @@ a {
 .stat-strip,
 .chart,
 .case-browser,
+.point-example-card,
 .case-card,
 .drill-list > div {
   border: 1px solid var(--line);
@@ -474,6 +478,33 @@ a {
   margin: 12px 0 8px;
 }
 
+.point-example-card {
+  margin: 20px 0 0;
+  padding: 16px;
+  background: #fffefb;
+}
+
+.example-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.example-head h4 {
+  margin: 4px 0 0;
+  font-size: 22px;
+  line-height: 1.16;
+}
+
+.example-head > span {
+  color: var(--muted);
+  font-size: 13px;
+  text-align: right;
+}
+
 .tile-list {
   margin: 8px 0 12px;
   overflow-x: auto;
@@ -558,6 +589,150 @@ a {
   padding: 12px;
 }
 
+.example-drill {
+  border-left: 5px solid var(--blue);
+  background: #e8f0f2;
+  margin: 12px 0;
+  padding: 12px;
+}
+
+.example-drill p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.call-line {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.call-line > span {
+  border: 1px solid var(--line);
+  background: #f8faf5;
+  display: block;
+  font-size: 13px;
+  padding: 10px;
+}
+
+.mini-tile {
+  display: inline-block;
+  font-size: 1.58em;
+  line-height: 1;
+}
+
+.mini-hand,
+.river {
+  overflow-x: auto;
+  padding: 2px 0 4px;
+  white-space: nowrap;
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.table-context {
+  border: 1px solid var(--line);
+  background: #f9fbf6;
+  margin-top: 14px;
+}
+
+.table-summary,
+.score-strip {
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 10px 12px;
+}
+
+.table-summary span,
+.score-strip span {
+  color: #30332f;
+  font-size: 13px;
+}
+
+.player-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+}
+
+.player-card {
+  border-right: 1px solid var(--line);
+  padding: 10px;
+  min-width: 0;
+}
+
+.player-card:last-child {
+  border-right: 0;
+}
+
+.player-card h5 {
+  align-items: center;
+  display: flex;
+  gap: 6px;
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.player-card h5 span {
+  background: var(--red);
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 5px;
+  text-transform: uppercase;
+}
+
+.self-player {
+  background: #eef6f1;
+}
+
+.row-label {
+  color: var(--muted) !important;
+  font-size: 11px !important;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin: 7px 0 2px !important;
+  text-transform: uppercase;
+}
+
+.meld {
+  border: 1px solid #d3dacb;
+  display: inline-block;
+  margin-right: 5px;
+  padding: 1px 4px 2px;
+}
+
+.hidden-hands {
+  border-top: 1px solid var(--line);
+  padding: 10px 12px;
+}
+
+.hidden-hands summary {
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.hidden-hand-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.hidden-hand-grid > div {
+  border: 1px solid var(--line);
+  background: #fff;
+  min-width: 0;
+  padding: 8px;
+}
+
 .case-links {
   display: flex;
   gap: 12px;
@@ -599,7 +774,10 @@ a {
     .two-col,
     .insight-grid,
     .stat-strip,
-    .drill-list {
+    .drill-list,
+    .call-line,
+    .player-grid,
+    .hidden-hand-grid {
     grid-template-columns: 1fr;
   }
 
@@ -617,9 +795,23 @@ a {
     display: block;
   }
 
-  .case-head > span {
+  .case-head > span,
+  .example-head > span {
     display: block;
     margin-top: 8px;
     text-align: left;
+  }
+
+  .example-head {
+    display: block;
+  }
+
+  .player-card {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .player-card:last-child {
+    border-bottom: 0;
   }
 }

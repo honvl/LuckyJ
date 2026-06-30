@@ -4,6 +4,7 @@ __pycache__/
 
 # Local regenerated caches and previews.
 data/report_cache/
+data/local_sources/
 tmp/
 
 # Local virtual environments.

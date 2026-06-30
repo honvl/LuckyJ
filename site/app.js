@@ -69,7 +69,8 @@ function escapeHtml(value) {
 }
 
 function tileCode(tile) {
-  return tileCodes[tile] || tileCodes[tile.replace("r", "")] || tile;
+  const key = String(tile || "");
+  return tileCodes[key] || tileCodes[key.replace("r", "")] || key;
 }
 
 function tiles(text) {
@@ -98,6 +99,183 @@ function shortTiles(items) {
   return items.slice(0, 12).join(" ");
 }
 
+function dangerText(value) {
+  return value == null ? "n/a" : pct(value);
+}
+
+function tileIcons(items, className = "mini-tile") {
+  const list = (items || []).filter(Boolean);
+  if (!list.length) return `<span class="empty">none</span>`;
+  return list.map((tile) => tileIcon(tile, className)).join("");
+}
+
+function meldIcons(melds) {
+  if (!melds || !melds.length) return `<span class="empty">none</span>`;
+  return melds
+    .map((meld) => `<span class="meld">${tileIcons(meld.split(" ").filter(Boolean), "mini-tile")}</span>`)
+    .join("");
+}
+
+function seatLabel(seat) {
+  return {
+    self: "LuckyJ",
+    shimocha: "Shimocha",
+    toimen: "Toimen",
+    kamicha: "Kamicha",
+  }[seat] || seat;
+}
+
+function renderTableContext(table) {
+  const wrap = document.createElement("div");
+  wrap.className = "table-context";
+  const scoreLine = (table.scores || [])
+    .map((player) => {
+      const dealer = player.dealer ? " dealer" : "";
+      const rank = player.rank ? `${player.rank}${player.rank === 1 ? "st" : player.rank === 2 ? "nd" : player.rank === 3 ? "rd" : "th"}` : "rank ?";
+      return `<span><b>${seatLabel(player.seat)}</b> ${whole.format(player.score || 0)} / ${rank}${dealer}</span>`;
+    })
+    .join("");
+
+  wrap.innerHTML = `
+    <div class="table-summary">
+      <span><b>${escapeHtml(table.round || "")}</b></span>
+      <span>Dealer: ${escapeHtml(seatLabel(table.dealer))}</span>
+      <span>Dora: ${tileIcons(table.dora_markers, "mini-tile")}</span>
+    </div>
+    <div class="score-strip">${scoreLine}</div>
+  `;
+
+  const visible = document.createElement("div");
+  visible.className = "player-grid";
+  for (const player of table.players || []) {
+    const card = document.createElement("div");
+    card.className = `player-card ${player.seat === "self" ? "self-player" : ""}`;
+    const lines = [
+      `<h5>${seatLabel(player.seat)}${player.reached ? " <span>riichi</span>" : ""}</h5>`,
+      player.seat === "self" ? `<p class="row-label">Hand</p><div class="mini-hand">${tileIcons(player.hand?.split(" "), "mini-tile")}</div>` : "",
+      `<p class="row-label">River</p><div class="river">${tileIcons(player.discards, "mini-tile")}</div>`,
+      `<p class="row-label">Melds</p><div class="river">${meldIcons(player.melds)}</div>`,
+    ];
+    card.innerHTML = lines.join("");
+    visible.append(card);
+  }
+  wrap.append(visible);
+
+  const details = document.createElement("details");
+  details.className = "hidden-hands";
+  details.innerHTML = `<summary>Review-only hidden hands</summary>`;
+  const hidden = document.createElement("div");
+  hidden.className = "hidden-hand-grid";
+  for (const player of table.players || []) {
+    const item = document.createElement("div");
+    item.innerHTML = `<b>${seatLabel(player.seat)}</b><div class="mini-hand">${tileIcons(player.hand?.split(" "), "mini-tile")}</div>`;
+    hidden.append(item);
+  }
+  details.append(hidden);
+  wrap.append(details);
+  return wrap;
+}
+
+function exampleAnalysis(example) {
+  const parts = [];
+  if (example.kind === "call") {
+    parts.push(
+      `LuckyJ calls ${example.call} on ${example.called_tile} from ${seatLabel(example.called_from)} and plans to discard ${example.discard_after_call}.`
+    );
+    parts.push(`The lesson is the contract: this is a tempo/open-route decision, not an automatic call because a set is available.`);
+  } else {
+    const action = example.kind === "reach" ? "reaches and discards" : "discards";
+    parts.push(`LuckyJ ${action} ${example.actual}; NAGA's top discard is ${example.naga}.`);
+    if (example.actual_eval && example.naga_eval) {
+      const ukeireDelta = example.actual_eval.ukeire - example.naga_eval.ukeire;
+      const shantenDelta = example.actual_eval.shanten - example.naga_eval.shanten;
+      parts.push(
+        `That leaves ${example.actual_eval.shanten} shanten and ${whole.format(example.actual_eval.ukeire)} visible ukeire, versus NAGA's ${example.naga_eval.shanten} shanten and ${whole.format(example.naga_eval.ukeire)} ukeire.`
+      );
+      if (shantenDelta > 0 && ukeireDelta > 0) {
+        parts.push("This is the classic LuckyJ trade: one step slower now, but broader recovery and more ways to change plans.");
+      } else if (shantenDelta === 0 && ukeireDelta < 0) {
+        parts.push("Here the cost is pure acceptance, so the kept material must be buying safety, value, or future flexibility.");
+      } else if (ukeireDelta >= 0) {
+        parts.push("The move is not just defensive; it also keeps the next-draw menu wide.");
+      }
+    }
+    if (example.actual_danger != null || example.naga_danger != null) {
+      parts.push(`Danger read: LuckyJ's tile is ${dangerText(example.actual_danger)} and NAGA's tile is ${dangerText(example.naga_danger)}.`);
+    }
+    if (example.kind === "reach") {
+      parts.push(`The reach model is high here (${pct(example.reach_prob || 0)}), so the riichi itself is part of the equity calculation.`);
+    }
+  }
+  parts.push(`Outcome: ${example.outcome}`);
+  return parts.join(" ");
+}
+
+function renderPointExamples(examples) {
+  for (const placeholder of document.querySelectorAll("[data-example]")) {
+    const example = examples[placeholder.dataset.example];
+    if (!example) continue;
+    const card = document.createElement("article");
+    card.className = "point-example-card";
+    card.innerHTML = `
+      <div class="example-head">
+        <div>
+          <p class="kicker">Replay example</p>
+          <h4>${escapeHtml(example.title)}</h4>
+        </div>
+        <span>Game ${example.game}, ${escapeHtml(example.round)}, ${example.left} tiles left</span>
+      </div>
+      <p class="case-meta">${escapeHtml(example.stage)} / ${escapeHtml(example.score_band)} / final rank ${example.rank}</p>
+      <p><b>Hand before decision</b></p>
+    `;
+    card.append(tiles(example.hand));
+
+    if (example.kind === "call") {
+      const line = document.createElement("div");
+      line.className = "call-line";
+      line.innerHTML = `
+        <span>Call ${escapeHtml(example.call)} on ${tileIcon(example.called_tile, "discard-tile")} from ${escapeHtml(seatLabel(example.called_from))}</span>
+        <span>Meld ${tileIcons(example.post_call_meld?.split(" "), "mini-tile")}</span>
+        <span>Discard after call ${tileIcon(example.discard_after_call, "discard-tile")}</span>
+      `;
+      card.append(line);
+    } else {
+      const choices = document.createElement("div");
+      choices.className = "comparison";
+      if (example.actual_eval && example.naga_eval) {
+        choices.append(
+          comparison("LuckyJ", example.actual_eval, example.actual_danger),
+          comparison("NAGA top", example.naga_eval, example.naga_danger)
+        );
+      } else {
+        choices.innerHTML = `
+          <div class="decision"><b>LuckyJ</b><span class="discard-line">Discard ${tileIcon(example.actual, "discard-tile")} <em>${escapeHtml(example.actual)}</em></span><span>Danger ${dangerText(example.actual_danger)}</span></div>
+          <div class="decision"><b>NAGA top</b><span class="discard-line">Discard ${tileIcon(example.naga, "discard-tile")} <em>${escapeHtml(example.naga)}</em></span><span>Danger ${dangerText(example.naga_danger)}</span></div>
+        `;
+      }
+      card.append(choices);
+    }
+
+    const analysis = document.createElement("p");
+    analysis.className = "case-lesson";
+    analysis.textContent = exampleAnalysis(example);
+
+    const drill = document.createElement("div");
+    drill.className = "example-drill";
+    drill.innerHTML = `
+      <p><b>Drill:</b> ${escapeHtml(example.prompt)}</p>
+      <p><b>Answer:</b> ${escapeHtml(example.answer)}</p>
+    `;
+
+    const links = document.createElement("p");
+    links.className = "case-links";
+    links.innerHTML = `<a href="${example.report}">NAGA report</a> <a href="${example.paifu}">Tenhou log</a>`;
+
+    card.append(analysis, drill, renderTableContext(example.table), links);
+    placeholder.replaceChildren(card);
+  }
+}
+
 function caseLesson(key, item) {
   const ukeireDelta = item.actual_eval.ukeire - item.naga_eval.ukeire;
   const shantenDelta = item.actual_eval.shanten - item.naga_eval.shanten;
@@ -107,27 +285,39 @@ function caseLesson(key, item) {
       : item.actual_danger - item.naga_danger;
 
   const summary = [
-    `${shantenDelta > 0 ? "Spent" : shantenDelta < 0 ? "Gained" : "Held"} ${Math.abs(shantenDelta)} shanten step${Math.abs(shantenDelta) === 1 ? "" : "s"}`,
-    `${ukeireDelta >= 0 ? "gained" : "lost"} ${Math.abs(ukeireDelta)} visible ukeire`,
+    `${item.round} with ${item.left} tiles left is a ${item.stage} ${item.score_band} spot: LuckyJ cuts ${item.actual}, while NAGA's top line cuts ${item.naga}.`,
   ];
+  if (shantenDelta > 0 && ukeireDelta > 0) {
+    summary.push(`LuckyJ spends one visible shanten step to gain ${Math.abs(ukeireDelta)} ukeire, so the hand is buying a wider next draw rather than a cleaner current shape.`);
+  } else if (shantenDelta > 0) {
+    summary.push(`LuckyJ falls ${Math.abs(shantenDelta)} shanten step behind NAGA, so the kept tiles must be justified by safety, value, or a route NAGA is discarding.`);
+  } else if (shantenDelta < 0) {
+    summary.push(`LuckyJ is actually ${Math.abs(shantenDelta)} shanten step closer, which means the disagreement is about the tile class and future danger more than speed.`);
+  } else if (ukeireDelta >= 0) {
+    summary.push(`Shanten is equal and LuckyJ keeps ${Math.abs(ukeireDelta)} more visible ukeire, so the NAGA preference is not a simple speed win.`);
+  } else {
+    summary.push(`Shanten is equal but LuckyJ gives up ${Math.abs(ukeireDelta)} ukeire, so this is a deliberate payment for another objective.`);
+  }
   if (dangerDelta != null) {
-    summary.push(`${dangerDelta <= 0 ? "reduced" : "accepted"} ${fmt.format(Math.abs(dangerDelta) * 100)} danger points`);
+    summary.push(
+      dangerDelta <= 0
+        ? `It also lowers immediate danger by ${fmt.format(Math.abs(dangerDelta) * 100)} points.`
+        : `It accepts ${fmt.format(Math.abs(dangerDelta) * 100)} extra danger points, so the upside must be concrete.`
+    );
+  }
+  const honorDelta = item.actual_eval.kept_honors - item.naga_eval.kept_honors;
+  const terminalDelta = item.actual_eval.kept_terminals - item.naga_eval.kept_terminals;
+  if (honorDelta > 0) summary.push(`It keeps ${honorDelta} more honor tile${honorDelta === 1 ? "" : "s"}, which usually means yaku/safety has entered the price.`);
+  if (terminalDelta > 0) summary.push(`It keeps ${terminalDelta} more terminal tile${terminalDelta === 1 ? "" : "s"}, useful for outside safety or a non-tanyao route.`);
+  if (key === "riskier_than_naga") {
+    summary.push("Treat this as a high-bar imitation case: copy it only if the score job and route count justify pushing the extra danger.");
+  } else if (key === "late_tightening") {
+    summary.push("The drill is exact: identify whether this is safe tenpai, winning tenpai, or a clean fold before calling it style.");
+  } else {
+    summary.push("Review question: what did LuckyJ buy with the disagreement, and would that purchase still matter if one opponent became live next turn?");
   }
 
-  const lessons = {
-    early_safety_hedge:
-      "Early LuckyJ often pays shanten to keep breadth, yaku fragments, and future exits. This is strongest when the hand is too far away to justify locking into one narrow line.",
-    middle_route_hedge:
-      "In the middle row, the issue is route compression. LuckyJ avoids a prettier immediate shape when that shape leaves a brittle hand with poor follow-up or awkward danger.",
-    safer_than_naga:
-      "These are defensive upgrades hidden inside attacking hands. LuckyJ spends some shape when the current discard removes a future liability and the score situation does not demand maximum greed.",
-    riskier_than_naga:
-      "These are the dangerous examples to copy. LuckyJ accepts extra danger only when the hand's route count, score job, or comeback need makes the price coherent.",
-    late_tightening:
-      "Late decisions should have no vague upside. LuckyJ's late deviations are about exact tenpai, safe tenpai, or cutting a future landmine before it becomes mandatory.",
-  };
-
-  return `${summary.join("; ")}. ${lessons[key] || lessons.early_safety_hedge}`;
+  return summary.join(" ");
 }
 
 function comparison(label, item, danger) {
@@ -219,12 +409,14 @@ function renderCases(data) {
 
 async function main() {
   applyTileCompatibility();
-  const [bookResponse, caseResponse] = await Promise.all([
+  const [bookResponse, caseResponse, exampleResponse] = await Promise.all([
     fetch("book-data.json"),
     fetch("case-studies.json"),
+    fetch("point-examples.json"),
   ]);
   const data = await bookResponse.json();
   const caseData = await caseResponse.json();
+  const examples = await exampleResponse.json();
   const summary = data.summary;
   const top = data.top_bottom.top_half;
   const bottom = data.top_bottom.bottom_half;
@@ -248,6 +440,7 @@ async function main() {
     chart.append(bar(`${key} bad`, item.bad / item.decisions));
   }
 
+  renderPointExamples(examples);
   renderCases(caseData);
   applyTileCompatibility();
 }
