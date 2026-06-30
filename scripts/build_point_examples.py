@@ -38,6 +38,14 @@ POOL_PER_POINT = 120
 SHANTEN = Shanten()
 MODEL_KEYS = ["nishiki", "hibakari", "kagashi"]
 MODEL_LABELS = {"nishiki": "Nishiki", "hibakari": "Hibakari", "kagashi": "Kagashi"}
+CALL_KIND_LABELS = {
+    0: "pass",
+    1: "chi",
+    2: "chi",
+    3: "chi",
+    4: "pon",
+    5: "open kan",
+}
 
 
 POINT_TEXT = {
@@ -264,7 +272,40 @@ def score_context(start, target):
     ]
 
 
-def table_context(start, target, hands, discards, melds, reached, dora_markers):
+def danger_against_seat(state, seat, tile):
+    try:
+        idx = tile_id(tile)
+    except KeyError:
+        return None
+    values = []
+    for suffix in ("k", "s", "t"):
+        danger = (state or {}).get(f"danger_{suffix}") or []
+        if seat < len(danger) and idx < len(danger[seat]):
+            values.append(danger[seat][idx] / 10000.0)
+    return max(values) if values else None
+
+
+def hand_tile_threats(state, target, hand):
+    seat_by_label = {rel_seat(seat, target): seat for seat in range(4)}
+    ordered_opponents = ["kamicha", "toimen", "shimocha"]
+    threats = []
+    for tile in hand:
+        bars = []
+        for label in ordered_opponents:
+            seat = seat_by_label.get(label)
+            danger = danger_against_seat(state, seat, tile) if seat is not None else None
+            bars.append(
+                {
+                    "seat": label,
+                    "danger": round(danger, 3) if danger is not None else None,
+                }
+            )
+        threats.append({"tile": tile, "bars": bars})
+    return threats
+
+
+def table_context(start, target, hands, discards, melds, reached, dora_markers, state=None):
+    rendered_hands = [sorted(hand, key=lambda tile: (tile_id(tile), tile)) for hand in hands]
     return {
         "round": round_name(start),
         "dealer": rel_seat(start.get("oya"), target),
@@ -274,7 +315,8 @@ def table_context(start, target, hands, discards, melds, reached, dora_markers):
             {
                 "seat": rel_seat(seat, target),
                 "wind": WINDS[(seat - start.get("oya", 0)) % 4],
-                "hand": hand_string(hands[seat]),
+                "hand": hand_string(rendered_hands[seat]),
+                "tile_threats": hand_tile_threats(state, target, rendered_hands[seat]) if seat == target else [],
                 "discards": discards[seat][:],
                 "melds": melds[seat][:],
                 "reached": bool(reached[seat]),
@@ -327,6 +369,43 @@ def model_head(rows, key):
     return next((row for row in rows if row.get("key") == key), None)
 
 
+def call_kind_label(kind):
+    try:
+        kind = int(kind)
+    except (TypeError, ValueError):
+        return str(kind or "unknown")
+    return CALL_KIND_LABELS.get(kind, f"call {kind}")
+
+
+def huro_model_heads(previous_state, target, actual_kind):
+    options = (previous_state or {}).get("huro", {}).get(str(target))
+    if not options:
+        return []
+    if isinstance(options, dict):
+        options = [options]
+    heads = []
+    for index, raw_options in enumerate(options[:3]):
+        probs = {int(key): value / 10000.0 for key, value in raw_options.items()}
+        top_kind, top_prob = max(probs.items(), key=lambda item: item[1])
+        actual_prob = probs.get(int(actual_kind), 0.0) if actual_kind is not None else 0.0
+        pass_prob = probs.get(0, 0.0)
+        key = MODEL_KEYS[index] if index < len(MODEL_KEYS) else f"model_{index}"
+        heads.append(
+            {
+                "key": key,
+                "label": MODEL_LABELS.get(key, key),
+                "top_kind": top_kind,
+                "top_action": call_kind_label(top_kind),
+                "top_prob": round(top_prob, 3),
+                "actual_kind_prob": round(actual_prob, 3),
+                "pass_prob": round(pass_prob, 3),
+                "supports_call": top_kind == int(actual_kind),
+                "prefers_pass": top_kind == 0,
+            }
+        )
+    return heads
+
+
 def end_summary(start, target):
     msgs = start.get("end_msgs") or []
     if not msgs:
@@ -371,7 +450,7 @@ def common_case(row, kyoku_index, pos, start, state, hands, discards, melds, rea
         "score_band": score_band(score),
         "report": row["report"],
         "paifu": row["paifu"],
-        "table": table_context(start, target, hands, discards, melds, reached, dora_markers),
+        "table": table_context(start, target, hands, discards, melds, reached, dora_markers, state),
         "outcome": end_summary(start, target),
     }
 
@@ -508,7 +587,7 @@ def make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds,
     return case
 
 
-def make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key):
+def make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key, previous_state=None):
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
     if msg.get("actor") != target or msg.get("type") not in base.HURO_TYPES:
@@ -520,6 +599,7 @@ def make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, 
         {
             "kind": "call",
             "call": msg.get("type"),
+            "call_kind": msg.get("kind"),
             "called_tile": msg.get("pai"),
             "called_from": rel_seat(msg.get("target"), target),
             "consumed": consumed,
@@ -529,6 +609,9 @@ def make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, 
             "post_call_eval": shape,
         }
     )
+    call_heads = huro_model_heads(previous_state, target, msg.get("kind"))
+    if call_heads:
+        case["call_model_heads"] = call_heads
     return case
 
 
@@ -613,6 +696,43 @@ def safety_read_sentence(read, lang):
         parts.append("an outside tile (sotogawa)")
     threat = "riichi" if target.get("reached") else f"{target.get('open_melds')} calls" if target.get("open_melds") else "no called threat"
     return f"The kept {tile_token(read.get('tile'))} is {' and '.join(parts)} against the {seat_label(target.get('seat_label'), lang)} ({threat})."
+
+
+def call_model_sentence(case, lang):
+    heads = case.get("call_model_heads") or []
+    if not heads:
+        if lang == "ja":
+            return "この鳴き例は手牌進行と鳴き後の打牌を中心に読む。"
+        return "This call example is read through hand progress and the planned post-call discard."
+    nishiki = model_head(heads, "nishiki")
+    hibakari = model_head(heads, "hibakari")
+    actual = case.get("call", "call")
+    if lang == "ja":
+        parts = []
+        if nishiki:
+            parts.append(f"Nishiki は {nishiki['top_action']} {format_percent(nishiki['top_prob'])}、実戦の {actual} 重み {format_percent(nishiki['actual_kind_prob'])}")
+        if hibakari:
+            if hibakari.get("supports_call"):
+                parts.append("Hibakari もこの鳴きを第一候補にしている")
+            elif hibakari.get("prefers_pass"):
+                parts.append(f"Hibakari はスルー寄り ({format_percent(hibakari['pass_prob'])})")
+            else:
+                parts.append(f"Hibakari は別の {hibakari['top_action']} 寄り")
+        return "。".join(parts) + "。"
+    parts = []
+    if nishiki:
+        parts.append(
+            f"Nishiki top action is {nishiki['top_action']} ({format_percent(nishiki['top_prob'])}); "
+            f"the actual {actual} weight is {format_percent(nishiki['actual_kind_prob'])}"
+        )
+    if hibakari:
+        if hibakari.get("supports_call"):
+            parts.append("Hibakari also makes this call its top action")
+        elif hibakari.get("prefers_pass"):
+            parts.append(f"Hibakari prefers passing ({format_percent(hibakari['pass_prob'])})")
+        else:
+            parts.append(f"Hibakari prefers a different {hibakari['top_action']} line")
+    return ". ".join(parts) + "."
 
 
 def case_model_head(case, key):
@@ -870,6 +990,7 @@ def build_call_guide(case, lang):
     meld = " ".join(case.get("consumed") or [])
     shape = case.get("post_call_eval") or {}
     post_shape = shanten_text(shape.get("shanten"), lang)
+    model_read = call_model_sentence(case, lang)
     if lang == "ja":
         if point_key == "point-04":
             focus = f"副露後の {discard} まで先に見えていることが大事。開いた後も次の出口を残している。"
@@ -884,12 +1005,12 @@ def build_call_guide(case, lang):
         return {
             "caption": f"{call} して {tile_plain(case.get('discard_after_call'))}",
             "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、着順{case.get('rank')}。LuckyJ は {from_seat} から {called} を {call} し、{discard} を切る。結果: {case.get('outcome')}",
-            "read": focus,
+            "read": f"{focus} {model_read}".strip(),
             "whyNot": f"門前維持は自然な選択。ただしこの局面では残り枚数と手牌 {meld or 'なし'} から、門前の理想形を待つ余裕が薄い。",
             "copy": f"{call} が役、速度、テンパイ、または相手への圧力を作る時だけ真似する。鳴いた後の最初の打牌 {discard} まで先に決める。",
             "limit": "鳴いた後の安全牌や次の方針まで言える時に、LuckyJ 型のテンポになる。",
             "prompt": f"{called} を {call} するか。答える前に、鳴いた後に何を切るかを言う。",
-            "answer": f"最初に見るのは鳴き後の打牌で、この例では {discard} まで見えている。{focus}",
+            "answer": f"最初に見るのは鳴き後の打牌で、この例では {discard} まで見えている。{focus} {model_read}",
         }
     if point_key == "point-04":
         focus = f"The important tile is the post-call {discard}. LuckyJ opens while keeping the first exit and the next concrete plan."
@@ -904,12 +1025,12 @@ def build_call_guide(case, lang):
     return {
         "caption": f"{call} on {tile_plain(case.get('called_tile'))}, then {tile_plain(case.get('discard_after_call'))}",
         "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ is {case.get('score_band')} on {format_int(case.get('score'))} points in rank {case.get('rank')}. LuckyJ calls {call} on {called} from the {from_seat}, then cuts {discard}. Result: {case.get('outcome')}",
-        "read": focus,
+        "read": f"{focus} {model_read}".strip(),
         "whyNot": f"Passing is tempting because it keeps the hand closed. With {case.get('left')} tiles left, the closed ideal may run out of useful turns.",
         "copy": f"Copy the {call} only when it creates yaku, speed, tenpai pressure, or denial, and when the first post-call discard {discard} is already planned.",
         "limit": "The call needs a named post-call discard and a next defensive exit to become LuckyJ-style tempo.",
         "prompt": f"Would you {call} on {called}? Before answering, name the discard after the call.",
-        "answer": f"The first check is the post-call discard: {discard} is already the release tile. {focus}",
+        "answer": f"The first check is the post-call discard: {discard} is already the release tile. {focus} {model_read}",
     }
 
 
@@ -948,6 +1069,10 @@ def wants_candidate(selected, point_key, score):
 
 def baseline_example_bonus(candidate):
     if not candidate or candidate.get("kind") not in {"discard", "draw-tenpai", "reach"}:
+        if candidate and candidate.get("kind") == "call" and not candidate.get("call_model_heads"):
+            return -1000.0
+        if candidate and candidate.get("kind") == "call" and candidate.get("call_model_heads"):
+            return 2.0
         return 0.0
     heads = candidate.get("model_heads") or []
     hibakari = next((head for head in heads if head.get("key") == "hibakari"), None)
@@ -1290,7 +1415,7 @@ def try_discard_points(
                 )
 
 
-def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers):
+def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, previous_state=None):
     msg = state.get("info", {}).get("msg", {})
     if msg.get("actor") != row["actor"] or msg.get("type") not in base.HURO_TYPES:
         return
@@ -1299,7 +1424,7 @@ def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, 
     post_discard = msg.get("real_dahai")
     exposed_bonus = 0.2 if msg.get("type") == "pon" else 0.1
     terminal_or_honor_exit = post_discard and base.tile_class(post_discard) in {"honor", "terminal"}
-    call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-03")
+    call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-03", previous_state)
 
     score_value = exposed_bonus + max(0.0, (70 - left) / 100) + call_score_adjustment(call_case or {})
     if wants_candidate(selected, "point-03", score_value):
@@ -1312,7 +1437,7 @@ def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, 
         )
 
     if active_threats or terminal_or_honor_exit:
-        call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-04")
+        call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-04", previous_state)
         score_value = 0.4 + 0.2 * active_threats + (0.2 if terminal_or_honor_exit else 0.0) + call_score_adjustment(call_case or {})
         if wants_candidate(selected, "point-04", score_value):
             add(
@@ -1323,7 +1448,7 @@ def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, 
                 score_value,
             )
 
-    call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-07")
+    call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-07", previous_state)
     score_value = 0.3 + exposed_bonus + (0.2 if left <= 40 else 0.0) + call_score_adjustment(call_case or {})
     if wants_candidate(selected, "point-07", score_value):
         add(
@@ -1387,7 +1512,22 @@ def collect_examples():
                         remove_tile(hands[actor], discard)
 
                 elif msg_type in base.HURO_TYPES:
-                    try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers)
+                    previous_state = kyoku[pos - 1] if pos > 0 else None
+                    try_call_points(
+                        selected,
+                        used,
+                        row,
+                        kyoku_index,
+                        pos,
+                        start,
+                        state,
+                        hands,
+                        discards,
+                        melds,
+                        reached,
+                        dora_markers,
+                        previous_state,
+                    )
                     consumed = msg.get("consumed", [])
                     call_tiles = consumed + ([msg.get("pai")] if msg.get("pai") else [])
                     melds[actor].append(make_meld(call_tiles, msg.get("pai"), rel_seat(msg.get("target"), actor), msg_type))

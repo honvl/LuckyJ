@@ -625,6 +625,62 @@ function tileRun(items, className = "", emptyLabel = t("none")) {
     .join("")}</span>`;
 }
 
+function tileThreatBarLabel(bar) {
+  const value = bar?.danger == null ? "n/a" : pct(clamp01(bar.danger));
+  return `${seatLabel(bar?.seat)} ${value}`;
+}
+
+function calibratedDangerHeat(value) {
+  const danger = clamp01(value);
+  const stops = [
+    [0, 0],
+    [0.08, 0.25],
+    [0.18, 0.52],
+    [0.4, 0.84],
+    [0.53, 1],
+  ];
+  for (let i = 1; i < stops.length; i += 1) {
+    const [raw, heat] = stops[i];
+    const [prevRaw, prevHeat] = stops[i - 1];
+    if (danger <= raw) {
+      const span = raw - prevRaw || 1;
+      const progress = (danger - prevRaw) / span;
+      return prevHeat + progress * (heat - prevHeat);
+    }
+  }
+  return 1;
+}
+
+function tileThreatBars(tile, threat) {
+  const bars = threat?.bars || [];
+  if (!bars.length) return "";
+  const title = `${tileName(tile)}: ${bars.map(tileThreatBarLabel).join(", ")}`;
+  return `<span class="tile-threat-bars" title="${escapeHtml(title)}" aria-label="${escapeHtml(title)}">${bars
+    .map((bar) => {
+      const value = bar?.danger == null ? 0 : calibratedDangerHeat(bar.danger);
+      const label = `${tileName(tile)} ${tileThreatBarLabel(bar)}`;
+      return `<span class="tile-threat-bar" style="--bar-level:${Math.round(value * 1000) / 10}%" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}"></span>`;
+    })
+    .join("")}</span>`;
+}
+
+function tileRunWithThreats(items, threats = [], className = "", emptyLabel = t("none")) {
+  const list = (items || []).filter(Boolean);
+  if (!list.length) return emptyLabel ? `<span class="empty">${escapeHtml(emptyLabel)}</span>` : "";
+  const label = tileNamesText(list);
+  const tileClass = [tileFontClass, className, "threat-tile"].filter(Boolean).join(" ");
+  return `<span class="tile-threat-hand" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${list
+    .map((tile, index) => {
+      const threat = threats[index]?.tile === tile ? threats[index] : threats[index] || {};
+      const title = threat?.bars?.length ? `${tileName(tile)}: ${threat.bars.map(tileThreatBarLabel).join(", ")}` : tileName(tile);
+      return `<span class="tile-threat-cell" title="${escapeHtml(title)}" aria-label="${escapeHtml(title)}">${tileThreatBars(
+        tile,
+        threat
+      )}<span class="tiles ${tileClass}" aria-hidden="true">${escapeHtml(tileCode(tile))}</span></span>`;
+    })
+    .join("")}</span>`;
+}
+
 function sameBaseTile(a, b) {
   return String(a || "").replace("r", "") === String(b || "").replace("r", "");
 }
@@ -735,6 +791,12 @@ function scoreFor(table, seat) {
   return (table.scores || []).find((player) => player.seat === seat) || { seat, score: 0, wind: "?", rank: "?" };
 }
 
+function clamp01(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return 0;
+  return Math.max(0, Math.min(1, number));
+}
+
 function discardRows(discards) {
   const rows = [];
   const list = discards || [];
@@ -771,6 +833,9 @@ function renderMahjongTable(table) {
       const player = playerFor(table, seats[position]);
       const score = scoreFor(table, seats[position]);
       const name = `${seatLabel(player.seat)}${score.rank ? ` / ${rankText(score.rank)}` : ""}`;
+      const handTiles = (player.hand || "").split(" ").filter(Boolean);
+      const handRun =
+        player.seat === "self" ? tileRunWithThreats(handTiles, player.tile_threats || []) : tileRun(handTiles);
       const melds = (player.melds || []).length
         ? `<div class="table-melds">${(player.melds || []).map(tableMeld).join("")}</div>`
         : "";
@@ -778,7 +843,7 @@ function renderMahjongTable(table) {
         <div class="player-hand player-${position}">
           <span class="player-name">${escapeHtml(name)}</span>
           <div class="table-tile-group table-hand-group">
-            <div class="hand compact"><div class="hand-contents">${tileRun((player.hand || "").split(" "))}</div></div>
+            <div class="hand compact"><div class="hand-contents">${handRun}</div></div>
           </div>
           ${melds}
         </div>
@@ -970,6 +1035,29 @@ function pointExampleList(examples, pointKey) {
   return value ? [value] : [];
 }
 
+function renderCallModelBlock(example) {
+  const heads = example.call_model_heads;
+  if (!Array.isArray(heads) || !heads.length) return document.createDocumentFragment();
+  const block = document.createElement("div");
+  block.className = "comparison";
+  for (const head of heads) {
+    const card = document.createElement("div");
+    card.className = "decision";
+    const topAction = head.top_action || t("noModelAction");
+    const actualWeight = head.actual_kind_prob == null ? "" : probabilityChip(isJa ? "実戦の鳴き" : "actual call", head.actual_kind_prob);
+    const passWeight = head.pass_prob == null ? "" : probabilityChip(isJa ? "スルー" : "pass", head.pass_prob);
+    card.innerHTML = `
+      <b>${escapeHtml(head.label || "")}</b>
+      ${probabilityChip(isJa ? "第一候補" : "top action", head.top_prob)}
+      <span>${escapeHtml(topAction)}</span>
+      ${actualWeight}
+      ${passWeight}
+    `;
+    block.append(card);
+  }
+  return block;
+}
+
 function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCopy, index, total) {
   const exampleGuide = (isJa ? example.guide_ja || example.guide : example.guide) || guide || {};
   const exampleMortal = example.mortal || pointMortalForExample(mortalPoints, pointKey, index);
@@ -1003,6 +1091,7 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
       <span>${t("discardAfterCall")} ${tileIcon(example.discard_after_call, "discard-tile")}</span>
     `;
     replay.append(line);
+    replay.append(renderCallModelBlock(example));
   } else {
     const choices = document.createElement("div");
     choices.className = "comparison";
