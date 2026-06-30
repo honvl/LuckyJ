@@ -1148,16 +1148,63 @@ function renderCases(data) {
   paint(active);
 }
 
+function renderPointValidation(validation) {
+  const summary = document.querySelector("#validationSummary");
+  const grid = document.querySelector("#pointValidation");
+  const points = validation?.points || [];
+
+  if (summary && validation?.summary && validation?.method) {
+    const strong = validation.summary.strong || 0;
+    const qualified = validation.summary.qualified || 0;
+    const decisions = validation.method.eligible_decisions || validation.method.book_decisions;
+    summary.innerHTML = `
+      <div class="stat-strip">
+        <span><b>${whole.format(validation.summary.total || points.length)}</b>${isJa ? "検証ポイント" : "validated points"}</span>
+        <span><b>${whole.format(strong)}</b>${isJa ? "強い" : "strong"}</span>
+        <span><b>${whole.format(qualified)}</b>${isJa ? "条件付き" : "qualified"}</span>
+        <span><b>${whole.format(decisions || 0)}</b>${isJa ? "判断母数" : "decision base"}</span>
+      </div>
+    `;
+  }
+
+  if (!grid || !points.length) return;
+  grid.innerHTML = "";
+  for (const item of points) {
+    const card = document.createElement("article");
+    card.className = `validation-card ${escapeHtml(item.strength || "qualified")}`;
+    const stats = (item.stats || [])
+      .map((stat) => `<li>${escapeHtml(isJa ? stat.text_ja || stat.text : stat.text)}</li>`)
+      .join("");
+    card.innerHTML = `
+      <div class="validation-head">
+        <span>${escapeHtml(item.id.replace("point-", ""))}</span>
+        <b>${escapeHtml(isJa ? item.category_ja : item.category)}</b>
+        <em>${escapeHtml(isJa ? item.verdict_ja : item.verdict)}</em>
+      </div>
+      <h3>${escapeHtml(isJa ? item.title_ja : item.title)}</h3>
+      <p>${escapeHtml(isJa ? item.read_ja : item.read)}</p>
+      <ul>${stats}</ul>
+      <div class="validation-example">
+        <strong>${isJa ? "実戦チェック" : "Table check"}</strong>
+        <span>${escapeHtml(isJa ? item.example_ja : item.example)}</span>
+      </div>
+      <p class="validation-caveat">${escapeHtml(isJa ? item.caveat_ja : item.caveat)}</p>
+    `;
+    grid.append(card);
+  }
+}
+
 async function main() {
   applyTileCompatibility();
   const guidePath = isJa ? "strategy-guides.ja.json" : "strategy-guides.json";
-  const [bookResponse, caseResponse, exampleResponse, guideResponse, mortalResponse, mortalCopy] = await Promise.all([
+  const [bookResponse, caseResponse, exampleResponse, guideResponse, mortalResponse, mortalCopy, validation] = await Promise.all([
     fetch("book-data.json"),
     fetch("case-studies.json"),
     fetch("point-examples.json"),
     fetch(guidePath),
     fetch("mortal-analysis.json"),
     isJa ? fetchJson("mortal-analysis.ja.json", {}) : Promise.resolve({}),
+    fetchJson("point-validation.json", {}),
   ]);
   const data = await bookResponse.json();
   const caseData = await caseResponse.json();
@@ -1194,6 +1241,7 @@ async function main() {
   renderYakuhaiPressure(data.decision_counters.yakuhai_pressure);
   renderDefenseTargets(data.decision_counters.defense_targets);
 
+  renderPointValidation(validation);
   renderPointExamples(examples, guides, mortal.points, mortalCopy);
   renderCases(caseData);
   applyTileCompatibility();

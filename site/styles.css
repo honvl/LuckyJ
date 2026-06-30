@@ -226,7 +226,7 @@ a {
 
 .chapter-grid,
 .model-point-grid,
-.source-example-grid {
+.validation-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
@@ -235,7 +235,7 @@ a {
 
 .chapter-card,
 .model-point-grid article,
-.source-example-card {
+.validation-card {
   border: 1px solid var(--line);
   background: var(--panel);
   color: inherit;
@@ -247,7 +247,7 @@ a {
 
 .chapter-card span,
 .model-point-grid article span,
-.source-example-card span {
+.validation-head b {
   color: var(--red);
   display: block;
   font-size: 12px;
@@ -259,7 +259,7 @@ a {
 
 .chapter-card h3,
 .model-point-grid article h3,
-.source-example-card h3 {
+.validation-card h3 {
   font-size: 22px;
   line-height: 1.14;
   margin: 0 0 8px;
@@ -267,7 +267,7 @@ a {
 
 .chapter-card p,
 .model-point-grid article p,
-.source-example-card p {
+.validation-card p {
   color: var(--muted);
   font-size: 15px;
   margin: 0;
@@ -280,19 +280,82 @@ a {
   margin-top: 12px;
 }
 
-.model-point-grid article a,
-.source-example-card a {
+.model-point-grid article a {
   color: var(--green);
   display: inline-block;
   font-weight: 850;
   margin-top: 12px;
 }
 
-.source-links {
+.validation-head {
+  align-items: center;
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
-  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+.validation-head span {
+  align-items: center;
+  background: var(--green);
+  color: #fff;
+  display: inline-flex;
+  font-weight: 900;
+  height: 32px;
+  justify-content: center;
+  min-width: 32px;
+}
+
+.validation-head em {
+  border: 1px solid var(--line);
+  color: var(--blue);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 900;
+  margin-left: auto;
+  padding: 5px 8px;
+  text-transform: uppercase;
+}
+
+.validation-card.strong .validation-head em {
+  color: var(--green);
+}
+
+.validation-card ul {
+  color: #3f433d;
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 12px 0;
+  padding-left: 18px;
+}
+
+.validation-card li + li {
+  margin-top: 6px;
+}
+
+.validation-example {
+  border-left: 4px solid var(--yellow);
+  color: #292c28;
+  display: grid;
+  gap: 4px;
+  margin: 14px 0;
+  padding-left: 12px;
+}
+
+.validation-example strong {
+  color: var(--red);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.validation-example span {
+  color: #30332f;
+  font-size: 14px;
+}
+
+.validation-caveat {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
 }
 
 .concept-divider {
@@ -1501,10 +1564,10 @@ a {
   .diagram,
   .two-col,
   .chapter-grid,
-	  .model-point-grid,
-	  .source-example-grid,
-	  .insight-grid,
-	  .stat-strip,
+  .model-point-grid,
+  .validation-grid,
+  .insight-grid,
+  .stat-strip,
   .evidence-grid,
   .safety-timing,
   .drill-list,
