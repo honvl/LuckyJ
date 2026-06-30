@@ -34,8 +34,10 @@ SEAT_LABELS_JA = {
 WINDS = ["E", "S", "W", "N"]
 DRAGONS = {"P", "F", "C"}
 EXAMPLES_PER_POINT = 10
-POOL_PER_POINT = 40
+POOL_PER_POINT = 120
 SHANTEN = Shanten()
+MODEL_KEYS = ["nishiki", "hibakari", "kagashi"]
+MODEL_LABELS = {"nishiki": "Nishiki", "hibakari": "Hibakari", "kagashi": "Kagashi"}
 
 
 POINT_TEXT = {
@@ -107,7 +109,7 @@ POINT_TEXT = {
     },
     "point-12": {
         "title": "A disagreement is a review prompt",
-        "lesson": "The useful question is why LuckyJ and NAGA split: safety, route count, value, pressure, or a real mistake.",
+        "lesson": "The useful question is why LuckyJ and each NAGA head split: safety, route count, value, pressure, or a real mistake.",
         "prompt": "Bucket the disagreement before judging it: blunder, strategic trade-off, or table-reading idea.",
         "answer": "Use match rate as a review cue, then aim for explainable decisions with fewer unpriced risks.",
     },
@@ -296,15 +298,33 @@ def visible_counter(discards, melds, dora_markers):
     return visible
 
 
-def top_rows(state, actual):
+def model_rows(state, actual):
     rows = []
     if not actual or actual == "?":
         return rows
-    for pred in state.get("dahai_pred", [])[:3]:
+    for index, pred in enumerate(state.get("dahai_pred", [])[:3]):
         top, top_prob = base.top_tile(pred)
         actual_prob = base.prob_for(pred, actual)
-        rows.append((top, top_prob, actual_prob))
+        key = MODEL_KEYS[index] if index < len(MODEL_KEYS) else f"model_{index}"
+        rows.append(
+            {
+                "key": key,
+                "label": MODEL_LABELS.get(key, key),
+                "top": top,
+                "top_prob": top_prob,
+                "actual_prob": actual_prob,
+                "matches_luckyj": same_tile(top, actual),
+            }
+        )
     return rows
+
+
+def top_rows(state, actual):
+    return [(row["top"], row["top_prob"], row["actual_prob"]) for row in model_rows(state, actual)]
+
+
+def model_head(rows, key):
+    return next((row for row in rows if row.get("key") == key), None)
 
 
 def end_summary(start, target):
@@ -360,7 +380,8 @@ def make_discard_case(row, kyoku_index, pos, start, state, hands, discards, meld
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
     actual = msg.get("real_dahai")
-    rows = top_rows(state, actual)
+    model_head_rows = model_rows(state, actual)
+    rows = [(row["top"], row["top_prob"], row["actual_prob"]) for row in model_head_rows]
     if not rows:
         return None
     naga = rows[0][0]
@@ -374,6 +395,20 @@ def make_discard_case(row, kyoku_index, pos, start, state, hands, discards, meld
         return None
     if not actual_eval or not naga_eval:
         return None
+    model_heads = []
+    for model in model_head_rows:
+        model_heads.append(
+            {
+                "key": model["key"],
+                "label": model["label"],
+                "top": model["top"],
+                "top_prob": round(model["top_prob"], 3),
+                "actual_prob": round(model["actual_prob"], 3),
+                "matches_luckyj": model["matches_luckyj"],
+                "matches_nishiki": same_tile(model["top"], naga),
+                "danger": danger_for(state, target, model["top"]),
+            }
+        )
     case = common_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key)
     case.update(
         {
@@ -387,6 +422,7 @@ def make_discard_case(row, kyoku_index, pos, start, state, hands, discards, meld
             "actual_eval": actual_eval,
             "naga_eval": naga_eval,
             "naga_votes": [row[0] for row in rows],
+            "model_heads": model_heads,
             "naga_prob": round(rows[0][1], 3),
             "actual_prob": round(rows[0][2], 3),
             "kept_tile_safety": safety_read(naga, target, discards, reached, open_counts),
@@ -417,7 +453,8 @@ def make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discard
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
     actual = msg.get("real_dahai")
-    rows = top_rows(state, actual)
+    model_head_rows = model_rows(state, actual)
+    rows = [(row["top"], row["top_prob"], row["actual_prob"]) for row in model_head_rows]
     if not rows:
         return None
     naga = rows[0][0]
@@ -433,6 +470,19 @@ def make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discard
             "actual_danger": danger_for(state, target, actual),
             "naga_danger": danger_for(state, target, naga),
             "naga_votes": [row[0] for row in rows],
+            "model_heads": [
+                {
+                    "key": model["key"],
+                    "label": model["label"],
+                    "top": model["top"],
+                    "top_prob": round(model["top_prob"], 3),
+                    "actual_prob": round(model["actual_prob"], 3),
+                    "matches_luckyj": model["matches_luckyj"],
+                    "matches_nishiki": same_tile(model["top"], naga),
+                    "danger": danger_for(state, target, model["top"]),
+                }
+                for model in model_head_rows
+            ],
             "naga_prob": round(rows[0][1], 3),
             "actual_prob": round(rows[0][2], 3),
             "kept_tile_safety": safety_read(naga, target, discards, reached, open_counts),
@@ -521,15 +571,15 @@ def danger_gap_phrase(case, lang):
     gap = actual - naga
     if lang == "ja":
         if abs(gap) < 0.03:
-            return f"危険度は近い。LuckyJ {format_percent(actual)}、NAGA {format_percent(naga)}。"
+            return f"危険度は近い。LuckyJ {format_percent(actual)}、Nishiki {format_percent(naga)}。"
         if gap < 0:
-            return f"LuckyJ は即時危険を下げている。LuckyJ {format_percent(actual)}、NAGA {format_percent(naga)}。"
-        return f"LuckyJ は追加危険を払っている。LuckyJ {format_percent(actual)}、NAGA {format_percent(naga)}。"
+            return f"LuckyJ は即時危険を下げている。LuckyJ {format_percent(actual)}、Nishiki {format_percent(naga)}。"
+        return f"LuckyJ は追加危険を払っている。LuckyJ {format_percent(actual)}、Nishiki {format_percent(naga)}。"
     if abs(gap) < 0.03:
-        return f"The danger numbers are close: LuckyJ {format_percent(actual)}, NAGA {format_percent(naga)}."
+        return f"The danger numbers are close: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
     if gap < 0:
-        return f"LuckyJ buys immediate safety: LuckyJ {format_percent(actual)}, NAGA {format_percent(naga)}."
-    return f"LuckyJ pays extra danger now: LuckyJ {format_percent(actual)}, NAGA {format_percent(naga)}."
+        return f"LuckyJ buys immediate safety: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
+    return f"LuckyJ pays extra danger now: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
 
 
 def eval_summary(item, lang):
@@ -563,6 +613,30 @@ def safety_read_sentence(read, lang):
         parts.append("an outside tile (sotogawa)")
     threat = "riichi" if target.get("reached") else f"{target.get('open_melds')} calls" if target.get("open_melds") else "no called threat"
     return f"The kept {tile_token(read.get('tile'))} is {' and '.join(parts)} against the {seat_label(target.get('seat_label'), lang)} ({threat})."
+
+
+def case_model_head(case, key):
+    return next((head for head in case.get("model_heads") or [] if head.get("key") == key), None)
+
+
+def hibakari_read_sentence(case, lang):
+    head = case_model_head(case, "hibakari")
+    if not head:
+        return ""
+    top = tile_token(head.get("top"))
+    actual = tile_token(case.get("actual"))
+    nishiki = tile_token(case.get("naga"))
+    if lang == "ja":
+        if head.get("matches_luckyj"):
+            return f"Hibakari も {actual} を第一候補にしており、この例は LuckyJ/Hibakari 対 Nishiki の分岐として読む。"
+        if head.get("matches_nishiki"):
+            return f"Hibakari も Nishiki と同じ {nishiki} 寄りなので、これは守備寄り基準にも逆らう例。条件がそろう時だけ真似する。"
+        return f"Hibakari は第三候補の {top} を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。"
+    if head.get("matches_luckyj"):
+        return f"Hibakari also chooses {actual}, so read this as LuckyJ/Hibakari versus Nishiki, not LuckyJ against every NAGA head."
+    if head.get("matches_nishiki"):
+        return f"Hibakari also leans to Nishiki's {nishiki}, so this is a harder example: LuckyJ is beating the defensive baseline only if the local condition is exact."
+    return f"Hibakari chooses a third line, {top}; read the example as a three-way split and copy the reason, not the surface tile."
 
 
 def yakuhai_threat_sentence(case, lang):
@@ -619,7 +693,7 @@ def point_focus_en(point_key, case):
         return f"Honor tiles split into roles. Here {actual} is being treated as loose material or an opponent condition."
     if point_key == "point-19":
         return f"The lead lowers the ambition and keeps the calculation active. LuckyJ checks whether {actual} reduces risk or preserves the next turn."
-    return f"LuckyJ cuts {actual} while NAGA prefers {naga}; the lesson is in the future each tile leaves behind."
+    return f"LuckyJ cuts {actual} while Nishiki prefers {naga}; the lesson is in the future each tile leaves behind."
 
 
 def point_focus_ja(point_key, case):
@@ -658,7 +732,7 @@ def point_focus_ja(point_key, case):
         return f"字牌には役割がある。ここでの {actual} は浮き牌か相手条件として扱われている。"
     if point_key == "point-19":
         return f"トップ目でも計算は続ける。{actual} が危険を減らし、次巡を残すかを見ている。"
-    return f"LuckyJ は {actual}、NAGA は {naga}。どちらがどの未来を残すかを見る。"
+    return f"LuckyJ は {actual}、Nishiki は {naga}。どちらがどの未来を残すかを見る。"
 
 
 def copy_rule_en(point_key, case):
@@ -678,7 +752,7 @@ def copy_rule_en(point_key, case):
         return "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter."
     if point_key == "point-11":
         return "Copy this when a safe path to tenpai has measurable value even if the hand is unlikely to win outright."
-    return f"Copy the reason: if cutting {actual} keeps the hand's real job clearer than the NAGA line through {naga}, the choice is reproducible."
+    return f"Copy the reason: if cutting {actual} keeps the hand's real job clearer than the Nishiki line through {naga}, the choice is reproducible."
 
 
 def copy_rule_ja(point_key, case):
@@ -739,8 +813,8 @@ def why_naga_tempting_en(case):
     actual_eval = case.get("actual_eval")
     naga_eval = case.get("naga_eval")
     if actual_eval and naga_eval:
-        return f"The NAGA line through {naga} is tempting because it leaves {eval_summary(naga_eval, 'en')}. LuckyJ's {actual} line leaves {eval_summary(actual_eval, 'en')}. {danger_gap_phrase(case, 'en')}"
-    return f"The NAGA top line {naga} is tempting because it has the highest model weight here: NAGA {format_percent(case.get('naga_prob'))}, LuckyJ {format_percent(case.get('actual_prob'))}. {danger_gap_phrase(case, 'en')}"
+        return f"The Nishiki line through {naga} is tempting because it leaves {eval_summary(naga_eval, 'en')}. LuckyJ's {actual} line leaves {eval_summary(actual_eval, 'en')}. {danger_gap_phrase(case, 'en')}"
+    return f"Nishiki's top line {naga} is tempting because it has the highest model weight here: Nishiki {format_percent(case.get('naga_prob'))}, LuckyJ {format_percent(case.get('actual_prob'))}. {danger_gap_phrase(case, 'en')}"
 
 
 def why_naga_tempting_ja(case):
@@ -749,8 +823,8 @@ def why_naga_tempting_ja(case):
     actual_eval = case.get("actual_eval")
     naga_eval = case.get("naga_eval")
     if actual_eval and naga_eval:
-        return f"NAGA の {naga} は {eval_summary(naga_eval, 'ja')} を残すので魅力がある。LuckyJ の {actual} は {eval_summary(actual_eval, 'ja')}。{danger_gap_phrase(case, 'ja')}"
-    return f"NAGA 第一候補の {naga} はこの局面で重みが高い ({format_percent(case.get('naga_prob'))}、LuckyJ は {format_percent(case.get('actual_prob'))})。{danger_gap_phrase(case, 'ja')}"
+        return f"Nishiki の {naga} は {eval_summary(naga_eval, 'ja')} を残すので魅力がある。LuckyJ の {actual} は {eval_summary(actual_eval, 'ja')}。{danger_gap_phrase(case, 'ja')}"
+    return f"Nishiki 第一候補の {naga} はこの局面で重みが高い ({format_percent(case.get('naga_prob'))}、LuckyJ は {format_percent(case.get('actual_prob'))})。{danger_gap_phrase(case, 'ja')}"
 
 
 def build_discard_guide(case, lang):
@@ -759,12 +833,13 @@ def build_discard_guide(case, lang):
     naga = tile_token(case.get("naga"))
     draw = tile_token(case.get("draw"))
     safety = safety_read_sentence(case.get("kept_tile_safety"), lang)
+    hibakari = hibakari_read_sentence(case, lang)
     if lang == "ja":
         focus = point_focus_ja(point_key, case)
-        read = f"{focus} {safety}".strip()
+        read = f"{focus} {safety} {hibakari}".strip()
         return {
-            "caption": f"LuckyJ {tile_plain(case.get('actual'))}、NAGA {tile_plain(case.get('naga'))}",
-            "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、着順{case.get('rank')}。LuckyJ は {draw} ツモから {actual} を切り、NAGA 第一候補は {naga}。結果: {case.get('outcome')}",
+            "caption": f"LuckyJ {tile_plain(case.get('actual'))}、Nishiki {tile_plain(case.get('naga'))}",
+            "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、着順{case.get('rank')}。LuckyJ は {draw} ツモから {actual} を切り、Nishiki 第一候補は {naga}。結果: {case.get('outcome')}",
             "read": read,
             "whyNot": why_naga_tempting_ja(case),
             "copy": copy_rule_ja(point_key, case),
@@ -773,10 +848,10 @@ def build_discard_guide(case, lang):
             "answer": f"LuckyJ は {actual} を選ぶ。理由は {focus}",
         }
     focus = point_focus_en(point_key, case)
-    read = f"{focus} {safety}".strip()
+    read = f"{focus} {safety} {hibakari}".strip()
     return {
-        "caption": f"LuckyJ {tile_plain(case.get('actual'))}, NAGA {tile_plain(case.get('naga'))}",
-        "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ is {case.get('score_band')} on {format_int(case.get('score'))} points in rank {case.get('rank')}. After drawing {draw}, LuckyJ cuts {actual}; NAGA's top line is {naga}. Result: {case.get('outcome')}",
+        "caption": f"LuckyJ {tile_plain(case.get('actual'))}, Nishiki {tile_plain(case.get('naga'))}",
+        "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ is {case.get('score_band')} on {format_int(case.get('score'))} points in rank {case.get('rank')}. After drawing {draw}, LuckyJ cuts {actual}; Nishiki's top line is {naga}. Result: {case.get('outcome')}",
         "read": read,
         "whyNot": why_naga_tempting_en(case),
         "copy": copy_rule_en(point_key, case),
@@ -871,10 +946,25 @@ def wants_candidate(selected, point_key, score):
     return len(rows) < POOL_PER_POINT or score > selected_min_score(selected, point_key)
 
 
+def baseline_example_bonus(candidate):
+    if not candidate or candidate.get("kind") not in {"discard", "draw-tenpai", "reach"}:
+        return 0.0
+    heads = candidate.get("model_heads") or []
+    hibakari = next((head for head in heads if head.get("key") == "hibakari"), None)
+    if not hibakari:
+        return 0.0
+    if hibakari.get("matches_luckyj"):
+        return 5.0
+    if not hibakari.get("matches_nishiki"):
+        return 2.0
+    return 0.0
+
+
 def add(selected, used, point_key, candidate, score=0.0):
     sig = candidate_signature(candidate)
     if not candidate or not sig:
         return
+    score += baseline_example_bonus(candidate)
     point_seen = used.setdefault(point_key, set())
     if sig in point_seen:
         return

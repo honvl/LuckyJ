@@ -288,6 +288,48 @@ def has_three_named_heads(decision: dict[str, Any]) -> bool:
     return all(model_for(decision, key) for key in ("nishiki", "hibakari", "kagashi"))
 
 
+def model_row(
+    name: str,
+    index: int,
+    probs: list[int],
+    actual: str,
+    hand_counts: Counter,
+    state: dict[str, Any],
+    target: int,
+    discards: list[list[str]],
+    reached: list[bool],
+    open_melds: list[int],
+    dora_markers: list[str],
+    melds: list[list[str]],
+    start: dict[str, Any],
+) -> dict[str, Any]:
+    top, top_prob = base.top_tile(probs)
+    actual_prob = base.prob_for(probs, actual)
+    matches_actual = same_tile(actual, top)
+    key = model_key(name, index)
+    top_safety = base.defensive_tile_read(top, target, discards, reached, open_melds)
+    return {
+        "index": index,
+        "key": key,
+        "name": name,
+        "label": model_label(key, name),
+        "top": top,
+        "top_prob": top_prob,
+        "actual_prob": actual_prob,
+        "prob_gap": top_prob - actual_prob if not matches_actual else 0.0,
+        "matches_luckyj": matches_actual,
+        "top_class": base.tile_class(top),
+        "top_count": hand_counts[tile_id(top)],
+        "top_is_doraish": is_doraish(top, dora_markers),
+        "top_danger": base.danger_for(state, target, top),
+        "top_safety_kind": top_safety["kind"],
+        "top_safety_vs_threat": top_safety["safe_against_threat"],
+        "top_visible_count": visible_count(top, discards, melds, dora_markers),
+        "top_is_self_yakuhai": is_yakuhai_for_seat(top, start, target),
+        "top_yaku_condition_threats": len(yaku_condition_threats(start, target, melds, top)),
+    }
+
+
 def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
     rows = base.parse_rows()
     if max_reports:
@@ -335,25 +377,27 @@ def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
                         and "reach" not in state
                     ):
                         actual = msg["real_dahai"]
+                        hand_counts = hand_counter(hands[target])
+                        actual_danger = base.danger_for(state, target, actual)
+                        actual_safety = base.defensive_tile_read(actual, target, discards, reached, open_melds)
                         model_rows = []
                         for model_idx in range(min(len(naga_types), len(state["dahai_pred"]))):
-                            name = naga_types[model_idx]
-                            top, top_prob = base.top_tile(state["dahai_pred"][model_idx])
-                            actual_prob = base.prob_for(state["dahai_pred"][model_idx], actual)
-                            key = model_key(name, model_idx)
-                            matches_actual = same_tile(actual, top)
                             model_rows.append(
-                                {
-                                    "index": model_idx,
-                                    "key": key,
-                                    "name": name,
-                                    "label": model_label(key, name),
-                                    "top": top,
-                                    "top_prob": top_prob,
-                                    "actual_prob": actual_prob,
-                                    "prob_gap": top_prob - actual_prob if not matches_actual else 0.0,
-                                    "matches_luckyj": matches_actual,
-                                }
+                                model_row(
+                                    naga_types[model_idx],
+                                    model_idx,
+                                    state["dahai_pred"][model_idx],
+                                    actual,
+                                    hand_counts,
+                                    state,
+                                    target,
+                                    discards,
+                                    reached,
+                                    open_melds,
+                                    dora_markers,
+                                    melds,
+                                    start,
+                                )
                             )
                         if model_rows:
                             primary_model = model_rows[0]
@@ -361,11 +405,7 @@ def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
                             naga_prob = primary_model["top_prob"]
                             actual_prob = primary_model["actual_prob"]
                             mismatch = not same_tile(actual, naga)
-                            hand_counts = hand_counter(hands[target])
-                            actual_danger = base.danger_for(state, target, actual)
-                            naga_danger = base.danger_for(state, target, naga)
-                            actual_safety = base.defensive_tile_read(actual, target, discards, reached, open_melds)
-                            naga_safety = base.defensive_tile_read(naga, target, discards, reached, open_melds)
+                            naga_danger = primary_model["top_danger"]
                             left = msg.get("left_hai_num")
                             decision = {
                                 "id": f"{row['idx']}:{kyoku_index}:{pos}",
@@ -387,14 +427,14 @@ def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
                                 "actual": actual,
                                 "naga": naga,
                                 "actual_class": base.tile_class(actual),
-                                "naga_class": base.tile_class(naga),
+                                "naga_class": primary_model["top_class"],
                                 "actual_count": hand_counts[tile_id(actual)],
-                                "naga_count": hand_counts[tile_id(naga)],
+                                "naga_count": primary_model["top_count"],
                                 "red_count": sum(1 for tile in hands[target] if "r" in tile),
                                 "honor_count": sum(1 for tile in hands[target] if base.tile_class(tile) == "honor"),
                                 "pair_count": sum(1 for count in hand_counts.values() if count >= 2),
                                 "actual_is_doraish": is_doraish(actual, dora_markers),
-                                "naga_is_doraish": is_doraish(naga, dora_markers),
+                                "naga_is_doraish": primary_model["top_is_doraish"],
                                 "actual_prob": actual_prob,
                                 "naga_prob": naga_prob,
                                 "prob_gap": naga_prob - actual_prob if mismatch else 0.0,
@@ -409,18 +449,18 @@ def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
                                 "danger_delta": actual_danger - naga_danger if actual_danger is not None and naga_danger is not None else None,
                                 "actual_safety_kind": actual_safety["kind"],
                                 "actual_safety_vs_threat": actual_safety["safe_against_threat"],
-                                "naga_safety_kind": naga_safety["kind"],
-                                "naga_safety_vs_threat": naga_safety["safe_against_threat"],
+                                "naga_safety_kind": primary_model["top_safety_kind"],
+                                "naga_safety_vs_threat": primary_model["top_safety_vs_threat"],
                                 "active_threats": sum(1 for seat in range(4) if seat != target and (reached[seat] or open_melds[seat])),
                                 "riichi_threats": sum(1 for seat in range(4) if seat != target and reached[seat]),
                                 "open_threats": sum(1 for seat in range(4) if seat != target and open_melds[seat]),
                                 "own_discards": len(discards[target]),
                                 "actual_visible_count": visible_count(actual, discards, melds, dora_markers),
-                                "naga_visible_count": visible_count(naga, discards, melds, dora_markers),
+                                "naga_visible_count": primary_model["top_visible_count"],
                                 "actual_is_self_yakuhai": is_yakuhai_for_seat(actual, start, target),
-                                "naga_is_self_yakuhai": is_yakuhai_for_seat(naga, start, target),
+                                "naga_is_self_yakuhai": primary_model["top_is_self_yakuhai"],
                                 "actual_yaku_condition_threats": len(yaku_condition_threats(start, target, melds, actual)),
-                                "naga_yaku_condition_threats": len(yaku_condition_threats(start, target, melds, naga)),
+                                "naga_yaku_condition_threats": primary_model["top_yaku_condition_threats"],
                             }
                             if mismatch:
                                 decision["patterns"] = pattern_keys(decision)
@@ -503,6 +543,58 @@ def compact_decision(decision: dict[str, Any]) -> dict[str, Any]:
         "patterns": decision["patterns"],
         "report": decision["report"],
         "paifu": decision["paifu"],
+    }
+
+
+def decision_for_baseline(decision: dict[str, Any], key: str) -> dict[str, Any] | None:
+    model = model_for(decision, key)
+    if not model:
+        return None
+    mismatch = not model["matches_luckyj"]
+    view = dict(decision)
+    view.update(
+        {
+            "baseline_key": key,
+            "baseline_label": model["label"],
+            "naga": model["top"],
+            "naga_class": model["top_class"],
+            "naga_count": model["top_count"],
+            "naga_is_doraish": model["top_is_doraish"],
+            "actual_prob": model["actual_prob"],
+            "naga_prob": model["top_prob"],
+            "prob_gap": model["prob_gap"],
+            "mismatch": mismatch,
+            "big_gap": mismatch and model["prob_gap"] >= 0.5,
+            "bad_by_naga": mismatch and model["actual_prob"] < 0.05,
+            "naga_danger": model["top_danger"],
+            "danger_delta": (
+                decision["actual_danger"] - model["top_danger"]
+                if decision["actual_danger"] is not None and model["top_danger"] is not None
+                else None
+            ),
+            "naga_safety_kind": model["top_safety_kind"],
+            "naga_safety_vs_threat": model["top_safety_vs_threat"],
+            "naga_visible_count": model["top_visible_count"],
+            "naga_is_self_yakuhai": model["top_is_self_yakuhai"],
+            "naga_yaku_condition_threats": model["top_yaku_condition_threats"],
+        }
+    )
+    view["patterns"] = pattern_keys(view) if mismatch else []
+    return view
+
+
+def summarize_baselines(decisions: list[dict[str, Any]]) -> dict[str, Any]:
+    split_decisions = [decision for decision in decisions if has_three_named_heads(decision)]
+    baselines = {}
+    for key in ("nishiki", "hibakari", "kagashi"):
+        views = [view for decision in split_decisions if (view := decision_for_baseline(decision, key))]
+        summary = summarize_patterns(views)
+        summary["label"] = MODEL_DISPLAY_BY_KEY[key]
+        baselines[key] = summary
+    return {
+        "decisions": len(split_decisions),
+        "legacy_or_single_head_decisions": len(decisions) - len(split_decisions),
+        "baselines": baselines,
     }
 
 
@@ -955,6 +1047,7 @@ def main() -> None:
     decisions = collect_decisions(args.max_reports)
     summary = summarize_patterns(decisions)
     model_split = summarize_model_splits(decisions)
+    baseline_summaries = summarize_baselines(decisions)
     candidates = [] if args.no_mortal else select_mortal_candidates(decisions, args.mortal_per_pattern, args.mortal_total)
     mortal_summary = {"enabled": False, "reason": "disabled"}
     if not args.no_mortal:
@@ -969,6 +1062,7 @@ def main() -> None:
         },
         "summary": summary,
         "model_split": model_split,
+        "baseline_summaries": baseline_summaries,
         "mortal": mortal_summary,
         "candidate_points": propose_points(summary, mortal_summary),
     }

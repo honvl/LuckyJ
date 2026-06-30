@@ -43,14 +43,14 @@ const copy = {
     meld: "Meld",
     discardAfterCall: "Discard after call",
     luckyj: "LuckyJ",
-    nagaTop: "NAGA top",
+    nagaTop: "Nishiki top",
     danger: "Danger",
     drill: "Drill",
     answer: "Answer",
     nagaReport: "Review page",
     tenhouLog: "Tenhou log",
     immediateDanger: "Immediate danger",
-    nagaWeight: "NAGA weight",
+    nagaWeight: "Nishiki weight",
     mortalWeight: "Mortal weight",
     keeps: "Keeps",
     honors: "honors",
@@ -103,14 +103,14 @@ const copy = {
     meld: "副露",
     discardAfterCall: "鳴き後の打牌",
     luckyj: "LuckyJ",
-    nagaTop: "NAGA 最上位",
+    nagaTop: "Nishiki 最上位",
     danger: "放銃危険度",
     drill: "ドリル",
     answer: "答え",
     nagaReport: "検討ページ",
     tenhouLog: "天鳳牌譜",
     immediateDanger: "即時危険度",
-    nagaWeight: "NAGA 評価",
+    nagaWeight: "Nishiki 評価",
     mortalWeight: "Mortal 重み",
     keeps: "残す枚数",
     honors: "字牌",
@@ -1172,7 +1172,7 @@ function categoryRead(key, item) {
       return `序盤の LuckyJ は ${actualName} を、未来の選択肢を最も壊しにくい牌として扱っている。場が答えを出すまで、安全、価値、ルートを残す読みである。`;
     }
     if (key === "middle_route_hedge") {
-      return `中盤では手牌が価値を証明し始める必要がある。LuckyJ の ${actualName} 切りは、NAGA ラインが点数状況や河に対して脆い一本道へ寄せすぎる可能性を示している。`;
+      return `中盤では手牌が価値を証明し始める必要がある。LuckyJ の ${actualName} 切りは、Nishiki ラインが点数状況や河に対して脆い一本道へ寄せすぎる可能性を示している。`;
     }
     if (key === "kept_river_safe") {
       return `NAGA が切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河にあり、後のリーチや副露に対する現物の出口になる。`;
@@ -1189,13 +1189,13 @@ function categoryRead(key, item) {
     if (key === "late_tightening") {
       return "終盤では投機的な形の価値はかなり落ちる。和了、安全なテンパイ、降りを数える精密問題として読む。";
     }
-    return `LuckyJ は ${tileClassText(actualClass)} の ${actualName} を切り、NAGA は ${tileClassText(nagaClass)} の ${nagaName} を切る。最初の問いは、どちらの牌がどの未来を守っているかである。`;
+    return `LuckyJ は ${tileClassText(actualClass)} の ${actualName} を切り、Nishiki は ${tileClassText(nagaClass)} の ${nagaName} を切る。最初の問いは、どちらの牌がどの未来を守っているかである。`;
   }
   if (key === "early_safety_hedge") {
     return `Early in the hand, LuckyJ is treating ${actualName} as the tile that least damages the future menu. The idea is to delay commitment while keeping enough safety and value material to choose again after the table speaks.`;
   }
   if (key === "middle_route_hedge") {
-    return `In the middle row, the hand has to start proving itself. LuckyJ's ${actualName} discard suggests that the NAGA line compresses the hand into a route that is too brittle for the score and river state.`;
+    return `In the middle row, the hand has to start proving itself. LuckyJ's ${actualName} discard suggests that the Nishiki line compresses the hand into a route that is too brittle for the score and river state.`;
   }
   if (key === "kept_river_safe") {
     return `NAGA wants to cut ${nagaName}, but LuckyJ keeps it because it is already visible in an opponent river. That retained genbutsu is an exit for the next riichi or open-hand threat.`;
@@ -1212,7 +1212,7 @@ function categoryRead(key, item) {
   if (key === "late_tightening") {
     return `Late in the hand, speculative shape has mostly expired. Read this as an exact-counting problem: win, take safe tenpai, or fold.`;
   }
-  return `LuckyJ cuts a ${actualClass} (${actualName}) while NAGA cuts a ${nagaClass} (${nagaName}); the first question is which future each tile is protecting.`;
+  return `LuckyJ cuts a ${actualClass} (${actualName}) while Nishiki cuts a ${nagaClass} (${nagaName}); the first question is which future each tile is protecting.`;
 }
 
 function caseLesson(key, item) {
@@ -1223,7 +1223,7 @@ function caseLesson(key, item) {
   const safetyLine = safetyReadLine(item.kept_safety);
   if (isJa) {
     const lines = [
-      `${roundText(item.round)}、残り${item.left}枚、${scoreBandText(item.score_band)}。手牌の質: ${handTexture(item.hand)}。LuckyJ は ${actualName} (${tileClassText(actualClass)}) を切り、NAGA は ${nagaName} (${tileClassText(nagaClass)}) を切る。`,
+      `${roundText(item.round)}、残り${item.left}枚、${scoreBandText(item.score_band)}。手牌の質: ${handTexture(item.hand)}。LuckyJ は ${actualName} (${tileClassText(actualClass)}) を切り、Nishiki は ${nagaName} (${tileClassText(nagaClass)}) を切る。`,
       categoryRead(key, item),
       dangerRead(item.actual_danger, item.naga_danger),
       "復習ドリル: 診断を見る前に、LuckyJ が何を残そうとしているかを書く。安全、価値、ルート数、圧力、着順のどれかを言える打牌だけ自分の形にする。",
@@ -1232,7 +1232,7 @@ function caseLesson(key, item) {
     return lines;
   }
   const lines = [
-    `${item.round}, ${item.left} tiles left, ${item.score_band}. Hand texture: ${handTexture(item.hand)}. LuckyJ cuts ${actualName} (${actualClass}); NAGA cuts ${nagaName} (${nagaClass}).`,
+    `${item.round}, ${item.left} tiles left, ${item.score_band}. Hand texture: ${handTexture(item.hand)}. LuckyJ cuts ${actualName} (${actualClass}); Nishiki cuts ${nagaName} (${nagaClass}).`,
     categoryRead(key, item),
     dangerRead(item.actual_danger, item.naga_danger),
     `Review drill: before looking at the diagnostics, write what LuckyJ is buying: safety, value, route count, pressure, or placement. Copy the move after the purchase is clear.`,

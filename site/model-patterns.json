@@ -3122,6 +3122,1443 @@
       }
     ]
   },
+  "baseline_summaries": {
+    "decisions": 134988,
+    "legacy_or_single_head_decisions": 50,
+    "baselines": {
+      "nishiki": {
+        "overall": {
+          "decisions": 134988,
+          "mismatches": 36193,
+          "mismatch_rate": 0.26812012919666933,
+          "bad_rate_among_mismatches": 0.31014284530157765,
+          "big_gap_rate_among_mismatches": 0.5614897908435332
+        },
+        "patterns": {
+          "behind_risk_buy": {
+            "label": "Behind-score choices that buy route/value with extra danger",
+            "n": 2364,
+            "share_of_mismatches": 0.06531649766529439,
+            "bad_rate": 0.34517766497461927,
+            "bad_lift_vs_other_mismatches": 0.03748308340259526,
+            "bad_rate_p_value": 0.00013943155164763965,
+            "big_gap_rate": 0.5769881556683587,
+            "big_gap_lift_vs_other_mismatches": 0.016581404064704985,
+            "big_gap_p_value": 0.11623276939104632,
+            "avg_prob_gap": 0.5689740693739425,
+            "avg_danger_delta": 0.12006586294416244,
+            "avg_left": 41.28637901861252,
+            "stage_counts": {
+              "early": 753,
+              "middle": 1306,
+              "late": 305
+            },
+            "score_band_counts": {
+              "behind": 1923,
+              "danger": 441
+            }
+          },
+          "break_pair_anchor": {
+            "label": "Break a pair earlier than NAGA",
+            "n": 4317,
+            "share_of_mismatches": 0.11927720829994751,
+            "bad_rate": 0.359277275886032,
+            "bad_lift_vs_other_mismatches": 0.05578875787875376,
+            "bad_rate_p_value": 1.0302869668521453e-13,
+            "big_gap_rate": 0.5978688904331712,
+            "big_gap_lift_vs_other_mismatches": 0.04130595907415502,
+            "big_gap_p_value": 2.8531577167534294e-07,
+            "avg_prob_gap": 0.5776288394718555,
+            "avg_danger_delta": 0.020669446374797312,
+            "avg_left": 41.869122075515406,
+            "stage_counts": {
+              "early": 1545,
+              "middle": 2163,
+              "late": 609
+            },
+            "score_band_counts": {
+              "above_start": 1727,
+              "behind": 1396,
+              "lead": 887,
+              "danger": 307
+            }
+          },
+          "clean_open_yaku_condition_honor": {
+            "label": "Clean a singleton yakuhai before an unproven open hand can use it",
+            "n": 285,
+            "share_of_mismatches": 0.007874450860663663,
+            "bad_rate": 0.24561403508771928,
+            "bad_lift_vs_other_mismatches": -0.06504097215300703,
+            "bad_rate_p_value": 0.01805628964599726,
+            "big_gap_rate": 0.5298245614035088,
+            "big_gap_lift_vs_other_mismatches": -0.03191655478229938,
+            "big_gap_p_value": 0.2794366292001227,
+            "avg_prob_gap": 0.5099705263157894,
+            "avg_danger_delta": 0.013001754385964912,
+            "avg_left": 55.85964912280702,
+            "stage_counts": {
+              "early": 231,
+              "middle": 54
+            },
+            "score_band_counts": {
+              "lead": 73,
+              "above_start": 107,
+              "danger": 31,
+              "behind": 74
+            }
+          },
+          "cut_inside_keep_outside": {
+            "label": "Cut a middle tile while keeping outside/safety/yaku material",
+            "n": 10924,
+            "share_of_mismatches": 0.3018263200066311,
+            "bad_rate": 0.3863053826437203,
+            "bad_lift_vs_other_mismatches": 0.1090882391081629,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.6255950201391431,
+            "big_gap_lift_vs_other_mismatches": 0.09181845596960736,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.5948579274990846,
+            "avg_danger_delta": 0.029144205419260345,
+            "avg_left": 49.584675942878064,
+            "stage_counts": {
+              "middle": 3448,
+              "early": 6613,
+              "late": 863
+            },
+            "score_band_counts": {
+              "above_start": 4479,
+              "behind": 3456,
+              "danger": 720,
+              "lead": 2269
+            }
+          },
+          "cut_outside_keep_inside": {
+            "label": "Cut outside material while keeping middle-tile shape",
+            "n": 5280,
+            "share_of_mismatches": 0.1458845633133479,
+            "bad_rate": 0.23143939393939394,
+            "bad_lift_vs_other_mismatches": -0.09214615259442677,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.4706439393939394,
+            "big_gap_lift_vs_other_mismatches": -0.10636249802721026,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.4899291666666667,
+            "avg_danger_delta": -0.029746136363636363,
+            "avg_left": 42.439772727272725,
+            "stage_counts": {
+              "early": 2018,
+              "middle": 2513,
+              "late": 749
+            },
+            "score_band_counts": {
+              "above_start": 2106,
+              "behind": 1616,
+              "danger": 454,
+              "lead": 1104
+            }
+          },
+          "early_guest_honor_cleanup": {
+            "label": "Cut a loose non-self honor before shape cleanup in the first row",
+            "n": 278,
+            "share_of_mismatches": 0.007681043295664908,
+            "bad_rate": 0.19424460431654678,
+            "bad_lift_vs_other_mismatches": -0.11679535113382217,
+            "bad_rate_p_value": 2.742566238866928e-05,
+            "big_gap_rate": 0.44964028776978415,
+            "big_gap_lift_vs_other_mismatches": -0.11271527397322012,
+            "big_gap_p_value": 0.00016139058721020838,
+            "avg_prob_gap": 0.4670892086330935,
+            "avg_danger_delta": -0.023873021582733814,
+            "avg_left": 56.99640287769784,
+            "stage_counts": {
+              "early": 235,
+              "middle": 43
+            },
+            "score_band_counts": {
+              "behind": 72,
+              "above_start": 135,
+              "lead": 50,
+              "danger": 21
+            }
+          },
+          "honor_cleanup_vs_shape": {
+            "label": "Cut a loose honor while NAGA prefers shape cleanup",
+            "n": 2347,
+            "share_of_mismatches": 0.06484679357886884,
+            "bad_rate": 0.2087771623348956,
+            "bad_lift_vs_other_mismatches": -0.10839473390099638,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.4465274818917767,
+            "big_gap_lift_vs_other_mismatches": -0.12293419747949319,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.4719171282488283,
+            "avg_danger_delta": -0.036830975713677036,
+            "avg_left": 42.96293140178952,
+            "stage_counts": {
+              "early": 930,
+              "middle": 1108,
+              "late": 309
+            },
+            "score_band_counts": {
+              "above_start": 965,
+              "behind": 691,
+              "danger": 182,
+              "lead": 509
+            }
+          },
+          "keep_defensive_exit": {
+            "label": "Keep genbutsu/suji exits while cutting elsewhere",
+            "n": 8587,
+            "share_of_mismatches": 0.23725582294918907,
+            "bad_rate": 0.3509956911610574,
+            "bad_lift_vs_other_mismatches": 0.05356035101761031,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.5959007802492139,
+            "big_gap_lift_vs_other_mismatches": 0.04511471924798227,
+            "big_gap_p_value": 1.865174681370263e-13,
+            "avg_prob_gap": 0.5687747408873879,
+            "avg_danger_delta": 0.03559580761616397,
+            "avg_left": 51.921159892861304,
+            "stage_counts": {
+              "early": 5765,
+              "middle": 2626,
+              "late": 196
+            },
+            "score_band_counts": {
+              "above_start": 3406,
+              "behind": 2822,
+              "danger": 708,
+              "lead": 1651
+            }
+          },
+          "keep_dora_or_red": {
+            "label": "Keep dora/red-five material through the clean NAGA cut",
+            "n": 617,
+            "share_of_mismatches": 0.017047495372033265,
+            "bad_rate": 0.24635332252836303,
+            "bad_lift_vs_other_mismatches": -0.06489583420651443,
+            "bad_rate_p_value": 0.0005500144672270224,
+            "big_gap_rate": 0.5024311183144247,
+            "big_gap_lift_vs_other_mismatches": -0.06008293610428461,
+            "big_gap_p_value": 0.002864261427947712,
+            "avg_prob_gap": 0.511719773095624,
+            "avg_danger_delta": -0.010684116693679092,
+            "avg_left": 43.43760129659643,
+            "stage_counts": {
+              "late": 87,
+              "early": 261,
+              "middle": 269
+            },
+            "score_band_counts": {
+              "behind": 159,
+              "above_start": 266,
+              "lead": 148,
+              "danger": 44
+            }
+          },
+          "keep_pair_anchor": {
+            "label": "Keep a pair or triplet anchor that NAGA wants to break",
+            "n": 2338,
+            "share_of_mismatches": 0.06459812670958473,
+            "bad_rate": 0.218562874251497,
+            "bad_lift_vs_other_mismatches": -0.0979044127075932,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.45466210436270316,
+            "big_gap_lift_vs_other_mismatches": -0.11420512352091816,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.48098451668092385,
+            "avg_danger_delta": -0.019026860564585114,
+            "avg_left": 37.21770744225834,
+            "stage_counts": {
+              "early": 574,
+              "middle": 1255,
+              "late": 509
+            },
+            "score_band_counts": {
+              "above_start": 965,
+              "behind": 713,
+              "lead": 499,
+              "danger": 161
+            }
+          },
+          "keep_self_yakuhai_pair_anchor": {
+            "label": "Keep own yakuhai pair or triplet anchor while NAGA breaks it",
+            "n": 135,
+            "share_of_mismatches": 0.0037300030392617358,
+            "bad_rate": 0.2,
+            "bad_lift_vs_other_mismatches": -0.11055521659548506,
+            "bad_rate_p_value": 0.005573384598265063,
+            "big_gap_rate": 0.45185185185185184,
+            "big_gap_lift_vs_other_mismatches": -0.11004841993249559,
+            "big_gap_p_value": 0.01010999708137228,
+            "avg_prob_gap": 0.4649140740740741,
+            "avg_danger_delta": 0.048593333333333336,
+            "avg_left": 30.05925925925926,
+            "stage_counts": {
+              "early": 21,
+              "middle": 65,
+              "late": 49
+            },
+            "score_band_counts": {
+              "behind": 40,
+              "above_start": 60,
+              "lead": 27,
+              "danger": 8
+            }
+          },
+          "late_named_exit_over_shape": {
+            "label": "Late keep of a named exit over NAGA's shape-cleaning discard",
+            "n": 930,
+            "share_of_mismatches": 0.025695576492691958,
+            "bad_rate": 0.2010752688172043,
+            "bad_lift_vs_other_mismatches": -0.11194404320956594,
+            "bad_rate_p_value": 3.2174263253637037e-13,
+            "big_gap_rate": 0.5,
+            "big_gap_lift_vs_other_mismatches": -0.06311147661855199,
+            "big_gap_p_value": 0.00012889101475455078,
+            "avg_prob_gap": 0.4933048387096774,
+            "avg_danger_delta": 0.01372516129032258,
+            "avg_left": 14.461290322580645,
+            "stage_counts": {
+              "late": 930
+            },
+            "score_band_counts": {
+              "behind": 309,
+              "above_start": 385,
+              "lead": 181,
+              "danger": 55
+            }
+          },
+          "leader_low_risk": {
+            "label": "Leader/large-stack choices with controlled danger",
+            "n": 5153,
+            "share_of_mismatches": 0.14237559749122758,
+            "bad_rate": 0.2957500485154279,
+            "bad_lift_vs_other_mismatches": -0.01678216797941745,
+            "bad_rate_p_value": 0.015867957820242085,
+            "big_gap_rate": 0.5334756452551912,
+            "big_gap_lift_vs_other_mismatches": -0.032664818662334616,
+            "big_gap_p_value": 1.2076097046787027e-05,
+            "avg_prob_gap": 0.5338462643120512,
+            "avg_danger_delta": -0.024579681738792936,
+            "avg_left": 49.93382495633612,
+            "stage_counts": {
+              "early": 3116,
+              "middle": 1505,
+              "late": 532
+            },
+            "score_band_counts": {
+              "lead": 5153
+            }
+          },
+          "multi_threat_safe_tenpai": {
+            "label": "Middle/late choices preserving exits with multiple threats",
+            "n": 4386,
+            "share_of_mismatches": 0.12118365429779239,
+            "bad_rate": 0.23483812129502965,
+            "bad_lift_vs_other_mismatches": -0.08568880673967968,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.4883720930232558,
+            "big_gap_lift_vs_other_mismatches": -0.08320020238341574,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.5025124259005928,
+            "avg_danger_delta": -0.0012205198358413135,
+            "avg_left": 26.468080255357957,
+            "stage_counts": {
+              "middle": 2520,
+              "late": 1866
+            },
+            "score_band_counts": {
+              "above_start": 1818,
+              "behind": 1381,
+              "lead": 869,
+              "danger": 318
+            }
+          },
+          "riskier_than_naga": {
+            "label": "Choose a higher immediate-danger discard than NAGA",
+            "n": 5033,
+            "share_of_mismatches": 0.13906003923410604,
+            "bad_rate": 0.3343930061593483,
+            "bad_lift_vs_other_mismatches": 0.02816707547898889,
+            "bad_rate_p_value": 6.110731494812782e-05,
+            "big_gap_rate": 0.5614941386846811,
+            "big_gap_lift_vs_other_mismatches": 5.05010958484764e-06,
+            "big_gap_p_value": 0.9994654603278383,
+            "avg_prob_gap": 0.5549459169481422,
+            "avg_danger_delta": 0.13394647327637593,
+            "avg_left": 40.656666004371154,
+            "stage_counts": {
+              "middle": 2850,
+              "early": 1495,
+              "late": 688
+            },
+            "score_band_counts": {
+              "above_start": 1999,
+              "behind": 1602,
+              "lead": 1059,
+              "danger": 373
+            }
+          },
+          "safer_than_naga": {
+            "label": "Choose a lower immediate-danger discard than NAGA",
+            "n": 3739,
+            "share_of_mismatches": 0.10330726936147874,
+            "bad_rate": 0.2182401711687617,
+            "bad_lift_vs_other_mismatches": -0.10249070946228533,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.46055094945172503,
+            "big_gap_lift_vs_other_mismatches": -0.11256792649576985,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.4805842203797807,
+            "avg_danger_delta": -0.1487367477935277,
+            "avg_left": 35.58117143621289,
+            "stage_counts": {
+              "middle": 2484,
+              "early": 524,
+              "late": 731
+            },
+            "score_band_counts": {
+              "above_start": 1451,
+              "behind": 1129,
+              "danger": 353,
+              "lead": 806
+            }
+          },
+          "spend_defensive_exit": {
+            "label": "Spend a safe-looking tile while NAGA keeps it",
+            "n": 4054,
+            "share_of_mismatches": 0.11201060978642279,
+            "bad_rate": 0.23902318697582633,
+            "bad_lift_vs_other_mismatches": -0.08009066224163533,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.5123334977799704,
+            "big_gap_lift_vs_other_mismatches": -0.055356847283659416,
+            "big_gap_p_value": 2.178257574314557e-11,
+            "avg_prob_gap": 0.5121598174642329,
+            "avg_danger_delta": -0.03505,
+            "avg_left": 50.17760236803157,
+            "stage_counts": {
+              "early": 2326,
+              "middle": 1510,
+              "late": 218
+            },
+            "score_band_counts": {
+              "above_start": 1600,
+              "behind": 1346,
+              "danger": 365,
+              "lead": 743
+            }
+          },
+          "spend_off_target_safety_for_shape": {
+            "label": "Spend a safe-looking tile after its target changes",
+            "n": 2992,
+            "share_of_mismatches": 0.08266791921089714,
+            "bad_rate": 0.22092245989304812,
+            "bad_lift_vs_other_mismatches": -0.09726072736034788,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.45955882352941174,
+            "big_gap_lift_vs_other_mismatches": -0.11111675853136954,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.4785072526737968,
+            "avg_danger_delta": -0.025750300802139036,
+            "avg_left": 41.07252673796791,
+            "stage_counts": {
+              "early": 860,
+              "middle": 1775,
+              "late": 357
+            },
+            "score_band_counts": {
+              "above_start": 1147,
+              "behind": 946,
+              "danger": 260,
+              "lead": 639
+            }
+          },
+          "threat_keep_exit": {
+            "label": "Keep a defensive exit against an active riichi/open threat",
+            "n": 8404,
+            "share_of_mismatches": 0.23219959660707873,
+            "bad_rate": 0.24345549738219896,
+            "bad_lift_vs_other_mismatches": -0.08685505715376851,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.4926225606853879,
+            "big_gap_lift_vs_other_mismatches": -0.08969418335002177,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.5031542836744407,
+            "avg_danger_delta": 0.012218752974773917,
+            "avg_left": 32.941456449309854,
+            "stage_counts": {
+              "middle": 4561,
+              "early": 1317,
+              "late": 2526
+            },
+            "score_band_counts": {
+              "above_start": 3444,
+              "behind": 2667,
+              "lead": 1689,
+              "danger": 604
+            }
+          }
+        },
+        "label": "Nishiki"
+      },
+      "hibakari": {
+        "overall": {
+          "decisions": 134988,
+          "mismatches": 37514,
+          "mismatch_rate": 0.2779061842534151,
+          "bad_rate_among_mismatches": 0.2694194167510796,
+          "big_gap_rate_among_mismatches": 0.5155142080290025
+        },
+        "patterns": {
+          "behind_risk_buy": {
+            "label": "Behind-score choices that buy route/value with extra danger",
+            "n": 2012,
+            "share_of_mismatches": 0.05363331023084715,
+            "bad_rate": 0.29721669980119286,
+            "bad_lift_vs_other_mismatches": 0.029372634678101195,
+            "bad_rate_p_value": 0.0038654622371185887,
+            "big_gap_rate": 0.5323061630218688,
+            "big_gap_lift_vs_other_mismatches": 0.01774360316608603,
+            "big_gap_p_value": 0.12131890848590432,
+            "avg_prob_gap": 0.5312062127236581,
+            "avg_danger_delta": 0.12276764413518887,
+            "avg_left": 40.98210735586481,
+            "stage_counts": {
+              "early": 648,
+              "middle": 1079,
+              "late": 285
+            },
+            "score_band_counts": {
+              "behind": 1614,
+              "danger": 398
+            }
+          },
+          "break_pair_anchor": {
+            "label": "Break a pair earlier than NAGA",
+            "n": 4019,
+            "share_of_mismatches": 0.10713333688756198,
+            "bad_rate": 0.33615327195819855,
+            "bad_lift_vs_other_mismatches": 0.07474112089087509,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.5491415775068424,
+            "big_gap_lift_vs_other_mismatches": 0.03766225223441377,
+            "big_gap_p_value": 6.350338985994242e-06,
+            "avg_prob_gap": 0.5430203782035332,
+            "avg_danger_delta": 0.014490569793480965,
+            "avg_left": 42.17516795222692,
+            "stage_counts": {
+              "early": 1468,
+              "middle": 1994,
+              "late": 557
+            },
+            "score_band_counts": {
+              "above_start": 1630,
+              "behind": 1306,
+              "danger": 304,
+              "lead": 779
+            }
+          },
+          "clean_open_yaku_condition_honor": {
+            "label": "Clean a singleton yakuhai before an unproven open hand can use it",
+            "n": 271,
+            "share_of_mismatches": 0.007223969717971957,
+            "bad_rate": 0.22878228782287824,
+            "bad_lift_vs_other_mismatches": -0.04093282642677942,
+            "bad_rate_p_value": 0.13019597049319875,
+            "big_gap_rate": 0.3837638376383764,
+            "big_gap_lift_vs_other_mismatches": -0.1327090565967819,
+            "big_gap_p_value": 1.3269065870513685e-05,
+            "avg_prob_gap": 0.43269741697416975,
+            "avg_danger_delta": 0.010450922509225092,
+            "avg_left": 55.656826568265686,
+            "stage_counts": {
+              "middle": 53,
+              "early": 218
+            },
+            "score_band_counts": {
+              "behind": 69,
+              "lead": 73,
+              "above_start": 98,
+              "danger": 31
+            }
+          },
+          "cut_inside_keep_outside": {
+            "label": "Cut a middle tile while keeping outside/safety/yaku material",
+            "n": 8992,
+            "share_of_mismatches": 0.23969717971957136,
+            "bad_rate": 0.3486432384341637,
+            "bad_lift_vs_other_mismatches": 0.10420035224104965,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.5732873665480427,
+            "big_gap_lift_vs_other_mismatches": 0.07598703697788634,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.559001612544484,
+            "avg_danger_delta": 0.022597275355871888,
+            "avg_left": 50.34741992882562,
+            "stage_counts": {
+              "early": 5641,
+              "middle": 2644,
+              "late": 707
+            },
+            "score_band_counts": {
+              "above_start": 3668,
+              "behind": 3061,
+              "danger": 656,
+              "lead": 1607
+            }
+          },
+          "cut_outside_keep_inside": {
+            "label": "Cut outside material while keeping middle-tile shape",
+            "n": 7856,
+            "share_of_mismatches": 0.20941515167670735,
+            "bad_rate": 0.22377800407331974,
+            "bad_lift_vs_other_mismatches": -0.057731200862953774,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.4694501018329939,
+            "big_gap_lift_vs_other_mismatches": -0.05826586013342322,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.4851145748472505,
+            "avg_danger_delta": -0.039057421079429736,
+            "avg_left": 42.69233706720978,
+            "stage_counts": {
+              "early": 3063,
+              "late": 1128,
+              "middle": 3665
+            },
+            "score_band_counts": {
+              "above_start": 3195,
+              "behind": 2295,
+              "danger": 571,
+              "lead": 1795
+            }
+          },
+          "early_guest_honor_cleanup": {
+            "label": "Cut a loose non-self honor before shape cleanup in the first row",
+            "n": 548,
+            "share_of_mismatches": 0.014607879724902703,
+            "bad_rate": 0.22262773722627738,
+            "bad_lift_vs_other_mismatches": -0.04748533965518126,
+            "bad_rate_p_value": 0.012876304126488769,
+            "big_gap_rate": 0.45255474452554745,
+            "big_gap_lift_vs_other_mismatches": -0.06389280186843627,
+            "big_gap_p_value": 0.0029694247535745344,
+            "avg_prob_gap": 0.4782257299270073,
+            "avg_danger_delta": -0.02220419708029197,
+            "avg_left": 57.89233576642336,
+            "stage_counts": {
+              "early": 478,
+              "middle": 70
+            },
+            "score_band_counts": {
+              "behind": 129,
+              "above_start": 251,
+              "lead": 143,
+              "danger": 25
+            }
+          },
+          "honor_cleanup_vs_shape": {
+            "label": "Cut a loose honor while NAGA prefers shape cleanup",
+            "n": 4138,
+            "share_of_mismatches": 0.11030548595191128,
+            "bad_rate": 0.20227162880618657,
+            "bad_lift_vs_other_mismatches": -0.075472858250381,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.45625906234896085,
+            "big_gap_lift_vs_other_mismatches": -0.06660167590607269,
+            "big_gap_p_value": 6.661338147750939e-16,
+            "avg_prob_gap": 0.4762867568873852,
+            "avg_danger_delta": -0.045871435476075396,
+            "avg_left": 43.409376510391496,
+            "stage_counts": {
+              "early": 1722,
+              "middle": 1833,
+              "late": 583
+            },
+            "score_band_counts": {
+              "above_start": 1697,
+              "behind": 1155,
+              "danger": 263,
+              "lead": 1023
+            }
+          },
+          "keep_defensive_exit": {
+            "label": "Keep genbutsu/suji exits while cutting elsewhere",
+            "n": 6276,
+            "share_of_mismatches": 0.167297542250893,
+            "bad_rate": 0.27581261950286806,
+            "bad_lift_vs_other_mismatches": 0.007677655676758821,
+            "bad_rate_p_value": 0.21092480511998657,
+            "big_gap_rate": 0.5060548119821542,
+            "big_gap_lift_vs_other_mismatches": -0.011359875257745955,
+            "big_gap_p_value": 0.10033476375311912,
+            "avg_prob_gap": 0.5121692001274697,
+            "avg_danger_delta": 0.03336016571064372,
+            "avg_left": 51.39929891650733,
+            "stage_counts": {
+              "early": 4046,
+              "middle": 2050,
+              "late": 180
+            },
+            "score_band_counts": {
+              "above_start": 2498,
+              "behind": 2097,
+              "danger": 579,
+              "lead": 1102
+            }
+          },
+          "keep_dora_or_red": {
+            "label": "Keep dora/red-five material through the clean NAGA cut",
+            "n": 484,
+            "share_of_mismatches": 0.012901849976008956,
+            "bad_rate": 0.20867768595041322,
+            "bad_lift_vs_other_mismatches": -0.06153565458428836,
+            "bad_rate_p_value": 0.002432092041281697,
+            "big_gap_rate": 0.4731404958677686,
+            "big_gap_lift_vs_other_mismatches": -0.04292755706228818,
+            "big_gap_p_value": 0.060450641598992494,
+            "avg_prob_gap": 0.4817863636363636,
+            "avg_danger_delta": -0.01356404958677686,
+            "avg_left": 41.58057851239669,
+            "stage_counts": {
+              "late": 74,
+              "middle": 240,
+              "early": 170
+            },
+            "score_band_counts": {
+              "behind": 126,
+              "above_start": 210,
+              "lead": 107,
+              "danger": 41
+            }
+          },
+          "keep_pair_anchor": {
+            "label": "Keep a pair or triplet anchor that NAGA wants to break",
+            "n": 3022,
+            "share_of_mismatches": 0.08055659220557658,
+            "bad_rate": 0.21178027796161483,
+            "bad_lift_vs_other_mismatches": -0.06268916422787837,
+            "bad_rate_p_value": 9.459100169806334e-14,
+            "big_gap_rate": 0.4487094639311714,
+            "big_gap_lift_vs_other_mismatches": -0.07265780963951163,
+            "big_gap_p_value": 1.8207657603852567e-14,
+            "avg_prob_gap": 0.4721504963600265,
+            "avg_danger_delta": -0.0378422236929186,
+            "avg_left": 36.09629384513567,
+            "stage_counts": {
+              "early": 624,
+              "middle": 1692,
+              "late": 706
+            },
+            "score_band_counts": {
+              "above_start": 1246,
+              "behind": 922,
+              "lead": 672,
+              "danger": 182
+            }
+          },
+          "keep_self_yakuhai_pair_anchor": {
+            "label": "Keep own yakuhai pair or triplet anchor while NAGA breaks it",
+            "n": 120,
+            "share_of_mismatches": 0.0031988057791757746,
+            "bad_rate": 0.23333333333333334,
+            "bad_lift_vs_other_mismatches": -0.03620188622060577,
+            "bad_rate_p_value": 0.37215872385231297,
+            "big_gap_rate": 0.49166666666666664,
+            "big_gap_lift_vs_other_mismatches": -0.023924069815121907,
+            "big_gap_p_value": 0.6005823800628909,
+            "avg_prob_gap": 0.4890025,
+            "avg_danger_delta": 0.025866666666666666,
+            "avg_left": 23.666666666666668,
+            "stage_counts": {
+              "late": 63,
+              "middle": 50,
+              "early": 7
+            },
+            "score_band_counts": {
+              "above_start": 55,
+              "behind": 34,
+              "lead": 27,
+              "danger": 4
+            }
+          },
+          "late_named_exit_over_shape": {
+            "label": "Late keep of a named exit over NAGA's shape-cleaning discard",
+            "n": 854,
+            "share_of_mismatches": 0.02276483446180093,
+            "bad_rate": 0.19320843091334894,
+            "bad_lift_vs_other_mismatches": -0.07798633177077546,
+            "bad_rate_p_value": 3.8129339352543923e-07,
+            "big_gap_rate": 0.47540983606557374,
+            "big_gap_lift_vs_other_mismatches": -0.04103860910627566,
+            "big_gap_p_value": 0.017680171990477778,
+            "avg_prob_gap": 0.48434824355971895,
+            "avg_danger_delta": 0.007420374707259953,
+            "avg_left": 14.001170960187354,
+            "stage_counts": {
+              "late": 854
+            },
+            "score_band_counts": {
+              "behind": 273,
+              "above_start": 359,
+              "lead": 163,
+              "danger": 59
+            }
+          },
+          "leader_low_risk": {
+            "label": "Leader/large-stack choices with controlled danger",
+            "n": 5821,
+            "share_of_mismatches": 0.1551687370048515,
+            "bad_rate": 0.26198247723758805,
+            "bad_lift_vs_other_mismatches": -0.008802869684445214,
+            "bad_rate_p_value": 0.16409683090619942,
+            "big_gap_rate": 0.5045524823913417,
+            "big_gap_lift_vs_other_mismatches": -0.012975047347086432,
+            "big_gap_p_value": 0.06865661384855382,
+            "avg_prob_gap": 0.5045639065452672,
+            "avg_danger_delta": -0.03223172994330871,
+            "avg_left": 49.31334822195499,
+            "stage_counts": {
+              "middle": 1741,
+              "early": 3438,
+              "late": 642
+            },
+            "score_band_counts": {
+              "lead": 5821
+            }
+          },
+          "multi_threat_safe_tenpai": {
+            "label": "Middle/late choices preserving exits with multiple threats",
+            "n": 4705,
+            "share_of_mismatches": 0.12541984325851682,
+            "bad_rate": 0.23868225292242295,
+            "bad_lift_vs_other_mismatches": -0.035145050561377233,
+            "bad_rate_p_value": 3.7438856348437355e-07,
+            "big_gap_rate": 0.47927736450584485,
+            "big_gap_lift_vs_other_mismatches": -0.041433416072654994,
+            "big_gap_p_value": 1.047645952212406e-07,
+            "avg_prob_gap": 0.48978522848034006,
+            "avg_danger_delta": -0.009601764080765143,
+            "avg_left": 26.01912858660999,
+            "stage_counts": {
+              "middle": 2635,
+              "late": 2070
+            },
+            "score_band_counts": {
+              "above_start": 1961,
+              "behind": 1463,
+              "lead": 940,
+              "danger": 341
+            }
+          },
+          "riskier_than_naga": {
+            "label": "Choose a higher immediate-danger discard than NAGA",
+            "n": 4198,
+            "share_of_mismatches": 0.11190488884149917,
+            "bad_rate": 0.2879942829919009,
+            "bad_lift_vs_other_mismatches": 0.020915401973771452,
+            "bad_rate_p_value": 0.003995508776962531,
+            "big_gap_rate": 0.49547403525488326,
+            "big_gap_lift_vs_other_mismatches": -0.022565345222965216,
+            "big_gap_p_value": 0.005833964013421289,
+            "avg_prob_gap": 0.5096995474035255,
+            "avg_danger_delta": 0.13696460219151976,
+            "avg_left": 39.93639828489757,
+            "stage_counts": {
+              "middle": 2343,
+              "early": 1203,
+              "late": 652
+            },
+            "score_band_counts": {
+              "above_start": 1659,
+              "behind": 1352,
+              "danger": 343,
+              "lead": 844
+            }
+          },
+          "safer_than_naga": {
+            "label": "Choose a lower immediate-danger discard than NAGA",
+            "n": 5166,
+            "share_of_mismatches": 0.13770858879351708,
+            "bad_rate": 0.21002710027100271,
+            "bad_lift_vs_other_mismatches": -0.06887731422139251,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.4570267131242741,
+            "big_gap_lift_vs_other_mismatches": -0.06782799195795663,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.4723355594270228,
+            "avg_danger_delta": -0.14851291134339914,
+            "avg_left": 35.61285327138986,
+            "stage_counts": {
+              "late": 1006,
+              "middle": 3458,
+              "early": 702
+            },
+            "score_band_counts": {
+              "above_start": 2018,
+              "behind": 1568,
+              "danger": 446,
+              "lead": 1134
+            }
+          },
+          "spend_defensive_exit": {
+            "label": "Spend a safe-looking tile while NAGA keeps it",
+            "n": 6396,
+            "share_of_mismatches": 0.17049634803006877,
+            "bad_rate": 0.2523452157598499,
+            "bad_lift_vs_other_mismatches": -0.02058363570875349,
+            "bad_rate_p_value": 0.0007264966396893779,
+            "big_gap_rate": 0.5193871169480926,
+            "big_gap_lift_vs_other_mismatches": 0.004668947399921075,
+            "big_gap_p_value": 0.49619447960579666,
+            "avg_prob_gap": 0.5165980456535335,
+            "avg_danger_delta": -0.039388383364602875,
+            "avg_left": 51.126485303314574,
+            "stage_counts": {
+              "early": 3882,
+              "middle": 2236,
+              "late": 278
+            },
+            "score_band_counts": {
+              "above_start": 2568,
+              "behind": 2041,
+              "danger": 500,
+              "lead": 1287
+            }
+          },
+          "spend_off_target_safety_for_shape": {
+            "label": "Spend a safe-looking tile after its target changes",
+            "n": 4361,
+            "share_of_mismatches": 0.11624993335821293,
+            "bad_rate": 0.2114193992203623,
+            "bad_lift_vs_other_mismatches": -0.06562943497262175,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.45975693648245813,
+            "big_gap_lift_vs_other_mismatches": -0.0630916745029731,
+            "big_gap_p_value": 4.6629367034256575e-15,
+            "avg_prob_gap": 0.47699853244668655,
+            "avg_danger_delta": -0.035249805090575556,
+            "avg_left": 42.01123595505618,
+            "stage_counts": {
+              "early": 1411,
+              "middle": 2446,
+              "late": 504
+            },
+            "score_band_counts": {
+              "above_start": 1732,
+              "behind": 1296,
+              "danger": 350,
+              "lead": 983
+            }
+          },
+          "threat_keep_exit": {
+            "label": "Keep a defensive exit against an active riichi/open threat",
+            "n": 8509,
+            "share_of_mismatches": 0.22682198645838886,
+            "bad_rate": 0.2267011399694441,
+            "bad_lift_vs_other_mismatches": -0.055250247722333196,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.4631566576565989,
+            "big_gap_lift_vs_other_mismatches": -0.06771732958697979,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.4808749324244917,
+            "avg_danger_delta": -0.0009829709719120932,
+            "avg_left": 31.301798096133506,
+            "stage_counts": {
+              "late": 2836,
+              "early": 1047,
+              "middle": 4626
+            },
+            "score_band_counts": {
+              "above_start": 3518,
+              "behind": 2646,
+              "lead": 1738,
+              "danger": 607
+            }
+          }
+        },
+        "label": "Hibakari"
+      },
+      "kagashi": {
+        "overall": {
+          "decisions": 134988,
+          "mismatches": 38425,
+          "mismatch_rate": 0.28465493229027766,
+          "bad_rate_among_mismatches": 0.3406115810019519,
+          "big_gap_rate_among_mismatches": 0.5813923227065713
+        },
+        "patterns": {
+          "behind_risk_buy": {
+            "label": "Behind-score choices that buy route/value with extra danger",
+            "n": 2295,
+            "share_of_mismatches": 0.059726740403383216,
+            "bad_rate": 0.34335511982570804,
+            "bad_lift_vs_other_mismatches": 0.002917810110789676,
+            "bad_rate_p_value": 0.7748735736591361,
+            "big_gap_rate": 0.5938997821350762,
+            "big_gap_lift_vs_other_mismatches": 0.013301941005820717,
+            "big_gap_p_value": 0.21036942345644016,
+            "avg_prob_gap": 0.5778550762527234,
+            "avg_danger_delta": 0.11532374727668845,
+            "avg_left": 42.05185185185185,
+            "stage_counts": {
+              "middle": 1250,
+              "early": 784,
+              "late": 261
+            },
+            "score_band_counts": {
+              "behind": 1849,
+              "danger": 446
+            }
+          },
+          "break_pair_anchor": {
+            "label": "Break a pair earlier than NAGA",
+            "n": 4781,
+            "share_of_mismatches": 0.1244242029928432,
+            "bad_rate": 0.3762811127379209,
+            "bad_lift_vs_other_mismatches": 0.04073837109007883,
+            "bad_rate_p_value": 2.6712037026754842e-08,
+            "big_gap_rate": 0.609705082618699,
+            "big_gap_lift_vs_other_mismatches": 0.03233616096847913,
+            "big_gap_p_value": 2.2264050903775257e-05,
+            "avg_prob_gap": 0.5816527923028655,
+            "avg_danger_delta": 0.007807383392595691,
+            "avg_left": 41.043923865300144,
+            "stage_counts": {
+              "early": 1567,
+              "middle": 2498,
+              "late": 716
+            },
+            "score_band_counts": {
+              "above_start": 1918,
+              "behind": 1573,
+              "lead": 923,
+              "danger": 367
+            }
+          },
+          "clean_open_yaku_condition_honor": {
+            "label": "Clean a singleton yakuhai before an unproven open hand can use it",
+            "n": 324,
+            "share_of_mismatches": 0.008432010409889395,
+            "bad_rate": 0.3395061728395062,
+            "bad_lift_vs_other_mismatches": -0.0011148082371059687,
+            "bad_rate_p_value": 0.9663685989152961,
+            "big_gap_rate": 0.5401234567901234,
+            "big_gap_lift_vs_other_mismatches": -0.04161980454160019,
+            "big_gap_p_value": 0.13049510895656802,
+            "avg_prob_gap": 0.5393117283950617,
+            "avg_danger_delta": 0.009506481481481482,
+            "avg_left": 56.407407407407405,
+            "stage_counts": {
+              "early": 272,
+              "middle": 52
+            },
+            "score_band_counts": {
+              "lead": 78,
+              "above_start": 123,
+              "behind": 92,
+              "danger": 31
+            }
+          },
+          "cut_inside_keep_outside": {
+            "label": "Cut a middle tile while keeping outside/safety/yaku material",
+            "n": 11908,
+            "share_of_mismatches": 0.3099024072869226,
+            "bad_rate": 0.3975478669801814,
+            "bad_lift_vs_other_mismatches": 0.08250468713329073,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.63873026536782,
+            "big_gap_lift_vs_other_mismatches": 0.08308671594669392,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.6034280903594222,
+            "avg_danger_delta": 0.021730223379240847,
+            "avg_left": 49.389066174000675,
+            "stage_counts": {
+              "middle": 3869,
+              "early": 7085,
+              "late": 954
+            },
+            "score_band_counts": {
+              "above_start": 4861,
+              "behind": 3891,
+              "lead": 2334,
+              "danger": 822
+            }
+          },
+          "cut_outside_keep_inside": {
+            "label": "Cut outside material while keeping middle-tile shape",
+            "n": 5756,
+            "share_of_mismatches": 0.1497983083929733,
+            "bad_rate": 0.2616400277970813,
+            "bad_lift_vs_other_mismatches": -0.09288566934700027,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.49722029186935374,
+            "big_gap_lift_vs_other_mismatches": -0.09900242691603917,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.506291191799861,
+            "avg_danger_delta": -0.04418064628214038,
+            "avg_left": 41.14993050729673,
+            "stage_counts": {
+              "late": 904,
+              "early": 1980,
+              "middle": 2872
+            },
+            "score_band_counts": {
+              "above_start": 2382,
+              "behind": 1679,
+              "danger": 431,
+              "lead": 1264
+            }
+          },
+          "early_guest_honor_cleanup": {
+            "label": "Cut a loose non-self honor before shape cleanup in the first row",
+            "n": 252,
+            "share_of_mismatches": 0.0065582303188028625,
+            "bad_rate": 0.21031746031746032,
+            "bad_lift_vs_other_mismatches": -0.131154260532355,
+            "bad_rate_p_value": 1.1934336385355238e-05,
+            "big_gap_rate": 0.4801587301587302,
+            "big_gap_lift_vs_other_mismatches": -0.10190188860322197,
+            "big_gap_p_value": 0.0010821415450039673,
+            "avg_prob_gap": 0.48650912698412696,
+            "avg_danger_delta": -0.03322976190476191,
+            "avg_left": 55.44444444444444,
+            "stage_counts": {
+              "early": 200,
+              "middle": 52
+            },
+            "score_band_counts": {
+              "behind": 64,
+              "above_start": 121,
+              "lead": 54,
+              "danger": 13
+            }
+          },
+          "honor_cleanup_vs_shape": {
+            "label": "Cut a loose honor while NAGA prefers shape cleanup",
+            "n": 2716,
+            "share_of_mismatches": 0.07068314899154196,
+            "bad_rate": 0.2599410898379971,
+            "bad_lift_vs_other_mismatches": -0.0868062287651562,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.49374079528718706,
+            "big_gap_lift_vs_other_mismatches": -0.09431823744965795,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.5011408321060383,
+            "avg_danger_delta": -0.050767893961708395,
+            "avg_left": 41.899484536082475,
+            "stage_counts": {
+              "early": 1001,
+              "middle": 1318,
+              "late": 397
+            },
+            "score_band_counts": {
+              "above_start": 1136,
+              "behind": 746,
+              "danger": 165,
+              "lead": 669
+            }
+          },
+          "keep_defensive_exit": {
+            "label": "Keep genbutsu/suji exits while cutting elsewhere",
+            "n": 8774,
+            "share_of_mismatches": 0.2283409238776838,
+            "bad_rate": 0.3700706633234557,
+            "bad_lift_vs_other_mismatches": 0.038176292138672685,
+            "bad_rate_p_value": 3.394773351317326e-11,
+            "big_gap_rate": 0.6086163665374972,
+            "big_gap_lift_vs_other_mismatches": 0.03527988547446392,
+            "big_gap_p_value": 3.995566100201131e-09,
+            "avg_prob_gap": 0.582578299521313,
+            "avg_danger_delta": 0.03097751310690677,
+            "avg_left": 52.58137679507636,
+            "stage_counts": {
+              "middle": 2470,
+              "early": 6129,
+              "late": 175
+            },
+            "score_band_counts": {
+              "above_start": 3475,
+              "behind": 2945,
+              "danger": 734,
+              "lead": 1620
+            }
+          },
+          "keep_dora_or_red": {
+            "label": "Keep dora/red-five material through the clean NAGA cut",
+            "n": 1104,
+            "share_of_mismatches": 0.028731294729993494,
+            "bad_rate": 0.296195652173913,
+            "bad_lift_vs_other_mismatches": -0.04572980534330251,
+            "bad_rate_p_value": 0.0015790258645054234,
+            "big_gap_rate": 0.5362318840579711,
+            "big_gap_lift_vs_other_mismatches": -0.04649633865846203,
+            "big_gap_p_value": 0.0020268065211785924,
+            "avg_prob_gap": 0.5212626811594203,
+            "avg_danger_delta": -0.020547644927536232,
+            "avg_left": 46.29347826086956,
+            "stage_counts": {
+              "late": 120,
+              "middle": 447,
+              "early": 537
+            },
+            "score_band_counts": {
+              "behind": 279,
+              "above_start": 446,
+              "lead": 316,
+              "danger": 63
+            }
+          },
+          "keep_pair_anchor": {
+            "label": "Keep a pair or triplet anchor that NAGA wants to break",
+            "n": 2407,
+            "share_of_mismatches": 0.06264150943396227,
+            "bad_rate": 0.2181138346489406,
+            "bad_lift_vs_other_mismatches": -0.1306839886616263,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.4416285832987121,
+            "big_gap_lift_vs_other_mismatches": -0.14910382827327967,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.4690233070211882,
+            "avg_danger_delta": -0.03216468633153303,
+            "avg_left": 37.05234732031575,
+            "stage_counts": {
+              "early": 581,
+              "middle": 1295,
+              "late": 531
+            },
+            "score_band_counts": {
+              "above_start": 1002,
+              "behind": 721,
+              "lead": 542,
+              "danger": 142
+            }
+          },
+          "keep_self_yakuhai_pair_anchor": {
+            "label": "Keep own yakuhai pair or triplet anchor while NAGA breaks it",
+            "n": 121,
+            "share_of_mismatches": 0.0031489915419648665,
+            "bad_rate": 0.2231404958677686,
+            "bad_lift_vs_other_mismatches": -0.11784216912805431,
+            "bad_rate_p_value": 0.0063158766291482316,
+            "big_gap_rate": 0.5371900826446281,
+            "big_gap_lift_vs_other_mismatches": -0.04434187224259001,
+            "big_gap_p_value": 0.3235686110830196,
+            "avg_prob_gap": 0.5328206611570248,
+            "avg_danger_delta": 0.024606611570247933,
+            "avg_left": 29.801652892561982,
+            "stage_counts": {
+              "early": 17,
+              "middle": 61,
+              "late": 43
+            },
+            "score_band_counts": {
+              "behind": 34,
+              "above_start": 59,
+              "lead": 24,
+              "danger": 4
+            }
+          },
+          "late_named_exit_over_shape": {
+            "label": "Late keep of a named exit over NAGA's shape-cleaning discard",
+            "n": 1005,
+            "share_of_mismatches": 0.026154847104749513,
+            "bad_rate": 0.22487562189054727,
+            "bad_lift_vs_other_mismatches": -0.11884431397262751,
+            "bad_rate_p_value": 4.440892098500626e-15,
+            "big_gap_rate": 0.5283582089552239,
+            "big_gap_lift_vs_other_mismatches": -0.05445846661933518,
+            "big_gap_p_value": 0.0005534325902847304,
+            "avg_prob_gap": 0.516811144278607,
+            "avg_danger_delta": 0.0028946268656716415,
+            "avg_left": 14.587064676616915,
+            "stage_counts": {
+              "late": 1005
+            },
+            "score_band_counts": {
+              "above_start": 426,
+              "behind": 334,
+              "lead": 177,
+              "danger": 68
+            }
+          },
+          "leader_low_risk": {
+            "label": "Leader/large-stack choices with controlled danger",
+            "n": 5804,
+            "share_of_mismatches": 0.15104749512036433,
+            "bad_rate": 0.34458993797381116,
+            "bad_lift_vs_other_mismatches": 0.004686194986165182,
+            "bad_rate_p_value": 0.4876161443161946,
+            "big_gap_rate": 0.5580634045485872,
+            "big_gap_lift_vs_other_mismatches": -0.027479650538626554,
+            "big_gap_p_value": 9.229059604765055e-05,
+            "avg_prob_gap": 0.5514730875258442,
+            "avg_danger_delta": -0.031569159200551346,
+            "avg_left": 49.129048931771194,
+            "stage_counts": {
+              "early": 3366,
+              "middle": 1806,
+              "late": 632
+            },
+            "score_band_counts": {
+              "lead": 5804
+            }
+          },
+          "multi_threat_safe_tenpai": {
+            "label": "Middle/late choices preserving exits with multiple threats",
+            "n": 4875,
+            "share_of_mismatches": 0.12687052700065063,
+            "bad_rate": 0.2916923076923077,
+            "bad_lift_vs_other_mismatches": -0.0560275134701364,
+            "bad_rate_p_value": 1.2212453270876722e-14,
+            "big_gap_rate": 0.5476923076923077,
+            "big_gap_lift_vs_other_mismatches": -0.03859681302304252,
+            "big_gap_p_value": 3.319459493944521e-07,
+            "avg_prob_gap": 0.538453517948718,
+            "avg_danger_delta": -0.016636615384615385,
+            "avg_left": 26.279179487179487,
+            "stage_counts": {
+              "middle": 2766,
+              "late": 2109
+            },
+            "score_band_counts": {
+              "above_start": 2048,
+              "behind": 1521,
+              "lead": 948,
+              "danger": 358
+            }
+          },
+          "riskier_than_naga": {
+            "label": "Choose a higher immediate-danger discard than NAGA",
+            "n": 4742,
+            "share_of_mismatches": 0.123409238776838,
+            "bad_rate": 0.32876423450021086,
+            "bad_lift_vs_other_mismatches": -0.013515253668895222,
+            "bad_rate_p_value": 0.06596419461384762,
+            "big_gap_rate": 0.5687473639814424,
+            "big_gap_lift_vs_other_mismatches": -0.014425156281004492,
+            "big_gap_p_value": 0.059400453919704166,
+            "avg_prob_gap": 0.5563594264023619,
+            "avg_danger_delta": 0.13056680725432307,
+            "avg_left": 41.286798819063684,
+            "stage_counts": {
+              "middle": 2665,
+              "early": 1490,
+              "late": 587
+            },
+            "score_band_counts": {
+              "above_start": 1873,
+              "behind": 1546,
+              "lead": 952,
+              "danger": 371
+            }
+          },
+          "safer_than_naga": {
+            "label": "Choose a lower immediate-danger discard than NAGA",
+            "n": 5187,
+            "share_of_mismatches": 0.13499024072869226,
+            "bad_rate": 0.2741469057258531,
+            "bad_lift_vs_other_mismatches": -0.07683690798134951,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.503181029496819,
+            "big_gap_lift_vs_other_mismatches": -0.09041665989484116,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.5111461152882205,
+            "avg_danger_delta": -0.15539895893580105,
+            "avg_left": 35.08289955658377,
+            "stage_counts": {
+              "late": 1087,
+              "early": 666,
+              "middle": 3434
+            },
+            "score_band_counts": {
+              "above_start": 2078,
+              "behind": 1563,
+              "danger": 433,
+              "lead": 1113
+            }
+          },
+          "spend_defensive_exit": {
+            "label": "Spend a safe-looking tile while NAGA keeps it",
+            "n": 4939,
+            "share_of_mismatches": 0.12853610930383866,
+            "bad_rate": 0.27596679489775255,
+            "bad_lift_vs_other_mismatches": -0.07417953491172008,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.512249443207127,
+            "big_gap_lift_vs_other_mismatches": -0.07934107223216114,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.5219206722008504,
+            "avg_danger_delta": -0.05137588580684349,
+            "avg_left": 47.890261186474994,
+            "stage_counts": {
+              "middle": 2217,
+              "early": 2404,
+              "late": 318
+            },
+            "score_band_counts": {
+              "above_start": 1971,
+              "behind": 1570,
+              "lead": 973,
+              "danger": 425
+            }
+          },
+          "spend_off_target_safety_for_shape": {
+            "label": "Spend a safe-looking tile after its target changes",
+            "n": 3281,
+            "share_of_mismatches": 0.08538711776187378,
+            "bad_rate": 0.22462663822005485,
+            "bad_lift_vs_other_mismatches": -0.12681315235586138,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.4678451691557452,
+            "big_gap_lift_vs_other_mismatches": -0.1241477741631713,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.48165766534593113,
+            "avg_danger_delta": -0.040594574824748555,
+            "avg_left": 40.16245047241694,
+            "stage_counts": {
+              "early": 843,
+              "middle": 2017,
+              "late": 421
+            },
+            "score_band_counts": {
+              "above_start": 1297,
+              "behind": 987,
+              "danger": 267,
+              "lead": 730
+            }
+          },
+          "threat_keep_exit": {
+            "label": "Keep a defensive exit against an active riichi/open threat",
+            "n": 8592,
+            "share_of_mismatches": 0.22360442420299284,
+            "bad_rate": 0.2877094972067039,
+            "bad_lift_vs_other_mismatches": -0.06813805416258512,
+            "bad_rate_p_value": 0.0,
+            "big_gap_rate": 0.5399208566108007,
+            "big_gap_lift_vs_other_mismatches": -0.053415381782924376,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.5343686801675978,
+            "avg_danger_delta": -0.001863221601489758,
+            "avg_left": 32.00465549348231,
+            "stage_counts": {
+              "middle": 4550,
+              "late": 2792,
+              "early": 1250
+            },
+            "score_band_counts": {
+              "above_start": 3532,
+              "behind": 2706,
+              "lead": 1724,
+              "danger": 630
+            }
+          }
+        },
+        "label": "Kagashi"
+      }
+    }
+  },
   "mortal": {
     "enabled": false,
     "reason": "disabled"
