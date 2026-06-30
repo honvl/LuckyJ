@@ -1568,6 +1568,22 @@ a {
   transform: rotate(180deg);
 }
 
+.table-tile-group {
+  align-items: center;
+  display: flex;
+  gap: calc(0.25 * var(--display-base));
+}
+
+.tile-group-label {
+  color: var(--muted);
+  font-size: 0.62em;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .mahjong-table .hand.compact {
   align-items: center;
   border: 0;
@@ -1596,14 +1612,6 @@ a {
   display: inline-block;
   margin-right: calc(0.3 * var(--display-base));
   padding: 0 calc(0.18 * var(--display-base));
-}
-
-.review-tag {
-  border: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 0.82em;
-  margin-left: 4px;
-  padding: 0 3px;
 }
 
 .case-links {

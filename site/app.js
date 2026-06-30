@@ -14,7 +14,8 @@ const copy = {
   en: {
     none: "none",
     dora: "Dora",
-    reviewCaption: "Review view: concealed opponent hands are shown after the fact. In-game, read from rivers, calls, score, and timing.",
+    handLabel: "hand",
+    callsLabel: "calls",
     situation: "Situation",
     seeing: "What LuckyJ Is Seeing",
     whyTempting: "Why the Other Line Is Tempting",
@@ -75,7 +76,8 @@ const copy = {
   ja: {
     none: "なし",
     dora: "ドラ",
-    reviewCaption: "復習用表示: 対局中は見えない相手の手牌も後から表示しています。実戦では河、鳴き、点数、タイミングから読む必要があります。",
+    handLabel: "手牌",
+    callsLabel: "副露",
     situation: "局面",
     seeing: "LuckyJ が見ているもの",
     whyTempting: "別ラインが魅力的に見える理由",
@@ -656,15 +658,22 @@ function renderMahjongTable(table) {
       const score = scoreFor(table, seats[position]);
       const name = `${seatLabel(player.seat)}${score.rank ? ` / ${rankText(score.rank)}` : ""}`;
       const melds = (player.melds || []).length
-        ? `<div class="table-melds">${(player.melds || [])
-            .map((meld) => `<span class="meld-run">${tileRun(meld.split(" "))}</span>`)
-            .join("")}</div>`
+        ? `<div class="table-tile-group table-melds">
+            <span class="tile-group-label">${escapeHtml(t("callsLabel"))}</span>
+            <div class="meld-contents">${(player.melds || [])
+              .map((meld) => `<span class="meld-run">${tileRun(meld.split(" "))}</span>`)
+              .join("")}</div>
+          </div>`
         : "";
-      const review = player.seat === "self" ? "" : `<span class="review-tag">${isJa ? "復習" : "review"}</span>`;
+      const handLabel =
+        player.seat === "self" ? "" : `<span class="tile-group-label">${escapeHtml(t("handLabel"))}</span>`;
       return `
         <div class="player-hand player-${position}">
-          <span class="player-name">${escapeHtml(name)} ${review}</span>
-          <div class="hand compact"><div class="hand-contents">${tileRun((player.hand || "").split(" "))}</div></div>
+          <span class="player-name">${escapeHtml(name)}</span>
+          <div class="table-tile-group table-hand-group">
+            ${handLabel}
+            <div class="hand compact"><div class="hand-contents">${tileRun((player.hand || "").split(" "))}</div></div>
+          </div>
           ${melds}
         </div>
       `;
@@ -699,7 +708,6 @@ function renderMahjongTable(table) {
           ${rivers}
         </div>
       </div>
-      <div class="caption-text">${escapeHtml(t("reviewCaption"))}</div>
     </div>
   `;
   return wrap;
