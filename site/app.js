@@ -627,17 +627,18 @@ function tileRun(items, className = "", emptyLabel = t("none")) {
 
 function tileThreatBarLabel(bar) {
   const value = bar?.danger == null ? "n/a" : pct(clamp01(bar.danger));
-  return `${seatLabel(bar?.seat)} ${value}`;
+  const source = bar?.label || bar?.head || (bar?.seat ? seatLabel(bar.seat) : "danger");
+  return `${source} ${value}`;
 }
 
 function calibratedDangerHeat(value) {
   const danger = clamp01(value);
   const stops = [
     [0, 0],
-    [0.08, 0.25],
-    [0.18, 0.52],
-    [0.4, 0.84],
-    [0.53, 1],
+    [0.07, 0.25],
+    [0.19, 0.52],
+    [0.32, 0.84],
+    [0.52, 1],
   ];
   for (let i = 1; i < stops.length; i += 1) {
     const [raw, heat] = stops[i];

@@ -38,6 +38,11 @@ POOL_PER_POINT = 120
 SHANTEN = Shanten()
 MODEL_KEYS = ["nishiki", "hibakari", "kagashi"]
 MODEL_LABELS = {"nishiki": "Nishiki", "hibakari": "Hibakari", "kagashi": "Kagashi"}
+DANGER_HEADS = [
+    ("k", "dangerK"),
+    ("t", "dangerT"),
+    ("s", "dangerS"),
+]
 CALL_KIND_LABELS = {
     0: "pass",
     1: "chi",
@@ -272,31 +277,27 @@ def score_context(start, target):
     ]
 
 
-def danger_against_seat(state, seat, tile):
+def danger_head_value(state, seat, tile, suffix):
     try:
         idx = tile_id(tile)
     except KeyError:
         return None
-    values = []
-    for suffix in ("k", "s", "t"):
-        danger = (state or {}).get(f"danger_{suffix}") or []
-        if seat < len(danger) and idx < len(danger[seat]):
-            values.append(danger[seat][idx] / 10000.0)
-    return max(values) if values else None
+    danger = (state or {}).get(f"danger_{suffix}") or []
+    if seat < len(danger) and idx < len(danger[seat]):
+        return danger[seat][idx] / 10000.0
+    return None
 
 
 def hand_tile_threats(state, target, hand):
-    seat_by_label = {rel_seat(seat, target): seat for seat in range(4)}
-    ordered_opponents = ["kamicha", "toimen", "shimocha"]
     threats = []
     for tile in hand:
         bars = []
-        for label in ordered_opponents:
-            seat = seat_by_label.get(label)
-            danger = danger_against_seat(state, seat, tile) if seat is not None else None
+        for suffix, label in DANGER_HEADS:
+            danger = danger_head_value(state, target, tile, suffix)
             bars.append(
                 {
-                    "seat": label,
+                    "head": label,
+                    "label": label,
                     "danger": round(danger, 3) if danger is not None else None,
                 }
             )
