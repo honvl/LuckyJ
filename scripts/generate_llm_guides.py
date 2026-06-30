@@ -6,6 +6,7 @@ import argparse
 import subprocess
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from collections import Counter
 
 API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 URL = "http://localhost:8317/v1/chat/completions"
@@ -24,6 +25,7 @@ Strict Mahjong Rules & Constraints:
 2. Evaluate the potential hand value and speed accurately based on the actual tiles. Do NOT assume a hand is a "1,000-point hand" or "cheap" unless it is an open hand with only one 1-han yaku and no dora. As a dealer, hands automatically gain a 1.5x value bonus, and hands with dora or yaku pairs often carry substantial value.
 3. Use the human strategic commentary ONLY for high-level conceptual reference. Do NOT copy its literal details (such as "1,000 point hand", "West", "South", "East") unless they are 100% true for the current example hand.
 4. Pinfu and Chiitoitsu MUST be closed (menzen). When describing multiple potential yaku paths for a hand that has both sequences and pairs, you MUST explicitly list 'toitoi', 'chiitoitsu', and 'closed pinfu' as the potential development paths, but NEVER place the word "open" next to or immediately after "pinfu" or "chiitoitsu" (e.g. do NOT say "keeps pinfu open" or "keeps chiitoitsu open"). Use phrasing like "keeps options like toitoi, chiitoitsu, or closed pinfu available" or "keeps these paths active".
+5. Triplet check: A triplet (koutsu) requires 3 identical tiles. A quad (kantsu) requires 4. If the "Visible on Board" count for a tile is 3 (with 1 in your hand and 2 on the table/discards), it is mathematically IMPOSSIBLE to form a triplet of that tile. Do NOT describe such a tile as a "potential triplet" or "potential yaku triplet". If the visible count is 4, it is impossible to even form a pair.
 
 Style Guidelines for English (Alternative 2 style):
 - Start with first-person plural: "We are in [Round] [Dealer/Player status], holding [Score] points. [Context about board/opponents, e.g. 'With opponents already showing active melds' or 'With an opponent already declaring riichi']."
@@ -107,11 +109,60 @@ def get_winds_and_yakuhai(case):
     
     return prevalent_wind, seat_wind, active_yakuhai, guest_winds
 
+def calculate_visible_tiles(case):
+    visible = Counter()
+    hand_str = case.get("hand", "")
+    for tile in hand_str.split():
+        visible[tile] += 1
+        
+    players = case.get("table", {}).get("players", [])
+    for p in players:
+        for tile in p.get("discards", []):
+            visible[tile] += 1
+        for meld in p.get("melds", []):
+            for tile in meld.get("tiles", []):
+                visible[tile] += 1
+                
+    return visible
+
 def make_prompt(case, guide_en, guide_ja):
     is_call = case.get("kind") == "call"
     prevalent_wind, seat_wind, active_yakuhai, guest_winds = get_winds_and_yakuhai(case)
     is_dealer_self = case.get("table", {}).get("dealer") == "self"
+    visible = calculate_visible_tiles(case)
     
+    # Honors and candidate visible counts
+    tracked_tiles = ["E", "S", "W", "N", "P", "F", "C"]
+    actual = case.get("actual")
+    naga = case.get("naga")
+    if actual and actual not in tracked_tiles:
+        tracked_tiles.append(actual)
+    if naga and naga not in tracked_tiles:
+        tracked_tiles.append(naga)
+        
+    visible_lines = []
+    hand_list = case.get("hand", "").split()
+    for tile in tracked_tiles:
+        count = visible[tile]
+        in_hand = hand_list.count(tile)
+        in_discards = count - in_hand
+        visible_lines.append(f"- [[{tile}]]: {count} visible on board (your hand: {in_hand}, table/discards: {in_discards})")
+    visible_str = "\n".join(visible_lines)
+
+    # Opponent rivers & melds
+    players = case.get("table", {}).get("players", [])
+    rivers_str = ""
+    for p in players:
+        seat = p.get("seat", "")
+        if seat == "self":
+            continue
+        discards = " ".join(f"[[{t}]]" for t in p.get("discards", []))
+        melds = []
+        for meld in p.get("melds", []):
+            melds.append("".join(f"[[{t}]]" for t in meld.get("tiles", [])))
+        melds_str = ", ".join(melds) if melds else "None"
+        rivers_str += f"- {seat.capitalize()}: River: {discards} | Open Melds: {melds_str}\n"
+
     prompt = f"""Mahjong Playbook Point: {case['point']}
 Title: {case.get('title', '')}
 Lesson: {case.get('lesson', '')}
@@ -125,6 +176,12 @@ Mahjong Rules Context for Self:
 - Seat Wind: {seat_wind} (Is dealer: {"Yes" if is_dealer_self else "No"})
 - Active Yakuhai for Self: {", ".join(active_yakuhai)}
 - Guest Winds (no yaku value) for Self: {", ".join(guest_winds)}
+
+Visible Tile Counts on Board:
+{visible_str}
+
+Opponent Rivers & Melds:
+{rivers_str}
 
 Match Situation:
 - Round: {case.get('round', '')}
