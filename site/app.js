@@ -1152,16 +1152,45 @@ function probabilityChip(label, value) {
   return `<span class="choice-weight">${escapeHtml(label)} ${pct(numeric)}</span>`;
 }
 
+function logIdFromPaifu(paifu) {
+  if (!paifu) return "";
+  const match = paifu.match(/[?&]log=([^&]+)/);
+  return match ? match[1] : "";
+}
+
 function mortalCopyForExample(mortalCopy, pointKey, index) {
   const value = mortalCopy?.[pointKey];
   if (Array.isArray(value)) return value[index] || {};
   return value || {};
 }
 
-function pointMortalForExample(mortalPoints, pointKey, index) {
-  const value = mortalPoints?.[pointKey];
-  if (Array.isArray(value)) return value[index] || null;
-  return value || null;
+function pointMortalForExample(mortalPoints, pointKey, example, index) {
+  const list = mortalPoints?.[pointKey];
+  if (!Array.isArray(list)) return list || null;
+
+  if (example) {
+    const logId = logIdFromPaifu(example.paifu);
+    const kyokuIndex = example.kyoku_index;
+    const actualTile = example.actual;
+
+    for (const item of list) {
+      if (item.log_id === logId && item.kyoku_index === kyokuIndex) {
+        const itemActual = item.actual || {};
+        const itemTile = itemActual.tile || itemActual.discard_after_call;
+        if (itemTile === actualTile) {
+          return item;
+        }
+      }
+    }
+
+    for (const item of list) {
+      if (item.log_id === logId && item.kyoku_index === kyokuIndex) {
+        return item;
+      }
+    }
+  }
+
+  return list[index] || null;
 }
 
 function renderMortalBlock(mortal, pointKey, mortalCopy, index) {
@@ -1268,7 +1297,7 @@ function renderCallModelBlock(example) {
 
 function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCopy, index, total) {
   const exampleGuide = (isJa ? example.guide_ja || example.guide : example.guide) || guide || {};
-  const exampleMortal = example.mortal || pointMortalForExample(mortalPoints, pointKey, index);
+  const exampleMortal = example.mortal || pointMortalForExample(mortalPoints, pointKey, example, index);
   const card = document.createElement("article");
   card.className = "point-example-card";
   card.id = exampleAnchorId(pointKey, index);
