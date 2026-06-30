@@ -17,6 +17,7 @@ Japanese translation: https://honvl.github.io/LuckyJ/ja.html
 - `scripts/build_mortal_analysis.py` - locally replays the selected examples through Mortal/libriichi and writes `site/mortal-analysis.json`.
 - `scripts/mine_model_patterns.py` - mines LuckyJ/NAGA mismatch families and optionally cross-checks a deterministic sample through Mortal.
 - `analysis/model-patterns-2026-06-30.md` - readable summary of the model-mined candidate points.
+- `analysis/laole-youtube-2026-06-30.md` - derived notes from Laole/Oiraku's LuckyJ YouTube reviews.
 - `site/model-patterns.json` - machine-readable output from the model-pattern mining run.
 - `site/strategy-guides.json` - long-form strategic commentary for the numbered replay examples.
 - `site/strategy-guides.ja.json` - Japanese commentary used by the translated static book.
@@ -71,3 +72,4 @@ Then open `http://127.0.0.1:8000/`.
 
 - Original game list: `https://docs.google.com/spreadsheets/d/1jV-fi6E-z8BFdbS_LPfvpktSw8qc68PSZj9iEgdUC9U/edit?usp=drivesdk`
 - Format reference: `https://natsuai.com/mahjong/digital/`
+- Laole/Oiraku LuckyJ review channel: `https://www.youtube.com/@老楽_おいらく`
