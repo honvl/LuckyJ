@@ -368,9 +368,17 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "7p",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "1s",
@@ -602,9 +610,17 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "7p",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "1s",
@@ -725,6 +741,21 @@
               "opponents": 1,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5m",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 1,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -738,7 +769,9 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "8m",
@@ -760,9 +793,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6m",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "9m",
@@ -951,9 +992,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3m",
+                      "position": 4
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "4m",
@@ -963,6 +1012,21 @@
               "safe_against_threat": false,
               "opponents": 1,
               "against": [
+                {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5m",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
                 {
                   "seat": 1,
                   "kind": "suji",
@@ -977,7 +1041,9 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "8m",
@@ -999,9 +1065,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6m",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "9m",
@@ -1216,9 +1290,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "8s",
@@ -1313,9 +1395,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             }
           ]
         }
@@ -1537,8 +1627,29 @@
                   "reached": false,
                   "open_melds": 0,
                   "seat_label": "shimocha"
+                },
+                {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8p",
+                      "position": 4
+                    },
+                    {
+                      "tile": "8p",
+                      "position": 5
+                    }
+                  ],
+                  "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "5sr",
@@ -1752,8 +1863,29 @@
                   "reached": false,
                   "open_melds": 0,
                   "seat_label": "shimocha"
+                },
+                {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8p",
+                      "position": 4
+                    },
+                    {
+                      "tile": "8p",
+                      "position": 5
+                    }
+                  ],
+                  "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             }
           ]
         }
@@ -1873,8 +2005,25 @@
                   "reached": false,
                   "open_melds": 0,
                   "seat_label": "shimocha"
+                },
+                {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8m",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "6p",
@@ -2036,8 +2185,25 @@
                   "reached": false,
                   "open_melds": 0,
                   "seat_label": "shimocha"
+                },
+                {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8m",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "9p",
@@ -2843,9 +3009,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3m",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "5mr",
@@ -2921,8 +3095,25 @@
                   "reached": false,
                   "open_melds": 0,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 3,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8s",
+                      "position": 1
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             }
           ]
         }
@@ -3020,8 +3211,25 @@
                   "reached": false,
                   "open_melds": 0,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 3,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8s",
+                      "position": 1
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             }
           ]
         }
@@ -3048,9 +3256,17 @@
             ],
             "reached": false,
             "open_melds": 0,
+            "sotogawa_sources": [
+              {
+                "tile": "3m",
+                "position": 5
+              }
+            ],
             "seat_label": "toimen"
           }
-        ]
+        ],
+        "has_sotogawa": true,
+        "sotogawa_opponents": 1
       }
     }
   ],
@@ -3150,6 +3366,21 @@
               "opponents": 2,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2p",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 1,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -3180,9 +3411,18 @@
                   ],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2p",
+                      "position": 2
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 2,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5pr",
@@ -3332,6 +3572,21 @@
         "opponents": 2,
         "against": [
           {
+            "seat": 0,
+            "kind": null,
+            "genbutsu_sources": [],
+            "suji_sources": [],
+            "reached": false,
+            "open_melds": 0,
+            "sotogawa_sources": [
+              {
+                "tile": "2p",
+                "position": 4
+              }
+            ],
+            "seat_label": "toimen"
+          },
+          {
             "seat": 1,
             "kind": "genbutsu",
             "genbutsu_sources": [
@@ -3362,9 +3617,18 @@
             ],
             "reached": false,
             "open_melds": 1,
+            "sotogawa_sources": [
+              {
+                "tile": "2p",
+                "position": 2
+              }
+            ],
             "seat_label": "shimocha"
           }
-        ]
+        ],
+        "has_sotogawa": true,
+        "sotogawa_opponents": 2,
+        "sotogawa_against_threat": true
       }
     },
     {
@@ -3445,9 +3709,17 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2m",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "5m",
@@ -3674,9 +3946,17 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2m",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "5m",
@@ -3857,8 +4137,25 @@
                   "reached": false,
                   "open_melds": 0,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 3,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8s",
+                      "position": 6
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             }
           ]
         }
@@ -3986,9 +4283,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 4
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "5s",
@@ -4103,9 +4408,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 4
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "5s",
@@ -5484,6 +5797,21 @@
                   "seat_label": "shimocha"
                 },
                 {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5pr",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 2,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -5497,7 +5825,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "4s",
@@ -5765,6 +6096,21 @@
             "seat_label": "shimocha"
           },
           {
+            "seat": 1,
+            "kind": null,
+            "genbutsu_sources": [],
+            "suji_sources": [],
+            "reached": false,
+            "open_melds": 2,
+            "sotogawa_sources": [
+              {
+                "tile": "5pr",
+                "position": 4
+              }
+            ],
+            "seat_label": "toimen"
+          },
+          {
             "seat": 2,
             "kind": "suji",
             "genbutsu_sources": [],
@@ -5778,7 +6124,10 @@
             "open_melds": 0,
             "seat_label": "kamicha"
           }
-        ]
+        ],
+        "has_sotogawa": true,
+        "sotogawa_opponents": 1,
+        "sotogawa_against_threat": true
       }
     },
     {
@@ -5926,9 +6275,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6p",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "4s",
@@ -6160,9 +6517,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6p",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "4s",
@@ -6837,6 +7202,36 @@
               "opponents": 1,
               "against": [
                 {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "shimocha"
+                },
+                {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5sr",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 3,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -6850,7 +7245,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 2,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "8s",
@@ -6887,8 +7285,25 @@
                   "reached": true,
                   "open_melds": 0,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 3,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6s",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             }
           ]
         }
@@ -6983,6 +7398,36 @@
               "opponents": 1,
               "against": [
                 {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "shimocha"
+                },
+                {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5sr",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 3,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -6996,7 +7441,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 2,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "6s",
@@ -7006,6 +7454,21 @@
               "safe_against_threat": true,
               "opponents": 2,
               "against": [
+                {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "shimocha"
+                },
                 {
                   "seat": 2,
                   "kind": "suji",
@@ -7018,6 +7481,12 @@
                   ],
                   "reached": true,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5sr",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "toimen"
                 },
                 {
@@ -7039,7 +7508,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 2,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "8s",
@@ -7076,8 +7548,25 @@
                   "reached": true,
                   "open_melds": 0,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 3,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6s",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             }
           ]
         }
@@ -7189,6 +7678,21 @@
               "opponents": 2,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2p",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 1,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -7219,9 +7723,18 @@
                   ],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2p",
+                      "position": 2
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 2,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5pr",
@@ -7371,6 +7884,21 @@
         "opponents": 2,
         "against": [
           {
+            "seat": 0,
+            "kind": null,
+            "genbutsu_sources": [],
+            "suji_sources": [],
+            "reached": false,
+            "open_melds": 0,
+            "sotogawa_sources": [
+              {
+                "tile": "2p",
+                "position": 4
+              }
+            ],
+            "seat_label": "toimen"
+          },
+          {
             "seat": 1,
             "kind": "genbutsu",
             "genbutsu_sources": [
@@ -7401,9 +7929,18 @@
             ],
             "reached": false,
             "open_melds": 1,
+            "sotogawa_sources": [
+              {
+                "tile": "2p",
+                "position": 2
+              }
+            ],
             "seat_label": "shimocha"
           }
-        ]
+        ],
+        "has_sotogawa": true,
+        "sotogawa_opponents": 2,
+        "sotogawa_against_threat": true
       }
     },
     {
@@ -7996,6 +8533,21 @@
               "opponents": 2,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 2
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 1,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -8027,7 +8579,10 @@
                   "open_melds": 0,
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             }
           ]
         }
@@ -8120,6 +8675,21 @@
               "opponents": 2,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 2
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 1,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -8151,7 +8721,10 @@
                   "open_melds": 0,
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             }
           ]
         }
@@ -8915,6 +9488,21 @@
               "opponents": 1,
               "against": [
                 {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2m",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "shimocha"
+                },
+                {
                   "seat": 2,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -8937,7 +9525,10 @@
                   "open_melds": 0,
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "2m",
@@ -8967,6 +9558,21 @@
                   "seat_label": "shimocha"
                 },
                 {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4m",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 3,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -8985,7 +9591,9 @@
                   "open_melds": 1,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "7m",
@@ -9088,9 +9696,18 @@
                   "suji_sources": [],
                   "reached": true,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8m",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5p",
@@ -9182,9 +9799,18 @@
                   ],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5p",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "7p",
@@ -9207,8 +9833,26 @@
                   "reached": true,
                   "open_melds": 0,
                   "seat_label": "shimocha"
+                },
+                {
+                  "seat": 3,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5p",
+                      "position": 5
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             }
           ]
         }
@@ -9241,6 +9885,21 @@
               "opponents": 1,
               "against": [
                 {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2m",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "shimocha"
+                },
+                {
                   "seat": 2,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -9263,7 +9922,10 @@
                   "open_melds": 0,
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "2m",
@@ -9293,6 +9955,21 @@
                   "seat_label": "shimocha"
                 },
                 {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4m",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 3,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -9311,7 +9988,9 @@
                   "open_melds": 1,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "7m",
@@ -9414,9 +10093,18 @@
                   "suji_sources": [],
                   "reached": true,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8m",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5p",
@@ -9508,9 +10196,18 @@
                   ],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5p",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "7p",
@@ -9533,8 +10230,26 @@
                   "reached": true,
                   "open_melds": 0,
                   "seat_label": "shimocha"
+                },
+                {
+                  "seat": 3,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5p",
+                      "position": 5
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             }
           ]
         }
@@ -9638,9 +10353,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4m",
+                      "position": 6
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "4m",
@@ -9738,9 +10461,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6m",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "2p",
@@ -9918,8 +10649,29 @@
                   "reached": true,
                   "open_melds": 0,
                   "seat_label": "kamicha"
+                },
+                {
+                  "seat": 3,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3m",
+                      "position": 4
+                    },
+                    {
+                      "tile": "4m",
+                      "position": 6
+                    }
+                  ],
+                  "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "3m",
@@ -9946,9 +10698,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4m",
+                      "position": 6
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "4m",
@@ -10046,9 +10806,17 @@
                   ],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6m",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "2p",
@@ -11056,9 +11824,18 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2m",
+                      "position": 6
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "2m",
@@ -11135,6 +11912,21 @@
               "opponents": 1,
               "against": [
                 {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5p",
+                      "position": 2
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 2,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -11148,7 +11940,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5p",
@@ -11281,9 +12076,18 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2m",
+                      "position": 6
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "2m",
@@ -11360,6 +12164,21 @@
               "opponents": 1,
               "against": [
                 {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5p",
+                      "position": 2
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 2,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -11373,7 +12192,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "4p",
@@ -11383,6 +12205,21 @@
               "safe_against_threat": true,
               "opponents": 1,
               "against": [
+                {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5p",
+                      "position": 2
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
                 {
                   "seat": 2,
                   "kind": "suji",
@@ -11397,7 +12234,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5p",
@@ -11732,9 +12572,33 @@
                   ],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8s",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 3,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8s",
+                      "position": 6
+                    }
+                  ],
+                  "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 2,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "E",
@@ -12010,9 +12874,33 @@
                   ],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8s",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 3,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8s",
+                      "position": 6
+                    }
+                  ],
+                  "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 2,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "F",
@@ -12606,6 +13494,21 @@
                   "seat_label": "shimocha"
                 },
                 {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5pr",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 2,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -12619,7 +13522,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "4s",
@@ -12887,6 +13793,21 @@
             "seat_label": "shimocha"
           },
           {
+            "seat": 1,
+            "kind": null,
+            "genbutsu_sources": [],
+            "suji_sources": [],
+            "reached": false,
+            "open_melds": 2,
+            "sotogawa_sources": [
+              {
+                "tile": "5pr",
+                "position": 4
+              }
+            ],
+            "seat_label": "toimen"
+          },
+          {
             "seat": 2,
             "kind": "suji",
             "genbutsu_sources": [],
@@ -12900,7 +13821,10 @@
             "open_melds": 0,
             "seat_label": "kamicha"
           }
-        ]
+        ],
+        "has_sotogawa": true,
+        "sotogawa_opponents": 1,
+        "sotogawa_against_threat": true
       }
     },
     {
@@ -13017,9 +13941,18 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2p",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5p",
@@ -13277,9 +14210,18 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2p",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5p",
@@ -14251,8 +15193,25 @@
                   "reached": true,
                   "open_melds": 0,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4s",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "4s",
@@ -14356,6 +15315,21 @@
               "opponents": 1,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6s",
+                      "position": 6
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 1,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -14369,7 +15343,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "9s",
@@ -14529,8 +15506,25 @@
                   "reached": true,
                   "open_melds": 0,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4s",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "4s",
@@ -14634,6 +15628,21 @@
               "opponents": 1,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6s",
+                      "position": 6
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 1,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -14647,7 +15656,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "9s",
@@ -14817,9 +15829,18 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6m",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5p",
@@ -14865,9 +15886,18 @@
                   ],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4s",
+                      "position": 4
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "4s",
@@ -15093,9 +16123,18 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6m",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5p",
@@ -15141,9 +16180,18 @@
                   ],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4s",
+                      "position": 4
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "4s",
@@ -15471,9 +16519,18 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6p",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5s",
@@ -15542,9 +16599,18 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 6
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "7s",
@@ -15566,9 +16632,18 @@
                   ],
                   "reached": false,
                   "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 6
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             }
           ]
         }
@@ -15764,9 +16839,18 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "6p",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5s",
@@ -15835,9 +16919,18 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 6
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             }
           ]
         }
@@ -15944,9 +17037,17 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8m",
+                      "position": 4
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "8p",
@@ -16127,9 +17228,17 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8m",
+                      "position": 4
+                    }
+                  ],
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "8p",
@@ -16832,9 +17941,17 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2p",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "2p",
@@ -17018,6 +18135,21 @@
               "opponents": 2,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2p",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 1,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -17048,9 +18180,18 @@
                   ],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "2p",
+                      "position": 2
+                    }
+                  ],
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 2,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5pr",
@@ -17200,6 +18341,21 @@
         "opponents": 2,
         "against": [
           {
+            "seat": 0,
+            "kind": null,
+            "genbutsu_sources": [],
+            "suji_sources": [],
+            "reached": false,
+            "open_melds": 0,
+            "sotogawa_sources": [
+              {
+                "tile": "2p",
+                "position": 4
+              }
+            ],
+            "seat_label": "toimen"
+          },
+          {
             "seat": 1,
             "kind": "genbutsu",
             "genbutsu_sources": [
@@ -17230,9 +18386,18 @@
             ],
             "reached": false,
             "open_melds": 1,
+            "sotogawa_sources": [
+              {
+                "tile": "2p",
+                "position": 2
+              }
+            ],
             "seat_label": "shimocha"
           }
-        ]
+        ],
+        "has_sotogawa": true,
+        "sotogawa_opponents": 2,
+        "sotogawa_against_threat": true
       }
     },
     {
@@ -18476,6 +19641,12 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3s",
+                      "position": 4
+                    }
+                  ],
                   "seat_label": "shimocha"
                 },
                 {
@@ -18492,7 +19663,9 @@
                   "open_melds": 0,
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "3s",
@@ -18596,6 +19769,12 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3s",
+                      "position": 4
+                    }
+                  ],
                   "seat_label": "shimocha"
                 },
                 {
@@ -18612,7 +19791,9 @@
                   "open_melds": 0,
                   "seat_label": "toimen"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "3s",
@@ -19164,6 +20345,12 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4m",
+                      "position": 5
+                    }
+                  ],
                   "seat_label": "shimocha"
                 },
                 {
@@ -19179,8 +20366,25 @@
                   "reached": false,
                   "open_melds": 0,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3m",
+                      "position": 5
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 2
             },
             {
               "tile": "5m",
@@ -19291,6 +20495,21 @@
               "opponents": 1,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3s",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "shimocha"
+                },
+                {
                   "seat": 2,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -19304,7 +20523,9 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "9s",
@@ -19501,6 +20722,21 @@
               "opponents": 1,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3s",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "shimocha"
+                },
+                {
                   "seat": 2,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -19514,7 +20750,9 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "9s",
@@ -19593,6 +20831,12 @@
             "suji_sources": [],
             "reached": false,
             "open_melds": 0,
+            "sotogawa_sources": [
+              {
+                "tile": "4m",
+                "position": 5
+              }
+            ],
             "seat_label": "shimocha"
           },
           {
@@ -19608,8 +20852,25 @@
             "reached": false,
             "open_melds": 0,
             "seat_label": "toimen"
+          },
+          {
+            "seat": 2,
+            "kind": null,
+            "genbutsu_sources": [],
+            "suji_sources": [],
+            "reached": false,
+            "open_melds": 0,
+            "sotogawa_sources": [
+              {
+                "tile": "3m",
+                "position": 5
+              }
+            ],
+            "seat_label": "kamicha"
           }
-        ]
+        ],
+        "has_sotogawa": true,
+        "sotogawa_opponents": 2
       }
     },
     {
@@ -19698,6 +20959,21 @@
               "opponents": 2,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 2
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 1,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -19729,7 +21005,10 @@
                   "open_melds": 0,
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             }
           ]
         }
@@ -19822,6 +21101,21 @@
               "opponents": 2,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5s",
+                      "position": 2
+                    }
+                  ],
+                  "seat_label": "toimen"
+                },
+                {
                   "seat": 1,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -19853,7 +21147,10 @@
                   "open_melds": 0,
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             }
           ]
         }
@@ -20747,8 +22044,26 @@
                   "reached": true,
                   "open_melds": 0,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3p",
+                      "position": 6
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "4s",
@@ -20945,8 +22260,26 @@
                   "reached": true,
                   "open_melds": 0,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3p",
+                      "position": 6
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "4s",
@@ -21129,9 +22462,18 @@
                   ],
                   "reached": false,
                   "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "7m",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "9m",
@@ -21156,6 +22498,21 @@
                   "seat_label": "toimen"
                 },
                 {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "7m",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "kamicha"
+                },
+                {
                   "seat": 3,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -21174,7 +22531,10 @@
                   "open_melds": 0,
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "6p",
@@ -21196,6 +22556,12 @@
                   ],
                   "reached": false,
                   "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "5p",
+                      "position": 2
+                    }
+                  ],
                   "seat_label": "toimen"
                 },
                 {
@@ -21220,7 +22586,10 @@
                   "open_melds": 2,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "8p",
@@ -21275,8 +22644,26 @@
                   "reached": false,
                   "open_melds": 1,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4s",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5s",
@@ -21427,9 +22814,18 @@
                   ],
                   "reached": false,
                   "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "7m",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "9m",
@@ -21454,6 +22850,21 @@
                   "seat_label": "toimen"
                 },
                 {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "7m",
+                      "position": 3
+                    }
+                  ],
+                  "seat_label": "kamicha"
+                },
+                {
                   "seat": 3,
                   "kind": "genbutsu",
                   "genbutsu_sources": [
@@ -21472,7 +22883,10 @@
                   "open_melds": 0,
                   "seat_label": "shimocha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "8p",
@@ -21555,8 +22969,26 @@
                   "reached": false,
                   "open_melds": 1,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 1,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 2,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4s",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5s",
@@ -21669,6 +23101,12 @@
             ],
             "reached": false,
             "open_melds": 1,
+            "sotogawa_sources": [
+              {
+                "tile": "5p",
+                "position": 2
+              }
+            ],
             "seat_label": "toimen"
           },
           {
@@ -21693,7 +23131,10 @@
             "open_melds": 2,
             "seat_label": "kamicha"
           }
-        ]
+        ],
+        "has_sotogawa": true,
+        "sotogawa_opponents": 1,
+        "sotogawa_against_threat": true
       }
     },
     {
@@ -22481,8 +23922,26 @@
                   "reached": false,
                   "open_melds": 1,
                   "seat_label": "toimen"
+                },
+                {
+                  "seat": 3,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "4p",
+                      "position": 6
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "6p",
@@ -22868,8 +24327,26 @@
             "reached": false,
             "open_melds": 1,
             "seat_label": "toimen"
+          },
+          {
+            "seat": 3,
+            "kind": null,
+            "genbutsu_sources": [],
+            "suji_sources": [],
+            "reached": false,
+            "open_melds": 1,
+            "sotogawa_sources": [
+              {
+                "tile": "4p",
+                "position": 6
+              }
+            ],
+            "seat_label": "kamicha"
           }
-        ]
+        ],
+        "has_sotogawa": true,
+        "sotogawa_opponents": 1,
+        "sotogawa_against_threat": true
       }
     },
     {
@@ -23135,9 +24612,17 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "7m",
+                      "position": 4
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "3p",
@@ -23490,9 +24975,17 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "7m",
+                      "position": 4
+                    }
+                  ],
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "9m",
@@ -23523,9 +25016,33 @@
                   ],
                   "reached": true,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "8m",
+                      "position": 6
+                    }
+                  ],
                   "seat_label": "shimocha"
+                },
+                {
+                  "seat": 2,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": false,
+                  "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "7m",
+                      "position": 4
+                    }
+                  ],
+                  "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 2,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "5s",
@@ -23935,6 +25452,12 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3s",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "toimen"
                 },
                 {
@@ -23951,7 +25474,9 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "5sr",
@@ -24217,6 +25742,12 @@
                   "suji_sources": [],
                   "reached": false,
                   "open_melds": 0,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "3s",
+                      "position": 3
+                    }
+                  ],
                   "seat_label": "toimen"
                 },
                 {
@@ -24233,7 +25764,9 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1
             },
             {
               "tile": "5sr",
@@ -24469,6 +26002,21 @@
               "opponents": 2,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "7p",
+                      "position": 5
+                    }
+                  ],
+                  "seat_label": "shimocha"
+                },
+                {
                   "seat": 1,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -24496,7 +26044,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "4s",
@@ -24708,6 +26259,21 @@
               "opponents": 2,
               "against": [
                 {
+                  "seat": 0,
+                  "kind": null,
+                  "genbutsu_sources": [],
+                  "suji_sources": [],
+                  "reached": true,
+                  "open_melds": 1,
+                  "sotogawa_sources": [
+                    {
+                      "tile": "7p",
+                      "position": 5
+                    }
+                  ],
+                  "seat_label": "shimocha"
+                },
+                {
                   "seat": 1,
                   "kind": "suji",
                   "genbutsu_sources": [],
@@ -24735,7 +26301,10 @@
                   "open_melds": 0,
                   "seat_label": "kamicha"
                 }
-              ]
+              ],
+              "has_sotogawa": true,
+              "sotogawa_opponents": 1,
+              "sotogawa_against_threat": true
             },
             {
               "tile": "4s",

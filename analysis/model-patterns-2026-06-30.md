@@ -12,6 +12,8 @@ The script mines cached model outputs for LuckyJ draw-discard decisions where Lu
 
 This refreshed artifact is NAGA-side only. The static site still has the separate per-point `site/mortal-analysis.json` panels generated earlier from local Mortal/libriichi assets, but `site/model-patterns.json` now disables Mortal sampling so the expanded pattern scan can stay fast and reproducible.
 
+The cached reports also preserve the three NAGA heads: Nishiki, Hibakari, and Kagashi. The existing `NAGA top` fields are kept as the first head, Nishiki, for continuity. A new `model_split` section in `site/model-patterns.json` compares LuckyJ against each head separately.
+
 Definitions:
 
 - `bad_rate`: share of mismatches where NAGA assigned LuckyJ's actual discard below 5%.
@@ -24,6 +26,39 @@ Definitions:
 - LuckyJ/NAGA discard mismatches: 36,206, or 26.8%.
 - Among all mismatches, NAGA's severe-disagreement proxy was 31.0%.
 - Among all mismatches, the large probability-gap rate was 56.1%.
+
+## NAGA head split
+
+Tiny legacy/single-head reports account for 50 decisions; the split below uses the 134,988 decisions with Nishiki, Hibakari, and Kagashi present.
+
+| Head | LuckyJ top-discard match | Mismatch rate | Severe disagreement among mismatches | Big-gap rate among mismatches |
+|---|---:|---:|---:|---:|
+| Nishiki | 73.2% | 26.8% | 31.0% | 56.1% |
+| Hibakari | 72.2% | 27.8% | 26.9% | 51.6% |
+| Kagashi | 71.5% | 28.5% | 34.1% | 58.1% |
+
+Hibakari does not simply match LuckyJ more often than Nishiki. Its useful signal is narrower: when Nishiki disagrees with LuckyJ, Hibakari agrees with LuckyJ in 8,445 positions, or 23.3% of Nishiki mismatches. In those positions, Nishiki's severe-disagreement rate drops to 8.7%, far below the 31.0% baseline for all Nishiki mismatches.
+
+| Slice | N | Share of Nishiki mismatches | Nishiki severe-disagreement rate | Avg danger delta vs Nishiki | Safer than Nishiki | Riskier than Nishiki |
+|---|---:|---:|---:|---:|---:|---:|
+| Hibakari matches LuckyJ, Nishiki splits | 8,445 | 23.3% | 8.7% | +0.012 | 6.5% | 14.3% |
+| Hibakari only matches LuckyJ, Nishiki/Kagashi split | 5,234 | 14.5% | 13.0% | +0.011 | 6.8% | 13.7% |
+| Kagashi matches LuckyJ, Nishiki splits | 6,151 | 17.0% | 2.8% | +0.013 | 7.9% | 15.6% |
+
+This is not an immediate-danger story. The Hibakari-match slice is slightly riskier than Nishiki by the local danger proxy and is mostly early/middle: 63.5% early, 30.5% middle, 5.9% late. The insight is inventory defense: LuckyJ often cuts a tile Nishiki dislikes now because the tile Nishiki wants to cut is being kept as a future exit, value seed, or route anchor.
+
+Hibakari alignment is most enriched in these Nishiki-mismatch families:
+
+| Pattern | N | Hibakari matches LuckyJ | Lift vs all Nishiki mismatches |
+|---|---:|---:|---:|
+| Keep dora/red-five material through the clean NAGA cut | 617 | 33.2% | +9.9 pp |
+| Keep genbutsu/suji exits while cutting elsewhere | 8,587 | 30.4% | +7.1 pp |
+| Keep own yakuhai pair or triplet anchor while NAGA breaks it | 135 | 26.7% | +3.3 pp |
+| Clean a singleton yakuhai before an unproven open hand can use it | 285 | 24.9% | +1.6 pp |
+
+Hibakari alignment is weaker in the strongest immediate-defense buckets: `safer_than_naga` is 14.7% Hibakari-aligned, `honor_cleanup_vs_shape` is 14.6%, and `multi_threat_safe_tenpai` is 14.5%. Those remain LuckyJ/Nishiki-specific signals rather than Hibakari-confirmed ones.
+
+Practical use: when a LuckyJ/Nishiki split is also a LuckyJ/Hibakari match, do not treat it as a pure anti-NAGA move. It is often a defensible alternate NAGA-family line. For public examples, that should be framed as "Nishiki wants the clean tile, while Hibakari also accepts LuckyJ's inventory plan," not as "LuckyJ ignores NAGA."
 
 ## Pattern ranking
 

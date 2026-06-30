@@ -32,6 +32,16 @@ RANDOM_SEED = 20260630
 OUTSIDE = {"honor", "terminal"}
 WINDS = ["E", "S", "W", "N"]
 DRAGONS = {"P", "F", "C"}
+MODEL_KEY_BY_NAME = {
+    "ニシキ": "nishiki",
+    "ヒバカリ": "hibakari",
+    "カガシ": "kagashi",
+}
+MODEL_DISPLAY_BY_KEY = {
+    "nishiki": "Nishiki",
+    "hibakari": "Hibakari",
+    "kagashi": "Kagashi",
+}
 PATTERN_LABELS = {
     "keep_dora_or_red": "Keep dora/red-five material through the clean NAGA cut",
     "keep_pair_anchor": "Keep a pair or triplet anchor that NAGA wants to break",
@@ -102,6 +112,14 @@ def same_tile(a: str | None, b: str | None) -> bool:
         return tile_id(a) == tile_id(b)
     except KeyError:
         return False
+
+
+def model_key(name: str, index: int) -> str:
+    return MODEL_KEY_BY_NAME.get(name, f"model_{index}")
+
+
+def model_label(key: str, name: str) -> str:
+    return MODEL_DISPLAY_BY_KEY.get(key, name)
 
 
 def tile_base(tile: str | None) -> str:
@@ -254,6 +272,22 @@ def pattern_keys(decision: dict[str, Any]) -> list[str]:
     return keys
 
 
+def model_for(decision: dict[str, Any], key: str) -> dict[str, Any] | None:
+    for model in decision.get("models", []):
+        if model.get("key") == key:
+            return model
+    return None
+
+
+def model_matches(decision: dict[str, Any], key: str) -> bool:
+    model = model_for(decision, key)
+    return bool(model and model.get("matches_luckyj"))
+
+
+def has_three_named_heads(decision: dict[str, Any]) -> bool:
+    return all(model_for(decision, key) for key in ("nishiki", "hibakari", "kagashi"))
+
+
 def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
     rows = base.parse_rows()
     if max_reports:
@@ -303,11 +337,29 @@ def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
                         actual = msg["real_dahai"]
                         model_rows = []
                         for model_idx in range(min(len(naga_types), len(state["dahai_pred"]))):
+                            name = naga_types[model_idx]
                             top, top_prob = base.top_tile(state["dahai_pred"][model_idx])
                             actual_prob = base.prob_for(state["dahai_pred"][model_idx], actual)
-                            model_rows.append((top, top_prob, actual_prob))
+                            key = model_key(name, model_idx)
+                            matches_actual = same_tile(actual, top)
+                            model_rows.append(
+                                {
+                                    "index": model_idx,
+                                    "key": key,
+                                    "name": name,
+                                    "label": model_label(key, name),
+                                    "top": top,
+                                    "top_prob": top_prob,
+                                    "actual_prob": actual_prob,
+                                    "prob_gap": top_prob - actual_prob if not matches_actual else 0.0,
+                                    "matches_luckyj": matches_actual,
+                                }
+                            )
                         if model_rows:
-                            naga, naga_prob, actual_prob = model_rows[0]
+                            primary_model = model_rows[0]
+                            naga = primary_model["top"]
+                            naga_prob = primary_model["top_prob"]
+                            actual_prob = primary_model["actual_prob"]
                             mismatch = not same_tile(actual, naga)
                             hand_counts = hand_counter(hands[target])
                             actual_danger = base.danger_for(state, target, actual)
@@ -349,6 +401,9 @@ def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
                                 "mismatch": mismatch,
                                 "big_gap": mismatch and (naga_prob - actual_prob) >= 0.5,
                                 "bad_by_naga": mismatch and actual_prob < 0.05,
+                                "models": model_rows,
+                                "model_match_keys": [model["key"] for model in model_rows if model["matches_luckyj"]],
+                                "model_mismatch_keys": [model["key"] for model in model_rows if not model["matches_luckyj"]],
                                 "actual_danger": actual_danger,
                                 "naga_danger": naga_danger,
                                 "danger_delta": actual_danger - naga_danger if actual_danger is not None and naga_danger is not None else None,
@@ -414,6 +469,232 @@ def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
                         discards[actor].append(tile)
 
     return decisions
+
+
+def compact_decision(decision: dict[str, Any]) -> dict[str, Any]:
+    models = {
+        model["key"]: {
+            "label": model["label"],
+            "top": model["top"],
+            "top_prob": model["top_prob"],
+            "actual_prob": model["actual_prob"],
+            "matches_luckyj": model["matches_luckyj"],
+        }
+        for model in decision.get("models", [])
+    }
+    return {
+        "id": decision["id"],
+        "game": decision["game"],
+        "rank": decision["rank"],
+        "score": decision["score"],
+        "score_band": decision["score_band"],
+        "stage": decision["stage"],
+        "left": decision["left"],
+        "actual": decision["actual"],
+        "nishiki": models.get("nishiki", {}).get("top", decision.get("naga")),
+        "models": models,
+        "prob_gap": decision["prob_gap"],
+        "danger_delta": decision["danger_delta"],
+        "actual_danger": decision["actual_danger"],
+        "nishiki_danger": decision["naga_danger"],
+        "actual_safety_kind": decision["actual_safety_kind"],
+        "nishiki_safety_kind": decision["naga_safety_kind"],
+        "nishiki_safety_vs_threat": decision["naga_safety_vs_threat"],
+        "patterns": decision["patterns"],
+        "report": decision["report"],
+        "paifu": decision["paifu"],
+    }
+
+
+def pattern_model_alignment(
+    subset: list[dict[str, Any]],
+    baseline: list[dict[str, Any]],
+    model_key_name: str,
+    min_n: int = 100,
+) -> list[dict[str, Any]]:
+    rows = []
+    baseline_match_rate = pct(sum(1 for item in baseline if model_matches(item, model_key_name)), len(baseline))
+    for key in PATTERN_LABELS:
+        items = [decision for decision in subset if key in decision["patterns"]]
+        if len(items) < min_n:
+            continue
+        matches = sum(1 for item in items if model_matches(item, model_key_name))
+        match_rate = pct(matches, len(items))
+        rows.append(
+            {
+                "pattern": key,
+                "label": PATTERN_LABELS[key],
+                "n": len(items),
+                "model_matches_luckyj": matches,
+                "model_match_rate": match_rate,
+                "model_match_lift_vs_nishiki_mismatches": match_rate - baseline_match_rate,
+                "avg_prob_gap": mean([item["prob_gap"] for item in items]),
+                "avg_danger_delta": mean([item["danger_delta"] for item in items]),
+                "safer_than_nishiki_rate": pct(
+                    sum(1 for item in items if item["danger_delta"] is not None and item["danger_delta"] < -0.05),
+                    len(items),
+                ),
+                "stage_counts": dict(Counter(item["stage"] for item in items)),
+                "score_band_counts": dict(Counter(item["score_band"] for item in items)),
+            }
+        )
+    rows.sort(key=lambda item: (item["model_match_lift_vs_nishiki_mismatches"], item["n"]), reverse=True)
+    return rows
+
+
+def split_summary(
+    rows: list[dict[str, Any]],
+    decisions: list[dict[str, Any]],
+    nishiki_mismatches: list[dict[str, Any]],
+) -> dict[str, Any]:
+    n = len(rows)
+    if not n:
+        return {
+            "n": 0,
+            "share_of_decisions": 0.0,
+            "share_of_nishiki_mismatches": 0.0,
+        }
+    pattern_counts = Counter(pattern for decision in rows for pattern in decision["patterns"])
+    return {
+        "n": n,
+        "share_of_decisions": pct(n, len(decisions)),
+        "share_of_nishiki_mismatches": pct(n, len(nishiki_mismatches)),
+        "bad_rate_by_nishiki": pct(sum(1 for item in rows if item["bad_by_naga"]), n),
+        "big_gap_rate_by_nishiki": pct(sum(1 for item in rows if item["big_gap"]), n),
+        "avg_nishiki_prob_gap": mean([item["prob_gap"] for item in rows]),
+        "avg_danger_delta_vs_nishiki": mean([item["danger_delta"] for item in rows]),
+        "safer_than_nishiki_rate": pct(
+            sum(1 for item in rows if item["danger_delta"] is not None and item["danger_delta"] < -0.05),
+            n,
+        ),
+        "riskier_than_nishiki_rate": pct(
+            sum(1 for item in rows if item["danger_delta"] is not None and item["danger_delta"] > 0.05),
+            n,
+        ),
+        "stage_counts": dict(Counter(item["stage"] for item in rows)),
+        "score_band_counts": dict(Counter(item["score_band"] for item in rows)),
+        "top_patterns": [
+            {
+                "pattern": key,
+                "label": PATTERN_LABELS.get(key, key),
+                "n": count,
+                "share": pct(count, n),
+            }
+            for key, count in pattern_counts.most_common(12)
+        ],
+    }
+
+
+def summarize_model_splits(decisions: list[dict[str, Any]]) -> dict[str, Any]:
+    split_decisions = [decision for decision in decisions if has_three_named_heads(decision)]
+    model_stats: dict[str, Any] = {}
+    for decision in split_decisions:
+        for model in decision.get("models", []):
+            key = model["key"]
+            stat = model_stats.setdefault(
+                key,
+                {
+                    "label": model["label"],
+                    "decisions": 0,
+                    "matches_luckyj": 0,
+                    "top_mismatches": 0,
+                    "severe_disagreements": 0,
+                    "big_gaps": 0,
+                    "actual_prob_sum": 0.0,
+                    "top_prob_sum": 0.0,
+                    "prob_gap_sum": 0.0,
+                },
+            )
+            stat["decisions"] += 1
+            stat["actual_prob_sum"] += model["actual_prob"]
+            stat["top_prob_sum"] += model["top_prob"]
+            stat["prob_gap_sum"] += model["prob_gap"]
+            if model["matches_luckyj"]:
+                stat["matches_luckyj"] += 1
+            else:
+                stat["top_mismatches"] += 1
+                if model["actual_prob"] < 0.05:
+                    stat["severe_disagreements"] += 1
+                if model["prob_gap"] >= 0.5:
+                    stat["big_gaps"] += 1
+
+    for stat in model_stats.values():
+        n = stat["decisions"]
+        mismatches = stat["top_mismatches"]
+        stat["match_rate"] = pct(stat["matches_luckyj"], n)
+        stat["mismatch_rate"] = pct(mismatches, n)
+        stat["severe_disagreement_rate"] = pct(stat["severe_disagreements"], mismatches)
+        stat["big_gap_rate"] = pct(stat["big_gaps"], mismatches)
+        stat["avg_actual_prob"] = stat.pop("actual_prob_sum") / n if n else None
+        stat["avg_top_prob"] = stat.pop("top_prob_sum") / n if n else None
+        stat["avg_prob_gap"] = stat.pop("prob_gap_sum") / n if n else None
+
+    nishiki_mismatches = [
+        decision
+        for decision in split_decisions
+        if model_for(decision, "nishiki") and not model_matches(decision, "nishiki")
+    ]
+    hibakari_matches_nishiki_splits = [
+        decision for decision in nishiki_mismatches if model_matches(decision, "hibakari")
+    ]
+    kagashi_matches_nishiki_splits = [
+        decision for decision in nishiki_mismatches if model_matches(decision, "kagashi")
+    ]
+    hibakari_only_vs_nishiki = [
+        decision
+        for decision in hibakari_matches_nishiki_splits
+        if not model_matches(decision, "kagashi")
+    ]
+
+    match_combo_counts = Counter()
+    for decision in split_decisions:
+        keys = sorted(model["key"] for model in decision.get("models", []) if model["matches_luckyj"])
+        match_combo_counts["+".join(keys) if keys else "none"] += 1
+
+    examples = sorted(
+        hibakari_matches_nishiki_splits,
+        key=lambda item: (
+            item["prob_gap"],
+            -(item["danger_delta"] if item["danger_delta"] is not None else 0.0),
+        ),
+        reverse=True,
+    )
+
+    return {
+        "decisions": len(split_decisions),
+        "legacy_or_single_head_decisions": len(decisions) - len(split_decisions),
+        "models": model_stats,
+        "match_combinations": [
+            {"matches_luckyj": key, "n": count, "share_of_decisions": pct(count, len(split_decisions))}
+            for key, count in match_combo_counts.most_common()
+        ],
+        "nishiki_mismatches": {
+            "n": len(nishiki_mismatches),
+            "hibakari_matches_luckyj": sum(1 for item in nishiki_mismatches if model_matches(item, "hibakari")),
+            "hibakari_match_rate": pct(
+                sum(1 for item in nishiki_mismatches if model_matches(item, "hibakari")),
+                len(nishiki_mismatches),
+            ),
+            "kagashi_matches_luckyj": sum(1 for item in nishiki_mismatches if model_matches(item, "kagashi")),
+            "kagashi_match_rate": pct(
+                sum(1 for item in nishiki_mismatches if model_matches(item, "kagashi")),
+                len(nishiki_mismatches),
+            ),
+        },
+        "hibakari_matches_luckyj_nishiki_splits": split_summary(
+            hibakari_matches_nishiki_splits, split_decisions, nishiki_mismatches
+        ),
+        "kagashi_matches_luckyj_nishiki_splits": split_summary(
+            kagashi_matches_nishiki_splits, split_decisions, nishiki_mismatches
+        ),
+        "hibakari_only_matches_luckyj_nishiki_splits": split_summary(
+            hibakari_only_vs_nishiki, split_decisions, nishiki_mismatches
+        ),
+        "hibakari_alignment_by_pattern_when_nishiki_splits": pattern_model_alignment(
+            nishiki_mismatches, nishiki_mismatches, "hibakari"
+        ),
+        "examples_hibakari_matches_luckyj_nishiki_splits": [compact_decision(item) for item in examples[:40]],
+    }
 
 
 def summarize_patterns(decisions: list[dict[str, Any]]) -> dict[str, Any]:
@@ -673,6 +954,7 @@ def main() -> None:
     args = parse_args()
     decisions = collect_decisions(args.max_reports)
     summary = summarize_patterns(decisions)
+    model_split = summarize_model_splits(decisions)
     candidates = [] if args.no_mortal else select_mortal_candidates(decisions, args.mortal_per_pattern, args.mortal_total)
     mortal_summary = {"enabled": False, "reason": "disabled"}
     if not args.no_mortal:
@@ -686,6 +968,7 @@ def main() -> None:
             "mortal_total": args.mortal_total,
         },
         "summary": summary,
+        "model_split": model_split,
         "mortal": mortal_summary,
         "candidate_points": propose_points(summary, mortal_summary),
     }

@@ -1667,16 +1667,6 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   gap: calc(0.25 * var(--display-base));
 }
 
-.tile-group-label {
-  color: var(--muted);
-  font-size: 0.62em;
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 1;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
 .mahjong-table .hand.compact {
   align-items: center;
   border: 0;
@@ -1705,6 +1695,8 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 }
 
 .meld-run {
+  --called-step: calc(0.86 * var(--tile-size));
+  --meld-step: calc(0.554 * var(--tile-size));
   border: 1px solid #c8cec0;
   align-items: center;
   display: inline-flex;
@@ -1716,33 +1708,38 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   white-space: nowrap;
 }
 
-.meld-segment {
-  display: inline-block;
-  flex: 0 0 auto;
+.meld-tile-slot {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 var(--meld-step);
+  height: calc(1.08 * var(--tile-size));
+  justify-content: flex-start;
+  line-height: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: visible;
+  width: var(--meld-step);
 }
 
 .called-tile-slot {
-  align-items: center;
-  display: inline-flex;
-  flex: 0 0 calc(1 * var(--tile-size));
-  height: calc(1.08 * var(--tile-size));
+  flex-basis: var(--called-step);
   justify-content: center;
-  line-height: 1;
-  width: calc(1 * var(--tile-size));
+  width: var(--called-step);
 }
 
-.meld-before-called {
-  margin-right: -0.04em;
+.called-from-kamicha,
+.called-from-toimen {
+  justify-content: flex-end;
 }
 
-.meld-after-called {
-  margin-left: -0.04em;
-}
-
+.tiles.meld-tile,
 .called-tile {
   display: inline-block;
   letter-spacing: 0;
   line-height: 1;
+}
+
+.called-tile {
   transform: rotate(90deg);
   transform-origin: center;
 }

@@ -105,11 +105,11 @@
   },
   "point-14": {
     "caption": "Keep the exit with the shape",
-    "situation": "LuckyJ and NAGA split on a discard where NAGA wants to spend a tile that is already genbutsu or suji to an opponent river. LuckyJ cuts a different tile and keeps that defensive exit in the hand.",
-    "read": "The retained tile is doing a timing job, and the target matters. A tile that is genbutsu to the dealer differs from suji to a closed child; a non-dealer open hand is a different pressure class from dealer riichi. The paired target breakdown separates kept exits from spent exits, so a small dealer-riichi kept count should be read by timing. Dealer riichi is rarer and usually later; the useful signal is whether LuckyJ cashes the safe tile now or preserves it for one more decision.",
+    "situation": "LuckyJ and NAGA split on a discard where NAGA wants to spend a tile that is already genbutsu, suji, or an early outside tile (sotogawa) to an opponent river. LuckyJ cuts a different tile and keeps that defensive exit in the hand.",
+    "read": "The retained tile is doing a timing job, and the target matters. A tile that is genbutsu to the dealer differs from suji to a closed child; an outside tile (sotogawa) from a first-row discard is weaker again, but still points at a specific river. The paired target breakdown separates kept exits from spent exits, so the useful signal is whether LuckyJ cashes the defensive tile now or preserves it for one more decision.",
     "whyNot": "NAGA's top discard may be mechanically cleaner because safe tiles often look redundant while the table is quiet. The hand's future danger is invisible in shanten. Spending the only genbutsu or useful suji tile too early can make the next turn force a live middle discard that the current hand never deserved to push.",
-    "copy": "Keep a small defensive inventory by opponent class. Mark exact river matches first, then suji tiles from the dealer, riichi hands, and open hands. When your hand is far or only moderately valuable, avoid spending the last useful exit against the opponent most likely to tax your next discard.",
-    "limit": "Rate suji modestly. Suji is weaker than genbutsu, weaker against unusual waits, and often irrelevant against a quiet player. Copy LuckyJ here when the retained tile is safe against the player who matters and the hand still needs a future off-ramp."
+    "copy": "Keep a small defensive inventory by opponent class. Mark exact river matches first, then suji, then early outside tiles (sotogawa) from the dealer, riichi hands, and open hands. When your hand is far or only moderately valuable, avoid spending the last useful exit against the opponent most likely to tax your next discard.",
+    "limit": "Rate suji modestly and sotogawa even more modestly. Both are weaker than genbutsu, weaker against unusual waits, and often irrelevant against a quiet player. Copy LuckyJ here when the retained tile points at the player who matters and the hand still needs a future off-ramp."
   },
   "point-15": {
     "caption": "Spend stale safety when the target changes",
@@ -129,10 +129,10 @@
   },
   "point-17": {
     "caption": "A safe tile needs a target",
-    "situation": "LuckyJ keeps a genbutsu or suji tile that NAGA wants to cut, but the important detail is who that tile is safe against and whether that opponent is active.",
-    "read": "The aggregate warning is strong: generic kept-genbutsu/suji mismatches were worse than baseline, while threat-specific exit preservation was much better. The concept is coverage: a tile is good when it covers the opponent who can punish the next discard.",
-    "whyNot": "Humans over-label tiles as simply safe. Genbutsu to shimocha gives no protection against toimen's riichi. Suji to a quiet child gives little answer to an open dealer. If the kept tile misses the live danger, NAGA's shape cut may be right.",
-    "copy": "For every safe tile you keep, write the full sentence: \"safe against X if Y happens.\" If the sentence names a live riichi, open hand, or dealer pressure, the tile has a job. Vague targets should be repriced as ordinary clutter.",
+    "situation": "LuckyJ keeps a genbutsu, suji, or sotogawa tile that NAGA wants to cut, but the important detail is who that tile is safer against and whether that opponent is active.",
+    "read": "The aggregate warning is strong: generic kept-genbutsu/suji mismatches were worse than baseline, while threat-specific exit preservation was much better. Sotogawa belongs in the same target sentence, just with a lower certainty grade. The concept is coverage: a tile is good when it covers the opponent who can punish the next discard.",
+    "whyNot": "Humans over-label tiles as simply safe. Genbutsu to shimocha gives no protection against toimen's riichi. Suji or sotogawa to a quiet child gives little answer to an open dealer. If the kept tile misses the live danger, NAGA's shape cut may be right.",
+    "copy": "For every safe tile you keep, write the full sentence: \"safe against X if Y happens.\" If the sentence names a live riichi, open hand, dealer pressure, or an early outside-tile read from that player's river, the tile has a job. Vague targets should be repriced as ordinary clutter.",
     "limit": "Target naming can drift into over-defense. High-value tenpai, parent pressure, and weak threats can still justify spending the safe tile."
   },
   "point-18": {

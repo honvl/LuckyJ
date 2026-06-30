@@ -174,10 +174,28 @@ def suji_source_tiles(tile):
     return sources
 
 
+def sotogawa_source_tiles(tile):
+    parsed = suited_rank(tile)
+    if not parsed:
+        return []
+    rank, suit = parsed
+    sources = []
+    if rank < 5:
+        for source in (rank + 1, rank + 2):
+            if source <= 5:
+                sources.append(f"{source}{suit}")
+    elif rank > 5:
+        for source in (rank - 1, rank - 2):
+            if source >= 5:
+                sources.append(f"{source}{suit}")
+    return sources
+
+
 def defensive_tile_read(tile, target, discards, reached=None, open_melds=None):
     reached = reached or [False, False, False, False]
     open_melds = open_melds or [0, 0, 0, 0]
     partners = set(suji_source_tiles(tile))
+    sotogawa_partners = set(sotogawa_source_tiles(tile))
     tile_idx = tile_index(tile)
     against = []
 
@@ -186,35 +204,52 @@ def defensive_tile_read(tile, target, discards, reached=None, open_melds=None):
             continue
         genbutsu_sources = []
         suji_sources = []
+        sotogawa_sources = []
         for pos, discarded in enumerate(river or [], 1):
             if tile_index(discarded) == tile_idx:
                 genbutsu_sources.append({"tile": discarded, "position": pos})
             if tile_base(discarded) in partners:
                 suji_sources.append({"tile": discarded, "position": pos})
-        if genbutsu_sources or suji_sources:
-            against.append(
-                {
-                    "seat": seat,
-                    "kind": "genbutsu" if genbutsu_sources else "suji",
-                    "genbutsu_sources": genbutsu_sources,
-                    "suji_sources": suji_sources,
-                    "reached": bool(seat < len(reached) and reached[seat]),
-                    "open_melds": open_melds[seat] if seat < len(open_melds) else 0,
-                }
-            )
+            if pos <= 6 and tile_base(discarded) in sotogawa_partners:
+                sotogawa_sources.append({"tile": discarded, "position": pos})
+        if genbutsu_sources or suji_sources or sotogawa_sources:
+            item = {
+                "seat": seat,
+                "kind": "genbutsu" if genbutsu_sources else "suji" if suji_sources else None,
+                "genbutsu_sources": genbutsu_sources,
+                "suji_sources": suji_sources,
+                "reached": bool(seat < len(reached) and reached[seat]),
+                "open_melds": open_melds[seat] if seat < len(open_melds) else 0,
+            }
+            if sotogawa_sources:
+                item["sotogawa_sources"] = sotogawa_sources
+            against.append(item)
 
     has_genbutsu = any(item["genbutsu_sources"] for item in against)
     has_suji = any(item["suji_sources"] for item in against)
-    safe_against_threat = any(item["reached"] or item["open_melds"] for item in against)
-    return {
+    has_sotogawa = any(item.get("sotogawa_sources") for item in against)
+    safe_against_threat = any(
+        (item["genbutsu_sources"] or item["suji_sources"]) and (item["reached"] or item["open_melds"])
+        for item in against
+    )
+    sotogawa_against_threat = any(
+        item.get("sotogawa_sources") and (item["reached"] or item["open_melds"]) for item in against
+    )
+    read = {
         "tile": tile,
         "kind": "genbutsu" if has_genbutsu else "suji" if has_suji else None,
         "has_genbutsu": has_genbutsu,
         "has_suji": has_suji,
         "safe_against_threat": safe_against_threat,
-        "opponents": len(against),
+        "opponents": sum(1 for item in against if item["genbutsu_sources"] or item["suji_sources"]),
         "against": against,
     }
+    if has_sotogawa:
+        read["has_sotogawa"] = True
+        read["sotogawa_opponents"] = sum(1 for item in against if item.get("sotogawa_sources"))
+    if sotogawa_against_threat:
+        read["sotogawa_against_threat"] = True
+    return read
 
 
 def top_tile(probs):
