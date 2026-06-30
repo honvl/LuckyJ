@@ -549,7 +549,7 @@ def safety_read_sentence(read, lang):
         threat = "リーチ" if target.get("reached") else f"{target.get('open_melds')}副露" if target.get("open_melds") else "静かな相手"
         return f"残る {tile_token(read.get('tile'))} は {seat_label(target.get('seat_label'), lang)} に対して{kind_text}で、相手の状態は{threat}。"
     kind_text = {"genbutsu": "river-safe", "suji": "suji"}.get(kind, kind)
-    threat = "riichi" if target.get("reached") else f"{target.get('open_melds')} calls" if target.get("open_melds") else "no declared threat"
+    threat = "riichi" if target.get("reached") else f"{target.get('open_melds')} calls" if target.get("open_melds") else "no called threat"
     return f"The kept {tile_token(read.get('tile'))} is {kind_text} against the {seat_label(target.get('seat_label'), lang)} ({threat})."
 
 

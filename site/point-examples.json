@@ -4414,7 +4414,7 @@
       "guide": {
         "caption": "LuckyJ 2p, NAGA 5m",
         "situation": "South 1-0, middle hand, 28 tiles left. LuckyJ is lead on 35800 points in rank 3. After drawing [[5m]], LuckyJ cuts [[2p]]; NAGA's top line is [[5m]]. Result: self dealt into toimen, delta -24000",
-        "read": "The lead seat changes the price of this discard. LuckyJ chooses the discard that leaves the next turn manageable. The kept [[5m]] is river-safe against the right player (no declared threat).",
+        "read": "The lead seat changes the price of this discard. LuckyJ chooses the discard that leaves the next turn manageable. The kept [[5m]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[5m]] is tempting because it leaves 2-shanten, 35 visible ukeire, main accepts [[6m]], [[9m]], [[1p]], [[2p]], [[3p]]. LuckyJ's [[2p]] line leaves 2-shanten, 45 visible ukeire, main accepts [[3m]], [[4m]], [[5m]], [[6m]], [[7m]]. LuckyJ buys immediate safety: LuckyJ 7.3%, NAGA 29.5%.",
         "copy": "Copy the reason: if cutting [[2p]] keeps the hand's real job clearer than the NAGA line through [[5m]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -5208,7 +5208,7 @@
       "guide": {
         "caption": "LuckyJ E, NAGA 5m",
         "situation": "South 2-2, middle hand, 27 tiles left. LuckyJ is lead on 53000 points in rank 1. After drawing [[5m]], LuckyJ cuts [[E]]; NAGA's top line is [[5m]]. Result: draw, self delta -1500",
-        "read": "The lead seat changes the price of this discard. LuckyJ chooses the discard that leaves the next turn manageable. The kept [[5m]] is suji against the across player (no declared threat).",
+        "read": "The lead seat changes the price of this discard. LuckyJ chooses the discard that leaves the next turn manageable. The kept [[5m]] is suji against the across player (no called threat).",
         "whyNot": "The NAGA line through [[5m]] is tempting because it leaves 1-shanten, 11 visible ukeire, main accepts [[4m]], [[7m]], [[3s]]. LuckyJ's [[E]] line leaves 1-shanten, 14 visible ukeire, main accepts [[4m]], [[5m]], [[7m]], [[3s]], [[5s]]. LuckyJ buys immediate safety: LuckyJ 0.0%, NAGA 24.6%.",
         "copy": "Copy the reason: if cutting [[E]] keeps the hand's real job clearer than the NAGA line through [[5m]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -7543,7 +7543,7 @@
       "guide": {
         "caption": "LuckyJ 5s, NAGA 9s",
         "situation": "South 3-0, early hand, 51 tiles left. LuckyJ is behind on 24200 points in rank 2. After drawing [[9s]], LuckyJ cuts [[5s]]; NAGA's top line is [[9s]]. Result: shimocha won, self delta +0",
-        "read": "Cutting [[5s]] keeps [[9s]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[9s]] is river-safe against the right player (no declared threat).",
+        "read": "Cutting [[5s]] keeps [[9s]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[9s]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[9s]] is tempting because it leaves 2-shanten, 58 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[5m]]. LuckyJ's [[5s]] line leaves 2-shanten, 51 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[5m]]. LuckyJ pays extra danger now: LuckyJ 8.6%, NAGA 3.9%.",
         "copy": "Copy the reason: if cutting [[5s]] keeps the hand's real job clearer than the NAGA line through [[9s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -7938,7 +7938,7 @@
       "guide": {
         "caption": "LuckyJ 2m, NAGA 9p",
         "situation": "East 2-0, early hand, 51 tiles left. LuckyJ is behind on 21900 points in rank 1. After drawing [[C]], LuckyJ cuts [[2m]]; NAGA's top line is [[9p]]. Result: draw, self delta -1000",
-        "read": "Cutting [[2m]] keeps [[9p]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[9p]] is river-safe against the left player (no declared threat).",
+        "read": "Cutting [[2m]] keeps [[9p]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[9p]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA line through [[9p]] is tempting because it leaves 4-shanten, 61 visible ukeire, main accepts [[4m]], [[6m]], [[7m]], [[8m]], [[9m]]. LuckyJ's [[2m]] line leaves 4-shanten, 68 visible ukeire, main accepts [[2m]], [[3m]], [[4m]], [[5m]], [[6m]]. LuckyJ pays extra danger now: LuckyJ 47.1%, NAGA 0.3%.",
         "copy": "Copy the reason: if cutting [[2m]] keeps the hand's real job clearer than the NAGA line through [[9p]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -8581,7 +8581,7 @@
       "guide": {
         "caption": "LuckyJ 8p, NAGA 1p",
         "situation": "East 2-0, early hand, 50 tiles left. LuckyJ is lead on 39000 points in rank 1. After drawing [[1p]], LuckyJ cuts [[8p]]; NAGA's top line is [[1p]]. Result: self won 1 han 40 fu, delta +3300",
-        "read": "Cutting [[8p]] keeps [[1p]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1p]] is suji against the left player (no declared threat).",
+        "read": "Cutting [[8p]] keeps [[1p]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1p]] is suji against the left player (no called threat).",
         "whyNot": "The NAGA line through [[1p]] is tempting because it leaves 3-shanten, 67 visible ukeire, main accepts [[2m]], [[3m]], [[4m]], [[5m]], [[6m]]. LuckyJ's [[8p]] line leaves 3-shanten, 62 visible ukeire, main accepts [[2m]], [[3m]], [[4m]], [[5m]], [[6m]]. LuckyJ pays extra danger now: LuckyJ 7.3%, NAGA 1.2%.",
         "copy": "Copy the reason: if cutting [[8p]] keeps the hand's real job clearer than the NAGA line through [[1p]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -9135,7 +9135,7 @@
       "guide": {
         "caption": "LuckyJ 8p, NAGA 1m",
         "situation": "South 2-0, early hand, 51 tiles left. LuckyJ is behind on 21800 points in rank 4. After drawing [[1m]], LuckyJ cuts [[8p]]; NAGA's top line is [[1m]]. Result: draw, self delta -1500",
-        "read": "Cutting [[8p]] keeps [[1m]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1m]] is river-safe against the right player (no declared threat).",
+        "read": "Cutting [[8p]] keeps [[1m]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1m]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[1m]] is tempting because it leaves 2-shanten, 19 visible ukeire, main accepts [[6m]], [[9m]], [[3s]], [[5s]], [[8s]]. LuckyJ's [[8p]] line leaves 2-shanten, 19 visible ukeire, main accepts [[6m]], [[9m]], [[3s]], [[5s]], [[8s]]. LuckyJ pays extra danger now: LuckyJ 4.9%, NAGA 0.0%.",
         "copy": "Copy the reason: if cutting [[8p]] keeps the hand's real job clearer than the NAGA line through [[1m]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -9621,7 +9621,7 @@
       "guide": {
         "caption": "LuckyJ 2p, NAGA C",
         "situation": "East 1-0, early hand, 51 tiles left. LuckyJ is above starting score on 25000 points in rank 1. After drawing [[3p]], LuckyJ cuts [[2p]]; NAGA's top line is [[C]]. Result: toimen won, self delta +0",
-        "read": "Cutting [[2p]] keeps [[C]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[C]] is river-safe against the left player (no declared threat).",
+        "read": "Cutting [[2p]] keeps [[C]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[C]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA line through [[C]] is tempting because it leaves 2-shanten, 25 visible ukeire, main accepts [[1m]], [[2m]], [[4m]], [[5m]], [[1p]]. LuckyJ's [[2p]] line leaves 2-shanten, 35 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[5m]]. The danger numbers are close: LuckyJ 0.0%, NAGA 0.0%.",
         "copy": "Copy the reason: if cutting [[2p]] keeps the hand's real job clearer than the NAGA line through [[C]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -10051,7 +10051,7 @@
       "guide": {
         "caption": "LuckyJ 4m, NAGA 1s",
         "situation": "East 1-1, early hand, 57 tiles left. LuckyJ is above starting score on 25000 points in rank 2. After drawing [[6s]], LuckyJ cuts [[4m]]; NAGA's top line is [[1s]]. Result: toimen won, self delta +0",
-        "read": "Cutting [[4m]] keeps [[1s]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1s]] is river-safe against the left player (no declared threat).",
+        "read": "Cutting [[4m]] keeps [[1s]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1s]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA line through [[1s]] is tempting because it leaves 2-shanten, 16 visible ukeire, main accepts [[5m]], [[8m]], [[4s]], [[7s]]. LuckyJ's [[4m]] line leaves 2-shanten, 16 visible ukeire, main accepts [[5m]], [[8m]], [[4s]], [[7s]]. The danger numbers are close: LuckyJ 2.6%, NAGA 1.0%.",
         "copy": "Copy the reason: if cutting [[4m]] keeps the hand's real job clearer than the NAGA line through [[1s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -10332,7 +10332,7 @@
       "guide": {
         "caption": "LuckyJ 5p, NAGA 1m",
         "situation": "East 1-0, early hand, 59 tiles left. LuckyJ is above starting score on 25000 points in rank 1. After drawing [[5m]], LuckyJ cuts [[5p]]; NAGA's top line is [[1m]]. Result: self won 7 han 25 fu, delta +13000",
-        "read": "Cutting [[5p]] keeps [[1m]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1m]] is river-safe against the right player (no declared threat).",
+        "read": "Cutting [[5p]] keeps [[1m]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1m]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[1m]] is tempting because it leaves 3-shanten, 52 visible ukeire, main accepts [[5m]], [[3p]], [[4p]], [[5p]], [[6p]]. LuckyJ's [[5p]] line leaves 3-shanten, 51 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[5m]]. LuckyJ pays extra danger now: LuckyJ 5.9%, NAGA 1.8%.",
         "copy": "Copy the reason: if cutting [[5p]] keeps the hand's real job clearer than the NAGA line through [[1m]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -10921,7 +10921,7 @@
       "guide": {
         "caption": "LuckyJ 7p, NAGA N",
         "situation": "East 4-0, early hand, 52 tiles left. LuckyJ is above starting score on 26000 points in rank 4. After drawing [[7p]], LuckyJ cuts [[7p]]; NAGA's top line is [[N]]. Result: toimen won, self delta -3900",
-        "read": "Cutting [[7p]] keeps [[N]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[N]] is river-safe against the across player (no declared threat).",
+        "read": "Cutting [[7p]] keeps [[N]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[N]] is river-safe against the across player (no called threat).",
         "whyNot": "The NAGA line through [[N]] is tempting because it leaves 2-shanten, 31 visible ukeire, main accepts [[5m]], [[6m]], [[5p]], [[6p]], [[7p]]. LuckyJ's [[7p]] line leaves 1-shanten, 9 visible ukeire, main accepts [[5m]], [[6m]], [[6p]]. LuckyJ pays extra danger now: LuckyJ 22.0%, NAGA 1.0%.",
         "copy": "Copy the reason: if cutting [[7p]] keeps the hand's real job clearer than the NAGA line through [[N]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -11409,7 +11409,7 @@
       "guide": {
         "caption": "LuckyJ 4s, NAGA 1p",
         "situation": "East 2-0, early hand, 51 tiles left. LuckyJ is danger zone on 9800 points in rank 4. After drawing [[2m]], LuckyJ cuts [[4s]]; NAGA's top line is [[1p]]. Result: self dealt into shimocha, delta -2000",
-        "read": "Cutting [[4s]] keeps [[1p]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1p]] is suji against the right player (no declared threat).",
+        "read": "Cutting [[4s]] keeps [[1p]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1p]] is suji against the right player (no called threat).",
         "whyNot": "The NAGA line through [[1p]] is tempting because it leaves 1-shanten, 6 visible ukeire, main accepts [[2m]], [[8m]], [[8p]]. LuckyJ's [[4s]] line leaves 1-shanten, 6 visible ukeire, main accepts [[2m]], [[8m]], [[8p]]. LuckyJ pays extra danger now: LuckyJ 15.4%, NAGA 3.4%.",
         "copy": "Copy the reason: if cutting [[4s]] keeps the hand's real job clearer than the NAGA line through [[1p]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -11963,7 +11963,7 @@
       "guide": {
         "caption": "LuckyJ 8p, NAGA 1s",
         "situation": "East 1-0, early hand, 50 tiles left. LuckyJ is above starting score on 25000 points in rank 1. After drawing [[1s]], LuckyJ cuts [[8p]]; NAGA's top line is [[1s]]. Result: self won 3 han 30 fu, delta +4900",
-        "read": "Cutting [[8p]] keeps [[1s]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1s]] is river-safe against the left player (no declared threat).",
+        "read": "Cutting [[8p]] keeps [[1s]] as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information. The kept [[1s]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA line through [[1s]] is tempting because it leaves 1-shanten, 13 visible ukeire, main accepts [[8p]], [[4s]], [[7s]], [[W]]. LuckyJ's [[8p]] line leaves 1-shanten, 10 visible ukeire, main accepts [[4s]], [[7s]], [[W]]. LuckyJ pays extra danger now: LuckyJ 5.2%, NAGA 0.0%.",
         "copy": "Copy the reason: if cutting [[8p]] keeps the hand's real job clearer than the NAGA line through [[1s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -16770,7 +16770,7 @@
       "guide": {
         "caption": "LuckyJ 4s, NAGA 9s",
         "situation": "East 4-3, middle hand, 29 tiles left. LuckyJ is lead on 35300 points in rank 3. After drawing [[4m]], LuckyJ cuts [[4s]]; NAGA's top line is [[9s]]. Result: toimen won, self delta -6300",
-        "read": "[[4s]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[9s]] is river-safe against the left player (no declared threat).",
+        "read": "[[4s]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[9s]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA line through [[9s]] is tempting because it leaves 1-shanten, 24 visible ukeire, main accepts [[2s]], [[3s]], [[4s]], [[5s]], [[6s]]. LuckyJ's [[4s]] line leaves 0-shanten, 2 visible ukeire, main accepts [[8s]]. LuckyJ pays extra danger now: LuckyJ 87.2%, NAGA 0.0%.",
         "copy": "Copy the reason: if cutting [[4s]] keeps the hand's real job clearer than the NAGA line through [[9s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -17370,7 +17370,7 @@
       "guide": {
         "caption": "LuckyJ 7s, NAGA 9s",
         "situation": "South 2-3, middle hand, 30 tiles left. LuckyJ is above starting score on 34200 points in rank 2. After drawing [[9s]], LuckyJ cuts [[7s]]; NAGA's top line is [[9s]]. Result: self dealt into shimocha, delta -2900",
-        "read": "[[7s]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[9s]] is river-safe against the across player (no declared threat).",
+        "read": "[[7s]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[9s]] is river-safe against the across player (no called threat).",
         "whyNot": "The NAGA line through [[9s]] is tempting because it leaves 0-shanten, 4 visible ukeire, main accepts [[9m]], [[7s]]. LuckyJ's [[7s]] line leaves 0-shanten, 2 visible ukeire, main accepts [[8s]]. LuckyJ pays extra danger now: LuckyJ 73.2%, NAGA 5.5%.",
         "copy": "Copy the reason: if cutting [[7s]] keeps the hand's real job clearer than the NAGA line through [[9s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -18649,7 +18649,7 @@
       "guide": {
         "caption": "LuckyJ 8p, NAGA C",
         "situation": "South 3-0, middle hand, 33 tiles left. LuckyJ is lead on 35000 points in rank 3. After drawing [[4p]], LuckyJ cuts [[8p]]; NAGA's top line is [[C]]. Result: draw, self delta -1000",
-        "read": "[[8p]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[C]] is river-safe against the right player (no declared threat).",
+        "read": "[[8p]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[C]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[C]] is tempting because it leaves 2-shanten, 26 visible ukeire, main accepts [[3m]], [[6m]], [[4p]], [[5p]], [[7p]]. LuckyJ's [[8p]] line leaves 1-shanten, 16 visible ukeire, main accepts [[3m]], [[6m]], [[2s]], [[5s]]. LuckyJ pays extra danger now: LuckyJ 59.0%, NAGA 0.8%.",
         "copy": "Copy the reason: if cutting [[8p]] keeps the hand's real job clearer than the NAGA line through [[C]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -20305,7 +20305,7 @@
       "guide": {
         "caption": "LuckyJ 4s, NAGA 1m",
         "situation": "South 4-0, late hand, 1 tiles left. LuckyJ is lead on 39200 points in rank 1. After drawing [[1m]], LuckyJ cuts [[4s]]; NAGA's top line is [[1m]]. Result: draw, self delta +1000",
-        "read": "[[4s]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[1m]] is river-safe against the right player (no declared threat).",
+        "read": "[[4s]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[1m]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[1m]] is tempting because it leaves 1-shanten, 22 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[3s]]. LuckyJ's [[4s]] line leaves 0-shanten, 2 visible ukeire, main accepts [[3m]]. LuckyJ pays extra danger now: LuckyJ 67.5%, NAGA 0.0%.",
         "copy": "Copy the reason: if cutting [[4s]] keeps the hand's real job clearer than the NAGA line through [[1m]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -20974,7 +20974,7 @@
       "guide": {
         "caption": "LuckyJ 6p, NAGA 1s",
         "situation": "East 1-0, middle hand, 37 tiles left. LuckyJ is above starting score on 25000 points in rank 4. After drawing [[6p]], LuckyJ cuts [[6p]]; NAGA's top line is [[1s]]. Result: shimocha won, self delta +0",
-        "read": "[[6p]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[1s]] is river-safe against the right player (no declared threat).",
+        "read": "[[6p]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[1s]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[1s]] is tempting because it leaves 1-shanten, 19 visible ukeire, main accepts [[5m]], [[5p]], [[6p]], [[8p]], [[2s]]. LuckyJ's [[6p]] line leaves 1-shanten, 15 visible ukeire, main accepts [[5p]], [[8p]], [[2s]], [[5s]]. LuckyJ pays extra danger now: LuckyJ 63.7%, NAGA 5.7%.",
         "copy": "Copy the reason: if cutting [[6p]] keeps the hand's real job clearer than the NAGA line through [[1s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -21353,7 +21353,7 @@
       "guide": {
         "caption": "LuckyJ 2m, NAGA 9s",
         "situation": "East 4-3, middle hand, 45 tiles left. LuckyJ is lead on 35300 points in rank 3. After drawing [[8p]], LuckyJ cuts [[2m]]; NAGA's top line is [[9s]]. Result: toimen won, self delta -6300",
-        "read": "[[2m]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[9s]] is river-safe against the left player (no declared threat).",
+        "read": "[[2m]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[9s]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA line through [[9s]] is tempting because it leaves 2-shanten, 46 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[5m]]. LuckyJ's [[2m]] line leaves 1-shanten, 11 visible ukeire, main accepts [[1m]], [[4m]], [[8s]]. LuckyJ pays extra danger now: LuckyJ 56.3%, NAGA 8.9%.",
         "copy": "Copy the reason: if cutting [[2m]] keeps the hand's real job clearer than the NAGA line through [[9s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -21845,7 +21845,7 @@
       "guide": {
         "caption": "LuckyJ 4s, NAGA S",
         "situation": "South 1-0, middle hand, 44 tiles left. LuckyJ is behind on 21800 points in rank 3. After drawing [[4s]], LuckyJ cuts [[4s]]; NAGA's top line is [[S]]. Result: toimen won, self delta +0",
-        "read": "[[4s]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[S]] is river-safe against the right player (no declared threat).",
+        "read": "[[4s]] is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more. The kept [[S]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[S]] is tempting because it leaves 1-shanten, 14 visible ukeire, main accepts [[5m]], [[5p]], [[8p]], [[3s]], [[4s]]. LuckyJ's [[4s]] line leaves 1-shanten, 11 visible ukeire, main accepts [[5m]], [[5p]], [[8p]], [[S]]. LuckyJ pays extra danger now: LuckyJ 41.3%, NAGA 3.3%.",
         "copy": "Copy the reason: if cutting [[4s]] keeps the hand's real job clearer than the NAGA line through [[S]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -22729,7 +22729,7 @@
       "guide": {
         "caption": "LuckyJ 7p, NAGA 2s",
         "situation": "East 1-1, early hand, 56 tiles left. LuckyJ is behind on 24000 points in rank 4. After drawing [[2s]], LuckyJ cuts [[7p]]; NAGA's top line is [[2s]]. Result: self dealt into shimocha, delta -2300",
-        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[2s]] is river-safe against the left player (no declared threat).",
+        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[2s]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA line through [[2s]] is tempting because it leaves 2-shanten, 22 visible ukeire, main accepts [[1m]], [[4m]], [[8m]], [[4p]], [[7p]]. LuckyJ's [[7p]] line leaves 2-shanten, 21 visible ukeire, main accepts [[1m]], [[4m]], [[8m]], [[4p]], [[2s]]. LuckyJ pays extra danger now: LuckyJ 3.6%, NAGA 0.5%.",
         "copy": "Copy the reason: if cutting [[7p]] keeps the hand's real job clearer than the NAGA line through [[2s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -23116,7 +23116,7 @@
       "guide": {
         "caption": "LuckyJ 1m, NAGA W",
         "situation": "South 4-2, early hand, 55 tiles left. LuckyJ is danger zone on 11000 points in rank 4. After drawing [[W]], LuckyJ cuts [[1m]]; NAGA's top line is [[W]]. Result: self dealt into toimen, delta -3500",
-        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[W]] is river-safe against the right player (no declared threat).",
+        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[W]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[W]] is tempting because it leaves 2-shanten, 45 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[5m]]. LuckyJ's [[1m]] line leaves 2-shanten, 40 visible ukeire, main accepts [[3m]], [[4m]], [[5m]], [[6m]], [[7m]]. The danger numbers are close: LuckyJ 1.6%, NAGA 0.1%.",
         "copy": "Copy the reason: if cutting [[1m]] keeps the hand's real job clearer than the NAGA line through [[W]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -23800,7 +23800,7 @@
       "guide": {
         "caption": "LuckyJ 1p, NAGA 8m",
         "situation": "South 1-0, early hand, 62 tiles left. LuckyJ is behind on 16500 points in rank 2. After drawing [[3m]], LuckyJ cuts [[1p]]; NAGA's top line is [[8m]]. Result: self won 4 han 30 fu, delta +10900",
-        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[8m]] is river-safe against the left player (no declared threat).",
+        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[8m]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA line through [[8m]] is tempting because it leaves 2-shanten, 38 visible ukeire, main accepts [[2m]], [[3m]], [[4m]], [[5m]], [[1p]]. LuckyJ's [[1p]] line leaves 2-shanten, 22 visible ukeire, main accepts [[2m]], [[5m]], [[8m]], [[3p]], [[6p]]. The danger numbers are close: LuckyJ 0.9%, NAGA 0.0%.",
         "copy": "Copy the reason: if cutting [[1p]] keeps the hand's real job clearer than the NAGA line through [[8m]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -24212,7 +24212,7 @@
       "guide": {
         "caption": "LuckyJ 8p, NAGA C",
         "situation": "South 2-0, early hand, 60 tiles left. LuckyJ is behind on 19000 points in rank 3. After drawing [[5p]], LuckyJ cuts [[8p]]; NAGA's top line is [[C]]. Result: self dealt into shimocha, delta -8000",
-        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[C]] is river-safe against the right player (no declared threat).",
+        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[C]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[C]] is tempting because it leaves 3-shanten, 76 visible ukeire, main accepts [[2m]], [[3m]], [[4m]], [[5m]], [[6m]]. LuckyJ's [[8p]] line leaves 3-shanten, 72 visible ukeire, main accepts [[2m]], [[3m]], [[4m]], [[5m]], [[6m]]. LuckyJ pays extra danger now: LuckyJ 3.7%, NAGA 0.4%.",
         "copy": "Copy the reason: if cutting [[8p]] keeps the hand's real job clearer than the NAGA line through [[C]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -24700,7 +24700,7 @@
       "guide": {
         "caption": "LuckyJ 1m, NAGA W",
         "situation": "South 4-0, early hand, 60 tiles left. LuckyJ is danger zone on 2400 points in rank 4. After drawing [[W]], LuckyJ cuts [[1m]]; NAGA's top line is [[W]]. Result: kamicha won, self delta -2000",
-        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[W]] is river-safe against the across player (no declared threat).",
+        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[W]] is river-safe against the across player (no called threat).",
         "whyNot": "The NAGA line through [[W]] is tempting because it leaves 3-shanten, 24 visible ukeire, main accepts [[2m]], [[4m]], [[2p]], [[6p]], [[3s]]. LuckyJ's [[1m]] line leaves 3-shanten, 20 visible ukeire, main accepts [[4m]], [[2p]], [[6p]], [[3s]], [[6s]]. The danger numbers are close: LuckyJ 0.4%, NAGA 0.1%.",
         "copy": "Copy the reason: if cutting [[1m]] keeps the hand's real job clearer than the NAGA line through [[W]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -26031,7 +26031,7 @@
       "guide": {
         "caption": "LuckyJ 9p, NAGA 2p",
         "situation": "South 2-0, early hand, 51 tiles left. LuckyJ is behind on 17600 points in rank 4. After drawing [[2p]], LuckyJ cuts [[9p]]; NAGA's top line is [[2p]]. Result: kamicha won, self delta +0",
-        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[2p]] is river-safe against the left player (no declared threat).",
+        "read": "LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future. The kept [[2p]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA line through [[2p]] is tempting because it leaves 2-shanten, 17 visible ukeire, main accepts [[2m]], [[7m]], [[8m]], [[7p]], [[9p]]. LuckyJ's [[9p]] line leaves 2-shanten, 15 visible ukeire, main accepts [[2m]], [[7m]], [[8m]], [[7p]], [[9s]]. LuckyJ pays extra danger now: LuckyJ 3.8%, NAGA 0.0%.",
         "copy": "Copy the reason: if cutting [[9p]] keeps the hand's real job clearer than the NAGA line through [[2p]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -28706,7 +28706,7 @@
       "guide": {
         "caption": "LuckyJ 5m, NAGA 4m",
         "situation": "East 2-0, early hand, 53 tiles left. LuckyJ is above starting score on 27100 points in rank 1. After drawing [[1s]], LuckyJ cuts [[5m]]; NAGA's top line is [[4m]]. Result: self won 2 han 40 fu, delta +4900",
-        "read": "Riichi is part of the value calculation. With a declaration probability of 100.0%, LuckyJ treats pressure as a real output of the discard. The kept [[4m]] is suji against the right player (no declared threat).",
+        "read": "Riichi is part of the value calculation. With a declaration probability of 100.0%, LuckyJ treats pressure as a real output of the discard. The kept [[4m]] is suji against the right player (no called threat).",
         "whyNot": "The NAGA line through [[4m]] is tempting because it leaves 0-shanten, 8 visible ukeire, main accepts [[3m]], [[6m]]. LuckyJ's [[5m]] line leaves 0-shanten, 4 visible ukeire, main accepts [[4m]], [[F]]. The danger numbers are close: LuckyJ 1.9%, NAGA 1.8%.",
         "copy": "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter.",
         "limit": "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct.",
@@ -29423,7 +29423,7 @@
       "guide": {
         "caption": "LuckyJ 3m, NAGA 4m",
         "situation": "East 4-0, middle hand, 35 tiles left. LuckyJ is above starting score on 27900 points in rank 2. After drawing [[7s]], LuckyJ cuts [[3m]]; NAGA's top line is [[4m]]. Result: self won 6 han 30 fu, delta +13000",
-        "read": "Riichi is part of the value calculation. With a declaration probability of 100.0%, LuckyJ treats pressure as a real output of the discard. The kept [[4m]] is suji against the right player (no declared threat).",
+        "read": "Riichi is part of the value calculation. With a declaration probability of 100.0%, LuckyJ treats pressure as a real output of the discard. The kept [[4m]] is suji against the right player (no called threat).",
         "whyNot": "The NAGA line through [[4m]] is tempting because it leaves 0-shanten, 8 visible ukeire, main accepts [[2m]], [[5m]]. LuckyJ's [[3m]] line leaves 0-shanten, 4 visible ukeire, main accepts [[4m]], [[F]]. LuckyJ pays extra danger now: LuckyJ 11.7%, NAGA 6.0%.",
         "copy": "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter.",
         "limit": "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct.",
@@ -29966,7 +29966,7 @@
       "guide": {
         "caption": "LuckyJ 4p, NAGA 1p",
         "situation": "South 3-0, middle hand, 39 tiles left. LuckyJ is above starting score on 25300 points in rank 2. After drawing [[3s]], LuckyJ cuts [[4p]]; NAGA's top line is [[1p]]. Result: draw, self delta +1500",
-        "read": "Riichi is part of the value calculation. With a declaration probability of 99.9%, LuckyJ treats pressure as a real output of the discard. The kept [[1p]] is river-safe against the across player (no declared threat).",
+        "read": "Riichi is part of the value calculation. With a declaration probability of 99.9%, LuckyJ treats pressure as a real output of the discard. The kept [[1p]] is river-safe against the across player (no called threat).",
         "whyNot": "The NAGA line through [[1p]] is tempting because it leaves 0-shanten, 6 visible ukeire, main accepts [[3p]], [[6p]]. LuckyJ's [[4p]] line leaves 0-shanten, 6 visible ukeire, main accepts [[3p]], [[6p]]. LuckyJ pays extra danger now: LuckyJ 20.8%, NAGA 7.5%.",
         "copy": "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter.",
         "limit": "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct.",
@@ -33203,7 +33203,7 @@
       "guide": {
         "caption": "LuckyJ 7s, NAGA 5s",
         "situation": "South 2-0, middle hand, 41 tiles left. LuckyJ is behind on 17900 points in rank 2. After drawing [[6m]], LuckyJ cuts [[7s]]; NAGA's top line is [[5s]]. Result: self won 2 han 40 fu, delta +4900",
-        "read": "Riichi is part of the value calculation. With a declaration probability of 98.1%, LuckyJ treats pressure as a real output of the discard. The kept [[5s]] is river-safe against the right player (no declared threat).",
+        "read": "Riichi is part of the value calculation. With a declaration probability of 98.1%, LuckyJ treats pressure as a real output of the discard. The kept [[5s]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[5s]] is tempting because it leaves 0-shanten, 4 visible ukeire, main accepts [[6s]]. LuckyJ's [[7s]] line leaves 0-shanten, 2 visible ukeire, main accepts [[W]]. LuckyJ pays extra danger now: LuckyJ 15.6%, NAGA 7.5%.",
         "copy": "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter.",
         "limit": "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct.",
@@ -33774,7 +33774,7 @@
       "guide": {
         "caption": "LuckyJ 8p, NAGA 5p",
         "situation": "East 1-1, early hand, 50 tiles left. LuckyJ is behind on 22400 points in rank 1. After drawing [[7s]], LuckyJ cuts [[8p]]; NAGA's top line is [[5p]]. Result: self won 6 han 30 fu, delta +13300",
-        "read": "Riichi is part of the value calculation. With a declaration probability of 93.9%, LuckyJ treats pressure as a real output of the discard. The kept [[5p]] is suji against the left player (no declared threat).",
+        "read": "Riichi is part of the value calculation. With a declaration probability of 93.9%, LuckyJ treats pressure as a real output of the discard. The kept [[5p]] is suji against the left player (no called threat).",
         "whyNot": "The NAGA line through [[5p]] is tempting because it leaves 0-shanten, 7 visible ukeire, main accepts [[6p]], [[9p]]. LuckyJ's [[8p]] line leaves 0-shanten, 4 visible ukeire, main accepts [[6p]]. LuckyJ buys immediate safety: LuckyJ 0.0%, NAGA 7.2%.",
         "copy": "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter.",
         "limit": "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct.",
@@ -38580,7 +38580,7 @@
       "guide": {
         "caption": "LuckyJ 4m, NAGA 1s",
         "situation": "East 1-0, middle hand, 28 tiles left. LuckyJ is above starting score on 25000 points in rank 2. After drawing [[7m]], LuckyJ cuts [[4m]]; NAGA's top line is [[1s]]. Result: toimen won, self delta +0",
-        "read": "The next required discard matters more than this turn alone. LuckyJ chooses [[4m]] because the route through [[1s]] can become expensive on the following draw. The kept [[1s]] is suji against the right player (no declared threat).",
+        "read": "The next required discard matters more than this turn alone. LuckyJ chooses [[4m]] because the route through [[1s]] can become expensive on the following draw. The kept [[1s]] is suji against the right player (no called threat).",
         "whyNot": "The NAGA line through [[1s]] is tempting because it leaves 1-shanten, 10 visible ukeire, main accepts [[2m]], [[5m]], [[6s]]. LuckyJ's [[4m]] line leaves 2-shanten, 29 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[5m]]. LuckyJ buys immediate safety: LuckyJ 0.0%, NAGA 31.9%.",
         "copy": "Copy the reason: if cutting [[4m]] keeps the hand's real job clearer than the NAGA line through [[1s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -43642,7 +43642,7 @@
       "guide": {
         "caption": "LuckyJ 4s, NAGA 1m",
         "situation": "South 4-0, late hand, 1 tiles left. LuckyJ is lead on 39200 points in rank 1. After drawing [[1m]], LuckyJ cuts [[4s]]; NAGA's top line is [[1m]]. Result: draw, self delta +1000",
-        "read": "This is late enough that vague improvement has mostly expired. LuckyJ's [[4s]] cut should be read as win, safe tenpai, or controlled exit. The kept [[1m]] is river-safe against the right player (no declared threat).",
+        "read": "This is late enough that vague improvement has mostly expired. LuckyJ's [[4s]] cut should be read as win, safe tenpai, or controlled exit. The kept [[1m]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[1m]] is tempting because it leaves 1-shanten, 22 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[3s]]. LuckyJ's [[4s]] line leaves 0-shanten, 2 visible ukeire, main accepts [[3m]]. LuckyJ pays extra danger now: LuckyJ 67.5%, NAGA 0.0%.",
         "copy": "Copy the reason: if cutting [[4s]] keeps the hand's real job clearer than the NAGA line through [[1m]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -49555,7 +49555,7 @@
       "guide": {
         "caption": "LuckyJ S, NAGA 9s",
         "situation": "East 2-1, late hand, 20 tiles left. LuckyJ is above starting score on 29200 points in rank 3. After drawing [[9s]], LuckyJ cuts [[S]]; NAGA's top line is [[9s]]. Result: draw, self delta +1500",
-        "read": "The hand result matters: draw, self delta +1500. LuckyJ is playing for drawn-hand equity as well as direct wins. The kept [[9s]] is river-safe against the left player (no declared threat).",
+        "read": "The hand result matters: draw, self delta +1500. LuckyJ is playing for drawn-hand equity as well as direct wins. The kept [[9s]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA top line [[9s]] is tempting because it has the highest model weight here: NAGA 98.6%, LuckyJ 1.3%. LuckyJ buys immediate safety: LuckyJ 0.0%, NAGA 4.3%.",
         "copy": "Copy this when a safe path to tenpai has measurable value even if the hand is unlikely to win outright.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -50326,7 +50326,7 @@
       "guide": {
         "caption": "LuckyJ 4s, NAGA 1m",
         "situation": "South 4-0, late hand, 1 tiles left. LuckyJ is lead on 39200 points in rank 1. After drawing [[1m]], LuckyJ cuts [[4s]]; NAGA's top line is [[1m]]. Result: draw, self delta +1000",
-        "read": "The hand result matters: draw, self delta +1000. LuckyJ is playing for drawn-hand equity as well as direct wins. The kept [[1m]] is river-safe against the right player (no declared threat).",
+        "read": "The hand result matters: draw, self delta +1000. LuckyJ is playing for drawn-hand equity as well as direct wins. The kept [[1m]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA top line [[1m]] is tempting because it has the highest model weight here: NAGA 97.0%, LuckyJ 1.8%. LuckyJ pays extra danger now: LuckyJ 67.5%, NAGA 0.0%.",
         "copy": "Copy this when a safe path to tenpai has measurable value even if the hand is unlikely to win outright.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -51414,7 +51414,7 @@
       "guide": {
         "caption": "LuckyJ 9s, NAGA E",
         "situation": "East 4-0, late hand, 18 tiles left. LuckyJ is behind on 23800 points in rank 3. After drawing [[E]], LuckyJ cuts [[9s]]; NAGA's top line is [[E]]. Result: draw, self delta +1500",
-        "read": "The hand result matters: draw, self delta +1500. LuckyJ is playing for drawn-hand equity as well as direct wins. The kept [[E]] is river-safe against the right player (no declared threat).",
+        "read": "The hand result matters: draw, self delta +1500. LuckyJ is playing for drawn-hand equity as well as direct wins. The kept [[E]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA top line [[E]] is tempting because it has the highest model weight here: NAGA 96.6%, LuckyJ 3.4%. LuckyJ pays extra danger now: LuckyJ 5.6%, NAGA 1.8%.",
         "copy": "Copy this when a safe path to tenpai has measurable value even if the hand is unlikely to win outright.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -55048,7 +55048,7 @@
       "guide": {
         "caption": "LuckyJ 7s, NAGA 9s",
         "situation": "South 2-3, middle hand, 30 tiles left. LuckyJ is above starting score on 34200 points in rank 2. After drawing [[9s]], LuckyJ cuts [[7s]]; NAGA's top line is [[9s]]. Result: self dealt into shimocha, delta -2900",
-        "read": "The disagreement is the review prompt. First decide whether [[7s]] buys safety, value, route count, pressure, or placement before calling it right or wrong. The kept [[9s]] is river-safe against the across player (no declared threat).",
+        "read": "The disagreement is the review prompt. First decide whether [[7s]] buys safety, value, route count, pressure, or placement before calling it right or wrong. The kept [[9s]] is river-safe against the across player (no called threat).",
         "whyNot": "The NAGA line through [[9s]] is tempting because it leaves 0-shanten, 4 visible ukeire, main accepts [[9m]], [[7s]]. LuckyJ's [[7s]] line leaves 0-shanten, 2 visible ukeire, main accepts [[8s]]. LuckyJ pays extra danger now: LuckyJ 73.2%, NAGA 5.5%.",
         "copy": "Copy the reason: if cutting [[7s]] keeps the hand's real job clearer than the NAGA line through [[9s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -55863,7 +55863,7 @@
       "guide": {
         "caption": "LuckyJ 8p, NAGA C",
         "situation": "South 3-0, middle hand, 33 tiles left. LuckyJ is lead on 35000 points in rank 3. After drawing [[4p]], LuckyJ cuts [[8p]]; NAGA's top line is [[C]]. Result: draw, self delta -1000",
-        "read": "The disagreement is the review prompt. First decide whether [[8p]] buys safety, value, route count, pressure, or placement before calling it right or wrong. The kept [[C]] is river-safe against the right player (no declared threat).",
+        "read": "The disagreement is the review prompt. First decide whether [[8p]] buys safety, value, route count, pressure, or placement before calling it right or wrong. The kept [[C]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[C]] is tempting because it leaves 2-shanten, 26 visible ukeire, main accepts [[3m]], [[6m]], [[4p]], [[5p]], [[7p]]. LuckyJ's [[8p]] line leaves 1-shanten, 16 visible ukeire, main accepts [[3m]], [[6m]], [[2s]], [[5s]]. LuckyJ pays extra danger now: LuckyJ 59.0%, NAGA 0.8%.",
         "copy": "Copy the reason: if cutting [[8p]] keeps the hand's real job clearer than the NAGA line through [[C]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -56485,7 +56485,7 @@
       "guide": {
         "caption": "LuckyJ 1p, NAGA 6m",
         "situation": "South 3-1, middle hand, 39 tiles left. LuckyJ is above starting score on 25500 points in rank 1. After drawing [[8s]], LuckyJ cuts [[1p]]; NAGA's top line is [[6m]]. Result: shimocha won, self delta +0",
-        "read": "The disagreement is the review prompt. First decide whether [[1p]] buys safety, value, route count, pressure, or placement before calling it right or wrong. The kept [[6m]] is suji against the left player (no declared threat).",
+        "read": "The disagreement is the review prompt. First decide whether [[1p]] buys safety, value, route count, pressure, or placement before calling it right or wrong. The kept [[6m]] is suji against the left player (no called threat).",
         "whyNot": "The NAGA line through [[6m]] is tempting because it leaves 0-shanten, 3 visible ukeire, main accepts [[3p]]. LuckyJ's [[1p]] line leaves 1-shanten, 34 visible ukeire, main accepts [[1m]], [[4m]], [[5m]], [[6m]], [[7m]]. LuckyJ buys immediate safety: LuckyJ 6.6%, NAGA 69.2%.",
         "copy": "Copy the reason: if cutting [[1p]] keeps the hand's real job clearer than the NAGA line through [[6m]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -57112,7 +57112,7 @@
       "guide": {
         "caption": "LuckyJ P, NAGA 8s",
         "situation": "East 2-1, middle hand, 28 tiles left. LuckyJ is behind on 24000 points in rank 2. After drawing [[6s]], LuckyJ cuts [[P]]; NAGA's top line is [[8s]]. Result: draw, self delta -1500",
-        "read": "The disagreement is the review prompt. First decide whether [[P]] buys safety, value, route count, pressure, or placement before calling it right or wrong. The kept [[8s]] is river-safe against the right player (no declared threat).",
+        "read": "The disagreement is the review prompt. First decide whether [[P]] buys safety, value, route count, pressure, or placement before calling it right or wrong. The kept [[8s]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[8s]] is tempting because it leaves 2-shanten, 48 visible ukeire, main accepts [[3m]], [[4m]], [[5m]], [[6m]], [[7m]]. LuckyJ's [[P]] line leaves 2-shanten, 36 visible ukeire, main accepts [[3m]], [[4m]], [[5m]], [[6m]], [[7m]]. LuckyJ buys immediate safety: LuckyJ 10.9%, NAGA 79.9%.",
         "copy": "Copy the reason: if cutting [[P]] keeps the hand's real job clearer than the NAGA line through [[8s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -57915,7 +57915,7 @@
       "guide": {
         "caption": "LuckyJ 4s, NAGA 1m",
         "situation": "South 4-0, late hand, 1 tiles left. LuckyJ is lead on 39200 points in rank 1. After drawing [[1m]], LuckyJ cuts [[4s]]; NAGA's top line is [[1m]]. Result: draw, self delta +1000",
-        "read": "The disagreement is the review prompt. First decide whether [[4s]] buys safety, value, route count, pressure, or placement before calling it right or wrong. The kept [[1m]] is river-safe against the right player (no declared threat).",
+        "read": "The disagreement is the review prompt. First decide whether [[4s]] buys safety, value, route count, pressure, or placement before calling it right or wrong. The kept [[1m]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[1m]] is tempting because it leaves 1-shanten, 22 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[3s]]. LuckyJ's [[4s]] line leaves 0-shanten, 2 visible ukeire, main accepts [[3m]]. LuckyJ pays extra danger now: LuckyJ 67.5%, NAGA 0.0%.",
         "copy": "Copy the reason: if cutting [[4s]] keeps the hand's real job clearer than the NAGA line through [[1m]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -59082,7 +59082,7 @@
       "guide": {
         "caption": "LuckyJ F, NAGA 9s",
         "situation": "East 3-1, early hand, 68 tiles left. LuckyJ is lead on 38500 points in rank 1. After drawing [[9m]], LuckyJ cuts [[F]]; NAGA's top line is [[9s]]. Result: toimen won, self delta -1100",
-        "read": "[[F]] is still a yaku condition against right player ([[S]] seat wind, melds 7s 8s 9s). The kept [[9s]] is river-safe against the across player (no declared threat).",
+        "read": "[[F]] is still a yaku condition against right player ([[S]] seat wind, melds 7s 8s 9s). The kept [[9s]] is river-safe against the across player (no called threat).",
         "whyNot": "The NAGA line through [[9s]] is tempting because it leaves 4-shanten, 70 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[6m]]. LuckyJ's [[F]] line leaves 4-shanten, 71 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[6m]]. The danger numbers are close: LuckyJ 0.1%, NAGA 0.0%.",
         "copy": "Copy this when [[F]] is live yakuhai for an opened hand and your own hand is too slow to punish that player immediately.",
         "limit": "Clean honors by role. Your pair, your value tile, and a dead caller tile use different rules.",
@@ -61113,7 +61113,7 @@
       "guide": {
         "caption": "LuckyJ P, NAGA 9s",
         "situation": "East 1-0, early hand, 63 tiles left. LuckyJ is above starting score on 25000 points in rank 2. After drawing [[6s]], LuckyJ cuts [[P]]; NAGA's top line is [[9s]]. Result: kamicha won, self delta -1000",
-        "read": "[[P]] is still a yaku condition against right player ([[W]] seat wind, melds 7s 8s 9s). The kept [[9s]] is river-safe against the across player (no declared threat).",
+        "read": "[[P]] is still a yaku condition against right player ([[W]] seat wind, melds 7s 8s 9s). The kept [[9s]] is river-safe against the across player (no called threat).",
         "whyNot": "The NAGA line through [[9s]] is tempting because it leaves 4-shanten, 80 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[5m]]. LuckyJ's [[P]] line leaves 4-shanten, 78 visible ukeire, main accepts [[1m]], [[2m]], [[3m]], [[4m]], [[5m]]. The danger numbers are close: LuckyJ 0.2%, NAGA 0.3%.",
         "copy": "Copy this when [[P]] is live yakuhai for an opened hand and your own hand is too slow to punish that player immediately.",
         "limit": "Clean honors by role. Your pair, your value tile, and a dead caller tile use different rules.",
@@ -78333,7 +78333,7 @@
       "guide": {
         "caption": "LuckyJ 1s, NAGA 4m",
         "situation": "South 4-0, late hand, 8 tiles left. LuckyJ is danger zone on 13900 points in rank 4. After drawing [[4m]], LuckyJ cuts [[1s]]; NAGA's top line is [[4m]]. Result: kamicha won, self delta -6000",
-        "read": "The outside cut [[1s]] preserves the middle connection represented by [[4m]]. It looks defensive, but the point is keeping the real route alive. The kept [[4m]] is river-safe against the left player (no declared threat).",
+        "read": "The outside cut [[1s]] preserves the middle connection represented by [[4m]]. It looks defensive, but the point is keeping the real route alive. The kept [[4m]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA line through [[4m]] is tempting because it leaves 1-shanten, 10 visible ukeire, main accepts [[4p]], [[7p]], [[6s]]. LuckyJ's [[1s]] line leaves 2-shanten, 16 visible ukeire, main accepts [[4m]], [[7m]], [[4p]], [[7p]], [[1s]]. LuckyJ buys immediate safety: LuckyJ 2.5%, NAGA 36.0%.",
         "copy": "Copy the reason: if cutting [[1s]] keeps the hand's real job clearer than the NAGA line through [[4m]], the choice is reproducible.",
         "limit": "If [[1s]] is the only safe tile or the inside route is fantasy, the outside cut is just a fold.",
@@ -79691,7 +79691,7 @@
       "guide": {
         "caption": "LuckyJ 1p, NAGA 6m",
         "situation": "South 3-1, middle hand, 39 tiles left. LuckyJ is above starting score on 25500 points in rank 1. After drawing [[8s]], LuckyJ cuts [[1p]]; NAGA's top line is [[6m]]. Result: shimocha won, self delta +0",
-        "read": "The outside cut [[1p]] preserves the middle connection represented by [[6m]]. It looks defensive, but the point is keeping the real route alive. The kept [[6m]] is suji against the left player (no declared threat).",
+        "read": "The outside cut [[1p]] preserves the middle connection represented by [[6m]]. It looks defensive, but the point is keeping the real route alive. The kept [[6m]] is suji against the left player (no called threat).",
         "whyNot": "The NAGA line through [[6m]] is tempting because it leaves 0-shanten, 3 visible ukeire, main accepts [[3p]]. LuckyJ's [[1p]] line leaves 1-shanten, 34 visible ukeire, main accepts [[1m]], [[4m]], [[5m]], [[6m]], [[7m]]. LuckyJ buys immediate safety: LuckyJ 6.6%, NAGA 69.2%.",
         "copy": "Copy the reason: if cutting [[1p]] keeps the hand's real job clearer than the NAGA line through [[6m]], the choice is reproducible.",
         "limit": "If [[1p]] is the only safe tile or the inside route is fantasy, the outside cut is just a fold.",
@@ -82349,7 +82349,7 @@
       "guide": {
         "caption": "LuckyJ 9p, NAGA 8p",
         "situation": "South 2-0, late hand, 11 tiles left. LuckyJ is danger zone on 10500 points in rank 2. After drawing [[9p]], LuckyJ cuts [[9p]]; NAGA's top line is [[8p]]. Result: draw, self delta -1500",
-        "read": "The outside cut [[9p]] preserves the middle connection represented by [[8p]]. It looks defensive, but the point is keeping the real route alive. The kept [[8p]] is suji against the right player (no declared threat).",
+        "read": "The outside cut [[9p]] preserves the middle connection represented by [[8p]]. It looks defensive, but the point is keeping the real route alive. The kept [[8p]] is suji against the right player (no called threat).",
         "whyNot": "The NAGA line through [[8p]] is tempting because it leaves 0-shanten, 8 visible ukeire, main accepts [[3s]], [[6s]]. LuckyJ's [[9p]] line leaves 1-shanten, 16 visible ukeire, main accepts [[4p]], [[6p]], [[8p]], [[9p]], [[3s]]. LuckyJ buys immediate safety: LuckyJ 3.3%, NAGA 33.2%.",
         "copy": "Copy the reason: if cutting [[9p]] keeps the hand's real job clearer than the NAGA line through [[8p]], the choice is reproducible.",
         "limit": "If [[9p]] is the only safe tile or the inside route is fantasy, the outside cut is just a fold.",
@@ -84728,7 +84728,7 @@
       "guide": {
         "caption": "LuckyJ 9s, NAGA 3s",
         "situation": "East 3-2, late hand, 23 tiles left. LuckyJ is danger zone on 10000 points in rank 3. After drawing [[3s]], LuckyJ cuts [[9s]]; NAGA's top line is [[3s]]. Result: toimen won, self delta -3200",
-        "read": "The outside cut [[9s]] preserves the middle connection represented by [[3s]]. It looks defensive, but the point is keeping the real route alive. The kept [[3s]] is suji against the left player (no declared threat).",
+        "read": "The outside cut [[9s]] preserves the middle connection represented by [[3s]]. It looks defensive, but the point is keeping the real route alive. The kept [[3s]] is suji against the left player (no called threat).",
         "whyNot": "The NAGA line through [[3s]] is tempting because it leaves 1-shanten, 15 visible ukeire, main accepts [[1p]], [[4p]], [[5p]], [[7p]], [[5s]]. LuckyJ's [[9s]] line leaves 1-shanten, 4 visible ukeire, main accepts [[4s]], [[6s]]. LuckyJ buys immediate safety: LuckyJ 0.0%, NAGA 13.3%.",
         "copy": "Copy the reason: if cutting [[9s]] keeps the hand's real job clearer than the NAGA line through [[3s]], the choice is reproducible.",
         "limit": "If [[9s]] is the only safe tile or the inside route is fantasy, the outside cut is just a fold.",
@@ -94104,7 +94104,7 @@
       "guide": {
         "caption": "LuckyJ S, NAGA 5p",
         "situation": "South 1-0, middle hand, 35 tiles left. LuckyJ is danger zone on 14300 points in rank 4. After drawing [[5p]], LuckyJ cuts [[S]]; NAGA's top line is [[5p]]. Result: draw, self delta +1500",
-        "read": "Honor tiles split into roles. Here [[S]] is being treated as loose material or an opponent condition. The kept [[5p]] is suji against the left player (no declared threat).",
+        "read": "Honor tiles split into roles. Here [[S]] is being treated as loose material or an opponent condition. The kept [[5p]] is suji against the left player (no called threat).",
         "whyNot": "The NAGA line through [[5p]] is tempting because it leaves 1-shanten, 12 visible ukeire, main accepts [[5m]], [[8m]], [[4s]]. LuckyJ's [[S]] line leaves 1-shanten, 12 visible ukeire, main accepts [[5m]], [[8m]], [[4s]]. LuckyJ buys immediate safety: LuckyJ 0.4%, NAGA 25.6%.",
         "copy": "Copy the role label: cut [[S]] when its main job helps someone else's condition.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -95051,7 +95051,7 @@
       "guide": {
         "caption": "LuckyJ S, NAGA 4p",
         "situation": "East 3-0, middle hand, 40 tiles left. LuckyJ is behind on 23400 points in rank 2. After drawing [[4p]], LuckyJ cuts [[S]]; NAGA's top line is [[4p]]. Result: draw, self delta -1000",
-        "read": "Honor tiles split into roles. Here [[S]] is being treated as loose material or an opponent condition. The kept [[4p]] is suji against the right player (no declared threat).",
+        "read": "Honor tiles split into roles. Here [[S]] is being treated as loose material or an opponent condition. The kept [[4p]] is suji against the right player (no called threat).",
         "whyNot": "The NAGA line through [[4p]] is tempting because it leaves 2-shanten, 13 visible ukeire, main accepts [[1m]], [[2m]], [[6m]], [[E]], [[S]]. LuckyJ's [[S]] line leaves 2-shanten, 14 visible ukeire, main accepts [[1m]], [[2m]], [[6m]], [[4p]], [[E]]. LuckyJ buys immediate safety: LuckyJ 2.9%, NAGA 28.1%.",
         "copy": "Copy the role label: cut [[S]] when its main job helps someone else's condition.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -95871,7 +95871,7 @@
       "guide": {
         "caption": "LuckyJ P, NAGA 5p",
         "situation": "East 3-1, middle hand, 27 tiles left. LuckyJ is above starting score on 34700 points in rank 1. After drawing [[5p]], LuckyJ cuts [[P]]; NAGA's top line is [[5p]]. Result: self won 4 han 20 fu, delta +7500",
-        "read": "Honor tiles split into roles. Here [[P]] is being treated as loose material or an opponent condition. The kept [[5p]] is river-safe against the across player (no declared threat).",
+        "read": "Honor tiles split into roles. Here [[P]] is being treated as loose material or an opponent condition. The kept [[5p]] is river-safe against the across player (no called threat).",
         "whyNot": "The NAGA line through [[5p]] is tempting because it leaves 1-shanten, 13 visible ukeire, main accepts [[3p]], [[6p]], [[2s]], [[5s]]. LuckyJ's [[P]] line leaves 1-shanten, 14 visible ukeire, main accepts [[3p]], [[5p]], [[6p]], [[2s]], [[5s]]. LuckyJ buys immediate safety: LuckyJ 0.0%, NAGA 18.9%.",
         "copy": "Copy the role label: cut [[P]] when its main job helps someone else's condition.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -97209,7 +97209,7 @@
       "guide": {
         "caption": "LuckyJ P, NAGA 5m",
         "situation": "South 1-0, middle hand, 46 tiles left. LuckyJ is behind on 23700 points in rank 2. After drawing [[5m]], LuckyJ cuts [[P]]; NAGA's top line is [[5m]]. Result: draw, self delta -1500",
-        "read": "Honor tiles split into roles. Here [[P]] is being treated as loose material or an opponent condition. The kept [[5m]] is suji against the right player (no declared threat).",
+        "read": "Honor tiles split into roles. Here [[P]] is being treated as loose material or an opponent condition. The kept [[5m]] is suji against the right player (no called threat).",
         "whyNot": "The NAGA line through [[5m]] is tempting because it leaves 2-shanten, 16 visible ukeire, main accepts [[1m]], [[4m]], [[7m]], [[8s]], [[C]]. LuckyJ's [[P]] line leaves 2-shanten, 16 visible ukeire, main accepts [[1m]], [[4m]], [[7m]], [[8s]], [[C]]. LuckyJ buys immediate safety: LuckyJ 3.6%, NAGA 37.3%.",
         "copy": "Copy the role label: cut [[P]] when its main job helps someone else's condition.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -98604,7 +98604,7 @@
       "guide": {
         "caption": "LuckyJ P, NAGA 5s",
         "situation": "East 4-4, middle hand, 41 tiles left. LuckyJ is behind on 21000 points in rank 1. After drawing [[P]], LuckyJ cuts [[P]]; NAGA's top line is [[5s]]. Result: self won 4 han 30 fu, delta +17800",
-        "read": "Honor tiles split into roles. Here [[P]] is being treated as loose material or an opponent condition. The kept [[5s]] is river-safe against the left player (no declared threat).",
+        "read": "Honor tiles split into roles. Here [[P]] is being treated as loose material or an opponent condition. The kept [[5s]] is river-safe against the left player (no called threat).",
         "whyNot": "The NAGA line through [[5s]] is tempting because it leaves 1-shanten, 14 visible ukeire, main accepts [[1p]], [[4p]], [[7p]], [[6s]], [[9s]]. LuckyJ's [[P]] line leaves 1-shanten, 14 visible ukeire, main accepts [[1p]], [[4p]], [[7p]], [[6s]], [[9s]]. LuckyJ buys immediate safety: LuckyJ 0.0%, NAGA 32.7%.",
         "copy": "Copy the role label: cut [[P]] when its main job helps someone else's condition.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -99258,7 +99258,7 @@
       "guide": {
         "caption": "LuckyJ F, NAGA 4s",
         "situation": "East 3-1, middle hand, 36 tiles left. LuckyJ is behind on 23200 points in rank 3. After drawing [[F]], LuckyJ cuts [[F]]; NAGA's top line is [[4s]]. Result: draw, self delta -1500",
-        "read": "Honor tiles split into roles. Here [[F]] is being treated as loose material or an opponent condition. The kept [[4s]] is suji against the right player (no declared threat).",
+        "read": "Honor tiles split into roles. Here [[F]] is being treated as loose material or an opponent condition. The kept [[4s]] is suji against the right player (no called threat).",
         "whyNot": "The NAGA line through [[4s]] is tempting because it leaves 1-shanten, 15 visible ukeire, main accepts [[5m]], [[8m]], [[6s]], [[9s]]. LuckyJ's [[F]] line leaves 1-shanten, 15 visible ukeire, main accepts [[5m]], [[8m]], [[6s]], [[9s]]. LuckyJ buys immediate safety: LuckyJ 1.6%, NAGA 17.7%.",
         "copy": "Copy the role label: cut [[F]] when its main job helps someone else's condition.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -103692,7 +103692,7 @@
       "guide": {
         "caption": "LuckyJ 2p, NAGA 5m",
         "situation": "South 1-0, middle hand, 28 tiles left. LuckyJ is lead on 35800 points in rank 3. After drawing [[5m]], LuckyJ cuts [[2p]]; NAGA's top line is [[5m]]. Result: self dealt into toimen, delta -24000",
-        "read": "The lead lowers the ambition and keeps the calculation active. LuckyJ checks whether [[2p]] reduces risk or preserves the next turn. The kept [[5m]] is river-safe against the right player (no declared threat).",
+        "read": "The lead lowers the ambition and keeps the calculation active. LuckyJ checks whether [[2p]] reduces risk or preserves the next turn. The kept [[5m]] is river-safe against the right player (no called threat).",
         "whyNot": "The NAGA line through [[5m]] is tempting because it leaves 2-shanten, 35 visible ukeire, main accepts [[6m]], [[9m]], [[1p]], [[2p]], [[3p]]. LuckyJ's [[2p]] line leaves 2-shanten, 45 visible ukeire, main accepts [[3m]], [[4m]], [[5m]], [[6m]], [[7m]]. LuckyJ buys immediate safety: LuckyJ 7.3%, NAGA 29.5%.",
         "copy": "Copy the reduced ambition of the leader seat, but still count danger, shape, and the next discard.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
@@ -104486,7 +104486,7 @@
       "guide": {
         "caption": "LuckyJ E, NAGA 5m",
         "situation": "South 2-2, middle hand, 27 tiles left. LuckyJ is lead on 53000 points in rank 1. After drawing [[5m]], LuckyJ cuts [[E]]; NAGA's top line is [[5m]]. Result: draw, self delta -1500",
-        "read": "The lead lowers the ambition and keeps the calculation active. LuckyJ checks whether [[E]] reduces risk or preserves the next turn. The kept [[5m]] is suji against the across player (no declared threat).",
+        "read": "The lead lowers the ambition and keeps the calculation active. LuckyJ checks whether [[E]] reduces risk or preserves the next turn. The kept [[5m]] is suji against the across player (no called threat).",
         "whyNot": "The NAGA line through [[5m]] is tempting because it leaves 1-shanten, 11 visible ukeire, main accepts [[4m]], [[7m]], [[3s]]. LuckyJ's [[E]] line leaves 1-shanten, 14 visible ukeire, main accepts [[4m]], [[5m]], [[7m]], [[3s]], [[5s]]. LuckyJ buys immediate safety: LuckyJ 0.0%, NAGA 24.6%.",
         "copy": "Copy the reduced ambition of the leader seat, but still count danger, shape, and the next discard.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",

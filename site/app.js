@@ -538,7 +538,7 @@ function safetyPanel(read) {
             : `${item.open_melds} call${item.open_melds === 1 ? "" : "s"}`
           : isJa
             ? "宣言された脅威なし"
-            : "no declared threat";
+            : "no called threat";
       return `<li><b>${escapeHtml(seatLabel(item.seat_label))}</b><span>${escapeHtml(safetyKindLabel(item.kind))} / ${escapeHtml(threat)} / ${sources}</span></li>`;
     })
     .join("");
