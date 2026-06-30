@@ -14,7 +14,6 @@ const copy = {
   en: {
     none: "none",
     dora: "Dora",
-    handLabel: "hand",
     situation: "Situation",
     seeing: "What LuckyJ Is Seeing",
     whyTempting: "Why the Other Line Is Tempting",
@@ -75,7 +74,6 @@ const copy = {
   ja: {
     none: "なし",
     dora: "ドラ",
-    handLabel: "手牌",
     situation: "局面",
     seeing: "LuckyJ が見ているもの",
     whyTempting: "別ラインが魅力的に見える理由",
@@ -418,6 +416,30 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
+function withQueryParam(href, key, value) {
+  if (!href || value === undefined || value === null || value === "") return href || "";
+  try {
+    const url = new URL(href, window.location.href);
+    url.searchParams.set(key, String(value));
+    return url.href;
+  } catch {
+    const separator = String(href).includes("?") ? "&" : "?";
+    return `${href}${separator}${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`;
+  }
+}
+
+function externalLink(href, label) {
+  return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+}
+
+function reviewHref(item) {
+  return withQueryParam(withQueryParam(item.report, "ts", item.kyoku_index), "tv", item.position);
+}
+
+function sourceLinks(item) {
+  return `${externalLink(reviewHref(item), t("nagaReport"))} ${externalLink(item.paifu, t("tenhouLog"))}`;
+}
+
 function tileCode(tile) {
   const key = String(tile || "");
   return tileCodes[key] || tileCodes[key.replace("r", "")] || key;
@@ -481,11 +503,20 @@ function safetyKindLabel(kind) {
   if (isJa) {
     if (kind === "genbutsu") return "現物";
     if (kind === "suji") return "筋";
+    if (kind === "sotogawa") return "外側牌（ソト側）";
     return "なし";
   }
   if (kind === "genbutsu") return "river-safe";
   if (kind === "suji") return "suji";
+  if (kind === "sotogawa") return "outside tile (sotogawa)";
   return "none";
+}
+
+function safetyReadLabel(read) {
+  const labels = [];
+  if (read?.kind) labels.push(safetyKindLabel(read.kind));
+  if (read?.has_sotogawa) labels.push(safetyKindLabel("sotogawa"));
+  return labels.length ? labels.join(isJa ? " / " : " / ") : safetyKindLabel("none");
 }
 
 function safetySourceText(source) {
@@ -493,9 +524,13 @@ function safetySourceText(source) {
 }
 
 function safetyReadLine(read) {
-  if (!read || !read.kind) return "";
+  if (!read || !(read.kind || read.has_sotogawa)) return "";
   const target = read.against?.[0];
-  const sourceList = target?.genbutsu_sources?.length ? target.genbutsu_sources : target?.suji_sources || [];
+  const sourceList = target?.genbutsu_sources?.length
+    ? target.genbutsu_sources
+    : target?.suji_sources?.length
+      ? target.suji_sources
+      : target?.sotogawa_sources || [];
   const sourceText = sourceList.length ? (isJa ? `、見え方 ${sourceList.map(safetySourceText).join("、")}` : ` via ${sourceList.map(safetySourceText).join(", ")}`) : "";
   const threatText = target?.reached
     ? isJa
@@ -507,8 +542,8 @@ function safetyReadLine(read) {
         : ` / ${target.open_melds} call${target.open_melds === 1 ? "" : "s"}`
       : "";
   return isJa
-    ? `${tileName(read.tile)} は ${seatLabel(target?.seat_label)} に対して ${safetyKindLabel(read.kind)}${threatText}${sourceText}`
-    : `${tileName(read.tile)} is ${safetyKindLabel(read.kind)} to ${seatLabel(target?.seat_label)}${threatText}${sourceText}`;
+    ? `${tileName(read.tile)} は ${seatLabel(target?.seat_label)} に対して ${safetyReadLabel(read)}${threatText}${sourceText}`
+    : `${tileName(read.tile)} is ${safetyReadLabel(read)} to ${seatLabel(target?.seat_label)}${threatText}${sourceText}`;
 }
 
 function safetySummary(safety) {
@@ -521,13 +556,28 @@ function safetySummary(safety) {
 }
 
 function safetyPanel(read) {
-  if (!read || !read.kind) return document.createDocumentFragment();
+  if (!read || !(read.kind || read.has_sotogawa)) return document.createDocumentFragment();
   const block = document.createElement("div");
   block.className = "safety-read";
   const rows = (read.against || [])
     .map((item) => {
-      const sourceList = item.genbutsu_sources?.length ? item.genbutsu_sources : item.suji_sources || [];
-      const sources = sourceList.map((source) => `${tileIcon(source.tile, "inline-tile")} ${isJa ? `河${source.position}枚目` : `slot ${source.position}`}`).join(", ");
+      const rowLabels = [item.kind, item.sotogawa_sources?.length ? "sotogawa" : null]
+        .filter(Boolean)
+        .map(safetyKindLabel)
+        .join(isJa ? " / " : " / ");
+      const sourceGroups = [
+        ["genbutsu", item.genbutsu_sources || []],
+        ["suji", item.suji_sources || []],
+        ["sotogawa", item.sotogawa_sources || []],
+      ].filter(([, list]) => list.length);
+      const sources = sourceGroups
+        .map(
+          ([kind, list]) =>
+            `${escapeHtml(safetyKindLabel(kind))}: ${list
+              .map((source) => `${tileIcon(source.tile, "inline-tile")} ${isJa ? `河${source.position}枚目` : `slot ${source.position}`}`)
+              .join(", ")}`
+        )
+        .join(isJa ? "、" : "; ");
       const threat = item.reached
         ? isJa
           ? "リーチ"
@@ -539,11 +589,11 @@ function safetyPanel(read) {
           : isJa
             ? "宣言された脅威なし"
             : "no called threat";
-      return `<li><b>${escapeHtml(seatLabel(item.seat_label))}</b><span>${escapeHtml(safetyKindLabel(item.kind))} / ${escapeHtml(threat)} / ${sources}</span></li>`;
+      return `<li><b>${escapeHtml(seatLabel(item.seat_label))}</b><span>${escapeHtml(rowLabels || safetyKindLabel("none"))} / ${escapeHtml(threat)}${sources ? ` / ${sources}` : ""}</span></li>`;
     })
     .join("");
   block.innerHTML = `
-    <p><b>${isJa ? "残した守備牌" : "Kept defensive tile"}:</b> ${tileIcon(read.tile, "inline-tile")} ${escapeHtml(tileName(read.tile))} / ${escapeHtml(safetyKindLabel(read.kind))}</p>
+    <p><b>${isJa ? "残した守備牌" : "Kept defensive tile"}:</b> ${tileIcon(read.tile, "inline-tile")} ${escapeHtml(tileName(read.tile))} / ${escapeHtml(safetyReadLabel(read))}</p>
     <ul>${rows}</ul>
   `;
   return block;
@@ -606,22 +656,15 @@ function tableMeld(meld) {
   const items = orderedMeldTiles(meld);
   if (!items.length) return "";
   const label = tileNamesText(items.map((item) => item.tile));
-  const calledIndex = items.findIndex((item) => item.called);
-  if (calledIndex < 0) {
-    return `<span class="meld-run" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${tileRun(
-      items.map((item) => item.tile),
-      "meld-segment",
-      ""
-    )}</span>`;
-  }
-  const before = items.slice(0, calledIndex).map((item) => item.tile);
-  const called = items[calledIndex];
-  const after = items.slice(calledIndex + 1).map((item) => item.tile);
-  return `<span class="meld-run" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">
-    ${before.length ? tileRun(before, "meld-segment meld-before-called", "") : ""}
-    <span class="called-tile-slot called-from-${called.calledFrom}">${tileIcon(called.tile, "called-tile")}</span>
-    ${after.length ? tileRun(after, "meld-segment meld-after-called", "") : ""}
-  </span>`;
+  return `<span class="meld-run" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${items
+    .map(
+      (item) =>
+        `<span class="meld-tile-slot${item.called ? ` called-tile-slot called-from-${item.calledFrom}` : ""}">${tileIcon(
+          item.tile,
+          `meld-tile${item.called ? " called-tile" : ""}`
+        )}</span>`
+    )
+    .join("")}</span>`;
 }
 
 function callMeldForExample(example) {
@@ -727,13 +770,10 @@ function renderMahjongTable(table) {
       const melds = (player.melds || []).length
         ? `<div class="table-melds">${(player.melds || []).map(tableMeld).join("")}</div>`
         : "";
-      const handLabel =
-        player.seat === "self" ? "" : `<span class="tile-group-label">${escapeHtml(t("handLabel"))}</span>`;
       return `
         <div class="player-hand player-${position}">
           <span class="player-name">${escapeHtml(name)}</span>
           <div class="table-tile-group table-hand-group">
-            ${handLabel}
             <div class="hand compact"><div class="hand-contents">${tileRun((player.hand || "").split(" "))}</div></div>
           </div>
           ${melds}
@@ -992,7 +1032,7 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
 
   const links = document.createElement("p");
   links.className = "case-links";
-  links.innerHTML = `<a href="${example.report}">${t("nagaReport")}</a> <a href="${example.paifu}">${t("tenhouLog")}</a>`;
+  links.innerHTML = sourceLinks(example);
 
   explanation.append(drill, links);
   layout.append(replay, explanation);
@@ -1293,7 +1333,7 @@ function renderCases(data) {
 
       const links = document.createElement("p");
       links.className = "case-links";
-      links.innerHTML = `<a href="${item.report}">${t("nagaReport")}</a> <a href="${item.paifu}">${t("tenhouLog")}</a>`;
+      links.innerHTML = sourceLinks(item);
 
       card.append(head, body, choices, lesson, links);
       grid.append(card);

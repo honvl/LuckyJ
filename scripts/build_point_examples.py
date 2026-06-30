@@ -5,6 +5,7 @@ from pathlib import Path
 
 import analyze_luckyj as base
 from extract_case_studies import (
+    counts_34,
     danger_for,
     hand_string,
     remove_tile,
@@ -13,15 +14,16 @@ from extract_case_studies import (
     score_band,
     ukeire_after_discard,
 )
+from mahjong.shanten import Shanten
 
 
 OUT = Path("site/point-examples.json")
 SEAT_NAMES = ["self", "shimocha", "toimen", "kamicha"]
 SEAT_LABELS_EN = {
     "self": "self",
-    "shimocha": "left player",
+    "shimocha": "right player",
     "toimen": "across player",
-    "kamicha": "right player",
+    "kamicha": "left player",
 }
 SEAT_LABELS_JA = {
     "self": "自分",
@@ -33,6 +35,7 @@ WINDS = ["E", "S", "W", "N"]
 DRAGONS = {"P", "F", "C"}
 EXAMPLES_PER_POINT = 10
 POOL_PER_POINT = 40
+SHANTEN = Shanten()
 
 
 POINT_TEXT = {
@@ -462,6 +465,7 @@ def make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, 
         return None
     case = common_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key)
     consumed = msg.get("consumed", [])
+    shape = post_call_eval(hands[target], consumed, msg.get("real_dahai"))
     case.update(
         {
             "kind": "call",
@@ -472,6 +476,7 @@ def make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, 
             "discard_after_call": msg.get("real_dahai"),
             "hand": hand_string(hands[target]),
             "post_call_meld": " ".join(consumed + ([msg.get("pai")] if msg.get("pai") else [])),
+            "post_call_eval": shape,
         }
     )
     return case
@@ -540,17 +545,24 @@ def eval_summary(item, lang):
 
 
 def safety_read_sentence(read, lang):
-    if not read or not read.get("kind"):
+    if not read or not (read.get("kind") or read.get("has_sotogawa")):
         return ""
     target = (read.get("against") or [{}])[0]
     kind = read.get("kind")
+    parts = []
     if lang == "ja":
-        kind_text = {"genbutsu": "現物", "suji": "筋"}.get(kind, kind)
+        if kind:
+            parts.append({"genbutsu": "現物", "suji": "筋"}.get(kind, kind))
+        if read.get("has_sotogawa"):
+            parts.append("外側牌（ソト側）")
         threat = "リーチ" if target.get("reached") else f"{target.get('open_melds')}副露" if target.get("open_melds") else "静かな相手"
-        return f"残る {tile_token(read.get('tile'))} は {seat_label(target.get('seat_label'), lang)} に対して{kind_text}で、相手の状態は{threat}。"
-    kind_text = {"genbutsu": "river-safe", "suji": "suji"}.get(kind, kind)
+        return f"残る {tile_token(read.get('tile'))} は {seat_label(target.get('seat_label'), lang)} に対して{'かつ'.join(parts)}で、相手の状態は{threat}。"
+    if kind:
+        parts.append({"genbutsu": "river-safe", "suji": "suji"}.get(kind, kind))
+    if read.get("has_sotogawa"):
+        parts.append("an outside tile (sotogawa)")
     threat = "riichi" if target.get("reached") else f"{target.get('open_melds')} calls" if target.get("open_melds") else "no called threat"
-    return f"The kept {tile_token(read.get('tile'))} is {kind_text} against the {seat_label(target.get('seat_label'), lang)} ({threat})."
+    return f"The kept {tile_token(read.get('tile'))} is {' and '.join(parts)} against the {seat_label(target.get('seat_label'), lang)} ({threat})."
 
 
 def yakuhai_threat_sentence(case, lang):
@@ -781,13 +793,19 @@ def build_call_guide(case, lang):
     call = case.get("call", "call")
     from_seat = seat_label(case.get("called_from"), lang)
     meld = " ".join(case.get("consumed") or [])
+    shape = case.get("post_call_eval") or {}
+    post_shape = shanten_text(shape.get("shanten"), lang)
     if lang == "ja":
         if point_key == "point-04":
             focus = f"副露後の {discard} まで先に見えていることが大事。開いた後も次の出口を残している。"
         elif point_key == "point-07":
             focus = f"{call} は速度を買うための副露。残り{case.get('left')}枚で、閉じたまま待つより局面の時計を進めている。"
+        elif shape.get("shanten") is not None and shape.get("shanten") > 0 and (case.get("left") or 0) <= 1:
+            focus = f"これは手牌完成の鳴きではなく、終局直前のテンポ鳴き。{discard} を切った後も {post_shape} なので、普通の和了形に近づいた例としては読まない。"
+        elif shape.get("shanten") is not None and shape.get("shanten") <= 0:
+            focus = f"閉じた手が間に合いにくい局面で、{call} 後の {discard} まで決めると {post_shape} になる。"
         else:
-            focus = f"閉じた手が間に合いにくいので、{call} で実戦的な手に変えている。"
+            focus = f"閉じた手が間に合いにくい局面で、{call} 後の {discard} まで決めると {post_shape} まで進む。"
         return {
             "caption": f"{call} して {tile_plain(case.get('discard_after_call'))}",
             "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、着順{case.get('rank')}。LuckyJ は {from_seat} から {called} を {call} し、{discard} を切る。結果: {case.get('outcome')}",
@@ -796,14 +814,18 @@ def build_call_guide(case, lang):
             "copy": f"{call} が役、速度、テンパイ、または相手への圧力を作る時だけ真似する。鳴いた後の最初の打牌 {discard} まで先に決める。",
             "limit": "鳴いた後の安全牌や次の方針まで言える時に、LuckyJ 型のテンポになる。",
             "prompt": f"{called} を {call} するか。答える前に、鳴いた後に何を切るかを言う。",
-            "answer": f"この例では {discard} まで見えているため、{focus}",
+            "answer": f"最初に見るのは鳴き後の打牌で、この例では {discard} まで見えている。{focus}",
         }
     if point_key == "point-04":
         focus = f"The important tile is the post-call {discard}. LuckyJ opens while keeping the first exit and the next concrete plan."
     elif point_key == "point-07":
         focus = f"The {call} buys tempo with {case.get('left')} tiles left. LuckyJ is changing the round clock and completing a useful set."
+    elif shape.get("shanten") is not None and shape.get("shanten") > 0 and (case.get("left") or 0) <= 1:
+        focus = f"This is a last-turn tempo call, not a hand-completion call. After {discard}, the hand is still {post_shape}, so do not read this as a normal pon that makes a winning shape."
+    elif shape.get("shanten") is not None and shape.get("shanten") <= 0:
+        focus = f"The closed route is running out of practical turns; after the {call} and {discard}, the hand reaches {post_shape}."
     else:
-        focus = f"The closed route is running out of practical turns, so the {call} turns a poor closed shape into a real hand."
+        focus = f"The closed route is running out of practical turns; after the {call} and {discard}, the hand reaches {post_shape}."
     return {
         "caption": f"{call} on {tile_plain(case.get('called_tile'))}, then {tile_plain(case.get('discard_after_call'))}",
         "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ is {case.get('score_band')} on {format_int(case.get('score'))} points in rank {case.get('rank')}. LuckyJ calls {call} on {called} from the {from_seat}, then cuts {discard}. Result: {case.get('outcome')}",
@@ -812,7 +834,7 @@ def build_call_guide(case, lang):
         "copy": f"Copy the {call} only when it creates yaku, speed, tenpai pressure, or denial, and when the first post-call discard {discard} is already planned.",
         "limit": "The call needs a named post-call discard and a next defensive exit to become LuckyJ-style tempo.",
         "prompt": f"Would you {call} on {called}? Before answering, name the discard after the call.",
-        "answer": f"Here the call is coherent because {discard} is already the release tile. {focus}",
+        "answer": f"The first check is the post-call discard: {discard} is already the release tile. {focus}",
     }
 
 
@@ -907,6 +929,54 @@ def tile_count(hand, tile):
     except KeyError:
         return 0
     return sum(1 for item in hand if tile_id(item) == idx)
+
+
+def post_call_eval(hand, consumed, discard_after_call):
+    concealed = list(hand)
+    for tile in consumed or []:
+        remove_tile(concealed, tile)
+    if discard_after_call:
+        remove_tile(concealed, discard_after_call)
+    try:
+        shanten = SHANTEN.calculate_shanten(counts_34(concealed), use_chiitoitsu=False, use_kokushi=False)
+    except ValueError:
+        shanten = None
+    return {
+        "shanten": shanten,
+        "hand_after": hand_string(concealed),
+        "pair_like_tiles": sum(1 for count in Counter(tile_id(tile) for tile in concealed).values() if count >= 2),
+    }
+
+
+def shanten_text(value, lang):
+    if value is None:
+        return "shape unclear" if lang == "en" else "形は判定しにくい"
+    if lang == "ja":
+        if value < 0:
+            return "和了形"
+        if value == 0:
+            return "テンパイ"
+        return f"{value}シャンテン"
+    if value < 0:
+        return "a complete hand"
+    if value == 0:
+        return "tenpai"
+    return f"{value}-shanten"
+
+
+def call_score_adjustment(case):
+    shape = case.get("post_call_eval") or {}
+    shanten = shape.get("shanten")
+    left = case.get("left") or 0
+    if shanten is None:
+        return 0.0
+    if shanten <= 0:
+        return 1.2
+    if shanten == 1 and left > 6:
+        return 0.35
+    if left <= 1:
+        return -0.75
+    return 0.0
 
 
 def try_discard_points(
@@ -1139,35 +1209,38 @@ def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, 
     post_discard = msg.get("real_dahai")
     exposed_bonus = 0.2 if msg.get("type") == "pon" else 0.1
     terminal_or_honor_exit = post_discard and base.tile_class(post_discard) in {"honor", "terminal"}
+    call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-03")
 
-    score_value = exposed_bonus + max(0.0, (70 - left) / 100)
+    score_value = exposed_bonus + max(0.0, (70 - left) / 100) + call_score_adjustment(call_case or {})
     if wants_candidate(selected, "point-03", score_value):
         add(
             selected,
             used,
             "point-03",
-            make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-03"),
+            call_case,
             score_value,
         )
 
     if active_threats or terminal_or_honor_exit:
-        score_value = 0.4 + 0.2 * active_threats + (0.2 if terminal_or_honor_exit else 0.0)
+        call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-04")
+        score_value = 0.4 + 0.2 * active_threats + (0.2 if terminal_or_honor_exit else 0.0) + call_score_adjustment(call_case or {})
         if wants_candidate(selected, "point-04", score_value):
             add(
                 selected,
                 used,
                 "point-04",
-                make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-04"),
+                call_case,
                 score_value,
             )
 
-    score_value = 0.3 + exposed_bonus + (0.2 if left <= 40 else 0.0)
+    call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-07")
+    score_value = 0.3 + exposed_bonus + (0.2 if left <= 40 else 0.0) + call_score_adjustment(call_case or {})
     if wants_candidate(selected, "point-07", score_value):
         add(
             selected,
             used,
             "point-07",
-            make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-07"),
+            call_case,
             score_value,
         )
 
