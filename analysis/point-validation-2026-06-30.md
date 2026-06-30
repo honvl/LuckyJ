@@ -3,6 +3,7 @@
 ## Method
 
 - Source artifacts: site/model-patterns.json, site/book-data.json.
+- Qualitative review files scanned locally: 34; raw captions/transcripts stay ignored under `tmp/`.
 - Mined model base: 135,038 eligible decisions and 36,206 LuckyJ/NAGA mismatches.
 - Book base: 1,256 hanchan, 13,059 hands, 147,378 discard decisions.
 - A point is marked strong only when the mined proxy has a large sample, directionally useful lift, and a significant p-value. Mixed or aggregate-only points are marked qualified.
@@ -43,6 +44,7 @@
 - Behind-score risk buys: n=2,364, bad 34.5%, lift +3.7 pp, p=0.0001, danger delta 0.120.
 - Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.
 - Example test: as leader, a low-danger discard that preserves the next safe turn can beat a thin value upgrade.
+- Review-derived example: in a South-round placement hand, a low-risk tile that keeps a clean fold or cheap win can beat a thin value upgrade.
 
 ### point-02: Keep more than one route alive.
 
@@ -50,6 +52,7 @@
 - Kept dora/red-five material: n=617, bad 24.6%, lift -6.5 pp, p=0.0005, danger delta -0.011.
 - Breaking pairs early: n=4,318, bad 35.9%, lift +5.6 pp, p=8.93e-14, danger delta 0.021.
 - Example test: keep a yakuhai pair or red-five branch when it creates value plus an open fallback.
+- Review-derived example: when one hand can become yakuhai, honitsu/chanta, or riichi, keep the anchor that preserves those futures instead of taking the prettiest one-route shape.
 
 ### point-03: Do not call bad shapes unless the call changes the hand's job.
 
@@ -57,6 +60,7 @@
 - Winning-half volume was not passive: calls/game 5.79 vs 5.44, riichi/game 2.11 vs 1.67.
 - Middle plus late decisions total 80,537; the defense points are not based only on opening-row cleanup.
 - Example test: chi only when it creates a real yaku route or a safe tenpai path, not just because the block is weak.
+- Review-derived example: call a bad block only when it creates yaku, tenpai, denial, or safe draw equity; skip the call that merely exposes a fragile one-away hand.
 
 ### point-04: Open hands still need exits.
 
@@ -64,6 +68,7 @@
 - Middle/late multi-threat exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.
 - Generic safe-tile retention: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.
 - Example test: after opening, keep one genbutsu to the live riichi if the hand still has a real tenpai path.
+- Review-derived example: after opening, keep an exit to the live threat if the hand can still reach tenpai; do not spend every safe tile just because the hand is committed.
 
 ### point-05: Price the future danger of floaters.
 
@@ -71,6 +76,7 @@
 - Higher-danger discards: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.
 - Outside cuts preserving inner route: n=5,281, bad 23.1%, lift -9.2 pp, p=<0.0001, danger delta -0.030.
 - Example test: cut the future-riichi liability before it becomes the only discard your hand can release.
+- Review-derived example: if a loose middle tile will become the only discard after riichi, cut it while the hand still has blocks and replacement routes.
 
 ### point-06: Build value from the first discard.
 
@@ -78,6 +84,7 @@
 - Behind-score risk buys: n=2,364, bad 34.5%, lift +3.7 pp, p=0.0001, danger delta 0.120.
 - Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.
 - Example test: keep red-five access when it also keeps tanyao or riichi value alive.
+- Review-derived example: keep red or dora access when it improves a real winning route; release it when the extra value is decorative and the next danger is concrete.
 
 ### point-07: Tempo calls need a named purpose.
 
@@ -85,6 +92,7 @@
 - Winning-half volume was not passive: calls/game 5.79 vs 5.44, riichi/game 2.11 vs 1.67.
 - Middle plus late decisions total 80,537; the defense points are not based only on opening-row cleanup.
 - Example test: call for tenpai, yaku certainty, ippatsu break, or denial; skip when the call only makes a fragile one-away hand.
+- Review-derived example: a tempo call is valid when it creates tenpai, yaku certainty, denial, or an ippatsu break; raw speed alone is not enough.
 
 ### point-08: Riichi is a conversion tool, not a default.
 
@@ -92,6 +100,7 @@
 - Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.
 - Model review base: 36,206 LuckyJ/NAGA mismatches from 135,038 eligible decisions; only 31.0% hit the severe-disagreement proxy.
 - Example test: riichi the hand that forces opponents to react; dama or fold when the declaration only buys a bad wait with no table pressure.
+- Review-derived example: declare when the hand's value and wait force opponents to react; stay flexible when riichi only exposes a bad route with little pressure.
 
 ### point-09: Reprice push-fold after every draw.
 
@@ -99,6 +108,7 @@
 - Higher-danger choices: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.
 - Multi-threat exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.
 - Example test: a tile that was an acceptable push before the second threat may become a fold after another opponent opens.
+- Review-derived example: a one-chance or suji label can flip after a second threat, new call, or suit-constrained river; reprice the tile before pushing.
 
 ### point-10: Third-row precision is a separate skill.
 
@@ -106,6 +116,7 @@
 - Late/middle multiple-threat exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.
 - Model review base: 36,206 LuckyJ/NAGA mismatches from 135,038 eligible decisions; only 31.0% hit the severe-disagreement proxy.
 - Example test: when both tenpai and noten-bappu are live, compute the exact point swing before copying the push.
+- Review-derived example: third-row choices need exact tenpai, noten, deal-in, and placement arithmetic; do not copy a late push without the point swing.
 
 ### point-11: Drawn-hand points are attack value.
 
@@ -113,6 +124,7 @@
 - Safe-tenpai style exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.
 - Late row remained dense enough to matter: 19,978 decisions, mismatch 27.9%, bad 6.6%.
 - Example test: keep a harmless tenpai route when folding; abandon it if the next discard must pass two dangerous waits.
+- Review-derived example: preserve a harmless route to drawn-hand tenpai, but abandon it when the next discard must pass multiple live threats.
 
 ### point-12: Use model disagreement as a prompt, not a verdict.
 
@@ -120,6 +132,7 @@
 - Safer-than-NAGA subset: n=3,741, bad 21.8%, lift -10.2 pp, p=<0.0001, danger delta -0.149.
 - Riskier-than-NAGA subset: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.
 - Example test: if LuckyJ, NAGA, and Mortal disagree, write the purchase and the risk before adopting the move.
+- Review-derived example: when models split, write the purchased value, safety, and route count before calling the move good or bad.
 
 ### point-13: Do not feed uncertain open-hand yaku conditions.
 
@@ -127,6 +140,7 @@
 - Loose self-yakuhai timing split: no-open contexts cut singletons on median turn 3.0, while tanyao-shaped open contexts delayed to turn 9.0.
 - Yakuhai/pair anchors: n=2,338, bad 21.9%, lift -9.8 pp, p=<0.0001, danger delta -0.019.
 - Example test: clean a lone live dragon before an opponent's open hand turns it into their missing yaku.
+- Review-derived example: a lone dragon or seat wind changes price when an opponent's open hand still lacks a visible yaku.
 
 ### point-14: Keep genbutsu and suji exits for a named target.
 
@@ -134,6 +148,7 @@
 - Generic safe-tile keep: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.
 - Multi-threat exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.
 - Example test: keep suji only if it defends the current riichi or open hand and the hand can still act next turn.
+- Review-derived example: keep genbutsu or suji only after naming the target player and the next turn it protects.
 
 ### point-15: Spend stale safe tiles when their job expires.
 
@@ -141,6 +156,7 @@
 - Threat-specific keeps: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.
 - Generic keeps as caution: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.
 - Example test: discard yesterday's genbutsu when a new riichi makes it irrelevant and the tile blocks your tenpai route.
+- Review-derived example: yesterday's safe tile loses value when a new riichi becomes the real threat and the old tile blocks your tenpai route.
 
 ### point-16: Outside cuts can preserve the real route.
 
@@ -148,6 +164,7 @@
 - Middle cut as caution: n=10,926, bad 38.6%, lift +10.9 pp, p=<0.0001, danger delta 0.029.
 - Lower-danger choices: n=3,741, bad 21.8%, lift -10.2 pp, p=<0.0001, danger delta -0.149.
 - Example test: in danger, cut the edge tile that lowers exposure while preserving the live inner wait route.
+- Review-derived example: under pressure, an edge discard can reduce exposure while preserving the inner connector that actually wins the hand.
 
 ### point-17: A kept safe tile needs a target.
 
@@ -155,6 +172,7 @@
 - Multiple-threat exit: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.
 - Untargeted keep caution: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.
 - Example test: label a kept 9m as genbutsu to the dealer riichi, not merely 'safe'.
+- Review-derived example: label the kept tile as safe against the dealer riichi, the open child, or no one; the last category should usually be spent.
 
 ### point-18: Give every honor tile a role label.
 
@@ -162,6 +180,7 @@
 - Pair/triplet anchors: n=2,338, bad 21.9%, lift -9.8 pp, p=<0.0001, danger delta -0.019.
 - Loose self-yakuhai timing split: no-open contexts cut singletons on median turn 3.0, while tanyao-shaped open contexts delayed to turn 9.0.
 - Example test: a lone dragon can be value seed, opponent yaku-condition liability, or safe exit depending on calls and rivers.
+- Review-derived example: classify each honor as self value, opponent yaku condition, dead material, or defensive exit before cutting.
 
 ### point-19: Leader safety is a qualifier, not a plan.
 
@@ -169,3 +188,4 @@
 - Riskier-than-NAGA caution: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.
 - Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.
 - Example test: choose the low-risk tile that keeps a clean fold or cheap win, not a tile that simply avoids building value.
+- Review-derived example: as leader, lowering ambition is correct only when the discard also keeps a clean next turn, not when it merely avoids value.

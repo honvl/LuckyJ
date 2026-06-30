@@ -5,14 +5,15 @@
       "site/model-patterns.json",
       "site/book-data.json"
     ],
+    "qualitative_review_files": 34,
     "eligible_decisions": 135038,
     "mismatches": 36206,
     "book_decisions": 147378,
     "hands": 13059,
     "games": 1256,
     "baseline_mismatch_bad_rate": 0.31016958515163234,
-    "note": "Qualitative review ideas were kept only when supported by existing mined proxies or marked as qualified.",
-    "note_ja": "定性的な検討材料は、既存の統計 proxy で支持された場合だけ採用し、弱い部分は条件付きにした。"
+    "note": "Qualitative review examples were kept as generalized prompts only; statistical validity comes from the mined model/book artifacts.",
+    "note_ja": "定性的な検討例は一般化した問いとしてだけ使い、統計的な妥当性は mined model/book artifact で確認した。"
   },
   "summary": {
     "strong": 11,
@@ -54,7 +55,9 @@
           "text": "Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.",
           "text_ja": "成績差: 上位半分は半荘あたり和了3.09回、放銃0.75回。下位半分は和了1.39回、放銃1.48回。"
         }
-      ]
+      ],
+      "review_example": "Review example: in a South-round placement hand, a low-risk tile that keeps a clean fold or cheap win can beat a thin value upgrade.",
+      "review_example_ja": "検討例: 南場の着順手では、薄い打点上昇より、きれいな撤退や安い和了を残す低危険牌が勝つことがある。"
     },
     {
       "id": "point-02",
@@ -90,7 +93,9 @@
           "text": "Breaking pairs early: n=4,318, bad 35.9%, lift +5.6 pp, p=8.93e-14, danger delta 0.021.",
           "text_ja": "対子早割り: n=4,318, 悪手率 35.9%, 平均との差 +5.6 pp, p=8.93e-14, 危険度差 0.021。"
         }
-      ]
+      ],
+      "review_example": "Review example: when one hand can become yakuhai, honitsu/chanta, or riichi, keep the anchor that preserves those futures instead of taking the prettiest one-route shape.",
+      "review_example_ja": "検討例: 役牌、混一/チャンタ、リーチの複数未来がある手では、見た目の良い一本道より、それらを残す支点を優先する。"
     },
     {
       "id": "point-03",
@@ -123,7 +128,9 @@
           "text": "Middle plus late decisions total 80,537; the defense points are not based only on opening-row cleanup.",
           "text_ja": "中盤と終盤の判断は合計 80,537 件。守備点は序盤整理だけではない。"
         }
-      ]
+      ],
+      "review_example": "Review example: call a bad block only when it creates yaku, tenpai, denial, or safe draw equity; skip the call that merely exposes a fragile one-away hand.",
+      "review_example_ja": "検討例: 悪いブロックは、役、テンパイ、阻止、安全なツモ番を作る時だけ鳴く。壊れやすい一向聴を晒すだけなら見送る。"
     },
     {
       "id": "point-04",
@@ -159,7 +166,9 @@
           "text": "Generic safe-tile retention: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.",
           "text_ja": "一般的な安全牌保持: n=8,590, 悪手率 35.1%, 平均との差 +5.4 pp, p=<0.0001, 危険度差 0.036。"
         }
-      ]
+      ],
+      "review_example": "Review example: after opening, keep an exit to the live threat if the hand can still reach tenpai; do not spend every safe tile just because the hand is committed.",
+      "review_example_ja": "検討例: 副露後でもテンパイが現実的なら、実脅威への出口を一枚残す。コミットしたからといって安全牌を全部使わない。"
     },
     {
       "id": "point-05",
@@ -195,7 +204,9 @@
           "text": "Outside cuts preserving inner route: n=5,281, bad 23.1%, lift -9.2 pp, p=<0.0001, danger delta -0.030.",
           "text_ja": "本線を残す外側切り: n=5,281, 悪手率 23.1%, 平均との差 -9.2 pp, p=<0.0001, 危険度差 -0.030。"
         }
-      ]
+      ],
+      "review_example": "Review example: if a loose middle tile will become the only discard after riichi, cut it while the hand still has blocks and replacement routes.",
+      "review_example_ja": "検討例: リーチ後に唯一切らされる浮き中張牌は、ブロックと代替ルートがあるうちに処理する。"
     },
     {
       "id": "point-06",
@@ -230,7 +241,9 @@
           "text": "Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.",
           "text_ja": "成績差: 上位半分は半荘あたり和了3.09回、放銃0.75回。下位半分は和了1.39回、放銃1.48回。"
         }
-      ]
+      ],
+      "review_example": "Review example: keep red or dora access when it improves a real winning route; release it when the extra value is decorative and the next danger is concrete.",
+      "review_example_ja": "検討例: 赤やドラ受けは本物の和了ルートを良くする時に残す。打点が飾りで次の危険が具体的なら手放す。"
     },
     {
       "id": "point-07",
@@ -263,7 +276,9 @@
           "text": "Middle plus late decisions total 80,537; the defense points are not based only on opening-row cleanup.",
           "text_ja": "中盤と終盤の判断は合計 80,537 件。守備点は序盤整理だけではない。"
         }
-      ]
+      ],
+      "review_example": "Review example: a tempo call is valid when it creates tenpai, yaku certainty, denial, or an ippatsu break; raw speed alone is not enough.",
+      "review_example_ja": "検討例: テンポ鳴きは、テンパイ、役確定、阻止、一発消しを作る時に有効。単なる速度だけでは足りない。"
     },
     {
       "id": "point-08",
@@ -296,7 +311,9 @@
           "text": "Model review base: 36,206 LuckyJ/NAGA mismatches from 135,038 eligible decisions; only 31.0% hit the severe-disagreement proxy.",
           "text_ja": "モデル復習の母数: 対象 135,038 件中 LuckyJ/NAGA 不一致 36,206 件。重い不一致 proxy は 31.0% に限られる。"
         }
-      ]
+      ],
+      "review_example": "Review example: declare when the hand's value and wait force opponents to react; stay flexible when riichi only exposes a bad route with little pressure.",
+      "review_example_ja": "検討例: 打点と待ちが相手に対応を強制する時はリーチ。悪いルートを晒すだけで圧力が薄い時は柔軟に構える。"
     },
     {
       "id": "point-09",
@@ -332,7 +349,9 @@
           "text": "Multi-threat exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
           "text_ja": "多件脅威出口: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
         }
-      ]
+      ],
+      "review_example": "Review example: a one-chance or suji label can flip after a second threat, new call, or suit-constrained river; reprice the tile before pushing.",
+      "review_example_ja": "検討例: ワンチャンスや筋の評価は、二件目の脅威、新しい鳴き、色の制約で反転する。押す前に値付けし直す。"
     },
     {
       "id": "point-10",
@@ -366,7 +385,9 @@
           "text": "Model review base: 36,206 LuckyJ/NAGA mismatches from 135,038 eligible decisions; only 31.0% hit the severe-disagreement proxy.",
           "text_ja": "モデル復習の母数: 対象 135,038 件中 LuckyJ/NAGA 不一致 36,206 件。重い不一致 proxy は 31.0% に限られる。"
         }
-      ]
+      ],
+      "review_example": "Review example: third-row choices need exact tenpai, noten, deal-in, and placement arithmetic; do not copy a late push without the point swing.",
+      "review_example_ja": "検討例: 三段目はテンパイ、ノーテン、放銃、着順の点差計算が必要。点差変化なしに終盤の押しを真似しない。"
     },
     {
       "id": "point-11",
@@ -400,7 +421,9 @@
           "text": "Late row remained dense enough to matter: 19,978 decisions, mismatch 27.9%, bad 6.6%.",
           "text_ja": "三段目も重要な母数がある: 判断 19,978 件、不一致 27.9%、悪手 6.6%。"
         }
-      ]
+      ],
+      "review_example": "Review example: preserve a harmless route to drawn-hand tenpai, but abandon it when the next discard must pass multiple live threats.",
+      "review_example_ja": "検討例: 無害に流局テンパイへ戻る道は残す。ただし次打が複数脅威を通すなら捨てる。"
     },
     {
       "id": "point-12",
@@ -435,7 +458,9 @@
           "text": "Riskier-than-NAGA subset: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.",
           "text_ja": "NAGA より危険な部分集合: n=5,033, 悪手率 33.4%, 平均との差 +2.8 pp, p=6.23e-05, 危険度差 0.134。"
         }
-      ]
+      ],
+      "review_example": "Review example: when models split, write the purchased value, safety, and route count before calling the move good or bad.",
+      "review_example_ja": "検討例: モデルが割れた時は、打牌が買う打点、安全、ルート数を書いてから良し悪しを判断する。"
     },
     {
       "id": "point-13",
@@ -470,7 +495,9 @@
           "text": "Yakuhai/pair anchors: n=2,338, bad 21.9%, lift -9.8 pp, p=<0.0001, danger delta -0.019.",
           "text_ja": "役牌/対子支点: n=2,338, 悪手率 21.9%, 平均との差 -9.8 pp, p=<0.0001, 危険度差 -0.019。"
         }
-      ]
+      ],
+      "review_example": "Review example: a lone dragon or seat wind changes price when an opponent's open hand still lacks a visible yaku.",
+      "review_example_ja": "検討例: 相手の副露手に見える役がない時、孤立三元牌や自風牌の値段は大きく変わる。"
     },
     {
       "id": "point-14",
@@ -506,7 +533,9 @@
           "text": "Multi-threat exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
           "text_ja": "多件脅威出口: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
         }
-      ]
+      ],
+      "review_example": "Review example: keep genbutsu or suji only after naming the target player and the next turn it protects.",
+      "review_example_ja": "検討例: 現物や筋は、対象者と守る次巡を名付けてから残す。"
     },
     {
       "id": "point-15",
@@ -542,7 +571,9 @@
           "text": "Generic keeps as caution: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.",
           "text_ja": "一般保持の警告: n=8,590, 悪手率 35.1%, 平均との差 +5.4 pp, p=<0.0001, 危険度差 0.036。"
         }
-      ]
+      ],
+      "review_example": "Review example: yesterday's safe tile loses value when a new riichi becomes the real threat and the old tile blocks your tenpai route.",
+      "review_example_ja": "検討例: 新しいリーチが本当の脅威になり、古い安全牌がテンパイルートを邪魔するなら、その牌の価値は下がる。"
     },
     {
       "id": "point-16",
@@ -578,7 +609,9 @@
           "text": "Lower-danger choices: n=3,741, bad 21.8%, lift -10.2 pp, p=<0.0001, danger delta -0.149.",
           "text_ja": "低危険選択: n=3,741, 悪手率 21.8%, 平均との差 -10.2 pp, p=<0.0001, 危険度差 -0.149。"
         }
-      ]
+      ],
+      "review_example": "Review example: under pressure, an edge discard can reduce exposure while preserving the inner connector that actually wins the hand.",
+      "review_example_ja": "検討例: 圧力下では、外側牌切りが露出を下げつつ、本当に和了する内側の接続を残すことがある。"
     },
     {
       "id": "point-17",
@@ -614,7 +647,9 @@
           "text": "Untargeted keep caution: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.",
           "text_ja": "対象なし保持の警告: n=8,590, 悪手率 35.1%, 平均との差 +5.4 pp, p=<0.0001, 危険度差 0.036。"
         }
-      ]
+      ],
+      "review_example": "Review example: label the kept tile as safe against the dealer riichi, the open child, or no one; the last category should usually be spent.",
+      "review_example_ja": "検討例: 残す牌を親リーチへの安全牌、子の副露への安全牌、誰にも効かない牌に分ける。最後の分類は基本的に使う。"
     },
     {
       "id": "point-18",
@@ -649,7 +684,9 @@
           "text": "Loose self-yakuhai timing split: no-open contexts cut singletons on median turn 3.0, while tanyao-shaped open contexts delayed to turn 9.0.",
           "text_ja": "自分役牌の処理時期: 無副露文脈の中央値は 3.0 巡目、タンヤオ形副露文脈では 9.0 巡目まで遅れる。"
         }
-      ]
+      ],
+      "review_example": "Review example: classify each honor as self value, opponent yaku condition, dead material, or defensive exit before cutting.",
+      "review_example_ja": "検討例: 字牌は切る前に、自分の打点、相手の役条件、枯れ材料、守備出口へ分類する。"
     },
     {
       "id": "point-19",
@@ -684,7 +721,9 @@
           "text": "Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.",
           "text_ja": "成績差: 上位半分は半荘あたり和了3.09回、放銃0.75回。下位半分は和了1.39回、放銃1.48回。"
         }
-      ]
+      ],
+      "review_example": "Review example: as leader, lowering ambition is correct only when the discard also keeps a clean next turn, not when it merely avoids value.",
+      "review_example_ja": "検討例: トップ目で目標を下げるのは、次巡がきれいに打てる時だけ。単に打点を避けるだけでは足りない。"
     }
   ]
 }

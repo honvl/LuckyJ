@@ -353,6 +353,10 @@ a {
   font-size: 14px;
 }
 
+.validation-example.review-derived {
+  border-left-color: var(--green);
+}
+
 .validation-caveat {
   border-top: 1px solid var(--line);
   padding-top: 12px;

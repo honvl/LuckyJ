@@ -17,6 +17,86 @@ OUT_JSON = ROOT / "site" / "point-validation.json"
 OUT_MD = ROOT / "analysis" / "point-validation-2026-06-30.md"
 
 
+REVIEW_EXAMPLES = {
+    "point-01": (
+        "Review example: in a South-round placement hand, a low-risk tile that keeps a clean fold or cheap win can beat a thin value upgrade.",
+        "検討例: 南場の着順手では、薄い打点上昇より、きれいな撤退や安い和了を残す低危険牌が勝つことがある。",
+    ),
+    "point-02": (
+        "Review example: when one hand can become yakuhai, honitsu/chanta, or riichi, keep the anchor that preserves those futures instead of taking the prettiest one-route shape.",
+        "検討例: 役牌、混一/チャンタ、リーチの複数未来がある手では、見た目の良い一本道より、それらを残す支点を優先する。",
+    ),
+    "point-03": (
+        "Review example: call a bad block only when it creates yaku, tenpai, denial, or safe draw equity; skip the call that merely exposes a fragile one-away hand.",
+        "検討例: 悪いブロックは、役、テンパイ、阻止、安全なツモ番を作る時だけ鳴く。壊れやすい一向聴を晒すだけなら見送る。",
+    ),
+    "point-04": (
+        "Review example: after opening, keep an exit to the live threat if the hand can still reach tenpai; do not spend every safe tile just because the hand is committed.",
+        "検討例: 副露後でもテンパイが現実的なら、実脅威への出口を一枚残す。コミットしたからといって安全牌を全部使わない。",
+    ),
+    "point-05": (
+        "Review example: if a loose middle tile will become the only discard after riichi, cut it while the hand still has blocks and replacement routes.",
+        "検討例: リーチ後に唯一切らされる浮き中張牌は、ブロックと代替ルートがあるうちに処理する。",
+    ),
+    "point-06": (
+        "Review example: keep red or dora access when it improves a real winning route; release it when the extra value is decorative and the next danger is concrete.",
+        "検討例: 赤やドラ受けは本物の和了ルートを良くする時に残す。打点が飾りで次の危険が具体的なら手放す。",
+    ),
+    "point-07": (
+        "Review example: a tempo call is valid when it creates tenpai, yaku certainty, denial, or an ippatsu break; raw speed alone is not enough.",
+        "検討例: テンポ鳴きは、テンパイ、役確定、阻止、一発消しを作る時に有効。単なる速度だけでは足りない。",
+    ),
+    "point-08": (
+        "Review example: declare when the hand's value and wait force opponents to react; stay flexible when riichi only exposes a bad route with little pressure.",
+        "検討例: 打点と待ちが相手に対応を強制する時はリーチ。悪いルートを晒すだけで圧力が薄い時は柔軟に構える。",
+    ),
+    "point-09": (
+        "Review example: a one-chance or suji label can flip after a second threat, new call, or suit-constrained river; reprice the tile before pushing.",
+        "検討例: ワンチャンスや筋の評価は、二件目の脅威、新しい鳴き、色の制約で反転する。押す前に値付けし直す。",
+    ),
+    "point-10": (
+        "Review example: third-row choices need exact tenpai, noten, deal-in, and placement arithmetic; do not copy a late push without the point swing.",
+        "検討例: 三段目はテンパイ、ノーテン、放銃、着順の点差計算が必要。点差変化なしに終盤の押しを真似しない。",
+    ),
+    "point-11": (
+        "Review example: preserve a harmless route to drawn-hand tenpai, but abandon it when the next discard must pass multiple live threats.",
+        "検討例: 無害に流局テンパイへ戻る道は残す。ただし次打が複数脅威を通すなら捨てる。",
+    ),
+    "point-12": (
+        "Review example: when models split, write the purchased value, safety, and route count before calling the move good or bad.",
+        "検討例: モデルが割れた時は、打牌が買う打点、安全、ルート数を書いてから良し悪しを判断する。",
+    ),
+    "point-13": (
+        "Review example: a lone dragon or seat wind changes price when an opponent's open hand still lacks a visible yaku.",
+        "検討例: 相手の副露手に見える役がない時、孤立三元牌や自風牌の値段は大きく変わる。",
+    ),
+    "point-14": (
+        "Review example: keep genbutsu or suji only after naming the target player and the next turn it protects.",
+        "検討例: 現物や筋は、対象者と守る次巡を名付けてから残す。",
+    ),
+    "point-15": (
+        "Review example: yesterday's safe tile loses value when a new riichi becomes the real threat and the old tile blocks your tenpai route.",
+        "検討例: 新しいリーチが本当の脅威になり、古い安全牌がテンパイルートを邪魔するなら、その牌の価値は下がる。",
+    ),
+    "point-16": (
+        "Review example: under pressure, an edge discard can reduce exposure while preserving the inner connector that actually wins the hand.",
+        "検討例: 圧力下では、外側牌切りが露出を下げつつ、本当に和了する内側の接続を残すことがある。",
+    ),
+    "point-17": (
+        "Review example: label the kept tile as safe against the dealer riichi, the open child, or no one; the last category should usually be spent.",
+        "検討例: 残す牌を親リーチへの安全牌、子の副露への安全牌、誰にも効かない牌に分ける。最後の分類は基本的に使う。",
+    ),
+    "point-18": (
+        "Review example: classify each honor as self value, opponent yaku condition, dead material, or defensive exit before cutting.",
+        "検討例: 字牌は切る前に、自分の打点、相手の役条件、枯れ材料、守備出口へ分類する。",
+    ),
+    "point-19": (
+        "Review example: as leader, lowering ambition is correct only when the discard also keeps a clean next turn, not when it merely avoids value.",
+        "検討例: トップ目で目標を下げるのは、次巡がきれいに打てる時だけ。単に打点を避けるだけでは足りない。",
+    ),
+}
+
+
 def pct(value: float | int | None) -> str:
     if value is None:
         return "n/a"
@@ -50,6 +130,17 @@ def pval(value: float | int | None) -> str:
 def load_json(path: Path) -> Any:
     with path.open(encoding="utf-8") as fh:
         return json.load(fh)
+
+
+def local_review_file_count() -> int:
+    count = 0
+    for folder in ROOT.glob("tmp/*captions"):
+        text_transcripts = list((folder / "transcripts").glob("*.txt"))
+        if text_transcripts:
+            count += len(text_transcripts)
+        else:
+            count += len(list(folder.glob("*.json3")))
+    return count
 
 
 def pattern(patterns: dict[str, Any], key: str, label: str, label_ja: str) -> dict[str, str]:
@@ -531,19 +622,24 @@ def build() -> dict[str, Any]:
         ),
     ]
 
+    for item in points:
+        item["review_example"], item["review_example_ja"] = REVIEW_EXAMPLES[item["id"]]
+
     counts = Counter(item["strength"] for item in points)
+    review_files = local_review_file_count()
     return {
         "generated_at": date.today().isoformat(),
         "method": {
             "source_files": [str(MODEL_PATH.relative_to(ROOT)), str(BOOK_PATH.relative_to(ROOT))],
+            "qualitative_review_files": review_files,
             "eligible_decisions": overall["decisions"],
             "mismatches": overall["mismatches"],
             "book_decisions": summary["decisions"],
             "hands": summary["hands"],
             "games": summary["games"],
             "baseline_mismatch_bad_rate": overall["bad_rate_among_mismatches"],
-            "note": "Qualitative review ideas were kept only when supported by existing mined proxies or marked as qualified.",
-            "note_ja": "定性的な検討材料は、既存の統計 proxy で支持された場合だけ採用し、弱い部分は条件付きにした。",
+            "note": "Qualitative review examples were kept as generalized prompts only; statistical validity comes from the mined model/book artifacts.",
+            "note_ja": "定性的な検討例は一般化した問いとしてだけ使い、統計的な妥当性は mined model/book artifact で確認した。",
         },
         "summary": {
             "strong": counts["strong"],
@@ -562,6 +658,7 @@ def write_markdown(data: dict[str, Any]) -> None:
         "## Method",
         "",
         f"- Source artifacts: {', '.join(data['method']['source_files'])}.",
+        f"- Qualitative review files scanned locally: {data['method'].get('qualitative_review_files', 0):,}; raw captions/transcripts stay ignored under `tmp/`.",
         f"- Mined model base: {data['method']['eligible_decisions']:,} eligible decisions and {data['method']['mismatches']:,} LuckyJ/NAGA mismatches.",
         f"- Book base: {data['method']['games']:,} hanchan, {data['method']['hands']:,} hands, {data['method']['book_decisions']:,} discard decisions.",
         "- A point is marked strong only when the mined proxy has a large sample, directionally useful lift, and a significant p-value. Mixed or aggregate-only points are marked qualified.",
@@ -595,6 +692,8 @@ def write_markdown(data: dict[str, Any]) -> None:
             lines.append(f"- {stat['text']}")
         example = item["example"].removeprefix("Example: ")
         lines.append(f"- Example test: {example}")
+        review_example = item["review_example"].removeprefix("Review example: ")
+        lines.append(f"- Review-derived example: {review_example}")
         lines.append("")
     OUT_MD.write_text("\n".join(lines), encoding="utf-8")
 

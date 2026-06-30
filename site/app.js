@@ -1175,6 +1175,8 @@ function renderPointValidation(validation) {
     const stats = (item.stats || [])
       .map((stat) => `<li>${escapeHtml(isJa ? stat.text_ja || stat.text : stat.text)}</li>`)
       .join("");
+    const reviewExample = isJa ? item.review_example_ja : item.review_example;
+    const reviewExampleText = String(reviewExample || "").replace(/^(Review example|検討例):\s*/, "");
     card.innerHTML = `
       <div class="validation-head">
         <span>${escapeHtml(item.id.replace("point-", ""))}</span>
@@ -1188,6 +1190,14 @@ function renderPointValidation(validation) {
         <strong>${isJa ? "実戦チェック" : "Table check"}</strong>
         <span>${escapeHtml(isJa ? item.example_ja : item.example)}</span>
       </div>
+      ${
+        reviewExample
+          ? `<div class="validation-example review-derived">
+              <strong>${isJa ? "検討由来例" : "Review-derived example"}</strong>
+              <span>${escapeHtml(reviewExampleText)}</span>
+            </div>`
+          : ""
+      }
       <p class="validation-caveat">${escapeHtml(isJa ? item.caveat_ja : item.caveat)}</p>
     `;
     grid.append(card);
