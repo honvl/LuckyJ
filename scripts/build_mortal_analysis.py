@@ -448,6 +448,10 @@ def commentary_for(point: str, model: dict[str, Any], actual: dict[str, Any], ca
             "This first-discard spot is a calibration case. Mortal helps decide whether the NAGA/LuckyJ split is a meaningful strategic disagreement or just a model-ordering preference in a low-danger position.",
             "Use spots like this to practice humility: when strong models split early, write the claims each tile makes instead of forcing a heroic explanation.",
         ),
+        "point-13": (
+            "This is the open-hand contract test. Mortal is useful here because the discard is not only about LuckyJ's hand shape; it asks whether the live yakuhai should be cleaned before the opponent's exposed hand can use it as a yaku.",
+            "After an opponent opens without a visible yaku, mark dragons, round wind, and that player's seat wind as contract tiles. Keep them only when they are doing real work for your own hand or defense.",
+        ),
     }
     read, use = specific.get(
         point,

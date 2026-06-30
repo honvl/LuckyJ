@@ -253,6 +253,108 @@
         "reach_vs_no": 43
       }
     },
+    "defense_retention": {
+      "overall": {
+        "splits": 54359,
+        "left_sum": 2627467,
+        "left_count": 54359,
+        "kept_defense_tile": 30770,
+        "kept_left_sum": 1266494,
+        "kept_left_count": 30770,
+        "kept_suji": 10314,
+        "kept_genbutsu": 26020,
+        "kept_multi_opponent": 11666,
+        "kept_against_live_threat": 12982
+      },
+      "stage": {
+        "early": {
+          "splits": 30220,
+          "left_sum": 1817632,
+          "left_count": 30220,
+          "kept_defense_tile": 10913,
+          "kept_left_sum": 626044,
+          "kept_left_count": 10913,
+          "kept_suji": 1869,
+          "kept_genbutsu": 9454,
+          "kept_multi_opponent": 2088,
+          "kept_against_live_threat": 1752
+        },
+        "middle": {
+          "splits": 18570,
+          "left_sum": 727240,
+          "left_count": 18570,
+          "kept_defense_tile": 14648,
+          "kept_left_sum": 563459,
+          "kept_left_count": 14648,
+          "kept_genbutsu": 11977,
+          "kept_multi_opponent": 6177,
+          "kept_suji": 5635,
+          "kept_against_live_threat": 7236
+        },
+        "late": {
+          "splits": 5569,
+          "left_sum": 82595,
+          "left_count": 5569,
+          "kept_defense_tile": 5209,
+          "kept_left_sum": 76991,
+          "kept_left_count": 5209,
+          "kept_genbutsu": 4589,
+          "kept_against_live_threat": 3994,
+          "kept_multi_opponent": 3401,
+          "kept_suji": 2810
+        }
+      },
+      "score_band": {
+        "above_start": {
+          "splits": 22086,
+          "left_sum": 1067000,
+          "left_count": 22086,
+          "kept_defense_tile": 12500,
+          "kept_left_sum": 513430,
+          "kept_left_count": 12500,
+          "kept_suji": 4148,
+          "kept_genbutsu": 10616,
+          "kept_multi_opponent": 4728,
+          "kept_against_live_threat": 5336
+        },
+        "behind": {
+          "splits": 17248,
+          "left_sum": 832518,
+          "left_count": 17248,
+          "kept_defense_tile": 9801,
+          "kept_left_sum": 403946,
+          "kept_left_count": 9801,
+          "kept_genbutsu": 8300,
+          "kept_against_live_threat": 4154,
+          "kept_multi_opponent": 3708,
+          "kept_suji": 3230
+        },
+        "lead": {
+          "splits": 10838,
+          "left_sum": 523022,
+          "left_count": 10838,
+          "kept_defense_tile": 6154,
+          "kept_left_sum": 251651,
+          "kept_left_count": 6154,
+          "kept_genbutsu": 5232,
+          "kept_against_live_threat": 2564,
+          "kept_suji": 2097,
+          "kept_multi_opponent": 2405
+        },
+        "danger": {
+          "splits": 4187,
+          "left_sum": 204927,
+          "left_count": 4187,
+          "kept_defense_tile": 2315,
+          "kept_left_sum": 97467,
+          "kept_left_count": 2315,
+          "kept_suji": 839,
+          "kept_multi_opponent": 825,
+          "kept_genbutsu": 1872,
+          "kept_against_live_threat": 928
+        }
+      }
+    },
     "examples": {
       "neutral": [
         {
@@ -276,7 +378,16 @@
           "naga_danger": 0.0001,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "1m",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/015161fe9d8a51ffa77fa23d6cda0ad43998f09e33b0b003d8a1bd24b31d17a6v2_0.html?tw=0",
@@ -299,7 +410,43 @@
           "naga_danger": 0.0017,
           "round_delta": -3000,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "C",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "C",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              },
+              {
+                "seat": 2,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "C",
+                    "position": 4
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/015161fe9d8a51ffa77fa23d6cda0ad43998f09e33b0b003d8a1bd24b31d17a6v2_0.html?tw=0",
@@ -322,7 +469,43 @@
           "naga_danger": 0.005,
           "round_delta": -3000,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "C",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "C",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              },
+              {
+                "seat": 2,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "C",
+                    "position": 4
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/015161fe9d8a51ffa77fa23d6cda0ad43998f09e33b0b003d8a1bd24b31d17a6v2_0.html?tw=0",
@@ -345,7 +528,16 @@
           "naga_danger": 0.0191,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "1s",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/015161fe9d8a51ffa77fa23d6cda0ad43998f09e33b0b003d8a1bd24b31d17a6v2_0.html?tw=0",
@@ -368,7 +560,56 @@
           "naga_danger": 0.0,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "W",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": true,
+            "opponents": 3,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "W",
+                    "position": 4
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              },
+              {
+                "seat": 2,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "W",
+                    "position": 3
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 1
+              },
+              {
+                "seat": 3,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "W",
+                    "position": 7
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/015161fe9d8a51ffa77fa23d6cda0ad43998f09e33b0b003d8a1bd24b31d17a6v2_0.html?tw=0",
@@ -391,7 +632,16 @@
           "naga_danger": 0.0001,
           "round_delta": -3900,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "S",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -416,7 +666,16 @@
           "naga_danger": 0.0084,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "P",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -441,7 +700,16 @@
           "naga_danger": 0.0041,
           "round_delta": 2300,
           "won_round": true,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "N",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -466,7 +734,16 @@
           "naga_danger": 0.0153,
           "round_delta": -700,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "2p",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -491,7 +768,16 @@
           "naga_danger": 0.0064,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "9s",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -516,7 +802,30 @@
           "naga_danger": 0.0118,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "9s",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "6s",
+                    "position": 2
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -541,7 +850,16 @@
           "naga_danger": 0.001,
           "round_delta": 8700,
           "won_round": true,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "S",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -566,7 +884,30 @@
           "naga_danger": 0.0163,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "9s",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 2,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "6s",
+                    "position": 1
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -591,7 +932,30 @@
           "naga_danger": 0.0636,
           "round_delta": -3900,
           "won_round": false,
-          "dealt_in": true
+          "dealt_in": true,
+          "kept_safety": {
+            "tile": "6s",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 2,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "3s",
+                    "position": 4
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -616,7 +980,16 @@
           "naga_danger": 0.0087,
           "round_delta": 1500,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "1s",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -641,7 +1014,30 @@
           "naga_danger": 0.071,
           "round_delta": 1500,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "8p",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "5p",
+                    "position": 2
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -666,7 +1062,16 @@
           "naga_danger": 0.0663,
           "round_delta": -600,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "6m",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/ae812c7aa02889f68a6067c6f9db876cfd1caea3de96f364cc1298e3ab02b2cdv2_2.html?tw=3",
@@ -691,7 +1096,30 @@
           "naga_danger": 0.0201,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "3s",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "3s",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/ae812c7aa02889f68a6067c6f9db876cfd1caea3de96f364cc1298e3ab02b2cdv2_2.html?tw=3",
@@ -716,7 +1144,30 @@
           "naga_danger": 0.0013666666666666666,
           "round_delta": -1000,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "N",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "N",
+                    "position": 1
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/ae812c7aa02889f68a6067c6f9db876cfd1caea3de96f364cc1298e3ab02b2cdv2_2.html?tw=3",
@@ -741,7 +1192,16 @@
           "naga_danger": 0.0008,
           "round_delta": -1000,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "P",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         }
       ],
       "safer": [
@@ -768,7 +1228,16 @@
           "naga_danger": 0.2619,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "F",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/ae812c7aa02889f68a6067c6f9db876cfd1caea3de96f364cc1298e3ab02b2cdv2_2.html?tw=3",
@@ -793,7 +1262,16 @@
           "naga_danger": 0.1172,
           "round_delta": -1400,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "9p",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/ae812c7aa02889f68a6067c6f9db876cfd1caea3de96f364cc1298e3ab02b2cdv2_2.html?tw=3",
@@ -818,7 +1296,43 @@
           "naga_danger": 0.2323,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "5s",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "8s",
+                    "position": 5
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              },
+              {
+                "seat": 1,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "2s",
+                    "position": 4
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/ae812c7aa02889f68a6067c6f9db876cfd1caea3de96f364cc1298e3ab02b2cdv2_2.html?tw=3",
@@ -843,7 +1357,43 @@
           "naga_danger": 0.0891,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "6s",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "9s",
+                    "position": 7
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              },
+              {
+                "seat": 2,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "9s",
+                    "position": 3
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/d00179e866f4a3b86b475eaf72875dd225c121fc3c2af000d74632b57231c1a4v2_2.html?tw=3",
@@ -868,7 +1418,16 @@
           "naga_danger": 0.0931,
           "round_delta": 2900,
           "won_round": true,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "3p",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/b65c8454fc73f6b1da051826ec9113dcc755b99ee5bc96f4f5d9e290733aa912v2_2.html?tw=3",
@@ -893,7 +1452,43 @@
           "naga_danger": 0.0747,
           "round_delta": 1500,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "1m",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": true,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "1m",
+                    "position": 8
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 2
+              },
+              {
+                "seat": 2,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "1m",
+                    "position": 8
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/0b273323e2067d89af605eaa789e7ba65a355f2617fc658c3a7031a7638ffb9ev2_2.html?tw=2",
@@ -918,7 +1513,48 @@
           "naga_danger": 0.1745,
           "round_delta": -3000,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "6m",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": true,
+            "safe_against_threat": true,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "9m",
+                    "position": 11
+                  }
+                ],
+                "reached": false,
+                "open_melds": 1
+              },
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "6m",
+                    "position": 10
+                  }
+                ],
+                "suji_sources": [
+                  {
+                    "tile": "9m",
+                    "position": 9
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/9b3ecbfc6986ebe6fc3e585013ae0b5a5d3390e71bab778480b3cbe042019506v2_2.html?tw=1",
@@ -943,7 +1579,35 @@
           "naga_danger": 0.0969,
           "round_delta": -700,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "5s",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "5s",
+                    "position": 4
+                  }
+                ],
+                "suji_sources": [
+                  {
+                    "tile": "8s",
+                    "position": 5
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/9b3ecbfc6986ebe6fc3e585013ae0b5a5d3390e71bab778480b3cbe042019506v2_2.html?tw=1",
@@ -968,7 +1632,35 @@
           "naga_danger": 0.1969,
           "round_delta": -700,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "5s",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "5s",
+                    "position": 4
+                  }
+                ],
+                "suji_sources": [
+                  {
+                    "tile": "8s",
+                    "position": 5
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/9b3ecbfc6986ebe6fc3e585013ae0b5a5d3390e71bab778480b3cbe042019506v2_2.html?tw=1",
@@ -993,7 +1685,35 @@
           "naga_danger": 0.2708,
           "round_delta": -700,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "5s",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "5s",
+                    "position": 4
+                  }
+                ],
+                "suji_sources": [
+                  {
+                    "tile": "8s",
+                    "position": 5
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/9b3ecbfc6986ebe6fc3e585013ae0b5a5d3390e71bab778480b3cbe042019506v2_2.html?tw=1",
@@ -1018,7 +1738,34 @@
           "naga_danger": 0.3224,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "5s",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "8s",
+                    "position": 4
+                  },
+                  {
+                    "tile": "8s",
+                    "position": 6
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/91789d99d86ef1f4ba0a0ec23841833799d72072b031e8503687673b4df2d037v2_2.html?tw=0",
@@ -1043,7 +1790,43 @@
           "naga_danger": 0.3685,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "5s",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "8s",
+                    "position": 6
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              },
+              {
+                "seat": 3,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "5s",
+                    "position": 5
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/91789d99d86ef1f4ba0a0ec23841833799d72072b031e8503687673b4df2d037v2_2.html?tw=0",
@@ -1068,7 +1851,16 @@
           "naga_danger": 0.1946,
           "round_delta": -11600,
           "won_round": false,
-          "dealt_in": true
+          "dealt_in": true,
+          "kept_safety": {
+            "tile": "3m",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/a08608701506356f3c0dee3f3e1c4f130ef102925a9b27f12b5a288077a03106v2_2.html?tw=0",
@@ -1093,7 +1885,43 @@
           "naga_danger": 0.0756,
           "round_delta": 8000,
           "won_round": true,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "8s",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": true,
+            "safe_against_threat": true,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "8s",
+                    "position": 4
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              },
+              {
+                "seat": 2,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "5s",
+                    "position": 13
+                  }
+                ],
+                "reached": false,
+                "open_melds": 2
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/ae5cfcb0dc30450732306bc696644a22ebdef7e6e68e62073ea3016f9963621av2_2.html?tw=0",
@@ -1118,7 +1946,43 @@
           "naga_danger": 0.3458,
           "round_delta": 1500,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "5p",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": true,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "8p",
+                    "position": 10
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              },
+              {
+                "seat": 2,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "8p",
+                    "position": 11
+                  }
+                ],
+                "reached": false,
+                "open_melds": 1
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/ae5cfcb0dc30450732306bc696644a22ebdef7e6e68e62073ea3016f9963621av2_2.html?tw=0",
@@ -1143,7 +2007,16 @@
           "naga_danger": 0.3311,
           "round_delta": -1100,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "8p",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/6b5e8ff0c6d86538bad357fc6b212303578afef437b080945b07aecbea734c83v2_2.html?tw=2",
@@ -1168,7 +2041,30 @@
           "naga_danger": 0.111,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "3m",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 3,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "6m",
+                    "position": 5
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/6b5e8ff0c6d86538bad357fc6b212303578afef437b080945b07aecbea734c83v2_2.html?tw=2",
@@ -1193,7 +2089,30 @@
           "naga_danger": 0.2323,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "6s",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": true,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "3s",
+                    "position": 3
+                  }
+                ],
+                "reached": false,
+                "open_melds": 2
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/6b5e8ff0c6d86538bad357fc6b212303578afef437b080945b07aecbea734c83v2_2.html?tw=2",
@@ -1218,7 +2137,30 @@
           "naga_danger": 0.1036,
           "round_delta": -500,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "1s",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": true,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "4s",
+                    "position": 6
+                  }
+                ],
+                "reached": false,
+                "open_melds": 3
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/9ce8429f01389974e550dc5402e45d1f8c231b761c775d8399264a7cc00e8082v2_2.html?tw=3",
@@ -1243,7 +2185,43 @@
           "naga_danger": 0.1442,
           "round_delta": -8000,
           "won_round": false,
-          "dealt_in": true
+          "dealt_in": true,
+          "kept_safety": {
+            "tile": "4s",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "1s",
+                    "position": 1
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              },
+              {
+                "seat": 2,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "1s",
+                    "position": 2
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         }
       ],
       "riskier": [
@@ -1270,7 +2248,30 @@
           "naga_danger": 0.0089,
           "round_delta": 2300,
           "won_round": true,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "C",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "C",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -1295,7 +2296,30 @@
           "naga_danger": 0.032,
           "round_delta": -700,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "C",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "C",
+                    "position": 4
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/7a24d4ddd9e0d60021075e67ea674c272ebb290b066374752b1fc1d2d3018ffev2_2.html?tw=3",
@@ -1320,7 +2344,43 @@
           "naga_danger": 0.0559,
           "round_delta": -600,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "8s",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": true,
+            "safe_against_threat": true,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "8s",
+                    "position": 1
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 1
+              },
+              {
+                "seat": 2,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "5s",
+                    "position": 2
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/ae812c7aa02889f68a6067c6f9db876cfd1caea3de96f364cc1298e3ab02b2cdv2_2.html?tw=3",
@@ -1345,7 +2405,34 @@
           "naga_danger": 0.0,
           "round_delta": -1400,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "W",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 2,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "W",
+                    "position": 1
+                  },
+                  {
+                    "tile": "W",
+                    "position": 7
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/ae812c7aa02889f68a6067c6f9db876cfd1caea3de96f364cc1298e3ab02b2cdv2_2.html?tw=3",
@@ -1370,7 +2457,30 @@
           "naga_danger": 0.0253,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "S",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "S",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/d00179e866f4a3b86b475eaf72875dd225c121fc3c2af000d74632b57231c1a4v2_2.html?tw=3",
@@ -1395,7 +2505,30 @@
           "naga_danger": 0.0,
           "round_delta": -1000,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "7s",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": true,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "7s",
+                    "position": 4
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 2
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/d00179e866f4a3b86b475eaf72875dd225c121fc3c2af000d74632b57231c1a4v2_2.html?tw=3",
@@ -1420,7 +2553,43 @@
           "naga_danger": 0.0,
           "round_delta": 2900,
           "won_round": true,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "S",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "S",
+                    "position": 1
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              },
+              {
+                "seat": 2,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "S",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/d00179e866f4a3b86b475eaf72875dd225c121fc3c2af000d74632b57231c1a4v2_2.html?tw=3",
@@ -1445,7 +2614,35 @@
           "naga_danger": 0.0,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "7s",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": true,
+            "safe_against_threat": true,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "7s",
+                    "position": 11
+                  }
+                ],
+                "suji_sources": [
+                  {
+                    "tile": "4s",
+                    "position": 4
+                  }
+                ],
+                "reached": true,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/d00179e866f4a3b86b475eaf72875dd225c121fc3c2af000d74632b57231c1a4v2_2.html?tw=3",
@@ -1470,7 +2667,30 @@
           "naga_danger": 0.0,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "2m",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": true,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "2m",
+                    "position": 3
+                  }
+                ],
+                "suji_sources": [],
+                "reached": true,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/b65c8454fc73f6b1da051826ec9113dcc755b99ee5bc96f4f5d9e290733aa912v2_2.html?tw=3",
@@ -1495,7 +2715,43 @@
           "naga_danger": 0.0667,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "3m",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": true,
+            "safe_against_threat": true,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "3m",
+                    "position": 6
+                  }
+                ],
+                "suji_sources": [],
+                "reached": true,
+                "open_melds": 0
+              },
+              {
+                "seat": 2,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "6m",
+                    "position": 7
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/b65c8454fc73f6b1da051826ec9113dcc755b99ee5bc96f4f5d9e290733aa912v2_2.html?tw=3",
@@ -1520,7 +2776,30 @@
           "naga_danger": 0.0015,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "C",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": true,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "C",
+                    "position": 1
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 2
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/b65c8454fc73f6b1da051826ec9113dcc755b99ee5bc96f4f5d9e290733aa912v2_2.html?tw=3",
@@ -1545,7 +2824,30 @@
           "naga_danger": 0.0004,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "C",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": true,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "C",
+                    "position": 1
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 3
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/b65c8454fc73f6b1da051826ec9113dcc755b99ee5bc96f4f5d9e290733aa912v2_2.html?tw=3",
@@ -1570,7 +2872,16 @@
           "naga_danger": 0.018,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "F",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/13fc5d471b8821ec227703a14aa9b12d2aca8eb5fe3076624fd959a3ac3fc7b0v2_2.html?tw=1",
@@ -1595,7 +2906,34 @@
           "naga_danger": 0.1321,
           "round_delta": 1500,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "5m",
+            "kind": "suji",
+            "has_genbutsu": false,
+            "has_suji": true,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 3,
+                "kind": "suji",
+                "genbutsu_sources": [],
+                "suji_sources": [
+                  {
+                    "tile": "8m",
+                    "position": 8
+                  },
+                  {
+                    "tile": "2m",
+                    "position": 15
+                  }
+                ],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/9b3ecbfc6986ebe6fc3e585013ae0b5a5d3390e71bab778480b3cbe042019506v2_2.html?tw=1",
@@ -1620,7 +2958,43 @@
           "naga_danger": 0.008,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "S",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 2,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "S",
+                    "position": 1
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              },
+              {
+                "seat": 2,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "S",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/9b3ecbfc6986ebe6fc3e585013ae0b5a5d3390e71bab778480b3cbe042019506v2_2.html?tw=1",
@@ -1645,7 +3019,30 @@
           "naga_danger": 0.0,
           "round_delta": -3900,
           "won_round": false,
-          "dealt_in": true
+          "dealt_in": true,
+          "kept_safety": {
+            "tile": "E",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 3,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "E",
+                    "position": 5
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/9b3ecbfc6986ebe6fc3e585013ae0b5a5d3390e71bab778480b3cbe042019506v2_2.html?tw=1",
@@ -1670,7 +3067,16 @@
           "naga_danger": 0.0992,
           "round_delta": 13000,
           "won_round": true,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "P",
+            "kind": null,
+            "has_genbutsu": false,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/a08608701506356f3c0dee3f3e1c4f130ef102925a9b27f12b5a288077a03106v2_2.html?tw=0",
@@ -1695,7 +3101,30 @@
           "naga_danger": 0.0038,
           "round_delta": 8000,
           "won_round": true,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "W",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": true,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 2,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "W",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 2
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/a08608701506356f3c0dee3f3e1c4f130ef102925a9b27f12b5a288077a03106v2_2.html?tw=0",
@@ -1720,7 +3149,30 @@
           "naga_danger": 0.0,
           "round_delta": 0,
           "won_round": false,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "6m",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": true,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 3,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "6m",
+                    "position": 5
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 2
+              }
+            ]
+          }
         },
         {
           "report": "https://naga.dmv.nico/htmls/a08608701506356f3c0dee3f3e1c4f130ef102925a9b27f12b5a288077a03106v2_2.html?tw=0",
@@ -1745,7 +3197,30 @@
           "naga_danger": 0.0103,
           "round_delta": 2300,
           "won_round": true,
-          "dealt_in": false
+          "dealt_in": false,
+          "kept_safety": {
+            "tile": "E",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 2,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "E",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0
+              }
+            ]
+          }
         }
       ]
     }

@@ -10,10 +10,44 @@ import analyze_luckyj as base
 
 OUT = Path("site/case-studies.json")
 SHANTEN = Shanten()
+SEAT_NAMES = ["self", "shimocha", "toimen", "kamicha"]
 
 
 def tile_id(tile):
     return base.IDX[tile]
+
+
+def rel_seat(seat, target):
+    if seat is None:
+        return "unknown"
+    return SEAT_NAMES[(seat - target) % 4]
+
+
+def safety_read(tile, target, discards, reached=None, open_melds=None):
+    read = base.defensive_tile_read(tile, target, discards, reached, open_melds)
+    for item in read["against"]:
+        item["seat_label"] = rel_seat(item["seat"], target)
+    return read
+
+
+def retained_safety(tiles, target, discards, reached=None, open_melds=None):
+    reads = []
+    seen = set()
+    for tile in sorted(tiles, key=lambda t: (tile_id(t), t)):
+        key = tile_id(tile)
+        if key in seen:
+            continue
+        seen.add(key)
+        read = safety_read(tile, target, discards, reached, open_melds)
+        if read["kind"]:
+            reads.append(read)
+    return {
+        "total": len(reads),
+        "genbutsu": sum(1 for read in reads if read["has_genbutsu"]),
+        "suji": sum(1 for read in reads if read["kind"] == "suji"),
+        "against_threat": sum(1 for read in reads if read["safe_against_threat"]),
+        "tiles": reads[:8],
+    }
 
 
 def counts_34(tiles):
@@ -43,7 +77,7 @@ def shanten_for(tiles):
     return SHANTEN.calculate_shanten(counts_34(tiles))
 
 
-def ukeire_after_discard(hand14, discard, public_visible):
+def ukeire_after_discard(hand14, discard, public_visible, safety_context=None):
     hand = list(hand14)
     if not remove_tile(hand, discard):
         return None
@@ -60,7 +94,7 @@ def ukeire_after_discard(hand14, discard, public_visible):
         if shanten_for(trial) < base_shanten:
             ukeire += remaining
             effective.append(name)
-    return {
+    result = {
         "discard": discard,
         "shanten": base_shanten,
         "ukeire": ukeire,
@@ -69,6 +103,9 @@ def ukeire_after_discard(hand14, discard, public_visible):
         "kept_honors": sum(1 for t in hand if base.tile_class(t) == "honor"),
         "kept_terminals": sum(1 for t in hand if base.tile_class(t) == "terminal"),
     }
+    if safety_context:
+        result["kept_safety"] = retained_safety(hand, *safety_context)
+    return result
 
 
 def danger_for(state, target, tile):
@@ -91,16 +128,17 @@ def score_band(score):
     return "danger zone"
 
 
-def make_case(row, kyoku_index, pos, start, state, hand14, public_visible, model_rows, label):
+def make_case(row, kyoku_index, pos, start, state, hand14, public_visible, model_rows, label, discards=None, reached=None, open_melds=None):
     actual = state["info"]["msg"]["real_dahai"]
     naga = model_rows[0][0]
-    actual_eval = ukeire_after_discard(hand14, actual, public_visible)
-    naga_eval = ukeire_after_discard(hand14, naga, public_visible)
+    safety_context = (row["actor"], discards, reached, open_melds) if discards is not None else None
+    actual_eval = ukeire_after_discard(hand14, actual, public_visible, safety_context)
+    naga_eval = ukeire_after_discard(hand14, naga, public_visible, safety_context)
     if not actual_eval or not naga_eval:
         return None
     msg = state["info"]["msg"]
     score = start["scores"][row["actor"]]
-    return {
+    case = {
         "label": label,
         "game": row["idx"],
         "rank": row["rank"],
@@ -125,6 +163,9 @@ def make_case(row, kyoku_index, pos, start, state, hand14, public_visible, model
         "report": row["report"],
         "paifu": row["paifu"],
     }
+    if discards is not None:
+        case["kept_safety"] = safety_read(naga, row["actor"], discards, reached, open_melds)
+    return case
 
 
 def collect_cases():
@@ -138,6 +179,8 @@ def collect_cases():
             start = kyoku[0].get("info", {}).get("msg", {})
             hands = [list(h) for h in start.get("tehais", [[], [], [], []])]
             open_melds = [0, 0, 0, 0]
+            reached = [False, False, False, False]
+            discards = [[], [], [], []]
             public_visible = Counter()
             if start.get("dora_marker"):
                 public_visible[tile_id(start["dora_marker"])] += 1
@@ -163,27 +206,36 @@ def collect_cases():
                             stage = base.stage_from_left(msg.get("left_hai_num"))
                             actual_cls = base.tile_class(actual)
                             top_classes = [base.tile_class(top) for top, _, _ in model_rows]
+                            kept_read = safety_read(model_rows[0][0], target, discards, reached, open_melds)
+                            if kept_read["kind"] == "genbutsu":
+                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Kept river-safe exit", discards, reached, open_melds)
+                                if case:
+                                    buckets["kept_river_safe"].append(case)
+                            elif kept_read["kind"] == "suji":
+                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Kept suji exit", discards, reached, open_melds)
+                                if case:
+                                    buckets["kept_suji_exit"].append(case)
                             if stage == "early" and actual_cls == "simple" and all(c in {"honor", "terminal"} for c in top_classes):
-                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Early safety hedge")
+                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Early safety hedge", discards, reached, open_melds)
                                 if case:
                                     buckets["early_safety_hedge"].append(case)
                             if stage == "middle" and actual_cls == "simple" and all(c in {"honor", "terminal"} for c in top_classes):
-                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Middle route hedge")
+                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Middle route hedge", discards, reached, open_melds)
                                 if case:
                                     buckets["middle_route_hedge"].append(case)
                             if stage == "late" and actual_cls in {"honor", "terminal"} and all(c == "simple" for c in top_classes):
-                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Late tightening")
+                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Late tightening", discards, reached, open_melds)
                                 if case:
                                     buckets["late_tightening"].append(case)
                             if base.danger_for(state, target, actual) is not None and base.danger_for(state, target, model_rows[0][0]) is not None:
                                 actual_d = base.danger_for(state, target, actual)
                                 naga_d = base.danger_for(state, target, model_rows[0][0])
                                 if actual_d + 0.05 < naga_d:
-                                    case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Safer than NAGA")
+                                    case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Safer than NAGA", discards, reached, open_melds)
                                     if case:
                                         buckets["safer_than_naga"].append(case)
                                 elif actual_d > naga_d + 0.05:
-                                    case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Riskier than NAGA")
+                                    case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Riskier than NAGA", discards, reached, open_melds)
                                     if case:
                                         buckets["riskier_than_naga"].append(case)
                     discard = msg.get("real_dahai")
@@ -205,8 +257,15 @@ def collect_cases():
                         remove_tile(hands[actor], consumed)
                         public_visible[tile_id(consumed)] += 1
 
+                elif msg_type == "reach":
+                    if actor is not None:
+                        reached[actor] = True
+
                 elif msg_type == "dahai":
-                    public_visible[tile_id(msg["pai"])] += 1
+                    tile = msg.get("pai")
+                    if actor is not None and tile:
+                        discards[actor].append(tile)
+                        public_visible[tile_id(tile)] += 1
 
     # Keep compact, high-signal examples. Prefer large NAGA confidence gaps, but avoid pathological missing evals.
     selected = {}

@@ -3,6 +3,7 @@
 Analysis workspace for LuckyJ's Japanese mahjong games analyzed by NAGA.
 
 Site: https://honvl.github.io/LuckyJ/
+Japanese translation: https://honvl.github.io/LuckyJ/ja.html
 
 ## Contents
 
@@ -15,6 +16,8 @@ Site: https://honvl.github.io/LuckyJ/
 - `scripts/build_point_examples.py` - mines one concrete replay example for each numbered principle and writes `site/point-examples.json`.
 - `scripts/build_mortal_analysis.py` - locally replays the selected examples through Mortal/libriichi and writes `site/mortal-analysis.json`.
 - `site/strategy-guides.json` - long-form strategic commentary for the numbered replay examples.
+- `site/strategy-guides.ja.json` - Japanese commentary used by the translated static book.
+- `site/mortal-analysis.ja.json` - Japanese Mortal panel copy used by the translated static book.
 - `site/mortal-analysis.json` - compact Mortal cross-check output used by the static site.
 - `site/` - static online book.
 

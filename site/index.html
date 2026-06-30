@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>LuckyJ Digital Playbook</title>
+    <link rel="alternate" hreflang="en" href="index.html" />
+    <link rel="alternate" hreflang="ja" href="ja.html" />
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -19,6 +21,7 @@
         <a href="#pattern-synthesis">Synthesis</a>
         <a href="#case-studies">Cases</a>
         <a href="#drills">Drills</a>
+        <a class="lang-link" href="ja.html" hreflang="ja">日本語</a>
       </nav>
     </header>
 
@@ -39,6 +42,8 @@
             <li><a href="#point-10">Late Hands Tighten</a></li>
             <li><a href="#point-11">Win Drawn Hands</a></li>
             <li><a href="#point-12">Do Not Worship NAGA Match</a></li>
+            <li><a href="#point-13">Deny Yakuhai Contracts</a></li>
+            <li><a href="#point-14">Keep River-Safe Exits</a></li>
             <li><a href="#pattern-synthesis">Pattern Synthesis</a></li>
             <li><a href="#case-studies">Case Studies</a></li>
           </ol>
@@ -490,14 +495,83 @@
           </div>
         </section>
 
+        <section class="point" id="point-13">
+          <div class="point-number">13</div>
+          <div class="point-body">
+            <h3>Clean yakuhai when an open hand has not shown its yaku.</h3>
+            <p>
+              A call is not only speed. It is a clue. When another player opens with a sequence or a non-yakuhai
+              pon, the hand may still be missing the one tile that makes it legal. Dragons, round wind, and that
+              player's seat wind become more important after the call, not less. LuckyJ often cleans those tiles
+              before the open hand can pair or pon them into a contract.
+            </p>
+            <p>
+              This is different from hoarding yakuhai for your own hand. If the tile is a singleton, your hand is
+              not close, and an opponent has already shortened their hand without revealing tanyao, yakuhai, or
+              another clear yaku, the tile has become an opponent-enabling liability. Removing it early can be
+              better than keeping a slightly prettier shape and donating the open hand's missing yaku later.
+            </p>
+            <div class="checklist">
+              <h4>Clean the yakuhai when</h4>
+              <ul>
+                <li>An opponent has opened but has not shown an obvious yaku.</li>
+                <li>The tile is a dragon, round wind, or their seat wind.</li>
+                <li>You hold it as a singleton and it is not central to your value plan.</li>
+                <li>Your hand is not ready to punish the open hand immediately.</li>
+              </ul>
+            </div>
+            <div class="rule">
+              <strong>Rule:</strong> After any opponent call, ask what yakuhai would make that hand legal. If
+              you are holding one as loose material, price it as their future yaku before you price it as your
+              harmless honor.
+            </div>
+            <div data-example="point-13"></div>
+          </div>
+        </section>
+
+        <section class="point" id="point-14">
+          <div class="point-number">14</div>
+          <div class="point-body">
+            <h3>Keep genbutsu and suji tiles as timed exits.</h3>
+            <p>
+              A safe tile is not only a folding tile. It is a future choice. LuckyJ often keeps a tile that is
+              already in another player's river, or a tile that is suji to an opponent's river, while cutting a
+              more flexible-looking tile now. The point is timing: spend shape while the table is still playable,
+              keep the defensive exit for the turn when riichi, a second call, or a bad draw changes the hand's job.
+            </p>
+            <p>
+              The distinction matters. Genbutsu is an exact river-safe tile against the player who discarded it.
+              Suji is weaker: it depends on the opponent's river showing the three-away tile in the same suit.
+              LuckyJ's retained suji tiles are not magic safety. They are lower-friction exits that let a hand
+              continue one more turn without becoming forced to push a live middle tile.
+            </p>
+            <div class="safety-timing" id="defenseTiming" aria-label="Defense retention timing by stage"></div>
+            <div class="checklist">
+              <h4>Read the timing</h4>
+              <ul>
+                <li>Early: a kept river-safe tile is permission to delay commitment, not proof of folding.</li>
+                <li>Middle: retained genbutsu or suji is often the brake that lets a hand keep attacking selectively.</li>
+                <li>Late: the same tile becomes concrete currency for safe tenpai, clean fold, or one final push.</li>
+              </ul>
+            </div>
+            <div class="rule">
+              <strong>Rule:</strong> Before discarding a tile that is in an opponent river or suji to that river,
+              ask what your next safe discard will be after the first real threat. If the answer is "nothing,"
+              LuckyJ usually prices that kept tile much higher than raw ukeire does.
+            </div>
+            <div data-example="point-14"></div>
+          </div>
+        </section>
+
         <section class="section" id="case-studies">
           <p class="kicker">Closed-hand replay cases</p>
           <h2>Where LuckyJ disagrees with NAGA.</h2>
           <p>
             These cases replay closed-hand LuckyJ decisions from the cached NAGA reports. The main question is
             not "which line has the bigger number?" The question is what LuckyJ is buying: route count, safety,
-            value, pressure, or placement. Mechanical counts are available inside each diagnostic panel, but
-            they are intentionally secondary.
+            value, pressure, or placement. New river-safe and suji buckets isolate cases where LuckyJ kept the
+            NAGA-preferred discard because that tile was a defensive exit. Mechanical counts are available inside
+            each diagnostic panel, but they are intentionally secondary.
           </p>
           <div class="case-browser">
             <div class="case-tabs" id="caseTabs" aria-label="Case categories"></div>
@@ -528,6 +602,14 @@
             <div>
               <h3>Call contract</h3>
               <p>Every call must state its contract: tenpai, real one-away shape, yaku creation, ippatsu break, or denial. No contract, no call.</p>
+            </div>
+            <div>
+              <h3>Opponent contract audit</h3>
+              <p>After every opponent call, mark dragons, round wind, and that player's seat wind. If their yaku is not visible, clean loose yakuhai before it becomes their contract.</p>
+            </div>
+            <div>
+              <h3>River-safe inventory</h3>
+              <p>Before the middle row, mark every tile in your hand that is already in an opponent river or suji to it. Do not spend the last exit casually.</p>
             </div>
             <div>
               <h3>Future push path</h3>

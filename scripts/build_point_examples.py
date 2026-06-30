@@ -9,6 +9,7 @@ from extract_case_studies import (
     hand_string,
     remove_tile,
     round_name,
+    safety_read,
     score_band,
     ukeire_after_discard,
 )
@@ -17,6 +18,7 @@ from extract_case_studies import (
 OUT = Path("site/point-examples.json")
 SEAT_NAMES = ["self", "shimocha", "toimen", "kamicha"]
 WINDS = ["E", "S", "W", "N"]
+DRAGONS = {"P", "F", "C"}
 
 
 POINT_TEXT = {
@@ -92,6 +94,18 @@ POINT_TEXT = {
         "prompt": "Bucket the disagreement before judging it: blunder, strategic trade-off, or table-reading idea.",
         "answer": "Do not chase match rate. Chase explainable decisions with fewer unpriced risks.",
     },
+    "point-13": {
+        "title": "Clean yakuhai against unproven open hands",
+        "lesson": "When another player calls without showing a clear yaku, singleton dragons and live value winds can become their missing contract. LuckyJ often removes those tiles before they turn into the price of continuing.",
+        "prompt": "After an opponent opens, ask which yakuhai still lets that hand win.",
+        "answer": "If your hand is not ready to punish them and the yakuhai has no strong job, clean it before the open hand gets to use it.",
+    },
+    "point-14": {
+        "title": "Keep river-safe and suji exits on purpose",
+        "lesson": "LuckyJ often keeps a tile because it is already genbutsu or suji against an opponent river, especially before spending safer exits would make the next threat impossible to answer.",
+        "prompt": "Before discarding a flexible tile, count which tiles in your hand are genbutsu or suji to each opponent and which of them are still useful next turn.",
+        "answer": "Keep the safe tile while it buys future choice; spend it only when the hand has become worth the risk or the draw-point/fold route is already decided.",
+    },
 }
 
 
@@ -99,10 +113,47 @@ def tile_id(tile):
     return base.IDX[tile]
 
 
+def base_tile(tile):
+    return str(tile or "").replace("r", "")
+
+
 def rel_seat(seat, target):
     if seat is None:
         return "unknown"
     return SEAT_NAMES[(seat - target) % 4]
+
+
+def seat_wind(start, seat):
+    return WINDS[(seat - start.get("oya", 0)) % 4]
+
+
+def yakuhai_for_seat(start, seat):
+    return DRAGONS | {start.get("bakaze"), seat_wind(start, seat)}
+
+
+def is_yakuhai_for_seat(tile, start, seat):
+    return base_tile(tile) in yakuhai_for_seat(start, seat)
+
+
+def meld_tiles(meld):
+    return [tile for tile in str(meld).split() if tile and tile != "+"]
+
+
+def meld_shows_yakuhai_contract(meld, start, seat):
+    counts = Counter(tile_id(tile) for tile in meld_tiles(meld))
+    return any(count >= 3 and is_yakuhai_for_seat(base.TILES[idx], start, seat) for idx, count in counts.items())
+
+
+def yakuhai_cleanup_threats(start, target, melds, tile):
+    threats = []
+    for seat, player_melds in enumerate(melds):
+        if seat == target or not player_melds:
+            continue
+        if any(meld_shows_yakuhai_contract(meld, start, seat) for meld in player_melds):
+            continue
+        if is_yakuhai_for_seat(tile, start, seat):
+            threats.append(seat)
+    return threats
 
 
 def score_context(start, target):
@@ -225,8 +276,11 @@ def make_discard_case(row, kyoku_index, pos, start, state, hands, discards, meld
         return None
     naga = rows[0][0]
     try:
-        actual_eval = ukeire_after_discard(hands[target], actual, visible_counter(discards, melds, dora_markers))
-        naga_eval = ukeire_after_discard(hands[target], naga, visible_counter(discards, melds, dora_markers))
+        visible = visible_counter(discards, melds, dora_markers)
+        open_counts = [len(player_melds) for player_melds in melds]
+        safety_context = (target, discards, reached, open_counts)
+        actual_eval = ukeire_after_discard(hands[target], actual, visible, safety_context)
+        naga_eval = ukeire_after_discard(hands[target], naga, visible, safety_context)
     except (KeyError, ValueError):
         return None
     if not actual_eval or not naga_eval:
@@ -246,8 +300,27 @@ def make_discard_case(row, kyoku_index, pos, start, state, hands, discards, meld
             "naga_votes": [row[0] for row in rows],
             "naga_prob": round(rows[0][1], 3),
             "actual_prob": round(rows[0][2], 3),
+            "kept_tile_safety": safety_read(naga, target, discards, reached, open_counts),
         }
     )
+    return case
+
+
+def make_yakuhai_cleanup_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, threats):
+    case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-13")
+    if not case:
+        return None
+    target = row["actor"]
+    case["yakuhai_cleanup"] = {
+        "threats": [
+            {
+                "seat": rel_seat(seat, target),
+                "wind": seat_wind(start, seat),
+                "melds": melds[seat][:],
+            }
+            for seat in threats
+        ]
+    }
     return case
 
 
@@ -259,6 +332,7 @@ def make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discard
     if not rows:
         return None
     naga = rows[0][0]
+    open_counts = [len(player_melds) for player_melds in melds]
     case = common_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key)
     case.update(
         {
@@ -272,6 +346,7 @@ def make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discard
             "naga_votes": [row[0] for row in rows],
             "naga_prob": round(rows[0][1], 3),
             "actual_prob": round(rows[0][2], 3),
+            "kept_tile_safety": safety_read(naga, target, discards, reached, open_counts),
         }
     )
     return case
@@ -285,6 +360,12 @@ def make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds,
     if case:
         case["kind"] = "reach"
         case["reach_prob"] = round(reach_prob, 3)
+        case["actual_reach"] = True
+        case["naga_reach"] = True
+        case["actual_eval"]["declares_reach"] = True
+        case["actual_eval"]["reach_prob"] = round(reach_prob, 3)
+        case["naga_eval"]["declares_reach"] = True
+        case["naga_eval"]["reach_prob"] = round(reach_prob, 3)
     return case
 
 
@@ -348,6 +429,7 @@ def try_discard_points(selected, used, row, kyoku_index, pos, start, state, hand
     naga_cls = base.tile_class(naga)
     actual_d = danger_for(state, target, actual)
     naga_d = danger_for(state, target, naga)
+    public_visible = visible_counter(discards, melds, dora_markers)
 
     if "point-08" not in selected and "reach" in state:
         add(selected, used, "point-08", make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers))
@@ -369,11 +451,23 @@ def try_discard_points(selected, used, row, kyoku_index, pos, start, state, hand
     if "point-09" not in selected and actual_d is not None and naga_d is not None and actual_d < 0.02 and naga_d > 0.08:
         add(selected, used, "point-09", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-09"))
 
+    kept_read = safety_read(naga, target, discards, reached, open_melds)
+    if "point-14" not in selected and naga != actual and kept_read["kind"] and kept_read["safe_against_threat"]:
+        add(selected, used, "point-14", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-14"))
+
     if "point-10" not in selected and stage == "late" and naga != actual:
         add(selected, used, "point-10", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-10"))
 
     if "point-12" not in selected and naga != actual:
         add(selected, used, "point-12", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-12"))
+
+    if "point-13" not in selected and actual_cls == "honor" and naga != actual:
+        threats = yakuhai_cleanup_threats(start, target, melds, actual)
+        actual_count = sum(1 for tile in hands[target] if tile_id(tile) == tile_id(actual))
+        visible_count = public_visible[tile_id(actual)]
+        danger_ok = actual_d is None or naga_d is None or actual_d <= naga_d + 0.02
+        if threats and actual_count == 1 and visible_count <= 1 and danger_ok:
+            add(selected, used, "point-13", make_yakuhai_cleanup_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, threats))
 
     if "point-11" not in selected and start.get("end_msgs") and start["end_msgs"][0].get("type") != "hora":
         delta = sum((m.get("deltas") or [0, 0, 0, 0])[target] for m in start.get("end_msgs") or [])
@@ -469,7 +563,7 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     data = collect_examples()
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-    missing = [f"point-{i:02d}" for i in range(1, 13) if f"point-{i:02d}" not in data]
+    missing = [key for key in sorted(POINT_TEXT) if key not in data]
     print(f"wrote {OUT}; examples={len(data)} missing={missing}")
 
 

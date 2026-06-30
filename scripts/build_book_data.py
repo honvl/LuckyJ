@@ -23,6 +23,38 @@ def rank_group(rank):
     return "top_half" if rank <= 2 else "bottom_half"
 
 
+def add_defense_retention(scope, left, read):
+    scope["splits"] += 1
+    if left is not None:
+        scope["left_sum"] += left
+        scope["left_count"] += 1
+    if not read["kind"]:
+        return
+    scope["kept_defense_tile"] += 1
+    if left is not None:
+        scope["kept_left_sum"] += left
+        scope["kept_left_count"] += 1
+    if read["kind"] == "genbutsu":
+        scope["kept_genbutsu"] += 1
+    if read["has_suji"]:
+        scope["kept_suji"] += 1
+    if read["safe_against_threat"]:
+        scope["kept_against_live_threat"] += 1
+    if read["opponents"] >= 2:
+        scope["kept_multi_opponent"] += 1
+
+
+def update_table_state(msg_type, actor, msg, discards, open_melds, reached):
+    if actor is None:
+        return
+    if msg_type in base.HURO_TYPES:
+        open_melds[actor] += 1
+    elif msg_type == "reach":
+        reached[actor] = True
+    elif msg_type == "dahai" and msg.get("pai"):
+        discards[actor].append(msg["pai"])
+
+
 def analyze_decisions(rows):
     counters = {
         "overall": Counter(),
@@ -31,6 +63,11 @@ def analyze_decisions(rows):
         "rank_group": defaultdict(Counter),
         "tile_flow": defaultdict(Counter),
         "score_band": defaultdict(Counter),
+        "defense_retention": {
+            "overall": Counter(),
+            "stage": defaultdict(Counter),
+            "score_band": defaultdict(Counter),
+        },
         "examples": defaultdict(list),
     }
 
@@ -40,6 +77,9 @@ def analyze_decisions(rows):
         naga_types = base.normalize_report(data)
         for kyoku_index, kyoku in enumerate(data["pred"]):
             start = kyoku[0].get("info", {}).get("msg", {})
+            discards = [[], [], [], []]
+            open_melds = [0, 0, 0, 0]
+            reached = [False, False, False, False]
             start_rank = None
             if "seat2rank" in start and target < len(start["seat2rank"]):
                 start_rank = start["seat2rank"][target] + 1
@@ -110,9 +150,11 @@ def analyze_decisions(rows):
                             scope["no_vs_reach"] += 1
 
                 if actor != target or msg_type not in {"tsumo", "chi", "pon"}:
+                    update_table_state(msg_type, actor, msg, discards, open_melds, reached)
                     continue
                 actual = msg.get("real_dahai")
                 if not actual or actual == "?" or msg.get("reached") or "dahai_pred" not in state:
+                    update_table_state(msg_type, actor, msg, discards, open_melds, reached)
                     continue
 
                 model_rows = []
@@ -121,6 +163,7 @@ def analyze_decisions(rows):
                     actual_prob = base.prob_for(state["dahai_pred"][model_idx], actual)
                     model_rows.append((top, top_prob, actual_prob, top_prob - actual_prob if top != actual else 0.0))
                 if not model_rows:
+                    update_table_state(msg_type, actor, msg, discards, open_melds, reached)
                     continue
 
                 mismatch = any(top != actual for top, _, _, _ in model_rows)
@@ -158,6 +201,14 @@ def analyze_decisions(rows):
                             scope["same_danger"] += 1
 
                 if mismatch:
+                    kept_read = base.defensive_tile_read(model_rows[0][0], target, discards, reached, open_melds)
+                    for scope in (
+                        counters["defense_retention"]["overall"],
+                        counters["defense_retention"]["stage"][stage],
+                        counters["defense_retention"]["score_band"][score_band],
+                    ):
+                        add_defense_retention(scope, left, kept_read)
+
                     if actual_cls == "simple" and all(cls in {"honor", "terminal"} for cls in top_classes):
                         counters["tile_flow"][stage]["kept_outside_cut_simple"] += 1
                     if actual_cls in {"honor", "terminal"} and all(cls == "simple" for cls in top_classes):
@@ -193,8 +244,11 @@ def analyze_decisions(rows):
                                 "round_delta": delta,
                                 "won_round": bool(result["win"]),
                                 "dealt_in": bool(result["deal_in"]),
+                                "kept_safety": kept_read,
                             }
                         )
+
+                update_table_state(msg_type, actor, msg, discards, open_melds, reached)
 
     return counters
 

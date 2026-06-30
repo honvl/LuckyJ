@@ -150,6 +150,73 @@ def tile_class(tile):
     return "simple"
 
 
+def tile_base(tile):
+    return tile.replace("r", "")
+
+
+def suited_rank(tile):
+    base = tile_base(tile)
+    if len(base) != 2 or base[1] not in {"m", "p", "s"}:
+        return None
+    return int(base[0]), base[1]
+
+
+def suji_source_tiles(tile):
+    parsed = suited_rank(tile)
+    if not parsed:
+        return []
+    rank, suit = parsed
+    sources = []
+    if rank - 3 >= 1:
+        sources.append(f"{rank - 3}{suit}")
+    if rank + 3 <= 9:
+        sources.append(f"{rank + 3}{suit}")
+    return sources
+
+
+def defensive_tile_read(tile, target, discards, reached=None, open_melds=None):
+    reached = reached or [False, False, False, False]
+    open_melds = open_melds or [0, 0, 0, 0]
+    partners = set(suji_source_tiles(tile))
+    tile_idx = tile_index(tile)
+    against = []
+
+    for seat, river in enumerate(discards or []):
+        if seat == target:
+            continue
+        genbutsu_sources = []
+        suji_sources = []
+        for pos, discarded in enumerate(river or [], 1):
+            if tile_index(discarded) == tile_idx:
+                genbutsu_sources.append({"tile": discarded, "position": pos})
+            if tile_base(discarded) in partners:
+                suji_sources.append({"tile": discarded, "position": pos})
+        if genbutsu_sources or suji_sources:
+            against.append(
+                {
+                    "seat": seat,
+                    "kind": "genbutsu" if genbutsu_sources else "suji",
+                    "genbutsu_sources": genbutsu_sources,
+                    "suji_sources": suji_sources,
+                    "reached": bool(seat < len(reached) and reached[seat]),
+                    "open_melds": open_melds[seat] if seat < len(open_melds) else 0,
+                }
+            )
+
+    has_genbutsu = any(item["genbutsu_sources"] for item in against)
+    has_suji = any(item["suji_sources"] for item in against)
+    safe_against_threat = any(item["reached"] or item["open_melds"] for item in against)
+    return {
+        "tile": tile,
+        "kind": "genbutsu" if has_genbutsu else "suji" if has_suji else None,
+        "has_genbutsu": has_genbutsu,
+        "has_suji": has_suji,
+        "safe_against_threat": safe_against_threat,
+        "opponents": len(against),
+        "against": against,
+    }
+
+
 def top_tile(probs):
     idx = max(range(34), key=lambda i: probs[i])
     return TILES[idx], probs[idx] / 10000.0

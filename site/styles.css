@@ -41,6 +41,11 @@ body {
   line-height: 1.6;
 }
 
+html:lang(ja) body {
+  font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", Meiryo, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.75;
+}
+
 a {
   color: inherit;
 }
@@ -93,6 +98,17 @@ a {
   color: var(--muted);
   font-size: 14px;
   background: #fff;
+}
+
+.toplinks .lang-link {
+  border-color: var(--green);
+  color: var(--green);
+  font-weight: 800;
+}
+
+.toplinks .lang-link[aria-current="page"] {
+  background: var(--green);
+  color: #fff;
 }
 
 .layout {
@@ -356,6 +372,51 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.safety-timing {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.safety-timing-card {
+  border: 1px solid var(--line);
+  background: #f8faf5;
+  padding: 14px;
+}
+
+.safety-timing-card b,
+.safety-timing-card strong,
+.safety-timing-card span,
+.safety-timing-card small {
+  display: block;
+}
+
+.safety-timing-card b {
+  color: var(--blue);
+  font-size: 18px;
+}
+
+.safety-timing-card strong {
+  color: var(--green);
+  font-size: 30px;
+  line-height: 1;
+  margin-top: 6px;
+}
+
+.safety-timing-card span {
+  color: #30332f;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.safety-timing-card small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+  margin-top: 8px;
+}
+
 .stat-strip b {
   display: block;
   color: var(--red);
@@ -605,6 +666,40 @@ a {
   margin-bottom: 0;
 }
 
+.safety-read {
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--blue);
+  background: #eef5f7;
+  margin: 12px 0;
+  padding: 12px;
+}
+
+.safety-read p {
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+.safety-read ul {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.safety-read li {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  color: #30332f;
+  font-size: 13px;
+}
+
+.safety-read li b {
+  color: var(--green);
+}
+
 .diagnostics {
   border-top: 1px solid var(--line);
   margin-top: 8px;
@@ -811,6 +906,53 @@ a {
   display: block;
   font-size: 13px;
   padding: 10px;
+}
+
+.contract-read {
+  border-left: 5px solid var(--red);
+  background: var(--soft-red);
+  margin: 12px 0;
+  padding: 12px;
+}
+
+.contract-read h5 {
+  color: var(--red);
+  font-size: 15px;
+  line-height: 1.2;
+  margin: 0 0 6px;
+}
+
+.contract-read p {
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+.contract-threats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.contract-threats > span {
+  border: 1px solid #e2b8b3;
+  background: #fff;
+  display: block;
+  font-size: 13px;
+  padding: 10px;
+}
+
+.contract-threats b,
+.contract-threats em {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 8px;
+}
+
+.contract-threats em {
+  color: var(--muted);
+  font-style: normal;
+  font-weight: 750;
 }
 
 .mini-tile {
@@ -1223,8 +1365,10 @@ a {
   .two-col,
   .insight-grid,
   .stat-strip,
+  .safety-timing,
   .drill-list,
   .call-line,
+  .contract-threats,
   .player-grid,
   .hidden-hand-grid {
     grid-template-columns: 1fr;
