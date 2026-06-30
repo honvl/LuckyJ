@@ -8,6 +8,9 @@ import analyze_luckyj as base
 
 
 OUT = Path("site/book-data.json")
+SEAT_NAMES = ["self", "shimocha", "toimen", "kamicha"]
+WINDS = ["E", "S", "W", "N"]
+DRAGONS = {"P", "F", "C"}
 
 
 def mean(values):
@@ -17,6 +20,209 @@ def mean(values):
 
 def pct(num, den):
     return 100.0 * num / den if den else 0.0
+
+
+def tile_id(tile):
+    return base.IDX[tile]
+
+
+def base_tile(tile):
+    return str(tile or "").replace("r", "")
+
+
+def rel_seat(seat, target):
+    return SEAT_NAMES[(seat - target) % 4]
+
+
+def seat_wind(start, seat):
+    return WINDS[(seat - start.get("oya", 0)) % 4]
+
+
+def yakuhai_for_seat(start, seat):
+    return DRAGONS | {start.get("bakaze"), seat_wind(start, seat)}
+
+
+def is_yakuhai_for_seat(tile, start, seat):
+    return base_tile(tile) in yakuhai_for_seat(start, seat)
+
+
+def meld_tiles(meld):
+    return [tile for tile in str(meld).split() if tile and tile != "+"]
+
+
+def meld_shows_yakuhai_contract(meld, start, seat):
+    counts = Counter(tile_id(tile) for tile in meld_tiles(meld))
+    return any(count >= 3 and is_yakuhai_for_seat(base.TILES[idx], start, seat) for idx, count in counts.items())
+
+
+def meld_all_simples(meld):
+    tiles = meld_tiles(meld)
+    return bool(tiles) and all(base.tile_class(tile) == "simple" for tile in tiles)
+
+
+def open_status_for_seat(start, seat, melds):
+    if not melds:
+        return None
+    if any(meld_shows_yakuhai_contract(meld, start, seat) for meld in melds):
+        return "shown_yaku_open"
+    if all(meld_all_simples(meld) for meld in melds):
+        return "tanyao_shaped_open"
+    return "unknown_open_yaku"
+
+
+def open_context_key(start, target, melds):
+    statuses = {
+        open_status_for_seat(start, seat, player_melds)
+        for seat, player_melds in enumerate(melds)
+        if seat != target and player_melds
+    }
+    if "unknown_open_yaku" in statuses:
+        return "unknown_open_yaku"
+    if "shown_yaku_open" in statuses:
+        return "shown_yaku_open"
+    if "tanyao_shaped_open" in statuses:
+        return "tanyao_shaped_open"
+    return "no_open_hand"
+
+
+def contract_yakuhai_contexts(start, target, melds, hand):
+    contexts = defaultdict(set)
+    unique_singletons = []
+    seen = set()
+    for tile in hand:
+        idx = tile_id(tile)
+        if idx in seen:
+            continue
+        seen.add(idx)
+        if sum(1 for item in hand if tile_id(item) == idx) == 1:
+            unique_singletons.append(tile)
+
+    for seat, player_melds in enumerate(melds):
+        if seat == target or not player_melds:
+            continue
+        status = open_status_for_seat(start, seat, player_melds)
+        if not status:
+            continue
+        for tile in unique_singletons:
+            if is_yakuhai_for_seat(tile, start, seat):
+                contexts[status].add(tile_id(tile))
+    return contexts
+
+
+def self_yakuhai_singletons(start, target, hand):
+    ids = set()
+    seen = set()
+    for tile in hand:
+        idx = tile_id(tile)
+        if idx in seen:
+            continue
+        seen.add(idx)
+        if sum(1 for item in hand if tile_id(item) == idx) == 1 and is_yakuhai_for_seat(tile, start, target):
+            ids.add(idx)
+    return ids
+
+
+def remove_tile(hand, tile):
+    if tile in hand:
+        hand.remove(tile)
+        return True
+    target = tile_id(tile)
+    for item in list(hand):
+        if tile_id(item) == target:
+            hand.remove(item)
+            return True
+    return False
+
+
+def defense_target_class(start, target, read_item):
+    seat = read_item["seat"]
+    dealer = seat == start.get("oya")
+    if read_item.get("reached"):
+        return "dealer_riichi" if dealer else "closed_riichi"
+    if read_item.get("open_melds"):
+        return "dealer_open" if dealer else "nondealer_open"
+    if dealer:
+        return "dealer_closed"
+    return "nondealer_closed"
+
+
+def add_yakuhai_sample(stats, turns, family, context, actual_id, candidate_ids, own_discards):
+    if not candidate_ids:
+        return
+    key = (family, context)
+    stats[key]["opportunities"] += 1
+    if own_discards < 6:
+        stats[key]["first_row_opportunities"] += 1
+    if actual_id in candidate_ids:
+        stats[key]["cuts"] += 1
+        turns[key].append(own_discards)
+        if own_discards < 6:
+            stats[key]["first_row_cuts"] += 1
+
+
+def add_defense_target_sample(targets, stage, target_class, read_item, left):
+    for scope in (targets["overall"][target_class], targets["stage"][stage][target_class]):
+        scope["instances"] += 1
+        if read_item.get("genbutsu_sources"):
+            scope["genbutsu"] += 1
+        if read_item.get("suji_sources"):
+            scope["suji"] += 1
+        if left is not None:
+            scope["left_sum"] += left
+            scope["left_count"] += 1
+
+
+def summarize_turns(values):
+    if not values:
+        return {}
+    ordered = sorted(values)
+    mid = len(ordered) // 2
+    median = ordered[mid] if len(ordered) % 2 else (ordered[mid - 1] + ordered[mid]) / 2
+    return {
+        "avg": sum(values) / len(values),
+        "median": median,
+        "first_row": sum(1 for value in values if value < 6),
+    }
+
+
+def finalize_yakuhai_pressure(stats, turns):
+    out = defaultdict(dict)
+    for (family, context), counter in stats.items():
+        opportunities = counter["opportunities"]
+        cuts = counter["cuts"]
+        turn_stats = summarize_turns(turns[(family, context)])
+        out[family][context] = {
+            "opportunities": opportunities,
+            "cuts": cuts,
+            "cut_rate": cuts / opportunities if opportunities else None,
+            "first_row_opportunities": counter["first_row_opportunities"],
+            "first_row_opportunity_rate": counter["first_row_opportunities"] / opportunities if opportunities else None,
+            "first_row_cuts": counter["first_row_cuts"],
+            "first_row_cut_rate": counter["first_row_cuts"] / cuts if cuts else None,
+            "avg_cut_turn": turn_stats.get("avg"),
+            "median_cut_turn": turn_stats.get("median"),
+        }
+    return {family: dict(contexts) for family, contexts in out.items()}
+
+
+def finalize_defense_targets(targets):
+    def convert_scope(scope):
+        converted = {}
+        for key, counter in scope.items():
+            instances = counter["instances"]
+            converted[key] = {
+                "instances": instances,
+                "genbutsu": counter["genbutsu"],
+                "suji": counter["suji"],
+                "genbutsu_rate": counter["genbutsu"] / instances if instances else None,
+                "avg_left": counter["left_sum"] / counter["left_count"] if counter["left_count"] else None,
+            }
+        return converted
+
+    return {
+        "overall": convert_scope(targets["overall"]),
+        "stage": {stage: convert_scope(scope) for stage, scope in targets["stage"].items()},
+    }
 
 
 def rank_group(rank):
@@ -263,10 +469,114 @@ def convert_counter_tree(obj):
     return obj
 
 
+def analyze_pressure_patterns(rows):
+    yakuhai_stats = defaultdict(Counter)
+    yakuhai_turns = defaultdict(list)
+    defense_targets = {
+        "overall": defaultdict(Counter),
+        "stage": defaultdict(lambda: defaultdict(Counter)),
+    }
+
+    for row in rows:
+        target = row["actor"]
+        data = base.fetch_report(row["report_id"])
+        base.normalize_report(data)
+        for kyoku in data["pred"]:
+            start = kyoku[0].get("info", {}).get("msg", {})
+            hands = [list(hand) for hand in start.get("tehais", [[], [], [], []])]
+            discards = [[], [], [], []]
+            melds = [[], [], [], []]
+            reached = [False, False, False, False]
+
+            for pos, state in enumerate(kyoku):
+                msg = state.get("info", {}).get("msg", {})
+                actor = msg.get("actor")
+                msg_type = msg.get("type")
+
+                if msg_type == "tsumo":
+                    hands[actor].append(msg["pai"])
+                    actual = msg.get("real_dahai")
+                    if actor == target and actual and actual != "?" and not msg.get("reached") and "dahai_pred" in state:
+                        own_discards = len(discards[target])
+                        actual_id = tile_id(actual)
+                        context = open_context_key(start, target, melds)
+                        add_yakuhai_sample(
+                            yakuhai_stats,
+                            yakuhai_turns,
+                            "self_yakuhai",
+                            context,
+                            actual_id,
+                            self_yakuhai_singletons(start, target, hands[target]),
+                            own_discards,
+                        )
+
+                        for contract_context, tile_ids in contract_yakuhai_contexts(start, target, melds, hands[target]).items():
+                            add_yakuhai_sample(
+                                yakuhai_stats,
+                                yakuhai_turns,
+                                "contract_yakuhai",
+                                contract_context,
+                                actual_id,
+                                tile_ids,
+                                own_discards,
+                            )
+
+                        top, _ = base.top_tile(state["dahai_pred"][0])
+                        if top != actual:
+                            left = msg.get("left_hai_num")
+                            stage = base.stage_from_left(left)
+                            open_counts = [len(player_melds) for player_melds in melds]
+                            kept_read = base.defensive_tile_read(top, target, discards, reached, open_counts)
+                            for read_item in kept_read["against"]:
+                                target_class = defense_target_class(start, target, read_item)
+                                add_defense_target_sample(defense_targets, stage, target_class, read_item, left)
+
+                    if actual and actual != "?":
+                        remove_tile(hands[actor], actual)
+
+                elif msg_type in base.HURO_TYPES:
+                    consumed = msg.get("consumed", [])
+                    call_tiles = consumed + ([msg.get("pai")] if msg.get("pai") else [])
+                    melds[actor].append(" ".join(call_tiles))
+                    for tile in consumed:
+                        remove_tile(hands[actor], tile)
+                    discard = msg.get("real_dahai")
+                    if discard and discard != "?":
+                        remove_tile(hands[actor], discard)
+
+                elif msg_type == "ankan":
+                    consumed = msg.get("consumed", [])
+                    melds[actor].append(" ".join(consumed))
+                    for tile in consumed:
+                        remove_tile(hands[actor], tile)
+
+                elif msg_type == "kakan":
+                    tile = msg.get("pai")
+                    if tile:
+                        melds[actor].append(f"+ {tile}")
+                        remove_tile(hands[actor], tile)
+
+                elif msg_type == "reach":
+                    if actor is not None:
+                        reached[actor] = True
+
+                elif msg_type == "dahai":
+                    tile = msg.get("pai")
+                    if actor is not None and tile:
+                        discards[actor].append(tile)
+
+    return {
+        "yakuhai_pressure": finalize_yakuhai_pressure(yakuhai_stats, yakuhai_turns),
+        "defense_targets": finalize_defense_targets(defense_targets),
+    }
+
+
 def main():
     rows = base.parse_rows()
     aggregate = json.loads(Path("data/luckyj_analysis.json").read_text(encoding="utf-8"))
     decisions = analyze_decisions(rows)
+    pressure_patterns = analyze_pressure_patterns(rows)
+    decisions.update(pressure_patterns)
     games = aggregate["game_features"]
 
     top_half = [g for g in games if g["rank"] <= 2]

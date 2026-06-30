@@ -449,8 +449,8 @@ def commentary_for(point: str, model: dict[str, Any], actual: dict[str, Any], ca
             "Use spots like this to practice humility: when strong models split early, write the claims each tile makes instead of forcing a heroic explanation.",
         ),
         "point-13": (
-            "This is the open-hand contract test. Mortal is useful here because the discard is not only about LuckyJ's hand shape; it asks whether the live yakuhai should be cleaned before the opponent's exposed hand can use it as a yaku.",
-            "After an opponent opens without a visible yaku, mark dragons, round wind, and that player's seat wind as contract tiles. Keep them only when they are doing real work for your own hand or defense.",
+            "This is the open-hand contract test. Mortal sides with the shape-cleaning line here, so LuckyJ's yakuhai cut should be treated as a deliberate contract-denial read rather than model consensus.",
+            "After an opponent opens without a visible yaku, mark dragons, round wind, and that player's seat wind as contract tiles. Even when the model prefers shape, first ask whether keeping the tile lets the open hand become legal.",
         ),
         "point-14": (
             "This is the defensive-inventory test. Mortal agreeing with LuckyJ over NAGA means the kept river-safe tile is not just a human story: a second model also prefers spending shape while preserving the clearer exit.",

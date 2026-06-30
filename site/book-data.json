@@ -3223,6 +3223,269 @@
           }
         }
       ]
+    },
+    "yakuhai_pressure": {
+      "self_yakuhai": {
+        "no_open_hand": {
+          "opportunities": 53615,
+          "cuts": 17617,
+          "cut_rate": 0.32858341881936026,
+          "first_row_opportunities": 41139,
+          "first_row_opportunity_rate": 0.7673039261400727,
+          "first_row_cuts": 12400,
+          "first_row_cut_rate": 0.703865584378725,
+          "avg_cut_turn": 4.370834988931146,
+          "median_cut_turn": 3
+        },
+        "tanyao_shaped_open": {
+          "opportunities": 5855,
+          "cuts": 2567,
+          "cut_rate": 0.4384286934244236,
+          "first_row_opportunities": 1349,
+          "first_row_opportunity_rate": 0.23040136635354397,
+          "first_row_cuts": 543,
+          "first_row_cut_rate": 0.2115309700038956,
+          "avg_cut_turn": 8.950915465523957,
+          "median_cut_turn": 9
+        },
+        "shown_yaku_open": {
+          "opportunities": 14044,
+          "cuts": 5917,
+          "cut_rate": 0.4213187126174879,
+          "first_row_opportunities": 6497,
+          "first_row_opportunity_rate": 0.46261748789518653,
+          "first_row_cuts": 2661,
+          "first_row_cut_rate": 0.4497211424708467,
+          "avg_cut_turn": 6.607402399864796,
+          "median_cut_turn": 6
+        },
+        "unknown_open_yaku": {
+          "opportunities": 4758,
+          "cuts": 2039,
+          "cut_rate": 0.42854140395124,
+          "first_row_opportunities": 1846,
+          "first_row_opportunity_rate": 0.3879781420765027,
+          "first_row_cuts": 846,
+          "first_row_cut_rate": 0.4149092692496322,
+          "avg_cut_turn": 7.196174595389897,
+          "median_cut_turn": 7
+        }
+      },
+      "contract_yakuhai": {
+        "tanyao_shaped_open": {
+          "opportunities": 8417,
+          "cuts": 3721,
+          "cut_rate": 0.44208150172270405,
+          "first_row_opportunities": 1709,
+          "first_row_opportunity_rate": 0.20304146370440776,
+          "first_row_cuts": 706,
+          "first_row_cut_rate": 0.18973394248857833,
+          "avg_cut_turn": 9.179790378930395,
+          "median_cut_turn": 9
+        },
+        "shown_yaku_open": {
+          "opportunities": 14201,
+          "cuts": 6016,
+          "cut_rate": 0.42363213858179,
+          "first_row_opportunities": 6259,
+          "first_row_opportunity_rate": 0.4407436096049574,
+          "first_row_cuts": 2624,
+          "first_row_cut_rate": 0.43617021276595747,
+          "avg_cut_turn": 6.726728723404255,
+          "median_cut_turn": 6.0
+        },
+        "unknown_open_yaku": {
+          "opportunities": 4551,
+          "cuts": 1970,
+          "cut_rate": 0.43287189628653044,
+          "first_row_opportunities": 1716,
+          "first_row_opportunity_rate": 0.3770599868160844,
+          "first_row_cuts": 804,
+          "first_row_cut_rate": 0.40812182741116754,
+          "avg_cut_turn": 7.251269035532995,
+          "median_cut_turn": 7.0
+        }
+      }
+    },
+    "defense_targets": {
+      "overall": {
+        "nondealer_closed": {
+          "instances": 14876,
+          "genbutsu": 11249,
+          "suji": 4340,
+          "genbutsu_rate": 0.7561844581876849,
+          "avg_left": 42.187819306265126
+        },
+        "dealer_closed": {
+          "instances": 5101,
+          "genbutsu": 3947,
+          "suji": 1374,
+          "genbutsu_rate": 0.7737698490492061,
+          "avg_left": 44.104881395804746
+        },
+        "dealer_open": {
+          "instances": 2216,
+          "genbutsu": 1563,
+          "suji": 930,
+          "genbutsu_rate": 0.7053249097472925,
+          "avg_left": 33.977436823104696
+        },
+        "nondealer_open": {
+          "instances": 4953,
+          "genbutsu": 3308,
+          "suji": 2209,
+          "genbutsu_rate": 0.6678780537048253,
+          "avg_left": 33.6274984857662
+        },
+        "closed_riichi": {
+          "instances": 2416,
+          "genbutsu": 1739,
+          "suji": 1110,
+          "genbutsu_rate": 0.7197847682119205,
+          "avg_left": 25.012417218543046
+        },
+        "dealer_riichi": {
+          "instances": 1153,
+          "genbutsu": 811,
+          "suji": 532,
+          "genbutsu_rate": 0.7033824804856895,
+          "avg_left": 25.73894189071986
+        }
+      },
+      "stage": {
+        "early": {
+          "nondealer_closed": {
+            "instances": 5668,
+            "genbutsu": 4882,
+            "suji": 830,
+            "genbutsu_rate": 0.8613267466478476,
+            "avg_left": 56.82092448835568
+          },
+          "dealer_closed": {
+            "instances": 2200,
+            "genbutsu": 1875,
+            "suji": 361,
+            "genbutsu_rate": 0.8522727272727273,
+            "avg_left": 57.12954545454546
+          },
+          "nondealer_open": {
+            "instances": 866,
+            "genbutsu": 648,
+            "suji": 262,
+            "genbutsu_rate": 0.7482678983833718,
+            "avg_left": 55.25866050808314
+          },
+          "dealer_open": {
+            "instances": 411,
+            "genbutsu": 318,
+            "suji": 117,
+            "genbutsu_rate": 0.7737226277372263,
+            "avg_left": 55.26520681265207
+          },
+          "closed_riichi": {
+            "instances": 74,
+            "genbutsu": 55,
+            "suji": 24,
+            "genbutsu_rate": 0.7432432432432432,
+            "avg_left": 53.12162162162162
+          },
+          "dealer_riichi": {
+            "instances": 37,
+            "genbutsu": 33,
+            "suji": 10,
+            "genbutsu_rate": 0.8918918918918919,
+            "avg_left": 53.108108108108105
+          }
+        },
+        "middle": {
+          "dealer_closed": {
+            "instances": 2302,
+            "genbutsu": 1695,
+            "suji": 712,
+            "genbutsu_rate": 0.7363162467419635,
+            "avg_left": 39.215464813205905
+          },
+          "nondealer_closed": {
+            "instances": 7047,
+            "genbutsu": 4988,
+            "suji": 2433,
+            "genbutsu_rate": 0.7078189300411523,
+            "avg_left": 38.94025826592876
+          },
+          "dealer_open": {
+            "instances": 1160,
+            "genbutsu": 822,
+            "suji": 465,
+            "genbutsu_rate": 0.7086206896551724,
+            "avg_left": 37.53448275862069
+          },
+          "nondealer_open": {
+            "instances": 2657,
+            "genbutsu": 1751,
+            "suji": 1188,
+            "genbutsu_rate": 0.6590139254798645,
+            "avg_left": 37.12984569062853
+          },
+          "closed_riichi": {
+            "instances": 1169,
+            "genbutsu": 872,
+            "suji": 482,
+            "genbutsu_rate": 0.7459366980325064,
+            "avg_left": 34.50727117194183
+          },
+          "dealer_riichi": {
+            "instances": 582,
+            "genbutsu": 421,
+            "suji": 236,
+            "genbutsu_rate": 0.7233676975945017,
+            "avg_left": 34.90034364261168
+          }
+        },
+        "late": {
+          "nondealer_closed": {
+            "instances": 2161,
+            "genbutsu": 1379,
+            "suji": 1077,
+            "genbutsu_rate": 0.6381304951411384,
+            "avg_left": 14.397501156871819
+          },
+          "dealer_open": {
+            "instances": 645,
+            "genbutsu": 423,
+            "suji": 348,
+            "genbutsu_rate": 0.6558139534883721,
+            "avg_left": 14.015503875968992
+          },
+          "dealer_closed": {
+            "instances": 599,
+            "genbutsu": 377,
+            "suji": 301,
+            "genbutsu_rate": 0.6293823038397329,
+            "avg_left": 15.058430717863105
+          },
+          "nondealer_open": {
+            "instances": 1430,
+            "genbutsu": 909,
+            "suji": 759,
+            "genbutsu_rate": 0.6356643356643357,
+            "avg_left": 14.02027972027972
+          },
+          "closed_riichi": {
+            "instances": 1173,
+            "genbutsu": 812,
+            "suji": 604,
+            "genbutsu_rate": 0.6922421142369991,
+            "avg_left": 13.776641091219096
+          },
+          "dealer_riichi": {
+            "instances": 534,
+            "genbutsu": 357,
+            "suji": 286,
+            "genbutsu_rate": 0.6685393258426966,
+            "avg_left": 13.857677902621722
+          }
+        }
+      }
     }
   }
 }

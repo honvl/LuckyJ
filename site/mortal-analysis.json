@@ -853,79 +853,6 @@
       "read": "This is the riichi-conversion test. Mortal's top action shows whether the hand should turn into table pressure immediately or stay quiet for refinement.",
       "how_to_use": "At the table, ask whether riichi changes opponents' behavior enough to justify losing flexibility. If yes, convert; if not, the same discard without riichi can be the better move."
     },
-    "point-13": {
-      "point": "point-13",
-      "log_id": "2023041912gm-0009-0000-2fb1c136",
-      "kyoku_index": 0,
-      "event_index": 48,
-      "left": 50,
-      "trigger": {
-        "type": "tsumo",
-        "actor": 3,
-        "pai": "N"
-      },
-      "actual": {
-        "type": "dahai",
-        "tile": "F",
-        "label": "Discard F"
-      },
-      "mortal": {
-        "type": "dahai",
-        "tile": "7s",
-        "label": "Discard 7s"
-      },
-      "mortal_agrees_luckyj": false,
-      "mortal_agrees_naga": false,
-      "top_candidates": [
-        {
-          "action_id": 24,
-          "label": "Discard 7s",
-          "probability": 0.953872,
-          "type": "dahai",
-          "tile": "7s"
-        },
-        {
-          "action_id": 32,
-          "label": "Discard F",
-          "probability": 0.022031,
-          "type": "dahai",
-          "tile": "F"
-        },
-        {
-          "action_id": 30,
-          "label": "Discard N",
-          "probability": 0.019214,
-          "type": "dahai",
-          "tile": "N"
-        },
-        {
-          "action_id": 31,
-          "label": "Discard P",
-          "probability": 0.001905,
-          "type": "dahai",
-          "tile": "P"
-        },
-        {
-          "action_id": 21,
-          "label": "Discard 4s",
-          "probability": 0.000902,
-          "type": "dahai",
-          "tile": "4s"
-        },
-        {
-          "action_id": 1,
-          "label": "Discard 2m",
-          "probability": 0.000507,
-          "type": "dahai",
-          "tile": "2m"
-        }
-      ],
-      "post_call_mortal": null,
-      "post_call_agrees_luckyj": null,
-      "post_call_candidates": [],
-      "read": "This is the open-hand contract test. Mortal is useful here because the discard is not only about LuckyJ's hand shape; it asks whether the live yakuhai should be cleaned before the opponent's exposed hand can use it as a yaku.",
-      "how_to_use": "After an opponent opens without a visible yaku, mark dragons, round wind, and that player's seat wind as contract tiles. Keep them only when they are doing real work for your own hand or defense."
-    },
     "point-11": {
       "point": "point-11",
       "log_id": "2023041912gm-0009-0000-9d2b9dfb",
@@ -1071,6 +998,79 @@
       "post_call_candidates": [],
       "read": "Mortal checks whether the first-turn honor cut is merely cosmetic or a real plan choice. In this dealer-lead spot, agreement with LuckyJ means the model also values keeping the hand's value core over making the cleanest outside-honor trim. The top probabilities are close, so this should be studied as a sensitive border spot rather than a one-answer rule.",
       "how_to_use": "For play, copy the ordering: score job first, then discard. Do not spend a dora/seat-wind plan just to make the hand look locally tidy on turn one."
+    },
+    "point-13": {
+      "point": "point-13",
+      "log_id": "2023051209gm-0029-0000-baacf9ac",
+      "kyoku_index": 0,
+      "event_index": 14,
+      "left": 64,
+      "trigger": {
+        "type": "tsumo",
+        "actor": 3,
+        "pai": "7p"
+      },
+      "actual": {
+        "type": "dahai",
+        "tile": "F",
+        "label": "Discard F"
+      },
+      "mortal": {
+        "type": "dahai",
+        "tile": "1s",
+        "label": "Discard 1s"
+      },
+      "mortal_agrees_luckyj": false,
+      "mortal_agrees_naga": true,
+      "top_candidates": [
+        {
+          "action_id": 18,
+          "label": "Discard 1s",
+          "probability": 0.755945,
+          "type": "dahai",
+          "tile": "1s"
+        },
+        {
+          "action_id": 33,
+          "label": "Discard C",
+          "probability": 0.211917,
+          "type": "dahai",
+          "tile": "C"
+        },
+        {
+          "action_id": 32,
+          "label": "Discard F",
+          "probability": 0.016342,
+          "type": "dahai",
+          "tile": "F"
+        },
+        {
+          "action_id": 30,
+          "label": "Discard N",
+          "probability": 0.010378,
+          "type": "dahai",
+          "tile": "N"
+        },
+        {
+          "action_id": 8,
+          "label": "Discard 9m",
+          "probability": 0.002135,
+          "type": "dahai",
+          "tile": "9m"
+        },
+        {
+          "action_id": 16,
+          "label": "Discard 8p",
+          "probability": 0.001186,
+          "type": "dahai",
+          "tile": "8p"
+        }
+      ],
+      "post_call_mortal": null,
+      "post_call_agrees_luckyj": null,
+      "post_call_candidates": [],
+      "read": "This is the open-hand contract test. Mortal sides with the shape-cleaning line here, so LuckyJ's yakuhai cut should be treated as a deliberate contract-denial read rather than model consensus.",
+      "how_to_use": "After an opponent opens without a visible yaku, mark dragons, round wind, and that player's seat wind as contract tiles. Even when the model prefers shape, first ask whether keeping the tile lets the open hand become legal."
     }
   }
 }

@@ -144,12 +144,19 @@ def meld_shows_yakuhai_contract(meld, start, seat):
     return any(count >= 3 and is_yakuhai_for_seat(base.TILES[idx], start, seat) for idx, count in counts.items())
 
 
+def meld_all_simples(meld):
+    tiles = meld_tiles(meld)
+    return bool(tiles) and all(base.tile_class(tile) == "simple" for tile in tiles)
+
+
 def yakuhai_cleanup_threats(start, target, melds, tile):
     threats = []
     for seat, player_melds in enumerate(melds):
         if seat == target or not player_melds:
             continue
         if any(meld_shows_yakuhai_contract(meld, start, seat) for meld in player_melds):
+            continue
+        if all(meld_all_simples(meld) for meld in player_melds):
             continue
         if is_yakuhai_for_seat(tile, start, seat):
             threats.append(seat)
@@ -409,7 +416,19 @@ def add(selected, used, point_key, candidate):
         used.add(sig)
 
 
-def try_discard_points(selected, used, row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, open_melds):
+def add_best(selected, used, scores, point_key, candidate, score):
+    if not candidate:
+        return
+    sig = candidate_signature(candidate)
+    if sig in used and selected.get(point_key) and candidate_signature(selected[point_key]) != sig:
+        return
+    if point_key not in selected or score > scores.get(point_key, float("-inf")):
+        selected[point_key] = candidate
+        scores[point_key] = score
+        used.add(sig)
+
+
+def try_discard_points(selected, used, scores, row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, open_melds):
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
     if open_melds[target] or msg.get("reached"):
@@ -461,13 +480,19 @@ def try_discard_points(selected, used, row, kyoku_index, pos, start, state, hand
     if "point-12" not in selected and naga != actual:
         add(selected, used, "point-12", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-12"))
 
-    if "point-13" not in selected and actual_cls == "honor" and naga != actual:
+    if actual_cls == "honor":
         threats = yakuhai_cleanup_threats(start, target, melds, actual)
         actual_count = sum(1 for tile in hands[target] if tile_id(tile) == tile_id(actual))
         visible_count = public_visible[tile_id(actual)]
         danger_ok = actual_d is None or naga_d is None or actual_d <= naga_d + 0.02
-        if threats and actual_count == 1 and visible_count <= 1 and danger_ok:
-            add(selected, used, "point-13", make_yakuhai_cleanup_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, threats))
+        own_discards = len(discards[target])
+        first_row = own_discards < 6
+        if first_row and threats and actual_count == 1 and visible_count <= 1 and danger_ok:
+            case = make_yakuhai_cleanup_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, threats)
+            gap = (case["naga_prob"] - case["actual_prob"]) if case else 0
+            shape_bonus = 0.3 if case and base.tile_class(case["naga"]) != "honor" else 0.0
+            score = 100 - own_discards + gap + shape_bonus
+            add_best(selected, used, scores, "point-13", case, score)
 
     if "point-11" not in selected and start.get("end_msgs") and start["end_msgs"][0].get("type") != "hora":
         delta = sum((m.get("deltas") or [0, 0, 0, 0])[target] for m in start.get("end_msgs") or [])
@@ -490,6 +515,7 @@ def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, 
 
 def collect_examples():
     selected = {}
+    scores = {}
     used = set()
     for row in base.parse_rows():
         target = row["actor"]
@@ -515,7 +541,7 @@ def collect_examples():
                 if msg_type == "tsumo":
                     hands[actor].append(msg["pai"])
                     if actor == target and "dahai_pred" in state and msg.get("real_dahai") not in (None, "?"):
-                        try_discard_points(selected, used, row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, open_melds)
+                        try_discard_points(selected, used, scores, row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, open_melds)
                     discard = msg.get("real_dahai")
                     if discard and discard != "?":
                         remove_tile(hands[actor], discard)
@@ -554,8 +580,6 @@ def collect_examples():
                     if actor is not None and tile:
                         discards[actor].append(tile)
 
-                if len(selected) == len(POINT_TEXT):
-                    return selected
     return selected
 
 

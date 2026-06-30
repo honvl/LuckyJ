@@ -4,7 +4,12 @@ const locale = isJa ? "ja-JP" : "en-US";
 const fmt = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
 const whole = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
 const pct = (v) => `${fmt.format(v * 100)}%`;
-const useOtfTiles = /Chrome|Opera|OPE|MSIE/.test(navigator.userAgent);
+const chromiumTileEngine = /Chrome|Chromium|Edg|Opera|OPR|OPE|MSIE/.test(navigator.userAgent);
+const useColrTiles = chromiumTileEngine && globalThis.CSS?.supports?.("font-tech(color-COLRv1)");
+const useOtfTiles = chromiumTileEngine && !useColrTiles;
+const tileFontClass = useColrTiles ? "colr" : useOtfTiles ? "otf" : "";
+const tileFontClassSuffix = tileFontClass ? ` ${tileFontClass}` : "";
+const tileFontClassPrefix = tileFontClass ? `${tileFontClass} ` : "";
 const copy = {
   en: {
     none: "none",
@@ -28,7 +33,9 @@ const copy = {
     afterCall: "After Accepting the Call",
     postCallDiscard: "post-call discard",
     mortalCrossCheck: "Mortal cross-check",
+    mortalTop: "Mortal top",
     modelCandidates: "Model Candidates",
+    mortalCandidateLadder: "Mortal candidate ladder",
     readingSplit: "Reading the Split",
     replayExample: "Replay example",
     finalRank: "final rank",
@@ -43,6 +50,8 @@ const copy = {
     nagaReport: "NAGA report",
     tenhouLog: "Tenhou log",
     immediateDanger: "Immediate danger",
+    nagaWeight: "NAGA report",
+    mortalWeight: "Mortal weight",
     keeps: "Keeps",
     honors: "honors",
     terminals: "terminals",
@@ -84,7 +93,9 @@ const copy = {
     afterCall: "鳴いた後",
     postCallDiscard: "鳴き後の打牌",
     mortalCrossCheck: "Mortal クロスチェック",
+    mortalTop: "Mortal 最上位",
     modelCandidates: "モデル候補",
+    mortalCandidateLadder: "Mortal 候補一覧",
     readingSplit: "分岐の読み方",
     replayExample: "実戦例",
     finalRank: "最終順位",
@@ -99,6 +110,8 @@ const copy = {
     nagaReport: "NAGA レポート",
     tenhouLog: "天鳳牌譜",
     immediateDanger: "即時危険度",
+    nagaWeight: "NAGA レポート",
+    mortalWeight: "Mortal 重み",
     keeps: "残す枚数",
     honors: "字牌",
     terminals: "幺九牌",
@@ -299,6 +312,86 @@ function renderDefenseTiming(retention) {
   }
 }
 
+function yakuhaiContextLabel(key) {
+  const labels = isJa
+    ? {
+        unknown_open_yaku: "役が不明な副露",
+        shown_yaku_open: "役牌など役が見える副露",
+        tanyao_shaped_open: "タンヤオ形の副露",
+        no_open_hand: "副露なし",
+      }
+    : {
+        unknown_open_yaku: "Unproven-yaku open hand",
+        shown_yaku_open: "Visible-yaku open hand",
+        tanyao_shaped_open: "Tanyao-shaped open hand",
+        no_open_hand: "No open hand",
+      };
+  return labels[key] || key;
+}
+
+function renderYakuhaiPressure(pressure) {
+  const target = document.querySelector("#yakuhaiPressure");
+  const data = pressure?.contract_yakuhai || {};
+  if (!target || !Object.keys(data).length) return;
+  target.innerHTML = "";
+  const order = ["unknown_open_yaku", "shown_yaku_open", "tanyao_shaped_open"];
+  for (const key of order) {
+    const item = data[key];
+    if (!item) continue;
+    const card = document.createElement("div");
+    card.className = "evidence-card";
+    card.innerHTML = `
+      <b>${escapeHtml(yakuhaiContextLabel(key))}</b>
+      <strong>${item.cut_rate == null ? "n/a" : pct(item.cut_rate)}</strong>
+      <span>${isJa ? "契約役牌を今切った割合" : "cut rate for live contract yakuhai"}</span>
+      <small>${whole.format(item.cuts || 0)} / ${whole.format(item.opportunities || 0)} ${isJa ? "機会" : "opportunities"} · ${isJa ? "一段目の切り" : "first-row cuts"} ${item.first_row_cut_rate == null ? "n/a" : pct(item.first_row_cut_rate)} · ${isJa ? "中央値" : "median turn"} ${fmt.format(item.median_cut_turn ?? 0)}</small>
+    `;
+    target.append(card);
+  }
+}
+
+function defenseTargetLabel(key) {
+  const labels = isJa
+    ? {
+        dealer_riichi: "親リーチ",
+        dealer_open: "親の副露",
+        dealer_closed: "親の門前河",
+        closed_riichi: "子のリーチ",
+        nondealer_open: "子の副露",
+        nondealer_closed: "子の門前河",
+      }
+    : {
+        dealer_riichi: "Dealer riichi",
+        dealer_open: "Dealer open hand",
+        dealer_closed: "Dealer closed river",
+        closed_riichi: "Non-dealer riichi",
+        nondealer_open: "Non-dealer open hand",
+        nondealer_closed: "Non-dealer closed river",
+      };
+  return labels[key] || key;
+}
+
+function renderDefenseTargets(targets) {
+  const target = document.querySelector("#defenseTargets");
+  const data = targets?.overall || {};
+  if (!target || !Object.keys(data).length) return;
+  target.innerHTML = "";
+  const order = ["dealer_riichi", "dealer_open", "dealer_closed", "closed_riichi", "nondealer_open", "nondealer_closed"];
+  for (const key of order) {
+    const item = data[key];
+    if (!item?.instances) continue;
+    const card = document.createElement("div");
+    card.className = "evidence-card";
+    card.innerHTML = `
+      <b>${escapeHtml(defenseTargetLabel(key))}</b>
+      <strong>${whole.format(item.instances)}</strong>
+      <span>${isJa ? "残した現物/筋の対象" : "kept river-safe/suji targets"}</span>
+      <small>${safetyKindLabel("genbutsu")} ${whole.format(item.genbutsu || 0)} · ${safetyKindLabel("suji")} ${whole.format(item.suji || 0)}${item.avg_left == null ? "" : isJa ? ` · 平均残り${fmt.format(item.avg_left)}枚` : ` · avg ${fmt.format(item.avg_left)} tiles left`}</small>
+    `;
+    target.append(card);
+  }
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -337,7 +430,7 @@ function tiles(text) {
   const wrap = document.createElement("div");
   wrap.className = "tile-list";
   const span = document.createElement("span");
-  span.className = `tiles hand-tiles${useOtfTiles ? " otf" : ""}`;
+  span.className = `tiles hand-tiles${tileFontClassSuffix}`;
   const list = text.split(" ").filter(Boolean);
   const label = tileNamesText(list);
   span.textContent = list.map(tileCode).join("");
@@ -349,12 +442,12 @@ function tiles(text) {
 
 function tileIcon(tile, className = "") {
   const label = tileName(tile);
-  return `<span class="tiles ${useOtfTiles ? "otf " : ""}${className}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${escapeHtml(tileCode(tile))}</span>`;
+  return `<span class="tiles ${tileFontClassPrefix}${className}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${escapeHtml(tileCode(tile))}</span>`;
 }
 
 function applyTileCompatibility(root = document) {
-  if (!useOtfTiles) return;
-  root.querySelectorAll(".tiles").forEach((el) => el.classList.add("otf"));
+  if (!tileFontClass) return;
+  root.querySelectorAll(".tiles").forEach((el) => el.classList.add(tileFontClass));
 }
 
 function shortTiles(items) {
@@ -448,7 +541,7 @@ function tileRun(items, className = "", emptyLabel = t("none")) {
   const list = (items || []).filter(Boolean);
   if (!list.length) return emptyLabel ? `<span class="empty">${escapeHtml(emptyLabel)}</span>` : "";
   const label = tileNamesText(list);
-  return `<span class="tiles ${useOtfTiles ? "otf " : ""}${className}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${list
+  return `<span class="tiles ${tileFontClassPrefix}${className}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${list
     .map(tileCode)
     .join("")}</span>`;
 }
@@ -655,13 +748,15 @@ function agreementBadge(label, value) {
   return `<span class="model-badge ${value ? "agree" : "split"}">${escapeHtml(label)} ${value ? t("agrees") : t("splits")}</span>`;
 }
 
-function renderMortalBlock(mortal, pointKey, mortalCopy) {
-  if (!mortal) return document.createDocumentFragment();
-  const localMortal = mortalCopy?.[pointKey] || {};
-  const block = document.createElement("section");
-  block.className = "mortal-block";
-  const topCandidates = (mortal.top_candidates || [])
-    .slice(0, 4)
+function probabilityChip(label, value) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return "";
+  return `<span class="choice-weight">${escapeHtml(label)} ${pct(numeric)}</span>`;
+}
+
+function mortalCandidateDetails(candidates, limit = 4) {
+  const rows = (candidates || [])
+    .slice(0, limit)
     .map(
       (candidate, index) => `
         <li>
@@ -672,6 +767,21 @@ function renderMortalBlock(mortal, pointKey, mortalCopy) {
       `
     )
     .join("");
+  if (!rows) return "";
+  return `
+    <details class="diagnostics mortal-candidate-details">
+      <summary>${t("mortalCandidateLadder")}</summary>
+      <ol>${rows}</ol>
+    </details>
+  `;
+}
+
+function renderMortalBlock(mortal, pointKey, mortalCopy) {
+  if (!mortal) return document.createDocumentFragment();
+  const localMortal = mortalCopy?.[pointKey] || {};
+  const block = document.createElement("section");
+  block.className = "mortal-block";
+  const topCandidate = mortal.top_candidates?.[0];
   const branch =
     mortal.post_call_mortal && mortal.post_call_candidates?.length
       ? `
@@ -680,38 +790,24 @@ function renderMortalBlock(mortal, pointKey, mortalCopy) {
           <p>${
             isJa ? "Mortal の条件付き打牌は" : "Mortal's conditional discard is"
           } ${modelActionLine(mortal.post_call_mortal)} ${agreementBadge(t("postCallDiscard"), mortal.post_call_agrees_luckyj)}</p>
-          <ol>
-            ${mortal.post_call_candidates
-              .slice(0, 3)
-              .map(
-                (candidate, index) => `
-                  <li>
-                    <b>${index + 1}</b>
-                    ${candidateLine(candidate)}
-                    <strong>${pct(candidate.probability)}</strong>
-                  </li>
-                `
-              )
-              .join("")}
-          </ol>
+          ${mortalCandidateDetails(mortal.post_call_candidates, 3)}
         </div>
       `
       : "";
   block.innerHTML = `
     <div class="mortal-head">
-      <div>
-        <p class="kicker">${t("mortalCrossCheck")}</p>
-        <h5>${modelActionLine(mortal.mortal)}</h5>
-      </div>
-      <div class="model-badges">
-        ${agreementBadge("LuckyJ", mortal.mortal_agrees_luckyj)}
-        ${agreementBadge("NAGA", mortal.mortal_agrees_naga)}
-      </div>
+      <p class="kicker">${t("mortalCrossCheck")}</p>
     </div>
     <div class="mortal-grid">
-      <div>
-        <h5>${t("modelCandidates")}</h5>
-        <ol>${topCandidates}</ol>
+      <div class="decision mortal-choice-card">
+        <b>${t("mortalTop")}</b>
+        ${probabilityChip(t("mortalWeight"), topCandidate?.probability)}
+        <span class="discard-line">${modelActionLine(mortal.mortal)}</span>
+        <div class="model-badges">
+          ${agreementBadge("LuckyJ", mortal.mortal_agrees_luckyj)}
+          ${agreementBadge("NAGA", mortal.mortal_agrees_naga)}
+        </div>
+        ${mortalCandidateDetails(mortal.top_candidates, 4)}
       </div>
       <div>
         <h5>${t("readingSplit")}</h5>
@@ -787,13 +883,13 @@ function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
       choices.className = "comparison";
       if (example.actual_eval && example.naga_eval) {
         choices.append(
-          comparison(t("luckyj"), example.actual_eval, example.actual_danger),
-          comparison(t("nagaTop"), example.naga_eval, example.naga_danger)
+          comparison(t("luckyj"), example.actual_eval, example.actual_danger, example.actual_prob),
+          comparison(t("nagaTop"), example.naga_eval, example.naga_danger, example.naga_prob)
         );
       } else {
         choices.innerHTML = `
-          <div class="decision"><b>${t("luckyj")}</b><span class="discard-line">${t("discard")} ${tileIcon(example.actual, "discard-tile")} <em>${escapeHtml(tileName(example.actual))}</em></span><span>${t("danger")} ${dangerText(example.actual_danger)}</span></div>
-          <div class="decision"><b>${t("nagaTop")}</b><span class="discard-line">${t("discard")} ${tileIcon(example.naga, "discard-tile")} <em>${escapeHtml(tileName(example.naga))}</em></span><span>${t("danger")} ${dangerText(example.naga_danger)}</span></div>
+          <div class="decision"><b>${t("luckyj")}</b>${probabilityChip(t("nagaWeight"), example.actual_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.actual, "discard-tile")} <em>${escapeHtml(tileName(example.actual))}</em></span><span>${t("danger")} ${dangerText(example.actual_danger)}</span></div>
+          <div class="decision"><b>${t("nagaTop")}</b>${probabilityChip(t("nagaWeight"), example.naga_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.naga, "discard-tile")} <em>${escapeHtml(tileName(example.naga))}</em></span><span>${t("danger")} ${dangerText(example.naga_danger)}</span></div>
         `;
       }
       card.append(choices);
@@ -955,7 +1051,7 @@ function caseLesson(key, item) {
   return lines;
 }
 
-function comparison(label, item, danger) {
+function comparison(label, item, danger, probability) {
   const el = document.createElement("div");
   el.className = "decision";
   const keptSafety = safetySummary(item.kept_safety);
@@ -964,6 +1060,7 @@ function comparison(label, item, danger) {
     : `${t("discard")} ${tileIcon(item.discard, "discard-tile")} <em>${escapeHtml(tileName(item.discard))}</em>`;
   el.innerHTML = `
     <b>${label}</b>
+    ${probabilityChip(t("nagaWeight"), probability)}
     <span class="discard-line">${actionLine}</span>
     <span>${t("immediateDanger")} ${danger == null ? "n/a" : pct(danger)}</span>
     <span>${t("keeps")} ${item.kept_honors} ${t("honors")}, ${item.kept_terminals} ${t("terminals")}</span>
@@ -1036,8 +1133,8 @@ function renderCases(data) {
       const choices = document.createElement("div");
       choices.className = "comparison";
       choices.append(
-        comparison(t("luckyj"), item.actual_eval, item.actual_danger),
-        comparison(t("nagaTop"), item.naga_eval, item.naga_danger)
+        comparison(t("luckyj"), item.actual_eval, item.actual_danger, item.actual_prob_min),
+        comparison(t("nagaTop"), item.naga_eval, item.naga_danger, item.naga_prob_max)
       );
 
       const lesson = document.createElement("div");
@@ -1088,25 +1185,31 @@ async function main() {
   const top = data.top_bottom.top_half;
   const bottom = data.top_bottom.bottom_half;
   const metrics = document.querySelector("#metrics");
-  metrics.append(
-    metric(t("analyzedHanchan"), fmt.format(summary.games)),
-    metric(t("handsReviewed"), fmt.format(summary.hands)),
-    metric(t("averagePlacement"), fmt.format(summary.avg_rank)),
-    metric(t("averageScore"), `+${fmt.format(summary.avg_score)}`),
-    metric(t("winRate"), pct(summary.win_rate_per_hand)),
-    metric(t("dealInRate"), pct(summary.deal_in_rate_per_hand)),
-    metric(t("topHalfWins"), fmt.format(top.wins_per_game)),
-    metric(t("bottomHalfDealIns"), fmt.format(bottom.deal_ins_per_game))
-  );
+  if (metrics) {
+    metrics.append(
+      metric(t("analyzedHanchan"), fmt.format(summary.games)),
+      metric(t("handsReviewed"), fmt.format(summary.hands)),
+      metric(t("averagePlacement"), fmt.format(summary.avg_rank)),
+      metric(t("averageScore"), `+${fmt.format(summary.avg_score)}`),
+      metric(t("winRate"), pct(summary.win_rate_per_hand)),
+      metric(t("dealInRate"), pct(summary.deal_in_rate_per_hand)),
+      metric(t("topHalfWins"), fmt.format(top.wins_per_game)),
+      metric(t("bottomHalfDealIns"), fmt.format(bottom.deal_ins_per_game))
+    );
+  }
 
   const stage = data.decision_counters.stage;
   const chart = document.querySelector("#stageChart");
-  for (const key of ["early", "middle", "late"]) {
-    const item = stage[key];
-    chart.append(bar(`${stageText(key)} ${t("mismatch")}`, item.mismatch / item.decisions));
-    chart.append(bar(`${stageText(key)} ${t("bad")}`, item.bad / item.decisions));
+  if (chart) {
+    for (const key of ["early", "middle", "late"]) {
+      const item = stage[key];
+      chart.append(bar(`${stageText(key)} ${t("mismatch")}`, item.mismatch / item.decisions));
+      chart.append(bar(`${stageText(key)} ${t("bad")}`, item.bad / item.decisions));
+    }
   }
   renderDefenseTiming(data.decision_counters.defense_retention);
+  renderYakuhaiPressure(data.decision_counters.yakuhai_pressure);
+  renderDefenseTargets(data.decision_counters.defense_targets);
 
   renderPointExamples(examples, guides, mortal.points, mortalCopy);
   renderCases(caseData);
@@ -1115,5 +1218,7 @@ async function main() {
 
 main().catch((error) => {
   const metrics = document.querySelector("#metrics");
-  metrics.innerHTML = `<div class="metric"><b>${t("dataLoadFailed")}</b><span>${error.message}</span></div>`;
+  if (metrics) {
+    metrics.innerHTML = `<div class="metric"><b>${t("dataLoadFailed")}</b><span>${error.message}</span></div>`;
+  }
 });

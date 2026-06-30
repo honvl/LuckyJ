@@ -21,6 +21,11 @@
 }
 
 @font-face {
+  font-family: "mahjongtile-colr";
+  src: url("fonts/GL-MahjongTile-COLRv1.woff2") format("woff2");
+}
+
+@font-face {
   font-family: "mahjongtile";
   src: url("fonts/GL-MahjongTile.otf") format("opentype");
 }
@@ -31,6 +36,12 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+section[id],
+.point[id],
+.chapter-card[id] {
+  scroll-margin-top: 220px;
 }
 
 body {
@@ -111,6 +122,31 @@ a {
   color: #fff;
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.button-link {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--green);
+  display: inline-flex;
+  font-weight: 800;
+  min-height: 42px;
+  align-items: center;
+  padding: 9px 14px;
+  text-decoration: none;
+}
+
+.button-link.primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
 .layout {
   display: grid;
   grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
@@ -188,6 +224,69 @@ a {
   font-size: 17px;
 }
 
+.chapter-grid,
+.model-point-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.chapter-card,
+.model-point-grid article {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: inherit;
+  display: block;
+  min-height: 178px;
+  padding: 18px;
+  text-decoration: none;
+}
+
+.chapter-card span,
+.model-point-grid article span {
+  color: var(--red);
+  display: block;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.chapter-card h3,
+.model-point-grid article h3 {
+  font-size: 22px;
+  line-height: 1.14;
+  margin: 0 0 8px;
+}
+
+.chapter-card p,
+.model-point-grid article p {
+  color: var(--muted);
+  font-size: 15px;
+  margin: 0;
+}
+
+.chapter-card small {
+  color: var(--blue);
+  display: block;
+  font-weight: 750;
+  margin-top: 12px;
+}
+
+.model-point-grid article a {
+  color: var(--green);
+  display: inline-block;
+  font-weight: 850;
+  margin-top: 12px;
+}
+
+.concept-divider {
+  border-top: 1px solid var(--line);
+  margin-top: 38px;
+}
+
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -235,6 +334,10 @@ a {
   letter-spacing: -0.086em;
 }
 
+.tiles.colr {
+  font-family: "mahjongtile-colr";
+}
+
 .tile-row .tiles {
   display: inline-block;
   filter: drop-shadow(0 4px 8px rgba(40, 45, 38, 0.13));
@@ -268,6 +371,7 @@ a {
 .two-col,
 .method-grid,
 .stat-strip,
+.evidence-grid,
 .chart,
 .case-browser,
 .point-example-card,
@@ -328,6 +432,7 @@ a {
 .method-grid,
 .insight-grid,
 .stat-strip,
+.evidence-grid,
 .drill-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -341,6 +446,38 @@ a {
   padding: 14px;
   background: #f8faf5;
   border: 1px solid var(--line);
+}
+
+.evidence-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.evidence-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 6px;
+  min-height: 128px;
+  padding: 14px;
+}
+
+.evidence-card b {
+  color: var(--blue);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.evidence-card strong {
+  color: var(--green);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.evidence-card span,
+.evidence-card small {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .insight-grid {
@@ -624,6 +761,19 @@ a {
   font-size: 18px;
 }
 
+.decision .choice-weight {
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 850;
+  line-height: 1.1;
+  margin: 7px 0 4px;
+  padding: 4px 6px;
+  text-transform: uppercase;
+}
+
 .decision span {
   color: #30332f;
   font-size: 13px;
@@ -648,6 +798,15 @@ a {
   font-size: 12px;
   line-height: 1.45;
   margin-top: 8px;
+}
+
+.decision .model-badges {
+  justify-content: flex-start;
+  margin-top: 9px;
+}
+
+.decision .model-badge {
+  display: inline-block;
 }
 
 .case-lesson {
@@ -733,6 +892,10 @@ a {
   gap: 16px;
 }
 
+.mortal-head .kicker {
+  margin-bottom: 0;
+}
+
 .mortal-head h5 {
   align-items: center;
   display: flex;
@@ -784,7 +947,7 @@ a {
 
 .mortal-grid {
   display: grid;
-  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.25fr);
   gap: 14px;
   margin-top: 12px;
 }
@@ -794,6 +957,10 @@ a {
   border: 1px solid var(--line);
   background: #fff;
   padding: 12px;
+}
+
+.mortal-grid > .decision {
+  background: #f8faf5;
 }
 
 .mortal-grid h5,
@@ -842,9 +1009,18 @@ a {
 
 .mortal-grid li strong,
 .mortal-branch li strong {
-  color: var(--green);
-  font-size: 13px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
   text-align: right;
+}
+
+.mortal-candidate-details {
+  margin-top: 10px;
+}
+
+.mortal-candidate-details ol {
+  margin-top: 8px;
 }
 
 .mortal-grid p,
@@ -1363,8 +1539,11 @@ a {
   .metrics-grid,
   .diagram,
   .two-col,
+  .chapter-grid,
+  .model-point-grid,
   .insight-grid,
   .stat-strip,
+  .evidence-grid,
   .safety-timing,
   .drill-list,
   .call-line,

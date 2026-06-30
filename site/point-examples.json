@@ -3847,596 +3847,6 @@
     "actual_reach": true,
     "naga_reach": true
   },
-  "point-13": {
-    "point": "point-13",
-    "title": "Clean yakuhai against unproven open hands",
-    "lesson": "When another player calls without showing a clear yaku, singleton dragons and live value winds can become their missing contract. LuckyJ often removes those tiles before they turn into the price of continuing.",
-    "prompt": "After an opponent opens, ask which yakuhai still lets that hand win.",
-    "answer": "If your hand is not ready to punish them and the yakuhai has no strong job, clean it before the open hand gets to use it.",
-    "game": 3,
-    "rank": 2,
-    "round": "East 1-0",
-    "kyoku_index": 0,
-    "position": 47,
-    "left": 50,
-    "stage": "early",
-    "score": 25000,
-    "score_band": "above starting score",
-    "report": "https://naga.dmv.nico/htmls/d00179e866f4a3b86b475eaf72875dd225c121fc3c2af000d74632b57231c1a4v2_2.html?tw=3",
-    "paifu": "https://tenhou.net/4/?log=2023041912gm-0009-0000-2fb1c136&tw=3",
-    "table": {
-      "round": "East 1-0",
-      "dealer": "shimocha",
-      "dora_markers": [
-        "C"
-      ],
-      "scores": [
-        {
-          "seat": "shimocha",
-          "wind": "E",
-          "score": 25000,
-          "rank": 1,
-          "dealer": true
-        },
-        {
-          "seat": "toimen",
-          "wind": "S",
-          "score": 25000,
-          "rank": 2,
-          "dealer": false
-        },
-        {
-          "seat": "kamicha",
-          "wind": "W",
-          "score": 25000,
-          "rank": 3,
-          "dealer": false
-        },
-        {
-          "seat": "self",
-          "wind": "N",
-          "score": 25000,
-          "rank": 4,
-          "dealer": false
-        }
-      ],
-      "players": [
-        {
-          "seat": "shimocha",
-          "wind": "E",
-          "hand": "3m 5m 6m 4p 4p 5p 7p 4s 6s 8s",
-          "discards": [
-            "9m",
-            "N",
-            "W",
-            "S"
-          ],
-          "melds": [
-            "3p 4p 5p"
-          ],
-          "reached": false
-        },
-        {
-          "seat": "toimen",
-          "wind": "S",
-          "hand": "9p 9p P C",
-          "discards": [
-            "7m",
-            "3s",
-            "1m",
-            "7s",
-            "5s",
-            "8s",
-            "9s"
-          ],
-          "melds": [
-            "1p 1p 1p",
-            "S S S",
-            "E E E"
-          ],
-          "reached": false
-        },
-        {
-          "seat": "kamicha",
-          "wind": "W",
-          "hand": "1m 2m 4m 5m 6m 7m 8m 9m 7p 8p 2s 2s E",
-          "discards": [
-            "F",
-            "2p",
-            "8s",
-            "C",
-            "3p",
-            "E",
-            "1s"
-          ],
-          "melds": [],
-          "reached": false
-        },
-        {
-          "seat": "self",
-          "wind": "N",
-          "hand": "2m 4m 5mr 6m 7m 8m 8m 3s 4s 7s N P P F",
-          "discards": [
-            "9s",
-            "1p",
-            "S",
-            "7p",
-            "5p"
-          ],
-          "melds": [],
-          "reached": false
-        }
-      ]
-    },
-    "outcome": "kamicha won, self delta -1000",
-    "kind": "discard",
-    "hand": "2m 4m 5mr 6m 7m 8m 8m 3s 4s 7s N P P F",
-    "draw": "N",
-    "actual": "F",
-    "naga": "N",
-    "actual_danger": 0.023,
-    "naga_danger": 0.039,
-    "actual_eval": {
-      "discard": "F",
-      "shanten": 2,
-      "ukeire": 15,
-      "effective": [
-        "3m",
-        "8m",
-        "2s",
-        "5s",
-        "P"
-      ],
-      "hand_after": "2m 4m 5mr 6m 7m 8m 8m 3s 4s 7s N P P",
-      "kept_honors": 3,
-      "kept_terminals": 0,
-      "kept_safety": {
-        "total": 7,
-        "genbutsu": 4,
-        "suji": 3,
-        "against_threat": 7,
-        "tiles": [
-          {
-            "tile": "4m",
-            "kind": "suji",
-            "has_genbutsu": false,
-            "has_suji": true,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 1,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "7m",
-                    "position": 1
-                  },
-                  {
-                    "tile": "1m",
-                    "position": 3
-                  }
-                ],
-                "reached": false,
-                "open_melds": 3,
-                "seat_label": "toimen"
-              }
-            ]
-          },
-          {
-            "tile": "6m",
-            "kind": "suji",
-            "has_genbutsu": false,
-            "has_suji": true,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 0,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "9m",
-                    "position": 1
-                  }
-                ],
-                "reached": false,
-                "open_melds": 1,
-                "seat_label": "shimocha"
-              }
-            ]
-          },
-          {
-            "tile": "7m",
-            "kind": "genbutsu",
-            "has_genbutsu": true,
-            "has_suji": false,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 1,
-                "kind": "genbutsu",
-                "genbutsu_sources": [
-                  {
-                    "tile": "7m",
-                    "position": 1
-                  }
-                ],
-                "suji_sources": [],
-                "reached": false,
-                "open_melds": 3,
-                "seat_label": "toimen"
-              }
-            ]
-          },
-          {
-            "tile": "3s",
-            "kind": "genbutsu",
-            "has_genbutsu": true,
-            "has_suji": false,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 1,
-                "kind": "genbutsu",
-                "genbutsu_sources": [
-                  {
-                    "tile": "3s",
-                    "position": 2
-                  }
-                ],
-                "suji_sources": [],
-                "reached": false,
-                "open_melds": 3,
-                "seat_label": "toimen"
-              }
-            ]
-          },
-          {
-            "tile": "4s",
-            "kind": "suji",
-            "has_genbutsu": false,
-            "has_suji": true,
-            "safe_against_threat": true,
-            "opponents": 2,
-            "against": [
-              {
-                "seat": 1,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "7s",
-                    "position": 4
-                  }
-                ],
-                "reached": false,
-                "open_melds": 3,
-                "seat_label": "toimen"
-              },
-              {
-                "seat": 2,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "1s",
-                    "position": 7
-                  }
-                ],
-                "reached": false,
-                "open_melds": 0,
-                "seat_label": "kamicha"
-              }
-            ]
-          },
-          {
-            "tile": "7s",
-            "kind": "genbutsu",
-            "has_genbutsu": true,
-            "has_suji": false,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 1,
-                "kind": "genbutsu",
-                "genbutsu_sources": [
-                  {
-                    "tile": "7s",
-                    "position": 4
-                  }
-                ],
-                "suji_sources": [],
-                "reached": false,
-                "open_melds": 3,
-                "seat_label": "toimen"
-              }
-            ]
-          },
-          {
-            "tile": "N",
-            "kind": "genbutsu",
-            "has_genbutsu": true,
-            "has_suji": false,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 0,
-                "kind": "genbutsu",
-                "genbutsu_sources": [
-                  {
-                    "tile": "N",
-                    "position": 2
-                  }
-                ],
-                "suji_sources": [],
-                "reached": false,
-                "open_melds": 1,
-                "seat_label": "shimocha"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "naga_eval": {
-      "discard": "N",
-      "shanten": 2,
-      "ukeire": 15,
-      "effective": [
-        "3m",
-        "8m",
-        "2s",
-        "5s",
-        "P"
-      ],
-      "hand_after": "2m 4m 5mr 6m 7m 8m 8m 3s 4s 7s P P F",
-      "kept_honors": 3,
-      "kept_terminals": 0,
-      "kept_safety": {
-        "total": 7,
-        "genbutsu": 4,
-        "suji": 3,
-        "against_threat": 6,
-        "tiles": [
-          {
-            "tile": "4m",
-            "kind": "suji",
-            "has_genbutsu": false,
-            "has_suji": true,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 1,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "7m",
-                    "position": 1
-                  },
-                  {
-                    "tile": "1m",
-                    "position": 3
-                  }
-                ],
-                "reached": false,
-                "open_melds": 3,
-                "seat_label": "toimen"
-              }
-            ]
-          },
-          {
-            "tile": "6m",
-            "kind": "suji",
-            "has_genbutsu": false,
-            "has_suji": true,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 0,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "9m",
-                    "position": 1
-                  }
-                ],
-                "reached": false,
-                "open_melds": 1,
-                "seat_label": "shimocha"
-              }
-            ]
-          },
-          {
-            "tile": "7m",
-            "kind": "genbutsu",
-            "has_genbutsu": true,
-            "has_suji": false,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 1,
-                "kind": "genbutsu",
-                "genbutsu_sources": [
-                  {
-                    "tile": "7m",
-                    "position": 1
-                  }
-                ],
-                "suji_sources": [],
-                "reached": false,
-                "open_melds": 3,
-                "seat_label": "toimen"
-              }
-            ]
-          },
-          {
-            "tile": "3s",
-            "kind": "genbutsu",
-            "has_genbutsu": true,
-            "has_suji": false,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 1,
-                "kind": "genbutsu",
-                "genbutsu_sources": [
-                  {
-                    "tile": "3s",
-                    "position": 2
-                  }
-                ],
-                "suji_sources": [],
-                "reached": false,
-                "open_melds": 3,
-                "seat_label": "toimen"
-              }
-            ]
-          },
-          {
-            "tile": "4s",
-            "kind": "suji",
-            "has_genbutsu": false,
-            "has_suji": true,
-            "safe_against_threat": true,
-            "opponents": 2,
-            "against": [
-              {
-                "seat": 1,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "7s",
-                    "position": 4
-                  }
-                ],
-                "reached": false,
-                "open_melds": 3,
-                "seat_label": "toimen"
-              },
-              {
-                "seat": 2,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "1s",
-                    "position": 7
-                  }
-                ],
-                "reached": false,
-                "open_melds": 0,
-                "seat_label": "kamicha"
-              }
-            ]
-          },
-          {
-            "tile": "7s",
-            "kind": "genbutsu",
-            "has_genbutsu": true,
-            "has_suji": false,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 1,
-                "kind": "genbutsu",
-                "genbutsu_sources": [
-                  {
-                    "tile": "7s",
-                    "position": 4
-                  }
-                ],
-                "suji_sources": [],
-                "reached": false,
-                "open_melds": 3,
-                "seat_label": "toimen"
-              }
-            ]
-          },
-          {
-            "tile": "F",
-            "kind": "genbutsu",
-            "has_genbutsu": true,
-            "has_suji": false,
-            "safe_against_threat": false,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 2,
-                "kind": "genbutsu",
-                "genbutsu_sources": [
-                  {
-                    "tile": "F",
-                    "position": 1
-                  }
-                ],
-                "suji_sources": [],
-                "reached": false,
-                "open_melds": 0,
-                "seat_label": "kamicha"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    "naga_votes": [
-      "N",
-      "F",
-      "N"
-    ],
-    "naga_prob": 0.395,
-    "actual_prob": 0.241,
-    "kept_tile_safety": {
-      "tile": "N",
-      "kind": "genbutsu",
-      "has_genbutsu": true,
-      "has_suji": false,
-      "safe_against_threat": true,
-      "opponents": 1,
-      "against": [
-        {
-          "seat": 0,
-          "kind": "genbutsu",
-          "genbutsu_sources": [
-            {
-              "tile": "N",
-              "position": 2
-            }
-          ],
-          "suji_sources": [],
-          "reached": false,
-          "open_melds": 1,
-          "seat_label": "shimocha"
-        }
-      ]
-    },
-    "yakuhai_cleanup": {
-      "threats": [
-        {
-          "seat": "shimocha",
-          "wind": "E",
-          "melds": [
-            "3p 4p 5p"
-          ]
-        }
-      ]
-    }
-  },
   "point-11": {
     "point": "point-11",
     "title": "Drawn-hand points are attack equity",
@@ -4817,6 +4227,343 @@
       "safe_against_threat": false,
       "opponents": 0,
       "against": []
+    }
+  },
+  "point-13": {
+    "point": "point-13",
+    "title": "Clean yakuhai against unproven open hands",
+    "lesson": "When another player calls without showing a clear yaku, singleton dragons and live value winds can become their missing contract. LuckyJ often removes those tiles before they turn into the price of continuing.",
+    "prompt": "After an opponent opens, ask which yakuhai still lets that hand win.",
+    "answer": "If your hand is not ready to punish them and the yakuhai has no strong job, clean it before the open hand gets to use it.",
+    "game": 731,
+    "rank": 3,
+    "round": "East 1-0",
+    "kyoku_index": 0,
+    "position": 13,
+    "left": 64,
+    "stage": "early",
+    "score": 25000,
+    "score_band": "above starting score",
+    "report": "https://naga.dmv.nico/htmls/86bd91b05943cd73a1ba28b7b9c4554d0523d49a0c6929de6aad191f48a04096v2_2.html?tw=3",
+    "paifu": "https://tenhou.net/4/?log=2023051209gm-0029-0000-baacf9ac&tw=3",
+    "table": {
+      "round": "East 1-0",
+      "dealer": "shimocha",
+      "dora_markers": [
+        "6p"
+      ],
+      "scores": [
+        {
+          "seat": "shimocha",
+          "wind": "E",
+          "score": 25000,
+          "rank": 1,
+          "dealer": true
+        },
+        {
+          "seat": "toimen",
+          "wind": "S",
+          "score": 25000,
+          "rank": 2,
+          "dealer": false
+        },
+        {
+          "seat": "kamicha",
+          "wind": "W",
+          "score": 25000,
+          "rank": 3,
+          "dealer": false
+        },
+        {
+          "seat": "self",
+          "wind": "N",
+          "score": 25000,
+          "rank": 4,
+          "dealer": false
+        }
+      ],
+      "players": [
+        {
+          "seat": "shimocha",
+          "wind": "E",
+          "hand": "1m 2m 3m 5m 6s E S S P C",
+          "discards": [
+            "8s",
+            "8p"
+          ],
+          "melds": [
+            "W W W"
+          ],
+          "reached": false
+        },
+        {
+          "seat": "toimen",
+          "wind": "S",
+          "hand": "1m 4m 4p 5pr 9p 9p 1s 2s 4s 5s 6s E S",
+          "discards": [
+            "1p",
+            "8m"
+          ],
+          "melds": [],
+          "reached": false
+        },
+        {
+          "seat": "kamicha",
+          "wind": "W",
+          "hand": "1m 2m 3m 3m 6m 7m 3p 6p 6p 1s 2s 3s 7s",
+          "discards": [
+            "W",
+            "C"
+          ],
+          "melds": [],
+          "reached": false
+        },
+        {
+          "seat": "self",
+          "wind": "N",
+          "hand": "7m 9m 1p 2p 3p 7p 7p 8p 1s 7s 7s N F C",
+          "discards": [],
+          "melds": [],
+          "reached": false
+        }
+      ]
+    },
+    "outcome": "kamicha won, self delta -2000",
+    "kind": "discard",
+    "hand": "7m 9m 1p 2p 3p 7p 7p 8p 1s 7s 7s N F C",
+    "draw": "7p",
+    "actual": "F",
+    "naga": "1s",
+    "actual_danger": 0.04,
+    "naga_danger": 0.029,
+    "actual_eval": {
+      "discard": "F",
+      "shanten": 3,
+      "ukeire": 36,
+      "effective": [
+        "8m",
+        "5p",
+        "6p",
+        "7p",
+        "8p",
+        "9p",
+        "1s",
+        "2s",
+        "3s",
+        "7s",
+        "N",
+        "C"
+      ],
+      "hand_after": "7m 9m 1p 2p 3p 7p 7p 8p 1s 7s 7s N C",
+      "kept_honors": 2,
+      "kept_terminals": 3,
+      "kept_safety": {
+        "total": 3,
+        "genbutsu": 3,
+        "suji": 0,
+        "against_threat": 1,
+        "tiles": [
+          {
+            "tile": "1p",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "1p",
+                    "position": 1
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "seat_label": "toimen"
+              }
+            ]
+          },
+          {
+            "tile": "8p",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": true,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "8p",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 1,
+                "seat_label": "shimocha"
+              }
+            ]
+          },
+          {
+            "tile": "C",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 2,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "C",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "seat_label": "kamicha"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "naga_eval": {
+      "discard": "1s",
+      "shanten": 3,
+      "ukeire": 28,
+      "effective": [
+        "8m",
+        "5p",
+        "6p",
+        "7p",
+        "8p",
+        "9p",
+        "7s",
+        "N",
+        "F",
+        "C"
+      ],
+      "hand_after": "7m 9m 1p 2p 3p 7p 7p 8p 7s 7s N F C",
+      "kept_honors": 3,
+      "kept_terminals": 2,
+      "kept_safety": {
+        "total": 3,
+        "genbutsu": 3,
+        "suji": 0,
+        "against_threat": 1,
+        "tiles": [
+          {
+            "tile": "1p",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 1,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "1p",
+                    "position": 1
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "seat_label": "toimen"
+              }
+            ]
+          },
+          {
+            "tile": "8p",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": true,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 0,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "8p",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 1,
+                "seat_label": "shimocha"
+              }
+            ]
+          },
+          {
+            "tile": "C",
+            "kind": "genbutsu",
+            "has_genbutsu": true,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
+            "against": [
+              {
+                "seat": 2,
+                "kind": "genbutsu",
+                "genbutsu_sources": [
+                  {
+                    "tile": "C",
+                    "position": 2
+                  }
+                ],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "seat_label": "kamicha"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "naga_votes": [
+      "1s",
+      "C",
+      "1s"
+    ],
+    "naga_prob": 0.457,
+    "actual_prob": 0.095,
+    "kept_tile_safety": {
+      "tile": "1s",
+      "kind": null,
+      "has_genbutsu": false,
+      "has_suji": false,
+      "safe_against_threat": false,
+      "opponents": 0,
+      "against": []
+    },
+    "yakuhai_cleanup": {
+      "threats": [
+        {
+          "seat": "shimocha",
+          "wind": "E",
+          "melds": [
+            "W W W"
+          ]
+        }
+      ]
     }
   }
 }
