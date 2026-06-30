@@ -11,10 +11,19 @@ API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 URL = "http://localhost:8317/v1/chat/completions"
 CACHE_PATH = Path("data/llm_guides_cache.json")
 EXAMPLES_PATH = Path("site/point-examples.json")
+STRATEGY_EN_PATH = Path("site/strategy-guides.json")
+STRATEGY_JA_PATH = Path("site/strategy-guides.ja.json")
 
 SYSTEM_PROMPT = """You are an expert Mahjong commentator and tutor for the LuckyJ Mahjong playbook.
 Your task is to analyze a specific Mahjong decision where the AI agent "LuckyJ" differs from another engine "Nishiki" (or NAGA).
-You will be provided with the game state (round, scores, hands, players, threats, shape facts) and you must output an analysis block in Alternative 2 style in both English and Japanese.
+You will be provided with the game state, candidate decisions, shape facts, threat levels, active yakuhai tiles, and the core human strategic commentary.
+Your goal is to output an analysis block in Alternative 2 style in both English and Japanese that is intelligent, human-written, and directly connects this specific match example to the core strategic concept.
+
+Strict Mahjong Rules & Constraints:
+1. Only refer to wind tiles as "yaku tiles", "yakuhai", or "yaku switches" if they are listed in the 'Active Yakuhai for Self' list. Guest winds (non-yakuhai winds) do NOT carry yaku value for self.
+2. Evaluate the potential hand value and speed accurately based on the actual tiles. Do NOT assume a hand is a "1,000-point hand" or "cheap" unless it is an open hand with only one 1-han yaku and no dora. As a dealer, hands automatically gain a 1.5x value bonus, and hands with dora or yaku pairs often carry substantial value.
+3. Use the human strategic commentary ONLY for high-level conceptual reference. Do NOT copy its literal details (such as "1,000 point hand", "West", "South", "East") unless they are 100% true for the current example hand.
+4. Pinfu and Chiitoitsu MUST be closed (menzen). When describing multiple potential yaku paths for a hand that has both sequences and pairs, you MUST explicitly list 'toitoi', 'chiitoitsu', and 'closed pinfu' as the potential development paths, but NEVER place the word "open" next to or immediately after "pinfu" or "chiitoitsu" (e.g. do NOT say "keeps pinfu open" or "keeps chiitoitsu open"). Use phrasing like "keeps options like toitoi, chiitoitsu, or closed pinfu available" or "keeps these paths active".
 
 Style Guidelines for English (Alternative 2 style):
 - Start with first-person plural: "We are in [Round] [Dealer/Player status], holding [Score] points. [Context about board/opponents, e.g. 'With opponents already showing active melds' or 'With an opponent already declaring riichi']."
@@ -26,8 +35,7 @@ Style Guidelines for English (Alternative 2 style):
 - Do not use generic placeholders.
 
 Style Guidelines for Japanese:
-- Produce a high-quality Japanese translation of the English analysis, matching the natural terminology of professional Japanese Mahjong commentators (e.g. テンパイ, シャンテン, 現物, 筋, 押し引き, 親番, etc.).
-- Frame the tone in professional, commentary Japanese.
+- Produce a high-quality Japanese translation of the English analysis, matching the natural terminology of professional Japanese Mahjong commentators (e.g. テンパイ, シャンテン, 現物, 筋, 押し引き, 親番, 役牌, 客風, ピンフ, チートイツ, トイトイ, etc.).
 
 Drill Question and Answer:
 - prompt_en: A drill question testing the user's understanding of the situation (e.g., safety status of a tile, seat of the dealer, who is in lead).
@@ -79,12 +87,44 @@ def make_llm_request(prompt):
         content = response_data["choices"][0]["message"]["content"]
         return clean_and_parse_json(content)
 
-def make_prompt(case):
+def get_winds_and_yakuhai(case):
+    round_str = case.get("round", "")
+    prevalent_wind = round_str[0] if round_str else "?"
+    
+    seat_wind = "?"
+    players = case.get("table", {}).get("scores", [])
+    for p in players:
+        if p.get("seat") == "self":
+            seat_wind = p.get("wind", "?")
+            break
+            
+    dragons = ["P", "F", "C"]
+    active_yakuhai = [prevalent_wind, seat_wind] + dragons
+    active_yakuhai = list(set([w for w in active_yakuhai if w != "?"]))
+    
+    all_winds = ["E", "S", "W", "N"]
+    guest_winds = [w for w in all_winds if w not in active_yakuhai]
+    
+    return prevalent_wind, seat_wind, active_yakuhai, guest_winds
+
+def make_prompt(case, guide_en, guide_ja):
     is_call = case.get("kind") == "call"
+    prevalent_wind, seat_wind, active_yakuhai, guest_winds = get_winds_and_yakuhai(case)
+    is_dealer_self = case.get("table", {}).get("dealer") == "self"
     
     prompt = f"""Mahjong Playbook Point: {case['point']}
 Title: {case.get('title', '')}
 Lesson: {case.get('lesson', '')}
+
+Core Playbook Concept (Human Strategic Reference):
+- English Concept: {guide_en.get('read', '')}
+- Japanese Concept: {guide_ja.get('read', '')}
+
+Mahjong Rules Context for Self:
+- Prevalent Wind: {prevalent_wind}
+- Seat Wind: {seat_wind} (Is dealer: {"Yes" if is_dealer_self else "No"})
+- Active Yakuhai for Self: {", ".join(active_yakuhai)}
+- Guest Winds (no yaku value) for Self: {", ".join(guest_winds)}
 
 Match Situation:
 - Round: {case.get('round', '')}
@@ -127,7 +167,7 @@ Safety/Threat context:
 """
     return prompt
 
-def process_example(case, force):
+def process_example(case, guide_en, guide_ja, force):
     key = f"{case['point']}_{case.get('game')}_{case.get('kyoku_index')}_{case.get('position')}"
     
     # Check cache
@@ -140,7 +180,7 @@ def process_example(case, force):
         except Exception:
             pass
             
-    prompt = make_prompt(case)
+    prompt = make_prompt(case, guide_en, guide_ja)
     retries = 3
     for attempt in range(retries):
         try:
@@ -174,6 +214,16 @@ def main():
     if not API_KEY:
         print("Error: ANTHROPIC_API_KEY environment variable is not set.")
         return
+
+    # Load strategy guides
+    if not STRATEGY_EN_PATH.exists() or not STRATEGY_JA_PATH.exists():
+        print("Error: strategy guides paths are missing.")
+        return
+        
+    with open(STRATEGY_EN_PATH, "r", encoding="utf-8") as f:
+        strategy_en = json.load(f)
+    with open(STRATEGY_JA_PATH, "r", encoding="utf-8") as f:
+        strategy_ja = json.load(f)
 
     # Load examples
     if not EXAMPLES_PATH.exists():
@@ -216,7 +266,15 @@ def main():
     new_generations = 0
     if examples_to_process:
         with ThreadPoolExecutor(max_workers=5) as executor:
-            futures = {executor.submit(process_example, case, args.force): case for case in examples_to_process}
+            futures = {
+                executor.submit(
+                    process_example, 
+                    case, 
+                    strategy_en.get(case["point"], {}), 
+                    strategy_ja.get(case["point"], {}), 
+                    args.force
+                ): case for case in examples_to_process
+            }
             for future in as_completed(futures):
                 key, result, was_cached = future.result()
                 if result:
