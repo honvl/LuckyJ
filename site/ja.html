@@ -19,7 +19,6 @@
         <a href="#evidence">はじめに</a>
         <a href="#points">要点</a>
         <a href="#pattern-synthesis">総合</a>
-        <a href="#statistical-validation">統計検証</a>
         <a href="#case-studies">実例</a>
         <a href="#drills">練習</a>
         <a class="lang-link" href="index.html" hreflang="en">English</a>
@@ -52,7 +51,6 @@
             <li><a href="#point-18">字牌の役割を名付ける</a></li>
             <li><a href="#point-19">トップ目安全も計算する</a></li>
             <li><a href="#pattern-synthesis">パターン総合</a></li>
-            <li><a href="#statistical-validation">ポイント検証</a></li>
             <li><a href="#case-studies">実例集</a></li>
           </ol>
         </div>
@@ -200,18 +198,6 @@
             <strong>検証からの追記:</strong> 定性的な考えは、牌譜データで検証するための問いとして使う。
             有用な一般化は、場の文脈を使った危険度更新、形よりルート全体を見る評価、コミット後の役割付け直しである。
           </div>
-        </section>
-
-        <section class="section" id="statistical-validation">
-          <p class="kicker">統計検証</p>
-          <h2>各ポイントにデータ確認を付ける。</h2>
-          <p>
-            19個の要点を、LuckyJ/NAGA 不一致パターン、半荘成績、巡目別カウンターに対応させた。
-            母数が大きく、方向が有利で、p値も強いものは「強い」とし、混合または集計のみのものは
-            過剰主張を避けるため「条件付き」として残す。
-          </p>
-          <div id="validationSummary"></div>
-          <div class="validation-grid" id="pointValidation"></div>
         </section>
 
         <section class="point" id="point-01">
@@ -735,10 +721,18 @@
             例は LuckyJ の対局と AI 検討をもとにしている。数字は面白い手を探すための目印であり、
             最後は普通のリーチ麻雀の考え方、つまり打点、形、安全牌、相手の役、着順で読む。
           </p>
+          <details class="audit-details" id="method-audit">
+            <summary>根拠データを見る</summary>
+            <p>
+              各ポイントを残した理由を確認したい人向けの詳細データです。普通に読むだけなら開かなくてよい。
+            </p>
+            <div id="validationSummary"></div>
+            <div class="validation-grid" id="pointValidation"></div>
+          </details>
           <ul>
             <li><a href="https://docs.google.com/spreadsheets/d/1jV-fi6E-z8BFdbS_LPfvpktSw8qc68PSZj9iEgdUC9U/edit?usp=drivesdk">元の対局リスト。</a></li>
             <li><a href="https://natsuai.com/mahjong/digital">形式参考: Natsu AI digital mahjong points.</a></li>
-            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-validation-2026-06-30.md">ポイント検証レポート。</a></li>
+            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-validation-2026-06-30.md">詳細な根拠レポート。</a></li>
             <li>牌フォント: Gutenberg Labo の GL-MahjongTile。`site/fonts/` に同梱。</li>
             <li>生成データ: `site/book-data.json`, `site/point-validation.json`, `site/case-studies.json`, `site/point-examples.json`, `data/luckyj_analysis.json`。</li>
           </ul>
@@ -746,6 +740,6 @@
       </article>
     </main>
 
-    <script src="app.js?v=20260630-review-examples"></script>
+    <script src="app.js?v=20260630-audit-collapse"></script>
   </body>
 </html>

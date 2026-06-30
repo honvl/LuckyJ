@@ -20,7 +20,6 @@
         <a href="#evidence">Start</a>
         <a href="#concept-map">Concepts</a>
         <a href="#pattern-synthesis">Synthesis</a>
-        <a href="#statistical-validation">Stats</a>
         <a href="#case-studies">Cases</a>
         <a href="#drills">Drills</a>
         <a class="lang-link" href="ja.html" hreflang="ja">日本語</a>
@@ -38,7 +37,6 @@
             <li><a href="#concept-defense">Safe Tiles and Push-Fold</a></li>
             <li><a href="#concept-review">Review and Caution</a></li>
             <li><a href="#pattern-synthesis">Pattern Synthesis</a></li>
-            <li><a href="#statistical-validation">Point Validation</a></li>
             <li><a href="#case-studies">Case Studies</a></li>
           </ol>
         </div>
@@ -240,18 +238,6 @@
             the replay data. The useful generalized refinements are live-context danger reading, route-over-shape
             evaluation, and role labeling after commitment.
           </div>
-        </section>
-
-        <section class="section" id="statistical-validation">
-          <p class="kicker">Statistical validation</p>
-          <h2>Each point has a data check.</h2>
-          <p>
-            The validation pass maps every numbered point to mined LuckyJ/NAGA disagreement families, aggregate
-            game outcomes, or timing counters. Strong points have large-sample, directionally useful statistics;
-            mixed or aggregate-only points are kept as qualified so the playbook does not overclaim.
-          </p>
-          <div id="validationSummary"></div>
-          <div class="validation-grid" id="pointValidation"></div>
         </section>
 
         <section class="point" id="point-01">
@@ -688,63 +674,6 @@
           </div>
         </section>
 
-        <section class="point" id="point-17">
-          <div class="point-number">17</div>
-          <div class="point-body">
-            <h3>A kept genbutsu or suji tile must name its target.</h3>
-            <p>
-              Do not describe a tile as simply "safe." Say who it is safe against. Genbutsu against shimocha is
-              not protection against toimen's riichi. Suji against a quiet hand is not the same as suji against
-              an open dealer with pressure. LuckyJ-style defense works when the kept tile is tied to an actual
-              opponent and an actual future decision.
-            </p>
-            <p>
-              This is where the statistics split sharply. Keeping an exit against an active riichi or open threat
-              looked better than the general mismatch baseline. Middle/late multi-threat exit preservation also
-              looked better. But generic "kept genbutsu/suji" was worse than baseline and Mortal sided with
-              NAGA in 32 of 34 sampled high-gap cases. The concept is not hoarding. The concept is target coverage.
-            </p>
-            <div class="two-col">
-              <div>
-                <h4>Good keep</h4>
-                <p>9m is genbutsu to the riichi player, you are one-away, and your next draw may force a choice.</p>
-              </div>
-              <div>
-                <h4>Bad keep</h4>
-                <p>9m is safe to a quiet player, but the dealer's open hand is the real danger and your shape collapses by holding it.</p>
-              </div>
-            </div>
-            <div class="rule">
-              <strong>Rule:</strong> Every kept safety tile needs a named target: "safe against X if Y happens."
-              If you cannot say that sentence, the tile is probably just clutter.
-            </div>
-            <div data-example="point-17"></div>
-          </div>
-        </section>
-
-        <section class="point" id="point-19">
-          <div class="point-number">19</div>
-          <div class="point-body">
-            <h3>Leader safety still has to calculate.</h3>
-            <p>
-              When leading, LuckyJ can accept less ambitious hands because the table job has changed. But that
-              does not make every safe-looking discard correct. A leader's defensive discard still needs to keep
-              the next turn manageable. If it kills the hand and does not reduce real danger, it is just passive.
-            </p>
-            <p>
-              The leader-low-risk bucket had 5,153 mismatches and was only mildly better than baseline. Its real
-              use is as a qualifier inside other points: reduce ambition when the discard also avoids danger,
-              preserves a clean fold path, or keeps a safe tenpai route. Do not turn "I am leading" into a reason
-              to stop calculating.
-            </p>
-            <div class="rule">
-              <strong>Rule:</strong> A lead lowers the value requirement for ending the hand, but it raises the
-              standard for unnecessary risk. The discard still needs a concrete safety job.
-            </div>
-            <div data-example="point-19"></div>
-          </div>
-        </section>
-
         <section class="section concept-divider" id="shape-route-refinements">
           <p class="kicker">Shape and route selection</p>
           <h2>Outside cuts can be shape, not only defense.</h2>
@@ -780,6 +709,40 @@
               the cost of keeping the hand's real center alive.
             </div>
             <div data-example="point-16"></div>
+          </div>
+        </section>
+
+        <section class="point" id="point-17">
+          <div class="point-number">17</div>
+          <div class="point-body">
+            <h3>A kept genbutsu or suji tile must name its target.</h3>
+            <p>
+              Do not describe a tile as simply "safe." Say who it is safe against. Genbutsu against shimocha is
+              not protection against toimen's riichi. Suji against a quiet hand is not the same as suji against
+              an open dealer with pressure. LuckyJ-style defense works when the kept tile is tied to an actual
+              opponent and an actual future decision.
+            </p>
+            <p>
+              This is where the statistics split sharply. Keeping an exit against an active riichi or open threat
+              looked better than the general mismatch baseline. Middle/late multi-threat exit preservation also
+              looked better. But generic "kept genbutsu/suji" was worse than baseline and Mortal sided with
+              NAGA in 32 of 34 sampled high-gap cases. The concept is not hoarding. The concept is target coverage.
+            </p>
+            <div class="two-col">
+              <div>
+                <h4>Good keep</h4>
+                <p>9m is genbutsu to the riichi player, you are one-away, and your next draw may force a choice.</p>
+              </div>
+              <div>
+                <h4>Bad keep</h4>
+                <p>9m is safe to a quiet player, but the dealer's open hand is the real danger and your shape collapses by holding it.</p>
+              </div>
+            </div>
+            <div class="rule">
+              <strong>Rule:</strong> Every kept safety tile needs a named target: "safe against X if Y happens."
+              If you cannot say that sentence, the tile is probably just clutter.
+            </div>
+            <div data-example="point-17"></div>
           </div>
         </section>
 
@@ -819,6 +782,29 @@
               "it is an honor," the review is not specific enough.
             </div>
             <div data-example="point-18"></div>
+          </div>
+        </section>
+
+        <section class="point" id="point-19">
+          <div class="point-number">19</div>
+          <div class="point-body">
+            <h3>Leader safety still has to calculate.</h3>
+            <p>
+              When leading, LuckyJ can accept less ambitious hands because the table job has changed. But that
+              does not make every safe-looking discard correct. A leader's defensive discard still needs to keep
+              the next turn manageable. If it kills the hand and does not reduce real danger, it is just passive.
+            </p>
+            <p>
+              The leader-low-risk bucket had 5,153 mismatches and was only mildly better than baseline. Its real
+              use is as a qualifier inside other points: reduce ambition when the discard also avoids danger,
+              preserves a clean fold path, or keeps a safe tenpai route. Do not turn "I am leading" into a reason
+              to stop calculating.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> A lead lowers the value requirement for ending the hand, but it raises the
+              standard for unnecessary risk. The discard still needs a concrete safety job.
+            </div>
+            <div data-example="point-19"></div>
           </div>
         </section>
 
@@ -896,10 +882,19 @@
             riichi ideas. Use the numbers to find interesting hands; use the table context to decide whether
             the idea belongs in your own game.
           </p>
+          <details class="audit-details" id="method-audit">
+            <summary>Show audit data</summary>
+            <p>
+              This is the evidence dump for readers who want to inspect why each point stayed in the playbook.
+              It is not required for normal reading.
+            </p>
+            <div id="validationSummary"></div>
+            <div class="validation-grid" id="pointValidation"></div>
+          </details>
           <ul>
             <li><a href="https://docs.google.com/spreadsheets/d/1jV-fi6E-z8BFdbS_LPfvpktSw8qc68PSZj9iEgdUC9U/edit?usp=drivesdk">Original game list.</a></li>
             <li><a href="https://natsuai.com/mahjong/digital">Format reference: Natsu AI digital mahjong points.</a></li>
-            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-validation-2026-06-30.md">Point validation report.</a></li>
+            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-validation-2026-06-30.md">Detailed audit report.</a></li>
             <li>Tile font: GL-MahjongTile by Gutenberg Labo, vendored under `site/fonts/`.</li>
             <li>Generated data: `site/book-data.json`, `site/point-validation.json`, `site/case-studies.json`, `site/point-examples.json`, and `data/luckyj_analysis.json`.</li>
           </ul>
@@ -907,6 +902,6 @@
       </article>
     </main>
 
-    <script src="app.js?v=20260630-review-examples"></script>
+    <script src="app.js?v=20260630-audit-collapse"></script>
   </body>
 </html>
