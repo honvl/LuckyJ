@@ -21,7 +21,7 @@ from picosvg.svg_meta import strip_ns
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_FONT = ROOT / "site/fonts/GL-MahjongTile-Clr.woff2"
 OUTPUT_FONT = ROOT / "site/fonts/GL-MahjongTile-COLRv1.woff2"
-TILE_CODES = "qwertyuioasdfghjklzxcvbnm,.1234567"
+TILE_CODES = "qwertyuio8asdfghjklpzxcvbnm,0.1234567"
 
 
 def extract_otsvg_glyphs(source_font: Path, svg_dir: Path) -> None:

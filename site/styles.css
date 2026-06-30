@@ -971,58 +971,6 @@ a {
   margin: 0 0 8px;
 }
 
-.mortal-grid ol,
-.mortal-branch ol {
-  display: grid;
-  gap: 7px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.mortal-grid li,
-.mortal-branch li {
-  align-items: center;
-  display: grid;
-  grid-template-columns: 22px minmax(0, 1fr) 58px;
-  gap: 8px;
-  min-height: 34px;
-}
-
-.mortal-grid li > b,
-.mortal-branch li > b {
-  background: var(--blue);
-  color: #fff;
-  font-size: 12px;
-  line-height: 22px;
-  text-align: center;
-}
-
-.mortal-grid li span,
-.mortal-branch li span {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  min-width: 0;
-}
-
-.mortal-grid li strong,
-.mortal-branch li strong {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 850;
-  text-align: right;
-}
-
-.mortal-candidate-details {
-  margin-top: 10px;
-}
-
-.mortal-candidate-details ol {
-  margin-top: 8px;
-}
-
 .mortal-grid p,
 .mortal-branch p {
   font-size: 14px;
@@ -1084,32 +1032,32 @@ a {
   padding: 10px;
 }
 
-.contract-read {
+.yaku-condition-read {
   border-left: 5px solid var(--red);
   background: var(--soft-red);
   margin: 12px 0;
   padding: 12px;
 }
 
-.contract-read h5 {
+.yaku-condition-read h5 {
   color: var(--red);
   font-size: 15px;
   line-height: 1.2;
   margin: 0 0 6px;
 }
 
-.contract-read p {
+.yaku-condition-read p {
   font-size: 14px;
   margin: 0 0 10px;
 }
 
-.contract-threats {
+.yaku-condition-threats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
 }
 
-.contract-threats > span {
+.yaku-condition-threats > span {
   border: 1px solid #e2b8b3;
   background: #fff;
   display: block;
@@ -1117,15 +1065,15 @@ a {
   padding: 10px;
 }
 
-.contract-threats b,
-.contract-threats em {
+.yaku-condition-threats b,
+.yaku-condition-threats em {
   display: inline-flex;
   align-items: center;
   gap: 5px;
   margin-right: 8px;
 }
 
-.contract-threats em {
+.yaku-condition-threats em {
   color: var(--muted);
   font-style: normal;
   font-weight: 750;
@@ -1547,7 +1495,7 @@ a {
   .safety-timing,
   .drill-list,
   .call-line,
-  .contract-threats,
+  .yaku-condition-threats,
   .player-grid,
   .hidden-hand-grid {
     grid-template-columns: 1fr;

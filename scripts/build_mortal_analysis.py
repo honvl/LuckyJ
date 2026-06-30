@@ -392,80 +392,95 @@ def compact_event(event: dict[str, Any]) -> dict[str, Any]:
     return {key: event[key] for key in keep if key in event}
 
 
-def commentary_for(point: str, model: dict[str, Any], actual: dict[str, Any], candidates: list[dict[str, Any]]) -> tuple[str, str]:
-    top = candidates[0]["probability"] if candidates else None
-    second = candidates[1]["probability"] if len(candidates) > 1 else None
-    close = top is not None and second is not None and top - second < 0.12
+def commentary_for(point: str, model: dict[str, Any], actual: dict[str, Any]) -> tuple[str, str]:
     model_label = model["label"]
     actual_label = actual["label"]
 
     specific = {
         "point-01": (
-            "Mortal checks whether the first-turn honor cut is merely cosmetic or a real plan choice. In this dealer-lead spot, agreement with LuckyJ means the model also values keeping the hand's value core over making the cleanest outside-honor trim.",
+            "Mortal checks whether the first-turn honor cut is just cleanup or a real plan choice. In this dealer-lead spot, agreement with LuckyJ means the model also values keeping the hand's value core over making the cleanest outside-honor trim.",
             "For play, copy the ordering: score job first, then discard. Do not spend a dora/seat-wind plan just to make the hand look locally tidy on turn one.",
         ),
         "point-02": (
-            "This is the controlled-ambiguity test. Mortal's preferred action shows whether the messy hand should keep the dragon/yakuhai switch or simplify immediately. If the top two probabilities are close, treat the spot as a branch-management exercise rather than a simple error.",
+            "Mortal's preferred action helps you decide whether the messy hand should keep the dragon/yakuhai switch or simplify immediately. Treat the spot as branch management rather than a simple error.",
             "In play, name the live routes before cutting: open yaku, pair hand, red-five value, and safety. The model split matters less than whether your discard kills a route you still need.",
         ),
         "point-03": (
-            "This is a call-contract test: Mortal is judging the pon before seeing the later hand result. A call preference means the model accepts that the closed hand is structurally fake; a pass preference means the hand still lacks enough reward or safety.",
+            "Mortal judges the pon before seeing the later hand result. A call preference means the model accepts that the closed hand is structurally fake; a pass preference means the hand still lacks enough reward or safety.",
             "When copying, do not say 'bad hand, so call.' Say exactly what the call buys: yaku, clock, and a discard plan after the call.",
         ),
         "point-04": (
-            "This is the second-call discipline check. Mortal's call/pass preference matters, but the conditional post-call discard matters just as much: an open hand that cannot stop is not LuckyJ-style pressure.",
+            "Mortal's call/pass preference matters, but the conditional post-call discard matters just as much: an open hand that cannot stop has become too expensive.",
             "After every second call, ask what tile remains as the brake. If you cannot name it, the call is too expensive unless the hand is already worth forcing.",
         ),
         "point-05": (
-            "This tests future-danger pricing. Mortal is asked whether the useful-looking side tile should leave before the table grows louder, or whether the outside tile should be cleaned first.",
+            "Mortal helps price future danger: should the useful-looking side tile leave before the table grows louder, or should the outside tile be cleaned first?",
             "For your own games, identify the tile whose danger will age badly. Slow hands should throw future liabilities before those liabilities become mandatory pushes.",
         ),
         "point-06": (
-            "This is an early value-class test. Mortal's choice tells whether the isolated terminal is expendable enough to keep the honor switch while the red-five hand is still forming.",
-            "Do not chase the cheapest version of a hand that needs points. Keep the tile that can still become value or a stop, but only when the cost tile is genuinely low-purpose.",
+            "Mortal's choice tells whether the isolated terminal is expendable enough to keep the honor switch while the red-five hand is still forming.",
+            "When the hand needs points, keep the tile that can still become value or a stop, but only when the cost tile is genuinely low-purpose.",
         ),
         "point-07": (
-            "This is a tempo-call test after the hand is already open. Mortal helps separate a call that actually changes the round clock from a call that only exposes more tiles.",
-            "Copy the call only when it creates a real next discard and a real path to completion. Tempo without a contract is just impatience.",
+            "After the hand is already open, Mortal helps separate a call that changes the round clock from a call that only exposes more tiles.",
+            "Copy the call only when it creates a real next discard and a real path to completion. Tempo without a purpose is just impatience.",
         ),
         "point-08": (
-            "This is the riichi-conversion test. Mortal's top action shows whether the hand should turn into table pressure immediately or stay quiet for refinement.",
+            "Mortal's top action shows whether the hand should turn into table pressure immediately or stay quiet for refinement.",
             "At the table, ask whether riichi changes opponents' behavior enough to justify losing flexibility. If yes, convert; if not, the same discard without riichi can be the better move.",
         ),
         "point-09": (
-            "This is the expiring-push test. Mortal evaluates the current draw after the open dora-side threat appears, so it is useful for checking whether LuckyJ's safer discard is real discipline or too timid.",
+            "Mortal evaluates the current draw after the open dora-side threat appears, which helps check whether LuckyJ's safer discard is real discipline or too timid.",
             "Do not label a hand 'push' once and stop thinking. Every call and draw reprices the next required discard.",
         ),
         "point-10": (
-            "This is the late-row precision test. Mortal is valuable here because late LuckyJ disagreements are the least copyable; the model cross-check keeps the analysis from inventing certainty.",
-            "In late rows, replace vague upside with exact goals: win, safe tenpai, forced push, or fold. If the model split is close, your river read decides the hand.",
+            "Mortal is valuable here because late LuckyJ disagreements are the least copyable; the cross-check keeps the review from inventing certainty.",
+            "In late rows, replace vague upside with exact goals: win, safe tenpai, forced push, or fold. Your river read decides the hand.",
         ),
         "point-11": (
-            "This is the safe-tenpai test. Mortal checks whether the visible dragon discard is a legitimate way to preserve draw payments against the live open hand.",
+            "Mortal checks whether the visible dragon discard is a legitimate way to preserve draw payments against the live open hand.",
             "Treat noten payments as real equity, but only when the path is safe. A tenpai chase through a live dangerous tile is not the same idea.",
         ),
         "point-12": (
             "This first-discard spot is a calibration case. Mortal helps decide whether the NAGA/LuckyJ split is a meaningful strategic disagreement or just a model-ordering preference in a low-danger position.",
-            "Use spots like this to practice humility: when strong models split early, write the claims each tile makes instead of forcing a heroic explanation.",
+            "Use spots like this to slow down: when strong models split early, write what each tile is trying to keep before making a big story out of it.",
         ),
         "point-13": (
-            "This is the open-hand contract test. Mortal sides with the shape-cleaning line here, so LuckyJ's yakuhai cut should be treated as a deliberate contract-denial read rather than model consensus.",
-            "After an opponent opens without a visible yaku, mark dragons, round wind, and that player's seat wind as contract tiles. Even when the model prefers shape, first ask whether keeping the tile lets the open hand become legal.",
+            "Mortal sides with the shape-cleaning line here, so LuckyJ's yakuhai cut should be treated as a deliberate yaku-condition denial read. It is a hand to review carefully, not an automatic rule.",
+            "After an opponent opens without a visible yaku, mark dragons, round wind, and that player's seat wind as yaku-condition tiles. Even when the model prefers shape, first ask whether keeping the tile lets the open hand become legal.",
         ),
         "point-14": (
-            "This is the defensive-inventory test. Mortal agreeing with LuckyJ over NAGA means the kept river-safe tile is not just a human story: a second model also prefers spending shape while preserving the clearer exit.",
+            "When Mortal agrees with LuckyJ over NAGA, the kept river-safe tile has more support: a second model also prefers spending shape while preserving the clearer exit.",
             "When your hand is behind but not ready, count the safe exits before cutting them. A genbutsu tile against multiple opponents can be worth more than two extra visible ukeire if it keeps the next threat playable.",
+        ),
+        "point-15": (
+            "Mortal is useful here because the broad statistic is only a starting point: it checks whether spending the safe-looking tile is real target repricing or just throwing away useful insurance.",
+            "Copy this only after naming the tile's target. If the tile is safe against the wrong player and the hand still has another exit, spending it can be correct; if it is the last answer to the live threat, keep it.",
+        ),
+        "point-16": (
+            "Mortal checks whether the edge tile discard is merely timid safety or whether the retained middle tile is actually the hand's connection to tenpai.",
+            "At the table, ask what the inside tile does next. If it is the real connector and the outside tile has no value or target-specific safety job, the outside cut can be an attacking discard.",
+        ),
+        "point-17": (
+            "Mortal often rejects generic safe-tile stories, so disagreement here should force a precise question: which opponent does the kept genbutsu or suji tile answer?",
+            "Use the panel as a naming drill. A good keep says 'safe against this live threat if this next draw happens.' A vague safe tile should be repriced as ordinary clutter.",
+        ),
+        "point-18": (
+            "Mortal's top choice helps separate a real honor cleanup from an overfit story about all honors being disposable.",
+            "Before copying, label the honor: self value, opponent yaku condition, dead tile, or defensive exit. The same honor class changes value completely when the label changes.",
+        ),
+        "point-19": (
+            "Mortal checks whether the low-risk leader discard also preserves a real next turn. The point is to see whether the safer-looking tile still leaves the hand playable.",
+            "When leading, reduce ambition only when the discard also lowers live danger or keeps a clean exit. The lead changes the price, but it does not remove the need to calculate.",
         ),
     }
     read, use = specific.get(
         point,
         (
             f"Mortal's top action is {model_label}; LuckyJ played {actual_label}. The cross-check is useful because it gives a second model view on whether the disagreement has strategic weight.",
-            "Use the model result as a review prompt, not as a command. Copy the move only after the point, route, and danger logic all agree.",
+            "Use the model result as a review prompt. Copy the move only after the point, route, and danger logic all agree.",
         ),
     )
-    if close:
-        read += " The top probabilities are close, so this should be studied as a sensitive border spot rather than a one-answer rule."
     return read, use
 
 
@@ -496,10 +511,10 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         opp = choose_opportunity(opportunities_by_log[log_id], example)
         model = model_choice(opp.reaction)
         actual = actual_choice(opp.actual_events, example)
-        candidates = decode_candidates(opp.reaction)[:6]
+        candidates = decode_candidates(opp.reaction)
+        top_candidates = candidates[:1]
         post_call_model = model_choice(opp.post_call_reaction) if opp.post_call_reaction else None
-        post_call_candidates = decode_candidates(opp.post_call_reaction)[:5] if opp.post_call_reaction else []
-        read, use = commentary_for(point, model, actual, candidates)
+        read, use = commentary_for(point, model, actual)
         actual_discard_after_call = actual.get("discard_after_call")
         post_call_agrees = (
             post_call_model is not None
@@ -518,10 +533,10 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             "mortal": model,
             "mortal_agrees_luckyj": agrees_with_luckyj(model, actual, example),
             "mortal_agrees_naga": agrees_with_naga(model, example),
-            "top_candidates": candidates,
+            "top_candidates": top_candidates,
             "post_call_mortal": post_call_model,
             "post_call_agrees_luckyj": post_call_agrees if post_call_model else None,
-            "post_call_candidates": post_call_candidates,
+            "post_call_candidates": [],
             "read": read,
             "how_to_use": use,
         }

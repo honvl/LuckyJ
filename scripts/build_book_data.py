@@ -50,7 +50,7 @@ def meld_tiles(meld):
     return [tile for tile in str(meld).split() if tile and tile != "+"]
 
 
-def meld_shows_yakuhai_contract(meld, start, seat):
+def meld_shows_yakuhai_yaku(meld, start, seat):
     counts = Counter(tile_id(tile) for tile in meld_tiles(meld))
     return any(count >= 3 and is_yakuhai_for_seat(base.TILES[idx], start, seat) for idx, count in counts.items())
 
@@ -63,7 +63,7 @@ def meld_all_simples(meld):
 def open_status_for_seat(start, seat, melds):
     if not melds:
         return None
-    if any(meld_shows_yakuhai_contract(meld, start, seat) for meld in melds):
+    if any(meld_shows_yakuhai_yaku(meld, start, seat) for meld in melds):
         return "shown_yaku_open"
     if all(meld_all_simples(meld) for meld in melds):
         return "tanyao_shaped_open"
@@ -85,7 +85,7 @@ def open_context_key(start, target, melds):
     return "no_open_hand"
 
 
-def contract_yakuhai_contexts(start, target, melds, hand):
+def yaku_condition_yakuhai_contexts(start, target, melds, hand):
     contexts = defaultdict(set)
     unique_singletons = []
     seen = set()
@@ -160,16 +160,17 @@ def add_yakuhai_sample(stats, turns, family, context, actual_id, candidate_ids, 
             stats[key]["first_row_cuts"] += 1
 
 
-def add_defense_target_sample(targets, stage, target_class, read_item, left):
+def add_defense_target_sample(targets, stage, target_class, read_item, left, action):
+    prefix = "kept" if action == "kept" else "spent"
     for scope in (targets["overall"][target_class], targets["stage"][stage][target_class]):
-        scope["instances"] += 1
+        scope[f"{prefix}_instances"] += 1
         if read_item.get("genbutsu_sources"):
-            scope["genbutsu"] += 1
+            scope[f"{prefix}_genbutsu"] += 1
         if read_item.get("suji_sources"):
-            scope["suji"] += 1
+            scope[f"{prefix}_suji"] += 1
         if left is not None:
-            scope["left_sum"] += left
-            scope["left_count"] += 1
+            scope[f"{prefix}_left_sum"] += left
+            scope[f"{prefix}_left_count"] += 1
 
 
 def summarize_turns(values):
@@ -209,13 +210,23 @@ def finalize_defense_targets(targets):
     def convert_scope(scope):
         converted = {}
         for key, counter in scope.items():
-            instances = counter["instances"]
+            kept_instances = counter["kept_instances"]
+            spent_instances = counter["spent_instances"]
+            total = kept_instances + spent_instances
             converted[key] = {
-                "instances": instances,
-                "genbutsu": counter["genbutsu"],
-                "suji": counter["suji"],
-                "genbutsu_rate": counter["genbutsu"] / instances if instances else None,
-                "avg_left": counter["left_sum"] / counter["left_count"] if counter["left_count"] else None,
+                "kept_instances": kept_instances,
+                "spent_instances": spent_instances,
+                "total_instances": total,
+                "kept_share": kept_instances / total if total else None,
+                "spent_share": spent_instances / total if total else None,
+                "kept_genbutsu": counter["kept_genbutsu"],
+                "kept_suji": counter["kept_suji"],
+                "kept_genbutsu_rate": counter["kept_genbutsu"] / kept_instances if kept_instances else None,
+                "kept_avg_left": counter["kept_left_sum"] / counter["kept_left_count"] if counter["kept_left_count"] else None,
+                "spent_genbutsu": counter["spent_genbutsu"],
+                "spent_suji": counter["spent_suji"],
+                "spent_genbutsu_rate": counter["spent_genbutsu"] / spent_instances if spent_instances else None,
+                "spent_avg_left": counter["spent_left_sum"] / counter["spent_left_count"] if counter["spent_left_count"] else None,
             }
         return converted
 
@@ -510,12 +521,12 @@ def analyze_pressure_patterns(rows):
                             own_discards,
                         )
 
-                        for contract_context, tile_ids in contract_yakuhai_contexts(start, target, melds, hands[target]).items():
+                        for yaku_condition_context, tile_ids in yaku_condition_yakuhai_contexts(start, target, melds, hands[target]).items():
                             add_yakuhai_sample(
                                 yakuhai_stats,
                                 yakuhai_turns,
-                                "contract_yakuhai",
-                                contract_context,
+                                "yaku_condition_yakuhai",
+                                yaku_condition_context,
                                 actual_id,
                                 tile_ids,
                                 own_discards,
@@ -527,9 +538,13 @@ def analyze_pressure_patterns(rows):
                             stage = base.stage_from_left(left)
                             open_counts = [len(player_melds) for player_melds in melds]
                             kept_read = base.defensive_tile_read(top, target, discards, reached, open_counts)
+                            spent_read = base.defensive_tile_read(actual, target, discards, reached, open_counts)
                             for read_item in kept_read["against"]:
                                 target_class = defense_target_class(start, target, read_item)
-                                add_defense_target_sample(defense_targets, stage, target_class, read_item, left)
+                                add_defense_target_sample(defense_targets, stage, target_class, read_item, left, "kept")
+                            for read_item in spent_read["against"]:
+                                target_class = defense_target_class(start, target, read_item)
+                                add_defense_target_sample(defense_targets, stage, target_class, read_item, left, "spent")
 
                     if actual and actual != "?":
                         remove_tile(hands[actor], actual)

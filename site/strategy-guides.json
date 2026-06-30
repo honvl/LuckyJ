@@ -10,7 +10,7 @@
   "point-02": {
     "caption": "Controlled ambiguity",
     "situation": "LuckyJ has triplet [[1p]], pair [[1s]], red [[5sr]], loose [[6m]][[8m]], [[7p]][[8p]], and three honors. The table is still early, but every player has made several discards. LuckyJ cuts [[3p]] while NAGA prefers the dragon [[C]].",
-    "read": "The hand is not a clean riichi hand. It is a hand with several possible identities: toitoi-like material through [[1p]] and [[1s]], a possible open route through honors, outside-tile safety, and enough red-five value that the hand is not automatically garbage. Cutting [[C]] would make the hand prettier in the short term, but it removes one of the few tiles that can become a yaku switch or a defensive pause button. Cutting [[3p]] admits that the pinzu side is not the main route unless [[2p]] arrives immediately.",
+    "read": "The hand is messy and has several possible identities: toitoi-like material through [[1p]] and [[1s]], a possible open route through honors, outside-tile safety, and enough red-five value to keep playing. Cutting [[C]] would make the hand prettier in the short term, but it removes one of the few tiles that can become a yaku switch or a defensive pause button. Cutting [[3p]] admits that the pinzu side is not the main route unless [[2p]] arrives immediately.",
     "whyNot": "NAGA's [[C]] discard is easy to understand: single dragons often leave early when they are not paired. The problem is that this hand is not trying to be a normal five-block riichi hand. If you strip the honors too quickly, you are left with bad shapes, a hand that may need to open, and fewer safe stops. LuckyJ's move keeps more identities alive and delays the commitment.",
     "copy": "When the hand is messy, do not ask only which tile is isolated. Ask which tile is a switch. A switch is a tile that can turn the hand into yaku, raise value, allow a call, or let you stop later. If a simple tile is only attached to a route you do not want, and an honor still gives the hand a second plan, the simple tile may go first.",
     "limit": "Do not use this to hoard every honor. If the hand already has a clean fast route, or the honor has become clearly dead and unsafe, keeping it becomes sentimental. LuckyJ-style ambiguity is useful only while multiple routes are still real."
@@ -18,10 +18,10 @@
   "point-03": {
     "caption": "Call the tile that fixes the hand's worst problem",
     "situation": "LuckyJ is behind in East 4 with a hand full of honors and bad shapes: [[2m]][[2m]], [[1s]][[3s]][[4s]][[6s]], and pairs of [[S]] and [[P]]. Toimen discards [[P]], and LuckyJ pons, discarding [[2m]].",
-    "read": "This is not a call made because 'pon is available.' The closed hand is too clumsy to trust. It has no clean speed, no clear riichi value, and too many tiles that will become awkward if an opponent speeds up. The [[P]] pon gives the hand a yaku contract immediately. Once the hand has a contract, cutting [[2m]] removes a pair that is not central to the open plan and starts turning a fake closed hand into a real open hand.",
+    "read": "This call fixes the hand's biggest problem. The closed hand is too clumsy to trust: no clean speed, no clear riichi value, and too many tiles that will become awkward if an opponent speeds up. The [[P]] pon gives the hand its yaku condition immediately. Once the hand has that yaku condition, cutting [[2m]] removes a pair that is not central to the open plan and starts turning a fake closed hand into a real open hand.",
     "whyNot": "The common mistake is to pass the first yakuhai because the hand is far from ready. That logic is backwards in this type of hand. Being far away is exactly why the yakuhai call matters: it removes the requirement to assemble a perfect closed hand. If you pass, you may spend several turns drawing around bad shapes while opponents move forward.",
     "copy": "With far-away hands, call the tile that repairs the biggest structural defect first. Yakuhai that gives the hand a yaku is often more important than completing an already decent sequence. After calling, immediately choose the discard that clarifies the route and leaves the hand able to stop.",
-    "limit": "Do not call just because the hand is bad. A bad hand with no yaku after the call, no value, and no safe reserve is still bad. The call must create a contract: yaku, real speed, denial, or draw-point equity."
+    "limit": "Do not call just because the hand is bad. A bad hand with no yaku after the call, no value, and no safe reserve is still bad. The call must create a clear purpose: yaku, real speed, denial, or draw-point equity."
   },
   "point-04": {
     "caption": "Open hands must still be able to stop",
@@ -36,23 +36,23 @@
     "situation": "LuckyJ is behind in East 3 with many pair-like shapes: [[2m]][[2m]], [[2p]][[2p]], [[3s]][[3s]], [[N]][[N]], plus [[7p]][[8p]] and red [[5sr]]. Several rivers already contain terminals and honors. LuckyJ cuts [[8p]] while NAGA prefers [[1s]].",
     "read": "[[8p]] has apparent usefulness because it belongs to [[7p]][[8p]], but the hand's route is not a normal pinfu route. It has pair mass, red-five value, and possible defensive honors. If the hand stays slow, [[8p]] can become exactly the kind of middle-late tile you hate releasing after opponents have shown more shape. [[1s]] is less efficient, but it is outside, often safer, and can still support a pair/chiitoi/toitoi-style hand.",
     "whyNot": "NAGA's [[1s]] discard treats the hand more like ordinary block selection. LuckyJ's move prices future danger more heavily. The current turn does not look dangerous yet, but the hand is not close enough to assume it will win before danger appears. That is why a useful-looking floater can be worse than a dead-looking outside tile.",
-    "copy": "On slow hands, identify the tile whose safety will deteriorate fastest. Central suit tiles that are not part of your main value route should often be cut before the table becomes loud. This is not folding. It is cleaning the hand so that, if you later choose to push, the remaining discards are less poisonous.",
+    "copy": "On slow hands, identify the tile whose safety will deteriorate fastest. Central suit tiles that are not part of your main value route should often be cut before the table becomes loud. You are cleaning the hand so that, if you later choose to push, the remaining discards are less poisonous.",
     "limit": "Do not pre-cut every middle tile from every slow hand. If the middle tile is dora-connected, completes your strongest block, or gives the hand the value it needs, keep it. The LuckyJ idea is to cut future liabilities that are not carrying the hand's real plan."
   },
   "point-06": {
-    "caption": "Build the score class while it is cheap",
+    "caption": "Build the value early",
     "situation": "South 1, LuckyJ is behind with red [[5mr]], a [[5s]][[5s]] pair, [[3p]][[4p]], and connected souzu. LuckyJ cuts isolated [[9p]] while NAGA prefers [[S]].",
     "read": "The hand has enough red-five and middle-tile material to become a real scoring hand, but it is not yet clean. The isolated [[9p]] does little for the hand's best future. [[S]] is not guaranteed value, but it is still a safety/yaku switch while the hand is far away. LuckyJ is choosing to spend the tile that neither improves value nor protects the hand later.",
     "whyNot": "NAGA's [[S]] discard is the standard 'remove isolated honor' move. The reason LuckyJ can reject it is that the [[9p]] is not truly useful. Keeping [[S]] does not mean the hand is defensive. It means the hand is still allowed to become value, open, or safe depending on the next few draws.",
-    "copy": "When you need points, do not race toward the cheapest version of the hand. Start preserving the tiles that can raise hand class before the hand becomes narrow. Red fives, yakuhai, dora shapes, and pair-heavy routes should be planned early, not discovered after you have already thrown the support away.",
+    "copy": "When you need points, do not race toward the smallest version of the hand. Keep the tiles that can make it worth pushing before the hand becomes narrow. Red fives, yakuhai, dora shapes, and pair-heavy routes should be planned early, not discovered after you have already thrown the support away.",
     "limit": "Do not confuse value planning with fantasy. A decorative yaku that rarely completes is not worth destroying a good hand. LuckyJ keeps the [[S]] here because the cost is an isolated [[9p]], not because every value idea deserves protection."
   },
   "point-07": {
-    "caption": "Tempo calls need a contract",
+    "caption": "Tempo calls need a purpose",
     "situation": "In the same East 4 hand, LuckyJ later chis red [[5sr]] from kamicha and discards [[1s]]. The hand is already open and behind. The call is not about elegance; it is about making the open hand actually move.",
     "read": "Once you have opened around yakuhai, the hand's failure mode is becoming a slow exposed hand that cannot win and cannot fold. The red-five chi is a tempo call because it converts loose shape into a usable block and keeps the hand's value alive. Discarding [[1s]] after the call trims the least useful outside tile and keeps the hand aimed at completion rather than drifting.",
     "whyNot": "Players often judge calls by whether the called set looks good in isolation. That is too shallow. A tempo call is good only if it changes the round clock: it gets you close enough to matter, denies opponents free turns, or preserves a draw-point route. If the call merely exposes the hand while leaving the same bad shapes, it is not a LuckyJ call.",
-    "copy": "Before calling, say the contract out loud. 'This call makes yaku and real 1-away.' 'This call takes tenpai.' 'This call preserves noten payments safely.' If you cannot finish that sentence, pass. If you can, call and immediately discard the tile that best supports the contract.",
+    "copy": "Before calling, say the purpose out loud. 'This call makes yaku and real 1-away.' 'This call takes tenpai.' 'This call preserves noten payments safely.' If you cannot finish that sentence, pass. If you can, call and immediately discard the tile that best supports the purpose.",
     "limit": "Do not use tempo as a vague excuse. Tempo without value, safety, or closeness is just impatience. LuckyJ calls selectively because the call changes what the hand can realistically accomplish."
   },
   "point-08": {
@@ -61,7 +61,7 @@
     "read": "This is a pressure conversion spot. The hand is no longer an abstract shape exercise. Once [[F]] leaves, the hand is ready to present a closed threat with enough structure and value pressure that opponents must respond. Riichi here does not require perfection. The declaration itself changes the table by taxing every opponent's future discard.",
     "whyNot": "The conservative mistake is to wait for a prettier hand because the wait or value is not ideal. But waiting has a cost: opponents get free draws, your safe-tile count changes, and the hand can lose the moment it currently has. LuckyJ's style is willing to convert when the hand is good enough and the table has not yet produced a stronger reason to stay quiet.",
     "copy": "Ask whether riichi is doing work beyond adding one han. Does it force a leader to stop? Does it deny open hands? Does it make your placement target reachable? Does waiting realistically improve the hand before opponents move? If the answers favor pressure, declare.",
-    "limit": "Do not riichi every serviceable tenpai. Against two live threats, with a low-value bad wait, or when dama preserves a better placement line, silence can be superior. LuckyJ-style riichi is pressure with a reason, not a purity test."
+    "limit": "Riichi still needs a job. Against two live threats, with a low-value bad wait, or when dama preserves a better placement line, staying quiet can be stronger."
   },
   "point-09": {
     "caption": "A push can expire in one draw",
@@ -85,30 +85,70 @@
     "read": "The important idea is that defense is not binary. You are not choosing only between winning and folding. In late hands, noten payments and safe tenpai are real objectives. [[P]] is heavily visible because of the pon, so releasing it can be a way to stay alive while preserving a route to draw points. Keeping [[W]] may be less about hand shape and more about how the last few turns can be navigated.",
     "whyNot": "NAGA's [[W]] discard may look natural if you only ask which tile is isolated. LuckyJ is asking what the hand can still win from the draw. If the direct win is unlikely, a safe path to tenpai can be worth more than a slightly prettier shape that exposes you to a bad final discard.",
     "copy": "When the wall is short, calculate noten payment as part of EV. If you can stay safe and keep a realistic tenpai path, do it. Look for tiles that are safe because they are visible, dead, or already accepted by the threatening hand.",
-    "limit": "Do not chase draw tenpai through dangerous tiles. The whole point is safe tenpai. If preserving tenpai requires throwing a live dangerous tile into a valuable opponent hand, the correct move may be full fold."
+    "limit": "Draw-tenpai value only counts when the path is safe. If preserving tenpai requires throwing a live dangerous tile into a valuable opponent hand, the correct move may be full fold."
   },
   "point-12": {
-    "caption": "Disagreement is evidence, not authority",
+    "caption": "A split is a study spot",
     "situation": "East 1, first discard. LuckyJ has [[1m]][[4m]][[7m]], [[1p]][[2p]][[3p]], [[3s]][[4s]], [[8s]][[9s]][[9s]], and honors [[E]][[N]]. LuckyJ discards [[N]], while NAGA prefers [[1m]].",
-    "read": "This is a deliberately modest example because not every disagreement is a deep robot secret. It may be tile-order preference, route preference, or a small model difference. The right review habit is to ask what each discard is claiming. [[N]] says the hand should keep the disconnected manzu tiles a little longer and clean an honor. [[1m]] says the isolated terminal is less valuable than the honor's safety or possible pair utility.",
-    "whyNot": "A high NAGA preference does not automatically make LuckyJ wrong, and a LuckyJ result edge does not automatically make LuckyJ right. Here, the move is early enough that many future draws can justify either plan. The point is not to prove [[N]] is genius. The point is to avoid turning match rate into a religion.",
+    "read": "This is a quiet first-discard spot. It may be tile-order preference, route preference, or a small model difference. The useful habit is to ask what each discard is trying to keep. [[N]] cleans the honor and leaves the loose manzu tiles a little longer. [[1m]] trims the isolated terminal and keeps the honor's safety or pair utility.",
+    "whyNot": "A high NAGA preference does not automatically make LuckyJ wrong, and a LuckyJ result edge does not automatically make LuckyJ right. Here, the move is early enough that many future draws can justify either plan. Use it to practice reading the two plans instead of chasing a perfect match rate.",
     "copy": "When reviewing, write the competing claims. What route does LuckyJ keep? What route does NAGA keep? Which claim is more important for the score and table? If you cannot answer, mark the hand as uncertain instead of inventing a story.",
     "limit": "This is the discipline that keeps the whole project honest. Copy LuckyJ only when you can explain the purchase: value, safety, speed, pressure, or placement. If the purchase is unclear, treat the hand as study material, not advice."
   },
   "point-13": {
-    "caption": "Deny the open hand's missing contract",
-    "situation": "An opponent has opened in the first row with exposed tiles that do not prove a yaku. LuckyJ holds a loose contract yakuhai such as [[P]], [[F]], [[C]], the round wind, or that opponent's seat wind. The local hand still has shape choices, but the honor has changed status because it can become the open hand's missing legal yaku.",
-    "read": "This is not ordinary early honor-cleaning. The supporting analytics compare contract-yakuhai opportunities after different kinds of open hands. Against unproven-yaku opens, LuckyJ cuts those live contract tiles at a rate close to visible-yaku pressure and far earlier than against clean tanyao-shaped opens. The point is timing: the call makes the loose honor more urgent before the hand itself has become dangerous.",
+    "caption": "Deny the open hand's missing yaku condition",
+    "situation": "An opponent has opened in the first row with exposed tiles that do not prove a yaku. LuckyJ holds a loose yaku-condition yakuhai such as [[P]], [[F]], [[C]], the round wind, or that opponent's seat wind. The local hand still has shape choices, but the honor has changed status because it can become the open hand's missing legal yaku.",
+    "read": "This is sharper than ordinary early honor-cleaning. The supporting analytics compare yaku-condition yakuhai opportunities after different kinds of open hands. Against unproven-yaku opens, LuckyJ cuts those live yaku-condition tiles at a rate close to visible-yaku pressure and far earlier than against clean tanyao-shaped opens. The point is timing: the call makes the loose honor more urgent before the hand itself has become dangerous.",
     "whyNot": "The tempting line is to keep the honor because it looks safe, or to cut a suit tile that makes your own hand cleaner. That misses the timing problem. A loose yakuhai is safe only until the open hand pairs or pons it. If your own hand is not close enough to punish them, waiting can turn a harmless-looking tile into the exact discard that completes their yaku.",
-    "copy": "After every opponent call, name their visible yaku. If you cannot name one, mark dragons, round wind, and their seat wind as contract tiles. Keep those tiles only when they are doing real work for you: pair value, safe fold material against a bigger threat, or an immediate attacking route. Otherwise, clean them in the first row while the price is still low.",
+    "copy": "After every opponent call, name their visible yaku. If you cannot name one, mark dragons, round wind, and their seat wind as yaku-condition tiles. Keep those tiles only when they are doing real work for you: pair value, safe fold material against a bigger threat, or an immediate attacking route. Otherwise, clean them in the first row while the price is still low.",
     "limit": "Do not turn this into panic-discarding all yakuhai. If the opponent's yaku is already clear, if their shape is clean tanyao, if the tile is dead or clearly safe, if you hold a useful pair, or if your own hand needs the tile for value, the cleanup rule weakens."
   },
   "point-14": {
     "caption": "Keep the exit, not just the shape",
     "situation": "LuckyJ and NAGA split on a discard where NAGA wants to spend a tile that is already genbutsu or suji to an opponent river. LuckyJ cuts a different tile and keeps that defensive exit in the hand.",
-    "read": "The retained tile is doing a timing job, and the target matters. A tile that is genbutsu to the dealer is not the same resource as suji to a closed child; a non-dealer open hand is a different pressure class from dealer riichi. The added target breakdown shows which rivers LuckyJ is buying exits against, rather than treating all safe tiles as one bucket.",
+    "read": "The retained tile is doing a timing job, and the target matters. A tile that is genbutsu to the dealer is not the same resource as suji to a closed child; a non-dealer open hand is a different pressure class from dealer riichi. The paired target breakdown separates kept exits from spent exits, so a small dealer-riichi kept count should not be read as low danger. Dealer riichi is rarer and usually later; the useful signal is whether LuckyJ cashes the safe tile now or preserves it for one more decision.",
     "whyNot": "NAGA's top discard may be mechanically cleaner because safe tiles often look redundant while no one is actively threatening. The problem is that the hand's future danger is not visible in shanten. If you spend the only genbutsu or useful suji tile too early, the next turn may force a live middle discard that the current hand never deserved to push.",
     "copy": "Keep a small defensive inventory by opponent class. Mark exact river matches first, then suji tiles from the dealer, riichi hands, and open hands. When your hand is far or only moderately valuable, avoid spending the last useful exit against the opponent most likely to tax your next discard.",
     "limit": "Do not overrate suji. Suji is weaker than genbutsu, weaker against unusual waits, and often irrelevant against a non-threatening player. Copy LuckyJ here only when the retained tile is safe against the player who matters and the hand still needs a future off-ramp."
+  },
+  "point-15": {
+    "caption": "Spend stale safety when the target changes",
+    "situation": "LuckyJ discards a tile that is already genbutsu or suji while NAGA prefers to keep that safety and cut shape. The key question is whether the safe tile still protects against the player who matters now.",
+    "read": "This gives a narrow correction to simple safe-tile hoarding. The broad pattern appeared 4,057 times with a better severe-disagreement profile than ordinary mismatches, but Mortal backed LuckyJ in only 3 of 10 sampled cases. Treat it as a target check: the safe tile is valuable only if it answers the live riichi, open hand, or next likely danger point.",
+    "whyNot": "NAGA's line may keep the comforting safe tile because it costs little right now. The trap is that a safe tile against the wrong player can make the hand miss its real route. If the hand is close and another exit remains, spending stale safety can be more disciplined than preserving it.",
+    "copy": "Before keeping a safe tile, name its target. If the target is quiet, no longer the danger, or covered by another exit, compare the shape cost honestly. Spend the safe tile when keeping it damages the hand more than it protects the next decision.",
+    "limit": "Do not use this to throw away your last real exit. If the safe tile covers the live threat, if the hand is still far, or if the next draw would leave no safe discard, keep the defensive resource."
+  },
+  "point-16": {
+    "caption": "Edge cuts can keep the actual winning route",
+    "situation": "LuckyJ cuts terminal or outside material while NAGA keeps it and cuts a middle tile. The hand is usually in the middle or late row, where vague future value has mostly expired.",
+    "read": "The outside tile can be a shape discard, not just a safety discard. The mined bucket had 5,281 cases, a 23.1% severe-disagreement rate, and several Mortal-agreeing examples around late 1s-vs-2s, 1p-vs-3p, and 9m-vs-6m choices. In those spots, the inside tile is the real connector and the outside tile is the cost of staying live.",
+    "whyNot": "It is tempting to call the terminal safer and therefore defensive. That misses the hand route. If the middle tile accepts the winning draw or preserves tenpai, the terminal cut may be the attacking line with lower friction.",
+    "copy": "When an outside cut looks strange, ask what the retained inside tile does next. If it connects the hand to tenpai, accepts a high-value draw, or avoids forcing a worse live tile later, the cut can be copied.",
+    "limit": "Do not cut outside tiles that carry yaku, dora support, pair value, or target-specific safety. The point applies when the outside tile has no better job than the inside route it is replacing."
+  },
+  "point-17": {
+    "caption": "A safe tile without a target is clutter",
+    "situation": "LuckyJ keeps a genbutsu or suji tile that NAGA wants to cut, but the important detail is who that tile is safe against and whether that opponent is active.",
+    "read": "The aggregate warning is strong: generic kept-genbutsu/suji mismatches were worse than baseline, while threat-specific exit preservation was much better. This means the concept is not 'safe tiles are good.' The concept is coverage: a tile is good when it covers the opponent who can punish the next discard.",
+    "whyNot": "Humans over-label tiles as simply safe. Genbutsu to shimocha is not genbutsu to toimen's riichi. Suji to a quiet child does not answer an open dealer. If the kept tile does not cover the live danger, NAGA's shape cut may be right.",
+    "copy": "For every safe tile you keep, write the full sentence: 'safe against X if Y happens.' If the sentence names a live riichi, open hand, or dealer pressure, the tile has a job. If not, reprice it as ordinary clutter.",
+    "limit": "Do not let target naming become over-defense. If the hand is already high-value tenpai or if the target's threat is weak, the safe tile can still be spent."
+  },
+  "point-18": {
+    "caption": "Honor review starts with a role label",
+    "situation": "LuckyJ cuts an honor while NAGA prefers a shape tile. The honor might be loose cleanup, opponent yaku denial, a dead tile, or a stale safety tile.",
+    "read": "The loose-honor cleanup bucket was statistically strong: 2,348 cases with a 20.9% severe-disagreement rate and safer average danger. Mortal mostly sided with NAGA in the sampled high-gap cases, so the reliable lesson is not 'cut honors.' It is to identify which honor role is actually present.",
+    "whyNot": "A live dragon pair, a lone wind needed by an open opponent, and a double-visible dead honor are not equivalent. Reviewing all of them as 'honors' hides the real decision.",
+    "copy": "Label the honor before judging the discard: self yakuhai, opponent yaku condition, value seed, dead tile, genbutsu exit, or ordinary loose honor. Then apply the rule for that label.",
+    "limit": "Keep the honor when it is your value, your only exit against the live threat, or part of a real route such as honitsu or chiitoi. Clean it when its main job belongs to someone else."
+  },
+  "point-19": {
+    "caption": "Leader safety still has to calculate",
+    "situation": "LuckyJ is leading and chooses the lower-risk line. The lead changes the hand's job, but it does not make every passive discard correct.",
+    "read": "The leader-low-risk bucket had 5,153 mismatches and was only mildly better than baseline. That makes it a qualifier, not a standalone style. A lead reduces the value needed to end the hand, but the discard still must avoid real danger or preserve the next safe decision.",
+    "whyNot": "The lazy interpretation is 'I am leading, so I can play safe.' LuckyJ's better leader decisions are more specific: reduce unnecessary danger while keeping a workable hand or a clean fold path.",
+    "copy": "When leading, compare the discard against two jobs: end the hand cheaply if possible, and avoid creating a future forced push. Choose the tile that does both.",
+    "limit": "Do not surrender useful shape just because you are ahead. If the safe-looking discard does not reduce live danger, or if it kills the only route that ends the hand, it is probably too passive."
   }
 }

@@ -35,7 +35,6 @@ const copy = {
     mortalCrossCheck: "Mortal cross-check",
     mortalTop: "Mortal top",
     modelCandidates: "Model Candidates",
-    mortalCandidateLadder: "Mortal candidate ladder",
     readingSplit: "Reading the Split",
     replayExample: "Replay example",
     finalRank: "final rank",
@@ -47,10 +46,10 @@ const copy = {
     danger: "Danger",
     drill: "Drill",
     answer: "Answer",
-    nagaReport: "NAGA report",
+    nagaReport: "Review page",
     tenhouLog: "Tenhou log",
     immediateDanger: "Immediate danger",
-    nagaWeight: "NAGA report",
+    nagaWeight: "NAGA weight",
     mortalWeight: "Mortal weight",
     keeps: "Keeps",
     honors: "honors",
@@ -95,7 +94,6 @@ const copy = {
     mortalCrossCheck: "Mortal クロスチェック",
     mortalTop: "Mortal 最上位",
     modelCandidates: "モデル候補",
-    mortalCandidateLadder: "Mortal 候補一覧",
     readingSplit: "分岐の読み方",
     replayExample: "実戦例",
     finalRank: "最終順位",
@@ -107,10 +105,10 @@ const copy = {
     danger: "放銃危険度",
     drill: "ドリル",
     answer: "答え",
-    nagaReport: "NAGA レポート",
+    nagaReport: "検討ページ",
     tenhouLog: "天鳳牌譜",
     immediateDanger: "即時危険度",
-    nagaWeight: "NAGA レポート",
+    nagaWeight: "NAGA 評価",
     mortalWeight: "Mortal 重み",
     keeps: "残す枚数",
     honors: "字牌",
@@ -120,7 +118,7 @@ const copy = {
     visibleUkeire: "見えている受け入れ",
     effective: "有効牌",
     analyzedHanchan: "解析した半荘",
-    handsReviewed: "レビューした局",
+    handsReviewed: "検討した局",
     averagePlacement: "LuckyJ 平均順位",
     averageScore: "平均スコア",
     winRate: "局あたり和了率",
@@ -159,7 +157,7 @@ const tileCodes = {
   "3m": "e",
   "4m": "r",
   "5m": "t",
-  "5mr": "t",
+  "5mr": "8",
   "6m": "y",
   "7m": "u",
   "8m": "i",
@@ -169,7 +167,7 @@ const tileCodes = {
   "3s": "d",
   "4s": "f",
   "5s": "g",
-  "5sr": "g",
+  "5sr": "p",
   "6s": "h",
   "7s": "j",
   "8s": "k",
@@ -179,7 +177,7 @@ const tileCodes = {
   "3p": "c",
   "4p": "v",
   "5p": "b",
-  "5pr": "b",
+  "5pr": "0",
   "6p": "n",
   "7p": "m",
   "8p": ",",
@@ -331,7 +329,7 @@ function yakuhaiContextLabel(key) {
 
 function renderYakuhaiPressure(pressure) {
   const target = document.querySelector("#yakuhaiPressure");
-  const data = pressure?.contract_yakuhai || {};
+  const data = pressure?.yaku_condition_yakuhai || {};
   if (!target || !Object.keys(data).length) return;
   target.innerHTML = "";
   const order = ["unknown_open_yaku", "shown_yaku_open", "tanyao_shaped_open"];
@@ -343,7 +341,7 @@ function renderYakuhaiPressure(pressure) {
     card.innerHTML = `
       <b>${escapeHtml(yakuhaiContextLabel(key))}</b>
       <strong>${item.cut_rate == null ? "n/a" : pct(item.cut_rate)}</strong>
-      <span>${isJa ? "契約役牌を今切った割合" : "cut rate for live contract yakuhai"}</span>
+      <span>${isJa ? "相手の役になり得る役牌を今切った割合" : "cut rate for live yaku-condition yakuhai"}</span>
       <small>${whole.format(item.cuts || 0)} / ${whole.format(item.opportunities || 0)} ${isJa ? "機会" : "opportunities"} · ${isJa ? "一段目の切り" : "first-row cuts"} ${item.first_row_cut_rate == null ? "n/a" : pct(item.first_row_cut_rate)} · ${isJa ? "中央値" : "median turn"} ${fmt.format(item.median_cut_turn ?? 0)}</small>
     `;
     target.append(card);
@@ -379,14 +377,30 @@ function renderDefenseTargets(targets) {
   const order = ["dealer_riichi", "dealer_open", "dealer_closed", "closed_riichi", "nondealer_open", "nondealer_closed"];
   for (const key of order) {
     const item = data[key];
-    if (!item?.instances) continue;
+    const kept = item?.kept_instances || item?.instances || 0;
+    const spent = item?.spent_instances || 0;
+    const total = item?.total_instances || kept + spent;
+    if (!total) continue;
+    const keptShare = item.kept_share ?? (total ? kept / total : null);
+    const spentShare = item.spent_share ?? (total ? spent / total : null);
+    const keptAvgLeft = item.kept_avg_left ?? item.avg_left;
+    const spentAvgLeft = item.spent_avg_left;
+    const leftText = keptAvgLeft == null
+      ? ""
+      : spentAvgLeft == null
+        ? isJa
+          ? ` · 保持時平均残り${fmt.format(keptAvgLeft)}枚`
+          : ` · kept avg ${fmt.format(keptAvgLeft)} tiles left`
+        : isJa
+          ? ` · 平均残り 保持${fmt.format(keptAvgLeft)} / 使用${fmt.format(spentAvgLeft)}枚`
+          : ` · avg left kept ${fmt.format(keptAvgLeft)} / spent ${fmt.format(spentAvgLeft)}`;
     const card = document.createElement("div");
     card.className = "evidence-card";
     card.innerHTML = `
       <b>${escapeHtml(defenseTargetLabel(key))}</b>
-      <strong>${whole.format(item.instances)}</strong>
-      <span>${isJa ? "残した現物/筋の対象" : "kept river-safe/suji targets"}</span>
-      <small>${safetyKindLabel("genbutsu")} ${whole.format(item.genbutsu || 0)} · ${safetyKindLabel("suji")} ${whole.format(item.suji || 0)}${item.avg_left == null ? "" : isJa ? ` · 平均残り${fmt.format(item.avg_left)}枚` : ` · avg ${fmt.format(item.avg_left)} tiles left`}</small>
+      <strong>${keptShare == null ? whole.format(kept) : pct(keptShare)}</strong>
+      <span>${isJa ? "安全牌を保持" : "safe-targets kept"} · ${whole.format(kept)} ${isJa ? "保持" : "kept"} / ${whole.format(spent)} ${isJa ? "使用" : "spent"}</span>
+      <small>${isJa ? "使用率" : "spent share"} ${spentShare == null ? "n/a" : pct(spentShare)} · ${isJa ? "保持現物" : "kept genbutsu"} ${whole.format(item.kept_genbutsu || item.genbutsu || 0)} · ${isJa ? "使用現物" : "spent genbutsu"} ${whole.format(item.spent_genbutsu || 0)}${leftText}</small>
     `;
     target.append(card);
   }
@@ -478,7 +492,7 @@ function safetyReadLine(read) {
   if (!read || !read.kind) return "";
   const target = read.against?.[0];
   const sourceList = target?.genbutsu_sources?.length ? target.genbutsu_sources : target?.suji_sources || [];
-  const sourceText = sourceList.length ? (isJa ? `、根拠 ${sourceList.map(safetySourceText).join("、")}` : ` via ${sourceList.map(safetySourceText).join(", ")}`) : "";
+  const sourceText = sourceList.length ? (isJa ? `、見え方 ${sourceList.map(safetySourceText).join("、")}` : ` via ${sourceList.map(safetySourceText).join(", ")}`) : "";
   const threatText = target?.reached
     ? isJa
       ? " / リーチ"
@@ -736,13 +750,6 @@ function modelActionLine(action) {
   return escapeHtml(action.label || action.type || t("noModelAction"));
 }
 
-function candidateLine(candidate) {
-  if (candidate.type === "dahai" && candidate.tile) {
-    return `<span>${t("discard")} ${tileIcon(candidate.tile, "inline-tile")} <em>${escapeHtml(tileName(candidate.tile))}</em></span>`;
-  }
-  return `<span>${escapeHtml(candidate.label)}</span>`;
-}
-
 function agreementBadge(label, value) {
   if (value == null) return "";
   return `<span class="model-badge ${value ? "agree" : "split"}">${escapeHtml(label)} ${value ? t("agrees") : t("splits")}</span>`;
@@ -754,28 +761,6 @@ function probabilityChip(label, value) {
   return `<span class="choice-weight">${escapeHtml(label)} ${pct(numeric)}</span>`;
 }
 
-function mortalCandidateDetails(candidates, limit = 4) {
-  const rows = (candidates || [])
-    .slice(0, limit)
-    .map(
-      (candidate, index) => `
-        <li>
-          <b>${index + 1}</b>
-          ${candidateLine(candidate)}
-          <strong>${pct(candidate.probability)}</strong>
-        </li>
-      `
-    )
-    .join("");
-  if (!rows) return "";
-  return `
-    <details class="diagnostics mortal-candidate-details">
-      <summary>${t("mortalCandidateLadder")}</summary>
-      <ol>${rows}</ol>
-    </details>
-  `;
-}
-
 function renderMortalBlock(mortal, pointKey, mortalCopy) {
   if (!mortal) return document.createDocumentFragment();
   const localMortal = mortalCopy?.[pointKey] || {};
@@ -783,14 +768,13 @@ function renderMortalBlock(mortal, pointKey, mortalCopy) {
   block.className = "mortal-block";
   const topCandidate = mortal.top_candidates?.[0];
   const branch =
-    mortal.post_call_mortal && mortal.post_call_candidates?.length
+    mortal.post_call_mortal
       ? `
         <div class="mortal-branch">
           <h5>${t("afterCall")}</h5>
           <p>${
             isJa ? "Mortal の条件付き打牌は" : "Mortal's conditional discard is"
           } ${modelActionLine(mortal.post_call_mortal)} ${agreementBadge(t("postCallDiscard"), mortal.post_call_agrees_luckyj)}</p>
-          ${mortalCandidateDetails(mortal.post_call_candidates, 3)}
         </div>
       `
       : "";
@@ -807,7 +791,6 @@ function renderMortalBlock(mortal, pointKey, mortalCopy) {
           ${agreementBadge("LuckyJ", mortal.mortal_agrees_luckyj)}
           ${agreementBadge("NAGA", mortal.mortal_agrees_naga)}
         </div>
-        ${mortalCandidateDetails(mortal.top_candidates, 4)}
       </div>
       <div>
         <h5>${t("readingSplit")}</h5>
@@ -824,11 +807,11 @@ function renderYakuhaiCleanupNote(example) {
   const threats = example.yakuhai_cleanup?.threats || [];
   if (!threats.length) return document.createDocumentFragment();
   const block = document.createElement("div");
-  block.className = "contract-read";
-  const heading = isJa ? "契約読み" : "Contract Read";
+  block.className = "yaku-condition-read";
+  const heading = isJa ? "役牌読み" : "Yaku-Condition Read";
   const body = isJa
-    ? `${tileIcon(example.actual, "inline-tile")} <b>${escapeHtml(tileName(example.actual))}</b> は、まだ役を見せていない副露手に対して生きている役牌です。相手の契約になる前に LuckyJ が先に処理しています。`
-    : `${tileIcon(example.actual, "inline-tile")} <b>${escapeHtml(tileName(example.actual))}</b> is live yakuhai against an open hand that has not shown its yaku. LuckyJ cleans it before it can become the opponent's contract.`;
+    ? `${tileIcon(example.actual, "inline-tile")} <b>${escapeHtml(tileName(example.actual))}</b> は、まだ役を見せていない副露手に対して生きている役牌です。相手の役になる前に LuckyJ が先に処理しています。`
+    : `${tileIcon(example.actual, "inline-tile")} <b>${escapeHtml(tileName(example.actual))}</b> is live yakuhai against an open hand that has not shown its yaku. LuckyJ cleans it before it can become the opponent's yaku condition.`;
   const windLabel = isJa ? "風" : "wind";
   const threatRows = threats
     .map(
@@ -844,7 +827,7 @@ function renderYakuhaiCleanupNote(example) {
   block.innerHTML = `
     <h5>${heading}</h5>
     <p>${body}</p>
-    <div class="contract-threats">${threatRows}</div>
+    <div class="yaku-condition-threats">${threatRows}</div>
   `;
   return block;
 }
@@ -959,13 +942,13 @@ function handTexture(hand) {
 
 function dangerRead(actual, naga) {
   if (isJa) {
-    if (actual == null || naga == null) return "レポートには明確な危険度比較がないため、ルートと点数状況を中心に読む。";
+    if (actual == null || naga == null) return "危険度を比べにくい局面なので、ルートと点数状況を中心に読む。";
     const gap = actual - naga;
     if (Math.abs(gap) < 0.03) return "即時危険度は近く、この不一致は単純な安全牌比較よりもルート選択の問題に近い。";
-    if (gap < 0) return `LuckyJ は約 ${fmt.format(Math.abs(gap) * 100)} ポイント分の危険を避けて即時安全を買っている。`;
+    if (gap < 0) return `LuckyJ は約 ${fmt.format(Math.abs(gap) * 100)} ポイント分の危険を避け、安全側に寄せている。`;
     return `LuckyJ は約 ${fmt.format(gap * 100)} ポイント分の追加危険を受け入れているため、価値、圧力、着順価値の具体的な見返りが必要になる。`;
   }
-  if (actual == null || naga == null) return "The report does not provide a clean danger comparison, so the review should lean on route and score logic.";
+  if (actual == null || naga == null) return "There is no clean danger comparison here, so read the hand through route and score logic.";
   const gap = actual - naga;
   if (Math.abs(gap) < 0.03) return "Immediate danger is close, so the disagreement is mostly about route selection rather than a simple safe-tile trade.";
   if (gap < 0) return `LuckyJ buys immediate safety by avoiding about ${fmt.format(Math.abs(gap) * 100)} danger points.`;
@@ -979,7 +962,7 @@ function categoryRead(key, item) {
   const nagaName = tileName(item.naga);
   if (isJa) {
     if (key === "early_safety_hedge") {
-      return `序盤の LuckyJ は ${actualName} を、未来の選択肢を最も壊しにくい牌として扱っている。この分類はコミットを遅らせる読みで、場が答えを出すまで安全、価値、ルートを残す。`;
+      return `序盤の LuckyJ は ${actualName} を、未来の選択肢を最も壊しにくい牌として扱っている。場が答えを出すまで、安全、価値、ルートを残す読みである。`;
     }
     if (key === "middle_route_hedge") {
       return `中盤では手牌が価値を証明し始める必要がある。LuckyJ の ${actualName} 切りは、NAGA ラインが点数状況や河に対して脆い一本道へ寄せすぎる可能性を示している。`;
@@ -991,18 +974,18 @@ function categoryRead(key, item) {
       return `NAGA が切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河から筋で読めるため、完全な現物ではなくても後の押し引きに使える。`;
     }
     if (key === "safer_than_naga") {
-      return "これは攻撃中の安全購入である。LuckyJ は必ずしも降りていない。より危険な NAGA 牌をすぐに切らず、手を生かすラインを選んでいる。";
+      return "攻めている手の中で安全側に寄せている。LuckyJ は必ずしも降りていない。より危険な NAGA 牌をすぐに切らず、手を生かすラインを選んでいる。";
     }
     if (key === "riskier_than_naga") {
       return "これは真似するハードルが高い例である。LuckyJ は今の危険を払うが、残すルートが安全そうな代替より明確に良い場合に限られる。";
     }
     if (key === "late_tightening") {
-      return "終盤では投機的な形の価値はほぼ期限切れになる。和了、安全なテンパイ、降りを数える精密問題として読む。";
+      return "終盤では投機的な形の価値はかなり落ちる。和了、安全なテンパイ、降りを数える精密問題として読む。";
     }
     return `LuckyJ は ${tileClassText(actualClass)} の ${actualName} を切り、NAGA は ${tileClassText(nagaClass)} の ${nagaName} を切る。最初の問いは、どちらの牌がどの未来を守っているかである。`;
   }
   if (key === "early_safety_hedge") {
-    return `Early in the hand, LuckyJ is treating ${actualName} as the tile that least damages the future menu. This bucket is about delaying commitment: keep enough safety/value material to choose again after the table speaks.`;
+    return `Early in the hand, LuckyJ is treating ${actualName} as the tile that least damages the future menu. The idea is to delay commitment while keeping enough safety and value material to choose again after the table speaks.`;
   }
   if (key === "middle_route_hedge") {
     return `In the middle row, the hand has to start proving itself. LuckyJ's ${actualName} discard suggests that the NAGA line compresses the hand into a route that is too brittle for the score and river state.`;
@@ -1011,13 +994,13 @@ function categoryRead(key, item) {
     return `NAGA wants to cut ${nagaName}, but LuckyJ keeps it because it is already visible in an opponent river. That retained genbutsu is an exit for the next riichi or open-hand threat.`;
   }
   if (key === "kept_suji_exit") {
-    return `NAGA wants to cut ${nagaName}, but LuckyJ keeps it because opponent rivers make it suji. It is not perfect safety, but it is a timed defensive resource.`;
+    return `NAGA wants to cut ${nagaName}, but LuckyJ keeps it because opponent rivers make it suji. Treat it as a timed defensive resource, weaker than genbutsu but still useful in the right spot.`;
   }
   if (key === "safer_than_naga") {
     return `This is a safety purchase inside an attacking hand. LuckyJ is not necessarily folding; it is choosing the line that keeps the hand alive without immediately throwing the more dangerous NAGA tile.`;
   }
   if (key === "riskier_than_naga") {
-    return `This is a high-bar imitation case. LuckyJ is willing to pay danger now, but only because the retained route must be meaningfully better than the safe-looking alternative.`;
+    return `Copy this only with care. LuckyJ is paying danger now because the kept route has to be clearly better than the safer-looking choice.`;
   }
   if (key === "late_tightening") {
     return `Late in the hand, speculative shape has mostly expired. Read this as an exact-counting problem: win, take safe tenpai, or fold.`;
@@ -1036,7 +1019,7 @@ function caseLesson(key, item) {
       `${roundText(item.round)}、残り${item.left}枚、${scoreBandText(item.score_band)}。手牌の質: ${handTexture(item.hand)}。LuckyJ は ${actualName} (${tileClassText(actualClass)}) を切り、NAGA は ${nagaName} (${tileClassText(nagaClass)}) を切る。`,
       categoryRead(key, item),
       dangerRead(item.actual_danger, item.naga_danger),
-      "復習ドリル: 診断を見る前に、LuckyJ が何を買っているかを書く。安全、価値、ルート数、圧力、着順のどれかを言えないなら、まだその打牌はコピーしない。",
+      "復習ドリル: 診断を見る前に、LuckyJ が何を残そうとしているかを書く。安全、価値、ルート数、圧力、着順のどれかを言えないなら、まだその打牌はコピーしない。",
     ];
     if (safetyLine) lines.splice(2, 0, safetyLine);
     return lines;
@@ -1086,9 +1069,9 @@ function renderCases(data) {
         middle_route_hedge: "中盤のルート保留",
         kept_river_safe: "現物キープ",
         kept_suji_exit: "筋キープ",
-        safer_than_naga: "安全購入",
-        riskier_than_naga: "リスク購入",
-        late_tightening: "終盤精度",
+        safer_than_naga: "安全寄せ",
+        riskier_than_naga: "押し返し",
+        late_tightening: "終盤の読み",
       }
     : {
         early_safety_hedge: "Early Hedges",

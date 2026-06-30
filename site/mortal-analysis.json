@@ -35,48 +35,13 @@
           "probability": 0.629625,
           "type": "dahai",
           "tile": "N"
-        },
-        {
-          "action_id": 0,
-          "label": "Discard 1m",
-          "probability": 0.360296,
-          "type": "dahai",
-          "tile": "1m"
-        },
-        {
-          "action_id": 27,
-          "label": "Discard E",
-          "probability": 0.005117,
-          "type": "dahai",
-          "tile": "E"
-        },
-        {
-          "action_id": 9,
-          "label": "Discard 1p",
-          "probability": 0.001279,
-          "type": "dahai",
-          "tile": "1p"
-        },
-        {
-          "action_id": 26,
-          "label": "Discard 9s",
-          "probability": 0.000969,
-          "type": "dahai",
-          "tile": "9s"
-        },
-        {
-          "action_id": 6,
-          "label": "Discard 7m",
-          "probability": 0.000514,
-          "type": "dahai",
-          "tile": "7m"
         }
       ],
       "post_call_mortal": null,
       "post_call_agrees_luckyj": null,
       "post_call_candidates": [],
       "read": "This first-discard spot is a calibration case. Mortal helps decide whether the NAGA/LuckyJ split is a meaningful strategic disagreement or just a model-ordering preference in a low-danger position.",
-      "how_to_use": "Use spots like this to practice humility: when strong models split early, write the claims each tile makes instead of forcing a heroic explanation."
+      "how_to_use": "Use spots like this to slow down: when strong models split early, write what each tile is trying to keep before making a big story out of it."
     },
     "point-02": {
       "point": "point-02",
@@ -108,47 +73,12 @@
           "probability": 0.592961,
           "type": "dahai",
           "tile": "C"
-        },
-        {
-          "action_id": 11,
-          "label": "Discard 3p",
-          "probability": 0.269083,
-          "type": "dahai",
-          "tile": "3p"
-        },
-        {
-          "action_id": 32,
-          "label": "Discard F",
-          "probability": 0.105176,
-          "type": "dahai",
-          "tile": "F"
-        },
-        {
-          "action_id": 30,
-          "label": "Discard N",
-          "probability": 0.02504,
-          "type": "dahai",
-          "tile": "N"
-        },
-        {
-          "action_id": 7,
-          "label": "Discard 8m",
-          "probability": 0.002058,
-          "type": "dahai",
-          "tile": "8m"
-        },
-        {
-          "action_id": 9,
-          "label": "Discard 1p",
-          "probability": 0.001829,
-          "type": "dahai",
-          "tile": "1p"
         }
       ],
       "post_call_mortal": null,
       "post_call_agrees_luckyj": null,
       "post_call_candidates": [],
-      "read": "This is the controlled-ambiguity test. Mortal's preferred action shows whether the messy hand should keep the dragon/yakuhai switch or simplify immediately. If the top two probabilities are close, treat the spot as a branch-management exercise rather than a simple error.",
+      "read": "Mortal's preferred action helps you decide whether the messy hand should keep the dragon/yakuhai switch or simplify immediately. Treat the spot as branch management rather than a simple error.",
       "how_to_use": "In play, name the live routes before cutting: open yaku, pair hand, red-five value, and safety. The model split matters less than whether your discard kills a route you still need."
     },
     "point-05": {
@@ -181,41 +111,6 @@
           "probability": 0.742486,
           "type": "dahai",
           "tile": "7p"
-        },
-        {
-          "action_id": 18,
-          "label": "Discard 1s",
-          "probability": 0.094083,
-          "type": "dahai",
-          "tile": "1s"
-        },
-        {
-          "action_id": 16,
-          "label": "Discard 8p",
-          "probability": 0.07275,
-          "type": "dahai",
-          "tile": "8p"
-        },
-        {
-          "action_id": 27,
-          "label": "Discard E",
-          "probability": 0.048606,
-          "type": "dahai",
-          "tile": "E"
-        },
-        {
-          "action_id": 33,
-          "label": "Discard C",
-          "probability": 0.032807,
-          "type": "dahai",
-          "tile": "C"
-        },
-        {
-          "action_id": 30,
-          "label": "Discard N",
-          "probability": 0.003967,
-          "type": "dahai",
-          "tile": "N"
         }
       ],
       "post_call_mortal": null,
@@ -223,6 +118,44 @@
       "post_call_candidates": [],
       "read": "This tests future-danger pricing. Mortal is asked whether the useful-looking side tile should leave before the table grows louder, or whether the outside tile should be cleaned first.",
       "how_to_use": "For your own games, identify the tile whose danger will age badly. Slow hands should throw future liabilities before those liabilities become mandatory pushes."
+    },
+    "point-15": {
+      "point": "point-15",
+      "log_id": "2023052909gm-0029-0000-11324e7c",
+      "kyoku_index": 0,
+      "event_index": 70,
+      "left": 37,
+      "trigger": {
+        "type": "tsumo",
+        "actor": 1,
+        "pai": "5m"
+      },
+      "actual": {
+        "type": "dahai",
+        "tile": "F",
+        "label": "Discard F"
+      },
+      "mortal": {
+        "type": "dahai",
+        "tile": "5m",
+        "label": "Discard 5m"
+      },
+      "mortal_agrees_luckyj": false,
+      "mortal_agrees_naga": true,
+      "top_candidates": [
+        {
+          "action_id": 4,
+          "label": "Discard 5m",
+          "probability": 0.92312,
+          "type": "dahai",
+          "tile": "5m"
+        }
+      ],
+      "post_call_mortal": null,
+      "post_call_agrees_luckyj": null,
+      "post_call_candidates": [],
+      "read": "Mortal is useful here because the broad statistic is only a starting point: it checks whether spending the safe-looking tile is real target repricing or just throwing away useful insurance.",
+      "how_to_use": "Copy this only after naming the tile's target. If the tile is safe against the wrong player and the hand still has another exit, spending it can be correct; if it is the last answer to the live threat, keep it."
     },
     "point-09": {
       "point": "point-09",
@@ -254,47 +187,12 @@
           "probability": 0.626586,
           "type": "dahai",
           "tile": "7p"
-        },
-        {
-          "action_id": 4,
-          "label": "Discard 5m",
-          "probability": 0.291875,
-          "type": "dahai",
-          "tile": "5m"
-        },
-        {
-          "action_id": 27,
-          "label": "Discard E",
-          "probability": 0.033019,
-          "type": "dahai",
-          "tile": "E"
-        },
-        {
-          "action_id": 18,
-          "label": "Discard 1s",
-          "probability": 0.030167,
-          "type": "dahai",
-          "tile": "1s"
-        },
-        {
-          "action_id": 33,
-          "label": "Discard C",
-          "probability": 0.009562,
-          "type": "dahai",
-          "tile": "C"
-        },
-        {
-          "action_id": 30,
-          "label": "Discard N",
-          "probability": 0.003215,
-          "type": "dahai",
-          "tile": "N"
         }
       ],
       "post_call_mortal": null,
       "post_call_agrees_luckyj": null,
       "post_call_candidates": [],
-      "read": "This is the expiring-push test. Mortal evaluates the current draw after the open dora-side threat appears, so it is useful for checking whether LuckyJ's safer discard is real discipline or too timid.",
+      "read": "Mortal evaluates the current draw after the open dora-side threat appears, which helps check whether LuckyJ's safer discard is real discipline or too timid.",
       "how_to_use": "Do not label a hand 'push' once and stop thinking. Every call and draw reprices the next required discard."
     },
     "point-14": {
@@ -327,121 +225,51 @@
           "probability": 0.680718,
           "type": "dahai",
           "tile": "C"
-        },
-        {
-          "action_id": 29,
-          "label": "Discard W",
-          "probability": 0.289088,
-          "type": "dahai",
-          "tile": "W"
-        },
-        {
-          "action_id": 15,
-          "label": "Discard 7p",
-          "probability": 0.014075,
-          "type": "dahai",
-          "tile": "7p"
-        },
-        {
-          "action_id": 30,
-          "label": "Discard N",
-          "probability": 0.006048,
-          "type": "dahai",
-          "tile": "N"
-        },
-        {
-          "action_id": 18,
-          "label": "Discard 1s",
-          "probability": 0.005999,
-          "type": "dahai",
-          "tile": "1s"
-        },
-        {
-          "action_id": 4,
-          "label": "Discard 5m",
-          "probability": 0.002692,
-          "type": "dahai",
-          "tile": "5m"
         }
       ],
       "post_call_mortal": null,
       "post_call_agrees_luckyj": null,
       "post_call_candidates": [],
-      "read": "This is the defensive-inventory test. Mortal agreeing with LuckyJ over NAGA means the kept river-safe tile is not just a human story: a second model also prefers spending shape while preserving the clearer exit.",
+      "read": "When Mortal agrees with LuckyJ over NAGA, the kept river-safe tile has more support: a second model also prefers spending shape while preserving the clearer exit.",
       "how_to_use": "When your hand is behind but not ready, count the safe exits before cutting them. A genbutsu tile against multiple opponents can be worth more than two extra visible ukeire if it keeps the next threat playable."
     },
-    "point-10": {
-      "point": "point-10",
-      "log_id": "2023041911gm-0001-0000-cba4cded",
-      "kyoku_index": 2,
-      "event_index": 255,
-      "left": 24,
+    "point-17": {
+      "point": "point-17",
+      "log_id": "2023041913gm-0009-0000-481bbd92",
+      "kyoku_index": 5,
+      "event_index": 626,
+      "left": 19,
       "trigger": {
         "type": "tsumo",
-        "actor": 0,
+        "actor": 2,
         "pai": "6m"
       },
       "actual": {
         "type": "dahai",
-        "tile": "N",
-        "label": "Discard N"
+        "tile": "3p",
+        "label": "Discard 3p"
       },
       "mortal": {
         "type": "dahai",
-        "tile": "5sr",
-        "label": "Discard 5sr"
+        "tile": "6m",
+        "label": "Discard 6m"
       },
       "mortal_agrees_luckyj": false,
-      "mortal_agrees_naga": false,
+      "mortal_agrees_naga": true,
       "top_candidates": [
         {
-          "action_id": 36,
-          "label": "Discard 5sr",
-          "probability": 0.548107,
+          "action_id": 5,
+          "label": "Discard 6m",
+          "probability": 0.986042,
           "type": "dahai",
-          "tile": "5sr"
-        },
-        {
-          "action_id": 29,
-          "label": "Discard W",
-          "probability": 0.413567,
-          "type": "dahai",
-          "tile": "W"
-        },
-        {
-          "action_id": 30,
-          "label": "Discard N",
-          "probability": 0.021597,
-          "type": "dahai",
-          "tile": "N"
-        },
-        {
-          "action_id": 10,
-          "label": "Discard 2p",
-          "probability": 0.006835,
-          "type": "dahai",
-          "tile": "2p"
-        },
-        {
-          "action_id": 18,
-          "label": "Discard 1s",
-          "probability": 0.005366,
-          "type": "dahai",
-          "tile": "1s"
-        },
-        {
-          "action_id": 6,
-          "label": "Discard 7m",
-          "probability": 0.001211,
-          "type": "dahai",
-          "tile": "7m"
+          "tile": "6m"
         }
       ],
       "post_call_mortal": null,
       "post_call_agrees_luckyj": null,
       "post_call_candidates": [],
-      "read": "This is the late-row precision test. Mortal is valuable here because late LuckyJ disagreements are the least copyable; the model cross-check keeps the analysis from inventing certainty.",
-      "how_to_use": "In late rows, replace vague upside with exact goals: win, safe tenpai, forced push, or fold. If the model split is close, your river read decides the hand."
+      "read": "Mortal often rejects generic safe-tile stories, so disagreement here should force a precise question: which opponent does the kept genbutsu or suji tile answer?",
+      "how_to_use": "Use the panel as a naming drill. A good keep says 'safe against this live threat if this next draw happens.' A vague safe tile should be repriced as ordinary clutter."
     },
     "point-03": {
       "point": "point-03",
@@ -478,12 +306,6 @@
           "label": "Pon",
           "probability": 0.999729,
           "type": "pon"
-        },
-        {
-          "action_id": 45,
-          "label": "Pass",
-          "probability": 0.000271,
-          "type": "pass"
         }
       ],
       "post_call_mortal": {
@@ -492,44 +314,8 @@
         "label": "Discard 2m"
       },
       "post_call_agrees_luckyj": true,
-      "post_call_candidates": [
-        {
-          "action_id": 1,
-          "label": "Discard 2m",
-          "probability": 0.959941,
-          "type": "dahai",
-          "tile": "2m"
-        },
-        {
-          "action_id": 30,
-          "label": "Discard N",
-          "probability": 0.016838,
-          "type": "dahai",
-          "tile": "N"
-        },
-        {
-          "action_id": 29,
-          "label": "Discard W",
-          "probability": 0.007869,
-          "type": "dahai",
-          "tile": "W"
-        },
-        {
-          "action_id": 18,
-          "label": "Discard 1s",
-          "probability": 0.007321,
-          "type": "dahai",
-          "tile": "1s"
-        },
-        {
-          "action_id": 27,
-          "label": "Discard E",
-          "probability": 0.005408,
-          "type": "dahai",
-          "tile": "E"
-        }
-      ],
-      "read": "This is a call-contract test: Mortal is judging the pon before seeing the later hand result. A call preference means the model accepts that the closed hand is structurally fake; a pass preference means the hand still lacks enough reward or safety.",
+      "post_call_candidates": [],
+      "read": "Mortal judges the pon before seeing the later hand result. A call preference means the model accepts that the closed hand is structurally fake; a pass preference means the hand still lacks enough reward or safety.",
       "how_to_use": "When copying, do not say 'bad hand, so call.' Say exactly what the call buys: yaku, clock, and a discard plan after the call."
     },
     "point-04": {
@@ -567,12 +353,6 @@
           "label": "Pon",
           "probability": 0.999815,
           "type": "pon"
-        },
-        {
-          "action_id": 45,
-          "label": "Pass",
-          "probability": 0.000185,
-          "type": "pass"
         }
       ],
       "post_call_mortal": {
@@ -581,43 +361,7 @@
         "label": "Discard E"
       },
       "post_call_agrees_luckyj": false,
-      "post_call_candidates": [
-        {
-          "action_id": 27,
-          "label": "Discard E",
-          "probability": 0.582359,
-          "type": "dahai",
-          "tile": "E"
-        },
-        {
-          "action_id": 29,
-          "label": "Discard W",
-          "probability": 0.309408,
-          "type": "dahai",
-          "tile": "W"
-        },
-        {
-          "action_id": 18,
-          "label": "Discard 1s",
-          "probability": 0.073893,
-          "type": "dahai",
-          "tile": "1s"
-        },
-        {
-          "action_id": 23,
-          "label": "Discard 6s",
-          "probability": 0.030275,
-          "type": "dahai",
-          "tile": "6s"
-        },
-        {
-          "action_id": 30,
-          "label": "Discard N",
-          "probability": 0.002923,
-          "type": "dahai",
-          "tile": "N"
-        }
-      ],
+      "post_call_candidates": [],
       "read": "This is the second-call discipline check. Mortal's call/pass preference matters, but the conditional post-call discard matters just as much: an open hand that cannot stop is not LuckyJ-style pressure.",
       "how_to_use": "After every second call, ask what tile remains as the brake. If you cannot name it, the call is too expensive unless the hand is already worth forcing."
     },
@@ -656,18 +400,6 @@
           "label": "Chi middle",
           "probability": 0.978486,
           "type": "chi_middle"
-        },
-        {
-          "action_id": 40,
-          "label": "Chi high",
-          "probability": 0.020959,
-          "type": "chi_high"
-        },
-        {
-          "action_id": 45,
-          "label": "Pass",
-          "probability": 0.000555,
-          "type": "pass"
         }
       ],
       "post_call_mortal": {
@@ -676,38 +408,9 @@
         "label": "Discard 1s"
       },
       "post_call_agrees_luckyj": true,
-      "post_call_candidates": [
-        {
-          "action_id": 18,
-          "label": "Discard 1s",
-          "probability": 0.998029,
-          "type": "dahai",
-          "tile": "1s"
-        },
-        {
-          "action_id": 30,
-          "label": "Discard N",
-          "probability": 0.001247,
-          "type": "dahai",
-          "tile": "N"
-        },
-        {
-          "action_id": 20,
-          "label": "Discard 3s",
-          "probability": 0.000549,
-          "type": "dahai",
-          "tile": "3s"
-        },
-        {
-          "action_id": 21,
-          "label": "Discard 4s",
-          "probability": 0.000175,
-          "type": "dahai",
-          "tile": "4s"
-        }
-      ],
-      "read": "This is a tempo-call test after the hand is already open. Mortal helps separate a call that actually changes the round clock from a call that only exposes more tiles.",
-      "how_to_use": "Copy the call only when it creates a real next discard and a real path to completion. Tempo without a contract is just impatience."
+      "post_call_candidates": [],
+      "read": "After the hand is already open, Mortal helps separate a call that changes the round clock from a call that only exposes more tiles.",
+      "how_to_use": "Copy the call only when it creates a real next discard and a real path to completion. Tempo without a purpose is just impatience."
     },
     "point-06": {
       "point": "point-06",
@@ -739,48 +442,89 @@
           "probability": 0.666632,
           "type": "dahai",
           "tile": "S"
-        },
-        {
-          "action_id": 17,
-          "label": "Discard 9p",
-          "probability": 0.218458,
-          "type": "dahai",
-          "tile": "9p"
-        },
-        {
-          "action_id": 32,
-          "label": "Discard F",
-          "probability": 0.11142,
-          "type": "dahai",
-          "tile": "F"
-        },
-        {
-          "action_id": 7,
-          "label": "Discard 8m",
-          "probability": 0.001029,
-          "type": "dahai",
-          "tile": "8m"
-        },
-        {
-          "action_id": 19,
-          "label": "Discard 2s",
-          "probability": 0.000673,
-          "type": "dahai",
-          "tile": "2s"
-        },
-        {
-          "action_id": 1,
-          "label": "Discard 2m",
-          "probability": 0.0005,
-          "type": "dahai",
-          "tile": "2m"
         }
       ],
       "post_call_mortal": null,
       "post_call_agrees_luckyj": null,
       "post_call_candidates": [],
-      "read": "This is an early value-class test. Mortal's choice tells whether the isolated terminal is expendable enough to keep the honor switch while the red-five hand is still forming.",
-      "how_to_use": "Do not chase the cheapest version of a hand that needs points. Keep the tile that can still become value or a stop, but only when the cost tile is genuinely low-purpose."
+      "read": "Mortal's choice tells whether the isolated terminal is expendable enough to keep the honor switch while the red-five hand is still forming.",
+      "how_to_use": "When the hand needs points, keep the tile that can still become value or a stop, but only when the cost tile is genuinely low-purpose."
+    },
+    "point-18": {
+      "point": "point-18",
+      "log_id": "2023051911gm-0029-0000-f249465b",
+      "kyoku_index": 5,
+      "event_index": 499,
+      "left": 29,
+      "trigger": {
+        "type": "tsumo",
+        "actor": 0,
+        "pai": "5p"
+      },
+      "actual": {
+        "type": "dahai",
+        "tile": "C",
+        "label": "Discard C"
+      },
+      "mortal": {
+        "type": "dahai",
+        "tile": "5p",
+        "label": "Discard 5p"
+      },
+      "mortal_agrees_luckyj": false,
+      "mortal_agrees_naga": true,
+      "top_candidates": [
+        {
+          "action_id": 13,
+          "label": "Discard 5p",
+          "probability": 0.839401,
+          "type": "dahai",
+          "tile": "5p"
+        }
+      ],
+      "post_call_mortal": null,
+      "post_call_agrees_luckyj": null,
+      "post_call_candidates": [],
+      "read": "Mortal's top choice helps separate a real honor cleanup from an overfit story about all honors being disposable.",
+      "how_to_use": "Before copying, label the honor: self value, opponent yaku condition, dead tile, or defensive exit. The same honor class changes value completely when the label changes."
+    },
+    "point-10": {
+      "point": "point-10",
+      "log_id": "2023041911gm-0009-0000-24ce7cb7",
+      "kyoku_index": 0,
+      "event_index": 119,
+      "left": 12,
+      "trigger": {
+        "type": "tsumo",
+        "actor": 3,
+        "pai": "4m"
+      },
+      "actual": {
+        "type": "dahai",
+        "tile": "5sr",
+        "label": "Discard 5sr"
+      },
+      "mortal": {
+        "type": "dahai",
+        "tile": "5sr",
+        "label": "Discard 5sr"
+      },
+      "mortal_agrees_luckyj": true,
+      "mortal_agrees_naga": false,
+      "top_candidates": [
+        {
+          "action_id": 36,
+          "label": "Discard 5sr",
+          "probability": 0.946758,
+          "type": "dahai",
+          "tile": "5sr"
+        }
+      ],
+      "post_call_mortal": null,
+      "post_call_agrees_luckyj": null,
+      "post_call_candidates": [],
+      "read": "Mortal is valuable here because late LuckyJ disagreements are the least copyable; the cross-check keeps the review from inventing certainty.",
+      "how_to_use": "In late rows, replace vague upside with exact goals: win, safe tenpai, forced push, or fold. Your river read decides the hand."
     },
     "point-08": {
       "point": "point-08",
@@ -810,47 +554,12 @@
           "label": "Reach",
           "probability": 0.965926,
           "type": "reach"
-        },
-        {
-          "action_id": 32,
-          "label": "Discard F",
-          "probability": 0.033403,
-          "type": "dahai",
-          "tile": "F"
-        },
-        {
-          "action_id": 8,
-          "label": "Discard 9m",
-          "probability": 0.000175,
-          "type": "dahai",
-          "tile": "9m"
-        },
-        {
-          "action_id": 4,
-          "label": "Discard 5m",
-          "probability": 7.6e-05,
-          "type": "dahai",
-          "tile": "5m"
-        },
-        {
-          "action_id": 1,
-          "label": "Discard 2m",
-          "probability": 7.2e-05,
-          "type": "dahai",
-          "tile": "2m"
-        },
-        {
-          "action_id": 6,
-          "label": "Discard 7m",
-          "probability": 6.9e-05,
-          "type": "dahai",
-          "tile": "7m"
         }
       ],
       "post_call_mortal": null,
       "post_call_agrees_luckyj": null,
       "post_call_candidates": [],
-      "read": "This is the riichi-conversion test. Mortal's top action shows whether the hand should turn into table pressure immediately or stay quiet for refinement.",
+      "read": "Mortal's top action shows whether the hand should turn into table pressure immediately or stay quiet for refinement.",
       "how_to_use": "At the table, ask whether riichi changes opponents' behavior enough to justify losing flexibility. If yes, convert; if not, the same discard without riichi can be the better move."
     },
     "point-11": {
@@ -883,48 +592,51 @@
           "probability": 0.840796,
           "type": "dahai",
           "tile": "W"
-        },
-        {
-          "action_id": 31,
-          "label": "Discard P",
-          "probability": 0.157401,
-          "type": "dahai",
-          "tile": "P"
-        },
-        {
-          "action_id": 11,
-          "label": "Discard 3p",
-          "probability": 0.0003,
-          "type": "dahai",
-          "tile": "3p"
-        },
-        {
-          "action_id": 19,
-          "label": "Discard 2s",
-          "probability": 0.000205,
-          "type": "dahai",
-          "tile": "2s"
-        },
-        {
-          "action_id": 24,
-          "label": "Discard 7s",
-          "probability": 0.000203,
-          "type": "dahai",
-          "tile": "7s"
-        },
-        {
-          "action_id": 13,
-          "label": "Discard 5p",
-          "probability": 0.000188,
-          "type": "dahai",
-          "tile": "5p"
         }
       ],
       "post_call_mortal": null,
       "post_call_agrees_luckyj": null,
       "post_call_candidates": [],
-      "read": "This is the safe-tenpai test. Mortal checks whether the visible dragon discard is a legitimate way to preserve draw payments against the live open hand.",
+      "read": "Mortal checks whether the visible dragon discard is a legitimate way to preserve draw payments against the live open hand.",
       "how_to_use": "Treat noten payments as real equity, but only when the path is safe. A tenpai chase through a live dangerous tile is not the same idea."
+    },
+    "point-16": {
+      "point": "point-16",
+      "log_id": "2023042214gm-0089-0000-ad521d37",
+      "kyoku_index": 7,
+      "event_index": 699,
+      "left": 69,
+      "trigger": {
+        "type": "tsumo",
+        "actor": 1,
+        "pai": "9m"
+      },
+      "actual": {
+        "type": "dahai",
+        "tile": "1s",
+        "label": "Discard 1s"
+      },
+      "mortal": {
+        "type": "dahai",
+        "tile": "1s",
+        "label": "Discard 1s"
+      },
+      "mortal_agrees_luckyj": true,
+      "mortal_agrees_naga": false,
+      "top_candidates": [
+        {
+          "action_id": 18,
+          "label": "Discard 1s",
+          "probability": 0.84585,
+          "type": "dahai",
+          "tile": "1s"
+        }
+      ],
+      "post_call_mortal": null,
+      "post_call_agrees_luckyj": null,
+      "post_call_candidates": [],
+      "read": "Mortal checks whether the edge tile discard is merely timid safety or whether the retained middle tile is actually the hand's connection to tenpai.",
+      "how_to_use": "At the table, ask what the inside tile does next. If it is the real connector and the outside tile has no value or target-specific safety job, the outside cut can be an attacking discard."
     },
     "point-01": {
       "point": "point-01",
@@ -956,48 +668,51 @@
           "probability": 0.4215,
           "type": "dahai",
           "tile": "9m"
-        },
-        {
-          "action_id": 29,
-          "label": "Discard W",
-          "probability": 0.376876,
-          "type": "dahai",
-          "tile": "W"
-        },
-        {
-          "action_id": 28,
-          "label": "Discard S",
-          "probability": 0.190928,
-          "type": "dahai",
-          "tile": "S"
-        },
-        {
-          "action_id": 31,
-          "label": "Discard P",
-          "probability": 0.005889,
-          "type": "dahai",
-          "tile": "P"
-        },
-        {
-          "action_id": 27,
-          "label": "Discard E",
-          "probability": 0.0024,
-          "type": "dahai",
-          "tile": "E"
-        },
-        {
-          "action_id": 5,
-          "label": "Discard 6m",
-          "probability": 0.000569,
-          "type": "dahai",
-          "tile": "6m"
         }
       ],
       "post_call_mortal": null,
       "post_call_agrees_luckyj": null,
       "post_call_candidates": [],
-      "read": "Mortal checks whether the first-turn honor cut is merely cosmetic or a real plan choice. In this dealer-lead spot, agreement with LuckyJ means the model also values keeping the hand's value core over making the cleanest outside-honor trim. The top probabilities are close, so this should be studied as a sensitive border spot rather than a one-answer rule.",
+      "read": "Mortal checks whether the first-turn honor cut is just cleanup or a real plan choice. In this dealer-lead spot, agreement with LuckyJ means the model also values keeping the hand's value core over making the cleanest outside-honor trim.",
       "how_to_use": "For play, copy the ordering: score job first, then discard. Do not spend a dora/seat-wind plan just to make the hand look locally tidy on turn one."
+    },
+    "point-19": {
+      "point": "point-19",
+      "log_id": "2023050717gm-0029-0000-18227470",
+      "kyoku_index": 15,
+      "event_index": 1446,
+      "left": 38,
+      "trigger": {
+        "type": "tsumo",
+        "actor": 2,
+        "pai": "3s"
+      },
+      "actual": {
+        "type": "dahai",
+        "tile": "9s",
+        "label": "Discard 9s"
+      },
+      "mortal": {
+        "type": "dahai",
+        "tile": "3s",
+        "label": "Discard 3s"
+      },
+      "mortal_agrees_luckyj": false,
+      "mortal_agrees_naga": true,
+      "top_candidates": [
+        {
+          "action_id": 20,
+          "label": "Discard 3s",
+          "probability": 0.963464,
+          "type": "dahai",
+          "tile": "3s"
+        }
+      ],
+      "post_call_mortal": null,
+      "post_call_agrees_luckyj": null,
+      "post_call_candidates": [],
+      "read": "Mortal checks whether the low-risk leader discard also preserves a real next turn. The point is to see whether the safer-looking tile still leaves the hand playable.",
+      "how_to_use": "When leading, reduce ambition only when the discard also lowers live danger or keeps a clean exit. The lead changes the price, but it does not remove the need to calculate."
     },
     "point-13": {
       "point": "point-13",
@@ -1029,48 +744,13 @@
           "probability": 0.755945,
           "type": "dahai",
           "tile": "1s"
-        },
-        {
-          "action_id": 33,
-          "label": "Discard C",
-          "probability": 0.211917,
-          "type": "dahai",
-          "tile": "C"
-        },
-        {
-          "action_id": 32,
-          "label": "Discard F",
-          "probability": 0.016342,
-          "type": "dahai",
-          "tile": "F"
-        },
-        {
-          "action_id": 30,
-          "label": "Discard N",
-          "probability": 0.010378,
-          "type": "dahai",
-          "tile": "N"
-        },
-        {
-          "action_id": 8,
-          "label": "Discard 9m",
-          "probability": 0.002135,
-          "type": "dahai",
-          "tile": "9m"
-        },
-        {
-          "action_id": 16,
-          "label": "Discard 8p",
-          "probability": 0.001186,
-          "type": "dahai",
-          "tile": "8p"
         }
       ],
       "post_call_mortal": null,
       "post_call_agrees_luckyj": null,
       "post_call_candidates": [],
-      "read": "This is the open-hand contract test. Mortal sides with the shape-cleaning line here, so LuckyJ's yakuhai cut should be treated as a deliberate contract-denial read rather than model consensus.",
-      "how_to_use": "After an opponent opens without a visible yaku, mark dragons, round wind, and that player's seat wind as contract tiles. Even when the model prefers shape, first ask whether keeping the tile lets the open hand become legal."
+      "read": "Mortal sides with the shape-cleaning line here, so LuckyJ's yakuhai cut should be treated as a deliberate yaku-condition denial read. It is a hand to review carefully, not an automatic rule.",
+      "how_to_use": "After an opponent opens without a visible yaku, mark dragons, round wind, and that player's seat wind as yaku-condition tiles. Even when the model prefers shape, first ask whether keeping the tile lets the open hand become legal."
     }
   }
 }

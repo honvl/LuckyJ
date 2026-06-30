@@ -62,9 +62,9 @@ The main caution: Mortal mostly sided with NAGA on the sampled high-gap position
 
    `multi_threat_safe_tenpai` and `threat_keep_exit` both look better than the mismatch baseline, while generic `keep_defensive_exit` is worse than baseline. This directly changes the defense framing: LuckyJ keeping suji/genbutsu is only interesting when the tile is an exit against a live riichi/open threat and the timing is middle or late. Early, generic safety retention is not supported by this analysis.
 
-4. Loose honor cleanup deserves a separate branch from open-hand contract cleanup.
+4. Loose honor cleanup deserves a separate branch from open-hand yaku-condition cleanup.
 
-   `honor_cleanup_vs_shape` was the best NAGA-side statistical pattern: 2,348 cases, 20.9% bad rate, -10.9 pp lift, and -0.037 danger delta. Mortal mostly sided with NAGA in the sample, so this should not become a blanket rule. It is still worth mining for examples that split loose self-yakuhai, opponent contract tiles, and dead honors.
+   `honor_cleanup_vs_shape` was the best NAGA-side statistical pattern: 2,348 cases, 20.9% bad rate, -10.9 pp lift, and -0.037 danger delta. Mortal mostly sided with NAGA in the sample, so this should not become a blanket rule. It is still worth mining for examples that split loose self-yakuhai, opponent yaku-condition tiles, and dead honors.
 
 5. Score-position safety is probably a drill, not a headline principle.
 
@@ -93,4 +93,4 @@ Use this analysis to add or refine points in this order:
 1. Add a stale-safety point: "Safe tiles expire when they no longer defend the current danger."
 2. Add a late outside-cut point: "Edge cuts can preserve the winning route under pressure."
 3. Revise the existing defense language so suji/genbutsu retention is tied to specific threats and timing.
-4. Extend the yakuhai cleanup point with subcases for self value, opponent contract tiles, and dead honors.
+4. Extend the yakuhai cleanup point with subcases for self value, opponent yaku-condition tiles, and dead honors.

@@ -7,7 +7,7 @@ Japanese translation: https://honvl.github.io/LuckyJ/ja.html
 
 ## Contents
 
-- `data/LuckyJ.csv` - exported Google Sheet data.
+- `data/LuckyJ.csv` - exported original game list.
 - `data/LuckyJ.xlsx` - exported workbook copy.
 - `data/luckyj_analysis.json` - generated aggregate and move-level summary from all linked NAGA reports.
 - `scripts/analyze_luckyj.py` - fetches linked NAGA report JSONs, caches them locally, and generates the aggregate analysis.
@@ -69,5 +69,5 @@ Then open `http://127.0.0.1:8000/`.
 
 ## Sources
 
-- Google Sheet: `https://docs.google.com/spreadsheets/d/1jV-fi6E-z8BFdbS_LPfvpktSw8qc68PSZj9iEgdUC9U/edit?usp=drivesdk`
+- Original game list: `https://docs.google.com/spreadsheets/d/1jV-fi6E-z8BFdbS_LPfvpktSw8qc68PSZj9iEgdUC9U/edit?usp=drivesdk`
 - Format reference: `https://natsuai.com/mahjong/digital/`

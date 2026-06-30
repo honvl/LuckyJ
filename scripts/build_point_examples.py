@@ -38,7 +38,7 @@ POINT_TEXT = {
         "title": "Bad closed shapes buy calls",
         "lesson": "The call is valuable when the closed route is mostly imaginary and the open hand creates yaku, tempo, or real tenpai pressure.",
         "prompt": "Before calling, say what the call creates: yaku, tenpai, real 1-shanten, denial, or safe draw equity.",
-        "answer": "Call poor closed shapes when the exposed hand has a contract and still leaves a way to stop.",
+        "answer": "Call poor closed shapes when the exposed hand has a clear purpose and still leaves a way to stop.",
     },
     "point-04": {
         "title": "Open hands must keep an exit",
@@ -53,15 +53,15 @@ POINT_TEXT = {
         "answer": "If the hand is far away and the tile has no value job, remove it before it becomes expensive.",
     },
     "point-06": {
-        "title": "Build the hand class early",
+        "title": "Build the value early",
         "lesson": "A cheap bad-shape future is not worth optimizing toward when the score job needs more. Early acceptance is the cheapest thing to spend.",
-        "prompt": "Ask what score class this hand needs before preserving maximum ukeire.",
+        "prompt": "Ask how many points this hand needs before preserving maximum ukeire.",
         "answer": "Keep dora, yaku, and shape upgrades when the fast hand would be too small or too brittle.",
     },
     "point-07": {
-        "title": "Call for tempo with a contract",
+        "title": "Call for tempo with a purpose",
         "lesson": "The call has a job beyond completing blocks: speed up a poor hand, contest the table, break a bonus window, or preserve draw equity.",
-        "prompt": "No contract, no call. Name the contract before exposing the hand.",
+        "prompt": "No purpose, no call. Name the purpose before exposing the hand.",
         "answer": "A good tempo call changes the round's clock without making you helpless on the next threat.",
     },
     "point-08": {
@@ -80,7 +80,7 @@ POINT_TEXT = {
         "title": "Late precision beats late invention",
         "lesson": "Late choices should have exact upside: winning tenpai, safe tenpai, or clean fold. Speculative value routes have mostly expired.",
         "prompt": "In the third row, state whether you are winning, taking safe tenpai, or folding.",
-        "answer": "The later the hand, the more the example is a counting drill rather than a style imitation.",
+        "answer": "Late examples are counting drills first; style imitation comes after the numbers work.",
     },
     "point-11": {
         "title": "Drawn-hand points are attack equity",
@@ -92,11 +92,11 @@ POINT_TEXT = {
         "title": "A disagreement is a review prompt, not a verdict",
         "lesson": "The useful question is why LuckyJ and NAGA split: safety, route count, value, pressure, or a real mistake.",
         "prompt": "Bucket the disagreement before judging it: blunder, strategic trade-off, or table-reading idea.",
-        "answer": "Do not chase match rate. Chase explainable decisions with fewer unpriced risks.",
+        "answer": "Use match rate as a review cue, then aim for explainable decisions with fewer unpriced risks.",
     },
     "point-13": {
         "title": "Clean yakuhai against unproven open hands",
-        "lesson": "When another player calls without showing a clear yaku, singleton dragons and live value winds can become their missing contract. LuckyJ often removes those tiles before they turn into the price of continuing.",
+        "lesson": "When another player calls without showing a clear yaku, singleton dragons and live value winds can become their missing yaku condition. LuckyJ often removes those tiles before they turn into the price of continuing.",
         "prompt": "After an opponent opens, ask which yakuhai still lets that hand win.",
         "answer": "If your hand is not ready to punish them and the yakuhai has no strong job, clean it before the open hand gets to use it.",
     },
@@ -106,11 +106,59 @@ POINT_TEXT = {
         "prompt": "Before discarding a flexible tile, count which tiles in your hand are genbutsu or suji to each opponent and which of them are still useful next turn.",
         "answer": "Keep the safe tile while it buys future choice; spend it only when the hand has become worth the risk or the draw-point/fold route is already decided.",
     },
+    "point-15": {
+        "title": "Safe tiles expire",
+        "lesson": "A tile that was safe earlier can become the correct discard once it no longer protects against the live danger or starts damaging the hand's real route.",
+        "prompt": "Name the player this safe tile protects against, then ask whether that player is still the main danger.",
+        "answer": "Spend stale safety when it is off-target, the hand is real, and another exit remains for the next bad draw.",
+    },
+    "point-16": {
+        "title": "Late outside cuts can preserve the route",
+        "lesson": "Under pressure, cutting an edge or terminal can be the attacking discard because it keeps the middle tile that connects the actual path to tenpai.",
+        "prompt": "When a terminal cut looks timid, check whether the inside tile is the hand's real connector.",
+        "answer": "Do not call every outside cut defense. If the outside tile carries no value or target-specific safety, it can be the cost of keeping the winning route alive.",
+    },
+    "point-17": {
+        "title": "Every kept safe tile needs a target",
+        "lesson": "Genbutsu and suji only matter when they answer a specific opponent and a specific future decision.",
+        "prompt": "For each kept safe tile, complete the sentence: safe against X if Y happens.",
+        "answer": "Keep the exit when it covers the live threat. If the named target is vague or quiet, the tile is probably clutter.",
+    },
+    "point-18": {
+        "title": "Honor tiles need role labels",
+        "lesson": "An honor can be self value, an opponent yaku condition, dead material, or a defensive exit. Those are different tiles in review.",
+        "prompt": "Before cutting or keeping an honor, label its current job.",
+        "answer": "Cut loose honors when their only live job helps an opponent or when they are dead; keep honors that are value, route, or target-specific exits.",
+    },
+    "point-19": {
+        "title": "Leader safety is a qualifier",
+        "lesson": "A lead lowers the ambition needed to end the hand, but it does not excuse a discard that fails to reduce real danger or preserve the next turn.",
+        "prompt": "When leading, ask what concrete risk the safer-looking discard removes.",
+        "answer": "Use the lead to reject unnecessary risk, not to stop calculating shape, danger, and future exits.",
+    },
+}
+
+
+PREFERRED_CASES = {
+    "point-15": [{"game": 352, "kyoku_index": 0, "left": 43, "actual": "5m", "naga": "P"}],
+    "point-16": [{"game": 107, "kyoku_index": 7, "left": 16, "actual": "1s", "naga": "2s"}],
+    "point-17": [{"game": 5, "kyoku_index": 5, "left": 19, "actual": "3p", "naga": "6m"}],
+    "point-18": [{"game": 584, "kyoku_index": 6, "left": 27, "actual": "N", "naga": "1s"}],
+    "point-19": [{"game": 472, "kyoku_index": 13, "left": 12, "actual": "9m", "naga": "6m"}],
 }
 
 
 def tile_id(tile):
     return base.IDX[tile]
+
+
+def same_tile(a, b):
+    if not a or not b:
+        return False
+    try:
+        return tile_id(a) == tile_id(b)
+    except KeyError:
+        return False
 
 
 def base_tile(tile):
@@ -139,7 +187,7 @@ def meld_tiles(meld):
     return [tile for tile in str(meld).split() if tile and tile != "+"]
 
 
-def meld_shows_yakuhai_contract(meld, start, seat):
+def meld_shows_yakuhai_yaku(meld, start, seat):
     counts = Counter(tile_id(tile) for tile in meld_tiles(meld))
     return any(count >= 3 and is_yakuhai_for_seat(base.TILES[idx], start, seat) for idx, count in counts.items())
 
@@ -154,7 +202,7 @@ def yakuhai_cleanup_threats(start, target, melds, tile):
     for seat, player_melds in enumerate(melds):
         if seat == target or not player_melds:
             continue
-        if any(meld_shows_yakuhai_contract(meld, start, seat) for meld in player_melds):
+        if any(meld_shows_yakuhai_yaku(meld, start, seat) for meld in player_melds):
             continue
         if all(meld_all_simples(meld) for meld in player_melds):
             continue
@@ -428,6 +476,27 @@ def add_best(selected, used, scores, point_key, candidate, score):
         used.add(sig)
 
 
+def preferred_bonus(point_key, row, kyoku_index, left, actual, naga):
+    for item in PREFERRED_CASES.get(point_key, []):
+        if (
+            item["game"] == row["idx"]
+            and item["kyoku_index"] == kyoku_index
+            and item["left"] == left
+            and same_tile(item["actual"], actual)
+            and same_tile(item["naga"], naga)
+        ):
+            return 1000.0
+    return 0.0
+
+
+def tile_count(hand, tile):
+    try:
+        idx = tile_id(tile)
+    except KeyError:
+        return 0
+    return sum(1 for item in hand if tile_id(item) == idx)
+
+
 def try_discard_points(selected, used, scores, row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, open_melds):
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
@@ -449,6 +518,10 @@ def try_discard_points(selected, used, scores, row, kyoku_index, pos, start, sta
     actual_d = danger_for(state, target, actual)
     naga_d = danger_for(state, target, naga)
     public_visible = visible_counter(discards, melds, dora_markers)
+    active_threats = sum(1 for seat in range(4) if seat != target and (reached[seat] or open_melds[seat]))
+    actual_read = safety_read(actual, target, discards, reached, open_melds)
+    naga_read = safety_read(naga, target, discards, reached, open_melds)
+    gap = rows[0][1] - rows[0][2]
 
     if "point-08" not in selected and "reach" in state:
         add(selected, used, "point-08", make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers))
@@ -473,6 +546,49 @@ def try_discard_points(selected, used, scores, row, kyoku_index, pos, start, sta
     kept_read = safety_read(naga, target, discards, reached, open_melds)
     if "point-14" not in selected and naga != actual and kept_read["kind"] and kept_read["safe_against_threat"]:
         add(selected, used, "point-14", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-14"))
+
+    if naga != actual and actual_read["kind"] and not naga_read["kind"]:
+        case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-15")
+        score_value = preferred_bonus("point-15", row, kyoku_index, left, actual, naga) + gap
+        if actual_d is not None and naga_d is not None:
+            score_value += max(0.0, naga_d - actual_d)
+        if active_threats:
+            score_value += 0.2
+        add_best(selected, used, scores, "point-15", case, score_value)
+
+    if naga != actual and actual_cls == "terminal" and naga_cls == "simple" and stage in {"middle", "late"}:
+        case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-16")
+        score_value = preferred_bonus("point-16", row, kyoku_index, left, actual, naga) + gap
+        if stage == "late":
+            score_value += 0.3
+        if actual_d is not None and naga_d is not None:
+            score_value += max(0.0, naga_d - actual_d)
+        add_best(selected, used, scores, "point-16", case, score_value)
+
+    if naga != actual and naga_read["kind"] and naga_read["safe_against_threat"]:
+        case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-17")
+        score_value = preferred_bonus("point-17", row, kyoku_index, left, actual, naga) + gap + 0.2 * active_threats
+        if stage in {"middle", "late"}:
+            score_value += 0.2
+        add_best(selected, used, scores, "point-17", case, score_value)
+
+    if naga != actual and actual_cls == "honor" and naga_cls == "simple" and tile_count(hands[target], actual) == 1:
+        case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-18")
+        score_value = preferred_bonus("point-18", row, kyoku_index, left, actual, naga) + gap
+        if actual_d is not None and naga_d is not None:
+            score_value += max(0.0, naga_d - actual_d)
+        if active_threats:
+            score_value += 0.1
+        add_best(selected, used, scores, "point-18", case, score_value)
+
+    if naga != actual and score >= 35000 and (actual_d is None or naga_d is None or actual_d <= naga_d + 0.02):
+        case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-19")
+        score_value = preferred_bonus("point-19", row, kyoku_index, left, actual, naga) + gap
+        if actual_d is not None and naga_d is not None:
+            score_value += max(0.0, naga_d - actual_d)
+        if stage in {"middle", "late"}:
+            score_value += 0.2
+        add_best(selected, used, scores, "point-19", case, score_value)
 
     if "point-10" not in selected and stage == "late" and naga != actual:
         add(selected, used, "point-10", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-10"))
