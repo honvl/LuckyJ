@@ -2,6 +2,8 @@
 
 Analysis workspace for LuckyJ's Japanese mahjong games analyzed by NAGA.
 
+Site: https://honvl.github.io/LuckyJ/
+
 ## Contents
 
 - `data/LuckyJ.csv` - exported Google Sheet data.
