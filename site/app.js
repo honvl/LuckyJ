@@ -436,8 +436,12 @@ function reviewHref(item) {
   return withQueryParam(withQueryParam(item.report, "ts", item.kyoku_index), "tv", item.position);
 }
 
+function tenhouHref(item) {
+  return withQueryParam(item.paifu, "ts", item.kyoku_index);
+}
+
 function sourceLinks(item) {
-  return `${externalLink(reviewHref(item), t("nagaReport"))} ${externalLink(item.paifu, t("tenhouLog"))}`;
+  return `${externalLink(reviewHref(item), t("nagaReport"))} ${externalLink(tenhouHref(item), t("tenhouLog"))}`;
 }
 
 function tileCode(tile) {
