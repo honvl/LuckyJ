@@ -10,6 +10,147 @@ const useOtfTiles = chromiumTileEngine && !useColrTiles;
 const tileFontClass = useColrTiles ? "colr" : useOtfTiles ? "otf" : "";
 const tileFontClassSuffix = tileFontClass ? ` ${tileFontClass}` : "";
 const tileFontClassPrefix = tileFontClass ? `${tileFontClass} ` : "";
+const modelNames = {
+  en: { nishiki: "Nishiki", hibakari: "Hibakari", kagashi: "Kagashi" },
+  ja: { nishiki: "ニシキ", hibakari: "ヒバカリ", kagashi: "カガシ" },
+};
+const pointRailFallbackLabels = {
+  en: [
+    "Start with the placement problem.",
+    "Combine chances until the table forces a commitment.",
+    "Bad shapes favor opening, but only with a plan.",
+    "Every open call increases the price of safe tiles.",
+    "Throw dangerous floating tiles before they become your problem.",
+    "Value planning starts while the hand is still far away.",
+    "Call for tempo, denial, survival, and hand completion.",
+    "Riichi is a pressure tool.",
+    "Push-fold is recalculated every draw.",
+    "Late hands tighten: fewer deviations, fewer bad moves.",
+    "Drawn-hand points are part of the attack plan.",
+    "Use NAGA match rate as a review cue.",
+    "Cut live yakuhai earlier when an open hand's yaku is unproven.",
+    "Keep genbutsu and suji tiles as timed exits.",
+    "Safe tiles expire when they stop defending the current danger.",
+    "Late outside cuts can preserve the winning route.",
+    "A kept genbutsu or suji tile must name its target.",
+    "Name the honor's job: value, yaku condition, dead tile, or exit.",
+    "Leader safety still has to calculate.",
+  ],
+};
+
+function modelName(keyOrLabel) {
+  const raw = String(keyOrLabel || "");
+  const key = raw.toLowerCase();
+  return modelNames[pageLang]?.[key] || modelNames.en[key] || raw;
+}
+
+function renderPointRail() {
+  if (document.querySelector(".point-rail")) return;
+  const sections = Array.from(document.querySelectorAll(".point[id^='point-']")).filter((section) =>
+    /^point-\d{2}$/.test(section.id)
+  );
+  const hasLocalPoints = sections.length > 0;
+  const points = hasLocalPoints
+    ? sections.map((section) => {
+        const number = section.querySelector(".point-number")?.textContent.trim() || section.id.replace("point-", "");
+        const heading = section.querySelector("h3")?.textContent.trim() || "";
+        return { href: `#${section.id}`, id: section.id, number, title: heading, section };
+      })
+    : Array.from({ length: 19 }, (_, index) => {
+        const number = String(index + 1).padStart(2, "0");
+        return {
+          href: `points.html#point-${number}`,
+          id: `point-${number}`,
+          number,
+          title: pointRailFallbackLabels[pageLang]?.[index] || "",
+          section: null,
+        };
+      });
+
+  if (!points.length) return;
+
+  const rail = document.createElement("nav");
+  rail.className = "point-rail";
+  rail.setAttribute("aria-label", isJa ? "ポイント索引" : "Point index");
+  rail.setAttribute("aria-controls", "point-rail-panel");
+
+  const panel = document.createElement("div");
+  panel.className = "point-rail-panel";
+  panel.id = "point-rail-panel";
+  panel.setAttribute("aria-label", isJa ? "ポイント一覧" : "Point list");
+  const panelList = document.createElement("ol");
+  panel.append(panelList);
+
+  const railLinks = points.map((point) => {
+    const link = document.createElement("a");
+    link.href = point.href;
+    link.textContent = point.number;
+    if (point.title) {
+      link.setAttribute("aria-label", `${point.number} ${point.title}`);
+      link.dataset.label = point.title;
+    }
+    link.dataset.point = point.id;
+    rail.append(link);
+    return link;
+  });
+
+  const panelLinks = points.map((point) => {
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    const number = document.createElement("b");
+    const label = document.createElement("span");
+
+    link.href = point.href;
+    link.dataset.point = point.id;
+    number.textContent = point.number;
+    label.textContent = point.title || point.number;
+
+    link.append(number, label);
+    item.append(link);
+    panelList.append(item);
+    return link;
+  });
+
+  const links = [...railLinks, ...panelLinks];
+
+  document.body.append(rail, panel);
+
+  if (!hasLocalPoints) return;
+
+  function setActive(id) {
+    for (const link of links) {
+      const selected = link.dataset.point === id;
+      link.classList.toggle("is-active", selected);
+      if (selected) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    }
+  }
+
+  let frame = null;
+  function updateActive() {
+    frame = null;
+    const readingLine = window.innerHeight * 0.38;
+    let active = sections[0]?.id;
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= readingLine) active = section.id;
+    }
+    if (active) setActive(active);
+  }
+
+  function scheduleActiveUpdate() {
+    if (frame !== null) return;
+    frame = requestAnimationFrame(updateActive);
+  }
+
+  window.addEventListener("scroll", scheduleActiveUpdate, { passive: true });
+  window.addEventListener("resize", scheduleActiveUpdate);
+  window.addEventListener("hashchange", scheduleActiveUpdate);
+  updateActive();
+}
+
 const copy = {
   en: {
     none: "none",
@@ -103,14 +244,14 @@ const copy = {
     meld: "副露",
     discardAfterCall: "鳴き後の打牌",
     luckyj: "LuckyJ",
-    nagaTop: "Nishiki 最上位",
+    nagaTop: "ニシキ最上位",
     danger: "放銃危険度",
     drill: "ドリル",
     answer: "答え",
     nagaReport: "検討ページ",
     tenhouLog: "天鳳牌譜",
     immediateDanger: "即時危険度",
-    nagaWeight: "Nishiki 評価",
+    nagaWeight: "ニシキ評価",
     mortalWeight: "Mortal 重み",
     keeps: "残す枚数",
     honors: "字牌",
@@ -260,8 +401,8 @@ function caseLabelText(label) {
       "Middle route hedge": "中盤のルート保留",
       "Kept river-safe exit": "現物の出口をキープ",
       "Kept suji exit": "筋の出口をキープ",
-      "Safer than Nishiki": "Nishiki より安全",
-      "Riskier than Nishiki": "Nishiki よりリスクあり",
+      "Safer than Nishiki": "ニシキより安全",
+      "Riskier than Nishiki": "ニシキよりリスクあり",
       "Late tightening": "終盤の引き締め",
     }[label] || label
   );
@@ -305,7 +446,7 @@ function renderDefenseTiming(retention) {
     panel.innerHTML = `
       <b>${stageText(key)}</b>
       <strong>${splits ? pct(kept / splits) : "n/a"}</strong>
-      <span>${isJa ? "Nishiki と割れた打牌で現物/筋を残した割合" : "of Nishiki-split discards kept a river-safe or suji tile"}</span>
+      <span>${isJa ? "ニシキと割れた打牌で現物/筋を残した割合" : "of Nishiki-split discards kept a river-safe or suji tile"}</span>
       <small>${isJa ? "内訳" : "Breakdown"}: ${whole.format(item.kept_genbutsu || 0)} ${safetyKindLabel("genbutsu")}, ${whole.format(item.kept_suji || 0)} ${safetyKindLabel("suji")}, ${whole.format(item.kept_against_live_threat || 0)} ${isJa ? "脅威相手" : "live-threat exits"}${avgLeft == null ? "" : isJa ? `、平均残り${fmt.format(avgLeft)}枚` : `, avg ${fmt.format(avgLeft)} tiles left`}</small>
     `;
     target.append(panel);
@@ -984,7 +1125,7 @@ function renderMortalBlock(mortal, pointKey, mortalCopy, index) {
         ${probabilityChip(t("mortalWeight"), topCandidate?.probability)}
         <span class="discard-line">${modelActionLine(mortal.mortal)}</span>
         ${agreementBadge("LuckyJ", mortal.mortal_agrees_luckyj)}
-        ${agreementBadge("Nishiki", mortal.mortal_agrees_naga)}
+        ${agreementBadge(modelName("nishiki"), mortal.mortal_agrees_naga)}
       </span>
     </summary>
     <div class="mortal-details">
@@ -1048,7 +1189,7 @@ function renderCallModelBlock(example) {
     const actualWeight = head.actual_kind_prob == null ? "" : probabilityChip(isJa ? "実戦の鳴き" : "actual call", head.actual_kind_prob);
     const passWeight = head.pass_prob == null ? "" : probabilityChip(isJa ? "スルー" : "pass", head.pass_prob);
     card.innerHTML = `
-      <b>${escapeHtml(head.label || "")}</b>
+      <b>${escapeHtml(isJa ? head.label_ja || modelName(head.key || head.label) : head.label || modelName(head.key))}</b>
       ${probabilityChip(isJa ? "第一候補" : "top action", head.top_prob)}
       <span>${escapeHtml(topAction)}</span>
       ${actualWeight}
@@ -1262,16 +1403,16 @@ function categoryRead(key, item) {
       return `序盤の LuckyJ は ${actualName} を、未来の選択肢を最も壊しにくい牌として扱っている。場が答えを出すまで、安全、価値、ルートを残す読みである。`;
     }
     if (key === "middle_route_hedge") {
-      return `中盤では手牌が価値を証明し始める必要がある。LuckyJ の ${actualName} 切りは、Nishiki ラインが点数状況や河に対して脆い一本道へ寄せすぎる可能性を示している。`;
+      return `中盤では手牌が価値を証明し始める必要がある。LuckyJ の ${actualName} 切りは、ニシキラインが点数状況や河に対して脆い一本道へ寄せすぎる可能性を示している。`;
     }
     if (key === "kept_river_safe") {
-      return `Nishiki が切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河にあり、後のリーチや副露に対する現物の出口になる。`;
+      return `ニシキが切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河にあり、後のリーチや副露に対する現物の出口になる。`;
     }
     if (key === "kept_suji_exit") {
-      return `Nishiki が切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河から筋で読めるため、後の押し引きに使える。`;
+      return `ニシキが切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河から筋で読めるため、後の押し引きに使える。`;
     }
     if (key === "safer_than_naga") {
-      return "攻めている手の中で安全側に寄せている。LuckyJ は手を生かしながら、危険な Nishiki 牌を後回しにしている。";
+      return "攻めている手の中で安全側に寄せている。LuckyJ は手を生かしながら、危険なニシキ牌を後回しにしている。";
     }
     if (key === "riskier_than_naga") {
       return "これは真似するハードルが高い例である。LuckyJ は今の危険を払うが、残すルートが安全そうな代替より明確に良い場合に限られる。";
@@ -1279,7 +1420,7 @@ function categoryRead(key, item) {
     if (key === "late_tightening") {
       return "終盤では投機的な形の価値はかなり落ちる。和了、安全なテンパイ、降りを数える精密問題として読む。";
     }
-    return `LuckyJ は ${tileClassText(actualClass)} の ${actualName} を切り、Nishiki は ${tileClassText(nagaClass)} の ${nagaName} を切る。最初の問いは、どちらの牌がどの未来を守っているかである。`;
+    return `LuckyJ は ${tileClassText(actualClass)} の ${actualName} を切り、ニシキは ${tileClassText(nagaClass)} の ${nagaName} を切る。最初の問いは、どちらの牌がどの未来を守っているかである。`;
   }
   if (key === "early_safety_hedge") {
     return `Early in the hand, LuckyJ is treating ${actualName} as the tile that least damages the future menu. The idea is to delay commitment while keeping enough safety and value material to choose again after the table speaks.`;
@@ -1313,7 +1454,7 @@ function caseLesson(key, item) {
   const safetyLine = safetyReadLine(item.kept_safety);
   if (isJa) {
     const lines = [
-      `${roundText(item.round)}、残り${item.left}枚、${scoreBandText(item.score_band)}。手牌の質: ${handTexture(item.hand)}。LuckyJ は ${actualName} (${tileClassText(actualClass)}) を切り、Nishiki は ${nagaName} (${tileClassText(nagaClass)}) を切る。`,
+      `${roundText(item.round)}、残り${item.left}枚、${scoreBandText(item.score_band)}。手牌の質: ${handTexture(item.hand)}。LuckyJ は ${actualName} (${tileClassText(actualClass)}) を切り、ニシキは ${nagaName} (${tileClassText(nagaClass)}) を切る。`,
       categoryRead(key, item),
       dangerRead(item.actual_danger, item.naga_danger),
       "復習ドリル: 診断を見る前に、LuckyJ が何を残そうとしているかを書く。安全、価値、ルート数、圧力、着順のどれかを言える打牌だけ自分の形にする。",
@@ -1502,6 +1643,7 @@ function renderPointValidation(validation) {
 }
 
 async function main() {
+  renderPointRail();
   applyTileCompatibility();
   const guidePath = isJa ? "strategy-guides.ja.json" : "strategy-guides.json";
   const [bookResponse, caseResponse, exampleResponse, guideResponse, mortalResponse, mortalCopy, validation] = await Promise.all([

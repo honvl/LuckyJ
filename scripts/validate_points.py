@@ -241,7 +241,7 @@ def build() -> dict[str, Any]:
     )
     mismatch = aggregate(
         f"Model review base: {review_mismatches:,} LuckyJ/Nishiki mismatches from {review_decisions:,} split-head decisions; only {pct(review_bad_rate)} hit the severe-disagreement proxy.",
-        f"モデル復習の母数: split-head 判断 {review_decisions:,} 件中 LuckyJ/Nishiki 不一致 {review_mismatches:,} 件。重い不一致 proxy は {pct(review_bad_rate)} に限られる。",
+        f"モデル復習の母数: split-head 判断 {review_decisions:,} 件中 LuckyJ/ニシキ不一致 {review_mismatches:,} 件。重い不一致 proxy は {pct(review_bad_rate)} に限られる。",
     )
     self_yakuhai = aggregate(
         f"Loose self-yakuhai timing split: no-open contexts cut singletons on median turn {num(yakuhai['no_open_hand']['median_cut_turn'], 1)}, while tanyao-shaped open contexts delayed to turn {num(yakuhai['tanyao_shaped_open']['median_cut_turn'], 1)}.",
@@ -339,7 +339,7 @@ def build() -> dict[str, Any]:
             "Strong",
             "強い",
             "Safer-than-Nishiki choices were one of the clearest support signals; danger pricing should be explicit.",
-            "Nishiki より安全な選択は最もきれいな信号の一つで、危険度の値付けを明示すべき。",
+            "ニシキより安全な選択は最もきれいな信号の一つで、危険度の値付けを明示すべき。",
             "Keep this targeted: early slimming works when the tile has little value or yaku route left.",
             "早切りは、牌の価値や役ルートが薄い時に絞る。",
             "Example: cut the future-riichi liability before it becomes the only discard your hand can release.",
@@ -470,12 +470,12 @@ def build() -> dict[str, Any]:
             "Strong",
             "強い",
             "The Nishiki mismatch base is large, and most mismatches stay below the severe-disagreement threshold.",
-            "Nishiki 不一致の母数は大きく、重い不一致は少数にとどまる。",
+            "ニシキ不一致の母数は大きく、重い不一致は少数にとどまる。",
             "A split marks a hand to study; proof comes from the purchase, risk, and table context.",
             "分岐は復習対象を示す。根拠は購入価値、危険、場況から作る。",
             "Example: if LuckyJ, Nishiki, Hibakari, and Mortal disagree, write the purchase and the risk before adopting the move.",
-            "例: LuckyJ、Nishiki、Hibakari、Mortal が割れたら、その打牌が何を買い、何を危険にするかを書く。",
-            [mismatch, pattern(patterns, "safer_than_naga", "Safer-than-Nishiki subset", "Nishiki より安全な部分集合"), pattern(patterns, "riskier_than_naga", "Riskier-than-Nishiki subset", "Nishiki より危険な部分集合")],
+            "例: LuckyJ、ニシキ、ヒバカリ、Mortal が割れたら、その打牌が何を買い、何を危険にするかを書く。",
+            [mismatch, pattern(patterns, "safer_than_naga", "Safer-than-Nishiki subset", "ニシキより安全な部分集合"), pattern(patterns, "riskier_than_naga", "Riskier-than-Nishiki subset", "ニシキより危険な部分集合")],
         ),
         point(
             "point-13",
@@ -529,7 +529,7 @@ def build() -> dict[str, Any]:
             "Strong",
             "強い",
             "Spending a safe-looking tile that Nishiki kept was materially better than the mismatch baseline.",
-            "Nishiki が残す安全寄り牌を使う分岐は、不一致平均との差で明確に良い。",
+            "ニシキが残す安全寄り牌を使う分岐は、不一致平均との差で明確に良い。",
             "Spend it only after naming why it no longer defends the live danger.",
             "今の脅威に効かなくなった理由を名付けてから使う。",
             "Example: discard yesterday's genbutsu when a new riichi makes it irrelevant and the tile blocks your tenpai route.",

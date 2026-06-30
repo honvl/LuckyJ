@@ -203,6 +203,14 @@ a {
   color: var(--green);
 }
 
+.point-rail {
+  display: none;
+}
+
+.point-rail-panel {
+  display: none;
+}
+
 .book {
   max-width: 1280px;
   width: 100%;
@@ -1795,6 +1803,188 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 
 .sources {
   margin-bottom: 80px;
+}
+
+@media (min-width: 1440px) {
+  .point-rail {
+    position: fixed;
+    top: 50%;
+    left: max(18px, calc((100vw - 1280px) / 2 - 78px));
+    z-index: 8;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 50px;
+    max-height: min(72vh, 620px);
+    padding: 10px 7px;
+    overflow-y: auto;
+    border: 1px solid rgba(23, 107, 84, 0.22);
+    border-radius: 8px;
+    background: rgba(251, 252, 248, 0.92);
+    box-shadow: 0 14px 34px rgba(39, 45, 35, 0.14);
+    transform: translateY(-50%);
+    animation: pointRailIn 220ms ease-out both;
+    backdrop-filter: blur(10px);
+    scrollbar-width: none;
+  }
+
+  .point-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .point-rail::before {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 50%;
+    z-index: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, rgba(23, 107, 84, 0.24), transparent);
+    content: "";
+    pointer-events: none;
+    transform: translateX(-50%);
+  }
+
+  .point-rail a {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 34px;
+    min-width: 34px;
+    height: 24px;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.86);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 850;
+    line-height: 1;
+    text-decoration: none;
+    transition: color 160ms ease, background 160ms ease, border-color 160ms ease, box-shadow 160ms ease,
+      transform 160ms ease;
+  }
+
+  .point-rail a:hover,
+  .point-rail a:focus-visible {
+    border-color: rgba(23, 107, 84, 0.38);
+    color: var(--green);
+    outline: none;
+    transform: translateX(7px) scale(1.04);
+  }
+
+  .point-rail a.is-active {
+    border-color: var(--green);
+    background: var(--green);
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(23, 107, 84, 0.24);
+    transform: translateX(6px);
+  }
+
+  .point-rail-panel {
+    position: fixed;
+    top: 50%;
+    left: max(80px, calc((100vw - 1280px) / 2 - 16px));
+    z-index: 9;
+    display: block;
+    width: min(640px, calc(100vw - 112px));
+    max-width: calc(100vw - 112px);
+    max-height: min(84vh, 760px);
+    padding: 12px;
+    overflow-y: auto;
+    border: 1px solid rgba(23, 107, 84, 0.22);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 18px 42px rgba(39, 45, 35, 0.18);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-10px, -50%) scale(0.98);
+    transform-origin: left center;
+    transition: opacity 120ms ease, transform 120ms ease, visibility 120ms ease;
+    visibility: hidden;
+  }
+
+  .point-rail:hover + .point-rail-panel,
+  .point-rail:focus-within + .point-rail-panel,
+  .point-rail-panel:hover,
+  .point-rail-panel:focus-within {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(0, -50%) scale(1);
+    visibility: visible;
+  }
+
+  .point-rail-panel ol {
+    display: grid;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .point-rail-panel a {
+    display: grid;
+    grid-template-columns: 34px minmax(max-content, 1fr);
+    gap: 8px;
+    align-items: center;
+    min-height: 26px;
+    padding: 4px 7px;
+    border-radius: 6px;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.25;
+    text-decoration: none;
+  }
+
+  .point-rail-panel b {
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 1.45;
+  }
+
+  .point-rail-panel span {
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .point-rail-panel a:hover,
+  .point-rail-panel a:focus-visible,
+  .point-rail-panel a.is-active {
+    background: var(--soft-green);
+    outline: none;
+  }
+
+  .point-rail-panel a.is-active {
+    box-shadow: inset 3px 0 0 var(--green);
+  }
+}
+
+@keyframes pointRailIn {
+  from {
+    opacity: 0;
+    transform: translate(-8px, -50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .point-rail {
+    animation: none;
+  }
+
+  .point-rail a {
+    transition: none;
+  }
+
+  .point-rail-panel {
+    transition: none;
+  }
 }
 
 @media (max-width: 1100px) {

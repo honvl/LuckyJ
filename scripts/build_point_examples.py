@@ -38,6 +38,7 @@ POOL_PER_POINT = 120
 SHANTEN = Shanten()
 MODEL_KEYS = ["nishiki", "hibakari", "kagashi"]
 MODEL_LABELS = {"nishiki": "Nishiki", "hibakari": "Hibakari", "kagashi": "Kagashi"}
+MODEL_LABELS_JA = {"nishiki": "ニシキ", "hibakari": "ヒバカリ", "kagashi": "カガシ"}
 DANGER_HEADS = [
     ("k", "dangerK"),
     ("t", "dangerT"),
@@ -353,6 +354,7 @@ def model_rows(state, actual):
             {
                 "key": key,
                 "label": MODEL_LABELS.get(key, key),
+                "label_ja": MODEL_LABELS_JA.get(key, key),
                 "top": top,
                 "top_prob": top_prob,
                 "actual_prob": actual_prob,
@@ -395,6 +397,7 @@ def huro_model_heads(previous_state, target, actual_kind):
             {
                 "key": key,
                 "label": MODEL_LABELS.get(key, key),
+                "label_ja": MODEL_LABELS_JA.get(key, key),
                 "top_kind": top_kind,
                 "top_action": call_kind_label(top_kind),
                 "top_prob": round(top_prob, 3),
@@ -655,10 +658,10 @@ def danger_gap_phrase(case, lang):
     gap = actual - naga
     if lang == "ja":
         if abs(gap) < 0.03:
-            return f"危険度は近い。LuckyJ {format_percent(actual)}、Nishiki {format_percent(naga)}。"
+            return f"危険度は近い。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
         if gap < 0:
-            return f"LuckyJ は即時危険を下げている。LuckyJ {format_percent(actual)}、Nishiki {format_percent(naga)}。"
-        return f"LuckyJ は追加危険を払っている。LuckyJ {format_percent(actual)}、Nishiki {format_percent(naga)}。"
+            return f"LuckyJ は即時危険を下げている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
+        return f"LuckyJ は追加危険を払っている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
     if abs(gap) < 0.03:
         return f"The danger numbers are close: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
     if gap < 0:
@@ -711,14 +714,14 @@ def call_model_sentence(case, lang):
     if lang == "ja":
         parts = []
         if nishiki:
-            parts.append(f"Nishiki は {nishiki['top_action']} {format_percent(nishiki['top_prob'])}、実戦の {actual} 重み {format_percent(nishiki['actual_kind_prob'])}")
+            parts.append(f"ニシキは {nishiki['top_action']} {format_percent(nishiki['top_prob'])}、実戦の {actual} 重み {format_percent(nishiki['actual_kind_prob'])}")
         if hibakari:
             if hibakari.get("supports_call"):
-                parts.append("Hibakari もこの鳴きを第一候補にしている")
+                parts.append("ヒバカリもこの鳴きを第一候補にしている")
             elif hibakari.get("prefers_pass"):
-                parts.append(f"Hibakari はスルー寄り ({format_percent(hibakari['pass_prob'])})")
+                parts.append(f"ヒバカリはスルー寄り ({format_percent(hibakari['pass_prob'])})")
             else:
-                parts.append(f"Hibakari は別の {hibakari['top_action']} 寄り")
+                parts.append(f"ヒバカリは別の {hibakari['top_action']} 寄り")
         return "。".join(parts) + "。"
     parts = []
     if nishiki:
@@ -749,10 +752,10 @@ def hibakari_read_sentence(case, lang):
     nishiki = tile_token(case.get("naga"))
     if lang == "ja":
         if head.get("matches_luckyj"):
-            return f"Hibakari も {actual} を第一候補にしており、この例は LuckyJ/Hibakari 対 Nishiki の分岐として読む。"
+            return f"ヒバカリも {actual} を第一候補にしており、この例は LuckyJ/ヒバカリ対ニシキの分岐として読む。"
         if head.get("matches_nishiki"):
-            return f"Hibakari も Nishiki と同じ {nishiki} 寄りなので、これは守備寄り基準にも逆らう例。条件がそろう時だけ真似する。"
-        return f"Hibakari は第三候補の {top} を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。"
+            return f"ヒバカリもニシキと同じ {nishiki} 寄りなので、これは守備寄り基準にも逆らう例。条件がそろう時だけ真似する。"
+        return f"ヒバカリは第三候補の {top} を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。"
     if head.get("matches_luckyj"):
         return f"Hibakari also chooses {actual}, so read this as LuckyJ/Hibakari versus Nishiki, not LuckyJ against every NAGA head."
     if head.get("matches_nishiki"):
@@ -853,7 +856,7 @@ def point_focus_ja(point_key, case):
         return f"字牌には役割がある。ここでの {actual} は浮き牌か相手条件として扱われている。"
     if point_key == "point-19":
         return f"トップ目でも計算は続ける。{actual} が危険を減らし、次巡を残すかを見ている。"
-    return f"LuckyJ は {actual}、Nishiki は {naga}。どちらがどの未来を残すかを見る。"
+    return f"LuckyJ は {actual}、ニシキは {naga}。どちらがどの未来を残すかを見る。"
 
 
 def copy_rule_en(point_key, case):
@@ -944,8 +947,8 @@ def why_naga_tempting_ja(case):
     actual_eval = case.get("actual_eval")
     naga_eval = case.get("naga_eval")
     if actual_eval and naga_eval:
-        return f"Nishiki の {naga} は {eval_summary(naga_eval, 'ja')} を残すので魅力がある。LuckyJ の {actual} は {eval_summary(actual_eval, 'ja')}。{danger_gap_phrase(case, 'ja')}"
-    return f"Nishiki 第一候補の {naga} はこの局面で重みが高い ({format_percent(case.get('naga_prob'))}、LuckyJ は {format_percent(case.get('actual_prob'))})。{danger_gap_phrase(case, 'ja')}"
+        return f"ニシキの {naga} は {eval_summary(naga_eval, 'ja')} を残すので魅力がある。LuckyJ の {actual} は {eval_summary(actual_eval, 'ja')}。{danger_gap_phrase(case, 'ja')}"
+    return f"ニシキ第一候補の {naga} はこの局面で重みが高い ({format_percent(case.get('naga_prob'))}、LuckyJ は {format_percent(case.get('actual_prob'))})。{danger_gap_phrase(case, 'ja')}"
 
 
 def build_discard_guide(case, lang):
@@ -959,8 +962,8 @@ def build_discard_guide(case, lang):
         focus = point_focus_ja(point_key, case)
         read = f"{focus} {safety} {hibakari}".strip()
         return {
-            "caption": f"LuckyJ {tile_plain(case.get('actual'))}、Nishiki {tile_plain(case.get('naga'))}",
-            "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、着順{case.get('rank')}。LuckyJ は {draw} ツモから {actual} を切り、Nishiki 第一候補は {naga}。結果: {case.get('outcome')}",
+            "caption": f"LuckyJ {tile_plain(case.get('actual'))}、ニシキ {tile_plain(case.get('naga'))}",
+            "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、着順{case.get('rank')}。LuckyJ は {draw} ツモから {actual} を切り、ニシキ第一候補は {naga}。結果: {case.get('outcome')}",
             "read": read,
             "whyNot": why_naga_tempting_ja(case),
             "copy": copy_rule_ja(point_key, case),

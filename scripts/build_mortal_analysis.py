@@ -503,11 +503,11 @@ def model_agreement_text(model: dict[str, Any], actual: dict[str, Any], example:
     naga = agrees_with_naga(model, example)
     if lang == "ja":
         if luckyj and naga:
-            return "Mortal は LuckyJ と Nishiki の共通線に同意している。"
+            return "Mortal は LuckyJ とニシキの共通線に同意している。"
         if luckyj:
             return "Mortal は LuckyJ 側に寄っている。"
         if naga:
-            return "Mortal は Nishiki 側に寄っている。"
+            return "Mortal はニシキ側に寄っている。"
         return "Mortal は第三の選択を出している。この例は境界例として読む。"
     if luckyj and naga:
         return "Mortal agrees with the shared LuckyJ/Nishiki line."
@@ -611,8 +611,8 @@ def commentary_for(
         f"({top_weight}); LuckyJ plays {actual_line}; Nishiki's top line is discard {naga}. {agreement}"
     )
     use = f"{focus} If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ."
-    read_ja = f"{round_name}、{stage}、残り{left}枚、{score_band}。Mortal 最上位は {model_line_ja} ({top_weight})、LuckyJ 実戦は {actual_line_ja}、Nishiki 第一候補は {naga} 切り。{agreement_ja}"
-    use_ja = f"{focus_ja} Mortal が Nishiki または第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+    read_ja = f"{round_name}、{stage}、残り{left}枚、{score_band}。Mortal 最上位は {model_line_ja} ({top_weight})、LuckyJ 実戦は {actual_line_ja}、ニシキ第一候補は {naga} 切り。{agreement_ja}"
+    use_ja = f"{focus_ja} Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
     return read, use, read_ja, use_ja
 
 
@@ -735,7 +735,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
                     "post_call_candidates": [],
                     "read": f"Mortal replay missed this exact tab, so treat it as a manual review case. LuckyJ's visible choice is still reviewed against Nishiki and the table state.",
                     "how_to_use": f"Treat this tab as a manual review case until the local Mjai replay matcher covers it. Error: {exc}",
-                    "read_ja": "このタブは Mortal リプレイが一致しなかったため、手動復習として扱う。LuckyJ の実戦選択は Nishiki と場況で読む。",
+                    "read_ja": "このタブは Mortal リプレイが一致しなかったため、手動復習として扱う。LuckyJ の実戦選択はニシキと場況で読む。",
                     "how_to_use_ja": f"ローカル Mjai の照合が対応するまでは手動復習扱い。エラー: {exc}",
                 }
             )
