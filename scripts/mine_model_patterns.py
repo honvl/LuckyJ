@@ -30,6 +30,8 @@ OUT = ROOT / "site" / "model-patterns.json"
 RANDOM_SEED = 20260630
 
 OUTSIDE = {"honor", "terminal"}
+WINDS = ["E", "S", "W", "N"]
+DRAGONS = {"P", "F", "C"}
 PATTERN_LABELS = {
     "keep_dora_or_red": "Keep dora/red-five material instead of taking the clean NAGA cut",
     "keep_pair_anchor": "Keep a pair or triplet anchor that NAGA wants to break",
@@ -45,6 +47,11 @@ PATTERN_LABELS = {
     "behind_risk_buy": "Behind-score choices that buy route/value with extra danger",
     "multi_threat_safe_tenpai": "Middle/late choices preserving exits with multiple threats",
     "honor_cleanup_vs_shape": "Cut a loose honor while NAGA prefers shape cleanup",
+    "clean_open_yaku_condition_honor": "Clean a singleton yakuhai before an unproven open hand can use it",
+    "early_guest_honor_cleanup": "Cut a loose non-self honor before shape cleanup in the first row",
+    "keep_self_yakuhai_pair_anchor": "Keep own yakuhai pair or triplet anchor while NAGA breaks it",
+    "spend_off_target_safety_for_shape": "Spend a safe-looking tile that does not answer the current threat",
+    "late_named_exit_over_shape": "Late keep of a named exit over NAGA's shape-cleaning discard",
 }
 
 
@@ -123,6 +130,54 @@ def is_doraish(tile: str | None, dora_markers: list[str]) -> bool:
     return "r" in tile or tile_base(tile) in {dora_from_marker(marker) for marker in dora_markers}
 
 
+def seat_wind(start: dict[str, Any], seat: int) -> str:
+    return WINDS[(seat - start.get("oya", 0)) % 4]
+
+
+def is_yakuhai_for_seat(tile: str | None, start: dict[str, Any], seat: int) -> bool:
+    return tile_base(tile) in (DRAGONS | {start.get("bakaze"), seat_wind(start, seat)})
+
+
+def meld_tiles(meld: str) -> list[str]:
+    return [tile for tile in str(meld).split() if tile and tile != "+"]
+
+
+def meld_shows_yakuhai_yaku(meld: str, start: dict[str, Any], seat: int) -> bool:
+    counts = Counter(tile_id(tile) for tile in meld_tiles(meld))
+    return any(count >= 3 and is_yakuhai_for_seat(base.TILES[idx], start, seat) for idx, count in counts.items())
+
+
+def meld_all_simples(meld: str) -> bool:
+    tiles = meld_tiles(meld)
+    return bool(tiles) and all(base.tile_class(tile) == "simple" for tile in tiles)
+
+
+def yaku_condition_threats(start: dict[str, Any], target: int, melds: list[list[str]], tile: str | None) -> list[int]:
+    if base.tile_class(tile) != "honor":
+        return []
+    threats = []
+    for seat, player_melds in enumerate(melds):
+        if seat == target or not player_melds:
+            continue
+        if any(meld_shows_yakuhai_yaku(meld, start, seat) for meld in player_melds):
+            continue
+        if all(meld_all_simples(meld) for meld in player_melds):
+            continue
+        if is_yakuhai_for_seat(tile, start, seat):
+            threats.append(seat)
+    return threats
+
+
+def visible_count(tile: str | None, discards: list[list[str]], melds: list[list[str]], dora_markers: list[str]) -> int:
+    if not tile:
+        return 0
+    target = tile_id(tile)
+    count = sum(1 for marker in dora_markers if tile_id(marker) == target)
+    count += sum(1 for river in discards for discarded in river if tile_id(discarded) == target)
+    count += sum(1 for player_melds in melds for meld in player_melds for item in meld_tiles(meld) if tile_id(item) == target)
+    return count
+
+
 def remove_tile(hand: list[str], tile: str | None) -> bool:
     if not tile:
         return False
@@ -174,6 +229,28 @@ def pattern_keys(decision: dict[str, Any]) -> list[str]:
         keys.append("multi_threat_safe_tenpai")
     if decision["actual_class"] == "honor" and decision["naga_class"] == "simple" and decision["actual_count"] == 1:
         keys.append("honor_cleanup_vs_shape")
+    if (
+        decision["actual_class"] == "honor"
+        and decision["actual_count"] == 1
+        and decision["actual_yaku_condition_threats"] > 0
+        and decision["own_discards"] <= 6
+        and decision["actual_visible_count"] <= 1
+    ):
+        keys.append("clean_open_yaku_condition_honor")
+    if (
+        decision["actual_class"] == "honor"
+        and decision["naga_class"] == "simple"
+        and decision["actual_count"] == 1
+        and not decision["actual_is_self_yakuhai"]
+        and decision["own_discards"] <= 5
+    ):
+        keys.append("early_guest_honor_cleanup")
+    if decision["naga_is_self_yakuhai"] and decision["naga_count"] >= 2 and decision["actual_count"] == 1:
+        keys.append("keep_self_yakuhai_pair_anchor")
+    if decision["actual_safety_kind"] and not decision["actual_safety_vs_threat"] and decision["naga_class"] == "simple":
+        keys.append("spend_off_target_safety_for_shape")
+    if decision["stage"] == "late" and decision["naga_safety_kind"] and decision["naga_safety_vs_threat"] and decision["naga_class"] in OUTSIDE:
+        keys.append("late_named_exit_over_shape")
     return keys
 
 
@@ -193,6 +270,7 @@ def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
             start = kyoku[0].get("info", {}).get("msg", {})
             hands = [list(hand) for hand in start.get("tehais", [[], [], [], []])]
             discards = [[], [], [], []]
+            melds = [[], [], [], []]
             open_melds = [0, 0, 0, 0]
             reached = [False, False, False, False]
             dora_markers = [start.get("dora_marker")] if start.get("dora_marker") else []
@@ -281,6 +359,13 @@ def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
                                 "active_threats": sum(1 for seat in range(4) if seat != target and (reached[seat] or open_melds[seat])),
                                 "riichi_threats": sum(1 for seat in range(4) if seat != target and reached[seat]),
                                 "open_threats": sum(1 for seat in range(4) if seat != target and open_melds[seat]),
+                                "own_discards": len(discards[target]),
+                                "actual_visible_count": visible_count(actual, discards, melds, dora_markers),
+                                "naga_visible_count": visible_count(naga, discards, melds, dora_markers),
+                                "actual_is_self_yakuhai": is_yakuhai_for_seat(actual, start, target),
+                                "naga_is_self_yakuhai": is_yakuhai_for_seat(naga, start, target),
+                                "actual_yaku_condition_threats": len(yaku_condition_threats(start, target, melds, actual)),
+                                "naga_yaku_condition_threats": len(yaku_condition_threats(start, target, melds, naga)),
                             }
                             if mismatch:
                                 decision["patterns"] = pattern_keys(decision)
@@ -293,6 +378,9 @@ def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
 
                 elif msg_type in base.HURO_TYPES:
                     if actor is not None:
+                        consumed = msg.get("consumed", [])
+                        call_tiles = consumed + ([msg.get("pai")] if msg.get("pai") else [])
+                        melds[actor].append(" ".join(call_tiles))
                         open_melds[actor] += 1
                     for tile in msg.get("consumed", []):
                         if actor is not None:
@@ -303,13 +391,18 @@ def collect_decisions(max_reports: int | None = None) -> list[dict[str, Any]]:
 
                 elif msg_type == "ankan":
                     if actor is not None:
+                        consumed = msg.get("consumed", [])
+                        melds[actor].append(" ".join(consumed))
                         open_melds[actor] += 1
-                        for tile in msg.get("consumed", []):
+                        for tile in consumed:
                             remove_tile(hands[actor], tile)
 
                 elif msg_type == "kakan":
                     if actor is not None:
-                        remove_tile(hands[actor], msg.get("pai"))
+                        tile = msg.get("pai")
+                        if tile:
+                            melds[actor].append(f"+ {tile}")
+                        remove_tile(hands[actor], tile)
 
                 elif msg_type == "reach":
                     if actor is not None:
@@ -518,6 +611,11 @@ def propose_points(summary: dict[str, Any], mortal_summary: dict[str, Any]) -> l
     mortal_patterns = mortal_summary.get("by_pattern", {}) if mortal_summary.get("enabled") else {}
 
     candidates = [
+        ("clean_open_yaku_condition_honor", "Clean yakuhai before an unproven open hand can use it"),
+        ("early_guest_honor_cleanup", "Guest honors can be removed before shape when they have no self job"),
+        ("keep_self_yakuhai_pair_anchor", "Self yakuhai pairs are route anchors, not ordinary pairs"),
+        ("spend_off_target_safety_for_shape", "Safe-looking tiles can be spent when they do not answer the live target"),
+        ("late_named_exit_over_shape", "Late safe exits must be named to a live opponent"),
         ("keep_pair_anchor", "Protect pair anchors until the hand declares its route"),
         ("keep_dora_or_red", "Do not spend value seeds just to obey local cleanliness"),
         ("spend_defensive_exit", "Safe-looking tiles can be spent when they are stale or off-target"),
@@ -528,7 +626,8 @@ def propose_points(summary: dict[str, Any], mortal_summary: dict[str, Any]) -> l
     ]
     for key, title in candidates:
         stat = summary["patterns"].get(key)
-        if not stat or stat["n"] < 250:
+        min_n = 100 if key == "keep_self_yakuhai_pair_anchor" else 250
+        if not stat or stat["n"] < min_n:
             continue
         mortal_stat = mortal_patterns.get(key, {})
         proposals.append(

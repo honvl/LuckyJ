@@ -1,23 +1,22 @@
-# Model-mined LuckyJ/NAGA/Mortal patterns - 2026-06-30
+# Model-mined LuckyJ/NAGA patterns - 2026-06-30
 
 ## Method
 
 Command:
 
 ```bash
-.venv/bin/python scripts/mine_model_patterns.py --mortal-per-pattern 10 --mortal-total 140 --output site/model-patterns.json
+.venv/bin/python scripts/mine_model_patterns.py --no-mortal --output site/model-patterns.json
 ```
 
-The script mines cached NAGA reports for LuckyJ draw-discard decisions where LuckyJ's real discard differs from NAGA's top discard. It excludes reach-declaration decisions and then tags each mismatch by coarse tactical pattern: safety retention, stale safety spend, outside-vs-inside shape, pair handling, score position, active threats, and dora/red-five retention.
+The script mines cached NAGA reports for LuckyJ draw-discard decisions where LuckyJ's real discard differs from NAGA's top discard. It excludes reach-declaration decisions and tags each mismatch by tactical family: safety retention, stale safety spending, outside-vs-inside shape, pair handling, score position, active threats, dora/red-five retention, and newer honor/yakuhai subfamilies.
 
-The Mortal pass is a deterministic replay sample from local Mjai logs and the local Mortal/libriichi policy. It is a cross-check, not a source of broad frequencies.
+This refreshed artifact is NAGA-side only. The static site still has the separate per-point `site/mortal-analysis.json` panels generated earlier from local Mortal/libriichi assets, but `site/model-patterns.json` now disables Mortal sampling so the expanded pattern scan can stay fast and reproducible.
 
 Definitions:
 
 - `bad_rate`: share of mismatches where NAGA assigned LuckyJ's actual discard below 5%.
 - `bad_lift`: percentage-point change in `bad_rate` compared with other LuckyJ/NAGA mismatches. Negative is better.
 - `danger_delta`: LuckyJ discard danger minus NAGA discard danger. Negative means LuckyJ's discard is safer by the local danger proxy.
-- Mortal agreement columns count sampled positions where Mortal's top discard matched LuckyJ or NAGA.
 
 ## Overall result
 
@@ -25,72 +24,55 @@ Definitions:
 - LuckyJ/NAGA discard mismatches: 36,206, or 26.8%.
 - Among all mismatches, NAGA's severe-disagreement proxy was 31.0%.
 - Among all mismatches, the large probability-gap rate was 56.1%.
-- Mortal replay sample: 140 matched positions, 0 missing.
-
-The main caution: Mortal mostly sided with NAGA on the sampled high-gap positions. That means these are discovery signals for candidate points, not proof that a broad LuckyJ rule is correct.
 
 ## Pattern ranking
 
-| Pattern | N | Bad rate | Bad lift | Danger delta | Mortal LuckyJ | Mortal NAGA |
-|---|---:|---:|---:|---:|---:|---:|
-| Cut loose honor while NAGA keeps shape | 2,348 | 20.9% | -10.9 pp | -0.037 | 2/19 | 17/19 |
-| Choose a lower-danger discard than NAGA | 3,741 | 21.8% | -10.2 pp | -0.149 | 10/59 | 47/59 |
-| Keep pair/triplet anchor NAGA wants to break | 2,338 | 21.9% | -9.8 pp | -0.019 | 1/28 | 24/28 |
-| Cut outside material while keeping inside shape | 5,281 | 23.1% | -9.2 pp | -0.030 | 8/52 | 42/52 |
-| Keep a defensive exit against an active threat | 8,406 | 24.4% | -8.7 pp | +0.012 | 14/130 | 107/130 |
-| Middle/late exits with multiple threats | 4,386 | 23.5% | -8.6 pp | -0.001 | 10/81 | 64/81 |
-| Spend a safe-looking tile while NAGA keeps it | 4,057 | 23.9% | -8.0 pp | -0.035 | 3/10 | 6/10 |
-| Keep dora/red-five material | 617 | 24.6% | -6.5 pp | -0.011 | 2/10 | 8/10 |
-| Leader choices that do not add danger | 5,153 | 29.6% | -1.7 pp | -0.025 | 3/15 | 11/15 |
-| Riskier than NAGA | 5,033 | 33.4% | +2.8 pp | +0.134 | 7/81 | 66/81 |
-| Behind-score risk buy | 2,364 | 34.5% | +3.7 pp | +0.120 | 3/40 | 32/40 |
-| Generic keep genbutsu/suji exit | 8,590 | 35.1% | +5.4 pp | +0.036 | 1/34 | 32/34 |
-| Break pair earlier than NAGA | 4,318 | 35.9% | +5.6 pp | +0.021 | 5/39 | 31/39 |
-| Cut middle tile while keeping outside/safety/yaku | 10,926 | 38.6% | +10.9 pp | +0.029 | 2/17 | 13/17 |
+| Pattern | N | Bad rate | Bad lift | Danger delta | Read |
+|---|---:|---:|---:|---:|---|
+| Cut a loose non-self honor before shape cleanup in the first row | 278 | 19.4% | -11.7 pp | -0.024 | Good narrow version of early honor cleanup: the honor is not self-value and LuckyJ removes it before prettifying shape. |
+| Late keep of a named exit over NAGA's shape-cleaning discard | 931 | 20.2% | -11.1 pp | +0.014 | Late safe tiles are supported when they answer a live target, not when they are generic comfort. |
+| Clean a singleton yakuhai before an unproven open hand can use it | 285 | 24.6% | -6.5 pp | +0.013 | This is the measured version of the manually noticed yakuhai-cleaning idea. Sample is smaller but directionally useful. |
+| Keep own yakuhai pair or triplet anchor while NAGA breaks it | 135 | 20.0% | -11.1 pp | +0.049 | Small but strong subcase: own yakuhai pairs behave like route anchors, not ordinary pair clutter. |
+| Spend a safe-looking tile that does not answer the current threat | 2,992 | 22.1% | -9.7 pp | -0.026 | Refines stale safety: the safe label matters less than whether it names the current target. |
+| Cut a loose honor while NAGA prefers shape cleanup | 2,348 | 20.9% | -10.9 pp | -0.037 | Broad honor cleanup remains one of the strongest NAGA-side signals. |
+| Choose a lower immediate-danger discard than NAGA | 3,741 | 21.8% | -10.2 pp | -0.149 | The cleanest defensive pricing signal. |
+| Keep a pair or triplet anchor that NAGA wants to break | 2,338 | 21.9% | -9.8 pp | -0.019 | Supported when the anchor has a job: yaku, value, route fork, or defense. |
+| Cut outside material while keeping middle-tile shape | 5,281 | 23.1% | -9.2 pp | -0.030 | Outside cuts can be route-preserving, not just timid. |
+| Keep a defensive exit against an active riichi/open threat | 8,406 | 24.4% | -8.7 pp | +0.012 | Strong only because the exit is tied to a live opponent. |
+| Middle/late choices preserving exits with multiple threats | 4,386 | 23.5% | -8.6 pp | -0.001 | Multi-threat defense is an inventory problem: which exit survives the next draw. |
+| Spend a safe-looking tile while NAGA keeps it | 4,057 | 23.9% | -8.0 pp | -0.035 | Safe tiles expire when their target or route value expires. |
+| Keep dora/red-five material | 617 | 24.6% | -6.5 pp | -0.011 | Value seeds are worth preserving when they improve a real route. |
+| Leader choices that do not add danger | 5,153 | 29.6% | -1.7 pp | -0.025 | Leader safety is a qualifier, not a plan. |
+| Behind-score choices that buy route/value with extra danger | 2,364 | 34.5% | +3.7 pp | +0.120 | Broad behind-score risk buying is not validated; curate only concrete-upside cases. |
+| Generic keep genbutsu/suji exit | 8,590 | 35.1% | +5.4 pp | +0.036 | Do not promote generic safety hoarding. |
+| Break pair earlier than NAGA | 4,318 | 35.9% | +5.6 pp | +0.021 | Pair breaks need subcategories; the broad action is risky by this proxy. |
+| Cut middle tile while keeping outside/safety/yaku | 10,926 | 38.6% | +10.9 pp | +0.029 | The broad "keep outside material" story is too loose and often bad. |
 
-## Additional points worth drafting
+## New mineable points
 
-1. Spend stale safety before it steals shape.
+1. Yakuhai cleaning is real but narrow.
 
-   The `spend_defensive_exit` pattern is one of the cleaner signals: 4,057 cases, 23.9% bad rate, -8.0 pp lift, and -0.035 average danger delta. Mortal only backed LuckyJ in 3 of 10 sampled cases, so this needs hand-picked examples, but it is a real point: a genbutsu/suji tile is not valuable just because it is safe. Its value depends on whether it protects against the current target and whether holding it damages the hand's next decision.
+   The open-hand yaku-condition subset has 285 cases and a 24.6% bad rate, 6.5 pp better than other mismatches. It should stay tied to visible context: a singleton yakuhai, an open opponent that has not shown a yaku, and a hand that does not need that tile as self-value.
 
-2. Late outside cuts can be route-preserving, not just timid.
+2. Guest-honor cleanup is stronger than generic honor cleanup.
 
-   `cut_outside_keep_inside` had 5,281 cases, 23.1% bad rate, -9.2 pp lift, and -0.030 danger delta. The Mortal-agreeing examples include late 1s-vs-2s, 1p-vs-3p, and 9m-vs-6m decisions. This is a good new point if written narrowly: when the hand is already real and the table is dangerous, cutting the edge tile can preserve a live inner route while reducing immediate exposure.
+   The first-row non-self honor subset has 278 cases, a 19.4% bad rate, and an 11.7 pp improvement versus other mismatches. This is a useful split: LuckyJ is not simply throwing honors; it is often removing honors that have no self job before NAGA's preferred shape cleanup.
 
-3. Multi-threat defense is target-specific, not generic tile hoarding.
+3. Self yakuhai pairs are route anchors.
 
-   `multi_threat_safe_tenpai` and `threat_keep_exit` both look better than the mismatch baseline, while generic `keep_defensive_exit` is worse than baseline. This directly changes the defense framing: LuckyJ keeping suji/genbutsu is only interesting when the tile is an exit against a live riichi/open threat and the timing is middle or late. Early, generic safety retention is not supported by this analysis.
+   The self-yakuhai pair/triplet anchor subset is small at 135 cases, but its bad rate is 20.0%, 11.1 pp better than baseline. Treat this as a drill category rather than a headline rule until more examples are reviewed.
 
-4. Loose honor cleanup deserves a separate branch from open-hand yaku-condition cleanup.
+4. Stale safety should be target-checked.
 
-   `honor_cleanup_vs_shape` was the best NAGA-side statistical pattern: 2,348 cases, 20.9% bad rate, -10.9 pp lift, and -0.037 danger delta. Mortal mostly sided with NAGA in the sample, so this should not become a blanket rule. It is still worth mining for examples that split loose self-yakuhai, opponent yaku-condition tiles, and dead honors.
+   The off-target safety-spend subset has 2,992 cases and a 22.1% bad rate, 9.7 pp better than baseline. This explains why "safe tile" language must name the target opponent; otherwise the tile can become route clutter.
 
-5. Score-position safety is probably a drill, not a headline principle.
+5. Late exits need names.
 
-   `leader_low_risk` is mildly better than baseline and safer on average, but Mortal did not strongly back it. It should become a qualifier inside defense points: when leading, LuckyJ can accept lower route ambition only if the discard also does not increase danger.
+   The late named-exit subset has 931 cases and a 20.2% bad rate, 11.1 pp better than baseline. This supports late safety only when the kept tile defends an actual live threat.
 
-## Do not promote yet
+## Do not promote
 
-- Generic "keep genbutsu/suji because it is safe" is not supported. It had 8,590 cases but a 35.1% bad rate, +5.4 pp worse than other mismatches, and Mortal sided with NAGA in 32 of 34 sampled cases.
-- Pair-anchor rules are unstable. Keeping pair anchors looks good by NAGA aggregate, but Mortal heavily rejected the sampled high-gap cases. Breaking pairs early is worse by both NAGA aggregate and Mortal sample. This needs hand-shape-specific subcategories before becoming a point.
-- Behind-score risk buying is not strong enough as a broad point. It increases danger and is worse than baseline by NAGA's severe-disagreement proxy. Keep only sharply curated examples where the upside is concrete.
-
-## Mortal-agreeing examples to review next
-
-- `2023042214gm-0089-0000-ad521d37`, game 107, kyoku 7, left 16: LuckyJ/Mortal discard 1s, NAGA discard 2s.
-- `2023042723gm-0029-0000-969cebce`, game 280, kyoku 8, left 22: LuckyJ/Mortal discard 1p, NAGA discard 3p.
-- `2023042810gm-0029-0000-6cf0f648`, game 286, kyoku 8, left 7: LuckyJ/Mortal discard 5p, NAGA discard 4p.
-- `2023043013gm-0029-0000-bbd6fa72`, game 352, kyoku 0, left 43: LuckyJ/Mortal discard 5m, NAGA discard P.
-- `2023050217gm-0029-0000-bd0f6f3f`, game 427, kyoku 9, left 31: LuckyJ/Mortal discard 9s, NAGA discard 5p.
-- `2023050323gm-0029-0000-a95fb42e`, game 472, kyoku 13, left 12: LuckyJ/Mortal discard 9m, NAGA discard 6m.
-- `2023050714gm-0029-0000-542d2dff`, game 584, kyoku 6, left 27: LuckyJ/Mortal discard N, NAGA discard 1s.
-
-## Next book edits
-
-Use this analysis to add or refine points in this order:
-
-1. Add a stale-safety point: "Safe tiles expire when they no longer defend the current danger."
-2. Add a late outside-cut point: "Edge cuts can preserve the winning route under pressure."
-3. Revise the existing defense language so suji/genbutsu retention is tied to specific threats and timing.
-4. Extend the yakuhai cleanup point with subcases for self value, opponent yaku-condition tiles, and dead honors.
+- Generic "keep genbutsu/suji because it is safe" remains unsupported.
+- Broad "break pairs early" remains too noisy.
+- Broad behind-score danger buying remains too expensive unless the upside is concrete.
+- Broad middle-tile cuts to keep outside material are often bad; the route-preserving outside-cut point is the supported opposite subcase.

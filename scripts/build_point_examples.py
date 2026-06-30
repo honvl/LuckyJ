@@ -19,6 +19,8 @@ OUT = Path("site/point-examples.json")
 SEAT_NAMES = ["self", "shimocha", "toimen", "kamicha"]
 WINDS = ["E", "S", "W", "N"]
 DRAGONS = {"P", "F", "C"}
+EXAMPLES_PER_POINT = 10
+POOL_PER_POINT = 40
 
 
 POINT_TEXT = {
@@ -457,23 +459,54 @@ def candidate_signature(candidate):
     )
 
 
-def add(selected, used, point_key, candidate):
+def selected_min_score(selected, point_key):
+    rows = selected.get(point_key) or []
+    if not rows:
+        return float("-inf")
+    return min(row["score"] for row in rows)
+
+
+def wants_candidate(selected, point_key, score):
+    rows = selected.get(point_key) or []
+    return len(rows) < POOL_PER_POINT or score > selected_min_score(selected, point_key)
+
+
+def add(selected, used, point_key, candidate, score=0.0):
     sig = candidate_signature(candidate)
-    if point_key not in selected and candidate and sig not in used:
-        selected[point_key] = candidate
-        used.add(sig)
+    if not candidate or not sig:
+        return
+    point_seen = used.setdefault(point_key, set())
+    if sig in point_seen:
+        return
+    rows = selected.setdefault(point_key, [])
+    if len(rows) >= POOL_PER_POINT:
+        worst_idx, worst = min(enumerate(rows), key=lambda item: item[1]["score"])
+        if score <= worst["score"]:
+            return
+        rows.pop(worst_idx)
+        point_seen.discard(candidate_signature(worst["case"]))
+    rows.append({"score": score, "case": candidate})
+    point_seen.add(sig)
 
 
 def add_best(selected, used, scores, point_key, candidate, score):
-    if not candidate:
-        return
-    sig = candidate_signature(candidate)
-    if sig in used and selected.get(point_key) and candidate_signature(selected[point_key]) != sig:
-        return
-    if point_key not in selected or score > scores.get(point_key, float("-inf")):
-        selected[point_key] = candidate
-        scores[point_key] = score
-        used.add(sig)
+    add(selected, used, point_key, candidate, score)
+
+
+def finalize_examples(selected):
+    output = {}
+    for point_key in sorted(POINT_TEXT):
+        rows = selected.get(point_key, [])
+        rows = sorted(rows, key=lambda row: row["score"], reverse=True)
+        examples = []
+        for index, row in enumerate(rows[:EXAMPLES_PER_POINT], 1):
+            case = row["case"]
+            case["example_index"] = index
+            case["example_score"] = round(row["score"], 4)
+            examples.append(case)
+        if examples:
+            output[point_key] = examples
+    return output
 
 
 def preferred_bonus(point_key, row, kyoku_index, left, actual, naga):
@@ -523,78 +556,157 @@ def try_discard_points(selected, used, scores, row, kyoku_index, pos, start, sta
     naga_read = safety_read(naga, target, discards, reached, open_melds)
     gap = rows[0][1] - rows[0][2]
 
-    if "point-08" not in selected and "reach" in state:
-        add(selected, used, "point-08", make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers))
+    if "reach" in state:
+        score_value = 0.4 + gap + (max((p / 10000.0 for p in state.get("reach", [])), default=0.0) / 2)
+        if wants_candidate(selected, "point-08", score_value):
+            add(
+                selected,
+                used,
+                "point-08",
+                make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers),
+                score_value,
+            )
 
-    if "point-01" not in selected and score >= 35000 and actual_d is not None and naga_d is not None and actual_d <= naga_d:
-        add(selected, used, "point-01", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-01"))
+    if score >= 35000 and actual_d is not None and naga_d is not None and actual_d <= naga_d:
+        score_value = gap + max(0.0, naga_d - actual_d) + (0.2 if stage in {"middle", "late"} else 0.0)
+        if wants_candidate(selected, "point-01", score_value):
+            add(
+                selected,
+                used,
+                "point-01",
+                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-01"),
+                score_value,
+            )
 
-    if "point-02" not in selected and stage == "early" and actual_cls == "simple" and naga_cls in {"honor", "terminal"}:
-        add(selected, used, "point-02", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-02"))
+    if stage == "early" and actual_cls == "simple" and naga_cls in {"honor", "terminal"}:
+        score_value = gap + (0.25 if naga_read["kind"] else 0.0) + (0.2 if tile_count(hands[target], naga) >= 2 else 0.0)
+        if wants_candidate(selected, "point-02", score_value):
+            add(
+                selected,
+                used,
+                "point-02",
+                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-02"),
+                score_value,
+            )
 
-    if "point-05" not in selected and actual_cls == "simple" and naga_cls in {"honor", "terminal"} and (actual_d is None or naga_d is None or actual_d >= naga_d):
-        add(selected, used, "point-05", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-05"))
+    if actual_cls == "simple" and naga_cls in {"honor", "terminal"} and (actual_d is None or naga_d is None or actual_d >= naga_d):
+        score_value = gap + (max(0.0, actual_d - naga_d) if actual_d is not None and naga_d is not None else 0.0)
+        if stage == "middle":
+            score_value += 0.15
+        if wants_candidate(selected, "point-05", score_value):
+            add(
+                selected,
+                used,
+                "point-05",
+                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-05"),
+                score_value,
+            )
 
-    if "point-06" not in selected and stage == "early" and naga != actual:
-        case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-06")
-        if case and case["actual_eval"]["ukeire"] < case["naga_eval"]["ukeire"] and case["actual_eval"]["kept_honors"] >= case["naga_eval"]["kept_honors"]:
-            add(selected, used, "point-06", case)
+    if stage == "early" and naga != actual:
+        score_value = gap + (0.2 if score < 25000 else 0.0)
+        if wants_candidate(selected, "point-06", score_value):
+            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-06")
+            if case and case["actual_eval"]["ukeire"] < case["naga_eval"]["ukeire"] and case["actual_eval"]["kept_honors"] >= case["naga_eval"]["kept_honors"]:
+                add(selected, used, "point-06", case, score_value)
 
-    if "point-09" not in selected and actual_d is not None and naga_d is not None and actual_d < 0.02 and naga_d > 0.08:
-        add(selected, used, "point-09", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-09"))
+    if actual_d is not None and naga_d is not None and actual_d < 0.02 and naga_d > 0.08:
+        score_value = gap + (naga_d - actual_d) + 0.15 * active_threats
+        if wants_candidate(selected, "point-09", score_value):
+            add(
+                selected,
+                used,
+                "point-09",
+                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-09"),
+                score_value,
+            )
 
     kept_read = safety_read(naga, target, discards, reached, open_melds)
-    if "point-14" not in selected and naga != actual and kept_read["kind"] and kept_read["safe_against_threat"]:
-        add(selected, used, "point-14", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-14"))
+    if naga != actual and kept_read["kind"] and kept_read["safe_against_threat"]:
+        score_value = gap + 0.25 + 0.15 * active_threats
+        if stage in {"middle", "late"}:
+            score_value += 0.15
+        if wants_candidate(selected, "point-14", score_value):
+            add(
+                selected,
+                used,
+                "point-14",
+                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-14"),
+                score_value,
+            )
 
     if naga != actual and actual_read["kind"] and not naga_read["kind"]:
-        case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-15")
         score_value = preferred_bonus("point-15", row, kyoku_index, left, actual, naga) + gap
         if actual_d is not None and naga_d is not None:
             score_value += max(0.0, naga_d - actual_d)
         if active_threats:
             score_value += 0.2
-        add_best(selected, used, scores, "point-15", case, score_value)
+        if wants_candidate(selected, "point-15", score_value):
+            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-15")
+            add_best(selected, used, scores, "point-15", case, score_value)
 
     if naga != actual and actual_cls == "terminal" and naga_cls == "simple" and stage in {"middle", "late"}:
-        case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-16")
         score_value = preferred_bonus("point-16", row, kyoku_index, left, actual, naga) + gap
         if stage == "late":
             score_value += 0.3
         if actual_d is not None and naga_d is not None:
             score_value += max(0.0, naga_d - actual_d)
-        add_best(selected, used, scores, "point-16", case, score_value)
+        if wants_candidate(selected, "point-16", score_value):
+            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-16")
+            add_best(selected, used, scores, "point-16", case, score_value)
 
     if naga != actual and naga_read["kind"] and naga_read["safe_against_threat"]:
-        case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-17")
         score_value = preferred_bonus("point-17", row, kyoku_index, left, actual, naga) + gap + 0.2 * active_threats
         if stage in {"middle", "late"}:
             score_value += 0.2
-        add_best(selected, used, scores, "point-17", case, score_value)
+        if wants_candidate(selected, "point-17", score_value):
+            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-17")
+            add_best(selected, used, scores, "point-17", case, score_value)
 
     if naga != actual and actual_cls == "honor" and naga_cls == "simple" and tile_count(hands[target], actual) == 1:
-        case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-18")
         score_value = preferred_bonus("point-18", row, kyoku_index, left, actual, naga) + gap
         if actual_d is not None and naga_d is not None:
             score_value += max(0.0, naga_d - actual_d)
         if active_threats:
             score_value += 0.1
-        add_best(selected, used, scores, "point-18", case, score_value)
+        if wants_candidate(selected, "point-18", score_value):
+            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-18")
+            add_best(selected, used, scores, "point-18", case, score_value)
 
     if naga != actual and score >= 35000 and (actual_d is None or naga_d is None or actual_d <= naga_d + 0.02):
-        case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-19")
         score_value = preferred_bonus("point-19", row, kyoku_index, left, actual, naga) + gap
         if actual_d is not None and naga_d is not None:
             score_value += max(0.0, naga_d - actual_d)
         if stage in {"middle", "late"}:
             score_value += 0.2
-        add_best(selected, used, scores, "point-19", case, score_value)
+        if wants_candidate(selected, "point-19", score_value):
+            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-19")
+            add_best(selected, used, scores, "point-19", case, score_value)
 
-    if "point-10" not in selected and stage == "late" and naga != actual:
-        add(selected, used, "point-10", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-10"))
+    if stage == "late" and naga != actual:
+        score_value = gap + 0.1 * active_threats
+        if actual_d is not None and naga_d is not None:
+            score_value += abs(actual_d - naga_d) / 2
+        if wants_candidate(selected, "point-10", score_value):
+            add(
+                selected,
+                used,
+                "point-10",
+                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-10"),
+                score_value,
+            )
 
-    if "point-12" not in selected and naga != actual:
-        add(selected, used, "point-12", make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-12"))
+    if naga != actual:
+        score_value = gap
+        if actual_d is not None and naga_d is not None:
+            score_value += abs(actual_d - naga_d) / 3
+        if wants_candidate(selected, "point-12", score_value):
+            add(
+                selected,
+                used,
+                "point-12",
+                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-12"),
+                score_value,
+            )
 
     if actual_cls == "honor":
         threats = yakuhai_cleanup_threats(start, target, melds, actual)
@@ -604,16 +716,23 @@ def try_discard_points(selected, used, scores, row, kyoku_index, pos, start, sta
         own_discards = len(discards[target])
         first_row = own_discards < 6
         if first_row and threats and actual_count == 1 and visible_count <= 1 and danger_ok:
-            case = make_yakuhai_cleanup_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, threats)
-            gap = (case["naga_prob"] - case["actual_prob"]) if case else 0
-            shape_bonus = 0.3 if case and base.tile_class(case["naga"]) != "honor" else 0.0
-            score = 100 - own_discards + gap + shape_bonus
-            add_best(selected, used, scores, "point-13", case, score)
+            score_value = 100 - own_discards + gap + (0.3 if naga_cls != "honor" else 0.0)
+            if wants_candidate(selected, "point-13", score_value):
+                case = make_yakuhai_cleanup_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, threats)
+                add_best(selected, used, scores, "point-13", case, score_value)
 
-    if "point-11" not in selected and start.get("end_msgs") and start["end_msgs"][0].get("type") != "hora":
+    if start.get("end_msgs") and start["end_msgs"][0].get("type") != "hora":
         delta = sum((m.get("deltas") or [0, 0, 0, 0])[target] for m in start.get("end_msgs") or [])
         if delta > 0 and stage == "late":
-            add(selected, used, "point-11", make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-11"))
+            score_value = gap + delta / 10000 + 0.15 * active_threats
+            if wants_candidate(selected, "point-11", score_value):
+                add(
+                    selected,
+                    used,
+                    "point-11",
+                    make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-11"),
+                    score_value,
+                )
 
 
 def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers):
@@ -621,18 +740,47 @@ def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, 
     if msg.get("actor") != row["actor"] or msg.get("type") not in base.HURO_TYPES:
         return
     active_threats = sum(1 for value in reached if value)
-    if "point-03" not in selected:
-        add(selected, used, "point-03", make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-03"))
-    elif "point-04" not in selected and (active_threats or (msg.get("real_dahai") and base.tile_class(msg.get("real_dahai")) in {"honor", "terminal"})):
-        add(selected, used, "point-04", make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-04"))
-    elif "point-07" not in selected:
-        add(selected, used, "point-07", make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-07"))
+    left = msg.get("left_hai_num") or 0
+    post_discard = msg.get("real_dahai")
+    exposed_bonus = 0.2 if msg.get("type") == "pon" else 0.1
+    terminal_or_honor_exit = post_discard and base.tile_class(post_discard) in {"honor", "terminal"}
+
+    score_value = exposed_bonus + max(0.0, (70 - left) / 100)
+    if wants_candidate(selected, "point-03", score_value):
+        add(
+            selected,
+            used,
+            "point-03",
+            make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-03"),
+            score_value,
+        )
+
+    if active_threats or terminal_or_honor_exit:
+        score_value = 0.4 + 0.2 * active_threats + (0.2 if terminal_or_honor_exit else 0.0)
+        if wants_candidate(selected, "point-04", score_value):
+            add(
+                selected,
+                used,
+                "point-04",
+                make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-04"),
+                score_value,
+            )
+
+    score_value = 0.3 + exposed_bonus + (0.2 if left <= 40 else 0.0)
+    if wants_candidate(selected, "point-07", score_value):
+        add(
+            selected,
+            used,
+            "point-07",
+            make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-07"),
+            score_value,
+        )
 
 
 def collect_examples():
     selected = {}
     scores = {}
-    used = set()
+    used = {}
     for row in base.parse_rows():
         target = row["actor"]
         data = base.fetch_report(row["report_id"])
@@ -701,10 +849,11 @@ def collect_examples():
 
 def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    data = collect_examples()
+    data = finalize_examples(collect_examples())
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     missing = [key for key in sorted(POINT_TEXT) if key not in data]
-    print(f"wrote {OUT}; examples={len(data)} missing={missing}")
+    counts = {key: len(value) for key, value in data.items()}
+    print(f"wrote {OUT}; points={len(data)} examples={sum(counts.values())} missing={missing}")
 
 
 if __name__ == "__main__":

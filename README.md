@@ -13,7 +13,7 @@ Japanese translation: https://honvl.github.io/LuckyJ/ja.html
 - `scripts/analyze_luckyj.py` - fetches linked NAGA report JSONs, caches them locally, and generates the aggregate analysis.
 - `scripts/build_book_data.py` - turns aggregate and move-level counters into `site/book-data.json`.
 - `scripts/extract_case_studies.py` - replays closed-hand LuckyJ/NAGA discard disagreements with the `mahjong` shanten engine and writes `site/case-studies.json`.
-- `scripts/build_point_examples.py` - mines one concrete replay example for each numbered principle and writes `site/point-examples.json`.
+- `scripts/build_point_examples.py` - mines ranked replay examples for each numbered principle and writes `site/point-examples.json`.
 - `scripts/build_mortal_analysis.py` - locally replays the selected examples through Mortal/libriichi and writes `site/mortal-analysis.json`.
 - `scripts/mine_model_patterns.py` - mines LuckyJ/NAGA mismatch families and optionally cross-checks a deterministic sample through Mortal.
 - `scripts/validate_points.py` - maps every numbered point to statistical proxies and writes validation artifacts.
@@ -50,10 +50,10 @@ uv pip install --python .venv/bin/python numpy torch maturin
 .venv/bin/python scripts/build_mortal_analysis.py
 ```
 
-The broader model-pattern mining pass is also optional for the same reason when Mortal replay is enabled:
+The broader model-pattern mining pass is optional. The default published artifact uses NAGA-side statistics only; Mortal replay can be enabled manually for smaller cross-check samples.
 
 ```bash
-.venv/bin/python scripts/mine_model_patterns.py --mortal-per-pattern 10 --mortal-total 140 --output site/model-patterns.json
+.venv/bin/python scripts/mine_model_patterns.py --no-mortal --output site/model-patterns.json
 ```
 
 Create the local environment with:

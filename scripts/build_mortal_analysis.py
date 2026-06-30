@@ -485,7 +485,12 @@ def commentary_for(point: str, model: dict[str, Any], actual: dict[str, Any]) ->
 
 
 def build(args: argparse.Namespace) -> dict[str, Any]:
-    examples: dict[str, dict[str, Any]] = read_json(args.examples)
+    raw_examples: dict[str, Any] = read_json(args.examples)
+    examples: dict[str, dict[str, Any]] = {
+        point: rows[0] if isinstance(rows, list) else rows
+        for point, rows in raw_examples.items()
+        if (rows[0] if isinstance(rows, list) and rows else rows)
+    }
     log_ids = sorted({log_id_from_paifu(example["paifu"]) for example in examples.values()})
     engine = load_mortal_engine(args.model)
 

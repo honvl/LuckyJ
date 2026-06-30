@@ -36,8 +36,10 @@ const copy = {
     mortalTop: "Mortal top",
     modelCandidates: "Model Candidates",
     readingSplit: "Reading the Split",
-    replayExample: "Replay example",
-    finalRank: "final rank",
+	    replayExample: "Replay example",
+	    example: "Example",
+	    examples: "examples",
+	    finalRank: "final rank",
     call: "Call",
     meld: "Meld",
     discardAfterCall: "Discard after call",
@@ -95,8 +97,10 @@ const copy = {
     mortalTop: "Mortal 最上位",
     modelCandidates: "モデル候補",
     readingSplit: "分岐の読み方",
-    replayExample: "実戦例",
-    finalRank: "最終順位",
+	    replayExample: "実戦例",
+	    example: "例",
+	    examples: "例",
+	    finalRank: "最終順位",
     call: "鳴き",
     meld: "副露",
     discardAfterCall: "鳴き後の打牌",
@@ -832,69 +836,132 @@ function renderYakuhaiCleanupNote(example) {
   return block;
 }
 
+function pointExampleList(examples, pointKey) {
+  const value = examples?.[pointKey];
+  if (Array.isArray(value)) return value;
+  return value ? [value] : [];
+}
+
+function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCopy, index, total) {
+  const card = document.createElement("article");
+  card.className = "point-example-card";
+  card.innerHTML = `
+    <div class="example-head">
+      <div>
+        <p class="kicker">${t("replayExample")} ${index + 1}/${total}</p>
+        <h4>${escapeHtml(guide?.caption || example.title)}</h4>
+      </div>
+      <span>${isJa ? `ゲーム ${example.game}、${escapeHtml(roundText(example.round))}、${tilesLeftText(example.left)}` : `Game ${example.game}, ${escapeHtml(example.round)}, ${tilesLeftText(example.left)}`}</span>
+    </div>
+    <p class="case-meta">${escapeHtml(stageText(example.stage))} / ${escapeHtml(scoreBandText(example.score_band))} / ${t("finalRank")} ${rankText(example.rank)}</p>
+  `;
+  card.append(renderMahjongTable(example.table));
+
+  if (example.kind === "call") {
+    const line = document.createElement("div");
+    line.className = "call-line";
+    line.innerHTML = `
+      <span>${t("call")} ${escapeHtml(example.call)} ${tileIcon(example.called_tile, "discard-tile")} ${isJa ? "を" : "on"} ${escapeHtml(seatLabel(example.called_from))}${isJa ? "から" : ""}</span>
+      <span>${t("meld")} ${tileIcons(example.post_call_meld?.split(" "), "mini-tile")}</span>
+      <span>${t("discardAfterCall")} ${tileIcon(example.discard_after_call, "discard-tile")}</span>
+    `;
+    card.append(line);
+  } else {
+    const choices = document.createElement("div");
+    choices.className = "comparison";
+    if (example.actual_eval && example.naga_eval) {
+      choices.append(
+        comparison(t("luckyj"), example.actual_eval, example.actual_danger, example.actual_prob),
+        comparison(t("nagaTop"), example.naga_eval, example.naga_danger, example.naga_prob)
+      );
+    } else {
+      choices.innerHTML = `
+        <div class="decision"><b>${t("luckyj")}</b>${probabilityChip(t("nagaWeight"), example.actual_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.actual, "discard-tile")} <em>${escapeHtml(tileName(example.actual))}</em></span><span>${t("danger")} ${dangerText(example.actual_danger)}</span></div>
+        <div class="decision"><b>${t("nagaTop")}</b>${probabilityChip(t("nagaWeight"), example.naga_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.naga, "discard-tile")} <em>${escapeHtml(tileName(example.naga))}</em></span><span>${t("danger")} ${dangerText(example.naga_danger)}</span></div>
+      `;
+    }
+    card.append(choices);
+    card.append(safetyPanel(example.kept_tile_safety));
+  }
+  card.append(renderYakuhaiCleanupNote(example));
+  card.append(renderMortalBlock(mortalPoints?.[pointKey], pointKey, mortalCopy));
+  card.append(renderGuideBlock(guide));
+
+  const drill = document.createElement("div");
+  drill.className = "example-drill";
+  drill.innerHTML = `
+    <p><b>${t("drill")}:</b> ${escapeHtml(guide?.prompt || example.prompt)}</p>
+    <p><b>${t("answer")}:</b> ${escapeHtml(guide?.answer || example.answer)}</p>
+  `;
+
+  const links = document.createElement("p");
+  links.className = "case-links";
+  links.innerHTML = `<a href="${example.report}">${t("nagaReport")}</a> <a href="${example.paifu}">${t("tenhouLog")}</a>`;
+
+  card.append(drill, links);
+  return card;
+}
+
 function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
   for (const placeholder of document.querySelectorAll("[data-example]")) {
     const pointKey = placeholder.dataset.example;
-    const example = examples[pointKey];
-    if (!example) continue;
+    const items = pointExampleList(examples, pointKey);
+    if (!items.length) continue;
     const guide = guides?.[pointKey];
-    const card = document.createElement("article");
-    card.className = "point-example-card";
-    card.innerHTML = `
-      <div class="example-head">
-        <div>
-          <p class="kicker">${t("replayExample")}</p>
-          <h4>${escapeHtml(guide?.caption || example.title)}</h4>
-        </div>
-        <span>${isJa ? `ゲーム ${example.game}、${escapeHtml(roundText(example.round))}、${tilesLeftText(example.left)}` : `Game ${example.game}, ${escapeHtml(example.round)}, ${tilesLeftText(example.left)}`}</span>
-      </div>
-      <p class="case-meta">${escapeHtml(stageText(example.stage))} / ${escapeHtml(scoreBandText(example.score_band))} / ${t("finalRank")} ${rankText(example.rank)}</p>
-    `;
-    card.append(renderMahjongTable(example.table));
+    const shell = document.createElement("div");
+    shell.className = "point-example-tabs";
+    const tablist = document.createElement("div");
+    tablist.className = "example-tab-list";
+    tablist.setAttribute("role", "tablist");
+    tablist.setAttribute("aria-label", `${t("replayExample")} ${pointKey}`);
+    const body = document.createElement("div");
+    body.className = "example-tab-body";
+    const buttons = items.map((example, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("role", "tab");
+      button.dataset.index = String(index);
+      button.innerHTML = `<b>${index + 1}</b><span>${escapeHtml(stageText(example.stage))}</span>`;
+      button.title = isJa
+        ? `${t("example")} ${index + 1}: ゲーム ${example.game}, ${roundText(example.round)}`
+        : `${t("example")} ${index + 1}: Game ${example.game}, ${example.round}`;
+      tablist.append(button);
+      return button;
+    });
 
-    if (example.kind === "call") {
-      const line = document.createElement("div");
-      line.className = "call-line";
-      line.innerHTML = `
-        <span>${t("call")} ${escapeHtml(example.call)} ${tileIcon(example.called_tile, "discard-tile")} ${isJa ? "を" : "on"} ${escapeHtml(seatLabel(example.called_from))}${isJa ? "から" : ""}</span>
-        <span>${t("meld")} ${tileIcons(example.post_call_meld?.split(" "), "mini-tile")}</span>
-        <span>${t("discardAfterCall")} ${tileIcon(example.discard_after_call, "discard-tile")}</span>
-      `;
-      card.append(line);
-    } else {
-      const choices = document.createElement("div");
-      choices.className = "comparison";
-      if (example.actual_eval && example.naga_eval) {
-        choices.append(
-          comparison(t("luckyj"), example.actual_eval, example.actual_danger, example.actual_prob),
-          comparison(t("nagaTop"), example.naga_eval, example.naga_danger, example.naga_prob)
-        );
-      } else {
-        choices.innerHTML = `
-          <div class="decision"><b>${t("luckyj")}</b>${probabilityChip(t("nagaWeight"), example.actual_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.actual, "discard-tile")} <em>${escapeHtml(tileName(example.actual))}</em></span><span>${t("danger")} ${dangerText(example.actual_danger)}</span></div>
-          <div class="decision"><b>${t("nagaTop")}</b>${probabilityChip(t("nagaWeight"), example.naga_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.naga, "discard-tile")} <em>${escapeHtml(tileName(example.naga))}</em></span><span>${t("danger")} ${dangerText(example.naga_danger)}</span></div>
-        `;
-      }
-      card.append(choices);
-      card.append(safetyPanel(example.kept_tile_safety));
+    function showExample(index) {
+      buttons.forEach((button, buttonIndex) => {
+        const selected = buttonIndex === index;
+        button.classList.toggle("active", selected);
+        button.setAttribute("aria-selected", selected ? "true" : "false");
+        button.tabIndex = selected ? 0 : -1;
+      });
+      body.replaceChildren(renderPointExampleCard(pointKey, items[index], guide, mortalPoints, mortalCopy, index, items.length));
+      applyTileCompatibility(body);
     }
-    card.append(renderYakuhaiCleanupNote(example));
-    card.append(renderMortalBlock(mortalPoints?.[pointKey], pointKey, mortalCopy));
-    card.append(renderGuideBlock(guide));
 
-    const drill = document.createElement("div");
-    drill.className = "example-drill";
-    drill.innerHTML = `
-      <p><b>${t("drill")}:</b> ${escapeHtml(guide?.prompt || example.prompt)}</p>
-      <p><b>${t("answer")}:</b> ${escapeHtml(guide?.answer || example.answer)}</p>
-    `;
+    tablist.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-index]");
+      if (!button) return;
+      showExample(Number(button.dataset.index));
+    });
+    tablist.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const current = buttons.findIndex((button) => button.classList.contains("active"));
+      const next =
+        event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? buttons.length - 1
+            : (current + (event.key === "ArrowRight" ? 1 : -1) + buttons.length) % buttons.length;
+      showExample(next);
+      buttons[next].focus();
+    });
 
-    const links = document.createElement("p");
-    links.className = "case-links";
-    links.innerHTML = `<a href="${example.report}">${t("nagaReport")}</a> <a href="${example.paifu}">${t("tenhouLog")}</a>`;
-
-    card.append(drill, links);
-    placeholder.replaceChildren(card);
+    shell.append(tablist, body);
+    placeholder.replaceChildren(shell);
+    showExample(0);
   }
 }
 

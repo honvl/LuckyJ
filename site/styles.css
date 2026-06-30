@@ -781,6 +781,65 @@ a {
   background: #fffefb;
 }
 
+.point-example-tabs {
+  margin-top: 18px;
+}
+
+.example-tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.example-tab-list button {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  cursor: pointer;
+  display: inline-flex;
+  gap: 6px;
+  justify-content: center;
+  min-height: 38px;
+  min-width: 66px;
+  padding: 6px 8px;
+}
+
+.example-tab-list button b,
+.example-tab-list button span {
+  display: block;
+  line-height: 1.1;
+}
+
+.example-tab-list button b {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.example-tab-list button span {
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.example-tab-list button.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.example-tab-list button.active b {
+  color: #fff;
+}
+
+.example-tab-list button:focus-visible {
+  outline: 3px solid rgba(44, 100, 121, 0.28);
+  outline-offset: 2px;
+}
+
+.example-tab-body {
+  min-height: 420px;
+}
+
 .example-head {
   display: flex;
   align-items: start;
