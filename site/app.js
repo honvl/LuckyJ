@@ -260,8 +260,8 @@ function caseLabelText(label) {
       "Middle route hedge": "中盤のルート保留",
       "Kept river-safe exit": "現物の出口をキープ",
       "Kept suji exit": "筋の出口をキープ",
-      "Safer than NAGA": "NAGA より安全",
-      "Riskier than NAGA": "NAGA よりリスクあり",
+      "Safer than Nishiki": "Nishiki より安全",
+      "Riskier than Nishiki": "Nishiki よりリスクあり",
       "Late tightening": "終盤の引き締め",
     }[label] || label
   );
@@ -305,7 +305,7 @@ function renderDefenseTiming(retention) {
     panel.innerHTML = `
       <b>${stageText(key)}</b>
       <strong>${splits ? pct(kept / splits) : "n/a"}</strong>
-      <span>${isJa ? "NAGA と割れた打牌で現物/筋を残した割合" : "of NAGA-split discards kept a river-safe or suji tile"}</span>
+      <span>${isJa ? "Nishiki と割れた打牌で現物/筋を残した割合" : "of Nishiki-split discards kept a river-safe or suji tile"}</span>
       <small>${isJa ? "内訳" : "Breakdown"}: ${whole.format(item.kept_genbutsu || 0)} ${safetyKindLabel("genbutsu")}, ${whole.format(item.kept_suji || 0)} ${safetyKindLabel("suji")}, ${whole.format(item.kept_against_live_threat || 0)} ${isJa ? "脅威相手" : "live-threat exits"}${avgLeft == null ? "" : isJa ? `、平均残り${fmt.format(avgLeft)}枚` : `, avg ${fmt.format(avgLeft)} tiles left`}</small>
     `;
     target.append(panel);
@@ -983,7 +983,7 @@ function renderMortalBlock(mortal, pointKey, mortalCopy, index) {
         ${probabilityChip(t("mortalWeight"), topCandidate?.probability)}
         <span class="discard-line">${modelActionLine(mortal.mortal)}</span>
         ${agreementBadge("LuckyJ", mortal.mortal_agrees_luckyj)}
-        ${agreementBadge("NAGA", mortal.mortal_agrees_naga)}
+        ${agreementBadge("Nishiki", mortal.mortal_agrees_naga)}
       </span>
     </summary>
     <div class="mortal-details">
@@ -1264,13 +1264,13 @@ function categoryRead(key, item) {
       return `中盤では手牌が価値を証明し始める必要がある。LuckyJ の ${actualName} 切りは、Nishiki ラインが点数状況や河に対して脆い一本道へ寄せすぎる可能性を示している。`;
     }
     if (key === "kept_river_safe") {
-      return `NAGA が切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河にあり、後のリーチや副露に対する現物の出口になる。`;
+      return `Nishiki が切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河にあり、後のリーチや副露に対する現物の出口になる。`;
     }
     if (key === "kept_suji_exit") {
-      return `NAGA が切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河から筋で読めるため、後の押し引きに使える。`;
+      return `Nishiki が切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河から筋で読めるため、後の押し引きに使える。`;
     }
     if (key === "safer_than_naga") {
-      return "攻めている手の中で安全側に寄せている。LuckyJ は手を生かしながら、危険な NAGA 牌を後回しにしている。";
+      return "攻めている手の中で安全側に寄せている。LuckyJ は手を生かしながら、危険な Nishiki 牌を後回しにしている。";
     }
     if (key === "riskier_than_naga") {
       return "これは真似するハードルが高い例である。LuckyJ は今の危険を払うが、残すルートが安全そうな代替より明確に良い場合に限られる。";
@@ -1287,13 +1287,13 @@ function categoryRead(key, item) {
     return `In the middle row, the hand has to start proving itself. LuckyJ's ${actualName} discard suggests that the Nishiki line compresses the hand into a route that is too brittle for the score and river state.`;
   }
   if (key === "kept_river_safe") {
-    return `NAGA wants to cut ${nagaName}, but LuckyJ keeps it because it is already visible in an opponent river. That retained genbutsu is an exit for the next riichi or open-hand threat.`;
+    return `Nishiki wants to cut ${nagaName}, but LuckyJ keeps it because it is already visible in an opponent river. That retained genbutsu is an exit for the next riichi or open-hand threat.`;
   }
   if (key === "kept_suji_exit") {
-    return `NAGA wants to cut ${nagaName}, but LuckyJ keeps it because opponent rivers make it suji. Treat it as a timed defensive resource, weaker than genbutsu but still useful in the right spot.`;
+    return `Nishiki wants to cut ${nagaName}, but LuckyJ keeps it because opponent rivers make it suji. Treat it as a timed defensive resource, weaker than genbutsu but still useful in the right spot.`;
   }
   if (key === "safer_than_naga") {
-    return `This is a safety purchase inside an attacking hand. LuckyJ keeps the hand alive while delaying the more dangerous NAGA tile.`;
+    return `This is a safety purchase inside an attacking hand. LuckyJ keeps the hand alive while delaying the more dangerous Nishiki tile.`;
   }
   if (key === "riskier_than_naga") {
     return `Copy this only with care. LuckyJ is paying danger now because the kept route has to be clearly better than the safer-looking choice.`;

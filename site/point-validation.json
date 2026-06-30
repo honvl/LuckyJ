@@ -6,12 +6,12 @@
       "site/book-data.json"
     ],
     "qualitative_review_files": 34,
-    "eligible_decisions": 135038,
-    "mismatches": 36206,
+    "eligible_decisions": 134988,
+    "mismatches": 36193,
     "book_decisions": 147378,
     "hands": 13059,
     "games": 1256,
-    "baseline_mismatch_bad_rate": 0.31016958515163234,
+    "baseline_mismatch_bad_rate": 0.31014284530157765,
     "note": "Qualitative review examples were kept as generalized prompts only; statistical validity comes from the model and book artifacts.",
     "note_ja": "定性的な検討例は一般化した問いとしてだけ使い、統計的な妥当性はモデルと書籍由来のデータで確認した。"
   },
@@ -179,8 +179,8 @@
       "strength": "strong",
       "verdict": "Strong",
       "verdict_ja": "強い",
-      "read": "Safer-than-NAGA choices were one of the clearest support signals; danger pricing should be explicit.",
-      "read_ja": "NAGA より安全な選択は最もきれいな信号の一つで、危険度の値付けを明示すべき。",
+      "read": "Safer-than-Nishiki choices were one of the clearest support signals; danger pricing should be explicit.",
+      "read_ja": "Nishiki より安全な選択は最もきれいな信号の一つで、危険度の値付けを明示すべき。",
       "caveat": "Keep this targeted: early slimming works when the tile has little value or yaku route left.",
       "caveat_ja": "早切りは、牌の価値や役ルートが薄い時に絞る。",
       "example": "Example: cut the future-riichi liability before it becomes the only discard your hand can release.",
@@ -308,8 +308,8 @@
         },
         {
           "kind": "aggregate",
-          "text": "Model review base: 36,206 LuckyJ/NAGA mismatches from 135,038 eligible decisions; only 31.0% hit the severe-disagreement proxy.",
-          "text_ja": "モデル復習の母数: 対象 135,038 件中 LuckyJ/NAGA 不一致 36,206 件。重い不一致 proxy は 31.0% に限られる。"
+          "text": "Model review base: 36,193 LuckyJ/Nishiki mismatches from 134,988 split-head decisions; only 31.0% hit the severe-disagreement proxy.",
+          "text_ja": "モデル復習の母数: split-head 判断 134,988 件中 LuckyJ/Nishiki 不一致 36,193 件。重い不一致 proxy は 31.0% に限られる。"
         }
       ],
       "review_example": "Review example: declare when the hand's value and wait force opponents to react; stay flexible when riichi only exposes a bad route with little pressure.",
@@ -382,8 +382,8 @@
         },
         {
           "kind": "aggregate",
-          "text": "Model review base: 36,206 LuckyJ/NAGA mismatches from 135,038 eligible decisions; only 31.0% hit the severe-disagreement proxy.",
-          "text_ja": "モデル復習の母数: 対象 135,038 件中 LuckyJ/NAGA 不一致 36,206 件。重い不一致 proxy は 31.0% に限られる。"
+          "text": "Model review base: 36,193 LuckyJ/Nishiki mismatches from 134,988 split-head decisions; only 31.0% hit the severe-disagreement proxy.",
+          "text_ja": "モデル復習の母数: split-head 判断 134,988 件中 LuckyJ/Nishiki 不一致 36,193 件。重い不一致 proxy は 31.0% に限られる。"
         }
       ],
       "review_example": "Review example: third-row choices need exact tenpai, noten, deal-in, and placement arithmetic; copy a late push after the point swing is clear.",
@@ -434,29 +434,29 @@
       "strength": "strong",
       "verdict": "Strong",
       "verdict_ja": "強い",
-      "read": "The mismatch base is large, and most mismatches stay below the severe NAGA-proxy threshold.",
-      "read_ja": "不一致母数は大きく、NAGA proxy 上で重い不一致は少数にとどまる。",
+      "read": "The Nishiki mismatch base is large, and most mismatches stay below the severe-disagreement threshold.",
+      "read_ja": "Nishiki 不一致の母数は大きく、重い不一致は少数にとどまる。",
       "caveat": "A split marks a hand to study; proof comes from the purchase, risk, and table context.",
       "caveat_ja": "分岐は復習対象を示す。根拠は購入価値、危険、場況から作る。",
-      "example": "Example: if LuckyJ, NAGA, and Mortal disagree, write the purchase and the risk before adopting the move.",
-      "example_ja": "例: LuckyJ、NAGA、Mortal が割れたら、その打牌が何を買い、何を危険にするかを書く。",
+      "example": "Example: if LuckyJ, Nishiki, Hibakari, and Mortal disagree, write the purchase and the risk before adopting the move.",
+      "example_ja": "例: LuckyJ、Nishiki、Hibakari、Mortal が割れたら、その打牌が何を買い、何を危険にするかを書く。",
       "stats": [
         {
           "kind": "aggregate",
-          "text": "Model review base: 36,206 LuckyJ/NAGA mismatches from 135,038 eligible decisions; only 31.0% hit the severe-disagreement proxy.",
-          "text_ja": "モデル復習の母数: 対象 135,038 件中 LuckyJ/NAGA 不一致 36,206 件。重い不一致 proxy は 31.0% に限られる。"
+          "text": "Model review base: 36,193 LuckyJ/Nishiki mismatches from 134,988 split-head decisions; only 31.0% hit the severe-disagreement proxy.",
+          "text_ja": "モデル復習の母数: split-head 判断 134,988 件中 LuckyJ/Nishiki 不一致 36,193 件。重い不一致 proxy は 31.0% に限られる。"
         },
         {
           "kind": "pattern",
           "key": "safer_than_naga",
-          "text": "Safer-than-NAGA subset: n=3,741, bad 21.8%, lift -10.2 pp, p=<0.0001, danger delta -0.149.",
-          "text_ja": "NAGA より安全な部分集合: n=3,741, 悪手率 21.8%, 平均との差 -10.2 pp, p=<0.0001, 危険度差 -0.149。"
+          "text": "Safer-than-Nishiki subset: n=3,741, bad 21.8%, lift -10.2 pp, p=<0.0001, danger delta -0.149.",
+          "text_ja": "Nishiki より安全な部分集合: n=3,741, 悪手率 21.8%, 平均との差 -10.2 pp, p=<0.0001, 危険度差 -0.149。"
         },
         {
           "kind": "pattern",
           "key": "riskier_than_naga",
-          "text": "Riskier-than-NAGA subset: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.",
-          "text_ja": "NAGA より危険な部分集合: n=5,033, 悪手率 33.4%, 平均との差 +2.8 pp, p=6.23e-05, 危険度差 0.134。"
+          "text": "Riskier-than-Nishiki subset: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.",
+          "text_ja": "Nishiki より危険な部分集合: n=5,033, 悪手率 33.4%, 平均との差 +2.8 pp, p=6.23e-05, 危険度差 0.134。"
         }
       ],
       "review_example": "Review example: when models split, write the purchased value, safety, and route count before calling the move good or bad.",
@@ -546,8 +546,8 @@
       "strength": "strong",
       "verdict": "Strong",
       "verdict_ja": "強い",
-      "read": "Spending a safe-looking tile that NAGA kept was materially better than the mismatch baseline.",
-      "read_ja": "NAGA が残す安全寄り牌を使う分岐は、不一致平均との差で明確に良い。",
+      "read": "Spending a safe-looking tile that Nishiki kept was materially better than the mismatch baseline.",
+      "read_ja": "Nishiki が残す安全寄り牌を使う分岐は、不一致平均との差で明確に良い。",
       "caveat": "Spend it only after naming why it no longer defends the live danger.",
       "caveat_ja": "今の脅威に効かなくなった理由を名付けてから使う。",
       "example": "Example: discard yesterday's genbutsu when a new riichi makes it irrelevant and the tile blocks your tenpai route.",
@@ -713,7 +713,7 @@
         {
           "kind": "pattern",
           "key": "riskier_than_naga",
-          "text": "Riskier-than-NAGA caution: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.",
+          "text": "Riskier-than-Nishiki caution: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.",
           "text_ja": "高危険選択の警告: n=5,033, 悪手率 33.4%, 平均との差 +2.8 pp, p=6.23e-05, 危険度差 0.134。"
         },
         {

@@ -203,6 +203,10 @@ def build() -> dict[str, Any]:
     book = load_json(BOOK_PATH)
     patterns = model["summary"]["patterns"]
     overall = model["summary"]["overall"]
+    nishiki = model.get("model_split", {}).get("models", {}).get("nishiki", {})
+    review_decisions = nishiki.get("decisions", overall["decisions"])
+    review_mismatches = nishiki.get("top_mismatches", overall["mismatches"])
+    review_bad_rate = nishiki.get("severe_disagreement_rate", overall["bad_rate_among_mismatches"])
     summary = book["summary"]
     top = book["top_bottom"]["top_half"]
     bottom = book["top_bottom"]["bottom_half"]
@@ -236,8 +240,8 @@ def build() -> dict[str, Any]:
         f"流局テンパイ以上は {pct(summary['draw_tenpai_plus_rate'])} の局で発生。ノーテン罰符は本物の目的になる。",
     )
     mismatch = aggregate(
-        f"Model review base: {overall['mismatches']:,} LuckyJ/NAGA mismatches from {overall['decisions']:,} eligible decisions; only {pct(overall['bad_rate_among_mismatches'])} hit the severe-disagreement proxy.",
-        f"モデル復習の母数: 対象 {overall['decisions']:,} 件中 LuckyJ/NAGA 不一致 {overall['mismatches']:,} 件。重い不一致 proxy は {pct(overall['bad_rate_among_mismatches'])} に限られる。",
+        f"Model review base: {review_mismatches:,} LuckyJ/Nishiki mismatches from {review_decisions:,} split-head decisions; only {pct(review_bad_rate)} hit the severe-disagreement proxy.",
+        f"モデル復習の母数: split-head 判断 {review_decisions:,} 件中 LuckyJ/Nishiki 不一致 {review_mismatches:,} 件。重い不一致 proxy は {pct(review_bad_rate)} に限られる。",
     )
     self_yakuhai = aggregate(
         f"Loose self-yakuhai timing split: no-open contexts cut singletons on median turn {num(yakuhai['no_open_hand']['median_cut_turn'], 1)}, while tanyao-shaped open contexts delayed to turn {num(yakuhai['tanyao_shaped_open']['median_cut_turn'], 1)}.",
@@ -334,8 +338,8 @@ def build() -> dict[str, Any]:
             "strong",
             "Strong",
             "強い",
-            "Safer-than-NAGA choices were one of the clearest support signals; danger pricing should be explicit.",
-            "NAGA より安全な選択は最もきれいな信号の一つで、危険度の値付けを明示すべき。",
+            "Safer-than-Nishiki choices were one of the clearest support signals; danger pricing should be explicit.",
+            "Nishiki より安全な選択は最もきれいな信号の一つで、危険度の値付けを明示すべき。",
             "Keep this targeted: early slimming works when the tile has little value or yaku route left.",
             "早切りは、牌の価値や役ルートが薄い時に絞る。",
             "Example: cut the future-riichi liability before it becomes the only discard your hand can release.",
@@ -465,13 +469,13 @@ def build() -> dict[str, Any]:
             "strong",
             "Strong",
             "強い",
-            "The mismatch base is large, and most mismatches stay below the severe NAGA-proxy threshold.",
-            "不一致母数は大きく、NAGA proxy 上で重い不一致は少数にとどまる。",
+            "The Nishiki mismatch base is large, and most mismatches stay below the severe-disagreement threshold.",
+            "Nishiki 不一致の母数は大きく、重い不一致は少数にとどまる。",
             "A split marks a hand to study; proof comes from the purchase, risk, and table context.",
             "分岐は復習対象を示す。根拠は購入価値、危険、場況から作る。",
-            "Example: if LuckyJ, NAGA, and Mortal disagree, write the purchase and the risk before adopting the move.",
-            "例: LuckyJ、NAGA、Mortal が割れたら、その打牌が何を買い、何を危険にするかを書く。",
-            [mismatch, pattern(patterns, "safer_than_naga", "Safer-than-NAGA subset", "NAGA より安全な部分集合"), pattern(patterns, "riskier_than_naga", "Riskier-than-NAGA subset", "NAGA より危険な部分集合")],
+            "Example: if LuckyJ, Nishiki, Hibakari, and Mortal disagree, write the purchase and the risk before adopting the move.",
+            "例: LuckyJ、Nishiki、Hibakari、Mortal が割れたら、その打牌が何を買い、何を危険にするかを書く。",
+            [mismatch, pattern(patterns, "safer_than_naga", "Safer-than-Nishiki subset", "Nishiki より安全な部分集合"), pattern(patterns, "riskier_than_naga", "Riskier-than-Nishiki subset", "Nishiki より危険な部分集合")],
         ),
         point(
             "point-13",
@@ -524,8 +528,8 @@ def build() -> dict[str, Any]:
             "strong",
             "Strong",
             "強い",
-            "Spending a safe-looking tile that NAGA kept was materially better than the mismatch baseline.",
-            "NAGA が残す安全寄り牌を使う分岐は、不一致平均との差で明確に良い。",
+            "Spending a safe-looking tile that Nishiki kept was materially better than the mismatch baseline.",
+            "Nishiki が残す安全寄り牌を使う分岐は、不一致平均との差で明確に良い。",
             "Spend it only after naming why it no longer defends the live danger.",
             "今の脅威に効かなくなった理由を名付けてから使う。",
             "Example: discard yesterday's genbutsu when a new riichi makes it irrelevant and the tile blocks your tenpai route.",
@@ -616,7 +620,7 @@ def build() -> dict[str, Any]:
             "例: 安い和了かきれいな撤退を残す低危険牌を選ぶ。",
             [
                 pattern(patterns, "leader_low_risk", "Leader low-risk choices", "トップ目低危険選択"),
-                pattern(patterns, "riskier_than_naga", "Riskier-than-NAGA caution", "高危険選択の警告"),
+                pattern(patterns, "riskier_than_naga", "Riskier-than-Nishiki caution", "高危険選択の警告"),
                 conversion,
             ],
         ),
@@ -632,12 +636,12 @@ def build() -> dict[str, Any]:
         "method": {
             "source_files": [str(MODEL_PATH.relative_to(ROOT)), str(BOOK_PATH.relative_to(ROOT))],
             "qualitative_review_files": review_files,
-            "eligible_decisions": overall["decisions"],
-            "mismatches": overall["mismatches"],
+            "eligible_decisions": review_decisions,
+            "mismatches": review_mismatches,
             "book_decisions": summary["decisions"],
             "hands": summary["hands"],
             "games": summary["games"],
-            "baseline_mismatch_bad_rate": overall["bad_rate_among_mismatches"],
+            "baseline_mismatch_bad_rate": review_bad_rate,
             "note": "Qualitative review examples were kept as generalized prompts only; statistical validity comes from the model and book artifacts.",
             "note_ja": "定性的な検討例は一般化した問いとしてだけ使い、統計的な妥当性はモデルと書籍由来のデータで確認した。",
         },
@@ -659,7 +663,7 @@ def write_markdown(data: dict[str, Any]) -> None:
         "",
         f"- Source artifacts: {', '.join(data['method']['source_files'])}.",
         f"- Qualitative review files scanned locally: {data['method'].get('qualitative_review_files', 0):,}; raw captions/transcripts stay ignored under `tmp/`.",
-        f"- Model base: {data['method']['eligible_decisions']:,} eligible decisions and {data['method']['mismatches']:,} LuckyJ/NAGA mismatches.",
+        f"- Model base: {data['method']['eligible_decisions']:,} eligible decisions and {data['method']['mismatches']:,} LuckyJ/Nishiki mismatches.",
         f"- Book base: {data['method']['games']:,} hanchan, {data['method']['hands']:,} hands, {data['method']['book_decisions']:,} discard decisions.",
         "- A point is marked strong only when the proxy has a large sample, directionally useful lift, and a significant p-value. Mixed or aggregate-only points are marked qualified.",
         "",

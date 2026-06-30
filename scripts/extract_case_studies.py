@@ -231,11 +231,11 @@ def collect_cases():
                                 actual_d = base.danger_for(state, target, actual)
                                 naga_d = base.danger_for(state, target, model_rows[0][0])
                                 if actual_d + 0.05 < naga_d:
-                                    case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Safer than NAGA", discards, reached, open_melds)
+                                    case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Safer than Nishiki", discards, reached, open_melds)
                                     if case:
                                         buckets["safer_than_naga"].append(case)
                                 elif actual_d > naga_d + 0.05:
-                                    case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Riskier than NAGA", discards, reached, open_melds)
+                                    case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Riskier than Nishiki", discards, reached, open_melds)
                                     if case:
                                         buckets["riskier_than_naga"].append(case)
                     discard = msg.get("real_dahai")
@@ -267,7 +267,7 @@ def collect_cases():
                         discards[actor].append(tile)
                         public_visible[tile_id(tile)] += 1
 
-    # Keep compact, high-signal examples. Prefer large NAGA confidence gaps, but avoid pathological missing evals.
+    # Keep compact, high-signal examples. Prefer large Nishiki confidence gaps, but avoid pathological missing evals.
     selected = {}
     for name, cases in buckets.items():
         cases.sort(

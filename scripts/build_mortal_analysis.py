@@ -503,18 +503,18 @@ def model_agreement_text(model: dict[str, Any], actual: dict[str, Any], example:
     naga = agrees_with_naga(model, example)
     if lang == "ja":
         if luckyj and naga:
-            return "Mortal は LuckyJ と NAGA の共通線に同意している。"
+            return "Mortal は LuckyJ と Nishiki の共通線に同意している。"
         if luckyj:
             return "Mortal は LuckyJ 側に寄っている。"
         if naga:
-            return "Mortal は NAGA 側に寄っている。"
+            return "Mortal は Nishiki 側に寄っている。"
         return "Mortal は第三の選択を出している。この例は境界例として読む。"
     if luckyj and naga:
-        return "Mortal agrees with the shared LuckyJ/NAGA line."
+        return "Mortal agrees with the shared LuckyJ/Nishiki line."
     if luckyj:
         return "Mortal backs LuckyJ's line."
     if naga:
-        return "Mortal backs the NAGA line."
+        return "Mortal backs the Nishiki line."
     return "Mortal chooses a third line, so this tab is a caution case with mixed model support."
 
 
@@ -608,11 +608,11 @@ def commentary_for(
     naga = tile_token(example.get("naga"))
     read = (
         f"{round_name}, {stage}, {left} tiles left, {score_band}. Mortal's top action is {model_line} "
-        f"({top_weight}); LuckyJ plays {actual_line}; NAGA's top line is discard {naga}. {agreement}"
+        f"({top_weight}); LuckyJ plays {actual_line}; Nishiki's top line is discard {naga}. {agreement}"
     )
-    use = f"{focus} If Mortal backs NAGA or a third line, raise the burden of proof before copying LuckyJ."
-    read_ja = f"{round_name}、{stage}、残り{left}枚、{score_band}。Mortal 最上位は {model_line_ja} ({top_weight})、LuckyJ 実戦は {actual_line_ja}、NAGA 第一候補は {naga} 切り。{agreement_ja}"
-    use_ja = f"{focus_ja} Mortal が NAGA または第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+    use = f"{focus} If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ."
+    read_ja = f"{round_name}、{stage}、残り{left}枚、{score_band}。Mortal 最上位は {model_line_ja} ({top_weight})、LuckyJ 実戦は {actual_line_ja}、Nishiki 第一候補は {naga} 切り。{agreement_ja}"
+    use_ja = f"{focus_ja} Mortal が Nishiki または第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
     return read, use, read_ja, use_ja
 
 
@@ -733,9 +733,9 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
                     "post_call_mortal": None,
                     "post_call_agrees_luckyj": None,
                     "post_call_candidates": [],
-                    "read": f"Mortal replay missed this exact tab, so treat it as a manual review case. LuckyJ's visible choice is still reviewed against NAGA and the table state.",
+                    "read": f"Mortal replay missed this exact tab, so treat it as a manual review case. LuckyJ's visible choice is still reviewed against Nishiki and the table state.",
                     "how_to_use": f"Treat this tab as a manual review case until the local Mjai replay matcher covers it. Error: {exc}",
-                    "read_ja": "このタブは Mortal リプレイが一致しなかったため、手動復習として扱う。LuckyJ の実戦選択は NAGA と場況で読む。",
+                    "read_ja": "このタブは Mortal リプレイが一致しなかったため、手動復習として扱う。LuckyJ の実戦選択は Nishiki と場況で読む。",
                     "how_to_use_ja": f"ローカル Mjai の照合が対応するまでは手動復習扱い。エラー: {exc}",
                 }
             )

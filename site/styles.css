@@ -1690,7 +1690,9 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   gap: calc(0.035 * var(--tile-size));
   grid-template-columns: repeat(3, calc(0.055 * var(--tile-size)));
   height: calc(0.4 * var(--tile-size));
-  margin-bottom: 0;
+  margin-bottom: calc(-0.082 * var(--tile-size));
+  position: relative;
+  z-index: 1;
 }
 
 .tile-threat-bar {
