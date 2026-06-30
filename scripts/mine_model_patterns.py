@@ -33,7 +33,7 @@ OUTSIDE = {"honor", "terminal"}
 WINDS = ["E", "S", "W", "N"]
 DRAGONS = {"P", "F", "C"}
 PATTERN_LABELS = {
-    "keep_dora_or_red": "Keep dora/red-five material instead of taking the clean NAGA cut",
+    "keep_dora_or_red": "Keep dora/red-five material through the clean NAGA cut",
     "keep_pair_anchor": "Keep a pair or triplet anchor that NAGA wants to break",
     "break_pair_anchor": "Break a pair earlier than NAGA",
     "keep_defensive_exit": "Keep genbutsu/suji exits while cutting elsewhere",
@@ -43,14 +43,14 @@ PATTERN_LABELS = {
     "cut_outside_keep_inside": "Cut outside material while keeping middle-tile shape",
     "safer_than_naga": "Choose a lower immediate-danger discard than NAGA",
     "riskier_than_naga": "Choose a higher immediate-danger discard than NAGA",
-    "leader_low_risk": "Leader/large-stack choices that do not increase danger",
+    "leader_low_risk": "Leader/large-stack choices with controlled danger",
     "behind_risk_buy": "Behind-score choices that buy route/value with extra danger",
     "multi_threat_safe_tenpai": "Middle/late choices preserving exits with multiple threats",
     "honor_cleanup_vs_shape": "Cut a loose honor while NAGA prefers shape cleanup",
     "clean_open_yaku_condition_honor": "Clean a singleton yakuhai before an unproven open hand can use it",
     "early_guest_honor_cleanup": "Cut a loose non-self honor before shape cleanup in the first row",
     "keep_self_yakuhai_pair_anchor": "Keep own yakuhai pair or triplet anchor while NAGA breaks it",
-    "spend_off_target_safety_for_shape": "Spend a safe-looking tile that does not answer the current threat",
+    "spend_off_target_safety_for_shape": "Spend a safe-looking tile after its target changes",
     "late_named_exit_over_shape": "Late keep of a named exit over NAGA's shape-cleaning discard",
 }
 
@@ -613,11 +613,11 @@ def propose_points(summary: dict[str, Any], mortal_summary: dict[str, Any]) -> l
     candidates = [
         ("clean_open_yaku_condition_honor", "Clean yakuhai before an unproven open hand can use it"),
         ("early_guest_honor_cleanup", "Guest honors can be removed before shape when they have no self job"),
-        ("keep_self_yakuhai_pair_anchor", "Self yakuhai pairs are route anchors, not ordinary pairs"),
-        ("spend_off_target_safety_for_shape", "Safe-looking tiles can be spent when they do not answer the live target"),
+        ("keep_self_yakuhai_pair_anchor", "Self yakuhai pairs can be route anchors"),
+        ("spend_off_target_safety_for_shape", "Safe-looking tiles can be spent after their target changes"),
         ("late_named_exit_over_shape", "Late safe exits must be named to a live opponent"),
         ("keep_pair_anchor", "Protect pair anchors until the hand declares its route"),
-        ("keep_dora_or_red", "Do not spend value seeds just to obey local cleanliness"),
+        ("keep_dora_or_red", "Keep value seeds through local cleanup pressure"),
         ("spend_defensive_exit", "Safe-looking tiles can be spent when they are stale or off-target"),
         ("break_pair_anchor", "Break low-purpose pairs before they trap the hand"),
         ("cut_outside_keep_inside", "When the hand has become real, outside safety loses to middle-tile completion"),

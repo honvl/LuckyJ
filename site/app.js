@@ -15,12 +15,11 @@ const copy = {
     none: "none",
     dora: "Dora",
     handLabel: "hand",
-    callsLabel: "calls",
     situation: "Situation",
     seeing: "What LuckyJ Is Seeing",
     whyTempting: "Why the Other Line Is Tempting",
     copyIt: "How to Copy It",
-    limit: "When Not to Copy It",
+    limit: "Use This When",
     noModelAction: "No model action",
     discard: "Discard",
     reach: "Reach",
@@ -77,12 +76,11 @@ const copy = {
     none: "なし",
     dora: "ドラ",
     handLabel: "手牌",
-    callsLabel: "副露",
     situation: "局面",
     seeing: "LuckyJ が見ているもの",
     whyTempting: "別ラインが魅力的に見える理由",
     copyIt: "自分の対局に移す方法",
-    limit: "真似しない条件",
+    limit: "使う条件",
     noModelAction: "モデル行動なし",
     discard: "打",
     reach: "リーチ",
@@ -251,9 +249,9 @@ function tilesLeftText(left) {
   return isJa ? `残り${left}枚` : `${left} tiles left`;
 }
 
-function gameLine(game, rank, score) {
-  if (isJa) return `ゲーム ${game}、最終順位 ${rankText(rank)}、持ち点 ${whole.format(score)}`;
-  return `Game ${game}, final rank ${rank}, score ${whole.format(score)}`;
+function gameLine(rank, score) {
+  if (isJa) return `最終順位 ${rankText(rank)}、持ち点 ${whole.format(score)}`;
+  return `Final rank ${rank}, score ${whole.format(score)}`;
 }
 
 function caseLabelText(label) {
@@ -310,7 +308,7 @@ function renderDefenseTiming(retention) {
       <b>${stageText(key)}</b>
       <strong>${splits ? pct(kept / splits) : "n/a"}</strong>
       <span>${isJa ? "NAGA と割れた打牌で現物/筋を残した割合" : "of NAGA-split discards kept a river-safe or suji tile"}</span>
-      <small>${isJa ? "内訳" : "Breakdown"}: ${whole.format(item.kept_genbutsu || 0)} ${safetyKindLabel("genbutsu")}, ${whole.format(item.kept_suji || 0)} ${safetyKindLabel("suji")}, ${whole.format(item.kept_against_live_threat || 0)} ${isJa ? "脅威相手" : "vs live threats"}${avgLeft == null ? "" : isJa ? `、平均残り${fmt.format(avgLeft)}枚` : `, avg ${fmt.format(avgLeft)} tiles left`}</small>
+      <small>${isJa ? "内訳" : "Breakdown"}: ${whole.format(item.kept_genbutsu || 0)} ${safetyKindLabel("genbutsu")}, ${whole.format(item.kept_suji || 0)} ${safetyKindLabel("suji")}, ${whole.format(item.kept_against_live_threat || 0)} ${isJa ? "脅威相手" : "live-threat exits"}${avgLeft == null ? "" : isJa ? `、平均残り${fmt.format(avgLeft)}枚` : `, avg ${fmt.format(avgLeft)} tiles left`}</small>
     `;
     target.append(panel);
   }
@@ -518,7 +516,7 @@ function safetySummary(safety) {
   const parts = [];
   if (safety.genbutsu) parts.push(isJa ? `現物 ${safety.genbutsu}` : `${safety.genbutsu} river-safe`);
   if (safety.suji) parts.push(isJa ? `筋 ${safety.suji}` : `${safety.suji} suji`);
-  if (safety.against_threat) parts.push(isJa ? `脅威相手 ${safety.against_threat}` : `${safety.against_threat} vs live threat`);
+  if (safety.against_threat) parts.push(isJa ? `脅威相手 ${safety.against_threat}` : `${safety.against_threat} live-threat exits`);
   return parts.join(isJa ? "、" : ", ");
 }
 
@@ -557,6 +555,13 @@ function tileIcons(items, className = "mini-tile") {
   return list.map((tile) => tileIcon(tile, className)).join("");
 }
 
+function meldTileList(meld) {
+  if (!meld) return [];
+  if (Array.isArray(meld)) return meld.filter(Boolean);
+  if (typeof meld === "object") return (meld.tiles || []).filter(Boolean);
+  return String(meld).split(" ").filter(Boolean);
+}
+
 function tileRun(items, className = "", emptyLabel = t("none")) {
   const list = (items || []).filter(Boolean);
   if (!list.length) return emptyLabel ? `<span class="empty">${escapeHtml(emptyLabel)}</span>` : "";
@@ -564,6 +569,68 @@ function tileRun(items, className = "", emptyLabel = t("none")) {
   return `<span class="tiles ${tileFontClassPrefix}${className}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${list
     .map(tileCode)
     .join("")}</span>`;
+}
+
+function sameBaseTile(a, b) {
+  return String(a || "").replace("r", "") === String(b || "").replace("r", "");
+}
+
+function calledTileIndex(calledFrom, total) {
+  if (calledFrom === "kamicha") return 0;
+  if (calledFrom === "toimen") return Math.min(total - 1, Math.floor((total - 1) / 2));
+  if (calledFrom === "shimocha") return total - 1;
+  return total - 1;
+}
+
+function normalizedCallSource(value) {
+  return ["shimocha", "toimen", "kamicha"].includes(value) ? value : "";
+}
+
+function orderedMeldTiles(meld) {
+  const tiles = meldTileList(meld);
+  const calledTile = typeof meld === "object" ? meld.called_tile : "";
+  const calledFrom = normalizedCallSource(typeof meld === "object" ? meld.called_from : "");
+  if (!calledTile || !calledFrom || !tiles.length) {
+    return tiles.map((tile) => ({ tile, called: false, calledFrom: "" }));
+  }
+  const remaining = tiles.slice();
+  let calledSourceIndex = remaining.findIndex((tile) => tile === calledTile);
+  if (calledSourceIndex < 0) calledSourceIndex = remaining.findIndex((tile) => sameBaseTile(tile, calledTile));
+  const renderedCalledTile = calledSourceIndex >= 0 ? remaining.splice(calledSourceIndex, 1)[0] : calledTile;
+  const insertAt = calledTileIndex(calledFrom, remaining.length + 1);
+  remaining.splice(insertAt, 0, renderedCalledTile);
+  return remaining.map((tile, index) => ({ tile, called: index === insertAt, calledFrom }));
+}
+
+function tableMeld(meld) {
+  const items = orderedMeldTiles(meld);
+  if (!items.length) return "";
+  const label = tileNamesText(items.map((item) => item.tile));
+  const calledIndex = items.findIndex((item) => item.called);
+  if (calledIndex < 0) {
+    return `<span class="meld-run" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${tileRun(
+      items.map((item) => item.tile),
+      "meld-segment",
+      ""
+    )}</span>`;
+  }
+  const before = items.slice(0, calledIndex).map((item) => item.tile);
+  const called = items[calledIndex];
+  const after = items.slice(calledIndex + 1).map((item) => item.tile);
+  return `<span class="meld-run" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">
+    ${before.length ? tileRun(before, "meld-segment meld-before-called", "") : ""}
+    <span class="called-tile-slot called-from-${called.calledFrom}">${tileIcon(called.tile, "called-tile")}</span>
+    ${after.length ? tileRun(after, "meld-segment meld-after-called", "") : ""}
+  </span>`;
+}
+
+function callMeldForExample(example) {
+  return tableMeld({
+    tiles: String(example.post_call_meld || "").split(" ").filter(Boolean),
+    called_tile: example.called_tile,
+    called_from: example.called_from,
+    kind: example.call,
+  });
 }
 
 function richText(text) {
@@ -583,7 +650,7 @@ function richText(text) {
 function meldIcons(melds) {
   if (!melds || !melds.length) return `<span class="empty">${escapeHtml(t("none"))}</span>`;
   return melds
-    .map((meld) => `<span class="meld">${tileIcons(meld.split(" ").filter(Boolean), "mini-tile")}</span>`)
+    .map((meld) => `<span class="meld">${tileIcons(meldTileList(meld), "mini-tile")}</span>`)
     .join("");
 }
 
@@ -658,12 +725,7 @@ function renderMahjongTable(table) {
       const score = scoreFor(table, seats[position]);
       const name = `${seatLabel(player.seat)}${score.rank ? ` / ${rankText(score.rank)}` : ""}`;
       const melds = (player.melds || []).length
-        ? `<div class="table-tile-group table-melds">
-            <span class="tile-group-label">${escapeHtml(t("callsLabel"))}</span>
-            <div class="meld-contents">${(player.melds || [])
-              .map((meld) => `<span class="meld-run">${tileRun(meld.split(" "))}</span>`)
-              .join("")}</div>
-          </div>`
+        ? `<div class="table-melds">${(player.melds || []).map(tableMeld).join("")}</div>`
         : "";
       const handLabel =
         player.seat === "self" ? "" : `<span class="tile-group-label">${escapeHtml(t("handLabel"))}</span>`;
@@ -790,7 +852,7 @@ function renderMortalBlock(mortal, pointKey, mortalCopy, index) {
   const localMortal = mortalCopyForExample(mortalCopy, pointKey, index);
   const readText = isJa ? mortal.read_ja || localMortal.read || mortal.read : localMortal.read || mortal.read;
   const useText = isJa ? mortal.how_to_use_ja || localMortal.how_to_use || mortal.how_to_use : localMortal.how_to_use || mortal.how_to_use;
-  const block = document.createElement("section");
+  const block = document.createElement("details");
   block.className = "mortal-block";
   const topCandidate = mortal.top_candidates?.[0];
   const branch =
@@ -805,26 +867,24 @@ function renderMortalBlock(mortal, pointKey, mortalCopy, index) {
       `
       : "";
   block.innerHTML = `
-    <div class="mortal-head">
-      <p class="kicker">${t("mortalCrossCheck")}</p>
-    </div>
-    <div class="mortal-grid">
-      <div class="decision mortal-choice-card">
+    <summary class="mortal-summary">
+      <span class="kicker">${t("mortalCrossCheck")}</span>
+      <span class="mortal-summary-line">
         <b>${t("mortalTop")}</b>
         ${probabilityChip(t("mortalWeight"), topCandidate?.probability)}
         <span class="discard-line">${modelActionLine(mortal.mortal)}</span>
-        <div class="model-badges">
-          ${agreementBadge("LuckyJ", mortal.mortal_agrees_luckyj)}
-          ${agreementBadge("NAGA", mortal.mortal_agrees_naga)}
-        </div>
-        </div>
-      <div>
+        ${agreementBadge("LuckyJ", mortal.mortal_agrees_luckyj)}
+        ${agreementBadge("NAGA", mortal.mortal_agrees_naga)}
+      </span>
+    </summary>
+    <div class="mortal-details">
+      <div class="mortal-read">
         <h5>${t("readingSplit")}</h5>
         <p data-mortal-read></p>
         <p data-mortal-use></p>
       </div>
+      ${branch}
     </div>
-    ${branch}
   `;
   block.querySelector("[data-mortal-read]")?.append(richText(readText || ""));
   block.querySelector("[data-mortal-use]")?.append(richText(useText || ""));
@@ -839,7 +899,7 @@ function renderYakuhaiCleanupNote(example) {
   const heading = isJa ? "役牌読み" : "Yaku-Condition Read";
   const body = isJa
     ? `${tileIcon(example.actual, "inline-tile")} <b>${escapeHtml(tileName(example.actual))}</b> は、まだ役を見せていない副露手に対して生きている役牌です。相手の役になる前に LuckyJ が先に処理しています。`
-    : `${tileIcon(example.actual, "inline-tile")} <b>${escapeHtml(tileName(example.actual))}</b> is live yakuhai against an open hand that has not shown its yaku. LuckyJ cleans it before it can become the opponent's yaku condition.`;
+    : `${tileIcon(example.actual, "inline-tile")} <b>${escapeHtml(tileName(example.actual))}</b> is live yakuhai against an open hand with an unclear yaku. LuckyJ cleans it before it can become the opponent's yaku condition.`;
   const windLabel = isJa ? "風" : "wind";
   const threatRows = threats
     .map(
@@ -877,21 +937,28 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
         <p class="kicker">${t("replayExample")} ${index + 1}/${total}</p>
         <h4>${escapeHtml(exampleGuide.caption || example.title)}</h4>
       </div>
-      <span>${isJa ? `ゲーム ${example.game}、${escapeHtml(roundText(example.round))}、${tilesLeftText(example.left)}` : `Game ${example.game}, ${escapeHtml(example.round)}, ${tilesLeftText(example.left)}`}</span>
+      <span>${escapeHtml(roundText(example.round))}, ${tilesLeftText(example.left)}</span>
     </div>
     <p class="case-meta">${escapeHtml(stageText(example.stage))} / ${escapeHtml(scoreBandText(example.score_band))} / ${t("finalRank")} ${rankText(example.rank)}</p>
   `;
-  card.append(renderMahjongTable(example.table));
+  const layout = document.createElement("div");
+  layout.className = "point-example-layout";
+  const replay = document.createElement("div");
+  replay.className = "point-example-replay";
+  const explanation = document.createElement("div");
+  explanation.className = "point-example-explanation";
+
+  replay.append(renderMahjongTable(example.table));
 
   if (example.kind === "call") {
     const line = document.createElement("div");
     line.className = "call-line";
     line.innerHTML = `
       <span>${t("call")} ${escapeHtml(example.call)} ${tileIcon(example.called_tile, "discard-tile")} ${isJa ? "を" : "on"} ${escapeHtml(seatLabel(example.called_from))}${isJa ? "から" : ""}</span>
-      <span>${t("meld")} ${tileIcons(example.post_call_meld?.split(" "), "mini-tile")}</span>
+      <span>${t("meld")} ${callMeldForExample(example)}</span>
       <span>${t("discardAfterCall")} ${tileIcon(example.discard_after_call, "discard-tile")}</span>
     `;
-    card.append(line);
+    replay.append(line);
   } else {
     const choices = document.createElement("div");
     choices.className = "comparison";
@@ -906,12 +973,12 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
         <div class="decision"><b>${t("nagaTop")}</b>${probabilityChip(t("nagaWeight"), example.naga_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.naga, "discard-tile")} <em>${escapeHtml(tileName(example.naga))}</em></span><span>${t("danger")} ${dangerText(example.naga_danger)}</span></div>
       `;
     }
-    card.append(choices);
-    card.append(safetyPanel(example.kept_tile_safety));
+    replay.append(choices);
+    replay.append(safetyPanel(example.kept_tile_safety));
   }
-  card.append(renderYakuhaiCleanupNote(example));
-  card.append(renderMortalBlock(exampleMortal, pointKey, mortalCopy, index));
-  card.append(renderGuideBlock(exampleGuide));
+  explanation.append(renderYakuhaiCleanupNote(example));
+  explanation.append(renderGuideBlock(exampleGuide));
+  explanation.append(renderMortalBlock(exampleMortal, pointKey, mortalCopy, index));
 
   const drill = document.createElement("div");
   drill.className = "example-drill";
@@ -927,7 +994,9 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
   links.className = "case-links";
   links.innerHTML = `<a href="${example.report}">${t("nagaReport")}</a> <a href="${example.paifu}">${t("tenhouLog")}</a>`;
 
-  card.append(drill, links);
+  explanation.append(drill, links);
+  layout.append(replay, explanation);
+  card.append(layout);
   return card;
 }
 
@@ -951,9 +1020,7 @@ function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
       button.setAttribute("role", "tab");
       button.dataset.index = String(index);
       button.innerHTML = `<b>${index + 1}</b><span>${escapeHtml(stageText(example.stage))}</span>`;
-      button.title = isJa
-        ? `${t("example")} ${index + 1}: ゲーム ${example.game}, ${roundText(example.round)}`
-        : `${t("example")} ${index + 1}: Game ${example.game}, ${example.round}`;
+      button.title = `${t("example")} ${index + 1}: ${roundText(example.round)}`;
       tablist.append(button);
       return button;
     });
@@ -1046,7 +1113,7 @@ function dangerRead(actual, naga) {
   }
   if (actual == null || naga == null) return "There is no clean danger comparison here, so read the hand through route and score logic.";
   const gap = actual - naga;
-  if (Math.abs(gap) < 0.03) return "Immediate danger is close, so the disagreement is mostly about route selection rather than a simple safe-tile trade.";
+  if (Math.abs(gap) < 0.03) return "Immediate danger is close, so the disagreement is mostly about route selection.";
   if (gap < 0) return `LuckyJ buys immediate safety by avoiding about ${fmt.format(Math.abs(gap) * 100)} danger points.`;
   return `LuckyJ accepts about ${fmt.format(gap * 100)} extra danger points, so the hand must be buying concrete value, pressure, or placement equity.`;
 }
@@ -1067,10 +1134,10 @@ function categoryRead(key, item) {
       return `NAGA が切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河にあり、後のリーチや副露に対する現物の出口になる。`;
     }
     if (key === "kept_suji_exit") {
-      return `NAGA が切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河から筋で読めるため、完全な現物ではなくても後の押し引きに使える。`;
+      return `NAGA が切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河から筋で読めるため、後の押し引きに使える。`;
     }
     if (key === "safer_than_naga") {
-      return "攻めている手の中で安全側に寄せている。LuckyJ は必ずしも降りていない。より危険な NAGA 牌をすぐに切らず、手を生かすラインを選んでいる。";
+      return "攻めている手の中で安全側に寄せている。LuckyJ は手を生かしながら、危険な NAGA 牌を後回しにしている。";
     }
     if (key === "riskier_than_naga") {
       return "これは真似するハードルが高い例である。LuckyJ は今の危険を払うが、残すルートが安全そうな代替より明確に良い場合に限られる。";
@@ -1093,7 +1160,7 @@ function categoryRead(key, item) {
     return `NAGA wants to cut ${nagaName}, but LuckyJ keeps it because opponent rivers make it suji. Treat it as a timed defensive resource, weaker than genbutsu but still useful in the right spot.`;
   }
   if (key === "safer_than_naga") {
-    return `This is a safety purchase inside an attacking hand. LuckyJ is not necessarily folding; it is choosing the line that keeps the hand alive without immediately throwing the more dangerous NAGA tile.`;
+    return `This is a safety purchase inside an attacking hand. LuckyJ keeps the hand alive while delaying the more dangerous NAGA tile.`;
   }
   if (key === "riskier_than_naga") {
     return `Copy this only with care. LuckyJ is paying danger now because the kept route has to be clearly better than the safer-looking choice.`;
@@ -1115,7 +1182,7 @@ function caseLesson(key, item) {
       `${roundText(item.round)}、残り${item.left}枚、${scoreBandText(item.score_band)}。手牌の質: ${handTexture(item.hand)}。LuckyJ は ${actualName} (${tileClassText(actualClass)}) を切り、NAGA は ${nagaName} (${tileClassText(nagaClass)}) を切る。`,
       categoryRead(key, item),
       dangerRead(item.actual_danger, item.naga_danger),
-      "復習ドリル: 診断を見る前に、LuckyJ が何を残そうとしているかを書く。安全、価値、ルート数、圧力、着順のどれかを言えないなら、まだその打牌はコピーしない。",
+      "復習ドリル: 診断を見る前に、LuckyJ が何を残そうとしているかを書く。安全、価値、ルート数、圧力、着順のどれかを言える打牌だけ自分の形にする。",
     ];
     if (safetyLine) lines.splice(2, 0, safetyLine);
     return lines;
@@ -1124,7 +1191,7 @@ function caseLesson(key, item) {
     `${item.round}, ${item.left} tiles left, ${item.score_band}. Hand texture: ${handTexture(item.hand)}. LuckyJ cuts ${actualName} (${actualClass}); NAGA cuts ${nagaName} (${nagaClass}).`,
     categoryRead(key, item),
     dangerRead(item.actual_danger, item.naga_danger),
-    `Review drill: before looking at the diagnostics, write what LuckyJ is buying: safety, value, route count, pressure, or placement. If you cannot name the purchase, do not copy the move yet.`,
+    `Review drill: before looking at the diagnostics, write what LuckyJ is buying: safety, value, route count, pressure, or placement. Copy the move after the purchase is clear.`,
   ];
   if (safetyLine) lines.splice(2, 0, safetyLine);
   return lines;
@@ -1205,7 +1272,7 @@ function renderCases(data) {
       body.className = "case-body";
       const handTitle = document.createElement("p");
       handTitle.className = "case-meta";
-      handTitle.textContent = gameLine(item.game, item.rank, item.score);
+      handTitle.textContent = gameLine(item.rank, item.score);
       body.append(handTitle, tiles(item.hand));
       body.append(safetyPanel(item.kept_safety));
 

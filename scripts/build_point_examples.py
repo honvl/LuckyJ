@@ -38,15 +38,15 @@ POOL_PER_POINT = 40
 POINT_TEXT = {
     "point-01": {
         "title": "Placement changes the price of the same tile",
-        "lesson": "The discard is not judged in a vacuum. A leading or fragile placement can make future defense more valuable than a prettier immediate shape.",
+        "lesson": "Placement changes the value of the discard. A leading or fragile seat can make future defense more valuable than a prettier immediate shape.",
         "prompt": "Before choosing, name the hand's job: win now, protect placement, escape last, or keep future exits.",
-        "answer": "Copy the risk budget, not the tile. The correct discard is the one that serves the placement job while leaving a playable next turn.",
+        "answer": "Copy the risk budget and table job. The correct discard serves the placement goal while leaving a playable next turn.",
     },
     "point-02": {
         "title": "Keep the branch point alive",
         "lesson": "LuckyJ often keeps tiles that still serve yaku, value, or safety, even when that makes the current shanten number look worse.",
         "prompt": "List the live routes before cutting: closed riichi, open yaku, value upgrade, chiitoi, and fold.",
-        "answer": "Do not collapse into the cleanest single route until the table has forced that commitment.",
+        "answer": "Keep multiple live routes until the table forces a commitment.",
     },
     "point-03": {
         "title": "Bad closed shapes buy calls",
@@ -56,9 +56,9 @@ POINT_TEXT = {
     },
     "point-04": {
         "title": "Open hands must keep an exit",
-        "lesson": "After opening, the important tile is often the safe tile left behind, not the tile called. LuckyJ's open hands work because they are not all-in by accident.",
+        "lesson": "After opening, the safe tile left behind is often the important tile. LuckyJ's open hands keep exits by design.",
         "prompt": "After the call, identify the next safe discard before admiring the new shanten.",
-        "answer": "A cheap exposed hand with no exit is usually not LuckyJ-style aggression; it is being forced to push.",
+        "answer": "A cheap exposed hand needs an exit so the next threat avoids a bad forced push.",
     },
     "point-05": {
         "title": "Cut the future liability now",
@@ -68,19 +68,19 @@ POINT_TEXT = {
     },
     "point-06": {
         "title": "Build the value early",
-        "lesson": "A cheap bad-shape future is not worth optimizing toward when the score job needs more. Early acceptance is the cheapest thing to spend.",
+        "lesson": "When the score job needs more, optimizing toward a cheap bad-shape future is too small. Early acceptance is the cheapest thing to spend.",
         "prompt": "Ask how many points this hand needs before preserving maximum ukeire.",
         "answer": "Keep dora, yaku, and shape upgrades when the fast hand would be too small or too brittle.",
     },
     "point-07": {
         "title": "Call for tempo with a purpose",
         "lesson": "The call has a job beyond completing blocks: speed up a poor hand, contest the table, break a bonus window, or preserve draw equity.",
-        "prompt": "No purpose, no call. Name the purpose before exposing the hand.",
-        "answer": "A good tempo call changes the round's clock without making you helpless on the next threat.",
+        "prompt": "Name the purpose before exposing the hand.",
+        "answer": "A good tempo call changes the round's clock and keeps you prepared for the next threat.",
     },
     "point-08": {
         "title": "Riichi converts pressure into equity",
-        "lesson": "LuckyJ does not wait for a perfect shape when riichi itself changes the table. The declaration can force rivals to fold, deny calls, or lock in placement value.",
+        "lesson": "LuckyJ can declare before the shape is perfect when riichi itself changes the table. The declaration can force rivals to fold, deny calls, or lock in placement value.",
         "prompt": "Before riichi, ask who must now respond to you and whether better upgrades are realistic.",
         "answer": "If the wait is serviceable and the table must respect the stick, declaration pressure can be worth more than waiting.",
     },
@@ -98,21 +98,21 @@ POINT_TEXT = {
     },
     "point-11": {
         "title": "Drawn-hand points are attack equity",
-        "lesson": "Late defense is not always surrender. Safe tenpai or harmless 1-shanten can win the hand without winning the hand.",
+        "lesson": "Late defense can still earn points. Safe tenpai or harmless 1-shanten can win the hand through the draw.",
         "prompt": "When the hand is unlikely to win, count whether a safe route to tenpai still exists.",
         "answer": "Choose the safe discard that leaves the most realistic tenpai path for the draw.",
     },
     "point-12": {
-        "title": "A disagreement is a review prompt, not a verdict",
+        "title": "A disagreement is a review prompt",
         "lesson": "The useful question is why LuckyJ and NAGA split: safety, route count, value, pressure, or a real mistake.",
         "prompt": "Bucket the disagreement before judging it: blunder, strategic trade-off, or table-reading idea.",
         "answer": "Use match rate as a review cue, then aim for explainable decisions with fewer unpriced risks.",
     },
     "point-13": {
         "title": "Clean yakuhai against unproven open hands",
-        "lesson": "When another player calls without showing a clear yaku, singleton dragons and live value winds can become their missing yaku condition. LuckyJ often removes those tiles before they turn into the price of continuing.",
+        "lesson": "When another player calls with an unclear yaku, singleton dragons and live value winds can become their missing yaku condition. LuckyJ often removes those tiles before they turn into the price of continuing.",
         "prompt": "After an opponent opens, ask which yakuhai still lets that hand win.",
-        "answer": "If your hand is not ready to punish them and the yakuhai has no strong job, clean it before the open hand gets to use it.",
+        "answer": "When your hand is too slow to punish them and the yakuhai has no strong job, clean it before the open hand gets to use it.",
     },
     "point-14": {
         "title": "Keep river-safe and suji exits on purpose",
@@ -130,7 +130,7 @@ POINT_TEXT = {
         "title": "Late outside cuts can preserve the route",
         "lesson": "Under pressure, cutting an edge or terminal can be the attacking discard because it keeps the middle tile that connects the actual path to tenpai.",
         "prompt": "When a terminal cut looks timid, check whether the inside tile is the hand's real connector.",
-        "answer": "Do not call every outside cut defense. If the outside tile carries no value or target-specific safety, it can be the cost of keeping the winning route alive.",
+        "answer": "Treat the outside cut as route preservation when the outside tile carries little value or target-specific safety.",
     },
     "point-17": {
         "title": "Every kept safe tile needs a target",
@@ -146,9 +146,9 @@ POINT_TEXT = {
     },
     "point-19": {
         "title": "Leader safety is a qualifier",
-        "lesson": "A lead lowers the ambition needed to end the hand, but it does not excuse a discard that fails to reduce real danger or preserve the next turn.",
+        "lesson": "A lead lowers the ambition needed to end the hand, while each discard still needs to reduce real danger or preserve the next turn.",
         "prompt": "When leading, ask what concrete risk the safer-looking discard removes.",
-        "answer": "Use the lead to reject unnecessary risk, not to stop calculating shape, danger, and future exits.",
+        "answer": "Use the lead to lower the risk budget while still calculating shape, danger, and future exits.",
     },
 }
 
@@ -197,8 +197,26 @@ def is_yakuhai_for_seat(tile, start, seat):
     return base_tile(tile) in yakuhai_for_seat(start, seat)
 
 
+def make_meld(tiles, called_tile=None, called_from=None, kind=None):
+    clean_tiles = [tile for tile in (tiles or []) if tile and tile != "+"]
+    meld = {"tiles": clean_tiles}
+    if called_tile:
+        meld["called_tile"] = called_tile
+    if called_from:
+        meld["called_from"] = called_from
+    if kind:
+        meld["kind"] = kind
+    return meld
+
+
 def meld_tiles(meld):
+    if isinstance(meld, dict):
+        return [tile for tile in meld.get("tiles", []) if tile and tile != "+"]
     return [tile for tile in str(meld).split() if tile and tile != "+"]
+
+
+def meld_text(meld):
+    return " ".join(meld_tiles(meld))
 
 
 def meld_shows_yakuhai_yaku(meld, start, seat):
@@ -270,9 +288,8 @@ def visible_counter(discards, melds, dora_markers):
             visible[tile_id(tile)] += 1
     for player_melds in melds:
         for meld in player_melds:
-            for tile in meld.split():
-                if tile and tile != "+":
-                    visible[tile_id(tile)] += 1
+            for tile in meld_tiles(meld):
+                visible[tile_id(tile)] += 1
     return visible
 
 
@@ -495,19 +512,19 @@ def danger_gap_phrase(case, lang):
     actual = case.get("actual_danger")
     naga = case.get("naga_danger")
     if actual is None or naga is None:
-        return "危険度は比較しにくい。" if lang == "ja" else "The immediate danger comparison is not clean."
+        return "危険度を比べにくい。" if lang == "ja" else "The immediate danger comparison is unclear."
     gap = actual - naga
     if lang == "ja":
         if abs(gap) < 0.03:
-            return f"危険度は近い ({format_percent(actual)} vs {format_percent(naga)})。"
+            return f"危険度は近い。LuckyJ {format_percent(actual)}、NAGA {format_percent(naga)}。"
         if gap < 0:
-            return f"LuckyJ は即時危険を下げている ({format_percent(actual)} vs {format_percent(naga)})。"
-        return f"LuckyJ は追加危険を払っている ({format_percent(actual)} vs {format_percent(naga)})。"
+            return f"LuckyJ は即時危険を下げている。LuckyJ {format_percent(actual)}、NAGA {format_percent(naga)}。"
+        return f"LuckyJ は追加危険を払っている。LuckyJ {format_percent(actual)}、NAGA {format_percent(naga)}。"
     if abs(gap) < 0.03:
-        return f"The danger numbers are close ({format_percent(actual)} vs {format_percent(naga)})."
+        return f"The danger numbers are close: LuckyJ {format_percent(actual)}, NAGA {format_percent(naga)}."
     if gap < 0:
-        return f"LuckyJ is buying immediate safety ({format_percent(actual)} vs {format_percent(naga)})."
-    return f"LuckyJ is paying extra danger now ({format_percent(actual)} vs {format_percent(naga)})."
+        return f"LuckyJ buys immediate safety: LuckyJ {format_percent(actual)}, NAGA {format_percent(naga)}."
+    return f"LuckyJ pays extra danger now: LuckyJ {format_percent(actual)}, NAGA {format_percent(naga)}."
 
 
 def eval_summary(item, lang):
@@ -542,7 +559,7 @@ def yakuhai_threat_sentence(case, lang):
         return ""
     rows = []
     for threat in threats:
-        melds = "; ".join(threat.get("melds") or [])
+        melds = "; ".join(meld_text(meld) for meld in (threat.get("melds") or []))
         wind = tile_token(threat.get("wind"))
         if lang == "ja":
             rows.append(f"{seat_label(threat.get('seat'), lang)} ({wind}場風/自風, 副露 {melds or 'なし'})")
@@ -559,13 +576,13 @@ def point_focus_en(point_key, case):
     kept = tile_token(case.get("naga"))
     score_band_text = case.get("score_band", "the current score band")
     if point_key == "point-01":
-        return f"The {score_band_text} seat changes the price of this discard. LuckyJ is not asking which tile is prettiest; it is asking which discard leaves the next turn manageable."
+        return f"The {score_band_text} seat changes the price of this discard. LuckyJ chooses the discard that leaves the next turn manageable."
     if point_key == "point-02":
         return f"Cutting {actual} keeps {kept} as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information."
     if point_key == "point-05":
         return f"{actual} is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more."
     if point_key == "point-06":
-        return f"LuckyJ spends some easy acceptance to keep the hand worth playing. The point is not slow play; it is refusing a cheap future when the score job asks for more."
+        return f"LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future."
     if point_key == "point-08":
         return f"Riichi is part of the value calculation. With a declaration probability of {format_percent(case.get('reach_prob'))}, LuckyJ treats pressure as a real output of the discard."
     if point_key == "point-09":
@@ -573,23 +590,23 @@ def point_focus_en(point_key, case):
     if point_key == "point-10":
         return f"This is late enough that vague improvement has mostly expired. LuckyJ's {actual} cut should be read as win, safe tenpai, or controlled exit."
     if point_key == "point-11":
-        return f"The hand result matters: {case.get('outcome')}. LuckyJ is playing for drawn-hand equity, not only for a direct win."
+        return f"The hand result matters: {case.get('outcome')}. LuckyJ is playing for drawn-hand equity as well as direct wins."
     if point_key == "point-12":
         return f"The disagreement is the review prompt. First decide whether {actual} buys safety, value, route count, pressure, or placement before calling it right or wrong."
     if point_key == "point-13":
         return yakuhai_threat_sentence(case, "en") or f"LuckyJ cleans {actual} before it turns into another player's yaku condition."
     if point_key == "point-14":
-        return f"By cutting {actual}, LuckyJ keeps {kept} as a named defensive exit. This is not generic caution; the kept tile has a target."
+        return f"By cutting {actual}, LuckyJ keeps {kept} as a named defensive exit with a target."
     if point_key == "point-15":
         return f"This is a spend-the-safe-tile example. {actual} may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space."
     if point_key == "point-16":
         return f"The outside cut {actual} preserves the middle connection represented by {naga}. It looks defensive, but the point is keeping the real route alive."
     if point_key == "point-17":
-        return f"The kept {kept} needs a target. If that tile is safe against the active opponent, keeping it is a plan; if not, it is just clutter."
+        return f"The kept {kept} needs a target. When it covers the active opponent, keeping it is a plan; vague targets make it clutter."
     if point_key == "point-18":
-        return f"An honor is not one category. Here {actual} is being treated as loose material or an opponent condition rather than self value."
+        return f"Honor tiles split into roles. Here {actual} is being treated as loose material or an opponent condition."
     if point_key == "point-19":
-        return f"The lead qualifies the ambition, but it does not end the calculation. LuckyJ still checks whether {actual} actually reduces risk or preserves the next turn."
+        return f"The lead lowers the ambition and keeps the calculation active. LuckyJ checks whether {actual} reduces risk or preserves the next turn."
     return f"LuckyJ cuts {actual} while NAGA prefers {naga}; the lesson is in the future each tile leaves behind."
 
 
@@ -598,27 +615,27 @@ def point_focus_ja(point_key, case):
     naga = tile_token(case.get("naga"))
     score_band_text = case.get("score_band", "この点数状況")
     if point_key == "point-01":
-        return f"{score_band_text} では同じ牌の値段が変わる。LuckyJ は一番きれいな形ではなく、次巡も困りにくい打牌を選んでいる。"
+        return f"{score_band_text} では同じ牌の値段が変わる。LuckyJ は次巡も困りにくい打牌を選んでいる。"
     if point_key == "point-02":
         return f"{actual} を切ることで {naga} を分岐点として残す。価値、安全、別ルートをまだ選べる形にしている。"
     if point_key == "point-05":
         return f"{actual} は後で切らされると高くつく負債。リーチや副露が入る前に先に処理している。"
     if point_key == "point-06":
-        return "LuckyJ は受け入れを少し払って、手の価値を残している。遅く打つためではなく、安すぎる未来を避けるため。"
+        return "LuckyJ は受け入れを少し払って、手の価値を残している。安すぎる未来を避ける判断である。"
     if point_key == "point-08":
         return f"リーチ自体が価値になる局面。宣言確率 {format_percent(case.get('reach_prob'))} を含めて、圧力を打牌の成果として見ている。"
     if point_key == "point-09":
-        return f"今の一打だけでなく次に切る牌まで読む。{naga} 経由の道が次巡に高くつくため、LuckyJ は {actual} を選んでいる。"
+        return f"今の一打と次に切る牌まで読む。{naga} 経由の道が次巡に高くつくため、LuckyJ は {actual} を選んでいる。"
     if point_key == "point-10":
         return f"終盤なので曖昧な改良はかなり小さい。{actual} は和了、安全テンパイ、撤退のどれかとして読む。"
     if point_key == "point-11":
-        return f"結果は {case.get('outcome')}。直撃の和了だけでなく、流局テンパイの価値を取りに行っている。"
+        return f"結果は {case.get('outcome')}。直撃の和了に加えて、流局テンパイの価値を取りに行っている。"
     if point_key == "point-12":
         return f"この不一致そのものが復習点。{actual} が安全、価値、ルート数、圧力、着順のどれを買っているかを先に言う。"
     if point_key == "point-13":
         return yakuhai_threat_sentence(case, "ja") or f"LuckyJ は {actual} が相手の役条件になる前に処理している。"
     if point_key == "point-14":
-        return f"{actual} を切って {naga} を明確な守備出口として残す。漠然と安全を見るのではなく、対象のある安全牌を残している。"
+        return f"{actual} を切って {naga} を明確な守備出口として残す。対象のある安全牌として扱っている。"
     if point_key == "point-15":
         return f"安全牌を使う例。{actual} は安全に見えても、守る相手がずれたら手順の邪魔になる。"
     if point_key == "point-16":
@@ -626,9 +643,9 @@ def point_focus_ja(point_key, case):
     if point_key == "point-17":
         return f"残す {naga} には対象が必要。生きている相手に効くなら計画で、対象がなければただの手牌圧迫。"
     if point_key == "point-18":
-        return f"字牌は一種類ではない。ここでの {actual} は自分の価値ではなく、浮き牌か相手条件として扱われている。"
+        return f"字牌には役割がある。ここでの {actual} は浮き牌か相手条件として扱われている。"
     if point_key == "point-19":
-        return f"トップ目でも計算は止めない。{actual} が本当に危険を減らし、次巡を残すかを見ている。"
+        return f"トップ目でも計算は続ける。{actual} が危険を減らし、次巡を残すかを見ている。"
     return f"LuckyJ は {actual}、NAGA は {naga}。どちらがどの未来を残すかを見る。"
 
 
@@ -636,13 +653,13 @@ def copy_rule_en(point_key, case):
     actual = tile_token(case.get("actual"))
     naga = tile_token(case.get("naga"))
     if point_key == "point-13":
-        return f"Copy this when {actual} is live yakuhai for an opened hand and your own hand is not ready to punish that player immediately."
+        return f"Copy this when {actual} is live yakuhai for an opened hand and your own hand is too slow to punish that player immediately."
     if point_key in {"point-14", "point-17"}:
-        return f"Copy the target, not the tile: keep {naga} only if it answers a named opponent on a believable future bad draw."
+        return f"Copy the target: keep {naga} when it answers a named opponent on a believable future bad draw."
     if point_key == "point-15":
         return f"Copy this only after naming why the safe-looking {actual} has expired and what later exit remains."
     if point_key == "point-18":
-        return f"Copy the role label: cut {actual} when it is not self value and mostly helps someone else's condition."
+        return f"Copy the role label: cut {actual} when its main job helps someone else's condition."
     if point_key == "point-19":
         return "Copy the reduced ambition of the leader seat, but still count danger, shape, and the next discard."
     if point_key == "point-08":
@@ -658,7 +675,7 @@ def copy_rule_ja(point_key, case):
     if point_key == "point-13":
         return f"{actual} が副露手の生きた役牌で、自分がすぐ罰せない時だけ真似する。"
     if point_key in {"point-14", "point-17"}:
-        return f"牌ではなく対象を真似する。{naga} が次の悪いツモで誰に効くかを言える時だけ残す。"
+        return f"対象を真似する。{naga} が次の悪いツモで誰に効くかを言える時だけ残す。"
     if point_key == "point-15":
         return f"安全そうな {actual} がなぜ期限切れか、次の出口が何かを言えた時だけ真似する。"
     if point_key == "point-18":
@@ -676,32 +693,32 @@ def limit_rule_en(point_key, case):
     actual = tile_token(case.get("actual"))
     naga = tile_token(case.get("naga"))
     if point_key == "point-13":
-        return "Do not clean every honor automatically. If the tile is your pair, your value, or no longer live for the caller, this reason disappears."
+        return "Clean honors by role. Your pair, your value tile, and a dead caller tile use different rules."
     if point_key == "point-08":
-        return "Do not declare just because the model likes riichi. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct."
+        return "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct."
     if point_key in {"point-14", "point-17"}:
-        return f"If {naga} is not actually safe to a live threat, keeping it is not the LuckyJ idea."
+        return f"Keep {naga} when it actually covers a live threat."
     if point_key == "point-15":
-        return f"If {actual} is your only real answer to the active threat, spending it is not stale-safety cleaning."
+        return f"Spend {actual} only when another real answer to the active threat remains."
     if point_key == "point-16":
         return f"If {actual} is the only safe tile or the inside route is fantasy, the outside cut is just a fold."
-    return "Do not copy the surface tile when the score job, threat level, or next discard chain is different."
+    return "Copy the surface tile only when the score job, threat level, and next discard chain match."
 
 
 def limit_rule_ja(point_key, case):
     actual = tile_token(case.get("actual"))
     naga = tile_token(case.get("naga"))
     if point_key == "point-13":
-        return "すべての字牌を自動で掃除しない。対子、自分の役、相手にもう生きていない牌なら理由は消える。"
+        return "字牌は役割で分ける。対子、自分の役、相手にもう生きていない牌は別判断である。"
     if point_key == "point-08":
-        return "モデルがリーチ寄りでも自動宣言しない。悪形、着順罰、明確な改良があればダマも残る。"
+        return "リーチには理由を持たせる。悪形、着順罰、明確な改良があればダマも残る。"
     if point_key in {"point-14", "point-17"}:
-        return f"{naga} が生きた脅威に本当に安全でなければ、残す理由は LuckyJ の考えではない。"
+        return f"{naga} が生きた脅威に通る時に残す。"
     if point_key == "point-15":
-        return f"{actual} が現役の脅威への唯一の答えなら、期限切れ安全牌として使ってはいけない。"
+        return f"{actual} が現役の脅威への唯一の答えなら、出口として残す。"
     if point_key == "point-16":
-        return f"{actual} が唯一の安全牌、または中のルートが幻想なら、それは攻めではなく降り。"
-    return "点数状況、脅威、次に切る牌が違うなら、表面の牌だけ真似しない。"
+        return f"{actual} が唯一の安全牌、または中のルートが幻想なら、防御寄りの打牌として扱う。"
+    return "表面の牌を真似する条件は、点数状況、脅威、次に切る牌がそろう時である。"
 
 
 def why_naga_tempting_en(case):
@@ -711,7 +728,7 @@ def why_naga_tempting_en(case):
     naga_eval = case.get("naga_eval")
     if actual_eval and naga_eval:
         return f"The NAGA line through {naga} is tempting because it leaves {eval_summary(naga_eval, 'en')}. LuckyJ's {actual} line leaves {eval_summary(actual_eval, 'en')}. {danger_gap_phrase(case, 'en')}"
-    return f"The NAGA top line {naga} is tempting because it is the model's highest-weight simple discard here ({format_percent(case.get('naga_prob'))} versus LuckyJ at {format_percent(case.get('actual_prob'))}). {danger_gap_phrase(case, 'en')}"
+    return f"The NAGA top line {naga} is tempting because it has the highest model weight here: NAGA {format_percent(case.get('naga_prob'))}, LuckyJ {format_percent(case.get('actual_prob'))}. {danger_gap_phrase(case, 'en')}"
 
 
 def why_naga_tempting_ja(case):
@@ -734,7 +751,7 @@ def build_discard_guide(case, lang):
         focus = point_focus_ja(point_key, case)
         read = f"{focus} {safety}".strip()
         return {
-            "caption": f"Game {case.get('game')}: {tile_plain(case.get('actual'))} と {tile_plain(case.get('naga'))}",
+            "caption": f"LuckyJ {tile_plain(case.get('actual'))}、NAGA {tile_plain(case.get('naga'))}",
             "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、着順{case.get('rank')}。LuckyJ は {draw} ツモから {actual} を切り、NAGA 第一候補は {naga}。結果: {case.get('outcome')}",
             "read": read,
             "whyNot": why_naga_tempting_ja(case),
@@ -746,7 +763,7 @@ def build_discard_guide(case, lang):
     focus = point_focus_en(point_key, case)
     read = f"{focus} {safety}".strip()
     return {
-        "caption": f"Game {case.get('game')}: {tile_plain(case.get('actual'))} versus {tile_plain(case.get('naga'))}",
+        "caption": f"LuckyJ {tile_plain(case.get('actual'))}, NAGA {tile_plain(case.get('naga'))}",
         "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ is {case.get('score_band')} on {format_int(case.get('score'))} points in rank {case.get('rank')}. After drawing {draw}, LuckyJ cuts {actual}; NAGA's top line is {naga}. Result: {case.get('outcome')}",
         "read": read,
         "whyNot": why_naga_tempting_en(case),
@@ -766,34 +783,34 @@ def build_call_guide(case, lang):
     meld = " ".join(case.get("consumed") or [])
     if lang == "ja":
         if point_key == "point-04":
-            focus = f"副露後の {discard} まで先に見えていることが大事。開いた後も次の出口を失っていない。"
+            focus = f"副露後の {discard} まで先に見えていることが大事。開いた後も次の出口を残している。"
         elif point_key == "point-07":
             focus = f"{call} は速度を買うための副露。残り{case.get('left')}枚で、閉じたまま待つより局面の時計を進めている。"
         else:
             focus = f"閉じた手が間に合いにくいので、{call} で実戦的な手に変えている。"
         return {
-            "caption": f"Game {case.get('game')}: {call} して {tile_plain(case.get('discard_after_call'))}",
+            "caption": f"{call} して {tile_plain(case.get('discard_after_call'))}",
             "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、着順{case.get('rank')}。LuckyJ は {from_seat} から {called} を {call} し、{discard} を切る。結果: {case.get('outcome')}",
             "read": focus,
-            "whyNot": f"鳴かない選択は門前を保てるので自然。ただしこの局面では残り枚数と手牌 {meld or 'なし'} から、門前の理想形だけを待つ余裕が少ない。",
+            "whyNot": f"門前維持は自然な選択。ただしこの局面では残り枚数と手牌 {meld or 'なし'} から、門前の理想形を待つ余裕が薄い。",
             "copy": f"{call} が役、速度、テンパイ、または相手への圧力を作る時だけ真似する。鳴いた後の最初の打牌 {discard} まで先に決める。",
-            "limit": "鳴いた後の安全牌や次の方針が言えないなら、それは LuckyJ 型のテンポではなく、ただ手を狭めているだけ。",
+            "limit": "鳴いた後の安全牌や次の方針まで言える時に、LuckyJ 型のテンポになる。",
             "prompt": f"{called} を {call} するか。答える前に、鳴いた後に何を切るかを言う。",
             "answer": f"この例では {discard} まで見えているため、{focus}",
         }
     if point_key == "point-04":
-        focus = f"The important tile is the post-call {discard}. LuckyJ opens without losing the first exit or the next concrete plan."
+        focus = f"The important tile is the post-call {discard}. LuckyJ opens while keeping the first exit and the next concrete plan."
     elif point_key == "point-07":
-        focus = f"The {call} buys tempo with {case.get('left')} tiles left. LuckyJ is changing the round clock, not just completing a set."
+        focus = f"The {call} buys tempo with {case.get('left')} tiles left. LuckyJ is changing the round clock and completing a useful set."
     else:
         focus = f"The closed route is running out of practical turns, so the {call} turns a poor closed shape into a real hand."
     return {
-        "caption": f"Game {case.get('game')}: {call} on {tile_plain(case.get('called_tile'))}, then {tile_plain(case.get('discard_after_call'))}",
+        "caption": f"{call} on {tile_plain(case.get('called_tile'))}, then {tile_plain(case.get('discard_after_call'))}",
         "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ is {case.get('score_band')} on {format_int(case.get('score'))} points in rank {case.get('rank')}. LuckyJ calls {call} on {called} from the {from_seat}, then cuts {discard}. Result: {case.get('outcome')}",
         "read": focus,
-        "whyNot": f"Passing is tempting because it keeps the hand closed. The problem is that with {case.get('left')} tiles left, the closed ideal may not get enough turns to matter.",
+        "whyNot": f"Passing is tempting because it keeps the hand closed. With {case.get('left')} tiles left, the closed ideal may run out of useful turns.",
         "copy": f"Copy the {call} only when it creates yaku, speed, tenpai pressure, or denial, and when the first post-call discard {discard} is already planned.",
-        "limit": "If you cannot name the post-call discard and the next defensive exit, the call is just exposure, not LuckyJ tempo.",
+        "limit": "The call needs a named post-call discard and a next defensive exit to become LuckyJ-style tempo.",
         "prompt": f"Would you {call} on {called}? Before answering, name the discard after the call.",
         "answer": f"Here the call is coherent because {discard} is already the release tile. {focus}",
     }
@@ -1210,7 +1227,7 @@ def collect_examples():
                     try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers)
                     consumed = msg.get("consumed", [])
                     call_tiles = consumed + ([msg.get("pai")] if msg.get("pai") else [])
-                    melds[actor].append(" ".join(call_tiles))
+                    melds[actor].append(make_meld(call_tiles, msg.get("pai"), rel_seat(msg.get("target"), actor), msg_type))
                     open_melds[actor] += 1
                     for tile in consumed:
                         remove_tile(hands[actor], tile)
@@ -1220,7 +1237,7 @@ def collect_examples():
 
                 elif msg_type == "ankan":
                     consumed = msg.get("consumed", [])
-                    melds[actor].append(" ".join(consumed))
+                    melds[actor].append(make_meld(consumed, kind=msg_type))
                     open_melds[actor] += 1
                     for tile in consumed:
                         remove_tile(hands[actor], tile)
@@ -1228,7 +1245,7 @@ def collect_examples():
                 elif msg_type == "kakan":
                     tile = msg.get("pai")
                     if tile:
-                        melds[actor].append(f"+ {tile}")
+                        melds[actor].append(make_meld([tile], kind=msg_type))
                         remove_tile(hands[actor], tile)
 
                 elif msg_type == "reach":

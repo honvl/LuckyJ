@@ -12,8 +12,8 @@
     "hands": 13059,
     "games": 1256,
     "baseline_mismatch_bad_rate": 0.31016958515163234,
-    "note": "Qualitative review examples were kept as generalized prompts only; statistical validity comes from the mined model/book artifacts.",
-    "note_ja": "定性的な検討例は一般化した問いとしてだけ使い、統計的な妥当性は mined model/book artifact で確認した。"
+    "note": "Qualitative review examples were kept as generalized prompts only; statistical validity comes from the model and book artifacts.",
+    "note_ja": "定性的な検討例は一般化した問いとしてだけ使い、統計的な妥当性はモデルと書籍由来のデータで確認した。"
   },
   "summary": {
     "strong": 11,
@@ -26,14 +26,14 @@
       "id": "point-01",
       "category": "Value and Placement",
       "category_ja": "打点と着順",
-      "title": "Start with the placement problem, not the hand problem.",
-      "title_ja": "手牌問題ではなく、着順問題から始める。",
+      "title": "Start with placement before hand shape.",
+      "title_ja": "着順から手牌問題を見る。",
       "strength": "qualified",
       "verdict": "Qualified",
       "verdict_ja": "条件付き",
       "read": "Placement framing is valid, but the statistics reject a blanket 'push because behind' rule.",
       "read_ja": "着順から読む方針は妥当。ただし「負けているから押す」という一般化は統計が否定する。",
-      "caveat": "Require concrete upside and a discard that does not add unmanaged danger.",
+      "caveat": "Require concrete upside and a discard that keeps danger manageable.",
       "caveat_ja": "打点上昇や着順変化が具体的で、危険度が管理できる時だけ使う。",
       "example": "Example: as leader, a low-danger discard that preserves the next safe turn can beat a thin value upgrade.",
       "example_ja": "例: トップ目では薄い打点上昇より、次巡の安全を残す低危険打牌が勝つことがある。",
@@ -70,8 +70,8 @@
       "verdict_ja": "強い",
       "read": "Pair/triplet anchors and dora/red material had materially lower bad rates than other mismatches.",
       "read_ja": "対子/刻子の支点とドラ/赤の保持は、他の不一致より悪手率が明確に低い。",
-      "caveat": "The support is for anchors with a job, not for every pair or every dora tile.",
-      "caveat_ja": "仕事のある支点への支持であり、全ての対子やドラを残す話ではない。",
+      "caveat": "The support is strongest for anchors with a job.",
+      "caveat_ja": "仕事のある支点への支持が強い。",
       "example": "Example: keep a yakuhai pair or red-five branch when it creates value plus an open fallback.",
       "example_ja": "例: 役牌対子や赤受けが打点と鳴き返しを同時に作るなら残す。",
       "stats": [
@@ -94,39 +94,39 @@
           "text_ja": "対子早割り: n=4,318, 悪手率 35.9%, 平均との差 +5.6 pp, p=8.93e-14, 危険度差 0.021。"
         }
       ],
-      "review_example": "Review example: when one hand can become yakuhai, honitsu/chanta, or riichi, keep the anchor that preserves those futures instead of taking the prettiest one-route shape.",
+      "review_example": "Review example: when one hand can become yakuhai, honitsu/chanta, or riichi, keep the anchor that preserves those futures over the prettiest one-route shape.",
       "review_example_ja": "検討例: 役牌、混一/チャンタ、リーチの複数未来がある手では、見た目の良い一本道より、それらを残す支点を優先する。"
     },
     {
       "id": "point-03",
       "category": "Calls and Yaku Conditions",
       "category_ja": "鳴きと役条件",
-      "title": "Do not call bad shapes unless the call changes the hand's job.",
+      "title": "Call bad shapes when the call changes the hand's job.",
       "title_ja": "悪形は、手の仕事が変わる時だけ鳴く。",
       "strength": "qualified",
       "verdict": "Qualified",
       "verdict_ja": "条件付き",
-      "read": "Aggregate results support purposeful calling, but the data does not validate a broad call-more rule.",
-      "read_ja": "目的のある鳴きは成績面で支持されるが、単純な鳴き増やしは検証されていない。",
+      "read": "Aggregate results support purposeful calling; a broad call-more rule still needs proof.",
+      "read_ja": "目的のある鳴きは成績面で支持される。単純な鳴き増やしは追加検証が必要。",
       "caveat": "Demand a named purpose: tenpai, yaku creation, value, denial, or safe-tenpai equity.",
       "caveat_ja": "テンパイ、役作り、打点、阻止、形式テンパイなど目的を名付ける。",
-      "example": "Example: chi only when it creates a real yaku route or a safe tenpai path, not just because the block is weak.",
-      "example_ja": "例: 弱ブロックだから鳴くのではなく、役ルートや安全テンパイルートが生まれる時だけチーする。",
+      "example": "Example: chi when it creates a real yaku route or a safe tenpai path from the weak block.",
+      "example_ja": "例: 弱ブロックから役ルートや安全テンパイルートが生まれる時だけチーする。",
       "stats": [
         {
           "kind": "aggregate",
-          "text": "Call opportunities became calls 35.8% of hands, so call points need purpose filters instead of a yes/no rule.",
+          "text": "Call opportunities became calls 35.8% of hands, so call points need purpose filters.",
           "text_ja": "局単位の鳴き率は 35.8%。鳴きは可否より目的フィルターで見る必要がある。"
         },
         {
           "kind": "aggregate",
-          "text": "Winning-half volume was not passive: calls/game 5.79 vs 5.44, riichi/game 2.11 vs 1.67.",
-          "text_ja": "上位半分は受け身ではない: 鳴きは半荘あたり 5.79 対 5.44、リーチは 2.11 対 1.67。"
+          "text": "Winning-half volume was active: calls/game 5.79 compared with 5.44, riichi/game 2.11 compared with 1.67.",
+          "text_ja": "上位半分は能動的: 鳴きは半荘あたり 5.79 対 5.44、リーチは 2.11 対 1.67。"
         },
         {
           "kind": "aggregate",
-          "text": "Middle plus late decisions total 80,537; the defense points are not based only on opening-row cleanup.",
-          "text_ja": "中盤と終盤の判断は合計 80,537 件。守備点は序盤整理だけではない。"
+          "text": "Middle plus late decisions total 80,537; the defense points have evidence beyond opening-row cleanup.",
+          "text_ja": "中盤と終盤の判断は合計 80,537 件。守備点は序盤整理に加えて中終盤にも根拠がある。"
         }
       ],
       "review_example": "Review example: call a bad block only when it creates yaku, tenpai, denial, or safe draw equity; skip the call that merely exposes a fragile one-away hand.",
@@ -167,8 +167,8 @@
           "text_ja": "一般的な安全牌保持: n=8,590, 悪手率 35.1%, 平均との差 +5.4 pp, p=<0.0001, 危険度差 0.036。"
         }
       ],
-      "review_example": "Review example: after opening, keep an exit to the live threat if the hand can still reach tenpai; do not spend every safe tile just because the hand is committed.",
-      "review_example_ja": "検討例: 副露後でもテンパイが現実的なら、実脅威への出口を一枚残す。コミットしたからといって安全牌を全部使わない。"
+      "review_example": "Review example: after opening, keep an exit to the live threat if the hand can still reach tenpai; commitment still needs one clean brake.",
+      "review_example_ja": "検討例: 副露後でもテンパイが現実的なら、実脅威への出口を一枚残す。コミットした手にもきれいなブレーキを残す。"
     },
     {
       "id": "point-05",
@@ -179,10 +179,10 @@
       "strength": "strong",
       "verdict": "Strong",
       "verdict_ja": "強い",
-      "read": "Safer-than-NAGA choices were one of the cleanest mined signals; danger pricing should be explicit.",
+      "read": "Safer-than-NAGA choices were one of the clearest support signals; danger pricing should be explicit.",
       "read_ja": "NAGA より安全な選択は最もきれいな信号の一つで、危険度の値付けを明示すべき。",
-      "caveat": "Do not turn this into timid early slimming when the tile still carries value or yaku routes.",
-      "caveat_ja": "価値や役ルートが残る牌まで臆病に早切りしない。",
+      "caveat": "Keep this targeted: early slimming works when the tile has little value or yaku route left.",
+      "caveat_ja": "早切りは、牌の価値や役ルートが薄い時に絞る。",
       "example": "Example: cut the future-riichi liability before it becomes the only discard your hand can release.",
       "example_ja": "例: 後でリーチに切れなくなる浮き牌は、唯一の打牌になる前に処理する。",
       "stats": [
@@ -217,9 +217,9 @@
       "strength": "qualified",
       "verdict": "Qualified",
       "verdict_ja": "条件付き",
-      "read": "Dora/red retention is supported; broad risk-buying for value is not.",
-      "read_ja": "ドラ/赤の保持は支持されるが、打点のための広いリスク購入は支持されない。",
-      "caveat": "The value seed must improve a real winning route, not just make the hand prettier.",
+      "read": "Dora/red retention is supported; broad risk-buying for value needs tighter proof.",
+      "read_ja": "ドラ/赤の保持は支持される。打点のための広いリスク購入は追加確認が必要。",
+      "caveat": "The value seed should improve a real winning route.",
       "caveat_ja": "打点種は実際の和了ルートを良くする時だけ残す。",
       "example": "Example: keep red-five access when it also keeps tanyao or riichi value alive.",
       "example_ja": "例: 赤受けがタンヤオやリーチ打点も同時に残すなら価値がある。",
@@ -254,43 +254,43 @@
       "strength": "qualified",
       "verdict": "Qualified",
       "verdict_ja": "条件付き",
-      "read": "The outcome split supports active conversion, but the call data is not a causal proof.",
-      "read_ja": "成績差は能動的な変換を支持するが、鳴きデータだけでは因果証明ではない。",
-      "caveat": "Use this as a review question, not as permission to call every speed tile.",
-      "caveat_ja": "スピード牌を全部鳴く許可ではなく、復習時の問いとして使う。",
+      "read": "The outcome split supports active conversion; treat the call data as context evidence.",
+      "read_ja": "成績差は能動的な変換を支持する。鳴きデータは文脈証拠として扱う。",
+      "caveat": "Use this as a review question for which speed tiles deserve calls.",
+      "caveat_ja": "どのスピード牌を鳴く価値があるかを復習時の問いにする。",
       "example": "Example: call for tenpai, yaku certainty, ippatsu break, or denial; skip when the call only makes a fragile one-away hand.",
       "example_ja": "例: テンパイ、役確定、一発消し、阻止なら鳴く。壊れやすい一向聴になるだけなら見送る。",
       "stats": [
         {
           "kind": "aggregate",
-          "text": "Call opportunities became calls 35.8% of hands, so call points need purpose filters instead of a yes/no rule.",
+          "text": "Call opportunities became calls 35.8% of hands, so call points need purpose filters.",
           "text_ja": "局単位の鳴き率は 35.8%。鳴きは可否より目的フィルターで見る必要がある。"
         },
         {
           "kind": "aggregate",
-          "text": "Winning-half volume was not passive: calls/game 5.79 vs 5.44, riichi/game 2.11 vs 1.67.",
-          "text_ja": "上位半分は受け身ではない: 鳴きは半荘あたり 5.79 対 5.44、リーチは 2.11 対 1.67。"
+          "text": "Winning-half volume was active: calls/game 5.79 compared with 5.44, riichi/game 2.11 compared with 1.67.",
+          "text_ja": "上位半分は能動的: 鳴きは半荘あたり 5.79 対 5.44、リーチは 2.11 対 1.67。"
         },
         {
           "kind": "aggregate",
-          "text": "Middle plus late decisions total 80,537; the defense points are not based only on opening-row cleanup.",
-          "text_ja": "中盤と終盤の判断は合計 80,537 件。守備点は序盤整理だけではない。"
+          "text": "Middle plus late decisions total 80,537; the defense points have evidence beyond opening-row cleanup.",
+          "text_ja": "中盤と終盤の判断は合計 80,537 件。守備点は序盤整理に加えて中終盤にも根拠がある。"
         }
       ],
-      "review_example": "Review example: a tempo call is valid when it creates tenpai, yaku certainty, denial, or an ippatsu break; raw speed alone is not enough.",
-      "review_example_ja": "検討例: テンポ鳴きは、テンパイ、役確定、阻止、一発消しを作る時に有効。単なる速度だけでは足りない。"
+      "review_example": "Review example: a tempo call is valid when it creates tenpai, yaku certainty, denial, or an ippatsu break; raw speed needs an actual payoff.",
+      "review_example_ja": "検討例: テンポ鳴きは、テンパイ、役確定、阻止、一発消しを作る時に有効。単なる速度には追加の目的が必要。"
     },
     {
       "id": "point-08",
       "category": "Value and Pressure",
       "category_ja": "打点と圧力",
-      "title": "Riichi is a conversion tool, not a default.",
-      "title_ja": "リーチは変換手段であり、自動ではない。",
+      "title": "Riichi converts value into pressure.",
+      "title_ja": "リーチは打点を圧力に変える。",
       "strength": "qualified",
       "verdict": "Qualified",
       "verdict_ja": "条件付き",
-      "read": "Top-half games used more riichi, but the point is conversion quality rather than raw reach volume.",
-      "read_ja": "上位半分はリーチ回数も多いが、要点は回数ではなく変換品質。",
+      "read": "Top-half games used more riichi; the point is conversion quality over raw reach volume.",
+      "read_ja": "上位半分はリーチ回数も多い。要点は回数より変換品質。",
       "caveat": "Require value, pressure, or placement gain before turning the hand face-up.",
       "caveat_ja": "打点、圧力、着順変化のいずれかがある時だけ手を公開する。",
       "example": "Example: riichi the hand that forces opponents to react; dama or fold when the declaration only buys a bad wait with no table pressure.",
@@ -298,8 +298,8 @@
       "stats": [
         {
           "kind": "aggregate",
-          "text": "Winning-half volume was not passive: calls/game 5.79 vs 5.44, riichi/game 2.11 vs 1.67.",
-          "text_ja": "上位半分は受け身ではない: 鳴きは半荘あたり 5.79 対 5.44、リーチは 2.11 対 1.67。"
+          "text": "Winning-half volume was active: calls/game 5.79 compared with 5.44, riichi/game 2.11 compared with 1.67.",
+          "text_ja": "上位半分は能動的: 鳴きは半荘あたり 5.79 対 5.44、リーチは 2.11 対 1.67。"
         },
         {
           "kind": "aggregate",
@@ -362,8 +362,8 @@
       "strength": "qualified",
       "verdict": "Qualified",
       "verdict_ja": "条件付き",
-      "read": "Late positions are numerous enough to validate as a training category, but not every late LuckyJ split is good.",
-      "read_ja": "終盤局面は訓練カテゴリにできる母数があるが、全ての終盤 LuckyJ 分岐が良いわけではない。",
+      "read": "Late positions are numerous enough to validate as a training category; every late LuckyJ split still needs context.",
+      "read_ja": "終盤局面は訓練カテゴリにできる母数がある。終盤 LuckyJ 分岐は文脈確認が必要。",
       "caveat": "Cross-check third-row choices against points, safe tiles, and model disagreement.",
       "caveat_ja": "三段目は点数、安全牌、モデル不一致で必ず確認する。",
       "example": "Example: when both tenpai and noten-bappu are live, compute the exact point swing before copying the push.",
@@ -386,8 +386,8 @@
           "text_ja": "モデル復習の母数: 対象 135,038 件中 LuckyJ/NAGA 不一致 36,206 件。重い不一致 proxy は 31.0% に限られる。"
         }
       ],
-      "review_example": "Review example: third-row choices need exact tenpai, noten, deal-in, and placement arithmetic; do not copy a late push without the point swing.",
-      "review_example_ja": "検討例: 三段目はテンパイ、ノーテン、放銃、着順の点差計算が必要。点差変化なしに終盤の押しを真似しない。"
+      "review_example": "Review example: third-row choices need exact tenpai, noten, deal-in, and placement arithmetic; copy a late push after the point swing is clear.",
+      "review_example_ja": "検討例: 三段目はテンパイ、ノーテン、放銃、着順の点差計算が必要。点差変化を確認してから終盤の押しを真似する。"
     },
     {
       "id": "point-11",
@@ -400,8 +400,8 @@
       "verdict_ja": "条件付き",
       "read": "Draw-tenpai frequency makes the objective real, but each push still needs a danger price.",
       "read_ja": "流局テンパイの頻度から目的は本物だが、各押しには危険値付けが必要。",
-      "caveat": "Do not chase keiten through multiple live threats without safe exits.",
-      "caveat_ja": "複数脅威に対して出口なしで形式テンパイを追わない。",
+      "caveat": "Chase keiten through multiple live threats only with safe exits.",
+      "caveat_ja": "複数脅威への形式テンパイは出口がある時だけ追う。",
       "example": "Example: keep a harmless tenpai route when folding; abandon it if the next discard must pass two dangerous waits.",
       "example_ja": "例: 降りながら無害なテンパイルートを残す。次打が二つの危険待ちを通すなら捨てる。",
       "stats": [
@@ -429,15 +429,15 @@
       "id": "point-12",
       "category": "Review",
       "category_ja": "復習",
-      "title": "Use model disagreement as a prompt, not a verdict.",
-      "title_ja": "モデル不一致は結論ではなく問い。",
+      "title": "Use model disagreement as a study prompt.",
+      "title_ja": "モデル不一致は復習の問い。",
       "strength": "strong",
       "verdict": "Strong",
       "verdict_ja": "強い",
-      "read": "The mismatch base is large, and most mismatches are not severe by the NAGA proxy.",
+      "read": "The mismatch base is large, and most mismatches stay below the severe NAGA-proxy threshold.",
       "read_ja": "不一致母数は大きく、NAGA proxy 上で重い不一致は少数にとどまる。",
-      "caveat": "A split marks a hand to study; it does not prove either side at sight.",
-      "caveat_ja": "分岐は復習対象を示すだけで、その場でどちらかの正解を証明しない。",
+      "caveat": "A split marks a hand to study; proof comes from the purchase, risk, and table context.",
+      "caveat_ja": "分岐は復習対象を示す。根拠は購入価値、危険、場況から作る。",
       "example": "Example: if LuckyJ, NAGA, and Mortal disagree, write the purchase and the risk before adopting the move.",
       "example_ja": "例: LuckyJ、NAGA、Mortal が割れたら、その打牌が何を買い、何を危険にするかを書く。",
       "stats": [
@@ -466,13 +466,13 @@
       "id": "point-13",
       "category": "Calls and Yaku Conditions",
       "category_ja": "鳴きと役条件",
-      "title": "Do not feed uncertain open-hand yaku conditions.",
-      "title_ja": "未確定副露に役条件を渡さない。",
+      "title": "Hold back uncertain open-hand yaku conditions.",
+      "title_ja": "未確定副露の役条件牌を先に扱う。",
       "strength": "strong",
       "verdict": "Strong",
       "verdict_ja": "強い",
-      "read": "Loose honor cleanup is one of the strongest mined signals.",
-      "read_ja": "浮き字牌整理は最も強い mined signal の一つ。",
+      "read": "Loose honor cleanup is one of the strongest support signals.",
+      "read_ja": "浮き字牌整理は最も強い裏付けの一つ。",
       "caveat": "Split self-value yakuhai from opponent yaku-condition tiles before cutting.",
       "caveat_ja": "切る前に、自分の役牌価値と相手の役条件牌を分ける。",
       "example": "Example: clean a lone live dragon before an opponent's open hand turns it into their missing yaku.",
@@ -508,8 +508,8 @@
       "strength": "strong",
       "verdict": "Strong",
       "verdict_ja": "強い",
-      "read": "Threat-specific safety is strongly supported; generic safety retention is not.",
-      "read_ja": "対象付き安全牌保持は強く支持されるが、一般的な安全牌保持は支持されない。",
+      "read": "Threat-specific safety is strongly supported; generic safety retention needs a sharper target.",
+      "read_ja": "対象付き安全牌保持は強く支持される。一般的な安全牌保持には対象の明確化が必要。",
       "caveat": "The point must stay narrow: who is the exit for, and when will it be spent?",
       "caveat_ja": "対象と使う時期を必ず決める狭いルールにする。",
       "example": "Example: keep suji only if it defends the current riichi or open hand and the hand can still act next turn.",
@@ -518,7 +518,7 @@
         {
           "kind": "pattern",
           "key": "threat_keep_exit",
-          "text": "Exit versus active threat: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
+          "text": "Exit for active threat: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
           "text_ja": "実脅威への出口: n=8,406, 悪手率 24.4%, 平均との差 -8.7 pp, p=<0.0001, 危険度差 0.012。"
         },
         {
@@ -586,8 +586,8 @@
       "verdict_ja": "強い",
       "read": "Cutting outside material while keeping inside shape had strong aggregate support.",
       "read_ja": "外側を切って内側形を残す分岐は集計上強く支持された。",
-      "caveat": "The reverse middle-cut pattern was much worse, so do not confuse route preservation with vague safety.",
-      "caveat_ja": "逆の中張牌切りは大きく悪いので、曖昧な守備と混同しない。",
+      "caveat": "Keep route preservation separate from vague safety.",
+      "caveat_ja": "本線維持と曖昧な守備を分けて読む。",
       "example": "Example: in danger, cut the edge tile that lowers exposure while preserving the live inner wait route.",
       "example_ja": "例: 危険下では、露出を下げながら本命内側待ちを残す外側牌を切る。",
       "stats": [
@@ -624,10 +624,10 @@
       "verdict_ja": "強い",
       "read": "This is the cleanest correction to the original safe-tile language.",
       "read_ja": "元の安全牌表現への最も明確な修正。",
-      "caveat": "The same tile flips from good to bad when it is not tied to a live threat.",
-      "caveat_ja": "実脅威に結び付かない時、同じ安全牌でも良し悪しが反転する。",
-      "example": "Example: label a kept 9m as genbutsu to the dealer riichi, not merely 'safe'.",
-      "example_ja": "例: 残す9萬を単に安全牌ではなく、親リーチへの現物として名付ける。",
+      "caveat": "The same tile flips from good to bad once its live-threat target changes.",
+      "caveat_ja": "実脅威の対象が変わると、同じ安全牌でも良し悪しが反転する。",
+      "example": "Example: label a kept 9m as genbutsu to the dealer riichi with a named target.",
+      "example_ja": "例: 残す9萬を親リーチへの現物として具体的に名付ける。",
       "stats": [
         {
           "kind": "pattern",
@@ -660,8 +660,8 @@
       "strength": "strong",
       "verdict": "Strong",
       "verdict_ja": "強い",
-      "read": "Honor cleanup and pair-anchor stats support role labeling rather than a single honor rule.",
-      "read_ja": "字牌整理と対子支点の統計は、単一の字牌ルールではなく役割名付けを支持する。",
+      "read": "Honor cleanup and pair-anchor stats support role labeling over a single honor rule.",
+      "read_ja": "字牌整理と対子支点の統計は、単一の字牌ルールより役割名付けを支持する。",
       "caveat": "Self yakuhai, opponent yaku condition, dead honor, and safe exit are different categories.",
       "caveat_ja": "自分役牌、相手の役条件、枯れ字牌、安全出口は別カテゴリ。",
       "example": "Example: a lone dragon can be value seed, opponent yaku-condition liability, or safe exit depending on calls and rivers.",
@@ -692,17 +692,17 @@
       "id": "point-19",
       "category": "Placement and Defense",
       "category_ja": "着順と守備",
-      "title": "Leader safety is a qualifier, not a plan.",
-      "title_ja": "トップ目安全は条件であって計画ではない。",
+      "title": "Leader safety qualifies the plan.",
+      "title_ja": "トップ目安全は計画の条件。",
       "strength": "qualified",
       "verdict": "Qualified",
       "verdict_ja": "条件付き",
-      "read": "Leader low-risk choices were only mildly better than baseline; the stronger signal is avoiding extra danger.",
-      "read_ja": "トップ目の低危険選択は平均との差が小さい。より強い信号は余計な危険を増やさないこと。",
-      "caveat": "Do not lower ambition unless the discard also keeps the next turn playable.",
+      "read": "Leader low-risk choices were only mildly better than baseline; the stronger signal is controlled danger.",
+      "read_ja": "トップ目の低危険選択は平均との差が小さい。より強い信号は危険の管理。",
+      "caveat": "Lower ambition when the discard also keeps the next turn playable.",
       "caveat_ja": "次巡も打てる形を保つ時だけ目標を下げる。",
-      "example": "Example: choose the low-risk tile that keeps a clean fold or cheap win, not a tile that simply avoids building value.",
-      "example_ja": "例: 打点を作らないだけの牌ではなく、安い和了かきれいな撤退を残す低危険牌を選ぶ。",
+      "example": "Example: choose the low-risk tile that keeps a clean fold or cheap win.",
+      "example_ja": "例: 安い和了かきれいな撤退を残す低危険牌を選ぶ。",
       "stats": [
         {
           "kind": "pattern",
@@ -722,8 +722,8 @@
           "text_ja": "成績差: 上位半分は半荘あたり和了3.09回、放銃0.75回。下位半分は和了1.39回、放銃1.48回。"
         }
       ],
-      "review_example": "Review example: as leader, lowering ambition is correct only when the discard also keeps a clean next turn, not when it merely avoids value.",
-      "review_example_ja": "検討例: トップ目で目標を下げるのは、次巡がきれいに打てる時だけ。単に打点を避けるだけでは足りない。"
+      "review_example": "Review example: as leader, lower ambition when the discard also keeps a clean next turn and fits the placement target.",
+      "review_example_ja": "検討例: トップ目で目標を下げる時は、次巡がきれいに打てて着順目標にも合う牌を選ぶ。"
     }
   ]
 }

@@ -508,14 +508,14 @@ def model_agreement_text(model: dict[str, Any], actual: dict[str, Any], example:
             return "Mortal は LuckyJ 側に寄っている。"
         if naga:
             return "Mortal は NAGA 側に寄っている。"
-        return "Mortal は第三の選択を出しているので、この例はそのまま暗記しない。"
+        return "Mortal は第三の選択を出している。この例は境界例として読む。"
     if luckyj and naga:
         return "Mortal agrees with the shared LuckyJ/NAGA line."
     if luckyj:
         return "Mortal backs LuckyJ's line."
     if naga:
         return "Mortal backs the NAGA line."
-    return "Mortal chooses a third line, so this tab is a caution case rather than a clean endorsement."
+    return "Mortal chooses a third line, so this tab is a caution case with mixed model support."
 
 
 def point_mortal_focus(point: str, example: dict[str, Any], lang: str = "en") -> str:
@@ -531,7 +531,7 @@ def point_mortal_focus(point: str, example: dict[str, Any], lang: str = "en") ->
             "point-06": "受け入れを払うだけの打点・価値があるかを見る。",
             "point-07": "鳴きが局面の時計を進めるか、露出だけ増やすかを見る。",
             "point-08": "リーチ圧力が柔軟性を失う値段に見合うかを見る。",
-            "point-09": "今の押し引きではなく、次に必要な打牌まで再評価する。",
+            "point-09": "次に必要な打牌まで再評価する。",
             "point-10": "終盤の LuckyJ 例は最もコピーしにくいので、確証より警告として読む。",
             "point-11": "流局テンパイ料を安全に取りに行けるかを見る。",
             "point-12": "不一致の種類を分類するための第二意見として使う。",
@@ -553,7 +553,7 @@ def point_mortal_focus(point: str, example: dict[str, Any], lang: str = "en") ->
         "point-06": "Use it to test whether the hand's value justifies spending immediate acceptance.",
         "point-07": "Use it to separate tempo that changes the clock from exposure that only feels busy.",
         "point-08": "Use it to check whether riichi pressure is worth losing flexibility.",
-        "point-09": "Use it to reprice the next required discard, not only the current one.",
+        "point-09": "Use it to reprice the next required discard.",
         "point-10": "Use it as a warning layer: late LuckyJ choices are the least copyable part of the style.",
         "point-11": "Use it to check whether safe drawn-hand equity is real.",
         "point-12": "Use it to classify the disagreement before making a story out of it.",
@@ -600,9 +600,9 @@ def commentary_for(
             f"{round_name}, {stage}, {left} tiles left, {score_band}. Mortal's first reaction is {model_line} "
             f"({top_weight}); LuckyJ actually plays {actual_line}. {agreement}{post}"
         )
-        use = f"{focus} Do not copy the call unless the post-call discard and next exit are already visible."
+        use = f"{focus} Copy the call when the post-call discard and next exit are already visible."
         read_ja = f"{round_name}、{stage}、残り{left}枚、{score_band}。Mortal 第一反応は {model_line_ja} ({top_weight})、LuckyJ 実戦は {actual_line_ja}。{agreement_ja}{post_ja}"
-        use_ja = f"{focus_ja} 鳴いた後の打牌と次の出口が見えていないなら真似しない。"
+        use_ja = f"{focus_ja} 鳴いた後の打牌と次の出口が見えている時に真似する。"
         return read, use, read_ja, use_ja
 
     naga = tile_token(example.get("naga"))
@@ -643,7 +643,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         "meta": {
             "model": "Mortal policy model, local downloaded weights",
             "library": "Equim-chan Mortal/libriichi local replay",
-            "source": "Generated from local Mjai logs; raw logs and weights are intentionally not included.",
+            "source": "Generated from local Mjai logs; raw logs and weights stay local.",
         },
         "points": {},
     }
@@ -658,6 +658,18 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
             item["example_index"] = index
             item["input_signature"] = list(sig)
             item.setdefault("kind", example.get("kind"))
+            read, use, read_ja, use_ja = commentary_for(
+                point,
+                item.get("mortal") or {},
+                item.get("actual") or {},
+                example,
+                (item.get("top_candidates") or [None])[0],
+                item.get("post_call_mortal"),
+            )
+            item["read"] = read
+            item["how_to_use"] = use
+            item["read_ja"] = read_ja
+            item["how_to_use_ja"] = use_ja
             output["points"].setdefault(point, []).append(item)
             continue
 
@@ -721,9 +733,9 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
                     "post_call_mortal": None,
                     "post_call_agrees_luckyj": None,
                     "post_call_candidates": [],
-                    "read": f"Mortal replay did not match this exact tab, so do not use it as model support. LuckyJ's visible choice is still reviewed against NAGA and the table state.",
+                    "read": f"Mortal replay missed this exact tab, so treat it as a manual review case. LuckyJ's visible choice is still reviewed against NAGA and the table state.",
                     "how_to_use": f"Treat this tab as a manual review case until the local Mjai replay matcher covers it. Error: {exc}",
-                    "read_ja": "このタブは Mortal リプレイが一致しなかったため、モデル支持として使わない。LuckyJ の実戦選択は NAGA と場況で読む。",
+                    "read_ja": "このタブは Mortal リプレイが一致しなかったため、手動復習として扱う。LuckyJ の実戦選択は NAGA と場況で読む。",
                     "how_to_use_ja": f"ローカル Mjai の照合が対応するまでは手動復習扱い。エラー: {exc}",
                 }
             )

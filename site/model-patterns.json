@@ -212,7 +212,7 @@
         }
       },
       "keep_dora_or_red": {
-        "label": "Keep dora/red-five material instead of taking the clean NAGA cut",
+        "label": "Keep dora/red-five material through the clean NAGA cut",
         "n": 617,
         "share_of_mismatches": 0.01704137435784124,
         "bad_rate": 0.24635332252836303,
@@ -310,7 +310,7 @@
         }
       },
       "leader_low_risk": {
-        "label": "Leader/large-stack choices that do not increase danger",
+        "label": "Leader/large-stack choices with controlled danger",
         "n": 5153,
         "share_of_mismatches": 0.14232447660608738,
         "bad_rate": 0.2957500485154279,
@@ -431,7 +431,7 @@
         }
       },
       "spend_off_target_safety_for_shape": {
-        "label": "Spend a safe-looking tile that does not answer the current threat",
+        "label": "Spend a safe-looking tile after its target changes",
         "n": 2992,
         "share_of_mismatches": 0.08263823675633873,
         "bad_rate": 0.22092245989304812,
@@ -560,8 +560,8 @@
     },
     {
       "pattern": "spend_off_target_safety_for_shape",
-      "title": "Safe-looking tiles can be spent when they do not answer the live target",
-      "why_candidate": "Spend a safe-looking tile that does not answer the current threat",
+      "title": "Safe-looking tiles can be spent after their target changes",
+      "why_candidate": "Spend a safe-looking tile after its target changes",
       "naga_evidence": {
         "n": 2992,
         "share_of_mismatches": 0.08263823675633873,
@@ -630,8 +630,8 @@
     },
     {
       "pattern": "keep_dora_or_red",
-      "title": "Do not spend value seeds just to obey local cleanliness",
-      "why_candidate": "Keep dora/red-five material instead of taking the clean NAGA cut",
+      "title": "Keep value seeds through local cleanup pressure",
+      "why_candidate": "Keep dora/red-five material through the clean NAGA cut",
       "naga_evidence": {
         "n": 617,
         "share_of_mismatches": 0.01704137435784124,
@@ -682,7 +682,7 @@
     },
     {
       "pattern": "keep_self_yakuhai_pair_anchor",
-      "title": "Self yakuhai pairs are route anchors, not ordinary pairs",
+      "title": "Self yakuhai pairs can be route anchors",
       "why_candidate": "Keep own yakuhai pair or triplet anchor while NAGA breaks it",
       "naga_evidence": {
         "n": 135,
