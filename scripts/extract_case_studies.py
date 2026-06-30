@@ -208,11 +208,11 @@ def collect_cases():
                             top_classes = [base.tile_class(top) for top, _, _ in model_rows]
                             kept_read = safety_read(model_rows[0][0], target, discards, reached, open_melds)
                             if kept_read["kind"] == "genbutsu":
-                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Kept river-safe exit", discards, reached, open_melds)
+                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Kept genbutsu tile", discards, reached, open_melds)
                                 if case:
                                     buckets["kept_river_safe"].append(case)
                             elif kept_read["kind"] == "suji":
-                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Kept suji exit", discards, reached, open_melds)
+                                case = make_case(row, kyoku_index, pos, start, state, hands[actor], public_visible, model_rows, "Kept suji tile", discards, reached, open_melds)
                                 if case:
                                     buckets["kept_suji_exit"].append(case)
                             if stage == "early" and actual_cls == "simple" and all(c in {"honor", "terminal"} for c in top_classes):

@@ -536,11 +536,11 @@ def point_mortal_focus(point: str, example: dict[str, Any], lang: str = "en") ->
             "point-11": "流局テンパイ料を安全に取りに行けるかを見る。",
             "point-12": "不一致の種類を分類するための第二意見として使う。",
             "point-13": f"{actual} が相手の役牌条件になる読みを、形の評価とぶつけて確認する。",
-            "point-14": f"残した {naga} が対象のある出口かを見る。",
+            "point-14": f"残した {naga} が対象のある安全牌かを見る。",
             "point-15": f"{actual} の安全が期限切れか、まだ必要な保険かを見る。",
             "point-16": f"外側の {actual} が中の接続を残す攻めになっているかを見る。",
             "point-17": f"残した {naga} が誰に効く安全牌なのかをはっきりさせる。",
-            "point-18": f"{actual} が自分の価値、相手条件、死に牌、守備出口のどれかを分ける。",
+            "point-18": f"{actual} が自分の価値、相手条件、死に牌、守備牌のどれかを分ける。",
             "point-19": "トップ目の低い目標が、実際の危険低下と両立するかを見る。",
         }
         return mapping.get(point, "Mortal を第二意見として使い、打牌の理由を確認する。")
@@ -558,11 +558,11 @@ def point_mortal_focus(point: str, example: dict[str, Any], lang: str = "en") ->
         "point-11": "Use it to check whether safe drawn-hand equity is real.",
         "point-12": "Use it to classify the disagreement before making a story out of it.",
         "point-13": f"Use it to pit the {actual} yaku-condition denial read against ordinary shape evaluation.",
-        "point-14": f"Use it to check whether the kept {naga} is a named defensive exit.",
+        "point-14": f"Use it to check whether the kept {naga} is a named defensive tile.",
         "point-15": f"Use it to decide whether {actual}'s safety has expired or is still needed insurance.",
         "point-16": f"Use it to test whether the outside {actual} cut preserves a real inside connector.",
         "point-17": f"Use it to name exactly which opponent the kept {naga} answers.",
-        "point-18": f"Use it to label {actual}: self value, opponent condition, dead material, or defensive exit.",
+        "point-18": f"Use it to label {actual}: self value, opponent condition, dead material, or defensive tile.",
         "point-19": "Use it to check whether leader caution still preserves a playable next turn.",
     }
     return mapping.get(point, "Use Mortal as a second model view on whether the disagreement has strategic weight.")
@@ -600,9 +600,9 @@ def commentary_for(
             f"{round_name}, {stage}, {left} tiles left, {score_band}. Mortal's first reaction is {model_line} "
             f"({top_weight}); LuckyJ actually plays {actual_line}. {agreement}{post}"
         )
-        use = f"{focus} Copy the call when the post-call discard and next exit are already visible."
+        use = f"{focus} Copy the call when the post-call discard and next safe tile are already visible."
         read_ja = f"{round_name}、{stage}、残り{left}枚、{score_band}。Mortal 第一反応は {model_line_ja} ({top_weight})、LuckyJ 実戦は {actual_line_ja}。{agreement_ja}{post_ja}"
-        use_ja = f"{focus_ja} 鳴いた後の打牌と次の出口が見えている時に真似する。"
+        use_ja = f"{focus_ja} 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
         return read, use, read_ja, use_ja
 
     naga = tile_token(example.get("naga"))

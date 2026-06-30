@@ -136,29 +136,29 @@
       "id": "point-04",
       "category": "Calls and Defense",
       "category_ja": "鳴きと守備",
-      "title": "Open hands still need exits.",
-      "title_ja": "副露手にも出口を残す。",
+      "title": "Open hands still need safe tiles.",
+      "title_ja": "副露手にも安全牌を残す。",
       "strength": "strong",
       "verdict": "Strong",
       "verdict_ja": "強い",
-      "read": "Threat-specific exit retention was strong, while generic safe-tile hoarding was worse than baseline.",
-      "read_ja": "脅威に対応する出口保持は強い一方、一般的な安全牌抱えは基準より悪い。",
-      "caveat": "This point is target-specific: name the threat before keeping the exit.",
-      "caveat_ja": "対象特化のルール。出口を残す前に相手を名付ける。",
+      "read": "Threat-specific safe-tile retention was strong, while generic safe-tile hoarding was worse than baseline.",
+      "read_ja": "脅威に対応する安全牌保持は強い一方、一般的な安全牌抱えは基準より悪い。",
+      "caveat": "This point is target-specific: name the threat before keeping the tile.",
+      "caveat_ja": "対象特化のルール。牌を残す前に相手を名付ける。",
       "example": "Example: after opening, keep one genbutsu to the live riichi if the hand still has a real tenpai path.",
-      "example_ja": "例: 鳴いた後でも本物のテンパイルートがあるなら、現物を一枚だけリーチ者への出口として残す。",
+      "example_ja": "例: 鳴いた後でも本物のテンパイルートがあるなら、現物を一枚だけリーチ者への安全牌として残す。",
       "stats": [
         {
           "kind": "pattern",
           "key": "threat_keep_exit",
-          "text": "Threat-specific exits: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
-          "text_ja": "脅威対象の出口保持: n=8,406, 悪手率 24.4%, 平均との差 -8.7 pp, p=<0.0001, 危険度差 0.012。"
+          "text": "Threat-specific safe tiles: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
+          "text_ja": "脅威対象の安全牌保持: n=8,406, 悪手率 24.4%, 平均との差 -8.7 pp, p=<0.0001, 危険度差 0.012。"
         },
         {
           "kind": "pattern",
           "key": "multi_threat_safe_tenpai",
-          "text": "Middle/late multi-threat exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "中終盤の多件脅威出口: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
+          "text": "Middle/late multi-threat tiles: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
+          "text_ja": "中終盤の多件脅威安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
         },
         {
           "kind": "pattern",
@@ -167,8 +167,8 @@
           "text_ja": "一般的な安全牌保持: n=8,590, 悪手率 35.1%, 平均との差 +5.4 pp, p=<0.0001, 危険度差 0.036。"
         }
       ],
-      "review_example": "Review example: after opening, keep an exit to the live threat if the hand can still reach tenpai; commitment still needs one clean brake.",
-      "review_example_ja": "検討例: 副露後でもテンパイが現実的なら、実脅威への出口を一枚残す。コミットした手にもきれいなブレーキを残す。"
+      "review_example": "Review example: after opening, keep a safe tile for the live threat if the hand can still reach tenpai; commitment still needs one clean brake.",
+      "review_example_ja": "検討例: 副露後でもテンパイが現実的なら、実脅威への安全牌を一枚残す。コミットした手にもきれいなブレーキを残す。"
     },
     {
       "id": "point-05",
@@ -346,8 +346,8 @@
         {
           "kind": "pattern",
           "key": "multi_threat_safe_tenpai",
-          "text": "Multi-threat exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "多件脅威出口: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
+          "text": "Multi-threat tiles: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
+          "text_ja": "多件脅威安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
         }
       ],
       "review_example": "Review example: a one-chance or suji label can flip after a second threat, new call, or suit-constrained river; reprice the tile before pushing.",
@@ -377,8 +377,8 @@
         {
           "kind": "pattern",
           "key": "multi_threat_safe_tenpai",
-          "text": "Late/middle multiple-threat exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "中終盤の多件脅威出口: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
+          "text": "Late/middle multiple-threat tiles: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
+          "text_ja": "中終盤の多件脅威安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
         },
         {
           "kind": "aggregate",
@@ -400,8 +400,8 @@
       "verdict_ja": "条件付き",
       "read": "Draw-tenpai frequency makes the objective real, but each push still needs a danger price.",
       "read_ja": "流局テンパイの頻度から目的は本物だが、各押しには危険値付けが必要。",
-      "caveat": "Chase keiten through multiple live threats only with safe exits.",
-      "caveat_ja": "複数脅威への形式テンパイは出口がある時だけ追う。",
+      "caveat": "Chase keiten through multiple live threats only with safe tiles.",
+      "caveat_ja": "複数脅威への形式テンパイは安全牌がある時だけ追う。",
       "example": "Example: keep a harmless tenpai route when folding; abandon it if the next discard must pass two dangerous waits.",
       "example_ja": "例: 降りながら無害なテンパイルートを残す。次打が二つの危険待ちを通すなら捨てる。",
       "stats": [
@@ -413,8 +413,8 @@
         {
           "kind": "pattern",
           "key": "multi_threat_safe_tenpai",
-          "text": "Safe-tenpai style exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "安全テンパイ型の出口: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
+          "text": "Safe-tenpai style tiles: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
+          "text_ja": "安全テンパイ型の安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
         },
         {
           "kind": "aggregate",
@@ -503,14 +503,14 @@
       "id": "point-14",
       "category": "Defense",
       "category_ja": "守備",
-      "title": "Keep genbutsu and suji exits for a named target.",
-      "title_ja": "現物と筋の出口は対象を名付けて残す。",
+      "title": "Keep genbutsu and suji tiles for a named target.",
+      "title_ja": "現物と筋の牌は対象を名付けて残す。",
       "strength": "strong",
       "verdict": "Strong",
       "verdict_ja": "強い",
       "read": "Threat-specific safety is strongly supported; generic safety retention needs a sharper target.",
       "read_ja": "対象付き安全牌保持は強く支持される。一般的な安全牌保持には対象の明確化が必要。",
-      "caveat": "The point must stay narrow: who is the exit for, and when will it be spent?",
+      "caveat": "The point must stay narrow: who is the tile for, and when will it be spent?",
       "caveat_ja": "対象と使う時期を必ず決める狭いルールにする。",
       "example": "Example: keep suji only if it defends the current riichi or open hand and the hand can still act next turn.",
       "example_ja": "例: 現在のリーチ者や副露者に通る筋で、次巡も手が動く時だけ残す。",
@@ -518,8 +518,8 @@
         {
           "kind": "pattern",
           "key": "threat_keep_exit",
-          "text": "Exit for active threat: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
-          "text_ja": "実脅威への出口: n=8,406, 悪手率 24.4%, 平均との差 -8.7 pp, p=<0.0001, 危険度差 0.012。"
+          "text": "Tile for active threat: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
+          "text_ja": "実脅威への安全牌: n=8,406, 悪手率 24.4%, 平均との差 -8.7 pp, p=<0.0001, 危険度差 0.012。"
         },
         {
           "kind": "pattern",
@@ -530,8 +530,8 @@
         {
           "kind": "pattern",
           "key": "multi_threat_safe_tenpai",
-          "text": "Multi-threat exits: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "多件脅威出口: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
+          "text": "Multi-threat tiles: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
+          "text_ja": "多件脅威安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
         }
       ],
       "review_example": "Review example: keep genbutsu or suji only after naming the target player and the next turn it protects.",
@@ -632,14 +632,14 @@
         {
           "kind": "pattern",
           "key": "threat_keep_exit",
-          "text": "Named threat exit: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
-          "text_ja": "対象付き出口: n=8,406, 悪手率 24.4%, 平均との差 -8.7 pp, p=<0.0001, 危険度差 0.012。"
+          "text": "Named threat tile: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
+          "text_ja": "対象付き安全牌: n=8,406, 悪手率 24.4%, 平均との差 -8.7 pp, p=<0.0001, 危険度差 0.012。"
         },
         {
           "kind": "pattern",
           "key": "multi_threat_safe_tenpai",
-          "text": "Multiple-threat exit: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "多件脅威出口: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
+          "text": "Multiple-threat tile: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
+          "text_ja": "多件脅威安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
         },
         {
           "kind": "pattern",
@@ -662,10 +662,10 @@
       "verdict_ja": "強い",
       "read": "Honor cleanup and pair-anchor stats support role labeling over a single honor rule.",
       "read_ja": "字牌整理と対子支点の統計は、単一の字牌ルールより役割名付けを支持する。",
-      "caveat": "Self yakuhai, opponent yaku condition, dead honor, and safe exit are different categories.",
-      "caveat_ja": "自分役牌、相手の役条件、枯れ字牌、安全出口は別カテゴリ。",
-      "example": "Example: a lone dragon can be value seed, opponent yaku-condition liability, or safe exit depending on calls and rivers.",
-      "example_ja": "例: 孤立三元牌は、鳴きと河次第で打点種、相手役条件、安全出口のどれにもなる。",
+      "caveat": "Self yakuhai, opponent yaku condition, dead honor, and safe tile are different categories.",
+      "caveat_ja": "自分役牌、相手の役条件、枯れ字牌、安全牌は別カテゴリ。",
+      "example": "Example: a lone dragon can be value seed, opponent yaku-condition liability, or safe tile depending on calls and rivers.",
+      "example_ja": "例: 孤立三元牌は、鳴きと河次第で打点種、相手役条件、安全牌のどれにもなる。",
       "stats": [
         {
           "kind": "pattern",
@@ -685,8 +685,8 @@
           "text_ja": "自分役牌の処理時期: 無副露文脈の中央値は 3.0 巡目、タンヤオ形副露文脈では 9.0 巡目まで遅れる。"
         }
       ],
-      "review_example": "Review example: classify each honor as self value, opponent yaku condition, dead material, or defensive exit before cutting.",
-      "review_example_ja": "検討例: 字牌は切る前に、自分の打点、相手の役条件、枯れ材料、守備出口へ分類する。"
+      "review_example": "Review example: classify each honor as self value, opponent yaku condition, dead material, or defensive tile before cutting.",
+      "review_example_ja": "検討例: 字牌は切る前に、自分の打点、相手の役条件、枯れ材料、守備牌へ分類する。"
     },
     {
       "id": "point-19",

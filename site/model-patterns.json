@@ -187,7 +187,7 @@
         }
       },
       "keep_defensive_exit": {
-        "label": "Keep genbutsu/suji exits while cutting elsewhere",
+        "label": "Keep genbutsu/suji tiles while cutting elsewhere",
         "n": 8590,
         "share_of_mismatches": 0.23725349389603934,
         "bad_rate": 0.3509895227008149,
@@ -287,7 +287,7 @@
         }
       },
       "late_named_exit_over_shape": {
-        "label": "Late keep of a named exit over NAGA's shape-cleaning discard",
+        "label": "Late keep of a named tile over NAGA's shape-cleaning discard",
         "n": 931,
         "share_of_mismatches": 0.025713970060211016,
         "bad_rate": 0.20193340494092374,
@@ -332,7 +332,7 @@
         }
       },
       "multi_threat_safe_tenpai": {
-        "label": "Middle/late choices preserving exits with multiple threats",
+        "label": "Middle/late choices preserving tiles with multiple threats",
         "n": 4386,
         "share_of_mismatches": 0.12114014251781473,
         "bad_rate": 0.23483812129502965,
@@ -456,7 +456,7 @@
         }
       },
       "threat_keep_exit": {
-        "label": "Keep a defensive exit against an active riichi/open threat",
+        "label": "Keep a defensive tile against an active riichi/open threat",
         "n": 8406,
         "share_of_mismatches": 0.2321714632933768,
         "bad_rate": 0.24351653580775637,
@@ -611,13 +611,13 @@
         },
         {
           "pattern": "keep_defensive_exit",
-          "label": "Keep genbutsu/suji exits while cutting elsewhere",
+          "label": "Keep genbutsu/suji tiles while cutting elsewhere",
           "n": 2610,
           "share": 0.30905861456483125
         },
         {
           "pattern": "threat_keep_exit",
-          "label": "Keep a defensive exit against an active riichi/open threat",
+          "label": "Keep a defensive tile against an active riichi/open threat",
           "n": 1581,
           "share": 0.1872113676731794
         },
@@ -647,7 +647,7 @@
         },
         {
           "pattern": "multi_threat_safe_tenpai",
-          "label": "Middle/late choices preserving exits with multiple threats",
+          "label": "Middle/late choices preserving tiles with multiple threats",
           "n": 637,
           "share": 0.0754292480757845
         },
@@ -701,13 +701,13 @@
       "top_patterns": [
         {
           "pattern": "keep_defensive_exit",
-          "label": "Keep genbutsu/suji exits while cutting elsewhere",
+          "label": "Keep genbutsu/suji tiles while cutting elsewhere",
           "n": 1373,
           "share": 0.2232157372784913
         },
         {
           "pattern": "threat_keep_exit",
-          "label": "Keep a defensive exit against an active riichi/open threat",
+          "label": "Keep a defensive tile against an active riichi/open threat",
           "n": 1361,
           "share": 0.2212648349861811
         },
@@ -755,7 +755,7 @@
         },
         {
           "pattern": "multi_threat_safe_tenpai",
-          "label": "Middle/late choices preserving exits with multiple threats",
+          "label": "Middle/late choices preserving tiles with multiple threats",
           "n": 538,
           "share": 0.08746545277190701
         },
@@ -803,13 +803,13 @@
         },
         {
           "pattern": "keep_defensive_exit",
-          "label": "Keep genbutsu/suji exits while cutting elsewhere",
+          "label": "Keep genbutsu/suji tiles while cutting elsewhere",
           "n": 1794,
           "share": 0.34275888421857087
         },
         {
           "pattern": "threat_keep_exit",
-          "label": "Keep a defensive exit against an active riichi/open threat",
+          "label": "Keep a defensive tile against an active riichi/open threat",
           "n": 920,
           "share": 0.1757737867787543
         },
@@ -839,7 +839,7 @@
         },
         {
           "pattern": "multi_threat_safe_tenpai",
-          "label": "Middle/late choices preserving exits with multiple threats",
+          "label": "Middle/late choices preserving tiles with multiple threats",
           "n": 390,
           "share": 0.07451280091708062
         },
@@ -894,7 +894,7 @@
       },
       {
         "pattern": "keep_defensive_exit",
-        "label": "Keep genbutsu/suji exits while cutting elsewhere",
+        "label": "Keep genbutsu/suji tiles while cutting elsewhere",
         "n": 8587,
         "model_matches_luckyj": 2610,
         "model_match_rate": 0.30394782811226273,
@@ -1086,7 +1086,7 @@
       },
       {
         "pattern": "threat_keep_exit",
-        "label": "Keep a defensive exit against an active riichi/open threat",
+        "label": "Keep a defensive tile against an active riichi/open threat",
         "n": 8404,
         "model_matches_luckyj": 1581,
         "model_match_rate": 0.1881247025226083,
@@ -1108,7 +1108,7 @@
       },
       {
         "pattern": "late_named_exit_over_shape",
-        "label": "Late keep of a named exit over NAGA's shape-cleaning discard",
+        "label": "Late keep of a named tile over NAGA's shape-cleaning discard",
         "n": 930,
         "model_matches_luckyj": 174,
         "model_match_rate": 0.1870967741935484,
@@ -1259,7 +1259,7 @@
       },
       {
         "pattern": "multi_threat_safe_tenpai",
-        "label": "Middle/late choices preserving exits with multiple threats",
+        "label": "Middle/late choices preserving tiles with multiple threats",
         "n": 4386,
         "model_matches_luckyj": 637,
         "model_match_rate": 0.14523483812129503,
@@ -3307,7 +3307,7 @@
             }
           },
           "keep_defensive_exit": {
-            "label": "Keep genbutsu/suji exits while cutting elsewhere",
+            "label": "Keep genbutsu/suji tiles while cutting elsewhere",
             "n": 8587,
             "share_of_mismatches": 0.23725582294918907,
             "bad_rate": 0.3509956911610574,
@@ -3407,7 +3407,7 @@
             }
           },
           "late_named_exit_over_shape": {
-            "label": "Late keep of a named exit over NAGA's shape-cleaning discard",
+            "label": "Late keep of a named tile over NAGA's shape-cleaning discard",
             "n": 930,
             "share_of_mismatches": 0.025695576492691958,
             "bad_rate": 0.2010752688172043,
@@ -3452,7 +3452,7 @@
             }
           },
           "multi_threat_safe_tenpai": {
-            "label": "Middle/late choices preserving exits with multiple threats",
+            "label": "Middle/late choices preserving tiles with multiple threats",
             "n": 4386,
             "share_of_mismatches": 0.12118365429779239,
             "bad_rate": 0.23483812129502965,
@@ -3576,7 +3576,7 @@
             }
           },
           "threat_keep_exit": {
-            "label": "Keep a defensive exit against an active riichi/open threat",
+            "label": "Keep a defensive tile against an active riichi/open threat",
             "n": 8404,
             "share_of_mismatches": 0.23219959660707873,
             "bad_rate": 0.24345549738219896,
@@ -3784,7 +3784,7 @@
             }
           },
           "keep_defensive_exit": {
-            "label": "Keep genbutsu/suji exits while cutting elsewhere",
+            "label": "Keep genbutsu/suji tiles while cutting elsewhere",
             "n": 6276,
             "share_of_mismatches": 0.167297542250893,
             "bad_rate": 0.27581261950286806,
@@ -3884,7 +3884,7 @@
             }
           },
           "late_named_exit_over_shape": {
-            "label": "Late keep of a named exit over NAGA's shape-cleaning discard",
+            "label": "Late keep of a named tile over NAGA's shape-cleaning discard",
             "n": 854,
             "share_of_mismatches": 0.02276483446180093,
             "bad_rate": 0.19320843091334894,
@@ -3929,7 +3929,7 @@
             }
           },
           "multi_threat_safe_tenpai": {
-            "label": "Middle/late choices preserving exits with multiple threats",
+            "label": "Middle/late choices preserving tiles with multiple threats",
             "n": 4705,
             "share_of_mismatches": 0.12541984325851682,
             "bad_rate": 0.23868225292242295,
@@ -4053,7 +4053,7 @@
             }
           },
           "threat_keep_exit": {
-            "label": "Keep a defensive exit against an active riichi/open threat",
+            "label": "Keep a defensive tile against an active riichi/open threat",
             "n": 8509,
             "share_of_mismatches": 0.22682198645838886,
             "bad_rate": 0.2267011399694441,
@@ -4261,7 +4261,7 @@
             }
           },
           "keep_defensive_exit": {
-            "label": "Keep genbutsu/suji exits while cutting elsewhere",
+            "label": "Keep genbutsu/suji tiles while cutting elsewhere",
             "n": 8774,
             "share_of_mismatches": 0.2283409238776838,
             "bad_rate": 0.3700706633234557,
@@ -4361,7 +4361,7 @@
             }
           },
           "late_named_exit_over_shape": {
-            "label": "Late keep of a named exit over NAGA's shape-cleaning discard",
+            "label": "Late keep of a named tile over NAGA's shape-cleaning discard",
             "n": 1005,
             "share_of_mismatches": 0.026154847104749513,
             "bad_rate": 0.22487562189054727,
@@ -4406,7 +4406,7 @@
             }
           },
           "multi_threat_safe_tenpai": {
-            "label": "Middle/late choices preserving exits with multiple threats",
+            "label": "Middle/late choices preserving tiles with multiple threats",
             "n": 4875,
             "share_of_mismatches": 0.12687052700065063,
             "bad_rate": 0.2916923076923077,
@@ -4530,7 +4530,7 @@
             }
           },
           "threat_keep_exit": {
-            "label": "Keep a defensive exit against an active riichi/open threat",
+            "label": "Keep a defensive tile against an active riichi/open threat",
             "n": 8592,
             "share_of_mismatches": 0.22360442420299284,
             "bad_rate": 0.2877094972067039,
@@ -4584,8 +4584,8 @@
     },
     {
       "pattern": "multi_threat_safe_tenpai",
-      "title": "Against multiple threats, preserved exits become the hand's main asset",
-      "why_candidate": "Middle/late choices preserving exits with multiple threats",
+      "title": "Against multiple threats, preserved tiles become the hand's main asset",
+      "why_candidate": "Middle/late choices preserving tiles with multiple threats",
       "naga_evidence": {
         "n": 4386,
         "share_of_mismatches": 0.12114014251781473,
@@ -4691,8 +4691,8 @@
     },
     {
       "pattern": "late_named_exit_over_shape",
-      "title": "Late safe exits must be named to a live opponent",
-      "why_candidate": "Late keep of a named exit over NAGA's shape-cleaning discard",
+      "title": "Late safe tiles must be named to a live opponent",
+      "why_candidate": "Late keep of a named tile over NAGA's shape-cleaning discard",
       "naga_evidence": {
         "n": 931,
         "share_of_mismatches": 0.025713970060211016,

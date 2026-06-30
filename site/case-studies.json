@@ -1,7 +1,7 @@
 {
   "kept_suji_exit": [
     {
-      "label": "Kept suji exit",
+      "label": "Kept suji tile",
       "game": 279,
       "rank": 1,
       "round": "South 2-2",
@@ -176,7 +176,7 @@
       }
     },
     {
-      "label": "Kept suji exit",
+      "label": "Kept suji tile",
       "game": 175,
       "rank": 1,
       "round": "East 1-0",
@@ -691,7 +691,7 @@
       }
     },
     {
-      "label": "Kept suji exit",
+      "label": "Kept suji tile",
       "game": 460,
       "rank": 1,
       "round": "South 1-1",
@@ -1226,7 +1226,7 @@
       }
     },
     {
-      "label": "Kept suji exit",
+      "label": "Kept suji tile",
       "game": 295,
       "rank": 1,
       "round": "East 2-0",
@@ -1438,7 +1438,7 @@
       }
     },
     {
-      "label": "Kept suji exit",
+      "label": "Kept suji tile",
       "game": 332,
       "rank": 1,
       "round": "East 3-0",
@@ -1936,7 +1936,7 @@
       }
     },
     {
-      "label": "Kept suji exit",
+      "label": "Kept suji tile",
       "game": 657,
       "rank": 3,
       "round": "East 2-2",
@@ -2298,7 +2298,7 @@
       }
     },
     {
-      "label": "Kept suji exit",
+      "label": "Kept suji tile",
       "game": 750,
       "rank": 1,
       "round": "South 2-2",
@@ -2947,7 +2947,7 @@
       }
     },
     {
-      "label": "Kept suji exit",
+      "label": "Kept suji tile",
       "game": 326,
       "rank": 3,
       "round": "East 3-0",
@@ -3272,7 +3272,7 @@
   ],
   "kept_river_safe": [
     {
-      "label": "Kept river-safe exit",
+      "label": "Kept genbutsu tile",
       "game": 283,
       "rank": 4,
       "round": "South 4-1",
@@ -3632,7 +3632,7 @@
       }
     },
     {
-      "label": "Kept river-safe exit",
+      "label": "Kept genbutsu tile",
       "game": 1200,
       "rank": 2,
       "round": "South 3-2",
@@ -4188,7 +4188,7 @@
       }
     },
     {
-      "label": "Kept river-safe exit",
+      "label": "Kept genbutsu tile",
       "game": 116,
       "rank": 4,
       "round": "South 2-0",
@@ -4475,7 +4475,7 @@
       }
     },
     {
-      "label": "Kept river-safe exit",
+      "label": "Kept genbutsu tile",
       "game": 1278,
       "rank": 1,
       "round": "South 1-0",
@@ -4932,7 +4932,7 @@
       }
     },
     {
-      "label": "Kept river-safe exit",
+      "label": "Kept genbutsu tile",
       "game": 742,
       "rank": 1,
       "round": "East 4-0",
@@ -5625,7 +5625,7 @@
       }
     },
     {
-      "label": "Kept river-safe exit",
+      "label": "Kept genbutsu tile",
       "game": 1258,
       "rank": 1,
       "round": "East 4-1",
@@ -6131,7 +6131,7 @@
       }
     },
     {
-      "label": "Kept river-safe exit",
+      "label": "Kept genbutsu tile",
       "game": 1282,
       "rank": 2,
       "round": "South 2-1",
@@ -6650,7 +6650,7 @@
       }
     },
     {
-      "label": "Kept river-safe exit",
+      "label": "Kept genbutsu tile",
       "game": 379,
       "rank": 3,
       "round": "East 2-2",

@@ -6,7 +6,6 @@ from pathlib import Path
 import analyze_luckyj as base
 from extract_case_studies import (
     counts_34,
-    danger_for,
     hand_string,
     remove_tile,
     round_name,
@@ -57,9 +56,9 @@ CALL_KIND_LABELS = {
 POINT_TEXT = {
     "point-01": {
         "title": "Placement changes the price of the same tile",
-        "lesson": "Placement changes the value of the discard. A leading or fragile seat can make future defense more valuable than a prettier immediate shape.",
-        "prompt": "Before choosing, name the hand's job: win now, protect placement, escape last, or keep future exits.",
-        "answer": "Copy the risk budget and table job. The correct discard serves the placement goal while leaving a playable next turn.",
+        "lesson": "When the score is already good enough, the hand does not need to chase every point. A controlled fold or low-risk continuation can beat a prettier immediate shape.",
+        "prompt": "Before choosing, say whether this hand needs more points or whether protecting the current position is already enough.",
+        "answer": "Copy the score job first. Lower the ambition, keep safe tiles, and push only if the next draw makes the hand worth it.",
     },
     "point-02": {
         "title": "Keep the branch point alive",
@@ -74,10 +73,10 @@ POINT_TEXT = {
         "answer": "Call poor closed shapes when the exposed hand has a clear purpose and still leaves a way to stop.",
     },
     "point-04": {
-        "title": "Open hands must keep an exit",
-        "lesson": "After opening, the safe tile left behind is often the important tile. LuckyJ's open hands keep exits by design.",
+        "title": "Open hands must keep a safe tile",
+        "lesson": "After opening, the safe tile left behind is often the important tile. LuckyJ's open hands keep defensive tiles by design.",
         "prompt": "After the call, identify the next safe discard before admiring the new shanten.",
-        "answer": "A cheap exposed hand needs an exit so the next threat avoids a bad forced push.",
+        "answer": "A cheap exposed hand needs a safe tile so the next threat avoids a bad forced push.",
     },
     "point-05": {
         "title": "Cut the future liability now",
@@ -134,8 +133,8 @@ POINT_TEXT = {
         "answer": "When your hand is too slow to punish them and the yakuhai has no strong job, clean it before the open hand gets to use it.",
     },
     "point-14": {
-        "title": "Keep river-safe and suji exits on purpose",
-        "lesson": "LuckyJ often keeps a tile because it is already genbutsu or suji against an opponent river, especially before spending safer exits would make the next threat impossible to answer.",
+        "title": "Keep genbutsu and suji tiles on purpose",
+        "lesson": "LuckyJ often keeps a tile because it is already genbutsu or suji against an opponent river, especially before spending safer tiles would make the next threat impossible to answer.",
         "prompt": "Before discarding a flexible tile, count which tiles in your hand are genbutsu or suji to each opponent and which of them are still useful next turn.",
         "answer": "Keep the safe tile while it buys future choice; spend it only when the hand has become worth the risk or the draw-point/fold route is already decided.",
     },
@@ -143,7 +142,7 @@ POINT_TEXT = {
         "title": "Safe tiles expire",
         "lesson": "A tile that was safe earlier can become the correct discard once it no longer protects against the live danger or starts damaging the hand's real route.",
         "prompt": "Name the player this safe tile protects against, then ask whether that player is still the main danger.",
-        "answer": "Spend stale safety when it is off-target, the hand is real, and another exit remains for the next bad draw.",
+        "answer": "Spend stale safety when it is off-target, the hand is real, and another safe tile remains for the next bad draw.",
     },
     "point-16": {
         "title": "Late outside cuts can preserve the route",
@@ -155,19 +154,19 @@ POINT_TEXT = {
         "title": "Every kept safe tile needs a target",
         "lesson": "Genbutsu and suji only matter when they answer a specific opponent and a specific future decision.",
         "prompt": "For each kept safe tile, complete the sentence: safe against X if Y happens.",
-        "answer": "Keep the exit when it covers the live threat. If the named target is vague or quiet, the tile is probably clutter.",
+        "answer": "Keep the tile when it covers the live threat. If the named target is vague or quiet, the tile is probably clutter.",
     },
     "point-18": {
         "title": "Honor tiles need role labels",
-        "lesson": "An honor can be self value, an opponent yaku condition, dead material, or a defensive exit. Those are different tiles in review.",
+        "lesson": "An honor can be self value, an opponent yaku condition, dead material, or a defensive tile. Those are different tiles in review.",
         "prompt": "Before cutting or keeping an honor, label its current job.",
-        "answer": "Cut loose honors when their only live job helps an opponent or when they are dead; keep honors that are value, route, or target-specific exits.",
+        "answer": "Cut loose honors when their only live job helps an opponent or when they are dead; keep honors that are value, route, or target-specific defensive tiles.",
     },
     "point-19": {
         "title": "Leader safety is a qualifier",
         "lesson": "A lead lowers the ambition needed to end the hand, while each discard still needs to reduce real danger or preserve the next turn.",
         "prompt": "When leading, ask what concrete risk the safer-looking discard removes.",
-        "answer": "Use the lead to lower the risk budget while still calculating shape, danger, and future exits.",
+        "answer": "Use the lead to lower the risk budget while still calculating shape, danger, and future safe tiles.",
     },
 }
 
@@ -278,6 +277,13 @@ def score_context(start, target):
     ]
 
 
+def current_rank(start, target):
+    ranks = start.get("seat2rank", [None] * 4)
+    if target < len(ranks) and ranks[target] is not None:
+        return ranks[target] + 1
+    return None
+
+
 def danger_head_value(state, seat, tile, suffix):
     try:
         idx = tile_id(tile)
@@ -304,6 +310,37 @@ def hand_tile_threats(state, target, hand):
             )
         threats.append({"tile": tile, "bars": bars})
     return threats
+
+
+def discard_threat_value(state, target, tile):
+    values = []
+    for suffix, _label in DANGER_HEADS:
+        danger = danger_head_value(state, target, tile, suffix)
+        if danger is not None:
+            values.append(danger)
+    return max(values) if values else None
+
+
+def discard_threat_profile(state, target, tile):
+    bars = []
+    for suffix, label in DANGER_HEADS:
+        danger = danger_head_value(state, target, tile, suffix)
+        bars.append(
+            {
+                "head": label,
+                "danger": round(danger, 3) if danger is not None else None,
+            }
+        )
+    values = [bar for bar in bars if bar["danger"] is not None]
+    if not values:
+        return {"tile": tile, "bars": bars, "max": None, "peak_head": None}
+    peak = max(values, key=lambda bar: bar["danger"])
+    return {
+        "tile": tile,
+        "bars": bars,
+        "max": peak["danger"],
+        "peak_head": peak["head"],
+    }
 
 
 def table_context(start, target, hands, discards, melds, reached, dora_markers, state=None):
@@ -410,6 +447,193 @@ def huro_model_heads(previous_state, target, actual_kind):
     return heads
 
 
+def tile_suit_rank(tile):
+    tile = base_tile(tile)
+    if len(tile) < 2 or tile[-1] not in {"m", "p", "s"}:
+        return None, None
+    try:
+        return tile[-1], int(tile[:-1])
+    except ValueError:
+        return None, None
+
+
+def shape_tile_name(suit, rank):
+    return f"{rank}{suit}"
+
+
+def normalize_shape_hand(hand):
+    if isinstance(hand, str):
+        hand = hand.split()
+    return [base_tile(tile) for tile in hand if tile]
+
+
+def shape_counts(hand):
+    return Counter(normalize_shape_hand(hand))
+
+
+def suited_rank_counts(hand, suit):
+    counts = Counter()
+    for tile in normalize_shape_hand(hand):
+        tile_suit, rank = tile_suit_rank(tile)
+        if tile_suit == suit and rank is not None:
+            counts[rank] += 1
+    return counts
+
+
+def consecutive_run_for_tile(hand, tile):
+    tile = base_tile(tile)
+    suit, rank = tile_suit_rank(tile)
+    if suit is None:
+        return []
+    counts = suited_rank_counts(hand, suit)
+    if not counts.get(rank):
+        return []
+    start = rank
+    while start > 1 and counts.get(start - 1):
+        start -= 1
+    end = rank
+    while end < 9 and counts.get(end + 1):
+        end += 1
+    return [shape_tile_name(suit, value) for value in range(start, end + 1)]
+
+
+def remove_shape_tile(hand, tile):
+    tile = base_tile(tile)
+    remaining = normalize_shape_hand(hand)
+    for index, item in enumerate(remaining):
+        if item == tile:
+            remaining.pop(index)
+            break
+    return remaining
+
+
+def find_block_for_tile(hand, tile):
+    tile = base_tile(tile)
+    hand_tiles = normalize_shape_hand(hand)
+    if tile not in hand_tiles:
+        return [tile]
+    
+    suit, rank = tile_suit_rank(tile)
+    if suit is None:
+        return [t for t in hand_tiles if t == tile]
+        
+    suit_tiles = [t for t in hand_tiles if tile_suit_rank(t)[0] == suit]
+    
+    target_ranks = {rank}
+    changed = True
+    while changed:
+        changed = False
+        for t in suit_tiles:
+            t_suit, t_rank = tile_suit_rank(t)
+            if t_rank not in target_ranks:
+                if any(abs(t_rank - r) <= 2 for r in target_ranks):
+                    target_ranks.add(t_rank)
+                    changed = True
+                    
+    block = [t for t in suit_tiles if tile_suit_rank(t)[1] in target_ranks]
+    block.sort(key=lambda t: tile_suit_rank(t)[1])
+    return block
+
+
+def tile_shape_role(hand, tile):
+    tile = base_tile(tile)
+    block = find_block_for_tile(hand, tile)
+    
+    if len(block) == 1:
+        suit, rank = tile_suit_rank(tile)
+        if suit is None:
+            return {"kind": "single honor", "block_tiles": block, "breaks_block": False}
+        edge = rank in {1, 9}
+        return {
+            "kind": "isolated terminal" if edge else "isolated tile",
+            "block_tiles": block,
+            "breaks_block": False,
+        }
+        
+    if len(block) == 2:
+        if block[0] == block[1]:
+            suit, rank = tile_suit_rank(tile)
+            if suit is None:
+                return {"kind": "honor pair", "block_tiles": block, "breaks_block": True}
+            return {"kind": "pair", "block_tiles": block, "breaks_block": True}
+        return {"kind": "two-tile block", "block_tiles": block, "breaks_block": True}
+        
+    if len(set(block)) == 1:
+        suit, rank = tile_suit_rank(tile)
+        if suit is None:
+            return {"kind": "honor triplet", "block_tiles": block, "breaks_block": True}
+        return {"kind": "triplet", "block_tiles": block, "breaks_block": True}
+        
+    ranks = sorted(list({tile_suit_rank(t)[1] for t in block}))
+    if len(ranks) == len(block) and ranks[-1] - ranks[0] == len(block) - 1:
+        return {"kind": "connected run", "block_tiles": block, "breaks_block": True}
+        
+    return {"kind": "complex block", "block_tiles": block, "breaks_block": True}
+
+
+
+def discard_shape_effect(hand, discard):
+    role = tile_shape_role(hand, discard)
+    discard = base_tile(discard)
+    remaining = remove_shape_tile(hand, discard)
+    leftovers = [tile for tile in role.get("block_tiles", []) if tile != discard]
+    effect = "removes"
+    if role.get("breaks_block"):
+        effect = "breaks"
+    floating_after = []
+    for tile in leftovers:
+        tile_counts = shape_counts(remaining)
+        if tile_counts.get(tile, 0) == 1 and tile_shape_role(remaining, tile).get("kind", "").startswith("isolated"):
+            floating_after.append(tile)
+    return {
+        "tile": discard,
+        "role": role["kind"],
+        "block_tiles": role.get("block_tiles", []),
+        "breaks_block": bool(role.get("breaks_block")),
+        "floating_after": floating_after,
+        "effect": effect,
+    }
+
+
+def build_shape_facts(hand, actual, naga):
+    actual_effect = discard_shape_effect(hand, actual)
+    naga_effect = discard_shape_effect(hand, naga)
+    notes = []
+    if actual_effect["breaks_block"] and not naga_effect["breaks_block"]:
+        notes.append(
+            f"LuckyJ breaks the {' '.join(actual_effect['block_tiles'])} block by cutting {actual_effect['tile']}; "
+            f"Nishiki preserves that shape by cutting {naga_effect['tile']}."
+        )
+    elif actual_effect["breaks_block"] and naga_effect["breaks_block"]:
+        notes.append(
+            f"Both candidates break shape, but LuckyJ breaks {' '.join(actual_effect['block_tiles'])} "
+            f"while Nishiki breaks {' '.join(naga_effect['block_tiles'])}."
+        )
+    elif not actual_effect["breaks_block"] and naga_effect["breaks_block"]:
+        notes.append(
+            f"LuckyJ removes {actual_effect['tile']} without breaking a block; Nishiki would break "
+            f"{' '.join(naga_effect['block_tiles'])}."
+        )
+
+    if actual_effect.get("floating_after"):
+        notes.append(f"After LuckyJ's discard, {' '.join(actual_effect['floating_after'])} is left floating.")
+    if naga_effect.get("floating_after"):
+        notes.append(f"After Nishiki's discard, {' '.join(naga_effect['floating_after'])} is left floating.")
+
+    return {
+        "actual": actual_effect,
+        "nishiki": naga_effect,
+        "notes": notes,
+    }
+
+
+def attach_shape_facts(case):
+    if not case or case.get("kind") == "call" or not case.get("hand") or not case.get("actual") or not case.get("naga"):
+        return case
+    case["shape_facts"] = build_shape_facts(case["hand"], case["actual"], case["naga"])
+    return case
+
+
 def end_summary(start, target):
     msgs = start.get("end_msgs") or []
     if not msgs:
@@ -452,6 +676,7 @@ def common_case(row, kyoku_index, pos, start, state, hands, discards, melds, rea
         "stage": base.stage_from_left(msg.get("left_hai_num")),
         "score": score,
         "score_band": score_band(score),
+        "current_rank": current_rank(start, target),
         "report": row["report"],
         "paifu": row["paifu"],
         "table": table_context(start, target, hands, discards, melds, reached, dora_markers, state),
@@ -489,7 +714,7 @@ def make_discard_case(row, kyoku_index, pos, start, state, hands, discards, meld
                 "actual_prob": round(model["actual_prob"], 3),
                 "matches_luckyj": model["matches_luckyj"],
                 "matches_nishiki": same_tile(model["top"], naga),
-                "danger": danger_for(state, target, model["top"]),
+                "danger": discard_threat_value(state, target, model["top"]),
             }
         )
     case = common_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key)
@@ -500,8 +725,10 @@ def make_discard_case(row, kyoku_index, pos, start, state, hands, discards, meld
             "draw": msg.get("pai"),
             "actual": actual,
             "naga": naga,
-            "actual_danger": danger_for(state, target, actual),
-            "naga_danger": danger_for(state, target, naga),
+            "actual_danger": discard_threat_value(state, target, actual),
+            "naga_danger": discard_threat_value(state, target, naga),
+            "actual_threat": discard_threat_profile(state, target, actual),
+            "naga_threat": discard_threat_profile(state, target, naga),
             "actual_eval": actual_eval,
             "naga_eval": naga_eval,
             "naga_votes": [row[0] for row in rows],
@@ -550,8 +777,10 @@ def make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discard
             "draw": msg.get("pai"),
             "actual": actual,
             "naga": naga,
-            "actual_danger": danger_for(state, target, actual),
-            "naga_danger": danger_for(state, target, naga),
+            "actual_danger": discard_threat_value(state, target, actual),
+            "naga_danger": discard_threat_value(state, target, naga),
+            "actual_threat": discard_threat_profile(state, target, actual),
+            "naga_threat": discard_threat_profile(state, target, naga),
             "naga_votes": [row[0] for row in rows],
             "model_heads": [
                 {
@@ -562,7 +791,7 @@ def make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discard
                     "actual_prob": round(model["actual_prob"], 3),
                     "matches_luckyj": model["matches_luckyj"],
                     "matches_nishiki": same_tile(model["top"], naga),
-                    "danger": danger_for(state, target, model["top"]),
+                    "danger": discard_threat_value(state, target, model["top"]),
                 }
                 for model in model_head_rows
             ],
@@ -627,6 +856,21 @@ def tile_plain(tile):
     return str(tile or "?")
 
 
+def tile_plain_english(tile):
+    if not tile:
+        return "?"
+    mapping = {
+        "E": "East",
+        "S": "South",
+        "W": "West",
+        "N": "North",
+        "P": "White Dragon",
+        "F": "Green Dragon",
+        "C": "Red Dragon"
+    }
+    return mapping.get(tile, tile)
+
+
 def format_percent(value):
     if value is None:
         return "n/a"
@@ -654,19 +898,57 @@ def danger_gap_phrase(case, lang):
     actual = case.get("actual_danger")
     naga = case.get("naga_danger")
     if actual is None or naga is None:
-        return "危険度を比べにくい。" if lang == "ja" else "The immediate danger comparison is unclear."
+        return "NAGA脅威を比べにくい。" if lang == "ja" else "The NAGA threat comparison is unclear."
     gap = actual - naga
     if lang == "ja":
         if abs(gap) < 0.03:
-            return f"危険度は近い。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
+            return f"NAGA脅威は近い。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
         if gap < 0:
-            return f"LuckyJ は即時危険を下げている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
-        return f"LuckyJ は追加危険を払っている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
+            return f"LuckyJ はNAGA脅威を下げている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
+        return f"LuckyJ はNAGA脅威を余分に受け入れている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
     if abs(gap) < 0.03:
-        return f"The danger numbers are close: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
+        return f"The NAGA threat numbers are close: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
     if gap < 0:
-        return f"LuckyJ buys immediate safety: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
-    return f"LuckyJ pays extra danger now: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
+        return f"LuckyJ lowers the NAGA threat reading: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
+    return f"LuckyJ accepts a higher NAGA threat reading now: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
+
+
+def threat_peak_text(profile, lang):
+    if not profile or profile.get("max") is None:
+        return "n/a"
+    head = profile.get("peak_head") or "danger"
+    return f"{head} {format_percent(profile.get('max'))}"
+
+
+def threat_case_sentence(case, lang):
+    actual_profile = case.get("actual_threat") or {}
+    naga_profile = case.get("naga_threat") or {}
+    actual_max = actual_profile.get("max")
+    naga_max = naga_profile.get("max")
+    if actual_max is None or naga_max is None:
+        return ""
+    actual = tile_token(case.get("actual"))
+    naga = tile_token(case.get("naga"))
+    gap = actual_max - naga_max
+    actual_detail = f"{actual} peaks at {threat_peak_text(actual_profile, lang)}"
+    naga_detail = f"{naga} peaks at {threat_peak_text(naga_profile, lang)}"
+    if lang == "ja":
+        actual_detail = f"{actual} は {threat_peak_text(actual_profile, lang)} が最大"
+        naga_detail = f"{naga} は {threat_peak_text(naga_profile, lang)} が最大"
+        if abs(gap) < 0.03:
+            if max(actual_max, naga_max) < 0.08:
+                return f"修正後の脅威バーでは両候補とも静か。{actual_detail}、{naga_detail}。この例は危険差ではなく、形・役割・着順で読む。"
+            return f"修正後の脅威バーでは両候補が近い。{actual_detail}、{naga_detail}。危険差だけでは説明できない分岐である。"
+        if gap < 0:
+            return f"修正後の脅威バーではニシキ候補の方が熱い。{actual_detail}、{naga_detail}。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。"
+        return f"修正後の脅威バーではLuckyJの打牌の方が熱い。{actual_detail}、{naga_detail}。この例は安全寄せではなく、追加脅威を払ってでも残す形・価値・着順理由があるかを見る。"
+    if abs(gap) < 0.03:
+        if max(actual_max, naga_max) < 0.08:
+            return f"With the corrected bars, both candidates are quiet: {actual_detail}; {naga_detail}. This example should be read through shape, role, and placement rather than a danger gap."
+        return f"With the corrected bars, the two candidate threats are close: {actual_detail}; {naga_detail}. The disagreement is not explained by threat alone."
+    if gap < 0:
+        return f"With the corrected bars, Nishiki's candidate is the hotter tile: {actual_detail}; {naga_detail}. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job."
+    return f"With the corrected bars, LuckyJ's discard is the hotter tile: {actual_detail}; {naga_detail}. This is a real threat-buy, so the local shape, value, or placement reason has to carry the example."
 
 
 def eval_summary(item, lang):
@@ -695,7 +977,7 @@ def safety_read_sentence(read, lang):
         threat = "リーチ" if target.get("reached") else f"{target.get('open_melds')}副露" if target.get("open_melds") else "静かな相手"
         return f"残る {tile_token(read.get('tile'))} は {seat_label(target.get('seat_label'), lang)} に対して{'かつ'.join(parts)}で、相手の状態は{threat}。"
     if kind:
-        parts.append({"genbutsu": "river-safe", "suji": "suji"}.get(kind, kind))
+        parts.append({"genbutsu": "genbutsu", "suji": "suji"}.get(kind, kind))
     if read.get("has_sotogawa"):
         parts.append("an outside tile (sotogawa)")
     threat = "riichi" if target.get("reached") else f"{target.get('open_melds')} calls" if target.get("open_melds") else "no called threat"
@@ -786,7 +1068,9 @@ def point_focus_en(point_key, case):
     kept = tile_token(case.get("naga"))
     score_band_text = case.get("score_band", "the current score band")
     if point_key == "point-01":
-        return f"The {score_band_text} seat changes the price of this discard. LuckyJ chooses the discard that leaves the next turn manageable."
+        rank = ordinal_en(case.get("current_rank")) if case.get("current_rank") else "a protected seat"
+        score = format_int(case.get("score"))
+        return f"On {score} points and currently {rank}, this hand does not need to chase extra points. LuckyJ lets it become a controlled fold unless the next draw makes pushing clearly worth it."
     if point_key == "point-02":
         return f"Cutting {actual} keeps {kept} as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information."
     if point_key == "point-05":
@@ -798,7 +1082,7 @@ def point_focus_en(point_key, case):
     if point_key == "point-09":
         return f"The next required discard matters more than this turn alone. LuckyJ chooses {actual} because the route through {naga} can become expensive on the following draw."
     if point_key == "point-10":
-        return f"This is late enough that vague improvement has mostly expired. LuckyJ's {actual} cut should be read as win, safe tenpai, or controlled exit."
+        return f"This is late enough that vague improvement has mostly expired. LuckyJ's {actual} cut should be read as win, safe tenpai, or controlled defense."
     if point_key == "point-11":
         return f"The hand result matters: {case.get('outcome')}. LuckyJ is playing for drawn-hand equity as well as direct wins."
     if point_key == "point-12":
@@ -806,7 +1090,7 @@ def point_focus_en(point_key, case):
     if point_key == "point-13":
         return yakuhai_threat_sentence(case, "en") or f"LuckyJ cleans {actual} before it turns into another player's yaku condition."
     if point_key == "point-14":
-        return f"By cutting {actual}, LuckyJ keeps {kept} as a named defensive exit with a target."
+        return f"By cutting {actual}, LuckyJ keeps {kept} as a named defensive tile with a target."
     if point_key == "point-15":
         return f"This is a spend-the-safe-tile example. {actual} may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space."
     if point_key == "point-16":
@@ -825,7 +1109,8 @@ def point_focus_ja(point_key, case):
     naga = tile_token(case.get("naga"))
     score_band_text = case.get("score_band", "この点数状況")
     if point_key == "point-01":
-        return f"{score_band_text} では同じ牌の値段が変わる。LuckyJ は次巡も困りにくい打牌を選んでいる。"
+        rank = f"現在{case.get('current_rank')}着" if case.get("current_rank") else "守る着順"
+        return f"{format_int(case.get('score'))}点で {rank} なので、加点を追いすぎる局面ではない。次のツモで押す価値がはっきり出なければ、LuckyJ はこの手を無理せず降りやすい形へ寄せている。"
     if point_key == "point-02":
         return f"{actual} を切ることで {naga} を分岐点として残す。価値、安全、別ルートをまだ選べる形にしている。"
     if point_key == "point-05":
@@ -845,7 +1130,7 @@ def point_focus_ja(point_key, case):
     if point_key == "point-13":
         return yakuhai_threat_sentence(case, "ja") or f"LuckyJ は {actual} が相手の役条件になる前に処理している。"
     if point_key == "point-14":
-        return f"{actual} を切って {naga} を明確な守備出口として残す。対象のある安全牌として扱っている。"
+        return f"{actual} を切って {naga} を明確な守備牌として残す。対象のある安全牌として扱っている。"
     if point_key == "point-15":
         return f"安全牌を使う例。{actual} は安全に見えても、守る相手がずれたら手順の邪魔になる。"
     if point_key == "point-16":
@@ -862,12 +1147,14 @@ def point_focus_ja(point_key, case):
 def copy_rule_en(point_key, case):
     actual = tile_token(case.get("actual"))
     naga = tile_token(case.get("naga"))
+    if point_key == "point-01":
+        return "Copy the score job: when your position is already good enough, lower the ambition, keep safe tiles, and let the hand fold unless a later draw makes it worth pushing."
     if point_key == "point-13":
         return f"Copy this when {actual} is live yakuhai for an opened hand and your own hand is too slow to punish that player immediately."
     if point_key in {"point-14", "point-17"}:
         return f"Copy the target: keep {naga} when it answers a named opponent on a believable future bad draw."
     if point_key == "point-15":
-        return f"Copy this only after naming why the safe-looking {actual} has expired and what later exit remains."
+        return f"Copy this only after naming why the safe-looking {actual} has expired and what later safe tile remains."
     if point_key == "point-18":
         return f"Copy the role label: cut {actual} when its main job helps someone else's condition."
     if point_key == "point-19":
@@ -882,12 +1169,14 @@ def copy_rule_en(point_key, case):
 def copy_rule_ja(point_key, case):
     actual = tile_token(case.get("actual"))
     naga = tile_token(case.get("naga"))
+    if point_key == "point-01":
+        return "点数状況を真似する。今の着順を守れば十分なら、目標を下げて安全牌を残し、次のツモで押す価値が出るまで無理しない。"
     if point_key == "point-13":
         return f"{actual} が副露手の生きた役牌で、自分がすぐ罰せない時だけ真似する。"
     if point_key in {"point-14", "point-17"}:
         return f"対象を真似する。{naga} が次の悪いツモで誰に効くかを言える時だけ残す。"
     if point_key == "point-15":
-        return f"安全そうな {actual} がなぜ期限切れか、次の出口が何かを言えた時だけ真似する。"
+        return f"安全そうな {actual} がなぜ期限切れか、次の安全牌が何かを言えた時だけ真似する。"
     if point_key == "point-18":
         return f"役割ラベルを真似する。{actual} が自分の価値でなく相手条件に近いなら切る。"
     if point_key == "point-19":
@@ -902,6 +1191,8 @@ def copy_rule_ja(point_key, case):
 def limit_rule_en(point_key, case):
     actual = tile_token(case.get("actual"))
     naga = tile_token(case.get("naga"))
+    if point_key == "point-01":
+        return "Do not copy the fold posture when you actually need points, when the hand is already worth pushing, or when the safer line has no real safe tile."
     if point_key == "point-13":
         return "Clean honors by role. Your pair, your value tile, and a dead caller tile use different rules."
     if point_key == "point-08":
@@ -918,6 +1209,8 @@ def limit_rule_en(point_key, case):
 def limit_rule_ja(point_key, case):
     actual = tile_token(case.get("actual"))
     naga = tile_token(case.get("naga"))
+    if point_key == "point-01":
+        return "加点が必要な時、すでに押す価値がある手、または安全牌のない安全寄せでは真似しない。"
     if point_key == "point-13":
         return "字牌は役割で分ける。対子、自分の役、相手にもう生きていない牌は別判断である。"
     if point_key == "point-08":
@@ -925,7 +1218,7 @@ def limit_rule_ja(point_key, case):
     if point_key in {"point-14", "point-17"}:
         return f"{naga} が生きた脅威に通る時に残す。"
     if point_key == "point-15":
-        return f"{actual} が現役の脅威への唯一の答えなら、出口として残す。"
+        return f"{actual} が現役の脅威への唯一の答えなら、安全牌として残す。"
     if point_key == "point-16":
         return f"{actual} が唯一の安全牌、または中のルートが幻想なら、防御寄りの打牌として扱う。"
     return "表面の牌を真似する条件は、点数状況、脅威、次に切る牌がそろう時である。"
@@ -937,7 +1230,11 @@ def why_naga_tempting_en(case):
     actual_eval = case.get("actual_eval")
     naga_eval = case.get("naga_eval")
     if actual_eval and naga_eval:
+        if case.get("point") == "point-01":
+            return f"The Nishiki line through {naga} is the efficiency temptation because it leaves {eval_summary(naga_eval, 'en')}. LuckyJ's {actual} line leaves {eval_summary(actual_eval, 'en')}. That extra acceptance matters less when the score job is to protect the current position, not manufacture more points. {danger_gap_phrase(case, 'en')}"
         return f"The Nishiki line through {naga} is tempting because it leaves {eval_summary(naga_eval, 'en')}. LuckyJ's {actual} line leaves {eval_summary(actual_eval, 'en')}. {danger_gap_phrase(case, 'en')}"
+    if case.get("point") == "point-01":
+        return f"Nishiki's top line {naga} is tempting because it has the highest model weight here: Nishiki {format_percent(case.get('naga_prob'))}, LuckyJ {format_percent(case.get('actual_prob'))}. In this score spot, that model weight is not enough by itself; the hand first has to justify risking the lead. {danger_gap_phrase(case, 'en')}"
     return f"Nishiki's top line {naga} is tempting because it has the highest model weight here: Nishiki {format_percent(case.get('naga_prob'))}, LuckyJ {format_percent(case.get('actual_prob'))}. {danger_gap_phrase(case, 'en')}"
 
 
@@ -947,7 +1244,11 @@ def why_naga_tempting_ja(case):
     actual_eval = case.get("actual_eval")
     naga_eval = case.get("naga_eval")
     if actual_eval and naga_eval:
+        if case.get("point") == "point-01":
+            return f"ニシキの {naga} は {eval_summary(naga_eval, 'ja')} を残すので、効率面では魅力がある。LuckyJ の {actual} は {eval_summary(actual_eval, 'ja')}。ただしこの点数状況では、加点を作ることより今の着順を守ることが先に来る。{danger_gap_phrase(case, 'ja')}"
         return f"ニシキの {naga} は {eval_summary(naga_eval, 'ja')} を残すので魅力がある。LuckyJ の {actual} は {eval_summary(actual_eval, 'ja')}。{danger_gap_phrase(case, 'ja')}"
+    if case.get("point") == "point-01":
+        return f"ニシキ第一候補の {naga} はこの局面で重みが高い ({format_percent(case.get('naga_prob'))}、LuckyJ は {format_percent(case.get('actual_prob'))})。ただしこの点数状況では、その重みだけでリードを危険にさらす理由にはならない。{danger_gap_phrase(case, 'ja')}"
     return f"ニシキ第一候補の {naga} はこの局面で重みが高い ({format_percent(case.get('naga_prob'))}、LuckyJ は {format_percent(case.get('actual_prob'))})。{danger_gap_phrase(case, 'ja')}"
 
 
@@ -956,31 +1257,45 @@ def build_discard_guide(case, lang):
     actual = tile_token(case.get("actual"))
     naga = tile_token(case.get("naga"))
     draw = tile_token(case.get("draw"))
+    rank = case.get("current_rank") or case.get("rank")
     safety = safety_read_sentence(case.get("kept_tile_safety"), lang)
     hibakari = hibakari_read_sentence(case, lang)
+    threat = threat_case_sentence(case, lang)
     if lang == "ja":
         focus = point_focus_ja(point_key, case)
-        read = f"{focus} {safety} {hibakari}".strip()
+        read = " ".join(part for part in [focus, threat, safety, hibakari] if part).strip()
+        rank_text = f"現在{rank}着" if rank else "現在着順不明"
+        prompt = (
+            f"残り{case.get('left')}枚で {actual} と {naga} のどちらを切るか。先に加点が必要か、今の着順を守れば十分かを言う。"
+            if point_key == "point-01"
+            else f"残り{case.get('left')}枚で {actual} と {naga} のどちらを切るか。先に {naga} が何を残しているかを言う。"
+        )
         return {
             "caption": f"LuckyJ {tile_plain(case.get('actual'))}、ニシキ {tile_plain(case.get('naga'))}",
-            "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、着順{case.get('rank')}。LuckyJ は {draw} ツモから {actual} を切り、ニシキ第一候補は {naga}。結果: {case.get('outcome')}",
+            "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、{rank_text}。LuckyJ は {draw} ツモから {actual} を切り、ニシキ第一候補は {naga}。結果: {case.get('outcome')}",
             "read": read,
             "whyNot": why_naga_tempting_ja(case),
             "copy": copy_rule_ja(point_key, case),
             "limit": limit_rule_ja(point_key, case),
-            "prompt": f"残り{case.get('left')}枚で {actual} と {naga} のどちらを切るか。先に {naga} が何を残しているかを言う。",
+            "prompt": prompt,
             "answer": f"LuckyJ は {actual} を選ぶ。理由は {focus}",
         }
     focus = point_focus_en(point_key, case)
-    read = f"{focus} {safety} {hibakari}".strip()
+    read = " ".join(part for part in [focus, threat, safety, hibakari] if part).strip()
+    rank_text = f"currently {ordinal_en(rank)}" if rank else "current rank unknown"
+    prompt = (
+        f"With {case.get('left')} tiles left, would you cut {actual} or {naga}? First say whether you need more points or can protect the current position."
+        if point_key == "point-01"
+        else f"With {case.get('left')} tiles left, would you cut {actual} or {naga}? First name what {naga} is preserving."
+    )
     return {
-        "caption": f"LuckyJ {tile_plain(case.get('actual'))}, Nishiki {tile_plain(case.get('naga'))}",
-        "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ is {case.get('score_band')} on {format_int(case.get('score'))} points in rank {case.get('rank')}. After drawing {draw}, LuckyJ cuts {actual}; Nishiki's top line is {naga}. Result: {case.get('outcome')}",
+        "caption": f"LuckyJ {tile_plain_english(case.get('actual'))}, Nishiki {tile_plain_english(case.get('naga'))}",
+        "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ has {format_int(case.get('score'))} points ({case.get('score_band')}), {rank_text}. After drawing {draw}, LuckyJ cuts {actual}; Nishiki's top line is {naga}. Result: {case.get('outcome')}",
         "read": read,
         "whyNot": why_naga_tempting_en(case),
         "copy": copy_rule_en(point_key, case),
         "limit": limit_rule_en(point_key, case),
-        "prompt": f"With {case.get('left')} tiles left, would you cut {actual} or {naga}? First name what {naga} is preserving.",
+        "prompt": prompt,
         "answer": f"LuckyJ chooses {actual}. The reproducible reason is: {focus}",
     }
 
@@ -995,9 +1310,10 @@ def build_call_guide(case, lang):
     shape = case.get("post_call_eval") or {}
     post_shape = shanten_text(shape.get("shanten"), lang)
     model_read = call_model_sentence(case, lang)
+    rank = case.get("current_rank") or case.get("rank")
     if lang == "ja":
         if point_key == "point-04":
-            focus = f"副露後の {discard} まで先に見えていることが大事。開いた後も次の出口を残している。"
+            focus = f"副露後の {discard} まで先に見えていることが大事。開いた後も次の安全牌を残している。"
         elif point_key == "point-07":
             focus = f"{call} は速度を買うための副露。残り{case.get('left')}枚で、閉じたまま待つより局面の時計を進めている。"
         elif shape.get("shanten") is not None and shape.get("shanten") > 0 and (case.get("left") or 0) <= 1:
@@ -1006,9 +1322,10 @@ def build_call_guide(case, lang):
             focus = f"閉じた手が間に合いにくい局面で、{call} 後の {discard} まで決めると {post_shape} になる。"
         else:
             focus = f"閉じた手が間に合いにくい局面で、{call} 後の {discard} まで決めると {post_shape} まで進む。"
+        rank_text = f"現在{rank}着" if rank else "現在着順不明"
         return {
             "caption": f"{call} して {tile_plain(case.get('discard_after_call'))}",
-            "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、着順{case.get('rank')}。LuckyJ は {from_seat} から {called} を {call} し、{discard} を切る。結果: {case.get('outcome')}",
+            "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、{rank_text}。LuckyJ は {from_seat} から {called} を {call} し、{discard} を切る。結果: {case.get('outcome')}",
             "read": f"{focus} {model_read}".strip(),
             "whyNot": f"門前維持は自然な選択。ただしこの局面では残り枚数と手牌 {meld or 'なし'} から、門前の理想形を待つ余裕が薄い。",
             "copy": f"{call} が役、速度、テンパイ、または相手への圧力を作る時だけ真似する。鳴いた後の最初の打牌 {discard} まで先に決める。",
@@ -1017,7 +1334,7 @@ def build_call_guide(case, lang):
             "answer": f"最初に見るのは鳴き後の打牌で、この例では {discard} まで見えている。{focus} {model_read}",
         }
     if point_key == "point-04":
-        focus = f"The important tile is the post-call {discard}. LuckyJ opens while keeping the first exit and the next concrete plan."
+        focus = f"The important tile is the post-call {discard}. LuckyJ opens while keeping the first safe tile and the next concrete plan."
     elif point_key == "point-07":
         focus = f"The {call} buys tempo with {case.get('left')} tiles left. LuckyJ is changing the round clock and completing a useful set."
     elif shape.get("shanten") is not None and shape.get("shanten") > 0 and (case.get("left") or 0) <= 1:
@@ -1026,25 +1343,60 @@ def build_call_guide(case, lang):
         focus = f"The closed route is running out of practical turns; after the {call} and {discard}, the hand reaches {post_shape}."
     else:
         focus = f"The closed route is running out of practical turns; after the {call} and {discard}, the hand reaches {post_shape}."
+    rank_text = f"currently {ordinal_en(rank)}" if rank else "current rank unknown"
     return {
-        "caption": f"{call} on {tile_plain(case.get('called_tile'))}, then {tile_plain(case.get('discard_after_call'))}",
-        "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ is {case.get('score_band')} on {format_int(case.get('score'))} points in rank {case.get('rank')}. LuckyJ calls {call} on {called} from the {from_seat}, then cuts {discard}. Result: {case.get('outcome')}",
+        "caption": f"{call.capitalize()} on {tile_plain_english(case.get('called_tile'))}, discard {tile_plain_english(case.get('discard_after_call'))}",
+        "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ has {format_int(case.get('score'))} points ({case.get('score_band')}), {rank_text}. LuckyJ calls {call} on {called} from the {from_seat}, then cuts {discard}. Result: {case.get('outcome')}",
         "read": f"{focus} {model_read}".strip(),
         "whyNot": f"Passing is tempting because it keeps the hand closed. With {case.get('left')} tiles left, the closed ideal may run out of useful turns.",
         "copy": f"Copy the {call} only when it creates yaku, speed, tenpai pressure, or denial, and when the first post-call discard {discard} is already planned.",
-        "limit": "The call needs a named post-call discard and a next defensive exit to become LuckyJ-style tempo.",
+        "limit": "The call needs a named post-call discard and a next defensive tile to become LuckyJ-style tempo.",
         "prompt": f"Would you {call} on {called}? Before answering, name the discard after the call.",
         "answer": f"The first check is the post-call discard: {discard} is already the release tile. {focus} {model_read}",
     }
 
 
+LLM_CACHE_PATH = Path("data/llm_guides_cache.json")
+LLM_CACHE = None
+
+def load_llm_cache():
+    global LLM_CACHE
+    if LLM_CACHE is not None:
+        return LLM_CACHE
+    if LLM_CACHE_PATH.exists():
+        try:
+            with open(LLM_CACHE_PATH, "r", encoding="utf-8") as f:
+                LLM_CACHE = json.load(f)
+        except Exception as e:
+            print(f"Warning: Failed to load LLM cache: {e}")
+            LLM_CACHE = {}
+    else:
+        LLM_CACHE = {}
+    return LLM_CACHE
+
+
 def attach_example_guides(case):
+    attach_shape_facts(case)
     if case.get("kind") == "call":
         case["guide"] = build_call_guide(case, "en")
         case["guide_ja"] = build_call_guide(case, "ja")
     else:
         case["guide"] = build_discard_guide(case, "en")
         case["guide_ja"] = build_discard_guide(case, "ja")
+        
+    cache = load_llm_cache()
+    key = f"{case.get('point')}_{case.get('game')}_{case.get('kyoku_index')}_{case.get('position')}"
+    if key in cache:
+        cached_entry = cache[key]
+        if "guide" in cached_entry:
+            case["guide"]["read"] = cached_entry["guide"].get("read", case["guide"]["read"])
+            case["guide"]["prompt"] = cached_entry["guide"].get("prompt", case["guide"]["prompt"])
+            case["guide"]["answer"] = cached_entry["guide"].get("answer", case["guide"]["answer"])
+        if "guide_ja" in cached_entry:
+            case["guide_ja"]["read"] = cached_entry["guide_ja"].get("read", case["guide_ja"]["read"])
+            case["guide_ja"]["prompt"] = cached_entry["guide_ja"].get("prompt", case["guide_ja"]["prompt"])
+            case["guide_ja"]["answer"] = cached_entry["guide_ja"].get("answer", case["guide_ja"]["answer"])
+            
     return case
 
 
@@ -1150,6 +1502,17 @@ def tile_count(hand, tile):
     return sum(1 for item in hand if tile_id(item) == idx)
 
 
+def ordinal_en(value):
+    if value is None:
+        return "unknown"
+    value = int(value)
+    if 10 <= value % 100 <= 20:
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(value % 10, "th")
+    return f"{value}{suffix}"
+
+
 def post_call_eval(hand, consumed, discard_after_call):
     concealed = list(hand)
     for tile in consumed or []:
@@ -1232,8 +1595,8 @@ def try_discard_points(
     score = start.get("scores", [0, 0, 0, 0])[target]
     actual_cls = base.tile_class(actual)
     naga_cls = base.tile_class(naga)
-    actual_d = danger_for(state, target, actual)
-    naga_d = danger_for(state, target, naga)
+    actual_d = discard_threat_value(state, target, actual)
+    naga_d = discard_threat_value(state, target, naga)
     public_visible = visible_counter(discards, melds, dora_markers)
     active_threats = sum(1 for seat in range(4) if seat != target and (reached[seat] or open_melds[seat]))
     actual_read = safety_read(actual, target, discards, reached, open_melds)

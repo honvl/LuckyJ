@@ -29,14 +29,78 @@ const pointRailFallbackLabels = {
     "Drawn-hand points are part of the attack plan.",
     "Use NAGA match rate as a review cue.",
     "Cut live yakuhai earlier when an open hand's yaku is unproven.",
-    "Keep genbutsu and suji tiles as timed exits.",
+    "Keep genbutsu and suji tiles on purpose.",
     "Safe tiles expire when they stop defending the current danger.",
     "Late outside cuts can preserve the winning route.",
     "A kept genbutsu or suji tile must name its target.",
-    "Name the honor's job: value, yaku condition, dead tile, or exit.",
+    "Name the honor's job: value, yaku condition, dead tile, or safety.",
     "Leader safety still has to calculate.",
   ],
 };
+const pointExampleControllers = new Map();
+
+function normalizePointKey(value) {
+  const raw = String(value || "").trim();
+  const match = raw.match(/^point-(\d{1,2})$/i) || raw.match(/^(\d{1,2})$/);
+  if (!match) return "";
+  const number = Number.parseInt(match[1], 10);
+  if (!Number.isFinite(number) || number < 1) return "";
+  return `point-${String(number).padStart(2, "0")}`;
+}
+
+function parseExampleIndex(value) {
+  if (value === undefined || value === null || value === "") return null;
+  const number = Number.parseInt(String(value), 10);
+  return Number.isFinite(number) && number > 0 ? number - 1 : null;
+}
+
+function parsePointExampleLocation() {
+  const search = new URLSearchParams(window.location.search);
+  let rawHash = String(window.location.hash || "").replace(/^#/, "");
+  try {
+    rawHash = decodeURIComponent(rawHash);
+  } catch {
+    rawHash = "";
+  }
+  const hashMatch = rawHash.match(/^point-(\d{1,2})(?:-(?:example|ex)-?(\d{1,2}))?$/i);
+  const pointKey = hashMatch ? normalizePointKey(`point-${hashMatch[1]}`) : normalizePointKey(search.get("point"));
+  const exampleIndex = hashMatch?.[2] ? parseExampleIndex(hashMatch[2]) : parseExampleIndex(search.get("example"));
+  return { pointKey, exampleIndex };
+}
+
+function clampExampleIndex(index, total) {
+  const number = Number.isFinite(index) ? index : 0;
+  return Math.max(0, Math.min(total - 1, number));
+}
+
+function exampleAnchorId(pointKey, index) {
+  return `${pointKey}-example-${String(index + 1).padStart(2, "0")}`;
+}
+
+function writeExampleLocation(pointKey, index) {
+  if (!window.history?.pushState) return;
+  const url = new URL(window.location.href);
+  url.searchParams.delete("point");
+  url.searchParams.delete("example");
+  url.hash = exampleAnchorId(pointKey, index);
+  if (url.href === window.location.href) return;
+  window.history.pushState({}, "", url);
+}
+
+function syncPointExamplesFromLocation({ scroll = false } = {}) {
+  const target = parsePointExampleLocation();
+  if (!target.pointKey) return;
+  const controller = pointExampleControllers.get(target.pointKey);
+  if (!controller) return;
+  const index = target.exampleIndex === null ? 0 : clampExampleIndex(target.exampleIndex, controller.total);
+  controller.show(index, { updateLocation: false });
+  if (!scroll) return;
+  requestAnimationFrame(() => {
+    const anchor = target.exampleIndex === null ? target.pointKey : exampleAnchorId(target.pointKey, index);
+    const element = document.getElementById(anchor) || document.getElementById(target.pointKey);
+    element?.scrollIntoView({ block: "start" });
+  });
+}
 
 function modelName(keyOrLabel) {
   const raw = String(keyOrLabel || "");
@@ -186,6 +250,7 @@ const copy = {
     luckyj: "LuckyJ",
     nagaTop: "Nishiki top",
     danger: "Danger",
+    nagaThreat: "NAGA threat",
     drill: "Drill",
     answer: "Answer",
     nagaReport: "Review page",
@@ -246,6 +311,7 @@ const copy = {
     luckyj: "LuckyJ",
     nagaTop: "ニシキ最上位",
     danger: "放銃危険度",
+    nagaThreat: "NAGA脅威",
     drill: "ドリル",
     answer: "答え",
     nagaReport: "検討ページ",
@@ -399,8 +465,8 @@ function caseLabelText(label) {
     {
       "Early safety hedge": "序盤の安全保留",
       "Middle route hedge": "中盤のルート保留",
-      "Kept river-safe exit": "現物の出口をキープ",
-      "Kept suji exit": "筋の出口をキープ",
+      "Kept genbutsu tile": "現物牌をキープ",
+      "Kept suji tile": "筋牌をキープ",
       "Safer than Nishiki": "ニシキより安全",
       "Riskier than Nishiki": "ニシキよりリスクあり",
       "Late tightening": "終盤の引き締め",
@@ -446,8 +512,8 @@ function renderDefenseTiming(retention) {
     panel.innerHTML = `
       <b>${stageText(key)}</b>
       <strong>${splits ? pct(kept / splits) : "n/a"}</strong>
-      <span>${isJa ? "ニシキと割れた打牌で現物/筋を残した割合" : "of Nishiki-split discards kept a river-safe or suji tile"}</span>
-      <small>${isJa ? "内訳" : "Breakdown"}: ${whole.format(item.kept_genbutsu || 0)} ${safetyKindLabel("genbutsu")}, ${whole.format(item.kept_suji || 0)} ${safetyKindLabel("suji")}, ${whole.format(item.kept_against_live_threat || 0)} ${isJa ? "脅威相手" : "live-threat exits"}${avgLeft == null ? "" : isJa ? `、平均残り${fmt.format(avgLeft)}枚` : `, avg ${fmt.format(avgLeft)} tiles left`}</small>
+      <span>${isJa ? "ニシキと割れた打牌で現物/筋を残した割合" : "of Nishiki-split discards kept a genbutsu or suji tile"}</span>
+      <small>${isJa ? "内訳" : "Breakdown"}: ${whole.format(item.kept_genbutsu || 0)} ${safetyKindLabel("genbutsu")}, ${whole.format(item.kept_suji || 0)} ${safetyKindLabel("suji")}, ${whole.format(item.kept_against_live_threat || 0)} ${isJa ? "実脅威牌" : "live-threat tiles"}${avgLeft == null ? "" : isJa ? `、平均残り${fmt.format(avgLeft)}枚` : `, avg ${fmt.format(avgLeft)} tiles left`}</small>
     `;
     target.append(panel);
   }
@@ -651,7 +717,7 @@ function safetyKindLabel(kind) {
     if (kind === "sotogawa") return "外側牌（ソト側）";
     return "なし";
   }
-  if (kind === "genbutsu") return "river-safe";
+  if (kind === "genbutsu") return "genbutsu";
   if (kind === "suji") return "suji";
   if (kind === "sotogawa") return "outside tile (sotogawa)";
   return "none";
@@ -694,9 +760,9 @@ function safetyReadLine(read) {
 function safetySummary(safety) {
   if (!safety || !safety.total) return "";
   const parts = [];
-  if (safety.genbutsu) parts.push(isJa ? `現物 ${safety.genbutsu}` : `${safety.genbutsu} river-safe`);
+  if (safety.genbutsu) parts.push(isJa ? `現物 ${safety.genbutsu}` : `${safety.genbutsu} genbutsu`);
   if (safety.suji) parts.push(isJa ? `筋 ${safety.suji}` : `${safety.suji} suji`);
-  if (safety.against_threat) parts.push(isJa ? `脅威相手 ${safety.against_threat}` : `${safety.against_threat} live-threat exits`);
+  if (safety.against_threat) parts.push(isJa ? `実脅威牌 ${safety.against_threat}` : `${safety.against_threat} live-threat tiles`);
   return parts.join(isJa ? "、" : ", ");
 }
 
@@ -1205,6 +1271,7 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
   const exampleMortal = example.mortal || pointMortalForExample(mortalPoints, pointKey, index);
   const card = document.createElement("article");
   card.className = "point-example-card";
+  card.id = exampleAnchorId(pointKey, index);
   card.innerHTML = `
     <div class="example-head">
       <div>
@@ -1239,13 +1306,13 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
     choices.className = "comparison";
     if (example.actual_eval && example.naga_eval) {
       choices.append(
-        comparison(t("luckyj"), example.actual_eval, example.actual_danger, example.actual_prob),
-        comparison(t("nagaTop"), example.naga_eval, example.naga_danger, example.naga_prob)
+        comparison(t("luckyj"), example.actual_eval, example.actual_danger, example.actual_prob, t("nagaThreat")),
+        comparison(t("nagaTop"), example.naga_eval, example.naga_danger, example.naga_prob, t("nagaThreat"))
       );
     } else {
       choices.innerHTML = `
-        <div class="decision"><b>${t("luckyj")}</b>${probabilityChip(t("nagaWeight"), example.actual_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.actual, "discard-tile")} <em>${escapeHtml(tileName(example.actual))}</em></span><span>${t("danger")} ${dangerText(example.actual_danger)}</span></div>
-        <div class="decision"><b>${t("nagaTop")}</b>${probabilityChip(t("nagaWeight"), example.naga_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.naga, "discard-tile")} <em>${escapeHtml(tileName(example.naga))}</em></span><span>${t("danger")} ${dangerText(example.naga_danger)}</span></div>
+        <div class="decision"><b>${t("luckyj")}</b>${probabilityChip(t("nagaWeight"), example.actual_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.actual, "discard-tile")} <em>${escapeHtml(tileName(example.actual))}</em></span><span>${t("nagaThreat")} ${dangerText(example.actual_danger)}</span></div>
+        <div class="decision"><b>${t("nagaTop")}</b>${probabilityChip(t("nagaWeight"), example.naga_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.naga, "discard-tile")} <em>${escapeHtml(tileName(example.naga))}</em></span><span>${t("nagaThreat")} ${dangerText(example.naga_danger)}</span></div>
       `;
     }
     replay.append(choices);
@@ -1276,6 +1343,7 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
 }
 
 function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
+  pointExampleControllers.clear();
   for (const placeholder of document.querySelectorAll("[data-example]")) {
     const pointKey = placeholder.dataset.example;
     const items = pointExampleList(examples, pointKey);
@@ -1299,40 +1367,52 @@ function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
       tablist.append(button);
       return button;
     });
+    let selectedIndex = 0;
 
-    function showExample(index) {
+    function showExample(index, { updateLocation = false } = {}) {
+      selectedIndex = clampExampleIndex(index, items.length);
       buttons.forEach((button, buttonIndex) => {
-        const selected = buttonIndex === index;
+        const selected = buttonIndex === selectedIndex;
         button.classList.toggle("active", selected);
         button.setAttribute("aria-selected", selected ? "true" : "false");
         button.tabIndex = selected ? 0 : -1;
       });
-      body.replaceChildren(renderPointExampleCard(pointKey, items[index], guide, mortalPoints, mortalCopy, index, items.length));
+      body.replaceChildren(renderPointExampleCard(pointKey, items[selectedIndex], guide, mortalPoints, mortalCopy, selectedIndex, items.length));
       applyTileCompatibility(body);
+      if (updateLocation) writeExampleLocation(pointKey, selectedIndex);
     }
+
+    pointExampleControllers.set(pointKey, {
+      total: items.length,
+      show: showExample,
+      get index() {
+        return selectedIndex;
+      },
+    });
 
     tablist.addEventListener("click", (event) => {
       const button = event.target.closest("button[data-index]");
       if (!button) return;
-      showExample(Number(button.dataset.index));
+      showExample(Number(button.dataset.index), { updateLocation: true });
     });
     tablist.addEventListener("keydown", (event) => {
       if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
       event.preventDefault();
-      const current = buttons.findIndex((button) => button.classList.contains("active"));
       const next =
         event.key === "Home"
           ? 0
           : event.key === "End"
             ? buttons.length - 1
-            : (current + (event.key === "ArrowRight" ? 1 : -1) + buttons.length) % buttons.length;
-      showExample(next);
+            : (selectedIndex + (event.key === "ArrowRight" ? 1 : -1) + buttons.length) % buttons.length;
+      showExample(next, { updateLocation: true });
       buttons[next].focus();
     });
 
     shell.append(tablist, body);
     placeholder.replaceChildren(shell);
-    showExample(0);
+    const target = parsePointExampleLocation();
+    const initialIndex = target.pointKey === pointKey && target.exampleIndex !== null ? target.exampleIndex : 0;
+    showExample(initialIndex);
   }
 }
 
@@ -1406,7 +1486,7 @@ function categoryRead(key, item) {
       return `中盤では手牌が価値を証明し始める必要がある。LuckyJ の ${actualName} 切りは、ニシキラインが点数状況や河に対して脆い一本道へ寄せすぎる可能性を示している。`;
     }
     if (key === "kept_river_safe") {
-      return `ニシキが切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河にあり、後のリーチや副露に対する現物の出口になる。`;
+      return `ニシキが切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河にあり、後のリーチや副露に対する現物牌になる。`;
     }
     if (key === "kept_suji_exit") {
       return `ニシキが切りたい ${nagaName} を LuckyJ は残している。その牌は相手の河から筋で読めるため、後の押し引きに使える。`;
@@ -1429,7 +1509,7 @@ function categoryRead(key, item) {
     return `In the middle row, the hand has to start proving itself. LuckyJ's ${actualName} discard suggests that the Nishiki line compresses the hand into a route that is too brittle for the score and river state.`;
   }
   if (key === "kept_river_safe") {
-    return `Nishiki wants to cut ${nagaName}, but LuckyJ keeps it because it is already visible in an opponent river. That retained genbutsu is an exit for the next riichi or open-hand threat.`;
+    return `Nishiki wants to cut ${nagaName}, but LuckyJ keeps it because it is already visible in an opponent river. That retained genbutsu is a defensive tile for the next riichi or open-hand threat.`;
   }
   if (key === "kept_suji_exit") {
     return `Nishiki wants to cut ${nagaName}, but LuckyJ keeps it because opponent rivers make it suji. Treat it as a timed defensive resource, weaker than genbutsu but still useful in the right spot.`;
@@ -1472,7 +1552,7 @@ function caseLesson(key, item) {
   return lines;
 }
 
-function comparison(label, item, danger, probability) {
+function comparison(label, item, danger, probability, dangerLabel = t("immediateDanger")) {
   const el = document.createElement("div");
   el.className = "decision";
   const keptSafety = safetySummary(item.kept_safety);
@@ -1483,9 +1563,9 @@ function comparison(label, item, danger, probability) {
     <b>${label}</b>
     ${probabilityChip(t("nagaWeight"), probability)}
     <span class="discard-line">${actionLine}</span>
-    <span>${t("immediateDanger")} ${danger == null ? "n/a" : pct(danger)}</span>
+    <span>${dangerLabel} ${danger == null ? "n/a" : pct(danger)}</span>
     <span>${t("keeps")} ${item.kept_honors} ${t("honors")}, ${item.kept_terminals} ${t("terminals")}</span>
-    ${keptSafety ? `<span>${isJa ? "守備の出口" : "Defensive exits"} ${escapeHtml(keptSafety)}</span>` : ""}
+    ${keptSafety ? `<span>${isJa ? "守備牌" : "Defensive tiles"} ${escapeHtml(keptSafety)}</span>` : ""}
     <details class="diagnostics">
       <summary>${t("mechanicalDiagnostic")}</summary>
       <span>${item.shanten} ${t("shanten")}</span>
@@ -1692,9 +1772,13 @@ async function main() {
 
   renderPointValidation(validation);
   renderPointExamples(examples, guides, mortal.points, mortalCopy);
+  syncPointExamplesFromLocation({ scroll: true });
   renderCases(caseData);
   applyTileCompatibility();
 }
+
+window.addEventListener("hashchange", () => syncPointExamplesFromLocation({ scroll: true }));
+window.addEventListener("popstate", () => syncPointExamplesFromLocation({ scroll: true }));
 
 main().catch((error) => {
   const metrics = document.querySelector("#metrics");

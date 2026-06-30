@@ -40,7 +40,8 @@ html {
 
 section[id],
 .point[id],
-.chapter-card[id] {
+.chapter-card[id],
+.point-example-card[id] {
   scroll-margin-top: 220px;
 }
 
