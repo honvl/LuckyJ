@@ -15,6 +15,9 @@ Japanese translation: https://honvl.github.io/LuckyJ/ja.html
 - `scripts/extract_case_studies.py` - replays closed-hand LuckyJ/NAGA discard disagreements with the `mahjong` shanten engine and writes `site/case-studies.json`.
 - `scripts/build_point_examples.py` - mines one concrete replay example for each numbered principle and writes `site/point-examples.json`.
 - `scripts/build_mortal_analysis.py` - locally replays the selected examples through Mortal/libriichi and writes `site/mortal-analysis.json`.
+- `scripts/mine_model_patterns.py` - mines LuckyJ/NAGA mismatch families and optionally cross-checks a deterministic sample through Mortal.
+- `analysis/model-patterns-2026-06-30.md` - readable summary of the model-mined candidate points.
+- `site/model-patterns.json` - machine-readable output from the model-pattern mining run.
 - `site/strategy-guides.json` - long-form strategic commentary for the numbered replay examples.
 - `site/strategy-guides.ja.json` - Japanese commentary used by the translated static book.
 - `site/mortal-analysis.ja.json` - Japanese Mortal panel copy used by the translated static book.
@@ -40,6 +43,12 @@ The Mortal cross-check is optional because it depends on local-only assets under
 uv pip install --python .venv/bin/python numpy torch maturin
 # Install Equim-chan Mortal/libriichi locally, then run:
 .venv/bin/python scripts/build_mortal_analysis.py
+```
+
+The broader model-pattern mining pass is also optional for the same reason when Mortal replay is enabled:
+
+```bash
+.venv/bin/python scripts/mine_model_patterns.py --mortal-per-pattern 10 --mortal-total 140 --output site/model-patterns.json
 ```
 
 Create the local environment with:

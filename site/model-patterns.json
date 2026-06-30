@@ -1,0 +1,4928 @@
+{
+  "meta": {
+    "source": "LuckyJ cached NAGA reports plus optional local Mortal/libriichi replay sample",
+    "random_seed": 20260630,
+    "max_reports": null,
+    "mortal_per_pattern": 10,
+    "mortal_total": 140
+  },
+  "summary": {
+    "overall": {
+      "decisions": 135038,
+      "mismatches": 36206,
+      "mismatch_rate": 0.26811712258771603,
+      "bad_rate_among_mismatches": 0.31016958515163234,
+      "big_gap_rate_among_mismatches": 0.561453902668066
+    },
+    "patterns": {
+      "behind_risk_buy": {
+        "label": "Behind-score choices that buy route/value with extra danger",
+        "n": 2364,
+        "share_of_mismatches": 0.06529304535159919,
+        "bad_rate": 0.34517766497461927,
+        "bad_lift_vs_other_mismatches": 0.0374535351950554,
+        "bad_rate_p_value": 0.00014115871635045352,
+        "big_gap_rate": 0.5769881556683587,
+        "big_gap_lift_vs_other_mismatches": 0.016619383137184474,
+        "big_gap_p_value": 0.11539783960372274,
+        "avg_prob_gap": 0.5689740693739425,
+        "avg_danger_delta": 0.12006586294416244,
+        "avg_left": 41.28637901861252,
+        "stage_counts": {
+          "early": 753,
+          "middle": 1306,
+          "late": 305
+        },
+        "score_band_counts": {
+          "behind": 1923,
+          "danger": 441
+        }
+      },
+      "break_pair_anchor": {
+        "label": "Break a pair earlier than NAGA",
+        "n": 4318,
+        "share_of_mismatches": 0.11926200077335249,
+        "bad_rate": 0.35942566002779064,
+        "bad_lift_vs_other_mismatches": 0.05592591090586391,
+        "bad_rate_p_value": 8.926193117986259e-14,
+        "big_gap_rate": 0.5979620194534506,
+        "big_gap_lift_vs_other_mismatches": 0.041451733452447126,
+        "big_gap_p_value": 2.5826412075602434e-07,
+        "avg_prob_gap": 0.5776821445113478,
+        "avg_danger_delta": 0.020670055581287632,
+        "avg_left": 41.86498378879111,
+        "stage_counts": {
+          "late": 610,
+          "early": 1545,
+          "middle": 2163
+        },
+        "score_band_counts": {
+          "behind": 1397,
+          "above_start": 1727,
+          "lead": 887,
+          "danger": 307
+        }
+      },
+      "cut_inside_keep_outside": {
+        "label": "Cut a middle tile while keeping outside/safety/yaku material",
+        "n": 10926,
+        "share_of_mismatches": 0.30177318676462467,
+        "bad_rate": 0.3864177192019037,
+        "bad_lift_vs_other_mismatches": 0.10920252932848601,
+        "bad_rate_p_value": 0.0,
+        "big_gap_rate": 0.6256635548233571,
+        "big_gap_lift_vs_other_mismatches": 0.09196102317778754,
+        "big_gap_p_value": 0.0,
+        "avg_prob_gap": 0.5948624382207578,
+        "avg_danger_delta": 0.029140984806882667,
+        "avg_left": 49.584477393373604,
+        "stage_counts": {
+          "early": 6614,
+          "middle": 3449,
+          "late": 863
+        },
+        "score_band_counts": {
+          "above_start": 4480,
+          "behind": 3457,
+          "danger": 720,
+          "lead": 2269
+        }
+      },
+      "cut_outside_keep_inside": {
+        "label": "Cut outside material while keeping middle-tile shape",
+        "n": 5281,
+        "share_of_mismatches": 0.14585980224272221,
+        "bad_rate": 0.23139556902101874,
+        "bad_lift_vs_other_mismatches": -0.09222609629830222,
+        "bad_rate_p_value": 0.0,
+        "big_gap_rate": 0.4705548191630373,
+        "big_gap_lift_vs_other_mismatches": -0.10642173702127955,
+        "big_gap_p_value": 0.0,
+        "avg_prob_gap": 0.48986797954932776,
+        "avg_danger_delta": -0.02976669191441015,
+        "avg_left": 42.44063624313577,
+        "stage_counts": {
+          "middle": 2514,
+          "early": 2018,
+          "late": 749
+        },
+        "score_band_counts": {
+          "behind": 1617,
+          "above_start": 2106,
+          "danger": 454,
+          "lead": 1104
+        }
+      },
+      "honor_cleanup_vs_shape": {
+        "label": "Cut a loose honor while NAGA prefers shape cleanup",
+        "n": 2348,
+        "share_of_mismatches": 0.06485112964701983,
+        "bad_rate": 0.20868824531516184,
+        "bad_lift_vs_other_mismatches": -0.10851891399726066,
+        "bad_rate_p_value": 0.0,
+        "big_gap_rate": 0.4463373083475298,
+        "big_gap_lift_vs_other_mismatches": -0.12309975231760106,
+        "big_gap_p_value": 0.0,
+        "avg_prob_gap": 0.47178718057921637,
+        "avg_danger_delta": -0.03687419080068143,
+        "avg_left": 42.96465076660988,
+        "stage_counts": {
+          "middle": 1109,
+          "early": 930,
+          "late": 309
+        },
+        "score_band_counts": {
+          "behind": 692,
+          "above_start": 965,
+          "danger": 182,
+          "lead": 509
+        }
+      },
+      "keep_defensive_exit": {
+        "label": "Keep genbutsu/suji exits while cutting elsewhere",
+        "n": 8590,
+        "share_of_mismatches": 0.23725349389603934,
+        "bad_rate": 0.3509895227008149,
+        "bad_lift_vs_other_mismatches": 0.053517042978914575,
+        "bad_rate_p_value": 0.0,
+        "big_gap_rate": 0.5958090803259605,
+        "big_gap_lift_vs_other_mismatches": 0.04504140941054913,
+        "big_gap_p_value": 2.020605904817785e-13,
+        "avg_prob_gap": 0.568721210710128,
+        "avg_danger_delta": 0.03558642607683353,
+        "avg_left": 51.92258440046566,
+        "stage_counts": {
+          "early": 5768,
+          "middle": 2626,
+          "late": 196
+        },
+        "score_band_counts": {
+          "above_start": 3408,
+          "behind": 2823,
+          "danger": 708,
+          "lead": 1651
+        }
+      },
+      "keep_dora_or_red": {
+        "label": "Keep dora/red-five material instead of taking the clean NAGA cut",
+        "n": 617,
+        "share_of_mismatches": 0.01704137435784124,
+        "bad_rate": 0.24635332252836303,
+        "bad_lift_vs_other_mismatches": -0.06492263352547381,
+        "bad_rate_p_value": 0.0005472554625161052,
+        "big_gap_rate": 0.5024311183144247,
+        "big_gap_lift_vs_other_mismatches": -0.06004605159762677,
+        "big_gap_p_value": 0.002881598437822319,
+        "avg_prob_gap": 0.511719773095624,
+        "avg_danger_delta": -0.010684116693679092,
+        "avg_left": 43.43760129659643,
+        "stage_counts": {
+          "late": 87,
+          "early": 261,
+          "middle": 269
+        },
+        "score_band_counts": {
+          "behind": 159,
+          "above_start": 266,
+          "lead": 148,
+          "danger": 44
+        }
+      },
+      "keep_pair_anchor": {
+        "label": "Keep a pair or triplet anchor that NAGA wants to break",
+        "n": 2338,
+        "share_of_mismatches": 0.06457493233165773,
+        "bad_rate": 0.218562874251497,
+        "bad_lift_vs_other_mismatches": -0.09793057088845813,
+        "bad_rate_p_value": 0.0,
+        "big_gap_rate": 0.45466210436270316,
+        "big_gap_lift_vs_other_mismatches": -0.1141639261085381,
+        "big_gap_p_value": 0.0,
+        "avg_prob_gap": 0.48098451668092385,
+        "avg_danger_delta": -0.019026860564585114,
+        "avg_left": 37.21770744225834,
+        "stage_counts": {
+          "early": 574,
+          "middle": 1255,
+          "late": 509
+        },
+        "score_band_counts": {
+          "above_start": 965,
+          "behind": 713,
+          "lead": 499,
+          "danger": 161
+        }
+      },
+      "leader_low_risk": {
+        "label": "Leader/large-stack choices that do not increase danger",
+        "n": 5153,
+        "share_of_mismatches": 0.14232447660608738,
+        "bad_rate": 0.2957500485154279,
+        "bad_lift_vs_other_mismatches": -0.01681234481210886,
+        "bad_rate_p_value": 0.0156795588360219,
+        "big_gap_rate": 0.5334756452551912,
+        "big_gap_lift_vs_other_mismatches": -0.03262102817410706,
+        "big_gap_p_value": 1.2399994073319931e-05,
+        "avg_prob_gap": 0.5338462643120512,
+        "avg_danger_delta": -0.024579681738792936,
+        "avg_left": 49.93382495633612,
+        "stage_counts": {
+          "early": 3116,
+          "middle": 1505,
+          "late": 532
+        },
+        "score_band_counts": {
+          "lead": 5153
+        }
+      },
+      "multi_threat_safe_tenpai": {
+        "label": "Middle/late choices preserving exits with multiple threats",
+        "n": 4386,
+        "share_of_mismatches": 0.12114014251781473,
+        "bad_rate": 0.23483812129502965,
+        "bad_lift_vs_other_mismatches": -0.08571498995575602,
+        "bad_rate_p_value": 0.0,
+        "big_gap_rate": 0.4883720930232558,
+        "big_gap_lift_vs_other_mismatches": -0.08315524827152732,
+        "big_gap_p_value": 0.0,
+        "avg_prob_gap": 0.5025124259005928,
+        "avg_danger_delta": -0.0012205198358413135,
+        "avg_left": 26.468080255357957,
+        "stage_counts": {
+          "middle": 2520,
+          "late": 1866
+        },
+        "score_band_counts": {
+          "above_start": 1818,
+          "behind": 1381,
+          "lead": 869,
+          "danger": 318
+        }
+      },
+      "riskier_than_naga": {
+        "label": "Choose a higher immediate-danger discard than NAGA",
+        "n": 5033,
+        "share_of_mismatches": 0.13901010882174225,
+        "bad_rate": 0.3343930061593483,
+        "bad_lift_vs_other_mismatches": 0.028134384916606192,
+        "bad_rate_p_value": 6.23166227180505e-05,
+        "big_gap_rate": 0.5614941386846811,
+        "big_gap_lift_vs_other_mismatches": 4.673227528839696e-05,
+        "big_gap_p_value": 0.9950534543716001,
+        "avg_prob_gap": 0.5549459169481422,
+        "avg_danger_delta": 0.13394647327637593,
+        "avg_left": 40.656666004371154,
+        "stage_counts": {
+          "middle": 2850,
+          "early": 1495,
+          "late": 688
+        },
+        "score_band_counts": {
+          "above_start": 1999,
+          "behind": 1602,
+          "lead": 1059,
+          "danger": 373
+        }
+      },
+      "safer_than_naga": {
+        "label": "Choose a lower immediate-danger discard than NAGA",
+        "n": 3741,
+        "share_of_mismatches": 0.10332541567695962,
+        "bad_rate": 0.21839080459770116,
+        "bad_lift_vs_other_mismatches": -0.10235461354491399,
+        "bad_rate_p_value": 0.0,
+        "big_gap_rate": 0.4603047313552526,
+        "big_gap_lift_vs_other_mismatches": -0.11280477118594556,
+        "big_gap_p_value": 0.0,
+        "avg_prob_gap": 0.48049000267308206,
+        "avg_danger_delta": -0.14878045977011495,
+        "avg_left": 35.58540497193264,
+        "stage_counts": {
+          "middle": 2486,
+          "early": 524,
+          "late": 731
+        },
+        "score_band_counts": {
+          "behind": 1131,
+          "above_start": 1451,
+          "danger": 353,
+          "lead": 806
+        }
+      },
+      "spend_defensive_exit": {
+        "label": "Spend a safe-looking tile while NAGA keeps it",
+        "n": 4057,
+        "share_of_mismatches": 0.11205325084240181,
+        "bad_rate": 0.23933941335962533,
+        "bad_lift_vs_other_mismatches": -0.07976849046319962,
+        "bad_rate_p_value": 0.0,
+        "big_gap_rate": 0.5122011338427409,
+        "big_gap_lift_vs_other_mismatches": -0.05546815602630639,
+        "big_gap_p_value": 1.9560575381660783e-11,
+        "avg_prob_gap": 0.5120419275326596,
+        "avg_danger_delta": -0.03510401774710377,
+        "avg_left": 50.177964012817355,
+        "stage_counts": {
+          "middle": 1512,
+          "early": 2327,
+          "late": 218
+        },
+        "score_band_counts": {
+          "behind": 1349,
+          "above_start": 1600,
+          "danger": 365,
+          "lead": 743
+        }
+      },
+      "threat_keep_exit": {
+        "label": "Keep a defensive exit against an active riichi/open threat",
+        "n": 8406,
+        "share_of_mismatches": 0.2321714632933768,
+        "bad_rate": 0.24351653580775637,
+        "bad_lift_vs_other_mismatches": -0.08680720519943788,
+        "bad_rate_p_value": 0.0,
+        "big_gap_rate": 0.49262431596478706,
+        "big_gap_lift_vs_other_mismatches": -0.08964187108557264,
+        "big_gap_p_value": 0.0,
+        "avg_prob_gap": 0.5031723173923388,
+        "avg_danger_delta": 0.012218581965262907,
+        "avg_left": 32.94028075184392,
+        "stage_counts": {
+          "middle": 4562,
+          "late": 2527,
+          "early": 1317
+        },
+        "score_band_counts": {
+          "behind": 2669,
+          "above_start": 3444,
+          "lead": 1689,
+          "danger": 604
+        }
+      }
+    }
+  },
+  "mortal": {
+    "enabled": true,
+    "sample_requested": 140,
+    "matched": 140,
+    "missing": 0,
+    "by_pattern": {
+      "keep_dora_or_red": {
+        "label": "Keep dora/red-five material instead of taking the clean NAGA cut",
+        "sampled": 10,
+        "mortal_agrees_luckyj": 2,
+        "mortal_agrees_naga": 8,
+        "mortal_prefers_other": 0,
+        "mortal_luckyj_rate": 0.2,
+        "mortal_naga_rate": 0.8,
+        "avg_mortal_actual_prob": 0.2225936,
+        "avg_mortal_naga_prob": 0.7289713
+      },
+      "keep_pair_anchor": {
+        "label": "Keep a pair or triplet anchor that NAGA wants to break",
+        "sampled": 28,
+        "mortal_agrees_luckyj": 1,
+        "mortal_agrees_naga": 24,
+        "mortal_prefers_other": 3,
+        "mortal_luckyj_rate": 0.03571428571428571,
+        "mortal_naga_rate": 0.8571428571428571,
+        "avg_mortal_actual_prob": 0.061244321428571426,
+        "avg_mortal_naga_prob": 0.8333006428571429
+      },
+      "break_pair_anchor": {
+        "label": "Break a pair earlier than NAGA",
+        "sampled": 39,
+        "mortal_agrees_luckyj": 5,
+        "mortal_agrees_naga": 31,
+        "mortal_prefers_other": 3,
+        "mortal_luckyj_rate": 0.1282051282051282,
+        "mortal_naga_rate": 0.7948717948717948,
+        "avg_mortal_actual_prob": 0.1518985641025641,
+        "avg_mortal_naga_prob": 0.7522510256410256
+      },
+      "keep_defensive_exit": {
+        "label": "Keep genbutsu/suji exits while cutting elsewhere",
+        "sampled": 34,
+        "mortal_agrees_luckyj": 1,
+        "mortal_agrees_naga": 32,
+        "mortal_prefers_other": 1,
+        "mortal_luckyj_rate": 0.029411764705882353,
+        "mortal_naga_rate": 0.9411764705882353,
+        "avg_mortal_actual_prob": 0.059680970588235294,
+        "avg_mortal_naga_prob": 0.8653125294117647
+      },
+      "threat_keep_exit": {
+        "label": "Keep a defensive exit against an active riichi/open threat",
+        "sampled": 130,
+        "mortal_agrees_luckyj": 14,
+        "mortal_agrees_naga": 107,
+        "mortal_prefers_other": 9,
+        "mortal_luckyj_rate": 0.1076923076923077,
+        "mortal_naga_rate": 0.823076923076923,
+        "avg_mortal_actual_prob": 0.1225374076923077,
+        "avg_mortal_naga_prob": 0.7873554692307693
+      },
+      "spend_defensive_exit": {
+        "label": "Spend a safe-looking tile while NAGA keeps it",
+        "sampled": 10,
+        "mortal_agrees_luckyj": 3,
+        "mortal_agrees_naga": 6,
+        "mortal_prefers_other": 1,
+        "mortal_luckyj_rate": 0.3,
+        "mortal_naga_rate": 0.6,
+        "avg_mortal_actual_prob": 0.2280159,
+        "avg_mortal_naga_prob": 0.6593996
+      },
+      "cut_inside_keep_outside": {
+        "label": "Cut a middle tile while keeping outside/safety/yaku material",
+        "sampled": 17,
+        "mortal_agrees_luckyj": 2,
+        "mortal_agrees_naga": 13,
+        "mortal_prefers_other": 2,
+        "mortal_luckyj_rate": 0.11764705882352941,
+        "mortal_naga_rate": 0.7647058823529411,
+        "avg_mortal_actual_prob": 0.07229823529411765,
+        "avg_mortal_naga_prob": 0.7908589411764706
+      },
+      "cut_outside_keep_inside": {
+        "label": "Cut outside material while keeping middle-tile shape",
+        "sampled": 52,
+        "mortal_agrees_luckyj": 8,
+        "mortal_agrees_naga": 42,
+        "mortal_prefers_other": 2,
+        "mortal_luckyj_rate": 0.15384615384615385,
+        "mortal_naga_rate": 0.8076923076923077,
+        "avg_mortal_actual_prob": 0.15466101923076922,
+        "avg_mortal_naga_prob": 0.7800340961538461
+      },
+      "safer_than_naga": {
+        "label": "Choose a lower immediate-danger discard than NAGA",
+        "sampled": 59,
+        "mortal_agrees_luckyj": 10,
+        "mortal_agrees_naga": 47,
+        "mortal_prefers_other": 2,
+        "mortal_luckyj_rate": 0.1694915254237288,
+        "mortal_naga_rate": 0.7966101694915254,
+        "avg_mortal_actual_prob": 0.1704405254237288,
+        "avg_mortal_naga_prob": 0.7852046440677967
+      },
+      "riskier_than_naga": {
+        "label": "Choose a higher immediate-danger discard than NAGA",
+        "sampled": 81,
+        "mortal_agrees_luckyj": 7,
+        "mortal_agrees_naga": 66,
+        "mortal_prefers_other": 8,
+        "mortal_luckyj_rate": 0.08641975308641975,
+        "mortal_naga_rate": 0.8148148148148148,
+        "avg_mortal_actual_prob": 0.10066704938271605,
+        "avg_mortal_naga_prob": 0.7731250987654321
+      },
+      "leader_low_risk": {
+        "label": "Leader/large-stack choices that do not increase danger",
+        "sampled": 15,
+        "mortal_agrees_luckyj": 3,
+        "mortal_agrees_naga": 11,
+        "mortal_prefers_other": 1,
+        "mortal_luckyj_rate": 0.2,
+        "mortal_naga_rate": 0.7333333333333333,
+        "avg_mortal_actual_prob": 0.22871973333333334,
+        "avg_mortal_naga_prob": 0.7222039333333333
+      },
+      "behind_risk_buy": {
+        "label": "Behind-score choices that buy route/value with extra danger",
+        "sampled": 40,
+        "mortal_agrees_luckyj": 3,
+        "mortal_agrees_naga": 32,
+        "mortal_prefers_other": 5,
+        "mortal_luckyj_rate": 0.075,
+        "mortal_naga_rate": 0.8,
+        "avg_mortal_actual_prob": 0.09658685,
+        "avg_mortal_naga_prob": 0.739221725
+      },
+      "multi_threat_safe_tenpai": {
+        "label": "Middle/late choices preserving exits with multiple threats",
+        "sampled": 81,
+        "mortal_agrees_luckyj": 10,
+        "mortal_agrees_naga": 64,
+        "mortal_prefers_other": 7,
+        "mortal_luckyj_rate": 0.12345679012345678,
+        "mortal_naga_rate": 0.7901234567901234,
+        "avg_mortal_actual_prob": 0.12669503703703705,
+        "avg_mortal_naga_prob": 0.7725518641975309
+      },
+      "honor_cleanup_vs_shape": {
+        "label": "Cut a loose honor while NAGA prefers shape cleanup",
+        "sampled": 19,
+        "mortal_agrees_luckyj": 2,
+        "mortal_agrees_naga": 17,
+        "mortal_prefers_other": 0,
+        "mortal_luckyj_rate": 0.10526315789473684,
+        "mortal_naga_rate": 0.8947368421052632,
+        "avg_mortal_actual_prob": 0.12880368421052632,
+        "avg_mortal_naga_prob": 0.8482695789473684
+      }
+    },
+    "examples": [
+      {
+        "candidate_id": "5:5:105",
+        "patterns": [
+          "keep_pair_anchor",
+          "threat_keep_exit",
+          "safer_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 5,
+        "log_id": "2023041913gm-0009-0000-481bbd92",
+        "kyoku_index": 5,
+        "left": 19,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "3p",
+        "naga": "6m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "6m",
+          "label": "Discard 6m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.005417,
+        "mortal_naga_prob": 0.986042,
+        "mortal_top_prob": 0.986042,
+        "top_candidates": [
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.986042,
+            "type": "dahai",
+            "tile": "6m"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.005417,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.004178,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 15,
+            "label": "Discard 7p",
+            "probability": 0.001518,
+            "type": "dahai",
+            "tile": "7p"
+          },
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.000639,
+            "type": "dahai",
+            "tile": "4m"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.000526,
+            "type": "dahai",
+            "tile": "2m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "32:4:55",
+        "patterns": [
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "safer_than_naga",
+          "multi_threat_safe_tenpai",
+          "honor_cleanup_vs_shape"
+        ],
+        "game": 32,
+        "log_id": "2023042010gm-0009-0000-aa278fc2",
+        "kyoku_index": 4,
+        "left": 48,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "S",
+        "naga": "8p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "8p",
+          "label": "Discard 8p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.013674,
+        "mortal_naga_prob": 0.983158,
+        "mortal_top_prob": 0.983158,
+        "top_candidates": [
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.983158,
+            "type": "dahai",
+            "tile": "8p"
+          },
+          {
+            "action_id": 28,
+            "label": "Discard S",
+            "probability": 0.013674,
+            "type": "dahai",
+            "tile": "S"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.000726,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.000506,
+            "type": "dahai",
+            "tile": "1m"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.000464,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 7,
+            "label": "Discard 8m",
+            "probability": 0.000459,
+            "type": "dahai",
+            "tile": "8m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "39:1:99",
+        "patterns": [
+          "keep_dora_or_red",
+          "break_pair_anchor",
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "riskier_than_naga",
+          "behind_risk_buy",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 39,
+        "log_id": "2023042013gm-0009-0000-cfc0381f",
+        "kyoku_index": 1,
+        "left": 23,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "N",
+        "naga": "5s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "5sr",
+          "label": "Discard 5sr"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.03337,
+        "mortal_naga_prob": 0.943239,
+        "mortal_top_prob": 0.943239,
+        "top_candidates": [
+          {
+            "action_id": 36,
+            "label": "Discard 5sr",
+            "probability": 0.943239,
+            "type": "dahai",
+            "tile": "5sr"
+          },
+          {
+            "action_id": 30,
+            "label": "Discard N",
+            "probability": 0.03337,
+            "type": "dahai",
+            "tile": "N"
+          },
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.007317,
+            "type": "dahai",
+            "tile": "6s"
+          },
+          {
+            "action_id": 26,
+            "label": "Discard 9s",
+            "probability": 0.005684,
+            "type": "dahai",
+            "tile": "9s"
+          },
+          {
+            "action_id": 27,
+            "label": "Discard E",
+            "probability": 0.00502,
+            "type": "dahai",
+            "tile": "E"
+          },
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.002341,
+            "type": "dahai",
+            "tile": "9m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "41:2:145",
+        "patterns": [
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 41,
+        "log_id": "2023042014gm-0009-0000-9d31828d",
+        "kyoku_index": 2,
+        "left": 0,
+        "stage": "late",
+        "score_band": "above_start",
+        "actual": "3m",
+        "naga": "2m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "2m",
+          "label": "Discard 2m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.01311,
+        "mortal_naga_prob": 0.955537,
+        "mortal_top_prob": 0.955537,
+        "top_candidates": [
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.955537,
+            "type": "dahai",
+            "tile": "2m"
+          },
+          {
+            "action_id": 30,
+            "label": "Discard N",
+            "probability": 0.026845,
+            "type": "dahai",
+            "tile": "N"
+          },
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.01311,
+            "type": "dahai",
+            "tile": "3m"
+          },
+          {
+            "action_id": 26,
+            "label": "Discard 9s",
+            "probability": 0.0013,
+            "type": "dahai",
+            "tile": "9s"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.000905,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.000552,
+            "type": "dahai",
+            "tile": "8p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "58:10:83",
+        "patterns": [
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "safer_than_naga",
+          "multi_threat_safe_tenpai",
+          "honor_cleanup_vs_shape"
+        ],
+        "game": 58,
+        "log_id": "2023042023gm-0089-0000-2af0b92b",
+        "kyoku_index": 10,
+        "left": 30,
+        "stage": "middle",
+        "score_band": "behind",
+        "actual": "S",
+        "naga": "7m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "7m",
+          "label": "Discard 7m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.006114,
+        "mortal_naga_prob": 0.990383,
+        "mortal_top_prob": 0.990383,
+        "top_candidates": [
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.990383,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 28,
+            "label": "Discard S",
+            "probability": 0.006114,
+            "type": "dahai",
+            "tile": "S"
+          },
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.000626,
+            "type": "dahai",
+            "tile": "1m"
+          },
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.000619,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 17,
+            "label": "Discard 9p",
+            "probability": 0.000557,
+            "type": "dahai",
+            "tile": "9p"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.000373,
+            "type": "dahai",
+            "tile": "2p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "60:11:95",
+        "patterns": [
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "safer_than_naga"
+        ],
+        "game": 60,
+        "log_id": "2023042100gm-0089-0000-485da883",
+        "kyoku_index": 11,
+        "left": 23,
+        "stage": "late",
+        "score_band": "danger",
+        "actual": "W",
+        "naga": "5m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "5m",
+          "label": "Discard 5m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.003652,
+        "mortal_naga_prob": 0.870051,
+        "mortal_top_prob": 0.870051,
+        "top_candidates": [
+          {
+            "action_id": 4,
+            "label": "Discard 5m",
+            "probability": 0.870051,
+            "type": "dahai",
+            "tile": "5m"
+          },
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.106471,
+            "type": "dahai",
+            "tile": "1s"
+          },
+          {
+            "action_id": 34,
+            "label": "Discard 5mr",
+            "probability": 0.010769,
+            "type": "dahai",
+            "tile": "5mr"
+          },
+          {
+            "action_id": 29,
+            "label": "Discard W",
+            "probability": 0.003652,
+            "type": "dahai",
+            "tile": "W"
+          },
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.001995,
+            "type": "dahai",
+            "tile": "6m"
+          },
+          {
+            "action_id": 25,
+            "label": "Discard 8s",
+            "probability": 0.001387,
+            "type": "dahai",
+            "tile": "8s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "80:8:115",
+        "patterns": [
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "riskier_than_naga",
+          "behind_risk_buy",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 80,
+        "log_id": "2023042117gm-0089-0000-df00aa01",
+        "kyoku_index": 8,
+        "left": 16,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "1p",
+        "naga": "6p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "5sr",
+          "label": "Discard 5sr"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.132756,
+        "mortal_naga_prob": 0.027441,
+        "mortal_top_prob": 0.8276,
+        "top_candidates": [
+          {
+            "action_id": 36,
+            "label": "Discard 5sr",
+            "probability": 0.8276,
+            "type": "dahai",
+            "tile": "5sr"
+          },
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.132756,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.027441,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.006674,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.00233,
+            "type": "dahai",
+            "tile": "2m"
+          },
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.002259,
+            "type": "dahai",
+            "tile": "6m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "81:2:103",
+        "patterns": [
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "behind_risk_buy"
+        ],
+        "game": 81,
+        "log_id": "2023042118gm-0089-0000-e21bb989",
+        "kyoku_index": 2,
+        "left": 22,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "S",
+        "naga": "1m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.000887,
+        "mortal_naga_prob": 0.998117,
+        "mortal_top_prob": 0.998117,
+        "top_candidates": [
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.998117,
+            "type": "dahai",
+            "tile": "1m"
+          },
+          {
+            "action_id": 28,
+            "label": "Discard S",
+            "probability": 0.000887,
+            "type": "dahai",
+            "tile": "S"
+          },
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.000715,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.000171,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.000109,
+            "type": "dahai",
+            "tile": "3p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "91:4:69",
+        "patterns": [
+          "keep_dora_or_red",
+          "break_pair_anchor",
+          "threat_keep_exit",
+          "cut_inside_keep_outside",
+          "riskier_than_naga"
+        ],
+        "game": 91,
+        "log_id": "2023042123gm-0089-0000-d936ceb0",
+        "kyoku_index": 4,
+        "left": 36,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "5m",
+        "naga": "1m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.020534,
+        "mortal_naga_prob": 0.893567,
+        "mortal_top_prob": 0.893567,
+        "top_candidates": [
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.893567,
+            "type": "dahai",
+            "tile": "1m"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.038165,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.030469,
+            "type": "dahai",
+            "tile": "3m"
+          },
+          {
+            "action_id": 4,
+            "label": "Discard 5m",
+            "probability": 0.020534,
+            "type": "dahai",
+            "tile": "5m"
+          },
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.012074,
+            "type": "dahai",
+            "tile": "3s"
+          },
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.001766,
+            "type": "dahai",
+            "tile": "4m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "103:1:79",
+        "patterns": [
+          "threat_keep_exit",
+          "safer_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 103,
+        "log_id": "2023042213gm-0089-0000-983940c0",
+        "kyoku_index": 1,
+        "left": 35,
+        "stage": "middle",
+        "score_band": "behind",
+        "actual": "8s",
+        "naga": "7m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "7m",
+          "label": "Discard 7m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.012626,
+        "mortal_naga_prob": 0.985544,
+        "mortal_top_prob": 0.985544,
+        "top_candidates": [
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.985544,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 25,
+            "label": "Discard 8s",
+            "probability": 0.012626,
+            "type": "dahai",
+            "tile": "8s"
+          },
+          {
+            "action_id": 7,
+            "label": "Discard 8m",
+            "probability": 0.001048,
+            "type": "dahai",
+            "tile": "8m"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.000444,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.000193,
+            "type": "dahai",
+            "tile": "6s"
+          },
+          {
+            "action_id": 12,
+            "label": "Discard 4p",
+            "probability": 0.000147,
+            "type": "dahai",
+            "tile": "4p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "107:7:119",
+        "patterns": [
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 107,
+        "log_id": "2023042214gm-0089-0000-ad521d37",
+        "kyoku_index": 7,
+        "left": 16,
+        "stage": "late",
+        "score_band": "above_start",
+        "actual": "1s",
+        "naga": "2s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "1s",
+          "label": "Discard 1s"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.84585,
+        "mortal_naga_prob": 0.0,
+        "mortal_top_prob": 0.84585,
+        "top_candidates": [
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.84585,
+            "type": "dahai",
+            "tile": "1s"
+          },
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.14269,
+            "type": "dahai",
+            "tile": "9m"
+          },
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.004884,
+            "type": "dahai",
+            "tile": "6s"
+          },
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.002111,
+            "type": "dahai",
+            "tile": "6m"
+          },
+          {
+            "action_id": 26,
+            "label": "Discard 9s",
+            "probability": 0.001693,
+            "type": "dahai",
+            "tile": "9s"
+          },
+          {
+            "action_id": 7,
+            "label": "Discard 8m",
+            "probability": 0.001332,
+            "type": "dahai",
+            "tile": "8m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "112:12:85",
+        "patterns": [
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 112,
+        "log_id": "2023042218gm-0089-0000-abfbbd6b",
+        "kyoku_index": 12,
+        "left": 31,
+        "stage": "middle",
+        "score_band": "lead",
+        "actual": "1s",
+        "naga": "4s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "4s",
+          "label": "Discard 4s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.011084,
+        "mortal_naga_prob": 0.987021,
+        "mortal_top_prob": 0.987021,
+        "top_candidates": [
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.987021,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.011084,
+            "type": "dahai",
+            "tile": "1s"
+          },
+          {
+            "action_id": 32,
+            "label": "Discard F",
+            "probability": 0.001236,
+            "type": "dahai",
+            "tile": "F"
+          },
+          {
+            "action_id": 12,
+            "label": "Discard 4p",
+            "probability": 0.000278,
+            "type": "dahai",
+            "tile": "4p"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.000196,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.000186,
+            "type": "dahai",
+            "tile": "5p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "130:7:89",
+        "patterns": [
+          "break_pair_anchor",
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "safer_than_naga"
+        ],
+        "game": 130,
+        "log_id": "2023042312gm-0089-0000-9fb5c46c",
+        "kyoku_index": 7,
+        "left": 29,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "F",
+        "naga": "7s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "7s",
+          "label": "Discard 7s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.106043,
+        "mortal_naga_prob": 0.890071,
+        "mortal_top_prob": 0.890071,
+        "top_candidates": [
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.890071,
+            "type": "dahai",
+            "tile": "7s"
+          },
+          {
+            "action_id": 32,
+            "label": "Discard F",
+            "probability": 0.106043,
+            "type": "dahai",
+            "tile": "F"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.001965,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 19,
+            "label": "Discard 2s",
+            "probability": 0.000936,
+            "type": "dahai",
+            "tile": "2s"
+          },
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.000518,
+            "type": "dahai",
+            "tile": "3s"
+          },
+          {
+            "action_id": 22,
+            "label": "Discard 5s",
+            "probability": 0.000467,
+            "type": "dahai",
+            "tile": "5s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "131:4:71",
+        "patterns": [
+          "keep_pair_anchor",
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 131,
+        "log_id": "2023042313gm-0089-0000-7602e276",
+        "kyoku_index": 4,
+        "left": 37,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "7s",
+        "naga": "8s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "8s",
+          "label": "Discard 8s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.08495,
+        "mortal_naga_prob": 0.912195,
+        "mortal_top_prob": 0.912195,
+        "top_candidates": [
+          {
+            "action_id": 25,
+            "label": "Discard 8s",
+            "probability": 0.912195,
+            "type": "dahai",
+            "tile": "8s"
+          },
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.08495,
+            "type": "dahai",
+            "tile": "7s"
+          },
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.000915,
+            "type": "dahai",
+            "tile": "6s"
+          },
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.000506,
+            "type": "dahai",
+            "tile": "4m"
+          },
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.000469,
+            "type": "dahai",
+            "tile": "3s"
+          },
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.000401,
+            "type": "dahai",
+            "tile": "6m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "143:2:87",
+        "patterns": [
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "behind_risk_buy",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 143,
+        "log_id": "2023042319gm-0089-0000-8ac02b71",
+        "kyoku_index": 2,
+        "left": 29,
+        "stage": "middle",
+        "score_band": "danger",
+        "actual": "6p",
+        "naga": "6m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "6m",
+          "label": "Discard 6m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.007178,
+        "mortal_naga_prob": 0.616943,
+        "mortal_top_prob": 0.616943,
+        "top_candidates": [
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.616943,
+            "type": "dahai",
+            "tile": "6m"
+          },
+          {
+            "action_id": 31,
+            "label": "Discard P",
+            "probability": 0.21853,
+            "type": "dahai",
+            "tile": "P"
+          },
+          {
+            "action_id": 15,
+            "label": "Discard 7p",
+            "probability": 0.149722,
+            "type": "dahai",
+            "tile": "7p"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.007178,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.002691,
+            "type": "dahai",
+            "tile": "1s"
+          },
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.001183,
+            "type": "dahai",
+            "tile": "4m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "148:10:121",
+        "patterns": [
+          "threat_keep_exit",
+          "safer_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 148,
+        "log_id": "2023042321gm-0089-0000-1591e39f",
+        "kyoku_index": 10,
+        "left": 13,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "3m",
+        "naga": "8p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "8p",
+          "label": "Discard 8p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.000178,
+        "mortal_naga_prob": 0.998029,
+        "mortal_top_prob": 0.998029,
+        "top_candidates": [
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.998029,
+            "type": "dahai",
+            "tile": "8p"
+          },
+          {
+            "action_id": 15,
+            "label": "Discard 7p",
+            "probability": 0.000837,
+            "type": "dahai",
+            "tile": "7p"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.000413,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.00024,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 4,
+            "label": "Discard 5m",
+            "probability": 0.000185,
+            "type": "dahai",
+            "tile": "5m"
+          },
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.000178,
+            "type": "dahai",
+            "tile": "3m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "159:7:100",
+        "patterns": [
+          "keep_pair_anchor",
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "safer_than_naga",
+          "leader_low_risk",
+          "multi_threat_safe_tenpai",
+          "honor_cleanup_vs_shape"
+        ],
+        "game": 159,
+        "log_id": "2023042411gm-0089-0000-b2e5971f",
+        "kyoku_index": 7,
+        "left": 22,
+        "stage": "late",
+        "score_band": "lead",
+        "actual": "N",
+        "naga": "6p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "6p",
+          "label": "Discard 6p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.004141,
+        "mortal_naga_prob": 0.989965,
+        "mortal_top_prob": 0.989965,
+        "top_candidates": [
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.989965,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 30,
+            "label": "Discard N",
+            "probability": 0.004141,
+            "type": "dahai",
+            "tile": "N"
+          },
+          {
+            "action_id": 28,
+            "label": "Discard S",
+            "probability": 0.001466,
+            "type": "dahai",
+            "tile": "S"
+          },
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.00135,
+            "type": "dahai",
+            "tile": "5p"
+          },
+          {
+            "action_id": 17,
+            "label": "Discard 9p",
+            "probability": 0.001297,
+            "type": "dahai",
+            "tile": "9p"
+          },
+          {
+            "action_id": 31,
+            "label": "Discard P",
+            "probability": 0.000707,
+            "type": "dahai",
+            "tile": "P"
+          }
+        ]
+      },
+      {
+        "candidate_id": "166:6:63",
+        "patterns": [
+          "break_pair_anchor",
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "riskier_than_naga"
+        ],
+        "game": 166,
+        "log_id": "2023042414gm-0089-0000-b465e3da",
+        "kyoku_index": 6,
+        "left": 39,
+        "stage": "middle",
+        "score_band": "lead",
+        "actual": "S",
+        "naga": "W",
+        "mortal": {
+          "type": "dahai",
+          "tile": "W",
+          "label": "Discard W"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.012413,
+        "mortal_naga_prob": 0.864344,
+        "mortal_top_prob": 0.864344,
+        "top_candidates": [
+          {
+            "action_id": 29,
+            "label": "Discard W",
+            "probability": 0.864344,
+            "type": "dahai",
+            "tile": "W"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.115338,
+            "type": "dahai",
+            "tile": "2m"
+          },
+          {
+            "action_id": 28,
+            "label": "Discard S",
+            "probability": 0.012413,
+            "type": "dahai",
+            "tile": "S"
+          },
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.003292,
+            "type": "dahai",
+            "tile": "7s"
+          },
+          {
+            "action_id": 7,
+            "label": "Discard 8m",
+            "probability": 0.002898,
+            "type": "dahai",
+            "tile": "8m"
+          },
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.000403,
+            "type": "dahai",
+            "tile": "4m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "167:4:97",
+        "patterns": [
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 167,
+        "log_id": "2023042415gm-0089-0000-7e1c211d",
+        "kyoku_index": 4,
+        "left": 25,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "6s",
+        "naga": "2s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "2s",
+          "label": "Discard 2s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.000298,
+        "mortal_naga_prob": 0.995217,
+        "mortal_top_prob": 0.995217,
+        "top_candidates": [
+          {
+            "action_id": 19,
+            "label": "Discard 2s",
+            "probability": 0.995217,
+            "type": "dahai",
+            "tile": "2s"
+          },
+          {
+            "action_id": 26,
+            "label": "Discard 9s",
+            "probability": 0.001162,
+            "type": "dahai",
+            "tile": "9s"
+          },
+          {
+            "action_id": 25,
+            "label": "Discard 8s",
+            "probability": 0.000566,
+            "type": "dahai",
+            "tile": "8s"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.000517,
+            "type": "dahai",
+            "tile": "2m"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.000421,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.000384,
+            "type": "dahai",
+            "tile": "3p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "196:0:69",
+        "patterns": [
+          "break_pair_anchor",
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 196,
+        "log_id": "2023042513gm-0029-0000-dd57cd26",
+        "kyoku_index": 0,
+        "left": 37,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "8m",
+        "naga": "6m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "6m",
+          "label": "Discard 6m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.143435,
+        "mortal_naga_prob": 0.717859,
+        "mortal_top_prob": 0.717859,
+        "top_candidates": [
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.717859,
+            "type": "dahai",
+            "tile": "6m"
+          },
+          {
+            "action_id": 7,
+            "label": "Discard 8m",
+            "probability": 0.143435,
+            "type": "dahai",
+            "tile": "8m"
+          },
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.119318,
+            "type": "dahai",
+            "tile": "3m"
+          },
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.010868,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.002643,
+            "type": "dahai",
+            "tile": "4m"
+          },
+          {
+            "action_id": 25,
+            "label": "Discard 8s",
+            "probability": 0.001896,
+            "type": "dahai",
+            "tile": "8s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "200:0:113",
+        "patterns": [
+          "keep_pair_anchor",
+          "threat_keep_exit",
+          "safer_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 200,
+        "log_id": "2023042515gm-0029-0000-1d8dc5ef",
+        "kyoku_index": 0,
+        "left": 18,
+        "stage": "late",
+        "score_band": "above_start",
+        "actual": "6m",
+        "naga": "7m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "7m",
+          "label": "Discard 7m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.016256,
+        "mortal_naga_prob": 0.982228,
+        "mortal_top_prob": 0.982228,
+        "top_candidates": [
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.982228,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.016256,
+            "type": "dahai",
+            "tile": "6m"
+          },
+          {
+            "action_id": 15,
+            "label": "Discard 7p",
+            "probability": 0.000597,
+            "type": "dahai",
+            "tile": "7p"
+          },
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.000321,
+            "type": "dahai",
+            "tile": "6s"
+          },
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.000301,
+            "type": "dahai",
+            "tile": "7s"
+          },
+          {
+            "action_id": 34,
+            "label": "Discard 5mr",
+            "probability": 0.000296,
+            "type": "dahai",
+            "tile": "5mr"
+          }
+        ]
+      },
+      {
+        "candidate_id": "203:2:109",
+        "patterns": [
+          "keep_pair_anchor",
+          "spend_defensive_exit",
+          "safer_than_naga"
+        ],
+        "game": 203,
+        "log_id": "2023042516gm-0029-0000-85de64f3",
+        "kyoku_index": 2,
+        "left": 18,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "2m",
+        "naga": "3m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "3m",
+          "label": "Discard 3m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.012959,
+        "mortal_naga_prob": 0.894966,
+        "mortal_top_prob": 0.894966,
+        "top_candidates": [
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.894966,
+            "type": "dahai",
+            "tile": "3m"
+          },
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.090379,
+            "type": "dahai",
+            "tile": "1m"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.012959,
+            "type": "dahai",
+            "tile": "2m"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.000568,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.000264,
+            "type": "dahai",
+            "tile": "3s"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.000235,
+            "type": "dahai",
+            "tile": "4s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "222:0:71",
+        "patterns": [
+          "keep_pair_anchor",
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 222,
+        "log_id": "2023042609gm-0029-0000-b55872d9",
+        "kyoku_index": 0,
+        "left": 36,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "1p",
+        "naga": "4m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "4m",
+          "label": "Discard 4m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.003707,
+        "mortal_naga_prob": 0.991068,
+        "mortal_top_prob": 0.991068,
+        "top_candidates": [
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.991068,
+            "type": "dahai",
+            "tile": "4m"
+          },
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.003707,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.002117,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.000731,
+            "type": "dahai",
+            "tile": "1s"
+          },
+          {
+            "action_id": 26,
+            "label": "Discard 9s",
+            "probability": 0.000604,
+            "type": "dahai",
+            "tile": "9s"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.00059,
+            "type": "dahai",
+            "tile": "2p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "236:5:103",
+        "patterns": [
+          "break_pair_anchor",
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "safer_than_naga"
+        ],
+        "game": 236,
+        "log_id": "2023042617gm-0029-0000-d0563888",
+        "kyoku_index": 5,
+        "left": 21,
+        "stage": "late",
+        "score_band": "above_start",
+        "actual": "C",
+        "naga": "5s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "5s",
+          "label": "Discard 5s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.088701,
+        "mortal_naga_prob": 0.909134,
+        "mortal_top_prob": 0.909134,
+        "top_candidates": [
+          {
+            "action_id": 22,
+            "label": "Discard 5s",
+            "probability": 0.909134,
+            "type": "dahai",
+            "tile": "5s"
+          },
+          {
+            "action_id": 33,
+            "label": "Discard C",
+            "probability": 0.088701,
+            "type": "dahai",
+            "tile": "C"
+          },
+          {
+            "action_id": 25,
+            "label": "Discard 8s",
+            "probability": 0.000581,
+            "type": "dahai",
+            "tile": "8s"
+          },
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.000537,
+            "type": "dahai",
+            "tile": "7s"
+          },
+          {
+            "action_id": 15,
+            "label": "Discard 7p",
+            "probability": 0.00044,
+            "type": "dahai",
+            "tile": "7p"
+          },
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.000424,
+            "type": "dahai",
+            "tile": "8p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "280:8:99",
+        "patterns": [
+          "break_pair_anchor",
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 280,
+        "log_id": "2023042723gm-0029-0000-969cebce",
+        "kyoku_index": 8,
+        "left": 22,
+        "stage": "late",
+        "score_band": "above_start",
+        "actual": "1p",
+        "naga": "3p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "1p",
+          "label": "Discard 1p"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.729037,
+        "mortal_naga_prob": 0.252174,
+        "mortal_top_prob": 0.729037,
+        "top_candidates": [
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.729037,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.252174,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 31,
+            "label": "Discard P",
+            "probability": 0.009733,
+            "type": "dahai",
+            "tile": "P"
+          },
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.003444,
+            "type": "dahai",
+            "tile": "7s"
+          },
+          {
+            "action_id": 28,
+            "label": "Discard S",
+            "probability": 0.003264,
+            "type": "dahai",
+            "tile": "S"
+          },
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.000521,
+            "type": "dahai",
+            "tile": "6s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "286:8:131",
+        "patterns": [
+          "break_pair_anchor",
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "behind_risk_buy",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 286,
+        "log_id": "2023042810gm-0029-0000-6cf0f648",
+        "kyoku_index": 8,
+        "left": 7,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "5p",
+        "naga": "4p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "5p",
+          "label": "Discard 5p"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.995112,
+        "mortal_naga_prob": 0.001316,
+        "mortal_top_prob": 0.995112,
+        "top_candidates": [
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.995112,
+            "type": "dahai",
+            "tile": "5p"
+          },
+          {
+            "action_id": 12,
+            "label": "Discard 4p",
+            "probability": 0.001316,
+            "type": "dahai",
+            "tile": "4p"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.001025,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.000594,
+            "type": "dahai",
+            "tile": "6m"
+          },
+          {
+            "action_id": 22,
+            "label": "Discard 5s",
+            "probability": 0.000561,
+            "type": "dahai",
+            "tile": "5s"
+          },
+          {
+            "action_id": 4,
+            "label": "Discard 5m",
+            "probability": 0.000471,
+            "type": "dahai",
+            "tile": "5m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "293:3:99",
+        "patterns": [
+          "break_pair_anchor",
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "behind_risk_buy",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 293,
+        "log_id": "2023042814gm-0029-0000-fb2619de",
+        "kyoku_index": 3,
+        "left": 22,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "2p",
+        "naga": "6m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "9p",
+          "label": "Discard 9p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.010812,
+        "mortal_naga_prob": 0.002886,
+        "mortal_top_prob": 0.96244,
+        "top_candidates": [
+          {
+            "action_id": 17,
+            "label": "Discard 9p",
+            "probability": 0.96244,
+            "type": "dahai",
+            "tile": "9p"
+          },
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.013971,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.010812,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 26,
+            "label": "Discard 9s",
+            "probability": 0.006365,
+            "type": "dahai",
+            "tile": "9s"
+          },
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.002886,
+            "type": "dahai",
+            "tile": "6m"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.001264,
+            "type": "dahai",
+            "tile": "2m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "302:12:139",
+        "patterns": [
+          "keep_pair_anchor",
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "riskier_than_naga",
+          "behind_risk_buy",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 302,
+        "log_id": "2023042818gm-0029-0000-b3958972",
+        "kyoku_index": 12,
+        "left": 4,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "1m",
+        "naga": "5m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "5m",
+          "label": "Discard 5m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.008402,
+        "mortal_naga_prob": 0.948736,
+        "mortal_top_prob": 0.948736,
+        "top_candidates": [
+          {
+            "action_id": 4,
+            "label": "Discard 5m",
+            "probability": 0.948736,
+            "type": "dahai",
+            "tile": "5m"
+          },
+          {
+            "action_id": 34,
+            "label": "Discard 5mr",
+            "probability": 0.037633,
+            "type": "dahai",
+            "tile": "5mr"
+          },
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.008402,
+            "type": "dahai",
+            "tile": "1m"
+          },
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.002476,
+            "type": "dahai",
+            "tile": "4m"
+          },
+          {
+            "action_id": 31,
+            "label": "Discard P",
+            "probability": 0.001034,
+            "type": "dahai",
+            "tile": "P"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.000569,
+            "type": "dahai",
+            "tile": "2m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "305:6:73",
+        "patterns": [
+          "keep_pair_anchor",
+          "threat_keep_exit",
+          "safer_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 305,
+        "log_id": "2023042820gm-0029-0000-1ddee3da",
+        "kyoku_index": 6,
+        "left": 37,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "5pr",
+        "naga": "6p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "6p",
+          "label": "Discard 6p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.00111,
+        "mortal_naga_prob": 0.997607,
+        "mortal_top_prob": 0.997607,
+        "top_candidates": [
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.997607,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 35,
+            "label": "Discard 5pr",
+            "probability": 0.00111,
+            "type": "dahai",
+            "tile": "5pr"
+          },
+          {
+            "action_id": 4,
+            "label": "Discard 5m",
+            "probability": 0.000395,
+            "type": "dahai",
+            "tile": "5m"
+          },
+          {
+            "action_id": 19,
+            "label": "Discard 2s",
+            "probability": 0.000394,
+            "type": "dahai",
+            "tile": "2s"
+          },
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.000251,
+            "type": "dahai",
+            "tile": "3s"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.000184,
+            "type": "dahai",
+            "tile": "4s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "313:7:103",
+        "patterns": [
+          "break_pair_anchor",
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "behind_risk_buy",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 313,
+        "log_id": "2023042900gm-0029-0000-539aa1df",
+        "kyoku_index": 7,
+        "left": 21,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "3s",
+        "naga": "5s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "5s",
+          "label": "Discard 5s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.003716,
+        "mortal_naga_prob": 0.979543,
+        "mortal_top_prob": 0.979543,
+        "top_candidates": [
+          {
+            "action_id": 22,
+            "label": "Discard 5s",
+            "probability": 0.979543,
+            "type": "dahai",
+            "tile": "5s"
+          },
+          {
+            "action_id": 15,
+            "label": "Discard 7p",
+            "probability": 0.005508,
+            "type": "dahai",
+            "tile": "7p"
+          },
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.003716,
+            "type": "dahai",
+            "tile": "3s"
+          },
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.003343,
+            "type": "dahai",
+            "tile": "6s"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.002064,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.001969,
+            "type": "dahai",
+            "tile": "3p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "321:3:123",
+        "patterns": [
+          "threat_keep_exit",
+          "safer_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 321,
+        "log_id": "2023042912gm-0029-0000-ccd2cd2a",
+        "kyoku_index": 3,
+        "left": 12,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "7s",
+        "naga": "3m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "3m",
+          "label": "Discard 3m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.00179,
+        "mortal_naga_prob": 0.96516,
+        "mortal_top_prob": 0.96516,
+        "top_candidates": [
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.96516,
+            "type": "dahai",
+            "tile": "3m"
+          },
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.02987,
+            "type": "dahai",
+            "tile": "3s"
+          },
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.00179,
+            "type": "dahai",
+            "tile": "7s"
+          },
+          {
+            "action_id": 22,
+            "label": "Discard 5s",
+            "probability": 0.000964,
+            "type": "dahai",
+            "tile": "5s"
+          },
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.000741,
+            "type": "dahai",
+            "tile": "9m"
+          },
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.000685,
+            "type": "dahai",
+            "tile": "6s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "323:9:143",
+        "patterns": [
+          "break_pair_anchor",
+          "threat_keep_exit",
+          "cut_inside_keep_outside",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 323,
+        "log_id": "2023042913gm-0029-0000-c964a72c",
+        "kyoku_index": 9,
+        "left": 1,
+        "stage": "late",
+        "score_band": "lead",
+        "actual": "4s",
+        "naga": "1m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.000317,
+        "mortal_naga_prob": 0.991612,
+        "mortal_top_prob": 0.991612,
+        "top_candidates": [
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.991612,
+            "type": "dahai",
+            "tile": "1m"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.005166,
+            "type": "dahai",
+            "tile": "2m"
+          },
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.002062,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.000317,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 22,
+            "label": "Discard 5s",
+            "probability": 0.00022,
+            "type": "dahai",
+            "tile": "5s"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.000184,
+            "type": "dahai",
+            "tile": "2p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "338:2:101",
+        "patterns": [
+          "threat_keep_exit",
+          "cut_inside_keep_outside",
+          "safer_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 338,
+        "log_id": "2023042922gm-0029-0000-721beac8",
+        "kyoku_index": 2,
+        "left": 23,
+        "stage": "late",
+        "score_band": "above_start",
+        "actual": "3p",
+        "naga": "9s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "9s",
+          "label": "Discard 9s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.00071,
+        "mortal_naga_prob": 0.997356,
+        "mortal_top_prob": 0.997356,
+        "top_candidates": [
+          {
+            "action_id": 26,
+            "label": "Discard 9s",
+            "probability": 0.997356,
+            "type": "dahai",
+            "tile": "9s"
+          },
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.00118,
+            "type": "dahai",
+            "tile": "8p"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.00071,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.000441,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.000184,
+            "type": "dahai",
+            "tile": "5p"
+          },
+          {
+            "action_id": 12,
+            "label": "Discard 4p",
+            "probability": 0.000129,
+            "type": "dahai",
+            "tile": "4p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "342:12:122",
+        "patterns": [
+          "keep_pair_anchor",
+          "threat_keep_exit",
+          "cut_inside_keep_outside",
+          "riskier_than_naga"
+        ],
+        "game": 342,
+        "log_id": "2023043000gm-0029-0000-f7326570",
+        "kyoku_index": 12,
+        "left": 13,
+        "stage": "late",
+        "score_band": "above_start",
+        "actual": "6p",
+        "naga": "1p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "7p",
+          "label": "Discard 7p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.006127,
+        "mortal_naga_prob": 0.347193,
+        "mortal_top_prob": 0.64668,
+        "top_candidates": [
+          {
+            "action_id": 15,
+            "label": "Discard 7p",
+            "probability": 0.64668,
+            "type": "dahai",
+            "tile": "7p"
+          },
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.347193,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.006127,
+            "type": "dahai",
+            "tile": "6p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "352:0:57",
+        "patterns": [
+          "spend_defensive_exit",
+          "cut_inside_keep_outside",
+          "riskier_than_naga"
+        ],
+        "game": 352,
+        "log_id": "2023043013gm-0029-0000-bbd6fa72",
+        "kyoku_index": 0,
+        "left": 43,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "5m",
+        "naga": "P",
+        "mortal": {
+          "type": "dahai",
+          "tile": "5m",
+          "label": "Discard 5m"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.421292,
+        "mortal_naga_prob": 0.351139,
+        "mortal_top_prob": 0.421292,
+        "top_candidates": [
+          {
+            "action_id": 4,
+            "label": "Discard 5m",
+            "probability": 0.421292,
+            "type": "dahai",
+            "tile": "5m"
+          },
+          {
+            "action_id": 31,
+            "label": "Discard P",
+            "probability": 0.351139,
+            "type": "dahai",
+            "tile": "P"
+          },
+          {
+            "action_id": 33,
+            "label": "Discard C",
+            "probability": 0.220752,
+            "type": "dahai",
+            "tile": "C"
+          },
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.002464,
+            "type": "dahai",
+            "tile": "5p"
+          },
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.001624,
+            "type": "dahai",
+            "tile": "1m"
+          },
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.001372,
+            "type": "dahai",
+            "tile": "8p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "362:2:89",
+        "patterns": [
+          "break_pair_anchor",
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "safer_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 362,
+        "log_id": "2023043017gm-0029-0000-856bc51a",
+        "kyoku_index": 2,
+        "left": 29,
+        "stage": "middle",
+        "score_band": "behind",
+        "actual": "9m",
+        "naga": "4s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "8m",
+          "label": "Discard 8m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.073792,
+        "mortal_naga_prob": 0.412839,
+        "mortal_top_prob": 0.498058,
+        "top_candidates": [
+          {
+            "action_id": 7,
+            "label": "Discard 8m",
+            "probability": 0.498058,
+            "type": "dahai",
+            "tile": "8m"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.412839,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.073792,
+            "type": "dahai",
+            "tile": "9m"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.005121,
+            "type": "dahai",
+            "tile": "2m"
+          },
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.002357,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.001424,
+            "type": "dahai",
+            "tile": "2p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "370:9:61",
+        "patterns": [
+          "threat_keep_exit",
+          "cut_inside_keep_outside",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 370,
+        "log_id": "2023043021gm-0029-0000-fb4b77e1",
+        "kyoku_index": 9,
+        "left": 41,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "5s",
+        "naga": "W",
+        "mortal": {
+          "type": "dahai",
+          "tile": "5pr",
+          "label": "Discard 5pr"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.005743,
+        "mortal_naga_prob": 0.29101,
+        "mortal_top_prob": 0.654655,
+        "top_candidates": [
+          {
+            "action_id": 35,
+            "label": "Discard 5pr",
+            "probability": 0.654655,
+            "type": "dahai",
+            "tile": "5pr"
+          },
+          {
+            "action_id": 29,
+            "label": "Discard W",
+            "probability": 0.29101,
+            "type": "dahai",
+            "tile": "W"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.015453,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.014911,
+            "type": "dahai",
+            "tile": "8p"
+          },
+          {
+            "action_id": 22,
+            "label": "Discard 5s",
+            "probability": 0.005743,
+            "type": "dahai",
+            "tile": "5s"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.003608,
+            "type": "dahai",
+            "tile": "2p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "377:0:67",
+        "patterns": [
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai",
+          "honor_cleanup_vs_shape"
+        ],
+        "game": 377,
+        "log_id": "2023050100gm-0029-0000-dcb1884b",
+        "kyoku_index": 0,
+        "left": 38,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "E",
+        "naga": "4m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "4m",
+          "label": "Discard 4m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.003863,
+        "mortal_naga_prob": 0.991823,
+        "mortal_top_prob": 0.991823,
+        "top_candidates": [
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.991823,
+            "type": "dahai",
+            "tile": "4m"
+          },
+          {
+            "action_id": 27,
+            "label": "Discard E",
+            "probability": 0.003863,
+            "type": "dahai",
+            "tile": "E"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.001591,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 17,
+            "label": "Discard 9p",
+            "probability": 0.000693,
+            "type": "dahai",
+            "tile": "9p"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.00063,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.000527,
+            "type": "dahai",
+            "tile": "5p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "399:5:136",
+        "patterns": [
+          "keep_dora_or_red",
+          "threat_keep_exit",
+          "safer_than_naga",
+          "leader_low_risk",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 399,
+        "log_id": "2023050119gm-0029-0000-8db77962",
+        "kyoku_index": 5,
+        "left": 8,
+        "stage": "late",
+        "score_band": "lead",
+        "actual": "4p",
+        "naga": "3m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "3m",
+          "label": "Discard 3m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.021442,
+        "mortal_naga_prob": 0.977159,
+        "mortal_top_prob": 0.977159,
+        "top_candidates": [
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.977159,
+            "type": "dahai",
+            "tile": "3m"
+          },
+          {
+            "action_id": 12,
+            "label": "Discard 4p",
+            "probability": 0.021442,
+            "type": "dahai",
+            "tile": "4p"
+          },
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.001143,
+            "type": "dahai",
+            "tile": "5p"
+          },
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.000257,
+            "type": "dahai",
+            "tile": "7m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "408:5:121",
+        "patterns": [
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "behind_risk_buy"
+        ],
+        "game": 408,
+        "log_id": "2023050201gm-0029-0000-bd8cce4c",
+        "kyoku_index": 5,
+        "left": 11,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "2s",
+        "naga": "7m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "9m",
+          "label": "Discard 9m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.002058,
+        "mortal_naga_prob": 0.093447,
+        "mortal_top_prob": 0.902454,
+        "top_candidates": [
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.902454,
+            "type": "dahai",
+            "tile": "9m"
+          },
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.093447,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 19,
+            "label": "Discard 2s",
+            "probability": 0.002058,
+            "type": "dahai",
+            "tile": "2s"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.000387,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.000362,
+            "type": "dahai",
+            "tile": "3s"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.000328,
+            "type": "dahai",
+            "tile": "4s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "414:3:69",
+        "patterns": [
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "cut_inside_keep_outside",
+          "riskier_than_naga"
+        ],
+        "game": 414,
+        "log_id": "2023050211gm-0029-0000-69de45d9",
+        "kyoku_index": 3,
+        "left": 37,
+        "stage": "middle",
+        "score_band": "lead",
+        "actual": "8p",
+        "naga": "N",
+        "mortal": {
+          "type": "dahai",
+          "tile": "N",
+          "label": "Discard N"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.008711,
+        "mortal_naga_prob": 0.987098,
+        "mortal_top_prob": 0.987098,
+        "top_candidates": [
+          {
+            "action_id": 30,
+            "label": "Discard N",
+            "probability": 0.987098,
+            "type": "dahai",
+            "tile": "N"
+          },
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.008711,
+            "type": "dahai",
+            "tile": "8p"
+          },
+          {
+            "action_id": 17,
+            "label": "Discard 9p",
+            "probability": 0.002472,
+            "type": "dahai",
+            "tile": "9p"
+          },
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.000832,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.000323,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.000289,
+            "type": "dahai",
+            "tile": "3p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "427:9:81",
+        "patterns": [
+          "break_pair_anchor",
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "riskier_than_naga",
+          "behind_risk_buy"
+        ],
+        "game": 427,
+        "log_id": "2023050217gm-0029-0000-bd0f6f3f",
+        "kyoku_index": 9,
+        "left": 31,
+        "stage": "middle",
+        "score_band": "danger",
+        "actual": "9s",
+        "naga": "5p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "9s",
+          "label": "Discard 9s"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.797238,
+        "mortal_naga_prob": 0.142017,
+        "mortal_top_prob": 0.797238,
+        "top_candidates": [
+          {
+            "action_id": 26,
+            "label": "Discard 9s",
+            "probability": 0.797238,
+            "type": "dahai",
+            "tile": "9s"
+          },
+          {
+            "action_id": 35,
+            "label": "Discard 5pr",
+            "probability": 0.142017,
+            "type": "dahai",
+            "tile": "5pr"
+          },
+          {
+            "action_id": 12,
+            "label": "Discard 4p",
+            "probability": 0.046525,
+            "type": "dahai",
+            "tile": "4p"
+          },
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.005133,
+            "type": "dahai",
+            "tile": "7s"
+          },
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.002852,
+            "type": "dahai",
+            "tile": "6s"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.001572,
+            "type": "dahai",
+            "tile": "2m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "429:4:125",
+        "patterns": [
+          "keep_pair_anchor",
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "behind_risk_buy",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 429,
+        "log_id": "2023050218gm-0029-0000-ab5b6f5b",
+        "kyoku_index": 4,
+        "left": 11,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "5p",
+        "naga": "8s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "8s",
+          "label": "Discard 8s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.000257,
+        "mortal_naga_prob": 0.99768,
+        "mortal_top_prob": 0.99768,
+        "top_candidates": [
+          {
+            "action_id": 25,
+            "label": "Discard 8s",
+            "probability": 0.99768,
+            "type": "dahai",
+            "tile": "8s"
+          },
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.001159,
+            "type": "dahai",
+            "tile": "6m"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.000432,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.000257,
+            "type": "dahai",
+            "tile": "5p"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.000202,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.000172,
+            "type": "dahai",
+            "tile": "3p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "444:3:139",
+        "patterns": [
+          "threat_keep_exit",
+          "safer_than_naga",
+          "leader_low_risk"
+        ],
+        "game": 444,
+        "log_id": "2023050310gm-0029-0000-351fde72",
+        "kyoku_index": 3,
+        "left": 1,
+        "stage": "late",
+        "score_band": "lead",
+        "actual": "2s",
+        "naga": "5p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "5p",
+          "label": "Discard 5p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.000478,
+        "mortal_naga_prob": 0.992687,
+        "mortal_top_prob": 0.992687,
+        "top_candidates": [
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.992687,
+            "type": "dahai",
+            "tile": "5p"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.003245,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.001624,
+            "type": "dahai",
+            "tile": "2m"
+          },
+          {
+            "action_id": 19,
+            "label": "Discard 2s",
+            "probability": 0.000478,
+            "type": "dahai",
+            "tile": "2s"
+          },
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.000335,
+            "type": "dahai",
+            "tile": "4m"
+          },
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.000326,
+            "type": "dahai",
+            "tile": "6s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "451:8:49",
+        "patterns": [
+          "break_pair_anchor",
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "behind_risk_buy",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 451,
+        "log_id": "2023050313gm-0029-0000-4d7366fc",
+        "kyoku_index": 8,
+        "left": 47,
+        "stage": "middle",
+        "score_band": "danger",
+        "actual": "3p",
+        "naga": "7m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "7m",
+          "label": "Discard 7m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.104602,
+        "mortal_naga_prob": 0.784435,
+        "mortal_top_prob": 0.784435,
+        "top_candidates": [
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.784435,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.104602,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.10207,
+            "type": "dahai",
+            "tile": "3m"
+          },
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.001869,
+            "type": "dahai",
+            "tile": "1s"
+          },
+          {
+            "action_id": 12,
+            "label": "Discard 4p",
+            "probability": 0.001846,
+            "type": "dahai",
+            "tile": "4p"
+          },
+          {
+            "action_id": 15,
+            "label": "Discard 7p",
+            "probability": 0.001455,
+            "type": "dahai",
+            "tile": "7p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "454:8:115",
+        "patterns": [
+          "keep_pair_anchor",
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 454,
+        "log_id": "2023050314gm-0029-0000-5702c600",
+        "kyoku_index": 8,
+        "left": 16,
+        "stage": "late",
+        "score_band": "above_start",
+        "actual": "6p",
+        "naga": "3m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.005542,
+        "mortal_naga_prob": 0.05757,
+        "mortal_top_prob": 0.925041,
+        "top_candidates": [
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.925041,
+            "type": "dahai",
+            "tile": "1m"
+          },
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.05757,
+            "type": "dahai",
+            "tile": "3m"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.005542,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.004208,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.003237,
+            "type": "dahai",
+            "tile": "9m"
+          },
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.002427,
+            "type": "dahai",
+            "tile": "4m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "459:5:89",
+        "patterns": [
+          "threat_keep_exit",
+          "safer_than_naga"
+        ],
+        "game": 459,
+        "log_id": "2023050317gm-0029-0000-060174a1",
+        "kyoku_index": 5,
+        "left": 26,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "8m",
+        "naga": "3p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "3p",
+          "label": "Discard 3p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.139447,
+        "mortal_naga_prob": 0.847321,
+        "mortal_top_prob": 0.847321,
+        "top_candidates": [
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.847321,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 7,
+            "label": "Discard 8m",
+            "probability": 0.139447,
+            "type": "dahai",
+            "tile": "8m"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.004251,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.002609,
+            "type": "dahai",
+            "tile": "9m"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.001713,
+            "type": "dahai",
+            "tile": "6p"
+          },
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.001524,
+            "type": "dahai",
+            "tile": "5p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "472:13:119",
+        "patterns": [
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "safer_than_naga",
+          "leader_low_risk"
+        ],
+        "game": 472,
+        "log_id": "2023050323gm-0029-0000-a95fb42e",
+        "kyoku_index": 13,
+        "left": 12,
+        "stage": "late",
+        "score_band": "lead",
+        "actual": "9m",
+        "naga": "6m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "9m",
+          "label": "Discard 9m"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.925069,
+        "mortal_naga_prob": 0.058668,
+        "mortal_top_prob": 0.925069,
+        "top_candidates": [
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.925069,
+            "type": "dahai",
+            "tile": "9m"
+          },
+          {
+            "action_id": 5,
+            "label": "Discard 6m",
+            "probability": 0.058668,
+            "type": "dahai",
+            "tile": "6m"
+          },
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.003819,
+            "type": "dahai",
+            "tile": "7s"
+          },
+          {
+            "action_id": 7,
+            "label": "Discard 8m",
+            "probability": 0.003424,
+            "type": "dahai",
+            "tile": "8m"
+          },
+          {
+            "action_id": 27,
+            "label": "Discard E",
+            "probability": 0.002935,
+            "type": "dahai",
+            "tile": "E"
+          },
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.002029,
+            "type": "dahai",
+            "tile": "7m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "474:4:123",
+        "patterns": [
+          "break_pair_anchor",
+          "threat_keep_exit",
+          "cut_inside_keep_outside",
+          "riskier_than_naga",
+          "behind_risk_buy",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 474,
+        "log_id": "2023050400gm-0029-0000-de7e393f",
+        "kyoku_index": 4,
+        "left": 12,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "2p",
+        "naga": "1m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.006253,
+        "mortal_naga_prob": 0.990359,
+        "mortal_top_prob": 0.990359,
+        "top_candidates": [
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.990359,
+            "type": "dahai",
+            "tile": "1m"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.006253,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.001375,
+            "type": "dahai",
+            "tile": "1s"
+          },
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.001332,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.000244,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.000185,
+            "type": "dahai",
+            "tile": "6p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "479:7:133",
+        "patterns": [
+          "keep_pair_anchor",
+          "threat_keep_exit",
+          "riskier_than_naga"
+        ],
+        "game": 479,
+        "log_id": "2023050410gm-0029-0000-619db06b",
+        "kyoku_index": 7,
+        "left": 5,
+        "stage": "late",
+        "score_band": "lead",
+        "actual": "5p",
+        "naga": "2m",
+        "mortal": {
+          "type": "dahai",
+          "tile": "2m",
+          "label": "Discard 2m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.000212,
+        "mortal_naga_prob": 0.997905,
+        "mortal_top_prob": 0.997905,
+        "top_candidates": [
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.997905,
+            "type": "dahai",
+            "tile": "2m"
+          },
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.000381,
+            "type": "dahai",
+            "tile": "8p"
+          },
+          {
+            "action_id": 19,
+            "label": "Discard 2s",
+            "probability": 0.000372,
+            "type": "dahai",
+            "tile": "2s"
+          },
+          {
+            "action_id": 15,
+            "label": "Discard 7p",
+            "probability": 0.000274,
+            "type": "dahai",
+            "tile": "7p"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.00025,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 12,
+            "label": "Discard 4p",
+            "probability": 0.000239,
+            "type": "dahai",
+            "tile": "4p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "493:0:105",
+        "patterns": [
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 493,
+        "log_id": "2023050418gm-0029-0000-0c48e8c2",
+        "kyoku_index": 0,
+        "left": 19,
+        "stage": "late",
+        "score_band": "above_start",
+        "actual": "2s",
+        "naga": "3s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "3s",
+          "label": "Discard 3s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.002344,
+        "mortal_naga_prob": 0.994178,
+        "mortal_top_prob": 0.994178,
+        "top_candidates": [
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.994178,
+            "type": "dahai",
+            "tile": "3s"
+          },
+          {
+            "action_id": 19,
+            "label": "Discard 2s",
+            "probability": 0.002344,
+            "type": "dahai",
+            "tile": "2s"
+          },
+          {
+            "action_id": 17,
+            "label": "Discard 9p",
+            "probability": 0.001025,
+            "type": "dahai",
+            "tile": "9p"
+          },
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.000901,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.000606,
+            "type": "dahai",
+            "tile": "5p"
+          },
+          {
+            "action_id": 25,
+            "label": "Discard 8s",
+            "probability": 0.000276,
+            "type": "dahai",
+            "tile": "8s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "509:0:99",
+        "patterns": [
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "riskier_than_naga"
+        ],
+        "game": 509,
+        "log_id": "2023050509gm-0029-0000-0d42a60e",
+        "kyoku_index": 0,
+        "left": 24,
+        "stage": "late",
+        "score_band": "above_start",
+        "actual": "W",
+        "naga": "1p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "1p",
+          "label": "Discard 1p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.015052,
+        "mortal_naga_prob": 0.969028,
+        "mortal_top_prob": 0.969028,
+        "top_candidates": [
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.969028,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 7,
+            "label": "Discard 8m",
+            "probability": 0.01563,
+            "type": "dahai",
+            "tile": "8m"
+          },
+          {
+            "action_id": 29,
+            "label": "Discard W",
+            "probability": 0.015052,
+            "type": "dahai",
+            "tile": "W"
+          },
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.00029,
+            "type": "dahai",
+            "tile": "7s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "525:1:107",
+        "patterns": [
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai",
+          "honor_cleanup_vs_shape"
+        ],
+        "game": 525,
+        "log_id": "2023050517gm-0029-0000-3f0706c9",
+        "kyoku_index": 1,
+        "left": 19,
+        "stage": "late",
+        "score_band": "above_start",
+        "actual": "F",
+        "naga": "4s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "4s",
+          "label": "Discard 4s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.003516,
+        "mortal_naga_prob": 0.988132,
+        "mortal_top_prob": 0.988132,
+        "top_candidates": [
+          {
+            "action_id": 21,
+            "label": "Discard 4s",
+            "probability": 0.988132,
+            "type": "dahai",
+            "tile": "4s"
+          },
+          {
+            "action_id": 32,
+            "label": "Discard F",
+            "probability": 0.003516,
+            "type": "dahai",
+            "tile": "F"
+          },
+          {
+            "action_id": 33,
+            "label": "Discard C",
+            "probability": 0.0023,
+            "type": "dahai",
+            "tile": "C"
+          },
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.001741,
+            "type": "dahai",
+            "tile": "8p"
+          },
+          {
+            "action_id": 27,
+            "label": "Discard E",
+            "probability": 0.001373,
+            "type": "dahai",
+            "tile": "E"
+          },
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.00074,
+            "type": "dahai",
+            "tile": "9m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "542:5:91",
+        "patterns": [
+          "spend_defensive_exit",
+          "safer_than_naga",
+          "leader_low_risk"
+        ],
+        "game": 542,
+        "log_id": "2023050609gm-0029-0000-ab6b6cb9",
+        "kyoku_index": 5,
+        "left": 31,
+        "stage": "middle",
+        "score_band": "lead",
+        "actual": "7m",
+        "naga": "3p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "3p",
+          "label": "Discard 3p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.020882,
+        "mortal_naga_prob": 0.960388,
+        "mortal_top_prob": 0.960388,
+        "top_candidates": [
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.960388,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.020882,
+            "type": "dahai",
+            "tile": "7m"
+          },
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.012525,
+            "type": "dahai",
+            "tile": "9m"
+          },
+          {
+            "action_id": 7,
+            "label": "Discard 8m",
+            "probability": 0.002302,
+            "type": "dahai",
+            "tile": "8m"
+          },
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.001618,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.000982,
+            "type": "dahai",
+            "tile": "8p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "553:9:121",
+        "patterns": [
+          "break_pair_anchor",
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "cut_inside_keep_outside",
+          "riskier_than_naga",
+          "behind_risk_buy",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 553,
+        "log_id": "2023050615gm-0029-0000-a16a7aed",
+        "kyoku_index": 9,
+        "left": 12,
+        "stage": "late",
+        "score_band": "behind",
+        "actual": "8p",
+        "naga": "1p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "1p",
+          "label": "Discard 1p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.001273,
+        "mortal_naga_prob": 0.994854,
+        "mortal_top_prob": 0.994854,
+        "top_candidates": [
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.994854,
+            "type": "dahai",
+            "tile": "1p"
+          },
+          {
+            "action_id": 15,
+            "label": "Discard 7p",
+            "probability": 0.001397,
+            "type": "dahai",
+            "tile": "7p"
+          },
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.001273,
+            "type": "dahai",
+            "tile": "8p"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.001157,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.000424,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.000358,
+            "type": "dahai",
+            "tile": "6p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "572:1:102",
+        "patterns": [
+          "keep_pair_anchor",
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "riskier_than_naga",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 572,
+        "log_id": "2023050700gm-0029-0000-cd7f6ac0",
+        "kyoku_index": 1,
+        "left": 25,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "3p",
+        "naga": "4p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "4p",
+          "label": "Discard 4p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.001444,
+        "mortal_naga_prob": 0.998323,
+        "mortal_top_prob": 0.998323,
+        "top_candidates": [
+          {
+            "action_id": 12,
+            "label": "Discard 4p",
+            "probability": 0.998323,
+            "type": "dahai",
+            "tile": "4p"
+          },
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.001444,
+            "type": "dahai",
+            "tile": "3p"
+          },
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.000233,
+            "type": "dahai",
+            "tile": "9m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "575:7:67",
+        "patterns": [
+          "spend_defensive_exit",
+          "cut_outside_keep_inside",
+          "safer_than_naga"
+        ],
+        "game": 575,
+        "log_id": "2023050710gm-0029-0000-b6f71929",
+        "kyoku_index": 7,
+        "left": 36,
+        "stage": "middle",
+        "score_band": "danger",
+        "actual": "9p",
+        "naga": "7s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "7s",
+          "label": "Discard 7s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.00174,
+        "mortal_naga_prob": 0.793934,
+        "mortal_top_prob": 0.793934,
+        "top_candidates": [
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.793934,
+            "type": "dahai",
+            "tile": "7s"
+          },
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.197269,
+            "type": "dahai",
+            "tile": "1s"
+          },
+          {
+            "action_id": 17,
+            "label": "Discard 9p",
+            "probability": 0.00174,
+            "type": "dahai",
+            "tile": "9p"
+          },
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.001442,
+            "type": "dahai",
+            "tile": "3s"
+          },
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.001392,
+            "type": "dahai",
+            "tile": "1m"
+          },
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.001177,
+            "type": "dahai",
+            "tile": "6s"
+          }
+        ]
+      },
+      {
+        "candidate_id": "584:6:92",
+        "patterns": [
+          "threat_keep_exit",
+          "safer_than_naga",
+          "leader_low_risk",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 584,
+        "log_id": "2023050714gm-0029-0000-542d2dff",
+        "kyoku_index": 6,
+        "left": 27,
+        "stage": "middle",
+        "score_band": "lead",
+        "actual": "N",
+        "naga": "1s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "N",
+          "label": "Discard N"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "mortal_actual_prob": 0.637519,
+        "mortal_naga_prob": 0.338238,
+        "mortal_top_prob": 0.637519,
+        "top_candidates": [
+          {
+            "action_id": 30,
+            "label": "Discard N",
+            "probability": 0.637519,
+            "type": "dahai",
+            "tile": "N"
+          },
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.338238,
+            "type": "dahai",
+            "tile": "1s"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.019244,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 25,
+            "label": "Discard 8s",
+            "probability": 0.002216,
+            "type": "dahai",
+            "tile": "8s"
+          },
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.001015,
+            "type": "dahai",
+            "tile": "3m"
+          },
+          {
+            "action_id": 12,
+            "label": "Discard 4p",
+            "probability": 0.000767,
+            "type": "dahai",
+            "tile": "4p"
+          }
+        ]
+      },
+      {
+        "candidate_id": "589:15:69",
+        "patterns": [
+          "threat_keep_exit",
+          "cut_outside_keep_inside",
+          "safer_than_naga",
+          "leader_low_risk",
+          "multi_threat_safe_tenpai"
+        ],
+        "game": 589,
+        "log_id": "2023050717gm-0029-0000-18227470",
+        "kyoku_index": 15,
+        "left": 38,
+        "stage": "middle",
+        "score_band": "lead",
+        "actual": "9s",
+        "naga": "3s",
+        "mortal": {
+          "type": "dahai",
+          "tile": "3s",
+          "label": "Discard 3s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.014124,
+        "mortal_naga_prob": 0.963464,
+        "mortal_top_prob": 0.963464,
+        "top_candidates": [
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.963464,
+            "type": "dahai",
+            "tile": "3s"
+          },
+          {
+            "action_id": 26,
+            "label": "Discard 9s",
+            "probability": 0.014124,
+            "type": "dahai",
+            "tile": "9s"
+          },
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.01312,
+            "type": "dahai",
+            "tile": "7s"
+          },
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.002762,
+            "type": "dahai",
+            "tile": "1s"
+          },
+          {
+            "action_id": 19,
+            "label": "Discard 2s",
+            "probability": 0.002129,
+            "type": "dahai",
+            "tile": "2s"
+          },
+          {
+            "action_id": 3,
+            "label": "Discard 4m",
+            "probability": 0.001223,
+            "type": "dahai",
+            "tile": "4m"
+          }
+        ]
+      },
+      {
+        "candidate_id": "618:1:51",
+        "patterns": [
+          "break_pair_anchor",
+          "keep_defensive_exit",
+          "threat_keep_exit",
+          "riskier_than_naga"
+        ],
+        "game": 618,
+        "log_id": "2023050816gm-0029-0000-00a5e073",
+        "kyoku_index": 1,
+        "left": 45,
+        "stage": "middle",
+        "score_band": "above_start",
+        "actual": "2m",
+        "naga": "8p",
+        "mortal": {
+          "type": "dahai",
+          "tile": "8p",
+          "label": "Discard 8p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "mortal_actual_prob": 0.295506,
+        "mortal_naga_prob": 0.680298,
+        "mortal_top_prob": 0.680298,
+        "top_candidates": [
+          {
+            "action_id": 16,
+            "label": "Discard 8p",
+            "probability": 0.680298,
+            "type": "dahai",
+            "tile": "8p"
+          },
+          {
+            "action_id": 1,
+            "label": "Discard 2m",
+            "probability": 0.295506,
+            "type": "dahai",
+            "tile": "2m"
+          },
+          {
+            "action_id": 15,
+            "label": "Discard 7p",
+            "probability": 0.010399,
+            "type": "dahai",
+            "tile": "7p"
+          },
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.005569,
+            "type": "dahai",
+            "tile": "3m"
+          },
+          {
+            "action_id": 10,
+            "label": "Discard 2p",
+            "probability": 0.003268,
+            "type": "dahai",
+            "tile": "2p"
+          },
+          {
+            "action_id": 13,
+            "label": "Discard 5p",
+            "probability": 0.001464,
+            "type": "dahai",
+            "tile": "5p"
+          }
+        ]
+      }
+    ]
+  },
+  "candidate_points": [
+    {
+      "pattern": "multi_threat_safe_tenpai",
+      "title": "Against multiple threats, preserved exits become the hand's main asset",
+      "why_candidate": "Middle/late choices preserving exits with multiple threats",
+      "naga_evidence": {
+        "n": 4386,
+        "share_of_mismatches": 0.12114014251781473,
+        "bad_rate": 0.23483812129502965,
+        "avg_prob_gap": 0.5025124259005928,
+        "avg_danger_delta": -0.0012205198358413135,
+        "stage_counts": {
+          "middle": 2520,
+          "late": 1866
+        }
+      },
+      "mortal_cross_check": {
+        "label": "Middle/late choices preserving exits with multiple threats",
+        "sampled": 81,
+        "mortal_agrees_luckyj": 10,
+        "mortal_agrees_naga": 64,
+        "mortal_prefers_other": 7,
+        "mortal_luckyj_rate": 0.12345679012345678,
+        "mortal_naga_rate": 0.7901234567901234,
+        "avg_mortal_actual_prob": 0.12669503703703705,
+        "avg_mortal_naga_prob": 0.7725518641975309
+      }
+    },
+    {
+      "pattern": "cut_outside_keep_inside",
+      "title": "When the hand has become real, outside safety loses to middle-tile completion",
+      "why_candidate": "Cut outside material while keeping middle-tile shape",
+      "naga_evidence": {
+        "n": 5281,
+        "share_of_mismatches": 0.14585980224272221,
+        "bad_rate": 0.23139556902101874,
+        "avg_prob_gap": 0.48986797954932776,
+        "avg_danger_delta": -0.02976669191441015,
+        "stage_counts": {
+          "middle": 2514,
+          "early": 2018,
+          "late": 749
+        }
+      },
+      "mortal_cross_check": {
+        "label": "Cut outside material while keeping middle-tile shape",
+        "sampled": 52,
+        "mortal_agrees_luckyj": 8,
+        "mortal_agrees_naga": 42,
+        "mortal_prefers_other": 2,
+        "mortal_luckyj_rate": 0.15384615384615385,
+        "mortal_naga_rate": 0.8076923076923077,
+        "avg_mortal_actual_prob": 0.15466101923076922,
+        "avg_mortal_naga_prob": 0.7800340961538461
+      }
+    },
+    {
+      "pattern": "behind_risk_buy",
+      "title": "Behind hands buy route/value with danger only when the upside is concrete",
+      "why_candidate": "Behind-score choices that buy route/value with extra danger",
+      "naga_evidence": {
+        "n": 2364,
+        "share_of_mismatches": 0.06529304535159919,
+        "bad_rate": 0.34517766497461927,
+        "avg_prob_gap": 0.5689740693739425,
+        "avg_danger_delta": 0.12006586294416244,
+        "stage_counts": {
+          "early": 753,
+          "middle": 1306,
+          "late": 305
+        }
+      },
+      "mortal_cross_check": {
+        "label": "Behind-score choices that buy route/value with extra danger",
+        "sampled": 40,
+        "mortal_agrees_luckyj": 3,
+        "mortal_agrees_naga": 32,
+        "mortal_prefers_other": 5,
+        "mortal_luckyj_rate": 0.075,
+        "mortal_naga_rate": 0.8,
+        "avg_mortal_actual_prob": 0.09658685,
+        "avg_mortal_naga_prob": 0.739221725
+      }
+    },
+    {
+      "pattern": "break_pair_anchor",
+      "title": "Break low-purpose pairs before they trap the hand",
+      "why_candidate": "Break a pair earlier than NAGA",
+      "naga_evidence": {
+        "n": 4318,
+        "share_of_mismatches": 0.11926200077335249,
+        "bad_rate": 0.35942566002779064,
+        "avg_prob_gap": 0.5776821445113478,
+        "avg_danger_delta": 0.020670055581287632,
+        "stage_counts": {
+          "late": 610,
+          "early": 1545,
+          "middle": 2163
+        }
+      },
+      "mortal_cross_check": {
+        "label": "Break a pair earlier than NAGA",
+        "sampled": 39,
+        "mortal_agrees_luckyj": 5,
+        "mortal_agrees_naga": 31,
+        "mortal_prefers_other": 3,
+        "mortal_luckyj_rate": 0.1282051282051282,
+        "mortal_naga_rate": 0.7948717948717948,
+        "avg_mortal_actual_prob": 0.1518985641025641,
+        "avg_mortal_naga_prob": 0.7522510256410256
+      }
+    },
+    {
+      "pattern": "keep_pair_anchor",
+      "title": "Protect pair anchors until the hand declares its route",
+      "why_candidate": "Keep a pair or triplet anchor that NAGA wants to break",
+      "naga_evidence": {
+        "n": 2338,
+        "share_of_mismatches": 0.06457493233165773,
+        "bad_rate": 0.218562874251497,
+        "avg_prob_gap": 0.48098451668092385,
+        "avg_danger_delta": -0.019026860564585114,
+        "stage_counts": {
+          "early": 574,
+          "middle": 1255,
+          "late": 509
+        }
+      },
+      "mortal_cross_check": {
+        "label": "Keep a pair or triplet anchor that NAGA wants to break",
+        "sampled": 28,
+        "mortal_agrees_luckyj": 1,
+        "mortal_agrees_naga": 24,
+        "mortal_prefers_other": 3,
+        "mortal_luckyj_rate": 0.03571428571428571,
+        "mortal_naga_rate": 0.8571428571428571,
+        "avg_mortal_actual_prob": 0.061244321428571426,
+        "avg_mortal_naga_prob": 0.8333006428571429
+      }
+    },
+    {
+      "pattern": "spend_defensive_exit",
+      "title": "Safe-looking tiles can be spent when they are stale or off-target",
+      "why_candidate": "Spend a safe-looking tile while NAGA keeps it",
+      "naga_evidence": {
+        "n": 4057,
+        "share_of_mismatches": 0.11205325084240181,
+        "bad_rate": 0.23933941335962533,
+        "avg_prob_gap": 0.5120419275326596,
+        "avg_danger_delta": -0.03510401774710377,
+        "stage_counts": {
+          "middle": 1512,
+          "early": 2327,
+          "late": 218
+        }
+      },
+      "mortal_cross_check": {
+        "label": "Spend a safe-looking tile while NAGA keeps it",
+        "sampled": 10,
+        "mortal_agrees_luckyj": 3,
+        "mortal_agrees_naga": 6,
+        "mortal_prefers_other": 1,
+        "mortal_luckyj_rate": 0.3,
+        "mortal_naga_rate": 0.6,
+        "avg_mortal_actual_prob": 0.2280159,
+        "avg_mortal_naga_prob": 0.6593996
+      }
+    },
+    {
+      "pattern": "keep_dora_or_red",
+      "title": "Do not spend value seeds just to obey local cleanliness",
+      "why_candidate": "Keep dora/red-five material instead of taking the clean NAGA cut",
+      "naga_evidence": {
+        "n": 617,
+        "share_of_mismatches": 0.01704137435784124,
+        "bad_rate": 0.24635332252836303,
+        "avg_prob_gap": 0.511719773095624,
+        "avg_danger_delta": -0.010684116693679092,
+        "stage_counts": {
+          "late": 87,
+          "early": 261,
+          "middle": 269
+        }
+      },
+      "mortal_cross_check": {
+        "label": "Keep dora/red-five material instead of taking the clean NAGA cut",
+        "sampled": 10,
+        "mortal_agrees_luckyj": 2,
+        "mortal_agrees_naga": 8,
+        "mortal_prefers_other": 0,
+        "mortal_luckyj_rate": 0.2,
+        "mortal_naga_rate": 0.8,
+        "avg_mortal_actual_prob": 0.2225936,
+        "avg_mortal_naga_prob": 0.7289713
+      }
+    }
+  ]
+}
