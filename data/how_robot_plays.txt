@@ -1,0 +1,2432 @@
+
+
+--- PAGE 1 ---
+How the Robot Plays (1-20) 
+ BuckwheatECG  buckwheat  
+Adapted from the work of 卷个饼饼  
+This article series is adapted and translated from videos explaining the decision-making of 
+the robot LuckyJ playing on Tenhou. In 2024, the best robots play comparably well to the 
+best human players, but they don’t tell us why they do what they do. Each article in this 
+series examines one hand in depth, to translate the “what” we see to the “why” we can 
+learn from. The title of each hand (Hand 1, etc) are links to the original videos. 
+Hand 1 
+ 
+The robot has a big lead in South 1. Its starting hand has potential to be a flush. 
+
+
+--- PAGE 2 ---
+ 
+Many people seldom open with this big of a lead. However, latest data shows top players, 
+human or robot, actually open slightly more in this point situation than flat scores. This 
+pushes the robot to open what would otherwise be a 50/50 decision. 
+While this hand can be a flush, it doesn’t need to be. It can be completed with White 
+Dragon as the only yaku. This, and the fact that the robot highly values safety from honor 
+tiles, makes it pon and discard 5p (instead of 4s, which can be useful upon drawing dora). 
+A more usual approach is to pass, discard lone winds, aiming to draw tiles near 5p and 4s, 
+eventually pon White Dragon and open once or twice more for tenpai. The disadvantage to 
+this is the likelihood of the hand being open in the midgame without safe tiles and forced to 
+push into danger. With such a lead, this plan is inferior to opening. 
+
+
+--- PAGE 3 ---
+ 
+The robot draws dora and discards South, pivoting away from a flush. Unlike some 
+humans, the robot evaluates which hand to pursue without factoring in the sunk cost of 
+“committing” to a flush with its previous 5p discard. 
+When deciding whether to pursue a flush, many humans start off leaning towards the non-
+flush hand by discarding winds first, commit to a flush only if they draw lots of tiles in their 
+suit, and refuse to pivot after committing. This is a limiting way to play that can cause many 
+errors. 
+Note that the robot discards South first because it already expects White Dragon as a yaku 
+and doesn’t need another. If a wind becomes a pair, the hand is a flush, so South being 
+yakuhai is irrelevant. The honors provide plenty of safety, so South being seen once and 
+therefore safer also doesn’t matter.  
+
+
+--- PAGE 4 ---
+ 
+Here the robot calls pon and discards 1m. 1m is barely more useful than an honor for 
+speed given the 457m holding, and a far greater defensive liability.  
+
+
+--- PAGE 5 ---
+ 
+Discard a wind, or break 46s? 
+The robot discards 4s. This is slower than discarding a wind, but discarding 4s has two 
+advantages: final shape and safety. With two good shapes and two lone honors, the final 
+wait can only be open wait or single wait on an honor. The hand will never be stuck waiting 
+for 3 copies of a middle tile. For safety, two honors are vastly superior to two middle tiles 
+close to dora. 
+Note that despite its previous discard, the robot doesn’t consider itself committed to a 
+non-flush hand and tunnel-vision into discarding a wind here like some humans would. 
+The discard is 4s instead of 6s because both are too dangerous to push into a riichi, so 6s 
+isn’t “more dangerous” to the point of influencing which to discard. 
+Another thing to learn here is safe tiles increase in value as the hand is opened more times. 
+This is because it’s harder to find safe tiles “by accident” in a shorter hand, so safety can 
+only be achieved by saving safe tiles on purpose. 
+
+
+--- PAGE 6 ---
+ 
+The robot discards 6s to preserve a safe tile. There’s no reason to try to pair the dora when 
+the hand is mangan without it. 
+
+
+--- PAGE 7 ---
+ 
+The robot calls chii and discards West to break ippatsu and fight the riichi. The safe tile 
+proved useful. 
+
+
+--- PAGE 8 ---
+ 
+The robot wins, mangan. 
+Closing 
+This hand shows how early turns must be played with care and thought and aren’t as 
+simple as unthinkingly discarding useless winds. The robot’s first few decisions were all 
+interesting, challenging, nuanced, and easy to get wrong. It got lucky in the end, but if it 
+played the early turns differently, it would have folded to the riichi and not had the chance 
+to get lucky at all. 
+This hand shows the value of evaluating each turn independently instead of committing to 
+a hand shape throughout, of keeping safe tiles, of not being afraid to open even when 
+leading, and of final wait shape. Studying similar game logs can be a boon to your skill in 
+navigating similar choices, and perhaps in seeing that they are choices in the first place. 
+
+
+--- PAGE 9 ---
+Hand 2 
+ 
+The robot leads by less than a mangan tsumo in East 4. Its starting hand can obviously 
+become a flush. Since South is a guest wind, keeping 7m and 7s means the hand will most 
+likely remain closed, which is not much (if at all) faster than an open honitsu with mangan 
+potential. Thus, LuckyJ discards 7m and chooses a flush as the hand’s main direction. 
+Note how West is not the correct discard. Since the hand currently has 4 blocks for a flush, 
+and any of the lone honors can become the fifth, they are all too valuable to throw away.  
+Discarding 4p would be a grave error even though it fixes dora, maintains 4 blocks for a 
+flush, keeps all lone honors, and maintains effective tiles around 7m and 7s. This is 
+because 445p can easily grow into a complex shape to serve as the hand’s fifth block. 
+ 
+ 
+
+
+--- PAGE 10 ---
+ 
+On the 2nd turn, the robot pons South and discards 7s to continue pursuing a flush. A few 
+useless draws (including red 5m, which doesn’t fit into the hand’s plan) later, it now faces 
+discarding 4p or an honor. 
+The robot discards 4p and fixes dora because its ability to become a triplet and to form 
+complex shapes both became less valuable when the hand gained its fifth block. 
+Furthermore, it is a defensive liability in case the hand needs to fight against riichi, which it 
+is strong enough to do. 
+
+
+--- PAGE 11 ---
+ 
+The robot calls chii and discards Red Dragon to break ippatsu and fight the riichi. With 
+good shapes, four safe tiles, decent value, and no dangerous tiles to discard on the way to 
+tenpai, this play is obvious. 
+The very next turn, it faces another decision. Given the hand’s shape and value, 4m is safe 
+enough to push. It is half-suji, two 3m and two 5m are visible, and a 14m wait is unlikely 
+due to the right-hand opponent discarding 3m then dora to declare riichi (why this makes a 
+14m wait unlikely is out of this article’s scope).  
+The choice, then, is whether to push 4m now to save West for an even more dangerous 
+situation such as another riichi. The robot decides that with its lead, with two Norths as 
+backup safe tiles, with its hand’s final shape being less than ideal (middle tile ryanmen 
+waiting on dora or terminal shanpon with 1 seen), it will most likely fold completely upon 
+facing two riichis. Therefore, there’s no reason to save West for that situation. It discards 
+West. 
+
+
+--- PAGE 12 ---
+ 
+The robot draws a dangerous tile. The dealer has discarded 8 suji, leaving 10 remaining live 
+ones, and 4s deals into two of them. This puts 4s at about a 20% chance to deal in. Not 
+only that, both 4s and 4m need to pass for this hand to win. This overall deal-in rate of 
+nearly a quarter, not counting drawing more dangerous tiles later, is too high to justify 
+pushing. So, the robot folds completely by discarding North.  
+Notice how the robot’s earlier decisions accounted for this possibility of using North as 
+backup safe tiles, and how its previous decision of keeping 4m is justified here since it 
+never needed to push 4m at all. 
+This discard also shows push-fold decisions must be reevaluated every turn, as the correct 
+move can go from fully attack to fully defend in as little as one draw. 
+  
+
+
+--- PAGE 13 ---
+ 
+A few turns of folding later, the robot draws into tenpai without yaku by discarding 4m, also 
+the safest option.  
+  
+
+
+--- PAGE 14 ---
+ 
+The robot collects noten-bappu by drawing only safe tiles until the end. This is lucky, but 
+not extraordinary so, made possible by the cumulative effect of its previous choices. 
+  
+
+
+--- PAGE 15 ---
+ 
+The dealer was indeed waiting on 4s, though this doesn’t affect the previous analysis. 
+Closing 
+This hand shows how the value of complex shapes and floating tiles change depending on 
+the rest of the hand. It also shows the importance of of shedding defensive liabilities to 
+afford flexibility later, of considering the hand’s future paths when making present 
+decisions, and of reevaluating the push-fold decision every turn. Furthermore, a far 
+stronger hand is required to push against two opponents than one. A 3-han hand with 
+guaranteed semi-good final shape doesn’t qualify. 
+The other lesson is, when defending, to preserve a chance for winning noten-bappu when 
+able. Doing so often entails little additional risk. The robot used some other techniques like 
+counting suji and reading discards to estimate safety, but these are relatively unimportant 
+and can be considered trivia.  
+
+
+--- PAGE 16 ---
+Hand 3 
+ 
+The robot is in East 3 with a tiny lead and mostly even scores. Its starting hand is poor but 
+contains a pair of yakuhai. 
+
+
+--- PAGE 17 ---
+ 
+ 
+The first decision is whether to pon. For Riichi Book 1-educated players, passing is almost 
+automatic, because the resulting hand will be cheap, slow, and missing two white dragons, 
+its best defensive assets. 
+However, the robot calls pon and discards 1s here. Robot play has shown that there are 
+ways to play open hands without sacrificing safety. Because this hand has such poor 
+shape, it is almost impossible to complete closed. Passing amounts to folding on turn 2, 
+unacceptable given the score and round. The plan is to rush an open hand while preparing 
+to defend. 
+In general, bad shapes favor opening. Since bad shapes “need more help” than good ones, 
+the speed gain from opening grows with the number of bad shapes held. 
+
+
+--- PAGE 18 ---
+ 
+What to discard here? North seems natural, 7p or 8s to save North as a safe tile also seem 
+plausible. But the robot, surprisingly, discards 2m. 
+To understand this, evaluate the hand using three criteria. It has poor speed, no value, and 
+little defense. Every pinzu plus North provides value via outs to a flush. North is the hand’s 
+only safe tile. 8s provides value by being able to accept dora. The only remaining discard 
+candidates, then, are 2m and 6m. The robot decided that the outside chance of gaining red 
+5m is worth more than setting up a suji trap. 
+The speed loss from discarding 2m is not as big as it seems. Firstly, the hand is 3-shanten 
+with all bad shapes and doesn’t have much speed to lose. Secondly, North must be kept for 
+safety, so 2m is competing against 7p and 8s, not North. Thirdly, even if 3m is drawn after 
+discarding 2m, it still improves the hand, so those 4 effective tiles are not totally lost. 
+2m also matters for safety. Completing a ryankan often requires discarding a dangerous tile 
+because it is not known which tile will be left over. If the shape later completes yet cannot 
+discard the extra tile due to danger, its wide acceptance was an illusion all along. 
+
+
+--- PAGE 19 ---
+ 
+Two turns later, the robot’s hand made no progress while the dealer discards two middle 
+tiles in a row. Because of this, safety and speed have become more important compared to 
+value. The robot discards 8s and keeps 4s, which is faster and safe against dealer. 
+
+
+--- PAGE 20 ---
+ 
+One turn later, the dealer and opposite player both discarded from hand, the latter a 
+middle tile. Either of them can riichi at any moment. It is practically impossible to outrun 
+both players with a 4-shanten flush. Therefore, the robot discards 7p, a defensive liability 
+that is no longer useful for its original purpose of hand value. This keeps as many safe tiles 
+as possible, including West which arrived just in time, and doesn’t lose much speed since it 
+was a floating tile. 
+
+
+--- PAGE 21 ---
+ 
+The dealer pons 7p and discards 8p, opening with a good shape. They can’t be slower than 
+1-shanten and might be tenpai. The opposite player sees this and still discards 5m from 
+hand. Time to fold. 
+With enough safe tiles, the robot discards North, saving 4s for the unlikely chance that 
+after exhausting its honor safe tiles, 4s becomes the 5th block in an accidental tenpai. 
+North is the most dangerous honor, and discarded first in case the safer ones are needed 
+for a more dire situation later. 
+
+
+--- PAGE 22 ---
+ 
+The dealer pons 3s and discards 9p. This reveals an enormous amount of information 
+about their hand. They called pon on 7p from 7789p and kept 33s when breaking 334s in 
+the early game. The dealer can only be tenpai, and their yaku can only be toitoi. The 
+opposite player, seeing this, pushed a live terminal from hand. 
+Upon drawing a live yakuhai, the most dangerous tile against toitoi, there is no longer any 
+point in trying to win this hand. The robot discards 4s and folds completely, as it passes 
+dealer but might not pass the opposite player later. 
+
+
+--- PAGE 23 ---
+ 
+Naga would discard 1p here, which would be a huge mistake even though it’s outside 
+dealer’s early 3p discard. If dealer can cut 4s in the early game from 334s to keep 33s, they 
+could also have cut 3p from 113p to keep 11p. The usual rule that tiles outside early 
+discards are safer doesn’t apply here. 
+LuckyJ avoid this pitfall and continues folding by discarding red dragon. Playing even safer 
+with discarding 3p is unnecessary because the hand has enough other safe tiles. It might 
+not even be safe since the opposite player could be damaten with how hard they’re 
+pushing. 3p also preserves an outside chance at making tenpai by accident. 
+
+
+--- PAGE 24 ---
+ 
+Two turns later, the opposite player deals in after pushing a whopping 6 consecutive 
+dangerous tiles. 
+
+
+--- PAGE 25 ---
+ 
+Dealer mangan, 12,000 points. The robot escapes unscathed with two safe tiles to spare. 
+  
+
+
+--- PAGE 26 ---
+Closing 
+This hand shows how the worse a starting hand, the more carefully it must be played. 
+Hands far from tenpai have enormous tile acceptances, and maximizing acceptance 
+without considering other factors is almost never a good idea. All factors such as safety, 
+speed, value, and opponents’ progress must be considered to arrive at the correct play. 
+With an open hand, it is even more important to monitor opponents for signs of danger and 
+play accordingly. The three factors of value, speed, and safety each vary in importance 
+depending on how the others play. During this hand, the robot shifted its focus from 
+balancing all three, to speed and safety when things got dicey, and finally to only safety as 
+the situation became dire.  
+Reasoning like this allows advanced players, human and robot, to make dangerous-looking 
+plays like the pon of white dragon without their deal-in rate going through the roof. Any 
+chance to win a hand, even one as poor as this, cannot simply be ignored. Mahjong is not 
+generous in how many winning chances it offers, so every chance must be pursued. The 
+difficult but necessary part is doing so without leaving oneself defenseless. 
+This hand also showcased some specific techniques like reading calls and discards to 
+determine a player’s likely hand, of recognizing shapes like ryankan as hidden risks, of 
+evaluating speed beyond simply counting effective tiles, and of deciding which order to 
+discard tiles while folding. Each of these techniques, as well as the general game plans 
+discussed earlier, can be studied in more depth, and each can prove useful in your next 
+game. There’s always more to learn and apply. 
+  
+
+--- PAGE 27 ---
+Hand 4 
+ 
+The robot has pulled ahead early with an ongoing win streak. This changes how it should 
+play compared to at flat scores. In particular, the value of winning a cheap hand is 
+diminished. Push-fold judgment becomes more conservative, which also points to building 
+expensively, because counterattacking requires a better hand than usual. 
+The robot’s first discard is 9p, the most efficient discard. While the score situation points 
+to building value, 789 sanshoku is far less likely than yakuhai and is not enough to sacrifice 
+speed for. 
+
+
+--- PAGE 28 ---
+ 
+On the second turn, the robot draws 6m and discards 9m as it is now redundant for 
+accepting a second 7m and fixes dora. 
+On the third turn, the robot draws 2m. What to discard here? 
+Perhaps most people would discard 1m, an honor, or go for a flush with 6p or 4s. LuckyJ 
+chooses none of the above, and discards 9s instead. Why? 
+Simply put, 9s is the only discard that doesn’t lose any chances at making an open hand. 
+This slow hand probably cannot win closed, and doesn’t need to because with 2 dora, 
+value from riichi is unnecessary. The three possible yaku this hand can open for are tanyao, 
+yakuhai, and a flush. 9s is the only tile useless for all three.  
+
+
+--- PAGE 29 ---
+ 
+The player across discards 9s from hand, pons Green Dragon, and discards 8s from hand. 
+This means they are at least 2-shanten with good shape and most likely 1-shanten. 
+Decisions from this point on can no longer be considered “early-game” . 
+Given the across player’s speed, it is no longer viable to pursue a flush with 4 odd-suited 
+tiles. The robot abandons the flush and discards 1m, preserving the possibilities of tanyao, 
+yakuhai, and a safe tile in Green Dragon. 
+ 
+ 
+
+
+--- PAGE 30 ---
+ 
+The player across discards another middle tile from hand, and the robot draws the 5th block 
+towards tanyao. Tanyao is now the hand’s only winning plan because flush was abandoned 
+last turn and waiting to pair a yakuhai is far too slow to catch up. Because of this, the robot 
+discards East and does not get greedy for the possible 2-han from collecting 3 of them. 
+The defensive value of Red Dragon is much more valuable here. 
+
+
+--- PAGE 31 ---
+ 
+In the past few turns, the robot upgraded its Red Dragon to another 8s, which is both safe 
+against the player across and effective towards tanyao. The player across called chii on a 
+good shape and discarded Red Dragon, a saved safe tile. They could very well be in tenpai. 
+A couple of useless and safe draws later, the robot draws an unsafe 9m. 
+It is important to note here that despite this hand being guaranteed mangan, its actual 
+offensive value at this stage is nearly zero. It takes true desperation, not the situation here, 
+to push a non-suji tile with a 3-shanten hand, no matter how valuable, against a probable 
+tenpai. The robot discards 8s, preserving its blocks for tanyao and saving Green Dragon in 
+case anyone else, like left-hand opponent who just discarded several middle tiles, also 
+attacks later. 
+
+
+--- PAGE 32 ---
+ 
+The player across calls chii on 5m and discards 3m. With three exposures, the last one with 
+a complex good shape, hand-reading techniques can be applied to identify several highly 
+dangerous suji against them: 36p (aidayonken), 69m (urasuji of 5m and includes dora), and 
+147m (improved from shanpon including 23334m or 33456m). 
+Given this information, the robot discards 8s to fold completely because this hand’s 
+chance of winning has truly become zero. 9m and 6p, both identified as highly dangerous, 
+are impossible to get rid or make use of within so few remaining turns. The only priority now 
+is safety, and 2p is saved for being marginally safer against the other two players than 8s. 
+
+
+--- PAGE 33 ---
+ 
+Several turns of basic folding later, the robot runs out of guaranteed safe tiles and must 
+now discard 4s, the safest remaining tile. 
+
+
+--- PAGE 34 ---
+ 
+The player across deals into the riichi with the 4th dangerous tile they pushed against it. 
+
+
+--- PAGE 35 ---
+ 
+3500 is about as cheap as it gets under these circumstances. Hats off to all players for a 
+well-played hand. 
+
+
+--- PAGE 36 ---
+ 
+Rewinding and revealing shows how well the hand-reading techniques worked in this 
+instance. 9m really was dealing in, and the player across really did improve a shanpon 
+including 3m with the 5m chii. 
+  
+
+
+--- PAGE 37 ---
+Closing 
+There are two main takeaways from this hand.  
+Firstly, in the early game without a clear direction, balancing progress towards multiple 
+possibilities, even at the cost of pure efficiency, is often the best play. By leaving all options 
+open, the best one will reveal itself in due time. This is called “combining your chances” , an 
+important strategic concept in many games, including mahjong. 
+Secondly, especially with a slow hand, it is of utmost importance to observe what 
+opponents do and act accordingly. Notice how quickly the robot’s game plan changed from 
+balancing three yaku, to balancing two, to only tanyao, to playing safe tiles while preserving 
+a winning shape, to folding completely, based on what its opponents did. Failing to observe 
+the opponents for even one turn could mean missing one of these strategic transitions and 
+making a mistake. 
+While hand-reading techniques worked perfectly on this hand, it must be said that they are 
+not the focus of this episode, or indeed any episode in this series. The overall strategic 
+vision on which direction to take the hand in what situation is far more important, and 
+much more worthwhile to master. 
+  
+
+--- PAGE 38 ---
+Hand 5 
+ 
+The robot finds itself in second place at South 2, leading 3rd and 4th (dealer) by a mangan 
+and trailing 1st by a little more. At this score, a mangan win is particularly valuable. At the 
+same time, so long as it doesn’t deal in, it’s hard for the robot to end up in danger of 
+finishing last. All this adds up to mean any win cheaper than mangan is not worth much, so 
+low-value hands will be readily folded for safety. Conversely, if there is a way to reach 
+mangan, a lot can be sacrificed for it. 
+This is a fast start, with 2-3 han of value from two pairs of yakuhai and dora. But 2-3 han is 
+not mangan, and the robot’s general game plan will be hunting that 4th han without falling 
+behind in speed. 
+  
+
+
+--- PAGE 39 ---
+ 
+On the first turn, if you said 99% of humans would discard West, I wouldn’t bet against you. 
+But the robot defies expectation and discards 5p. 
+This is to maximize mangan chances. To keep 5 blocks, the discard candidates are 5p, 2s, 
+and West. Out of these, 5p can only provide a 4th han by gaining red 5p. 2s helps by 
+accepting 4s and being effective towards chiitoi, toitoi, and honitsu. West is a safe tile and 
+effective towards toitoi and honitsu. 
+5p’s only advantage over 2s and West is it has more chances to make a good shape, but the 
+hand is not in much need of shape improvements. This is because value is a higher priority, 
+there’s only one bad shape to replace, and the bad shape’s liability is diminished due to 
+being able to open. 5p may be kept at a different score and round, but here, it is the least 
+useful tile. 
+  
+
+
+--- PAGE 40 ---
+ 
+The robot is disappointed next turn when it drew red 5p, its only value concession from 
+discarding 5p. It discards West because it’s easier to score a han from using red 5p than to 
+gain yaku with West. 
+The third turn, it faces a tough decision. What’s the best play towards mangan? 
+The discards that maintain 5 blocks are 1m, 5m, 6m, red 5p, and 2s. Nothing else needs to 
+be considered. 
+5m can be eliminated first because it is strictly worse than 1m in terms of shape 
+improvements and the speed of floating tiles after completing the leftover shape (12366m 
+vs 34566m with useful 36m floating tiles). Setting up a suji trap is not relevant when waiting 
+on 2m kanchan doesn’t gain value and is the hand’s last resort. 
+Red 5p can be eliminated next because using it is worth a han. 
+
+
+--- PAGE 41 ---
+The remaining discard candidates are 1m, 6m, and 2s. Recall that this hand has several 
+routes to mangan: dora, honitsu, chiitoi, toitoi. Now examine each tile: 
+• 1m cannot accept dora, is not useful for honitsu, is an acceptable pair candidate for 
+chiitoi, and probably won’t be used for toitoi. 
+• 6m cannot accept dora, is not useful for honitsu, is a pair for chiitoi, and is a low-
+quality triplet candidate for toitoi. 
+• 2s can accept dora, is useful for honitsu, is a pair for chiitoi, and is a higher-quality 
+triplet candidate for toitoi than 6m. 
+With these comparisons laid out, it is clear why the robot discards 1m here. 
+Breaking 13m appears to lose a block, but the hand still has 5 blocks because 35m and 
+66m can be seen as two blocks. The resulting hand can still open for anything, including a 
+chii in sou that grows that suit into two blocks. Using shapes like 2234 and 3566 to change 
+a hand’s shape while maintaining 5 blocks is a common technique to pursue value. 
+Even if the broken 13m block is never replaced, the hand’s worst-case scenario is ending 
+up with a sticky iishanten with red 5p and 2s as floating tiles. This is still acceptable 
+because sticky iishanten is not slow and the mangan goal would still be alive. Keeping 13m 
+amounts to almost giving up on mangan, which is contrary to the hand’s original goal.  
+  
+
+--- PAGE 42 ---
+ 
+The robot calls pon (of course) and discards 3m, continuing to hold out for value. This 
+really does lose a block, but the robot accepts the possibility of growing souzu into two 
+blocks and the sticky iishanten with red 5p and 2s as enough compensation. 
+If 4m is drawn, the hand is 1-shanten waiting to extend red 5p or 2s. This is still progress, so 
+4m’s effectiveness is not totally lost. 
+  
+
+
+--- PAGE 43 ---
+ 
+Next turn, the hand takes its final shape by regaining its 5th block. The robot discards red 
+5p to lock it in. A 1-shanten that can open for anything, worth at least 3 han and most likely 
+4, with possible improvements of up to 6 han, is exactly what it wanted. 
+  
+
+
+--- PAGE 44 ---
+ 
+No more non-trivial decisions arise. The player across deals into left-hand opponent to end 
+the hand. 
+  
+
+
+--- PAGE 45 ---
+ 
+Closing 
+This hand showcases an important truth: all strategy concepts, even ones as fundamental 
+as tile efficiency, are only means to the end of improving placement. On any given round, 
+depending on the score, the value of a winning hand is not linear with respect to its point 
+value. Especially near the end of the game, the score situation can be such that hitting a 
+score threshold is more important than trying to win the hand at all. If this means the 
+correct play is disregarding efficiency and 5-block theory, so be it. 
+Note how the robot strategized for final hand value starting from turn 1. This is an important 
+concept: the farther a hand is from tenpai, the more viable it is to sacrifice speed for value. 
+This is because tile acceptance shrinks as a hand progresses, making each sacrificed 
+effective tile more impactful. Since a hand is farthest from tenpai at the start, it makes 
+sense to begin considering the trade-off between speed and value from the start. Do not 
+
+
+--- PAGE 46 ---
+fall into the trap of pursuing only speed, only to realize upon reaching tenpai that there’s 
+now no way to achieve the desired value.  
+It cannot be stressed enough that early decisions are not trivial. Notice how many difficult 
+decisions the robot made in this hand in the first row, and how its second row consisted 
+only of discarding obviously useless tiles. In terms of strategy, Japanese Modern mahjong 
+has several obvious, impactful types of binary decision built in, such as push or fold, open 
+or closed, and riichi or dama. But it also has far more numerous, subtle, nuanced, and 
+open-ended decisions that are at least comparably impactful in aggregate. It is mastering 
+the latter type of decision that separates the excellent players from the merely good, and 
+what gives the game so much strategic depth. 
+  
+
+--- PAGE 47 ---
+Hand 6 
+ 
+East 2, even scores. No adjustments are needed for the score and round. The robot’s 
+starting hand is about as bad as they come. 
+
+
+--- PAGE 48 ---
+  
+With a bad starting hand, the default plan should be a three-way balance between open 
+tanyao, open yakuhai, and keeping safe tiles. The robot discards 9s, the least useful tile for 
+all three plans. 
+Even though 9s can accept 8s, 89s is not compatible with tanyao, diminishing the benefit 
+from keeping it. To score the dora, the robot would need to draw 8s, draw or chii 7s, pair 
+East or Red Dragon, and pon or draw that pair into a triplet. The chances of all those things 
+happening before an opponent manages to win is not enough to make up for the efficiency 
+loss of keeping a lone terminal.  
+  
+
+
+--- PAGE 49 ---
+ 
+Since Red Dragon is now discarded once, it can serve double duty as both a safe tile and a 
+yakuhai candidate. The robot discards North as it is only a safe tile and thus inferior to Red 
+Dragon. It doesn’t need to keep both safe tiles this early when opponents have only 
+discarded terminals and honors. 
+  
+
+
+--- PAGE 50 ---
+ 
+In any hand that is likely to play from behind, floating tiles cannot be ranked by efficiency 
+alone. The best floating tiles in a bad hand are those that contribute to efficiency yet can be 
+safely discarded later. In this hand, those are East and Red Dragon. The robot discards 2p 
+because it is the least efficient floating tile after those.  
+  
+
+
+--- PAGE 51 ---
+ 
+The reasoning behind the previous discard still applies one turn later, when the robot draws 
+yet another yakuhai with one copy visible. It discards 1s, which is inferior to 7p because it 
+is useless for tanyao.  
+  
+
+
+--- PAGE 52 ---
+ 
+Since 8s is dora, 68s can be considered a block. This means the hand just gained a block 
+and faces the choice between discarding East for more speed or continuing to balance 
+offense and defense by discarding 7p. 
+Most humans would discard East here, trusting two safe tiles to be enough and pursuing 
+speed. However, the robot discards 7p. It believes a 4-shanten hand at the end of row 1 is 
+virtually impossible to win. Even a second row tenpai is unlikely. Therefore, it focuses 
+almost solely on defense, with offense only an afterthought. 7p is a dangerous floating tile, 
+the honors are safe floating tiles, so 7p must go. If one of the yakuhai were missing from the 
+pond, that would be the discard instead as it would not be safe. 
+The slim chance of sanshoku is not relevant because sanshoku only counts if the hand is 
+won, a negligible possibility at this point. 
+  
+
+
+--- PAGE 53 ---
+ 
+The robot discards East as it is now the most dangerous floating tile. 
+  
+
+
+--- PAGE 54 ---
+ 
+As expected, the robot now faces a riichi. It is well-prepared to defend with three genbutsu 
+and three visible honors. The fact that the riichi was tsumogiri is irrelevant because the 
+plan was to fully fold to any riichi. 
+Imagine what the hand would look like if the robot discarded for pure efficiency. It would be 
+without West and Green Dragon but with 57p, 3-shanten and nowhere close to competing 
+against riichi. Even if no safe tiles were kept and Red Dragon was 9s instead, it is still 2-
+shanten with bad shapes and must be broken apart to defend, without the benefit of 
+additional safe tiles in the honors. 
+The rest of the hand consists of basic folding according to the safety chart and is omitted. 
+  
+
+
+--- PAGE 55 ---
+Closing 
+This hand demonstrates an important strategic concept: the worst possible situation is 
+being behind in speed yet forced to either push or defend with marginal safe tiles due to 
+lacking defensive assets. It is the number one reason for poor results among skilled players 
+and must be avoided if possible. The best way to avoid this situation is to recognize when a 
+hand is likely to be behind and prepare to face a riichi by saving safe tiles. The worse the 
+hand, the more valuable defensive assets become. This hand is about as bad as it gets, and 
+the robot’s extreme aversion to keeping dangerous floating tiles reflects this strategic 
+principle. 
+One common technique to achieve such safety is combining chances between tanyao, 
+yakuhai, and safety. Another technique is to keep floating tiles that provide both speed and 
+safety over those that only provide one. Often, evaluating discards from both perspectives 
+will lead to the correct choice in a bad hand. Both are showcased extensively here. In fact, 
+these techniques can be applied on most hands, though perhaps not to this extent. 
+Learning when and how to use them will help take your game to the next level. 
+  
+
+--- PAGE 56 ---
+Hand 7 
+ 
+The robot is in last place, far behind 3rd in South 1. In this situation, folding is irrelevant 
+except as a last resort, and ending the hand without getting any closer to 3rd would be a bad 
+outcome. This means the usual strategy for playing a bad hand, a three-way balance 
+between open tanyao, open yakuhai, and hoarding safe tiles, is no longer optimal. This 
+hand must be played towards a win, preferably a valuable win, until winning chances 
+become obviously negligible. 
+  
+
+
+--- PAGE 57 ---
+ 
+It should be noted that an open tanyao or open yakuhai 1000-point win here will consume a 
+remaining round without significantly impacting the score, making them unappealing 
+targets. Thus, the robot discards White Dragon before North. Discarding shared yakuhai 
+early minimizes the chances they’ll be claimed via pon, slowing down the hand’s overall 
+speed for all players. This reasoning doesn’t apply to North, which is not a shared yakuhai, 
+and North is an emergency safe tile on top of that.  
+  
+
+
+--- PAGE 58 ---
+ 
+No obvious path to a valuable hand exists. The robot discards 9m to balance tanyao and 
+keeping safe tiles. The safe tiles aren’t to fold, but to enable pushing by being safe discards 
+when behind. The discard is 9m instead of 1s because 1s is safe against the player across, 
+the main competition, so it is less of a defensive liability. 
+  
+
+
+--- PAGE 59 ---
+ 
+3p is good enough of a draw that keeping two safe tiles is no longer necessary. The robot 
+discards White Dragon. There are some subtle reasons why the robot discarded an 
+effective tile last turn, but a safe tile this turn.  
+First, while this hand is strong enough to play with only 1 safe tile given the score and 
+round, it is not strong enough to play with none. This means if White Dragon was discarded 
+the previous turn, gaining any effective tile except 8m makes 9m the next discard. On top of 
+that, even if 8m is drawn after dropping 9m, it still improves the hand, so 8m is not a total 
+efficiency loss. Overall, this means 9m’s contribution to efficiency is slim, transient, and 
+dispensable. 
+Second, 9m is a bigger defensive liability than 1s because 1s is safe against the main 
+competition, the player across.  
+Third, the hand has two heads. Last turn, both heads were part of compound shapes, 
+meaning if one head becomes a limb, the compound shape on the other head becomes 
+
+
+--- PAGE 60 ---
+redundant. That makes the two compound shapes somewhat redundant with one another 
+since completing a limb creates two floating tiles instead of one. That no longer applies this 
+turn, with only one compound shape among the two heads. 
+ 
+ 
+Many people would discard North here, but this kind of play often makes a bad situation 
+worse. It’s South 1, not South 4, and this hand is approaching the second row, 3-shanten, 
+with no other safe tiles against left- or right-hand opponent. North must be kept for safety. 
+It is also important to consider chiitoi. Any hand with more than 2 pairs and all bad shapes 
+is a chiitoi candidate. In this case, chiitoi is the hand’s best hope for mangan and as 
+important as the regular shape. This means all pairs need to be kept too. 
+By process of elimination, the robot discards 3m. Since 1122s must be kept, it is two 
+blocks, meaning the hand has six blocks. Slimming 3577m, two weak blocks, into one 
+compound block is better than weakening a different block. 
+
+
+--- PAGE 61 ---
+ 
+Next turn, the robot faces another tough decision. North and all pairs should be kept for 
+safety and chiitoi. 8p is dora and of course must also be kept. This leaves preciously few 
+options for the next discard, all of which incur efficiency hits. 
+8p made 3578p into two blocks, so the hand again has six. Unlike the previous turn, there is 
+no option to slim two weak blocks into one compound block. The robot discards 5m 
+because gaining 6m towards a regular hand weakens the chiitoi option, making 6m worse 
+than the hand’s other effective tiles, and least costly to part with. 
+  
+
+
+--- PAGE 62 ---
+ 
+The 7m draw tilts the balance between chiitoi and tanyao towards tanyao. Since the hand 
+now contains too many useful tiles, it is no longer possible to balance between chiitoi, 
+safety, and a regular winning shape. The robot abandons chiitoi and discards 1s. 
+  
+
+
+--- PAGE 63 ---
+ 
+7p makes the hand 1-shanten. Even though the 1-shanten is only for a bad-shape, no-value 
+hand that requires discarding dora, at this score and round, this is still strong enough to 
+play without a safe tile. The robot discards North. 
+  
+
+
+--- PAGE 64 ---
+ 
+With a late pon of 5p and discarding 3p the previous turn, the dealer is probably tenpai. 
+This late, it is important to not only watch the dealer’s discards but also whether the other 
+players are pushing or folding. 
+Notably, a bit earlier, the player across dropped 34s from hand, so they are highly likely to 
+be at least good shape 1-shanten. 
+3p is the obvious discard here, being both safe against dealer and the most efficient 
+option anyway. 
+  
+
+
+--- PAGE 65 ---
+ 
+The robot takes tenpai by discarding 7m, the safest option against dealer. Both souzu are 
+highly dangerous given the lack of high souzu in dealer’s pond, while 7m is one-chance and 
+outside dealer’s 6m discard. Of course, this also happens to wait on the most tiles, but the 
+main reason for the decision is safety. 
+  
+
+
+--- PAGE 66 ---
+ 
+No last-tile miracle this time. The robot discards South and ends the round in tenpai. 
+  
+
+
+--- PAGE 67 ---
+ 
+As it turns out, the player across either never reached tenpai or took apart their hand to 
+defend towards the end. The robot catches up by 4000 points without consuming a round, 
+an excellent result given its starting hand. 
+  
+
+
+--- PAGE 68 ---
+Closing 
+The middle stage of this hand is another case of combining chances. This time, the 
+chances are between chiitoi and a regular shaped hand. Importantly, single live yakuhai 
+was not kept in the early game as the score and round made it unappealing. This allowed 
+the hand to hold enough tiles to pursue a closed hand with reasonable efficiency. Both 
+chances were kept viable for as long as possible, and the robot only committed to a regular 
+shape when it was no longer possible to advance both. Three strategic points, all shown 
+here, are important in combining chances: choosing what chances to pursue, keeping all 
+chances open whenever possible, and knowing when to commit to one direction when the 
+choice becomes clear. 
+Another important strategic concept in this hand is adjusting play to the score and round. 
+Ordinarily, such a bad starting hand would have kept its safe yakuhai and discarded its 
+terminals, for the classic 3-way balance between tanyao, yakuhai, and safety, then folded 
+at the first sign of danger. But that strategy would have been detrimental here because it 
+would have resulted in a small win at best and moderate loss at worst. The robot rejected 
+this game plan and chose a more optimistic, riskier route as the situation called for.  
+Even in this dire score situation, the robot kept a safe tile until 1-shanten. As much as being 
+behind calls for being aggressive, it is usually unwise to abandon defense entirely with a 
+slow hand. Defensive assets aren’t only useful for folding, but also for passing at least an 
+ippatsu turn to enable continued pushing when behind in speed.  
+Finally, although the robot pushed some unsafe tiles towards the end to achieve tenpai at 
+draw, it didn’t push any highly dangerous ones, at most risking one-chance. It would have 
+been unwise to push dangerous non-suji tiles, even at this score, for a mere tenpai at draw. 
+Being behind calls for aggression, but it does not call for abandoning reason or discounting 
+the possibility of a loss. Maintaining a calm, logical approach to the game, in any score 
+situation, is one key to avoiding fatal blunders that plague the intermediate player’s logs.  
+  
+
+--- PAGE 69 ---
+Hand 8 
+ 
+East 3, second place. Even though there are big score differences to both first and last 
+places, and even though last place is also dealer, East 3 is too early for this score situation 
+to significantly affect strategy.  
+
+
+--- PAGE 70 ---
+ 
+Despite the hand having four pairs, chiitoi is not a major factor in deciding what to play. A 
+regular hand that started with five blocks and two good shapes is much faster than a 2-
+away chiitoi. Even considering chiitoi, the usual rule that honors and edge tiles are easier to 
+draw for chiitoi doesn’t apply on the very first turn because nobody had time to collect 
+middle tiles yet.  
+The robot discards Green Dragon. Strictly speaking, East is the better discard, but the 
+robot sometimes randomizes its play to be less predictable. If it always discarded East 
+here, people would know it never has an East when it discards a dragon first and can 
+possibly exploit that information. 
+  
+
+
+--- PAGE 71 ---
+ 
+The hand gains a sixth block. Compared to tanyao with all good shapes, chiitoi is so slow as 
+to be irrelevant. The robot discards 9s to break its worst block. 
+  
+
+
+--- PAGE 72 ---
+ 
+The robot discards the other 9s to keep Red Dragon which is superior in both value and 
+safety. Next turn, it draws another Red Dragon to gain a sixth block again. 
+The most efficient play, and Naga’s choice, is 2p, breaking the hand’s worst block that only 
+provides one effective tile. However, with three 1s visible, LuckyJ discards 3s and plays 
+with six blocks. This only loses one immediate effective tile and preserves the higher-value 
+possibilities of tanyao and chiitoi at the cost of some speed.  
+Notably, 3s was only viable as a discard choice when both effective tiles it gave, 1s and 4s, 
+were made less relevant by being seen 3 times or by being already accepted by another 
+block. If either of these things weren’t true, discarding 2p would clearly be better. 
+  
+
+
+--- PAGE 73 ---
+ 
+The next turn, the robot faces another choice between five or six blocks when 3p gave the 
+hand a chance at pinfu. 2s, discarding the worst block, is the most efficient play, and 
+Naga’s choice again. However, it foregoes tanyao and pifu, limiting the hand’s value to 2-
+han open or 3-han riichi. Red Dragon, for the fastest open hand, is another possibility, but 
+this is even worse for value as neither tanyao nor pinfu is guaranteed. 
+LuckyJ discards 2p, again choosing six blocks. This maximizes the chances of the hand 
+scoring one of tanyao, pinfu, and yakuhai, foregoing the slow and barely relevant chiitoi. 
+Another factor in this decision is the round is nearing mid-game, where keeping six blocks 
+has the additional advantage of flexibility, being able to discard any block for defense 
+without folding completely. 
+  
+
+
+--- PAGE 74 ---
+ 
+Drawing 2s means pinfu is no longer possible. The hand has too many good shapes, so the 
+most efficient discard is breaking one with 3p and 5s. The advantage to breaking 23p or 56s 
+is the extra, albeit low-value, acceptance of 14m, as well as reaching perfect 1-away 
+including a pair of dragons on the next effective draw. However, LuckyJ rejects this and 
+discards 2m, playing with six blocks again. 
+It did so for three reasons. Firstly, this hand has all good shapes and can afford to give up 
+some speed for value. Secondly, the reasoning for keeping six blocks on the previous turn, 
+flexibility in defense, still applies here. Thirdly, although breaking 233m gives up on perfect 
+1-away, the hand’s final wait can still only be good shape, at minimum shanpon including 
+honors. These concessions are acceptable in pursuing an extra han via tanyao or yakuhai. 
+  
+
+
+--- PAGE 75 ---
+ 
+With all good shapes and being able to open, the robot calls kan to increase its hand value. 
+One more dora would make the hand 3900 ron, 5200 tsumo at minimum, and is worth the 
+risk. 
+  
+
+
+--- PAGE 76 ---
+ 
+The kan does indeed gain a dora, so it is no longer necessary to sacrifice speed for value. 
+The robot discards 3m, its worst block, trying for a quick win. 
+  
+
+
+--- PAGE 77 ---
+ 
+Drawing another dora next turn raises the hand to mangan if all dora are scored. Even 
+though 34m is furiten, LuckyJ still thinks the extra value is worth reverting to six blocks, and 
+discards 7p to lock in the dora pair. In contrast, Naga discards 4m here for maximum 
+efficiency, deciding that the speed gain from accepting 58p is worth the lost value, as the 
+hand is already valuable enough. 
+After cutting 7p, the hand can open for all its effective tiles towards mangan, though it 
+probably wouldn’t chii 1p too early. The resulting hand, unless atozuke on Red Dragon, will 
+be good shape and high value, and has the option to break a block for defense without 
+folding entirely.  
+  
+
+
+--- PAGE 78 ---
+ 
+The robot discards Red Dragon to lock in its final shape, a double two-sided 1-away 
+mangan that can open for all its effective tiles. 
+  
+
+
+--- PAGE 79 ---
+  
+The robot eventually reaches tenpai by calling chii on 4s and discarding the third Red 
+Dragon. Here, it discards 3m to get out of furiten as there is only one 2m left. 
+  
+
+
+--- PAGE 80 ---
+ 
+Although White Dragon is unseen so late and therefore highly dangerous, with so many 
+dora visible, it’s still worth pushing for mangan and tenpai at draw. The robot discards 
+White Dragon. 
+  
+
+
+--- PAGE 81 ---
+ 
+The hand ends with White Dragon dealing in for 2600. 
+  
+
+
+--- PAGE 82 ---
+Closing 
+Whether to play with five or six blocks has been debated without a definitive conclusion for 
+as long as mahjong strategy existed, and this hand is an excellent example of how to 
+choose between them. In modern Japanese mahjong with red fives, efficiency, especially 1-
+away efficiency, is king, making five blocks the default strategy. Keeping six blocks affords 
+greater flexibility in choosing blocks for yaku or safety but leaves little room for safe tiles or 
+floating tiles to improve shape. 
+Therefore, six-block strategy is more viable when the hand can open but doesn’t yet know 
+for which yaku, when the blocks contain defensive assets, when the hand has little need to 
+improve bad shapes, and when chiitoi is viable. Examining the spots where LuckyJ chose 
+six blocks on this hand shows how these principles guided its choices. When it gave up 
+efficiency, the robot gave up tiles that are likely to result in low-value hands in favor of 
+fewer, but higher-value effective tiles. 
+More generally, six-block strategy is also a case of combining chances, the combined 
+chances being which five blocks to end up with. Delaying the choice allows for less regret 
+when which five blocks to keep becomes clearer later. It also reflects the strategic concept 
+of balancing speed, value, and safety. Although speed is the most important of the three, 
+sometimes it makes sense to sacrifice some speed for either safety or value. 
+A side note here is despite its name, “perfect” 1-away should not be considered an 
+important goal. It is a good shape, but there are many other good 1-away shapes, some of 
+which are better than “perfect” . Giving up perfect 1-away is commonly correct with enough 
+compensation. 
+Finally, sometimes in mahjong, the correct decision is not clear. Expert human players will 
+likely disagree with each other at various points during this hand just like LuckyJ and Naga 
+did. It’s more important to remember what makes six-block strategy more viable, how to 
+combine chances, and how to balance speed, value, and safety. At higher levels, it is more 
+important to adhere to consistent, logically justifiable overall strategies than to intensely 
+scrutinize any individual play for one final answer. 
+  
+
+--- PAGE 83 ---
+Hand 9 
+ 
+South 2, second place, with about a mangan difference to both first and third. In this 
+situation, a mangan swing in either direction is particularly impactful. Consequently, speed 
+will take a back seat to value and safety now compared to in most score situations.  
+  
+
+
+--- PAGE 84 ---
+ 
+The hand gains its fourth block. Since the hand is slow, South will almost always appear in 
+the final shape as a triplet (including shanpon waiting on South) for both speed and value, 
+so the hand currently lacks a head.  
+Normally, middle tiles are better than edge tiles for speed, but this difference is diminished 
+when the hand lacks a head because edge tiles are better at forming heads. At the same 
+time, this hand has two routes to mangan, pairing East and/or the barely reachable manzu 
+flush with five odd-suited tiles.  
+Both these factors combined makes the robot discard 2s over an honor. Of course, 
+discards like this always concede some speed up front that should not be ignored. The two 
+mentioned reasons don’t automatically make keeping honors correct, and the final discard 
+decision depends on an overall evaluation of the position. 
+  
+
+
+--- PAGE 85 ---
+ 
+The robot pons and discards 6s, sacrificing significant speed for value and safety.  
+This play is consistent with the previous one where the robot rejected effective tiles that led 
+to mostly low-value, low-safety hands. Without adopting this overall strategy, Naga also 
+pons here but discards an honor, and so it has lower preference for pon.  
+The previous discard of 2s, this pon, and the discard of 6s, are great examples of how 
+strategic principles inform individual decisions. These three consecutive plays are all part 
+of a strategy of treating value and safety as much more important than usual due to the 
+score and round.  
+  
+
+
+--- PAGE 86 ---
+ 
+Dealer’s pon drastically changed this hand’s plans. With an early dragon pon and 
+discarding middle tiles from turn 1, the dealer either has a quick hand or an expensive 
+flush.  
+If the dealer has a quick hand, the robot should prioritize speed and keep a middle floating 
+tile. If the dealer has a flush, then live yakuhai are dangerous and should be discarded 
+before they deal in. Both factors point to keeping 7p instead of discarding it using the 
+reasoning from previous turns. The robot discards White Dragon. 
+  
+
+
+--- PAGE 87 ---
+ 
+Dealer and right-hand opponent both pon dragons and discard middle tiles. Left-hand 
+opponent also discards consecutive middle tiles from hand. Compared to them, the 
+robot’s hand is still 3-away with only one good shape. The robot is without doubt playing 
+from behind. 
+East cannot be discarded, ever, from this point on. Without East, even the luckiest draws 
+only result in a 1000-point hand, not worth trying for given the score, round, and everyone 
+else’s speed. Since pursuing pure efficiency requires discarding East, pure efficiency is no 
+longer a viable strategy. 
+Since East must be kept, it counts as a block, so the hand has five. Unlike last turn, 7p 
+forming another block would make a sixth, a more marginal improvement than the fifth. The 
+robot discards 7p while it is still safe. 
+  
+
+
+--- PAGE 88 ---
+ 
+Right-hand opponent discards a joint inside-out, which indicates that they’re highly likely to 
+be 1-away at worst. Dealer and left-hand opponent both cut middle tiles, probably no 
+worse than good shape 2-away. 
+The robot wants to get rid of Green Dragon, a defensive liability that doesn’t contribute 
+much to efficiency, but it’s already too late to do so. It could deal in right now. Instead, the 
+robot keeps it and discards West, a safer tile, while keeping North for later. 
+  
+
+
+--- PAGE 89 ---
+ 
+Left-hand opponent calls pon, likely advancing to 1-away or even tenpai. With all three 
+opponents around 1-away, the deal-in risk is comparable to the risk against one riichi. A 3-
+away hand containing defensive liabilities has little hope of winning and should play as 
+safely as possible. For this reason, the robot discards 2p over 9p or Green Dragon, leaving 
+the unlikely flush as a winning chance in case it gets very lucky. 
+  
+
+
+--- PAGE 90 ---
+ 
+Since there is no realistic path to solving the defensive liabilities in Green Dragon and 9p, 
+the robot declines to chii 7m even though it would only cost unsafe tiles. 
+Although 8s is one-chance, 7s being dealer’s last discard from hand makes it unsafe 
+because dealer could have reduced 677s to 67s as their final shape. The robot discards 
+North to fold completely. 
+3p would have been the better discard, but it’s unclear whether this robot knows 3p is still 
+safe against dealer when left-hand opponent’s pon skipped their turn. 
+  
+
+
+--- PAGE 91 ---
+ 
+Left-hand opponent breaks 6678m to pon 6m, meaning they’re certainly tenpai for toitoi. 
+All live tiles, especially East, are risky. The robot discards 8m, a temporary safe tile. Note 
+how declining to chii 7m made 8m available now. 
+  
+
+
+--- PAGE 92 ---
+ 
+After several turns of the robot simply discarding its safest tile, dealer deals into left-hand 
+opponent to end the round. 
+  
+
+
+--- PAGE 93 ---
+ 
+Live tiles were indeed dangerous against toitoi. 
+  
+
+
+--- PAGE 94 ---
+Closing 
+This hand illustrates how general strategic concepts tangibly affect decision-making and 
+how strategies can change throughout a hand. The robot first prioritized value and safety 
+based on the score and round. It switched to pursuing speed, then to balancing value and 
+safety, then saving safe tiles, then using those safe tiles to defend, all within four turns. This 
+does not mean its earlier plays were wrong or wasted effort. Instead, it shows how rapidly 
+the best strategy can change especially during the midgame, and how important it is to 
+reevaluate the overall situation constantly to make the best play each turn. 
+The way the robot played this midgame, especially after all three opponents opened, is 
+worth studying in detail for how to play when multiple opponents may be close to or are in 
+tenpai. Ideally, one should enter this stage of the game without carrying tiles that 
+contribute to neither good offensive shape nor are safe defensive discards. This is not 
+always possible, even with careful planning and play, as this hand showed. The robot was 
+aware of how much these liability tiles hindered its ability to counterattack and did not 
+hesitate to break its hand to defend.  
+Situational awareness, or adjusting strategies based on what the opponents are doing, is 
+one of the most important concepts in advanced mahjong strategy. A lot of strategies 
+logically follow from knowing approximately how far ahead or behind one is in the race. For 
+those looking to improve past intermediate level, this is a good place to start. It opens 
+whole new worlds of strategy beyond efficiency and defense, and these new strategies 
+make mahjong, at least to some people, the deep, engaging game it is. 
+  
+
+--- PAGE 95 ---
+Hand 10 
+ 
+East 4, 3rd place. No strategy adjustments are needed for score and round. The robot 
+started with two good shapes, two honor pairs including yakuhai, and one dora, a well 
+above-average starting hand. 
+
+
+--- PAGE 96 ---
+ 
+The first decision is whether to pon. At first glance, pon here would cost two safe tiles and 
+constrain the hand to atozuke White Dragon for only 2000 points when such a good starting 
+hand can aim for riichi worth much more. Not only that, calling pon on both West and White 
+Dragon means 44s is the hand’s head, and 344s is no longer a good shape. 
+However, White Dragon is the key to winning this hand regardless of what is done here. 
+There is no foreseeable scenario where it will refuse to pon White Dragon. This means 
+whether this hand is opened here or not, its final value will be 2000 points most of the time. 
+If it gets White Dragon, it has no problem also opening for West. If it never gets White 
+Dragon, then that becomes the hand’s head, and it would need to either draw the last West 
+or discard both Wests without opening for riichi dora 1. 
+Fully understanding this situation requires seeing the possibility of a flush. A flush in 
+manzu, while unlikely, gives a boost to both above scenarios. If the hand gains White 
+
+
+--- PAGE 97 ---
+Dragon, a flush raises its value to mangan. If it never gains White Dragon, a flush gives it a 
+way to win open, without needing to draw the last West or discard the West pair.  
+This hand seems too far from a flush, needing to discard so many off-suit tiles including the 
+good 344s shape. But recall that 344s in this hand will sometimes be the head. In other 
+words, the shape’s 25s acceptance lacks its full effect because the hand will sometimes 
+discard 3s before it can gain them. This, combined with a flush possibility helping the hand 
+both when it does and doesn’t gain White Dragon, is what makes the robot pon and 
+discard 3p. Now, instead of the original 2000-point projection, the hand will gain White 
+Dragon for 2 han, become a flush for 3 han, or do both for mangan. 
+A small detail is the difference between 3p and 6p. The reason is red five acceptance. If the 
+hand kept 3p and later drew red 5p, it would be awkward to decide between keeping it or 
+continuing towards flush. But if it keeps 6p instead, rejecting the flush would be obvious. 
+  
+
+--- PAGE 98 ---
+ 
+Consistent with its previous move, the robot discards 6p here to continue pursuing a flush. 
+Normally, discarding middle tiles over honors is a huge efficiency loss. But the efficiency 
+difference between middle tiles and edge or honor tiles diminishes the more a hand needs 
+a head.  
+While this hand appears to have two heads, the reality is White Dragon will likely become a 
+triplet and 344s will likely become a sequence. Both heads are unstable at best and not 
+heads at all at worst. So, this hand has some need for another head after all. It is this 
+effect, where a hand’s demand for a head increases its tendency to keep edge tiles and 
+honors, that enabled the robot to make the last two discards. 
+  
+
+
+--- PAGE 99 ---
+ 
+Next turn, the robot inches closer to a flush. The most efficient discard to balance both a 
+flush and a White Dragon-only hand is 3s, fixing the head. But the robot discards 4s 
+instead. 
+This is because at this point, after consecutive flush draws, a flush is now the hand’s main 
+direction. If an off-suit effective tile isn’t strong enough for the hand to reject a flush, it is 
+not effective at all. Discarding 3s gives the hand only 4s to reject the flush, while discarding 
+4s gives it 2s and 5s.  
+  
+
+
+--- PAGE 100 ---
+ 
+Since the hand still doesn’t have enough blocks for flush, the robot discards South, which 
+keeps the possibility of a non-flush hand open at the cost of its safe tile. 
+  
+
+
+--- PAGE 101 ---
+ 
+The robot gains another block for flush. Since White Dragon will likely be a triplet, the hand 
+currently lacks a head, meaning the hand now has one more non-head block than it needs. 
+It is obvious which one should be cut. The robot discards 4s and commits to a flush.  
+  
+
+
+--- PAGE 102 ---
+ 
+Of course, the robot calls pon and discards 3s here, advancing towards the win. 
+  
+
+
+--- PAGE 103 ---
+ 
+Next turn, the hand reaches good shape mangan tenpai. The robot discards East. 
+  
+
+
+--- PAGE 104 ---
+ 
+Good shape mangan tenpai is strong enough to fully push against riichi. The robot discards 
+Green Dragon and pushes every tile afterwards, no matter how dangerous. 
+  
+
+
+--- PAGE 105 ---
+ 
+The hand ends in a win for 7700. 
+  
+
+
+--- PAGE 106 ---
+Closing 
+Strategy discussion aside, this hand shows some of the irony in studying mahjong. To the 
+untrained eye, and even some trained eyes, LuckyJ didn’t play this hand like a “stable 10d 
+robot that’s better than 9999 mahjong players out of 10000” , but more like a beginner who 
+just learned what flushes are and indiscriminately breaks good shapes in other suits to go 
+for them. With the provided reasoning, its plays make more sense and can be learned from. 
+But even with all its superhuman skill, the robot played no better than some beginners 
+would have. This shows, above all, that mahjong is a game of chance. The player’s agency 
+is greatly constrained by the few true choices they’re offered, so the choices of different 
+levels of players will inevitably coincide from time to time. 
+It is not the choices themselves, but the reasoning behind them, that make for the best 
+study material. The most important lesson to learn from this hand is looking ahead to see 
+how a hand shape will likely develop. It is not enough to account for acceptance, efficiency, 
+and shape for only the current turn. The expert player visualizes how the hand will evolve on 
+future turns, what final shapes it can reach for what value, which tiles it can cut to defend, 
+and more, to inform their present decision. This is why high-level players’ logs are filled with 
+times where they seem to know what will happen three turns in advance. In some sense, by 
+applying this skill of looking ahead, they did. 
+There are three specific points of strategy to learn from this hand: 
+Firstly, riichi is not the only way a good hand can pursue value. Sometimes, as is the case 
+here, an expensive open hand is more achievable.  
+Secondly, not every hand with good shapes can win quickly closed. The overall speed of a 
+hand depends more on its slowest, not fastest, blocks. The robot correctly assessed that 
+its honor pairs would bottleneck the hand if it remained closed and thus opened very early.  
+Finally, the value of floating tiles can change depending on how badly the hand needs a 
+head. Needing a head makes middle tiles worse and edge tiles better. This alone usually 
+isn’t enough to discard a 3 over a wind, but other factors can influence the decision enough 
+to reverse the importance of those tiles.  
+While the robot got very lucky to reach its ideal shape so early and eventually win, it made a 
+series of decisions to have the chance at all. The adage “preparation meets opportunity” 
+comes to mind. The intermediate sees the expert get lucky more than their fair share, but 
+the expert knows what’s really going on. 
+  
+
+--- PAGE 107 ---
+Hand 11 
+ 
+The robot finds itself in South 3 with the slimmest of leads. In this situation, speed is of 
+paramount importance, tenpai at draw is worth no less than a win, and dealing in is almost 
+never a justifiable risk.  
+Holding safe tiles becomes far more viable here, both to avoid dealing in and to safely 
+pursue tenpai at draw in the late game.   
+It is also more important than usual in this situation to be aware of each opponent’s speed. 
+The optimal play will depend far more than usual on how fast the hand is compared to each 
+opponent’s. 
+  
+
+
+--- PAGE 108 ---
+ 
+After discarding a few useless terminals and honors, the robot faces its first real tough 
+decision of the round. 
+Although this hand has two pairs, the 4p pair is part of a good shape. The North pair is 
+yakuhai and will most likely become a triplet. Despite appearances, this hand lacks a 
+stable head, and that makes it more viable to keep edge tiles and honors over middle 
+floating tiles. This is one reason the robot discards 5s here. 
+But it cannot be the only reason. The bulging shape is one of the best shapes to hold when 
+a hand is far from ready, and discarding it is an enormous efficiency loss. There are several 
+other reasons why the robot discarded 5s here over 8m, 4p, 89s, South, or Green Dragon. 
+Firstly, 89s already accepts 7s, meaning the 4556s shape is worse at growing than it seems. 
+Compared to 456s alone, gaining 7s makes no difference because 89s already accepts it. 
+Gaining 3s or 6s forms a sequence plus 5689s, a severely weakened shape that barely 
+qualifies as three blocks in the suit. This means that out of the usual four effective gains to 
+
+
+--- PAGE 109 ---
+4556s, 3467s, only 4s is truly effective at making another strong block. This decreases the 
+efficiency of 5s to around that of an ordinary floating tile, making 5s worse to keep than 8m 
+since 8m is dora. 
+Secondly, suppose Green Dragon is discarded here instead, and consider how the hand 
+could gain its next effective tile. If it draws one of 6789m13p, chiis 7s, or pons North, 5s 
+would be its next discard to keep South as a safe tile. If it draws one of 245p7sN, it’s a close 
+decision between discarding 5s or South. 5s is clearly not the next discard only if the next 
+effective draw is exactly one of 3456s. In other words, even if 5s is kept here, it will most 
+likely become the next discard anyway.  
+Thirdly, this counting method overestimates the importance of 5s, because even if 5s isn’t 
+the next discard, it can still become the next-next discard, or the one after that. 5s will only 
+appear in the final shape if it forms a block before 8m does and before the hand gains 7s. 
+This lowers the importance of 5s even more.  
+Finally, it’s still the early game, and the hand has four blocks. It has enough ways to gain a 
+fifth block, namely growing 8m, 344p, or pairing a lone honor, that it will not struggle for a 
+fifth block to the point where it bottlenecks the hand, not more than the weak 89s block 
+would. It doesn’t also need 5s to help form a fifth block because its existing options are 
+wide enough. 
+This explains why 5s is discarded over an honor, but there are still other options to examine.  
+The first is breaking 89s. This is wrong because the hand currently has four blocks. It’s one 
+thing to decrease its chances to form a fifth block, it’s another thing entirely to go down to 
+three. This hand will be open far more often than closed, and open hands have a strong 
+tendency to prefer bad shapes over floating tiles because opening covers the bad shapes’ 
+speed weakness. 
+The second alternative is discarding 4p to pursue a flush. It’s important to note the material 
+efficiency loss in doing so. It means that upon completing the North triplet, the hand is 
+headless. Also, at this score and round, sacrificing speed for value is one of the lowest 
+priorities. Even if this hand draws perfectly by gaining South or Green Dragon followed by 4s 
+or 6s, it will still have a hard time justifying discarding both 8m dora and the good 34p 
+shape to commit to a flush. Even in this most optimistic scenario, flush and non-flush are 
+about equal, considering all factors. If even the best effective tiles for flush result in an 
+evenly split decision, it’s clear that the flush should be avoided. 
+  
+
+--- PAGE 110 ---
+ 
+Since 2344p is likely to form two blocks, the robot now hedges for safety by discarding 
+Green Dragon to save the once-cut and therefore safer South. 
+  
+
+
+--- PAGE 111 ---
+ 
+The robot calls pon and discards South. Although safe tiles are important at this score 
+and round, speed is still the top priority. A bad shape 1-away hand needs every effective tile 
+it can get. Without any opponent showing a particularly dangerous pond, score and round 
+alone is not enough reason to keep a safe tile here at the cost of efficiency. 
+  
+
+
+--- PAGE 112 ---
+ 
+The robot discards 9s to upgrade to sticky 1-away. 
+  
+
+
+--- PAGE 113 ---
+ 
+After discarding some drawn safe tiles against one riichi, the robot faces another riichi as it 
+reaches tenpai. It’s unjustifiably risky to discard live dora into two riichis for a bad-shape, 
+no-value hand. The robot folds by discarding 4p. 
+  
+
+
+--- PAGE 114 ---
+ 
+The round ends in a mangan deal-in from riichi to riichi. 
+  
+
+
+--- PAGE 115 ---
+Closing 
+This hand showed how much logic and reasoning can go into a single decision. It took 
+many concepts combined to arrive at the 5s discard on turn 4. These concepts include 
+knowing how nearby shapes affect each other’s strengths, visualizing how the hand would 
+look after gaining each of its effective tiles, picturing how a hand is likely to evolve on future 
+turns, knowing the value of floating tiles, and knowing whether to pursue a flush. There’s no 
+such thing as a trivial early discard. Decisions in the early game may seem interchangeable 
+and immaterial, but they could also be extremely deep and nuanced, requiring 
+comprehensive strategy knowledge to get right, and decide the hand’s overall direction for 
+the rest of the round. 
+There are also more specific concepts to learn from this hand. The first is whether to break 
+off-suit shapes to pursue a flush. It is almost always wrong to lose efficiency up front to 
+pursue a flush with at least one off-suit dora and one off-suit good shape. This applies at 
+nearly every score and round, not just nearly even scores close to the last round, where 
+hand value greatly diminishes in importance. 
+Secondly, saving safe tiles is often wrong. With the advent of Suphx and LuckyJ, many 
+intermediate players now incorrectly save safe tiles. This hamstrings their efficiency and 
+hampers learning. Even LuckyJ, the robot most fond of safe tiles, playing at almost even 
+scores near the last round where safe tiles are far more useful, chose not to save one upon 
+reaching bad shape 1-away. This is despite the high risk of having dangerous floating tiles, 
+including dora, get stuck in hand later. In most cases, the first plan for a hand should be to 
+win it. Tactics like preparing to fold, assisting an opponent, or holding key tiles to slow 
+opponents down should be reserved for special circumstances and used sparingly, not at 
+every opportunity. 
+Thirdly, be vigilant about the true values of various floating tiles in a hand without a stable 
+head. While needing a head alone usually doesn’t make a middle tile worse than an honor, 
+it is one factor that can compound with others to reverse those tiles’ relative importance. 
+The most useful tool to judge when this may be the case is visualizing how a hand will likely 
+evolve on future turns. This kind of visualization, along with situational awareness, is one of 
+the secrets to improving beyond the intermediate level. 
+  
+
+--- PAGE 116 ---
+Hand 12 
+ 
+East 3, second place, close behind first and far ahead of third. This score situation, along 
+with being dealer, is one that calls for far more aggression than usual. Despite this, to play 
+such a slow starting hand correctly, care must be taken beyond pure tile efficiency. 
+
+
+--- PAGE 117 ---
+ 
+This exact hand pattern, with all bad shapes and four pairs, including one of yakuhai, is one 
+of the trickiest to play in the whole game. Normally, chiitoi is the obvious direction with four 
+pairs and all bad shapes, but the yakuhai pair enabling opening all the bad shapes greatly 
+diminishes chiitoi’s advantage.  
+Since chiitoi is 2-away and regular shape is 3-away, and since chiitoi can more easily use 
+another dora, chiitoi is still the hand’s main direction, with regular shape as a backup plan. 
+This means the only discard candidates in this hand are 5m and 6p. White Dragon is too 
+valuable as both a chiitoi wait and a regular shape value booster to discard. 
+The robot discards 5m, the hardest tile to pair for chiitoi that also has its efficiency 
+reduced by nearby shapes. Discarding 6p to keep flush chances alive looks like an option, 
+but the shape in the man suit is too bad to form the blocks required. Also, with chiitoi as the 
+hand’s main direction, it’s hard to imagine breaking the 3p pair for a flush. Overall, this 
+makes pursuing a flush unviable, and 5m remains the better discard than 6p.  
+
+
+--- PAGE 118 ---
+ 
+The discard that keeps four pairs and maximizes 3-away acceptance is 6p, which seems 
+like the obvious move. However, the robot discards 8s and sacrifices 8 effective tiles. 
+There are two reasons for this. Firstly, comparing the two kanchans of 46p and 68s, it is 
+obvious that 46p is more rewarding to fill, both because red 5p exists and because 33456p 
+is far better at growing horizontally than 33p plus an unconnected 678s.  
+Secondly, imagine discarding 6p and gaining 2p or 7s, the lost effective tiles from breaking 
+68s. The next discard, to maintain 2-away for both chiitoi and regular shape, would be 
+White Dragon. For a hand with chiitoi as its main direction, this is a huge blow to both 
+speed and safety, making those 8 effective tiles far less valuable than the raw tile count 
+indicates.  
+Another way to look at it is in terms of hand space. For any hand with chiitoi as its main 
+direction, pairs will never be discarded. Even if a complex shape forms a sequence, the 
+attached pair still needs to be kept. This takes up an extra spot in the hand, a spot that 
+
+
+--- PAGE 119 ---
+could otherwise hold a good chiitoi wait or valuable floating tile, and greatly reduces the 
+hand’s flexibility. All of this means complex shapes like ryanmen pair and kanchan pair are 
+far less valuable in a chiitoi hand than a regular shape hand. 3346p in this hand is much 
+closer to two blocks than one. 46p is a better block than 68s, so 68s is broken first. 
+ 
+ 
+The robot discards 6s to keep another excellent pair candidate. Note that, had the previous 
+discard been 6p, this hand would now discard 1s for lack of space. Had that happened, it 
+would have amounted to improving a cheap 3-away regular shape in favor of the valuable 
+2-away chiitoi, not a favorable trade.  
+  
+
+
+--- PAGE 120 ---
+ 
+Following a similar logic as previous turns, the robot discards 4m, sacrificing 3 regular 
+shape effective tiles to keep a better pair candidate.  
+  
+
+
+--- PAGE 121 ---
+ 
+Red Dragon is this hand’s best possible draw for regular shape and elevates it to be as 
+viable as chiitoi. Since this is still a bad shape, 2-away hand and it’s now the midgame, the 
+robot discards 1s to keep a safe tile. 
+  
+
+
+--- PAGE 122 ---
+  
+After several turns of discarding its draw to keep a safe tile, right-hand opponent opens 
+their hand.  
+Next turn, the robot discards 9m. This is a mistake because 9m is safe against all 
+opponents, so there’s no reason not to hold it for speed and value. The correct discard is 
+White Dragon.  
+  
+
+
+--- PAGE 123 ---
+ 
+It’s now approaching the late game and the hand is still 2-away. At this stage, 3s has a non-
+negligible deal-in rate, so the robot discards White Dragon and awaits developments. 
+  
+
+
+--- PAGE 124 ---
+ 
+The robot discards 8s, a safe enough tile against the open hand, to keep 2-away. 
+  
+
+
+--- PAGE 125 ---
+ 
+The robot discards 3s for 1-away. Although 3s is dangerous, dealing in is far less impactful 
+in this score situation than usual, making it worth risking for at least tenpai at draw. 
+  
+
+
+--- PAGE 126 ---
+ 
+The robot discards 3m, another dangerous push for tenpai, motivated by the score 
+situation. 
+  
+
+
+--- PAGE 127 ---
+ 
+To maintain 1-away, the possible discards are 7m, 8m, 4p, or 8p. Out of these, 4p or 8p are 
+far safer. There’s not much difference between the two, and the robot discards 4p. 
+  
+
+
+--- PAGE 128 ---
+ 
+Despite its efforts, the robot discards Green Dragon, ending the round without tenpai. 
+  
+
+
+--- PAGE 129 ---
+Closing 
+This round is a showcase of how to play a hand where both chiitoi and regular shape are 
+viable. For this hand, chiitoi was clearly the better option, with fewer shanten and higher 
+value, and regular shape was a backup plan until the Red Dragon draw made it equal. In 
+contrast to previous episodes where it combined chances, the robot focused on only this 
+hand’s main direction at the expense of side options. 
+This is not a contradiction. Combining chances only applies to situations where each 
+possibility is about equally viable, not where one option is clearly the best. Knowing when 
+to combine chances and when to commit to the main option is an important skill that helps 
+immensely in navigating the early game. Studying the logs of robots like LuckyJ and Suphx 
+can be of great benefit in this area, as they are particularly good at it. 
+The robot made an obvious mistake this round, the discard of 9m which slowed itself down 
+without compensation. Rather than using cases like this to dismiss robot play as 
+inapplicable and somehow inferior, a better attitude is to identify them as errors and not 
+blindly copy the robot while still learning from robots’ other decisions. If anything, this kind 
+of error shows how far we still are to achieving perfection, if such a thing is possible for 
+mahjong. To get as close as possible to this imagined perfection, one must first keep an 
+open mind and a critical attitude, not imagine oneself already there. 
+ 
+  
+
+--- PAGE 130 ---
+Hand 13 
+ 
+East 3, third place. No adjustments are needed for the score and round. 
+  
+
+
+--- PAGE 131 ---
+ 
+On turn 3, the robot discards East to reduce the chance of someone calling pon on it. This 
+hand has good enough shape that it doesn’t need a potential East triplet to speed it up. 
+Next turn, it faces a difficult decision. 
+This hand is 3-away, which means value and safety are just as important as speed, as it can 
+still afford to lose acceptance for them. With how far away the hand is from tenpai and the 
+number of bad shapes it contains, it is likely to play from behind. The possibility of open 
+tanyao also makes West more valuable for safety. For these reasons, West must be kept. 
+Apart from West, 2p is the most efficient discard. If 2p is discarded, the hand would have 
+two heads, both of which are part of complex shapes. When this is the case, completing 
+one shape fixes the other as the head, making its complex shape ineffective. Apart from 
+this, the other material efficiency loss from discarding 2p is the shanpon acceptance for 
+open tanyao.  
+
+
+--- PAGE 132 ---
+Imagine discarding 2p then drawing 3m. The next discard would be 9p, breaking a bad 
+shape for tanyao and shape improvements, leaving 2344m as a backup head candidate. If 
+it is the case that the next discard is not 4m upon completing 234m, then 244m in this hand 
+is not a complex shape, but rather 44m plus a floating 2m. Drawing 3m is not as much 
+completing a block as it is extending a floating tile to a joint. 
+Another way to think about this position is by evaluating the quality of the 3m acceptance. 
+If 2p is discarded here, then 3m is drawn, the resulting 2-away hand is so poor that it should 
+revert to 3-away for improvement. This means 3m, despite appearances, isn’t effective at 
+advancing the hand to 2-away at all.  
+Since 8p, unlike 3m, does result in a 2-away hand good enough to not revert to 3-away, it is 
+too early to break 79p for tanyao. The robot discards 2m. 
+ 
+ 
+Live yakuhai is too dangerous to keep at this stage. The robot discards White Dragon. 
+
+
+--- PAGE 133 ---
+ 
+The robot discards 2p, the most efficient play that keeps West for safety. 
+The reasoning that made the robot keep 2p on turn 4 does not apply on this turn. Here, 
+there’s no issue of two complex shapes making each other redundant, nor is the potential 
+2-away hand from drawing 2s so weak that it should be reverted to 3-away. 
+  
+
+
+--- PAGE 134 ---
+ 
+The hand gains a sixth block. The robot discards 7p, breaking its weakest one. Although 
+discarding 1s loses the same number of effective tiles, 5 blocks instead of 6 is the default 
+play. 
+  
+
+
+--- PAGE 135 ---
+ 
+The hand is now 2-away for chiitoi. The robot discards 9p, the natural play that preserves 
+this possibility. 
+  
+
+
+--- PAGE 136 ---
+ 
+The robot discards 1s, foregoing two effective tiles for chiitoi, tanyao, safety, and because 
+the 135 block benefits far more from drawing 4s than 2s. 
+  
+
+
+--- PAGE 137 ---
+ 
+Right-hand opponent breaks 12s and 45s to riichi, all but guaranteeing their wait is good 
+shape. The player across seems to be pushing. The robot discards West, its saved safe tile, 
+to buy time. 
+  
+
+
+--- PAGE 138 ---
+ 
+Left-hand opponent is also pushing. The robot discards 4s, safe against all opponents, 
+foregoing regular shape for 1-away chiitoi. 
+  
+
+
+--- PAGE 139 ---
+ 
+The player across deals in with 5p. 
+  
+
+
+--- PAGE 140 ---
+Closing 
+There was only one difficult decision in this hand, the 2m discard on turn 4. It relied on a 
+strategy principle: when a hand has two heads, both of which are part of complex shapes, 
+the two complex shapes weaken each other because completing one makes the other 
+ineffective. Consequently, it is often correct to fix one of the heads by breaking its complex 
+shape extension. 
+Other strategy principles were also shown, including evaluating the quality of an effective 
+tile, keeping safe tiles with a hand likely to play from behind, and considering not only 
+speed but also value and safety when a hand is far from tenpai. Previous articles in this 
+series covered these concepts more in depth, which are reinforced here. 
+Another notable point is how hand-reading is never 100% reliable. Despite reading right-
+hand opponent for good shape since they discarded two joints to riichi, including one good 
+shape containing dora, it turns out they did so for value with bad shape instead. 
+  
+
+--- PAGE 141 ---
+Hand 14 
+ 
+East 3, last place. This doesn’t affect strategy much because it’s an early enough round and 
+small enough deficit. 
+ 
+
+
+--- PAGE 142 ---
+ 
+The robot reaches 1-away for chiitoi. Tanyao chinitsu is within reach as early as turn 2. This 
+is an exceptional hand. Next turn, it faces a tough choice between several possible hand-
+building paths. 
+Before choosing a discard, take a moment to read the hand. This hand is 1-away for chiitoi 
+with 4p, 5p, and 6s as pair candidates. It is also 1-away for tanyao with 88m, 22p, and 688p 
+as incomplete blocks. The score for this 1-away ranges from 1000-point open tanyao to 
+mangan sanankou. In addition, it is 2-away for chinitsu for up to haneman if also tanyao. 
+Since it’s still early, chinitsu scores far better, and chiitoi and tanyao 1-aways only contain 
+bad shapes, chinitsu is the hand’s obvious main direction. For this reason, all pinzu should 
+be kept. The only discard candidates are 8m and 6s. 
+The benefit to discarding 6s is keeping all three paths of chinitsu, tanyao, and chiitoi intact. 
+Chinitsu, tanyao chiitoi, and tanyao tsumo sanankou are all mangan-grade hands. If 6s 
+
+
+--- PAGE 143 ---
+weren’t dora, it would be the obvious discard. But since it is dora, discarding it immediately 
+concedes value. The alternative, 8m, lacks this concession and requires examination.  
+8m makes the hand 1-away for both chiitoi and tanyao. The chiitoi acceptance it brings, 4p 
+and 5p, also advance chinitsu. If 8m is kept and 4p or 5p is drawn, it’s unclear whether it’s 
+correct to refuse chiitoi tenpai for chinitsu (it depends on turn number and each 
+opponent’s speed). This greatly diminishes the value of chiitoi because gaining 45p is 
+highly desirable, even if they aren’t chiitoi tenpai. The marginal value of keeping 8m for 
+chiitoi does not make up for the immediate value concession from discarding dora. 
+For regular shape, compared to a potential haneman chinitsu, 1000-point open tanyao is 
+not worth considering this early. The main question, then, is whether 8m is worth keeping 
+for sanankou. Following a similar logic as the chiitoi case, out of all effective tiles the hand 
+can gain towards tanyao, 2p, 7p, and 8p also advance chinitsu, diminishing the importance 
+of tanyao tenpai. Since chinitsu is too valuable, the hand will likely decline to pon 8m. This 
+leaves drawing 8m before gaining any other effective tile the hand’s only way to realize 8m’s 
+sanankou potential, which is far too narrow to be worthwhile. 
+After this reasoning, it becomes clear that 8m only gives low-value acceptance that this 
+strong hand can do without. The robot discards 8m to keep higher-value effective tiles 
+around 6s, which gives red 5s and 6s acceptance that are clearly valuable enough to reject 
+chinitsu. 
+ 
+
+--- PAGE 144 ---
+ 
+The 78m joint is even lower value than the previous 88m. The robot discards 7m following a 
+similar logic as the previous turn. 
+  
+
+
+--- PAGE 145 ---
+ 
+Since all effective tiles around 8m are useless based on the previous reasoning, the robot 
+discards 8m to keep a safe tile. 
+  
+
+
+--- PAGE 146 ---
+ 
+The robot calls pon and discards 6s, committing to chinitsu and foregoing sticky 
+acceptance around 6s for safety. Given that it’s near midgame, the likely 2-han hand from 
+sticking 6s does not make up for the higher chinitsu success rate by keeping a safe tile for a 
+possible later counterattack.  
+  
+
+
+--- PAGE 147 ---
+ 
+The robot calls chii and discards Green Dragon. Although the wait is horrible, it can still 
+improve, and haneman tenpai is too good to pass up. 
+  
+
+
+--- PAGE 148 ---
+ 
+The robot discards 2p to improve its wait. Discarding 4p improves to the same wait and 
+preserves the option to kan 3p, but it would mark 8p and especially 5p as more dangerous 
+and less likely to be discarded, lowering win rate unacceptably far. 
+  
+
+
+--- PAGE 149 ---
+ 
+The hand goes to exhaustive draw for 1000 points tenpai payment.  
+
+
+--- PAGE 150 ---
+Closing 
+This hand illustrates the strategic principle of commitment. When a hand’s main direction 
+is both fast and valuable enough, it’s better to fully commit to it rather than keep side 
+options open. In this scenario, any side options should be chosen for value far more than 
+speed. This does not contradict the strategy of keeping options open and combining 
+chances. Rather, it takes experience and judgment to decide which is the case. One factor 
+in deciding whether to commit is turn number. The later it is, the more viable it is to 
+commit, as shown by the robot’s 6s discard on turn 6. 
+Another thing to note is mahjong’s inherent variance. No hand, no matter how good, 
+“deserves” or “is entitled to” winning. This hand had a phenomenal start, was tenpai for 
+haneman from turn 8, and didn’t win. This was not unusually bad luck, but rather normal 
+for mahjong. The mental skill to weather these random events is just as important as the 
+techniques of choosing what tiles to play. 
+  
+
+--- PAGE 151 ---
+Hand 15 
+ 
+South 1, third place as dealer. Strategy is not affected much, except a slight emphasis on 
+value. 
+
+
+--- PAGE 152 ---
+ 
+After discarding some terminals and honors in the usual order, the robot faces a key 
+decision. 
+This hand has five blocks, one of which is good shape, the rest are bad shape. With three 
+pairs, it is 3-away from both chiitoi and regular shape, with chiitoi more likely to use the 
+floating honor dora. This kind of hand is easy to mess up, as the player is never quite sure if 
+or when to commit to chiitoi or regular shape. 
+Since the concept of shape doesn’t exist for chiitoi, the hand’s regular shape strength is the 
+biggest factor in deciding its direction. With only one good shape, chiitoi is viable enough in 
+comparison that shapes like 122m and 112p should keep their pair extension even if they 
+become a sequence. This immediately eliminates 2m and 1p as discard candidates. 
+If this hand gains a tile towards regular shape, the next discard is probably breaking 89p to 
+keep both dora for value and floating tiles for shape, to avoid a bad-wait, no value hand that 
+cannot open. However, this does not make 89p the correct discard on this turn. Since 
+
+
+--- PAGE 153 ---
+breaking 89p loses 7p acceptance, it should only be done when all other discards lose 
+more than that. Currently, the acceptance of 3m and 3p are both weaker than 7p because 
+they require an extra space in the hand to keep holding their pair. 
+Given this reasoning, the correct discard is either 1m or 2p. The robot discards 1m 
+because it sees 1p and 4p in other players’ discards, making 2p both more abundant in the 
+wall and slightly safer. 
+After discarding 1m, the plan for the hand is clear. If it gains a fourth pair, commit to chiitoi. 
+On most gains toward regular shape, 89p should be broken for shape and value 
+improvements, including continuing to hedge chiitoi. One exception is gaining 1p, upon 
+which 2p is the next discard since it is too weak as a floating tile compared to direct 7p 
+acceptance. Another exception is drawing 7p directly, then West is the next discard to 
+commit to regular shape.  
+  
+
+--- PAGE 154 ---
+ 
+Right-hand opponent soon opens three times, prompting the robot to fold. 
+
+
+--- PAGE 155 ---
+ 
+Right-hand opponent wins cheaply to end the round. 
+  
+
+
+--- PAGE 156 ---
+The position on turn 4 is worth further exploration for deeper understanding. One good way 
+to do so is to see how the optimal strategy changes with slight changes to the position. 
+ 
+ 
+1. For instance, what if the 1m were 3m instead? 
+ 
+ 
+2. And what if 112p were further replaced by 223p? 
+ 
+Answers on the next page. 
+  
+
+
+--- PAGE 157 ---
+Answer 1: Break 89p. With two good shapes, a gain of 3p is strong enough to commit to 
+regular shape and displace 1p. This means the 3p acceptance is no longer weaker than 7p 
+for needing another hand space to keep holding the 1p pair. Since West is the hand’s only 
+source of value, it counts as its own block at this early stage, making 89p the hand’s 
+weakest block. 
+Answer 2: Discard 2m. With three good shapes, regular shape is strong enough that chiitoi 
+is not relevant. 2m, breaking the third pair from the strongest ryanmen, is the standard play 
+to hold West for value. 
+ 
+Closing 
+Chiitoi vs. regular shape is one of the hardest early-game decisions. This hand shows a 
+good way to approach them, by first determining the strength of the regular shape hand. 
+Before this can even be done, chiitoi needs to be recognized as a viable path in the first 
+place. Even with only three pairs, the hand’s multitude of bad shapes made it possible. The 
+other strategic point worth remembering is how chiitoi being viable weakens shapes like 
+ryanmen pair and penchan pair because they still can’t afford to discard their pair upon 
+becoming a sequence. 
+This hand also showcased the learning technique of tweaking a discard problem slightly 
+and seeing how the answer changes with each tweak. Instead of only learning how to play a 
+specific position that will probably never happen again, this allows for learning the best 
+strategy for a range of positions, where similar situations are far more likely to occur in the 
+future.  
+  
+
+--- PAGE 158 ---
+Hand 16 
+ 
+East 2, even scores. No adjustments for score and round. 
+  
+
+
+--- PAGE 159 ---
+ 
+After a couple turns of discarding useless terminals and honors, the robot faces a key 
+decision. 
+This hand has four blocks, one of which is complete, and four pairs, one of which is 
+yakuhai. It has 0 dora, is 3-away from regular shape, and 2-away from chiitoi.  
+ 
+Compared to the above hand from Episode 12, this episode’s hand is “sticky 3-away” , 
+significantly better than the 3-bad shape 3-away from before. Unlike that hand, this hand 
+has far greater ability to rush a quick win by opening for White Dragon. For this reason, 
+greater emphasis should be placed on regular shape, particularly the gain of 3p. Drawing 
+3p makes regular shape fast enough to overtake, if not outright obviate, chiitoi in expected 
+value. Consequently, discarding 2p would lose 4 fully effective tiles of acceptance. 
+
+
+--- PAGE 160 ---
+However, despite 3p acceptance being fully effective, drawing it still doesn’t make 1p the 
+next discard due to the hand’s abundance of other floating tiles. This means the hand 
+space argument for treating 2p as a floating tile still applies.  
+Consider the two possible ways this hand can develop. If it never gains a third White 
+Dragon, it must be closed, where chiitoi contributes significantly to its total value. If this is 
+the case, 2p would be the discard, being a non-terminal, non-honor floating tile with poor 
+potential to grow horizontally. If the hand gains White Dragon at some point, then 11p, 
+being able to pon from anyone, is a good shape, and doesn’t need 2p to reinforce it. 
+The other floating tiles in this hand all have some advantage over 2p. 3s has greater 
+horizontal acceptance, 9s accepts dora and is a better pair candidate, and East is safe and 
+an excellent pair candidate. The robot discards 2p after all. This can also be thought of as 
+fixing the 11p good shape to keep better floating tiles to form a fifth block. 
+  
+
+--- PAGE 161 ---
+ 
+Since this hand has very fast open shape, the robot calls pon and discards 9s. With the 
+hand open, 9s being a pair candidate no longer matters, and accepting a single 7s to raise 
+the hand’s value from 1000 to 2000 is not worth the bad wait and potential danger from 
+keeping 9s too long. 
+  
+
+
+--- PAGE 162 ---
+ 
+Upon gaining its fifth block, the robot discards 3s to accept its final shape and keep a safe 
+tile. 
+  
+
+
+--- PAGE 163 ---
+ 
+Even though 7s is worth points, when it’s 1 to 2 han, it’s not enough points to matter. The 
+robot discards 7s. 
+  
+
+
+--- PAGE 164 ---
+ 
+The robot calls pon and discards East, successfully reaching good shape tenpai. 
+  
+
+
+--- PAGE 165 ---
+ 
+The hand ends with the robot’s 1000-point win. 
+  
+
+
+--- PAGE 166 ---
+Closing 
+This episode showcased yet more tools to approach mahjong’s hardest hand to play 
+correctly, a 3-away regular shape with four pairs, one of the pairs being yakuhai. This time, 
+the main technique used is reading ahead. That is, picturing various ways the hand could 
+evolve and the importance of a tile in each such way. In this case, both main paths 
+coincided in the same discard, making an initially difficult decision easy. 
+Another important lesson is that ryanmen is not the only good shape, and how opening a 
+hand changes the speeds of shapes. A closed ryanmen has 8 effective tiles, while an open 
+shanpon has 4, roughly multiplied by 4 for being able to get them from any player. This is 
+effectively 16 tiles of acceptance, the same as a ryanmen that can chii. Even if only one 
+side of the shanpon can pon, that’s still effectively 10 tiles, more than a closed ryanmen. 
+This drastic change in effective acceptance means open hands have very different 
+priorities than closed ones. 
+Additional strategic points for this hand include the irrelevance of improving value from 1 to 
+2 han, treating complex extensions as floating tiles when lacking a block, and treating 
+shapes like 112 as a pair and a floating 2 when chiitoi chance is significant. Together, they 
+make studying this hand, and others like it, a great way to improve at this game.  
+  
+
+--- PAGE 167 ---
+Hand 17 
+ 
+East 3, second place, with about a mangan gap to both first and third. The only strategy 
+adjustment for this score is being slightly less willing to push against last place. 
+
+
+--- PAGE 168 ---
+ 
+This hand has five blocks total, four blocks for tanyao, three pairs, one good shape, and no 
+dora. Despite having five blocks so early, it is not a good hand, lacking both shape and 
+value.  
+There is potential for this hand to improve on both fronts. For speed, pairing and calling pon 
+on North or gaining a fifth bock for tanyao allows the hand to open. For value, chiitoi is 
+viable with three pairs and only one good shape.  
+With one good shape, gaining an effective tile towards regular shape makes regular shape 
+strong enough to abandon chiitoi. But until this gain is made, North should be kept as it 
+serves triple duty as a pair candidate, potential yakuhai pon, and safe tile. 6p is the hand’s 
+best hope at a fifth tanyao block and should be kept too. 
+Out of all other regular shape acceptance, 2m and 3s are the least valuable as they lose 
+tanyao. The robot discards 1s because it only loses 3s acceptance, compared to 1m which 
+also loses 6m.  
+
+
+--- PAGE 169 ---
+ 
+North is now a dead honor. Although 9m is similar to 1s last turn in that it only enables non-
+tanyao acceptance, this is still better than North that just lost two out of its three benefits. 
+The robot discards North. 
+  
+
+
+--- PAGE 170 ---
+ 
+Although 3s forms a ryanmen with 22s, it’s not much of a good shape when 1s is twice seen 
+and furiten and 56s already accepts 4s. Since 6p is still a valuable tanyao block candidate, 
+the robot discards 3s. 
+  
+
+
+--- PAGE 171 ---
+ 
+Upon drawing a fourth pair, considering 6p is still a tanyao block candidate, it’s natural to 
+continue hedging tanyao and chiitoi by discarding 1m or 9m. However, tanyao is now 1000-
+point 3-away compared to valuable 2-away for chiitoi. Even if the hand draws 5p or 7p next, 
+it would still be unreasonable to break 11p for tanyao.  
+Consider what would need to happen for 6p to contribute to this hand. First, it needs to 
+form a block via 4578p draw. Then the hand needs to gain an effective tile towards tanyao 
+before it draws a fifth pair. If the hand draws its fifth pair or any other effective tile towards 
+regular shape before 6p forms a block, 6p will be discarded. Even if 6p forms a block first, if 
+the next effective draw is a fifth pair, 6p still doesn’t contribute.  
+All things considered, the valuable possibility of chiitoi leads to a far lower chance of the 
+hand keeping and using 6p. This lowers the value of 6p enough that it no longer beats 1m 
+and 9m, which provide direct acceptance, are safer, and are better pair candidates. The 
+robot discards 6p.  
+
+
+--- PAGE 172 ---
+ 
+With the player across discarding dora and left-hand opponent breaking a whole sequence 
+a turn later, it is now necessary to consider safety.  
+The 2m draw advances regular shape to 2-away, the same as chiitoi. Since all pairs, 
+completed shapes, and good shapes need to be kept, the only discard candidates are 5m 
+and 9m. 
+5m provides ten total tiles of acceptance in 456m. 9m accepts five, 89m. If acceptance 
+were the only priority, 9m would be the discard. But there are other relevant factors 
+influencing this decision. 
+Firstly, 456m are less likely to be in the wall than 89m, weakening 5m’s advantage in 
+acceptance. Secondly, 1p and 2s are both depleted. This makes achieving a good wait with 
+regular shape less likely, weakening the effect of regular shape acceptance. Thirdly, 9m is 
+both a better pair candidate for chiitoi and a safer tile against two players.  
+All these factors in favor of 9m reverse the two tiles’ importance. The robot discards 5m. 
+
+
+--- PAGE 173 ---
+ 
+The hand reaches 1-away for regular shape. Without any spare tiles to keep both regular 
+shape and chiitoi options open, the robot discards 3m and abandons chiitoi. 
+  
+
+
+--- PAGE 174 ---
+ 
+Although this wait is only 2 tiles wide, and although it’s only a 1300-point hand, the robot 
+still declares riichi discarding 7m. With no one having made a move, a reasonably early 
+turn, not many ways to improve the hand, and a sotogawa trap on 2s, it’s a clear decision 
+despite the drawbacks. 
+The rest of the hand is omitted as there are no decisions to make after riichi. 
+  
+
+
+--- PAGE 175 ---
+Closing 
+The key play this round was the 5m discard on turn 6. It is an example of a “safety hedge” , a 
+way to keep safer tiles that doesn’t compromise efficiency as much as keeping 100% safe 
+tiles like dead honors. This technique is often used when approaching the midgame with a 
+hand that is too weak to go full attack yet is too strong to simply hoard honors and fold. In 
+this case, it was combined with wall reading and value considerations to reach the final 
+answer. 
+Another heavily used strategy principle this hand was combining chances. Like with many 
+mediocre hands, the robot began this hand by keeping the possibility open for both regular 
+shape and chiitoi, only committing to regular shape when it became impossible to go for 
+both. The turn 2 discard of 1s, keeping both North and 6p to develop in either direction, 
+exemplifies this strategy. 
+Finally, it’s worth mentioning just how strong first move riichi is, to the point where it’s the 
+right move even when waiting on 2 tiles with minimal value, in a score situation where a 
+cheap win does not improve placement. This means despite all discussions of advanced 
+strategy, efficiency is still king, and racing to riichi before anyone else is still the primary 
+goal for most hands.  
+  
+
+--- PAGE 176 ---
+Hand 18 
+ 
+East 3, third place. Regardless of score situation, a hand with decent shape and 2 dora 
+should be played as fast as possible in the early game. 
+
+
+--- PAGE 177 ---
+  
+Since 9p has been discarded by dealer, it is both slightly safer and tiles around it should be 
+slightly richer in the wall than those around 1p. The robot discards 1p. 
+Naga would discard East here, foregoing the possible 3-han open yakuhai hand for 
+maximum closed efficiency, including the ability to form a pinfu-eligible head with 1p or 9p. 
+Discarding yakuhai early also reduces the chance of someone calling pon on them, 
+lowering the average speed of the round, which is beneficial to a somewhat heavy hand like 
+this one. 
+It is hard to definitively conclude which discard is better. The best interpretation is that 
+choices like this are a matter of style. 
+  
+
+
+--- PAGE 178 ---
+ 
+The robot discards South, technically a slight error. This is intentional as the robot 
+randomizes its decisions to make itself harder to read (if it always discards East here, 
+people will know it never has East when it discards South, which can be exploited). Plays 
+like this are not significant for learning strategy from robot play. 
+  
+
+
+--- PAGE 179 ---
+ 
+Drawing 4s advances the hand to 2-away. The discard candidates are East to maximize 
+closed efficiency or 1s to maximize open speed by combining chances between tanyao and 
+yakuhai. 
+Discarding 1s exacerbates the overlapping 5s acceptance in souzu as it loses a lot of 
+acceptance in the same suit, namely 134s. With 2 dora, riichi would raise this hand’s value 
+enormously, so it should be the top priority. Losing so much closed acceptance for the 
+possibility of drawing one of two remaining Easts is not a good trade. Therefore, the robot 
+discards East. 
+  
+
+
+--- PAGE 180 ---
+ 
+Left-hand opponent pons Red Dragon and discards a middle tile. There’s little difference 
+between this White Dragon draw and the East that was just discarded. It would seem the 
+play here is to simply discard it. 
+However, although this hand didn’t change, the situation on the table did. With dealer now 
+open and having discarded a middle tile, this 2-away hand is at risk of falling behind. This 
+raises the value of safe tiles and is also an incentive to increase the variance of the hand’s 
+final shape strength. Both strategies enable more counterattacking options later. 
+In addition, an opponent racing ahead reduces the value of closed acceptance for riichi in 
+favor of open speed. A fast open win is now not only worth the hand value itself but also 
+value in preventing their win.  
+All these points combined reverse the importance of 1s and White Dragon. The robot 
+discards 1s. 
+  
+
+
+--- PAGE 181 ---
+ 
+Drawing 2s gives the hand five good blocks, some of which have room for improvement by 
+eliminating overlapping acceptance. 8m can only form a good shape with 7m, and even 
+that would lose guaranteed tanyao, so it is not viable as a potential improvement. Since 
+White Dragon is safer, the robot discards 8m. 
+5p sakigiri, keeping both safe tiles against dealer, is also viable. This, again, is a matter of 
+style. 
+  
+
+
+--- PAGE 182 ---
+ 
+Dealer calls a second pon. At this stage, while it’s possible they’re tenpai, it’s far from a 
+certainty. With a hand this valuable, strong enough to push even if dealer is tenpai, sakigiri 
+to strengthen this expected future counterattack is standard. The robot discards 5p, 
+foregoing the possibility of using it to improve its shape. At this stage, any such 
+improvement would take too many turns to affect the game before dealer wins the hand. 
+  
+
+
+--- PAGE 183 ---
+ 
+Dealer calls another chii and discards red 5m. They’re virtually guaranteed to be tenpai. 
+With guaranteed good wait mangan 1-away, the robot of course calls chii and discards 
+White Dragon to push.  
+Naga disagrees with this play and would chii then discard 3s or 4s (depending on Naga 
+version), with 3s, 4s, and White Dragon all given significant confidence percentage. Mortal 
+agrees with White Dragon with over 90% confidence.  
+It’s clearly unwise to sakigiri with an opponent in tenpai. The only reason to do so is for a 
+stronger push against more than one opponent later, but neither remaining opponent looks 
+fast enough for that to be likely. In this case, Naga’s play is wrong and should not be learned 
+from. 
+  
+
+
+--- PAGE 184 ---
+ 
+Dealer wins by tsumo before the robot can reach tenpai, meaning it never had to risk 3s or 
+4s. 
+  
+
+
+--- PAGE 185 ---
+ 
+Dealer was very cheap, but this can’t be known before their hand was turned face-up. 
+  
+
+
+--- PAGE 186 ---
+Closing 
+The key learning moment in this round was the East discard on turn 4 in contrast to the 1s 
+discard on turn 5. With a virtually identical hand, the robot made two different decisions on 
+consecutive turns based on what its opponents were doing. Most of the reasons for doing 
+so are easy to understand, such as saving safe tiles and being more willing to open. The 
+point about “increasing the variance of the hand’s final shape strength” deserves 
+elaboration. 
+When a hand is far from tenpai, there’s multiple paths to develop it. Often, one path will 
+lead to key accepted tiles with far higher value and/or speed than others, while another 
+path has accepted tiles that are relatively equal in value. Examples of the first type of hand 
+include but are not limited to dora yakuhai pair waiting for pon, atozuke in general, one-
+sided sanshoku or ittsuu, and chiitoi with dora as a pair candidate. The second type of hand 
+is the more typical closed, tanyao-pinfu regular shape hand waiting to riichi, which will 
+most likely be 2 or 3 han no matter which tiles it gains to get there. 
+The strategy theory invoked here is that the first type of hand, with high variance, gets better 
+the more likely a counterattacking decision is to arise later. This is because with such a 
+hand, it is obvious whether to push or fold when the decision comes. Either it has gained its 
+key tile(s) and should push, or it has not and should fold. In contrast, the second type of 
+hand has far less obvious push/fold decisions. This principle is not only useful against open 
+hands but against any opponent showing signs of strength, like those discarding middle 
+tiles before outside ones early. 
+Another important note is how fallible robots are. Aside from mistakes caused by 
+deliberate randomization like discarding yakuhai out of order, a robot as strong as Naga can 
+even make obvious blunders like trying to sakigiri against an opponent obviously in tenpai. 
+This doesn’t mean robots are useless, but rather means their outputs must be interpreted 
+and analyzed with as much care and rigor as human opinions, not trusted blindly. 
+Finally, some decisions really have no right answer and come down to style. Mahjong is far 
+from being as solved as chess, and there are currently multiple top players, human and 
+robot, in person and online, with vastly different approaches to the game who all win a lot. 
+Rather than copy the style of a winning player, it’s more rewarding, not to mention fun, to 
+find your own. 
+  
+
+--- PAGE 187 ---
+Hand 19 
+ 
+No strategy adjustments for the first round of the match, of course. 
+  
+
+
+--- PAGE 188 ---
+ 
+This hand has horrible shape. Its only highlight is a single dora yakuhai. On the first turn, the 
+robot naturally discards West. 
+  
+
+
+--- PAGE 189 ---
+ 
+Conventional wisdom states that suji 2 or 8 is a stronger floating tile than isolated 1 or 9. 
+However, in terms of forming a sequence, a suji 2 needs to gain exactly 1 and 3 (3 and 4 is 
+covered by 5) while an isolated 1 needs exactly 2 and 3. This means both tiles are as fast as 
+each other at forming a sequence. 
+Suji 2 is better for its ability to form a good shape, tanyao, and pinfu. Isolated 1 is better for 
+safety and being easier to pair. Depending on how important each of these considerations 
+is, one or the other may be better to keep in any given situation. It would be a mistake to 
+always discard one or the other without thought. 
+In this position, 5m is part of a block, so 2m is stronger than a usual suji 2 because drawing 
+6m upgrades it to isolated. 9s is also stronger than a usual isolated 9 because there’s a 
+distant hope for 789 sanshoku. With such a terrible hand, the abilities to both open and 
+defend are paramount, making 9s the better tile here. The robot discards 2m. Red Dragon 
+is kept for the same reasons. 
+
+
+--- PAGE 190 ---
+ 
+The hand gains its fifth block and third pair. However, with no good shapes, staying closed 
+for regular shape riichi is not viable. Even with perfect draws, the best result for doing so is 
+a bad wait riichi with no extra value. 
+Since it is unviable to use the hand’s existing five blocks to riichi, it’s not much of a loss to 
+break its worst block, 89p. Doing so allows the hand to keep Red Dragon, which offers three 
+tangible benefits in safety, chiitoi, and pairing it to open. In addition, if Red Dragon is 
+discarded here, the hand becomes short on space. Upon drawing another effective tile, it 
+will face the difficult decision of whether to keep East. Breaking 89p avoids this 
+conundrum, letting the hand maintain its jackpot draw of a second East for longer. The 
+robot discards 8p based on this reasoning. 
+Naga would discard 5m here, acknowledging the unviability of regular shape riichi in a 
+different way by committing to chanta as a main direction. By doing so, its best draw is still 
+pairing yakuhai, but that would result in the hand having six blocks and facing a difficult 
+choice of which one to break, without a good floating 5m to improve its shape. 
+
+
+--- PAGE 191 ---
+This is a style difference between the two robots. All things considered, discarding 5m and 
+8p result in similar hands with mostly identical acceptance. 8p is better for making future 
+turns easier to play, safety, and possible shape improvements. 5m clogs the hand with 
+excess blocks, making future decisions harder, but is faster with its open chanta option and 
+has a greater chance to end up with a single wait on an honor. Both plays have enough 
+merit to be called correct. 
+ 
+ 
+The lucky Red Dragon draw came last turn. In this position, the robot discards 5m over the 
+natural 1m. This is a hedge for chiitoi and safety. It’s getting close to midgame, and despite 
+some lucky draws, the hand is still not fast and can easily end up behind. If the hand needs 
+to play from behind, it will much rather have 1m than 5m floating and would rather pursue 
+chiitoi than needing to open.  
+
+
+--- PAGE 192 ---
+Of course, there’s nothing wrong with discarding 1m to keep 6m effective. Setting up a suji 
+trap softens the blow of losing four effective tiles, but the loss is still significant. If 5m is a 
+better discard than 1m, it’s better by only a little bit. This kind of play, while eye-opening, is 
+low on the list of what to learn from robots. 
+ 
+ 
+Since the hand can open, non-middle pairs can be considered good shapes. This means 
+the 3p draw gives the hand five good blocks. 
+Since it’s now the midgame, the hand must plan for what to do when facing a riichi. If an 
+opponent declares riichi, it makes a big difference whether the hand contains a defensive 
+liability. A few extra effective tiles are no use if the whole hand needs to be broken to 
+defend. The robot discards 4p, foregoing chiitoi and some acceptance to keep a safe tile. 
+  
+
+
+--- PAGE 193 ---
+ 
+Upon reaching 1-away, all effective tiles are too valuable to give up. The robot discards 
+East, giving up its safe tile for maximum acceptance. 
+  
+
+
+--- PAGE 194 ---
+ 
+The robot calls pon and discards 1s to wait on Red Dragon. Since the Red Dragon pair is 
+also safe, there’s almost no chance of dealing in. 
+  
+
+
+--- PAGE 195 ---
+ 
+The robot scores a 1000-point win. 
+  
+
+
+--- PAGE 196 ---
+ 
+Revealing the hands shows that this 1000-point win stopped right-hand opponent’s 
+mangan. Given how poorly this hand started, one couldn’t ask for a better result.  
+  
+
+
+--- PAGE 197 ---
+Closing 
+This hand is another example of the adage that the worse a starting hand, the more 
+carefully it must be played. Playing poor hands correctly is what separates intermediate 
+and “merely good” players from great players. Everyone can play an all-good shape, turn 5 
+good wait mangan riichi correctly, but not everyone can make the most out of a start like 
+this. Every time a start like this happens, those who can play it correctly gain a little 
+compared to those who can’t. 
+One constant theme with advanced strategy is adjusting based on opponents’ speed and 
+whether the round is in the early, middle, or end game. When to keep safe tiles, what yaku 
+to pursue, and which floating tile to keep are all heavily influenced by how likely the hand is 
+to be ahead or behind.  
+This round shows a strategic principle that safe tiles are the most useful for middling-
+strength hands. With a strong hand, safe tiles aren’t needed because the hand is strong 
+enough to push dangerous tiles against riichi. With a trash hand, safe tiles also aren’t 
+needed because it’s no big loss to break it to fold. This means safe tiles are the most useful 
+with hands that aren’t strong enough to push dangerous tiles after falling behind, yet good 
+enough that breaking them to fold is an appreciable loss. This hand is the perfect example, 
+where the robot discarded 4p on turn 7 to keep a safe tile. 
+Despite the importance of safe tiles, it’s still usually wrong to keep them at 1-away with 
+worse than ryanmen-ryanmen acceptance. This is an application of “1-away peak theory, ” 
+which states that acceptance at 1-away is especially important. This not only applies to 
+early tile efficiency but also informs plays like the discard of East on turn 8. 
+Finally, do not fear atozuke. This round was won by going atozuke on a single tile. A hand 
+must win with five blocks, but it doesn’t make a difference in which order. For atozuke to 
+cost, the wrong wait needs to be drawn, discarded (instead of kept to fold), and then an 
+opponent needs to discard the right wait. It’s possible for the combined odds of all these 
+things happening to swing a decision, but it usually doesn’t. If the reward justifies the risk, 
+there’s no issue with going atozuke, even on a single tile for 1000 points.  
+ 
+  
+
+--- PAGE 198 ---
+Hand 20 
+ 
+East 2, second place. No strategy adjustments for score are needed this early in the match. 
+  
+
+
+--- PAGE 199 ---
+ 
+This is a poor hand with all bad shapes. Its only hope of gaining speed is pairing a yakuhai. 
+It’s hard to apply the five-block method with a hand like this. Shapes like 3357p and 
+246899s can become different numbers of blocks depending on what tiles they gain. In the 
+early game, the best way to treat this kind of hand to not divide it into blocks at all. Instead, 
+keep these ambiguous shapes intact, maintain flexibility in shape, and only decide their 
+final divisions into blocks when more draws reveal more information on how. 
+Following this reasoning, the entirety of 3357p and 246899s should be kept until it’s clear 
+what roles they play in the hand. Both single yakuhai should be kept in case they become a 
+pair, leaving 12m as the only discard candidates. The robot discards 1m. 
+  
+
+
+--- PAGE 200 ---
+ 
+The hand gains its fourth pair, opening the door for chiitoi. The play to balance chiitoi and 
+regular shape speed is 2s, but in this case, 2s needs to be kept in case the hand turns into a 
+flush. 7p looks like the next best discard. However, the robot discards 5p instead. 
+While discarding 7p keeps the 335p complex joint intact, 5p has the issue that even upon 
+gaining 4p, the hand’s regular shape prospects don’t become strong enough to break 3p. 
+This means 5p is closer to being a lone tile than part of the 335p joint, and the possible gain 
+of 4p is dispensable.  
+Compared to 5p, 7p is both safer and more available in the wall after dealer’s 8p discard. 
+While 5p accepts red 5p, since chiitoi already has 8s for value, one additional dora matters 
+quite little, not enough to offset the difference in pair candidate quality between 5p and 7p. 
+  
+
+
+--- PAGE 201 ---
+ 
+From a wall reading perspective, 6m and 7p are about the same in availability with both 
+being next to dealer’s discards. 7p can form furiten shapes due to the earlier 5p discard 
+while 6m cannot. Finally, an interrupted break of 57p from hand would look more 
+suspicious than breaking it consecutively. This matters if opponents end up defending 
+against this hand’s riichi, where suspicious discards might give away that it is not a regular-
+shape hand. All three reasons point to the robot discarding 7p. 
+Starting the round by breaking two joints from hand is a sign of strength. In this case, the 
+bluff effect is beneficial as this hand is weak. Opponents, upon seeing these discards, 
+might hold safe tiles, try to deny calls, or cheapen their hand to race, all of which are to the 
+robot’s benefit. 
+  
+
+
+--- PAGE 202 ---
+ 
+It’s now turn 5, and the hand still has 4 odd-suited tiles to discard for a flush. Since 
+pursuing flush also requires breaking 33p and foregoing chiitoi, flush is no longer a viable 
+goal. The robot discards 2s, applying the same principle as the 5p discard that 3s 
+acceptance is dispensable because it doesn’t strengthen the hand enough to discard 4s. 
+While breaking 46m would keep both chiitoi and flush chances open, it drastically reduces 
+the chances of the hand ending up tenpai at draw. This might be correct earlier in the round 
+but turn 5 is too late to break joints this way. 
+  
+
+
+--- PAGE 203 ---
+ 
+Upon drawing 9s, the hand no longer has room to hold both yakuhai. The robot discards 
+White Dragon. East is the better discard, but this is one case where the robot randomizes 
+its play to be less predictable. 
+  
+
+
+--- PAGE 204 ---
+ 
+After the lucky 5m draw last turn, the hand reaches a nice 1-away. The robot discards 3p 
+for maximum acceptance, abandoning chiitoi as regular shape is now strong enough. 
+  
+
+
+--- PAGE 205 ---
+ 
+The robot discards 6s, the most efficient play. “Three skipping pairs” should be memorized 
+as a basic shape. 
+  
+
+
+--- PAGE 206 ---
+ 
+Facing dealer’s riichi, the robot of course declares riichi discarding 6s to chase with good 
+wait mangan. 
+The rest of the round is omitted as there are no relevant decisions after riichi. 
+  
+
+
+--- PAGE 207 ---
+Closing 
+This hand illustrates two early-game principles.  
+First is staying flexible. Despite starting with five blocks, the robot didn’t hesitate to break 
+one to give the rest of its hand the best chance to develop into something better. In the 
+early game, breaking bad blocks to keep useful floating tiles is an important technique to 
+improve the final shape of a hand. 
+Second is how the optimal direction to build a hand changes from turn to turn. The robot 
+chose a slightly less efficient discard on turn 3 to hedge flush chances, then gave up on the 
+flush two turns later without the hand having changed much. The sooner it is, the more it’s 
+worth sacrificing efficiency to speculate on value and other benefits. There are cases 
+where the exact same hand can have 3 or 4 correct discards depending on what turn it is. 
+The exact criteria of when to stay open and when to narrow down to a main direction is hard 
+to explain and best learned through examples and practice. 
+It's worth repeating that the worse a starting hand, the more carefully it must be played. 
+Unlike good hands and even average hands, bad starting hands can’t win by pursuing 
+simple efficiency. It takes knowing how to value lone tiles, which yaku to pursue, when to 
+save safe tiles, and comprehensive strategy knowledge over the whole game to play these 
+hands well. As this hand shows, even a very bad starting hand is often only a couple of 
+lucky draws away from becoming good. The important thing isn’t the getting lucky itself, but 
+rather setting the hand up to have the chance at all. Put more simply, you lose 100% of the 
+chances you don’t earn.  
+ 

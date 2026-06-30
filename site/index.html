@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LuckyJ Digital Playbook</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">LuckyJ NAGA report study</p>
+        <h1>Digital Points for Playing Like LuckyJ</h1>
+      </div>
+      <nav class="toplinks" aria-label="Source links">
+        <a href="#evidence">Evidence</a>
+        <a href="#points">Points</a>
+        <a href="#case-studies">Cases</a>
+        <a href="#drills">Drills</a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <aside class="side">
+        <div class="side-inner">
+          <p class="side-title">Book Index</p>
+          <ol>
+            <li><a href="#point-01">Placement Before EV</a></li>
+            <li><a href="#point-02">Keep Multiple Routes</a></li>
+            <li><a href="#point-03">Bad Shapes Want Calls</a></li>
+            <li><a href="#point-04">Open Hands Need Safety</a></li>
+            <li><a href="#point-05">Throw Dangerous Floaters</a></li>
+            <li><a href="#point-06">Value Starts on Turn One</a></li>
+            <li><a href="#point-07">Use Calls for Tempo</a></li>
+            <li><a href="#point-08">Riichi as Conversion</a></li>
+            <li><a href="#point-09">Rejudge Push-Fold Every Draw</a></li>
+            <li><a href="#point-10">Late Hands Tighten</a></li>
+            <li><a href="#point-11">Win Drawn Hands</a></li>
+            <li><a href="#point-12">Do Not Worship NAGA Match</a></li>
+            <li><a href="#case-studies">Case Studies</a></li>
+          </ol>
+        </div>
+      </aside>
+
+      <article class="book">
+        <section class="intro" id="evidence">
+          <div class="intro-text">
+            <p class="kicker">What this book is</p>
+            <h2>A practical manual, not a score worship page.</h2>
+            <p>
+              The source data contains every LuckyJ game in the sheet that had an exportable NAGA report:
+              1,256 hanchan, 13,059 hands, and 147,378 non-reached LuckyJ discard decisions. I also used
+              <cite>How the Robot Plays</cite>, a 207-page hand-review PDF about LuckyJ, to interpret the
+              patterns. The goal is not to say every LuckyJ move is correct. The goal is to identify the
+              repeatable principles behind the results and turn them into rules you can apply at the table.
+            </p>
+          </div>
+          <div class="metrics-grid" id="metrics"></div>
+          <div class="tile-row" aria-label="Mahjong tile motif">
+            <span class="tiles" aria-label="1m 4m 7m 5p 8p East White Red">qruz,157</span>
+          </div>
+        </section>
+
+        <section class="section" id="points">
+          <p class="kicker">The points</p>
+          <h2>The LuckyJ Operating System</h2>
+          <p>
+            LuckyJ does not play like a pure tile-efficiency chart. It uses tile efficiency as one component
+            inside a placement engine. The recurring pattern is: define the hand's job, keep routes that
+            satisfy that job, preserve enough defense to keep acting, and abandon stale plans immediately
+            when the table changes.
+          </p>
+        </section>
+
+        <section class="section method">
+          <p class="kicker">Decision method</p>
+          <h2>How to read every discard.</h2>
+          <div class="method-grid">
+            <div>
+              <b>1. Job</b>
+              <p>Name the placement job before looking for the prettiest shape. A hand that does not change the table state is not allowed to buy much risk.</p>
+            </div>
+            <div>
+              <b>2. Routes</b>
+              <p>Count real routes, not only immediate ukeire: closed riichi, open yaku, value upgrade, safe tenpai, and clean fold.</p>
+            </div>
+            <div>
+              <b>3. Future Danger</b>
+              <p>Price the tiles you will have to discard later. A tile that is fine now can become the discard that destroys the hand.</p>
+            </div>
+            <div>
+              <b>4. Point of No Return</b>
+              <p>Decide what draw, call, riichi, or second threat will end the attack. LuckyJ-style aggression has an exit rule.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="point" id="point-01">
+          <div class="point-number">01</div>
+          <div class="point-body">
+            <h3>Start with the placement problem, not the hand problem.</h3>
+            <p>
+              Before choosing a discard, ask what the hand is worth in placement terms. The same 2,000-point
+              hand can be valuable, irrelevant, or actively bad depending on round and score. In the PDF,
+              LuckyJ often changes the whole plan because a cheap win no longer protects the target placement,
+              while a mangan changes everything. In the NAGA dataset, LuckyJ's result edge came from conversion:
+              top-half games had 3.09 wins and 0.75 deal-ins per hanchan, while bottom-half games had 1.39 wins
+              and 1.48 deal-ins.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> On turn one, name the hand's job: quick end, mangan chase, defend lead,
+              escape last, or keep options. If your discard does not serve that job, it is probably a habit discard.
+            </div>
+            <ul class="compact">
+              <li>When leading, cheap wins are still useful, but cheap risky wins lose value.</li>
+              <li>When second in South rounds, ask whether a mangan meaningfully changes the final order.</li>
+              <li>When far behind, safe tiles still matter, but as tools that let you push later, not as a plan to fold forever.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="point" id="point-02">
+          <div class="point-number">02</div>
+          <div class="point-body">
+            <h3>Combine chances until the table forces a commitment.</h3>
+            <p>
+              A central LuckyJ habit is keeping tiles that serve more than one future. In bad or unclear hands,
+              it often balances open tanyao, yakuhai, honitsu, chiitoi, and safety. This is not indecision.
+              It is controlled ambiguity. The PDF repeatedly describes hands that shift from three routes, to
+              two routes, to one route, to defense, based on new draws and opponent signals.
+            </p>
+            <div class="diagram">
+              <div><b>Early unclear hand</b><span>tanyao</span><span>yakuhai</span><span>safety</span></div>
+              <div><b>After signal</b><span>speed</span><span>safety</span></div>
+              <div><b>After danger</b><span>fold</span></div>
+            </div>
+            <p>
+              In the dataset, LuckyJ disagreed with NAGA most often early: 45.2% of early decisions, compared
+              with 30.7% in the middle and 27.9% late. Those early deviations are where route-combining happens.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> If a tile contributes to two of speed, value, and safety, it usually beats a
+              tile that contributes to only one, even when the one-purpose tile has more raw acceptance.
+            </div>
+          </div>
+        </section>
+
+        <section class="point" id="point-03">
+          <div class="point-number">03</div>
+          <div class="point-body">
+            <h3>Bad shapes favor opening, but only with a plan.</h3>
+            <p>
+              LuckyJ opens poor hands more readily than a textbook closed-hand player because bad shapes need
+              more outside help. A hand with several bad blocks may never become a respectable riichi hand.
+              Passing a useful pon can be equivalent to quietly folding on turn two. The PDF's third hand makes
+              this explicit: bad shapes increase the speed gain from opening.
+            </p>
+            <p>
+              This does not mean call everything. LuckyJ called in 35.8% of hands and averaged 5.65 calls per
+              hanchan, but it also skipped NAGA-preferred calls 1,996 times. The skill is not "open more";
+              the skill is "open hands whose closed route is fake, while keeping enough defense to survive."
+            </p>
+            <div class="checklist">
+              <h4>Call if most answers are yes</h4>
+              <ul>
+                <li>The hand has poor closed prospects.</li>
+                <li>The call creates yaku, tenpai, or real 1-shanten.</li>
+                <li>The hand has at least one safe tile or a way to discard safely after the call.</li>
+                <li>The value is enough for the score situation, or ending the hand is itself valuable.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="point" id="point-04">
+          <div class="point-number">04</div>
+          <div class="point-body">
+            <h3>Every open call increases the price of safe tiles.</h3>
+            <p>
+              The shorter your hand becomes, the fewer random safe tiles you will draw and keep. LuckyJ's open
+              hands often look aggressive, but many are built around saved honors, genbutsu, or tiles safe
+              against the main threat. This is the opposite of the common mistake: open, throw all safety away,
+              then become forced to push a bad hand.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> After your first call, revalue every honor and every visible safe tile upward.
+              If your hand is open and slow without safe tiles, you have usually created the worst possible position.
+            </div>
+            <p>
+              The PDF's recurring open-hand theme is "rush while preparing to defend." The NAGA data supports
+              the shape of that style: safer-than-NAGA and riskier-than-NAGA deviations were almost balanced
+              overall, but middle and late safer deviations rose sharply when defense started to matter.
+            </p>
+          </div>
+        </section>
+
+        <section class="point" id="point-05">
+          <div class="point-number">05</div>
+          <div class="point-body">
+            <h3>Throw dangerous floating tiles before they become your problem.</h3>
+            <p>
+              LuckyJ is unusually hostile to dangerous floaters in slow hands. It will cut a middle tile that
+              has some raw acceptance if that tile is likely to become an unsafe discard later. This is one of
+              the largest differences between strong digital play and simple tile-efficiency play.
+            </p>
+            <p>
+              The book-data pass found that early NAGA mismatches often involved LuckyJ cutting a simple while
+              NAGA preferred an outside tile. This happened 4,766 times in early mismatches, far more than the
+              reverse pattern. That is the signature of keeping flexible outside/safety/yaku material and shedding
+              dangerous simple floaters before danger arrives.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> In a 3- or 4-shanten hand, do not ask only "what accepts more tiles?" Ask
+              "which leftover tile will I be forced to discard when the first riichi appears?"
+            </div>
+          </div>
+        </section>
+
+        <section class="point" id="point-06">
+          <div class="point-number">06</div>
+          <div class="point-body">
+            <h3>Value planning starts while the hand is still far away.</h3>
+            <p>
+              LuckyJ often sacrifices early speed for value because early acceptance is cheap to spend. Once a
+              hand reaches 1-shanten, every acceptance loss is expensive. The PDF repeatedly warns against
+              racing to a tenpai that cannot satisfy the placement target. If you need mangan, start building
+              mangan while you still have optionality.
+            </p>
+            <div class="two-col">
+              <div>
+                <h4>Good sacrifice</h4>
+                <p>Cut a modestly useful tile to preserve honitsu, chiitoi, toitoi, dora acceptance, or yakuhai.</p>
+              </div>
+              <div>
+                <h4>Bad sacrifice</h4>
+                <p>Cut speed for a decorative yaku that does not change placement or hand class.</p>
+              </div>
+            </div>
+            <div class="rule">
+              <strong>Rule:</strong> If the likely fast hand is not worth winning, do not optimize toward it.
+              Build toward the score class you actually need.
+            </div>
+          </div>
+        </section>
+
+        <section class="point" id="point-07">
+          <div class="point-number">07</div>
+          <div class="point-body">
+            <h3>Call for tempo, denial, and survival, not just hand completion.</h3>
+            <p>
+              LuckyJ calls to break ippatsu, to contest a riichi with a qualified hand, to deny opponents time,
+              and to convert bad closed shapes into usable open hands. But it also refuses marginal calls that
+              merely create a cheap exposed hand. In the data, call opportunities were common: 39,749 possible
+              call spots, with 7,091 actual calls across all games.
+            </p>
+            <div class="stat-strip">
+              <div><b>853</b><span>calls when NAGA preferred no-call</span></div>
+              <div><b>1,996</b><span>skips when NAGA preferred a call</span></div>
+              <div><b>5.65</b><span>calls per hanchan</span></div>
+            </div>
+            <p>
+              That asymmetry matters. LuckyJ is not a call addict. It is selective and placement-aware.
+            </p>
+          </div>
+        </section>
+
+        <section class="point" id="point-08">
+          <div class="point-number">08</div>
+          <div class="point-body">
+            <h3>Riichi is a conversion tool, not a purity test.</h3>
+            <p>
+              LuckyJ's first-place games had 2.30 riichi per hanchan; fourth-place games had 1.78. The difference
+              is not enormous, but it points in the right direction: riichi is part of conversion. The PDF also
+              emphasizes that first-move riichi can be strong even with modest value, while bad-shape, low-value
+              tenpai can be unworthy against multiple threats.
+            </p>
+            <div class="checklist">
+              <h4>Riichi when</h4>
+              <ul>
+                <li>You are first to apply meaningful pressure.</li>
+                <li>The hand changes placement or denies opponents a cheap path.</li>
+                <li>Your wait/value combination is strong enough to push future danger.</li>
+              </ul>
+              <h4>Do not autopilot riichi when</h4>
+              <ul>
+                <li>Two opponents are already live threats.</li>
+                <li>Your hand is bad-shape, low-value, and replaceable by defense.</li>
+                <li>Dama or open play preserves a better placement line.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="point" id="point-09">
+          <div class="point-number">09</div>
+          <div class="point-body">
+            <h3>Push-fold is recalculated every draw.</h3>
+            <p>
+              A LuckyJ hand can go from attack to full fold in one draw. The PDF stresses this repeatedly:
+              opponent progress, number of threats, remaining dangerous tiles, and your future discard path
+              can change the answer instantly. The mistake to avoid is deciding "this is my pushing hand" and
+              then ignoring new evidence.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> Do not ask "is my hand good?" Ask "what dangerous tiles must pass before
+              this hand wins, and are they worth the placement gain?"
+            </div>
+            <p>
+              A three-han hand may push against one riichi and fold against two. A hand with two future
+              dangerous discards is much weaker than the same current tenpai with no future landmines.
+            </p>
+          </div>
+        </section>
+
+        <section class="point" id="point-10">
+          <div class="point-number">10</div>
+          <div class="point-body">
+            <h3>Late hands tighten: fewer deviations, fewer bad moves.</h3>
+            <p>
+              LuckyJ's early mismatch rate was 45.2%; late mismatch rate was only 27.9%. Bad-rate also fell
+              from 18.1% early to 6.6% late. This is what disciplined play looks like. Early turns are for
+              strategic shape, route selection, and value planning. Late turns are for precise execution:
+              take tenpai safely, fold cleanly, or push only hands that deserve it.
+            </p>
+            <div class="chart" id="stageChart" aria-label="Decision rates by stage"></div>
+            <div class="rule">
+              <strong>Rule:</strong> The later the hand, the less you are allowed to speculate. If the hand has
+              not become real by the middle of row two, begin pricing safety more heavily.
+            </div>
+          </div>
+        </section>
+
+        <section class="point" id="point-11">
+          <div class="point-number">11</div>
+          <div class="point-body">
+            <h3>Drawn-hand points are part of the attack plan.</h3>
+            <p>
+              LuckyJ gained tenpai/noten points in 40.6% of drawn hands. This is not accidental noise. The PDF
+              shows hands where LuckyJ folds while preserving an outside chance at tenpai, or takes tenpai with
+              the safest discard. The practical lesson is that "defense" and "winning the draw" are not opposites.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> When folding, keep the route that may still produce safe tenpai. Discard
+              the safe tile that leaves the most harmless future draws.
+            </div>
+          </div>
+        </section>
+
+        <section class="point" id="point-12">
+          <div class="point-number">12</div>
+          <div class="point-body">
+            <h3>Do not worship NAGA match rate.</h3>
+            <p>
+              NAGA is useful because it highlights decisions worth reviewing. But LuckyJ's score in this dataset
+              was almost uncorrelated with NAGA rating or match rate. The lowest NAGA-match decile actually had
+              a better average placement than the highest NAGA-match decile. The useful target is not exact match.
+              The useful target is eliminating the truly bad class of disagreement while preserving strategic
+              deviations that serve placement, safety, and value.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> Review NAGA disagreements in three buckets: obvious blunder, strategic
+              trade-off, and robot-style insight. Only the first bucket should be blindly removed.
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="case-studies">
+          <p class="kicker">Closed-hand replay cases</p>
+          <h2>Where LuckyJ disagrees with NAGA.</h2>
+          <p>
+            I used the Python <code>mahjong</code> shanten engine to replay closed-hand LuckyJ decisions from the
+            cached NAGA reports. The comparison below estimates the shanten and visible-tile ukeire after
+            LuckyJ's actual discard versus NAGA's top discard. Ukeire is not the whole answer; it is included
+            so the trade-off is visible instead of rhetorical.
+          </p>
+          <div class="case-browser">
+            <div class="case-tabs" id="caseTabs" aria-label="Case categories"></div>
+            <div class="case-grid" id="caseGrid"></div>
+          </div>
+          <div class="rule">
+            <strong>Reading rule:</strong> Copy the reason, not the tile. The same discard is good only when the
+            score job, route count, safety map, and opponent pressure match.
+          </div>
+        </section>
+
+        <section class="section" id="drills">
+          <p class="kicker">Practice system</p>
+          <h2>How to train this style</h2>
+          <div class="drill-list">
+            <div>
+              <h3>Turn-one job naming</h3>
+              <p>Before every first discard, write one phrase: quick end, value target, open rush, safety hedge, or last-place attack.</p>
+            </div>
+            <div>
+              <h3>Three-route bad-hand drill</h3>
+              <p>For every bad hand, mark the best tile for tanyao, yakuhai, and safety. Discard the tile that contributes least across all three.</p>
+            </div>
+            <div>
+              <h3>Dangerous floater audit</h3>
+              <p>On turn five, identify the tile you will hate discarding into riichi. If your hand is slow, consider cutting it now.</p>
+            </div>
+            <div>
+              <h3>Call contract</h3>
+              <p>Every call must state its contract: tenpai, 1-shanten, yaku creation, ippatsu break, or denial. No contract, no call.</p>
+            </div>
+            <div>
+              <h3>Future push path</h3>
+              <p>Before pushing, name every dangerous tile that must pass before you win. If there are two or more, downgrade the hand sharply.</p>
+            </div>
+            <div>
+              <h3>Draw-tenpai defense</h3>
+              <p>When folding, prefer safe discards that preserve harmless tenpai routes. Count noten-bappu as a real objective.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section sources" id="sources">
+          <p class="kicker">Sources and limits</p>
+          <h2>What the evidence can and cannot prove</h2>
+          <p>
+            The NAGA reports show what LuckyJ did and where NAGA models disagreed. They do not prove the
+            counterfactual result of replacing LuckyJ's move with NAGA's move. The PDF provides hand-by-hand
+            explanations of LuckyJ decisions and was used to convert the raw patterns into strategy points.
+          </p>
+          <ul>
+            <li><a href="https://docs.google.com/spreadsheets/d/1jV-fi6E-z8BFdbS_LPfvpktSw8qc68PSZj9iEgdUC9U/edit?usp=drivesdk">Google Sheet: LuckyJ NAGA Reports.</a></li>
+            <li><a href="https://drive.google.com/file/d/1OCiBYLiPFzkbJI0aRsw4qVVh3uH-u1v2/view">PDF: How the Robot Plays, adapted from analysis of LuckyJ hands.</a></li>
+            <li><a href="https://natsuai.com/mahjong/digital">Format reference: Natsu AI digital mahjong points.</a></li>
+            <li>Tile font: GL-MahjongTile by Gutenberg Labo, vendored under `site/fonts/`.</li>
+            <li>Generated data: `site/book-data.json` and `data/luckyj_analysis.json`.</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
