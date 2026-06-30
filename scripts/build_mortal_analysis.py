@@ -13,6 +13,7 @@ Raw logs, weights, and local source files stay outside the repository.
 from __future__ import annotations
 
 import argparse
+import copy
 import gzip
 import importlib.util
 import json
@@ -392,115 +393,251 @@ def compact_event(event: dict[str, Any]) -> dict[str, Any]:
     return {key: event[key] for key in keep if key in event}
 
 
-def commentary_for(point: str, model: dict[str, Any], actual: dict[str, Any]) -> tuple[str, str]:
-    model_label = model["label"]
-    actual_label = actual["label"]
-
-    specific = {
-        "point-01": (
-            "Mortal checks whether the first-turn honor cut is just cleanup or a real plan choice. In this dealer-lead spot, agreement with LuckyJ means the model also values keeping the hand's value core over making the cleanest outside-honor trim.",
-            "For play, copy the ordering: score job first, then discard. Do not spend a dora/seat-wind plan just to make the hand look locally tidy on turn one.",
-        ),
-        "point-02": (
-            "Mortal's preferred action helps you decide whether the messy hand should keep the dragon/yakuhai switch or simplify immediately. Treat the spot as branch management rather than a simple error.",
-            "In play, name the live routes before cutting: open yaku, pair hand, red-five value, and safety. The model split matters less than whether your discard kills a route you still need.",
-        ),
-        "point-03": (
-            "Mortal judges the pon before seeing the later hand result. A call preference means the model accepts that the closed hand is structurally fake; a pass preference means the hand still lacks enough reward or safety.",
-            "When copying, do not say 'bad hand, so call.' Say exactly what the call buys: yaku, clock, and a discard plan after the call.",
-        ),
-        "point-04": (
-            "Mortal's call/pass preference matters, but the conditional post-call discard matters just as much: an open hand that cannot stop has become too expensive.",
-            "After every second call, ask what tile remains as the brake. If you cannot name it, the call is too expensive unless the hand is already worth forcing.",
-        ),
-        "point-05": (
-            "Mortal helps price future danger: should the useful-looking side tile leave before the table grows louder, or should the outside tile be cleaned first?",
-            "For your own games, identify the tile whose danger will age badly. Slow hands should throw future liabilities before those liabilities become mandatory pushes.",
-        ),
-        "point-06": (
-            "Mortal's choice tells whether the isolated terminal is expendable enough to keep the honor switch while the red-five hand is still forming.",
-            "When the hand needs points, keep the tile that can still become value or a stop, but only when the cost tile is genuinely low-purpose.",
-        ),
-        "point-07": (
-            "After the hand is already open, Mortal helps separate a call that changes the round clock from a call that only exposes more tiles.",
-            "Copy the call only when it creates a real next discard and a real path to completion. Tempo without a purpose is just impatience.",
-        ),
-        "point-08": (
-            "Mortal's top action shows whether the hand should turn into table pressure immediately or stay quiet for refinement.",
-            "At the table, ask whether riichi changes opponents' behavior enough to justify losing flexibility. If yes, convert; if not, the same discard without riichi can be the better move.",
-        ),
-        "point-09": (
-            "Mortal evaluates the current draw after the open dora-side threat appears, which helps check whether LuckyJ's safer discard is real discipline or too timid.",
-            "Do not label a hand 'push' once and stop thinking. Every call and draw reprices the next required discard.",
-        ),
-        "point-10": (
-            "Mortal is valuable here because late LuckyJ disagreements are the least copyable; the cross-check keeps the review from inventing certainty.",
-            "In late rows, replace vague upside with exact goals: win, safe tenpai, forced push, or fold. Your river read decides the hand.",
-        ),
-        "point-11": (
-            "Mortal checks whether the visible dragon discard is a legitimate way to preserve draw payments against the live open hand.",
-            "Treat noten payments as real equity, but only when the path is safe. A tenpai chase through a live dangerous tile is not the same idea.",
-        ),
-        "point-12": (
-            "This first-discard spot is a calibration case. Mortal helps decide whether the NAGA/LuckyJ split is a meaningful strategic disagreement or just a model-ordering preference in a low-danger position.",
-            "Use spots like this to slow down: when strong models split early, write what each tile is trying to keep before making a big story out of it.",
-        ),
-        "point-13": (
-            "Mortal sides with the shape-cleaning line here, so LuckyJ's yakuhai cut should be treated as a deliberate yaku-condition denial read. It is a hand to review carefully, not an automatic rule.",
-            "After an opponent opens without a visible yaku, mark dragons, round wind, and that player's seat wind as yaku-condition tiles. Even when the model prefers shape, first ask whether keeping the tile lets the open hand become legal.",
-        ),
-        "point-14": (
-            "When Mortal agrees with LuckyJ over NAGA, the kept river-safe tile has more support: a second model also prefers spending shape while preserving the clearer exit.",
-            "When your hand is behind but not ready, count the safe exits before cutting them. A genbutsu tile against multiple opponents can be worth more than two extra visible ukeire if it keeps the next threat playable.",
-        ),
-        "point-15": (
-            "Mortal is useful here because the broad statistic is only a starting point: it checks whether spending the safe-looking tile is real target repricing or just throwing away useful insurance.",
-            "Copy this only after naming the tile's target. If the tile is safe against the wrong player and the hand still has another exit, spending it can be correct; if it is the last answer to the live threat, keep it.",
-        ),
-        "point-16": (
-            "Mortal checks whether the edge tile discard is merely timid safety or whether the retained middle tile is actually the hand's connection to tenpai.",
-            "At the table, ask what the inside tile does next. If it is the real connector and the outside tile has no value or target-specific safety job, the outside cut can be an attacking discard.",
-        ),
-        "point-17": (
-            "Mortal often rejects generic safe-tile stories, so disagreement here should force a precise question: which opponent does the kept genbutsu or suji tile answer?",
-            "Use the panel as a naming drill. A good keep says 'safe against this live threat if this next draw happens.' A vague safe tile should be repriced as ordinary clutter.",
-        ),
-        "point-18": (
-            "Mortal's top choice helps separate a real honor cleanup from an overfit story about all honors being disposable.",
-            "Before copying, label the honor: self value, opponent yaku condition, dead tile, or defensive exit. The same honor class changes value completely when the label changes.",
-        ),
-        "point-19": (
-            "Mortal checks whether the low-risk leader discard also preserves a real next turn. The point is to see whether the safer-looking tile still leaves the hand playable.",
-            "When leading, reduce ambition only when the discard also lowers live danger or keeps a clean exit. The lead changes the price, but it does not remove the need to calculate.",
-        ),
-    }
-    read, use = specific.get(
+def example_signature(point: str, example: dict[str, Any]) -> tuple[Any, ...]:
+    kind = example.get("kind")
+    if kind == "call":
+        action_type = str(example.get("call", "")).lower()
+        action_tile = example.get("called_tile")
+        post_discard = example.get("discard_after_call")
+    elif kind == "reach":
+        action_type = "reach"
+        action_tile = example.get("actual")
+        post_discard = None
+    else:
+        action_type = "dahai"
+        action_tile = example.get("actual")
+        post_discard = None
+    return (
         point,
-        (
-            f"Mortal's top action is {model_label}; LuckyJ played {actual_label}. The cross-check is useful because it gives a second model view on whether the disagreement has strategic weight.",
-            "Use the model result as a review prompt. Copy the move only after the point, route, and danger logic all agree.",
-        ),
+        log_id_from_paifu(example["paifu"]),
+        example.get("kyoku_index"),
+        example.get("left"),
+        action_type,
+        action_tile,
+        post_discard,
     )
-    return read, use
+
+
+def output_signature(item: dict[str, Any]) -> tuple[Any, ...] | None:
+    if item.get("input_signature"):
+        return tuple(item["input_signature"])
+    actual = item.get("actual") or {}
+    if item.get("mortal", {}).get("label") == "Mortal replay unavailable":
+        return None
+    action_type = actual.get("type")
+    action_tile = actual.get("tile")
+    post_discard = actual.get("discard_after_call")
+    return (
+        item.get("point"),
+        item.get("log_id"),
+        item.get("kyoku_index"),
+        item.get("left"),
+        action_type,
+        action_tile,
+        post_discard,
+    )
+
+
+def existing_mortal_cache(path: Path) -> dict[tuple[Any, ...], dict[str, Any]]:
+    if not path.exists():
+        return {}
+    try:
+        data = read_json(path)
+    except (OSError, json.JSONDecodeError):
+        return {}
+    cache: dict[tuple[Any, ...], dict[str, Any]] = {}
+    for rows in (data.get("points") or {}).values():
+        row_list = rows if isinstance(rows, list) else [rows]
+        for item in row_list:
+            sig = output_signature(item)
+            if sig:
+                cache[sig] = item
+    return cache
+
+
+def tile_token(tile: Any) -> str:
+    return f"[[{tile}]]" if tile else "the tile"
+
+
+def pct(value: Any) -> str:
+    if value is None:
+        return "n/a"
+    try:
+        return f"{float(value) * 100:.1f}%"
+    except (TypeError, ValueError):
+        return "n/a"
+
+
+def action_text(action: dict[str, Any] | None, lang: str = "en") -> str:
+    if not action:
+        return "なし" if lang == "ja" else "no action"
+    typ = action.get("type")
+    tile = tile_token(action.get("tile"))
+    if lang == "ja":
+        if typ == "dahai":
+            return f"{tile} 切り"
+        if typ == "reach":
+            return f"リーチして {tile} 切り" if action.get("tile") else "リーチ"
+        if typ in {"chi", "pon", "daiminkan", "ankan", "kakan"}:
+            return f"{typ} {tile}"
+        if typ in {"none", "pass"}:
+            return "スルー"
+        if typ == "hora":
+            return "和了"
+        return str(action.get("label") or typ or "なし")
+    if typ == "dahai":
+        return f"discard {tile}"
+    if typ == "reach":
+        return f"reach and discard {tile}" if action.get("tile") else "reach"
+    if typ in {"chi", "pon", "daiminkan", "ankan", "kakan"}:
+        return f"{typ} {tile}"
+    if typ in {"none", "pass"}:
+        return "pass"
+    if typ == "hora":
+        return "win"
+    return str(action.get("label") or typ or "no action")
+
+
+def model_agreement_text(model: dict[str, Any], actual: dict[str, Any], example: dict[str, Any], lang: str = "en") -> str:
+    luckyj = agrees_with_luckyj(model, actual, example)
+    naga = agrees_with_naga(model, example)
+    if lang == "ja":
+        if luckyj and naga:
+            return "Mortal は LuckyJ と NAGA の共通線に同意している。"
+        if luckyj:
+            return "Mortal は LuckyJ 側に寄っている。"
+        if naga:
+            return "Mortal は NAGA 側に寄っている。"
+        return "Mortal は第三の選択を出しているので、この例はそのまま暗記しない。"
+    if luckyj and naga:
+        return "Mortal agrees with the shared LuckyJ/NAGA line."
+    if luckyj:
+        return "Mortal backs LuckyJ's line."
+    if naga:
+        return "Mortal backs the NAGA line."
+    return "Mortal chooses a third line, so this tab is a caution case rather than a clean endorsement."
+
+
+def point_mortal_focus(point: str, example: dict[str, Any], lang: str = "en") -> str:
+    actual = tile_token(example.get("actual"))
+    naga = tile_token(example.get("naga"))
+    if lang == "ja":
+        mapping = {
+            "point-01": "点数状況が打牌の値段を変えるかを見るクロスチェック。",
+            "point-02": f"{actual} が分岐を残す一打か、ただ形を壊しているだけかを見る。",
+            "point-03": "鳴きが閉じた幻想を捨てる価値を持つかを見る。",
+            "point-04": "副露後の最初の打牌とブレーキが成立するかを見る。",
+            "point-05": f"{actual} を今処理する理由が将来危険の回避になっているかを見る。",
+            "point-06": "受け入れを払うだけの打点・価値があるかを見る。",
+            "point-07": "鳴きが局面の時計を進めるか、露出だけ増やすかを見る。",
+            "point-08": "リーチ圧力が柔軟性を失う値段に見合うかを見る。",
+            "point-09": "今の押し引きではなく、次に必要な打牌まで再評価する。",
+            "point-10": "終盤の LuckyJ 例は最もコピーしにくいので、確証より警告として読む。",
+            "point-11": "流局テンパイ料を安全に取りに行けるかを見る。",
+            "point-12": "不一致の種類を分類するための第二意見として使う。",
+            "point-13": f"{actual} が相手の役牌条件になる読みを、形の評価とぶつけて確認する。",
+            "point-14": f"残した {naga} が対象のある出口かを見る。",
+            "point-15": f"{actual} の安全が期限切れか、まだ必要な保険かを見る。",
+            "point-16": f"外側の {actual} が中の接続を残す攻めになっているかを見る。",
+            "point-17": f"残した {naga} が誰に効く安全牌なのかをはっきりさせる。",
+            "point-18": f"{actual} が自分の価値、相手条件、死に牌、守備出口のどれかを分ける。",
+            "point-19": "トップ目の低い目標が、実際の危険低下と両立するかを見る。",
+        }
+        return mapping.get(point, "Mortal を第二意見として使い、打牌の理由を確認する。")
+    mapping = {
+        "point-01": "Use it to check whether the score job really changes the price of this discard.",
+        "point-02": f"Use it to check whether cutting {actual} preserves live branches or merely damages shape.",
+        "point-03": "Use it to test whether the call has value beyond giving up the closed hand.",
+        "point-04": "Use it to inspect the first post-call discard and whether the open hand still has a brake.",
+        "point-05": f"Use it to decide whether {actual} is a future liability worth removing now.",
+        "point-06": "Use it to test whether the hand's value justifies spending immediate acceptance.",
+        "point-07": "Use it to separate tempo that changes the clock from exposure that only feels busy.",
+        "point-08": "Use it to check whether riichi pressure is worth losing flexibility.",
+        "point-09": "Use it to reprice the next required discard, not only the current one.",
+        "point-10": "Use it as a warning layer: late LuckyJ choices are the least copyable part of the style.",
+        "point-11": "Use it to check whether safe drawn-hand equity is real.",
+        "point-12": "Use it to classify the disagreement before making a story out of it.",
+        "point-13": f"Use it to pit the {actual} yaku-condition denial read against ordinary shape evaluation.",
+        "point-14": f"Use it to check whether the kept {naga} is a named defensive exit.",
+        "point-15": f"Use it to decide whether {actual}'s safety has expired or is still needed insurance.",
+        "point-16": f"Use it to test whether the outside {actual} cut preserves a real inside connector.",
+        "point-17": f"Use it to name exactly which opponent the kept {naga} answers.",
+        "point-18": f"Use it to label {actual}: self value, opponent condition, dead material, or defensive exit.",
+        "point-19": "Use it to check whether leader caution still preserves a playable next turn.",
+    }
+    return mapping.get(point, "Use Mortal as a second model view on whether the disagreement has strategic weight.")
+
+
+def commentary_for(
+    point: str,
+    model: dict[str, Any],
+    actual: dict[str, Any],
+    example: dict[str, Any],
+    top_candidate: dict[str, Any] | None,
+    post_call_model: dict[str, Any] | None = None,
+) -> tuple[str, str, str, str]:
+    top_weight = pct((top_candidate or {}).get("probability"))
+    left = example.get("left")
+    round_name = example.get("round")
+    stage = example.get("stage")
+    score_band = example.get("score_band")
+    model_line = action_text(model)
+    actual_line = action_text(actual)
+    model_line_ja = action_text(model, "ja")
+    actual_line_ja = action_text(actual, "ja")
+    agreement = model_agreement_text(model, actual, example)
+    agreement_ja = model_agreement_text(model, actual, example, "ja")
+    focus = point_mortal_focus(point, example)
+    focus_ja = point_mortal_focus(point, example, "ja")
+
+    if example.get("kind") == "call":
+        post = ""
+        post_ja = ""
+        if post_call_model:
+            post = f" After the call, Mortal's conditional discard is {action_text(post_call_model)}."
+            post_ja = f" 鳴いた後の Mortal 条件付き打牌は {action_text(post_call_model, 'ja')}。"
+        read = (
+            f"{round_name}, {stage}, {left} tiles left, {score_band}. Mortal's first reaction is {model_line} "
+            f"({top_weight}); LuckyJ actually plays {actual_line}. {agreement}{post}"
+        )
+        use = f"{focus} Do not copy the call unless the post-call discard and next exit are already visible."
+        read_ja = f"{round_name}、{stage}、残り{left}枚、{score_band}。Mortal 第一反応は {model_line_ja} ({top_weight})、LuckyJ 実戦は {actual_line_ja}。{agreement_ja}{post_ja}"
+        use_ja = f"{focus_ja} 鳴いた後の打牌と次の出口が見えていないなら真似しない。"
+        return read, use, read_ja, use_ja
+
+    naga = tile_token(example.get("naga"))
+    read = (
+        f"{round_name}, {stage}, {left} tiles left, {score_band}. Mortal's top action is {model_line} "
+        f"({top_weight}); LuckyJ plays {actual_line}; NAGA's top line is discard {naga}. {agreement}"
+    )
+    use = f"{focus} If Mortal backs NAGA or a third line, raise the burden of proof before copying LuckyJ."
+    read_ja = f"{round_name}、{stage}、残り{left}枚、{score_band}。Mortal 最上位は {model_line_ja} ({top_weight})、LuckyJ 実戦は {actual_line_ja}、NAGA 第一候補は {naga} 切り。{agreement_ja}"
+    use_ja = f"{focus_ja} Mortal が NAGA または第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+    return read, use, read_ja, use_ja
 
 
 def build(args: argparse.Namespace) -> dict[str, Any]:
     raw_examples: dict[str, Any] = read_json(args.examples)
-    examples: dict[str, dict[str, Any]] = {
-        point: rows[0] if isinstance(rows, list) else rows
-        for point, rows in raw_examples.items()
-        if (rows[0] if isinstance(rows, list) and rows else rows)
-    }
-    log_ids = sorted({log_id_from_paifu(example["paifu"]) for example in examples.values()})
-    engine = load_mortal_engine(args.model)
+    examples: list[tuple[str, int, dict[str, Any]]] = []
+    for point, rows in raw_examples.items():
+        if isinstance(rows, list):
+            examples.extend((point, idx, example) for idx, example in enumerate(rows, 1) if example)
+        elif rows:
+            examples.append((point, int(rows.get("example_index") or 1), rows))
+
+    cache = existing_mortal_cache(args.output)
+    uncached = [(point, index, example) for point, index, example in examples if example_signature(point, example) not in cache]
+    log_ids = sorted({log_id_from_paifu(example["paifu"]) for _, _, example in uncached})
 
     opportunities_by_log: dict[str, list[Opportunity]] = {}
-    for log_id in log_ids:
-        path = args.log_dir / f"{log_id}.json.gz"
-        events = load_log(path)
-        fallback = next((tw_from_paifu(example["paifu"]) for example in examples.values() if log_id_from_paifu(example["paifu"]) == log_id), None)
-        actor = actor_for_luckyj(events, fallback)
-        opportunities_by_log[log_id] = replay_opportunities(log_id, events, actor, engine)
+    if uncached:
+        engine = load_mortal_engine(args.model)
+        for log_id in log_ids:
+            path = args.log_dir / f"{log_id}.json.gz"
+            events = load_log(path)
+            fallback = next((tw_from_paifu(example["paifu"]) for _, _, example in uncached if log_id_from_paifu(example["paifu"]) == log_id), None)
+            actor = actor_for_luckyj(events, fallback)
+            opportunities_by_log[log_id] = replay_opportunities(log_id, events, actor, engine)
 
     output: dict[str, Any] = {
         "meta": {
@@ -511,40 +648,91 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
         "points": {},
     }
 
-    for point, example in examples.items():
-        log_id = log_id_from_paifu(example["paifu"])
-        opp = choose_opportunity(opportunities_by_log[log_id], example)
-        model = model_choice(opp.reaction)
-        actual = actual_choice(opp.actual_events, example)
-        candidates = decode_candidates(opp.reaction)
-        top_candidates = candidates[:1]
-        post_call_model = model_choice(opp.post_call_reaction) if opp.post_call_reaction else None
-        read, use = commentary_for(point, model, actual)
-        actual_discard_after_call = actual.get("discard_after_call")
-        post_call_agrees = (
-            post_call_model is not None
-            and post_call_model["type"] == "dahai"
-            and post_call_model.get("tile") == actual_discard_after_call
-        )
+    missing: list[dict[str, Any]] = []
+    for point, index, example in examples:
+        sig = example_signature(point, example)
+        cached = cache.get(sig)
+        if cached:
+            item = copy.deepcopy(cached)
+            item["point"] = point
+            item["example_index"] = index
+            item["input_signature"] = list(sig)
+            item.setdefault("kind", example.get("kind"))
+            output["points"].setdefault(point, []).append(item)
+            continue
 
-        output["points"][point] = {
-            "point": point,
-            "log_id": log_id,
-            "kyoku_index": opp.kyoku_index,
-            "event_index": opp.event_index,
-            "left": opp.left,
-            "trigger": compact_event(opp.trigger),
-            "actual": actual,
-            "mortal": model,
-            "mortal_agrees_luckyj": agrees_with_luckyj(model, actual, example),
-            "mortal_agrees_naga": agrees_with_naga(model, example),
-            "top_candidates": top_candidates,
-            "post_call_mortal": post_call_model,
-            "post_call_agrees_luckyj": post_call_agrees if post_call_model else None,
-            "post_call_candidates": [],
-            "read": read,
-            "how_to_use": use,
-        }
+        log_id = log_id_from_paifu(example["paifu"])
+        point_rows = output["points"].setdefault(point, [])
+        try:
+            opp = choose_opportunity(opportunities_by_log[log_id], example)
+            model = model_choice(opp.reaction)
+            actual = actual_choice(opp.actual_events, example)
+            candidates = decode_candidates(opp.reaction)
+            top_candidates = candidates[:1]
+            post_call_model = model_choice(opp.post_call_reaction) if opp.post_call_reaction else None
+            read, use, read_ja, use_ja = commentary_for(point, model, actual, example, top_candidates[0] if top_candidates else None, post_call_model)
+            actual_discard_after_call = actual.get("discard_after_call")
+            post_call_agrees = (
+                post_call_model is not None
+                and post_call_model["type"] == "dahai"
+                and post_call_model.get("tile") == actual_discard_after_call
+            )
+
+            point_rows.append(
+                {
+                    "point": point,
+                    "example_index": index,
+                    "kind": example.get("kind"),
+                    "input_signature": list(sig),
+                    "log_id": log_id,
+                    "kyoku_index": opp.kyoku_index,
+                    "event_index": opp.event_index,
+                    "left": opp.left,
+                    "trigger": compact_event(opp.trigger),
+                    "actual": actual,
+                    "mortal": model,
+                    "mortal_agrees_luckyj": agrees_with_luckyj(model, actual, example),
+                    "mortal_agrees_naga": agrees_with_naga(model, example),
+                    "top_candidates": top_candidates,
+                    "post_call_mortal": post_call_model,
+                    "post_call_agrees_luckyj": post_call_agrees if post_call_model else None,
+                    "post_call_candidates": [],
+                    "read": read,
+                    "how_to_use": use,
+                    "read_ja": read_ja,
+                    "how_to_use_ja": use_ja,
+                }
+            )
+        except Exception as exc:
+            missing.append({"point": point, "example_index": index, "log_id": log_id, "error": str(exc)})
+            point_rows.append(
+                {
+                    "point": point,
+                    "example_index": index,
+                    "kind": example.get("kind"),
+                    "input_signature": list(sig),
+                    "log_id": log_id,
+                    "left": example.get("left"),
+                    "actual": {"type": example.get("kind"), "tile": example.get("actual"), "label": "LuckyJ action"},
+                    "mortal": {"type": "none", "label": "Mortal replay unavailable"},
+                    "mortal_agrees_luckyj": None,
+                    "mortal_agrees_naga": None,
+                    "top_candidates": [],
+                    "post_call_mortal": None,
+                    "post_call_agrees_luckyj": None,
+                    "post_call_candidates": [],
+                    "read": f"Mortal replay did not match this exact tab, so do not use it as model support. LuckyJ's visible choice is still reviewed against NAGA and the table state.",
+                    "how_to_use": f"Treat this tab as a manual review case until the local Mjai replay matcher covers it. Error: {exc}",
+                    "read_ja": "このタブは Mortal リプレイが一致しなかったため、モデル支持として使わない。LuckyJ の実戦選択は NAGA と場況で読む。",
+                    "how_to_use_ja": f"ローカル Mjai の照合が対応するまでは手動復習扱い。エラー: {exc}",
+                }
+            )
+
+    output["meta"]["examples"] = len(examples)
+    output["meta"]["matched"] = len(examples) - len(missing)
+    output["meta"]["reused_cached"] = len(examples) - len(uncached)
+    output["meta"]["replayed"] = len(uncached)
+    output["meta"]["missing"] = missing
 
     return output
 

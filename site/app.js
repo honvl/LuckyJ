@@ -765,9 +765,23 @@ function probabilityChip(label, value) {
   return `<span class="choice-weight">${escapeHtml(label)} ${pct(numeric)}</span>`;
 }
 
-function renderMortalBlock(mortal, pointKey, mortalCopy) {
+function mortalCopyForExample(mortalCopy, pointKey, index) {
+  const value = mortalCopy?.[pointKey];
+  if (Array.isArray(value)) return value[index] || {};
+  return value || {};
+}
+
+function pointMortalForExample(mortalPoints, pointKey, index) {
+  const value = mortalPoints?.[pointKey];
+  if (Array.isArray(value)) return value[index] || null;
+  return value || null;
+}
+
+function renderMortalBlock(mortal, pointKey, mortalCopy, index) {
   if (!mortal) return document.createDocumentFragment();
-  const localMortal = mortalCopy?.[pointKey] || {};
+  const localMortal = mortalCopyForExample(mortalCopy, pointKey, index);
+  const readText = isJa ? mortal.read_ja || localMortal.read || mortal.read : localMortal.read || mortal.read;
+  const useText = isJa ? mortal.how_to_use_ja || localMortal.how_to_use || mortal.how_to_use : localMortal.how_to_use || mortal.how_to_use;
   const block = document.createElement("section");
   block.className = "mortal-block";
   const topCandidate = mortal.top_candidates?.[0];
@@ -795,15 +809,17 @@ function renderMortalBlock(mortal, pointKey, mortalCopy) {
           ${agreementBadge("LuckyJ", mortal.mortal_agrees_luckyj)}
           ${agreementBadge("NAGA", mortal.mortal_agrees_naga)}
         </div>
-      </div>
+        </div>
       <div>
         <h5>${t("readingSplit")}</h5>
-        <p>${escapeHtml(localMortal.read || mortal.read)}</p>
-        <p>${escapeHtml(localMortal.how_to_use || mortal.how_to_use)}</p>
+        <p data-mortal-read></p>
+        <p data-mortal-use></p>
       </div>
     </div>
     ${branch}
   `;
+  block.querySelector("[data-mortal-read]")?.append(richText(readText || ""));
+  block.querySelector("[data-mortal-use]")?.append(richText(useText || ""));
   return block;
 }
 
@@ -843,13 +859,15 @@ function pointExampleList(examples, pointKey) {
 }
 
 function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCopy, index, total) {
+  const exampleGuide = (isJa ? example.guide_ja || example.guide : example.guide) || guide || {};
+  const exampleMortal = example.mortal || pointMortalForExample(mortalPoints, pointKey, index);
   const card = document.createElement("article");
   card.className = "point-example-card";
   card.innerHTML = `
     <div class="example-head">
       <div>
         <p class="kicker">${t("replayExample")} ${index + 1}/${total}</p>
-        <h4>${escapeHtml(guide?.caption || example.title)}</h4>
+        <h4>${escapeHtml(exampleGuide.caption || example.title)}</h4>
       </div>
       <span>${isJa ? `ゲーム ${example.game}、${escapeHtml(roundText(example.round))}、${tilesLeftText(example.left)}` : `Game ${example.game}, ${escapeHtml(example.round)}, ${tilesLeftText(example.left)}`}</span>
     </div>
@@ -884,15 +902,18 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
     card.append(safetyPanel(example.kept_tile_safety));
   }
   card.append(renderYakuhaiCleanupNote(example));
-  card.append(renderMortalBlock(mortalPoints?.[pointKey], pointKey, mortalCopy));
-  card.append(renderGuideBlock(guide));
+  card.append(renderMortalBlock(exampleMortal, pointKey, mortalCopy, index));
+  card.append(renderGuideBlock(exampleGuide));
 
   const drill = document.createElement("div");
   drill.className = "example-drill";
-  drill.innerHTML = `
-    <p><b>${t("drill")}:</b> ${escapeHtml(guide?.prompt || example.prompt)}</p>
-    <p><b>${t("answer")}:</b> ${escapeHtml(guide?.answer || example.answer)}</p>
-  `;
+  const drillPrompt = document.createElement("p");
+  const drillAnswer = document.createElement("p");
+  drillPrompt.innerHTML = `<b>${t("drill")}:</b> `;
+  drillAnswer.innerHTML = `<b>${t("answer")}:</b> `;
+  drillPrompt.append(richText(exampleGuide.prompt || example.prompt || ""));
+  drillAnswer.append(richText(exampleGuide.answer || example.answer || ""));
+  drill.append(drillPrompt, drillAnswer);
 
   const links = document.createElement("p");
   links.className = "case-links";
