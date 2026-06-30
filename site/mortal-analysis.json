@@ -297,6 +297,79 @@
       "read": "This is the expiring-push test. Mortal evaluates the current draw after the open dora-side threat appears, so it is useful for checking whether LuckyJ's safer discard is real discipline or too timid.",
       "how_to_use": "Do not label a hand 'push' once and stop thinking. Every call and draw reprices the next required discard."
     },
+    "point-14": {
+      "point": "point-14",
+      "log_id": "2023041911gm-0001-0000-cba4cded",
+      "kyoku_index": 2,
+      "event_index": 239,
+      "left": 32,
+      "trigger": {
+        "type": "tsumo",
+        "actor": 0,
+        "pai": "W"
+      },
+      "actual": {
+        "type": "dahai",
+        "tile": "C",
+        "label": "Discard C"
+      },
+      "mortal": {
+        "type": "dahai",
+        "tile": "C",
+        "label": "Discard C"
+      },
+      "mortal_agrees_luckyj": true,
+      "mortal_agrees_naga": false,
+      "top_candidates": [
+        {
+          "action_id": 33,
+          "label": "Discard C",
+          "probability": 0.680718,
+          "type": "dahai",
+          "tile": "C"
+        },
+        {
+          "action_id": 29,
+          "label": "Discard W",
+          "probability": 0.289088,
+          "type": "dahai",
+          "tile": "W"
+        },
+        {
+          "action_id": 15,
+          "label": "Discard 7p",
+          "probability": 0.014075,
+          "type": "dahai",
+          "tile": "7p"
+        },
+        {
+          "action_id": 30,
+          "label": "Discard N",
+          "probability": 0.006048,
+          "type": "dahai",
+          "tile": "N"
+        },
+        {
+          "action_id": 18,
+          "label": "Discard 1s",
+          "probability": 0.005999,
+          "type": "dahai",
+          "tile": "1s"
+        },
+        {
+          "action_id": 4,
+          "label": "Discard 5m",
+          "probability": 0.002692,
+          "type": "dahai",
+          "tile": "5m"
+        }
+      ],
+      "post_call_mortal": null,
+      "post_call_agrees_luckyj": null,
+      "post_call_candidates": [],
+      "read": "This is the defensive-inventory test. Mortal agreeing with LuckyJ over NAGA means the kept river-safe tile is not just a human story: a second model also prefers spending shape while preserving the clearer exit.",
+      "how_to_use": "When your hand is behind but not ready, count the safe exits before cutting them. A genbutsu tile against multiple opponents can be worth more than two extra visible ukeire if it keeps the next threat playable."
+    },
     "point-10": {
       "point": "point-10",
       "log_id": "2023041911gm-0001-0000-cba4cded",
@@ -779,6 +852,79 @@
       "post_call_candidates": [],
       "read": "This is the riichi-conversion test. Mortal's top action shows whether the hand should turn into table pressure immediately or stay quiet for refinement.",
       "how_to_use": "At the table, ask whether riichi changes opponents' behavior enough to justify losing flexibility. If yes, convert; if not, the same discard without riichi can be the better move."
+    },
+    "point-13": {
+      "point": "point-13",
+      "log_id": "2023041912gm-0009-0000-2fb1c136",
+      "kyoku_index": 0,
+      "event_index": 48,
+      "left": 50,
+      "trigger": {
+        "type": "tsumo",
+        "actor": 3,
+        "pai": "N"
+      },
+      "actual": {
+        "type": "dahai",
+        "tile": "F",
+        "label": "Discard F"
+      },
+      "mortal": {
+        "type": "dahai",
+        "tile": "7s",
+        "label": "Discard 7s"
+      },
+      "mortal_agrees_luckyj": false,
+      "mortal_agrees_naga": false,
+      "top_candidates": [
+        {
+          "action_id": 24,
+          "label": "Discard 7s",
+          "probability": 0.953872,
+          "type": "dahai",
+          "tile": "7s"
+        },
+        {
+          "action_id": 32,
+          "label": "Discard F",
+          "probability": 0.022031,
+          "type": "dahai",
+          "tile": "F"
+        },
+        {
+          "action_id": 30,
+          "label": "Discard N",
+          "probability": 0.019214,
+          "type": "dahai",
+          "tile": "N"
+        },
+        {
+          "action_id": 31,
+          "label": "Discard P",
+          "probability": 0.001905,
+          "type": "dahai",
+          "tile": "P"
+        },
+        {
+          "action_id": 21,
+          "label": "Discard 4s",
+          "probability": 0.000902,
+          "type": "dahai",
+          "tile": "4s"
+        },
+        {
+          "action_id": 1,
+          "label": "Discard 2m",
+          "probability": 0.000507,
+          "type": "dahai",
+          "tile": "2m"
+        }
+      ],
+      "post_call_mortal": null,
+      "post_call_agrees_luckyj": null,
+      "post_call_candidates": [],
+      "read": "This is the open-hand contract test. Mortal is useful here because the discard is not only about LuckyJ's hand shape; it asks whether the live yakuhai should be cleaned before the opponent's exposed hand can use it as a yaku.",
+      "how_to_use": "After an opponent opens without a visible yaku, mark dragons, round wind, and that player's seat wind as contract tiles. Keep them only when they are doing real work for your own hand or defense."
     },
     "point-11": {
       "point": "point-11",
