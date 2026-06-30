@@ -1809,7 +1809,7 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   .point-rail {
     position: fixed;
     top: 50%;
-    left: max(18px, calc((100vw - 1280px) / 2 - 78px));
+    left: 8px;
     z-index: 8;
     display: flex;
     flex-direction: column;
@@ -1884,11 +1884,11 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   .point-rail-panel {
     position: fixed;
     top: 50%;
-    left: max(80px, calc((100vw - 1280px) / 2 - 16px));
+    left: 8px;
     z-index: 9;
     display: block;
     width: min(640px, calc(100vw - 112px));
-    max-width: calc(100vw - 112px);
+    max-width: calc(100vw - 16px);
     max-height: min(84vh, 760px);
     padding: 12px;
     overflow-y: auto;
