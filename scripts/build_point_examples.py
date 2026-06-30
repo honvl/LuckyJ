@@ -16,6 +16,7 @@ from extract_case_studies import (
 
 OUT = Path("site/point-examples.json")
 SEAT_NAMES = ["self", "shimocha", "toimen", "kamicha"]
+WINDS = ["E", "S", "W", "N"]
 
 
 POINT_TEXT = {
@@ -107,12 +108,14 @@ def rel_seat(seat, target):
 def score_context(start, target):
     scores = start.get("scores", [None] * 4)
     ranks = start.get("seat2rank", [None] * 4)
+    dealer = start.get("oya", 0)
     return [
         {
             "seat": rel_seat(seat, target),
+            "wind": WINDS[(seat - dealer) % 4],
             "score": scores[seat] if seat < len(scores) else None,
             "rank": ranks[seat] + 1 if seat < len(ranks) and ranks[seat] is not None else None,
-            "dealer": seat == start.get("oya"),
+            "dealer": seat == dealer,
         }
         for seat in range(4)
     ]
@@ -127,6 +130,7 @@ def table_context(start, target, hands, discards, melds, reached, dora_markers):
         "players": [
             {
                 "seat": rel_seat(seat, target),
+                "wind": WINDS[(seat - start.get("oya", 0)) % 4],
                 "hand": hand_string(hands[seat]),
                 "discards": discards[seat][:],
                 "melds": melds[seat][:],

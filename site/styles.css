@@ -516,6 +516,13 @@ a {
   font-size: 2.35em;
 }
 
+.inline-tile {
+  display: inline-block;
+  font-size: 1.85em;
+  top: 0.12em;
+  padding-right: 0.08em;
+}
+
 .discard-line {
   display: flex;
   align-items: center;
@@ -587,6 +594,52 @@ a {
   border-left: 5px solid var(--gold);
   margin: 12px 0 0;
   padding: 12px;
+}
+
+.case-lesson p {
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+.case-lesson p:last-child {
+  margin-bottom: 0;
+}
+
+.diagnostics {
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
+.diagnostics summary {
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.natsu-analysis {
+  border-top: 1px solid var(--line);
+  margin-top: 16px;
+  padding-top: 6px;
+}
+
+.analysis-step {
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+}
+
+.analysis-step h5 {
+  color: var(--red);
+  font-size: 15px;
+  line-height: 1.2;
+  margin: 0 0 5px;
+}
+
+.analysis-step p {
+  font-size: 16px;
+  line-height: 1.85;
+  margin: 0;
 }
 
 .example-drill {
@@ -733,6 +786,258 @@ a {
   padding: 8px;
 }
 
+.lucky-table-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 14px 0 12px;
+  overflow-x: auto;
+}
+
+.caption-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-width: min-content;
+}
+
+.caption-content {
+  border: 1px solid var(--line);
+  background: #f8faf5;
+  padding: 10px;
+}
+
+.caption-text {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+  margin-top: 8px;
+  max-width: 560px;
+  text-align: center;
+}
+
+.mahjong-table {
+  --display-base: clamp(0.54rem, 1.05vw, 0.9rem);
+  --table-dark: #252a24;
+  --table-light: #fff;
+  display: grid;
+  grid-template-areas:
+    ".            hand-across     hand-across      hand-across   ."
+    "hand-prev    discards-across discards-across  discards-next  hand-next"
+    "hand-prev    discards-prev   center           discards-next  hand-next"
+    "hand-prev    discards-prev   discards-current discards-current hand-next"
+    "hand-current hand-current    hand-current     hand-current   hand-current";
+  grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
+  grid-template-rows: 1fr 3fr 3fr 3fr 1.35fr;
+  height: calc(36.75 * var(--display-base));
+  margin: 0 auto;
+  max-height: 34em;
+  max-width: 34em;
+  width: calc(36 * var(--display-base));
+}
+
+.mahjong-table .center {
+  border: 1px solid var(--table-dark);
+  display: grid;
+  font-size: calc(1 * var(--display-base));
+  grid-area: center;
+  grid-template-areas:
+    ". score-across ."
+    "score-prev situation-box score-next"
+    ". score-current .";
+  grid-template-columns: 2fr 5fr 2fr;
+  grid-template-rows: 2fr 5fr 2fr;
+  height: calc(9 * var(--display-base));
+  width: calc(9 * var(--display-base));
+}
+
+.mahjong-table .situation-container {
+  background: var(--table-dark);
+  color: var(--table-light);
+  display: flex;
+  flex-direction: column;
+  grid-area: situation-box;
+  height: calc(4.7 * var(--display-base));
+  justify-content: center;
+  padding: calc(0.45 * var(--display-base));
+  width: calc(4.7 * var(--display-base));
+}
+
+.mahjong-table .round-container,
+.mahjong-table .dora-indicator {
+  align-items: center;
+  display: flex;
+  flex: 1 1 50%;
+  justify-content: center;
+  text-align: center;
+}
+
+.mahjong-table .round {
+  font-size: 0.86em;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.mahjong-table .dora-indicator {
+  border-top: 1px dashed rgba(255, 255, 255, 0.8);
+  font-size: calc(0.76 * var(--display-base));
+  gap: 2px;
+}
+
+.mahjong-table .center .player-score {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: calc(0.85 * var(--display-base));
+}
+
+.mahjong-table .player-score .wind {
+  background: var(--table-dark);
+  color: var(--table-light);
+  height: calc(1.25 * var(--display-base));
+  line-height: calc(1.2 * var(--display-base));
+  margin: calc(0.15 * var(--display-base));
+  text-align: center;
+  width: calc(1.25 * var(--display-base));
+}
+
+.mahjong-table .player-score.player-current {
+  grid-area: score-current;
+}
+
+.mahjong-table .player-score.player-next {
+  grid-area: score-next;
+}
+
+.mahjong-table .player-score.player-across {
+  grid-area: score-across;
+}
+
+.mahjong-table .player-score.player-prev {
+  grid-area: score-prev;
+}
+
+.mahjong-table .player-hand {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(1 * var(--display-base));
+  justify-self: center;
+  max-width: calc(15 * var(--display-base));
+}
+
+.mahjong-table .player-hand.player-current {
+  font-size: calc(1.14 * var(--display-base));
+  grid-area: hand-current;
+  max-width: none;
+}
+
+.mahjong-table .player-hand.player-next {
+  grid-area: hand-next;
+}
+
+.mahjong-table .player-hand.player-across {
+  grid-area: hand-across;
+}
+
+.mahjong-table .player-hand.player-prev {
+  grid-area: hand-prev;
+}
+
+.mahjong-table .player-discards {
+  font-size: calc(1 * var(--display-base));
+  min-height: calc(5 * var(--display-base));
+  min-width: calc(5 * var(--display-base));
+}
+
+.mahjong-table .player-discards.player-current {
+  align-self: start;
+  grid-area: discards-current;
+  justify-self: start;
+}
+
+.mahjong-table .player-discards.player-next {
+  align-self: end;
+  grid-area: discards-next;
+  justify-self: start;
+}
+
+.mahjong-table .player-discards.player-across {
+  align-self: end;
+  grid-area: discards-across;
+  justify-self: end;
+}
+
+.mahjong-table .player-discards.player-prev {
+  align-self: start;
+  grid-area: discards-prev;
+  justify-self: end;
+}
+
+.mahjong-table .player-prev,
+.mahjong-table .player-next {
+  writing-mode: vertical-rl;
+}
+
+.mahjong-table .player-across,
+.mahjong-table .player-next {
+  transform: rotate(180deg);
+}
+
+.mahjong-table .player-name {
+  color: var(--muted);
+  font-size: calc(0.74 * var(--display-base));
+  line-height: 1.2;
+  margin-bottom: calc(0.3 * var(--display-base));
+}
+
+.mahjong-table .player-current .player-name {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.mahjong-table .player-across .player-name {
+  text-align: right;
+  transform: rotate(180deg);
+}
+
+.mahjong-table .hand.compact {
+  align-items: center;
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+.mahjong-table .hand-contents .tiles,
+.mahjong-table .discard-row .tiles,
+.mahjong-table .table-melds .tiles {
+  font-size: var(--tile-size);
+}
+
+.discard-row {
+  height: calc(2.25 * var(--display-base));
+  white-space: nowrap;
+}
+
+.table-melds {
+  margin-top: calc(0.25 * var(--display-base));
+}
+
+.meld-run {
+  border: 1px solid #c8cec0;
+  display: inline-block;
+  margin-right: calc(0.3 * var(--display-base));
+  padding: 0 calc(0.18 * var(--display-base));
+}
+
+.review-tag {
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.82em;
+  margin-left: 4px;
+  padding: 0 3px;
+}
+
 .case-links {
   display: flex;
   gap: 12px;
@@ -769,16 +1074,29 @@ a {
     display: none;
   }
 
-    .metrics-grid,
-    .diagram,
-    .two-col,
-    .insight-grid,
-    .stat-strip,
-    .drill-list,
-    .call-line,
-    .player-grid,
-    .hidden-hand-grid {
+  .metrics-grid,
+  .diagram,
+  .two-col,
+  .insight-grid,
+  .stat-strip,
+  .drill-list,
+  .call-line,
+  .player-grid,
+  .hidden-hand-grid {
     grid-template-columns: 1fr;
+  }
+
+  .caption-content {
+    padding: 6px;
+  }
+
+  .mahjong-table {
+    --display-base: calc((100vw - 72px) / 36);
+  }
+
+  .analysis-step p {
+    font-size: 15px;
+    line-height: 1.75;
   }
 
   .point-number {

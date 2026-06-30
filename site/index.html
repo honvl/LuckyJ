@@ -85,7 +85,7 @@
             </div>
             <div>
               <b>2. Routes</b>
-              <p>Count real routes, not only immediate ukeire: closed riichi, open yaku, value upgrade, safe tenpai, and clean fold.</p>
+              <p>Count real routes, not only raw tile count: closed riichi, open yaku, value upgrade, safe tenpai, and clean fold.</p>
             </div>
             <div>
               <b>3. Table Texture</b>
@@ -113,7 +113,7 @@
             The supporting reviews are useful because they study LuckyJ from different angles: all East 1
             starts, placement-specific hands, last-place-avoidance games, and comparisons against NAGA and
             Mortal. I used them as commentary, not as authority. The distilled lesson is that LuckyJ's style
-            is a set of switches: hand value, shanten, number of calls, river texture, round, and placement all
+            is a set of switches: hand value, hand distance, number of calls, river texture, round, and placement all
             change the meaning of the same tile.
           </p>
           <div class="insight-grid">
@@ -121,7 +121,7 @@
               <h3>East 1 Reveals the Base Settings</h3>
               <p>
                 With scores equal and placement pressure absent, LuckyJ's default target is not "maximum
-                acceptance." As a child, it strongly prefers either a good-shape one-han riichi route or a
+                raw speed." As a child, it strongly prefers either a good-shape one-han riichi route or a
                 hand that can become three han or better. As dealer, the value threshold drops because the
                 dealer turn is worth more. Hands below those thresholds start preserving yaku, dora, and safety.
               </p>
@@ -129,7 +129,7 @@
             <div>
               <h3>Hold Safety by Shanten Count</h3>
               <p>
-                The farther the hand is, the more a safe tile is worth. A 2-shanten or 3-shanten hand can
+                The farther the hand is, the more a safe tile is worth. A far-away hand can
                 keep honors or visible safe material without "giving up," because those tiles buy permission
                 to call, push one more tile, or reach safe tenpai later. Dealer status and very high-value
                 hands lower that safety premium.
@@ -174,7 +174,7 @@
           </div>
           <div class="rule">
             <strong>Synthesis rule:</strong> LuckyJ's strange-looking tiles are usually not random. Ask which
-            switch changed: value threshold, shanten safety, bad-block quality, opponent river, number of threats,
+            switch changed: value threshold, distance-safety tradeoff, bad-block quality, opponent river, number of threats,
             or placement pressure.
           </div>
         </section>
@@ -226,7 +226,7 @@
             </p>
             <div class="rule">
               <strong>Rule:</strong> If a tile contributes to two of speed, value, and safety, it usually beats a
-              tile that contributes to only one, even when the one-purpose tile has more raw acceptance.
+              tile that contributes to only one, even when the one-purpose tile has more raw speed.
             </div>
             <div data-example="point-02"></div>
           </div>
@@ -251,7 +251,7 @@
               <h4>Call if most answers are yes</h4>
               <ul>
                 <li>The hand has poor closed prospects.</li>
-                <li>The call creates yaku, tenpai, or real 1-shanten.</li>
+                <li>The call creates yaku, tenpai, or a real one-away hand.</li>
                 <li>The hand has at least one safe tile or a way to discard safely after the call.</li>
                 <li>The value is enough for the score situation, or ending the hand is itself valuable.</li>
               </ul>
@@ -291,7 +291,7 @@
             <h3>Throw dangerous floating tiles before they become your problem.</h3>
             <p>
               LuckyJ is unusually hostile to dangerous floaters in slow hands. It will cut a middle tile that
-              has some raw acceptance if that tile is likely to become an unsafe discard later. This is one of
+              has some raw speed if that tile is likely to become an unsafe discard later. This is one of
               the largest differences between strong digital play and simple tile-efficiency play.
             </p>
             <p>
@@ -306,7 +306,7 @@
               dangerous simple floaters before danger arrives.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> In a 3- or 4-shanten hand, do not ask only "what accepts more tiles?" Ask
+              <strong>Rule:</strong> In a far-away hand, do not ask only "what accepts more tiles?" Ask
               "which leftover tile will I be forced to discard when the first riichi appears?"
             </div>
             <div data-example="point-05"></div>
@@ -318,15 +318,15 @@
           <div class="point-body">
             <h3>Value planning starts while the hand is still far away.</h3>
             <p>
-              LuckyJ often sacrifices early speed for value because early acceptance is cheap to spend. Once a
-              hand reaches 1-shanten, every acceptance loss is expensive. The review material repeatedly warns
+              LuckyJ often sacrifices early speed for value because early flexibility is cheap to spend. Once a
+              hand reaches one-away, every lost route is expensive. The review material repeatedly warns
               against racing to a tenpai that cannot satisfy the placement target. If you need mangan, start
               building mangan while you still have optionality.
             </p>
             <div class="two-col">
               <div>
                 <h4>Good sacrifice</h4>
-                <p>Cut a modestly useful tile to preserve honitsu, chiitoi, toitoi, dora acceptance, or yakuhai.</p>
+                <p>Cut a modestly useful tile to preserve honitsu, chiitoi, toitoi, dora use, or yakuhai.</p>
               </div>
               <div>
                 <h4>Bad sacrifice</h4>
@@ -494,10 +494,10 @@
           <p class="kicker">Closed-hand replay cases</p>
           <h2>Where LuckyJ disagrees with NAGA.</h2>
           <p>
-            I used the Python <code>mahjong</code> shanten engine to replay closed-hand LuckyJ decisions from the
-            cached NAGA reports. The comparison below estimates the shanten and visible-tile ukeire after
-            LuckyJ's actual discard versus NAGA's top discard. Ukeire is not the whole answer; it is included
-            so the trade-off is visible instead of rhetorical.
+            These cases replay closed-hand LuckyJ decisions from the cached NAGA reports. The main question is
+            not "which line has the bigger number?" The question is what LuckyJ is buying: route count, safety,
+            value, pressure, or placement. Mechanical counts are available inside each diagnostic panel, but
+            they are intentionally secondary.
           </p>
           <div class="case-browser">
             <div class="case-tabs" id="caseTabs" aria-label="Case categories"></div>
@@ -527,7 +527,7 @@
             </div>
             <div>
               <h3>Call contract</h3>
-              <p>Every call must state its contract: tenpai, 1-shanten, yaku creation, ippatsu break, or denial. No contract, no call.</p>
+              <p>Every call must state its contract: tenpai, real one-away shape, yaku creation, ippatsu break, or denial. No contract, no call.</p>
             </div>
             <div>
               <h3>Future push path</h3>

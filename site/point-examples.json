@@ -25,24 +25,28 @@
       "scores": [
         {
           "seat": "self",
+          "wind": "E",
           "score": 25000,
           "rank": 1,
           "dealer": true
         },
         {
           "seat": "shimocha",
+          "wind": "S",
           "score": 25000,
           "rank": 2,
           "dealer": false
         },
         {
           "seat": "toimen",
+          "wind": "W",
           "score": 25000,
           "rank": 3,
           "dealer": false
         },
         {
           "seat": "kamicha",
+          "wind": "N",
           "score": 25000,
           "rank": 4,
           "dealer": false
@@ -51,6 +55,7 @@
       "players": [
         {
           "seat": "self",
+          "wind": "E",
           "hand": "1m 4m 7m 1p 2p 3p 7p 3s 4s 8s 9s 9s E N",
           "discards": [],
           "melds": [],
@@ -58,6 +63,7 @@
         },
         {
           "seat": "shimocha",
+          "wind": "S",
           "hand": "1m 2m 6m 1p 4p 6p 8p 9p 9p 3s 4s 7s W",
           "discards": [],
           "melds": [],
@@ -65,6 +71,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "W",
           "hand": "2m 7m 8m 9m 3p 4p 5p 5pr 7p 8s S C C",
           "discards": [],
           "melds": [],
@@ -72,6 +79,7 @@
         },
         {
           "seat": "kamicha",
+          "wind": "N",
           "hand": "3m 4m 2p 3p 4p 1s 4s 5s 7s W F F F",
           "discards": [],
           "melds": [],
@@ -181,24 +189,28 @@
       "scores": [
         {
           "seat": "self",
+          "wind": "N",
           "score": 25000,
           "rank": 2,
           "dealer": false
         },
         {
           "seat": "shimocha",
+          "wind": "E",
           "score": 23700,
           "rank": 4,
           "dealer": true
         },
         {
           "seat": "toimen",
+          "wind": "S",
           "score": 24000,
           "rank": 3,
           "dealer": false
         },
         {
           "seat": "kamicha",
+          "wind": "W",
           "score": 27300,
           "rank": 1,
           "dealer": false
@@ -207,6 +219,7 @@
       "players": [
         {
           "seat": "self",
+          "wind": "N",
           "hand": "6m 8m 1p 1p 1p 3p 7p 8p 1s 1s 5sr N F C",
           "discards": [
             "W",
@@ -219,6 +232,7 @@
         },
         {
           "seat": "shimocha",
+          "wind": "E",
           "hand": "2m 2m 3m 1p 2p 3p 4p 7p 8p 1s 3s 4s 9s",
           "discards": [
             "N",
@@ -232,6 +246,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "S",
           "hand": "1m 3m 5mr 7m 8m 9m 9m 5p 2s 3s 3s 4s S",
           "discards": [
             "W",
@@ -245,6 +260,7 @@
         },
         {
           "seat": "kamicha",
+          "wind": "W",
           "hand": "3m 5m 7m 3p 4p 6p 7p 8p 3s 4s 6s 6s 6s",
           "discards": [
             "S",
@@ -346,24 +362,28 @@
       "scores": [
         {
           "seat": "self",
+          "wind": "W",
           "score": 22000,
           "rank": 3,
           "dealer": false
         },
         {
           "seat": "shimocha",
+          "wind": "N",
           "score": 17700,
           "rank": 4,
           "dealer": false
         },
         {
           "seat": "toimen",
+          "wind": "E",
           "score": 36000,
           "rank": 1,
           "dealer": true
         },
         {
           "seat": "kamicha",
+          "wind": "S",
           "score": 24300,
           "rank": 2,
           "dealer": false
@@ -372,6 +392,7 @@
       "players": [
         {
           "seat": "self",
+          "wind": "W",
           "hand": "2m 2m 2p 2p 7p 8p 1s 3s 3s 5sr E N N C",
           "discards": [
             "S",
@@ -385,6 +406,7 @@
         },
         {
           "seat": "shimocha",
+          "wind": "N",
           "hand": "3m 7m 4p 4p 5p 4s 4s 5s 6s 7s 9s F F",
           "discards": [
             "9p",
@@ -398,6 +420,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "E",
           "hand": "3m 3m 4m 6m 5p 6p 6p 7p 8p 2s 5s 6s 8s",
           "discards": [
             "1m",
@@ -412,6 +435,7 @@
         },
         {
           "seat": "kamicha",
+          "wind": "S",
           "hand": "3m 4m 7m 8m 3p 3p 5pr 6p 4s 7s 7s 8s 9s",
           "discards": [
             "S",
@@ -496,24 +520,28 @@
       "scores": [
         {
           "seat": "self",
+          "wind": "W",
           "score": 22000,
           "rank": 3,
           "dealer": false
         },
         {
           "seat": "shimocha",
+          "wind": "N",
           "score": 17700,
           "rank": 4,
           "dealer": false
         },
         {
           "seat": "toimen",
+          "wind": "E",
           "score": 36000,
           "rank": 1,
           "dealer": true
         },
         {
           "seat": "kamicha",
+          "wind": "S",
           "score": 24300,
           "rank": 2,
           "dealer": false
@@ -522,6 +550,7 @@
       "players": [
         {
           "seat": "self",
+          "wind": "W",
           "hand": "2m 2m 5m 2p 2p 7p 1s 3s 3s 5sr E N N C",
           "discards": [
             "S",
@@ -537,6 +566,7 @@
         },
         {
           "seat": "shimocha",
+          "wind": "N",
           "hand": "7m 7m 3p 4p 5p 4s 4s 5s 6s 7s 9s F F",
           "discards": [
             "9p",
@@ -552,6 +582,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "E",
           "hand": "3m 3m 4m 6m 6p 7p 8p 5s 5s 6s",
           "discards": [
             "1m",
@@ -570,6 +601,7 @@
         },
         {
           "seat": "kamicha",
+          "wind": "S",
           "hand": "3m 4m 7m 8m 9m 3p 3p 5pr 6p 4s 7s 8s 9s",
           "discards": [
             "S",
@@ -656,24 +688,28 @@
       "scores": [
         {
           "seat": "self",
+          "wind": "W",
           "score": 22000,
           "rank": 3,
           "dealer": false
         },
         {
           "seat": "shimocha",
+          "wind": "N",
           "score": 17700,
           "rank": 4,
           "dealer": false
         },
         {
           "seat": "toimen",
+          "wind": "E",
           "score": 36000,
           "rank": 1,
           "dealer": true
         },
         {
           "seat": "kamicha",
+          "wind": "S",
           "score": 24300,
           "rank": 2,
           "dealer": false
@@ -682,6 +718,7 @@
       "players": [
         {
           "seat": "self",
+          "wind": "W",
           "hand": "2m 2m 5m 6m 7m 2p 2p 1s 3s 3s 5sr W N N",
           "discards": [
             "S",
@@ -701,6 +738,7 @@
         },
         {
           "seat": "shimocha",
+          "wind": "N",
           "hand": "7m 7m 8m 4p 5p 6p 4s 4s 5s 6s 7s F F",
           "discards": [
             "9p",
@@ -720,6 +758,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "E",
           "hand": "3m 3m 4m 6m 6p 7p 8p 5s 6s 7s",
           "discards": [
             "1m",
@@ -742,6 +781,7 @@
         },
         {
           "seat": "kamicha",
+          "wind": "S",
           "hand": "3m 4m 7m 8m 9m 3p 3p 5pr 6p 4s 7s 8s 9s",
           "discards": [
             "S",
@@ -837,24 +877,28 @@
       "scores": [
         {
           "seat": "self",
+          "wind": "S",
           "score": 22000,
           "rank": 4,
           "dealer": false
         },
         {
           "seat": "shimocha",
+          "wind": "W",
           "score": 25700,
           "rank": 2,
           "dealer": false
         },
         {
           "seat": "toimen",
+          "wind": "N",
           "score": 28000,
           "rank": 1,
           "dealer": false
         },
         {
           "seat": "kamicha",
+          "wind": "E",
           "score": 24300,
           "rank": 3,
           "dealer": true
@@ -863,6 +907,7 @@
       "players": [
         {
           "seat": "self",
+          "wind": "S",
           "hand": "2m 2m 1s 3s 4s 6s E S S W N P P",
           "discards": [
             "9m"
@@ -872,6 +917,7 @@
         },
         {
           "seat": "shimocha",
+          "wind": "W",
           "hand": "5m 6m 6m 8m 2p 4p 9p 4s 5s 6s 7s 7s 9s",
           "discards": [
             "1p"
@@ -881,6 +927,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "N",
           "hand": "2m 3m 4m 7m 3p 6p 2s 3s 6s 8s 9s S W",
           "discards": [
             "P"
@@ -890,6 +937,7 @@
         },
         {
           "seat": "kamicha",
+          "wind": "E",
           "hand": "1m 6m 9m 1p 3p 5p 7p 7p 1s 2s 5sr 7s E",
           "discards": [
             "F"
@@ -938,24 +986,28 @@
       "scores": [
         {
           "seat": "self",
+          "wind": "S",
           "score": 22000,
           "rank": 4,
           "dealer": false
         },
         {
           "seat": "shimocha",
+          "wind": "W",
           "score": 25700,
           "rank": 2,
           "dealer": false
         },
         {
           "seat": "toimen",
+          "wind": "N",
           "score": 28000,
           "rank": 1,
           "dealer": false
         },
         {
           "seat": "kamicha",
+          "wind": "E",
           "score": 24300,
           "rank": 3,
           "dealer": true
@@ -964,6 +1016,7 @@
       "players": [
         {
           "seat": "self",
+          "wind": "S",
           "hand": "1s 3s 4s 6s E S S W N N",
           "discards": [
             "9m",
@@ -977,6 +1030,7 @@
         },
         {
           "seat": "shimocha",
+          "wind": "W",
           "hand": "5m 6m 6m 8m 2p 4p 5p 4s 5s 6s 7s 7s 9s",
           "discards": [
             "1p",
@@ -988,6 +1042,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "N",
           "hand": "2m 3m 4m 6m 7m 3p 6p 1s 2s 3s 6s 8s 9s",
           "discards": [
             "P",
@@ -999,6 +1054,7 @@
         },
         {
           "seat": "kamicha",
+          "wind": "E",
           "hand": "1m 6m 1p 3p 5p 7p 7p 1s 2s 5sr 7s 9s E",
           "discards": [
             "F",
@@ -1048,24 +1104,28 @@
       "scores": [
         {
           "seat": "self",
+          "wind": "S",
           "score": 22000,
           "rank": 4,
           "dealer": false
         },
         {
           "seat": "shimocha",
+          "wind": "W",
           "score": 25700,
           "rank": 2,
           "dealer": false
         },
         {
           "seat": "toimen",
+          "wind": "N",
           "score": 28000,
           "rank": 1,
           "dealer": false
         },
         {
           "seat": "kamicha",
+          "wind": "E",
           "score": 24300,
           "rank": 3,
           "dealer": true
@@ -1074,6 +1134,7 @@
       "players": [
         {
           "seat": "self",
+          "wind": "S",
           "hand": "1s 3s 4s 4s 6s N N",
           "discards": [
             "9m",
@@ -1091,6 +1152,7 @@
         },
         {
           "seat": "shimocha",
+          "wind": "W",
           "hand": "5m 6m 6m 7m 8m 4p 5p 4s 5s 6s 7s 7s 7s",
           "discards": [
             "1p",
@@ -1105,6 +1167,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "N",
           "hand": "2m 3m 4m 6m 7m 3p 3p 1s 2s 3s 6s 8s 9s",
           "discards": [
             "P",
@@ -1119,6 +1182,7 @@
         },
         {
           "seat": "kamicha",
+          "wind": "E",
           "hand": "6m 1p 3p 5p 7p 7p 8p 9p 1s 2s 7s 9s E",
           "discards": [
             "F",
@@ -1171,24 +1235,28 @@
       "scores": [
         {
           "seat": "self",
+          "wind": "E",
           "score": 22000,
           "rank": 4,
           "dealer": true
         },
         {
           "seat": "shimocha",
+          "wind": "S",
           "score": 26700,
           "rank": 2,
           "dealer": false
         },
         {
           "seat": "toimen",
+          "wind": "W",
           "score": 27000,
           "rank": 1,
           "dealer": false
         },
         {
           "seat": "kamicha",
+          "wind": "N",
           "score": 24300,
           "rank": 3,
           "dealer": false
@@ -1197,6 +1265,7 @@
       "players": [
         {
           "seat": "self",
+          "wind": "E",
           "hand": "2m 3m 5mr 8m 3p 4p 9p 2s 4s 5s 5s 6s S F",
           "discards": [
             "P",
@@ -1207,6 +1276,7 @@
         },
         {
           "seat": "shimocha",
+          "wind": "S",
           "hand": "2m 2m 5m 3p 6p 7p 8p 1s 1s 8s N N N",
           "discards": [
             "8m",
@@ -1217,6 +1287,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "W",
           "hand": "5m 6m 1p 2p 2p 5p 2s 6s E S W F F",
           "discards": [
             "C",
@@ -1227,6 +1298,7 @@
         },
         {
           "seat": "kamicha",
+          "wind": "N",
           "hand": "1m 4m 5m 6m 7m 1p 1p 4p 7p 3s 4s 6s 7s",
           "discards": [
             "P",
@@ -1341,24 +1413,28 @@
       "scores": [
         {
           "seat": "shimocha",
+          "wind": "E",
           "score": 17000,
           "rank": 3,
           "dealer": true
         },
         {
           "seat": "toimen",
+          "wind": "S",
           "score": 44600,
           "rank": 1,
           "dealer": false
         },
         {
           "seat": "kamicha",
+          "wind": "W",
           "score": 11800,
           "rank": 4,
           "dealer": false
         },
         {
           "seat": "self",
+          "wind": "N",
           "score": 26600,
           "rank": 2,
           "dealer": false
@@ -1367,6 +1443,7 @@
       "players": [
         {
           "seat": "shimocha",
+          "wind": "E",
           "hand": "4m 5mr 6m 7p 9p 1s 2s 3s 4s 6s 6s 6s 8s",
           "discards": [
             "W",
@@ -1385,6 +1462,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "S",
           "hand": "2m 4m 5m 6m 7m 2p 3p 3p 7p 7p 2s 4s P",
           "discards": [
             "1s",
@@ -1403,6 +1481,7 @@
         },
         {
           "seat": "kamicha",
+          "wind": "W",
           "hand": "1m 2m 4m 7m 4p 7p 8p 8p 5s 5s 8s E F",
           "discards": [
             "1m",
@@ -1421,6 +1500,7 @@
         },
         {
           "seat": "self",
+          "wind": "N",
           "hand": "2m 3m 3m 4m 5m 7m 8m 9m 4p 4p 3s 4s 5sr F",
           "discards": [
             "C",
@@ -1505,24 +1585,28 @@
       "scores": [
         {
           "seat": "shimocha",
+          "wind": "W",
           "score": 22000,
           "rank": 4,
           "dealer": false
         },
         {
           "seat": "toimen",
+          "wind": "N",
           "score": 24100,
           "rank": 3,
           "dealer": false
         },
         {
           "seat": "kamicha",
+          "wind": "E",
           "score": 28900,
           "rank": 1,
           "dealer": true
         },
         {
           "seat": "self",
+          "wind": "S",
           "score": 25000,
           "rank": 2,
           "dealer": false
@@ -1531,6 +1615,7 @@
       "players": [
         {
           "seat": "shimocha",
+          "wind": "W",
           "hand": "7m 7m 2p 2p 4p 6s 7s",
           "discards": [
             "N",
@@ -1555,6 +1640,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "N",
           "hand": "2m 3m 6m 7m 5p 6p 7p 4s 4s 7s 8s 9s E",
           "discards": [
             "2p",
@@ -1576,6 +1662,7 @@
         },
         {
           "seat": "kamicha",
+          "wind": "E",
           "hand": "2m 3m 4m 5m 5m 5m 6m 2p 3p 5p 6p 5s 6s",
           "discards": [
             "N",
@@ -1598,6 +1685,7 @@
         },
         {
           "seat": "self",
+          "wind": "S",
           "hand": "4m 6m 8m 8m 8m 3p 5p 2s 3s 4s 6s 7s W P",
           "discards": [
             "N",
@@ -1660,24 +1748,28 @@
       "scores": [
         {
           "seat": "kamicha",
+          "wind": "N",
           "score": 29600,
           "rank": 2,
           "dealer": false
         },
         {
           "seat": "self",
+          "wind": "E",
           "score": 35000,
           "rank": 1,
           "dealer": true
         },
         {
           "seat": "shimocha",
+          "wind": "S",
           "score": 25500,
           "rank": 3,
           "dealer": false
         },
         {
           "seat": "toimen",
+          "wind": "W",
           "score": 9900,
           "rank": 4,
           "dealer": false
@@ -1686,6 +1778,7 @@
       "players": [
         {
           "seat": "kamicha",
+          "wind": "N",
           "hand": "1m 5m 5mr 9m 3p 7p 8p 9p 9p 2s 4s 5s N",
           "discards": [],
           "melds": [],
@@ -1693,6 +1786,7 @@
         },
         {
           "seat": "self",
+          "wind": "E",
           "hand": "3m 3m 6m 9m 2p 5p 6p 7p 4s 6s E S W P",
           "discards": [],
           "melds": [],
@@ -1700,6 +1794,7 @@
         },
         {
           "seat": "shimocha",
+          "wind": "S",
           "hand": "2m 5m 7m 1p 2p 4p 6p 8p 8s E S P C",
           "discards": [],
           "melds": [],
@@ -1707,6 +1802,7 @@
         },
         {
           "seat": "toimen",
+          "wind": "W",
           "hand": "2m 4m 8m 9m 2p 3p 2s 3s 4s 7s 8s W P",
           "discards": [],
           "melds": [],
