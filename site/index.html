@@ -16,6 +16,7 @@
       <nav class="toplinks" aria-label="Source links">
         <a href="#evidence">Evidence</a>
         <a href="#points">Points</a>
+        <a href="#note-synthesis">Notes</a>
         <a href="#case-studies">Cases</a>
         <a href="#drills">Drills</a>
       </nav>
@@ -38,6 +39,7 @@
             <li><a href="#point-10">Late Hands Tighten</a></li>
             <li><a href="#point-11">Win Drawn Hands</a></li>
             <li><a href="#point-12">Do Not Worship NAGA Match</a></li>
+            <li><a href="#note-synthesis">Purchased Note Synthesis</a></li>
             <li><a href="#case-studies">Case Studies</a></li>
           </ol>
         </div>
@@ -52,8 +54,9 @@
               The source data contains every LuckyJ game in the sheet that had an exportable NAGA report:
               1,256 hanchan, 13,059 hands, and 147,378 non-reached LuckyJ discard decisions. I also used
               <cite>How the Robot Plays</cite>, a 207-page hand-review PDF about LuckyJ, to interpret the
-              patterns. The goal is not to say every LuckyJ move is correct. The goal is to identify the
-              repeatable principles behind the results and turn them into rules you can apply at the table.
+              patterns, plus seven purchased LuckyJ note analyses opened in the browser. The goal is not to
+              say every LuckyJ move is correct. The goal is to identify the repeatable principles behind the
+              results and turn them into rules you can apply at the table.
             </p>
           </div>
           <div class="metrics-grid" id="metrics"></div>
@@ -86,13 +89,94 @@
               <p>Count real routes, not only immediate ukeire: closed riichi, open yaku, value upgrade, safe tenpai, and clean fold.</p>
             </div>
             <div>
-              <b>3. Future Danger</b>
+              <b>3. Table Texture</b>
+              <p>Read the opponents' rivers and calls before trusting raw danger. LuckyJ often treats one open hand, one riichi, and two live threats as different games.</p>
+            </div>
+            <div>
+              <b>4. Future Danger</b>
               <p>Price the tiles you will have to discard later. A tile that is fine now can become the discard that destroys the hand.</p>
             </div>
             <div>
-              <b>4. Point of No Return</b>
+              <b>5. Point of No Return</b>
               <p>Decide what draw, call, riichi, or second threat will end the attack. LuckyJ-style aggression has an exit rule.</p>
             </div>
+            <div>
+              <b>6. Human Override</b>
+              <p>Use NAGA, Mortal, and your own late-game review to check LuckyJ's third-row choices. That is the least copyable part of the style.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="note-synthesis">
+          <p class="kicker">Purchased note synthesis</p>
+          <h2>What the note analyses add.</h2>
+          <p>
+            The purchased notes are useful because they study LuckyJ from different angles: all East 1 starts,
+            placement-specific hands, last-place-avoidance games, and comparisons against NAGA and Mortal. I
+            used them as commentary, not as authority. The distilled lesson is that LuckyJ's style is a set of
+            switches: hand value, shanten, number of calls, river texture, round, and placement all change the
+            meaning of the same tile.
+          </p>
+          <div class="insight-grid">
+            <div>
+              <h3>East 1 Reveals the Base Settings</h3>
+              <p>
+                With scores equal and placement pressure absent, LuckyJ's default target is not "maximum
+                acceptance." As a child, it strongly prefers either a good-shape one-han riichi route or a
+                hand that can become three han or better. As dealer, the value threshold drops because the
+                dealer turn is worth more. Hands below those thresholds start preserving yaku, dora, and safety.
+              </p>
+            </div>
+            <div>
+              <h3>Hold Safety by Shanten Count</h3>
+              <p>
+                The farther the hand is, the more a safe tile is worth. A 2-shanten or 3-shanten hand can
+                keep honors or visible safe material without "giving up," because those tiles buy permission
+                to call, push one more tile, or reach safe tenpai later. Dealer status and very high-value
+                hands lower that safety premium.
+              </p>
+            </div>
+            <div>
+              <h3>Weak Penchans Are Not Sacred Blocks</h3>
+              <p>
+                LuckyJ is willing to break a penchan or bad block when its best future is riichi-only bad
+                shape. The kept tiles usually have another job: yakuhai pair, honitsu/chanta route, dora use,
+                or defense. Do not copy this as vague slimming. Copy it only when the bad block mainly creates
+                a hand you do not want to win.
+              </p>
+            </div>
+            <div>
+              <h3>Read the River Shape, Not Just the Tile</h3>
+              <p>
+                Several note examples emphasize LuckyJ's sensitivity to discard patterns and calls. It may
+                push into one open hand, match-discard live honors early, or stop a seemingly ordinary tile
+                when a river looks abnormal. This is why a static danger chart is not enough; the same 6m is
+                different against a normal river, a honitsu river, and a riichi declaration sequence.
+              </p>
+            </div>
+            <div>
+              <h3>Last-Place Attack Still Has Brakes</h3>
+              <p>
+                When fighting to escape fourth, LuckyJ uses riichi pressure, calls for keiten, and hand-value
+                upgrades more aggressively. But the notes also show it refusing calls or discards that leave
+                no safe exit after the next dangerous draw. The lesson is not "push because last." It is "buy
+                pressure when the opponent must respect your hand, but do not remove every escape hatch."
+              </p>
+            </div>
+            <div>
+              <h3>Third Row Is the Training Zone</h3>
+              <p>
+                One note's strongest warning is that LuckyJ can look less reliable in the third discard row:
+                sometimes too ready to release tenpai equity, sometimes strained by multiple threats. Treat
+                late endgame as a separate skill. If NAGA, Mortal, and your point calculation all disagree
+                with LuckyJ late, do not force the LuckyJ move into your game.
+              </p>
+            </div>
+          </div>
+          <div class="rule">
+            <strong>Note-derived rule:</strong> LuckyJ's strange-looking tiles are usually not random. Ask which
+            switch changed: value threshold, shanten safety, bad-block quality, opponent river, number of threats,
+            or placement pressure.
           </div>
         </section>
 
@@ -115,7 +199,7 @@
             <ul class="compact">
               <li>When leading, cheap wins are still useful, but cheap risky wins lose value.</li>
               <li>When second in South rounds, ask whether a mangan meaningfully changes the final order.</li>
-              <li>When far behind, safe tiles still matter, but as tools that let you push later, not as a plan to fold forever.</li>
+              <li>When far behind, riichi pressure and keiten calls gain value, but safe tiles still matter as tools that let you push later.</li>
             </ul>
           </div>
         </section>
@@ -126,9 +210,10 @@
             <h3>Combine chances until the table forces a commitment.</h3>
             <p>
               A central LuckyJ habit is keeping tiles that serve more than one future. In bad or unclear hands,
-              it often balances open tanyao, yakuhai, honitsu, chiitoi, and safety. This is not indecision.
-              It is controlled ambiguity. The PDF repeatedly describes hands that shift from three routes, to
-              two routes, to one route, to defense, based on new draws and opponent signals.
+              it often balances open tanyao, yakuhai, honitsu, chanta, chiitoi, dora use, and safety. This is
+              not indecision. It is controlled ambiguity. The PDF and purchased notes repeatedly describe hands
+              that shift from three routes, to two routes, to one route, to defense, based on new draws and
+              opponent signals.
             </p>
             <div class="diagram">
               <div><b>Early unclear hand</b><span>tanyao</span><span>yakuhai</span><span>safety</span></div>
@@ -191,6 +276,8 @@
               The PDF's recurring open-hand theme is "rush while preparing to defend." The NAGA data supports
               the shape of that style: safer-than-NAGA and riskier-than-NAGA deviations were almost balanced
               overall, but middle and late safer deviations rose sharply when defense started to matter.
+              The purchased note examples add a sharper split: LuckyJ often treats one open opponent as readable,
+              but becomes much stricter when riichi or multiple live threats enter.
             </p>
           </div>
         </section>
@@ -203,6 +290,11 @@
               LuckyJ is unusually hostile to dangerous floaters in slow hands. It will cut a middle tile that
               has some raw acceptance if that tile is likely to become an unsafe discard later. This is one of
               the largest differences between strong digital play and simple tile-efficiency play.
+            </p>
+            <p>
+              The note analyses add a second reason: the river can make a tile's future worse even before
+              anyone declares riichi. Against an abnormal discard pattern, a floater that looks ordinary by
+              suji logic may already be a tile LuckyJ wants out of the hand.
             </p>
             <p>
               The book-data pass found that early NAGA mismatches often involved LuckyJ cutting a simple while
@@ -241,6 +333,11 @@
               <strong>Rule:</strong> If the likely fast hand is not worth winning, do not optimize toward it.
               Build toward the score class you actually need.
             </div>
+            <p>
+              A practical threshold from the note review: as a child, be suspicious of routes that end in
+              riichi-only bad shape unless the river or point situation makes the pressure valuable. As dealer,
+              one-han good shape and two-han hands become more acceptable because the dealer turn itself has value.
+            </p>
           </div>
         </section>
 
@@ -289,6 +386,12 @@
                 <li>Dama or open play preserves a better placement line.</li>
               </ul>
             </div>
+            <p>
+              The purchased last-place-avoidance notes sharpen this: a bad-shape riichi-only hand can still be
+              correct when you are last, the wait is not dead by river texture, and the opponents are incentivized
+              to fold to your pressure. The bad riichi is the one that wins little, scares nobody, and forces
+              you to pass several future danger tiles.
+            </p>
           </div>
         </section>
 
@@ -310,6 +413,11 @@
               A three-han hand may push against one riichi and fold against two. A hand with two future
               dangerous discards is much weaker than the same current tenpai with no future landmines.
             </p>
+            <p>
+              Add opponent type to that calculation. LuckyJ is willing to push or match-discard against a single
+              open hand because calls reveal shape. A riichi, a honitsu-looking river, or two coordinated threats
+              should raise the required hand class immediately.
+            </p>
           </div>
         </section>
 
@@ -323,10 +431,16 @@
               strategic shape, route selection, and value planning. Late turns are for precise execution:
               take tenpai safely, fold cleanly, or push only hands that deserve it.
             </p>
+            <p>
+              This does not mean LuckyJ's late game is beyond review. The note analyses explicitly warn that
+              third-row spots are where LuckyJ can look least human-copyable, especially around multiple threats
+              and tenpai/noten equity. Use LuckyJ late as a question generator, not as an answer key.
+            </p>
             <div class="chart" id="stageChart" aria-label="Decision rates by stage"></div>
             <div class="rule">
               <strong>Rule:</strong> The later the hand, the less you are allowed to speculate. If the hand has
-              not become real by the middle of row two, begin pricing safety more heavily.
+              not become real by the middle of row two, begin pricing safety more heavily. If the hand is real,
+              count noten payments and remaining safe draws before surrendering it.
             </div>
           </div>
         </section>
@@ -412,6 +526,14 @@
               <h3>Draw-tenpai defense</h3>
               <p>When folding, prefer safe discards that preserve harmless tenpai routes. Count noten-bappu as a real objective.</p>
             </div>
+            <div>
+              <h3>Penchan autopsy</h3>
+              <p>When you break a penchan, write why: bad riichi-only future, value route, safety route, or river danger. If none applies, keep the block.</p>
+            </div>
+            <div>
+              <h3>Third-row replay</h3>
+              <p>Review every third-row push/fold with NAGA, Mortal, and your own point calculation. This is where copying LuckyJ blindly is most dangerous.</p>
+            </div>
           </div>
         </section>
 
@@ -426,6 +548,14 @@
           <ul>
             <li><a href="https://docs.google.com/spreadsheets/d/1jV-fi6E-z8BFdbS_LPfvpktSw8qc68PSZj9iEgdUC9U/edit?usp=drivesdk">Google Sheet: LuckyJ NAGA Reports.</a></li>
             <li><a href="https://drive.google.com/file/d/1OCiBYLiPFzkbJI0aRsw4qVVh3uH-u1v2/view">PDF: How the Robot Plays, adapted from analysis of LuckyJ hands.</a></li>
+            <li>Purchased note articles reviewed locally; raw article captures are excluded from GitHub and only paraphrased strategic conclusions are used here.</li>
+            <li><a href="https://note.com/comtefurapote/n/n1eea999017a9">Note: LuckyJ placement-specific review and 100 choices.</a></li>
+            <li><a href="https://note.com/comtefurapote/n/n664f7270d7b4">Note: LuckyJ East 1 opening review.</a></li>
+            <li><a href="https://note.com/getawonarashite/n/ne73e7350691d">Note: LuckyJ weaknesses and late-game training.</a></li>
+            <li><a href="https://note.com/getawonarashite/n/n8cb02fec8658">Note: LuckyJ strength and penchan handling.</a></li>
+            <li><a href="https://note.com/getawonarashite/n/n7c076477a62d">Note: LuckyJ last-place avoidance review.</a></li>
+            <li><a href="https://note.com/getawonarashite/n/n449ff8e33986">Note: LuckyJ broad playstyle review.</a></li>
+            <li><a href="https://note.com/getawonarashite/n/nb93bc97ea0ac">Note: LuckyJ river-texture observations.</a></li>
             <li><a href="https://natsuai.com/mahjong/digital">Format reference: Natsu AI digital mahjong points.</a></li>
             <li>Tile font: GL-MahjongTile by Gutenberg Labo, vendored under `site/fonts/`.</li>
             <li>Generated data: `site/book-data.json` and `data/luckyj_analysis.json`.</li>

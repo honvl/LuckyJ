@@ -306,6 +306,7 @@ a {
 
 .two-col,
 .method-grid,
+.insight-grid,
 .stat-strip,
 .drill-list {
   display: grid;
@@ -315,10 +316,26 @@ a {
 
 .two-col div,
 .method-grid div,
+.insight-grid div,
 .stat-strip div {
   padding: 14px;
   background: #f8faf5;
   border: 1px solid var(--line);
+}
+
+.insight-grid {
+  margin: 18px 0;
+}
+
+.insight-grid h3 {
+  margin: 0 0 8px;
+  color: var(--blue);
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.insight-grid p {
+  margin: 0;
 }
 
 .method-grid b {
@@ -577,11 +594,12 @@ a {
     display: none;
   }
 
-  .metrics-grid,
-  .diagram,
-  .two-col,
-  .stat-strip,
-  .drill-list {
+    .metrics-grid,
+    .diagram,
+    .two-col,
+    .insight-grid,
+    .stat-strip,
+    .drill-list {
     grid-template-columns: 1fr;
   }
 
