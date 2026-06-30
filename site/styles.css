@@ -624,6 +624,150 @@ a {
   padding-top: 6px;
 }
 
+.mortal-block {
+  border-top: 1px solid var(--line);
+  background: #f6fafb;
+  margin-top: 14px;
+  padding: 14px;
+}
+
+.mortal-head {
+  align-items: start;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.mortal-head h5 {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 21px;
+  line-height: 1.2;
+  margin: 4px 0 0;
+}
+
+.mortal-head em,
+.mortal-grid em,
+.mortal-branch em {
+  color: var(--muted);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 750;
+}
+
+.model-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: end;
+}
+
+.model-badge {
+  border: 1px solid var(--line);
+  color: var(--muted);
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.1;
+  padding: 6px 8px;
+  text-transform: uppercase;
+}
+
+.model-badge.agree {
+  border-color: #9bc6b5;
+  background: var(--soft-green);
+  color: var(--green);
+}
+
+.model-badge.split {
+  border-color: #ddaaa4;
+  background: var(--soft-red);
+  color: var(--red);
+}
+
+.mortal-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.1fr);
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.mortal-grid > div,
+.mortal-branch {
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 12px;
+}
+
+.mortal-grid h5,
+.mortal-branch h5 {
+  color: var(--blue);
+  font-size: 14px;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+.mortal-grid ol,
+.mortal-branch ol {
+  display: grid;
+  gap: 7px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mortal-grid li,
+.mortal-branch li {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) 58px;
+  gap: 8px;
+  min-height: 34px;
+}
+
+.mortal-grid li > b,
+.mortal-branch li > b {
+  background: var(--blue);
+  color: #fff;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.mortal-grid li span,
+.mortal-branch li span {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.mortal-grid li strong,
+.mortal-branch li strong {
+  color: var(--green);
+  font-size: 13px;
+  text-align: right;
+}
+
+.mortal-grid p,
+.mortal-branch p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+
+.mortal-grid p:last-child,
+.mortal-branch p:last-child {
+  margin-bottom: 0;
+}
+
+.mortal-branch {
+  margin-top: 12px;
+}
+
 .analysis-step {
   border-bottom: 1px solid var(--line);
   padding: 12px 0;
@@ -1105,8 +1249,18 @@ a {
 
   .case-grid,
   .comparison,
-  .method-grid {
+  .method-grid,
+  .mortal-grid {
     grid-template-columns: 1fr;
+  }
+
+  .mortal-head {
+    display: block;
+  }
+
+  .model-badges {
+    justify-content: flex-start;
+    margin-top: 10px;
   }
 
   .case-head {

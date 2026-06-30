@@ -41,6 +41,15 @@ const tileCodes = {
   F: "6",
   C: "7",
 };
+const tileNames = {
+  E: "East wind",
+  S: "South wind",
+  W: "West wind",
+  N: "North wind",
+  P: "White dragon",
+  F: "Green dragon",
+  C: "Red dragon",
+};
 
 function metric(label, value) {
   const el = document.createElement("div");
@@ -73,20 +82,35 @@ function tileCode(tile) {
   return tileCodes[key] || tileCodes[key.replace("r", "")] || key;
 }
 
+function tileName(tile) {
+  const key = String(tile || "");
+  const base = key.replace("r", "");
+  if (tileNames[base]) return tileNames[base];
+  if (/^5[mps]r$/.test(key)) return `red ${key[0]}${key[1]}`;
+  return key;
+}
+
+function tileNamesText(items) {
+  return (items || []).filter(Boolean).map(tileName).join(", ");
+}
+
 function tiles(text) {
   const wrap = document.createElement("div");
   wrap.className = "tile-list";
   const span = document.createElement("span");
   span.className = `tiles hand-tiles${useOtfTiles ? " otf" : ""}`;
-  span.textContent = text.split(" ").filter(Boolean).map(tileCode).join("");
-  span.title = text;
-  span.setAttribute("aria-label", text);
+  const list = text.split(" ").filter(Boolean);
+  const label = tileNamesText(list);
+  span.textContent = list.map(tileCode).join("");
+  span.title = label;
+  span.setAttribute("aria-label", label);
   wrap.append(span);
   return wrap;
 }
 
 function tileIcon(tile, className = "") {
-  return `<span class="tiles ${useOtfTiles ? "otf " : ""}${className}" aria-label="${escapeHtml(tile)}" title="${escapeHtml(tile)}">${escapeHtml(tileCode(tile))}</span>`;
+  const label = tileName(tile);
+  return `<span class="tiles ${useOtfTiles ? "otf " : ""}${className}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${escapeHtml(tileCode(tile))}</span>`;
 }
 
 function applyTileCompatibility(root = document) {
@@ -96,7 +120,7 @@ function applyTileCompatibility(root = document) {
 
 function shortTiles(items) {
   if (!items || !items.length) return "none";
-  return items.slice(0, 12).join(" ");
+  return tileNamesText(items.slice(0, 12));
 }
 
 function dangerText(value) {
@@ -112,8 +136,8 @@ function tileIcons(items, className = "mini-tile") {
 function tileRun(items, className = "", emptyLabel = "none") {
   const list = (items || []).filter(Boolean);
   if (!list.length) return emptyLabel ? `<span class="empty">${escapeHtml(emptyLabel)}</span>` : "";
-  const text = list.join(" ");
-  return `<span class="tiles ${useOtfTiles ? "otf " : ""}${className}" aria-label="${escapeHtml(text)}" title="${escapeHtml(text)}">${list
+  const label = tileNamesText(list);
+  return `<span class="tiles ${useOtfTiles ? "otf " : ""}${className}" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${list
     .map(tileCode)
     .join("")}</span>`;
 }
@@ -275,7 +299,108 @@ function renderGuideBlock(guide) {
   return block;
 }
 
-function renderPointExamples(examples, guides) {
+function modelActionLine(action) {
+  if (!action) return "No model action";
+  if (action.type === "dahai" && action.tile) {
+    return `Discard ${tileIcon(action.tile, "discard-tile")} <em>${escapeHtml(tileName(action.tile))}</em>`;
+  }
+  if (action.type === "reach") return "Reach";
+  if (["chi", "pon", "daiminkan", "ankan", "kakan"].includes(action.type)) {
+    const tile = action.tile ? ` ${tileIcon(action.tile, "discard-tile")} <em>${escapeHtml(tileName(action.tile))}</em>` : "";
+    const label = {
+      chi: "Chi",
+      pon: "Pon",
+      daiminkan: "Open kan",
+      ankan: "Closed kan",
+      kakan: "Added kan",
+    }[action.type];
+    return `${label || escapeHtml(action.type)}${tile}`;
+  }
+  return escapeHtml(action.label || action.type || "No model action");
+}
+
+function candidateLine(candidate) {
+  if (candidate.type === "dahai" && candidate.tile) {
+    return `<span>Discard ${tileIcon(candidate.tile, "inline-tile")} <em>${escapeHtml(tileName(candidate.tile))}</em></span>`;
+  }
+  return `<span>${escapeHtml(candidate.label)}</span>`;
+}
+
+function agreementBadge(label, value) {
+  if (value == null) return "";
+  return `<span class="model-badge ${value ? "agree" : "split"}">${escapeHtml(label)} ${value ? "agrees" : "splits"}</span>`;
+}
+
+function renderMortalBlock(mortal) {
+  if (!mortal) return document.createDocumentFragment();
+  const block = document.createElement("section");
+  block.className = "mortal-block";
+  const topCandidates = (mortal.top_candidates || [])
+    .slice(0, 4)
+    .map(
+      (candidate, index) => `
+        <li>
+          <b>${index + 1}</b>
+          ${candidateLine(candidate)}
+          <strong>${pct(candidate.probability)}</strong>
+        </li>
+      `
+    )
+    .join("");
+  const branch =
+    mortal.post_call_mortal && mortal.post_call_candidates?.length
+      ? `
+        <div class="mortal-branch">
+          <h5>After Accepting the Call</h5>
+          <p>Mortal's conditional discard is ${modelActionLine(mortal.post_call_mortal)} ${agreementBadge(
+            "post-call discard",
+            mortal.post_call_agrees_luckyj
+          )}</p>
+          <ol>
+            ${mortal.post_call_candidates
+              .slice(0, 3)
+              .map(
+                (candidate, index) => `
+                  <li>
+                    <b>${index + 1}</b>
+                    ${candidateLine(candidate)}
+                    <strong>${pct(candidate.probability)}</strong>
+                  </li>
+                `
+              )
+              .join("")}
+          </ol>
+        </div>
+      `
+      : "";
+  block.innerHTML = `
+    <div class="mortal-head">
+      <div>
+        <p class="kicker">Mortal cross-check</p>
+        <h5>${modelActionLine(mortal.mortal)}</h5>
+      </div>
+      <div class="model-badges">
+        ${agreementBadge("LuckyJ", mortal.mortal_agrees_luckyj)}
+        ${agreementBadge("NAGA", mortal.mortal_agrees_naga)}
+      </div>
+    </div>
+    <div class="mortal-grid">
+      <div>
+        <h5>Model Candidates</h5>
+        <ol>${topCandidates}</ol>
+      </div>
+      <div>
+        <h5>Reading the Split</h5>
+        <p>${escapeHtml(mortal.read)}</p>
+        <p>${escapeHtml(mortal.how_to_use)}</p>
+      </div>
+    </div>
+    ${branch}
+  `;
+  return block;
+}
+
+function renderPointExamples(examples, guides, mortalPoints) {
   for (const placeholder of document.querySelectorAll("[data-example]")) {
     const example = examples[placeholder.dataset.example];
     if (!example) continue;
@@ -313,12 +438,13 @@ function renderPointExamples(examples, guides) {
         );
       } else {
         choices.innerHTML = `
-          <div class="decision"><b>LuckyJ</b><span class="discard-line">Discard ${tileIcon(example.actual, "discard-tile")} <em>${escapeHtml(example.actual)}</em></span><span>Danger ${dangerText(example.actual_danger)}</span></div>
-          <div class="decision"><b>NAGA top</b><span class="discard-line">Discard ${tileIcon(example.naga, "discard-tile")} <em>${escapeHtml(example.naga)}</em></span><span>Danger ${dangerText(example.naga_danger)}</span></div>
+          <div class="decision"><b>LuckyJ</b><span class="discard-line">Discard ${tileIcon(example.actual, "discard-tile")} <em>${escapeHtml(tileName(example.actual))}</em></span><span>Danger ${dangerText(example.actual_danger)}</span></div>
+          <div class="decision"><b>NAGA top</b><span class="discard-line">Discard ${tileIcon(example.naga, "discard-tile")} <em>${escapeHtml(tileName(example.naga))}</em></span><span>Danger ${dangerText(example.naga_danger)}</span></div>
         `;
       }
       card.append(choices);
     }
+    card.append(renderMortalBlock(mortalPoints?.[placeholder.dataset.example]));
     card.append(renderGuideBlock(guide));
 
     const drill = document.createElement("div");
@@ -382,11 +508,13 @@ function dangerRead(actual, naga) {
 function categoryRead(key, item) {
   const actualClass = tileClass(item.actual);
   const nagaClass = tileClass(item.naga);
+  const actualName = tileName(item.actual);
+  const nagaName = tileName(item.naga);
   if (key === "early_safety_hedge") {
-    return `Early in the hand, LuckyJ is treating ${item.actual} as the tile that least damages the future menu. This bucket is about delaying commitment: keep enough safety/value material to choose again after the table speaks.`;
+    return `Early in the hand, LuckyJ is treating ${actualName} as the tile that least damages the future menu. This bucket is about delaying commitment: keep enough safety/value material to choose again after the table speaks.`;
   }
   if (key === "middle_route_hedge") {
-    return `In the middle row, the hand has to start proving itself. LuckyJ's ${item.actual} discard suggests that the NAGA line compresses the hand into a route that is too brittle for the score and river state.`;
+    return `In the middle row, the hand has to start proving itself. LuckyJ's ${actualName} discard suggests that the NAGA line compresses the hand into a route that is too brittle for the score and river state.`;
   }
   if (key === "safer_than_naga") {
     return `This is a safety purchase inside an attacking hand. LuckyJ is not necessarily folding; it is choosing the line that keeps the hand alive without immediately throwing the more dangerous NAGA tile.`;
@@ -397,14 +525,16 @@ function categoryRead(key, item) {
   if (key === "late_tightening") {
     return `Late in the hand, speculative shape has mostly expired. Read this as an exact-counting problem: win, take safe tenpai, or fold.`;
   }
-  return `LuckyJ cuts a ${actualClass} while NAGA cuts a ${nagaClass}; the first question is which future each tile is protecting.`;
+  return `LuckyJ cuts a ${actualClass} (${actualName}) while NAGA cuts a ${nagaClass} (${nagaName}); the first question is which future each tile is protecting.`;
 }
 
 function caseLesson(key, item) {
   const actualClass = tileClass(item.actual);
   const nagaClass = tileClass(item.naga);
+  const actualName = tileName(item.actual);
+  const nagaName = tileName(item.naga);
   return [
-    `${item.round}, ${item.left} tiles left, ${item.score_band}. Hand texture: ${handTexture(item.hand)}. LuckyJ cuts ${item.actual} (${actualClass}); NAGA cuts ${item.naga} (${nagaClass}).`,
+    `${item.round}, ${item.left} tiles left, ${item.score_band}. Hand texture: ${handTexture(item.hand)}. LuckyJ cuts ${actualName} (${actualClass}); NAGA cuts ${nagaName} (${nagaClass}).`,
     categoryRead(key, item),
     dangerRead(item.actual_danger, item.naga_danger),
     `Review drill: before looking at the diagnostics, write what LuckyJ is buying: safety, value, route count, pressure, or placement. If you cannot name the purchase, do not copy the move yet.`,
@@ -416,7 +546,7 @@ function comparison(label, item, danger) {
   el.className = "decision";
   el.innerHTML = `
     <b>${label}</b>
-    <span class="discard-line">Discard ${tileIcon(item.discard, "discard-tile")} <em>${escapeHtml(item.discard)}</em></span>
+    <span class="discard-line">Discard ${tileIcon(item.discard, "discard-tile")} <em>${escapeHtml(tileName(item.discard))}</em></span>
     <span>Immediate danger ${danger == null ? "n/a" : pct(danger)}</span>
     <span>Keeps ${item.kept_honors} honors, ${item.kept_terminals} terminals</span>
     <details class="diagnostics">
@@ -508,16 +638,18 @@ function renderCases(data) {
 
 async function main() {
   applyTileCompatibility();
-  const [bookResponse, caseResponse, exampleResponse, guideResponse] = await Promise.all([
+  const [bookResponse, caseResponse, exampleResponse, guideResponse, mortalResponse] = await Promise.all([
     fetch("book-data.json"),
     fetch("case-studies.json"),
     fetch("point-examples.json"),
     fetch("strategy-guides.json"),
+    fetch("mortal-analysis.json"),
   ]);
   const data = await bookResponse.json();
   const caseData = await caseResponse.json();
   const examples = await exampleResponse.json();
   const guides = await guideResponse.json();
+  const mortal = await mortalResponse.json();
   const summary = data.summary;
   const top = data.top_bottom.top_half;
   const bottom = data.top_bottom.bottom_half;
@@ -541,7 +673,7 @@ async function main() {
     chart.append(bar(`${key} bad`, item.bad / item.decisions));
   }
 
-  renderPointExamples(examples, guides);
+  renderPointExamples(examples, guides, mortal.points);
   renderCases(caseData);
   applyTileCompatibility();
 }
