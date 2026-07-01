@@ -77,6 +77,11 @@ a {
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
+.topbar > div {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
 @media (hover: none), (pointer: coarse), (max-width: 900px) {
   .topbar.can-touch-retract {
     will-change: transform;
@@ -113,9 +118,10 @@ a {
 
 .topbar h1 {
   margin: 2px 0 0;
-  font-size: clamp(22px, 2.6vw, 34px);
-  line-height: 1.08;
+  font-size: clamp(18px, 1.8vw, 28px);
+  line-height: 1;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .eyebrow,
@@ -133,8 +139,10 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  flex: 1 1 auto;
+  justify-content: flex-end;
   max-width: 100%;
-  width: 100%;
+  width: auto;
 }
 
 .toplinks a {
@@ -2125,7 +2133,18 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   .topbar {
     align-items: flex-start;
     flex-direction: column;
+    gap: 12px;
     padding: 16px 20px;
+  }
+
+  .topbar h1 {
+    font-size: clamp(15px, 4.2vw, 20px);
+    max-width: calc(100vw - 40px);
+  }
+
+  .toplinks {
+    justify-content: flex-start;
+    width: 100%;
   }
 
   .layout,

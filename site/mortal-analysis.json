@@ -5,8 +5,8 @@
     "source": "Generated from local Mjai logs; raw logs and weights stay local.",
     "examples": 190,
     "matched": 190,
-    "reused_cached": 91,
-    "replayed": 99,
+    "reused_cached": 177,
+    "replayed": 13,
     "missing": []
   },
   "points": {
@@ -1161,66 +1161,6 @@
         "kind": "call",
         "input_signature": [
           "point-03",
-          "2023042123gm-0089-0000-3c9c4b51",
-          1,
-          6,
-          "chi",
-          "6m",
-          "C"
-        ],
-        "log_id": "2023042123gm-0089-0000-3c9c4b51",
-        "kyoku_index": 1,
-        "event_index": 283,
-        "left": 6,
-        "trigger": {
-          "type": "dahai",
-          "actor": 0,
-          "pai": "6m",
-          "tsumogiri": false
-        },
-        "actual": {
-          "type": "chi",
-          "tile": "6m",
-          "discard_after_call": "C",
-          "label": "Chi 6m"
-        },
-        "mortal": {
-          "type": "chi",
-          "tile": "6m",
-          "consumed": [
-            "4m",
-            "5m"
-          ],
-          "label": "Chi 6m"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 40,
-            "label": "Chi high",
-            "probability": 0.645136,
-            "type": "chi_high"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "C",
-          "label": "Discard C"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "East 2-1, late, 6 tiles left, above starting score. Mortal's first reaction is chi [[6m]] (64.5%); LuckyJ actually plays chi [[6m]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[C]].",
-        "how_to_use": "Use it to test whether the call has value beyond giving up the closed hand. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "East 2-1、late、残り6枚、above starting score。Mortal 第一反応は chi [[6m]] (64.5%)、LuckyJ 実戦は chi [[6m]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[C]] 切り。",
-        "how_to_use_ja": "鳴きが閉じた幻想を捨てる価値を持つかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-03",
-        "example_index": 4,
-        "kind": "call",
-        "input_signature": [
-          "point-03",
           "2023041913gm-0009-0000-95da9e3b",
           0,
           17,
@@ -1277,7 +1217,7 @@
       },
       {
         "point": "point-03",
-        "example_index": 5,
+        "example_index": 4,
         "kind": "call",
         "input_signature": [
           "point-03",
@@ -1337,7 +1277,7 @@
       },
       {
         "point": "point-03",
-        "example_index": 6,
+        "example_index": 5,
         "kind": "call",
         "input_signature": [
           "point-03",
@@ -1392,7 +1332,7 @@
       },
       {
         "point": "point-03",
-        "example_index": 7,
+        "example_index": 6,
         "kind": "call",
         "input_signature": [
           "point-03",
@@ -1447,7 +1387,7 @@
       },
       {
         "point": "point-03",
-        "example_index": 8,
+        "example_index": 7,
         "kind": "call",
         "input_signature": [
           "point-03",
@@ -1502,7 +1442,7 @@
       },
       {
         "point": "point-03",
-        "example_index": 9,
+        "example_index": 8,
         "kind": "call",
         "input_signature": [
           "point-03",
@@ -1562,587 +1502,10 @@
       },
       {
         "point": "point-03",
-        "example_index": 10,
-        "kind": "call",
-        "input_signature": [
-          "point-03",
-          "2023041914gm-0009-0000-f04c7ced",
-          8,
-          21,
-          "chi",
-          "3s",
-          "6p"
-        ],
-        "log_id": "2023041914gm-0009-0000-f04c7ced",
-        "kyoku_index": 8,
-        "event_index": 715,
-        "left": 21,
-        "trigger": {
-          "type": "dahai",
-          "actor": 3,
-          "pai": "3s",
-          "tsumogiri": true
-        },
-        "actual": {
-          "type": "chi",
-          "tile": "3s",
-          "discard_after_call": "6p",
-          "label": "Chi 3s"
-        },
-        "mortal": {
-          "type": "chi",
-          "tile": "3s",
-          "consumed": [
-            "4s",
-            "5s"
-          ],
-          "label": "Chi 3s"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 38,
-            "label": "Chi low",
-            "probability": 0.641939,
-            "type": "chi_low"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "6p",
-          "label": "Discard 6p"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "South 3-1, late, 21 tiles left, behind. Mortal's first reaction is chi [[3s]] (64.2%); LuckyJ actually plays chi [[3s]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[6p]].",
-        "how_to_use": "Use it to test whether the call has value beyond giving up the closed hand. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "South 3-1、late、残り21枚、behind。Mortal 第一反応は chi [[3s]] (64.2%)、LuckyJ 実戦は chi [[3s]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[6p]] 切り。",
-        "how_to_use_ja": "鳴きが閉じた幻想を捨てる価値を持つかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      }
-    ],
-    "point-04": [
-      {
-        "point": "point-04",
-        "example_index": 1,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023042419gm-0029-0000-74c110f1",
-          2,
-          10,
-          "chi",
-          "4p",
-          "1s"
-        ],
-        "log_id": "2023042419gm-0029-0000-74c110f1",
-        "kyoku_index": 2,
-        "event_index": 300,
-        "left": 10,
-        "trigger": {
-          "type": "dahai",
-          "actor": 0,
-          "pai": "4p",
-          "tsumogiri": true
-        },
-        "actual": {
-          "type": "chi",
-          "tile": "4p",
-          "discard_after_call": "1s",
-          "label": "Chi 4p"
-        },
-        "mortal": {
-          "type": "none",
-          "label": "Pass"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 45,
-            "label": "Pass",
-            "probability": 0.996796,
-            "type": "pass"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "1s",
-          "label": "Discard 1s"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "East 2-0, late, 10 tiles left, behind. Mortal's first reaction is pass (99.7%); LuckyJ actually plays chi [[4p]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[1s]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "East 2-0、late、残り10枚、behind。Mortal 第一反応は スルー (99.7%)、LuckyJ 実戦は chi [[4p]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[1s]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 2,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023042611gm-0029-0000-452c635c",
-          12,
-          3,
-          "chi",
-          "5pr",
-          "C"
-        ],
-        "log_id": "2023042611gm-0029-0000-452c635c",
-        "kyoku_index": 12,
-        "event_index": 1411,
-        "left": 3,
-        "trigger": {
-          "type": "dahai",
-          "actor": 2,
-          "pai": "5pr",
-          "tsumogiri": false
-        },
-        "actual": {
-          "type": "chi",
-          "tile": "5pr",
-          "discard_after_call": "C",
-          "label": "Chi 5pr"
-        },
-        "mortal": {
-          "type": "none",
-          "label": "Pass"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 45,
-            "label": "Pass",
-            "probability": 0.972669,
-            "type": "pass"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "C",
-          "label": "Discard C"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "South 4-2, late, 3 tiles left, above starting score. Mortal's first reaction is pass (97.3%); LuckyJ actually plays chi [[5pr]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[C]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "South 4-2、late、残り3枚、above starting score。Mortal 第一反応は スルー (97.3%)、LuckyJ 実戦は chi [[5pr]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[C]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 3,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023041911gm-0009-0000-24ce7cb7",
-          3,
-          24,
-          "pon",
-          "W",
-          "C"
-        ],
-        "log_id": "2023041911gm-0009-0000-24ce7cb7",
-        "kyoku_index": 3,
-        "event_index": 364,
-        "left": 24,
-        "trigger": {
-          "type": "dahai",
-          "actor": 2,
-          "pai": "W",
-          "tsumogiri": true
-        },
-        "actual": {
-          "type": "pon",
-          "tile": "W",
-          "discard_after_call": "C",
-          "label": "Pon W"
-        },
-        "mortal": {
-          "type": "none",
-          "label": "Pass"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 45,
-            "label": "Pass",
-            "probability": 0.999492,
-            "type": "pass"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "C",
-          "label": "Discard C"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "East 3-0, late, 24 tiles left, above starting score. Mortal's first reaction is pass (99.9%); LuckyJ actually plays pon [[W]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[C]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "East 3-0、late、残り24枚、above starting score。Mortal 第一反応は スルー (99.9%)、LuckyJ 実戦は pon [[W]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[C]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 4,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023042010gm-0009-0000-9ff1b8f2",
-          9,
-          41,
-          "pon",
-          "2s",
-          "4s"
-        ],
-        "log_id": "2023042010gm-0009-0000-9ff1b8f2",
-        "kyoku_index": 9,
-        "event_index": 817,
-        "left": 41,
-        "trigger": {
-          "type": "dahai",
-          "actor": 1,
-          "pai": "2s",
-          "tsumogiri": false
-        },
-        "actual": {
-          "type": "pon",
-          "tile": "2s",
-          "discard_after_call": "4s",
-          "label": "Pon 2s"
-        },
-        "mortal": {
-          "type": "pon",
-          "tile": "2s",
-          "consumed": [
-            "2s",
-            "2s"
-          ],
-          "label": "Pon 2s"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 41,
-            "label": "Pon",
-            "probability": 0.685518,
-            "type": "pon"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "4s",
-          "label": "Discard 4s"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "South 4-0, middle, 41 tiles left, lead. Mortal's first reaction is pon [[2s]] (68.6%); LuckyJ actually plays pon [[2s]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[4s]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "South 4-0、middle、残り41枚、lead。Mortal 第一反応は pon [[2s]] (68.6%)、LuckyJ 実戦は pon [[2s]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[4s]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 5,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023042015gm-0009-0000-34493c99",
-          6,
-          23,
-          "pon",
-          "4s",
-          "3s"
-        ],
-        "log_id": "2023042015gm-0009-0000-34493c99",
-        "kyoku_index": 6,
-        "event_index": 615,
-        "left": 23,
-        "trigger": {
-          "type": "dahai",
-          "actor": 2,
-          "pai": "4s",
-          "tsumogiri": true
-        },
-        "actual": {
-          "type": "pon",
-          "tile": "4s",
-          "discard_after_call": "3s",
-          "label": "Pon 4s"
-        },
-        "mortal": {
-          "type": "pon",
-          "tile": "4s",
-          "consumed": [
-            "4s",
-            "4s"
-          ],
-          "label": "Pon 4s"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 41,
-            "label": "Pon",
-            "probability": 0.911492,
-            "type": "pon"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "3s",
-          "label": "Discard 3s"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "South 1-0, late, 23 tiles left, lead. Mortal's first reaction is pon [[4s]] (91.1%); LuckyJ actually plays pon [[4s]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[3s]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "South 1-0、late、残り23枚、lead。Mortal 第一反応は pon [[4s]] (91.1%)、LuckyJ 実戦は pon [[4s]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[3s]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 6,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023042015gm-0009-0000-5409a14d",
-          4,
-          40,
-          "chi",
-          "6s",
-          "W"
-        ],
-        "log_id": "2023042015gm-0009-0000-5409a14d",
-        "kyoku_index": 4,
-        "event_index": 489,
-        "left": 40,
-        "trigger": {
-          "type": "dahai",
-          "actor": 3,
-          "pai": "6s",
-          "tsumogiri": false
-        },
-        "actual": {
-          "type": "chi",
-          "tile": "6s",
-          "discard_after_call": "W",
-          "label": "Chi 6s"
-        },
-        "mortal": {
-          "type": "none",
-          "label": "Pass"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 45,
-            "label": "Pass",
-            "probability": 0.99487,
-            "type": "pass"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "6p",
-          "label": "Discard 6p"
-        },
-        "post_call_agrees_luckyj": false,
-        "post_call_candidates": [],
-        "read": "East 3-0, middle, 40 tiles left, behind. Mortal's first reaction is pass (99.5%); LuckyJ actually plays chi [[6s]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[6p]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "East 3-0、middle、残り40枚、behind。Mortal 第一反応は スルー (99.5%)、LuckyJ 実戦は chi [[6s]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[6p]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 7,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023042017gm-0009-0000-c3841b10",
-          12,
-          28,
-          "pon",
-          "6m",
-          "S"
-        ],
-        "log_id": "2023042017gm-0009-0000-c3841b10",
-        "kyoku_index": 12,
-        "event_index": 1309,
-        "left": 28,
-        "trigger": {
-          "type": "dahai",
-          "actor": 1,
-          "pai": "6m",
-          "tsumogiri": false
-        },
-        "actual": {
-          "type": "pon",
-          "tile": "6m",
-          "discard_after_call": "S",
-          "label": "Pon 6m"
-        },
-        "mortal": {
-          "type": "pon",
-          "tile": "6m",
-          "consumed": [
-            "6m",
-            "6m"
-          ],
-          "label": "Pon 6m"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 41,
-            "label": "Pon",
-            "probability": 0.999245,
-            "type": "pon"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "S",
-          "label": "Discard S"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "South 3-1, middle, 28 tiles left, lead. Mortal's first reaction is pon [[6m]] (99.9%); LuckyJ actually plays pon [[6m]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[S]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "South 3-1、middle、残り28枚、lead。Mortal 第一反応は pon [[6m]] (99.9%)、LuckyJ 実戦は pon [[6m]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[S]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 8,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023042018gm-0089-0000-05b20c20",
-          4,
-          42,
-          "chi",
-          "1s",
-          "1p"
-        ],
-        "log_id": "2023042018gm-0089-0000-05b20c20",
-        "kyoku_index": 4,
-        "event_index": 512,
-        "left": 42,
-        "trigger": {
-          "type": "dahai",
-          "actor": 3,
-          "pai": "1s",
-          "tsumogiri": false
-        },
-        "actual": {
-          "type": "chi",
-          "tile": "1s",
-          "discard_after_call": "1p",
-          "label": "Chi 1s"
-        },
-        "mortal": {
-          "type": "chi",
-          "tile": "1s",
-          "consumed": [
-            "2s",
-            "3s"
-          ],
-          "label": "Chi 1s"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 38,
-            "label": "Chi low",
-            "probability": 0.997817,
-            "type": "chi_low"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "F",
-          "label": "Discard F"
-        },
-        "post_call_agrees_luckyj": false,
-        "post_call_candidates": [],
-        "read": "East 4-0, middle, 42 tiles left, above starting score. Mortal's first reaction is chi [[1s]] (99.8%); LuckyJ actually plays chi [[1s]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[F]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "East 4-0、middle、残り42枚、above starting score。Mortal 第一反応は chi [[1s]] (99.8%)、LuckyJ 実戦は chi [[1s]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[F]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
         "example_index": 9,
         "kind": "call",
         "input_signature": [
-          "point-04",
-          "2023042021gm-0089-0000-086a3cd1",
-          8,
-          39,
-          "pon",
-          "3s",
-          "5sr"
-        ],
-        "log_id": "2023042021gm-0089-0000-086a3cd1",
-        "kyoku_index": 8,
-        "event_index": 832,
-        "left": 39,
-        "trigger": {
-          "type": "dahai",
-          "actor": 0,
-          "pai": "3s",
-          "tsumogiri": false
-        },
-        "actual": {
-          "type": "pon",
-          "tile": "3s",
-          "discard_after_call": "5sr",
-          "label": "Pon 3s"
-        },
-        "mortal": {
-          "type": "none",
-          "label": "Pass"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 45,
-            "label": "Pass",
-            "probability": 0.983062,
-            "type": "pass"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "5sr",
-          "label": "Discard 5sr"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "South 3-0, middle, 39 tiles left, lead. Mortal's first reaction is pass (98.3%); LuckyJ actually plays pon [[3s]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[5sr]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "South 3-0、middle、残り39枚、lead。Mortal 第一反応は スルー (98.3%)、LuckyJ 実戦は pon [[3s]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[5sr]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 10,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
+          "point-03",
           "2023042114gm-0089-0000-13395777",
           0,
           24,
@@ -2193,8 +1556,650 @@
         "post_call_agrees_luckyj": true,
         "post_call_candidates": [],
         "read": "East 1-0, late, 24 tiles left, above starting score. Mortal's first reaction is chi [[7s]] (98.1%); LuckyJ actually plays chi [[7s]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[6p]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "how_to_use": "Use it to test whether the call has value beyond giving up the closed hand. Copy the call when the post-call discard and next safe tile are already visible.",
         "read_ja": "East 1-0、late、残り24枚、above starting score。Mortal 第一反応は chi [[7s]] (98.1%)、LuckyJ 実戦は chi [[7s]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[6p]] 切り。",
+        "how_to_use_ja": "鳴きが閉じた幻想を捨てる価値を持つかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-03",
+        "example_index": 10,
+        "kind": "call",
+        "input_signature": [
+          "point-03",
+          "2023042021gm-0089-0000-086a3cd1",
+          8,
+          39,
+          "pon",
+          "3s",
+          "5sr"
+        ],
+        "log_id": "2023042021gm-0089-0000-086a3cd1",
+        "kyoku_index": 8,
+        "event_index": 832,
+        "left": 39,
+        "trigger": {
+          "type": "dahai",
+          "actor": 0,
+          "pai": "3s",
+          "tsumogiri": false
+        },
+        "actual": {
+          "type": "pon",
+          "tile": "3s",
+          "discard_after_call": "5sr",
+          "label": "Pon 3s"
+        },
+        "mortal": {
+          "type": "none",
+          "label": "Pass"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 45,
+            "label": "Pass",
+            "probability": 0.983062,
+            "type": "pass"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "5sr",
+          "label": "Discard 5sr"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "South 3-0, middle, 39 tiles left, lead. Mortal's first reaction is pass (98.3%); LuckyJ actually plays pon [[3s]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[5sr]].",
+        "how_to_use": "Use it to test whether the call has value beyond giving up the closed hand. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "South 3-0、middle、残り39枚、lead。Mortal 第一反応は スルー (98.3%)、LuckyJ 実戦は pon [[3s]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[5sr]] 切り。",
+        "how_to_use_ja": "鳴きが閉じた幻想を捨てる価値を持つかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      }
+    ],
+    "point-04": [
+      {
+        "point": "point-04",
+        "example_index": 1,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023042011gm-0009-0000-810729ef",
+          4,
+          55,
+          "pon",
+          "C",
+          "9s"
+        ],
+        "log_id": "2023042011gm-0009-0000-810729ef",
+        "kyoku_index": 4,
+        "event_index": 487,
+        "left": 55,
+        "trigger": {
+          "type": "dahai",
+          "actor": 2,
+          "pai": "C",
+          "tsumogiri": false
+        },
+        "actual": {
+          "type": "pon",
+          "tile": "C",
+          "discard_after_call": "9s",
+          "label": "Pon C"
+        },
+        "mortal": {
+          "type": "pon",
+          "tile": "C",
+          "consumed": [
+            "C",
+            "C"
+          ],
+          "label": "Pon C"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 41,
+            "label": "Pon",
+            "probability": 0.997595,
+            "type": "pon"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "9s",
+          "label": "Discard 9s"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "East 4-0, early, 55 tiles left, behind. Mortal's first reaction is pon [[C]] (99.8%); LuckyJ actually plays pon [[C]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[9s]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "East 4-0、early、残り55枚、behind。Mortal 第一反応は pon [[C]] (99.8%)、LuckyJ 実戦は pon [[C]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[9s]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 2,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023042017gm-0009-0000-c3841b10",
+          1,
+          7,
+          "chi",
+          "5m",
+          "9p"
+        ],
+        "log_id": "2023042017gm-0009-0000-c3841b10",
+        "kyoku_index": 1,
+        "event_index": 210,
+        "left": 7,
+        "trigger": {
+          "type": "dahai",
+          "actor": 3,
+          "pai": "5m",
+          "tsumogiri": false
+        },
+        "actual": {
+          "type": "chi",
+          "tile": "5m",
+          "discard_after_call": "9p",
+          "label": "Chi 5m"
+        },
+        "mortal": {
+          "type": "chi",
+          "tile": "5m",
+          "consumed": [
+            "6m",
+            "7m"
+          ],
+          "label": "Chi 5m"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 38,
+            "label": "Chi low",
+            "probability": 0.957209,
+            "type": "chi_low"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "2s",
+          "label": "Discard 2s"
+        },
+        "post_call_agrees_luckyj": false,
+        "post_call_candidates": [],
+        "read": "East 2-0, late, 7 tiles left, above starting score. Mortal's first reaction is chi [[5m]] (95.7%); LuckyJ actually plays chi [[5m]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[2s]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "East 2-0、late、残り7枚、above starting score。Mortal 第一反応は chi [[5m]] (95.7%)、LuckyJ 実戦は chi [[5m]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[2s]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 3,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023042113gm-0089-0000-e8f2eec8",
+          7,
+          23,
+          "pon",
+          "2p",
+          "F"
+        ],
+        "log_id": "2023042113gm-0089-0000-e8f2eec8",
+        "kyoku_index": 7,
+        "event_index": 865,
+        "left": 23,
+        "trigger": {
+          "type": "dahai",
+          "actor": 3,
+          "pai": "2p",
+          "tsumogiri": false
+        },
+        "actual": {
+          "type": "pon",
+          "tile": "2p",
+          "discard_after_call": "F",
+          "label": "Pon 2p"
+        },
+        "mortal": {
+          "type": "none",
+          "label": "Pass"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 45,
+            "label": "Pass",
+            "probability": 0.971534,
+            "type": "pass"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "F",
+          "label": "Discard F"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "South 2-0, late, 23 tiles left, above starting score. Mortal's first reaction is pass (97.2%); LuckyJ actually plays pon [[2p]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[F]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "South 2-0、late、残り23枚、above starting score。Mortal 第一反応は スルー (97.2%)、LuckyJ 実戦は pon [[2p]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[F]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 4,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023042119gm-0089-0000-e8b801ac",
+          8,
+          12,
+          "chi",
+          "3m",
+          "9m"
+        ],
+        "log_id": "2023042119gm-0089-0000-e8b801ac",
+        "kyoku_index": 8,
+        "event_index": 979,
+        "left": 12,
+        "trigger": {
+          "type": "dahai",
+          "actor": 3,
+          "pai": "3m",
+          "tsumogiri": true
+        },
+        "actual": {
+          "type": "chi",
+          "tile": "3m",
+          "discard_after_call": "9m",
+          "label": "Chi 3m"
+        },
+        "mortal": {
+          "type": "none",
+          "label": "Pass"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 45,
+            "label": "Pass",
+            "probability": 0.720011,
+            "type": "pass"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "9m",
+          "label": "Discard 9m"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "South 3-0, late, 12 tiles left, lead. Mortal's first reaction is pass (72.0%); LuckyJ actually plays chi [[3m]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[9m]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "South 3-0、late、残り12枚、lead。Mortal 第一反応は スルー (72.0%)、LuckyJ 実戦は chi [[3m]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[9m]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 5,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023042318gm-0089-0000-9fda21a1",
+          6,
+          14,
+          "pon",
+          "S",
+          "9m"
+        ],
+        "log_id": "2023042318gm-0089-0000-9fda21a1",
+        "kyoku_index": 6,
+        "event_index": 632,
+        "left": 14,
+        "trigger": {
+          "type": "dahai",
+          "actor": 3,
+          "pai": "S",
+          "tsumogiri": true
+        },
+        "actual": {
+          "type": "pon",
+          "tile": "S",
+          "discard_after_call": "9m",
+          "label": "Pon S"
+        },
+        "mortal": {
+          "type": "none",
+          "label": "Pass"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 45,
+            "label": "Pass",
+            "probability": 0.999456,
+            "type": "pass"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "9s",
+          "label": "Discard 9s"
+        },
+        "post_call_agrees_luckyj": false,
+        "post_call_candidates": [],
+        "read": "South 1-0, late, 14 tiles left, lead. Mortal's first reaction is pass (99.9%); LuckyJ actually plays pon [[S]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[9s]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "South 1-0、late、残り14枚、lead。Mortal 第一反応は スルー (99.9%)、LuckyJ 実戦は pon [[S]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[9s]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 6,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023042414gm-0089-0000-b9e6b2e1",
+          7,
+          10,
+          "pon",
+          "P",
+          "9s"
+        ],
+        "log_id": "2023042414gm-0089-0000-b9e6b2e1",
+        "kyoku_index": 7,
+        "event_index": 844,
+        "left": 10,
+        "trigger": {
+          "type": "dahai",
+          "actor": 1,
+          "pai": "P",
+          "tsumogiri": true
+        },
+        "actual": {
+          "type": "pon",
+          "tile": "P",
+          "discard_after_call": "9s",
+          "label": "Pon P"
+        },
+        "mortal": {
+          "type": "pon",
+          "tile": "P",
+          "consumed": [
+            "P",
+            "P"
+          ],
+          "label": "Pon P"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 41,
+            "label": "Pon",
+            "probability": 0.999138,
+            "type": "pon"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "9s",
+          "label": "Discard 9s"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "South 3-0, late, 10 tiles left, above starting score. Mortal's first reaction is pon [[P]] (99.9%); LuckyJ actually plays pon [[P]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[9s]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "South 3-0、late、残り10枚、above starting score。Mortal 第一反応は pon [[P]] (99.9%)、LuckyJ 実戦は pon [[P]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[9s]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 7,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023041912gm-0009-0000-9d2b9dfb",
+          2,
+          12,
+          "chi",
+          "8s",
+          "W"
+        ],
+        "log_id": "2023041912gm-0009-0000-9d2b9dfb",
+        "kyoku_index": 2,
+        "event_index": 384,
+        "left": 12,
+        "trigger": {
+          "type": "dahai",
+          "actor": 2,
+          "pai": "8s",
+          "tsumogiri": true
+        },
+        "actual": {
+          "type": "chi",
+          "tile": "8s",
+          "discard_after_call": "W",
+          "label": "Chi 8s"
+        },
+        "mortal": {
+          "type": "chi",
+          "tile": "8s",
+          "consumed": [
+            "6s",
+            "7s"
+          ],
+          "label": "Chi 8s"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 40,
+            "label": "Chi high",
+            "probability": 0.721947,
+            "type": "chi_high"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "post_call_agrees_luckyj": false,
+        "post_call_candidates": [],
+        "read": "East 3-0, late, 12 tiles left, above starting score. Mortal's first reaction is chi [[8s]] (72.2%); LuckyJ actually plays chi [[8s]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[1m]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "East 3-0、late、残り12枚、above starting score。Mortal 第一反応は chi [[8s]] (72.2%)、LuckyJ 実戦は chi [[8s]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[1m]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 8,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023041914gm-0009-0000-f04c7ced",
+          8,
+          32,
+          "chi",
+          "2m",
+          "N"
+        ],
+        "log_id": "2023041914gm-0009-0000-f04c7ced",
+        "kyoku_index": 8,
+        "event_index": 691,
+        "left": 32,
+        "trigger": {
+          "type": "dahai",
+          "actor": 3,
+          "pai": "2m",
+          "tsumogiri": true
+        },
+        "actual": {
+          "type": "chi",
+          "tile": "2m",
+          "discard_after_call": "N",
+          "label": "Chi 2m"
+        },
+        "mortal": {
+          "type": "chi",
+          "tile": "2m",
+          "consumed": [
+            "3m",
+            "4m"
+          ],
+          "label": "Chi 2m"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 38,
+            "label": "Chi low",
+            "probability": 0.900012,
+            "type": "chi_low"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "N",
+          "label": "Discard N"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "South 3-1, middle, 32 tiles left, behind. Mortal's first reaction is chi [[2m]] (90.0%); LuckyJ actually plays chi [[2m]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[N]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "South 3-1、middle、残り32枚、behind。Mortal 第一反応は chi [[2m]] (90.0%)、LuckyJ 実戦は chi [[2m]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[N]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 9,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023041914gm-0009-0000-905aedb2",
+          2,
+          21,
+          "pon",
+          "8s",
+          "P"
+        ],
+        "log_id": "2023041914gm-0009-0000-905aedb2",
+        "kyoku_index": 2,
+        "event_index": 263,
+        "left": 21,
+        "trigger": {
+          "type": "dahai",
+          "actor": 2,
+          "pai": "8s",
+          "tsumogiri": true
+        },
+        "actual": {
+          "type": "pon",
+          "tile": "8s",
+          "discard_after_call": "P",
+          "label": "Pon 8s"
+        },
+        "mortal": {
+          "type": "pon",
+          "tile": "8s",
+          "consumed": [
+            "8s",
+            "8s"
+          ],
+          "label": "Pon 8s"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 41,
+            "label": "Pon",
+            "probability": 0.916116,
+            "type": "pon"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "F",
+          "label": "Discard F"
+        },
+        "post_call_agrees_luckyj": false,
+        "post_call_candidates": [],
+        "read": "East 3-0, late, 21 tiles left, above starting score. Mortal's first reaction is pon [[8s]] (91.6%); LuckyJ actually plays pon [[8s]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[F]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "East 3-0、late、残り21枚、above starting score。Mortal 第一反応は pon [[8s]] (91.6%)、LuckyJ 実戦は pon [[8s]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[F]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 10,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023041914gm-0009-0000-905aedb2",
+          8,
+          25,
+          "pon",
+          "S",
+          "E"
+        ],
+        "log_id": "2023041914gm-0009-0000-905aedb2",
+        "kyoku_index": 8,
+        "event_index": 790,
+        "left": 25,
+        "trigger": {
+          "type": "dahai",
+          "actor": 3,
+          "pai": "S",
+          "tsumogiri": true
+        },
+        "actual": {
+          "type": "pon",
+          "tile": "S",
+          "discard_after_call": "E",
+          "label": "Pon S"
+        },
+        "mortal": {
+          "type": "pon",
+          "tile": "S",
+          "consumed": [
+            "S",
+            "S"
+          ],
+          "label": "Pon S"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 41,
+            "label": "Pon",
+            "probability": 0.998653,
+            "type": "pon"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "E",
+          "label": "Discard E"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "South 4-1, middle, 25 tiles left, lead. Mortal's first reaction is pon [[S]] (99.9%); LuckyJ actually plays pon [[S]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[E]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "South 4-1、middle、残り25枚、lead。Mortal 第一反応は pon [[S]] (99.9%)、LuckyJ 実戦は pon [[S]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[E]] 切り。",
         "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
       }
     ],
@@ -3694,58 +3699,53 @@
         "kind": "call",
         "input_signature": [
           "point-07",
-          "2023041914gm-0009-0000-f04c7ced",
+          "2023042310gm-0089-0000-18d092eb",
           8,
-          21,
-          "chi",
-          "3s",
-          "6p"
+          28,
+          "pon",
+          "C",
+          "9m"
         ],
-        "log_id": "2023041914gm-0009-0000-f04c7ced",
+        "log_id": "2023042310gm-0089-0000-18d092eb",
         "kyoku_index": 8,
-        "event_index": 715,
-        "left": 21,
+        "event_index": 896,
+        "left": 28,
         "trigger": {
           "type": "dahai",
-          "actor": 3,
-          "pai": "3s",
+          "actor": 2,
+          "pai": "C",
           "tsumogiri": true
         },
         "actual": {
-          "type": "chi",
-          "tile": "3s",
-          "discard_after_call": "6p",
-          "label": "Chi 3s"
+          "type": "pon",
+          "tile": "C",
+          "discard_after_call": "9m",
+          "label": "Pon C"
         },
         "mortal": {
-          "type": "chi",
-          "tile": "3s",
-          "consumed": [
-            "4s",
-            "5s"
-          ],
-          "label": "Chi 3s"
+          "type": "none",
+          "label": "Pass"
         },
-        "mortal_agrees_luckyj": true,
+        "mortal_agrees_luckyj": false,
         "mortal_agrees_naga": null,
         "top_candidates": [
           {
-            "action_id": 38,
-            "label": "Chi low",
-            "probability": 0.641939,
-            "type": "chi_low"
+            "action_id": 45,
+            "label": "Pass",
+            "probability": 0.998857,
+            "type": "pass"
           }
         ],
         "post_call_mortal": {
           "type": "dahai",
-          "tile": "6p",
-          "label": "Discard 6p"
+          "tile": "9m",
+          "label": "Discard 9m"
         },
         "post_call_agrees_luckyj": true,
         "post_call_candidates": [],
-        "read": "South 3-1, late, 21 tiles left, behind. Mortal's first reaction is chi [[3s]] (64.2%); LuckyJ actually plays chi [[3s]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[6p]].",
+        "read": "South 2-0, middle, 28 tiles left, lead. Mortal's first reaction is pass (99.9%); LuckyJ actually plays pon [[C]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[9m]].",
         "how_to_use": "Use it to separate tempo that changes the clock from exposure that only feels busy. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "South 3-1、late、残り21枚、behind。Mortal 第一反応は chi [[3s]] (64.2%)、LuckyJ 実戦は chi [[3s]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[6p]] 切り。",
+        "read_ja": "South 2-0、middle、残り28枚、lead。Mortal 第一反応は スルー (99.9%)、LuckyJ 実戦は pon [[C]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[9m]] 切り。",
         "how_to_use_ja": "鳴きが局面の時計を進めるか、露出だけ増やすかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
       },
       {

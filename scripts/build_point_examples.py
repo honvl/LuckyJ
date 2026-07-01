@@ -1216,13 +1216,19 @@ def call_model_sentence(case, lang):
         if nishiki:
             if nishiki.get("supports_call"):
                 parts.append(f"ニシキは {called} を {actual} するライン")
+            elif nishiki.get("prefers_pass"):
+                parts.append("ニシキは鳴かない")
+            elif nishiki.get("top_action") == actual:
+                parts.append(f"ニシキは同じ {actual} でも別の取り方")
             else:
-                parts.append(f"ニシキは実戦とは別の {nishiki['top_action']} ライン")
+                parts.append(f"ニシキは実戦とは別の {nishiki['top_action']} 寄り")
         if hibakari:
             if hibakari.get("supports_call"):
                 parts.append("ヒバカリもこの鳴き")
             elif hibakari.get("prefers_pass"):
                 parts.append("ヒバカリは鳴かない")
+            elif hibakari.get("top_action") == actual:
+                parts.append(f"ヒバカリは同じ {actual} でも別の取り方")
             else:
                 parts.append(f"ヒバカリは別の {hibakari['top_action']} 寄り")
         if kagashi:
@@ -1230,6 +1236,8 @@ def call_model_sentence(case, lang):
                 parts.append("カガシもこの鳴き")
             elif kagashi.get("prefers_pass"):
                 parts.append("カガシは鳴かない")
+            elif kagashi.get("top_action") == actual:
+                parts.append(f"カガシは同じ {actual} でも別の取り方")
             else:
                 parts.append(f"カガシは別の {kagashi['top_action']} 寄り")
         return "。".join(parts) + "。"
@@ -1237,22 +1245,30 @@ def call_model_sentence(case, lang):
     if nishiki:
         if nishiki.get("supports_call"):
             parts.append(f"Nishiki chooses {actual} on {called}")
+        elif nishiki.get("prefers_pass"):
+            parts.append("Nishiki would not call")
+        elif nishiki.get("top_action") == actual:
+            parts.append(f"Nishiki has a nearby {actual} variant")
         else:
-            parts.append(f"Nishiki chooses a different {nishiki['top_action']} line")
+            parts.append(f"Nishiki prefers {nishiki['top_action']} instead")
     if hibakari:
         if hibakari.get("supports_call"):
             parts.append("Hibakari also takes this call")
         elif hibakari.get("prefers_pass"):
             parts.append("Hibakari would not call")
+        elif hibakari.get("top_action") == actual:
+            parts.append(f"Hibakari has a nearby {actual} variant")
         else:
-            parts.append(f"Hibakari prefers a different {hibakari['top_action']} line")
+            parts.append(f"Hibakari prefers {hibakari['top_action']} instead")
     if kagashi:
         if kagashi.get("supports_call"):
             parts.append("Kagashi also takes this call")
         elif kagashi.get("prefers_pass"):
             parts.append("Kagashi would not call")
+        elif kagashi.get("top_action") == actual:
+            parts.append(f"Kagashi has a nearby {actual} variant")
         else:
-            parts.append(f"Kagashi prefers a different {kagashi['top_action']} line")
+            parts.append(f"Kagashi prefers {kagashi['top_action']} instead")
     return ". ".join(parts) + "."
 
 
@@ -1269,6 +1285,20 @@ def call_has_naga_discrepancy(case):
         return True
     post_nishiki = model_head((case or {}).get("post_call_model_heads") or [], "nishiki")
     return bool(post_nishiki) and not post_nishiki.get("matches_luckyj")
+
+
+def call_has_teaching_disagreement(case):
+    nishiki = model_head((case or {}).get("call_model_heads") or [], "nishiki")
+    if not nishiki:
+        return False
+    if nishiki.get("prefers_pass"):
+        return True
+    if nishiki.get("top_action") != (case or {}).get("call"):
+        return True
+    if nishiki.get("supports_call"):
+        post_nishiki = model_head((case or {}).get("post_call_model_heads") or [], "nishiki")
+        return bool(post_nishiki) and not post_nishiki.get("matches_luckyj")
+    return False
 
 
 def case_model_head(case, key):
@@ -1581,7 +1611,7 @@ def build_call_guide(case, lang):
         if nishiki_call and nishiki_call.get("supports_call") and post_call_split:
             why_not = f"ニシキも {call} するが、鳴いた後は {discard} ではなく {tile_token(nishiki_post.get('top'))} を切る。比較点は鳴かない選択ではなく鳴き後打牌。"
         elif nishiki_same_call_label and not nishiki_call.get("supports_call") and not nishiki_call.get("prefers_pass"):
-            why_not = f"ニシキも {call} を選ぶが、実戦とは別の {call} ラインを選ぶ。比較点は鳴かない選択ではなく鳴き方の細部。"
+            why_not = f"ニシキも {call} を選ぶが、違いは副露形だけ。この種のケースは単独の教材にはしない。"
         elif consensus_call:
             why_not = f"鳴かない選択は守備的な代案ではあるが、この局面で表示されている NAGA 各ヘッドは鳴きを選んでいる。残り{case.get('left')}枚では、役ありテンパイを取る鳴きが現実的なルートになる。"
         else:
@@ -1610,7 +1640,7 @@ def build_call_guide(case, lang):
     if nishiki_call and nishiki_call.get("supports_call") and post_call_split:
         why_not = f"Nishiki also chooses {call}, but after the call it would discard {tile_token(nishiki_post.get('top'))} instead of {discard}. The comparison is the post-call discard, not call versus no-call."
     elif nishiki_same_call_label and not nishiki_call.get("supports_call") and not nishiki_call.get("prefers_pass"):
-        why_not = f"Nishiki also chooses {call}, but on a different {call} line. The comparison is the call detail, not call versus no-call."
+        why_not = f"Nishiki also chooses {call}; the remaining split is only the exact call shape, so this case should not stand alone as a teaching example."
     elif consensus_call:
         why_not = f"Passing is the defensive alternative, but the listed NAGA heads do not prefer it here. With {case.get('left')} tiles left, the open yaku tenpai is the practical route."
     else:
@@ -1727,7 +1757,13 @@ def attach_example_guides(case):
     key = f"{case.get('point')}_{case.get('game')}_{case.get('kyoku_index')}_{case.get('position')}"
     if key in cache:
         cached_entry = cache[key]
-        use_cached = cached_llm_guide_current(cached_entry) and not cached_guide_conflicts(case, cached_entry)
+        shape = case.get("post_call_eval") or {}
+        tenpai_call = case.get("kind") == "call" and shape.get("shanten") is not None and shape.get("shanten") <= 0
+        use_cached = (
+            not tenpai_call
+            and cached_llm_guide_current(cached_entry)
+            and not cached_guide_conflicts(case, cached_entry)
+        )
         if use_cached and "guide" in cached_entry:
             case["guide"]["read"] = cached_entry["guide"].get("read", case["guide"]["read"])
             case["guide"]["prompt"] = cached_entry["guide"].get("prompt", case["guide"]["prompt"])
@@ -1973,14 +2009,16 @@ def point_candidate_eligible(point_key, case):
         )
     if point_key == "point-03":
         shape = case.get("post_call_eval") or {}
-        return kind == "call" and case.get("discard_after_call") not in {None, "?"} and call_has_naga_discrepancy(case) and (shape.get("shanten") is None or shape.get("shanten") <= 1 or left <= 24)
+        return kind == "call" and case.get("discard_after_call") not in {None, "?"} and call_has_teaching_disagreement(case) and (shape.get("shanten") is None or shape.get("shanten") <= 1 or left <= 24)
     if point_key == "point-04":
         post_discard_cls = safe_tile_class(case.get("discard_after_call"))
+        shape = case.get("post_call_eval") or {}
         return (
             kind == "call"
             and case.get("discard_after_call") not in {None, "?"}
-            and call_has_naga_discrepancy(case)
+            and call_has_teaching_disagreement(case)
             and post_call_has_defensive_reserve(case)
+            and (shape.get("shanten") is None or shape.get("shanten") > 0)
             and (active_threat_count(case) > 0 or post_discard_cls in {"honor", "terminal"})
         )
     if point_key == "point-05":
@@ -2014,7 +2052,7 @@ def point_candidate_eligible(point_key, case):
         return (
             kind == "call"
             and case.get("discard_after_call") not in {None, "?"}
-            and call_has_naga_discrepancy(case)
+            and call_has_teaching_disagreement(case)
             and call_has_purpose(case)
             and (left <= 40 or shape.get("shanten") is None or shape.get("shanten") <= 1)
         )
@@ -2674,7 +2712,7 @@ def try_call_points(
     )
 
     score_value = exposed_bonus + max(0.0, (70 - left) / 100) + call_score_adjustment(call_case or {})
-    if call_has_naga_discrepancy(call_case) and wants_candidate(selected, "point-03", score_value):
+    if call_has_teaching_disagreement(call_case) and wants_candidate(selected, "point-03", score_value):
         add(
             selected,
             used,
@@ -2700,7 +2738,7 @@ def try_call_points(
             riichi_discard_indices,
         )
         score_value = 0.4 + 0.2 * active_threats + (0.2 if terminal_or_honor_exit else 0.0) + call_score_adjustment(call_case or {})
-        if call_has_naga_discrepancy(call_case) and wants_candidate(selected, "point-04", score_value):
+        if call_has_teaching_disagreement(call_case) and wants_candidate(selected, "point-04", score_value):
             add(
                 selected,
                 used,
@@ -2725,7 +2763,7 @@ def try_call_points(
         riichi_discard_indices,
     )
     score_value = 0.3 + exposed_bonus + (0.2 if left <= 40 else 0.0) + call_score_adjustment(call_case or {})
-    if call_has_naga_discrepancy(call_case) and wants_candidate(selected, "point-07", score_value):
+    if call_has_teaching_disagreement(call_case) and wants_candidate(selected, "point-07", score_value):
         add(
             selected,
             used,

@@ -1513,23 +1513,20 @@ function callModelActionLine(example, head) {
   if (Number(head?.top_kind) === 0 || action === "pass") {
     return `<span>${isJa ? "鳴かない" : "Do not call"}</span>`;
   }
-  if (head?.supports_call && action === String(example.call || "").toLowerCase()) {
-    const calledTile = example.called_tile
-      ? `${tileIcon(example.called_tile, "discard-tile")} <em>${escapeHtml(tileName(example.called_tile))}</em>`
-      : "";
-    const from = example.called_from ? escapeHtml(seatLabel(example.called_from)) : "";
-    const postHead = postCallModelHead(example, head);
-    const postDiscard = postHead?.top || example.post_call_naga || example.discard_after_call;
-    const discardText = postDiscard
-      ? `${tileIcon(postDiscard, "discard-tile")} <em>${escapeHtml(tileName(postDiscard))}</em>`
-      : "";
-    const label = callActionLabel(action);
-    const text = isJa
-      ? `${label}${calledTile ? ` ${calledTile}` : ""}${from ? ` を${from}から` : ""}${discardText ? `、${t("discard")} ${discardText}` : ""}`
-      : `${label}${calledTile ? ` on ${calledTile}` : ""}${from ? ` from ${from}` : ""}${discardText ? `, then ${t("discard").toLowerCase()} ${discardText}` : ""}`;
-    return `<span class="call-action-line">${text}</span>`;
-  }
-  return `<span>${callActionLabel(head?.top_action)}</span>`;
+  const calledTile = example.called_tile
+    ? `${tileIcon(example.called_tile, "discard-tile")} <em>${escapeHtml(tileName(example.called_tile))}</em>`
+    : "";
+  const from = example.called_from ? escapeHtml(seatLabel(example.called_from)) : "";
+  const postHead = postCallModelHead(example, head);
+  const postDiscard = postHead?.top || example.post_call_naga || example.discard_after_call;
+  const discardText = postDiscard
+    ? `${tileIcon(postDiscard, "discard-tile")} <em>${escapeHtml(tileName(postDiscard))}</em>`
+    : "";
+  const label = callActionLabel(action);
+  const text = isJa
+    ? `${label}${calledTile ? ` ${calledTile}` : ""}${from ? ` を${from}から` : ""}${discardText ? `、${t("discard")} ${discardText}` : ""}`
+    : `${label}${calledTile ? ` on ${calledTile}` : ""}${from ? ` from ${from}` : ""}${discardText ? `, then ${t("discard").toLowerCase()} ${discardText}` : ""}`;
+  return `<span class="call-action-line">${text}</span>`;
 }
 
 function callModelNote(example, head) {
