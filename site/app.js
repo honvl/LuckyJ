@@ -39,6 +39,67 @@ const pointRailFallbackLabels = {
 };
 const pointExampleControllers = new Map();
 
+function setupRetractingTopbar() {
+  const topbar = document.querySelector(".topbar");
+  if (!topbar || !window.matchMedia) return;
+
+  const touchQuery = window.matchMedia("(hover: none), (pointer: coarse), (max-width: 900px)");
+  const revealAtTop = 28;
+  const minScrollDelta = 8;
+  let enabled = false;
+  let ticking = false;
+  let lastScrollY = Math.max(window.scrollY || window.pageYOffset || 0, 0);
+
+  function setRetracted(retracted) {
+    topbar.classList.toggle("is-retracted", retracted);
+  }
+
+  function update() {
+    ticking = false;
+    if (!enabled) return;
+
+    const scrollY = Math.max(window.scrollY || window.pageYOffset || 0, 0);
+    const delta = scrollY - lastScrollY;
+
+    if (scrollY <= revealAtTop || topbar.matches(":focus-within")) {
+      setRetracted(false);
+    } else if (Math.abs(delta) >= minScrollDelta) {
+      setRetracted(delta > 0);
+    }
+
+    lastScrollY = scrollY;
+  }
+
+  function scheduleUpdate() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  function syncMode() {
+    enabled = touchQuery.matches;
+    topbar.classList.toggle("can-touch-retract", enabled);
+    if (!enabled) {
+      setRetracted(false);
+      return;
+    }
+    lastScrollY = Math.max(window.scrollY || window.pageYOffset || 0, 0);
+    scheduleUpdate();
+  }
+
+  window.addEventListener("scroll", scheduleUpdate, { passive: true });
+  window.addEventListener("resize", scheduleUpdate);
+  topbar.addEventListener("focusin", () => setRetracted(false));
+
+  if (touchQuery.addEventListener) {
+    touchQuery.addEventListener("change", syncMode);
+  } else if (touchQuery.addListener) {
+    touchQuery.addListener(syncMode);
+  }
+
+  syncMode();
+}
+
 function normalizePointKey(value) {
   const raw = String(value || "").trim();
   const match = raw.match(/^point-(\d{1,2})$/i) || raw.match(/^(\d{1,2})$/);
@@ -939,6 +1000,7 @@ function orderedMeldTiles(meld) {
   const tiles = meldTileList(meld);
   const calledTile = typeof meld === "object" ? meld.called_tile : "";
   const calledFrom = normalizedCallSource(typeof meld === "object" ? meld.called_from : "");
+  const addedKanTile = typeof meld === "object" ? meld.added_kan_tile : "";
   if (!calledTile || !calledFrom || !tiles.length) {
     return tiles.map((tile) => ({ tile, called: false, calledFrom: "" }));
   }
@@ -948,7 +1010,57 @@ function orderedMeldTiles(meld) {
   const renderedCalledTile = calledSourceIndex >= 0 ? remaining.splice(calledSourceIndex, 1)[0] : calledTile;
   const insertAt = calledTileIndex(calledFrom, remaining.length + 1);
   remaining.splice(insertAt, 0, renderedCalledTile);
-  return remaining.map((tile, index) => ({ tile, called: index === insertAt, calledFrom }));
+  return remaining.map((tile, index) => ({
+    tile,
+    called: index === insertAt,
+    calledFrom,
+    addedKanTile: index === insertAt ? addedKanTile : "",
+  }));
+}
+
+function matchingPonForAddedKan(meld, addedTile) {
+  const tiles = meldTileList(meld);
+  const kind = String(typeof meld === "object" ? meld.kind || "" : "").toLowerCase();
+  return (
+    tiles.length >= 3 &&
+    (!kind || kind === "pon" || kind === "kakan") &&
+    tiles.every((tile) => sameBaseTile(tile, addedTile)) &&
+    typeof meld === "object" &&
+    meld.called_tile &&
+    meld.called_from
+  );
+}
+
+function meldsWithAddedKanStacks(melds) {
+  const merged = [];
+  for (const meld of melds || []) {
+    const kind = String(typeof meld === "object" ? meld.kind || "" : "").toLowerCase();
+    const tiles = meldTileList(meld);
+    if (kind !== "kakan" || tiles.length !== 1) {
+      merged.push(meld);
+      continue;
+    }
+
+    const addedTile = tiles[0];
+    let targetIndex = -1;
+    for (let index = merged.length - 1; index >= 0; index -= 1) {
+      if (matchingPonForAddedKan(merged[index], addedTile)) {
+        targetIndex = index;
+        break;
+      }
+    }
+    if (targetIndex < 0) {
+      merged.push(meld);
+      continue;
+    }
+
+    merged[targetIndex] = {
+      ...merged[targetIndex],
+      kind: "kakan",
+      added_kan_tile: addedTile,
+    };
+  }
+  return merged;
 }
 
 function tableMeld(meld) {
@@ -958,10 +1070,15 @@ function tableMeld(meld) {
   return `<span class="meld-run" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${items
     .map(
       (item) =>
-        `<span class="meld-tile-slot${item.called ? ` called-tile-slot called-from-${item.calledFrom}` : ""}">${tileIcon(
-          item.tile,
-          `meld-tile${item.called ? " called-tile" : ""}`
-        )}</span>`
+        item.addedKanTile
+          ? `<span class="meld-tile-slot called-tile-slot added-kan-slot called-from-${item.calledFrom}"><span class="added-kan-stack">${tileIcon(
+              item.tile,
+              "meld-tile called-tile added-kan-stack-tile"
+            )}${tileIcon(item.addedKanTile, "meld-tile called-tile added-kan-stack-tile")}</span></span>`
+          : `<span class="meld-tile-slot${item.called ? ` called-tile-slot called-from-${item.calledFrom}` : ""}">${tileIcon(
+              item.tile,
+              `meld-tile${item.called ? " called-tile" : ""}`
+            )}</span>`
     )
     .join("")}</span>`;
 }
@@ -1089,8 +1206,9 @@ function renderMahjongTable(table) {
       const handTiles = (player.hand || "").split(" ").filter(Boolean);
       const handRun =
         player.seat === "self" ? tileRunWithThreats(handTiles, player.tile_threats || []) : tileRun(handTiles);
-      const melds = (player.melds || []).length
-        ? `<div class="table-melds">${(player.melds || []).map(tableMeld).join("")}</div>`
+      const playerMelds = meldsWithAddedKanStacks(player.melds || []);
+      const melds = playerMelds.length
+        ? `<div class="table-melds">${playerMelds.map(tableMeld).join("")}</div>`
         : "";
       return `
         <div class="player-hand player-${position}">
@@ -1203,6 +1321,28 @@ function logIdFromPaifu(paifu) {
   return match ? match[1] : "";
 }
 
+function mortalInputSignature(pointKey, example) {
+  if (!example) return null;
+  const logId = logIdFromPaifu(example.paifu);
+  if (!logId) return null;
+  const kind = example.kind;
+  let actionType = "dahai";
+  let actionTile = example.actual ?? null;
+  let postDiscard = null;
+  if (kind === "call") {
+    actionType = String(example.call || "").toLowerCase();
+    actionTile = example.called_tile ?? null;
+    postDiscard = example.discard_after_call ?? null;
+  } else if (kind === "reach") {
+    actionType = "reach";
+  }
+  return [pointKey, logId, example.kyoku_index ?? null, example.left ?? null, actionType, actionTile, postDiscard];
+}
+
+function sameSignature(left, right) {
+  return Array.isArray(left) && Array.isArray(right) && left.length === right.length && left.every((value, index) => value === right[index]);
+}
+
 function mortalCopyForExample(mortalCopy, pointKey, index) {
   const value = mortalCopy?.[pointKey];
   if (Array.isArray(value)) return value[index] || {};
@@ -1217,6 +1357,11 @@ function pointMortalForExample(mortalPoints, pointKey, example, index) {
     const logId = logIdFromPaifu(example.paifu);
     const kyokuIndex = example.kyoku_index;
     const actualTile = example.actual;
+    const expectedSignature = mortalInputSignature(pointKey, example);
+
+    if (expectedSignature && list.some((item) => Array.isArray(item.input_signature))) {
+      return list.find((item) => sameSignature(item.input_signature, expectedSignature)) || null;
+    }
 
     for (const item of list) {
       if (item.log_id === logId && item.kyoku_index === kyokuIndex) {
@@ -1233,6 +1378,8 @@ function pointMortalForExample(mortalPoints, pointKey, example, index) {
         return item;
       }
     }
+
+    if (logId || kyokuIndex != null) return null;
   }
 
   return list[index] || null;
@@ -1335,10 +1482,36 @@ function postCallModelHead(example, head) {
   return (example.post_call_model_heads || []).find((item) => String(item?.key || item?.label || "").toLowerCase() === key);
 }
 
+function callModelHeadName(head) {
+  return escapeHtml(isJa ? head.label_ja || modelName(head.key || head.label) : head.label || modelName(head.key));
+}
+
+function readableList(items) {
+  const clean = items.filter(Boolean);
+  if (clean.length <= 1) return clean.join("");
+  if (clean.length === 2) return isJa ? clean.join("、") : clean.join(" and ");
+  const last = clean[clean.length - 1];
+  const first = clean.slice(0, -1).join(isJa ? "、" : ", ");
+  return isJa ? `${first}、${last}` : `${first}, and ${last}`;
+}
+
+function callModelActionKey(example, head) {
+  const action = String(head?.top_action || "").toLowerCase();
+  const postHead = postCallModelHead(example, head);
+  const postDiscard = postHead?.top || example.post_call_naga || example.discard_after_call || "";
+  return [
+    Number(head?.top_kind) === 0 || action === "pass" ? "pass" : action,
+    head?.supports_call ? "actual" : "other",
+    example.called_tile || "",
+    example.called_from || "",
+    postDiscard,
+  ].join("|");
+}
+
 function callModelActionLine(example, head) {
   const action = String(head?.top_action || "").toLowerCase();
   if (Number(head?.top_kind) === 0 || action === "pass") {
-    return `<span>${isJa ? "スルー" : "Pass"}</span>`;
+    return `<span>${isJa ? "鳴かない" : "Do not call"}</span>`;
   }
   if (head?.supports_call && action === String(example.call || "").toLowerCase()) {
     const calledTile = example.called_tile
@@ -1359,30 +1532,45 @@ function callModelActionLine(example, head) {
   return `<span>${callActionLabel(head?.top_action)}</span>`;
 }
 
+function callModelNote(example, head) {
+  const action = String(head?.top_action || "").toLowerCase();
+  if (head?.supports_call && action === String(example.call || "").toLowerCase()) return "";
+  if (Number(head?.top_kind) === 0 || action === "pass") {
+    return isJa ? "実戦の鳴きは選ばない読み。" : "This head would leave the tile alone instead of taking LuckyJ's call.";
+  }
+  if (action === String(example.call || "").toLowerCase()) {
+    return isJa ? "同じ鳴き種類だが、実戦とは別の鳴き方。" : "Same call type, but a different call line from LuckyJ.";
+  }
+  return isJa ? "実戦とは別の鳴き方。" : "Different call line from LuckyJ.";
+}
+
 function renderCallModelBlock(example) {
   const heads = example.call_model_heads;
   if (!Array.isArray(heads) || !heads.length) return document.createDocumentFragment();
   const block = document.createElement("div");
   block.className = "comparison";
+  const actionKeys = heads.map((head) => callModelActionKey(example, head));
+  const allSameLine = actionKeys.length > 1 && actionKeys.every((key) => key === actionKeys[0]);
+  if (allSameLine) {
+    const card = document.createElement("div");
+    card.className = "decision decision-wide";
+    const names = readableList(heads.map(callModelHeadName));
+    card.innerHTML = `
+      <b>${isJa ? "NAGA各ヘッド" : "NAGA heads"}</b>
+      ${callModelActionLine(example, heads[0])}
+      <small>${isJa ? `${names} は同じラインを選ぶ。` : `${names} agree on this line.`}</small>
+    `;
+    block.append(card);
+    return block;
+  }
   for (const head of heads) {
     const card = document.createElement("div");
     card.className = "decision";
-    const duplicateActualWeight =
-      head.supports_call &&
-      head.top_prob != null &&
-      head.actual_kind_prob != null &&
-      Math.abs(Number(head.top_prob) - Number(head.actual_kind_prob)) < 0.0005;
-    const actualWeight =
-      head.actual_kind_prob == null || duplicateActualWeight
-        ? ""
-        : probabilityChip(isJa ? "実戦の鳴き" : "actual call", head.actual_kind_prob);
-    const passWeight = head.pass_prob == null ? "" : probabilityChip(isJa ? "スルー" : "pass", head.pass_prob);
+    const note = callModelNote(example, head);
     card.innerHTML = `
-      <b>${escapeHtml(isJa ? head.label_ja || modelName(head.key || head.label) : head.label || modelName(head.key))}</b>
-      ${probabilityChip(isJa ? "第一候補" : "top action", head.top_prob)}
+      <b>${callModelHeadName(head)}</b>
       ${callModelActionLine(example, head)}
-      ${actualWeight}
-      ${passWeight}
+      ${note ? `<small>${escapeHtml(note)}</small>` : ""}
     `;
     block.append(card);
   }
@@ -1846,6 +2034,7 @@ function renderPointValidation(validation) {
 }
 
 async function main() {
+  setupRetractingTopbar();
   renderPointRail();
   applyTileCompatibility();
   const guidePath = isJa ? "strategy-guides.ja.json" : "strategy-guides.json";

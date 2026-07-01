@@ -11,6 +11,8 @@ from collections import Counter
 API_KEY = os.environ.get("CLIPROXY_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")
 MODEL = os.environ.get("CLIPROXY_MODEL", "gemini-3.5-flash-low")
 URL = "http://localhost:8317/v1/chat/completions"
+REQUEST_TIMEOUT = int(os.environ.get("CLIPROXY_TIMEOUT", "180"))
+PROMPT_VERSION = "yaku-skeleton-v2"
 CACHE_PATH = Path("data/llm_guides_cache.json")
 EXAMPLES_PATH = Path("site/point-examples.json")
 STRATEGY_EN_PATH = Path("site/strategy-guides.json")
@@ -25,11 +27,11 @@ Strict Mahjong Rules & Constraints:
 1. Only refer to wind tiles as "yaku tiles", "yakuhai", or "yaku switches" if they are listed in the 'Active Yakuhai for Self' list. Guest winds (non-yakuhai winds) do NOT carry yaku value for self.
 2. Evaluate the potential hand value and speed accurately based on the actual tiles. Do NOT assume a hand is a "1,000-point hand" or "cheap" unless it is an open hand with only one 1-han yaku and no dora. As a dealer, hands automatically gain a 1.5x value bonus, and hands with dora or yaku pairs often carry substantial value.
 3. Use the human strategic commentary ONLY for high-level conceptual reference. Do NOT copy its literal details (such as "1,000 point hand", "West", "South", "East") unless they are 100% true for the current example hand.
-4. Named yaku routes must come from the supplied "Plausible Route Facts". Do NOT invent toitoi, chiitoitsu, pinfu, honitsu, tanyao, or any other yaku because a hand has some pairs or sequences. If a route is listed under "Do Not Claim", do not mention it as kept alive or available.
+4. Named yaku routes must come from the supplied "Plausible Route Facts". Do NOT invent toitoi, chiitoitsu, pinfu, honitsu, tanyao, or any other yaku because a hand has some pairs or sequences. If a route is listed under "Do Not Claim", do not mention it as kept alive or available. If a route is described as distant, background, or not foreground, translate it into plain shape language instead of naming the yaku.
 5. Triplet check: A triplet (koutsu) requires 3 identical tiles. A quad (kantsu) requires 4. If the "Visible on Board" count for a tile is 3 (with 1 in your hand and 2 on the table/discards), it is mathematically IMPOSSIBLE to form a triplet of that tile. Do NOT describe such a tile as a "potential triplet" or "potential yaku triplet". If the visible count is 4, it is impossible to even form a pair.
-6. For call examples, the supplied "NAGA Call Model Heads" and "NAGA Post-Call Discard Heads" are authoritative. If a model's top action matches LuckyJ's call or "supports actual call" is yes, NEVER say that model passed, declined, or preferred staying closed. If the call action matches but the post-call discard differs, describe the disagreement as a post-call discard split, not a call/pass split.
-7. For call examples, "top action chi/pon" with "supports actual call: no" means that model chose a different call line. Treat that as a real discrepancy, not agreement with LuckyJ.
-8. Never quote raw audit field names in reader-facing prose. Do not write phrases like "supports actual call", "actual-call probability", "pass probability", or "matches LuckyJ discard"; translate them into natural Mahjong commentary.
+6. For call examples, the supplied "NAGA Call Model Heads" and "NAGA Post-Call Discard Heads" are authoritative. If a model backs LuckyJ's exact call line, NEVER say that model skipped the call, declined, or preferred staying closed. If the call action matches but the post-call discard differs, describe the disagreement as a post-call discard split, not a call-versus-no-call split.
+7. For call examples, a model can choose the same call type but a different call line. Treat that as a real discrepancy, not agreement with LuckyJ.
+8. Never quote raw audit field names or model weights in reader-facing prose. Translate them into natural Mahjong commentary.
 9. The "Teaching Fit for This Point" section is authoritative. It explains why this exact example belongs under the playbook point. Do not move the example to a different lesson, and do not invent a current riichi/open-hand threat when the teaching fit says the example is pre-threat or has no opponent riichi.
 
 Style Guidelines for English (Alternative 2 style):
@@ -89,10 +91,14 @@ def make_llm_request(prompt):
         method="POST"
     )
     
-    with urllib.request.urlopen(req, timeout=45) as res:
+    with urllib.request.urlopen(req, timeout=REQUEST_TIMEOUT) as res:
         response_data = json.loads(res.read().decode("utf-8"))
         content = response_data["choices"][0]["message"]["content"]
         return clean_and_parse_json(content)
+
+
+def cache_entry_is_current(entry):
+    return (entry or {}).get("meta", {}).get("prompt_version") == PROMPT_VERSION
 
 def get_winds_and_yakuhai(case):
     round_str = case.get("round", "")
@@ -302,8 +308,6 @@ def detect_triplet_family_routes(counts):
     triplet_seed_count = len(pair_tiles) + len(triplet_tiles)
     if triplet_seed_count >= 4:
         routes.append(route_line("toitoi", f"{triplet_seed_count} pair/triplet seed(s): {' '.join(pair_tiles[:8])}"))
-    elif triplet_seed_count >= 3:
-        routes.append(route_line("toitoi candidate", f"{triplet_seed_count} pair/triplet seed(s): {' '.join(pair_tiles[:8])}"))
 
     for rank in range(1, 10):
         seeds = [f"{rank}{suit}" for suit in "mps" if counts[f"{rank}{suit}"] >= 2]
@@ -439,19 +443,23 @@ def plausible_route_facts(case, active_yakuhai, visible):
     if len(completed) + len(adjacent) + len(gaps) >= 4:
         plausible.append("ordinary closed-hand development through loose sequence blocks")
 
-    if len(pair_tiles) >= 3:
-        plausible.append("chiitoitsu is plausible because the hand has at least three pairs")
+    if len(pair_tiles) >= 4:
+        plausible.append("chiitoitsu route through four or more current pairs")
+    elif len(pair_tiles) == 3:
+        do_not_claim.append("chiitoitsu is only a distant three-pair skeleton here; describe pair density or safety instead of naming chiitoitsu")
     else:
         do_not_claim.append(f"chiitoitsu is not a live plan now: only {len(pair_tiles)} pair(s) are present")
 
     if len(pair_tiles) + len(triplet_tiles) < 3:
         do_not_claim.append(f"toitoi is not a live plan now: only {len(pair_tiles)} pair/triplet seed(s) are present")
+    elif len(pair_tiles) + len(triplet_tiles) == 3:
+        do_not_claim.append("toitoi is only a distant three-seed skeleton here; describe pair/triplet density instead of naming toitoi")
 
     value_pair_tiles = [tile for tile in pair_tiles if tile in active_yakuhai]
     if self_open_melds:
         do_not_claim.append("pinfu is impossible after opening")
     elif len(completed) + len(adjacent) >= 4 and not value_pair_tiles:
-        plausible.append("closed pinfu can be mentioned only as a distant ordinary-hand route")
+        notes.append("ordinary closed sequence development is available, but do not foreground pinfu unless the final wait and non-value pair are the actual lesson")
     else:
         reason = "not enough sequence structure"
         if value_pair_tiles:
@@ -500,22 +508,17 @@ def call_model_heads_text(case):
     heads = case.get("call_model_heads") or []
     if not heads:
         return "- Not supplied"
-    lines = [
-        "- Same exact call line: no is a real disagreement, even when the top action label is also chi/pon."
-    ]
+    lines = ["- If a head chooses the same call type but not the exact call line, treat that as a real disagreement."]
     for head in heads:
-        lines.append(
-            "- {label}: top action {top_action} ({top_prob}), exact LuckyJ call-line weight {actual_prob}, "
-            "pass weight {pass_prob}, same exact call line: {supports}, prefers pass: {prefers}".format(
-                label=head.get("label") or head.get("key"),
-                top_action=head.get("top_action"),
-                top_prob=head.get("top_prob"),
-                actual_prob=head.get("actual_kind_prob"),
-                pass_prob=head.get("pass_prob"),
-                supports="yes" if head.get("supports_call") else "no",
-                prefers="yes" if head.get("prefers_pass") else "no",
-            )
-        )
+        label = head.get("label") or head.get("key")
+        action = head.get("top_action") or "unknown"
+        if head.get("supports_call"):
+            line = f"- {label}: backs LuckyJ's exact {action} line."
+        elif head.get("prefers_pass"):
+            line = f"- {label}: would not call."
+        else:
+            line = f"- {label}: chooses a different {action} line."
+        lines.append(line)
     return "\n".join(lines)
 
 
@@ -525,16 +528,12 @@ def post_call_discard_heads_text(case):
         return "- Not supplied"
     lines = []
     for head in heads:
-        lines.append(
-            "- {label}: top discard [[{top}]] ({top_prob}), LuckyJ discard probability {actual_prob}, "
-            "matches LuckyJ discard: {matches}".format(
-                label=head.get("label") or head.get("key"),
-                top=head.get("top"),
-                top_prob=head.get("top_prob"),
-                actual_prob=head.get("actual_prob"),
-                matches="yes" if head.get("matches_luckyj") else "no",
-            )
-        )
+        label = head.get("label") or head.get("key")
+        top = head.get("top")
+        if head.get("matches_luckyj"):
+            lines.append(f"- {label}: after calling, discards LuckyJ's [[{top}]].")
+        else:
+            lines.append(f"- {label}: after calling, would discard [[{top}]] instead.")
     return "\n".join(lines)
 
 
@@ -640,7 +639,7 @@ def teaching_fit_text(case):
     elif point == "point-02":
         lines.append("Teaching fit: early branch-point preservation. Explain what the kept honor/terminal still does as value, safety, pair, or route flexibility.")
     elif point == "point-03":
-        lines.append("Teaching fit: call example with a real NAGA call/post-call discrepancy. Do not describe pass versus call unless the call heads actually prefer pass.")
+        lines.append("Teaching fit: call example with a real NAGA call/post-call discrepancy. Do not describe call versus no-call unless the call heads actually avoid the call.")
     elif point == "point-04":
         lines.append("Teaching fit: open-hand safety example. After the call, name the post-call discard and the defensive reserve left in the shortened hand.")
     elif point == "point-05":
@@ -797,7 +796,7 @@ def process_example(case, guide_en, guide_ja, force):
         try:
             with open(CACHE_PATH, "r", encoding="utf-8") as f:
                 cache = json.load(f)
-                if key in cache:
+                if key in cache and cache_entry_is_current(cache[key]):
                     return key, cache[key], True
         except Exception:
             pass
@@ -818,6 +817,10 @@ def process_example(case, guide_en, guide_ja, force):
                     "read": res_json["read_ja"],
                     "prompt": res_json["prompt_ja"],
                     "answer": res_json["answer_ja"]
+                },
+                "meta": {
+                    "prompt_version": PROMPT_VERSION,
+                    "model": MODEL
                 }
             }
             return key, cache_entry, False
@@ -829,12 +832,15 @@ def process_example(case, guide_en, guide_ja, force):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--point", help="Only generate examples for one point key, e.g. point-02")
     parser.add_argument("--limit", type=int, default=None, help="Limit the number of examples to generate")
     parser.add_argument("--force", action="store_true", help="Force LLM generation even if cached")
+    parser.add_argument("--workers", type=int, default=1, help="Concurrent LLM requests")
+    parser.add_argument("--no-rebuild", action="store_true", help="Skip rebuilding site/point-examples.json after generation")
     args = parser.parse_args()
     
     if not API_KEY:
-        print("Error: ANTHROPIC_API_KEY environment variable is not set.")
+        print("Error: CLIPROXY_API_KEY or ANTHROPIC_API_KEY environment variable is not set.")
         return
 
     # Load strategy guides
@@ -857,10 +863,12 @@ def main():
         
     all_examples = []
     for point_key, examples in data.items():
+        if args.point and point_key != args.point:
+            continue
         for example in examples:
             all_examples.append(example)
             
-    print(f"Loaded {len(all_examples)} examples across {len(data)} points.")
+    print(f"Loaded {len(all_examples)} examples.")
     
     # Load cache
     cache = {}
@@ -875,10 +883,13 @@ def main():
     examples_to_process = []
     for example in all_examples:
         key = f"{example['point']}_{example.get('game')}_{example.get('kyoku_index')}_{example.get('position')}"
-        if key not in cache or args.force:
+        if args.force or not cache_entry_is_current(cache.get(key)):
             examples_to_process.append(example)
             
-    print(f"Found {len(examples_to_process)} examples to generate (already cached: {len(all_examples) - len(examples_to_process)}).")
+    print(
+        f"Found {len(examples_to_process)} examples to generate "
+        f"(current cache entries: {len(all_examples) - len(examples_to_process)})."
+    )
     
     if args.limit:
         examples_to_process = examples_to_process[:args.limit]
@@ -887,7 +898,7 @@ def main():
     # Process concurrent requests
     new_generations = 0
     if examples_to_process:
-        with ThreadPoolExecutor(max_workers=5) as executor:
+        with ThreadPoolExecutor(max_workers=args.workers) as executor:
             futures = {
                 executor.submit(
                     process_example, 
@@ -910,15 +921,16 @@ def main():
                             
     print(f"Finished generation. Total new generated: {new_generations}. Total cached: {len(cache)}.")
     
-    # Run build point examples script to regenerate point-examples.json with merged guides
-    print("Running scripts/build_point_examples.py to rebuild examples JSON...")
-    res = subprocess.run([".venv/bin/python", "scripts/build_point_examples.py"], capture_output=True, text=True)
-    if res.returncode == 0:
-        print("Success:")
-        print(res.stdout)
-    else:
-        print("Error rebuilding examples:")
-        print(res.stderr)
+    if not args.no_rebuild:
+        # Run build point examples script to regenerate point-examples.json with merged guides
+        print("Running scripts/build_point_examples.py to rebuild examples JSON...")
+        res = subprocess.run([".venv/bin/python", "scripts/build_point_examples.py"], capture_output=True, text=True)
+        if res.returncode == 0:
+            print("Success:")
+            print(res.stdout)
+        else:
+            print("Error rebuilding examples:")
+            print(res.stderr)
 
 if __name__ == "__main__":
     main()

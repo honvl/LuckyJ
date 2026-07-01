@@ -1199,14 +1199,14 @@ def call_model_sentence(case, lang):
         if nishiki_post and not nishiki_post.get("matches_luckyj"):
             if lang == "ja":
                 labels = "、".join(head.get("label") or head.get("key") for head in heads)
-                return f"{labels} は全員 {called} を {actual} するラインを第一候補にしている。ただし鳴いた後、ニシキは {post_discard} ではなく {post_naga} を切る。"
+                return f"{labels} は全員 {called} を {actual} する。ただし鳴いた後、ニシキは {post_discard} ではなく {post_naga} を切る。"
             labels = ", ".join(head.get("label") or head.get("key") for head in heads)
-            return f"{labels} all make {actual} on {called} their top action. The split is after the call: Nishiki would discard {post_naga} instead of LuckyJ's {post_discard}."
+            return f"{labels} all choose {actual} on {called}. The split is after the call: Nishiki would discard {post_naga} instead of LuckyJ's {post_discard}."
         if lang == "ja":
             labels = "、".join(head.get("label") or head.get("key") for head in heads)
-            return f"{labels} は全員 {called} を {actual} し、鳴いた後に {post_model_discard} を切るラインを第一候補にしている。"
+            return f"{labels} は全員 {called} を {actual} し、鳴いた後に {post_model_discard} を切る。"
         labels = ", ".join(head.get("label") or head.get("key") for head in heads)
-        return f"{labels} all make {actual} on {called} their top action, then discard {post_model_discard}."
+        return f"{labels} all choose {actual} on {called}, then discard {post_model_discard}."
     nishiki = model_head(heads, "nishiki")
     hibakari = model_head(heads, "hibakari")
     kagashi = model_head(heads, "kagashi")
@@ -1215,45 +1215,42 @@ def call_model_sentence(case, lang):
         parts = []
         if nishiki:
             if nishiki.get("supports_call"):
-                parts.append(f"ニシキは {called} を {actual} するラインが第一候補 ({format_percent(nishiki['top_prob'])})")
+                parts.append(f"ニシキは {called} を {actual} するライン")
             else:
-                parts.append(f"ニシキは {nishiki['top_action']} {format_percent(nishiki['top_prob'])}、実戦の {actual} 重み {format_percent(nishiki['actual_kind_prob'])}")
+                parts.append(f"ニシキは実戦とは別の {nishiki['top_action']} ライン")
         if hibakari:
             if hibakari.get("supports_call"):
-                parts.append("ヒバカリもこの鳴きを第一候補にしている")
+                parts.append("ヒバカリもこの鳴き")
             elif hibakari.get("prefers_pass"):
-                parts.append(f"ヒバカリはスルー寄り ({format_percent(hibakari['pass_prob'])})")
+                parts.append("ヒバカリは鳴かない")
             else:
                 parts.append(f"ヒバカリは別の {hibakari['top_action']} 寄り")
         if kagashi:
             if kagashi.get("supports_call"):
-                parts.append("カガシもこの鳴きを第一候補にしている")
+                parts.append("カガシもこの鳴き")
             elif kagashi.get("prefers_pass"):
-                parts.append(f"カガシはスルー寄り ({format_percent(kagashi['pass_prob'])})")
+                parts.append("カガシは鳴かない")
             else:
                 parts.append(f"カガシは別の {kagashi['top_action']} 寄り")
         return "。".join(parts) + "。"
     parts = []
     if nishiki:
         if nishiki.get("supports_call"):
-            parts.append(f"Nishiki top action is {actual} on {called} ({format_percent(nishiki['top_prob'])})")
+            parts.append(f"Nishiki chooses {actual} on {called}")
         else:
-            parts.append(
-                f"Nishiki top action is {nishiki['top_action']} ({format_percent(nishiki['top_prob'])}); "
-                f"the actual {actual} weight is {format_percent(nishiki['actual_kind_prob'])}"
-            )
+            parts.append(f"Nishiki chooses a different {nishiki['top_action']} line")
     if hibakari:
         if hibakari.get("supports_call"):
-            parts.append("Hibakari also makes this call its top action")
+            parts.append("Hibakari also takes this call")
         elif hibakari.get("prefers_pass"):
-            parts.append(f"Hibakari prefers passing ({format_percent(hibakari['pass_prob'])})")
+            parts.append("Hibakari would not call")
         else:
             parts.append(f"Hibakari prefers a different {hibakari['top_action']} line")
     if kagashi:
         if kagashi.get("supports_call"):
-            parts.append("Kagashi also makes this call its top action")
+            parts.append("Kagashi also takes this call")
         elif kagashi.get("prefers_pass"):
-            parts.append(f"Kagashi prefers passing ({format_percent(kagashi['pass_prob'])})")
+            parts.append("Kagashi would not call")
         else:
             parts.append(f"Kagashi prefers a different {kagashi['top_action']} line")
     return ". ".join(parts) + "."
@@ -1582,11 +1579,11 @@ def build_call_guide(case, lang):
             focus = f"閉じた手が間に合いにくい局面で、{call} 後の {discard} まで決めると {post_shape} まで進む。"
         rank_text = f"現在{rank}着" if rank else "現在着順不明"
         if nishiki_call and nishiki_call.get("supports_call") and post_call_split:
-            why_not = f"ニシキも {call} するが、鳴いた後は {discard} ではなく {tile_token(nishiki_post.get('top'))} を切る。比較点はスルーではなく鳴き後打牌。"
+            why_not = f"ニシキも {call} するが、鳴いた後は {discard} ではなく {tile_token(nishiki_post.get('top'))} を切る。比較点は鳴かない選択ではなく鳴き後打牌。"
         elif nishiki_same_call_label and not nishiki_call.get("supports_call") and not nishiki_call.get("prefers_pass"):
-            why_not = f"ニシキも {call} を選ぶが、実戦とは別の {call} ラインを選ぶ。比較点はスルーではなく鳴き方の細部。"
+            why_not = f"ニシキも {call} を選ぶが、実戦とは別の {call} ラインを選ぶ。比較点は鳴かない選択ではなく鳴き方の細部。"
         elif consensus_call:
-            why_not = f"スルーは守備的な代案ではあるが、この局面で表示されている NAGA 各ヘッドはそれを第一候補にしていない。残り{case.get('left')}枚では、役ありテンパイを取る鳴きが現実的なルートになる。"
+            why_not = f"鳴かない選択は守備的な代案ではあるが、この局面で表示されている NAGA 各ヘッドは鳴きを選んでいる。残り{case.get('left')}枚では、役ありテンパイを取る鳴きが現実的なルートになる。"
         else:
             why_not = f"門前維持は自然な選択。ただしこの局面では残り枚数と手牌 {meld or 'なし'} から、門前の理想形を待つ余裕が薄い。"
         return {
@@ -1611,9 +1608,9 @@ def build_call_guide(case, lang):
         focus = f"The closed route is running out of practical turns; after the {call} and {discard}, the hand reaches {post_shape}."
     rank_text = f"currently {ordinal_en(rank)}" if rank else "current rank unknown"
     if nishiki_call and nishiki_call.get("supports_call") and post_call_split:
-        why_not = f"Nishiki also chooses {call}, but after the call it would discard {tile_token(nishiki_post.get('top'))} instead of {discard}. The comparison is the post-call discard, not pass versus call."
+        why_not = f"Nishiki also chooses {call}, but after the call it would discard {tile_token(nishiki_post.get('top'))} instead of {discard}. The comparison is the post-call discard, not call versus no-call."
     elif nishiki_same_call_label and not nishiki_call.get("supports_call") and not nishiki_call.get("prefers_pass"):
-        why_not = f"Nishiki also chooses {call}, but on a different {call} line. The comparison is the call detail, not pass versus call."
+        why_not = f"Nishiki also chooses {call}, but on a different {call} line. The comparison is the call detail, not call versus no-call."
     elif consensus_call:
         why_not = f"Passing is the defensive alternative, but the listed NAGA heads do not prefer it here. With {case.get('left')} tiles left, the open yaku tenpai is the practical route."
     else:
@@ -1631,6 +1628,7 @@ def build_call_guide(case, lang):
 
 
 LLM_CACHE_PATH = Path("data/llm_guides_cache.json")
+LLM_PROMPT_VERSION = "yaku-skeleton-v2"
 LLM_CACHE = None
 FALSE_PASS_WHEN_CALLING_PATTERNS = [
     re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:passes|passed)\b", re.I),
@@ -1649,6 +1647,13 @@ FALSE_AGREEMENT_PATTERNS = [
     re.compile(r"\bnishiki\b[^.。]{0,160}\bagree(?:ing|s|d)?\s+on\s+both\b", re.I),
     re.compile(r"\bno\s+(?:naga\s+)?(?:discrepancy|difference)\b", re.I),
     re.compile(r"(?:nishiki|ニシキ|naga)[^。]{0,100}(?:完全に一致|全面的に一致|完全に同意|全面的に同意)", re.I),
+]
+FALSE_TENPAI_CALL_SHAPE_PATTERNS = [
+    re.compile(r"\b(?:enter(?:ing|s|ed)?|mov(?:e|es|ing)|leav(?:e|es|ing))[^.。]{0,90}\b1-shanten\b", re.I),
+    re.compile(r"\b(?:flexible|active|real)\s+1-shanten\b[^.。]{0,60}\btenpai\b", re.I),
+    re.compile(r"\bone\s+step\s+away\s+from\s+tenpai\b", re.I),
+    re.compile(r"(?:一向聴|1シャンテン)に(?:進む|構え|する|した)", re.I),
+    re.compile(r"テンパイまであと一歩"),
 ]
 
 def load_llm_cache():
@@ -1698,7 +1703,15 @@ def cached_guide_conflicts(case, cached_entry):
     )
     if case_has_naga_split(case) and any(pattern.search(text) for pattern in FALSE_AGREEMENT_PATTERNS):
         return True
+    shape = case.get("post_call_eval") or {}
+    if case.get("kind") == "call" and shape.get("shanten") is not None and shape.get("shanten") <= 0:
+        if any(pattern.search(text) for pattern in FALSE_TENPAI_CALL_SHAPE_PATTERNS):
+            return True
     return cached_call_guide_conflicts(case, cached_entry)
+
+
+def cached_llm_guide_current(cached_entry):
+    return (cached_entry or {}).get("meta", {}).get("prompt_version") == LLM_PROMPT_VERSION
 
 
 def attach_example_guides(case):
@@ -1714,7 +1727,7 @@ def attach_example_guides(case):
     key = f"{case.get('point')}_{case.get('game')}_{case.get('kyoku_index')}_{case.get('position')}"
     if key in cache:
         cached_entry = cache[key]
-        use_cached = not cached_guide_conflicts(case, cached_entry)
+        use_cached = cached_llm_guide_current(cached_entry) and not cached_guide_conflicts(case, cached_entry)
         if use_cached and "guide" in cached_entry:
             case["guide"]["read"] = cached_entry["guide"].get("read", case["guide"]["read"])
             case["guide"]["prompt"] = cached_entry["guide"].get("prompt", case["guide"]["prompt"])

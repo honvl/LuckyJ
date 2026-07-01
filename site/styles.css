@@ -77,6 +77,22 @@ a {
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
+@media (hover: none), (pointer: coarse), (max-width: 900px) {
+  .topbar.can-touch-retract {
+    will-change: transform;
+  }
+
+  .topbar.can-touch-retract.is-retracted {
+    box-shadow: none;
+    transform: translateY(calc(-100% + 8px));
+  }
+
+  .topbar.can-touch-retract:focus-within {
+    box-shadow: var(--shadow);
+    transform: translateY(0);
+  }
+}
+
 @media (hover: hover) and (min-width: 901px) {
   .topbar {
     transform: translateY(calc(-100% + 10px));
@@ -977,6 +993,10 @@ a {
   padding: 12px;
 }
 
+.comparison .decision-wide {
+  grid-column: 1 / -1;
+}
+
 .decision b,
 .decision span,
 .decision small {
@@ -1832,6 +1852,30 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   width: var(--called-step);
 }
 
+.added-kan-slot {
+  min-height: calc(1.14 * var(--tile-size));
+}
+
+.added-kan-stack {
+  block-size: calc(1.14 * var(--tile-size));
+  display: inline-block;
+  inline-size: var(--called-step);
+  line-height: 1;
+  position: relative;
+}
+
+.added-kan-stack .added-kan-stack-tile {
+  left: 50%;
+  position: absolute;
+  top: calc(50% - 0.18 * var(--tile-size));
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center;
+}
+
+.added-kan-stack .added-kan-stack-tile + .added-kan-stack-tile {
+  top: calc(50% + 0.18 * var(--tile-size));
+}
+
 .called-from-kamicha,
 .called-from-toimen {
   justify-content: flex-end;
@@ -1859,6 +1903,15 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 .mahjong-table .player-prev .called-tile,
 .mahjong-table .player-next .called-tile {
   left: calc(-1 * var(--called-align-shift));
+}
+
+.mahjong-table .added-kan-stack .added-kan-stack-tile {
+  left: 50%;
+  top: calc(50% - 0.18 * var(--tile-size));
+}
+
+.mahjong-table .added-kan-stack .added-kan-stack-tile + .added-kan-stack-tile {
+  top: calc(50% + 0.18 * var(--tile-size));
 }
 
 .case-links {
