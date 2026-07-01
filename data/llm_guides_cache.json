@@ -3137,14 +3137,14 @@
   },
   "point-04_4_2_121": {
     "guide": {
-      "read": "We are in East 3 as South, holding 25,000 points. With an opponent already showing two active melds in the late stage of the round, how do we balance our hand's speed against the defensive risks? LuckyJ chooses to call chi on the [[8s]], discarding [[W]] to transition the hand to 1-shanten. While Nishiki prefers to stay closed and declines the call to preserve maximum flexibility, LuckyJ opens the hand to push for the win. By discarding the dead guest wind [[W]], LuckyJ cleans the terminal tiles to pursue tanyao, keeping the triplet of [[8m]] in the shortened hand as a reliable defensive reserve should the board turn dangerous.",
-      "prompt": "What is the seat wind of the player, and are they the dealer in this round?",
-      "answer": "South (not the dealer)"
+      "read": "We are in East 3 as South, holding 25,000 points. With an opponent already showing two active melds in the late stage of the round, how do we balance our hand's speed against the defensive risks? LuckyJ chooses to call chi on [[8s]], then discards the dead guest wind [[W]] to move to 1-shanten. Nishiki prefers to stay closed, so the tradeoff is real: the call buys speed, but it also shortens the hand. The follow-up plan is not to treat the [[8m]] ankou as a safety stockpile. The relevant loose tile is [[1m]]: if the [[3p]][[5p]] block improves, [[1m]] is the tile likely to be pushed next while the completed [[8m]][[8m]][[8m]] stays as part of the hand's shape. This example is about calling only when the immediate [[W]] discard and the next shape plan are already clear.",
+      "prompt": "After cutting [[W]], which loose tile is the likely next release if the [[3p]][[5p]] block improves?",
+      "answer": "[[1m]], not the [[8m]] triplet."
     },
     "guide_ja": {
-      "read": "東3局の南家、25,000点持ちの状況です。終盤に入り、すでに2副露している他家がいる中で、手の進行スピードと守備のバランスをどう評価すべきでしょうか。LuckyJは[[8s]]をチーし、[[W]]を切って1シャンテンに進めました。Nishikiはスルーして門前を維持し安全牌を抱えるのに対し、LuckyJはアグレッシブに仕掛けます。ここでは完全に安全な客風の[[W]]を切り出しますが、短くなった手牌の中に[[8m]]の暗刻を守備の担保（安全牌の代わり）として残すことで、最低限の守備力をキープしつつアガリに向かっています。",
-      "prompt": "この局におけるプレイヤーの自風と、親番か子番かを答えてください。",
-      "answer": "南（子番）"
+      "read": "東3局の南家、25,000点持ちの状況です。終盤に入り、すでに2副露している他家がいる中で、手の進行スピードと守備のバランスをどう評価すべきでしょうか。LuckyJは[[8s]]をチーし、完全に安全な客風の[[W]]を切って1シャンテンに進めました。Nishikiはスルーして門前を維持するため、この仕掛けは速度を買う一方で手牌を短くする選択です。ただし、ここで[[8m]]の暗刻を守備の担保と見るのは違います。次に形が動いた時の余り牌は[[1m]]で、[[3p]][[5p]]のブロックが埋まれば[[1m]]を押し出す流れになりやすい。[[8m]][[8m]][[8m]]は安全牌の束ではなく、手牌の完成ブロックとして残っている部分です。この例は、鳴いた後の[[W]]切りと、その次の形の見通しまで決めてから仕掛ける例として読むべきです。",
+      "prompt": "[[W]]を切った後、[[3p]][[5p]]のブロックが埋まった時に次の余り牌になりやすいのはどの牌ですか？",
+      "answer": "[[1m]]。[[8m]]の暗刻ではない。"
     },
     "meta": {
       "prompt_version": "yaku-skeleton-v2",
@@ -3169,14 +3169,14 @@
   },
   "point-04_9_8_95": {
     "guide": {
-      "read": "We are in South 4-1, holding 38,900 points in the lead. With an opponent already showing active melds, how do we balance our hand's speed against our defensive requirements? When kamicha discards the double-yaku [[S]], LuckyJ calls pon and discards the dead [[E]], progressing to 1-shanten. While Nishiki and the other NAGA engines choose to pass to avoid shortening their hands, LuckyJ prioritizes wrapping up the match. Crucially, even with the hand now open, LuckyJ maintains a robust defensive reserve. The remaining concealed hand contains a triplet (ankou) of [[2p]]. Having three copies of a middle tile provides a crucial safety net—if an opponent launches an aggressive push, these tiles can be discarded consecutively to navigate the danger. This balance allows LuckyJ to aggressively pursue the win while keeping a reliable emergency exit.",
-      "prompt": "In this hand, which concealed tile group provides LuckyJ with a three-card defensive reserve after calling?",
-      "answer": "The triplet (ankou) of [[2p]]."
+      "read": "We are in South 4-1, holding 38,900 points in the lead. With an opponent already showing active melds, how do we balance our hand's speed against our defensive requirements? When kamicha discards the double-yaku [[S]], LuckyJ calls pon and discards the dead [[E]], moving to 1-shanten. Nishiki and the other NAGA heads choose to pass to avoid shortening their hands, but LuckyJ prioritizes ending the match from the lead. The defensive resource after the call is not the [[2p]] ankou. Three copies of [[2p]] are a completed block, not a safety net. The actual retained safe tile is [[7s]], which is quiet across the danger bars and can be released if an opponent suddenly pushes. Read this as an open-hand tempo call with an immediate safe [[E]] discard and a real fallback tile in [[7s]], not as a claim that any triplet becomes defense.",
+      "prompt": "After the [[S]] pon and [[E]] discard, which remaining tile is the actual safety fallback?",
+      "answer": "[[7s]], not the [[2p]] ankou."
     },
     "guide_ja": {
-      "read": "南4局1本場、38,900点持ちのトップ目です。他家に仕掛けが入っている状況で、トップを守り抜くためのアガリへの速度と守備のバランスをどう評価すべきでしょうか。上家からダブ南の[[S]]が打ち出された局面で、LuckyJはこれをポンして安全な[[E]]を切り、1シャンテンに進めました。NishikiをはじめとするNAGAの各AIモデルは、手牌を短くして守備力を落とすのを嫌ってスルーを選択しますが、LuckyJは局を終わらせることを最優先します。ここで重要なのは、仕掛けて手牌が短くなった後も、LuckyJは強力な守備駒を残している点です。残された手牌には[[2p]]の暗刻があります。この同一牌3枚の存在は極めて優秀な守備の備えとなり、他家から急な攻めが入ったとしても連続して凌ぐことができます。このバランスがあるからこそ、守りを担保しつつアガリに向かって踏み出すことができるのです。",
-      "prompt": "この手牌において、鳴いた後にLuckyJが3枚の守備用リザーブとして保持している暗牌のグループは何ですか？",
-      "answer": "[[2p]]の暗刻。"
+      "read": "南4局1本場、38,900点持ちのトップ目です。他家に仕掛けが入っている状況で、トップを守り抜くためのアガリへの速度と守備のバランスをどう評価すべきでしょうか。上家からダブ南の[[S]]が打ち出された局面で、LuckyJはこれをポンして完全に安全な[[E]]を切り、1シャンテンに進めました。NishikiをはじめとするNAGAの各ヘッドは、手牌を短くするのを嫌ってスルーを選択しますが、LuckyJはトップ目から局を終わらせる速度を優先します。ただし、鳴いた後の守備駒は[[2p]]の暗刻ではありません。[[2p]][[2p]][[2p]]は完成ブロックであって、安全牌の束ではない。実際に残っている安全牌として見るべきなのは[[7s]]で、危険度バーもかなり低い。相手が急に押してきた時に切り出せるのは[[7s]]であり、この例は安全な[[E]]切りと[[7s]]の保険まで見たうえで速度を買う仕掛けです。",
+      "prompt": "[[S]]ポンから[[E]]を切った後、実際の安全牌として残っているのはどの牌ですか？",
+      "answer": "[[7s]]。[[2p]]の暗刻ではない。"
     },
     "meta": {
       "prompt_version": "yaku-skeleton-v2",

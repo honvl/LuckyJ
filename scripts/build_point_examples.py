@@ -1622,7 +1622,7 @@ def build_call_guide(case, lang):
             "read": f"{focus} {model_read}".strip(),
             "whyNot": why_not,
             "copy": f"{call} が役、速度、テンパイ、または相手への圧力を作る時だけ真似する。鳴いた後の最初の打牌 {discard} まで先に決める。",
-            "limit": "鳴いた後の安全牌や次の方針まで言える時に、LuckyJ 型のテンポになる。",
+            "limit": "鳴いた後の打牌と次の方針まで言える時に、LuckyJ 型のテンポになる。",
             "prompt": f"{called} を {call} するか。答える前に、鳴いた後に何を切るかを言う。",
             "answer": f"最初に見るのは鳴き後の打牌で、この例では {discard} まで見えている。{focus} {model_read}",
         }
@@ -1651,7 +1651,7 @@ def build_call_guide(case, lang):
         "read": f"{focus} {model_read}".strip(),
         "whyNot": why_not,
         "copy": f"Copy the {call} only when it creates yaku, speed, tenpai pressure, or denial, and when the first post-call discard {discard} is already planned.",
-        "limit": "The call needs a named post-call discard and a next defensive tile to become LuckyJ-style tempo.",
+        "limit": "The call needs a named post-call discard and a concrete next plan to become LuckyJ-style tempo.",
         "prompt": f"Would you {call} on {called}? Before answering, name the discard after the call.",
         "answer": f"The first check is the post-call discard: {discard} is already the release tile. {focus} {model_read}",
     }

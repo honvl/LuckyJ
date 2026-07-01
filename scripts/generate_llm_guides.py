@@ -35,6 +35,7 @@ Strict Mahjong Rules & Constraints:
 8. Never quote raw audit field names or model weights in reader-facing prose. Translate them into natural Mahjong commentary.
 9. The "Teaching Fit for This Point" section is authoritative. It explains why this exact example belongs under the playbook point. Do not move the example to a different lesson, and do not invent a current riichi/open-hand threat when the teaching fit says the example is pre-threat or has no opponent riichi.
 10. For call examples, "Post-Call Shape Facts" is authoritative. If the post-call shanten is 0, the hand is tenpai after the call and discard; NEVER describe LuckyJ's resulting hand as 1-shanten, one-away, or still trying to reach tenpai. If the post-call shanten is 1, describe it as 1-shanten, not tenpai.
+11. Do not describe a triplet or duplicated number tiles as a defensive reserve merely because there are multiple copies. Only call a tile a defensive reserve when the supplied safety facts show target-specific safety; otherwise describe the real next discard or shape plan.
 
 Style Guidelines for English (Alternative 2 style):
 - Start with first-person plural: "We are in [Round] [Dealer/Player status], holding [Score] points. [Context about board/opponents, e.g. 'With opponents already showing active melds' or 'With an opponent already declaring riichi']."
@@ -630,6 +631,39 @@ def safety_read_text(label, read):
     return ", ".join(parts)
 
 
+def self_hand_tile_threats_text(case, remaining_tiles=None):
+    players = case.get("table", {}).get("players", [])
+    self_player = next((p for p in players if p.get("seat") == "self"), None)
+    if not self_player:
+        return "No self hand tile threat data supplied."
+
+    remaining = Counter(remaining_tiles or [])
+    rows_by_tile = {}
+    for threat in self_player.get("tile_threats", []):
+        tile = threat.get("tile")
+        if remaining and remaining.get(tile, 0) <= 0:
+            continue
+        bars = threat.get("bars", [])
+        values = [b.get("danger") for b in bars if b.get("danger") is not None]
+        max_danger = max(values) if values else None
+        bars_desc = ", ".join(f"{b.get('label')}: {b.get('danger')}" for b in bars)
+        rows_by_tile[tile] = {
+            "tile": tile,
+            "count": remaining.get(tile, 1) if remaining else 1,
+            "max_danger": max_danger,
+            "bars": bars_desc,
+        }
+
+    if not rows_by_tile:
+        return "No matching tile threat data supplied for the remaining hand."
+
+    rows = sorted(rows_by_tile.values(), key=lambda row: (row["max_danger"] is None, row["max_danger"] or 0, row["tile"]))
+    return "\n".join(
+        f"- [[{row['tile']}]] x{row['count']}: max danger {row['max_danger']}; {row['bars']}"
+        for row in rows
+    )
+
+
 def model_split_text(case):
     heads = case.get("model_heads") or []
     if not heads:
@@ -668,7 +702,7 @@ def teaching_fit_text(case):
     elif point == "point-03":
         lines.append("Teaching fit: call example with a real NAGA call/post-call discrepancy. Do not describe call versus no-call unless the call heads actually avoid the call.")
     elif point == "point-04":
-        lines.append("Teaching fit: open-hand safety example. After the call, name the post-call discard and the defensive reserve left in the shortened hand.")
+        lines.append("Teaching fit: open-hand safety example. After the call, name the post-call discard plus the real next safe tile or release plan. Do not invent a defensive reserve if the remaining shortened hand lacks one.")
     elif point == "point-05":
         lines.append("Teaching fit: pre-threat future-liability cleanup. This point excludes reached examples: no opponent should already be in riichi. Explain why carrying the actual simple tile is bad before a future riichi or second call appears.")
     elif point == "point-06":
@@ -798,6 +832,9 @@ NAGA Call Model Heads:
 
 NAGA Post-Call Discard Heads:
 {post_call_discard_heads_text(case)}
+
+Remaining Concealed Tile Safety After Call/Discard (lower max danger is safer; do not infer safety from duplicates alone):
+{self_hand_tile_threats_text(case, shape.get('hand_after', '').split())}
 """
     else:
         # Threat metrics

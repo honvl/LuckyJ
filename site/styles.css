@@ -1328,7 +1328,9 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 .call-line > span {
   border: 1px solid var(--line);
   background: #f8faf5;
-  display: block;
+  align-items: center;
+  display: inline-flex;
+  gap: 0.35em;
   font-size: 13px;
   overflow-x: auto;
   padding: 10px;
@@ -1829,6 +1831,8 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 
 .meld-run {
   --called-step: calc(0.86 * var(--tile-size));
+  --kan-stack-edge-shift: 0px;
+  --kan-stack-offset: calc(0.11 * var(--tile-size));
   --meld-step: calc(0.554 * var(--tile-size));
   border: 1px solid #c8cec0;
   align-items: center;
@@ -1865,28 +1869,62 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 }
 
 .added-kan-stack {
-  block-size: calc(1.14 * var(--tile-size));
   display: inline-block;
-  inline-size: var(--called-step);
+  height: calc(1.14 * var(--tile-size));
   line-height: 1;
   position: relative;
+  width: var(--called-step);
 }
 
 .added-kan-stack .added-kan-stack-tile {
   left: 50%;
   position: absolute;
-  top: calc(50% - 0.18 * var(--tile-size));
-  transform: translate(-50%, -50%) rotate(90deg);
+  top: calc(50% - var(--kan-stack-offset));
+  transform: translate(calc(-50% + var(--kan-stack-edge-shift)), -50%) rotate(90deg);
   transform-origin: center;
 }
 
 .added-kan-stack .added-kan-stack-tile + .added-kan-stack-tile {
-  top: calc(50% + 0.18 * var(--tile-size));
+  top: calc(50% + var(--kan-stack-offset));
+}
+
+.mahjong-table .player-prev .added-kan-slot {
+  --kan-stack-edge-shift: calc(-0.13 * var(--tile-size));
+}
+
+.mahjong-table .player-next .added-kan-slot {
+  --kan-stack-edge-shift: calc(0.13 * var(--tile-size));
+}
+
+.mahjong-table .player-prev .added-kan-stack,
+.mahjong-table .player-next .added-kan-stack {
+  height: var(--called-step);
+  width: calc(1.14 * var(--tile-size));
+}
+
+.mahjong-table .player-prev .added-kan-stack .added-kan-stack-tile,
+.mahjong-table .player-next .added-kan-stack .added-kan-stack-tile {
+  left: calc(50% - var(--kan-stack-offset));
+  top: calc(50% - 0.04 * var(--tile-size));
+}
+
+.mahjong-table .player-prev .added-kan-stack .added-kan-stack-tile + .added-kan-stack-tile,
+.mahjong-table .player-next .added-kan-stack .added-kan-stack-tile + .added-kan-stack-tile {
+  left: calc(50% + var(--kan-stack-offset));
+  top: calc(50% - 0.04 * var(--tile-size));
 }
 
 .called-from-kamicha,
 .called-from-toimen {
   justify-content: flex-end;
+}
+
+.called-from-toimen {
+  --kan-stack-edge-shift: calc(-0.08 * var(--tile-size));
+}
+
+.called-from-shimocha {
+  --kan-stack-edge-shift: calc(0.08 * var(--tile-size));
 }
 
 .tiles.meld-tile,
@@ -1899,27 +1937,20 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 .called-tile {
   --called-align-shift: calc(0.052 * var(--tile-size));
   position: relative;
+  top: var(--called-align-shift);
   transform: rotate(90deg);
   transform-origin: center;
 }
 
-.mahjong-table .player-current .called-tile,
-.mahjong-table .player-across .called-tile {
+.mahjong-table .player-current .called-tile:not(.added-kan-stack-tile),
+.mahjong-table .player-across .called-tile:not(.added-kan-stack-tile) {
   top: var(--called-align-shift);
 }
 
-.mahjong-table .player-prev .called-tile,
-.mahjong-table .player-next .called-tile {
+.mahjong-table .player-prev .called-tile:not(.added-kan-stack-tile),
+.mahjong-table .player-next .called-tile:not(.added-kan-stack-tile) {
   left: calc(-1 * var(--called-align-shift));
-}
-
-.mahjong-table .added-kan-stack .added-kan-stack-tile {
-  left: 50%;
-  top: calc(50% - 0.18 * var(--tile-size));
-}
-
-.mahjong-table .added-kan-stack .added-kan-stack-tile + .added-kan-stack-tile {
-  top: calc(50% + 0.18 * var(--tile-size));
+  top: auto;
 }
 
 .case-links {
