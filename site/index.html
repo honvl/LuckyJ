@@ -7,7 +7,7 @@
     <link rel="alternate" hreflang="en" href="index.html" />
     <link rel="alternate" hreflang="ja" href="ja.html" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260701-edge-kan-spacing" />
+    <link rel="stylesheet" href="styles.css?v=20260701-top-explainer" />
   </head>
   <body>
     <header class="topbar">
@@ -47,21 +47,58 @@
         <section class="intro" id="evidence">
           <div class="intro-text">
             <p class="kicker">What this book is</p>
-            <h2>A table-first LuckyJ playbook.</h2>
+            <h2>What LuckyJ teaches.</h2>
             <p>
-              I went through 1,256 LuckyJ hanchan, 13,059 hands, and 147,378 discard decisions, then grouped
-              the recurring ideas into things you can actually use mid-hand: value, shape, safe tiles,
-              calls, pressure, and placement.
+              LuckyJ is the player at the center of this book: a strong digital riichi style built around
+              practical table judgment layered on top of tile efficiency. The recurring habits are grouped into
+              things you can actually use mid-hand: value, shape, safe tiles, calls, pressure, and placement.
             </p>
             <p>
-              Start here for the map, then open the full playbook for the point-by-point examples.
+              NAGA is the AI review lens. Its model heads, including Nishiki, Hibakari, and Kagashi, show
+              strong candidate lines and expose the moments where LuckyJ chooses another plan. Those
+              disagreements are where the teaching lives.
+            </p>
+            <div class="teacher-grid" aria-label="LuckyJ teaching frame">
+              <article>
+                <span>LuckyJ</span>
+                <p>A real game style with repeated choices under score pressure, opponent pressure, and awkward hand shape.</p>
+              </article>
+              <article>
+                <span>NAGA</span>
+                <p>A strong riichi AI review system used here as a comparison partner and calibration tool.</p>
+              </article>
+              <article>
+                <span>Teacher</span>
+                <p>The lesson is the split: what the model values, what LuckyJ values at the table, and when a human can copy the condition.</p>
+              </article>
+            </div>
+            <p>
+              Start here for the map, then open the full playbook for point-by-point examples with the hand,
+              table context, and review prompt shown together.
             </p>
             <p class="hero-actions">
               <a class="button-link primary" href="points.html">Open the full playbook</a>
               <a class="button-link" href="https://github.com/honvl/LuckyJ/blob/main/analysis/model-patterns-2026-06-30.md">Read the method notes</a>
             </p>
           </div>
-          <div class="metrics-grid" id="metrics"></div>
+          <div class="intro-panel" aria-label="How LuckyJ teaches">
+            <p class="panel-kicker">Why it teaches</p>
+            <h3>The lesson is the decision loop.</h3>
+            <ol class="lesson-steps">
+              <li>
+                <b>See the table.</b>
+                <span>Start from score, row, dora, calls, riichi, and the tiles that become dangerous later.</span>
+              </li>
+              <li>
+                <b>Compare the plans.</b>
+                <span>NAGA gives the strong model line; LuckyJ's choice shows what table condition changed the price.</span>
+              </li>
+              <li>
+                <b>Copy the condition.</b>
+                <span>Learn when value, shape, safety, or placement should take priority.</span>
+              </li>
+            </ol>
+          </div>
           <div class="tile-row" aria-label="Mahjong tile motif">
             <span class="tiles" aria-label="1m 4m 7m 5p 8p East White Red">qruz,157</span>
           </div>
@@ -192,6 +229,6 @@
       </article>
     </main>
 
-    <script src="app.js?v=20260701-edge-kan-spacing"></script>
+    <script src="app.js?v=20260701-example-tab-local-storage"></script>
   </body>
 </html>

@@ -14,6 +14,12 @@ const modelNames = {
   en: { nishiki: "Nishiki", hibakari: "Hibakari", kagashi: "Kagashi" },
   ja: { nishiki: "ニシキ", hibakari: "ヒバカリ", kagashi: "カガシ" },
 };
+const siteCommitFallback = {
+  repo: "honvl/LuckyJ",
+  branch: "main",
+  sha: "a372172cb67ff60654aaef37f7f7696239735e76",
+  date: "2026-07-01T14:02:11-04:00",
+};
 const pointRailFallbackLabels = {
   en: [
     "Start with the placement problem.",
@@ -38,6 +44,9 @@ const pointRailFallbackLabels = {
   ],
 };
 const pointExampleControllers = new Map();
+const pointExampleSelections = new Map();
+const pointExampleSelectionsKey = "luckyj:point-example-selections:v1";
+let pointExampleSelectionsLoaded = false;
 
 function setupRetractingTopbar() {
   const topbar = document.querySelector(".topbar");
@@ -134,6 +143,32 @@ function clampExampleIndex(index, total) {
   return Math.max(0, Math.min(total - 1, number));
 }
 
+function loadPointExampleSelections() {
+  if (pointExampleSelectionsLoaded) return;
+  pointExampleSelectionsLoaded = true;
+  try {
+    const saved = JSON.parse(window.localStorage?.getItem(pointExampleSelectionsKey) || "{}");
+    if (!saved || Array.isArray(saved) || typeof saved !== "object") return;
+    for (const [key, value] of Object.entries(saved)) {
+      const pointKey = normalizePointKey(key);
+      const index = Number.parseInt(String(value), 10);
+      if (pointKey && Number.isFinite(index) && index >= 0) {
+        pointExampleSelections.set(pointKey, index);
+      }
+    }
+  } catch {
+    // Storage can be unavailable in private or restricted browser contexts.
+  }
+}
+
+function savePointExampleSelections() {
+  try {
+    window.localStorage?.setItem(pointExampleSelectionsKey, JSON.stringify(Object.fromEntries(pointExampleSelections)));
+  } catch {
+    // Keep tab memory in-page if storage is unavailable.
+  }
+}
+
 function exampleAnchorId(pointKey, index) {
   return `${pointKey}-example-${String(index + 1).padStart(2, "0")}`;
 }
@@ -153,7 +188,10 @@ function syncPointExamplesFromLocation({ scroll = false } = {}) {
   if (!target.pointKey) return;
   const controller = pointExampleControllers.get(target.pointKey);
   if (!controller) return;
-  const index = target.exampleIndex === null ? 0 : clampExampleIndex(target.exampleIndex, controller.total);
+  const index =
+    target.exampleIndex === null
+      ? clampExampleIndex(pointExampleSelections.get(target.pointKey) ?? controller.index, controller.total)
+      : clampExampleIndex(target.exampleIndex, controller.total);
   controller.show(index, { updateLocation: false });
   if (!scroll) return;
   requestAnimationFrame(() => {
@@ -279,7 +317,8 @@ function renderPointRail() {
 const copy = {
   en: {
     none: "none",
-    dora: "Dora indicators",
+    dora: "Ind.",
+    doraFull: "Dora indicators",
     situation: "Situation",
     seeing: "What LuckyJ Is Seeing",
     whyTempting: "Why the Other Line Is Tempting",
@@ -340,7 +379,8 @@ const copy = {
   },
   ja: {
     none: "なし",
-    dora: "ドラ表示牌",
+    dora: "表示",
+    doraFull: "ドラ表示牌",
     situation: "局面",
     seeing: "LuckyJ が見ているもの",
     whyTempting: "別ラインが魅力的に見える理由",
@@ -403,6 +443,56 @@ const copy = {
 
 function t(key) {
   return copy[pageLang]?.[key] || copy.en[key] || key;
+}
+
+function formatCommitDate(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return new Intl.DateTimeFormat(locale, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    timeZoneName: "short",
+  }).format(date);
+}
+
+function updateCommitStamp(element, commit) {
+  const sha = String(commit?.sha || siteCommitFallback.sha);
+  const shortSha = sha.slice(0, 7);
+  const dateText = formatCommitDate(commit?.date || siteCommitFallback.date);
+  const label = isJa ? `最終コミット ${dateText}` : `Last commit ${dateText}`;
+  element.textContent = `${label} (${shortSha})`;
+  element.href = `https://github.com/${siteCommitFallback.repo}/commit/${sha}`;
+  element.title = isJa ? "GitHub でコミットを見る" : "View commit on GitHub";
+  element.setAttribute("aria-label", element.textContent);
+}
+
+async function renderCommitStamp() {
+  if (document.querySelector(".commit-stamp")) return;
+
+  const stamp = document.createElement("a");
+  stamp.className = "commit-stamp";
+  stamp.target = "_blank";
+  stamp.rel = "noopener noreferrer";
+  updateCommitStamp(stamp, siteCommitFallback);
+  document.body.append(stamp);
+
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${siteCommitFallback.repo}/commits/${siteCommitFallback.branch}`,
+      { headers: { Accept: "application/vnd.github+json" } }
+    );
+    if (!response.ok) throw new Error(`GitHub commit lookup failed: ${response.status}`);
+    const payload = await response.json();
+    updateCommitStamp(stamp, {
+      sha: payload.sha,
+      date: payload.commit?.committer?.date || payload.commit?.author?.date,
+    });
+  } catch {
+    stamp.classList.add("is-fallback");
+  }
 }
 
 const stageLabels = {
@@ -1195,6 +1285,9 @@ function discardTileRun(items, riichiIndex, emptyLabel = "") {
 function renderMahjongTable(table) {
   const wrap = document.createElement("div");
   wrap.className = "caption-flex-container lucky-table-wrap";
+  const doraMarkers = table.dora_markers || [];
+  const doraFullLabel = t("doraFull");
+  const doraTitle = [doraFullLabel, tileNamesText(doraMarkers)].filter(Boolean).join(": ");
   const positions = ["current", "next", "across", "prev"];
   const seats = {
     current: "self",
@@ -1258,7 +1351,7 @@ function renderMahjongTable(table) {
           <div class="center">
             <div class="situation-container">
               <div class="round-container"><div class="round">${escapeHtml(roundText(table.round || ""))}</div></div>
-              <div class="dora-indicator">${t("dora")}: ${tileRun(table.dora_markers || [])}</div>
+              <div class="dora-indicator" aria-label="${escapeHtml(doraTitle)}" title="${escapeHtml(doraTitle)}"><span>${escapeHtml(t("dora"))}:</span> ${tileRun(doraMarkers)}</div>
             </div>
             ${scores}
           </div>
@@ -1668,6 +1761,7 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
 
 function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
   pointExampleControllers.clear();
+  loadPointExampleSelections();
   for (const placeholder of document.querySelectorAll("[data-example]")) {
     const pointKey = placeholder.dataset.example;
     const items = pointExampleList(examples, pointKey);
@@ -1695,6 +1789,8 @@ function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
 
     function showExample(index, { updateLocation = false } = {}) {
       selectedIndex = clampExampleIndex(index, items.length);
+      pointExampleSelections.set(pointKey, selectedIndex);
+      savePointExampleSelections();
       buttons.forEach((button, buttonIndex) => {
         const selected = buttonIndex === selectedIndex;
         button.classList.toggle("active", selected);
@@ -1735,7 +1831,10 @@ function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
     shell.append(tablist, body);
     placeholder.replaceChildren(shell);
     const target = parsePointExampleLocation();
-    const initialIndex = target.pointKey === pointKey && target.exampleIndex !== null ? target.exampleIndex : 0;
+    const initialIndex =
+      target.pointKey === pointKey && target.exampleIndex !== null
+        ? target.exampleIndex
+        : (pointExampleSelections.get(pointKey) ?? 0);
     showExample(initialIndex);
   }
 }
@@ -2047,6 +2146,7 @@ function renderPointValidation(validation) {
 }
 
 async function main() {
+  renderCommitStamp();
   setupRetractingTopbar();
   renderPointRail();
   applyTileCompatibility();
