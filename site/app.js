@@ -279,7 +279,7 @@ function renderPointRail() {
 const copy = {
   en: {
     none: "none",
-    dora: "Dora",
+    dora: "Dora indicators",
     situation: "Situation",
     seeing: "What LuckyJ Is Seeing",
     whyTempting: "Why the Other Line Is Tempting",
@@ -340,7 +340,7 @@ const copy = {
   },
   ja: {
     none: "なし",
-    dora: "ドラ",
+    dora: "ドラ表示牌",
     situation: "局面",
     seeing: "LuckyJ が見ているもの",
     whyTempting: "別ラインが魅力的に見える理由",
@@ -1068,7 +1068,13 @@ function tableMeld(meld) {
   if (!items.length) return "";
   const label = tileNamesText(items.map((item) => item.tile));
   const hasAddedKan = items.some((item) => item.addedKanTile);
-  return `<span class="meld-run${hasAddedKan ? " added-kan-run" : ""}" aria-label="${escapeHtml(
+  const addedKanEdgeClass =
+    hasAddedKan && items[0]?.addedKanTile
+      ? " added-kan-edge-start"
+      : hasAddedKan && items[items.length - 1]?.addedKanTile
+        ? " added-kan-edge-end"
+        : "";
+  return `<span class="meld-run${hasAddedKan ? " added-kan-run" : ""}${addedKanEdgeClass}" aria-label="${escapeHtml(
     label
   )}" title="${escapeHtml(label)}">${items
     .map(

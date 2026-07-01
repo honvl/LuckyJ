@@ -1927,6 +1927,16 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   transform: translateY(calc(-0.12 * var(--tile-size)));
 }
 
+.mahjong-table .player-prev .added-kan-run.added-kan-edge-start .meld-tile-slot:not(.added-kan-slot),
+.mahjong-table .player-next .added-kan-run.added-kan-edge-start .meld-tile-slot:not(.added-kan-slot) {
+  transform: translateY(calc(-0.12 * var(--tile-size)));
+}
+
+.mahjong-table .player-prev .added-kan-run.added-kan-edge-end .meld-tile-slot:not(.added-kan-slot),
+.mahjong-table .player-next .added-kan-run.added-kan-edge-end .meld-tile-slot:not(.added-kan-slot) {
+  transform: translateY(calc(0.12 * var(--tile-size)));
+}
+
 .called-from-kamicha,
 .called-from-toimen {
   justify-content: flex-end;
