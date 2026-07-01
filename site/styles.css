@@ -1889,15 +1889,16 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 }
 
 .mahjong-table .player-prev .added-kan-slot {
-  --kan-stack-edge-shift: calc(-0.13 * var(--tile-size));
+  --kan-stack-edge-shift: 0px;
 }
 
 .mahjong-table .player-next .added-kan-slot {
-  --kan-stack-edge-shift: calc(0.13 * var(--tile-size));
+  --kan-stack-edge-shift: 0px;
 }
 
 .mahjong-table .player-prev .added-kan-stack,
 .mahjong-table .player-next .added-kan-stack {
+  --kan-stack-offset: calc(0.08 * var(--tile-size));
   height: var(--called-step);
   width: calc(1.14 * var(--tile-size));
 }
