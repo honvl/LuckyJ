@@ -1317,6 +1317,48 @@ function pointExampleList(examples, pointKey) {
   return value ? [value] : [];
 }
 
+function callActionLabel(action) {
+  const key = String(action || "").toLowerCase();
+  return (
+    {
+      chi: t("chi"),
+      pon: t("pon"),
+      daiminkan: t("openKan"),
+      ankan: t("closedKan"),
+      kakan: t("addedKan"),
+    }[key] || escapeHtml(action || t("noModelAction"))
+  );
+}
+
+function postCallModelHead(example, head) {
+  const key = String(head?.key || head?.label || "").toLowerCase();
+  return (example.post_call_model_heads || []).find((item) => String(item?.key || item?.label || "").toLowerCase() === key);
+}
+
+function callModelActionLine(example, head) {
+  const action = String(head?.top_action || "").toLowerCase();
+  if (Number(head?.top_kind) === 0 || action === "pass") {
+    return `<span>${isJa ? "スルー" : "Pass"}</span>`;
+  }
+  if (head?.supports_call && action === String(example.call || "").toLowerCase()) {
+    const calledTile = example.called_tile
+      ? `${tileIcon(example.called_tile, "discard-tile")} <em>${escapeHtml(tileName(example.called_tile))}</em>`
+      : "";
+    const from = example.called_from ? escapeHtml(seatLabel(example.called_from)) : "";
+    const postHead = postCallModelHead(example, head);
+    const postDiscard = postHead?.top || example.post_call_naga || example.discard_after_call;
+    const discardText = postDiscard
+      ? `${tileIcon(postDiscard, "discard-tile")} <em>${escapeHtml(tileName(postDiscard))}</em>`
+      : "";
+    const label = callActionLabel(action);
+    const text = isJa
+      ? `${label}${calledTile ? ` ${calledTile}` : ""}${from ? ` を${from}から` : ""}${discardText ? `、${t("discard")} ${discardText}` : ""}`
+      : `${label}${calledTile ? ` on ${calledTile}` : ""}${from ? ` from ${from}` : ""}${discardText ? `, then ${t("discard").toLowerCase()} ${discardText}` : ""}`;
+    return `<span class="call-action-line">${text}</span>`;
+  }
+  return `<span>${callActionLabel(head?.top_action)}</span>`;
+}
+
 function renderCallModelBlock(example) {
   const heads = example.call_model_heads;
   if (!Array.isArray(heads) || !heads.length) return document.createDocumentFragment();
@@ -1325,13 +1367,20 @@ function renderCallModelBlock(example) {
   for (const head of heads) {
     const card = document.createElement("div");
     card.className = "decision";
-    const topAction = head.top_action || t("noModelAction");
-    const actualWeight = head.actual_kind_prob == null ? "" : probabilityChip(isJa ? "実戦の鳴き" : "actual call", head.actual_kind_prob);
+    const duplicateActualWeight =
+      head.supports_call &&
+      head.top_prob != null &&
+      head.actual_kind_prob != null &&
+      Math.abs(Number(head.top_prob) - Number(head.actual_kind_prob)) < 0.0005;
+    const actualWeight =
+      head.actual_kind_prob == null || duplicateActualWeight
+        ? ""
+        : probabilityChip(isJa ? "実戦の鳴き" : "actual call", head.actual_kind_prob);
     const passWeight = head.pass_prob == null ? "" : probabilityChip(isJa ? "スルー" : "pass", head.pass_prob);
     card.innerHTML = `
       <b>${escapeHtml(isJa ? head.label_ja || modelName(head.key || head.label) : head.label || modelName(head.key))}</b>
       ${probabilityChip(isJa ? "第一候補" : "top action", head.top_prob)}
-      <span>${escapeHtml(topAction)}</span>
+      ${callModelActionLine(example, head)}
       ${actualWeight}
       ${passWeight}
     `;

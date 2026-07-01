@@ -17,7 +17,7 @@ STRATEGY_EN_PATH = Path("site/strategy-guides.json")
 STRATEGY_JA_PATH = Path("site/strategy-guides.ja.json")
 
 SYSTEM_PROMPT = """You are an expert Mahjong commentator and tutor for the LuckyJ Mahjong playbook.
-Your task is to analyze a specific Mahjong decision where the AI agent "LuckyJ" may differ from another engine "Nishiki" (or NAGA), or where the models agree but the example still teaches the playbook point.
+Your task is to analyze a specific Mahjong decision where the AI agent "LuckyJ" differs from another engine "Nishiki" (or NAGA).
 You will be provided with the game state, candidate decisions, shape facts, threat levels, active yakuhai tiles, and the core human strategic commentary.
 Your goal is to output an analysis block in Alternative 2 style in both English and Japanese that is intelligent, human-written, and directly connects this specific match example to the core strategic concept.
 
@@ -28,7 +28,9 @@ Strict Mahjong Rules & Constraints:
 4. Named yaku routes must come from the supplied "Plausible Route Facts". Do NOT invent toitoi, chiitoitsu, pinfu, honitsu, tanyao, or any other yaku because a hand has some pairs or sequences. If a route is listed under "Do Not Claim", do not mention it as kept alive or available.
 5. Triplet check: A triplet (koutsu) requires 3 identical tiles. A quad (kantsu) requires 4. If the "Visible on Board" count for a tile is 3 (with 1 in your hand and 2 on the table/discards), it is mathematically IMPOSSIBLE to form a triplet of that tile. Do NOT describe such a tile as a "potential triplet" or "potential yaku triplet". If the visible count is 4, it is impossible to even form a pair.
 6. For call examples, the supplied "NAGA Call Model Heads" and "NAGA Post-Call Discard Heads" are authoritative. If a model's top action matches LuckyJ's call or "supports actual call" is yes, NEVER say that model passed, declined, or preferred staying closed. If the call action matches but the post-call discard differs, describe the disagreement as a post-call discard split, not a call/pass split.
-7. The "Teaching Fit for This Point" section is authoritative. It explains why this exact example belongs under the playbook point. Do not move the example to a different lesson, and do not invent a current riichi/open-hand threat when the teaching fit says the example is pre-threat or has no opponent riichi.
+7. For call examples, "top action chi/pon" with "supports actual call: no" means that model chose a different call line. Treat that as a real discrepancy, not agreement with LuckyJ.
+8. Never quote raw audit field names in reader-facing prose. Do not write phrases like "supports actual call", "actual-call probability", "pass probability", or "matches LuckyJ discard"; translate them into natural Mahjong commentary.
+9. The "Teaching Fit for This Point" section is authoritative. It explains why this exact example belongs under the playbook point. Do not move the example to a different lesson, and do not invent a current riichi/open-hand threat when the teaching fit says the example is pre-threat or has no opponent riichi.
 
 Style Guidelines for English (Alternative 2 style):
 - Start with first-person plural: "We are in [Round] [Dealer/Player status], holding [Score] points. [Context about board/opponents, e.g. 'With opponents already showing active melds' or 'With an opponent already declaring riichi']."
@@ -498,11 +500,13 @@ def call_model_heads_text(case):
     heads = case.get("call_model_heads") or []
     if not heads:
         return "- Not supplied"
-    lines = []
+    lines = [
+        "- Same exact call line: no is a real disagreement, even when the top action label is also chi/pon."
+    ]
     for head in heads:
         lines.append(
-            "- {label}: top action {top_action} ({top_prob}), actual-call probability {actual_prob}, "
-            "pass probability {pass_prob}, supports actual call: {supports}, prefers pass: {prefers}".format(
+            "- {label}: top action {top_action} ({top_prob}), exact LuckyJ call-line weight {actual_prob}, "
+            "pass weight {pass_prob}, same exact call line: {supports}, prefers pass: {prefers}".format(
                 label=head.get("label") or head.get("key"),
                 top_action=head.get("top_action"),
                 top_prob=head.get("top_prob"),

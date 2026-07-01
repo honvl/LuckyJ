@@ -958,6 +958,13 @@ a {
   font-weight: 750;
 }
 
+.call-action-line em {
+  color: var(--muted);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 750;
+}
+
 .comparison {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1004,6 +1011,14 @@ a {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.decision .call-action-line {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 7px;
+  line-height: 1.25;
 }
 
 .decision .discard-tile {

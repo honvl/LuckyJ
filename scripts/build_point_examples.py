@@ -39,6 +39,16 @@ SHANTEN = Shanten()
 MODEL_KEYS = ["nishiki", "hibakari", "kagashi"]
 MODEL_LABELS = {"nishiki": "Nishiki", "hibakari": "Hibakari", "kagashi": "Kagashi"}
 MODEL_LABELS_JA = {"nishiki": "ニシキ", "hibakari": "ヒバカリ", "kagashi": "カガシ"}
+HIBAKARI_SPLIT_POINTS = {
+    "point-04",
+    "point-05",
+    "point-09",
+    "point-14",
+    "point-15",
+    "point-16",
+    "point-17",
+    "point-19",
+}
 DANGER_HEADS = [
     ("k", "dangerK"),
     ("t", "dangerT"),
@@ -1182,19 +1192,21 @@ def call_model_sentence(case, lang):
     nishiki_post = model_head(post_heads, "nishiki")
     post_discard = tile_token(case.get("discard_after_call"))
     post_naga = tile_token((nishiki_post or {}).get("top"))
+    post_model_discard = post_naga if nishiki_post and nishiki_post.get("top") else post_discard
+    called = tile_token(case.get("called_tile"))
     if all(head.get("supports_call") for head in heads):
         actual = case.get("call", "call")
         if nishiki_post and not nishiki_post.get("matches_luckyj"):
             if lang == "ja":
                 labels = "、".join(head.get("label") or head.get("key") for head in heads)
-                return f"{labels} は全員 {actual} を第一候補にしている。ただし鳴いた後、ニシキは {post_discard} ではなく {post_naga} を切る。"
+                return f"{labels} は全員 {called} を {actual} するラインを第一候補にしている。ただし鳴いた後、ニシキは {post_discard} ではなく {post_naga} を切る。"
             labels = ", ".join(head.get("label") or head.get("key") for head in heads)
-            return f"{labels} all make {actual} their top action. The split is after the call: Nishiki would discard {post_naga} instead of LuckyJ's {post_discard}."
+            return f"{labels} all make {actual} on {called} their top action. The split is after the call: Nishiki would discard {post_naga} instead of LuckyJ's {post_discard}."
         if lang == "ja":
             labels = "、".join(head.get("label") or head.get("key") for head in heads)
-            return f"{labels} は全員 {actual} を第一候補にしている。"
+            return f"{labels} は全員 {called} を {actual} し、鳴いた後に {post_model_discard} を切るラインを第一候補にしている。"
         labels = ", ".join(head.get("label") or head.get("key") for head in heads)
-        return f"{labels} all make {actual} their top action."
+        return f"{labels} all make {actual} on {called} their top action, then discard {post_model_discard}."
     nishiki = model_head(heads, "nishiki")
     hibakari = model_head(heads, "hibakari")
     kagashi = model_head(heads, "kagashi")
@@ -1202,7 +1214,10 @@ def call_model_sentence(case, lang):
     if lang == "ja":
         parts = []
         if nishiki:
-            parts.append(f"ニシキは {nishiki['top_action']} {format_percent(nishiki['top_prob'])}、実戦の {actual} 重み {format_percent(nishiki['actual_kind_prob'])}")
+            if nishiki.get("supports_call"):
+                parts.append(f"ニシキは {called} を {actual} するラインが第一候補 ({format_percent(nishiki['top_prob'])})")
+            else:
+                parts.append(f"ニシキは {nishiki['top_action']} {format_percent(nishiki['top_prob'])}、実戦の {actual} 重み {format_percent(nishiki['actual_kind_prob'])}")
         if hibakari:
             if hibakari.get("supports_call"):
                 parts.append("ヒバカリもこの鳴きを第一候補にしている")
@@ -1220,10 +1235,13 @@ def call_model_sentence(case, lang):
         return "。".join(parts) + "。"
     parts = []
     if nishiki:
-        parts.append(
-            f"Nishiki top action is {nishiki['top_action']} ({format_percent(nishiki['top_prob'])}); "
-            f"the actual {actual} weight is {format_percent(nishiki['actual_kind_prob'])}"
-        )
+        if nishiki.get("supports_call"):
+            parts.append(f"Nishiki top action is {actual} on {called} ({format_percent(nishiki['top_prob'])})")
+        else:
+            parts.append(
+                f"Nishiki top action is {nishiki['top_action']} ({format_percent(nishiki['top_prob'])}); "
+                f"the actual {actual} weight is {format_percent(nishiki['actual_kind_prob'])}"
+            )
     if hibakari:
         if hibakari.get("supports_call"):
             parts.append("Hibakari also makes this call its top action")
@@ -1246,7 +1264,7 @@ def call_heads_all_support(case):
     return bool(heads) and all(head.get("supports_call") for head in heads)
 
 
-def point03_has_naga_discrepancy(case):
+def call_has_naga_discrepancy(case):
     nishiki = model_head((case or {}).get("call_model_heads") or [], "nishiki")
     if not nishiki:
         return False
@@ -1617,10 +1635,20 @@ LLM_CACHE = None
 FALSE_PASS_WHEN_CALLING_PATTERNS = [
     re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:passes|passed)\b", re.I),
     re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:opts|chooses|prefers|would)\s+to\s+pass\b", re.I),
-    re.compile(r"\bnishiki\b[^.。]{0,120}\bpass(?:es|ing|ed)?(?:\s+on)?\s+the\s+call\b", re.I),
+    re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:opts\s+for|chooses|prefers|would)\s+(?:passing|a\s+pass|pass)\b", re.I),
+    re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:declines|declined)\s+the\s+call\b", re.I),
     re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:keep|keeps|maintain|maintains|remain|remains|staying)\b[^.。]{0,80}\bclosed\b", re.I),
-    re.compile(r"(?:nishiki|ニシキ|naga（nishiki）|naga)[^。]{0,100}スルー", re.I),
-    re.compile(r"(?:nishiki|ニシキ|naga（nishiki）|naga)[^。]{0,100}(?:門前|メンゼン)[^。]{0,80}維持", re.I),
+    re.compile(r"(?:nishiki|ニシキ|naga（nishiki）)[^。、.]{0,80}スルー", re.I),
+    re.compile(r"(?:nishiki|ニシキ|naga（nishiki）)[^。、.]{0,80}(?:門前|メンゼン)[^。、.]{0,60}維持", re.I),
+]
+FALSE_AGREEMENT_PATTERNS = [
+    re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:completely|fully)\s+agree", re.I),
+    re.compile(r"\bnishiki\b[^.。]{0,120}\bfully\s+support(?:s|ed)?\s+(?:this\s+)?(?:decision|play)", re.I),
+    re.compile(r"\bnishiki\b[^.。]{0,120}\bmatching\b", re.I),
+    re.compile(r"\bnishiki\b[^.。]{0,120}\bagrees?\s+with\s+this\s+(?:decision|play)", re.I),
+    re.compile(r"\bnishiki\b[^.。]{0,160}\bagree(?:ing|s|d)?\s+on\s+both\b", re.I),
+    re.compile(r"\bno\s+(?:naga\s+)?(?:discrepancy|difference)\b", re.I),
+    re.compile(r"(?:nishiki|ニシキ|naga)[^。]{0,100}(?:完全に一致|全面的に一致|完全に同意|全面的に同意)", re.I),
 ]
 
 def load_llm_cache():
@@ -1657,7 +1685,20 @@ def cached_call_guide_conflicts(case, cached_entry):
         .replace("Nishikiはスルーしていません", "")
         .replace("ニシキはスルーしていません", "")
     )
+    text = re.sub(r"\b(?:Hibakari|Kagashi)\b[^.。]*", "", text)
+    text = re.sub(r"(?:ヒバカリ|カガシ)[^。]*", "", text)
     return any(pattern.search(text) for pattern in FALSE_PASS_WHEN_CALLING_PATTERNS)
+
+
+def cached_guide_conflicts(case, cached_entry):
+    text = " ".join(
+        str((cached_entry.get(section) or {}).get(field, ""))
+        for section in ("guide", "guide_ja")
+        for field in ("read", "whyNot", "prompt", "answer")
+    )
+    if case_has_naga_split(case) and any(pattern.search(text) for pattern in FALSE_AGREEMENT_PATTERNS):
+        return True
+    return cached_call_guide_conflicts(case, cached_entry)
 
 
 def attach_example_guides(case):
@@ -1673,7 +1714,7 @@ def attach_example_guides(case):
     key = f"{case.get('point')}_{case.get('game')}_{case.get('kyoku_index')}_{case.get('position')}"
     if key in cache:
         cached_entry = cache[key]
-        use_cached = not cached_call_guide_conflicts(case, cached_entry)
+        use_cached = not cached_guide_conflicts(case, cached_entry)
         if use_cached and "guide" in cached_entry:
             case["guide"]["read"] = cached_entry["guide"].get("read", case["guide"]["read"])
             case["guide"]["prompt"] = cached_entry["guide"].get("prompt", case["guide"]["prompt"])
@@ -1855,8 +1896,21 @@ def honor_role_signal(case):
 
 def case_has_naga_split(case):
     if case.get("kind") == "call":
-        return point03_has_naga_discrepancy(case)
+        return call_has_naga_discrepancy(case)
     return bool(case.get("naga") and case.get("actual") and not same_tile(case.get("naga"), case.get("actual")))
+
+
+def case_has_hibakari_split(case):
+    if case.get("kind") == "call":
+        hibakari = model_head((case or {}).get("call_model_heads") or [], "hibakari")
+        if not hibakari:
+            return False
+        if not hibakari.get("supports_call"):
+            return True
+        post_hibakari = model_head((case or {}).get("post_call_model_heads") or [], "hibakari")
+        return bool(post_hibakari) and not post_hibakari.get("matches_luckyj")
+    hibakari = model_head((case or {}).get("model_heads") or [], "hibakari")
+    return bool(hibakari) and not hibakari.get("matches_luckyj")
 
 
 def point_candidate_eligible(point_key, case):
@@ -1875,6 +1929,15 @@ def point_candidate_eligible(point_key, case):
     kept_read = case.get("kept_tile_safety") or {}
     score = case.get("score") or 0
     rank = case.get("current_rank") or case.get("rank")
+
+    if kind == "call":
+        if not call_has_naga_discrepancy(case):
+            return False
+    elif kind in {"discard", "draw-tenpai", "reach"}:
+        if not case_has_naga_split(case):
+            return False
+    if point_key in HIBAKARI_SPLIT_POINTS and not case_has_hibakari_split(case):
+        return False
 
     if point_key == "point-01":
         return (
@@ -1897,12 +1960,13 @@ def point_candidate_eligible(point_key, case):
         )
     if point_key == "point-03":
         shape = case.get("post_call_eval") or {}
-        return kind == "call" and case.get("discard_after_call") not in {None, "?"} and point03_has_naga_discrepancy(case) and (shape.get("shanten") is None or shape.get("shanten") <= 1 or left <= 24)
+        return kind == "call" and case.get("discard_after_call") not in {None, "?"} and call_has_naga_discrepancy(case) and (shape.get("shanten") is None or shape.get("shanten") <= 1 or left <= 24)
     if point_key == "point-04":
         post_discard_cls = safe_tile_class(case.get("discard_after_call"))
         return (
             kind == "call"
             and case.get("discard_after_call") not in {None, "?"}
+            and call_has_naga_discrepancy(case)
             and post_call_has_defensive_reserve(case)
             and (active_threat_count(case) > 0 or post_discard_cls in {"honor", "terminal"})
         )
@@ -1937,6 +2001,7 @@ def point_candidate_eligible(point_key, case):
         return (
             kind == "call"
             and case.get("discard_after_call") not in {None, "?"}
+            and call_has_naga_discrepancy(case)
             and call_has_purpose(case)
             and (left <= 40 or shape.get("shanten") is None or shape.get("shanten") <= 1)
         )
@@ -2596,7 +2661,7 @@ def try_call_points(
     )
 
     score_value = exposed_bonus + max(0.0, (70 - left) / 100) + call_score_adjustment(call_case or {})
-    if point03_has_naga_discrepancy(call_case) and wants_candidate(selected, "point-03", score_value):
+    if call_has_naga_discrepancy(call_case) and wants_candidate(selected, "point-03", score_value):
         add(
             selected,
             used,
@@ -2622,7 +2687,7 @@ def try_call_points(
             riichi_discard_indices,
         )
         score_value = 0.4 + 0.2 * active_threats + (0.2 if terminal_or_honor_exit else 0.0) + call_score_adjustment(call_case or {})
-        if wants_candidate(selected, "point-04", score_value):
+        if call_has_naga_discrepancy(call_case) and wants_candidate(selected, "point-04", score_value):
             add(
                 selected,
                 used,
@@ -2647,7 +2712,7 @@ def try_call_points(
         riichi_discard_indices,
     )
     score_value = 0.3 + exposed_bonus + (0.2 if left <= 40 else 0.0) + call_score_adjustment(call_case or {})
-    if wants_candidate(selected, "point-07", score_value):
+    if call_has_naga_discrepancy(call_case) and wants_candidate(selected, "point-07", score_value):
         add(
             selected,
             used,
