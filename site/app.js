@@ -169,6 +169,23 @@ function savePointExampleSelections() {
   }
 }
 
+function pointExampleProgressText(count, total) {
+  return isJa ? `例 ${count}/${total}` : `Example ${count}/${total}`;
+}
+
+function updatePointRailProgress(pointKey, index, total) {
+  if (!pointKey || total <= 0) return;
+  const count = clampExampleIndex(index, total) + 1;
+  const percent = `${Math.round((count / total) * 100)}%`;
+  for (const link of document.querySelectorAll(`.point-rail a[data-point="${pointKey}"]`)) {
+    const baseLabel = [link.dataset.number, link.dataset.label].filter(Boolean).join(" ");
+    link.classList.toggle("has-example-progress", total > 1);
+    link.style.setProperty("--example-progress", percent);
+    link.dataset.exampleProgress = `${count}/${total}`;
+    link.setAttribute("aria-label", total > 1 ? `${baseLabel}, ${pointExampleProgressText(count, total)}` : baseLabel);
+  }
+}
+
 function exampleAnchorId(pointKey, index) {
   return `${pointKey}-example-${String(index + 1).padStart(2, "0")}`;
 }
@@ -246,13 +263,24 @@ function renderPointRail() {
 
   const railLinks = points.map((point) => {
     const link = document.createElement("a");
+    const number = document.createElement("span");
+    const progress = document.createElement("span");
+    const fill = document.createElement("span");
+
     link.href = point.href;
-    link.textContent = point.number;
+    link.dataset.point = point.id;
+    link.dataset.number = point.number;
+    number.className = "point-rail-number";
+    number.textContent = point.number;
+    progress.className = "point-rail-progress";
+    progress.setAttribute("aria-hidden", "true");
+    fill.className = "point-rail-progress-fill";
+    progress.append(fill);
     if (point.title) {
       link.setAttribute("aria-label", `${point.number} ${point.title}`);
       link.dataset.label = point.title;
     }
-    link.dataset.point = point.id;
+    link.append(number, progress);
     rail.append(link);
     return link;
   });
@@ -1791,6 +1819,7 @@ function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
       selectedIndex = clampExampleIndex(index, items.length);
       pointExampleSelections.set(pointKey, selectedIndex);
       savePointExampleSelections();
+      updatePointRailProgress(pointKey, selectedIndex, items.length);
       buttons.forEach((button, buttonIndex) => {
         const selected = buttonIndex === selectedIndex;
         button.classList.toggle("active", selected);

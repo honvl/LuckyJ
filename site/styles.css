@@ -2209,6 +2209,34 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
       transform 160ms ease;
   }
 
+  .point-rail-number {
+    transform: translateY(-2px);
+  }
+
+  .point-rail-progress {
+    position: absolute;
+    right: 6px;
+    bottom: 3px;
+    left: 6px;
+    display: none;
+    height: 2px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(23, 107, 84, 0.16);
+  }
+
+  .point-rail-progress-fill {
+    display: block;
+    width: var(--example-progress, 0%);
+    height: 100%;
+    border-radius: inherit;
+    background: var(--green);
+  }
+
+  .point-rail a.has-example-progress .point-rail-progress {
+    display: block;
+  }
+
   .point-rail a:hover,
   .point-rail a:focus-visible {
     border-color: rgba(23, 107, 84, 0.38);
@@ -2223,6 +2251,14 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
     color: #fff;
     box-shadow: 0 6px 14px rgba(23, 107, 84, 0.24);
     transform: translateX(6px);
+  }
+
+  .point-rail a.is-active .point-rail-progress {
+    background: rgba(255, 255, 255, 0.32);
+  }
+
+  .point-rail a.is-active .point-rail-progress-fill {
+    background: #fff;
   }
 
   .point-rail-panel {
