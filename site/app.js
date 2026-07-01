@@ -710,23 +710,58 @@ function dangerText(value) {
   return value == null ? "n/a" : pct(value);
 }
 
-function safetyKindLabel(kind) {
+function hasGenbutsuItem(item) {
+  return Boolean(item?.genbutsu_sources?.length);
+}
+
+function hasDisplaySotogawaItem(item) {
+  return Boolean(item?.sotogawa_sources?.length) && !hasGenbutsuItem(item);
+}
+
+function isWeakSotogawaItem(item) {
+  if (!hasDisplaySotogawaItem(item)) return false;
+  const sources = item?.sotogawa_sources || [];
+  return sources.length > 0 && !sources.some((source) => Number(source.position) <= 4);
+}
+
+function hasWeakSotogawa(read) {
+  const items = (read?.against || []).filter(hasDisplaySotogawaItem);
+  return items.length > 0 && items.every(isWeakSotogawaItem);
+}
+
+function hasDisplaySotogawa(read) {
+  return (read?.against || []).some(hasDisplaySotogawaItem);
+}
+
+function safetyTarget(read) {
+  const against = read?.against || [];
+  const liveTargets = against.filter(
+    (item) =>
+      (item.genbutsu_sources?.length || item.suji_sources?.length || hasDisplaySotogawaItem(item)) &&
+      (item.reached || item.open_melds)
+  );
+  return liveTargets[0] || against[0] || {};
+}
+
+function safetyKindLabel(kind, options = {}) {
   if (isJa) {
     if (kind === "genbutsu") return "現物";
     if (kind === "suji") return "筋";
-    if (kind === "sotogawa") return "外側牌（ソト側）";
+    if (kind === "sotogawa") return options.weak ? "弱い外側牌（ソト側）" : "外側牌（ソト側）";
     return "なし";
   }
   if (kind === "genbutsu") return "genbutsu";
   if (kind === "suji") return "suji";
-  if (kind === "sotogawa") return "outside tile (sotogawa)";
+  if (kind === "sotogawa") return options.weak ? "weak outside tile (sotogawa)" : "outside tile (sotogawa)";
   return "none";
 }
 
-function safetyReadLabel(read) {
+function safetyReadLabel(read, target = null) {
   const labels = [];
-  if (read?.kind) labels.push(safetyKindLabel(read.kind));
-  if (read?.has_sotogawa) labels.push(safetyKindLabel("sotogawa"));
+  const kind = target ? target.kind : read?.kind;
+  if (kind) labels.push(safetyKindLabel(kind));
+  const showSotogawa = target ? hasDisplaySotogawaItem(target) : hasDisplaySotogawa(read);
+  if (showSotogawa) labels.push(safetyKindLabel("sotogawa", { weak: target ? isWeakSotogawaItem(target) : hasWeakSotogawa(read) }));
   return labels.length ? labels.join(isJa ? " / " : " / ") : safetyKindLabel("none");
 }
 
@@ -736,12 +771,8 @@ function safetySourceText(source) {
 
 function safetyReadLine(read) {
   if (!read || !(read.kind || read.has_sotogawa)) return "";
-  const target = read.against?.[0];
-  const sourceList = target?.genbutsu_sources?.length
-    ? target.genbutsu_sources
-    : target?.suji_sources?.length
-      ? target.suji_sources
-      : target?.sotogawa_sources || [];
+  const target = safetyTarget(read);
+  const sourceList = target?.genbutsu_sources?.length ? [] : target?.suji_sources || [];
   const sourceText = sourceList.length ? (isJa ? `、見え方 ${sourceList.map(safetySourceText).join("、")}` : ` via ${sourceList.map(safetySourceText).join(", ")}`) : "";
   const threatText = target?.reached
     ? isJa
@@ -753,8 +784,8 @@ function safetyReadLine(read) {
         : ` / ${target.open_melds} call${target.open_melds === 1 ? "" : "s"}`
       : "";
   return isJa
-    ? `${tileName(read.tile)} は ${seatLabel(target?.seat_label)} に対して ${safetyReadLabel(read)}${threatText}${sourceText}`
-    : `${tileName(read.tile)} is ${safetyReadLabel(read)} to ${seatLabel(target?.seat_label)}${threatText}${sourceText}`;
+    ? `${tileName(read.tile)} は ${seatLabel(target?.seat_label)} に対して ${safetyReadLabel(read, target)}${threatText}${sourceText}`
+    : `${tileName(read.tile)} is ${safetyReadLabel(read, target)} to ${seatLabel(target?.seat_label)}${threatText}${sourceText}`;
 }
 
 function safetySummary(safety) {
@@ -772,15 +803,15 @@ function safetyPanel(read) {
   block.className = "safety-read";
   const rows = (read.against || [])
     .map((item) => {
-      const rowLabels = [item.kind, item.sotogawa_sources?.length ? "sotogawa" : null]
-        .filter(Boolean)
-        .map(safetyKindLabel)
-        .join(isJa ? " / " : " / ");
-      const sourceGroups = [
-        ["genbutsu", item.genbutsu_sources || []],
-        ["suji", item.suji_sources || []],
-        ["sotogawa", item.sotogawa_sources || []],
-      ].filter(([, list]) => list.length);
+      const rowLabelParts = [];
+      if (item.kind) rowLabelParts.push(safetyKindLabel(item.kind));
+      if (hasDisplaySotogawaItem(item)) rowLabelParts.push(safetyKindLabel("sotogawa", { weak: isWeakSotogawaItem(item) }));
+      const rowLabels = rowLabelParts.join(isJa ? " / " : " / ");
+      const sourceGroups = hasGenbutsuItem(item)
+        ? []
+        : [
+            ["suji", item.suji_sources || []],
+          ].filter(([, list]) => list.length);
       const sources = sourceGroups
         .map(
           ([kind, list]) =>
@@ -1009,9 +1040,23 @@ function discardRows(discards) {
   const rows = [];
   const list = discards || [];
   for (let i = 0; i < 18; i += 6) {
-    rows.push(list.slice(i, i + 6));
+    rows.push(list.slice(i, i + 6).map((tile, offset) => ({ tile, index: i + offset })));
   }
   return rows;
+}
+
+function discardTileRun(items, riichiIndex, emptyLabel = "") {
+  const list = (items || []).filter((item) => item?.tile);
+  if (!list.length) return emptyLabel ? `<span class="empty">${escapeHtml(emptyLabel)}</span>` : "";
+  const label = tileNamesText(list.map((item) => item.tile));
+  return `<span class="discard-tiles" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${list
+    .map((item) => {
+      const isRiichiDiscard = Number.isInteger(riichiIndex) && item.index === riichiIndex;
+      const slotClass = `discard-tile-slot${isRiichiDiscard ? " riichi-discard-slot" : ""}`;
+      const tileClass = `discard-tile${isRiichiDiscard ? " riichi-discard-tile" : ""}`;
+      return `<span class="${slotClass}">${tileIcon(item.tile, tileClass)}</span>`;
+    })
+    .join("")}</span>`;
 }
 
 function renderMahjongTable(table) {
@@ -1065,7 +1110,7 @@ function renderMahjongTable(table) {
       return `
         <div class="player-discards player-${position}">
           ${discardRows(player.discards)
-            .map((row) => `<div class="discard-row">${tileRun(row, "", "")}</div>`)
+            .map((row) => `<div class="discard-row">${discardTileRun(row, player.riichi_discard_index)}</div>`)
             .join("")}
         </div>
       `;

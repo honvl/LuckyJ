@@ -229,26 +229,26 @@
   },
   "point-02_70_0_23": {
     "guide": {
-      "read": "We are in East 1-0 as the dealer, holding 25,000 points. With the game in its early stages and our hand containing several isolated honors alongside incomplete groups, how do we balance our hand's value against the defensive utility of our tiles? LuckyJ discards the isolated [[2s]] to keep the flexible honors and our pair of [[F]] intact. Although [[E]] can no longer form a triplet since 3 copies are already visible on the board, it remains extremely safe as a genbutsu to two opponents. In contrast, Nishiki prefers standard efficiency, discarding the dead [[E]] to keep [[2s]] for potential sequence development. By discarding [[2s]], LuckyJ prioritizes safety and keeps various development paths—such as toitoi, chiitoitsu, or a closed pinfu hand—alive while observing the opponents' moves.",
-      "prompt": "How many copies of [[E]] are visible in total on the board (including your hand), and is it mathematically possible to form a triplet with it?",
-      "answer": "3 copies are visible in total, making it mathematically impossible to form a triplet."
+      "read": "We are in East 1-0 as dealer, holding 25000 points. With Shimocha already showing an open [[S]] pon and the hand still messy in the early stage, how do we value a tile that is no longer useful for speed, but still works as a safety reserve?\n\nLuckyJ discards the isolated drawn [[2s]]. This does not improve the visible shanten or ukeire compared with cutting [[E]], but it keeps the branch point alive. The hand still has the [[F]][[F]] yakuhai pair, speculative live honor routes through [[P]] and [[C]], and a real 456 sanshoku doujun seed: [[4m]][[6m]] needs [[5m]], [[4p]][[6p]] needs [[5p]], and [[5s]][[6s]] needs [[4s]]. [[2s]] is not part of those central routes, so LuckyJ treats it as expendable.\n\nNishiki instead discards [[E]], and Kagashi agrees with that cleaner approach. [[E]] is extremely safe here: it is genbutsu against two opponents and has danger 0.0 across the table. It is also nearly dead as a value tile, because three [[E]] are already visible, so it cannot become a yakuhai triplet from our current hand. From a pure efficiency view, cutting [[E]] looks natural, and both lines have the same shanten and same visible ukeire.\n\nThe key is the trade-off. LuckyJ, and Hibakari as well, prefer to keep [[E]] as a defensive pause button rather than cash it out immediately. Even though [[2s]] is only mildly dangerous overall, it is still not fully safe, especially with Shimocha open. LuckyJ is not choosing a faster hand; it is choosing a hand that keeps value routes through [[F]][[F]], keeps the 456 sanshoku structure, and preserves a reliable safety tile for the next branch point.",
+      "prompt": "Why does LuckyJ keep [[E]] even though Nishiki and Kagashi prefer discarding it?",
+      "answer": "[[E]] is nearly dead for value but is genbutsu against two opponents, so LuckyJ keeps it as a safety reserve while discarding the isolated [[2s]]."
     },
     "guide_ja": {
-      "read": "東1局0本場、25000点持ちの親番。序盤の段階で、孤立した字牌と未完成のブロックが混在する手牌において、手の価値と守備的な有用性をどのようにバランスさせるべきでしょうか。LuckyJは孤立している[[2s]]を切り、柔軟な字牌と[[F]]の対子を手元に残しました。[[E]]はすでに場に3枚見えているため刻子にすることは不可能ですが、二人の対戦相手に対して現物であり、非常に安全度が高い牌です。対照的に、Nishikiは通常の効率を優先し、重なりが期待できない[[E]]を切ることで[[2s]]を残し、順子への発展を見据えました。[[2s]]を先に切り出すことで、LuckyJは安全性を担保しつつ、今後の引き次第でトイトイやチートイツ、あるいは門前ピンフといった様々な開発ルートへの移行を可能にしています。",
-      "prompt": "自分の手牌を含め、場に見えている[[E]]は合計で何枚ですか？また、ここから刻子を作ることは可能ですか？",
-      "answer": "合計3枚見えており、ここから刻子を作ることは不可能です。"
+      "read": "東1局0本場、親番で25000点持ちです。下家がすでに[[S]]をポンしていて、こちらの手もまだまとまり切っていない序盤。ここで、速度にはあまり貢献しないが、安全牌として機能する牌をどう評価するかが焦点になります。\n\nLuckyJ はツモって浮いている[[2s]]を切ります。[[E]]切りと比べても、見えているシャンテン数や受け入れは変わりません。それでも LuckyJ は分岐点を残す選択をします。手の中には[[F]][[F]]の役牌対子があり、[[P]]や[[C]]もまだ投機的ながら役牌ルートとして残っています。さらに、456三色同順の種も実際にあります。[[4m]][[6m]]は[[5m]]、[[4p]][[6p]]は[[5p]]、[[5s]][[6s]]は[[4s]]を引けば形になります。[[2s]]はこれらの中心的な構想に関わっていないため、LuckyJ は不要牌として処理しています。\n\n一方、Nishiki は[[E]]切りを選び、Kagashi もそのすっきりした方針を支持しています。[[E]]は2人に対する現物で、危険度も全員に対して0.0。安全度は非常に高い牌です。また、[[E]]はすでに3枚見えているため、現在の手から役牌の刻子になることはありません。純粋な効率だけを見れば、[[E]]切りは自然であり、どちらの選択もシャンテン数と見えている受け入れは同じです。\n\nポイントは押し引きの保険です。LuckyJ、そして Hibakari も、[[E]]を今すぐ処理するのではなく、次の分岐で使える守備の一時停止ボタンとして残す評価をしています。[[2s]]の危険度は全体として高くはないものの、完全安全牌ではなく、下家が鳴いている状況では無視できません。LuckyJ は速い手を選んでいるのではなく、[[F]][[F]]の役牌価値、456三色の構造、そして次の局面で頼れる安全牌を同時に残す手組みを選んでいます。",
+      "prompt": "Nishiki と Kagashi が[[E]]切りを推す中で、LuckyJ はなぜ[[E]]を残したのですか？",
+      "answer": "[[E]]は価値面ではほぼ死んでいますが、2人に対する現物なので、LuckyJ は安全牌として残し、浮いている[[2s]]を切りました。"
     }
   },
   "point-03_9_2_123": {
     "guide": {
-      "read": "We are in East 3, holding 25,000 points as West seat. With only 10 tiles remaining in the wall and a clumsy hand shape, how do we value our hand's path to tenpai? LuckyJ calls pon on [[E]] and discards [[F]] to progress the hand into a 1-shanten shape. Because [[E]] is the prevalent wind, calling this triplet immediately secures our yaku. In this late stage of the game, maintaining a closed hand is mostly imaginary, whereas opening the hand gives us a real chance at tenpai before the wall runs out. Nishiki, on the other hand, chooses to pass on the [[E]] to keep the hand closed, hoping for a miracle tsumo or prioritizing absolute defense. However, passing here essentially concedes any chance of tenpai, leaving us empty-handed at the draw. LuckyJ's call proactively buys tenpai pressure, which ultimately yields a +3,000 point tenpai payment in the draw.",
-      "prompt": "Which wind tile acts as the prevalent wind in this round, making the pon call a valid yaku?",
-      "answer": "[[E]]"
+      "read": "We are in East 3, holding 25,000 points as West seat. With only 10 tiles remaining, how do we read the [[E]] pon when the NAGA heads also choose it? LuckyJ calls pon on the prevalent wind [[E]] from kamicha and discards [[F]]. This is not a LuckyJ-versus-Nishiki discrepancy: Nishiki, Hibakari, and Kagashi all top-rank the same pon. The reason is practical. The call locks in the yaku, sheds the planned [[F]], and leaves the hand in tenpai on the [[6p]][[7p]] ryanmen. Staying closed would be the theoretical safety line, but it is not what NAGA prefers here; with 10 tiles left, the open yaku tenpai is the real route to draw payment or a late win. LuckyJ's call ultimately earns the +3,000 tenpai payment at the draw.",
+      "prompt": "Do the NAGA heads disagree with LuckyJ's [[E]] pon here?",
+      "answer": "No. Nishiki, Hibakari, and Kagashi all top-rank pon; the example teaches why the consensus call reaches open yaku tenpai."
     },
     "guide_ja": {
-      "read": "私たちは東3局、25,000点持ちの西家です。山残り10枚という終盤戦において、この手のテンパイへのルートをどのように評価すべきでしょうか。LuckyJは上家から打たれた[[E]]をポンし、[[F]]を切って1シャンテンの形に進めます。[[E]]は場風牌であり、このポンによって即座に役が確定します。局の終盤においてメンゼンでのテンパイに期待するのは非現実的ですが、手を開くことで流局前に現実的なテンパイの形を作ることができます。一方で、Nishikiは[[E]]をスルーして門前を維持する選択をします。しかし、ここでスルーすることはテンパイの可能性をほぼ諦めることに等しく、流局時にノーテンで点棒を失うリスクを高めます。LuckyJは仕掛けることでテンパイへの圧力を生み出し、最終的に流局時のテンパイ料による＋3,000点の収入を確保しました。",
-      "prompt": "この局において場風（役）となり、ポンによって役を確定させることができる風牌は何ですか？",
-      "answer": "[[E]]"
+      "read": "私たちは東3局、25,000点持ちの西家です。残り10枚で、NAGA側も選んでいる[[E]]ポンをどう読むかが焦点です。LuckyJは上家から場風の[[E]]をポンし、予定していた[[F]]を切ります。これは LuckyJ と Nishiki のズレではありません。Nishiki、Hibakari、Kagashi は全員このポンを第一候補にしています。理由は実戦的です。このポンで役が確定し、[[F]]を処理して、[[6p]][[7p]]の両面待ちテンパイになります。門前維持は理屈上の安全策ですが、ここでNAGAが推している選択ではありません。残り10枚では、開いて役ありテンパイを取ることが流局テンパイ料や終盤の和了に向かう現実的なルートです。結果的にもLuckyJは流局時のテンパイ料で+3,000を得ています。",
+      "prompt": "この[[E]]ポンについて、NAGA側はLuckyJと割れていますか？",
+      "answer": "いいえ。Nishiki、Hibakari、Kagashi は全員ポンを第一候補にしており、この例は合意している鳴きが役ありテンパイを作る理由を読む例です。"
     }
   },
   "point-03_10_3_134": {
@@ -277,14 +277,14 @@
   },
   "point-03_6_0_113": {
     "guide": {
-      "read": "We are in East 1, South seat, holding 25,000 points. With both Kamicha and Shimocha showing active open melds and only 17 tiles remaining in the wall, how do we balance our slow, closed development against the increasing pressure from our opponents? LuckyJ breaks the closed structure by calling pon on [[P]] and discarding [[3p]]. This secure open call immediately guarantees a yaku with the active yakuhai and advances the hand to a flexible 1-shanten with a [[2p]][[3p]] ryanmen shape. In contrast, Nishiki passes the call to keep the hand closed, aiming for a standard menzen path. However, with the wall running thin, attempting to build a closed hand is mostly imaginary. LuckyJ's proactive call prioritizes tempo and tenpai pressure, accepting the open hand to keep our options active.",
-      "prompt": "Why is passing the pon on [[P]] in this late stage considered disadvantageous here?",
-      "answer": "Because with only 17 tiles remaining, the closed hand is too slow to reach tenpai, whereas calling pon immediately secures the yaku and creates an active 1-shanten."
+      "read": "We are in East 1, South seat, holding 25,000 points. With both Kamicha and Shimocha showing active open melds and only 17 tiles remaining in the wall, the [[P]] pon itself is not the disagreement: Nishiki, Hibakari, and Kagashi all top-rank pon. The split is the discard after opening. LuckyJ pons [[P]] and cuts [[3p]], while Nishiki's post-call top discard is [[2p]]. By discarding [[3p]], LuckyJ keeps the hand on an active yakuhai 1-shanten while retaining the [[2p]][[3p]] side of the shape instead of cashing out [[2p]] immediately. This is a small post-call shape choice, not a pass-versus-call example.",
+      "prompt": "Where is the NAGA disagreement in this example?",
+      "answer": "After the shared [[P]] pon: Nishiki would discard [[2p]], while LuckyJ discards [[3p]]."
     },
     "guide_ja": {
-      "read": "東1局、南家で持ち点は25,000点。上家と下家がすでに仕掛けており、山牌が残り17枚と深くなってきた局面で、この重苦しいメンゼンの手牌をどのように評価すべきでしょうか。LuckyJは[[P]]をポンし、[[3p]]を切ってメンゼンを崩す選択をしました。これで役牌の役が確定し、[[2p]][[3p]]の両面を残した実質的な一向聴へと手を進めることができます。対照的に、NAGA（Nishiki）はスルーしてメンゼンを維持し、立直への道を模索するかもしれません。しかし、残り17枚という終盤において、メンゼンでテンパイまでこぎ着けるのは現実的ではありません。LuckyJは仕掛けることで手牌の速度不足を解消し、役を確定させてテンパイへの圧力をかける現実的な選択を優先しています。",
-      "prompt": "この終盤において[[P]]のポンをスルーすることが不利とされるのはなぜですか？",
-      "answer": "残りツモ山が17枚しかないためメンゼンでのテンパイは間に合わず、ポンすれば役が確定して有効な一向聴に進められるからです。"
+      "read": "東1局、南家で25,000点持ちです。上家と下家がすでに仕掛けており、山残り17枚。この例で[[P]]をポンするかどうかはズレていません。Nishiki、Hibakari、Kagashi は全員ポンを第一候補にしています。ズレているのは、鳴いた後の打牌です。LuckyJ は[[P]]をポンして[[3p]]を切り、Nishiki の鳴き後第一候補は[[2p]]です。[[3p]]を切ることで、LuckyJ は役牌の1シャンテンを維持しつつ、[[2p]][[3p]]側の形を残します。これはスルー対ポンの例ではなく、鳴き後にどの牌を処理するかという小さな形の分岐です。",
+      "prompt": "この例で NAGA とズレているのはどこですか？",
+      "answer": "[[P]]ポン自体ではなく、その後の打牌です。Nishiki は[[2p]]切り、LuckyJ は[[3p]]切りです。"
     }
   },
   "point-03_18_4_107": {
@@ -335,18 +335,6 @@
       "answer": "[[6s]]"
     }
   },
-  "point-03_8_8_101": {
-    "guide": {
-      "read": "We are in South 3, Honba 1, playing as West, holding 15,200 points. With the game in the late stage and only 21 tiles remaining in the wall, how do we balance our hand's progression against the dwindling time? LuckyJ calls chi on [[3s]] to advance the hand, discarding [[6p]] and breaking the awkward [[6p]][[8p]] kanchan block. This call immediately increases our tempo, converting a slow shape into a fast path toward tenpai with tanyao and our red dora [[5m]]. Nishiki opts to pass the call, preferring to maintain the current hand structure and keep more tiles in hand for defensive flexibility. However, LuckyJ recognizes that passive play at this stage risks folding without a fight; calling here buys real tenpai pressure and keeps our offensive options alive.",
-      "prompt": "Which yaku is secured by making this call and discarding [[6p]] to keep only simple tiles (2-8)?",
-      "answer": "Tanyao (All Simples)"
-    },
-    "guide_ja": {
-      "read": "私たちは南3局1本場、西家で15,200点を持っています。終盤に入り、山に残る牌もわずか21枚となる中、残り時間と手の進展をどのように天秤にかけるべきでしょうか。LuckyJは[[3s]]をチーして手を進め、[[6p]]を切って不安定な[[6p]][[8p]]のカンチャンブロックを払いました。このチーによって速度が劇的に向上し、赤ドラの[[5m]]を含むタンヤオのテンパイへ向けて大きく前進します。一方、Nishikiはスルーを選択し、手牌の枚数を維持して守備力に配慮する道を選びました。しかし、LuckyJはこの終盤での消極的な対応が手詰まりやノーテンの損につながると判断し、鳴くことで実質的なテンパイへの圧力をかけ、アガリの可能性を残しました。",
-      "prompt": "このチーをして[[6p]]を切り、2-8の中張牌のみにすることで確定する役は何ですか？",
-      "answer": "タンヤオ（断幺九）"
-    }
-  },
   "point-04_0_3_47": {
     "guide": {
       "read": "We are in East 4, sitting in the South seat as a non-dealer, holding 22,000 points and currently in fourth place. With the middle stage of the round underway and no opponents yet declaring riichi, how do we balance our need to catch up with our defensive options as our hand becomes open?\n\nLuckyJ calls chi on the [[5sr]] from kamicha and discards [[1s]], breaking the [[1s]][[3s]] kanchan block. This leaves us with the [[3s]][[4s]] sequence shape and a pair of the guest wind [[N]]. Because our hand is now open, our ability to draw safe tiles is reduced, making the pair of [[N]] an essential defensive anchor. Should an opponent push later, we can discard one [[N]] to evaluate the board, and the second [[N]] becomes a highly reliable safe tile. Nishiki, by contrast, might choose to discard [[N]] to maintain all souzu blocks and maximize tile acceptance. However, LuckyJ prioritizes safety in an open hand, ensuring that even while pursuing a fast hand, we are not left defenseless.",
@@ -383,30 +371,6 @@
       "answer": "タンヤオ（断么九）"
     }
   },
-  "point-04_1_9_65": {
-    "guide": {
-      "read": "We are in South 4-1 as the dealer, holding 31,900 points. With toimen already showing an open meld of [[W]], how do we balance our hand's high potential value and speed against the defensive stability of a closed hand? LuckyJ discards [[F]] to preserve the 1-shanten hand shape. Because [[F]] has 2 visible on the board, it is no longer a viable path to a triplet and represents a floating tile with limited utility. Nishiki plays defensively, passing the pon on [[S]] to maintain a closed hand and keep all defensive options open. However, LuckyJ pushes here, valuing the dealer equity and the high-value potential of our red dora over a passive fold.",
-      "prompt": "In this hand, why is the potential value of LuckyJ's hand high despite being an open hand?",
-      "answer": "Because we are the dealer (giving a 1.5x value bonus) and the hand contains two red dora tiles."
-    },
-    "guide_ja": {
-      "read": "南4局1本場、私たちは親番で31,900点を持っています。対面がすでに[[W]]のポンを晒している中、手牌の高打点と速度を、門前による守備の安定性とどのようにバランスさせるべきでしょうか？ LuckyJは[[F]]を切り、1シャンテンの形を維持します。[[F]]は場に2枚見えているため、コーツにするのは現実的ではなく、有効度の低い浮き牌となっています。一方、Nishikiは守備的に構え、[[S]]のポンをスルーすることで門前を維持し、すべての守備的な選択肢を残す道を選びます。しかし、LuckyJはここで押しを選択し、消極的なオリよりも親の連荘価値と赤ドラ2枚による高打点の可能性を優先したのです。",
-      "prompt": "この手牌において、副露しているにもかかわらずLuckyJの手牌の打点が高くなる理由は何ですか？",
-      "answer": "親番であること（点数が1.5倍になる）に加え、手牌に赤ドラが2枚含まれているため。"
-    }
-  },
-  "point-04_2_8_103": {
-    "guide": {
-      "read": "We are in South 3, 1st honba as flat-wind player, holding 20,600 points. With the game in the late stage and only 22 tiles remaining in the wall, we find ourselves in third place and need to generate points. How do we balance our desire for speed with the defensive risk of shortening our hand to just seven tiles? LuckyJ calls chi on [[4p]] and discards the isolated [[1s]]. While opening the hand reduces our drawing steps and defensive flexibility, keeping the triplet of [[F]] in hand provides a built-in safety net of three identical tiles. Furthermore, with both [[5pr]] and [[5sr]] in hand alongside the [[F]] triplet, this is a valuable 3-han hand rather than a cheap speed attempt. Nishiki might hesitate to call here, preferring to stay closed to avoid the risks of a short hand late in the round. However, LuckyJ correctly values the combination of high potential value and the defensive security of the [[F]] triplet, allowing us to actively chase tenpai.",
-      "prompt": "Which yakuhai triplet in our hand provides the core defensive cushion for this open hand?",
-      "answer": "[[F]] (Hatsui)"
-    },
-    "guide_ja": {
-      "read": "私たちは南3局1本場、子番で20,600点持ちの状況です。終盤に入り山には残り22枚という局面で、現在3着目の私たちは点数を引き上げに行く必要があります。ここでの課題は、手を進める速度と、手を短くすることによる守備力低下のリスクをどう天秤にかけるかです。LuckyJは上家から出た[[4p]]をチーし、孤立している[[1s]]を切りました。鳴くことで自摸の機会が減り守備の柔軟性は下がりますが、手牌に残る[[F]]（發）の暗刻が3枚の絶対的な安牌候補として機能します。さらに、手牌には[[5pr]]と[[5sr]]の赤ドラが2枚あり、[[F]]の役牌と合わせて3ハンの十分な打点が見込めるため、決して安い手での無謀な押しではありません。NAGAは、終盤に手を短くするリスクを嫌ってスルーし、門前で守備力を維持することを選択するかもしれません。しかしLuckyJは、[[F]]の暗刻という強力な安牌を抱えながら高い打点を狙えるメリットを評価し、積極的にテンパイを目指して鳴きを選択しました。",
-      "prompt": "この鳴き手において、守備の要となる手牌の中の役牌暗刻は何ですか？",
-      "answer": "[[F]]（發）"
-    }
-  },
   "point-04_1_3_94": {
     "guide": {
       "read": "We are in East 3-0, non-dealer, holding 27,300 points in second place. With the round entering the late stage and only 24 tiles remaining in the wall, how do we balance our hand's speed against the dwindling safety of the board? LuckyJ calls Pon on [[W]] from the kamicha and discards the safe [[C]] to advance the hand. Because [[C]] is already 4-visible on the board, it represents a 100% safe tile. Discarding it means completely giving up our defensive fallback in exchange for moving closer to tenpai. Since [[W]] is a guest wind for us and does not carry yaku value, opening the hand forces us onto a difficult path toward toitoi, whereas keeping the hand closed would have kept options like toitoi, chiitoitsu, or closed pinfu available. Nishiki, on the other hand, plays defensively by passing the Pon on [[W]], choosing to keep the hand closed and preserve both the safe [[C]] and the overall flexibility of the hand. While LuckyJ aggressively pushes for speed, opening the hand without a guaranteed yaku and discarding the safest tile represents a high-risk approach in the late game. Nishiki's pass avoids this panic opening, keeping defensive paths open.",
@@ -417,54 +381,6 @@
       "read": "私たちは東3局の南家（子）で、27,300点の2着目です。終盤に入り山には24枚しか残っていない状況で、手牌の進行速度と安全牌の確保をどのようにバランスさせるべきでしょうか。LuckyJは上家から出た客風の[[W]]をポンし、安全牌である[[C]]を切って手を進めました。[[C]]はすでに場に4枚見えており、100%の安全牌です。これを切ることは、テンパイに近づく代償として守備の要を完全に手放すことを意味します。[[W]]は自風でも場風でもない客風であり役牌ではないため、このポンによって役のない状態になり、手役はトイトイへ向かう難しいルートに限定されます。門前を維持していれば、トイトイ、チートイツ、あるいはメンゼンのピンフといった多様な発展ルートを残すことができました。これに対してNishikiは[[W]]のポンをスルーし、門前を維持して安全牌の[[C]]と手牌の柔軟性を残す守備的な選択をしました。LuckyJは速度を重視して積極的に仕掛けましたが、確定役がない状態で安全牌を切り飛ばすポンは、終盤においてはリスクの高い選択と言えます。Nishikiのスルーはこうした焦りのポン（パニック副露）を避け、安全な進行ルートを確保しています。",
       "prompt": "この局におけるプレイヤーの自風は何ですか？また、[[W]]はプレイヤーにとって役牌ですか？",
       "answer": "自風は南で、[[W]]は役牌ではありません（客風です）。"
-    }
-  },
-  "point-04_9_2_123": {
-    "guide": {
-      "read": "We are in East 3 as West, holding 25,000 points. With the game in the late stage and only 10 tiles remaining in the wall, how do we balance our hand's progress toward tenpai against our defensive safety? LuckyJ decides to call pon on [[E]] and discards [[F]], advancing the hand to a 1-shanten state. Since [[F]] has 3 visible on the board (1 in our hand and 2 in the discards), it is mathematically impossible to form a triplet of this tile, meaning it has no developmental value but serves as a solid safe tile. Discarding it now allows LuckyJ to maximize our shape efficiency with the [[6p]][[7p]] and [[7s]] blocks. Nishiki, on the other hand, chooses to pass the pon on [[E]]. Nishiki prioritizes defense in the late game, keeping the hand closed so that safe tiles like [[F]] remain in hand to guard against potential tenpai from the opponents. While Nishiki avoids the risk of opening the hand and reducing defensive options, LuckyJ pushes for the potential draw payment or a quick win, valuing the initiative over passive folding.",
-      "prompt": "Why is it mathematically impossible to form a triplet with the [[F]] tile in this situation?",
-      "answer": "Because there are already 3 copies of [[F]] visible on the board (1 in our hand and 2 in the discards), leaving only 1 copy remaining in the game, which is insufficient to form a 3-tile triplet."
-    },
-    "guide_ja": {
-      "read": "私たちは東3局の西家、持ち点25,000点で終盤を迎えています。山に残る牌がわずか10枚となる中、テンパイへの前進と守備の安全性をどのように天秤にかけるべきでしょうか。LuckyJは[[E]]をポンして[[F]]を切り、1シャンテンに進める決断を下しました。[[F]]は場と手牌を合わせて3枚見えており（手牌に1枚、河に2枚）、コーツ（刻子）にすることは不可能なため、手牌の発展性はありませんが安全牌として機能します。ここでの打[[F]]は、残された[[6p]][[7p]]と[[7s]]の対子を活かしてテンパイへの受け入れを最大化する選択です。これに対してNishikiは[[E]]のポンをスルーすることを選択します。終盤における他家からのリーチやテンパイに対し、手牌を短くせず[[F]]などの安全牌を手元に残して守備力を担保することを優先した判断です。Nishikiが安全策を取る一方で、LuckyJはテンパイ料やアガリの価値を追い求め、副露して手を短くするリスクを受け入れました。",
-      "prompt": "この状況で[[F]]の刻子（コーツ）を作ることが数学的に不可能なのはなぜですか？",
-      "answer": "すでに[[F]]が場に3枚見えており（自分の手牌に1枚、捨て札に2枚）、ゲーム内に残り1枚しか存在しないため、3枚必要な刻子を作ることはできないからです。"
-    }
-  },
-  "point-04_9_6_37": {
-    "guide": {
-      "read": "We are in South 3 as a non-dealer, holding 36,000 points. With a comfortable lead in first place and the game entering its final stages, how do we balance our hand's speed against the defensive value of keeping our hand closed?\n\nLuckyJ calls Pon on the prevalent wind [[S]] and discards the isolated [[1p]] to maintain a clean 1-shanten shape. Because [[1p]] is genbutsu to toimen, discarding it now offers decent safety while we establish our yaku.\n\nIn contrast, Nishiki plays defensively, passing the pon on [[S]] to keep the hand closed and preserve defensive flexibility. However, LuckyJ prioritizes speed and round-ending efficiency here. By calling the yaku tile [[S]] and discarding [[1p]], LuckyJ secures the yaku and positions the hand for a fast win, which eventually resulted in a 3900-point hand to solidify the lead.",
-      "prompt": "Why is discarding [[1p]] considered relatively safe immediately after calling Pon on [[S]]?",
-      "answer": "Because [[1p]] was already discarded by Toimen, making it genbutsu (safe tile) against them."
-    },
-    "guide_ja": {
-      "read": "私たちは南3局の子で、36,000点を持ちトップ目に立っています。この状況で、手牌のあがり速度と、門前を維持して守備力を残すことのバランスをどのように取るべきでしょうか。\n\nLuckyJは場風の役牌である[[S]]をポンし、孤立牌の[[1p]]を切って1シャンテンの形をキープします。[[1p]]はすでに対面の現物であり、この切り番での安全性を担保しつつ、手牌を進行させます。\n\nこれに対して、Nishikiは[[S]]のポンをスルーし、門前を維持して守備力を高く保つ安全策をとります。しかし、LuckyJはここではアガリへの速度と局を回す効率を重視しました。役牌の[[S]]を仕掛けて[[1p]]を切ることで、役を確定させてテンパイへの受け入れを広く構え、最終的にトップ目を確固たるものにする3900点のアガリへと繋げました。",
-      "prompt": "[[S]]をポンした直後に[[1p]]を切ることが比較的安全とされる理由は何ですか？",
-      "answer": "対面がすでに[[1p]]を切っており、対面に対して現物（安全牌）になっているためです。"
-    }
-  },
-  "point-04_7_4_63": {
-    "guide": {
-      "read": "We are in South 1, holding 18,000 points. As we sit in third place and look to catch up, how do we balance the speed of opening our hand against our remaining defensive resources? LuckyJ calls pon on [[P]] and discards the guest wind [[E]] to advance the hand to 1-shanten. Because [[E]] has three visible copies on the board (one in our hand and two on the table/discards), it is mathematically impossible to form a triplet with it, making it an excellent safety tile to release now that our yaku is locked in. Nishiki, on the other hand, chooses to pass on the [[P]] call. This choice keeps the hand closed, preserving paths like toitoi, chiitoitsu, or closed pinfu while retaining all defensive flexibility. However, LuckyJ prioritizes speed over safety here. With only 40 tiles remaining in the wall and a deficit to overcome, calling the yakuhai [[P]] and discarding the safe [[E]] is a constructive open that pushes for a quick tenpai.",
-      "prompt": "With 2 copies of [[E]] on the table and 1 in our hand, how many copies of [[E]] remain in the wall or other players' hands?",
-      "answer": "Only 1 copy remains, making it highly safe against most opponents."
-    },
-    "guide_ja": {
-      "read": "私たちは南1局、18,000点持ちの3着目で、追い上げを狙う局面を迎えています。手牌を短くしてアガリ速度を上げるべきか、それとも守備力を維持すべきか、そのバランスをどう評価するべきでしょうか。LuckyJは[[P]]をポンし、客風の[[E]]を切って一向聴（イーシャンテン）に進めます。[[E]]は場に3枚見えている（手牌に1枚、河に2枚）ため、コーツ（刻子）にすることは数学的に不可能であり、役が決まった段階で手放す安全牌として最適です。一方で、Nishikiは[[P]]のスルーを選択します。この選択は手牌を門前のまま維持し、トイトイ、チートイツ、あるいは門前平和（ピンフ）といった選択肢を残しつつ、守備的な柔軟性を最大限に確保できます。しかし、LuckyJはここでは安全度よりも速度を優先します。山に残る牌が40枚となり、点差を縮めたい状況において、役牌の[[P]]をポンして安全な[[E]]を切り出すことは、早いテンパイを目指すための建設的な仕掛けと言えます。",
-      "prompt": "場に[[E]]が2枚、自分の手牌に1枚見えている場合、残りの山や他家の手牌にある[[E]]は何枚ですか？",
-      "answer": "残り1枚のみであり、他家に対して極めて安全度の高い牌となります。"
-    }
-  },
-  "point-05_155_1_75": {
-    "guide": {
-      "read": "We are in East 2 Round 0, holding 25,000 points as the dealer. With the game in the middle stage and 33 tiles remaining in the wall, how do we balance our hand's developmental potential against the rising threat on the board? LuckyJ breaks no blocks but discards the floating [[4s]]. While the hand's shape keeps options like toitoi, chiitoitsu, or closed pinfu available in theory, it is currently slow and far from tenpai. The [[4s]] carries a high danger level against Shimocha at 0.759, and leaving it in hand could turn it into a fatal liability later. By letting it go now, LuckyJ retains [[9s]]—which is genbutsu to all three opponents—as a solid defensive shield. Nishiki, on the other hand, discards the safe [[9s]] to break the [[8s]][[9s]] shape, leaving [[8s]] floating. LuckyJ prioritizes early safety, refusing to carry dangerous floaters when the hand lacks the speed to justify the risk.",
-      "prompt": "Why is [[9s]] considered an exceptionally safe tile in this specific game state?",
-      "answer": "It is genbutsu to all three opponents, making it completely safe (0.0 danger level) to discard."
-    },
-    "guide_ja": {
-      "read": "東2局0本場、親番で持ち点25,000点の状況です。山には33枚の牌が残り、他家の進行が予想される中、手牌の進行と盤面の危険度にどのように折り合いをつけるべきでしょうか。LuckyJはブロックを崩さずに浮き牌の[[4s]]を切りました。手牌の形としてはトイトイ、チートイツ、あるいはメンゼン平和といった役の可能性を残しつつも、テンパイからは遠く遅い状態です。[[4s]]は下家に対して危険度が0.759と高いため、手牌に残し続けると後半で致命的な放銃候補になりかねません。ここで[[4s]]を手放すことで、LuckyJは他家3人に現物である極めて安全な[[9s]]を守備の盾として温存しました。一方、Nishikiは安全な[[9s]]を先に切り出し、[[8s]][[9s]]の形を崩して[[8s]]を浮かせました。LuckyJは手牌の速度が追いついていない状況で危険な浮き牌を抱え込むリスクを嫌い、早期の安全確保を優先したのです。",
-      "prompt": "この局において、なぜ[[9s]]が極めて安全な牌とみなされているのですか？",
-      "answer": "他家3人全員に対して現物であり、放銃危険度が完全に0だからです。"
     }
   },
   "point-05_362_5_77": {
@@ -479,18 +395,6 @@
       "answer": "下家に対する[[3p]]の危険度は0.796です。LuckyJは、[[3p]]が終盤に切り出せなくなるのを避けるため早期に処理し、安全な[[1s]]を守備駒として温存しました。"
     }
   },
-  "point-04_13_7_67": {
-    "guide": {
-      "read": "We are in East 4, honba 2, as the dealer (East), holding 29,700 points. With the game in its middle stage and opponents' discards showing active development, how do we balance the desire to accelerate our dealer hand against the safety risks of opening it? LuckyJ decides to call chi on the [[7p]] from the kamicha and discards the floating [[3m]], taking the hand to a 1-shanten state. Discarding the redundant [[3m]] allows us to lock in a clean 1-shanten structure with [[2m]][[2m]] as the pair and a [[2s]][[3s]] ryanmen wait. Crucially, holding the pair of [[2m]] provides a defensive cushion of two identical tiles, which is invaluable for maneuvering once our hand is open. Nishiki, on the other hand, chooses to pass the call, prioritizing staying closed to preserve maximum defensive flexibility and keep paths like closed pinfu active. However, LuckyJ prioritizes the dealer initiative, choosing to open the hand for speed while keeping the [[2m]] pair as a defensive pivot.",
-      "prompt": "What is the primary yaku that LuckyJ is aiming for after calling chi on [[7p]]?",
-      "answer": "Tanyao (All Simples)"
-    },
-    "guide_ja": {
-      "read": "東4局2本場、親番で持ち点は29,700点。中盤に入り他家の進行が見える中、親番維持のためのアガリ速度と、鳴くことによる守備力の低下をどう天秤にかけるべきでしょうか。LuckyJは上家から打たれた[[7p]]をチーし、浮き牌の[[3m]]を切って一向聴（イーシャンテン）に進めました。余剰牌である[[3m]]を切ることで、[[2m]][[2m]]を対子、[[2s]][[3s]]を両面塔子とする無駄のない一向聴に受けます。ここで[[2m]]を対子で保持することは、手牌が短くなった後でも安全度の高い同一牌を2枚確保できるという守備的な保険になります。一方でNishikiはこの[[7p]]をスルーし、門前（メンゼン）を維持することで門前平和（ピンフ）などの可能性を残しつつ、最大の守備力を担保する道を選びました。しかし、LuckyJは親の先制権を重視し、副露して手牌が短くなるリスクを受け入れつつも、[[2m]]の対子を残すことで守備の逃げ道を確保する選択をしました。",
-      "prompt": "[[7p]]をチーした後にLuckyJが目指している主な役は何ですか？",
-      "answer": "断么九（タンヤオ）"
-    }
-  },
   "point-05_964_3_85": {
     "guide": {
       "read": "We are in East 4-0 as a non-dealer, holding 16,700 points. With toimen already showing an active meld of [[2p]] and the hand still some steps away from tenpai, how do we evaluate our hand shape and safety? LuckyJ removes the floating [[8s]] by cutting [[8s]]. Because [[8s]] carries a danger level of 0.657 against kamicha but is completely safe against toimen, releasing it now prevents it from becoming a severe liability later in the hand. Nishiki, conversely, suggests discarding [[F]], breaking the solid yakuhai triplet of [[F]][[F]][[F]]. LuckyJ's choice to discard [[8s]] keeps our yaku intact while proactively managing the danger on the board, leaving us with a solid defensive fallback in the [[F]] triplet.",
@@ -501,18 +405,6 @@
       "read": "私たちは東4局の南家、持ち点16,700点で、対面がすでに[[2p]]のポンで仕掛けている状況です。中盤に入り手牌のテンパイまではまだ遠い中、手牌の形と安全度をどのように評価すべきでしょうか。LuckyJは[[8s]]を切ることで、この浮き牌を処理しました。[[8s]]は上家に対して危険度0.657と高く、対面には現物（危険度0.0）ですが、今処理しておかなければ、終盤に極めて危険な浮き牌として手牌に残るリスクがあります。一方でNishikiは、役牌の暗刻である[[F]][[F]][[F]]を崩して[[F]]を切ることを推奨しています。LuckyJは[[8s]]を先に処理することで、役牌の価値と防御力を両立させ、安全牌としての[[F]]の暗刻を残しつつスマートに危険を回避しました。",
       "prompt": "この状況において、[[8s]]が現物（安全牌）となっている相手は誰ですか？",
       "answer": "対面"
-    }
-  },
-  "point-04_7_7_57": {
-    "guide": {
-      "read": "We are in South 2, Repeats 0, holding 9,400 points as the dealer. With our score currently in the danger zone at fourth place, how do we balance our need to aggressively push for a dealer recovery with the high risks of an open hand? LuckyJ calls pon on [[F]] and discards the single [[P]]. Calling pon on the active yakuhai [[F]] secures the necessary yaku for our open hand, allowing us to pivot to a fast offensive stance. By discarding [[P]], we keep the two pairs of [[8p]] and [[3s]] intact to maximize our path towards tenpai. While this leaves our hand very short, keeping these pairs preserves our speed. Nishiki, on the other hand, might choose to pass the pon on [[F]] to keep the hand closed, prioritizing defensive flexibility over an aggressive, short-handed push. However, LuckyJ prioritizes the dealer equity and the urgent need to escape fourth place, accepting the defensive risks of an open hand for immediate speed.",
-      "prompt": "Why does LuckyJ choose to discard the active yakuhai [[P]] after calling pon on [[F]]?",
-      "answer": "To keep the two pairs of [[8p]] and [[3s]] intact, maximizing the hand's speed and acceptance toward tenpai."
-    },
-    "guide_ja": {
-      "read": "南2局0本場、親番で9,400点持ちの状況です。ラス目の危機的状況において、親番での復活を目指す積極的な押しと、副露による守備力低下のリスクをどのように天秤にかけるべきでしょうか。LuckyJは役牌の[[F]]をポンし、孤立している[[P]]を切りました。役牌である[[F]]をポンすることで役を確定させ、一気にアガリへと向かいます。[[P]]を捨てることで、[[8p]]と[[3s]]のトイツを両方残し、テンパイへの受け入れ枚数を最大化しています。手牌が短くなり守備力は下がりますが、トイツを維持することで最速のテンパイロードを確保できます。一方でNishikiは、[[F]]のポンをスルーして門前を維持し、手牌を短くすることによる守備力低下を避ける戦略をとる可能性があります。しかし、LuckyJはラス脱出のための親番の価値を重く見て、手牌が短くなるリスクを受け入れつつ、速度を最優先して前に出る選択をしました。",
-      "prompt": "LuckyJが[[F]]をポンした後に、役牌である[[P]]を切った理由は何ですか？",
-      "answer": "[[8p]]と[[3s]]のトイツを両方残すことで、テンパイへの受け入れ枚数を最大化し速度を維持するためです。"
     }
   },
   "point-05_78_5_45": {
@@ -541,38 +433,38 @@
   },
   "point-05_165_2_73": {
     "guide": {
-      "read": "We are in East 3, Honba 0 as the dealer, holding 23,500 points. With 33 tiles remaining in the wall and opponents showing defensive or developed discards in the middle stage, how do we balance our hand's developmental value against future defensive risks? LuckyJ breaks the [[3p]][[5p]] block by cutting [[3p]]. Since [[3p]] carries a moderate threat level (dangerT: 0.18), discarding it now prevents it from becoming a high-risk liability later when the table becomes more dangerous. In contrast, Nishiki plays for maximum shape efficiency, preserving the block and discarding the safer [[9p]]. However, LuckyJ prioritizes discarding the potential future liability early, keeping the genbutsu [[9p]] as a valuable safe tile to cushion against future opponent attacks.",
-      "prompt": "Which opponent has discarded [[9p]], making it a safe genbutsu tile against them?",
-      "answer": "Toimen"
+      "read": "We are in East 3 as the dealer, holding 23,500 points. With the game in the middle stage and no opponents yet declaring riichi, how do we evaluate our hand's shape against future defensive risks? LuckyJ chooses to discard [[3p]], breaking the [[3p]][[5p]] gap block rather than discarding the terminal [[9p]]. Because [[3p]] is genbutsu to kamicha, this discard is completely safe now. Conversely, Nishiki prefers discarding [[9p]] to maximize ukeire (24 vs. 19) by keeping the central [[3p]]. However, keeping [[3p]] means holding a dangerous middle tile that could become a severe liability if our hand remains slow. By discarding the simple tile [[3p]] early and keeping the terminal [[9p]], LuckyJ mitigates the risk of being forced to release a dangerous middle tile later, protecting our dealer position from future threats.",
+      "prompt": "Why is discarding [[3p]] preferred over [[9p]] from a defensive perspective in a slow hand?",
+      "answer": "Discarding the middle tile [[3p]] early eliminates a future high-risk liability, whereas keeping it could force a dangerous discard later if the hand remains slow."
     },
     "guide_ja": {
-      "read": "東3局0本場、持ち点23,500点の親番。残りツモ牌が33枚となり、他家が中盤の捨て牌を進める中、手牌の発展価値と将来的な危険度のバランスをどう取るべきでしょうか。LuckyJは[[3p]]を切って[[3p]][[5p]]のブロックを外します。[[3p]]は放銃危険度（対面に対して0.18）が中程度あり、今処理しておくことで、終盤に危険牌を抱え込むリスクを回避しています。一方、Nishikiは効率的なカン[[4p]]の受け入れを残すために、安牌である[[9p]]を切る選択をしました。しかし、LuckyJは手が遅いと判断し、対面の現物である安全な[[9p]]を手元に残して守備力を担保し、将来危険になり得る浮き牌を先に処理する方針を優先しました。",
-      "prompt": "この局において、[[9p]]をすでに捨てており、その現物としている対戦相手は誰ですか？",
-      "answer": "対面"
+      "read": "私たちは親番の東3局、23,500点持ちの状況です。中盤に入り、まだ相手からのリーチはない状況ですが、手牌の受け入れと将来の放銃リスクをどう天秤にかけるべきでしょうか。LuckyJは端牌の[[9p]]を残し、[[3p]][[5p]]のカンチャンを払う[[3p]]切りを選択しました。[[3p]]は現在上家の現物であり、今切る分には安全です。一方で、Nishikiは有効牌の多さ（受け入れ枚数24枚対19枚）を優先して[[9p]]を切り、中の[[3p]]を残す一打を推奨しています。しかし、テンパイが遅れた場合に中張牌の[[3p]]を抱え続けることは、将来的に大きな危険牌を抱え込むリスク（負の遺産）となります。LuckyJは早い段階で危険になり得る[[3p]]を処理し、比較的安全な端牌である[[9p]]を手元に残すことで、親番での手詰まりを防ぐ守備的な選択を優先しました。",
+      "prompt": "遅い手において、守備的な観点から[[9p]]よりも[[3p]]を先に切る方が好ましいのはなぜですか？",
+      "answer": "中張牌である[[3p]]を早めに処理することで将来の危険な浮き牌（負の遺産）を排除でき、残しておくと手牌が進まなかった場合に後で危険な放銃要因になるためです。"
     }
   },
   "point-05_90_6_57": {
     "guide": {
-      "read": "We are in South 2 as the dealer, holding 42,200 points in the lead. With Kamicha already having melded a triplet of South and the game in its middle stage, how do we balance our hand's offensive potential against the rising threat on the board? LuckyJ breaks the [[4p]][[4p]][[6p]] block by cutting [[6p]]. Because [[6p]] currently shows danger levels of 8% to 12% across the opponents, holding onto it presents a severe risk of it becoming an undiscardable liability later. Instead of keeping it, LuckyJ discards the [[6p]] early to preserve the safe pair of [[C]], which is genbutsu to toimen. In contrast, Nishiki chooses to discard [[C]], prioritizing maximum tile acceptance to chase tenpai. However, LuckyJ prioritizes safety and dealer flexibility. By releasing the dangerous middle tile [[6p]] now, we keep options like toitoi or chiitoitsu available while maintaining a solid defensive exit path.",
-      "prompt": "Which tile does LuckyJ discard to prevent it from becoming a high-risk liability in the later stages of the hand?",
-      "answer": "[[6p]]"
+      "read": "We are in South 2-0 as the dealer, holding 42,200 points in the lead. With kamicha already showing an active meld of South triplets, how do we balance our hand's value and flexibility against the potential dangers on the board? LuckyJ decides to break the [[2p]][[2p]][[2p]][[4p]][[4p]][[6p]] shape by discarding [[6p]]. This preemptive discard addresses a future liability. Although keeping [[6p]] offers a kanchan acceptance with [[5p]], our hand is still at 2-shanten and relatively slow. If we hold onto this middle tile, it could easily become a highly dangerous discard later in the hand if an opponent declares riichi. By letting [[6p]] go now, we retain the highly valuable and safe [[C]] pair. The Chun ([[C]]) is not only an active yakuhai that can secure our yaku but also serves as a defensive resource, being genbutsu to toimen. In contrast, Nishiki's model suggests discarding [[C]]. While this might aim to clean up honors, it drastically reduces our ukeire (down to 16 compared to LuckyJ's 25) and strips us of both a potential yaku and a vital safety net. LuckyJ prioritizes cleaning up future middle-tile liabilities early while keeping the double-duty Chun pair, maintaining high ukeire and preserving defensive pivots as the dealer.",
+      "prompt": "What is the primary strategic benefit of discarding the middle tile [[6p]] over the honor pair [[C]] in this hand state?",
+      "answer": "Discarding [[6p]] preemptively removes a future dangerous floating tile, maintains a higher ukeire of 25 (vs. 16), and preserves the [[C]] pair for both yakuhai value and defensive safety."
     },
     "guide_ja": {
-      "read": "私たちは南2局の親番で、42,200点持ちのトップ目に立っています。上家がすでに役牌である南のポンをしており、中盤に差し掛かる中、手牌の価値と場に見える危険度をどのようにバランスさせるべきでしょうか。LuckyJは[[6p]]を打つことで[[4p]][[4p]][[6p]]のブロックを外します。[[6p]]の危険度は各他家に対して8%〜12%と中程度であり、このまま抱え続けると後半に勝負できない危険牌になりかねません。そのため、LuckyJは早い段階で[[6p]]を処理し、対面に対して現物である安全な役牌の[[C]]のトイツを残す選択をしました。これに対し、Nishikiは[[C]]を切り飛ばしてテンパイへの受け入れ枚数を最大に維持する選択をします。しかし、LuckyJは守備力と親番での柔軟性を優先しました。危険な中張牌である[[6p]]を今リリースしておくことで、トイトイやチートイツといったルートへの移行を視野に入れつつ、確実な安全牌を抱えて守備的な逃げ道を確保しています。",
-      "prompt": "中盤以降に危険な浮き牌になるリスクを避けるため、LuckyJがリリースした牌はどれですか？",
-      "answer": "[[6p]]"
+      "read": "私たちは南2局の親番、42,200点持ちのトップ目に立っています。上家がすでに南のポンを入れている局面で、手牌の価値や柔軟性と、場に潜む危険のバランスをどのように取るべきでしょうか。LuckyJは [[2p]][[2p]][[2p]][[4p]][[4p]][[6p]] の形から [[6p]] を切り出しました。この先を見据えた一打は、将来の危険要因となる浮き牌を先処理するものです。[[6p]] を残せば [[5p]] のカンチャン受けが残りますが、手牌はまだ2シャンテンと遅い段階です。この中張牌を持ち続けると、他家からリーチが入った際に切りづらい危険な浮き牌になりかねません。今 [[6p]] を放り出すことで、役牌であり安全度の高い [[C]]（中）の対子を手元に残すことができます。中（[[C]]）は役牌としての価値があるだけでなく、対面に対して現物であり、守備的なリソースとしても極めて優秀です。一方で、Nishikiは [[C]] 切りを推奨しています。しかし、この選択は有効受け入れ枚数を25枚から16枚へと大きく減らしてしまい、さらには貴重な役の種と安全牌の双方を同時に失うことになります。LuckyJは、将来の危険要因となる中張牌を早めに処理しつつ、攻守に使える中の対子を残すルートを選択しました。これにより、高い受け入れ枚数を維持しながら、親番での柔軟な押し引きが可能になります。",
+      "prompt": "この手牌において、役牌の対子である [[C]] ではなく中張牌の [[6p]] を切る最大の戦略的メリットは何ですか？",
+      "answer": "将来危険になり得る浮き牌を先処理しつつ、受け入れ枚数を25枚（[[C]] 切りは16枚）に高く維持し、役牌かつ安全牌としても機能する [[C]] の対子を手元に残せる点です。"
     }
   },
   "point-05_105_8_45": {
     "guide": {
-      "read": "We are in South 3, Honba 1 as a non-dealer, holding 19,300 points. With toimen already showing an active meld of the Green Dragon [[F]] and the game entering the middle stage, how do we balance our hand's efficiency against the danger of holding onto middle tiles? LuckyJ breaks the [[4m]][[5m]][[5m]] block by cutting [[5m]]. Because [[5m]] carries a high danger level of 0.116 against kamicha, keeping it in a slow hand poses a major risk of dealing in later. Discarding it now proactively eliminates a future liability before the board becomes too dangerous to release it. Nishiki, on the other hand, plays to maintain the hand's shape by cutting [[9s]] to keep the [[5m]] pair intact. However, [[9s]] is a safe terminal tile that is genbutsu to shimocha. LuckyJ values holding onto this safe tile for future defense, opting to release the dangerous [[5m]] early instead of keeping it as a high-risk floater.",
-      "prompt": "Which tile does LuckyJ discard to eliminate a future dangerous middle tile while keeping a safer terminal tile?",
-      "answer": "[[5m]]"
+      "read": "We are in South 3, Honba 1, holding 19,300 points. With an opponent already showing an active meld of Red Dragon, how do we balance our hand's progression against the danger of carrying floating middle tiles? LuckyJ breaks the [[4m]][[5m]][[5m]] block by discarding [[5m]]. Since [[5m]] is a dangerous simple tile (dangerK of 0.116 against kamicha), holding it in a slower 2-shanten hand represents a severe future liability if the table heats up. In contrast, Nishiki prefers to discard the terminal [[9s]], advancing the hand to 1-shanten but holding the riskier middle tiles. LuckyJ chooses to cut the future liability [[5m]] immediately, prioritizing safety and clean hand structure over nominal shape speed.",
+      "prompt": "Which opponent's river makes [[9s]] a genbutsu (safe tile) in this situation?",
+      "answer": "Shimocha"
     },
     "guide_ja": {
-      "read": "私たちは南3局1本場の非親番で、持ち点19,300点を抱えています。対面がすでに役牌である發 [[F]] のポンをさらしており、局が中盤に入る中、手牌の進展効率と中張牌を抱える危険性のバランスをどのように取るべきでしょうか。LuckyJは [[5m]] を切り飛ばすことで [[4m]][[5m]][[5m]] のブロックを崩しました。[[5m]] は上家に対して0.116という高い危険度を抱えており、進展の遅い手牌で持ち続けることは、終盤の放銃リスクを著しく高めます。ここで先打ちしておくことで、危険すぎて切れなくなる前に将来の負債を処理しています。一方でNishikiは、[[5m]] の対子を維持して手広さを残すために [[9s]] を切りました。しかし、[[9s]] は下家の現物である安全な端牌です。LuckyJは将来の守備用のためにこの安全牌を手元に残し、危険な浮き牌である [[5m]] を早期に処理する選択をとりました。",
-      "prompt": "安全な端牌を手元に残し、将来の危険な中張牌を先打ちするためにLuckyJが打牌した牌は何ですか？",
-      "answer": "[[5m]]"
+      "read": "私たちは南3局1本場、持ち点19,300点の2着目です。対面が役牌の中をポンして警戒が必要な中、手の進め方と中張牌を抱えるリスクをどのように天秤にかければよいでしょうか。LuckyJは[[4m]][[5m]][[5m]]のブロックから[[5m]]を切って整理します。[[5m]]は上家に対して危険度が高い中張牌であり、2シャンテンの遅い手でこれを抱え続けることは、将来的に大きな放銃リスク（未来の足枷）になり得ます。一方で、Nishikiは1シャンテンを維持するために端牌の[[9s]]を切る選択をしました。しかし、LuckyJは目先の受入れ枚数よりも、将来の危険因子となる[[5m]]を先処理して安全性を確保する道を選びました。",
+      "prompt": "この状況で[[9s]]が現物（安全牌）となっているのは、どの対戦相手の河によるものですか？",
+      "answer": "下家"
     }
   },
   "point-05_41_0_63": {
@@ -731,66 +623,6 @@
       "answer": "すでに場に[[C]]が3枚見えており、自分の手牌の1枚と合わせて4枚すべてが見えているため、相手が通常の多面待ちなどで利用することが不可能な状態だからです。"
     }
   },
-  "point-07_1_9_65": {
-    "guide": {
-      "read": "We are in South 4-1, holding 31,900 points as the dealer. With the game in the middle stage and kamicha discarding the prevalent wind [[S]], how do we balance our hand's tempo against the flexibility of keeping it closed? LuckyJ calls pon on [[S]] and discards the isolated yaku tile [[F]]. This call immediately secures the prevalent wind yaku for our dealer hand, accelerating us toward tenpai while utilizing our red dora tiles ([[5pr]] and [[5sr]]) to maintain high dealer value. Nishiki, on the other hand, passes the call to keep the hand closed, hoping to preserve defensive options or draw into a closed pinfu path. However, LuckyJ prioritizes tempo here; calling pon converts our shapes into an active threat, putting pressure on the opponents and keeping our dealer continuation alive.",
-      "prompt": "Why is the tile [[S]] considered a yakuhai (yaku tile) for the player in this round?",
-      "answer": "Because the prevalent wind of the round is South."
-    },
-    "guide_ja": {
-      "read": "私たちは南4局1本場、持ち点31,900点の親番を迎えています。中盤に入り、上家から場風である[[S]]が打ち出された局面で、手牌の速度と門前維持の柔軟性をどのように評価すべきでしょうか。LuckyJは[[S]]をポンし、孤立している役牌の[[F]]を切る選択をしました。この仕掛けによって場風の「南」を即座に確定させ、赤ドラ（[[5pr]]、[[5sr]]）を活かした高打点のテンパイに向けて手を進めます。一方、Nishikiはスルーを選択し、門前を維持することで守備力を残しつつ、門前ピンフなどのルートを目指します。しかし、LuckyJはここでテンポを最優先しました。ポンによって手牌をスピードアップさせ、他家にプレッシャーをかけつつ親番を維持する戦略的な鳴きです。",
-      "prompt": "この局において、なぜ[[S]]（南）がプレイヤーにとって役牌となるのですか？",
-      "answer": "場風が南（南場）だからです。"
-    }
-  },
-  "point-07_3_3_105": {
-    "guide": {
-      "read": "We are in East 4-0 as the dealer, holding 23,000 points. With the game reaching the late stage and only 18 tiles remaining in the wall, how do we balance our hand's developmental value against the urgency of maintaining our dealership? LuckyJ calls pon on the kamicha's [[2s]] and discards [[6p]] to transition into an active 1-shanten state. Since we hold a hand of all simples (Tanyao) including the red [[5pr]], this call secures a viable 2-han path while maximizing our speed to tenpai before the round ends. Nishiki prefers to pass, keeping the hand closed to chase a higher-value riichi. However, LuckyJ prioritizes dealer equity and the ticking clock, opting for the immediate speed of the open tanyao to ensure we do not lose the dealership by going noten.",
-      "prompt": "Why is calling pon on [[2s]] preferred in this situation over keeping the hand closed?",
-      "answer": "With only 18 tiles left in the wall, the priority is to speed up the hand to secure tenpai or a win to maintain the dealership, rather than chasing a slow closed hand."
-    },
-    "guide_ja": {
-      "read": "東4局0本場、持ち点23,000点の親番。山に残る牌が18枚と終盤に差し掛かる中、親番維持の緊急性と手の打点をどのように天秤にかけるべきでしょうか。LuckyJは上家から打たれた[[2s]]をポンし、[[6p]]を切って1シャンテンに進めました。手牌は赤[[5pr]]を含むタンヤオ確定の形であり、この鳴きによってテンパイ速度を最大化しつつ、2ハンの仕掛け手としてアガリを見ていくことができます。一方、Nishikiはスルーを選択し、門前での高得点リーチを目指して手を閉じたままにします。しかし、LuckyJは親番維持の価値と残りツモ回数の少なさを重視し、ノーテンで親流れになるリスクを避けるために、スピード重視のタンヤオ仕掛けを選択しました。",
-      "prompt": "この状況において、門前を維持するよりも[[2s]]をポンすることが推奨される理由は何ですか？",
-      "answer": "残りツモ牌が18枚と終盤であるため、遅い門前手を追うよりも、テンパイ速度を上げて親番を維持すること（またはアガリきること）を最優先するためです。"
-    }
-  },
-  "point-07_9_2_123": {
-    "guide": {
-      "read": "We are in East 3, Flat 0, holding 25,000 points. With only 10 tiles remaining in the wall, how do we value our tempo and defensive posture in the late stage of the round? LuckyJ calls pon on the prevalent wind [[E]] from the kamicha and discards [[F]] to transition into tenpai. Since [[E]] is an active yakuhai, this call immediately secures our yaku and sets up a ryanmen wait on [[5p]]/[[8p]] with our [[6p]][[7p]] shape. Nishiki prefers to pass the call, maintaining a closed hand to prioritize defensive options in the final draws. However, LuckyJ recognizes the tempo value here; with [[F]] already having 3 visible copies on the board, discarding it carries minimal risk, allowing us to actively contest the tenpai payments or steal a late win rather than folding passively.",
-      "prompt": "Which active yakuhai tile is used to secure the yaku for the open hand in this scenario?",
-      "answer": "[[E]]"
-    },
-    "guide_ja": {
-      "read": "私たちは東3局0本場、持ち点25,000点の2位で、残りツモ牌が10枚という終盤を迎えています。この状況で、手の速度と守備のバランスをどのように評価すべきでしょうか。LuckyJは上家から打たれた場風の[[E]]をポンし、[[F]]を切ってテンパイへ進みます。[[E]]は役牌であるため、このポンによって即座に役が確定し、[[6p]][[7p]]の形から[[5p]]・[[8p]]の両面待ちテンパイを組むことができます。一方、Nishikiはポンを見送り、門前を維持して終盤の安全牌を抱え直す守備的な選択をします。しかし、LuckyJはここで仕掛ける目的を見出しています。[[F]]はすでに場に3枚見えており、これを切り出すリスクは極めて低いため、テンパイ料の確保や終盤での和了を目指して積極的に前に出る判断を下しました。",
-      "prompt": "この局において、ポンによって役を確定させるために使用された役牌は何ですか？",
-      "answer": "[[E]]"
-    }
-  },
-  "point-07_6_0_113": {
-    "guide": {
-      "read": "We are in East 1 as South, holding 25,000 points. With the game entering the late stage and only 17 tiles remaining in the wall, how do we balance our hand's progression against the danger of the opponents' active melds? LuckyJ calls pon on the White Dragon [[P]] from the toimen and discards [[3p]], breaking the [[3p]] pair to streamline the hand into a 1-shanten shape. With this call, the hand secures a guaranteed yaku and sets up a clean [[2p]][[3p]] ryanmen wait. Nishiki plays defensively here, choosing to pass the pon on [[P]] to keep the hand closed and maintain defensive flexibility. While passing keeps options like toitoi, chiitoitsu, or closed pinfu available in theory, it sacrifices crucial speed. However, LuckyJ prioritizes tempo and the drive to secure tenpai or win in the final frames. Passing this late-stage opportunity would make it nearly impossible to contest the hand, so making the active call gives the hand a clear purpose and a path to victory.",
-      "prompt": "What is the remaining number of tiles in the wall when LuckyJ decides to call pon on [[P]]?",
-      "answer": "17 tiles"
-    },
-    "guide_ja": {
-      "read": "東1局の南家、持ち点は25,000点。終盤に入り山に残るツモ牌は17枚、他家が副露を進めている状況で、手牌の進行速度と放銃リスクのバランスをどう取るべきでしょうか。LuckyJは対面から出た白の [[P]] をポンし、[[3p]] を切ってトイツをほぐしました。この仕掛けにより、白の役を確定させつつ、[[2p]][[3p]] の両面待ちを残した一シャンテンに構えます。対してNishikiは守備的に構え、ポンをスルーして手牌を門前に維持し、安全牌の確保や守備の柔軟性を優先する選択を取ります。スルーすることでトイトイやチートイツ、あるいは門前ピンフといった役の天秤を維持できますが、終盤の速度としては致命的です。しかし、LuckyJはテンパイ奪取に向けた速度とアガリへの執念を重視します。この終盤で鳴きスルーを選択することはノーテン終了やアガリの放棄に直結するため、目的を持ったポンで手を進めることが最善と判断しました。",
-      "prompt": "LuckyJが [[P]] をポンすることを判断した時点で、壁に残っている牌数は何枚ですか？",
-      "answer": "17枚"
-    }
-  },
-  "point-07_7_4_63": {
-    "guide": {
-      "read": "We are in South 1 as a non-dealer, holding 18,000 points in 3rd place. With the middle stage underway and only 40 tiles remaining in the wall, how do we evaluate our hand speed against the danger of falling further behind? LuckyJ calls Pon on the [[P]] discarded by Kamicha and discards the guest wind [[E]] to advance the hand. By calling, LuckyJ secures the yaku triplet of [[P]] and discards [[E]], which is highly safe since three copies are already visible. Nishiki, on the other hand, prefers to pass the call, keeping the hand closed to maintain defensive flexibility and avoid locking into an exposed shape. However, LuckyJ prioritizes tempo and table control here, recognizing that opening the hand to contest the board is necessary to prevent the opponents from easily developing their hands.",
-      "prompt": "Which guest wind tile is discarded by LuckyJ after calling Pon to advance the hand?",
-      "answer": "[[E]]"
-    },
-    "guide_ja": {
-      "read": "私たちは南1局の南家で、持ち点は18,000点の3位です。中盤に入り、山に残る牌も40枚となる中、これ以上点差を広げられないために、手牌の速度と他家の脅威をどのように評価すべきでしょうか。LuckyJは上家から打たれた[[P]]をポンし、客風である[[E]]を切って一歩前進させます。この仕掛けによって役牌である[[P]]の刻子を確定させつつ、すでに3枚見えていて安全度の高い[[E]]を手放します。一方でNishikiはスルーを選択し、門前を維持することで守備的な柔軟性を残し、仕掛けによって手が安く安易な形に固定されるのを避けようとします。しかし、LuckyJはここでは速度と局の主導権を優先し、他家に自由に手を進めさせないために仕掛けて局を動かす価値があると判断しています。",
-      "prompt": "LuckyJがポンした後に、手を進めるために打牌した客風牌は何ですか？",
-      "answer": "[[E]]"
-    }
-  },
   "point-07_13_1_85": {
     "guide": {
       "read": "We are in East 1, Honba 1, holding 23,000 points. With 28 tiles remaining in the wall and our position at fourth place, how do we value our hand's tempo and progression? LuckyJ calls pon on [[8p]] and discards [[6s]], breaking the [[6s]][[8s]] shape. Because this call immediately secures our second triplet and shifts us into a fast 1-shanten, it directly contests the board using our [[C]] pair and the red dora [[5mr]] for value. In contrast, Nishiki passes this tile to keep the hand closed, aiming to preserve options like closed pinfu or a closed riichi. However, LuckyJ prioritizes tempo to escape fourth place. Opening the hand with a purpose prevents us from falling behind in speed, allowing us to actively pressure the opponents.",
@@ -801,42 +633,6 @@
       "read": "私たちは東1局1本場、持ち点23,000点の4着目にいます。残りツモ牌が28枚となる中盤において、手牌の進行速度と価値をどのように評価すべきでしょうか。LuckyJは[[8p]]をポンして[[6s]]を切り、[[6s]][[8s]]の受け入れを嫌いました。この鳴きによって[[8p]]の刻子が確定し、役牌である[[C]]のトイツと赤ドラの[[5mr]]を活用した価値のある一向聴へと手牌を大きく加速させます。一方で、Nishikiはスルーを選択して門前を維持し、メンゼンのピンフやリーチといったルートを残そうとします。しかし、LuckyJは4着順から抜け出すための速度を優先しました。目的を持った仕掛けを行うことで、手牌の遅れを防ぎ、他家に積極的にプレッシャーをかけることができます。",
       "prompt": "この局におけるプレイヤーの自風は何ですか？また、それはプレイヤーにとって役牌になりますか？",
       "answer": "自風は北であり、はい、プレイヤーにとって役牌になります。"
-    }
-  },
-  "point-07_18_4_103": {
-    "guide": {
-      "read": "We are in East 3, Round 0, playing as the dealer, holding 25,900 points. With the game entering the late stage and only 20 tiles remaining in the wall, how do we balance our hand's speed against the threat of a scoreless draw? LuckyJ decides to call pon on the [[4p]] from shimocha and discards [[3p]]. This opens the hand, breaking the [[3p]][[4p]][[4p]] shape to advance to a 1-shanten state waiting on the [[7p]] kanchan. Because we are late in the round and hold a dealer hand, prioritizing the tenpai-ryou or a renchan is crucial. Even though the resulting open hand currently lacks a clear yaku, securing the tenpai before the wall runs out preserves our draw equity. Nishiki, on the other hand, chooses to pass on the [[4p]] to keep the hand closed, hoping to build a higher-value hand or retain defensive flexibility. However, LuckyJ prioritizes the immediate tempo and dealer continuation over a slow, closed development that might fail to reach tenpai in time.",
-      "prompt": "Why does calling pon on [[4p]] in the late stage make sense for the dealer despite the hand lacking a clear yaku?",
-      "answer": "To secure tenpai-ryou (draw equity) and maintain the dealer turn (renchan) before the wall runs out."
-    },
-    "guide_ja": {
-      "read": "東3局0本場、私たちは親番で25,900点を持っています。終盤に入り、残りツモ牌が20枚となる中、流局時のノーテン罰符回避や親番維持と、手役の構築をどのように天秤にかけるべきでしょうか。LuckyJは下家から打たれた[[4p]]をポンし、[[3p]]を切る選択をしました。[[3p]][[4p]][[4p]]の形から仕掛けて崩すことで、[[7p]]のカンチャン待ちの1シャンテンへと進めます。この進行は役なしのテンパイに向かうことになりますが、局の終盤かつ親番であることを考慮すると、テンパイ料による加点や連荘（親の継続）の価値は極めて高くなります。流局時のテンパイ維持という「テンポ（速度）」を最優先した一手です。一方で、Nishikiは[[4p]]をスルーし、門前（メンゼン）を維持して高得点の手への移行、あるいは守備的な柔軟性を残す選択をします。しかし、LuckyJは残り少ない巡目で手遅れになるリスクを避け、親としての価値を守るために速度とテンパイ維持を優先したのです。",
-      "prompt": "役なしの仕掛けになるにもかかわらず、終盤に親が[[4p]]をポンする理由は何ですか？",
-      "answer": "流局時のテンパイ料を確保し、親番を維持（連荘）するため。"
-    }
-  },
-  "point-07_15_0_65": {
-    "guide": {
-      "read": "We are in East 1-0 as South, holding 25,000 points. With a hand heavy in manzu tiles and wind pairs, how do we balance speed against the risk of opening our hand for a guest wind? LuckyJ calls pon on [[N]] and discards [[P]] to advance our shape. Since [[P]] has three visible copies between our hand and the board, it is a highly safe discard that cleans up our shape without exposing us to immediate danger. While an engine like Nishiki might pass this call to remain closed and preserve defensive options, LuckyJ prioritizes tempo and hand value here. Calling [[N]] secures a crucial block and firmly commits us to a half-flush (Honitsu) path, turning a sluggish hand into a threat that ultimately wins 4 han.",
-      "prompt": "What yaku does LuckyJ target by calling [[N]] and discarding [[P]] in this situation?",
-      "answer": "Half Flush (Honitsu)"
-    },
-    "guide_ja": {
-      "read": "私たちは東1局0本場、南家で25,000点を持ち、2位につけています。萬子と字牌の対子が目立つ手牌で、客風のポンによる速度向上と手牌の安さをどう天秤にかけるべきでしょうか。LuckyJは[[N]]をポンし、[[P]]を切って手を進めました。[[P]]は手牌と場を合わせて3枚見えており、極めて安全な牌であるため、このタイミングで切ることで安全度を保ちながら手牌をスリム化できます。Nishikiのようなエンジンがスルーを選択して門前を維持し、守備力を残そうとするのに対し、LuckyJはテンポと打点を優先します。[[N]]のポンによって必要なブロックを確定させ、混一色（ホンイツ）のルートを明確にすることで、重い手牌を最終的に4ハンの満貫へと仕上げることに成功しました。",
-      "prompt": "この状況でLuckyJが[[N]]をポンし、[[P]]を切ることで目指している役は何ですか？",
-      "answer": "混一色（ホンイツ）"
-    }
-  },
-  "point-07_18_4_107": {
-    "guide": {
-      "read": "We are in East 3-0, holding 25,900 points as the dealer. With the game entering the late stage and only 19 tiles remaining in the wall, how do we balance our hand's development against the rapidly approaching end of the round? LuckyJ calls pon on [[3s]] from the shimocha and discards [[6p]] to secure an immediate tenpai on an [[8p]] tanki wait. As the dealer, securing tenpai is crucial for maintaining our dealership or securing points from the noten-bapu. In contrast, Nishiki passes the call, choosing to remain 1-shanten to seek a better wait like a two-sided wait or a cleaner sequence. However, LuckyJ prioritizes immediate draw equity and dealer renchan pressure over a slow, ideal shape that may never arrive before the wall runs out.",
-      "prompt": "What is the remaining tile count in the wall during this decision, and why does it make securing tenpai urgent for the dealer?",
-      "answer": "19 tiles. With so few tiles left, the round is near its end, making tenpai crucial for securing the dealer's renchan or earning points from the noten-bapu."
-    },
-    "guide_ja": {
-      "read": "東3局0本場、親番で持ち点は25,900点。終盤に入り山には残り19枚となる中、局の収束に向けて手牌の価値とテンパイ速度をどう天秤にかけるべきでしょうか。LuckyJは下家から打たれた[[3s]]をポンし、[[6p]]を切って[[8p]]単騎のテンパイを即座に入れます。親番において、ノーテン罰符の授受や連荘権の維持のためにテンパイを取ることは極めて重要です。これに対してNishikiはスルーを選択し、[[7p]]引きなどによる好形変化を期待して1シャンテンを維持します。しかしLuckyJは、残り少ないツモ数で理想の形を追うよりも、流局時のテンパイ料や親の連荘という確実な期待値を最優先し、スピード重視のポンを選択しました。",
-      "prompt": "この判断時点で山に残っている牌は何枚ですか？また、なぜ親にとってテンパイ獲得が急務となるのですか？",
-      "answer": "19枚。残りツモ数が非常に少ないため局の終盤であり、ノーテン罰符の獲得や親の連荘を確定させるためにテンパイが不可欠だからです。"
     }
   },
   "point-08_702_2_9": {
@@ -1705,14 +1501,14 @@
   },
   "point-15_184_8_67": {
     "guide": {
-      "read": "We are in South 3, holding 21,300 points in third place. With two opponents already showing active melds, how do we balance our hand's value against the defensive utility of our tiles? LuckyJ breaks the [[2s]][[2s]][[3s]][[4s]][[4s]] block by cutting [[2s]]. Because [[2s]] is extremely safe against all opponents (danger levels of 0.021 against Kamicha, 0.069 against Toimen, and 0.037 against Shimocha), it functions as a highly reliable safety tile. However, holding onto it forces us to discard the valuable red [[5m]] (dora) to maintain the shape. Nishiki preserves that block by cutting [[5m]] to declare an immediate tenpai, prioritizing speed over value. However, LuckyJ prioritizes keeping the red [[5m]] to preserve hand value, recognizing that keeping [[2s]] as a safety buffer or shape piece is no longer worth sacrificing our offensive value when we are behind. Discarding [[2s]] simplifies our shape to [[2s]][[3s]][[4s]] and the [[4s]][[4s]] pair, keeping options like toitoi, chiitoitsu, or closed pinfu active while maintaining the crucial dora value needed to mount a comeback.",
-      "prompt": "Which tile does LuckyJ discard to preserve the red [[5m]] and keep the potential for a higher-value hand?",
-      "answer": "[[2s]]"
+      "read": "We are in South 3, 2-honba as the North player, holding 21,300 points. With two opponents already showing active melds, how do we balance our hand's value and shape against the mounting threats? LuckyJ breaks the [[2s]][[2s]][[3s]][[4s]][[4s]] block by cutting [[2s]]. This choice directly addresses the concept of stale safety. The [[2s]] is suji to Kamicha, but it offers zero protection against the live threats from Shimocha's open pinzu meld or Toimen's Chun triplet. Nishiki discards [[5m]] to maximize ukeire to 25, valuing speed and shape. However, LuckyJ recognizes that the safety of [[2s]] has expired against the players who actually pose a threat. By discarding [[2s]] now, LuckyJ sheds a tile of false safety while keeping the red [[5m]] for potential value, refusing to hoard a tile that no longer protects against the live danger.",
+      "prompt": "Which opponent is the tile [[2s]] safe against (as suji), and why does this safety lose its value in the current situation?",
+      "answer": "It is safe only against Kamicha (who has no open melds), but it offers no protection against the active threats of Shimocha and Toimen who have already made open calls."
     },
     "guide_ja": {
-      "read": "私たちは南3局、21,300点持ちの3着目です。すでに2軒の仕掛けが入っている中、手牌の打点価値と安全牌のキープをどのように天秤にかけるべきでしょうか。LuckyJは[[2s]]を切ることで、[[2s]][[2s]][[3s]][[4s]][[4s]]のブロックを崩します。[[2s]]は上家に対して0.021、対面に対して0.069、下家に対して0.037と非常に安全度が高く、優秀な安全牌として機能します。しかし、これを手元に残して赤[[5m]]（ドラ）を切ることは、手牌の打点価値を大きく損なうことになります。Nishikiは[[5m]]を切ることでブロックを維持し、即座にテンパイに取る選択をします。しかし、LuckyJはここでの安くて遠いテンパイを拒否します。安全牌としての役割が薄れた[[2s]]を切り飛ばして赤[[5m]]を残すことで、トイトイ、チートイツ、あるいはメンゼンの平和（ピンフ）といった役の天秤を維持しつつ、逆転に必要なドラの価値を最大限に活かす道を選びました。",
-      "prompt": "LuckyJが赤[[5m]]を残し、高打点の可能性を維持するために打牌した牌は何ですか？",
-      "answer": "[[2s]]"
+      "read": "私たちは南3局2本場、北家で21,300点を持っています。2人の他家がすでに副露を入れている状況下で、手牌の価値や形と、迫り来る脅威のバランスをどのように取るべきでしょうか。LuckyJは[[2s]]を切ることで、[[2s]][[2s]][[3s]][[4s]][[4s]]のブロックを崩しました。この選択は「安全牌の期限切れ」という概念をまさに体現しています。[[2s]]は上家に対してスジですが、チーしている下家や中をポンしている対面の現物ではなく、実際の脅威に対しては全く安全ではありません。Nishikiは[[5m]]を切ることで有効牌を25枚に最大化し、速度と形を維持しようとします。しかしLuckyJは、実際に脅威となっている他家に対して[[2s]]の安全度がすでに失われている（期限切れである）ことを見抜いています。ここで[[2s]]を処理することで、実際の危険から身を守ることのない「見せかけの安全牌」を整理しつつ、赤[[5m]]を残して打点の種をキープしたのです。",
+      "prompt": "[[2s]]はどの他家に対して安全（スジ）であり、なぜこの状況においてその安全性の価値が失われているのでしょうか？",
+      "answer": "門前である上家に対してのみスジとして安全ですが、すでに副露している下家や対面という実際の脅威に対しては安全ではないためです。"
     }
   },
   "point-15_386_2_59": {
@@ -1753,13 +1549,13 @@
   },
   "point-15_44_2_51": {
     "guide": {
-      "read": "We are in East 2 as a non-dealer, holding 23,900 points. With shimocha already showing an active meld of [[8s]] triplets and the game in the middle stage, how do we balance our hand's development against the live danger on the board? LuckyJ breaks the [[2s]][[3s]] block by cutting [[3s]]. While [[3s]] carries a danger level of 0.115 against shimocha, holding onto it as a safety precaution is no longer viable because its safety has expired. Keeping it only damages our hand's ability to transition into valuable paths like toitoi, chiitoitsu, or closed pinfu. Nishiki preserves that block by cutting [[7p]], but this leaves us holding a tile that will only become more dangerous to discard as the round progresses. LuckyJ's proactive discard cleans up the hand shape while avoiding being choked by high-risk tiles later.",
-      "prompt": "Which opponent has melded a triplet of [[8s]], making souzu tiles increasingly dangerous to hold?",
-      "answer": "Shimocha (the player on the right)"
+      "read": "We are in East 2, holding 23,900 points. With Shimocha already showing an active meld of [[8s]], how do we evaluate the safety of our holding tiles against the active threat? LuckyJ breaks the [[2s]][[3s]] block by cutting [[3s]]. Because [[3s]] is only suji to Toimen, who has no open melds, it does not protect against the live threat from Shimocha, carrying a high danger metric of 0.115. Nishiki prefers discarding [[7p]] to hoard [[3s]] as a safe tile. However, LuckyJ recognizes that the safety of [[3s]] has expired because it does not answer the actual danger on the board. Holding onto it only compromises our hand's real route. Ultimately, LuckyJ rejects passive hoarding, choosing to release the stale safe tile [[3s]] to preserve the pinzu shapes.",
+      "prompt": "Which opponent has an active open meld in this hand, making them the primary threat?",
+      "answer": "Shimocha"
     },
     "guide_ja": {
-      "read": "東2局、子番で23,900点持ちの状況です。下家がすでに[[8s]]のポンをして中盤に入っている中、盤面の生牌の危険度と手牌の価値をどのように天秤にかけるべきでしょうか。LuckyJは[[3s]]を切って[[2s]][[3s]]のブロックを外します。[[3s]]の下家に対する危険度は0.115と高めですが、かつて安全だったかもしれない牌を抱え続けることは、トイトイ、チートイツ、あるいはメンゼンのピンフといった手役への有効なルートを狭めることになり、その安全性自体もすでに期限切れとなっています。対照的に、Nishikiは[[7p]]を切ってソーズのブロックを維持しようとしますが、これでは局が進むにつれてさらに切りづらくなる危険牌を抱え込むことになります。LuckyJは、危険牌を先処理することで手牌の進行をすっきりさせつつ、後半に身動きが取れなくなるリスクを回避しています。",
-      "prompt": "どの対戦相手が[[8s]]をポンしており、ソーズを抱える危険度を高めていますか？",
+      "read": "私たちは東2局、持ち点23,900点の状況で、下家がすでに[[8s]]をポンして動いています。このアクティブな脅威に対して、手牌の中の安全度をどのように評価すべきでしょうか。LuckyJは[[3s]]を切って[[2s]][[3s]]のブロックを外します。[[3s]]は対面に対しては筋ですが、仕掛けている下家に対しては安全ではなく、放銃危険度は0.115と高くなっています。Nishikiは[[3s]]を安全牌として抱えるために[[7p]]の打牌を選択しますが、LuckyJは[[3s]]の安全牌としての価値が、現在の具体的な脅威に対応していないためすでに失われている（期限切れである）と判断しました。使えない安全牌を抱え込んでピンズの形を崩すのではなく、LuckyJは[[3s]]を切り出していきます。",
+      "prompt": "この局で仕掛けを入れており、主な脅威となっているのはどの他家ですか？",
       "answer": "下家"
     }
   },
@@ -1789,26 +1585,26 @@
   },
   "point-15_180_3_31": {
     "guide": {
-      "read": "We are in East 4 as South, holding 24,000 points. With Kamicha already presenting an active open meld of [[P]], how do we balance our hand's value and speed against the threat on the board? LuckyJ breaks the [[1m]][[3m]][[3m]][[4m]][[6m]] block by cutting [[1m]]. Since three copies of [[1m]] are already visible on the board (one in our hand and two on the table/discards), it is mathematically impossible to form a triplet with it, and its shape utility is minimal. However, [[1m]] is highly safe, being genbutsu to both Shimocha and Toimen. Nishiki preserves that shape by cutting [[5s]] to maintain a safer posture. While Nishiki's path avoids immediate risk, it stalls the development of our hand by discarding the active [[5s]]. Since we are currently in third place and need to recover points, hoarding this safe tile at the cost of hand speed is counterproductive. Discarding the expired safe tile [[1m]] keeps options like toitoi, chiitoitsu, or closed pinfu available by allowing the [[5s]] to seek partner tiles.",
-      "prompt": "Why is it mathematically impossible to form a triplet of [[1m]] in this scenario?",
-      "answer": "Because three copies of [[1m]] are already visible (one in the player's hand and two in the discards), leaving only one copy remaining in the game."
+      "read": "We are in East 4, holding 24,000 points. With kamicha already showing an active meld of [[P]], how do we balance our hand's development against this live threat? LuckyJ breaks the [[1m]][[3m]][[3m]][[4m]][[6m]] block by discarding [[1m]]. In contrast, Nishiki suggests discarding [[5s]] to preserve the shape and keep the maximum ukeire. Although [[1m]] is genbutsu to shimocha and toimen, it does not protect us against the live threat from kamicha. Holding onto [[1m]] as a safe tile has lost its meaning since the danger is coming from a player to whom it is not safe. By spending this stale safe tile, LuckyJ reduces the hand's efficiency slightly but avoids releasing the highly dangerous [[5s]] into the active threat, keeping the hand's real route toward a closed hand or potential ittsu alive while playing defensively.",
+      "prompt": "Which opponent has declared an open meld, making them the active threat in this hand?",
+      "answer": "Kamicha"
     },
     "guide_ja": {
-      "read": "東4局、南家（子）で24,000点持ちの状況です。上家がすでに[[P]]のポンで仕掛けている中、手の価値と速度、そして場への安全度をどのように天秤にかけるべきでしょうか。LuckyJは[[1m]]を切り、[[1m]][[3m]][[3m]][[4m]][[6m]]のブロックをほぐしました。[[1m]]はすでに盤上に3枚見えており（手牌に1枚、捨て牌に2枚）、これで刻子（コーツ）を作ることは数学的に不可能です。しかし、下家と対面の両方に現物であり、非常に安全な牌です。これに対してNishikiは、[[5s]]を落としてその形を維持し、安全牌である[[1m]]を手元に残す選択をしました。Nishikiの打牌は目先の安全を優先していますが、まだ有効な[[5s]]を切ることで手の進行を損なってしまいます。点数が沈んでいる3着目から復活を目指す局面において、手の広さを犠牲にしてまで安全牌を抱え込むのは逆効果です。役割を終えた安全牌である[[1m]]を見切り、[[5s]]を残すことで、トイトイ、チートイツ、あるいは門前ピンフといった将来の役のルートへの進行ルートを維持することができます。",
-      "prompt": "この局において[[1m]]の刻子を作ることが数学的に不可能なのはなぜですか？",
-      "answer": "すでに[[1m]]が3枚見えている（自分の手牌に1枚、捨て牌に2枚）ため、ゲーム内に残り1枚しか存在しないからです。"
+      "read": "東4局、持ち点は24,000点。上家がすでに[[P]]をポンして動いている状況で、私たちは手牌の進行と生じている脅威のバランスをどのように取るべきでしょうか。LuckyJは[[1m]]を切り、[[1m]][[3m]][[3m]][[4m]][[6m]]のブロックを崩す選択をしました。これに対し、Nishikiは[[5s]]を切り、形を維持して受入れを最大に保つことを推奨しています。[[1m]]は下家と対面に対しては現物ですが、現在のアクティブな脅威である上家に対しては安全ではなく、安全牌としての期限は切れています。上家からの脅威に対して機能しない安全牌を抱え続ける意味はありません。LuckyJはこの期限切れの安全牌を処理することで、受入れをわずかに減らしつつも、上家に対して極めて危険な[[5s]]の切り出しを回避し、門前進行や一気通貫の可能性を残しながら守備的に構えています。",
+      "prompt": "この局において、鳴きを入れてアクティブな脅威となっている対戦相手は誰ですか？",
+      "answer": "上家"
     }
   },
   "point-15_162_4_13": {
     "guide": {
-      "read": "We are in East 4 as the dealer, holding 20,100 points. With Kamicha already showing an active meld of [[F]], how do we balance our hand's development against the threat on the board? LuckyJ breaks the [[5s]][[6s]][[8s]][[9s]] block by cutting [[9s]]. Because [[9s]] carries very low danger (dangerK: 0.014), it could be kept as a safe tile, but hoarding it damages the hand's long-term potential. Nishiki preserves that block by cutting [[2p]] to maintain maximum shape efficiency. However, LuckyJ recognizes that keeping the floating [[2p]] offers a much stronger path toward a high-value dealer hand, whereas the [[8s]][[9s]] penchan is a weak shape. Discarding the safe [[9s]] now ensures we don't clog our hand with inefficient tiles when we need to push for dealer value.",
-      "prompt": "What is the seat wind of the player in this scenario, and does it grant any dealer bonus?",
-      "answer": "East, which makes the player the dealer and grants a 1.5x hand value bonus."
+      "read": "We are in East 4-0, holding 20,100 points as the dealer. With Kamicha having already called the Green Dragon [[F]] to establish an active threat, how should we balance our hand's developmental speed against the defensive value of our tiles? LuckyJ decides to discard the [[9s]], breaking the [[8s]][[9s]] shape. While [[9s]] is genbutsu to toimen, it offers no protection against Kamicha, who represents the active threat on the board. Holding onto this stale safety tile would only restrict our hand's flexibility. Instead, discarding [[9s]] allows us to pivot toward a broader ukeire of 73 tiles, even though it temporarily sets us back to 3-shanten. Nishiki, on the other hand, discards [[2p]] to preserve the 2-shanten structure, but this leaves the hand with a much narrower ukeire of 22 tiles. By recognizing that the defensive value of [[9s]] has expired against the actual threat, LuckyJ prioritizes the dealer equity and a more flexible path forward.",
+      "prompt": "Which opponent represents the active threat with an open meld in this scenario, and is the discarded [[9s]] safe against them?",
+      "answer": "Kamicha represents the active threat with the open Green Dragon [[F]] meld, and [[9s]] is not safe against them."
     },
     "guide_ja": {
-      "read": "私たちは親番の東4局、持ち点20,100点で手牌を構えています。上家がすでに[[F]]を鳴いて役を確定させている中、盤面の脅威に対して自身の手格好をどう評価すべきでしょうか。LuckyJは[[9s]]を切ることで[[5s]][[6s]][[8s]][[9s]]のブロックを崩す選択をしました。[[9s]]は放銃危険度が極めて低いため（dangerK: 0.014）、安全牌として抱えがちですが、ここに固執することは手牌の将来性を損ないます。Nishikiは[[2p]]を切ることでブロックを維持し、目先の受け入れ枚数を最大化する一打を選択しました。しかし、LuckyJは浮き牌の[[2p]]を残す方がピンズの好形変化を見込めるため、親としての打点や和了率を高める上で強力なルートになると判断しました。愚形なペンチャンを払うため、役立たずとなった安全牌の[[9s]]を今手放すことが、親番を維持するための正しい押し引きと言えます。",
-      "prompt": "この局におけるプレイヤーの自風は何で、親の得点ボーナスは適用されますか？",
-      "answer": "東（東家）であり、親番となるため1.5倍の得点ボーナスが適用されます。"
+      "read": "東4局、私たちは親番で20,100点持ちの2位です。上家がすでに役牌の[[F]]をポンして警戒が必要な状況において、手牌の進展速度と牌の安全度をどのように天秤にかけるべきでしょうか。LuckyJは[[9s]]を切り、[[8s]][[9s]]の形をほぐす選択をしました。[[9s]]は対面の現物ではあるものの、現時点で唯一の能動的な脅威である上家に対しては安全牌になり得ません。この賞味期限の切れた安全牌を抱え続けることは、手牌の受け入れを狭めるだけです。[[9s]]を切ることで、一時的に3シャンテンへと戻るものの、受け入れ枚数は73枚へと大幅に広がります。一方でNishikiは、2シャンテンを維持するために[[2p]]を切りましたが、これでは受け入れ枚数が22枚と非常に狭くなってしまいます。実際の脅威に対して機能しない[[9s]]の安全価値がすでに失われていることを見抜き、LuckyJは親番の価値と柔軟なアガリへのルートを優先したのです。",
+      "prompt": "この局において、鳴きによって能動的な脅威となっているのはどの対戦相手であり、打[[9s]]はその相手に対して安全ですか？",
+      "answer": "上家が役牌の[[F]]をポンして能動的な脅威となっており、[[9s]]はその上家に対して安全ではありません。"
     }
   },
   "point-16_714_2_57": {
@@ -2277,6 +2073,498 @@
       "read": "私たちは南4局0本場の子で、41,000点持ちのトップ目です。局の序盤で十分なリードがある中、手牌の進行速度と危険の回避をどのようにバランスさせるべきでしょうか。LuckyJは[[2s]]を切り、[[2s]]・[[5sr]]の浮きブロック構造を崩して客風の[[E]]を安全牌として残しました。[[E]]は[[2s]]と比較して危険度が極めて低いため（dangerK: 0.002, dangerT: 0.001, dangerS: 0.002）、これを手元に置くことで安全性が大幅に高まります。これに対してNishikiは、テンパイへの受け入れを最大化するために[[E]]を切り、手牌の効率を維持しました。しかし、オーラスのトップ目においては安全に局を終えることが最優先です。LuckyJは速度よりも守備を重視し、今後のツモ次第でトイトイ、チートイツ、あるいは門前ピンフなどの役を見据えつつ、安全牌を確保する進行を選びました。",
       "prompt": "南4局のトップ目における最優先の戦略目標は何ですか？",
       "answer": "高打点を狙うことよりも、低リスクな打牌を選択して安全かつ確実に局（および半荘）を終わらせること。"
+    }
+  },
+  "point-03_8_8_101": {
+    "guide": {
+      "read": "We are in South 3-1 as non-dealer West, holding 15,200 points in 3rd place with 21 tiles left. There is no riichi and no open meld threat yet, so the question is not “how do we fold?” but “how do we turn this late, awkward closed hand into real pressure before the hand expires?” LuckyJ calls chi on [[3s]] from kamicha and then discards [[6p]], breaking the weak [[6p]][[8p]] gap block. This is exactly the point of the lesson: the closed route has several shapes, but much of its speed is still imaginary this late in the hand. By opening, LuckyJ leans into the real yaku route available here: open tanyao, since the hand is made entirely of simples. After the call, keeping the connected souzu structure and cutting [[6p]] removes the least useful isolated bad block, making the hand more direct. Nishiki, Hibakari, and Kagashi all prefer chi rather than pass, and after the call they strongly agree with LuckyJ’s [[6p]] discard. So this is not a call-versus-pass disagreement; it is a model-supported example of buying tempo with a bad closed shape. The strategic trade-off is clear: instead of waiting for a clean closed-hand improvement that may never arrive, LuckyJ converts the hand into an open tanyao plan with immediate forward momentum.",
+      "prompt": "After calling chi on [[3s]], which weak block does LuckyJ remove by discarding [[6p]]?",
+      "answer": "The [[6p]][[8p]] gap block."
+    },
+    "guide_ja": {
+      "read": "南3局1本場、子の西家で15,200点持ちの3着、残りツモは21枚です。リーチ者も仕掛けもなく、ここでのテーマは「どう降りるか」ではなく、「終盤に入りかけた悪形気味のメンゼン手を、どう本物の圧力に変えるか」です。LuckyJ は上家の[[3s]]をチーし、その後[[6p]]を切って[[6p]][[8p]]のカンチャン形を外します。ここがこの教材の核心です。メンゼンのままでも形はありますが、この巡目ではその速度はかなり不確かです。一方で、この手はすべてタンヤオ牌なので、鳴くことでオープンタンヤオという現実的な役ルートに乗せられます。チー後に索子のつながりを残し、役割の薄い[[6p]][[8p]]を処理することで、手をよりまっすぐ進めています。Nishiki、Hibakari、Kagashi もいずれもパスではなくチーを上位にしており、チー後の打牌も全モデルが強く[[6p]]を支持しています。つまりこれは「鳴くか鳴かないか」の対立ではなく、悪いメンゼン形にテンポを買わせる好例です。きれいなメンゼン手変わりを待つより、LuckyJ はオープンタンヤオの現実的な前進を選んだ、という押し引きです。",
+      "prompt": "[[3s]]をチーした後、LuckyJ は[[6p]]切りでどの弱いブロックを外しましたか？",
+      "answer": "[[6p]][[8p]]のカンチャン形です。"
+    }
+  },
+  "point-03_43_6_97": {
+    "guide": {
+      "read": "We are in South 1 as the dealer in the lead with 38,700 points. With an opponent already declaring riichi, how do we balance our dealer equity against the risk of pushing? LuckyJ calls pon on [[4s]] and discards [[3s]], opening the hand to secure a tanyao path. Nishiki and the other NAGA models strongly prefer to pass here, with Nishiki showing a 93% preference to remain closed and preserve defensive flexibility. However, LuckyJ decides to actively buy speed, converting the hand into an open 1-shanten to push back. By committing to the call, LuckyJ accepts the reduced safety to maintain the initiative, rather than backing down.",
+      "prompt": "What is LuckyJ's seat position in this round, and what yaku is enabled by calling the [[4s]]?",
+      "answer": "LuckyJ is the dealer (East), and the enabled yaku is tanyao (All Simples)."
+    },
+    "guide_ja": {
+      "read": "南1局、持ち点38,700点のトップ目の親番。他家からリーチが入っているこの状況で、親の維持と押し引きのバランスをどう取るべきでしょうか。LuckyJは[[4s]]をポンして[[3s]]を切り、タンヤオに向かって手を開く選択をしました。NishikiをはじめとするNAGAの各モデルは、守備力を残すためにスルー（Nishikiのスルー確率は93%）を強く推奨しています。しかし、LuckyJは親番の維持とテンパイへの速度を重視し、仕掛けて一向聴に進める道を選びました。このポンは安牌を減らすリスクを伴いますが、ベタオリに回るのではなく、自らアガリをもぎ取りに行く積極的な姿勢を示しています。",
+      "prompt": "この局におけるLuckyJの親番状況（風家）と、[[4s]]をポンしたことで確定する役は何ですか？",
+      "answer": "LuckyJは親（東家）であり、[[4s]]のポンによって確定する役はタンヤオ（断么九）です。"
+    }
+  },
+  "point-01_191_2_1": {
+    "guide": {
+      "read": "We are in East 3, 1-honba, holding 36,000 points in the lead as the dealer. With a comfortable lead but a slow 4-shanten hand, how do we balance our hand's eventual value against the need to play safely? LuckyJ discards [[N]] to start trimming guest winds, while Nishiki prefers discarding [[W]]. Although both choices maintain the same 4-shanten speed, this decision highlights how lead placement changes our priorities. Instead of frantically maximizing speed for a cheap hand, LuckyJ keeps the active yakuhai tiles [[E]] and [[F]] to preserve the potential for a high-value dealer Honitsu, while carefully filtering out the guest winds. By discarding [[N]], LuckyJ evaluates the safety and utility of the remaining honors to ensure that if an opponent pushes, we are not left defenseless with a low-value hand.",
+      "prompt": "Which of the honor tiles currently held in our hand are active yakuhai (value-bearing) for us?",
+      "answer": "[[E]] and [[F]]"
+    },
+    "guide_ja": {
+      "read": "東3局1本場、我々は36,000点持ちのトップ目で親番を迎えています。十分なリードがある一方で、手牌は4シャンテンと重いこの状況で、手の価値と放銃リスクのバランスをどう取るべきでしょうか。LuckyJは客風の[[N]]を切り、西家（あるいは他家）の動向に対応しやすくする一方、西旡（Nishiki）は[[W]]を選択しました。どちらを切っても4シャンテンの広さは変わりませんが、この選択は点況によって同じ牌の価値が変わることを示しています。安い手でのアガリを急ぐのではなく、親のホンイツなどの高打点ルートを視野に入れて役牌の[[E]]や[[F]]を残しつつ、不要な客風を処理しています。[[N]]切りによって手牌を引き締め、他家からのリーチや仕掛けが入った際にも、価値のない手で無防備に放銃するリスクを回避しています。",
+      "prompt": "現在の手牌にある字牌のうち、自分にとって役牌となるものはどれですか？",
+      "answer": "[[E]] と [[F]]"
+    }
+  },
+  "point-03_90_1_134": {
+    "guide": {
+      "read": "We are in East 2, Honba 1, holding 27,000 points. With kamicha displaying two active melds and only 6 tiles remaining in the wall, how do we maximize our chances of keeping the dealer seat in this late-stage round? LuckyJ calls chi on [[6m]] from kamicha and discards the single [[C]]. By completing the [[5m]][[6m]][[7m]] sequence, LuckyJ advances the hand to tenpai, waiting on [[7m]]. Nishiki agrees with this play, favoring the chi call with a 0.622 probability and identifying [[C]] as the unanimous discard choice. With so few tiles left, holding out for a closed tenpai is unrealistic. Calling here secures a real tenpai and protects our dealer status, avoiding the penalty of a no-ten draw.",
+      "prompt": "Which yakuhai triplet in our hand provides the necessary yaku for this open tenpai?",
+      "answer": "[[P]]"
+    },
+    "guide_ja": {
+      "read": "私たちは東2局1本場、持ち点27,000点の親番を迎えています。上家が2つの仕掛けを入れており、山には残り6枚しか残っていない状況で、この終盤に親番を維持する確率を最大化するにはどうすべきでしょうか。LuckyJは上家から打たれた[[6m]]をチーし、孤立している[[C]]を打牌しました。[[5m]][[6m]][[7m]]の順子を完成させることで、[[7m]]待ちのペンチャンテンパイを入れます。AIエンジンであるNishikiもこの判断を強く支持しており、チーの選択率が0.622でトップ、その後の打牌も全員一致で[[C]]を選択しています。残りツモがこれだけ少ない状況では、門前でテンパイを目指すのは現実的ではありません。ここでの鳴きは、ノーテン罰符を回避しつつ、親番をつなぐ本物のテンパイを確保するための価値ある一手です。",
+      "prompt": "この仕掛けたテンパイにおいて、役を確定させている手牌内の役牌の暗刻は何ですか？",
+      "answer": "[[P]]"
+    }
+  },
+  "point-03_88_5_137": {
+    "guide": {
+      "read": "We are in South 2 as the North player, holding 15,500 points. With an opponent already declaring riichi and only three tiles remaining in the wall, how do we balance our defensive duties with the need to secure tenpai points?\n\nLuckyJ calls pon on [[4p]] from kamicha and discards [[5p]] to secure tenpai. Although the hand has no yaku due to the [[9s]] pair, achieving formal tenpai (keiten) late in the game is highly valuable for the draw points. Nishiki prefers to pass at 51.9%, choosing to play defensively rather than pushing the [[5p]] against the active riichi. However, LuckyJ shows the value of buying tenpai when the closed route is dead, taking the calculated risk to maintain tenpai-ryou.",
+      "prompt": "What is the main objective of making a yakuless call when only three tiles remain in the wall?",
+      "answer": "To secure a formal tenpai (keiten) and receive tenpai-ryou (draw points) while avoiding the no-tenpai penalty."
+    },
+    "guide_ja": {
+      "read": "私たちは南2局の北家、15,500点持ちの状況です。相手の立直が入っており、山には残り3枚しかありません。このような終盤において、放銃を避けつつテンパイ料を確保するためには、どのように押し引きのバランスを取るべきでしょうか。\n\nLuckyJは上家から打たれた[[4p]]をポンし、[[5p]]を切ってテンパイに入りました。[[9s]]の対子があるため役なしの形式テンパイ（ケイテン）ですが、残りツモが極めて少ない局面では、ノーテン罰符を防ぐケイテンの価値が非常に高くなります。対照的に、にしきは51.9%の確率でスルーを選択し、立直に対して安易に[[5p]]を押し出すリスクを避ける守備的な対応を好みました。しかしLuckyJは、メンゼンでのテンパイが絶望的な状況において、リスクを取って鳴きを入れ、形式テンパイをもぎ取る実戦的な判断を示しました。",
+      "prompt": "山の残り枚数が3枚の状況で、役のない鳴きを入れる主な目的は何ですか？",
+      "answer": "形式テンパイ（ケイテン）を確保し、ノーテン罰符を避けてテンパイ料を受け取るため。"
+    }
+  },
+  "point-03_112_5_138": {
+    "guide": {
+      "read": "We are in East 3, holding 30,300 points as the top rank, but in a non-dealer seat during the late stage with only 5 tiles left in the wall. With opponents showing active melds—specifically, kamicha has already made three melds, including a quad/triplet of East and a triplet of [[2m]]—how do we balance our hand's defensive needs against the potential for a tenpai payoff? LuckyJ decides to pon the [[9p]] discarded by kamicha, then discards [[4s]] to move the hand toward a late-game tenpai. The NAGA models, including Nishiki, overwhelmingly prefer passing (with a pass probability of 89.5%). Staying closed keeps our hand safe, especially given the threat from Kamicha's active open melds. However, LuckyJ's call is a proactive attempt to secure a tenpai for the noten payments (noten bappu) in these final few turns. Furthermore, after the call, Nishiki prefers discarding [[6p]] to maximize shape flexibility, while LuckyJ chooses [[4s]] to hold onto the [[5s]] pair and the [[7s]][[8s]] ryanmen. Discarding [[4s]] keeps our 1-shanten intact, but we face high danger with few tiles remaining. Ultimately, LuckyJ plays aggressively to buy a path to tenpai, prioritizing the potential score swing of the noten payment, whereas the engines prioritize defensive safety by passing.",
+      "prompt": "How many tiles are remaining in the wall when this call decision is made?",
+      "answer": "5 tiles."
+    },
+    "guide_ja": {
+      "read": "私たちは東3局、30,300点持ちのトップ目で子番を迎えています。終盤に入り山には残り5枚、さらに上家が役牌の東や[[2m]]などの仕掛けを3つも入れている緊迫した場面です。この状況で、守備の必要性とテンパイ料の価値をどのように天秤にかけるべきでしょうか。LuckyJは上家から打たれた[[9p]]をポンし、[[4s]]を切って形式テンパイに向けた1シャンテンに構えました。これに対し、Nishikiを含むNAGA各モデルはスルー（パス）を強く推奨しています（パス率89.5%）。仕掛けが多い他家に対して門前を維持して安全に回る方が無難だからです。しかし、LuckyJのポンは、残り数巡で何としてもテンパイ料（ノーテン罰符）をもぎ取るための強気な一手です。また、ポンした後の打牌選択においても、Nishikiは受けの広い[[6p]]切りを支持していますが、LuckyJは[[5s]]の対子と[[7s]][[8s]]の両面を残す[[4s]]切りを選択しました。[[4s]]切りは1シャンテンの形を維持するものの、残りツモが少ない中での危険を伴います。最終的に、LuckyJはノーテン罰符による点差の維持を狙って強引にテンパイへの道を買いに行きましたが、AIモデルたちは安全第一の撤退ルートを優先する姿勢を示しています。",
+      "prompt": "この鳴きの判断が行われた時点で、壁（山）に残っている牌は何枚ですか？",
+      "answer": "5枚。"
+    }
+  },
+  "point-03_48_12_89": {
+    "guide": {
+      "read": "We are in South 3, 1-honba, holding 57,400 points and sitting on a comfortable lead. With no immediate threats from our opponents, how do we value our clumsy hand shape? LuckyJ decides to call Pon on the [[6m]] discarded by shimocha, discarding the now-useless [[S]]. By calling [[6m]], LuckyJ breaks the closed shape to commit to an open Toitoi path, using the remaining pairs of [[5m]] and [[6p]] as the foundation. Since [[S]] has four visible copies on the board, it is mathematically impossible to form a triplet with it, making it the natural discard. Nishiki and the other NAGA models heavily prefer to pass here (Nishiki at 72.7% pass), prioritizing defense and keeping the hand closed (potentially for Chiitoitsu) to protect our massive lead. However, LuckyJ values the active tempo of moving toward a real Toitoi tenpai over waiting passively. Calling [[6m]] transforms a slow, clumsy closed hand into an active open shape that can apply pressure to the table.",
+      "prompt": "Why is [[S]] discarded immediately after the Pon instead of being kept as a potential yaku triplet?",
+      "answer": "Because 3 copies of [[S]] are already visible on the board and 1 is in our hand, making it mathematically impossible to form a triplet."
+    },
+    "guide_ja": {
+      "read": "私たちは南3局1本場、57400点持ちのトップ目で局を迎えています。他家からのリーチや副露といった明確な脅威がない中、この手牌の価値と形をどう評価すべきでしょうか。LuckyJは下家から打たれた[[6m]]をポンし、不要となった[[S]]を切る選択をしました。[[6m]]をポンすることで、LuckyJはメンゼンの重い形を解消し、手元に残る[[5m]]と[[6p]]の対子を活かしたトイトイのルートへ踏み出しました。[[S]]はすでに場に4枚見えており、刻子にすることは不可能であるため、これが自然な打牌となります。NAGAの西風などのモデル群はスルー（西風のパス確率72.7%）を強く支持しており、トップ目を守るためにメンゼン（七対子など）を維持して守備力を残す方針です。しかしLuckyJは、受け身に回るよりもトイトイのテンパイへ向けて速度を上げることを重視し、ポンによって他家に圧力をかける能動的な進行を選択しました。",
+      "prompt": "ポンした直後に[[S]]が手牌に残されず即打されたのはなぜですか？",
+      "answer": "すでに場に3枚見えており、自身の持ち牌と合わせて4枚すべてが見えているため、物理的に刻子を作ることが不可能だからです。"
+    }
+  },
+  "point-04_1_9_65": {
+    "guide": {
+      "read": "We are in South 4-1, holding 31,900 points as the dealer. With toimen already showing active melds of [[W]], how do we balance our hand's value against the danger on the board? LuckyJ calls pon on [[S]] and discards [[F]]. By calling the prevalent wind [[S]], we secure a solid dealer hand. However, opening our hand makes it shorter and reduces our defensive flexibility. Discarding [[F]]—which is speculative with 2 copies already visible on the board—allows us to advance our shape while keeping the closed triplet of [[6p]] in our hand. This triplet of [[6p]] acts as a vital defensive reserve; having three copies of a tile provides a reliable fallback for defense if an opponent pushes. Nishiki and the other NAGA engines fully agree, recommending the pon on [[S]] and the discard of [[F]]. This trade-off exemplifies the playbook concept: when opening, we must keep a defensive path. Retaining the triplet of [[6p]] instead of stretching our shapes too thin ensures that our open play does not leave us completely defenseless.",
+      "prompt": "Which tile in our hand serves as a strong defensive reserve after calling pon on [[S]] and discarding [[F]]?",
+      "answer": "[[6p]]"
+    },
+    "guide_ja": {
+      "read": "私たちは南4局1本場、31,900点持ちの親番です。対面がすでに[[W]]をポンして仕掛けている状況で、手牌の価値と場への危険度をどのようにバランスさせるべきでしょうか。LuckyJは[[S]]をポンし、[[F]]を切りました。場風の[[S]]をポンすることで、親としての打点と速度を確保します。しかし、副露によって手牌が短くなると、守備の柔軟性は低下します。すでに2枚見えている重なりにくい[[F]]を打牌することで、手牌を進めつつ、手元に[[6p]]の暗刻を維持します。この[[6p]]の暗刻は極めて重要な守備用のリザーブとなり、他家からのリーチや危険な攻めに対して、同一牌が3枚あることで強固な防御壁として機能します。西（NAGA）をはじめとするAIモデルもこの選択に完全に合意しており、[[S]]のポンと[[F]]切りを推奨しています。この選択は「鳴いた後でも守備の選択肢を残す」という戦術コンセプトを体現しています。手牌を広げすぎて安全牌を失うのではなく、[[6p]]の暗刻を抱えることで、オープン手でありながらも不測の事態に対応できる守備力をキープしています。",
+      "prompt": "[[S]]をポンして[[F]]を切った後、手牌の中で強力な守備用のリザーブとして機能する牌は何ですか？",
+      "answer": "[[6p]]"
+    }
+  },
+  "point-04_2_8_103": {
+    "guide": {
+      "read": "We are in South 3, Round 1, holding 20,600 points in 3rd place. With kamicha already showing two active melds and threatening to speed up the board, how do we balance our hand's progression against the risk of shortening our hand? LuckyJ calls chi on the [[4p]] and discards the [[1s]], keeping the hand open but structured. Nishiki completely agrees with this decision, showing a 1.0 probability for discarding [[1s]] after the call. By discarding [[1s]], we preserve our yaku path while holding onto the closed triplet of [[F]] (Green Dragon). In a shortened open hand, holding a closed triplet of an honor tile serves as a crucial defensive insurance policy, giving us three reliable exit tiles if the table turns dangerous.",
+      "prompt": "Which tile is held as a closed triplet in our hand, serving both as our primary yaku and a defensive reserve of three safe tiles?",
+      "answer": "[[F]] (Green Dragon)"
+    },
+    "guide_ja": {
+      "read": "私たちは南3局1本場、持ち点20,600点の3着目で、上家がすでに2枚の副露を入れている状況です。手牌を短くするリスクと進展のバランスをどのように取るべきでしょうか？LuckyJは[[4p]]をチーして[[1s]]を打つことで、手を進めつつ守備力を残しました。Nishikiもこの判断に完全に同意しており、チーした後の[[1s]]打の選択率は1.0となっています。[[1s]]を切ることで役のルートを維持しながら、手牌に役牌である[[F]]（發）の暗刻を残します。手牌が短くなる副露手において、字牌の暗刻を抱えておくことは、他家から強い攻めが来た際に3枚の安全牌として機能する極めて強力な保険となります。",
+      "prompt": "手牌の中で暗刻として保持され、本手の役になると同時に3枚の安全牌として守備の要にもなっている牌は何ですか？",
+      "answer": "[[F]]（發）"
+    }
+  },
+  "point-03_114_8_109": {
+    "guide": {
+      "read": "We are in South 2, Honba 1, holding 14,800 points in 4th place. With only 16 tiles remaining in the wall and no opponent riichi declared yet, how do we balance our hand's development against the impending exhaustive draw?\n\nLuckyJ chooses to call chi on the [[7p]] discarded by the kamicha, and discards the [[1m]] to shape the hand. By calling, LuckyJ transitions the hand into an active open shape. Although a yaku-less open hand cannot win directly without further development, at this late stage of the game, securing tenpai for the exhaustive draw (tenpai-ryou) is a critical objective, especially for a player in the danger zone at 4th place.\n\nIn contrast, Nishiki and Hibakari prefer to pass here. They likely value keeping the hand closed for defensive flexibility, fearing that opening a hand with no clear yaku leaves them vulnerable if an opponent pushes late. However, LuckyJ and Kagashi recognize that staying closed makes achieving tenpai virtually impossible given the clumsy [[1m]] [[3m]] [[3m]] shape and few remaining turns. Opening the hand allows us to efficiently discard the awkward [[1m]], using the remaining pairs of [[3m]] and [[7s]] to secure a tenpai path. This aggressive call paid off, resulting in a tenpai draw and a +1,500 point gain.",
+      "prompt": "How many tiles are remaining in the wall when LuckyJ decides to call chi on the [[7p]]?",
+      "answer": "16"
+    },
+    "guide_ja": {
+      "read": "私たちは南2局1本場、西家で14,800点の4着目です。山に残る牌はわずか16枚で、まだ他家からのリーチは入っていませんが、流局間近の手牌進行とどう折り合いをつけるべきでしょうか。\n\nLuckyJは上家から打たれた[[7p]]をチーし、[[1m]]を切る選択をしました。チーをすることで、手牌を積極的な鳴き手に移行させます。役のない裸の鳴き手はそのままではアガれませんが、これほど終盤（残り16枚）になれば、特に4着目の危険域にいるプレイヤーにとって、流局時のテンパイ料を確保することは非常に重要な目的となります。\n\nこれに対し、NishikiとHibakariはスルーを推奨しています。彼らは、明確な役のない手を開くことで終盤の他家からの攻めに対して無防備になるリスクを嫌い、守備力の高いメンゼンを維持することを重視したと考えられます。しかし、LuckyJとKagashiは、手元に残された[[1m]][[3m]][[3m]]という窮屈な形状と残りツモ回数の少なさから、メンゼンでのテンパイはほぼ不可能であると見抜いています。仕掛けることで不要な[[1m]]を切り出し、残った[[3m]]と[[7s]]のトイツを活かして形式テンパイへの道筋を確保したのです。この積極的な仕掛けが功を奏し、結果としてテンパイ流局での+1,500点獲得へと繋がりました。",
+      "prompt": "LuckyJが[[7p]]のチーを決断した時点で、山に残っている牌は何枚ですか？",
+      "answer": "16枚"
+    }
+  },
+  "point-04_7_4_63": {
+    "guide": {
+      "read": "We are in South 1-0 as a non-dealer, holding 18,000 points. With opponents currently silent and no active threats on the board, how do we balance our hand's progression against our defensive posture? When kamicha discards the yakuhai [[P]], LuckyJ calls pon and discards [[E]]. Nishiki and the other NAGA engines are in complete agreement, supporting the call and the subsequent discard of the guest wind [[E]]. Discarding [[E]], which is highly safe with three copies visible on the board, allows us to transition smoothly into an open 1-shanten. The remaining hand retains the [[8p]] pair, which serves as a defensive reserve that can be dismantled if an opponent later declares an unexpected riichi. By keeping our shape flexible and holding onto pairs like [[8p]], we ensure we are not left entirely defenseless after opening the hand.",
+      "prompt": "Why is the discarded [[E]] tile considered highly safe in this situation?",
+      "answer": "Because it is a guest wind and three copies of it are already visible on the board (two in the discards and one in our hand)."
+    },
+    "guide_ja": {
+      "read": "南1局の北家（子）、持ち点18,000点の局面です。他家に目立った動きがなく、場に具体的な脅威がない中、手牌の進行と守備のバランスをどう取るべきでしょうか。上家から役牌の[[P]]が打たれたところで、LuckyJはポンして[[E]]を切ります。Nishikiを含むNAGAエンジンもこの判断に完全に同意しており、ポンとそれに続く客風の[[E]]切りを支持しています。場に3枚見えており安全度の極めて高い[[E]]を切り出すことで、安全に一向聴へと移行します。残された手牌には[[8p]]の対子があり、これが後に他家から不意のリーチが入った際の守備用のリザーブとして機能します。このように、手牌を短くしつつも[[8p]]のような対子を保険として残すことで、副露後の無防備な状況を避けることができるのです。",
+      "prompt": "この局において、打牌された[[E]]が極めて安全であるとされる理由は何ですか？",
+      "answer": "自身にとって客風であり、すでに場に3枚（河に2枚、自身の手牌に1枚）見えているためです。"
+    }
+  },
+  "point-04_9_6_37": {
+    "guide": {
+      "read": "We are in South 3, holding 36,000 points in the lead. As kamicha discards the prevalent wind [[S]] early in the round, how do we manage our safety margin once we decide to open our hand? LuckyJ calls pon on [[S]] and immediately discards the isolated [[1p]]. Nishiki and the other NAGA engines completely agree with this decision. By discarding [[1p]], LuckyJ transitions the hand to a clean 1-shanten while preserving the [[9p]] pair. In a shortened open hand, keeping a pair of terminal tiles like [[9p]] serves as a vital defensive reserve, allowing us to pivot to safety if an opponent mounts a sudden threat, rather than being left defenseless.",
+      "prompt": "After calling pon on [[S]] and discarding [[1p]], which pair of tiles remains in the hand to serve as a defensive reserve?",
+      "answer": "[[9p]]"
+    },
+    "guide_ja": {
+      "read": "私たちは南3局、36,000点持ちのトップ目です。上家から場風の[[S]]が打ち出されたこの局面において、副露を入れて手牌を短くするにあたり、どのように守備力を担保すべきでしょうか。LuckyJは[[S]]をポンし、孤立している[[1p]]を打牌しました。にしき等の他AIモデルもこの選択に完全に合意しています。[[1p]]を切ることで、LuckyJは形を整理しつつ、[[9p]]のトイツを残しました。副露によって手牌が短くなる中、[[9p]]のような端牌の対子を手元に残すことは、他家から不意の攻めが入った際の重要な安全牌（防御用リザーブ）として機能します。",
+      "prompt": "[[S]]をポンして[[1p]]を切った後、防御用のリザーブとして手牌に残された対子は何ですか？",
+      "answer": "[[9p]]"
+    }
+  },
+  "point-04_13_7_67": {
+    "guide": {
+      "read": "We are in East 4-2, dealer status, holding 29700 points. With an opponent already declaring riichi, how do we balance our offensive speed against the immediate danger on the board? LuckyJ calls chi on [[7p]] and discards [[3m]] to progress toward tanyao. By discarding [[3m]], we retain the pair of [[2m]], which serves as both our pair and a valuable defensive reserve, especially since [[2m]] is already visible in Toimen's discard pile (making it genbutsu to Toimen). Nishiki and the other NAGA models completely agree with this decision, also selecting the chi call and discarding [[3m]] with maximum confidence. While opening the hand shortens our defensive options, keeping the pair of [[2m]] ensures we maintain a safe retreat path if the riichi threat intensifies, demonstrating the core principle of keeping a safe tile when playing open hands.",
+      "prompt": "Which tile in our hand serves as a key defensive reserve against Toimen after the chi call?",
+      "answer": "[[2m]]"
+    },
+    "guide_ja": {
+      "read": "東4局2本場、親番で持ち点は29700点。相手の1軒リーチが入っているこの局面で、どのように手の進展速度と盤面の危険度とのバランスを取るべきでしょうか。LuckyJは上家から打たれた[[7p]]をチーし、[[3m]]を切ってタンヤオへと向かいました。[[3m]]を切り出すことで、雀頭となる[[2m]]のトイツを残します。この[[2m]]は対面の現物であり、安牌としての機能も兼ね備えた極めて価値の高い防衛手段となります。Nishikiを含むNAGAの各AIモデルもこの選択に完全一致しており、チーして[[3m]]を切る選択肢を確信を持って推奨しています。副露によって手牌が短くなる局面ですが、危険な孤立中張牌を抱えるのではなく、安全度の高い[[2m]]をトイツで残すことで、親でのアガリを目指しつつも撤退ルートを確保する「副露手でも安牌を残す」という戦術を体現しています。",
+      "prompt": "チーした後に、対面に対する重要な安全牌（守備駒）として機能する手牌の中の牌は何ですか？",
+      "answer": "[[2m]]"
+    }
+  },
+  "point-04_9_2_123": {
+    "guide": {
+      "read": "We are in East 3-0 as a non-dealer, holding 25,000 points. With the game in the late stage and only 10 tiles remaining in the wall, how do we balance our hand's progression with defensive safety in an open hand? When the kamicha discards the yakuhai [[E]], LuckyJ calls pon to secure the yaku, and then discards [[F]]. Nishiki completely agrees with this decision, also calling pon and discarding [[F]]. By discarding [[F]], which is no longer useful for shape since two are already visible on the board, we maintain a 1-shanten shape with the [[6p]][[7p]] sequence and [[7s]] pair. Crucially, keeping the triplet of [[1m]] in our hand provides a reliable defensive reserve of three identical tiles, ensuring we have safe options if an opponent mounts a sudden threat during these final turns.",
+      "prompt": "What is the seat wind of the player in this hand?",
+      "answer": "West"
+    },
+    "guide_ja": {
+      "read": "東3局、25,000点持ちの西家です。終盤に入り山には残り10枚という状況の中、副露した手牌の進行速度と守備力のバランスをどのように取るべきでしょうか。上家から役牌の[[E]]が打たれた局面で、LuckyJはポンして役を確定させ、[[F]]を切り出しました。Nishikiもこの選択に完全に同意しており、同様にポンして[[F]]を捨てています。すでに2枚切れで手牌で使いようのない[[F]]を整理することで、[[6p]][[7p]]の両面と[[7s]]の対子を残した1シャンテンの形を維持します。ここで重要なのは、手牌に残された[[1m]]の暗刻です。これが、終盤の他家からの予期せぬテンパイやリーチに対して、3枚使いできる強力な守備用のリザーブとして機能します。これはまさに、鳴いた後でも手牌の中に安全牌や守備力を担保する牌を残しておくという戦術を体現しています。",
+      "prompt": "この局における自身の風（自風）は何ですか？",
+      "answer": "西"
+    }
+  },
+  "point-05_1289_5_53": {
+    "guide": {
+      "read": "We are in East 4-0 as dealer, holding 41,600 points in the lead. With kamicha already showing an open meld of Green Dragon [[C]] and our hand sitting at 2-shanten, how do we balance our hand's shape against the risk of future dangerous discards? LuckyJ breaks the [[2s]][[4s]] gap shape by cutting [[2s]] early. While [[2s]] is relatively safe now (suji to shimocha and sotogawa to toimen), keeping it as a floating liability in a slow hand invites danger later when opponents' hands advance. By discarding [[2s]] now, we retain the guest wind [[N]], which is a valuable genbutsu safety tile against shimocha. In contrast, Nishiki prefers to discard the guest wind [[N]] to maximize tile acceptance, keeping the [[2s]][[4s]] shape intact. However, LuckyJ's choice prioritizes holding onto defense while steering the hand towards a cleaner tanyao or ordinary closed-hand route, eliminating a future simple-tile liability before the board escalates.",
+      "prompt": "Which wind tiles carry yaku value for us in this round? Note: Do not count dragon tiles.",
+      "answer": "East (E) only, as it is both the prevalent wind and our seat wind. West (W), South (S), and North (N) are guest winds."
+    },
+    "guide_ja": {
+      "read": "私たちは東4局の親番、41,600点持ちのトップ目です。上家がすでに役牌の發[[C]]をポンしているこの2シャンテンの手牌で、手広さと将来の危険牌の抱え込みをどのようにバランスさせればよいでしょうか。LuckyJは[[2s]]を切ることで[[2s]][[4s]]の間張ブロックを外しました。[[2s]]は現時点では下家に筋、対面に外側となっており比較的安全ですが、遅い手牌でこの浮き牌を抱え続けると、相手の手が引き締まった段階で危険な放銃要因になり得ます。今ここで[[2s]]を処理しておくことで、下家の現物である安全牌の客風[[N]]を手元に残すことができます。これに対してNishikiは、受入れ枚数を最大化するために客風の[[N]]を切り、[[2s]][[4s]]の形を維持する選択をしました。しかしLuckyJは、局が煮詰まる前に将来の危険要因となる不要な数牌を先に処理し、安全牌を抱えながらタンヤオや一般的なメンゼン手へ進める守備的な進行を選択しています。",
+      "prompt": "この局において、自手で役となる風牌（※三元牌を除く）はどれですか？",
+      "answer": "東（E）のみです。場風かつ自風であるため。西（W）、南（S）、北（N）は客風です。"
+    }
+  },
+  "point-04_7_7_57": {
+    "guide": {
+      "read": "We are in South 2 as the dealer, holding 9,400 points. With no opponents currently showing active threats or declaring riichi, we must decide how to progress our hand. How do we balance our offensive speed against our defensive options when our hand becomes extremely short? LuckyJ calls pon on [[F]] from the kamicha and discards the speculative [[P]]. Nishiki completely agrees with this decision, also calling pon and discarding [[P]] with a 1.0 probability. By discarding the single speculative [[P]] and holding the pairs of [[8p]] and [[3s]], we maintain our 1-shanten toitoi and yakuhai route while keeping pairs that can serve as defensive double-cuts if a threat emerges. LuckyJ pushes for the win to recover from the fourth-place danger zone, utilizing the dealer bonus while retaining a flexible defensive reserve in a short hand.",
+      "prompt": "What is the round and our position in this match?",
+      "answer": "The round is South 2, and we are the dealer (East)."
+    },
+    "guide_ja": {
+      "read": "私たちは南2局の親番で、持ち点は9,400点です。他家にリーチや目立った副露などの明確な脅威がない状況で、どのように手を進めるべきでしょうか。手牌が極めて短くなる中、攻撃の速度と守備力のバランスをどのように取るべきでしょうか。LuckyJは上家から出た[[F]]をポンし、孤立している[[P]]を切る選択をしました。Nishikiもこの判断に完全に同意しており、選択確率1.0で[[F]]のポンと[[P]]切りを指示しています。孤立した不確定な役牌である[[P]]を放出し、[[8p]]と[[3s]]のトイツを残すことで、対々和や役牌のテンパイへのルートを維持しつつ、他家からリーチが入った際に2枚連続で切れるトイツという防御壁を確保しています。LuckyJは4位の危機から脱出するために親番の価値を意識して積極的に仕掛けますが、手牌が短くなっても守備の逃げ道を確保するトイツキープの設計思想を徹底しています。",
+      "prompt": "この局の局名と自分自身の風（ポジション）は何ですか？",
+      "answer": "南2局で、親（東家）です。"
+    }
+  },
+  "point-05_386_4_51": {
+    "guide": {
+      "read": "We are in East 4, Honba 1 as South, holding 37,200 points. With kamicha already showing an open meld of [[5s]][[6s]][[7s]], how do we evaluate our hand shape and manage potential danger on the board? LuckyJ breaks the [[4s]][[5s]][[5s]] block by discarding [[5s]]. Since the hand is still at 2-shanten and lacks immediate high-value potential, carrying a central tile like [[5s]] into the later stages poses a significant risk. If an opponent declares riichi later, discarding [[5s]] then could be extremely dangerous; discarding it now removes this future liability. Nishiki, on the other hand, prefers to discard the active yakuhai [[F]] to maximize our immediate shape efficiency and keep ukeire high. However, by holding the genbutsu [[F]], LuckyJ ensures a safe exit route while discarding the dangerous [[5s]] before the board becomes even more threatening.",
+      "prompt": "Which player has made an open meld in this round?",
+      "answer": "Kamicha"
+    },
+    "guide_ja": {
+      "read": "東4局1本場、私たちは南家で37,200点を持っています。上家がすでに[[5s]][[6s]][[7s]]のチーを入れている状況で、手牌の進行と場に残る危険牌のバランスをどのように取るべきでしょうか。LuckyJは[[4s]][[5s]][[5s]]のブロックから[[5s]]を切り出しました。私たちの手牌は2シャンテンであり、速度や打点が十分ではないため、[[5s]]のような真ん中の数牌を中終盤まで抱え続けるのは大きなリスクとなります。将来的に相手から立直が入った際、その段階で[[5s]]を勝負するのは極めて危険です。今のうちに処理しておくことで、未来の危険因子をあらかじめ排除できます。一方でNishikiは、役牌の[[F]]を切り出して受け入れ枚数を最大にし、手幅を維持する一打を推奨しています。しかし、LuckyJは上家の現物である[[F]]を手元に残して安全度を確保しつつ、危険な[[5s]]を他家がテンパイする前に先打ちする選択を下しました。",
+      "prompt": "この局で副露（ポン・チー・カン）を行っているプレイヤーは誰ですか？",
+      "answer": "上家"
+    }
+  },
+  "point-05_347_8_53": {
+    "guide": {
+      "read": "We are in South 3, West seat, holding 40,600 points. With no immediate threats from opponents but a slow 3-shanten hand, how do we balance our hand's potential shape against the danger of holding future liabilities? LuckyJ chooses to break the [[1s]][[2s]] block by cutting [[2s]]. In contrast, Nishiki prefers to discard the yakuhai wind [[S]] to preserve the sequence shape for maximum efficiency. While holding [[2s]] yields 42 visible ukeire compared to LuckyJ's 22, the hand is still far from tenpai. Middle tiles like [[2s]] are prone to becoming highly dangerous liabilities if kept into the late game. Additionally, because [[S]] has 3 visible on the board (one in our hand and two in the discards), it cannot be developed into a triplet, stripping its offensive yakuhai value but retaining its defensive utility as a genbutsu to toimen. LuckyJ prioritizes cleaning up this future liability early, keeping the safer [[1s]] and the genbutsu [[S]] to maintain defensive flexibility.",
+      "prompt": "Why is the yakuhai wind [[S]] unable to become a triplet in this hand?",
+      "answer": "Because there are already 3 visible on the board (1 in hand, 2 in the discards/table), leaving only one remaining tile in play."
+    },
+    "guide_ja": {
+      "read": "南3局、西家（子）で、持ち点は40,600点（トップ目）の場面です。他家からの仕掛けやリーチが入っていないものの、自身の手牌は3シャンテンと遅い局面において、目先の受け入れ広さと将来危険になり得る浮き牌を抱えるリスクをどのように天秤にかけるべきでしょうか。LuckyJは[[1s]][[2s]]のターツを外す[[2s]]切りを選択しました。これに対してNishikiは役牌である[[S]]を切り、手広さを維持することを選択しました。確かに[[2s]]を残せば有効牌は42枚（LuckyJの選択後は22枚）と圧倒的ですが、テンパイまではまだ遠く、中盤以降に無スジの[[2s]]を抱え続けることは将来の放銃リスク（未来の負債）を高めます。また、[[S]]はすでに場に3枚見えている（手牌に1枚、河に2枚）ため、コーツにすることは不可能で役牌としての価値はありませんが、対面の現物であり安全牌として機能します。LuckyJは未来の危険牌を先んじて処理し、より安全な[[1s]]と現物の[[S]]を残す堅実な進行を選びました。",
+      "prompt": "なぜこの手牌において役牌である[[S]]を刻子（コーツ）にすることが不可能なのでしょうか？",
+      "answer": "すでに場（自分の手牌に1枚、河および卓上に2枚）に3枚見えているため、残りの山や他家の手牌に1枚しか存在しないからです。"
+    }
+  },
+  "point-05_302_7_49": {
+    "guide": {
+      "read": "We are in South 1, 0 honba, holding 26,600 points as the dealer. With the board still quiet and no opponents showing active melds or riichi, how do we balance our hand's developmental speed against the risk of carrying dangerous floating tiles into the late game? LuckyJ chooses to discard the floating [[7m]], keeping the single [[C]] in hand. Nishiki prefers discarding [[C]] to maximize immediate ukeire, which would go up to 47 by keeping both [[4m]] and [[7m]] floaters. However, because two [[C]] are already on the table and one is in our hand, it is mathematically impossible to form a triplet of this tile, leaving it with zero offensive value. Yet, because three are visible and it is already genbutsu to Kamicha, [[C]] functions as a highly reliable defensive pocket tile. In contrast, [[7m]] is a middle tile that carries a much higher threat level if opponents push later. By cutting [[7m]] now, LuckyJ accepts a slightly lower ukeire (39 tiles) in exchange for clearing a future liability before any opponent declares riichi.",
+      "prompt": "Why is the single [[C]] in the player's hand unable to form a triplet (koutsu) in this scenario?",
+      "answer": "Because three copies of [[C]] are already visible on the board (one in the hand and two on the table/discards), making it mathematically impossible to collect three copies."
+    },
+    "guide_ja": {
+      "read": "私たちは南1局0本場、親番で26,600点を持っています。他家に副露や立直がなく場がまだ静かな中、手牌の進展速度と、中盤以降に危険な浮き牌を抱え込むリスクをどのように天秤にかけるべきでしょうか？LuckyJは浮き牌の[[7m]]を切り、手の中に1枚の[[C]]を残す選択をしました。Nishikiは[[C]]を切り、[[4m]]と[[7m]]の両方の浮き牌を残すことで受け入れ枚数を最大化（47枚）することを好みます。しかし、[[C]]はすでに場に2枚切れで手牌に1枚あるため、刻子にすることは不可能です。役としての攻撃的価値はゼロですが、3枚見えで上家の現物でもあるため、極めて安全度の高い守備駒として機能します。一方で、[[7m]]は中張牌であり、他家がテンパイした際には危険度が高まる未来の負債です。ここで[[7m]]を先切りすることで、LuckyJは受け入れ枚数を39枚に落とす代わりに、他家の立直が入る前に将来の危険牌を処理しました。",
+      "prompt": "この状況において、プレイヤーの手牌にある1枚の[[C]]で刻子（コーツ）を作ることができないのはなぜですか？",
+      "answer": "すでに場に3枚の[[C]]が見えているため（手牌に1枚、河・捨て牌に2枚）、山から引いて3枚集めることが数学的に不可能だからです。"
+    }
+  },
+  "point-05_308_13_41": {
+    "guide": {
+      "read": "We are in South 4-0 as the dealer, holding 21,200 points. With the game in the middle stage and no opponents declaring riichi or showing active melds yet, how do we value our hand shape and manage future risk? LuckyJ discards the floating [[2p]], choosing to hold onto the lone [[E]] and [[7s]] instead. Although [[2p]] is a simple tile that could theoretically develop, our hand already has established blocks like [[4m]][[5m]][[6m]][[7m]] and [[6p]][[7p]][[8p]][[9p]], alongside a triplet of the guest wind [[N]]. Holding a disconnected [[2p]] provides very little efficiency gain, but carrying it into the later stages makes it a dangerous liability. By discarding it now while the board is quiet, we avoid a high-risk discard later. Meanwhile, keeping the seat wind [[E]] preserves a valuable yaku switch and a safer tile. Nishiki, conversely, prefers to discard the seat wind [[E]] first, prioritizing the theoretical connectivity of the simple [[2p]]. However, LuckyJ prioritizes long-term safety and value potential. Discarding [[2p]] cleans up a future liability early, ensuring we do not get caught with a dangerous middle tile when the table heats up.",
+      "prompt": "Which wind tile in the player's hand functions as a guest wind (non-yakuhai) in this round?",
+      "answer": "[[N]]"
+    },
+    "guide_ja": {
+      "read": "私たちは南4局の親番で、21,200点を持っています。中盤に入り、まだ相手からの立直や副露が入っていない状況で、手牌の形をどう評価し、将来の危険をどうコントロールすべきでしょうか。LuckyJは孤立している無駄牌の[[2p]]を切り、役牌である[[E]]と[[7s]]を残す選択をしました。[[2p]]は数牌であり受け入れが広がる可能性はありますが、手牌にはすでに[[4m]][[5m]][[6m]][[7m]]や[[6p]][[7p]][[8p]][[9p]]といった十分なブロックがあり、さらに客風である[[N]]の暗刻もあります。孤立した[[2p]]を持っておくメリットは薄く、中終盤まで抱え込むと危険な先送りの牌になりかねません。他家が動く前の静かなうちに処理しておくことで、将来の放銃リスクを低減できます。一方で、自風の[[E]]を残すことは、役牌重なりの価値を残しつつ安全度の高い牌をキープすることにつながります。対照的に、西（Nishiki）は自風の[[E]]を先に切り、数牌である[[2p]]のくっつきを優先しました。しかし、LuckyJは長期的な守備と打点価値のバランスを重視しています。[[2p]]を今処理することで未来の危険要因を早めに排除し、局が進行したときに危険な数牌を抱えて窮地に陥るのを防いでいます。",
+      "prompt": "この局において、プレイヤーの手牌の中で客風（オタ風）として機能している風牌は何ですか？",
+      "answer": "[[N]]"
+    }
+  },
+  "point-05_184_4_45": {
+    "guide": {
+      "read": "We are in East 4-2, West seat, holding 23,200 points. With no opponents declaring riichi or showing active melds yet in this middle stage, how do we balance our hand's developmental shape against future defensive risks? LuckyJ breaks the [[3p]][[4p]][[4p]] shape by discarding the simple [[4p]]. Because [[4p]] is a middle tile with relatively high potential danger compared to the terminal [[9p]], discarding it now while the board is quiet clears a major future liability. While Nishiki prefers to discard the terminal [[9p]] to keep the pair of [[4p]] for shape efficiency, doing so keeps the dangerous [[4p]] in hand. LuckyJ prioritizes proactive defense; by cutting the simple [[4p]] early, we avoid the risk of being forced to discard a dangerous middle tile later when an opponent declares riichi.",
+      "prompt": "Why is discarding the simple tile [[4p]] preferred over the terminal [[9p]] from a defensive standpoint?",
+      "answer": "Simple tiles like [[4p]] are statistically much more dangerous than terminal tiles like [[9p]] later in the hand, so discarding [[4p]] early during a quiet board eliminates a future high-risk liability."
+    },
+    "guide_ja": {
+      "read": "東4局2本場、私たちは西家で23,200点持ちです。相手からの立直や鳴きが入っていない中盤戦において、手牌の形と将来の守備リスクをどのように天秤にかければよいでしょうか。LuckyJは中張牌の[[4p]]を切り、[[3p]][[4p]][[4p]]の形を崩しました。[[4p]]は端牌の[[9p]]に比べて将来的な危険度が高いため、場が静かなうちに処理しておくことで、未来の危険因子をあらかじめ排除しています。NAGA（Nishiki）は手広さを維持するために端牌の[[9p]]切りを推奨していますが、それでは危険な[[4p]]を抱え続けることになります。LuckyJは将来の安全を先に見据え、他家から立直や仕掛けが入った後に危険な中張牌を勝負させられるリスクを避けるために、今のうちに[[4p]]を切り出しました。",
+      "prompt": "守備的な観点から、端牌である[[9p]]よりも中張牌である[[4p]]を先に切る方が好ましいのはなぜですか？",
+      "answer": "[[4p]]のような中張牌は、終盤において[[9p]]のような端牌よりも危険度が大幅に高くなるため、場が静かなうちに先に処理することで将来の高リスクな浮き牌を排除できるからです。"
+    }
+  },
+  "point-05_57_4_55": {
+    "guide": {
+      "read": "We are in East 2 as a non-dealer, holding 34,800 points. With kamicha already showing an active meld of [[E]], how do we balance our hand's value against the danger on the board? LuckyJ breaks the [[8m]][[9m]] block by cutting [[8m]], leaving [[9m]] floating. By discarding [[8m]] now, we proactively shed a future liability. The hand is currently 2-shanten and lacks high-speed potential. If we hold onto [[8m]] to maximize our ukeire, it could become a dangerous middle-stage tile to release once opponents push further. Keeping [[N]], which is already genbutsu to two opponents, provides a crucial defensive pivot. In contrast, Nishiki prioritizes raw efficiency by discarding [[N]], maintaining a wider shanten path (19 ukeire versus 14). However, with [[N]] already having three visible copies, it can no longer form a triplet. LuckyJ prioritizes defense and future board safety over immediate speed, avoiding carrying a dangerous simple tile into a developing hand.",
+      "prompt": "Why is [[N]] unable to become a triplet for self in this scenario?",
+      "answer": "Because 3 copies of [[N]] are already visible on the board (2 on the table/discards and 1 in our hand), leaving only 1 copy remaining in the wall, which is insufficient to form a triplet."
+    },
+    "guide_ja": {
+      "read": "東2局の親番ではない子で、持ち点は34,800点です。上家がすでに[[E]]をポンして動いている中、手牌の価値と場への危険度をどのようにバランスさせるべきでしょうか。LuckyJは[[8m]]を切って[[8m]][[9m]]のブロックを外し、[[9m]]を浮かせました。ここで[[8m]]を先に切ることで、将来の危険牌となるリスクを未然に排除しています。現在の手牌は2シャンテンで速度的に十分とは言えず、受け入れを最大化するために[[8m]]を残すと、他家がテンパイした際に極めて危険な無スジの浮き牌となってしまいます。すでに2軒の現物となっている[[N]]を残すことは、守備的な安全弁として非常に強力です。一方、Nishikiは効率を重視して現物の[[N]]を切り、受け入れ枚数を広く（受け入れ19枚対14枚）維持することを選択しました。しかし、[[N]]はすでに場に3枚見えており、コーツ化することは不可能です。LuckyJは速度よりも将来の安全性を最優先し、遅い手牌で危険な中張牌を抱え込むリスクを嫌った選択をしました。",
+      "prompt": "この局面において、[[N]]がコーツにならないのはなぜですか？",
+      "answer": "すでに場に3枚（河と他家の捨て牌に2枚、手牌に1枚）見えているため、山には残り1枚しかなく、コーツを作ることは不可能だからです。"
+    }
+  },
+  "point-06_98_2_5": {
+    "guide": {
+      "read": "We are in East 2-1 as a non-dealer, holding 23000 points. With the board still quiet in the early stage and no active threat on the table, how do we value our hand shape while planning for our future value? LuckyJ discards the isolated terminal [[1s]] to clean up the hand shape while holding onto the guest wind [[S]]. Although [[S]] does not carry yaku value for us, keeping it provides a safer floating tile for defense compared to the terminal [[1s]], which has low utility given our existing souzu blocks. Nishiki's path of discarding [[S]] maximizes raw ukeire, but it discards a valuable safety buffer early on. LuckyJ prioritizes building a safer, more resilient structure from 4-shanten, accepting a minor drop in immediate ukeire for a better early defensive anchor.",
+      "prompt": "What is the player's seat wind, and does it carry yaku value in this round?",
+      "answer": "West (W). Yes, it is an active yaku wind for the player."
+    },
+    "guide_ja": {
+      "read": "東2局1本場、私たちは西家で持ち点は23,000点です。他家にリーチや仕掛けの動きがない平穏な序盤戦において、手牌の将来価値を見据えながら手牌全体の形をどのように評価すべきでしょうか。LuckyJは孤立している端牌の[[1s]]を切り、オタ風の[[S]]を手元に残しました。[[S]]は役牌ではありませんが、索子の既存のブロック構成から見て不要な[[1s]]を残すよりも、安全度の高い浮き牌として機能します。Nishikiは[[S]]を切ることで受入枚数を最大化させようとしますが、序盤における貴重な安全牌を失うことになります。LuckyJは4シャンテンという遠い段階において、僅かな受入枚数の低下を受け入れ、より柔軟で守備力のある手厚い構えを優先しました。",
+      "prompt": "この局におけるプレイヤーの自風は何ですか？また、それは役牌ですか？",
+      "answer": "西（W）です。自風であり、役牌となります。"
+    }
+  },
+  "point-06_82_1_11": {
+    "guide": {
+      "read": "We are in East 2-0, holding 24000 points. With toimen already showing active melds, how do we balance our hand's developmental speed against its eventual value and safety? LuckyJ breaks the [[7p]][[9p]] block by cutting [[9p]]. This discard sacrifices a single tile of visible ukeire, but it preserves our seat wind [[S]]. Because [[S]] is a yaku tile that has already been discarded by toimen, it serves a dual purpose: a speculative value switch and a reliable genbutsu safety tile against the only active threat on the board. Nishiki chooses to discard [[S]] to maximize raw efficiency. However, LuckyJ prioritizes building early value and maintaining defensive flexibility, choosing to invest in a higher-potential future rather than rushing a low-value, defenseless hand.",
+      "prompt": "Why is retaining the [[S]] tile strategically valuable for LuckyJ in this situation, beyond its potential as a yakuhai?",
+      "answer": "Because it is a genbutsu safety tile against toimen, who has already declared an open meld."
+    },
+    "guide_ja": {
+      "read": "東2局0本場、持ち点24000点の状況です。対面がすでに仕掛けを入れている中、手牌の進行速度と将来的な打点や安全性のバランスをどう取るべきでしょうか。LuckyJは[[9p]]を切り、[[7p]][[9p]]のカンチャンブロックを崩しました。この打牌は受け入れ枚数を1枚損しますが、自風牌である[[S]]を残すことができます。[[S]]は自風の役牌であるだけでなく、すでに対面が切っているため、価値向上の種と仕掛けに対する現物安全牌という二重の役割を果たします。Nishikiは効率を最大化するために[[S]]の切り出しを選択しましたが、LuckyJは序盤の打点構想と守備の柔軟性を重視し、安くて不安定な手に直進するのではなく、より可能性のある未来への投資を選びました。",
+      "prompt": "この状況において、役牌としての重なり以外で[[S]]を手元に残すことにどのような戦略的価値がありますか？",
+      "answer": "すでに副露（仕掛け）を入れている対面に対して、現物の安全牌として機能するためです。"
+    }
+  },
+  "point-07_1_9_65": {
+    "guide": {
+      "read": "We are in South 4-1 as the dealer, holding 31,900 points. With toimen already showing an active meld of [[W]][[W]][[W]], how do we balance our hand's speed against the pressure of the final round? LuckyJ calls pon on the third [[S]] discarded by kamicha, discarding [[F]] to advance our shape. With three [[S]] visible on the board after this discard, passing this tile would permanently kill our ability to form a triplet of the prevalent wind. Calling now secures our yaku (Yakuhai: South) and forces a faster tempo to maintain our dealer equity. Nishiki and the other NAGA engines fully agree, with Nishiki also choosing the pon on [[S]] and discarding [[F]] with 1.0 probability. This call is not just about speed; it directly contests the board, preventing the game from sliding away in the final round while maintaining our dealer tenancy.",
+      "prompt": "Why is calling pon on [[S]] critical for securing a yaku in this hand?",
+      "answer": "Because [[S]] is the prevalent wind (yakuhai) and this was the third visible copy; passing it would make a triplet mathematically impossible."
+    },
+    "guide_ja": {
+      "read": "南4局1本場、親番で持ち点は31,900点。対面がすでに[[W]]をポンして動いている局面において、この最終盤のスピードと局へのコミットのバランスをどう評価すべきでしょうか。LuckyJは上家から打たれた3枚目の[[S]]をポンし、[[F]]を切って手の進展を図りました。この時点で場に[[S]]は3枚見えており、ここを見送ると場風である南のコーツを作ることは不可能になります。ここでポンを宣言することで、役牌（南）の1役を確定させ、親番を維持するためのテンポを一気に引き上げます。Nishikiを含むすべてのNAGAエンジンがこのポンを強力に支持し、打[[F]]（選択確率1.0）で一致しています。この鳴きは単なる速度向上にとどまらず、対面の仕掛けに対抗しつつ親番をキープするという明確な目的を持った選択です。",
+      "prompt": "この手牌で[[S]]をポンすることが役を確定させるために極めて重要である理由は何ですか？",
+      "answer": "[[S]]は場風（役牌）であり、これが3枚目の見えであるため、スルーするとコーツにすることが不可能になるからです。"
+    }
+  },
+  "point-06_77_3_11": {
+    "guide": {
+      "read": "We are in East 4, sitting South as a non-dealer, holding 23,000 points. With the game in the early stage and no active threat from our opponents, how do we balance our hand's developmental speed against the need to build value? LuckyJ breaks the [[1m]][[2m]] block by cutting [[1m]]. Because we are currently behind in third place, retaining the active seat wind [[S]] keeps open a path to a more valuable hand or a defensive retreat later. While Nishiki prefers to discard the [[S]] to maximize early ukeire, LuckyJ prioritizes the strategic value of the yakuhai tile over holding onto a weak terminal block.",
+      "prompt": "Which active yakuhai tile does LuckyJ decide to keep instead of discarding it?",
+      "answer": "S"
+    },
+    "guide_ja": {
+      "read": "私たちは東4局、子で23,000点持ちの3着目です。他家からのリーチや仕掛けといった脅威がない序盤において、手牌の速度と打点作りのバランスをどう評価すべきでしょうか。LuckyJは[[1m]]を切ることで[[1m]][[2m]]のブロックを外しました。現在3着目で打点が必要な状況であるため、自風の役牌である[[S]]を残すことで、打点の種や後半の安全牌としての機能を確保しています。Nishikiは[[S]]を切って手広さを最優先する選択をしましたが、LuckyJは目先の受け入れ枚数の減少を受け入れ、価値の低い端牌である[[1m]]を整理して、役牌重なりによるバリューアップを追求しました。",
+      "prompt": "LuckyJが切り出さずに手牌に残すことを選択した役牌は何ですか？",
+      "answer": "S"
+    }
+  },
+  "point-07_3_3_105": {
+    "guide": {
+      "read": "We are in East 4-0 as the dealer, holding 23,000 points. With the game reaching the late stage and only 18 tiles remaining in the wall, how do we value our hand's progression against the diminishing time? LuckyJ calls pon on the kamicha's [[2s]] and discards [[6p]]. This tempo call has a clear purpose: it instantly transitions our 1-shanten hand into tenpai with a [[7p]] kanchan wait, securing the tanyao and red-five dora yaku while keeping our dealer turn alive. Nishiki completely agrees with this decision, recognizing that staying closed would risk drawing nothing and losing the dealer initiative in the final turns. Rather than playing passively on a quiet board, calling here ensures we actively contest the hand before the wall runs out.",
+      "prompt": "What yaku makes this open hand valid, and how many points does a 2-han 30-fu hand score for a dealer?",
+      "answer": "Tanyao (All Simples); it scores 2,900 points."
+    },
+    "guide_ja": {
+      "read": "東4局の親番、持ち点23,000点の局面です。山に残る牌が18枚と終盤に差し掛かる中、手牌の進展と残り少ない局の時間をどのように天秤にかけるべきでしょうか。LuckyJは上家から打たれた[[2s]]をポンし、[[6p]]を切りました。このテンポを取る鳴きには明確な目的があります。一向聴から[[7p]]のカンチャン待ちテンパイへと即座に移行し、タンヤオと赤5p（ドラ）の役を確定させつつ親番を維持することです。Nishikiもこの判断に完全に同意しており、門前にこだわってノーテンで親番を流すリスクを避けるべきだと示しています。他家に動きがない静かな場であっても、ここで仕掛けることで、ツモがなくなる前に積極的にアガリ競争に参加することができます。",
+      "prompt": "この仕掛けた手牌を成立させている役は何ですか？また、親の2飜30符は何点になりますか？",
+      "answer": "タンヤオ（断幺九）で、点数は2,900点です。"
+    }
+  },
+  "point-07_6_0_113": {
+    "guide": {
+      "read": "We are in East 1 as a player, holding 25,000 points. With opponents already showing active melds, how do we balance our hand's value against the danger on the board? LuckyJ calls pon on [[P]] to secure our only active yakuhai triplet and speed up our development. This call serves a clear purpose: to contest a fast-paced board where kamicha has already opened Chun and shimocha has two open melds. After the call, the engines split on the discard: Nishiki prefers discarding [[2p]] to keep two pairs ([[3p]] and [[6p]]), while LuckyJ discards [[3p]] to rely on the [[2p]][[3p]] double-sided wait. By initiating this call, LuckyJ prioritizes tempo, turning a passive hand into an active participant.",
+      "prompt": "Which active yakuhai tile did LuckyJ call pon on in this hand?",
+      "answer": "[[P]]"
+    },
+    "guide_ja": {
+      "read": "東1局の子、持ち点25,000点。他家がすでに仕掛けを入れている中、手牌の価値と盤面の危険度をどのようにバランスさせるべきでしょうか。LuckyJは[[P]]をポンして、手牌唯一の役牌の刻子を確定させ、速度を引き上げます。この鳴きには、すでに中を鳴いた上家と、2副露している下家という速度の速い盤面に対抗するという明確な目的があります。ポンした後の打牌についてAIの間で意見が分かれ、Nishikiは[[3p]]と[[6p]]のトイツを残す[[2p]]切りを好むのに対し、LuckyJは[[2p]][[3p]]の両面タツを残す[[3p]]切りを選択しました。この仕掛けを入れることで、LuckyJはテンポを重視し、受け身の手牌から主体的にアガリへ向かう形へと変化させました。",
+      "prompt": "この手牌でLuckyJがポンした役牌は何ですか？",
+      "answer": "[[P]]"
+    }
+  },
+  "point-07_7_4_63": {
+    "guide": {
+      "read": "We are in South 1, holding 18,000 points. With no opponent currently declaring riichi but our hand lagging in value, how do we establish a concrete path to completion and contest the board? LuckyJ calls pon on the yakuhai [[P]] discarded by kamicha, and discards the guest wind [[E]]. By securing a guaranteed yaku and converting our pair of [[P]] into a completed triplet block, we actively contest the board. Discarding [[E]] is the natural follow-up, as three copies of [[E]] are already visible, rendering it useless for development. Nishiki and the other NAGA engines fully support this decision. This tempo call transforms a stagnant hand into an active threat, proving that opening our hand here serves a clear, proactive purpose.",
+      "prompt": "What guest wind tile does LuckyJ discard immediately after calling pon on [[P]]?",
+      "answer": "[[E]]"
+    },
+    "guide_ja": {
+      "read": "南1局、持ち点18,000点の3着目で手牌を進めています。他家に立直が入っていないものの、手牌の速度と打点が不十分な状況で、どのように和了への明確なルートを築き、局に対抗していくべきでしょうか。LuckyJは上家から打たれた役牌の[[P]]をポンし、客風の[[E]]を切りました。[[P]]をポンして面子を固定し、確定役を確保することで、局の主導権争いに加わります。[[E]]はすでに場と手牌を合わせて3枚見えており、今後の発展性がないため切り出します。NishikiをはじめとするNAGAモデルもこの打牌に完全に合意しています。この速度を合わせるための鳴き（テンポコール）は、停滞した手牌を能動的な脅威へと変化させ、目的を持った鳴きの好例となっています。",
+      "prompt": "[[P]]をポンした直後に、LuckyJが打牌した客風牌は何ですか？",
+      "answer": "[[E]]"
+    }
+  },
+  "point-07_15_0_65": {
+    "guide": {
+      "read": "We are in East 1-0 as the South player, holding 25,000 points. With the game in the middle stage and no opponents yet declaring riichi or making open melds, how do we evaluate our speed and the purpose of opening our hand? LuckyJ calls pon on the guest wind [[N]] from the toimen, then discards the near-dead [[P]] to transition into an open Honitsu (Half Flush) path. Because [[P]] has three visible tiles on the board, it cannot form a triplet, making it the perfect discard to trim. Nishiki and the other NAGA models completely agree with this decision, voting 100% to call pon and discard [[P]]. By making this call, LuckyJ speeds up the hand with a clear purpose: contesting the board by securing a high-value Honitsu route rather than letting the hand stagnate in a closed, slow shape.",
+      "prompt": "Which honor tile in the player's starting hand was already dead for triplet development due to 3 visible copies on the board?",
+      "answer": "[[P]]"
+    },
+    "guide_ja": {
+      "read": "東1局0本場、南家、持ち点25,000点の局面です。中盤に入り、他家に立直や副露の動きがない中、手牌の速度と鳴く目的をどのように評価すべきでしょうか。LuckyJは対面から出た客風の[[N]]をポンし、場に3枚見えている重なり目のない[[P]]を切って、オープンでの混一色（ホンイツ）へ移行しました。[[P]]はすでに3枚見えており、刻子になる可能性がないため、整理する打牌として最適です。にしきを含む他のNAGAモデルもこの判断に完全に一致しており、ポンして[[P]]切りを推奨しています。この鳴きを入れることで、LuckyJは単に手を進めるだけでなく、重い門前手にとどまるのを避け、打点のある混一色ルートを確定させて局をリードするという明確な目的を持って速度を上げているのです。",
+      "prompt": "手牌にある字牌のうち、場にすでに3枚見えており、刻子にすることが不可能だった牌は何ですか？",
+      "answer": "[[P]]"
+    }
+  },
+  "point-07_18_4_103": {
+    "guide": {
+      "read": "We are in East 3-0 as dealer, holding 25,900 points. With an opponent already declaring riichi in the late stage with only 20 tiles remaining, how do we balance our dealer equity against the danger on the board? LuckyJ calls pon on [[4p]] and discards the [[3p]] block. This tempo call is made with a specific purpose: to contest the active threat and push toward a tanyao tenpai, keeping our dealer turn alive. By calling [[4p]], we lock in a triplet and discard the superfluous [[3p]], leaving our hand at 1-shanten with a [[6p]][[8p]] kanchan and a [[3s]] pair. Nishiki and the other AI models fully agree with this decision, showing a near-unanimous consensus to pon [[4p]] and discard [[3p]]. While opening our hand under a riichi increases our vulnerability, folding passively as dealer is a significant loss of potential points. The call transforms our shape into a functional, fast-moving hand that can chase the riichi, rather than letting the opponent win uncontested.",
+      "prompt": "What is the seat wind of the player in this scenario?",
+      "answer": "East (Dealer)"
+    },
+    "guide_ja": {
+      "read": "私たちは東3局の親番、持ち点25,900点で、終盤（残りツモ20枚）に相手の立直が入った状況を迎えています。この局面で、親としての価値を守ることと、放銃リスクを回避する折衷案をどう見出すべきでしょうか？LuckyJは[[4p]]をポンし、[[3p]]のブロックを外す打牌を選択しました。この仕掛けは明確な目的を持った「速度のためのポン」です。すなわち、相手の立直に対抗してタンヤオのテンパイを目指し、親番を維持することです。[[4p]]をポンして不要な[[3p]]を切ることで、手牌は[[6p]][[8p]]のカンチャンと[[3s]]のトイツを残した1シャンテンにまとまります。Nishikiを含む他モデルもこの判断に完全合意しており、[[4p]]のポンと[[3p]]切りを支持しています。立直に対して手を開くことは放銃リスクを上げますが、親番で無条件にオリることは失点に直結します。この仕掛けは、ただベタオリするのではなく、手牌を戦える形に変えて勝負に行くための目的を持った鳴きなのです。",
+      "prompt": "この対局におけるプレイヤーの自風（席風）は何ですか？",
+      "answer": "東（親）"
+    }
+  },
+  "point-07_9_2_123": {
+    "guide": {
+      "read": "We are in East 3, holding 25,000 points. With the game entering the late stage and only 10 tiles remaining in the wall, how do we balance our hand's development against the rapidly closing window for tenpai? LuckyJ calls pon on the active yakuhai [[E]] and discards the isolated [[F]]. Because [[F]] already has 3 visible on the board (one in our hand and two in the discards), it is mathematically impossible to form a triplet with it, making it an obsolete tile. Nishiki completely agrees with this play, matching the pon and discard. By calling [[E]], we secure our yaku and advance to a flexible 1-shanten shape with a [[6p]][[7p]] sequence and a [[7s]] pair. This call is not just about speed; it directly contests the late-stage draw by establishing a clear path to tenpai-ten or a quick win before the wall runs out.",
+      "prompt": "How many tiles of [[F]] are visible on the board (including in our hand) before we discard it?",
+      "answer": "3 tiles"
+    },
+    "guide_ja": {
+      "read": "私たちは東3局、25000点持ちの状態で、残りツモ牌が10枚という終盤を迎えています。テンパイまでの猶予がほとんどない中、手の価値とテンパイへの復活をどのように天秤にかけるべきでしょうか。LuckyJは役牌の[[E]]をポンし、孤立している[[F]]を切りました。[[F]]はすでに盤面に3枚見えており（手牌に1枚、河に2枚）、コーツにすることは不可能なため、完全に不要牌となっています。Nishikiもこの打牌に完全に同意しており、同様にポンして[[F]]を切る選択を示しています。[[E]]を鳴くことで、役を確定させつつ[[6p]][[7p]]の両面と[[7s]]の対子を残したイーシャンテンに前進できます。この鳴きは単なる速度合わせではなく、ツモ牌がなくなる前にテンパイ料の確保や素早い和了を目指し、終盤のテンパイ競争に明確な目的を持って介入するためのものです。",
+      "prompt": "自分が捨てる前に、盤面（手牌を含む）に見えている[[F]]は合計何枚ですか？",
+      "answer": "3枚"
+    }
+  },
+  "point-15_1051_6_69": {
+    "guide": {
+      "read": "We are in South 2 as West, holding 26,000 points. With shimocha already showing two active melds, how do we balance our hand's development against the mounting threat on the board? LuckyJ discards [[6s]], breaking the [[5s]] [[6s]] [[6s]] [[8s]] [[8s]] block. While [[6s]] is suji to kamicha, it does not protect against shimocha, the only active threat. Rather than hoarding a stale safety tile that does not cover the primary danger, LuckyJ releases it. Nishiki, by contrast, chooses to discard [[9m]] first. However, keeping [[9m]] preserves our pair structure for paths like chiitoitsu or toitoi, and since [[6s]]'s safety value is expiring, discarding it now maintains the most flexible shape.",
+      "prompt": "Which opponent represents the active threat with two open melds?",
+      "answer": "Shimocha"
+    },
+    "guide_ja": {
+      "read": "南2局、26,000点持ちの西家。下家がすでに2副露している状況で、手牌の進行と盤面の脅威への備えをどう両立させるべきでしょうか。LuckyJは[[6s]]を切り、[[5s]] [[6s]] [[6s]] [[8s]] [[8s]]のブロックをほぐします。[[6s]]は上家に対してスジですが、現在唯一の脅威である下家に対しては安全ではありません。実質的な危険源に対応していない「期限切れの安全牌」を抱え続けるのではなく、LuckyJはここで先に見切る選択をしました。これに対し、Nishikiは[[9m]]の打牌を推奨します。しかし、[[9m]]のトイツを残すことでチートイツやトイトイといったルートへの柔軟性を残しつつ、安全性の価値が薄れた[[6s]]を先に処理する方が、手牌の進行においてより合理的です。",
+      "prompt": "2副露してアクティブな脅威となっている対戦相手は誰ですか？",
+      "answer": "下家"
+    }
+  },
+  "point-07_18_4_107": {
+    "guide": {
+      "read": "We are in East 3, holding 25,900 points as the dealer. With an opponent already declaring riichi late in the round and only 19 tiles remaining in the wall, how do we balance our hand's value against the danger on the board? LuckyJ calls pon on the [[3s]] from shimocha and discards [[6p]]. This tempo call has a clear purpose: it secures a 1-shanten tanyao hand to contest the opponent's riichi, keeping our dealer tenure alive rather than forcing us to fold passively. Nishiki agrees with this proactive strategy, supporting the pon at 51.5% and matching the [[6p]] discard at 74.8%. While Hibakari prefers to pass and Kagashi split-decides on discarding [[8p]], LuckyJ prioritizes advancing the hand to maintain dealer pressure. Calling here changes the flow of the late game, converting a slow closed hand into a viable threats-contesting shape.",
+      "prompt": "What is the primary purpose of LuckyJ's pon on the [[3s]] as dealer in this late stage?",
+      "answer": "To advance the hand to a 1-shanten tanyao shape to contest the opponent's riichi and preserve dealer equity."
+    },
+    "guide_ja": {
+      "read": "東3局、持ち点25900点の親番。終盤に入り、残りツモ牌が19枚となる中で他家からリーチが入っている状況です。この盤面の危険に対して、私たちは手牌の価値をどのように評価すべきでしょうか？ LuckyJは下家から打たれた[[3s]]をポンし、[[6p]]を切りました。このテンポを意識した鳴きには明確な目的があります。それは、親番を維持するためにベタオリを選択するのではなく、タンヤオの1シャンテンへと手を進めて相手のリーチに対抗することです。Nishikiはこの積極的な戦略に賛同しており、ポンを51.5%で支持し、かつ[[6p]]切りも74.8%で一致しています。Hibakariはスルーを好み、Kagashiは打牌の選択で[[8p]]切りへと分かれましたが、LuckyJは親のテンパイ料や和了を目指して手を前に進めることを優先しました。ここで鳴くことによって終盤の局の時計を動かし、遅い門前手から勝負可能な形へと昇華させています。",
+      "prompt": "この終盤において、親番のLuckyJが[[3s]]をポンした主な目的は何ですか？",
+      "answer": "タンヤオの1シャンテンに進めて相手のリーチに対抗し、親番を維持するため。"
+    }
+  },
+  "point-15_42_0_33": {
+    "guide": {
+      "read": "We are in East 1-0 as dealer, holding 25,000 points. With kamicha already showing an active meld with a pon of [[8p]], how do we balance our hand's developmental speed against keeping safe tiles? LuckyJ chooses to discard the isolated [[1m]], keeping the efficient [[3p]][[5p]][[6p]] shape intact. While Nishiki prefers discarding [[3p]] to preserve the safe [[1m]] in hand, this damages our development by breaking a useful block. Because [[1m]] is only genbutsu to toimen (who has no open melds) and is not safe against the active threat from kamicha, keeping it for defense is ineffective. LuckyJ prioritizes keeping our shapes flexible to maximize dealer equity, recognizing that keeping a stale safe tile that does not protect against the active threat is a losing strategy.",
+      "prompt": "Which opponent has an active open meld in this scenario?",
+      "answer": "Kamicha"
+    },
+    "guide_ja": {
+      "read": "東1局0本場、親番の持ち点25,000点。上家がすでに[[8p]]をポンして動いている状況で、手の進展速度と安全牌のキープをどのようにバランスさせるべきでしょうか。LuckyJは孤立している[[1m]]を切り、効率的な[[3p]][[5p]][[6p]]の形を維持しました。Nishikiは安全牌の[[1m]]を残すために[[3p]]切りを選択しましたが、これではブロックを崩して手の進展を阻害してしまいます。[[1m]]は対面（副露なし）の現物に過ぎず、現時点で仕掛けている上家に対しては安全ではないため、守備用に抱える効果は薄いです。LuckyJは、実質的な脅威に対して機能しない「期限切れの安全牌」を抱えるよりも、親番の価値を最大化するために受け入れの広さを維持することを優先しました。",
+      "prompt": "この局において、すでに副露（鳴き）を入れている相手は誰ですか？",
+      "answer": "上家"
+    }
+  },
+  "point-15_590_12_35": {
+    "guide": {
+      "read": "We are in South 3 as North, holding 15,200 points in 4th place. With Kamicha already showing an active [[C]] meld, how do we balance our hand's progression against the threat on the board? LuckyJ breaks the [[6p]][[6p]][[7p]] shape by cutting [[6p]]. While [[6p]] has a suji safety label to toimen, it does not offer safety against the active threat from Kamicha. Because its safety value is stale and we retain other defensive assets, hoarding it no longer justifies holding back our hand. In contrast, Nishiki prefers discarding [[3m]] to maximize ukeire to 15. However, LuckyJ recognizes that holding onto [[6p]] for its nominal safety is a trap when it doesn't cover the real threat on the board. Discarding this expired safety tile allows us to clean up our shape without clinging to false security.",
+      "prompt": "Which opponent poses the active threat with an open meld in this round?",
+      "answer": "Kamicha"
+    },
+    "guide_ja": {
+      "read": "私たちは南3局の北家、15,200点持ちの4位です。上家がすでに役牌の[[C]]をポンしてアガリに向かっている中、手牌の進展と盤面の危険度をどのようにバランスさせるべきでしょうか。LuckyJは[[6p]]を切り、[[2p]][[3p]][[4p]][[6p]][[6p]][[7p]]の形を崩す選択をしました。[[6p]]は対面に対してスジですが、現在アクティブな脅威である上家に対しては安全牌ではありません。この安全牌としての価値が薄れた[[6p]]を抱え続けることは、手牌の進行において非効率です。一方、Nishikiは受け入れ枚数を15枚に最大化するために[[3m]]の打牌を推奨しています。しかしLuckyJは、盤面の真の脅威に対応していない「期限切れの安全牌」に執着するリスクを回避しました。形骸化した安全牌である[[6p]]をここで処理することで、安易な安牌抱えを防ぎ、実質的な手牌構成を維持しています。",
+      "prompt": "この局で副露（ポン）をしており、現在アクティブな脅威となっているのはどのプレイヤーですか？",
+      "answer": "上家"
+    }
+  },
+  "point-15_854_3_24": {
+    "guide": {
+      "read": "We are in East 3-0 as a non-dealer, holding 17,200 points. With Kamicha already declaring a quad of [[9m]], we face an active threat on the board. How do we balance our hand's shape against the potential value of our active yakuhai tiles? LuckyJ breaks the [[4m]][[6m]][[7m]] block by discarding [[4m]]. Although [[4m]] is suji to Shimocha, it does not protect against Kamicha's active threat, meaning its safety value has effectively expired. By holding onto the seat wind [[W]], which is an active yakuhai for us, LuckyJ keeps a potential value route alive while retaining a flexible honor. In contrast, Nishiki discards the active yakuhai [[W]] to maximize tile efficiency and keep the wider 3-shanten shape. However, LuckyJ prioritizes discarding the stale safe tile [[4m]] over giving up the yakuhai potential, recognizing that holding a safe tile that doesn't answer the active threat is inefficient.",
+      "prompt": "Which opponent has declared a quad (kan) in this hand, and what tile was it?",
+      "answer": "Kamicha declared a quad of [[9m]]."
+    },
+    "guide_ja": {
+      "read": "私たちは東3局の子番で、持ち点は17,200点です。上家がすでに[[9m]]のカン（槓）をしており、盤上にアクティブな脅威が存在しています。このような状況で、手牌の受け入れ枚数と役牌の打点・重なりをどのようにバランスさせるべきでしょうか。LuckyJは[[4m]]を切り、[[4m]][[6m]][[7m]]のブロックをほぐす選択をしました。[[4m]]は下家に対してはスジですが、アクティブな脅威である上家に対しては安全牌とは言えず、安全牌としての価値はすでに期限切れとなっています。自風であり役牌である[[W]]を手元に残すことで、LuckyJは役牌やリーチルートを通じた打点の可能性と柔軟性を維持しています。対照的に、西（Nishiki）はアクティブな役牌である[[W]]を切り、3シャンテンの受け入れ枚数を最大化する効率的な一打を選びました。しかし、LuckyJは、現在の脅威に対応していない「期限切れの安全牌」である[[4m]]を抱えるよりも、役牌の価値を残す方が有効であると判断したのです。",
+      "prompt": "この局でカン（槓）を宣言している対戦相手は誰で、その牌は何ですか？",
+      "answer": "上家が[[9m]]をカンしています。"
+    }
+  },
+  "point-15_133_5_41": {
+    "guide": {
+      "read": "We are in South 1 as a non-dealer, holding 26,500 points. With toimen already showing three open melds and threatening a fast tenpai, how do we balance our hand's speed against the defensive utility of our tiles? LuckyJ decides to discard the single [[C]] tile, preserving our hand's shape without breaking any blocks. The [[C]] tile is genbutsu to kamicha, who has no open melds, but it is not safe against the active threat of toimen, carrying a high danger rating of 0.13. Nishiki, on the other hand, wants to play defensively by discarding the terminal [[1p]], which breaks our block and reduces our visible ukeire from 36 down to 27. Since [[C]] does not offer protection against the actual threat on the board, holding onto it is an illusion. LuckyJ correctly identifies that this safe tile has expired, prioritizing maximum efficiency for a potential riichi or ordinary closed-hand route.",
+      "prompt": "Who is the active threat in this hand, and what is their meld count?",
+      "answer": "Toimen, with 3 open melds."
+    },
+    "guide_ja": {
+      "read": "南1局、私たちは子で26,500点を持っています。対面がすでに3副露しており、テンパイが間近に迫っている状況において、手牌のスピードと安全牌の価値をどのように天秤にかけるべきでしょうか。LuckyJは手牌の形を崩すことなく、孤立している[[C]]を切り出しました。この[[C]]はノーテンの上家の現物ではありますが、本命の脅威である対面に対しては危険度が0.13と全く安全ではありません。一方、Nishikiは端牌の[[1p]]を切り出すことでブロックを崩し、有効牌の受け入れを36枚から27枚へと大きく減らす選択をしました。盤面の実際の脅威に対して機能しない安全牌を抱え続けることは無意味であり、その「安全牌としての価値」はすでに賞味期限切れとなっています。LuckyJはそれを的確に見抜き、受け入れを最大に保ちながら立直や門前進行のルートを残しました。",
+      "prompt": "この局における現在の主な脅威（警戒すべき相手）は誰で、その副露数はいくつか答えなさい。",
+      "answer": "対面で、3副露です。"
+    }
+  },
+  "point-15_459_2_53": {
+    "guide": {
+      "read": "We are in East 2 as North, holding 30,800 points. With shimocha already showing an active meld of the prevalent wind [[E]], how do we balance our hand's progression against the threat on the board? LuckyJ discards [[3p]], breaking the completed [[1p]][[2p]][[3p]] sequence and dropping to 3-shanten. In contrast, Nishiki discards the terminal [[9m]] to maintain the 2-shanten shape. Although [[3p]] is genbutsu to toimen and kamicha, it offers no protection against the active threat from shimocha. Because this safe tile fails to cover the live danger, it has essentially expired. Rather than hoarding a stale defensive tile at the cost of hand efficiency, LuckyJ chooses to spend the [[3p]] now. This decision highlights that a safe tile is only valuable if it targets the actual threat on the board.",
+      "prompt": "Which opponent has declared an open meld of [[E]], representing the active threat in this hand?",
+      "answer": "Shimocha"
+    },
+    "guide_ja": {
+      "read": "我々は東2局、北家で30,800点持ちです。下家がすでに場風の[[E]]をポンして仕掛けている状況で、手牌の進行と場への警戒をどのようにバランスさせるべきでしょうか。LuckyJは[[3p]]を切り、完成していた[[1p]][[2p]][[3p]]の順子を崩して3シャンテンへと戻します。対照的に、西木は端牌の[[9m]]を切ることで2シャンテンの形を維持することを選択します。[[3p]]は対面と上家に対して現物ですが、現在唯一のアクティブな脅威である下家に対しては安全ではありません。生じている具体的な危険に対して機能していないため、この安全牌は実質的に期限切れとなっています。手牌の効率を犠牲にしてまで役割を終えた安全牌を抱え込むのではなく、LuckyJはここで[[3p]]を整理することを選びました。この決断は、安全牌であっても現在の脅威に対応できなくなった時点でその価値が失われることを示しています。",
+      "prompt": "この局において、場風の[[E]]をポンしてアクティブな脅威となっているのはどこのプレイヤーですか？",
+      "answer": "下家"
+    }
+  },
+  "point-18_225_1_43": {
+    "guide": {
+      "read": "We are in East 2, holding 28,900 points as South (non-dealer) and currently in first place. With no active opponent melds or riichi declarations, how do we evaluate the role of our sole honor tile against our overall hand speed? LuckyJ discards the lone active yakuhai [[F]] (Hatsu), cleaning up the hand's only non-simple tile. By labeling the [[F]] not just as a generic honor but as a self-value tile that actively blocks our fastest yaku route (tanyao) in a pre-threat state, its early release becomes highly logical. In contrast, Nishiki prefers discarding [[8p]], keeping the [[F]] in hand. Nishiki's path preserves the yakuhai for a potential pair or safety tile (especially since [[8p]] is already genbutsu to kamicha), but it delays our transition to a fully open or closed tanyao hand. LuckyJ prioritizes the efficiency of a tanyao path over holding onto a speculative honor tile.",
+      "prompt": "What is the primary yaku route prioritized by discarding the honor tile [[F]] in this hand?",
+      "answer": "Tanyao (All Simples)"
+    },
+    "guide_ja": {
+      "read": "東2局、南家（子）で28,900点持ちのトップ目。他家に仕掛けや立直がない中、手牌の形と孤立した字牌の役割をどう評価すべきでしょうか。LuckyJは、唯一の役牌である生牌の[[F]]（發）を切り出しました。この一打により、手牌の残り13枚すべてが中張牌となり、タンヤオへのルートが明確になります。他家からの脅威がない状況において、[[F]]を単なる字牌としてではなく「タンヤオ移行を阻む不要な役牌」と位置づけることで、早期の切り出しが正当化されます。一方、ニシキは上家の現物である[[8p]]を切り、[[F]]を手元に残す選択をしました。これは役牌の重なりや安牌候補としての価値を残す選択ですが、タンヤオへの速度を損ねてしまいます。LuckyJは不確定な役牌重なりよりも、タンヤオによるアガリへの速度を優先し、字牌の役割を見極めて速やかに処理しました。",
+      "prompt": "この手牌で字牌の[[F]]を切ることによって、最優先される役のルートは何ですか？",
+      "answer": "タンヤオ（断么九）"
+    }
+  },
+  "point-18_278_1_49": {
+    "guide": {
+      "read": "We are in East 2 as the dealer, holding 25,000 points. With no opponents declaring riichi or showing active melds, how do we value our hand shape and the roles of our honor tiles? LuckyJ removes the lone [[E]] without breaking a block. In contrast, Nishiki prefers to discard [[4s]], breaking the [[4s]] [[4s]] [[5s]] [[6s]] shape. To understand this split, we must label the roles of our honors: [[E]] is a double-yakuhai tile for self-value (dealer wind and prevalent wind in East 2) but is currently a speculative lone tile. Meanwhile, [[W]] is a guest wind pair, and [[P]] is an active yakuhai pair. LuckyJ treats the lone [[E]] as a low-probability development that is not worth breaking a structured, active block of suited tiles. By releasing the [[E]], LuckyJ preserves a flexible 2-shanten hand with 14 visible ukeire. Nishiki's choice to discard [[4s]] aims for high dealer value via a potential [[E]] pair but sacrifices immediate shape efficiency.",
+      "prompt": "Why is the [[E]] tile considered a high-value honor in this specific round?",
+      "answer": "Because we are the dealer in the East round (East 2), making [[E]] a double-yakuhai tile that provides two yaku han if tripletized."
+    },
+    "guide_ja": {
+      "read": "東2局の親番、持ち点25,000点です。相手のリーチや鳴きが入っていない状況において、手牌のブロック構成と孤立字牌の役割をどのように評価すべきでしょうか。LuckyJはブロックを崩さずに孤立した[[E]]を切りました。対してニシキは、[[4s]] [[4s]] [[5s]] [[6s]]のブロックを崩す[[4s]]の打牌を推奨しています。この選択の違いを理解するには、字牌の役割を定義する必要があります。ここでの[[E]]は、親番かつ東場の「自風・場風のダブ東（役牌）」ですが、現状は1枚のみの孤立牌です。一方、[[W]]は客風の対子であり、[[P]]はすでに1枚切れの役牌の対子です。LuckyJは孤立したダブ東の[[E]]を「重なりが不確定な役牌」とラベリングし、機能している数牌のブロックを壊してまで残す価値は低いと判断しました。[[E]]を整理することで、14枚の有効牌を持つ2シャンテンを維持しています。ニシキの[[4s]]切りはダブ東による打点上昇を追った一打ですが、手牌の受け入れ効率を大きく狭めることになります。",
+      "prompt": "この局において、なぜ[[E]]が高価値な字牌とみなされるのですか？",
+      "answer": "東場の親番（東2局）であるため、[[E]]が重なって刻子になれば2飜（ダブ東）がつく役牌になるからです。"
     }
   }
 }

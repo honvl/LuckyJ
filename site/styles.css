@@ -1733,6 +1733,43 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   white-space: nowrap;
 }
 
+.discard-tiles {
+  align-items: center;
+  display: inline-flex;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.discard-tile-slot {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-block-size: calc(1.05 * var(--tile-size));
+  min-inline-size: calc(0.62 * var(--tile-size));
+}
+
+.riichi-discard-slot {
+  min-inline-size: calc(0.92 * var(--tile-size));
+}
+
+.riichi-discard-tile {
+  --riichi-align-shift: calc(0.086 * var(--tile-size));
+  display: inline-block;
+  position: relative;
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+.mahjong-table .player-current .riichi-discard-tile,
+.mahjong-table .player-across .riichi-discard-tile {
+  top: calc(-1 * var(--riichi-align-shift));
+}
+
+.mahjong-table .player-prev .riichi-discard-tile,
+.mahjong-table .player-next .riichi-discard-tile {
+  left: var(--riichi-align-shift);
+}
+
 .table-melds {
   display: flex;
   flex-wrap: nowrap;
@@ -1787,8 +1824,20 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 }
 
 .called-tile {
+  --called-align-shift: calc(0.064 * var(--tile-size));
+  position: relative;
   transform: rotate(90deg);
   transform-origin: center;
+}
+
+.mahjong-table .player-current .called-tile,
+.mahjong-table .player-across .called-tile {
+  top: var(--called-align-shift);
+}
+
+.mahjong-table .player-prev .called-tile,
+.mahjong-table .player-next .called-tile {
+  left: calc(-1 * var(--called-align-shift));
 }
 
 .case-links {

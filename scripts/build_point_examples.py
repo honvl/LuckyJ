@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -343,8 +344,9 @@ def discard_threat_profile(state, target, tile):
     }
 
 
-def table_context(start, target, hands, discards, melds, reached, dora_markers, state=None):
+def table_context(start, target, hands, discards, melds, reached, dora_markers, state=None, riichi_discard_indices=None):
     rendered_hands = [sorted(hand, key=lambda tile: (tile_id(tile), tile)) for hand in hands]
+    riichi_discard_indices = riichi_discard_indices or [None, None, None, None]
     return {
         "round": round_name(start),
         "dealer": rel_seat(start.get("oya"), target),
@@ -359,6 +361,7 @@ def table_context(start, target, hands, discards, melds, reached, dora_markers, 
                 "discards": discards[seat][:],
                 "melds": melds[seat][:],
                 "reached": bool(reached[seat]),
+                "riichi_discard_index": riichi_discard_indices[seat] if seat < len(riichi_discard_indices) else None,
             }
             for seat in range(4)
         ],
@@ -656,7 +659,20 @@ def end_summary(start, target):
     return f"draw, self delta {delta:+}"
 
 
-def common_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key):
+def common_case(
+    row,
+    kyoku_index,
+    pos,
+    start,
+    state,
+    hands,
+    discards,
+    melds,
+    reached,
+    dora_markers,
+    point_key,
+    riichi_discard_indices=None,
+):
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
     score = start.get("scores", [0, 0, 0, 0])[target]
@@ -679,12 +695,25 @@ def common_case(row, kyoku_index, pos, start, state, hands, discards, melds, rea
         "current_rank": current_rank(start, target),
         "report": row["report"],
         "paifu": row["paifu"],
-        "table": table_context(start, target, hands, discards, melds, reached, dora_markers, state),
+        "table": table_context(start, target, hands, discards, melds, reached, dora_markers, state, riichi_discard_indices),
         "outcome": end_summary(start, target),
     }
 
 
-def make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key):
+def make_discard_case(
+    row,
+    kyoku_index,
+    pos,
+    start,
+    state,
+    hands,
+    discards,
+    melds,
+    reached,
+    dora_markers,
+    point_key,
+    riichi_discard_indices=None,
+):
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
     actual = msg.get("real_dahai")
@@ -717,7 +746,20 @@ def make_discard_case(row, kyoku_index, pos, start, state, hands, discards, meld
                 "danger": discard_threat_value(state, target, model["top"]),
             }
         )
-    case = common_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key)
+    case = common_case(
+        row,
+        kyoku_index,
+        pos,
+        start,
+        state,
+        hands,
+        discards,
+        melds,
+        reached,
+        dora_markers,
+        point_key,
+        riichi_discard_indices,
+    )
     case.update(
         {
             "kind": "discard",
@@ -735,14 +777,41 @@ def make_discard_case(row, kyoku_index, pos, start, state, hands, discards, meld
             "model_heads": model_heads,
             "naga_prob": round(rows[0][1], 3),
             "actual_prob": round(rows[0][2], 3),
+            "actual_tile_safety": safety_read(actual, target, discards, reached, open_counts),
             "kept_tile_safety": safety_read(naga, target, discards, reached, open_counts),
         }
     )
     return case
 
 
-def make_yakuhai_cleanup_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, threats):
-    case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-13")
+def make_yakuhai_cleanup_case(
+    row,
+    kyoku_index,
+    pos,
+    start,
+    state,
+    hands,
+    discards,
+    melds,
+    reached,
+    dora_markers,
+    threats,
+    riichi_discard_indices=None,
+):
+    case = make_discard_case(
+        row,
+        kyoku_index,
+        pos,
+        start,
+        state,
+        hands,
+        discards,
+        melds,
+        reached,
+        dora_markers,
+        "point-13",
+        riichi_discard_indices,
+    )
     if not case:
         return None
     target = row["actor"]
@@ -759,7 +828,20 @@ def make_yakuhai_cleanup_case(row, kyoku_index, pos, start, state, hands, discar
     return case
 
 
-def make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key):
+def make_simple_discard_case(
+    row,
+    kyoku_index,
+    pos,
+    start,
+    state,
+    hands,
+    discards,
+    melds,
+    reached,
+    dora_markers,
+    point_key,
+    riichi_discard_indices=None,
+):
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
     actual = msg.get("real_dahai")
@@ -769,7 +851,20 @@ def make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discard
         return None
     naga = rows[0][0]
     open_counts = [len(player_melds) for player_melds in melds]
-    case = common_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key)
+    case = common_case(
+        row,
+        kyoku_index,
+        pos,
+        start,
+        state,
+        hands,
+        discards,
+        melds,
+        reached,
+        dora_markers,
+        point_key,
+        riichi_discard_indices,
+    )
     case.update(
         {
             "kind": "draw-tenpai",
@@ -797,17 +892,31 @@ def make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discard
             ],
             "naga_prob": round(rows[0][1], 3),
             "actual_prob": round(rows[0][2], 3),
+            "actual_tile_safety": safety_read(actual, target, discards, reached, open_counts),
             "kept_tile_safety": safety_read(naga, target, discards, reached, open_counts),
         }
     )
     return case
 
 
-def make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers):
+def make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, riichi_discard_indices=None):
     reach_prob = max((p / 10000.0 for p in state.get("reach", [])), default=0.0)
     if reach_prob < 0.5:
         return None
-    case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-08")
+    case = make_discard_case(
+        row,
+        kyoku_index,
+        pos,
+        start,
+        state,
+        hands,
+        discards,
+        melds,
+        reached,
+        dora_markers,
+        "point-08",
+        riichi_discard_indices,
+    )
     if case:
         case["kind"] = "reach"
         case["reach_prob"] = round(reach_prob, 3)
@@ -820,12 +929,39 @@ def make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds,
     return case
 
 
-def make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key, previous_state=None):
+def make_call_case(
+    row,
+    kyoku_index,
+    pos,
+    start,
+    state,
+    hands,
+    discards,
+    melds,
+    reached,
+    dora_markers,
+    point_key,
+    previous_state=None,
+    riichi_discard_indices=None,
+):
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
     if msg.get("actor") != target or msg.get("type") not in base.HURO_TYPES:
         return None
-    case = common_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, point_key)
+    case = common_case(
+        row,
+        kyoku_index,
+        pos,
+        start,
+        state,
+        hands,
+        discards,
+        melds,
+        reached,
+        dora_markers,
+        point_key,
+        riichi_discard_indices,
+    )
     consumed = msg.get("consumed", [])
     shape = post_call_eval(hands[target], consumed, msg.get("real_dahai"))
     case.update(
@@ -845,6 +981,30 @@ def make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, 
     call_heads = huro_model_heads(previous_state, target, msg.get("kind"))
     if call_heads:
         case["call_model_heads"] = call_heads
+    post_call_model_head_rows = model_rows(state, msg.get("real_dahai"))
+    if post_call_model_head_rows:
+        naga = post_call_model_head_rows[0]["top"]
+        case.update(
+            {
+                "post_call_naga": naga,
+                "post_call_naga_votes": [row["top"] for row in post_call_model_head_rows],
+                "post_call_model_heads": [
+                    {
+                        "key": model["key"],
+                        "label": model["label"],
+                        "label_ja": model["label_ja"],
+                        "top": model["top"],
+                        "top_prob": round(model["top_prob"], 3),
+                        "actual_prob": round(model["actual_prob"], 3),
+                        "matches_luckyj": model["matches_luckyj"],
+                        "matches_nishiki": same_tile(model["top"], naga),
+                    }
+                    for model in post_call_model_head_rows
+                ],
+                "post_call_naga_prob": round(post_call_model_head_rows[0]["top_prob"], 3),
+                "post_call_actual_prob": round(post_call_model_head_rows[0]["actual_prob"], 3),
+            }
+        )
     return case
 
 
@@ -963,23 +1123,51 @@ def eval_summary(item, lang):
     return f"{format_int(item.get('shanten'))}-shanten, {format_int(item.get('ukeire'))} visible ukeire, main accepts {waits}"
 
 
+def sotogawa_is_weak(target):
+    if target_has_genbutsu(target):
+        return False
+    sources = (target or {}).get("sotogawa_sources") or []
+    return bool(sources) and not any((source.get("position") or 0) <= 4 for source in sources)
+
+
+def target_has_genbutsu(target):
+    return bool((target or {}).get("genbutsu_sources"))
+
+
+def target_has_display_sotogawa(target):
+    return bool((target or {}).get("sotogawa_sources")) and not target_has_genbutsu(target)
+
+
+def safety_target(read):
+    against = read.get("against") or []
+    if not against:
+        return {}
+    live_targets = [
+        item
+        for item in against
+        if (item.get("genbutsu_sources") or item.get("suji_sources") or target_has_display_sotogawa(item))
+        and (item.get("reached") or item.get("open_melds"))
+    ]
+    return live_targets[0] if live_targets else against[0]
+
+
 def safety_read_sentence(read, lang):
     if not read or not (read.get("kind") or read.get("has_sotogawa")):
         return ""
-    target = (read.get("against") or [{}])[0]
-    kind = read.get("kind")
+    target = safety_target(read)
+    kind = target.get("kind") if target else read.get("kind")
     parts = []
     if lang == "ja":
         if kind:
             parts.append({"genbutsu": "現物", "suji": "筋"}.get(kind, kind))
-        if read.get("has_sotogawa"):
-            parts.append("外側牌（ソト側）")
+        if target_has_display_sotogawa(target):
+            parts.append("弱い外側牌（ソト側）" if sotogawa_is_weak(target) else "外側牌（ソト側）")
         threat = "リーチ" if target.get("reached") else f"{target.get('open_melds')}副露" if target.get("open_melds") else "静かな相手"
         return f"残る {tile_token(read.get('tile'))} は {seat_label(target.get('seat_label'), lang)} に対して{'かつ'.join(parts)}で、相手の状態は{threat}。"
     if kind:
         parts.append({"genbutsu": "genbutsu", "suji": "suji"}.get(kind, kind))
-    if read.get("has_sotogawa"):
-        parts.append("an outside tile (sotogawa)")
+    if target_has_display_sotogawa(target):
+        parts.append("a weak outside tile (sotogawa)" if sotogawa_is_weak(target) else "an outside tile (sotogawa)")
     threat = "riichi" if target.get("reached") else f"{target.get('open_melds')} calls" if target.get("open_melds") else "no called threat"
     return f"The kept {tile_token(read.get('tile'))} is {' and '.join(parts)} against the {seat_label(target.get('seat_label'), lang)} ({threat})."
 
@@ -990,8 +1178,26 @@ def call_model_sentence(case, lang):
         if lang == "ja":
             return "この鳴き例は手牌進行と鳴き後の打牌を中心に読む。"
         return "This call example is read through hand progress and the planned post-call discard."
+    post_heads = case.get("post_call_model_heads") or []
+    nishiki_post = model_head(post_heads, "nishiki")
+    post_discard = tile_token(case.get("discard_after_call"))
+    post_naga = tile_token((nishiki_post or {}).get("top"))
+    if all(head.get("supports_call") for head in heads):
+        actual = case.get("call", "call")
+        if nishiki_post and not nishiki_post.get("matches_luckyj"):
+            if lang == "ja":
+                labels = "、".join(head.get("label") or head.get("key") for head in heads)
+                return f"{labels} は全員 {actual} を第一候補にしている。ただし鳴いた後、ニシキは {post_discard} ではなく {post_naga} を切る。"
+            labels = ", ".join(head.get("label") or head.get("key") for head in heads)
+            return f"{labels} all make {actual} their top action. The split is after the call: Nishiki would discard {post_naga} instead of LuckyJ's {post_discard}."
+        if lang == "ja":
+            labels = "、".join(head.get("label") or head.get("key") for head in heads)
+            return f"{labels} は全員 {actual} を第一候補にしている。"
+        labels = ", ".join(head.get("label") or head.get("key") for head in heads)
+        return f"{labels} all make {actual} their top action."
     nishiki = model_head(heads, "nishiki")
     hibakari = model_head(heads, "hibakari")
+    kagashi = model_head(heads, "kagashi")
     actual = case.get("call", "call")
     if lang == "ja":
         parts = []
@@ -1004,6 +1210,13 @@ def call_model_sentence(case, lang):
                 parts.append(f"ヒバカリはスルー寄り ({format_percent(hibakari['pass_prob'])})")
             else:
                 parts.append(f"ヒバカリは別の {hibakari['top_action']} 寄り")
+        if kagashi:
+            if kagashi.get("supports_call"):
+                parts.append("カガシもこの鳴きを第一候補にしている")
+            elif kagashi.get("prefers_pass"):
+                parts.append(f"カガシはスルー寄り ({format_percent(kagashi['pass_prob'])})")
+            else:
+                parts.append(f"カガシは別の {kagashi['top_action']} 寄り")
         return "。".join(parts) + "。"
     parts = []
     if nishiki:
@@ -1018,7 +1231,29 @@ def call_model_sentence(case, lang):
             parts.append(f"Hibakari prefers passing ({format_percent(hibakari['pass_prob'])})")
         else:
             parts.append(f"Hibakari prefers a different {hibakari['top_action']} line")
+    if kagashi:
+        if kagashi.get("supports_call"):
+            parts.append("Kagashi also makes this call its top action")
+        elif kagashi.get("prefers_pass"):
+            parts.append(f"Kagashi prefers passing ({format_percent(kagashi['pass_prob'])})")
+        else:
+            parts.append(f"Kagashi prefers a different {kagashi['top_action']} line")
     return ". ".join(parts) + "."
+
+
+def call_heads_all_support(case):
+    heads = case.get("call_model_heads") or []
+    return bool(heads) and all(head.get("supports_call") for head in heads)
+
+
+def point03_has_naga_discrepancy(case):
+    nishiki = model_head((case or {}).get("call_model_heads") or [], "nishiki")
+    if not nishiki:
+        return False
+    if not nishiki.get("supports_call"):
+        return True
+    post_nishiki = model_head((case or {}).get("post_call_model_heads") or [], "nishiki")
+    return bool(post_nishiki) and not post_nishiki.get("matches_luckyj")
 
 
 def case_model_head(case, key):
@@ -1310,6 +1545,11 @@ def build_call_guide(case, lang):
     shape = case.get("post_call_eval") or {}
     post_shape = shanten_text(shape.get("shanten"), lang)
     model_read = call_model_sentence(case, lang)
+    consensus_call = call_heads_all_support(case)
+    nishiki_call = model_head(case.get("call_model_heads") or [], "nishiki")
+    nishiki_post = model_head(case.get("post_call_model_heads") or [], "nishiki")
+    nishiki_same_call_label = bool(nishiki_call) and nishiki_call.get("top_action") == call
+    post_call_split = bool(nishiki_post) and not nishiki_post.get("matches_luckyj")
     rank = case.get("current_rank") or case.get("rank")
     if lang == "ja":
         if point_key == "point-04":
@@ -1323,11 +1563,19 @@ def build_call_guide(case, lang):
         else:
             focus = f"閉じた手が間に合いにくい局面で、{call} 後の {discard} まで決めると {post_shape} まで進む。"
         rank_text = f"現在{rank}着" if rank else "現在着順不明"
+        if nishiki_call and nishiki_call.get("supports_call") and post_call_split:
+            why_not = f"ニシキも {call} するが、鳴いた後は {discard} ではなく {tile_token(nishiki_post.get('top'))} を切る。比較点はスルーではなく鳴き後打牌。"
+        elif nishiki_same_call_label and not nishiki_call.get("supports_call") and not nishiki_call.get("prefers_pass"):
+            why_not = f"ニシキも {call} を選ぶが、実戦とは別の {call} ラインを選ぶ。比較点はスルーではなく鳴き方の細部。"
+        elif consensus_call:
+            why_not = f"スルーは守備的な代案ではあるが、この局面で表示されている NAGA 各ヘッドはそれを第一候補にしていない。残り{case.get('left')}枚では、役ありテンパイを取る鳴きが現実的なルートになる。"
+        else:
+            why_not = f"門前維持は自然な選択。ただしこの局面では残り枚数と手牌 {meld or 'なし'} から、門前の理想形を待つ余裕が薄い。"
         return {
             "caption": f"{call} して {tile_plain(case.get('discard_after_call'))}",
             "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、{rank_text}。LuckyJ は {from_seat} から {called} を {call} し、{discard} を切る。結果: {case.get('outcome')}",
             "read": f"{focus} {model_read}".strip(),
-            "whyNot": f"門前維持は自然な選択。ただしこの局面では残り枚数と手牌 {meld or 'なし'} から、門前の理想形を待つ余裕が薄い。",
+            "whyNot": why_not,
             "copy": f"{call} が役、速度、テンパイ、または相手への圧力を作る時だけ真似する。鳴いた後の最初の打牌 {discard} まで先に決める。",
             "limit": "鳴いた後の安全牌や次の方針まで言える時に、LuckyJ 型のテンポになる。",
             "prompt": f"{called} を {call} するか。答える前に、鳴いた後に何を切るかを言う。",
@@ -1344,11 +1592,19 @@ def build_call_guide(case, lang):
     else:
         focus = f"The closed route is running out of practical turns; after the {call} and {discard}, the hand reaches {post_shape}."
     rank_text = f"currently {ordinal_en(rank)}" if rank else "current rank unknown"
+    if nishiki_call and nishiki_call.get("supports_call") and post_call_split:
+        why_not = f"Nishiki also chooses {call}, but after the call it would discard {tile_token(nishiki_post.get('top'))} instead of {discard}. The comparison is the post-call discard, not pass versus call."
+    elif nishiki_same_call_label and not nishiki_call.get("supports_call") and not nishiki_call.get("prefers_pass"):
+        why_not = f"Nishiki also chooses {call}, but on a different {call} line. The comparison is the call detail, not pass versus call."
+    elif consensus_call:
+        why_not = f"Passing is the defensive alternative, but the listed NAGA heads do not prefer it here. With {case.get('left')} tiles left, the open yaku tenpai is the practical route."
+    else:
+        why_not = f"Passing is tempting because it keeps the hand closed. With {case.get('left')} tiles left, the closed ideal may run out of useful turns."
     return {
         "caption": f"{call.capitalize()} on {tile_plain_english(case.get('called_tile'))}, discard {tile_plain_english(case.get('discard_after_call'))}",
         "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ has {format_int(case.get('score'))} points ({case.get('score_band')}), {rank_text}. LuckyJ calls {call} on {called} from the {from_seat}, then cuts {discard}. Result: {case.get('outcome')}",
         "read": f"{focus} {model_read}".strip(),
-        "whyNot": f"Passing is tempting because it keeps the hand closed. With {case.get('left')} tiles left, the closed ideal may run out of useful turns.",
+        "whyNot": why_not,
         "copy": f"Copy the {call} only when it creates yaku, speed, tenpai pressure, or denial, and when the first post-call discard {discard} is already planned.",
         "limit": "The call needs a named post-call discard and a next defensive tile to become LuckyJ-style tempo.",
         "prompt": f"Would you {call} on {called}? Before answering, name the discard after the call.",
@@ -1358,6 +1614,14 @@ def build_call_guide(case, lang):
 
 LLM_CACHE_PATH = Path("data/llm_guides_cache.json")
 LLM_CACHE = None
+FALSE_PASS_WHEN_CALLING_PATTERNS = [
+    re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:passes|passed)\b", re.I),
+    re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:opts|chooses|prefers|would)\s+to\s+pass\b", re.I),
+    re.compile(r"\bnishiki\b[^.。]{0,120}\bpass(?:es|ing|ed)?(?:\s+on)?\s+the\s+call\b", re.I),
+    re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:keep|keeps|maintain|maintains|remain|remains|staying)\b[^.。]{0,80}\bclosed\b", re.I),
+    re.compile(r"(?:nishiki|ニシキ|naga（nishiki）|naga)[^。]{0,100}スルー", re.I),
+    re.compile(r"(?:nishiki|ニシキ|naga（nishiki）|naga)[^。]{0,100}(?:門前|メンゼン)[^。]{0,80}維持", re.I),
+]
 
 def load_llm_cache():
     global LLM_CACHE
@@ -1375,6 +1639,27 @@ def load_llm_cache():
     return LLM_CACHE
 
 
+def cached_call_guide_conflicts(case, cached_entry):
+    if case.get("kind") != "call":
+        return False
+    nishiki = model_head(case.get("call_model_heads") or [], "nishiki")
+    if not nishiki or not (nishiki.get("supports_call") or nishiki.get("top_action") == case.get("call")):
+        return False
+    text = " ".join(
+        str((cached_entry.get(section) or {}).get(field, ""))
+        for section in ("guide", "guide_ja")
+        for field in ("read", "whyNot", "prompt", "answer")
+    )
+    text = (
+        text.replace("Nishiki does not pass", "")
+        .replace("Nishiki doesn't pass", "")
+        .replace("Nishiki はスルーしていません", "")
+        .replace("Nishikiはスルーしていません", "")
+        .replace("ニシキはスルーしていません", "")
+    )
+    return any(pattern.search(text) for pattern in FALSE_PASS_WHEN_CALLING_PATTERNS)
+
+
 def attach_example_guides(case):
     attach_shape_facts(case)
     if case.get("kind") == "call":
@@ -1388,11 +1673,12 @@ def attach_example_guides(case):
     key = f"{case.get('point')}_{case.get('game')}_{case.get('kyoku_index')}_{case.get('position')}"
     if key in cache:
         cached_entry = cache[key]
-        if "guide" in cached_entry:
+        use_cached = not cached_call_guide_conflicts(case, cached_entry)
+        if use_cached and "guide" in cached_entry:
             case["guide"]["read"] = cached_entry["guide"].get("read", case["guide"]["read"])
             case["guide"]["prompt"] = cached_entry["guide"].get("prompt", case["guide"]["prompt"])
             case["guide"]["answer"] = cached_entry["guide"].get("answer", case["guide"]["answer"])
-        if "guide_ja" in cached_entry:
+        if use_cached and "guide_ja" in cached_entry:
             case["guide_ja"]["read"] = cached_entry["guide_ja"].get("read", case["guide_ja"]["read"])
             case["guide_ja"]["prompt"] = cached_entry["guide_ja"].get("prompt", case["guide_ja"]["prompt"])
             case["guide_ja"]["answer"] = cached_entry["guide_ja"].get("answer", case["guide_ja"]["answer"])
@@ -1423,6 +1709,285 @@ def wants_candidate(selected, point_key, score):
     return len(rows) < POOL_PER_POINT or score > selected_min_score(selected, point_key)
 
 
+def safe_tile_class(tile):
+    if not tile:
+        return None
+    try:
+        return base.tile_class(tile)
+    except (AttributeError, KeyError):
+        return None
+
+
+def opponents(case):
+    table = case.get("table") or {}
+    return [player for player in table.get("players", []) if player.get("seat") != "self"]
+
+
+def opponent_open_count(case):
+    return sum(1 for player in opponents(case) if player.get("melds"))
+
+
+def opponent_meld_count(case):
+    return sum(len(player.get("melds") or []) for player in opponents(case))
+
+
+def opponent_riichi_count(case):
+    return sum(1 for player in opponents(case) if player.get("reached"))
+
+
+def active_threat_count(case):
+    return sum(1 for player in opponents(case) if player.get("reached") or player.get("melds"))
+
+
+def is_discard_case(case):
+    return case.get("kind") in {"discard", "draw-tenpai", "reach"}
+
+
+def numeric(value, default=None):
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def is_live_safety_read(read):
+    return bool(read and read.get("kind") and read.get("safe_against_threat"))
+
+
+def safety_read_has_target(read):
+    return bool(read and (read.get("kind") or read.get("has_sotogawa")))
+
+
+def retained_safety_count(eval_item, key="total"):
+    safety = (eval_item or {}).get("kept_safety") or {}
+    return int(safety.get(key) or 0)
+
+
+def eval_hand_tiles(eval_item):
+    return str((eval_item or {}).get("hand_after") or "").split()
+
+
+def eval_contains_tile_class(eval_item, classes):
+    return any(safe_tile_class(tile) in classes for tile in eval_hand_tiles(eval_item))
+
+
+def eval_tile_count(eval_item, tile):
+    if not tile:
+        return 0
+    return sum(1 for item in eval_hand_tiles(eval_item) if same_tile(item, tile))
+
+
+def tile_class_count_delta(actual_eval, naga_eval, key):
+    return (actual_eval or {}).get(key, 0) - (naga_eval or {}).get(key, 0)
+
+
+def branch_point_preserved(case):
+    actual_eval = case.get("actual_eval") or {}
+    naga_eval = case.get("naga_eval") or {}
+    naga = case.get("naga")
+    naga_cls = safe_tile_class(naga)
+    if naga_cls == "honor" and tile_class_count_delta(actual_eval, naga_eval, "kept_honors") > 0:
+        return True
+    if naga_cls == "terminal" and tile_class_count_delta(actual_eval, naga_eval, "kept_terminals") > 0:
+        return True
+    if eval_tile_count(actual_eval, naga) >= 2:
+        return True
+    return safety_read_has_target(case.get("kept_tile_safety"))
+
+
+def value_tradeoff_signal(case):
+    actual_eval = case.get("actual_eval") or {}
+    naga_eval = case.get("naga_eval") or {}
+    return (
+        tile_class_count_delta(actual_eval, naga_eval, "kept_honors") > 0
+        or tile_class_count_delta(actual_eval, naga_eval, "kept_terminals") > 0
+        or retained_safety_count(actual_eval, "against_threat") > retained_safety_count(naga_eval, "against_threat")
+    )
+
+
+def post_call_has_defensive_reserve(case):
+    shape = case.get("post_call_eval") or {}
+    return shape.get("pair_like_tiles", 0) > 0 or eval_contains_tile_class(shape, {"honor", "terminal"})
+
+
+def call_has_purpose(case):
+    heads = case.get("call_model_heads") or []
+    shape = case.get("post_call_eval") or {}
+    left = case.get("left") or 0
+    if any(head.get("supports_call") for head in heads):
+        return True
+    if shape.get("shanten") is not None and shape.get("shanten") <= 1 and left <= 40:
+        return True
+    return bool(heads) and any((head.get("actual_kind_prob") or 0) >= 0.25 for head in heads)
+
+
+def review_disagreement_signal(case):
+    heads = case.get("model_heads") or []
+    if not heads:
+        return False
+    nishiki = case_model_head(case, "nishiki")
+    if nishiki and (nishiki.get("top_prob") or 0) - (nishiki.get("actual_prob") or 0) >= 0.12:
+        return True
+    tops = {head.get("top") for head in heads if head.get("top")}
+    if len(tops) > 1:
+        return True
+    return any(head.get("matches_luckyj") and not head.get("matches_nishiki") for head in heads)
+
+
+def stale_safety_spend(case):
+    actual_read = case.get("actual_tile_safety") or {}
+    actual_eval = case.get("actual_eval") or {}
+    if not safety_read_has_target(actual_read):
+        return False
+    if is_live_safety_read(actual_read):
+        return False
+    return retained_safety_count(actual_eval, "against_threat") > 0
+
+
+def honor_role_signal(case):
+    if (case.get("yakuhai_cleanup") or {}).get("threats"):
+        return True
+    if safety_read_has_target(case.get("actual_tile_safety")):
+        return True
+    actual_d = numeric(case.get("actual_danger"))
+    return active_threat_count(case) > 0 or (actual_d is not None and actual_d >= 0.03)
+
+
+def case_has_naga_split(case):
+    if case.get("kind") == "call":
+        return point03_has_naga_discrepancy(case)
+    return bool(case.get("naga") and case.get("actual") and not same_tile(case.get("naga"), case.get("actual")))
+
+
+def point_candidate_eligible(point_key, case):
+    if not case:
+        return False
+
+    kind = case.get("kind")
+    actual_cls = safe_tile_class(case.get("actual"))
+    naga_cls = safe_tile_class(case.get("naga"))
+    stage = case.get("stage")
+    left = case.get("left") or 0
+    actual_d = numeric(case.get("actual_danger"))
+    naga_d = numeric(case.get("naga_danger"))
+    actual_eval = case.get("actual_eval") or {}
+    naga_eval = case.get("naga_eval") or {}
+    kept_read = case.get("kept_tile_safety") or {}
+    score = case.get("score") or 0
+    rank = case.get("current_rank") or case.get("rank")
+
+    if point_key == "point-01":
+        return (
+            kind == "discard"
+            and rank == 1
+            and score >= 35000
+            and actual_d is not None
+            and naga_d is not None
+            and actual_d <= naga_d + 0.02
+            and (naga_d - actual_d >= 0.05 or retained_safety_count(actual_eval, "against_threat") >= retained_safety_count(naga_eval, "against_threat"))
+        )
+    if point_key == "point-02":
+        return (
+            kind == "discard"
+            and stage == "early"
+            and opponent_riichi_count(case) == 0
+            and actual_cls == "simple"
+            and naga_cls in {"honor", "terminal"}
+            and branch_point_preserved(case)
+        )
+    if point_key == "point-03":
+        shape = case.get("post_call_eval") or {}
+        return kind == "call" and case.get("discard_after_call") not in {None, "?"} and point03_has_naga_discrepancy(case) and (shape.get("shanten") is None or shape.get("shanten") <= 1 or left <= 24)
+    if point_key == "point-04":
+        post_discard_cls = safe_tile_class(case.get("discard_after_call"))
+        return (
+            kind == "call"
+            and case.get("discard_after_call") not in {None, "?"}
+            and post_call_has_defensive_reserve(case)
+            and (active_threat_count(case) > 0 or post_discard_cls in {"honor", "terminal"})
+        )
+    if point_key == "point-05":
+        return (
+            kind == "discard"
+            and opponent_riichi_count(case) == 0
+            and opponent_meld_count(case) <= 1
+            and stage in {"early", "middle"}
+            and actual_cls == "simple"
+            and naga_cls in {"honor", "terminal"}
+            and actual_d is not None
+            and naga_d is not None
+            and actual_d >= naga_d
+            and actual_eval.get("shanten") is not None
+            and actual_eval.get("shanten") >= 1
+        )
+    if point_key == "point-06":
+        return (
+            kind == "discard"
+            and stage == "early"
+            and opponent_riichi_count(case) == 0
+            and case_has_naga_split(case)
+            and actual_eval.get("ukeire") is not None
+            and naga_eval.get("ukeire") is not None
+            and actual_eval.get("ukeire") < naga_eval.get("ukeire")
+            and (score < 30000 or rank in {3, 4})
+            and value_tradeoff_signal(case)
+        )
+    if point_key == "point-07":
+        shape = case.get("post_call_eval") or {}
+        return (
+            kind == "call"
+            and case.get("discard_after_call") not in {None, "?"}
+            and call_has_purpose(case)
+            and (left <= 40 or shape.get("shanten") is None or shape.get("shanten") <= 1)
+        )
+    if point_key == "point-08":
+        return kind == "reach" and case.get("actual_reach") and (case.get("reach_prob") is None or case.get("reach_prob") >= 0.5)
+    if point_key == "point-09":
+        return (
+            kind == "discard"
+            and case_has_naga_split(case)
+            and (stage in {"middle", "late"} or active_threat_count(case) > 0)
+            and actual_d is not None
+            and naga_d is not None
+            and actual_d < 0.02
+            and naga_d > 0.08
+        )
+    if point_key == "point-10":
+        return kind == "discard" and stage == "late" and left <= 24 and case_has_naga_split(case)
+    if point_key == "point-11":
+        return kind == "draw-tenpai" and stage == "late" and left <= 24 and "draw" in str(case.get("outcome", ""))
+    if point_key == "point-12":
+        return is_discard_case(case) and case_has_naga_split(case) and review_disagreement_signal(case)
+    if point_key == "point-13":
+        return kind == "discard" and stage == "early" and opponent_riichi_count(case) == 0 and actual_cls == "honor" and bool((case.get("yakuhai_cleanup") or {}).get("threats"))
+    if point_key == "point-14":
+        return kind == "discard" and is_live_safety_read(kept_read)
+    if point_key == "point-15":
+        return (
+            kind == "discard"
+            and active_threat_count(case) > 0
+            and actual_d is not None
+            and actual_d <= 0.15
+            and case_has_naga_split(case)
+            and stale_safety_spend(case)
+        )
+    if point_key == "point-16":
+        return kind == "discard" and stage in {"middle", "late"} and actual_cls == "terminal" and naga_cls == "simple"
+    if point_key == "point-17":
+        return kind == "discard" and active_threat_count(case) > 0 and is_live_safety_read(kept_read)
+    if point_key == "point-18":
+        return kind == "discard" and actual_cls == "honor" and honor_role_signal(case)
+    if point_key == "point-19":
+        return (
+            kind == "discard"
+            and rank == 1
+            and (score >= 35000 or stage in {"middle", "late"})
+            and (actual_d is None or naga_d is None or actual_d <= naga_d + 0.02)
+            and (retained_safety_count(actual_eval, "against_threat") >= retained_safety_count(naga_eval, "against_threat") or actual_d is None or naga_d is None or actual_d < naga_d)
+        )
+    return True
+
+
 def baseline_example_bonus(candidate):
     if not candidate or candidate.get("kind") not in {"discard", "draw-tenpai", "reach"}:
         if candidate and candidate.get("kind") == "call" and not candidate.get("call_model_heads"):
@@ -1443,7 +2008,7 @@ def baseline_example_bonus(candidate):
 
 def add(selected, used, point_key, candidate, score=0.0):
     sig = candidate_signature(candidate)
-    if not candidate or not sig:
+    if not candidate or not sig or not point_candidate_eligible(point_key, candidate):
         return
     score += baseline_example_bonus(candidate)
     point_seen = used.setdefault(point_key, set())
@@ -1576,6 +2141,7 @@ def try_discard_points(
     reached,
     dora_markers,
     open_melds,
+    riichi_discard_indices=None,
     actual_declares_reach=False,
 ):
     msg = state.get("info", {}).get("msg", {})
@@ -1610,7 +2176,19 @@ def try_discard_points(
                 selected,
                 used,
                 "point-08",
-                make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers),
+                make_reach_case(
+                    row,
+                    kyoku_index,
+                    pos,
+                    start,
+                    state,
+                    hands,
+                    discards,
+                    melds,
+                    reached,
+                    dora_markers,
+                    riichi_discard_indices,
+                ),
                 score_value,
             )
 
@@ -1621,7 +2199,20 @@ def try_discard_points(
                 selected,
                 used,
                 "point-01",
-                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-01"),
+                make_discard_case(
+                    row,
+                    kyoku_index,
+                    pos,
+                    start,
+                    state,
+                    hands,
+                    discards,
+                    melds,
+                    reached,
+                    dora_markers,
+                    "point-01",
+                    riichi_discard_indices,
+                ),
                 score_value,
             )
 
@@ -1632,7 +2223,20 @@ def try_discard_points(
                 selected,
                 used,
                 "point-02",
-                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-02"),
+                make_discard_case(
+                    row,
+                    kyoku_index,
+                    pos,
+                    start,
+                    state,
+                    hands,
+                    discards,
+                    melds,
+                    reached,
+                    dora_markers,
+                    "point-02",
+                    riichi_discard_indices,
+                ),
                 score_value,
             )
 
@@ -1645,14 +2249,40 @@ def try_discard_points(
                 selected,
                 used,
                 "point-05",
-                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-05"),
+                make_discard_case(
+                    row,
+                    kyoku_index,
+                    pos,
+                    start,
+                    state,
+                    hands,
+                    discards,
+                    melds,
+                    reached,
+                    dora_markers,
+                    "point-05",
+                    riichi_discard_indices,
+                ),
                 score_value,
             )
 
     if stage == "early" and naga != actual:
         score_value = gap + (0.2 if score < 25000 else 0.0)
         if wants_candidate(selected, "point-06", score_value):
-            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-06")
+            case = make_discard_case(
+                row,
+                kyoku_index,
+                pos,
+                start,
+                state,
+                hands,
+                discards,
+                melds,
+                reached,
+                dora_markers,
+                "point-06",
+                riichi_discard_indices,
+            )
             if case and case["actual_eval"]["ukeire"] < case["naga_eval"]["ukeire"] and case["actual_eval"]["kept_honors"] >= case["naga_eval"]["kept_honors"]:
                 add(selected, used, "point-06", case, score_value)
 
@@ -1663,7 +2293,20 @@ def try_discard_points(
                 selected,
                 used,
                 "point-09",
-                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-09"),
+                make_discard_case(
+                    row,
+                    kyoku_index,
+                    pos,
+                    start,
+                    state,
+                    hands,
+                    discards,
+                    melds,
+                    reached,
+                    dora_markers,
+                    "point-09",
+                    riichi_discard_indices,
+                ),
                 score_value,
             )
 
@@ -1677,7 +2320,20 @@ def try_discard_points(
                 selected,
                 used,
                 "point-14",
-                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-14"),
+                make_discard_case(
+                    row,
+                    kyoku_index,
+                    pos,
+                    start,
+                    state,
+                    hands,
+                    discards,
+                    melds,
+                    reached,
+                    dora_markers,
+                    "point-14",
+                    riichi_discard_indices,
+                ),
                 score_value,
             )
 
@@ -1688,7 +2344,20 @@ def try_discard_points(
         if active_threats:
             score_value += 0.2
         if wants_candidate(selected, "point-15", score_value):
-            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-15")
+            case = make_discard_case(
+                row,
+                kyoku_index,
+                pos,
+                start,
+                state,
+                hands,
+                discards,
+                melds,
+                reached,
+                dora_markers,
+                "point-15",
+                riichi_discard_indices,
+            )
             add_best(selected, used, scores, "point-15", case, score_value)
 
     if naga != actual and actual_cls == "terminal" and naga_cls == "simple" and stage in {"middle", "late"}:
@@ -1698,7 +2367,20 @@ def try_discard_points(
         if actual_d is not None and naga_d is not None:
             score_value += max(0.0, naga_d - actual_d)
         if wants_candidate(selected, "point-16", score_value):
-            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-16")
+            case = make_discard_case(
+                row,
+                kyoku_index,
+                pos,
+                start,
+                state,
+                hands,
+                discards,
+                melds,
+                reached,
+                dora_markers,
+                "point-16",
+                riichi_discard_indices,
+            )
             add_best(selected, used, scores, "point-16", case, score_value)
 
     if naga != actual and naga_read["kind"] and naga_read["safe_against_threat"]:
@@ -1706,7 +2388,20 @@ def try_discard_points(
         if stage in {"middle", "late"}:
             score_value += 0.2
         if wants_candidate(selected, "point-17", score_value):
-            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-17")
+            case = make_discard_case(
+                row,
+                kyoku_index,
+                pos,
+                start,
+                state,
+                hands,
+                discards,
+                melds,
+                reached,
+                dora_markers,
+                "point-17",
+                riichi_discard_indices,
+            )
             add_best(selected, used, scores, "point-17", case, score_value)
 
     if naga != actual and actual_cls == "honor" and naga_cls == "simple" and tile_count(hands[target], actual) == 1:
@@ -1716,7 +2411,20 @@ def try_discard_points(
         if active_threats:
             score_value += 0.1
         if wants_candidate(selected, "point-18", score_value):
-            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-18")
+            case = make_discard_case(
+                row,
+                kyoku_index,
+                pos,
+                start,
+                state,
+                hands,
+                discards,
+                melds,
+                reached,
+                dora_markers,
+                "point-18",
+                riichi_discard_indices,
+            )
             add_best(selected, used, scores, "point-18", case, score_value)
 
     if naga != actual and score >= 35000 and (actual_d is None or naga_d is None or actual_d <= naga_d + 0.02):
@@ -1726,7 +2434,20 @@ def try_discard_points(
         if stage in {"middle", "late"}:
             score_value += 0.2
         if wants_candidate(selected, "point-19", score_value):
-            case = make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-19")
+            case = make_discard_case(
+                row,
+                kyoku_index,
+                pos,
+                start,
+                state,
+                hands,
+                discards,
+                melds,
+                reached,
+                dora_markers,
+                "point-19",
+                riichi_discard_indices,
+            )
             add_best(selected, used, scores, "point-19", case, score_value)
 
     if stage == "late" and naga != actual:
@@ -1738,7 +2459,20 @@ def try_discard_points(
                 selected,
                 used,
                 "point-10",
-                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-10"),
+                make_discard_case(
+                    row,
+                    kyoku_index,
+                    pos,
+                    start,
+                    state,
+                    hands,
+                    discards,
+                    melds,
+                    reached,
+                    dora_markers,
+                    "point-10",
+                    riichi_discard_indices,
+                ),
                 score_value,
             )
 
@@ -1751,7 +2485,20 @@ def try_discard_points(
                 selected,
                 used,
                 "point-12",
-                make_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-12"),
+                make_discard_case(
+                    row,
+                    kyoku_index,
+                    pos,
+                    start,
+                    state,
+                    hands,
+                    discards,
+                    melds,
+                    reached,
+                    dora_markers,
+                    "point-12",
+                    riichi_discard_indices,
+                ),
                 score_value,
             )
 
@@ -1765,7 +2512,20 @@ def try_discard_points(
         if first_row and threats and actual_count == 1 and visible_count <= 1 and danger_ok:
             score_value = 100 - own_discards + gap + (0.3 if naga_cls != "honor" else 0.0)
             if wants_candidate(selected, "point-13", score_value):
-                case = make_yakuhai_cleanup_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, threats)
+                case = make_yakuhai_cleanup_case(
+                    row,
+                    kyoku_index,
+                    pos,
+                    start,
+                    state,
+                    hands,
+                    discards,
+                    melds,
+                    reached,
+                    dora_markers,
+                    threats,
+                    riichi_discard_indices,
+                )
                 add_best(selected, used, scores, "point-13", case, score_value)
 
     if start.get("end_msgs") and start["end_msgs"][0].get("type") != "hora":
@@ -1777,12 +2537,40 @@ def try_discard_points(
                     selected,
                     used,
                     "point-11",
-                    make_simple_discard_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-11"),
+                    make_simple_discard_case(
+                        row,
+                        kyoku_index,
+                        pos,
+                        start,
+                        state,
+                        hands,
+                        discards,
+                        melds,
+                        reached,
+                        dora_markers,
+                        "point-11",
+                        riichi_discard_indices,
+                    ),
                     score_value,
                 )
 
 
-def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, previous_state=None):
+def try_call_points(
+    selected,
+    used,
+    row,
+    kyoku_index,
+    pos,
+    start,
+    state,
+    hands,
+    discards,
+    melds,
+    reached,
+    dora_markers,
+    previous_state=None,
+    riichi_discard_indices=None,
+):
     msg = state.get("info", {}).get("msg", {})
     if msg.get("actor") != row["actor"] or msg.get("type") not in base.HURO_TYPES:
         return
@@ -1791,10 +2579,24 @@ def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, 
     post_discard = msg.get("real_dahai")
     exposed_bonus = 0.2 if msg.get("type") == "pon" else 0.1
     terminal_or_honor_exit = post_discard and base.tile_class(post_discard) in {"honor", "terminal"}
-    call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-03", previous_state)
+    call_case = make_call_case(
+        row,
+        kyoku_index,
+        pos,
+        start,
+        state,
+        hands,
+        discards,
+        melds,
+        reached,
+        dora_markers,
+        "point-03",
+        previous_state,
+        riichi_discard_indices,
+    )
 
     score_value = exposed_bonus + max(0.0, (70 - left) / 100) + call_score_adjustment(call_case or {})
-    if wants_candidate(selected, "point-03", score_value):
+    if point03_has_naga_discrepancy(call_case) and wants_candidate(selected, "point-03", score_value):
         add(
             selected,
             used,
@@ -1804,7 +2606,21 @@ def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, 
         )
 
     if active_threats or terminal_or_honor_exit:
-        call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-04", previous_state)
+        call_case = make_call_case(
+            row,
+            kyoku_index,
+            pos,
+            start,
+            state,
+            hands,
+            discards,
+            melds,
+            reached,
+            dora_markers,
+            "point-04",
+            previous_state,
+            riichi_discard_indices,
+        )
         score_value = 0.4 + 0.2 * active_threats + (0.2 if terminal_or_honor_exit else 0.0) + call_score_adjustment(call_case or {})
         if wants_candidate(selected, "point-04", score_value):
             add(
@@ -1815,7 +2631,21 @@ def try_call_points(selected, used, row, kyoku_index, pos, start, state, hands, 
                 score_value,
             )
 
-    call_case = make_call_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, "point-07", previous_state)
+    call_case = make_call_case(
+        row,
+        kyoku_index,
+        pos,
+        start,
+        state,
+        hands,
+        discards,
+        melds,
+        reached,
+        dora_markers,
+        "point-07",
+        previous_state,
+        riichi_discard_indices,
+    )
     score_value = 0.3 + exposed_bonus + (0.2 if left <= 40 else 0.0) + call_score_adjustment(call_case or {})
     if wants_candidate(selected, "point-07", score_value):
         add(
@@ -1842,6 +2672,8 @@ def collect_examples():
             melds = [[], [], [], []]
             open_melds = [0, 0, 0, 0]
             reached = [False, False, False, False]
+            pending_riichi_discard = [False, False, False, False]
+            riichi_discard_indices = [None, None, None, None]
             dora_markers = [start.get("dora_marker")] if start.get("dora_marker") else []
 
             for pos, state in enumerate(kyoku):
@@ -1872,7 +2704,8 @@ def collect_examples():
                             reached,
                             dora_markers,
                             open_melds,
-                            actual_declares_reach,
+                            riichi_discard_indices,
+                            actual_declares_reach=actual_declares_reach,
                         )
                     discard = msg.get("real_dahai")
                     if discard and discard != "?":
@@ -1894,6 +2727,7 @@ def collect_examples():
                         reached,
                         dora_markers,
                         previous_state,
+                        riichi_discard_indices,
                     )
                     consumed = msg.get("consumed", [])
                     call_tiles = consumed + ([msg.get("pai")] if msg.get("pai") else [])
@@ -1921,11 +2755,15 @@ def collect_examples():
                 elif msg_type == "reach":
                     if actor is not None:
                         reached[actor] = True
+                        pending_riichi_discard[actor] = True
 
                 elif msg_type == "dahai":
                     tile = msg.get("pai")
                     if actor is not None and tile:
                         discards[actor].append(tile)
+                        if pending_riichi_discard[actor]:
+                            riichi_discard_indices[actor] = len(discards[actor]) - 1
+                            pending_riichi_discard[actor] = False
 
     return selected
 
