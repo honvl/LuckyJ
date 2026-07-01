@@ -1679,11 +1679,9 @@ FALSE_AGREEMENT_PATTERNS = [
     re.compile(r"(?:nishiki|ニシキ|naga)[^。]{0,100}(?:完全に一致|全面的に一致|完全に同意|全面的に同意)", re.I),
 ]
 FALSE_TENPAI_CALL_SHAPE_PATTERNS = [
-    re.compile(r"\b(?:enter(?:ing|s|ed)?|mov(?:e|es|ing)|leav(?:e|es|ing))[^.。]{0,90}\b1-shanten\b", re.I),
-    re.compile(r"\b(?:flexible|active|real)\s+1-shanten\b[^.。]{0,60}\btenpai\b", re.I),
-    re.compile(r"\bone\s+step\s+away\s+from\s+tenpai\b", re.I),
-    re.compile(r"(?:一向聴|1シャンテン)に(?:進む|構え|する|した)", re.I),
-    re.compile(r"テンパイまであと一歩"),
+    re.compile(r"\bLuckyJ\b[^.。]{0,180}\b(?:1-shanten|one[- ]?away)\b", re.I),
+    re.compile(r"\b(?:This call|The call|After the call|By discarding|By calling)\b[^.。]{0,180}\b(?:1-shanten|one[- ]?away)\b", re.I),
+    re.compile(r"(?:LuckyJ|この鳴き|鳴いた後|切ることで)[^。]{0,180}(?:一向聴|1シャンテン|テンパイまであと一歩)", re.I),
 ]
 
 def load_llm_cache():
@@ -1732,6 +1730,21 @@ def cached_guide_conflicts(case, cached_entry):
         for field in ("read", "whyNot", "prompt", "answer")
     )
     if case_has_naga_split(case) and any(pattern.search(text) for pattern in FALSE_AGREEMENT_PATTERNS):
+        nishiki_call = model_head((case or {}).get("call_model_heads") or [], "nishiki")
+        nishiki_post = model_head((case or {}).get("post_call_model_heads") or [], "nishiki")
+        describes_post_call_split = bool(
+            case.get("kind") == "call"
+            and nishiki_call
+            and nishiki_call.get("supports_call")
+            and nishiki_post
+            and not nishiki_post.get("matches_luckyj")
+            and (
+                re.search(r"(post-call|after (?:the )?call|鳴いた後|副露後)[^.。]{0,100}(?:split|differs?|instead|分かれ|別)", text, re.I)
+                or re.search(r"(?:split|differs?|instead|分かれ|別)[^.。]{0,100}(post-call|after (?:the )?call|鳴いた後|副露後)", text, re.I)
+            )
+        )
+        if describes_post_call_split:
+            return cached_call_guide_conflicts(case, cached_entry)
         return True
     shape = case.get("post_call_eval") or {}
     if case.get("kind") == "call" and shape.get("shanten") is not None and shape.get("shanten") <= 0:
@@ -1757,13 +1770,7 @@ def attach_example_guides(case):
     key = f"{case.get('point')}_{case.get('game')}_{case.get('kyoku_index')}_{case.get('position')}"
     if key in cache:
         cached_entry = cache[key]
-        shape = case.get("post_call_eval") or {}
-        tenpai_call = case.get("kind") == "call" and shape.get("shanten") is not None and shape.get("shanten") <= 0
-        use_cached = (
-            not tenpai_call
-            and cached_llm_guide_current(cached_entry)
-            and not cached_guide_conflicts(case, cached_entry)
-        )
+        use_cached = cached_llm_guide_current(cached_entry) and not cached_guide_conflicts(case, cached_entry)
         if use_cached and "guide" in cached_entry:
             case["guide"]["read"] = cached_entry["guide"].get("read", case["guide"]["read"])
             case["guide"]["prompt"] = cached_entry["guide"].get("prompt", case["guide"]["prompt"])

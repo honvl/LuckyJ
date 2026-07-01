@@ -4,6 +4,7 @@ import urllib.request
 import os
 import argparse
 import subprocess
+import re
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import Counter
@@ -33,11 +34,12 @@ Strict Mahjong Rules & Constraints:
 7. For call examples, a model can choose the same call type but a different call line. Treat that as a real discrepancy, not agreement with LuckyJ.
 8. Never quote raw audit field names or model weights in reader-facing prose. Translate them into natural Mahjong commentary.
 9. The "Teaching Fit for This Point" section is authoritative. It explains why this exact example belongs under the playbook point. Do not move the example to a different lesson, and do not invent a current riichi/open-hand threat when the teaching fit says the example is pre-threat or has no opponent riichi.
+10. For call examples, "Post-Call Shape Facts" is authoritative. If the post-call shanten is 0, the hand is tenpai after the call and discard; NEVER describe LuckyJ's resulting hand as 1-shanten, one-away, or still trying to reach tenpai. If the post-call shanten is 1, describe it as 1-shanten, not tenpai.
 
 Style Guidelines for English (Alternative 2 style):
 - Start with first-person plural: "We are in [Round] [Dealer/Player status], holding [Score] points. [Context about board/opponents, e.g. 'With opponents already showing active melds' or 'With an opponent already declaring riichi']."
 - Ask a question about the hand state/threats: e.g. "how do we value our hand shape?" or "how do we balance our hand's value against the danger on the board?"
-- Describe LuckyJ's play, mentioning the block being broken or removed: "LuckyJ breaks the [[6m]][[7m]] block by cutting [[6m]]." or "LuckyJ discards the dangerous [[4s]] to preserve the 1-shanten hand shape." Use double brackets [[tile]] format for tiles (e.g., [[6m]]).
+- Describe LuckyJ's play, mentioning the block being broken or removed when the data supports it. Use the supplied shanten facts exactly: "LuckyJ breaks the [[6m]][[7m]] block by cutting [[6m]]." or "LuckyJ takes tenpai after the call by discarding [[4s]]." Use double brackets [[tile]] format for tiles (e.g., [[6m]]).
 - Explain why it is safe or why it is a threat buy, citing safety metrics from the data: "Because [[6m]] is genbutsu to toimen and suji to kamicha/shimocha, this discard offers excellent safety across the board." or "While Nishiki's path avoids immediate risk, it kills the hand's potential..."
 - Compare with Nishiki's choice only when the supplied data shows a different choice. If Nishiki agrees with LuckyJ, say so directly and do not invent a false contrast.
 - Summarize the strategic trade-off: "However, LuckyJ prioritizes defense over speed here. Discarding [[6m]] leaves [[7m]] floating..." or "LuckyJ pushes here, valuing the dealer equity over a passive fold."
@@ -99,6 +101,31 @@ def make_llm_request(prompt):
 
 def cache_entry_is_current(entry):
     return (entry or {}).get("meta", {}).get("prompt_version") == PROMPT_VERSION
+
+
+FALSE_TENPAI_CALL_SHAPE_PATTERNS = [
+    re.compile(r"\bLuckyJ\b[^.。]{0,180}\b(?:1-shanten|one[- ]?away)\b", re.I),
+    re.compile(r"\b(?:This call|The call|After the call|By discarding|By calling)\b[^.。]{0,180}\b(?:1-shanten|one[- ]?away)\b", re.I),
+    re.compile(r"(?:LuckyJ|この鳴き|鳴いた後|切ることで)[^。]{0,180}(?:一向聴|1シャンテン|テンパイまであと一歩)", re.I),
+]
+
+
+def cache_entry_text(entry):
+    return " ".join(
+        str((entry.get(section) or {}).get(field, ""))
+        for section in ("guide", "guide_ja")
+        for field in ("read", "prompt", "answer")
+    )
+
+
+def cached_guide_conflicts(case, entry):
+    if not entry:
+        return False
+    shape = case.get("post_call_eval") or {}
+    if case.get("kind") == "call" and shape.get("shanten") is not None and shape.get("shanten") <= 0:
+        text = cache_entry_text(entry)
+        return any(pattern.search(text) for pattern in FALSE_TENPAI_CALL_SHAPE_PATTERNS)
+    return False
 
 def get_winds_and_yakuhai(case):
     round_str = case.get("round", "")
@@ -754,8 +781,17 @@ Plausible Route Facts:
 """
 
     if is_call:
+        shape = case.get("post_call_eval") or {}
+        shanten = shape.get("shanten")
+        shanten_meaning = "tenpai" if shanten == 0 else ("complete hand" if shanten is not None and shanten < 0 else f"{shanten}-shanten" if shanten is not None else "unknown")
         prompt += f"""Decisions Comparison:
 - LuckyJ Call Action: Called {case.get('call')} on [[{case.get('called_tile')}]] from the {case.get('called_from', '')}, then discarded [[{case.get('discard_after_call')}]].
+
+Post-Call Shape Facts (AUTHORITATIVE):
+- Post-call shanten after LuckyJ's call and discard: {shanten} ({shanten_meaning}).
+- Concealed hand after call/discard: {shape.get('hand_after', '')}.
+- Pair-like tiles left after call/discard: {shape.get('pair_like_tiles')}.
+- If this says 0/tenpai, describe LuckyJ as already tenpai after the call and discard. Do not call LuckyJ's resulting hand 1-shanten or one-away.
 
 NAGA Call Model Heads:
 {call_model_heads_text(case)}
@@ -796,7 +832,7 @@ def process_example(case, guide_en, guide_ja, force):
         try:
             with open(CACHE_PATH, "r", encoding="utf-8") as f:
                 cache = json.load(f)
-                if key in cache and cache_entry_is_current(cache[key]):
+                if key in cache and cache_entry_is_current(cache[key]) and not cached_guide_conflicts(case, cache[key]):
                     return key, cache[key], True
         except Exception:
             pass
@@ -883,7 +919,7 @@ def main():
     examples_to_process = []
     for example in all_examples:
         key = f"{example['point']}_{example.get('game')}_{example.get('kyoku_index')}_{example.get('position')}"
-        if args.force or not cache_entry_is_current(cache.get(key)):
+        if args.force or not cache_entry_is_current(cache.get(key)) or cached_guide_conflicts(example, cache.get(key)):
             examples_to_process.append(example)
             
     print(
