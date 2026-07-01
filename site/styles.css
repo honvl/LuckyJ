@@ -1729,7 +1729,8 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 }
 
 .discard-row {
-  height: calc(2.25 * var(--display-base));
+  block-size: var(--tile-size);
+  height: var(--tile-size);
   white-space: nowrap;
 }
 
@@ -1741,15 +1742,20 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 }
 
 .discard-tile-slot {
+  --discard-step: calc(0.554 * var(--tile-size));
   align-items: center;
   display: inline-flex;
+  flex: 0 0 var(--discard-step);
   justify-content: center;
-  min-block-size: calc(1.05 * var(--tile-size));
-  min-inline-size: calc(0.62 * var(--tile-size));
+  min-block-size: var(--tile-size);
+  min-inline-size: var(--discard-step);
+  width: var(--discard-step);
 }
 
 .riichi-discard-slot {
-  min-inline-size: calc(0.92 * var(--tile-size));
+  flex-basis: var(--tile-size);
+  min-inline-size: var(--tile-size);
+  width: var(--tile-size);
 }
 
 .riichi-discard-tile {
@@ -1824,7 +1830,7 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 }
 
 .called-tile {
-  --called-align-shift: calc(0.064 * var(--tile-size));
+  --called-align-shift: calc(0.052 * var(--tile-size));
   position: relative;
   transform: rotate(90deg);
   transform-origin: center;
