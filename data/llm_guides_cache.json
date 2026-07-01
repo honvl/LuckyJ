@@ -753,14 +753,14 @@
   },
   "point-05_266_9_49": {
     "guide": {
-      "read": "We are in South 2-1, holding 46,300 points as dealer in the lead. With our hand at a slow 3-shanten, how do we evaluate our floating tiles and prepare for the inevitable progression of the round? LuckyJ chooses to discard [[6m]], breaking the loose [[6m]][[8m]] gap block and keeping the terminal [[9m]] instead. Because [[6m]] is a simple tile, holding it in a slow hand creates a major risk of it becoming a dangerous liability later in the round when opponents start threatening. In contrast, the terminal [[9m]] is much safer and easier to discard later if the hand fails to develop. Nishiki prefers to discard [[9m]], prioritizing raw tile efficiency (56 ukeire versus 48) by keeping the middle tile. However, LuckyJ prioritizes defense over speed here. Cleaning up the dangerous [[6m]] early prevents us from being caught with a high-liability floater when an opponent declares riichi, valuing our lead and defensive flexibility.",
-      "prompt": "Under the playbook point 'Cut the future liability now', why does LuckyJ prefer discarding [[6m]] over the terminal [[9m]] in this slow 3-shanten hand?",
-      "answer": "Because [[6m]] is a middle tile that will become highly dangerous to discard later if the hand remains slow, whereas the terminal [[9m]] is much safer to hold as a defensive option."
+      "read": "We are in South 2, 1 Honba as the dealer, holding 46,300 points in the lead. With the game in the middle stage and no opponents yet declaring riichi or showing open melds, how do we balance our slower hand's value against potential danger on the board? LuckyJ decides to discard the simple tile [[6m]], breaking the [[6m]][[8m]] gap block. Releasing the middle tile [[6m]] now while the board is calm eliminates a future liability that would be highly dangerous to discard later if an opponent declares riichi. Furthermore, discarding [[6m]] keeps the [[8m]][[9m]] block intact, which preserves our faraway 789 sanshoku doujun seed (with [[8m]][[9m]] needing [[7m]], [[7p]][[8p]][[9p]] complete, and [[7s]] needing [[8s]]/[[9s]]). In contrast, Nishiki suggests cutting the terminal [[9m]]. While Nishiki's path avoids immediate loss of general acceptance, it kills the hand's potential for 789 sanshoku and leaves us holding the dangerous simple tile [[6m]] as a future liability. LuckyJ prioritizes proactive defense and value, discarding [[6m]] early to clean up the hand before the table becomes dangerous.",
+      "prompt": "What is the player's seat wind and score in this scenario?",
+      "answer": "The player is East (dealer) with 46,300 points."
     },
     "guide_ja": {
-      "read": "南2局1本場、私たちは46,300点持ちのトップ目の親番です。手牌は重い3シャンテンですが、浮き牌の価値をどう評価し、局の後半に向けた安全設計をどう組み立てるべきでしょうか？LuckyJは[[6m]]を切り、緩い[[6m]][[8m]]のカンチャン受けを嫌って、端牌の[[9m]]を残す選択をしました。中張牌である[[6m]]は、この遅い手牌で抱え続けると、相手からのリーチや仕掛けが入った際に危険な放銃候補（未来の負債）になりかねません。一方で、[[9m]]は端牌であるため、後々安全に処理しやすい牌です。Nishikiは端牌の[[9m]]を切り、[[6m]]を残すことで受け入れ枚数（56枚対48枚）を最大化する効率的な一打を選びました。しかし、LuckyJは目先の効率よりも長期的な安全度と守備の柔軟性を重視しています。トップ目の親番だからこそ、危険な中張牌である[[6m]]を早めに処理し、他家からのリーチが入る前に未来の負債を解消しておくのがLuckyJの堅実な戦略です。",
-      "prompt": "「未来の負債を今切る」という戦術において、この遅い3シャンテンの手牌でLuckyJが端牌の[[9m]]よりも[[6m]]の切り出しを優先した理由は何ですか？",
-      "answer": "手牌が遅い段階で中張牌の[[6m]]を残すと、後々危険牌として処理に困る（未来の負債になる）可能性が高く、端牌の[[9m]]の方が守備的な安全弁として残す価値が高いから。"
+      "read": "私たちは南2局1本場の親番で、46,300点持ちのトップ目です。中盤に入り、相手にリーチや鳴きが入っていない状況で、進行の遅いこの手牌の価値と将来の盤面の危険性をどのように天秤にかけるべきでしょうか。LuckyJは数牌の[[6m]]を切り、[[6m]][[8m]]のカンチャンブロックを外す選択をしました。場が静かなうちに中張牌の[[6m]]を処理しておくことで、将来他家からリーチが入った際に危険牌となり得る浮き牌をあらかじめ排除しています。さらに、[[6m]]を切ることで[[8m]][[9m]]のブロックを残し、[[8m]][[9m]]（[[7m]]待ち）、完成面子の[[7p]][[8p]][[9p]]、そして[[7s]]（[[8s]]/[[9s]]待ち）による、遠い789の三色同順の種を維持することができます。これに対して、Nishikiは端牌の[[9m]]切りを推奨しています。Nishikiの選択は手広さを維持できるものの、789の三色の可能性を完全に消し去り、将来の危険牌となる[[6m]]を手牌に抱え続けることになります。LuckyJは先を見据えた守備と打点構想を優先し、場が危険になる前に[[6m]]を早めに処理して手を整理しました。",
+      "prompt": "この局におけるプレイヤーの風（門風）と持ち点は何点ですか？",
+      "answer": "東（親番）で、持ち点は46,300点です。"
     },
     "meta": {
       "prompt_version": "yaku-skeleton-v2",
@@ -769,14 +769,14 @@
   },
   "point-05_3_1_45": {
     "guide": {
-      "read": "We are in East 2, Round 0, playing as a non-dealer, holding 24,000 points. With opponents showing no active melds or riichi declarations in this middle stage, how do we balance our hand's speed against future dangers?\n\nLuckyJ breaks the [[3s]][[5s]][[6s]][[8s]] shape by discarding the [[8s]]. While keeping the [[8s]] could offer sequence-building potential, our hand is currently at 3-shanten with zero pairs, meaning it is still far from completion. By cutting [[8s]] now, we eliminate a middle-group tile that could become a dangerous liability if an opponent declares riichi later. Meanwhile, we retain [[F]]—which has three visible on the board and acts as a safe genbutsu against multiple opponents.\n\nNishiki, on the other hand, prefers to discard the safe [[F]] to preserve the shape and maximize tile acceptance (45 ukeire versus LuckyJ's 28). However, holding onto the slow [[3s]][[5s]][[6s]][[8s]] complex shape forces us to carry unsafe tiles. LuckyJ prioritizes defense and future safety over raw speed here. Recognizing that a slow hand cannot afford to hold onto middle-tile floaters, it proactively discards the future liability.",
-      "prompt": "Why is [[F]] considered a safe tile to hold in this hand, and why can it no longer be used to form a triplet?",
-      "answer": "[[F]] is genbutsu to two opponents, and since 3 copies are already visible (1 in hand, 2 on the board), it is mathematically impossible to form a triplet."
+      "read": "We are in East 2 as a non-dealer, holding 24,000 points. With no opponents declaring riichi or showing active melds yet, how do we balance our hand's slow development against future defensive needs? LuckyJ breaks the [[3s]][[5s]][[6s]][[8s]] block by cutting [[8s]]. While Nishiki discards the honor tile [[F]] to maximize tile acceptance, keeping the floating [[8s]] in our slow 3-shanten hand is a significant liability. Because [[F]] is already genbutsu against two opponents, and with 3 copies visible on the board, it cannot form a triplet; its utility is purely defensive. By discarding the future liability [[8s]] early, LuckyJ prepares for eventual threats while still keeping the 345 sanshoku doujun seed alive.",
+      "prompt": "Why is [[F]] highly valued as a defensive holding in this scenario, even though discarding it would increase tile acceptance?",
+      "answer": "It is genbutsu to two opponents and cannot form a triplet because three copies are already visible on the board, making it a pure safety tile for a slow 3-shanten hand."
     },
     "guide_ja": {
-      "read": "私たちは東2局0本場、西家（子）で24,000点持ちです。中盤に入り、他家にリーチや鳴きなどの目立った動きがない状況で、手の進展速度と将来の危険度のバランスをどう取るべきでしょうか。\n\nLuckyJは[[3s]][[5s]][[6s]][[8s]]の形から[[8s]]を切ってこのブロックを外しました。[[8s]]を残せば受け入れ枚数は広がりますが、現在0トイツの3シャンテンと手牌は極めて遅く、このまま抱え続けると他家からリーチが入った際に危険な浮き牌となりかねません。一方で、場に3枚見えている[[F]]（發）は下家と上家の現物であり、安牌として機能します。\n\n対照的に、西（Nishiki）は[[F]]を切ることで形を維持し、受け入れ枚数を最大化（有効牌45枚対LuckyJの28枚）する一打を推奨しました。しかし、遅い手牌で[[3s]][[5s]][[6s]][[8s]]の複雑な形を維持することは、将来的に危険牌を抱え込むリスクを伴います。LuckyJは速度よりも将来の安全性を優先し、手が進まない段階から危険になり得る浮き牌を先切りする選択をしました。",
-      "prompt": "この手牌において[[F]]が安全牌として抱えやすく、かつコーツ（刻子）にできない理由は何ですか？",
-      "answer": "[[F]]は他家2人に対して現物であり、また場にすでに3枚（手牌に1枚、場・捨牌に2枚）見えているため、コーツを作ることは数学的に不可能です。"
+      "read": "私たちは東2局の西家（子）、持ち点24,000点で、まだ他家に副露や立直といった動きはありません。この手牌の進行速度と、将来的な安全牌の確保をどう天秤にかけるべきでしょうか。LuckyJは[[8s]]を切って[[3s]][[5s]][[6s]][[8s]]のブロックをほぐす選択をしました。Nishikiは[[F]]を切ることで受け入れ枚数を最大に維持しますが、3シャンテンという遅い手牌で浮き牌の[[8s]]を持ち続けることは、将来的に大きな危険を伴います。[[F]]はすでに2人に対して現物であり、かつ場に3枚見えているため刻子になることもありません。純粋な安全牌として機能します。将来の危険牌となる[[8s]]を今のうちに処理しておくことで、LuckyJは345の三色同順の種を残しつつ、他家の攻めに備える守備的な構えを取っています。",
+      "prompt": "この場面において、[[F]]を切れば受け入れ枚数が増えるにもかかわらず、安全牌として残す価値が高いのはなぜですか？",
+      "answer": "2人に対して現物であり、すでに場に3枚見えているため刻子になることもなく、3シャンテンの遅い手牌において純粋な安全牌として機能するためです。"
     },
     "meta": {
       "prompt_version": "yaku-skeleton-v2",

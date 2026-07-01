@@ -1907,14 +1907,24 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 .mahjong-table .player-next .added-kan-stack .added-kan-stack-tile {
   left: calc(50% - var(--kan-stack-offset));
   top: calc(50% - 0.04 * var(--tile-size));
-  transform: translate(calc(-50% + var(--kan-stack-edge-shift)), -50%) rotate(90deg) scaleX(1.22);
+  transform: translate(calc(-50% + var(--kan-stack-edge-shift)), -50%) rotate(90deg);
 }
 
 .mahjong-table .player-prev .added-kan-stack .added-kan-stack-tile + .added-kan-stack-tile,
 .mahjong-table .player-next .added-kan-stack .added-kan-stack-tile + .added-kan-stack-tile {
   left: calc(50% + var(--kan-stack-offset));
   top: calc(50% - 0.04 * var(--tile-size));
-  transform: translate(calc(-50% + var(--kan-stack-edge-shift)), -50%) rotate(90deg) scaleX(1.22);
+  transform: translate(calc(-50% + var(--kan-stack-edge-shift)), -50%) rotate(90deg);
+}
+
+.mahjong-table .player-prev .added-kan-run .added-kan-neighbor-before,
+.mahjong-table .player-next .added-kan-run .added-kan-neighbor-before {
+  transform: translateY(calc(0.12 * var(--tile-size)));
+}
+
+.mahjong-table .player-prev .added-kan-run .added-kan-neighbor-after,
+.mahjong-table .player-next .added-kan-run .added-kan-neighbor-after {
+  transform: translateY(calc(-0.12 * var(--tile-size)));
 }
 
 .called-from-kamicha,

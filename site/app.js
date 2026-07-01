@@ -1067,18 +1067,28 @@ function tableMeld(meld) {
   const items = orderedMeldTiles(meld);
   if (!items.length) return "";
   const label = tileNamesText(items.map((item) => item.tile));
-  return `<span class="meld-run" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${items
+  const hasAddedKan = items.some((item) => item.addedKanTile);
+  return `<span class="meld-run${hasAddedKan ? " added-kan-run" : ""}" aria-label="${escapeHtml(
+    label
+  )}" title="${escapeHtml(label)}">${items
     .map(
-      (item) =>
-        item.addedKanTile
+      (item, index) => {
+        const adjacentKanClass =
+          !item.addedKanTile && items[index + 1]?.addedKanTile
+            ? " added-kan-neighbor-before"
+            : !item.addedKanTile && items[index - 1]?.addedKanTile
+              ? " added-kan-neighbor-after"
+              : "";
+        return item.addedKanTile
           ? `<span class="meld-tile-slot called-tile-slot added-kan-slot called-from-${item.calledFrom}"><span class="added-kan-stack">${tileIcon(
               item.tile,
               "meld-tile called-tile added-kan-stack-tile"
             )}${tileIcon(item.addedKanTile, "meld-tile called-tile added-kan-stack-tile")}</span></span>`
-          : `<span class="meld-tile-slot${item.called ? ` called-tile-slot called-from-${item.calledFrom}` : ""}">${tileIcon(
+          : `<span class="meld-tile-slot${adjacentKanClass}${item.called ? ` called-tile-slot called-from-${item.calledFrom}` : ""}">${tileIcon(
               item.tile,
               `meld-tile${item.called ? " called-tile" : ""}`
-            )}</span>`
+            )}</span>`;
+      }
     )
     .join("")}</span>`;
 }

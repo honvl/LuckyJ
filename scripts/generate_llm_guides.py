@@ -219,24 +219,35 @@ def detect_sanshoku_routes(counts):
     routes = []
     for start in range(1, 8):
         seeds = [sequence_seed_for(counts, suit, start) for suit in "mps"]
-        if all(len(seed["present"]) >= 2 for seed in seeds):
+        present_counts = [len(seed["present"]) for seed in seeds]
+        complete_count = sum(1 for seed in seeds if seed["kind"] == "complete")
+        has_faraway_skeleton = (
+            min(present_counts) >= 1
+            and sum(present_counts) >= 6
+            and complete_count >= 1
+        )
+        if all(count >= 2 for count in present_counts) or has_faraway_skeleton:
             route_tiles = f"{start}{start + 1}{start + 2}"
             parts = []
             missing = []
-            complete_count = 0
             for seed in seeds:
                 if seed["kind"] == "complete":
-                    complete_count += 1
                     parts.append(f"{' '.join(seed['present'])} complete")
+                elif seed["kind"] == "one-tile seed":
+                    parts.append(f"{' '.join(seed['present'])} only, needs {'/'.join(seed['missing'])}")
+                    missing.extend(seed["missing"])
                 else:
                     parts.append(f"{' '.join(seed['present'])} needs {'/'.join(seed['missing'])}")
                     missing.extend(seed["missing"])
-            strength = "strong" if complete_count or len(missing) <= 3 else "speculative"
+            strength = "strong" if all(count >= 2 for count in present_counts) else "faraway"
+            label = f"{route_tiles} sanshoku doujun seed"
+            if strength == "faraway":
+                label = f"faraway {label}"
             routes.append(
                 {
                     "name": f"{route_tiles} sanshoku doujun",
                     "strength": strength,
-                    "description": f"{route_tiles} sanshoku doujun seed: " + "; ".join(parts),
+                    "description": f"{label}: " + "; ".join(parts),
                     "missing": missing,
                 }
             )
@@ -333,7 +344,7 @@ def detect_triplet_family_routes(counts):
     routes = []
     pair_tiles = [tile for tile, count in counts.items() if count >= 2]
     triplet_tiles = [tile for tile, count in counts.items() if count >= 3]
-    triplet_seed_count = len(pair_tiles) + len(triplet_tiles)
+    triplet_seed_count = len(set(pair_tiles) | set(triplet_tiles))
     if triplet_seed_count >= 4:
         routes.append(route_line("toitoi", f"{triplet_seed_count} pair/triplet seed(s): {' '.join(pair_tiles[:8])}"))
 
@@ -430,6 +441,69 @@ def detect_sequence_routes(counts):
     return routes
 
 
+def counts_after_discard(counts, tile):
+    remaining = counts.copy()
+    tile = base_tile(tile)
+    if tile:
+        remaining[tile] -= 1
+        if remaining[tile] <= 0:
+            del remaining[tile]
+    return remaining
+
+
+def discard_route_impact_text(case):
+    counts = hand_counts(case)
+    rows = [
+        ("LuckyJ branch after actual discard", case.get("actual")),
+        ("Nishiki branch after top discard", case.get("naga")),
+    ]
+    lines = [
+        "- If a future-liability discard preserves a named sequence-yaku skeleton, mention that preserved route in the analysis.",
+        "- Do not claim a route for a branch when it disappears after that branch's discard.",
+    ]
+    for label, tile in rows:
+        if not tile:
+            continue
+        sequence_routes = detect_sequence_routes(counts_after_discard(counts, tile))
+        detail = ", ".join(sequence_routes) if sequence_routes else "none"
+        lines.append(f"- {label} [[{tile}]]: sequence yaku seeds still visible: {detail}")
+    return "\n".join(lines)
+
+
+def required_route_note_text(case):
+    counts = hand_counts(case)
+    actual = case.get("actual")
+    naga = case.get("naga")
+    if not actual or not naga:
+        return "- No discard-branch route note required."
+
+    actual_routes = set(detect_sequence_routes(counts_after_discard(counts, actual)))
+    naga_routes = set(detect_sequence_routes(counts_after_discard(counts, naga)))
+    luckyj_only = sorted(actual_routes - naga_routes)
+    both = sorted(actual_routes & naga_routes)
+    nishiki_only = sorted(naga_routes - actual_routes)
+
+    if luckyj_only:
+        return (
+            "- Mandatory reader-facing route note: LuckyJ's discard preserves "
+            + "; ".join(luckyj_only)
+            + ", while Nishiki's discard does not. Mention this preserved yaku skeleton explicitly."
+        )
+    if both:
+        return (
+            "- Mandatory reader-facing route note: both candidate branches preserve "
+            + "; ".join(both)
+            + ". Mention this shared yaku skeleton explicitly."
+        )
+    if nishiki_only:
+        return (
+            "- Mandatory reader-facing route note: Nishiki's discard preserves "
+            + "; ".join(nishiki_only)
+            + ", while LuckyJ's discard does not. Mention this cost explicitly."
+        )
+    return "- No named sequence-yaku route survives either candidate discard."
+
+
 def plausible_route_facts(case, active_yakuhai, visible):
     counts = hand_counts(case)
     pair_tiles = [tile for tile, count in counts.items() if count >= 2]
@@ -478,9 +552,10 @@ def plausible_route_facts(case, active_yakuhai, visible):
     else:
         do_not_claim.append(f"chiitoitsu is not a live plan now: only {len(pair_tiles)} pair(s) are present")
 
-    if len(pair_tiles) + len(triplet_tiles) < 3:
-        do_not_claim.append(f"toitoi is not a live plan now: only {len(pair_tiles)} pair/triplet seed(s) are present")
-    elif len(pair_tiles) + len(triplet_tiles) == 3:
+    triplet_seed_count = len(set(pair_tiles) | set(triplet_tiles))
+    if triplet_seed_count < 3:
+        do_not_claim.append(f"toitoi is not a live plan now: only {triplet_seed_count} pair/triplet seed(s) are present")
+    elif triplet_seed_count == 3:
         do_not_claim.append("toitoi is only a distant three-seed skeleton here; describe pair/triplet density instead of naming toitoi")
 
     value_pair_tiles = [tile for tile in pair_tiles if tile in active_yakuhai]
@@ -811,6 +886,10 @@ Player Hand: {case.get('hand', '')}
 
 Plausible Route Facts:
 {route_facts_text(route_facts)}
+
+Candidate Route Preservation:
+{discard_route_impact_text(case) if not is_call else "- Not applicable to call examples."}
+{required_route_note_text(case) if not is_call else ""}
 
 """
 
