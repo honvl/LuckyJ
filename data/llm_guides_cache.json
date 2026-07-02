@@ -337,14 +337,14 @@
   },
   "point-03_112_5_138": {
     "guide": {
-      "read": "With only five tiles remaining in the wall, securing tenpai payments becomes the primary objective. Holding a comfortable lead at 30,300 points in East 3-0, we must prioritize maximizing our draw equity as the round draws to a close. The NAGA engines decline the call on [[9p]] entirely, or if forced to call, discard [[6p]] which leaves the hand at 1-shanten. Passing or failing to secure tenpai here misses the crucial point of the late-stage clock. LuckyJ, backed by Mortal at 98%, pons the [[9p]] and discards the [[4s]], immediately stepping into tenpai with a [[6s]]/[[9s]] wait. Even without a yaku to win, securing tenpai ensures we collect points in noten payments instead of paying them out. When the wall runs thin, abandon traditional yaku development and call purely to claim your share of the draw equity.",
-      "prompt": "With 5 tiles remaining in the wall, what is the shanten of LuckyJ's hand after calling [[9p]] and discarding [[4s]]?",
-      "answer": "0 (tenpai)"
+      "read": "With only five tiles remaining in the wall, this late-game call is strictly about securing tenpai payments for the impending exhaustive draw. Nishiki and the other NAGA models prefer to pass the [[9p]], prioritizing defensive security over opening the hand. However, LuckyJ and Mortal (backing the call at 98%) recognize that staying closed virtually guarantees a no-tenpai penalty, whereas ponning the [[9p]] and discarding [[4s]] immediately places the hand in tenpai. Discarding the [[4s]] maintains a viable wait on [[6s]]/[[9s]] while keeping the red dora active in the hand. When the wall is nearly gone and active opponents have already revealed four melds, the immediate value of tenpai equity outweighs the defensive risk of exposing a set. Secure the tenpai when the clock runs out, provided the discard does not deal in.",
+      "prompt": "How many tiles are remaining in the wall when Kamicha discards [[9p]]?",
+      "answer": "5 tiles."
     },
     "guide_ja": {
-      "read": "山に残り5枚という終盤戦では、ノーテン罰符によるテンパイ料の確保が最優先課題となる。東3局、30,300点持ちのトップ目という状況において、流局間際にテンパイ料の期待値を最大化することは極めて重要だ。NAGAの各タイプは[[9p]]のスルーを選択し、仮に鳴いた場合でも[[6p]]を切って一向聴に留めようとする。しかし、ここでスルーしたりテンパイを逃したりすることは、終盤の局の時計を考慮していない。Mortalが98%で支持する通り、LuckyJは[[9p]]をポンして[[4s]]を切り、[[6s]]・[[9s]]待ちの形式テンパイを即座に入れた。アガリ役がなくとも、テンパイを取ることで流局時にテンパイ料を得るか、少なくとも支払いを回避できる。山が極端に薄くなったら、通常の役作りに固執せず、流局時のテンパイ料を確保するためだけにでも積極的に鳴くべきだ。",
-      "prompt": "山の残り枚数が5枚の局面で、[[9p]]をポンして[[4s]]を切った後のLuckyJの手牌のシャンテン数はいくつか？",
-      "answer": "0（テンパイ）"
+      "read": "残りツモ牌がわずか5枚という終盤において、この仕掛けは流局時テンパイ料の確保を最優先した一手である。にしきをはじめとするNAGA各モデルは、守備力を重視して[[9p]]のスルーを推奨している。しかし、LuckyJとMortal（ポン率98%）は、ここでスルーすればノーテン罰符を支払う可能性が極めて高くなるのに対し、[[9p]]をポンして[[4s]]を切れば即座にテンパイ（[[6s]]・[[9s]]待ち）を取れる点に着目した。[[4s]]を切ることで赤ドラを使い切りつつ、テンパイ料による収入を見込めるメリットは大きい。他家に計4つの仕掛けが入っている緊迫した局終盤では、手牌を開いてでもテンパイ料による加点（または失点回避）を狙う価値が、守備的なスルーの価値を上回る。",
+      "prompt": "上家が[[9p]]を切った時点で、山に残っているツモ牌は何枚ですか？",
+      "answer": "5枚。"
     },
     "meta": {
       "prompt_version": "pro-voice-v3",
@@ -961,30 +961,14 @@
   },
   "point-08_466_6_33": {
     "guide": {
-      "read": "Declaring a dealer riichi with an imperfect shanpon wait is a direct play for table pressure rather than hand perfection. Here, discarding [[1s]] sets up a shanpon wait on [[4s]] and the yaku tile [[C]] with 4 winning tiles remaining, whereas Nishiki's choice of [[4s]] leaves a thinner 3-tile wait on [[1s]] and [[C]] because [[1s]] is already heavily visible. Although both options preserve the background ittsu skeleton (123s complete, 4s/6s needing 5s, 7s/8s needing 9s), slowing down to resolve this shape is a luxury a last-place dealer cannot afford. Sitting in the danger zone at 10,100 points, declaring an immediate riichi converts this tenpai into a high-pressure threat that taxes every opponent's future discards. Mortal completely supports LuckyJ's line with a 100% preference for declaring riichi. In these low-score situations, weaponize the dealer status immediately to force folds and reclaim equity rather than waiting for a perfect side-wait.",
-      "prompt": "What is the total number of winning tiles (ukeire) for LuckyJ's shanpon wait after discarding [[1s]]?",
-      "answer": "4 tiles (two [[4s]] and two [[C]] tiles remaining)."
+      "read": "Declaring dealer riichi on a shanpon wait is an easy decision here, but choosing which pair to break reveals a critical split in engine priorities. Sitting in fourth place with 10,100 points in East 4, we must maximize our winning probability to claw back into the game. Discarding [[4s]] to wait on [[1s]] and the yakuhai [[C]] preserves the classic bait of a terminal wait, but because one [[1s]] is already visible on the board, this leaves us with only 3 outs. LuckyJ opts to discard the [[1s]] instead, choosing the wider 4-out wait on [[4s]] and [[C]] to maximize self-draw potential. While both discards preserve the distant ittsu skeleton (s-suit 123/456/789 seed: 1s 2s 3s complete; 4s 6s needs 5s; 7s 8s needs 9s), LuckyJ's choice leans into the raw math of the wait. Mortal supports the riichi declaration itself at 100%, confirming that the pressure of a dealer riichi will freeze the table regardless of the wait. Prioritize raw tile volume over terminal baiting when dealer pressure is already sufficient to force defensive play.",
+      "prompt": "How many winning out tiles are available if you choose to discard [[4s]] instead of [[1s]]?",
+      "answer": "3 tiles (one [[1s]] and two [[C]] tiles)."
     },
     "guide_ja": {
-      "read": "シャボ待ちという不完全な形であっても、親番でのリーチ宣言は手牌の美しさよりも卓上への圧力を優先する一手となる。ここで[[1s]]を切ることで、残り4枚の[[4s]]と役牌[[C]]のシャボ待ちテンパイを取れるが、[[4s]]を切るにしきの選択はすでに3枚見えている[[1s]]と[[C]]の薄い3枚待ちになってしまう。両者ともにバックグラウンドの一気通貫の種（123s完成、4s・6sの5s受け、7s・8sの9s受け）を残してはいるが、この段階からその形への変化を待つ余裕はラス目の親にはない。点棒が10,100点の状況において、即リーチを打つことはテンパイを即座に強力な脅威へと変換し、他家の打牌を大きく制限することにつながる。Mortalもこの判断を完全に支持しており、リーチ宣言の選択率は100%を示している。点数が沈んでいる場面では、良形変化を待つよりも、親のリーチという武器で即座に他家を降ろし、局の主導権を握るべきである。",
-      "prompt": "[[1s]]を切ってテンパイを取った場合の、LuckyJのシャボ待ちの待ち牌の残り枚数（受入枚数）は合計何枚ですか？",
-      "answer": "4枚（山に残っている2枚の[[4s]]と2枚の[[C]]）。"
-    },
-    "meta": {
-      "prompt_version": "pro-voice-v3",
-      "model": "gemini-3.5-flash-low"
-    }
-  },
-  "point-08_702_2_9": {
-    "guide": {
-      "read": "The choice between waiting on the terminal [[9s]] or the simple [[3p]] defines this dealer chiitoitsu riichi. Holding a comfortable 41,000-point lead in East 1-2, declaring riichi immediately is the priority to convert dealer pressure into folding equity. Nishiki chooses to discard [[3p]] to wait on the terminal [[9s]], adhering to the standard heuristic that terminals are easier to win on. However, LuckyJ discards [[9s]] to wait on the [[3p]], a line strongly backed by Mortal's 99% preference. While both discards preserve the double-pair shape of [[7m]] and [[9m]] that forms an iipeikou or ryanpeikou seed, declaring riichi locks the hand into its final wait. In this early stage with no active threats, the dealer declaration itself does the heavy lifting, taxing every opponent's discard regardless of the specific wait. Trust the immediate pressure of the dealer riichi rather than over-optimizing for the perfect terminal wait.",
-      "prompt": "What is LuckyJ's seat wind in this round, and does it carry yaku value?",
-      "answer": "LuckyJ is in the East seat (dealer), and it carries double yaku value because the prevalent wind is also East."
-    },
-    "guide_ja": {
-      "read": "端牌の[[9s]]待ちにするか、中張牌の[[3p]]待ちにするかの選択が、この親の七対子リーチの方向性を決定づけている。東1局2本場、41,000点持ちのトップ目という状況において、親の圧力を相手への牽制と押し付けに変換するため、即リーチをかけることは最優先課題だ。西木（Nishiki）は端牌の方がアガリやすいというセオリー通り、[[3p]]を切って[[9s]]待ちを選択した。しかしLuckyJは[[9s]]を切り、[[3p]]待ちを選択。これはMortalも99%の確率で支持する一打だ。両方の選択肢ともに、[[7m]]と[[9m]]の対子による一盃口や二盃口の種を残す形ではあるが、リーチをかける以上はここで待ちが固定される。他家にまだ具体的な動きがないこの早い巡目では、親リーチの宣言自体が強力な牽制となり、待ちの良悪に関わらず相手の手を進めるコストを跳ね上げさせる。完璧な端牌待ちにこだわりすぎるよりも、親リーチがもたらす即時の圧力を信じるべきだ。",
-      "prompt": "この局におけるLuckyJの自風は何で、それは役牌になりますか？",
-      "answer": "東（親）であり、場風も東であるため、ダブル東の役牌になります。"
+      "read": "シャンポン待ちでの親立直は当然の判断だが、どの対子を外すかの選択にはエンジンごとの優先順位の違いが如実に表れている。東4局、10,100点持ちのラス目という状況では、和了確率を最大化して戦線に復帰することが求められる。[[4s]]を切って[[1s]]と役牌の[[C]]の待ちに受ける選択は、端牌待ちという古典的な出あがりやすさを残せるものの、[[1s]]がすでに1枚見えているため、山には3枚しか残っていない。LuckyJは代わりに[[1s]]を切り、[[4s]]と[[C]]の4枚残りの広い待ちを選択してツモ和了の可能性を最大化した。両者の打牌はともに索子の一気通貫（1s-2s-3sが完成、4s-6sに5sが必要、7s-8sに9sが必要）という遠い手役の種を残すものの、LuckyJの選択は純粋な残り枚数の多さを重視している。Mortalは立直宣言そのものを100%支持しており、親立直の圧力が待ちに関わらず卓を支配することを示している。親の圧力が相手の足を止めるのに十分な場面では、端牌の出あがりやすさよりも純粋な枚数の多さを優先すべきである。",
+      "prompt": "[[1s]]の代わりに[[4s]]を打牌した場合、和了牌は残り何枚になりますか？",
+      "answer": "3枚（[[1s]]が1枚、[[C]]が2枚）"
     },
     "meta": {
       "prompt_version": "pro-voice-v3",
@@ -993,30 +977,14 @@
   },
   "point-08_382_4_69": {
     "guide": {
-      "read": "In fourth place at 11,200 points, declaring riichi with a kan-[[8m]] wait is about converting immediate pressure into placement equity. LuckyJ opts to discard the terminal [[1m]] to initiate the riichi, which keeps the potential ittsu skeleton alive, whereas Nishiki's discard of [[3m]] completely destroys it. Additionally, discarding the terminal [[1m]] carries very low deal-in risk at around 1.6%, while the simple [[3m]] presents a higher 4.2% danger rate to the table. With two active opponents playing open hands but no rival riichi declared, our closed declaration forces them into a defensive posture. Mortal fully backs LuckyJ's proactive reach decision here. When in the danger zone, the psychological tax of a closed riichi does far more to protect your position than holding back for a perfect shape.",
-      "prompt": "Under the current board state, how many opponents have declared riichi, and what is LuckyJ's current rank?",
-      "answer": "0 opponents have declared riichi, and LuckyJ is in 4th place."
+      "read": "Declaring riichi from fourth place with 11,200 points is a clear necessity to apply pressure, but the choice of declaration tile determines whether we keep our yaku potential alive. Mortal fully backs declaring riichi here, recognizing that a live threat will force opponents with open hands to fold. Nishiki discards the [[3m]] to reach, opting to throw a tile that is genbutsu to the double-melded toimen, but this choice permanently destroys our ittsu seed. LuckyJ instead discards the terminal [[1m]], which carries very low danger at around 1.6% across the board. This discard preserves the ittsu seed (123m, 567m, and the 7-9m wait), ensuring that drawing our [[8m]] wait will lock in a game-changing mangan. When declaring a pressure riichi on a closed bad wait, prioritize the discard that preserves high-value yaku paths over minor defensive footprint differences.",
+      "prompt": "What yaku does LuckyJ preserve by discarding [[1m]] instead of [[3m]]?",
+      "answer": "Ittsu (Pure Straight)"
     },
     "guide_ja": {
-      "read": "ラス目の11,200点持ちという状況において、カン[[8m]]待ちでの即リーチ判断は、局の主導権を握って着順を守るための圧力へと還元する一手だ。LuckyJは端牌である[[1m]]を切ってリーチを宣言し、一気通貫の受けの含みを残したのに対し、西木の[[3m]]切りはその可能性を完全に消してしまう。さらに、放銃率が約1.6%と極めて低い[[1m]]を切り出す方が、放銃率4.2%の中張牌である[[3m]]を勝負するよりも安全だ。他家に副露が入っているものの、未だリーチが入っていないこの状況では、こちらの門前リーチが相手の進行を制限する強い盾となる。MortalもLuckyJのこの積極的なリーチ判断を全面的に支持している。点数が削られている危険ゾーンでは、完璧な形を待つよりも、門前リーチによる心理的圧力をかける方が結果的に自身の位置を守ることに繋がる。",
-      "prompt": "現在の局局面において、リーチを宣言している対戦相手は何人で、LuckyJの現在の順位は何位ですか？",
-      "answer": "リーチしている相手は0人で、LuckyJは4位（ラス目）です。"
-    },
-    "meta": {
-      "prompt_version": "pro-voice-v3",
-      "model": "gemini-3.5-flash-low"
-    }
-  },
-  "point-08_921_7_51": {
-    "guide": {
-      "read": "The decision here is which tile to cut to declare a Chiitoitsu riichi: discard the live yakuhai [[P]] to wait on the terminal [[9p]], or discard [[9p]] to chase the raw tile count of [[P]]. While [[P]] has three copies remaining unseen compared to only two for [[9p]], a live dragon tile like [[P]] is highly likely to be held in opponent hands as a pair or defensive reserve, making it difficult to draw out. Conversely, [[9p]] is already genbutsu for kamicha and is a terminal tile; once your riichi pressure forces opponents into defensive play, [[9p]] becomes a prime candidate for them to discard as a safe-looking card. Holding a 32,100-point second-place standing in South 2, launching a prompt riichi converts this tenpai into immediate pressure, taxing every opponent's hand construction. Declining the [[9p]] wait for a supposedly larger pool of [[P]] ignores the reality of how opponents discard under pressure; Mortal backs LuckyJ's discard of [[P]] to target the high-probability [[9p]] wall-tile or fold-candidate. Trust the terminal wait when forcing folds rather than holding out for a live honor that opponents will grip to the end.",
-      "prompt": "Which tile is a genbutsu for kamicha, making it a highly effective wait for a defensive opponent under riichi pressure?",
-      "answer": "[[9p]]"
-    },
-    "guide_ja": {
-      "read": "チートイツのテンパイから、生牌の役牌である[[P]]を切って端牌の[[9p]]待ちでリーチをかけるか、それとも[[9p]]を切って枚数で勝る[[P]]待ちを選ぶかの選択だ。[[P]]は山に3枚残っているのに対し、[[9p]]は2枚しか残っていないが、生牌の三元牌である[[P]]は他家にトイツや安全牌として抱え込まれやすく、他家からこぼれる期待は薄い。一方で、[[9p]]は上家の現物かつ端牌であり、リーチの圧力で他家がベタオリに回った際、比較的安全に見える牌として非常にこぼれやすい状態にある。南2局の2本場、32,100点持ちの2着目という状況において、即リーチを打つことで盤面に強い圧力をかけ、相手の手作りを制限する価値は極めて高い。枚数重視で[[P]]待ちにする選択は、他家が受ける際のおり打ち期待を無視しており、MortalもLuckyJと同様に[[P]]切り[[9p]]待ちのリーチを支持している。他家を降ろしにいく局面では、他家が最後まで抱え込む生牌の役牌よりも、オリ打ちを期待できる端牌の待ちを選択すべきだ。",
-      "prompt": "相手がリーチの圧力でベタオリした際に、上家の現物であることから狙い目となる待ちはどの牌ですか？",
-      "answer": "[[9p]]"
+      "read": "ラス目の11,200点持ちからプレッシャーをかけるために立直を宣言することは不可避だが、宣言牌の選択が役の可能性を残せるかどうかを分ける。Mortalはここでの立直宣言を100%支持しており、生きた脅威を与えることで仕掛けている他家を降ろせる価値を認めている。錦は[[3m]]を切って立直を選択し、2副露している対面の現物を切る形をとるが、この選択は一気通貫の種を完全に破壊してしまう。一方、LuckyJは放銃率が約1.6%と極めて安全な端牌の[[1m]]を切り出す。この打牌によって一気通貫の種（123m・567m・7-9mの待ち）が維持され、[[8m]]を自摸った際に戦況を覆す満貫を確定させることができる。愚形テンパイから圧力立直をかける際は、わずかな安全度の差よりも、高得点につながる役のルートを残す打牌を優先すべきである。",
+      "prompt": "LuckyJが[[3m]]ではなく[[1m]]を切ることで維持した役は何ですか？",
+      "answer": "一気通貫（イッツー）"
     },
     "meta": {
       "prompt_version": "pro-voice-v3",
@@ -1025,30 +993,14 @@
   },
   "point-08_64_3_43": {
     "guide": {
-      "read": "The decision centers on whether a slightly wider kanchan wait is worth sacrificing the immediate pressure of a riichi declaration. Sitting in second place with 27,900 points in East 3, LuckyJ discards [[7m]] to declare riichi on a 3-out shanpon wait of [[2p]] and [[9m]], whereas Nishiki discards [[9m]] to set up a 4-out kanchan wait on [[8m]]. Although both paths preserve a distant ittsu skeleton in pinzu, Nishiki's line prioritizes wait quality but loses the initiative against Shimocha's open meld. With Mortal backing LuckyJ’s riichi choice at 100%, the engine consensus agrees that the threat of a closed riichi tax outweighs the single extra tile of ukeire. The declaration forces opponents to break their own hands, converting a mediocre wait into immediate, table-warping equity. Lock in the value of the closed hand immediately; a marginal increase in outs is rarely worth giving up the initiative in the middle game.",
-      "prompt": "What is the winning wait for LuckyJ after discarding [[7m]]?",
-      "answer": "[[2p]] and [[9m]] (shanpon wait)"
+      "read": "The decision to declare riichi here on a three-out shanpon wait instead of a four-out kanchan reveals how LuckyJ values table pressure over raw ukeire. Nishiki prefers discarding [[9m]] to set up a kanchan wait on [[8m]] for four outs, keeping the remaining [[9m]] as a safe tile against Shimocha’s open meld. However, LuckyJ discards [[7m]] to declare riichi on the [[9m]] and [[2p]] shanpon wait, a line supported by Mortal's unanimous endorsement of declaring riichi. While both candidates preserve the underlying pinzu ittsu skeleton (requiring [[1p]] or [[6p]] to complete the 123/456/789 structure), the shanpon wait targeting the terminal [[9m]] is highly effective because [[9m]] is already a genbutsu for Shimocha. By applying riichi pressure in East 3-0, LuckyJ forces opponents to fold, converting the high likelihood of a defensive [[9m]] discard into direct value. Declare riichi when the defensive posture of your opponents makes a terminal wait significantly easier to extract than a middle-tile kanchan.",
+      "prompt": "Why is the [[9m]] wait highly effective for a shanpon riichi in this state?",
+      "answer": "It is a terminal tile and a genbutsu for the active threat (Shimocha), making it highly likely to be discarded by defending opponents."
     },
     "guide_ja": {
-      "read": "わずかに広いカンチャン待ちを優先するか、即リーチによる対局者への圧力を優先するかがこの局面の焦点です。東3局、27,900点持ちの2着目において、LuckyJは[[7m]]を切り、[[2p]]と[[9m]]のシャンポン待ち（残り3枚）で即リーチを選択した一方、Nishikiは[[9m]]を切って[[8m]]のカンチャン待ち（残り4枚）を選択しました。両者とも筒子の一気通貫の含みを残した一打ですが、Nishikiの選択は待ちの枚数を重視するあまり、既に仕掛けている下家に対する先制の主導権を逃してしまいます。MortalもLuckyJのリーチ判断を100%で支持しており、わずか1枚の受け入れ差よりも、門前リーチが与える制約と加点効率の方が価値が高いという見解で一致しています。リーチ宣言は相手の手を捻じ曲げ、不十分な待ちであっても局面を一変させる強力なエクイティへと変換します。中盤における主導権を放棄してまで微差の枚数にこだわる必要はなく、門前の価値は即座に確定させるべきです。",
-      "prompt": "[[7m]]を切った後のLuckyJの待ち牌は何ですか？",
-      "answer": "[[2p]] と [[9m]]（シャボ待ち）"
-    },
-    "meta": {
-      "prompt_version": "pro-voice-v3",
-      "model": "gemini-3.5-flash-low"
-    }
-  },
-  "point-08_58_2_73": {
-    "guide": {
-      "read": "Launching a dealer riichi is less about waiting for a perfect shape and more about imposing a tax on every opponent's discard. Holding a score of 27,900 in East 3-0, we want to maximize our dealer authority against two active opponents who have already opened their hands. While both discards land us in tenpai waiting on the [[7s]] kanchan, throwing [[4p]] carries a massive 21.2% deal-in risk to Shimocha's open meld. Discarding [[1p]] is far safer at just 5.9%, allowing us to safely transition into riichi. Both paths preserve the potential iipeikou seed with the [[6p]] and [[8p]] pairs, but with the hand already at tenpai, the priority is executing the declaration safely. Mortal strongly backs LuckyJ's [[1p]] declaration, confirming that we should not risk a high-danger discard when an equivalent tenpai exists. Once the riichi is declared, the pressure instantly shifts to the active opponents, neutralizing their open-hand aggression. When entering tenpai, choose the path that launches your riichi with the lowest immediate deal-in risk, letting the declaration itself do the heavy lifting.",
-      "prompt": "What is the deal-in risk of discarding [[4p]] compared to [[1p]] in this situation?",
-      "answer": "Discarding [[4p]] carries a 21.2% deal-in risk, while discarding [[1p]] carries only a 5.9% risk."
-    },
-    "guide_ja": {
-      "read": "親番での立直は、完璧な形を待つことよりも、相手の打牌すべてに圧力をかけることに本質があります。東3局、27,900点持ちの親番において、すでに仕掛けている2人の相手に対し、親の権威を最大限に活かしたい場面です。どちらの選択でも[[7s]]のカンチャン待ちテンパイとなりますが、[[4p]]を切るルートは下家の仕掛けに対して21.2%という極めて高い放銃リスクを伴います。一方で[[1p]]切りは放銃率わずか5.9%と非常に安全であり、安全に立直へと踏み切ることができます。どちらの選択肢も[[6p]]と[[8p]]の対子による一盃口の種を残してはいますが、すでにテンパイしている以上、最優先すべきは安全に立直を宣言することです。MortalもLuckyJの[[1p]]切り立直を強く支持しており、同じテンパイが取れる状況で危険牌をあえて勝負する必要はないことを裏付けています。立直さえかかってしまえば、圧力は瞬時に仕掛けている相手へと移り、彼らの安い副露による攻勢を無力化できます。テンパイを組む際は、最も放銃リスクの低い打牌で立直を打てるルートを選択し、立直の宣言そのものが持つ影響力に仕事をさせましょう。",
-      "prompt": "この局面において、[[1p]]を切る場合と比較した[[4p]]の放銃リスクはどのくらいですか？",
-      "answer": "[[4p]]切りは21.2%の放銃リスクがありますが、[[1p]]切りはわずか5.9%です。"
+      "read": "枚数で勝る4枚受けのカンチャン待ちではなく、3枚受けのシャンポン待ちで立直を宣言する判断は、LuckyJが純粋な受け入れ枚数よりも卓上への圧力を重視していることを示している。Nishikiは[[9m]]を切って[[8m]]のカンチャン待ちを選択し、仕掛けている下家に対して現物である[[9m]]を安牌として手元に残すことを好む。しかしLuckyJは[[7m]]を切り、[[9m]]と[[2p]]のシャンポン待ちで立直を宣言した。この立直の判断自体は、Mortalも100%の確率で立直を推奨して支持している。両者ともにピンズの一気通貫の形（[[1p]]または[[6p]]が必要な構成）を維持しているが、端牌である[[9m]]を狙ったシャンポン待ちは、[[9m]]がすでに下家の現物であるため非常に強力だ。東3局のこの平たい状況で立直の圧力をかけることで、LuckyJは他家にオリを強要しつつ、守備的に切られやすい[[9m]]を捉えてアガリへと繋げている。他家がオリに回った際に、中張牌のカンチャンよりも端牌のシャンポンの方が圧倒的に拾いやすくなる状況では、迷わず立直で圧力をかけるべきだ。",
+      "prompt": "この状況において、[[9m]]待ちのシャンポン立直が非常に効果的である理由は何ですか？",
+      "answer": "端牌であり、かつ仕掛けている下家の現物であるため、他家が守備に回った際にこぼれやすいからです。"
     },
     "meta": {
       "prompt_version": "pro-voice-v3",
@@ -1057,46 +1009,14 @@
   },
   "point-08_276_4_41": {
     "guide": {
-      "read": "Discarding [[7s]] to declare riichi on a kanchan [[4s]] wait immediately weaponizes our hand, forcing the table to respect our threat despite the imperfect shape. While Nishiki's choice of [[3s]] preserves distant sanshoku doujun possibilities (specifically 567, 678, and 789 seeds) should we choose to stay damaten, in East 3-1 at 24,500 points, we need to convert this tenpai into direct pressure. Mortal overwhelmingly supports LuckyJ's aggressive stance with a 98% Reach rating. Opting for the [[4s]] wait by discarding [[7s]] yields a cleaner target than the [[6s]] wait, prioritizing immediate table tax over distant, unguaranteed hand improvement. When the opportunity to restrict opponent discards arises, value pressure beats shape perfection.",
-      "prompt": "Which tile is the winning tile (machi) for LuckyJ's tenpai hand after discarding [[7s]]?",
-      "answer": "[[4s]]"
+      "read": "Faced with a live opponent riichi in East 3-1, the immediate decision is not just whether to chase, but which kanchan wait to lock in. While Mortal overwhelmingly supports declaring riichi at 98%, the engines split on the discard: LuckyJ cuts [[7s]] to wait on [[4s]], while Nishiki discards [[3s]] to wait on [[6s]]. Nishiki’s line preserves the faraway 567, 678, and 789 sanshoku doujun seeds, whereas LuckyJ's discard of [[7s]] abandons them. However, because we are declaring riichi immediately, these distant yaku routes are functionally dead anyway. Instead, we must compare the waits: the [[4s]] wait is generally easier to extract from defending opponents than the central [[6s]] wait. Even though discarding [[7s]] carries a slightly higher immediate deal-in risk, the superior winning probability of the [[4s]] wait justifies the choice. When launching a chase riichi on a bad wait, prioritize the tile that maximizes actual win probability over dead yaku potential.",
+      "prompt": "Which tile did LuckyJ discard to declare riichi and wait on [[4s]]?",
+      "answer": "[[7s]]"
     },
     "guide_ja": {
-      "read": "[[7s]]を打ってカン[[4s]]待ちのリーチを宣言することは、愚形でありながらも他家に圧力をかけ、こちらのテンパイを尊重せざるを得ない状況を作り出す。西羽（Nishiki）の[[3s]]切りは、ダマテンを選択した場合に遠い三色同順（567、678、789の種）の変化を残せるメリットがあるが、東3局1本場、24,500点持ちの2着目という状況では、このテンパイを即座にリーチの圧力に変換すべきである。MortalもLuckyJのこの強気な選択を支持し、リーチの推奨度は98%に達している。[[7s]]を切ってカン[[4s]]待ちに受ける方が、カン[[6s]]待ちよりもアガリ率の面で優秀であり、不確定な手変わりよりも現在の局価値を最大化することを優先すべきだ。相手の自由度を奪える好機では、形の完璧さよりもリーチによる圧力の生成が勝る。",
-      "prompt": "[[7s]]を切ってテンパイをとったLuckyJの待ち牌（アガリ牌）は何ですか？",
-      "answer": "[[4s]]"
-    },
-    "meta": {
-      "prompt_version": "pro-voice-v3",
-      "model": "gemini-3.5-flash-low"
-    }
-  },
-  "point-08_636_1_39": {
-    "guide": {
-      "read": "The question is whether waiting on a 3-out [[8m]] is worth passing up a riichi on the lone [[P]] dragon. Sitting in third place during East 2-0, converting this tenpai into immediate table pressure is paramount. While discarding the honor [[P]] offers three outs on [[8m]] compared to two for [[P]], the actual quality of the wait is night and day. A middle-tile tanki wait on [[8m]] is notoriously difficult to draw out of defensive hands, whereas a lone, partially-visible honor like [[P]] is a prime target for opponents to discard once they fold under riichi pressure. LuckyJ breaks the [[6m]][[6m]][[8m]] block by cutting [[8m]] to declare riichi, while Nishiki preserves the block by cutting [[P]]. Mortal heavily supports LuckyJ's line with a 99% preference for riichi, verifying that the pressure of the declaration makes the honor wait far more practical. When choosing a tanki wait for Chiitoitsu, prioritize the tile opponents are most likely to release under pressure over raw ukeire.",
-      "prompt": "Why is the single-wait on [[P]] more effective than [[8m]] despite having fewer remaining tiles?",
-      "answer": "[[P]] is an honor tile that is already visible on the board and is genbutsu to one opponent, making it much more likely to be discarded by opponents folding to riichi."
-    },
-    "guide_ja": {
-      "read": "七対子のテンパイにおいて、枚数で勝る[[8m]]の3枚待ちを選ぶか、それとも1枚切れの[[P]]（白）単騎での即リーチを目指すかが焦点となる。現在東2局の3着目という状況下で、このテンパイを卓内への圧力へと変換することは極めて重要だ。[[P]]を切れば[[8m]]待ちの3枚受けとなるが、中張牌の単騎待ちは他家から非常に出上がりにくい。一方で、すでに1枚枯れており、対面の現物でもある字牌の[[P]]は、他家がリーチに対してオリを選択した際にこぼれやすい絶好の狙い目となる。LuckyJは[[8m]]を切って[[6m]][[6m]][[8m]]の形を崩して即リーチを宣言したが、Nishikiは[[P]]を切るに留めた。MortalもLuckyJのこの打牌とリーチ判断を99%の確率で支持しており、リーチの圧力を伴った字牌単騎の優秀さを証明している。チートイツの単騎待ちを選択する際は、単純な残り枚数よりも、相手が安全牌と誤認して押し出されやすい牌を優先すべきだ。",
-      "prompt": "残り枚数が少ないにもかかわらず、[[8m]]待ちよりも[[P]]単騎待ちの方が効果的なのはなぜですか？",
-      "answer": "[[P]]はすでに場に1枚見えている字牌であり、かつ対面の現物でもあるため、他家がリーチに対してベタオリする際に最も選ばれやすい牌だからです。"
-    },
-    "meta": {
-      "prompt_version": "pro-voice-v3",
-      "model": "gemini-3.5-flash-low"
-    }
-  },
-  "point-08_236_3_53": {
-    "guide": {
-      "read": "With a closed ryanmen tenpai in East 3-0, the tension lies in choosing the declaration tile that minimizes immediate deal-in risk. Sitting in second place at 24,000 points, we want to maximize our pressure on the table while navigating the declaration safely. LuckyJ breaks the [[3p]][[4p]][[5p]][[6p]] block by discarding [[3p]] to declare riichi on a [[4-7s]] wait, whereas Nishiki prefers discarding [[6p]]. Nishiki’s choice of [[6p]] leverages its status as suji against both shimocha and toimen. However, kamicha holds the most threatening hand, and cutting the [[3p]] reduces our deal-in risk against them to 12.1% compared to 13.4% for [[6p]]. Mortal fully supports LuckyJ’s selection of [[3p]], confirming that mitigating the highest individual threat is the correct way to seal this tenpai. When choosing between equivalent declaration tiles, prioritize minimizing danger to the most threatening opponent over nominal safety against the rest of the table.",
-      "prompt": "What is the safety status of the [[6p]] tile that Nishiki proposed discarding?",
-      "answer": "It is suji against both shimocha and toimen."
-    },
-    "guide_ja": {
-      "read": "東3局、門前両面テンパイを入れた場面で、焦点となるのは放銃リスクを最小限に抑える宣言牌の選択です。24,000点持ちの2着目という状況において、宣言ターンを安全に乗り切りつつ、卓内への圧力を最大化したいところです。LuckyJは[[3p]]を切って[[3p]][[4p]][[5p]][[6p]]の形を崩し、[[4-7s]]待ちのリーチを宣言しましたが、Nishikiは[[6p]]切りを選択しました。Nishikiの[[6p]]切りは、下家と対面の両者に対してスジであることを活かした一打です。しかし、最も脅威度の高い相手は上家であり、[[3p]]を切ることで上家への放銃率を[[6p]]の13.4%から12.1%へと抑えることができます。MortalもLuckyJの[[3p]]切りを全面的に支持しており、最も危険な相手へのリスクを軽減することがこのテンパイを通す最善策であると示しています。同等の待ちになる宣言牌の選択で迷った際は、他家全員への平均的な安全度よりも、最も脅威となる相手への危険度を最小化することを優先すべきです。",
-      "prompt": "Nishikiが打牌候補とした[[6p]]の安全度ステータスはどうなっていますか？",
-      "answer": "下家と対面の両者に対してスジとなっています。"
+      "read": "東3局1本場、相手の先制立直が入った場面で、追っかけ立直をかけるか否かだけでなく、どの愚形待ちを選択するかが問われている。Mortalは98%の確率で立直宣言を支持しているが、打牌選択においてエンジン間で意見が分かれた。LuckyJは[[7s]]を切って[[4s]]のカンチャン待ちを選択したのに対し、Nishikiは[[3s]]を切って[[6s]]待ちを選んでいる。Nishikiの一打は遠い567、678、789の三色同順の種を残す形になるが、ここで即立直に行く以上、これらの遠い役のルートは事実上意味をなさない。焦点は待ちの優秀さにあり、中張牌の[[6s]]待ちに比べて、外寄りの[[4s]]待ちの方が相手の現物対応やベタオリからこぼれやすい。[[7s]]切りはわずかに放銃リスクが高まるものの、アガリ率の極大化という観点から[[4s]]待ちを選ぶ価値は十分にある。愚形での追っかけ立直の際は、機能しない先の役よりも、純粋な和了しやすさを最優先すべきだ。",
+      "prompt": "LuckyJが[[4s]]待ちの立直を宣言するために打牌した牌はどれですか？",
+      "answer": "[[7s]]"
     },
     "meta": {
       "prompt_version": "pro-voice-v3",
@@ -1289,22 +1209,6 @@
       "read": "山に残された牌が13枚しかなく、親番とはいえ2シャンテンの段階で、受け入れの広さを求めて[[5s]]を抱える余裕はもうありません。西（Nishiki）の[[9s]]切りは[[2s]][[3s]][[4s]][[5s]]の形を維持して受け入れを25枚に最大化しますが、テンパイが進まなかった場合に危険な中張牌である[[5s]]を抱え込むリスクを伴います。LuckyJは、立直の筋かつ下家の現物であるうちに[[5s]]を処理し、極めて安全な端牌である[[9s]]を安牌として手元に残しました。Mortalもこの守備的な精密さを支持し、[[5s]]切りに96%の評価値を与えています。終盤、テンパイから遠い手牌では、不要な中張牌が安全なうちに処理し、より安全な牌を抱えるのが鉄則です。",
       "prompt": "終盤の2シャンテンにおいて、[[9s]]よりも[[5s]]を切るべきなのはなぜですか？",
       "answer": "安全なうちに中張牌の[[5s]]を処理しておくことで、より安全度が高い端牌の[[9s]]を終盤の安全牌として手元に残せるからです。"
-    },
-    "meta": {
-      "prompt_version": "pro-voice-v3",
-      "model": "gemini-3.5-flash-low"
-    }
-  },
-  "point-10_52_5_93": {
-    "guide": {
-      "read": "With only 24 tiles remaining in the wall, backing away from an immediate tenpai to chase speculative value is a luxury we cannot afford. Sitting in fourth place with 14,600 points in South 2-0, securing tenpai is paramount. Nishiki and Mortal (which favors a 70% Reach rate) both discard [[5p]] to lock in a tenpai waiting on a [[2s]]-[[5s]] ryanmen. LuckyJ instead discards [[4s]], breaking the [[3s]][[4s]][[4s]][[5s]][[6s]] block and falling back to 1-shanten. Although this discard preserves the 567, faraway 345, and faraway 456 sanshoku doujun skeletons, the remaining turns are far too few for such late-stage invention. When the wall is thin, prioritize the concrete reality of a tenpai over the phantom of a higher-value hand.",
-      "prompt": "How many tiles are remaining in the wall when this critical decision occurs?",
-      "answer": "24 tiles."
-    },
-    "guide_ja": {
-      "read": "残りツモ山が24枚となった終盤において、即テンパイを崩して不確定な打点を追う余裕はありません。南2局、14,600点持ちのラス目という状況では、テンパイを取ることが極めて重要です。NishikiとMortal（立直率70%）はいずれも[[5p]]を切り、[[2s]]-[[5s]]の両面待ちテンパイを維持することを選択しました。これに対してLuckyJは[[4s]]を切り、[[3s]][[4s]][[4s]][[5s]][[6s]]のブロックを崩してイーシャンテンへと後退しました。この一打は567、遠い345、および456の三色同順の種を残すものの、残されたツモ回数を考えれば終盤の構想としては現実的ではありません。ツモ山が残り少ない局面では、高打点の幻想よりも、確実にテンパイを取る現実的な選択肢を優先すべきです。",
-      "prompt": "この重要な意思決定が発生した時点で、壁の中に残っているツモ牌は何枚ですか？",
-      "answer": "24枚。"
     },
     "meta": {
       "prompt_version": "pro-voice-v3",
@@ -2241,17 +2145,17 @@
   },
   "point-16_107_7_119": {
     "guide": {
-      "read": "We are in South 3, holding 28,300 points as West in second place. With an opponent already declaring riichi and shimocha displaying four active open melds, how do we balance our hand's progression against the extreme danger on the board? LuckyJ chooses to discard the terminal [[1s]], breaking the outer edge of our souzu blocks. Because [[1s]] is genbutsu to kamicha (who has called a triplet of the yaku tile [[F]]), it offers a reliable safety outlet. Crucially, keeping the [[2s]] preserves our connection to the [[3s]] and [[5s]]. While all four copies of [[2s]] are already visible on the board—two in our hand and two on the table—making a triplet impossible, the [[2s]] still functions as a valuable sequence connector. Nishiki, conversely, prefers to discard [[2s]] to target shimocha's genbutsu. However, cutting the inside [[2s]] destroys our sequence potential in the souzu. LuckyJ's decision to make a late outside cut with [[1s]] keeps the critical inside route alive while managing the threat level.",
-      "prompt": "Why is it mathematically impossible to form a triplet of [[2s]] in this game state?",
-      "answer": "Because all four copies of [[2s]] are already visible (two in our hand and two on the table/discards)."
+      "read": "Faced with a four-meld opponent on Shimocha and a riichi from Toimen, the decision of which safe tile to discard comes down to preserving the most flexible inner shape. LuckyJ discards the terminal [[1s]], keeping the [[2s]] pair, whereas Nishiki prefers discarding [[2s]]. While [[1s]] is safe against Kamicha, keeping the double [[2s]] is vastly superior because it functions as a two-turn defensive shield against Shimocha's highly threatening four-meld hand. Even though all four [[2s]] are visible on the board—ruling out any triplet potential—holding them preserves the inner connection of the `2s 3s 5s` shape. Nishiki’s discard of [[2s]] throws away this crucial defensive reserve and worsens the hand's internal structure. Mortal strongly backs LuckyJ's decision, choosing the [[1s]] discard at 85%. In tense late-game situations, discard the terminal to keep the inner tiles that serve as both shape connectors and targeted safety reserves.",
+      "prompt": "Why is keeping the pair of [[2s]] preferred over keeping the pair of [[1s]] in this defensive scenario?",
+      "answer": "Keeping the [[2s]] pair provides two solid safe tiles against the four-meld opponent on Shimocha while preserving a stronger internal shape connection."
     },
     "guide_ja": {
-      "read": "私たちは南3局、西家で28,300点持ちの2位です。他家から立直が入り、さらに下家が4副露している緊迫した状況下で、手牌の進行と盤面の危険度をどう天秤にかけるべきでしょうか。LuckyJは端牌である[[1s]]を切り、索子ブロックの外側を崩す選択をしました。[[1s]]は役牌の[[F]]をポンしている上家の現物であり、安全な退路としても機能します。重要なのは、[[2s]]を手元に残すことで[[3s]]や[[5s]]への接続を維持した点です。場にはすでに4枚すべての[[2s]]が見えており（手牌に2枚、河や副露に2枚）、[[2s]]の刻子を作ることは不可能です。それでも[[2s]]は順子を作るための接続役として重要です。一方、Nishikiは下家の現物である[[2s]]切りを推奨しました。しかし、内側の[[2s]]を切ると索子の順子変化が失われてしまいます。LuckyJは外側の[[1s]]を切ることで、テンパイへの接続ルートを残しつつ危険に対処しました。",
-      "prompt": "この局において、[[2s]]の刻子を作ることが数学的に不可能なのはなぜですか？",
-      "answer": "手牌に2枚、そして河や副露などの場に2枚と、すでに4枚すべての[[2s]]が見えているためです。"
+      "read": "下家の4副露と対面の立直に対峙する局面において、どの安全牌を切るかの選択は、最も柔軟な内側の形を維持できるかどうかにかかっている。LuckyJは端牌である[[1s]]を切り、Nishikiは[[2s]]を選択した。[[1s]]は上家の現物であるのに対し、[[2s]]を手元に残すことは極めて合理的である。なぜなら、テンパイ濃厚な下家の4副露に対して2巡分の安全牌として機能するからだ。場に4枚見えている[[2s]]はコーツになる変化こそないが、これを残すことで[[2s]][[3s]][[5s]]という索子の内側の受けを維持できる。Nishikiのようにここで[[2s]]を切ってしまうと、この貴重な守備力を失い、手牌の内側の形も弱くなってしまう。MortalもLuckyJの[[1s]]切りを85%の確率で強く支持している。緊迫した終盤戦では、形をつなぎ、かつ特定の相手への安全牌にもなる内側の牌を残すために、端の牌から整理すべきである。",
+      "prompt": "この守備的な状況において、[[1s]]のトイツを残すよりも[[2s]]のトイツを残す方が好ましいのはなぜですか？",
+      "answer": "[[2s]]のトイツを残すことで、4副露している下家に対して2巡分の確実な安全牌を確保しつつ、より強い内側の形のつながりを維持できるためです。"
     },
     "meta": {
-      "prompt_version": "yaku-skeleton-v2",
+      "prompt_version": "pro-voice-v3",
       "model": "gemini-3.5-flash-low"
     }
   },
@@ -3279,22 +3183,6 @@
       "model": "gemini-3.5-flash-low"
     }
   },
-  "point-05_126_5_71": {
-    "guide": {
-      "read": "Choosing whether to accept a penchan [[7m]] tenpai or discard the dangerous [[8m]] defines this mid-game decision. Discarding [[9s]] immediately secures tenpai, a move Mortal strongly endorses with a 99% rating to declare riichi. However, pushing with a subpar wait while holding onto the risky [[8m]]—which carries a 16.8% deal-in risk to the active kamicha—invites disaster if an opponent fights back. By discarding [[8m]] now, LuckyJ drops to 1-shanten but cleanly disposes of a future liability, keeping the much safer [[9s]] while keeping the ittsu route in souzu (1s-2s-3s, 4s-5s-6s, 7s-9s) alive. Leading the table with 33,800 points in East 3-0, there is no need to rush into a vulnerable position. Ditch the dangerous middle tile before the threat materializes if your tenpai wait is poor and your hand has room to improve.",
-      "prompt": "What is the danger level of [[8m]] against the active kamicha, and what sequence yaku does LuckyJ's discard preserve?",
-      "answer": "16.8% danger; ittsu (Pure Straight) in souzu."
-    },
-    "guide_ja": {
-      "read": "辺張の[[7m]]待ちテンパイを取るか、それとも危険な[[8m]]を先に処理するかという選択が、この中盤の局面を決定づけています。[[9s]]切りは即座にテンパイを確保する一手であり、Mortalも99%の評価値で即リーチを強く支持しています。しかし、仕掛けを入れている上家に対して放銃率16.8%という危険な[[8m]]を抱えたまま、愚形待ちで勝負することは、他家から押し返された際の致命傷になりかねません。ここで[[8m]]を先に逃がすことで、LuckyJは一向聴へと戻りますが、将来の危険牌をあらかじめ処理しつつ、より安全な[[9s]]を残してソーズの一気通貫（1s2s3s・4s5s6s・7s9s）のルートを維持します。東3局、33,800点持ちのトップ目という状況であれば、あえてリスクを背負って不安定な立ち回りを急ぐ必要はありません。テンパイが愚形で手変りの余地があるなら、他家からの脅威が顕在化する前に、危険な中張牌の浮き牌を早めに処理するべきです。",
-      "prompt": "上家に対する[[8m]]の危険度（放銃率）は何%で、LuckyJの打牌によって何の役の受け入れが残されますか？",
-      "answer": "16.8%、ソーズの一気通貫（一通）"
-    },
-    "meta": {
-      "prompt_version": "pro-voice-v3",
-      "model": "gemini-3.5-flash-low"
-    }
-  },
   "point-06_161_2_15": {
     "guide": {
       "read": "At 4-shanten and sitting in third with 19,000 points, deciding whether to pitch the terminal [[1s]] or the guest wind [[W]] highlights a classic efficiency-versus-safety trade-off. Nishiki and Mortal choose to discard [[W]], prioritizing raw speed with 81 ukeire to advance this distant hand. LuckyJ, however, discards [[1s]], accepting a slight drop to 73 ukeire to keep the safer guest wind. By letting go of the isolated terminal early, LuckyJ retains [[W]] as a flexible floating tile to navigate the early turns while the hand is weak. This sacrifice of early acceptance is only justified if you prioritize defensive flexibility over pure speed when the hand is far from tenpai.",
@@ -4073,6 +3961,262 @@
       "read": "ここでの葛藤は、テンパイの形を最大化するために極めて危険な中張牌を押すか、あるいは手の構造を残しつつ安全な端牌を切るかという点にあります。東3局の親番、僅差の2着目という状況で、上家から立直が入っています。にしきは危険度の高い[[6m]]を勝負し、[[1m]]・[[4m]]・[[5m]]の3面張（残り山6枚）に受ける攻撃的な選択を推奨します。しかし、[[6m]]を通すリスクは非常に高く、比較的安全な端牌である[[1m]]を切れば、[[6m]]・[[9m]]のシャボ待ち（残り山3枚）でテンパイを維持できます。重要なのは、[[1m]]を切ることで「一気通貫」の種（[[1m]]待ちの2m-3m、[[5m]]待ちの4m-6m、完成面子の7m-8m-9m）を温存し、打点ルートを残せる点です。一方、Mortalは即リーチを宣言する最も攻撃的な姿勢を示しています。親番で終盤の脅威に直面した際、外側の端牌を切ることで、テンパイの安全性を保ちながら手役の骨組みを維持することができます。",
       "prompt": "[[1m]]・[[4m]]・[[5m]]の3面張テンパイを取るために、にしきが打牌として推奨した牌は何ですか？",
       "answer": "[[6m]]"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-02_51_11_17": {
+    "guide": {
+      "read": "In a trailing dealer game, discarding a floating [[8s]] keeps our hand remarkably safe and value-oriented without destroying our core shape. Nishiki discards the guest wind [[N]] to maximize raw ukeire at 68 tiles, but this forces us to hold a defenseless [[8s]] that lacks any nearby partner blocks. Both decisions preserve the *Ittsu* skeleton in pinzu, meaning our main offensive route remains intact regardless of the choice. By choosing [[8s]], LuckyJ—backed by Mortal at 73%—retains [[N]] as an immediate genbutsu against shimocha and keeps the active yakuhai [[P]] for a potential value boost. At a precarious 7,400 points in fourth place, we cannot afford to push a completely defenseless hand if another player attacks. Sacrificing minor shape efficiency to keep defensive and value branch points alive is the right way to manage this dealer turn.",
+      "prompt": "Is the tile [[N]] an active yakuhai for self in this hand?",
+      "answer": "No, it is a guest wind (non-yakuhai wind)."
+    },
+    "guide_ja": {
+      "read": "ラス目の親番において、浮き牌の[[8s]]を切ることは、手の基本構成を損なうことなく安全度と役の広がりを両立させる極めて合理的な選択肢です。Nishikiは客風の[[N]]を切って受け入れ枚数68枚の最大効率を取りますが、これではフォローのない[[8s]]を抱え込むことになり、守備力が著しく低下します。どちらの選択でも筒子の一気通貫の種は維持されるため、本線の攻撃ルートは変わりません。LuckyJはMortalの73%の支持率と同様に[[8s]]を切り、下家の現物である[[N]]を安全牌として確保しつつ、役牌である[[P]]を重ねるルートを維持しました。現在7,400点のラス目という状況では、無防備に手を進めて他家の攻撃に捕まるリスクは避けなければなりません。手の軸が決まっているなら、わずかな受け入れ枚数に頼るよりも、安全度と役の分岐点を残すほうが親番を維持する上で重要です。",
+      "prompt": "この手牌において、[[N]]（北）は自分にとって役牌ですか？",
+      "answer": "いいえ、客風（オタ風）です。"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-03_459_6_135": {
+    "guide": {
+      "read": "With only six tiles remaining in the wall, securing tenpai payments is the defining objective of this late-game turn. Sitting at 28,000 points in East 2-4, LuckyJ pons [[6p]] to transition immediately to tenpai, discarding the red [[5m]]. While Nishiki declines the call to maintain a defensive closed stance against the active threats, this passive line forfeits the crucial point swing of the impending exhaustive draw. The pon on [[6p]] establishes a tenpai wait on [[4s]], and even without an active winning yaku, securing tenpai status at this depth of the wall justifies the open exposure. Mortal strongly backs LuckyJ's call at 99%, confirming that the value of securing tenpai outweighs the defensive utility of staying closed. In the final turns of a round, treat tenpai payments as a primary value; a call that guarantees tenpai is correct even if it results in a yakuless wait.",
+      "prompt": "How many tiles are remaining in the wall during this decision?",
+      "answer": "6 tiles"
+    },
+    "guide_ja": {
+      "read": "山に残り6枚という終盤において、ノーテン罰符の確保は局の結末を左右する決定的な要素である。東2局4本場、持ち点28,000点のLuckyJは、[[6p]]をポンして赤[[5m]]を打ち出し、即座にテンパイへと移行した。Nishikiは他家の攻めに対して守備的な門前を維持するためにスルーを選択したが、この消極策は流局時におけるテンパイ料の移動を放棄することになる。[[6p]]のポンによってカン[[4s]]のテンパイが入り、たとえ役がなくとも、この深い巡目なら形式テンパイを取る価値が極めて高い。MortalもLuckyJのポンを99%の評価値で支持しており、危険度の高い[[3s]]や[[5s]]を抱えるリスクを考慮しても、テンパイ料の確保が優先されることを裏付けている。流局間際の数ターンではテンパイ料を最優先の価値とし、役なしであってもテンパイが確定する鳴きを躊躇すべきではない。",
+      "prompt": "この判断の時点で、山に残っている牌は何枚ですか？",
+      "answer": "6枚"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-04_214_5_107": {
+    "guide": {
+      "read": "Calling to go 1-shanten against a declared riichi with only 20 tiles left in the wall is a classic engine dividing line. Nishiki refuses the call to preserve a fully closed hand for defense, while LuckyJ—supported by Mortal—accepts the [[2p]] chi and discards [[1m]]. The key is the post-call hand structure: discarding the useless [[1m]] leaves a 1-shanten shape containing [[9m]], which carries a danger value of 0.0 against the threat, alongside the highly safe [[7s]] at 2.6% danger. Rather than blindly pushing, this call maintains offensive potential while ensuring we hold a perfect safety valve. If the next draw is unsafe, we can immediately release [[9m]] and fold. Keep the open hand active only when a flawless safety tile remains in the rack.",
+      "prompt": "Which tile in LuckyJ's hand after the call has a danger level of 0.0% against the active threats?",
+      "answer": "[[9m]]"
+    },
+    "guide_ja": {
+      "read": "残りツモ山が20枚で他家からリーチが入っている局面、チーして一向聴に進めるかどうかがAI間の判断の分かれ目です。西木は守備力を重視してスルーを選択しますが、LuckyJは[[2p]]をチーして[[1m]]を切り、一向聴に構えます（Mortalもこの選択を支持しています）。この副露を可能にしているのは、打[[1m]]の後に手牌に残る[[9m]]（放銃率0.0%）という絶対的な安全牌と、放銃率2.6%の[[7s]]の存在です。無謀に無スジを押すのではなく、完璧な安全弁を確保しながらテンパイへのルートを残しています。次巡に危険牌を引いたとしても、即座に[[9m]]を抜いてベタオリに切り替えることが可能です。副露手で押し返す際は、手牌の中に必ず確実な安全牌を一枚残しておくことが鉄則です。",
+      "prompt": "副露後のLuckyJの手牌の中で、危険度が0.0%の安全牌はどれですか？",
+      "answer": "[[9m]]"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-04_211_1_105": {
+    "guide": {
+      "read": "Calling chi on [[4s]] and discarding the safe [[W]] against an active riichi represents a sharp divide in defensive tolerance. Nishiki and Hibakari decline the call, prioritizing the safety of a closed hand in late East 1-1 while sitting in last place. LuckyJ, supported by Kagashi and Mortal's 63% preference, chooses to press the action into 1-shanten. Discarding the guest wind [[W]] leaves the hand without a floating defensive reserve, meaning any future retreat requires dismantling the [[6s]][[7s]][[8s]] sequence, where the [[8s]] offers a highly reliable exit at just 0.013 danger. In contrast, pushing the remaining [[1m]] at 0.698 danger or [[4p]] at 0.334 danger carries immense risk. The call bets on a quick path to tenpai, relying on the [[8s]] as the sole emergency release if the hand stalls.",
+      "prompt": "Which tile in LuckyJ's hand has the lowest danger value after discarding [[W]]?",
+      "answer": "[[8s]]"
+    },
+    "guide_ja": {
+      "read": "相手のリーチに対して[[4s]]をチーし、安全度が高い客風の[[W]]を切るという選択は、守備に対する許容度の違いを浮き彫りにします。にしきとひばかりはスルーを選択し、ラス目である東1局1本場において門前での守備力を維持することを優先しました。一方でLuckyJは、かがしやMortal（チーの評価値63%）の支持を受け、1シャンテンに進めるプッシュを決断します。客風の[[W]]を手放したことで、手牌に浮いた安全牌の備えはなくなりますが、ベタオリに回る際は[[6s]][[7s]][[8s]]のシュンツを崩すことで、放銃率わずか0.013と極めて安全な[[8s]]を凌ぎの牌として活用できます。対照的に、残された[[1m]]（放銃率0.698）や[[4p]]（放銃率0.334）を押すのは極めてリスクが高いため、このチーは[[8s]]を唯一の緊急避難先として残しつつ、最短でのテンパイを目指す攻めの選択と言えます。",
+      "prompt": "[[W]]を切った後のLuckyJの手牌の中で、最も危険度（放銃率）が低い牌はどれですか？",
+      "answer": "[[8s]]"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-03_359_8_147": {
+    "guide": {
+      "read": "With only one tile remaining in the wall, the decision to call [[8m]] is entirely about securing tenpai payments to seal a first-place finish. Holding the lead at 38,600 points in South 4, LuckyJ calls chi on [[8m]] and discards [[8s]] to transition from 1-shanten to tenpai. Nishiki and Mortal (91% preference) reject the call, opting to pass and stay closed to avoid the risk of dealing in on the final discard. However, passing guarantees entering the draw notei, which could narrow the lead if the opponents declare tenpai. By calling, LuckyJ secures a share of the tenpai payment or a potential win, accepting the minor risk of the [[8s]] discard to maximize placement security. Only make the final-turn call when the points gained from tenpai payments directly secure your target placement.",
+      "prompt": "What is the shanten status of LuckyJ's hand after calling chi on [[8m]] and discarding [[8s]]?",
+      "answer": "Tenpai (0-shanten)."
+    },
+    "guide_ja": {
+      "read": "山に残り1枚という極限の状況において、[[8m]]のチーをするかどうかの判断は、トップを確定させるためのテンパイ料を巡る争いに他なりません。オーラス（南4局）で38,600点のトップ目に立つLuckyJは、[[8m]]をチーして[[8s]]を切り、一向聴からテンパイへと移行しました。一方、にしきやMortal（スルー推奨91%）はこのチーを否定し、最終打牌での放銃リスクを避けるためにスルーして門前を維持する選択を支持しています。しかし、スルーすればノーテンが確定し、他家にテンパイが入っていた場合にリードが縮まるリスクが生じます。LuckyJはテンパイ料による加点（あるいはアガリ）を重視し、[[8s]]を勝負するリスクを受け入れてトップの座を確実にしにいきました。流局間際の仕掛けは、得られるテンパイ料が目標順位の確保に直結する場合にのみ実行すべきです。",
+      "prompt": "[[8m]]をチーして[[8s]]を切った後のLuckyJの手牌のシャンテン数はいくつか？",
+      "answer": "テンパイ（0シャンテン）。"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-06_28_4_27": {
+    "guide": {
+      "read": "The tension here lies between raw efficiency and the desperate need to build value from fourth place with only 10,900 points. Cutting the value honor [[F]] is the standard route backed by Mortal at 87%, preserving maximum ukeire (49 tiles) by keeping the [[5m]][[6m]][[6m]] block intact. However, LuckyJ opts to discard the [[5m]], dropping to 43 ukeire to keep the green dragon [[F]] alive. Since the [[S]] pair is already a yakuhai, pairing or tripling the [[F]] opens up a realistic path to a double-yakuhai hand that can be aggressively pushed. If this were a flat game where speed reigned supreme, Nishiki's discard of [[F]] would be the clear choice. But in this danger zone, LuckyJ prioritizes the high-value potential of the honor tile over early, cheap flexibility. Keep the value honor when the score gap demands a heavy hand, but only if the shape can afford the ukeire hit.",
+      "prompt": "What is the player's current rank and score during this decision?",
+      "answer": "Rank 4 with 10,900 points."
+    },
+    "guide_ja": {
+      "read": "この局面の葛藤は、純粋な受け入れ効率と、10,900点持ちのラス目から打点を構築する必要性とのバランスにあります。Mortalが87%で支持する西陣の打[[F]]は、[[5m]][[6m]][[6m]]のブロックを維持して受け入れ（49枚）を最大化する標準的な一打です。しかし、LuckyJは[[5m]]を切り、受け入れを43枚に下げて役牌の[[F]]を残す選択をしました。すでに自風の[[S]]が対子であるため、[[F]]が重なればダブル役牌という、勝負するに値する打点へのルートが残ります。平らな状況で速度が最優先されるならば打[[F]]が正解ですが、この点数状況では、LuckyJは序盤の僅かな受け入れを犠牲にしてでも打点価値を優先しました。点差によって高得点の手が必要な場面では、受け入れの減少が許容範囲内であれば、役牌の価値を優先して残すべきです。",
+      "prompt": "この判断を下す際のプレイヤーの現在の順位と持ち点は何ですか？",
+      "answer": "4位、10,900点。"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-05_547_0_51": {
+    "guide": {
+      "read": "The decision to release the dangerous middle tile [[7m]] over the terminal [[1p]] highlights the necessity of managing future liabilities before an opponent's threat solidifies. Although discarding [[1p]] maintains a wider 2-shanten shape with 76 ukeire, keeping [[7m]] in hand introduces a major vulnerability against Shimocha, who has already called a triplet of [[F]]. Since [[7m]] already carries a notable 14.6% deal-in risk against Shimocha, holding it while our hand has narrow real progression is a recipe for disaster. LuckyJ accepts a tighter 1-shanten with 7 ukeire by discarding [[7m]], prioritizing the retention of [[1p]], which serves as a double-genbutsu safety net. Mortal strongly backs this defensive hygiene, choosing the [[7m]] discard over Nishiki's speed-oriented play. Both decisions keep our 345 and 456 sanshoku doujun skeletons alive, but securing the safety of [[1p]] is the priority. When a hand is far from tenpai, discard the high-risk floater early so you are not forced into an impossible push when the riichi or second meld arrives.",
+      "prompt": "Why is keeping [[1p]] preferred over keeping [[7m]] in this scenario?",
+      "answer": "[[1p]] is a genbutsu (safe tile) against two opponents, whereas [[7m]] is a dangerous middle tile against the active threat (Shimocha, who has called [[F]])."
+    },
+    "guide_ja": {
+      "read": "危険な中張牌である[[7m]]を切り、端牌の[[1p]]を残す選択は、相手の脅威が本格化する前に将来の危険を管理することの重要性を示しています。[[1p]]を切れば有効牌76枚の広い2シャンテンを維持できますが、すでに[[F]]をポンしている下家に対して[[7m]]を抱え続けるのは大きな弱点となります。[[7m]]は下家に対してすでに放銃率14.6%という危険度を示しており、手牌の進行が遅い段階でこれを持ち続けるのはリスクが大きすぎます。LuckyJは[[7m]]を切ることで有効牌7枚の狭い1シャンテンになることを受け入れ、2軒に現物である[[1p]]を安牌として抱えることを優先しました。Mortalもこの守備的な選択を強力に支持しており、Nishikiの速度優先の一打に反して[[7m]]切りを最有力候補としています。どちらのルートを選んでも345および456の三色同順の種は残りますが、ここでは[[1p]]の安全性を確保することが最優先です。テンパイから遠い手牌では、リーチや二つ目の仕掛けが入ってから厳しい押しを迫られないよう、危険な浮き牌を先手で処理しておくべきです。",
+      "prompt": "この局面において[[7m]]よりも[[1p]]を手牌に残すべきなのはなぜですか？",
+      "answer": "[[1p]]は他家2軒に対する現物であるのに対し、[[7m]]はすでに[[F]]をポンしている下家に対して危険な中張牌だからです。"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-16_1144_3_103": {
+    "guide": {
+      "read": "The choice between cutting the terminal [[9s]] or the middle [[8s]] highlights a classic tension between immediate raw speed and flexible shape preservation. Discarding [[8s]], as favored by Nishiki and Mortal (62%), keeps the double-pair structure of [[5s]] and [[9s]] to maximize ukeire at 16 tiles. However, because all four copies of [[9s]] are already visible between the hand and the discards, the [[9s]] pair has zero triplet potential. LuckyJ chooses to discard one [[9s]], dropping to 10 ukeire but keeping the [[8s]] to maintain a more flexible connection for the 5s-6s-8s shape. Both paths keep the distant 456 and 345 sanshoku doujun seeds alive, but LuckyJ's line relies on the [[8s]] connecting to a [[7s]] to build a smoother path to tenpai. Choose the terminal cut when the alternative pair has no triplet potential and keeping the inner connector preserves better sequence run options.",
+      "prompt": "Why does the [[9s]] pair have zero triplet potential in this game state?",
+      "answer": "Because all four copies of [[9s]] are already visible (two in the player's hand and two in the discards)."
+    },
+    "guide_ja": {
+      "read": "端牌の[[9s]]を切るか、中間の[[8s]]を切るかの選択は、目先の純粋な受け入れ枚数と柔軟な形づくりの維持との典型的な葛藤を示している。NishikiやMortal（62%）が推奨する[[8s]]切りは、[[5s]]と[[9s]]のトイツを残すことで受け入れ枚数を16枚に最大化し、テンパイへの速度を優先する。しかし、[[9s]]は自分の手牌に2枚、河と場を合わせてすでに4枚すべてが見えており、コーツ化する可能性はゼロである。LuckyJは[[9s]]を1枚外すことで、受け入れ枚数は10枚に落ちるものの、[[8s]]を残すことで5s-6s-8sの形における柔軟な接続を維持した。どちらの選択肢も遠い456や345の三色同順の種を残してはいるが、LuckyJの一打は[[8s]]が[[7s]]を引き寄せることで、より滑らかなテンパイ経路を作ることを狙っている。対のトイツにコーツ化の目がなく、内側の接続牌を残すことでシュンツの伸びが期待できる状況では、端牌切りを選択肢に入れるべきだ。",
+      "prompt": "この局において、[[9s]]のトイツがコーツになる可能性がまったくないのはなぜですか？",
+      "answer": "自分の手牌に2枚、河および他のプレイヤーの捨て牌に2枚で、4枚すべての[[9s]]がすでに見えているため。"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-14_64_4_25": {
+    "guide": {
+      "read": "Discarding [[1s]] here to hold a guest wind [[N]] is a massive concession in both speed and hand development. As the dealer in East 4 with a comfortable 31,500 points, we want to maximize our ukeire to maintain initiative. LuckyJ discards [[N]] to keep the [[1s]][[2s]] block intact, maintaining 3-shanten with a broad 54-tile ukeire, while Nishiki's discard of [[1s]] drops the ukeire to a sluggish 32 tiles. Both paths preserve a distant 456 sanshoku doujun opportunity, but Nishiki's defensive posture is premature. Furthermore, [[1s]] is already a suji against Toimen's open hand, meaning keeping the block does not entirely sacrifice safety. Mortal backs LuckyJ's proactive discard of [[N]] at 67%. Do not destroy active blocks for guest winds unless the defensive threat is immediate and overwhelming.",
+      "prompt": "Which opponent has an open meld that makes [[1s]] a suji tile, and what did they discard to make it suji?",
+      "answer": "Toimen, who discarded [[4s]]."
+    },
+    "guide_ja": {
+      "read": "オタ風の[[N]]を残すために[[1s]]を切ることは、手変わりと速度の両面において大きな妥協となります。東4局の親番で31,500点とリードしている状況では、主導権を維持するために受け入れ枚数を最大化すべきです。LuckyJは[[N]]を切って[[1s]][[2s]]のブロックを維持し、有効牌54枚の3シャンテンをキープしたのに対し、Nishikiの[[1s]]切りは受け入れをわずか32枚へと激減させてしまいます。両方の選択肢ともに遠い456の三色同順の種を残していますが、Nishikiの守備的な姿勢は時期尚早です。さらに、[[1s]]は仕掛けている対面に対してすでにスジとなっており、ブロックを維持することが完全な安全性の喪失を意味するわけではありません。MortalもLuckyJの積極的な[[N]]切りを67%で支持しています。差し迫った明確な脅威がない限り、オタ風を抱えるために機能しているブロックを崩してはなりません。",
+      "prompt": "[[1s]]がスジとなる原因となった仕掛けをしている対戦相手は誰で、そのスジを作るきっかけとなった打牌は何ですか？",
+      "answer": "対面、打[[4s]]。"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-10_52_5_93": {
+    "guide": {
+      "read": "With only 24 tiles left in the wall, dropping back to 1-shanten to chase speculative value is an invention we can no longer afford. Sitting in last place with 14,600 points in South 2, the pressure to mount a high-value comeback is real, but late-game math demands immediate tenpai. LuckyJ discards [[4s]] to keep the red [[5p]], preserving the 345, 456, and 567 sanshoku doujun seeds, but drops to 1-shanten. Nishiki, however, discards the red [[5p]] to secure tenpai immediately. While Mortal strongly favors declaring an immediate riichi to apply pressure, both engines agree that staying closed and 1-shanten is too slow. Speculating on a late-stage sanshoku is a luxury; when the wall runs thin, a concrete tenpai or a clean fold is the only math that matters.",
+      "prompt": "In this late-stage situation, how many tiles remain in the wall, and what is LuckyJ's current rank?",
+      "answer": "There are 24 tiles remaining in the wall, and LuckyJ is in 4th place."
+    },
+    "guide_ja": {
+      "read": "山に残り24枚しかない状況で、不確定な打点を追って一向聴に後退することは、もはや許されない贅沢です。南2局、14600点持ちのラス目という状況では、高得点での復活を狙いたいプレッシャーは確かにありますが、終盤の計算においては即テンパイが最優先されます。LuckyJは赤[[5p]]を残し、345、456、そして567の三色同順の種を維持するために[[4s]]を切って一向聴へと後退しました。一方、Nishikiは赤[[5p]]を切ることで、即座にテンパイを確定させる道を選びました。Mortalは即立直をかけてプレッシャーを与える選択を強く支持していますが、いずれのAIも門前で一向聴に留まるのは遅すぎると判断しています。終盤における三色の追及は非現実的であり、山が薄くなった状況では、確実なテンパイか、さもなくば完全なベタオリこそが目指すべき唯一の正解です。",
+      "prompt": "この終盤の局面において、山に残っている牌の数は何枚で、LuckyJの現在の順位は何位ですか？",
+      "answer": "山には残り24枚あり、LuckyJは4位です。"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-08_921_7_51": {
+    "guide": {
+      "read": "Tenpai on turn 7 with a choice of two singletons for Chiitoitsu presents a classic dilemma: maximize raw tile count or select the target most likely to be squeezed out under riichi pressure. Sitting in second place at 32,100 points in South 2-2, the goal is to lock in a valuable win. Nishiki discards the terminal [[9p]] to wait on the live yakuhai [[P]], prioritizing three outs over two. However, LuckyJ and Mortal both discard [[P]] to riichi on the [[9p]] wait. Because Kamicha discarded [[9p]] on turn one, it functions as excellent bait; opponents under the pressure of a riichi are far more likely to throw a terminal than a live yakuhai. The threat of the reach forces defensive folds, converting a lower absolute out-count into a higher actual win rate.",
+      "prompt": "Which tile did Kamicha discard on the very first turn of the round, making it an attractive wait for Chiitoitsu?",
+      "answer": "[[9p]]"
+    },
+    "guide_ja": {
+      "read": "チートイツの単騎選択を伴う7巡目のテンパイは、純粋な枚数を最大化するか、立直の圧力下でこぼれやすい待ちを選ぶかという古典的なジレンマを提示している。南2局2本場、32,100点持ちの2着目において、目的はこの手を確実な和了に結びつけることだ。にしきは端牌の[[9p]]を切り、生牌の役牌[[P]]待ちを選択して、残り3枚の受け入れを優先した。しかし、LuckyJとMortalはともに[[P]]を切り、[[9p]]待ちの立直を打つ。上家が1巡目に[[9p]]を切っているため、この端牌は絶好のターゲットとなりやすく、立直の圧力を受けた他家は生牌の役牌よりも端牌の[[9p]]を先に選んで切りやすい。立直の脅威が相手にベタオリを強いることで、純粋な枚数の不利を実質的な和了しやすさへと変換しているのだ。",
+      "prompt": "チートイツの待ちとして魅力的な候補となった、上家が1巡目に切った牌は何ですか？",
+      "answer": "[[9p]]"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-08_58_2_73": {
+    "guide": {
+      "read": "Declaring dealer riichi on a kanchan wait is an easy decision to apply table pressure, but the choice of declaration tile determines whether we even survive the declaration turn. While both candidate branches preserve the iipeikou/ryanpeikou seed of the paired [[6p]] and [[8p]] needing a [[7p]] structurally, we are locking our hand on a [[7s]] wait here. Nishiki’s choice of [[4p]] carries a massive 21.2% deal-in risk against Shimocha's open meld. LuckyJ, backed by Mortal's 99% agreement, correctly chooses to discard the terminal [[1p]], which carries a much safer 5.9% risk to Shimocha. As dealer in East 3, initiating riichi with a safe declaration tile allows us to pressure the table and force folds without donating a cheap win.",
+      "prompt": "Which opponent posed the highest deal-in risk if LuckyJ had discarded [[4p]] instead of [[1p]]?",
+      "answer": "Shimocha (21.2% danger level)"
+    },
+    "guide_ja": {
+      "read": "カンチャン待ちの親立直で卓に圧力をかけるのは当然の判断だが、どの牌で立直宣言をするかがそのターンを生き残れるかを左右する。両候補とも[[6p]]・[[8p]]のトイツに[[7p]]を必要とする一盃口・二盃口の種を構造上は残しているが、ここでは[[7s]]待ちで手牌を固定することになる。西（Nishiki）が選択した[[4p]]の打牌は、仕掛けを入れている下家に対して21.2%という極めて高い放銃率を抱えてしまう。これに対し、Mortalの99%の支持を受けたLuckyJは、下家に対してわずか5.9%と遥かに安全な端牌の[[1p]]を選択した。東3局の親番として、安全な宣言牌で立直を打つことは、相手に手痛い放銃を献上することなく、卓全体に圧力をかけて降ろしへと追い込むことができる。",
+      "prompt": "LuckyJが[[1p]]ではなく[[4p]]を切った場合、最も放銃リスクが高かった相手は誰ですか？",
+      "answer": "下家（危険度21.2%）"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-08_702_2_9": {
+    "guide": {
+      "read": "Choosing between a terminal [[9s]] wait and a middle [[3p]] wait defines this early-stage dealer tenpai. Holding a strong 41,000-point lead in East 1-2, the goal is to leverage the dealer button and lock in the table with immediate riichi pressure. Mortal overwhelmingly supports declaring riichi at 99%, confirming that the equity generated by forcing three opponents to fold outweighs any benefit of staying silent. Nishiki discards [[3p]] to secure the standard terminal wait on [[9s]], breaking the [[1p]] [[1p]] [[3p]] block. LuckyJ instead discards [[9s]] without breaking that block, opting to wait on [[3p]]. Both branches preserve the distant iipeikou/ryanpeikou seed of [[7m]] [[9m]] needing [[8m]], though this sequence skeleton is secondary to the immediate tanki win rate. While a terminal wait is classically preferred, the sheer pressure of a dealer riichi forces opponents to discard middle tiles like [[3p]] as they struggle to find safe tiles.",
+      "prompt": "Which engine-backed action does LuckyJ take here to maximize pressure, and what is the resulting wait tile?",
+      "answer": "LuckyJ declares riichi by discarding [[9s]], waiting on a [[3p]] tanki."
+    },
+    "guide_ja": {
+      "read": "盤端の[[9s]]待ちと中張牌の[[3p]]待ちのどちらを選択するか、この極めて早い巡目の親番テンパイが問うている。東1局2本場、41,000点持ちのトップ目という状況において、目指すべきは親の立直による圧力で局を支配することだ。Mortalは立直判断を99%で強力に支持しており、ダマにするメリットよりも、他家3人を降ろすことで得られる期待値の方が圧倒的に高いことを裏付けている。西嬉は[[3p]]を切り、[[1p]][[1p]][[3p]]の形を崩して定番の端牌[[9s]]単騎待ちを選択する。一方、LuckyJは[[9s]]を切り、そのブロックを崩さずに[[3p]]単騎待ちを選択した。両方の選択肢ともに、[[8m]]を必要とする[[7m]][[9m]]対子の一盃口・二盃口の種という役の骨組みは残しているが、即立直をかける以上、この順子の構想は単騎待ちの和了率に比べれば二の次である。一般的には端牌待ちが好まれるが、親の即立直が与える強烈な圧力の前に、他家が安牌に窮して[[3p]]のような中張牌をこぼすケースも十分に期待できる。",
+      "prompt": "LuckyJは圧力を最大化するためにここでどのエンジン推奨の行動を取り、待ち牌は何になりますか？",
+      "answer": "LuckyJは[[9s]]を切って立直を宣言し、[[3p]]単騎待ちとします。"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-08_636_1_39": {
+    "guide": {
+      "read": "Choosing the right wait for a Chiitoitsu riichi is where raw tile count clashes with human psychology. In East 2-0 with 50 tiles remaining, we are tenpai for Seven Pairs and must decide whether to discard [[8m]] to wait on the single honor [[P]], or discard [[P]] to wait on [[8m]]. Nishiki prefers discarding [[P]] to chase the three remaining outs of [[8m]]. However, LuckyJ discards [[8m]] to declare riichi on the [[P]] wait, a move backed 99% by Mortal. Even though the [[P]] has only two outs left in the wall, an honor tile with one copy already visible is an incredibly effective bait under riichi pressure. Opponents trying to fold or play around the riichi will readily release the White Dragon [[P]] long before they discard a middle tile like [[8m]]. Prioritize the tile opponents are most likely to release under pressure over a slight advantage in raw tile count.",
+      "prompt": "Why is waiting on the White Dragon [[P]] generally better than waiting on [[8m]] for a Chiitoitsu riichi in this early stage?",
+      "answer": "Honor tiles like [[P]] are much more likely to be discarded by opponents defending against the riichi than middle tiles like [[8m]]."
+    },
+    "guide_ja": {
+      "read": "チートイツの立直における待ち選択は、純粋な残り枚数と他家の心理が衝突する局面である。東2局0本場、山に50枚残りの状況で七対子のテンパイが入り、[[8m]]を切って字牌の[[P]]待ちにするか、[[P]]を切って[[8m]]待ちにするかの選択を迫られている。Nishikiは残り3枚ある[[8m]]の枚数的な優位を求めて[[P]]切りを選択した。しかし、LuckyJは[[8m]]を切り、[[P]]待ちで即立直を宣言した。これはMortalも99%の確率で支持する一打である。山に残る[[P]]は2枚だけだが、すでに1枚枯れている役牌の[[P]]（白）は、立直の圧力がかかった状況下で非常に優秀な釣り出し牌となる。ベタオリや回し打ちを選択した他家は、無筋の[[8m]]よりも、中張牌より切りやすい[[P]]を先に手放す可能性が極めて高い。立直時のチートイツの待ちは、枚数の多さよりも、相手が圧力に屈してこぼしやすい牌を優先すべきである。",
+      "prompt": "この序盤の段階において、七対子の立直で[[8m]]待ちよりも字牌の[[P]]待ちの方が一般的に優秀とされるのはなぜですか？",
+      "answer": "立直に対してベタオリする他家にとって、[[8m]]のような中張牌よりも字牌の[[P]]の方が安全牌として河に捨てやすいためです。"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-08_236_3_53": {
+    "guide": {
+      "read": "Entering tenpai in East 3, the choice of declaration tile between [[3p]] and [[6p]] dictates how safely we can lock in our riichi pressure. Sitting in second place with 24,000 points, we need to convert this ryanmen tenpai into value, and Mortal fully backs the 100% riichi rate here. Nishiki prefers discarding the [[6p]] as it represents a double-suji safe tile for both Shimocha and Toimen. However, LuckyJ correctly selects the [[3p]] discard. While [[6p]] has suji status against two players, it carries a higher peak danger of 13.4% to Kamicha, whereas the [[3p]] is safer at 12.1% against Kamicha's active river. When throwing a declaration tile into a quiet board, minimizing the highest individual threat of the tile you discard ensures your pressure isn't cut short by a sudden hand-in. Minimize the maximum danger of the declaration tile when launching a riichi.",
+      "prompt": "Under the current board state, which opponent has the highest danger value for the candidate tile [[6p]]?",
+      "answer": "Kamicha"
+    },
+    "guide_ja": {
+      "read": "東3局、テンパイを果たした場面で、宣言牌に[[3p]]を選ぶか[[6p]]を選ぶかは、立直の圧力をどれだけ安全に通せるかを決定づける。持ち点24,000点の2着目として、この両面テンパイを打点に結びつけたい局面であり、Mortalも立直判断を100%支持している。Nishikiは下家と対面の両方にスジとなる[[6p]]の打牌を好んだ。しかし、LuckyJは[[3p]]切りを選択する。[[6p]]は2人に対してスジであるものの、上家に対しては放銃率13.4%と危険度が高く、一方で[[3p]]は上家に対して12.1%とより安全である。他家が動いていない平らな局面で宣言牌を通す際は、放銃リスクの最大値を抑えることで、不意の放銃による立直の失敗を防ぐことができる。立直をかける際は、宣言牌の最大危険度を最小化する選択を意識したい。",
+      "prompt": "現在の盤面において、候補牌である[[6p]]の危険度が最も高い相手は誰ですか？",
+      "answer": "上家"
+    },
+    "meta": {
+      "prompt_version": "pro-voice-v3",
+      "model": "gemini-3.5-flash-low"
+    }
+  },
+  "point-05_126_5_71": {
+    "guide": {
+      "read": "While Mortal strongly advocates for immediate riichi pressure, the comparison between LuckyJ and Nishiki reveals a deeper tactical trade-off. Taking tenpai by discarding the terminal [[9s]] commits to holding the riskier simple tile [[8m]] as part of the winning shape while facing potential future threats. LuckyJ chooses to discard the simple tile [[8m]] first, accepting a retreat to 1-shanten while preserving the potential for a high-value *ittsu* (Pure Straight) in the souzu suit with the [[7s]][[9s]] shape. By releasing the [[8m]] (danger level 16.8%) while the table is still relatively quiet, LuckyJ removes a future liability before an opponent's riichi or second meld materializes. Keeping the terminal [[9s]] (danger level 4.1%) provides a much safer footprint for the hand. When a hand is not yet ready to push, clearing high-risk simple tiles early prevents you from being cornered into discarding them later under intense pressure.",
+      "prompt": "What is the shanten of LuckyJ's hand after discarding [[8m]], and what yaku route does this discard preserve?",
+      "answer": "LuckyJ's hand is 1-shanten, preserving the souzu ittsu (Pure Straight) route."
+    },
+    "guide_ja": {
+      "read": "Mortalは即リーチによる圧力を強力に支持しているが、LuckyJとNishikiの打牌比較は異なる戦術的トレードオフを示している。端牌の[[9s]]を切ってテンパイを取るルートは、将来の脅威に直面しながら、より危険な中張牌である[[8m]]をアガリ形の一部として抱え続けることになる。LuckyJはまず中張牌の[[8m]]を切り、1シャンテンへの後退を受け入れつつ、索子の一気通貫（イッツー）の可能性を残す選択をした。場が比較的静かなうちに危険度16.8%の[[8m]]をリリースすることで、相手のリーチや二つ目の仕掛けが入る前に将来の危険牌を処理している。危険度がわずか4.1%の端牌である[[9s]]を残すことで、手牌の安全性を高く保つことができる。手がまだ押し切る準備ができていない段階では、高リスクな中張牌を早期に処理しておくことで、後に強い圧力を受けた際に危険牌の押し出しを強いられる事態を防ぐことができる。",
+      "prompt": "[[8m]]を打牌した後のLuckyJの手牌のシャンテン数と、この打牌によって残される役のルートは何ですか？",
+      "answer": "1シャンテンで、索子の一気通貫（イッツー）のルートを残します。"
     },
     "meta": {
       "prompt_version": "pro-voice-v3",

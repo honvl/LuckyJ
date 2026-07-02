@@ -5,8 +5,8 @@
     "source": "Generated from local Mjai logs; raw logs and weights stay local.",
     "examples": 160,
     "matched": 160,
-    "reused_cached": 81,
-    "replayed": 79,
+    "reused_cached": 158,
+    "replayed": 2,
     "missing": []
   },
   "points": {
@@ -170,6 +170,57 @@
         "kind": "discard",
         "input_signature": [
           "point-01",
+          "2023042922gm-0029-0000-87591e2c",
+          9,
+          69,
+          "dahai",
+          "N",
+          null
+        ],
+        "log_id": "2023042922gm-0029-0000-87591e2c",
+        "kyoku_index": 9,
+        "event_index": 844,
+        "left": 69,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 1,
+          "pai": "9m"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "N",
+          "label": "Discard N"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "N",
+          "label": "Discard N"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 30,
+            "label": "Discard N",
+            "probability": 0.486136,
+            "type": "dahai",
+            "tile": "N"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 2-1, early, 69 tiles left, lead. Mortal's top action is discard [[N]] (48.6%); LuckyJ plays discard [[N]]; Nishiki's top line is discard [[W]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to check whether the score job really changes the price of this discard. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 2-1、early、残り69枚、lead。Mortal 最上位は [[N]] 切り (48.6%)、LuckyJ 実戦は [[N]] 切り、ニシキ第一候補は [[W]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "点数状況が打牌の値段を変えるかを見るクロスチェック。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-01",
+        "example_index": 5,
+        "kind": "discard",
+        "input_signature": [
+          "point-01",
           "2023052515gm-0029-0000-66ba740e",
           9,
           37,
@@ -217,7 +268,7 @@
       },
       {
         "point": "point-01",
-        "example_index": 5,
+        "example_index": 6,
         "kind": "discard",
         "input_signature": [
           "point-01",
@@ -268,7 +319,7 @@
       },
       {
         "point": "point-01",
-        "example_index": 6,
+        "example_index": 7,
         "kind": "discard",
         "input_signature": [
           "point-01",
@@ -315,57 +366,6 @@
         "read": "South 2-1, early, 69 tiles left, lead. Mortal's top action is discard [[W]] (58.9%); LuckyJ plays discard [[N]]; Nishiki's top line is discard [[W]]. Mortal backs the Nishiki line.",
         "how_to_use": "Use it to check whether the score job really changes the price of this discard. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
         "read_ja": "South 2-1、early、残り69枚、lead。Mortal 最上位は [[W]] 切り (58.9%)、LuckyJ 実戦は [[N]] 切り、ニシキ第一候補は [[W]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "点数状況が打牌の値段を変えるかを見るクロスチェック。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-01",
-        "example_index": 7,
-        "kind": "discard",
-        "input_signature": [
-          "point-01",
-          "2023042922gm-0029-0000-87591e2c",
-          9,
-          69,
-          "dahai",
-          "N",
-          null
-        ],
-        "log_id": "2023042922gm-0029-0000-87591e2c",
-        "kyoku_index": 9,
-        "event_index": 844,
-        "left": 69,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 1,
-          "pai": "9m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "N",
-          "label": "Discard N"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "N",
-          "label": "Discard N"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 30,
-            "label": "Discard N",
-            "probability": 0.486136,
-            "type": "dahai",
-            "tile": "N"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 2-1, early, 69 tiles left, lead. Mortal's top action is discard [[N]] (48.6%); LuckyJ plays discard [[N]]; Nishiki's top line is discard [[W]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to check whether the score job really changes the price of this discard. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 2-1、early、残り69枚、lead。Mortal 最上位は [[N]] 切り (48.6%)、LuckyJ 実戦は [[N]] 切り、ニシキ第一候補は [[W]] 切り。Mortal は LuckyJ 側に寄っている。",
         "how_to_use_ja": "点数状況が打牌の値段を変えるかを見るクロスチェック。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
       },
       {
@@ -631,6 +631,57 @@
         "kind": "discard",
         "input_signature": [
           "point-02",
+          "2023042417gm-0089-0000-34e39e95",
+          3,
+          54,
+          "dahai",
+          "3m",
+          null
+        ],
+        "log_id": "2023042417gm-0089-0000-34e39e95",
+        "kyoku_index": 3,
+        "event_index": 379,
+        "left": 54,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 1,
+          "pai": "3m"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "3m",
+          "label": "Discard 3m"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "3m",
+          "label": "Discard 3m"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 2,
+            "label": "Discard 3m",
+            "probability": 0.914972,
+            "type": "dahai",
+            "tile": "3m"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 3-0, early, 54 tiles left, above starting score. Mortal's top action is discard [[3m]] (91.5%); LuckyJ plays discard [[3m]]; Nishiki's top line is discard [[9m]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to check whether cutting [[3m]] preserves live branches or merely damages shape. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 3-0、early、残り54枚、above starting score。Mortal 最上位は [[3m]] 切り (91.5%)、LuckyJ 実戦は [[3m]] 切り、ニシキ第一候補は [[9m]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "[[3m]] が分岐を残す一打か、ただ形を壊しているだけかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-02",
+        "example_index": 4,
+        "kind": "discard",
+        "input_signature": [
+          "point-02",
           "2023042216gm-0089-0000-ab94ae28",
           9,
           64,
@@ -678,7 +729,58 @@
       },
       {
         "point": "point-02",
-        "example_index": 4,
+        "example_index": 5,
+        "kind": "discard",
+        "input_signature": [
+          "point-02",
+          "2023042019gm-0089-0000-dc112820",
+          11,
+          61,
+          "dahai",
+          "8s",
+          null
+        ],
+        "log_id": "2023042019gm-0089-0000-dc112820",
+        "kyoku_index": 11,
+        "event_index": 1097,
+        "left": 61,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 2,
+          "pai": "N"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "8s",
+          "label": "Discard 8s"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "8s",
+          "label": "Discard 8s"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 25,
+            "label": "Discard 8s",
+            "probability": 0.734941,
+            "type": "dahai",
+            "tile": "8s"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 3-1, early, 61 tiles left, danger zone. Mortal's top action is discard [[8s]] (73.5%); LuckyJ plays discard [[8s]]; Nishiki's top line is discard [[N]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to check whether cutting [[8s]] preserves live branches or merely damages shape. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 3-1、early、残り61枚、danger zone。Mortal 最上位は [[8s]] 切り (73.5%)、LuckyJ 実戦は [[8s]] 切り、ニシキ第一候補は [[N]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "[[8s]] が分岐を残す一打か、ただ形を壊しているだけかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-02",
+        "example_index": 6,
         "log_id": "2023050121gm-0029-0000-53d6d1b0",
         "kyoku_index": 2,
         "event_index": 216,
@@ -729,7 +831,7 @@
       },
       {
         "point": "point-02",
-        "example_index": 5,
+        "example_index": 7,
         "kind": "discard",
         "input_signature": [
           "point-02",
@@ -780,7 +882,7 @@
       },
       {
         "point": "point-02",
-        "example_index": 6,
+        "example_index": 8,
         "kind": "discard",
         "input_signature": [
           "point-02",
@@ -831,7 +933,7 @@
       },
       {
         "point": "point-02",
-        "example_index": 7,
+        "example_index": 9,
         "kind": "discard",
         "input_signature": [
           "point-02",
@@ -882,7 +984,7 @@
       },
       {
         "point": "point-02",
-        "example_index": 8,
+        "example_index": 10,
         "kind": "discard",
         "input_signature": [
           "point-02",
@@ -930,108 +1032,6 @@
         "how_to_use": "Use it to check whether cutting [[2s]] preserves live branches or merely damages shape. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
         "read_ja": "East 1-0、early、残り59枚、above starting score。Mortal 最上位は [[E]] 切り (82.8%)、LuckyJ 実戦は [[2s]] 切り、ニシキ第一候補は [[E]] 切り。Mortal はニシキ側に寄っている。",
         "how_to_use_ja": "[[2s]] が分岐を残す一打か、ただ形を壊しているだけかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-02",
-        "example_index": 9,
-        "kind": "discard",
-        "input_signature": [
-          "point-02",
-          "2023042417gm-0089-0000-34e39e95",
-          3,
-          54,
-          "dahai",
-          "3m",
-          null
-        ],
-        "log_id": "2023042417gm-0089-0000-34e39e95",
-        "kyoku_index": 3,
-        "event_index": 379,
-        "left": 54,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 1,
-          "pai": "3m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "3m",
-          "label": "Discard 3m"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "3m",
-          "label": "Discard 3m"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 2,
-            "label": "Discard 3m",
-            "probability": 0.914972,
-            "type": "dahai",
-            "tile": "3m"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 3-0, early, 54 tiles left, above starting score. Mortal's top action is discard [[3m]] (91.5%); LuckyJ plays discard [[3m]]; Nishiki's top line is discard [[9m]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to check whether cutting [[3m]] preserves live branches or merely damages shape. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 3-0、early、残り54枚、above starting score。Mortal 最上位は [[3m]] 切り (91.5%)、LuckyJ 実戦は [[3m]] 切り、ニシキ第一候補は [[9m]] 切り。Mortal は LuckyJ 側に寄っている。",
-        "how_to_use_ja": "[[3m]] が分岐を残す一打か、ただ形を壊しているだけかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-02",
-        "example_index": 10,
-        "kind": "discard",
-        "input_signature": [
-          "point-02",
-          "2023042001gm-0009-0000-333a7cb8",
-          3,
-          61,
-          "dahai",
-          "2p",
-          null
-        ],
-        "log_id": "2023042001gm-0009-0000-333a7cb8",
-        "kyoku_index": 3,
-        "event_index": 308,
-        "left": 61,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 3,
-          "pai": "4m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "2p",
-          "label": "Discard 2p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "F",
-          "label": "Discard F"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 32,
-            "label": "Discard F",
-            "probability": 0.572934,
-            "type": "dahai",
-            "tile": "F"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 3-1, early, 61 tiles left, above starting score. Mortal's top action is discard [[F]] (57.3%); LuckyJ plays discard [[2p]]; Nishiki's top line is discard [[F]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to check whether cutting [[2p]] preserves live branches or merely damages shape. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 3-1、early、残り61枚、above starting score。Mortal 最上位は [[F]] 切り (57.3%)、LuckyJ 実戦は [[2p]] 切り、ニシキ第一候補は [[F]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "[[2p]] が分岐を残す一打か、ただ形を壊しているだけかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
       }
     ],
     "point-03": [
@@ -1101,6 +1101,66 @@
         "kind": "call",
         "input_signature": [
           "point-03",
+          "2023050317gm-0029-0000-060174a1",
+          6,
+          6,
+          "pon",
+          "6p",
+          "5mr"
+        ],
+        "log_id": "2023050317gm-0029-0000-060174a1",
+        "kyoku_index": 6,
+        "event_index": 651,
+        "left": 6,
+        "trigger": {
+          "type": "dahai",
+          "actor": 2,
+          "pai": "6p",
+          "tsumogiri": true
+        },
+        "actual": {
+          "type": "pon",
+          "tile": "6p",
+          "discard_after_call": "5mr",
+          "label": "Pon 6p"
+        },
+        "mortal": {
+          "type": "pon",
+          "tile": "6p",
+          "consumed": [
+            "6p",
+            "6p"
+          ],
+          "label": "Pon 6p"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 41,
+            "label": "Pon",
+            "probability": 0.99151,
+            "type": "pon"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "5mr",
+          "label": "Discard 5mr"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "East 2-4, late, 6 tiles left, above starting score. Mortal's first reaction is pon [[6p]] (99.2%); LuckyJ actually plays pon [[6p]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[5mr]].",
+        "how_to_use": "Use it to test whether the call has value beyond giving up the closed hand. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "East 2-4、late、残り6枚、above starting score。Mortal 第一反応は pon [[6p]] (99.2%)、LuckyJ 実戦は pon [[6p]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[5mr]] 切り。",
+        "how_to_use_ja": "鳴きが閉じた幻想を捨てる価値を持つかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-03",
+        "example_index": 3,
+        "kind": "call",
+        "input_signature": [
+          "point-03",
           "2023042415gm-0089-0000-7e1c211d",
           8,
           25,
@@ -1157,7 +1217,7 @@
       },
       {
         "point": "point-03",
-        "example_index": 3,
+        "example_index": 4,
         "kind": "call",
         "input_signature": [
           "point-03",
@@ -1217,127 +1277,7 @@
       },
       {
         "point": "point-03",
-        "example_index": 4,
-        "kind": "call",
-        "input_signature": [
-          "point-03",
-          "2023042521gm-0029-0000-f37b2a02",
-          5,
-          20,
-          "chi",
-          "2p",
-          "1m"
-        ],
-        "log_id": "2023042521gm-0029-0000-f37b2a02",
-        "kyoku_index": 5,
-        "event_index": 578,
-        "left": 20,
-        "trigger": {
-          "type": "dahai",
-          "actor": 2,
-          "pai": "2p",
-          "tsumogiri": false
-        },
-        "actual": {
-          "type": "chi",
-          "tile": "2p",
-          "discard_after_call": "1m",
-          "label": "Chi 2p"
-        },
-        "mortal": {
-          "type": "chi",
-          "tile": "2p",
-          "consumed": [
-            "3p",
-            "4p"
-          ],
-          "label": "Chi 2p"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 38,
-            "label": "Chi low",
-            "probability": 0.80512,
-            "type": "chi_low"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "1m",
-          "label": "Discard 1m"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "South 1-0, late, 20 tiles left, above starting score. Mortal's first reaction is chi [[2p]] (80.5%); LuckyJ actually plays chi [[2p]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[1m]].",
-        "how_to_use": "Use it to test whether the call has value beyond giving up the closed hand. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "South 1-0、late、残り20枚、above starting score。Mortal 第一反応は chi [[2p]] (80.5%)、LuckyJ 実戦は chi [[2p]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[1m]] 切り。",
-        "how_to_use_ja": "鳴きが閉じた幻想を捨てる価値を持つかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-03",
         "example_index": 5,
-        "kind": "call",
-        "input_signature": [
-          "point-03",
-          "2023042520gm-0029-0000-ea53f7cf",
-          1,
-          21,
-          "chi",
-          "4s",
-          "W"
-        ],
-        "log_id": "2023042520gm-0029-0000-ea53f7cf",
-        "kyoku_index": 1,
-        "event_index": 196,
-        "left": 21,
-        "trigger": {
-          "type": "dahai",
-          "actor": 2,
-          "pai": "4s",
-          "tsumogiri": true
-        },
-        "actual": {
-          "type": "chi",
-          "tile": "4s",
-          "discard_after_call": "W",
-          "label": "Chi 4s"
-        },
-        "mortal": {
-          "type": "chi",
-          "tile": "4s",
-          "consumed": [
-            "2s",
-            "3s"
-          ],
-          "label": "Chi 4s"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 40,
-            "label": "Chi high",
-            "probability": 0.630644,
-            "type": "chi_high"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "W",
-          "label": "Discard W"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "East 1-1, late, 21 tiles left, behind. Mortal's first reaction is chi [[4s]] (63.1%); LuckyJ actually plays chi [[4s]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[W]].",
-        "how_to_use": "Use it to test whether the call has value beyond giving up the closed hand. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "East 1-1、late、残り21枚、behind。Mortal 第一反応は chi [[4s]] (63.1%)、LuckyJ 実戦は chi [[4s]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[W]] 切り。",
-        "how_to_use_ja": "鳴きが閉じた幻想を捨てる価値を持つかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-03",
-        "example_index": 6,
         "kind": "call",
         "input_signature": [
           "point-03",
@@ -1397,7 +1337,7 @@
       },
       {
         "point": "point-03",
-        "example_index": 7,
+        "example_index": 6,
         "kind": "call",
         "input_signature": [
           "point-03",
@@ -1457,7 +1397,7 @@
       },
       {
         "point": "point-03",
-        "example_index": 8,
+        "example_index": 7,
         "kind": "call",
         "input_signature": [
           "point-03",
@@ -1517,7 +1457,7 @@
       },
       {
         "point": "point-03",
-        "example_index": 9,
+        "example_index": 8,
         "kind": "call",
         "input_signature": [
           "point-03",
@@ -1577,7 +1517,7 @@
       },
       {
         "point": "point-03",
-        "example_index": 10,
+        "example_index": 9,
         "kind": "call",
         "input_signature": [
           "point-03",
@@ -1633,6 +1573,61 @@
         "read": "East 3-0, early, 57 tiles left, lead. Mortal's first reaction is chi [[2s]] (82.3%); LuckyJ actually plays chi [[2s]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[1m]].",
         "how_to_use": "Use it to test whether the call has value beyond giving up the closed hand. Copy the call when the post-call discard and next safe tile are already visible.",
         "read_ja": "East 3-0、early、残り57枚、lead。Mortal 第一反応は chi [[2s]] (82.3%)、LuckyJ 実戦は chi [[2s]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[1m]] 切り。",
+        "how_to_use_ja": "鳴きが閉じた幻想を捨てる価値を持つかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-03",
+        "example_index": 10,
+        "kind": "call",
+        "input_signature": [
+          "point-03",
+          "2023043016gm-0029-0000-6fa920a0",
+          8,
+          1,
+          "chi",
+          "8m",
+          "8s"
+        ],
+        "log_id": "2023043016gm-0029-0000-6fa920a0",
+        "kyoku_index": 8,
+        "event_index": 970,
+        "left": 1,
+        "trigger": {
+          "type": "dahai",
+          "actor": 3,
+          "pai": "8m",
+          "tsumogiri": true
+        },
+        "actual": {
+          "type": "chi",
+          "tile": "8m",
+          "discard_after_call": "8s",
+          "label": "Chi 8m"
+        },
+        "mortal": {
+          "type": "none",
+          "label": "Pass"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 45,
+            "label": "Pass",
+            "probability": 0.909724,
+            "type": "pass"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "8s",
+          "label": "Discard 8s"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "South 4-0, late, 1 tiles left, lead. Mortal's first reaction is pass (91.0%); LuckyJ actually plays chi [[8m]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[8s]].",
+        "how_to_use": "Use it to test whether the call has value beyond giving up the closed hand. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "South 4-0、late、残り1枚、lead。Mortal 第一反応は スルー (91.0%)、LuckyJ 実戦は chi [[8m]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[8s]] 切り。",
         "how_to_use_ja": "鳴きが閉じた幻想を捨てる価値を持つかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
       }
     ],
@@ -1703,53 +1698,58 @@
         "kind": "call",
         "input_signature": [
           "point-04",
-          "2023051621gm-0029-0000-24545cd0",
-          2,
-          26,
+          "2023042520gm-0029-0000-ea53f7cf",
+          1,
+          21,
           "chi",
-          "3m",
-          "E"
+          "4s",
+          "W"
         ],
-        "log_id": "2023051621gm-0029-0000-24545cd0",
-        "kyoku_index": 2,
-        "event_index": 252,
-        "left": 26,
+        "log_id": "2023042520gm-0029-0000-ea53f7cf",
+        "kyoku_index": 1,
+        "event_index": 196,
+        "left": 21,
         "trigger": {
           "type": "dahai",
-          "actor": 0,
-          "pai": "3m",
-          "tsumogiri": false
+          "actor": 2,
+          "pai": "4s",
+          "tsumogiri": true
         },
         "actual": {
           "type": "chi",
-          "tile": "3m",
-          "discard_after_call": "E",
-          "label": "Chi 3m"
+          "tile": "4s",
+          "discard_after_call": "W",
+          "label": "Chi 4s"
         },
         "mortal": {
-          "type": "none",
-          "label": "Pass"
+          "type": "chi",
+          "tile": "4s",
+          "consumed": [
+            "2s",
+            "3s"
+          ],
+          "label": "Chi 4s"
         },
-        "mortal_agrees_luckyj": false,
+        "mortal_agrees_luckyj": true,
         "mortal_agrees_naga": null,
         "top_candidates": [
           {
-            "action_id": 45,
-            "label": "Pass",
-            "probability": 0.986265,
-            "type": "pass"
+            "action_id": 40,
+            "label": "Chi high",
+            "probability": 0.630644,
+            "type": "chi_high"
           }
         ],
         "post_call_mortal": {
           "type": "dahai",
-          "tile": "E",
-          "label": "Discard E"
+          "tile": "W",
+          "label": "Discard W"
         },
         "post_call_agrees_luckyj": true,
         "post_call_candidates": [],
-        "read": "East 2-1, middle, 26 tiles left, lead. Mortal's first reaction is pass (98.6%); LuckyJ actually plays chi [[3m]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[E]].",
+        "read": "East 1-1, late, 21 tiles left, behind. Mortal's first reaction is chi [[4s]] (63.1%); LuckyJ actually plays chi [[4s]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[W]].",
         "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "East 2-1、middle、残り26枚、lead。Mortal 第一反応は スルー (98.6%)、LuckyJ 実戦は chi [[3m]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[E]] 切り。",
+        "read_ja": "East 1-1、late、残り21枚、behind。Mortal 第一反応は chi [[4s]] (63.1%)、LuckyJ 実戦は chi [[4s]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[W]] 切り。",
         "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
       },
       {
@@ -1758,168 +1758,63 @@
         "kind": "call",
         "input_signature": [
           "point-04",
-          "2023051923gm-0029-0000-a4332003",
-          1,
-          42,
+          "2023042521gm-0029-0000-f37b2a02",
+          5,
+          20,
           "chi",
-          "6p",
-          "N"
+          "2p",
+          "1m"
         ],
-        "log_id": "2023051923gm-0029-0000-a4332003",
-        "kyoku_index": 1,
-        "event_index": 185,
-        "left": 42,
+        "log_id": "2023042521gm-0029-0000-f37b2a02",
+        "kyoku_index": 5,
+        "event_index": 578,
+        "left": 20,
         "trigger": {
           "type": "dahai",
-          "actor": 1,
-          "pai": "6p",
-          "tsumogiri": true
+          "actor": 2,
+          "pai": "2p",
+          "tsumogiri": false
         },
         "actual": {
           "type": "chi",
-          "tile": "6p",
-          "discard_after_call": "N",
-          "label": "Chi 6p"
+          "tile": "2p",
+          "discard_after_call": "1m",
+          "label": "Chi 2p"
         },
         "mortal": {
-          "type": "none",
-          "label": "Pass"
+          "type": "chi",
+          "tile": "2p",
+          "consumed": [
+            "3p",
+            "4p"
+          ],
+          "label": "Chi 2p"
         },
-        "mortal_agrees_luckyj": false,
+        "mortal_agrees_luckyj": true,
         "mortal_agrees_naga": null,
         "top_candidates": [
           {
-            "action_id": 45,
-            "label": "Pass",
-            "probability": 0.999762,
-            "type": "pass"
+            "action_id": 38,
+            "label": "Chi low",
+            "probability": 0.80512,
+            "type": "chi_low"
           }
         ],
         "post_call_mortal": {
           "type": "dahai",
-          "tile": "N",
-          "label": "Discard N"
+          "tile": "1m",
+          "label": "Discard 1m"
         },
         "post_call_agrees_luckyj": true,
         "post_call_candidates": [],
-        "read": "East 2-0, middle, 42 tiles left, lead. Mortal's first reaction is pass (100.0%); LuckyJ actually plays chi [[6p]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[N]].",
+        "read": "South 1-0, late, 20 tiles left, above starting score. Mortal's first reaction is chi [[2p]] (80.5%); LuckyJ actually plays chi [[2p]]. Mortal backs LuckyJ's line. After the call, Mortal's conditional discard is discard [[1m]].",
         "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "East 2-0、middle、残り42枚、lead。Mortal 第一反応は スルー (100.0%)、LuckyJ 実戦は chi [[6p]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[N]] 切り。",
+        "read_ja": "South 1-0、late、残り20枚、above starting score。Mortal 第一反応は chi [[2p]] (80.5%)、LuckyJ 実戦は chi [[2p]]。Mortal は LuckyJ 側に寄っている。 鳴いた後の Mortal 条件付き打牌は [[1m]] 切り。",
         "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
       },
       {
         "point": "point-04",
         "example_index": 4,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023042520gm-0029-0000-ea53f7cf",
-          2,
-          28,
-          "pon",
-          "9s",
-          "E"
-        ],
-        "log_id": "2023042520gm-0029-0000-ea53f7cf",
-        "kyoku_index": 2,
-        "event_index": 292,
-        "left": 28,
-        "trigger": {
-          "type": "dahai",
-          "actor": 1,
-          "pai": "9s",
-          "tsumogiri": false
-        },
-        "actual": {
-          "type": "pon",
-          "tile": "9s",
-          "discard_after_call": "E",
-          "label": "Pon 9s"
-        },
-        "mortal": {
-          "type": "none",
-          "label": "Pass"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 45,
-            "label": "Pass",
-            "probability": 0.827894,
-            "type": "pass"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "E",
-          "label": "Discard E"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "East 2-0, middle, 28 tiles left, behind. Mortal's first reaction is pass (82.8%); LuckyJ actually plays pon [[9s]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[E]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "East 2-0、middle、残り28枚、behind。Mortal 第一反応は スルー (82.8%)、LuckyJ 実戦は pon [[9s]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[E]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 5,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023042613gm-0029-0000-5716ecfa",
-          11,
-          39,
-          "pon",
-          "P",
-          "S"
-        ],
-        "log_id": "2023042613gm-0029-0000-5716ecfa",
-        "kyoku_index": 11,
-        "event_index": 1305,
-        "left": 39,
-        "trigger": {
-          "type": "dahai",
-          "actor": 1,
-          "pai": "P",
-          "tsumogiri": false
-        },
-        "actual": {
-          "type": "pon",
-          "tile": "P",
-          "discard_after_call": "S",
-          "label": "Pon P"
-        },
-        "mortal": {
-          "type": "none",
-          "label": "Pass"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 45,
-            "label": "Pass",
-            "probability": 0.929053,
-            "type": "pass"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "S",
-          "label": "Discard S"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "South 3-0, middle, 39 tiles left, above starting score. Mortal's first reaction is pass (92.9%); LuckyJ actually plays pon [[P]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[S]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "South 3-0、middle、残り39枚、above starting score。Mortal 第一反応は スルー (92.9%)、LuckyJ 実戦は pon [[P]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[S]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 6,
         "kind": "call",
         "input_signature": [
           "point-04",
@@ -1979,7 +1874,7 @@
       },
       {
         "point": "point-04",
-        "example_index": 7,
+        "example_index": 5,
         "kind": "call",
         "input_signature": [
           "point-04",
@@ -2039,7 +1934,227 @@
       },
       {
         "point": "point-04",
+        "example_index": 6,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023051621gm-0029-0000-24545cd0",
+          2,
+          26,
+          "chi",
+          "3m",
+          "E"
+        ],
+        "log_id": "2023051621gm-0029-0000-24545cd0",
+        "kyoku_index": 2,
+        "event_index": 252,
+        "left": 26,
+        "trigger": {
+          "type": "dahai",
+          "actor": 0,
+          "pai": "3m",
+          "tsumogiri": false
+        },
+        "actual": {
+          "type": "chi",
+          "tile": "3m",
+          "discard_after_call": "E",
+          "label": "Chi 3m"
+        },
+        "mortal": {
+          "type": "none",
+          "label": "Pass"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 45,
+            "label": "Pass",
+            "probability": 0.986265,
+            "type": "pass"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "E",
+          "label": "Discard E"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "East 2-1, middle, 26 tiles left, lead. Mortal's first reaction is pass (98.6%); LuckyJ actually plays chi [[3m]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[E]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "East 2-1、middle、残り26枚、lead。Mortal 第一反応は スルー (98.6%)、LuckyJ 実戦は chi [[3m]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[E]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 7,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023051923gm-0029-0000-a4332003",
+          1,
+          42,
+          "chi",
+          "6p",
+          "N"
+        ],
+        "log_id": "2023051923gm-0029-0000-a4332003",
+        "kyoku_index": 1,
+        "event_index": 185,
+        "left": 42,
+        "trigger": {
+          "type": "dahai",
+          "actor": 1,
+          "pai": "6p",
+          "tsumogiri": true
+        },
+        "actual": {
+          "type": "chi",
+          "tile": "6p",
+          "discard_after_call": "N",
+          "label": "Chi 6p"
+        },
+        "mortal": {
+          "type": "none",
+          "label": "Pass"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 45,
+            "label": "Pass",
+            "probability": 0.999762,
+            "type": "pass"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "N",
+          "label": "Discard N"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "East 2-0, middle, 42 tiles left, lead. Mortal's first reaction is pass (100.0%); LuckyJ actually plays chi [[6p]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[N]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "East 2-0、middle、残り42枚、lead。Mortal 第一反応は スルー (100.0%)、LuckyJ 実戦は chi [[6p]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[N]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
         "example_index": 8,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023042520gm-0029-0000-ea53f7cf",
+          2,
+          28,
+          "pon",
+          "9s",
+          "E"
+        ],
+        "log_id": "2023042520gm-0029-0000-ea53f7cf",
+        "kyoku_index": 2,
+        "event_index": 292,
+        "left": 28,
+        "trigger": {
+          "type": "dahai",
+          "actor": 1,
+          "pai": "9s",
+          "tsumogiri": false
+        },
+        "actual": {
+          "type": "pon",
+          "tile": "9s",
+          "discard_after_call": "E",
+          "label": "Pon 9s"
+        },
+        "mortal": {
+          "type": "none",
+          "label": "Pass"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 45,
+            "label": "Pass",
+            "probability": 0.827894,
+            "type": "pass"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "E",
+          "label": "Discard E"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "East 2-0, middle, 28 tiles left, behind. Mortal's first reaction is pass (82.8%); LuckyJ actually plays pon [[9s]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[E]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "East 2-0、middle、残り28枚、behind。Mortal 第一反応は スルー (82.8%)、LuckyJ 実戦は pon [[9s]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[E]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 9,
+        "kind": "call",
+        "input_signature": [
+          "point-04",
+          "2023042613gm-0029-0000-5716ecfa",
+          11,
+          39,
+          "pon",
+          "P",
+          "S"
+        ],
+        "log_id": "2023042613gm-0029-0000-5716ecfa",
+        "kyoku_index": 11,
+        "event_index": 1305,
+        "left": 39,
+        "trigger": {
+          "type": "dahai",
+          "actor": 1,
+          "pai": "P",
+          "tsumogiri": false
+        },
+        "actual": {
+          "type": "pon",
+          "tile": "P",
+          "discard_after_call": "S",
+          "label": "Pon P"
+        },
+        "mortal": {
+          "type": "none",
+          "label": "Pass"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": null,
+        "top_candidates": [
+          {
+            "action_id": 45,
+            "label": "Pass",
+            "probability": 0.929053,
+            "type": "pass"
+          }
+        ],
+        "post_call_mortal": {
+          "type": "dahai",
+          "tile": "S",
+          "label": "Discard S"
+        },
+        "post_call_agrees_luckyj": true,
+        "post_call_candidates": [],
+        "read": "South 3-0, middle, 39 tiles left, above starting score. Mortal's first reaction is pass (92.9%); LuckyJ actually plays pon [[P]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[S]].",
+        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
+        "read_ja": "South 3-0、middle、残り39枚、above starting score。Mortal 第一反応は スルー (92.9%)、LuckyJ 実戦は pon [[P]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[S]] 切り。",
+        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
+      },
+      {
+        "point": "point-04",
+        "example_index": 10,
         "kind": "call",
         "input_signature": [
           "point-04",
@@ -2091,173 +2206,12 @@
         "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
         "read_ja": "East 4-1、middle、残り31枚、lead。Mortal 第一反応は スルー (96.7%)、LuckyJ 実戦は chi [[5m]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[W]] 切り。",
         "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 9,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023050809gm-0029-0000-9cb0f5b9",
-          5,
-          20,
-          "chi",
-          "7s",
-          "9p"
-        ],
-        "log_id": "2023050809gm-0029-0000-9cb0f5b9",
-        "kyoku_index": 5,
-        "event_index": 628,
-        "left": 20,
-        "trigger": {
-          "type": "dahai",
-          "actor": 3,
-          "pai": "7s",
-          "tsumogiri": true
-        },
-        "actual": {
-          "type": "chi",
-          "tile": "7s",
-          "discard_after_call": "9p",
-          "label": "Chi 7s"
-        },
-        "mortal": {
-          "type": "none",
-          "label": "Pass"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 45,
-            "label": "Pass",
-            "probability": 0.999862,
-            "type": "pass"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "9p",
-          "label": "Discard 9p"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "East 3-1, late, 20 tiles left, above starting score. Mortal's first reaction is pass (100.0%); LuckyJ actually plays chi [[7s]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[9p]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "East 3-1、late、残り20枚、above starting score。Mortal 第一反応は スルー (100.0%)、LuckyJ 実戦は chi [[7s]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[9p]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
-      },
-      {
-        "point": "point-04",
-        "example_index": 10,
-        "kind": "call",
-        "input_signature": [
-          "point-04",
-          "2023050812gm-0029-0000-56b91ab4",
-          8,
-          24,
-          "pon",
-          "P",
-          "W"
-        ],
-        "log_id": "2023050812gm-0029-0000-56b91ab4",
-        "kyoku_index": 8,
-        "event_index": 1121,
-        "left": 24,
-        "trigger": {
-          "type": "dahai",
-          "actor": 1,
-          "pai": "P",
-          "tsumogiri": true
-        },
-        "actual": {
-          "type": "pon",
-          "tile": "P",
-          "discard_after_call": "W",
-          "label": "Pon P"
-        },
-        "mortal": {
-          "type": "none",
-          "label": "Pass"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": null,
-        "top_candidates": [
-          {
-            "action_id": 45,
-            "label": "Pass",
-            "probability": 0.997424,
-            "type": "pass"
-          }
-        ],
-        "post_call_mortal": {
-          "type": "dahai",
-          "tile": "W",
-          "label": "Discard W"
-        },
-        "post_call_agrees_luckyj": true,
-        "post_call_candidates": [],
-        "read": "South 2-0, late, 24 tiles left, danger zone. Mortal's first reaction is pass (99.7%); LuckyJ actually plays pon [[P]]. Mortal chooses a third line, so this tab is a caution case with mixed model support. After the call, Mortal's conditional discard is discard [[W]].",
-        "how_to_use": "Use it to inspect the first post-call discard and whether the open hand still has a brake. Copy the call when the post-call discard and next safe tile are already visible.",
-        "read_ja": "South 2-0、late、残り24枚、danger zone。Mortal 第一反応は スルー (99.7%)、LuckyJ 実戦は pon [[P]]。Mortal は第三の選択を出している。この例は境界例として読む。 鳴いた後の Mortal 条件付き打牌は [[W]] 切り。",
-        "how_to_use_ja": "副露後の最初の打牌とブレーキが成立するかを見る。 鳴いた後の打牌と次の安全牌が見えている時に真似する。"
       }
     ],
     "point-05": [
       {
         "point": "point-05",
         "example_index": 1,
-        "kind": "discard",
-        "input_signature": [
-          "point-05",
-          "2023051021gm-0029-0000-6e49cde2",
-          6,
-          47,
-          "dahai",
-          "3p",
-          null
-        ],
-        "log_id": "2023051021gm-0029-0000-6e49cde2",
-        "kyoku_index": 6,
-        "event_index": 457,
-        "left": 47,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 1,
-          "pai": "8s"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "3p",
-          "label": "Discard 3p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "3p",
-          "label": "Discard 3p"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 11,
-            "label": "Discard 3p",
-            "probability": 0.904857,
-            "type": "dahai",
-            "tile": "3p"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 3-0, middle, 47 tiles left, behind. Mortal's top action is discard [[3p]] (90.5%); LuckyJ plays discard [[3p]]; Nishiki's top line is discard [[W]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to decide whether [[3p]] is a future liability worth removing now. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 3-0、middle、残り47枚、behind。Mortal 最上位は [[3p]] 切り (90.5%)、LuckyJ 実戦は [[3p]] 切り、ニシキ第一候補は [[W]] 切り。Mortal は LuckyJ 側に寄っている。",
-        "how_to_use_ja": "[[3p]] を今処理する理由が将来危険の回避になっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-05",
-        "example_index": 2,
         "kind": "discard",
         "input_signature": [
           "point-05",
@@ -2308,109 +2262,7 @@
       },
       {
         "point": "point-05",
-        "example_index": 3,
-        "kind": "discard",
-        "input_signature": [
-          "point-05",
-          "2023042115gm-0089-0000-9b6cbf12",
-          6,
-          39,
-          "dahai",
-          "2p",
-          null
-        ],
-        "log_id": "2023042115gm-0089-0000-9b6cbf12",
-        "kyoku_index": 6,
-        "event_index": 646,
-        "left": 39,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 2,
-          "pai": "8p"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "2p",
-          "label": "Discard 2p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "6s",
-          "label": "Discard 6s"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 23,
-            "label": "Discard 6s",
-            "probability": 0.5421,
-            "type": "dahai",
-            "tile": "6s"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 1-0, middle, 39 tiles left, behind. Mortal's top action is discard [[6s]] (54.2%); LuckyJ plays discard [[2p]]; Nishiki's top line is discard [[P]]. Mortal chooses a third line, so this tab is a caution case with mixed model support.",
-        "how_to_use": "Use it to decide whether [[2p]] is a future liability worth removing now. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 1-0、middle、残り39枚、behind。Mortal 最上位は [[6s]] 切り (54.2%)、LuckyJ 実戦は [[2p]] 切り、ニシキ第一候補は [[P]] 切り。Mortal は第三の選択を出している。この例は境界例として読む。",
-        "how_to_use_ja": "[[2p]] を今処理する理由が将来危険の回避になっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-05",
-        "example_index": 4,
-        "kind": "discard",
-        "input_signature": [
-          "point-05",
-          "2023042109gm-0089-0000-5dee9861",
-          4,
-          52,
-          "dahai",
-          "2p",
-          null
-        ],
-        "log_id": "2023042109gm-0089-0000-5dee9861",
-        "kyoku_index": 4,
-        "event_index": 507,
-        "left": 52,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 1,
-          "pai": "1m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "2p",
-          "label": "Discard 2p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "E",
-          "label": "Discard E"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 27,
-            "label": "Discard E",
-            "probability": 0.733583,
-            "type": "dahai",
-            "tile": "E"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 1-0, early, 52 tiles left, lead. Mortal's top action is discard [[E]] (73.4%); LuckyJ plays discard [[2p]]; Nishiki's top line is discard [[E]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to decide whether [[2p]] is a future liability worth removing now. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 1-0、early、残り52枚、lead。Mortal 最上位は [[E]] 切り (73.4%)、LuckyJ 実戦は [[2p]] 切り、ニシキ第一候補は [[E]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "[[2p]] を今処理する理由が将来危険の回避になっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-05",
-        "example_index": 5,
+        "example_index": 2,
         "kind": "discard",
         "input_signature": [
           "point-05",
@@ -2461,7 +2313,211 @@
       },
       {
         "point": "point-05",
+        "example_index": 3,
+        "kind": "discard",
+        "input_signature": [
+          "point-05",
+          "2023051920gm-0029-0000-cd4d2c5b",
+          9,
+          43,
+          "dahai",
+          "3s",
+          null
+        ],
+        "log_id": "2023051920gm-0029-0000-cd4d2c5b",
+        "kyoku_index": 9,
+        "event_index": 925,
+        "left": 43,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 2,
+          "pai": "3s"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "3s",
+          "label": "Discard 3s"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "3s",
+          "label": "Discard 3s"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 20,
+            "label": "Discard 3s",
+            "probability": 0.948911,
+            "type": "dahai",
+            "tile": "3s"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 4-0, middle, 43 tiles left, lead. Mortal's top action is discard [[3s]] (94.9%); LuckyJ plays discard [[3s]]; Nishiki's top line is discard [[F]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to decide whether [[3s]] is a future liability worth removing now. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 4-0、middle、残り43枚、lead。Mortal 最上位は [[3s]] 切り (94.9%)、LuckyJ 実戦は [[3s]] 切り、ニシキ第一候補は [[F]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "[[3s]] を今処理する理由が将来危険の回避になっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-05",
+        "example_index": 4,
+        "kind": "discard",
+        "input_signature": [
+          "point-05",
+          "2023050611gm-0029-0000-26eb3b91",
+          0,
+          45,
+          "dahai",
+          "7m",
+          null
+        ],
+        "log_id": "2023050611gm-0029-0000-26eb3b91",
+        "kyoku_index": 0,
+        "event_index": 52,
+        "left": 45,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 3,
+          "pai": "3s"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "7m",
+          "label": "Discard 7m"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "7m",
+          "label": "Discard 7m"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 6,
+            "label": "Discard 7m",
+            "probability": 0.854094,
+            "type": "dahai",
+            "tile": "7m"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 1-0, middle, 45 tiles left, above starting score. Mortal's top action is discard [[7m]] (85.4%); LuckyJ plays discard [[7m]]; Nishiki's top line is discard [[1p]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to decide whether [[7m]] is a future liability worth removing now. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 1-0、middle、残り45枚、above starting score。Mortal 最上位は [[7m]] 切り (85.4%)、LuckyJ 実戦は [[7m]] 切り、ニシキ第一候補は [[1p]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "[[7m]] を今処理する理由が将来危険の回避になっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-05",
+        "example_index": 5,
+        "kind": "discard",
+        "input_signature": [
+          "point-05",
+          "2023042115gm-0089-0000-9b6cbf12",
+          6,
+          39,
+          "dahai",
+          "2p",
+          null
+        ],
+        "log_id": "2023042115gm-0089-0000-9b6cbf12",
+        "kyoku_index": 6,
+        "event_index": 646,
+        "left": 39,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 2,
+          "pai": "8p"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "2p",
+          "label": "Discard 2p"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "6s",
+          "label": "Discard 6s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 23,
+            "label": "Discard 6s",
+            "probability": 0.5421,
+            "type": "dahai",
+            "tile": "6s"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 1-0, middle, 39 tiles left, behind. Mortal's top action is discard [[6s]] (54.2%); LuckyJ plays discard [[2p]]; Nishiki's top line is discard [[P]]. Mortal chooses a third line, so this tab is a caution case with mixed model support.",
+        "how_to_use": "Use it to decide whether [[2p]] is a future liability worth removing now. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 1-0、middle、残り39枚、behind。Mortal 最上位は [[6s]] 切り (54.2%)、LuckyJ 実戦は [[2p]] 切り、ニシキ第一候補は [[P]] 切り。Mortal は第三の選択を出している。この例は境界例として読む。",
+        "how_to_use_ja": "[[2p]] を今処理する理由が将来危険の回避になっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-05",
         "example_index": 6,
+        "kind": "discard",
+        "input_signature": [
+          "point-05",
+          "2023042109gm-0089-0000-5dee9861",
+          4,
+          52,
+          "dahai",
+          "2p",
+          null
+        ],
+        "log_id": "2023042109gm-0089-0000-5dee9861",
+        "kyoku_index": 4,
+        "event_index": 507,
+        "left": 52,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 1,
+          "pai": "1m"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "2p",
+          "label": "Discard 2p"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "E",
+          "label": "Discard E"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 27,
+            "label": "Discard E",
+            "probability": 0.733583,
+            "type": "dahai",
+            "tile": "E"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 1-0, early, 52 tiles left, lead. Mortal's top action is discard [[E]] (73.4%); LuckyJ plays discard [[2p]]; Nishiki's top line is discard [[E]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to decide whether [[2p]] is a future liability worth removing now. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 1-0、early、残り52枚、lead。Mortal 最上位は [[E]] 切り (73.4%)、LuckyJ 実戦は [[2p]] 切り、ニシキ第一候補は [[E]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "[[2p]] を今処理する理由が将来危険の回避になっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-05",
+        "example_index": 7,
         "kind": "discard",
         "input_signature": [
           "point-05",
@@ -2510,7 +2566,7 @@
       },
       {
         "point": "point-05",
-        "example_index": 7,
+        "example_index": 8,
         "kind": "discard",
         "input_signature": [
           "point-05",
@@ -2561,7 +2617,7 @@
       },
       {
         "point": "point-05",
-        "example_index": 8,
+        "example_index": 9,
         "kind": "discard",
         "input_signature": [
           "point-05",
@@ -2612,7 +2668,7 @@
       },
       {
         "point": "point-05",
-        "example_index": 9,
+        "example_index": 10,
         "kind": "discard",
         "input_signature": [
           "point-05",
@@ -2660,471 +2716,12 @@
         "how_to_use": "Use it to decide whether [[7m]] is a future liability worth removing now. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
         "read_ja": "East 2-3、middle、残り42枚、lead。Mortal 最上位は [[1s]] 切り (98.5%)、LuckyJ 実戦は [[7m]] 切り、ニシキ第一候補は [[1s]] 切り。Mortal はニシキ側に寄っている。",
         "how_to_use_ja": "[[7m]] を今処理する理由が将来危険の回避になっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-05",
-        "example_index": 10,
-        "kind": "discard",
-        "input_signature": [
-          "point-05",
-          "2023051920gm-0029-0000-cd4d2c5b",
-          9,
-          43,
-          "dahai",
-          "3s",
-          null
-        ],
-        "log_id": "2023051920gm-0029-0000-cd4d2c5b",
-        "kyoku_index": 9,
-        "event_index": 925,
-        "left": 43,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 2,
-          "pai": "3s"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "3s",
-          "label": "Discard 3s"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "3s",
-          "label": "Discard 3s"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 20,
-            "label": "Discard 3s",
-            "probability": 0.948911,
-            "type": "dahai",
-            "tile": "3s"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 4-0, middle, 43 tiles left, lead. Mortal's top action is discard [[3s]] (94.9%); LuckyJ plays discard [[3s]]; Nishiki's top line is discard [[F]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to decide whether [[3s]] is a future liability worth removing now. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 4-0、middle、残り43枚、lead。Mortal 最上位は [[3s]] 切り (94.9%)、LuckyJ 実戦は [[3s]] 切り、ニシキ第一候補は [[F]] 切り。Mortal は LuckyJ 側に寄っている。",
-        "how_to_use_ja": "[[3s]] を今処理する理由が将来危険の回避になっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
       }
     ],
     "point-06": [
       {
         "point": "point-06",
         "example_index": 1,
-        "kind": "discard",
-        "input_signature": [
-          "point-06",
-          "2023050518gm-0029-0000-5fb8854d",
-          2,
-          64,
-          "dahai",
-          "9p",
-          null
-        ],
-        "log_id": "2023050518gm-0029-0000-5fb8854d",
-        "kyoku_index": 2,
-        "event_index": 255,
-        "left": 64,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 2,
-          "pai": "W"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "9p",
-          "label": "Discard 9p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "W",
-          "label": "Discard W"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 29,
-            "label": "Discard W",
-            "probability": 0.829202,
-            "type": "dahai",
-            "tile": "W"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 2-1, early, 64 tiles left, behind. Mortal's top action is discard [[W]] (82.9%); LuckyJ plays discard [[9p]]; Nishiki's top line is discard [[W]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 2-1、early、残り64枚、behind。Mortal 最上位は [[W]] 切り (82.9%)、LuckyJ 実戦は [[9p]] 切り、ニシキ第一候補は [[W]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-06",
-        "example_index": 2,
-        "kind": "discard",
-        "input_signature": [
-          "point-06",
-          "2023042115gm-0089-0000-78917525",
-          8,
-          62,
-          "dahai",
-          "1p",
-          null
-        ],
-        "log_id": "2023042115gm-0089-0000-78917525",
-        "kyoku_index": 8,
-        "event_index": 748,
-        "left": 62,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 1,
-          "pai": "8p"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1p",
-          "label": "Discard 1p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "W",
-          "label": "Discard W"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 29,
-            "label": "Discard W",
-            "probability": 0.576736,
-            "type": "dahai",
-            "tile": "W"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 3-0, early, 62 tiles left, behind. Mortal's top action is discard [[W]] (57.7%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[W]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 3-0、early、残り62枚、behind。Mortal 最上位は [[W]] 切り (57.7%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[W]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-06",
-        "example_index": 3,
-        "kind": "discard",
-        "input_signature": [
-          "point-06",
-          "2023042412gm-0089-0000-bfc07f94",
-          2,
-          62,
-          "dahai",
-          "1s",
-          null
-        ],
-        "log_id": "2023042412gm-0089-0000-bfc07f94",
-        "kyoku_index": 2,
-        "event_index": 223,
-        "left": 62,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 1,
-          "pai": "6s"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1s",
-          "label": "Discard 1s"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "W",
-          "label": "Discard W"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 29,
-            "label": "Discard W",
-            "probability": 0.706417,
-            "type": "dahai",
-            "tile": "W"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 3-0, early, 62 tiles left, behind. Mortal's top action is discard [[W]] (70.6%); LuckyJ plays discard [[1s]]; Nishiki's top line is discard [[W]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 3-0、early、残り62枚、behind。Mortal 最上位は [[W]] 切り (70.6%)、LuckyJ 実戦は [[1s]] 切り、ニシキ第一候補は [[W]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-06",
-        "example_index": 4,
-        "kind": "discard",
-        "input_signature": [
-          "point-06",
-          "2023042611gm-0029-0000-452c635c",
-          1,
-          51,
-          "dahai",
-          "8m",
-          null
-        ],
-        "log_id": "2023042611gm-0029-0000-452c635c",
-        "kyoku_index": 1,
-        "event_index": 117,
-        "left": 51,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 3,
-          "pai": "3s"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "8m",
-          "label": "Discard 8m"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "E",
-          "label": "Discard E"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 27,
-            "label": "Discard E",
-            "probability": 0.873472,
-            "type": "dahai",
-            "tile": "E"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 2-0, early, 51 tiles left, behind. Mortal's top action is discard [[E]] (87.3%); LuckyJ plays discard [[8m]]; Nishiki's top line is discard [[E]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 2-0、early、残り51枚、behind。Mortal 最上位は [[E]] 切り (87.3%)、LuckyJ 実戦は [[8m]] 切り、ニシキ第一候補は [[E]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-06",
-        "example_index": 5,
-        "kind": "discard",
-        "input_signature": [
-          "point-06",
-          "2023041922gm-0009-0000-1d429576",
-          2,
-          67,
-          "dahai",
-          "1m",
-          null
-        ],
-        "log_id": "2023041922gm-0009-0000-1d429576",
-        "kyoku_index": 2,
-        "event_index": 213,
-        "left": 67,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 0,
-          "pai": "4p"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1m",
-          "label": "Discard 1m"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "S",
-          "label": "Discard S"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 28,
-            "label": "Discard S",
-            "probability": 0.649256,
-            "type": "dahai",
-            "tile": "S"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 3-0, early, 67 tiles left, above starting score. Mortal's top action is discard [[S]] (64.9%); LuckyJ plays discard [[1m]]; Nishiki's top line is discard [[S]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 3-0、early、残り67枚、above starting score。Mortal 最上位は [[S]] 切り (64.9%)、LuckyJ 実戦は [[1m]] 切り、ニシキ第一候補は [[S]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-06",
-        "example_index": 6,
-        "kind": "discard",
-        "input_signature": [
-          "point-06",
-          "2023041914gm-0009-0000-905aedb2",
-          0,
-          61,
-          "dahai",
-          "8s",
-          null
-        ],
-        "log_id": "2023041914gm-0009-0000-905aedb2",
-        "kyoku_index": 0,
-        "event_index": 18,
-        "left": 61,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 0,
-          "pai": "6p"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "8s",
-          "label": "Discard 8s"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "F",
-          "label": "Discard F"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 32,
-            "label": "Discard F",
-            "probability": 0.878176,
-            "type": "dahai",
-            "tile": "F"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 1-0, early, 61 tiles left, above starting score. Mortal's top action is discard [[F]] (87.8%); LuckyJ plays discard [[8s]]; Nishiki's top line is discard [[F]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 1-0、early、残り61枚、above starting score。Mortal 最上位は [[F]] 切り (87.8%)、LuckyJ 実戦は [[8s]] 切り、ニシキ第一候補は [[F]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-06",
-        "example_index": 7,
-        "kind": "discard",
-        "input_signature": [
-          "point-06",
-          "2023042123gm-0089-0000-d936ceb0",
-          0,
-          54,
-          "dahai",
-          "2s",
-          null
-        ],
-        "log_id": "2023042123gm-0089-0000-d936ceb0",
-        "kyoku_index": 0,
-        "event_index": 32,
-        "left": 54,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 3,
-          "pai": "6m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "2s",
-          "label": "Discard 2s"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "N",
-          "label": "Discard N"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 30,
-            "label": "Discard N",
-            "probability": 0.670827,
-            "type": "dahai",
-            "tile": "N"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 1-0, early, 54 tiles left, above starting score. Mortal's top action is discard [[N]] (67.1%); LuckyJ plays discard [[2s]]; Nishiki's top line is discard [[N]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 1-0、early、残り54枚、above starting score。Mortal 最上位は [[N]] 切り (67.1%)、LuckyJ 実戦は [[2s]] 切り、ニシキ第一候補は [[N]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-06",
-        "example_index": 8,
-        "kind": "discard",
-        "input_signature": [
-          "point-06",
-          "2023041922gm-0009-0000-1d429576",
-          2,
-          59,
-          "dahai",
-          "2s",
-          null
-        ],
-        "log_id": "2023041922gm-0009-0000-1d429576",
-        "kyoku_index": 2,
-        "event_index": 229,
-        "left": 59,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 0,
-          "pai": "9s"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "2s",
-          "label": "Discard 2s"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "C",
-          "label": "Discard C"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 33,
-            "label": "Discard C",
-            "probability": 0.86706,
-            "type": "dahai",
-            "tile": "C"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 3-0, early, 59 tiles left, above starting score. Mortal's top action is discard [[C]] (86.7%); LuckyJ plays discard [[2s]]; Nishiki's top line is discard [[C]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 3-0、early、残り59枚、above starting score。Mortal 最上位は [[C]] 切り (86.7%)、LuckyJ 実戦は [[2s]] 切り、ニシキ第一候補は [[C]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-06",
-        "example_index": 9,
         "kind": "discard",
         "input_signature": [
           "point-06",
@@ -3175,25 +2772,280 @@
       },
       {
         "point": "point-06",
-        "example_index": 10,
+        "example_index": 2,
         "kind": "discard",
         "input_signature": [
           "point-06",
-          "2023042019gm-0089-0000-dc112820",
-          11,
+          "2023050518gm-0029-0000-5fb8854d",
+          2,
+          64,
+          "dahai",
+          "9p",
+          null
+        ],
+        "log_id": "2023050518gm-0029-0000-5fb8854d",
+        "kyoku_index": 2,
+        "event_index": 255,
+        "left": 64,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 2,
+          "pai": "W"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "9p",
+          "label": "Discard 9p"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "W",
+          "label": "Discard W"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 29,
+            "label": "Discard W",
+            "probability": 0.829202,
+            "type": "dahai",
+            "tile": "W"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 2-1, early, 64 tiles left, behind. Mortal's top action is discard [[W]] (82.9%); LuckyJ plays discard [[9p]]; Nishiki's top line is discard [[W]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 2-1、early、残り64枚、behind。Mortal 最上位は [[W]] 切り (82.9%)、LuckyJ 実戦は [[9p]] 切り、ニシキ第一候補は [[W]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-06",
+        "example_index": 3,
+        "kind": "discard",
+        "input_signature": [
+          "point-06",
+          "2023042115gm-0089-0000-78917525",
+          8,
+          62,
+          "dahai",
+          "1p",
+          null
+        ],
+        "log_id": "2023042115gm-0089-0000-78917525",
+        "kyoku_index": 8,
+        "event_index": 748,
+        "left": 62,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 1,
+          "pai": "8p"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1p",
+          "label": "Discard 1p"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "W",
+          "label": "Discard W"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 29,
+            "label": "Discard W",
+            "probability": 0.576736,
+            "type": "dahai",
+            "tile": "W"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 3-0, early, 62 tiles left, behind. Mortal's top action is discard [[W]] (57.7%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[W]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 3-0、early、残り62枚、behind。Mortal 最上位は [[W]] 切り (57.7%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[W]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-06",
+        "example_index": 4,
+        "kind": "discard",
+        "input_signature": [
+          "point-06",
+          "2023042412gm-0089-0000-bfc07f94",
+          2,
+          62,
+          "dahai",
+          "1s",
+          null
+        ],
+        "log_id": "2023042412gm-0089-0000-bfc07f94",
+        "kyoku_index": 2,
+        "event_index": 223,
+        "left": 62,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 1,
+          "pai": "6s"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1s",
+          "label": "Discard 1s"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "W",
+          "label": "Discard W"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 29,
+            "label": "Discard W",
+            "probability": 0.706417,
+            "type": "dahai",
+            "tile": "W"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 3-0, early, 62 tiles left, behind. Mortal's top action is discard [[W]] (70.6%); LuckyJ plays discard [[1s]]; Nishiki's top line is discard [[W]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 3-0、early、残り62枚、behind。Mortal 最上位は [[W]] 切り (70.6%)、LuckyJ 実戦は [[1s]] 切り、ニシキ第一候補は [[W]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-06",
+        "example_index": 5,
+        "kind": "discard",
+        "input_signature": [
+          "point-06",
+          "2023042611gm-0029-0000-452c635c",
+          1,
+          51,
+          "dahai",
+          "8m",
+          null
+        ],
+        "log_id": "2023042611gm-0029-0000-452c635c",
+        "kyoku_index": 1,
+        "event_index": 117,
+        "left": 51,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 3,
+          "pai": "3s"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "8m",
+          "label": "Discard 8m"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "E",
+          "label": "Discard E"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 27,
+            "label": "Discard E",
+            "probability": 0.873472,
+            "type": "dahai",
+            "tile": "E"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 2-0, early, 51 tiles left, behind. Mortal's top action is discard [[E]] (87.3%); LuckyJ plays discard [[8m]]; Nishiki's top line is discard [[E]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 2-0、early、残り51枚、behind。Mortal 最上位は [[E]] 切り (87.3%)、LuckyJ 実戦は [[8m]] 切り、ニシキ第一候補は [[E]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-06",
+        "example_index": 6,
+        "kind": "discard",
+        "input_signature": [
+          "point-06",
+          "2023041922gm-0009-0000-1d429576",
+          2,
+          67,
+          "dahai",
+          "1m",
+          null
+        ],
+        "log_id": "2023041922gm-0009-0000-1d429576",
+        "kyoku_index": 2,
+        "event_index": 213,
+        "left": 67,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 0,
+          "pai": "4p"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "S",
+          "label": "Discard S"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 28,
+            "label": "Discard S",
+            "probability": 0.649256,
+            "type": "dahai",
+            "tile": "S"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 3-0, early, 67 tiles left, above starting score. Mortal's top action is discard [[S]] (64.9%); LuckyJ plays discard [[1m]]; Nishiki's top line is discard [[S]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 3-0、early、残り67枚、above starting score。Mortal 最上位は [[S]] 切り (64.9%)、LuckyJ 実戦は [[1m]] 切り、ニシキ第一候補は [[S]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-06",
+        "example_index": 7,
+        "kind": "discard",
+        "input_signature": [
+          "point-06",
+          "2023041914gm-0009-0000-905aedb2",
+          0,
           61,
           "dahai",
           "8s",
           null
         ],
-        "log_id": "2023042019gm-0089-0000-dc112820",
-        "kyoku_index": 11,
-        "event_index": 1097,
+        "log_id": "2023041914gm-0009-0000-905aedb2",
+        "kyoku_index": 0,
+        "event_index": 18,
         "left": 61,
         "trigger": {
           "type": "tsumo",
-          "actor": 2,
-          "pai": "N"
+          "actor": 0,
+          "pai": "6p"
         },
         "actual": {
           "type": "dahai",
@@ -3202,26 +3054,179 @@
         },
         "mortal": {
           "type": "dahai",
-          "tile": "8s",
-          "label": "Discard 8s"
+          "tile": "F",
+          "label": "Discard F"
         },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
         "top_candidates": [
           {
-            "action_id": 25,
-            "label": "Discard 8s",
-            "probability": 0.734941,
+            "action_id": 32,
+            "label": "Discard F",
+            "probability": 0.878176,
             "type": "dahai",
-            "tile": "8s"
+            "tile": "F"
           }
         ],
         "post_call_mortal": null,
         "post_call_agrees_luckyj": null,
         "post_call_candidates": [],
-        "read": "South 3-1, early, 61 tiles left, danger zone. Mortal's top action is discard [[8s]] (73.5%); LuckyJ plays discard [[8s]]; Nishiki's top line is discard [[N]]. Mortal backs LuckyJ's line.",
+        "read": "East 1-0, early, 61 tiles left, above starting score. Mortal's top action is discard [[F]] (87.8%); LuckyJ plays discard [[8s]]; Nishiki's top line is discard [[F]]. Mortal backs the Nishiki line.",
         "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 3-1、early、残り61枚、danger zone。Mortal 最上位は [[8s]] 切り (73.5%)、LuckyJ 実戦は [[8s]] 切り、ニシキ第一候補は [[N]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "read_ja": "East 1-0、early、残り61枚、above starting score。Mortal 最上位は [[F]] 切り (87.8%)、LuckyJ 実戦は [[8s]] 切り、ニシキ第一候補は [[F]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-06",
+        "example_index": 8,
+        "kind": "discard",
+        "input_signature": [
+          "point-06",
+          "2023042123gm-0089-0000-d936ceb0",
+          0,
+          54,
+          "dahai",
+          "2s",
+          null
+        ],
+        "log_id": "2023042123gm-0089-0000-d936ceb0",
+        "kyoku_index": 0,
+        "event_index": 32,
+        "left": 54,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 3,
+          "pai": "6m"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "2s",
+          "label": "Discard 2s"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "N",
+          "label": "Discard N"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 30,
+            "label": "Discard N",
+            "probability": 0.670827,
+            "type": "dahai",
+            "tile": "N"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 1-0, early, 54 tiles left, above starting score. Mortal's top action is discard [[N]] (67.1%); LuckyJ plays discard [[2s]]; Nishiki's top line is discard [[N]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 1-0、early、残り54枚、above starting score。Mortal 最上位は [[N]] 切り (67.1%)、LuckyJ 実戦は [[2s]] 切り、ニシキ第一候補は [[N]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-06",
+        "example_index": 9,
+        "kind": "discard",
+        "input_signature": [
+          "point-06",
+          "2023041922gm-0009-0000-1d429576",
+          2,
+          59,
+          "dahai",
+          "2s",
+          null
+        ],
+        "log_id": "2023041922gm-0009-0000-1d429576",
+        "kyoku_index": 2,
+        "event_index": 229,
+        "left": 59,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 0,
+          "pai": "9s"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "2s",
+          "label": "Discard 2s"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "C",
+          "label": "Discard C"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 33,
+            "label": "Discard C",
+            "probability": 0.86706,
+            "type": "dahai",
+            "tile": "C"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 3-0, early, 59 tiles left, above starting score. Mortal's top action is discard [[C]] (86.7%); LuckyJ plays discard [[2s]]; Nishiki's top line is discard [[C]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 3-0、early、残り59枚、above starting score。Mortal 最上位は [[C]] 切り (86.7%)、LuckyJ 実戦は [[2s]] 切り、ニシキ第一候補は [[C]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-06",
+        "example_index": 10,
+        "kind": "discard",
+        "input_signature": [
+          "point-06",
+          "2023042000gm-0009-0000-544d3398",
+          4,
+          56,
+          "dahai",
+          "5m",
+          null
+        ],
+        "log_id": "2023042000gm-0009-0000-544d3398",
+        "kyoku_index": 4,
+        "event_index": 508,
+        "left": 56,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 0,
+          "pai": "3p"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "5m",
+          "label": "Discard 5m"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "F",
+          "label": "Discard F"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 32,
+            "label": "Discard F",
+            "probability": 0.868205,
+            "type": "dahai",
+            "tile": "F"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 4-0, early, 56 tiles left, danger zone. Mortal's top action is discard [[F]] (86.8%); LuckyJ plays discard [[5m]]; Nishiki's top line is discard [[F]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to test whether the hand's value justifies spending immediate acceptance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 4-0、early、残り56枚、danger zone。Mortal 最上位は [[F]] 切り (86.8%)、LuckyJ 実戦は [[5m]] 切り、ニシキ第一候補は [[F]] 切り。Mortal はニシキ側に寄っている。",
         "how_to_use_ja": "受け入れを払うだけの打点・価値があるかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
       }
     ],
@@ -3775,6 +3780,108 @@
         "kind": "discard",
         "input_signature": [
           "point-09",
+          "2023042900gm-0029-0000-539aa1df",
+          1,
+          2,
+          "dahai",
+          "7s",
+          null
+        ],
+        "log_id": "2023042900gm-0029-0000-539aa1df",
+        "kyoku_index": 1,
+        "event_index": 232,
+        "left": 2,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 1,
+          "pai": "3s"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "7s",
+          "label": "Discard 7s"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "7s",
+          "label": "Discard 7s"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 24,
+            "label": "Discard 7s",
+            "probability": 0.973456,
+            "type": "dahai",
+            "tile": "7s"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 2-0, late, 2 tiles left, above starting score. Mortal's top action is discard [[7s]] (97.3%); LuckyJ plays discard [[7s]]; Nishiki's top line is discard [[3s]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to reprice the next required discard. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 2-0、late、残り2枚、above starting score。Mortal 最上位は [[7s]] 切り (97.3%)、LuckyJ 実戦は [[7s]] 切り、ニシキ第一候補は [[3s]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "次に必要な打牌まで再評価する。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-09",
+        "example_index": 3,
+        "kind": "discard",
+        "input_signature": [
+          "point-09",
+          "2023042421gm-0029-0000-01cd89ce",
+          6,
+          52,
+          "dahai",
+          "1m",
+          null
+        ],
+        "log_id": "2023042421gm-0029-0000-01cd89ce",
+        "kyoku_index": 6,
+        "event_index": 407,
+        "left": 52,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 0,
+          "pai": "7m"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.387979,
+            "type": "dahai",
+            "tile": "1m"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 1-0, early, 52 tiles left, behind. Mortal's top action is discard [[1m]] (38.8%); LuckyJ plays discard [[1m]]; Nishiki's top line is discard [[4s]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to reprice the next required discard. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 1-0、early、残り52枚、behind。Mortal 最上位は [[1m]] 切り (38.8%)、LuckyJ 実戦は [[1m]] 切り、ニシキ第一候補は [[4s]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "次に必要な打牌まで再評価する。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-09",
+        "example_index": 4,
+        "kind": "discard",
+        "input_signature": [
+          "point-09",
           "2023042721gm-0029-0000-bc0673dd",
           1,
           49,
@@ -3822,7 +3929,7 @@
       },
       {
         "point": "point-09",
-        "example_index": 3,
+        "example_index": 5,
         "kind": "discard",
         "input_signature": [
           "point-09",
@@ -3873,7 +3980,7 @@
       },
       {
         "point": "point-09",
-        "example_index": 4,
+        "example_index": 6,
         "kind": "discard",
         "input_signature": [
           "point-09",
@@ -3924,7 +4031,7 @@
       },
       {
         "point": "point-09",
-        "example_index": 5,
+        "example_index": 7,
         "kind": "discard",
         "input_signature": [
           "point-09",
@@ -3975,7 +4082,7 @@
       },
       {
         "point": "point-09",
-        "example_index": 6,
+        "example_index": 8,
         "kind": "discard",
         "input_signature": [
           "point-09",
@@ -4026,7 +4133,7 @@
       },
       {
         "point": "point-09",
-        "example_index": 7,
+        "example_index": 9,
         "kind": "discard",
         "input_signature": [
           "point-09",
@@ -4073,108 +4180,6 @@
         "read": "South 1-3, early, 50 tiles left, behind. Mortal's top action is discard [[4m]] (73.8%); LuckyJ plays discard [[9s]]; Nishiki's top line is discard [[4m]]. Mortal backs the Nishiki line.",
         "how_to_use": "Use it to reprice the next required discard. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
         "read_ja": "South 1-3、early、残り50枚、behind。Mortal 最上位は [[4m]] 切り (73.8%)、LuckyJ 実戦は [[9s]] 切り、ニシキ第一候補は [[4m]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "次に必要な打牌まで再評価する。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-09",
-        "example_index": 8,
-        "kind": "discard",
-        "input_signature": [
-          "point-09",
-          "2023042900gm-0029-0000-539aa1df",
-          1,
-          2,
-          "dahai",
-          "7s",
-          null
-        ],
-        "log_id": "2023042900gm-0029-0000-539aa1df",
-        "kyoku_index": 1,
-        "event_index": 232,
-        "left": 2,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 1,
-          "pai": "3s"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "7s",
-          "label": "Discard 7s"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "7s",
-          "label": "Discard 7s"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 24,
-            "label": "Discard 7s",
-            "probability": 0.973456,
-            "type": "dahai",
-            "tile": "7s"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 2-0, late, 2 tiles left, above starting score. Mortal's top action is discard [[7s]] (97.3%); LuckyJ plays discard [[7s]]; Nishiki's top line is discard [[3s]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to reprice the next required discard. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 2-0、late、残り2枚、above starting score。Mortal 最上位は [[7s]] 切り (97.3%)、LuckyJ 実戦は [[7s]] 切り、ニシキ第一候補は [[3s]] 切り。Mortal は LuckyJ 側に寄っている。",
-        "how_to_use_ja": "次に必要な打牌まで再評価する。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-09",
-        "example_index": 9,
-        "kind": "discard",
-        "input_signature": [
-          "point-09",
-          "2023042421gm-0029-0000-01cd89ce",
-          6,
-          52,
-          "dahai",
-          "1m",
-          null
-        ],
-        "log_id": "2023042421gm-0029-0000-01cd89ce",
-        "kyoku_index": 6,
-        "event_index": 407,
-        "left": 52,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 0,
-          "pai": "7m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1m",
-          "label": "Discard 1m"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "1m",
-          "label": "Discard 1m"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 0,
-            "label": "Discard 1m",
-            "probability": 0.387979,
-            "type": "dahai",
-            "tile": "1m"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 1-0, early, 52 tiles left, behind. Mortal's top action is discard [[1m]] (38.8%); LuckyJ plays discard [[1m]]; Nishiki's top line is discard [[4s]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to reprice the next required discard. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 1-0、early、残り52枚、behind。Mortal 最上位は [[1m]] 切り (38.8%)、LuckyJ 実戦は [[1m]] 切り、ニシキ第一候補は [[4s]] 切り。Mortal は LuckyJ 側に寄っている。",
         "how_to_use_ja": "次に必要な打牌まで再評価する。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
       },
       {
@@ -6282,6 +6287,108 @@
         "kind": "discard",
         "input_signature": [
           "point-14",
+          "2023042209gm-0089-0000-062c2587",
+          6,
+          26,
+          "dahai",
+          "P",
+          null
+        ],
+        "log_id": "2023042209gm-0089-0000-062c2587",
+        "kyoku_index": 6,
+        "event_index": 734,
+        "left": 26,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 0,
+          "pai": "1p"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "P",
+          "label": "Discard P"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "P",
+          "label": "Discard P"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 31,
+            "label": "Discard P",
+            "probability": 0.992219,
+            "type": "dahai",
+            "tile": "P"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 2-2, middle, 26 tiles left, behind. Mortal's top action is discard [[P]] (99.2%); LuckyJ plays discard [[P]]; Nishiki's top line is discard [[5s]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to check whether the kept [[5s]] is a named defensive tile. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 2-2、middle、残り26枚、behind。Mortal 最上位は [[P]] 切り (99.2%)、LuckyJ 実戦は [[P]] 切り、ニシキ第一候補は [[5s]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "残した [[5s]] が対象のある安全牌かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-14",
+        "example_index": 2,
+        "kind": "discard",
+        "input_signature": [
+          "point-14",
+          "2023042209gm-0089-0000-062c2587",
+          6,
+          26,
+          "dahai",
+          "P",
+          null
+        ],
+        "log_id": "2023042209gm-0089-0000-062c2587",
+        "kyoku_index": 6,
+        "event_index": 734,
+        "left": 26,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 0,
+          "pai": "1p"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "P",
+          "label": "Discard P"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "P",
+          "label": "Discard P"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 31,
+            "label": "Discard P",
+            "probability": 0.992219,
+            "type": "dahai",
+            "tile": "P"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 2-2, middle, 26 tiles left, behind. Mortal's top action is discard [[P]] (99.2%); LuckyJ plays discard [[P]]; Nishiki's top line is discard [[5s]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to check whether the kept [[5s]] is a named defensive tile. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 2-2、middle、残り26枚、behind。Mortal 最上位は [[P]] 切り (99.2%)、LuckyJ 実戦は [[P]] 切り、ニシキ第一候補は [[5s]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "残した [[5s]] が対象のある安全牌かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-14",
+        "example_index": 3,
+        "kind": "discard",
+        "input_signature": [
+          "point-14",
           "2023042123gm-0089-0000-d936ceb0",
           5,
           28,
@@ -6329,7 +6436,7 @@
       },
       {
         "point": "point-14",
-        "example_index": 2,
+        "example_index": 4,
         "kind": "discard",
         "input_signature": [
           "point-14",
@@ -6380,7 +6487,7 @@
       },
       {
         "point": "point-14",
-        "example_index": 3,
+        "example_index": 5,
         "kind": "discard",
         "input_signature": [
           "point-14",
@@ -6431,58 +6538,7 @@
       },
       {
         "point": "point-14",
-        "example_index": 4,
-        "kind": "discard",
-        "input_signature": [
-          "point-14",
-          "2023042214gm-0089-0000-ad521d37",
-          7,
-          16,
-          "dahai",
-          "1s",
-          null
-        ],
-        "log_id": "2023042214gm-0089-0000-ad521d37",
-        "kyoku_index": 7,
-        "event_index": 699,
-        "left": 69,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 1,
-          "pai": "9m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1s",
-          "label": "Discard 1s"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "1s",
-          "label": "Discard 1s"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 18,
-            "label": "Discard 1s",
-            "probability": 0.84585,
-            "type": "dahai",
-            "tile": "1s"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 3-0, late, 16 tiles left, above starting score. Mortal's top action is discard [[1s]] (84.6%); LuckyJ plays discard [[1s]]; Nishiki's top line is discard [[2s]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to check whether the kept [[2s]] is a named defensive tile. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 3-0、late、残り16枚、above starting score。Mortal 最上位は [[1s]] 切り (84.6%)、LuckyJ 実戦は [[1s]] 切り、ニシキ第一候補は [[2s]] 切り。Mortal は LuckyJ 側に寄っている。",
-        "how_to_use_ja": "残した [[2s]] が対象のある安全牌かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-14",
-        "example_index": 5,
+        "example_index": 6,
         "kind": "discard",
         "input_signature": [
           "point-14",
@@ -6533,7 +6589,7 @@
       },
       {
         "point": "point-14",
-        "example_index": 6,
+        "example_index": 7,
         "kind": "discard",
         "input_signature": [
           "point-14",
@@ -6584,7 +6640,7 @@
       },
       {
         "point": "point-14",
-        "example_index": 7,
+        "example_index": 8,
         "kind": "discard",
         "input_signature": [
           "point-14",
@@ -6635,7 +6691,7 @@
       },
       {
         "point": "point-14",
-        "example_index": 8,
+        "example_index": 9,
         "kind": "discard",
         "input_signature": [
           "point-14",
@@ -6686,315 +6742,60 @@
       },
       {
         "point": "point-14",
-        "example_index": 9,
-        "kind": "discard",
-        "input_signature": [
-          "point-14",
-          "2023042209gm-0089-0000-062c2587",
-          6,
-          26,
-          "dahai",
-          "P",
-          null
-        ],
-        "log_id": "2023042209gm-0089-0000-062c2587",
-        "kyoku_index": 6,
-        "event_index": 734,
-        "left": 26,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 0,
-          "pai": "1p"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "P",
-          "label": "Discard P"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "P",
-          "label": "Discard P"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 31,
-            "label": "Discard P",
-            "probability": 0.992219,
-            "type": "dahai",
-            "tile": "P"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 2-2, middle, 26 tiles left, behind. Mortal's top action is discard [[P]] (99.2%); LuckyJ plays discard [[P]]; Nishiki's top line is discard [[5s]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to check whether the kept [[5s]] is a named defensive tile. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 2-2、middle、残り26枚、behind。Mortal 最上位は [[P]] 切り (99.2%)、LuckyJ 実戦は [[P]] 切り、ニシキ第一候補は [[5s]] 切り。Mortal は LuckyJ 側に寄っている。",
-        "how_to_use_ja": "残した [[5s]] が対象のある安全牌かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-14",
         "example_index": 10,
         "kind": "discard",
         "input_signature": [
           "point-14",
-          "2023042209gm-0089-0000-062c2587",
-          6,
-          26,
+          "2023042110gm-0089-0000-542bcc25",
+          4,
+          59,
           "dahai",
-          "P",
+          "N",
           null
         ],
-        "log_id": "2023042209gm-0089-0000-062c2587",
-        "kyoku_index": 6,
-        "event_index": 734,
-        "left": 26,
+        "log_id": "2023042110gm-0089-0000-542bcc25",
+        "kyoku_index": 4,
+        "event_index": 353,
+        "left": 59,
         "trigger": {
           "type": "tsumo",
-          "actor": 0,
-          "pai": "1p"
+          "actor": 3,
+          "pai": "2s"
         },
         "actual": {
           "type": "dahai",
-          "tile": "P",
-          "label": "Discard P"
+          "tile": "N",
+          "label": "Discard N"
         },
         "mortal": {
           "type": "dahai",
-          "tile": "P",
-          "label": "Discard P"
+          "tile": "N",
+          "label": "Discard N"
         },
         "mortal_agrees_luckyj": true,
         "mortal_agrees_naga": false,
         "top_candidates": [
           {
-            "action_id": 31,
-            "label": "Discard P",
-            "probability": 0.992219,
+            "action_id": 30,
+            "label": "Discard N",
+            "probability": 0.673222,
             "type": "dahai",
-            "tile": "P"
+            "tile": "N"
           }
         ],
         "post_call_mortal": null,
         "post_call_agrees_luckyj": null,
         "post_call_candidates": [],
-        "read": "South 2-2, middle, 26 tiles left, behind. Mortal's top action is discard [[P]] (99.2%); LuckyJ plays discard [[P]]; Nishiki's top line is discard [[5s]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to check whether the kept [[5s]] is a named defensive tile. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 2-2、middle、残り26枚、behind。Mortal 最上位は [[P]] 切り (99.2%)、LuckyJ 実戦は [[P]] 切り、ニシキ第一候補は [[5s]] 切り。Mortal は LuckyJ 側に寄っている。",
-        "how_to_use_ja": "残した [[5s]] が対象のある安全牌かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+        "read": "East 4-0, early, 59 tiles left, above starting score. Mortal's top action is discard [[N]] (67.3%); LuckyJ plays discard [[N]]; Nishiki's top line is discard [[1s]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to check whether the kept [[1s]] is a named defensive tile. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 4-0、early、残り59枚、above starting score。Mortal 最上位は [[N]] 切り (67.3%)、LuckyJ 実戦は [[N]] 切り、ニシキ第一候補は [[1s]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "残した [[1s]] が対象のある安全牌かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
       }
     ],
     "point-15": [
       {
         "point": "point-15",
         "example_index": 1,
-        "kind": "discard",
-        "input_signature": [
-          "point-15",
-          "2023043014gm-0029-0000-56f329ef",
-          2,
-          43,
-          "dahai",
-          "6p",
-          null
-        ],
-        "log_id": "2023043014gm-0029-0000-56f329ef",
-        "kyoku_index": 2,
-        "event_index": 250,
-        "left": 43,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 3,
-          "pai": "9p"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "6p",
-          "label": "Discard 6p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "6p",
-          "label": "Discard 6p"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 14,
-            "label": "Discard 6p",
-            "probability": 0.959316,
-            "type": "dahai",
-            "tile": "6p"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 3-0, middle, 43 tiles left, above starting score. Mortal's top action is discard [[6p]] (95.9%); LuckyJ plays discard [[6p]]; Nishiki's top line is discard [[5m]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to decide whether [[6p]]'s safety has expired or is still needed insurance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 3-0、middle、残り43枚、above starting score。Mortal 最上位は [[6p]] 切り (95.9%)、LuckyJ 実戦は [[6p]] 切り、ニシキ第一候補は [[5m]] 切り。Mortal は LuckyJ 側に寄っている。",
-        "how_to_use_ja": "[[6p]] の安全が期限切れか、まだ必要な保険かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-15",
-        "example_index": 2,
-        "kind": "discard",
-        "input_signature": [
-          "point-15",
-          "2023051121gm-0029-0000-8cb8f0cb",
-          10,
-          59,
-          "dahai",
-          "1p",
-          null
-        ],
-        "log_id": "2023051121gm-0029-0000-8cb8f0cb",
-        "kyoku_index": 10,
-        "event_index": 1132,
-        "left": 59,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 1,
-          "pai": "W"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1p",
-          "label": "Discard 1p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "9m",
-          "label": "Discard 9m"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 8,
-            "label": "Discard 9m",
-            "probability": 0.448322,
-            "type": "dahai",
-            "tile": "9m"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 3-2, early, 59 tiles left, behind. Mortal's top action is discard [[9m]] (44.8%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[W]]. Mortal chooses a third line, so this tab is a caution case with mixed model support.",
-        "how_to_use": "Use it to decide whether [[1p]]'s safety has expired or is still needed insurance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 3-2、early、残り59枚、behind。Mortal 最上位は [[9m]] 切り (44.8%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[W]] 切り。Mortal は第三の選択を出している。この例は境界例として読む。",
-        "how_to_use_ja": "[[1p]] の安全が期限切れか、まだ必要な保険かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-15",
-        "example_index": 3,
-        "kind": "discard",
-        "input_signature": [
-          "point-15",
-          "2023042020gm-0089-0000-27bc3a0d",
-          8,
-          61,
-          "dahai",
-          "1p",
-          null
-        ],
-        "log_id": "2023042020gm-0089-0000-27bc3a0d",
-        "kyoku_index": 8,
-        "event_index": 748,
-        "left": 61,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 3,
-          "pai": "8m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1p",
-          "label": "Discard 1p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "1m",
-          "label": "Discard 1m"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 0,
-            "label": "Discard 1m",
-            "probability": 0.775773,
-            "type": "dahai",
-            "tile": "1m"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 3-1, early, 61 tiles left, behind. Mortal's top action is discard [[1m]] (77.6%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[1m]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to decide whether [[1p]]'s safety has expired or is still needed insurance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 3-1、early、残り61枚、behind。Mortal 最上位は [[1m]] 切り (77.6%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[1m]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "[[1p]] の安全が期限切れか、まだ必要な保険かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-15",
-        "example_index": 4,
-        "kind": "discard",
-        "input_signature": [
-          "point-15",
-          "2023050321gm-0029-0000-a11b51ec",
-          8,
-          58,
-          "dahai",
-          "1p",
-          null
-        ],
-        "log_id": "2023050321gm-0029-0000-a11b51ec",
-        "kyoku_index": 8,
-        "event_index": 741,
-        "left": 58,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 2,
-          "pai": "2m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1p",
-          "label": "Discard 1p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "1s",
-          "label": "Discard 1s"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 18,
-            "label": "Discard 1s",
-            "probability": 0.388071,
-            "type": "dahai",
-            "tile": "1s"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 1-3, early, 58 tiles left, behind. Mortal's top action is discard [[1s]] (38.8%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[1s]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to decide whether [[1p]]'s safety has expired or is still needed insurance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 1-3、early、残り58枚、behind。Mortal 最上位は [[1s]] 切り (38.8%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[1s]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "[[1p]] の安全が期限切れか、まだ必要な保険かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-15",
-        "example_index": 5,
         "kind": "discard",
         "input_signature": [
           "point-15",
@@ -7045,7 +6846,7 @@
       },
       {
         "point": "point-15",
-        "example_index": 6,
+        "example_index": 2,
         "kind": "discard",
         "input_signature": [
           "point-15",
@@ -7096,7 +6897,262 @@
       },
       {
         "point": "point-15",
+        "example_index": 3,
+        "kind": "discard",
+        "input_signature": [
+          "point-15",
+          "2023043014gm-0029-0000-56f329ef",
+          2,
+          43,
+          "dahai",
+          "6p",
+          null
+        ],
+        "log_id": "2023043014gm-0029-0000-56f329ef",
+        "kyoku_index": 2,
+        "event_index": 250,
+        "left": 43,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 3,
+          "pai": "9p"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "6p",
+          "label": "Discard 6p"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "6p",
+          "label": "Discard 6p"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.959316,
+            "type": "dahai",
+            "tile": "6p"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 3-0, middle, 43 tiles left, above starting score. Mortal's top action is discard [[6p]] (95.9%); LuckyJ plays discard [[6p]]; Nishiki's top line is discard [[5m]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to decide whether [[6p]]'s safety has expired or is still needed insurance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 3-0、middle、残り43枚、above starting score。Mortal 最上位は [[6p]] 切り (95.9%)、LuckyJ 実戦は [[6p]] 切り、ニシキ第一候補は [[5m]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "[[6p]] の安全が期限切れか、まだ必要な保険かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-15",
+        "example_index": 4,
+        "kind": "discard",
+        "input_signature": [
+          "point-15",
+          "2023042510gm-0029-0000-16b05f7a",
+          5,
+          38,
+          "dahai",
+          "1p",
+          null
+        ],
+        "log_id": "2023042510gm-0029-0000-16b05f7a",
+        "kyoku_index": 5,
+        "event_index": 627,
+        "left": 38,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 0,
+          "pai": "7s"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1p",
+          "label": "Discard 1p"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "1p",
+          "label": "Discard 1p"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 9,
+            "label": "Discard 1p",
+            "probability": 0.822942,
+            "type": "dahai",
+            "tile": "1p"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 4-0, middle, 38 tiles left, behind. Mortal's top action is discard [[1p]] (82.3%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[7s]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to decide whether [[1p]]'s safety has expired or is still needed insurance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 4-0、middle、残り38枚、behind。Mortal 最上位は [[1p]] 切り (82.3%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[7s]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "[[1p]] の安全が期限切れか、まだ必要な保険かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-15",
+        "example_index": 5,
+        "kind": "discard",
+        "input_signature": [
+          "point-15",
+          "2023051121gm-0029-0000-8cb8f0cb",
+          10,
+          59,
+          "dahai",
+          "1p",
+          null
+        ],
+        "log_id": "2023051121gm-0029-0000-8cb8f0cb",
+        "kyoku_index": 10,
+        "event_index": 1132,
+        "left": 59,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 1,
+          "pai": "W"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1p",
+          "label": "Discard 1p"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "9m",
+          "label": "Discard 9m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 8,
+            "label": "Discard 9m",
+            "probability": 0.448322,
+            "type": "dahai",
+            "tile": "9m"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 3-2, early, 59 tiles left, behind. Mortal's top action is discard [[9m]] (44.8%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[W]]. Mortal chooses a third line, so this tab is a caution case with mixed model support.",
+        "how_to_use": "Use it to decide whether [[1p]]'s safety has expired or is still needed insurance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 3-2、early、残り59枚、behind。Mortal 最上位は [[9m]] 切り (44.8%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[W]] 切り。Mortal は第三の選択を出している。この例は境界例として読む。",
+        "how_to_use_ja": "[[1p]] の安全が期限切れか、まだ必要な保険かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-15",
+        "example_index": 6,
+        "kind": "discard",
+        "input_signature": [
+          "point-15",
+          "2023042020gm-0089-0000-27bc3a0d",
+          8,
+          61,
+          "dahai",
+          "1p",
+          null
+        ],
+        "log_id": "2023042020gm-0089-0000-27bc3a0d",
+        "kyoku_index": 8,
+        "event_index": 748,
+        "left": 61,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 3,
+          "pai": "8m"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1p",
+          "label": "Discard 1p"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 0,
+            "label": "Discard 1m",
+            "probability": 0.775773,
+            "type": "dahai",
+            "tile": "1m"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 3-1, early, 61 tiles left, behind. Mortal's top action is discard [[1m]] (77.6%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[1m]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to decide whether [[1p]]'s safety has expired or is still needed insurance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 3-1、early、残り61枚、behind。Mortal 最上位は [[1m]] 切り (77.6%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[1m]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "[[1p]] の安全が期限切れか、まだ必要な保険かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-15",
         "example_index": 7,
+        "kind": "discard",
+        "input_signature": [
+          "point-15",
+          "2023050321gm-0029-0000-a11b51ec",
+          8,
+          58,
+          "dahai",
+          "1p",
+          null
+        ],
+        "log_id": "2023050321gm-0029-0000-a11b51ec",
+        "kyoku_index": 8,
+        "event_index": 741,
+        "left": 58,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 2,
+          "pai": "2m"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1p",
+          "label": "Discard 1p"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "1s",
+          "label": "Discard 1s"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.388071,
+            "type": "dahai",
+            "tile": "1s"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 1-3, early, 58 tiles left, behind. Mortal's top action is discard [[1s]] (38.8%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[1s]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to decide whether [[1p]]'s safety has expired or is still needed insurance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 1-3、early、残り58枚、behind。Mortal 最上位は [[1s]] 切り (38.8%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[1s]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "[[1p]] の安全が期限切れか、まだ必要な保険かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-15",
+        "example_index": 8,
         "kind": "discard",
         "input_signature": [
           "point-15",
@@ -7147,7 +7203,7 @@
       },
       {
         "point": "point-15",
-        "example_index": 8,
+        "example_index": 9,
         "kind": "discard",
         "input_signature": [
           "point-15",
@@ -7193,57 +7249,6 @@
         "how_to_use": "Use it to decide whether [[6p]]'s safety has expired or is still needed insurance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
         "read_ja": "East 3-4、middle、残り42枚、lead。Mortal 最上位は リーチ (99.2%)、LuckyJ 実戦は [[6p]] 切り、ニシキ第一候補は [[C]] 切り。Mortal は第三の選択を出している。この例は境界例として読む。",
         "how_to_use_ja": "[[6p]] の安全が期限切れか、まだ必要な保険かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-15",
-        "example_index": 9,
-        "kind": "discard",
-        "input_signature": [
-          "point-15",
-          "2023042510gm-0029-0000-16b05f7a",
-          5,
-          38,
-          "dahai",
-          "1p",
-          null
-        ],
-        "log_id": "2023042510gm-0029-0000-16b05f7a",
-        "kyoku_index": 5,
-        "event_index": 627,
-        "left": 38,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 0,
-          "pai": "7s"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1p",
-          "label": "Discard 1p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "1p",
-          "label": "Discard 1p"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 9,
-            "label": "Discard 1p",
-            "probability": 0.822942,
-            "type": "dahai",
-            "tile": "1p"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 4-0, middle, 38 tiles left, behind. Mortal's top action is discard [[1p]] (82.3%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[7s]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to decide whether [[1p]]'s safety has expired or is still needed insurance. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 4-0、middle、残り38枚、behind。Mortal 最上位は [[1p]] 切り (82.3%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[7s]] 切り。Mortal は LuckyJ 側に寄っている。",
-        "how_to_use_ja": "[[1p]] の安全が期限切れか、まだ必要な保険かを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
       },
       {
         "point": "point-15",
@@ -7304,6 +7309,57 @@
         "kind": "discard",
         "input_signature": [
           "point-16",
+          "2023042214gm-0089-0000-ad521d37",
+          7,
+          16,
+          "dahai",
+          "1s",
+          null
+        ],
+        "log_id": "2023042214gm-0089-0000-ad521d37",
+        "kyoku_index": 7,
+        "event_index": 699,
+        "left": 69,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 1,
+          "pai": "9m"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1s",
+          "label": "Discard 1s"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "1s",
+          "label": "Discard 1s"
+        },
+        "mortal_agrees_luckyj": true,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 18,
+            "label": "Discard 1s",
+            "probability": 0.84585,
+            "type": "dahai",
+            "tile": "1s"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 3-0, late, 16 tiles left, above starting score. Mortal's top action is discard [[1s]] (84.6%); LuckyJ plays discard [[1s]]; Nishiki's top line is discard [[2s]]. Mortal backs LuckyJ's line.",
+        "how_to_use": "Use it to test whether the outside [[1s]] cut preserves a real inside connector. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 3-0、late、残り16枚、above starting score。Mortal 最上位は [[1s]] 切り (84.6%)、LuckyJ 実戦は [[1s]] 切り、ニシキ第一候補は [[2s]] 切り。Mortal は LuckyJ 側に寄っている。",
+        "how_to_use_ja": "外側の [[1s]] が中の接続を残す攻めになっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-16",
+        "example_index": 2,
+        "kind": "discard",
+        "input_signature": [
+          "point-16",
           "2023042911gm-0029-0000-5b6ccdd3",
           2,
           24,
@@ -7351,109 +7407,7 @@
       },
       {
         "point": "point-16",
-        "example_index": 2,
-        "kind": "discard",
-        "input_signature": [
-          "point-16",
-          "2023051009gm-0029-0000-fd5a3cd0",
-          8,
-          35,
-          "dahai",
-          "1m",
-          null
-        ],
-        "log_id": "2023051009gm-0029-0000-fd5a3cd0",
-        "kyoku_index": 8,
-        "event_index": 902,
-        "left": 35,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 3,
-          "pai": "1m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1m",
-          "label": "Discard 1m"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "3p",
-          "label": "Discard 3p"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 11,
-            "label": "Discard 3p",
-            "probability": 0.703362,
-            "type": "dahai",
-            "tile": "3p"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 2-0, middle, 35 tiles left, danger zone. Mortal's top action is discard [[3p]] (70.3%); LuckyJ plays discard [[1m]]; Nishiki's top line is discard [[3p]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to test whether the outside [[1m]] cut preserves a real inside connector. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 2-0、middle、残り35枚、danger zone。Mortal 最上位は [[3p]] 切り (70.3%)、LuckyJ 実戦は [[1m]] 切り、ニシキ第一候補は [[3p]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "外側の [[1m]] が中の接続を残す攻めになっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-16",
         "example_index": 3,
-        "kind": "discard",
-        "input_signature": [
-          "point-16",
-          "2023042615gm-0029-0000-4f47cec7",
-          0,
-          22,
-          "dahai",
-          "9m",
-          null
-        ],
-        "log_id": "2023042615gm-0029-0000-4f47cec7",
-        "kyoku_index": 0,
-        "event_index": 102,
-        "left": 22,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 2,
-          "pai": "9m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "9m",
-          "label": "Discard 9m"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "6p",
-          "label": "Discard 6p"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 14,
-            "label": "Discard 6p",
-            "probability": 0.873282,
-            "type": "dahai",
-            "tile": "6p"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 1-0, late, 22 tiles left, above starting score. Mortal's top action is discard [[6p]] (87.3%); LuckyJ plays discard [[9m]]; Nishiki's top line is discard [[8p]]. Mortal chooses a third line, so this tab is a caution case with mixed model support.",
-        "how_to_use": "Use it to test whether the outside [[9m]] cut preserves a real inside connector. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 1-0、late、残り22枚、above starting score。Mortal 最上位は [[6p]] 切り (87.3%)、LuckyJ 実戦は [[9m]] 切り、ニシキ第一候補は [[8p]] 切り。Mortal は第三の選択を出している。この例は境界例として読む。",
-        "how_to_use_ja": "外側の [[9m]] が中の接続を残す攻めになっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-16",
-        "example_index": 4,
         "kind": "discard",
         "input_signature": [
           "point-16",
@@ -7504,158 +7458,7 @@
       },
       {
         "point": "point-16",
-        "example_index": 5,
-        "kind": "discard",
-        "input_signature": [
-          "point-16",
-          "2023042714gm-0029-0000-13a49922",
-          6,
-          21,
-          "dahai",
-          "1p",
-          null
-        ],
-        "log_id": "2023042714gm-0029-0000-13a49922",
-        "kyoku_index": 6,
-        "event_index": 724,
-        "left": 21,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 1,
-          "pai": "7p"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1p",
-          "label": "Discard 1p"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "3p",
-          "label": "Discard 3p"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": true,
-        "top_candidates": [
-          {
-            "action_id": 11,
-            "label": "Discard 3p",
-            "probability": 0.983908,
-            "type": "dahai",
-            "tile": "3p"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 1-0, late, 21 tiles left, lead. Mortal's top action is discard [[3p]] (98.4%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[3p]]. Mortal backs the Nishiki line.",
-        "how_to_use": "Use it to test whether the outside [[1p]] cut preserves a real inside connector. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 1-0、late、残り21枚、lead。Mortal 最上位は [[3p]] 切り (98.4%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[3p]] 切り。Mortal はニシキ側に寄っている。",
-        "how_to_use_ja": "外側の [[1p]] が中の接続を残す攻めになっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-16",
-        "example_index": 6,
-        "kind": "discard",
-        "input_signature": [
-          "point-16",
-          "2023050612gm-0029-0000-5bda3d14",
-          4,
-          47,
-          "dahai",
-          "1s",
-          null
-        ],
-        "log_id": "2023050612gm-0029-0000-5bda3d14",
-        "kyoku_index": 4,
-        "event_index": 502,
-        "left": 47,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 3,
-          "pai": "8m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1s",
-          "label": "Discard 1s"
-        },
-        "mortal": {
-          "type": "dahai",
-          "tile": "1s",
-          "label": "Discard 1s"
-        },
-        "mortal_agrees_luckyj": true,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 18,
-            "label": "Discard 1s",
-            "probability": 0.489077,
-            "type": "dahai",
-            "tile": "1s"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "South 1-0, middle, 47 tiles left, behind. Mortal's top action is discard [[1s]] (48.9%); LuckyJ plays discard [[1s]]; Nishiki's top line is discard [[6m]]. Mortal backs LuckyJ's line.",
-        "how_to_use": "Use it to test whether the outside [[1s]] cut preserves a real inside connector. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "South 1-0、middle、残り47枚、behind。Mortal 最上位は [[1s]] 切り (48.9%)、LuckyJ 実戦は [[1s]] 切り、ニシキ第一候補は [[6m]] 切り。Mortal は LuckyJ 側に寄っている。",
-        "how_to_use_ja": "外側の [[1s]] が中の接続を残す攻めになっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-16",
-        "example_index": 7,
-        "kind": "discard",
-        "input_signature": [
-          "point-16",
-          "2023042823gm-0029-0000-53d83bec",
-          2,
-          9,
-          "dahai",
-          "1m",
-          null
-        ],
-        "log_id": "2023042823gm-0029-0000-53d83bec",
-        "kyoku_index": 2,
-        "event_index": 346,
-        "left": 9,
-        "trigger": {
-          "type": "tsumo",
-          "actor": 2,
-          "pai": "8m"
-        },
-        "actual": {
-          "type": "dahai",
-          "tile": "1m",
-          "label": "Discard 1m"
-        },
-        "mortal": {
-          "type": "reach",
-          "label": "Reach"
-        },
-        "mortal_agrees_luckyj": false,
-        "mortal_agrees_naga": false,
-        "top_candidates": [
-          {
-            "action_id": 37,
-            "label": "Reach",
-            "probability": 0.991095,
-            "type": "reach"
-          }
-        ],
-        "post_call_mortal": null,
-        "post_call_agrees_luckyj": null,
-        "post_call_candidates": [],
-        "read": "East 3-0, late, 9 tiles left, above starting score. Mortal's top action is reach (99.1%); LuckyJ plays discard [[1m]]; Nishiki's top line is discard [[6m]]. Mortal chooses a third line, so this tab is a caution case with mixed model support.",
-        "how_to_use": "Use it to test whether the outside [[1m]] cut preserves a real inside connector. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
-        "read_ja": "East 3-0、late、残り9枚、above starting score。Mortal 最上位は リーチ (99.1%)、LuckyJ 実戦は [[1m]] 切り、ニシキ第一候補は [[6m]] 切り。Mortal は第三の選択を出している。この例は境界例として読む。",
-        "how_to_use_ja": "外側の [[1m]] が中の接続を残す攻めになっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
-      },
-      {
-        "point": "point-16",
-        "example_index": 8,
+        "example_index": 4,
         "kind": "discard",
         "input_signature": [
           "point-16",
@@ -7706,7 +7509,7 @@
       },
       {
         "point": "point-16",
-        "example_index": 9,
+        "example_index": 5,
         "kind": "discard",
         "input_signature": [
           "point-16",
@@ -7754,6 +7557,208 @@
         "how_to_use": "Use it to test whether the outside [[1p]] cut preserves a real inside connector. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
         "read_ja": "East 1-0、late、残り22枚、above starting score。Mortal 最上位は [[1p]] 切り (86.3%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[8s]] 切り。Mortal は LuckyJ 側に寄っている。",
         "how_to_use_ja": "外側の [[1p]] が中の接続を残す攻めになっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-16",
+        "example_index": 6,
+        "kind": "discard",
+        "input_signature": [
+          "point-16",
+          "2023051009gm-0029-0000-fd5a3cd0",
+          8,
+          35,
+          "dahai",
+          "1m",
+          null
+        ],
+        "log_id": "2023051009gm-0029-0000-fd5a3cd0",
+        "kyoku_index": 8,
+        "event_index": 902,
+        "left": 35,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 3,
+          "pai": "1m"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "3p",
+          "label": "Discard 3p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.703362,
+            "type": "dahai",
+            "tile": "3p"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 2-0, middle, 35 tiles left, danger zone. Mortal's top action is discard [[3p]] (70.3%); LuckyJ plays discard [[1m]]; Nishiki's top line is discard [[3p]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to test whether the outside [[1m]] cut preserves a real inside connector. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 2-0、middle、残り35枚、danger zone。Mortal 最上位は [[3p]] 切り (70.3%)、LuckyJ 実戦は [[1m]] 切り、ニシキ第一候補は [[3p]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "外側の [[1m]] が中の接続を残す攻めになっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-16",
+        "example_index": 7,
+        "kind": "discard",
+        "input_signature": [
+          "point-16",
+          "2023042615gm-0029-0000-4f47cec7",
+          0,
+          22,
+          "dahai",
+          "9m",
+          null
+        ],
+        "log_id": "2023042615gm-0029-0000-4f47cec7",
+        "kyoku_index": 0,
+        "event_index": 102,
+        "left": 22,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 2,
+          "pai": "9m"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "9m",
+          "label": "Discard 9m"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "6p",
+          "label": "Discard 6p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 14,
+            "label": "Discard 6p",
+            "probability": 0.873282,
+            "type": "dahai",
+            "tile": "6p"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 1-0, late, 22 tiles left, above starting score. Mortal's top action is discard [[6p]] (87.3%); LuckyJ plays discard [[9m]]; Nishiki's top line is discard [[8p]]. Mortal chooses a third line, so this tab is a caution case with mixed model support.",
+        "how_to_use": "Use it to test whether the outside [[9m]] cut preserves a real inside connector. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 1-0、late、残り22枚、above starting score。Mortal 最上位は [[6p]] 切り (87.3%)、LuckyJ 実戦は [[9m]] 切り、ニシキ第一候補は [[8p]] 切り。Mortal は第三の選択を出している。この例は境界例として読む。",
+        "how_to_use_ja": "外側の [[9m]] が中の接続を残す攻めになっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-16",
+        "example_index": 8,
+        "kind": "discard",
+        "input_signature": [
+          "point-16",
+          "2023042714gm-0029-0000-13a49922",
+          6,
+          21,
+          "dahai",
+          "1p",
+          null
+        ],
+        "log_id": "2023042714gm-0029-0000-13a49922",
+        "kyoku_index": 6,
+        "event_index": 724,
+        "left": 21,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 1,
+          "pai": "7p"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1p",
+          "label": "Discard 1p"
+        },
+        "mortal": {
+          "type": "dahai",
+          "tile": "3p",
+          "label": "Discard 3p"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": true,
+        "top_candidates": [
+          {
+            "action_id": 11,
+            "label": "Discard 3p",
+            "probability": 0.983908,
+            "type": "dahai",
+            "tile": "3p"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "South 1-0, late, 21 tiles left, lead. Mortal's top action is discard [[3p]] (98.4%); LuckyJ plays discard [[1p]]; Nishiki's top line is discard [[3p]]. Mortal backs the Nishiki line.",
+        "how_to_use": "Use it to test whether the outside [[1p]] cut preserves a real inside connector. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "South 1-0、late、残り21枚、lead。Mortal 最上位は [[3p]] 切り (98.4%)、LuckyJ 実戦は [[1p]] 切り、ニシキ第一候補は [[3p]] 切り。Mortal はニシキ側に寄っている。",
+        "how_to_use_ja": "外側の [[1p]] が中の接続を残す攻めになっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
+      },
+      {
+        "point": "point-16",
+        "example_index": 9,
+        "kind": "discard",
+        "input_signature": [
+          "point-16",
+          "2023042823gm-0029-0000-53d83bec",
+          2,
+          9,
+          "dahai",
+          "1m",
+          null
+        ],
+        "log_id": "2023042823gm-0029-0000-53d83bec",
+        "kyoku_index": 2,
+        "event_index": 346,
+        "left": 9,
+        "trigger": {
+          "type": "tsumo",
+          "actor": 2,
+          "pai": "8m"
+        },
+        "actual": {
+          "type": "dahai",
+          "tile": "1m",
+          "label": "Discard 1m"
+        },
+        "mortal": {
+          "type": "reach",
+          "label": "Reach"
+        },
+        "mortal_agrees_luckyj": false,
+        "mortal_agrees_naga": false,
+        "top_candidates": [
+          {
+            "action_id": 37,
+            "label": "Reach",
+            "probability": 0.991095,
+            "type": "reach"
+          }
+        ],
+        "post_call_mortal": null,
+        "post_call_agrees_luckyj": null,
+        "post_call_candidates": [],
+        "read": "East 3-0, late, 9 tiles left, above starting score. Mortal's top action is reach (99.1%); LuckyJ plays discard [[1m]]; Nishiki's top line is discard [[6m]]. Mortal chooses a third line, so this tab is a caution case with mixed model support.",
+        "how_to_use": "Use it to test whether the outside [[1m]] cut preserves a real inside connector. If Mortal backs Nishiki or a third line, raise the burden of proof before copying LuckyJ.",
+        "read_ja": "East 3-0、late、残り9枚、above starting score。Mortal 最上位は リーチ (99.1%)、LuckyJ 実戦は [[1m]] 切り、ニシキ第一候補は [[6m]] 切り。Mortal は第三の選択を出している。この例は境界例として読む。",
+        "how_to_use_ja": "外側の [[1m]] が中の接続を残す攻めになっているかを見る。 Mortal がニシキまたは第三候補なら、LuckyJ を真似する条件をさらに厳しくする。"
       },
       {
         "point": "point-16",

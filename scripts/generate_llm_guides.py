@@ -37,6 +37,7 @@ Strict Mahjong Rules & Constraints:
 9. The "Teaching Fit for This Point" section is authoritative. It explains why this exact example belongs under the playbook point. Do not move the example to a different lesson, and do not invent a current riichi/open-hand threat when the teaching fit says the example is pre-threat or has no opponent riichi.
 10. For call examples, "Post-Call Shape Facts" is authoritative. If the post-call shanten is 0, the hand is tenpai after the call and discard; NEVER describe LuckyJ's resulting hand as 1-shanten, one-away, or still trying to reach tenpai. If the post-call shanten is 1, describe it as 1-shanten, not tenpai.
 11. Do not describe a triplet or duplicated number tiles as a defensive reserve merely because there are multiple copies. Only call a tile a defensive reserve when the supplied safety facts show target-specific safety; otherwise describe the real next discard or shape plan.
+12. Mortal "Reach" outputs record the riichi declaration action only. If the Mortal section says reach support is declaration-only, you may cite Mortal as support for declaring riichi now, but you must NOT say Mortal endorsed LuckyJ's declaration discard tile, wait choice, or full discard line.
 
 Style Guidelines for English (professional-commentator voice):
 Model the register on translated Japanese strategy books ("Digital" school): a professional
@@ -113,9 +114,35 @@ def cache_entry_is_current(entry):
 
 
 FALSE_TENPAI_CALL_SHAPE_PATTERNS = [
-    re.compile(r"\bLuckyJ\b[^.。]{0,180}\b(?:1-shanten|one[- ]?away)\b", re.I),
-    re.compile(r"\b(?:This call|The call|After the call|By discarding|By calling)\b[^.。]{0,180}\b(?:1-shanten|one[- ]?away)\b", re.I),
-    re.compile(r"(?:LuckyJ|この鳴き|鳴いた後|切ることで)[^。]{0,180}(?:一向聴|1シャンテン|テンパイまであと一歩)", re.I),
+    re.compile(r"\bLuckyJ\b[^.。]{0,180}\b(?<!from )(?:1-shanten|one[- ]?away)\b(?!\s+to\s+tenpai)", re.I),
+    re.compile(r"\b(?:This call|The call|After the call|By discarding|By calling)\b[^.。]{0,180}\b(?<!from )(?:1-shanten|one[- ]?away)\b(?!\s+to\s+tenpai)", re.I),
+    re.compile(r"(?:LuckyJ|この鳴き|鳴いた後|切ることで)[^。]{0,180}(?:一向聴(?!から)|1シャンテン(?!から)|テンパイまであと一歩)", re.I),
+]
+
+MORTAL_REACH_TILE_OVERCLAIM_PATTERNS = [
+    re.compile(
+        r"\bMortal\b[^.。]{0,180}\b(?:backs|backing|supports|endorses?|confirms|validates|agrees)\b"
+        r"[^.。]{0,180}\bLuckyJ(?:'s|’s)?\s+(?:line|discard|choice|wait|tile|stance|decision)",
+        re.I,
+    ),
+    re.compile(
+        r"\bMortal\b[^.。]{0,180}\bengine consensus\b[^.。]{0,180}"
+        r"\b(?:discard|wait|tile|line|choice)\b",
+        re.I,
+    ),
+]
+
+MORTAL_REACH_THIRD_LINE_OVERCLAIM_PATTERNS = [
+    re.compile(
+        r"\bNishiki\b[^.。]{0,120}\band\s+Mortal\b[^.。]{0,180}"
+        r"\b(?:choose|chooses|prefer|prefers|support|supports|favor|favors|back|backs)\b",
+        re.I,
+    ),
+    re.compile(
+        r"\bMortal\b[^.。]{0,180}\b(?:supports|backs|endorses?|confirms|validates)\b"
+        r"[^.。]{0,120}\b(?:this|the)\s+(?:tenpai-first|discard|Nishiki|LuckyJ)\b",
+        re.I,
+    ),
 ]
 
 
@@ -133,7 +160,15 @@ def cached_guide_conflicts(case, entry):
     shape = case.get("post_call_eval") or {}
     if case.get("kind") == "call" and shape.get("shanten") is not None and shape.get("shanten") <= 0:
         text = cache_entry_text(entry)
-        return any(pattern.search(text) for pattern in FALSE_TENPAI_CALL_SHAPE_PATTERNS)
+        if any(pattern.search(text) for pattern in FALSE_TENPAI_CALL_SHAPE_PATTERNS):
+            return True
+    mortal_item = mortal_lookup().get(mortal_frame_signature(case))
+    mortal_type = ((mortal_item or {}).get("mortal") or {}).get("type")
+    if mortal_type == "reach":
+        text = cache_entry_text(entry)
+        if case.get("kind") == "reach":
+            return any(pattern.search(text) for pattern in MORTAL_REACH_TILE_OVERCLAIM_PATTERNS)
+        return any(pattern.search(text) for pattern in MORTAL_REACH_THIRD_LINE_OVERCLAIM_PATTERNS)
     return False
 
 def get_winds_and_yakuhai(case):
@@ -860,11 +895,30 @@ def mortal_verdict_text(case):
     if not item:
         return "- Mortal cross-check: not available for this example. Do not mention Mortal."
     mortal_action = (item.get("mortal") or {}).get("label") or "unknown"
+    mortal_type = (item.get("mortal") or {}).get("type")
     agrees_l = item.get("mortal_agrees_luckyj")
     agrees_n = item.get("mortal_agrees_naga")
     top = (item.get("top_candidates") or [{}])[0]
     prob = top.get("probability")
     prob_text = f" ({prob:.0%})" if isinstance(prob, (int, float)) else ""
+    if mortal_type == "reach":
+        if case.get("kind") == "reach":
+            actual_tile = case.get("actual")
+            tile_text = f" [[{actual_tile}]]" if actual_tile else ""
+            stance = (
+                "Mortal's compact verdict records only the reach declaration, not the declaration "
+                f"discard tile{tile_text}, wait choice, or full LuckyJ line. You may cite Mortal as "
+                "support for declaring riichi now, but do NOT claim it endorsed LuckyJ's specific "
+                "discard/wait. Discuss the declaration-discard choice using the supplied shape, safety, "
+                "and Nishiki comparison."
+            )
+        else:
+            stance = (
+                "This is a separate reach-vs-discard third line, not support for LuckyJ's discard or "
+                "Nishiki's discard. If you mention Mortal, say it wanted immediate riichi pressure and "
+                "keep the LuckyJ/Nishiki discard comparison separate."
+            )
+        return f"- Mortal cross-check (AUTHORITATIVE): Mortal's top action is {mortal_action}{prob_text}. {stance}"
     if agrees_l:
         stance = "Mortal independently backs LuckyJ's line — you may cite this as second-engine support."
     elif agrees_n:

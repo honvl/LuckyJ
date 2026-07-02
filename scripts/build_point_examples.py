@@ -1619,7 +1619,7 @@ def build_call_guide(case, lang):
 
 
 LLM_CACHE_PATH = Path("data/llm_guides_cache.json")
-LLM_PROMPT_VERSION = "yaku-skeleton-v2"
+LLM_PROMPT_VERSION = "pro-voice-v3"
 LLM_CACHE = None
 FALSE_PASS_WHEN_CALLING_PATTERNS = [
     re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:passes|passed)\b", re.I),
@@ -1640,9 +1640,9 @@ FALSE_AGREEMENT_PATTERNS = [
     re.compile(r"(?:nishiki|ニシキ|naga)[^。]{0,100}(?:完全に一致|全面的に一致|完全に同意|全面的に同意)", re.I),
 ]
 FALSE_TENPAI_CALL_SHAPE_PATTERNS = [
-    re.compile(r"\bLuckyJ\b[^.。]{0,180}\b(?:1-shanten|one[- ]?away)\b", re.I),
-    re.compile(r"\b(?:This call|The call|After the call|By discarding|By calling)\b[^.。]{0,180}\b(?:1-shanten|one[- ]?away)\b", re.I),
-    re.compile(r"(?:LuckyJ|この鳴き|鳴いた後|切ることで)[^。]{0,180}(?:一向聴|1シャンテン|テンパイまであと一歩)", re.I),
+    re.compile(r"\bLuckyJ\b[^.。]{0,180}\b(?<!from )(?:1-shanten|one[- ]?away)\b(?!\s+to\s+tenpai)", re.I),
+    re.compile(r"\b(?:This call|The call|After the call|By discarding|By calling)\b[^.。]{0,180}\b(?<!from )(?:1-shanten|one[- ]?away)\b(?!\s+to\s+tenpai)", re.I),
+    re.compile(r"(?:LuckyJ|この鳴き|鳴いた後|切ることで)[^。]{0,180}(?:一向聴(?!から)|1シャンテン(?!から)|テンパイまであと一歩)", re.I),
 ]
 
 def load_llm_cache():
@@ -2237,8 +2237,22 @@ def pick_diverse(rows, seen_source_frames, per_point):
 def finalize_examples(selected):
     output = {}
     seen_source_frames = set()
+    # Reserve hand-pinned PREFERRED_CASES frames (score bonus >= 1000) for their own point
+    # so an earlier-sorted point cannot claim the same source frame first.
+    reserved = {}
+    for point_key, rows in selected.items():
+        for row in rows:
+            if row["score"] >= 1000.0:
+                sig = candidate_signature(row["case"])
+                if sig:
+                    reserved[sig] = point_key
     for point_key in sorted(POINT_TEXT):
         rows = selected.get(point_key, [])
+        rows = [
+            row
+            for row in rows
+            if reserved.get(candidate_signature(row["case"]), point_key) == point_key
+        ]
         rows = sorted(rows, key=lambda row: row["score"], reverse=True)
         examples = []
         for row in pick_diverse(rows, seen_source_frames, EXAMPLES_PER_POINT):
