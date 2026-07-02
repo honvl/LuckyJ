@@ -22,22 +22,22 @@ const siteCommitFallback = {
 };
 const pointRailFallbackLabels = {
   en: [
-    "Start with the placement problem.",
-    "Combine chances until the table forces a commitment.",
-    "Calls need a named purpose.",
-    "Every open call increases the price of safe tiles.",
-    "Throw dangerous floating tiles before they become your problem.",
-    "Value planning starts while the hand is still far away.",
-    "Riichi is a pressure tool.",
-    "Push-fold is recalculated every draw.",
-    "Late hands tighten: fewer deviations, fewer bad moves.",
-    "Drawn-hand points are part of the attack plan.",
-    "Use NAGA match rate as a review cue.",
-    "Cut live yakuhai earlier when an open hand's yaku is unproven.",
-    "Keep safe tiles for a named target.",
-    "Safe tiles expire when they stop defending the current danger.",
-    "Late outside cuts can preserve the winning route.",
-    "Name the honor's job: value, yaku condition, dead tile, or safety.",
+    "Put Placement Before Ukeire",
+    "Do Not Choose the Hand Too Early",
+    "Call Only When the Call Changes the Hand",
+    "Keep Brakes on Open Hands",
+    "Cut the Tile That Will Get Worse",
+    "Buy Value While It Is Cheap",
+    "Make Riichi Tax the Table",
+    "Reprice the Whole Push Every Draw",
+    "The Third Row Is a Counting Drill",
+    "Treat Keiten as Attack",
+    "Make Engine Splits Prove Their Case",
+    "Deny the Missing Yakuhai",
+    "Name Who Your Safe Tile Defends",
+    "Spend Safety When Its Opponent Disappears",
+    "The Edge Tile Can Be the Attack",
+    "Label Every Honor Before You Move It",
   ],
 };
 const pointRailFallbackIds = [
@@ -1262,6 +1262,21 @@ function meldIcons(melds) {
     .join("");
 }
 
+function convertStaticTileMarkup(root = document) {
+  // Static chapter prose uses the same [[tile]] markup as data-driven text.
+  const walker = document.createTreeWalker(root.body || root, NodeFilter.SHOW_TEXT, {
+    acceptNode: (node) =>
+      node.nodeValue.includes("[[") && node.parentElement && !node.parentElement.closest("script,style")
+        ? NodeFilter.FILTER_ACCEPT
+        : NodeFilter.FILTER_REJECT,
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  for (const node of nodes) {
+    node.parentNode.replaceChild(richText(node.nodeValue), node);
+  }
+}
+
 function seatLabel(seat) {
   const labels = isJa
     ? {
@@ -2076,7 +2091,7 @@ function renderCases(data) {
       button.classList.toggle("active", button.dataset.key === key);
     });
     grid.innerHTML = "";
-    for (const item of data[key].slice(0, 6)) {
+    for (const item of data[key]) {
       const card = document.createElement("article");
       card.className = "case-card";
 
@@ -2131,6 +2146,47 @@ function renderCases(data) {
     tabs.append(button);
   }
   paint(active);
+}
+
+function renderEngineConsensus(mortalPoints) {
+  const target = document.querySelector("#engineConsensus");
+  if (!target || !mortalPoints) return;
+  let backed = 0;
+  let total = 0;
+  const rows = Object.entries(mortalPoints)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([pointKey, entries]) => {
+      const agree = entries.filter((item) => item.mortal_agrees_luckyj).length;
+      backed += agree;
+      total += entries.length;
+      return { pointKey, agree, count: entries.length };
+    });
+  if (!total) return;
+  const intro = isJa
+    ? `選ばれた${total}例のうち、Mortal が LuckyJ の選択を支持したのは${backed}例。残りは NAGA 系ヘッドの支持、または意図的に収録した不一致例（検討ポイント用）である。`
+    : `Across the ${total} showcased examples, Mortal independently backs LuckyJ's line in ${backed}. The rest are backed by a NAGA head or kept deliberately as disagreement studies.`;
+  const bars = rows
+    .map(({ pointKey, agree, count }) => {
+      const pct = count ? Math.round((agree / count) * 100) : 0;
+      const num = pointKey.replace("point-", "");
+      return `
+        <div class="consensus-row">
+          <a href="#${pointKey}">${escapeHtml(num)}</a>
+          <div class="consensus-bar" role="img" aria-label="${escapeHtml(pointKey)}: Mortal ${agree}/${count}">
+            <span style="width:${pct}%"></span>
+          </div>
+          <em>${agree}/${count}</em>
+        </div>
+      `;
+    })
+    .join("");
+  target.innerHTML = `
+    <div class="engine-consensus">
+      <h3>${isJa ? "第二エンジンの支持率" : "Second-engine agreement"}</h3>
+      <p>${intro}</p>
+      <div class="consensus-grid">${bars}</div>
+    </div>
+  `;
 }
 
 function renderPointValidation(validation) {
@@ -2193,6 +2249,7 @@ async function main() {
   renderCommitStamp();
   setupRetractingTopbar();
   renderPointRail();
+  convertStaticTileMarkup();
   applyTileCompatibility();
   const guidePath = isJa ? "strategy-guides.ja.json" : "strategy-guides.json";
   const [bookResponse, caseResponse, exampleResponse, guideResponse, mortalResponse, mortalCopy, validation] = await Promise.all([
@@ -2240,6 +2297,7 @@ async function main() {
   renderDefenseTargets(data.decision_counters.defense_targets);
 
   renderPointValidation(validation);
+  renderEngineConsensus(mortal.points);
   renderPointExamples(examples, guides, mortal.points, mortalCopy);
   syncPointExamplesFromLocation({ scroll: true });
   renderCases(caseData);

@@ -13,16 +13,17 @@ API_KEY = os.environ.get("CLIPROXY_API_KEY") or os.environ.get("ANTHROPIC_API_KE
 MODEL = os.environ.get("CLIPROXY_MODEL", "gemini-3.5-flash-low")
 URL = "http://localhost:8317/v1/chat/completions"
 REQUEST_TIMEOUT = int(os.environ.get("CLIPROXY_TIMEOUT", "180"))
-PROMPT_VERSION = "yaku-skeleton-v2"
+PROMPT_VERSION = "pro-voice-v3"
 CACHE_PATH = Path("data/llm_guides_cache.json")
 EXAMPLES_PATH = Path("site/point-examples.json")
 STRATEGY_EN_PATH = Path("site/strategy-guides.json")
 STRATEGY_JA_PATH = Path("site/strategy-guides.ja.json")
+MORTAL_PATH = Path("site/mortal-analysis.json")
 
 SYSTEM_PROMPT = """You are an expert Mahjong commentator and tutor for the LuckyJ Mahjong playbook.
 Your task is to analyze a specific Mahjong decision where the AI agent "LuckyJ" differs from another engine "Nishiki" (or NAGA).
 You will be provided with the game state, candidate decisions, shape facts, threat levels, active yakuhai tiles, and the core human strategic commentary.
-Your goal is to output an analysis block in Alternative 2 style in both English and Japanese that is intelligent, human-written, and directly connects this specific match example to the core strategic concept.
+Your goal is to output an analysis block in both English and Japanese written in the voice of a professional mahjong player-commentator: concrete, value-based, honest about engine disagreement, directly connecting this specific match example to the core strategic concept.
 
 Strict Mahjong Rules & Constraints:
 1. Only refer to wind tiles as "yaku tiles", "yakuhai", or "yaku switches" if they are listed in the 'Active Yakuhai for Self' list. Guest winds (non-yakuhai winds) do NOT carry yaku value for self.
@@ -37,14 +38,21 @@ Strict Mahjong Rules & Constraints:
 10. For call examples, "Post-Call Shape Facts" is authoritative. If the post-call shanten is 0, the hand is tenpai after the call and discard; NEVER describe LuckyJ's resulting hand as 1-shanten, one-away, or still trying to reach tenpai. If the post-call shanten is 1, describe it as 1-shanten, not tenpai.
 11. Do not describe a triplet or duplicated number tiles as a defensive reserve merely because there are multiple copies. Only call a tile a defensive reserve when the supplied safety facts show target-specific safety; otherwise describe the real next discard or shape plan.
 
-Style Guidelines for English (Alternative 2 style):
-- Start with first-person plural: "We are in [Round] [Dealer/Player status], holding [Score] points. [Context about board/opponents, e.g. 'With opponents already showing active melds' or 'With an opponent already declaring riichi']."
-- Ask a question about the hand state/threats: e.g. "how do we value our hand shape?" or "how do we balance our hand's value against the danger on the board?"
-- Describe LuckyJ's play, mentioning the block being broken or removed when the data supports it. Use the supplied shanten facts exactly: "LuckyJ breaks the [[6m]][[7m]] block by cutting [[6m]]." or "LuckyJ takes tenpai after the call by discarding [[4s]]." Use double brackets [[tile]] format for tiles (e.g., [[6m]]).
-- Explain why it is safe or why it is a threat buy, citing safety metrics from the data: "Because [[6m]] is genbutsu to toimen and suji to kamicha/shimocha, this discard offers excellent safety across the board." or "While Nishiki's path avoids immediate risk, it kills the hand's potential..."
-- Compare with Nishiki's choice only when the supplied data shows a different choice. If Nishiki agrees with LuckyJ, say so directly and do not invent a false contrast.
-- Summarize the strategic trade-off: "However, LuckyJ prioritizes defense over speed here. Discarding [[6m]] leaves [[7m]] floating..." or "LuckyJ pushes here, valuing the dealer equity over a passive fold."
-- Do not use generic placeholders.
+Style Guidelines for English (professional-commentator voice):
+Model the register on translated Japanese strategy books ("Digital" school): a professional
+player explaining one decision to a serious student. Concrete, confident, second person
+where instructive, willing to say one line is simply better when the data supports it.
+- Open with the decision itself or the tension that defines it, NOT a scene-setting formula.
+  Vary openings across examples. Good openings: "The question is whether [[6m]] is worth 54% of a deal-in.",
+  "Three turns from the wall, tenpai payments are the whole game here.", "This pon looks greedy until you count the turns left."
+  BANNED opening pattern: "We are in [Round] ... holding [Score] points" — never use it.
+- State the score/round context in one short clause woven into the argument, only where it changes the decision.
+- Argue in values, not adjectives. Prefer "folding costs about 1,500 in placement here, while pushing [[9s]] into a dealer riichi risks 7,000 or more" over "safety takes precedence".
+  Use the supplied danger percentages and shanten/ukeire facts as the numbers of the argument; never invent point values for opponents' unseen hands (qualitative "a dealer-riichi-sized loss" is fine).
+- Name the shape consequence exactly, using the supplied shanten facts: "LuckyJ breaks the [[6m]][[7m]] block by cutting [[6m]], dropping to 2-shanten but keeping both safe tiles." Use double brackets [[tile]] for tiles.
+- Give the opposing line its full strength before answering it: say what Nishiki's tile buys (speed, acceptance) in one sentence, then say precisely why the trade is or is not worth it in this spot. If a model backs LuckyJ, use that as evidence; if every model disagrees with LuckyJ, say so honestly and frame what conditions would have to hold for LuckyJ's line to be right.
+- End with the transferable condition, not a summary: one sentence a reader can carry to their own games ("Keep the anchor only while the riichi is live; the moment the hand ends, it is just a worse [[5m]].").
+- 5 to 8 sentences total. No filler questions ("how do we balance...?"), no generic placeholders, no repeating the point title.
 
 Style Guidelines for Japanese:
 - Produce a high-quality Japanese translation of the English analysis, matching the natural terminology of professional Japanese Mahjong commentators (e.g. テンパイ, シャンテン, 現物, 筋, 押し引き, 親番, 役牌, 客風, ピンフ, チートイツ, トイトイ, etc.).
@@ -805,6 +813,67 @@ def teaching_fit_text(case):
     return "\n".join(f"- {line}" for line in lines)
 
 
+_MORTAL_LOOKUP = None
+
+
+def mortal_lookup():
+    global _MORTAL_LOOKUP
+    if _MORTAL_LOOKUP is not None:
+        return _MORTAL_LOOKUP
+    lookup = {}
+    if MORTAL_PATH.exists():
+        try:
+            data = json.loads(MORTAL_PATH.read_text())
+            for entries in (data.get("points") or {}).values():
+                for item in entries:
+                    sig = item.get("input_signature") or []
+                    if len(sig) == 7:
+                        lookup[tuple(sig[1:])] = item
+        except (json.JSONDecodeError, OSError):
+            pass
+    _MORTAL_LOOKUP = lookup
+    return lookup
+
+
+def mortal_frame_signature(case):
+    paifu = case.get("paifu") or ""
+    match = re.search(r"log=([0-9a-zA-Z-]+)", paifu)
+    log_id = match.group(1) if match else None
+    kind = case.get("kind")
+    if kind == "call":
+        action_type = str(case.get("call", "")).lower()
+        action_tile = case.get("called_tile")
+        post_discard = case.get("discard_after_call")
+    elif kind == "reach":
+        action_type = "reach"
+        action_tile = case.get("actual")
+        post_discard = None
+    else:
+        action_type = "dahai"
+        action_tile = case.get("actual")
+        post_discard = None
+    return (log_id, case.get("kyoku_index"), case.get("left"), action_type, action_tile, post_discard)
+
+
+def mortal_verdict_text(case):
+    item = mortal_lookup().get(mortal_frame_signature(case))
+    if not item:
+        return "- Mortal cross-check: not available for this example. Do not mention Mortal."
+    mortal_action = (item.get("mortal") or {}).get("label") or "unknown"
+    agrees_l = item.get("mortal_agrees_luckyj")
+    agrees_n = item.get("mortal_agrees_naga")
+    top = (item.get("top_candidates") or [{}])[0]
+    prob = top.get("probability")
+    prob_text = f" ({prob:.0%})" if isinstance(prob, (int, float)) else ""
+    if agrees_l:
+        stance = "Mortal independently backs LuckyJ's line — you may cite this as second-engine support."
+    elif agrees_n:
+        stance = "Mortal sides with Nishiki against LuckyJ — do NOT claim engine consensus for LuckyJ; frame LuckyJ's line as a conditional style choice and state what must hold for it to be right."
+    else:
+        stance = "Mortal prefers a third line — treat the spot as genuinely close and say so."
+    return f"- Mortal cross-check (AUTHORITATIVE): Mortal's top action is {mortal_action}{prob_text}. {stance}"
+
+
 def make_prompt(case, guide_en, guide_ja):
     is_call = case.get("kind") == "call"
     prevalent_wind, seat_wind, active_yakuhai, guest_winds = get_winds_and_yakuhai(case)
@@ -855,6 +924,9 @@ Core Playbook Concept (Human Strategic Reference):
 
 Teaching Fit for This Point:
 {teaching_fit_text(case)}
+
+Second-Engine Cross-Check:
+{mortal_verdict_text(case)}
 
 Mahjong Rules Context for Self:
 - Prevalent Wind: {prevalent_wind}

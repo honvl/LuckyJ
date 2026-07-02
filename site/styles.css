@@ -444,6 +444,64 @@ a {
   margin: 20px 0;
 }
 
+.engine-consensus {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  margin: 20px 0;
+  padding: 18px;
+}
+
+.engine-consensus h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.consensus-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 24px;
+  margin-top: 12px;
+}
+
+.consensus-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 44px;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.consensus-row a {
+  font-weight: 800;
+  color: var(--green);
+  text-decoration: none;
+}
+
+.consensus-row em {
+  font-style: normal;
+  color: var(--ink-soft, #55604f);
+  text-align: right;
+}
+
+.consensus-bar {
+  height: 8px;
+  background: var(--soft-green, #eef4ea);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.consensus-bar span {
+  display: block;
+  height: 100%;
+  background: var(--green);
+}
+
+@media (max-width: 760px) {
+  .consensus-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .chapter-card,
 .model-point-grid article,
 .validation-card {
@@ -696,6 +754,14 @@ a {
 .rule {
   border-left: 5px solid var(--green);
   background: var(--soft-green);
+}
+
+.exception {
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--gold, #c9a227);
+  background: var(--panel);
+  margin: 18px 0;
+  padding: 14px 18px;
 }
 
 .compact {

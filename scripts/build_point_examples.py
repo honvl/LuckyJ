@@ -18,6 +18,7 @@ from mahjong.shanten import Shanten
 
 
 OUT = Path("site/point-examples.json")
+MORTAL_PATH = Path("site/mortal-analysis.json")
 SEAT_NAMES = ["self", "shimocha", "toimen", "kamicha"]
 SEAT_LABELS_EN = {
     "self": "self",
@@ -2070,11 +2071,111 @@ def baseline_example_bonus(candidate):
     return 0.0
 
 
+# Points whose teaching value comes from the disagreement itself; the "no engine backs
+# LuckyJ" penalty does not apply to them.
+DISAGREEMENT_POINTS = {"point-12"}
+
+_MORTAL_VERDICTS = None
+
+
+def load_mortal_verdicts():
+    """Map (log_id, kyoku_index, left, kind-ish action) -> mortal_agrees_luckyj from the
+    previous site/mortal-analysis.json run, so re-selection can prefer examples where the
+    second engine already backed LuckyJ without re-running the replay."""
+    global _MORTAL_VERDICTS
+    if _MORTAL_VERDICTS is not None:
+        return _MORTAL_VERDICTS
+    verdicts = {}
+    if MORTAL_PATH.exists():
+        try:
+            data = json.loads(MORTAL_PATH.read_text())
+            for entries in (data.get("points") or {}).values():
+                for item in entries:
+                    sig = item.get("input_signature") or []
+                    if len(sig) == 7:
+                        # drop the point key: the verdict is a property of the game frame
+                        verdicts[tuple(sig[1:])] = bool(item.get("mortal_agrees_luckyj"))
+        except (json.JSONDecodeError, OSError):
+            pass
+    _MORTAL_VERDICTS = verdicts
+    return verdicts
+
+
+def log_id_from_report(candidate):
+    paifu = candidate.get("paifu") or ""
+    match = re.search(r"log=([0-9a-zA-Z-]+)", paifu)
+    return match.group(1) if match else None
+
+
+def mortal_frame_signature(candidate):
+    kind = candidate.get("kind")
+    if kind == "call":
+        action_type = str(candidate.get("call", "")).lower()
+        action_tile = candidate.get("called_tile")
+        post_discard = candidate.get("discard_after_call")
+    elif kind == "reach":
+        action_type = "reach"
+        action_tile = candidate.get("actual")
+        post_discard = None
+    else:
+        action_type = "dahai"
+        action_tile = candidate.get("actual")
+        post_discard = None
+    return (
+        log_id_from_report(candidate),
+        candidate.get("kyoku_index"),
+        candidate.get("left"),
+        action_type,
+        action_tile,
+        post_discard,
+    )
+
+
+def engine_backing(candidate):
+    """Return (naga_backing, mortal_backing) where naga_backing is True when any NAGA head
+    matches LuckyJ's line and mortal_backing is True/False/None (None = not yet replayed)."""
+    kind = candidate.get("kind")
+    if kind == "call":
+        call_heads = candidate.get("call_model_heads") or []
+        post_heads = candidate.get("post_call_model_heads") or []
+        naga = any(
+            head.get("supports_call")
+            and (model_head(post_heads, head.get("key")) or {}).get("matches_luckyj", True)
+            for head in call_heads
+        )
+    else:
+        naga = any(head.get("matches_luckyj") for head in candidate.get("model_heads") or [])
+    mortal = load_mortal_verdicts().get(mortal_frame_signature(candidate))
+    return naga, mortal
+
+
+def defensibility_bonus(point_key, candidate):
+    """Prefer showcase examples that at least one independent engine endorses.
+
+    A playbook example teaches "copy this line"; an example where every engine prefers the
+    other tile teaches the opposite lesson no matter how good the prose is. point-12 is
+    exempt because its subject is the disagreement itself."""
+    if point_key in DISAGREEMENT_POINTS:
+        return 0.0
+    naga, mortal = engine_backing(candidate)
+    bonus = 0.0
+    if naga:
+        bonus += 1.5
+    if mortal is True:
+        bonus += 3.0
+    elif mortal is False and not naga:
+        bonus -= 4.0
+    elif not naga:
+        bonus -= 1.5
+    return bonus
+
+
 def add(selected, used, point_key, candidate, score=0.0):
     sig = candidate_signature(candidate)
     if not candidate or not sig or not point_candidate_eligible(point_key, candidate):
         return
     score += baseline_example_bonus(candidate)
+    score += defensibility_bonus(point_key, candidate)
     point_seen = used.setdefault(point_key, set())
     if sig in point_seen:
         return
@@ -2093,6 +2194,46 @@ def add_best(selected, used, scores, point_key, candidate, score):
     add(selected, used, point_key, candidate, score)
 
 
+def diversity_key(case):
+    return (case.get("stage"), case.get("score_band"))
+
+
+def pick_diverse(rows, seen_source_frames, per_point):
+    """Greedy pick by score with a soft diversity cap: at most 4 examples sharing the same
+    (stage, score_band) cell and at most 2 from the same game, so one recurring table
+    situation cannot fill a point's whole tab strip. Backfills by raw score if the caps
+    leave slots empty."""
+    picked = []
+    cell_counts = Counter()
+    game_counts = Counter()
+
+    def try_take(row, enforce_caps):
+        case = row["case"]
+        sig = candidate_signature(case)
+        if sig in seen_source_frames or any(candidate_signature(p["case"]) == sig for p in picked):
+            return False
+        if enforce_caps:
+            if cell_counts[diversity_key(case)] >= 4:
+                return False
+            if game_counts[case.get("game")] >= 2:
+                return False
+        picked.append(row)
+        cell_counts[diversity_key(case)] += 1
+        game_counts[case.get("game")] += 1
+        return True
+
+    for row in rows:
+        if len(picked) >= per_point:
+            break
+        try_take(row, enforce_caps=True)
+    if len(picked) < per_point:
+        for row in rows:
+            if len(picked) >= per_point:
+                break
+            try_take(row, enforce_caps=False)
+    return picked
+
+
 def finalize_examples(selected):
     output = {}
     seen_source_frames = set()
@@ -2100,19 +2241,14 @@ def finalize_examples(selected):
         rows = selected.get(point_key, [])
         rows = sorted(rows, key=lambda row: row["score"], reverse=True)
         examples = []
-        for row in rows:
+        for row in pick_diverse(rows, seen_source_frames, EXAMPLES_PER_POINT):
             case = row["case"]
-            sig = candidate_signature(case)
-            if sig in seen_source_frames:
-                continue
             index = len(examples) + 1
             case["example_index"] = index
             case["example_score"] = round(row["score"], 4)
             attach_example_guides(case)
             examples.append(case)
-            seen_source_frames.add(sig)
-            if len(examples) >= EXAMPLES_PER_POINT:
-                break
+            seen_source_frames.add(candidate_signature(case))
         if examples:
             output[point_key] = examples
     return output
