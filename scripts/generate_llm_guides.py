@@ -218,6 +218,8 @@ def cached_guide_has_false_suji_claim(case, entry):
 def cached_guide_conflicts(case, entry):
     if not entry:
         return False
+    if cached_guide_has_discarded_route_claim(case, entry):
+        return True
     if cached_guide_has_false_suji_claim(case, entry):
         return True
     shape = case.get("post_call_eval") or {}
@@ -557,6 +559,80 @@ def counts_after_discard(counts, tile):
     return remaining
 
 
+def route_needs_discarded_tile(route, tile):
+    tile = base_tile(tile)
+    if not tile:
+        return False
+    return bool(re.search(rf"\bneeds(?:\s+another)?\s+[^;,.。]*\b{re.escape(tile)}\b", route, re.I))
+
+
+def detect_sequence_routes_after_discard(counts, tile):
+    return [
+        route
+        for route in detect_sequence_routes(counts_after_discard(counts, tile))
+        if not route_needs_discarded_tile(route, tile)
+    ]
+
+
+def sequence_routes_requiring_discarded_tile(case, tile):
+    if not tile:
+        return []
+    counts = hand_counts(case)
+    return [
+        route
+        for route in detect_sequence_routes(counts_after_discard(counts, tile))
+        if route_needs_discarded_tile(route, tile)
+    ]
+
+
+def route_terms_for_text(route):
+    route_lower = route.lower()
+    if route_lower.startswith("ittsu:"):
+        return ["ittsu", "一気通貫", "イッツー"]
+    if "sanshoku" in route_lower:
+        return ["sanshoku", "三色"]
+    if "iipeikou" in route_lower or "ryanpeikou" in route_lower:
+        return ["iipeikou", "ryanpeikou", "一盃口", "二盃口"]
+    return []
+
+
+def text_claims_discard_preserves_route(text, tile, route):
+    tile = base_tile(tile)
+    terms = route_terms_for_text(route)
+    if not tile or not terms:
+        return False
+    term_re = "|".join(re.escape(term) for term in terms)
+    tile_re = re.escape(f"[[{tile}]]")
+    preserve_en = r"(?:preserv\w*|keep\w*|maintain\w*|retain\w*|kept|left[^.。]{0,40}(?:alive|intact))"
+    preserve_ja = r"(?:温存|維持|残)"
+    discard_tile_en = (
+        rf"(?:discarding|discards?|cutting|cuts?|cut)"
+        rf"(?:\s+(?:the|a|an|relatively|non-safe|safe|safer|terminal|outside|outer|"
+        rf"genbutsu|suji|dangerous|central|middle|live|lone|single|floating|moderately|"
+        rf"absolute|double-genbutsu|high-danger|low-danger))*\s+{tile_re}"
+    )
+    patterns = [
+        rf"{discard_tile_en}[^.。]{{0,220}}{preserve_en}[^.。]{{0,160}}(?:{term_re})",
+        rf"{discard_tile_en}[^.。]{{0,220}}(?:{term_re})[^.。]{{0,160}}{preserve_en}",
+        rf"{tile_re}\s+(?:discard|cut|line)[^.。]{{0,160}}{preserve_en}[^.。]{{0,160}}(?:{term_re})",
+        rf"{tile_re}\s+(?:discard|cut|line)[^.。]{{0,160}}(?:{term_re})[^.。]{{0,160}}{preserve_en}",
+        rf"{tile_re}(?:を|の)?(?:切|打)[^。]{{0,220}}(?:{term_re})[^。]{{0,160}}{preserve_ja}",
+        rf"(?:切|打)\s*{tile_re}[^。]{{0,220}}(?:{term_re})[^。]{{0,160}}{preserve_ja}",
+    ]
+    return any(re.search(pattern, text, re.I) for pattern in patterns)
+
+
+def cached_guide_has_discarded_route_claim(case, entry):
+    if case.get("kind") == "call":
+        return False
+    text = cache_entry_text(entry)
+    for tile in (case.get("actual"), case.get("naga")):
+        for route in sequence_routes_requiring_discarded_tile(case, tile):
+            if text_claims_discard_preserves_route(text, tile, route):
+                return True
+    return False
+
+
 def discard_route_impact_text(case):
     counts = hand_counts(case)
     rows = [
@@ -570,7 +646,7 @@ def discard_route_impact_text(case):
     for label, tile in rows:
         if not tile:
             continue
-        sequence_routes = detect_sequence_routes(counts_after_discard(counts, tile))
+        sequence_routes = detect_sequence_routes_after_discard(counts, tile)
         detail = ", ".join(sequence_routes) if sequence_routes else "none"
         lines.append(f"- {label} [[{tile}]]: sequence yaku seeds still visible: {detail}")
     return "\n".join(lines)
@@ -583,8 +659,8 @@ def required_route_note_text(case):
     if not actual or not naga:
         return "- No discard-branch route note required."
 
-    actual_routes = set(detect_sequence_routes(counts_after_discard(counts, actual)))
-    naga_routes = set(detect_sequence_routes(counts_after_discard(counts, naga)))
+    actual_routes = set(detect_sequence_routes_after_discard(counts, actual))
+    naga_routes = set(detect_sequence_routes_after_discard(counts, naga))
     luckyj_only = sorted(actual_routes - naga_routes)
     both = sorted(actual_routes & naga_routes)
     nishiki_only = sorted(naga_routes - actual_routes)

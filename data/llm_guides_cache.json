@@ -2721,12 +2721,12 @@
   },
   "point-01_126_9_115": {
     "guide": {
-      "read": "Faced with a late-stage riichi from toimen while holding a massive 59,000-point lead, the tension is between maintaining dealer tenpai pressure and absolute safety. Nishiki and Mortal overwhelmingly favor discarding the genbutsu [[2m]], accepting a drop to 2-shanten to completely eliminate immediate deal-in risk. LuckyJ, however, discards the non-safe [[5s]] to keep the hand at 1-shanten while preserving faraway 456 and 567 sanshoku doujun skeletons. By doing so, LuckyJ retains the [[2m]] as a defensive pocket card for next turn, hoping to maintain offensive pressure. While this high-ambition line keeps the dealer threat alive, the engines rightly argue that protecting such a large lead against a direct hit demands immediate submission. Fold directly when the cost of a deal-in destroys your dominant position, even if it means breaking a completed sequence.",
+      "read": "With a 59,000-point lead against toimen's late riichi, this is not a sanshoku-preservation push; it is a choice between keeping dealer pressure and folding cleanly. Nishiki and Mortal prefer the genbutsu [[2m]], which drops the hand to 2-shanten but removes the immediate deal-in risk. LuckyJ cuts the non-safe [[5s]] to stay 1-shanten. That keeps [[2m]] as a pocket safe tile for the next draw, but the [[5s]] cut also gives up the faraway 456/567 sanshoku ideas because the souzu side now has only [[6s]][[6s]]. The ambition is therefore narrow: a live tenpai route, not a named yaku skeleton. With this large a lead, the engines' objection is easy to understand: the extra pressure is not worth risking a direct hit. Fold directly when the score job is already won and the safe tile answers the live riichi.",
       "prompt": "Which tile in LuckyJ's hand is a safe tile (genbutsu) against the riichi opponent (toimen)?",
       "answer": "[[2m]]"
     },
     "guide_ja": {
-      "read": "対面の終盤の立直に対し、59,000点の大きなリードを持つ状況で、親番のテンパイへの色気と完全安牌での撤退のどちらを選ぶかが問われている。にしきとMortalは、現物である [[2m]] を打って2シャンテンに後退することを圧倒的に支持し、直近の放銃リスクを完全に排除しようとする。一方、LuckyJは無筋の [[5s]] を切り飛ばして1シャンテンを維持し、遠い456や567の三色同順の種を残した。これにより、LuckyJは次巡の安全牌として [[2m]] を手牌に温存し、親の攻撃力をギリギリまで維持する構えを見せる。しかし、このようなトップ目での強気な選択に対し、他AIは直撃を避けるために即座にオリるべきだと主張している。圧倒的なリードを守り抜くためには、完成メンツを崩してでも直近の放銃を避ける守備意識が重要となる。",
+      "read": "対面の終盤リーチに対して59000点の大きなトップ目なら、これは三色温存の押しではなく、親の圧力を残すかきれいに降りるかの比較である。ニシキとMortalは現物の[[2m]]を選び、2シャンテンに戻ってでも直近の放銃を消す。LuckyJは安全でない[[5s]]を切って1シャンテンを維持し、次巡用の安全牌として[[2m]]を残すが、その打牌で索子側は[[6s]][[6s]]だけになり、遠い456/567三色の構想は失われる。残る野心は役の骨組みではなく、テンパイへの細い圧力である。この点棒なら、他AIが即オリを主張する理由は自然だ。すでに着順の仕事が終わっていて、安全牌がリーチ者に通るなら、直接放銃を避ける方を優先する。",
       "prompt": "リーチ者（対面）に対して現物となっている、LuckyJの手牌の中の牌は何ですか？",
       "answer": "[[2m]]"
     },
@@ -3393,12 +3393,12 @@
   },
   "point-09_313_1_137": {
     "guide": {
-      "read": "With only two tiles remaining in the wall, reaching tenpai from a 2-shanten hand is mathematically impossible, making any aggressive push a pure liability. As the dealer in East 2-0 holding 25,000 points, protecting against a late-game deal-in is paramount. Nishiki advocates for discarding [[3s]] to preserve the [[7s]][[8s]] shape and maintain the shorter path. However, [[3s]] carries a 20.4% danger rating to Kamicha's open meld, whereas [[7s]] is completely safe against the active threats. Backed by Mortal at 97%, LuckyJ reprices the hand's value based on the remaining draws: since tenpai payments are out of reach, preserving the 2-shanten is worthless. Discarding [[7s]] drops the hand to 3-shanten but keeps the faraway 678 sanshoku doujun seed alive via the floating [[8s]] without taking on unnecessary risk. Always re-evaluate the worth of your shanten relative to the remaining draws; a shorter path to an impossible goal is not worth a single dangerous discard.",
+      "read": "With only two tiles remaining, the important fact is that 2-shanten cannot become tenpai in time. Nishiki's [[3s]] discard preserves the [[7s]][[8s]] shape and the shorter route, but [[3s]] carries 20.4% danger to Kamicha's open hand. LuckyJ cuts the fully safe [[7s]], dropping to 3-shanten and abandoning the faraway 678 sanshoku/[[7s]][[8s]] branch rather than pretending it still matters. Keeping only a floating [[8s]] is not route preservation; it is the cost of refusing a pointless dangerous push. Mortal backs the safety-first choice at 97%. Reprice the hand by remaining draws: when tenpai is unreachable, a cleaner fold beats a prettier shanten number.",
       "prompt": "Why is keeping a lower shanten (2-shanten) by discarding [[3s]] incorrect in this late-game situation?",
       "answer": "With only two tiles remaining in the wall, it is mathematically impossible to reach tenpai before the hand ends, making any risk taken for speed completely pointless."
     },
     "guide_ja": {
-      "read": "山に残り2枚という極めて深い終盤では、2シャンテンからテンパイを取ることは物理的に不可能であり、危険牌を押す価値は全くない。東2局の親番で25,000点持ちという状況において、この終盤で無駄な放銃を避けることは最優先事項だ。西木は[[7s]][[8s]]の形状を維持してシャンテン数を進めやすくするために[[3s]]の打牌を選択した。しかし、[[3s]]は仕掛けている上家に対して放銃率20.4%の危険牌であるのに対し、[[7s]]は現物かつスジで完全に安全である。Mortalも97%で支持する通り、LuckyJは残りツモ数から手の価値を冷徹に再評価し、テンパイ料を取れない以上は2シャンテンの維持に価値がないと判断した。[[7s]]を切ることで3シャンテンに戻るものの、浮いた[[8s]]を残して遠くの678の三色同順の種を維持しつつ、無意味な危険を完璧に回避している。常に残りツモ数に対する手の価値を再評価し、達成不可能なテンパイのために危険牌を押し出してはならない。",
+      "read": "残りツモ2枚では、2シャンテンからテンパイに届かないことが最重要である。ニシキの[[3s]]切りは[[7s]][[8s]]形と近いルートを残すが、[[3s]]は上家の仕掛けに20.4%の危険牌である。LuckyJは完全に安全な[[7s]]を切り、3シャンテン戻しを受け入れて、遠い678三色や[[7s]][[8s]]の分岐を捨てる。浮いた[[8s]]だけを残すことはルート温存ではなく、無意味な危険牌を押さないための代償である。Mortalも97%で安全寄りの選択を支持している。残りツモ数で手を再評価し、テンパイが届かないなら、見た目のシャンテンより安全な終局を優先する。",
       "prompt": "この終盤で[[3s]]を切って2シャンテンを維持することが正しくないのはなぜですか？",
       "answer": "山の残りツモ牌が2枚しかないため、流局までにテンパイを入れることは物理的に不可能であり、速度のために危険を冒す意味が全くないからです。"
     },
@@ -3953,12 +3953,12 @@
   },
   "point-16_311_2_123": {
     "guide": {
-      "read": "The tension here is whether to push a highly dangerous central tile to maximize our tenpai shape or opt for a safer outside discard that keeps the hand's structure alive. As dealer in East 3-0, holding a close second-place position, we face a live riichi from Kamicha. Nishiki wants to play aggressively by cutting the high-danger [[6m]], which yields a three-way wait on [[1m]], [[4m]], and [[5m]] with 6 live outs. However, pushing [[6m]] carries a massive danger level, while discarding the relatively safe terminal [[1m]] keeps us tenpai on a [[6m]]/[[9m]] shanpon with 3 live outs. Crucially, discarding [[1m]] preserves the *ittsu* skeleton (2m-3m needing [[1m]], 4m-6m needing [[5m]], and the completed 7m-8m-9m), keeping our value potential intact. Mortal takes the most aggressive stance, preferring to declare Reach immediately. When facing a late-game threat as dealer, discarding the outside terminal allows you to maintain tenpai safety while preserving the core shapes of your value routes.",
+      "read": "The real choice is not ittsu preservation; it is whether the dealer can afford to push [[6m]] into Kamicha's riichi for the wider value tenpai. Nishiki's [[6m]] discard leaves 6 visible outs on [[1m]], [[4m]], and [[5m]], and that branch is the one that keeps the manzu ittsu chance because [[1m]][[2m]][[3m]] stays intact. LuckyJ cuts [[1m]] instead, which breaks that lower segment and gives up the ittsu route, but avoids pushing a near-max-danger [[6m]] into the live riichi. The cost is real: LuckyJ keeps only a [[6m]]/[[9m]] shanpon with 3 visible outs. Mortal is a separate immediate-riichi-pressure line, so the discard/wait comparison remains LuckyJ versus Nishiki. Read this as a late dealer push-pull example: spend the terminal only when avoiding the central danger is worth losing the wider value line.",
       "prompt": "Which tile did Nishiki suggest discarding to achieve a three-way wait on [[1m]], [[4m]], and [[5m]]?",
       "answer": "[[6m]]"
     },
     "guide_ja": {
-      "read": "ここでの葛藤は、テンパイの形を最大化するために極めて危険な中張牌を押すか、あるいは手の構造を残しつつ安全な端牌を切るかという点にあります。東3局の親番、僅差の2着目という状況で、上家から立直が入っています。にしきは危険度の高い[[6m]]を勝負し、[[1m]]・[[4m]]・[[5m]]の3面張（残り山6枚）に受ける攻撃的な選択を推奨します。しかし、[[6m]]を通すリスクは非常に高く、比較的安全な端牌である[[1m]]を切れば、[[6m]]・[[9m]]のシャボ待ち（残り山3枚）でテンパイを維持できます。重要なのは、[[1m]]を切ることで「一気通貫」の種（[[1m]]待ちの2m-3m、[[5m]]待ちの4m-6m、完成面子の7m-8m-9m）を温存し、打点ルートを残せる点です。一方、Mortalは即リーチを宣言する最も攻撃的な姿勢を示しています。親番で終盤の脅威に直面した際、外側の端牌を切ることで、テンパイの安全性を保ちながら手役の骨組みを維持することができます。",
+      "read": "焦点は一気通貫の温存ではなく、親番で上家リーチに[[6m]]を押して広い高打点テンパイを取れるかである。ニシキの[[6m]]切りは[[1m]]・[[4m]]・[[5m]]の見えている受け6枚を残し、[[1m]][[2m]][[3m]]を崩さないので萬子の一気通貫を見るのはこちらの分岐である。LuckyJの[[1m]]切りはその下の面子を壊し、一気通貫ルートは失う。その代わり、リーチに対して危険度が極端に高い[[6m]]を今押さず、[[6m]]・[[9m]]のシャンポン3枚でテンパイを維持する。Mortalは別案の即リーチ圧力であり、宣言牌と待ちの比較はLuckyJ対ニシキとして読む。終盤の親番では、広さと手役を失ってでも中張牌の致命的な押しを避ける価値がある時だけ、この端牌切りを選ぶ。",
       "prompt": "[[1m]]・[[4m]]・[[5m]]の3面張テンパイを取るために、にしきが打牌として推奨した牌は何ですか？",
       "answer": "[[6m]]"
     },

@@ -1645,6 +1645,160 @@ FALSE_TENPAI_CALL_SHAPE_PATTERNS = [
     re.compile(r"(?:LuckyJ|この鳴き|鳴いた後|切ることで)[^。]{0,180}(?:一向聴(?!から)|1シャンテン(?!から)|テンパイまであと一歩)", re.I),
 ]
 
+
+def route_line(name, detail):
+    return f"{name}: {detail}"
+
+
+def sequence_seed_for_route(counts, suit, start):
+    tiles = [f"{rank}{suit}" for rank in range(start, start + 3)]
+    present = [tile for tile in tiles if counts[tile]]
+    missing = [tile for tile in tiles if not counts[tile]]
+    if len(present) == 3:
+        kind = "complete"
+    elif len(present) == 2:
+        kind = "two-tile seed"
+    elif len(present) == 1:
+        kind = "one-tile seed"
+    else:
+        kind = "absent"
+    return {"present": present, "missing": missing, "kind": kind}
+
+
+def detect_sanshoku_route_descriptions(counts):
+    routes = []
+    for start in range(1, 8):
+        seeds = [sequence_seed_for_route(counts, suit, start) for suit in "mps"]
+        present_counts = [len(seed["present"]) for seed in seeds]
+        complete_count = sum(1 for seed in seeds if seed["kind"] == "complete")
+        has_faraway_skeleton = min(present_counts) >= 1 and sum(present_counts) >= 6 and complete_count >= 1
+        if all(count >= 2 for count in present_counts) or has_faraway_skeleton:
+            route_tiles = f"{start}{start + 1}{start + 2}"
+            parts = []
+            for seed in seeds:
+                if seed["kind"] == "complete":
+                    parts.append(f"{' '.join(seed['present'])} complete")
+                elif seed["kind"] == "one-tile seed":
+                    parts.append(f"{' '.join(seed['present'])} only, needs {'/'.join(seed['missing'])}")
+                else:
+                    parts.append(f"{' '.join(seed['present'])} needs {'/'.join(seed['missing'])}")
+            strength = "strong" if all(count >= 2 for count in present_counts) else "faraway"
+            label = f"{route_tiles} sanshoku doujun seed"
+            if strength == "faraway":
+                label = f"faraway {label}"
+            routes.append(f"{label}: " + "; ".join(parts))
+    return routes
+
+
+def detect_ittsu_route_descriptions(counts):
+    routes = []
+    for suit in "mps":
+        seeds = [sequence_seed_for_route(counts, suit, start) for start in (1, 4, 7)]
+        if all(len(seed["present"]) >= 2 for seed in seeds):
+            parts = []
+            for seed in seeds:
+                if seed["kind"] == "complete":
+                    parts.append(f"{' '.join(seed['present'])} complete")
+                else:
+                    parts.append(f"{' '.join(seed['present'])} needs {'/'.join(seed['missing'])}")
+            routes.append(route_line("ittsu", f"{suit}-suit 123/456/789 seed: " + "; ".join(parts)))
+    return routes
+
+
+def detect_identical_sequence_route_descriptions(counts):
+    routes = []
+    iipeikou = []
+    for suit in "mps":
+        for start in range(1, 8):
+            tiles = [f"{rank}{suit}" for rank in range(start, start + 3)]
+            paired_ranks = [tile for tile in tiles if counts[tile] >= 2]
+            if len(paired_ranks) == 3:
+                iipeikou.append(f"{' '.join(tiles)} doubled")
+            elif len(paired_ranks) == 2:
+                missing = [tile for tile in tiles if counts[tile] < 2]
+                iipeikou.append(f"{' '.join(paired_ranks)} paired, needs another {'/'.join(missing)}")
+    if iipeikou:
+        routes.append(route_line("iipeikou/ryanpeikou seed", "; ".join(iipeikou[:3])))
+    return routes
+
+
+def detect_sequence_route_descriptions(counts):
+    return (
+        detect_sanshoku_route_descriptions(counts)
+        + detect_ittsu_route_descriptions(counts)
+        + detect_identical_sequence_route_descriptions(counts)
+    )
+
+
+def route_needs_discarded_tile(route, tile):
+    tile = base_tile(tile)
+    if not tile:
+        return False
+    return bool(re.search(rf"\bneeds(?:\s+another)?\s+[^;,.。]*\b{re.escape(tile)}\b", route, re.I))
+
+
+def route_terms_for_text(route):
+    route_lower = route.lower()
+    if route_lower.startswith("ittsu:"):
+        return ["ittsu", "一気通貫", "イッツー"]
+    if "sanshoku" in route_lower:
+        return ["sanshoku", "三色"]
+    if "iipeikou" in route_lower or "ryanpeikou" in route_lower:
+        return ["iipeikou", "ryanpeikou", "一盃口", "二盃口"]
+    return []
+
+
+def sequence_routes_requiring_discarded_tile(case, tile):
+    if not tile:
+        return []
+    counts = Counter(base_tile(item) for item in case.get("hand", "").split())
+    discarded = base_tile(tile)
+    counts[discarded] -= 1
+    if counts[discarded] <= 0:
+        del counts[discarded]
+    return [
+        route
+        for route in detect_sequence_route_descriptions(counts)
+        if route_needs_discarded_tile(route, tile)
+    ]
+
+
+def text_claims_discard_preserves_route(text, tile, route):
+    tile = base_tile(tile)
+    terms = route_terms_for_text(route)
+    if not tile or not terms:
+        return False
+    term_re = "|".join(re.escape(term) for term in terms)
+    tile_re = re.escape(f"[[{tile}]]")
+    preserve_en = r"(?:preserv\w*|keep\w*|maintain\w*|retain\w*|kept|left[^.。]{0,40}(?:alive|intact))"
+    preserve_ja = r"(?:温存|維持|残)"
+    discard_tile_en = (
+        rf"(?:discarding|discards?|cutting|cuts?|cut)"
+        rf"(?:\s+(?:the|a|an|relatively|non-safe|safe|safer|terminal|outside|outer|"
+        rf"genbutsu|suji|dangerous|central|middle|live|lone|single|floating|moderately|"
+        rf"absolute|double-genbutsu|high-danger|low-danger))*\s+{tile_re}"
+    )
+    patterns = [
+        rf"{discard_tile_en}[^.。]{{0,220}}{preserve_en}[^.。]{{0,160}}(?:{term_re})",
+        rf"{discard_tile_en}[^.。]{{0,220}}(?:{term_re})[^.。]{{0,160}}{preserve_en}",
+        rf"{tile_re}\s+(?:discard|cut|line)[^.。]{{0,160}}{preserve_en}[^.。]{{0,160}}(?:{term_re})",
+        rf"{tile_re}\s+(?:discard|cut|line)[^.。]{{0,160}}(?:{term_re})[^.。]{{0,160}}{preserve_en}",
+        rf"{tile_re}(?:を|の)?(?:切|打)[^。]{{0,220}}(?:{term_re})[^。]{{0,160}}{preserve_ja}",
+        rf"(?:切|打)\s*{tile_re}[^。]{{0,220}}(?:{term_re})[^。]{{0,160}}{preserve_ja}",
+    ]
+    return any(re.search(pattern, text, re.I) for pattern in patterns)
+
+
+def cached_guide_has_discarded_route_claim(case, text):
+    if case.get("kind") == "call":
+        return False
+    for tile in (case.get("actual"), case.get("naga")):
+        for route in sequence_routes_requiring_discarded_tile(case, tile):
+            if text_claims_discard_preserves_route(text, tile, route):
+                return True
+    return False
+
+
 def load_llm_cache():
     global LLM_CACHE
     if LLM_CACHE is not None:
@@ -1729,6 +1883,8 @@ def cached_guide_conflicts(case, cached_entry):
         for section in ("guide", "guide_ja")
         for field in ("read", "whyNot", "prompt", "answer")
     )
+    if cached_guide_has_discarded_route_claim(case, text):
+        return True
     if cached_guide_has_false_suji_claim(case, text):
         return True
     if case_has_naga_split(case) and any(pattern.search(text) for pattern in FALSE_AGREEMENT_PATTERNS):
