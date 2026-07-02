@@ -37,7 +37,8 @@ Strict Mahjong Rules & Constraints:
 9. The "Teaching Fit for This Point" section is authoritative. It explains why this exact example belongs under the playbook point. Do not move the example to a different lesson, and do not invent a current riichi/open-hand threat when the teaching fit says the example is pre-threat or has no opponent riichi.
 10. For call examples, "Post-Call Shape Facts" is authoritative. If the post-call shanten is 0, the hand is tenpai after the call and discard; NEVER describe LuckyJ's resulting hand as 1-shanten, one-away, or still trying to reach tenpai. If the post-call shanten is 1, describe it as 1-shanten, not tenpai.
 11. Do not describe a triplet or duplicated number tiles as a defensive reserve merely because there are multiple copies. Only call a tile a defensive reserve when the supplied safety facts show target-specific safety; otherwise describe the real next discard or shape plan.
-12. Mortal "Reach" outputs record the riichi declaration action only. If the Mortal section says reach support is declaration-only, you may cite Mortal as support for declaring riichi now, but you must NOT say Mortal endorsed LuckyJ's declaration discard tile, wait choice, or full discard line.
+12. Suji facts must come from the supplied safety facts. For middle tiles, use nakasuji correctly: [[4x]] needs both [[1x]] and [[7x]] visible, [[5x]] needs both [[2x]] and [[8x]], and [[6x]] needs both [[3x]] and [[9x]]. A lone outer discard such as [[9p]] does NOT by itself make [[6p]] suji.
+13. Mortal "Reach" outputs record the riichi declaration action only. If the Mortal section says reach support is declaration-only, you may cite Mortal as support for declaring riichi now, but you must NOT say Mortal endorsed LuckyJ's declaration discard tile, wait choice, or full discard line.
     Banned Mortal-Reach wording: "Mortal backs LuckyJ's line", "LuckyJ and Mortal both discard", "backed by Mortal" attached to LuckyJ's discard, or any wording that puts Mortal in the same clause as LuckyJ's declaration discard/wait. Use this framing instead: "Mortal supports declaring riichi; the discard/wait comparison remains LuckyJ versus Nishiki."
 
 Style Guidelines for English (professional-commentator voice):
@@ -174,9 +175,51 @@ def cache_entry_text(entry):
     )
 
 
+def middle_suji_tile(tile):
+    tile = base_tile(tile)
+    if len(tile) != 2 or tile[1] not in {"m", "p", "s"}:
+        return False
+    try:
+        return 4 <= int(tile[0]) <= 6
+    except ValueError:
+        return False
+
+
+def iter_safety_reads(value):
+    if isinstance(value, dict):
+        if "tile" in value and "against" in value and "has_suji" in value:
+            yield value
+        for item in value.values():
+            yield from iter_safety_reads(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from iter_safety_reads(item)
+
+
+def text_claims_suji_for_tile(text, tile):
+    tokens = {f"[[{tile}]]", f"[[{base_tile(tile)}]]"}
+    for token in tokens:
+        for match in re.finditer(re.escape(token), text):
+            window = text[max(0, match.start() - 80): match.end() + 80].lower()
+            if "suji" in window or "筋" in window or "スジ" in window:
+                return True
+    return False
+
+
+def cached_guide_has_false_suji_claim(case, entry):
+    text = cache_entry_text(entry)
+    for read in iter_safety_reads(case):
+        tile = read.get("tile")
+        if tile and middle_suji_tile(tile) and not read.get("has_suji") and text_claims_suji_for_tile(text, tile):
+            return True
+    return False
+
+
 def cached_guide_conflicts(case, entry):
     if not entry:
         return False
+    if cached_guide_has_false_suji_claim(case, entry):
+        return True
     shape = case.get("post_call_eval") or {}
     if case.get("kind") == "call" and shape.get("shanten") is not None and shape.get("shanten") <= 0:
         text = cache_entry_text(entry)

@@ -188,27 +188,27 @@
       },
       "keep_defensive_exit": {
         "label": "Keep genbutsu/suji tiles while cutting elsewhere",
-        "n": 8590,
-        "share_of_mismatches": 0.23725349389603934,
-        "bad_rate": 0.3509895227008149,
-        "bad_lift_vs_other_mismatches": 0.053517042978914575,
+        "n": 8549,
+        "share_of_mismatches": 0.23612108490305475,
+        "bad_rate": 0.35384255468475845,
+        "bad_lift_vs_other_mismatches": 0.05717263386905175,
         "bad_rate_p_value": 0.0,
-        "big_gap_rate": 0.5958090803259605,
-        "big_gap_lift_vs_other_mismatches": 0.04504140941054913,
-        "big_gap_p_value": 2.020605904817785e-13,
-        "avg_prob_gap": 0.568721210710128,
-        "avg_danger_delta": 0.03558642607683353,
-        "avg_left": 51.92258440046566,
+        "big_gap_rate": 0.5996022926658089,
+        "big_gap_lift_vs_other_mismatches": 0.049940362593856036,
+        "big_gap_p_value": 4.440892098500626e-16,
+        "avg_prob_gap": 0.5705329980114633,
+        "avg_danger_delta": 0.04523892852965259,
+        "avg_left": 51.233477599719265,
         "stage_counts": {
-          "early": 5768,
-          "middle": 2626,
-          "late": 196
+          "early": 5554,
+          "middle": 2731,
+          "late": 264
         },
         "score_band_counts": {
-          "above_start": 3408,
-          "behind": 2823,
-          "danger": 708,
-          "lead": 1651
+          "above_start": 3392,
+          "behind": 2838,
+          "danger": 684,
+          "lead": 1635
         }
       },
       "keep_dora_or_red": {
@@ -333,26 +333,26 @@
       },
       "multi_threat_safe_tenpai": {
         "label": "Middle/late choices preserving tiles with multiple threats",
-        "n": 4386,
-        "share_of_mismatches": 0.12114014251781473,
-        "bad_rate": 0.23483812129502965,
-        "bad_lift_vs_other_mismatches": -0.08571498995575602,
+        "n": 4185,
+        "share_of_mismatches": 0.11558857647903663,
+        "bad_rate": 0.23560334528076463,
+        "bad_lift_vs_other_mismatches": -0.08431171046390293,
         "bad_rate_p_value": 0.0,
-        "big_gap_rate": 0.4883720930232558,
-        "big_gap_lift_vs_other_mismatches": -0.08315524827152732,
+        "big_gap_rate": 0.48960573476702507,
+        "big_gap_lift_vs_other_mismatches": -0.081238398770341,
         "big_gap_p_value": 0.0,
-        "avg_prob_gap": 0.5025124259005928,
-        "avg_danger_delta": -0.0012205198358413135,
-        "avg_left": 26.468080255357957,
+        "avg_prob_gap": 0.5032158183990442,
+        "avg_danger_delta": 0.002976415770609319,
+        "avg_left": 26.247311827956988,
         "stage_counts": {
-          "middle": 2520,
-          "late": 1866
+          "middle": 2379,
+          "late": 1806
         },
         "score_band_counts": {
-          "above_start": 1818,
-          "behind": 1381,
-          "lead": 869,
-          "danger": 318
+          "above_start": 1744,
+          "behind": 1321,
+          "lead": 825,
+          "danger": 295
         }
       },
       "riskier_than_naga": {
@@ -407,77 +407,77 @@
       },
       "spend_defensive_exit": {
         "label": "Spend a safe-looking tile while NAGA keeps it",
-        "n": 4057,
-        "share_of_mismatches": 0.11205325084240181,
-        "bad_rate": 0.23933941335962533,
-        "bad_lift_vs_other_mismatches": -0.07976849046319962,
+        "n": 4357,
+        "share_of_mismatches": 0.12033917030326466,
+        "bad_rate": 0.22607298599954098,
+        "bad_lift_vs_other_mismatches": -0.0956011638952752,
         "bad_rate_p_value": 0.0,
-        "big_gap_rate": 0.5122011338427409,
-        "big_gap_lift_vs_other_mismatches": -0.05546815602630639,
-        "big_gap_p_value": 1.9560575381660783e-11,
-        "avg_prob_gap": 0.5120419275326596,
-        "avg_danger_delta": -0.03510401774710377,
-        "avg_left": 50.177964012817355,
+        "big_gap_rate": 0.4952949277025476,
+        "big_gap_lift_vs_other_mismatches": -0.07520964072974229,
+        "big_gap_p_value": 0.0,
+        "avg_prob_gap": 0.5037968785861832,
+        "avg_danger_delta": -0.050362956162497134,
+        "avg_left": 48.36791370208859,
         "stage_counts": {
-          "middle": 1512,
-          "early": 2327,
-          "late": 218
+          "middle": 1856,
+          "early": 2207,
+          "late": 294
         },
         "score_band_counts": {
-          "behind": 1349,
-          "above_start": 1600,
-          "danger": 365,
-          "lead": 743
+          "behind": 1417,
+          "above_start": 1700,
+          "danger": 429,
+          "lead": 811
         }
       },
       "spend_off_target_safety_for_shape": {
         "label": "Spend a safe-looking tile after its target changes",
-        "n": 2992,
-        "share_of_mismatches": 0.08263823675633873,
-        "bad_rate": 0.22092245989304812,
-        "bad_lift_vs_other_mismatches": -0.09728672900320043,
+        "n": 2691,
+        "share_of_mismatches": 0.07432469756393968,
+        "bad_rate": 0.20995912300260125,
+        "bad_lift_vs_other_mismatches": -0.10825660129994982,
         "bad_rate_p_value": 0.0,
-        "big_gap_rate": 0.45955882352941174,
-        "big_gap_lift_vs_other_mismatches": -0.11107404212964772,
+        "big_gap_rate": 0.452991452991453,
+        "big_gap_lift_vs_other_mismatches": -0.11717116076358208,
         "big_gap_p_value": 0.0,
-        "avg_prob_gap": 0.4785072526737968,
-        "avg_danger_delta": -0.025750300802139036,
-        "avg_left": 41.07252673796791,
+        "avg_prob_gap": 0.4751145299145299,
+        "avg_danger_delta": -0.03497201783723523,
+        "avg_left": 39.92456335934597,
         "stage_counts": {
-          "early": 860,
-          "middle": 1775,
-          "late": 357
+          "early": 705,
+          "middle": 1608,
+          "late": 378
         },
         "score_band_counts": {
-          "above_start": 1147,
-          "behind": 946,
-          "danger": 260,
-          "lead": 639
+          "above_start": 1030,
+          "behind": 854,
+          "danger": 233,
+          "lead": 574
         }
       },
       "threat_keep_exit": {
         "label": "Keep a defensive tile against an active riichi/open threat",
-        "n": 8406,
-        "share_of_mismatches": 0.2321714632933768,
-        "bad_rate": 0.24351653580775637,
-        "bad_lift_vs_other_mismatches": -0.08680720519943788,
+        "n": 7620,
+        "share_of_mismatches": 0.21046235430591614,
+        "bad_rate": 0.24251968503937008,
+        "bad_lift_vs_other_mismatches": -0.08568293162613053,
         "bad_rate_p_value": 0.0,
-        "big_gap_rate": 0.49262431596478706,
-        "big_gap_lift_vs_other_mismatches": -0.08964187108557264,
+        "big_gap_rate": 0.4916010498687664,
+        "big_gap_lift_vs_other_mismatches": -0.08847311230852317,
         "big_gap_p_value": 0.0,
-        "avg_prob_gap": 0.5031723173923388,
-        "avg_danger_delta": 0.012218581965262907,
-        "avg_left": 32.94028075184392,
+        "avg_prob_gap": 0.5026637926509187,
+        "avg_danger_delta": 0.017629383202099738,
+        "avg_left": 32.630839895013125,
         "stage_counts": {
-          "middle": 4562,
-          "late": 2527,
-          "early": 1317
+          "middle": 4080,
+          "late": 2364,
+          "early": 1176
         },
         "score_band_counts": {
-          "behind": 2669,
-          "above_start": 3444,
-          "lead": 1689,
-          "danger": 604
+          "behind": 2415,
+          "above_start": 3140,
+          "lead": 1535,
+          "danger": 530
         }
       }
     }
@@ -612,14 +612,14 @@
         {
           "pattern": "keep_defensive_exit",
           "label": "Keep genbutsu/suji tiles while cutting elsewhere",
-          "n": 2610,
-          "share": 0.30905861456483125
+          "n": 2609,
+          "share": 0.3089402013025459
         },
         {
           "pattern": "threat_keep_exit",
           "label": "Keep a defensive tile against an active riichi/open threat",
-          "n": 1581,
-          "share": 0.1872113676731794
+          "n": 1455,
+          "share": 0.17229129662522202
         },
         {
           "pattern": "leader_low_risk",
@@ -646,16 +646,16 @@
           "share": 0.09425695677915927
         },
         {
-          "pattern": "multi_threat_safe_tenpai",
-          "label": "Middle/late choices preserving tiles with multiple threats",
-          "n": 637,
-          "share": 0.0754292480757845
-        },
-        {
           "pattern": "spend_defensive_exit",
           "label": "Spend a safe-looking tile while NAGA keeps it",
-          "n": 617,
-          "share": 0.07306098283007696
+          "n": 661,
+          "share": 0.07827116637063351
+        },
+        {
+          "pattern": "multi_threat_safe_tenpai",
+          "label": "Middle/late choices preserving tiles with multiple threats",
+          "n": 605,
+          "share": 0.07164002368265246
         },
         {
           "pattern": "safer_than_naga",
@@ -670,10 +670,10 @@
           "share": 0.06299585553582002
         },
         {
-          "pattern": "spend_off_target_safety_for_shape",
-          "label": "Spend a safe-looking tile after its target changes",
-          "n": 483,
-          "share": 0.05719360568383659
+          "pattern": "keep_pair_anchor",
+          "label": "Keep a pair or triplet anchor that NAGA wants to break",
+          "n": 446,
+          "share": 0.05281231497927768
         }
       ]
     },
@@ -702,20 +702,20 @@
         {
           "pattern": "keep_defensive_exit",
           "label": "Keep genbutsu/suji tiles while cutting elsewhere",
-          "n": 1373,
-          "share": 0.2232157372784913
-        },
-        {
-          "pattern": "threat_keep_exit",
-          "label": "Keep a defensive tile against an active riichi/open threat",
-          "n": 1361,
-          "share": 0.2212648349861811
+          "n": 1355,
+          "share": 0.220289383840026
         },
         {
           "pattern": "cut_inside_keep_outside",
           "label": "Cut a middle tile while keeping outside/safety/yaku material",
           "n": 1311,
           "share": 0.21313607543488863
+        },
+        {
+          "pattern": "threat_keep_exit",
+          "label": "Keep a defensive tile against an active riichi/open threat",
+          "n": 1241,
+          "share": 0.2017558120630792
         },
         {
           "pattern": "cut_outside_keep_inside",
@@ -738,14 +738,14 @@
         {
           "pattern": "spend_defensive_exit",
           "label": "Spend a safe-looking tile while NAGA keeps it",
-          "n": 772,
-          "share": 0.1255080474719558
+          "n": 810,
+          "share": 0.13168590473093805
         },
         {
           "pattern": "spend_off_target_safety_for_shape",
           "label": "Spend a safe-looking tile after its target changes",
-          "n": 655,
-          "share": 0.10648675012193139
+          "n": 582,
+          "share": 0.09461876117704439
         },
         {
           "pattern": "break_pair_anchor",
@@ -754,16 +754,16 @@
           "share": 0.08925377987319136
         },
         {
-          "pattern": "multi_threat_safe_tenpai",
-          "label": "Middle/late choices preserving tiles with multiple threats",
-          "n": 538,
-          "share": 0.08746545277190701
-        },
-        {
           "pattern": "keep_pair_anchor",
           "label": "Keep a pair or triplet anchor that NAGA wants to break",
           "n": 528,
           "share": 0.08583970086164851
+        },
+        {
+          "pattern": "multi_threat_safe_tenpai",
+          "label": "Middle/late choices preserving tiles with multiple threats",
+          "n": 517,
+          "share": 0.08405137376036417
         },
         {
           "pattern": "honor_cleanup_vs_shape",
@@ -804,14 +804,14 @@
         {
           "pattern": "keep_defensive_exit",
           "label": "Keep genbutsu/suji tiles while cutting elsewhere",
-          "n": 1794,
-          "share": 0.34275888421857087
+          "n": 1802,
+          "share": 0.3442873519296905
         },
         {
           "pattern": "threat_keep_exit",
           "label": "Keep a defensive tile against an active riichi/open threat",
-          "n": 920,
-          "share": 0.1757737867787543
+          "n": 845,
+          "share": 0.16144440198700802
         },
         {
           "pattern": "leader_low_risk",
@@ -840,8 +840,8 @@
         {
           "pattern": "multi_threat_safe_tenpai",
           "label": "Middle/late choices preserving tiles with multiple threats",
-          "n": 390,
-          "share": 0.07451280091708062
+          "n": 371,
+          "share": 0.07088269010317157
         },
         {
           "pattern": "safer_than_naga",
@@ -852,8 +852,8 @@
         {
           "pattern": "spend_defensive_exit",
           "label": "Spend a safe-looking tile while NAGA keeps it",
-          "n": 321,
-          "share": 0.061329766908674054
+          "n": 350,
+          "share": 0.06687046236148261
         },
         {
           "pattern": "behind_risk_buy",
@@ -862,10 +862,10 @@
           "share": 0.059801299197554454
         },
         {
-          "pattern": "spend_off_target_safety_for_shape",
-          "label": "Spend a safe-looking tile after its target changes",
-          "n": 217,
-          "share": 0.04145968666411922
+          "pattern": "keep_pair_anchor",
+          "label": "Keep a pair or triplet anchor that NAGA wants to break",
+          "n": 208,
+          "share": 0.039740160489109666
         }
       ]
     },
@@ -895,23 +895,23 @@
       {
         "pattern": "keep_defensive_exit",
         "label": "Keep genbutsu/suji tiles while cutting elsewhere",
-        "n": 8587,
-        "model_matches_luckyj": 2610,
-        "model_match_rate": 0.30394782811226273,
-        "model_match_lift_vs_nishiki_mismatches": 0.07061541576733416,
-        "avg_prob_gap": 0.5687747408873879,
-        "avg_danger_delta": 0.03559580761616397,
-        "safer_than_nishiki_rate": 0.035169442180039596,
+        "n": 8547,
+        "model_matches_luckyj": 2609,
+        "model_match_rate": 0.30525330525330524,
+        "model_match_lift_vs_nishiki_mismatches": 0.07192089290837667,
+        "avg_prob_gap": 0.5705727623727623,
+        "avg_danger_delta": 0.04524626184626185,
+        "safer_than_nishiki_rate": 0.023517023517023516,
         "stage_counts": {
-          "early": 5765,
-          "middle": 2626,
-          "late": 196
+          "early": 5552,
+          "middle": 2731,
+          "late": 264
         },
         "score_band_counts": {
-          "above_start": 3406,
-          "behind": 2822,
-          "danger": 708,
-          "lead": 1651
+          "above_start": 3391,
+          "behind": 2837,
+          "danger": 684,
+          "lead": 1635
         }
       },
       {
@@ -1041,6 +1041,28 @@
         }
       },
       {
+        "pattern": "threat_keep_exit",
+        "label": "Keep a defensive tile against an active riichi/open threat",
+        "n": 7618,
+        "model_matches_luckyj": 1455,
+        "model_match_rate": 0.19099501181412445,
+        "model_match_lift_vs_nishiki_mismatches": -0.04233740053080412,
+        "avg_prob_gap": 0.5026437647676556,
+        "avg_danger_delta": 0.01763099238645314,
+        "safer_than_nishiki_rate": 0.14478865844053557,
+        "stage_counts": {
+          "middle": 4079,
+          "early": 1176,
+          "late": 2363
+        },
+        "score_band_counts": {
+          "above_start": 3140,
+          "behind": 2413,
+          "lead": 1535,
+          "danger": 530
+        }
+      },
+      {
         "pattern": "keep_pair_anchor",
         "label": "Keep a pair or triplet anchor that NAGA wants to break",
         "n": 2338,
@@ -1085,28 +1107,6 @@
         }
       },
       {
-        "pattern": "threat_keep_exit",
-        "label": "Keep a defensive tile against an active riichi/open threat",
-        "n": 8404,
-        "model_matches_luckyj": 1581,
-        "model_match_rate": 0.1881247025226083,
-        "model_match_lift_vs_nishiki_mismatches": -0.04520770982232028,
-        "avg_prob_gap": 0.5031542836744407,
-        "avg_danger_delta": 0.012218752974773917,
-        "safer_than_nishiki_rate": 0.16753926701570682,
-        "stage_counts": {
-          "middle": 4561,
-          "early": 1317,
-          "late": 2526
-        },
-        "score_band_counts": {
-          "above_start": 3444,
-          "behind": 2667,
-          "lead": 1689,
-          "danger": 604
-        }
-      },
-      {
         "pattern": "late_named_exit_over_shape",
         "label": "Late keep of a named tile over NAGA's shape-cleaning discard",
         "n": 930,
@@ -1129,23 +1129,23 @@
       {
         "pattern": "spend_off_target_safety_for_shape",
         "label": "Spend a safe-looking tile after its target changes",
-        "n": 2992,
-        "model_matches_luckyj": 483,
-        "model_match_rate": 0.16143048128342247,
-        "model_match_lift_vs_nishiki_mismatches": -0.07190193106150611,
-        "avg_prob_gap": 0.4785072526737968,
-        "avg_danger_delta": -0.025750300802139036,
-        "safer_than_nishiki_rate": 0.3038101604278075,
+        "n": 2691,
+        "model_matches_luckyj": 423,
+        "model_match_rate": 0.15719063545150502,
+        "model_match_lift_vs_nishiki_mismatches": -0.07614177689342355,
+        "avg_prob_gap": 0.4751145299145299,
+        "avg_danger_delta": -0.03497201783723523,
+        "safer_than_nishiki_rate": 0.33704942400594573,
         "stage_counts": {
-          "early": 860,
-          "middle": 1775,
-          "late": 357
+          "early": 705,
+          "middle": 1608,
+          "late": 378
         },
         "score_band_counts": {
-          "above_start": 1147,
-          "behind": 946,
-          "danger": 260,
-          "lead": 639
+          "above_start": 1030,
+          "behind": 854,
+          "danger": 233,
+          "lead": 574
         }
       },
       {
@@ -1172,23 +1172,23 @@
       {
         "pattern": "spend_defensive_exit",
         "label": "Spend a safe-looking tile while NAGA keeps it",
-        "n": 4054,
-        "model_matches_luckyj": 617,
-        "model_match_rate": 0.15219536260483474,
-        "model_match_lift_vs_nishiki_mismatches": -0.08113704974009384,
-        "avg_prob_gap": 0.5121598174642329,
-        "avg_danger_delta": -0.03505,
-        "safer_than_nishiki_rate": 0.2372964972866305,
+        "n": 4353,
+        "model_matches_luckyj": 661,
+        "model_match_rate": 0.1518492993337928,
+        "model_match_lift_vs_nishiki_mismatches": -0.08148311301113578,
+        "avg_prob_gap": 0.5039784056972203,
+        "avg_danger_delta": -0.05030296347346658,
+        "safer_than_nishiki_rate": 0.3053066850447967,
         "stage_counts": {
-          "early": 2326,
-          "middle": 1510,
-          "late": 218
+          "early": 2206,
+          "middle": 1853,
+          "late": 294
         },
         "score_band_counts": {
-          "above_start": 1600,
-          "behind": 1346,
-          "danger": 365,
-          "lead": 743
+          "above_start": 1700,
+          "behind": 1413,
+          "danger": 429,
+          "lead": 811
         }
       },
       {
@@ -1260,22 +1260,22 @@
       {
         "pattern": "multi_threat_safe_tenpai",
         "label": "Middle/late choices preserving tiles with multiple threats",
-        "n": 4386,
-        "model_matches_luckyj": 637,
-        "model_match_rate": 0.14523483812129503,
-        "model_match_lift_vs_nishiki_mismatches": -0.08809757422363354,
-        "avg_prob_gap": 0.5025124259005928,
-        "avg_danger_delta": -0.0012205198358413135,
-        "safer_than_nishiki_rate": 0.20861833105335156,
+        "n": 4185,
+        "model_matches_luckyj": 605,
+        "model_match_rate": 0.14456391875746716,
+        "model_match_lift_vs_nishiki_mismatches": -0.08876849358746142,
+        "avg_prob_gap": 0.5032158183990442,
+        "avg_danger_delta": 0.002976415770609319,
+        "safer_than_nishiki_rate": 0.191636798088411,
         "stage_counts": {
-          "middle": 2520,
-          "late": 1866
+          "middle": 2379,
+          "late": 1806
         },
         "score_band_counts": {
-          "above_start": 1818,
-          "behind": 1381,
-          "lead": 869,
-          "danger": 318
+          "above_start": 1744,
+          "behind": 1321,
+          "lead": 825,
+          "danger": 295
         }
       }
     ],
@@ -2885,11 +2885,9 @@
         "actual_danger": 0.0504,
         "nishiki_danger": 0.0159,
         "actual_safety_kind": null,
-        "nishiki_safety_kind": "suji",
+        "nishiki_safety_kind": null,
         "nishiki_safety_vs_threat": false,
-        "patterns": [
-          "keep_defensive_exit"
-        ],
+        "patterns": [],
         "report": "https://naga.dmv.nico/htmls/78bed36653cdbbcfb8b97216c6547214391b8ed676f3969b38204a4198106befv2_2.html?tw=2",
         "paifu": "https://tenhou.net/4/?log=2023051614gm-0029-0000-3b0b2e99&tw=2"
       },
@@ -3308,27 +3306,27 @@
           },
           "keep_defensive_exit": {
             "label": "Keep genbutsu/suji tiles while cutting elsewhere",
-            "n": 8587,
-            "share_of_mismatches": 0.23725582294918907,
-            "bad_rate": 0.3509956911610574,
-            "bad_lift_vs_other_mismatches": 0.05356035101761031,
+            "n": 8547,
+            "share_of_mismatches": 0.2361506368634819,
+            "bad_rate": 0.3538083538083538,
+            "bad_lift_vs_other_mismatches": 0.057165078108433354,
             "bad_rate_p_value": 0.0,
-            "big_gap_rate": 0.5959007802492139,
-            "big_gap_lift_vs_other_mismatches": 0.04511471924798227,
-            "big_gap_p_value": 1.865174681370263e-13,
-            "avg_prob_gap": 0.5687747408873879,
-            "avg_danger_delta": 0.03559580761616397,
-            "avg_left": 51.921159892861304,
+            "big_gap_rate": 0.5996255996255996,
+            "big_gap_lift_vs_other_mismatches": 0.049925823889507615,
+            "big_gap_p_value": 4.440892098500626e-16,
+            "avg_prob_gap": 0.5705727623727623,
+            "avg_danger_delta": 0.04524626184626185,
+            "avg_left": 51.232479232479236,
             "stage_counts": {
-              "early": 5765,
-              "middle": 2626,
-              "late": 196
+              "early": 5552,
+              "middle": 2731,
+              "late": 264
             },
             "score_band_counts": {
-              "above_start": 3406,
-              "behind": 2822,
-              "danger": 708,
-              "lead": 1651
+              "above_start": 3391,
+              "behind": 2837,
+              "danger": 684,
+              "lead": 1635
             }
           },
           "keep_dora_or_red": {
@@ -3453,26 +3451,26 @@
           },
           "multi_threat_safe_tenpai": {
             "label": "Middle/late choices preserving tiles with multiple threats",
-            "n": 4386,
-            "share_of_mismatches": 0.12118365429779239,
-            "bad_rate": 0.23483812129502965,
-            "bad_lift_vs_other_mismatches": -0.08568880673967968,
+            "n": 4185,
+            "share_of_mismatches": 0.1156300942171138,
+            "bad_rate": 0.23560334528076463,
+            "bad_lift_vs_other_mismatches": -0.08428543252478396,
             "bad_rate_p_value": 0.0,
-            "big_gap_rate": 0.4883720930232558,
-            "big_gap_lift_vs_other_mismatches": -0.08320020238341574,
+            "big_gap_rate": 0.48960573476702507,
+            "big_gap_lift_vs_other_mismatches": -0.08128279310100794,
             "big_gap_p_value": 0.0,
-            "avg_prob_gap": 0.5025124259005928,
-            "avg_danger_delta": -0.0012205198358413135,
-            "avg_left": 26.468080255357957,
+            "avg_prob_gap": 0.5032158183990442,
+            "avg_danger_delta": 0.002976415770609319,
+            "avg_left": 26.247311827956988,
             "stage_counts": {
-              "middle": 2520,
-              "late": 1866
+              "middle": 2379,
+              "late": 1806
             },
             "score_band_counts": {
-              "above_start": 1818,
-              "behind": 1381,
-              "lead": 869,
-              "danger": 318
+              "above_start": 1744,
+              "behind": 1321,
+              "lead": 825,
+              "danger": 295
             }
           },
           "riskier_than_naga": {
@@ -3527,77 +3525,77 @@
           },
           "spend_defensive_exit": {
             "label": "Spend a safe-looking tile while NAGA keeps it",
-            "n": 4054,
-            "share_of_mismatches": 0.11201060978642279,
-            "bad_rate": 0.23902318697582633,
-            "bad_lift_vs_other_mismatches": -0.08009066224163533,
+            "n": 4353,
+            "share_of_mismatches": 0.12027187577708397,
+            "bad_rate": 0.22582127268550425,
+            "bad_lift_vs_other_mismatches": -0.09584958158585252,
             "bad_rate_p_value": 0.0,
-            "big_gap_rate": 0.5123334977799704,
-            "big_gap_lift_vs_other_mismatches": -0.055356847283659416,
-            "big_gap_p_value": 2.178257574314557e-11,
-            "avg_prob_gap": 0.5121598174642329,
-            "avg_danger_delta": -0.03505,
-            "avg_left": 50.17760236803157,
+            "big_gap_rate": 0.49552033080634045,
+            "big_gap_lift_vs_other_mismatches": -0.07498846316350877,
+            "big_gap_p_value": 0.0,
+            "avg_prob_gap": 0.5039784056972203,
+            "avg_danger_delta": -0.05030296347346658,
+            "avg_left": 48.36664369400413,
             "stage_counts": {
-              "early": 2326,
-              "middle": 1510,
-              "late": 218
+              "early": 2206,
+              "middle": 1853,
+              "late": 294
             },
             "score_band_counts": {
-              "above_start": 1600,
-              "behind": 1346,
-              "danger": 365,
-              "lead": 743
+              "above_start": 1700,
+              "behind": 1413,
+              "danger": 429,
+              "lead": 811
             }
           },
           "spend_off_target_safety_for_shape": {
             "label": "Spend a safe-looking tile after its target changes",
-            "n": 2992,
-            "share_of_mismatches": 0.08266791921089714,
-            "bad_rate": 0.22092245989304812,
-            "bad_lift_vs_other_mismatches": -0.09726072736034788,
+            "n": 2691,
+            "share_of_mismatches": 0.0743513939159506,
+            "bad_rate": 0.20995912300260125,
+            "bad_lift_vs_other_mismatches": -0.10823083580582812,
             "bad_rate_p_value": 0.0,
-            "big_gap_rate": 0.45955882352941174,
-            "big_gap_lift_vs_other_mismatches": -0.11111675853136954,
+            "big_gap_rate": 0.452991452991453,
+            "big_gap_lift_vs_other_mismatches": -0.11721331090323989,
             "big_gap_p_value": 0.0,
-            "avg_prob_gap": 0.4785072526737968,
-            "avg_danger_delta": -0.025750300802139036,
-            "avg_left": 41.07252673796791,
+            "avg_prob_gap": 0.4751145299145299,
+            "avg_danger_delta": -0.03497201783723523,
+            "avg_left": 39.92456335934597,
             "stage_counts": {
-              "early": 860,
-              "middle": 1775,
-              "late": 357
+              "early": 705,
+              "middle": 1608,
+              "late": 378
             },
             "score_band_counts": {
-              "above_start": 1147,
-              "behind": 946,
-              "danger": 260,
-              "lead": 639
+              "above_start": 1030,
+              "behind": 854,
+              "danger": 233,
+              "lead": 574
             }
           },
           "threat_keep_exit": {
             "label": "Keep a defensive tile against an active riichi/open threat",
-            "n": 8404,
-            "share_of_mismatches": 0.23219959660707873,
-            "bad_rate": 0.24345549738219896,
-            "bad_lift_vs_other_mismatches": -0.08685505715376851,
+            "n": 7618,
+            "share_of_mismatches": 0.2104826900229326,
+            "bad_rate": 0.24245208716198477,
+            "bad_lift_vs_other_mismatches": -0.08573688921596798,
             "bad_rate_p_value": 0.0,
-            "big_gap_rate": 0.4926225606853879,
-            "big_gap_lift_vs_other_mismatches": -0.08969418335002177,
+            "big_gap_rate": 0.49159884484116567,
+            "big_gap_lift_vs_other_mismatches": -0.08852363984824818,
             "big_gap_p_value": 0.0,
-            "avg_prob_gap": 0.5031542836744407,
-            "avg_danger_delta": 0.012218752974773917,
-            "avg_left": 32.941456449309854,
+            "avg_prob_gap": 0.5026437647676556,
+            "avg_danger_delta": 0.01763099238645314,
+            "avg_left": 32.63205565765293,
             "stage_counts": {
-              "middle": 4561,
-              "early": 1317,
-              "late": 2526
+              "middle": 4079,
+              "early": 1176,
+              "late": 2363
             },
             "score_band_counts": {
-              "above_start": 3444,
-              "behind": 2667,
-              "lead": 1689,
-              "danger": 604
+              "above_start": 3140,
+              "behind": 2413,
+              "lead": 1535,
+              "danger": 530
             }
           }
         },
@@ -3785,27 +3783,27 @@
           },
           "keep_defensive_exit": {
             "label": "Keep genbutsu/suji tiles while cutting elsewhere",
-            "n": 6276,
-            "share_of_mismatches": 0.167297542250893,
-            "bad_rate": 0.27581261950286806,
-            "bad_lift_vs_other_mismatches": 0.007677655676758821,
-            "bad_rate_p_value": 0.21092480511998657,
-            "big_gap_rate": 0.5060548119821542,
-            "big_gap_lift_vs_other_mismatches": -0.011359875257745955,
-            "big_gap_p_value": 0.10033476375311912,
-            "avg_prob_gap": 0.5121692001274697,
-            "avg_danger_delta": 0.03336016571064372,
-            "avg_left": 51.39929891650733,
+            "n": 6104,
+            "share_of_mismatches": 0.16271258730074106,
+            "bad_rate": 0.28931847968545216,
+            "bad_lift_vs_other_mismatches": 0.0237661078293554,
+            "bad_rate_p_value": 0.00012834857402843625,
+            "big_gap_rate": 0.5137614678899083,
+            "big_gap_lift_vs_other_mismatches": -0.002093355414771736,
+            "big_gap_p_value": 0.7645954785630975,
+            "avg_prob_gap": 0.5172063073394495,
+            "avg_danger_delta": 0.044619216906946264,
+            "avg_left": 50.63319134993447,
             "stage_counts": {
-              "early": 4046,
-              "middle": 2050,
-              "late": 180
+              "early": 3821,
+              "middle": 2037,
+              "late": 246
             },
             "score_band_counts": {
-              "above_start": 2498,
-              "behind": 2097,
-              "danger": 579,
-              "lead": 1102
+              "above_start": 2410,
+              "behind": 2094,
+              "danger": 559,
+              "lead": 1041
             }
           },
           "keep_dora_or_red": {
@@ -3930,26 +3928,26 @@
           },
           "multi_threat_safe_tenpai": {
             "label": "Middle/late choices preserving tiles with multiple threats",
-            "n": 4705,
-            "share_of_mismatches": 0.12541984325851682,
-            "bad_rate": 0.23868225292242295,
-            "bad_lift_vs_other_mismatches": -0.035145050561377233,
-            "bad_rate_p_value": 3.7438856348437355e-07,
-            "big_gap_rate": 0.47927736450584485,
-            "big_gap_lift_vs_other_mismatches": -0.041433416072654994,
-            "big_gap_p_value": 1.047645952212406e-07,
-            "avg_prob_gap": 0.48978522848034006,
-            "avg_danger_delta": -0.009601764080765143,
-            "avg_left": 26.01912858660999,
+            "n": 4486,
+            "share_of_mismatches": 0.11958202271152103,
+            "bad_rate": 0.23874275523851984,
+            "bad_lift_vs_other_mismatches": -0.034843292963006145,
+            "bad_rate_p_value": 7.988232848532562e-07,
+            "big_gap_rate": 0.47815425769059294,
+            "big_gap_lift_vs_other_mismatches": -0.04243433380752981,
+            "big_gap_p_value": 9.492413655109999e-08,
+            "avg_prob_gap": 0.4897349086045475,
+            "avg_danger_delta": -0.006200490414623273,
+            "avg_left": 25.72180115916184,
             "stage_counts": {
-              "middle": 2635,
-              "late": 2070
+              "middle": 2476,
+              "late": 2010
             },
             "score_band_counts": {
-              "above_start": 1961,
-              "behind": 1463,
-              "lead": 940,
-              "danger": 341
+              "above_start": 1875,
+              "behind": 1400,
+              "lead": 894,
+              "danger": 317
             }
           },
           "riskier_than_naga": {
@@ -4004,77 +4002,77 @@
           },
           "spend_defensive_exit": {
             "label": "Spend a safe-looking tile while NAGA keeps it",
-            "n": 6396,
-            "share_of_mismatches": 0.17049634803006877,
-            "bad_rate": 0.2523452157598499,
-            "bad_lift_vs_other_mismatches": -0.02058363570875349,
-            "bad_rate_p_value": 0.0007264966396893779,
-            "big_gap_rate": 0.5193871169480926,
-            "big_gap_lift_vs_other_mismatches": 0.004668947399921075,
-            "big_gap_p_value": 0.49619447960579666,
-            "avg_prob_gap": 0.5165980456535335,
-            "avg_danger_delta": -0.039388383364602875,
-            "avg_left": 51.126485303314574,
+            "n": 6833,
+            "share_of_mismatches": 0.1821453324092339,
+            "bad_rate": 0.24001170788818968,
+            "bad_lift_vs_other_mismatches": -0.035957132762375804,
+            "bad_rate_p_value": 1.3721563885127352e-09,
+            "big_gap_rate": 0.510024879262403,
+            "big_gap_lift_vs_other_mismatches": -0.006711863347029556,
+            "big_gap_p_value": 0.3153871611837613,
+            "avg_prob_gap": 0.50991666910581,
+            "avg_danger_delta": -0.05191917166691058,
+            "avg_left": 49.45485145616859,
             "stage_counts": {
-              "early": 3882,
-              "middle": 2236,
-              "late": 278
+              "early": 3727,
+              "middle": 2727,
+              "late": 379
             },
             "score_band_counts": {
-              "above_start": 2568,
-              "behind": 2041,
-              "danger": 500,
-              "lead": 1287
+              "above_start": 2725,
+              "behind": 2147,
+              "danger": 562,
+              "lead": 1399
             }
           },
           "spend_off_target_safety_for_shape": {
             "label": "Spend a safe-looking tile after its target changes",
-            "n": 4361,
-            "share_of_mismatches": 0.11624993335821293,
-            "bad_rate": 0.2114193992203623,
-            "bad_lift_vs_other_mismatches": -0.06562943497262175,
+            "n": 4008,
+            "share_of_mismatches": 0.10684011302447087,
+            "bad_rate": 0.2030938123752495,
+            "bad_lift_vs_other_mismatches": -0.07425949747970181,
             "bad_rate_p_value": 0.0,
-            "big_gap_rate": 0.45975693648245813,
-            "big_gap_lift_vs_other_mismatches": -0.0630916745029731,
-            "big_gap_p_value": 4.6629367034256575e-15,
-            "avg_prob_gap": 0.47699853244668655,
-            "avg_danger_delta": -0.035249805090575556,
-            "avg_left": 42.01123595505618,
+            "big_gap_rate": 0.4563373253493014,
+            "big_gap_lift_vs_other_mismatches": -0.06625564307426457,
+            "big_gap_p_value": 2.220446049250313e-15,
+            "avg_prob_gap": 0.4747993013972056,
+            "avg_danger_delta": -0.043753992015968066,
+            "avg_left": 41.18812375249501,
             "stage_counts": {
-              "early": 1411,
-              "middle": 2446,
-              "late": 504
+              "early": 1220,
+              "middle": 2262,
+              "late": 526
             },
             "score_band_counts": {
-              "above_start": 1732,
-              "behind": 1296,
-              "danger": 350,
-              "lead": 983
+              "above_start": 1604,
+              "behind": 1188,
+              "danger": 314,
+              "lead": 902
             }
           },
           "threat_keep_exit": {
             "label": "Keep a defensive tile against an active riichi/open threat",
-            "n": 8509,
-            "share_of_mismatches": 0.22682198645838886,
-            "bad_rate": 0.2267011399694441,
-            "bad_lift_vs_other_mismatches": -0.055250247722333196,
+            "n": 7619,
+            "share_of_mismatches": 0.2030975102628352,
+            "bad_rate": 0.22719516996981232,
+            "bad_lift_vs_other_mismatches": -0.05298546224293227,
             "bad_rate_p_value": 0.0,
-            "big_gap_rate": 0.4631566576565989,
-            "big_gap_lift_vs_other_mismatches": -0.06771732958697979,
+            "big_gap_rate": 0.46305289408058803,
+            "big_gap_lift_vs_other_mismatches": -0.06583153475366521,
             "big_gap_p_value": 0.0,
-            "avg_prob_gap": 0.4808749324244917,
-            "avg_danger_delta": -0.0009829709719120932,
-            "avg_left": 31.301798096133506,
+            "avg_prob_gap": 0.4804642997768736,
+            "avg_danger_delta": 0.003948208426302664,
+            "avg_left": 30.7877674235464,
             "stage_counts": {
-              "late": 2836,
-              "early": 1047,
-              "middle": 4626
+              "late": 2643,
+              "early": 899,
+              "middle": 4077
             },
             "score_band_counts": {
-              "above_start": 3518,
-              "behind": 2646,
-              "lead": 1738,
-              "danger": 607
+              "above_start": 3179,
+              "behind": 2372,
+              "lead": 1544,
+              "danger": 524
             }
           }
         },
@@ -4262,27 +4260,27 @@
           },
           "keep_defensive_exit": {
             "label": "Keep genbutsu/suji tiles while cutting elsewhere",
-            "n": 8774,
-            "share_of_mismatches": 0.2283409238776838,
-            "bad_rate": 0.3700706633234557,
-            "bad_lift_vs_other_mismatches": 0.038176292138672685,
-            "bad_rate_p_value": 3.394773351317326e-11,
-            "big_gap_rate": 0.6086163665374972,
-            "big_gap_lift_vs_other_mismatches": 0.03527988547446392,
-            "big_gap_p_value": 3.995566100201131e-09,
-            "avg_prob_gap": 0.582578299521313,
-            "avg_danger_delta": 0.03097751310690677,
-            "avg_left": 52.58137679507636,
+            "n": 8671,
+            "share_of_mismatches": 0.22566037735849057,
+            "bad_rate": 0.3741206319916965,
+            "bad_lift_vs_other_mismatches": 0.04327435922164874,
+            "bad_rate_p_value": 7.30526750203353e-14,
+            "big_gap_rate": 0.6156152692884327,
+            "big_gap_lift_vs_other_mismatches": 0.04419630041029865,
+            "big_gap_p_value": 2.1227464230832993e-13,
+            "avg_prob_gap": 0.5867988005997001,
+            "avg_danger_delta": 0.039467039557144507,
+            "avg_left": 52.046246107715376,
             "stage_counts": {
-              "middle": 2470,
-              "early": 6129,
-              "late": 175
+              "middle": 2505,
+              "early": 5935,
+              "late": 231
             },
             "score_band_counts": {
-              "above_start": 3475,
-              "behind": 2945,
-              "danger": 734,
-              "lead": 1620
+              "above_start": 3438,
+              "behind": 2947,
+              "danger": 716,
+              "lead": 1570
             }
           },
           "keep_dora_or_red": {
@@ -4407,26 +4405,26 @@
           },
           "multi_threat_safe_tenpai": {
             "label": "Middle/late choices preserving tiles with multiple threats",
-            "n": 4875,
-            "share_of_mismatches": 0.12687052700065063,
-            "bad_rate": 0.2916923076923077,
-            "bad_lift_vs_other_mismatches": -0.0560275134701364,
-            "bad_rate_p_value": 1.2212453270876722e-14,
-            "big_gap_rate": 0.5476923076923077,
-            "big_gap_lift_vs_other_mismatches": -0.03859681302304252,
-            "big_gap_p_value": 3.319459493944521e-07,
-            "avg_prob_gap": 0.538453517948718,
-            "avg_danger_delta": -0.016636615384615385,
-            "avg_left": 26.279179487179487,
+            "n": 4646,
+            "share_of_mismatches": 0.12091086532205596,
+            "bad_rate": 0.2933706414119673,
+            "bad_lift_vs_other_mismatches": -0.05373850924376555,
+            "bad_rate_p_value": 4.269917752708352e-13,
+            "big_gap_rate": 0.5490744726646578,
+            "big_gap_lift_vs_other_mismatches": -0.03676288190474919,
+            "big_gap_p_value": 1.91288431228287e-06,
+            "avg_prob_gap": 0.5396414765389582,
+            "avg_danger_delta": -0.012303443822643135,
+            "avg_left": 26.033146792940162,
             "stage_counts": {
-              "middle": 2766,
-              "late": 2109
+              "middle": 2605,
+              "late": 2041
             },
             "score_band_counts": {
-              "above_start": 2048,
-              "behind": 1521,
-              "lead": 948,
-              "danger": 358
+              "above_start": 1956,
+              "behind": 1456,
+              "lead": 903,
+              "danger": 331
             }
           },
           "riskier_than_naga": {
@@ -4481,77 +4479,77 @@
           },
           "spend_defensive_exit": {
             "label": "Spend a safe-looking tile while NAGA keeps it",
-            "n": 4939,
-            "share_of_mismatches": 0.12853610930383866,
-            "bad_rate": 0.27596679489775255,
-            "bad_lift_vs_other_mismatches": -0.07417953491172008,
+            "n": 5358,
+            "share_of_mismatches": 0.13944046844502278,
+            "bad_rate": 0.2708100037327361,
+            "bad_lift_vs_other_mismatches": -0.08111185189371928,
             "bad_rate_p_value": 0.0,
-            "big_gap_rate": 0.512249443207127,
-            "big_gap_lift_vs_other_mismatches": -0.07934107223216114,
+            "big_gap_rate": 0.5121313923105636,
+            "big_gap_lift_vs_other_mismatches": -0.08048360148990208,
             "big_gap_p_value": 0.0,
-            "avg_prob_gap": 0.5219206722008504,
-            "avg_danger_delta": -0.05137588580684349,
-            "avg_left": 47.890261186474994,
+            "avg_prob_gap": 0.5194394736842105,
+            "avg_danger_delta": -0.06670123180291153,
+            "avg_left": 46.084359835759614,
             "stage_counts": {
-              "middle": 2217,
-              "early": 2404,
-              "late": 318
+              "middle": 2675,
+              "early": 2257,
+              "late": 426
             },
             "score_band_counts": {
-              "above_start": 1971,
-              "behind": 1570,
-              "lead": 973,
-              "danger": 425
+              "above_start": 2130,
+              "behind": 1663,
+              "danger": 490,
+              "lead": 1075
             }
           },
           "spend_off_target_safety_for_shape": {
             "label": "Spend a safe-looking tile after its target changes",
-            "n": 3281,
-            "share_of_mismatches": 0.08538711776187378,
-            "bad_rate": 0.22462663822005485,
-            "bad_lift_vs_other_mismatches": -0.12681315235586138,
+            "n": 2976,
+            "share_of_mismatches": 0.07744957709824334,
+            "bad_rate": 0.22513440860215053,
+            "bad_lift_vs_other_mismatches": -0.12517166491191192,
             "bad_rate_p_value": 0.0,
-            "big_gap_rate": 0.4678451691557452,
-            "big_gap_lift_vs_other_mismatches": -0.1241477741631713,
+            "big_gap_rate": 0.4734543010752688,
+            "big_gap_lift_vs_other_mismatches": -0.11699959043083857,
             "big_gap_p_value": 0.0,
-            "avg_prob_gap": 0.48165766534593113,
-            "avg_danger_delta": -0.040594574824748555,
-            "avg_left": 40.16245047241694,
+            "avg_prob_gap": 0.4835992943548387,
+            "avg_danger_delta": -0.05048884408602151,
+            "avg_left": 38.842405913978496,
             "stage_counts": {
-              "early": 843,
-              "middle": 2017,
-              "late": 421
+              "early": 672,
+              "middle": 1855,
+              "late": 449
             },
             "score_band_counts": {
-              "above_start": 1297,
-              "behind": 987,
-              "danger": 267,
-              "lead": 730
+              "above_start": 1176,
+              "behind": 894,
+              "danger": 235,
+              "lead": 671
             }
           },
           "threat_keep_exit": {
             "label": "Keep a defensive tile against an active riichi/open threat",
-            "n": 8592,
-            "share_of_mismatches": 0.22360442420299284,
-            "bad_rate": 0.2877094972067039,
-            "bad_lift_vs_other_mismatches": -0.06813805416258512,
+            "n": 7755,
+            "share_of_mismatches": 0.2018217306441119,
+            "bad_rate": 0.290006447453256,
+            "bad_lift_vs_other_mismatches": -0.06340079089040229,
             "bad_rate_p_value": 0.0,
-            "big_gap_rate": 0.5399208566108007,
-            "big_gap_lift_vs_other_mismatches": -0.053415381782924376,
-            "big_gap_p_value": 0.0,
-            "avg_prob_gap": 0.5343686801675978,
-            "avg_danger_delta": -0.001863221601489758,
-            "avg_left": 32.00465549348231,
+            "big_gap_rate": 0.542488716956802,
+            "big_gap_lift_vs_other_mismatches": -0.04874049725904406,
+            "big_gap_p_value": 7.549516567451064e-15,
+            "avg_prob_gap": 0.5364764152159897,
+            "avg_danger_delta": 0.003486589297227595,
+            "avg_left": 31.674145712443586,
             "stage_counts": {
-              "middle": 4550,
-              "late": 2792,
-              "early": 1250
+              "middle": 4052,
+              "late": 2590,
+              "early": 1113
             },
             "score_band_counts": {
-              "above_start": 3532,
-              "behind": 2706,
-              "lead": 1724,
-              "danger": 630
+              "above_start": 3219,
+              "behind": 2444,
+              "lead": 1552,
+              "danger": 540
             }
           }
         },
@@ -4583,18 +4581,19 @@
       "mortal_cross_check": null
     },
     {
-      "pattern": "multi_threat_safe_tenpai",
-      "title": "Against multiple threats, preserved tiles become the hand's main asset",
-      "why_candidate": "Middle/late choices preserving tiles with multiple threats",
+      "pattern": "spend_defensive_exit",
+      "title": "Safe-looking tiles can be spent when they are stale or off-target",
+      "why_candidate": "Spend a safe-looking tile while NAGA keeps it",
       "naga_evidence": {
-        "n": 4386,
-        "share_of_mismatches": 0.12114014251781473,
-        "bad_rate": 0.23483812129502965,
-        "avg_prob_gap": 0.5025124259005928,
-        "avg_danger_delta": -0.0012205198358413135,
+        "n": 4357,
+        "share_of_mismatches": 0.12033917030326466,
+        "bad_rate": 0.22607298599954098,
+        "avg_prob_gap": 0.5037968785861832,
+        "avg_danger_delta": -0.050362956162497134,
         "stage_counts": {
-          "middle": 2520,
-          "late": 1866
+          "middle": 1856,
+          "early": 2207,
+          "late": 294
         }
       },
       "mortal_cross_check": null
@@ -4618,19 +4617,18 @@
       "mortal_cross_check": null
     },
     {
-      "pattern": "spend_defensive_exit",
-      "title": "Safe-looking tiles can be spent when they are stale or off-target",
-      "why_candidate": "Spend a safe-looking tile while NAGA keeps it",
+      "pattern": "multi_threat_safe_tenpai",
+      "title": "Against multiple threats, preserved tiles become the hand's main asset",
+      "why_candidate": "Middle/late choices preserving tiles with multiple threats",
       "naga_evidence": {
-        "n": 4057,
-        "share_of_mismatches": 0.11205325084240181,
-        "bad_rate": 0.23933941335962533,
-        "avg_prob_gap": 0.5120419275326596,
-        "avg_danger_delta": -0.03510401774710377,
+        "n": 4185,
+        "share_of_mismatches": 0.11558857647903663,
+        "bad_rate": 0.23560334528076463,
+        "avg_prob_gap": 0.5032158183990442,
+        "avg_danger_delta": 0.002976415770609319,
         "stage_counts": {
-          "middle": 1512,
-          "early": 2327,
-          "late": 218
+          "middle": 2379,
+          "late": 1806
         }
       },
       "mortal_cross_check": null
@@ -4640,15 +4638,15 @@
       "title": "Safe-looking tiles can be spent after their target changes",
       "why_candidate": "Spend a safe-looking tile after its target changes",
       "naga_evidence": {
-        "n": 2992,
-        "share_of_mismatches": 0.08263823675633873,
-        "bad_rate": 0.22092245989304812,
-        "avg_prob_gap": 0.4785072526737968,
-        "avg_danger_delta": -0.025750300802139036,
+        "n": 2691,
+        "share_of_mismatches": 0.07432469756393968,
+        "bad_rate": 0.20995912300260125,
+        "avg_prob_gap": 0.4751145299145299,
+        "avg_danger_delta": -0.03497201783723523,
         "stage_counts": {
-          "early": 860,
-          "middle": 1775,
-          "late": 357
+          "early": 705,
+          "middle": 1608,
+          "late": 378
         }
       },
       "mortal_cross_check": null

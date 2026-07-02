@@ -1684,12 +1684,53 @@ def cached_call_guide_conflicts(case, cached_entry):
     return any(pattern.search(text) for pattern in FALSE_PASS_WHEN_CALLING_PATTERNS)
 
 
+def middle_suji_tile(tile):
+    tile = base_tile(tile)
+    if len(tile) != 2 or tile[1] not in {"m", "p", "s"}:
+        return False
+    try:
+        return 4 <= int(tile[0]) <= 6
+    except ValueError:
+        return False
+
+
+def iter_safety_reads(value):
+    if isinstance(value, dict):
+        if "tile" in value and "against" in value and "has_suji" in value:
+            yield value
+        for item in value.values():
+            yield from iter_safety_reads(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from iter_safety_reads(item)
+
+
+def text_claims_suji_for_tile(text, tile):
+    tokens = {f"[[{tile}]]", f"[[{base_tile(tile)}]]"}
+    for token in tokens:
+        for match in re.finditer(re.escape(token), text):
+            window = text[max(0, match.start() - 80): match.end() + 80].lower()
+            if "suji" in window or "筋" in window or "スジ" in window:
+                return True
+    return False
+
+
+def cached_guide_has_false_suji_claim(case, text):
+    for read in iter_safety_reads(case):
+        tile = read.get("tile")
+        if tile and middle_suji_tile(tile) and not read.get("has_suji") and text_claims_suji_for_tile(text, tile):
+            return True
+    return False
+
+
 def cached_guide_conflicts(case, cached_entry):
     text = " ".join(
         str((cached_entry.get(section) or {}).get(field, ""))
         for section in ("guide", "guide_ja")
         for field in ("read", "whyNot", "prompt", "answer")
     )
+    if cached_guide_has_false_suji_claim(case, text):
+        return True
     if case_has_naga_split(case) and any(pattern.search(text) for pattern in FALSE_AGREEMENT_PATTERNS):
         nishiki_call = model_head((case or {}).get("call_model_heads") or [], "nishiki")
         nishiki_post = model_head((case or {}).get("post_call_model_heads") or [], "nishiki")

@@ -258,50 +258,50 @@
         "splits": 54359,
         "left_sum": 2627467,
         "left_count": 54359,
-        "kept_defense_tile": 30770,
-        "kept_left_sum": 1266494,
-        "kept_left_count": 30770,
-        "kept_suji": 10314,
+        "kept_defense_tile": 28090,
+        "kept_left_sum": 1149527,
+        "kept_left_count": 28090,
         "kept_genbutsu": 26020,
-        "kept_multi_opponent": 11666,
-        "kept_against_live_threat": 12982
+        "kept_multi_opponent": 9136,
+        "kept_against_live_threat": 11824,
+        "kept_suji": 5815
       },
       "stage": {
         "early": {
           "splits": 30220,
           "left_sum": 1817632,
           "left_count": 30220,
-          "kept_defense_tile": 10913,
-          "kept_left_sum": 626044,
-          "kept_left_count": 10913,
-          "kept_suji": 1869,
+          "kept_defense_tile": 9936,
+          "kept_left_sum": 571741,
+          "kept_left_count": 9936,
           "kept_genbutsu": 9454,
-          "kept_multi_opponent": 2088,
-          "kept_against_live_threat": 1752
+          "kept_multi_opponent": 1803,
+          "kept_suji": 745,
+          "kept_against_live_threat": 1564
         },
         "middle": {
           "splits": 18570,
           "left_sum": 727240,
           "left_count": 18570,
-          "kept_defense_tile": 14648,
-          "kept_left_sum": 563459,
-          "kept_left_count": 14648,
+          "kept_defense_tile": 13181,
+          "kept_left_sum": 504739,
+          "kept_left_count": 13181,
           "kept_genbutsu": 11977,
-          "kept_multi_opponent": 6177,
-          "kept_suji": 5635,
-          "kept_against_live_threat": 7236
+          "kept_multi_opponent": 4605,
+          "kept_against_live_threat": 6533,
+          "kept_suji": 3070
         },
         "late": {
           "splits": 5569,
           "left_sum": 82595,
           "left_count": 5569,
-          "kept_defense_tile": 5209,
-          "kept_left_sum": 76991,
-          "kept_left_count": 5209,
+          "kept_defense_tile": 4973,
+          "kept_left_sum": 73047,
+          "kept_left_count": 4973,
           "kept_genbutsu": 4589,
-          "kept_against_live_threat": 3994,
-          "kept_multi_opponent": 3401,
-          "kept_suji": 2810
+          "kept_against_live_threat": 3727,
+          "kept_multi_opponent": 2728,
+          "kept_suji": 2000
         }
       },
       "score_band": {
@@ -309,49 +309,49 @@
           "splits": 22086,
           "left_sum": 1067000,
           "left_count": 22086,
-          "kept_defense_tile": 12500,
-          "kept_left_sum": 513430,
-          "kept_left_count": 12500,
-          "kept_suji": 4148,
+          "kept_defense_tile": 11480,
+          "kept_left_sum": 468205,
+          "kept_left_count": 11480,
           "kept_genbutsu": 10616,
-          "kept_multi_opponent": 4728,
-          "kept_against_live_threat": 5336
+          "kept_multi_opponent": 3738,
+          "kept_suji": 2384,
+          "kept_against_live_threat": 4894
         },
         "behind": {
           "splits": 17248,
           "left_sum": 832518,
           "left_count": 17248,
-          "kept_defense_tile": 9801,
-          "kept_left_sum": 403946,
-          "kept_left_count": 9801,
+          "kept_defense_tile": 8952,
+          "kept_left_sum": 367565,
+          "kept_left_count": 8952,
           "kept_genbutsu": 8300,
-          "kept_against_live_threat": 4154,
-          "kept_multi_opponent": 3708,
-          "kept_suji": 3230
+          "kept_against_live_threat": 3780,
+          "kept_multi_opponent": 2914,
+          "kept_suji": 1832
         },
         "lead": {
           "splits": 10838,
           "left_sum": 523022,
           "left_count": 10838,
-          "kept_defense_tile": 6154,
-          "kept_left_sum": 251651,
-          "kept_left_count": 6154,
+          "kept_defense_tile": 5620,
+          "kept_left_sum": 228087,
+          "kept_left_count": 5620,
           "kept_genbutsu": 5232,
-          "kept_against_live_threat": 2564,
-          "kept_suji": 2097,
-          "kept_multi_opponent": 2405
+          "kept_against_live_threat": 2336,
+          "kept_suji": 1167,
+          "kept_multi_opponent": 1875
         },
         "danger": {
           "splits": 4187,
           "left_sum": 204927,
           "left_count": 4187,
-          "kept_defense_tile": 2315,
-          "kept_left_sum": 97467,
-          "kept_left_count": 2315,
-          "kept_suji": 839,
-          "kept_multi_opponent": 825,
+          "kept_defense_tile": 2038,
+          "kept_left_sum": 85670,
+          "kept_left_count": 2038,
           "kept_genbutsu": 1872,
-          "kept_against_live_threat": 928
+          "kept_suji": 432,
+          "kept_multi_opponent": 609,
+          "kept_against_live_threat": 814
         }
       }
     },
@@ -742,7 +742,24 @@
             "has_suji": false,
             "safe_against_threat": false,
             "opponents": 0,
-            "against": []
+            "against": [
+              {
+                "seat": 2,
+                "kind": null,
+                "genbutsu_sources": [],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "sotogawa_sources": [
+                  {
+                    "tile": "4p",
+                    "position": 3
+                  }
+                ]
+              }
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1
           }
         },
         {
@@ -776,7 +793,24 @@
             "has_suji": false,
             "safe_against_threat": false,
             "opponents": 0,
-            "against": []
+            "against": [
+              {
+                "seat": 0,
+                "kind": null,
+                "genbutsu_sources": [],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "sotogawa_sources": [
+                  {
+                    "tile": "8s",
+                    "position": 1
+                  }
+                ]
+              }
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1
           }
         },
         {
@@ -812,6 +846,20 @@
             "opponents": 1,
             "against": [
               {
+                "seat": 0,
+                "kind": null,
+                "genbutsu_sources": [],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "sotogawa_sources": [
+                  {
+                    "tile": "8s",
+                    "position": 1
+                  }
+                ]
+              },
+              {
                 "seat": 1,
                 "kind": "suji",
                 "genbutsu_sources": [],
@@ -824,7 +872,9 @@
                 "reached": false,
                 "open_melds": 0
               }
-            ]
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1
           }
         },
         {
@@ -935,26 +985,12 @@
           "dealt_in": true,
           "kept_safety": {
             "tile": "6s",
-            "kind": "suji",
+            "kind": null,
             "has_genbutsu": false,
-            "has_suji": true,
+            "has_suji": false,
             "safe_against_threat": false,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 2,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "3s",
-                    "position": 4
-                  }
-                ],
-                "reached": false,
-                "open_melds": 0
-              }
-            ]
+            "opponents": 0,
+            "against": []
           }
         },
         {
@@ -1035,8 +1071,24 @@
                 ],
                 "reached": false,
                 "open_melds": 0
+              },
+              {
+                "seat": 2,
+                "kind": null,
+                "genbutsu_sources": [],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "sotogawa_sources": [
+                  {
+                    "tile": "7p",
+                    "position": 3
+                  }
+                ]
               }
-            ]
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1
           }
         },
         {
@@ -1117,8 +1169,24 @@
                 "suji_sources": [],
                 "reached": false,
                 "open_melds": 0
+              },
+              {
+                "seat": 1,
+                "kind": null,
+                "genbutsu_sources": [],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "sotogawa_sources": [
+                  {
+                    "tile": "4s",
+                    "position": 6
+                  }
+                ]
               }
-            ]
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1
           }
         },
         {
@@ -1270,7 +1338,25 @@
             "has_suji": false,
             "safe_against_threat": false,
             "opponents": 0,
-            "against": []
+            "against": [
+              {
+                "seat": 2,
+                "kind": null,
+                "genbutsu_sources": [],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 1,
+                "sotogawa_sources": [
+                  {
+                    "tile": "8p",
+                    "position": 5
+                  }
+                ]
+              }
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1,
+            "sotogawa_against_threat": true
           }
         },
         {
@@ -1299,39 +1385,12 @@
           "dealt_in": false,
           "kept_safety": {
             "tile": "5s",
-            "kind": "suji",
+            "kind": null,
             "has_genbutsu": false,
-            "has_suji": true,
+            "has_suji": false,
             "safe_against_threat": false,
-            "opponents": 2,
-            "against": [
-              {
-                "seat": 0,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "8s",
-                    "position": 5
-                  }
-                ],
-                "reached": false,
-                "open_melds": 0
-              },
-              {
-                "seat": 1,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "2s",
-                    "position": 4
-                  }
-                ],
-                "reached": false,
-                "open_melds": 0
-              }
-            ]
+            "opponents": 0,
+            "against": []
           }
         },
         {
@@ -1360,39 +1419,30 @@
           "dealt_in": false,
           "kept_safety": {
             "tile": "6s",
-            "kind": "suji",
+            "kind": null,
             "has_genbutsu": false,
-            "has_suji": true,
+            "has_suji": false,
             "safe_against_threat": false,
-            "opponents": 2,
+            "opponents": 0,
             "against": [
               {
-                "seat": 1,
-                "kind": "suji",
+                "seat": 0,
+                "kind": null,
                 "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "9s",
-                    "position": 7
-                  }
-                ],
+                "suji_sources": [],
                 "reached": false,
-                "open_melds": 0
-              },
-              {
-                "seat": 2,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
+                "open_melds": 1,
+                "sotogawa_sources": [
                   {
-                    "tile": "9s",
-                    "position": 3
+                    "tile": "5s",
+                    "position": 5
                   }
-                ],
-                "reached": false,
-                "open_melds": 0
+                ]
               }
-            ]
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1,
+            "sotogawa_against_threat": true
           }
         },
         {
@@ -1518,23 +1568,10 @@
             "tile": "6m",
             "kind": "genbutsu",
             "has_genbutsu": true,
-            "has_suji": true,
-            "safe_against_threat": true,
-            "opponents": 2,
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 1,
             "against": [
-              {
-                "seat": 0,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "9m",
-                    "position": 11
-                  }
-                ],
-                "reached": false,
-                "open_melds": 1
-              },
               {
                 "seat": 1,
                 "kind": "genbutsu",
@@ -1544,12 +1581,7 @@
                     "position": 10
                   }
                 ],
-                "suji_sources": [
-                  {
-                    "tile": "9m",
-                    "position": 9
-                  }
-                ],
+                "suji_sources": [],
                 "reached": false,
                 "open_melds": 0
               }
@@ -1584,7 +1616,7 @@
             "tile": "5s",
             "kind": "genbutsu",
             "has_genbutsu": true,
-            "has_suji": true,
+            "has_suji": false,
             "safe_against_threat": false,
             "opponents": 1,
             "against": [
@@ -1597,12 +1629,7 @@
                     "position": 4
                   }
                 ],
-                "suji_sources": [
-                  {
-                    "tile": "8s",
-                    "position": 5
-                  }
-                ],
+                "suji_sources": [],
                 "reached": false,
                 "open_melds": 0
               }
@@ -1637,7 +1664,7 @@
             "tile": "5s",
             "kind": "genbutsu",
             "has_genbutsu": true,
-            "has_suji": true,
+            "has_suji": false,
             "safe_against_threat": false,
             "opponents": 1,
             "against": [
@@ -1650,12 +1677,7 @@
                     "position": 4
                   }
                 ],
-                "suji_sources": [
-                  {
-                    "tile": "8s",
-                    "position": 5
-                  }
-                ],
+                "suji_sources": [],
                 "reached": false,
                 "open_melds": 0
               }
@@ -1690,7 +1712,7 @@
             "tile": "5s",
             "kind": "genbutsu",
             "has_genbutsu": true,
-            "has_suji": true,
+            "has_suji": false,
             "safe_against_threat": false,
             "opponents": 1,
             "against": [
@@ -1703,12 +1725,7 @@
                     "position": 4
                   }
                 ],
-                "suji_sources": [
-                  {
-                    "tile": "8s",
-                    "position": 5
-                  }
-                ],
+                "suji_sources": [],
                 "reached": false,
                 "open_melds": 0
               }
@@ -1741,30 +1758,12 @@
           "dealt_in": false,
           "kept_safety": {
             "tile": "5s",
-            "kind": "suji",
+            "kind": null,
             "has_genbutsu": false,
-            "has_suji": true,
+            "has_suji": false,
             "safe_against_threat": false,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 0,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "8s",
-                    "position": 4
-                  },
-                  {
-                    "tile": "8s",
-                    "position": 6
-                  }
-                ],
-                "reached": false,
-                "open_melds": 0
-              }
-            ]
+            "opponents": 0,
+            "against": []
           }
         },
         {
@@ -1795,23 +1794,10 @@
             "tile": "5s",
             "kind": "genbutsu",
             "has_genbutsu": true,
-            "has_suji": true,
+            "has_suji": false,
             "safe_against_threat": false,
-            "opponents": 2,
+            "opponents": 1,
             "against": [
-              {
-                "seat": 1,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "8s",
-                    "position": 6
-                  }
-                ],
-                "reached": false,
-                "open_melds": 0
-              },
               {
                 "seat": 3,
                 "kind": "genbutsu",
@@ -1859,7 +1845,24 @@
             "has_suji": false,
             "safe_against_threat": false,
             "opponents": 0,
-            "against": []
+            "against": [
+              {
+                "seat": 2,
+                "kind": null,
+                "genbutsu_sources": [],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "sotogawa_sources": [
+                  {
+                    "tile": "5m",
+                    "position": 5
+                  }
+                ]
+              }
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1
           }
         },
         {
@@ -1949,39 +1952,12 @@
           "dealt_in": false,
           "kept_safety": {
             "tile": "5p",
-            "kind": "suji",
+            "kind": null,
             "has_genbutsu": false,
-            "has_suji": true,
-            "safe_against_threat": true,
-            "opponents": 2,
-            "against": [
-              {
-                "seat": 1,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "8p",
-                    "position": 10
-                  }
-                ],
-                "reached": false,
-                "open_melds": 0
-              },
-              {
-                "seat": 2,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "8p",
-                    "position": 11
-                  }
-                ],
-                "reached": false,
-                "open_melds": 1
-              }
-            ]
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
           }
         },
         {
@@ -2092,26 +2068,12 @@
           "dealt_in": false,
           "kept_safety": {
             "tile": "6s",
-            "kind": "suji",
+            "kind": null,
             "has_genbutsu": false,
-            "has_suji": true,
-            "safe_against_threat": true,
-            "opponents": 1,
-            "against": [
-              {
-                "seat": 0,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "3s",
-                    "position": 3
-                  }
-                ],
-                "reached": false,
-                "open_melds": 2
-              }
-            ]
+            "has_suji": false,
+            "safe_against_threat": false,
+            "opponents": 0,
+            "against": []
           }
         },
         {
@@ -2158,8 +2120,24 @@
                 ],
                 "reached": false,
                 "open_melds": 3
+              },
+              {
+                "seat": 3,
+                "kind": null,
+                "genbutsu_sources": [],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "sotogawa_sources": [
+                  {
+                    "tile": "3s",
+                    "position": 3
+                  }
+                ]
               }
-            ]
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1
           }
         },
         {
@@ -2188,39 +2166,29 @@
           "dealt_in": true,
           "kept_safety": {
             "tile": "4s",
-            "kind": "suji",
+            "kind": null,
             "has_genbutsu": false,
-            "has_suji": true,
+            "has_suji": false,
             "safe_against_threat": false,
-            "opponents": 2,
+            "opponents": 0,
             "against": [
               {
                 "seat": 1,
-                "kind": "suji",
+                "kind": null,
                 "genbutsu_sources": [],
-                "suji_sources": [
-                  {
-                    "tile": "1s",
-                    "position": 1
-                  }
-                ],
+                "suji_sources": [],
                 "reached": false,
-                "open_melds": 0
-              },
-              {
-                "seat": 2,
-                "kind": "suji",
-                "genbutsu_sources": [],
-                "suji_sources": [
+                "open_melds": 0,
+                "sotogawa_sources": [
                   {
-                    "tile": "1s",
-                    "position": 2
+                    "tile": "5s",
+                    "position": 4
                   }
-                ],
-                "reached": false,
-                "open_melds": 0
+                ]
               }
-            ]
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1
           }
         }
       ],
@@ -2377,9 +2345,17 @@
                   }
                 ],
                 "reached": false,
-                "open_melds": 0
+                "open_melds": 0,
+                "sotogawa_sources": [
+                  {
+                    "tile": "7s",
+                    "position": 1
+                  }
+                ]
               }
-            ]
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1
           }
         },
         {
@@ -2639,9 +2615,18 @@
                   }
                 ],
                 "reached": true,
-                "open_melds": 0
+                "open_melds": 0,
+                "sotogawa_sources": [
+                  {
+                    "tile": "6s",
+                    "position": 1
+                  }
+                ]
               }
-            ]
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 1,
+            "sotogawa_against_threat": true
           }
         },
         {
@@ -3159,6 +3144,34 @@
             "opponents": 1,
             "against": [
               {
+                "seat": 1,
+                "kind": null,
+                "genbutsu_sources": [],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "sotogawa_sources": [
+                  {
+                    "tile": "5m",
+                    "position": 1
+                  }
+                ]
+              },
+              {
+                "seat": 2,
+                "kind": null,
+                "genbutsu_sources": [],
+                "suji_sources": [],
+                "reached": false,
+                "open_melds": 0,
+                "sotogawa_sources": [
+                  {
+                    "tile": "5m",
+                    "position": 5
+                  }
+                ]
+              },
+              {
                 "seat": 3,
                 "kind": "genbutsu",
                 "genbutsu_sources": [
@@ -3171,7 +3184,9 @@
                 "reached": false,
                 "open_melds": 2
               }
-            ]
+            ],
+            "has_sotogawa": true,
+            "sotogawa_opponents": 2
           }
         },
         {
@@ -3309,372 +3324,372 @@
     },
     "defense_targets": {
       "overall": {
-        "nondealer_closed": {
-          "kept_instances": 14876,
-          "spent_instances": 10631,
-          "total_instances": 25507,
-          "kept_share": 0.5832124514839063,
-          "spent_share": 0.4167875485160936,
-          "kept_genbutsu": 11249,
-          "kept_suji": 4340,
-          "kept_genbutsu_rate": 0.7561844581876849,
-          "kept_avg_left": 42.187819306265126,
-          "spent_genbutsu": 7340,
-          "spent_suji": 4031,
-          "spent_genbutsu_rate": 0.6904336374753081,
-          "spent_avg_left": 38.13780453391026
-        },
         "dealer_closed": {
-          "kept_instances": 5101,
-          "spent_instances": 3901,
-          "total_instances": 9002,
-          "kept_share": 0.5666518551433015,
-          "spent_share": 0.43334814485669854,
+          "kept_instances": 5152,
+          "spent_instances": 3773,
+          "total_instances": 8925,
+          "kept_share": 0.5772549019607843,
+          "spent_share": 0.42274509803921567,
           "kept_genbutsu": 3947,
-          "kept_suji": 1374,
-          "kept_genbutsu_rate": 0.7737698490492061,
-          "kept_avg_left": 44.104881395804746,
+          "kept_suji": 525,
+          "kept_genbutsu_rate": 0.766110248447205,
+          "kept_avg_left": 45.46292701863354,
           "spent_genbutsu": 2858,
-          "spent_suji": 1255,
-          "spent_genbutsu_rate": 0.7326326582927455,
-          "spent_avg_left": 42.36811074083568
+          "spent_suji": 518,
+          "spent_genbutsu_rate": 0.757487410548635,
+          "spent_avg_left": 42.98515769944341
+        },
+        "nondealer_closed": {
+          "kept_instances": 14850,
+          "spent_instances": 10469,
+          "total_instances": 25319,
+          "kept_share": 0.5865160551364588,
+          "spent_share": 0.41348394486354123,
+          "kept_genbutsu": 11249,
+          "kept_suji": 1620,
+          "kept_genbutsu_rate": 0.7575084175084175,
+          "kept_avg_left": 43.224444444444444,
+          "spent_genbutsu": 7340,
+          "spent_suji": 1776,
+          "spent_genbutsu_rate": 0.7011175852516954,
+          "spent_avg_left": 38.93151208329353
         },
         "dealer_open": {
-          "kept_instances": 2216,
-          "spent_instances": 2064,
-          "total_instances": 4280,
-          "kept_share": 0.5177570093457944,
-          "spent_share": 0.4822429906542056,
+          "kept_instances": 2317,
+          "spent_instances": 2143,
+          "total_instances": 4460,
+          "kept_share": 0.5195067264573991,
+          "spent_share": 0.4804932735426009,
           "kept_genbutsu": 1563,
-          "kept_suji": 930,
-          "kept_genbutsu_rate": 0.7053249097472925,
-          "kept_avg_left": 33.977436823104696,
+          "kept_suji": 502,
+          "kept_genbutsu_rate": 0.6745791972378075,
+          "kept_avg_left": 35.26068191627104,
           "spent_genbutsu": 1451,
-          "spent_suji": 916,
-          "spent_genbutsu_rate": 0.7030038759689923,
-          "spent_avg_left": 31.1187015503876
+          "spent_suji": 541,
+          "spent_genbutsu_rate": 0.677088194120392,
+          "spent_avg_left": 32.51096593560429
         },
         "nondealer_open": {
-          "kept_instances": 4953,
-          "spent_instances": 4410,
-          "total_instances": 9363,
-          "kept_share": 0.5289971163088754,
-          "spent_share": 0.47100288369112464,
+          "kept_instances": 5186,
+          "spent_instances": 4585,
+          "total_instances": 9771,
+          "kept_share": 0.5307542728482243,
+          "spent_share": 0.46924572715177565,
           "kept_genbutsu": 3308,
-          "kept_suji": 2209,
-          "kept_genbutsu_rate": 0.6678780537048253,
-          "kept_avg_left": 33.6274984857662,
+          "kept_suji": 1196,
+          "kept_genbutsu_rate": 0.6378711916698805,
+          "kept_avg_left": 35.158696490551485,
           "spent_genbutsu": 3048,
-          "spent_suji": 1978,
-          "spent_genbutsu_rate": 0.691156462585034,
-          "spent_avg_left": 30.73061224489796
+          "spent_suji": 1103,
+          "spent_genbutsu_rate": 0.6647764449291167,
+          "spent_avg_left": 32.2495092693566
         },
         "closed_riichi": {
-          "kept_instances": 2416,
-          "spent_instances": 2497,
-          "total_instances": 4913,
-          "kept_share": 0.49175656421738245,
-          "spent_share": 0.5082434357826175,
+          "kept_instances": 2484,
+          "spent_instances": 2482,
+          "total_instances": 4966,
+          "kept_share": 0.500201369311317,
+          "spent_share": 0.499798630688683,
           "kept_genbutsu": 1739,
-          "kept_suji": 1110,
-          "kept_genbutsu_rate": 0.7197847682119205,
-          "kept_avg_left": 25.012417218543046,
+          "kept_suji": 639,
+          "kept_genbutsu_rate": 0.7000805152979066,
+          "kept_avg_left": 25.69887278582931,
           "spent_genbutsu": 1781,
-          "spent_suji": 1150,
-          "spent_genbutsu_rate": 0.7132559070885062,
-          "spent_avg_left": 25.194233079695636
+          "spent_suji": 682,
+          "spent_genbutsu_rate": 0.717566478646253,
+          "spent_avg_left": 25.904512489927477
         },
         "dealer_riichi": {
-          "kept_instances": 1153,
-          "spent_instances": 1275,
-          "total_instances": 2428,
-          "kept_share": 0.4748764415156507,
-          "spent_share": 0.5251235584843492,
+          "kept_instances": 1177,
+          "spent_instances": 1258,
+          "total_instances": 2435,
+          "kept_share": 0.4833675564681725,
+          "spent_share": 0.5166324435318275,
           "kept_genbutsu": 811,
-          "kept_suji": 532,
-          "kept_genbutsu_rate": 0.7033824804856895,
-          "kept_avg_left": 25.73894189071986,
+          "kept_suji": 318,
+          "kept_genbutsu_rate": 0.6890399320305862,
+          "kept_avg_left": 26.338997451146984,
           "spent_genbutsu": 943,
-          "spent_suji": 580,
-          "spent_genbutsu_rate": 0.7396078431372549,
-          "spent_avg_left": 25.832156862745098
+          "spent_suji": 364,
+          "spent_genbutsu_rate": 0.7496025437201908,
+          "spent_avg_left": 26.470588235294116
         }
       },
       "stage": {
         "early": {
-          "nondealer_closed": {
-            "kept_instances": 5668,
-            "spent_instances": 2815,
-            "total_instances": 8483,
-            "kept_share": 0.6681598491099847,
-            "spent_share": 0.33184015089001534,
-            "kept_genbutsu": 4882,
-            "kept_suji": 830,
-            "kept_genbutsu_rate": 0.8613267466478476,
-            "kept_avg_left": 56.82092448835568,
-            "spent_genbutsu": 2215,
-            "spent_suji": 625,
-            "spent_genbutsu_rate": 0.7868561278863233,
-            "spent_avg_left": 57.4664298401421
-          },
           "dealer_closed": {
-            "kept_instances": 2200,
-            "spent_instances": 1427,
-            "total_instances": 3627,
-            "kept_share": 0.6065618968844775,
-            "spent_share": 0.39343810311552246,
+            "kept_instances": 2426,
+            "spent_instances": 1415,
+            "total_instances": 3841,
+            "kept_share": 0.6316063525123665,
+            "spent_share": 0.3683936474876334,
             "kept_genbutsu": 1875,
-            "kept_suji": 361,
-            "kept_genbutsu_rate": 0.8522727272727273,
-            "kept_avg_left": 57.12954545454546,
+            "kept_suji": 130,
+            "kept_genbutsu_rate": 0.7728771640560593,
+            "kept_avg_left": 57.20816158285243,
             "spent_genbutsu": 1196,
-            "spent_suji": 235,
-            "spent_genbutsu_rate": 0.8381219341275403,
-            "spent_avg_left": 59.71198318149965
+            "spent_suji": 63,
+            "spent_genbutsu_rate": 0.8452296819787986,
+            "spent_avg_left": 59.69187279151944
+          },
+          "nondealer_closed": {
+            "kept_instances": 6060,
+            "spent_instances": 2876,
+            "total_instances": 8936,
+            "kept_share": 0.6781557743957027,
+            "spent_share": 0.3218442256042972,
+            "kept_genbutsu": 4882,
+            "kept_suji": 249,
+            "kept_genbutsu_rate": 0.8056105610561056,
+            "kept_avg_left": 56.866831683168314,
+            "spent_genbutsu": 2215,
+            "spent_suji": 185,
+            "spent_genbutsu_rate": 0.7701668984700973,
+            "spent_avg_left": 57.36161335187761
           },
           "nondealer_open": {
-            "kept_instances": 866,
-            "spent_instances": 393,
-            "total_instances": 1259,
-            "kept_share": 0.687847498014297,
-            "spent_share": 0.31215250198570293,
+            "kept_instances": 1085,
+            "spent_instances": 510,
+            "total_instances": 1595,
+            "kept_share": 0.6802507836990596,
+            "spent_share": 0.31974921630094044,
             "kept_genbutsu": 648,
-            "kept_suji": 262,
-            "kept_genbutsu_rate": 0.7482678983833718,
-            "kept_avg_left": 55.25866050808314,
+            "kept_suji": 148,
+            "kept_genbutsu_rate": 0.5972350230414747,
+            "kept_avg_left": 55.52165898617511,
             "spent_genbutsu": 262,
-            "spent_suji": 149,
-            "spent_genbutsu_rate": 0.6666666666666666,
-            "spent_avg_left": 54.07888040712468
+            "spent_suji": 78,
+            "spent_genbutsu_rate": 0.5137254901960784,
+            "spent_avg_left": 54.001960784313724
           },
           "dealer_open": {
-            "kept_instances": 411,
-            "spent_instances": 181,
-            "total_instances": 592,
-            "kept_share": 0.6942567567567568,
-            "spent_share": 0.30574324324324326,
+            "kept_instances": 478,
+            "spent_instances": 225,
+            "total_instances": 703,
+            "kept_share": 0.6799431009957326,
+            "spent_share": 0.3200568990042674,
             "kept_genbutsu": 318,
-            "kept_suji": 117,
-            "kept_genbutsu_rate": 0.7737226277372263,
-            "kept_avg_left": 55.26520681265207,
+            "kept_suji": 55,
+            "kept_genbutsu_rate": 0.6652719665271967,
+            "kept_avg_left": 55.58995815899581,
             "spent_genbutsu": 116,
-            "spent_suji": 73,
-            "spent_genbutsu_rate": 0.6408839779005525,
-            "spent_avg_left": 53.67955801104972
+            "spent_suji": 38,
+            "spent_genbutsu_rate": 0.5155555555555555,
+            "spent_avg_left": 53.49777777777778
           },
           "closed_riichi": {
-            "kept_instances": 74,
-            "spent_instances": 99,
-            "total_instances": 173,
-            "kept_share": 0.4277456647398844,
-            "spent_share": 0.5722543352601156,
+            "kept_instances": 85,
+            "spent_instances": 108,
+            "total_instances": 193,
+            "kept_share": 0.44041450777202074,
+            "spent_share": 0.5595854922279793,
             "kept_genbutsu": 55,
-            "kept_suji": 24,
-            "kept_genbutsu_rate": 0.7432432432432432,
-            "kept_avg_left": 53.12162162162162,
+            "kept_suji": 15,
+            "kept_genbutsu_rate": 0.6470588235294118,
+            "kept_avg_left": 53.2,
             "spent_genbutsu": 76,
-            "spent_suji": 29,
-            "spent_genbutsu_rate": 0.7676767676767676,
-            "spent_avg_left": 53.16161616161616
+            "spent_suji": 22,
+            "spent_genbutsu_rate": 0.7037037037037037,
+            "spent_avg_left": 53.22222222222222
           },
           "dealer_riichi": {
-            "kept_instances": 37,
-            "spent_instances": 51,
-            "total_instances": 88,
-            "kept_share": 0.42045454545454547,
-            "spent_share": 0.5795454545454546,
+            "kept_instances": 46,
+            "spent_instances": 56,
+            "total_instances": 102,
+            "kept_share": 0.45098039215686275,
+            "spent_share": 0.5490196078431373,
             "kept_genbutsu": 33,
-            "kept_suji": 10,
-            "kept_genbutsu_rate": 0.8918918918918919,
-            "kept_avg_left": 53.108108108108105,
+            "kept_suji": 7,
+            "kept_genbutsu_rate": 0.717391304347826,
+            "kept_avg_left": 53.0,
             "spent_genbutsu": 42,
-            "spent_suji": 15,
-            "spent_genbutsu_rate": 0.8235294117647058,
-            "spent_avg_left": 53.3921568627451
+            "spent_suji": 7,
+            "spent_genbutsu_rate": 0.75,
+            "spent_avg_left": 53.375
           }
         },
         "middle": {
           "dealer_closed": {
-            "kept_instances": 2302,
-            "spent_instances": 1867,
-            "total_instances": 4169,
-            "kept_share": 0.552170784360758,
-            "spent_share": 0.44782921563924205,
+            "kept_instances": 2224,
+            "spent_instances": 1825,
+            "total_instances": 4049,
+            "kept_share": 0.5492714250432206,
+            "spent_share": 0.4507285749567794,
             "kept_genbutsu": 1695,
-            "kept_suji": 712,
-            "kept_genbutsu_rate": 0.7363162467419635,
-            "kept_avg_left": 39.215464813205905,
+            "kept_suji": 256,
+            "kept_genbutsu_rate": 0.7621402877697842,
+            "kept_avg_left": 39.55980215827338,
             "spent_genbutsu": 1260,
-            "spent_suji": 725,
-            "spent_genbutsu_rate": 0.674879485806106,
-            "spent_avg_left": 37.921799678628815
+            "spent_suji": 295,
+            "spent_genbutsu_rate": 0.6904109589041096,
+            "spent_avg_left": 38.12328767123287
           },
           "nondealer_closed": {
-            "kept_instances": 7047,
-            "spent_instances": 5617,
-            "total_instances": 12664,
-            "kept_share": 0.5564592545799115,
-            "spent_share": 0.4435407454200884,
+            "kept_instances": 6846,
+            "spent_instances": 5640,
+            "total_instances": 12486,
+            "kept_share": 0.5482940893801057,
+            "spent_share": 0.4517059106198943,
             "kept_genbutsu": 4988,
-            "kept_suji": 2433,
-            "kept_genbutsu_rate": 0.7078189300411523,
-            "kept_avg_left": 38.94025826592876,
+            "kept_suji": 833,
+            "kept_genbutsu_rate": 0.7286006427110722,
+            "kept_avg_left": 39.37408705813614,
             "spent_genbutsu": 3738,
-            "spent_suji": 2272,
-            "spent_genbutsu_rate": 0.6654797934840663,
-            "spent_avg_left": 37.71087769271853
+            "spent_suji": 1024,
+            "spent_genbutsu_rate": 0.6627659574468086,
+            "spent_avg_left": 37.97925531914893
           },
           "dealer_open": {
-            "kept_instances": 1160,
-            "spent_instances": 1218,
-            "total_instances": 2378,
-            "kept_share": 0.4878048780487805,
-            "spent_share": 0.5121951219512195,
+            "kept_instances": 1234,
+            "spent_instances": 1295,
+            "total_instances": 2529,
+            "kept_share": 0.48793989719256625,
+            "spent_share": 0.5120601028074337,
             "kept_genbutsu": 822,
-            "kept_suji": 465,
-            "kept_genbutsu_rate": 0.7086206896551724,
-            "kept_avg_left": 37.53448275862069,
+            "kept_suji": 247,
+            "kept_genbutsu_rate": 0.6661264181523501,
+            "kept_avg_left": 37.693679092382496,
             "spent_genbutsu": 889,
-            "spent_suji": 485,
-            "spent_genbutsu_rate": 0.7298850574712644,
-            "spent_avg_left": 37.008210180623976
+            "spent_suji": 286,
+            "spent_genbutsu_rate": 0.6864864864864865,
+            "spent_avg_left": 37.466409266409265
           },
           "nondealer_open": {
-            "kept_instances": 2657,
-            "spent_instances": 2559,
-            "total_instances": 5216,
-            "kept_share": 0.5093941717791411,
-            "spent_share": 0.4906058282208589,
+            "kept_instances": 2742,
+            "spent_instances": 2733,
+            "total_instances": 5475,
+            "kept_share": 0.5008219178082192,
+            "spent_share": 0.49917808219178084,
             "kept_genbutsu": 1751,
-            "kept_suji": 1188,
-            "kept_genbutsu_rate": 0.6590139254798645,
-            "kept_avg_left": 37.12984569062853,
+            "kept_suji": 601,
+            "kept_genbutsu_rate": 0.6385849744711889,
+            "kept_avg_left": 37.527716994894234,
             "spent_genbutsu": 1822,
-            "spent_suji": 1048,
-            "spent_genbutsu_rate": 0.7119968737788198,
-            "spent_avg_left": 36.653771004298555
+            "spent_suji": 604,
+            "spent_genbutsu_rate": 0.6666666666666666,
+            "spent_avg_left": 37.055250640321994
           },
           "closed_riichi": {
-            "kept_instances": 1169,
-            "spent_instances": 1198,
-            "total_instances": 2367,
-            "kept_share": 0.49387410223912126,
-            "spent_share": 0.5061258977608788,
+            "kept_instances": 1239,
+            "spent_instances": 1232,
+            "total_instances": 2471,
+            "kept_share": 0.5014164305949008,
+            "spent_share": 0.4985835694050991,
             "kept_genbutsu": 872,
-            "kept_suji": 482,
-            "kept_genbutsu_rate": 0.7459366980325064,
-            "kept_avg_left": 34.50727117194183,
+            "kept_suji": 266,
+            "kept_genbutsu_rate": 0.7037933817594835,
+            "kept_avg_left": 34.87086359967716,
             "spent_genbutsu": 898,
-            "spent_suji": 473,
-            "spent_genbutsu_rate": 0.7495826377295493,
-            "spent_avg_left": 34.51585976627713
+            "spent_suji": 259,
+            "spent_genbutsu_rate": 0.7288961038961039,
+            "spent_avg_left": 34.75405844155844
           },
           "dealer_riichi": {
-            "kept_instances": 582,
-            "spent_instances": 634,
-            "total_instances": 1216,
-            "kept_share": 0.4786184210526316,
-            "spent_share": 0.5213815789473685,
+            "kept_instances": 610,
+            "spent_instances": 648,
+            "total_instances": 1258,
+            "kept_share": 0.4848966613672496,
+            "spent_share": 0.5151033386327504,
             "kept_genbutsu": 421,
-            "kept_suji": 236,
-            "kept_genbutsu_rate": 0.7233676975945017,
-            "kept_avg_left": 34.90034364261168,
+            "kept_suji": 147,
+            "kept_genbutsu_rate": 0.6901639344262295,
+            "kept_avg_left": 34.96065573770492,
             "spent_genbutsu": 484,
-            "spent_suji": 266,
-            "spent_genbutsu_rate": 0.7634069400630915,
-            "spent_avg_left": 35.10883280757098
+            "spent_suji": 179,
+            "spent_genbutsu_rate": 0.7469135802469136,
+            "spent_avg_left": 35.123456790123456
           }
         },
         "late": {
           "nondealer_closed": {
-            "kept_instances": 2161,
-            "spent_instances": 2199,
-            "total_instances": 4360,
-            "kept_share": 0.4956422018348624,
-            "spent_share": 0.5043577981651376,
+            "kept_instances": 1944,
+            "spent_instances": 1953,
+            "total_instances": 3897,
+            "kept_share": 0.49884526558891457,
+            "spent_share": 0.5011547344110855,
             "kept_genbutsu": 1379,
-            "kept_suji": 1077,
-            "kept_genbutsu_rate": 0.6381304951411384,
-            "kept_avg_left": 14.397501156871819,
+            "kept_suji": 538,
+            "kept_genbutsu_rate": 0.7093621399176955,
+            "kept_avg_left": 14.256687242798353,
             "spent_genbutsu": 1387,
-            "spent_suji": 1134,
-            "spent_genbutsu_rate": 0.6307412460209186,
-            "spent_avg_left": 14.485220554797635
+            "spent_suji": 567,
+            "spent_genbutsu_rate": 0.710189452124936,
+            "spent_avg_left": 14.54121863799283
           },
           "dealer_open": {
-            "kept_instances": 645,
-            "spent_instances": 665,
-            "total_instances": 1310,
-            "kept_share": 0.49236641221374045,
-            "spent_share": 0.5076335877862596,
+            "kept_instances": 605,
+            "spent_instances": 623,
+            "total_instances": 1228,
+            "kept_share": 0.49267100977198697,
+            "spent_share": 0.507328990228013,
             "kept_genbutsu": 423,
-            "kept_suji": 348,
-            "kept_genbutsu_rate": 0.6558139534883721,
-            "kept_avg_left": 14.015503875968992,
+            "kept_suji": 200,
+            "kept_genbutsu_rate": 0.6991735537190082,
+            "kept_avg_left": 14.236363636363636,
             "spent_genbutsu": 446,
-            "spent_suji": 358,
-            "spent_genbutsu_rate": 0.6706766917293233,
-            "spent_avg_left": 14.190977443609022
+            "spent_suji": 217,
+            "spent_genbutsu_rate": 0.7158908507223114,
+            "spent_avg_left": 14.630818619582664
           },
           "dealer_closed": {
-            "kept_instances": 599,
-            "spent_instances": 607,
-            "total_instances": 1206,
-            "kept_share": 0.4966832504145937,
-            "spent_share": 0.5033167495854063,
+            "kept_instances": 502,
+            "spent_instances": 533,
+            "total_instances": 1035,
+            "kept_share": 0.485024154589372,
+            "spent_share": 0.514975845410628,
             "kept_genbutsu": 377,
-            "kept_suji": 301,
-            "kept_genbutsu_rate": 0.6293823038397329,
-            "kept_avg_left": 15.058430717863105,
+            "kept_suji": 139,
+            "kept_genbutsu_rate": 0.750996015936255,
+            "kept_avg_left": 14.854581673306773,
             "spent_genbutsu": 402,
-            "spent_suji": 295,
-            "spent_genbutsu_rate": 0.6622734761120264,
-            "spent_avg_left": 15.270181219110379
+            "spent_suji": 160,
+            "spent_genbutsu_rate": 0.7542213883677298,
+            "spent_avg_left": 15.279549718574108
           },
           "nondealer_open": {
-            "kept_instances": 1430,
-            "spent_instances": 1458,
-            "total_instances": 2888,
-            "kept_share": 0.4951523545706371,
-            "spent_share": 0.5048476454293629,
+            "kept_instances": 1359,
+            "spent_instances": 1342,
+            "total_instances": 2701,
+            "kept_share": 0.5031469825990373,
+            "spent_share": 0.4968530174009626,
             "kept_genbutsu": 909,
-            "kept_suji": 759,
-            "kept_genbutsu_rate": 0.6356643356643357,
-            "kept_avg_left": 14.02027972027972,
+            "kept_suji": 447,
+            "kept_genbutsu_rate": 0.6688741721854304,
+            "kept_avg_left": 14.121412803532008,
             "spent_genbutsu": 964,
-            "spent_suji": 781,
-            "spent_genbutsu_rate": 0.6611796982167353,
-            "spent_avg_left": 14.041152263374485
+            "spent_suji": 421,
+            "spent_genbutsu_rate": 0.7183308494783904,
+            "spent_avg_left": 14.195976154992549
           },
           "closed_riichi": {
-            "kept_instances": 1173,
-            "spent_instances": 1200,
-            "total_instances": 2373,
-            "kept_share": 0.4943109987357775,
-            "spent_share": 0.5056890012642224,
+            "kept_instances": 1160,
+            "spent_instances": 1142,
+            "total_instances": 2302,
+            "kept_share": 0.5039096437880104,
+            "spent_share": 0.49609035621198955,
             "kept_genbutsu": 812,
-            "kept_suji": 604,
-            "kept_genbutsu_rate": 0.6922421142369991,
-            "kept_avg_left": 13.776641091219096,
+            "kept_suji": 358,
+            "kept_genbutsu_rate": 0.7,
+            "kept_avg_left": 13.88706896551724,
             "spent_genbutsu": 807,
-            "spent_suji": 648,
-            "spent_genbutsu_rate": 0.6725,
-            "spent_avg_left": 13.580833333333333
+            "spent_suji": 401,
+            "spent_genbutsu_rate": 0.7066549912434326,
+            "spent_avg_left": 13.774080560420316
           },
           "dealer_riichi": {
-            "kept_instances": 534,
-            "spent_instances": 590,
-            "total_instances": 1124,
-            "kept_share": 0.4750889679715303,
-            "spent_share": 0.5249110320284698,
+            "kept_instances": 521,
+            "spent_instances": 554,
+            "total_instances": 1075,
+            "kept_share": 0.4846511627906977,
+            "spent_share": 0.5153488372093024,
             "kept_genbutsu": 357,
-            "kept_suji": 286,
-            "kept_genbutsu_rate": 0.6685393258426966,
-            "kept_avg_left": 13.857677902621722,
+            "kept_suji": 164,
+            "kept_genbutsu_rate": 0.6852207293666027,
+            "kept_avg_left": 13.890595009596929,
             "spent_genbutsu": 417,
-            "spent_suji": 299,
-            "spent_genbutsu_rate": 0.7067796610169491,
-            "spent_avg_left": 13.48135593220339
+            "spent_suji": 178,
+            "spent_genbutsu_rate": 0.7527075812274369,
+            "spent_avg_left": 13.629963898916968
           }
         }
       }

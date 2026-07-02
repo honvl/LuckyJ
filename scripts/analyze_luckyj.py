@@ -161,17 +161,20 @@ def suited_rank(tile):
     return int(base[0]), base[1]
 
 
-def suji_source_tiles(tile):
+def suji_source_tile_groups(tile):
     parsed = suited_rank(tile)
     if not parsed:
         return []
     rank, suit = parsed
-    sources = []
-    if rank - 3 >= 1:
-        sources.append(f"{rank - 3}{suit}")
-    if rank + 3 <= 9:
-        sources.append(f"{rank + 3}{suit}")
-    return sources
+    if rank <= 3:
+        return [[f"{rank + 3}{suit}"]]
+    if rank >= 7:
+        return [[f"{rank - 3}{suit}"]]
+    return [[f"{rank - 3}{suit}", f"{rank + 3}{suit}"]]
+
+
+def suji_source_tiles(tile):
+    return [source for group in suji_source_tile_groups(tile) for source in group]
 
 
 def sotogawa_source_tiles(tile):
@@ -194,7 +197,7 @@ def sotogawa_source_tiles(tile):
 def defensive_tile_read(tile, target, discards, reached=None, open_melds=None):
     reached = reached or [False, False, False, False]
     open_melds = open_melds or [0, 0, 0, 0]
-    partners = set(suji_source_tiles(tile))
+    suji_groups = suji_source_tile_groups(tile)
     sotogawa_partners = set(sotogawa_source_tiles(tile))
     tile_idx = tile_index(tile)
     against = []
@@ -205,13 +208,19 @@ def defensive_tile_read(tile, target, discards, reached=None, open_melds=None):
         genbutsu_sources = []
         suji_sources = []
         sotogawa_sources = []
+        source_positions = defaultdict(list)
         for pos, discarded in enumerate(river or [], 1):
+            discarded_base = tile_base(discarded)
+            source_positions[discarded_base].append({"tile": discarded, "position": pos})
             if tile_index(discarded) == tile_idx:
                 genbutsu_sources.append({"tile": discarded, "position": pos})
-            if tile_base(discarded) in partners:
-                suji_sources.append({"tile": discarded, "position": pos})
-            if pos <= 6 and tile_base(discarded) in sotogawa_partners:
+            if pos <= 6 and discarded_base in sotogawa_partners:
                 sotogawa_sources.append({"tile": discarded, "position": pos})
+        for group in suji_groups:
+            if all(source in source_positions for source in group):
+                for source in group:
+                    suji_sources.extend(source_positions[source])
+        suji_sources.sort(key=lambda source: source["position"])
         if genbutsu_sources or suji_sources or sotogawa_sources:
             item = {
                 "seat": seat,
