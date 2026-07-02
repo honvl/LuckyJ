@@ -38,6 +38,7 @@ Strict Mahjong Rules & Constraints:
 10. For call examples, "Post-Call Shape Facts" is authoritative. If the post-call shanten is 0, the hand is tenpai after the call and discard; NEVER describe LuckyJ's resulting hand as 1-shanten, one-away, or still trying to reach tenpai. If the post-call shanten is 1, describe it as 1-shanten, not tenpai.
 11. Do not describe a triplet or duplicated number tiles as a defensive reserve merely because there are multiple copies. Only call a tile a defensive reserve when the supplied safety facts show target-specific safety; otherwise describe the real next discard or shape plan.
 12. Mortal "Reach" outputs record the riichi declaration action only. If the Mortal section says reach support is declaration-only, you may cite Mortal as support for declaring riichi now, but you must NOT say Mortal endorsed LuckyJ's declaration discard tile, wait choice, or full discard line.
+    Banned Mortal-Reach wording: "Mortal backs LuckyJ's line", "LuckyJ and Mortal both discard", "backed by Mortal" attached to LuckyJ's discard, or any wording that puts Mortal in the same clause as LuckyJ's declaration discard/wait. Use this framing instead: "Mortal supports declaring riichi; the discard/wait comparison remains LuckyJ versus Nishiki."
 
 Style Guidelines for English (professional-commentator voice):
 Model the register on translated Japanese strategy books ("Digital" school): a professional
@@ -123,6 +124,25 @@ MORTAL_REACH_TILE_OVERCLAIM_PATTERNS = [
     re.compile(
         r"\bMortal\b[^.。]{0,180}\b(?:backs|backing|supports|endorses?|confirms|validates|agrees)\b"
         r"[^.。]{0,180}\bLuckyJ(?:'s|’s)?\s+(?:line|discard|choice|wait|tile|stance|decision)",
+        re.I,
+    ),
+    re.compile(
+        r"\bLuckyJ\s+and\s+Mortal\b[^.。]{0,180}"
+        r"\b(?:both|discard|discards|choose|chooses|wait|riichi)\b",
+        re.I,
+    ),
+    re.compile(
+        r"\bLuckyJ\b[^.。]{0,120}\bbacked\s+(?:fully\s+)?by\s+Mortal",
+        re.I,
+    ),
+    re.compile(
+        r"\b(?:line|move|choice)\b[^.。]{0,80}\b(?:backed|supported)\b"
+        r"[^.。]{0,80}\bby\s+Mortal",
+        re.I,
+    ),
+    re.compile(
+        r"\bMortal(?:'s|’s)\s+[^.。]{0,80}\b(?:agreement|endorsement|support)\b"
+        r"[^.。]{0,160}\b(?:LuckyJ|discard|wait|line|move|choice)\b",
         re.I,
     ),
     re.compile(
@@ -910,7 +930,8 @@ def mortal_verdict_text(case):
                 f"discard tile{tile_text}, wait choice, or full LuckyJ line. You may cite Mortal as "
                 "support for declaring riichi now, but do NOT claim it endorsed LuckyJ's specific "
                 "discard/wait. Discuss the declaration-discard choice using the supplied shape, safety, "
-                "and Nishiki comparison."
+                "and Nishiki comparison. If you mention Mortal in the answer, use this exact framing: "
+                "'Mortal supports declaring riichi; the discard/wait comparison remains LuckyJ versus Nishiki.'"
             )
         else:
             stance = (
@@ -1095,6 +1116,8 @@ def process_example(case, guide_en, guide_ja, force):
                     "model": MODEL
                 }
             }
+            if cached_guide_conflicts(case, cache_entry):
+                raise ValueError("generated guide conflicts with authoritative prompt facts")
             return key, cache_entry, False
         except Exception as e:
             if attempt == retries - 1:
