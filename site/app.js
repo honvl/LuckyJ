@@ -24,25 +24,40 @@ const pointRailFallbackLabels = {
   en: [
     "Start with the placement problem.",
     "Combine chances until the table forces a commitment.",
-    "Bad shapes favor opening, but only with a plan.",
+    "Calls need a named purpose.",
     "Every open call increases the price of safe tiles.",
     "Throw dangerous floating tiles before they become your problem.",
     "Value planning starts while the hand is still far away.",
-    "Call for tempo, denial, survival, and hand completion.",
     "Riichi is a pressure tool.",
     "Push-fold is recalculated every draw.",
     "Late hands tighten: fewer deviations, fewer bad moves.",
     "Drawn-hand points are part of the attack plan.",
     "Use NAGA match rate as a review cue.",
     "Cut live yakuhai earlier when an open hand's yaku is unproven.",
-    "Keep genbutsu and suji tiles on purpose.",
+    "Keep safe tiles for a named target.",
     "Safe tiles expire when they stop defending the current danger.",
     "Late outside cuts can preserve the winning route.",
-    "A kept genbutsu or suji tile must name its target.",
     "Name the honor's job: value, yaku condition, dead tile, or safety.",
-    "Leader safety still has to calculate.",
   ],
 };
+const pointRailFallbackIds = [
+  "point-01",
+  "point-02",
+  "point-03",
+  "point-04",
+  "point-05",
+  "point-06",
+  "point-08",
+  "point-09",
+  "point-10",
+  "point-11",
+  "point-12",
+  "point-13",
+  "point-14",
+  "point-15",
+  "point-16",
+  "point-18",
+];
 const pointExampleControllers = new Map();
 const pointExampleSelections = new Map();
 const pointExampleSelectionsKey = "luckyj:point-example-selections:v1";
@@ -236,11 +251,11 @@ function renderPointRail() {
         const heading = section.querySelector("h3")?.textContent.trim() || "";
         return { href: `#${section.id}`, id: section.id, number, title: heading, section };
       })
-    : Array.from({ length: 19 }, (_, index) => {
+    : pointRailFallbackIds.map((id, index) => {
         const number = String(index + 1).padStart(2, "0");
         return {
-          href: `points.html#point-${number}`,
-          id: `point-${number}`,
+          href: `points.html#${id}`,
+          id,
           number,
           title: pointRailFallbackLabels[pageLang]?.[index] || "",
           section: null,

@@ -46,8 +46,6 @@ HIBAKARI_SPLIT_POINTS = {
     "point-14",
     "point-15",
     "point-16",
-    "point-17",
-    "point-19",
 }
 DANGER_HEADS = [
     ("k", "dangerK"),
@@ -67,9 +65,9 @@ CALL_KIND_LABELS = {
 POINT_TEXT = {
     "point-01": {
         "title": "Placement changes the price of the same tile",
-        "lesson": "When the score is already good enough, the hand does not need to chase every point. A controlled fold or low-risk continuation can beat a prettier immediate shape.",
-        "prompt": "Before choosing, say whether this hand needs more points or whether protecting the current position is already enough.",
-        "answer": "Copy the score job first. Lower the ambition, keep safe tiles, and push only if the next draw makes the hand worth it.",
+        "lesson": "When the score is already good enough, the hand does not need to chase every point. A lead lowers ambition only when the discard also reduces real danger or preserves a clean next turn.",
+        "prompt": "Before choosing, say the placement job and the concrete risk this discard removes.",
+        "answer": "Copy the score job first. Lower ambition only when the hand still has a cheap end, clean fold, or safe next discard.",
     },
     "point-02": {
         "title": "Keep the branch point alive",
@@ -78,10 +76,10 @@ POINT_TEXT = {
         "answer": "Keep multiple live routes until the table forces a commitment.",
     },
     "point-03": {
-        "title": "Bad closed shapes buy calls",
-        "lesson": "The call is valuable when the closed route is mostly imaginary and the open hand creates yaku, tempo, or real tenpai pressure.",
-        "prompt": "Before calling, say what the call creates: yaku, tenpai, real 1-shanten, denial, or safe draw equity.",
-        "answer": "Call poor closed shapes when the exposed hand has a clear purpose and still leaves a way to stop.",
+        "title": "Calls need a named purpose",
+        "lesson": "The call is valuable when it repairs a fake closed route, creates yaku or tenpai, changes the round clock, denies time, or preserves safe draw equity.",
+        "prompt": "Before calling, say what the call creates and what you discard after it.",
+        "answer": "Open poor closed shapes only when the exposed hand has a clear job, a first discard, and still leaves a way to stop.",
     },
     "point-04": {
         "title": "Open hands must keep a safe tile",
@@ -100,12 +98,6 @@ POINT_TEXT = {
         "lesson": "When the score job needs more, optimizing toward a cheap bad-shape future is too small. Early acceptance is the cheapest thing to spend.",
         "prompt": "Ask how many points this hand needs before preserving maximum ukeire.",
         "answer": "Keep dora, yaku, and shape upgrades when the fast hand would be too small or too brittle.",
-    },
-    "point-07": {
-        "title": "Call for tempo with a purpose",
-        "lesson": "The call has a job beyond completing blocks: speed up a poor hand, contest the table, break a bonus window, or preserve draw equity.",
-        "prompt": "Name the purpose before exposing the hand.",
-        "answer": "A good tempo call changes the round's clock and keeps you prepared for the next threat.",
     },
     "point-08": {
         "title": "Riichi converts pressure into equity",
@@ -144,10 +136,10 @@ POINT_TEXT = {
         "answer": "When your hand is too slow to punish them and the yakuhai has no strong job, clean it before the open hand gets to use it.",
     },
     "point-14": {
-        "title": "Keep genbutsu and suji tiles on purpose",
-        "lesson": "LuckyJ often keeps a tile because it is already genbutsu or suji against an opponent river, especially before spending safer tiles would make the next threat impossible to answer.",
-        "prompt": "Before discarding a flexible tile, count which tiles in your hand are genbutsu or suji to each opponent and which of them are still useful next turn.",
-        "answer": "Keep the safe tile while it buys future choice; spend it only when the hand has become worth the risk or the draw-point/fold route is already decided.",
+        "title": "Keep safe tiles for a named target",
+        "lesson": "LuckyJ keeps genbutsu, suji, and weaker outside-river safety only when the tile answers a specific opponent and a specific future decision.",
+        "prompt": "For each kept safe tile, complete the sentence: safe against X if Y happens.",
+        "answer": "Keep the safe tile while it covers the live threat and buys future choice; spend it when the target is vague, quiet, or already covered.",
     },
     "point-15": {
         "title": "Safe tiles expire",
@@ -161,23 +153,11 @@ POINT_TEXT = {
         "prompt": "When a terminal cut looks timid, check whether the inside tile is the hand's real connector.",
         "answer": "Treat the outside cut as route preservation when the outside tile carries little value or target-specific safety.",
     },
-    "point-17": {
-        "title": "Every kept safe tile needs a target",
-        "lesson": "Genbutsu and suji only matter when they answer a specific opponent and a specific future decision.",
-        "prompt": "For each kept safe tile, complete the sentence: safe against X if Y happens.",
-        "answer": "Keep the tile when it covers the live threat. If the named target is vague or quiet, the tile is probably clutter.",
-    },
     "point-18": {
         "title": "Honor tiles need role labels",
         "lesson": "An honor can be self value, an opponent yaku condition, dead material, or a defensive tile. Those are different tiles in review.",
         "prompt": "Before cutting or keeping an honor, label its current job.",
         "answer": "Cut loose honors when their only live job helps an opponent or when they are dead; keep honors that are value, route, or target-specific defensive tiles.",
-    },
-    "point-19": {
-        "title": "Leader safety is a qualifier",
-        "lesson": "A lead lowers the ambition needed to end the hand, while each discard still needs to reduce real danger or preserve the next turn.",
-        "prompt": "When leading, ask what concrete risk the safer-looking discard removes.",
-        "answer": "Use the lead to lower the risk budget while still calculating shape, danger, and future safe tiles.",
     },
 }
 
@@ -185,9 +165,7 @@ POINT_TEXT = {
 PREFERRED_CASES = {
     "point-15": [{"game": 352, "kyoku_index": 0, "left": 43, "actual": "5m", "naga": "P"}],
     "point-16": [{"game": 107, "kyoku_index": 7, "left": 16, "actual": "1s", "naga": "2s"}],
-    "point-17": [{"game": 5, "kyoku_index": 5, "left": 19, "actual": "3p", "naga": "6m"}],
     "point-18": [{"game": 584, "kyoku_index": 6, "left": 27, "actual": "N", "naga": "1s"}],
-    "point-19": [{"game": 472, "kyoku_index": 13, "left": 12, "actual": "9m", "naga": "6m"}],
 }
 
 
@@ -1281,23 +1259,21 @@ def call_has_naga_discrepancy(case):
     nishiki = model_head((case or {}).get("call_model_heads") or [], "nishiki")
     if not nishiki:
         return False
-    if not nishiki.get("supports_call"):
-        return True
-    post_nishiki = model_head((case or {}).get("post_call_model_heads") or [], "nishiki")
-    return bool(post_nishiki) and not post_nishiki.get("matches_luckyj")
+    return not nishiki.get("supports_call")
 
 
 def call_has_teaching_disagreement(case):
     nishiki = model_head((case or {}).get("call_model_heads") or [], "nishiki")
     if not nishiki:
         return False
+    # Same-call agreement with only a post-call discard split is too narrow for
+    # a public teaching example.
+    if nishiki.get("supports_call"):
+        return False
     if nishiki.get("prefers_pass"):
         return True
     if nishiki.get("top_action") != (case or {}).get("call"):
         return True
-    if nishiki.get("supports_call"):
-        post_nishiki = model_head((case or {}).get("post_call_model_heads") or [], "nishiki")
-        return bool(post_nishiki) and not post_nishiki.get("matches_luckyj")
     return False
 
 
@@ -1375,12 +1351,8 @@ def point_focus_en(point_key, case):
         return f"This is a spend-the-safe-tile example. {actual} may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space."
     if point_key == "point-16":
         return f"The outside cut {actual} preserves the middle connection represented by {naga}. It looks defensive, but the point is keeping the real route alive."
-    if point_key == "point-17":
-        return f"The kept {kept} needs a target. When it covers the active opponent, keeping it is a plan; vague targets make it clutter."
     if point_key == "point-18":
         return f"Honor tiles split into roles. Here {actual} is being treated as loose material or an opponent condition."
-    if point_key == "point-19":
-        return f"The lead lowers the ambition and keeps the calculation active. LuckyJ checks whether {actual} reduces risk or preserves the next turn."
     return f"LuckyJ cuts {actual} while Nishiki prefers {naga}; the lesson is in the future each tile leaves behind."
 
 
@@ -1415,12 +1387,8 @@ def point_focus_ja(point_key, case):
         return f"安全牌を使う例。{actual} は安全に見えても、守る相手がずれたら手順の邪魔になる。"
     if point_key == "point-16":
         return f"外側の {actual} 切りは、中の {naga} 周りのルートを残す攻めの支払いとして読む。"
-    if point_key == "point-17":
-        return f"残す {naga} には対象が必要。生きている相手に効くなら計画で、対象がなければただの手牌圧迫。"
     if point_key == "point-18":
         return f"字牌には役割がある。ここでの {actual} は浮き牌か相手条件として扱われている。"
-    if point_key == "point-19":
-        return f"トップ目でも計算は続ける。{actual} が危険を減らし、次巡を残すかを見ている。"
     return f"LuckyJ は {actual}、ニシキは {naga}。どちらがどの未来を残すかを見る。"
 
 
@@ -1431,14 +1399,12 @@ def copy_rule_en(point_key, case):
         return "Copy the score job: when your position is already good enough, lower the ambition, keep safe tiles, and let the hand fold unless a later draw makes it worth pushing."
     if point_key == "point-13":
         return f"Copy this when {actual} is live yakuhai for an opened hand and your own hand is too slow to punish that player immediately."
-    if point_key in {"point-14", "point-17"}:
+    if point_key == "point-14":
         return f"Copy the target: keep {naga} when it answers a named opponent on a believable future bad draw."
     if point_key == "point-15":
         return f"Copy this only after naming why the safe-looking {actual} has expired and what later safe tile remains."
     if point_key == "point-18":
         return f"Copy the role label: cut {actual} when its main job helps someone else's condition."
-    if point_key == "point-19":
-        return "Copy the reduced ambition of the leader seat, but still count danger, shape, and the next discard."
     if point_key == "point-08":
         return "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter."
     if point_key == "point-11":
@@ -1453,14 +1419,12 @@ def copy_rule_ja(point_key, case):
         return "点数状況を真似する。今の着順を守れば十分なら、目標を下げて安全牌を残し、次のツモで押す価値が出るまで無理しない。"
     if point_key == "point-13":
         return f"{actual} が副露手の生きた役牌で、自分がすぐ罰せない時だけ真似する。"
-    if point_key in {"point-14", "point-17"}:
+    if point_key == "point-14":
         return f"対象を真似する。{naga} が次の悪いツモで誰に効くかを言える時だけ残す。"
     if point_key == "point-15":
         return f"安全そうな {actual} がなぜ期限切れか、次の安全牌が何かを言えた時だけ真似する。"
     if point_key == "point-18":
         return f"役割ラベルを真似する。{actual} が自分の価値でなく相手条件に近いなら切る。"
-    if point_key == "point-19":
-        return "トップ目の低い目標を真似してよいが、危険度、形、次巡の打牌はまだ数える。"
     if point_key == "point-08":
         return "リーチで相手の行動が変わり、待ちも最低限ある時だけ圧力を真似する。"
     if point_key == "point-11":
@@ -1477,7 +1441,7 @@ def limit_rule_en(point_key, case):
         return "Clean honors by role. Your pair, your value tile, and a dead caller tile use different rules."
     if point_key == "point-08":
         return "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct."
-    if point_key in {"point-14", "point-17"}:
+    if point_key == "point-14":
         return f"Keep {naga} when it actually covers a live threat."
     if point_key == "point-15":
         return f"Spend {actual} only when another real answer to the active threat remains."
@@ -1495,7 +1459,7 @@ def limit_rule_ja(point_key, case):
         return "字牌は役割で分ける。対子、自分の役、相手にもう生きていない牌は別判断である。"
     if point_key == "point-08":
         return "リーチには理由を持たせる。悪形、着順罰、明確な改良があればダマも残る。"
-    if point_key in {"point-14", "point-17"}:
+    if point_key == "point-14":
         return f"{naga} が生きた脅威に通る時に残す。"
     if point_key == "point-15":
         return f"{actual} が現役の脅威への唯一の答えなら、安全牌として残す。"
@@ -1599,8 +1563,6 @@ def build_call_guide(case, lang):
     if lang == "ja":
         if point_key == "point-04":
             focus = f"副露後の {discard} まで先に見えていることが大事。開いた後も次の安全牌を残している。"
-        elif point_key == "point-07":
-            focus = f"{call} は速度を買うための副露。残り{case.get('left')}枚で、閉じたまま待つより局面の時計を進めている。"
         elif shape.get("shanten") is not None and shape.get("shanten") > 0 and (case.get("left") or 0) <= 1:
             focus = f"これは手牌完成の鳴きではなく、終局直前のテンポ鳴き。{discard} を切った後も {post_shape} なので、普通の和了形に近づいた例としては読まない。"
         elif shape.get("shanten") is not None and shape.get("shanten") <= 0:
@@ -1628,8 +1590,6 @@ def build_call_guide(case, lang):
         }
     if point_key == "point-04":
         focus = f"The important tile is the post-call {discard}. LuckyJ opens while keeping the first safe tile and the next concrete plan."
-    elif point_key == "point-07":
-        focus = f"The {call} buys tempo with {case.get('left')} tiles left. LuckyJ is changing the round clock and completing a useful set."
     elif shape.get("shanten") is not None and shape.get("shanten") > 0 and (case.get("left") or 0) <= 1:
         focus = f"This is a last-turn tempo call, not a hand-completion call. After {discard}, the hand is still {post_shape}, so do not read this as a normal pon that makes a winning shape."
     elif shape.get("shanten") is not None and shape.get("shanten") <= 0:
@@ -2054,15 +2014,6 @@ def point_candidate_eligible(point_key, case):
             and (score < 30000 or rank in {3, 4})
             and value_tradeoff_signal(case)
         )
-    if point_key == "point-07":
-        shape = case.get("post_call_eval") or {}
-        return (
-            kind == "call"
-            and case.get("discard_after_call") not in {None, "?"}
-            and call_has_teaching_disagreement(case)
-            and call_has_purpose(case)
-            and (left <= 40 or shape.get("shanten") is None or shape.get("shanten") <= 1)
-        )
     if point_key == "point-08":
         return kind == "reach" and case.get("actual_reach") and (case.get("reach_prob") is None or case.get("reach_prob") >= 0.5)
     if point_key == "point-09":
@@ -2096,18 +2047,8 @@ def point_candidate_eligible(point_key, case):
         )
     if point_key == "point-16":
         return kind == "discard" and stage in {"middle", "late"} and actual_cls == "terminal" and naga_cls == "simple"
-    if point_key == "point-17":
-        return kind == "discard" and active_threat_count(case) > 0 and is_live_safety_read(kept_read)
     if point_key == "point-18":
         return kind == "discard" and actual_cls == "honor" and honor_role_signal(case)
-    if point_key == "point-19":
-        return (
-            kind == "discard"
-            and rank == 1
-            and (score >= 35000 or stage in {"middle", "late"})
-            and (actual_d is None or naga_d is None or actual_d <= naga_d + 0.02)
-            and (retained_safety_count(actual_eval, "against_threat") >= retained_safety_count(naga_eval, "against_threat") or actual_d is None or naga_d is None or actual_d < naga_d)
-        )
     return True
 
 
@@ -2154,16 +2095,24 @@ def add_best(selected, used, scores, point_key, candidate, score):
 
 def finalize_examples(selected):
     output = {}
+    seen_source_frames = set()
     for point_key in sorted(POINT_TEXT):
         rows = selected.get(point_key, [])
         rows = sorted(rows, key=lambda row: row["score"], reverse=True)
         examples = []
-        for index, row in enumerate(rows[:EXAMPLES_PER_POINT], 1):
+        for row in rows:
             case = row["case"]
+            sig = candidate_signature(case)
+            if sig in seen_source_frames:
+                continue
+            index = len(examples) + 1
             case["example_index"] = index
             case["example_score"] = round(row["score"], 4)
             attach_example_guides(case)
             examples.append(case)
+            seen_source_frames.add(sig)
+            if len(examples) >= EXAMPLES_PER_POINT:
+                break
         if examples:
             output[point_key] = examples
     return output
@@ -2506,27 +2455,6 @@ def try_discard_points(
             )
             add_best(selected, used, scores, "point-16", case, score_value)
 
-    if naga != actual and naga_read["kind"] and naga_read["safe_against_threat"]:
-        score_value = preferred_bonus("point-17", row, kyoku_index, left, actual, naga) + gap + 0.2 * active_threats
-        if stage in {"middle", "late"}:
-            score_value += 0.2
-        if wants_candidate(selected, "point-17", score_value):
-            case = make_discard_case(
-                row,
-                kyoku_index,
-                pos,
-                start,
-                state,
-                hands,
-                discards,
-                melds,
-                reached,
-                dora_markers,
-                "point-17",
-                riichi_discard_indices,
-            )
-            add_best(selected, used, scores, "point-17", case, score_value)
-
     if naga != actual and actual_cls == "honor" and naga_cls == "simple" and tile_count(hands[target], actual) == 1:
         score_value = preferred_bonus("point-18", row, kyoku_index, left, actual, naga) + gap
         if actual_d is not None and naga_d is not None:
@@ -2549,29 +2477,6 @@ def try_discard_points(
                 riichi_discard_indices,
             )
             add_best(selected, used, scores, "point-18", case, score_value)
-
-    if naga != actual and score >= 35000 and (actual_d is None or naga_d is None or actual_d <= naga_d + 0.02):
-        score_value = preferred_bonus("point-19", row, kyoku_index, left, actual, naga) + gap
-        if actual_d is not None and naga_d is not None:
-            score_value += max(0.0, naga_d - actual_d)
-        if stage in {"middle", "late"}:
-            score_value += 0.2
-        if wants_candidate(selected, "point-19", score_value):
-            case = make_discard_case(
-                row,
-                kyoku_index,
-                pos,
-                start,
-                state,
-                hands,
-                discards,
-                melds,
-                reached,
-                dora_markers,
-                "point-19",
-                riichi_discard_indices,
-            )
-            add_best(selected, used, scores, "point-19", case, score_value)
 
     if stage == "late" and naga != actual:
         score_value = gap + 0.1 * active_threats
@@ -2753,31 +2658,6 @@ def try_call_points(
                 call_case,
                 score_value,
             )
-
-    call_case = make_call_case(
-        row,
-        kyoku_index,
-        pos,
-        start,
-        state,
-        hands,
-        discards,
-        melds,
-        reached,
-        dora_markers,
-        "point-07",
-        previous_state,
-        riichi_discard_indices,
-    )
-    score_value = 0.3 + exposed_bonus + (0.2 if left <= 40 else 0.0) + call_score_adjustment(call_case or {})
-    if call_has_teaching_disagreement(call_case) and wants_candidate(selected, "point-07", score_value):
-        add(
-            selected,
-            used,
-            "point-07",
-            call_case,
-            score_value,
-        )
 
 
 def collect_examples():

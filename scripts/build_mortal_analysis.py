@@ -529,7 +529,6 @@ def point_mortal_focus(point: str, example: dict[str, Any], lang: str = "en") ->
             "point-04": "副露後の最初の打牌とブレーキが成立するかを見る。",
             "point-05": f"{actual} を今処理する理由が将来危険の回避になっているかを見る。",
             "point-06": "受け入れを払うだけの打点・価値があるかを見る。",
-            "point-07": "鳴きが局面の時計を進めるか、露出だけ増やすかを見る。",
             "point-08": "リーチ圧力が柔軟性を失う値段に見合うかを見る。",
             "point-09": "次に必要な打牌まで再評価する。",
             "point-10": "終盤の LuckyJ 例は最もコピーしにくいので、確証より警告として読む。",
@@ -539,9 +538,7 @@ def point_mortal_focus(point: str, example: dict[str, Any], lang: str = "en") ->
             "point-14": f"残した {naga} が対象のある安全牌かを見る。",
             "point-15": f"{actual} の安全が期限切れか、まだ必要な保険かを見る。",
             "point-16": f"外側の {actual} が中の接続を残す攻めになっているかを見る。",
-            "point-17": f"残した {naga} が誰に効く安全牌なのかをはっきりさせる。",
             "point-18": f"{actual} が自分の価値、相手条件、死に牌、守備牌のどれかを分ける。",
-            "point-19": "トップ目の低い目標が、実際の危険低下と両立するかを見る。",
         }
         return mapping.get(point, "Mortal を第二意見として使い、打牌の理由を確認する。")
     mapping = {
@@ -551,7 +548,6 @@ def point_mortal_focus(point: str, example: dict[str, Any], lang: str = "en") ->
         "point-04": "Use it to inspect the first post-call discard and whether the open hand still has a brake.",
         "point-05": f"Use it to decide whether {actual} is a future liability worth removing now.",
         "point-06": "Use it to test whether the hand's value justifies spending immediate acceptance.",
-        "point-07": "Use it to separate tempo that changes the clock from exposure that only feels busy.",
         "point-08": "Use it to check whether riichi pressure is worth losing flexibility.",
         "point-09": "Use it to reprice the next required discard.",
         "point-10": "Use it as a warning layer: late LuckyJ choices are the least copyable part of the style.",
@@ -561,9 +557,7 @@ def point_mortal_focus(point: str, example: dict[str, Any], lang: str = "en") ->
         "point-14": f"Use it to check whether the kept {naga} is a named defensive tile.",
         "point-15": f"Use it to decide whether {actual}'s safety has expired or is still needed insurance.",
         "point-16": f"Use it to test whether the outside {actual} cut preserves a real inside connector.",
-        "point-17": f"Use it to name exactly which opponent the kept {naga} answers.",
         "point-18": f"Use it to label {actual}: self value, opponent condition, dead material, or defensive tile.",
-        "point-19": "Use it to check whether leader caution still preserves a playable next turn.",
     }
     return mapping.get(point, "Use Mortal as a second model view on whether the disagreement has strategic weight.")
 

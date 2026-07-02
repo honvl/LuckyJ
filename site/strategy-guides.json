@@ -2,9 +2,9 @@
   "point-01": {
     "caption": "Placement first, tile second",
     "situation": "East 2-2, LuckyJ is dealer with a 35,000 point lead. The hand has a pair of [[3m]], a clean [[5p]][[6p]][[7p]] block, a loose souzu shape, and the important [[E]] still in hand. The dora indicator is [[N]], so [[E]] carries three jobs: round wind, dealer seat wind, and dora. The hand can become a heavy dealer hand while skipping a thin cheap route.",
-    "read": "The [[W]] and [[S]] comparison is only the surface. LuckyJ aims beyond the fastest possible 1,000 point hand. With the lead and dealer turn, the hand has two jobs at once: keep enough shape to threaten a large dealer win, and avoid turning a favorable round into an unnecessary deal-in. A human looking only at tile order will ask which honor is marginally worse. LuckyJ starts with the higher-level question: what does this hand have to become for the risk to be worth taking?",
+    "read": "The [[W]] and [[S]] comparison is only the surface. LuckyJ aims beyond the fastest possible 1,000 point hand. With the lead and dealer turn, the hand has two jobs at once: keep enough shape to threaten a large dealer win, and avoid turning a favorable round into an unnecessary deal-in. A lead lowers ambition only when the discard also reduces real danger or preserves a clean next turn.",
     "whyNot": "NAGA's top tile, [[S]], is a normal efficiency-style outside discard. It is reasonable. Still, choosing among side honors is a low-impact local problem compared with protecting the [[E]] plan and avoiding early speed bias. If this hand later draws central tiles, LuckyJ can still turn it into value. If the table becomes dangerous, it still has defensive shape.",
-    "copy": "In your own games, start by naming the placement job before judging the discard. Leading as dealer, keep hands from turning into automatic speed races. Keep the tiles that let the hand become worth pushing, and cut the tiles with little value or defense. This is especially important when one tile, like [[E]] here, is simultaneously yaku, dora, and dealer pressure.",
+    "copy": "In your own games, start by naming the placement job before judging the discard. Leading as dealer, keep hands from turning into automatic speed races. Keep the tiles that let the hand become worth pushing or stop cleanly, and cut the tiles with little value or defense. This is especially important when one tile, like [[E]] here, is simultaneously yaku, dora, and dealer pressure.",
     "limit": "Use this as a lead-with-value pattern. With a thin hand, low dealer pressure, or a live dangerous opponent, the correct plan can be cheap closure or an earlier fold. The [[W]] discard matters because the score job is defined first."
   },
   "point-02": {
@@ -16,12 +16,12 @@
     "limit": "Use this while multiple routes are live. A clean fast route or a clearly dead unsafe honor makes ambiguity sentimental."
   },
   "point-03": {
-    "caption": "Call the tile that fixes the hand's worst problem",
+    "caption": "Call only when the call has a job",
     "situation": "LuckyJ is behind in East 4 with a hand full of honors and bad shapes: [[2m]][[2m]], [[1s]][[3s]][[4s]][[6s]], and pairs of [[S]] and [[P]]. Toimen discards [[P]], and LuckyJ pons, discarding [[2m]].",
-    "read": "This call fixes the hand's biggest problem. The closed hand is too clumsy to trust: low speed, low riichi value, and too many tiles that become awkward if an opponent speeds up. The [[P]] pon gives the hand its yaku condition immediately. Once the hand has that yaku condition, cutting [[2m]] removes a pair with a small role in the open plan and starts turning a fake closed hand into a real open hand.",
+    "read": "This call fixes the hand's biggest problem. The closed hand is too clumsy to trust: low speed, low riichi value, and too many tiles that become awkward if an opponent speeds up. The [[P]] pon gives the hand its yaku condition immediately. Other calls in this family buy tempo, denial, ippatsu-break value, or safe draw equity. The shared rule is purpose first, exposure second.",
     "whyNot": "The common mistake is to pass the first yakuhai because the hand is far from ready. That logic is backwards in this type of hand. Being far away is exactly why the yakuhai call matters: it removes the requirement to assemble a perfect closed hand. If you pass, you may spend several turns drawing around bad shapes while opponents move forward.",
-    "copy": "With far-away hands, call the tile that repairs the biggest structural defect first. Yakuhai that gives the hand a yaku is often more important than completing an already decent sequence. After calling, immediately choose the discard that clarifies the route and leaves the hand able to stop.",
-    "limit": "Call because the call creates a clear purpose: yaku, real speed, denial, or draw-point equity. A bad hand with no yaku after the call, low value, and no safe reserve stays bad."
+    "copy": "With far-away hands, call the tile that repairs the biggest structural defect first. Before exposing the hand, finish the sentence: this call creates yaku, tenpai, real one-away shape, denial, tempo pressure, or safe draw equity. After calling, immediately choose the discard that clarifies the route and leaves the hand able to stop.",
+    "limit": "Call because the call creates a clear purpose. A bad hand with no yaku after the call, low value, and no safe reserve stays bad."
   },
   "point-04": {
     "caption": "Open hands must still be able to stop",
@@ -46,14 +46,6 @@
     "whyNot": "NAGA's [[S]] discard is the standard remove-isolated-honor move. LuckyJ can reject it because the [[9p]] has low real use. Keeping [[S]] keeps the hand open to value, calls, or safety depending on the next few draws.",
     "copy": "When you need points, aim beyond the smallest version of the hand. Keep the tiles that can make it worth pushing before the hand becomes narrow. Red fives, yakuhai, dora shapes, and pair-heavy routes should be planned early.",
     "limit": "Keep value plans concrete. A decorative yaku that rarely completes can still damage a good hand. LuckyJ keeps the [[S]] here because the cost is an isolated [[9p]]."
-  },
-  "point-07": {
-    "caption": "Tempo calls need a purpose",
-    "situation": "In the same East 4 hand, LuckyJ later chis red [[5sr]] from kamicha and discards [[1s]]. The hand is already open and behind. The call is about making the open hand actually move.",
-    "read": "Once you have opened around yakuhai, the hand's failure mode is becoming a slow exposed hand with weak winning and folding prospects. The red-five chi is a tempo call because it converts loose shape into a usable block and keeps the hand's value alive. Discarding [[1s]] after the call trims the least useful outside tile and keeps the hand aimed at completion.",
-    "whyNot": "Players often judge calls by whether the called set looks good in isolation. A tempo call needs to change the round clock: get you close enough to matter, deny opponents free turns, or preserve a draw-point route. A call that exposes the hand while leaving the same bad shapes is just exposure.",
-    "copy": "Before calling, say the purpose out loud. 'This call makes yaku and real 1-away.' 'This call takes tenpai.' 'This call preserves noten payments safely.' If you cannot finish that sentence, pass. If you can, call and immediately discard the tile that best supports the purpose.",
-    "limit": "Use tempo with value, safety, or closeness. LuckyJ calls selectively because the call changes what the hand can realistically accomplish."
   },
   "point-08": {
     "caption": "Riichi as table control",
@@ -104,12 +96,12 @@
     "limit": "Use this with live loose yakuhai against unclear open hands. Clear opponent yaku, clean tanyao shape, dead tiles, useful pairs, and your own value needs all weaken the cleanup rule."
   },
   "point-14": {
-    "caption": "Keep the tile with the shape",
+    "caption": "Keep safe tiles with a target",
     "situation": "LuckyJ and NAGA split on a discard where NAGA wants to spend a tile that is already genbutsu, suji, or an early outside tile (sotogawa) to an opponent river. LuckyJ cuts a different tile and keeps that defensive tile in the hand.",
-    "read": "The retained tile is doing a timing job, and the target matters. A tile that is genbutsu to the dealer differs from suji to a closed child; an outside tile (sotogawa) from a first-row discard is weaker again, but still points at a specific river. The paired target breakdown separates kept tiles from spent tiles, so the useful signal is whether LuckyJ cashes the defensive tile now or preserves it for one more decision.",
+    "read": "The retained tile is doing a timing job, and the target matters. A tile that is genbutsu to the dealer differs from suji to a closed child; an outside tile (sotogawa) from a first-row discard is weaker again, but still points at a specific river. The useful signal is whether LuckyJ can say who the tile protects against and what future decision it keeps playable.",
     "whyNot": "NAGA's top discard may be mechanically cleaner because safe tiles often look redundant while the table is quiet. The hand's future danger is invisible in shanten. Spending the only genbutsu or useful suji tile too early can make the next turn force a live middle discard that the current hand never deserved to push.",
-    "copy": "Keep a small defensive inventory by opponent class. Mark exact river matches first, then suji, then early outside tiles (sotogawa) from the dealer, riichi hands, and open hands. When your hand is far or only moderately valuable, avoid spending the last useful safe tile against the opponent most likely to tax your next discard.",
-    "limit": "Rate suji modestly and sotogawa even more modestly. Both are weaker than genbutsu, weaker against unusual waits, and often irrelevant against a quiet player. Copy LuckyJ here when the retained tile points at the player who matters and the hand still needs a future off-ramp."
+    "copy": "Keep a small defensive inventory by opponent class. Mark exact river matches first, then suji, then early outside tiles (sotogawa) from the dealer, riichi hands, and open hands. For every safe tile you keep, write the full sentence: safe against X if Y happens.",
+    "limit": "Rate suji modestly and sotogawa even more modestly. Both are weaker than genbutsu, weaker against unusual waits, and often irrelevant against a quiet player. If the target is vague or quiet, the safe tile should be repriced as ordinary clutter."
   },
   "point-15": {
     "caption": "Spend stale safety when the target changes",
@@ -127,14 +119,6 @@
     "copy": "When an outside cut looks strange, ask what the retained inside tile does next. If it connects the hand to tenpai, accepts a high-value draw, or avoids forcing a worse live tile later, the cut can be copied.",
     "limit": "Cut outside tiles only after checking yaku, dora support, pair value, and target-specific safety. The point applies when the outside tile has a weaker job than the inside route it is replacing."
   },
-  "point-17": {
-    "caption": "A safe tile needs a target",
-    "situation": "LuckyJ keeps a genbutsu, suji, or sotogawa tile that NAGA wants to cut, but the important detail is who that tile is safer against and whether that opponent is active.",
-    "read": "The aggregate warning is strong: generic kept-genbutsu/suji mismatches were worse than baseline, while threat-specific tile preservation was much better. Sotogawa belongs in the same target sentence, just with a lower certainty grade. The concept is coverage: a tile is good when it covers the opponent who can punish the next discard.",
-    "whyNot": "Humans over-label tiles as simply safe. Genbutsu to shimocha gives no protection against toimen's riichi. Suji or sotogawa to a quiet child gives little answer to an open dealer. If the kept tile misses the live danger, NAGA's shape cut may be right.",
-    "copy": "For every safe tile you keep, write the full sentence: \"safe against X if Y happens.\" If the sentence names a live riichi, open hand, dealer pressure, or an early outside-tile read from that player's river, the tile has a job. Vague targets should be repriced as ordinary clutter.",
-    "limit": "Target naming can drift into over-defense. High-value tenpai, parent pressure, and weak threats can still justify spending the safe tile."
-  },
   "point-18": {
     "caption": "Honor review starts with a role label",
     "situation": "LuckyJ cuts an honor while NAGA prefers a shape tile. The honor might be loose cleanup, opponent yaku denial, a dead tile, or a stale safety tile.",
@@ -142,13 +126,5 @@
     "whyNot": "A live dragon pair, a lone wind needed by an open opponent, and a double-visible dead honor are different review objects. Treating all of them as honors hides the real decision.",
     "copy": "Label the honor before judging the discard: self yakuhai, opponent yaku condition, value seed, dead tile, genbutsu tile, or ordinary loose honor. Then apply the rule for that label.",
     "limit": "Keep the honor when it is your value, your only safe tile against the live threat, or part of a real route such as honitsu or chiitoi. Clean it when its main job belongs to someone else."
-  },
-  "point-19": {
-    "caption": "Leader safety still has to calculate",
-    "situation": "LuckyJ is leading and chooses the lower-risk line. The lead changes the hand's job, while each passive discard still needs a concrete reason.",
-    "read": "The leader-low-risk bucket had 5,153 mismatches and was only mildly better than baseline. That makes it a qualifier for other points. A lead reduces the value needed to end the hand, while the discard still must avoid real danger or preserve the next safe decision.",
-    "whyNot": "The lazy interpretation is 'I am leading, so I can play safe.' LuckyJ's better leader decisions are more specific: reduce unnecessary danger while keeping a workable hand or a clean fold path.",
-    "copy": "When leading, compare the discard against two jobs: end the hand cheaply if possible, and avoid creating a future forced push. Choose the tile that does both.",
-    "limit": "Preserve useful shape when it still ends the hand or protects the next turn. A safe-looking discard that misses live danger or kills the only winning route is probably too passive."
   }
 }

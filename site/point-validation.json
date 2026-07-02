@@ -16,10 +16,10 @@
     "note_ja": "定性的な検討例は一般化した問いとしてだけ使い、統計的な妥当性はモデルと書籍由来のデータで確認した。"
   },
   "summary": {
-    "strong": 11,
-    "qualified": 8,
+    "strong": 10,
+    "qualified": 6,
     "review": 0,
-    "total": 19
+    "total": 16
   },
   "points": [
     {
@@ -31,18 +31,24 @@
       "strength": "qualified",
       "verdict": "Qualified",
       "verdict_ja": "条件付き",
-      "read": "Placement framing is valid, but the statistics reject a blanket 'push because behind' rule.",
-      "read_ja": "着順から読む方針は妥当。ただし「負けているから押す」という一般化は統計が否定する。",
-      "caveat": "Require concrete upside and a discard that keeps danger manageable.",
-      "caveat_ja": "打点上昇や着順変化が具体的で、危険度が管理できる時だけ使う。",
-      "example": "Example: as leader, a low-danger discard that preserves the next safe turn can beat a thin value upgrade.",
-      "example_ja": "例: トップ目では薄い打点上昇より、次巡の安全を残す低危険打牌が勝つことがある。",
+      "read": "Placement framing is valid, but it is only useful when it changes concrete danger, value, or next-turn safety.",
+      "read_ja": "着順から読む方針は妥当。ただし具体的な危険度、打点、次巡安全が変わる時だけ有効。",
+      "caveat": "Leader safety is a qualifier, not a standalone excuse to kill shape.",
+      "caveat_ja": "トップ目安全は単独ルールではなく、形を壊す理由にはならない条件として扱う。",
+      "example": "Example: as leader, a low-danger discard that preserves the next safe turn can beat a thin value upgrade when it still fits the hand's placement job.",
+      "example_ja": "例: トップ目では、着順上の仕事に合い次巡安全も残す低危険打牌が、薄い打点上昇より勝つことがある。",
       "stats": [
         {
           "kind": "pattern",
           "key": "leader_low_risk",
           "text": "Leader low-risk choices: n=5,153, bad 29.6%, lift -1.7 pp, p=0.0157, danger delta -0.025.",
           "text_ja": "トップ目の低危険選択: n=5,153, 悪手率 29.6%, 平均との差 -1.7 pp, p=0.0157, 危険度差 -0.025。"
+        },
+        {
+          "kind": "pattern",
+          "key": "riskier_than_naga",
+          "text": "Riskier-than-Nishiki caution: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.",
+          "text_ja": "高危険選択の警告: n=5,033, 悪手率 33.4%, 平均との差 +2.8 pp, p=6.23e-05, 危険度差 0.134。"
         },
         {
           "kind": "pattern",
@@ -56,8 +62,8 @@
           "text_ja": "成績差: 上位半分は半荘あたり和了3.09回、放銃0.75回。下位半分は和了1.39回、放銃1.48回。"
         }
       ],
-      "review_example": "Review example: in a South-round placement hand, a low-risk tile that keeps a clean fold or cheap win can beat a thin value upgrade.",
-      "review_example_ja": "検討例: 南場の着順手では、薄い打点上昇より、きれいな撤退や安い和了を残す低危険牌が勝つことがある。"
+      "review_example": "Review example: in a South-round placement hand, a low-risk tile that keeps a clean fold or cheap win can beat a thin value upgrade, but only when it still answers real danger.",
+      "review_example_ja": "検討例: 南場の着順手では、薄い打点上昇より、きれいな撤退や安い和了を残す低危険牌が勝つことがある。ただし実際の危険に効く時だけ。"
     },
     {
       "id": "point-02",
@@ -106,12 +112,12 @@
       "strength": "qualified",
       "verdict": "Qualified",
       "verdict_ja": "条件付き",
-      "read": "Aggregate results support purposeful calling; a broad call-more rule still needs proof.",
-      "read_ja": "目的のある鳴きは成績面で支持される。単純な鳴き増やしは追加検証が必要。",
+      "read": "Aggregate results support purposeful calling; bad-shape repair and tempo belong under the same named-purpose rule.",
+      "read_ja": "目的のある鳴きは成績面で支持される。悪形修復とテンポ鳴きは同じ目的付きルールで扱う。",
       "caveat": "Demand a named purpose: tenpai, yaku creation, value, denial, or safe-tenpai equity.",
       "caveat_ja": "テンパイ、役作り、打点、阻止、形式テンパイなど目的を名付ける。",
-      "example": "Example: chi when it creates a real yaku route or a safe tenpai path from the weak block.",
-      "example_ja": "例: 弱ブロックから役ルートや安全テンパイルートが生まれる時だけチーする。",
+      "example": "Example: call when it creates a real yaku route, changes the round clock, or gives a safe tenpai path from the weak block.",
+      "example_ja": "例: 弱ブロックから役ルート、局の時計変更、安全テンパイルートが生まれる時だけ鳴く。",
       "stats": [
         {
           "kind": "aggregate",
@@ -129,8 +135,8 @@
           "text_ja": "中盤と終盤の判断は合計 80,537 件。守備点は序盤整理に加えて中終盤にも根拠がある。"
         }
       ],
-      "review_example": "Review example: call a bad block only when it creates yaku, tenpai, denial, or safe draw equity; skip the call that merely exposes a fragile one-away hand.",
-      "review_example_ja": "検討例: 悪いブロックは、役、テンパイ、阻止、安全なツモ番を作る時だけ鳴く。壊れやすい一向聴を晒すだけなら見送る。"
+      "review_example": "Review example: call a bad block only when it creates yaku, tenpai, denial, tempo pressure, or safe draw equity; skip the call that merely exposes a fragile one-away hand.",
+      "review_example_ja": "検討例: 悪いブロックは、役、テンパイ、阻止、テンポ圧、安全なツモ番を作る時だけ鳴く。壊れやすい一向聴を晒すだけなら見送る。"
     },
     {
       "id": "point-04",
@@ -244,41 +250,6 @@
       ],
       "review_example": "Review example: keep red or dora access when it improves a real winning route; release it when the extra value is decorative and the next danger is concrete.",
       "review_example_ja": "検討例: 赤やドラ受けは本物の和了ルートを良くする時に残す。打点が飾りで次の危険が具体的なら手放す。"
-    },
-    {
-      "id": "point-07",
-      "category": "Calls and Tempo",
-      "category_ja": "鳴きとテンポ",
-      "title": "Tempo calls need a named purpose.",
-      "title_ja": "テンポ鳴きには目的を付ける。",
-      "strength": "qualified",
-      "verdict": "Qualified",
-      "verdict_ja": "条件付き",
-      "read": "The outcome split supports active conversion; treat the call data as context evidence.",
-      "read_ja": "成績差は能動的な変換を支持する。鳴きデータは文脈証拠として扱う。",
-      "caveat": "Use this as a review question for which speed tiles deserve calls.",
-      "caveat_ja": "どのスピード牌を鳴く価値があるかを復習時の問いにする。",
-      "example": "Example: call for tenpai, yaku certainty, ippatsu break, or denial; skip when the call only makes a fragile one-away hand.",
-      "example_ja": "例: テンパイ、役確定、一発消し、阻止なら鳴く。壊れやすい一向聴になるだけなら見送る。",
-      "stats": [
-        {
-          "kind": "aggregate",
-          "text": "Call opportunities became calls 35.8% of hands, so call points need purpose filters.",
-          "text_ja": "局単位の鳴き率は 35.8%。鳴きは可否より目的フィルターで見る必要がある。"
-        },
-        {
-          "kind": "aggregate",
-          "text": "Winning-half volume was active: calls/game 5.79 compared with 5.44, riichi/game 2.11 compared with 1.67.",
-          "text_ja": "上位半分は能動的: 鳴きは半荘あたり 5.79 対 5.44、リーチは 2.11 対 1.67。"
-        },
-        {
-          "kind": "aggregate",
-          "text": "Middle plus late decisions total 80,537; the defense points have evidence beyond opening-row cleanup.",
-          "text_ja": "中盤と終盤の判断は合計 80,537 件。守備点は序盤整理に加えて中終盤にも根拠がある。"
-        }
-      ],
-      "review_example": "Review example: a tempo call is valid when it creates tenpai, yaku certainty, denial, or an ippatsu break; raw speed needs an actual payoff.",
-      "review_example_ja": "検討例: テンポ鳴きは、テンパイ、役確定、阻止、一発消しを作る時に有効。単なる速度には追加の目的が必要。"
     },
     {
       "id": "point-08",
@@ -508,12 +479,12 @@
       "strength": "strong",
       "verdict": "Strong",
       "verdict_ja": "強い",
-      "read": "Threat-specific safety is strongly supported; generic safety retention needs a sharper target.",
-      "read_ja": "対象付き安全牌保持は強く支持される。一般的な安全牌保持には対象の明確化が必要。",
-      "caveat": "The point must stay narrow: who is the tile for, and when will it be spent?",
-      "caveat_ja": "対象と使う時期を必ず決める狭いルールにする。",
-      "example": "Example: keep suji only if it defends the current riichi or open hand and the hand can still act next turn.",
-      "example_ja": "例: 現在のリーチ者や副露者に通る筋で、次巡も手が動く時だけ残す。",
+      "read": "Threat-specific safety is strongly supported; generic safety retention only works after naming the target.",
+      "read_ja": "対象付き安全牌保持は強く支持される。一般的な安全牌保持は対象を名付けて初めて使える。",
+      "caveat": "The point must stay narrow: who is the tile for, when will it be spent, and what shape cost does it impose?",
+      "caveat_ja": "対象、使う時期、手牌が払う損を必ず決める狭いルールにする。",
+      "example": "Example: keep suji only if it defends the current riichi or open hand, and spend it when its live-threat target expires.",
+      "example_ja": "例: 現在のリーチ者や副露者に通る筋なら残し、対象が切れたら使う。",
       "stats": [
         {
           "kind": "pattern",
@@ -534,8 +505,8 @@
           "text_ja": "多件脅威安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
         }
       ],
-      "review_example": "Review example: keep genbutsu or suji only after naming the target player and the next turn it protects.",
-      "review_example_ja": "検討例: 現物や筋は、対象者と守る次巡を名付けてから残す。"
+      "review_example": "Review example: keep genbutsu or suji only after naming the target player and the next turn it protects; untargeted safety is just clutter.",
+      "review_example_ja": "検討例: 現物や筋は、対象者と守る次巡を名付けてから残す。対象のない安全牌は余り牌として見る。"
     },
     {
       "id": "point-15",
@@ -614,44 +585,6 @@
       "review_example_ja": "検討例: 圧力下では、外側牌切りが露出を下げつつ、本当に和了する内側の接続を残すことがある。"
     },
     {
-      "id": "point-17",
-      "category": "Defense",
-      "category_ja": "守備",
-      "title": "A kept safe tile needs a target.",
-      "title_ja": "残す安全牌には対象が必要。",
-      "strength": "strong",
-      "verdict": "Strong",
-      "verdict_ja": "強い",
-      "read": "This is the cleanest correction to the original safe-tile language.",
-      "read_ja": "元の安全牌表現への最も明確な修正。",
-      "caveat": "The same tile flips from good to bad once its live-threat target changes.",
-      "caveat_ja": "実脅威の対象が変わると、同じ安全牌でも良し悪しが反転する。",
-      "example": "Example: label a kept 9m as genbutsu to the dealer riichi with a named target.",
-      "example_ja": "例: 残す9萬を親リーチへの現物として具体的に名付ける。",
-      "stats": [
-        {
-          "kind": "pattern",
-          "key": "threat_keep_exit",
-          "text": "Named threat tile: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
-          "text_ja": "対象付き安全牌: n=8,406, 悪手率 24.4%, 平均との差 -8.7 pp, p=<0.0001, 危険度差 0.012。"
-        },
-        {
-          "kind": "pattern",
-          "key": "multi_threat_safe_tenpai",
-          "text": "Multiple-threat tile: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "多件脅威安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
-        },
-        {
-          "kind": "pattern",
-          "key": "keep_defensive_exit",
-          "text": "Untargeted keep caution: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.",
-          "text_ja": "対象なし保持の警告: n=8,590, 悪手率 35.1%, 平均との差 +5.4 pp, p=<0.0001, 危険度差 0.036。"
-        }
-      ],
-      "review_example": "Review example: label the kept tile as safe against the dealer riichi, the open child, or no one; the last category should usually be spent.",
-      "review_example_ja": "検討例: 残す牌を親リーチへの安全牌、子の副露への安全牌、誰にも効かない牌に分ける。最後の分類は基本的に使う。"
-    },
-    {
       "id": "point-18",
       "category": "Calls and Honors",
       "category_ja": "鳴きと字牌",
@@ -687,43 +620,6 @@
       ],
       "review_example": "Review example: classify each honor as self value, opponent yaku condition, dead material, or defensive tile before cutting.",
       "review_example_ja": "検討例: 字牌は切る前に、自分の打点、相手の役条件、枯れ材料、守備牌へ分類する。"
-    },
-    {
-      "id": "point-19",
-      "category": "Placement and Defense",
-      "category_ja": "着順と守備",
-      "title": "Leader safety qualifies the plan.",
-      "title_ja": "トップ目安全は計画の条件。",
-      "strength": "qualified",
-      "verdict": "Qualified",
-      "verdict_ja": "条件付き",
-      "read": "Leader low-risk choices were only mildly better than baseline; the stronger signal is controlled danger.",
-      "read_ja": "トップ目の低危険選択は平均との差が小さい。より強い信号は危険の管理。",
-      "caveat": "Lower ambition when the discard also keeps the next turn playable.",
-      "caveat_ja": "次巡も打てる形を保つ時だけ目標を下げる。",
-      "example": "Example: choose the low-risk tile that keeps a clean fold or cheap win.",
-      "example_ja": "例: 安い和了かきれいな撤退を残す低危険牌を選ぶ。",
-      "stats": [
-        {
-          "kind": "pattern",
-          "key": "leader_low_risk",
-          "text": "Leader low-risk choices: n=5,153, bad 29.6%, lift -1.7 pp, p=0.0157, danger delta -0.025.",
-          "text_ja": "トップ目低危険選択: n=5,153, 悪手率 29.6%, 平均との差 -1.7 pp, p=0.0157, 危険度差 -0.025。"
-        },
-        {
-          "kind": "pattern",
-          "key": "riskier_than_naga",
-          "text": "Riskier-than-Nishiki caution: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.",
-          "text_ja": "高危険選択の警告: n=5,033, 悪手率 33.4%, 平均との差 +2.8 pp, p=6.23e-05, 危険度差 0.134。"
-        },
-        {
-          "kind": "aggregate",
-          "text": "Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.",
-          "text_ja": "成績差: 上位半分は半荘あたり和了3.09回、放銃0.75回。下位半分は和了1.39回、放銃1.48回。"
-        }
-      ],
-      "review_example": "Review example: as leader, lower ambition when the discard also keeps a clean next turn and fits the placement target.",
-      "review_example_ja": "検討例: トップ目で目標を下げる時は、次巡がきれいに打てて着順目標にも合う牌を選ぶ。"
     }
   ]
 }

@@ -782,8 +782,6 @@ def teaching_fit_text(case):
         lines.append("Teaching fit: pre-threat future-liability cleanup. This point excludes reached examples: no opponent should already be in riichi. Explain why carrying the actual simple tile is bad before a future riichi or second call appears.")
     elif point == "point-06":
         lines.append("Teaching fit: early value tradeoff. LuckyJ gives up visible ukeire because the score job/value or retained honor/terminal/safety route matters more.")
-    elif point == "point-07":
-        lines.append("Teaching fit: tempo call with a named purpose. State what the call creates or contests before praising speed.")
     elif point == "point-08":
         lines.append("Teaching fit: riichi declaration example. Explain declaration pressure only when LuckyJ actually reaches.")
     elif point == "point-09":
@@ -802,12 +800,8 @@ def teaching_fit_text(case):
         lines.append("Teaching fit: stale safe-tile spend. The actual discarded tile has some safety label but is not safe against the live threat, and the hand retains another live safety answer.")
     elif point == "point-16":
         lines.append("Teaching fit: outside/terminal cut preserving the inside route. Explain the connector kept by not following Nishiki.")
-    elif point == "point-17":
-        lines.append("Teaching fit: every kept safe tile needs a live target. Name who the kept tile answers and why that target matters now.")
     elif point == "point-18":
         lines.append("Teaching fit: honor role label. Say whether the honor is self-value, opponent condition, dead material, or defensive material.")
-    elif point == "point-19":
-        lines.append("Teaching fit: leader safety qualifier. Explain reduced ambition while still checking concrete danger, shape, and next-turn safety.")
     return "\n".join(f"- {line}" for line in lines)
 
 

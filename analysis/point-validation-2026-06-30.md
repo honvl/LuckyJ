@@ -10,41 +10,39 @@
 
 ## Results
 
-- Strong: 11.
-- Qualified: 8.
+- Strong: 10.
+- Qualified: 6.
 - Review-only: 0.
 
 | Point | Category | Verdict | Main statistical read | Caveat |
 |---|---|---|---|---|
-| point-01 | Value and Placement | Qualified | Placement framing is valid, but the statistics reject a blanket 'push because behind' rule. | Require concrete upside and a discard that keeps danger manageable. |
+| point-01 | Value and Placement | Qualified | Placement framing is valid, but it is only useful when it changes concrete danger, value, or next-turn safety. | Leader safety is a qualifier, not a standalone excuse to kill shape. |
 | point-02 | Shape and Routes | Strong | Pair/triplet anchors and dora/red material had materially lower bad rates than other mismatches. | The support is strongest for anchors with a job. |
-| point-03 | Calls and Yaku Conditions | Qualified | Aggregate results support purposeful calling; a broad call-more rule still needs proof. | Demand a named purpose: tenpai, yaku creation, value, denial, or safe-tenpai equity. |
+| point-03 | Calls and Yaku Conditions | Qualified | Aggregate results support purposeful calling; bad-shape repair and tempo belong under the same named-purpose rule. | Demand a named purpose: tenpai, yaku creation, value, denial, or safe-tenpai equity. |
 | point-04 | Calls and Defense | Strong | Threat-specific safe-tile retention was strong, while generic safe-tile hoarding was worse than baseline. | This point is target-specific: name the threat before keeping the tile. |
 | point-05 | Shape and Defense | Strong | Safer-than-Nishiki choices were one of the clearest support signals; danger pricing should be explicit. | Keep this targeted: early slimming works when the tile has little value or yaku route left. |
 | point-06 | Value and Routes | Qualified | Dora/red retention is supported; broad risk-buying for value needs tighter proof. | The value seed should improve a real winning route. |
-| point-07 | Calls and Tempo | Qualified | The outcome split supports active conversion; treat the call data as context evidence. | Use this as a review question for which speed tiles deserve calls. |
 | point-08 | Value and Pressure | Qualified | Top-half games used more riichi; the point is conversion quality over raw reach volume. | Require value, pressure, or placement gain before turning the hand face-up. |
 | point-09 | Defense and Push-Fold | Strong | The danger-delta split is highly significant in both directions. | Update the price after each draw, call, riichi, and new safe tile. |
 | point-10 | Late Game | Qualified | Late positions are numerous enough to validate as a training category; every late LuckyJ split still needs context. | Cross-check third-row choices against points, safe tiles, and model disagreement. |
 | point-11 | Late Game | Qualified | Draw-tenpai frequency makes the objective real, but each push still needs a danger price. | Chase keiten through multiple live threats only with safe tiles. |
 | point-12 | Review | Strong | The Nishiki mismatch base is large, and most mismatches stay below the severe-disagreement threshold. | A split marks a hand to study; proof comes from the purchase, risk, and table context. |
 | point-13 | Calls and Yaku Conditions | Strong | Loose honor cleanup is one of the strongest support signals. | Split self-value yakuhai from opponent yaku-condition tiles before cutting. |
-| point-14 | Defense | Strong | Threat-specific safety is strongly supported; generic safety retention needs a sharper target. | The point must stay narrow: who is the tile for, and when will it be spent? |
+| point-14 | Defense | Strong | Threat-specific safety is strongly supported; generic safety retention only works after naming the target. | The point must stay narrow: who is the tile for, when will it be spent, and what shape cost does it impose? |
 | point-15 | Defense and Shape | Strong | Spending a safe-looking tile that Nishiki kept was materially better than the mismatch baseline. | Spend it only after naming why it no longer defends the live danger. |
 | point-16 | Shape and Defense | Strong | Cutting outside material while keeping inside shape had strong aggregate support. | Keep route preservation separate from vague safety. |
-| point-17 | Defense | Strong | This is the cleanest correction to the original safe-tile language. | The same tile flips from good to bad once its live-threat target changes. |
 | point-18 | Calls and Honors | Strong | Honor cleanup and pair-anchor stats support role labeling over a single honor rule. | Self yakuhai, opponent yaku condition, dead honor, and safe tile are different categories. |
-| point-19 | Placement and Defense | Qualified | Leader low-risk choices were only mildly better than baseline; the stronger signal is controlled danger. | Lower ambition when the discard also keeps the next turn playable. |
 
 ## Evidence Lines
 
 ### point-01: Start with placement before hand shape.
 
 - Leader low-risk choices: n=5,153, bad 29.6%, lift -1.7 pp, p=0.0157, danger delta -0.025.
+- Riskier-than-Nishiki caution: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.
 - Behind-score risk buys: n=2,364, bad 34.5%, lift +3.7 pp, p=0.0001, danger delta 0.120.
 - Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.
-- Example test: as leader, a low-danger discard that preserves the next safe turn can beat a thin value upgrade.
-- Review-derived example: in a South-round placement hand, a low-risk tile that keeps a clean fold or cheap win can beat a thin value upgrade.
+- Example test: as leader, a low-danger discard that preserves the next safe turn can beat a thin value upgrade when it still fits the hand's placement job.
+- Review-derived example: in a South-round placement hand, a low-risk tile that keeps a clean fold or cheap win can beat a thin value upgrade, but only when it still answers real danger.
 
 ### point-02: Keep more than one route alive.
 
@@ -59,8 +57,8 @@
 - Call opportunities became calls 35.8% of hands, so call points need purpose filters.
 - Winning-half volume was active: calls/game 5.79 compared with 5.44, riichi/game 2.11 compared with 1.67.
 - Middle plus late decisions total 80,537; the defense points have evidence beyond opening-row cleanup.
-- Example test: chi when it creates a real yaku route or a safe tenpai path from the weak block.
-- Review-derived example: call a bad block only when it creates yaku, tenpai, denial, or safe draw equity; skip the call that merely exposes a fragile one-away hand.
+- Example test: call when it creates a real yaku route, changes the round clock, or gives a safe tenpai path from the weak block.
+- Review-derived example: call a bad block only when it creates yaku, tenpai, denial, tempo pressure, or safe draw equity; skip the call that merely exposes a fragile one-away hand.
 
 ### point-04: Open hands still need safe tiles.
 
@@ -85,14 +83,6 @@
 - Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.
 - Example test: keep red-five access when it also keeps tanyao or riichi value alive.
 - Review-derived example: keep red or dora access when it improves a real winning route; release it when the extra value is decorative and the next danger is concrete.
-
-### point-07: Tempo calls need a named purpose.
-
-- Call opportunities became calls 35.8% of hands, so call points need purpose filters.
-- Winning-half volume was active: calls/game 5.79 compared with 5.44, riichi/game 2.11 compared with 1.67.
-- Middle plus late decisions total 80,537; the defense points have evidence beyond opening-row cleanup.
-- Example test: call for tenpai, yaku certainty, ippatsu break, or denial; skip when the call only makes a fragile one-away hand.
-- Review-derived example: a tempo call is valid when it creates tenpai, yaku certainty, denial, or an ippatsu break; raw speed needs an actual payoff.
 
 ### point-08: Riichi converts value into pressure.
 
@@ -147,8 +137,8 @@
 - Tile for active threat: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.
 - Generic safe-tile keep: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.
 - Multi-threat tiles: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.
-- Example test: keep suji only if it defends the current riichi or open hand and the hand can still act next turn.
-- Review-derived example: keep genbutsu or suji only after naming the target player and the next turn it protects.
+- Example test: keep suji only if it defends the current riichi or open hand, and spend it when its live-threat target expires.
+- Review-derived example: keep genbutsu or suji only after naming the target player and the next turn it protects; untargeted safety is just clutter.
 
 ### point-15: Spend stale safe tiles when their job expires.
 
@@ -166,14 +156,6 @@
 - Example test: in danger, cut the edge tile that lowers exposure while preserving the live inner wait route.
 - Review-derived example: under pressure, an edge discard can reduce exposure while preserving the inner connector that actually wins the hand.
 
-### point-17: A kept safe tile needs a target.
-
-- Named threat tile: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.
-- Multiple-threat tile: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.
-- Untargeted keep caution: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.
-- Example test: label a kept 9m as genbutsu to the dealer riichi with a named target.
-- Review-derived example: label the kept tile as safe against the dealer riichi, the open child, or no one; the last category should usually be spent.
-
 ### point-18: Give every honor tile a role label.
 
 - Loose honor cleanup: n=2,348, bad 20.9%, lift -10.9 pp, p=<0.0001, danger delta -0.037.
@@ -181,11 +163,3 @@
 - Loose self-yakuhai timing split: no-open contexts cut singletons on median turn 3.0, while tanyao-shaped open contexts delayed to turn 9.0.
 - Example test: a lone dragon can be value seed, opponent yaku-condition liability, or safe tile depending on calls and rivers.
 - Review-derived example: classify each honor as self value, opponent yaku condition, dead material, or defensive tile before cutting.
-
-### point-19: Leader safety qualifies the plan.
-
-- Leader low-risk choices: n=5,153, bad 29.6%, lift -1.7 pp, p=0.0157, danger delta -0.025.
-- Riskier-than-Nishiki caution: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.
-- Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.
-- Example test: choose the low-risk tile that keeps a clean fold or cheap win.
-- Review-derived example: as leader, lower ambition when the discard also keeps a clean next turn and fits the placement target.
