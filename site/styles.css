@@ -537,6 +537,25 @@ a {
   padding: 6px 10px;
 }
 
+.rx-card .rx-mods {
+  font-size: 13px;
+  margin: 10px 0 0;
+}
+
+.rx-card .rx-mods p {
+  border-left: 4px solid var(--line);
+  margin: 4px 0;
+  padding: 2px 0 2px 10px;
+}
+
+.rx-card .rx-mods .rx-up {
+  border-left-color: var(--green);
+}
+
+.rx-card .rx-mods .rx-down {
+  border-left-color: var(--red);
+}
+
 @media (max-width: 900px) {
   .rx-grid {
     grid-template-columns: 1fr;
