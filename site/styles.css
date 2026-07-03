@@ -451,7 +451,7 @@ a {
   padding: 18px;
 }
 
-/* Prescriptions: numeric play-rules reference */
+/* Prescriptions: reader-facing play rules */
 .rx-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -462,7 +462,39 @@ a {
 .rx-card {
   border: 1px solid var(--line);
   background: var(--panel);
+  display: flex;
+  flex-direction: column;
   padding: 18px;
+}
+
+.rx-tiles {
+  align-items: center;
+  background: var(--soft-green);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin: 0 0 12px;
+  min-height: 48px;
+  padding: 8px 10px;
+}
+
+.rx-tiles .tiles {
+  display: inline-block;
+  filter: drop-shadow(0 3px 5px rgba(40, 45, 38, 0.12));
+  font-size: 2.2em;
+  letter-spacing: 0;
+  padding-right: 0;
+  top: 0;
+}
+
+.rx-tiles span:not(.tiles) {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-right: 6px;
+  text-transform: uppercase;
 }
 
 .rx-card h3 {
@@ -492,12 +524,6 @@ a {
 .rx-card th {
   background: var(--soft-green);
   font-weight: 700;
-}
-
-.rx-card .rx-basis {
-  color: var(--ink-soft, #55604f);
-  font-size: 12px;
-  margin: 8px 0 0;
 }
 
 .rx-card .rx-except {
