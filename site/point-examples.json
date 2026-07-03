@@ -2953,22 +2953,22 @@
       "guide": {
         "caption": "LuckyJ 8s, Nishiki 4m",
         "situation": "South 3-0, middle hand, 26 tiles left. LuckyJ has 35300 points (lead), currently 1st. After drawing [[8s]], LuckyJ cuts [[8s]]; Nishiki's top line is [[4m]]. Result: draw, self delta +1500",
-        "read": "On 35300 points and currently 1st, this hand does not need to chase extra points. LuckyJ lets it become a controlled fold unless the next draw makes pushing clearly worth it. With the corrected bars, Nishiki's candidate is the hotter tile: [[8s]] peaks at dangerK 4.1%; [[4m]] peaks at dangerK 12.7%. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job. The kept [[4m]] is genbutsu against the right player (no called threat). Hibakari also chooses [[8s]], so read this as LuckyJ/Hibakari versus Nishiki, not LuckyJ against every NAGA head.",
+        "read": "In South 3 with a comfortable lead at 35,300 points, managing defensive flexibility is far more valuable than maximizing raw ukeire. Nishiki's discard of [[4m]] keeps a wider five-tile tenpai waiting on [[7s]] or [[8s]], but it completely empties the hand of defensive options. LuckyJ instead discards [[8s]] to wait on a [[4m]] tanki, a line backed by Mortal's 62% preference. Holding [[4m]] as the wait preserves a crucial genbutsu against Shimocha, giving LuckyJ a safe exit card if a sudden threat emerges. For a leader, sacrificing three ukeire to retain a defensive anchor is the correct price to pay. Keep the defensive exit active when your main goal is protecting the lead rather than chasing a wider wait.",
         "whyNot": "The Nishiki line through [[4m]] is the efficiency temptation because it leaves 0-shanten, 5 visible ukeire, main accepts [[7s]], [[8s]]. LuckyJ's [[8s]] line leaves 0-shanten, 2 visible ukeire, main accepts [[4m]]. That extra acceptance matters less when the score job is to protect the current position, not manufacture more points. LuckyJ lowers the NAGA threat reading: LuckyJ 4.1%, Nishiki 12.7%.",
         "copy": "Copy the score job: when your position is already good enough, lower the ambition, keep safe tiles, and let the hand fold unless a later draw makes it worth pushing.",
         "limit": "Do not copy the fold posture when you actually need points, when the hand is already worth pushing, or when the safer line has no real safe tile.",
-        "prompt": "With 26 tiles left, would you cut [[8s]] or [[4m]]? First say whether you need more points or can protect the current position.",
-        "answer": "LuckyJ chooses [[8s]]. The reproducible reason is: On 35300 points and currently 1st, this hand does not need to chase extra points. LuckyJ lets it become a controlled fold unless the next draw makes pushing clearly worth it."
+        "prompt": "What makes the [[4m]] tile a safer option to hold in hand compared to the [[8s]] tile?",
+        "answer": "[[4m]] is a genbutsu (safe tile) against Shimocha, whereas [[8s]] is not safe against any opponent."
       },
       "guide_ja": {
         "caption": "LuckyJ 8s、ニシキ 4m",
         "situation": "South 3-0、middle、残り26枚。lead、35300点、現在1着。LuckyJ は [[8s]] ツモから [[8s]] を切り、ニシキ第一候補は [[4m]]。結果: draw, self delta +1500",
-        "read": "35300点で 現在1着 なので、加点を追いすぎる局面ではない。次のツモで押す価値がはっきり出なければ、LuckyJ はこの手を無理せず降りやすい形へ寄せている。 修正後の脅威バーではニシキ候補の方が熱い。[[8s]] は dangerK 4.1% が最大、[[4m]] は dangerK 12.7% が最大。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。 残る [[4m]] は 下家 に対して現物で、相手の状態は静かな相手。 ヒバカリも [[8s]] を第一候補にしており、この例は LuckyJ/ヒバカリ対ニシキの分岐として読む。",
+        "read": "南3局、35,300点持ちのトップ目という状況では、単なる受け入れ枚数の最大化よりも守備的な柔軟性を確保することの価値が遥かに高くなります。西木の[[4m]]切りは[[7s]]・[[8s]]待ちの5枚受けテンパイを維持しますが、手牌から安全牌の候補を完全に無くしてしまいます。対するLuckyJは[[8s]]を切り、Mortalも62%の支持を寄せる[[4m]]単騎のテンパイを選択しました。[[4m]]を単騎待ちとして手の中に残すことで、下家に対する現物をキープでき、他家からのリーチなどの急な脅威に対して即座にオリられる安全弁を確保できます。トップ目にとって、守備のアンカーを残すために受け入れを3枚減らすことは十分に支払う価値のある対価です。リードを守ることが最優先される状況では、広い待ちを追うよりも安全な撤退路を確保することを優先しましょう。",
         "whyNot": "ニシキの [[4m]] は 0シャンテン、見えている受け入れ5枚、主な受け [[7s]], [[8s]] を残すので、効率面では魅力がある。LuckyJ の [[8s]] は 0シャンテン、見えている受け入れ2枚、主な受け [[4m]]。ただしこの点数状況では、加点を作ることより今の着順を守ることが先に来る。LuckyJ はNAGA脅威を下げている。LuckyJ 4.1%、ニシキ 12.7%。",
         "copy": "点数状況を真似する。今の着順を守れば十分なら、目標を下げて安全牌を残し、次のツモで押す価値が出るまで無理しない。",
         "limit": "加点が必要な時、すでに押す価値がある手、または安全牌のない安全寄せでは真似しない。",
-        "prompt": "残り26枚で [[8s]] と [[4m]] のどちらを切るか。先に加点が必要か、今の着順を守れば十分かを言う。",
-        "answer": "LuckyJ は [[8s]] を選ぶ。理由は 35300点で 現在1着 なので、加点を追いすぎる局面ではない。次のツモで押す価値がはっきり出なければ、LuckyJ はこの手を無理せず降りやすい形へ寄せている。"
+        "prompt": "[[8s]]と比較して、[[4m]]を手牌に残す方が安全な選択肢となる理由は何ですか？",
+        "answer": "[[4m]]は下家の現物（安全牌）ですが、[[8s]]はどの対戦相手に対しても現物ではないからです。"
       }
     },
     {
@@ -32547,22 +32547,22 @@
       "guide": {
         "caption": "LuckyJ 8m, Nishiki 9s",
         "situation": "East 3-0, middle hand, 35 tiles left. LuckyJ has 33800 points (above starting score), currently 1st. After drawing [[4s]], LuckyJ cuts [[8m]]; Nishiki's top line is [[9s]]. Result: toimen won, self delta +0",
-        "read": "While Mortal strongly advocates for immediate riichi pressure, the comparison between LuckyJ and Nishiki reveals a deeper tactical trade-off. Taking tenpai by discarding the terminal [[9s]] commits to holding the riskier simple tile [[8m]] as part of the winning shape while facing potential future threats. LuckyJ chooses to discard the simple tile [[8m]] first, accepting a retreat to 1-shanten while preserving the potential for a high-value *ittsu* (Pure Straight) in the souzu suit with the [[7s]][[9s]] shape. By releasing the [[8m]] (danger level 16.8%) while the table is still relatively quiet, LuckyJ removes a future liability before an opponent's riichi or second meld materializes. Keeping the terminal [[9s]] (danger level 4.1%) provides a much safer footprint for the hand. When a hand is not yet ready to push, clearing high-risk simple tiles early prevents you from being cornered into discarding them later under intense pressure.",
+        "read": "Rejecting a tenpai on a penchan [[7m]] is a heavy decision, but carrying the simple [[8m]] as a future liability is a larger long-term risk. Discarding the terminal [[9s]] as Nishiki suggests secures immediate tenpai, which Mortal supports with a riichi declaration, but it locks the hand into a low-probability wait with only 3 visible ukeire. By discarding the simple [[8m]] instead, LuckyJ drops to 1-shanten but cleanly disposes of a dangerous middle tile before any opponent can threaten the board. Crucially, keeping [[9s]] preserves the potential for a high-value Ittsu yaku (requiring [[8s]] to connect the souz sequences), whereas Nishiki's discard destroys this route entirely. If the board becomes hostile before we draw a clean tenpai, we are left holding safer terminals rather than a dangerous mid-suit floater. Discard the awkward middle tile early when the immediate tenpai wait is too weak to justify holding a future danger tile.",
         "whyNot": "The Nishiki line through [[9s]] is tempting because it leaves 0-shanten, 3 visible ukeire, main accepts [[7m]]. LuckyJ's [[8m]] line leaves 1-shanten, 17 visible ukeire, main accepts [[7m]], [[8m]], [[9m]], [[1s]], [[4s]]. LuckyJ accepts a higher NAGA threat reading now: LuckyJ 16.8%, Nishiki 7.3%.",
         "copy": "Copy the reason: if cutting [[8m]] keeps the hand's real job clearer than the Nishiki line through [[9s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
-        "prompt": "What is the shanten of LuckyJ's hand after discarding [[8m]], and what yaku route does this discard preserve?",
-        "answer": "LuckyJ's hand is 1-shanten, preserving the souzu ittsu (Pure Straight) route."
+        "prompt": "Which yaku route is preserved by discarding [[8m]] but destroyed by discarding [[9s]]?",
+        "answer": "Ittsu (Straight) in the souz suit."
       },
       "guide_ja": {
         "caption": "LuckyJ 8m、ニシキ 9s",
         "situation": "East 3-0、middle、残り35枚。above starting score、33800点、現在1着。LuckyJ は [[4s]] ツモから [[8m]] を切り、ニシキ第一候補は [[9s]]。結果: toimen won, self delta +0",
-        "read": "Mortalは即リーチによる圧力を強力に支持しているが、LuckyJとNishikiの打牌比較は異なる戦術的トレードオフを示している。端牌の[[9s]]を切ってテンパイを取るルートは、将来の脅威に直面しながら、より危険な中張牌である[[8m]]をアガリ形の一部として抱え続けることになる。LuckyJはまず中張牌の[[8m]]を切り、1シャンテンへの後退を受け入れつつ、索子の一気通貫（イッツー）の可能性を残す選択をした。場が比較的静かなうちに危険度16.8%の[[8m]]をリリースすることで、相手のリーチや二つ目の仕掛けが入る前に将来の危険牌を処理している。危険度がわずか4.1%の端牌である[[9s]]を残すことで、手牌の安全性を高く保つことができる。手がまだ押し切る準備ができていない段階では、高リスクな中張牌を早期に処理しておくことで、後に強い圧力を受けた際に危険牌の押し出しを強いられる事態を防ぐことができる。",
+        "read": "ペンチャン[[7m]]待ちのテンパイを取らないのは重い決断だが、危険牌になり得る数牌の[[8m]]を将来の負債として抱え続けるリスクはそれ以上に大きい。Nishikiが推奨する端牌の[[9s]]切りは即テンパイを取る一手であり、Mortalも立直宣言を支持しているが、これは残り枚数がわずか3枚の愚形ペンチャン待ちに手牌を固定してしまう。対して、LuckyJは数牌の[[8m]]を切ることで1シャンテンに下がるものの、他家からリーチや仕掛けが入る前に危険になり得る中張牌をあらかじめ整理している。重要なのは、[[9s]]を残すことでソーズの「一気通貫」の受け（[[8s]]引きによる完成）を残している点であり、Nishikiの打牌ではこの役のルートが完全に消滅してしまう。好形のテンパイが入る前に場が危険になった場合でも、危険な浮き牌を抱えずに済むため、安全度の高い端牌を残して柔軟に対応できる。テンパイの待ちが弱く、将来の危険牌を抱え込む価値に見合わないときは、扱いづらい中張牌を早期に処理すべきである。",
         "whyNot": "ニシキの [[9s]] は 0シャンテン、見えている受け入れ3枚、主な受け [[7m]] を残すので魅力がある。LuckyJ の [[8m]] は 1シャンテン、見えている受け入れ17枚、主な受け [[7m]], [[8m]], [[9m]], [[1s]], [[4s]]。LuckyJ はNAGA脅威を余分に受け入れている。LuckyJ 16.8%、ニシキ 7.3%。",
         "copy": "[[8m]] 切りが [[9s]] 経由より手の仕事をはっきり残すなら、その理由を真似できる。",
         "limit": "表面の牌を真似する条件は、点数状況、脅威、次に切る牌がそろう時である。",
-        "prompt": "[[8m]]を打牌した後のLuckyJの手牌のシャンテン数と、この打牌によって残される役のルートは何ですか？",
-        "answer": "1シャンテンで、索子の一気通貫（イッツー）のルートを残します。"
+        "prompt": "[[8m]]切りによって維持され、[[9s]]切りによって消滅する役のルートは何ですか？",
+        "answer": "ソーズの一気通貫（イッツー）"
       }
     },
     {
@@ -46063,21 +46063,21 @@
       "guide": {
         "caption": "LuckyJ White Dragon, Nishiki 9p",
         "situation": "South 2-2, middle hand, 44 tiles left. LuckyJ has 32100 points (above starting score), currently 2nd. After drawing [[C]], LuckyJ cuts [[P]]; Nishiki's top line is [[9p]]. Result: self won 4 han 25 fu, delta +8000",
-        "read": "With a six-pair hand in South 2-2, the choice is between two tenpai paths for Chiitoitsu: declaring riichi with a [[9p]] wait by discarding [[P]], or waiting on the yakuhai [[P]] by discarding [[9p]]. Mortal supports declaring riichi; the discard/wait comparison remains LuckyJ versus Nishiki. Nishiki chooses to discard [[9p]] to maximize raw tile count, leaving three active outs of [[P]]. However, [[P]] is completely raw and unseen on the board, making it an incredibly difficult tile for opponents to release once riichi pressure is applied. In contrast, [[9p]] has already been discarded by kamicha, meaning it is genbutsu to one player and a much safer-looking terminal for the others to discard when defending. LuckyJ sacrifices one out to secure a wait that actually converts riichi pressure into a high-probability win.",
+        "read": "Declaring a chiitoitsu riichi here immediately pressures the table, but we must choose the wait that maximizes our win rate under defense. Mortal supports declaring riichi; the discard/wait comparison remains LuckyJ versus Nishiki. Nishiki discards the terminal [[9p]] to wait on the live honor [[P]], which has 3 visible ukeire. LuckyJ instead discards the live yakuhai [[P]] to wait on [[9p]], leaving 2 visible ukeire. While Nishiki's choice might seem standard, a completely live yakuhai like [[P]] is highly likely to be held tightly by defending opponents once we declare riichi. Conversely, the terminal [[9p]] is already genbutsu for Kamicha, making it a prime candidate for other players to discard when trying to play defensively. When using riichi to force the table to fold, target the terminal wait that opponents will mistake for a safe exit.",
         "whyNot": "The Nishiki line through [[9p]] is tempting because it leaves 0-shanten, 3 visible ukeire, main accepts [[P]]. LuckyJ's [[P]] line leaves 0-shanten, 2 visible ukeire, main accepts [[9p]]. The NAGA threat numbers are close: LuckyJ 1.9%, Nishiki 3.2%.",
         "copy": "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter.",
         "limit": "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct.",
-        "prompt": "Which tile is already a genbutsu for kamicha, making it a much easier target for defensive discards?",
+        "prompt": "Which tile is genbutsu against Kamicha in this scenario?",
         "answer": "[[9p]]"
       },
       "guide_ja": {
         "caption": "LuckyJ P、ニシキ 9p",
         "situation": "South 2-2、middle、残り44枚。above starting score、32100点、現在2着。LuckyJ は [[C]] ツモから [[P]] を切り、ニシキ第一候補は [[9p]]。結果: self won 4 han 25 fu, delta +8000",
-        "read": "南2局2本場、チートイツのテンパイにおいて、[[P]]を切って[[9p]]単騎で即立直に行くか、[[9p]]を切って役牌の[[P]]単騎を選ぶかの選択である。Mortalは立直を支持しており、打牌および待ちの比較はLuckyJ対Nishikiの構図となる。Nishikiは枚数を最大化するために[[9p]]を切り、[[P]]の3枚残りに受ける選択をした。しかし、[[P]]は場に1枚も見えていない生牌の役牌であり、立直の圧力がかかった状況で相手からこぼれ出る可能性は極めて低い。対して、[[9p]]はすでに上家が切っており、1人に対して現物かつ他家にとってもオリの際に選びやすい端牌である。LuckyJは枚数を1枚減らしてでも、立直の圧力を高い和了率へと変換できる優秀な待ちを選択したのだ。",
+        "read": "ここで七対子の立直を宣言することは卓内に即座に圧力をかけますが、ベタオリする相手からのアガリ率を最大化する待ちの選択が重要です。Mortalは立直を支持しており、打牌および待ちの比較はLuckyJ対にしきとなります。にしきは端牌の[[9p]]を切り、見えている受け入れ枚数が3枚の生牌の役牌[[P]]待ちを選択します。一方、LuckyJは生牌の役牌[[P]]を切り、見えている受け入れ枚数が2枚の[[9p]]待ちを選択します。にしきの選択も一見合理的ですが、完全な生牌の役牌である[[P]]は、立直を受けた他家が警戒してオリる際に抱え込まれる可能性が極めて高いです。対照的に、端牌である[[9p]]はすでに上家の現物となっており、他家が守備的に打つ中で安全牌と見なして切り出しやすい牌です。立直の圧力で相手を降ろしにいく際は、他家が逃げ道として選んでしまいそうな端牌の待ちを狙いましょう。",
         "whyNot": "ニシキの [[9p]] は 0シャンテン、見えている受け入れ3枚、主な受け [[P]] を残すので魅力がある。LuckyJ の [[P]] は 0シャンテン、見えている受け入れ2枚、主な受け [[9p]]。NAGA脅威は近い。LuckyJ 1.9%、ニシキ 3.2%。",
         "copy": "リーチで相手の行動が変わり、待ちも最低限ある時だけ圧力を真似する。",
         "limit": "リーチには理由を持たせる。悪形、着順罰、明確な改良があればダマも残る。",
-        "prompt": "上家に対してすでに現物となっており、他家からもオリの打牌として選ばれやすい牌はどれですか？",
+        "prompt": "この状況で上家に対して現物となっている牌はどれですか？",
         "answer": "[[9p]]"
       }
     },
@@ -47750,22 +47750,22 @@
       "guide": {
         "caption": "LuckyJ 1p, Nishiki 4p",
         "situation": "East 3-0, middle hand, 35 tiles left. LuckyJ has 27900 points (above starting score), currently 2nd. After drawing [[W]], LuckyJ cuts [[1p]]; Nishiki's top line is [[4p]]. Result: draw, self delta +1500",
-        "read": "Riichi is part of the value calculation. With a declaration probability of 98.9%, LuckyJ treats pressure as a real output of the discard. With the corrected bars, Nishiki's candidate is the hotter tile: [[1p]] peaks at dangerS 5.9%; [[4p]] peaks at dangerS 21.2%. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job. Hibakari also chooses [[1p]], so read this as LuckyJ/Hibakari versus Nishiki, not LuckyJ against every NAGA head.",
+        "read": "Declaring dealer riichi on a kanchan [[7s]] wait is a clear choice here, but the decision of which tile to discard to enter tenpai splits the engines. Mortal supports declaring riichi; the discard/wait comparison remains LuckyJ versus Nishiki. LuckyJ opts for the safer route by discarding the terminal [[1p]], which carries a low 5.9% deal-in risk against Shimocha's open hand. Nishiki prefers discarding the middle tile [[4p]], despite its high 21.2% danger against Shimocha's melded sequence. While both discards preserve the potential iipeikou/ryanpeikou seed with [[6p]] and [[8p]] paired, throwing the high-risk [[4p]] into a live threat makes little sense when the resulting tenpai wait is identical. Declaring riichi as dealer converts our guest wind [[W]] triplet and kanchan shape into immediate pressure, forcing opponents to fold and protecting our lead. Minimize declaration-turn deal-in risk when the resulting wait and shape remain identical.",
         "whyNot": "The Nishiki line through [[4p]] is tempting because it leaves 0-shanten, 3 visible ukeire, main accepts [[7s]]. LuckyJ's [[1p]] line leaves 0-shanten, 3 visible ukeire, main accepts [[7s]]. LuckyJ lowers the NAGA threat reading: LuckyJ 5.9%, Nishiki 21.2%.",
         "copy": "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter.",
         "limit": "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct.",
-        "prompt": "With 35 tiles left, would you cut [[1p]] or [[4p]]? First name what [[4p]] is preserving.",
-        "answer": "LuckyJ chooses [[1p]]. The reproducible reason is: Riichi is part of the value calculation. With a declaration probability of 98.9%, LuckyJ treats pressure as a real output of the discard."
+        "prompt": "Which opponent is threatening LuckyJ with an open meld of [[1s]][[2s]][[3s]]?",
+        "answer": "Shimocha"
       },
       "guide_ja": {
         "caption": "LuckyJ 1p、ニシキ 4p",
         "situation": "East 3-0、middle、残り35枚。above starting score、27900点、現在2着。LuckyJ は [[W]] ツモから [[1p]] を切り、ニシキ第一候補は [[4p]]。結果: draw, self delta +1500",
-        "read": "リーチ自体が価値になる局面。宣言確率 98.9% を含めて、圧力を打牌の成果として見ている。 修正後の脅威バーではニシキ候補の方が熱い。[[1p]] は dangerS 5.9% が最大、[[4p]] は dangerS 21.2% が最大。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。 ヒバカリも [[1p]] を第一候補にしており、この例は LuckyJ/ヒバカリ対ニシキの分岐として読む。",
+        "read": "カンチャン[[7s]]待ちで親の立直を打つ局面だが、テンパイに取るための打牌選択でAIの意見が分かれた。Mortal supports declaring riichi; the discard/wait comparison remains LuckyJ versus Nishiki. LuckyJは下家の仕掛けに対して放銃率わずか5.9%の端牌である[[1p]]を選び、安全なルートを選択した。一方、Nishikiは下家のチーに対して放銃率21.2%と危険な中張牌である[[4p]]の打牌を推奨する。どちらの打牌でも[[6p]]と[[8p]]が対子のイーペーコー／リャンペーコーの種を維持できるが、待ちが同じであれば、立直宣言時に無駄な放銃リスクを負う必要はない。オタ風の[[W]]の暗刻は役にならないものの、親での立直宣言はそれ自体が強力な圧力となり、他家を降ろしてリードを維持する効果がある。最終的な待ちと枚数が同じであるなら、立直宣言牌の放銃リスクは極力抑えるのがデジタルな選択だ。",
         "whyNot": "ニシキの [[4p]] は 0シャンテン、見えている受け入れ3枚、主な受け [[7s]] を残すので魅力がある。LuckyJ の [[1p]] は 0シャンテン、見えている受け入れ3枚、主な受け [[7s]]。LuckyJ はNAGA脅威を下げている。LuckyJ 5.9%、ニシキ 21.2%。",
         "copy": "リーチで相手の行動が変わり、待ちも最低限ある時だけ圧力を真似する。",
         "limit": "リーチには理由を持たせる。悪形、着順罰、明確な改良があればダマも残る。",
-        "prompt": "残り35枚で [[1p]] と [[4p]] のどちらを切るか。先に [[4p]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[1p]] を選ぶ。理由は リーチ自体が価値になる局面。宣言確率 98.9% を含めて、圧力を打牌の成果として見ている。"
+        "prompt": "[[1s]][[2s]][[3s]]のチーを晒してLuckyJを脅かしているのはどの対戦相手ですか？",
+        "answer": "下家"
       }
     },
     {
@@ -49162,22 +49162,22 @@
       "guide": {
         "caption": "LuckyJ 8m, Nishiki White Dragon",
         "situation": "East 2-0, early hand, 50 tiles left. LuckyJ has 24000 points (behind), currently 3rd. After drawing [[6s]], LuckyJ cuts [[8m]]; Nishiki's top line is [[P]]. Result: draw, self delta +3000",
-        "read": "Choosing the right single-tile wait for a Seven Pairs riichi dictates whether early-round pressure translates into actual points. With 24,000 points in third place during East 2, declaring an early riichi immediately puts the table on the defensive. Mortal supports declaring riichi; the discard/wait comparison remains LuckyJ versus Nishiki. LuckyJ discards the [[8m]] to wait on the active yakuhai [[P]], betting that opponents will discard the honor tile under pressure, but this leaves a paper-thin wait with a visible ukeire of only one. Nishiki cuts the [[P]] instead, opting for a wait on [[8m]], which acts as a sotogawa tile relative to Kamicha's discarded [[7m]] and offers three times the ukeire. Although a yakuhai wait carries defensive decoy value, the raw tile count makes Nishiki's choice to wait on [[8m]] the superior offensive path. Only opt for the honor tile wait in chiitoitsu when the remaining tile count is equal or better; otherwise, prioritize raw ukeire.",
+        "read": "The tension here lies in choosing the optimal wait for a Chiitoitsu riichi. LuckyJ discards [[8m]] to wait on the honor tile [[P]], while Nishiki discards [[P]] to keep the wider three-tile wait on [[8m]]. Mortal supports declaring riichi; the discard/wait comparison remains LuckyJ versus Nishiki. While Nishiki’s path offers more raw outs in the wall, the pressure of a riichi declaration completely reshapes opponent discard behavior. Opponents forced into defense will eagerly release a single-drifting honor tile like [[P]], which already has one visible on the board, before they ever risk a middle tile like [[8m]]. Declaring riichi on the honor wait weaponizes their defensive posture, transforming a theoretically thinner wait into a highly realistic win.",
         "whyNot": "The Nishiki line through [[P]] is tempting because it leaves 0-shanten, 3 visible ukeire, main accepts [[8m]]. LuckyJ's [[8m]] line leaves 0-shanten, 1 visible ukeire, main accepts [[P]]. LuckyJ accepts a higher NAGA threat reading now: LuckyJ 4.0%, Nishiki 0.1%.",
         "copy": "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter.",
         "limit": "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct.",
-        "prompt": "What is the visible ukeire (remaining tiles) for LuckyJ's wait on [[P]] compared to Nishiki's wait on [[8m]]?",
-        "answer": "LuckyJ's wait on [[P]] has 1 visible ukeire remaining, while Nishiki's wait on [[8m]] has 3."
+        "prompt": "Which tile wait did LuckyJ choose for the Chiitoitsu tenpai, and how many copies of that tile were visible on the table and discards?",
+        "answer": "LuckyJ chose [[P]], with one copy visible on the table and discards."
       },
       "guide_ja": {
         "caption": "LuckyJ 8m、ニシキ P",
         "situation": "East 2-0、early、残り50枚。behind、24000点、現在3着。LuckyJ は [[6s]] ツモから [[8m]] を切り、ニシキ第一候補は [[P]]。結果: draw, self delta +3000",
-        "read": "七対子の単騎待ちの選択は、序盤のリーチによる圧力を実際の和了点へと結びつけられるかを左右します。東2局の3着目（24,000点持ち）において、即座に立直を宣言することは他家に強い牽制を与えます。Mortalは立直の宣言自体を支持しており、打牌選択と待ち牌の比較はLuckyJ対Nishikiの構図となります。LuckyJは[[8m]]を切って役牌の[[P]]単騎待ちを選択しましたが、これはすでに場に2枚見えており、山に残る有効枚数はわずか1枚です。一方、Nishikiは[[P]]を切り、上家の[[7m]]の外側にあたる[[8m]]単騎待ちを選びました。こちらは受け入れが3枚残っています。役牌単騎は他家が安全牌として抱えてこぼしやすいため魅力的に映るものの、枚数差がここまであるならば、受け入れ枚数で勝るNishikiの選択の方が和了率において優位と言えます。七対子の単騎選択において、残り枚数が極端に削られている場合は役牌に固執せず、物理的な残り枚数の多さを優先すべきです。",
+        "read": "チートイツの立直における待ち選択が、この局面の焦点である。LuckyJは[[8m]]を切って字牌の[[P]]単騎を選択したのに対し、西姫は[[P]]を切って枚数で勝る[[8m]]単騎での立直を選択した。Mortalは立直宣言自体を支持しており、打牌および待ちの比較はLuckyJ対西姫の構図となる。西姫の選択は山に残る枚数こそ多いものの、立直の圧力は相手の守備対応を劇的に変化させる。ベタオリを余儀なくされた他家は、場に1枚切れている[[P]]のような字牌を、中張牌の[[8m]]よりも優先して手放す可能性が極めて高い。字牌待ちでの立直は相手の防御姿勢を逆手に取るものであり、枚数の不利を実質的なアガリやすさへと昇華させている。",
         "whyNot": "ニシキの [[P]] は 0シャンテン、見えている受け入れ3枚、主な受け [[8m]] を残すので魅力がある。LuckyJ の [[8m]] は 0シャンテン、見えている受け入れ1枚、主な受け [[P]]。LuckyJ はNAGA脅威を余分に受け入れている。LuckyJ 4.0%、ニシキ 0.1%。",
         "copy": "リーチで相手の行動が変わり、待ちも最低限ある時だけ圧力を真似する。",
         "limit": "リーチには理由を持たせる。悪形、着順罰、明確な改良があればダマも残る。",
-        "prompt": "LuckyJが選択した[[P]]待ちと、Nishikiが選択した[[8m]]待ちの、それぞれの見えている残り受け入れ枚数は何枚ですか？",
-        "answer": "LuckyJの[[P]]待ちは残り1枚、Nishikiの[[8m]]待ちは残り3枚です。"
+        "prompt": "LuckyJは七対子のテンパイでどの待ちを選択し、その牌は河（捨て牌）に何枚見えていましたか？",
+        "answer": "[[P]]を選択し、河（捨て牌）に1枚見えていました。"
       }
     },
     {
@@ -49822,22 +49822,22 @@
       "guide": {
         "caption": "LuckyJ 3p, Nishiki 6p",
         "situation": "East 3-0, middle hand, 43 tiles left. LuckyJ has 24000 points (behind), currently 2nd. After drawing [[8m]], LuckyJ cuts [[3p]]; Nishiki's top line is [[6p]]. Result: kamicha won, self delta +0",
-        "read": "Riichi is part of the value calculation. With a declaration probability of 100.0%, LuckyJ treats pressure as a real output of the discard. With the corrected bars, the two candidate threats are close: [[3p]] peaks at dangerK 12.1%; [[6p]] peaks at dangerK 13.4%. The disagreement is not explained by threat alone. Hibakari also chooses [[3p]], so read this as LuckyJ/Hibakari versus Nishiki, not LuckyJ against every NAGA head.",
+        "read": "Declaring riichi with a clean ryoumen wait on [[4s]]/[[7s]] is the clear path to convert our tenpai pressure into points, but the tactical choice lies in whether to discard [[3p]] or [[6p]] as the declaration tile. Mortal supports declaring riichi; the discard/wait comparison remains LuckyJ versus Nishiki. Discarding [[3p]] versus [[6p]] keeps the exact same [[4s]]/[[7s]] wait, but differs slightly in deal-in risk to the table. While [[6p]] is marginally safer against the dealer Toimen, it carries a higher peak danger of 13.4% against Kamicha's discard-heavy river compared to [[3p]]'s 12.1%. LuckyJ chooses to discard [[3p]], minimizing the highest individual danger risk on the board at the moment of declaration. When choosing between two symmetrical tiles to declare riichi, prioritize minimizing the maximum deal-in risk among active opponents.",
         "whyNot": "The Nishiki line through [[6p]] is tempting because it leaves 0-shanten, 6 visible ukeire, main accepts [[4s]], [[7s]]. LuckyJ's [[3p]] line leaves 0-shanten, 6 visible ukeire, main accepts [[4s]], [[7s]]. The NAGA threat numbers are close: LuckyJ 12.2%, Nishiki 13.4%.",
         "copy": "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter.",
         "limit": "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct.",
-        "prompt": "With 43 tiles left, would you cut [[3p]] or [[6p]]? First name what [[6p]] is preserving.",
-        "answer": "LuckyJ chooses [[3p]]. The reproducible reason is: Riichi is part of the value calculation. With a declaration probability of 100.0%, LuckyJ treats pressure as a real output of the discard."
+        "prompt": "Which opponent poses the highest risk for a [[6p]] discard according to the safety data?",
+        "answer": "Kamicha"
       },
       "guide_ja": {
         "caption": "LuckyJ 3p、ニシキ 6p",
         "situation": "East 3-0、middle、残り43枚。behind、24000点、現在2着。LuckyJ は [[8m]] ツモから [[3p]] を切り、ニシキ第一候補は [[6p]]。結果: kamicha won, self delta +0",
-        "read": "リーチ自体が価値になる局面。宣言確率 100.0% を含めて、圧力を打牌の成果として見ている。 修正後の脅威バーでは両候補が近い。[[3p]] は dangerK 12.1% が最大、[[6p]] は dangerK 13.4% が最大。危険差だけでは説明できない分岐である。 ヒバカリも [[3p]] を第一候補にしており、この例は LuckyJ/ヒバカリ対ニシキの分岐として読む。",
+        "read": "[[4s]]・[[7s]]の好形両面待ちで立直を宣言し、テンパイの圧力を点数に変換することは明白な方針だが、宣言牌として[[3p]]と[[6p]]のどちらを切るかという戦術的な選択が分かれ目となる。Mortalは立直の宣言を支持しており、打牌および待ちの比較はLuckyJ対Nishikiの構図となる。[[3p]]切りと[[6p]]切りのどちらを選んでも[[4s]]・[[7s]]の待ちは変わらないが、他家に対する放銃リスクにわずかな差が生じる。[[6p]]は親である対面に対してはわずかに安全だが、上家の河に対しては放銃率が13.4%と、[[3p]]の12.1%に比べて危険度が高くなっている。LuckyJは[[3p]]を打牌に選び、立直宣言の瞬間における卓内の最大放銃リスクを抑える選択をした。立直宣言の際に対称となる二択の牌がある場合は、他家に対する最大放銃リスクを最小化する選択肢を優先すべきである。",
         "whyNot": "ニシキの [[6p]] は 0シャンテン、見えている受け入れ6枚、主な受け [[4s]], [[7s]] を残すので魅力がある。LuckyJ の [[3p]] は 0シャンテン、見えている受け入れ6枚、主な受け [[4s]], [[7s]]。NAGA脅威は近い。LuckyJ 12.2%、ニシキ 13.4%。",
         "copy": "リーチで相手の行動が変わり、待ちも最低限ある時だけ圧力を真似する。",
         "limit": "リーチには理由を持たせる。悪形、着順罰、明確な改良があればダマも残る。",
-        "prompt": "残り43枚で [[3p]] と [[6p]] のどちらを切るか。先に [[6p]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[3p]] を選ぶ。理由は リーチ自体が価値になる局面。宣言確率 100.0% を含めて、圧力を打牌の成果として見ている。"
+        "prompt": "安全度データによると、[[6p]]を打牌する際のリスクが最も高い相手は誰ですか？",
+        "answer": "上家"
       }
     },
     {
@@ -54528,22 +54528,22 @@
       "guide": {
         "caption": "LuckyJ 5m, Nishiki 1s",
         "situation": "East 2-0, middle hand, 49 tiles left. LuckyJ has 28900 points (above starting score), currently 1st. After drawing [[5m]], LuckyJ cuts [[5m]]; Nishiki's top line is [[1s]]. Result: kamicha won, self delta +0",
-        "read": "The next required discard matters more than this turn alone. LuckyJ chooses [[5m]] because the route through [[1s]] can become expensive on the following draw. With the corrected bars, Nishiki's candidate is the hotter tile: [[5m]] peaks at dangerK 0.0%; [[1s]] peaks at dangerK 15.7%. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job. The kept [[1s]] is genbutsu against the right player (1 calls). Hibakari chooses a third line, [[9p]]; read the example as a three-way split and copy the reason, not the surface tile.",
+        "read": "Discarding [[5m]] to break a central sequence block looks like a massive concession in ukeire, but it is the correct price to pay when three opponents have already opened melds. As dealer, keeping the hand moving is attractive, but with a 2-shanten hand holding a guest wind triplet [[S]], we lack a guaranteed yaku and must proceed with extreme caution. Nishiki’s discard of [[1s]] aims to maximize ukeire to 12 tiles, but it throws away a double-genbutsu against both Shimocha and Toimen, leaving a floating [[3s]] that will inevitably lead to dangerous future discards. By cutting the safe [[5m]], LuckyJ accepts a lower ukeire of 8 tiles in exchange for keeping the defensive fallback of [[1s]] intact. Mortal supports this patient approach, backing LuckyJ’s [[5m]] discard with a 69% preference. In a multi-way open board, do not evaluate a discard in isolation; prioritize keeping your double-genbutsu exit routes when the hand still has two steps to reach tenpai.",
         "whyNot": "The Nishiki line through [[1s]] is tempting because it leaves 2-shanten, 12 visible ukeire, main accepts [[4m]], [[8p]], [[3s]], [[C]]. LuckyJ's [[5m]] line leaves 2-shanten, 8 visible ukeire, main accepts [[8p]], [[2s]]. LuckyJ lowers the NAGA threat reading: LuckyJ 0.0%, Nishiki 15.7%.",
         "copy": "Copy the reason: if cutting [[5m]] keeps the hand's real job clearer than the Nishiki line through [[1s]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
-        "prompt": "With 49 tiles left, would you cut [[5m]] or [[1s]]? First name what [[1s]] is preserving.",
-        "answer": "LuckyJ chooses [[5m]]. The reproducible reason is: The next required discard matters more than this turn alone. LuckyJ chooses [[5m]] because the route through [[1s]] can become expensive on the following draw."
+        "prompt": "Which tile in LuckyJ's hand acts as a double genbutsu against both Shimocha and Toimen?",
+        "answer": "[[1s]]"
       },
       "guide_ja": {
         "caption": "LuckyJ 5m、ニシキ 1s",
         "situation": "East 2-0、middle、残り49枚。above starting score、28900点、現在1着。LuckyJ は [[5m]] ツモから [[5m]] を切り、ニシキ第一候補は [[1s]]。結果: kamicha won, self delta +0",
-        "read": "今の一打と次に切る牌まで読む。[[1s]] 経由の道が次巡に高くつくため、LuckyJ は [[5m]] を選んでいる。 修正後の脅威バーではニシキ候補の方が熱い。[[5m]] は dangerK 0.0% が最大、[[1s]] は dangerK 15.7% が最大。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。 残る [[1s]] は 下家 に対して現物で、相手の状態は1副露。 ヒバカリは第三候補の [[9p]] を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。",
+        "read": "中央のシュンツを壊す[[5m]]切りは受け入れ枚数を大きく減らす妥協に見えますが、3軒が仕掛けている局面では支払うべき正しい対価です。親番維持は魅力的であるものの、客風のアンコ[[S]]を抱えた2シャンテンの手牌は役が確定しておらず、極めて慎重に進める必要があります。Nishikiの[[1s]]切りは受け入れを12枚に最大化しますが、下家と対面の両方に現物であるダブル現物を手放し、浮いた[[3s]]によって将来的に危険な打牌を強いられることになります。LuckyJは安全な[[5m]]を切ることで受け入れを8枚に抑えつつ、[[1s]]という守備の生命線を残しました。Mortalもこの慎重な方針を支持し、LuckyJの[[5m]]切りに69%の推奨度を出しています。複数軒が仕掛けている場では、単体の打牌だけで判断せず、テンパイまで2手必要な段階ではダブル現物の逃げ道を維持することを優先しましょう。",
         "whyNot": "ニシキの [[1s]] は 2シャンテン、見えている受け入れ12枚、主な受け [[4m]], [[8p]], [[3s]], [[C]] を残すので魅力がある。LuckyJ の [[5m]] は 2シャンテン、見えている受け入れ8枚、主な受け [[8p]], [[2s]]。LuckyJ はNAGA脅威を下げている。LuckyJ 0.0%、ニシキ 15.7%。",
         "copy": "[[5m]] 切りが [[1s]] 経由より手の仕事をはっきり残すなら、その理由を真似できる。",
         "limit": "表面の牌を真似する条件は、点数状況、脅威、次に切る牌がそろう時である。",
-        "prompt": "残り49枚で [[5m]] と [[1s]] のどちらを切るか。先に [[1s]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[5m]] を選ぶ。理由は 今の一打と次に切る牌まで読む。[[1s]] 経由の道が次巡に高くつくため、LuckyJ は [[5m]] を選んでいる。"
+        "prompt": "LuckyJの手牌の中で、下家と対面の両方に対して現物（ダブル現物）となっている牌はどれですか？",
+        "answer": "[[1s]]"
       }
     },
     {
@@ -57519,22 +57519,22 @@
       "guide": {
         "caption": "LuckyJ White Dragon, Nishiki 4m",
         "situation": "South 2-0, middle hand, 47 tiles left. LuckyJ has 42000 points (lead), currently 1st. After drawing [[4m]], LuckyJ cuts [[P]]; Nishiki's top line is [[4m]]. Result: kamicha won, self delta -1000",
-        "read": "The next required discard matters more than this turn alone. LuckyJ chooses [[P]] because the route through [[4m]] can become expensive on the following draw. With the corrected bars, Nishiki's candidate is the hotter tile: [[P]] peaks at dangerS 0.7%; [[4m]] peaks at dangerS 34.8%. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job. Hibakari chooses a third line, [[S]]; read the example as a three-way split and copy the reason, not the surface tile.",
+        "read": "Holding a comfortable 42,000-point lead in South 2, the primary objective is to navigate the multiple active open hands without bleeding points. Nishiki discards the isolated [[4m]] immediately, recognizing that holding this middle tile creates a dangerous future liability against three opponents who have already melded. LuckyJ instead discards the safe [[P]], keeping the [[4m]] to maximize immediate ukeire, while Mortal takes a third path by discarding [[S]]. Both candidate lines preserve the underlying iipeikou seed of [[7m]][[8m]] needing [[6m]] or [[9m]]. However, holding [[4m]] is a high-danger contract, especially with its significant danger level against Shimocha's active hand. When you already hold five pairs with options for chiitoitsu, carrying a floating [[4m]] yields negligible speed value compared to the threat of dealing in. Dump the high-liability middle tile early when your hand's value does not justify the risk.",
         "whyNot": "The Nishiki line through [[4m]] is tempting because it leaves 1-shanten, 6 visible ukeire, main accepts [[9m]], [[S]], [[P]]. LuckyJ's [[P]] line leaves 1-shanten, 7 visible ukeire, main accepts [[4m]], [[9m]], [[S]]. LuckyJ lowers the NAGA threat reading: LuckyJ 0.7%, Nishiki 34.8%.",
         "copy": "Copy the reason: if cutting [[P]] keeps the hand's real job clearer than the Nishiki line through [[4m]], the choice is reproducible.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
-        "prompt": "With 47 tiles left, would you cut [[P]] or [[4m]]? First name what [[4m]] is preserving.",
-        "answer": "LuckyJ chooses [[P]]. The reproducible reason is: The next required discard matters more than this turn alone. LuckyJ chooses [[P]] because the route through [[4m]] can become expensive on the following draw."
+        "prompt": "How many opponents have active open melds in this situation?",
+        "answer": "Three"
       },
       "guide_ja": {
         "caption": "LuckyJ P、ニシキ 4m",
         "situation": "South 2-0、middle、残り47枚。lead、42000点、現在1着。LuckyJ は [[4m]] ツモから [[P]] を切り、ニシキ第一候補は [[4m]]。結果: kamicha won, self delta -1000",
-        "read": "今の一打と次に切る牌まで読む。[[4m]] 経由の道が次巡に高くつくため、LuckyJ は [[P]] を選んでいる。 修正後の脅威バーではニシキ候補の方が熱い。[[P]] は dangerS 0.7% が最大、[[4m]] は dangerS 34.8% が最大。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。 ヒバカリは第三候補の [[S]] を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。",
+        "read": "南2局、42,000点持ちのトップ目であるため、最大の目的は仕掛けている他家に対して放銃を避けつつ局を進めることである。Nishikiは孤立している[[4m]]を即座に切り、すでに副露している3人の相手に対して、この中張牌を持ち続けることが将来的に危険な負債になることを見抜いている。これに対し、LuckyJは現物の[[P]]を切って手広さを維持することを選び、Mortalは第三の選択肢として[[S]]切りを推奨している。両者の選択はともに[[7m]][[8m]]のイーペーコーの種（[[6m]]または[[9m]]受け）を残している。しかし、下家の仕掛けなどに対して危険度の高い[[4m]]を抱え続けることは極めてリスクが高い。七対子の一シャンテンでもあるこの手牌において、浮いた[[4m]]を抱えるスピード面でのメリットは放銃リスクに見合わない。手牌の打点がリスクに見合わない状況では、危険な中張牌は早い段階で整理すべきである。",
         "whyNot": "ニシキの [[4m]] は 1シャンテン、見えている受け入れ6枚、主な受け [[9m]], [[S]], [[P]] を残すので魅力がある。LuckyJ の [[P]] は 1シャンテン、見えている受け入れ7枚、主な受け [[4m]], [[9m]], [[S]]。LuckyJ はNAGA脅威を下げている。LuckyJ 0.7%、ニシキ 34.8%。",
         "copy": "[[P]] 切りが [[4m]] 経由より手の仕事をはっきり残すなら、その理由を真似できる。",
         "limit": "表面の牌を真似する条件は、点数状況、脅威、次に切る牌がそろう時である。",
-        "prompt": "残り47枚で [[P]] と [[4m]] のどちらを切るか。先に [[4m]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[P]] を選ぶ。理由は 今の一打と次に切る牌まで読む。[[4m]] 経由の道が次巡に高くつくため、LuckyJ は [[P]] を選んでいる。"
+        "prompt": "この状況で、すでに仕掛け（副露）を入れている相手は何人いますか？",
+        "answer": "3人"
       }
     },
     {
@@ -77605,22 +77605,22 @@
       "guide": {
         "caption": "LuckyJ 9p, Nishiki 6m",
         "situation": "East 1-1, late hand, 11 tiles left. LuckyJ has 12400 points (danger zone), currently 4th. After drawing [[6m]], LuckyJ cuts [[9p]]; Nishiki's top line is [[6m]]. Result: draw, self delta +1000",
-        "read": "The hand result matters: draw, self delta +1000. LuckyJ is playing for drawn-hand equity as well as direct wins. With the corrected bars, Nishiki's candidate is the hotter tile: [[9p]] peaks at dangerT 3.1%; [[6m]] peaks at dangerK 38.9%. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job. Hibakari also chooses [[9p]], so read this as LuckyJ/Hibakari versus Nishiki, not LuckyJ against every NAGA head.",
+        "read": "With only 11 tiles remaining in the wall, deciding between the safe [[9p]] and the dangerous [[6m]] determines whether we fight for tenpai or prioritize survival. Nishiki and Mortal (82% preference) discard [[6m]], immediately pushing a tile with over 35% danger to keep the [[7p]][[9p]] kanchan active. This aggressive play seeks to claim the 1,000 to 3,000 tenpai points at the draw, but a deal-in would be fatal to our 12,400-point fourth-place position. LuckyJ chooses the safer path by discarding the genbutsu [[9p]], breaking the [[7p]][[9p]] block but preserving the 456 sanshoku doujun seed. When one-away from tenpai in the late game, only push dangerous middle tiles if the reward of tenpai outweighs the risk of an instant game-ending deal-in.",
         "whyNot": "Nishiki's top line [[6m]] is tempting because it has the highest model weight here: Nishiki 60.4%, LuckyJ 38.7%. LuckyJ lowers the NAGA threat reading: LuckyJ 3.1%, Nishiki 38.9%.",
         "copy": "Copy this when a safe path to tenpai has measurable value even if the hand is unlikely to win outright.",
         "limit": "Copy the surface tile only when the score job, threat level, and next discard chain match.",
-        "prompt": "With 11 tiles left, would you cut [[9p]] or [[6m]]? First name what [[6m]] is preserving.",
-        "answer": "LuckyJ chooses [[9p]]. The reproducible reason is: The hand result matters: draw, self delta +1000. LuckyJ is playing for drawn-hand equity as well as direct wins."
+        "prompt": "According to the safety facts, against which opponent is [[9p]] a genbutsu?",
+        "answer": "Kamicha"
       },
       "guide_ja": {
         "caption": "LuckyJ 9p、ニシキ 6m",
         "situation": "East 1-1、late、残り11枚。danger zone、12400点、現在4着。LuckyJ は [[6m]] ツモから [[9p]] を切り、ニシキ第一候補は [[6m]]。結果: draw, self delta +1000",
-        "read": "結果は draw, self delta +1000。直撃の和了に加えて、流局テンパイの価値を取りに行っている。 修正後の脅威バーではニシキ候補の方が熱い。[[9p]] は dangerT 3.1% が最大、[[6m]] は dangerK 38.9% が最大。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。 ヒバカリも [[9p]] を第一候補にしており、この例は LuckyJ/ヒバカリ対ニシキの分岐として読む。",
+        "read": "残りツモ山が11枚となった終盤、安全牌の[[9p]]か危険牌の[[6m]]のどちらを切るかは、テンパイを目指して押すか生存を優先するかの選択となる。NishikiとMortal（選択率82%）は[[6m]]を切り、危険度35%以上の牌を即座に通しにいって[[7p]][[9p]]のカンチャンを維持した。この強気な一打は流局時のテンパイ罰符（1,000〜3,000点）の獲得を狙ったものだが、放銃すれば12,400点持ちラス目の状況では致命傷になりかねない。対してLuckyJは、現物である[[9p]]を切る安全なルートを選択し、[[7p]][[9p]]のブロックを崩しつつも456の三色同順の種を残した。終盤の一向聴において危険な無スジの数牌を押すのは、テンパイ料による得点が放銃による即ラスのリスクを上回る場合に限るべきである。",
         "whyNot": "ニシキ第一候補の [[6m]] はこの局面で重みが高い (60.4%、LuckyJ は 38.7%)。LuckyJ はNAGA脅威を下げている。LuckyJ 3.1%、ニシキ 38.9%。",
         "copy": "和了が薄くても、安全にテンパイへ行ける価値がある時に真似する。",
         "limit": "表面の牌を真似する条件は、点数状況、脅威、次に切る牌がそろう時である。",
-        "prompt": "残り11枚で [[9p]] と [[6m]] のどちらを切るか。先に [[6m]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[9p]] を選ぶ。理由は 結果は draw, self delta +1000。直撃の和了に加えて、流局テンパイの価値を取りに行っている。"
+        "prompt": "安全情報によると、[[9p]]はどの対戦相手に対して現物となっていますか？",
+        "answer": "上家"
       }
     }
   ],
@@ -99566,22 +99566,22 @@
       "guide": {
         "caption": "LuckyJ 9s, Nishiki 6p",
         "situation": "East 4-0, middle hand, 46 tiles left. LuckyJ has 34200 points (above starting score), currently 1st. After drawing [[6p]], LuckyJ cuts [[9s]]; Nishiki's top line is [[6p]]. Result: shimocha won, self delta +0",
-        "read": "By cutting [[9s]], LuckyJ keeps [[6p]] as a named defensive tile with a target. With the corrected bars, Nishiki's candidate is the hotter tile: [[9s]] peaks at dangerK 0.0%; [[6p]] peaks at dangerK 3.9%. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job. The kept [[6p]] is genbutsu against the right player (3 calls). Hibakari chooses a third line, [[4s]]; read the example as a three-way split and copy the reason, not the surface tile.",
+        "read": "Discarding the genbutsu [[6p]] immediately advances the hand to 1-shanten, but it leaves us defenseless against Shimocha's active three-meld threat. While Nishiki and Mortal (with an 88% preference) discard [[6p]] to prioritize speed, LuckyJ chooses to discard [[9s]], dropping to 2-shanten while maintaining a wide 52-tile ukeire. As the dealer in the lead, LuckyJ's defensive posture aims to retain the genbutsu [[6p]] as a safety valve. This line also preserves a faraway 456 sanshoku doujun seed with the complete [[4p]][[5p]][[6p]] block, whereas Nishiki's discard abandons it. For LuckyJ's defensive line to be correct, the risk of dealing into Shimocha's active hand must outweigh the value of the immediate 1-shanten. Keep the genbutsu when a multi-meld opponent is live; the moment you discard your defensive anchor for speed, you lose control of the round.",
         "whyNot": "The Nishiki line through [[6p]] is tempting because it leaves 1-shanten, 14 visible ukeire, main accepts [[7m]], [[3s]], [[4s]], [[5s]], [[6s]]. LuckyJ's [[9s]] line leaves 2-shanten, 52 visible ukeire, main accepts [[7m]], [[1p]], [[2p]], [[3p]], [[4p]]. LuckyJ lowers the NAGA threat reading: LuckyJ 0.0%, Nishiki 3.9%.",
         "copy": "Copy the target: keep [[6p]] when it answers a named opponent on a believable future bad draw.",
         "limit": "Keep [[6p]] when it actually covers a live threat.",
-        "prompt": "With 46 tiles left, would you cut [[9s]] or [[6p]]? First name what [[6p]] is preserving.",
-        "answer": "LuckyJ chooses [[9s]]. The reproducible reason is: By cutting [[9s]], LuckyJ keeps [[6p]] as a named defensive tile with a target."
+        "prompt": "Which opponent is the active threat with 3 open melds, and which tile in our hand is safe against them?",
+        "answer": "Shimocha is the active threat, and [[6p]] is the genbutsu safe tile against them."
       },
       "guide_ja": {
         "caption": "LuckyJ 9s、ニシキ 6p",
         "situation": "East 4-0、middle、残り46枚。above starting score、34200点、現在1着。LuckyJ は [[6p]] ツモから [[9s]] を切り、ニシキ第一候補は [[6p]]。結果: shimocha won, self delta +0",
-        "read": "[[9s]] を切って [[6p]] を明確な守備牌として残す。対象のある安全牌として扱っている。 修正後の脅威バーではニシキ候補の方が熱い。[[9s]] は dangerK 0.0% が最大、[[6p]] は dangerK 3.9% が最大。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。 残る [[6p]] は 下家 に対して現物で、相手の状態は3副露。 ヒバカリは第三候補の [[4s]] を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。",
+        "read": "現物である[[6p]]を切れば手牌は一歩進んで1シャンテンになりますが、3副露している下家の動向に対して完全に無防備になってしまいます。にしきとMortal（88%の選択率）は速度を最優先して[[6p]]切りを選択しますが、LuckyJは[[9s]]を切り、2シャンテンに後退しつつも52枚という広い受け入れを残す道を選びました。トップ目の親番であるため、LuckyJは安全弁となる現物の[[6p]]を手元に残す守備的な姿勢を取っています。この一打は、完成している[[4p]][[5p]][[6p]]のブロックを維持することで、遠くに見える456の三色同順の種を残していますが、にしきの打牌ではこれが失われます。LuckyJの守備的な選択が正当化されるには、1シャンテンの速度価値よりも、下家の副露手に対する放銃リスクの方が上回っている必要があります。複数の副露を入れている相手がいる時は現物を抱えましょう。速度のために守備のアンカーを捨てた瞬間、局の主導権を失うことになります。",
         "whyNot": "ニシキの [[6p]] は 1シャンテン、見えている受け入れ14枚、主な受け [[7m]], [[3s]], [[4s]], [[5s]], [[6s]] を残すので魅力がある。LuckyJ の [[9s]] は 2シャンテン、見えている受け入れ52枚、主な受け [[7m]], [[1p]], [[2p]], [[3p]], [[4p]]。LuckyJ はNAGA脅威を下げている。LuckyJ 0.0%、ニシキ 3.9%。",
         "copy": "対象を真似する。[[6p]] が次の悪いツモで誰に効くかを言える時だけ残す。",
         "limit": "[[6p]] が生きた脅威に通る時に残す。",
-        "prompt": "残り46枚で [[9s]] と [[6p]] のどちらを切るか。先に [[6p]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[9s]] を選ぶ。理由は [[9s]] を切って [[6p]] を明確な守備牌として残す。対象のある安全牌として扱っている。"
+        "prompt": "3副露してアクティブな脅威となっている対戦相手は誰ですか？また、その相手に対して手牌の中で安全な牌は何ですか？",
+        "answer": "下家がアクティブな脅威であり、その相手に対する安全牌（現物）は[[6p]]です。"
       }
     },
     {
@@ -102093,22 +102093,22 @@
       "guide": {
         "caption": "LuckyJ 6s, Nishiki 4m",
         "situation": "South 1-0, middle hand, 37 tiles left. LuckyJ has 51100 points (lead), currently 1st. After drawing [[3m]], LuckyJ cuts [[6s]]; Nishiki's top line is [[4m]]. Result: kamicha won, self delta +0",
-        "read": "By cutting [[6s]], LuckyJ keeps [[4m]] as a named defensive tile with a target. With the corrected bars, LuckyJ's discard is the hotter tile: [[6s]] peaks at dangerK 18.1%; [[4m]] peaks at dangerK 2.9%. This is a real threat-buy, so the local shape, value, or placement reason has to carry the example. The kept [[4m]] is genbutsu against the across player (2 calls). Hibakari chooses a third line, [[3m]]; read the example as a three-way split and copy the reason, not the surface tile.",
+        "read": "Discarding the high-danger [[6s]] immediately is a proactive defensive move that secures a tenpai shape. As the dealer in South 1-0 holding a substantial 51,100-point lead, protecting this position takes precedence over maximizing raw tile acceptance. By releasing [[6s]] (which carries an 18.1% danger level), LuckyJ holds onto [[4m]], a crucial genbutsu against the two-meld Toimen. This path also preserves an iipeikou/ryanpeikou seed with the [[3m]] and [[4m]] pairs. In contrast, Nishiki discards [[4m]] to prioritize 25 ukeire for a 1-shanten hand with a distant 456 sanshoku route, leaving the dangerous [[6s]] vulnerable. Mortal points to a third direction by favoring a [[3m]] discard, highlighting the genuine tension of the decision. Hold the defensive anchor against your primary threat; throwing away a genbutsu for a wider 1-shanten is an unnecessary risk when protecting a major lead.",
         "whyNot": "The Nishiki line through [[4m]] is tempting because it leaves 1-shanten, 25 visible ukeire, main accepts [[2m]], [[4m]], [[5m]], [[6m]], [[7m]]. LuckyJ's [[6s]] line leaves 0-shanten, 0 visible ukeire, main accepts none listed. LuckyJ accepts a higher NAGA threat reading now: LuckyJ 18.1%, Nishiki 2.9%.",
         "copy": "Copy the target: keep [[4m]] when it answers a named opponent on a believable future bad draw.",
         "limit": "Keep [[4m]] when it actually covers a live threat.",
-        "prompt": "With 37 tiles left, would you cut [[6s]] or [[4m]]? First name what [[4m]] is preserving.",
-        "answer": "LuckyJ chooses [[6s]]. The reproducible reason is: By cutting [[6s]], LuckyJ keeps [[4m]] as a named defensive tile with a target."
+        "prompt": "Which opponent is the kept [[4m]] tile safe against as a genbutsu?",
+        "answer": "Toimen"
       },
       "guide_ja": {
         "caption": "LuckyJ 6s、ニシキ 4m",
         "situation": "South 1-0、middle、残り37枚。lead、51100点、現在1着。LuckyJ は [[3m]] ツモから [[6s]] を切り、ニシキ第一候補は [[4m]]。結果: kamicha won, self delta +0",
-        "read": "[[6s]] を切って [[4m]] を明確な守備牌として残す。対象のある安全牌として扱っている。 修正後の脅威バーではLuckyJの打牌の方が熱い。[[6s]] は dangerK 18.1% が最大、[[4m]] は dangerK 2.9% が最大。この例は安全寄せではなく、追加脅威を払ってでも残す形・価値・着順理由があるかを見る。 残る [[4m]] は 対面 に対して現物で、相手の状態は2副露。 ヒバカリは第三候補の [[3m]] を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。",
+        "read": "危険度の高い[[6s]]を今切り出すことは、テンパイ形を維持しつつ、先を見据えた守備的な選択である。南1局の親番で51,100点という大きなリードを持つ状況では、単純な受け入れ枚数の最大化よりも、失点を防ぐ守備力が優先される。危険度18.1%の[[6s]]を先に処理することで、LuckyJは2副露している対面に対して現物である[[4m]]を手元に残すことができる。この打牌は、[[3m]]と[[4m]]の対子を利用した一盃口や二盃口の種を形に残す効果もある。一方で、Nishikiは遠い456の三色同順を見据えつつ25枚の受け入れを最大化する[[4m]]切りを選択し、1シャンテンの手に危険な[[6s]]を残す形をとった。AIモデルのMortalは第三の選択肢として[[3m]]切りを指示しており、この局面におけるエンジン間の意見の分かれ方を示している。警戒すべき相手への確実な安全牌を手元に確保し、リードを守る局面で不要な危険牌を抱え込むリスクを避けるべきである。",
         "whyNot": "ニシキの [[4m]] は 1シャンテン、見えている受け入れ25枚、主な受け [[2m]], [[4m]], [[5m]], [[6m]], [[7m]] を残すので魅力がある。LuckyJ の [[6s]] は 0シャンテン、見えている受け入れ0枚、主な受け なし。LuckyJ はNAGA脅威を余分に受け入れている。LuckyJ 18.1%、ニシキ 2.9%。",
         "copy": "対象を真似する。[[4m]] が次の悪いツモで誰に効くかを言える時だけ残す。",
         "limit": "[[4m]] が生きた脅威に通る時に残す。",
-        "prompt": "残り37枚で [[6s]] と [[4m]] のどちらを切るか。先に [[4m]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[6s]] を選ぶ。理由は [[6s]] を切って [[4m]] を明確な守備牌として残す。対象のある安全牌として扱っている。"
+        "prompt": "残した[[4m]]は、どの対戦相手に対する現物として安全牌になりますか？",
+        "answer": "対面"
       }
     },
     {
@@ -102938,22 +102938,22 @@
       "guide": {
         "caption": "LuckyJ 8p, Nishiki 6m",
         "situation": "South 3-1, middle hand, 42 tiles left. LuckyJ has 25900 points (above starting score), currently 3rd. After drawing [[8p]], LuckyJ cuts [[8p]]; Nishiki's top line is [[6m]]. Result: kamicha won, self delta -6100",
-        "read": "By cutting [[8p]], LuckyJ keeps [[6m]] as a named defensive tile with a target. With the corrected bars, LuckyJ's discard is the hotter tile: [[8p]] peaks at dangerS 12.0%; [[6m]] peaks at dangerK 4.2%. This is a real threat-buy, so the local shape, value, or placement reason has to carry the example. The kept [[6m]] is genbutsu against the right player (1 calls). Hibakari chooses a third line, [[7m]]; read the example as a three-way split and copy the reason, not the surface tile.",
+        "read": "Holding a 3-shanten hand loaded with five honors, the choice between discarding [[8p]] or [[6m]] highlights a fundamental split in defensive planning. In South 3, Honba 1, Shimocha has already called a Chun triplet, establishing them as the primary active threat on the board. Nishiki's play to discard the [[6m]] preserves the [[8p]] block but abandons a vital genbutsu against Shimocha, reducing ukeire to just 16 tiles and leaving a floating [[7m]]. LuckyJ instead discards the [[8p]]—which carries a significant 12% deal-in risk against Shimocha—to retain the [[6m]] as a targeted defensive anchor. This discard not only keeps the hand's safest tile against the active opponent but also maximizes ukeire at 33 tiles by utilizing the natural [[6m]][[7m]] sequence block. Keep the genbutsu of the active threat; discarding a risky terminal early to secure a target-specific retreat route is far more valuable than clinging to a heavy, slow shape.",
         "whyNot": "The Nishiki line through [[6m]] is tempting because it leaves 3-shanten, 16 visible ukeire, main accepts [[7m]], [[1p]], [[5p]], [[8p]], [[S]]. LuckyJ's [[8p]] line leaves 3-shanten, 33 visible ukeire, main accepts [[5m]], [[6m]], [[7m]], [[8m]], [[1p]]. LuckyJ accepts a higher NAGA threat reading now: LuckyJ 12.0%, Nishiki 4.2%.",
         "copy": "Copy the target: keep [[6m]] when it answers a named opponent on a believable future bad draw.",
         "limit": "Keep [[6m]] when it actually covers a live threat.",
-        "prompt": "With 42 tiles left, would you cut [[8p]] or [[6m]]? First name what [[6m]] is preserving.",
-        "answer": "LuckyJ chooses [[8p]]. The reproducible reason is: By cutting [[8p]], LuckyJ keeps [[6m]] as a named defensive tile with a target."
+        "prompt": "Who is the active threat opponent that makes [[6m]] a valuable genbutsu to keep?",
+        "answer": "Shimocha"
       },
       "guide_ja": {
         "caption": "LuckyJ 8p、ニシキ 6m",
         "situation": "South 3-1、middle、残り42枚。above starting score、25900点、現在3着。LuckyJ は [[8p]] ツモから [[8p]] を切り、ニシキ第一候補は [[6m]]。結果: kamicha won, self delta -6100",
-        "read": "[[8p]] を切って [[6m]] を明確な守備牌として残す。対象のある安全牌として扱っている。 修正後の脅威バーではLuckyJの打牌の方が熱い。[[8p]] は dangerS 12.0% が最大、[[6m]] は dangerK 4.2% が最大。この例は安全寄せではなく、追加脅威を払ってでも残す形・価値・着順理由があるかを見る。 残る [[6m]] は 下家 に対して現物で、相手の状態は1副露。 ヒバカリは第三候補の [[7m]] を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。",
+        "read": "5枚の字牌を抱えた3シャンテンの段階で、[[8p]]と[[6m]]のどちらを切るかの選択は、守備的な構えと手広さの維持における明確な判断の分かれ目となります。南3局1本場、下家がすでに中をポンして役を確定させており、この局における明確な脅威となっています。Nishikiが選択した[[6m]]切りは、[[8p]]のブロックを残すものの、下家に対する貴重な現物を手放してしまい、浮き牌の[[7m]]を残すことで有効牌受け入れをわずか16枚に激減させます。対照的に、LuckyJは下家に対して放銃率12%と危険な[[8p]]を先に切り飛ばし、現物である[[6m]]を守備のアンカーとして手元に残しました。この一打は、アクティブな相手への絶対的な安全牌を確保しつつ、[[6m]][[7m]]の両面ブロックを維持することで、有効牌受け入れを33枚へと最大化しています。現在の脅威に対する現物は安易に手放さず、危険な端寄りの牌を先に処理して具体的な撤退ルートを確保することが、重く遅い形を維持することよりもはるかに価値があります。",
         "whyNot": "ニシキの [[6m]] は 3シャンテン、見えている受け入れ16枚、主な受け [[7m]], [[1p]], [[5p]], [[8p]], [[S]] を残すので魅力がある。LuckyJ の [[8p]] は 3シャンテン、見えている受け入れ33枚、主な受け [[5m]], [[6m]], [[7m]], [[8m]], [[1p]]。LuckyJ はNAGA脅威を余分に受け入れている。LuckyJ 12.0%、ニシキ 4.2%。",
         "copy": "対象を真似する。[[6m]] が次の悪いツモで誰に効くかを言える時だけ残す。",
         "limit": "[[6m]] が生きた脅威に通る時に残す。",
-        "prompt": "残り42枚で [[8p]] と [[6m]] のどちらを切るか。先に [[6m]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[8p]] を選ぶ。理由は [[8p]] を切って [[6m]] を明確な守備牌として残す。対象のある安全牌として扱っている。"
+        "prompt": "[[6m]]を価値ある現物として手元に残す目的となる、現在警戒すべき相手（プレイヤー）は誰ですか？",
+        "answer": "下家"
       }
     }
   ],
@@ -106322,22 +106322,22 @@
       "guide": {
         "caption": "LuckyJ 9m, Nishiki 6m",
         "situation": "East 2-0, early hand, 56 tiles left. LuckyJ has 21800 points (behind), currently 4th. After drawing [[4s]], LuckyJ cuts [[9m]]; Nishiki's top line is [[6m]]. Result: toimen won, self delta -2000",
-        "read": "This is a spend-the-safe-tile example. [[9m]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space. With the corrected bars, the two candidate threats are close: [[9m]] peaks at dangerT 8.0%; [[6m]] peaks at dangerT 7.6%. The disagreement is not explained by threat alone. Hibakari chooses a third line, [[6s]]; read the example as a three-way split and copy the reason, not the surface tile.",
+        "read": "Discarding one of the [[9m]] pair tiles looks counter-intuitive compared to shedding the isolated [[6m]], but it is the correct response to a changing table dynamic. With toimen having called two melds, they represent the primary active threat on the board while kamicha remains quiet. Although [[9m]] is a safe genbutsu tile against kamicha, it offers no protection against toimen, carrying a live 8% danger rate. By spending this stale safe tile now, LuckyJ keeps the [[6m]] to preserve the faraway 456 sanshoku doujun seed, whereas Nishiki's discard of [[6m]] kills this potential completely. Nishiki's choice to discard [[6m]] boasts 18 ukeire by keeping the [[9m]] pair, but it forces the hand into a lower-value, flatter shape. When a safe tile no longer blocks the active threat, discard it to preserve value rather than letting your hand decay for a false sense of security.",
         "whyNot": "The Nishiki line through [[6m]] is tempting because it leaves 2-shanten, 18 visible ukeire, main accepts [[9m]], [[3p]], [[6p]], [[7p]], [[2s]]. LuckyJ's [[9m]] line leaves 2-shanten, 13 visible ukeire, main accepts [[3p]], [[6p]], [[7p]], [[2s]]. The NAGA threat numbers are close: LuckyJ 8.0%, Nishiki 7.6%.",
         "copy": "Copy this only after naming why the safe-looking [[9m]] has expired and what later safe tile remains.",
         "limit": "Spend [[9m]] only when another real answer to the active threat remains.",
-        "prompt": "With 56 tiles left, would you cut [[9m]] or [[6m]]? First name what [[6m]] is preserving.",
-        "answer": "LuckyJ chooses [[9m]]. The reproducible reason is: This is a spend-the-safe-tile example. [[9m]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space."
+        "prompt": "Which opponent is the active threat in this scenario, and is the discarded [[9m]] safe against them?",
+        "answer": "Toimen is the active threat, and [[9m]] is not safe against them."
       },
       "guide_ja": {
         "caption": "LuckyJ 9m、ニシキ 6m",
         "situation": "East 2-0、early、残り56枚。behind、21800点、現在4着。LuckyJ は [[4s]] ツモから [[9m]] を切り、ニシキ第一候補は [[6m]]。結果: toimen won, self delta -2000",
-        "read": "安全牌を使う例。[[9m]] は安全に見えても、守る相手がずれたら手順の邪魔になる。 修正後の脅威バーでは両候補が近い。[[9m]] は dangerT 8.0% が最大、[[6m]] は dangerT 7.6% が最大。危険差だけでは説明できない分岐である。 ヒバカリは第三候補の [[6s]] を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。",
+        "read": "孤立している[[6m]]ではなく、トイツの片割れである[[9m]]を切る選択は一見直感に反するように見えますが、変化する卓上の状況に対応した的確な一手です。トイメンが2副露しており現在唯一の能動的な脅威となっている一方、上家はテンパイ気配がありません。[[9m]]は上家の現物ですが、トイメンに対しては安全ではなく、放銃率は8%に達しています。この賞味期限切れの安全牌[[9m]]を今処理することで、LuckyJは[[4p]][[5p]]および[[4s]][[5s]][[6s]]と連動する遠い456の三色同順の種である[[6m]]を残すことができますが、Nishikiの[[6m]]切りはその可能性を完全に消してしまいます。Nishikiの[[6m]]切りは[[9m]]のトイツを残すことで受け入れ数を18枚に広げますが、手の打点を下げ、平坦な形に甘んじることになります。安全牌が現在の脅威に対して機能しなくなったときは、偽りの安全のために手を腐らせるのではなく、打点を残すためにその安全牌を切り飛ばすべきです。",
         "whyNot": "ニシキの [[6m]] は 2シャンテン、見えている受け入れ18枚、主な受け [[9m]], [[3p]], [[6p]], [[7p]], [[2s]] を残すので魅力がある。LuckyJ の [[9m]] は 2シャンテン、見えている受け入れ13枚、主な受け [[3p]], [[6p]], [[7p]], [[2s]]。NAGA脅威は近い。LuckyJ 8.0%、ニシキ 7.6%。",
         "copy": "安全そうな [[9m]] がなぜ期限切れか、次の安全牌が何かを言えた時だけ真似する。",
         "limit": "[[9m]] が現役の脅威への唯一の答えなら、安全牌として残す。",
-        "prompt": "残り56枚で [[9m]] と [[6m]] のどちらを切るか。先に [[6m]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[9m]] を選ぶ。理由は 安全牌を使う例。[[9m]] は安全に見えても、守る相手がずれたら手順の邪魔になる。"
+        "prompt": "この局面において現在脅威となっている他家は誰ですか？また、実際に打牌された[[9m]]はその相手に対して安全ですか？",
+        "answer": "トイメンが脅威であり、[[9m]]はその相手に対して安全ではありません。"
       }
     },
     {
@@ -107068,22 +107068,22 @@
       "guide": {
         "caption": "LuckyJ West, Nishiki 4s",
         "situation": "East 4-0, middle hand, 38 tiles left. LuckyJ has 17400 points (behind), currently 3rd. After drawing [[4s]], LuckyJ cuts [[W]]; Nishiki's top line is [[4s]]. Result: kamicha won, self delta -2600",
-        "read": "This is a spend-the-safe-tile example. [[W]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space. With the corrected bars, Nishiki's candidate is the hotter tile: [[W]] peaks at dangerK 5.2%; [[4s]] peaks at dangerK 63.5%. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job. Hibakari also leans to Nishiki's [[4s]], so this is a harder example: LuckyJ is beating the defensive baseline only if the local condition is exact.",
+        "read": "The choice between discarding the guest wind [[W]] or the sequence connector [[4s]] hinges on whether safety against a passive opponent justifies choking your own dealer ukeire. Trailing in third with 17,400 points, maintaining dealer initiative is paramount. Nishiki discards [[4s]] to force a 1-shanten shape, but this drops the hand's visible ukeire to just 13 tiles. In contrast, LuckyJ recognizes that [[W]] is only safe against Shimocha, who currently poses no active threat. Discarding [[W]] keeps the hand at 2-shanten but explodes the ukeire to 36 tiles while preserving the valuable iipeikou or ryanpeikou seed built on the [[4p]] and [[5p]] pairs. Release stale guest wind pairs the moment their target opponent ceases to be the primary threat, prioritizing raw tile acceptance to keep the dealer initiative.",
         "whyNot": "The Nishiki line through [[4s]] is tempting because it leaves 1-shanten, 13 visible ukeire, main accepts [[3p]], [[4p]], [[5p]], [[6p]], [[7s]]. LuckyJ's [[W]] line leaves 2-shanten, 36 visible ukeire, main accepts [[1p]], [[2p]], [[3p]], [[4p]], [[5p]]. LuckyJ lowers the NAGA threat reading: LuckyJ 5.2%, Nishiki 63.5%.",
         "copy": "Copy this only after naming why the safe-looking [[W]] has expired and what later safe tile remains.",
         "limit": "Spend [[W]] only when another real answer to the active threat remains.",
-        "prompt": "With 38 tiles left, would you cut [[W]] or [[4s]]? First name what [[4s]] is preserving.",
-        "answer": "LuckyJ chooses [[W]]. The reproducible reason is: This is a spend-the-safe-tile example. [[W]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space."
+        "prompt": "In this hand, which opponent is the guest wind [[W]] safe against, and why is keeping it a mistake?",
+        "answer": "It is only safe against Shimocha, who has no open melds or active threat, meaning holding it sacrifices crucial dealer ukeire (36 vs 13) for stale safety."
       },
       "guide_ja": {
         "caption": "LuckyJ W、ニシキ 4s",
         "situation": "East 4-0、middle、残り38枚。behind、17400点、現在3着。LuckyJ は [[4s]] ツモから [[W]] を切り、ニシキ第一候補は [[4s]]。結果: kamicha won, self delta -2600",
-        "read": "安全牌を使う例。[[W]] は安全に見えても、守る相手がずれたら手順の邪魔になる。 修正後の脅威バーではニシキ候補の方が熱い。[[W]] は dangerK 5.2% が最大、[[4s]] は dangerK 63.5% が最大。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。 ヒバカリもニシキと同じ [[4s]] 寄りなので、これは守備寄り基準にも逆らう例。条件がそろう時だけ真似する。",
+        "read": "客風の[[W]]を切り出すか、シュンツの接続牌である[[4s]]を外すかの選択は、テンパイへの受け入れ枚数を極端に削ってまで、脅威度の低い相手への安全牌を残す価値があるかどうかにかかっています。17,400点持ちの3着目で親番を迎えている状況では、親の先制権を維持することが最優先されます。Nishikiは[[4s]]を切って1シャンテンに進めますが、これでは有効牌がわずか13枚に激減してしまいます。一方、LuckyJは[[W]]が仕掛けのない下家にしか安全でないことを見抜き、この役のつかない古い対子を放出しました。この選択は2シャンテンへと戻るものの、有効牌を36枚へと広げ、[[4p]]と[[5p]]の対子を活用した一盃口や二盃口の含みを強く残します。ターゲットとなる相手が脅威でなくなった瞬間に古い字牌の対子は整理し、親の先制権を維持するために受け入れ枚数を最大化すべきです。",
         "whyNot": "ニシキの [[4s]] は 1シャンテン、見えている受け入れ13枚、主な受け [[3p]], [[4p]], [[5p]], [[6p]], [[7s]] を残すので魅力がある。LuckyJ の [[W]] は 2シャンテン、見えている受け入れ36枚、主な受け [[1p]], [[2p]], [[3p]], [[4p]], [[5p]]。LuckyJ はNAGA脅威を下げている。LuckyJ 5.2%、ニシキ 63.5%。",
         "copy": "安全そうな [[W]] がなぜ期限切れか、次の安全牌が何かを言えた時だけ真似する。",
         "limit": "[[W]] が現役の脅威への唯一の答えなら、安全牌として残す。",
-        "prompt": "残り38枚で [[W]] と [[4s]] のどちらを切るか。先に [[4s]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[W]] を選ぶ。理由は 安全牌を使う例。[[W]] は安全に見えても、守る相手がずれたら手順の邪魔になる。"
+        "prompt": "この手牌において、客風の[[W]]はどの対戦相手に対して安全であり、それを残すことがなぜ失策となるでしょうか？",
+        "answer": "仕掛けもリーチもない下家にしか安全ではなく、それを維持することは親番での有効受け入れ枚数（36枚対13枚）を無駄に犠牲にすることを意味するためです。"
       }
     },
     {
@@ -107906,22 +107906,22 @@
       "guide": {
         "caption": "LuckyJ 8s, Nishiki 5p",
         "situation": "East 4-0, early hand, 54 tiles left. LuckyJ has 46900 points (lead), currently 1st. After drawing [[8s]], LuckyJ cuts [[8s]]; Nishiki's top line is [[5p]]. Result: self won 3 han 30 fu, delta +4900",
-        "read": "This is a spend-the-safe-tile example. [[8s]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space. With the corrected bars, Nishiki's candidate is the hotter tile: [[8s]] peaks at dangerK 0.4%; [[5p]] peaks at dangerS 10.9%. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job. Hibakari also leans to Nishiki's [[5p]], so this is a harder example: LuckyJ is beating the defensive baseline only if the local condition is exact.",
+        "read": "Holding onto [[8s]] as a safety blanket against a quiet opponent costs four tiles of ukeire compared to keeping the more flexible [[5p]]. While Shimocha represents the only active threat after calling the Red Dragon [[C]], Toimen has no open melds and poses no immediate danger. This makes [[8s]]—which is only safe against Toimen—a stale safety tile. Both candidates preserve the [[3m]] [[5m]] paired iipeikou seed, but LuckyJ discards [[8s]] to maximize ukeire to 39, keeping the hand's offensive potential alive. Mortal heavily favors Nishiki's discard of [[5p]] at 86%, preferring to bank the defensive value of [[8s]]. LuckyJ’s line is only justified if you prioritize maximizing raw tile acceptance to convert a leading position into a quick win, even at the cost of future safety. Release target-specific safe tiles when their target is inactive, provided the shape improvement is significant enough to warrant the loss of defense.",
         "whyNot": "The Nishiki line through [[5p]] is tempting because it leaves 3-shanten, 35 visible ukeire, main accepts [[4m]], [[6m]], [[7m]], [[8m]], [[6s]]. LuckyJ's [[8s]] line leaves 3-shanten, 39 visible ukeire, main accepts [[4m]], [[6m]], [[7m]], [[8m]], [[3p]]. LuckyJ lowers the NAGA threat reading: LuckyJ 0.4%, Nishiki 10.9%.",
         "copy": "Copy this only after naming why the safe-looking [[8s]] has expired and what later safe tile remains.",
         "limit": "Spend [[8s]] only when another real answer to the active threat remains.",
-        "prompt": "With 54 tiles left, would you cut [[8s]] or [[5p]]? First name what [[5p]] is preserving.",
-        "answer": "LuckyJ chooses [[8s]]. The reproducible reason is: This is a spend-the-safe-tile example. [[8s]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space."
+        "prompt": "Which opponent is the active threat in this hand, and why is [[8s]] considered a stale safety tile?",
+        "answer": "Shimocha is the active threat because they have called a triplet of [[C]]; [[8s]] is stale because it is only safe against Toimen, who has no open melds and is not threatening."
       },
       "guide_ja": {
         "caption": "LuckyJ 8s、ニシキ 5p",
         "situation": "East 4-0、early、残り54枚。lead、46900点、現在1着。LuckyJ は [[8s]] ツモから [[8s]] を切り、ニシキ第一候補は [[5p]]。結果: self won 3 han 30 fu, delta +4900",
-        "read": "安全牌を使う例。[[8s]] は安全に見えても、守る相手がずれたら手順の邪魔になる。 修正後の脅威バーではニシキ候補の方が熱い。[[8s]] は dangerK 0.4% が最大、[[5p]] は dangerS 10.9% が最大。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。 ヒバカリもニシキと同じ [[5p]] 寄りなので、これは守備寄り基準にも逆らう例。条件がそろう時だけ真似する。",
+        "read": "静かな相手に対する安全牌として [[8s]] を抱え続けることは、より柔軟な [[5p]] を残す場合に比べて有効受け入れを4枚減らすことになる。役牌の [[C]] をポンした下家が唯一のアクティブな脅威である一方、対面は仕掛けがなく、差し迫った危険はない。そのため、対面にしか安全でない [[8s]] は「期限切れの安全牌」と言える。どちらの選択も [[3m]] と [[5m]] が対子の一盃口の種を維持するが、LuckyJ は [[8s]] を切って受け入れ枚数を39枚に最大化し、手の攻撃力を維持した。Mortal は Nishiki の [[5p]] 切りを86%で強く支持しており、[[8s]] の守備価値を残すことを好んでいる。LuckyJ の一打は、将来の安全性を犠牲にしてでも有効牌の受け入れを最大化し、トップ目のリードを迅速な和了で広げにいく局面にのみ正当化される。防御手段を失うリスクに見合うだけの形の大幅な改善が見込める場合に限り、標的が動いていない特定の相手への安全牌は手放すべきである。",
         "whyNot": "ニシキの [[5p]] は 3シャンテン、見えている受け入れ35枚、主な受け [[4m]], [[6m]], [[7m]], [[8m]], [[6s]] を残すので魅力がある。LuckyJ の [[8s]] は 3シャンテン、見えている受け入れ39枚、主な受け [[4m]], [[6m]], [[7m]], [[8m]], [[3p]]。LuckyJ はNAGA脅威を下げている。LuckyJ 0.4%、ニシキ 10.9%。",
         "copy": "安全そうな [[8s]] がなぜ期限切れか、次の安全牌が何かを言えた時だけ真似する。",
         "limit": "[[8s]] が現役の脅威への唯一の答えなら、安全牌として残す。",
-        "prompt": "残り54枚で [[8s]] と [[5p]] のどちらを切るか。先に [[5p]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[8s]] を選ぶ。理由は 安全牌を使う例。[[8s]] は安全に見えても、守る相手がずれたら手順の邪魔になる。"
+        "prompt": "この手牌において、どのアクティブな脅威となる相手は誰ですか？また、なぜ [[8s]] は期限切れの安全牌とみなされるのですか？",
+        "answer": "下家が [[C]] のポンによりアクティブな脅威となっています。[[8s]] は仕掛けがなく脅威ではない対面に対してのみ安全であるため、期限切れの安全牌となります。"
       }
     },
     {
@@ -108916,22 +108916,22 @@
       "guide": {
         "caption": "LuckyJ 4m, Nishiki 2s",
         "situation": "East 3-0, late hand, 15 tiles left. LuckyJ has 14200 points (danger zone), currently 4th. After drawing [[2s]], LuckyJ cuts [[4m]]; Nishiki's top line is [[2s]]. Result: draw, self delta -1000",
-        "read": "This is a spend-the-safe-tile example. [[4m]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space. With the corrected bars, Nishiki's candidate is the hotter tile: [[4m]] peaks at dangerK 6.5%; [[2s]] peaks at dangerK 36.8%. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job. Hibakari also leans to Nishiki's [[2s]], so this is a harder example: LuckyJ is beating the defensive baseline only if the local condition is exact.",
+        "read": "The decision centers on whether to hold onto a stale genbutsu at the cost of launching a highly dangerous tile into the only active threat. With 15 tiles remaining in East 3-0, Kamicha's open triplet of [[P]] represents the sole active threat on the board. Nishiki chooses to discard [[2s]] to maximize ukeire to 19, keeping [[4m]] as a safe tile. However, [[4m]] is only genbutsu to Toimen, whose closed, inactive hand poses zero threat. Pushing [[2s]] into Kamicha carries a staggering 36.8% danger rate. By discarding [[4m]] instead, LuckyJ preserves the iipeikou/ryanpeikou seed: 2s 4s paired, needs another 3s in souzu and refuses to deal in. Discard stale safety when holding it forces you to fire raw danger into the actual threat.",
         "whyNot": "The Nishiki line through [[2s]] is tempting because it leaves 1-shanten, 19 visible ukeire, main accepts [[2m]], [[3m]], [[4m]], [[5m]], [[3p]]. LuckyJ's [[4m]] line leaves 1-shanten, 12 visible ukeire, main accepts [[3m]], [[4p]], [[2s]], [[5s]]. LuckyJ lowers the NAGA threat reading: LuckyJ 6.5%, Nishiki 36.8%.",
         "copy": "Copy this only after naming why the safe-looking [[4m]] has expired and what later safe tile remains.",
         "limit": "Spend [[4m]] only when another real answer to the active threat remains.",
-        "prompt": "With 15 tiles left, would you cut [[4m]] or [[2s]]? First name what [[2s]] is preserving.",
-        "answer": "LuckyJ chooses [[4m]]. The reproducible reason is: This is a spend-the-safe-tile example. [[4m]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space."
+        "prompt": "Which opponent is the active threat in this scenario?",
+        "answer": "Kamicha (who has called a triplet of [[P]])."
       },
       "guide_ja": {
         "caption": "LuckyJ 4m、ニシキ 2s",
         "situation": "East 3-0、late、残り15枚。danger zone、14200点、現在4着。LuckyJ は [[2s]] ツモから [[4m]] を切り、ニシキ第一候補は [[2s]]。結果: draw, self delta -1000",
-        "read": "安全牌を使う例。[[4m]] は安全に見えても、守る相手がずれたら手順の邪魔になる。 修正後の脅威バーではニシキ候補の方が熱い。[[4m]] は dangerK 6.5% が最大、[[2s]] は dangerK 36.8% が最大。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。 ヒバカリもニシキと同じ [[2s]] 寄りなので、これは守備寄り基準にも逆らう例。条件がそろう時だけ真似する。",
+        "read": "この選択の本質は、唯一の有効な脅威に対して極めて危険な牌を押し出すリスクを冒してまで、期限切れの現物を抱え込むべきかという点にある。東3局、残りツモ山が15枚の終盤において、上家の[[P]]のポンが唯一の有効な脅威となっている。Nishikiは受け入れ枚数を19枚に最大化するため、対面に現物である[[4m]]を温存して[[2s]]を打つ選択をした。しかし、門前で動きのない対面に対する[[4m]]の安全度にはもう価値がない。一方で、上家に対して[[2s]]を勝負するのは36.8%という極めて高い放銃リスクを伴う。LuckyJは[[4m]]を切り飛ばすことで、索子のiipeikou/ryanpeikou seed: 2s 4s paired, needs another 3sの形を維持しつつ、無用な放銃を回避した。本当の脅威に対して危険牌を打つ羽目になるくらいなら、無関係な相手への古い安全牌は真っ先に処分すべきである。",
         "whyNot": "ニシキの [[2s]] は 1シャンテン、見えている受け入れ19枚、主な受け [[2m]], [[3m]], [[4m]], [[5m]], [[3p]] を残すので魅力がある。LuckyJ の [[4m]] は 1シャンテン、見えている受け入れ12枚、主な受け [[3m]], [[4p]], [[2s]], [[5s]]。LuckyJ はNAGA脅威を下げている。LuckyJ 6.5%、ニシキ 36.8%。",
         "copy": "安全そうな [[4m]] がなぜ期限切れか、次の安全牌が何かを言えた時だけ真似する。",
         "limit": "[[4m]] が現役の脅威への唯一の答えなら、安全牌として残す。",
-        "prompt": "残り15枚で [[4m]] と [[2s]] のどちらを切るか。先に [[2s]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[4m]] を選ぶ。理由は 安全牌を使う例。[[4m]] は安全に見えても、守る相手がずれたら手順の邪魔になる。"
+        "prompt": "この局面において、現在有効な脅威となっている対戦相手は誰ですか？",
+        "answer": "上家（[[P]]をポンしている）"
       }
     },
     {
@@ -109793,22 +109793,22 @@
       "guide": {
         "caption": "LuckyJ 9p, Nishiki 5s",
         "situation": "East 2-1, middle hand, 36 tiles left. LuckyJ has 42000 points (lead), currently 1st. After drawing [[9p]], LuckyJ cuts [[9p]]; Nishiki's top line is [[5s]]. Result: draw, self delta +0",
-        "read": "This is a spend-the-safe-tile example. [[9p]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space. With the corrected bars, Nishiki's candidate is the hotter tile: [[9p]] peaks at dangerT 2.6%; [[5s]] peaks at dangerT 7.9%. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job. Hibakari also leans to Nishiki's [[5s]], so this is a harder example: LuckyJ is beating the defensive baseline only if the local condition is exact.",
+        "read": "With Toimen holding an open quad of [[9s]], they represent the active threat this hand, making safety against the other quiet players a secondary concern. LuckyJ discards [[9p]], refusing to hold onto a stale safe tile that only protects against a quiet Shimocha. Nishiki prefers to discard [[5s]] to preserve [[9p]], but this drop to 36 ukeire (compared to LuckyJ's 40) holds a tile that does not defend against the active threat. Both branches preserve the potential for a manzu ittsu (123/456/789) or iipeikou with the [[1m]][[3m]] skeleton. As dealer, maintaining maximum efficiency to fight for a high-value hand is crucial, and holding [[9p]] for safety that has already expired is an unnecessary defensive drag. Discard the stale defensive tile when it no longer addresses the active threat on the board.",
         "whyNot": "The Nishiki line through [[5s]] is tempting because it leaves 2-shanten, 36 visible ukeire, main accepts [[2m]], [[3m]], [[4m]], [[5m]], [[6m]]. LuckyJ's [[9p]] line leaves 2-shanten, 40 visible ukeire, main accepts [[2m]], [[3m]], [[4m]], [[5m]], [[6m]]. LuckyJ lowers the NAGA threat reading: LuckyJ 2.6%, Nishiki 7.9%.",
         "copy": "Copy this only after naming why the safe-looking [[9p]] has expired and what later safe tile remains.",
         "limit": "Spend [[9p]] only when another real answer to the active threat remains.",
-        "prompt": "With 36 tiles left, would you cut [[9p]] or [[5s]]? First name what [[5s]] is preserving.",
-        "answer": "LuckyJ chooses [[9p]]. The reproducible reason is: This is a spend-the-safe-tile example. [[9p]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space."
+        "prompt": "Who is the active threat in this hand, and is [[9p]] safe against them?",
+        "answer": "Toimen is the active threat, and [[9p]] is not safe against them."
       },
       "guide_ja": {
         "caption": "LuckyJ 9p、ニシキ 5s",
         "situation": "East 2-1、middle、残り36枚。lead、42000点、現在1着。LuckyJ は [[9p]] ツモから [[9p]] を切り、ニシキ第一候補は [[5s]]。結果: draw, self delta +0",
-        "read": "安全牌を使う例。[[9p]] は安全に見えても、守る相手がずれたら手順の邪魔になる。 修正後の脅威バーではニシキ候補の方が熱い。[[9p]] は dangerT 2.6% が最大、[[5s]] は dangerT 7.9% が最大。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。 ヒバカリもニシキと同じ [[5s]] 寄りなので、これは守備寄り基準にも逆らう例。条件がそろう時だけ真似する。",
+        "read": "対面が[[9s]]の槓子を晒しており、現在唯一のアクティブな脅威となっているため、テンパイ気配のない他家に対する安全牌は二次的な要素に過ぎません。LuckyJは、テンパイ気配のない下家に対してのみ現物である[[9p]]を抱え続けることを嫌い、この「期限切れ」の安全牌をリリースしました。対照的にNishikiは[[9p]]を残して[[5s]]を打つ選択をしましたが、これでは受け入れ枚数が40枚から36枚へと減少する上、その[[9p]]は脅威である対面に対しては安全ではありません。どちらのルートを選んでも、萬子の[[1m]][[3m]]を軸にした一気通貫や一盃口の種は維持されます。親番で高得点の手を目指して戦う状況において、すでに賞味期限の切れた安全牌を守備のために抱え込み、受入を狭めるのは不要な損失です。盤面のアクティブな脅威に対して機能していない安全牌は、手牌の発展を優先して速やかに撃ち出すのが鉄則です。",
         "whyNot": "ニシキの [[5s]] は 2シャンテン、見えている受け入れ36枚、主な受け [[2m]], [[3m]], [[4m]], [[5m]], [[6m]] を残すので魅力がある。LuckyJ の [[9p]] は 2シャンテン、見えている受け入れ40枚、主な受け [[2m]], [[3m]], [[4m]], [[5m]], [[6m]]。LuckyJ はNAGA脅威を下げている。LuckyJ 2.6%、ニシキ 7.9%。",
         "copy": "安全そうな [[9p]] がなぜ期限切れか、次の安全牌が何かを言えた時だけ真似する。",
         "limit": "[[9p]] が現役の脅威への唯一の答えなら、安全牌として残す。",
-        "prompt": "残り36枚で [[9p]] と [[5s]] のどちらを切るか。先に [[5s]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[9p]] を選ぶ。理由は 安全牌を使う例。[[9p]] は安全に見えても、守る相手がずれたら手順の邪魔になる。"
+        "prompt": "この局におけるアクティブな脅威は誰で、[[9p]]はその相手に対して安全ですか？",
+        "answer": "対面がアクティブな脅威であり、[[9p]]は対面に対して安全ではありません。"
       }
     },
     {
@@ -111964,22 +111964,22 @@
       "guide": {
         "caption": "LuckyJ West, Nishiki 4m",
         "situation": "East 4-0, late hand, 21 tiles left. LuckyJ has 17900 points (behind), currently 3rd. After drawing [[4m]], LuckyJ cuts [[W]]; Nishiki's top line is [[4m]]. Result: self dealt into kamicha, delta -7700",
-        "read": "This is a spend-the-safe-tile example. [[W]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space. With the corrected bars, Nishiki's candidate is the hotter tile: [[W]] peaks at dangerK 0.0%; [[4m]] peaks at dangerS 36.0%. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job. Hibakari also leans to Nishiki's [[4m]], so this is a harder example: LuckyJ is beating the defensive baseline only if the local condition is exact.",
+        "read": "With shimocha threatening the table after calling a set of South, the value of holding the guest wind [[W]] has completely expired. LuckyJ discards [[W]] to maintain a 1-shanten hand with 11 ukeire, preserving the [[2m]][[3m]][[4m]][[4m]] block and keeping its offensive potential. Nishiki's choice to discard [[4m]] breaks this valuable shape and reduces ukeire to 10, all while releasing a tile that carries a dangerous 36% deal-in risk to the active threat. Since [[W]] is only a safe tile against the non-threatening kamicha, holding onto it does nothing to protect against the actual danger. Firing the stale safety allows LuckyJ to advance toward a tenpai with the White Dragon triplet. Keep a safe tile only as long as its target remains the active threat; once that threat shifts, it is just a wasted tile.",
         "whyNot": "The Nishiki line through [[4m]] is tempting because it leaves 1-shanten, 10 visible ukeire, main accepts [[6p]], [[9p]], [[3s]], [[6s]], [[W]]. LuckyJ's [[W]] line leaves 1-shanten, 11 visible ukeire, main accepts [[4m]], [[6p]], [[9p]], [[3s]], [[6s]]. LuckyJ lowers the NAGA threat reading: LuckyJ 0.0%, Nishiki 36.0%.",
         "copy": "Copy this only after naming why the safe-looking [[W]] has expired and what later safe tile remains.",
         "limit": "Spend [[W]] only when another real answer to the active threat remains.",
-        "prompt": "With 21 tiles left, would you cut [[W]] or [[4m]]? First name what [[4m]] is preserving.",
-        "answer": "LuckyJ chooses [[W]]. The reproducible reason is: This is a spend-the-safe-tile example. [[W]] may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space."
+        "prompt": "Against which player is the discarded [[W]] actually a safe tile (genbutsu), and who is the current active threat?",
+        "answer": "It is a safe tile against kamicha, while the active threat is shimocha."
       },
       "guide_ja": {
         "caption": "LuckyJ W、ニシキ 4m",
         "situation": "East 4-0、late、残り21枚。behind、17900点、現在3着。LuckyJ は [[4m]] ツモから [[W]] を切り、ニシキ第一候補は [[4m]]。結果: self dealt into kamicha, delta -7700",
-        "read": "安全牌を使う例。[[W]] は安全に見えても、守る相手がずれたら手順の邪魔になる。 修正後の脅威バーではニシキ候補の方が熱い。[[W]] は dangerK 0.0% が最大、[[4m]] は dangerS 36.0% が最大。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。 ヒバカリもニシキと同じ [[4m]] 寄りなので、これは守備寄り基準にも逆らう例。条件がそろう時だけ真似する。",
+        "read": "下家が南をポンしてテンパイ気配を見せている局面では、客風である[[W]]を抱える価値は完全に失われています。LuckyJは[[W]]を切り出すことで、[[2m]][[3m]][[4m]][[4m]]の形を維持して受け入れ11枚の一シャンテンをキープしました。対照的に、[[4m]]を切る西木の選択は、この貴重なブロックを崩して受け入れを10枚に減らす上、下家に対して放銃率36%という極めて危険な牌を勝負することになります。[[W]]はテンパイの気配がない上家に対する現物に過ぎず、これを手元に残しても現在の脅威に対する守りとしては機能しません。賞味期限の切れた安全牌を処分することで、LuckyJは役牌である白の暗刻を活かしたテンパイへと真っ直ぐ向かうことができました。安全牌は標的が脅威であり続ける間だけ残し、脅威が移り変わった瞬間にただの不要牌として処理すべきです。",
         "whyNot": "ニシキの [[4m]] は 1シャンテン、見えている受け入れ10枚、主な受け [[6p]], [[9p]], [[3s]], [[6s]], [[W]] を残すので魅力がある。LuckyJ の [[W]] は 1シャンテン、見えている受け入れ11枚、主な受け [[4m]], [[6p]], [[9p]], [[3s]], [[6s]]。LuckyJ はNAGA脅威を下げている。LuckyJ 0.0%、ニシキ 36.0%。",
         "copy": "安全そうな [[W]] がなぜ期限切れか、次の安全牌が何かを言えた時だけ真似する。",
         "limit": "[[W]] が現役の脅威への唯一の答えなら、安全牌として残す。",
-        "prompt": "残り21枚で [[W]] と [[4m]] のどちらを切るか。先に [[4m]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[W]] を選ぶ。理由は 安全牌を使う例。[[W]] は安全に見えても、守る相手がずれたら手順の邪魔になる。"
+        "prompt": "この局において、打牌された[[W]]は誰に対して現物（安全牌）であり、現在の本当の脅威は誰ですか？",
+        "answer": "上家に対して現物ですが、現在の本当の脅威は下家です。"
       }
     }
   ],
@@ -121771,22 +121771,22 @@
       "guide": {
         "caption": "LuckyJ 9m, Nishiki 4s",
         "situation": "East 2-0, middle hand, 28 tiles left. LuckyJ has 22000 points (behind), currently 2nd. After drawing [[7s]], LuckyJ cuts [[9m]]; Nishiki's top line is [[4s]]. Result: draw, self delta -1500",
-        "read": "The outside cut [[9m]] preserves the middle connection represented by [[4s]]. It looks defensive, but the point is keeping the real route alive. With the corrected bars, LuckyJ's discard is the hotter tile: [[9m]] peaks at dangerT 22.2%; [[4s]] peaks at dangerK 0.0%. This is a real threat-buy, so the local shape, value, or placement reason has to carry the example. The kept [[4s]] is genbutsu against the left player (no called threat). Hibakari chooses a third line, [[8p]]; read the example as a three-way split and copy the reason, not the surface tile.",
+        "read": "Discarding [[9m]] accepts a minor 3.7% deal-in risk to keep a promising 1-shanten hand alive against the active riichi. Nishiki opts for absolute safety by discarding [[4s]], which is genbutsu to the threat, but breaking the completed [[2s]][[3s]][[4s]] sequence drops the hand to 2-shanten. Mortal prefers a third line, choosing [[8p]] to break up the triplet. By spending the terminal [[9m]] instead, LuckyJ preserves the double-ryanmen structure of [[4m]][[5m]] and [[5p]][[6p]] with 24 active ukeire. In this East 2-0 situation, folding destructively when a low-danger terminal is available forfeits too much equity. Retain the central connectors by spending the outside tile when the risk is mathematically justified.",
         "whyNot": "The Nishiki line through [[4s]] is tempting because it leaves 2-shanten, 31 visible ukeire, main accepts [[3m]], [[4m]], [[5m]], [[6m]], [[9m]]. LuckyJ's [[9m]] line leaves 1-shanten, 24 visible ukeire, main accepts [[3m]], [[4m]], [[5m]], [[6m]], [[4p]]. LuckyJ accepts a higher NAGA threat reading now: LuckyJ 22.2%, Nishiki 0.0%.",
         "copy": "Copy the reason: if cutting [[9m]] keeps the hand's real job clearer than the Nishiki line through [[4s]], the choice is reproducible.",
         "limit": "If [[9m]] is the only safe tile or the inside route is fantasy, the outside cut is just a fold.",
-        "prompt": "With 28 tiles left, would you cut [[9m]] or [[4s]]? First name what [[4s]] is preserving.",
-        "answer": "LuckyJ chooses [[9m]]. The reproducible reason is: The outside cut [[9m]] preserves the middle connection represented by [[4s]]. It looks defensive, but the point is keeping the real route alive."
+        "prompt": "Which tile does Nishiki discard to defend, resulting in a drop to 2-shanten?",
+        "answer": "[[4s]]"
       },
       "guide_ja": {
         "caption": "LuckyJ 9m、ニシキ 4s",
         "situation": "East 2-0、middle、残り28枚。behind、22000点、現在2着。LuckyJ は [[7s]] ツモから [[9m]] を切り、ニシキ第一候補は [[4s]]。結果: draw, self delta -1500",
-        "read": "外側の [[9m]] 切りは、中の [[4s]] 周りのルートを残す攻めの支払いとして読む。 修正後の脅威バーではLuckyJの打牌の方が熱い。[[9m]] は dangerT 22.2% が最大、[[4s]] は dangerK 0.0% が最大。この例は安全寄せではなく、追加脅威を払ってでも残す形・価値・着順理由があるかを見る。 残る [[4s]] は 上家 に対して現物で、相手の状態は静かな相手。 ヒバカリは第三候補の [[8p]] を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。",
+        "read": "相手の立直に対し、放銃率わずか3.7%の[[9m]]を勝負して1シャンテンを維持する一打です。Nishikiは現物の[[4s]]を切る安全策を採りましたが、完成面子の[[2s]][[3s]][[4s]]を崩して2シャンテンへ後退してしまいます。Mortalは暗刻の[[8p]]切りという第三の選択肢を好んでいます。対してLuckyJは、端牌の[[9m]]を払うことで[[4m]][[5m]]と[[5p]][[6p]]の強力な両面構造を維持し、受け入れ24枚の形を残しました。東2局の状況において、安全度の高い端牌がある中で面子破壊のベタオリを選ぶのは損失が大きすぎます。危険度が十分に低い局面では、端牌を切って内側の優秀な連結形を残しましょう。",
         "whyNot": "ニシキの [[4s]] は 2シャンテン、見えている受け入れ31枚、主な受け [[3m]], [[4m]], [[5m]], [[6m]], [[9m]] を残すので魅力がある。LuckyJ の [[9m]] は 1シャンテン、見えている受け入れ24枚、主な受け [[3m]], [[4m]], [[5m]], [[6m]], [[4p]]。LuckyJ はNAGA脅威を余分に受け入れている。LuckyJ 22.2%、ニシキ 0.0%。",
         "copy": "[[9m]] 切りが [[4s]] 経由より手の仕事をはっきり残すなら、その理由を真似できる。",
         "limit": "[[9m]] が唯一の安全牌、または中のルートが幻想なら、防御寄りの打牌として扱う。",
-        "prompt": "残り28枚で [[9m]] と [[4s]] のどちらを切るか。先に [[4s]] が何を残しているかを言う。",
-        "answer": "LuckyJ は [[9m]] を選ぶ。理由は 外側の [[9m]] 切りは、中の [[4s]] 周りのルートを残す攻めの支払いとして読む。"
+        "prompt": "Nishikiがベタオリのために切り出し、2シャンテンへと後退する原因となった牌は何ですか？",
+        "answer": "[[4s]]"
       }
     },
     {

@@ -19,6 +19,7 @@
         <a href="index.html">Home</a>
         <a href="#evidence">Start</a>
         <a href="#concept-map">Concepts</a>
+        <a href="#prescriptions">Prescriptions</a>
         <a href="#pattern-synthesis">Synthesis</a>
         <a href="#case-studies">Cases</a>
         <a href="#drills">Drills</a>
@@ -36,6 +37,7 @@
             <li><a href="#concept-calls">Calls and Yaku Conditions</a></li>
             <li><a href="#concept-defense">Safe Tiles and Push-Fold</a></li>
             <li><a href="#concept-review">Review and Caution</a></li>
+            <li><a href="#prescriptions">Prescriptions</a></li>
             <li><a href="#pattern-synthesis">Pattern Synthesis</a></li>
             <li><a href="#case-studies">Case Studies</a></li>
           </ol>
@@ -137,6 +139,147 @@
             </div>
           </div>
         </section>
+
+        <section class="section" id="prescriptions">
+  <p class="kicker">Prescriptions</p>
+  <h2>The numbers LuckyJ actually moved on.</h2>
+  <p>These are LuckyJ's measured frequencies across about 147,000 decisions, not commandments. Each rule names the condition it came from; the point chapters give the reasoning behind the switch. A frequency only says what a 10-dan-level AI did in those spots, so copy the condition, not the percentage by blind imitation.</p>
+  <div class="rx-grid">
+    <div class="rx-card">
+      <h3>The lone-yakuhai clock</h3>
+      <p class="rx-rule">Cut a lone dragon or value wind by turn 3 in a quiet game; once anyone opens, slow the clock to turn 5-6, because that same tile can become yaku denial, and do not slam it turn 1 when roughly one in eight pairs before the cut.</p>
+      <table>
+        <thead>
+          <tr><th>Tile</th><th>Quiet median</th><th>After-open median</th><th>Pairs before cut</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Dragon</td><td>T3</td><td>T5</td><td>12%</td></tr>
+          <tr><td>Value wind</td><td>T3</td><td>T6</td><td>11%</td></tr>
+        </tbody>
+      </table>
+      <p class="rx-basis">Basis: lone-yakuhai cleanup timing; dragon starts n=11,391, value-wind starts n=6,649, with quiet/after-open cuts n=6,734/2,674 and n=3,879/1,673.</p>
+      <p class="rx-except">Skip when it has paired, it is your only realistic yaku, or the open player can still need exactly that yakuhai. See <a href="#point-13">Point 12</a>.</p>
+    </div>
+    <div class="rx-card">
+      <h3>Guest winds &amp; the stop-matching matrix</h3>
+      <p class="rx-rule">Throw a lone guest wind on turn 1 when the table is quiet; under riichi, stop matching live honors automatically—on turns 7-9 cut a fresh 0-visible honor only about 14% but spend the 1-visible honor about 35%, and after turn 12 treat a drawn live honor as a 50/50 hold.</p>
+      <table>
+        <thead>
+          <tr><th>Spot</th><th>0 visible</th><th>1 visible</th><th>Late live draw</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Guest wind start</td><td>T1 median</td><td>T3 p75</td><td>15% past T6</td></tr>
+          <tr><td>T7-9 vs riichi</td><td>14% cut</td><td>35% cut</td><td></td></tr>
+          <tr><td>T13+ vs riichi</td><td>9% cut</td><td>36% cut</td><td>50% hold</td></tr>
+        </tbody>
+      </table>
+      <p class="rx-basis">Basis: guest-wind cleanup n=8,531 starts; stop-matching honor cells n=1,483/1,955 for T7-9 0/1-visible under riichi; late live-honor draws under riichi n=894.</p>
+      <p class="rx-except">Skip when the guest wind is already your safest tile against a named opponent, or when all safer exits have disappeared. See <a href="#point-18">Point 16</a>.</p>
+    </div>
+    <div class="rx-card">
+      <h3>Yakuhai pon discipline</h3>
+      <p class="rx-rule">Pon yakuhai pairs by default, especially the first visible copy; brake when you are already 0-1 shanten, and let dora make you more willing rather than less.</p>
+      <table>
+        <thead>
+          <tr><th>Split</th><th>A</th><th>B</th><th>C</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Copy</td><td>First 77%</td><td>Later 58%</td><td>Overall 75%</td></tr>
+          <tr><td>Shanten</td><td>0-1: 63%</td><td>2-3: 79%</td><td>4+: 79%</td></tr>
+          <tr><td>Dora</td><td>0: 72%</td><td>1: 76%</td><td>2+: 81%</td></tr>
+        </tbody>
+      </table>
+      <p class="rx-basis">Basis: yakuhai pon opportunities n=2,915; first/later copy n=2,618/297; shanten buckets n=694/1,807/414; dora buckets n=1,263/1,107/545.</p>
+      <p class="rx-except">Skip when the pon leaves a cheap, still-far open hand with no safe next discard, or when your closed tenpai is already better. See <a href="#point-03">Point 03</a>.</p>
+    </div>
+    <div class="rx-card">
+      <h3>The first call is expensive</h3>
+      <p class="rx-rule">Do not spend your closed hand on a chi unless the call changes the hand: LuckyJ took only 6.8% of closed-to-open chi chances, but once already open it chi'd 27.4%; with 4+ shanten and no dora it passed 86% of call chances, while a yakuhai pair still got pon 72%.</p>
+      <table>
+        <thead>
+          <tr><th>Spot</th><th>Rate</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Closed-to-open chi</td><td>6.8%</td></tr>
+          <tr><td>Already-open chi</td><td>27.4%</td></tr>
+          <tr><td>Junk hand pass</td><td>85.9%</td></tr>
+          <tr><td>Junk yakuhai pon</td><td>72.4%</td></tr>
+        </tbody>
+      </table>
+      <p class="rx-basis">Basis: chi opportunities n=25,452, with closed-to-open n=21,615 and already-open n=3,837; 4+ shanten zero-dora junk call chances n=1,691, including yakuhai pon subset n=210.</p>
+      <p class="rx-except">Skip the refusal when the call gives yaku, tenpai, real one-shanten, denial, or safe-tile structure. See <a href="#point-03">Point 03</a> and <a href="#point-04">Point 04</a>.</p>
+    </div>
+    <div class="rx-card">
+      <h3>Riichi declaration thresholds</h3>
+      <p class="rx-rule">Declare first chance with 8+ waits and usually with 4-7; with 3 or fewer waits, especially as a big leader, make damaten the normal branch, and remember that declaring into an existing threat means accepting that the stick tile itself is often the most dangerous discard of the hand.</p>
+      <table>
+        <thead>
+          <tr><th>Spot</th><th>Now</th><th>Later dama</th><th>Other</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>8+ waits</td><td>94% riichi</td><td></td><td></td></tr>
+          <tr><td>4-7 waits</td><td>80% riichi</td><td></td><td></td></tr>
+          <tr><td>≤3 waits</td><td>36% riichi</td><td></td><td></td></tr>
+          <tr><td>Bad wait, +10k lead</td><td>35% riichi</td><td></td><td></td></tr>
+          <tr><td>Declined first</td><td>22% later riichi</td><td>59% stays</td><td>19% breaks/folds</td></tr>
+          <tr><td>Declared into threat</td><td>43% &gt;10% stick</td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <p class="rx-basis">Basis: first riichi opportunities n=3,358; wait buckets n=438/1,807/1,110; bad-wait 10k+ leader n=145, small sample; declined first-chance n=1,111; declarations into existing threats n=830.</p>
+      <p class="rx-except">Skip a mechanical riichi when the wait is bad, the hand is cheap, the stick discard is the danger, or your lead already has enough value. See <a href="#point-08">Point 07</a>.</p>
+    </div>
+    <div class="rx-card">
+      <h3>Push/fold vs riichi</h3>
+      <p class="rx-rule">Against riichi, push mainly from tenpai: continue about 61% in tenpai, fall to 34% at one-shanten, 20% at two-shanten, and 14% at three-plus; in the last 20 tiles tighten again, and make the first answer genbutsu unless the hand is real.</p>
+      <table>
+        <thead>
+          <tr><th>Hand</th><th>Push vs riichi</th><th>Last 20 push</th><th>First answer genbutsu</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Tenpai</td><td>61%</td><td>54%</td><td>33%</td></tr>
+          <tr><td>1-shanten</td><td>34%</td><td>23%</td><td>56%</td></tr>
+          <tr><td>2-shanten</td><td>20%</td><td>13%</td><td>64%</td></tr>
+          <tr><td>3+ shanten</td><td>14%</td><td>8%</td><td>68%</td></tr>
+        </tbody>
+      </table>
+      <p class="rx-basis">Basis: versus-riichi closed shanten buckets n=1,360/6,019/6,036/3,421; last-20 buckets n=540/1,768/1,693/819; immediate riichi reactions n=371/1,792/1,433/664.</p>
+      <p class="rx-except">Skip the fold when your hand is tenpai with value or the safe tile destroys your only winning route; reprice again every draw. See <a href="#point-09">Point 08</a> and <a href="#point-10">Point 09</a>.</p>
+    </div>
+    <div class="rx-card">
+      <h3>Defending against open hands</h3>
+      <p class="rx-rule">Do not wholesale-fold to open hands; against two melds, start pricing defense by turn 7, against three-plus melds expect only about 42% pushing in turns 7-12, and even at 90-100% tenpai reads LuckyJ still pushes 43% by choosing the tile, not by pretending the hand is harmless.</p>
+      <table>
+        <thead>
+          <tr><th>Threat</th><th>T1-6 push</th><th>T7-12 push</th><th>T13+ push</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2 melds</td><td>54%</td><td>44%</td><td>39%</td></tr>
+          <tr><td>3+ melds</td><td>57%</td><td>42%</td><td>33%</td></tr>
+          <tr><td>90-100% tenpai read</td><td></td><td>43%</td><td></td></tr>
+        </tbody>
+      </table>
+      <p class="rx-basis">Basis: open-hand trigger turn proxy; 2-meld buckets n=1,664/8,529/4,522; 3+ buckets n=111, small sample for T1-6, then n=1,499/1,405; 90-100% tenpai-read states n=17,730.</p>
+      <p class="rx-except">Skip the push when your hand is cheap and far and the next discard has no named safety; defend by choosing the tile that answers the player. See <a href="#point-04">Point 04</a> and <a href="#point-14">Point 13</a>.</p>
+    </div>
+    <div class="rx-card">
+      <h3>Late-game keiten arithmetic</h3>
+      <p class="rx-rule">In the last 12 tiles, call for keiten at one-shanten about 32% but only 21% from two-plus; once tenpai, pushing a &gt;5% danger tile stays around 63-69%, while two-shanten under riichi sits about 24-27%, and folding after two sub-1% discards is not a coffin.</p>
+      <table>
+        <thead>
+          <tr><th>Measure</th><th>A</th><th>B</th><th>C</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Last-12 call</td><td>1-shanten 32%</td><td>2+ 21%</td><td>Tenpai 4%</td></tr>
+          <tr><td>Tenpai push vs riichi</td><td>20-11: 67%</td><td>10-6: 68%</td><td>5-0: 63%</td></tr>
+          <tr><td>2+ push vs riichi</td><td>20-11: 27%</td><td>10-6: 24%</td><td>5-0: 25%</td></tr>
+          <tr><td>After two &lt;1% folds</td><td>Later push 48%</td><td>Stay fold 52%</td><td></td></tr>
+        </tbody>
+      </table>
+      <p class="rx-basis">Basis: late call opportunities with 12 or fewer tiles left n=1,877; late keiten push under riichi n=1,007/427/396 for tenpai and n=2,433/874/831 for 2+; fold-commitment sequences n=1,141.</p>
+      <p class="rx-except">Skip the keiten fight when the point exchange cannot change placement, the tile is too dangerous for the draw value, or a safe fold preserves more. See <a href="#point-11">Point 10</a> and <a href="#point-12">Point 11</a>.</p>
+    </div>
+  </div>
+</section>
 
         <section class="section" id="pattern-synthesis">
           <p class="kicker">Pattern synthesis</p>
@@ -566,7 +709,7 @@
           </div>
           <div class="rule">
             <strong>Reading rule:</strong> Copy the reason behind the tile. The same discard is good only when the
-            score job, route count, safety map, and opponent pressure match.
+            score situation, route count, safety map, and opponent pressure match.
           </div>
         </section>
 

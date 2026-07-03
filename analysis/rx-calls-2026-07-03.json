@@ -1,0 +1,356 @@
+{
+  "generated_at": "2026-07-03T00:56:53.071818+00:00",
+  "source": {
+    "csv_rows": 1256,
+    "unique_report_ids": 1255,
+    "duplicate_report_rows": 1,
+    "processed_reports": 1255,
+    "target_seat_corrections_from_report_names": 1,
+    "errors": []
+  },
+  "definitions": {
+    "call_opportunity": "A dahai state whose huro map contains LuckyJ's seat; the dahai state's msg.pai is the triggering discard.",
+    "actual_call": "The next state's msg is chi, pon, or daiminkan with actor equal to LuckyJ's seat.",
+    "turn": "len(discards[LuckyJ]) + 1 before adding the triggering discard.",
+    "shanten": "Regular-hand shanten of LuckyJ's current concealed tiles using mahjong.shanten.Shanten and counts_34; open melds are implied, chiitoitsu/kokushi disabled.",
+    "dora_count": "Dora in LuckyJ's current concealed hand from visible dora indicators, plus one for each red five; red fives also count normal dora if the dora tile is five.",
+    "yakuhai": "Dragons plus round wind and LuckyJ's seat wind via build_point_examples.yakuhai_for_seat().",
+    "first_discarded_copy": "No previous discard of the same tile type in any player's discard list before the triggering discard.",
+    "rank_split": "Score rank is read from the kyoku start seat2rank; only 1st and 4th are included in the requested split.",
+    "call_kind_labels": {
+      "0": "pass",
+      "1": "chi",
+      "2": "chi",
+      "3": "chi",
+      "4": "pon",
+      "5": "open kan"
+    },
+    "all_rates_are_percent": true
+  },
+  "totals": {
+    "call_opportunities": 39736,
+    "yakuhai_pon_opportunities": 2915,
+    "chi_opportunities": 25452,
+    "late_left_hai_num_le_12_opportunities": 1877
+  },
+  "yakuhai_pon_rate": {
+    "definitions": {
+      "included": "Discard is yakuhai for LuckyJ, LuckyJ holds at least two of that tile in the concealed hand, and huro options contain kind 4 (pon).",
+      "pon_rate_pct": "Next state is pon by LuckyJ divided by included opportunities.",
+      "called_any_rate_pct": "Next state is chi, pon, or daiminkan by LuckyJ divided by included opportunities."
+    },
+    "overall": {
+      "n": 2915,
+      "pon": 2187,
+      "pon_rate_pct": 75.0,
+      "called_any": 2200,
+      "called_any_rate_pct": 75.5,
+      "passed": 715
+    },
+    "by_turn_bucket": {
+      "1-6": {
+        "n": 1861,
+        "pon": 1583,
+        "pon_rate_pct": 85.1,
+        "called_any": 1587,
+        "called_any_rate_pct": 85.3,
+        "passed": 274
+      },
+      "7-12": {
+        "n": 854,
+        "pon": 526,
+        "pon_rate_pct": 61.6,
+        "called_any": 535,
+        "called_any_rate_pct": 62.6,
+        "passed": 319
+      },
+      "13+": {
+        "n": 200,
+        "pon": 78,
+        "pon_rate_pct": 39.0,
+        "called_any": 78,
+        "called_any_rate_pct": 39.0,
+        "passed": 122
+      }
+    },
+    "by_shanten_bucket": {
+      "0-1": {
+        "n": 694,
+        "pon": 437,
+        "pon_rate_pct": 63.0,
+        "called_any": 449,
+        "called_any_rate_pct": 64.7,
+        "passed": 245
+      },
+      "2-3": {
+        "n": 1807,
+        "pon": 1424,
+        "pon_rate_pct": 78.8,
+        "called_any": 1424,
+        "called_any_rate_pct": 78.8,
+        "passed": 383
+      },
+      "4+": {
+        "n": 414,
+        "pon": 326,
+        "pon_rate_pct": 78.7,
+        "called_any": 327,
+        "called_any_rate_pct": 79.0,
+        "passed": 87
+      },
+      "unknown": {
+        "n": 0,
+        "pon": 0,
+        "pon_rate_pct": null,
+        "called_any": 0,
+        "called_any_rate_pct": null,
+        "passed": 0
+      }
+    },
+    "by_dora_bucket": {
+      "0": {
+        "n": 1263,
+        "pon": 904,
+        "pon_rate_pct": 71.6,
+        "called_any": 908,
+        "called_any_rate_pct": 71.9,
+        "passed": 355
+      },
+      "1": {
+        "n": 1107,
+        "pon": 841,
+        "pon_rate_pct": 76.0,
+        "called_any": 847,
+        "called_any_rate_pct": 76.5,
+        "passed": 260
+      },
+      "2+": {
+        "n": 545,
+        "pon": 442,
+        "pon_rate_pct": 81.1,
+        "called_any": 445,
+        "called_any_rate_pct": 81.7,
+        "passed": 100
+      }
+    },
+    "by_score_rank_1st_vs_4th": {
+      "1st": {
+        "n": 867,
+        "pon": 649,
+        "pon_rate_pct": 74.9,
+        "called_any": 650,
+        "called_any_rate_pct": 75.0,
+        "passed": 217
+      },
+      "4th": {
+        "n": 563,
+        "pon": 406,
+        "pon_rate_pct": 72.1,
+        "called_any": 411,
+        "called_any_rate_pct": 73.0,
+        "passed": 152
+      }
+    }
+  },
+  "first_copy_vs_later": {
+    "definitions": {
+      "population": "Same yakuhai pon opportunities as yakuhai_pon_rate.",
+      "first_discarded_copy": "The triggering discard is the first discarded copy of that tile type seen in any river.",
+      "later_copy": "At least one same-type copy was already discarded before the triggering discard."
+    },
+    "by_copy_timing": {
+      "first_discarded_copy": {
+        "n": 2618,
+        "pon": 2014,
+        "pon_rate_pct": 76.9,
+        "called_any": 2027,
+        "called_any_rate_pct": 77.4,
+        "passed": 591
+      },
+      "later_copy": {
+        "n": 297,
+        "pon": 173,
+        "pon_rate_pct": 58.2,
+        "called_any": 173,
+        "called_any_rate_pct": 58.2,
+        "passed": 124
+      }
+    }
+  },
+  "chi_rate_by_purpose": {
+    "definitions": {
+      "included": "huro options for LuckyJ contain any chi kind (1, 2, or 3).",
+      "chi_rate_pct": "Next state is chi by LuckyJ divided by included opportunities.",
+      "fully_closed": "LuckyJ has no prior open chi/pon/daiminkan meld before the opportunity; closed kan is not counted as open.",
+      "already_open": "LuckyJ already has at least one prior open chi/pon/daiminkan meld before the opportunity."
+    },
+    "overall": {
+      "n": 25452,
+      "chi": 2512,
+      "chi_rate_pct": 9.9,
+      "called_any": 2571,
+      "called_any_rate_pct": 10.1,
+      "passed": 22881
+    },
+    "closed_to_open": {
+      "n": 21615,
+      "chi": 1462,
+      "chi_rate_pct": 6.8,
+      "called_any": 1501,
+      "called_any_rate_pct": 6.9,
+      "passed": 20114
+    },
+    "by_open_status": {
+      "fully_closed": {
+        "n": 21615,
+        "chi": 1462,
+        "chi_rate_pct": 6.8,
+        "called_any": 1501,
+        "called_any_rate_pct": 6.9,
+        "passed": 20114
+      },
+      "already_open": {
+        "n": 3837,
+        "chi": 1050,
+        "chi_rate_pct": 27.4,
+        "called_any": 1070,
+        "called_any_rate_pct": 27.9,
+        "passed": 2767
+      }
+    },
+    "by_turn_bucket": {
+      "1-6": {
+        "n": 10065,
+        "chi": 696,
+        "chi_rate_pct": 6.9,
+        "called_any": 711,
+        "called_any_rate_pct": 7.1,
+        "passed": 9354
+      },
+      "7-12": {
+        "n": 11563,
+        "chi": 1245,
+        "chi_rate_pct": 10.8,
+        "called_any": 1270,
+        "called_any_rate_pct": 11.0,
+        "passed": 10293
+      },
+      "13+": {
+        "n": 3824,
+        "chi": 571,
+        "chi_rate_pct": 14.9,
+        "called_any": 590,
+        "called_any_rate_pct": 15.4,
+        "passed": 3234
+      }
+    },
+    "by_shanten_bucket": {
+      "0-1": {
+        "n": 10528,
+        "chi": 1155,
+        "chi_rate_pct": 11.0,
+        "called_any": 1191,
+        "called_any_rate_pct": 11.3,
+        "passed": 9337
+      },
+      "2-3": {
+        "n": 13140,
+        "chi": 1310,
+        "chi_rate_pct": 10.0,
+        "called_any": 1332,
+        "called_any_rate_pct": 10.1,
+        "passed": 11808
+      },
+      "4+": {
+        "n": 1784,
+        "chi": 47,
+        "chi_rate_pct": 2.6,
+        "called_any": 48,
+        "called_any_rate_pct": 2.7,
+        "passed": 1736
+      },
+      "unknown": {
+        "n": 0,
+        "chi": 0,
+        "chi_rate_pct": null,
+        "called_any": 0,
+        "called_any_rate_pct": null,
+        "passed": 0
+      }
+    }
+  },
+  "late_keiten_calls": {
+    "definitions": {
+      "included": "All LuckyJ huro call opportunities with left_hai_num <= 12.",
+      "call_rate_pct": "Next state is chi, pon, or daiminkan by LuckyJ divided by included opportunities."
+    },
+    "overall": {
+      "n": 1877,
+      "called": 384,
+      "call_rate_pct": 20.5,
+      "passed": 1493,
+      "pass_rate_pct": 79.5
+    },
+    "by_shanten": {
+      "1": {
+        "n": 627,
+        "called": 200,
+        "call_rate_pct": 31.9,
+        "passed": 427,
+        "pass_rate_pct": 68.1
+      },
+      "2+": {
+        "n": 798,
+        "called": 165,
+        "call_rate_pct": 20.7,
+        "passed": 633,
+        "pass_rate_pct": 79.3
+      },
+      "0_or_less": {
+        "n": 452,
+        "called": 19,
+        "call_rate_pct": 4.2,
+        "passed": 433,
+        "pass_rate_pct": 95.8
+      },
+      "unknown": {
+        "n": 0,
+        "called": 0,
+        "call_rate_pct": null,
+        "passed": 0,
+        "pass_rate_pct": null
+      }
+    }
+  },
+  "never_call_signals": {
+    "definitions": {
+      "junk_hand": "LuckyJ has regular-hand shanten >= 4 and zero dora in the concealed hand at a call opportunity.",
+      "all_call_opportunities": "All huro call opportunities matching junk_hand.",
+      "yakuhai_pon_opportunities": "Subset that also matches the yakuhai pon opportunity definition."
+    },
+    "all_call_opportunities": {
+      "n": 1691,
+      "called": 238,
+      "call_rate_pct": 14.1,
+      "passed": 1453,
+      "pass_rate_pct": 85.9
+    },
+    "yakuhai_pon_opportunities": {
+      "n": 210,
+      "pon": 152,
+      "pon_rate_pct": 72.4,
+      "called_any": 152,
+      "called_any_rate_pct": 72.4,
+      "passed": 58
+    }
+  },
+  "proposed_rules": [
+    "Default to ponning yakuhai pairs: LuckyJ poned 75.0% (n=2915) overall.",
+    "Pon the first visible yakuhai copy rather than waiting: first-copy pon rate 76.9% (n=2618) vs later-copy 58.2% (n=297).",
+    "Use shanten as the main brake on yakuhai pon: 0-1 shanten 63.0% (n=694), 2-3 shanten 78.8% (n=1807), 4+ shanten 78.7% (n=414).",
+    "Do not make chi your first call lightly: closed-to-open chi rate 6.8% (n=21615); once already open, chi rate 27.4% (n=3837).",
+    "In the last 12 tiles, call for keiten at 1-shanten: call rate 31.9% (n=627) vs 2+ shanten 20.7% (n=798).",
+    "Treat 4+ shanten, 0-dora hands as junk: pass all call chances 85.9% (n=1691); yakuhai pon still happens only 72.4% (n=210).",
+    "Let dora increase yakuhai-pon willingness: 0 dora 71.6% (n=1263), 1 dora 76.0% (n=1107), 2+ dora 81.1% (n=545)."
+  ]
+}

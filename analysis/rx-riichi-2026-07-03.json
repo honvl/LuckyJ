@@ -1,0 +1,593 @@
+{
+  "definitions": {
+    "source": "data/report_cache/*.json.gz via scripts/analyze_luckyj.py parse_rows/fetch_report/normalize_report",
+    "riichi_opportunity": "LuckyJ tsumo state containing state['reach']; declaration iff next state's msg is type='reach' with actor==LuckyJ.",
+    "first_opportunity": "First riichi opportunity per LuckyJ kyoku only.",
+    "wait_tiles_remaining": "After LuckyJ's actual real_dahai from the 14-tile hand, winning tile types are tiles that make shanten -1; remaining copies are 4 minus own post-discard hand, all rivers, called/kan tiles, and dora indicators visible so far.",
+    "turn": "len(discards[LuckyJ]) + 1 before LuckyJ's discard.",
+    "score_position": "Start-of-kyoku scores and seat2rank; rank1_10k+_lead means first place leads second by at least 10,000.",
+    "threat": "For riichi first-opportunity splits, threat is none/opponent riichi/open 2+ meld/both. For keiten buckets, riichi takes priority over open_2meld.",
+    "danger": "Max danger_s/danger_t/danger_k over opponent seats for LuckyJ's actual discard, scaled /10000. Bonus declaration safety restricts opponent seats to existing riichi or open-2meld threats.",
+    "keiten_shanten": "Regular-hand shanten of LuckyJ's concealed tiles after the actual discard, with open melds inferred by tile count; bucketed as 0/1/2+.",
+    "keiten_push": "A late-game decision with left_hai_num <= 20; push means actual discard danger > 5%.",
+    "fold_commitment": "Per kyoku, first time LuckyJ makes two consecutive target discards under an opponent riichi, both 2+ regular shanten after discard and each <1% danger; later push means a subsequent LuckyJ discard in that kyoku is >5% danger.",
+    "declined_fold_or_broke_tenpai": "After declining first riichi and never declaring later, any later LuckyJ discard that leaves full closed shanten >=1."
+  },
+  "meta": {
+    "rows_seen": 1256,
+    "unique_report_ids_seen": 1255,
+    "reports_processed": 1256,
+    "kyoku_seen": 13059,
+    "errors": []
+  },
+  "riichi_first_opportunity": {
+    "overall": {
+      "n": 3358,
+      "declares": 2247,
+      "declare_rate_pct": 66.9
+    },
+    "splits": {
+      "wait_tiles_remaining": {
+        "4-7": {
+          "n": 1807,
+          "declares": 1436,
+          "declare_rate_pct": 79.5
+        },
+        "8+": {
+          "n": 438,
+          "declares": 410,
+          "declare_rate_pct": 93.6
+        },
+        "<=3_bad": {
+          "n": 1110,
+          "declares": 401,
+          "declare_rate_pct": 36.1
+        },
+        "unknown": {
+          "n": 3,
+          "declares": 0,
+          "declare_rate_pct": 0.0
+        }
+      },
+      "turn_bucket": {
+        "12+": {
+          "n": 772,
+          "declares": 436,
+          "declare_rate_pct": 56.5
+        },
+        "7-11": {
+          "n": 1788,
+          "declares": 1278,
+          "declare_rate_pct": 71.5
+        },
+        "<=6": {
+          "n": 798,
+          "declares": 533,
+          "declare_rate_pct": 66.8
+        }
+      },
+      "tiles_left": {
+        "<=20": {
+          "n": 419,
+          "declares": 203,
+          "declare_rate_pct": 48.4
+        },
+        ">20": {
+          "n": 2939,
+          "declares": 2044,
+          "declare_rate_pct": 69.5
+        }
+      },
+      "score_position": {
+        "rank1_10k+_lead": {
+          "n": 412,
+          "declares": 258,
+          "declare_rate_pct": 62.6
+        },
+        "rank1_small_lead": {
+          "n": 597,
+          "declares": 373,
+          "declare_rate_pct": 62.5
+        },
+        "rank2-3": {
+          "n": 1638,
+          "declares": 1076,
+          "declare_rate_pct": 65.7
+        },
+        "rank4": {
+          "n": 711,
+          "declares": 540,
+          "declare_rate_pct": 75.9
+        }
+      },
+      "dealer": {
+        "dealer": {
+          "n": 974,
+          "declares": 684,
+          "declare_rate_pct": 70.2
+        },
+        "nondealer": {
+          "n": 2384,
+          "declares": 1563,
+          "declare_rate_pct": 65.6
+        }
+      },
+      "threat": {
+        "none": {
+          "n": 2102,
+          "declares": 1513,
+          "declare_rate_pct": 72.0
+        },
+        "open_2meld": {
+          "n": 613,
+          "declares": 395,
+          "declare_rate_pct": 64.4
+        },
+        "opp_riichi": {
+          "n": 531,
+          "declares": 279,
+          "declare_rate_pct": 52.5
+        },
+        "riichi+open_2meld": {
+          "n": 112,
+          "declares": 60,
+          "declare_rate_pct": 53.6
+        }
+      },
+      "opponent_riichi_present": {
+        "no": {
+          "n": 2715,
+          "declares": 1908,
+          "declare_rate_pct": 70.3
+        },
+        "yes": {
+          "n": 643,
+          "declares": 339,
+          "declare_rate_pct": 52.7
+        }
+      },
+      "open_2meld_present": {
+        "no": {
+          "n": 2633,
+          "declares": 1792,
+          "declare_rate_pct": 68.1
+        },
+        "yes": {
+          "n": 725,
+          "declares": 455,
+          "declare_rate_pct": 62.8
+        }
+      }
+    },
+    "cross_tabs": {
+      "wait_tiles_remaining_x_turn_bucket": {
+        "4-7|12+": {
+          "n": 417,
+          "declares": 294,
+          "declare_rate_pct": 70.5
+        },
+        "4-7|7-11": {
+          "n": 997,
+          "declares": 824,
+          "declare_rate_pct": 82.6
+        },
+        "4-7|<=6": {
+          "n": 393,
+          "declares": 318,
+          "declare_rate_pct": 80.9
+        },
+        "8+|12+": {
+          "n": 64,
+          "declares": 57,
+          "declare_rate_pct": 89.1
+        },
+        "8+|7-11": {
+          "n": 228,
+          "declares": 216,
+          "declare_rate_pct": 94.7
+        },
+        "8+|<=6": {
+          "n": 146,
+          "declares": 137,
+          "declare_rate_pct": 93.8
+        },
+        "<=3_bad|12+": {
+          "n": 290,
+          "declares": 85,
+          "declare_rate_pct": 29.3
+        },
+        "<=3_bad|7-11": {
+          "n": 563,
+          "declares": 238,
+          "declare_rate_pct": 42.3
+        },
+        "<=3_bad|<=6": {
+          "n": 257,
+          "declares": 78,
+          "declare_rate_pct": 30.4
+        },
+        "unknown|12+": {
+          "n": 1,
+          "declares": 0,
+          "declare_rate_pct": 0.0
+        },
+        "unknown|<=6": {
+          "n": 2,
+          "declares": 0,
+          "declare_rate_pct": 0.0
+        }
+      },
+      "wait_tiles_remaining_x_score_position": {
+        "4-7|rank1_10k+_lead": {
+          "n": 213,
+          "declares": 161,
+          "declare_rate_pct": 75.6
+        },
+        "4-7|rank1_small_lead": {
+          "n": 308,
+          "declares": 233,
+          "declare_rate_pct": 75.6
+        },
+        "4-7|rank2-3": {
+          "n": 888,
+          "declares": 689,
+          "declare_rate_pct": 77.6
+        },
+        "4-7|rank4": {
+          "n": 398,
+          "declares": 353,
+          "declare_rate_pct": 88.7
+        },
+        "8+|rank1_10k+_lead": {
+          "n": 54,
+          "declares": 46,
+          "declare_rate_pct": 85.2
+        },
+        "8+|rank1_small_lead": {
+          "n": 81,
+          "declares": 74,
+          "declare_rate_pct": 91.4
+        },
+        "8+|rank2-3": {
+          "n": 216,
+          "declares": 204,
+          "declare_rate_pct": 94.4
+        },
+        "8+|rank4": {
+          "n": 87,
+          "declares": 86,
+          "declare_rate_pct": 98.9
+        },
+        "<=3_bad|rank1_10k+_lead": {
+          "n": 145,
+          "declares": 51,
+          "declare_rate_pct": 35.2
+        },
+        "<=3_bad|rank1_small_lead": {
+          "n": 208,
+          "declares": 66,
+          "declare_rate_pct": 31.7
+        },
+        "<=3_bad|rank2-3": {
+          "n": 531,
+          "declares": 183,
+          "declare_rate_pct": 34.5
+        },
+        "<=3_bad|rank4": {
+          "n": 226,
+          "declares": 101,
+          "declare_rate_pct": 44.7
+        },
+        "unknown|rank2-3": {
+          "n": 3,
+          "declares": 0,
+          "declare_rate_pct": 0.0
+        }
+      },
+      "wait_tiles_remaining_x_threat": {
+        "4-7|none": {
+          "n": 1124,
+          "declares": 934,
+          "declare_rate_pct": 83.1
+        },
+        "4-7|open_2meld": {
+          "n": 345,
+          "declares": 267,
+          "declare_rate_pct": 77.4
+        },
+        "4-7|opp_riichi": {
+          "n": 271,
+          "declares": 188,
+          "declare_rate_pct": 69.4
+        },
+        "4-7|riichi+open_2meld": {
+          "n": 67,
+          "declares": 47,
+          "declare_rate_pct": 70.1
+        },
+        "8+|none": {
+          "n": 328,
+          "declares": 308,
+          "declare_rate_pct": 93.9
+        },
+        "8+|open_2meld": {
+          "n": 54,
+          "declares": 51,
+          "declare_rate_pct": 94.4
+        },
+        "8+|opp_riichi": {
+          "n": 52,
+          "declares": 47,
+          "declare_rate_pct": 90.4
+        },
+        "8+|riichi+open_2meld": {
+          "n": 4,
+          "declares": 4,
+          "declare_rate_pct": 100.0
+        },
+        "<=3_bad|none": {
+          "n": 647,
+          "declares": 271,
+          "declare_rate_pct": 41.9
+        },
+        "<=3_bad|open_2meld": {
+          "n": 214,
+          "declares": 77,
+          "declare_rate_pct": 36.0
+        },
+        "<=3_bad|opp_riichi": {
+          "n": 208,
+          "declares": 44,
+          "declare_rate_pct": 21.2
+        },
+        "<=3_bad|riichi+open_2meld": {
+          "n": 41,
+          "declares": 9,
+          "declare_rate_pct": 22.0
+        },
+        "unknown|none": {
+          "n": 3,
+          "declares": 0,
+          "declare_rate_pct": 0.0
+        }
+      }
+    }
+  },
+  "declined_then_what": {
+    "n": 1111,
+    "later_declared": 246,
+    "later_declared_rate_pct": 22.1,
+    "stayed_damaten_to_end": 660,
+    "stayed_damaten_to_end_rate_pct": 59.4,
+    "fold_or_broke_tenpai": 205,
+    "fold_or_broke_tenpai_rate_pct": 18.5
+  },
+  "late_game_keiten_push": {
+    "definitions": {
+      "bucket_key": "own_regular_shanten_after_discard|tiles_left_bucket|threat_bucket",
+      "tiles_left_buckets": [
+        "20-11",
+        "10-6",
+        "5-0"
+      ],
+      "threat_priority": "riichi if any opponent riichi, else open_2meld if any opponent has >=2 open calls, else none"
+    },
+    "buckets": {
+      "0|10-6|none": {
+        "n": 297,
+        "danger_known_n": 297,
+        "mean_actual_discard_danger": 0.184,
+        "push_>5pct": 193,
+        "push_>5pct_rate_pct": 65.0
+      },
+      "0|10-6|open_2meld": {
+        "n": 211,
+        "danger_known_n": 211,
+        "mean_actual_discard_danger": 0.1919,
+        "push_>5pct": 146,
+        "push_>5pct_rate_pct": 69.2
+      },
+      "0|10-6|riichi": {
+        "n": 427,
+        "danger_known_n": 427,
+        "mean_actual_discard_danger": 0.2214,
+        "push_>5pct": 292,
+        "push_>5pct_rate_pct": 68.4
+      },
+      "0|20-11|none": {
+        "n": 926,
+        "danger_known_n": 926,
+        "mean_actual_discard_danger": 0.1678,
+        "push_>5pct": 619,
+        "push_>5pct_rate_pct": 66.8
+      },
+      "0|20-11|open_2meld": {
+        "n": 543,
+        "danger_known_n": 543,
+        "mean_actual_discard_danger": 0.2003,
+        "push_>5pct": 368,
+        "push_>5pct_rate_pct": 67.8
+      },
+      "0|20-11|riichi": {
+        "n": 1007,
+        "danger_known_n": 1007,
+        "mean_actual_discard_danger": 0.2529,
+        "push_>5pct": 679,
+        "push_>5pct_rate_pct": 67.4
+      },
+      "0|5-0|none": {
+        "n": 237,
+        "danger_known_n": 237,
+        "mean_actual_discard_danger": 0.1799,
+        "push_>5pct": 155,
+        "push_>5pct_rate_pct": 65.4
+      },
+      "0|5-0|open_2meld": {
+        "n": 203,
+        "danger_known_n": 203,
+        "mean_actual_discard_danger": 0.1791,
+        "push_>5pct": 125,
+        "push_>5pct_rate_pct": 61.6
+      },
+      "0|5-0|riichi": {
+        "n": 396,
+        "danger_known_n": 396,
+        "mean_actual_discard_danger": 0.2413,
+        "push_>5pct": 250,
+        "push_>5pct_rate_pct": 63.1
+      },
+      "1|10-6|none": {
+        "n": 206,
+        "danger_known_n": 206,
+        "mean_actual_discard_danger": 0.0791,
+        "push_>5pct": 88,
+        "push_>5pct_rate_pct": 42.7
+      },
+      "1|10-6|open_2meld": {
+        "n": 176,
+        "danger_known_n": 176,
+        "mean_actual_discard_danger": 0.0688,
+        "push_>5pct": 74,
+        "push_>5pct_rate_pct": 42.0
+      },
+      "1|10-6|riichi": {
+        "n": 436,
+        "danger_known_n": 436,
+        "mean_actual_discard_danger": 0.0793,
+        "push_>5pct": 172,
+        "push_>5pct_rate_pct": 39.4
+      },
+      "1|20-11|none": {
+        "n": 1046,
+        "danger_known_n": 1046,
+        "mean_actual_discard_danger": 0.1085,
+        "push_>5pct": 579,
+        "push_>5pct_rate_pct": 55.4
+      },
+      "1|20-11|open_2meld": {
+        "n": 672,
+        "danger_known_n": 672,
+        "mean_actual_discard_danger": 0.0932,
+        "push_>5pct": 318,
+        "push_>5pct_rate_pct": 47.3
+      },
+      "1|20-11|riichi": {
+        "n": 1375,
+        "danger_known_n": 1375,
+        "mean_actual_discard_danger": 0.0902,
+        "push_>5pct": 589,
+        "push_>5pct_rate_pct": 42.8
+      },
+      "1|5-0|none": {
+        "n": 108,
+        "danger_known_n": 108,
+        "mean_actual_discard_danger": 0.0607,
+        "push_>5pct": 41,
+        "push_>5pct_rate_pct": 38.0
+      },
+      "1|5-0|open_2meld": {
+        "n": 113,
+        "danger_known_n": 113,
+        "mean_actual_discard_danger": 0.0588,
+        "push_>5pct": 38,
+        "push_>5pct_rate_pct": 33.6
+      },
+      "1|5-0|riichi": {
+        "n": 335,
+        "danger_known_n": 335,
+        "mean_actual_discard_danger": 0.0782,
+        "push_>5pct": 116,
+        "push_>5pct_rate_pct": 34.6
+      },
+      "2+|10-6|none": {
+        "n": 120,
+        "danger_known_n": 120,
+        "mean_actual_discard_danger": 0.0538,
+        "push_>5pct": 38,
+        "push_>5pct_rate_pct": 31.7
+      },
+      "2+|10-6|open_2meld": {
+        "n": 209,
+        "danger_known_n": 209,
+        "mean_actual_discard_danger": 0.0566,
+        "push_>5pct": 55,
+        "push_>5pct_rate_pct": 26.3
+      },
+      "2+|10-6|riichi": {
+        "n": 874,
+        "danger_known_n": 874,
+        "mean_actual_discard_danger": 0.0508,
+        "push_>5pct": 209,
+        "push_>5pct_rate_pct": 23.9
+      },
+      "2+|20-11|none": {
+        "n": 573,
+        "danger_known_n": 573,
+        "mean_actual_discard_danger": 0.0622,
+        "push_>5pct": 207,
+        "push_>5pct_rate_pct": 36.1
+      },
+      "2+|20-11|open_2meld": {
+        "n": 621,
+        "danger_known_n": 621,
+        "mean_actual_discard_danger": 0.0513,
+        "push_>5pct": 176,
+        "push_>5pct_rate_pct": 28.3
+      },
+      "2+|20-11|riichi": {
+        "n": 2433,
+        "danger_known_n": 2433,
+        "mean_actual_discard_danger": 0.0551,
+        "push_>5pct": 667,
+        "push_>5pct_rate_pct": 27.4
+      },
+      "2+|5-0|none": {
+        "n": 112,
+        "danger_known_n": 112,
+        "mean_actual_discard_danger": 0.0773,
+        "push_>5pct": 44,
+        "push_>5pct_rate_pct": 39.3
+      },
+      "2+|5-0|open_2meld": {
+        "n": 232,
+        "danger_known_n": 232,
+        "mean_actual_discard_danger": 0.0529,
+        "push_>5pct": 70,
+        "push_>5pct_rate_pct": 30.2
+      },
+      "2+|5-0|riichi": {
+        "n": 831,
+        "danger_known_n": 831,
+        "mean_actual_discard_danger": 0.0527,
+        "push_>5pct": 209,
+        "push_>5pct_rate_pct": 25.2
+      }
+    }
+  },
+  "fold_commitment": {
+    "n": 1141,
+    "later_push_>5pct": 543,
+    "later_push_>5pct_rate_pct": 47.6,
+    "stayed_folded_rate_pct": 52.4,
+    "later_discards_known_n": 4021
+  },
+  "riichi_declaration_tile_safety": {
+    "declares": 2493,
+    "declares_with_existing_threat": 830,
+    "declares_with_existing_threat_rate_pct": 33.3,
+    "declares_with_existing_threat_danger_known_n": 830,
+    "mean_danger_vs_existing_threat": 0.1266,
+    "danger_>10pct_vs_threat": 356,
+    "danger_>10pct_vs_threat_rate_pct": 42.9
+  },
+  "proposed_rules": [
+    "Declare immediately on 8+ unseen waits: LuckyJ did so 93.6% (n=438).",
+    "Treat <=3 unseen waits as the main damaten zone: first-chance riichi only 36.1% (n=1110).",
+    "With a bad wait and a 10k+ first-place lead, bias damaten: declare 35.2% (n=145).",
+    "Late riichi is still live: on turn 12+ LuckyJ declared 56.5% (n=772) when first offered.",
+    "If the first riichi is declined, expect damaten more than a delayed stick: later riichi 22.1%, stayed damaten 59.4%, broke/folded 18.5% (n=1111).",
+    "For late keiten, 2+ shanten under riichi stops pushing: 2+|5-0|riichi pushed >5% danger 25.2% (n=831).",
+    "Once LuckyJ folds with two <1% tiles while 2+ shanten under riichi, it stays folded 52.4% of the time (later >5% push 47.6%, n=1141).",
+    "When LuckyJ declares into an existing threat, the stick tile itself is >10% danger 42.9% of the time (n=830)."
+  ]
+}

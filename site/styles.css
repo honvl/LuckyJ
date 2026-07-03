@@ -451,6 +451,68 @@ a {
   padding: 18px;
 }
 
+/* Prescriptions: numeric play-rules reference */
+.rx-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.rx-card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 18px;
+}
+
+.rx-card h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.rx-card .rx-rule {
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.rx-card table {
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 10px 0 6px;
+  width: 100%;
+}
+
+.rx-card th,
+.rx-card td {
+  border: 1px solid var(--line);
+  padding: 5px 8px;
+  text-align: left;
+}
+
+.rx-card th {
+  background: var(--soft-green);
+  font-weight: 700;
+}
+
+.rx-card .rx-basis {
+  color: var(--ink-soft, #55604f);
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
+.rx-card .rx-except {
+  border-left: 4px solid var(--gold);
+  font-size: 13px;
+  margin: 10px 0 0;
+  padding: 6px 10px;
+}
+
+@media (max-width: 900px) {
+  .rx-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .engine-consensus h3 {
   margin: 0 0 8px;
   font-size: 18px;

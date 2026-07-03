@@ -1,0 +1,2949 @@
+{
+  "definitions": {
+    "danger": "For LuckyJ's actual discard, max(state[danger_s/t/k][LuckyJ seat][tile_index] / 10000).",
+    "push": "actual discard danger > 0.05.",
+    "hard_push": "actual discard danger > 0.10.",
+    "tenpai_estimate": "mean(state[tenpai_s/t/k][opponent seat]) / 100.",
+    "tenpai_buckets": {
+      "<30%": "estimate < 0.30",
+      "30-60%": "0.30 <= estimate <= 0.60",
+      ">60%": "estimate > 0.60"
+    },
+    "table_threats": {
+      "quiet": "no riichi and no opponent with any melds",
+      "1_meld_opponent_max": "no riichi; max opponent meld count is 1",
+      "2_meld_opponent": "no riichi; max opponent meld count is 2",
+      "3plus_meld_opponent": "no riichi; max opponent meld count is 3+",
+      "single_riichi": "exactly one opponent riichi and no opponent with 2+ melds",
+      "riichi_plus_more": "2+ opponent riichi, or at least one riichi plus an opponent with 2+ melds"
+    },
+    "max_threat_opponent": "Riichi seats are chosen first when any opponent has riichi; otherwise the opponent(s) with max meld count are chosen, tied by higher NAGA tenpai estimate. Quiet tables use the highest tenpai estimate among opponents.",
+    "meld_count_tracking": "chi/pon/daiminkan and ankan increment meld count; kakan upgrades without increment, matching scripts/build_point_examples.py collect_examples().",
+    "turn": "opponent turn = len(discards[opponent]) + 1 at LuckyJ's decision.",
+    "own_state": {
+      "closed_tenpai": "no own melds, not already riichi, raw shanten <= 0 on the 13-tile hand plus draw",
+      "closed_1_shanten": "no own melds, not already riichi, raw shanten == 1",
+      "closed_2plus_shanten": "no own melds, not already riichi, raw shanten >= 2",
+      "own_open_hand": "LuckyJ has at least one meld; shanten intentionally not computed",
+      "own_riichi": "LuckyJ is already in riichi; included because every tsumo state with real_dahai+dahai_pred is counted, but it is not a free push/fold choice"
+    },
+    "tiles_left_buckets": {
+      ">40": "left_hai_num > 40",
+      "40-21": "21 <= left_hai_num <= 40",
+      "<=20": "left_hai_num <= 20"
+    },
+    "immediate_riichi_reaction": "For each opponent riichi declaration, LuckyJ's next tsumo discard is tested as genbutsu if its tile index appears in that riichi player's river by then; multiple pending riichi declarations create multiple observations.",
+    "n_fields": "In danger metrics, total_states counts matching decisions; n counts decisions with usable danger; rates use n. In genbutsu metrics, n counts reaction observations."
+  },
+  "summary": {
+    "n_rows_from_sheet": 1256,
+    "n_unique_report_ids": 1255,
+    "n_duplicate_report_rows_skipped": 1,
+    "duplicate_report_rows_skipped": [
+      {
+        "idx": 1101,
+        "report_id": "c045846868d7637fe2878e8c8326ccb44afd66e22cd926fbc900650abef68831v2_2",
+        "actor": 1,
+        "paifu": "https://tenhou.net/4/?log=2023052320gm-0029-0000-bf31f030&tw=1"
+      }
+    ],
+    "n_reports_processed": 1255,
+    "n_reports_failed": 0,
+    "n_kyoku_seen": 13054,
+    "n_luckyj_tsumo_decision_states": 149230,
+    "n_own_riichi_tsumo_states_included": 8960,
+    "n_open_threat_states": 17730,
+    "n_riichi_threat_states": 26096,
+    "n_immediate_riichi_reactions": 6570,
+    "errors": [],
+    "all_decisions_metric": {
+      "total_states": 149230,
+      "n": 149230,
+      "missing_danger": 0,
+      "mean_danger": 0.0544,
+      "p75_danger": 0.0617,
+      "push_count_danger_gt_5pct": 43569,
+      "push_rate_danger_gt_5pct": 29.2,
+      "hard_push_count_danger_gt_10pct": 23537,
+      "hard_push_rate_danger_gt_10pct": 15.8
+    }
+  },
+  "table_threat_metrics": {
+    "by_threat": {
+      "quiet": {
+        "closed_tenpai": {
+          "total_states": 1608,
+          "n": 1608,
+          "missing_danger": 0,
+          "mean_danger": 0.0597,
+          "p75_danger": 0.0848,
+          "push_count_danger_gt_5pct": 704,
+          "push_rate_danger_gt_5pct": 43.8,
+          "hard_push_count_danger_gt_10pct": 319,
+          "hard_push_rate_danger_gt_10pct": 19.8
+        },
+        "closed_1_shanten": {
+          "total_states": 12408,
+          "n": 12408,
+          "missing_danger": 0,
+          "mean_danger": 0.0424,
+          "p75_danger": 0.062,
+          "push_count_danger_gt_5pct": 3874,
+          "push_rate_danger_gt_5pct": 31.2,
+          "hard_push_count_danger_gt_10pct": 1468,
+          "hard_push_rate_danger_gt_10pct": 11.8
+        },
+        "closed_2plus_shanten": {
+          "total_states": 49106,
+          "n": 49106,
+          "missing_danger": 0,
+          "mean_danger": 0.0165,
+          "p75_danger": 0.018,
+          "push_count_danger_gt_5pct": 4673,
+          "push_rate_danger_gt_5pct": 9.5,
+          "hard_push_count_danger_gt_10pct": 1340,
+          "hard_push_rate_danger_gt_10pct": 2.7
+        },
+        "own_open_hand": {
+          "total_states": 8937,
+          "n": 8937,
+          "missing_danger": 0,
+          "mean_danger": 0.0453,
+          "p75_danger": 0.0631,
+          "push_count_danger_gt_5pct": 2916,
+          "push_rate_danger_gt_5pct": 32.6,
+          "hard_push_count_danger_gt_10pct": 1113,
+          "hard_push_rate_danger_gt_10pct": 12.5
+        },
+        "own_riichi": {
+          "total_states": 2753,
+          "n": 2753,
+          "missing_danger": 0,
+          "mean_danger": 0.0606,
+          "p75_danger": 0.0898,
+          "push_count_danger_gt_5pct": 1254,
+          "push_rate_danger_gt_5pct": 45.6,
+          "hard_push_count_danger_gt_10pct": 567,
+          "hard_push_rate_danger_gt_10pct": 20.6
+        },
+        "closed_unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      },
+      "1_meld_opponent_max": {
+        "closed_tenpai": {
+          "total_states": 1288,
+          "n": 1288,
+          "missing_danger": 0,
+          "mean_danger": 0.1191,
+          "p75_danger": 0.1703,
+          "push_count_danger_gt_5pct": 833,
+          "push_rate_danger_gt_5pct": 64.7,
+          "hard_push_count_danger_gt_10pct": 571,
+          "hard_push_rate_danger_gt_10pct": 44.3
+        },
+        "closed_1_shanten": {
+          "total_states": 7721,
+          "n": 7721,
+          "missing_danger": 0,
+          "mean_danger": 0.0798,
+          "p75_danger": 0.1165,
+          "push_count_danger_gt_5pct": 3924,
+          "push_rate_danger_gt_5pct": 50.8,
+          "hard_push_count_danger_gt_10pct": 2310,
+          "hard_push_rate_danger_gt_10pct": 29.9
+        },
+        "closed_2plus_shanten": {
+          "total_states": 13061,
+          "n": 13061,
+          "missing_danger": 0,
+          "mean_danger": 0.0514,
+          "p75_danger": 0.0719,
+          "push_count_danger_gt_5pct": 4651,
+          "push_rate_danger_gt_5pct": 35.6,
+          "hard_push_count_danger_gt_10pct": 2112,
+          "hard_push_rate_danger_gt_10pct": 16.2
+        },
+        "own_open_hand": {
+          "total_states": 6000,
+          "n": 6000,
+          "missing_danger": 0,
+          "mean_danger": 0.0799,
+          "p75_danger": 0.1154,
+          "push_count_danger_gt_5pct": 3018,
+          "push_rate_danger_gt_5pct": 50.3,
+          "hard_push_count_danger_gt_10pct": 1747,
+          "hard_push_rate_danger_gt_10pct": 29.1
+        },
+        "own_riichi": {
+          "total_states": 2522,
+          "n": 2522,
+          "missing_danger": 0,
+          "mean_danger": 0.1032,
+          "p75_danger": 0.1502,
+          "push_count_danger_gt_5pct": 1407,
+          "push_rate_danger_gt_5pct": 55.8,
+          "hard_push_count_danger_gt_10pct": 967,
+          "hard_push_rate_danger_gt_10pct": 38.3
+        },
+        "closed_unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      },
+      "2_meld_opponent": {
+        "closed_tenpai": {
+          "total_states": 904,
+          "n": 904,
+          "missing_danger": 0,
+          "mean_danger": 0.1505,
+          "p75_danger": 0.2268,
+          "push_count_danger_gt_5pct": 588,
+          "push_rate_danger_gt_5pct": 65.0,
+          "hard_push_count_danger_gt_10pct": 444,
+          "hard_push_rate_danger_gt_10pct": 49.1
+        },
+        "closed_1_shanten": {
+          "total_states": 3972,
+          "n": 3972,
+          "missing_danger": 0,
+          "mean_danger": 0.0801,
+          "p75_danger": 0.1097,
+          "push_count_danger_gt_5pct": 1747,
+          "push_rate_danger_gt_5pct": 44.0,
+          "hard_push_count_danger_gt_10pct": 1084,
+          "hard_push_rate_danger_gt_10pct": 27.3
+        },
+        "closed_2plus_shanten": {
+          "total_states": 4993,
+          "n": 4993,
+          "missing_danger": 0,
+          "mean_danger": 0.0517,
+          "p75_danger": 0.0703,
+          "push_count_danger_gt_5pct": 1660,
+          "push_rate_danger_gt_5pct": 33.2,
+          "hard_push_count_danger_gt_10pct": 839,
+          "hard_push_rate_danger_gt_10pct": 16.8
+        },
+        "own_open_hand": {
+          "total_states": 3519,
+          "n": 3519,
+          "missing_danger": 0,
+          "mean_danger": 0.0904,
+          "p75_danger": 0.1225,
+          "push_count_danger_gt_5pct": 1652,
+          "push_rate_danger_gt_5pct": 46.9,
+          "hard_push_count_danger_gt_10pct": 1057,
+          "hard_push_rate_danger_gt_10pct": 30.0
+        },
+        "own_riichi": {
+          "total_states": 1327,
+          "n": 1327,
+          "missing_danger": 0,
+          "mean_danger": 0.1338,
+          "p75_danger": 0.1945,
+          "push_count_danger_gt_5pct": 783,
+          "push_rate_danger_gt_5pct": 59.0,
+          "hard_push_count_danger_gt_10pct": 568,
+          "hard_push_rate_danger_gt_10pct": 42.8
+        },
+        "closed_unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      },
+      "3plus_meld_opponent": {
+        "closed_tenpai": {
+          "total_states": 204,
+          "n": 204,
+          "missing_danger": 0,
+          "mean_danger": 0.1483,
+          "p75_danger": 0.2177,
+          "push_count_danger_gt_5pct": 103,
+          "push_rate_danger_gt_5pct": 50.5,
+          "hard_push_count_danger_gt_10pct": 84,
+          "hard_push_rate_danger_gt_10pct": 41.2
+        },
+        "closed_1_shanten": {
+          "total_states": 812,
+          "n": 812,
+          "missing_danger": 0,
+          "mean_danger": 0.0777,
+          "p75_danger": 0.0993,
+          "push_count_danger_gt_5pct": 310,
+          "push_rate_danger_gt_5pct": 38.2,
+          "hard_push_count_danger_gt_10pct": 202,
+          "hard_push_rate_danger_gt_10pct": 24.9
+        },
+        "closed_2plus_shanten": {
+          "total_states": 913,
+          "n": 913,
+          "missing_danger": 0,
+          "mean_danger": 0.0483,
+          "p75_danger": 0.0481,
+          "push_count_danger_gt_5pct": 224,
+          "push_rate_danger_gt_5pct": 24.5,
+          "hard_push_count_danger_gt_10pct": 116,
+          "hard_push_rate_danger_gt_10pct": 12.7
+        },
+        "own_open_hand": {
+          "total_states": 762,
+          "n": 762,
+          "missing_danger": 0,
+          "mean_danger": 0.1021,
+          "p75_danger": 0.1286,
+          "push_count_danger_gt_5pct": 352,
+          "push_rate_danger_gt_5pct": 46.2,
+          "hard_push_count_danger_gt_10pct": 237,
+          "hard_push_rate_danger_gt_10pct": 31.1
+        },
+        "own_riichi": {
+          "total_states": 324,
+          "n": 324,
+          "missing_danger": 0,
+          "mean_danger": 0.141,
+          "p75_danger": 0.2005,
+          "push_count_danger_gt_5pct": 163,
+          "push_rate_danger_gt_5pct": 50.3,
+          "hard_push_count_danger_gt_10pct": 118,
+          "hard_push_rate_danger_gt_10pct": 36.4
+        },
+        "closed_unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      },
+      "single_riichi": {
+        "closed_tenpai": {
+          "total_states": 1009,
+          "n": 1009,
+          "missing_danger": 0,
+          "mean_danger": 0.2512,
+          "p75_danger": 0.4422,
+          "push_count_danger_gt_5pct": 640,
+          "push_rate_danger_gt_5pct": 63.4,
+          "hard_push_count_danger_gt_10pct": 553,
+          "hard_push_rate_danger_gt_10pct": 54.8
+        },
+        "closed_1_shanten": {
+          "total_states": 4556,
+          "n": 4556,
+          "missing_danger": 0,
+          "mean_danger": 0.0895,
+          "p75_danger": 0.0937,
+          "push_count_danger_gt_5pct": 1624,
+          "push_rate_danger_gt_5pct": 35.6,
+          "hard_push_count_danger_gt_10pct": 1091,
+          "hard_push_rate_danger_gt_10pct": 23.9
+        },
+        "closed_2plus_shanten": {
+          "total_states": 6954,
+          "n": 6954,
+          "missing_danger": 0,
+          "mean_danger": 0.0386,
+          "p75_danger": 0.035,
+          "push_count_danger_gt_5pct": 1337,
+          "push_rate_danger_gt_5pct": 19.2,
+          "hard_push_count_danger_gt_10pct": 732,
+          "hard_push_rate_danger_gt_10pct": 10.5
+        },
+        "own_open_hand": {
+          "total_states": 5271,
+          "n": 5271,
+          "missing_danger": 0,
+          "mean_danger": 0.1197,
+          "p75_danger": 0.1537,
+          "push_count_danger_gt_5pct": 2218,
+          "push_rate_danger_gt_5pct": 42.1,
+          "hard_push_count_danger_gt_10pct": 1661,
+          "hard_push_rate_danger_gt_10pct": 31.5
+        },
+        "own_riichi": {
+          "total_states": 1591,
+          "n": 1591,
+          "missing_danger": 0,
+          "mean_danger": 0.2445,
+          "p75_danger": 0.4227,
+          "push_count_danger_gt_5pct": 983,
+          "push_rate_danger_gt_5pct": 61.8,
+          "hard_push_count_danger_gt_10pct": 847,
+          "hard_push_rate_danger_gt_10pct": 53.2
+        },
+        "closed_unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      },
+      "riichi_plus_more": {
+        "closed_tenpai": {
+          "total_states": 351,
+          "n": 351,
+          "missing_danger": 0,
+          "mean_danger": 0.1938,
+          "p75_danger": 0.3233,
+          "push_count_danger_gt_5pct": 194,
+          "push_rate_danger_gt_5pct": 55.3,
+          "hard_push_count_danger_gt_10pct": 173,
+          "hard_push_rate_danger_gt_10pct": 49.3
+        },
+        "closed_1_shanten": {
+          "total_states": 1463,
+          "n": 1463,
+          "missing_danger": 0,
+          "mean_danger": 0.058,
+          "p75_danger": 0.058,
+          "push_count_danger_gt_5pct": 396,
+          "push_rate_danger_gt_5pct": 27.1,
+          "hard_push_count_danger_gt_10pct": 249,
+          "hard_push_rate_danger_gt_10pct": 17.0
+        },
+        "closed_2plus_shanten": {
+          "total_states": 2503,
+          "n": 2503,
+          "missing_danger": 0,
+          "mean_danger": 0.0295,
+          "p75_danger": 0.0169,
+          "push_count_danger_gt_5pct": 376,
+          "push_rate_danger_gt_5pct": 15.0,
+          "hard_push_count_danger_gt_10pct": 219,
+          "hard_push_rate_danger_gt_10pct": 8.7
+        },
+        "own_open_hand": {
+          "total_states": 1955,
+          "n": 1955,
+          "missing_danger": 0,
+          "mean_danger": 0.0949,
+          "p75_danger": 0.11,
+          "push_count_danger_gt_5pct": 694,
+          "push_rate_danger_gt_5pct": 35.5,
+          "hard_push_count_danger_gt_10pct": 512,
+          "hard_push_rate_danger_gt_10pct": 26.2
+        },
+        "own_riichi": {
+          "total_states": 443,
+          "n": 443,
+          "missing_danger": 0,
+          "mean_danger": 0.23,
+          "p75_danger": 0.3803,
+          "push_count_danger_gt_5pct": 271,
+          "push_rate_danger_gt_5pct": 61.2,
+          "hard_push_count_danger_gt_10pct": 237,
+          "hard_push_rate_danger_gt_10pct": 53.5
+        },
+        "closed_unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      }
+    },
+    "by_threat_and_max_opponent_tenpai_bucket": {
+      "quiet": {
+        "<30%": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 4,
+            "n": 4,
+            "missing_danger": 0,
+            "mean_danger": 0.0005,
+            "p75_danger": 0.0005,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": 0.0,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": 0.0
+          },
+          "closed_2plus_shanten": {
+            "total_states": 104,
+            "n": 104,
+            "missing_danger": 0,
+            "mean_danger": 0.0006,
+            "p75_danger": 0.0009,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": 0.0,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": 0.0
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "30-60%": {
+          "closed_tenpai": {
+            "total_states": 4,
+            "n": 4,
+            "missing_danger": 0,
+            "mean_danger": 0.0029,
+            "p75_danger": 0.0049,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": 0.0,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": 0.0
+          },
+          "closed_1_shanten": {
+            "total_states": 132,
+            "n": 132,
+            "missing_danger": 0,
+            "mean_danger": 0.0015,
+            "p75_danger": 0.0023,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": 0.0,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": 0.0
+          },
+          "closed_2plus_shanten": {
+            "total_states": 5241,
+            "n": 5241,
+            "missing_danger": 0,
+            "mean_danger": 0.0011,
+            "p75_danger": 0.0015,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": 0.0,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": 0.0
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        ">60%": {
+          "closed_tenpai": {
+            "total_states": 1604,
+            "n": 1604,
+            "missing_danger": 0,
+            "mean_danger": 0.0598,
+            "p75_danger": 0.0848,
+            "push_count_danger_gt_5pct": 704,
+            "push_rate_danger_gt_5pct": 43.9,
+            "hard_push_count_danger_gt_10pct": 319,
+            "hard_push_rate_danger_gt_10pct": 19.9
+          },
+          "closed_1_shanten": {
+            "total_states": 12272,
+            "n": 12272,
+            "missing_danger": 0,
+            "mean_danger": 0.0428,
+            "p75_danger": 0.0626,
+            "push_count_danger_gt_5pct": 3874,
+            "push_rate_danger_gt_5pct": 31.6,
+            "hard_push_count_danger_gt_10pct": 1468,
+            "hard_push_rate_danger_gt_10pct": 12.0
+          },
+          "closed_2plus_shanten": {
+            "total_states": 43761,
+            "n": 43761,
+            "missing_danger": 0,
+            "mean_danger": 0.0184,
+            "p75_danger": 0.0211,
+            "push_count_danger_gt_5pct": 4673,
+            "push_rate_danger_gt_5pct": 10.7,
+            "hard_push_count_danger_gt_10pct": 1340,
+            "hard_push_rate_danger_gt_10pct": 3.1
+          },
+          "own_open_hand": {
+            "total_states": 8937,
+            "n": 8937,
+            "missing_danger": 0,
+            "mean_danger": 0.0453,
+            "p75_danger": 0.0631,
+            "push_count_danger_gt_5pct": 2916,
+            "push_rate_danger_gt_5pct": 32.6,
+            "hard_push_count_danger_gt_10pct": 1113,
+            "hard_push_rate_danger_gt_10pct": 12.5
+          },
+          "own_riichi": {
+            "total_states": 2753,
+            "n": 2753,
+            "missing_danger": 0,
+            "mean_danger": 0.0606,
+            "p75_danger": 0.0898,
+            "push_count_danger_gt_5pct": 1254,
+            "push_rate_danger_gt_5pct": 45.6,
+            "hard_push_count_danger_gt_10pct": 567,
+            "hard_push_rate_danger_gt_10pct": 20.6
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "unknown": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        }
+      },
+      "1_meld_opponent_max": {
+        "<30%": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 1,
+            "n": 1,
+            "missing_danger": 0,
+            "mean_danger": 0.001,
+            "p75_danger": 0.001,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": 0.0,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": 0.0
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "30-60%": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 3,
+            "n": 3,
+            "missing_danger": 0,
+            "mean_danger": 0.003,
+            "p75_danger": 0.0048,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": 0.0,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": 0.0
+          },
+          "closed_2plus_shanten": {
+            "total_states": 27,
+            "n": 27,
+            "missing_danger": 0,
+            "mean_danger": 0.0044,
+            "p75_danger": 0.0075,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": 0.0,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": 0.0
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        ">60%": {
+          "closed_tenpai": {
+            "total_states": 1288,
+            "n": 1288,
+            "missing_danger": 0,
+            "mean_danger": 0.1191,
+            "p75_danger": 0.1703,
+            "push_count_danger_gt_5pct": 833,
+            "push_rate_danger_gt_5pct": 64.7,
+            "hard_push_count_danger_gt_10pct": 571,
+            "hard_push_rate_danger_gt_10pct": 44.3
+          },
+          "closed_1_shanten": {
+            "total_states": 7718,
+            "n": 7718,
+            "missing_danger": 0,
+            "mean_danger": 0.0798,
+            "p75_danger": 0.1165,
+            "push_count_danger_gt_5pct": 3924,
+            "push_rate_danger_gt_5pct": 50.8,
+            "hard_push_count_danger_gt_10pct": 2310,
+            "hard_push_rate_danger_gt_10pct": 29.9
+          },
+          "closed_2plus_shanten": {
+            "total_states": 13033,
+            "n": 13033,
+            "missing_danger": 0,
+            "mean_danger": 0.0515,
+            "p75_danger": 0.072,
+            "push_count_danger_gt_5pct": 4651,
+            "push_rate_danger_gt_5pct": 35.7,
+            "hard_push_count_danger_gt_10pct": 2112,
+            "hard_push_rate_danger_gt_10pct": 16.2
+          },
+          "own_open_hand": {
+            "total_states": 6000,
+            "n": 6000,
+            "missing_danger": 0,
+            "mean_danger": 0.0799,
+            "p75_danger": 0.1154,
+            "push_count_danger_gt_5pct": 3018,
+            "push_rate_danger_gt_5pct": 50.3,
+            "hard_push_count_danger_gt_10pct": 1747,
+            "hard_push_rate_danger_gt_10pct": 29.1
+          },
+          "own_riichi": {
+            "total_states": 2522,
+            "n": 2522,
+            "missing_danger": 0,
+            "mean_danger": 0.1032,
+            "p75_danger": 0.1502,
+            "push_count_danger_gt_5pct": 1407,
+            "push_rate_danger_gt_5pct": 55.8,
+            "hard_push_count_danger_gt_10pct": 967,
+            "hard_push_rate_danger_gt_10pct": 38.3
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "unknown": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        }
+      },
+      "2_meld_opponent": {
+        "<30%": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "30-60%": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        ">60%": {
+          "closed_tenpai": {
+            "total_states": 904,
+            "n": 904,
+            "missing_danger": 0,
+            "mean_danger": 0.1505,
+            "p75_danger": 0.2268,
+            "push_count_danger_gt_5pct": 588,
+            "push_rate_danger_gt_5pct": 65.0,
+            "hard_push_count_danger_gt_10pct": 444,
+            "hard_push_rate_danger_gt_10pct": 49.1
+          },
+          "closed_1_shanten": {
+            "total_states": 3972,
+            "n": 3972,
+            "missing_danger": 0,
+            "mean_danger": 0.0801,
+            "p75_danger": 0.1097,
+            "push_count_danger_gt_5pct": 1747,
+            "push_rate_danger_gt_5pct": 44.0,
+            "hard_push_count_danger_gt_10pct": 1084,
+            "hard_push_rate_danger_gt_10pct": 27.3
+          },
+          "closed_2plus_shanten": {
+            "total_states": 4993,
+            "n": 4993,
+            "missing_danger": 0,
+            "mean_danger": 0.0517,
+            "p75_danger": 0.0703,
+            "push_count_danger_gt_5pct": 1660,
+            "push_rate_danger_gt_5pct": 33.2,
+            "hard_push_count_danger_gt_10pct": 839,
+            "hard_push_rate_danger_gt_10pct": 16.8
+          },
+          "own_open_hand": {
+            "total_states": 3519,
+            "n": 3519,
+            "missing_danger": 0,
+            "mean_danger": 0.0904,
+            "p75_danger": 0.1225,
+            "push_count_danger_gt_5pct": 1652,
+            "push_rate_danger_gt_5pct": 46.9,
+            "hard_push_count_danger_gt_10pct": 1057,
+            "hard_push_rate_danger_gt_10pct": 30.0
+          },
+          "own_riichi": {
+            "total_states": 1327,
+            "n": 1327,
+            "missing_danger": 0,
+            "mean_danger": 0.1338,
+            "p75_danger": 0.1945,
+            "push_count_danger_gt_5pct": 783,
+            "push_rate_danger_gt_5pct": 59.0,
+            "hard_push_count_danger_gt_10pct": 568,
+            "hard_push_rate_danger_gt_10pct": 42.8
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "unknown": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        }
+      },
+      "3plus_meld_opponent": {
+        "<30%": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "30-60%": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        ">60%": {
+          "closed_tenpai": {
+            "total_states": 204,
+            "n": 204,
+            "missing_danger": 0,
+            "mean_danger": 0.1483,
+            "p75_danger": 0.2177,
+            "push_count_danger_gt_5pct": 103,
+            "push_rate_danger_gt_5pct": 50.5,
+            "hard_push_count_danger_gt_10pct": 84,
+            "hard_push_rate_danger_gt_10pct": 41.2
+          },
+          "closed_1_shanten": {
+            "total_states": 812,
+            "n": 812,
+            "missing_danger": 0,
+            "mean_danger": 0.0777,
+            "p75_danger": 0.0993,
+            "push_count_danger_gt_5pct": 310,
+            "push_rate_danger_gt_5pct": 38.2,
+            "hard_push_count_danger_gt_10pct": 202,
+            "hard_push_rate_danger_gt_10pct": 24.9
+          },
+          "closed_2plus_shanten": {
+            "total_states": 913,
+            "n": 913,
+            "missing_danger": 0,
+            "mean_danger": 0.0483,
+            "p75_danger": 0.0481,
+            "push_count_danger_gt_5pct": 224,
+            "push_rate_danger_gt_5pct": 24.5,
+            "hard_push_count_danger_gt_10pct": 116,
+            "hard_push_rate_danger_gt_10pct": 12.7
+          },
+          "own_open_hand": {
+            "total_states": 762,
+            "n": 762,
+            "missing_danger": 0,
+            "mean_danger": 0.1021,
+            "p75_danger": 0.1286,
+            "push_count_danger_gt_5pct": 352,
+            "push_rate_danger_gt_5pct": 46.2,
+            "hard_push_count_danger_gt_10pct": 237,
+            "hard_push_rate_danger_gt_10pct": 31.1
+          },
+          "own_riichi": {
+            "total_states": 324,
+            "n": 324,
+            "missing_danger": 0,
+            "mean_danger": 0.141,
+            "p75_danger": 0.2005,
+            "push_count_danger_gt_5pct": 163,
+            "push_rate_danger_gt_5pct": 50.3,
+            "hard_push_count_danger_gt_10pct": 118,
+            "hard_push_rate_danger_gt_10pct": 36.4
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "unknown": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        }
+      },
+      "single_riichi": {
+        "<30%": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "30-60%": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        ">60%": {
+          "closed_tenpai": {
+            "total_states": 1009,
+            "n": 1009,
+            "missing_danger": 0,
+            "mean_danger": 0.2512,
+            "p75_danger": 0.4422,
+            "push_count_danger_gt_5pct": 640,
+            "push_rate_danger_gt_5pct": 63.4,
+            "hard_push_count_danger_gt_10pct": 553,
+            "hard_push_rate_danger_gt_10pct": 54.8
+          },
+          "closed_1_shanten": {
+            "total_states": 4556,
+            "n": 4556,
+            "missing_danger": 0,
+            "mean_danger": 0.0895,
+            "p75_danger": 0.0937,
+            "push_count_danger_gt_5pct": 1624,
+            "push_rate_danger_gt_5pct": 35.6,
+            "hard_push_count_danger_gt_10pct": 1091,
+            "hard_push_rate_danger_gt_10pct": 23.9
+          },
+          "closed_2plus_shanten": {
+            "total_states": 6954,
+            "n": 6954,
+            "missing_danger": 0,
+            "mean_danger": 0.0386,
+            "p75_danger": 0.035,
+            "push_count_danger_gt_5pct": 1337,
+            "push_rate_danger_gt_5pct": 19.2,
+            "hard_push_count_danger_gt_10pct": 732,
+            "hard_push_rate_danger_gt_10pct": 10.5
+          },
+          "own_open_hand": {
+            "total_states": 5271,
+            "n": 5271,
+            "missing_danger": 0,
+            "mean_danger": 0.1197,
+            "p75_danger": 0.1537,
+            "push_count_danger_gt_5pct": 2218,
+            "push_rate_danger_gt_5pct": 42.1,
+            "hard_push_count_danger_gt_10pct": 1661,
+            "hard_push_rate_danger_gt_10pct": 31.5
+          },
+          "own_riichi": {
+            "total_states": 1591,
+            "n": 1591,
+            "missing_danger": 0,
+            "mean_danger": 0.2445,
+            "p75_danger": 0.4227,
+            "push_count_danger_gt_5pct": 983,
+            "push_rate_danger_gt_5pct": 61.8,
+            "hard_push_count_danger_gt_10pct": 847,
+            "hard_push_rate_danger_gt_10pct": 53.2
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "unknown": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        }
+      },
+      "riichi_plus_more": {
+        "<30%": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "30-60%": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        ">60%": {
+          "closed_tenpai": {
+            "total_states": 351,
+            "n": 351,
+            "missing_danger": 0,
+            "mean_danger": 0.1938,
+            "p75_danger": 0.3233,
+            "push_count_danger_gt_5pct": 194,
+            "push_rate_danger_gt_5pct": 55.3,
+            "hard_push_count_danger_gt_10pct": 173,
+            "hard_push_rate_danger_gt_10pct": 49.3
+          },
+          "closed_1_shanten": {
+            "total_states": 1463,
+            "n": 1463,
+            "missing_danger": 0,
+            "mean_danger": 0.058,
+            "p75_danger": 0.058,
+            "push_count_danger_gt_5pct": 396,
+            "push_rate_danger_gt_5pct": 27.1,
+            "hard_push_count_danger_gt_10pct": 249,
+            "hard_push_rate_danger_gt_10pct": 17.0
+          },
+          "closed_2plus_shanten": {
+            "total_states": 2503,
+            "n": 2503,
+            "missing_danger": 0,
+            "mean_danger": 0.0295,
+            "p75_danger": 0.0169,
+            "push_count_danger_gt_5pct": 376,
+            "push_rate_danger_gt_5pct": 15.0,
+            "hard_push_count_danger_gt_10pct": 219,
+            "hard_push_rate_danger_gt_10pct": 8.7
+          },
+          "own_open_hand": {
+            "total_states": 1955,
+            "n": 1955,
+            "missing_danger": 0,
+            "mean_danger": 0.0949,
+            "p75_danger": 0.11,
+            "push_count_danger_gt_5pct": 694,
+            "push_rate_danger_gt_5pct": 35.5,
+            "hard_push_count_danger_gt_10pct": 512,
+            "hard_push_rate_danger_gt_10pct": 26.2
+          },
+          "own_riichi": {
+            "total_states": 443,
+            "n": 443,
+            "missing_danger": 0,
+            "mean_danger": 0.23,
+            "p75_danger": 0.3803,
+            "push_count_danger_gt_5pct": 271,
+            "push_rate_danger_gt_5pct": 61.2,
+            "hard_push_count_danger_gt_10pct": 237,
+            "hard_push_rate_danger_gt_10pct": 53.5
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        },
+        "unknown": {
+          "closed_tenpai": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_1_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_2plus_shanten": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_open_hand": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "own_riichi": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          },
+          "closed_unknown": {
+            "total_states": 0,
+            "n": 0,
+            "missing_danger": 0,
+            "mean_danger": null,
+            "p75_danger": null,
+            "push_count_danger_gt_5pct": 0,
+            "push_rate_danger_gt_5pct": null,
+            "hard_push_count_danger_gt_10pct": 0,
+            "hard_push_rate_danger_gt_10pct": null
+          }
+        }
+      }
+    }
+  },
+  "open_hand_trigger": {
+    "scope": "no-riichi states where the max opponent has exactly 2 melds or 3+ melds",
+    "by_opponent_tenpai_decile": {
+      "0-10%": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      },
+      "10-20%": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      },
+      "20-30%": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      },
+      "30-40%": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      },
+      "40-50%": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      },
+      "50-60%": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      },
+      "60-70%": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      },
+      "70-80%": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      },
+      "80-90%": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      },
+      "90-100%": {
+        "total_states": 17730,
+        "n": 17730,
+        "missing_danger": 0,
+        "mean_danger": 0.0829,
+        "p75_danger": 0.1082,
+        "push_count_danger_gt_5pct": 7582,
+        "push_rate_danger_gt_5pct": 42.8,
+        "hard_push_count_danger_gt_10pct": 4749,
+        "hard_push_rate_danger_gt_10pct": 26.8
+      },
+      "unknown": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      }
+    },
+    "cumulative_at_or_above_tenpai_decile": {
+      "0-10%": {
+        "total_states": 17730,
+        "n": 17730,
+        "missing_danger": 0,
+        "mean_danger": 0.0829,
+        "p75_danger": 0.1082,
+        "push_count_danger_gt_5pct": 7582,
+        "push_rate_danger_gt_5pct": 42.8,
+        "hard_push_count_danger_gt_10pct": 4749,
+        "hard_push_rate_danger_gt_10pct": 26.8
+      },
+      "10-20%": {
+        "total_states": 17730,
+        "n": 17730,
+        "missing_danger": 0,
+        "mean_danger": 0.0829,
+        "p75_danger": 0.1082,
+        "push_count_danger_gt_5pct": 7582,
+        "push_rate_danger_gt_5pct": 42.8,
+        "hard_push_count_danger_gt_10pct": 4749,
+        "hard_push_rate_danger_gt_10pct": 26.8
+      },
+      "20-30%": {
+        "total_states": 17730,
+        "n": 17730,
+        "missing_danger": 0,
+        "mean_danger": 0.0829,
+        "p75_danger": 0.1082,
+        "push_count_danger_gt_5pct": 7582,
+        "push_rate_danger_gt_5pct": 42.8,
+        "hard_push_count_danger_gt_10pct": 4749,
+        "hard_push_rate_danger_gt_10pct": 26.8
+      },
+      "30-40%": {
+        "total_states": 17730,
+        "n": 17730,
+        "missing_danger": 0,
+        "mean_danger": 0.0829,
+        "p75_danger": 0.1082,
+        "push_count_danger_gt_5pct": 7582,
+        "push_rate_danger_gt_5pct": 42.8,
+        "hard_push_count_danger_gt_10pct": 4749,
+        "hard_push_rate_danger_gt_10pct": 26.8
+      },
+      "40-50%": {
+        "total_states": 17730,
+        "n": 17730,
+        "missing_danger": 0,
+        "mean_danger": 0.0829,
+        "p75_danger": 0.1082,
+        "push_count_danger_gt_5pct": 7582,
+        "push_rate_danger_gt_5pct": 42.8,
+        "hard_push_count_danger_gt_10pct": 4749,
+        "hard_push_rate_danger_gt_10pct": 26.8
+      },
+      "50-60%": {
+        "total_states": 17730,
+        "n": 17730,
+        "missing_danger": 0,
+        "mean_danger": 0.0829,
+        "p75_danger": 0.1082,
+        "push_count_danger_gt_5pct": 7582,
+        "push_rate_danger_gt_5pct": 42.8,
+        "hard_push_count_danger_gt_10pct": 4749,
+        "hard_push_rate_danger_gt_10pct": 26.8
+      },
+      "60-70%": {
+        "total_states": 17730,
+        "n": 17730,
+        "missing_danger": 0,
+        "mean_danger": 0.0829,
+        "p75_danger": 0.1082,
+        "push_count_danger_gt_5pct": 7582,
+        "push_rate_danger_gt_5pct": 42.8,
+        "hard_push_count_danger_gt_10pct": 4749,
+        "hard_push_rate_danger_gt_10pct": 26.8
+      },
+      "70-80%": {
+        "total_states": 17730,
+        "n": 17730,
+        "missing_danger": 0,
+        "mean_danger": 0.0829,
+        "p75_danger": 0.1082,
+        "push_count_danger_gt_5pct": 7582,
+        "push_rate_danger_gt_5pct": 42.8,
+        "hard_push_count_danger_gt_10pct": 4749,
+        "hard_push_rate_danger_gt_10pct": 26.8
+      },
+      "80-90%": {
+        "total_states": 17730,
+        "n": 17730,
+        "missing_danger": 0,
+        "mean_danger": 0.0829,
+        "p75_danger": 0.1082,
+        "push_count_danger_gt_5pct": 7582,
+        "push_rate_danger_gt_5pct": 42.8,
+        "hard_push_count_danger_gt_10pct": 4749,
+        "hard_push_rate_danger_gt_10pct": 26.8
+      },
+      "90-100%": {
+        "total_states": 17730,
+        "n": 17730,
+        "missing_danger": 0,
+        "mean_danger": 0.0829,
+        "p75_danger": 0.1082,
+        "push_count_danger_gt_5pct": 7582,
+        "push_rate_danger_gt_5pct": 42.8,
+        "hard_push_count_danger_gt_10pct": 4749,
+        "hard_push_rate_danger_gt_10pct": 26.8
+      }
+    },
+    "thresholds": {
+      "per_decile_first_below_50pct": {
+        "decile": "90-100%",
+        "n": 17730,
+        "push_rate_danger_gt_5pct": 42.8,
+        "min_n": 0
+      },
+      "per_decile_first_below_25pct": null,
+      "cumulative_first_below_50pct_min_n30": {
+        "estimate_at_least_decile": "0-10%",
+        "n": 17730,
+        "push_rate_danger_gt_5pct": 42.8,
+        "min_n": 30
+      },
+      "cumulative_first_below_25pct_min_n30": null,
+      "turn_proxy_first_below_50pct": {
+        "2": {
+          "turn_bucket": "7-12",
+          "n": 8529,
+          "push_rate_danger_gt_5pct": 44.1
+        },
+        "3+": {
+          "turn_bucket": "7-12",
+          "n": 1499,
+          "push_rate_danger_gt_5pct": 41.5
+        }
+      },
+      "turn_proxy_first_below_25pct": {
+        "2": null,
+        "3+": null
+      }
+    },
+    "human_proxy_by_meld_count_and_turn": {
+      "2": {
+        "1-6": {
+          "total_states": 1664,
+          "n": 1664,
+          "missing_danger": 0,
+          "mean_danger": 0.0833,
+          "p75_danger": 0.1212,
+          "push_count_danger_gt_5pct": 896,
+          "push_rate_danger_gt_5pct": 53.8,
+          "hard_push_count_danger_gt_10pct": 517,
+          "hard_push_rate_danger_gt_10pct": 31.1
+        },
+        "7-12": {
+          "total_states": 8529,
+          "n": 8529,
+          "missing_danger": 0,
+          "mean_danger": 0.0816,
+          "p75_danger": 0.1103,
+          "push_count_danger_gt_5pct": 3761,
+          "push_rate_danger_gt_5pct": 44.1,
+          "hard_push_count_danger_gt_10pct": 2316,
+          "hard_push_rate_danger_gt_10pct": 27.2
+        },
+        "13+": {
+          "total_states": 4522,
+          "n": 4522,
+          "missing_danger": 0,
+          "mean_danger": 0.0825,
+          "p75_danger": 0.1032,
+          "push_count_danger_gt_5pct": 1773,
+          "push_rate_danger_gt_5pct": 39.2,
+          "hard_push_count_danger_gt_10pct": 1159,
+          "hard_push_rate_danger_gt_10pct": 25.6
+        },
+        "unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      },
+      "3+": {
+        "1-6": {
+          "total_states": 111,
+          "n": 111,
+          "missing_danger": 0,
+          "mean_danger": 0.1062,
+          "p75_danger": 0.1487,
+          "push_count_danger_gt_5pct": 63,
+          "push_rate_danger_gt_5pct": 56.8,
+          "hard_push_count_danger_gt_10pct": 48,
+          "hard_push_rate_danger_gt_10pct": 43.2
+        },
+        "7-12": {
+          "total_states": 1499,
+          "n": 1499,
+          "missing_danger": 0,
+          "mean_danger": 0.0916,
+          "p75_danger": 0.1062,
+          "push_count_danger_gt_5pct": 622,
+          "push_rate_danger_gt_5pct": 41.5,
+          "hard_push_count_danger_gt_10pct": 395,
+          "hard_push_rate_danger_gt_10pct": 26.4
+        },
+        "13+": {
+          "total_states": 1405,
+          "n": 1405,
+          "missing_danger": 0,
+          "mean_danger": 0.0796,
+          "p75_danger": 0.0831,
+          "push_count_danger_gt_5pct": 467,
+          "push_rate_danger_gt_5pct": 33.2,
+          "hard_push_count_danger_gt_10pct": 314,
+          "hard_push_rate_danger_gt_10pct": 22.3
+        },
+        "unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      }
+    }
+  },
+  "vs_riichi": {
+    "scope": "states classified as single_riichi or riichi_plus_more",
+    "by_closed_shanten_and_tiles_left": {
+      "0": {
+        ">40": {
+          "total_states": 146,
+          "n": 146,
+          "missing_danger": 0,
+          "mean_danger": 0.3362,
+          "p75_danger": 0.5314,
+          "push_count_danger_gt_5pct": 106,
+          "push_rate_danger_gt_5pct": 72.6,
+          "hard_push_count_danger_gt_10pct": 98,
+          "hard_push_rate_danger_gt_10pct": 67.1
+        },
+        "40-21": {
+          "total_states": 674,
+          "n": 674,
+          "missing_danger": 0,
+          "mean_danger": 0.2537,
+          "p75_danger": 0.4387,
+          "push_count_danger_gt_5pct": 435,
+          "push_rate_danger_gt_5pct": 64.5,
+          "hard_push_count_danger_gt_10pct": 383,
+          "hard_push_rate_danger_gt_10pct": 56.8
+        },
+        "<=20": {
+          "total_states": 540,
+          "n": 540,
+          "missing_danger": 0,
+          "mean_danger": 0.1878,
+          "p75_danger": 0.2901,
+          "push_count_danger_gt_5pct": 293,
+          "push_rate_danger_gt_5pct": 54.3,
+          "hard_push_count_danger_gt_10pct": 245,
+          "hard_push_rate_danger_gt_10pct": 45.4
+        },
+        "unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      },
+      "1": {
+        ">40": {
+          "total_states": 939,
+          "n": 939,
+          "missing_danger": 0,
+          "mean_danger": 0.1429,
+          "p75_danger": 0.2013,
+          "push_count_danger_gt_5pct": 452,
+          "push_rate_danger_gt_5pct": 48.1,
+          "hard_push_count_danger_gt_10pct": 345,
+          "hard_push_rate_danger_gt_10pct": 36.7
+        },
+        "40-21": {
+          "total_states": 3312,
+          "n": 3312,
+          "missing_danger": 0,
+          "mean_danger": 0.085,
+          "p75_danger": 0.0889,
+          "push_count_danger_gt_5pct": 1164,
+          "push_rate_danger_gt_5pct": 35.1,
+          "hard_push_count_danger_gt_10pct": 765,
+          "hard_push_rate_danger_gt_10pct": 23.1
+        },
+        "<=20": {
+          "total_states": 1768,
+          "n": 1768,
+          "missing_danger": 0,
+          "mean_danger": 0.0436,
+          "p75_danger": 0.0443,
+          "push_count_danger_gt_5pct": 404,
+          "push_rate_danger_gt_5pct": 22.9,
+          "hard_push_count_danger_gt_10pct": 230,
+          "hard_push_rate_danger_gt_10pct": 13.0
+        },
+        "unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      },
+      "2": {
+        ">40": {
+          "total_states": 1378,
+          "n": 1378,
+          "missing_danger": 0,
+          "mean_danger": 0.0666,
+          "p75_danger": 0.0748,
+          "push_count_danger_gt_5pct": 432,
+          "push_rate_danger_gt_5pct": 31.3,
+          "hard_push_count_danger_gt_10pct": 267,
+          "hard_push_rate_danger_gt_10pct": 19.4
+        },
+        "40-21": {
+          "total_states": 2965,
+          "n": 2965,
+          "missing_danger": 0,
+          "mean_danger": 0.0379,
+          "p75_danger": 0.0349,
+          "push_count_danger_gt_5pct": 569,
+          "push_rate_danger_gt_5pct": 19.2,
+          "hard_push_count_danger_gt_10pct": 308,
+          "hard_push_rate_danger_gt_10pct": 10.4
+        },
+        "<=20": {
+          "total_states": 1693,
+          "n": 1693,
+          "missing_danger": 0,
+          "mean_danger": 0.0254,
+          "p75_danger": 0.0193,
+          "push_count_danger_gt_5pct": 227,
+          "push_rate_danger_gt_5pct": 13.4,
+          "hard_push_count_danger_gt_10pct": 124,
+          "hard_push_rate_danger_gt_10pct": 7.3
+        },
+        "unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      },
+      "3+": {
+        ">40": {
+          "total_states": 1101,
+          "n": 1101,
+          "missing_danger": 0,
+          "mean_danger": 0.0474,
+          "p75_danger": 0.0401,
+          "push_count_danger_gt_5pct": 241,
+          "push_rate_danger_gt_5pct": 21.9,
+          "hard_push_count_danger_gt_10pct": 148,
+          "hard_push_rate_danger_gt_10pct": 13.4
+        },
+        "40-21": {
+          "total_states": 1501,
+          "n": 1501,
+          "missing_danger": 0,
+          "mean_danger": 0.0207,
+          "p75_danger": 0.0162,
+          "push_count_danger_gt_5pct": 175,
+          "push_rate_danger_gt_5pct": 11.7,
+          "hard_push_count_danger_gt_10pct": 70,
+          "hard_push_rate_danger_gt_10pct": 4.7
+        },
+        "<=20": {
+          "total_states": 819,
+          "n": 819,
+          "missing_danger": 0,
+          "mean_danger": 0.0146,
+          "p75_danger": 0.0071,
+          "push_count_danger_gt_5pct": 69,
+          "push_rate_danger_gt_5pct": 8.4,
+          "hard_push_count_danger_gt_10pct": 34,
+          "hard_push_rate_danger_gt_10pct": 4.2
+        },
+        "unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      },
+      "unknown": {
+        ">40": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        },
+        "40-21": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        },
+        "<=20": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        },
+        "unknown": {
+          "total_states": 0,
+          "n": 0,
+          "missing_danger": 0,
+          "mean_danger": null,
+          "p75_danger": null,
+          "push_count_danger_gt_5pct": 0,
+          "push_rate_danger_gt_5pct": null,
+          "hard_push_count_danger_gt_10pct": 0,
+          "hard_push_rate_danger_gt_10pct": null
+        }
+      }
+    },
+    "by_closed_shanten": {
+      "0": {
+        "total_states": 1360,
+        "n": 1360,
+        "missing_danger": 0,
+        "mean_danger": 0.2364,
+        "p75_danger": 0.4086,
+        "push_count_danger_gt_5pct": 834,
+        "push_rate_danger_gt_5pct": 61.3,
+        "hard_push_count_danger_gt_10pct": 726,
+        "hard_push_rate_danger_gt_10pct": 53.4
+      },
+      "1": {
+        "total_states": 6019,
+        "n": 6019,
+        "missing_danger": 0,
+        "mean_danger": 0.0819,
+        "p75_danger": 0.0842,
+        "push_count_danger_gt_5pct": 2020,
+        "push_rate_danger_gt_5pct": 33.6,
+        "hard_push_count_danger_gt_10pct": 1340,
+        "hard_push_rate_danger_gt_10pct": 22.3
+      },
+      "2": {
+        "total_states": 6036,
+        "n": 6036,
+        "missing_danger": 0,
+        "mean_danger": 0.041,
+        "p75_danger": 0.0369,
+        "push_count_danger_gt_5pct": 1228,
+        "push_rate_danger_gt_5pct": 20.3,
+        "hard_push_count_danger_gt_10pct": 699,
+        "hard_push_rate_danger_gt_10pct": 11.6
+      },
+      "3+": {
+        "total_states": 3421,
+        "n": 3421,
+        "missing_danger": 0,
+        "mean_danger": 0.0278,
+        "p75_danger": 0.0195,
+        "push_count_danger_gt_5pct": 485,
+        "push_rate_danger_gt_5pct": 14.2,
+        "hard_push_count_danger_gt_10pct": 252,
+        "hard_push_rate_danger_gt_10pct": 7.4
+      },
+      "unknown": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      },
+      "own_open_hand": {
+        "total_states": 7226,
+        "n": 7226,
+        "missing_danger": 0,
+        "mean_danger": 0.113,
+        "p75_danger": 0.1394,
+        "push_count_danger_gt_5pct": 2912,
+        "push_rate_danger_gt_5pct": 40.3,
+        "hard_push_count_danger_gt_10pct": 2173,
+        "hard_push_rate_danger_gt_10pct": 30.1
+      },
+      "own_riichi": {
+        "total_states": 2034,
+        "n": 2034,
+        "missing_danger": 0,
+        "mean_danger": 0.2414,
+        "p75_danger": 0.4134,
+        "push_count_danger_gt_5pct": 1254,
+        "push_rate_danger_gt_5pct": 61.7,
+        "hard_push_count_danger_gt_10pct": 1084,
+        "hard_push_rate_danger_gt_10pct": 53.3
+      },
+      "closed_unknown": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      }
+    },
+    "by_tiles_left": {
+      ">40": {
+        "total_states": 4494,
+        "n": 4494,
+        "missing_danger": 0,
+        "mean_danger": 0.1061,
+        "p75_danger": 0.1159,
+        "push_count_danger_gt_5pct": 1683,
+        "push_rate_danger_gt_5pct": 37.4,
+        "hard_push_count_danger_gt_10pct": 1211,
+        "hard_push_rate_danger_gt_10pct": 26.9
+      },
+      "40-21": {
+        "total_states": 12859,
+        "n": 12859,
+        "missing_danger": 0,
+        "mean_danger": 0.0976,
+        "p75_danger": 0.0975,
+        "push_count_danger_gt_5pct": 4433,
+        "push_rate_danger_gt_5pct": 34.5,
+        "hard_push_count_danger_gt_10pct": 3169,
+        "hard_push_rate_danger_gt_10pct": 24.6
+      },
+      "<=20": {
+        "total_states": 8743,
+        "n": 8743,
+        "missing_danger": 0,
+        "mean_danger": 0.0838,
+        "p75_danger": 0.0749,
+        "push_count_danger_gt_5pct": 2617,
+        "push_rate_danger_gt_5pct": 29.9,
+        "hard_push_count_danger_gt_10pct": 1894,
+        "hard_push_rate_danger_gt_10pct": 21.7
+      },
+      "unknown": {
+        "total_states": 0,
+        "n": 0,
+        "missing_danger": 0,
+        "mean_danger": null,
+        "p75_danger": null,
+        "push_count_danger_gt_5pct": 0,
+        "push_rate_danger_gt_5pct": null,
+        "hard_push_count_danger_gt_10pct": 0,
+        "hard_push_rate_danger_gt_10pct": null
+      }
+    }
+  },
+  "immediate_reaction_after_riichi": {
+    "by_own_shanten": {
+      "0": {
+        "n": 371,
+        "genbutsu_count": 121,
+        "genbutsu_rate": 32.6
+      },
+      "1": {
+        "n": 1792,
+        "genbutsu_count": 995,
+        "genbutsu_rate": 55.5
+      },
+      "2": {
+        "n": 1433,
+        "genbutsu_count": 921,
+        "genbutsu_rate": 64.3
+      },
+      "3+": {
+        "n": 664,
+        "genbutsu_count": 452,
+        "genbutsu_rate": 68.1
+      },
+      "unknown": {
+        "n": 0,
+        "genbutsu_count": 0,
+        "genbutsu_rate": null
+      },
+      "own_open_hand": {
+        "n": 1836,
+        "genbutsu_count": 831,
+        "genbutsu_rate": 45.3
+      },
+      "own_riichi": {
+        "n": 474,
+        "genbutsu_count": 119,
+        "genbutsu_rate": 25.1
+      },
+      "closed_unknown": {
+        "n": 0,
+        "genbutsu_count": 0,
+        "genbutsu_rate": null
+      }
+    },
+    "by_general_own_state": {
+      "closed_tenpai": {
+        "n": 371,
+        "genbutsu_count": 121,
+        "genbutsu_rate": 32.6
+      },
+      "closed_1_shanten": {
+        "n": 1792,
+        "genbutsu_count": 995,
+        "genbutsu_rate": 55.5
+      },
+      "closed_2plus_shanten": {
+        "n": 2097,
+        "genbutsu_count": 1373,
+        "genbutsu_rate": 65.5
+      },
+      "own_open_hand": {
+        "n": 1836,
+        "genbutsu_count": 831,
+        "genbutsu_rate": 45.3
+      },
+      "own_riichi": {
+        "n": 474,
+        "genbutsu_count": 119,
+        "genbutsu_rate": 25.1
+      },
+      "closed_unknown": {
+        "n": 0,
+        "genbutsu_count": 0,
+        "genbutsu_rate": null
+      }
+    }
+  },
+  "proposed_rules": [
+    "Against a 2-meld open hand, start pricing defense by the second row: turn 7-12 push rate was 44.1% (n=8529), and turn 13+ was 39.2% (n=4522).",
+    "Against 3+ melds, treat the hand as a live threat immediately; LuckyJ's >5% danger push rate was 56.8% (n=111) in the earliest populated bucket.",
+    "With an engine tenpai read on 2+ melds, the first decile where push fell below 50% was 90-100% (42.8%, n=17730).",
+    "Versus riichi, tenpai is the main license to continue: closed tenpai pushed 61.3% (n=1360), while closed 2-shanten pushed 20.3% (n=6036).",
+    "Versus riichi, downgrade sharply outside tenpai: closed 1-shanten pushed 33.6% (n=6019), and closed 3+ shanten pushed 14.2% (n=3421).",
+    "In the last 20 tiles versus riichi, don't chase from far away: 1-shanten pushed 22.9% (n=1768), 2-shanten pushed 13.4% (n=1693).",
+    "First discard after an opponent riichi should usually be genbutsu unless the hand is real: tenpai genbutsu 32.6% (n=371), 1-shanten 55.5% (n=1792), 2-shanten 64.3% (n=1433)."
+  ]
+}

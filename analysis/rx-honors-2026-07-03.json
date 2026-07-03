@@ -1,0 +1,1473 @@
+{
+  "metadata": {
+    "generated_at": "2026-07-03T00:57:53.900885+00:00",
+    "repo_root": "/Users/honvl/LuckyJ",
+    "source_rows": 1256,
+    "unique_report_rows_analyzed": 1255,
+    "duplicate_report_rows_skipped": [
+      {
+        "report_id": "c045846868d7637fe2878e8c8326ccb44afd66e22cd926fbc900650abef68831v2_2",
+        "kept_idx": 1100,
+        "kept_actor": 0,
+        "skipped_idx": 1101,
+        "skipped_actor": 1
+      }
+    ],
+    "reports_processed": 1255,
+    "kyoku_processed": 13054,
+    "kyoku_skipped_malformed": 0,
+    "luckyj_decisions_processed": 147322,
+    "cleanup_records": 26571
+  },
+  "definitions": {
+    "turn_number": "For LuckyJ, len(discards[LuckyJ]) + 1 at the decision state, matching scripts/build_point_examples.py replay timing.",
+    "yakuhai": "Dragons P/F/C plus round wind (bakaze) plus LuckyJ seat wind, where seat wind = WINDS[(seat - oya) % 4] and WINDS=[E,S,W,N].",
+    "value_wind": "A wind that is LuckyJ's round wind and/or seat wind; if round wind equals seat wind it is counted once.",
+    "guest_wind": "A wind that is neither round wind nor LuckyJ's seat wind.",
+    "lone_cleanup_population": "Honor tile types held exactly once in LuckyJ's starting hand; starting pairs/triples are excluded.",
+    "paired_before_cut": "LuckyJ drew another copy of that same honor before the first recorded decision discard of the tile.",
+    "opponent_open_context": "At discard time, no_opponent_open means total opponent meld count is 0; some_opponent_open means total opponent meld count is 1+ using the same meld/open_melds replay as build_point_examples.py.",
+    "visible_copies_for_matrix": "Copies outside LuckyJ's concealed hand: opponent rivers, all public melds, and current dora indicators. LuckyJ's own river is excluded. Counts are capped at 3.",
+    "threat_level": "riichi if any opponent has reached; otherwise open_threat if any opponent has 2+ melds; otherwise none.",
+    "stop_matching_opportunity": "Every non-riichi LuckyJ tsumo discard decision, for each honor tile type LuckyJ holds exactly one copy of before discarding.",
+    "bonus_live_honor_draw": "After turn 12, non-riichi LuckyJ tsumo decisions where LuckyJ drew an honor with 0-1 visible copies outside hand while at least one opponent riichi was active.",
+    "percentiles": "p25/p75 use nearest-rank percentiles over integer discard turns; median uses the standard median."
+  },
+  "lone_yakuhai_cleanup_timing": {
+    "summary_by_kind_and_opponent_open": {
+      "dragon": {
+        "n_start_singletons": 11391,
+        "discard_turn_all": {
+          "n": 9408,
+          "p25": 3,
+          "median": 4,
+          "p75": 6,
+          "min": 1,
+          "max": 19
+        },
+        "discarded_pct": {
+          "count": 9408,
+          "n": 11391,
+          "pct": 82.6
+        },
+        "never_cut_pct": {
+          "count": 1983,
+          "n": 11391,
+          "pct": 17.4
+        },
+        "paired_before_cut_pct": {
+          "count": 1377,
+          "n": 11391,
+          "pct": 12.1
+        },
+        "outcomes": {
+          "discarded_after_pair": {
+            "count": 276,
+            "n": 11391,
+            "pct": 2.4
+          },
+          "discarded_lone": {
+            "count": 9132,
+            "n": 11391,
+            "pct": 80.2
+          },
+          "kept_to_end": {
+            "count": 882,
+            "n": 11391,
+            "pct": 7.7
+          },
+          "paired_up_later": {
+            "count": 1101,
+            "n": 11391,
+            "pct": 9.7
+          }
+        },
+        "by_discard_opponent_open_context": {
+          "no_opponent_open": {
+            "n_start_singletons": 11391,
+            "n_discarded_in_context": 6734,
+            "discard_turn": {
+              "n": 6734,
+              "p25": 2,
+              "median": 3,
+              "p75": 5,
+              "min": 1,
+              "max": 18
+            },
+            "discarded_here_pct_of_start_singletons": {
+              "count": 6734,
+              "n": 11391,
+              "pct": 59.1
+            },
+            "riichi_at_discard_pct": {
+              "count": 552,
+              "n": 6734,
+              "pct": 8.2
+            }
+          },
+          "some_opponent_open": {
+            "n_start_singletons": 11391,
+            "n_discarded_in_context": 2674,
+            "discard_turn": {
+              "n": 2674,
+              "p25": 4,
+              "median": 5,
+              "p75": 8,
+              "min": 1,
+              "max": 19
+            },
+            "discarded_here_pct_of_start_singletons": {
+              "count": 2674,
+              "n": 11391,
+              "pct": 23.5
+            },
+            "riichi_at_discard_pct": {
+              "count": 346,
+              "n": 2674,
+              "pct": 12.9
+            }
+          }
+        }
+      },
+      "value_wind": {
+        "n_start_singletons": 6649,
+        "discard_turn_all": {
+          "n": 5552,
+          "p25": 2,
+          "median": 4,
+          "p75": 6,
+          "min": 1,
+          "max": 18
+        },
+        "discarded_pct": {
+          "count": 5552,
+          "n": 6649,
+          "pct": 83.5
+        },
+        "never_cut_pct": {
+          "count": 1097,
+          "n": 6649,
+          "pct": 16.5
+        },
+        "paired_before_cut_pct": {
+          "count": 742,
+          "n": 6649,
+          "pct": 11.2
+        },
+        "outcomes": {
+          "discarded_after_pair": {
+            "count": 162,
+            "n": 6649,
+            "pct": 2.4
+          },
+          "discarded_lone": {
+            "count": 5390,
+            "n": 6649,
+            "pct": 81.1
+          },
+          "kept_to_end": {
+            "count": 517,
+            "n": 6649,
+            "pct": 7.8
+          },
+          "paired_up_later": {
+            "count": 580,
+            "n": 6649,
+            "pct": 8.7
+          }
+        },
+        "by_discard_opponent_open_context": {
+          "no_opponent_open": {
+            "n_start_singletons": 6649,
+            "n_discarded_in_context": 3879,
+            "discard_turn": {
+              "n": 3879,
+              "p25": 2,
+              "median": 3,
+              "p75": 5,
+              "min": 1,
+              "max": 18
+            },
+            "discarded_here_pct_of_start_singletons": {
+              "count": 3879,
+              "n": 6649,
+              "pct": 58.3
+            },
+            "riichi_at_discard_pct": {
+              "count": 345,
+              "n": 3879,
+              "pct": 8.9
+            }
+          },
+          "some_opponent_open": {
+            "n_start_singletons": 6649,
+            "n_discarded_in_context": 1673,
+            "discard_turn": {
+              "n": 1673,
+              "p25": 4,
+              "median": 6,
+              "p75": 8,
+              "min": 1,
+              "max": 18
+            },
+            "discarded_here_pct_of_start_singletons": {
+              "count": 1673,
+              "n": 6649,
+              "pct": 25.2
+            },
+            "riichi_at_discard_pct": {
+              "count": 209,
+              "n": 1673,
+              "pct": 12.5
+            }
+          }
+        }
+      }
+    }
+  },
+  "guest_wind_cleanup": {
+    "n_start_singletons": 8531,
+    "discard_turn_all": {
+      "n": 7838,
+      "p25": 1,
+      "median": 1,
+      "p75": 3,
+      "min": 1,
+      "max": 19
+    },
+    "discarded_pct": {
+      "count": 7838,
+      "n": 8531,
+      "pct": 91.9
+    },
+    "never_cut_pct": {
+      "count": 693,
+      "n": 8531,
+      "pct": 8.1
+    },
+    "paired_before_cut_pct": {
+      "count": 514,
+      "n": 8531,
+      "pct": 6.0
+    },
+    "kept_past_turn6_pct": {
+      "count": 1236,
+      "n": 8358,
+      "pct": 14.8
+    },
+    "kept_past_turn6_denominator_note": "Denominator excludes hands that ended before LuckyJ either cut the guest wind by turn 6 or completed a turn-6 discard decision.",
+    "outcomes": {
+      "discarded_after_pair": {
+        "count": 188,
+        "n": 8531,
+        "pct": 2.2
+      },
+      "discarded_lone": {
+        "count": 7650,
+        "n": 8531,
+        "pct": 89.7
+      },
+      "kept_to_end": {
+        "count": 367,
+        "n": 8531,
+        "pct": 4.3
+      },
+      "paired_up_later": {
+        "count": 326,
+        "n": 8531,
+        "pct": 3.8
+      }
+    },
+    "by_discard_opponent_open_context": {
+      "no_opponent_open": {
+        "n_start_singletons": 8531,
+        "n_discarded_in_context": 6872,
+        "discard_turn": {
+          "n": 6872,
+          "p25": 1,
+          "median": 1,
+          "p75": 2,
+          "min": 1,
+          "max": 17
+        },
+        "discarded_here_pct_of_start_singletons": {
+          "count": 6872,
+          "n": 8531,
+          "pct": 80.6
+        }
+      },
+      "some_opponent_open": {
+        "n_start_singletons": 8531,
+        "n_discarded_in_context": 966,
+        "discard_turn": {
+          "n": 966,
+          "p25": 3,
+          "median": 5,
+          "p75": 8,
+          "min": 1,
+          "max": 19
+        },
+        "discarded_here_pct_of_start_singletons": {
+          "count": 966,
+          "n": 8531,
+          "pct": 11.3
+        }
+      }
+    }
+  },
+  "stop_matching_honors_matrix": {
+    "cells": [
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 0,
+        "threat_level": "none",
+        "n": 51550,
+        "discard_n": 10227,
+        "hold_n": 41323,
+        "discard_rate_pct": 19.8
+      },
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 0,
+        "threat_level": "open_threat",
+        "n": 317,
+        "discard_n": 91,
+        "hold_n": 226,
+        "discard_rate_pct": 28.7
+      },
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 0,
+        "threat_level": "riichi",
+        "n": 244,
+        "discard_n": 35,
+        "hold_n": 209,
+        "discard_rate_pct": 14.3
+      },
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 1,
+        "threat_level": "none",
+        "n": 13283,
+        "discard_n": 3911,
+        "hold_n": 9372,
+        "discard_rate_pct": 29.4
+      },
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 1,
+        "threat_level": "open_threat",
+        "n": 138,
+        "discard_n": 34,
+        "hold_n": 104,
+        "discard_rate_pct": 24.6
+      },
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 1,
+        "threat_level": "riichi",
+        "n": 84,
+        "discard_n": 37,
+        "hold_n": 47,
+        "discard_rate_pct": 44.0
+      },
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 2,
+        "threat_level": "none",
+        "n": 2112,
+        "discard_n": 1085,
+        "hold_n": 1027,
+        "discard_rate_pct": 51.4
+      },
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 2,
+        "threat_level": "open_threat",
+        "n": 25,
+        "discard_n": 7,
+        "hold_n": 18,
+        "discard_rate_pct": 28.0
+      },
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 2,
+        "threat_level": "riichi",
+        "n": 23,
+        "discard_n": 13,
+        "hold_n": 10,
+        "discard_rate_pct": 56.5
+      },
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 3,
+        "threat_level": "none",
+        "n": 365,
+        "discard_n": 201,
+        "hold_n": 164,
+        "discard_rate_pct": 55.1
+      },
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 3,
+        "threat_level": "open_threat",
+        "n": 37,
+        "discard_n": 8,
+        "hold_n": 29,
+        "discard_rate_pct": 21.6
+      },
+      {
+        "turn_bucket": "1-3",
+        "visible_copies": 3,
+        "threat_level": "riichi",
+        "n": 4,
+        "discard_n": 1,
+        "hold_n": 3,
+        "discard_rate_pct": 25.0
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 0,
+        "threat_level": "none",
+        "n": 15388,
+        "discard_n": 5072,
+        "hold_n": 10316,
+        "discard_rate_pct": 33.0
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 0,
+        "threat_level": "open_threat",
+        "n": 987,
+        "discard_n": 295,
+        "hold_n": 692,
+        "discard_rate_pct": 29.9
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 0,
+        "threat_level": "riichi",
+        "n": 1117,
+        "discard_n": 130,
+        "hold_n": 987,
+        "discard_rate_pct": 11.6
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 1,
+        "threat_level": "none",
+        "n": 13900,
+        "discard_n": 3164,
+        "hold_n": 10736,
+        "discard_rate_pct": 22.8
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 1,
+        "threat_level": "open_threat",
+        "n": 991,
+        "discard_n": 341,
+        "hold_n": 650,
+        "discard_rate_pct": 34.4
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 1,
+        "threat_level": "riichi",
+        "n": 854,
+        "discard_n": 309,
+        "hold_n": 545,
+        "discard_rate_pct": 36.2
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 2,
+        "threat_level": "none",
+        "n": 4603,
+        "discard_n": 1101,
+        "hold_n": 3502,
+        "discard_rate_pct": 23.9
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 2,
+        "threat_level": "open_threat",
+        "n": 366,
+        "discard_n": 90,
+        "hold_n": 276,
+        "discard_rate_pct": 24.6
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 2,
+        "threat_level": "riichi",
+        "n": 314,
+        "discard_n": 148,
+        "hold_n": 166,
+        "discard_rate_pct": 47.1
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 3,
+        "threat_level": "none",
+        "n": 851,
+        "discard_n": 228,
+        "hold_n": 623,
+        "discard_rate_pct": 26.8
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 3,
+        "threat_level": "open_threat",
+        "n": 258,
+        "discard_n": 65,
+        "hold_n": 193,
+        "discard_rate_pct": 25.2
+      },
+      {
+        "turn_bucket": "4-6",
+        "visible_copies": 3,
+        "threat_level": "riichi",
+        "n": 63,
+        "discard_n": 35,
+        "hold_n": 28,
+        "discard_rate_pct": 55.6
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 0,
+        "threat_level": "none",
+        "n": 3672,
+        "discard_n": 1404,
+        "hold_n": 2268,
+        "discard_rate_pct": 38.2
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 0,
+        "threat_level": "open_threat",
+        "n": 1075,
+        "discard_n": 193,
+        "hold_n": 882,
+        "discard_rate_pct": 18.0
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 0,
+        "threat_level": "riichi",
+        "n": 1483,
+        "discard_n": 212,
+        "hold_n": 1271,
+        "discard_rate_pct": 14.3
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 1,
+        "threat_level": "none",
+        "n": 6490,
+        "discard_n": 2073,
+        "hold_n": 4417,
+        "discard_rate_pct": 31.9
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 1,
+        "threat_level": "open_threat",
+        "n": 1291,
+        "discard_n": 523,
+        "hold_n": 768,
+        "discard_rate_pct": 40.5
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 1,
+        "threat_level": "riichi",
+        "n": 1955,
+        "discard_n": 680,
+        "hold_n": 1275,
+        "discard_rate_pct": 34.8
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 2,
+        "threat_level": "none",
+        "n": 4613,
+        "discard_n": 1042,
+        "hold_n": 3571,
+        "discard_rate_pct": 22.6
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 2,
+        "threat_level": "open_threat",
+        "n": 824,
+        "discard_n": 299,
+        "hold_n": 525,
+        "discard_rate_pct": 36.3
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 2,
+        "threat_level": "riichi",
+        "n": 1123,
+        "discard_n": 557,
+        "hold_n": 566,
+        "discard_rate_pct": 49.6
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 3,
+        "threat_level": "none",
+        "n": 1038,
+        "discard_n": 237,
+        "hold_n": 801,
+        "discard_rate_pct": 22.8
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 3,
+        "threat_level": "open_threat",
+        "n": 384,
+        "discard_n": 133,
+        "hold_n": 251,
+        "discard_rate_pct": 34.6
+      },
+      {
+        "turn_bucket": "7-9",
+        "visible_copies": 3,
+        "threat_level": "riichi",
+        "n": 279,
+        "discard_n": 139,
+        "hold_n": 140,
+        "discard_rate_pct": 49.8
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 0,
+        "threat_level": "none",
+        "n": 990,
+        "discard_n": 350,
+        "hold_n": 640,
+        "discard_rate_pct": 35.4
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 0,
+        "threat_level": "open_threat",
+        "n": 798,
+        "discard_n": 104,
+        "hold_n": 694,
+        "discard_rate_pct": 13.0
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 0,
+        "threat_level": "riichi",
+        "n": 1350,
+        "discard_n": 186,
+        "hold_n": 1164,
+        "discard_rate_pct": 13.8
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 1,
+        "threat_level": "none",
+        "n": 1967,
+        "discard_n": 805,
+        "hold_n": 1162,
+        "discard_rate_pct": 40.9
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 1,
+        "threat_level": "open_threat",
+        "n": 827,
+        "discard_n": 347,
+        "hold_n": 480,
+        "discard_rate_pct": 42.0
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 1,
+        "threat_level": "riichi",
+        "n": 1886,
+        "discard_n": 703,
+        "hold_n": 1183,
+        "discard_rate_pct": 37.3
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 2,
+        "threat_level": "none",
+        "n": 2398,
+        "discard_n": 715,
+        "hold_n": 1683,
+        "discard_rate_pct": 29.8
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 2,
+        "threat_level": "open_threat",
+        "n": 708,
+        "discard_n": 349,
+        "hold_n": 359,
+        "discard_rate_pct": 49.3
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 2,
+        "threat_level": "riichi",
+        "n": 1630,
+        "discard_n": 858,
+        "hold_n": 772,
+        "discard_rate_pct": 52.6
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 3,
+        "threat_level": "none",
+        "n": 817,
+        "discard_n": 230,
+        "hold_n": 587,
+        "discard_rate_pct": 28.2
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 3,
+        "threat_level": "open_threat",
+        "n": 359,
+        "discard_n": 153,
+        "hold_n": 206,
+        "discard_rate_pct": 42.6
+      },
+      {
+        "turn_bucket": "10-12",
+        "visible_copies": 3,
+        "threat_level": "riichi",
+        "n": 477,
+        "discard_n": 293,
+        "hold_n": 184,
+        "discard_rate_pct": 61.4
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 0,
+        "threat_level": "none",
+        "n": 445,
+        "discard_n": 104,
+        "hold_n": 341,
+        "discard_rate_pct": 23.4
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 0,
+        "threat_level": "open_threat",
+        "n": 735,
+        "discard_n": 50,
+        "hold_n": 685,
+        "discard_rate_pct": 6.8
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 0,
+        "threat_level": "riichi",
+        "n": 1421,
+        "discard_n": 131,
+        "hold_n": 1290,
+        "discard_rate_pct": 9.2
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 1,
+        "threat_level": "none",
+        "n": 602,
+        "discard_n": 310,
+        "hold_n": 292,
+        "discard_rate_pct": 51.5
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 1,
+        "threat_level": "open_threat",
+        "n": 604,
+        "discard_n": 210,
+        "hold_n": 394,
+        "discard_rate_pct": 34.8
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 1,
+        "threat_level": "riichi",
+        "n": 1729,
+        "discard_n": 630,
+        "hold_n": 1099,
+        "discard_rate_pct": 36.4
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 2,
+        "threat_level": "none",
+        "n": 948,
+        "discard_n": 491,
+        "hold_n": 457,
+        "discard_rate_pct": 51.8
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 2,
+        "threat_level": "open_threat",
+        "n": 546,
+        "discard_n": 350,
+        "hold_n": 196,
+        "discard_rate_pct": 64.1
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 2,
+        "threat_level": "riichi",
+        "n": 1601,
+        "discard_n": 990,
+        "hold_n": 611,
+        "discard_rate_pct": 61.8
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 3,
+        "threat_level": "none",
+        "n": 503,
+        "discard_n": 270,
+        "hold_n": 233,
+        "discard_rate_pct": 53.7
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 3,
+        "threat_level": "open_threat",
+        "n": 313,
+        "discard_n": 208,
+        "hold_n": 105,
+        "discard_rate_pct": 66.5
+      },
+      {
+        "turn_bucket": "13+",
+        "visible_copies": 3,
+        "threat_level": "riichi",
+        "n": 580,
+        "discard_n": 413,
+        "hold_n": 167,
+        "discard_rate_pct": 71.2
+      }
+    ],
+    "nested": {
+      "1-3": {
+        "0": {
+          "none": {
+            "turn_bucket": "1-3",
+            "visible_copies": 0,
+            "threat_level": "none",
+            "n": 51550,
+            "discard_n": 10227,
+            "hold_n": 41323,
+            "discard_rate_pct": 19.8
+          },
+          "open_threat": {
+            "turn_bucket": "1-3",
+            "visible_copies": 0,
+            "threat_level": "open_threat",
+            "n": 317,
+            "discard_n": 91,
+            "hold_n": 226,
+            "discard_rate_pct": 28.7
+          },
+          "riichi": {
+            "turn_bucket": "1-3",
+            "visible_copies": 0,
+            "threat_level": "riichi",
+            "n": 244,
+            "discard_n": 35,
+            "hold_n": 209,
+            "discard_rate_pct": 14.3
+          }
+        },
+        "1": {
+          "none": {
+            "turn_bucket": "1-3",
+            "visible_copies": 1,
+            "threat_level": "none",
+            "n": 13283,
+            "discard_n": 3911,
+            "hold_n": 9372,
+            "discard_rate_pct": 29.4
+          },
+          "open_threat": {
+            "turn_bucket": "1-3",
+            "visible_copies": 1,
+            "threat_level": "open_threat",
+            "n": 138,
+            "discard_n": 34,
+            "hold_n": 104,
+            "discard_rate_pct": 24.6
+          },
+          "riichi": {
+            "turn_bucket": "1-3",
+            "visible_copies": 1,
+            "threat_level": "riichi",
+            "n": 84,
+            "discard_n": 37,
+            "hold_n": 47,
+            "discard_rate_pct": 44.0
+          }
+        },
+        "2": {
+          "none": {
+            "turn_bucket": "1-3",
+            "visible_copies": 2,
+            "threat_level": "none",
+            "n": 2112,
+            "discard_n": 1085,
+            "hold_n": 1027,
+            "discard_rate_pct": 51.4
+          },
+          "open_threat": {
+            "turn_bucket": "1-3",
+            "visible_copies": 2,
+            "threat_level": "open_threat",
+            "n": 25,
+            "discard_n": 7,
+            "hold_n": 18,
+            "discard_rate_pct": 28.0
+          },
+          "riichi": {
+            "turn_bucket": "1-3",
+            "visible_copies": 2,
+            "threat_level": "riichi",
+            "n": 23,
+            "discard_n": 13,
+            "hold_n": 10,
+            "discard_rate_pct": 56.5
+          }
+        },
+        "3": {
+          "none": {
+            "turn_bucket": "1-3",
+            "visible_copies": 3,
+            "threat_level": "none",
+            "n": 365,
+            "discard_n": 201,
+            "hold_n": 164,
+            "discard_rate_pct": 55.1
+          },
+          "open_threat": {
+            "turn_bucket": "1-3",
+            "visible_copies": 3,
+            "threat_level": "open_threat",
+            "n": 37,
+            "discard_n": 8,
+            "hold_n": 29,
+            "discard_rate_pct": 21.6
+          },
+          "riichi": {
+            "turn_bucket": "1-3",
+            "visible_copies": 3,
+            "threat_level": "riichi",
+            "n": 4,
+            "discard_n": 1,
+            "hold_n": 3,
+            "discard_rate_pct": 25.0
+          }
+        }
+      },
+      "4-6": {
+        "0": {
+          "none": {
+            "turn_bucket": "4-6",
+            "visible_copies": 0,
+            "threat_level": "none",
+            "n": 15388,
+            "discard_n": 5072,
+            "hold_n": 10316,
+            "discard_rate_pct": 33.0
+          },
+          "open_threat": {
+            "turn_bucket": "4-6",
+            "visible_copies": 0,
+            "threat_level": "open_threat",
+            "n": 987,
+            "discard_n": 295,
+            "hold_n": 692,
+            "discard_rate_pct": 29.9
+          },
+          "riichi": {
+            "turn_bucket": "4-6",
+            "visible_copies": 0,
+            "threat_level": "riichi",
+            "n": 1117,
+            "discard_n": 130,
+            "hold_n": 987,
+            "discard_rate_pct": 11.6
+          }
+        },
+        "1": {
+          "none": {
+            "turn_bucket": "4-6",
+            "visible_copies": 1,
+            "threat_level": "none",
+            "n": 13900,
+            "discard_n": 3164,
+            "hold_n": 10736,
+            "discard_rate_pct": 22.8
+          },
+          "open_threat": {
+            "turn_bucket": "4-6",
+            "visible_copies": 1,
+            "threat_level": "open_threat",
+            "n": 991,
+            "discard_n": 341,
+            "hold_n": 650,
+            "discard_rate_pct": 34.4
+          },
+          "riichi": {
+            "turn_bucket": "4-6",
+            "visible_copies": 1,
+            "threat_level": "riichi",
+            "n": 854,
+            "discard_n": 309,
+            "hold_n": 545,
+            "discard_rate_pct": 36.2
+          }
+        },
+        "2": {
+          "none": {
+            "turn_bucket": "4-6",
+            "visible_copies": 2,
+            "threat_level": "none",
+            "n": 4603,
+            "discard_n": 1101,
+            "hold_n": 3502,
+            "discard_rate_pct": 23.9
+          },
+          "open_threat": {
+            "turn_bucket": "4-6",
+            "visible_copies": 2,
+            "threat_level": "open_threat",
+            "n": 366,
+            "discard_n": 90,
+            "hold_n": 276,
+            "discard_rate_pct": 24.6
+          },
+          "riichi": {
+            "turn_bucket": "4-6",
+            "visible_copies": 2,
+            "threat_level": "riichi",
+            "n": 314,
+            "discard_n": 148,
+            "hold_n": 166,
+            "discard_rate_pct": 47.1
+          }
+        },
+        "3": {
+          "none": {
+            "turn_bucket": "4-6",
+            "visible_copies": 3,
+            "threat_level": "none",
+            "n": 851,
+            "discard_n": 228,
+            "hold_n": 623,
+            "discard_rate_pct": 26.8
+          },
+          "open_threat": {
+            "turn_bucket": "4-6",
+            "visible_copies": 3,
+            "threat_level": "open_threat",
+            "n": 258,
+            "discard_n": 65,
+            "hold_n": 193,
+            "discard_rate_pct": 25.2
+          },
+          "riichi": {
+            "turn_bucket": "4-6",
+            "visible_copies": 3,
+            "threat_level": "riichi",
+            "n": 63,
+            "discard_n": 35,
+            "hold_n": 28,
+            "discard_rate_pct": 55.6
+          }
+        }
+      },
+      "7-9": {
+        "0": {
+          "none": {
+            "turn_bucket": "7-9",
+            "visible_copies": 0,
+            "threat_level": "none",
+            "n": 3672,
+            "discard_n": 1404,
+            "hold_n": 2268,
+            "discard_rate_pct": 38.2
+          },
+          "open_threat": {
+            "turn_bucket": "7-9",
+            "visible_copies": 0,
+            "threat_level": "open_threat",
+            "n": 1075,
+            "discard_n": 193,
+            "hold_n": 882,
+            "discard_rate_pct": 18.0
+          },
+          "riichi": {
+            "turn_bucket": "7-9",
+            "visible_copies": 0,
+            "threat_level": "riichi",
+            "n": 1483,
+            "discard_n": 212,
+            "hold_n": 1271,
+            "discard_rate_pct": 14.3
+          }
+        },
+        "1": {
+          "none": {
+            "turn_bucket": "7-9",
+            "visible_copies": 1,
+            "threat_level": "none",
+            "n": 6490,
+            "discard_n": 2073,
+            "hold_n": 4417,
+            "discard_rate_pct": 31.9
+          },
+          "open_threat": {
+            "turn_bucket": "7-9",
+            "visible_copies": 1,
+            "threat_level": "open_threat",
+            "n": 1291,
+            "discard_n": 523,
+            "hold_n": 768,
+            "discard_rate_pct": 40.5
+          },
+          "riichi": {
+            "turn_bucket": "7-9",
+            "visible_copies": 1,
+            "threat_level": "riichi",
+            "n": 1955,
+            "discard_n": 680,
+            "hold_n": 1275,
+            "discard_rate_pct": 34.8
+          }
+        },
+        "2": {
+          "none": {
+            "turn_bucket": "7-9",
+            "visible_copies": 2,
+            "threat_level": "none",
+            "n": 4613,
+            "discard_n": 1042,
+            "hold_n": 3571,
+            "discard_rate_pct": 22.6
+          },
+          "open_threat": {
+            "turn_bucket": "7-9",
+            "visible_copies": 2,
+            "threat_level": "open_threat",
+            "n": 824,
+            "discard_n": 299,
+            "hold_n": 525,
+            "discard_rate_pct": 36.3
+          },
+          "riichi": {
+            "turn_bucket": "7-9",
+            "visible_copies": 2,
+            "threat_level": "riichi",
+            "n": 1123,
+            "discard_n": 557,
+            "hold_n": 566,
+            "discard_rate_pct": 49.6
+          }
+        },
+        "3": {
+          "none": {
+            "turn_bucket": "7-9",
+            "visible_copies": 3,
+            "threat_level": "none",
+            "n": 1038,
+            "discard_n": 237,
+            "hold_n": 801,
+            "discard_rate_pct": 22.8
+          },
+          "open_threat": {
+            "turn_bucket": "7-9",
+            "visible_copies": 3,
+            "threat_level": "open_threat",
+            "n": 384,
+            "discard_n": 133,
+            "hold_n": 251,
+            "discard_rate_pct": 34.6
+          },
+          "riichi": {
+            "turn_bucket": "7-9",
+            "visible_copies": 3,
+            "threat_level": "riichi",
+            "n": 279,
+            "discard_n": 139,
+            "hold_n": 140,
+            "discard_rate_pct": 49.8
+          }
+        }
+      },
+      "10-12": {
+        "0": {
+          "none": {
+            "turn_bucket": "10-12",
+            "visible_copies": 0,
+            "threat_level": "none",
+            "n": 990,
+            "discard_n": 350,
+            "hold_n": 640,
+            "discard_rate_pct": 35.4
+          },
+          "open_threat": {
+            "turn_bucket": "10-12",
+            "visible_copies": 0,
+            "threat_level": "open_threat",
+            "n": 798,
+            "discard_n": 104,
+            "hold_n": 694,
+            "discard_rate_pct": 13.0
+          },
+          "riichi": {
+            "turn_bucket": "10-12",
+            "visible_copies": 0,
+            "threat_level": "riichi",
+            "n": 1350,
+            "discard_n": 186,
+            "hold_n": 1164,
+            "discard_rate_pct": 13.8
+          }
+        },
+        "1": {
+          "none": {
+            "turn_bucket": "10-12",
+            "visible_copies": 1,
+            "threat_level": "none",
+            "n": 1967,
+            "discard_n": 805,
+            "hold_n": 1162,
+            "discard_rate_pct": 40.9
+          },
+          "open_threat": {
+            "turn_bucket": "10-12",
+            "visible_copies": 1,
+            "threat_level": "open_threat",
+            "n": 827,
+            "discard_n": 347,
+            "hold_n": 480,
+            "discard_rate_pct": 42.0
+          },
+          "riichi": {
+            "turn_bucket": "10-12",
+            "visible_copies": 1,
+            "threat_level": "riichi",
+            "n": 1886,
+            "discard_n": 703,
+            "hold_n": 1183,
+            "discard_rate_pct": 37.3
+          }
+        },
+        "2": {
+          "none": {
+            "turn_bucket": "10-12",
+            "visible_copies": 2,
+            "threat_level": "none",
+            "n": 2398,
+            "discard_n": 715,
+            "hold_n": 1683,
+            "discard_rate_pct": 29.8
+          },
+          "open_threat": {
+            "turn_bucket": "10-12",
+            "visible_copies": 2,
+            "threat_level": "open_threat",
+            "n": 708,
+            "discard_n": 349,
+            "hold_n": 359,
+            "discard_rate_pct": 49.3
+          },
+          "riichi": {
+            "turn_bucket": "10-12",
+            "visible_copies": 2,
+            "threat_level": "riichi",
+            "n": 1630,
+            "discard_n": 858,
+            "hold_n": 772,
+            "discard_rate_pct": 52.6
+          }
+        },
+        "3": {
+          "none": {
+            "turn_bucket": "10-12",
+            "visible_copies": 3,
+            "threat_level": "none",
+            "n": 817,
+            "discard_n": 230,
+            "hold_n": 587,
+            "discard_rate_pct": 28.2
+          },
+          "open_threat": {
+            "turn_bucket": "10-12",
+            "visible_copies": 3,
+            "threat_level": "open_threat",
+            "n": 359,
+            "discard_n": 153,
+            "hold_n": 206,
+            "discard_rate_pct": 42.6
+          },
+          "riichi": {
+            "turn_bucket": "10-12",
+            "visible_copies": 3,
+            "threat_level": "riichi",
+            "n": 477,
+            "discard_n": 293,
+            "hold_n": 184,
+            "discard_rate_pct": 61.4
+          }
+        }
+      },
+      "13+": {
+        "0": {
+          "none": {
+            "turn_bucket": "13+",
+            "visible_copies": 0,
+            "threat_level": "none",
+            "n": 445,
+            "discard_n": 104,
+            "hold_n": 341,
+            "discard_rate_pct": 23.4
+          },
+          "open_threat": {
+            "turn_bucket": "13+",
+            "visible_copies": 0,
+            "threat_level": "open_threat",
+            "n": 735,
+            "discard_n": 50,
+            "hold_n": 685,
+            "discard_rate_pct": 6.8
+          },
+          "riichi": {
+            "turn_bucket": "13+",
+            "visible_copies": 0,
+            "threat_level": "riichi",
+            "n": 1421,
+            "discard_n": 131,
+            "hold_n": 1290,
+            "discard_rate_pct": 9.2
+          }
+        },
+        "1": {
+          "none": {
+            "turn_bucket": "13+",
+            "visible_copies": 1,
+            "threat_level": "none",
+            "n": 602,
+            "discard_n": 310,
+            "hold_n": 292,
+            "discard_rate_pct": 51.5
+          },
+          "open_threat": {
+            "turn_bucket": "13+",
+            "visible_copies": 1,
+            "threat_level": "open_threat",
+            "n": 604,
+            "discard_n": 210,
+            "hold_n": 394,
+            "discard_rate_pct": 34.8
+          },
+          "riichi": {
+            "turn_bucket": "13+",
+            "visible_copies": 1,
+            "threat_level": "riichi",
+            "n": 1729,
+            "discard_n": 630,
+            "hold_n": 1099,
+            "discard_rate_pct": 36.4
+          }
+        },
+        "2": {
+          "none": {
+            "turn_bucket": "13+",
+            "visible_copies": 2,
+            "threat_level": "none",
+            "n": 948,
+            "discard_n": 491,
+            "hold_n": 457,
+            "discard_rate_pct": 51.8
+          },
+          "open_threat": {
+            "turn_bucket": "13+",
+            "visible_copies": 2,
+            "threat_level": "open_threat",
+            "n": 546,
+            "discard_n": 350,
+            "hold_n": 196,
+            "discard_rate_pct": 64.1
+          },
+          "riichi": {
+            "turn_bucket": "13+",
+            "visible_copies": 2,
+            "threat_level": "riichi",
+            "n": 1601,
+            "discard_n": 990,
+            "hold_n": 611,
+            "discard_rate_pct": 61.8
+          }
+        },
+        "3": {
+          "none": {
+            "turn_bucket": "13+",
+            "visible_copies": 3,
+            "threat_level": "none",
+            "n": 503,
+            "discard_n": 270,
+            "hold_n": 233,
+            "discard_rate_pct": 53.7
+          },
+          "open_threat": {
+            "turn_bucket": "13+",
+            "visible_copies": 3,
+            "threat_level": "open_threat",
+            "n": 313,
+            "discard_n": 208,
+            "hold_n": 105,
+            "discard_rate_pct": 66.5
+          },
+          "riichi": {
+            "turn_bucket": "13+",
+            "visible_copies": 3,
+            "threat_level": "riichi",
+            "n": 580,
+            "discard_n": 413,
+            "hold_n": 167,
+            "discard_rate_pct": 71.2
+          }
+        }
+      }
+    }
+  },
+  "bonus_late_live_honor_draw_under_riichi": {
+    "n": 894,
+    "immediate_tsumogiri_n": 427,
+    "immediate_tsumogiri_pct": 47.8,
+    "immediate_same_type_cut_n": 23,
+    "immediate_same_type_cut_pct": 2.6,
+    "held_n": 444,
+    "held_pct": 49.7,
+    "same_honor_cut_not_tsumogiri_flagged_n": 23
+  },
+  "proposed_rules": [
+    "Cut lone dragons in the first row unless they pair: no-open median T3 / p75 T5 (n=6734 cuts); after an opponent has opened, median T5 (n=2674 cuts); never cut 17.4% and paired before cut 12.1% (n=11391).",
+    "Clean lone value winds on nearly the same clock: no-open median T3 / p75 T5 (n=3879 cuts); with any opponent open, median T6 (n=1673 cuts); never cut 16.5% and paired before cut 11.2% (n=6649).",
+    "Treat guest winds as early cleanup first, safety second: median cut T1 / p75 T3 (n=7838 cuts), but 14.8% survived past turn 6 among eligible starts (n=8358).",
+    "When nobody is threatening, matching already-seen honors is much more acceptable by turns 4-6: 0-visible cut rate 33.0% (n=15388) vs 1-visible 22.8% (n=13900).",
+    "By turns 7-9 with no threat, stop treating live first-copy honors as automatic cuts: 0-visible cut rate 38.2% (n=3672) vs 1-visible 31.9% (n=6490).",
+    "Under riichi, be stricter with live honors: turns 7-9 cut rates are 0-visible 14.3% (n=1483) and 1-visible 34.8% (n=1955); turns 10-12 are 0-visible 13.8% (n=1350) and 1-visible 37.3% (n=1886).",
+    "After turn 12 under riichi, do not auto-tsumogiri live honors you draw: immediate tsumogiri 47.8% vs hold 49.7% (n=894)."
+  ]
+}
