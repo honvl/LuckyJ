@@ -491,10 +491,9 @@ a {
 .rx-tiles span:not(.tiles) {
   color: var(--muted);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 750;
   line-height: 1.2;
   margin-right: 6px;
-  text-transform: uppercase;
 }
 
 .rx-card h3 {
