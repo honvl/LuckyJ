@@ -73,7 +73,7 @@ def dora_tiles_from_markers(dora_markers: list[str]) -> list[str]:
 
 def is_tile_dora(tile: str | None, dora_markers: list[str]) -> bool:
     clean = base_tile(tile)
-    return bool(clean and clean in dora_tiles_from_markers(dora_markers))
+    return bool(clean and (clean in dora_tiles_from_markers(dora_markers) or str(tile).endswith("r")))
 
 
 def yak_dora_bucket(count: int) -> str:
@@ -277,11 +277,9 @@ def effect_payload(
     success_key: str,
     rate_key: str,
 ) -> dict[str, Any] | None:
-    if group_n < MIN_CELL_N:
-        return None
     comp_n = total_n - group_n
     comp_success = total_success - group_success
-    if comp_n <= 0:
+    if group_n <= 0 or comp_n <= 0:
         return None
     item = rate_payload(group_success, group_n, success_key, rate_key)
     comp_rate = comp_success / comp_n if comp_n else None
@@ -289,13 +287,17 @@ def effect_payload(
     delta = (group_rate - comp_rate) * 100.0 if group_rate is not None and comp_rate is not None else None
     diff_ci = None
     significant = False
-    if group_rate is not None and comp_rate is not None and comp_n >= MIN_CELL_N:
+    meets_min = group_n >= MIN_CELL_N
+    complement_meets_min = comp_n >= MIN_CELL_N
+    if group_rate is not None and comp_rate is not None:
         diff_ci = 1.96 * math.sqrt(group_rate * (1.0 - group_rate) / group_n + comp_rate * (1.0 - comp_rate) / comp_n) * 100.0
-        significant = bool(delta is not None and abs(delta) > diff_ci)
+        significant = bool(meets_min and complement_meets_min and delta is not None and abs(delta) > diff_ci)
     item.update(
         {
             "condition": condition,
             "value": value,
+            "meets_min_cell_n": meets_min,
+            "complement_meets_min_cell_n": complement_meets_min,
             "complement_n": int(comp_n),
             f"complement_{success_key}": int(comp_success),
             f"complement_{rate_key}": round1(comp_rate * 100.0) if comp_rate is not None else None,

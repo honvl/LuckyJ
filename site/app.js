@@ -245,22 +245,36 @@ function renderPointRail() {
     /^point-\d{2}$/.test(section.id)
   );
   const hasLocalPoints = sections.length > 0;
+  const prescriptionsSection = document.getElementById("prescriptions");
+  const prescriptionsPoint = {
+    href: prescriptionsSection ? "#prescriptions" : "points.html#prescriptions",
+    id: "prescriptions",
+    number: "P",
+    title: isJa ? "処方箋" : "Prescriptions",
+    section: prescriptionsSection || null,
+  };
   const points = hasLocalPoints
-    ? sections.map((section) => {
-        const number = section.querySelector(".point-number")?.textContent.trim() || section.id.replace("point-", "");
-        const heading = section.querySelector("h3")?.textContent.trim() || "";
-        return { href: `#${section.id}`, id: section.id, number, title: heading, section };
-      })
-    : pointRailFallbackIds.map((id, index) => {
-        const number = String(index + 1).padStart(2, "0");
-        return {
-          href: `points.html#${id}`,
-          id,
-          number,
-          title: pointRailFallbackLabels[pageLang]?.[index] || "",
-          section: null,
-        };
-      });
+    ? [
+        prescriptionsPoint,
+        ...sections.map((section) => {
+          const number = section.querySelector(".point-number")?.textContent.trim() || section.id.replace("point-", "");
+          const heading = section.querySelector("h3")?.textContent.trim() || "";
+          return { href: `#${section.id}`, id: section.id, number, title: heading, section };
+        }),
+      ]
+    : [
+        prescriptionsPoint,
+        ...pointRailFallbackIds.map((id, index) => {
+          const number = String(index + 1).padStart(2, "0");
+          return {
+            href: `points.html#${id}`,
+            id,
+            number,
+            title: pointRailFallbackLabels[pageLang]?.[index] || "",
+            section: null,
+          };
+        }),
+      ];
 
   if (!points.length) return;
 
@@ -335,12 +349,13 @@ function renderPointRail() {
     }
   }
 
+  const readingSections = points.map((point) => point.section).filter(Boolean);
   let frame = null;
   function updateActive() {
     frame = null;
     const readingLine = window.innerHeight * 0.38;
-    let active = sections[0]?.id;
-    for (const section of sections) {
+    let active = readingSections[0]?.id;
+    for (const section of readingSections) {
       if (section.getBoundingClientRect().top <= readingLine) active = section.id;
     }
     if (active) setActive(active);

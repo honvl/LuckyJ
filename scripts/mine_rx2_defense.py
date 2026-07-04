@@ -957,7 +957,12 @@ def main() -> None:
                             existing_safe = {idx for idx in (tile_index(tile) for tile in discards[actor]) if idx is not None}
                             safe_tiles_vs_riichi[actor] = set(existing_safe)
                             if actor != target:
-                                pending_reaction[actor] = {"kyoku_index": kyoku_index, "pos": pos, "safe_tile_indices": set(existing_safe)}
+                                pending_reaction[actor] = {
+                                    "kyoku_index": kyoku_index,
+                                    "pos": pos,
+                                    "riichi_seat": actor,
+                                    "safe_tile_indices": set(existing_safe),
+                                }
 
                     elif msg_type == "dahai":
                         tile = msg.get("pai")
@@ -965,11 +970,13 @@ def main() -> None:
                             idx = tile_index(tile)
                             discards[actor].append(tile)
                             if idx is not None:
-                                for seat in range(4):
-                                    if reached[seat]:
-                                        safe_tiles_vs_riichi[seat].add(idx)
+                                # Genbutsu against a riichi player means that riichi player's own river,
+                                # including the declaration discard and any later discards by that player.
+                                if reached[actor]:
+                                    safe_tiles_vs_riichi[actor].add(idx)
                                 for reaction in pending_reaction.values():
-                                    reaction.setdefault("safe_tile_indices", set()).add(idx)
+                                    if reaction.get("riichi_seat") == actor:
+                                        reaction.setdefault("safe_tile_indices", set()).add(idx)
                             if pending_riichi_discard[actor]:
                                 pending_riichi_discard[actor] = False
 
@@ -1064,13 +1071,13 @@ def main() -> None:
             "closed_shanten": "Only no own melds and not own riichi; shanten is mahjong.shanten over LuckyJ's current 14-tile hand. Buckets are 0/1/2/3+.",
             "dora_count_in_hand": "Counts every indicator-derived dora in LuckyJ's current hand plus red fives; a red five that is also indicator dora counts twice. Dora indicators wrap 9->1, E->S->W->N->E, P->F->C->P.",
             "riichi_is_dealer": "Uses the primary riichi seat selected by the first-pass priority rule; single_riichi has exactly one riichi, riichi_plus_more may have multiple.",
-            "genbutsu_count": "Physical tiles in LuckyJ's current hand whose 34-tile index is known safe against the primary riichi: the riichi player's river at declaration plus every later discard that passed before this decision.",
+            "genbutsu_count": "Physical tiles in LuckyJ's current hand whose 34-tile index appears in the primary riichi player's own river, including the declaration discard and any later discards by that riichi player. This matches the supplied first-pass genbutsu baseline.",
             "second_threat_present": "yes when first-pass category is riichi_plus_more: another riichi, or at least one riichi plus any opponent with 2+ melds.",
             "open_hand_turn7plus_scope": "No-riichi states classified as 2_meld_opponent or 3plus_meld_opponent, using the selected max-open opponent, with that opponent's turn >= 7.",
             "open_value_or_dora_pon": "Selected open opponent has any visible triplet/quad meld containing dragons, round wind, indicator-derived dora, or a red five.",
             "open_own_shanten_bucket": "Shanten over LuckyJ's current concealed tile count; open melds are implied by tile count in the mahjong.shanten library. Buckets are <=1 vs 2+.",
             "tiles_left_buckets": {">40": "left_hai_num > 40", "40-21": "21 <= left_hai_num <= 40", "<=20": "left_hai_num <= 20"},
-            "immediate_riichi_reaction": "Same first-pass logic: for each opponent riichi declaration, LuckyJ's next tsumo discard is genbutsu if its tile index appears in that riichi player's river or in any subsequent discard that passed safely before LuckyJ's next decision.",
+            "immediate_riichi_reaction": "For each opponent riichi declaration, LuckyJ's next tsumo discard is genbutsu if its tile index appears in that riichi player's own river, including the declaration discard. This reproduces the supplied first-pass baseline." ,
             "n_fields": "total_states counts matching decisions; n counts decisions with usable danger unless the metric is genbutsu, where n counts reaction observations.",
         },
         "summary": summary,

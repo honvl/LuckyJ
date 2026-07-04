@@ -246,6 +246,18 @@ def south4_bucket(start):
     return "South-4" if start.get("bakaze") == "S" and int_or_zero(start.get("kyoku")) == 4 else "not_South-4"
 
 
+def winning_tile_types_after_discard(hand14, discard):
+    """Count all distinct tile types that complete the post-discard hand, including exhausted types."""
+    hand = post_discard_hand(hand14, discard)
+    if hand is None:
+        return None
+    count = 0
+    for tile in base.TILES:
+        if rx1.shanten_value(hand + [tile]) == -1:
+            count += 1
+    return count
+
+
 def winning_tile_types_bucket(wait_types):
     if not isinstance(wait_types, int):
         return "unknown"
@@ -360,7 +372,7 @@ def collect_opportunities():
                     w_stratum = wait_stratum(w_info.get("wait_tiles_remaining"))
                     threat_bucket = existing_threat_bucket(target, reached, open_melds)
                     dealer_bucket = "dealer" if start.get("oya") == target else "nondealer"
-                    wait_types = w_info.get("wait_types")
+                    wait_types = winning_tile_types_after_discard(hand14, actual)
 
                     opp = {
                         "game": row.get("idx"),

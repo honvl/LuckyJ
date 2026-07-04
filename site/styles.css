@@ -2387,6 +2387,10 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   }
 
   .point-rail-number {
+    transform: none;
+  }
+
+  .point-rail a.has-example-progress .point-rail-number {
     transform: translateY(-2px);
   }
 
