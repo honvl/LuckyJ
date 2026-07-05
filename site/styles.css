@@ -563,6 +563,26 @@ a {
   animation-delay: 12s;
 }
 
+.rx-lines .rx-stage {
+  display: grid;
+  gap: 6px;
+  min-height: 0;
+  overflow: visible;
+  position: static;
+}
+
+.rx-lines .rx-turn {
+  animation: none;
+  inset: auto;
+  opacity: 1;
+  position: static;
+}
+
+.rx-lines .rx-turn-label {
+  flex-basis: 42px;
+  font-size: 9px;
+}
+
 .rx-turn-label {
   align-items: center;
   background: var(--green);
@@ -601,18 +621,13 @@ a {
 }
 
 .rx-draw {
-  margin-left: auto;
-  padding-left: 8px;
+  margin-left: 10px;
+  padding-left: 0;
 }
 
 .rx-draw::before {
-  background: var(--green);
   content: "";
-  display: inline-block;
-  height: 26px;
-  margin-right: 8px;
-  opacity: 0.36;
-  width: 2px;
+  display: none;
 }
 
 .rx-draw .inline-tile {
@@ -631,10 +646,10 @@ a {
 
 @keyframes rxTurnThree {
   0%,
-  27% {
+  32.9% {
     opacity: 1;
   }
-  32%,
+  33%,
   100% {
     opacity: 0;
   }
@@ -642,7 +657,7 @@ a {
 
 @keyframes rxTurnFour {
   0%,
-  20% {
+  24.9% {
     opacity: 1;
   }
   25%,
@@ -742,6 +757,33 @@ a {
 
   .rx-anim-head span {
     text-align: left;
+  }
+
+  .rx-turn {
+    gap: 5px;
+  }
+
+  .rx-turn-label {
+    flex-basis: 28px;
+    height: 22px;
+  }
+
+  .rx-lines .rx-turn-label {
+    flex-basis: 36px;
+    font-size: 8px;
+  }
+
+  .rx-tile {
+    min-inline-size: 1em;
+  }
+
+  .rx-tile .inline-tile {
+    font-size: 1.2em;
+  }
+
+  .rx-draw {
+    margin-left: 6px;
+    padding-left: 0;
   }
 }
 
