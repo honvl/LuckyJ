@@ -707,19 +707,20 @@ a {
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(23, 107, 84, 0.18);
   display: inline-flex;
-  gap: 1px;
-  height: 18px;
-  padding: 1px 4px 1px 2px;
+  gap: 2px;
+  height: 24px;
+  padding: 1px 5px 1px 3px;
 }
 
 .rx-honor-count .inline-tile {
-  font-size: 1.1em;
+  font-size: 1.55em;
   padding-right: 0;
+  top: 0.03em;
 }
 
 .rx-honor-count b {
   color: var(--green);
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .rx-honor-count em,

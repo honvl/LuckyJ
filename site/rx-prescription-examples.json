@@ -1162,6 +1162,257 @@
           "focus_honor": "E"
         }
       ]
+    },
+    {
+      "title": "Opened hand, tanyao blocked",
+      "game": 1,
+      "round": "East 3-0",
+      "kyoku_index": 3,
+      "focus_honor": "S",
+      "note": "The open 1s set blocks tanyao; with no visible yakuhai yaku, the honor status is different from an all-simple open hand.",
+      "autoplay_indices": [
+        1,
+        2,
+        3
+      ],
+      "turns": [
+        {
+          "label": "T6",
+          "turn": 6,
+          "left": 50,
+          "hand": [
+            "5sr",
+            "7m",
+            "W",
+            "5m",
+            "5s",
+            "2m",
+            "2m",
+            "6p",
+            "W",
+            "N",
+            "2p",
+            "6p",
+            "2m"
+          ],
+          "draw": "5s",
+          "discard": "N",
+          "hold": null,
+          "call": null,
+          "consumed": [],
+          "honor_counts": [
+            {
+              "tile": "W",
+              "in_hand": 2,
+              "table": 1,
+              "seen": 3,
+              "remaining": 1
+            },
+            {
+              "tile": "N",
+              "in_hand": 1,
+              "table": 2,
+              "seen": 3,
+              "remaining": 1
+            }
+          ],
+          "open_context": {
+            "someone_opened": false,
+            "opponents": [],
+            "opponent_melds": 0,
+            "visible_yaku": false,
+            "tanyao_possible": false,
+            "tanyao_blocked": false,
+            "visible_yaku_text": "no opponent opened"
+          },
+          "focus_honor": "S"
+        },
+        {
+          "label": "T7",
+          "turn": 7,
+          "left": 46,
+          "hand": [
+            "5sr",
+            "7m",
+            "W",
+            "5m",
+            "5s",
+            "2m",
+            "2m",
+            "6p",
+            "W",
+            "2p",
+            "6p",
+            "2m",
+            "5s"
+          ],
+          "draw": "S",
+          "discard": "2p",
+          "hold": null,
+          "call": null,
+          "consumed": [],
+          "honor_counts": [
+            {
+              "tile": "S",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "W",
+              "in_hand": 2,
+              "table": 1,
+              "seen": 3,
+              "remaining": 1
+            }
+          ],
+          "open_context": {
+            "someone_opened": true,
+            "opponents": [
+              {
+                "seat": "shimocha",
+                "melds": 1,
+                "seat_wind": "W",
+                "visible_yaku": false,
+                "tanyao": "not_possible"
+              }
+            ],
+            "opponent_melds": 1,
+            "visible_yaku": false,
+            "tanyao_possible": false,
+            "tanyao_blocked": true,
+            "visible_yaku_text": "no visible yaku; tanyao not possible from exposed tiles"
+          },
+          "focus_honor": "S"
+        },
+        {
+          "label": "T8",
+          "turn": 8,
+          "left": 42,
+          "hand": [
+            "5sr",
+            "7m",
+            "W",
+            "5m",
+            "5s",
+            "2m",
+            "2m",
+            "6p",
+            "W",
+            "6p",
+            "2m",
+            "5s",
+            "S"
+          ],
+          "draw": "C",
+          "discard": "S",
+          "hold": null,
+          "call": null,
+          "consumed": [],
+          "honor_counts": [
+            {
+              "tile": "S",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "W",
+              "in_hand": 2,
+              "table": 1,
+              "seen": 3,
+              "remaining": 1
+            },
+            {
+              "tile": "C",
+              "in_hand": 1,
+              "table": 2,
+              "seen": 3,
+              "remaining": 1
+            }
+          ],
+          "open_context": {
+            "someone_opened": true,
+            "opponents": [
+              {
+                "seat": "shimocha",
+                "melds": 1,
+                "seat_wind": "W",
+                "visible_yaku": false,
+                "tanyao": "not_possible"
+              }
+            ],
+            "opponent_melds": 1,
+            "visible_yaku": false,
+            "tanyao_possible": false,
+            "tanyao_blocked": true,
+            "visible_yaku_text": "no visible yaku; tanyao not possible from exposed tiles"
+          },
+          "focus_honor": "S",
+          "discard_focus_honor": true
+        },
+        {
+          "label": "T9",
+          "turn": 9,
+          "left": 38,
+          "hand": [
+            "5sr",
+            "7m",
+            "W",
+            "5m",
+            "5s",
+            "2m",
+            "2m",
+            "6p",
+            "W",
+            "6p",
+            "2m",
+            "5s",
+            "C"
+          ],
+          "draw": "3s",
+          "discard": "3s",
+          "hold": null,
+          "call": null,
+          "consumed": [],
+          "honor_counts": [
+            {
+              "tile": "W",
+              "in_hand": 2,
+              "table": 1,
+              "seen": 3,
+              "remaining": 1
+            },
+            {
+              "tile": "C",
+              "in_hand": 1,
+              "table": 3,
+              "seen": 4,
+              "remaining": 0
+            }
+          ],
+          "open_context": {
+            "someone_opened": true,
+            "opponents": [
+              {
+                "seat": "shimocha",
+                "melds": 1,
+                "seat_wind": "W",
+                "visible_yaku": false,
+                "tanyao": "not_possible"
+              }
+            ],
+            "opponent_melds": 1,
+            "visible_yaku": false,
+            "tanyao_possible": false,
+            "tanyao_blocked": true,
+            "visible_yaku_text": "no visible yaku; tanyao not possible from exposed tiles"
+          },
+          "focus_honor": "S"
+        }
+      ]
     }
   ],
   "guest_wind_animation": [

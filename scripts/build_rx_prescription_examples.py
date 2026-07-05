@@ -56,6 +56,16 @@ SEQUENCES = {
             "focus_honor": "E",
             "note": "No visible opened yaku changes the job, so the single wind can go.",
         },
+        {
+            "title": "Opened hand, tanyao blocked",
+            "game": 1,
+            "round": "East 3-0",
+            "start_turn": 6,
+            "end_turn": 9,
+            "focus_turn": 8,
+            "focus_honor": "S",
+            "note": "The open 1s set blocks tanyao; with no visible yakuhai yaku, the honor status is different from an all-simple open hand.",
+        },
     ],
     "guest_wind_animation": [
         {
