@@ -540,15 +540,15 @@ a {
 }
 
 .rx-stage {
-  min-height: 48px;
+  min-height: 82px;
   overflow: hidden;
   position: relative;
 }
 
 .rx-turn {
-  align-items: center;
-  display: flex;
-  gap: 8px;
+  align-content: center;
+  display: grid;
+  gap: 5px;
   inset: 0;
   opacity: 0;
   position: absolute;
@@ -573,6 +573,13 @@ a {
   opacity: 1;
   pointer-events: auto;
   position: static;
+}
+
+.rx-turn-main {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  min-width: 0;
 }
 
 .rx-lines .rx-turn-label {
@@ -636,6 +643,96 @@ a {
   background: rgba(23, 107, 84, 0.11);
   outline: 2px solid rgba(23, 107, 84, 0.32);
   outline-offset: -2px;
+}
+
+.rx-sequence-list {
+  display: grid;
+  gap: 12px;
+}
+
+.rx-sequence + .rx-sequence {
+  border-top: 1px solid rgba(23, 107, 84, 0.18);
+  padding-top: 12px;
+}
+
+.rx-sequence-head {
+  align-items: baseline;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.rx-sequence-head b {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.rx-sequence-head span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 750;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.rx-turn-context {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 9px;
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1.2;
+  padding-left: 40px;
+}
+
+.rx-honor-counts {
+  align-items: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  min-width: 0;
+}
+
+.rx-honor-counts > span {
+  color: #60645e;
+  margin-right: 2px;
+  text-transform: uppercase;
+}
+
+.rx-honor-count {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(23, 107, 84, 0.18);
+  display: inline-flex;
+  gap: 1px;
+  height: 18px;
+  padding: 1px 4px 1px 2px;
+}
+
+.rx-honor-count .inline-tile {
+  font-size: 1.1em;
+  padding-right: 0;
+}
+
+.rx-honor-count b {
+  color: var(--green);
+  font-size: 10px;
+}
+
+.rx-honor-count em,
+.rx-table-context {
+  color: #686c66;
+  font-style: normal;
+}
+
+.rx-sequence-note {
+  color: #53574f;
+  font-size: 11px;
+  line-height: 1.3;
+  margin: 6px 0 0;
 }
 
 .rx-scrubber {
@@ -761,6 +858,10 @@ a {
     gap: 5px;
   }
 
+  .rx-stage {
+    min-height: 96px;
+  }
+
   .rx-turn-label {
     flex-basis: 28px;
     height: 22px;
@@ -778,6 +879,21 @@ a {
   .rx-draw {
     margin-left: 6px;
     padding-left: 0;
+  }
+
+  .rx-turn-context {
+    font-size: 9px;
+    padding-left: 33px;
+  }
+
+  .rx-sequence-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .rx-sequence-head span {
+    text-align: left;
   }
 }
 

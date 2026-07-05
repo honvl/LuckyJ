@@ -1303,6 +1303,12 @@ function prescriptionExampleTitle(item) {
   return bits.join(", ");
 }
 
+function prescriptionFocalTurn(sequence) {
+  const turns = Array.isArray(sequence?.turns) ? sequence.turns : [];
+  if (!turns.length) return null;
+  return turns.find((turn) => turn.discard_focus_honor) || turns[sequence.autoplay_indices?.[1]] || turns[sequence.autoplay_indices?.[0]] || turns[0];
+}
+
 function prescriptionTileSpan(tile, className = "") {
   return `<span class="rx-tile${className ? ` ${className}` : ""}">${tileIcon(tile, "inline-tile")}</span>`;
 }
@@ -1323,6 +1329,31 @@ function sortedPrescriptionHand(hand) {
     .map((tile, index) => ({ tile, index }))
     .sort((a, b) => prescriptionTileSortKey(a.tile) - prescriptionTileSortKey(b.tile) || a.index - b.index)
     .map((item) => item.tile);
+}
+
+function prescriptionHonorSeen(item) {
+  const counts = Array.isArray(item?.honor_counts) ? item.honor_counts : [];
+  if (!counts.length) return "";
+  const badges = counts
+    .map((honor) => {
+      const title = `${tileName(honor.tile)}: ${honor.seen}/4 seen; ${honor.in_hand} in hand, ${honor.table} already visible`;
+      return `<span class="rx-honor-count" title="${escapeHtml(title)}">${tileIcon(honor.tile, "inline-tile")}<b>${escapeHtml(
+        String(honor.seen)
+      )}</b><em>/4</em></span>`;
+    })
+    .join("");
+  return `<span class="rx-honor-counts"><span>honors seen</span>${badges}</span>`;
+}
+
+function prescriptionOpenContext(item) {
+  const context = item?.open_context;
+  if (!context) return "";
+  const riichi = context.riichi_active ? "; riichi active" : "";
+  if (!context.someone_opened) return `<span class="rx-table-context">No one opened${riichi}.</span>`;
+  const meldText = `${context.opponent_melds || 0} open meld${context.opponent_melds === 1 ? "" : "s"}`;
+  return `<span class="rx-table-context">Someone opened: ${escapeHtml(meldText)}; ${escapeHtml(
+    context.visible_yaku_text || "yaku status unknown"
+  )}${riichi}.</span>`;
 }
 
 function prescriptionExampleLine(item) {
@@ -1350,8 +1381,14 @@ function prescriptionExampleLine(item) {
   const label = String(item?.label || item?.game || "").slice(0, 5);
   return `
     <div class="rx-turn" title="${escapeHtml(title)}" aria-label="${escapeHtml(title)}">
-      <span class="rx-turn-label">${escapeHtml(label)}</span>
-      <span class="rx-hand-line">${handTiles}${prescriptionTileSpan(item.draw, drawClasses.join(" "))}</span>
+      <div class="rx-turn-main">
+        <span class="rx-turn-label">${escapeHtml(label)}</span>
+        <span class="rx-hand-line">${handTiles}${prescriptionTileSpan(item.draw, drawClasses.join(" "))}</span>
+      </div>
+      <div class="rx-turn-context">
+        ${prescriptionHonorSeen(item)}
+        ${prescriptionOpenContext(item)}
+      </div>
     </div>
   `;
 }
@@ -1360,8 +1397,8 @@ function prescriptionTurnLabel(item, index) {
   return String(item?.label || (item?.turn !== undefined ? `T${item.turn}` : index + 1)).slice(0, 8);
 }
 
-function setupPrescriptionScrubber(block, examples) {
-  const turns = Array.from(block.querySelectorAll(".rx-turn"));
+function setupPrescriptionScrubber(block) {
+  const turns = Array.from(block.querySelectorAll(":scope > .rx-stage .rx-turn"));
   if (turns.length <= 1) return;
   if (block._rxScrubberTimer) window.clearInterval(block._rxScrubberTimer);
   block.classList.add("rx-scrubbable");
@@ -1382,7 +1419,11 @@ function setupPrescriptionScrubber(block, examples) {
   const current = scrubber.querySelector(".rx-scrub-current");
   const count = scrubber.querySelector(".rx-scrub-count");
   range.max = String(turns.length - 1);
-  const labels = examples.map(prescriptionTurnLabel);
+  const labels = turns.map((turn, index) => turn.querySelector(".rx-turn-label")?.textContent?.trim() || String(index + 1));
+  const autoplayIndices = String(block.dataset.rxAutoplayIndices || "")
+    .split(",")
+    .map((item) => Number(item))
+    .filter((item) => Number.isInteger(item) && item >= 0 && item < turns.length);
   let selected = 0;
   let userHoldUntil = 0;
 
@@ -1415,11 +1456,31 @@ function setupPrescriptionScrubber(block, examples) {
   selectTurn(0);
   block._rxScrubberTimer = window.setInterval(() => {
     if (Date.now() < userHoldUntil || block.matches(":hover, :focus-within")) return;
+    if (autoplayIndices.length) {
+      const currentAutoIndex = autoplayIndices.indexOf(selected);
+      selectTurn(autoplayIndices[currentAutoIndex >= 0 ? (currentAutoIndex + 1) % autoplayIndices.length : 0]);
+      return;
+    }
     selectTurn((selected + 1) % turns.length);
   }, 3200);
 }
 
 function prescriptionSummaryText(item) {
+  if (item?.turns) {
+    const focal = prescriptionFocalTurn(item);
+    if (!focal) return "";
+    const hand = tileRun(sortedPrescriptionHand(focal.hand), "rx-summary-tiles");
+    const accepted = tileIcon(focal.draw, "inline-tile");
+    const discard = tileIcon(focal.discard, "inline-tile");
+    return `
+      <p><b>Actual LuckyJ:</b> Game ${escapeHtml(String(item.game))}, ${escapeHtml(item.round || "")}, turn ${escapeHtml(
+        String(focal.turn)
+      )}. ${hand}<span class="rx-summary-draw">${accepted}</span></p>
+      <p><b>${escapeHtml(focal.call ? `${focal.call.toUpperCase()} accepted` : "Draw")}:</b> ${accepted}; <b>${
+        isJa ? "打牌" : "discard"
+      }:</b> ${discard}</p>
+    `;
+  }
   const action = item.call ? `${item.call.toUpperCase()} accepted` : "Draw";
   const context = prescriptionExampleTitle(item);
   const hand = tileRun(sortedPrescriptionHand(item.hand), "rx-summary-tiles");
@@ -1428,6 +1489,24 @@ function prescriptionSummaryText(item) {
   return `
     <p><b>Actual LuckyJ:</b> ${escapeHtml(context)}. ${hand}<span class="rx-summary-draw">${accepted}</span></p>
     <p><b>${escapeHtml(action)}:</b> ${accepted}; <b>${isJa ? "打牌" : "discard"}:</b> ${discard}</p>
+  `;
+}
+
+function prescriptionSequence(sequence, index) {
+  const turns = Array.isArray(sequence?.turns) ? sequence.turns : [];
+  const autoplay = Array.isArray(sequence?.autoplay_indices) ? sequence.autoplay_indices.join(",") : "";
+  const gameText = [`Game ${sequence.game}`, sequence.round, sequence.focus_honor ? `focus ${sequence.focus_honor}` : ""].filter(Boolean).join(", ");
+  return `
+    <div class="rx-sequence" data-rx-autoplay-indices="${escapeHtml(autoplay)}">
+      <div class="rx-sequence-head">
+        <b>${escapeHtml(sequence.title || `Example ${index + 1}`)}</b>
+        <span>${escapeHtml(gameText)}</span>
+      </div>
+      <div class="rx-stage">
+        ${turns.map(prescriptionExampleLine).join("")}
+      </div>
+      ${sequence.note ? `<p class="rx-sequence-note">${escapeHtml(sequence.note)}</p>` : ""}
+    </div>
   `;
 }
 
@@ -1441,11 +1520,14 @@ function renderPrescriptionExamples(rxExamples) {
   for (const block of document.querySelectorAll(".rx-animation[data-rx-key], .rx-animation[data-rx-animate-key]")) {
     const key = block.dataset.rxKey || block.dataset.rxAnimateKey;
     const examples = rxExamples[key];
-    if (!Array.isArray(examples) || !examples.length) continue;
-    const stage = block.querySelector(".rx-stage");
-    if (!stage) continue;
-    stage.innerHTML = examples.map(prescriptionExampleLine).join("");
-    if (block.dataset.rxAnimateKey) setupPrescriptionScrubber(block, examples);
+    if (!Array.isArray(examples) || !examples.length || !examples[0]?.turns) {
+      block.remove();
+      continue;
+    }
+    const head = block.querySelector(".rx-anim-head")?.outerHTML || "";
+    block.classList.remove("rx-lines", "rx-animation-long");
+    block.innerHTML = `${head}<div class="rx-sequence-list">${examples.map(prescriptionSequence).join("")}</div>`;
+    for (const sequence of block.querySelectorAll(".rx-sequence")) setupPrescriptionScrubber(sequence);
   }
 }
 
