@@ -117,7 +117,7 @@
         <section class="section" id="prescriptions">
   <p class="kicker">Prescriptions</p>
   <h2>Simple switches to remember.</h2>
-  <p>These are not commandments. Read them as LuckyJ's default habits: what to do first, what changes the answer, and when a tile has stopped being ordinary. The point chapters explain the harder exceptions. Per-game consistency still has real spread: riichi declaration rate varies by about ±26pp and yakuhai pon by ±23pp, so these are context-driven tendencies, not fixed personality.</p>
+  <p>These are not commandments. Read them as LuckyJ's default habits: what to do first, what changes the answer, and when a tile has stopped being ordinary. The point chapters explain the harder exceptions. All numbers in this section now come from LuckyJ's non-dealer rounds only: about 110k of roughly 147k discard decisions. As dealer, LuckyJ converges toward the NAGA line (top-discard match 76.4% as dealer vs 72.5% as child), so the child rounds are where its own style lives; as dealer, lean more textbook-efficient and aggressive. Per-game consistency still has real spread: riichi declaration rate varies by about ±26pp and yakuhai pon by ±23pp, so these are context-driven tendencies, not fixed personality.</p>
   <div class="rx-grid">
     <div class="rx-card">
       <div class="rx-example" data-rx-summary-key="value_honor_cleanup">
@@ -167,19 +167,21 @@
         </div>
       </div>
       <h3>Single value honors leave early</h3>
-      <p class="rx-rule">If a lone dragon or your value wind has no job yet, it usually leaves around turn 3. When someone has opened, wait a little longer: that same tile may be their missing yaku. Do not auto-cut it on turn 1, because about one in eight singletons paired up before LuckyJ threw them.</p>
+      <p class="rx-rule">If a lone dragon or your value wind has no job yet, it usually leaves around turn 3. When someone has opened, wait longer: the child-only median is turn 6, and that same tile may be their missing yaku. Do not auto-cut it on turn 1, because about one in eight singletons paired up before LuckyJ threw them.</p>
       <table>
         <thead>
           <tr><th>Tile</th><th>Quiet hand</th><th>Someone opened</th><th>Pairs first</th></tr>
         </thead>
         <tbody>
-          <tr><td>[[P]][[F]][[C]] Dragon</td><td>Turn 3</td><td>Turn 5</td><td>12%</td></tr>
+          <tr><td>[[P]][[F]][[C]] Dragon</td><td>Turn 3</td><td>Turn 6</td><td>12%</td></tr>
           <tr><td>Value wind</td><td>Turn 3</td><td>Turn 6</td><td>11%</td></tr>
         </tbody>
       </table>
+      <p class="rx-basis">Basis: lone value-honor cleanup timing. Dragon starts n=8,461; value-wind starts n=5,248. Quiet/open discard contexts n=4,814/2,131 and n=3,002/1,379; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> your hand is ≤2 shanten on turn 3 → cut by turn 6 rises to 85% vs 63% at 3+ shanten (Δ+22pp, n=6,298/9,270); the tile is round wind → 78% vs 71% otherwise (Δ+7pp, n=2,445/13,123); you are dealer → 77% vs 71% as non-dealer (Δ+6pp, n=3,735/11,833).</p>
-        <p class="rx-down"><b>Lower it:</b> your hand is 3+ shanten on turn 3 → 63% vs 85% at ≤2 shanten (Δ-22pp, n=9,270/6,298); the tile is double wind → 59% vs 73% otherwise (Δ-14pp, n=866/14,702); the tile is seat wind only → 68% vs 73% otherwise (Δ-5pp, n=2,455/13,113). Start rank barely matters (Δ under 3pp across 1st-4th).</p>
+        <p class="rx-up"><b>Raise it:</b> your hand is ≤2 shanten on turn 3 → cut by turn 6 rises to 84.3% vs 61.5% at 3+ shanten (Δ+22.8pp, n=4,734/7,099); the tile is round wind → 78.2% vs 69.0% otherwise (Δ+9.1pp, n=2,065/9,768).</p>
+        <p class="rx-down"><b>Lower it:</b> your hand is 3+ shanten on turn 3 → 61.5% vs 84.3% at ≤2 shanten (Δ-22.8pp, n=7,099/4,734); the tile is double wind → 52.4% vs 71.2% otherwise (Δ-18.8pp, n=395/11,438); the tile is seat wind only → 66.8% vs 71.4% otherwise (Δ-4.6pp, n=2,089/9,744).</p>
+        <p class="rx-down">As dealer, cut-by-turn-6 rises to 76.7% across this base, and LuckyJ hews closer to the engine line; dealer rounds are excluded from this table.</p>
       </div>
       <p class="rx-except">Keep it when it has paired, it is your only realistic yaku, or the open player may still need that exact tile. See <a href="#point-13">Point 12</a>.</p>
     </div>
@@ -237,20 +239,21 @@
         </div>
       </div>
       <h3>Guest winds are cheap until they defend</h3>
-      <p class="rx-rule">A wind that is neither your seat wind nor the round wind can go immediately in a quiet hand. Against riichi, stop assuming every live honor is safe: fresh honors often stay, half-spent honors get thrown more often, and a late live honor draw is close to a coin flip.</p>
+      <p class="rx-rule">A wind that is neither your seat wind nor the round wind usually leaves very early; across child rounds the starting guest-wind median is turn 2. Against riichi, stop assuming every live honor is safe: fresh honors often stay, half-spent honors get thrown more often, and a late live honor draw is slightly more hold than cut.</p>
       <table>
         <thead>
           <tr><th>Spot</th><th>No copies seen</th><th>One copy seen</th><th>Late live draw</th></tr>
         </thead>
         <tbody>
-          <tr><td>Starting guest wind</td><td>Cut turn 1</td><td>Usually gone by turn 3</td><td>15% kept past turn 6</td></tr>
-          <tr><td>Turns 7-9 vs riichi</td><td>14% cut</td><td>35% cut</td><td></td></tr>
-          <tr><td>Turn 13+ vs riichi</td><td>9% cut</td><td>36% cut</td><td>50% hold</td></tr>
+          <tr><td>Starting guest wind</td><td>Cut turn 2</td><td>Usually gone by turn 3</td><td>17% kept past turn 6</td></tr>
+          <tr><td>Turns 7-9 vs riichi</td><td>12.9% cut</td><td>32.5% cut</td><td></td></tr>
+          <tr><td>Turn 13+ vs riichi</td><td>8.2% cut</td><td>34.4% cut</td><td>52.5% hold</td></tr>
         </tbody>
       </table>
+      <p class="rx-basis">Basis: guest-wind cleanup n=6,026 starts. Riichi turns 7-9 visible-0/1 matching cells n=1,163/1,630. Late live-honor draws under riichi n=673; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> your hand is 0-1 shanten → cut the live honor 31% vs 5% at 2+ shanten (Δ+26pp, n=1,197/3,057); you have 0 genbutsu vs the riichi → 20% vs 10% with at least one (Δ+11pp, n=1,080/3,174).</p>
-        <p class="rx-down"><b>Lower it:</b> your hand is 2+ shanten → cut only 5% vs 31% at 0-1 shanten (Δ-26pp, n=3,057/1,197), which is why stopping live-honor matching is a folding behavior; you have 2+ genbutsu → 9% vs 16% with fewer outs (Δ-7pp, n=1,872/2,382).</p>
+        <p class="rx-up"><b>Raise it:</b> your hand is 0-1 shanten → cut the live honor 29.2% vs 4.9% at 2+ shanten (Δ+24.4pp, n=842/2,493); you have 0 genbutsu vs the riichi → 20.0% vs 8.0% with at least one (Δ+12.0pp, n=823/2,512).</p>
+        <p class="rx-down"><b>Lower it:</b> your hand is 2+ shanten → cut only 4.9% vs 29.2% at 0-1 shanten (Δ-24.4pp, n=2,493/842), which is why stopping live-honor matching is a folding behavior; you have 2+ genbutsu → 6.4% vs 14.8% with fewer outs (Δ-8.4pp, n=1,502/1,833).</p>
       </div>
       <p class="rx-except">Keep it when that wind is your safest answer to a named opponent, or when every cleaner exit has disappeared. See <a href="#point-18">Point 16</a>.</p>
     </div>
@@ -276,20 +279,21 @@
         </div>
       </div>
       <h3>Pon value pairs by default</h3>
-      <p class="rx-rule">When you already have a pair of dragons, round wind, or seat wind, pon is the normal plan. The first visible copy is the best chance. If the hand is already close, check whether opening ruins a better closed path; if you have dora, be more willing to take the pon.</p>
+      <p class="rx-rule">When you already have a pair of dragons, round wind, or seat wind, pon is the normal plan. The first visible copy is the best chance. If the table is already threatening or the hand is already close in the middle row, check whether opening ruins a better closed path; if you have dora, be more willing to take the pon.</p>
       <table>
         <thead>
           <tr><th>Question</th><th>Usually yes</th><th>More cautious</th><th>Overall</th></tr>
         </thead>
         <tbody>
-          <tr><td>Which copy?</td><td>First copy 77%</td><td>Later copy 58%</td><td>75%</td></tr>
-          <tr><td>Hand distance</td><td>2-3 away 79%</td><td>0-1 away 63%</td><td>4+ away 79%</td></tr>
-          <tr><td>Dora count</td><td>2+ dora 81%</td><td>No dora 72%</td><td>1 dora 76%</td></tr>
+          <tr><td>Which copy?</td><td>First copy 75.9%</td><td>Later copy 55.8%</td><td>73.6%</td></tr>
+          <tr><td>Timing/distance</td><td>T1-6, 2-3 away 86.4%</td><td>T7-12, 2-3 away 60.0%</td><td>T7-12, 0-1 away 60.9%</td></tr>
+          <tr><td>Dora count</td><td>2 dora 82.0%</td><td>No dora 69.7%</td><td>1 dora 74.4%</td></tr>
         </tbody>
       </table>
+      <p class="rx-basis">Basis: yakuhai pon opportunities n=2,220. First/later copy n=1,969/251. Timing-distance cells n=959/345/271. Dora cells n=983/833/322; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> no existing table threat → pon 83% vs 40% with a threat (Δ+43pp, n=2,370/545); turns 1-6 at 2-3 shanten → 87% vs 66% otherwise (Δ+22pp, n=1,275/1,640); 2 dora → 82% vs 74% without that bucket (Δ+8pp, n=431/2,484); a second yakuhai pair is in hand → 81% vs 74% without one (Δ+7pp, n=422/2,493).</p>
-        <p class="rx-down"><b>Lower it:</b> existing table threat → 40% vs 83% without one (Δ-43pp, n=545/2,370); turns 7-12 at 0-1 shanten → 62% vs 77% otherwise (Δ-14pp, n=367/2,548); turns 7-12 at 2-3 shanten → 64% vs 77% otherwise (Δ-13pp, n=456/2,459); 0 dora → 72% vs 78% with dora (Δ-6pp, n=1,263/1,652).</p>
+        <p class="rx-up"><b>Raise it:</b> no existing table threat → pon 82.3% vs 36.2% with a threat (Δ+46.0pp, n=1,803/417); turns 1-6 at 2-3 shanten → 86.4% vs 63.8% otherwise (Δ+22.6pp, n=959/1,261); 2 dora → 82.0% vs 72.2% without that bucket (Δ+9.8pp, n=322/1,898); a second yakuhai pair is in hand → 78.1% vs 72.8% without one (Δ+5.3pp, n=320/1,900).</p>
+        <p class="rx-down"><b>Lower it:</b> existing table threat → 36.2% vs 82.3% without one (Δ-46.0pp, n=417/1,803); turns 7-12 at 0-1 shanten → 60.9% vs 75.4% otherwise (Δ-14.5pp, n=271/1,949); turns 7-12 at 2-3 shanten → 60.0% vs 76.1% otherwise (Δ-16.1pp, n=345/1,875); 0 dora → 69.7% vs 76.7% with dora (Δ-7.0pp, n=983/1,237).</p>
       </div>
       <p class="rx-except">Skip when the pon leaves a cheap, still-far open hand with no safe next discard, or when your closed tenpai is already better. See <a href="#point-03">Point 03</a>.</p>
     </div>
@@ -315,21 +319,22 @@
         </div>
       </div>
       <h3>The first call has to earn its price</h3>
-      <p class="rx-rule">Do not open a closed hand just because a chi is available. The call should give yaku, tenpai, real one-away shape, denial, or a safer path. Once the hand is already open, chi becomes much more normal.</p>
+      <p class="rx-rule">Do not open a closed hand just because a chi is available. The call should give yaku, tenpai, real one-away shape, denial, or a safer path. LuckyJ's first chi from closed is only 6.7%, but once the hand is already open, chi becomes much more normal at 26.6%.</p>
       <table>
         <thead>
           <tr><th>Spot</th><th>LuckyJ habit</th></tr>
         </thead>
         <tbody>
-          <tr><td>First chi from closed</td><td>Only 6.8%</td></tr>
-          <tr><td>Chi after already open</td><td>27.4%</td></tr>
-          <tr><td>Far, no-dora hand</td><td>Passes 85.9%</td></tr>
-          <tr><td>Far hand with value pair</td><td>Pons 72.4%</td></tr>
+          <tr><td>First chi from closed</td><td>Only 6.7%</td></tr>
+          <tr><td>Chi after already open</td><td>26.6%</td></tr>
+          <tr><td>Junk call opportunity</td><td>Passes 86.5%</td></tr>
+          <tr><td>Junk hand with value pair</td><td>Pons 70.4%</td></tr>
         </tbody>
       </table>
+      <p class="rx-basis">Basis: chi opportunities n=19,131. Closed-to-open chi n=16,284; already-open chi n=2,847. Junk call opportunities n=1,401; junk yakuhai pon opportunities n=179; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> the chi reaches ≤1 shanten → 17% vs 2% otherwise (Δ+15pp, n=6,525/15,090); ≤12 tiles remain → 18% vs 6% earlier (Δ+12pp, n=854/20,761); turn 13+ → 14% vs 6% earlier (Δ+8pp, n=2,594/19,021); called tile is dora → 11% vs 7% otherwise (Δ+5pp, n=581/21,034).</p>
-        <p class="rx-down"><b>Lower it:</b> the chi does not reach ≤1 shanten → 2% vs 17% when it does (Δ-15pp, n=15,090/6,525); more than 12 tiles remain → 6% vs 18% in the last 12 (Δ-12pp, n=20,761/854); turns 1-6 → 5% vs 9% later (Δ-4pp, n=9,456/12,159); called tile is not dora → 7% vs 11% when it is dora (Δ-5pp, n=21,034/581).</p>
+        <p class="rx-up"><b>Raise it:</b> the chi reaches ≤1 shanten → 17.0% vs 2.4% otherwise (Δ+14.6pp, n=4,811/11,473); ≤12 tiles remain → 18.2% vs 6.2% earlier (Δ+12.0pp, n=665/15,619); turn 13+ → 14.6% vs 5.7% earlier (Δ+8.9pp, n=1,882/14,402); called tile is dora → 10.0% vs 6.6% otherwise (Δ+3.4pp, n=440/15,844).</p>
+        <p class="rx-down"><b>Lower it:</b> the chi does not reach ≤1 shanten → 2.4% vs 17.0% when it does (Δ-14.6pp, n=11,473/4,811); more than 12 tiles remain → 6.2% vs 18.2% in the last 12 (Δ-12.0pp, n=15,619/665); turns 1-6 → 4.4% vs 8.6% later (Δ-4.2pp, n=7,359/8,925); called tile is not dora → 6.6% vs 10.0% when it is dora (Δ-3.4pp, n=15,844/440).</p>
       </div>
       <p class="rx-except">Skip the refusal when the call gives yaku, tenpai, real one-shanten, denial, or safe-tile structure. See <a href="#point-03">Point 03</a> and <a href="#point-04">Point 04</a>.</p>
     </div>
@@ -361,17 +366,19 @@
           <tr><th>Spot</th><th>Declare now</th><th>If skipped</th><th>Warning</th></tr>
         </thead>
         <tbody>
-          <tr><td>8+ waits</td><td>94% riichi</td><td></td><td></td></tr>
-          <tr><td>4-7 waits</td><td>80% riichi</td><td></td><td></td></tr>
-          <tr><td>≤3 waits</td><td>36% riichi</td><td></td><td></td></tr>
-          <tr><td>Bad wait, +10k lead</td><td>35% riichi</td><td></td><td></td></tr>
-          <tr><td>Declined first chance</td><td>22% later riichi</td><td>59% stays dama</td><td>19% breaks/folds</td></tr>
-          <tr><td>Riichi into threat</td><td></td><td></td><td>43% had a &gt;10% stick discard</td></tr>
+          <tr><td>8+ waits</td><td>95.3% riichi</td><td></td><td></td></tr>
+          <tr><td>4-7 waits</td><td>78.3% riichi</td><td></td><td></td></tr>
+          <tr><td>≤3 waits</td><td>33.9% riichi</td><td></td><td></td></tr>
+          <tr><td>Bad wait, +10k lead</td><td>32.5% riichi</td><td></td><td></td></tr>
+          <tr><td>Declined first chance</td><td>21.6% later riichi</td><td>58.1% stays dama</td><td>20.3% breaks/folds</td></tr>
+          <tr><td>Riichi into threat</td><td></td><td></td><td>43.2% had a &gt;10% stick discard</td></tr>
         </tbody>
       </table>
+      <p class="rx-basis">Basis: first riichi opportunities n=2,384. Wait buckets n=298/1,288/797. Bad wait with +10k lead n=83, small sample. Declined first chance n=821. Existing-threat declaration danger n=592; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> with ≤3 unseen winning tiles, the wait has 2+ winning tile types → 64% vs 43% for single-type waits (Δ+21pp, n=191/645); at 4-7 waits, starting 4th → 89% vs 77% otherwise (Δ+12pp, n=398/1,409); with ≤3 unseen, you are dealer → 42% vs 34% as non-dealer (Δ+8pp, n=313/797); the dealer, bad-wait, 0-1 dora cell still declares 42% (n=222).</p>
-        <p class="rx-down"><b>Lower it:</b> South-4 with 4-7 waits → 55% vs 82% otherwise (Δ-27pp, n=167/1,640); ≤3 unseen into an existing riichi → 21% vs 40% otherwise (Δ-19pp, n=249/861); 4-7 waits into an existing riichi → 70% vs 82% otherwise (Δ-12pp, n=338/1,469); 4-7 waits with 2+ dora → 71% vs 83% otherwise (Δ-12pp, n=478/1,329).</p>
+        <p class="rx-up"><b>Raise it:</b> with ≤3 unseen winning tiles, the wait has 2+ winning tile types → 63.6% vs 41.1% for single-type waits (Δ+22.4pp, n=140/440); at 4-7 waits, 2+ winning tile types → 84.0% vs 57.9% for single-type waits (Δ+26.2pp, n=1,008/280); at 4-7 waits, starting 4th → 88.2% vs 74.7% otherwise (Δ+13.4pp, n=346/942).</p>
+        <p class="rx-down"><b>Lower it:</b> ≤3 unseen into an existing riichi → 18.1% vs 38.4% otherwise (Δ-20.3pp, n=177/620); 4-7 waits into an existing riichi → 69.4% vs 80.4% otherwise (Δ-11.1pp, n=245/1,043); 4-7 waits with 2+ dora → 70.9% vs 81.0% otherwise (Δ-10.1pp, n=344/944).</p>
+        <p>As dealer, first-chance declares rise to 70.2% overall and ≤3-wait declares rise to 41.9%; dealer bad-wait cells are excluded from this child-only table.</p>
       </div>
       <p class="rx-except">Skip a mechanical riichi when the wait is bad, the hand is cheap, the stick discard is the danger, or your lead already has enough value. See <a href="#point-08">Point 07</a>.</p>
     </div>
@@ -403,15 +410,17 @@
           <tr><th>Hand</th><th>Push vs riichi</th><th>Last 20 tiles</th><th>First answer</th></tr>
         </thead>
         <tbody>
-          <tr><td>Tenpai</td><td>61%</td><td>54%</td><td>33%</td></tr>
-          <tr><td>1-shanten</td><td>34%</td><td>23%</td><td>56%</td></tr>
-          <tr><td>2-shanten</td><td>20%</td><td>13%</td><td>64%</td></tr>
-          <tr><td>3+ shanten</td><td>14%</td><td>8%</td><td>68%</td></tr>
+          <tr><td>Tenpai</td><td>58.8%</td><td>52.6%</td><td>35.3%</td></tr>
+          <tr><td>1-shanten</td><td>31.7%</td><td>21.5%</td><td>56.8%</td></tr>
+          <tr><td>2-shanten</td><td>19.6%</td><td>13.8%</td><td>65.1%</td></tr>
+          <tr><td>3+ shanten</td><td>14.1%</td><td>8.1%</td><td>68.7%</td></tr>
         </tbody>
       </table>
+      <p class="rx-basis">Basis: closed-hand decisions vs riichi by shanten n=986/4,355/4,805/2,889. Last-20 cells n=407/1,323/1,380/708. First-discard genbutsu cells n=278/1,272/1,136/559; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> tenpai and you are dealer → push 68% vs 59% as non-dealer (Δ+9pp, n=374/986); 1-shanten with 0 genbutsu → push 56% vs 29% with any genbutsu (Δ+26pp, n=947/5,072), a forced-push signal rather than aggression; 1-shanten with &gt;40 tiles left → 48% vs 31% later (Δ+17pp, n=939/5,080); tenpai with 2 dora → 67% vs 60% otherwise (Δ+8pp, n=306/1,054).</p>
-        <p class="rx-down"><b>Lower it:</b> tenpai with 2+ genbutsu in hand → 56% vs 70% with fewer genbutsu (Δ-14pp, n=869/491), usually choice not necessity; tenpai with ≤20 tiles left → 54% vs 66% earlier (Δ-12pp, n=540/820); 1-shanten with ≤20 tiles left → 23% vs 38% earlier (Δ-15pp, n=1,768/4,251); 1-shanten facing dealer riichi → 31% vs 35% against non-dealer riichi (Δ-3pp, n=1,716/4,303).</p>
+        <p class="rx-up"><b>Raise it:</b> 1-shanten with 0 genbutsu → push 53.1% vs 27.5% with any genbutsu (Δ+25.6pp, n=702/3,653), a forced-push signal rather than aggression; 1-shanten with more than 20 tiles left → 36.1% vs 21.5% in the last 20 (Δ+14.6pp, n=3,032/1,323); tenpai with 0 genbutsu → 69.9% vs 56.8% with any genbutsu (Δ+13.1pp, n=153/833); tenpai with 2 dora → 65.4% vs 57.0% otherwise (Δ+8.4pp, n=211/775).</p>
+        <p class="rx-down"><b>Lower it:</b> tenpai with 2+ genbutsu in hand → 53.6% vs 67.6% with fewer genbutsu (Δ-14.0pp, n=619/367), usually choice not necessity; tenpai with ≤20 tiles left → 52.6% vs 63.2% earlier (Δ-10.6pp, n=407/579); 1-shanten with ≤20 tiles left → 21.5% vs 36.1% earlier (Δ-14.6pp, n=1,323/3,032).</p>
+        <p>As dealer these numbers rise across the board: tenpai push is 67.9% and 1-shanten push is 38.5%; dealer rounds are excluded from this table.</p>
       </div>
       <p class="rx-except">Skip the fold when your hand is tenpai with value or the safe tile destroys your only winning route; reprice again every draw. See <a href="#point-09">Point 08</a> and <a href="#point-10">Point 09</a>.</p>
     </div>
@@ -443,14 +452,14 @@
           <tr><th>Opponent shape</th><th>Early push</th><th>Middle push</th><th>Late push</th></tr>
         </thead>
         <tbody>
-          <tr><td>2 open sets</td><td>54%</td><td>44%</td><td>39%</td></tr>
-          <tr><td>3+ open sets</td><td>57%</td><td>42%</td><td>33%</td></tr>
-          <tr><td>Near-certain tenpai read</td><td></td><td>43%</td><td></td></tr>
+          <tr><td>2 open sets</td><td>52.6%</td><td>42.6%</td><td>37.6%</td></tr>
+          <tr><td>3+ open sets</td><td>51.2% <small>(n=86)</small></td><td>40.9%</td><td>32.7%</td></tr>
         </tbody>
       </table>
+      <p class="rx-basis">Basis: open-hand danger proxy by meld count and turn. Two-meld cells n=1,229/6,498/3,482. Three-plus-meld cells n=86/1,125/1,036; early three-plus cell is a small sample; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> your hand is ≤1 shanten → push 48% vs 28% at 2+ shanten (Δ+20pp, n=10,712/5,243); opponent is non-dealer → 42% vs 40% when dealer (Δ+3pp, n=11,545/4,410); you start rank 3-4 → 42% vs 41% in ranks 1-2 (Δ+2pp, n=7,086/8,869).</p>
-        <p class="rx-down"><b>Lower it:</b> your hand is 2+ shanten → 28% vs 48% at ≤1 shanten (Δ-20pp, n=5,243/10,712); opponent is dealer → 40% vs 42% when non-dealer (Δ-3pp, n=4,410/11,545); you start rank 1-2 → 41% vs 42% in ranks 3-4 (Δ-2pp, n=8,869/7,086).</p>
+        <p class="rx-up"><b>Raise it:</b> your hand is ≤1 shanten → push 47.4% vs 26.9% at 2+ shanten (Δ+20.5pp, n=7,855/4,286).</p>
+        <p class="rx-down"><b>Lower it:</b> your hand is 2+ shanten → 26.9% vs 47.4% at ≤1 shanten (Δ-20.5pp, n=4,286/7,855).</p>
       </div>
       <p class="rx-except">Skip the push when your hand is cheap and far and the next discard has no named safety; defend by choosing the tile that answers the player. See <a href="#point-04">Point 04</a> and <a href="#point-14">Point 13</a>.</p>
     </div>
@@ -508,14 +517,15 @@
           <tr><th>Endgame spot</th><th>LuckyJ habit</th></tr>
         </thead>
         <tbody>
-          <tr><td>Call in last 12 tiles</td><td>1-away 32%; 2+ away 21%; already tenpai 4%</td></tr>
-          <tr><td>Already tenpai vs riichi</td><td>Pushes moderate danger about 63-68%</td></tr>
-          <tr><td>2+ away vs riichi</td><td>Pushes only about 24-27%</td></tr>
-          <tr><td>After two very safe folds</td><td>Reopens 48%; stays folded 52%</td></tr>
+          <tr><td>Call in last 12 tiles</td><td>1-away 30.8%; 2+ away 20.1%; already tenpai 4.5%</td></tr>
+          <tr><td>Already tenpai vs riichi</td><td>20-11 tiles 66.9%; 10-6 tiles 67.2%; 5-0 tiles 60.4%</td></tr>
+          <tr><td>2+ away vs riichi</td><td>20-11 tiles 26.3%; 10-6 tiles 23.7%; 5-0 tiles 24.8%</td></tr>
+          <tr><td>After two very safe folds</td><td>Reopens 47.0%; stays folded 53.0%</td></tr>
         </tbody>
       </table>
+      <p class="rx-basis">Basis: last-12 call opportunities n=465/670/335. Riichi-under-keiten push cells: tenpai n=727/287/270, 2+ shanten n=2,034/730/666. Fold-commitment row n=954; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Thin coverage:</b> endgame call data is only a proxy: ≤12 tiles left makes a first chi from closed 18% vs 6% earlier (Δ+12pp, n=854/20,761); tenpai vs riichi with ≤20 tiles left lowers dangerous pushes to 54% vs 66% earlier (Δ-12pp, n=540/820).</p>
+        <p class="rx-up"><b>Thin coverage:</b> endgame call data is only a proxy: ≤12 tiles left makes a first chi from closed 18.2% vs 6.2% earlier (Δ+12.0pp, n=665/15,619); tenpai vs riichi with ≤20 tiles left lowers dangerous pushes to 52.6% vs 63.2% earlier (Δ-10.6pp, n=407/579).</p>
       </div>
       <p class="rx-except">Skip the keiten fight when the point exchange cannot change placement, the tile is too dangerous for the draw value, or a safe fold preserves more. See <a href="#point-11">Point 10</a> and <a href="#point-12">Point 11</a>.</p>
     </div>
