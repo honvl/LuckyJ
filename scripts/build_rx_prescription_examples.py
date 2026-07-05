@@ -25,115 +25,46 @@ WINDS = ["E", "S", "W", "N"]
 SEQUENCES = {
     "value_honor_cleanup_animation": [
         {
-            "title": "Lone dragon cleanup",
+            "title": "Quiet value wind cleanup",
             "game": 0,
-            "round": "East 2-0",
+            "round": "East 1-0",
             "start_turn": 1,
-            "end_turn": 8,
-            "focus_turn": 7,
-            "focus_honor": "C",
-            "note": "The bar starts from the first draw; autoplay loops around the honor cleanup.",
+            "end_turn": 4,
+            "focus_turn": 3,
+            "focus_honor": "E",
+            "note": "Quiet table: the singleton value wind leaves on turn 3.",
         }
     ],
     "value_honor_cleanup": [
         {
-            "title": "Value wind leaves after the first branch",
-            "game": 0,
-            "round": "East 2-0",
+            "title": "Dragon leaves on turn 3",
+            "game": 1,
+            "round": "East 3-0",
             "start_turn": 1,
-            "end_turn": 7,
-            "focus_turn": 6,
-            "focus_honor": "N",
-            "note": "Quiet table: the value wind has not paired and gets cleaned.",
+            "end_turn": 4,
+            "focus_turn": 3,
+            "focus_honor": "C",
+            "note": "Quiet table: Chun is still a single speculative value honor, so it leaves early.",
         },
         {
-            "title": "Round wind cleanup",
-            "game": 0,
-            "round": "East 3-0",
-            "start_turn": 5,
-            "end_turn": 9,
-            "focus_turn": 8,
-            "focus_honor": "E",
-            "note": "No visible opened yaku changes the job, so the single wind can go.",
-        },
-        {
-            "title": "Opened hand, tanyao blocked",
-            "game": 1,
-            "round": "East 3-0",
-            "start_turn": 6,
-            "end_turn": 9,
-            "focus_turn": 8,
-            "focus_honor": "S",
-            "note": "The open 1s set blocks tanyao; with no visible yakuhai yaku, the honor status is different from an all-simple open hand.",
-        },
-    ],
-    "guest_wind_animation": [
-        {
-            "title": "Guest wind becomes defense",
-            "game": 1,
-            "round": "South 3-0",
-            "start_turn": 8,
-            "end_turn": 13,
-            "focus_turn": 11,
-            "focus_honor": "W",
-            "hold": "W",
-            "note": "After riichi, the same guest wind stays while safer draws are spent.",
-        },
-        {
-            "title": "Late live guest wind hold",
+            "title": "Dragon cleanup stays early",
             "game": 2,
-            "round": "South 2-0",
-            "start_turn": 4,
-            "end_turn": 7,
-            "focus_turn": 6,
-            "focus_honor": "E",
-            "hold": "E",
-            "note": "The guest wind is still a defensive tile, not automatic trash.",
-        },
-    ],
-    "guest_wind_defense": [
-        {
-            "title": "Opening cut",
-            "game": 0,
-            "round": "East 1-0",
+            "round": "South 1-0",
             "start_turn": 1,
-            "end_turn": 3,
-            "focus_turn": 1,
-            "focus_honor": "N",
-            "note": "Quiet table: the starting guest wind has no self yaku job.",
+            "end_turn": 4,
+            "focus_turn": 3,
+            "focus_honor": "C",
+            "note": "Another quiet hand where LuckyJ does not wait for the lone dragon to pair.",
         },
         {
-            "title": "Riichi hold",
-            "game": 1,
-            "round": "South 3-0",
-            "start_turn": 8,
-            "end_turn": 13,
-            "focus_turn": 11,
-            "focus_honor": "W",
-            "hold": "W",
-            "note": "Under riichi, the pair of guest winds is defensive inventory.",
-        },
-    ],
-    "yakuhai_pon": [
-        {
-            "title": "First value-copy pon",
-            "game": 0,
-            "round": "East 4-0",
+            "title": "Seat wind leaves on turn 3",
+            "game": 3,
+            "round": "East 3-0",
             "start_turn": 1,
-            "end_turn": 3,
-            "focus_turn": 2,
-            "focus_honor": "P",
-            "note": "The accepted dragon completes the yaku and the first discard is already chosen.",
-        },
-        {
-            "title": "East pair accepts the third copy",
-            "game": 1,
-            "round": "East 2-1",
-            "start_turn": 6,
-            "end_turn": 9,
-            "focus_turn": 8,
-            "focus_honor": "E",
-            "note": "The call gives the hand a visible value-yaku route.",
+            "end_turn": 4,
+            "focus_turn": 3,
+            "focus_honor": "S",
+            "note": "Seat wind is value, but as a lone tile in a quiet hand it still gets cleaned early.",
         },
     ],
 }
@@ -460,9 +391,7 @@ def build_sequences() -> dict[str, list[dict[str, Any]]]:
 
 
 def main() -> None:
-    existing = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
-    existing.update(build_sequences())
-    OUT.write_text(json.dumps(existing, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    OUT.write_text(json.dumps(build_sequences(), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"wrote {OUT}")
 
 

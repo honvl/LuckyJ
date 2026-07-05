@@ -1,1982 +1,16 @@
 {
   "value_honor_cleanup_animation": [
     {
-      "title": "Lone dragon cleanup",
+      "title": "Quiet value wind cleanup",
       "game": 0,
-      "round": "East 2-0",
-      "kyoku_index": 1,
-      "focus_honor": "C",
-      "note": "The bar starts from the first draw; autoplay loops around the honor cleanup.",
-      "autoplay_indices": [
-        5,
-        6,
-        7
-      ],
-      "turns": [
-        {
-          "label": "T1",
-          "turn": 1,
-          "left": 70,
-          "hand": [
-            "3p",
-            "7p",
-            "6m",
-            "1p",
-            "8s",
-            "1p",
-            "W",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s"
-          ],
-          "draw": "1m",
-          "discard": "W",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "C"
-        },
-        {
-          "label": "T2",
-          "turn": 2,
-          "left": 66,
-          "hand": [
-            "3p",
-            "7p",
-            "6m",
-            "1p",
-            "8s",
-            "1p",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s",
-            "1m"
-          ],
-          "draw": "W",
-          "discard": "W",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "C"
-        },
-        {
-          "label": "T3",
-          "turn": 3,
-          "left": 62,
-          "hand": [
-            "3p",
-            "7p",
-            "6m",
-            "1p",
-            "8s",
-            "1p",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s",
-            "1m"
-          ],
-          "draw": "8p",
-          "discard": "1m",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "C"
-        },
-        {
-          "label": "T4",
-          "turn": 4,
-          "left": 58,
-          "hand": [
-            "3p",
-            "7p",
-            "6m",
-            "1p",
-            "8s",
-            "1p",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s",
-            "8p"
-          ],
-          "draw": "5sr",
-          "discard": "8s",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "C"
-        },
-        {
-          "label": "T5",
-          "turn": 5,
-          "left": 54,
-          "hand": [
-            "3p",
-            "7p",
-            "6m",
-            "1p",
-            "1p",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s",
-            "8p",
-            "5sr"
-          ],
-          "draw": "C",
-          "discard": "3p",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "C"
-        },
-        {
-          "label": "T6",
-          "turn": 6,
-          "left": 50,
-          "hand": [
-            "7p",
-            "6m",
-            "1p",
-            "1p",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s",
-            "8p",
-            "5sr",
-            "C"
-          ],
-          "draw": "F",
-          "discard": "N",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "F",
-              "in_hand": 2,
-              "table": 0,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "C"
-        },
-        {
-          "label": "T7",
-          "turn": 7,
-          "left": 46,
-          "hand": [
-            "7p",
-            "6m",
-            "1p",
-            "1p",
-            "1s",
-            "F",
-            "8m",
-            "1p",
-            "1s",
-            "8p",
-            "5sr",
-            "C",
-            "F"
-          ],
-          "draw": "9p",
-          "discard": "C",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "F",
-              "in_hand": 2,
-              "table": 0,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 3,
-              "seen": 4,
-              "remaining": 0
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "C",
-          "discard_focus_honor": true
-        },
-        {
-          "label": "T8",
-          "turn": 8,
-          "left": 42,
-          "hand": [
-            "7p",
-            "6m",
-            "1p",
-            "1p",
-            "1s",
-            "F",
-            "8m",
-            "1p",
-            "1s",
-            "8p",
-            "5sr",
-            "F",
-            "9p"
-          ],
-          "draw": "4m",
-          "discard": "5sr",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "F",
-              "in_hand": 2,
-              "table": 0,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "C"
-        }
-      ]
-    }
-  ],
-  "value_honor_cleanup": [
-    {
-      "title": "Value wind leaves after the first branch",
-      "game": 0,
-      "round": "East 2-0",
-      "kyoku_index": 1,
-      "focus_honor": "N",
-      "note": "Quiet table: the value wind has not paired and gets cleaned.",
-      "autoplay_indices": [
-        4,
-        5,
-        6
-      ],
-      "turns": [
-        {
-          "label": "T1",
-          "turn": 1,
-          "left": 70,
-          "hand": [
-            "3p",
-            "7p",
-            "6m",
-            "1p",
-            "8s",
-            "1p",
-            "W",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s"
-          ],
-          "draw": "1m",
-          "discard": "W",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "N"
-        },
-        {
-          "label": "T2",
-          "turn": 2,
-          "left": 66,
-          "hand": [
-            "3p",
-            "7p",
-            "6m",
-            "1p",
-            "8s",
-            "1p",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s",
-            "1m"
-          ],
-          "draw": "W",
-          "discard": "W",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "N"
-        },
-        {
-          "label": "T3",
-          "turn": 3,
-          "left": 62,
-          "hand": [
-            "3p",
-            "7p",
-            "6m",
-            "1p",
-            "8s",
-            "1p",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s",
-            "1m"
-          ],
-          "draw": "8p",
-          "discard": "1m",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "N"
-        },
-        {
-          "label": "T4",
-          "turn": 4,
-          "left": 58,
-          "hand": [
-            "3p",
-            "7p",
-            "6m",
-            "1p",
-            "8s",
-            "1p",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s",
-            "8p"
-          ],
-          "draw": "5sr",
-          "discard": "8s",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "N"
-        },
-        {
-          "label": "T5",
-          "turn": 5,
-          "left": 54,
-          "hand": [
-            "3p",
-            "7p",
-            "6m",
-            "1p",
-            "1p",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s",
-            "8p",
-            "5sr"
-          ],
-          "draw": "C",
-          "discard": "3p",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "N"
-        },
-        {
-          "label": "T6",
-          "turn": 6,
-          "left": 50,
-          "hand": [
-            "7p",
-            "6m",
-            "1p",
-            "1p",
-            "1s",
-            "F",
-            "N",
-            "8m",
-            "1p",
-            "1s",
-            "8p",
-            "5sr",
-            "C"
-          ],
-          "draw": "F",
-          "discard": "N",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "F",
-              "in_hand": 2,
-              "table": 0,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "N",
-          "discard_focus_honor": true
-        },
-        {
-          "label": "T7",
-          "turn": 7,
-          "left": 46,
-          "hand": [
-            "7p",
-            "6m",
-            "1p",
-            "1p",
-            "1s",
-            "F",
-            "8m",
-            "1p",
-            "1s",
-            "8p",
-            "5sr",
-            "C",
-            "F"
-          ],
-          "draw": "9p",
-          "discard": "C",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "F",
-              "in_hand": 2,
-              "table": 0,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 3,
-              "seen": 4,
-              "remaining": 0
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "N"
-        }
-      ]
-    },
-    {
-      "title": "Round wind cleanup",
-      "game": 0,
-      "round": "East 3-0",
-      "kyoku_index": 2,
+      "round": "East 1-0",
+      "kyoku_index": 0,
       "focus_honor": "E",
-      "note": "No visible opened yaku changes the job, so the single wind can go.",
-      "autoplay_indices": [
-        2,
-        3,
-        4
-      ],
-      "turns": [
-        {
-          "label": "T5",
-          "turn": 5,
-          "left": 54,
-          "hand": [
-            "N",
-            "E",
-            "C",
-            "2m",
-            "1s",
-            "1p",
-            "7p",
-            "2p",
-            "2m",
-            "5sr",
-            "N",
-            "2p",
-            "3s"
-          ],
-          "draw": "3s",
-          "discard": "1p",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "E",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "N",
-              "in_hand": 2,
-              "table": 0,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "E"
-        },
-        {
-          "label": "T6",
-          "turn": 6,
-          "left": 50,
-          "hand": [
-            "N",
-            "E",
-            "C",
-            "2m",
-            "1s",
-            "7p",
-            "2p",
-            "2m",
-            "5sr",
-            "N",
-            "2p",
-            "3s",
-            "3s"
-          ],
-          "draw": "8p",
-          "discard": "8p",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "E",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "N",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "E"
-        },
-        {
-          "label": "T7",
-          "turn": 7,
-          "left": 46,
-          "hand": [
-            "N",
-            "E",
-            "C",
-            "2m",
-            "1s",
-            "7p",
-            "2p",
-            "2m",
-            "5sr",
-            "N",
-            "2p",
-            "3s",
-            "3s"
-          ],
-          "draw": "9m",
-          "discard": "9m",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "E",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "N",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "E"
-        },
-        {
-          "label": "T8",
-          "turn": 8,
-          "left": 42,
-          "hand": [
-            "N",
-            "E",
-            "C",
-            "2m",
-            "1s",
-            "7p",
-            "2p",
-            "2m",
-            "5sr",
-            "N",
-            "2p",
-            "3s",
-            "3s"
-          ],
-          "draw": "5m",
-          "discard": "E",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "E",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "N",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": true,
-            "opponents": [
-              {
-                "seat": "toimen",
-                "melds": 1,
-                "seat_wind": "E",
-                "visible_yaku": false,
-                "tanyao": "possible"
-              }
-            ],
-            "opponent_melds": 1,
-            "visible_yaku": false,
-            "tanyao_possible": true,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no visible yaku; tanyao still possible"
-          },
-          "focus_honor": "E",
-          "discard_focus_honor": true
-        },
-        {
-          "label": "T9",
-          "turn": 9,
-          "left": 38,
-          "hand": [
-            "N",
-            "C",
-            "2m",
-            "1s",
-            "7p",
-            "2p",
-            "2m",
-            "5sr",
-            "N",
-            "2p",
-            "3s",
-            "3s",
-            "5m"
-          ],
-          "draw": "1p",
-          "discard": "1p",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "N",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": true,
-            "opponents": [
-              {
-                "seat": "toimen",
-                "melds": 1,
-                "seat_wind": "E",
-                "visible_yaku": false,
-                "tanyao": "possible"
-              }
-            ],
-            "opponent_melds": 1,
-            "visible_yaku": false,
-            "tanyao_possible": true,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no visible yaku; tanyao still possible"
-          },
-          "focus_honor": "E"
-        }
-      ]
-    },
-    {
-      "title": "Opened hand, tanyao blocked",
-      "game": 1,
-      "round": "East 3-0",
-      "kyoku_index": 3,
-      "focus_honor": "S",
-      "note": "The open 1s set blocks tanyao; with no visible yakuhai yaku, the honor status is different from an all-simple open hand.",
+      "note": "Quiet table: the singleton value wind leaves on turn 3.",
       "autoplay_indices": [
         1,
         2,
         3
-      ],
-      "turns": [
-        {
-          "label": "T6",
-          "turn": 6,
-          "left": 50,
-          "hand": [
-            "5sr",
-            "7m",
-            "W",
-            "5m",
-            "5s",
-            "2m",
-            "2m",
-            "6p",
-            "W",
-            "N",
-            "2p",
-            "6p",
-            "2m"
-          ],
-          "draw": "5s",
-          "discard": "N",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "S"
-        },
-        {
-          "label": "T7",
-          "turn": 7,
-          "left": 46,
-          "hand": [
-            "5sr",
-            "7m",
-            "W",
-            "5m",
-            "5s",
-            "2m",
-            "2m",
-            "6p",
-            "W",
-            "2p",
-            "6p",
-            "2m",
-            "5s"
-          ],
-          "draw": "S",
-          "discard": "2p",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "S",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            },
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            }
-          ],
-          "open_context": {
-            "someone_opened": true,
-            "opponents": [
-              {
-                "seat": "shimocha",
-                "melds": 1,
-                "seat_wind": "W",
-                "visible_yaku": false,
-                "tanyao": "not_possible"
-              }
-            ],
-            "opponent_melds": 1,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": true,
-            "visible_yaku_text": "no visible yaku; tanyao not possible from exposed tiles"
-          },
-          "focus_honor": "S"
-        },
-        {
-          "label": "T8",
-          "turn": 8,
-          "left": 42,
-          "hand": [
-            "5sr",
-            "7m",
-            "W",
-            "5m",
-            "5s",
-            "2m",
-            "2m",
-            "6p",
-            "W",
-            "6p",
-            "2m",
-            "5s",
-            "S"
-          ],
-          "draw": "C",
-          "discard": "S",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "S",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            },
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            }
-          ],
-          "open_context": {
-            "someone_opened": true,
-            "opponents": [
-              {
-                "seat": "shimocha",
-                "melds": 1,
-                "seat_wind": "W",
-                "visible_yaku": false,
-                "tanyao": "not_possible"
-              }
-            ],
-            "opponent_melds": 1,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": true,
-            "visible_yaku_text": "no visible yaku; tanyao not possible from exposed tiles"
-          },
-          "focus_honor": "S",
-          "discard_focus_honor": true
-        },
-        {
-          "label": "T9",
-          "turn": 9,
-          "left": 38,
-          "hand": [
-            "5sr",
-            "7m",
-            "W",
-            "5m",
-            "5s",
-            "2m",
-            "2m",
-            "6p",
-            "W",
-            "6p",
-            "2m",
-            "5s",
-            "C"
-          ],
-          "draw": "3s",
-          "discard": "3s",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 3,
-              "seen": 4,
-              "remaining": 0
-            }
-          ],
-          "open_context": {
-            "someone_opened": true,
-            "opponents": [
-              {
-                "seat": "shimocha",
-                "melds": 1,
-                "seat_wind": "W",
-                "visible_yaku": false,
-                "tanyao": "not_possible"
-              }
-            ],
-            "opponent_melds": 1,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": true,
-            "visible_yaku_text": "no visible yaku; tanyao not possible from exposed tiles"
-          },
-          "focus_honor": "S"
-        }
-      ]
-    }
-  ],
-  "guest_wind_animation": [
-    {
-      "title": "Guest wind becomes defense",
-      "game": 1,
-      "round": "South 3-0",
-      "kyoku_index": 7,
-      "focus_honor": "W",
-      "note": "After riichi, the same guest wind stays while safer draws are spent.",
-      "autoplay_indices": [
-        2,
-        3,
-        4
-      ],
-      "turns": [
-        {
-          "label": "T8",
-          "turn": 8,
-          "left": 42,
-          "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
-            "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
-            "6p",
-            "3p",
-            "5p",
-            "5p"
-          ],
-          "draw": "9s",
-          "discard": "9s",
-          "hold": "W",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "W"
-        },
-        {
-          "label": "T9",
-          "turn": 9,
-          "left": 38,
-          "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
-            "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
-            "6p",
-            "3p",
-            "5p",
-            "5p"
-          ],
-          "draw": "7p",
-          "discard": "7p",
-          "hold": "W",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "W"
-        },
-        {
-          "label": "T10",
-          "turn": 10,
-          "left": 34,
-          "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
-            "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
-            "6p",
-            "3p",
-            "5p",
-            "5p"
-          ],
-          "draw": "2s",
-          "discard": "2s",
-          "hold": "W",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "W"
-        },
-        {
-          "label": "T11",
-          "turn": 11,
-          "left": 30,
-          "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
-            "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
-            "6p",
-            "3p",
-            "5p",
-            "5p"
-          ],
-          "draw": "F",
-          "discard": "F",
-          "hold": "W",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened",
-            "riichi_active": true
-          },
-          "focus_honor": "W"
-        },
-        {
-          "label": "T12",
-          "turn": 12,
-          "left": 26,
-          "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
-            "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
-            "6p",
-            "3p",
-            "5p",
-            "5p"
-          ],
-          "draw": "S",
-          "discard": "S",
-          "hold": "W",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "S",
-              "in_hand": 1,
-              "table": 3,
-              "seen": 4,
-              "remaining": 0
-            },
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 2,
-              "seen": 4,
-              "remaining": 0
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened",
-            "riichi_active": true
-          },
-          "focus_honor": "W"
-        },
-        {
-          "label": "T13",
-          "turn": 13,
-          "left": 22,
-          "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
-            "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
-            "6p",
-            "3p",
-            "5p",
-            "5p"
-          ],
-          "draw": "1m",
-          "discard": "1m",
-          "hold": "W",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 2,
-              "seen": 4,
-              "remaining": 0
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened",
-            "riichi_active": true
-          },
-          "focus_honor": "W"
-        }
-      ]
-    },
-    {
-      "title": "Late live guest wind hold",
-      "game": 2,
-      "round": "South 2-0",
-      "kyoku_index": 6,
-      "focus_honor": "E",
-      "note": "The guest wind is still a defensive tile, not automatic trash.",
-      "autoplay_indices": [
-        1,
-        2
-      ],
-      "turns": [
-        {
-          "label": "T4",
-          "turn": 4,
-          "left": 58,
-          "hand": [
-            "5p",
-            "8m",
-            "8m",
-            "9s",
-            "2m",
-            "5s",
-            "4m",
-            "3p",
-            "6p",
-            "1p",
-            "4p",
-            "9s",
-            "W"
-          ],
-          "draw": "S",
-          "discard": "W",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "S",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "W",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "E"
-        },
-        {
-          "label": "T5",
-          "turn": 5,
-          "left": 54,
-          "hand": [
-            "5p",
-            "8m",
-            "8m",
-            "9s",
-            "2m",
-            "5s",
-            "4m",
-            "3p",
-            "6p",
-            "1p",
-            "4p",
-            "9s",
-            "S"
-          ],
-          "draw": "E",
-          "discard": "3p",
-          "hold": null,
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "E",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            },
-            {
-              "tile": "S",
-              "in_hand": 1,
-              "table": 2,
-              "seen": 3,
-              "remaining": 1
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened",
-            "riichi_active": true
-          },
-          "focus_honor": "E"
-        },
-        {
-          "label": "T6",
-          "turn": 6,
-          "left": 50,
-          "hand": [
-            "5p",
-            "8m",
-            "8m",
-            "9s",
-            "2m",
-            "5s",
-            "4m",
-            "6p",
-            "1p",
-            "4p",
-            "9s",
-            "S",
-            "E"
-          ],
-          "draw": "7m",
-          "discard": "7m",
-          "hold": "E",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "E",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "S",
-              "in_hand": 1,
-              "table": 3,
-              "seen": 4,
-              "remaining": 0
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened",
-            "riichi_active": true
-          },
-          "focus_honor": "E"
-        }
-      ]
-    }
-  ],
-  "guest_wind_defense": [
-    {
-      "title": "Opening cut",
-      "game": 0,
-      "round": "East 1-0",
-      "kyoku_index": 0,
-      "focus_honor": "N",
-      "note": "Quiet table: the starting guest wind has no self yaku job.",
-      "autoplay_indices": [
-        0,
-        1
       ],
       "turns": [
         {
@@ -2028,8 +62,7 @@
             "tanyao_blocked": false,
             "visible_yaku_text": "no opponent opened"
           },
-          "focus_honor": "N",
-          "discard_focus_honor": true
+          "focus_honor": "E"
         },
         {
           "label": "T2",
@@ -2073,7 +106,7 @@
             "tanyao_blocked": false,
             "visible_yaku_text": "no opponent opened"
           },
-          "focus_honor": "N"
+          "focus_honor": "E"
         },
         {
           "label": "T3",
@@ -2117,70 +150,34 @@
             "tanyao_blocked": false,
             "visible_yaku_text": "no opponent opened"
           },
-          "focus_honor": "N"
-        }
-      ]
-    },
-    {
-      "title": "Riichi hold",
-      "game": 1,
-      "round": "South 3-0",
-      "kyoku_index": 7,
-      "focus_honor": "W",
-      "note": "Under riichi, the pair of guest winds is defensive inventory.",
-      "autoplay_indices": [
-        2,
-        3,
-        4
-      ],
-      "turns": [
+          "focus_honor": "E",
+          "discard_focus_honor": true
+        },
         {
-          "label": "T8",
-          "turn": 8,
-          "left": 42,
+          "label": "T4",
+          "turn": 4,
+          "left": 58,
           "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
             "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
+            "3s",
+            "1p",
+            "4s",
+            "4m",
+            "2p",
+            "8s",
+            "9s",
+            "7p",
+            "7m",
+            "9s",
             "6p",
-            "3p",
-            "5p",
-            "5p"
+            "8s"
           ],
-          "draw": "9s",
-          "discard": "9s",
-          "hold": "W",
+          "draw": "6s",
+          "discard": "7m",
+          "hold": null,
           "call": null,
           "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
+          "honor_counts": [],
           "open_context": {
             "someone_opened": false,
             "opponents": [],
@@ -2190,330 +187,292 @@
             "tanyao_blocked": false,
             "visible_yaku_text": "no opponent opened"
           },
-          "focus_honor": "W"
-        },
-        {
-          "label": "T9",
-          "turn": 9,
-          "left": 38,
-          "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
-            "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
-            "6p",
-            "3p",
-            "5p",
-            "5p"
-          ],
-          "draw": "7p",
-          "discard": "7p",
-          "hold": "W",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "W"
-        },
-        {
-          "label": "T10",
-          "turn": 10,
-          "left": 34,
-          "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
-            "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
-            "6p",
-            "3p",
-            "5p",
-            "5p"
-          ],
-          "draw": "2s",
-          "discard": "2s",
-          "hold": "W",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "W"
-        },
-        {
-          "label": "T11",
-          "turn": 11,
-          "left": 30,
-          "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
-            "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
-            "6p",
-            "3p",
-            "5p",
-            "5p"
-          ],
-          "draw": "F",
-          "discard": "F",
-          "hold": "W",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "F",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened",
-            "riichi_active": true
-          },
-          "focus_honor": "W"
-        },
-        {
-          "label": "T12",
-          "turn": 12,
-          "left": 26,
-          "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
-            "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
-            "6p",
-            "3p",
-            "5p",
-            "5p"
-          ],
-          "draw": "S",
-          "discard": "S",
-          "hold": "W",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "S",
-              "in_hand": 1,
-              "table": 3,
-              "seen": 4,
-              "remaining": 0
-            },
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 2,
-              "seen": 4,
-              "remaining": 0
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened",
-            "riichi_active": true
-          },
-          "focus_honor": "W"
-        },
-        {
-          "label": "T13",
-          "turn": 13,
-          "left": 22,
-          "hand": [
-            "W",
-            "4p",
-            "W",
-            "6p",
-            "3p",
-            "C",
-            "P",
-            "4p",
-            "P",
-            "6p",
-            "3p",
-            "5p",
-            "5p"
-          ],
-          "draw": "1m",
-          "discard": "1m",
-          "hold": "W",
-          "call": null,
-          "consumed": [],
-          "honor_counts": [
-            {
-              "tile": "W",
-              "in_hand": 2,
-              "table": 2,
-              "seen": 4,
-              "remaining": 0
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 1,
-              "seen": 3,
-              "remaining": 1
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened",
-            "riichi_active": true
-          },
-          "focus_honor": "W"
+          "focus_honor": "E"
         }
       ]
     }
   ],
-  "yakuhai_pon": [
+  "value_honor_cleanup": [
     {
-      "title": "First value-copy pon",
-      "game": 0,
-      "round": "East 4-0",
+      "title": "Dragon leaves on turn 3",
+      "game": 1,
+      "round": "East 3-0",
       "kyoku_index": 3,
-      "focus_honor": "P",
-      "note": "The accepted dragon completes the yaku and the first discard is already chosen.",
+      "focus_honor": "C",
+      "note": "Quiet table: Chun is still a single speculative value honor, so it leaves early.",
       "autoplay_indices": [
-        0,
         1,
-        2
+        2,
+        3
+      ],
+      "turns": [
+        {
+          "label": "T1",
+          "turn": 1,
+          "left": 70,
+          "hand": [
+            "F",
+            "5sr",
+            "7m",
+            "W",
+            "5m",
+            "9s",
+            "C",
+            "5s",
+            "2m",
+            "2m",
+            "1p",
+            "6p",
+            "W"
+          ],
+          "draw": "N",
+          "discard": "9s",
+          "hold": null,
+          "call": null,
+          "consumed": [],
+          "honor_counts": [
+            {
+              "tile": "W",
+              "in_hand": 2,
+              "table": 0,
+              "seen": 2,
+              "remaining": 2
+            },
+            {
+              "tile": "N",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "F",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "C",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            }
+          ],
+          "open_context": {
+            "someone_opened": false,
+            "opponents": [],
+            "opponent_melds": 0,
+            "visible_yaku": false,
+            "tanyao_possible": false,
+            "tanyao_blocked": false,
+            "visible_yaku_text": "no opponent opened"
+          },
+          "focus_honor": "C"
+        },
+        {
+          "label": "T2",
+          "turn": 2,
+          "left": 66,
+          "hand": [
+            "F",
+            "5sr",
+            "7m",
+            "W",
+            "5m",
+            "C",
+            "5s",
+            "2m",
+            "2m",
+            "1p",
+            "6p",
+            "W",
+            "N"
+          ],
+          "draw": "7s",
+          "discard": "1p",
+          "hold": null,
+          "call": null,
+          "consumed": [],
+          "honor_counts": [
+            {
+              "tile": "W",
+              "in_hand": 2,
+              "table": 1,
+              "seen": 3,
+              "remaining": 1
+            },
+            {
+              "tile": "N",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "F",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "C",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            }
+          ],
+          "open_context": {
+            "someone_opened": false,
+            "opponents": [],
+            "opponent_melds": 0,
+            "visible_yaku": false,
+            "tanyao_possible": false,
+            "tanyao_blocked": false,
+            "visible_yaku_text": "no opponent opened"
+          },
+          "focus_honor": "C"
+        },
+        {
+          "label": "T3",
+          "turn": 3,
+          "left": 62,
+          "hand": [
+            "F",
+            "5sr",
+            "7m",
+            "W",
+            "5m",
+            "C",
+            "5s",
+            "2m",
+            "2m",
+            "6p",
+            "W",
+            "N",
+            "7s"
+          ],
+          "draw": "2p",
+          "discard": "C",
+          "hold": null,
+          "call": null,
+          "consumed": [],
+          "honor_counts": [
+            {
+              "tile": "W",
+              "in_hand": 2,
+              "table": 1,
+              "seen": 3,
+              "remaining": 1
+            },
+            {
+              "tile": "N",
+              "in_hand": 1,
+              "table": 1,
+              "seen": 2,
+              "remaining": 2
+            },
+            {
+              "tile": "F",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "C",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            }
+          ],
+          "open_context": {
+            "someone_opened": false,
+            "opponents": [],
+            "opponent_melds": 0,
+            "visible_yaku": false,
+            "tanyao_possible": false,
+            "tanyao_blocked": false,
+            "visible_yaku_text": "no opponent opened"
+          },
+          "focus_honor": "C",
+          "discard_focus_honor": true
+        },
+        {
+          "label": "T4",
+          "turn": 4,
+          "left": 58,
+          "hand": [
+            "F",
+            "5sr",
+            "7m",
+            "W",
+            "5m",
+            "5s",
+            "2m",
+            "2m",
+            "6p",
+            "W",
+            "N",
+            "7s",
+            "2p"
+          ],
+          "draw": "6p",
+          "discard": "7s",
+          "hold": null,
+          "call": null,
+          "consumed": [],
+          "honor_counts": [
+            {
+              "tile": "W",
+              "in_hand": 2,
+              "table": 1,
+              "seen": 3,
+              "remaining": 1
+            },
+            {
+              "tile": "N",
+              "in_hand": 1,
+              "table": 1,
+              "seen": 2,
+              "remaining": 2
+            },
+            {
+              "tile": "F",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            }
+          ],
+          "open_context": {
+            "someone_opened": false,
+            "opponents": [],
+            "opponent_melds": 0,
+            "visible_yaku": false,
+            "tanyao_possible": false,
+            "tanyao_blocked": false,
+            "visible_yaku_text": "no opponent opened"
+          },
+          "focus_honor": "C"
+        }
+      ]
+    },
+    {
+      "title": "Dragon cleanup stays early",
+      "game": 2,
+      "round": "South 1-0",
+      "kyoku_index": 5,
+      "focus_honor": "C",
+      "note": "Another quiet hand where LuckyJ does not wait for the lone dragon to pair.",
+      "autoplay_indices": [
+        1,
+        2,
+        3
       ],
       "turns": [
         {
@@ -2522,59 +481,31 @@
           "left": 70,
           "hand": [
             "4s",
-            "P",
-            "N",
-            "S",
+            "8s",
+            "6p",
+            "6p",
+            "9p",
+            "6p",
+            "2m",
+            "C",
+            "6s",
+            "8m",
             "3s",
-            "2m",
-            "9m",
-            "W",
-            "1s",
-            "E",
-            "2m",
-            "S",
-            "6s"
+            "5p",
+            "2p"
           ],
-          "draw": "P",
-          "discard": "9m",
+          "draw": "4s",
+          "discard": "9p",
           "hold": null,
           "call": null,
           "consumed": [],
           "honor_counts": [
             {
-              "tile": "E",
+              "tile": "C",
               "in_hand": 1,
               "table": 0,
               "seen": 1,
               "remaining": 3
-            },
-            {
-              "tile": "S",
-              "in_hand": 2,
-              "table": 0,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "W",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            },
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            },
-            {
-              "tile": "P",
-              "in_hand": 2,
-              "table": 0,
-              "seen": 2,
-              "remaining": 2
             }
           ],
           "open_context": {
@@ -2586,70 +517,39 @@
             "tanyao_blocked": false,
             "visible_yaku_text": "no opponent opened"
           },
-          "focus_honor": "P"
+          "focus_honor": "C"
         },
         {
-          "label": "PON",
+          "label": "T2",
           "turn": 2,
           "left": 66,
           "hand": [
             "4s",
-            "P",
-            "N",
-            "S",
-            "3s",
+            "8s",
+            "6p",
+            "6p",
+            "6p",
             "2m",
-            "W",
-            "1s",
-            "E",
-            "2m",
-            "S",
+            "C",
             "6s",
-            "P"
+            "8m",
+            "3s",
+            "5p",
+            "2p",
+            "4s"
           ],
-          "draw": "P",
-          "discard": "2m",
+          "draw": "7m",
+          "discard": "2p",
           "hold": null,
-          "call": "pon",
-          "consumed": [
-            "P",
-            "P"
-          ],
+          "call": null,
+          "consumed": [],
           "honor_counts": [
             {
-              "tile": "E",
+              "tile": "C",
               "in_hand": 1,
               "table": 0,
               "seen": 1,
               "remaining": 3
-            },
-            {
-              "tile": "S",
-              "in_hand": 2,
-              "table": 0,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "W",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            },
-            {
-              "tile": "N",
-              "in_hand": 1,
-              "table": 0,
-              "seen": 1,
-              "remaining": 3
-            },
-            {
-              "tile": "P",
-              "in_hand": 3,
-              "table": 1,
-              "seen": 4,
-              "remaining": 0
             }
           ],
           "open_context": {
@@ -2661,7 +561,7 @@
             "tanyao_blocked": false,
             "visible_yaku_text": "no opponent opened"
           },
-          "focus_honor": "P"
+          "focus_honor": "C"
         },
         {
           "label": "T3",
@@ -2669,49 +569,31 @@
           "left": 62,
           "hand": [
             "4s",
-            "N",
-            "S",
-            "3s",
-            "W",
-            "1s",
-            "E",
+            "8s",
+            "6p",
+            "6p",
+            "6p",
             "2m",
-            "S",
-            "6s"
+            "C",
+            "6s",
+            "8m",
+            "3s",
+            "5p",
+            "4s",
+            "7m"
           ],
-          "draw": "N",
-          "discard": "2m",
+          "draw": "8s",
+          "discard": "C",
           "hold": null,
           "call": null,
           "consumed": [],
           "honor_counts": [
             {
-              "tile": "E",
+              "tile": "C",
               "in_hand": 1,
               "table": 0,
               "seen": 1,
               "remaining": 3
-            },
-            {
-              "tile": "S",
-              "in_hand": 2,
-              "table": 0,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "W",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            },
-            {
-              "tile": "N",
-              "in_hand": 2,
-              "table": 0,
-              "seen": 2,
-              "remaining": 2
             }
           ],
           "open_context": {
@@ -2723,17 +605,54 @@
             "tanyao_blocked": false,
             "visible_yaku_text": "no opponent opened"
           },
-          "focus_honor": "P"
+          "focus_honor": "C",
+          "discard_focus_honor": true
+        },
+        {
+          "label": "T4",
+          "turn": 4,
+          "left": 58,
+          "hand": [
+            "4s",
+            "8s",
+            "6p",
+            "6p",
+            "6p",
+            "2m",
+            "6s",
+            "8m",
+            "3s",
+            "5p",
+            "4s",
+            "7m",
+            "8s"
+          ],
+          "draw": "2m",
+          "discard": "5p",
+          "hold": null,
+          "call": null,
+          "consumed": [],
+          "honor_counts": [],
+          "open_context": {
+            "someone_opened": false,
+            "opponents": [],
+            "opponent_melds": 0,
+            "visible_yaku": false,
+            "tanyao_possible": false,
+            "tanyao_blocked": false,
+            "visible_yaku_text": "no opponent opened"
+          },
+          "focus_honor": "C"
         }
       ]
     },
     {
-      "title": "East pair accepts the third copy",
-      "game": 1,
-      "round": "East 2-1",
+      "title": "Seat wind leaves on turn 3",
+      "game": 3,
+      "round": "East 3-0",
       "kyoku_index": 2,
-      "focus_honor": "E",
-      "note": "The call gives the hand a visible value-yaku route.",
+      "focus_honor": "S",
+      "note": "Seat wind is value, but as a lone tile in a quiet hand it still gets cleaned early.",
       "autoplay_indices": [
         1,
         2,
@@ -2741,32 +660,46 @@
       ],
       "turns": [
         {
-          "label": "T6",
-          "turn": 6,
-          "left": 50,
+          "label": "T1",
+          "turn": 1,
+          "left": 70,
           "hand": [
-            "1m",
-            "7m",
+            "8p",
+            "7s",
+            "P",
             "9p",
-            "6m",
-            "E",
-            "3s",
-            "8p",
-            "8p",
-            "C",
-            "E",
-            "2m",
+            "W",
+            "2p",
+            "8s",
             "7m",
-            "8m"
+            "6p",
+            "6s",
+            "S",
+            "P",
+            "5s"
           ],
-          "draw": "7p",
-          "discard": "8p",
+          "draw": "C",
+          "discard": "9p",
           "hold": null,
           "call": null,
           "consumed": [],
           "honor_counts": [
             {
-              "tile": "E",
+              "tile": "S",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "W",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "P",
               "in_hand": 2,
               "table": 0,
               "seen": 2,
@@ -2775,9 +708,9 @@
             {
               "tile": "C",
               "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
             }
           ],
           "open_context": {
@@ -2789,35 +722,49 @@
             "tanyao_blocked": false,
             "visible_yaku_text": "no opponent opened"
           },
-          "focus_honor": "E"
+          "focus_honor": "S"
         },
         {
-          "label": "T7",
-          "turn": 7,
-          "left": 46,
+          "label": "T2",
+          "turn": 2,
+          "left": 66,
           "hand": [
-            "1m",
-            "7m",
-            "9p",
-            "6m",
-            "E",
-            "3s",
             "8p",
-            "C",
-            "E",
-            "2m",
+            "7s",
+            "P",
+            "W",
+            "2p",
+            "8s",
             "7m",
-            "8m",
-            "7p"
+            "6p",
+            "6s",
+            "S",
+            "P",
+            "5s",
+            "C"
           ],
-          "draw": "8p",
-          "discard": "8p",
+          "draw": "6p",
+          "discard": "W",
           "hold": null,
           "call": null,
           "consumed": [],
           "honor_counts": [
             {
-              "tile": "E",
+              "tile": "S",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "W",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "P",
               "in_hand": 2,
               "table": 0,
               "seen": 2,
@@ -2826,9 +773,9 @@
             {
               "tile": "C",
               "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
             }
           ],
           "open_context": {
@@ -2840,90 +787,53 @@
             "tanyao_blocked": false,
             "visible_yaku_text": "no opponent opened"
           },
-          "focus_honor": "E"
+          "focus_honor": "S"
         },
         {
-          "label": "PON",
-          "turn": 8,
-          "left": 42,
+          "label": "T3",
+          "turn": 3,
+          "left": 62,
           "hand": [
-            "1m",
+            "8p",
+            "7s",
+            "P",
+            "2p",
+            "8s",
             "7m",
-            "9p",
-            "6m",
-            "E",
-            "3s",
+            "6p",
+            "6s",
+            "S",
+            "P",
+            "5s",
             "C",
-            "E",
-            "2m",
-            "7m",
-            "8m",
-            "7p",
-            "8p"
+            "6p"
           ],
-          "draw": "E",
-          "discard": "7m",
-          "hold": null,
-          "call": "pon",
-          "consumed": [
-            "E",
-            "E"
-          ],
-          "honor_counts": [
-            {
-              "tile": "E",
-              "in_hand": 3,
-              "table": 1,
-              "seen": 4,
-              "remaining": 0
-            },
-            {
-              "tile": "C",
-              "in_hand": 1,
-              "table": 1,
-              "seen": 2,
-              "remaining": 2
-            }
-          ],
-          "open_context": {
-            "someone_opened": false,
-            "opponents": [],
-            "opponent_melds": 0,
-            "visible_yaku": false,
-            "tanyao_possible": false,
-            "tanyao_blocked": false,
-            "visible_yaku_text": "no opponent opened"
-          },
-          "focus_honor": "E"
-        },
-        {
-          "label": "T9",
-          "turn": 9,
-          "left": 38,
-          "hand": [
-            "1m",
-            "9p",
-            "6m",
-            "3s",
-            "C",
-            "2m",
-            "7m",
-            "8m",
-            "7p",
-            "8p"
-          ],
-          "draw": "5p",
-          "discard": "5p",
+          "draw": "4p",
+          "discard": "S",
           "hold": null,
           "call": null,
           "consumed": [],
           "honor_counts": [
             {
-              "tile": "C",
+              "tile": "S",
               "in_hand": 1,
-              "table": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            },
+            {
+              "tile": "P",
+              "in_hand": 2,
+              "table": 0,
               "seen": 2,
               "remaining": 2
+            },
+            {
+              "tile": "C",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
             }
           ],
           "open_context": {
@@ -2935,326 +845,61 @@
             "tanyao_blocked": false,
             "visible_yaku_text": "no opponent opened"
           },
-          "focus_honor": "E"
+          "focus_honor": "S",
+          "discard_focus_honor": true
+        },
+        {
+          "label": "T4",
+          "turn": 4,
+          "left": 58,
+          "hand": [
+            "8p",
+            "7s",
+            "P",
+            "2p",
+            "8s",
+            "7m",
+            "6p",
+            "6s",
+            "P",
+            "5s",
+            "C",
+            "6p",
+            "4p"
+          ],
+          "draw": "6m",
+          "discard": "C",
+          "hold": null,
+          "call": null,
+          "consumed": [],
+          "honor_counts": [
+            {
+              "tile": "P",
+              "in_hand": 2,
+              "table": 0,
+              "seen": 2,
+              "remaining": 2
+            },
+            {
+              "tile": "C",
+              "in_hand": 1,
+              "table": 0,
+              "seen": 1,
+              "remaining": 3
+            }
+          ],
+          "open_context": {
+            "someone_opened": false,
+            "opponents": [],
+            "opponent_melds": 0,
+            "visible_yaku": false,
+            "tanyao_possible": false,
+            "tanyao_blocked": false,
+            "visible_yaku_text": "no opponent opened"
+          },
+          "focus_honor": "S"
         }
       ]
-    }
-  ],
-  "first_call_price": [
-    {
-      "label": "PON",
-      "game": 0,
-      "round": "East 4-0",
-      "turn": 2,
-      "left": 66,
-      "hand": [
-        "4s",
-        "P",
-        "N",
-        "S",
-        "3s",
-        "2m",
-        "W",
-        "1s",
-        "E",
-        "2m",
-        "S",
-        "6s",
-        "P"
-      ],
-      "draw": "P",
-      "discard": "2m",
-      "call": "pon"
-    },
-    {
-      "label": "CHI",
-      "game": 3,
-      "round": "East 3-0",
-      "turn": 10,
-      "left": 36,
-      "hand": [
-        "8p",
-        "7s",
-        "P",
-        "2p",
-        "8s",
-        "7m",
-        "6s",
-        "P",
-        "6p",
-        "4p",
-        "8p",
-        "P",
-        "6m"
-      ],
-      "draw": "3p",
-      "discard": "6p",
-      "call": "chi"
-    }
-  ],
-  "riichi_wait": [
-    {
-      "label": "G1",
-      "game": 1,
-      "round": "South 1-0",
-      "turn": 10,
-      "left": 30,
-      "hand": [
-        "5m",
-        "2m",
-        "4p",
-        "9m",
-        "3m",
-        "7m",
-        "4p",
-        "F",
-        "4m",
-        "8m",
-        "5sr",
-        "3m",
-        "4s"
-      ],
-      "draw": "3s",
-      "discard": "F"
-    },
-    {
-      "label": "G2",
-      "game": 2,
-      "round": "East 3-0",
-      "turn": 5,
-      "left": 51,
-      "hand": [
-        "4m",
-        "4p",
-        "2m",
-        "3m",
-        "4s",
-        "6m",
-        "3s",
-        "2s",
-        "4p",
-        "3m",
-        "4p",
-        "3m",
-        "3p"
-      ],
-      "draw": "3p",
-      "discard": "2m"
-    }
-  ],
-  "riichi_defense": [
-    {
-      "label": "PUSH",
-      "game": 0,
-      "round": "East 1-0",
-      "turn": 8,
-      "left": 41,
-      "hand": [
-        "3p",
-        "3s",
-        "1p",
-        "4s",
-        "4m",
-        "8s",
-        "7p",
-        "9s",
-        "6p",
-        "8s",
-        "6s",
-        "4m",
-        "2p"
-      ],
-      "draw": "2m",
-      "discard": "2m"
-    },
-    {
-      "label": "PUSH",
-      "game": 0,
-      "round": "East 2-0",
-      "turn": 9,
-      "left": 35,
-      "hand": [
-        "7p",
-        "6m",
-        "1p",
-        "1p",
-        "1s",
-        "F",
-        "1p",
-        "1s",
-        "8p",
-        "F",
-        "9p",
-        "4m",
-        "8m"
-      ],
-      "draw": "8m",
-      "discard": "1s"
-    }
-  ],
-  "open_hand_control": [
-    {
-      "label": "HOLD",
-      "game": 1,
-      "round": "East 1-0",
-      "turn": 14,
-      "left": 12,
-      "hand": [
-        "7p",
-        "7s",
-        "5sr",
-        "2s",
-        "9s",
-        "6m",
-        "9p",
-        "8p",
-        "8s",
-        "3s",
-        "8p",
-        "P",
-        "4m"
-      ],
-      "draw": "4m",
-      "discard": "5sr",
-      "hold": "P"
-    },
-    {
-      "label": "PRICE",
-      "game": 1,
-      "round": "South 4-1",
-      "turn": 12,
-      "left": 29,
-      "hand": [
-        "5sr",
-        "7s",
-        "5pr",
-        "5p",
-        "6p",
-        "8s",
-        "6p",
-        "6p",
-        "3s",
-        "4s"
-      ],
-      "draw": "3p",
-      "discard": "3p"
-    }
-  ],
-  "endgame_animation": [
-    {
-      "label": "L1",
-      "game": 1,
-      "round": "East 1-0",
-      "turn": 14,
-      "left": 12,
-      "hand": [
-        "7p",
-        "7s",
-        "5sr",
-        "2s",
-        "9s",
-        "6m",
-        "9p",
-        "8p",
-        "8s",
-        "3s",
-        "8p",
-        "P",
-        "4m"
-      ],
-      "draw": "4m",
-      "discard": "5sr",
-      "hold": "P"
-    },
-    {
-      "label": "L2",
-      "game": 1,
-      "round": "South 4-0",
-      "turn": 16,
-      "left": 10,
-      "hand": [
-        "8m",
-        "8s",
-        "6p",
-        "7m",
-        "4s",
-        "9m",
-        "8s",
-        "5s",
-        "3s",
-        "8p"
-      ],
-      "draw": "9p",
-      "discard": "9p"
-    },
-    {
-      "label": "L3",
-      "game": 1,
-      "round": "South 4-0",
-      "turn": 17,
-      "left": 6,
-      "hand": [
-        "8m",
-        "8s",
-        "6p",
-        "7m",
-        "9m",
-        "8s",
-        "5s",
-        "3s",
-        "8p",
-        "4s"
-      ],
-      "draw": "4s",
-      "discard": "4s"
-    }
-  ],
-  "endgame_price": [
-    {
-      "label": "HOLD",
-      "game": 1,
-      "round": "East 1-0",
-      "turn": 14,
-      "left": 12,
-      "hand": [
-        "7p",
-        "7s",
-        "5sr",
-        "2s",
-        "9s",
-        "6m",
-        "9p",
-        "8p",
-        "8s",
-        "3s",
-        "8p",
-        "P",
-        "4m"
-      ],
-      "draw": "4m",
-      "discard": "5sr",
-      "hold": "P"
-    },
-    {
-      "label": "TEN",
-      "game": 1,
-      "round": "South 4-0",
-      "turn": 16,
-      "left": 10,
-      "hand": [
-        "8m",
-        "8s",
-        "6p",
-        "7m",
-        "4s",
-        "9m",
-        "8s",
-        "5s",
-        "3s",
-        "8p"
-      ],
-      "draw": "9p",
-      "discard": "9p"
     }
   ]
 }

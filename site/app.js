@@ -1492,15 +1492,20 @@ function prescriptionSummaryText(item) {
   `;
 }
 
+const PRESCRIPTION_EXAMPLE_KEYS = new Set(["value_honor_cleanup", "value_honor_cleanup_animation"]);
+
 function prescriptionSequence(sequence, index) {
   const turns = Array.isArray(sequence?.turns) ? sequence.turns : [];
   const autoplay = Array.isArray(sequence?.autoplay_indices) ? sequence.autoplay_indices.join(",") : "";
-  const gameText = [`Game ${sequence.game}`, sequence.round, sequence.focus_honor ? `focus ${sequence.focus_honor}` : ""].filter(Boolean).join(", ");
+  const contextText = [`Game ${sequence.game}`, sequence.round].filter(Boolean).join(", ");
+  const focusText = sequence.focus_honor
+    ? `<span class="rx-focus-tile">Honor ${tileIcon(sequence.focus_honor, "inline-tile")} ${escapeHtml(tileName(sequence.focus_honor))}</span>`
+    : "";
   return `
     <div class="rx-sequence" data-rx-autoplay-indices="${escapeHtml(autoplay)}">
       <div class="rx-sequence-head">
         <b>${escapeHtml(sequence.title || `Example ${index + 1}`)}</b>
-        <span>${escapeHtml(gameText)}</span>
+        <span>${escapeHtml(contextText)}${focusText ? `; ${focusText}` : ""}</span>
       </div>
       <div class="rx-stage">
         ${turns.map(prescriptionExampleLine).join("")}
@@ -1513,12 +1518,20 @@ function prescriptionSequence(sequence, index) {
 function renderPrescriptionExamples(rxExamples) {
   if (!rxExamples || typeof rxExamples !== "object") return;
   for (const summary of document.querySelectorAll(".rx-example[data-rx-summary-key]")) {
+    if (!PRESCRIPTION_EXAMPLE_KEYS.has(summary.dataset.rxSummaryKey)) {
+      summary.remove();
+      continue;
+    }
     const examples = rxExamples[summary.dataset.rxSummaryKey];
     if (!Array.isArray(examples) || !examples.length) continue;
     summary.innerHTML = prescriptionSummaryText(examples[0]);
   }
   for (const block of document.querySelectorAll(".rx-animation[data-rx-key], .rx-animation[data-rx-animate-key]")) {
     const key = block.dataset.rxKey || block.dataset.rxAnimateKey;
+    if (!PRESCRIPTION_EXAMPLE_KEYS.has(key)) {
+      block.remove();
+      continue;
+    }
     const examples = rxExamples[key];
     if (!Array.isArray(examples) || !examples.length || !examples[0]?.turns) {
       block.remove();

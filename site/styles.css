@@ -676,6 +676,18 @@ a {
   text-transform: uppercase;
 }
 
+.rx-focus-tile {
+  align-items: center;
+  display: inline-flex;
+  gap: 3px;
+}
+
+.rx-focus-tile .inline-tile {
+  font-size: 1.35em;
+  padding-right: 0;
+  top: 0.04em;
+}
+
 .rx-turn-context {
   align-items: center;
   color: var(--muted);
