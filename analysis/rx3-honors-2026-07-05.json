@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at": "2026-07-05T22:19:49.230557+00:00",
+    "generated_at": "2026-07-05T22:53:03.697948+00:00",
     "repo_root": "/Users/honvl/LuckyJ",
     "source_rows": 1256,
     "unique_report_rows_analyzed": 1255,
@@ -256,6 +256,189 @@
               }
             }
           }
+        }
+      }
+    },
+    "multiple_value_honor_starts": {
+      "definition": "Child/dealer split follows the parent summary. A value honor is a starting singleton dragon, round wind, seat wind, or double wind. Multi means the same starting hand has at least two such singleton value-honor tile types.",
+      "start_value_singleton_count_distribution": {
+        "1": 3737,
+        "2": 2943,
+        "3": 1094,
+        "4": 186,
+        "5": 12
+      },
+      "tile_level_by_start_count": {
+        "one": {
+          "label": "one",
+          "hands": 3737,
+          "start_singletons": 3737,
+          "discard_turn_all": {
+            "n": 3174,
+            "p25": 2,
+            "median": 3,
+            "p75": 6,
+            "min": 1,
+            "max": 19
+          },
+          "discard_turn_lone": {
+            "n": 3089,
+            "p25": 2,
+            "median": 3,
+            "p75": 6,
+            "min": 1,
+            "max": 17
+          },
+          "cut_by_turn6": {
+            "count": 2417,
+            "n": 3232,
+            "pct": 74.8
+          },
+          "paired_before_cut_pct": {
+            "count": 404,
+            "n": 3737,
+            "pct": 10.8
+          }
+        },
+        "two_plus": {
+          "label": "two_plus",
+          "hands": 4235,
+          "start_singletons": 9972,
+          "discard_turn_all": {
+            "n": 8152,
+            "p25": 3,
+            "median": 4,
+            "p75": 7,
+            "min": 1,
+            "max": 19
+          },
+          "discard_turn_lone": {
+            "n": 7870,
+            "p25": 3,
+            "median": 4,
+            "p75": 6,
+            "min": 1,
+            "max": 18
+          },
+          "cut_by_turn6": {
+            "count": 5939,
+            "n": 8601,
+            "pct": 69.1
+          },
+          "paired_before_cut_pct": {
+            "count": 1210,
+            "n": 9972,
+            "pct": 12.1
+          }
+        },
+        "three_plus": {
+          "label": "three_plus",
+          "hands": 1292,
+          "start_singletons": 4086,
+          "discard_turn_all": {
+            "n": 3283,
+            "p25": 3,
+            "median": 4,
+            "p75": 7,
+            "min": 1,
+            "max": 19
+          },
+          "discard_turn_lone": {
+            "n": 3157,
+            "p25": 3,
+            "median": 4,
+            "p75": 7,
+            "min": 1,
+            "max": 18
+          },
+          "cut_by_turn6": {
+            "count": 2293,
+            "n": 3507,
+            "pct": 65.4
+          },
+          "paired_before_cut_pct": {
+            "count": 506,
+            "n": 4086,
+            "pct": 12.4
+          }
+        }
+      },
+      "multi_hand_level": {
+        "hands": 4235,
+        "first_discard_turn_all": {
+          "n": 4018,
+          "p25": 2,
+          "median": 3,
+          "p75": 5,
+          "min": 1,
+          "max": 17
+        },
+        "second_discard_turn_all": {
+          "n": 3240,
+          "p25": 3,
+          "median": 5,
+          "p75": 7,
+          "min": 2,
+          "max": 18
+        },
+        "first_lone_discard_turn": {
+          "n": 3967,
+          "p25": 2,
+          "median": 3,
+          "p75": 5,
+          "min": 1,
+          "max": 16
+        },
+        "second_lone_discard_turn": {
+          "n": 3101,
+          "p25": 3,
+          "median": 5,
+          "p75": 7,
+          "min": 2,
+          "max": 18
+        },
+        "first_discard_by_turn6": {
+          "count": 3519,
+          "n": 4149,
+          "pct": 84.8
+        },
+        "second_discard_by_turn6": {
+          "count": 2180,
+          "n": 4086,
+          "pct": 53.4
+        },
+        "first_discard_paired_before_cut_pct": {
+          "count": 51,
+          "n": 4018,
+          "pct": 1.3
+        },
+        "second_discard_paired_before_cut_pct": {
+          "count": 139,
+          "n": 3240,
+          "pct": 4.3
+        },
+        "all_still_singleton_value_honors_gone_by_turn6": {
+          "count": 2074,
+          "n": 4014,
+          "pct": 51.7
+        },
+        "any_paired_before_cut_pct": {
+          "count": 1107,
+          "n": 4235,
+          "pct": 26.1
+        },
+        "all_paired_before_cut_pct": {
+          "count": 53,
+          "n": 4235,
+          "pct": 1.3
+        },
+        "remaining_value_singletons_after_first_cut": {
+          "n": 4018,
+          "p25": 1,
+          "median": 1,
+          "p75": 2,
+          "min": 1,
+          "max": 4
         }
       }
     },
@@ -1712,6 +1895,189 @@
               }
             }
           }
+        }
+      }
+    },
+    "multiple_value_honor_starts": {
+      "definition": "Child/dealer split follows the parent summary. A value honor is a starting singleton dragon, round wind, seat wind, or double wind. Multi means the same starting hand has at least two such singleton value-honor tile types.",
+      "start_value_singleton_count_distribution": {
+        "1": 1314,
+        "2": 946,
+        "3": 318,
+        "4": 39,
+        "5": 3
+      },
+      "tile_level_by_start_count": {
+        "one": {
+          "label": "one",
+          "hands": 1314,
+          "start_singletons": 1314,
+          "discard_turn_all": {
+            "n": 1118,
+            "p25": 2,
+            "median": 3,
+            "p75": 5,
+            "min": 1,
+            "max": 18
+          },
+          "discard_turn_lone": {
+            "n": 1104,
+            "p25": 2,
+            "median": 3,
+            "p75": 5,
+            "min": 1,
+            "max": 18
+          },
+          "cut_by_turn6": {
+            "count": 933,
+            "n": 1161,
+            "pct": 80.4
+          },
+          "paired_before_cut_pct": {
+            "count": 142,
+            "n": 1314,
+            "pct": 10.8
+          }
+        },
+        "two_plus": {
+          "label": "two_plus",
+          "hands": 1306,
+          "start_singletons": 3017,
+          "discard_turn_all": {
+            "n": 2516,
+            "p25": 3,
+            "median": 4,
+            "p75": 6,
+            "min": 1,
+            "max": 18
+          },
+          "discard_turn_lone": {
+            "n": 2459,
+            "p25": 3,
+            "median": 4,
+            "p75": 6,
+            "min": 1,
+            "max": 18
+          },
+          "cut_by_turn6": {
+            "count": 1930,
+            "n": 2574,
+            "pct": 75.0
+          },
+          "paired_before_cut_pct": {
+            "count": 363,
+            "n": 3017,
+            "pct": 12.0
+          }
+        },
+        "three_plus": {
+          "label": "three_plus",
+          "hands": 360,
+          "start_singletons": 1125,
+          "discard_turn_all": {
+            "n": 911,
+            "p25": 3,
+            "median": 4,
+            "p75": 7,
+            "min": 1,
+            "max": 18
+          },
+          "discard_turn_lone": {
+            "n": 884,
+            "p25": 3,
+            "median": 4,
+            "p75": 6,
+            "min": 1,
+            "max": 18
+          },
+          "cut_by_turn6": {
+            "count": 659,
+            "n": 943,
+            "pct": 69.9
+          },
+          "paired_before_cut_pct": {
+            "count": 148,
+            "n": 1125,
+            "pct": 13.2
+          }
+        }
+      },
+      "multi_hand_level": {
+        "hands": 1306,
+        "first_discard_turn_all": {
+          "n": 1260,
+          "p25": 2,
+          "median": 3,
+          "p75": 4,
+          "min": 1,
+          "max": 18
+        },
+        "second_discard_turn_all": {
+          "n": 1010,
+          "p25": 4,
+          "median": 5,
+          "p75": 7,
+          "min": 2,
+          "max": 18
+        },
+        "first_lone_discard_turn": {
+          "n": 1251,
+          "p25": 2,
+          "median": 3,
+          "p75": 4,
+          "min": 1,
+          "max": 18
+        },
+        "second_lone_discard_turn": {
+          "n": 979,
+          "p25": 3,
+          "median": 5,
+          "p75": 7,
+          "min": 2,
+          "max": 18
+        },
+        "first_discard_by_turn6": {
+          "count": 1135,
+          "n": 1283,
+          "pct": 88.5
+        },
+        "second_discard_by_turn6": {
+          "count": 734,
+          "n": 1268,
+          "pct": 57.9
+        },
+        "first_discard_paired_before_cut_pct": {
+          "count": 9,
+          "n": 1260,
+          "pct": 0.7
+        },
+        "second_discard_paired_before_cut_pct": {
+          "count": 31,
+          "n": 1010,
+          "pct": 3.1
+        },
+        "all_still_singleton_value_honors_gone_by_turn6": {
+          "count": 741,
+          "n": 1242,
+          "pct": 59.7
+        },
+        "any_paired_before_cut_pct": {
+          "count": 338,
+          "n": 1306,
+          "pct": 25.9
+        },
+        "all_paired_before_cut_pct": {
+          "count": 9,
+          "n": 1306,
+          "pct": 0.7
+        },
+        "remaining_value_singletons_after_first_cut": {
+          "n": 1260,
+          "p25": 1,
+          "median": 1,
+          "p75": 2,
+          "min": 1,
+          "max": 4
         }
       }
     },

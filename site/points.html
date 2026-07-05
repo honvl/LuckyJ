@@ -177,7 +177,18 @@
           <tr><td>Value wind</td><td>Turn 3</td><td>Turn 6</td><td>11%</td></tr>
         </tbody>
       </table>
+      <p class="rx-rule">When the hand starts with multiple singleton value honors, LuckyJ still sheds one early; it just does not clear all of them by the same clock. In 4,235 child hands with 2+ singleton value honors, the first one left at median turn 3 and was gone by turn 6 in 84.8% of eligible hands. The second was slower: median turn 5 and 53.4% by turn 6. At least one value honor paired before cut in 26.1% of those hands, so the extra honors are not all equal throwaways.</p>
+      <table>
+        <thead>
+          <tr><th>Starting singleton value honors</th><th>Hands</th><th>Tile median</th><th>Cut by T6</th><th>Pairs first</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>3,737</td><td>Turn 3</td><td>74.8%</td><td>10.8%</td></tr>
+          <tr><td>2+</td><td>4,235</td><td>Turn 4</td><td>69.1%</td><td>12.1%</td></tr>
+        </tbody>
+      </table>
       <p class="rx-basis">Basis: lone value-honor cleanup timing. Dragon starts n=8,461; value-wind starts n=5,248. Quiet/open discard contexts n=4,814/2,131 and n=3,002/1,379; non-dealer rounds only.</p>
+      <p class="rx-basis">Multiple-value-honor basis: child starts with one singleton value honor n=3,737 hands; with 2+ n=4,235 hands and 9,972 tracked singleton value honors. In 2+ hands, first/second tracked discard n=4,018/3,240; first/second by-turn-6 eligibility n=4,149/4,086; all still-single value honors gone by turn 6 in 51.7% of eligible hands.</p>
       <div class="rx-mods">
         <p class="rx-up"><b>Raise it:</b> your hand is ≤2 shanten on turn 3 → cut by turn 6 rises to 84.3% vs 61.5% at 3+ shanten (Δ+22.8pp, n=4,734/7,099); the tile is round wind → 78.2% vs 69.0% otherwise (Δ+9.1pp, n=2,065/9,768).</p>
         <p class="rx-down"><b>Lower it:</b> your hand is 3+ shanten on turn 3 → 61.5% vs 84.3% at ≤2 shanten (Δ-22.8pp, n=7,099/4,734); the tile is double wind → 52.4% vs 71.2% otherwise (Δ-18.8pp, n=395/11,438); the tile is seat wind only → 66.8% vs 71.4% otherwise (Δ-4.6pp, n=2,089/9,744).</p>

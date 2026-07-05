@@ -752,6 +752,122 @@ def summarize_guest(records: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def summarize_multiple_value_honor_starts(records: list[dict[str, Any]]) -> dict[str, Any]:
+    value_records = [record for record in records if record["kind"] in {"dragon", "value_wind"}]
+    by_hand: dict[tuple[Any, Any, Any, Any], list[dict[str, Any]]] = defaultdict(list)
+    for record in value_records:
+        key = (record.get("report_id"), record.get("game"), record.get("kyoku_index"), record.get("target"))
+        by_hand[key].append(record)
+
+    hands = [items for items in by_hand.values() if items]
+    distribution = Counter(len(items) for items in hands)
+
+    def turn_summary(items: list[dict[str, Any]], lone_only: bool = False) -> dict[str, Any]:
+        turns = [
+            int(record["first_discard_turn"])
+            for record in items
+            if record["first_discard_turn"] is not None and (not lone_only or not record["paired_before_cut"])
+        ]
+        return summarize_turns(turns)
+
+    def tile_bucket(label: str, predicate: Any) -> dict[str, Any]:
+        bucket_hands = [items for items in hands if predicate(len(items))]
+        bucket_records = [record for items in bucket_hands for record in items]
+        events = [event for record in bucket_records if (event := cut_by6_event(record)) is not None]
+        cut_n = sum(1 for event in events if event["cut_by_turn6"])
+        paired_n = sum(1 for record in bucket_records if record["paired_before_cut"])
+        return {
+            "label": label,
+            "hands": len(bucket_hands),
+            "start_singletons": len(bucket_records),
+            "discard_turn_all": turn_summary(bucket_records),
+            "discard_turn_lone": turn_summary(bucket_records, True),
+            "cut_by_turn6": {"count": cut_n, "n": len(events), "pct": pct(cut_n, len(events))},
+            "paired_before_cut_pct": pct_obj(paired_n, len(bucket_records)),
+        }
+
+    multi_hands = [items for items in hands if len(items) >= 2]
+    first_turn_records: list[dict[str, Any]] = []
+    second_turn_records: list[dict[str, Any]] = []
+    all_active_gone_by6_n = 0
+    all_active_gone_by6_denom = 0
+    remaining_after_first: list[int] = []
+    for items in multi_hands:
+        cut_records = sorted(
+            [record for record in items if record["first_discard_turn"] is not None],
+            key=lambda record: (int(record["first_discard_turn"]), record["tile"]),
+        )
+        if cut_records:
+            first_turn_records.append(cut_records[0])
+            first_turn = int(cut_records[0]["first_discard_turn"])
+            remaining_after_first.append(sum(1 for record in items if record["first_discard_turn"] is None or int(record["first_discard_turn"]) > first_turn))
+        if len(cut_records) >= 2:
+            second_turn_records.append(cut_records[1])
+
+        active_events = []
+        active_count = 0
+        for record in items:
+            paired_turn = record.get("paired_turn")
+            first_turn = record.get("first_discard_turn")
+            paired_before_turn6_without_cut = paired_turn is not None and paired_turn <= 6 and (first_turn is None or first_turn > 6)
+            if paired_before_turn6_without_cut:
+                continue
+            active_count += 1
+            event = cut_by6_event(record)
+            if event is not None:
+                active_events.append(event)
+        if active_count and len(active_events) == active_count:
+            all_active_gone_by6_denom += 1
+            if all(event["cut_by_turn6"] for event in active_events):
+                all_active_gone_by6_n += 1
+
+    def ordinal_cut_by_turn6(ordinal: int) -> dict[str, Any]:
+        cut_n = 0
+        eligible_n = 0
+        for items in multi_hands:
+            cut_records = sorted(
+                [record for record in items if record["first_discard_turn"] is not None],
+                key=lambda record: (int(record["first_discard_turn"]), record["tile"]),
+            )
+            nth_cut_by6 = len(cut_records) > ordinal and int(cut_records[ordinal]["first_discard_turn"]) <= 6
+            total_turns = max((int(record.get("total_luckyj_turns") or 0) for record in items), default=0)
+            if nth_cut_by6 or total_turns >= 6:
+                eligible_n += 1
+                cut_n += int(nth_cut_by6)
+        return {"count": cut_n, "n": eligible_n, "pct": pct(cut_n, eligible_n)}
+
+    any_paired_n = sum(1 for items in multi_hands if any(record["paired_before_cut"] for record in items))
+    all_paired_n = sum(1 for items in multi_hands if all(record["paired_before_cut"] for record in items))
+    return {
+        "definition": "Child/dealer split follows the parent summary. A value honor is a starting singleton dragon, round wind, seat wind, or double wind. Multi means the same starting hand has at least two such singleton value-honor tile types.",
+        "start_value_singleton_count_distribution": {str(count): n for count, n in sorted(distribution.items())},
+        "tile_level_by_start_count": {
+            "one": tile_bucket("one", lambda count: count == 1),
+            "two_plus": tile_bucket("two_plus", lambda count: count >= 2),
+            "three_plus": tile_bucket("three_plus", lambda count: count >= 3),
+        },
+        "multi_hand_level": {
+            "hands": len(multi_hands),
+            "first_discard_turn_all": turn_summary(first_turn_records),
+            "second_discard_turn_all": turn_summary(second_turn_records),
+            "first_lone_discard_turn": turn_summary(first_turn_records, True),
+            "second_lone_discard_turn": turn_summary(second_turn_records, True),
+            "first_discard_by_turn6": ordinal_cut_by_turn6(0),
+            "second_discard_by_turn6": ordinal_cut_by_turn6(1),
+            "first_discard_paired_before_cut_pct": pct_obj(sum(1 for record in first_turn_records if record["paired_before_cut"]), len(first_turn_records)),
+            "second_discard_paired_before_cut_pct": pct_obj(sum(1 for record in second_turn_records if record["paired_before_cut"]), len(second_turn_records)),
+            "all_still_singleton_value_honors_gone_by_turn6": {
+                "count": all_active_gone_by6_n,
+                "n": all_active_gone_by6_denom,
+                "pct": pct(all_active_gone_by6_n, all_active_gone_by6_denom),
+            },
+            "any_paired_before_cut_pct": pct_obj(any_paired_n, len(multi_hands)),
+            "all_paired_before_cut_pct": pct_obj(all_paired_n, len(multi_hands)),
+            "remaining_value_singletons_after_first_cut": summarize_turns(remaining_after_first),
+        },
+    }
+
+
 def summarize_matrix(matrix: dict[tuple[str, int, str], Counter[str]]) -> dict[str, Any]:
     cells = []
     nested: dict[str, Any] = {}
@@ -908,6 +1024,7 @@ def split_summary(records: list[dict[str, Any]], matrix: dict[tuple[str, int, st
     bonus_summary = summarize_bonus(bonus)
     return {
         "lone_yakuhai_cleanup_timing": {"summary_by_kind_and_opponent_open": yak},
+        "multiple_value_honor_starts": summarize_multiple_value_honor_starts(records),
         "guest_wind_cleanup": guest,
         "stop_matching_honors_matrix": matrix_summary,
         "bonus_late_live_honor_draw_under_riichi": bonus_summary,
