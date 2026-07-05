@@ -1292,6 +1292,81 @@ function convertStaticTileMarkup(root = document) {
   }
 }
 
+function prescriptionExampleTitle(item) {
+  const bits = [
+    item?.game !== undefined ? `Game ${item.game}` : "",
+    item?.round || "",
+    item?.turn !== undefined ? `turn ${item.turn}` : "",
+    item?.left !== undefined && item?.left !== null ? tilesLeftText(item.left) : "",
+    item?.call ? item.call.toUpperCase() : "",
+  ].filter(Boolean);
+  return bits.join(", ");
+}
+
+function prescriptionTileSpan(tile, className = "") {
+  return `<span class="rx-tile${className ? ` ${className}` : ""}">${tileIcon(tile, "inline-tile")}</span>`;
+}
+
+function prescriptionExampleLine(item) {
+  const hand = Array.isArray(item?.hand) ? item.hand : [];
+  let discardMarked = false;
+  let holdMarked = false;
+  const handTiles = hand
+    .map((tile) => {
+      const classes = [];
+      if (!discardMarked && sameBaseTile(tile, item.discard)) {
+        classes.push("rx-discard");
+        discardMarked = true;
+      }
+      if (item.hold && !holdMarked && sameBaseTile(tile, item.hold) && !sameBaseTile(tile, item.discard)) {
+        classes.push("rx-hold");
+        holdMarked = true;
+      }
+      return prescriptionTileSpan(tile, classes.join(" "));
+    })
+    .join("");
+  const drawClasses = ["rx-draw"];
+  if (!discardMarked && sameBaseTile(item.draw, item.discard)) drawClasses.push("rx-discard");
+  if (item.hold && !holdMarked && sameBaseTile(item.draw, item.hold)) drawClasses.push("rx-hold");
+  const title = prescriptionExampleTitle(item);
+  const label = String(item?.label || item?.game || "").slice(0, 5);
+  return `
+    <div class="rx-turn" title="${escapeHtml(title)}" aria-label="${escapeHtml(title)}">
+      <span class="rx-turn-label">${escapeHtml(label)}</span>
+      <span class="rx-hand-line">${handTiles}${prescriptionTileSpan(item.draw, drawClasses.join(" "))}</span>
+    </div>
+  `;
+}
+
+function prescriptionSummaryText(item) {
+  const action = item.call ? `${item.call.toUpperCase()} accepted` : "Draw";
+  const context = prescriptionExampleTitle(item);
+  const hand = tileRun(item.hand || [], "rx-summary-tiles");
+  const accepted = tileIcon(item.draw, "inline-tile");
+  const discard = tileIcon(item.discard, "inline-tile");
+  return `
+    <p><b>Actual LuckyJ:</b> ${escapeHtml(context)}. ${hand}<span class="rx-summary-draw">${accepted}</span></p>
+    <p><b>${escapeHtml(action)}:</b> ${accepted}; <b>${isJa ? "打牌" : "discard"}:</b> ${discard}</p>
+  `;
+}
+
+function renderPrescriptionExamples(rxExamples) {
+  if (!rxExamples || typeof rxExamples !== "object") return;
+  for (const summary of document.querySelectorAll(".rx-example[data-rx-summary-key]")) {
+    const examples = rxExamples[summary.dataset.rxSummaryKey];
+    if (!Array.isArray(examples) || !examples.length) continue;
+    summary.innerHTML = prescriptionSummaryText(examples[0]);
+  }
+  for (const block of document.querySelectorAll(".rx-animation[data-rx-key], .rx-animation[data-rx-animate-key]")) {
+    const key = block.dataset.rxKey || block.dataset.rxAnimateKey;
+    const examples = rxExamples[key];
+    if (!Array.isArray(examples) || !examples.length) continue;
+    const stage = block.querySelector(".rx-stage");
+    if (!stage) continue;
+    stage.innerHTML = examples.map(prescriptionExampleLine).join("");
+  }
+}
+
 function seatLabel(seat) {
   const labels = isJa
     ? {
@@ -2267,7 +2342,7 @@ async function main() {
   convertStaticTileMarkup();
   applyTileCompatibility();
   const guidePath = isJa ? "strategy-guides.ja.json" : "strategy-guides.json";
-  const [bookResponse, caseResponse, exampleResponse, guideResponse, mortalResponse, mortalCopy, validation] = await Promise.all([
+  const [bookResponse, caseResponse, exampleResponse, guideResponse, mortalResponse, mortalCopy, validation, rxExamples] = await Promise.all([
     fetch("book-data.json"),
     fetch("case-studies.json"),
     fetch("point-examples.json"),
@@ -2275,6 +2350,7 @@ async function main() {
     fetch("mortal-analysis.json"),
     isJa ? fetchJson("mortal-analysis.ja.json", {}) : Promise.resolve({}),
     fetchJson("point-validation.json", {}),
+    fetchJson("rx-prescription-examples.json", {}),
   ]);
   const data = await bookResponse.json();
   const caseData = await caseResponse.json();
@@ -2311,6 +2387,7 @@ async function main() {
   renderYakuhaiPressure(data.decision_counters.yakuhai_pressure);
   renderDefenseTargets(data.decision_counters.defense_targets);
 
+  renderPrescriptionExamples(rxExamples);
   renderPointValidation(validation);
   renderEngineConsensus(mortal.points);
   renderPointExamples(examples, guides, mortal.points, mortalCopy);

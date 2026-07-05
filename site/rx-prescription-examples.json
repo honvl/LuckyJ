@@ -1,0 +1,296 @@
+{
+  "value_honor_cleanup_animation": [
+    {
+      "label": "T5",
+      "game": 0,
+      "round": "East 2-0",
+      "turn": 5,
+      "left": 50,
+      "hand": ["3p", "7p", "6m", "1p", "1p", "1s", "F", "N", "8m", "1p", "1s", "8p", "5sr"],
+      "draw": "C",
+      "discard": "3p"
+    },
+    {
+      "label": "T6",
+      "game": 0,
+      "round": "East 2-0",
+      "turn": 6,
+      "left": 46,
+      "hand": ["7p", "6m", "1p", "1p", "1s", "N", "8m", "1p", "1s", "8p", "5sr", "C", "F"],
+      "draw": "F",
+      "discard": "N"
+    },
+    {
+      "label": "T7",
+      "game": 0,
+      "round": "East 2-0",
+      "turn": 7,
+      "left": 42,
+      "hand": ["7p", "6m", "1p", "1p", "1s", "F", "8m", "1p", "1s", "8p", "5sr", "C", "F"],
+      "draw": "9p",
+      "discard": "C"
+    }
+  ],
+  "value_honor_cleanup": [
+    {
+      "label": "T6",
+      "game": 0,
+      "round": "East 2-0",
+      "turn": 6,
+      "left": 46,
+      "hand": ["7p", "6m", "1p", "1p", "1s", "N", "8m", "1p", "1s", "8p", "5sr", "C", "F"],
+      "draw": "F",
+      "discard": "N"
+    },
+    {
+      "label": "T8",
+      "game": 0,
+      "round": "East 3-0",
+      "turn": 8,
+      "left": 40,
+      "hand": ["N", "E", "C", "2m", "1s", "7p", "2p", "2m", "5sr", "N", "2p", "3s", "3s"],
+      "draw": "5m",
+      "discard": "E"
+    }
+  ],
+  "guest_wind_animation": [
+    {
+      "label": "R1",
+      "game": 1,
+      "round": "South 3-0",
+      "turn": 11,
+      "left": 28,
+      "hand": ["W", "4p", "W", "6p", "3p", "C", "P", "4p", "P", "6p", "3p", "5p", "5p"],
+      "draw": "F",
+      "discard": "F",
+      "hold": "W"
+    },
+    {
+      "label": "R2",
+      "game": 1,
+      "round": "South 3-0",
+      "turn": 12,
+      "left": 24,
+      "hand": ["W", "4p", "W", "6p", "3p", "C", "P", "4p", "P", "6p", "3p", "5p", "5p"],
+      "draw": "S",
+      "discard": "S",
+      "hold": "W"
+    },
+    {
+      "label": "R3",
+      "game": 1,
+      "round": "South 3-0",
+      "turn": 13,
+      "left": 20,
+      "hand": ["W", "4p", "W", "6p", "3p", "C", "P", "4p", "P", "6p", "3p", "5p", "5p"],
+      "draw": "1m",
+      "discard": "1m",
+      "hold": "W"
+    },
+    {
+      "label": "R4",
+      "game": 2,
+      "round": "South 2-0",
+      "turn": 6,
+      "left": 47,
+      "hand": ["5p", "8m", "8m", "9s", "2m", "5s", "4m", "6p", "1p", "4p", "9s", "S", "E"],
+      "draw": "7m",
+      "discard": "7m",
+      "hold": "E"
+    }
+  ],
+  "guest_wind_defense": [
+    {
+      "label": "CUT",
+      "game": 0,
+      "round": "East 1-0",
+      "turn": 1,
+      "left": 69,
+      "hand": ["3p", "1m", "E", "3s", "1p", "4s", "4m", "2p", "8s", "9s", "7p", "7m", "9s"],
+      "draw": "N",
+      "discard": "N"
+    },
+    {
+      "label": "HOLD",
+      "game": 1,
+      "round": "South 3-0",
+      "turn": 11,
+      "left": 28,
+      "hand": ["W", "4p", "W", "6p", "3p", "C", "P", "4p", "P", "6p", "3p", "5p", "5p"],
+      "draw": "F",
+      "discard": "F",
+      "hold": "W"
+    }
+  ],
+  "yakuhai_pon": [
+    {
+      "label": "PON",
+      "game": 0,
+      "round": "East 4-0",
+      "turn": 2,
+      "left": 66,
+      "hand": ["4s", "P", "N", "S", "3s", "2m", "W", "1s", "E", "2m", "S", "6s", "P"],
+      "draw": "P",
+      "discard": "2m",
+      "call": "pon"
+    },
+    {
+      "label": "PON",
+      "game": 1,
+      "round": "East 2-1",
+      "turn": 8,
+      "left": 41,
+      "hand": ["1m", "7m", "9p", "6m", "E", "3s", "C", "E", "2m", "7m", "8m", "7p", "8p"],
+      "draw": "E",
+      "discard": "7m",
+      "call": "pon"
+    }
+  ],
+  "first_call_price": [
+    {
+      "label": "PON",
+      "game": 0,
+      "round": "East 4-0",
+      "turn": 2,
+      "left": 66,
+      "hand": ["4s", "P", "N", "S", "3s", "2m", "W", "1s", "E", "2m", "S", "6s", "P"],
+      "draw": "P",
+      "discard": "2m",
+      "call": "pon"
+    },
+    {
+      "label": "CHI",
+      "game": 3,
+      "round": "East 3-0",
+      "turn": 10,
+      "left": 36,
+      "hand": ["8p", "7s", "P", "2p", "8s", "7m", "6s", "P", "6p", "4p", "8p", "P", "6m"],
+      "draw": "3p",
+      "discard": "6p",
+      "call": "chi"
+    }
+  ],
+  "riichi_wait": [
+    {
+      "label": "G1",
+      "game": 1,
+      "round": "South 1-0",
+      "turn": 10,
+      "left": 30,
+      "hand": ["5m", "2m", "4p", "9m", "3m", "7m", "4p", "F", "4m", "8m", "5sr", "3m", "4s"],
+      "draw": "3s",
+      "discard": "F"
+    },
+    {
+      "label": "G2",
+      "game": 2,
+      "round": "East 3-0",
+      "turn": 5,
+      "left": 51,
+      "hand": ["4m", "4p", "2m", "3m", "4s", "6m", "3s", "2s", "4p", "3m", "4p", "3m", "3p"],
+      "draw": "3p",
+      "discard": "2m"
+    }
+  ],
+  "riichi_defense": [
+    {
+      "label": "PUSH",
+      "game": 0,
+      "round": "East 1-0",
+      "turn": 8,
+      "left": 41,
+      "hand": ["3p", "3s", "1p", "4s", "4m", "8s", "7p", "9s", "6p", "8s", "6s", "4m", "2p"],
+      "draw": "2m",
+      "discard": "2m"
+    },
+    {
+      "label": "PUSH",
+      "game": 0,
+      "round": "East 2-0",
+      "turn": 9,
+      "left": 35,
+      "hand": ["7p", "6m", "1p", "1p", "1s", "F", "1p", "1s", "8p", "F", "9p", "4m", "8m"],
+      "draw": "8m",
+      "discard": "1s"
+    }
+  ],
+  "open_hand_control": [
+    {
+      "label": "HOLD",
+      "game": 1,
+      "round": "East 1-0",
+      "turn": 14,
+      "left": 12,
+      "hand": ["7p", "7s", "5sr", "2s", "9s", "6m", "9p", "8p", "8s", "3s", "8p", "P", "4m"],
+      "draw": "4m",
+      "discard": "5sr",
+      "hold": "P"
+    },
+    {
+      "label": "PRICE",
+      "game": 1,
+      "round": "South 4-1",
+      "turn": 12,
+      "left": 29,
+      "hand": ["5sr", "7s", "5pr", "5p", "6p", "8s", "6p", "6p", "3s", "4s"],
+      "draw": "3p",
+      "discard": "3p"
+    }
+  ],
+  "endgame_animation": [
+    {
+      "label": "L1",
+      "game": 1,
+      "round": "East 1-0",
+      "turn": 14,
+      "left": 12,
+      "hand": ["7p", "7s", "5sr", "2s", "9s", "6m", "9p", "8p", "8s", "3s", "8p", "P", "4m"],
+      "draw": "4m",
+      "discard": "5sr",
+      "hold": "P"
+    },
+    {
+      "label": "L2",
+      "game": 1,
+      "round": "South 4-0",
+      "turn": 16,
+      "left": 10,
+      "hand": ["8m", "8s", "6p", "7m", "4s", "9m", "8s", "5s", "3s", "8p"],
+      "draw": "9p",
+      "discard": "9p"
+    },
+    {
+      "label": "L3",
+      "game": 1,
+      "round": "South 4-0",
+      "turn": 17,
+      "left": 6,
+      "hand": ["8m", "8s", "6p", "7m", "9m", "8s", "5s", "3s", "8p", "4s"],
+      "draw": "4s",
+      "discard": "4s"
+    }
+  ],
+  "endgame_price": [
+    {
+      "label": "HOLD",
+      "game": 1,
+      "round": "East 1-0",
+      "turn": 14,
+      "left": 12,
+      "hand": ["7p", "7s", "5sr", "2s", "9s", "6m", "9p", "8p", "8s", "3s", "8p", "P", "4m"],
+      "draw": "4m",
+      "discard": "5sr",
+      "hold": "P"
+    },
+    {
+      "label": "TEN",
+      "game": 1,
+      "round": "South 4-0",
+      "turn": 16,
+      "left": 10,
+      "hand": ["8m", "8s", "6p", "7m", "4s", "9m", "8s", "5s", "3s", "8p"],
+      "draw": "9p",
+      "discard": "9p"
+    }
+  ]
+}

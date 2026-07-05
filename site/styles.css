@@ -501,6 +501,15 @@ a {
   top: 0.11em;
 }
 
+.rx-example .rx-summary-tiles {
+  font-size: 1.4em;
+}
+
+.rx-summary-draw {
+  display: inline-block;
+  margin-left: 8px;
+}
+
 .rx-animation {
   border: 1px solid var(--line);
   background: linear-gradient(180deg, #fffdfa 0%, #f7efd9 100%);
