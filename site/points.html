@@ -7,7 +7,7 @@
     <link rel="alternate" hreflang="en" href="index.html" />
     <link rel="alternate" hreflang="ja" href="ja.html" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260703-rx-fullhands" />
+    <link rel="stylesheet" href="styles.css?v=20260705-rx-animations" />
   </head>
   <body>
     <header class="topbar">
@@ -124,6 +124,32 @@
         <p><b>Quiet hand:</b> [[2m]][[3m]][[4m]][[5m]][[5p]][[6p]][[7p]][[2s]][[3s]][[4s]][[6s]][[7s]][[8s]][[P]]</p>
         <p><b>Default:</b> cut the lone [[P]]; keep it once it becomes [[P]][[P]] or your only yaku.</p>
       </div>
+      <div class="rx-animation" aria-label="Animated example: the hand takes three draws before throwing the lone white dragon honor.">
+        <div class="rx-anim-head">
+          <b>Lone dragon cleanup</b>
+          <span>draw on right; discard fades</span>
+        </div>
+        <div class="rx-stage">
+          <div class="rx-turn">
+            <span class="rx-turn-label">T1</span>
+            <span class="rx-hand-line">
+              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile rx-discard">[[9s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile rx-draw">[[8m]]</span>
+            </span>
+          </div>
+          <div class="rx-turn">
+            <span class="rx-turn-label">T2</span>
+            <span class="rx-hand-line">
+              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile">[[P]]</span><span class="rx-tile rx-draw rx-discard">[[1m]]</span>
+            </span>
+          </div>
+          <div class="rx-turn">
+            <span class="rx-turn-label">T3</span>
+            <span class="rx-hand-line">
+              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile rx-discard">[[P]]</span><span class="rx-tile rx-draw">[[8s]]</span>
+            </span>
+          </div>
+        </div>
+      </div>
       <h3>Single value honors leave early</h3>
       <p class="rx-rule">If a lone dragon or your value wind has no job yet, it usually leaves around turn 3. When someone has opened, wait a little longer: that same tile may be their missing yaku. Do not auto-cut it on turn 1, because about one in eight singletons paired up before LuckyJ threw them.</p>
       <table>
@@ -145,6 +171,38 @@
       <div class="rx-example">
         <p><b>Quiet hand:</b> [[2m]][[3m]][[5m]][[6m]][[3p]][[4p]][[6p]][[7p]][[2s]][[5s]][[6s]][[9s]][[W]][[8m]]</p>
         <p><b>Default:</b> cut guest [[W]] early; after riichi, spend genbutsu [[9s]] before a live honor.</p>
+      </div>
+      <div class="rx-animation rx-animation-long" aria-label="Animated example: before riichi the guest wind can be thrown; after riichi the wind stays unchanged as a defensive tile.">
+        <div class="rx-anim-head">
+          <b>Guest wind changes job</b>
+          <span>same honor, different table</span>
+        </div>
+        <div class="rx-stage">
+          <div class="rx-turn">
+            <span class="rx-turn-label">T2</span>
+            <span class="rx-hand-line">
+              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile">[[9s]]</span><span class="rx-tile rx-discard">[[W]]</span><span class="rx-tile rx-draw">[[8m]]</span>
+            </span>
+          </div>
+          <div class="rx-turn">
+            <span class="rx-turn-label">R1</span>
+            <span class="rx-hand-line">
+              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile rx-discard">[[9s]]</span><span class="rx-tile rx-hold">[[W]]</span><span class="rx-tile rx-draw">[[1p]]</span>
+            </span>
+          </div>
+          <div class="rx-turn">
+            <span class="rx-turn-label">R2</span>
+            <span class="rx-hand-line">
+              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile rx-discard">[[8m]]</span><span class="rx-tile">[[1p]]</span><span class="rx-tile rx-hold">[[W]]</span><span class="rx-tile rx-draw">[[4s]]</span>
+            </span>
+          </div>
+          <div class="rx-turn">
+            <span class="rx-turn-label">R3</span>
+            <span class="rx-hand-line">
+              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile rx-discard">[[1p]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile rx-hold">[[W]]</span><span class="rx-tile rx-draw">[[7m]]</span>
+            </span>
+          </div>
+        </div>
       </div>
       <h3>Guest winds are cheap until they defend</h3>
       <p class="rx-rule">A wind that is neither your seat wind nor the round wind can go immediately in a quiet hand. Against riichi, stop assuming every live honor is safe: fresh honors often stay, half-spent honors get thrown more often, and a late live honor draw is close to a coin flip.</p>
@@ -288,6 +346,32 @@
       <div class="rx-example">
         <p><b>Last 12 tiles:</b> [[2m]][[3m]][[4m]][[6p]][[6p]][[7p]][[8p]][[2s]][[3s]][[4s]][[7s]][[8s]][[E]][[9m]].</p>
         <p><b>Default:</b> chase tenpai if one-away; if still far, spend safe [[9m]] and let the hand go.</p>
+      </div>
+      <div class="rx-animation" aria-label="Animated example: a late hand accepts a draw on the right, folds safe tiles, and keeps East unchanged as the defensive tile.">
+        <div class="rx-anim-head">
+          <b>Late fold, then reprice</b>
+          <span>the honor stays after the fold</span>
+        </div>
+        <div class="rx-stage">
+          <div class="rx-turn">
+            <span class="rx-turn-label">L1</span>
+            <span class="rx-hand-line">
+              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile">[[8s]]</span><span class="rx-tile rx-hold">[[E]]</span><span class="rx-tile rx-draw rx-discard">[[9m]]</span>
+            </span>
+          </div>
+          <div class="rx-turn">
+            <span class="rx-turn-label">L2</span>
+            <span class="rx-hand-line">
+              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile rx-discard">[[4s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile">[[8s]]</span><span class="rx-tile rx-hold">[[E]]</span><span class="rx-tile rx-draw">[[5p]]</span>
+            </span>
+          </div>
+          <div class="rx-turn">
+            <span class="rx-turn-label">L3</span>
+            <span class="rx-hand-line">
+              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile rx-discard">[[8s]]</span><span class="rx-tile rx-hold">[[E]]</span><span class="rx-tile rx-draw">[[6m]]</span>
+            </span>
+          </div>
+        </div>
       </div>
       <h3>Endgame tenpai has a price</h3>
       <p class="rx-rule">In the last 12 tiles, call for tenpai more often from one-away than from far away. Once already tenpai, LuckyJ often pays moderate danger to keep it. From two-away under riichi, it usually defends. After two very safe folds, reopening the hand is optional, not automatic.</p>

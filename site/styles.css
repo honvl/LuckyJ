@@ -501,6 +501,179 @@ a {
   top: 0.11em;
 }
 
+.rx-animation {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, #fffdfa 0%, #f7efd9 100%);
+  margin: 0 0 14px;
+  padding: 10px 12px 12px;
+}
+
+.rx-anim-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.rx-anim-head b {
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.15;
+}
+
+.rx-anim-head span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 750;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.rx-stage {
+  min-height: 48px;
+  overflow: hidden;
+  position: relative;
+}
+
+.rx-turn {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  animation: rxTurnThree 12s infinite;
+}
+
+.rx-turn:nth-child(2) {
+  animation-delay: 4s;
+}
+
+.rx-turn:nth-child(3) {
+  animation-delay: 8s;
+}
+
+.rx-animation-long .rx-turn {
+  animation-duration: 16s;
+  animation-name: rxTurnFour;
+}
+
+.rx-animation-long .rx-turn:nth-child(4) {
+  animation-delay: 12s;
+}
+
+.rx-turn-label {
+  align-items: center;
+  background: var(--green);
+  color: #fff;
+  display: inline-flex;
+  flex: 0 0 32px;
+  font-size: 11px;
+  font-weight: 850;
+  height: 24px;
+  justify-content: center;
+  line-height: 1;
+}
+
+.rx-hand-line {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  overflow: hidden;
+}
+
+.rx-tile {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  min-inline-size: 1.42em;
+  position: relative;
+}
+
+.rx-tile .inline-tile {
+  filter: drop-shadow(0 2px 4px rgba(40, 45, 38, 0.14));
+  font-size: 1.48em;
+  padding-right: 0;
+  top: 0.05em;
+}
+
+.rx-draw {
+  margin-left: auto;
+  padding-left: 8px;
+}
+
+.rx-draw::before {
+  background: var(--green);
+  content: "";
+  display: inline-block;
+  height: 26px;
+  margin-right: 8px;
+  opacity: 0.36;
+  width: 2px;
+}
+
+.rx-draw .inline-tile {
+  animation: rxDrawPop 4s infinite;
+}
+
+.rx-discard .inline-tile {
+  animation: rxDiscardFade 4s infinite;
+}
+
+.rx-hold .inline-tile {
+  background: rgba(23, 107, 84, 0.11);
+  outline: 2px solid rgba(23, 107, 84, 0.32);
+  outline-offset: -2px;
+}
+
+@keyframes rxTurnThree {
+  0%,
+  27% {
+    opacity: 1;
+  }
+  32%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes rxTurnFour {
+  0%,
+  20% {
+    opacity: 1;
+  }
+  25%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes rxDiscardFade {
+  0%,
+  42% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  76%,
+  100% {
+    opacity: 0.18;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes rxDrawPop {
+  0% {
+    transform: translateX(8px);
+  }
+  18%,
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .rx-card h3 {
   margin: 0 0 6px;
   font-size: 18px;
@@ -559,6 +732,39 @@ a {
 @media (max-width: 900px) {
   .rx-grid {
     grid-template-columns: 1fr;
+  }
+
+  .rx-anim-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .rx-anim-head span {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rx-stage {
+    min-height: 0;
+  }
+
+  .rx-turn,
+  .rx-animation-long .rx-turn {
+    animation: none;
+    margin-top: 4px;
+    opacity: 1;
+    position: static;
+  }
+
+  .rx-draw .inline-tile,
+  .rx-discard .inline-tile {
+    animation: none;
+  }
+
+  .rx-discard .inline-tile {
+    opacity: 0.42;
   }
 }
 
