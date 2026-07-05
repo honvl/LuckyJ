@@ -1307,8 +1307,26 @@ function prescriptionTileSpan(tile, className = "") {
   return `<span class="rx-tile${className ? ` ${className}` : ""}">${tileIcon(tile, "inline-tile")}</span>`;
 }
 
+function prescriptionTileSortKey(tile) {
+  const base = String(tile || "").replace("r", "");
+  const honorOrder = { E: 27, S: 28, W: 29, N: 30, P: 31, F: 32, C: 33 };
+  if (honorOrder[base] !== undefined) return honorOrder[base] * 10;
+  const match = base.match(/^([1-9])([mps])$/);
+  if (!match) return 999;
+  const suitOffset = { m: 0, p: 9, s: 18 }[match[2]];
+  const redOffset = String(tile || "").includes("r") ? 1 : 0;
+  return (suitOffset + Number(match[1]) - 1) * 10 + redOffset;
+}
+
+function sortedPrescriptionHand(hand) {
+  return (Array.isArray(hand) ? hand : [])
+    .map((tile, index) => ({ tile, index }))
+    .sort((a, b) => prescriptionTileSortKey(a.tile) - prescriptionTileSortKey(b.tile) || a.index - b.index)
+    .map((item) => item.tile);
+}
+
 function prescriptionExampleLine(item) {
-  const hand = Array.isArray(item?.hand) ? item.hand : [];
+  const hand = sortedPrescriptionHand(item?.hand);
   let discardMarked = false;
   let holdMarked = false;
   const handTiles = hand
@@ -1338,10 +1356,73 @@ function prescriptionExampleLine(item) {
   `;
 }
 
+function prescriptionTurnLabel(item, index) {
+  return String(item?.label || (item?.turn !== undefined ? `T${item.turn}` : index + 1)).slice(0, 8);
+}
+
+function setupPrescriptionScrubber(block, examples) {
+  const turns = Array.from(block.querySelectorAll(".rx-turn"));
+  if (turns.length <= 1) return;
+  if (block._rxScrubberTimer) window.clearInterval(block._rxScrubberTimer);
+  block.classList.add("rx-scrubbable");
+  let scrubber = block.querySelector(".rx-scrubber");
+  if (!scrubber) {
+    scrubber = document.createElement("div");
+    scrubber.className = "rx-scrubber";
+    scrubber.innerHTML = `
+      <input class="rx-scrub-range" type="range" min="0" step="1" value="0" aria-label="Select turn">
+      <div class="rx-scrub-meta">
+        <span class="rx-scrub-current"></span>
+        <span class="rx-scrub-count"></span>
+      </div>
+    `;
+    block.append(scrubber);
+  }
+  const range = scrubber.querySelector(".rx-scrub-range");
+  const current = scrubber.querySelector(".rx-scrub-current");
+  const count = scrubber.querySelector(".rx-scrub-count");
+  range.max = String(turns.length - 1);
+  const labels = examples.map(prescriptionTurnLabel);
+  let selected = 0;
+  let userHoldUntil = 0;
+
+  const selectTurn = (index) => {
+    selected = Math.max(0, Math.min(turns.length - 1, Number(index) || 0));
+    turns.forEach((turn, turnIndex) => {
+      const active = turnIndex === selected;
+      turn.classList.toggle("is-active", active);
+      turn.setAttribute("aria-hidden", active ? "false" : "true");
+    });
+    range.value = String(selected);
+    const percent = turns.length <= 1 ? 0 : (selected / (turns.length - 1)) * 100;
+    range.style.setProperty("--rx-progress", `${percent}%`);
+    current.textContent = labels[selected] || "";
+    count.textContent = `${selected + 1}/${turns.length}`;
+  };
+
+  const holdForUser = () => {
+    userHoldUntil = Date.now() + 6000;
+  };
+
+  range.addEventListener("input", () => {
+    holdForUser();
+    selectTurn(range.value);
+  });
+  range.addEventListener("pointerdown", holdForUser);
+  range.addEventListener("keydown", holdForUser);
+  range.addEventListener("focus", holdForUser);
+
+  selectTurn(0);
+  block._rxScrubberTimer = window.setInterval(() => {
+    if (Date.now() < userHoldUntil || block.matches(":hover, :focus-within")) return;
+    selectTurn((selected + 1) % turns.length);
+  }, 3200);
+}
+
 function prescriptionSummaryText(item) {
   const action = item.call ? `${item.call.toUpperCase()} accepted` : "Draw";
   const context = prescriptionExampleTitle(item);
-  const hand = tileRun(item.hand || [], "rx-summary-tiles");
+  const hand = tileRun(sortedPrescriptionHand(item.hand), "rx-summary-tiles");
   const accepted = tileIcon(item.draw, "inline-tile");
   const discard = tileIcon(item.discard, "inline-tile");
   return `
@@ -1364,6 +1445,7 @@ function renderPrescriptionExamples(rxExamples) {
     const stage = block.querySelector(".rx-stage");
     if (!stage) continue;
     stage.innerHTML = examples.map(prescriptionExampleLine).join("");
+    if (block.dataset.rxAnimateKey) setupPrescriptionScrubber(block, examples);
   }
 }
 

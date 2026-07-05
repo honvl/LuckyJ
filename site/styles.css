@@ -552,24 +552,12 @@ a {
   inset: 0;
   opacity: 0;
   position: absolute;
-  animation: rxTurnThree 12s infinite;
+  pointer-events: none;
 }
 
-.rx-turn:nth-child(2) {
-  animation-delay: 4s;
-}
-
-.rx-turn:nth-child(3) {
-  animation-delay: 8s;
-}
-
-.rx-animation-long .rx-turn {
-  animation-duration: 16s;
-  animation-name: rxTurnFour;
-}
-
-.rx-animation-long .rx-turn:nth-child(4) {
-  animation-delay: 12s;
+.rx-turn.is-active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .rx-lines .rx-stage {
@@ -581,9 +569,9 @@ a {
 }
 
 .rx-lines .rx-turn {
-  animation: none;
   inset: auto;
   opacity: 1;
+  pointer-events: auto;
   position: static;
 }
 
@@ -618,7 +606,6 @@ a {
   display: inline-flex;
   flex: 0 0 auto;
   justify-content: center;
-  min-inline-size: 1.42em;
   position: relative;
 }
 
@@ -639,12 +626,10 @@ a {
   display: none;
 }
 
-.rx-draw .inline-tile {
-  animation: rxDrawPop 4s infinite;
-}
-
 .rx-discard .inline-tile {
-  animation: rxDiscardFade 4s infinite;
+  background: rgba(185, 65, 58, 0.1);
+  outline: 2px solid rgba(185, 65, 58, 0.46);
+  outline-offset: -2px;
 }
 
 .rx-hold .inline-tile {
@@ -653,49 +638,53 @@ a {
   outline-offset: -2px;
 }
 
-@keyframes rxTurnThree {
-  0%,
-  32.9% {
-    opacity: 1;
-  }
-  33%,
-  100% {
-    opacity: 0;
-  }
+.rx-scrubber {
+  display: grid;
+  gap: 5px;
+  margin-top: 9px;
 }
 
-@keyframes rxTurnFour {
-  0%,
-  24.9% {
-    opacity: 1;
-  }
-  25%,
-  100% {
-    opacity: 0;
-  }
+.rx-scrub-range {
+  --rx-progress: 0%;
+  accent-color: var(--green);
+  appearance: none;
+  background:
+    linear-gradient(90deg, var(--green) 0 var(--rx-progress), rgba(23, 107, 84, 0.18) var(--rx-progress) 100%);
+  border-radius: 999px;
+  cursor: pointer;
+  height: 8px;
+  inline-size: 100%;
+  margin: 0;
 }
 
-@keyframes rxDiscardFade {
-  0%,
-  42% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  76%,
-  100% {
-    opacity: 0.18;
-    transform: translateY(8px);
-  }
+.rx-scrub-range::-webkit-slider-thumb {
+  appearance: none;
+  background: #fff;
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(40, 45, 38, 0.24);
+  height: 18px;
+  width: 18px;
 }
 
-@keyframes rxDrawPop {
-  0% {
-    transform: translateX(8px);
-  }
-  18%,
-  100% {
-    transform: translateX(0);
-  }
+.rx-scrub-range::-moz-range-thumb {
+  background: #fff;
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(40, 45, 38, 0.24);
+  height: 14px;
+  width: 14px;
+}
+
+.rx-scrub-meta {
+  align-items: center;
+  color: var(--muted);
+  display: flex;
+  font-size: 10px;
+  font-weight: 800;
+  justify-content: space-between;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .rx-card h3 {
@@ -782,10 +771,6 @@ a {
     font-size: 8px;
   }
 
-  .rx-tile {
-    min-inline-size: 1em;
-  }
-
   .rx-tile .inline-tile {
     font-size: 1.2em;
   }
@@ -805,17 +790,16 @@ a {
   .rx-animation-long .rx-turn {
     animation: none;
     margin-top: 4px;
+  }
+
+  .rx-turn.is-active,
+  .rx-lines .rx-turn {
     opacity: 1;
-    position: static;
   }
 
   .rx-draw .inline-tile,
   .rx-discard .inline-tile {
     animation: none;
-  }
-
-  .rx-discard .inline-tile {
-    opacity: 0.42;
   }
 }
 
