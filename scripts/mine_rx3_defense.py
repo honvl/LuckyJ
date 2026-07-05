@@ -18,7 +18,8 @@ from typing import Any
 import analyze_luckyj as base
 import mine_rx2_defense as rx2
 
-OUT = Path("/Users/honvl/.claude/jobs/151072f5/tmp/rx3-defense.json")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+OUT = REPO_ROOT / "analysis" / "rx3-defense-2026-07-05.json"
 
 SHANTEN_ORDER = ["0", "1", "2", "3+"]
 TURN_BUCKET_ORDER = ["1-6", "7-12", "13+"]

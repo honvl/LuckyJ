@@ -17,7 +17,8 @@ import mine_rx2_calls as pass2
 from build_point_examples import CALL_KIND_LABELS, yakuhai_for_seat
 from extract_case_studies import remove_tile
 
-OUT_PATH = Path("/Users/honvl/.claude/jobs/151072f5/tmp/rx3-calls.json")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+OUT_PATH = REPO_ROOT / "analysis" / "rx3-calls-2026-07-05.json"
 MIN_CELL_N = 120
 HURO_TYPES = pass1.HURO_TYPES
 SIDE_LABELS = ["child", "dealer"]
@@ -58,6 +59,38 @@ def round1(value: float | None) -> float | None:
 
 def round2(value: float | None) -> float | None:
     return round(value, 2) if value is not None and math.isfinite(value) else None
+
+
+def mean(values: list[float]) -> float | None:
+    return sum(values) / len(values) if values else None
+
+
+def population_std(values: list[float]) -> float | None:
+    if not values:
+        return None
+    avg = mean(values)
+    return math.sqrt(sum((value - avg) ** 2 for value in values) / len(values))
+
+
+def weighted_std(values: list[float], weights: list[int]) -> float | None:
+    if not values or not weights or sum(weights) <= 0:
+        return None
+    avg = sum(value * weight for value, weight in zip(values, weights)) / sum(weights)
+    return math.sqrt(sum(weight * ((value - avg) ** 2) for value, weight in zip(values, weights)) / sum(weights))
+
+
+def percentile(values: list[float], q: float) -> float | None:
+    if not values:
+        return None
+    ordered = sorted(values)
+    if len(ordered) == 1:
+        return ordered[0]
+    pos = (len(ordered) - 1) * q
+    lo = math.floor(pos)
+    hi = math.ceil(pos)
+    if lo == hi:
+        return ordered[lo]
+    return ordered[lo] + (ordered[hi] - ordered[lo]) * (pos - lo)
 
 
 def rate_payload(success: int, n: int, success_key: str, rate_key: str) -> dict[str, Any]:
@@ -263,6 +296,45 @@ def serialize_discard_match(counter: Counter) -> dict[str, Any]:
     return rate_payload(int(counter["match"]), int(counter["n"]), "match", "match_rate_pct")
 
 
+def per_game_yakuhai_pon_consistency(per_game: dict[str, Counter]) -> dict[str, Any]:
+    games = []
+    for report_id, counter in sorted(per_game.items()):
+        n = int(counter["n"])
+        if n < 3:
+            continue
+        pon = int(counter["success"])
+        games.append(
+            {
+                "report_id": report_id,
+                "n": n,
+                "pon": pon,
+                "pon_rate_pct": round1(100.0 * pon / n) if n else None,
+            }
+        )
+
+    rates = [(game["pon_rate_pct"] or 0.0) / 100.0 for game in games]
+    weights = [game["n"] for game in games]
+    total_n = sum(weights)
+    total_pon = sum(game["pon"] for game in games)
+    weighted_mean = total_pon / total_n if total_n else None
+    weighted_std_value = weighted_std(rates, weights)
+    unweighted_mean = mean(rates)
+    unweighted_std_value = population_std(rates)
+    return {
+        "definition": "Child-only games with at least three yakuhai pon opportunities; weighted standard deviation uses each game's opportunity count as weight.",
+        "included_games_min_3_opportunities": len(games),
+        "n": total_n,
+        "pon": total_pon,
+        "weighted_mean_pon_rate_pct": round1(weighted_mean * 100.0) if weighted_mean is not None else None,
+        "weighted_std_pon_rate_pp": round1(weighted_std_value * 100.0) if weighted_std_value is not None else None,
+        "unweighted_mean_pon_rate_pct": round1(unweighted_mean * 100.0) if unweighted_mean is not None else None,
+        "unweighted_std_pon_rate_pp": round1(unweighted_std_value * 100.0) if unweighted_std_value is not None else None,
+        "p25_pon_rate_pct": round1(percentile(rates, 0.25) * 100.0) if rates else None,
+        "p50_pon_rate_pct": round1(percentile(rates, 0.50) * 100.0) if rates else None,
+        "p75_pon_rate_pct": round1(percentile(rates, 0.75) * 100.0) if rates else None,
+    }
+
+
 def nishiki_top_discard(state: dict[str, Any]) -> str | None:
     rows = state.get("dahai_pred") or []
     if not rows:
@@ -309,6 +381,7 @@ def mine() -> dict[str, Any]:
 
     child_yak_effect_total = Counter()
     child_chi_effect_total = Counter()
+    child_yak_per_game: dict[str, Counter] = defaultdict(Counter)
     yak_effect_groups: dict[tuple[str, str], Counter] = defaultdict(Counter)
     chi_effect_groups: dict[tuple[str, str], Counter] = defaultdict(Counter)
 
@@ -391,6 +464,7 @@ def mine() -> dict[str, Any]:
                                     if junk_hand:
                                         add_yak(junk_yak[side], poned, called)
                                     if side == "child":
+                                        add_rate(child_yak_per_game[report_id], poned)
                                         add_rate(child_yak_effect_total, poned)
                                         add_condition(yak_effect_groups, "existing_table_threat", table_threat, poned)
                                         add_condition(yak_effect_groups, "turn_x_shanten", pass2.turn_shanten_bucket(turn, shanten), poned)
@@ -523,6 +597,7 @@ def mine() -> dict[str, Any]:
             "late_keiten": "All pass-1 nonzero-kind huro opportunities with left_hai_num <= 12, bucketed by regular-hand shanten.",
             "condition_effect_delta_pp_vs_complement": "Cell rate minus rate for all other child-only opportunities in the same population.",
             "significant": f"True when n and complement_n are at least {MIN_CELL_N} and |delta_pp_vs_complement| exceeds the 95% two-proportion normal half-width.",
+            "per_game_consistency_child_only": "Child-only per-game spread for the intro sentence; yakuhai pon requires at least three pon opportunities per game.",
             "min_cell_n": MIN_CELL_N,
             "all_rates_are_percent": True,
             "call_kind_labels": {str(k): v for k, v in CALL_KIND_LABELS.items()},
@@ -532,6 +607,9 @@ def mine() -> dict[str, Any]:
             "plain_tsumo_discard_match": {side: serialize_discard_match(discard_match[side]) for side in SIDE_LABELS},
         },
         "baselines": baselines,
+        "per_game_consistency_child_only": {
+            "yakuhai_pon": per_game_yakuhai_pon_consistency(child_yak_per_game),
+        },
         "condition_effects_child_only": {
             "yakuhai_pon": {
                 "population": summarize_rate(child_yak_effect_total, "pon", "pon_rate_pct"),

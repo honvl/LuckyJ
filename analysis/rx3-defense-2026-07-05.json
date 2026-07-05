@@ -1,0 +1,1578 @@
+{
+  "definitions": {
+    "scope": "rx3 restricts prescription baselines and condition effects to kyoku where LuckyJ is not dealer; dealer-only numbers are shown only as side-by-side diagnostics.",
+    "hypothesis_check_scope": "All LuckyJ tsumo states with real_dahai and dahai_pred are counted before any push/fold filtering; dahai_pred[0] is treated as Nishiki head model.",
+    "nishiki_top_discard_match": "top 34-tile index in state['dahai_pred'][0] equals real_dahai by 34-tile class.",
+    "danger": "For LuckyJ's actual discard, max(state[danger_s/t/k][LuckyJ seat][tile_index] / 10000), reused from scripts/mine_rx2_defense.py.",
+    "push": "actual discard danger > 0.05.",
+    "closed_shanten": "No own melds and not own riichi; shanten is mahjong.shanten over LuckyJ's current 14-tile hand. Buckets 0/1/2/3+.",
+    "vs_riichi_scope": "States classified as single_riichi or riichi_plus_more by scripts/mine_rx2_defense.py classifier.",
+    "last20": "left_hai_num <= 20.",
+    "first_discard_after_riichi_genbutsu": "For each opponent riichi declaration, LuckyJ's next tsumo discard is genbutsu if its tile index is in that riichi player's own river, including the declaration discard.",
+    "open_hand_scope": "No-riichi states classified as 2_meld_opponent or 3plus_meld_opponent, using the selected max-open opponent and turn bucket.",
+    "condition_effect_delta": "push_rate(condition value) - push_rate(all other values of that condition). significant=true only when value and complement both have n>=150 and |delta| exceeds the combined 95% CI half-width.",
+    "excluded_published_modifier": "The published tenpai + LuckyJ-is-dealer ~=68% modifier is definitionally excluded from child-only prescriptions."
+  },
+  "summary": {
+    "n_rows_from_sheet": 1256,
+    "n_unique_report_ids": 1255,
+    "n_duplicate_report_rows_skipped": 1,
+    "duplicate_report_rows_skipped": [
+      {
+        "idx": 1101,
+        "report_id": "c045846868d7637fe2878e8c8326ccb44afd66e22cd926fbc900650abef68831v2_2",
+        "actor": 1,
+        "paifu": "https://tenhou.net/4/?log=2023052320gm-0029-0000-bf31f030&tw=1"
+      }
+    ],
+    "n_reports_processed": 1255,
+    "n_reports_failed": 0,
+    "n_kyoku_seen": 13054,
+    "n_child_kyoku_seen": 9746,
+    "n_dealer_kyoku_seen": 3308,
+    "n_luckyj_tsumo_decision_states_all_for_match": 149230,
+    "n_child_luckyj_tsumo_decision_states": 110323,
+    "n_dealer_luckyj_tsumo_decision_states": 38907,
+    "n_child_vs_riichi_closed_shanten_decisions": 13035,
+    "n_child_open_hand_turn7plus_observations": 12141,
+    "n_child_immediate_riichi_reactions": 3245,
+    "n_errors_in_kyoku": 0,
+    "errors": []
+  },
+  "dealer_vs_child_naga_match": {
+    "dealer": {
+      "n": 38907,
+      "top_discard_matches": 27802,
+      "match_rate_pct": 71.5,
+      "ci95_half_width_pp": 0.45
+    },
+    "child": {
+      "n": 110323,
+      "top_discard_matches": 76031,
+      "match_rate_pct": 68.9,
+      "ci95_half_width_pp": 0.27
+    },
+    "unknown": {
+      "n": 0,
+      "top_discard_matches": 0,
+      "match_rate_pct": null,
+      "ci95_half_width_pp": null
+    },
+    "dealer_minus_child_pp": 2.6
+  },
+  "child_only_baselines": {
+    "vs_riichi_push_by_closed_shanten": {
+      "0": {
+        "published_pct": 61.3,
+        "child": {
+          "total_states": 986,
+          "n": 986,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 580,
+          "push_rate_pct": 58.8,
+          "ci95_half_width_pp": 3.07
+        },
+        "dealer_only": {
+          "total_states": 374,
+          "n": 374,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 254,
+          "push_rate_pct": 67.9,
+          "ci95_half_width_pp": 4.73
+        },
+        "child_delta_pp_vs_published": -2.5,
+        "dealer_delta_pp_vs_published": 6.6,
+        "dealer_minus_child_pp": 9.1
+      },
+      "1": {
+        "published_pct": 33.6,
+        "child": {
+          "total_states": 4355,
+          "n": 4355,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 1379,
+          "push_rate_pct": 31.7,
+          "ci95_half_width_pp": 1.38
+        },
+        "dealer_only": {
+          "total_states": 1664,
+          "n": 1664,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 641,
+          "push_rate_pct": 38.5,
+          "ci95_half_width_pp": 2.34
+        },
+        "child_delta_pp_vs_published": -1.9,
+        "dealer_delta_pp_vs_published": 4.9,
+        "dealer_minus_child_pp": 6.8
+      },
+      "2": {
+        "published_pct": 20.3,
+        "child": {
+          "total_states": 4805,
+          "n": 4805,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 944,
+          "push_rate_pct": 19.6,
+          "ci95_half_width_pp": 1.12
+        },
+        "dealer_only": {
+          "total_states": 1231,
+          "n": 1231,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 284,
+          "push_rate_pct": 23.1,
+          "ci95_half_width_pp": 2.35
+        },
+        "child_delta_pp_vs_published": -0.7,
+        "dealer_delta_pp_vs_published": 2.8,
+        "dealer_minus_child_pp": 3.5
+      },
+      "3+": {
+        "published_pct": 14.2,
+        "child": {
+          "total_states": 2889,
+          "n": 2889,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 406,
+          "push_rate_pct": 14.1,
+          "ci95_half_width_pp": 1.27
+        },
+        "dealer_only": {
+          "total_states": 532,
+          "n": 532,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 79,
+          "push_rate_pct": 14.8,
+          "ci95_half_width_pp": 3.02
+        },
+        "child_delta_pp_vs_published": -0.1,
+        "dealer_delta_pp_vs_published": 0.6,
+        "dealer_minus_child_pp": 0.7
+      }
+    },
+    "last20_vs_riichi_push_by_closed_shanten": {
+      "0": {
+        "published_pct": 54.3,
+        "child": {
+          "total_states": 407,
+          "n": 407,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 214,
+          "push_rate_pct": 52.6,
+          "ci95_half_width_pp": 4.85
+        },
+        "dealer_only": {
+          "total_states": 133,
+          "n": 133,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 79,
+          "push_rate_pct": 59.4,
+          "ci95_half_width_pp": 8.35
+        },
+        "child_delta_pp_vs_published": -1.7,
+        "dealer_delta_pp_vs_published": 5.1,
+        "dealer_minus_child_pp": 6.8
+      },
+      "1": {
+        "published_pct": 22.9,
+        "child": {
+          "total_states": 1323,
+          "n": 1323,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 285,
+          "push_rate_pct": 21.5,
+          "ci95_half_width_pp": 2.22
+        },
+        "dealer_only": {
+          "total_states": 445,
+          "n": 445,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 119,
+          "push_rate_pct": 26.7,
+          "ci95_half_width_pp": 4.11
+        },
+        "child_delta_pp_vs_published": -1.4,
+        "dealer_delta_pp_vs_published": 3.8,
+        "dealer_minus_child_pp": 5.2
+      },
+      "2": {
+        "published_pct": 13.4,
+        "child": {
+          "total_states": 1380,
+          "n": 1380,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 190,
+          "push_rate_pct": 13.8,
+          "ci95_half_width_pp": 1.82
+        },
+        "dealer_only": {
+          "total_states": 313,
+          "n": 313,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 37,
+          "push_rate_pct": 11.8,
+          "ci95_half_width_pp": 3.58
+        },
+        "child_delta_pp_vs_published": 0.4,
+        "dealer_delta_pp_vs_published": -1.6,
+        "dealer_minus_child_pp": -2.0
+      },
+      "3+": {
+        "published_pct": 8.4,
+        "child": {
+          "total_states": 708,
+          "n": 708,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 57,
+          "push_rate_pct": 8.1,
+          "ci95_half_width_pp": 2.0
+        },
+        "dealer_only": {
+          "total_states": 111,
+          "n": 111,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 12,
+          "push_rate_pct": 10.8,
+          "ci95_half_width_pp": 5.78
+        },
+        "child_delta_pp_vs_published": -0.3,
+        "dealer_delta_pp_vs_published": 2.4,
+        "dealer_minus_child_pp": 2.7
+      }
+    },
+    "first_discard_after_riichi_genbutsu_by_closed_shanten": {
+      "0": {
+        "published_pct": 32.6,
+        "child": {
+          "n": 278,
+          "genbutsu_count": 98,
+          "genbutsu_rate_pct": 35.3,
+          "ci95_half_width_pp": 5.62
+        },
+        "dealer_only": {
+          "n": 93,
+          "genbutsu_count": 23,
+          "genbutsu_rate_pct": 24.7,
+          "ci95_half_width_pp": 8.77
+        },
+        "child_delta_pp_vs_published": 2.7,
+        "dealer_delta_pp_vs_published": -7.9,
+        "dealer_minus_child_pp": -10.6
+      },
+      "1": {
+        "published_pct": 55.5,
+        "child": {
+          "n": 1272,
+          "genbutsu_count": 723,
+          "genbutsu_rate_pct": 56.8,
+          "ci95_half_width_pp": 2.72
+        },
+        "dealer_only": {
+          "n": 520,
+          "genbutsu_count": 272,
+          "genbutsu_rate_pct": 52.3,
+          "ci95_half_width_pp": 4.29
+        },
+        "child_delta_pp_vs_published": 1.3,
+        "dealer_delta_pp_vs_published": -3.2,
+        "dealer_minus_child_pp": -4.5
+      },
+      "2": {
+        "published_pct": 64.3,
+        "child": {
+          "n": 1136,
+          "genbutsu_count": 739,
+          "genbutsu_rate_pct": 65.1,
+          "ci95_half_width_pp": 2.77
+        },
+        "dealer_only": {
+          "n": 297,
+          "genbutsu_count": 182,
+          "genbutsu_rate_pct": 61.3,
+          "ci95_half_width_pp": 5.54
+        },
+        "child_delta_pp_vs_published": 0.8,
+        "dealer_delta_pp_vs_published": -3.0,
+        "dealer_minus_child_pp": -3.8
+      },
+      "3+": {
+        "published_pct": 68.1,
+        "child": {
+          "n": 559,
+          "genbutsu_count": 384,
+          "genbutsu_rate_pct": 68.7,
+          "ci95_half_width_pp": 3.84
+        },
+        "dealer_only": {
+          "n": 105,
+          "genbutsu_count": 68,
+          "genbutsu_rate_pct": 64.8,
+          "ci95_half_width_pp": 9.14
+        },
+        "child_delta_pp_vs_published": 0.6,
+        "dealer_delta_pp_vs_published": -3.3,
+        "dealer_minus_child_pp": -3.9
+      }
+    },
+    "open_hand_push_by_meld_count_and_turn": {
+      "2": {
+        "1-6": {
+          "published_pct": 54.0,
+          "child": {
+            "total_states": 1229,
+            "n": 1229,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 647,
+            "push_rate_pct": 52.6,
+            "ci95_half_width_pp": 2.79
+          },
+          "dealer_only": {
+            "total_states": 435,
+            "n": 435,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 249,
+            "push_rate_pct": 57.2,
+            "ci95_half_width_pp": 4.65
+          },
+          "child_delta_pp_vs_published": -1.4,
+          "dealer_delta_pp_vs_published": 3.2,
+          "dealer_minus_child_pp": 4.6
+        },
+        "7-12": {
+          "published_pct": 44.0,
+          "child": {
+            "total_states": 6498,
+            "n": 6498,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 2767,
+            "push_rate_pct": 42.6,
+            "ci95_half_width_pp": 1.2
+          },
+          "dealer_only": {
+            "total_states": 2031,
+            "n": 2031,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 994,
+            "push_rate_pct": 48.9,
+            "ci95_half_width_pp": 2.17
+          },
+          "child_delta_pp_vs_published": -1.4,
+          "dealer_delta_pp_vs_published": 4.9,
+          "dealer_minus_child_pp": 6.3
+        },
+        "13+": {
+          "published_pct": 39.0,
+          "child": {
+            "total_states": 3482,
+            "n": 3482,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 1309,
+            "push_rate_pct": 37.6,
+            "ci95_half_width_pp": 1.61
+          },
+          "dealer_only": {
+            "total_states": 1040,
+            "n": 1040,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 464,
+            "push_rate_pct": 44.6,
+            "ci95_half_width_pp": 3.02
+          },
+          "child_delta_pp_vs_published": -1.4,
+          "dealer_delta_pp_vs_published": 5.6,
+          "dealer_minus_child_pp": 7.0
+        }
+      },
+      "3+": {
+        "1-6": {
+          "published_pct": 57.0,
+          "child": {
+            "total_states": 86,
+            "n": 86,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 44,
+            "push_rate_pct": 51.2,
+            "ci95_half_width_pp": 10.56
+          },
+          "dealer_only": {
+            "total_states": 25,
+            "n": 25,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 19,
+            "push_rate_pct": 76.0,
+            "ci95_half_width_pp": 16.74
+          },
+          "child_delta_pp_vs_published": -5.8,
+          "dealer_delta_pp_vs_published": 19.0,
+          "dealer_minus_child_pp": 24.8
+        },
+        "7-12": {
+          "published_pct": 42.0,
+          "child": {
+            "total_states": 1125,
+            "n": 1125,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 460,
+            "push_rate_pct": 40.9,
+            "ci95_half_width_pp": 2.87
+          },
+          "dealer_only": {
+            "total_states": 374,
+            "n": 374,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 162,
+            "push_rate_pct": 43.3,
+            "ci95_half_width_pp": 5.02
+          },
+          "child_delta_pp_vs_published": -1.1,
+          "dealer_delta_pp_vs_published": 1.3,
+          "dealer_minus_child_pp": 2.4
+        },
+        "13+": {
+          "published_pct": 33.0,
+          "child": {
+            "total_states": 1036,
+            "n": 1036,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 339,
+            "push_rate_pct": 32.7,
+            "ci95_half_width_pp": 2.86
+          },
+          "dealer_only": {
+            "total_states": 369,
+            "n": 369,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 128,
+            "push_rate_pct": 34.7,
+            "ci95_half_width_pp": 4.86
+          },
+          "child_delta_pp_vs_published": -0.3,
+          "dealer_delta_pp_vs_published": 1.7,
+          "dealer_minus_child_pp": 2.0
+        }
+      }
+    }
+  },
+  "condition_effects_child_only": {
+    "vs_riichi_closed_shanten": {
+      "0": {
+        "scope": "child-only closed tenpai decisions while facing at least one riichi",
+        "overall": {
+          "total_states": 986,
+          "n": 986,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 580,
+          "push_rate_pct": 58.8,
+          "ci95_half_width_pp": 3.07
+        },
+        "conditions": {
+          "genbutsu_count": {
+            "n_observations": 986,
+            "total_states": 986,
+            "overall": {
+              "total_states": 986,
+              "n": 986,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 580,
+              "push_rate_pct": 58.8,
+              "ci95_half_width_pp": 3.07
+            },
+            "values_sorted_by_abs_delta_pp": [
+              {
+                "total_states": 619,
+                "n": 619,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 332,
+                "push_rate_pct": 53.6,
+                "ci95_half_width_pp": 3.93,
+                "complement_n": 367,
+                "complement_push_count_danger_gt_5pct": 248,
+                "complement_push_rate_pct": 67.6,
+                "delta_pp_vs_complement": -14.0,
+                "complement_ci95_half_width_pp": 4.79,
+                "combined_ci95_half_width_pp": 6.19,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": true,
+                "condition": "genbutsu_count",
+                "value": "2+"
+              },
+              {
+                "total_states": 153,
+                "n": 153,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 107,
+                "push_rate_pct": 69.9,
+                "ci95_half_width_pp": 7.27,
+                "complement_n": 833,
+                "complement_push_count_danger_gt_5pct": 473,
+                "complement_push_rate_pct": 56.8,
+                "delta_pp_vs_complement": 13.1,
+                "complement_ci95_half_width_pp": 3.36,
+                "combined_ci95_half_width_pp": 8.01,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": true,
+                "condition": "genbutsu_count",
+                "value": "0"
+              },
+              {
+                "total_states": 214,
+                "n": 214,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 141,
+                "push_rate_pct": 65.9,
+                "ci95_half_width_pp": 6.35,
+                "complement_n": 772,
+                "complement_push_count_danger_gt_5pct": 439,
+                "complement_push_rate_pct": 56.9,
+                "delta_pp_vs_complement": 9.0,
+                "complement_ci95_half_width_pp": 3.49,
+                "combined_ci95_half_width_pp": 7.25,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": true,
+                "condition": "genbutsu_count",
+                "value": "1"
+              }
+            ]
+          },
+          "tiles_left_le20": {
+            "n_observations": 986,
+            "total_states": 986,
+            "overall": {
+              "total_states": 986,
+              "n": 986,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 580,
+              "push_rate_pct": 58.8,
+              "ci95_half_width_pp": 3.07
+            },
+            "values_sorted_by_abs_delta_pp": [
+              {
+                "total_states": 0,
+                "n": 0,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 0,
+                "push_rate_pct": null,
+                "ci95_half_width_pp": null,
+                "complement_n": 986,
+                "complement_push_count_danger_gt_5pct": 580,
+                "complement_push_rate_pct": 58.8,
+                "delta_pp_vs_complement": null,
+                "complement_ci95_half_width_pp": 3.07,
+                "combined_ci95_half_width_pp": null,
+                "min_cell_n": 150,
+                "min_cell_n_met": false,
+                "significant": false,
+                "condition": "tiles_left_le20",
+                "value": "unknown"
+              },
+              {
+                "total_states": 579,
+                "n": 579,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 366,
+                "push_rate_pct": 63.2,
+                "ci95_half_width_pp": 3.93,
+                "complement_n": 407,
+                "complement_push_count_danger_gt_5pct": 214,
+                "complement_push_rate_pct": 52.6,
+                "delta_pp_vs_complement": 10.6,
+                "complement_ci95_half_width_pp": 4.85,
+                "combined_ci95_half_width_pp": 6.24,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": true,
+                "condition": "tiles_left_le20",
+                "value": "no"
+              },
+              {
+                "total_states": 407,
+                "n": 407,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 214,
+                "push_rate_pct": 52.6,
+                "ci95_half_width_pp": 4.85,
+                "complement_n": 579,
+                "complement_push_count_danger_gt_5pct": 366,
+                "complement_push_rate_pct": 63.2,
+                "delta_pp_vs_complement": -10.6,
+                "complement_ci95_half_width_pp": 3.93,
+                "combined_ci95_half_width_pp": 6.24,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": true,
+                "condition": "tiles_left_le20",
+                "value": "yes"
+              }
+            ]
+          },
+          "dora_count": {
+            "n_observations": 986,
+            "total_states": 986,
+            "overall": {
+              "total_states": 986,
+              "n": 986,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 580,
+              "push_rate_pct": 58.8,
+              "ci95_half_width_pp": 3.07
+            },
+            "values_sorted_by_abs_delta_pp": [
+              {
+                "total_states": 211,
+                "n": 211,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 138,
+                "push_rate_pct": 65.4,
+                "ci95_half_width_pp": 6.42,
+                "complement_n": 775,
+                "complement_push_count_danger_gt_5pct": 442,
+                "complement_push_rate_pct": 57.0,
+                "delta_pp_vs_complement": 8.4,
+                "complement_ci95_half_width_pp": 3.49,
+                "combined_ci95_half_width_pp": 7.3,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": true,
+                "condition": "dora_count",
+                "value": "2"
+              },
+              {
+                "total_states": 102,
+                "n": 102,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 66,
+                "push_rate_pct": 64.7,
+                "ci95_half_width_pp": 9.27,
+                "complement_n": 884,
+                "complement_push_count_danger_gt_5pct": 514,
+                "complement_push_rate_pct": 58.1,
+                "delta_pp_vs_complement": 6.6,
+                "complement_ci95_half_width_pp": 3.25,
+                "combined_ci95_half_width_pp": 9.83,
+                "min_cell_n": 150,
+                "min_cell_n_met": false,
+                "significant": false,
+                "condition": "dora_count",
+                "value": "3+"
+              },
+              {
+                "total_states": 272,
+                "n": 272,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 149,
+                "push_rate_pct": 54.8,
+                "ci95_half_width_pp": 5.91,
+                "complement_n": 714,
+                "complement_push_count_danger_gt_5pct": 431,
+                "complement_push_rate_pct": 60.4,
+                "delta_pp_vs_complement": -5.6,
+                "complement_ci95_half_width_pp": 3.59,
+                "combined_ci95_half_width_pp": 6.92,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": false,
+                "condition": "dora_count",
+                "value": "0"
+              },
+              {
+                "total_states": 401,
+                "n": 401,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 227,
+                "push_rate_pct": 56.6,
+                "ci95_half_width_pp": 4.85,
+                "complement_n": 585,
+                "complement_push_count_danger_gt_5pct": 353,
+                "complement_push_rate_pct": 60.3,
+                "delta_pp_vs_complement": -3.7,
+                "complement_ci95_half_width_pp": 3.96,
+                "combined_ci95_half_width_pp": 6.26,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": false,
+                "condition": "dora_count",
+                "value": "1"
+              }
+            ]
+          },
+          "second_threat_present": {
+            "n_observations": 986,
+            "total_states": 986,
+            "overall": {
+              "total_states": 986,
+              "n": 986,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 580,
+              "push_rate_pct": 58.8,
+              "ci95_half_width_pp": 3.07
+            },
+            "values_sorted_by_abs_delta_pp": [
+              {
+                "total_states": 0,
+                "n": 0,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 0,
+                "push_rate_pct": null,
+                "ci95_half_width_pp": null,
+                "complement_n": 986,
+                "complement_push_count_danger_gt_5pct": 580,
+                "complement_push_rate_pct": 58.8,
+                "delta_pp_vs_complement": null,
+                "complement_ci95_half_width_pp": 3.07,
+                "combined_ci95_half_width_pp": null,
+                "min_cell_n": 150,
+                "min_cell_n_met": false,
+                "significant": false,
+                "condition": "second_threat_present",
+                "value": "unknown"
+              },
+              {
+                "total_states": 724,
+                "n": 724,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 435,
+                "push_rate_pct": 60.1,
+                "ci95_half_width_pp": 3.57,
+                "complement_n": 262,
+                "complement_push_count_danger_gt_5pct": 145,
+                "complement_push_rate_pct": 55.3,
+                "delta_pp_vs_complement": 4.8,
+                "complement_ci95_half_width_pp": 6.02,
+                "combined_ci95_half_width_pp": 7.0,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": false,
+                "condition": "second_threat_present",
+                "value": "no"
+              },
+              {
+                "total_states": 262,
+                "n": 262,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 145,
+                "push_rate_pct": 55.3,
+                "ci95_half_width_pp": 6.02,
+                "complement_n": 724,
+                "complement_push_count_danger_gt_5pct": 435,
+                "complement_push_rate_pct": 60.1,
+                "delta_pp_vs_complement": -4.8,
+                "complement_ci95_half_width_pp": 3.57,
+                "combined_ci95_half_width_pp": 7.0,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": false,
+                "condition": "second_threat_present",
+                "value": "yes"
+              }
+            ]
+          }
+        }
+      },
+      "1": {
+        "scope": "child-only closed 1-shanten decisions while facing at least one riichi",
+        "overall": {
+          "total_states": 4355,
+          "n": 4355,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 1379,
+          "push_rate_pct": 31.7,
+          "ci95_half_width_pp": 1.38
+        },
+        "conditions": {
+          "genbutsu_zero": {
+            "n_observations": 4355,
+            "total_states": 4355,
+            "overall": {
+              "total_states": 4355,
+              "n": 4355,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 1379,
+              "push_rate_pct": 31.7,
+              "ci95_half_width_pp": 1.38
+            },
+            "values_sorted_by_abs_delta_pp": [
+              {
+                "total_states": 0,
+                "n": 0,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 0,
+                "push_rate_pct": null,
+                "ci95_half_width_pp": null,
+                "complement_n": 4355,
+                "complement_push_count_danger_gt_5pct": 1379,
+                "complement_push_rate_pct": 31.7,
+                "delta_pp_vs_complement": null,
+                "complement_ci95_half_width_pp": 1.38,
+                "combined_ci95_half_width_pp": null,
+                "min_cell_n": 150,
+                "min_cell_n_met": false,
+                "significant": false,
+                "condition": "genbutsu_zero",
+                "value": "unknown"
+              },
+              {
+                "total_states": 3653,
+                "n": 3653,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 1006,
+                "push_rate_pct": 27.5,
+                "ci95_half_width_pp": 1.45,
+                "complement_n": 702,
+                "complement_push_count_danger_gt_5pct": 373,
+                "complement_push_rate_pct": 53.1,
+                "delta_pp_vs_complement": -25.6,
+                "complement_ci95_half_width_pp": 3.69,
+                "combined_ci95_half_width_pp": 3.97,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": true,
+                "condition": "genbutsu_zero",
+                "value": "no"
+              },
+              {
+                "total_states": 702,
+                "n": 702,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 373,
+                "push_rate_pct": 53.1,
+                "ci95_half_width_pp": 3.69,
+                "complement_n": 3653,
+                "complement_push_count_danger_gt_5pct": 1006,
+                "complement_push_rate_pct": 27.5,
+                "delta_pp_vs_complement": 25.6,
+                "complement_ci95_half_width_pp": 1.45,
+                "combined_ci95_half_width_pp": 3.97,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": true,
+                "condition": "genbutsu_zero",
+                "value": "yes"
+              }
+            ]
+          },
+          "tiles_left_le20": {
+            "n_observations": 4355,
+            "total_states": 4355,
+            "overall": {
+              "total_states": 4355,
+              "n": 4355,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 1379,
+              "push_rate_pct": 31.7,
+              "ci95_half_width_pp": 1.38
+            },
+            "values_sorted_by_abs_delta_pp": [
+              {
+                "total_states": 0,
+                "n": 0,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 0,
+                "push_rate_pct": null,
+                "ci95_half_width_pp": null,
+                "complement_n": 4355,
+                "complement_push_count_danger_gt_5pct": 1379,
+                "complement_push_rate_pct": 31.7,
+                "delta_pp_vs_complement": null,
+                "complement_ci95_half_width_pp": 1.38,
+                "combined_ci95_half_width_pp": null,
+                "min_cell_n": 150,
+                "min_cell_n_met": false,
+                "significant": false,
+                "condition": "tiles_left_le20",
+                "value": "unknown"
+              },
+              {
+                "total_states": 3032,
+                "n": 3032,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 1094,
+                "push_rate_pct": 36.1,
+                "ci95_half_width_pp": 1.71,
+                "complement_n": 1323,
+                "complement_push_count_danger_gt_5pct": 285,
+                "complement_push_rate_pct": 21.5,
+                "delta_pp_vs_complement": 14.6,
+                "complement_ci95_half_width_pp": 2.22,
+                "combined_ci95_half_width_pp": 2.8,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": true,
+                "condition": "tiles_left_le20",
+                "value": "no"
+              },
+              {
+                "total_states": 1323,
+                "n": 1323,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 285,
+                "push_rate_pct": 21.5,
+                "ci95_half_width_pp": 2.22,
+                "complement_n": 3032,
+                "complement_push_count_danger_gt_5pct": 1094,
+                "complement_push_rate_pct": 36.1,
+                "delta_pp_vs_complement": -14.6,
+                "complement_ci95_half_width_pp": 1.71,
+                "combined_ci95_half_width_pp": 2.8,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": true,
+                "condition": "tiles_left_le20",
+                "value": "yes"
+              }
+            ]
+          },
+          "riichi_is_dealer": {
+            "n_observations": 4355,
+            "total_states": 4355,
+            "overall": {
+              "total_states": 4355,
+              "n": 4355,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 1379,
+              "push_rate_pct": 31.7,
+              "ci95_half_width_pp": 1.38
+            },
+            "values_sorted_by_abs_delta_pp": [
+              {
+                "total_states": 0,
+                "n": 0,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 0,
+                "push_rate_pct": null,
+                "ci95_half_width_pp": null,
+                "complement_n": 4355,
+                "complement_push_count_danger_gt_5pct": 1379,
+                "complement_push_rate_pct": 31.7,
+                "delta_pp_vs_complement": null,
+                "complement_ci95_half_width_pp": 1.38,
+                "combined_ci95_half_width_pp": null,
+                "min_cell_n": 150,
+                "min_cell_n_met": false,
+                "significant": false,
+                "condition": "riichi_is_dealer",
+                "value": "unknown"
+              },
+              {
+                "total_states": 2639,
+                "n": 2639,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 844,
+                "push_rate_pct": 32.0,
+                "ci95_half_width_pp": 1.78,
+                "complement_n": 1716,
+                "complement_push_count_danger_gt_5pct": 535,
+                "complement_push_rate_pct": 31.2,
+                "delta_pp_vs_complement": 0.8,
+                "complement_ci95_half_width_pp": 2.19,
+                "combined_ci95_half_width_pp": 2.82,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": false,
+                "condition": "riichi_is_dealer",
+                "value": "no"
+              },
+              {
+                "total_states": 1716,
+                "n": 1716,
+                "missing_danger": 0,
+                "push_count_danger_gt_5pct": 535,
+                "push_rate_pct": 31.2,
+                "ci95_half_width_pp": 2.19,
+                "complement_n": 2639,
+                "complement_push_count_danger_gt_5pct": 844,
+                "complement_push_rate_pct": 32.0,
+                "delta_pp_vs_complement": -0.8,
+                "complement_ci95_half_width_pp": 1.78,
+                "combined_ci95_half_width_pp": 2.82,
+                "min_cell_n": 150,
+                "min_cell_n_met": true,
+                "significant": false,
+                "condition": "riichi_is_dealer",
+                "value": "yes"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "open_hand_turn7plus": {
+      "scope": "child-only no-riichi states classified as 2_meld_opponent or 3plus_meld_opponent, selected opponent turn >= 7",
+      "overall": {
+        "total_states": 12141,
+        "n": 12141,
+        "missing_danger": 0,
+        "push_count_danger_gt_5pct": 4875,
+        "push_rate_pct": 40.2,
+        "ci95_half_width_pp": 0.87
+      },
+      "conditions": {
+        "own_shanten_bucket": {
+          "n_observations": 12141,
+          "total_states": 12141,
+          "overall": {
+            "total_states": 12141,
+            "n": 12141,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 4875,
+            "push_rate_pct": 40.2,
+            "ci95_half_width_pp": 0.87
+          },
+          "values_sorted_by_abs_delta_pp": [
+            {
+              "total_states": 0,
+              "n": 0,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 0,
+              "push_rate_pct": null,
+              "ci95_half_width_pp": null,
+              "complement_n": 12141,
+              "complement_push_count_danger_gt_5pct": 4875,
+              "complement_push_rate_pct": 40.2,
+              "delta_pp_vs_complement": null,
+              "complement_ci95_half_width_pp": 0.87,
+              "combined_ci95_half_width_pp": null,
+              "min_cell_n": 150,
+              "min_cell_n_met": false,
+              "significant": false,
+              "condition": "own_shanten_bucket",
+              "value": "unknown"
+            },
+            {
+              "total_states": 4286,
+              "n": 4286,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 1153,
+              "push_rate_pct": 26.9,
+              "ci95_half_width_pp": 1.33,
+              "complement_n": 7855,
+              "complement_push_count_danger_gt_5pct": 3722,
+              "complement_push_rate_pct": 47.4,
+              "delta_pp_vs_complement": -20.5,
+              "complement_ci95_half_width_pp": 1.1,
+              "combined_ci95_half_width_pp": 1.73,
+              "min_cell_n": 150,
+              "min_cell_n_met": true,
+              "significant": true,
+              "condition": "own_shanten_bucket",
+              "value": "2+"
+            },
+            {
+              "total_states": 7855,
+              "n": 7855,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 3722,
+              "push_rate_pct": 47.4,
+              "ci95_half_width_pp": 1.1,
+              "complement_n": 4286,
+              "complement_push_count_danger_gt_5pct": 1153,
+              "complement_push_rate_pct": 26.9,
+              "delta_pp_vs_complement": 20.5,
+              "complement_ci95_half_width_pp": 1.33,
+              "combined_ci95_half_width_pp": 1.73,
+              "min_cell_n": 150,
+              "min_cell_n_met": true,
+              "significant": true,
+              "condition": "own_shanten_bucket",
+              "value": "<=1"
+            }
+          ]
+        },
+        "opponent_is_dealer": {
+          "n_observations": 12141,
+          "total_states": 12141,
+          "overall": {
+            "total_states": 12141,
+            "n": 12141,
+            "missing_danger": 0,
+            "push_count_danger_gt_5pct": 4875,
+            "push_rate_pct": 40.2,
+            "ci95_half_width_pp": 0.87
+          },
+          "values_sorted_by_abs_delta_pp": [
+            {
+              "total_states": 0,
+              "n": 0,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 0,
+              "push_rate_pct": null,
+              "ci95_half_width_pp": null,
+              "complement_n": 12141,
+              "complement_push_count_danger_gt_5pct": 4875,
+              "complement_push_rate_pct": 40.2,
+              "delta_pp_vs_complement": null,
+              "complement_ci95_half_width_pp": 0.87,
+              "combined_ci95_half_width_pp": null,
+              "min_cell_n": 150,
+              "min_cell_n_met": false,
+              "significant": false,
+              "condition": "opponent_is_dealer",
+              "value": "unknown"
+            },
+            {
+              "total_states": 7731,
+              "n": 7731,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 3129,
+              "push_rate_pct": 40.5,
+              "ci95_half_width_pp": 1.09,
+              "complement_n": 4410,
+              "complement_push_count_danger_gt_5pct": 1746,
+              "complement_push_rate_pct": 39.6,
+              "delta_pp_vs_complement": 0.9,
+              "complement_ci95_half_width_pp": 1.44,
+              "combined_ci95_half_width_pp": 1.81,
+              "min_cell_n": 150,
+              "min_cell_n_met": true,
+              "significant": false,
+              "condition": "opponent_is_dealer",
+              "value": "no"
+            },
+            {
+              "total_states": 4410,
+              "n": 4410,
+              "missing_danger": 0,
+              "push_count_danger_gt_5pct": 1746,
+              "push_rate_pct": 39.6,
+              "ci95_half_width_pp": 1.44,
+              "complement_n": 7731,
+              "complement_push_count_danger_gt_5pct": 3129,
+              "complement_push_rate_pct": 40.5,
+              "delta_pp_vs_complement": -0.9,
+              "complement_ci95_half_width_pp": 1.09,
+              "combined_ci95_half_width_pp": 1.81,
+              "min_cell_n": 150,
+              "min_cell_n_met": true,
+              "significant": false,
+              "condition": "opponent_is_dealer",
+              "value": "yes"
+            }
+          ]
+        }
+      }
+    },
+    "significant_effects": {
+      "tenpai_vs_riichi": [
+        {
+          "total_states": 619,
+          "n": 619,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 332,
+          "push_rate_pct": 53.6,
+          "ci95_half_width_pp": 3.93,
+          "complement_n": 367,
+          "complement_push_count_danger_gt_5pct": 248,
+          "complement_push_rate_pct": 67.6,
+          "delta_pp_vs_complement": -14.0,
+          "complement_ci95_half_width_pp": 4.79,
+          "combined_ci95_half_width_pp": 6.19,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "genbutsu_count",
+          "value": "2+",
+          "shanten": "0",
+          "scope": "tenpai_vs_riichi"
+        },
+        {
+          "total_states": 153,
+          "n": 153,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 107,
+          "push_rate_pct": 69.9,
+          "ci95_half_width_pp": 7.27,
+          "complement_n": 833,
+          "complement_push_count_danger_gt_5pct": 473,
+          "complement_push_rate_pct": 56.8,
+          "delta_pp_vs_complement": 13.1,
+          "complement_ci95_half_width_pp": 3.36,
+          "combined_ci95_half_width_pp": 8.01,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "genbutsu_count",
+          "value": "0",
+          "shanten": "0",
+          "scope": "tenpai_vs_riichi"
+        },
+        {
+          "total_states": 579,
+          "n": 579,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 366,
+          "push_rate_pct": 63.2,
+          "ci95_half_width_pp": 3.93,
+          "complement_n": 407,
+          "complement_push_count_danger_gt_5pct": 214,
+          "complement_push_rate_pct": 52.6,
+          "delta_pp_vs_complement": 10.6,
+          "complement_ci95_half_width_pp": 4.85,
+          "combined_ci95_half_width_pp": 6.24,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "tiles_left_le20",
+          "value": "no",
+          "shanten": "0",
+          "scope": "tenpai_vs_riichi"
+        },
+        {
+          "total_states": 407,
+          "n": 407,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 214,
+          "push_rate_pct": 52.6,
+          "ci95_half_width_pp": 4.85,
+          "complement_n": 579,
+          "complement_push_count_danger_gt_5pct": 366,
+          "complement_push_rate_pct": 63.2,
+          "delta_pp_vs_complement": -10.6,
+          "complement_ci95_half_width_pp": 3.93,
+          "combined_ci95_half_width_pp": 6.24,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "tiles_left_le20",
+          "value": "yes",
+          "shanten": "0",
+          "scope": "tenpai_vs_riichi"
+        },
+        {
+          "total_states": 214,
+          "n": 214,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 141,
+          "push_rate_pct": 65.9,
+          "ci95_half_width_pp": 6.35,
+          "complement_n": 772,
+          "complement_push_count_danger_gt_5pct": 439,
+          "complement_push_rate_pct": 56.9,
+          "delta_pp_vs_complement": 9.0,
+          "complement_ci95_half_width_pp": 3.49,
+          "combined_ci95_half_width_pp": 7.25,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "genbutsu_count",
+          "value": "1",
+          "shanten": "0",
+          "scope": "tenpai_vs_riichi"
+        },
+        {
+          "total_states": 211,
+          "n": 211,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 138,
+          "push_rate_pct": 65.4,
+          "ci95_half_width_pp": 6.42,
+          "complement_n": 775,
+          "complement_push_count_danger_gt_5pct": 442,
+          "complement_push_rate_pct": 57.0,
+          "delta_pp_vs_complement": 8.4,
+          "complement_ci95_half_width_pp": 3.49,
+          "combined_ci95_half_width_pp": 7.3,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "dora_count",
+          "value": "2",
+          "shanten": "0",
+          "scope": "tenpai_vs_riichi"
+        }
+      ],
+      "one_shanten_vs_riichi": [
+        {
+          "total_states": 3653,
+          "n": 3653,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 1006,
+          "push_rate_pct": 27.5,
+          "ci95_half_width_pp": 1.45,
+          "complement_n": 702,
+          "complement_push_count_danger_gt_5pct": 373,
+          "complement_push_rate_pct": 53.1,
+          "delta_pp_vs_complement": -25.6,
+          "complement_ci95_half_width_pp": 3.69,
+          "combined_ci95_half_width_pp": 3.97,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "genbutsu_zero",
+          "value": "no",
+          "shanten": "1",
+          "scope": "one_shanten_vs_riichi"
+        },
+        {
+          "total_states": 702,
+          "n": 702,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 373,
+          "push_rate_pct": 53.1,
+          "ci95_half_width_pp": 3.69,
+          "complement_n": 3653,
+          "complement_push_count_danger_gt_5pct": 1006,
+          "complement_push_rate_pct": 27.5,
+          "delta_pp_vs_complement": 25.6,
+          "complement_ci95_half_width_pp": 1.45,
+          "combined_ci95_half_width_pp": 3.97,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "genbutsu_zero",
+          "value": "yes",
+          "shanten": "1",
+          "scope": "one_shanten_vs_riichi"
+        },
+        {
+          "total_states": 3032,
+          "n": 3032,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 1094,
+          "push_rate_pct": 36.1,
+          "ci95_half_width_pp": 1.71,
+          "complement_n": 1323,
+          "complement_push_count_danger_gt_5pct": 285,
+          "complement_push_rate_pct": 21.5,
+          "delta_pp_vs_complement": 14.6,
+          "complement_ci95_half_width_pp": 2.22,
+          "combined_ci95_half_width_pp": 2.8,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "tiles_left_le20",
+          "value": "no",
+          "shanten": "1",
+          "scope": "one_shanten_vs_riichi"
+        },
+        {
+          "total_states": 1323,
+          "n": 1323,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 285,
+          "push_rate_pct": 21.5,
+          "ci95_half_width_pp": 2.22,
+          "complement_n": 3032,
+          "complement_push_count_danger_gt_5pct": 1094,
+          "complement_push_rate_pct": 36.1,
+          "delta_pp_vs_complement": -14.6,
+          "complement_ci95_half_width_pp": 1.71,
+          "combined_ci95_half_width_pp": 2.8,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "tiles_left_le20",
+          "value": "yes",
+          "shanten": "1",
+          "scope": "one_shanten_vs_riichi"
+        }
+      ],
+      "open_hand_turn7plus": [
+        {
+          "total_states": 4286,
+          "n": 4286,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 1153,
+          "push_rate_pct": 26.9,
+          "ci95_half_width_pp": 1.33,
+          "complement_n": 7855,
+          "complement_push_count_danger_gt_5pct": 3722,
+          "complement_push_rate_pct": 47.4,
+          "delta_pp_vs_complement": -20.5,
+          "complement_ci95_half_width_pp": 1.1,
+          "combined_ci95_half_width_pp": 1.73,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "own_shanten_bucket",
+          "value": "2+",
+          "scope": "open_hand_turn7plus"
+        },
+        {
+          "total_states": 7855,
+          "n": 7855,
+          "missing_danger": 0,
+          "push_count_danger_gt_5pct": 3722,
+          "push_rate_pct": 47.4,
+          "ci95_half_width_pp": 1.1,
+          "complement_n": 4286,
+          "complement_push_count_danger_gt_5pct": 1153,
+          "complement_push_rate_pct": 26.9,
+          "delta_pp_vs_complement": 20.5,
+          "complement_ci95_half_width_pp": 1.33,
+          "combined_ci95_half_width_pp": 1.73,
+          "min_cell_n": 150,
+          "min_cell_n_met": true,
+          "significant": true,
+          "condition": "own_shanten_bucket",
+          "value": "<=1",
+          "scope": "open_hand_turn7plus"
+        }
+      ]
+    }
+  },
+  "published_reference": {
+    "baselines": {
+      "vs_riichi_push_by_closed_shanten": {
+        "0": 61.3,
+        "1": 33.6,
+        "2": 20.3,
+        "3+": 14.2
+      },
+      "last20_vs_riichi_push_by_closed_shanten": {
+        "0": 54.3,
+        "1": 22.9,
+        "2": 13.4,
+        "3+": 8.4
+      },
+      "first_discard_after_riichi_genbutsu_by_closed_shanten": {
+        "0": 32.6,
+        "1": 55.5,
+        "2": 64.3,
+        "3+": 68.1
+      },
+      "open_hand_push_by_meld_count_and_turn": {
+        "2": {
+          "1-6": 54.0,
+          "7-12": 44.0,
+          "13+": 39.0
+        },
+        "3+": {
+          "1-6": 57.0,
+          "7-12": 42.0,
+          "13+": 33.0
+        }
+      }
+    },
+    "condition_numbers_compared": [
+      {
+        "scope": "tenpai_vs_riichi",
+        "condition": "dora_count",
+        "value": "2",
+        "published_rate_pct": 67.3,
+        "published_delta_pp": 7.7
+      },
+      {
+        "scope": "one_shanten_vs_riichi",
+        "condition": "genbutsu_zero",
+        "value": "yes",
+        "published_rate_pct": 55.8,
+        "published_delta_pp": 26.4
+      },
+      {
+        "scope": "tenpai_vs_riichi",
+        "condition": "genbutsu_count",
+        "value": "2+",
+        "published_rate_pct": 56.2,
+        "published_delta_pp": -14.3
+      },
+      {
+        "scope": "tenpai_vs_riichi",
+        "condition": "second_threat_present",
+        "value": "no",
+        "published_rate_pct": 63.4,
+        "published_delta_pp": 8.1
+      },
+      {
+        "scope": "tenpai_vs_riichi",
+        "condition": "tiles_left_le20",
+        "value": "yes",
+        "published_rate_pct": 54.3,
+        "published_delta_pp": -11.7
+      },
+      {
+        "scope": "open_hand_turn7plus",
+        "condition": "own_shanten_bucket",
+        "value": "<=1",
+        "published_rate_pct": 48.2,
+        "published_delta_pp": 20.4
+      },
+      {
+        "scope": "open_hand_turn7plus",
+        "condition": "own_shanten_bucket",
+        "value": "2+",
+        "published_rate_pct": 27.8,
+        "published_delta_pp": -20.4
+      }
+    ],
+    "own_dealer_modifier_excluded": "tenpai + LuckyJ-is-dealer ~=68%"
+  },
+  "changed_vs_published": [
+    {
+      "kind": "baseline_rate",
+      "metric": "open_hand_push_by_meld_count_and_turn",
+      "key_path": [
+        "3+",
+        "1-6"
+      ],
+      "published_pct": 57.0,
+      "child_only_pct": 51.2,
+      "delta_pp": -5.8,
+      "n": 86
+    },
+    {
+      "kind": "condition_rate",
+      "scope": "tenpai_vs_riichi",
+      "condition": "second_threat_present",
+      "value": "no",
+      "published_pct": 63.4,
+      "child_only_pct": 60.1,
+      "delta_pp": -3.3,
+      "n": 724
+    },
+    {
+      "kind": "condition_delta_pp",
+      "scope": "tenpai_vs_riichi",
+      "condition": "second_threat_present",
+      "value": "no",
+      "published_delta_pp": 8.1,
+      "child_only_delta_pp": 4.8,
+      "movement_pp": -3.3,
+      "n": 724
+    },
+    {
+      "kind": "baseline_rate",
+      "metric": "first_discard_after_riichi_genbutsu_by_closed_shanten",
+      "key_path": [
+        "0"
+      ],
+      "published_pct": 32.6,
+      "child_only_pct": 35.3,
+      "delta_pp": 2.7,
+      "n": 278
+    },
+    {
+      "kind": "condition_rate",
+      "scope": "one_shanten_vs_riichi",
+      "condition": "genbutsu_zero",
+      "value": "yes",
+      "published_pct": 55.8,
+      "child_only_pct": 53.1,
+      "delta_pp": -2.7,
+      "n": 702
+    },
+    {
+      "kind": "condition_rate",
+      "scope": "tenpai_vs_riichi",
+      "condition": "genbutsu_count",
+      "value": "2+",
+      "published_pct": 56.2,
+      "child_only_pct": 53.6,
+      "delta_pp": -2.6,
+      "n": 619
+    },
+    {
+      "kind": "baseline_rate",
+      "metric": "vs_riichi_push_by_closed_shanten",
+      "key_path": [
+        "0"
+      ],
+      "published_pct": 61.3,
+      "child_only_pct": 58.8,
+      "delta_pp": -2.5,
+      "n": 986
+    }
+  ]
+}

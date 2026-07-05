@@ -20,7 +20,7 @@ import mine_rx2_honors as pass2
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = Path("/Users/honvl/.claude/jobs/151072f5/tmp/rx3-honors.json")
+OUT = ROOT / "analysis" / "rx3-honors-2026-07-05.json"
 SHANTEN = Shanten()
 
 WINDS = ["E", "S", "W", "N"]

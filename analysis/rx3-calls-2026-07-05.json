@@ -1,0 +1,1145 @@
+{
+  "generated_at": "2026-07-05T22:24:53.343729+00:00",
+  "source": {
+    "csv_rows": 1256,
+    "unique_report_ids": 1255,
+    "duplicate_report_rows": 1,
+    "processed_reports": 1255,
+    "target_seat_corrections_from_report_names": 1,
+    "errors": []
+  },
+  "definitions": {
+    "dealer_vs_child_naga_match": "All LuckyJ huro opportunities before prescription filtering. Nishiki is huro options head 0; Nishiki wants call iff the top-probability kind is not 0. Agreement is (LuckyJ actually called) == (Nishiki wants call).",
+    "child": "LuckyJ is not oya for the kyoku.",
+    "dealer": "LuckyJ is oya for the kyoku.",
+    "yakuhai_pon_opportunity": "Pass-1 detector: triggering discard is yakuhai for LuckyJ's current seat, LuckyJ has at least two in concealed hand, and huro options include kind 4. Seat wind is recomputed from oya per kyoku.",
+    "closed_to_open_chi_opportunity": "huro options contain chi kind 1/2/3 and LuckyJ has no prior open chi/pon/daiminkan meld; closed kan is not counted as open.",
+    "late_keiten": "All pass-1 nonzero-kind huro opportunities with left_hai_num <= 12, bucketed by regular-hand shanten.",
+    "condition_effect_delta_pp_vs_complement": "Cell rate minus rate for all other child-only opportunities in the same population.",
+    "significant": "True when n and complement_n are at least 120 and |delta_pp_vs_complement| exceeds the 95% two-proportion normal half-width.",
+    "per_game_consistency_child_only": "Child-only per-game spread for the intro sentence; yakuhai pon requires at least three pon opportunities per game.",
+    "min_cell_n": 120,
+    "all_rates_are_percent": true,
+    "call_kind_labels": {
+      "0": "pass",
+      "1": "chi",
+      "2": "chi",
+      "3": "chi",
+      "4": "pon",
+      "5": "open kan"
+    }
+  },
+  "dealer_vs_child_naga_match": {
+    "call_decision_agreement": {
+      "child": {
+        "n": 29825,
+        "agree": 27936,
+        "agreement_rate_pct": 93.7,
+        "ci95_half_width_pp": 0.28,
+        "luckyj_called": 5120,
+        "nishiki_wants_call": 4951
+      },
+      "dealer": {
+        "n": 9911,
+        "agree": 9273,
+        "agreement_rate_pct": 93.6,
+        "ci95_half_width_pp": 0.48,
+        "luckyj_called": 1823,
+        "nishiki_wants_call": 1787
+      }
+    },
+    "plain_tsumo_discard_match": {
+      "child": {
+        "n": 104159,
+        "match": 75847,
+        "match_rate_pct": 72.8,
+        "ci95_half_width_pp": 0.27
+      },
+      "dealer": {
+        "n": 36124,
+        "match": 27714,
+        "match_rate_pct": 76.7,
+        "ci95_half_width_pp": 0.44
+      }
+    }
+  },
+  "baselines": {
+    "yakuhai_pon": {
+      "overall": {
+        "child": {
+          "n": 2220,
+          "pon": 1634,
+          "pon_rate_pct": 73.6,
+          "called_any": 1642,
+          "called_any_rate_pct": 74.0,
+          "passed": 578
+        },
+        "dealer": {
+          "n": 695,
+          "pon": 553,
+          "pon_rate_pct": 79.6,
+          "called_any": 558,
+          "called_any_rate_pct": 80.3,
+          "passed": 137
+        },
+        "delta_child_minus_dealer_pp": -6.0
+      },
+      "first_copy": {
+        "child": {
+          "n": 1969,
+          "pon": 1494,
+          "pon_rate_pct": 75.9,
+          "called_any": 1502,
+          "called_any_rate_pct": 76.3,
+          "passed": 467
+        },
+        "dealer": {
+          "n": 649,
+          "pon": 520,
+          "pon_rate_pct": 80.1,
+          "called_any": 525,
+          "called_any_rate_pct": 80.9,
+          "passed": 124
+        },
+        "delta_child_minus_dealer_pp": -4.2
+      },
+      "later_copy": {
+        "child": {
+          "n": 251,
+          "pon": 140,
+          "pon_rate_pct": 55.8,
+          "called_any": 140,
+          "called_any_rate_pct": 55.8,
+          "passed": 111
+        },
+        "dealer": {
+          "n": 46,
+          "pon": 33,
+          "pon_rate_pct": 71.7,
+          "called_any": 33,
+          "called_any_rate_pct": 71.7,
+          "passed": 13
+        },
+        "delta_child_minus_dealer_pp": -15.9
+      }
+    },
+    "chi": {
+      "closed_to_open": {
+        "child": {
+          "n": 16284,
+          "chi": 1088,
+          "chi_rate_pct": 6.7,
+          "called_any": 1118,
+          "called_any_rate_pct": 6.9,
+          "passed": 15166
+        },
+        "dealer": {
+          "n": 5331,
+          "chi": 374,
+          "chi_rate_pct": 7.0,
+          "called_any": 383,
+          "called_any_rate_pct": 7.2,
+          "passed": 4948
+        },
+        "delta_child_minus_dealer_pp": -0.3
+      },
+      "already_open": {
+        "child": {
+          "n": 2847,
+          "chi": 758,
+          "chi_rate_pct": 26.6,
+          "called_any": 773,
+          "called_any_rate_pct": 27.2,
+          "passed": 2074
+        },
+        "dealer": {
+          "n": 990,
+          "chi": 292,
+          "chi_rate_pct": 29.5,
+          "called_any": 297,
+          "called_any_rate_pct": 30.0,
+          "passed": 693
+        },
+        "delta_child_minus_dealer_pp": -2.9
+      }
+    },
+    "late_keiten": {
+      "by_shanten": {
+        "1": {
+          "child": {
+            "n": 465,
+            "called": 143,
+            "call_rate_pct": 30.8,
+            "passed": 322,
+            "pass_rate_pct": 69.2
+          },
+          "dealer": {
+            "n": 162,
+            "called": 57,
+            "call_rate_pct": 35.2,
+            "passed": 105,
+            "pass_rate_pct": 64.8
+          },
+          "delta_child_minus_dealer_pp": -4.4
+        },
+        "2+": {
+          "child": {
+            "n": 670,
+            "called": 135,
+            "call_rate_pct": 20.1,
+            "passed": 535,
+            "pass_rate_pct": 79.9
+          },
+          "dealer": {
+            "n": 128,
+            "called": 30,
+            "call_rate_pct": 23.4,
+            "passed": 98,
+            "pass_rate_pct": 76.6
+          },
+          "delta_child_minus_dealer_pp": -3.3
+        },
+        "0_or_less": {
+          "child": {
+            "n": 335,
+            "called": 15,
+            "call_rate_pct": 4.5,
+            "passed": 320,
+            "pass_rate_pct": 95.5
+          },
+          "dealer": {
+            "n": 117,
+            "called": 4,
+            "call_rate_pct": 3.4,
+            "passed": 113,
+            "pass_rate_pct": 96.6
+          },
+          "delta_child_minus_dealer_pp": 1.1
+        },
+        "unknown": {
+          "child": {
+            "n": 0,
+            "called": 0,
+            "call_rate_pct": null,
+            "passed": 0,
+            "pass_rate_pct": null
+          },
+          "dealer": {
+            "n": 0,
+            "called": 0,
+            "call_rate_pct": null,
+            "passed": 0,
+            "pass_rate_pct": null
+          },
+          "delta_child_minus_dealer_pp": null
+        }
+      }
+    },
+    "junk": {
+      "all_call_opportunities": {
+        "child": {
+          "n": 1401,
+          "called": 189,
+          "call_rate_pct": 13.5,
+          "passed": 1212,
+          "pass_rate_pct": 86.5
+        },
+        "dealer": {
+          "n": 290,
+          "called": 49,
+          "call_rate_pct": 16.9,
+          "passed": 241,
+          "pass_rate_pct": 83.1
+        },
+        "delta_child_minus_dealer_pp": 3.4
+      },
+      "yakuhai_pon_opportunities": {
+        "child": {
+          "n": 179,
+          "pon": 126,
+          "pon_rate_pct": 70.4,
+          "called_any": 126,
+          "called_any_rate_pct": 70.4,
+          "passed": 53
+        },
+        "dealer": {
+          "n": 31,
+          "pon": 26,
+          "pon_rate_pct": 83.9,
+          "called_any": 26,
+          "called_any_rate_pct": 83.9,
+          "passed": 5
+        },
+        "delta_child_minus_dealer_pp": -13.5
+      }
+    }
+  },
+  "per_game_consistency_child_only": {
+    "yakuhai_pon": {
+      "definition": "Child-only games with at least three yakuhai pon opportunities; weighted standard deviation uses each game's opportunity count as weight.",
+      "included_games_min_3_opportunities": 329,
+      "n": 1195,
+      "pon": 866,
+      "weighted_mean_pon_rate_pct": 72.5,
+      "weighted_std_pon_rate_pp": 26.0,
+      "unweighted_mean_pon_rate_pct": 72.7,
+      "unweighted_std_pon_rate_pp": 26.7,
+      "p25_pon_rate_pct": 60.0,
+      "p50_pon_rate_pct": 75.0,
+      "p75_pon_rate_pct": 100.0
+    }
+  },
+  "condition_effects_child_only": {
+    "yakuhai_pon": {
+      "population": {
+        "n": 2220,
+        "pon": 1634,
+        "pon_rate_pct": 73.6,
+        "ci95_half_width_pp": 1.83
+      },
+      "effects_sorted_by_abs_delta_pp": true,
+      "effects": [
+        {
+          "n": 8,
+          "pon": 0,
+          "pon_rate_pct": 0.0,
+          "ci95_half_width_pp": 0.0,
+          "condition": "turn_x_shanten",
+          "value": "turn_13+_shanten_4+",
+          "meets_min_cell_n": false,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 2212,
+          "complement_pon": 1634,
+          "complement_pon_rate_pct": 73.9,
+          "delta_pp_vs_complement": -73.9,
+          "diff_ci95_half_width_pp": 1.83,
+          "significant": false
+        },
+        {
+          "n": 26,
+          "pon": 3,
+          "pon_rate_pct": 11.5,
+          "ci95_half_width_pp": 12.28,
+          "condition": "turn_x_shanten",
+          "value": "turn_7-12_shanten_4+",
+          "meets_min_cell_n": false,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 2194,
+          "complement_pon": 1631,
+          "complement_pon_rate_pct": 74.3,
+          "delta_pp_vs_complement": -62.8,
+          "diff_ci95_half_width_pp": 12.42,
+          "significant": false
+        },
+        {
+          "n": 60,
+          "pon": 17,
+          "pon_rate_pct": 28.3,
+          "ci95_half_width_pp": 11.4,
+          "condition": "turn_x_shanten",
+          "value": "turn_13+_shanten_2-3",
+          "meets_min_cell_n": false,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 2160,
+          "complement_pon": 1617,
+          "complement_pon_rate_pct": 74.9,
+          "delta_pp_vs_complement": -46.5,
+          "diff_ci95_half_width_pp": 11.55,
+          "significant": false
+        },
+        {
+          "n": 1803,
+          "pon": 1483,
+          "pon_rate_pct": 82.3,
+          "ci95_half_width_pp": 1.76,
+          "condition": "existing_table_threat",
+          "value": "no",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 417,
+          "complement_pon": 151,
+          "complement_pon_rate_pct": 36.2,
+          "delta_pp_vs_complement": 46.0,
+          "diff_ci95_half_width_pp": 4.94,
+          "significant": true
+        },
+        {
+          "n": 417,
+          "pon": 151,
+          "pon_rate_pct": 36.2,
+          "ci95_half_width_pp": 4.61,
+          "condition": "existing_table_threat",
+          "value": "yes",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 1803,
+          "complement_pon": 1483,
+          "complement_pon_rate_pct": 82.3,
+          "delta_pp_vs_complement": -46.0,
+          "diff_ci95_half_width_pp": 4.94,
+          "significant": true
+        },
+        {
+          "n": 79,
+          "pon": 38,
+          "pon_rate_pct": 48.1,
+          "ci95_half_width_pp": 11.02,
+          "condition": "turn_x_shanten",
+          "value": "turn_13+_shanten_0-1",
+          "meets_min_cell_n": false,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 2141,
+          "complement_pon": 1596,
+          "complement_pon_rate_pct": 74.5,
+          "delta_pp_vs_complement": -26.4,
+          "diff_ci95_half_width_pp": 11.17,
+          "significant": false
+        },
+        {
+          "n": 959,
+          "pon": 829,
+          "pon_rate_pct": 86.4,
+          "ci95_half_width_pp": 2.17,
+          "condition": "turn_x_shanten",
+          "value": "turn_1-6_shanten_2-3",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 1261,
+          "complement_pon": 805,
+          "complement_pon_rate_pct": 63.8,
+          "delta_pp_vs_complement": 22.6,
+          "diff_ci95_half_width_pp": 3.42,
+          "significant": true
+        },
+        {
+          "n": 345,
+          "pon": 207,
+          "pon_rate_pct": 60.0,
+          "ci95_half_width_pp": 5.17,
+          "condition": "turn_x_shanten",
+          "value": "turn_7-12_shanten_2-3",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 1875,
+          "complement_pon": 1427,
+          "complement_pon_rate_pct": 76.1,
+          "delta_pp_vs_complement": -16.1,
+          "diff_ci95_half_width_pp": 5.52,
+          "significant": true
+        },
+        {
+          "n": 271,
+          "pon": 165,
+          "pon_rate_pct": 60.9,
+          "ci95_half_width_pp": 5.81,
+          "condition": "turn_x_shanten",
+          "value": "turn_7-12_shanten_0-1",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 1949,
+          "complement_pon": 1469,
+          "complement_pon_rate_pct": 75.4,
+          "delta_pp_vs_complement": -14.5,
+          "diff_ci95_half_width_pp": 6.12,
+          "significant": true
+        },
+        {
+          "n": 304,
+          "pon": 257,
+          "pon_rate_pct": 84.5,
+          "ci95_half_width_pp": 4.06,
+          "condition": "turn_x_shanten",
+          "value": "turn_1-6_shanten_4+",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 1916,
+          "complement_pon": 1377,
+          "complement_pon_rate_pct": 71.9,
+          "delta_pp_vs_complement": 12.7,
+          "diff_ci95_half_width_pp": 4.54,
+          "significant": true
+        },
+        {
+          "n": 322,
+          "pon": 264,
+          "pon_rate_pct": 82.0,
+          "ci95_half_width_pp": 4.2,
+          "condition": "dora_count",
+          "value": "2",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 1898,
+          "complement_pon": 1370,
+          "complement_pon_rate_pct": 72.2,
+          "delta_pp_vs_complement": 9.8,
+          "diff_ci95_half_width_pp": 4.66,
+          "significant": true
+        },
+        {
+          "n": 983,
+          "pon": 685,
+          "pon_rate_pct": 69.7,
+          "ci95_half_width_pp": 2.87,
+          "condition": "dora_count",
+          "value": "0",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 1237,
+          "complement_pon": 949,
+          "complement_pon_rate_pct": 76.7,
+          "delta_pp_vs_complement": -7.0,
+          "diff_ci95_half_width_pp": 3.72,
+          "significant": true
+        },
+        {
+          "n": 82,
+          "pon": 65,
+          "pon_rate_pct": 79.3,
+          "ci95_half_width_pp": 8.77,
+          "condition": "dora_count",
+          "value": "3+",
+          "meets_min_cell_n": false,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 2138,
+          "complement_pon": 1569,
+          "complement_pon_rate_pct": 73.4,
+          "delta_pp_vs_complement": 5.9,
+          "diff_ci95_half_width_pp": 8.97,
+          "significant": false
+        },
+        {
+          "n": 1900,
+          "pon": 1384,
+          "pon_rate_pct": 72.8,
+          "ci95_half_width_pp": 2.0,
+          "condition": "second_yakuhai_pair_in_hand",
+          "value": "no",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 320,
+          "complement_pon": 250,
+          "complement_pon_rate_pct": 78.1,
+          "delta_pp_vs_complement": -5.3,
+          "diff_ci95_half_width_pp": 4.95,
+          "significant": true
+        },
+        {
+          "n": 320,
+          "pon": 250,
+          "pon_rate_pct": 78.1,
+          "ci95_half_width_pp": 4.53,
+          "condition": "second_yakuhai_pair_in_hand",
+          "value": "yes",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 1900,
+          "complement_pon": 1384,
+          "complement_pon_rate_pct": 72.8,
+          "delta_pp_vs_complement": 5.3,
+          "diff_ci95_half_width_pp": 4.95,
+          "significant": true
+        },
+        {
+          "n": 168,
+          "pon": 118,
+          "pon_rate_pct": 70.2,
+          "ci95_half_width_pp": 6.91,
+          "condition": "turn_x_shanten",
+          "value": "turn_1-6_shanten_0-1",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 2052,
+          "complement_pon": 1516,
+          "complement_pon_rate_pct": 73.9,
+          "delta_pp_vs_complement": -3.6,
+          "diff_ci95_half_width_pp": 7.17,
+          "significant": false
+        },
+        {
+          "n": 833,
+          "pon": 620,
+          "pon_rate_pct": 74.4,
+          "ci95_half_width_pp": 2.96,
+          "condition": "dora_count",
+          "value": "1",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 1387,
+          "complement_pon": 1014,
+          "complement_pon_rate_pct": 73.1,
+          "delta_pp_vs_complement": 1.3,
+          "diff_ci95_half_width_pp": 3.77,
+          "significant": false
+        }
+      ],
+      "requested_cells": {
+        "existing_table_threat": {
+          "yes": {
+            "n": 417,
+            "pon": 151,
+            "pon_rate_pct": 36.2,
+            "ci95_half_width_pp": 4.61,
+            "condition": "existing_table_threat",
+            "value": "yes",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 1803,
+            "complement_pon": 1483,
+            "complement_pon_rate_pct": 82.3,
+            "delta_pp_vs_complement": -46.0,
+            "diff_ci95_half_width_pp": 4.94,
+            "significant": true
+          },
+          "no": {
+            "n": 1803,
+            "pon": 1483,
+            "pon_rate_pct": 82.3,
+            "ci95_half_width_pp": 1.76,
+            "condition": "existing_table_threat",
+            "value": "no",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 417,
+            "complement_pon": 151,
+            "complement_pon_rate_pct": 36.2,
+            "delta_pp_vs_complement": 46.0,
+            "diff_ci95_half_width_pp": 4.94,
+            "significant": true
+          }
+        },
+        "turn_x_shanten": {
+          "turn_1-6_shanten_2-3": {
+            "n": 959,
+            "pon": 829,
+            "pon_rate_pct": 86.4,
+            "ci95_half_width_pp": 2.17,
+            "condition": "turn_x_shanten",
+            "value": "turn_1-6_shanten_2-3",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 1261,
+            "complement_pon": 805,
+            "complement_pon_rate_pct": 63.8,
+            "delta_pp_vs_complement": 22.6,
+            "diff_ci95_half_width_pp": 3.42,
+            "significant": true
+          },
+          "turn_7-12_shanten_0-1": {
+            "n": 271,
+            "pon": 165,
+            "pon_rate_pct": 60.9,
+            "ci95_half_width_pp": 5.81,
+            "condition": "turn_x_shanten",
+            "value": "turn_7-12_shanten_0-1",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 1949,
+            "complement_pon": 1469,
+            "complement_pon_rate_pct": 75.4,
+            "delta_pp_vs_complement": -14.5,
+            "diff_ci95_half_width_pp": 6.12,
+            "significant": true
+          },
+          "turn_7-12_shanten_2-3": {
+            "n": 345,
+            "pon": 207,
+            "pon_rate_pct": 60.0,
+            "ci95_half_width_pp": 5.17,
+            "condition": "turn_x_shanten",
+            "value": "turn_7-12_shanten_2-3",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 1875,
+            "complement_pon": 1427,
+            "complement_pon_rate_pct": 76.1,
+            "delta_pp_vs_complement": -16.1,
+            "diff_ci95_half_width_pp": 5.52,
+            "significant": true
+          },
+          "turn_1-6_shanten_0-1": {
+            "n": 168,
+            "pon": 118,
+            "pon_rate_pct": 70.2,
+            "ci95_half_width_pp": 6.91,
+            "condition": "turn_x_shanten",
+            "value": "turn_1-6_shanten_0-1",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 2052,
+            "complement_pon": 1516,
+            "complement_pon_rate_pct": 73.9,
+            "delta_pp_vs_complement": -3.6,
+            "diff_ci95_half_width_pp": 7.17,
+            "significant": false
+          },
+          "turn_13+_shanten_0-1": {
+            "n": 79,
+            "pon": 38,
+            "pon_rate_pct": 48.1,
+            "ci95_half_width_pp": 11.02,
+            "condition": "turn_x_shanten",
+            "value": "turn_13+_shanten_0-1",
+            "meets_min_cell_n": false,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 2141,
+            "complement_pon": 1596,
+            "complement_pon_rate_pct": 74.5,
+            "delta_pp_vs_complement": -26.4,
+            "diff_ci95_half_width_pp": 11.17,
+            "significant": false
+          }
+        },
+        "dora_count": {
+          "0": {
+            "n": 983,
+            "pon": 685,
+            "pon_rate_pct": 69.7,
+            "ci95_half_width_pp": 2.87,
+            "condition": "dora_count",
+            "value": "0",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 1237,
+            "complement_pon": 949,
+            "complement_pon_rate_pct": 76.7,
+            "delta_pp_vs_complement": -7.0,
+            "diff_ci95_half_width_pp": 3.72,
+            "significant": true
+          },
+          "1": {
+            "n": 833,
+            "pon": 620,
+            "pon_rate_pct": 74.4,
+            "ci95_half_width_pp": 2.96,
+            "condition": "dora_count",
+            "value": "1",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 1387,
+            "complement_pon": 1014,
+            "complement_pon_rate_pct": 73.1,
+            "delta_pp_vs_complement": 1.3,
+            "diff_ci95_half_width_pp": 3.77,
+            "significant": false
+          },
+          "2": {
+            "n": 322,
+            "pon": 264,
+            "pon_rate_pct": 82.0,
+            "ci95_half_width_pp": 4.2,
+            "condition": "dora_count",
+            "value": "2",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 1898,
+            "complement_pon": 1370,
+            "complement_pon_rate_pct": 72.2,
+            "delta_pp_vs_complement": 9.8,
+            "diff_ci95_half_width_pp": 4.66,
+            "significant": true
+          },
+          "3+": {
+            "n": 82,
+            "pon": 65,
+            "pon_rate_pct": 79.3,
+            "ci95_half_width_pp": 8.77,
+            "condition": "dora_count",
+            "value": "3+",
+            "meets_min_cell_n": false,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 2138,
+            "complement_pon": 1569,
+            "complement_pon_rate_pct": 73.4,
+            "delta_pp_vs_complement": 5.9,
+            "diff_ci95_half_width_pp": 8.97,
+            "significant": false
+          }
+        },
+        "second_yakuhai_pair_in_hand": {
+          "yes": {
+            "n": 320,
+            "pon": 250,
+            "pon_rate_pct": 78.1,
+            "ci95_half_width_pp": 4.53,
+            "condition": "second_yakuhai_pair_in_hand",
+            "value": "yes",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 1900,
+            "complement_pon": 1384,
+            "complement_pon_rate_pct": 72.8,
+            "delta_pp_vs_complement": 5.3,
+            "diff_ci95_half_width_pp": 4.95,
+            "significant": true
+          },
+          "no": {
+            "n": 1900,
+            "pon": 1384,
+            "pon_rate_pct": 72.8,
+            "ci95_half_width_pp": 2.0,
+            "condition": "second_yakuhai_pair_in_hand",
+            "value": "no",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 320,
+            "complement_pon": 250,
+            "complement_pon_rate_pct": 78.1,
+            "delta_pp_vs_complement": -5.3,
+            "diff_ci95_half_width_pp": 4.95,
+            "significant": true
+          }
+        }
+      }
+    },
+    "closed_to_open_chi": {
+      "population": {
+        "n": 16284,
+        "chi": 1088,
+        "chi_rate_pct": 6.7,
+        "ci95_half_width_pp": 0.38
+      },
+      "effects_sorted_by_abs_delta_pp": true,
+      "effects": [
+        {
+          "n": 11473,
+          "chi": 270,
+          "chi_rate_pct": 2.4,
+          "ci95_half_width_pp": 0.28,
+          "condition": "best_chi_advances_to_le1",
+          "value": "no",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 4811,
+          "complement_chi": 818,
+          "complement_chi_rate_pct": 17.0,
+          "delta_pp_vs_complement": -14.6,
+          "diff_ci95_half_width_pp": 1.1,
+          "significant": true
+        },
+        {
+          "n": 4811,
+          "chi": 818,
+          "chi_rate_pct": 17.0,
+          "ci95_half_width_pp": 1.06,
+          "condition": "best_chi_advances_to_le1",
+          "value": "yes",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 11473,
+          "complement_chi": 270,
+          "complement_chi_rate_pct": 2.4,
+          "delta_pp_vs_complement": 14.6,
+          "diff_ci95_half_width_pp": 1.1,
+          "significant": true
+        },
+        {
+          "n": 15619,
+          "chi": 967,
+          "chi_rate_pct": 6.2,
+          "ci95_half_width_pp": 0.38,
+          "condition": "left_hai_num_le_12",
+          "value": "no",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 665,
+          "complement_chi": 121,
+          "complement_chi_rate_pct": 18.2,
+          "delta_pp_vs_complement": -12.0,
+          "diff_ci95_half_width_pp": 2.96,
+          "significant": true
+        },
+        {
+          "n": 665,
+          "chi": 121,
+          "chi_rate_pct": 18.2,
+          "ci95_half_width_pp": 2.93,
+          "condition": "left_hai_num_le_12",
+          "value": "yes",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 15619,
+          "complement_chi": 967,
+          "complement_chi_rate_pct": 6.2,
+          "delta_pp_vs_complement": 12.0,
+          "diff_ci95_half_width_pp": 2.96,
+          "significant": true
+        },
+        {
+          "n": 1882,
+          "chi": 274,
+          "chi_rate_pct": 14.6,
+          "ci95_half_width_pp": 1.59,
+          "condition": "turn_bucket",
+          "value": "13+",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 14402,
+          "complement_chi": 814,
+          "complement_chi_rate_pct": 5.7,
+          "delta_pp_vs_complement": 8.9,
+          "diff_ci95_half_width_pp": 1.64,
+          "significant": true
+        },
+        {
+          "n": 7359,
+          "chi": 324,
+          "chi_rate_pct": 4.4,
+          "ci95_half_width_pp": 0.47,
+          "condition": "turn_bucket",
+          "value": "1-6",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 8925,
+          "complement_chi": 764,
+          "complement_chi_rate_pct": 8.6,
+          "delta_pp_vs_complement": -4.2,
+          "diff_ci95_half_width_pp": 0.75,
+          "significant": true
+        },
+        {
+          "n": 15844,
+          "chi": 1044,
+          "chi_rate_pct": 6.6,
+          "ci95_half_width_pp": 0.39,
+          "condition": "called_tile_is_dora",
+          "value": "no",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 440,
+          "complement_chi": 44,
+          "complement_chi_rate_pct": 10.0,
+          "delta_pp_vs_complement": -3.4,
+          "diff_ci95_half_width_pp": 2.83,
+          "significant": true
+        },
+        {
+          "n": 440,
+          "chi": 44,
+          "chi_rate_pct": 10.0,
+          "ci95_half_width_pp": 2.8,
+          "condition": "called_tile_is_dora",
+          "value": "yes",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 15844,
+          "complement_chi": 1044,
+          "complement_chi_rate_pct": 6.6,
+          "delta_pp_vs_complement": 3.4,
+          "diff_ci95_half_width_pp": 2.83,
+          "significant": true
+        },
+        {
+          "n": 7043,
+          "chi": 490,
+          "chi_rate_pct": 7.0,
+          "ci95_half_width_pp": 0.59,
+          "condition": "turn_bucket",
+          "value": "7-12",
+          "meets_min_cell_n": true,
+          "complement_meets_min_cell_n": true,
+          "complement_n": 9241,
+          "complement_chi": 598,
+          "complement_chi_rate_pct": 6.5,
+          "delta_pp_vs_complement": 0.5,
+          "diff_ci95_half_width_pp": 0.78,
+          "significant": false
+        }
+      ],
+      "requested_cells": {
+        "best_chi_advances_to_le1": {
+          "yes": {
+            "n": 4811,
+            "chi": 818,
+            "chi_rate_pct": 17.0,
+            "ci95_half_width_pp": 1.06,
+            "condition": "best_chi_advances_to_le1",
+            "value": "yes",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 11473,
+            "complement_chi": 270,
+            "complement_chi_rate_pct": 2.4,
+            "delta_pp_vs_complement": 14.6,
+            "diff_ci95_half_width_pp": 1.1,
+            "significant": true
+          },
+          "no": {
+            "n": 11473,
+            "chi": 270,
+            "chi_rate_pct": 2.4,
+            "ci95_half_width_pp": 0.28,
+            "condition": "best_chi_advances_to_le1",
+            "value": "no",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 4811,
+            "complement_chi": 818,
+            "complement_chi_rate_pct": 17.0,
+            "delta_pp_vs_complement": -14.6,
+            "diff_ci95_half_width_pp": 1.1,
+            "significant": true
+          }
+        },
+        "left_hai_num_le_12": {
+          "yes": {
+            "n": 665,
+            "chi": 121,
+            "chi_rate_pct": 18.2,
+            "ci95_half_width_pp": 2.93,
+            "condition": "left_hai_num_le_12",
+            "value": "yes",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 15619,
+            "complement_chi": 967,
+            "complement_chi_rate_pct": 6.2,
+            "delta_pp_vs_complement": 12.0,
+            "diff_ci95_half_width_pp": 2.96,
+            "significant": true
+          },
+          "no": {
+            "n": 15619,
+            "chi": 967,
+            "chi_rate_pct": 6.2,
+            "ci95_half_width_pp": 0.38,
+            "condition": "left_hai_num_le_12",
+            "value": "no",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 665,
+            "complement_chi": 121,
+            "complement_chi_rate_pct": 18.2,
+            "delta_pp_vs_complement": -12.0,
+            "diff_ci95_half_width_pp": 2.96,
+            "significant": true
+          }
+        },
+        "turn_bucket": {
+          "13+": {
+            "n": 1882,
+            "chi": 274,
+            "chi_rate_pct": 14.6,
+            "ci95_half_width_pp": 1.59,
+            "condition": "turn_bucket",
+            "value": "13+",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 14402,
+            "complement_chi": 814,
+            "complement_chi_rate_pct": 5.7,
+            "delta_pp_vs_complement": 8.9,
+            "diff_ci95_half_width_pp": 1.64,
+            "significant": true
+          },
+          "1-6": {
+            "n": 7359,
+            "chi": 324,
+            "chi_rate_pct": 4.4,
+            "ci95_half_width_pp": 0.47,
+            "condition": "turn_bucket",
+            "value": "1-6",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 8925,
+            "complement_chi": 764,
+            "complement_chi_rate_pct": 8.6,
+            "delta_pp_vs_complement": -4.2,
+            "diff_ci95_half_width_pp": 0.75,
+            "significant": true
+          },
+          "7-12": {
+            "n": 7043,
+            "chi": 490,
+            "chi_rate_pct": 7.0,
+            "ci95_half_width_pp": 0.59,
+            "condition": "turn_bucket",
+            "value": "7-12",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 9241,
+            "complement_chi": 598,
+            "complement_chi_rate_pct": 6.5,
+            "delta_pp_vs_complement": 0.5,
+            "diff_ci95_half_width_pp": 0.78,
+            "significant": false
+          }
+        },
+        "called_tile_is_dora": {
+          "yes": {
+            "n": 440,
+            "chi": 44,
+            "chi_rate_pct": 10.0,
+            "ci95_half_width_pp": 2.8,
+            "condition": "called_tile_is_dora",
+            "value": "yes",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 15844,
+            "complement_chi": 1044,
+            "complement_chi_rate_pct": 6.6,
+            "delta_pp_vs_complement": 3.4,
+            "diff_ci95_half_width_pp": 2.83,
+            "significant": true
+          },
+          "no": {
+            "n": 15844,
+            "chi": 1044,
+            "chi_rate_pct": 6.6,
+            "ci95_half_width_pp": 0.39,
+            "condition": "called_tile_is_dora",
+            "value": "no",
+            "meets_min_cell_n": true,
+            "complement_meets_min_cell_n": true,
+            "complement_n": 440,
+            "complement_chi": 44,
+            "complement_chi_rate_pct": 10.0,
+            "delta_pp_vs_complement": -3.4,
+            "diff_ci95_half_width_pp": 2.83,
+            "significant": true
+          }
+        }
+      }
+    }
+  },
+  "diagnostics": {
+    "child_call_opportunities_with_nonzero_kind": 29825,
+    "dealer_call_opportunities_with_nonzero_kind": 9911
+  },
+  "changed_vs_published": [
+    {
+      "label": "yakuhai_threat_yes",
+      "published_pct": 83.0,
+      "child_only_pct": 36.2,
+      "delta_pp": -46.8,
+      "path": "condition_effects_child_only.yakuhai_pon.requested_cells.existing_table_threat.yes.pon_rate_pct"
+    },
+    {
+      "label": "yakuhai_threat_no",
+      "published_pct": 40.0,
+      "child_only_pct": 82.3,
+      "delta_pp": 42.3,
+      "path": "condition_effects_child_only.yakuhai_pon.requested_cells.existing_table_threat.no.pon_rate_pct"
+    },
+    {
+      "label": "yakuhai_turn_7_12_shanten_2_3",
+      "published_pct": 64.0,
+      "child_only_pct": 60.0,
+      "delta_pp": -4.0,
+      "path": "condition_effects_child_only.yakuhai_pon.requested_cells.turn_x_shanten.turn_7-12_shanten_2-3.pon_rate_pct"
+    },
+    {
+      "label": "later_copy_yakuhai_pon",
+      "published_pct": 58.2,
+      "child_only_pct": 55.8,
+      "delta_pp": -2.4,
+      "path": "baselines.yakuhai_pon.later_copy.child.pon_rate_pct"
+    },
+    {
+      "label": "junk_yakuhai_pon",
+      "published_pct": 72.4,
+      "child_only_pct": 70.4,
+      "delta_pp": -2.0,
+      "path": "baselines.junk.yakuhai_pon_opportunities.child.pon_rate_pct"
+    }
+  ]
+}

@@ -25,13 +25,13 @@ WINDS = ["E", "S", "W", "N"]
 SEQUENCES = {
     "value_honor_cleanup_animation": [
         {
-            "title": "Quiet value wind cleanup",
-            "game": 0,
-            "round": "East 1-0",
+            "title": "Quiet seat-wind cleanup",
+            "game": 3,
+            "round": "East 3-0",
             "start_turn": 1,
             "end_turn": 4,
             "focus_turn": 3,
-            "focus_honor": "E",
+            "focus_honor": "S",
             "note": "Quiet table: the singleton value wind leaves on turn 3.",
         }
     ],
@@ -57,14 +57,14 @@ SEQUENCES = {
             "note": "Another quiet hand where LuckyJ does not wait for the lone dragon to pair.",
         },
         {
-            "title": "Seat wind leaves on turn 3",
-            "game": 3,
+            "title": "Second dragon cleanup",
+            "game": 4,
             "round": "East 3-0",
             "start_turn": 1,
             "end_turn": 4,
             "focus_turn": 3,
-            "focus_honor": "S",
-            "note": "Seat wind is value, but as a lone tile in a quiet hand it still gets cleaned early.",
+            "focus_honor": "F",
+            "note": "Multiple value honors do not freeze the hand; the second lone dragon still leaves early.",
         },
     ],
 }
@@ -354,6 +354,9 @@ def replay_sequence(row: dict[str, Any], spec: dict[str, Any], kyoku: list[dict[
         "game": row["idx"],
         "round": round_name(start),
         "kyoku_index": spec.get("kyoku_index"),
+        "actor": target,
+        "oya": start.get("oya"),
+        "dealer_status": "child",
         "focus_honor": spec.get("focus_honor"),
         "note": spec.get("note"),
         "autoplay_indices": focus_indexes,
@@ -380,6 +383,8 @@ def build_sequences() -> dict[str, list[dict[str, Any]]]:
             for idx, candidate in enumerate(data.get("pred", [])):
                 start = candidate[0].get("info", {}).get("msg", {}) if candidate else {}
                 if round_name(start) == spec["round"]:
+                    if row["actor"] == start.get("oya"):
+                        raise ValueError(f"dealer example selected: game {spec['game']} {spec['round']}")
                     kyoku = candidate
                     kyoku_index = idx
                     break

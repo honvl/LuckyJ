@@ -1,0 +1,3780 @@
+{
+  "metadata": {
+    "generated_at": "2026-07-05T22:19:49.230557+00:00",
+    "repo_root": "/Users/honvl/LuckyJ",
+    "source_rows": 1256,
+    "unique_report_rows_analyzed": 1255,
+    "duplicate_report_rows_skipped": [
+      {
+        "report_id": "c045846868d7637fe2878e8c8326ccb44afd66e22cd926fbc900650abef68831v2_2",
+        "kept_idx": 1100,
+        "kept_actor": 0,
+        "skipped_idx": 1101,
+        "skipped_actor": 1
+      }
+    ],
+    "reports_processed": 1255,
+    "kyoku_processed": 13054,
+    "kyoku_skipped_malformed": 0,
+    "luckyj_decisions_processed_for_honor_replay": 147322,
+    "all_decisions_processed_for_hypothesis_check": 147322,
+    "child_cleanup_records": 19735,
+    "dealer_cleanup_records": 6836,
+    "child_stop_matching_live_honor_opportunities": 3335,
+    "dealer_stop_matching_live_honor_opportunities": 919
+  },
+  "definitions": {
+    "child_round": "A kyoku where LuckyJ is not oya/dealer at start_kyoku. This is the prescription base requested for the book.",
+    "dealer_round": "A kyoku where LuckyJ is oya/dealer at start_kyoku, output side-by-side only for comparison.",
+    "hypothesis_check_population": "All LuckyJ discard-prediction states with dahai_pred head 0 and real_dahai present before child/dealer filtering; riichi-declaration states with msg.reached are excluded, matching existing NAGA-decision miners.",
+    "top_discard_match": "Nishiki/head-0 top tile from dahai_pred equals LuckyJ real_dahai.",
+    "severe_mismatch_cheap_actual": "Nishiki/head-0 top tile differs from real_dahai and Nishiki assigns real_dahai probability < 0.05.",
+    "turn_number": "For LuckyJ, len(discards[LuckyJ]) + 1 at the decision state, matching scripts/mine_rx_honors.py and scripts/mine_rx2_honors.py replay timing.",
+    "lone_cleanup_population": "Honor tile types held exactly once in LuckyJ's starting hand; starting pairs/triples are excluded. dragon/value_wind/guest_wind use LuckyJ's round/seat winds.",
+    "paired_before_cut": "LuckyJ drew another copy of that same honor before the first recorded decision discard of the tile.",
+    "quiet_vs_after_open": "quiet means the first discard of the tracked honor occurred before any opponent had an open meld; after_open means at least one opponent meld existed at discard time.",
+    "stop_matching_opportunity": "Every non-riichi LuckyJ tsumo discard decision, for each honor tile type LuckyJ holds exactly one copy of before discarding.",
+    "visible_copies_for_matrix": "Copies outside LuckyJ's concealed hand: opponent rivers, all public melds, and current dora indicators. LuckyJ's own river is excluded. Counts are capped at 3.",
+    "threat_level": "riichi if any opponent has reached; otherwise open_threat if any opponent has 2+ melds; otherwise none.",
+    "late_live_honor_draw": "After turn 12, non-riichi LuckyJ tsumo decisions where LuckyJ drew an honor with 0-1 visible copies outside hand while at least one opponent riichi was active.",
+    "cut_by_turn6": "For child condition-effect A, true if a starting singleton dragon/value wind's first tracked non-riichi discard turn is <=6. Denominator requires the kyoku to reach at least 6 LuckyJ turns and excludes starts that paired before/at turn 6 before being cut.",
+    "stop_matching_live_honor_condition_effect": "For child condition-effect B, turn-7+ tsumo discard decisions while any opponent riichi is active; each held honor tile type with exactly one copy and 0 visible copies outside LuckyJ's hand is one opportunity.",
+    "genbutsu_count_vs_riichi": "Number of tile copies in LuckyJ's current hand whose 34-tile type appears in the primary riichi player's river, bucketed 0/1/2+.",
+    "significance": "For each condition value, delta_pp_vs_complement compares its rate to all other listed values. significant is true when |delta| exceeds sqrt(cell_ci^2 + complement_ci^2); CI is 1.96*sqrt(p*(1-p)/n)*100. Cells or complements below n=150 are small_sample and not significant."
+  },
+  "dealer_vs_child_naga_match": {
+    "dealer": {
+      "n": 37964,
+      "top_match_n": 29010,
+      "top_match_rate_pct": 76.4,
+      "top_match_ci95_half_width_pp": 0.43,
+      "severe_mismatch_cheap_actual_n": 2660,
+      "severe_mismatch_cheap_actual_rate_pct": 7.0,
+      "severe_mismatch_cheap_actual_ci95_half_width_pp": 0.26
+    },
+    "child": {
+      "n": 109358,
+      "top_match_n": 79299,
+      "top_match_rate_pct": 72.5,
+      "top_match_ci95_half_width_pp": 0.26,
+      "severe_mismatch_cheap_actual_n": 9177,
+      "severe_mismatch_cheap_actual_rate_pct": 8.4,
+      "severe_mismatch_cheap_actual_ci95_half_width_pp": 0.16
+    },
+    "delta_dealer_minus_child": {
+      "top_match_pp": 3.9,
+      "severe_mismatch_cheap_actual_pp": -1.4
+    }
+  },
+  "child_only_baselines": {
+    "lone_yakuhai_cleanup_timing": {
+      "summary_by_kind_and_opponent_open": {
+        "dragon": {
+          "n_start_singletons": 8461,
+          "discard_turn_all": {
+            "n": 6945,
+            "p25": 3,
+            "median": 4,
+            "p75": 6,
+            "min": 1,
+            "max": 19
+          },
+          "discarded_pct": {
+            "count": 6945,
+            "n": 8461,
+            "pct": 82.1
+          },
+          "never_cut_pct": {
+            "count": 1516,
+            "n": 8461,
+            "pct": 17.9
+          },
+          "paired_before_cut_pct": {
+            "count": 1036,
+            "n": 8461,
+            "pct": 12.2
+          },
+          "outcomes": {
+            "discarded_after_pair": {
+              "count": 229,
+              "n": 8461,
+              "pct": 2.7
+            },
+            "discarded_lone": {
+              "count": 6716,
+              "n": 8461,
+              "pct": 79.4
+            },
+            "kept_to_end": {
+              "count": 709,
+              "n": 8461,
+              "pct": 8.4
+            },
+            "paired_up_later": {
+              "count": 807,
+              "n": 8461,
+              "pct": 9.5
+            }
+          },
+          "by_discard_opponent_open_context": {
+            "no_opponent_open": {
+              "n_start_singletons": 8461,
+              "n_discarded_in_context": 4814,
+              "discard_turn": {
+                "n": 4814,
+                "p25": 2,
+                "median": 3,
+                "p75": 5,
+                "min": 1,
+                "max": 17
+              },
+              "discarded_here_pct_of_start_singletons": {
+                "count": 4814,
+                "n": 8461,
+                "pct": 56.9
+              },
+              "riichi_at_discard_pct": {
+                "count": 445,
+                "n": 4814,
+                "pct": 9.2
+              }
+            },
+            "some_opponent_open": {
+              "n_start_singletons": 8461,
+              "n_discarded_in_context": 2131,
+              "discard_turn": {
+                "n": 2131,
+                "p25": 4,
+                "median": 6,
+                "p75": 9,
+                "min": 1,
+                "max": 19
+              },
+              "discarded_here_pct_of_start_singletons": {
+                "count": 2131,
+                "n": 8461,
+                "pct": 25.2
+              },
+              "riichi_at_discard_pct": {
+                "count": 291,
+                "n": 2131,
+                "pct": 13.7
+              }
+            }
+          }
+        },
+        "value_wind": {
+          "n_start_singletons": 5248,
+          "discard_turn_all": {
+            "n": 4381,
+            "p25": 2,
+            "median": 4,
+            "p75": 6,
+            "min": 1,
+            "max": 18
+          },
+          "discarded_pct": {
+            "count": 4381,
+            "n": 5248,
+            "pct": 83.5
+          },
+          "never_cut_pct": {
+            "count": 867,
+            "n": 5248,
+            "pct": 16.5
+          },
+          "paired_before_cut_pct": {
+            "count": 578,
+            "n": 5248,
+            "pct": 11.0
+          },
+          "outcomes": {
+            "discarded_after_pair": {
+              "count": 138,
+              "n": 5248,
+              "pct": 2.6
+            },
+            "discarded_lone": {
+              "count": 4243,
+              "n": 5248,
+              "pct": 80.8
+            },
+            "kept_to_end": {
+              "count": 427,
+              "n": 5248,
+              "pct": 8.1
+            },
+            "paired_up_later": {
+              "count": 440,
+              "n": 5248,
+              "pct": 8.4
+            }
+          },
+          "by_discard_opponent_open_context": {
+            "no_opponent_open": {
+              "n_start_singletons": 5248,
+              "n_discarded_in_context": 3002,
+              "discard_turn": {
+                "n": 3002,
+                "p25": 2,
+                "median": 3,
+                "p75": 5,
+                "min": 1,
+                "max": 18
+              },
+              "discarded_here_pct_of_start_singletons": {
+                "count": 3002,
+                "n": 5248,
+                "pct": 57.2
+              },
+              "riichi_at_discard_pct": {
+                "count": 281,
+                "n": 3002,
+                "pct": 9.4
+              }
+            },
+            "some_opponent_open": {
+              "n_start_singletons": 5248,
+              "n_discarded_in_context": 1379,
+              "discard_turn": {
+                "n": 1379,
+                "p25": 4,
+                "median": 6,
+                "p75": 8,
+                "min": 1,
+                "max": 18
+              },
+              "discarded_here_pct_of_start_singletons": {
+                "count": 1379,
+                "n": 5248,
+                "pct": 26.3
+              },
+              "riichi_at_discard_pct": {
+                "count": 177,
+                "n": 1379,
+                "pct": 12.8
+              }
+            }
+          }
+        }
+      }
+    },
+    "guest_wind_cleanup": {
+      "n_start_singletons": 6026,
+      "discard_turn_all": {
+        "n": 5480,
+        "p25": 1,
+        "median": 2,
+        "p75": 3,
+        "min": 1,
+        "max": 19
+      },
+      "discarded_pct": {
+        "count": 5480,
+        "n": 6026,
+        "pct": 90.9
+      },
+      "never_cut_pct": {
+        "count": 546,
+        "n": 6026,
+        "pct": 9.1
+      },
+      "paired_before_cut_pct": {
+        "count": 395,
+        "n": 6026,
+        "pct": 6.6
+      },
+      "kept_past_turn6_pct": {
+        "count": 1000,
+        "n": 5892,
+        "pct": 17.0
+      },
+      "outcomes": {
+        "discarded_after_pair": {
+          "count": 150,
+          "n": 6026,
+          "pct": 2.5
+        },
+        "discarded_lone": {
+          "count": 5330,
+          "n": 6026,
+          "pct": 88.5
+        },
+        "kept_to_end": {
+          "count": 301,
+          "n": 6026,
+          "pct": 5.0
+        },
+        "paired_up_later": {
+          "count": 245,
+          "n": 6026,
+          "pct": 4.1
+        }
+      },
+      "by_discard_opponent_open_context": {
+        "no_opponent_open": {
+          "n_start_singletons": 6026,
+          "n_discarded_in_context": 4677,
+          "discard_turn": {
+            "n": 4677,
+            "p25": 1,
+            "median": 1,
+            "p75": 2,
+            "min": 1,
+            "max": 17
+          },
+          "discarded_here_pct_of_start_singletons": {
+            "count": 4677,
+            "n": 6026,
+            "pct": 77.6
+          }
+        },
+        "some_opponent_open": {
+          "n_start_singletons": 6026,
+          "n_discarded_in_context": 803,
+          "discard_turn": {
+            "n": 803,
+            "p25": 3,
+            "median": 5,
+            "p75": 8,
+            "min": 1,
+            "max": 19
+          },
+          "discarded_here_pct_of_start_singletons": {
+            "count": 803,
+            "n": 6026,
+            "pct": 13.3
+          }
+        }
+      }
+    },
+    "stop_matching_honors_matrix": {
+      "cells": [
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 0,
+          "threat_level": "none",
+          "n": 37111,
+          "discard_n": 6855,
+          "hold_n": 30256,
+          "discard_rate_pct": 18.5
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 0,
+          "threat_level": "open_threat",
+          "n": 277,
+          "discard_n": 76,
+          "hold_n": 201,
+          "discard_rate_pct": 27.4
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 0,
+          "threat_level": "riichi",
+          "n": 219,
+          "discard_n": 28,
+          "hold_n": 191,
+          "discard_rate_pct": 12.8
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 1,
+          "threat_level": "none",
+          "n": 11243,
+          "discard_n": 3091,
+          "hold_n": 8152,
+          "discard_rate_pct": 27.5
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 1,
+          "threat_level": "open_threat",
+          "n": 126,
+          "discard_n": 29,
+          "hold_n": 97,
+          "discard_rate_pct": 23.0
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 1,
+          "threat_level": "riichi",
+          "n": 76,
+          "discard_n": 32,
+          "hold_n": 44,
+          "discard_rate_pct": 42.1
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 2,
+          "threat_level": "none",
+          "n": 1836,
+          "discard_n": 875,
+          "hold_n": 961,
+          "discard_rate_pct": 47.7
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 2,
+          "threat_level": "open_threat",
+          "n": 22,
+          "discard_n": 6,
+          "hold_n": 16,
+          "discard_rate_pct": 27.3
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 2,
+          "threat_level": "riichi",
+          "n": 23,
+          "discard_n": 13,
+          "hold_n": 10,
+          "discard_rate_pct": 56.5
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 3,
+          "threat_level": "none",
+          "n": 313,
+          "discard_n": 163,
+          "hold_n": 150,
+          "discard_rate_pct": 52.1
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 3,
+          "threat_level": "open_threat",
+          "n": 34,
+          "discard_n": 6,
+          "hold_n": 28,
+          "discard_rate_pct": 17.6
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 3,
+          "threat_level": "riichi",
+          "n": 4,
+          "discard_n": 1,
+          "hold_n": 3,
+          "discard_rate_pct": 25.0
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 0,
+          "threat_level": "none",
+          "n": 11095,
+          "discard_n": 3634,
+          "hold_n": 7461,
+          "discard_rate_pct": 32.8
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 0,
+          "threat_level": "open_threat",
+          "n": 815,
+          "discard_n": 219,
+          "hold_n": 596,
+          "discard_rate_pct": 26.9
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 0,
+          "threat_level": "riichi",
+          "n": 921,
+          "discard_n": 102,
+          "hold_n": 819,
+          "discard_rate_pct": 11.1
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 1,
+          "threat_level": "none",
+          "n": 11100,
+          "discard_n": 2299,
+          "hold_n": 8801,
+          "discard_rate_pct": 20.7
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 1,
+          "threat_level": "open_threat",
+          "n": 854,
+          "discard_n": 285,
+          "hold_n": 569,
+          "discard_rate_pct": 33.4
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 1,
+          "threat_level": "riichi",
+          "n": 737,
+          "discard_n": 256,
+          "hold_n": 481,
+          "discard_rate_pct": 34.7
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 2,
+          "threat_level": "none",
+          "n": 3889,
+          "discard_n": 769,
+          "hold_n": 3120,
+          "discard_rate_pct": 19.8
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 2,
+          "threat_level": "open_threat",
+          "n": 317,
+          "discard_n": 77,
+          "hold_n": 240,
+          "discard_rate_pct": 24.3
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 2,
+          "threat_level": "riichi",
+          "n": 270,
+          "discard_n": 126,
+          "hold_n": 144,
+          "discard_rate_pct": 46.7
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 3,
+          "threat_level": "none",
+          "n": 716,
+          "discard_n": 170,
+          "hold_n": 546,
+          "discard_rate_pct": 23.7
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 3,
+          "threat_level": "open_threat",
+          "n": 224,
+          "discard_n": 53,
+          "hold_n": 171,
+          "discard_rate_pct": 23.7
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 3,
+          "threat_level": "riichi",
+          "n": 59,
+          "discard_n": 33,
+          "hold_n": 26,
+          "discard_rate_pct": 55.9
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 0,
+          "threat_level": "none",
+          "n": 2575,
+          "discard_n": 951,
+          "hold_n": 1624,
+          "discard_rate_pct": 36.9
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 0,
+          "threat_level": "open_threat",
+          "n": 857,
+          "discard_n": 131,
+          "hold_n": 726,
+          "discard_rate_pct": 15.3
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 0,
+          "threat_level": "riichi",
+          "n": 1163,
+          "discard_n": 150,
+          "hold_n": 1013,
+          "discard_rate_pct": 12.9
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 1,
+          "threat_level": "none",
+          "n": 5004,
+          "discard_n": 1559,
+          "hold_n": 3445,
+          "discard_rate_pct": 31.2
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 1,
+          "threat_level": "open_threat",
+          "n": 1044,
+          "discard_n": 410,
+          "hold_n": 634,
+          "discard_rate_pct": 39.3
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 1,
+          "threat_level": "riichi",
+          "n": 1630,
+          "discard_n": 530,
+          "hold_n": 1100,
+          "discard_rate_pct": 32.5
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 2,
+          "threat_level": "none",
+          "n": 3786,
+          "discard_n": 798,
+          "hold_n": 2988,
+          "discard_rate_pct": 21.1
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 2,
+          "threat_level": "open_threat",
+          "n": 663,
+          "discard_n": 232,
+          "hold_n": 431,
+          "discard_rate_pct": 35.0
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 2,
+          "threat_level": "riichi",
+          "n": 953,
+          "discard_n": 459,
+          "hold_n": 494,
+          "discard_rate_pct": 48.2
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 3,
+          "threat_level": "none",
+          "n": 892,
+          "discard_n": 179,
+          "hold_n": 713,
+          "discard_rate_pct": 20.1
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 3,
+          "threat_level": "open_threat",
+          "n": 329,
+          "discard_n": 111,
+          "hold_n": 218,
+          "discard_rate_pct": 33.7
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 3,
+          "threat_level": "riichi",
+          "n": 240,
+          "discard_n": 112,
+          "hold_n": 128,
+          "discard_rate_pct": 46.7
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 0,
+          "threat_level": "none",
+          "n": 718,
+          "discard_n": 236,
+          "hold_n": 482,
+          "discard_rate_pct": 32.9
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 0,
+          "threat_level": "open_threat",
+          "n": 634,
+          "discard_n": 71,
+          "hold_n": 563,
+          "discard_rate_pct": 11.2
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 0,
+          "threat_level": "riichi",
+          "n": 1061,
+          "discard_n": 126,
+          "hold_n": 935,
+          "discard_rate_pct": 11.9
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 1,
+          "threat_level": "none",
+          "n": 1434,
+          "discard_n": 596,
+          "hold_n": 838,
+          "discard_rate_pct": 41.6
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 1,
+          "threat_level": "open_threat",
+          "n": 623,
+          "discard_n": 237,
+          "hold_n": 386,
+          "discard_rate_pct": 38.0
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 1,
+          "threat_level": "riichi",
+          "n": 1517,
+          "discard_n": 525,
+          "hold_n": 992,
+          "discard_rate_pct": 34.6
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 2,
+          "threat_level": "none",
+          "n": 1837,
+          "discard_n": 557,
+          "hold_n": 1280,
+          "discard_rate_pct": 30.3
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 2,
+          "threat_level": "open_threat",
+          "n": 584,
+          "discard_n": 278,
+          "hold_n": 306,
+          "discard_rate_pct": 47.6
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 2,
+          "threat_level": "riichi",
+          "n": 1327,
+          "discard_n": 690,
+          "hold_n": 637,
+          "discard_rate_pct": 52.0
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 3,
+          "threat_level": "none",
+          "n": 690,
+          "discard_n": 180,
+          "hold_n": 510,
+          "discard_rate_pct": 26.1
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 3,
+          "threat_level": "open_threat",
+          "n": 289,
+          "discard_n": 118,
+          "hold_n": 171,
+          "discard_rate_pct": 40.8
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 3,
+          "threat_level": "riichi",
+          "n": 395,
+          "discard_n": 235,
+          "hold_n": 160,
+          "discard_rate_pct": 59.5
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 0,
+          "threat_level": "none",
+          "n": 332,
+          "discard_n": 68,
+          "hold_n": 264,
+          "discard_rate_pct": 20.5
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 0,
+          "threat_level": "open_threat",
+          "n": 558,
+          "discard_n": 35,
+          "hold_n": 523,
+          "discard_rate_pct": 6.3
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 0,
+          "threat_level": "riichi",
+          "n": 1111,
+          "discard_n": 91,
+          "hold_n": 1020,
+          "discard_rate_pct": 8.2
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 1,
+          "threat_level": "none",
+          "n": 417,
+          "discard_n": 226,
+          "hold_n": 191,
+          "discard_rate_pct": 54.2
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 1,
+          "threat_level": "open_threat",
+          "n": 463,
+          "discard_n": 157,
+          "hold_n": 306,
+          "discard_rate_pct": 33.9
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 1,
+          "threat_level": "riichi",
+          "n": 1392,
+          "discard_n": 479,
+          "hold_n": 913,
+          "discard_rate_pct": 34.4
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 2,
+          "threat_level": "none",
+          "n": 641,
+          "discard_n": 356,
+          "hold_n": 285,
+          "discard_rate_pct": 55.5
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 2,
+          "threat_level": "open_threat",
+          "n": 411,
+          "discard_n": 260,
+          "hold_n": 151,
+          "discard_rate_pct": 63.3
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 2,
+          "threat_level": "riichi",
+          "n": 1254,
+          "discard_n": 767,
+          "hold_n": 487,
+          "discard_rate_pct": 61.2
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 3,
+          "threat_level": "none",
+          "n": 410,
+          "discard_n": 211,
+          "hold_n": 199,
+          "discard_rate_pct": 51.5
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 3,
+          "threat_level": "open_threat",
+          "n": 233,
+          "discard_n": 163,
+          "hold_n": 70,
+          "discard_rate_pct": 70.0
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 3,
+          "threat_level": "riichi",
+          "n": 437,
+          "discard_n": 305,
+          "hold_n": 132,
+          "discard_rate_pct": 69.8
+        }
+      ],
+      "nested": {
+        "1-3": {
+          "0": {
+            "none": {
+              "turn_bucket": "1-3",
+              "visible_copies": 0,
+              "threat_level": "none",
+              "n": 37111,
+              "discard_n": 6855,
+              "hold_n": 30256,
+              "discard_rate_pct": 18.5
+            },
+            "open_threat": {
+              "turn_bucket": "1-3",
+              "visible_copies": 0,
+              "threat_level": "open_threat",
+              "n": 277,
+              "discard_n": 76,
+              "hold_n": 201,
+              "discard_rate_pct": 27.4
+            },
+            "riichi": {
+              "turn_bucket": "1-3",
+              "visible_copies": 0,
+              "threat_level": "riichi",
+              "n": 219,
+              "discard_n": 28,
+              "hold_n": 191,
+              "discard_rate_pct": 12.8
+            }
+          },
+          "1": {
+            "none": {
+              "turn_bucket": "1-3",
+              "visible_copies": 1,
+              "threat_level": "none",
+              "n": 11243,
+              "discard_n": 3091,
+              "hold_n": 8152,
+              "discard_rate_pct": 27.5
+            },
+            "open_threat": {
+              "turn_bucket": "1-3",
+              "visible_copies": 1,
+              "threat_level": "open_threat",
+              "n": 126,
+              "discard_n": 29,
+              "hold_n": 97,
+              "discard_rate_pct": 23.0
+            },
+            "riichi": {
+              "turn_bucket": "1-3",
+              "visible_copies": 1,
+              "threat_level": "riichi",
+              "n": 76,
+              "discard_n": 32,
+              "hold_n": 44,
+              "discard_rate_pct": 42.1
+            }
+          },
+          "2": {
+            "none": {
+              "turn_bucket": "1-3",
+              "visible_copies": 2,
+              "threat_level": "none",
+              "n": 1836,
+              "discard_n": 875,
+              "hold_n": 961,
+              "discard_rate_pct": 47.7
+            },
+            "open_threat": {
+              "turn_bucket": "1-3",
+              "visible_copies": 2,
+              "threat_level": "open_threat",
+              "n": 22,
+              "discard_n": 6,
+              "hold_n": 16,
+              "discard_rate_pct": 27.3
+            },
+            "riichi": {
+              "turn_bucket": "1-3",
+              "visible_copies": 2,
+              "threat_level": "riichi",
+              "n": 23,
+              "discard_n": 13,
+              "hold_n": 10,
+              "discard_rate_pct": 56.5
+            }
+          },
+          "3": {
+            "none": {
+              "turn_bucket": "1-3",
+              "visible_copies": 3,
+              "threat_level": "none",
+              "n": 313,
+              "discard_n": 163,
+              "hold_n": 150,
+              "discard_rate_pct": 52.1
+            },
+            "open_threat": {
+              "turn_bucket": "1-3",
+              "visible_copies": 3,
+              "threat_level": "open_threat",
+              "n": 34,
+              "discard_n": 6,
+              "hold_n": 28,
+              "discard_rate_pct": 17.6
+            },
+            "riichi": {
+              "turn_bucket": "1-3",
+              "visible_copies": 3,
+              "threat_level": "riichi",
+              "n": 4,
+              "discard_n": 1,
+              "hold_n": 3,
+              "discard_rate_pct": 25.0
+            }
+          }
+        },
+        "4-6": {
+          "0": {
+            "none": {
+              "turn_bucket": "4-6",
+              "visible_copies": 0,
+              "threat_level": "none",
+              "n": 11095,
+              "discard_n": 3634,
+              "hold_n": 7461,
+              "discard_rate_pct": 32.8
+            },
+            "open_threat": {
+              "turn_bucket": "4-6",
+              "visible_copies": 0,
+              "threat_level": "open_threat",
+              "n": 815,
+              "discard_n": 219,
+              "hold_n": 596,
+              "discard_rate_pct": 26.9
+            },
+            "riichi": {
+              "turn_bucket": "4-6",
+              "visible_copies": 0,
+              "threat_level": "riichi",
+              "n": 921,
+              "discard_n": 102,
+              "hold_n": 819,
+              "discard_rate_pct": 11.1
+            }
+          },
+          "1": {
+            "none": {
+              "turn_bucket": "4-6",
+              "visible_copies": 1,
+              "threat_level": "none",
+              "n": 11100,
+              "discard_n": 2299,
+              "hold_n": 8801,
+              "discard_rate_pct": 20.7
+            },
+            "open_threat": {
+              "turn_bucket": "4-6",
+              "visible_copies": 1,
+              "threat_level": "open_threat",
+              "n": 854,
+              "discard_n": 285,
+              "hold_n": 569,
+              "discard_rate_pct": 33.4
+            },
+            "riichi": {
+              "turn_bucket": "4-6",
+              "visible_copies": 1,
+              "threat_level": "riichi",
+              "n": 737,
+              "discard_n": 256,
+              "hold_n": 481,
+              "discard_rate_pct": 34.7
+            }
+          },
+          "2": {
+            "none": {
+              "turn_bucket": "4-6",
+              "visible_copies": 2,
+              "threat_level": "none",
+              "n": 3889,
+              "discard_n": 769,
+              "hold_n": 3120,
+              "discard_rate_pct": 19.8
+            },
+            "open_threat": {
+              "turn_bucket": "4-6",
+              "visible_copies": 2,
+              "threat_level": "open_threat",
+              "n": 317,
+              "discard_n": 77,
+              "hold_n": 240,
+              "discard_rate_pct": 24.3
+            },
+            "riichi": {
+              "turn_bucket": "4-6",
+              "visible_copies": 2,
+              "threat_level": "riichi",
+              "n": 270,
+              "discard_n": 126,
+              "hold_n": 144,
+              "discard_rate_pct": 46.7
+            }
+          },
+          "3": {
+            "none": {
+              "turn_bucket": "4-6",
+              "visible_copies": 3,
+              "threat_level": "none",
+              "n": 716,
+              "discard_n": 170,
+              "hold_n": 546,
+              "discard_rate_pct": 23.7
+            },
+            "open_threat": {
+              "turn_bucket": "4-6",
+              "visible_copies": 3,
+              "threat_level": "open_threat",
+              "n": 224,
+              "discard_n": 53,
+              "hold_n": 171,
+              "discard_rate_pct": 23.7
+            },
+            "riichi": {
+              "turn_bucket": "4-6",
+              "visible_copies": 3,
+              "threat_level": "riichi",
+              "n": 59,
+              "discard_n": 33,
+              "hold_n": 26,
+              "discard_rate_pct": 55.9
+            }
+          }
+        },
+        "7-9": {
+          "0": {
+            "none": {
+              "turn_bucket": "7-9",
+              "visible_copies": 0,
+              "threat_level": "none",
+              "n": 2575,
+              "discard_n": 951,
+              "hold_n": 1624,
+              "discard_rate_pct": 36.9
+            },
+            "open_threat": {
+              "turn_bucket": "7-9",
+              "visible_copies": 0,
+              "threat_level": "open_threat",
+              "n": 857,
+              "discard_n": 131,
+              "hold_n": 726,
+              "discard_rate_pct": 15.3
+            },
+            "riichi": {
+              "turn_bucket": "7-9",
+              "visible_copies": 0,
+              "threat_level": "riichi",
+              "n": 1163,
+              "discard_n": 150,
+              "hold_n": 1013,
+              "discard_rate_pct": 12.9
+            }
+          },
+          "1": {
+            "none": {
+              "turn_bucket": "7-9",
+              "visible_copies": 1,
+              "threat_level": "none",
+              "n": 5004,
+              "discard_n": 1559,
+              "hold_n": 3445,
+              "discard_rate_pct": 31.2
+            },
+            "open_threat": {
+              "turn_bucket": "7-9",
+              "visible_copies": 1,
+              "threat_level": "open_threat",
+              "n": 1044,
+              "discard_n": 410,
+              "hold_n": 634,
+              "discard_rate_pct": 39.3
+            },
+            "riichi": {
+              "turn_bucket": "7-9",
+              "visible_copies": 1,
+              "threat_level": "riichi",
+              "n": 1630,
+              "discard_n": 530,
+              "hold_n": 1100,
+              "discard_rate_pct": 32.5
+            }
+          },
+          "2": {
+            "none": {
+              "turn_bucket": "7-9",
+              "visible_copies": 2,
+              "threat_level": "none",
+              "n": 3786,
+              "discard_n": 798,
+              "hold_n": 2988,
+              "discard_rate_pct": 21.1
+            },
+            "open_threat": {
+              "turn_bucket": "7-9",
+              "visible_copies": 2,
+              "threat_level": "open_threat",
+              "n": 663,
+              "discard_n": 232,
+              "hold_n": 431,
+              "discard_rate_pct": 35.0
+            },
+            "riichi": {
+              "turn_bucket": "7-9",
+              "visible_copies": 2,
+              "threat_level": "riichi",
+              "n": 953,
+              "discard_n": 459,
+              "hold_n": 494,
+              "discard_rate_pct": 48.2
+            }
+          },
+          "3": {
+            "none": {
+              "turn_bucket": "7-9",
+              "visible_copies": 3,
+              "threat_level": "none",
+              "n": 892,
+              "discard_n": 179,
+              "hold_n": 713,
+              "discard_rate_pct": 20.1
+            },
+            "open_threat": {
+              "turn_bucket": "7-9",
+              "visible_copies": 3,
+              "threat_level": "open_threat",
+              "n": 329,
+              "discard_n": 111,
+              "hold_n": 218,
+              "discard_rate_pct": 33.7
+            },
+            "riichi": {
+              "turn_bucket": "7-9",
+              "visible_copies": 3,
+              "threat_level": "riichi",
+              "n": 240,
+              "discard_n": 112,
+              "hold_n": 128,
+              "discard_rate_pct": 46.7
+            }
+          }
+        },
+        "10-12": {
+          "0": {
+            "none": {
+              "turn_bucket": "10-12",
+              "visible_copies": 0,
+              "threat_level": "none",
+              "n": 718,
+              "discard_n": 236,
+              "hold_n": 482,
+              "discard_rate_pct": 32.9
+            },
+            "open_threat": {
+              "turn_bucket": "10-12",
+              "visible_copies": 0,
+              "threat_level": "open_threat",
+              "n": 634,
+              "discard_n": 71,
+              "hold_n": 563,
+              "discard_rate_pct": 11.2
+            },
+            "riichi": {
+              "turn_bucket": "10-12",
+              "visible_copies": 0,
+              "threat_level": "riichi",
+              "n": 1061,
+              "discard_n": 126,
+              "hold_n": 935,
+              "discard_rate_pct": 11.9
+            }
+          },
+          "1": {
+            "none": {
+              "turn_bucket": "10-12",
+              "visible_copies": 1,
+              "threat_level": "none",
+              "n": 1434,
+              "discard_n": 596,
+              "hold_n": 838,
+              "discard_rate_pct": 41.6
+            },
+            "open_threat": {
+              "turn_bucket": "10-12",
+              "visible_copies": 1,
+              "threat_level": "open_threat",
+              "n": 623,
+              "discard_n": 237,
+              "hold_n": 386,
+              "discard_rate_pct": 38.0
+            },
+            "riichi": {
+              "turn_bucket": "10-12",
+              "visible_copies": 1,
+              "threat_level": "riichi",
+              "n": 1517,
+              "discard_n": 525,
+              "hold_n": 992,
+              "discard_rate_pct": 34.6
+            }
+          },
+          "2": {
+            "none": {
+              "turn_bucket": "10-12",
+              "visible_copies": 2,
+              "threat_level": "none",
+              "n": 1837,
+              "discard_n": 557,
+              "hold_n": 1280,
+              "discard_rate_pct": 30.3
+            },
+            "open_threat": {
+              "turn_bucket": "10-12",
+              "visible_copies": 2,
+              "threat_level": "open_threat",
+              "n": 584,
+              "discard_n": 278,
+              "hold_n": 306,
+              "discard_rate_pct": 47.6
+            },
+            "riichi": {
+              "turn_bucket": "10-12",
+              "visible_copies": 2,
+              "threat_level": "riichi",
+              "n": 1327,
+              "discard_n": 690,
+              "hold_n": 637,
+              "discard_rate_pct": 52.0
+            }
+          },
+          "3": {
+            "none": {
+              "turn_bucket": "10-12",
+              "visible_copies": 3,
+              "threat_level": "none",
+              "n": 690,
+              "discard_n": 180,
+              "hold_n": 510,
+              "discard_rate_pct": 26.1
+            },
+            "open_threat": {
+              "turn_bucket": "10-12",
+              "visible_copies": 3,
+              "threat_level": "open_threat",
+              "n": 289,
+              "discard_n": 118,
+              "hold_n": 171,
+              "discard_rate_pct": 40.8
+            },
+            "riichi": {
+              "turn_bucket": "10-12",
+              "visible_copies": 3,
+              "threat_level": "riichi",
+              "n": 395,
+              "discard_n": 235,
+              "hold_n": 160,
+              "discard_rate_pct": 59.5
+            }
+          }
+        },
+        "13+": {
+          "0": {
+            "none": {
+              "turn_bucket": "13+",
+              "visible_copies": 0,
+              "threat_level": "none",
+              "n": 332,
+              "discard_n": 68,
+              "hold_n": 264,
+              "discard_rate_pct": 20.5
+            },
+            "open_threat": {
+              "turn_bucket": "13+",
+              "visible_copies": 0,
+              "threat_level": "open_threat",
+              "n": 558,
+              "discard_n": 35,
+              "hold_n": 523,
+              "discard_rate_pct": 6.3
+            },
+            "riichi": {
+              "turn_bucket": "13+",
+              "visible_copies": 0,
+              "threat_level": "riichi",
+              "n": 1111,
+              "discard_n": 91,
+              "hold_n": 1020,
+              "discard_rate_pct": 8.2
+            }
+          },
+          "1": {
+            "none": {
+              "turn_bucket": "13+",
+              "visible_copies": 1,
+              "threat_level": "none",
+              "n": 417,
+              "discard_n": 226,
+              "hold_n": 191,
+              "discard_rate_pct": 54.2
+            },
+            "open_threat": {
+              "turn_bucket": "13+",
+              "visible_copies": 1,
+              "threat_level": "open_threat",
+              "n": 463,
+              "discard_n": 157,
+              "hold_n": 306,
+              "discard_rate_pct": 33.9
+            },
+            "riichi": {
+              "turn_bucket": "13+",
+              "visible_copies": 1,
+              "threat_level": "riichi",
+              "n": 1392,
+              "discard_n": 479,
+              "hold_n": 913,
+              "discard_rate_pct": 34.4
+            }
+          },
+          "2": {
+            "none": {
+              "turn_bucket": "13+",
+              "visible_copies": 2,
+              "threat_level": "none",
+              "n": 641,
+              "discard_n": 356,
+              "hold_n": 285,
+              "discard_rate_pct": 55.5
+            },
+            "open_threat": {
+              "turn_bucket": "13+",
+              "visible_copies": 2,
+              "threat_level": "open_threat",
+              "n": 411,
+              "discard_n": 260,
+              "hold_n": 151,
+              "discard_rate_pct": 63.3
+            },
+            "riichi": {
+              "turn_bucket": "13+",
+              "visible_copies": 2,
+              "threat_level": "riichi",
+              "n": 1254,
+              "discard_n": 767,
+              "hold_n": 487,
+              "discard_rate_pct": 61.2
+            }
+          },
+          "3": {
+            "none": {
+              "turn_bucket": "13+",
+              "visible_copies": 3,
+              "threat_level": "none",
+              "n": 410,
+              "discard_n": 211,
+              "hold_n": 199,
+              "discard_rate_pct": 51.5
+            },
+            "open_threat": {
+              "turn_bucket": "13+",
+              "visible_copies": 3,
+              "threat_level": "open_threat",
+              "n": 233,
+              "discard_n": 163,
+              "hold_n": 70,
+              "discard_rate_pct": 70.0
+            },
+            "riichi": {
+              "turn_bucket": "13+",
+              "visible_copies": 3,
+              "threat_level": "riichi",
+              "n": 437,
+              "discard_n": 305,
+              "hold_n": 132,
+              "discard_rate_pct": 69.8
+            }
+          }
+        }
+      }
+    },
+    "bonus_late_live_honor_draw_under_riichi": {
+      "n": 673,
+      "immediate_tsumogiri_n": 301,
+      "immediate_tsumogiri_pct": 44.7,
+      "immediate_same_type_cut_n": 19,
+      "immediate_same_type_cut_pct": 2.8,
+      "held_n": 353,
+      "held_pct": 52.5,
+      "same_honor_cut_not_tsumogiri_flagged_n": 19
+    },
+    "headline_core_cells": {
+      "under_riichi_turns_7_9_visible_0": {
+        "n": 1163,
+        "discard_n": 150,
+        "discard_rate_pct": 12.9
+      },
+      "under_riichi_turns_7_9_visible_1": {
+        "n": 1630,
+        "discard_n": 530,
+        "discard_rate_pct": 32.5
+      },
+      "under_riichi_turns_13plus_visible_0": {
+        "n": 1111,
+        "discard_n": 91,
+        "discard_rate_pct": 8.2
+      },
+      "under_riichi_turns_13plus_visible_1": {
+        "n": 1392,
+        "discard_n": 479,
+        "discard_rate_pct": 34.4
+      },
+      "late_live_honor_draw_hold_rate": {
+        "n": 673,
+        "held_n": 353,
+        "held_pct": 52.5
+      }
+    }
+  },
+  "dealer_only_baselines": {
+    "lone_yakuhai_cleanup_timing": {
+      "summary_by_kind_and_opponent_open": {
+        "dragon": {
+          "n_start_singletons": 2930,
+          "discard_turn_all": {
+            "n": 2463,
+            "p25": 2,
+            "median": 4,
+            "p75": 5,
+            "min": 1,
+            "max": 18
+          },
+          "discarded_pct": {
+            "count": 2463,
+            "n": 2930,
+            "pct": 84.1
+          },
+          "never_cut_pct": {
+            "count": 467,
+            "n": 2930,
+            "pct": 15.9
+          },
+          "paired_before_cut_pct": {
+            "count": 341,
+            "n": 2930,
+            "pct": 11.6
+          },
+          "outcomes": {
+            "discarded_after_pair": {
+              "count": 47,
+              "n": 2930,
+              "pct": 1.6
+            },
+            "discarded_lone": {
+              "count": 2416,
+              "n": 2930,
+              "pct": 82.5
+            },
+            "kept_to_end": {
+              "count": 173,
+              "n": 2930,
+              "pct": 5.9
+            },
+            "paired_up_later": {
+              "count": 294,
+              "n": 2930,
+              "pct": 10.0
+            }
+          },
+          "by_discard_opponent_open_context": {
+            "no_opponent_open": {
+              "n_start_singletons": 2930,
+              "n_discarded_in_context": 1920,
+              "discard_turn": {
+                "n": 1920,
+                "p25": 2,
+                "median": 3,
+                "p75": 5,
+                "min": 1,
+                "max": 18
+              },
+              "discarded_here_pct_of_start_singletons": {
+                "count": 1920,
+                "n": 2930,
+                "pct": 65.5
+              },
+              "riichi_at_discard_pct": {
+                "count": 107,
+                "n": 1920,
+                "pct": 5.6
+              }
+            },
+            "some_opponent_open": {
+              "n_start_singletons": 2930,
+              "n_discarded_in_context": 543,
+              "discard_turn": {
+                "n": 543,
+                "p25": 4,
+                "median": 5,
+                "p75": 7,
+                "min": 2,
+                "max": 18
+              },
+              "discarded_here_pct_of_start_singletons": {
+                "count": 543,
+                "n": 2930,
+                "pct": 18.5
+              },
+              "riichi_at_discard_pct": {
+                "count": 55,
+                "n": 543,
+                "pct": 10.1
+              }
+            }
+          }
+        },
+        "value_wind": {
+          "n_start_singletons": 1401,
+          "discard_turn_all": {
+            "n": 1171,
+            "p25": 3,
+            "median": 4,
+            "p75": 6,
+            "min": 1,
+            "max": 18
+          },
+          "discarded_pct": {
+            "count": 1171,
+            "n": 1401,
+            "pct": 83.6
+          },
+          "never_cut_pct": {
+            "count": 230,
+            "n": 1401,
+            "pct": 16.4
+          },
+          "paired_before_cut_pct": {
+            "count": 164,
+            "n": 1401,
+            "pct": 11.7
+          },
+          "outcomes": {
+            "discarded_after_pair": {
+              "count": 24,
+              "n": 1401,
+              "pct": 1.7
+            },
+            "discarded_lone": {
+              "count": 1147,
+              "n": 1401,
+              "pct": 81.9
+            },
+            "kept_to_end": {
+              "count": 90,
+              "n": 1401,
+              "pct": 6.4
+            },
+            "paired_up_later": {
+              "count": 140,
+              "n": 1401,
+              "pct": 10.0
+            }
+          },
+          "by_discard_opponent_open_context": {
+            "no_opponent_open": {
+              "n_start_singletons": 1401,
+              "n_discarded_in_context": 877,
+              "discard_turn": {
+                "n": 877,
+                "p25": 2,
+                "median": 4,
+                "p75": 5,
+                "min": 1,
+                "max": 18
+              },
+              "discarded_here_pct_of_start_singletons": {
+                "count": 877,
+                "n": 1401,
+                "pct": 62.6
+              },
+              "riichi_at_discard_pct": {
+                "count": 64,
+                "n": 877,
+                "pct": 7.3
+              }
+            },
+            "some_opponent_open": {
+              "n_start_singletons": 1401,
+              "n_discarded_in_context": 294,
+              "discard_turn": {
+                "n": 294,
+                "p25": 4,
+                "median": 6,
+                "p75": 8,
+                "min": 2,
+                "max": 16
+              },
+              "discarded_here_pct_of_start_singletons": {
+                "count": 294,
+                "n": 1401,
+                "pct": 21.0
+              },
+              "riichi_at_discard_pct": {
+                "count": 32,
+                "n": 294,
+                "pct": 10.9
+              }
+            }
+          }
+        }
+      }
+    },
+    "guest_wind_cleanup": {
+      "n_start_singletons": 2505,
+      "discard_turn_all": {
+        "n": 2358,
+        "p25": 1,
+        "median": 1,
+        "p75": 2,
+        "min": 1,
+        "max": 19
+      },
+      "discarded_pct": {
+        "count": 2358,
+        "n": 2505,
+        "pct": 94.1
+      },
+      "never_cut_pct": {
+        "count": 147,
+        "n": 2505,
+        "pct": 5.9
+      },
+      "paired_before_cut_pct": {
+        "count": 119,
+        "n": 2505,
+        "pct": 4.8
+      },
+      "kept_past_turn6_pct": {
+        "count": 236,
+        "n": 2466,
+        "pct": 9.6
+      },
+      "outcomes": {
+        "discarded_after_pair": {
+          "count": 38,
+          "n": 2505,
+          "pct": 1.5
+        },
+        "discarded_lone": {
+          "count": 2320,
+          "n": 2505,
+          "pct": 92.6
+        },
+        "kept_to_end": {
+          "count": 66,
+          "n": 2505,
+          "pct": 2.6
+        },
+        "paired_up_later": {
+          "count": 81,
+          "n": 2505,
+          "pct": 3.2
+        }
+      },
+      "by_discard_opponent_open_context": {
+        "no_opponent_open": {
+          "n_start_singletons": 2505,
+          "n_discarded_in_context": 2195,
+          "discard_turn": {
+            "n": 2195,
+            "p25": 1,
+            "median": 1,
+            "p75": 2,
+            "min": 1,
+            "max": 17
+          },
+          "discarded_here_pct_of_start_singletons": {
+            "count": 2195,
+            "n": 2505,
+            "pct": 87.6
+          }
+        },
+        "some_opponent_open": {
+          "n_start_singletons": 2505,
+          "n_discarded_in_context": 163,
+          "discard_turn": {
+            "n": 163,
+            "p25": 2,
+            "median": 4,
+            "p75": 8,
+            "min": 2,
+            "max": 19
+          },
+          "discarded_here_pct_of_start_singletons": {
+            "count": 163,
+            "n": 2505,
+            "pct": 6.5
+          }
+        }
+      }
+    },
+    "stop_matching_honors_matrix": {
+      "cells": [
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 0,
+          "threat_level": "none",
+          "n": 14439,
+          "discard_n": 3372,
+          "hold_n": 11067,
+          "discard_rate_pct": 23.4
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 0,
+          "threat_level": "open_threat",
+          "n": 40,
+          "discard_n": 15,
+          "hold_n": 25,
+          "discard_rate_pct": 37.5
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 0,
+          "threat_level": "riichi",
+          "n": 25,
+          "discard_n": 7,
+          "hold_n": 18,
+          "discard_rate_pct": 28.0
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 1,
+          "threat_level": "none",
+          "n": 2040,
+          "discard_n": 820,
+          "hold_n": 1220,
+          "discard_rate_pct": 40.2
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 1,
+          "threat_level": "open_threat",
+          "n": 12,
+          "discard_n": 5,
+          "hold_n": 7,
+          "discard_rate_pct": 41.7
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 1,
+          "threat_level": "riichi",
+          "n": 8,
+          "discard_n": 5,
+          "hold_n": 3,
+          "discard_rate_pct": 62.5
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 2,
+          "threat_level": "none",
+          "n": 276,
+          "discard_n": 210,
+          "hold_n": 66,
+          "discard_rate_pct": 76.1
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 2,
+          "threat_level": "open_threat",
+          "n": 3,
+          "discard_n": 1,
+          "hold_n": 2,
+          "discard_rate_pct": 33.3
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 2,
+          "threat_level": "riichi",
+          "n": 0,
+          "discard_n": 0,
+          "hold_n": 0,
+          "discard_rate_pct": null
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 3,
+          "threat_level": "none",
+          "n": 52,
+          "discard_n": 38,
+          "hold_n": 14,
+          "discard_rate_pct": 73.1
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 3,
+          "threat_level": "open_threat",
+          "n": 3,
+          "discard_n": 2,
+          "hold_n": 1,
+          "discard_rate_pct": 66.7
+        },
+        {
+          "turn_bucket": "1-3",
+          "visible_copies": 3,
+          "threat_level": "riichi",
+          "n": 0,
+          "discard_n": 0,
+          "hold_n": 0,
+          "discard_rate_pct": null
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 0,
+          "threat_level": "none",
+          "n": 4293,
+          "discard_n": 1438,
+          "hold_n": 2855,
+          "discard_rate_pct": 33.5
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 0,
+          "threat_level": "open_threat",
+          "n": 172,
+          "discard_n": 76,
+          "hold_n": 96,
+          "discard_rate_pct": 44.2
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 0,
+          "threat_level": "riichi",
+          "n": 196,
+          "discard_n": 28,
+          "hold_n": 168,
+          "discard_rate_pct": 14.3
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 1,
+          "threat_level": "none",
+          "n": 2800,
+          "discard_n": 865,
+          "hold_n": 1935,
+          "discard_rate_pct": 30.9
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 1,
+          "threat_level": "open_threat",
+          "n": 137,
+          "discard_n": 56,
+          "hold_n": 81,
+          "discard_rate_pct": 40.9
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 1,
+          "threat_level": "riichi",
+          "n": 117,
+          "discard_n": 53,
+          "hold_n": 64,
+          "discard_rate_pct": 45.3
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 2,
+          "threat_level": "none",
+          "n": 714,
+          "discard_n": 332,
+          "hold_n": 382,
+          "discard_rate_pct": 46.5
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 2,
+          "threat_level": "open_threat",
+          "n": 49,
+          "discard_n": 13,
+          "hold_n": 36,
+          "discard_rate_pct": 26.5
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 2,
+          "threat_level": "riichi",
+          "n": 44,
+          "discard_n": 22,
+          "hold_n": 22,
+          "discard_rate_pct": 50.0
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 3,
+          "threat_level": "none",
+          "n": 135,
+          "discard_n": 58,
+          "hold_n": 77,
+          "discard_rate_pct": 43.0
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 3,
+          "threat_level": "open_threat",
+          "n": 34,
+          "discard_n": 12,
+          "hold_n": 22,
+          "discard_rate_pct": 35.3
+        },
+        {
+          "turn_bucket": "4-6",
+          "visible_copies": 3,
+          "threat_level": "riichi",
+          "n": 4,
+          "discard_n": 2,
+          "hold_n": 2,
+          "discard_rate_pct": 50.0
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 0,
+          "threat_level": "none",
+          "n": 1097,
+          "discard_n": 453,
+          "hold_n": 644,
+          "discard_rate_pct": 41.3
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 0,
+          "threat_level": "open_threat",
+          "n": 218,
+          "discard_n": 62,
+          "hold_n": 156,
+          "discard_rate_pct": 28.4
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 0,
+          "threat_level": "riichi",
+          "n": 320,
+          "discard_n": 62,
+          "hold_n": 258,
+          "discard_rate_pct": 19.4
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 1,
+          "threat_level": "none",
+          "n": 1486,
+          "discard_n": 514,
+          "hold_n": 972,
+          "discard_rate_pct": 34.6
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 1,
+          "threat_level": "open_threat",
+          "n": 247,
+          "discard_n": 113,
+          "hold_n": 134,
+          "discard_rate_pct": 45.7
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 1,
+          "threat_level": "riichi",
+          "n": 325,
+          "discard_n": 150,
+          "hold_n": 175,
+          "discard_rate_pct": 46.2
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 2,
+          "threat_level": "none",
+          "n": 827,
+          "discard_n": 244,
+          "hold_n": 583,
+          "discard_rate_pct": 29.5
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 2,
+          "threat_level": "open_threat",
+          "n": 161,
+          "discard_n": 67,
+          "hold_n": 94,
+          "discard_rate_pct": 41.6
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 2,
+          "threat_level": "riichi",
+          "n": 170,
+          "discard_n": 98,
+          "hold_n": 72,
+          "discard_rate_pct": 57.6
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 3,
+          "threat_level": "none",
+          "n": 146,
+          "discard_n": 58,
+          "hold_n": 88,
+          "discard_rate_pct": 39.7
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 3,
+          "threat_level": "open_threat",
+          "n": 55,
+          "discard_n": 22,
+          "hold_n": 33,
+          "discard_rate_pct": 40.0
+        },
+        {
+          "turn_bucket": "7-9",
+          "visible_copies": 3,
+          "threat_level": "riichi",
+          "n": 39,
+          "discard_n": 27,
+          "hold_n": 12,
+          "discard_rate_pct": 69.2
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 0,
+          "threat_level": "none",
+          "n": 272,
+          "discard_n": 114,
+          "hold_n": 158,
+          "discard_rate_pct": 41.9
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 0,
+          "threat_level": "open_threat",
+          "n": 164,
+          "discard_n": 33,
+          "hold_n": 131,
+          "discard_rate_pct": 20.1
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 0,
+          "threat_level": "riichi",
+          "n": 289,
+          "discard_n": 60,
+          "hold_n": 229,
+          "discard_rate_pct": 20.8
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 1,
+          "threat_level": "none",
+          "n": 533,
+          "discard_n": 209,
+          "hold_n": 324,
+          "discard_rate_pct": 39.2
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 1,
+          "threat_level": "open_threat",
+          "n": 204,
+          "discard_n": 110,
+          "hold_n": 94,
+          "discard_rate_pct": 53.9
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 1,
+          "threat_level": "riichi",
+          "n": 369,
+          "discard_n": 178,
+          "hold_n": 191,
+          "discard_rate_pct": 48.2
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 2,
+          "threat_level": "none",
+          "n": 561,
+          "discard_n": 158,
+          "hold_n": 403,
+          "discard_rate_pct": 28.2
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 2,
+          "threat_level": "open_threat",
+          "n": 124,
+          "discard_n": 71,
+          "hold_n": 53,
+          "discard_rate_pct": 57.3
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 2,
+          "threat_level": "riichi",
+          "n": 303,
+          "discard_n": 168,
+          "hold_n": 135,
+          "discard_rate_pct": 55.4
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 3,
+          "threat_level": "none",
+          "n": 127,
+          "discard_n": 50,
+          "hold_n": 77,
+          "discard_rate_pct": 39.4
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 3,
+          "threat_level": "open_threat",
+          "n": 70,
+          "discard_n": 35,
+          "hold_n": 35,
+          "discard_rate_pct": 50.0
+        },
+        {
+          "turn_bucket": "10-12",
+          "visible_copies": 3,
+          "threat_level": "riichi",
+          "n": 82,
+          "discard_n": 58,
+          "hold_n": 24,
+          "discard_rate_pct": 70.7
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 0,
+          "threat_level": "none",
+          "n": 113,
+          "discard_n": 36,
+          "hold_n": 77,
+          "discard_rate_pct": 31.9
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 0,
+          "threat_level": "open_threat",
+          "n": 177,
+          "discard_n": 15,
+          "hold_n": 162,
+          "discard_rate_pct": 8.5
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 0,
+          "threat_level": "riichi",
+          "n": 310,
+          "discard_n": 40,
+          "hold_n": 270,
+          "discard_rate_pct": 12.9
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 1,
+          "threat_level": "none",
+          "n": 185,
+          "discard_n": 84,
+          "hold_n": 101,
+          "discard_rate_pct": 45.4
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 1,
+          "threat_level": "open_threat",
+          "n": 141,
+          "discard_n": 53,
+          "hold_n": 88,
+          "discard_rate_pct": 37.6
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 1,
+          "threat_level": "riichi",
+          "n": 337,
+          "discard_n": 151,
+          "hold_n": 186,
+          "discard_rate_pct": 44.8
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 2,
+          "threat_level": "none",
+          "n": 307,
+          "discard_n": 135,
+          "hold_n": 172,
+          "discard_rate_pct": 44.0
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 2,
+          "threat_level": "open_threat",
+          "n": 135,
+          "discard_n": 90,
+          "hold_n": 45,
+          "discard_rate_pct": 66.7
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 2,
+          "threat_level": "riichi",
+          "n": 347,
+          "discard_n": 223,
+          "hold_n": 124,
+          "discard_rate_pct": 64.3
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 3,
+          "threat_level": "none",
+          "n": 93,
+          "discard_n": 59,
+          "hold_n": 34,
+          "discard_rate_pct": 63.4
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 3,
+          "threat_level": "open_threat",
+          "n": 80,
+          "discard_n": 45,
+          "hold_n": 35,
+          "discard_rate_pct": 56.2
+        },
+        {
+          "turn_bucket": "13+",
+          "visible_copies": 3,
+          "threat_level": "riichi",
+          "n": 143,
+          "discard_n": 108,
+          "hold_n": 35,
+          "discard_rate_pct": 75.5
+        }
+      ],
+      "nested": {
+        "1-3": {
+          "0": {
+            "none": {
+              "turn_bucket": "1-3",
+              "visible_copies": 0,
+              "threat_level": "none",
+              "n": 14439,
+              "discard_n": 3372,
+              "hold_n": 11067,
+              "discard_rate_pct": 23.4
+            },
+            "open_threat": {
+              "turn_bucket": "1-3",
+              "visible_copies": 0,
+              "threat_level": "open_threat",
+              "n": 40,
+              "discard_n": 15,
+              "hold_n": 25,
+              "discard_rate_pct": 37.5
+            },
+            "riichi": {
+              "turn_bucket": "1-3",
+              "visible_copies": 0,
+              "threat_level": "riichi",
+              "n": 25,
+              "discard_n": 7,
+              "hold_n": 18,
+              "discard_rate_pct": 28.0
+            }
+          },
+          "1": {
+            "none": {
+              "turn_bucket": "1-3",
+              "visible_copies": 1,
+              "threat_level": "none",
+              "n": 2040,
+              "discard_n": 820,
+              "hold_n": 1220,
+              "discard_rate_pct": 40.2
+            },
+            "open_threat": {
+              "turn_bucket": "1-3",
+              "visible_copies": 1,
+              "threat_level": "open_threat",
+              "n": 12,
+              "discard_n": 5,
+              "hold_n": 7,
+              "discard_rate_pct": 41.7
+            },
+            "riichi": {
+              "turn_bucket": "1-3",
+              "visible_copies": 1,
+              "threat_level": "riichi",
+              "n": 8,
+              "discard_n": 5,
+              "hold_n": 3,
+              "discard_rate_pct": 62.5
+            }
+          },
+          "2": {
+            "none": {
+              "turn_bucket": "1-3",
+              "visible_copies": 2,
+              "threat_level": "none",
+              "n": 276,
+              "discard_n": 210,
+              "hold_n": 66,
+              "discard_rate_pct": 76.1
+            },
+            "open_threat": {
+              "turn_bucket": "1-3",
+              "visible_copies": 2,
+              "threat_level": "open_threat",
+              "n": 3,
+              "discard_n": 1,
+              "hold_n": 2,
+              "discard_rate_pct": 33.3
+            },
+            "riichi": {
+              "turn_bucket": "1-3",
+              "visible_copies": 2,
+              "threat_level": "riichi",
+              "n": 0,
+              "discard_n": 0,
+              "hold_n": 0,
+              "discard_rate_pct": null
+            }
+          },
+          "3": {
+            "none": {
+              "turn_bucket": "1-3",
+              "visible_copies": 3,
+              "threat_level": "none",
+              "n": 52,
+              "discard_n": 38,
+              "hold_n": 14,
+              "discard_rate_pct": 73.1
+            },
+            "open_threat": {
+              "turn_bucket": "1-3",
+              "visible_copies": 3,
+              "threat_level": "open_threat",
+              "n": 3,
+              "discard_n": 2,
+              "hold_n": 1,
+              "discard_rate_pct": 66.7
+            },
+            "riichi": {
+              "turn_bucket": "1-3",
+              "visible_copies": 3,
+              "threat_level": "riichi",
+              "n": 0,
+              "discard_n": 0,
+              "hold_n": 0,
+              "discard_rate_pct": null
+            }
+          }
+        },
+        "4-6": {
+          "0": {
+            "none": {
+              "turn_bucket": "4-6",
+              "visible_copies": 0,
+              "threat_level": "none",
+              "n": 4293,
+              "discard_n": 1438,
+              "hold_n": 2855,
+              "discard_rate_pct": 33.5
+            },
+            "open_threat": {
+              "turn_bucket": "4-6",
+              "visible_copies": 0,
+              "threat_level": "open_threat",
+              "n": 172,
+              "discard_n": 76,
+              "hold_n": 96,
+              "discard_rate_pct": 44.2
+            },
+            "riichi": {
+              "turn_bucket": "4-6",
+              "visible_copies": 0,
+              "threat_level": "riichi",
+              "n": 196,
+              "discard_n": 28,
+              "hold_n": 168,
+              "discard_rate_pct": 14.3
+            }
+          },
+          "1": {
+            "none": {
+              "turn_bucket": "4-6",
+              "visible_copies": 1,
+              "threat_level": "none",
+              "n": 2800,
+              "discard_n": 865,
+              "hold_n": 1935,
+              "discard_rate_pct": 30.9
+            },
+            "open_threat": {
+              "turn_bucket": "4-6",
+              "visible_copies": 1,
+              "threat_level": "open_threat",
+              "n": 137,
+              "discard_n": 56,
+              "hold_n": 81,
+              "discard_rate_pct": 40.9
+            },
+            "riichi": {
+              "turn_bucket": "4-6",
+              "visible_copies": 1,
+              "threat_level": "riichi",
+              "n": 117,
+              "discard_n": 53,
+              "hold_n": 64,
+              "discard_rate_pct": 45.3
+            }
+          },
+          "2": {
+            "none": {
+              "turn_bucket": "4-6",
+              "visible_copies": 2,
+              "threat_level": "none",
+              "n": 714,
+              "discard_n": 332,
+              "hold_n": 382,
+              "discard_rate_pct": 46.5
+            },
+            "open_threat": {
+              "turn_bucket": "4-6",
+              "visible_copies": 2,
+              "threat_level": "open_threat",
+              "n": 49,
+              "discard_n": 13,
+              "hold_n": 36,
+              "discard_rate_pct": 26.5
+            },
+            "riichi": {
+              "turn_bucket": "4-6",
+              "visible_copies": 2,
+              "threat_level": "riichi",
+              "n": 44,
+              "discard_n": 22,
+              "hold_n": 22,
+              "discard_rate_pct": 50.0
+            }
+          },
+          "3": {
+            "none": {
+              "turn_bucket": "4-6",
+              "visible_copies": 3,
+              "threat_level": "none",
+              "n": 135,
+              "discard_n": 58,
+              "hold_n": 77,
+              "discard_rate_pct": 43.0
+            },
+            "open_threat": {
+              "turn_bucket": "4-6",
+              "visible_copies": 3,
+              "threat_level": "open_threat",
+              "n": 34,
+              "discard_n": 12,
+              "hold_n": 22,
+              "discard_rate_pct": 35.3
+            },
+            "riichi": {
+              "turn_bucket": "4-6",
+              "visible_copies": 3,
+              "threat_level": "riichi",
+              "n": 4,
+              "discard_n": 2,
+              "hold_n": 2,
+              "discard_rate_pct": 50.0
+            }
+          }
+        },
+        "7-9": {
+          "0": {
+            "none": {
+              "turn_bucket": "7-9",
+              "visible_copies": 0,
+              "threat_level": "none",
+              "n": 1097,
+              "discard_n": 453,
+              "hold_n": 644,
+              "discard_rate_pct": 41.3
+            },
+            "open_threat": {
+              "turn_bucket": "7-9",
+              "visible_copies": 0,
+              "threat_level": "open_threat",
+              "n": 218,
+              "discard_n": 62,
+              "hold_n": 156,
+              "discard_rate_pct": 28.4
+            },
+            "riichi": {
+              "turn_bucket": "7-9",
+              "visible_copies": 0,
+              "threat_level": "riichi",
+              "n": 320,
+              "discard_n": 62,
+              "hold_n": 258,
+              "discard_rate_pct": 19.4
+            }
+          },
+          "1": {
+            "none": {
+              "turn_bucket": "7-9",
+              "visible_copies": 1,
+              "threat_level": "none",
+              "n": 1486,
+              "discard_n": 514,
+              "hold_n": 972,
+              "discard_rate_pct": 34.6
+            },
+            "open_threat": {
+              "turn_bucket": "7-9",
+              "visible_copies": 1,
+              "threat_level": "open_threat",
+              "n": 247,
+              "discard_n": 113,
+              "hold_n": 134,
+              "discard_rate_pct": 45.7
+            },
+            "riichi": {
+              "turn_bucket": "7-9",
+              "visible_copies": 1,
+              "threat_level": "riichi",
+              "n": 325,
+              "discard_n": 150,
+              "hold_n": 175,
+              "discard_rate_pct": 46.2
+            }
+          },
+          "2": {
+            "none": {
+              "turn_bucket": "7-9",
+              "visible_copies": 2,
+              "threat_level": "none",
+              "n": 827,
+              "discard_n": 244,
+              "hold_n": 583,
+              "discard_rate_pct": 29.5
+            },
+            "open_threat": {
+              "turn_bucket": "7-9",
+              "visible_copies": 2,
+              "threat_level": "open_threat",
+              "n": 161,
+              "discard_n": 67,
+              "hold_n": 94,
+              "discard_rate_pct": 41.6
+            },
+            "riichi": {
+              "turn_bucket": "7-9",
+              "visible_copies": 2,
+              "threat_level": "riichi",
+              "n": 170,
+              "discard_n": 98,
+              "hold_n": 72,
+              "discard_rate_pct": 57.6
+            }
+          },
+          "3": {
+            "none": {
+              "turn_bucket": "7-9",
+              "visible_copies": 3,
+              "threat_level": "none",
+              "n": 146,
+              "discard_n": 58,
+              "hold_n": 88,
+              "discard_rate_pct": 39.7
+            },
+            "open_threat": {
+              "turn_bucket": "7-9",
+              "visible_copies": 3,
+              "threat_level": "open_threat",
+              "n": 55,
+              "discard_n": 22,
+              "hold_n": 33,
+              "discard_rate_pct": 40.0
+            },
+            "riichi": {
+              "turn_bucket": "7-9",
+              "visible_copies": 3,
+              "threat_level": "riichi",
+              "n": 39,
+              "discard_n": 27,
+              "hold_n": 12,
+              "discard_rate_pct": 69.2
+            }
+          }
+        },
+        "10-12": {
+          "0": {
+            "none": {
+              "turn_bucket": "10-12",
+              "visible_copies": 0,
+              "threat_level": "none",
+              "n": 272,
+              "discard_n": 114,
+              "hold_n": 158,
+              "discard_rate_pct": 41.9
+            },
+            "open_threat": {
+              "turn_bucket": "10-12",
+              "visible_copies": 0,
+              "threat_level": "open_threat",
+              "n": 164,
+              "discard_n": 33,
+              "hold_n": 131,
+              "discard_rate_pct": 20.1
+            },
+            "riichi": {
+              "turn_bucket": "10-12",
+              "visible_copies": 0,
+              "threat_level": "riichi",
+              "n": 289,
+              "discard_n": 60,
+              "hold_n": 229,
+              "discard_rate_pct": 20.8
+            }
+          },
+          "1": {
+            "none": {
+              "turn_bucket": "10-12",
+              "visible_copies": 1,
+              "threat_level": "none",
+              "n": 533,
+              "discard_n": 209,
+              "hold_n": 324,
+              "discard_rate_pct": 39.2
+            },
+            "open_threat": {
+              "turn_bucket": "10-12",
+              "visible_copies": 1,
+              "threat_level": "open_threat",
+              "n": 204,
+              "discard_n": 110,
+              "hold_n": 94,
+              "discard_rate_pct": 53.9
+            },
+            "riichi": {
+              "turn_bucket": "10-12",
+              "visible_copies": 1,
+              "threat_level": "riichi",
+              "n": 369,
+              "discard_n": 178,
+              "hold_n": 191,
+              "discard_rate_pct": 48.2
+            }
+          },
+          "2": {
+            "none": {
+              "turn_bucket": "10-12",
+              "visible_copies": 2,
+              "threat_level": "none",
+              "n": 561,
+              "discard_n": 158,
+              "hold_n": 403,
+              "discard_rate_pct": 28.2
+            },
+            "open_threat": {
+              "turn_bucket": "10-12",
+              "visible_copies": 2,
+              "threat_level": "open_threat",
+              "n": 124,
+              "discard_n": 71,
+              "hold_n": 53,
+              "discard_rate_pct": 57.3
+            },
+            "riichi": {
+              "turn_bucket": "10-12",
+              "visible_copies": 2,
+              "threat_level": "riichi",
+              "n": 303,
+              "discard_n": 168,
+              "hold_n": 135,
+              "discard_rate_pct": 55.4
+            }
+          },
+          "3": {
+            "none": {
+              "turn_bucket": "10-12",
+              "visible_copies": 3,
+              "threat_level": "none",
+              "n": 127,
+              "discard_n": 50,
+              "hold_n": 77,
+              "discard_rate_pct": 39.4
+            },
+            "open_threat": {
+              "turn_bucket": "10-12",
+              "visible_copies": 3,
+              "threat_level": "open_threat",
+              "n": 70,
+              "discard_n": 35,
+              "hold_n": 35,
+              "discard_rate_pct": 50.0
+            },
+            "riichi": {
+              "turn_bucket": "10-12",
+              "visible_copies": 3,
+              "threat_level": "riichi",
+              "n": 82,
+              "discard_n": 58,
+              "hold_n": 24,
+              "discard_rate_pct": 70.7
+            }
+          }
+        },
+        "13+": {
+          "0": {
+            "none": {
+              "turn_bucket": "13+",
+              "visible_copies": 0,
+              "threat_level": "none",
+              "n": 113,
+              "discard_n": 36,
+              "hold_n": 77,
+              "discard_rate_pct": 31.9
+            },
+            "open_threat": {
+              "turn_bucket": "13+",
+              "visible_copies": 0,
+              "threat_level": "open_threat",
+              "n": 177,
+              "discard_n": 15,
+              "hold_n": 162,
+              "discard_rate_pct": 8.5
+            },
+            "riichi": {
+              "turn_bucket": "13+",
+              "visible_copies": 0,
+              "threat_level": "riichi",
+              "n": 310,
+              "discard_n": 40,
+              "hold_n": 270,
+              "discard_rate_pct": 12.9
+            }
+          },
+          "1": {
+            "none": {
+              "turn_bucket": "13+",
+              "visible_copies": 1,
+              "threat_level": "none",
+              "n": 185,
+              "discard_n": 84,
+              "hold_n": 101,
+              "discard_rate_pct": 45.4
+            },
+            "open_threat": {
+              "turn_bucket": "13+",
+              "visible_copies": 1,
+              "threat_level": "open_threat",
+              "n": 141,
+              "discard_n": 53,
+              "hold_n": 88,
+              "discard_rate_pct": 37.6
+            },
+            "riichi": {
+              "turn_bucket": "13+",
+              "visible_copies": 1,
+              "threat_level": "riichi",
+              "n": 337,
+              "discard_n": 151,
+              "hold_n": 186,
+              "discard_rate_pct": 44.8
+            }
+          },
+          "2": {
+            "none": {
+              "turn_bucket": "13+",
+              "visible_copies": 2,
+              "threat_level": "none",
+              "n": 307,
+              "discard_n": 135,
+              "hold_n": 172,
+              "discard_rate_pct": 44.0
+            },
+            "open_threat": {
+              "turn_bucket": "13+",
+              "visible_copies": 2,
+              "threat_level": "open_threat",
+              "n": 135,
+              "discard_n": 90,
+              "hold_n": 45,
+              "discard_rate_pct": 66.7
+            },
+            "riichi": {
+              "turn_bucket": "13+",
+              "visible_copies": 2,
+              "threat_level": "riichi",
+              "n": 347,
+              "discard_n": 223,
+              "hold_n": 124,
+              "discard_rate_pct": 64.3
+            }
+          },
+          "3": {
+            "none": {
+              "turn_bucket": "13+",
+              "visible_copies": 3,
+              "threat_level": "none",
+              "n": 93,
+              "discard_n": 59,
+              "hold_n": 34,
+              "discard_rate_pct": 63.4
+            },
+            "open_threat": {
+              "turn_bucket": "13+",
+              "visible_copies": 3,
+              "threat_level": "open_threat",
+              "n": 80,
+              "discard_n": 45,
+              "hold_n": 35,
+              "discard_rate_pct": 56.2
+            },
+            "riichi": {
+              "turn_bucket": "13+",
+              "visible_copies": 3,
+              "threat_level": "riichi",
+              "n": 143,
+              "discard_n": 108,
+              "hold_n": 35,
+              "discard_rate_pct": 75.5
+            }
+          }
+        }
+      }
+    },
+    "bonus_late_live_honor_draw_under_riichi": {
+      "n": 221,
+      "immediate_tsumogiri_n": 126,
+      "immediate_tsumogiri_pct": 57.0,
+      "immediate_same_type_cut_n": 4,
+      "immediate_same_type_cut_pct": 1.8,
+      "held_n": 91,
+      "held_pct": 41.2,
+      "same_honor_cut_not_tsumogiri_flagged_n": 4
+    },
+    "headline_core_cells": {
+      "under_riichi_turns_7_9_visible_0": {
+        "n": 320,
+        "discard_n": 62,
+        "discard_rate_pct": 19.4
+      },
+      "under_riichi_turns_7_9_visible_1": {
+        "n": 325,
+        "discard_n": 150,
+        "discard_rate_pct": 46.2
+      },
+      "under_riichi_turns_13plus_visible_0": {
+        "n": 310,
+        "discard_n": 40,
+        "discard_rate_pct": 12.9
+      },
+      "under_riichi_turns_13plus_visible_1": {
+        "n": 337,
+        "discard_n": 151,
+        "discard_rate_pct": 44.8
+      },
+      "late_live_honor_draw_hold_rate": {
+        "n": 221,
+        "held_n": 91,
+        "held_pct": 41.2
+      }
+    }
+  },
+  "child_vs_dealer_delta": {
+    "lone_dragon_quiet_median_turn": {
+      "child": 3,
+      "dealer": 3,
+      "child_minus_dealer": 0
+    },
+    "lone_dragon_after_open_median_turn": {
+      "child": 6,
+      "dealer": 5,
+      "child_minus_dealer": 1
+    },
+    "value_wind_quiet_median_turn": {
+      "child": 3,
+      "dealer": 4,
+      "child_minus_dealer": -1
+    },
+    "value_wind_after_open_median_turn": {
+      "child": 6,
+      "dealer": 6,
+      "child_minus_dealer": 0
+    },
+    "dragon_paired_before_cut_pct": {
+      "child": 12.2,
+      "dealer": 11.6,
+      "child_minus_dealer": 0.6
+    },
+    "value_wind_paired_before_cut_pct": {
+      "child": 11.0,
+      "dealer": 11.7,
+      "child_minus_dealer": -0.7
+    },
+    "guest_wind_median_turn": {
+      "child": 2,
+      "dealer": 1,
+      "child_minus_dealer": 1
+    },
+    "guest_wind_p75_turn": {
+      "child": 3,
+      "dealer": 2,
+      "child_minus_dealer": 1
+    },
+    "guest_wind_kept_past_turn6_pct": {
+      "child": 17.0,
+      "dealer": 9.6,
+      "child_minus_dealer": 7.4
+    },
+    "riichi_7_9_v0_discard_rate_pct": {
+      "child": 12.9,
+      "dealer": 19.4,
+      "child_minus_dealer": -6.5
+    },
+    "riichi_7_9_v1_discard_rate_pct": {
+      "child": 32.5,
+      "dealer": 46.2,
+      "child_minus_dealer": -13.7
+    },
+    "riichi_13plus_v0_discard_rate_pct": {
+      "child": 8.2,
+      "dealer": 12.9,
+      "child_minus_dealer": -4.7
+    },
+    "riichi_13plus_v1_discard_rate_pct": {
+      "child": 34.4,
+      "dealer": 44.8,
+      "child_minus_dealer": -10.4
+    },
+    "late_live_honor_draw_hold_pct": {
+      "child": 52.5,
+      "dealer": 41.2,
+      "child_minus_dealer": 11.3
+    }
+  },
+  "child_only_condition_effects": {
+    "condition_effects_lone_yakuhai_cut_by_turn6": {
+      "baseline": {
+        "n": 11833,
+        "cut_by_turn6_n": 8356,
+        "cut_by_turn6_rate_pct": 70.6,
+        "ci95_half_width_pp": 0.82
+      },
+      "denominator_note": "Child-only lone dragon/value-wind starting singleton records in rounds with at least 6 LuckyJ turns, excluding starts that paired before/at turn 6 before being cut.",
+      "effects": [
+        {
+          "condition": "turn3_shanten_bucket",
+          "n": 11833,
+          "cells_sorted_by_abs_delta_pp": [
+            {
+              "condition": "turn3_shanten_bucket",
+              "value": ">=3",
+              "n": 7099,
+              "cut_by_turn6_n": 4367,
+              "cut_by_turn6_rate_pct": 61.5,
+              "ci95_half_width_pp": 1.13,
+              "complement_n": 4734,
+              "complement_success_n": 3989,
+              "complement_rate_pct": 84.3,
+              "complement_ci95_half_width_pp": 1.04,
+              "delta_pp_vs_complement": -22.75,
+              "combined_ci95_half_width_pp": 1.54,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 6311,
+                "value": 5
+              }
+            },
+            {
+              "condition": "turn3_shanten_bucket",
+              "value": "<=2",
+              "n": 4734,
+              "cut_by_turn6_n": 3989,
+              "cut_by_turn6_rate_pct": 84.3,
+              "ci95_half_width_pp": 1.04,
+              "complement_n": 7099,
+              "complement_success_n": 4367,
+              "complement_rate_pct": 61.5,
+              "complement_ci95_half_width_pp": 1.13,
+              "delta_pp_vs_complement": 22.75,
+              "combined_ci95_half_width_pp": 1.54,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 4531,
+                "value": 3
+              }
+            }
+          ]
+        },
+        {
+          "condition": "honor_type",
+          "n": 11833,
+          "cells_sorted_by_abs_delta_pp": [
+            {
+              "condition": "honor_type",
+              "value": "double_wind",
+              "n": 395,
+              "cut_by_turn6_n": 207,
+              "cut_by_turn6_rate_pct": 52.4,
+              "ci95_half_width_pp": 4.93,
+              "complement_n": 11438,
+              "complement_success_n": 8149,
+              "complement_rate_pct": 71.2,
+              "complement_ci95_half_width_pp": 0.83,
+              "delta_pp_vs_complement": -18.84,
+              "combined_ci95_half_width_pp": 4.99,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 355,
+                "value": 6
+              }
+            },
+            {
+              "condition": "honor_type",
+              "value": "round_wind",
+              "n": 2065,
+              "cut_by_turn6_n": 1614,
+              "cut_by_turn6_rate_pct": 78.2,
+              "ci95_half_width_pp": 1.78,
+              "complement_n": 9768,
+              "complement_success_n": 6742,
+              "complement_rate_pct": 69.0,
+              "complement_ci95_half_width_pp": 0.92,
+              "delta_pp_vs_complement": 9.14,
+              "combined_ci95_half_width_pp": 2.0,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 1927,
+                "value": 3
+              }
+            },
+            {
+              "condition": "honor_type",
+              "value": "seat_wind",
+              "n": 2089,
+              "cut_by_turn6_n": 1396,
+              "cut_by_turn6_rate_pct": 66.8,
+              "ci95_half_width_pp": 2.02,
+              "complement_n": 9744,
+              "complement_success_n": 6960,
+              "complement_rate_pct": 71.4,
+              "complement_ci95_half_width_pp": 0.9,
+              "delta_pp_vs_complement": -4.6,
+              "combined_ci95_half_width_pp": 2.21,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 1907,
+                "value": 4
+              }
+            },
+            {
+              "condition": "honor_type",
+              "value": "dragon",
+              "n": 7284,
+              "cut_by_turn6_n": 5139,
+              "cut_by_turn6_rate_pct": 70.6,
+              "ci95_half_width_pp": 1.05,
+              "complement_n": 4549,
+              "complement_success_n": 3217,
+              "complement_rate_pct": 70.7,
+              "complement_ci95_half_width_pp": 1.32,
+              "delta_pp_vs_complement": -0.17,
+              "combined_ci95_half_width_pp": 1.69,
+              "significant": false,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 6653,
+                "value": 4
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "condition_effects_stop_matching_live_honor_under_riichi_turn7plus": {
+      "baseline": {
+        "n": 3335,
+        "discard_live_honor_n": 367,
+        "discard_live_honor_rate_pct": 11.0,
+        "ci95_half_width_pp": 1.06
+      },
+      "denominator_note": "Child-only turn-7+ tsumo discard decisions while any opponent riichi is active; each held honor tile type with exactly one copy and 0 visible copies outside LuckyJ's hand is one opportunity.",
+      "effects": [
+        {
+          "condition": "own_shanten_bucket",
+          "n": 3335,
+          "cells_sorted_by_abs_delta_pp": [
+            {
+              "condition": "own_shanten_bucket",
+              "value": "2+",
+              "n": 2493,
+              "discard_live_honor_n": 121,
+              "discard_live_honor_rate_pct": 4.9,
+              "ci95_half_width_pp": 0.84,
+              "complement_n": 842,
+              "complement_success_n": 246,
+              "complement_rate_pct": 29.2,
+              "complement_ci95_half_width_pp": 3.07,
+              "delta_pp_vs_complement": -24.36,
+              "combined_ci95_half_width_pp": 3.19,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150
+            },
+            {
+              "condition": "own_shanten_bucket",
+              "value": "0-1",
+              "n": 842,
+              "discard_live_honor_n": 246,
+              "discard_live_honor_rate_pct": 29.2,
+              "ci95_half_width_pp": 3.07,
+              "complement_n": 2493,
+              "complement_success_n": 121,
+              "complement_rate_pct": 4.9,
+              "complement_ci95_half_width_pp": 0.84,
+              "delta_pp_vs_complement": 24.36,
+              "combined_ci95_half_width_pp": 3.19,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150
+            }
+          ]
+        },
+        {
+          "condition": "genbutsu_bucket",
+          "n": 3335,
+          "cells_sorted_by_abs_delta_pp": [
+            {
+              "condition": "genbutsu_bucket",
+              "value": "0",
+              "n": 823,
+              "discard_live_honor_n": 165,
+              "discard_live_honor_rate_pct": 20.0,
+              "ci95_half_width_pp": 2.74,
+              "complement_n": 2512,
+              "complement_success_n": 202,
+              "complement_rate_pct": 8.0,
+              "complement_ci95_half_width_pp": 1.06,
+              "delta_pp_vs_complement": 12.01,
+              "combined_ci95_half_width_pp": 2.93,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150
+            },
+            {
+              "condition": "genbutsu_bucket",
+              "value": "2+",
+              "n": 1502,
+              "discard_live_honor_n": 96,
+              "discard_live_honor_rate_pct": 6.4,
+              "ci95_half_width_pp": 1.24,
+              "complement_n": 1833,
+              "complement_success_n": 271,
+              "complement_rate_pct": 14.8,
+              "complement_ci95_half_width_pp": 1.62,
+              "delta_pp_vs_complement": -8.39,
+              "combined_ci95_half_width_pp": 2.04,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150
+            },
+            {
+              "condition": "genbutsu_bucket",
+              "value": "1",
+              "n": 1010,
+              "discard_live_honor_n": 106,
+              "discard_live_honor_rate_pct": 10.5,
+              "ci95_half_width_pp": 1.89,
+              "complement_n": 2325,
+              "complement_success_n": 261,
+              "complement_rate_pct": 11.2,
+              "complement_ci95_half_width_pp": 1.28,
+              "delta_pp_vs_complement": -0.73,
+              "combined_ci95_half_width_pp": 2.28,
+              "significant": false,
+              "small_sample": false,
+              "minimum_cell_n": 150
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "dealer_only_condition_effects_for_comparison": {
+    "condition_effects_lone_yakuhai_cut_by_turn6": {
+      "baseline": {
+        "n": 3735,
+        "cut_by_turn6_n": 2863,
+        "cut_by_turn6_rate_pct": 76.7,
+        "ci95_half_width_pp": 1.36
+      },
+      "denominator_note": "Child-only lone dragon/value-wind starting singleton records in rounds with at least 6 LuckyJ turns, excluding starts that paired before/at turn 6 before being cut.",
+      "effects": [
+        {
+          "condition": "turn3_shanten_bucket",
+          "n": 3735,
+          "cells_sorted_by_abs_delta_pp": [
+            {
+              "condition": "turn3_shanten_bucket",
+              "value": ">=3",
+              "n": 2171,
+              "cut_by_turn6_n": 1492,
+              "cut_by_turn6_rate_pct": 68.7,
+              "ci95_half_width_pp": 1.95,
+              "complement_n": 1564,
+              "complement_success_n": 1371,
+              "complement_rate_pct": 87.7,
+              "complement_ci95_half_width_pp": 1.63,
+              "delta_pp_vs_complement": -18.94,
+              "combined_ci95_half_width_pp": 2.54,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 2005,
+                "value": 5
+              }
+            },
+            {
+              "condition": "turn3_shanten_bucket",
+              "value": "<=2",
+              "n": 1564,
+              "cut_by_turn6_n": 1371,
+              "cut_by_turn6_rate_pct": 87.7,
+              "ci95_half_width_pp": 1.63,
+              "complement_n": 2171,
+              "complement_success_n": 1492,
+              "complement_rate_pct": 68.7,
+              "complement_ci95_half_width_pp": 1.95,
+              "delta_pp_vs_complement": 18.94,
+              "combined_ci95_half_width_pp": 2.54,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 1509,
+                "value": 3
+              }
+            }
+          ]
+        },
+        {
+          "condition": "honor_type",
+          "n": 3735,
+          "cells_sorted_by_abs_delta_pp": [
+            {
+              "condition": "honor_type",
+              "value": "double_wind",
+              "n": 471,
+              "cut_by_turn6_n": 304,
+              "cut_by_turn6_rate_pct": 64.5,
+              "ci95_half_width_pp": 4.32,
+              "complement_n": 3264,
+              "complement_success_n": 2559,
+              "complement_rate_pct": 78.4,
+              "complement_ci95_half_width_pp": 1.41,
+              "delta_pp_vs_complement": -13.86,
+              "combined_ci95_half_width_pp": 4.55,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 434,
+                "value": 5
+              }
+            },
+            {
+              "condition": "honor_type",
+              "value": "dragon",
+              "n": 2518,
+              "cut_by_turn6_n": 1981,
+              "cut_by_turn6_rate_pct": 78.7,
+              "ci95_half_width_pp": 1.6,
+              "complement_n": 1217,
+              "complement_success_n": 882,
+              "complement_rate_pct": 72.5,
+              "complement_ci95_half_width_pp": 2.51,
+              "delta_pp_vs_complement": 6.2,
+              "combined_ci95_half_width_pp": 2.98,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 2374,
+                "value": 4
+              }
+            },
+            {
+              "condition": "honor_type",
+              "value": "round_wind",
+              "n": 380,
+              "cut_by_turn6_n": 300,
+              "cut_by_turn6_rate_pct": 78.9,
+              "ci95_half_width_pp": 4.1,
+              "complement_n": 3355,
+              "complement_success_n": 2563,
+              "complement_rate_pct": 76.4,
+              "complement_ci95_half_width_pp": 1.44,
+              "delta_pp_vs_complement": 2.55,
+              "combined_ci95_half_width_pp": 4.34,
+              "significant": false,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 359,
+                "value": 4
+              }
+            },
+            {
+              "condition": "honor_type",
+              "value": "seat_wind",
+              "n": 366,
+              "cut_by_turn6_n": 278,
+              "cut_by_turn6_rate_pct": 76.0,
+              "ci95_half_width_pp": 4.38,
+              "complement_n": 3369,
+              "complement_success_n": 2585,
+              "complement_rate_pct": 76.7,
+              "complement_ci95_half_width_pp": 1.43,
+              "delta_pp_vs_complement": -0.77,
+              "combined_ci95_half_width_pp": 4.6,
+              "significant": false,
+              "small_sample": false,
+              "minimum_cell_n": 150,
+              "median_cut_turn": {
+                "n": 347,
+                "value": 3
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "condition_effects_stop_matching_live_honor_under_riichi_turn7plus": {
+      "baseline": {
+        "n": 919,
+        "discard_live_honor_n": 162,
+        "discard_live_honor_rate_pct": 17.6,
+        "ci95_half_width_pp": 2.46
+      },
+      "denominator_note": "Child-only turn-7+ tsumo discard decisions while any opponent riichi is active; each held honor tile type with exactly one copy and 0 visible copies outside LuckyJ's hand is one opportunity.",
+      "effects": [
+        {
+          "condition": "own_shanten_bucket",
+          "n": 919,
+          "cells_sorted_by_abs_delta_pp": [
+            {
+              "condition": "own_shanten_bucket",
+              "value": "2+",
+              "n": 564,
+              "discard_live_honor_n": 38,
+              "discard_live_honor_rate_pct": 6.7,
+              "ci95_half_width_pp": 2.07,
+              "complement_n": 355,
+              "complement_success_n": 124,
+              "complement_rate_pct": 34.9,
+              "complement_ci95_half_width_pp": 4.96,
+              "delta_pp_vs_complement": -28.19,
+              "combined_ci95_half_width_pp": 5.37,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150
+            },
+            {
+              "condition": "own_shanten_bucket",
+              "value": "0-1",
+              "n": 355,
+              "discard_live_honor_n": 124,
+              "discard_live_honor_rate_pct": 34.9,
+              "ci95_half_width_pp": 4.96,
+              "complement_n": 564,
+              "complement_success_n": 38,
+              "complement_rate_pct": 6.7,
+              "complement_ci95_half_width_pp": 2.07,
+              "delta_pp_vs_complement": 28.19,
+              "combined_ci95_half_width_pp": 5.37,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150
+            }
+          ]
+        },
+        {
+          "condition": "genbutsu_bucket",
+          "n": 919,
+          "cells_sorted_by_abs_delta_pp": [
+            {
+              "condition": "genbutsu_bucket",
+              "value": "0",
+              "n": 257,
+              "discard_live_honor_n": 56,
+              "discard_live_honor_rate_pct": 21.8,
+              "ci95_half_width_pp": 5.05,
+              "complement_n": 662,
+              "complement_success_n": 106,
+              "complement_rate_pct": 16.0,
+              "complement_ci95_half_width_pp": 2.79,
+              "delta_pp_vs_complement": 5.78,
+              "combined_ci95_half_width_pp": 5.77,
+              "significant": true,
+              "small_sample": false,
+              "minimum_cell_n": 150
+            },
+            {
+              "condition": "genbutsu_bucket",
+              "value": "1",
+              "n": 292,
+              "discard_live_honor_n": 43,
+              "discard_live_honor_rate_pct": 14.7,
+              "ci95_half_width_pp": 4.06,
+              "complement_n": 627,
+              "complement_success_n": 119,
+              "complement_rate_pct": 19.0,
+              "complement_ci95_half_width_pp": 3.07,
+              "delta_pp_vs_complement": -4.25,
+              "combined_ci95_half_width_pp": 5.09,
+              "significant": false,
+              "small_sample": false,
+              "minimum_cell_n": 150
+            },
+            {
+              "condition": "genbutsu_bucket",
+              "value": "2+",
+              "n": 370,
+              "discard_live_honor_n": 63,
+              "discard_live_honor_rate_pct": 17.0,
+              "ci95_half_width_pp": 3.83,
+              "complement_n": 549,
+              "complement_success_n": 99,
+              "complement_rate_pct": 18.0,
+              "complement_ci95_half_width_pp": 3.22,
+              "delta_pp_vs_complement": -1.01,
+              "combined_ci95_half_width_pp": 5.0,
+              "significant": false,
+              "small_sample": false,
+              "minimum_cell_n": 150
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "changed_vs_published": [
+    {
+      "name": "lone dragon quiet median",
+      "published": 3,
+      "child_only": 3,
+      "unit": "turn",
+      "n": 4814,
+      "delta": 0.0,
+      "moved_materially": false
+    },
+    {
+      "name": "lone dragon after-open median",
+      "published": 5,
+      "child_only": 6,
+      "unit": "turn",
+      "n": 2131,
+      "delta": 1.0,
+      "moved_materially": true
+    },
+    {
+      "name": "value wind quiet median",
+      "published": 3,
+      "child_only": 3,
+      "unit": "turn",
+      "n": 3002,
+      "delta": 0.0,
+      "moved_materially": false
+    },
+    {
+      "name": "value wind after-open median",
+      "published": 6,
+      "child_only": 6,
+      "unit": "turn",
+      "n": 1379,
+      "delta": 0.0,
+      "moved_materially": false
+    },
+    {
+      "name": "lone dragon paired before cut",
+      "published": 12,
+      "child_only": 12.2,
+      "unit": "pct",
+      "n": 8461,
+      "delta": 0.2,
+      "moved_materially": false
+    },
+    {
+      "name": "value wind paired before cut",
+      "published": 11,
+      "child_only": 11.0,
+      "unit": "pct",
+      "n": 5248,
+      "delta": 0.0,
+      "moved_materially": false
+    },
+    {
+      "name": "guest wind median",
+      "published": 1,
+      "child_only": 2,
+      "unit": "turn",
+      "n": 5480,
+      "delta": 1.0,
+      "moved_materially": true
+    },
+    {
+      "name": "guest wind p75",
+      "published": 3,
+      "child_only": 3,
+      "unit": "turn",
+      "n": 5480,
+      "delta": 0.0,
+      "moved_materially": false
+    },
+    {
+      "name": "guest wind kept past turn 6",
+      "published": 15,
+      "child_only": 17.0,
+      "unit": "pct",
+      "n": 5892,
+      "delta": 2.0,
+      "moved_materially": true
+    },
+    {
+      "name": "riichi T7-9 0-visible discard",
+      "published": 14,
+      "child_only": 12.9,
+      "unit": "pct",
+      "n": 1163,
+      "delta": -1.1,
+      "moved_materially": false
+    },
+    {
+      "name": "riichi T7-9 1-visible discard",
+      "published": 35,
+      "child_only": 32.5,
+      "unit": "pct",
+      "n": 1630,
+      "delta": -2.5,
+      "moved_materially": true
+    },
+    {
+      "name": "riichi T13+ 0-visible discard",
+      "published": 9,
+      "child_only": 8.2,
+      "unit": "pct",
+      "n": 1111,
+      "delta": -0.8,
+      "moved_materially": false
+    },
+    {
+      "name": "riichi T13+ 1-visible discard",
+      "published": 36,
+      "child_only": 34.4,
+      "unit": "pct",
+      "n": 1392,
+      "delta": -1.6,
+      "moved_materially": false
+    },
+    {
+      "name": "late live-honor draw hold",
+      "published": 50,
+      "child_only": 52.5,
+      "unit": "pct",
+      "n": 673,
+      "delta": 2.5,
+      "moved_materially": true
+    },
+    {
+      "name": "modifier cut-by-6 turn3 shanten <=2",
+      "published": 85,
+      "child_only": 84.3,
+      "unit": "pct",
+      "n": 4734,
+      "delta": -0.7,
+      "moved_materially": false
+    },
+    {
+      "name": "modifier cut-by-6 turn3 shanten >=3",
+      "published": 63,
+      "child_only": 61.5,
+      "unit": "pct",
+      "n": 7099,
+      "delta": -1.5,
+      "moved_materially": false
+    },
+    {
+      "name": "modifier cut-by-6 double_wind",
+      "published": 59,
+      "child_only": 52.4,
+      "unit": "pct",
+      "n": 395,
+      "delta": -6.6,
+      "moved_materially": true
+    },
+    {
+      "name": "modifier cut-by-6 round_wind",
+      "published": 78,
+      "child_only": 78.2,
+      "unit": "pct",
+      "n": 2065,
+      "delta": 0.2,
+      "moved_materially": false
+    },
+    {
+      "name": "modifier cut-by-6 seat_wind",
+      "published": 68,
+      "child_only": 66.8,
+      "unit": "pct",
+      "n": 2089,
+      "delta": -1.2,
+      "moved_materially": false
+    },
+    {
+      "name": "modifier live honor discard own shanten 0-1",
+      "published": 31,
+      "child_only": 29.2,
+      "unit": "pct",
+      "n": 842,
+      "delta": -1.8,
+      "moved_materially": false
+    },
+    {
+      "name": "modifier live honor discard own shanten 2+",
+      "published": 5,
+      "child_only": 4.9,
+      "unit": "pct",
+      "n": 2493,
+      "delta": -0.1,
+      "moved_materially": false
+    },
+    {
+      "name": "modifier live honor discard genbutsu 0",
+      "published": 20,
+      "child_only": 20.0,
+      "unit": "pct",
+      "n": 823,
+      "delta": 0.0,
+      "moved_materially": false
+    },
+    {
+      "name": "modifier live honor discard genbutsu 2+",
+      "published": 9,
+      "child_only": 6.4,
+      "unit": "pct",
+      "n": 1502,
+      "delta": -2.6,
+      "moved_materially": true
+    }
+  ]
+}

@@ -56,18 +56,20 @@ CLIPROXY_API_KEY=... .venv/bin/python scripts/generate_llm_guides.py --workers 6
 ```
 
 The "Prescriptions" section (numeric thresholds in `site/points.html` / `site/ja.html`) is
-backed by four one-pass miners over the raw NAGA cache; each writes a JSON summary with
-per-cell `n` counts used to hand-write the section:
+backed by miners over the raw NAGA cache; each writes a JSON summary with per-cell `n`
+counts used to hand-write the section. The current prescription tables use the rx3
+child-only outputs, where LuckyJ is not start-of-kyoku oya/dealer:
 
 ```bash
-.venv/bin/python scripts/mine_rx_honors.py    # lone-yakuhai/guest-wind timing, stop-matching matrix
-.venv/bin/python scripts/mine_rx_defense.py   # push rates by threat class, vs-riichi shanten table
-.venv/bin/python scripts/mine_rx_riichi.py    # declare thresholds, keiten pushes, fold commitment
-.venv/bin/python scripts/mine_rx_calls.py     # yakuhai pon rates, chi reluctance, late keiten calls
+.venv/bin/python scripts/mine_rx3_honors.py   # child-only lone-yakuhai/guest-wind timing
+.venv/bin/python scripts/mine_rx3_defense.py  # child-only push rates by threat class
+.venv/bin/python scripts/mine_rx3_riichi.py   # child-only declare thresholds and keiten pushes
+.venv/bin/python scripts/mine_rx3_calls.py    # child-only yakuhai pon and chi reluctance
 ```
 
 The mined summaries behind the published numbers are archived under
-`analysis/rx-*-2026-07-03.json`.
+`analysis/rx3-*-2026-07-05.json`. The older `analysis/rx-*-2026-07-03.json` files are kept
+as first-pass all-seat references, not as the current prescription source.
 
 The Mortal cross-check is optional because it depends on local-only assets under `~/Downloads`:
 

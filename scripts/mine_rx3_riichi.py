@@ -14,7 +14,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 base.SHEET_CSV = REPO_ROOT / "data" / "LuckyJ.csv"
 base.CACHE_DIR = REPO_ROOT / "data" / "report_cache"
 
-OUT = Path("/Users/honvl/.claude/jobs/151072f5/tmp/rx3-riichi.json")
+OUT = REPO_ROOT / "analysis" / "rx3-riichi-2026-07-05.json"
 MIN_CELL_N = 120
 WAIT_STRATA = ("<=3", "4-7")
 
@@ -65,6 +65,38 @@ def pct(num, den, digits=1):
     return round(100.0 * num / den, digits) if den else None
 
 
+def mean(values):
+    return sum(values) / len(values) if values else None
+
+
+def population_std(values):
+    if not values:
+        return None
+    avg = mean(values)
+    return math.sqrt(sum((value - avg) ** 2 for value in values) / len(values))
+
+
+def weighted_std(values, weights):
+    if not values or not weights or sum(weights) <= 0:
+        return None
+    avg = sum(value * weight for value, weight in zip(values, weights)) / sum(weights)
+    return math.sqrt(sum(weight * ((value - avg) ** 2) for value, weight in zip(values, weights)) / sum(weights))
+
+
+def percentile(values, q):
+    if not values:
+        return None
+    ordered = sorted(values)
+    if len(ordered) == 1:
+        return ordered[0]
+    pos = (len(ordered) - 1) * q
+    lo = math.floor(pos)
+    hi = math.ceil(pos)
+    if lo == hi:
+        return ordered[lo]
+    return ordered[lo] + (ordered[hi] - ordered[lo]) * (pos - lo)
+
+
 def ci95_half_width_pp(yes, n):
     if not n:
         return None
@@ -89,6 +121,55 @@ def rate_entry(n, yes, yes_name="declares", rate_name=None):
         yes_name: yes,
         rate_name: pct(yes, n),
         "ci95_half_width_pp": round(ci, 1) if ci is not None else None,
+    }
+
+
+def per_game_riichi_consistency(first_opps):
+    per_game = defaultdict(Counter)
+    for opp in first_opps:
+        if opp.get("dealer_status") != "child":
+            continue
+        report_id = opp.get("report_id")
+        if not report_id:
+            continue
+        per_game[report_id]["n"] += 1
+        per_game[report_id]["declares"] += int(bool(opp.get("declared")))
+
+    games = []
+    for report_id, counter in sorted(per_game.items()):
+        n = int(counter["n"])
+        if n < 2:
+            continue
+        declares = int(counter["declares"])
+        games.append(
+            {
+                "report_id": report_id,
+                "n": n,
+                "declares": declares,
+                "declare_rate_pct": pct(declares, n),
+            }
+        )
+
+    rates = [(game["declare_rate_pct"] or 0.0) / 100.0 for game in games]
+    weights = [game["n"] for game in games]
+    total_n = sum(weights)
+    total_declares = sum(game["declares"] for game in games)
+    weighted_mean = total_declares / total_n if total_n else None
+    weighted_std_value = weighted_std(rates, weights)
+    unweighted_mean = mean(rates)
+    unweighted_std_value = population_std(rates)
+    return {
+        "definition": "Child-only games with at least two first riichi opportunities; weighted standard deviation uses each game's opportunity count as weight.",
+        "included_games_min_2_opportunities": len(games),
+        "first_opportunities_n": total_n,
+        "declares": total_declares,
+        "weighted_mean_declare_rate_pct": round(weighted_mean * 100.0, 1) if weighted_mean is not None else None,
+        "weighted_std_declare_rate_pp": round(weighted_std_value * 100.0, 1) if weighted_std_value is not None else None,
+        "unweighted_mean_declare_rate_pct": round(unweighted_mean * 100.0, 1) if unweighted_mean is not None else None,
+        "unweighted_std_declare_rate_pp": round(unweighted_std_value * 100.0, 1) if unweighted_std_value is not None else None,
+        "p25_declare_rate_pct": round(percentile(rates, 0.25) * 100.0, 1) if rates else None,
+        "p50_declare_rate_pct": round(percentile(rates, 0.50) * 100.0, 1) if rates else None,
+        "p75_declare_rate_pct": round(percentile(rates, 0.75) * 100.0, 1) if rates else None,
     }
 
 
@@ -724,10 +805,12 @@ def analyze():
             "condition_effect_stats": f"rx2-style cells within child-only wait strata. Delta is value rate minus complement rate; meets_min_cell_n requires both value and complement n >= {MIN_CELL_N}.",
             "keiten_push": "Late-game decisions with left_hai_num <= 20; push means actual discard danger >5%; selected cells shown for tenpai and 2+ shanten under opponent riichi.",
             "fold_commitment": "First time LuckyJ makes two consecutive target discards under opponent riichi, both 2+ regular shanten after discard and each <1% danger; stayed folded means no later >5% danger push.",
+            "per_game_consistency_child_only": "Child-only per-game spread for the intro sentence; riichi requires at least two first opportunities per game.",
         },
         "meta": collected["meta"],
         "dealer_vs_child_naga_match": hypothesis,
         "child_dealer_baselines": baselines,
+        "per_game_consistency_child_only": per_game_riichi_consistency(collected["first_opps"]),
         "condition_effects_child": condition_effects,
         "cited_child_condition_effects": cited,
     }
