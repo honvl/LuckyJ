@@ -1,0 +1,8 @@
+{
+  "paifu_overrides": {
+    "107": {
+      "paifu": "https://tenhou.net/4/?log=2023042215gm-0089-0000-934864ab&tw=0",
+      "reason": "The exported Paifu URL points to another game; this log ID matches the linked NAGA report haihu_id, player names, and LuckyJ actor."
+    }
+  }
+}

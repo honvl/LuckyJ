@@ -154,6 +154,11 @@ def make_case(row, kyoku_index, pos, start, state, hand14, public_visible, model
         "actual": actual,
         "naga": naga,
         "naga_votes": [r[0] for r in model_rows],
+        # Reader-facing comparisons use one head consistently: Nishiki's probability
+        # for LuckyJ's discard versus Nishiki's own top discard.
+        "nishiki_actual_prob": round(model_rows[0][2], 3),
+        "nishiki_top_prob": round(model_rows[0][1], 3),
+        # Cross-head extrema stay available only as audit metadata.
         "actual_prob_min": round(min(r[2] for r in model_rows), 3),
         "naga_prob_max": round(max(r[1] for r in model_rows), 3),
         "actual_danger": danger_for(state, row["actor"], actual),
@@ -162,9 +167,19 @@ def make_case(row, kyoku_index, pos, start, state, hand14, public_visible, model
         "naga_eval": naga_eval,
         "report": row["report"],
         "paifu": row["paifu"],
+        "room": row.get("room"),
+        "room_code": row.get("room_code"),
     }
     if discards is not None:
         case["kept_safety"] = safety_read(naga, row["actor"], discards, reached, open_melds)
+    supporting_heads = sum(1 for top, _top_prob, _actual_prob in model_rows if base.tile_index(top) == base.tile_index(actual))
+    case["supporting_naga_heads"] = supporting_heads
+    if supporting_heads:
+        case["evidence_tier"] = "head_supported"
+    elif case["nishiki_actual_prob"] >= 0.05:
+        case["evidence_tier"] = "plausible_split"
+    else:
+        case["evidence_tier"] = "stress_test"
     return case
 
 
@@ -172,6 +187,8 @@ def collect_cases():
     rows = base.parse_rows()
     buckets = defaultdict(list)
     for row in rows:
+        if row.get("room") != "Tokujou":
+            continue
         target = row["actor"]
         data = base.fetch_report(row["report_id"])
         naga_types = base.normalize_report(data)
@@ -267,12 +284,16 @@ def collect_cases():
                         discards[actor].append(tile)
                         public_visible[tile_id(tile)] += 1
 
-    # Keep compact, high-signal examples. Prefer large Nishiki confidence gaps, but avoid pathological missing evals.
+    # Keep compact teaching examples. Prefer a second NAGA head or a non-trivial
+    # Nishiki probability; only backfill with extreme disagreement stress tests.
     selected = {}
+    tier_rank = {"head_supported": 2, "plausible_split": 1, "stress_test": 0}
     for name, cases in buckets.items():
         cases.sort(
             key=lambda c: (
-                c["naga_prob_max"] - c["actual_prob_min"],
+                tier_rank.get(c.get("evidence_tier"), 0),
+                c.get("supporting_naga_heads", 0),
+                c.get("nishiki_actual_prob", 0),
                 abs(c["naga_eval"]["ukeire"] - c["actual_eval"]["ukeire"]),
             ),
             reverse=True,

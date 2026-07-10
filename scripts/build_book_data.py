@@ -155,7 +155,8 @@ def add_yakuhai_sample(stats, turns, family, context, actual_id, candidate_ids, 
         stats[key]["first_row_opportunities"] += 1
     if actual_id in candidate_ids:
         stats[key]["cuts"] += 1
-        turns[key].append(own_discards)
+        # Rivers are zero-indexed in the replay state; readers count the first discard as turn 1.
+        turns[key].append(own_discards + 1)
         if own_discards < 6:
             stats[key]["first_row_cuts"] += 1
 
@@ -284,6 +285,10 @@ def analyze_decisions(rows):
             "overall": Counter(),
             "stage": defaultdict(Counter),
             "score_band": defaultdict(Counter),
+            "self_open": {
+                "overall": Counter(),
+                "stage": defaultdict(Counter),
+            },
         },
         "examples": defaultdict(list),
     }
@@ -418,13 +423,25 @@ def analyze_decisions(rows):
                             scope["same_danger"] += 1
 
                 if mismatch:
-                    kept_read = base.defensive_tile_read(model_rows[0][0], target, discards, reached, open_melds)
-                    for scope in (
-                        counters["defense_retention"]["overall"],
-                        counters["defense_retention"]["stage"][stage],
-                        counters["defense_retention"]["score_band"][score_band],
-                    ):
-                        add_defense_retention(scope, left, kept_read)
+                    kept_read = None
+                    # This counter compares LuckyJ specifically with Nishiki. If Nishiki
+                    # already chose LuckyJ's tile and only another head split, its top tile
+                    # was not actually "kept" by LuckyJ.
+                    if model_rows[0][0] != actual:
+                        kept_read = base.defensive_tile_read(model_rows[0][0], target, discards, reached, open_melds)
+                        for scope in (
+                            counters["defense_retention"]["overall"],
+                            counters["defense_retention"]["stage"][stage],
+                            counters["defense_retention"]["score_band"][score_band],
+                        ):
+                            add_defense_retention(scope, left, kept_read)
+                        self_open = bool(open_melds[target] or msg_type in base.HURO_TYPES)
+                        if self_open:
+                            for scope in (
+                                counters["defense_retention"]["self_open"]["overall"],
+                                counters["defense_retention"]["self_open"]["stage"][stage],
+                            ):
+                                add_defense_retention(scope, left, kept_read)
 
                     if actual_cls == "simple" and all(cls in {"honor", "terminal"} for cls in top_classes):
                         counters["tile_flow"][stage]["kept_outside_cut_simple"] += 1
@@ -608,11 +625,14 @@ def main():
             "win_rate_per_hand": aggregate["totals"]["round_wins"] / aggregate["totals"]["rounds"],
             "deal_in_rate_per_hand": aggregate["totals"]["deal_ins"] / aggregate["totals"]["rounds"],
             "call_round_rate": aggregate["totals"]["call_rounds"] / aggregate["totals"]["rounds"],
-            "draw_tenpai_plus_rate": aggregate["totals"]["draw_tenpai_plus"] / aggregate["totals"]["draws"],
+            "exhaustive_draws": aggregate["totals"]["exhaustive_draws"],
+            "draw_tenpai": aggregate["totals"]["draw_tenpai"],
+            "draw_tenpai_rate": aggregate["totals"]["draw_tenpai"] / aggregate["totals"]["exhaustive_draws"],
             "mismatch_rate": aggregate["totals"]["mismatch_count"] / aggregate["totals"]["decision_count"],
             "bad_rate": aggregate["totals"]["bad_count"] / aggregate["totals"]["decision_count"],
             "big_mismatch_rate": aggregate["totals"]["big_mismatch_count"] / aggregate["totals"]["decision_count"],
         },
+        "source_scope": aggregate.get("source_scope", {}),
         "top_bottom": {
             "top_half": {
                 "games": len(top_half),

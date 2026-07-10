@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Third-pass defense mining: child-only LuckyJ push/fold prescriptions.
+"""Third-pass defense mining: child-only LuckyJ danger-taking proxies.
 
 This pass keeps scripts/mine_rx_defense.py and scripts/mine_rx2_defense.py intact and
 reuses their parsing/state helpers.  It splits LuckyJ decision states by whether LuckyJ
@@ -623,13 +623,13 @@ def main() -> None:
             "hypothesis_check_scope": "All LuckyJ tsumo states with real_dahai and dahai_pred are counted before any push/fold filtering; dahai_pred[0] is treated as Nishiki head model.",
             "nishiki_top_discard_match": "top 34-tile index in state['dahai_pred'][0] equals real_dahai by 34-tile class.",
             "danger": "For LuckyJ's actual discard, max(state[danger_s/t/k][LuckyJ seat][tile_index] / 10000), reused from scripts/mine_rx2_defense.py.",
-            "push": "actual discard danger > 0.05.",
+            "push": "Legacy field name: actual discard danger > 0.05. This is a danger-threshold proxy, not a strategic push/fold classifier.",
             "closed_shanten": "No own melds and not own riichi; shanten is mahjong.shanten over LuckyJ's current 14-tile hand. Buckets 0/1/2/3+.",
             "vs_riichi_scope": "States classified as single_riichi or riichi_plus_more by scripts/mine_rx2_defense.py classifier.",
             "last20": "left_hai_num <= 20.",
             "first_discard_after_riichi_genbutsu": "For each opponent riichi declaration, LuckyJ's next tsumo discard is genbutsu if its tile index is in that riichi player's own river, including the declaration discard.",
             "open_hand_scope": "No-riichi states classified as 2_meld_opponent or 3plus_meld_opponent, using the selected max-open opponent and turn bucket.",
-            "condition_effect_delta": "push_rate(condition value) - push_rate(all other values of that condition). significant=true only when value and complement both have n>=150 and |delta| exceeds the combined 95% CI half-width.",
+            "condition_effect_delta": "above-5%-danger rate(condition value) minus the rate for all other values. significant=true only when value and complement both have n>=150 and |delta| exceeds the combined 95% CI half-width.",
             "excluded_published_modifier": "The published tenpai + LuckyJ-is-dealer ~=68% modifier is definitionally excluded from child-only prescriptions.",
         },
         "summary": summary,

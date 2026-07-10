@@ -455,13 +455,13 @@ def make_proposed_rules(final: dict[str, Any]) -> list[str]:
 
     if two_mid.get("n", 0):
         rules.append(
-            "Against a 2-meld open hand, start pricing defense by the second row: turn 7-12 push rate was "
+            "Against a 2-meld open hand, start pricing defense by the second row: the share of actual discards with Nishiki max danger above 5% was "
             f"{fmt_rate(two_mid)}, and turn 13+ was {fmt_rate(two_late)}."
         )
     if three_early.get("n", 0) or three_mid.get("n", 0):
         strongest_three = three_early if three_early.get("n", 0) else three_mid
         rules.append(
-            "Against 3+ melds, treat the hand as a live threat immediately; LuckyJ's >5% danger push rate was "
+            "Against 3+ melds, treat the hand as a live threat immediately; the share of LuckyJ's actual discards with Nishiki max danger above 5% was "
             f"{fmt_rate(strongest_three)} in the earliest populated bucket."
         )
 
@@ -752,8 +752,8 @@ def main() -> None:
     output: dict[str, Any] = {
         "definitions": {
             "danger": "For LuckyJ's actual discard, max(state[danger_s/t/k][LuckyJ seat][tile_index] / 10000).",
-            "push": "actual discard danger > 0.05.",
-            "hard_push": "actual discard danger > 0.10.",
+            "push": "legacy field name: actual discard Nishiki max danger > 0.05; this is a danger proxy, not a push/fold label.",
+            "hard_push": "legacy field name: actual discard Nishiki max danger > 0.10; this is a danger proxy, not a push/fold label.",
             "tenpai_estimate": "mean(state[tenpai_s/t/k][opponent seat]) / 100.",
             "tenpai_buckets": {"<30%": "estimate < 0.30", "30-60%": "0.30 <= estimate <= 0.60", ">60%": "estimate > 0.60"},
             "table_threats": THREAT_LABELS,

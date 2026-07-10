@@ -57,7 +57,7 @@ PATTERN_LABELS = {
     "behind_risk_buy": "Behind-score choices that buy route/value with extra danger",
     "multi_threat_safe_tenpai": "Middle/late choices preserving tiles with multiple threats",
     "honor_cleanup_vs_shape": "Cut a loose honor while NAGA prefers shape cleanup",
-    "clean_open_yaku_condition_honor": "Clean a singleton yakuhai before an unproven open hand can use it",
+    "clean_open_yaku_condition_honor": "Release a singleton yakuhai while no yaku or clear advancement is visible",
     "early_guest_honor_cleanup": "Cut a loose non-self honor before shape cleanup in the first row",
     "keep_self_yakuhai_pair_anchor": "Keep own yakuhai pair or triplet anchor while NAGA breaks it",
     "spend_off_target_safety_for_shape": "Spend a safe-looking tile after its target changes",
@@ -984,7 +984,7 @@ def propose_points(summary: dict[str, Any], mortal_summary: dict[str, Any]) -> l
     mortal_patterns = mortal_summary.get("by_pattern", {}) if mortal_summary.get("enabled") else {}
 
     candidates = [
-        ("clean_open_yaku_condition_honor", "Clean yakuhai before an unproven open hand can use it"),
+        ("clean_open_yaku_condition_honor", "Price early yakuhai release against a still-incomplete open hand"),
         ("early_guest_honor_cleanup", "Guest honors can be removed before shape when they have no self job"),
         ("keep_self_yakuhai_pair_anchor", "Self yakuhai pairs can be route anchors"),
         ("spend_off_target_safety_for_shape", "Safe-looking tiles can be spent after their target changes"),

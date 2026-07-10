@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-07-05T22:24:53.343729+00:00",
+  "generated_at": "2026-07-10T03:27:23.213461+00:00",
   "source": {
-    "csv_rows": 1256,
+    "csv_rows": 1255,
     "unique_report_ids": 1255,
-    "duplicate_report_rows": 1,
+    "duplicate_report_rows": 0,
     "processed_reports": 1255,
-    "target_seat_corrections_from_report_names": 1,
+    "target_seat_corrections_from_report_names": 0,
     "errors": []
   },
   "definitions": {
@@ -1107,25 +1107,18 @@
   },
   "changed_vs_published": [
     {
-      "label": "yakuhai_threat_yes",
-      "published_pct": 83.0,
-      "child_only_pct": 36.2,
-      "delta_pp": -46.8,
-      "path": "condition_effects_child_only.yakuhai_pon.requested_cells.existing_table_threat.yes.pon_rate_pct"
-    },
-    {
-      "label": "yakuhai_threat_no",
-      "published_pct": 40.0,
-      "child_only_pct": 82.3,
-      "delta_pp": 42.3,
-      "path": "condition_effects_child_only.yakuhai_pon.requested_cells.existing_table_threat.no.pon_rate_pct"
-    },
-    {
       "label": "yakuhai_turn_7_12_shanten_2_3",
       "published_pct": 64.0,
       "child_only_pct": 60.0,
       "delta_pp": -4.0,
       "path": "condition_effects_child_only.yakuhai_pon.requested_cells.turn_x_shanten.turn_7-12_shanten_2-3.pon_rate_pct"
+    },
+    {
+      "label": "yakuhai_threat_yes",
+      "published_pct": 40.0,
+      "child_only_pct": 36.2,
+      "delta_pp": -3.8,
+      "path": "condition_effects_child_only.yakuhai_pon.requested_cells.existing_table_threat.yes.pon_rate_pct"
     },
     {
       "label": "later_copy_yakuhai_pon",

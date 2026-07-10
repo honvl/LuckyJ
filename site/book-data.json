@@ -1,32 +1,70 @@
 {
   "summary": {
-    "games": 1256,
-    "hands": 13059,
-    "decisions": 147378,
-    "avg_rank": 2.2643312101910826,
-    "avg_score": 8.39482484076433,
+    "games": 1255,
+    "hands": 13054,
+    "decisions": 147337,
+    "avg_rank": 2.2653386454183266,
+    "avg_score": 8.356972111553786,
     "rank_counts": {
       "4": 205,
       "2": 343,
       "3": 315,
-      "1": 393
+      "1": 392
     },
-    "win_rate_per_hand": 0.22942032314878627,
-    "deal_in_rate_per_hand": 0.10100313959721265,
-    "call_round_rate": 0.3577609311585879,
-    "draw_tenpai_plus_rate": 0.40564558285415575,
-    "mismatch_rate": 0.368840668213709,
-    "bad_rate": 0.12955122202771105,
-    "big_mismatch_rate": 0.13182428856410047
+    "win_rate_per_hand": 0.2294315918492416,
+    "deal_in_rate_per_hand": 0.10104182626015014,
+    "call_round_rate": 0.35789796231040294,
+    "exhaustive_draws": 1761,
+    "draw_tenpai": 823,
+    "draw_tenpai_rate": 0.4673480976717774,
+    "mismatch_rate": 0.3688482865811032,
+    "bad_rate": 0.12956691123071598,
+    "big_mismatch_rate": 0.13184061030155358
+  },
+  "source_scope": {
+    "training": "self_play",
+    "evaluation_environment": "Tenhou live rooms",
+    "date_start": "2023-04-19",
+    "date_end": "2023-05-30",
+    "room_counts": {
+      "General": 49,
+      "Tokujou": 1079,
+      "Upper": 127
+    },
+    "room_code_counts": {
+      "0001": 1,
+      "0009": 48,
+      "0029": 1079,
+      "0089": 127
+    },
+    "contains_houou": false,
+    "contains_mahjong_soul": false,
+    "linked_rows": 1256,
+    "unique_reports": 1255,
+    "duplicates_removed": 1,
+    "duplicate_report_groups": [
+      {
+        "report_id": "c045846868d7637fe2878e8c8326ccb44afd66e22cd926fbc900650abef68831v2_2",
+        "report_haihu_id": "2023052320gm-0029-0000-bf31f030",
+        "status": "resolved",
+        "kept_idx": 1101,
+        "dropped": [
+          {
+            "idx": 1100,
+            "tenhou_log_id": "2023052319gm-0029-0000-7d0f1b1b"
+          }
+        ]
+      }
+    ]
   },
   "top_bottom": {
     "top_half": {
-      "games": 736,
-      "avg_score": 34.02771739130435,
-      "wins_per_game": 3.089673913043478,
-      "deal_ins_per_game": 0.748641304347826,
-      "riichi_per_game": 2.110054347826087,
-      "calls_per_game": 5.792119565217392
+      "games": 735,
+      "avg_score": 33.99795918367347,
+      "wins_per_game": 3.092517006802721,
+      "deal_ins_per_game": 0.7496598639455783,
+      "riichi_per_game": 2.1074829931972787,
+      "calls_per_game": 5.8
     },
     "bottom_half": {
       "games": 520,
@@ -39,32 +77,32 @@
   },
   "decision_counters": {
     "overall": {
-      "decisions": 147378,
-      "mismatch": 54359,
-      "big": 19428,
-      "same_danger": 44037,
-      "call_opportunity": 39749,
-      "bad": 19093,
+      "decisions": 147337,
+      "mismatch": 54345,
+      "big": 19425,
+      "same_danger": 44024,
+      "call_opportunity": 39736,
+      "bad": 19090,
       "safer_than_naga": 5217,
       "actual_calls_from_opportunity": 6943,
-      "skip_vs_call": 1996,
+      "skip_vs_call": 1995,
       "call_vs_skip": 853,
-      "riskier_than_naga": 5105,
-      "reach_opportunity": 5294,
-      "actual_reach": 2493,
+      "riskier_than_naga": 5104,
+      "reach_opportunity": 5290,
+      "actual_reach": 2489,
       "no_vs_reach": 298,
       "reach_vs_no": 379
     },
     "stage": {
       "early": {
-        "decisions": 66841,
-        "mismatch": 30220,
-        "big": 11755,
-        "same_danger": 28153,
-        "call_opportunity": 15467,
-        "bad": 12122,
+        "decisions": 66816,
+        "mismatch": 30210,
+        "big": 11753,
+        "same_danger": 28143,
+        "call_opportunity": 15457,
+        "bad": 12120,
         "actual_calls_from_opportunity": 3179,
-        "skip_vs_call": 652,
+        "skip_vs_call": 651,
         "riskier_than_naga": 1433,
         "reach_opportunity": 636,
         "actual_reach": 381,
@@ -74,18 +112,18 @@
         "reach_vs_no": 35
       },
       "middle": {
-        "decisions": 60559,
-        "call_opportunity": 18608,
-        "mismatch": 18570,
-        "big": 5912,
-        "same_danger": 12259,
-        "bad": 5648,
+        "decisions": 60543,
+        "call_opportunity": 18605,
+        "mismatch": 18566,
+        "big": 5911,
+        "same_danger": 12256,
+        "bad": 5647,
         "safer_than_naga": 3431,
         "actual_calls_from_opportunity": 2861,
         "call_vs_skip": 275,
-        "riskier_than_naga": 2880,
-        "reach_opportunity": 3217,
-        "actual_reach": 1717,
+        "riskier_than_naga": 2879,
+        "reach_opportunity": 3213,
+        "actual_reach": 1713,
         "skip_vs_call": 994,
         "reach_vs_no": 241,
         "no_vs_reach": 172
@@ -110,38 +148,38 @@
     },
     "start_rank": {
       "1": {
-        "decisions": 44641,
-        "mismatch": 16984,
-        "big": 5776,
-        "same_danger": 13689,
-        "bad": 5963,
+        "decisions": 44633,
+        "mismatch": 16983,
+        "big": 5775,
+        "same_danger": 13688,
+        "bad": 5962,
         "riskier_than_naga": 1599,
         "safer_than_naga": 1696
       },
       "2": {
-        "decisions": 38155,
-        "mismatch": 14365,
+        "decisions": 38144,
+        "mismatch": 14360,
         "big": 5224,
-        "bad": 5131,
-        "same_danger": 11679,
+        "bad": 5130,
+        "same_danger": 11674,
         "riskier_than_naga": 1350,
         "safer_than_naga": 1336
       },
       "3": {
-        "decisions": 36179,
-        "mismatch": 13091,
-        "same_danger": 10665,
-        "big": 4748,
-        "bad": 4509,
+        "decisions": 36161,
+        "mismatch": 13086,
+        "same_danger": 10661,
+        "big": 4747,
+        "bad": 4508,
         "safer_than_naga": 1202,
-        "riskier_than_naga": 1224
+        "riskier_than_naga": 1223
       },
       "4": {
-        "decisions": 28403,
-        "mismatch": 9919,
-        "big": 3680,
+        "decisions": 28399,
+        "mismatch": 9916,
+        "big": 3679,
         "bad": 3490,
-        "same_danger": 8004,
+        "same_danger": 8001,
         "safer_than_naga": 983,
         "riskier_than_naga": 932
       }
@@ -157,25 +195,25 @@
         "riskier_than_naga": 2069
       },
       "top_half": {
-        "decisions": 85877,
-        "mismatch": 32078,
-        "same_danger": 26038,
+        "decisions": 85836,
+        "mismatch": 32064,
+        "same_danger": 26025,
         "safer_than_naga": 3004,
-        "big": 11260,
-        "bad": 11336,
-        "riskier_than_naga": 3036
+        "big": 11257,
+        "bad": 11333,
+        "riskier_than_naga": 3035
       }
     },
     "tile_flow": {
       "early": {
-        "mismatch": 30220,
+        "mismatch": 30210,
         "kept_outside_cut_simple": 4766,
-        "cut_outside_kept_simple": 1168
+        "cut_outside_kept_simple": 1166
       },
       "middle": {
-        "mismatch": 18570,
-        "kept_outside_cut_simple": 2062,
-        "cut_outside_kept_simple": 1818
+        "mismatch": 18566,
+        "kept_outside_cut_simple": 2061,
+        "cut_outside_kept_simple": 1817
       },
       "late": {
         "mismatch": 5569,
@@ -185,35 +223,35 @@
     },
     "score_band": {
       "above_start": {
-        "decisions": 59759,
-        "mismatch": 22086,
-        "big": 7897,
-        "same_danger": 18022,
-        "call_opportunity": 16096,
-        "bad": 7771,
+        "decisions": 59740,
+        "mismatch": 22080,
+        "big": 7896,
+        "same_danger": 18016,
+        "call_opportunity": 16093,
+        "bad": 7769,
         "safer_than_naga": 2041,
         "call_vs_skip": 326,
         "actual_calls_from_opportunity": 2765,
         "riskier_than_naga": 2023,
         "skip_vs_call": 765,
-        "reach_opportunity": 2206,
-        "actual_reach": 1028,
+        "reach_opportunity": 2204,
+        "actual_reach": 1026,
         "no_vs_reach": 128,
         "reach_vs_no": 131
       },
       "behind": {
-        "decisions": 48063,
-        "mismatch": 17248,
-        "same_danger": 13992,
-        "call_opportunity": 12892,
-        "big": 6330,
-        "bad": 6040,
+        "decisions": 48041,
+        "mismatch": 17240,
+        "same_danger": 13985,
+        "call_opportunity": 12882,
+        "big": 6328,
+        "bad": 6039,
         "safer_than_naga": 1609,
         "actual_calls_from_opportunity": 2321,
-        "skip_vs_call": 696,
-        "reach_opportunity": 1611,
-        "actual_reach": 813,
-        "riskier_than_naga": 1647,
+        "skip_vs_call": 695,
+        "reach_opportunity": 1609,
+        "actual_reach": 811,
+        "riskier_than_naga": 1646,
         "call_vs_skip": 239,
         "no_vs_reach": 97,
         "reach_vs_no": 91
@@ -255,103 +293,155 @@
     },
     "defense_retention": {
       "overall": {
-        "splits": 54359,
-        "left_sum": 2627467,
-        "left_count": 54359,
-        "kept_defense_tile": 28090,
-        "kept_left_sum": 1149527,
-        "kept_left_count": 28090,
-        "kept_genbutsu": 26020,
-        "kept_multi_opponent": 9136,
-        "kept_against_live_threat": 11824,
-        "kept_suji": 5815
+        "splits": 39020,
+        "left_sum": 1885799,
+        "left_count": 39020,
+        "kept_defense_tile": 20067,
+        "kept_left_sum": 823215,
+        "kept_left_count": 20067,
+        "kept_genbutsu": 18442,
+        "kept_multi_opponent": 6332,
+        "kept_against_live_threat": 8227,
+        "kept_suji": 4232
       },
       "stage": {
         "early": {
-          "splits": 30220,
-          "left_sum": 1817632,
-          "left_count": 30220,
-          "kept_defense_tile": 9936,
-          "kept_left_sum": 571741,
-          "kept_left_count": 9936,
-          "kept_genbutsu": 9454,
-          "kept_multi_opponent": 1803,
-          "kept_suji": 745,
-          "kept_against_live_threat": 1564
+          "splits": 21808,
+          "left_sum": 1308969,
+          "left_count": 21808,
+          "kept_defense_tile": 7300,
+          "kept_left_sum": 416615,
+          "kept_left_count": 7300,
+          "kept_genbutsu": 6910,
+          "kept_multi_opponent": 1263,
+          "kept_suji": 615,
+          "kept_against_live_threat": 1216
         },
         "middle": {
-          "splits": 18570,
-          "left_sum": 727240,
-          "left_count": 18570,
-          "kept_defense_tile": 13181,
-          "kept_left_sum": 504739,
-          "kept_left_count": 13181,
-          "kept_genbutsu": 11977,
-          "kept_multi_opponent": 4605,
-          "kept_against_live_threat": 6533,
-          "kept_suji": 3070
+          "splits": 13239,
+          "left_sum": 518834,
+          "left_count": 13239,
+          "kept_defense_tile": 9280,
+          "kept_left_sum": 356415,
+          "kept_left_count": 9280,
+          "kept_genbutsu": 8351,
+          "kept_multi_opponent": 3230,
+          "kept_against_live_threat": 4367,
+          "kept_suji": 2137
         },
         "late": {
-          "splits": 5569,
-          "left_sum": 82595,
-          "left_count": 5569,
-          "kept_defense_tile": 4973,
-          "kept_left_sum": 73047,
-          "kept_left_count": 4973,
-          "kept_genbutsu": 4589,
-          "kept_against_live_threat": 3727,
-          "kept_multi_opponent": 2728,
-          "kept_suji": 2000
+          "splits": 3973,
+          "left_sum": 57996,
+          "left_count": 3973,
+          "kept_defense_tile": 3487,
+          "kept_left_sum": 50185,
+          "kept_left_count": 3487,
+          "kept_genbutsu": 3181,
+          "kept_against_live_threat": 2644,
+          "kept_multi_opponent": 1839,
+          "kept_suji": 1480
         }
       },
       "score_band": {
         "above_start": {
-          "splits": 22086,
-          "left_sum": 1067000,
-          "left_count": 22086,
-          "kept_defense_tile": 11480,
-          "kept_left_sum": 468205,
-          "kept_left_count": 11480,
-          "kept_genbutsu": 10616,
-          "kept_multi_opponent": 3738,
-          "kept_suji": 2384,
-          "kept_against_live_threat": 4894
+          "splits": 15758,
+          "left_sum": 760921,
+          "left_count": 15758,
+          "kept_defense_tile": 8145,
+          "kept_left_sum": 332439,
+          "kept_left_count": 8145,
+          "kept_genbutsu": 7474,
+          "kept_multi_opponent": 2578,
+          "kept_suji": 1728,
+          "kept_against_live_threat": 3402
         },
         "behind": {
-          "splits": 17248,
-          "left_sum": 832518,
-          "left_count": 17248,
-          "kept_defense_tile": 8952,
-          "kept_left_sum": 367565,
-          "kept_left_count": 8952,
-          "kept_genbutsu": 8300,
-          "kept_against_live_threat": 3780,
-          "kept_multi_opponent": 2914,
-          "kept_suji": 1832
+          "splits": 12430,
+          "left_sum": 600862,
+          "left_count": 12430,
+          "kept_defense_tile": 6445,
+          "kept_left_sum": 266268,
+          "kept_left_count": 6445,
+          "kept_genbutsu": 5922,
+          "kept_against_live_threat": 2595,
+          "kept_multi_opponent": 2033,
+          "kept_suji": 1332
         },
         "lead": {
-          "splits": 10838,
-          "left_sum": 523022,
-          "left_count": 10838,
-          "kept_defense_tile": 5620,
-          "kept_left_sum": 228087,
-          "kept_left_count": 5620,
-          "kept_genbutsu": 5232,
-          "kept_against_live_threat": 2336,
-          "kept_suji": 1167,
-          "kept_multi_opponent": 1875
+          "splits": 7712,
+          "left_sum": 369932,
+          "left_count": 7712,
+          "kept_defense_tile": 3982,
+          "kept_left_sum": 160344,
+          "kept_left_count": 3982,
+          "kept_genbutsu": 3680,
+          "kept_against_live_threat": 1669,
+          "kept_suji": 874,
+          "kept_multi_opponent": 1300
         },
         "danger": {
-          "splits": 4187,
-          "left_sum": 204927,
-          "left_count": 4187,
-          "kept_defense_tile": 2038,
-          "kept_left_sum": 85670,
-          "kept_left_count": 2038,
-          "kept_genbutsu": 1872,
-          "kept_suji": 432,
-          "kept_multi_opponent": 609,
-          "kept_against_live_threat": 814
+          "splits": 3120,
+          "left_sum": 154084,
+          "left_count": 3120,
+          "kept_defense_tile": 1495,
+          "kept_left_sum": 64164,
+          "kept_left_count": 1495,
+          "kept_genbutsu": 1366,
+          "kept_suji": 298,
+          "kept_multi_opponent": 421,
+          "kept_against_live_threat": 561
+        }
+      },
+      "self_open": {
+        "overall": {
+          "splits": 6021,
+          "left_sum": 237797,
+          "left_count": 6021,
+          "kept_defense_tile": 3536,
+          "kept_left_sum": 119597,
+          "kept_left_count": 3536,
+          "kept_genbutsu": 3147,
+          "kept_against_live_threat": 1723,
+          "kept_suji": 955,
+          "kept_multi_opponent": 1301
+        },
+        "stage": {
+          "middle": {
+            "splits": 2729,
+            "left_sum": 104253,
+            "left_count": 2729,
+            "kept_defense_tile": 1819,
+            "kept_left_sum": 68310,
+            "kept_left_count": 1819,
+            "kept_genbutsu": 1618,
+            "kept_against_live_threat": 830,
+            "kept_multi_opponent": 659,
+            "kept_suji": 391
+          },
+          "early": {
+            "splits": 2005,
+            "left_sum": 116018,
+            "left_count": 2005,
+            "kept_defense_tile": 676,
+            "kept_left_sum": 37553,
+            "kept_left_count": 676,
+            "kept_genbutsu": 625,
+            "kept_suji": 74,
+            "kept_multi_opponent": 132,
+            "kept_against_live_threat": 145
+          },
+          "late": {
+            "splits": 1287,
+            "left_sum": 17526,
+            "left_count": 1287,
+            "kept_defense_tile": 1041,
+            "kept_left_sum": 13734,
+            "kept_left_count": 1041,
+            "kept_genbutsu": 904,
+            "kept_against_live_threat": 748,
+            "kept_suji": 490,
+            "kept_multi_opponent": 510
+          }
         }
       }
     },
@@ -3242,15 +3332,15 @@
     "yakuhai_pressure": {
       "self_yakuhai": {
         "no_open_hand": {
-          "opportunities": 53615,
-          "cuts": 17617,
-          "cut_rate": 0.32858341881936026,
-          "first_row_opportunities": 41139,
-          "first_row_opportunity_rate": 0.7673039261400727,
-          "first_row_cuts": 12400,
-          "first_row_cut_rate": 0.703865584378725,
-          "avg_cut_turn": 4.370834988931146,
-          "median_cut_turn": 3
+          "opportunities": 53606,
+          "cuts": 17610,
+          "cut_rate": 0.32850800283550347,
+          "first_row_opportunities": 41130,
+          "first_row_opportunity_rate": 0.7672648584113718,
+          "first_row_cuts": 12393,
+          "first_row_cut_rate": 0.703747870528109,
+          "avg_cut_turn": 5.371947756956275,
+          "median_cut_turn": 4.0
         },
         "tanyao_shaped_open": {
           "opportunities": 5855,
@@ -3260,19 +3350,19 @@
           "first_row_opportunity_rate": 0.23040136635354397,
           "first_row_cuts": 543,
           "first_row_cut_rate": 0.2115309700038956,
-          "avg_cut_turn": 8.950915465523957,
-          "median_cut_turn": 9
+          "avg_cut_turn": 9.950915465523957,
+          "median_cut_turn": 10
         },
         "shown_yaku_open": {
-          "opportunities": 14044,
-          "cuts": 5917,
-          "cut_rate": 0.4213187126174879,
-          "first_row_opportunities": 6497,
-          "first_row_opportunity_rate": 0.46261748789518653,
-          "first_row_cuts": 2661,
-          "first_row_cut_rate": 0.4497211424708467,
-          "avg_cut_turn": 6.607402399864796,
-          "median_cut_turn": 6
+          "opportunities": 14035,
+          "cuts": 5911,
+          "cut_rate": 0.42116138225863914,
+          "first_row_opportunities": 6490,
+          "first_row_opportunity_rate": 0.4624153900961881,
+          "first_row_cuts": 2656,
+          "first_row_cut_rate": 0.4493317543562849,
+          "avg_cut_turn": 7.6107257655219085,
+          "median_cut_turn": 7
         },
         "unknown_open_yaku": {
           "opportunities": 4758,
@@ -3282,8 +3372,8 @@
           "first_row_opportunity_rate": 0.3879781420765027,
           "first_row_cuts": 846,
           "first_row_cut_rate": 0.4149092692496322,
-          "avg_cut_turn": 7.196174595389897,
-          "median_cut_turn": 7
+          "avg_cut_turn": 8.196174595389897,
+          "median_cut_turn": 8
         }
       },
       "yaku_condition_yakuhai": {
@@ -3295,19 +3385,19 @@
           "first_row_opportunity_rate": 0.20304146370440776,
           "first_row_cuts": 706,
           "first_row_cut_rate": 0.18973394248857833,
-          "avg_cut_turn": 9.179790378930395,
-          "median_cut_turn": 9
+          "avg_cut_turn": 10.179790378930395,
+          "median_cut_turn": 10
         },
         "shown_yaku_open": {
-          "opportunities": 14201,
-          "cuts": 6016,
-          "cut_rate": 0.42363213858179,
-          "first_row_opportunities": 6259,
-          "first_row_opportunity_rate": 0.4407436096049574,
-          "first_row_cuts": 2624,
-          "first_row_cut_rate": 0.43617021276595747,
-          "avg_cut_turn": 6.726728723404255,
-          "median_cut_turn": 6.0
+          "opportunities": 14193,
+          "cuts": 6011,
+          "cut_rate": 0.42351863594729794,
+          "first_row_opportunities": 6253,
+          "first_row_opportunity_rate": 0.44056929472275064,
+          "first_row_cuts": 2620,
+          "first_row_cut_rate": 0.43586757611046417,
+          "avg_cut_turn": 7.729163200798536,
+          "median_cut_turn": 7
         },
         "unknown_open_yaku": {
           "opportunities": 4551,
@@ -3317,42 +3407,42 @@
           "first_row_opportunity_rate": 0.3770599868160844,
           "first_row_cuts": 804,
           "first_row_cut_rate": 0.40812182741116754,
-          "avg_cut_turn": 7.251269035532995,
-          "median_cut_turn": 7.0
+          "avg_cut_turn": 8.251269035532994,
+          "median_cut_turn": 8.0
         }
       }
     },
     "defense_targets": {
       "overall": {
         "dealer_closed": {
-          "kept_instances": 5152,
-          "spent_instances": 3773,
-          "total_instances": 8925,
-          "kept_share": 0.5772549019607843,
-          "spent_share": 0.42274509803921567,
-          "kept_genbutsu": 3947,
+          "kept_instances": 5150,
+          "spent_instances": 3770,
+          "total_instances": 8920,
+          "kept_share": 0.577354260089686,
+          "spent_share": 0.4226457399103139,
+          "kept_genbutsu": 3945,
           "kept_suji": 525,
-          "kept_genbutsu_rate": 0.766110248447205,
-          "kept_avg_left": 45.46292701863354,
-          "spent_genbutsu": 2858,
-          "spent_suji": 518,
-          "spent_genbutsu_rate": 0.757487410548635,
-          "spent_avg_left": 42.98515769944341
+          "kept_genbutsu_rate": 0.7660194174757281,
+          "kept_avg_left": 45.46038834951457,
+          "spent_genbutsu": 2857,
+          "spent_suji": 516,
+          "spent_genbutsu_rate": 0.7578249336870027,
+          "spent_avg_left": 42.97851458885942
         },
         "nondealer_closed": {
-          "kept_instances": 14850,
-          "spent_instances": 10469,
-          "total_instances": 25319,
-          "kept_share": 0.5865160551364588,
-          "spent_share": 0.41348394486354123,
+          "kept_instances": 14849,
+          "spent_instances": 10468,
+          "total_instances": 25317,
+          "kept_share": 0.5865228897578703,
+          "spent_share": 0.4134771102421298,
           "kept_genbutsu": 11249,
           "kept_suji": 1620,
-          "kept_genbutsu_rate": 0.7575084175084175,
-          "kept_avg_left": 43.224444444444444,
-          "spent_genbutsu": 7340,
+          "kept_genbutsu_rate": 0.7575594316115564,
+          "kept_avg_left": 43.22351673513368,
+          "spent_genbutsu": 7339,
           "spent_suji": 1776,
-          "spent_genbutsu_rate": 0.7011175852516954,
-          "spent_avg_left": 38.93151208329353
+          "spent_genbutsu_rate": 0.7010890332441727,
+          "spent_avg_left": 38.929786014520445
         },
         "dealer_open": {
           "kept_instances": 2317,
@@ -3370,19 +3460,19 @@
           "spent_avg_left": 32.51096593560429
         },
         "nondealer_open": {
-          "kept_instances": 5186,
-          "spent_instances": 4585,
-          "total_instances": 9771,
-          "kept_share": 0.5307542728482243,
-          "spent_share": 0.46924572715177565,
-          "kept_genbutsu": 3308,
-          "kept_suji": 1196,
-          "kept_genbutsu_rate": 0.6378711916698805,
-          "kept_avg_left": 35.158696490551485,
-          "spent_genbutsu": 3048,
+          "kept_instances": 5184,
+          "spent_instances": 4582,
+          "total_instances": 9766,
+          "kept_share": 0.5308212164652877,
+          "spent_share": 0.46917878353471226,
+          "kept_genbutsu": 3307,
+          "kept_suji": 1195,
+          "kept_genbutsu_rate": 0.6379243827160493,
+          "kept_avg_left": 35.1508487654321,
+          "spent_genbutsu": 3047,
           "spent_suji": 1103,
-          "spent_genbutsu_rate": 0.6647764449291167,
-          "spent_avg_left": 32.2495092693566
+          "spent_genbutsu_rate": 0.6649934526407683,
+          "spent_avg_left": 32.23985159319075
         },
         "closed_riichi": {
           "kept_instances": 2484,
@@ -3418,49 +3508,49 @@
       "stage": {
         "early": {
           "dealer_closed": {
-            "kept_instances": 2426,
-            "spent_instances": 1415,
-            "total_instances": 3841,
-            "kept_share": 0.6316063525123665,
-            "spent_share": 0.3683936474876334,
-            "kept_genbutsu": 1875,
+            "kept_instances": 2425,
+            "spent_instances": 1413,
+            "total_instances": 3838,
+            "kept_share": 0.6318394997394476,
+            "spent_share": 0.36816050026055236,
+            "kept_genbutsu": 1874,
             "kept_suji": 130,
-            "kept_genbutsu_rate": 0.7728771640560593,
-            "kept_avg_left": 57.20816158285243,
-            "spent_genbutsu": 1196,
-            "spent_suji": 63,
-            "spent_genbutsu_rate": 0.8452296819787986,
-            "spent_avg_left": 59.69187279151944
+            "kept_genbutsu_rate": 0.7727835051546392,
+            "kept_avg_left": 57.20742268041237,
+            "spent_genbutsu": 1195,
+            "spent_suji": 62,
+            "spent_genbutsu_rate": 0.8457183297947629,
+            "spent_avg_left": 59.69072894550602
           },
           "nondealer_closed": {
-            "kept_instances": 6060,
-            "spent_instances": 2876,
-            "total_instances": 8936,
-            "kept_share": 0.6781557743957027,
-            "spent_share": 0.3218442256042972,
+            "kept_instances": 6059,
+            "spent_instances": 2875,
+            "total_instances": 8934,
+            "kept_share": 0.6781956570405193,
+            "spent_share": 0.3218043429594806,
             "kept_genbutsu": 4882,
             "kept_suji": 249,
-            "kept_genbutsu_rate": 0.8056105610561056,
-            "kept_avg_left": 56.866831683168314,
-            "spent_genbutsu": 2215,
+            "kept_genbutsu_rate": 0.8057435220333389,
+            "kept_avg_left": 56.866809704571715,
+            "spent_genbutsu": 2214,
             "spent_suji": 185,
-            "spent_genbutsu_rate": 0.7701668984700973,
-            "spent_avg_left": 57.36161335187761
+            "spent_genbutsu_rate": 0.7700869565217391,
+            "spent_avg_left": 57.361739130434785
           },
           "nondealer_open": {
-            "kept_instances": 1085,
-            "spent_instances": 510,
-            "total_instances": 1595,
-            "kept_share": 0.6802507836990596,
-            "spent_share": 0.31974921630094044,
-            "kept_genbutsu": 648,
+            "kept_instances": 1084,
+            "spent_instances": 509,
+            "total_instances": 1593,
+            "kept_share": 0.6804770872567483,
+            "spent_share": 0.31952291274325173,
+            "kept_genbutsu": 647,
             "kept_suji": 148,
-            "kept_genbutsu_rate": 0.5972350230414747,
-            "kept_avg_left": 55.52165898617511,
+            "kept_genbutsu_rate": 0.5968634686346863,
+            "kept_avg_left": 55.5119926199262,
             "spent_genbutsu": 262,
             "spent_suji": 78,
-            "spent_genbutsu_rate": 0.5137254901960784,
-            "spent_avg_left": 54.001960784313724
+            "spent_genbutsu_rate": 0.5147347740667977,
+            "spent_avg_left": 53.99803536345776
           },
           "dealer_open": {
             "kept_instances": 478,
@@ -3510,19 +3600,19 @@
         },
         "middle": {
           "dealer_closed": {
-            "kept_instances": 2224,
-            "spent_instances": 1825,
-            "total_instances": 4049,
-            "kept_share": 0.5492714250432206,
-            "spent_share": 0.4507285749567794,
-            "kept_genbutsu": 1695,
+            "kept_instances": 2223,
+            "spent_instances": 1824,
+            "total_instances": 4047,
+            "kept_share": 0.5492957746478874,
+            "spent_share": 0.4507042253521127,
+            "kept_genbutsu": 1694,
             "kept_suji": 256,
-            "kept_genbutsu_rate": 0.7621402877697842,
-            "kept_avg_left": 39.55980215827338,
+            "kept_genbutsu_rate": 0.7620332883490778,
+            "kept_avg_left": 39.557354925775975,
             "spent_genbutsu": 1260,
-            "spent_suji": 295,
-            "spent_genbutsu_rate": 0.6904109589041096,
-            "spent_avg_left": 38.12328767123287
+            "spent_suji": 294,
+            "spent_genbutsu_rate": 0.6907894736842105,
+            "spent_avg_left": 38.12609649122807
           },
           "nondealer_closed": {
             "kept_instances": 6846,
@@ -3555,19 +3645,19 @@
             "spent_avg_left": 37.466409266409265
           },
           "nondealer_open": {
-            "kept_instances": 2742,
-            "spent_instances": 2733,
-            "total_instances": 5475,
-            "kept_share": 0.5008219178082192,
-            "spent_share": 0.49917808219178084,
+            "kept_instances": 2741,
+            "spent_instances": 2731,
+            "total_instances": 5472,
+            "kept_share": 0.5009137426900585,
+            "spent_share": 0.4990862573099415,
             "kept_genbutsu": 1751,
-            "kept_suji": 601,
-            "kept_genbutsu_rate": 0.6385849744711889,
-            "kept_avg_left": 37.527716994894234,
-            "spent_genbutsu": 1822,
+            "kept_suji": 600,
+            "kept_genbutsu_rate": 0.6388179496534112,
+            "kept_avg_left": 37.52499087924115,
+            "spent_genbutsu": 1821,
             "spent_suji": 604,
-            "spent_genbutsu_rate": 0.6666666666666666,
-            "spent_avg_left": 37.055250640321994
+            "spent_genbutsu_rate": 0.6667887220798242,
+            "spent_avg_left": 37.05126327352618
           },
           "closed_riichi": {
             "kept_instances": 1239,

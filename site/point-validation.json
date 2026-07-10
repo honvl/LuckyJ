@@ -1,24 +1,25 @@
 {
-  "generated_at": "2026-07-02",
+  "generated_at": "2026-07-09",
   "method": {
     "source_files": [
       "site/model-patterns.json",
       "site/book-data.json"
     ],
     "qualitative_review_files": 34,
-    "eligible_decisions": 134988,
-    "mismatches": 36193,
-    "book_decisions": 147378,
-    "hands": 13059,
-    "games": 1256,
-    "baseline_mismatch_bad_rate": 0.31014284530157765,
-    "note": "Qualitative review examples were kept as generalized prompts only; statistical validity comes from the model and book artifacts.",
-    "note_ja": "定性的な検討例は一般化した問いとしてだけ使い、統計的な妥当性はモデルと書籍由来のデータで確認した。"
+    "eligible_decisions": 134951,
+    "mismatches": 36184,
+    "book_decisions": 147337,
+    "hands": 13054,
+    "games": 1255,
+    "baseline_mismatch_bad_rate": 0.3101647136856069,
+    "note": "These cards measure Nishiki acceptance patterns, not winning EV or causal performance. Decisions within a hanchan are clustered, patterns overlap, and displayed p-values are unadjusted.",
+    "note_ja": "ここで測っているのはニシキの受容パターンであり、期待値や因果効果ではない。同一半荘内の判断は独立ではなく、パターンは重複し、p値も多重比較・クラスタ補正前である。"
   },
   "summary": {
-    "strong": 10,
-    "qualified": 6,
-    "review": 0,
+    "proxy_supported": 9,
+    "context_qualified": 6,
+    "contested": 0,
+    "review_only": 1,
     "total": 16
   },
   "points": [
@@ -28,9 +29,9 @@
       "category_ja": "打点と着順",
       "title": "Start with placement before hand shape.",
       "title_ja": "着順から手牌問題を見る。",
-      "strength": "qualified",
-      "verdict": "Qualified",
-      "verdict_ja": "条件付き",
+      "strength": "context_qualified",
+      "verdict": "Context-qualified",
+      "verdict_ja": "文脈条件付き",
       "read": "Placement framing is valid, but it is only useful when it changes concrete danger, value, or next-turn safety.",
       "read_ja": "着順から読む方針は妥当。ただし具体的な危険度、打点、次巡安全が変わる時だけ有効。",
       "caveat": "Leader safety is a qualifier, not a standalone excuse to kill shape.",
@@ -41,25 +42,30 @@
         {
           "kind": "pattern",
           "key": "leader_low_risk",
-          "text": "Leader low-risk choices: n=5,153, bad 29.6%, lift -1.7 pp, p=0.0157, danger delta -0.025.",
-          "text_ja": "トップ目の低危険選択: n=5,153, 悪手率 29.6%, 平均との差 -1.7 pp, p=0.0157, 危険度差 -0.025。"
+          "text": "Leader low-risk choices: n=5,153, Nishiki severe-disagreement rate 29.6%, difference vs other mismatches -1.7 pp, unadjusted p=0.0155, danger delta -0.025.",
+          "text_ja": "トップ目の低危険選択: n=5,153, ニシキ重度不一致率 29.6%, 他の不一致との差 -1.7 pp, 未補正p=0.0155, 危険度差 -0.025。"
         },
         {
           "kind": "pattern",
           "key": "riskier_than_naga",
-          "text": "Riskier-than-Nishiki caution: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.",
-          "text_ja": "高危険選択の警告: n=5,033, 悪手率 33.4%, 平均との差 +2.8 pp, p=6.23e-05, 危険度差 0.134。"
+          "text": "Riskier-than-Nishiki caution: n=5,032, Nishiki severe-disagreement rate 33.4%, difference vs other mismatches +2.8 pp, unadjusted p=6.95e-05, danger delta 0.134.",
+          "text_ja": "高危険選択の警告: n=5,032, ニシキ重度不一致率 33.4%, 他の不一致との差 +2.8 pp, 未補正p=6.95e-05, 危険度差 0.134。"
         },
         {
           "kind": "pattern",
           "key": "behind_risk_buy",
-          "text": "Behind-score risk buys: n=2,364, bad 34.5%, lift +3.7 pp, p=0.0001, danger delta 0.120.",
-          "text_ja": "ビハインド時のリスク購入: n=2,364, 悪手率 34.5%, 平均との差 +3.7 pp, p=0.0001, 危険度差 0.120。"
+          "text": "Behind-score risk buys: n=2,363, Nishiki severe-disagreement rate 34.5%, difference vs other mismatches +3.7 pp, unadjusted p=0.0002, danger delta 0.120.",
+          "text_ja": "ビハインド時のリスク購入: n=2,363, ニシキ重度不一致率 34.5%, 他の不一致との差 +3.7 pp, 未補正p=0.0002, 危険度差 0.120。"
         },
         {
           "kind": "aggregate",
           "text": "Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.",
           "text_ja": "成績差: 上位半分は半荘あたり和了3.09回、放銃0.75回。下位半分は和了1.39回、放銃1.48回。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 6/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 6/10。"
         }
       ],
       "review_example": "Review example: in a South-round placement hand, a low-risk tile that keeps a clean fold or cheap win can beat a thin value upgrade, but only when it still answers real danger.",
@@ -71,11 +77,11 @@
       "category_ja": "形とルート",
       "title": "Keep more than one route alive.",
       "title_ja": "複数ルートを残す。",
-      "strength": "strong",
-      "verdict": "Strong",
-      "verdict_ja": "強い",
-      "read": "Pair/triplet anchors and dora/red material had materially lower bad rates than other mismatches.",
-      "read_ja": "対子/刻子の支点とドラ/赤の保持は、他の不一致より悪手率が明確に低い。",
+      "strength": "proxy_supported",
+      "verdict": "Proxy-supported",
+      "verdict_ja": "proxy支持",
+      "read": "Pair/triplet anchors and dora/red material had materially lower Nishiki severe-disagreement rates than other mismatches.",
+      "read_ja": "対子/刻子の支点とドラ/赤の保持は、他の不一致よりニシキ重度不一致率が明確に低い。",
       "caveat": "The support is strongest for anchors with a job.",
       "caveat_ja": "仕事のある支点への支持が強い。",
       "example": "Example: keep a yakuhai pair or red-five branch when it creates value plus an open fallback.",
@@ -84,20 +90,25 @@
         {
           "kind": "pattern",
           "key": "keep_pair_anchor",
-          "text": "Kept pair/triplet anchors: n=2,338, bad 21.9%, lift -9.8 pp, p=<0.0001, danger delta -0.019.",
-          "text_ja": "対子/刻子支点の保持: n=2,338, 悪手率 21.9%, 平均との差 -9.8 pp, p=<0.0001, 危険度差 -0.019。"
+          "text": "Kept pair/triplet anchors: n=2,338, Nishiki severe-disagreement rate 21.9%, difference vs other mismatches -9.8 pp, unadjusted p=<0.0001, danger delta -0.019.",
+          "text_ja": "対子/刻子支点の保持: n=2,338, ニシキ重度不一致率 21.9%, 他の不一致との差 -9.8 pp, 未補正p=<0.0001, 危険度差 -0.019。"
         },
         {
           "kind": "pattern",
           "key": "keep_dora_or_red",
-          "text": "Kept dora/red-five material: n=617, bad 24.6%, lift -6.5 pp, p=0.0005, danger delta -0.011.",
-          "text_ja": "ドラ/赤の保持: n=617, 悪手率 24.6%, 平均との差 -6.5 pp, p=0.0005, 危険度差 -0.011。"
+          "text": "Kept dora/red-five material: n=617, Nishiki severe-disagreement rate 24.6%, difference vs other mismatches -6.5 pp, unadjusted p=0.0005, danger delta -0.011.",
+          "text_ja": "ドラ/赤の保持: n=617, ニシキ重度不一致率 24.6%, 他の不一致との差 -6.5 pp, 未補正p=0.0005, 危険度差 -0.011。"
         },
         {
           "kind": "pattern",
           "key": "break_pair_anchor",
-          "text": "Breaking pairs early: n=4,318, bad 35.9%, lift +5.6 pp, p=8.93e-14, danger delta 0.021.",
-          "text_ja": "対子早割り: n=4,318, 悪手率 35.9%, 平均との差 +5.6 pp, p=8.93e-14, 危険度差 0.021。"
+          "text": "Breaking pairs early: n=4,315, Nishiki severe-disagreement rate 35.9%, difference vs other mismatches +5.6 pp, unadjusted p=9.15e-14, danger delta 0.021.",
+          "text_ja": "対子早割り: n=4,315, ニシキ重度不一致率 35.9%, 他の不一致との差 +5.6 pp, 未補正p=9.15e-14, 危険度差 0.021。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 4/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 4/10。"
         }
       ],
       "review_example": "Review example: when one hand can become yakuhai, honitsu/chanta, or riichi, keep the anchor that preserves those futures over the prettiest one-route shape.",
@@ -109,9 +120,9 @@
       "category_ja": "鳴きと役条件",
       "title": "Call bad shapes when the call changes the hand's job.",
       "title_ja": "悪形は、手の仕事が変わる時だけ鳴く。",
-      "strength": "qualified",
-      "verdict": "Qualified",
-      "verdict_ja": "条件付き",
+      "strength": "context_qualified",
+      "verdict": "Context-qualified",
+      "verdict_ja": "文脈条件付き",
       "read": "Aggregate results support purposeful calling; bad-shape repair and tempo belong under the same named-purpose rule.",
       "read_ja": "目的のある鳴きは成績面で支持される。悪形修復とテンポ鳴きは同じ目的付きルールで扱う。",
       "caveat": "Demand a named purpose: tenpai, yaku creation, value, denial, or safe-tenpai equity.",
@@ -126,13 +137,18 @@
         },
         {
           "kind": "aggregate",
-          "text": "Winning-half volume was active: calls/game 5.79 compared with 5.44, riichi/game 2.11 compared with 1.67.",
-          "text_ja": "上位半分は能動的: 鳴きは半荘あたり 5.79 対 5.44、リーチは 2.11 対 1.67。"
+          "text": "Winning-half volume was active: calls/game 5.80 compared with 5.44, riichi/game 2.11 compared with 1.67.",
+          "text_ja": "上位半分は能動的: 鳴きは半荘あたり 5.80 対 5.44、リーチは 2.11 対 1.67。"
         },
         {
           "kind": "aggregate",
-          "text": "Middle plus late decisions total 80,537; the defense points have evidence beyond opening-row cleanup.",
-          "text_ja": "中盤と終盤の判断は合計 80,537 件。守備点は序盤整理に加えて中終盤にも根拠がある。"
+          "text": "Middle plus late decisions total 80,521; the defense points have evidence beyond opening-row cleanup.",
+          "text_ja": "中盤と終盤の判断は合計 80,521 件。守備点は序盤整理に加えて中終盤にも根拠がある。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 10/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 10/10。"
         }
       ],
       "review_example": "Review example: call a bad block only when it creates yaku, tenpai, denial, tempo pressure, or safe draw equity; skip the call that merely exposes a fragile one-away hand.",
@@ -144,9 +160,9 @@
       "category_ja": "鳴きと守備",
       "title": "Open hands still need safe tiles.",
       "title_ja": "副露手にも安全牌を残す。",
-      "strength": "strong",
-      "verdict": "Strong",
-      "verdict_ja": "強い",
+      "strength": "proxy_supported",
+      "verdict": "Proxy-supported",
+      "verdict_ja": "proxy支持",
       "read": "Threat-specific safe-tile retention was strong, while generic safe-tile hoarding was worse than baseline.",
       "read_ja": "脅威に対応する安全牌保持は強い一方、一般的な安全牌抱えは基準より悪い。",
       "caveat": "This point is target-specific: name the threat before keeping the tile.",
@@ -155,22 +171,32 @@
       "example_ja": "例: 鳴いた後でも本物のテンパイルートがあるなら、現物を一枚だけリーチ者への安全牌として残す。",
       "stats": [
         {
+          "kind": "aggregate",
+          "text": "Actual open-hand scope: 6,021 LuckyJ/Nishiki discard splits; LuckyJ retained a classified defensive tile in 3,536, including 1,723 tied to a live threat.",
+          "text_ja": "実際の副露手: LuckyJ/ニシキ打牌分岐 6,021 件。守備牌保持 3,536 件、そのうち実脅威対象 1,723 件。"
+        },
+        {
           "kind": "pattern",
           "key": "threat_keep_exit",
-          "text": "Threat-specific safe tiles: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
-          "text_ja": "脅威対象の安全牌保持: n=8,406, 悪手率 24.4%, 平均との差 -8.7 pp, p=<0.0001, 危険度差 0.012。"
+          "text": "Threat-specific safe tiles: n=7,618, Nishiki severe-disagreement rate 24.3%, difference vs other mismatches -8.6 pp, unadjusted p=<0.0001, danger delta 0.018.",
+          "text_ja": "脅威対象の安全牌保持: n=7,618, ニシキ重度不一致率 24.3%, 他の不一致との差 -8.6 pp, 未補正p=<0.0001, 危険度差 0.018。"
         },
         {
           "kind": "pattern",
           "key": "multi_threat_safe_tenpai",
-          "text": "Middle/late multi-threat tiles: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "中終盤の多件脅威安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
+          "text": "Middle/late multi-threat tiles: n=4,185, Nishiki severe-disagreement rate 23.6%, difference vs other mismatches -8.4 pp, unadjusted p=<0.0001, danger delta 0.003.",
+          "text_ja": "中終盤の多件脅威安全牌: n=4,185, ニシキ重度不一致率 23.6%, 他の不一致との差 -8.4 pp, 未補正p=<0.0001, 危険度差 0.003。"
         },
         {
           "kind": "pattern",
           "key": "keep_defensive_exit",
-          "text": "Generic safe-tile retention: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.",
-          "text_ja": "一般的な安全牌保持: n=8,590, 悪手率 35.1%, 平均との差 +5.4 pp, p=<0.0001, 危険度差 0.036。"
+          "text": "Generic safe-tile retention: n=8,547, Nishiki severe-disagreement rate 35.4%, difference vs other mismatches +5.7 pp, unadjusted p=<0.0001, danger delta 0.045.",
+          "text_ja": "一般的な安全牌保持: n=8,547, ニシキ重度不一致率 35.4%, 他の不一致との差 +5.7 pp, 未補正p=<0.0001, 危険度差 0.045。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 2/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 2/10。"
         }
       ],
       "review_example": "Review example: after opening, keep a safe tile for the live threat if the hand can still reach tenpai; commitment still needs one clean brake.",
@@ -182,9 +208,9 @@
       "category_ja": "形と守備",
       "title": "Price the future danger of floaters.",
       "title_ja": "浮き牌の未来危険を値付けする。",
-      "strength": "strong",
-      "verdict": "Strong",
-      "verdict_ja": "強い",
+      "strength": "proxy_supported",
+      "verdict": "Proxy-supported",
+      "verdict_ja": "proxy支持",
       "read": "Safer-than-Nishiki choices were one of the clearest support signals; danger pricing should be explicit.",
       "read_ja": "ニシキより安全な選択は最もきれいな信号の一つで、危険度の値付けを明示すべき。",
       "caveat": "Keep this targeted: early slimming works when the tile has little value or yaku route left.",
@@ -195,20 +221,25 @@
         {
           "kind": "pattern",
           "key": "safer_than_naga",
-          "text": "Lower-danger discards: n=3,741, bad 21.8%, lift -10.2 pp, p=<0.0001, danger delta -0.149.",
-          "text_ja": "低危険打牌: n=3,741, 悪手率 21.8%, 平均との差 -10.2 pp, p=<0.0001, 危険度差 -0.149。"
+          "text": "Lower-danger discards: n=3,740, Nishiki severe-disagreement rate 21.8%, difference vs other mismatches -10.2 pp, unadjusted p=<0.0001, danger delta -0.149.",
+          "text_ja": "低危険打牌: n=3,740, ニシキ重度不一致率 21.8%, 他の不一致との差 -10.2 pp, 未補正p=<0.0001, 危険度差 -0.149。"
         },
         {
           "kind": "pattern",
           "key": "riskier_than_naga",
-          "text": "Higher-danger discards: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.",
-          "text_ja": "高危険打牌: n=5,033, 悪手率 33.4%, 平均との差 +2.8 pp, p=6.23e-05, 危険度差 0.134。"
+          "text": "Higher-danger discards: n=5,032, Nishiki severe-disagreement rate 33.4%, difference vs other mismatches +2.8 pp, unadjusted p=6.95e-05, danger delta 0.134.",
+          "text_ja": "高危険打牌: n=5,032, ニシキ重度不一致率 33.4%, 他の不一致との差 +2.8 pp, 未補正p=6.95e-05, 危険度差 0.134。"
         },
         {
           "kind": "pattern",
           "key": "cut_outside_keep_inside",
-          "text": "Outside cuts preserving inner route: n=5,281, bad 23.1%, lift -9.2 pp, p=<0.0001, danger delta -0.030.",
-          "text_ja": "本線を残す外側切り: n=5,281, 悪手率 23.1%, 平均との差 -9.2 pp, p=<0.0001, 危険度差 -0.030。"
+          "text": "Outside cuts preserving inner route: n=5,276, Nishiki severe-disagreement rate 23.1%, difference vs other mismatches -9.2 pp, unadjusted p=<0.0001, danger delta -0.030.",
+          "text_ja": "本線を残す外側切り: n=5,276, ニシキ重度不一致率 23.1%, 他の不一致との差 -9.2 pp, 未補正p=<0.0001, 危険度差 -0.030。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 8/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 8/10。"
         }
       ],
       "review_example": "Review example: if a loose middle tile will become the only discard after riichi, cut it while the hand still has blocks and replacement routes.",
@@ -220,9 +251,9 @@
       "category_ja": "打点とルート",
       "title": "Build value from the first discard.",
       "title_ja": "第一打から打点を作る。",
-      "strength": "qualified",
-      "verdict": "Qualified",
-      "verdict_ja": "条件付き",
+      "strength": "context_qualified",
+      "verdict": "Context-qualified",
+      "verdict_ja": "文脈条件付き",
       "read": "Dora/red retention is supported; broad risk-buying for value needs tighter proof.",
       "read_ja": "ドラ/赤の保持は支持される。打点のための広いリスク購入は追加確認が必要。",
       "caveat": "The value seed should improve a real winning route.",
@@ -233,19 +264,24 @@
         {
           "kind": "pattern",
           "key": "keep_dora_or_red",
-          "text": "Dora/red material kept: n=617, bad 24.6%, lift -6.5 pp, p=0.0005, danger delta -0.011.",
-          "text_ja": "ドラ/赤保持: n=617, 悪手率 24.6%, 平均との差 -6.5 pp, p=0.0005, 危険度差 -0.011。"
+          "text": "Dora/red material kept: n=617, Nishiki severe-disagreement rate 24.6%, difference vs other mismatches -6.5 pp, unadjusted p=0.0005, danger delta -0.011.",
+          "text_ja": "ドラ/赤保持: n=617, ニシキ重度不一致率 24.6%, 他の不一致との差 -6.5 pp, 未補正p=0.0005, 危険度差 -0.011。"
         },
         {
           "kind": "pattern",
           "key": "behind_risk_buy",
-          "text": "Behind-score risk buys: n=2,364, bad 34.5%, lift +3.7 pp, p=0.0001, danger delta 0.120.",
-          "text_ja": "ビハインド時のリスク購入: n=2,364, 悪手率 34.5%, 平均との差 +3.7 pp, p=0.0001, 危険度差 0.120。"
+          "text": "Behind-score risk buys: n=2,363, Nishiki severe-disagreement rate 34.5%, difference vs other mismatches +3.7 pp, unadjusted p=0.0002, danger delta 0.120.",
+          "text_ja": "ビハインド時のリスク購入: n=2,363, ニシキ重度不一致率 34.5%, 他の不一致との差 +3.7 pp, 未補正p=0.0002, 危険度差 0.120。"
         },
         {
           "kind": "aggregate",
           "text": "Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.",
           "text_ja": "成績差: 上位半分は半荘あたり和了3.09回、放銃0.75回。下位半分は和了1.39回、放銃1.48回。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 6/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 6/10。"
         }
       ],
       "review_example": "Review example: keep red or dora access when it improves a real winning route; release it when the extra value is decorative and the next danger is concrete.",
@@ -257,9 +293,9 @@
       "category_ja": "打点と圧力",
       "title": "Riichi converts value into pressure.",
       "title_ja": "リーチは打点を圧力に変える。",
-      "strength": "qualified",
-      "verdict": "Qualified",
-      "verdict_ja": "条件付き",
+      "strength": "context_qualified",
+      "verdict": "Context-qualified",
+      "verdict_ja": "文脈条件付き",
       "read": "Top-half games used more riichi; the point is conversion quality over raw reach volume.",
       "read_ja": "上位半分はリーチ回数も多い。要点は回数より変換品質。",
       "caveat": "Require value, pressure, or placement gain before turning the hand face-up.",
@@ -269,8 +305,8 @@
       "stats": [
         {
           "kind": "aggregate",
-          "text": "Winning-half volume was active: calls/game 5.79 compared with 5.44, riichi/game 2.11 compared with 1.67.",
-          "text_ja": "上位半分は能動的: 鳴きは半荘あたり 5.79 対 5.44、リーチは 2.11 対 1.67。"
+          "text": "Winning-half volume was active: calls/game 5.80 compared with 5.44, riichi/game 2.11 compared with 1.67.",
+          "text_ja": "上位半分は能動的: 鳴きは半荘あたり 5.80 対 5.44、リーチは 2.11 対 1.67。"
         },
         {
           "kind": "aggregate",
@@ -279,8 +315,13 @@
         },
         {
           "kind": "aggregate",
-          "text": "Model review base: 36,193 LuckyJ/Nishiki mismatches from 134,988 split-head decisions; only 31.0% hit the severe-disagreement proxy.",
-          "text_ja": "モデル復習の母数: split-head 判断 134,988 件中 LuckyJ/ニシキ不一致 36,193 件。重い不一致 proxy は 31.0% に限られる。"
+          "text": "Model review base: 36,184 LuckyJ/Nishiki mismatches from 134,951 split-head decisions; only 31.0% hit the severe-disagreement proxy.",
+          "text_ja": "モデル復習の母数: split-head 判断 134,951 件中 LuckyJ/ニシキ不一致 36,184 件。重い不一致 proxy は 31.0% に限られる。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 9/10 support LuckyJ. Declaration support only for riichi examples.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 9/10。リーチ例は宣言支持のみ。"
         }
       ],
       "review_example": "Review example: declare when the hand's value and wait force opponents to react; stay flexible when riichi only exposes a bad route with little pressure.",
@@ -292,9 +333,9 @@
       "category_ja": "守備と押し引き",
       "title": "Reprice push-fold after every draw.",
       "title_ja": "押し引きは毎巡更新する。",
-      "strength": "strong",
-      "verdict": "Strong",
-      "verdict_ja": "強い",
+      "strength": "proxy_supported",
+      "verdict": "Proxy-supported",
+      "verdict_ja": "proxy支持",
       "read": "The danger-delta split is highly significant in both directions.",
       "read_ja": "危険度差の分岐は両方向で有意。",
       "caveat": "Update the price after each draw, call, riichi, and new safe tile.",
@@ -305,20 +346,25 @@
         {
           "kind": "pattern",
           "key": "safer_than_naga",
-          "text": "Lower-danger choices: n=3,741, bad 21.8%, lift -10.2 pp, p=<0.0001, danger delta -0.149.",
-          "text_ja": "低危険選択: n=3,741, 悪手率 21.8%, 平均との差 -10.2 pp, p=<0.0001, 危険度差 -0.149。"
+          "text": "Lower-danger choices: n=3,740, Nishiki severe-disagreement rate 21.8%, difference vs other mismatches -10.2 pp, unadjusted p=<0.0001, danger delta -0.149.",
+          "text_ja": "低危険選択: n=3,740, ニシキ重度不一致率 21.8%, 他の不一致との差 -10.2 pp, 未補正p=<0.0001, 危険度差 -0.149。"
         },
         {
           "kind": "pattern",
           "key": "riskier_than_naga",
-          "text": "Higher-danger choices: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.",
-          "text_ja": "高危険選択: n=5,033, 悪手率 33.4%, 平均との差 +2.8 pp, p=6.23e-05, 危険度差 0.134。"
+          "text": "Higher-danger choices: n=5,032, Nishiki severe-disagreement rate 33.4%, difference vs other mismatches +2.8 pp, unadjusted p=6.95e-05, danger delta 0.134.",
+          "text_ja": "高危険選択: n=5,032, ニシキ重度不一致率 33.4%, 他の不一致との差 +2.8 pp, 未補正p=6.95e-05, 危険度差 0.134。"
         },
         {
           "kind": "pattern",
           "key": "multi_threat_safe_tenpai",
-          "text": "Multi-threat tiles: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "多件脅威安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
+          "text": "Multi-threat tiles: n=4,185, Nishiki severe-disagreement rate 23.6%, difference vs other mismatches -8.4 pp, unadjusted p=<0.0001, danger delta 0.003.",
+          "text_ja": "多件脅威安全牌: n=4,185, ニシキ重度不一致率 23.6%, 他の不一致との差 -8.4 pp, 未補正p=<0.0001, 危険度差 0.003。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 8/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 8/10。"
         }
       ],
       "review_example": "Review example: a one-chance or suji label can flip after a second threat, new call, or suit-constrained river; reprice the tile before pushing.",
@@ -330,9 +376,9 @@
       "category_ja": "終盤",
       "title": "Third-row precision is a separate skill.",
       "title_ja": "三段目の精度は別技能。",
-      "strength": "qualified",
-      "verdict": "Qualified",
-      "verdict_ja": "条件付き",
+      "strength": "context_qualified",
+      "verdict": "Context-qualified",
+      "verdict_ja": "文脈条件付き",
       "read": "Late positions are numerous enough to validate as a training category; every late LuckyJ split still needs context.",
       "read_ja": "終盤局面は訓練カテゴリにできる母数がある。終盤 LuckyJ 分岐は文脈確認が必要。",
       "caveat": "Cross-check third-row choices against points, safe tiles, and model disagreement.",
@@ -342,19 +388,24 @@
       "stats": [
         {
           "kind": "aggregate",
-          "text": "Late row remained dense enough to matter: 19,978 decisions, mismatch 27.9%, bad 6.6%.",
-          "text_ja": "三段目も重要な母数がある: 判断 19,978 件、不一致 27.9%、悪手 6.6%。"
+          "text": "Late row remained dense enough to matter: 19,978 decisions, mismatch 27.9%, Nishiki severe disagreement 6.6%.",
+          "text_ja": "三段目も重要な母数がある: 判断 19,978 件、不一致 27.9%、ニシキ重度不一致 6.6%。"
         },
         {
           "kind": "pattern",
           "key": "multi_threat_safe_tenpai",
-          "text": "Late/middle multiple-threat tiles: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "中終盤の多件脅威安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
+          "text": "Late/middle multiple-threat tiles: n=4,185, Nishiki severe-disagreement rate 23.6%, difference vs other mismatches -8.4 pp, unadjusted p=<0.0001, danger delta 0.003.",
+          "text_ja": "中終盤の多件脅威安全牌: n=4,185, ニシキ重度不一致率 23.6%, 他の不一致との差 -8.4 pp, 未補正p=<0.0001, 危険度差 0.003。"
         },
         {
           "kind": "aggregate",
-          "text": "Model review base: 36,193 LuckyJ/Nishiki mismatches from 134,988 split-head decisions; only 31.0% hit the severe-disagreement proxy.",
-          "text_ja": "モデル復習の母数: split-head 判断 134,988 件中 LuckyJ/ニシキ不一致 36,193 件。重い不一致 proxy は 31.0% に限られる。"
+          "text": "Model review base: 36,184 LuckyJ/Nishiki mismatches from 134,951 split-head decisions; only 31.0% hit the severe-disagreement proxy.",
+          "text_ja": "モデル復習の母数: split-head 判断 134,951 件中 LuckyJ/ニシキ不一致 36,184 件。重い不一致 proxy は 31.0% に限られる。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 10/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 10/10。"
         }
       ],
       "review_example": "Review example: third-row choices need exact tenpai, noten, deal-in, and placement arithmetic; copy a late push after the point swing is clear.",
@@ -366,9 +417,9 @@
       "category_ja": "終盤",
       "title": "Drawn-hand points are attack value.",
       "title_ja": "流局点も攻撃価値。",
-      "strength": "qualified",
-      "verdict": "Qualified",
-      "verdict_ja": "条件付き",
+      "strength": "context_qualified",
+      "verdict": "Context-qualified",
+      "verdict_ja": "文脈条件付き",
       "read": "Draw-tenpai frequency makes the objective real, but each push still needs a danger price.",
       "read_ja": "流局テンパイの頻度から目的は本物だが、各押しには危険値付けが必要。",
       "caveat": "Chase keiten through multiple live threats only with safe tiles.",
@@ -378,19 +429,24 @@
       "stats": [
         {
           "kind": "aggregate",
-          "text": "Draw-tenpai-plus rounds occurred in 40.6% of hands, making noten-bappu a real objective.",
-          "text_ja": "流局テンパイ以上は 40.6% の局で発生。ノーテン罰符は本物の目的になる。"
+          "text": "LuckyJ was tenpai in 823 of 1,761 recorded wall-exhausted draws (46.7%), making noten-bappu a real objective.",
+          "text_ja": "牌山を使い切った流局 1,761 局のうち LuckyJ は 823 局でテンパイ (46.7%)。ノーテン罰符は本物の目的になる。"
         },
         {
           "kind": "pattern",
           "key": "multi_threat_safe_tenpai",
-          "text": "Safe-tenpai style tiles: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "安全テンパイ型の安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
+          "text": "Safe-tenpai style tiles: n=4,185, Nishiki severe-disagreement rate 23.6%, difference vs other mismatches -8.4 pp, unadjusted p=<0.0001, danger delta 0.003.",
+          "text_ja": "安全テンパイ型の安全牌: n=4,185, ニシキ重度不一致率 23.6%, 他の不一致との差 -8.4 pp, 未補正p=<0.0001, 危険度差 0.003。"
         },
         {
           "kind": "aggregate",
-          "text": "Late row remained dense enough to matter: 19,978 decisions, mismatch 27.9%, bad 6.6%.",
-          "text_ja": "三段目も重要な母数がある: 判断 19,978 件、不一致 27.9%、悪手 6.6%。"
+          "text": "Late row remained dense enough to matter: 19,978 decisions, mismatch 27.9%, Nishiki severe disagreement 6.6%.",
+          "text_ja": "三段目も重要な母数がある: 判断 19,978 件、不一致 27.9%、ニシキ重度不一致 6.6%。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 4/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 4/10。"
         }
       ],
       "review_example": "Review example: preserve a harmless route to drawn-hand tenpai, but abandon it when the next discard must pass multiple live threats.",
@@ -402,9 +458,9 @@
       "category_ja": "復習",
       "title": "Use model disagreement as a study prompt.",
       "title_ja": "モデル不一致は復習の問い。",
-      "strength": "strong",
-      "verdict": "Strong",
-      "verdict_ja": "強い",
+      "strength": "review_only",
+      "verdict": "Review-only",
+      "verdict_ja": "復習専用",
       "read": "The Nishiki mismatch base is large, and most mismatches stay below the severe-disagreement threshold.",
       "read_ja": "ニシキ不一致の母数は大きく、重い不一致は少数にとどまる。",
       "caveat": "A split marks a hand to study; proof comes from the purchase, risk, and table context.",
@@ -414,20 +470,25 @@
       "stats": [
         {
           "kind": "aggregate",
-          "text": "Model review base: 36,193 LuckyJ/Nishiki mismatches from 134,988 split-head decisions; only 31.0% hit the severe-disagreement proxy.",
-          "text_ja": "モデル復習の母数: split-head 判断 134,988 件中 LuckyJ/ニシキ不一致 36,193 件。重い不一致 proxy は 31.0% に限られる。"
+          "text": "Model review base: 36,184 LuckyJ/Nishiki mismatches from 134,951 split-head decisions; only 31.0% hit the severe-disagreement proxy.",
+          "text_ja": "モデル復習の母数: split-head 判断 134,951 件中 LuckyJ/ニシキ不一致 36,184 件。重い不一致 proxy は 31.0% に限られる。"
         },
         {
           "kind": "pattern",
           "key": "safer_than_naga",
-          "text": "Safer-than-Nishiki subset: n=3,741, bad 21.8%, lift -10.2 pp, p=<0.0001, danger delta -0.149.",
-          "text_ja": "ニシキより安全な部分集合: n=3,741, 悪手率 21.8%, 平均との差 -10.2 pp, p=<0.0001, 危険度差 -0.149。"
+          "text": "Safer-than-Nishiki subset: n=3,740, Nishiki severe-disagreement rate 21.8%, difference vs other mismatches -10.2 pp, unadjusted p=<0.0001, danger delta -0.149.",
+          "text_ja": "ニシキより安全な部分集合: n=3,740, ニシキ重度不一致率 21.8%, 他の不一致との差 -10.2 pp, 未補正p=<0.0001, 危険度差 -0.149。"
         },
         {
           "kind": "pattern",
           "key": "riskier_than_naga",
-          "text": "Riskier-than-Nishiki subset: n=5,033, bad 33.4%, lift +2.8 pp, p=6.23e-05, danger delta 0.134.",
-          "text_ja": "ニシキより危険な部分集合: n=5,033, 悪手率 33.4%, 平均との差 +2.8 pp, p=6.23e-05, 危険度差 0.134。"
+          "text": "Riskier-than-Nishiki subset: n=5,032, Nishiki severe-disagreement rate 33.4%, difference vs other mismatches +2.8 pp, unadjusted p=6.95e-05, danger delta 0.134.",
+          "text_ja": "ニシキより危険な部分集合: n=5,032, ニシキ重度不一致率 33.4%, 他の不一致との差 +2.8 pp, 未補正p=6.95e-05, 危険度差 0.134。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 2/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 2/10。"
         }
       ],
       "review_example": "Review example: when models split, write the purchased value, safety, and route count before calling the move good or bad.",
@@ -437,34 +498,39 @@
       "id": "point-13",
       "category": "Calls and Yaku Conditions",
       "category_ja": "鳴きと役条件",
-      "title": "Hold back uncertain open-hand yaku conditions.",
-      "title_ja": "未確定副露の役条件牌を先に扱う。",
-      "strength": "strong",
-      "verdict": "Strong",
-      "verdict_ja": "強い",
-      "read": "Loose honor cleanup is one of the strongest support signals.",
-      "read_ja": "浮き字牌整理は最も強い裏付けの一つ。",
-      "caveat": "Split self-value yakuhai from opponent yaku-condition tiles before cutting.",
-      "caveat_ja": "切る前に、自分の役牌価値と相手の役条件牌を分ける。",
-      "example": "Example: clean a lone live dragon before an opponent's open hand turns it into their missing yaku.",
-      "example_ja": "例: 相手副露の足りない役になる前に、生牌の孤立三元牌を整理する。",
+      "title": "Price the missing yakuhai.",
+      "title_ja": "見えない役牌に値段を付ける。",
+      "strength": "proxy_supported",
+      "verdict": "Proxy-supported",
+      "verdict_ja": "proxy支持",
+      "read": "Broad honor cleanup is proxy-supported, but the selected open-hand examples are contested by Mortal.",
+      "read_ja": "広い字牌整理はproxyで支持される一方、選定した副露手例はMortalが反対している。",
+      "caveat": "Discarding offers the pon. Treat this as a timing study—early release versus later choke—not as denial.",
+      "caveat_ja": "切ればポンの機会を与える。阻止ではなく、早い先切りと後の絞りを比べる時機問題として読む。",
+      "example": "Example: release a lone live dragon only while no yaku or clear advancement is visible; choke it once advancement becomes visible unless placement favors feeding.",
+      "example_ja": "例: 役も明確な進行も見えない時だけ生牌の孤立三元牌を先切りし、進行が見えた後は着順上の理由がない限り絞る。",
       "stats": [
         {
           "kind": "pattern",
           "key": "honor_cleanup_vs_shape",
-          "text": "Loose honor cleanup: n=2,348, bad 20.9%, lift -10.9 pp, p=<0.0001, danger delta -0.037.",
-          "text_ja": "浮き字牌整理: n=2,348, 悪手率 20.9%, 平均との差 -10.9 pp, p=<0.0001, 危険度差 -0.037。"
+          "text": "Loose honor cleanup: n=2,346, Nishiki severe-disagreement rate 20.8%, difference vs other mismatches -10.9 pp, unadjusted p=<0.0001, danger delta -0.037.",
+          "text_ja": "浮き字牌整理: n=2,346, ニシキ重度不一致率 20.8%, 他の不一致との差 -10.9 pp, 未補正p=<0.0001, 危険度差 -0.037。"
         },
         {
           "kind": "aggregate",
-          "text": "Loose self-yakuhai timing split: no-open contexts cut singletons on median turn 3.0, while tanyao-shaped open contexts delayed to turn 9.0.",
-          "text_ja": "自分役牌の処理時期: 無副露文脈の中央値は 3.0 巡目、タンヤオ形副露文脈では 9.0 巡目まで遅れる。"
+          "text": "Loose self-yakuhai timing split: no-open contexts cut singletons on median turn 4.0, while tanyao-shaped open contexts delayed to turn 10.0.",
+          "text_ja": "自分役牌の処理時期: 無副露文脈の中央値は 4.0 巡目、タンヤオ形副露文脈では 10.0 巡目まで遅れる。"
         },
         {
           "kind": "pattern",
           "key": "keep_pair_anchor",
-          "text": "Yakuhai/pair anchors: n=2,338, bad 21.9%, lift -9.8 pp, p=<0.0001, danger delta -0.019.",
-          "text_ja": "役牌/対子支点: n=2,338, 悪手率 21.9%, 平均との差 -9.8 pp, p=<0.0001, 危険度差 -0.019。"
+          "text": "Yakuhai/pair anchors: n=2,338, Nishiki severe-disagreement rate 21.9%, difference vs other mismatches -9.8 pp, unadjusted p=<0.0001, danger delta -0.019.",
+          "text_ja": "役牌/対子支点: n=2,338, ニシキ重度不一致率 21.9%, 他の不一致との差 -9.8 pp, 未補正p=<0.0001, 危険度差 -0.019。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 2/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 2/10。"
         }
       ],
       "review_example": "Review example: a lone dragon or seat wind changes price when an opponent's open hand still lacks a visible yaku.",
@@ -476,9 +542,9 @@
       "category_ja": "守備",
       "title": "Keep genbutsu and suji tiles for a named target.",
       "title_ja": "現物と筋の牌は対象を名付けて残す。",
-      "strength": "strong",
-      "verdict": "Strong",
-      "verdict_ja": "強い",
+      "strength": "proxy_supported",
+      "verdict": "Proxy-supported",
+      "verdict_ja": "proxy支持",
       "read": "Threat-specific safety is strongly supported; generic safety retention only works after naming the target.",
       "read_ja": "対象付き安全牌保持は強く支持される。一般的な安全牌保持は対象を名付けて初めて使える。",
       "caveat": "The point must stay narrow: who is the tile for, when will it be spent, and what shape cost does it impose?",
@@ -489,20 +555,25 @@
         {
           "kind": "pattern",
           "key": "threat_keep_exit",
-          "text": "Tile for active threat: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
-          "text_ja": "実脅威への安全牌: n=8,406, 悪手率 24.4%, 平均との差 -8.7 pp, p=<0.0001, 危険度差 0.012。"
+          "text": "Tile for active threat: n=7,618, Nishiki severe-disagreement rate 24.3%, difference vs other mismatches -8.6 pp, unadjusted p=<0.0001, danger delta 0.018.",
+          "text_ja": "実脅威への安全牌: n=7,618, ニシキ重度不一致率 24.3%, 他の不一致との差 -8.6 pp, 未補正p=<0.0001, 危険度差 0.018。"
         },
         {
           "kind": "pattern",
           "key": "keep_defensive_exit",
-          "text": "Generic safe-tile keep: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.",
-          "text_ja": "一般的な安全牌保持: n=8,590, 悪手率 35.1%, 平均との差 +5.4 pp, p=<0.0001, 危険度差 0.036。"
+          "text": "Generic safe-tile keep: n=8,547, Nishiki severe-disagreement rate 35.4%, difference vs other mismatches +5.7 pp, unadjusted p=<0.0001, danger delta 0.045.",
+          "text_ja": "一般的な安全牌保持: n=8,547, ニシキ重度不一致率 35.4%, 他の不一致との差 +5.7 pp, 未補正p=<0.0001, 危険度差 0.045。"
         },
         {
           "kind": "pattern",
           "key": "multi_threat_safe_tenpai",
-          "text": "Multi-threat tiles: n=4,386, bad 23.5%, lift -8.6 pp, p=<0.0001, danger delta -0.001.",
-          "text_ja": "多件脅威安全牌: n=4,386, 悪手率 23.5%, 平均との差 -8.6 pp, p=<0.0001, 危険度差 -0.001。"
+          "text": "Multi-threat tiles: n=4,185, Nishiki severe-disagreement rate 23.6%, difference vs other mismatches -8.4 pp, unadjusted p=<0.0001, danger delta 0.003.",
+          "text_ja": "多件脅威安全牌: n=4,185, ニシキ重度不一致率 23.6%, 他の不一致との差 -8.4 pp, 未補正p=<0.0001, 危険度差 0.003。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 3/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 3/10。"
         }
       ],
       "review_example": "Review example: keep genbutsu or suji only after naming the target player and the next turn it protects; untargeted safety is just clutter.",
@@ -514,9 +585,9 @@
       "category_ja": "守備と形",
       "title": "Spend stale safe tiles when their job expires.",
       "title_ja": "古い安全牌は仕事が切れたら使う。",
-      "strength": "strong",
-      "verdict": "Strong",
-      "verdict_ja": "強い",
+      "strength": "proxy_supported",
+      "verdict": "Proxy-supported",
+      "verdict_ja": "proxy支持",
       "read": "Spending a safe-looking tile that Nishiki kept was materially better than the mismatch baseline.",
       "read_ja": "ニシキが残す安全寄り牌を使う分岐は、不一致平均との差で明確に良い。",
       "caveat": "Spend it only after naming why it no longer defends the live danger.",
@@ -527,20 +598,25 @@
         {
           "kind": "pattern",
           "key": "spend_defensive_exit",
-          "text": "Stale safety spent: n=4,057, bad 23.9%, lift -8.0 pp, p=<0.0001, danger delta -0.035.",
-          "text_ja": "古い安全牌の使用: n=4,057, 悪手率 23.9%, 平均との差 -8.0 pp, p=<0.0001, 危険度差 -0.035。"
+          "text": "Stale safety spent: n=4,353, Nishiki severe-disagreement rate 22.6%, difference vs other mismatches -9.6 pp, unadjusted p=<0.0001, danger delta -0.050.",
+          "text_ja": "古い安全牌の使用: n=4,353, ニシキ重度不一致率 22.6%, 他の不一致との差 -9.6 pp, 未補正p=<0.0001, 危険度差 -0.050。"
         },
         {
           "kind": "pattern",
           "key": "threat_keep_exit",
-          "text": "Threat-specific keeps: n=8,406, bad 24.4%, lift -8.7 pp, p=<0.0001, danger delta 0.012.",
-          "text_ja": "対象付き保持: n=8,406, 悪手率 24.4%, 平均との差 -8.7 pp, p=<0.0001, 危険度差 0.012。"
+          "text": "Threat-specific keeps: n=7,618, Nishiki severe-disagreement rate 24.3%, difference vs other mismatches -8.6 pp, unadjusted p=<0.0001, danger delta 0.018.",
+          "text_ja": "対象付き保持: n=7,618, ニシキ重度不一致率 24.3%, 他の不一致との差 -8.6 pp, 未補正p=<0.0001, 危険度差 0.018。"
         },
         {
           "kind": "pattern",
           "key": "keep_defensive_exit",
-          "text": "Generic keeps as caution: n=8,590, bad 35.1%, lift +5.4 pp, p=<0.0001, danger delta 0.036.",
-          "text_ja": "一般保持の警告: n=8,590, 悪手率 35.1%, 平均との差 +5.4 pp, p=<0.0001, 危険度差 0.036。"
+          "text": "Generic keeps as caution: n=8,547, Nishiki severe-disagreement rate 35.4%, difference vs other mismatches +5.7 pp, unadjusted p=<0.0001, danger delta 0.045.",
+          "text_ja": "一般保持の警告: n=8,547, ニシキ重度不一致率 35.4%, 他の不一致との差 +5.7 pp, 未補正p=<0.0001, 危険度差 0.045。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 1/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 1/10。"
         }
       ],
       "review_example": "Review example: yesterday's safe tile loses value when a new riichi becomes the real threat and the old tile blocks your tenpai route.",
@@ -552,9 +628,9 @@
       "category_ja": "形と守備",
       "title": "Outside cuts can preserve the real route.",
       "title_ja": "外側切りで本線を残す。",
-      "strength": "strong",
-      "verdict": "Strong",
-      "verdict_ja": "強い",
+      "strength": "proxy_supported",
+      "verdict": "Proxy-supported",
+      "verdict_ja": "proxy支持",
       "read": "Cutting outside material while keeping inside shape had strong aggregate support.",
       "read_ja": "外側を切って内側形を残す分岐は集計上強く支持された。",
       "caveat": "Keep route preservation separate from vague safety.",
@@ -565,20 +641,25 @@
         {
           "kind": "pattern",
           "key": "cut_outside_keep_inside",
-          "text": "Outside cut, inside route kept: n=5,281, bad 23.1%, lift -9.2 pp, p=<0.0001, danger delta -0.030.",
-          "text_ja": "外側切り・内側ルート保持: n=5,281, 悪手率 23.1%, 平均との差 -9.2 pp, p=<0.0001, 危険度差 -0.030。"
+          "text": "Outside cut, inside route kept: n=5,276, Nishiki severe-disagreement rate 23.1%, difference vs other mismatches -9.2 pp, unadjusted p=<0.0001, danger delta -0.030.",
+          "text_ja": "外側切り・内側ルート保持: n=5,276, ニシキ重度不一致率 23.1%, 他の不一致との差 -9.2 pp, 未補正p=<0.0001, 危険度差 -0.030。"
         },
         {
           "kind": "pattern",
           "key": "cut_inside_keep_outside",
-          "text": "Middle cut as caution: n=10,926, bad 38.6%, lift +10.9 pp, p=<0.0001, danger delta 0.029.",
-          "text_ja": "中張牌切りの警告: n=10,926, 悪手率 38.6%, 平均との差 +10.9 pp, p=<0.0001, 危険度差 0.029。"
+          "text": "Middle cut as caution: n=10,925, Nishiki severe-disagreement rate 38.6%, difference vs other mismatches +10.9 pp, unadjusted p=<0.0001, danger delta 0.029.",
+          "text_ja": "中張牌切りの警告: n=10,925, ニシキ重度不一致率 38.6%, 他の不一致との差 +10.9 pp, 未補正p=<0.0001, 危険度差 0.029。"
         },
         {
           "kind": "pattern",
           "key": "safer_than_naga",
-          "text": "Lower-danger choices: n=3,741, bad 21.8%, lift -10.2 pp, p=<0.0001, danger delta -0.149.",
-          "text_ja": "低危険選択: n=3,741, 悪手率 21.8%, 平均との差 -10.2 pp, p=<0.0001, 危険度差 -0.149。"
+          "text": "Lower-danger choices: n=3,740, Nishiki severe-disagreement rate 21.8%, difference vs other mismatches -10.2 pp, unadjusted p=<0.0001, danger delta -0.149.",
+          "text_ja": "低危険選択: n=3,740, ニシキ重度不一致率 21.8%, 他の不一致との差 -10.2 pp, 未補正p=<0.0001, 危険度差 -0.149。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 7/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 7/10。"
         }
       ],
       "review_example": "Review example: under pressure, an edge discard can reduce exposure while preserving the inner connector that actually wins the hand.",
@@ -590,9 +671,9 @@
       "category_ja": "鳴きと字牌",
       "title": "Give every honor tile a role label.",
       "title_ja": "字牌には役割名を付ける。",
-      "strength": "strong",
-      "verdict": "Strong",
-      "verdict_ja": "強い",
+      "strength": "proxy_supported",
+      "verdict": "Proxy-supported",
+      "verdict_ja": "proxy支持",
       "read": "Honor cleanup and pair-anchor stats support role labeling over a single honor rule.",
       "read_ja": "字牌整理と対子支点の統計は、単一の字牌ルールより役割名付けを支持する。",
       "caveat": "Self yakuhai, opponent yaku condition, dead honor, and safe tile are different categories.",
@@ -603,19 +684,24 @@
         {
           "kind": "pattern",
           "key": "honor_cleanup_vs_shape",
-          "text": "Loose honor cleanup: n=2,348, bad 20.9%, lift -10.9 pp, p=<0.0001, danger delta -0.037.",
-          "text_ja": "浮き字牌整理: n=2,348, 悪手率 20.9%, 平均との差 -10.9 pp, p=<0.0001, 危険度差 -0.037。"
+          "text": "Loose honor cleanup: n=2,346, Nishiki severe-disagreement rate 20.8%, difference vs other mismatches -10.9 pp, unadjusted p=<0.0001, danger delta -0.037.",
+          "text_ja": "浮き字牌整理: n=2,346, ニシキ重度不一致率 20.8%, 他の不一致との差 -10.9 pp, 未補正p=<0.0001, 危険度差 -0.037。"
         },
         {
           "kind": "pattern",
           "key": "keep_pair_anchor",
-          "text": "Pair/triplet anchors: n=2,338, bad 21.9%, lift -9.8 pp, p=<0.0001, danger delta -0.019.",
-          "text_ja": "対子/刻子支点: n=2,338, 悪手率 21.9%, 平均との差 -9.8 pp, p=<0.0001, 危険度差 -0.019。"
+          "text": "Pair/triplet anchors: n=2,338, Nishiki severe-disagreement rate 21.9%, difference vs other mismatches -9.8 pp, unadjusted p=<0.0001, danger delta -0.019.",
+          "text_ja": "対子/刻子支点: n=2,338, ニシキ重度不一致率 21.9%, 他の不一致との差 -9.8 pp, 未補正p=<0.0001, 危険度差 -0.019。"
         },
         {
           "kind": "aggregate",
-          "text": "Loose self-yakuhai timing split: no-open contexts cut singletons on median turn 3.0, while tanyao-shaped open contexts delayed to turn 9.0.",
-          "text_ja": "自分役牌の処理時期: 無副露文脈の中央値は 3.0 巡目、タンヤオ形副露文脈では 9.0 巡目まで遅れる。"
+          "text": "Loose self-yakuhai timing split: no-open contexts cut singletons on median turn 4.0, while tanyao-shaped open contexts delayed to turn 10.0.",
+          "text_ja": "自分役牌の処理時期: 無副露文脈の中央値は 4.0 巡目、タンヤオ形副露文脈では 10.0 巡目まで遅れる。"
+        },
+        {
+          "kind": "aggregate",
+          "text": "Selected-example Mortal check: 6/10 support LuckyJ.",
+          "text_ja": "選定例のMortal確認: LuckyJ支持 6/10。"
         }
       ],
       "review_example": "Review example: classify each honor as self value, opponent yaku condition, dead material, or defensive tile before cutting.",

@@ -1066,8 +1066,23 @@ a {
   text-transform: uppercase;
 }
 
-.validation-card.strong .validation-head em {
+.validation-card.proxy_supported .validation-head em {
   color: var(--green);
+}
+
+.validation-card.contested .validation-head em {
+  color: var(--red);
+}
+
+.validation-card.review_only .validation-head em {
+  color: var(--blue);
+}
+
+.validation-method-warning {
+  border-left: 4px solid var(--yellow);
+  color: var(--muted);
+  margin: 12px 0 0;
+  padding-left: 12px;
 }
 
 .validation-card ul {
@@ -1520,6 +1535,36 @@ a {
   color: var(--muted);
   font-size: 13px;
   text-align: right;
+}
+
+.evidence-tier {
+  border: 1px solid var(--line);
+  color: var(--blue);
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  margin-top: 7px;
+  padding: 3px 6px;
+  text-transform: uppercase;
+}
+
+.evidence-tier.stress_test {
+  color: var(--red);
+}
+
+.evidence-tier.contested,
+.evidence-tier.unsupported,
+.example-evidence-note.contested,
+.example-evidence-note.unsupported {
+  color: var(--red);
+}
+
+.example-evidence-note {
+  border-left: 3px solid var(--yellow);
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 0 12px;
+  padding-left: 10px;
 }
 
 .case-meta,
@@ -2690,6 +2735,29 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
 .case-links a {
   color: var(--blue);
   font-weight: 750;
+}
+
+.source-room {
+  background: var(--soft-green, #eef4ea);
+  border: 1px solid var(--line);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 850;
+  padding: 3px 7px;
+  text-transform: uppercase;
+}
+
+.source-scope-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 18px;
+}
+
+.source-scope-card p {
+  margin: 0;
 }
 
 .sources {

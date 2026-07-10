@@ -13,8 +13,9 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 MODEL_PATH = ROOT / "site" / "model-patterns.json"
 BOOK_PATH = ROOT / "site" / "book-data.json"
+MORTAL_PATH = ROOT / "site" / "mortal-analysis.json"
 OUT_JSON = ROOT / "site" / "point-validation.json"
-OUT_MD = ROOT / "analysis" / "point-validation-2026-06-30.md"
+OUT_MD = ROOT / "analysis" / "point-evidence-2026-07-09.md"
 
 
 REVIEW_EXAMPLES = {
@@ -134,14 +135,14 @@ def local_review_file_count() -> int:
 def pattern(patterns: dict[str, Any], key: str, label: str, label_ja: str) -> dict[str, str]:
     item = patterns[key]
     text = (
-        f"{label}: n={item['n']:,}, bad {pct(item['bad_rate'])}, "
-        f"lift {pp(item['bad_lift_vs_other_mismatches'])}, "
-        f"p={pval(item['bad_rate_p_value'])}, danger delta {num(item['avg_danger_delta'], 3)}."
+        f"{label}: n={item['n']:,}, Nishiki severe-disagreement rate {pct(item['bad_rate'])}, "
+        f"difference vs other mismatches {pp(item['bad_lift_vs_other_mismatches'])}, "
+        f"unadjusted p={pval(item['bad_rate_p_value'])}, danger delta {num(item['avg_danger_delta'], 3)}."
     )
     text_ja = (
-        f"{label_ja}: n={item['n']:,}, 悪手率 {pct(item['bad_rate'])}, "
-        f"平均との差 {pp(item['bad_lift_vs_other_mismatches'])}, "
-        f"p={pval(item['bad_rate_p_value'])}, 危険度差 {num(item['avg_danger_delta'], 3)}。"
+        f"{label_ja}: n={item['n']:,}, ニシキ重度不一致率 {pct(item['bad_rate'])}, "
+        f"他の不一致との差 {pp(item['bad_lift_vs_other_mismatches'])}, "
+        f"未補正p={pval(item['bad_rate_p_value'])}, 危険度差 {num(item['avg_danger_delta'], 3)}。"
     )
     return {"kind": "pattern", "key": key, "text": text, "text_ja": text_ja}
 
@@ -202,6 +203,7 @@ def build() -> dict[str, Any]:
     late = counters["stage"]["late"]
     middle = counters["stage"]["middle"]
     yakuhai = counters["yakuhai_pressure"]["self_yakuhai"]
+    open_defense = counters["defense_retention"]["self_open"]["overall"]
 
     conversion = aggregate(
         "Outcome split: top-half games averaged 3.09 wins and 0.75 deal-ins; bottom-half games averaged 1.39 wins and 1.48 deal-ins.",
@@ -216,16 +218,16 @@ def build() -> dict[str, Any]:
         f"局単位の鳴き率は {pct(summary['call_round_rate'])}。鳴きは可否より目的フィルターで見る必要がある。",
     )
     late_precision = aggregate(
-        f"Late row remained dense enough to matter: {late['decisions']:,} decisions, mismatch {pct(late['mismatch'] / late['decisions'])}, bad {pct(late['bad'] / late['decisions'])}.",
-        f"三段目も重要な母数がある: 判断 {late['decisions']:,} 件、不一致 {pct(late['mismatch'] / late['decisions'])}、悪手 {pct(late['bad'] / late['decisions'])}。",
+        f"Late row remained dense enough to matter: {late['decisions']:,} decisions, mismatch {pct(late['mismatch'] / late['decisions'])}, Nishiki severe disagreement {pct(late['bad'] / late['decisions'])}.",
+        f"三段目も重要な母数がある: 判断 {late['decisions']:,} 件、不一致 {pct(late['mismatch'] / late['decisions'])}、ニシキ重度不一致 {pct(late['bad'] / late['decisions'])}。",
     )
     middle_late = aggregate(
         f"Middle plus late decisions total {middle['decisions'] + late['decisions']:,}; the defense points have evidence beyond opening-row cleanup.",
         f"中盤と終盤の判断は合計 {middle['decisions'] + late['decisions']:,} 件。守備点は序盤整理に加えて中終盤にも根拠がある。",
     )
     drawn_hand = aggregate(
-        f"Draw-tenpai-plus rounds occurred in {pct(summary['draw_tenpai_plus_rate'])} of hands, making noten-bappu a real objective.",
-        f"流局テンパイ以上は {pct(summary['draw_tenpai_plus_rate'])} の局で発生。ノーテン罰符は本物の目的になる。",
+        f"LuckyJ was tenpai in {summary['draw_tenpai']:,} of {summary['exhaustive_draws']:,} recorded wall-exhausted draws ({pct(summary['draw_tenpai_rate'])}), making noten-bappu a real objective.",
+        f"牌山を使い切った流局 {summary['exhaustive_draws']:,} 局のうち LuckyJ は {summary['draw_tenpai']:,} 局でテンパイ ({pct(summary['draw_tenpai_rate'])})。ノーテン罰符は本物の目的になる。",
     )
     mismatch = aggregate(
         f"Model review base: {review_mismatches:,} LuckyJ/Nishiki mismatches from {review_decisions:,} split-head decisions; only {pct(review_bad_rate)} hit the severe-disagreement proxy.",
@@ -234,6 +236,10 @@ def build() -> dict[str, Any]:
     self_yakuhai = aggregate(
         f"Loose self-yakuhai timing split: no-open contexts cut singletons on median turn {num(yakuhai['no_open_hand']['median_cut_turn'], 1)}, while tanyao-shaped open contexts delayed to turn {num(yakuhai['tanyao_shaped_open']['median_cut_turn'], 1)}.",
         f"自分役牌の処理時期: 無副露文脈の中央値は {num(yakuhai['no_open_hand']['median_cut_turn'], 1)} 巡目、タンヤオ形副露文脈では {num(yakuhai['tanyao_shaped_open']['median_cut_turn'], 1)} 巡目まで遅れる。",
+    )
+    open_hand_defense = aggregate(
+        f"Actual open-hand scope: {open_defense['splits']:,} LuckyJ/Nishiki discard splits; LuckyJ retained a classified defensive tile in {open_defense['kept_defense_tile']:,}, including {open_defense['kept_against_live_threat']:,} tied to a live threat.",
+        f"実際の副露手: LuckyJ/ニシキ打牌分岐 {open_defense['splits']:,} 件。守備牌保持 {open_defense['kept_defense_tile']:,} 件、そのうち実脅威対象 {open_defense['kept_against_live_threat']:,} 件。",
     )
 
     points = [
@@ -268,8 +274,8 @@ def build() -> dict[str, Any]:
             "strong",
             "Strong",
             "強い",
-            "Pair/triplet anchors and dora/red material had materially lower bad rates than other mismatches.",
-            "対子/刻子の支点とドラ/赤の保持は、他の不一致より悪手率が明確に低い。",
+            "Pair/triplet anchors and dora/red material had materially lower Nishiki severe-disagreement rates than other mismatches.",
+            "対子/刻子の支点とドラ/赤の保持は、他の不一致よりニシキ重度不一致率が明確に低い。",
             "The support is strongest for anchors with a job.",
             "仕事のある支点への支持が強い。",
             "Example: keep a yakuhai pair or red-five branch when it creates value plus an open fallback.",
@@ -313,6 +319,7 @@ def build() -> dict[str, Any]:
             "Example: after opening, keep one genbutsu to the live riichi if the hand still has a real tenpai path.",
             "例: 鳴いた後でも本物のテンパイルートがあるなら、現物を一枚だけリーチ者への安全牌として残す。",
             [
+                open_hand_defense,
                 pattern(patterns, "threat_keep_exit", "Threat-specific safe tiles", "脅威対象の安全牌保持"),
                 pattern(patterns, "multi_threat_safe_tenpai", "Middle/late multi-threat tiles", "中終盤の多件脅威安全牌"),
                 pattern(patterns, "keep_defensive_exit", "Generic safe-tile retention", "一般的な安全牌保持"),
@@ -453,17 +460,17 @@ def build() -> dict[str, Any]:
             "point-13",
             "Calls and Yaku Conditions",
             "鳴きと役条件",
-            "Hold back uncertain open-hand yaku conditions.",
-            "未確定副露の役条件牌を先に扱う。",
+            "Price the missing yakuhai.",
+            "見えない役牌に値段を付ける。",
             "strong",
             "Strong",
             "強い",
-            "Loose honor cleanup is one of the strongest support signals.",
-            "浮き字牌整理は最も強い裏付けの一つ。",
-            "Split self-value yakuhai from opponent yaku-condition tiles before cutting.",
-            "切る前に、自分の役牌価値と相手の役条件牌を分ける。",
-            "Example: clean a lone live dragon before an opponent's open hand turns it into their missing yaku.",
-            "例: 相手副露の足りない役になる前に、生牌の孤立三元牌を整理する。",
+            "Broad honor cleanup is proxy-supported, but the selected open-hand examples are contested by Mortal.",
+            "広い字牌整理はproxyで支持される一方、選定した副露手例はMortalが反対している。",
+            "Discarding offers the pon. Treat this as a timing study—early release versus later choke—not as denial.",
+            "切ればポンの機会を与える。阻止ではなく、早い先切りと後の絞りを比べる時機問題として読む。",
+            "Example: release a lone live dragon only while no yaku or clear advancement is visible; choke it once advancement becomes visible unless placement favors feeding.",
+            "例: 役も明確な進行も見えない時だけ生牌の孤立三元牌を先切りし、進行が見えた後は着順上の理由がない限り絞る。",
             [
                 pattern(patterns, "honor_cleanup_vs_shape", "Loose honor cleanup", "浮き字牌整理"),
                 self_yakuhai,
@@ -556,8 +563,36 @@ def build() -> dict[str, Any]:
         ),
     ]
 
+    mortal_points = (load_json(MORTAL_PATH).get("points") or {}) if MORTAL_PATH.exists() else {}
     for item in points:
         item["review_example"], item["review_example_ja"] = REVIEW_EXAMPLES[item["id"]]
+        mortal_rows = mortal_points.get(item["id"], [])
+        mortal_support = sum(bool(row.get("mortal_agrees_luckyj")) for row in mortal_rows)
+        if mortal_rows:
+            declaration_note = " Declaration support only for riichi examples." if item["id"] == "point-08" else ""
+            item["stats"].append(
+                aggregate(
+                    f"Selected-example Mortal check: {mortal_support}/{len(mortal_rows)} support LuckyJ.{declaration_note}",
+                    f"選定例のMortal確認: LuckyJ支持 {mortal_support}/{len(mortal_rows)}。" + ("リーチ例は宣言支持のみ。" if item["id"] == "point-08" else ""),
+                )
+            )
+        original_strength = item["strength"]
+        if item["id"] == "point-12":
+            item["strength"] = "review_only"
+            item["verdict"] = "Review-only"
+            item["verdict_ja"] = "復習専用"
+        elif mortal_rows and mortal_support == 0:
+            item["strength"] = "contested"
+            item["verdict"] = "Contested showcase"
+            item["verdict_ja"] = "例示は反対多数"
+        elif original_strength == "strong":
+            item["strength"] = "proxy_supported"
+            item["verdict"] = "Proxy-supported"
+            item["verdict_ja"] = "proxy支持"
+        else:
+            item["strength"] = "context_qualified"
+            item["verdict"] = "Context-qualified"
+            item["verdict_ja"] = "文脈条件付き"
 
     counts = Counter(item["strength"] for item in points)
     review_files = local_review_file_count()
@@ -572,13 +607,14 @@ def build() -> dict[str, Any]:
             "hands": summary["hands"],
             "games": summary["games"],
             "baseline_mismatch_bad_rate": review_bad_rate,
-            "note": "Qualitative review examples were kept as generalized prompts only; statistical validity comes from the model and book artifacts.",
-            "note_ja": "定性的な検討例は一般化した問いとしてだけ使い、統計的な妥当性はモデルと書籍由来のデータで確認した。",
+            "note": "These cards measure Nishiki acceptance patterns, not winning EV or causal performance. Decisions within a hanchan are clustered, patterns overlap, and displayed p-values are unadjusted.",
+            "note_ja": "ここで測っているのはニシキの受容パターンであり、期待値や因果効果ではない。同一半荘内の判断は独立ではなく、パターンは重複し、p値も多重比較・クラスタ補正前である。",
         },
         "summary": {
-            "strong": counts["strong"],
-            "qualified": counts["qualified"],
-            "review": counts["review"],
+            "proxy_supported": counts["proxy_supported"],
+            "context_qualified": counts["context_qualified"],
+            "contested": counts["contested"],
+            "review_only": counts["review_only"],
             "total": len(points),
         },
         "points": points,
@@ -587,7 +623,7 @@ def build() -> dict[str, Any]:
 
 def write_markdown(data: dict[str, Any]) -> None:
     lines = [
-        "# Point Validation - 2026-06-30",
+        f"# Point Evidence Audit - {data['generated_at']}",
         "",
         "## Method",
         "",
@@ -595,13 +631,14 @@ def write_markdown(data: dict[str, Any]) -> None:
         f"- Qualitative review files scanned locally: {data['method'].get('qualitative_review_files', 0):,}; raw captions/transcripts stay ignored under `tmp/`.",
         f"- Model base: {data['method']['eligible_decisions']:,} eligible decisions and {data['method']['mismatches']:,} LuckyJ/Nishiki mismatches.",
         f"- Book base: {data['method']['games']:,} hanchan, {data['method']['hands']:,} hands, {data['method']['book_decisions']:,} discard decisions.",
-        "- A point is marked strong only when the proxy has a large sample, directionally useful lift, and a significant p-value. Mixed or aggregate-only points are marked qualified.",
+        f"- Scope warning: {data['method']['note']}",
         "",
         "## Results",
         "",
-        f"- Strong: {data['summary']['strong']}.",
-        f"- Qualified: {data['summary']['qualified']}.",
-        f"- Review-only: {data['summary']['review']}.",
+        f"- Proxy-supported: {data['summary']['proxy_supported']}.",
+        f"- Context-qualified: {data['summary']['context_qualified']}.",
+        f"- Contested showcase: {data['summary']['contested']}.",
+        f"- Review-only: {data['summary']['review_only']}.",
         "",
         "| Point | Category | Verdict | Main statistical read | Caveat |",
         "|---|---|---|---|---|",
@@ -638,7 +675,9 @@ def main() -> None:
     write_markdown(data)
     print(
         f"Wrote {OUT_JSON.relative_to(ROOT)} and {OUT_MD.relative_to(ROOT)} "
-        f"({data['summary']['strong']} strong, {data['summary']['qualified']} qualified)."
+        f"({data['summary']['proxy_supported']} proxy-supported, "
+        f"{data['summary']['context_qualified']} context-qualified, "
+        f"{data['summary']['contested']} contested)."
     )
 
 

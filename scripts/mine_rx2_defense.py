@@ -67,7 +67,7 @@ def percentile(values: list[float], q: float) -> float | None:
 
 
 class BinStats:
-    """Push/fold metric for decisions whose danger is known."""
+    """Danger-threshold proxy; this does not by itself classify strategic push/fold."""
 
     def __init__(self) -> None:
         self.total_states = 0
@@ -106,6 +106,7 @@ class BinStats:
             "missing_danger": self.total_states - self.n,
             "push_count_danger_gt_5pct": self.push,
             "push_rate_pct": self.rate_pct,
+            "reader_metric": "actual discard exceeded 5% maximum NAGA danger; not a push/fold classifier",
             "ci95_half_width_pp": round2(self.ci95_half_width_pp),
         }
 

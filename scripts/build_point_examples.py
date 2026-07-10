@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import json
 import re
 from collections import Counter
@@ -9,6 +10,7 @@ from extract_case_studies import (
     counts_34,
     hand_string,
     remove_tile,
+    retained_safety,
     round_name,
     safety_read,
     score_band,
@@ -131,10 +133,10 @@ POINT_TEXT = {
         "answer": "Use match rate as a review cue, then aim for explainable decisions with fewer unpriced risks.",
     },
     "point-13": {
-        "title": "Clean yakuhai against unproven open hands",
-        "lesson": "When another player calls with an unclear yaku, singleton dragons and live value winds can become their missing yaku condition. LuckyJ often removes those tiles before they turn into the price of continuing.",
-        "prompt": "After an opponent opens, ask which yakuhai still lets that hand win.",
-        "answer": "When your hand is too slow to punish them and the yakuhai has no strong job, clean it before the open hand gets to use it.",
+        "title": "Price the missing yakuhai",
+        "lesson": "When another player calls with an unclear yaku, a singleton dragon or value wind becomes a timing choice: release it while no yaku or clear advancement is visible, accepting today's pon risk, or choke it once advancement becomes visible.",
+        "prompt": "After an opponent opens, is this yakuhai still cheap enough to release, or has it become a tile to choke?",
+        "answer": "Discarding is not denial. Release early only when carrying the tile into a more advanced hand would be worse; otherwise hold it rather than feed the yaku switch.",
     },
     "point-14": {
         "title": "Keep safe tiles for a named target",
@@ -684,6 +686,8 @@ def common_case(
         "current_rank": current_rank(start, target),
         "report": row["report"],
         "paifu": row["paifu"],
+        "room": row.get("room"),
+        "room_code": row.get("room_code"),
         "table": table_context(start, target, hands, discards, melds, reached, dora_markers, state, riichi_discard_indices),
         "outcome": end_summary(start, target),
     }
@@ -953,6 +957,52 @@ def make_call_case(
     )
     consumed = msg.get("consumed", [])
     shape = post_call_eval(hands[target], consumed, msg.get("real_dahai"))
+    open_counts = [len(player_melds) for player_melds in melds]
+    open_counts[target] += 1
+    post_call_tiles = shape.get("hand_after", "").split()
+    shape["kept_safety"] = retained_safety(post_call_tiles, target, discards, reached, open_counts)
+    opponents = [seat for seat in range(4) if seat != target]
+    riichi_seats = [seat for seat in opponents if reached[seat]]
+    threat_seats = riichi_seats or [seat for seat in opponents if open_counts[seat] > 0]
+    primary_threat = None
+    if threat_seats:
+        primary_threat = max(
+            threat_seats,
+            key=(
+                (lambda seat: (int(seat == start.get("oya")), open_counts[seat], -((seat - target) % 4)))
+                if riichi_seats
+                else (lambda seat: (open_counts[seat], int(seat == start.get("oya")), -((seat - target) % 4)))
+            ),
+        )
+        shape["primary_threat"] = {
+            "seat": rel_seat(primary_threat, target),
+            "kind": "riichi" if reached[primary_threat] else "open_hand",
+            "open_melds": open_counts[primary_threat],
+            "dealer": primary_threat == start.get("oya"),
+        }
+
+    reserve_reads = []
+    seen_tiles = set()
+    for tile in post_call_tiles:
+        tile_key = base.tile_index(tile)
+        if tile_key in seen_tiles:
+            continue
+        seen_tiles.add(tile_key)
+        read = safety_read(tile, target, discards, reached, open_counts)
+        target_read = next(
+            (
+                item
+                for item in read.get("against", [])
+                if item.get("seat") == primary_threat
+                and (item.get("genbutsu_sources") or item.get("suji_sources"))
+            ),
+            None,
+        )
+        if target_read:
+            reserve_reads.append((0 if target_read.get("genbutsu_sources") else 1, tile_key, read))
+    reserve_reads.sort(key=lambda item: (item[0], item[1]))
+    shape["primary_threat_reserve_reads"] = [item[2] for item in reserve_reads]
+    shape["targeted_reserve_tiles"] = [item[2]["tile"] for item in reserve_reads]
     case.update(
         {
             "kind": "call",
@@ -1047,26 +1097,28 @@ def danger_gap_phrase(case, lang):
     actual = case.get("actual_danger")
     naga = case.get("naga_danger")
     if actual is None or naga is None:
-        return "NAGA脅威を比べにくい。" if lang == "ja" else "The NAGA threat comparison is unclear."
+        return "NAGA危険度指標を比べにくい。" if lang == "ja" else "The NAGA danger-proxy comparison is unclear."
     gap = actual - naga
     if lang == "ja":
         if abs(gap) < 0.03:
-            return f"NAGA脅威は近い。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
+            return f"NAGA危険度指標は近い。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
         if gap < 0:
-            return f"LuckyJ はNAGA脅威を下げている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
-        return f"LuckyJ はNAGA脅威を余分に受け入れている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
+            return f"LuckyJ はNAGA危険度指標を下げている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
+        return f"LuckyJ はより高いNAGA危険度指標を受け入れている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
     if abs(gap) < 0.03:
-        return f"The NAGA threat numbers are close: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
+        return f"The NAGA danger-proxy values are close: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
     if gap < 0:
-        return f"LuckyJ lowers the NAGA threat reading: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
-    return f"LuckyJ accepts a higher NAGA threat reading now: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
+        return f"LuckyJ lowers the NAGA danger proxy: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
+    return f"LuckyJ accepts a higher NAGA danger proxy now: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
 
 
 def threat_peak_text(profile, lang):
     if not profile or profile.get("max") is None:
         return "n/a"
-    head = profile.get("peak_head") or "danger"
-    return f"{head} {format_percent(profile.get('max'))}"
+    value = format_percent(profile.get("max"))
+    if lang == "ja":
+        return f"NAGA最大脅威指標 {value}"
+    return f"a peak NAGA danger proxy of {value}"
 
 
 def threat_case_sentence(case, lang):
@@ -1079,11 +1131,11 @@ def threat_case_sentence(case, lang):
     actual = tile_token(case.get("actual"))
     naga = tile_token(case.get("naga"))
     gap = actual_max - naga_max
-    actual_detail = f"{actual} peaks at {threat_peak_text(actual_profile, lang)}"
-    naga_detail = f"{naga} peaks at {threat_peak_text(naga_profile, lang)}"
+    actual_detail = f"{actual} has {threat_peak_text(actual_profile, lang)}"
+    naga_detail = f"{naga} has {threat_peak_text(naga_profile, lang)}"
     if lang == "ja":
-        actual_detail = f"{actual} は {threat_peak_text(actual_profile, lang)} が最大"
-        naga_detail = f"{naga} は {threat_peak_text(naga_profile, lang)} が最大"
+        actual_detail = f"{actual} の{threat_peak_text(actual_profile, lang)}"
+        naga_detail = f"{naga} の{threat_peak_text(naga_profile, lang)}"
         if abs(gap) < 0.03:
             if max(actual_max, naga_max) < 0.08:
                 return f"修正後の脅威バーでは両候補とも静か。{actual_detail}、{naga_detail}。この例は危険差ではなく、形・役割・着順で読む。"
@@ -1311,7 +1363,20 @@ def yakuhai_threat_sentence(case, lang):
         melds = "; ".join(meld_text(meld) for meld in (threat.get("melds") or []))
         wind = tile_token(threat.get("wind"))
         if lang == "ja":
-            rows.append(f"{seat_label(threat.get('seat'), lang)} ({wind}場風/自風, 副露 {melds or 'なし'})")
+            actual = base_tile(case.get("actual"))
+            round_wind = "E" if str(case.get("round", "")).startswith("East") else "S"
+            roles = []
+            if actual in {"P", "F", "C"}:
+                roles.append("三元牌")
+            if actual == round_wind:
+                roles.append("場風")
+            if actual == base_tile(threat.get("wind")):
+                roles.append("相手の自風")
+            role = "・".join(roles) or "役牌候補"
+            rows.append(
+                f"{seat_label(threat.get('seat'), lang)} "
+                f"(自風 {wind}, この牌は{role}, 副露 {melds or 'なし'})"
+            )
         else:
             rows.append(f"{seat_label(threat.get('seat'), lang)} ({wind} seat wind, melds {melds or 'none'})")
     if lang == "ja":
@@ -1345,7 +1410,8 @@ def point_focus_en(point_key, case):
     if point_key == "point-12":
         return f"The disagreement is the review prompt. First decide whether {actual} buys safety, value, route count, pressure, or placement before calling it right or wrong."
     if point_key == "point-13":
-        return yakuhai_threat_sentence(case, "en") or f"LuckyJ cleans {actual} before it turns into another player's yaku condition."
+        threat = yakuhai_threat_sentence(case, "en")
+        return f"{threat} LuckyJ releases it while no yaku or clear advancement is visible, accepting the current pon risk instead of carrying a potentially worse live tile later.".strip()
     if point_key == "point-14":
         return f"By cutting {actual}, LuckyJ keeps {kept} as a named defensive tile with a target."
     if point_key == "point-15":
@@ -1381,7 +1447,8 @@ def point_focus_ja(point_key, case):
     if point_key == "point-12":
         return f"この不一致そのものが復習点。{actual} が安全、価値、ルート数、圧力、着順のどれを買っているかを先に言う。"
     if point_key == "point-13":
-        return yakuhai_threat_sentence(case, "ja") or f"LuckyJ は {actual} が相手の役条件になる前に処理している。"
+        threat = yakuhai_threat_sentence(case, "ja")
+        return f"{threat} LuckyJ は役も明確な進行も見えないうちに切り、今のポンリスクと後でさらに危険になるコストを比較している。".strip()
     if point_key == "point-14":
         return f"{actual} を切って {naga} を明確な守備牌として残す。対象のある安全牌として扱っている。"
     if point_key == "point-15":
@@ -1399,7 +1466,7 @@ def copy_rule_en(point_key, case):
     if point_key == "point-01":
         return "Copy the score job: when your position is already good enough, lower the ambition, keep safe tiles, and let the hand fold unless a later draw makes it worth pushing."
     if point_key == "point-13":
-        return f"Copy this when {actual} is live yakuhai for an opened hand and your own hand is too slow to punish that player immediately."
+        return f"Copy the timing, not the tile: release {actual} only while no yaku or clear advancement is visible; once advancement is visible, choke it unless placement makes feeding acceptable."
     if point_key == "point-14":
         return f"Copy the target: keep {naga} when it answers a named opponent on a believable future bad draw."
     if point_key == "point-15":
@@ -1419,7 +1486,7 @@ def copy_rule_ja(point_key, case):
     if point_key == "point-01":
         return "点数状況を真似する。今の着順を守れば十分なら、目標を下げて安全牌を残し、次のツモで押す価値が出るまで無理しない。"
     if point_key == "point-13":
-        return f"{actual} が副露手の生きた役牌で、自分がすぐ罰せない時だけ真似する。"
+        return f"牌そのものではなく時機を真似する。役も明確な進行も見えない時だけ {actual} を先切りし、進行が見えた後は着順上の理由がない限り絞る。"
     if point_key == "point-14":
         return f"対象を真似する。{naga} が次の悪いツモで誰に効くかを言える時だけ残す。"
     if point_key == "point-15":
@@ -1553,6 +1620,22 @@ def build_call_guide(case, lang):
     from_seat = seat_label(case.get("called_from"), lang)
     meld = " ".join(case.get("consumed") or [])
     shape = case.get("post_call_eval") or {}
+    reserve_tiles = shape.get("targeted_reserve_tiles") or []
+    reserve = tile_token(reserve_tiles[0]) if reserve_tiles else None
+    primary = shape.get("primary_threat") or {}
+    primary_seat = seat_label(primary.get("seat"), lang)
+    if lang == "ja":
+        primary_label = (
+            f"{primary_seat}のリーチ"
+            if primary.get("kind") == "riichi"
+            else f"{primary_seat}の{primary.get('open_melds', 0)}副露手"
+        )
+    else:
+        primary_label = (
+            f"the {primary_seat}'s riichi"
+            if primary.get("kind") == "riichi"
+            else f"the {primary_seat}'s {primary.get('open_melds', 0)}-meld open hand"
+        )
     post_shape = shanten_text(shape.get("shanten"), lang)
     model_read = call_model_sentence(case, lang)
     consensus_call = call_heads_all_support(case)
@@ -1563,7 +1646,7 @@ def build_call_guide(case, lang):
     rank = case.get("current_rank") or case.get("rank")
     if lang == "ja":
         if point_key == "point-04":
-            focus = f"副露後の {discard} まで先に見えていることが大事。開いた後も次の安全牌を残している。"
+            focus = f"副露後の {discard} まで先に見え、さらに主脅威である{primary_label}に対する {reserve} を残している。"
         elif shape.get("shanten") is not None and shape.get("shanten") > 0 and (case.get("left") or 0) <= 1:
             focus = f"これは手牌完成の鳴きではなく、終局直前のテンポ鳴き。{discard} を切った後も {post_shape} なので、普通の和了形に近づいた例としては読まない。"
         elif shape.get("shanten") is not None and shape.get("shanten") <= 0:
@@ -1590,7 +1673,7 @@ def build_call_guide(case, lang):
             "answer": f"最初に見るのは鳴き後の打牌で、この例では {discard} まで見えている。{focus} {model_read}",
         }
     if point_key == "point-04":
-        focus = f"The important tile is the post-call {discard}. LuckyJ opens while keeping the first safe tile and the next concrete plan."
+        focus = f"The post-call {discard} is planned, and the shortened hand still keeps {reserve} as a verified exit against {primary_label}."
     elif shape.get("shanten") is not None and shape.get("shanten") > 0 and (case.get("left") or 0) <= 1:
         focus = f"This is a last-turn tempo call, not a hand-completion call. After {discard}, the hand is still {post_shape}, so do not read this as a normal pon that makes a winning shape."
     elif shape.get("shanten") is not None and shape.get("shanten") <= 0:
@@ -1799,6 +1882,61 @@ def cached_guide_has_discarded_route_claim(case, text):
     return False
 
 
+def route_family(route):
+    lower = str(route or "").lower()
+    if lower.startswith("ittsu:"):
+        return "ittsu"
+    if "sanshoku" in lower:
+        return "sanshoku"
+    if "iipeikou" in lower or "ryanpeikou" in lower:
+        return "iipeikou"
+    return None
+
+
+def route_families_after_discard(case, tile):
+    counts = Counter(base_tile(item) for item in case.get("hand", "").split())
+    discarded = base_tile(tile)
+    counts[discarded] -= 1
+    if counts[discarded] <= 0:
+        del counts[discarded]
+    return {
+        family
+        for route in detect_sequence_route_descriptions(counts)
+        if (family := route_family(route))
+    }
+
+
+def text_claims_asymmetric_shared_route(text, actual, naga, family):
+    terms = {
+        "ittsu": ["ittsu", "一気通貫", "イッツー"],
+        "sanshoku": ["sanshoku", "三色"],
+        "iipeikou": ["iipeikou", "ryanpeikou", "一盃口", "二盃口"],
+    }[family]
+    term_re = "|".join(re.escape(term) for term in terms)
+    actual_re = re.escape(f"[[{base_tile(actual)}]]")
+    naga_re = re.escape(f"[[{base_tile(naga)}]]")
+    preserve = r"(?:preserv\w*|keep\w*|maintain\w*|retain\w*|kept|残|維持|温存)"
+    lose = r"(?:sever\w*|destroy\w*|lose\w*|break\w*|close\w*|消|失|壊|断|閉ざ)"
+    if re.search(rf"(?:both|shared|survives both|両方|共通)[^.。]{{0,120}}(?:{term_re})", text, re.I):
+        return False
+    patterns = [
+        rf"(?:cut(?:ting)?|discard(?:ing)?)?[^.。]{{0,40}}{actual_re}[^.。]{{0,220}}{preserve}[^.。]{{0,160}}(?:{term_re})",
+        rf"{actual_re}(?:を|の)?(?:切|打)[^。]{{0,220}}(?:{term_re})[^。]{{0,160}}{preserve}",
+        rf"(?:cut(?:ting)?|discard(?:ing)?)?[^.。]{{0,40}}{naga_re}[^.。]{{0,220}}{lose}[^.。]{{0,160}}(?:{term_re})",
+        rf"{naga_re}(?:を|の)?(?:切|打)[^。]{{0,220}}(?:{term_re})[^。]{{0,160}}{lose}",
+    ]
+    return any(re.search(pattern, text, re.I) for pattern in patterns)
+
+
+def cached_guide_has_asymmetric_shared_route_claim(case, text):
+    if case.get("kind") == "call":
+        return False
+    actual = case.get("actual")
+    naga = case.get("naga")
+    shared = route_families_after_discard(case, actual) & route_families_after_discard(case, naga)
+    return any(text_claims_asymmetric_shared_route(text, actual, naga, family) for family in shared)
+
+
 def load_llm_cache():
     global LLM_CACHE
     if LLM_CACHE is not None:
@@ -1877,6 +2015,80 @@ def cached_guide_has_false_suji_claim(case, text):
     return False
 
 
+def approved_safety_tiles(case):
+    approved = set((case.get("post_call_eval") or {}).get("targeted_reserve_tiles") or [])
+    for read in iter_safety_reads(case):
+        if read.get("safe_against_threat") and read.get("tile"):
+            approved.add(base_tile(read["tile"]))
+    return {base_tile(tile) for tile in approved if tile}
+
+
+def cached_guide_has_unsupported_safety_claim(case, text):
+    if re.search(r"(?<![\d.])0\.\d{2,4}(?!\d)", text):
+        return True
+    approved = approved_safety_tiles(case)
+    claim = re.compile(
+        r"defensive reserve|safety (?:anchor|reserve)|safe tile|low(?:est)? (?:max )?danger|"
+        r"high safety|almost safe|near[- ]dead|守備(?:牌|材料|予備)|安全牌|高い安全度|低い危険度|ほぼ安全",
+        re.I,
+    )
+    for match in claim.finditer(text):
+        window = text[max(0, match.start() - 180): match.end() + 180]
+        named = {base_tile(tile) for tile in re.findall(r"\[\[([^\]]+)\]\]", window)}
+        if named and any(tile not in approved for tile in named):
+            return True
+        if not named and "reserve" in match.group(0).lower() and not approved:
+            return True
+    return False
+
+
+def cached_guide_treats_danger_proxy_as_probability(text):
+    patterns = (
+        r"\bdeal[- ]?in\s+(?:probability|chance|rate|risk)\b",
+        r"\b(?:probability|chance|rate|risk)\s+of\s+(?:a\s+)?deal[- ]?in\b",
+        r"\b(?:maximum|max|peak|highest)\s+deal[- ]?in\s+(?:probability|chance|rate|risk)\b",
+        r"放銃(?:率|確率|リスク)",
+    )
+    return any(re.search(pattern, text, re.I) for pattern in patterns)
+
+
+def cached_guide_uses_ambiguous_naga_threat_label(text):
+    return bool(re.search(r"\bNAGA threat\b|NAGA脅威", text, re.I))
+
+
+def point13_guide_lacks_pon_risk_acknowledgement(case, text):
+    """Do not reuse yakuhai-timing prose that implies a discard denies the call.
+
+    A correct Point 13 explanation must say plainly that releasing the honor offers
+    the pon now.  This also invalidates older cached prose that described the discard
+    as removing the opponent's yaku switch from the table.
+    """
+    if case.get("point") != "point-13":
+        return False
+    acknowledgements = (
+        r"(?:accept|take|pay|offer|allow)\w*[^.。]{0,80}(?:pon|call) risk",
+        r"offers?[^.。]{0,50}(?:the )?pon",
+        r"(?:ポン|鳴き)(?:される|させる|の)?[^。]{0,50}(?:リスク|危険|覚悟)",
+        r"(?:今|現時点)[^。]{0,50}(?:ポン|鳴か)",
+        r"ポンリスク",
+    )
+    return not any(re.search(pattern, text, re.I) for pattern in acknowledgements)
+
+
+def point13_guide_infers_hidden_distance(case, text):
+    """Reject prose that treats missing visible yaku as known concealed distance."""
+    if case.get("point") != "point-13":
+        return False
+    patterns = (
+        r"(?:opponent|open hand|hand)\s+(?:is\s+)?still\s+incomplete",
+        r"opponent\s+still\s+looks?\s+incomplete",
+        r"相手がまだ未完成",
+        r"相手がまだ遠い",
+        r"副露手がまだ遠い",
+    )
+    return any(re.search(pattern, text, re.I) for pattern in patterns)
+
+
 def cached_guide_conflicts(case, cached_entry):
     text = " ".join(
         str((cached_entry.get(section) or {}).get(field, ""))
@@ -1885,7 +2097,19 @@ def cached_guide_conflicts(case, cached_entry):
     )
     if cached_guide_has_discarded_route_claim(case, text):
         return True
+    if cached_guide_has_asymmetric_shared_route_claim(case, text):
+        return True
     if cached_guide_has_false_suji_claim(case, text):
+        return True
+    if cached_guide_has_unsupported_safety_claim(case, text):
+        return True
+    if cached_guide_treats_danger_proxy_as_probability(text):
+        return True
+    if cached_guide_uses_ambiguous_naga_threat_label(text):
+        return True
+    if point13_guide_infers_hidden_distance(case, text):
+        return True
+    if point13_guide_lacks_pon_risk_acknowledgement(case, text):
         return True
     if case_has_naga_split(case) and any(pattern.search(text) for pattern in FALSE_AGREEMENT_PATTERNS):
         nishiki_call = model_head((case or {}).get("call_model_heads") or [], "nishiki")
@@ -2062,7 +2286,32 @@ def value_tradeoff_signal(case):
 
 def post_call_has_defensive_reserve(case):
     shape = case.get("post_call_eval") or {}
-    return shape.get("pair_like_tiles", 0) > 0 or eval_contains_tile_class(shape, {"honor", "terminal"})
+    return bool(shape.get("targeted_reserve_tiles"))
+
+
+def point16_has_branch_difference(case):
+    actual_eval = case.get("actual_eval") or {}
+    naga_eval = case.get("naga_eval") or {}
+    if actual_eval.get("shanten") != naga_eval.get("shanten"):
+        return True
+    if actual_eval.get("ukeire") != naga_eval.get("ukeire"):
+        return True
+    if set(actual_eval.get("effective") or []) != set(naga_eval.get("effective") or []):
+        return True
+    hand = case.get("hand") or ""
+    if not hand:
+        return False
+    actual_shape = discard_shape_effect(hand, case.get("actual"))
+    naga_shape = discard_shape_effect(hand, case.get("naga"))
+    return (
+        actual_shape.get("role"),
+        tuple(actual_shape.get("block_tiles") or []),
+        tuple(actual_shape.get("floating_after") or []),
+    ) != (
+        naga_shape.get("role"),
+        tuple(naga_shape.get("block_tiles") or []),
+        tuple(naga_shape.get("floating_after") or []),
+    )
 
 
 def call_has_purpose(case):
@@ -2231,7 +2480,14 @@ def point_candidate_eligible(point_key, case):
     if point_key == "point-12":
         return is_discard_case(case) and case_has_naga_split(case) and review_disagreement_signal(case)
     if point_key == "point-13":
-        return kind == "discard" and stage == "early" and opponent_riichi_count(case) == 0 and actual_cls == "honor" and bool((case.get("yakuhai_cleanup") or {}).get("threats"))
+        return (
+            kind == "discard"
+            and stage == "early"
+            and opponent_riichi_count(case) == 0
+            and actual_cls == "honor"
+            and naga_cls != "honor"
+            and bool((case.get("yakuhai_cleanup") or {}).get("threats"))
+        )
     if point_key == "point-14":
         return kind == "discard" and is_live_safety_read(kept_read)
     if point_key == "point-15":
@@ -2244,7 +2500,13 @@ def point_candidate_eligible(point_key, case):
             and stale_safety_spend(case)
         )
     if point_key == "point-16":
-        return kind == "discard" and stage in {"middle", "late"} and actual_cls == "terminal" and naga_cls == "simple"
+        return (
+            kind == "discard"
+            and stage in {"middle", "late"}
+            and actual_cls == "terminal"
+            and naga_cls == "simple"
+            and point16_has_branch_difference(case)
+        )
     if point_key == "point-18":
         return kind == "discard" and actual_cls == "honor" and honor_role_signal(case)
     return True
@@ -2276,7 +2538,7 @@ _MORTAL_VERDICTS = None
 
 
 def load_mortal_verdicts():
-    """Map (log_id, kyoku_index, left, kind-ish action) -> mortal_agrees_luckyj from the
+    """Map (log_id, kyoku_index, left, kind-ish action) -> the prior Mortal record from the
     previous site/mortal-analysis.json run, so re-selection can prefer examples where the
     second engine already backed LuckyJ without re-running the replay."""
     global _MORTAL_VERDICTS
@@ -2291,7 +2553,7 @@ def load_mortal_verdicts():
                     sig = item.get("input_signature") or []
                     if len(sig) == 7:
                         # drop the point key: the verdict is a property of the game frame
-                        verdicts[tuple(sig[1:])] = bool(item.get("mortal_agrees_luckyj"))
+                        verdicts[tuple(sig[1:])] = item
         except (json.JSONDecodeError, OSError):
             pass
     _MORTAL_VERDICTS = verdicts
@@ -2329,21 +2591,37 @@ def mortal_frame_signature(candidate):
 
 
 def engine_backing(candidate):
-    """Return (naga_backing, mortal_backing) where naga_backing is True when any NAGA head
-    matches LuckyJ's line and mortal_backing is True/False/None (None = not yet replayed)."""
+    """Return exact NAGA support count and the matching prior Mortal record, when any."""
     kind = candidate.get("kind")
     if kind == "call":
         call_heads = candidate.get("call_model_heads") or []
         post_heads = candidate.get("post_call_model_heads") or []
-        naga = any(
+        naga = sum(
             head.get("supports_call")
             and (model_head(post_heads, head.get("key")) or {}).get("matches_luckyj", True)
             for head in call_heads
         )
     else:
-        naga = any(head.get("matches_luckyj") for head in candidate.get("model_heads") or [])
+        naga = sum(bool(head.get("matches_luckyj")) for head in candidate.get("model_heads") or [])
     mortal = load_mortal_verdicts().get(mortal_frame_signature(candidate))
     return naga, mortal
+
+
+def example_evidence_tier(candidate):
+    naga_count, mortal_item = engine_backing(candidate)
+    mortal_agrees = bool((mortal_item or {}).get("mortal_agrees_luckyj"))
+    mortal_type = ((mortal_item or {}).get("mortal") or {}).get("type")
+    declaration_only = candidate.get("kind") == "reach" and mortal_type == "reach"
+    full_mortal_support = mortal_agrees and not declaration_only
+    if full_mortal_support and naga_count >= 1:
+        return "corroborated"
+    if full_mortal_support or naga_count >= 2:
+        return "split_supported"
+    if naga_count >= 1:
+        return "contested"
+    if mortal_item is None:
+        return "unverified"
+    return "unsupported"
 
 
 def defensibility_bonus(point_key, candidate):
@@ -2354,23 +2632,28 @@ def defensibility_bonus(point_key, candidate):
     exempt because its subject is the disagreement itself."""
     if point_key in DISAGREEMENT_POINTS:
         return 0.0
-    naga, mortal = engine_backing(candidate)
-    bonus = 0.0
-    if naga:
-        bonus += 1.5
-    if mortal is True:
-        bonus += 3.0
-    elif mortal is False and not naga:
-        bonus -= 4.0
-    elif not naga:
-        bonus -= 1.5
-    return bonus
+    tier = example_evidence_tier(candidate)
+    return {
+        "corroborated": 8.0,
+        "split_supported": 6.0,
+        "contested": 3.0,
+        "unverified": 0.0,
+        "unsupported": -100.0,
+    }[tier]
 
 
 def add(selected, used, point_key, candidate, score=0.0):
     sig = candidate_signature(candidate)
     if not candidate or not sig or not point_candidate_eligible(point_key, candidate):
         return
+    tier = example_evidence_tier(candidate)
+    # A showcase that tells readers to copy a line needs at least one model-side
+    # endorsement. Unknown Mortal status plus zero NAGA support is not enough; keep
+    # those frames for Point 12's disagreement lab instead of cycling them through
+    # prescriptive points as new Mortal replays arrive.
+    if tier in {"unsupported", "unverified"} and point_key not in DISAGREEMENT_POINTS:
+        return
+    candidate["evidence_tier"] = tier
     score += baseline_example_bonus(candidate)
     score += defensibility_bonus(point_key, candidate)
     point_seen = used.setdefault(point_key, set())
@@ -3012,6 +3295,10 @@ def collect_examples():
     scores = {}
     used = {}
     for row in base.parse_rows():
+        # The public teaching set is intentionally evaluation-domain matched. Lower-room
+        # games remain in aggregate/source-scope counts, but not in the default examples.
+        if row.get("room") != "Tokujou":
+            continue
         target = row["actor"]
         data = base.fetch_report(row["report_id"])
         base.normalize_report(data)
@@ -3118,7 +3405,31 @@ def collect_examples():
     return selected
 
 
+def refresh_evidence_tiers():
+    """Refresh badges after the final Mortal pass without reselecting examples."""
+    data = json.loads(OUT.read_text(encoding="utf-8"))
+    changed = 0
+    for rows in data.values():
+        for case in rows:
+            tier = example_evidence_tier(case)
+            if case.get("evidence_tier") != tier:
+                case["evidence_tier"] = tier
+                changed += 1
+    OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"refreshed evidence tiers in {OUT}; changed={changed}")
+
+
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--refresh-evidence-only",
+        action="store_true",
+        help="update evidence badges from the final Mortal artifact without reselecting frames",
+    )
+    args = parser.parse_args()
+    if args.refresh_evidence_only:
+        refresh_evidence_tiers()
+        return
     OUT.parent.mkdir(parents=True, exist_ok=True)
     data = finalize_examples(collect_examples())
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")

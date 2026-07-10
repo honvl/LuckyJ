@@ -25,46 +25,46 @@ WINDS = ["E", "S", "W", "N"]
 SEQUENCES = {
     "value_honor_cleanup_animation": [
         {
-            "title": "Quiet seat-wind cleanup",
-            "game": 3,
-            "round": "East 3-0",
+            "title": "Quiet dragon cleanup",
+            "game": 417,
+            "round": "East 4-0",
             "start_turn": 1,
             "end_turn": 4,
             "focus_turn": 3,
-            "focus_honor": "S",
-            "note": "Quiet table: the singleton value wind leaves on turn 3.",
+            "focus_honor": "C",
+            "note": "Tokujou, child seat, quiet table: the singleton Red Dragon leaves on turn 3 with all three NAGA heads agreeing.",
         }
     ],
     "value_honor_cleanup": [
         {
-            "title": "Dragon leaves on turn 3",
-            "game": 1,
-            "round": "East 3-0",
-            "start_turn": 1,
-            "end_turn": 4,
-            "focus_turn": 3,
-            "focus_honor": "C",
-            "note": "Quiet table: Chun is still a single speculative value honor, so it leaves early.",
-        },
-        {
-            "title": "Dragon cleanup stays early",
-            "game": 2,
-            "round": "South 1-0",
-            "start_turn": 1,
-            "end_turn": 4,
-            "focus_turn": 3,
-            "focus_honor": "C",
-            "note": "Another quiet hand where LuckyJ does not wait for the lone dragon to pair.",
-        },
-        {
-            "title": "Second dragon cleanup",
-            "game": 4,
-            "round": "East 3-0",
+            "title": "Green Dragon leaves on turn 3",
+            "game": 561,
+            "round": "East 3-2",
             "start_turn": 1,
             "end_turn": 4,
             "focus_turn": 3,
             "focus_honor": "F",
-            "note": "Multiple value honors do not freeze the hand; the second lone dragon still leaves early.",
+            "note": "Tokujou, child seat, quiet table: the singleton Green Dragon leaves on turn 3 with all three NAGA heads agreeing.",
+        },
+        {
+            "title": "Round wind leaves on turn 3",
+            "game": 758,
+            "round": "East 3-1",
+            "start_turn": 1,
+            "end_turn": 4,
+            "focus_turn": 3,
+            "focus_honor": "E",
+            "note": "Tokujou, child seat, quiet table: the singleton round wind leaves on turn 3 with all three NAGA heads agreeing.",
+        },
+        {
+            "title": "Seat wind leaves on turn 3",
+            "game": 267,
+            "round": "East 4-0",
+            "start_turn": 1,
+            "end_turn": 4,
+            "focus_turn": 3,
+            "focus_honor": "W",
+            "note": "Tokujou, child seat, quiet table: the singleton seat wind leaves on turn 3 with all three NAGA heads agreeing.",
         },
     ],
 }
@@ -357,6 +357,8 @@ def replay_sequence(row: dict[str, Any], spec: dict[str, Any], kyoku: list[dict[
         "actor": target,
         "oya": start.get("oya"),
         "dealer_status": "child",
+        "room": row.get("room"),
+        "room_code": row.get("room_code"),
         "focus_honor": spec.get("focus_honor"),
         "note": spec.get("note"),
         "autoplay_indices": focus_indexes,
@@ -373,6 +375,8 @@ def build_sequences() -> dict[str, list[dict[str, Any]]]:
         output[key] = []
         for spec in specs:
             row = by_idx[spec["game"]]
+            if row.get("room") != "Tokujou":
+                raise ValueError(f"non-Tokujou prescription example selected: game {spec['game']} ({row.get('room')})")
             if spec["game"] not in report_cache:
                 data = base.fetch_report(row["report_id"])
                 base.normalize_report(data)

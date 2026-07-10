@@ -40,6 +40,8 @@ Strict Mahjong Rules & Constraints:
 12. Suji facts must come from the supplied safety facts. For middle tiles, use nakasuji correctly: [[4x]] needs both [[1x]] and [[7x]] visible, [[5x]] needs both [[2x]] and [[8x]], and [[6x]] needs both [[3x]] and [[9x]]. A lone outer discard such as [[9p]] does NOT by itself make [[6p]] suji.
 13. Mortal "Reach" outputs record the riichi declaration action only. If the Mortal section says reach support is declaration-only, you may cite Mortal as support for declaring riichi now, but you must NOT say Mortal endorsed LuckyJ's declaration discard tile, wait choice, or full discard line.
     Banned Mortal-Reach wording: "Mortal backs LuckyJ's line", "LuckyJ and Mortal both discard", "backed by Mortal" attached to LuckyJ's discard, or any wording that puts Mortal in the same clause as LuckyJ's declaration discard/wait. Use this framing instead: "Mortal supports declaring riichi; the discard/wait comparison remains LuckyJ versus Nishiki."
+14. Render all probabilities and danger values as percentages. Never expose a raw decimal such as 0.213 in reader-facing prose.
+15. The supplied NAGA danger values are comparative model proxies, not calibrated deal-in probabilities. Call them "NAGA danger readings" or "NAGA danger proxies". Never call a percentage a deal-in probability, rate, chance, or risk.
 
 Style Guidelines for English (professional-commentator voice):
 Model the register on translated Japanese strategy books ("Digital" school): a professional
@@ -215,13 +217,64 @@ def cached_guide_has_false_suji_claim(case, entry):
     return False
 
 
+def approved_safety_tiles(case):
+    approved = set((case.get("post_call_eval") or {}).get("targeted_reserve_tiles") or [])
+    for read in iter_safety_reads(case):
+        if read.get("safe_against_threat") and read.get("tile"):
+            approved.add(base_tile(read["tile"]))
+    return {base_tile(tile) for tile in approved if tile}
+
+
+def cached_guide_has_unsupported_safety_claim(case, entry):
+    text = cache_entry_text(entry)
+    if re.search(r"(?<![\d.])0\.\d{2,4}(?!\d)", text):
+        return True
+    approved = approved_safety_tiles(case)
+    claim = re.compile(
+        r"defensive reserve|safety (?:anchor|reserve)|safe tile|low(?:est)? (?:max )?danger|"
+        r"high safety|almost safe|near[- ]dead|守備(?:牌|材料|予備)|安全牌|高い安全度|低い危険度|ほぼ安全",
+        re.I,
+    )
+    for match in claim.finditer(text):
+        window = text[max(0, match.start() - 180): match.end() + 180]
+        named = {base_tile(tile) for tile in re.findall(r"\[\[([^\]]+)\]\]", window)}
+        if named and any(tile not in approved for tile in named):
+            return True
+        if not named and "reserve" in match.group(0).lower() and not approved:
+            return True
+    return False
+
+
 def cached_guide_conflicts(case, entry):
     if not entry:
         return False
     if cached_guide_has_discarded_route_claim(case, entry):
         return True
+    if cached_guide_has_asymmetric_shared_route_claim(case, entry):
+        return True
     if cached_guide_has_false_suji_claim(case, entry):
         return True
+    if cached_guide_has_unsupported_safety_claim(case, entry):
+        return True
+    text = cache_entry_text(entry)
+    proxy_probability_patterns = (
+        r"\bdeal[- ]?in\s+(?:probability|chance|rate|risk)\b",
+        r"\b(?:probability|chance|rate|risk)\s+of\s+(?:a\s+)?deal[- ]?in\b",
+        r"\b(?:maximum|max|peak|highest)\s+deal[- ]?in\s+(?:probability|chance|rate|risk)\b",
+        r"放銃(?:率|確率|リスク)",
+    )
+    if any(re.search(pattern, text, re.I) for pattern in proxy_probability_patterns):
+        return True
+    if case.get("point") == "point-13":
+        acknowledgements = (
+            r"(?:accept|take|pay|offer|allow)\w*[^.。]{0,80}(?:pon|call) risk",
+            r"offers?[^.。]{0,50}(?:the )?pon",
+            r"(?:ポン|鳴き)(?:される|させる|の)?[^。]{0,50}(?:リスク|危険|覚悟)",
+            r"(?:今|現時点)[^。]{0,50}(?:ポン|鳴か)",
+            r"ポンリスク",
+        )
+        if not any(re.search(pattern, text, re.I) for pattern in acknowledgements):
+            return True
     shape = case.get("post_call_eval") or {}
     if case.get("kind") == "call" and shape.get("shanten") is not None and shape.get("shanten") <= 0:
         text = cache_entry_text(entry)
@@ -633,6 +686,58 @@ def cached_guide_has_discarded_route_claim(case, entry):
     return False
 
 
+def route_family(route):
+    lower = str(route or "").lower()
+    if lower.startswith("ittsu:"):
+        return "ittsu"
+    if "sanshoku" in lower:
+        return "sanshoku"
+    if "iipeikou" in lower or "ryanpeikou" in lower:
+        return "iipeikou"
+    return None
+
+
+def route_families_after_discard(case, tile):
+    counts = hand_counts(case)
+    return {
+        family
+        for route in detect_sequence_routes_after_discard(counts, tile)
+        if (family := route_family(route))
+    }
+
+
+def text_claims_asymmetric_shared_route(text, actual, naga, family):
+    terms = {
+        "ittsu": ["ittsu", "一気通貫", "イッツー"],
+        "sanshoku": ["sanshoku", "三色"],
+        "iipeikou": ["iipeikou", "ryanpeikou", "一盃口", "二盃口"],
+    }[family]
+    term_re = "|".join(re.escape(term) for term in terms)
+    actual_re = re.escape(f"[[{base_tile(actual)}]]")
+    naga_re = re.escape(f"[[{base_tile(naga)}]]")
+    preserve = r"(?:preserv\w*|keep\w*|maintain\w*|retain\w*|kept|残|維持|温存)"
+    lose = r"(?:sever\w*|destroy\w*|lose\w*|break\w*|close\w*|消|失|壊|断|閉ざ)"
+    if re.search(rf"(?:both|shared|survives both|両方|共通)[^.。]{{0,120}}(?:{term_re})", text, re.I):
+        return False
+    patterns = [
+        rf"(?:cut(?:ting)?|discard(?:ing)?)?[^.。]{{0,40}}{actual_re}[^.。]{{0,220}}{preserve}[^.。]{{0,160}}(?:{term_re})",
+        rf"{actual_re}(?:を|の)?(?:切|打)[^。]{{0,220}}(?:{term_re})[^。]{{0,160}}{preserve}",
+        rf"(?:cut(?:ting)?|discard(?:ing)?)?[^.。]{{0,40}}{naga_re}[^.。]{{0,220}}{lose}[^.。]{{0,160}}(?:{term_re})",
+        rf"{naga_re}(?:を|の)?(?:切|打)[^。]{{0,220}}(?:{term_re})[^。]{{0,160}}{lose}",
+    ]
+    return any(re.search(pattern, text, re.I) for pattern in patterns)
+
+
+def cached_guide_has_asymmetric_shared_route_claim(case, entry):
+    if case.get("kind") == "call":
+        return False
+    text = cache_entry_text(entry)
+    actual = case.get("actual")
+    naga = case.get("naga")
+    shared = route_families_after_discard(case, actual) & route_families_after_discard(case, naga)
+    return any(text_claims_asymmetric_shared_route(text, actual, naga, family) for family in shared)
+
+
 def discard_route_impact_text(case):
     counts = hand_counts(case)
     rows = [
@@ -673,9 +778,9 @@ def required_route_note_text(case):
         )
     if both:
         return (
-            "- Mandatory reader-facing route note: both candidate branches preserve "
+            "- Background-only route note: both candidate branches preserve "
             + "; ".join(both)
-            + ". Mention this shared yaku skeleton explicitly."
+            + ". It does not distinguish the choices, so do not cite it as the reason for preferring either discard."
         )
     if nishiki_only:
         return (
@@ -975,7 +1080,7 @@ def teaching_fit_text(case):
     elif point == "point-12":
         lines.append(f"Teaching fit: model disagreement review prompt. Use the model split as evidence: {model_split_text(case)}")
     elif point == "point-13":
-        lines.append("Teaching fit: yakuhai cleanup against an open hand. Explain why the honor is still an opponent yaku condition.")
+        lines.append("Teaching fit: yakuhai timing against an open hand. Discarding offers the pon, so never call it denial. Do not infer concealed hand distance: explain the observable choice between releasing it while no yaku or clear advancement is visible and choking it once advancement becomes visible.")
     elif point == "point-14":
         lines.append("Teaching fit: keep a named genbutsu/suji tile. Name the exact target opponent for the kept safe tile.")
     elif point == "point-15":

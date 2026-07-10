@@ -7,7 +7,7 @@
     <link rel="alternate" hreflang="en" href="index.html" />
     <link rel="alternate" hreflang="ja" href="ja.html" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260703-prescriptions-rail" />
+    <link rel="stylesheet" href="styles.css?v=20260709-accuracy-audit-5" />
   </head>
   <body>
     <header class="topbar">
@@ -48,19 +48,19 @@
             <p class="kicker">What this book is</p>
             <h2>What LuckyJ teaches.</h2>
             <p>
-              LuckyJ is the player at the center of this book: a strong digital riichi style built around
-              practical table judgment layered on top of tile efficiency. The recurring habits are grouped into
+              LuckyJ is the self-play-trained AI at the center of this book. Its live Tokujou games show a digital
+              riichi style built around practical table judgment layered on top of tile efficiency. The recurring habits are grouped into
               things you can actually use mid-hand: value, shape, safe tiles, calls, pressure, and placement.
             </p>
             <p>
               NAGA is the AI review lens. Its model heads, including Nishiki, Hibakari, and Kagashi, show
               strong candidate lines and expose the moments where LuckyJ chooses another plan. Those
-              disagreements are where the teaching lives.
+              disagreements are review prompts, not automatic improvements over ordinary efficient play. LuckyJ still matches Nishiki's top discard about 73% of the time.
             </p>
             <div class="teacher-grid" aria-label="LuckyJ teaching frame">
               <article>
                 <span>LuckyJ</span>
-                <p>A real game style with repeated choices under score pressure, opponent pressure, and awkward hand shape.</p>
+                <p>A self-play-trained policy observed making repeated choices under score pressure, opponent pressure, and awkward hand shape.</p>
               </article>
               <article>
                 <span>NAGA</span>
@@ -68,7 +68,7 @@
               </article>
               <article>
                 <span>Teacher</span>
-                <p>The lesson is the split: what the model values, what LuckyJ values at the table, and when a human can copy the condition.</p>
+                <p>The split is a question: what the model values, what LuckyJ may be buying, and whether a human can verify the condition before copying it.</p>
               </article>
             </div>
             <p>
@@ -77,7 +77,7 @@
             </p>
             <p class="hero-actions">
               <a class="button-link primary" href="points.html#point-01">Start with point 01</a>
-              <a class="button-link" href="https://github.com/honvl/LuckyJ/blob/main/analysis/model-patterns-2026-06-30.md">Read the method notes</a>
+              <a class="button-link" href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-evidence-2026-07-09.md">Read the evidence audit</a>
             </p>
           </div>
           <div class="intro-panel" aria-label="How LuckyJ teaches">
@@ -100,6 +100,16 @@
           </div>
           <div class="tile-row" aria-label="Mahjong tile motif">
             <span class="tiles" aria-label="1m 4m 7m 5p 8p East White Red">qruz,157</span>
+          </div>
+        </section>
+
+        <section class="section source-scope" id="scope">
+          <p class="kicker">Source scope</p>
+          <h2>Tokujou was the test, not the training data.</h2>
+          <div class="source-scope-card">
+            <p>LuckyJ learned by self-play. This book analyzes a mixed Tenhou review corpus—1,079 Tokujou, 127 Upper, and 49 General games—with no Houou or Mahjong Soul sample. The full playbook now uses Tokujou-only teaching examples and labels the room beside each source.</p>
+            <p>Copy the portable mechanics first. Recalibrate calling, riichi, keiten, safety inventory, and placement thresholds for your room and rank-point system.</p>
+            <p>For Saint 3 four-player South, a nominal fourth at even score is about -255 points while first is about +125 in Jade or +135 in Throne. That makes fourth-place control valuable, but it supports target-specific exits—not indiscriminate safety hoarding against opponents who give you fewer free turns. <a href="points.html#scope">Read the calibration and limits</a>.</p>
           </div>
         </section>
 
@@ -163,7 +173,7 @@
           </div>
           <div class="rule">
             <strong>Revision to point 14:</strong> Keep safe tiles when they defend the next real threat, then spend them when that job expires.
-            The validation pass adds one more check: before calling a tile safe, test the label against live table context.
+            The evidence audit adds one more check: before calling a tile safe, test the label against live table context.
           </div>
         </section>
 
@@ -178,7 +188,8 @@
           <ul>
             <li><a href="points.html">Full LuckyJ playbook.</a></li>
             <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/model-patterns-2026-06-30.md">Method notes.</a></li>
-            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-validation-2026-06-30.md">Detailed audit report.</a></li>
+            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-evidence-2026-07-09.md">Detailed proxy-evidence audit.</a></li>
+            <li><a href="https://www.tencent.com/en-us/articles/2201746.html">Tencent: LuckyJ learned through self-play.</a></li>
             <li><a href="https://docs.google.com/spreadsheets/d/1jV-fi6E-z8BFdbS_LPfvpktSw8qc68PSZj9iEgdUC9U/edit?usp=drivesdk">Original game list.</a></li>
             <li><a href="https://natsuai.com/mahjong/digital">Format reference: Natsu AI digital mahjong points.</a></li>
           </ul>
@@ -186,6 +197,6 @@
       </article>
     </main>
 
-    <script src="app.js?v=20260703-prescriptions-rail"></script>
+    <script src="app.js?v=20260709-accuracy-audit-5"></script>
   </body>
 </html>

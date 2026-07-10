@@ -9,12 +9,14 @@ import time
 import urllib.request
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime
 from pathlib import Path
 
 
 SHEET_CSV = Path("data/LuckyJ.csv")
 CACHE_DIR = Path("data/report_cache")
 OUT_PATH = Path("data/luckyj_analysis.json")
+SOURCE_CORRECTIONS = Path("data/source_corrections.json")
 
 TILES = [
     "1m", "2m", "3m", "4m", "5m", "6m", "7m", "8m", "9m",
@@ -25,6 +27,12 @@ TILES = [
 IDX = {tile: idx for idx, tile in enumerate(TILES)}
 IDX.update({"5mr": IDX["5m"], "5pr": IDX["5p"], "5sr": IDX["5s"]})
 HURO_TYPES = {"chi", "pon", "daiminkan"}
+ROOM_LABELS = {
+    "0001": "General",
+    "0009": "General",
+    "0089": "Upper",
+    "0029": "Tokujou",
+}
 
 
 def mean(values):
@@ -46,8 +54,26 @@ def parse_float(row, key):
     return float(value) if value else None
 
 
-def parse_rows():
+def load_source_corrections():
+    if not SOURCE_CORRECTIONS.exists():
+        return {}
+    return json.loads(SOURCE_CORRECTIONS.read_text(encoding="utf-8"))
+
+
+def tenhou_log_id_from_url(url):
+    match = re.search(r"[?&]log=([0-9A-Za-z-]+)", url or "")
+    return match.group(1) if match else None
+
+
+def tenhou_room_code(log_id):
+    match = re.search(r"gm-([0-9a-fA-F]{4})-", log_id or "")
+    return match.group(1).lower() if match else None
+
+
+def _parse_rows_raw():
     rows = []
+    corrections = load_source_corrections()
+    paifu_overrides = corrections.get("paifu_overrides", {})
     with SHEET_CSV.open(newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             try:
@@ -60,6 +86,9 @@ def parse_rows():
             if not report.startswith("http"):
                 continue
             report_id = report_id_from_url(report)
+            paifu = (paifu_overrides.get(str(idx)) or {}).get("paifu", row.get("Paifu") or "")
+            log_id = tenhou_log_id_from_url(paifu)
+            room_code = tenhou_room_code(log_id)
             score_match = re.search(r"ⓝLuckyJ\(([+\-]?[0-9.]+)\)", row.get("Players") or "")
             rows.append(
                 {
@@ -70,8 +99,11 @@ def parse_rows():
                     "score": float(score_match.group(1)) if score_match else None,
                     "moves": int(float(row["Moves"])) if row.get("Moves") else None,
                     "report": report,
-                    "paifu": row.get("Paifu") or "",
+                    "paifu": paifu,
                     "report_id": report_id,
+                    "tenhou_log_id": log_id,
+                    "room_code": room_code,
+                    "room": ROOM_LABELS.get(room_code, f"Unknown ({room_code})" if room_code else "Unknown"),
                     "n_match": parse_float(row, "N-Match"),
                     "n_rating": parse_float(row, " N-Rating"),
                     "n_bad": parse_float(row, "N-Bad"),
@@ -83,6 +115,68 @@ def parse_rows():
                     "k_bad": parse_float(row, "K-Bad"),
                 }
             )
+    return rows
+
+
+def parse_rows_with_diagnostics():
+    raw_rows = _parse_rows_raw()
+    grouped = defaultdict(list)
+    for row in raw_rows:
+        grouped[row["report_id"]].append(row)
+
+    rows = []
+    duplicates = []
+    for report_id, candidates in grouped.items():
+        if len(candidates) == 1:
+            rows.append(candidates[0])
+            continue
+
+        report_haihu_id = None
+        try:
+            report_haihu_id = fetch_report(report_id).get("haihu_id")
+        except Exception:
+            pass
+        matches = [row for row in candidates if row.get("tenhou_log_id") == report_haihu_id]
+        if len(matches) != 1:
+            duplicates.append(
+                {
+                    "report_id": report_id,
+                    "report_haihu_id": report_haihu_id,
+                    "status": "ambiguous_excluded",
+                    "candidates": [
+                        {"idx": row["idx"], "tenhou_log_id": row.get("tenhou_log_id")}
+                        for row in candidates
+                    ],
+                }
+            )
+            continue
+        chosen = matches[0]
+        rows.append(chosen)
+        duplicates.append(
+            {
+                "report_id": report_id,
+                "report_haihu_id": report_haihu_id,
+                "status": "resolved",
+                "kept_idx": chosen["idx"],
+                "dropped": [
+                    {"idx": row["idx"], "tenhou_log_id": row.get("tenhou_log_id")}
+                    for row in candidates
+                    if row is not chosen
+                ],
+            }
+        )
+
+    rows.sort(key=lambda row: row["idx"])
+    return rows, {
+        "linked_rows": len(raw_rows),
+        "unique_reports": len(rows),
+        "duplicates_removed": len(raw_rows) - len(rows),
+        "duplicate_report_groups": duplicates,
+    }
+
+
+def parse_rows():
+    rows, _diagnostics = parse_rows_with_diagnostics()
     return rows
 
 
@@ -312,6 +406,25 @@ def round_result(end_msgs, target):
     return result
 
 
+def last_wall_count(kyoku):
+    for state in reversed(kyoku or []):
+        value = state.get("info", {}).get("msg", {}).get("left_hai_num")
+        if value is not None:
+            return value
+    return None
+
+
+def exhaustive_draw_tenpai(end_msgs, target, left_hai_num):
+    """Return the recorded tenpai state for an exhaustive draw, or None otherwise."""
+    if left_hai_num != 0:
+        return None
+    for msg in end_msgs or []:
+        tenpais = msg.get("tenpais")
+        if tenpais is not None and target < len(tenpais):
+            return bool(tenpais[target])
+    return None
+
+
 def stage_from_left(left):
     if left is None:
         return "unknown"
@@ -325,6 +438,15 @@ def stage_from_left(left):
 def analyze_report(row):
     target = row["actor"]
     data = fetch_report(row["report_id"])
+    report_haihu_id = data.get("haihu_id")
+    if row.get("tenhou_log_id") and report_haihu_id and row["tenhou_log_id"] != report_haihu_id:
+        raise ValueError(
+            f"report/log mismatch: report {row['report_id']} is {report_haihu_id}, "
+            f"sheet row {row['idx']} is {row['tenhou_log_id']}"
+        )
+    names = (data.get("player_info") or {}).get("name") or []
+    if target >= len(names) or "LuckyJ" not in str(names[target]):
+        raise ValueError(f"actor mismatch: sheet row {row['idx']} actor {target}, report names={names}")
     naga_types = normalize_report(data)
     n_models = len(naga_types)
     pred = data["pred"]
@@ -335,6 +457,10 @@ def analyze_report(row):
         "moves": row["moves"],
         "actor": target,
         "report_id": row["report_id"],
+        "tenhou_log_id": row.get("tenhou_log_id"),
+        "room_code": row.get("room_code"),
+        "room": row.get("room"),
+        "date": row.get("date"),
         "naga_types": naga_types,
         "rounds": len(pred),
         "round_wins": 0,
@@ -342,7 +468,8 @@ def analyze_report(row):
         "tsumo_wins": 0,
         "deal_ins": 0,
         "draws": 0,
-        "draw_tenpai_plus": 0,
+        "exhaustive_draws": 0,
+        "draw_tenpai": 0,
         "riichi": 0,
         "calls": 0,
         "call_rounds": 0,
@@ -375,8 +502,10 @@ def analyze_report(row):
         game["tsumo_wins"] += result["tsumo_win"]
         game["deal_ins"] += result["deal_in"]
         game["draws"] += result["draw"]
-        if result["draw"] and delta > 0:
-            game["draw_tenpai_plus"] += 1
+        draw_tenpai = exhaustive_draw_tenpai(end_msgs, target, last_wall_count(kyoku))
+        if draw_tenpai is not None:
+            game["exhaustive_draws"] += 1
+            game["draw_tenpai"] += int(draw_tenpai)
         start_rank = None
         if "seat2rank" in start_msg and target < len(start_msg["seat2rank"]):
             start_rank = start_msg["seat2rank"][target] + 1
@@ -485,7 +614,7 @@ def analyze_report(row):
     return game
 
 
-def collapse_games(rows, games, errors):
+def collapse_games(rows, games, errors, row_diagnostics=None):
     by_rank = {}
     for rank in [1, 2, 3, 4]:
         sub = [r for r in rows if r["rank"] == rank]
@@ -509,6 +638,14 @@ def collapse_games(rows, games, errors):
             nested_rank[rank].update(counter)
         for category, counter in game["deviation_outcomes"].items():
             deviation_outcomes[category].update(counter)
+    room_counts = Counter(row.get("room") for row in rows)
+    room_code_counts = Counter(row.get("room_code") for row in rows)
+    log_dates = []
+    for row in rows:
+        log_id = row.get("tenhou_log_id") or ""
+        if re.match(r"^\d{8}", log_id):
+            log_dates.append(datetime.strptime(log_id[:8], "%Y%m%d").date().isoformat())
+
     summary = {
         "rows": len(rows),
         "games_analyzed": len(games),
@@ -527,6 +664,17 @@ def collapse_games(rows, games, errors):
         "stage": {k: dict(v) for k, v in nested_stage.items()},
         "start_rank": {k: dict(v) for k, v in nested_rank.items()},
         "deviation_outcomes": {k: dict(v) for k, v in deviation_outcomes.items()},
+        "source_scope": {
+            "training": "self_play",
+            "evaluation_environment": "Tenhou live rooms",
+            "date_start": min(log_dates) if log_dates else None,
+            "date_end": max(log_dates) if log_dates else None,
+            "room_counts": dict(sorted(room_counts.items())),
+            "room_code_counts": dict(sorted(room_code_counts.items())),
+            "contains_houou": False,
+            "contains_mahjong_soul": False,
+            **(row_diagnostics or {}),
+        },
         "sheet_rows": rows,
         "game_features": games,
     }
@@ -534,7 +682,7 @@ def collapse_games(rows, games, errors):
 
 
 def main():
-    rows = parse_rows()
+    rows, row_diagnostics = parse_rows_with_diagnostics()
     games = []
     errors = []
     start = time.time()
@@ -550,7 +698,7 @@ def main():
                 elapsed = time.time() - start
                 print(f"processed {done}/{len(rows)} reports in {elapsed:.1f}s; errors={len(errors)}", flush=True)
     games.sort(key=lambda g: g["idx"])
-    summary = collapse_games(rows, games, errors)
+    summary = collapse_games(rows, games, errors, row_diagnostics)
     OUT_PATH.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"wrote {OUT_PATH} with {len(games)} games; errors={len(errors)}")
 

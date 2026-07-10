@@ -7,7 +7,7 @@
     <link rel="alternate" hreflang="en" href="index.html" />
     <link rel="alternate" hreflang="ja" href="ja.html" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260705-rx-animations" />
+    <link rel="stylesheet" href="styles.css?v=20260709-accuracy-audit-5" />
   </head>
   <body>
     <header class="topbar">
@@ -43,7 +43,7 @@
             <li><a href="#point-10">The Third Row Is a Counting Drill</a></li>
             <li><a href="#point-11">Treat Keiten as Attack</a></li>
             <li><a href="#point-12">Make Engine Splits Prove Their Case</a></li>
-            <li><a href="#point-13">Deny the Missing Yakuhai</a></li>
+            <li><a href="#point-13">Price the Missing Yakuhai</a></li>
             <li><a href="#point-14">Name Who Your Safe Tile Defends</a></li>
             <li><a href="#point-15">Spend Safety When Its Opponent Disappears</a></li>
             <li><a href="#point-16">The Edge Tile Can Be the Attack</a></li>
@@ -60,15 +60,27 @@
           <div class="intro-text">
             <p class="kicker">What this book is</p>
             <h2>A table-first LuckyJ playbook.</h2>
-            <p>
-              I went through 1,256 LuckyJ hanchan, 13,059 hands, and 147,378 discard decisions, then grouped
-              the recurring ideas into table habits you can practice: value, shape, safe tiles, calls, pressure,
-              and placement. Treat LuckyJ as a strong example player for review.
-            </p>
+            <p id="corpusIntro">I reviewed 1,255 unique NAGA-reviewed hanchan, 13,054 hands, and 147,337 LuckyJ discard decisions, then grouped them into habits you can use at the table.</p>
           </div>
           <div class="metrics-grid" id="metrics"></div>
           <div class="tile-row" aria-label="Mahjong tile motif">
             <span class="tiles" aria-label="1m 4m 7m 5p 8p East White Red">qruz,157</span>
+          </div>
+        </section>
+
+        <section class="section source-scope" id="scope">
+          <p class="kicker">Scope before style</p>
+          <h2>Start with ordinary efficient play.</h2>
+          <p>
+            LuckyJ matches Nishiki's top discard in about 73% of eligible reviewed decisions. This book focuses on
+            the remaining splits because they create useful review questions—not because deviation is LuckyJ's default.
+            Copy a split only when its value, safety, opponent, or placement condition is visible before the result.
+          </p>
+          <div class="source-scope-card">
+            <p><b>Training versus test:</b> LuckyJ learned through self-play, not by imitating Tokujou players. Tokujou was its public live test room. <a href="https://www.tencent.com/en-us/articles/2201746.html">Tencent's description</a>.</p>
+            <p id="sourceScopeDynamic">This book covers 1,255 unique hanchan from Apr 19–May 30, 2023: 1,079 Tokujou, 127 Upper, and 49 General. It contains no Houou or Mahjong Soul sample. Teaching examples below are restricted to Tokujou.</p>
+            <p><b>Transfer limit:</b> mechanics such as shanten, yaku legality, genbutsu, and target-specific safety travel well. Riichi, calling, keiten, safety-inventory, and placement thresholds must be recalibrated for the room and point system.</p>
+            <p><b>Saint 3 calibration (four-player South):</b> at an even 25,000-point finish, the current nominal placement spread is about +125 / +60 / -5 / -255 in Jade and +135 / +65 / -5 / -255 in Throne. The final-score adjustment moves those totals, but one fourth still costs roughly two firsts. That makes a named exit tile and late fold discipline portable. It does not make slow, untargeted safety hoarding free: stronger opponents allow fewer spare turns, and lost first/second equity still matters. <a href="https://mahjongsoul.club/content/%E7%8E%89%E3%81%AE%E9%96%93?language=en">Jade table</a>; <a href="https://mahjongsoul.club/content/%E7%8E%8B%E5%BA%A7%E3%81%AE%E9%96%93?language=en&amp;qt-qtpopular=0">Throne table</a> (checked July 2026).</p>
           </div>
         </section>
 
@@ -117,7 +129,7 @@
         <section class="section" id="prescriptions">
   <p class="kicker">Prescriptions</p>
   <h2>Simple switches to remember.</h2>
-  <p>These are not commandments. Read them as LuckyJ's default habits: what to do first, what changes the answer, and when a tile has stopped being ordinary. The point chapters explain the harder exceptions. Prescription baselines in this section now come from LuckyJ's non-dealer rounds only: about 109k of roughly 147k discard comparisons. As dealer, LuckyJ converges toward the NAGA line (top-discard match 76.4% as dealer vs 72.5% as child), so the child rounds are where its own style lives; as dealer, lean more textbook-efficient and aggressive. Per-game consistency still has real spread inside those child rounds: riichi declaration rate varies by about ±28pp and yakuhai pon by ±26pp, so these are context-driven tendencies, not fixed personality.</p>
+  <p>These are not commandments. Read them as LuckyJ's default habits: what to do first, what changes the answer, and when a tile has stopped being ordinary. The numeric baselines use non-dealer rounds from the full mixed Tenhou corpus—General, Upper, and Tokujou—while the replay examples are Tokujou-only. Treat the percentages as this corpus's descriptive rates, not universal thresholds. As dealer, LuckyJ converges toward the NAGA line (top-discard match 76.4% as dealer vs 72.5% as child), so lean more textbook-efficient and aggressive. Per-game spread remains large, which means these are context-driven tendencies, not a fixed personality.</p>
   <div class="rx-grid">
     <div class="rx-card">
       <div class="rx-example" data-rx-summary-key="value_honor_cleanup">
@@ -167,7 +179,7 @@
         </div>
       </div>
       <h3>Single value honors leave early</h3>
-      <p class="rx-rule">If a lone dragon or your value wind has no job yet, it usually leaves around turn 3. When someone has opened, wait longer: the child-only median is turn 6, and that same tile may be their missing yaku. Do not auto-cut it on turn 1, because about one in eight singletons paired up before LuckyJ threw them.</p>
+      <p class="rx-rule">If a lone dragon or your value wind has no job yet, it usually leaves around turn 3. In hands where someone had opened before the tile was eventually cut, the observed child-only median was turn 6. That is descriptive, not a command to feed it on turn 6: release it while no yaku or clear advancement is visible, or choke it once advancement becomes visible. Do not auto-cut it on turn 1, because about one in eight singletons paired before LuckyJ released them.</p>
       <table>
         <thead>
           <tr><th>Tile</th><th>Quiet hand</th><th>Someone opened</th><th>Pairs first</th></tr>
@@ -177,22 +189,22 @@
           <tr><td>Value wind</td><td>Turn 3</td><td>Turn 6</td><td>11%</td></tr>
         </tbody>
       </table>
-      <p class="rx-rule">When the hand starts with multiple singleton value honors, LuckyJ still sheds one early; it just does not clear all of them by the same clock. In 4,235 child hands with 2+ singleton value honors, the first one left at median turn 3 and was gone by turn 6 in 84.8% of eligible hands. The second was slower: median turn 5 and 53.4% by turn 6. At least one value honor paired before cut in 26.1% of those hands, so the extra honors are not all equal throwaways.</p>
+      <p class="rx-rule">When the hand starts with multiple singleton value honors, LuckyJ still sheds one early; it just does not clear all of them by the same clock. In 4,235 child hands with 2+ singleton value honors, the first one left at median turn 3 and was gone by turn 6 in 84.8% of eligible hands. The second was slower: median turn 5 and 53.3% by turn 6. At least one value honor paired before cut in 26.1% of those hands, so the extra honors are not all equal throwaways.</p>
       <table>
         <thead>
           <tr><th>Starting singleton value honors</th><th>Hands</th><th>Tile median</th><th>Cut by T6</th><th>Pairs first</th></tr>
         </thead>
         <tbody>
           <tr><td>1</td><td>3,737</td><td>Turn 3</td><td>74.8%</td><td>10.8%</td></tr>
-          <tr><td>2+</td><td>4,235</td><td>Turn 4</td><td>69.1%</td><td>12.1%</td></tr>
+          <tr><td>2+</td><td>4,235</td><td>Turn 4</td><td>69.0%</td><td>12.1%</td></tr>
         </tbody>
       </table>
-      <p class="rx-basis">Basis: lone value-honor cleanup timing. Dragon starts n=8,461; value-wind starts n=5,248. Quiet/open discard contexts n=4,814/2,131 and n=3,002/1,379; non-dealer rounds only.</p>
-      <p class="rx-basis">Multiple-value-honor basis: child starts with one singleton value honor n=3,737 hands; with 2+ n=4,235 hands and 9,972 tracked singleton value honors. In 2+ hands, first/second tracked discard n=4,018/3,240; first/second by-turn-6 eligibility n=4,149/4,086; all still-single value honors gone by turn 6 in 51.7% of eligible hands.</p>
+      <p class="rx-basis">Basis: lone value-honor cleanup timing. Dragon starts n=8,461; value-wind starts n=5,248. Quiet/open discard contexts n=4,813/2,132 and n=3,001/1,380; non-dealer rounds only.</p>
+      <p class="rx-basis">Multiple-value-honor basis: child starts with one singleton value honor n=3,737 hands; with 2+ n=4,235 hands and 9,972 tracked singleton value honors. In 2+ hands, first/second tracked discard n=4,018/3,240; first/second by-turn-6 eligibility n=4,149/4,086; all still-single value honors gone by turn 6 in 51.6% of eligible hands.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> your hand is ≤2 shanten on turn 3 → cut by turn 6 rises to 84.3% vs 61.5% at 3+ shanten (Δ+22.8pp, n=4,734/7,099); the tile is round wind → 78.2% vs 69.0% otherwise (Δ+9.1pp, n=2,065/9,768).</p>
-        <p class="rx-down"><b>Lower it:</b> your hand is 3+ shanten on turn 3 → 61.5% vs 84.3% at ≤2 shanten (Δ-22.8pp, n=7,099/4,734); the tile is double wind → 52.4% vs 71.2% otherwise (Δ-18.8pp, n=395/11,438); the tile is seat wind only → 66.8% vs 71.4% otherwise (Δ-4.6pp, n=2,089/9,744).</p>
-        <p class="rx-down">As dealer, cut-by-turn-6 rises to 76.7% across this base, and LuckyJ hews closer to the engine line; dealer rounds are excluded from this table.</p>
+        <p class="rx-up"><b>Raise it:</b> your hand is ≤2 shanten on turn 3 → cut by turn 6 rises to 84.3% vs 61.5% at 3+ shanten (Δ+22.8pp, n=4,732/7,102); the tile is round wind → 78.1% vs 69.0% otherwise (Δ+9.1pp, n=2,065/9,769).</p>
+        <p class="rx-down"><b>Lower it:</b> your hand is 3+ shanten on turn 3 → 61.5% vs 84.3% at ≤2 shanten (Δ-22.8pp, n=7,102/4,732); the tile is double wind → 52.4% vs 71.2% otherwise (Δ-18.8pp, n=395/11,439); the tile is seat wind only → 66.8% vs 71.4% otherwise (Δ-4.6pp, n=2,090/9,744).</p>
+        <p class="rx-down">As dealer, cut-by-turn-6 rises to 76.6% across this base, and LuckyJ hews closer to the engine line; dealer rounds are excluded from this table.</p>
       </div>
       <p class="rx-except">Keep it when it has paired, it is your only realistic yaku, or the open player may still need that exact tile. See <a href="#point-13">Point 12</a>.</p>
     </div>
@@ -261,10 +273,10 @@
           <tr><td>Turn 13+ vs riichi</td><td>8.2% cut</td><td>34.4% cut</td><td>52.5% hold</td></tr>
         </tbody>
       </table>
-      <p class="rx-basis">Basis: guest-wind cleanup n=6,026 starts. Riichi turns 7-9 visible-0/1 matching cells n=1,163/1,630. Late live-honor draws under riichi n=673; non-dealer rounds only.</p>
+      <p class="rx-basis">Basis: guest-wind cleanup n=6,027 starts. Riichi turns 7-9 visible-0/1 matching cells n=1,163/1,630. Late live-honor draws under riichi n=673; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> your hand is 0-1 shanten → cut the live honor 29.2% vs 4.9% at 2+ shanten (Δ+24.4pp, n=842/2,493); you have 0 genbutsu vs the riichi → 20.0% vs 8.0% with at least one (Δ+12.0pp, n=823/2,512).</p>
-        <p class="rx-down"><b>Lower it:</b> your hand is 2+ shanten → cut only 4.9% vs 29.2% at 0-1 shanten (Δ-24.4pp, n=2,493/842), which is why stopping live-honor matching is a folding behavior; you have 2+ genbutsu → 6.4% vs 14.8% with fewer outs (Δ-8.4pp, n=1,502/1,833).</p>
+        <p class="rx-up"><b>Raise it:</b> your hand is 0-1 shanten → cut the live honor 29.2% vs 4.9% at 2+ shanten (Δ+24.3pp, n=840/2,494); you have 0 genbutsu vs the riichi → 20.0% vs 8.0% with at least one (Δ+11.9pp, n=821/2,513).</p>
+        <p class="rx-down"><b>Lower it:</b> your hand is 2+ shanten → cut only 4.9% vs 29.2% at 0-1 shanten (Δ-24.3pp, n=2,494/840), which is why stopping live-honor matching is a folding behavior; you have 2+ genbutsu → 6.4% vs 14.7% with fewer outs (Δ-8.4pp, n=1,503/1,831).</p>
       </div>
       <p class="rx-except">Keep it when that wind is your safest answer to a named opponent, or when every cleaner exit has disappeared. See <a href="#point-18">Point 16</a>.</p>
     </div>
@@ -379,16 +391,16 @@
         <tbody>
           <tr><td>8+ waits</td><td>95.3% riichi</td><td></td><td></td></tr>
           <tr><td>4-7 waits</td><td>78.3% riichi</td><td></td><td></td></tr>
-          <tr><td>≤3 waits</td><td>33.9% riichi</td><td></td><td></td></tr>
+          <tr><td>≤3 waits</td><td>33.7% riichi</td><td></td><td></td></tr>
           <tr><td>Bad wait, +10k lead</td><td>32.5% riichi</td><td></td><td></td></tr>
           <tr><td>Declined first chance</td><td>21.6% later riichi</td><td>58.1% stays dama</td><td>20.3% breaks/folds</td></tr>
           <tr><td>Riichi into threat</td><td></td><td></td><td>43.2% had a &gt;10% stick discard</td></tr>
         </tbody>
       </table>
-      <p class="rx-basis">Basis: first riichi opportunities n=2,384. Wait buckets n=298/1,288/797. Bad wait with +10k lead n=83, small sample. Declined first chance n=821. Existing-threat declaration danger n=592; non-dealer rounds only.</p>
+      <p class="rx-basis">Basis: first riichi opportunities n=2,381. Wait buckets n=298/1,287/795, plus one unknown-wait record. Bad wait with +10k lead n=83, small sample. Declined first chance n=821. Existing-threat declaration danger n=590; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> with ≤3 unseen winning tiles, the wait has 2+ winning tile types → 63.6% vs 41.1% for single-type waits (Δ+22.4pp, n=140/440); at 4-7 waits, 2+ winning tile types → 84.0% vs 57.9% for single-type waits (Δ+26.2pp, n=1,008/280); at 4-7 waits, starting 4th → 88.2% vs 74.7% otherwise (Δ+13.4pp, n=346/942).</p>
-        <p class="rx-down"><b>Lower it:</b> ≤3 unseen into an existing riichi → 18.1% vs 38.4% otherwise (Δ-20.3pp, n=177/620); 4-7 waits into an existing riichi → 69.4% vs 80.4% otherwise (Δ-11.1pp, n=245/1,043); 4-7 waits with 2+ dora → 70.9% vs 81.0% otherwise (Δ-10.1pp, n=344/944).</p>
+        <p class="rx-up"><b>Raise it:</b> with ≤3 unseen winning tiles, the wait has 2+ winning tile types → 63.6% vs 40.9% for single-type waits (Δ+22.7pp, n=140/438); at 4-7 waits, 2+ winning tile types → 84.0% vs 57.9% for single-type waits (Δ+26.2pp, n=1,007/280); at 4-7 waits, starting 4th → 88.2% vs 74.7% otherwise (Δ+13.4pp, n=346/941).</p>
+        <p class="rx-down"><b>Lower it:</b> ≤3 unseen into an existing riichi → 17.6% vs 38.3% otherwise (Δ-20.7pp, n=176/619); 4-7 waits into an existing riichi → 69.4% vs 80.4% otherwise (Δ-11.0pp, n=245/1,042); 4-7 waits with 2+ dora → 70.8% vs 81.0% otherwise (Δ-10.2pp, n=343/944).</p>
         <p>As dealer, first-chance declares rise to 70.2% overall and ≤3-wait declares rise to 41.9%; dealer bad-wait cells are excluded from this child-only table.</p>
       </div>
       <p class="rx-except">Skip a mechanical riichi when the wait is bad, the hand is cheap, the stick discard is the danger, or your lead already has enough value. See <a href="#point-08">Point 07</a>.</p>
@@ -414,24 +426,24 @@
           </div>
         </div>
       </div>
-      <h3>Fight riichi only with a hand</h3>
-      <p class="rx-rule">Against riichi, hand distance is the first filter. Tenpai fights often, one-away fights sometimes, and two-away or worse usually defends. In the last 20 tiles, tighten again. Your first answer should usually be genbutsu unless the hand is real.</p>
+      <h3>Cross danger mainly with a real hand</h3>
+      <p class="rx-rule">This table is not a true push/fold rate. It counts how often LuckyJ's actual discard had more than 5% maximum NAGA danger. Against riichi, that happened more often from tenpai, less from one-away, and least from two-away or worse. In the last 20 tiles it fell again. Use it as a danger-taking proxy, while reading the first genbutsu response separately.</p>
       <table>
         <thead>
-          <tr><th>Hand</th><th>Push vs riichi</th><th>Last 20 tiles</th><th>First answer</th></tr>
+          <tr><th>Hand</th><th>&gt;5% danger discard</th><th>Last 20 tiles</th><th>First answer: genbutsu</th></tr>
         </thead>
         <tbody>
-          <tr><td>Tenpai</td><td>58.8%</td><td>52.6%</td><td>35.3%</td></tr>
-          <tr><td>1-shanten</td><td>31.7%</td><td>21.5%</td><td>56.8%</td></tr>
+          <tr><td>Tenpai</td><td>58.9%</td><td>52.6%</td><td>35.3%</td></tr>
+          <tr><td>1-shanten</td><td>31.7%</td><td>21.6%</td><td>56.9%</td></tr>
           <tr><td>2-shanten</td><td>19.6%</td><td>13.8%</td><td>65.1%</td></tr>
           <tr><td>3+ shanten</td><td>14.1%</td><td>8.1%</td><td>68.7%</td></tr>
         </tbody>
       </table>
-      <p class="rx-basis">Basis: closed-hand decisions vs riichi by shanten n=986/4,355/4,805/2,889. Last-20 cells n=407/1,323/1,380/708. First-discard genbutsu cells n=278/1,272/1,136/559; non-dealer rounds only.</p>
+      <p class="rx-basis">Basis: closed-hand decisions vs riichi by shanten n=986/4,361/4,810/2,889. Last-20 cells n=407/1,325/1,381/708. First-discard genbutsu cells n=278/1,275/1,136/559; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> 1-shanten with 0 genbutsu → push 53.1% vs 27.5% with any genbutsu (Δ+25.6pp, n=702/3,653), a forced-push signal rather than aggression; 1-shanten with more than 20 tiles left → 36.1% vs 21.5% in the last 20 (Δ+14.6pp, n=3,032/1,323); tenpai with 0 genbutsu → 69.9% vs 56.8% with any genbutsu (Δ+13.1pp, n=153/833); tenpai with 2 dora → 65.4% vs 57.0% otherwise (Δ+8.4pp, n=211/775).</p>
-        <p class="rx-down"><b>Lower it:</b> tenpai with 2+ genbutsu in hand → 53.6% vs 67.6% with fewer genbutsu (Δ-14.0pp, n=619/367), usually choice not necessity; tenpai with ≤20 tiles left → 52.6% vs 63.2% earlier (Δ-10.6pp, n=407/579); 1-shanten with ≤20 tiles left → 21.5% vs 36.1% earlier (Δ-14.6pp, n=1,323/3,032).</p>
-        <p>As dealer these numbers rise across the board: tenpai push is 67.9% and 1-shanten push is 38.5%; dealer rounds are excluded from this table.</p>
+        <p class="rx-up"><b>More &gt;5% danger:</b> 1-shanten with 0 genbutsu → 53.3% vs 27.5% with any genbutsu (Δ+25.8pp, n=700/3,661), a forced-discard signal rather than pure aggression; 1-shanten with more than 20 tiles left → 36.1% vs 21.6% in the last 20 (Δ+14.5pp, n=3,036/1,325); tenpai with 0 genbutsu → 70.4% vs 56.8% with any genbutsu (Δ+13.6pp, n=152/834); tenpai with 2 dora → 65.6% vs 57.1% otherwise (Δ+8.5pp, n=212/774).</p>
+        <p class="rx-down"><b>Less &gt;5% danger:</b> tenpai with 2+ genbutsu in hand → 53.7% vs 67.8% with fewer genbutsu (Δ-14.1pp, n=620/366), usually choice not necessity; tenpai with ≤20 tiles left → 52.6% vs 63.4% earlier (Δ-10.8pp, n=407/579); 1-shanten with ≤20 tiles left → 21.6% vs 36.1% earlier (Δ-14.5pp, n=1,325/3,036).</p>
+        <p>As dealer these danger-proxy rates rise: tenpai 67.8% and 1-shanten 38.6%; dealer rounds are excluded from this table.</p>
       </div>
       <p class="rx-except">Skip the fold when your hand is tenpai with value or the safe tile destroys your only winning route; reprice again every draw. See <a href="#point-09">Point 08</a> and <a href="#point-10">Point 09</a>.</p>
     </div>
@@ -457,22 +469,22 @@
         </div>
       </div>
       <h3>Open hands ask for tile control</h3>
-      <p class="rx-rule">Do not fold to every open hand, but do not ignore them either. Two open sets by the middle row deserve respect; three open sets are serious. LuckyJ still pushes some scary-looking spots, but by choosing the discard carefully, not by treating the hand as harmless.</p>
+      <p class="rx-rule">Do not fold to every open hand, but do not ignore one either. These percentages count actual discards above 5% NAGA danger, not true pushes. Two open sets by the middle row and three open sets later both reduce that proxy, but the action still depends on whether the chosen tile advances the hand or simply survives the threat.</p>
       <table>
         <thead>
-          <tr><th>Opponent shape</th><th>Early push</th><th>Middle push</th><th>Late push</th></tr>
+          <tr><th>Opponent shape</th><th>Early &gt;5%</th><th>Middle &gt;5%</th><th>Late &gt;5%</th></tr>
         </thead>
         <tbody>
-          <tr><td>2 open sets</td><td>52.6%</td><td>42.6%</td><td>37.6%</td></tr>
+          <tr><td>2 open sets</td><td>52.7%</td><td>42.6%</td><td>37.6%</td></tr>
           <tr><td>3+ open sets</td><td>51.2% <small>(n=86)</small></td><td>40.9%</td><td>32.7%</td></tr>
         </tbody>
       </table>
-      <p class="rx-basis">Basis: open-hand danger proxy by meld count and turn. Two-meld cells n=1,229/6,498/3,482. Three-plus-meld cells n=86/1,125/1,036; early three-plus cell is a small sample; non-dealer rounds only.</p>
+      <p class="rx-basis">Basis: open-hand danger proxy by meld count and turn. Two-meld cells n=1,228/6,497/3,478. Three-plus-meld cells n=86/1,125/1,036; early three-plus cell is a small sample; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Raise it:</b> your hand is ≤1 shanten → push 47.4% vs 26.9% at 2+ shanten (Δ+20.5pp, n=7,855/4,286).</p>
-        <p class="rx-down"><b>Lower it:</b> your hand is 2+ shanten → 26.9% vs 47.4% at ≤1 shanten (Δ-20.5pp, n=4,286/7,855).</p>
+        <p class="rx-up"><b>More &gt;5% danger:</b> your hand is ≤1 shanten → 47.4% vs 26.9% at 2+ shanten (Δ+20.5pp, n=7,849/4,287).</p>
+        <p class="rx-down"><b>Less &gt;5% danger:</b> your hand is 2+ shanten → 26.9% vs 47.4% at ≤1 shanten (Δ-20.5pp, n=4,287/7,849).</p>
       </div>
-      <p class="rx-except">Skip the push when your hand is cheap and far and the next discard has no named safety; defend by choosing the tile that answers the player. See <a href="#point-04">Point 04</a> and <a href="#point-14">Point 13</a>.</p>
+      <p class="rx-except">Skip the push when your hand is cheap and far and the next discard has no named safety; defend by choosing the tile that answers the player. See <a href="#point-04">Point 04</a> and <a href="#point-14">Point 14</a>.</p>
     </div>
     <div class="rx-card">
       <div class="rx-example" data-rx-summary-key="endgame_price">
@@ -522,21 +534,21 @@
         </div>
       </div>
       <h3>Endgame tenpai has a price</h3>
-      <p class="rx-rule">In the last 12 tiles, call for tenpai more often from one-away than from far away. Once already tenpai, LuckyJ often pays moderate danger to keep it. From two-away under riichi, it usually defends. After two very safe folds, reopening the hand is optional, not automatic.</p>
+      <p class="rx-rule">In the last 12 tiles, call for tenpai more often from one-away than from far away. The riichi rows below are again a danger proxy: they count a discard above 5% NAGA danger, not whether the hand strategically pushed. After two very safe folds, a later above-5% discard occurred 47.0% of the time; that does not by itself prove the hand reopened.</p>
       <table>
         <thead>
           <tr><th>Endgame spot</th><th>LuckyJ habit</th></tr>
         </thead>
         <tbody>
           <tr><td>Call in last 12 tiles</td><td>1-away 30.8%; 2+ away 20.1%; already tenpai 4.5%</td></tr>
-          <tr><td>Already tenpai vs riichi</td><td>20-11 tiles 66.9%; 10-6 tiles 67.2%; 5-0 tiles 60.4%</td></tr>
-          <tr><td>2+ away vs riichi</td><td>20-11 tiles 26.3%; 10-6 tiles 23.7%; 5-0 tiles 24.8%</td></tr>
-          <tr><td>After two very safe folds</td><td>Reopens 47.0%; stays folded 53.0%</td></tr>
+          <tr><td>Tenpai: &gt;5% danger vs riichi</td><td>20-11 tiles 66.9%; 10-6 tiles 67.2%; 5-0 tiles 60.4%</td></tr>
+          <tr><td>2+ away: &gt;5% danger vs riichi</td><td>20-11 tiles 26.3%; 10-6 tiles 23.7%; 5-0 tiles 24.8%</td></tr>
+          <tr><td>After two &lt;1% danger discards</td><td>Later &gt;5% discard 47.0%; none 53.0%</td></tr>
         </tbody>
       </table>
-      <p class="rx-basis">Basis: last-12 call opportunities n=465/670/335. Riichi-under-keiten push cells: tenpai n=727/287/270, 2+ shanten n=2,034/730/666. Fold-commitment row n=954; non-dealer rounds only.</p>
+      <p class="rx-basis">Basis: last-12 call opportunities n=465/670/335. Riichi danger-proxy cells: tenpai n=727/287/270, 2+ shanten n=2,034/730/666. Two-safe-discard sequence n=954; non-dealer rounds only.</p>
       <div class="rx-mods">
-        <p class="rx-up"><b>Thin coverage:</b> endgame call data is only a proxy: ≤12 tiles left makes a first chi from closed 18.2% vs 6.2% earlier (Δ+12.0pp, n=665/15,619); tenpai vs riichi with ≤20 tiles left lowers dangerous pushes to 52.6% vs 63.2% earlier (Δ-10.6pp, n=407/579).</p>
+        <p class="rx-up"><b>Thin coverage:</b> endgame call data is only a proxy: ≤12 tiles left makes a first chi from closed 18.2% vs 6.2% earlier (Δ+12.0pp, n=665/15,619); tenpai vs riichi with ≤20 tiles left lowers dangerous pushes to 52.6% vs 63.4% earlier (Δ-10.8pp, n=407/579).</p>
       </div>
       <p class="rx-except">Skip the keiten fight when the point exchange cannot change placement, the tile is too dangerous for the draw value, or a safe fold preserves more. See <a href="#point-11">Point 10</a> and <a href="#point-12">Point 11</a>.</p>
     </div>
@@ -639,7 +651,7 @@
             wait-combo count, number of threats, or placement pressure.
           </div>
           <div class="rule">
-            <strong>Validation addendum:</strong> Treat qualitative review ideas as prompts to test against
+            <strong>Evidence addendum:</strong> Treat qualitative review ideas as prompts to test against
             the replay data. The useful generalized refinements are live-context danger reading, route-over-shape
             evaluation, inventory before riichi, and continued role labeling after calls or push decisions.
           </div>
@@ -650,8 +662,8 @@
           <div class="point-body">
             <h3>Put Placement Before Ukeire</h3>
             <p>Start with the hanchan, then judge the hand. Tile efficiency tells you which discard gains shape; it does not tell you whether a 1,000-point win is enough, whether 5,200 changes the table, or whether pushing for 8,000 only hands first place to someone else. In South rounds especially, the same two-shanten hand can be a hand to end quietly, a hand to build into mangan, or a hand to abandon the moment one dangerous tile appears.</p>
-            <p>LuckyJ's results make this practical rather than philosophical. Across over 1,200 games and 13,000 hands, the average placement was about 2.26, with a win rate of about 23% and a deal-in rate of about 10%. The split is the important part: top-half games averaged 3.09 wins and 0.75 deal-ins, while bottom-half games averaged 1.39 wins and 1.48 deal-ins. Strong play was not just winning more hands; it was converting the right hands while refusing the wrong losses.</p>
-            <p>The leader pattern is real, but do not exaggerate it. Across a little over five thousand leader spots in the mined sample, LuckyJ showed a repeatable lean toward lower-danger choices among comparable tiles, and every showcased example here has at least one NAGA head on LuckyJ's side. Mortal, the stricter judge, backed fewer than half of them — so this is not a license to strangle every leading hand. It means that when two discards are close, the one that leaves a clean next turn and avoids a needless live middle tile deserves extra credit.</p>
+            <p>LuckyJ's results make this practical rather than philosophical. Across over 1,200 games and 13,000 hands, the average placement was about 2.27, with a win rate of about 23% and a deal-in rate of about 10%. The split is the important part: top-half games averaged 3.09 wins and 0.75 deal-ins, while bottom-half games averaged 1.39 wins and 1.48 deal-ins. Strong play was not just winning more hands; it was converting the right hands while refusing the wrong losses.</p>
+            <p>The leader pattern is real, but do not exaggerate it. Across a little over five thousand leader spots in the mined sample, LuckyJ showed a repeatable lean toward lower-danger choices among comparable tiles, and every showcased example here has at least one NAGA head on LuckyJ's side. Mortal support is mixed, so this is not a license to strangle every leading hand. It means that when two discards are close, the one that leaves a clean next turn and avoids a needless live middle tile deserves extra credit.</p>
             <p><b>The exception is urgency.</b> If you are third or fourth and a 1,000-point hand leaves the order unchanged, overprotecting shape is just a slower way to lose. A discard that keeps riichi, dora, or mangan alive can beat the locally safest tile when the value threshold is real. Conversely, when a cheap win protects first, do not turn it into a 5,200 dream by volunteering danger that the hanchan does not require.</p>
             <div class="rule">
               <strong>Rule:</strong> Before counting ukeire, compare the likely cheap win, real value upgrade, and danger budget against the current hanchan, then discard for that comparison.
@@ -686,7 +698,7 @@
           <div class="point-body">
             <h3>Call Only When the Call Changes the Hand</h3>
             <p>Opening a bad shape is not the same thing as giving up value. The question is whether the call changes the hand from a wish into something that can win, reach tenpai, buy tempo, or end the round. A [[P]] pon that gives yaku and a 1,000-point finish before the dealer's riichi develops can be better than waiting for a closed premium worth about two han that this hand may never earn. A chi that merely turns bad two-shanten into exposed bad two-shanten is just paying value for no compensation.</p>
-            <p>LuckyJ is not a closed-only machine: it called in about 36% of hands and averaged about 5.6 calls per hanchan. But it also skipped roughly 2,000 calls that NAGA preferred, which is the important half of the story. In top-half games LuckyJ was more active, with 5.79 calls and 2.11 riichi per game, compared with 5.44 calls and 1.67 riichi in bottom-half games. The lesson is not “call more.” It is that passivity and random exposure are both weaker than selective opening.</p>
+            <p>LuckyJ is not a closed-only machine: it called in about 36% of hands and averaged about 5.65 calls per hanchan. But it also skipped roughly 2,000 calls that NAGA preferred, which is the important half of the story. In top-half games LuckyJ was more active, with 5.80 calls and 2.11 riichi per game, compared with 5.44 calls and 1.67 riichi in bottom-half games. The lesson is not “call more.” It is that passivity and random exposure are both weaker than selective opening.</p>
             <p>So before you take the tile, look at what becomes true after the call. Does it make a legal yaku, produce immediate tenpai, turn a useless block into real one-shanten, deny the dealer a free draw, or let you take safe keiten later? Those are different gains, but all of them are visible on the next discard. If you cannot choose the post-call discard cleanly, or you cannot name the safe tile you are keeping for the first threat, you probably liked the sound of calling more than the position it creates.</p>
             <p>Of course, a good closed hand should charge rent for being opened. Pinfu with dora, good shape, and riichi access is often aiming at 3,900 or more once riichi pressure and ura are included. Opening that into a fragile 1,000-point hand with no safety is not modern aggression; it is impatience. Bad shapes invite calls only when the call solves a real problem.</p>
             <div class="rule">
@@ -703,9 +715,9 @@
           <div class="point-number">04</div>
           <div class="point-body">
             <h3>Keep Brakes on Open Hands</h3>
-            <p>The first call does not remove defense from the hand; it makes defense more expensive. Once you open, your hand is shorter, your closed value is gone, and you have fewer chances to draw a random safe tile later. Keeping a genbutsu or a live honor after opening is not cowardice. It is the price of continuing to attack without promising to throw the next live [[5p]] through a riichi.</p>
+            <p>The first call does not remove defense from the hand; it makes defense more expensive. Once you open, your hand is shorter, your closed value is gone, and you have fewer chances to draw a random safe tile later. Keeping a genbutsu or correctly established suji against the live threat is not cowardice. It is the price of continuing to attack without promising to throw the next live [[5p]] through a riichi.</p>
             <p>This is especially clear with cheap open hands. A 1,000-point yakuhai hand that is still two-shanten cannot spend every safe tile just to gain a few ukeire, because the future push may be against 3,900, 8,000, or dealer pressure. The same discard looks different when the hand is 3,900 tenpai with a good wait. Value and distance decide whether safety is fuel or clutter.</p>
-            <p>The LuckyJ sample shows this as a habit, not an accident. Across more than 54,000 split decisions, LuckyJ kept defensive material over 30,000 times; in late split spots it kept such material in over 5,200 of about 5,600 cases. Those numbers do not mean “hoard safe tiles.” They mean that as the hand gets shorter and the round gets later, one tile that is safe to the right opponent may be the difference between pushing once more and folding cleanly.</p>
+            <p>The open-hand evidence is now scoped to hands LuckyJ had actually opened. Across <span data-book-stat="decision_counters.defense_retention.self_open.overall.splits">6,021</span> LuckyJ/Nishiki open-hand splits, LuckyJ retained a recognized defensive tile in <span data-book-stat="decision_counters.defense_retention.self_open.overall.kept_defense_tile">3,536</span>, including <span data-book-stat="decision_counters.defense_retention.self_open.overall.kept_against_live_threat">1,723</span> tied to a live threat. These are descriptive choices, not proof that keeping the tile caused a better result.</p>
             <p>After every pon or chi, ask who your saved tile answers. Safe to the quiet player is often just clutter; safe to the riichi player, the dealer, or the open honitsu seat is a real resource. Of course, when your open hand is already a strong tenpai or the table is quiet and your value is sufficient, you can spend the spare safety. The mistake is spending it automatically because the hand has become “attack.”</p>
             <div class="rule">
               <strong>Rule:</strong> After every call, identify the tile that lets the open hand stop or continue safely; if none exists, the call must be immediate tenpai or worth real value.
@@ -741,7 +753,7 @@
             <h3>Buy Value While It Is Cheap</h3>
             <p>Value planning starts before the hand looks valuable. The first discard is often the cheapest time to keep a red five connection, a dora side shape, or a yakuhai pair, because the hand still has several ways to reorganize. If you wait until iishanten to ask for 5,200, the price is usually a block, a wait, or a dangerous tile. Modern efficiency is not low value; it is knowing when the efficient hand is too small.</p>
             <p>Take the ordinary comparison. A fast 1,000 or 2,000 can be perfect when it ends a parent turn or protects first, but it is a poor answer when South 3 requires a mangan swing. Keeping red-five access or dora use may turn the same skeleton into 5,200 or 8,000, and that changes whether a future riichi, call, or push is worth making. Dealer value sharpens this because dealer hands pay one and a half times; a hand that is merely acceptable as child can become table control as dealer.</p>
-            <p>The data supports the narrow version of this point, not the reckless one. In over six hundred dora and red-five retention spots, LuckyJ showed a clear tendency to keep value material when it still belonged to the hand. The broader story, <em>behind means buy risk</em>, did not get the same support: on the showcased value trades a NAGA head sides with LuckyJ each time, but Mortal almost always prefers the plainer efficiency line. Copy the red and dora discipline, not the fantasy that any expensive tile becomes correct because you are behind.</p>
+            <p>The data supports the narrow version of this point, not the reckless one. In over six hundred dora and red-five retention spots, LuckyJ showed a clear tendency to keep value material when it still belonged to the hand. The broader story, <em>behind means buy risk</em>, did not get the same support: on the showcased value trades a NAGA head sides with LuckyJ each time, while Mortal frequently prefers the plainer efficiency line. Copy the red and dora discipline, not the fantasy that any expensive tile becomes correct because you are behind.</p>
             <p><b>The exception is fake value.</b> An isolated dora that does not connect, a yakuhai singleton you cannot use, or a honitsu idea that asks you to throw live middle tiles is not value planning. If the hand's realistic future is still 1,000 after you keep the shiny tile, cut it and build the best hand you actually have. Donating a dealer mangan while dreaming of your own is not courage; it is bad accounting.</p>
             <div class="rule">
               <strong>Rule:</strong> Keep dora, red-five, and yakuhai value early when they still improve a real winning line; do not buy value with isolated danger or decorative yaku.
@@ -758,7 +770,7 @@
           <div class="point-body">
             <h3>Make Riichi Tax the Table</h3>
             <p>You cannot discuss modern riichi without discussing riichi as pressure. The declaration is not merely one extra han; it adds uradora chances, locks your hand, and often pushes opponents into betaori. A quiet 2,000-point damaten and a riichi hand that threatens 3,900 to 8,000 are different animals. The question is not "can I reach?" but "does reaching make the table pay?"</p>
-            <p>LuckyJ's volume is active but not mindless. Overall it averaged about 1.9 riichi per hanchan, and top-half games used more riichi than bottom-half games, about 2.11 compared with 1.67. That difference points in the right direction, but the lesson is conversion quality, not button-mashing. The strongest honesty check in this book is here: Mortal backed LuckyJ 10/10 on the sampled riichi pressure cases, and at least one NAGA head also supported all ten. When LuckyJ reached in these spots, the second engine agreed that the declaration was doing work.</p>
+            <p>LuckyJ's volume is active but not mindless. Overall it averaged about 1.9 riichi per hanchan, and top-half games used more riichi than bottom-half games, about 2.11 compared with 1.67. That difference points in the right direction, but the lesson is conversion quality, not button-mashing. The sampled pressure-riichi cases receive unusually broad outside-engine support. Mortal usually supports declaring riichi in them, but that verdict covers the declaration only—not necessarily LuckyJ's declaration discard or wait.</p>
             <p>Good riichi changes opponent behavior. First-to-act pressure against quiet rivers can make a leader throw away a 1,000-point open hand, freeze a dealer's two-shanten, or buy you the fold equity that a dama hand never receives. It also changes your own threshold: a bad 1,300 reach into two live threats is often just a 1,000-point stick and several forced danger tiles, while a 5,200-class reach with a live wait can be worth the lock because winning or making everyone fold both have value.</p>
             <p><b>The exception is when riichi stops solving the actual problem.</b> If dama already passes a rival in All Last, or if declaring lets opponents fold while you needed direct points from one seat, stay quiet. If two opponents are already live and your wait is poor, the pressure may be mostly on you. Riichi is a weapon, but a weapon pointed at the wrong table is just exposure.</p>
             <div class="rule">
@@ -794,7 +806,7 @@
           <div class="point-body">
             <h3>The Third Row Is a Counting Drill</h3>
             <p>The late row is not early strategy with fewer tiles. It is a separate skill: count the winning tenpai, count the safe tenpai, and count the fold. LuckyJ disagreed with NAGA on about 45% of early decisions, but only about 28% late. That drop is the point. By row three, most grand plans have expired, and the good decisions are smaller, colder, and more exact.</p>
-            <p>Keiten is the easiest place to see it. LuckyJ finished drawn hands in tenpai or better about 41% of the time, so noten payments are not decorative; they are part of the hand’s value. But the calculation is never “try for tenpai because tenpai is good.” A few thousand points of draw equity can justify a low-friction discard. It does not justify pushing a live middle tile through two threats with no winning upside.</p>
+            <p>Keiten is the easiest place to see it. In the recorded wall-exhausted draws, LuckyJ was tenpai in <span data-book-stat="summary.draw_tenpai">823</span> of <span data-book-stat="summary.exhaustive_draws">1,761</span> (<span data-book-pct="summary.draw_tenpai_rate">46.7%</span>). That is <span data-book-stat="summary.draw_tenpai">823</span> of all <span data-book-stat="summary.hands">13,054</span> hands, so keep the denominator straight. Noten payments are real value, but they do not justify sending a live middle tile through two threats with no winning upside.</p>
             <p>Take a constructed third-row spot: you can cut a live [[5s]] for pinfu tenpai on [[3p]][[6p]], cut genbutsu [[9s]] and remain one-away, or follow with [[E]] and fold. The correct question is not which tile is prettiest. Ask what the win changes, what tenpai at draw is worth, how many safe tiles remain after this discard, and whether the next tile is also dangerous. If the answer to the next-turn question is blank, the current push is usually fake.</p>
             <p>Of course, late precision does not mean cowardice. If the hand is dealer mangan tenpai, the wait is alive, and the only discard is a reasonable suji, folding because “it is late” gives away too much. The discipline is to separate real attack from vague hope: win, take safe tenpai, or fold cleanly.</p>
             <div class="chart" id="stageChart" aria-label="Decision rates by stage"></div>
@@ -813,7 +825,7 @@
           <div class="point-body">
             <h3>Treat Keiten as Attack</h3>
             <p>A drawn hand is not a failed hand. Keiten is a small attack that happens after winning has become unlikely, and the payments are large enough to plan for: 1,000 when several players are tenpai, up to 3,000 when you are alone. That can be the same practical swing as a small win, especially in South rounds where 1,500 or 3,000 changes who must chase next.</p>
-            <p>LuckyJ gives this idea real weight. Its draw-tenpai-plus rate was about 41%, far too frequent to treat as consolation. Late hands also produced nearly 20,000 reviewed decisions, so the last row is not garbage time; it is where safe tenpai, noten acceptance, and final danger pricing decide placements. The mined safe-tenpai choices show the same habit: keep a path to tenpai when the path can be traveled with harmless tiles.</p>
+            <p>LuckyJ reached tenpai in <span data-book-pct="summary.draw_tenpai_rate">46.7%</span> of genuine exhaustive draws. That does not mean 46.7% of all hands: abortive draws are excluded, and the all-hand share is about 6.3%. The last row is where safe tenpai, noten acceptance, and final danger pricing decide placements; keep a path to tenpai only when it can be traveled with harmless tiles.</p>
             <p>The key word is harmless. If you can discard genbutsu, dead honors, or visibly exhausted tiles while keeping tenpai, the 1,000 to 3,000 draw value belongs in your attack calculation. If the price is a live middle tile into dealer riichi, you are no longer buying keiten; you are gambling a possible dealer mangan loss to save a small payment. A Tenhou player who never chases draw points leaves money on the table, but a player who chases them through danger is just calling noten fear by a prettier name.</p>
             <p><b>The exception is forced danger.</b> When the only tenpai path asks you to pass two unsafe tiles, or when an open hand's value has become clear, fold and accept noten. You can still defend actively by choosing the safe discard that leaves the most future safe draws. Draw points are attack value only while the defense remains intact.</p>
             <div class="rule">
@@ -831,7 +843,7 @@
           <div class="point-body">
             <h3>Make Engine Splits Prove Their Case</h3>
             <p>An engine disagreement is not a verdict. It is a review prompt. LuckyJ matches NAGA's top discard about 73% of the time, so the split hands are exactly where the book becomes interesting: not because LuckyJ is always right, but because the difference forces you to write down what the move is buying.</p>
-            <p>The honest framing matters. The full review holds over 36,000 LuckyJ/Nishiki mismatches from about 135,000 split-head decisions, and most of them are not giant alarms. The NAGA heads are not a single judge either; in the ten samples below, some NAGA head backed LuckyJ every time. Mortal, on the other hand, backed LuckyJ in none of those ten, so you should not pretend this is engine consensus.</p>
+            <p>The honest framing matters. The full review holds over 36,000 LuckyJ/Nishiki mismatches from about 135,000 split-head decisions, and most of them are not giant alarms. The NAGA heads are not a single judge either; in the samples below, some NAGA head backs LuckyJ. Mortal often backs Nishiki or chooses a third line, so you should not pretend a disagreement is engine consensus.</p>
             <p>Use three buckets. First, blunder: the move fails basic value, safety, or yaku accounting, and you fix it. Second, style trade-off: LuckyJ is choosing safety, pressure, or placement texture that you can explain but do not copy automatically. Third, genuine insight: the split reveals a conditional habit you can reproduce, such as valuing a future safe exit over a little ukeire.</p>
             <p>Point values keep the review honest. Blindly copying a split can become a -3900 deal-in, while flattening every LuckyJ deviation back to NAGA can make you miss a +2900 win or a +1500 draw-tenpai result. The number is not proof by itself. It is a sanity check: what did the move risk, what did it buy, and was that purchase available to a human at the table?</p>
             <p>Of course, if your explanation is weak and the stronger engines all point away, do not cosplay as an AI. Mark the hand uncertain and move on. The goal of review is not to raise your match rate; it is to copy only the decisions you can explain before the result is known.</p>
@@ -848,14 +860,14 @@
         <section class="point" id="point-13">
           <div class="point-number">12</div>
           <div class="point-body">
-            <h3>Deny the Missing Yakuhai</h3>
-            <p>When an opponent opens and you cannot see their yaku, a live dragon or value wind stops being an ordinary honor. It may be the tile that makes their hand legal. Modern players call more just to reach tenpai faster, and atozuke lets an open hand complete its yaku later. If you feed the missing [[P]], [[F]], [[C]], round wind, or their seat wind, you may have turned an unclear open hand into a real winning hand with one discard.</p>
-            <p>The timing signal is sharp. In the sample, yaku-condition yakuhai against an unknown open hand were cut around median turn 7, while against cleaner tanyao-shaped opens the same class of tiles waited until around turn 9. Visible-yaku open hands pulled the timing closer to turn 6. Two turns is a long time when the opponent has already shortened their hand and can pon the exact tile you are saving as “safe.”</p>
-            <p>The point value looks small until you price the clock. Their yakuhai pon may only create 1,000, but with dora it quickly becomes 2,000 or 3,900, and more importantly it can end the hand before your closed 3,900 ever reaches riichi. A loose dragon in your hand is safest before they need it; after the second call, it becomes the price of continuing. That is why this is timing, not generic honor-cleaning.</p>
-            <p>Of course, do not donate every yakuhai blindly. Keep it when it is your pair, your value, your only safe tile against a larger riichi, or part of a real honitsu or chiitoi plan. In South 4, the rule can even invert: if a cheap 1,000-point win by the right opponent protects your placement, discarding their missing yakuhai can be correct sashikomi rather than a mistake.</p>
+          <h3>Price the Missing Yakuhai</h3>
+            <p>When an opponent opens and you cannot see their yaku, a live dragon, round wind, or seat wind stops being an ordinary honor. It may be the tile that makes their hand legal. Discarding it gives them the chance to pon; holding it denies that chance for now. The decision is therefore timing, not automatic cleanup.</p>
+            <p>There are two deliberate lines. Release the singleton while no yaku or clear advancement is visible, accepting today's pon risk so you do not carry a worse live tile into a later turn. Once advancement becomes visible—more calls, a late turn, or a tenpai-like river—choke the tile unless your own value, safety, or placement gives a concrete reason to feed it.</p>
+            <p>The observed medians are only descriptive. Tiles eventually cut against an unknown open hand left around turn 8, versus about turn 10 against tanyao-shaped opens and turn 7 when the yaku was already visible. Those groups condition on the tile surviving until that context; they do not prove that the opponent's call caused LuckyJ to wait.</p>
+            <p>Do not copy this point as a blanket rule. The selected examples are engine-contested, and Mortal usually favors Nishiki or another line. Treat each as a stress test: compare the pon risk now with the danger of carrying the tile, then keep it when it is your pair, value, only safe tile, or a real honitsu/chiitoi component.</p>
             <div class="evidence-grid" id="yakuhaiPressure" aria-label="Yakuhai cut timing by open-hand yaku status"></div>
             <div class="rule">
-              <strong>Rule:</strong> After an unclear opponent call, mark live dragons, round wind, and that player's seat wind as their possible yaku; cut loose singletons before they can pon them.
+              <strong>Rule:</strong> After an unclear call, mark live dragons, the round wind, and that player's seat wind as possible yaku switches. Release one early only while no yaku or clear advancement is visible; once advancement is visible, choke it. Discarding is not denial.
             </div>
             <div class="exception">
               <strong>Exception:</strong> Keep or even feed the yakuhai when it serves your own value or defense, when a bigger riichi makes it your only safe tile, or in South 4 when a cheap win by the right opponent is exactly the result you want.
@@ -897,7 +909,7 @@
           <div class="point-body">
             <h3>Spend Safety When Its Opponent Disappears</h3>
             <p>A tile can be genbutsu and still be the correct discard. The question is not whether it used to be safe; the question is whether it protects you from the danger now. Once another player becomes the real threat, or once the hand is close enough that the tile blocks tenpai, yesterday's safety has an expiration date.</p>
-            <p>This is the necessary counterpart to keeping named safety. LuckyJ's threat-specific keeps appeared over 8,400 times and reviewed cleanly, but its stale-safety spends also appeared over 4,000 times with the same disciplined shape. Meanwhile, generic safe-tile keeps, over 8,500 of them, are the warning sign. The model is not saying "always keep safety"; it is saying "make the tile prove its current job."</p>
+            <p>This is the necessary counterpart to keeping named safety. In the model-proxy audit, threat-specific keeps and spending stale or off-target safety were less often severe Nishiki disagreements, while generic safe-tile retention was more often rejected. That is not outcome EV; it is a narrower review signal. The tile still has to prove its current job.</p>
             <p>The economics are easy to see. If keeping an old safe tile kills a live 2,000-point tenpai chance, you have paid real points for insurance that may not pay out. If the alternative is drifting into a -1,500 no-ten draw, the cost is visible even without dealing in. A stale tile that answers a quiet player is not defense; it is shape damage wearing a helmet.</p>
             <p>Of course, do not throw away your last real parachute. If the tile still covers the live riichi, your hand is far, or the next draw may leave you with no safe discard, keep it. Spending stale safety is disciplined only after you can say why that tile no longer answers the dangerous player.</p>
             <div class="rule">
@@ -921,7 +933,7 @@
             <h3>The Edge Tile Can Be the Attack</h3>
             <p>Do not call every terminal cut defensive. Sometimes the outside tile is the price of keeping the hand’s center alive. A late [[1p]] or [[9s]] discard can be the attacking choice because it protects the middle connector that actually reaches tenpai, while also lowering the immediate danger of the discard.</p>
             <p>Take a constructed excess shape like [[1p]][[3p]][[4p]][[6p]][[7p]] when the rest of the hand already has value. Cutting [[1p]] leaves [[3p]][[4p]] and [[6p]][[7p]], two normal ryanmen cores. Cutting [[4p]] because [[1p]] looks safer may preserve a dead-looking outside tile while damaging the part of the hand that wins. In five-block terms, the terminal is not a block; the middle tiles are.</p>
-            <p>This pattern was not rare. Across over 5,000 spots where LuckyJ cut outside material while keeping the inside line, the aggregate signal was strong, and the reverse pattern appeared as a clear warning in over 10,000 spots. The second engine backs fewer than half of the showcased cuts, so do not copy the edge cut blindly. Copy the structure: the outside tile must have a weaker job than the middle connector it is protecting.</p>
+            <p>This pattern was not rare. Across over 5,000 spots LuckyJ cut outside material while keeping the inside line, and the reverse pattern appeared in over 10,000 spots. Those are descriptive model-split counts, not proof that the outside cut is better. Mortal support in the showcase is mixed, so copy the structure only when the outside tile has a weaker job than the middle connector it protects.</p>
             <p>Of course, terminals and outside tiles are not garbage. A [[1m]] pair can be chiitoi material, a [[9p]] can be dora, and an outside tile may be your only genbutsu against dealer riichi. When the outside tile is value, pair, yaku, or target-specific safety, it is no longer the cheap discard. The principle applies when the edge is truly the cost of preserving the winning center.</p>
             <div class="rule">
               <strong>Rule:</strong> When choosing between an outside tile and a middle connector, keep the connector if it is the tile that makes your real tenpai or win possible.
@@ -943,7 +955,7 @@
           <div class="point-body">
             <h3>Label Every Honor Before You Move It</h3>
             <p>“Honor tile” is not a strategic category. A dragon pair in your hand, a live dragon for an open opponent, a double-visible wind, and a genbutsu honor against riichi are four different objects. If you review them all as “honors,” you will cut value tiles too early and keep dangerous tiles too long. The first step is to label what the tile is doing right now.</p>
-            <p>The LuckyJ timing split shows why the label matters. Loose self-yakuhai with no open hand around were cleaned at a median turn 3, but in tanyao-shaped open contexts they were delayed toward turn 9. That is not a contradiction; it is a role change. The same [[C]] can be a bad early singleton, a future 1-han pair, the opponent's missing yaku, or your last honest fold tile.</p>
+            <p>The LuckyJ timing split shows why the label matters. Loose self-yakuhai with no open hand around were cleaned at a median turn 4, but in tanyao-shaped open contexts they were delayed toward turn 10. That is not a contradiction; it is a role change. The same [[C]] can be a bad early singleton, a future 1-han pair, the opponent's missing yaku, or your last honest fold tile.</p>
             <p>Use four main labels. <b>Self value</b>: your yakuhai pair, honitsu material, chiitoi pair, or dora-connected plan. <b>Opponent condition</b>: live dragons and value winds that complete an unclear open hand. <b>Dead tile</b>: an honor with little value and enough visible copies that nobody can use it. <b>Defense</b>: genbutsu, multi-player safety, or a low-friction tile reserved for the first riichi. A self-value dragon can make 1,000 by itself and 3,900 with dora; an opponent-condition dragon can cost you the round.</p>
             <p>Of course, labels are not permanent. A lone guest wind is pleasant early, but it grows worse against chanta, kokushi, or toitoi shadows late. A dead honor becomes precious if it is your only safe tile against dealer riichi. Re-label after every call, riichi, visible copy, and score change; then cut or keep the honor for the role it has now, not the role it had on turn one.</p>
             <div class="rule">
@@ -957,21 +969,21 @@
         </section>
 
         <section class="section" id="case-studies">
-          <p class="kicker">Closed-hand replay cases</p>
-          <h2>Where LuckyJ disagrees with NAGA.</h2>
+          <p class="kicker">Engine-disagreement stress tests</p>
+          <h2>Possible insights—and possible LuckyJ mistakes.</h2>
           <p>
-            These cases replay closed-hand LuckyJ decisions from the review cache. Start by asking what LuckyJ
-            is buying: route count, safety, value, pressure, or placement. The genbutsu and suji groups show
-            hands where LuckyJ kept the model-preferred discard because that tile worked as a defensive tile.
-            Mechanical counts are available inside each diagnostic panel, but the table read comes first.
+            These are not representative LuckyJ defaults. The selection now prefers cases with support from another
+            NAGA head or a non-trivial Nishiki alternative, then backfills with extreme disagreement stress tests.
+            Make the strongest case for Nishiki first. Promote LuckyJ's move to a teaching example only when its claimed
+            purchase is visible before the result and survives shape, yaku, danger, placement, and second-engine checks;
+            otherwise record it as a likely LuckyJ mistake.
           </p>
           <div class="case-browser">
             <div class="case-tabs" id="caseTabs" aria-label="Case categories"></div>
             <div class="case-grid" id="caseGrid"></div>
           </div>
           <div class="rule">
-            <strong>Reading rule:</strong> Copy the reason behind the tile. The same discard is good only when the
-            score situation, route count, safety map, and opponent pressure match.
+            <strong>Reading rule:</strong> Do not copy the tile. Test the hypothesis, and copy the condition only after it survives the ordinary line.
           </div>
         </section>
 
@@ -1043,14 +1055,15 @@
           <ul>
             <li><a href="https://docs.google.com/spreadsheets/d/1jV-fi6E-z8BFdbS_LPfvpktSw8qc68PSZj9iEgdUC9U/edit?usp=drivesdk">Original game list.</a></li>
             <li><a href="https://natsuai.com/mahjong/digital">Format reference: Natsu AI digital mahjong points.</a></li>
-            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-validation-2026-06-30.md">Detailed audit report.</a></li>
+            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-evidence-2026-07-09.md">Detailed proxy-evidence audit.</a></li>
+            <li><a href="https://www.tencent.com/en-us/articles/2201746.html">Tencent: LuckyJ learned through self-play.</a></li>
             <li>Tile font: GL-MahjongTile by Gutenberg Labo, vendored under `site/fonts/`.</li>
-            <li>Generated data: `site/book-data.json`, `site/point-validation.json`, `site/case-studies.json`, `site/point-examples.json`, and `data/luckyj_analysis.json`.</li>
+            <li>Generated data: `site/book-data.json`, `site/point-validation.json`, `site/case-studies.json`, `site/point-examples.json`, and `data/luckyj_analysis.json`; source-link fixes are recorded in `data/source_corrections.json`.</li>
           </ul>
         </section>
       </article>
     </main>
 
-    <script src="app.js?v=20260702-pro-voice-chapters"></script>
+    <script src="app.js?v=20260709-accuracy-audit-5"></script>
   </body>
 </html>
