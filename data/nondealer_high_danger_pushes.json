@@ -1,0 +1,3289 @@
+{
+  "methodology": {
+    "room": "Tokujou",
+    "unit": "decision states",
+    "danger_metric": "maximum NAGA danger proxy across the three NAGA heads",
+    "threshold": 0.9,
+    "luckyj_dealer_states": "excluded",
+    "post_luckyj_riichi_locked_discards": "excluded",
+    "riichi_declaration_discards": "included because the discard is chosen before the lock",
+    "note": "Repeated 0.9999 readings behave like a capped alarm state, not a calibrated 99.99% deal-in probability."
+  },
+  "summary": {
+    "decisions": 46,
+    "capped_at_99_99": 25,
+    "shanten": {
+      "tenpai": 33,
+      "one_shanten": 12,
+      "two_or_more_shanten": 1
+    },
+    "hand_state": {
+      "closed": 26,
+      "open": 20,
+      "open_meld_counts": {
+        "0": 26,
+        "1": 9,
+        "2": 7,
+        "3": 4
+      }
+    },
+    "declares_riichi": 3,
+    "against_at_least_one_riichi": 46,
+    "supported_by_at_least_two_naga_heads": 30,
+    "rank": {
+      "1": 14,
+      "2": 11,
+      "3": 8,
+      "4": 13
+    },
+    "wall": {
+      "over_40": 15,
+      "21_to_40": 19,
+      "13_to_20": 5,
+      "12_or_fewer": 7
+    },
+    "outcomes": {
+      "self_win": 12,
+      "direct_deal_in": 11,
+      "other_player_win": 14,
+      "draw": 9
+    }
+  },
+  "examples": [
+    {
+      "game": 401,
+      "round_index": 10,
+      "position": 79,
+      "round": "South 1-0",
+      "dealer": false,
+      "rank": 1,
+      "score": 32500,
+      "wall_tiles_left": 32,
+      "hand": "3m 3m 6m 6m 6m 3p N N N P P F F F",
+      "draw": "3p",
+      "discard": "3p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "3m",
+          "P"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "3p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "3p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "3p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "3p",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "3m",
+            "P"
+          ]
+        }
+      },
+      "outcome": "self won 10 han 60 fu, delta +17000",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023050120gm-0029-0000-99725eaf&tw=3",
+      "report": "https://naga.dmv.nico/htmls/d3307713f26a0a3d4b5c3a34e92ba858f414c9c0f9af4cc78c5d80051413066ev2_2.html?tw=3",
+      "example_category": "high_value_tenpai"
+    },
+    {
+      "game": 910,
+      "round_index": 5,
+      "position": 67,
+      "round": "South 1-2",
+      "dealer": false,
+      "rank": 4,
+      "score": 2900,
+      "wall_tiles_left": 38,
+      "hand": "4m 5m 5m 7m 8m 2p 2p 5p 6p 7p 5s 7s 8s 9s",
+      "draw": "8m",
+      "discard": "5s",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 13,
+        "effective": [
+          "3m",
+          "5m",
+          "6m",
+          "9m",
+          "2p"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 1,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "5m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "5m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "5s",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "5m",
+        "danger_proxy": 0.3844,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 9,
+          "effective": [
+            "3m",
+            "6m",
+            "9m"
+          ]
+        }
+      },
+      "outcome": "self won 3 han 30 fu, delta +6500",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023051719gm-0029-0000-ba5b4a1f&tw=1",
+      "report": "https://naga.dmv.nico/htmls/9d0a2ce86039b0c6b70391574d63a1db2705be5217d92d3c3e76c25222ba56dfv2_2.html?tw=1",
+      "example_category": "fourth_place_one_shanten"
+    },
+    {
+      "game": 1173,
+      "round_index": 2,
+      "position": 93,
+      "round": "East 3-0",
+      "dealer": false,
+      "rank": 3,
+      "score": 25000,
+      "wall_tiles_left": 25,
+      "hand": "1m 3m 4m 5m 6p 7p 8p 1s 2s 3s 5s 5sr 7s 8s",
+      "draw": "8s",
+      "discard": "1m",
+      "danger_proxy": 0.9574,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 3,
+        "effective": [
+          "6s",
+          "9s"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": true,
+      "model_support_count": 2,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "1m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "8s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "1m",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "1m",
+        "danger_proxy": 0.9574,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 3,
+          "effective": [
+            "6s",
+            "9s"
+          ]
+        }
+      },
+      "outcome": "self won 3 han 30 fu, delta +5900",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023052600gm-0029-0000-abf07b0f&tw=3",
+      "report": "https://naga.dmv.nico/htmls/d0a9fb2997065243d81aef32e8993a56ed792c747eab1c6de6a485eb345f1f7bv2_2.html?tw=3",
+      "example_category": "riichi_declaration"
+    },
+    {
+      "game": 1031,
+      "round_index": 3,
+      "position": 71,
+      "round": "East 3-1",
+      "dealer": false,
+      "rank": 3,
+      "score": 18000,
+      "wall_tiles_left": 39,
+      "hand": "1m 2m 3m 4m 4m 5p S S",
+      "draw": "S",
+      "discard": "5p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "4m",
+          "S"
+        ]
+      },
+      "open_melds": 2,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "5p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "5p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "5p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "5p",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "4m",
+            "S"
+          ]
+        }
+      },
+      "outcome": "self won 4 han 50 fu, delta +9300",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023052116gm-0029-0000-8f086d18&tw=3",
+      "report": "https://naga.dmv.nico/htmls/3ed76bcff775696c890a59b77c03e676206d3200458da4d991b99dd7b5c28f89v2_2.html?tw=3",
+      "example_category": "valuable_open_tenpai"
+    },
+    {
+      "game": 1043,
+      "round_index": 2,
+      "position": 95,
+      "round": "East 2-1",
+      "dealer": false,
+      "rank": 4,
+      "score": 18000,
+      "wall_tiles_left": 26,
+      "hand": "5p 5pr 6s P P",
+      "draw": "6s",
+      "discard": "6s",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "5p",
+          "P"
+        ]
+      },
+      "open_melds": 3,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "6s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "6s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "6s",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "6s",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "5p",
+            "P"
+          ]
+        }
+      },
+      "outcome": "self dealt into toimen, delta -2900",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023052122gm-0029-0000-32e3cb5d&tw=0",
+      "report": "https://naga.dmv.nico/htmls/189de5803eb095bf305c89c52174387fee219040bf991578ac4653cfe582f855v2_2.html?tw=0",
+      "example_category": "three_call_inventory_trap"
+    },
+    {
+      "game": 1020,
+      "round_index": 4,
+      "position": 133,
+      "round": "East 4-0",
+      "dealer": false,
+      "rank": 1,
+      "score": 41000,
+      "wall_tiles_left": 5,
+      "hand": "3m 4m 5m 5m 5p 6p 7p 4s 4s 6s 7s",
+      "draw": "5m",
+      "discard": "5m",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 6,
+        "effective": [
+          "5s",
+          "8s"
+        ]
+      },
+      "open_melds": 1,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "7s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "7s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "7s",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "7s",
+        "danger_proxy": 0.0297,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 26,
+          "effective": [
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "7m",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s"
+          ]
+        }
+      },
+      "outcome": "self dealt into kamicha, delta -12000",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023052110gm-0029-0000-0512bc8e&tw=0",
+      "report": "https://naga.dmv.nico/htmls/8b66fef55b8c8175804886b962cb3b6612091cefefaf2a07f9038392966461c7v2_2.html?tw=0",
+      "example_category": "engine_rejected_overpush"
+    }
+  ],
+  "decisions": [
+    {
+      "game": 185,
+      "round_index": 7,
+      "position": 45,
+      "round": "South 2-0",
+      "dealer": false,
+      "rank": 2,
+      "score": 27700,
+      "wall_tiles_left": 49,
+      "hand": "3m 7m 7p 8p 8p 8p 8p 3s 4s 5sr 7s",
+      "draw": "7s",
+      "discard": "7s",
+      "danger_proxy": 0.9112,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 14,
+        "effective": [
+          "3m",
+          "7m",
+          "6p",
+          "9p"
+        ]
+      },
+      "open_melds": 1,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "7p",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "7p",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "7p",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "7p",
+        "danger_proxy": 0.2965,
+        "after_discard": {
+          "shanten": 2,
+          "ukeire": 62,
+          "effective": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "6m",
+            "7m",
+            "8m",
+            "9m",
+            "6p",
+            "7p",
+            "9p",
+            "2s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        }
+      },
+      "outcome": "self dealt into shimocha, delta -3900",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023042500gm-0029-0000-78faff97&tw=0",
+      "report": "https://naga.dmv.nico/htmls/841b3f143be6ffa2ee51c5a73486e8d33e29bef9bd7575879b0ccfb4c52c4a78v2_2.html?tw=0"
+    },
+    {
+      "game": 200,
+      "round_index": 3,
+      "position": 63,
+      "round": "East 3-0",
+      "dealer": false,
+      "rank": 2,
+      "score": 22000,
+      "wall_tiles_left": 39,
+      "hand": "1m 2m 3m 4m 5mr 6m 9m 9m 9m 5pr 6p 7p 4s 6s",
+      "draw": "6s",
+      "discard": "6s",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 3,
+        "effective": [
+          "4s"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 1,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "9m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "9m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "6s",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "9m",
+        "danger_proxy": 0.5943,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "5s"
+          ]
+        }
+      },
+      "outcome": "toimen won, self delta +0",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023042515gm-0029-0000-1d8dc5ef&tw=0",
+      "report": "https://naga.dmv.nico/htmls/67a79e822283552bd2e80d47748201fb0ac4bb5ced8159b5c66dbf902ac41181v2_2.html?tw=0"
+    },
+    {
+      "game": 269,
+      "round_index": 10,
+      "position": 81,
+      "round": "South 3-1",
+      "dealer": false,
+      "rank": 2,
+      "score": 32700,
+      "wall_tiles_left": 34,
+      "hand": "5mr 7m 3p 3p 9s",
+      "draw": "9s",
+      "discard": "9s",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "6m"
+        ]
+      },
+      "open_melds": 3,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "9s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "9s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "9s",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "9s",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "6m"
+          ]
+        }
+      },
+      "outcome": "toimen won, self delta +0",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023042718gm-0029-0000-fb349940&tw=1",
+      "report": "https://naga.dmv.nico/htmls/633c8b4f3abcd214c5a2b17b62ceee32c979ddccc340bb255b4fa3426f251bc8v2_2.html?tw=1"
+    },
+    {
+      "game": 322,
+      "round_index": 2,
+      "position": 61,
+      "round": "East 3-0",
+      "dealer": false,
+      "rank": 4,
+      "score": 17500,
+      "wall_tiles_left": 43,
+      "hand": "4m 6p 9p 9p 9p",
+      "draw": "4m",
+      "discard": "6p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 3,
+        "effective": [
+          "4m"
+        ]
+      },
+      "open_melds": 3,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "4m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "4m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "4m",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "4m",
+        "danger_proxy": 0.4373,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 3,
+          "effective": [
+            "6p"
+          ]
+        }
+      },
+      "outcome": "shimocha won, self delta -300",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023042913gm-0029-0000-de79cd8a&tw=3",
+      "report": "https://naga.dmv.nico/htmls/b49154e819c90fbe913b5071b700c28dbc3b6ed41b2ae1f28c7815fb6c805364v2_2.html?tw=3"
+    },
+    {
+      "game": 362,
+      "round_index": 5,
+      "position": 53,
+      "round": "South 2-0",
+      "dealer": false,
+      "rank": 4,
+      "score": 18100,
+      "wall_tiles_left": 44,
+      "hand": "3m 3m 7m 9m 4p 1s 2s 3s 6s 7s 8s 9s W W",
+      "draw": "6s",
+      "discard": "4p",
+      "danger_proxy": 0.9154,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 7,
+        "effective": [
+          "3m",
+          "8m",
+          "W"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "9s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "9s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "3m",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "9s",
+        "danger_proxy": 0.5017,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 7,
+          "effective": [
+            "3m",
+            "8m",
+            "W"
+          ]
+        }
+      },
+      "outcome": "shimocha won, self delta -1000",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023043017gm-0029-0000-856bc51a&tw=2",
+      "report": "https://naga.dmv.nico/htmls/bc93f22d3559aeaa022097322d5e54470ced695ec486de550bd3c35fde7bf912v2_2.html?tw=2"
+    },
+    {
+      "game": 389,
+      "round_index": 2,
+      "position": 127,
+      "round": "East 3-0",
+      "dealer": false,
+      "rank": 1,
+      "score": 29000,
+      "wall_tiles_left": 8,
+      "hand": "8p 2s 2s 5s 5s 5sr 6s 6s 6s 6s 7s",
+      "draw": "8p",
+      "discard": "8p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 6,
+        "effective": [
+          "2s",
+          "8s"
+        ]
+      },
+      "open_melds": 1,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "8p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "8p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "8p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "8p",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 6,
+          "effective": [
+            "2s",
+            "8s"
+          ]
+        }
+      },
+      "outcome": "self dealt into shimocha, delta -5800",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023050115gm-0029-0000-ed88c6fd&tw=1",
+      "report": "https://naga.dmv.nico/htmls/6449fcb10b1e44bc0a078d8480b371024005159842deea2ffc34fff1fa7d1c58v2_2.html?tw=1"
+    },
+    {
+      "game": 401,
+      "round_index": 10,
+      "position": 79,
+      "round": "South 1-0",
+      "dealer": false,
+      "rank": 1,
+      "score": 32500,
+      "wall_tiles_left": 32,
+      "hand": "3m 3m 6m 6m 6m 3p N N N P P F F F",
+      "draw": "3p",
+      "discard": "3p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "3m",
+          "P"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "3p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "3p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "3p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "3p",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "3m",
+            "P"
+          ]
+        }
+      },
+      "outcome": "self won 10 han 60 fu, delta +17000",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023050120gm-0029-0000-99725eaf&tw=3",
+      "report": "https://naga.dmv.nico/htmls/d3307713f26a0a3d4b5c3a34e92ba858f414c9c0f9af4cc78c5d80051413066ev2_2.html?tw=3",
+      "example_category": "high_value_tenpai"
+    },
+    {
+      "game": 429,
+      "round_index": 6,
+      "position": 79,
+      "round": "South 1-0",
+      "dealer": false,
+      "rank": 4,
+      "score": 6400,
+      "wall_tiles_left": 31,
+      "hand": "5mr 6m 7m 8m 3p 4p 5p 6p 8p 1s 1s 4s 6s 8s",
+      "draw": "4s",
+      "discard": "4s",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 7,
+        "effective": [
+          "7p",
+          "7s"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "4s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "4s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "4s",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "4s",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 7,
+          "effective": [
+            "7p",
+            "7s"
+          ]
+        }
+      },
+      "outcome": "draw, self delta +1500",
+      "outcome_bucket": "draw",
+      "replay": "https://tenhou.net/4/?log=2023050218gm-0029-0000-ab5b6f5b&tw=2",
+      "report": "https://naga.dmv.nico/htmls/63f10ab56d2a2cebc60729e33a03a2c145895ef9dc82907e5528b7e34579d31av2_2.html?tw=2"
+    },
+    {
+      "game": 485,
+      "round_index": 9,
+      "position": 107,
+      "round": "South 4-0",
+      "dealer": false,
+      "rank": 4,
+      "score": 20100,
+      "wall_tiles_left": 18,
+      "hand": "1m 2m 3m 3m 4m 5mr 1p 2p 8p 8p 8p",
+      "draw": "3m",
+      "discard": "2p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 3,
+        "effective": [
+          "1p"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "8p",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "8p",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "8p",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "8p",
+        "danger_proxy": 0.2074,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "3p"
+          ]
+        }
+      },
+      "outcome": "self dealt into kamicha, delta -4800",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023050413gm-0029-0000-f3fc29d4&tw=0",
+      "report": "https://naga.dmv.nico/htmls/12b34970108bacfdfea4454792a2247bd1ef0af71573c89338a06deb077658c3v2_2.html?tw=0"
+    },
+    {
+      "game": 507,
+      "round_index": 2,
+      "position": 77,
+      "round": "East 3-0",
+      "dealer": false,
+      "rank": 2,
+      "score": 25000,
+      "wall_tiles_left": 35,
+      "hand": "2m 3m 4m 5m 8m 4s P P",
+      "draw": "8m",
+      "discard": "8m",
+      "danger_proxy": 0.9508,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 38,
+        "effective": [
+          "1m",
+          "2m",
+          "3m",
+          "4m",
+          "5m",
+          "6m",
+          "7m",
+          "2s",
+          "3s",
+          "4s",
+          "5s",
+          "6s",
+          "P"
+        ]
+      },
+      "open_melds": 2,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "P",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "P",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "P",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "P",
+        "danger_proxy": 0.2339,
+        "after_discard": {
+          "shanten": 2,
+          "ukeire": 45,
+          "effective": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "6m",
+            "7m",
+            "8m",
+            "9m",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "P"
+          ]
+        }
+      },
+      "outcome": "draw, self delta +1000",
+      "outcome_bucket": "draw",
+      "replay": "https://tenhou.net/4/?log=2023050500gm-0029-0000-cb05c62b&tw=0",
+      "report": "https://naga.dmv.nico/htmls/ff3d06d789631deb010f00201e20527f81aabd51c8bcbf2f52d694843f97e57av2_2.html?tw=0"
+    },
+    {
+      "game": 626,
+      "round_index": 5,
+      "position": 37,
+      "round": "South 1-1",
+      "dealer": false,
+      "rank": 1,
+      "score": 35700,
+      "wall_tiles_left": 53,
+      "hand": "2p 2p 2p 3p 4p 5p 3s 3s 4s 5s 7s",
+      "draw": "4p",
+      "discard": "7s",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 5,
+        "effective": [
+          "3s",
+          "6s"
+        ]
+      },
+      "open_melds": 1,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "7s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "7s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "7s",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "7s",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 5,
+          "effective": [
+            "3s",
+            "6s"
+          ]
+        }
+      },
+      "outcome": "kamicha won, self delta -1100",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023050820gm-0029-0000-d874cdb2&tw=1",
+      "report": "https://naga.dmv.nico/htmls/dbcd783805ff9293c044ea38f10c9e09bf4104728f807b1c0cc2caba9013203ev2_2.html?tw=1"
+    },
+    {
+      "game": 633,
+      "round_index": 7,
+      "position": 95,
+      "round": "South 1-3",
+      "dealer": false,
+      "rank": 2,
+      "score": 22000,
+      "wall_tiles_left": 23,
+      "hand": "4m 4m 3p 3p 4p 4p 6p 7p 4s 5s 6s 7s 8s 9s",
+      "draw": "9s",
+      "discard": "4p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 16,
+        "effective": [
+          "4m",
+          "2p",
+          "3p",
+          "5p",
+          "8p"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "7s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "7s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "4m",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "7s",
+        "danger_proxy": 0.0224,
+        "after_discard": {
+          "shanten": 2,
+          "ukeire": 21,
+          "effective": [
+            "4m",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "8p",
+            "7s"
+          ]
+        }
+      },
+      "outcome": "shimocha won, self delta -1000",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023050823gm-0029-0000-03044058&tw=2",
+      "report": "https://naga.dmv.nico/htmls/6b3495073d1f5536d609d0c9ea500ee867d9ba52fd5197a0b1a8ee04e372646fv2_2.html?tw=2"
+    },
+    {
+      "game": 662,
+      "round_index": 11,
+      "position": 69,
+      "round": "South 3-0",
+      "dealer": false,
+      "rank": 1,
+      "score": 52800,
+      "wall_tiles_left": 41,
+      "hand": "2m 2m 5pr 1s 2s",
+      "draw": "5pr",
+      "discard": "5pr",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 3,
+        "effective": [
+          "3s"
+        ]
+      },
+      "open_melds": 3,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "5p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "5p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "5p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "5p",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 3,
+          "effective": [
+            "3s"
+          ]
+        }
+      },
+      "outcome": "self won 1 han 30 fu, delta +2000",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023050921gm-0029-0000-3c721da8&tw=0",
+      "report": "https://naga.dmv.nico/htmls/6593df495d8b995e779ceed611dd6da54b77345625590a037e88e4f6977c3441v2_2.html?tw=0"
+    },
+    {
+      "game": 663,
+      "round_index": 9,
+      "position": 109,
+      "round": "South 3-1",
+      "dealer": false,
+      "rank": 3,
+      "score": 11700,
+      "wall_tiles_left": 17,
+      "hand": "6m 6m 6m 8m 8m 1s 2s 2s 4s 6s 6s",
+      "draw": "1s",
+      "discard": "1s",
+      "danger_proxy": 0.988,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 12,
+        "effective": [
+          "8m",
+          "2s",
+          "3s",
+          "5s",
+          "6s"
+        ]
+      },
+      "open_melds": 1,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "1s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "1s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "1s",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "1s",
+        "danger_proxy": 0.988,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 12,
+          "effective": [
+            "8m",
+            "2s",
+            "3s",
+            "5s",
+            "6s"
+          ]
+        }
+      },
+      "outcome": "draw, self delta -1000",
+      "outcome_bucket": "draw",
+      "replay": "https://tenhou.net/4/?log=2023050922gm-0029-0000-97b67f88&tw=3",
+      "report": "https://naga.dmv.nico/htmls/fd5bf058b069db0a03d9ff7f64d82375c3b53a3e3b7eebe2e1ba7096c483d7fav2_2.html?tw=3"
+    },
+    {
+      "game": 670,
+      "round_index": 7,
+      "position": 49,
+      "round": "South 1-3",
+      "dealer": false,
+      "rank": 3,
+      "score": 16700,
+      "wall_tiles_left": 49,
+      "hand": "1m 2m 5m 5mr 6m 7p 8p 9p",
+      "draw": "1m",
+      "discard": "6m",
+      "danger_proxy": 0.9118,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "3m"
+        ]
+      },
+      "open_melds": 2,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "6m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "6m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "6m",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "6m",
+        "danger_proxy": 0.9118,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "3m"
+          ]
+        }
+      },
+      "outcome": "self won 3 han 40 fu, delta +7100",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023051009gm-0029-0000-b44faedb&tw=1",
+      "report": "https://naga.dmv.nico/htmls/7b7d432e62970ad619a21f829b158ac3585a6313e90422ab9ab73fce55aeae07v2_2.html?tw=1"
+    },
+    {
+      "game": 693,
+      "round_index": 3,
+      "position": 73,
+      "round": "East 4-0",
+      "dealer": false,
+      "rank": 3,
+      "score": 24000,
+      "wall_tiles_left": 34,
+      "hand": "3m 3m 3m 4m 5m 5mr 3p 4p 5p 7p 7p 1s 2s 3s",
+      "draw": "3p",
+      "discard": "5m",
+      "danger_proxy": 0.9313,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 7,
+        "effective": [
+          "3m",
+          "6m",
+          "7p"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": true,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "5m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "5m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "5m",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "5m",
+        "danger_proxy": 0.9313,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 7,
+          "effective": [
+            "3m",
+            "6m",
+            "7p"
+          ]
+        }
+      },
+      "outcome": "self won 3 han 40 fu, delta +7200",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023051022gm-0029-0000-5d1a5cca&tw=2",
+      "report": "https://naga.dmv.nico/htmls/415c913fadc9e8ec1d67b9cffede832a58932125180eb0367af383d7bd5bb5f8v2_2.html?tw=2"
+    },
+    {
+      "game": 700,
+      "round_index": 5,
+      "position": 107,
+      "round": "East 3-4",
+      "dealer": false,
+      "rank": 4,
+      "score": 15700,
+      "wall_tiles_left": 19,
+      "hand": "2p 3p 4p 6p 5sr 6s 8s 8s",
+      "draw": "4p",
+      "discard": "6p",
+      "danger_proxy": 0.9306,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 3,
+        "effective": [
+          "4s",
+          "7s"
+        ]
+      },
+      "open_melds": 2,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "6p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "6p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "6p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "6p",
+        "danger_proxy": 0.9306,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 3,
+          "effective": [
+            "4s",
+            "7s"
+          ]
+        }
+      },
+      "outcome": "self won 4 han 30 fu, delta +10100",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023051109gm-0029-0000-2dd44d1e&tw=0",
+      "report": "https://naga.dmv.nico/htmls/abc1d21dce55dc891dbd28783ab9214fd91c13f7653c08ac31b93608da62b252v2_2.html?tw=0"
+    },
+    {
+      "game": 725,
+      "round_index": 5,
+      "position": 137,
+      "round": "East 3-2",
+      "dealer": false,
+      "rank": 1,
+      "score": 29000,
+      "wall_tiles_left": 2,
+      "hand": "5mr 6m 7m 6p 6p 7p 8p 1s 1s 5s 6s 7s 7s 9s",
+      "draw": "9s",
+      "discard": "6p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 0,
+        "effective": []
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "5m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "5m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "5m",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "5m",
+        "danger_proxy": 0.0,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 4,
+          "effective": [
+            "5m",
+            "8m"
+          ]
+        }
+      },
+      "outcome": "self dealt into toimen, delta -4500",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023051121gm-0029-0000-8cb8f0cb&tw=1",
+      "report": "https://naga.dmv.nico/htmls/2266ae7547e943fc8ec33e228b4c13c5d98c14b491db65aae7c14881022c5591v2_2.html?tw=1"
+    },
+    {
+      "game": 728,
+      "round_index": 0,
+      "position": 141,
+      "round": "East 1-0",
+      "dealer": false,
+      "rank": 2,
+      "score": 25000,
+      "wall_tiles_left": 1,
+      "hand": "3m 4m 5m 5mr 6m 7m 8m 9m 9m 5sr 7s",
+      "draw": "5m",
+      "discard": "8m",
+      "danger_proxy": 0.95,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 3,
+        "effective": [
+          "6s"
+        ]
+      },
+      "open_melds": 1,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 2,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "8m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "5s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "8m",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "8m",
+        "danger_proxy": 0.95,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 3,
+          "effective": [
+            "6s"
+          ]
+        }
+      },
+      "outcome": "draw, self delta +1500",
+      "outcome_bucket": "draw",
+      "replay": "https://tenhou.net/4/?log=2023051123gm-0029-0000-8bd74929&tw=1",
+      "report": "https://naga.dmv.nico/htmls/ab97605bfd014648d10ec742d802e69bf32c4367f4c90445fc24c58d61c37712v2_2.html?tw=1"
+    },
+    {
+      "game": 826,
+      "round_index": 9,
+      "position": 23,
+      "round": "South 4-0",
+      "dealer": false,
+      "rank": 3,
+      "score": 23600,
+      "wall_tiles_left": 59,
+      "hand": "1m 2m 2m 3m 3m 4m 6m 3p 5p 5pr 6p 4s N N",
+      "draw": "4m",
+      "discard": "4s",
+      "danger_proxy": 0.9437,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 8,
+        "effective": [
+          "4p",
+          "7p"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "6m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "3p",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "6m",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "6m",
+        "danger_proxy": 0.4595,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 8,
+          "effective": [
+            "4p",
+            "7p"
+          ]
+        }
+      },
+      "outcome": "shimocha won, self delta -2000",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023051509gm-0029-0000-f16815b5&tw=1",
+      "report": "https://naga.dmv.nico/htmls/b7b9fbe98bb77e18cd8d25f8ef5e1764fab78eceb24abd2e584a9645ebe465d4v2_2.html?tw=1"
+    },
+    {
+      "game": 848,
+      "round_index": 8,
+      "position": 85,
+      "round": "South 1-2",
+      "dealer": false,
+      "rank": 1,
+      "score": 36600,
+      "wall_tiles_left": 30,
+      "hand": "2m 3m 3m 4m 4m 2p 3p 4p 6p 4s 5s 6s 8s 8s",
+      "draw": "8s",
+      "discard": "6p",
+      "danger_proxy": 0.9507,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 3,
+        "effective": [
+          "2m",
+          "5m"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "6p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "6p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "6p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "6p",
+        "danger_proxy": 0.9507,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 3,
+          "effective": [
+            "2m",
+            "5m"
+          ]
+        }
+      },
+      "outcome": "shimocha won, self delta -1200",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023051520gm-0029-0000-ae286b18&tw=3",
+      "report": "https://naga.dmv.nico/htmls/c350b4d773f8b73061a1239cb41ae9d5bbb831c1add9e5b13b74fdf0cc6afcbbv2_2.html?tw=3"
+    },
+    {
+      "game": 861,
+      "round_index": 1,
+      "position": 57,
+      "round": "East 1-1",
+      "dealer": false,
+      "rank": 4,
+      "score": 22400,
+      "wall_tiles_left": 42,
+      "hand": "3m 3m 3m 4m 5p 6p 6p 7p 2s 5s 6s 7s P P",
+      "draw": "3m",
+      "discard": "2s",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 32,
+        "effective": [
+          "2m",
+          "3m",
+          "4m",
+          "5m",
+          "6m",
+          "4p",
+          "5p",
+          "6p",
+          "7p",
+          "8p",
+          "P"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "P",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "P",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "P",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "P",
+        "danger_proxy": 0.0255,
+        "after_discard": {
+          "shanten": 2,
+          "ukeire": 48,
+          "effective": [
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "6m",
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "P"
+          ]
+        }
+      },
+      "outcome": "self dealt into toimen, delta -8300",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023051610gm-0029-0000-4e321d29&tw=3",
+      "report": "https://naga.dmv.nico/htmls/af096ab2d293c556433efb0e4849761a3fe39beb80a305405f618baa6333a127v2_2.html?tw=3"
+    },
+    {
+      "game": 879,
+      "round_index": 6,
+      "position": 61,
+      "round": "South 1-0",
+      "dealer": false,
+      "rank": 1,
+      "score": 40700,
+      "wall_tiles_left": 42,
+      "hand": "4m 4m 5mr 6m 6m 2p 2p 5p 2s 3s 3s 4s 4s 5s",
+      "draw": "4m",
+      "discard": "5p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 2,
+        "effective": [
+          "5m"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "6m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "6m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "6m",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "6m",
+        "danger_proxy": 0.2314,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 36,
+          "effective": [
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "6m",
+            "7m",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "7p"
+          ]
+        }
+      },
+      "outcome": "toimen won, self delta +0",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023051620gm-0029-0000-34d0985d&tw=3",
+      "report": "https://naga.dmv.nico/htmls/27d1760af49c55c02c6b8919f9c366ee500b3c8c775445879dfb0fe24a8a2cc4v2_2.html?tw=3"
+    },
+    {
+      "game": 888,
+      "round_index": 6,
+      "position": 57,
+      "round": "South 2-0",
+      "dealer": false,
+      "rank": 1,
+      "score": 29100,
+      "wall_tiles_left": 44,
+      "hand": "2m 3p 4p 5p 7p 3s 3s 3s",
+      "draw": "7p",
+      "discard": "7p",
+      "danger_proxy": 0.9021,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 3,
+        "effective": [
+          "2m"
+        ]
+      },
+      "open_melds": 2,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "7p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "7p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "7p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "7p",
+        "danger_proxy": 0.9021,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 3,
+          "effective": [
+            "2m"
+          ]
+        }
+      },
+      "outcome": "self dealt into kamicha, delta -3200",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023051701gm-0029-0000-19bda9b3&tw=0",
+      "report": "https://naga.dmv.nico/htmls/17ac2eb01bdbfe846c6566e46058123312752566d17ec20eafaecc78117ca55bv2_2.html?tw=0"
+    },
+    {
+      "game": 910,
+      "round_index": 5,
+      "position": 67,
+      "round": "South 1-2",
+      "dealer": false,
+      "rank": 4,
+      "score": 2900,
+      "wall_tiles_left": 38,
+      "hand": "4m 5m 5m 7m 8m 2p 2p 5p 6p 7p 5s 7s 8s 9s",
+      "draw": "8m",
+      "discard": "5s",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 13,
+        "effective": [
+          "3m",
+          "5m",
+          "6m",
+          "9m",
+          "2p"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 1,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "5m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "5m",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "5s",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "5m",
+        "danger_proxy": 0.3844,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 9,
+          "effective": [
+            "3m",
+            "6m",
+            "9m"
+          ]
+        }
+      },
+      "outcome": "self won 3 han 30 fu, delta +6500",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023051719gm-0029-0000-ba5b4a1f&tw=1",
+      "report": "https://naga.dmv.nico/htmls/9d0a2ce86039b0c6b70391574d63a1db2705be5217d92d3c3e76c25222ba56dfv2_2.html?tw=1",
+      "example_category": "fourth_place_one_shanten"
+    },
+    {
+      "game": 917,
+      "round_index": 0,
+      "position": 55,
+      "round": "East 1-0",
+      "dealer": false,
+      "rank": 3,
+      "score": 25000,
+      "wall_tiles_left": 43,
+      "hand": "1m 2m 3m 4m 7m 7m 1p 2p 3p 1s 2s 4s 5sr 6s",
+      "draw": "4m",
+      "discard": "4m",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "3s"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "4m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "4m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "4m",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "4m",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "3s"
+          ]
+        }
+      },
+      "outcome": "shimocha won, self delta -2000",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023051723gm-0029-0000-ec7476a1&tw=2",
+      "report": "https://naga.dmv.nico/htmls/67cb54a336c1202d284ad8175c35361426a1a5bfbdb4903de961ea1c724fca01v2_2.html?tw=2"
+    },
+    {
+      "game": 920,
+      "round_index": 7,
+      "position": 83,
+      "round": "South 1-0",
+      "dealer": false,
+      "rank": 2,
+      "score": 38200,
+      "wall_tiles_left": 31,
+      "hand": "3m 3m 1p 2p 3p 4p 5pr 9p 2s 3s 4s 6s 7s 8s",
+      "draw": "9p",
+      "discard": "9p",
+      "danger_proxy": 0.9973,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 5,
+        "effective": [
+          "3p",
+          "6p"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "9p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "9p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "9p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "9p",
+        "danger_proxy": 0.9973,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 5,
+          "effective": [
+            "3p",
+            "6p"
+          ]
+        }
+      },
+      "outcome": "self won 2 han 40 fu, delta +3600",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023051800gm-0029-0000-77e68c4d&tw=1",
+      "report": "https://naga.dmv.nico/htmls/bc5bc799faaa2fb0461c6a968c193be87a26c7e8f63e124b3719d8062024f9edv2_2.html?tw=1"
+    },
+    {
+      "game": 942,
+      "round_index": 0,
+      "position": 81,
+      "round": "East 1-0",
+      "dealer": false,
+      "rank": 4,
+      "score": 25000,
+      "wall_tiles_left": 32,
+      "hand": "4m 5m 5mr 6m 2p 3p 4p 4p",
+      "draw": "5m",
+      "discard": "5m",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 6,
+        "effective": [
+          "1p",
+          "4p"
+        ]
+      },
+      "open_melds": 2,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "5m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "5m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "5m",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "5m",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 6,
+          "effective": [
+            "1p",
+            "4p"
+          ]
+        }
+      },
+      "outcome": "kamicha won, self delta -1000",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023051819gm-0029-0000-28245f5b&tw=3",
+      "report": "https://naga.dmv.nico/htmls/745f5218553502684edd8ce984a8af032922e3731811a0cd86c3c41e861ee4bav2_2.html?tw=3"
+    },
+    {
+      "game": 1020,
+      "round_index": 4,
+      "position": 133,
+      "round": "East 4-0",
+      "dealer": false,
+      "rank": 1,
+      "score": 41000,
+      "wall_tiles_left": 5,
+      "hand": "3m 4m 5m 5m 5p 6p 7p 4s 4s 6s 7s",
+      "draw": "5m",
+      "discard": "5m",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 6,
+        "effective": [
+          "5s",
+          "8s"
+        ]
+      },
+      "open_melds": 1,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "7s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "7s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "7s",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "7s",
+        "danger_proxy": 0.0297,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 26,
+          "effective": [
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "7m",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s"
+          ]
+        }
+      },
+      "outcome": "self dealt into kamicha, delta -12000",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023052110gm-0029-0000-0512bc8e&tw=0",
+      "report": "https://naga.dmv.nico/htmls/8b66fef55b8c8175804886b962cb3b6612091cefefaf2a07f9038392966461c7v2_2.html?tw=0",
+      "example_category": "engine_rejected_overpush"
+    },
+    {
+      "game": 1031,
+      "round_index": 3,
+      "position": 71,
+      "round": "East 3-1",
+      "dealer": false,
+      "rank": 3,
+      "score": 18000,
+      "wall_tiles_left": 39,
+      "hand": "1m 2m 3m 4m 4m 5p S S",
+      "draw": "S",
+      "discard": "5p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "4m",
+          "S"
+        ]
+      },
+      "open_melds": 2,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "5p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "5p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "5p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "5p",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "4m",
+            "S"
+          ]
+        }
+      },
+      "outcome": "self won 4 han 50 fu, delta +9300",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023052116gm-0029-0000-8f086d18&tw=3",
+      "report": "https://naga.dmv.nico/htmls/3ed76bcff775696c890a59b77c03e676206d3200458da4d991b99dd7b5c28f89v2_2.html?tw=3",
+      "example_category": "valuable_open_tenpai"
+    },
+    {
+      "game": 1043,
+      "round_index": 2,
+      "position": 95,
+      "round": "East 2-1",
+      "dealer": false,
+      "rank": 4,
+      "score": 18000,
+      "wall_tiles_left": 26,
+      "hand": "5p 5pr 6s P P",
+      "draw": "6s",
+      "discard": "6s",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "5p",
+          "P"
+        ]
+      },
+      "open_melds": 3,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "6s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "6s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "6s",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "6s",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "5p",
+            "P"
+          ]
+        }
+      },
+      "outcome": "self dealt into toimen, delta -2900",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023052122gm-0029-0000-32e3cb5d&tw=0",
+      "report": "https://naga.dmv.nico/htmls/189de5803eb095bf305c89c52174387fee219040bf991578ac4653cfe582f855v2_2.html?tw=0",
+      "example_category": "three_call_inventory_trap"
+    },
+    {
+      "game": 1049,
+      "round_index": 0,
+      "position": 60,
+      "round": "East 1-0",
+      "dealer": false,
+      "rank": 4,
+      "score": 25000,
+      "wall_tiles_left": 41,
+      "hand": "4m 1p 2p 3p 4p 4p 7p 9p 4s 5s 6s",
+      "draw": "7p",
+      "discard": "4m",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 2,
+        "effective": [
+          "8p"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "4m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "4m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "4m",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "4m",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 2,
+          "effective": [
+            "8p"
+          ]
+        }
+      },
+      "outcome": "self won 4 han 60 fu, delta +10000",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023052209gm-0029-0000-53977bf3&tw=3",
+      "report": "https://naga.dmv.nico/htmls/ff4202f274885daa53738727e4186ec7fd8465777b2d14c342baa1e2c745c7a4v2_2.html?tw=3"
+    },
+    {
+      "game": 1054,
+      "round_index": 3,
+      "position": 57,
+      "round": "East 3-1",
+      "dealer": false,
+      "rank": 4,
+      "score": 15100,
+      "wall_tiles_left": 42,
+      "hand": "2m 4m 5m 6m 3p 3p 5p 6p 6p 7p 7p 5s 6s 8s",
+      "draw": "8s",
+      "discard": "2m",
+      "danger_proxy": 0.9794,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 10,
+        "effective": [
+          "5p",
+          "8p",
+          "4s",
+          "7s"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "2m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "2m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "2m",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "2m",
+        "danger_proxy": 0.9794,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 10,
+          "effective": [
+            "5p",
+            "8p",
+            "4s",
+            "7s"
+          ]
+        }
+      },
+      "outcome": "self dealt into toimen, delta -4200",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023052211gm-0029-0000-de662ff2&tw=1",
+      "report": "https://naga.dmv.nico/htmls/a659f7c12d8ceb924b68094d6f495ab9a947fb576ffaf6e35f41c1a602f5b1c9v2_2.html?tw=1"
+    },
+    {
+      "game": 1060,
+      "round_index": 4,
+      "position": 129,
+      "round": "East 4-1",
+      "dealer": false,
+      "rank": 3,
+      "score": 25600,
+      "wall_tiles_left": 6,
+      "hand": "4m 5m 6m 2p 3p 7p 7p 1s 2s 3s 5s 6s 6s 7s",
+      "draw": "1s",
+      "discard": "6s",
+      "danger_proxy": 0.9411,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "1p",
+          "4p"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "6s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "6s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "6s",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "6s",
+        "danger_proxy": 0.9411,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "1p",
+            "4p"
+          ]
+        }
+      },
+      "outcome": "draw, self delta +1500",
+      "outcome_bucket": "draw",
+      "replay": "https://tenhou.net/4/?log=2023052215gm-0029-0000-4969359d&tw=2",
+      "report": "https://naga.dmv.nico/htmls/0c3c366d4004f4f7e2f400f2b7812d265f95bd51ac2a599e9ed47580ac2db1bev2_2.html?tw=2"
+    },
+    {
+      "game": 1082,
+      "round_index": 11,
+      "position": 57,
+      "round": "South 2-3",
+      "dealer": false,
+      "rank": 2,
+      "score": 34200,
+      "wall_tiles_left": 42,
+      "hand": "9m 9m 5p 5pr 6p 7p 1s 2s 3s 7s 7s P P P",
+      "draw": "5pr",
+      "discard": "5p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "9m",
+          "7s"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "5p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "5p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "5p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "5p",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "9m",
+            "7s"
+          ]
+        }
+      },
+      "outcome": "self dealt into shimocha, delta -2900",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023052310gm-0029-0000-7c15621f&tw=0",
+      "report": "https://naga.dmv.nico/htmls/e5a91da465a1f2f194087dc00eb86bdcaa8aa733b1e4a37493fa63cf14827620v2_2.html?tw=0"
+    },
+    {
+      "game": 1087,
+      "round_index": 2,
+      "position": 25,
+      "round": "East 2-0",
+      "dealer": false,
+      "rank": 1,
+      "score": 32200,
+      "wall_tiles_left": 58,
+      "hand": "2m 2m 2m 6m 1p 2p 4p 6p 2s 3s 9s S W F",
+      "draw": "2s",
+      "discard": "2m",
+      "danger_proxy": 0.993,
+      "after_discard": {
+        "shanten": 4,
+        "ukeire": 51,
+        "effective": [
+          "2m",
+          "4m",
+          "5m",
+          "6m",
+          "7m",
+          "8m",
+          "3p",
+          "5p",
+          "1s",
+          "4s",
+          "7s",
+          "8s",
+          "9s",
+          "S",
+          "W",
+          "F"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "W",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "W",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "W",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "W",
+        "danger_proxy": 0.5374,
+        "after_discard": {
+          "shanten": 3,
+          "ukeire": 25,
+          "effective": [
+            "6m",
+            "3p",
+            "5p",
+            "1s",
+            "4s",
+            "9s",
+            "S",
+            "F"
+          ]
+        }
+      },
+      "outcome": "kamicha won, self delta -3000",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023052313gm-0029-0000-90c717a4&tw=0",
+      "report": "https://naga.dmv.nico/htmls/71804d36a9cf4048a7b189c7bd57e6eaa41346155d91bed4498fcc3d6e7e00ffv2_2.html?tw=0"
+    },
+    {
+      "game": 1089,
+      "round_index": 4,
+      "position": 103,
+      "round": "East 3-1",
+      "dealer": false,
+      "rank": 1,
+      "score": 40200,
+      "wall_tiles_left": 20,
+      "hand": "9m 9m 5p 6p 7p 1s 3s 6s C C C",
+      "draw": "C",
+      "discard": "6s",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 2,
+        "effective": [
+          "2s"
+        ]
+      },
+      "open_melds": 1,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 2,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "7p",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "6s",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "6s",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "7p",
+        "danger_proxy": 0.0,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 7,
+          "effective": [
+            "4p",
+            "7p",
+            "2s"
+          ]
+        }
+      },
+      "outcome": "draw, self delta +1500",
+      "outcome_bucket": "draw",
+      "replay": "https://tenhou.net/4/?log=2023052314gm-0029-0000-f7d140bc&tw=0",
+      "report": "https://naga.dmv.nico/htmls/918e4b3288490a6043513a81e58eaef86c8ff516cd980621cb54ef47209aafd7v2_2.html?tw=0"
+    },
+    {
+      "game": 1089,
+      "round_index": 4,
+      "position": 127,
+      "round": "East 3-1",
+      "dealer": false,
+      "rank": 1,
+      "score": 40200,
+      "wall_tiles_left": 8,
+      "hand": "9m 9m 1p 4p 5p 6p 1s 3s C C C",
+      "draw": "1p",
+      "discard": "1p",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 2,
+        "effective": [
+          "2s"
+        ]
+      },
+      "open_melds": 1,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "1p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "1p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "1p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "1p",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 2,
+          "effective": [
+            "2s"
+          ]
+        }
+      },
+      "outcome": "draw, self delta +1500",
+      "outcome_bucket": "draw",
+      "replay": "https://tenhou.net/4/?log=2023052314gm-0029-0000-f7d140bc&tw=0",
+      "report": "https://naga.dmv.nico/htmls/918e4b3288490a6043513a81e58eaef86c8ff516cd980621cb54ef47209aafd7v2_2.html?tw=0"
+    },
+    {
+      "game": 1121,
+      "round_index": 5,
+      "position": 79,
+      "round": "East 4-0",
+      "dealer": false,
+      "rank": 1,
+      "score": 40300,
+      "wall_tiles_left": 33,
+      "hand": "5m 7s 9s S S S P P",
+      "draw": "5m",
+      "discard": "5m",
+      "danger_proxy": 0.9998,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 4,
+        "effective": [
+          "8s"
+        ]
+      },
+      "open_melds": 2,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "5m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "5m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "5m",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "5m",
+        "danger_proxy": 0.9998,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 4,
+          "effective": [
+            "8s"
+          ]
+        }
+      },
+      "outcome": "self won 4 han 40 fu, delta +9000",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023052413gm-0029-0000-b100bea5&tw=2",
+      "report": "https://naga.dmv.nico/htmls/704d6a2aafd40fea5fee359dd6079199b1a3cebc6ba20aa6119cfe6f2749ad38v2_2.html?tw=2"
+    },
+    {
+      "game": 1157,
+      "round_index": 0,
+      "position": 65,
+      "round": "East 1-0",
+      "dealer": false,
+      "rank": 4,
+      "score": 25000,
+      "wall_tiles_left": 38,
+      "hand": "3m 4m 6m 6m 6m 3p 6p 7p 8p 4s 5s E E E",
+      "draw": "3p",
+      "discard": "3p",
+      "danger_proxy": 0.9775,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 24,
+        "effective": [
+          "2m",
+          "3m",
+          "4m",
+          "5m",
+          "3s",
+          "4s",
+          "5s",
+          "6s"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "3p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "3p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "3p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "3p",
+        "danger_proxy": 0.9775,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 24,
+          "effective": [
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "3s",
+            "4s",
+            "5s",
+            "6s"
+          ]
+        }
+      },
+      "outcome": "draw, self delta -1500",
+      "outcome_bucket": "draw",
+      "replay": "https://tenhou.net/4/?log=2023052515gm-0029-0000-7f776923&tw=3",
+      "report": "https://naga.dmv.nico/htmls/78e3b1ad38d9b8616b328e164020451d3b452a0b7efc5d441dd9c6f4a3b0011cv2_2.html?tw=3"
+    },
+    {
+      "game": 1173,
+      "round_index": 2,
+      "position": 93,
+      "round": "East 3-0",
+      "dealer": false,
+      "rank": 3,
+      "score": 25000,
+      "wall_tiles_left": 25,
+      "hand": "1m 3m 4m 5m 6p 7p 8p 1s 2s 3s 5s 5sr 7s 8s",
+      "draw": "8s",
+      "discard": "1m",
+      "danger_proxy": 0.9574,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 3,
+        "effective": [
+          "6s",
+          "9s"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": true,
+      "model_support_count": 2,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "1m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "8s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "1m",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "1m",
+        "danger_proxy": 0.9574,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 3,
+          "effective": [
+            "6s",
+            "9s"
+          ]
+        }
+      },
+      "outcome": "self won 3 han 30 fu, delta +5900",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023052600gm-0029-0000-abf07b0f&tw=3",
+      "report": "https://naga.dmv.nico/htmls/d0a9fb2997065243d81aef32e8993a56ed792c747eab1c6de6a485eb345f1f7bv2_2.html?tw=3",
+      "example_category": "riichi_declaration"
+    },
+    {
+      "game": 1192,
+      "round_index": 8,
+      "position": 102,
+      "round": "South 4-0",
+      "dealer": false,
+      "rank": 2,
+      "score": 26800,
+      "wall_tiles_left": 22,
+      "hand": "3m 4m 6m 7m 8m 4p 5p 6p 6p 5s 5s 7s 8s 9s",
+      "draw": "4p",
+      "discard": "6p",
+      "danger_proxy": 0.9016,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 6,
+        "effective": [
+          "2m",
+          "5m"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "6p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "6p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "6p",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "6p",
+        "danger_proxy": 0.9016,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 6,
+          "effective": [
+            "2m",
+            "5m"
+          ]
+        }
+      },
+      "outcome": "self won 3 han 30 fu, delta +4900",
+      "outcome_bucket": "self_win",
+      "replay": "https://tenhou.net/4/?log=2023052616gm-0029-0000-e839c88a&tw=0",
+      "report": "https://naga.dmv.nico/htmls/7ceb309712fa0766fbbdca6a3f0cfcf5b8d56c1cec95a886e56622e1510b6c68v2_2.html?tw=0"
+    },
+    {
+      "game": 1198,
+      "round_index": 5,
+      "position": 138,
+      "round": "East 4-0",
+      "dealer": false,
+      "rank": 1,
+      "score": 50000,
+      "wall_tiles_left": 3,
+      "hand": "5mr 6m 7m 7m 7m 3p 3p 3p 5p 6p 6s 7s 7s 8s",
+      "draw": "6s",
+      "discard": "7s",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 7,
+        "effective": [
+          "4p",
+          "7p"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 0,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "5p",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "5p",
+          "supports_luckyj": false
+        },
+        {
+          "key": "kagashi",
+          "top": "5p",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "5p",
+        "danger_proxy": 0.0119,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 25,
+          "effective": [
+            "4m",
+            "7m",
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        }
+      },
+      "outcome": "draw, self delta +1500",
+      "outcome_bucket": "draw",
+      "replay": "https://tenhou.net/4/?log=2023052619gm-0029-0000-c4a92c90&tw=1",
+      "report": "https://naga.dmv.nico/htmls/8eb978513f58cd411e3a8ab6bfce1448ec4f35f273b019392a8cc0c32f160b9bv2_2.html?tw=1"
+    },
+    {
+      "game": 1274,
+      "round_index": 0,
+      "position": 61,
+      "round": "East 1-0",
+      "dealer": false,
+      "rank": 2,
+      "score": 25000,
+      "wall_tiles_left": 40,
+      "hand": "2m 3m 6m 2p 2p 2p 4s 5s 5sr 6s 7s F F F",
+      "draw": "6m",
+      "discard": "6m",
+      "danger_proxy": 0.9997,
+      "after_discard": {
+        "shanten": 1,
+        "ukeire": 29,
+        "effective": [
+          "1m",
+          "2m",
+          "3m",
+          "4m",
+          "3s",
+          "4s",
+          "5s",
+          "6s",
+          "7s",
+          "8s"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": false,
+      "model_support_count": 3,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "6m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "6m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "6m",
+          "supports_luckyj": true
+        }
+      ],
+      "nishiki": {
+        "discard": "6m",
+        "danger_proxy": 0.9997,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 29,
+          "effective": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s"
+          ]
+        }
+      },
+      "outcome": "toimen won, self delta -1300",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023052909gm-0029-0000-11324e7c&tw=1",
+      "report": "https://naga.dmv.nico/htmls/62dbe2daf518e5b9197e0395ec41d28b6c482de43d4d69fd827d9b4ff6747759v2_2.html?tw=1"
+    },
+    {
+      "game": 1286,
+      "round_index": 1,
+      "position": 113,
+      "round": "East 1-1",
+      "dealer": false,
+      "rank": 2,
+      "score": 25000,
+      "wall_tiles_left": 16,
+      "hand": "4m 5mr 3p 4p 5p 7p 4s 4s 5sr 6s 7s",
+      "draw": "7s",
+      "discard": "7p",
+      "danger_proxy": 0.9592,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 7,
+        "effective": [
+          "3m",
+          "6m"
+        ]
+      },
+      "open_melds": 1,
+      "opponent_riichi_count": 2,
+      "declares_riichi": false,
+      "model_support_count": 1,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "7s",
+          "supports_luckyj": false
+        },
+        {
+          "key": "hibakari",
+          "top": "7p",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "7s",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "7s",
+        "danger_proxy": 0.0,
+        "after_discard": {
+          "shanten": 1,
+          "ukeire": 13,
+          "effective": [
+            "3m",
+            "6m",
+            "7p",
+            "4s",
+            "7s"
+          ]
+        }
+      },
+      "outcome": "self dealt into toimen, delta -4200",
+      "outcome_bucket": "direct_deal_in",
+      "replay": "https://tenhou.net/4/?log=2023052915gm-0029-0000-f6f95594&tw=2",
+      "report": "https://naga.dmv.nico/htmls/9320bf571ea35da082104ca58670065898a76cca2c7d5f4f2f6c127a97356cddv2_2.html?tw=2"
+    },
+    {
+      "game": 1301,
+      "round_index": 5,
+      "position": 94,
+      "round": "South 1-0",
+      "dealer": false,
+      "rank": 4,
+      "score": 20800,
+      "wall_tiles_left": 25,
+      "hand": "1m 1m 1m 2m 3m 5mr 6m 6m 5p 6p 7p 4s 5s 6s",
+      "draw": "2m",
+      "discard": "6m",
+      "danger_proxy": 0.9999,
+      "after_discard": {
+        "shanten": 0,
+        "ukeire": 7,
+        "effective": [
+          "4m",
+          "7m"
+        ]
+      },
+      "open_melds": 0,
+      "opponent_riichi_count": 1,
+      "declares_riichi": true,
+      "model_support_count": 2,
+      "model_heads": [
+        {
+          "key": "nishiki",
+          "top": "6m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "hibakari",
+          "top": "6m",
+          "supports_luckyj": true
+        },
+        {
+          "key": "kagashi",
+          "top": "5m",
+          "supports_luckyj": false
+        }
+      ],
+      "nishiki": {
+        "discard": "6m",
+        "danger_proxy": 0.9999,
+        "after_discard": {
+          "shanten": 0,
+          "ukeire": 7,
+          "effective": [
+            "4m",
+            "7m"
+          ]
+        }
+      },
+      "outcome": "kamicha won, self delta -3000",
+      "outcome_bucket": "other_player_win",
+      "replay": "https://tenhou.net/4/?log=2023052922gm-0029-0000-362759ef&tw=2",
+      "report": "https://naga.dmv.nico/htmls/8d8d2736213fb5c8ee4e982707b875cffc387123ba8cff4636554cb207f43c76v2_2.html?tw=2"
+    }
+  ]
+}

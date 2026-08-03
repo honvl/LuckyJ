@@ -121,6 +121,77 @@ class AccuracyRegressionTests(unittest.TestCase):
         self.assertNotIn('nagaThreat: "NAGA threat"', app)
         self.assertNotIn('immediateDanger: "Immediate danger"', app)
 
+    def test_open_hand_brake_exhaustion_is_explicit(self):
+        strategy = read_json("site/strategy-guides.json")["point-04"]
+        strategy_ja = read_json("site/strategy-guides.ja.json")["point-04"]
+        strategy_text = " ".join(strategy.values()).lower()
+        strategy_ja_text = " ".join(strategy_ja.values())
+        points = (ROOT / "site/points.html").read_text(encoding="utf-8").lower()
+        ja = (ROOT / "site/ja.html").read_text(encoding="utf-8")
+
+        self.assertIn("one turn, not a permanent fold", strategy_text)
+        self.assertIn("mawashi has ended", strategy_text)
+        self.assertIn("fourth against the third-place dealer", strategy_text)
+        self.assertIn("一巡", strategy_ja_text)
+        self.assertIn("回し打ちは終わ", strategy_ja_text)
+        self.assertIn("4着", strategy_ja_text)
+        self.assertIn("one saved genbutsu buys one turn", points)
+        self.assertIn("fourth and the riichi dealer is third", points)
+        self.assertIn("残した現物が買うのは一巡", ja)
+        self.assertIn("自分が4着で、立直した親が3着", ja)
+
+    def test_extreme_danger_audit_is_nondealer_only(self):
+        audit = read_json("data/nondealer_high_danger_pushes.json")
+        methodology = audit["methodology"]
+        summary = audit["summary"]
+
+        self.assertEqual(methodology["luckyj_dealer_states"], "excluded")
+        self.assertEqual(methodology["post_luckyj_riichi_locked_discards"], "excluded")
+        self.assertEqual(summary["decisions"], 46)
+        self.assertEqual(summary["capped_at_99_99"], 25)
+        self.assertEqual(summary["shanten"], {
+            "tenpai": 33,
+            "one_shanten": 12,
+            "two_or_more_shanten": 1,
+        })
+        self.assertEqual(summary["hand_state"]["open"], 20)
+        self.assertEqual(summary["against_at_least_one_riichi"], 46)
+        self.assertEqual(summary["supported_by_at_least_two_naga_heads"], 30)
+        self.assertEqual(summary["outcomes"], {
+            "self_win": 12,
+            "direct_deal_in": 11,
+            "other_player_win": 14,
+            "draw": 9,
+        })
+        self.assertTrue(all(not row["dealer"] for row in audit["decisions"]))
+        self.assertTrue(all(row["danger_proxy"] >= 0.90 for row in audit["decisions"]))
+        self.assertTrue(all(row["opponent_riichi_count"] >= 1 for row in audit["decisions"]))
+        self.assertEqual(
+            {row["example_category"] for row in audit["examples"]},
+            {
+                "high_value_tenpai",
+                "fourth_place_one_shanten",
+                "riichi_declaration",
+                "valuable_open_tenpai",
+                "three_call_inventory_trap",
+                "engine_rejected_overpush",
+            },
+        )
+
+        strategy = " ".join(read_json("site/strategy-guides.json")["point-09"].values())
+        strategy_ja = " ".join(read_json("site/strategy-guides.ja.json")["point-09"].values())
+        points = (ROOT / "site/points.html").read_text(encoding="utf-8")
+        ja = (ROOT / "site/ja.html").read_text(encoding="utf-8")
+        self.assertIn("nondealer Tokujou sample", strategy)
+        self.assertIn("46 chosen discards", strategy)
+        self.assertIn("These counts describe nondealer decisions only", strategy)
+        self.assertIn("特上卓の子のサンプル", strategy_ja)
+        self.assertIn("選択打牌は46件", strategy_ja)
+        self.assertIn("nondealer-only", points)
+        self.assertIn("最大NAGA危険度指標90%以上の選択打牌が46件", ja)
+        self.assertNotIn("Game 401", points)
+        self.assertNotIn("Game 401", ja)
+
     def test_reader_copy_matches_current_prescription_artifacts(self):
         points = (ROOT / "site/points.html").read_text(encoding="utf-8")
         ja = (ROOT / "site/ja.html").read_text(encoding="utf-8")
