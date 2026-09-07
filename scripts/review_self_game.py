@@ -38,6 +38,9 @@ RX = {
 }
 
 SAFE_KINDS = {"genbutsu", "suji", "dead"}
+# A lone honor with two or more copies already showing sits under the 5% danger
+# line the defense baselines use, so releasing one is a fold, not a push.
+NOT_A_PUSH = SAFE_KINDS | {"quiet-honor"}
 
 
 def dig(data, *path, default=None):
@@ -102,12 +105,15 @@ def tile_safety(tile, seat, event, players, hand=()):
     b = base(tile)
     if any(base(x) == b for x in event["rivers"][seat]):
         return "genbutsu"
-    if is_honor(tile) and visible_count(tile, event, players, hand) >= 4:
-        return "dead"
+    if is_honor(tile):
+        seen = visible_count(tile, event, players, hand)
+        if seen >= 4:
+            return "dead"
+        if seen >= 2:
+            return "quiet-honor"
+        return "live-honor"
     if suji(tile, event["rivers"][seat]):
         return "suji"
-    if is_honor(tile):
-        return "live-honor"
     num = base(tile) % 10
     if num in (1, 9):
         return "live-terminal"
@@ -232,7 +238,7 @@ def review_hand(log, hero, stats, findings):
         # push / fold against a live riichi
         if threats:
             kinds = [tile_safety(e["tile"], s, e, g["players"], e["hand_before"]) for s in threats]
-            pushed = not all(k in SAFE_KINDS for k in kinds)
+            pushed = not all(k in NOT_A_PUSH for k in kinds)
             b = shanten_bucket(sh)
             stats["push_chances"][b] += 1
             stats["push_taken"][b] += pushed
@@ -266,7 +272,7 @@ def review_hand(log, hero, stats, findings):
         # feeding an open hand while far from tenpai
         if opens and not threats and sh >= 2:
             kinds = [tile_safety(e["tile"], s, e, g["players"], e["hand_before"]) for s in opens]
-            if not all(k in SAFE_KINDS for k in kinds):
+            if not all(k in NOT_A_PUSH for k in kinds):
                 stats["open_push_chances"] += 1
                 stats["open_push_taken"] += 1
             else:

@@ -73,7 +73,23 @@ class SelfReviewTests(unittest.TestCase):
                 for b in self.stats["push_chances"]}
         self.assertEqual(push["0"], 62.5)
         self.assertEqual(push["2"], 0.0)
-        self.assertEqual(push["3+"], 30.0)
+        self.assertEqual(push["3+"], 10.0)
+
+    def test_quiet_honors_are_folds_not_pushes(self):
+        """A lone honor with two copies showing sits under the 5% danger line."""
+        logs = tr.load_logs(FIXTURE_LINKS)
+        game = tr.replay(logs[0])
+        mine = [e for e in game["events"] if e["seat"] == 0]
+        turn7 = next(e for e in mine if e["turn"] == 7)          # lone chun, 2 seen
+        self.assertEqual(
+            review.tile_safety(turn7["tile"], 2, turn7, game["players"], turn7["hand_before"]),
+            "quiet-honor")
+        turn16 = next(e for e in mine if e["turn"] == 16)        # red 5m into a riichi
+        self.assertEqual(
+            review.tile_safety(turn16["tile"], 2, turn16, game["players"], turn16["hand_before"]),
+            "live-middle")
+        self.assertIn("quiet-honor", review.NOT_A_PUSH)
+        self.assertNotIn("live-honor", review.NOT_A_PUSH)
 
     def test_the_expensive_hand_is_flagged(self):
         kinds = {(f["kind"], f["round"]) for f in self.findings}
