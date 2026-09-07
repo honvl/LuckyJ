@@ -1,0 +1,240 @@
+{
+  "scope": "kyoku where LuckyJ is not dealer; all cached NAGA reports",
+  "summary": {
+    "reports": 1255,
+    "child_kyoku": 9745,
+    "dealer_kyoku_skipped": 3309,
+    "errors": []
+  },
+  "threat_source": {
+    "opponent_riichi_declarations": {
+      "dealer": 2049,
+      "child": 3455,
+      "dealer_share_pct": 37.2,
+      "uniform_expectation_pct": 33.3
+    },
+    "first_time_opponent_reaches_2_melds": {
+      "dealer": 1367,
+      "child": 2420,
+      "dealer_share_pct": 36.1,
+      "uniform_expectation_pct": 33.3
+    },
+    "riichi_rate_per_opponent_kyoku": {
+      "dealer": {
+        "n": 9745,
+        "hits": 2049,
+        "rate_pct": 21.0,
+        "ci95_half_width_pp": 0.81
+      },
+      "child": {
+        "n": 19490,
+        "hits": 3455,
+        "rate_pct": 17.7,
+        "ci95_half_width_pp": 0.54
+      }
+    }
+  },
+  "deal_in_price": {
+    "count": {
+      "dealer": 338,
+      "child": 587
+    },
+    "loss_points": {
+      "dealer": {
+        "n": 338,
+        "mean": 6712.1,
+        "median": 5800.0,
+        "sd": 4705.6
+      },
+      "child": {
+        "n": 587,
+        "mean": 4724.4,
+        "median": 3900.0,
+        "sd": 3040.9
+      }
+    }
+  },
+  "pre_declaration_genbutsu": {
+    "definition": "at the moment an opponent declares riichi, LuckyJ's 13-tile hand already contains a tile class present in that player's river before the declaration tile",
+    "holds_at_least_one": {
+      "dealer": {
+        "n": 2049,
+        "hits": 1542,
+        "rate_pct": 75.3,
+        "ci95_half_width_pp": 1.87
+      },
+      "child": {
+        "n": 3455,
+        "hits": 2560,
+        "rate_pct": 74.1,
+        "ci95_half_width_pp": 1.46
+      },
+      "all": {
+        "n": 5504,
+        "hits": 4102,
+        "rate_pct": 74.5,
+        "ci95_half_width_pp": 1.15
+      }
+    },
+    "count_held": {
+      "dealer": {
+        "n": 2049,
+        "mean": 1.3,
+        "median": 1,
+        "sd": 1.1
+      },
+      "child": {
+        "n": 3455,
+        "mean": 1.3,
+        "median": 1,
+        "sd": 1.1
+      },
+      "all": {
+        "n": 5504,
+        "mean": 1.3,
+        "median": 1,
+        "sd": 1.1
+      }
+    },
+    "first_reaction_discard": {
+      "genbutsu_pre_held_pre_river": 1648,
+      "not_genbutsu": 2306,
+      "genbutsu_pre_held_declaration_tile": 438,
+      "genbutsu_just_drawn": 589
+    },
+    "first_reaction_uses_pre_held_when_available": {
+      "n": 3713,
+      "hits": 1648,
+      "rate_pct": 44.4,
+      "ci95_half_width_pp": 1.6
+    }
+  },
+  "quiet_table_retention": {
+    "definition": "LuckyJ decision states with no opponent riichi and no opponent at 2+ melds; for each held tile class present in exactly one opponent's river, whether LuckyJ discarded it this turn",
+    "quiet_states": 76953,
+    "discard_rate_by_owner_role_and_tile_kind": {
+      "dealer": {
+        "honor": {
+          "n": 14001,
+          "hits": 3599,
+          "rate_pct": 25.7,
+          "ci95_half_width_pp": 0.72
+        },
+        "terminal": {
+          "n": 14508,
+          "hits": 2107,
+          "rate_pct": 14.5,
+          "ci95_half_width_pp": 0.57
+        },
+        "middle": {
+          "n": 30543,
+          "hits": 2139,
+          "rate_pct": 7.0,
+          "ci95_half_width_pp": 0.29
+        },
+        "all": {
+          "n": 59052,
+          "hits": 7845,
+          "rate_pct": 13.3,
+          "ci95_half_width_pp": 0.27
+        }
+      },
+      "child": {
+        "honor": {
+          "n": 23967,
+          "hits": 5184,
+          "rate_pct": 21.6,
+          "ci95_half_width_pp": 0.52
+        },
+        "terminal": {
+          "n": 22843,
+          "hits": 3705,
+          "rate_pct": 16.2,
+          "ci95_half_width_pp": 0.48
+        },
+        "middle": {
+          "n": 56923,
+          "hits": 4009,
+          "rate_pct": 7.0,
+          "ci95_half_width_pp": 0.21
+        },
+        "all": {
+          "n": 103733,
+          "hits": 12898,
+          "rate_pct": 12.4,
+          "ci95_half_width_pp": 0.2
+        }
+      }
+    }
+  },
+  "river_tells": {
+    "early_honors_first6": {
+      "0-1": {
+        "n": 6545,
+        "hits": 1149,
+        "rate_pct": 17.6,
+        "ci95_half_width_pp": 0.92
+      },
+      "2": {
+        "n": 7936,
+        "hits": 1607,
+        "rate_pct": 20.2,
+        "ci95_half_width_pp": 0.88
+      },
+      "3+": {
+        "n": 13317,
+        "hits": 2610,
+        "rate_pct": 19.6,
+        "ci95_half_width_pp": 0.67
+      }
+    },
+    "middle_tile_first3": {
+      "no": {
+        "n": 24524,
+        "hits": 4799,
+        "rate_pct": 19.6,
+        "ci95_half_width_pp": 0.5
+      },
+      "yes": {
+        "n": 3274,
+        "hits": 567,
+        "rate_pct": 17.3,
+        "ci95_half_width_pp": 1.3
+      }
+    },
+    "tedashi_count_discards4to6": {
+      "0-1": {
+        "n": 8021,
+        "hits": 1717,
+        "rate_pct": 21.4,
+        "ci95_half_width_pp": 0.9
+      },
+      "2": {
+        "n": 11818,
+        "hits": 2256,
+        "rate_pct": 19.1,
+        "ci95_half_width_pp": 0.71
+      },
+      "3": {
+        "n": 7959,
+        "hits": 1393,
+        "rate_pct": 17.5,
+        "ci95_half_width_pp": 0.83
+      }
+    },
+    "dora_cut_first6": {
+      "no": {
+        "n": 25812,
+        "hits": 4928,
+        "rate_pct": 19.1,
+        "ci95_half_width_pp": 0.48
+      },
+      "yes": {
+        "n": 1986,
+        "hits": 438,
+        "rate_pct": 22.1,
+        "ci95_half_width_pp": 1.82
+      }
+    }
+  }
+}

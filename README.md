@@ -72,6 +72,14 @@ child-only outputs, where LuckyJ is not start-of-kyoku oya/dealer:
 .venv/bin/python scripts/mine_rx3_calls.py    # child-only yakuhai pon and chi reluctance
 ```
 
+Point 14's pre-threat timing copy (who to name before anyone declares) is backed by a separate
+child-only replay that measures dealer versus child riichi rates, deal-in cost by seat,
+pre-declaration genbutsu, quiet-table retention, and early-river tells:
+
+```bash
+.venv/bin/python scripts/mine_pre_threat_safety.py  # writes analysis/pre-threat-safety-<date>.json
+```
+
 The mined summaries behind the published numbers are archived under
 `analysis/rx3-*-2026-07-05.json`. The older `analysis/rx-*-2026-07-03.json` files are kept
 as first-pass all-seat references, not as the current prescription source.

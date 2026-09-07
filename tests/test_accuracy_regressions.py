@@ -204,6 +204,38 @@ class AccuracyRegressionTests(unittest.TestCase):
         self.assertIn("字牌整理が4,135件", ja)
         self.assertIn("対象外になった安全牌を使うケースが4,005件", ja)
 
+    def test_point14_pre_threat_target_is_explicit(self):
+        mined = read_json("analysis/pre-threat-safety-2026-09-07.json")
+        threat = mined["threat_source"]
+        self.assertEqual(mined["summary"]["dealer_kyoku_skipped"], 3309)
+        self.assertEqual(threat["riichi_rate_per_opponent_kyoku"]["dealer"]["rate_pct"], 21.0)
+        self.assertEqual(threat["riichi_rate_per_opponent_kyoku"]["child"]["rate_pct"], 17.7)
+        self.assertEqual(mined["deal_in_price"]["loss_points"]["dealer"]["mean"], 6712.1)
+        self.assertEqual(mined["deal_in_price"]["loss_points"]["child"]["mean"], 4724.4)
+        pre = mined["pre_declaration_genbutsu"]
+        self.assertEqual(pre["holds_at_least_one"]["all"]["n"], 5504)
+        self.assertEqual(pre["holds_at_least_one"]["all"]["rate_pct"], 74.5)
+        retention = mined["quiet_table_retention"]["discard_rate_by_owner_role_and_tile_kind"]
+        self.assertEqual(retention["dealer"]["all"]["rate_pct"], 13.3)
+        self.assertEqual(retention["child"]["all"]["rate_pct"], 12.4)
+
+        strategy = " ".join(read_json("site/strategy-guides.json")["point-14"].values())
+        strategy_ja = " ".join(read_json("site/strategy-guides.ja.json")["point-14"].values())
+        points = (ROOT / "site/points.html").read_text(encoding="utf-8")
+        ja = (ROOT / "site/ja.html").read_text(encoding="utf-8")
+        for text in (strategy, points):
+            self.assertIn("74.5% of 5,504", text)
+            self.assertIn("21.0% of child kyoku against 17.7%", text)
+            self.assertIn("13.3%", text)
+            self.assertIn("price rule", text)
+            self.assertIn("replaces the dealer as the name", text)
+        for text in (strategy_ja, ja):
+            self.assertIn("5,504回のうち74.5%", text)
+            self.assertIn("21.0%でリーチし、各子は17.7%", text)
+            self.assertIn("13.3%", text)
+            self.assertIn("値段の規則", text)
+            self.assertIn("宣言者が親に代わって名前になる", text)
+
 
 if __name__ == "__main__":
     unittest.main()
