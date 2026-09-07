@@ -80,6 +80,39 @@ pre-declaration genbutsu, quiet-table retention, and early-river tells:
 .venv/bin/python scripts/mine_pre_threat_safety.py  # writes analysis/pre-threat-safety-<date>.json
 ```
 
+## Reviewing your own games
+
+`scripts/review_self_game.py` replays a Tenhou-format log and reports where a seat
+diverges from LuckyJ's child-only baselines. It reads the thresholds straight out of
+the `analysis/rx3-*.json` artifacts, so the comparison stays in sync with the
+Prescriptions section rather than hard-coding numbers.
+
+```bash
+.venv/bin/python scripts/review_self_game.py data/self_games/2026-09-07-hanchan.json
+```
+
+The input can be a JSON file of logs, a full Tenhou game object, or a text file of
+`https://tenhou.net/5/#json=...` links pasted one per line (the format
+majsoul-to-naga emits). Use `--hero N` for a seat other than 0 and `--json out.json`
+to save the findings.
+
+The report covers the push rate against a live riichi by shanten, the first answer to
+a fresh riichi, riichi declaration by live wait count, yakuhai pon and closed-hand chi
+rates, and lone value-honor timing. It then flags individual decisions: deal-ins,
+dangerous discards made while a genbutsu for every live threat was still in hand,
+pushes from two or more away, riichi on a three-or-fewer wait, passed yakuhai pons,
+chi that opens a hand without reaching 1-shanten, and value honors carried past the
+quiet turns and spent under fire.
+
+`scripts/tenhou_replay.py` holds the reusable log parser and hand reconstruction if
+you want to script something else against these logs. Stored games live under
+`data/self_games/`; `tests/test_self_review.py` uses the 2026-09-07 hanchan as a
+fixture and checks that the replay still reconciles to that game's real final score.
+
+The flags are review prompts, not verdicts. Every rate is descriptive over the
+reviewed corpus, and the LuckyJ figures beside them are non-dealer rounds from the
+mixed Tenhou sample.
+
 The mined summaries behind the published numbers are archived under
 `analysis/rx3-*-2026-07-05.json`. The older `analysis/rx-*-2026-07-03.json` files are kept
 as first-pass all-seat references, not as the current prescription source.
