@@ -212,7 +212,7 @@ def replay(log: list) -> dict:
                     if t in p["hand"]:
                         p["hand"].remove(t)
                 p["melds"].append({**meld, "src": src})
-                p["meld_tiles"].extend(meld["tiles"])
+                p["meld_tiles"].extend(meld["tiles"][:3])
                 called = {"kind": meld["kind"], "tile": meld["called"], "src": src}
                 if meld["kind"] == "m":  # daiminkan draws a replacement tile
                     continue
@@ -222,14 +222,33 @@ def replay(log: list) -> dict:
             break
 
         turn[cur] += 1
-        entry = p["discards"][p["ci"]]
-        p["ci"] += 1
         riichi = False
-        if isinstance(entry, str) and entry.startswith("r"):
-            riichi = True
-            entry = int(entry[1:])
-        if isinstance(entry, str):
-            raise NotImplementedError(f"kan in discard stream not supported yet: {entry!r}")
+        while True:
+            entry = p["discards"][p["ci"]]
+            p["ci"] += 1
+            if isinstance(entry, str) and entry.startswith("r"):
+                riichi = True
+                entry = int(entry[1:])
+            if not isinstance(entry, str):
+                break
+            # ankan or kakan declared from hand, then a replacement draw
+            meld = parse_meld(entry)
+            if meld["kind"] == "k":  # added kan upgrades an existing pon
+                p["hand"].remove(meld["called"])
+                for m in p["melds"]:
+                    if m["kind"] == "p" and base(m["called"]) == base(meld["called"]):
+                        m["kind"] = "k"
+                        m["tiles"] = meld["tiles"]
+                        break
+            else:  # closed kan takes all four from hand
+                for t in meld["tiles"]:
+                    if t in p["hand"]:
+                        p["hand"].remove(t)
+                p["melds"].append({**meld, "src": cur})
+                p["meld_tiles"].extend(meld["tiles"][:3])
+            drawn = p["draws"][p["di"]]
+            p["di"] += 1
+            p["hand"].append(drawn)
 
         tile = drawn if entry == TSUMOGIRI else entry
         p["hand"].remove(tile)
@@ -279,6 +298,32 @@ def replay(log: list) -> dict:
         "events": events,
         "players": players,
     }
+
+
+def result_blocks(result: list) -> list[tuple[list, list]]:
+    """``(deltas, detail)`` pairs. A double ron produces more than one."""
+    out = []
+    i = 1
+    while i + 1 < len(result):
+        deltas, detail = result[i], result[i + 1]
+        if isinstance(deltas, list) and len(deltas) == 4 and isinstance(detail, list):
+            out.append((deltas, detail))
+        i += 2
+    return out
+
+
+def result_deltas(result: list) -> list[int]:
+    """Point movement for the hand, summed across every winner."""
+    total = [0, 0, 0, 0]
+    blocks = result_blocks(result)
+    if blocks:
+        for deltas, _ in blocks:
+            for i in range(4):
+                total[i] += deltas[i]
+    elif len(result) > 1 and isinstance(result[1], list):
+        for i in range(4):
+            total[i] += result[1][i]
+    return total
 
 
 def seat_wind(seat: int, kyoku: int) -> int:

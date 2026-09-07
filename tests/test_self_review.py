@@ -16,6 +16,7 @@ import review_self_game as review  # noqa: E402
 import tenhou_replay as tr  # noqa: E402
 
 FIXTURE = ROOT / "data/self_games/2026-09-07-hanchan.json"
+FIXTURE_LINKS = ROOT / "data/self_games/2026-09-07-hanchan-2.txt"
 
 
 class TenhouReplayTests(unittest.TestCase):
@@ -91,6 +92,38 @@ class SelfReviewTests(unittest.TestCase):
             if f["kind"] != "unnamed-safety":
                 continue
             self.assertRegex(f["text"], r"holding a genbutsu for every threat \(p\d: ")
+
+
+class KanAndMultiWinnerTests(unittest.TestCase):
+    """The second hanchan has closed kans, an added kan, and a double ron."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.logs = tr.load_logs(FIXTURE_LINKS)
+
+    def test_links_file_parses(self):
+        self.assertEqual(len(self.logs), 10)
+
+    def test_closed_kan_keeps_the_hand_at_thirteen_tiles(self):
+        game = tr.replay(self.logs[0])
+        kan_seats = [p["seat"] for p in game["players"]
+                     if any(m["kind"] in "akm" for m in p["melds"])]
+        self.assertIn(1, kan_seats)
+        for event in game["events"]:
+            total = len(event["hand_after"]) + len(event["meld_tiles"])
+            self.assertEqual(total, 13, f"seat {event['seat']} turn {event['turn']}")
+
+    def test_double_ron_sums_both_winners(self):
+        result = self.logs[8][-1]
+        self.assertEqual(len(tr.result_blocks(result)), 2)
+        self.assertEqual(tr.result_deltas(result), [0, 1300, -9900, 10600])
+
+    def test_exhaustive_draw_deltas_still_read(self):
+        self.assertEqual(tr.result_deltas(self.logs[0][-1]), [-1000, -1000, 3000, -1000])
+
+    def test_second_game_reconciles_to_its_final_score(self):
+        hands, stats, _ = review.build_report(self.logs, hero=0)
+        self.assertEqual(hands[0]["start_scores"][0] + stats["score_delta"], 10200)
 
 
 if __name__ == "__main__":

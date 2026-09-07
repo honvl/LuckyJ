@@ -26,7 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from tenhou_replay import (  # noqa: E402
     DRAGONS, base, is_honor, load_logs, name, names, replay,
-    round_wind, seat_wind, shanten, waits, yakuhai_for,
+    result_blocks, result_deltas, round_wind, seat_wind, shanten, waits, yakuhai_for,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -131,7 +131,7 @@ def review_hand(log, hero, stats, findings):
     my_yakuhai = yakuhai_for(hero, kyoku)
     my_riichi = g["players"][hero]["riichi_event"]
     rnd = g["round_name"]
-    delta = g["result"][1][hero] if len(g["result"]) > 1 else 0
+    delta = result_deltas(g["result"])[hero]
     if my_riichi is not None:
         delta -= 1000  # the declarer's own stick is not in the result deltas
     stats["score_delta"] += delta
@@ -274,16 +274,16 @@ def review_hand(log, hero, stats, findings):
 
     stats["honor_cut_turns"].extend(honor_cut_turn.values())
 
-    if delta < 0 and g["result"][0] == "和了" and len(g["result"]) > 2:
-        who = g["result"][2][0]
-        loser = g["result"][2][1]
-        if loser == hero and who != hero:
-            last = [x for x in g["events"] if x["seat"] == hero][-1]
-            sh = shanten(last["hand_after"], last["meld_tiles"], last["closed"])
-            findings.append({
-                "kind": "deal-in", "round": rnd, "turn": last["turn"],
-                "text": f"dealt {name(last['tile'])} into p{who} for {delta} at {sh}-shanten",
-            })
+    for deltas, detail in result_blocks(g["result"]):
+        winner, loser = detail[0], detail[1]
+        if loser != hero or winner == hero:
+            continue
+        last = [x for x in g["events"] if x["seat"] == hero][-1]
+        sh = shanten(last["hand_after"], last["meld_tiles"], last["closed"])
+        findings.append({
+            "kind": "deal-in", "round": rnd, "turn": last["turn"],
+            "text": f"dealt {name(last['tile'])} into p{winner} for {deltas[hero]} at {sh}-shanten",
+        })
     return g
 
 
