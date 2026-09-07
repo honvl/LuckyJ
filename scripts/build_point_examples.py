@@ -1117,7 +1117,7 @@ def threat_peak_text(profile, lang):
         return "n/a"
     value = format_percent(profile.get("max"))
     if lang == "ja":
-        return f"NAGA最大脅威指標 {value}"
+        return f"NAGA最大危険度指標 {value}"
     return f"a peak NAGA danger proxy of {value}"
 
 
@@ -1138,18 +1138,18 @@ def threat_case_sentence(case, lang):
         naga_detail = f"{naga} の{threat_peak_text(naga_profile, lang)}"
         if abs(gap) < 0.03:
             if max(actual_max, naga_max) < 0.08:
-                return f"修正後の脅威バーでは両候補とも静か。{actual_detail}、{naga_detail}。この例は危険差ではなく、形・役割・着順で読む。"
-            return f"修正後の脅威バーでは両候補が近い。{actual_detail}、{naga_detail}。危険差だけでは説明できない分岐である。"
+                return f"NAGA危険度指標では両候補とも静かである。{actual_detail}、{naga_detail}。この例は危険差ではなく、形、役割、着順で読む。"
+            return f"NAGA危険度指標では両候補が近い。{actual_detail}、{naga_detail}。危険差だけでは説明できない分岐である。"
         if gap < 0:
-            return f"修正後の脅威バーではニシキ候補の方が熱い。{actual_detail}、{naga_detail}。LuckyJ は単に危険を払っているのではなく、熱い候補を避けながら別の価値を残している。"
-        return f"修正後の脅威バーではLuckyJの打牌の方が熱い。{actual_detail}、{naga_detail}。この例は安全寄せではなく、追加脅威を払ってでも残す形・価値・着順理由があるかを見る。"
+            return f"NAGA危険度指標ではニシキ候補の方が熱い。{actual_detail}、{naga_detail}。LuckyJ は熱い候補を避け、別の仕事を持つ牌を残している。"
+        return f"NAGA危険度指標ではLuckyJの打牌の方が熱い。{actual_detail}、{naga_detail}。LuckyJ は追加の危険を払っているので、形、打点、着順の理由がそれに見合うかを見る。"
     if abs(gap) < 0.03:
         if max(actual_max, naga_max) < 0.08:
-            return f"With the corrected bars, both candidates are quiet: {actual_detail}; {naga_detail}. This example should be read through shape, role, and placement rather than a danger gap."
-        return f"With the corrected bars, the two candidate threats are close: {actual_detail}; {naga_detail}. The disagreement is not explained by threat alone."
+            return f"Both candidates are quiet on the NAGA danger proxy: {actual_detail}; {naga_detail}. Read this example through shape, role, and placement, not danger."
+        return f"The two candidates are close on the NAGA danger proxy: {actual_detail}; {naga_detail}. Danger alone does not explain the split."
     if gap < 0:
-        return f"With the corrected bars, Nishiki's candidate is the hotter tile: {actual_detail}; {naga_detail}. LuckyJ is not simply paying more danger here; it is avoiding that hotter candidate while preserving a different job."
-    return f"With the corrected bars, LuckyJ's discard is the hotter tile: {actual_detail}; {naga_detail}. This is a real threat-buy, so the local shape, value, or placement reason has to carry the example."
+        return f"Nishiki's candidate is the hotter tile: {actual_detail}; {naga_detail}. LuckyJ avoids it and keeps a tile with a different job."
+    return f"LuckyJ's discard is the hotter tile: {actual_detail}; {naga_detail}. LuckyJ is paying extra danger here, so the shape, value, or placement reason has to be worth it."
 
 
 def eval_summary(item, lang):
@@ -1348,10 +1348,10 @@ def hibakari_read_sentence(case, lang):
             return f"ヒバカリもニシキと同じ {nishiki} 寄りなので、これは守備寄り基準にも逆らう例。条件がそろう時だけ真似する。"
         return f"ヒバカリは第三候補の {top} を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。"
     if head.get("matches_luckyj"):
-        return f"Hibakari also chooses {actual}, so read this as LuckyJ/Hibakari versus Nishiki, not LuckyJ against every NAGA head."
+        return f"Hibakari also chooses {actual}, so this is LuckyJ and Hibakari against Nishiki rather than LuckyJ against every NAGA head."
     if head.get("matches_nishiki"):
-        return f"Hibakari also leans to Nishiki's {nishiki}, so this is a harder example: LuckyJ is beating the defensive baseline only if the local condition is exact."
-    return f"Hibakari chooses a third line, {top}; read the example as a three-way split and copy the reason, not the surface tile."
+        return f"Hibakari also leans to Nishiki's {nishiki}, so this is a harder example. LuckyJ's line holds up only if the local condition is exact."
+    return f"Hibakari chooses a third line, {top}. Treat this as a three-way split and look for the reason behind each choice."
 
 
 def yakuhai_threat_sentence(case, lang):
@@ -1398,29 +1398,29 @@ def point_focus_en(point_key, case):
     if point_key == "point-05":
         return f"{actual} is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more."
     if point_key == "point-06":
-        return f"LuckyJ spends some easy acceptance to keep the hand worth playing. The score job asks for more than a cheap future."
+        return f"LuckyJ gives up some easy acceptance to keep the hand worth playing. The score situation asks for more than a cheap hand."
     if point_key == "point-08":
-        return f"Riichi is part of the value calculation. With a declaration probability of {format_percent(case.get('reach_prob'))}, LuckyJ treats pressure as a real output of the discard."
+        return f"Riichi is part of the value here. With a declaration probability of {format_percent(case.get('reach_prob'))}, LuckyJ counts the pressure as part of what the discard buys."
     if point_key == "point-09":
         return f"The next required discard matters more than this turn alone. LuckyJ chooses {actual} because the route through {naga} can become expensive on the following draw."
     if point_key == "point-10":
-        return f"This is late enough that vague improvement has mostly expired. LuckyJ's {actual} cut should be read as win, safe tenpai, or controlled defense."
+        return f"This late, vague improvement is worth little. Read LuckyJ's {actual} cut as a win attempt, a safe tenpai, or a controlled fold."
     if point_key == "point-11":
-        return f"The hand result matters: {case.get('outcome')}. LuckyJ is playing for drawn-hand equity as well as direct wins."
+        return f"The result was {case.get('outcome')}. LuckyJ is playing for draw-tenpai value as well as a direct win."
     if point_key == "point-12":
         return f"The disagreement is the review prompt. First decide whether {actual} buys safety, value, route count, pressure, or placement before calling it right or wrong."
     if point_key == "point-13":
         threat = yakuhai_threat_sentence(case, "en")
         return f"{threat} LuckyJ releases it while no yaku or clear advancement is visible, accepting the current pon risk instead of carrying a potentially worse live tile later.".strip()
     if point_key == "point-14":
-        return f"By cutting {actual}, LuckyJ keeps {kept} as a named defensive tile with a target."
+        return f"By cutting {actual}, LuckyJ keeps {kept} as a defensive tile aimed at a specific opponent."
     if point_key == "point-15":
-        return f"This is a spend-the-safe-tile example. {actual} may look safe, but LuckyJ treats that safety as stale or off-target once the live route needs space."
+        return f"{actual} looks safe, but LuckyJ treats that safety as stale or aimed at the wrong player once the live route needs the space."
     if point_key == "point-16":
-        return f"The outside cut {actual} preserves the middle connection represented by {naga}. It looks defensive, but the point is keeping the real route alive."
+        return f"Cutting the outside {actual} preserves the middle connection around {naga}. It looks defensive, but its job is keeping the real route alive."
     if point_key == "point-18":
-        return f"Honor tiles split into roles. Here {actual} is being treated as loose material or an opponent condition."
-    return f"LuckyJ cuts {actual} while Nishiki prefers {naga}; the lesson is in the future each tile leaves behind."
+        return f"Honors get roles. Here {actual} is treated as loose material or as an opponent's yaku condition."
+    return f"LuckyJ cuts {actual} and Nishiki prefers {naga}. Compare the futures each tile leaves behind."
 
 
 def point_focus_ja(point_key, case):
@@ -1464,20 +1464,20 @@ def copy_rule_en(point_key, case):
     actual = tile_token(case.get("actual"))
     naga = tile_token(case.get("naga"))
     if point_key == "point-01":
-        return "Copy the score job: when your position is already good enough, lower the ambition, keep safe tiles, and let the hand fold unless a later draw makes it worth pushing."
+        return "Copy this when your position is already good enough: lower the ambition, keep safe tiles, and let the hand fold unless a later draw makes it worth pushing."
     if point_key == "point-13":
         return f"Copy the timing, not the tile: release {actual} only while no yaku or clear advancement is visible; once advancement is visible, choke it unless placement makes feeding acceptable."
     if point_key == "point-14":
-        return f"Copy the target: keep {naga} when it answers a named opponent on a believable future bad draw."
+        return f"Keep {naga} when it answers a specific opponent on a believable future bad draw."
     if point_key == "point-15":
         return f"Copy this only after naming why the safe-looking {actual} has expired and what later safe tile remains."
     if point_key == "point-18":
-        return f"Copy the role label: cut {actual} when its main job helps someone else's condition."
+        return f"Cut {actual} when its main job is completing someone else's hand."
     if point_key == "point-08":
         return "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter."
     if point_key == "point-11":
         return "Copy this when a safe path to tenpai has measurable value even if the hand is unlikely to win outright."
-    return f"Copy the reason: if cutting {actual} keeps the hand's real job clearer than the Nishiki line through {naga}, the choice is reproducible."
+    return f"Copy this when cutting {actual} keeps the hand's job clearer than the Nishiki line through {naga}."
 
 
 def copy_rule_ja(point_key, case):
@@ -1514,8 +1514,8 @@ def limit_rule_en(point_key, case):
     if point_key == "point-15":
         return f"Spend {actual} only when another real answer to the active threat remains."
     if point_key == "point-16":
-        return f"If {actual} is the only safe tile or the inside route is fantasy, the outside cut is just a fold."
-    return "Copy the surface tile only when the score job, threat level, and next discard chain match."
+        return f"If {actual} is the only safe tile or the inside route is not real, the outside cut is just a fold."
+    return "Copy the exact tile only when the score situation, the threat, and the next discard match."
 
 
 def limit_rule_ja(point_key, case):
@@ -1543,10 +1543,10 @@ def why_naga_tempting_en(case):
     naga_eval = case.get("naga_eval")
     if actual_eval and naga_eval:
         if case.get("point") == "point-01":
-            return f"The Nishiki line through {naga} is the efficiency temptation because it leaves {eval_summary(naga_eval, 'en')}. LuckyJ's {actual} line leaves {eval_summary(actual_eval, 'en')}. That extra acceptance matters less when the score job is to protect the current position, not manufacture more points. {danger_gap_phrase(case, 'en')}"
+            return f"The Nishiki line through {naga} is the efficiency line because it leaves {eval_summary(naga_eval, 'en')}. LuckyJ's {actual} line leaves {eval_summary(actual_eval, 'en')}. That extra acceptance matters less when the job is protecting the current position rather than making more points. {danger_gap_phrase(case, 'en')}"
         return f"The Nishiki line through {naga} is tempting because it leaves {eval_summary(naga_eval, 'en')}. LuckyJ's {actual} line leaves {eval_summary(actual_eval, 'en')}. {danger_gap_phrase(case, 'en')}"
     if case.get("point") == "point-01":
-        return f"Nishiki's top line {naga} is tempting because it has the highest model weight here: Nishiki {format_percent(case.get('naga_prob'))}, LuckyJ {format_percent(case.get('actual_prob'))}. In this score spot, that model weight is not enough by itself; the hand first has to justify risking the lead. {danger_gap_phrase(case, 'en')}"
+        return f"Nishiki's top line {naga} is tempting because it has the highest model weight here: Nishiki {format_percent(case.get('naga_prob'))}, LuckyJ {format_percent(case.get('actual_prob'))}. In this score spot, model weight is not enough on its own. The hand first has to justify risking the lead. {danger_gap_phrase(case, 'en')}"
     return f"Nishiki's top line {naga} is tempting because it has the highest model weight here: Nishiki {format_percent(case.get('naga_prob'))}, LuckyJ {format_percent(case.get('actual_prob'))}. {danger_gap_phrase(case, 'en')}"
 
 
@@ -1590,7 +1590,7 @@ def build_discard_guide(case, lang):
             "copy": copy_rule_ja(point_key, case),
             "limit": limit_rule_ja(point_key, case),
             "prompt": prompt,
-            "answer": f"LuckyJ は {actual} を選ぶ。理由は {focus}",
+            "answer": f"LuckyJ は {actual} を選ぶ。{focus}",
         }
     focus = point_focus_en(point_key, case)
     read = " ".join(part for part in [focus, threat, safety, hibakari] if part).strip()
@@ -1608,7 +1608,7 @@ def build_discard_guide(case, lang):
         "copy": copy_rule_en(point_key, case),
         "limit": limit_rule_en(point_key, case),
         "prompt": prompt,
-        "answer": f"LuckyJ chooses {actual}. The reproducible reason is: {focus}",
+        "answer": f"LuckyJ chooses {actual}. {focus}",
     }
 
 
@@ -1670,16 +1670,16 @@ def build_call_guide(case, lang):
             "copy": f"{call} が役、速度、テンパイ、または相手への圧力を作る時だけ真似する。鳴いた後の最初の打牌 {discard} まで先に決める。",
             "limit": "鳴いた後の打牌と次の方針まで言える時に、LuckyJ 型のテンポになる。",
             "prompt": f"{called} を {call} するか。答える前に、鳴いた後に何を切るかを言う。",
-            "answer": f"最初に見るのは鳴き後の打牌で、この例では {discard} まで見えている。{focus} {model_read}",
+            "answer": f"まず鳴いた後の打牌を見る。この例では {discard} である。{focus} {model_read}",
         }
     if point_key == "point-04":
-        focus = f"The post-call {discard} is planned, and the shortened hand still keeps {reserve} as a verified exit against {primary_label}."
+        focus = f"The post-call {discard} is already chosen, and the shortened hand still holds {reserve} as a checked exit against {primary_label}."
     elif shape.get("shanten") is not None and shape.get("shanten") > 0 and (case.get("left") or 0) <= 1:
         focus = f"This is a last-turn tempo call, not a hand-completion call. After {discard}, the hand is still {post_shape}, so do not read this as a normal pon that makes a winning shape."
     elif shape.get("shanten") is not None and shape.get("shanten") <= 0:
-        focus = f"The closed route is running out of practical turns; after the {call} and {discard}, the hand reaches {post_shape}."
+        focus = f"The closed route is running out of turns. After the {call} and {discard}, the hand is {post_shape}."
     else:
-        focus = f"The closed route is running out of practical turns; after the {call} and {discard}, the hand reaches {post_shape}."
+        focus = f"The closed route is running out of turns. After the {call} and {discard}, the hand is {post_shape}."
     rank_text = f"currently {ordinal_en(rank)}" if rank else "current rank unknown"
     if nishiki_call and nishiki_call.get("supports_call") and post_call_split:
         why_not = f"Nishiki also chooses {call}, but after the call it would discard {tile_token(nishiki_post.get('top'))} instead of {discard}. The comparison is the post-call discard, not call versus no-call."
@@ -1695,9 +1695,9 @@ def build_call_guide(case, lang):
         "read": f"{focus} {model_read}".strip(),
         "whyNot": why_not,
         "copy": f"Copy the {call} only when it creates yaku, speed, tenpai pressure, or denial, and when the first post-call discard {discard} is already planned.",
-        "limit": "The call needs a named post-call discard and a concrete next plan to become LuckyJ-style tempo.",
+        "limit": "The call needs a chosen post-call discard and a concrete next plan. Without those it is exposure, not tempo.",
         "prompt": f"Would you {call} on {called}? Before answering, name the discard after the call.",
-        "answer": f"The first check is the post-call discard: {discard} is already the release tile. {focus} {model_read}",
+        "answer": f"First check the post-call discard. Here it is {discard}. {focus} {model_read}",
     }
 
 

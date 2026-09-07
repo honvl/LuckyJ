@@ -467,7 +467,7 @@ def build() -> dict[str, Any]:
             "強い",
             "Broad honor cleanup is proxy-supported, but the selected open-hand examples are contested by Mortal.",
             "広い字牌整理はproxyで支持される一方、選定した副露手例はMortalが反対している。",
-            "Discarding offers the pon. Treat this as a timing study—early release versus later choke—not as denial.",
+            "Discarding offers the pon. Treat this as a timing study, early release versus later choke, not as denial.",
             "切ればポンの機会を与える。阻止ではなく、早い先切りと後の絞りを比べる時機問題として読む。",
             "Example: release a lone live dragon only while no yaku or clear advancement is visible; choke it once advancement becomes visible unless placement favors feeding.",
             "例: 役も明確な進行も見えない時だけ生牌の孤立三元牌を先切りし、進行が見えた後は着順上の理由がない限り絞る。",

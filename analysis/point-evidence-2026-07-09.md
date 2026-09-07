@@ -1,4 +1,4 @@
-# Point Evidence Audit - 2026-07-09
+# Point Evidence Audit - 2026-09-07
 
 ## Method
 
@@ -28,7 +28,7 @@
 | point-10 | Late Game | Context-qualified | Late positions are numerous enough to validate as a training category; every late LuckyJ split still needs context. | Cross-check third-row choices against points, safe tiles, and model disagreement. |
 | point-11 | Late Game | Context-qualified | Draw-tenpai frequency makes the objective real, but each push still needs a danger price. | Chase keiten through multiple live threats only with safe tiles. |
 | point-12 | Review | Review-only | The Nishiki mismatch base is large, and most mismatches stay below the severe-disagreement threshold. | A split marks a hand to study; proof comes from the purchase, risk, and table context. |
-| point-13 | Calls and Yaku Conditions | Proxy-supported | Broad honor cleanup is proxy-supported, but the selected open-hand examples are contested by Mortal. | Discarding offers the pon. Treat this as a timing study—early release versus later choke—not as denial. |
+| point-13 | Calls and Yaku Conditions | Proxy-supported | Broad honor cleanup is proxy-supported, but the selected open-hand examples are contested by Mortal. | Discarding offers the pon. Treat this as a timing study, early release versus later choke, not as denial. |
 | point-14 | Defense | Proxy-supported | Threat-specific safety is strongly supported; generic safety retention only works after naming the target. | The point must stay narrow: who is the tile for, when will it be spent, and what shape cost does it impose? |
 | point-15 | Defense and Shape | Proxy-supported | Spending a safe-looking tile that Nishiki kept was materially better than the mismatch baseline. | Spend it only after naming why it no longer defends the live danger. |
 | point-16 | Shape and Defense | Proxy-supported | Cutting outside material while keeping inside shape had strong aggregate support. | Keep route preservation separate from vague safety. |
