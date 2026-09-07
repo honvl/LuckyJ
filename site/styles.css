@@ -3148,3 +3148,27 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
     border-bottom: 0;
   }
 }
+
+.evidence-note {
+  margin: 14px 0 4px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.55;
+  color: #6b6f68;
+}
+
+.evidence-note b {
+  color: #4d514b;
+}
+
+.case-list {
+  margin: 14px 0;
+  padding-left: 22px;
+}
+
+.case-list li {
+  margin: 6px 0;
+  font-size: 16px;
+  color: #30332f;
+}
