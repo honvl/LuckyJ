@@ -452,7 +452,9 @@ def main() -> None:
         return
     args.out.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     n = sum(len(v) for v in data["chapters"].values())
-    print(f"wrote {args.out.relative_to(ROOT)}: {n} examples in {len(data['chapters'])} chapters")
+    shown = args.out.resolve()
+    shown = shown.relative_to(ROOT) if shown.is_relative_to(ROOT) else shown
+    print(f"wrote {shown}: {n} examples in {len(data['chapters'])} chapters")
 
 
 if __name__ == "__main__":
