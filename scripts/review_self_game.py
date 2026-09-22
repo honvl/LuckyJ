@@ -114,10 +114,12 @@ def tile_safety(tile, seat, event, game, hand=()):
     other copies showing at that moment; ``hand`` is the hero's tiles, ``tile`` included.
     """
     b = base(tile)
-    if any(base(x) == b for x in event["rivers"][seat]):
-        return "genbutsu"
+    anchors = {base(x) for x in event["rivers"][seat]}
     r = event["riichi_seats"][seat]
-    if r is not None and any(base(ev["tile"]) == b for ev in game["events"][r + 1:event["index"]]):
+    if r is not None:
+        # tiles passed after the declaration are genbutsu and anchor suji like river tiles
+        anchors |= {base(ev["tile"]) for ev in game["events"][r + 1:event["index"]]}
+    if b in anchors:
         return "genbutsu"
     if is_honor(tile):
         others = visible_count(tile, event, game, hand)
@@ -128,7 +130,7 @@ def tile_safety(tile, seat, event, game, hand=()):
         if others == 2:
             return "quiet-honor"
         return "live-honor"
-    if suji(tile, event["rivers"][seat]):
+    if suji(tile, anchors):
         return "suji"
     num = base(tile) % 10
     if num in (1, 9):

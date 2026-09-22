@@ -87,7 +87,8 @@ class SelfReviewTests(unittest.TestCase):
         # 4 of 8: the 8m on East 2-1 turn 11 had been passed after p3's riichi
         self.assertEqual(push["0"], 50.0)
         self.assertEqual(push["2"], 0.0)
-        self.assertEqual(push["3+"], 10.0)
+        # the one far cut, the 8p on South 2-0 turn 11, is suji: a 5p went by after p1's riichi
+        self.assertEqual(push["3+"], 0.0)
 
     def test_first_answers_count_in_every_game_of_a_manifest(self):
         # games share round names such as "East 1-0"; each hand still has its own first answer
@@ -100,9 +101,14 @@ class SelfReviewTests(unittest.TestCase):
     def test_the_expensive_hand_is_flagged(self):
         kinds = {(f["kind"], f["round"]) for f in self.findings}
         self.assertIn(("deal-in", "South 2-0"), kinds)
-        self.assertIn(("unnamed-safety", "South 2-0"), kinds)
-        self.assertIn(("far-push", "South 2-0"), kinds)
         self.assertIn(("thin-riichi", "East 1-0"), kinds)
+
+    def test_suji_anchored_by_a_passed_tile_is_not_a_push(self):
+        # South 2-0 turn 11: the 8p looks live against p1's river, but a 5p was cut after p1's
+        # riichi without a ron, so the 8p is suji; it is neither a far push nor an unused safe tile
+        kinds = {(f["kind"], f["round"]) for f in self.findings}
+        self.assertNotIn(("far-push", "South 2-0"), kinds)
+        self.assertNotIn(("unnamed-safety", "South 2-0"), kinds)
 
     def test_thin_riichi_names_the_live_tile_count(self):
         thin = [f for f in self.findings if f["kind"] == "thin-riichi"]
@@ -125,6 +131,15 @@ class SafetyRuleTests(unittest.TestCase):
     def test_tile_passed_before_the_riichi_is_not_genbutsu(self):
         game, e = table([(0, 13), (1, 44), (2, 19), (3, 41)], riichi={1: 1})
         self.assertEqual(review.tile_safety(13, 1, e, game, [13]), "live-outer")
+
+    def test_tile_passed_after_a_riichi_anchors_suji(self):
+        # p1 declares with N; p2 then throws 1p unpunished, so 4p is suji for p1 as well
+        game, e = table([(0, 13), (1, 44), (2, 21), (3, 41)], riichi={1: 1})
+        self.assertEqual(review.tile_safety(24, 1, e, game, [24]), "live-middle")  # 7p side still open
+        game, e = table([(0, 13), (1, 27), (2, 21), (3, 41)], riichi={1: 1})
+        self.assertEqual(review.tile_safety(24, 1, e, game, [24]), "suji")  # nakasuji: 7p in river, 1p passed
+        game, e = table([(0, 21), (1, 27), (2, 13), (3, 41)], riichi={1: 1})
+        self.assertEqual(review.tile_safety(24, 1, e, game, [24]), "live-middle")  # 1p went before the riichi
 
     def test_passed_tiles_prove_nothing_against_a_hand_without_riichi(self):
         game, e = table([(0, 13), (1, 44), (2, 19), (3, 41)])
