@@ -371,3 +371,12 @@ body.hide-opponent-hands .mahjong-table .player-hand:not(.player-current) .hand-
 .point .guide-list li {
   margin: 4px 0;
 }
+
+/* Sentences corrected after the reader has seen them, listed in the notice at the top. */
+mark.guide-changed {
+  background: var(--soft-gold);
+  border-bottom: 2px solid var(--gold);
+  color: inherit;
+  padding: 0 2px;
+  scroll-margin-top: 90px;
+}
