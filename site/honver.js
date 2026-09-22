@@ -7,7 +7,7 @@
  * and setupRetractingTopbar.
  */
 (function () {
-  const guideAsset = "honver-guide.json?v=20260922-guide-1";
+  const guideAsset = "honver-guide.json?v=20260922-guide-2";
   const hideHandsKey = "luckyj:honver-guide:hide-hands";
   const SAFETY_CLASS = {
     genbutsu: "safe",

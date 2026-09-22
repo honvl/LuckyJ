@@ -295,6 +295,67 @@
    "did": "You cut [[2s]], live against the riichi, to wait on [[4s]]. The hand has no yaku, so it could only win by tsumo, and three [[4s]] were already in shimocha's pon: one tile in the whole game could complete it. The [[2s]] dealt in for 8,000.",
    "luckyj": "LuckyJ pushes 43% of its tenpai hands against a riichi, you 38%. What decides the push is the yaku: LuckyJ pushes 86% of its open tenpais that have a yaku on the wait, and 55% of those with none.",
    "fix": "Fold with [[2p]], genbutsu against the riichi and suji against shimocha. Cutting the red [[5sr]] for a [[1s]]-[[4s]] wait does not help: all four [[1s]] are gone. A yakuless dama with one live tile is worth about as much as a 1-shanten hand."
+  },
+  {
+   "id": "flush-double-south",
+   "chapter": "dora-shape",
+   "game": "260920-900a1166",
+   "round": "South 3-0",
+   "frames": [
+    {
+     "turn": 5,
+     "expect_cut": "2s",
+     "better": "4p"
+    }
+   ],
+   "title": "The free cut that kept a mangan in reach",
+   "situation": "South 3, turn 5. You lead with 29,500. On turn 4 you ponned [[S]], the round wind and your seat wind, for 2 han. Your one dora is the red [[5sr]], and eleven of your fourteen tiles are souzu or honors. You draw [[5m]].",
+   "did": "You cut [[2s]] and kept [[4m]]-[[5m]] and the lone [[4p]]. More souzu followed it out over the next turns, and the hand was still 1-shanten at the draw.",
+   "luckyj": "When a first call leaves eleven or more of the fourteen tiles in one suit plus honors, and every dora in hand fits that suit, LuckyJ finishes the flush 59% of the time and wins one hand in five with it, for about 10,000.",
+   "fix": "Cut [[4p]]. It leaves the same 2-shanten and the same 15 tiles of acceptance as [[2s]], and it keeps the flush open. Double South, honitsu and the red five are 5 han, a mangan. Without the flush the hand is 3 han."
+  },
+  {
+   "id": "three-tells-late-chi",
+   "chapter": "dora-tells",
+   "game": "260922-c61d1cbf",
+   "round": "East 1-0",
+   "frames": [
+    {
+     "turn": 16,
+     "expect_cut": "7m",
+     "better": "S",
+     "note": "Shimocha shows all three tells: two calls, the second one late, and five draws in a row thrown straight from the wall since. [[S]] is the tile you just drew."
+    },
+    {
+     "turn": 17,
+     "expect_cut": "6m",
+     "better": "S",
+     "note": "Shimocha has thrown a sixth straight draw from the wall. [[S]] is still the safest tile and keeps the most acceptance."
+    }
+   ],
+   "title": "Two live cuts into a caller showing all three tells",
+   "situation": "East 1, turn 16, all four players on 25,000. Your two [[1p]] are dora, and you ponned [[9s]] on turn 5. Shimocha ponned [[C]], then chied your red [[5sr]] on turn 10, and has thrown every draw since straight from the wall. You are 1-shanten and draw [[S]].",
+   "did": "You cut [[7m]], then [[6m]] on turn 17, both live against shimocha. You reached tenpai with a [[F]] pon on turn 18 and dealt in to shimocha with [[4m]] on turn 19 for 3,900.",
+   "luckyj": "With all three tells showing, the caller is tenpai 84% of the time in LuckyJ's games. At 1-shanten with a safe tile in hand, LuckyJ then cuts a live tile 32% of the time.",
+   "fix": "Cut [[S]] both turns. On turn 16 it keeps 1-shanten with 10 tiles of acceptance, twice what [[7m]] keeps, and with two other copies showing only a tanki can hit it. The hand still improves on [[5m]], [[8m]], [[1p]] and [[F]] without handing shimocha a live tile."
+  },
+  {
+   "id": "dealer-genbutsu-three-tells",
+   "chapter": "dora-tells",
+   "game": "260920-192cc940",
+   "round": "East 4-1",
+   "frames": [
+    {
+     "turn": 14,
+     "expect_cut": "3p",
+     "better": "8s"
+    }
+   ],
+   "title": "A free genbutsu against a caller showing all three tells",
+   "situation": "East 4, one honba, turn 14. You are the dealer, second on 23,100, 1-shanten with the [[8p]] dora and a [[3s]]-[[4s]]-[[5s]] chi. Shimocha ponned [[1m]], chied your [[7m]] on turn 8 for a second call, and has thrown five straight draws from the wall since. Kamicha has one chi. You draw [[3p]].",
+   "did": "You cut the [[3p]] you drew, live against both callers. Nobody won, and the hand ended in a draw.",
+   "luckyj": "At 1-shanten with dora in hand and all three tells showing, LuckyJ cuts a live tile 32% of the time when it holds a safe one. When the safe tile keeps the same shanten and acceptance, it is the only cut.",
+   "fix": "Cut [[8s]]. It is genbutsu against both callers and leaves the same 1-shanten and 20 tiles of acceptance as [[3p]]."
   }
  ]
 }

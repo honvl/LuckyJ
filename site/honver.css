@@ -335,3 +335,39 @@ body.hide-opponent-hands .mahjong-table .player-hand:not(.player-current) .hand-
 .guide-comparison .decision .discard-line em {
   font-size: 12px;
 }
+
+/* What changed since the last read: a notice at the top and a tag on each new chapter. */
+.guide-new {
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--blue);
+  background: var(--panel);
+  margin: 18px 0;
+  padding: 14px 18px;
+  line-height: 1.55;
+}
+
+.guide-new a {
+  color: var(--blue);
+}
+
+.point .guide-new-tag {
+  display: inline-block;
+  margin: 0 0 6px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.point .guide-list {
+  margin: 8px 0 14px;
+  padding-left: 22px;
+}
+
+.point .guide-list li {
+  margin: 4px 0;
+}

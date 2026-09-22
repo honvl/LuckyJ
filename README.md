@@ -190,7 +190,7 @@ The same-code LuckyJ numbers land on the NAGA-side miners where the definitions 
 
 ### Personal guide
 
-`site/honver.html` is a personal off-shoot of the playbook: five chapters measured on your
+`site/honver.html` is a personal off-shoot of the playbook: eight chapters measured on your
 games against LuckyJ, with the table at each turn where a different tile, call or declaration
 would have played closer to LuckyJ. It reuses the playbook's table renderer from `site/app.js`
 (the page sets `data-app="table-only"` so the playbook data is not fetched) and adds
@@ -231,6 +231,26 @@ Mahjong Soul mangan head written without a han count ("満貫8000点"). Saved re
 current guide, one per player: `analysis/riichi-folds-*-2026-09-22.txt`,
 `analysis/open-tenpai-push-*-2026-09-22.txt`, `analysis/single-call-*-2026-09-22.txt`,
 `analysis/vs-open-*-2026-09-22.txt` and `analysis/win-value-*-2026-09-22.txt`.
+
+Chapters 6 to 8 (hands dealt dora) come from three more miners with the same compute/report
+modes. `mine_dora_hands.py` follows each hand from the deal through the first tenpai to the end
+and records where each win's han came from; its `expected` mode asks how many of a player's
+tenpai hands LuckyJ's win rate from the same spot (path, table, live tiles, turn) predicts.
+`mine_flush_calls.py` measures first calls with a half flush in reach, and `mine_caller_tells.py`
+checks every cut against a caller for three visible tells (a late call, a second call, two
+straight tsumogiri) against whether the caller was really tenpai, with the other three seats'
+cuts recorded for a lobby comparison:
+
+```bash
+.venv/bin/python scripts/mine_dora_hands.py compute data/self_games/majsoul/index.json 2026-01-01 dora-you.json
+.venv/bin/python scripts/mine_dora_hands.py expected dora-you.json dora-luckyj-*.json
+.venv/bin/python scripts/mine_flush_calls.py compute data/self_games/majsoul/index.json 2026-01-01 flush-you.json
+.venv/bin/python scripts/mine_caller_tells.py compute data/self_games/majsoul/index.json 2026-01-01 tells-you.json
+```
+
+Their reports are `analysis/dora-hands-*-2026-09-22.txt`,
+`analysis/dora-hands-expected-honver-2026-09-22.txt`, `analysis/flush-calls-*-2026-09-22.txt`
+and `analysis/caller-tells-*-2026-09-22.txt`.
 
 The mined summaries behind the published numbers are archived under
 `analysis/rx3-*-2026-07-05.json`. The older `analysis/rx-*-2026-07-03.json` files are kept

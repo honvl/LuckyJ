@@ -25,6 +25,46 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 SAFE = {"genbutsu", "dead", "suji", "nakasuji", "honor, 2 seen"}
 
 
+_CALC = None
+
+
+def ron_value(hand13, melds, win, seat, kyoku, dora_set, riichi=False):
+    """Han of a ron on ``win`` (indicator dora added; red fives counted by the library).
+
+    Returns 0 when the hand has no yaku, None when the calculator cannot read it.
+    """
+    global _CALC
+    from collections import Counter
+
+    from mahjong.constants import EAST
+    from mahjong.hand_calculating.hand import HandCalculator
+    from mahjong.hand_calculating.hand_config import HandConfig, OptionalRules
+    from mahjong.meld import Meld
+
+    import tenhou_replay as tr
+    from tenhou_replay import base
+
+    if _CALC is None:
+        _CALC = HandCalculator()
+    kinds = {"c": Meld.CHI, "p": Meld.PON, "m": Meld.KAN, "k": Meld.KAN, "a": Meld.KAN}
+    used = Counter()
+    mo = []
+    for m in melds:
+        ids = sorted(to136(sorted(m["tiles"], key=base), used))
+        mo.append(Meld(meld_type=kinds[m["kind"]], tiles=ids, opened=m["kind"] != "a"))
+    hid = to136(list(hand13) + [win], used)
+    cfg = HandConfig(is_tsumo=False, is_riichi=riichi, options=OptionalRules(has_open_tanyao=True, has_aka_dora=True),
+                     player_wind=EAST + tr.seat_wind(seat, kyoku) - 41, round_wind=EAST + tr.round_wind(kyoku) - 41)
+    try:
+        res = _CALC.estimate_hand_value(hid + [t for x in mo for t in x.tiles], hid[-1], melds=mo, config=cfg)
+    except Exception:
+        return None
+    if res.error:
+        return 0
+    dora = sum(1 for t in list(hand13) + [win] + [t for m in melds for t in m["tiles"]] if base(t) in dora_set)
+    return res.han + dora
+
+
 def to136(codes, used):
     """Replay tile codes to the mahjong library's 136 ids.
 

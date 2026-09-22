@@ -1,0 +1,38 @@
+== LuckyJ: 1255 games, 46086 discards facing a caller with nobody in riichi
+-- live cuts that dealt in to a caller, per 100 live cuts (danger 2+)
+   no dora in hand  this player 0.97 (n  10827, live  64.2%)   the other three seats 1.56 (n  36178)
+   dora in hand     this player 1.33 (n  18931, live  64.8%)   the other three seats 1.91 (n  61656)
+-- share of cuts that were live, dora in hand, by turn and by the caller's calls
+   turn <= 6       33.6% of cuts  live  83.4%  hits/100 live 0.42
+   turn 7-9        29.7% of cuts  live  64.0%  hits/100 live 1.21
+   turn 10-12      20.4% of cuts  live  52.6%  hits/100 live 2.65
+   turn 13+        16.4% of cuts  live  43.3%  hits/100 live 3.24
+   one call        63.0% of cuts  live  71.9%  hits/100 live 0.92
+   two calls       30.5% of cuts  live  54.9%  hits/100 live 2.27
+   three or more    6.5% of cuts  live  42.8%  hits/100 live 2.23
+-- live cuts with dora in hand, by reads the safety labels leave out: share of live cuts, hits per 100
+   passed since every caller's last discard     4.2%  hits/100 0.00   without: 1.38
+   no chance (wall)                             1.9%  hits/100 1.10   without: 1.33
+   same suit as a caller's meld                20.2%  hits/100 1.83   without: 1.20
+   a dora or within two of one                  8.1%  hits/100 1.83   without: 1.28
+-- how often a caller was tenpai, by the tells showing
+   late_call    showing  20.2%: tenpai  63.9%   not showing:  26.7%
+   two_calls    showing  36.2%: tenpai  54.5%   not showing:  22.7%
+   tsumogiri2   showing  26.0%: tenpai  55.6%   not showing:  26.7%
+   ted3         showing  12.7%: tenpai  42.6%   not showing:  33.0%
+   inside_last  showing  23.1%: tenpai  32.8%   not showing:  34.6%
+   dora_meld    showing  13.9%: tenpai  49.6%   not showing:  31.7%
+   0 of the three main tells:  44.3% of discards, caller tenpai  13.4%
+   1 of the three main tells:  33.1% of discards, caller tenpai  38.8%
+   2 of the three main tells:  18.6% of discards, caller tenpai  64.8%
+   3 of the three main tells:   4.0% of discards, caller tenpai  84.0%
+-- live cuts: was the caller tenpai, and was the tile on the wait
+   no dora in hand  caller tenpai  26.2%  tile on the wait   1.1%  (given tenpai   4.3%)
+   dora in hand     caller tenpai  28.6%  tile on the wait   1.5%  (given tenpai   5.4%)
+-- live-cut rate while holding a safe tile, by the main tells and shanten after the cut (± one standard error)
+   no dora in hand  0-shanten | no tell: live  59.1% ±2.2 (n   509) hits/100 live  1.0 | 1 tell: live  54.9% ±1.8 (n   742) hits/100 live  1.5 | 2+ tells: live  48.1% ±1.8 (n   777) hits/100 live  4.8 | all 3: live  44.5% ±3.6 (n   191) hits/100 live  5.9
+   no dora in hand  1-shanten | no tell: live  67.2% ±1.1 (n  1912) hits/100 live  1.5 | 1 tell: live  52.9% ±1.2 (n  1872) hits/100 live  1.3 | 2+ tells: live  38.8% ±1.4 (n  1227) hits/100 live  2.3 | all 3: live  32.6% ±3.4 (n   190) hits/100 live  3.2
+   no dora in hand  2+-shanten | no tell: live  74.7% ±0.7 (n  3877) hits/100 live  0.2 | 1 tell: live  53.5% ±1.0 (n  2272) hits/100 live  0.9 | 2+ tells: live  33.6% ±1.4 (n  1215) hits/100 live  1.2 | all 3: live  23.4% ±3.1 (n   192) hits/100 live  0.0
+   dora in hand     0-shanten | no tell: live  64.0% ±1.6 (n   863) hits/100 live  1.4 | 1 tell: live  56.7% ±1.3 (n  1426) hits/100 live  3.2 | 2+ tells: live  49.9% ±1.2 (n  1672) hits/100 live  5.0 | all 3: live  47.4% ±2.7 (n   342) hits/100 live  6.8
+   dora in hand     1-shanten | no tell: live  66.2% ±0.8 (n  3327) hits/100 live  0.5 | 1 tell: live  57.0% ±0.8 (n  3641) hits/100 live  2.1 | 2+ tells: live  42.3% ±1.0 (n  2584) hits/100 live  2.7 | all 3: live  32.3% ±2.3 (n   431) hits/100 live  3.6
+   dora in hand     2+-shanten | no tell: live  75.5% ±0.6 (n  5653) hits/100 live  0.3 | 1 tell: live  56.1% ±0.8 (n  3616) hits/100 live  1.0 | 2+ tells: live  36.1% ±1.0 (n  2128) hits/100 live  0.8 | all 3: live  33.1% ±2.5 (n   356) hits/100 live  0.8

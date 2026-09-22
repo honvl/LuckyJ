@@ -119,8 +119,9 @@ class GuideSpotTests(unittest.TestCase):
             for frame in ex["frames"]:
                 if frame["kind"] != "discard" or not frame.get("better") or ex["id"] == "keep-eight-tiles":
                     continue
-                you = max(rank[label] for label in frame["you"]["safety"])
-                better = max(rank[label] for label in frame["better"]["safety"])
+                # a turn with nobody in riichi or open has no safety to compare
+                you = max((rank[label] for label in frame["you"]["safety"]), default=0)
+                better = max((rank[label] for label in frame["better"]["safety"]), default=0)
                 self.assertLessEqual(better, you, f"{ex['id']} turn {frame['turn']}")
 
     def test_furiten_safe_tile_is_labelled_genbutsu(self):
@@ -140,6 +141,24 @@ class GuideSpotTests(unittest.TestCase):
                 meld_tiles = sum(len(m["tiles"]) for m in me["melds"] if m["kind"] != "kakan")
                 expected = 13 if frame["kind"] == "call" else 14
                 self.assertEqual(len(tiles) + meld_tiles - sum(1 for m in me["melds"] if len(m["tiles"]) == 4), expected, ex["id"])
+
+
+class PageChapterTests(unittest.TestCase):
+    """Every chapter with examples has a place on the page, and every placeholder has examples."""
+
+    def test_spot_chapters_match_the_page_placeholders(self):
+        import re
+
+        page = (ROOT / "site/honver.html").read_text(encoding="utf-8")
+        placeholders = set(re.findall(r'data-guide-examples="([^"]+)"', page))
+        chapters = {s["chapter"] for s in json.loads(SPOTS.read_text(encoding="utf-8"))["spots"]}
+        self.assertEqual(placeholders, chapters)
+
+    def test_new_chapters_are_listed_at_the_top(self):
+        page = (ROOT / "site/honver.html").read_text(encoding="utf-8")
+        for anchor in ("dora-points", "dora-shape", "dora-tells"):
+            self.assertIn(f'id="{anchor}"', page)
+            self.assertIn(f'href="#{anchor}"', page)
 
 
 class OpenTenpaiHanTests(unittest.TestCase):

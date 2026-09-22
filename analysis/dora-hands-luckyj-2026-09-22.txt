@@ -1,0 +1,97 @@
+== LuckyJ: 1255 games, 12953 hands
+-- no dora: 6376 hands  (deal shanten 3.58)
+   reached tenpai  46.6%  first tenpai turn 9.7  by turn 9  23.7%  by turn 12  36.6%
+   first tenpai closed  51.1%  open  48.9%  live tiles 4.90  4+ live  70.6%  2+ wait kinds  66.0%
+   closed first tenpai, quiet table, with a yaku: n 337  declared  76.6%
+   won  21.6%  won given tenpai  46.3%  by first tenpai: closed  48.5% open  44.1%  riichi  53.0%  dama  33.0%
+   tenpai given up and not won back   6.2%  (under a riichi  66.7%)  tenpai at a draw  42.2%
+   win value   5626  tsumo share  35.9%
+   first tenpai with no yaku: open   6.9% (won  12.0%)  closed  33.9% (won  47.0%)
+   tenpai hands that let a legal ron go by   0.2%  (later won  33.3%, later dealt in  16.7%); passes per 100 tenpai hands 0.2
+   unwon tenpai hands ended by: other ron  26.4%  other tsumo  25.2%  dealt  21.5%  draw  26.9%
+   points per hand: won   1214  lost to deal-ins   494
+      riichi first  wins per 100 hands  9.21  value   6881  mangan+  41.7%  han: dora+red 0.54  ura 0.41  riichi/ippatsu/tsumo 1.64  yakuhai 0.09  shape 0.79
+      riichi later  wins per 100 hands  0.60  value   7382  mangan+  50.0%  han: dora+red 0.39  ura 0.61  riichi/ippatsu/tsumo 1.50  yakuhai 0.11  shape 0.92
+      dama          wins per 100 hands  1.74  value   5620  mangan+  28.8%  han: dora+red 0.47  ura 0.00  riichi/ippatsu/tsumo 0.27  yakuhai 0.23  shape 1.86
+      open          wins per 100 hands 10.04  value   4373  mangan+  19.1%  han: dora+red 0.47  ura 0.01  riichi/ippatsu/tsumo 0.03  yakuhai 0.83  shape 0.91
+      riichi first  wins with no shape yaku  45.7%  pinfu  33.7%  tanyao  17.0%
+      open          wins with no shape yaku  48.4%  pinfu   0.0%  tanyao  20.0%
+      all wins      wins with no shape yaku  44.6%  pinfu  17.4%  tanyao  19.0%
+      open wins with a half or full flush  22.3%  with tanyao  20.0%
+   dealt in   9.1%  avg cost  5405
+      in riichi       2.32 per 100 hands  (with a fold tile   8.1%)  into riichi 0.96  open 1.04  dama 0.33
+      at tenpai       2.84 per 100 hands  (with a fold tile  10.5%)  into riichi 1.22  open 1.04  dama 0.58
+      at 1-shanten    2.56 per 100 hands  (with a fold tile   9.2%)  into riichi 0.63  open 1.44  dama 0.49
+      at 2+ shanten   1.43 per 100 hands  (with a fold tile  14.3%)  into riichi 0.33  open 0.82  dama 0.28
+-- 1 dora: 4854 hands  (deal shanten 3.62)
+   reached tenpai  50.6%  first tenpai turn 9.6  by turn 9  26.1%  by turn 12  40.9%
+   first tenpai closed  51.2%  open  48.8%  live tiles 5.02  4+ live  74.6%  2+ wait kinds  67.4%
+   closed first tenpai, quiet table, with a yaku: n 306  declared  74.2%
+   won  23.5%  won given tenpai  46.4%  by first tenpai: closed  48.5% open  44.2%  riichi  50.6%  dama  41.5%
+   tenpai given up and not won back   4.7%  (under a riichi  68.7%)  tenpai at a draw  48.7%
+   win value   7351  tsumo share  37.5%
+   first tenpai with no yaku: open   6.7% (won  11.2%)  closed  34.8% (won  43.6%)
+   tenpai hands that let a legal ron go by   0.2%  (later won  50.0%, later dealt in   0.0%); passes per 100 tenpai hands 0.2
+   unwon tenpai hands ended by: other ron  22.3%  other tsumo  25.1%  dealt  24.1%  draw  28.6%
+   points per hand: won   1726  lost to deal-ins   560
+      riichi first  wins per 100 hands  9.74  value   8997  mangan+  67.9%  han: dora+red 1.31  ura 0.43  riichi/ippatsu/tsumo 1.64  yakuhai 0.05  shape 0.76
+      riichi later  wins per 100 hands  0.47  value   8291  mangan+  60.9%  han: dora+red 1.22  ura 0.43  riichi/ippatsu/tsumo 1.57  yakuhai 0.13  shape 0.78
+      dama          wins per 100 hands  2.35  value   8032  mangan+  56.1%  han: dora+red 1.58  ura 0.00  riichi/ippatsu/tsumo 0.34  yakuhai 0.12  shape 1.75
+      open          wins per 100 hands 10.92  value   5694  mangan+  31.9%  han: dora+red 1.39  ura 0.01  riichi/ippatsu/tsumo 0.02  yakuhai 0.78  shape 0.76
+      riichi first  wins with no shape yaku  45.0%  pinfu  40.8%  tanyao  16.3%
+      open          wins with no shape yaku  52.3%  pinfu   0.0%  tanyao  25.3%
+      all wins      wins with no shape yaku  44.9%  pinfu  21.0%  tanyao  22.8%
+      open wins with a half or full flush  14.3%  with tanyao  25.3%
+   dealt in  10.6%  avg cost  5282
+      in riichi       2.95 per 100 hands  (with a fold tile   9.1%)  into riichi 1.46  open 1.19  dama 0.29
+      at tenpai       3.46 per 100 hands  (with a fold tile  11.3%)  into riichi 1.57  open 1.32  dama 0.58
+      at 1-shanten    2.62 per 100 hands  (with a fold tile  10.2%)  into riichi 0.45  open 1.48  dama 0.68
+      at 2+ shanten   1.59 per 100 hands  (with a fold tile   9.1%)  into riichi 0.45  open 0.78  dama 0.35
+-- 2+ dora: 1723 hands  (deal shanten 3.49)
+   reached tenpai  55.3%  first tenpai turn 9.3  by turn 9  31.0%  by turn 12  45.4%
+   first tenpai closed  45.3%  open  54.7%  live tiles 4.93  4+ live  74.0%  2+ wait kinds  66.3%
+   closed first tenpai, quiet table, with a yaku: n 106  declared  56.6%
+   won  27.8%  won given tenpai  50.3%  by first tenpai: closed  51.2% open  49.5%  riichi  53.5%  dama  45.6%
+   tenpai given up and not won back   2.1%  (under a riichi  80.0%)  tenpai at a draw  49.5%
+   win value   9084  tsumo share  38.0%
+   first tenpai with no yaku: open   5.4% (won   3.6%)  closed  35.0% (won  46.4%)
+   tenpai hands that let a legal ron go by   0.3%  (later won  66.7%, later dealt in   0.0%); passes per 100 tenpai hands 0.3
+   unwon tenpai hands ended by: other ron  22.6%  other tsumo  27.2%  dealt  26.4%  draw  23.8%
+   points per hand: won   2525  lost to deal-ins   580
+      riichi first  wins per 100 hands  8.53  value  10572  mangan+  87.8%  han: dora+red 2.16  ura 0.36  riichi/ippatsu/tsumo 1.61  yakuhai 0.05  shape 0.73
+      riichi later  wins per 100 hands  0.70  value  11867  mangan+  83.3%  han: dora+red 2.17  ura 0.50  riichi/ippatsu/tsumo 1.75  yakuhai 0.17  shape 0.83
+      dama          wins per 100 hands  3.60  value  10289  mangan+  75.8%  han: dora+red 2.65  ura 0.00  riichi/ippatsu/tsumo 0.24  yakuhai 0.18  shape 1.56
+      open          wins per 100 hands 14.97  value   7818  mangan+  54.3%  han: dora+red 2.47  ura 0.00  riichi/ippatsu/tsumo 0.01  yakuhai 0.69  shape 0.71
+      riichi first  wins with no shape yaku  51.0%  pinfu  34.7%  tanyao  12.9%
+      open          wins with no shape yaku  51.2%  pinfu   0.0%  tanyao  34.1%
+      all wins      wins with no shape yaku  46.1%  pinfu  14.0%  tanyao  27.3%
+      open wins with a half or full flush   9.7%  with tanyao  34.1%
+   dealt in  11.7%  avg cost  4948
+      in riichi       2.15 per 100 hands  (with a fold tile  16.2%)  into riichi 0.99  open 0.81  dama 0.35
+      at tenpai       4.99 per 100 hands  (with a fold tile  10.5%)  into riichi 2.44  open 1.97  dama 0.58
+      at 1-shanten    3.31 per 100 hands  (with a fold tile   8.8%)  into riichi 0.93  open 1.97  dama 0.41
+      at 2+ shanten   1.28 per 100 hands  (with a fold tile   0.0%)  into riichi 0.35  open 0.75  dama 0.17
+-- any dora: 6577 hands  (deal shanten 3.58)
+   reached tenpai  51.8%  first tenpai turn 9.5  by turn 9  27.4%  by turn 12  42.1%
+   first tenpai closed  49.6%  open  50.4%  live tiles 4.99  4+ live  74.4%  2+ wait kinds  67.1%
+   closed first tenpai, quiet table, with a yaku: n 412  declared  69.7%
+   won  24.6%  won given tenpai  47.5%  by first tenpai: closed  49.2% open  45.8%  riichi  51.2%  dama  42.8%
+   tenpai given up and not won back   4.0%  (under a riichi  70.4%)  tenpai at a draw  48.9%
+   win value   7864  tsumo share  37.6%
+   first tenpai with no yaku: open   6.3% (won   9.3%)  closed  34.9% (won  44.3%)
+   tenpai hands that let a legal ron go by   0.2%  (later won  57.1%, later dealt in   0.0%); passes per 100 tenpai hands 0.2
+   unwon tenpai hands ended by: other ron  22.3%  other tsumo  25.6%  dealt  24.7%  draw  27.3%
+   points per hand: won   1936  lost to deal-ins   566
+      riichi first  wins per 100 hands  9.43  value   9370  mangan+  72.6%  han: dora+red 1.51  ura 0.41  riichi/ippatsu/tsumo 1.63  yakuhai 0.05  shape 0.76
+      riichi later  wins per 100 hands  0.53  value   9517  mangan+  68.6%  han: dora+red 1.54  ura 0.46  riichi/ippatsu/tsumo 1.63  yakuhai 0.14  shape 0.80
+      dama          wins per 100 hands  2.68  value   8827  mangan+  63.1%  han: dora+red 1.95  ura 0.00  riichi/ippatsu/tsumo 0.31  yakuhai 0.14  shape 1.68
+      open          wins per 100 hands 11.98  value   6390  mangan+  39.2%  han: dora+red 1.74  ura 0.01  riichi/ippatsu/tsumo 0.01  yakuhai 0.75  shape 0.74
+      riichi first  wins with no shape yaku  46.5%  pinfu  39.4%  tanyao  15.5%
+      open          wins with no shape yaku  51.9%  pinfu   0.0%  tanyao  28.2%
+      all wins      wins with no shape yaku  45.3%  pinfu  18.9%  tanyao  24.2%
+      open wins with a half or full flush  12.8%  with tanyao  28.2%
+   dealt in  10.9%  avg cost  5188
+      in riichi       2.74 per 100 hands  (with a fold tile  10.6%)  into riichi 1.34  open 1.09  dama 0.30
+      at tenpai       3.86 per 100 hands  (with a fold tile  11.0%)  into riichi 1.79  open 1.49  dama 0.58
+      at 1-shanten    2.80 per 100 hands  (with a fold tile   9.8%)  into riichi 0.58  open 1.61  dama 0.61
+      at 2+ shanten   1.51 per 100 hands  (with a fold tile   7.1%)  into riichi 0.43  open 0.78  dama 0.30

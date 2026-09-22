@@ -7,7 +7,7 @@
     <meta name="description" content="A personal guide to playing closer to LuckyJ, built from 80 Jade South games with the tables of the turns to play differently." />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="stylesheet" href="styles.css?v=20260907-simplify" />
-    <link rel="stylesheet" href="honver.css?v=20260922-guide-1" />
+    <link rel="stylesheet" href="honver.css?v=20260922-guide-2" />
   </head>
   <body data-app="table-only" data-self-name="Honver">
     <header class="topbar">
@@ -24,12 +24,19 @@
         <a href="#calls">Calls</a>
         <a href="#folds">Folds</a>
         <a href="#push">Push</a>
+        <a href="#dora-points">Dora hands (new)</a>
         <a href="#method">Method</a>
       </nav>
     </header>
 
     <main class="layout">
       <article class="book">
+        <aside class="guide-new" aria-label="What is new">
+          <strong>New on 22 September:</strong> chapters 6 to 8 answer your question about hands dealt dora:
+          <a href="#dora-points">where those hands lose their points</a>, <a href="#dora-shape">the hand under the
+          dora</a> and <a href="#dora-tells">the caller's tells at 1-shanten</a>. Chapters 1 to 5 have not changed.
+        </aside>
+
         <section class="intro" id="standing">
           <div class="intro-text">
             <p class="kicker">Personal edition</p>
@@ -363,6 +370,217 @@
           </div>
         </section>
 
+        <section class="point" id="dora-points">
+          <div class="point-number">06</div>
+          <div class="point-body">
+            <p class="guide-new-tag">New</p>
+            <h3>Your dora hands lose their points on the win side</h3>
+            <p>
+              You asked how to win more with the dora you are dealt, and whether you deal in more because you try
+              harder to win those hands. Chapters 6 to 8 answer both. They cover 410 of your hands dealt at least one
+              dora or red five and 6,577 of LuckyJ's, measured with the same code.
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Hands dealt dora</th><th>You</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Points won per hand</td><td class="gap">1,167</td><td>1,936</td></tr>
+                  <tr><td>Points lost to deal-ins per hand</td><td>615</td><td>566</td></tr>
+                  <tr><td>Reached tenpai</td><td>51.7%</td><td>51.8%</td></tr>
+                  <tr><td>Turn of the first tenpai</td><td>9.4</td><td>9.5</td></tr>
+                  <tr><td>Tenpai hands won</td><td class="gap">36.8%</td><td>47.5%</td></tr>
+                  <tr><td>Average win</td><td class="gap">6,133</td><td>7,864</td></tr>
+                  <tr><td>Wins with no shape yaku</td><td class="gap">60.3%</td><td>45.3%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Your extra deal-ins cost you 49 points per dora hand. The wins you miss cost 769. You reach tenpai as
+              often and as fast as LuckyJ, so the gap opens after tenpai: in how often the tenpai wins and in what the
+              win is worth. Without dora you win 45.6% of your tenpai hands and LuckyJ 46.3%.
+            </p>
+            <p>
+              Some of that gap is luck. For each of your dora tenpais, LuckyJ's own win rate from the same spot says how
+              often it should win: the same play (riichi, dama or open), the same table (quiet, a call or a riichi), the
+              same number of live winning tiles and the same turn. Those rates predict 100 wins from your 212 dora
+              tenpais, and you won 78. Your riichi hands account for 10 of the missing 22. Once riichi is declared
+              nothing is left to decide, and nobody can see your dora, so treat those 10 as bad luck. Your tenpais
+              without dora won 99 times against 103 predicted.
+            </p>
+            <p>
+              Your hunch holds in one place. Every extra deal-in in your dora hands went to a player who had called,
+              and every one was a live tile: 9.3 deal-ins into callers per 100 dora hands against LuckyJ's 5.0. You cut
+              live tiles against callers as often as LuckyJ, 65% of your cuts, at the same turns and against the same
+              number of calls. What differs is your 1-shanten play once a caller looks ready, which chapter 8 measures.
+              The larger leak is the size of your dora wins, which chapter 7 covers.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> Play a dora hand the way you play a hand without dora: the same shapes, the same
+              call timing and the same respect for a caller who looks ready. The dora add their han at the end.
+            </div>
+            <div class="exception">
+              <strong>Exception:</strong> Your dora riichis won 27 times where 37 were predicted, more than two
+              standard deviations low. Nothing in those hands was yours to change after the declaration, so keep
+              declaring at the rates in chapter 1.
+            </div>
+            <p class="evidence-note">
+              <b>Evidence:</b> 410 of your hands dealt dora and 6,577 of LuckyJ's; 212 and 3,409 of them reached
+              tenpai. Your 78 wins against 100 predicted is about three standard deviations. The shape-yaku gap covers
+              78 of your dora wins and 1,619 of LuckyJ's, about two and a half standard errors.
+            </p>
+          </div>
+        </section>
+
+        <section class="point" id="dora-shape">
+          <div class="point-number">07</div>
+          <div class="point-body">
+            <p class="guide-new-tag">New</p>
+            <h3>Build the hand under the dora</h3>
+            <p>
+              LuckyJ plays a dora hand the way it plays any other hand, and the dora add han on top. Its wins carry a
+              shape yaku (pinfu, tanyao, iipeikou, a flush, toitoi and the rest) as often with dora as without. Yours
+              carry fewer once you hold dora:
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Wins with a shape yaku</th><th>You, no dora</th><th>You, dora</th><th>LuckyJ, no dora</th><th>LuckyJ, dora</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Riichi at the first tenpai</td><td>50.0%</td><td class="gap">33.3%</td><td>54.3%</td><td>53.5%</td></tr>
+                  <tr><td>Open hands</td><td>44.7%</td><td class="gap">30.0%</td><td>51.6%</td><td>48.1%</td></tr>
+                  <tr><td>All wins</td><td>50.5%</td><td class="gap">39.7%</td><td>55.4%</td><td>54.7%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              In riichi wins the missing yaku are pinfu and tanyao. LuckyJ's dora riichi wins come with pinfu 39% of
+              the time and tanyao 16%, yours with pinfu 26% and tanyao 4%. In open wins the missing yaku is the flush:
+              13 of every 100 of LuckyJ's open dora wins are honitsu or chinitsu, and none of your 40 were. A yakuhai and
+              one dora make 2 han, 2,000 points. Add an open honitsu and the same hand is 4 han, 7,700.
+            </p>
+            <p>
+              The flush shows the habit most clearly. Take the hands whose first call left eleven or more of the
+              fourteen tiles in one suit plus honors, with the flush still possible:
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>First call with a flush in reach</th><th>You, no dora at the call</th><th>You, dora in the suit</th><th>LuckyJ, no dora at the call</th><th>LuckyJ, dora in the suit</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Hands</td><td>36</td><td>15</td><td>533</td><td>373</td></tr>
+                  <tr><td>Turn of the first call</td><td>5.4</td><td class="gap">7.9</td><td>5.4</td><td>5.8</td></tr>
+                  <tr><td>Flush completed</td><td>63.9%</td><td class="gap">33.3%</td><td>64.9%</td><td>59.0%</td></tr>
+                  <tr><td>Won with the flush</td><td>22.2%</td><td class="gap">0%</td><td>22.1%</td><td>19.8%</td></tr>
+                  <tr><td>Points per hand after deal-ins</td><td>1,842</td><td class="gap">&minus;153</td><td>1,383</td><td>2,125</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              "Dora in the suit" means every dora and red five in hand sits in the flush suit or is an honor. Without
+              dora you play these hands like LuckyJ and make more from them. With a dora in the suit, LuckyJ calls just
+              as early, finishes the flush almost as often, and its flush wins average about 10,000. You call two turns
+              later, finish a third of them, and none of the fifteen won with the flush. Fifteen hands is a small
+              sample, so read the size of that gap loosely. It points the same way as the open-win yaku above.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> Build the hand you would build without the dora. Keep two-sided shapes toward
+              pinfu and simples toward tanyao. When every dora you hold sits in your main suit or is an honor, make the
+              first call on the flush hand as early as you would without dora, and cut the off-suit tiles first
+              whenever that costs no acceptance.
+            </div>
+            <div class="exception">
+              <strong>Exception:</strong> A dora in another suit changes the plan, because the flush would throw it
+              away. LuckyJ gives up those flushes 41% of the time, against 24% when the dora sits in the suit.
+            </div>
+            <p class="evidence-note">
+              <b>Evidence:</b> 78 of your wins in hands dealt dora and 99 without, against 1,619 and 1,376 of
+              LuckyJ's. The flush table counts first calls where every meld fits the flush.
+            </p>
+            <div data-guide-examples="dora-shape"></div>
+          </div>
+        </section>
+
+        <section class="point" id="dora-tells">
+          <div class="point-number">08</div>
+          <div class="point-body">
+            <p class="guide-new-tag">New</p>
+            <h3>At 1-shanten, count the caller's tells</h3>
+            <p>
+              Your dora hands deal in to players who have called 9.3 times per 100 hands, and LuckyJ's 5.0. The lobby
+              does not explain it. In your own games, the other three players' live tiles from dora hands hit a caller
+              2.1 times per 100 live cuts. Yours hit 2.9 times and LuckyJ's 1.3.
+            </p>
+            <p>Three things a caller shows predict tenpai well, and all three are easy to count at the table:</p>
+            <ul class="guide-list">
+              <li>the latest call came with the caller's 9th discard or later;</li>
+              <li>the caller has two calls;</li>
+              <li>the caller's last two discards since the call were tiles drawn and thrown straight from the wall.</li>
+            </ul>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Tells showing</th><th>Caller tenpai, LuckyJ's games</th><th>Caller tenpai, your games</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>None</td><td>13.4%</td><td>15.8%</td></tr>
+                  <tr><td>One</td><td>38.8%</td><td>43.4%</td></tr>
+                  <tr><td>Two</td><td>64.8%</td><td>69.9%</td></tr>
+                  <tr><td>All three</td><td>84.0%</td><td>89.5%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Three or more cuts from hand since the call, the tell chapter 3 uses, predict less: a caller showing it
+              is tenpai 43% of the time, against 33% without it.
+            </p>
+            <p>
+              LuckyJ cuts fewer live tiles with every tell, at every shanten. You do the same from 2-shanten. At
+              1-shanten and at tenpai your rate moves much less. With dora in hand and a safe tile you could have cut:
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Cut a live tile, by tells showing</th><th>You at 1-shanten</th><th>LuckyJ</th><th>You at tenpai</th><th>LuckyJ</th><th>You at 2-shanten or worse</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>None</td><td>62.6%</td><td>66.2%</td><td>58.0%</td><td>64.0%</td><td>72.1%</td><td>75.5%</td></tr>
+                  <tr><td>One</td><td>60.3%</td><td>57.0%</td><td>56.2%</td><td>56.7%</td><td>46.8%</td><td>56.1%</td></tr>
+                  <tr><td>Two or three</td><td class="gap">51.0%</td><td>42.3%</td><td>55.0%</td><td>49.9%</td><td>34.1%</td><td>36.1%</td></tr>
+                  <tr><td>All three</td><td class="gap">55.0%</td><td>32.3%</td><td>54.5%</td><td>47.4%</td><td>36.8%</td><td>33.1%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              At 1-shanten with all three tells showing, LuckyJ cuts a live tile one time in three and you more than
+              half the time, over 40 of your cuts. That is the part of your hunch that holds: close to tenpai with dora
+              in hand, you keep pushing after the caller has shown they are ready. When a caller really was tenpai, your
+              live tile was their winning tile 9.4% of the time and LuckyJ's 5.4%. You cut tiles in a caller's suit,
+              tiles next to the dora, wall tiles and tiles passed since the caller's last discard as often as LuckyJ
+              does, so those reads do not explain that part, and this chapter sticks to the tells.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> At 1-shanten against a caller, count the three tells before every cut. With none
+              showing, play for speed. With each tell, take the safe tile more often. With all three, take it at least
+              two times in three, as LuckyJ does.
+            </div>
+            <div class="exception">
+              <strong>Exception:</strong> At tenpai the tells matter less. With two or more showing, LuckyJ still cuts
+              a live tile about half the time, and chapter 5's rule on pushing a tenpai with a yaku still applies.
+            </div>
+            <p class="evidence-note">
+              <b>Evidence:</b> 2,939 of your discards and 46,086 of LuckyJ's made against a caller while nobody was in
+              riichi, with the other three players' discards from the same games for the lobby comparison. The
+              all-three-tells row at 1-shanten holds 40 of your cuts, about three standard errors from LuckyJ's rate.
+              The other rows differ by one to two.
+            </p>
+            <div data-guide-examples="dora-tells"></div>
+          </div>
+        </section>
+
         <section class="section sources" id="method">
           <p class="kicker">Method</p>
           <h2>How this guide was built.</h2>
@@ -370,14 +588,14 @@
             <li>Your games: 80 Jade South hanchan since 1 January 2026, fetched from the Mahjong Soul client and amae-koromo. LuckyJ: 1,255 Tenhou games rebuilt from the cached NAGA reports. Both run through the same replay and metric code.</li>
             <li>Each table is rebuilt from the record at the start of your turn. Opponents' hands are shown as they really were; the switch at the top hides them.</li>
             <li>Acceptance counts the unseen copies of every improving tile from your seat, with a called tile counted once. Against a riichi, tiles passed after the declaration count as genbutsu and anchor suji; a 4, 5 or 6 needs both partners for nakasuji, and an early 5 can cover one side of a 4 or 6 (virtual nakasuji, following the main playbook's sotogawa rule). Honors are read by how many other copies show. Yaku and value are checked only where the text says so.</li>
-            <li>Generated data: <code>site/honver-guide.json</code> from <code>scripts/build_personal_guide.py</code> and <code>data/personal_guide_spots.json</code>. Chapter numbers come from <code>scripts/mine_riichi_folds.py</code>, <code>mine_open_tenpai_push.py</code>, <code>mine_single_call.py</code>, <code>mine_vs_open.py</code>, <code>mine_win_value.py</code> and <code>mine_value_choice.py</code>, each run on your games and on LuckyJ's with the same code.</li>
+            <li>Generated data: <code>site/honver-guide.json</code> from <code>scripts/build_personal_guide.py</code> and <code>data/personal_guide_spots.json</code>. Chapter numbers come from <code>scripts/mine_riichi_folds.py</code>, <code>mine_open_tenpai_push.py</code>, <code>mine_single_call.py</code>, <code>mine_vs_open.py</code>, <code>mine_win_value.py</code> and <code>mine_value_choice.py</code>, and for chapters 6 to 8 from <code>mine_dora_hands.py</code>, <code>mine_flush_calls.py</code> and <code>mine_caller_tells.py</code>, each run on your games and on LuckyJ's with the same code.</li>
             <li><a href="points.html">The main LuckyJ playbook</a> has the general rules these chapters build on.</li>
           </ul>
         </section>
       </article>
     </main>
 
-    <script src="app.js?v=20260922-guide-1"></script>
-    <script src="honver.js?v=20260922-guide-1"></script>
+    <script src="app.js?v=20260922-guide-2"></script>
+    <script src="honver.js?v=20260922-guide-2"></script>
   </body>
 </html>

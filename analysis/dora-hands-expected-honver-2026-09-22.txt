@@ -1,0 +1,9 @@
+== dora_hands_honver.json against 6378 baseline tenpai hands: wins the baseline's rate predicts for the same spots
+   no dora  riichi  n   67  win: expected  37.2 actual  38 (z +0.21)  tsumo: expected  17.6 actual  20 (z +0.68)  ron: expected  19.6 actual  18 (z -0.43)
+   no dora  dama    n   36  win: expected  13.4 actual  14 (z +0.22)  tsumo: expected   4.0 actual   5 (z +0.54)  ron: expected   9.4 actual   9 (z -0.15)
+   no dora  open    n  114  win: expected  52.5 actual  47 (z -1.07)  tsumo: expected  16.6 actual  18 (z +0.38)  ron: expected  35.9 actual  29 (z -1.42)
+   no dora  all     n  217  win: expected 103.0 actual  99 (z -0.56)  tsumo: expected  38.1 actual  43 (z +0.89)  ron: expected  64.9 actual  56 (z -1.34)
+   dora     riichi  n   69  win: expected  36.6 actual  27 (z -2.36)  tsumo: expected  16.0 actual  13 (z -0.86)  ron: expected  20.6 actual  14 (z -1.74)
+   dora     dama    n   40  win: expected  15.3 actual  11 (z -1.42)  tsumo: expected   4.5 actual   4 (z -0.27)  ron: expected  10.7 actual   7 (z -1.35)
+   dora     open    n  103  win: expected  48.4 actual  40 (z -1.72)  tsumo: expected  15.1 actual   6 (z -2.56)  ron: expected  33.3 actual  34 (z +0.15)
+   dora     all     n  212  win: expected 100.2 actual  78 (z -3.17)  tsumo: expected  35.6 actual  23 (z -2.36)  ron: expected  64.6 actual  55 (z -1.46)
