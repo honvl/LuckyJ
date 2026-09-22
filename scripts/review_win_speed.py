@@ -259,17 +259,38 @@ def tile_class(code: int, yakuhai: set[int]) -> str:
 
 # ---------------------------------------------------------------- replay
 
-def visible_counter(hand, rivers, melds_now, indicators) -> Counter:
+def meld_snapshots(game: dict, upto: int) -> dict[int, list[list[int]]]:
+    """Each seat's meld tiles as they stood at event ``upto``, from that seat's latest event.
+
+    ``hand_records`` keeps the same state (``melds_now``) as it walks the events.
+    """
+    snap = {s: [] for s in range(4)}
+    for ev in game["events"][: upto + 1]:
+        snap[ev["seat"]] = ev["melds"]
+    return snap
+
+
+def visible_counter(hand, rivers, melds_now, indicators, players) -> Counter:
+    """Copies of each tile the seat can see: ``hand``, every river and meld, the indicators.
+
+    ``melds_now`` holds each seat's meld tiles at that moment. A called tile sits in
+    the discarder's river and in the caller's meld, so it is counted once;
+    ``players`` is the replay's player list, whose melds come in call order and
+    name the called tile.
+    """
     c = Counter()
     for t in hand:
         c[base(t)] += 1
     for river in rivers.values():
         for t in river:
             c[base(t)] += 1
-    for melds in melds_now.values():
+    for seat, melds in melds_now.items():
         for meld in melds:
             for t in meld:
                 c[base(t)] += 1
+        for meld in players[seat]["melds"][: len(melds)]:
+            if meld["kind"] != "a":  # a closed kan never passed through a river
+                c[base(meld["called"])] -= 1
     for t in indicators:
         c[base(t)] += 1
     return c
@@ -395,7 +416,7 @@ def hand_records(log: list, score_efficiency: set[int]) -> list[dict]:
             r["turns_in_1sh"] += 1
 
         # everything the seat can see: its 14 tiles, every river and meld, the indicator
-        vis = visible_counter(e["hand_before"], e["rivers"], melds_now, indicators)
+        vis = visible_counter(e["hand_before"], e["rivers"], melds_now, indicators, g["players"])
         if s_after == 0 and r["tenpai_turn"] == e["turn"] and r["tenpai_live"] is None:
             _, live, kinds = acceptance(e["hand_after"], e["meld_tiles"], e["closed"], vis)
             r["tenpai_live"], r["tenpai_kinds"] = live, len(kinds)
