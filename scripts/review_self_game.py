@@ -160,7 +160,7 @@ def review_hand(log, hero, stats, findings):
     def unseen(tile, event, hand):
         return max(0, 4 - visible_count(tile, event, g, hand))
 
-    declared = False
+    declared = answered = False
     honor_first_seen, honor_cut_turn = {}, {}
     for t in g["players"][hero]["haipai"]:
         if base(t) in my_yakuhai:
@@ -257,8 +257,8 @@ def review_hand(log, hero, stats, findings):
             b = shanten_bucket(sh)
             stats["push_chances"][b] += 1
             stats["push_taken"][b] += pushed
-            if stats["first_answer"].get(rnd) is None:
-                stats["first_answer"][rnd] = kinds
+            if not answered:
+                answered = True
                 stats["first_answer_bucket"][b] += 1
                 stats["first_answer_genbutsu"][b] += all(k == "genbutsu" for k in kinds)
             if pushed:
@@ -312,7 +312,7 @@ def new_stats() -> dict:
     return {
         "bl": load_baselines(), "score_delta": 0,
         "push_chances": Counter(), "push_taken": Counter(),
-        "first_answer": {}, "first_answer_bucket": Counter(), "first_answer_genbutsu": Counter(),
+        "first_answer_bucket": Counter(), "first_answer_genbutsu": Counter(),
         "declare_chances": Counter(), "declare_taken": Counter(),
         "yakuhai_pon_chances": 0, "yakuhai_pon_taken": 0,
         "chi_chances": 0, "chi_taken": 0,
