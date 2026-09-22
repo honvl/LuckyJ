@@ -1,0 +1,18 @@
+== LuckyJ: 1255 games; open tenpai against a riichi where every tenpai-keeping tile is unsafe: 973 hands
+  all                            n   973  push  84.1%  push: win  29.8% deal-in  20.2%
+  no yaku on any wait            n    79  push  57.0%  push: win  11.1% deal-in  20.0%
+  waits <=3                      n   254  push  76.0%  push: win  16.6% deal-in  19.7%
+  waits <=3 1-2 han              n   107  push  71.0%  push: win  11.8% deal-in  21.1%
+  waits <=3 3-4 han              n    94  push  86.2%  push: win  21.0% deal-in  18.5%
+  waits <=3 5+ han               n    23  push  87.0%  push: win  20.0% deal-in  25.0%
+  waits 4-7                      n   595  push  85.5%  push: win  32.6% deal-in  21.4%
+  waits 4-7 1-2 han              n   253  push  79.4%  push: win  35.3% deal-in  16.4%
+  waits 4-7 3-4 han              n   223  push  93.3%  push: win  33.2% deal-in  22.1%
+  waits 4-7 5+ han               n    75  push  98.7%  push: win  31.1% deal-in  31.1%
+  waits 8+                       n   124  push  93.5%  push: win  39.7% deal-in  15.5%
+  waits 8+ 1-2 han               n    59  push  91.5%  push: win  40.7% deal-in  13.0%
+  waits 8+ 3-4 han               n    48  push  97.9%  push: win  36.2% deal-in  21.3%
+  waits 8+ 5+ han                n    12  push 100.0%  push: win  58.3% deal-in   8.3%
+  turn <=8                       n   128  push  89.8%  push: win  33.9% deal-in  22.6%
+  turn 9-12                      n   423  push  87.5%  push: win  35.9% deal-in  19.5%
+  turn 13+                       n   422  push  78.9%  push: win  21.6% deal-in  20.1%

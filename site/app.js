@@ -1591,16 +1591,21 @@ function renderPrescriptionExamples(rxExamples) {
   }
 }
 
+function selfSeatLabel() {
+  // Pages that replay someone else's games (the personal guide) name the bottom seat.
+  return document.body?.dataset.selfName || "LuckyJ";
+}
+
 function seatLabel(seat) {
   const labels = isJa
     ? {
-        self: "LuckyJ",
+        self: selfSeatLabel(),
         shimocha: "下家",
         toimen: "対面",
         kamicha: "上家",
       }
     : {
-    self: "LuckyJ",
+    self: selfSeatLabel(),
     shimocha: "Shimocha",
     toimen: "Toimen",
     kamicha: "Kamicha",
@@ -2647,12 +2652,16 @@ async function main() {
   applyTileCompatibility();
 }
 
-window.addEventListener("hashchange", () => syncPointExamplesFromLocation({ scroll: true }));
-window.addEventListener("popstate", () => syncPointExamplesFromLocation({ scroll: true }));
+// Pages marked data-app="table-only" load app.js for its tile and table renderers
+// and run their own script, so the playbook data is not fetched there.
+if (document.body?.dataset.app !== "table-only") {
+  window.addEventListener("hashchange", () => syncPointExamplesFromLocation({ scroll: true }));
+  window.addEventListener("popstate", () => syncPointExamplesFromLocation({ scroll: true }));
 
-main().catch((error) => {
-  const metrics = document.querySelector("#metrics");
-  if (metrics) {
-    metrics.innerHTML = `<div class="metric"><b>${t("dataLoadFailed")}</b><span>${error.message}</span></div>`;
-  }
-});
+  main().catch((error) => {
+    const metrics = document.querySelector("#metrics");
+    if (metrics) {
+      metrics.innerHTML = `<div class="metric"><b>${t("dataLoadFailed")}</b><span>${error.message}</span></div>`;
+    }
+  });
+}

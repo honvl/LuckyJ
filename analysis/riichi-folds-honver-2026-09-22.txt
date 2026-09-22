@@ -1,0 +1,94 @@
+== Honver: 80 games, 830 hands, 1574 discards facing a riichi (not in riichi yourself)
+  push = the cut was not safe against every riichi player; free fold = a safe tile kept the same shanten
+   0-shanten n   288  push  40.6%  | free fold existed  48.3%, pushed anyway   3.6%  | by turn <=8:  75.0% (n 28)  9-12:  51.5% (n 97)  13+:  28.2% (n 163)
+   1-shanten n   561  push  18.9%  | free fold existed  69.2%, pushed anyway   7.0%  | by turn <=8:  32.5% (n 123)  9-12:  18.3% (n 230)  13+:  11.5% (n 208)
+   2-shanten n   509  push   7.5%  | free fold existed  85.3%, pushed anyway   1.8%  | by turn <=8:  16.8% (n 137)  9-12:   5.3% (n 208)  13+:   2.4% (n 164)
+  3+-shanten n   216  push   6.5%  | free fold existed  93.5%, pushed anyway   3.5%  | by turn <=8:   7.7% (n 78)  9-12:   5.1% (n 79)  13+:   6.8% (n 59)
+  pushed anyway although a safe tile kept the shanten, by what the safe tile cost in acceptance
+     1-shanten, safe tile cost nothing or gained pushed   1.8% of 388
+     1-shanten, safe tile cost 1-3               pushed   1.3% of 388
+     1-shanten, safe tile cost 4+                pushed   3.9% of 388
+     2-shanten, safe tile cost nothing or gained pushed   0.5% of 434
+     2-shanten, safe tile cost 1-3               pushed   0.0% of 434
+     2-shanten, safe tile cost 4+                pushed   1.4% of 434
+    3+-shanten, safe tile cost nothing or gained pushed   1.0% of 202
+    3+-shanten, safe tile cost 1-3               pushed   0.0% of 202
+    3+-shanten, safe tile cost 4+                pushed   2.5% of 202
+  1-shanten pushes by dora in hand and turn (dealer in brackets)
+    dora 0   <=8:  28.6% n   35 [  0.0% n 5]  9-12:  21.8% n   78 [ 21.1% n 19]  13+:  15.7% n   70 [ 16.7% n 24]
+    dora 1   <=8:  29.8% n   57 [ 55.6% n 9]  9-12:  13.6% n   81 [ 26.7% n 15]  13+:   7.1% n   84 [  5.9% n 17]
+    dora 2   <=8:  38.1% n   21 [  0.0% n 5]  9-12:  17.3% n   52 [ 14.3% n 21]  13+:  14.6% n   41 [ 11.8% n 17]
+    dora 3+  <=8:  50.0% n   10 [ 50.0% n 4]  9-12:  26.3% n   19 [ 42.9% n 7]  13+:   7.7% n   13 [ 25.0% n 4]
+  deal-ins per 100 cuts against a single riichi, by the class of the tile cut (a deal-in to anyone)
+    genbutsu       n   1005  deal-in per 100  0.20
+    honor 2 seen   n     59  deal-in per 100  0.00
+    suji           n     85  deal-in per 100  4.71
+    live honor     n     72  deal-in per 100  2.78
+    live terminal  n     49  deal-in per 100  8.16
+    live 2-8       n    122  deal-in per 100 13.11
+  what was cut when a tile of the safest class kept the same shanten
+    safest keeping tile genbutsu      n   1001: genbutsu  93.5%  honor 2 seen   1.5%  suji   2.0%  live honor   0.9%  live terminal   0.4%  live 2-8   1.7%
+    safest keeping tile honor 2 seen  n     47: genbutsu  14.9%  honor 2 seen  80.9%  suji   2.1%  live honor   2.1%  live terminal   0.0%  live 2-8   0.0%
+    safest keeping tile suji          n    115: genbutsu  30.4%  honor 2 seen   5.2%  suji  50.4%  live honor   6.1%  live terminal   3.5%  live 2-8   4.3%
+  deal-ins per 100 discards facing a riichi, by shanten: 0: 6.94  1: 0.89  2: 0.59  3+: 0.93
+  first closed tenpai with no riichi out: 167; declared  69.5%
+    waits <=3  n   42 declared  40.5%  (turn <=10:  54.2% n 24)
+    waits 4-7  n   97 declared  76.3%  (turn <=10:  81.4% n 70)
+    waits 8+   n   28 declared  89.3%  (turn <=10:  86.4% n 22)
+    yakuless: n 69 declared  79.7%, riichi later   2.9%
+  -- 2+ shanten pushes while a safe tile kept the shanten
+    2026-06-16 23:51 260617-c66baed5 South 4-1 T10: cut 9s ['live terminal'] at 2-shanten; safe keep ['2s', '6p'] (acceptance gap 5); dora 1
+    2026-06-19 02:08 260619-49c15f08 South 2-0 T10: cut 8m ['live 2-3-7-8'] at 3-shanten; safe keep ['7m'] (acceptance gap 33); dora 0
+    2026-06-19 02:08 260619-49c15f08 South 3-0 T16: cut 4s ['live 4-5-6', 'genbutsu'] at 3-shanten; safe keep ['3s'] (acceptance gap -8); dora 1
+    2026-06-22 01:42 260622-f5717c58 South 1-0 T14: cut chun ['live honor'] at 3-shanten; safe keep ['1s'] (acceptance gap 6); dora 0 DEALT IN
+    2026-09-07 09:56 260907-0d113184 East 1-0 T9: cut S ['live honor'] at 3-shanten; safe keep ['5p'] (acceptance gap -4); dora 2
+    2026-09-07 09:56 260907-0d113184 South 3-1 T12: cut 9p ['live terminal', 'genbutsu'] at 2-shanten; safe keep ['8s'] (acceptance gap 9); dora 0
+    2026-09-07 10:34 260907-0f2f66ab South 2-0 T11: cut 8p ['live 2-3-7-8'] at 3-shanten; safe keep ['3m', '1p', '4p'] (acceptance gap 24); dora 0 DEALT IN
+    2026-09-19 10:17 260919-bd7daa16 South 2-2 T5: cut chun ['live honor'] at 2-shanten; safe keep ['hatsu'] (acceptance gap 21); dora 2
+    2026-09-19 22:29 260920-a3b39b2d East 4-1 T7: cut E ['live honor'] at 2-shanten; safe keep ['3m', 'haku'] (acceptance gap 19); dora 1
+    2026-09-19 23:49 260920-90933d91 South 1-1 T16: cut 5s ['live 4-5-6'] at 2-shanten; safe keep ['3s', '3p', '8p'] (acceptance gap -6); dora 0
+    2026-09-20 21:23 260921-2250fff8 South 1-0 T4: cut S ['live honor'] at 4-shanten; safe keep ['3s'] (acceptance gap 54); dora 2
+    2026-09-20 22:01 260921-6faea687 East 3-0 T12: cut 5p ['live 4-5-6'] at 2-shanten; safe keep ['7p'] (acceptance gap 22); dora 0
+    2026-09-20 23:52 260921-8c944457 East 3-3 T17: cut 1s ['live terminal'] at 3-shanten; safe keep ['3m', '8m'] (acceptance gap 8); dora 0
+    2026-09-21 00:40 260921-dc312996 East 1-0 T16: cut 8p ['live 2-3-7-8'] at 2-shanten; safe keep ['7s'] (acceptance gap 0); dora 1
+    2026-09-21 16:26 260922-4ebf19e7 South 1-3 T9: cut haku ['live honor'] at 2-shanten; safe keep ['5p'] (acceptance gap 7); dora 1
+  -- 1-shanten pushes turn 13+ while a safe tile kept the shanten
+    2026-06-16 23:51 260617-c66baed5 South 4-1 T13: cut 2m ['live 2-3-7-8']; safe keep ['6p'] (gap -2); dora 0
+    2026-06-16 23:51 260617-c66baed5 South 4-1 T17: cut 4s ['live 4-5-6']; safe keep ['5p'] (gap 8); dora 0
+    2026-06-21 23:33 260622-f5e3fdd3 South 2-1 T16: cut 8m ['live 2-3-7-8', 'genbutsu']; safe keep ['2m', '6m'] (gap 0); dora 2
+    2026-06-21 23:33 260622-f5e3fdd3 South 4-1 T13: cut 4m ['live 4-5-6']; safe keep ['7p'] (gap 7); dora 0
+    2026-09-19 03:45 260919-5e7aab5c South 3-0 T17: cut E ['live honor']; safe keep ['W'] (gap 0); dora 2
+    2026-09-21 14:02 260922-26e46225 South 1-1 T13: cut 9m ['live terminal']; safe keep ['6m'] (gap 4); dora 1
+    2026-09-21 16:26 260922-4ebf19e7 South 1-4 T15: cut 4p ['live 4-5-6']; safe keep ['3p'] (gap 0); dora 0
+  -- first closed tenpai kept dama with no riichi out, 4+ live, turn <= 10
+    2026-01-25 04:45 260125-c59bed98 East 4-0 T6: live 4 yakuless False dora 1 dealer False riichi later False won False
+    2026-06-16 22:43 260617-f2e8ed41 South 4-1 T5: live 7 yakuless False dora 2 dealer False riichi later False won True
+    2026-06-16 23:51 260617-c66baed5 East 1-0 T9: live 6 yakuless False dora 0 dealer False riichi later False won False
+    2026-06-19 00:50 260619-cb258633 South 1-2 T9: live 4 yakuless False dora 0 dealer False riichi later False won True
+    2026-06-19 00:50 260619-cb258633 South 4-0 T4: live 6 yakuless False dora 0 dealer False riichi later False won True
+    2026-06-19 01:54 260619-17caf7ca East 2-1 T9: live 7 yakuless False dora 2 dealer False riichi later False won False
+    2026-06-19 17:09 260620-8ba1a38d South 3-0 T9: live 8 yakuless False dora 1 dealer False riichi later False won True
+    2026-07-07 21:24 260708-f75da6a9 East 2-0 T8: live 5 yakuless True dora 0 dealer False riichi later False won True
+    2026-09-13 18:06 260914-862d3939 East 3-0 T6: live 4 yakuless True dora 1 dealer False riichi later False won True
+    2026-09-19 03:45 260919-5e7aab5c East 2-1 T9: live 4 yakuless False dora 0 dealer False riichi later True won True
+    2026-09-19 11:38 260919-cec5015c South 3-1 T9: live 6 yakuless False dora 0 dealer False riichi later False won True
+    2026-09-19 23:49 260920-90933d91 South 2-2 T6: live 8 yakuless False dora 1 dealer False riichi later False won True
+    2026-09-20 22:43 260921-7b8a8c7c South 1-2 T6: live 4 yakuless True dora 1 dealer False riichi later False won False
+    2026-09-20 23:52 260921-8c944457 East 1-0 T10: live 4 yakuless False dora 0 dealer False riichi later True won True
+    2026-09-21 04:27 260921-610ba96e South 4-2 T7: live 6 yakuless False dora 0 dealer False riichi later False won True
+    2026-09-21 19:00 260922-3b348dc7 East 2-0 T8: live 8 yakuless False dora 2 dealer True riichi later False won True
+  -- yakuless first closed tenpai kept dama
+    2026-06-15 23:44 260616-f8041361 East 1-0 T9: live 2 dora 0 riichi later False won False
+    2026-06-15 23:44 260616-f8041361 South 1-3 T17: live 2 dora 0 riichi later False won False
+    2026-06-21 22:54 260622-6bfd312f East 1-1 T18: live 3 dora 0 riichi later False won False
+    2026-06-21 22:54 260622-6bfd312f East 3-1 T15: live 3 dora 1 riichi later False won False
+    2026-06-21 23:33 260622-f5e3fdd3 South 4-2 T13: live 3 dora 0 riichi later False won False
+    2026-07-07 21:24 260708-f75da6a9 East 2-0 T8: live 5 dora 0 riichi later False won True
+    2026-09-07 09:24 260907-5bb86780 East 2-3 T5: live 3 dora 0 riichi later True won True
+    2026-09-13 18:06 260914-862d3939 East 3-0 T6: live 4 dora 1 riichi later False won True
+    2026-09-18 23:10 260919-363fd973 South 3-0 T18: live 3 dora 0 riichi later False won False
+    2026-09-18 23:59 260919-80611ca6 East 4-1 T7: live 3 dora 2 riichi later False won True
+    2026-09-19 10:17 260919-bd7daa16 South 4-0 T10: live 3 dora 2 riichi later False won True
+    2026-09-19 10:59 260919-1bba6359 East 2-0 T10: live 3 dora 0 riichi later False won False
+    2026-09-20 22:01 260921-6faea687 South 1-1 T6: live 2 dora 0 riichi later True won False
+    2026-09-20 22:43 260921-7b8a8c7c South 1-2 T6: live 4 dora 1 riichi later False won False

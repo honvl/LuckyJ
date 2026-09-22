@@ -1,0 +1,38 @@
+== LuckyJ: 1255 games, 13054 hands, 24560 discards facing a riichi (not in riichi yourself)
+  push = the cut was not safe against every riichi player; free fold = a safe tile kept the same shanten
+   0-shanten n  4531  push  45.2%  | free fold existed  50.4%, pushed anyway   6.5%  | by turn <=8:  63.2% (n 397)  9-12:  52.1% (n 1642)  13+:  37.9% (n 2492)
+   1-shanten n  8991  push  22.2%  | free fold existed  70.6%, pushed anyway   8.3%  | by turn <=8:  37.1% (n 1744)  9-12:  23.6% (n 3824)  13+:  13.1% (n 3423)
+   2-shanten n  7337  push  11.4%  | free fold existed  84.6%, pushed anyway   4.7%  | by turn <=8:  19.7% (n 2011)  9-12:   9.8% (n 2867)  13+:   6.6% (n 2459)
+  3+-shanten n  3701  push   7.0%  | free fold existed  91.9%, pushed anyway   2.6%  | by turn <=8:  12.5% (n 1401)  9-12:   4.2% (n 1292)  13+:   3.0% (n 1008)
+  pushed anyway although a safe tile kept the shanten, by what the safe tile cost in acceptance
+     1-shanten, safe tile cost nothing or gained pushed   2.2% of 6350
+     1-shanten, safe tile cost 1-3               pushed   1.5% of 6350
+     1-shanten, safe tile cost 4+                pushed   4.6% of 6350
+     2-shanten, safe tile cost nothing or gained pushed   1.1% of 6207
+     2-shanten, safe tile cost 1-3               pushed   0.7% of 6207
+     2-shanten, safe tile cost 4+                pushed   2.8% of 6207
+    3+-shanten, safe tile cost nothing or gained pushed   0.9% of 3403
+    3+-shanten, safe tile cost 1-3               pushed   0.3% of 3403
+    3+-shanten, safe tile cost 4+                pushed   1.4% of 3403
+  1-shanten pushes by dora in hand and turn (dealer in brackets)
+    dora 0   <=8:  33.6% n  672 [ 43.3% n 171]  9-12:  21.5% n 1207 [ 28.8% n 330]  13+:  10.3% n 1066 [ 12.0% n 284]
+    dora 1   <=8:  39.4% n  660 [ 47.1% n 157]  9-12:  21.8% n 1580 [ 29.7% n 435]  13+:  11.3% n 1313 [ 11.9% n 370]
+    dora 2   <=8:  38.1% n  307 [ 52.8% n 53]  9-12:  27.3% n  755 [ 33.6% n 214]  13+:  17.5% n  731 [ 22.9% n 231]
+    dora 3+  <=8:  41.9% n  105 [ 45.5% n 22]  9-12:  33.0% n  282 [ 37.7% n 69]  13+:  20.1% n  313 [ 20.0% n 70]
+  deal-ins per 100 cuts against a single riichi, by the class of the tile cut (a deal-in to anyone)
+    genbutsu       n  15462  deal-in per 100  0.27
+    honor 2 seen   n    905  deal-in per 100  0.22
+    suji           n   1272  deal-in per 100  3.85
+    live honor     n   1204  deal-in per 100  2.57
+    live terminal  n   1040  deal-in per 100  5.48
+    live 2-8       n   2424  deal-in per 100  8.54
+  what was cut when a tile of the safest class kept the same shanten
+    safest keeping tile genbutsu      n  15580: genbutsu  92.6%  honor 2 seen   1.7%  suji   1.9%  live honor   0.9%  live terminal   0.9%  live 2-8   1.9%
+    safest keeping tile honor 2 seen  n    834: genbutsu  17.7%  honor 2 seen  77.6%  suji   2.8%  live honor   0.6%  live terminal   0.4%  live 2-8   1.0%
+    safest keeping tile suji          n   1830: genbutsu  27.4%  honor 2 seen   1.7%  suji  46.4%  live honor   7.2%  live terminal   6.3%  live 2-8  11.0%
+  deal-ins per 100 discards facing a riichi, by shanten: 0: 5.52  1: 1.26  2: 0.67  3+: 0.22
+  first closed tenpai with no riichi out: 2612; declared  75.1%
+    waits <=3  n  705 declared  50.5%  (turn <=10:  53.6% n 476)
+    waits 4-7  n 1511 declared  81.7%  (turn <=10:  83.5% n 1094)
+    waits 8+   n  396 declared  93.4%  (turn <=10:  94.8% n 326)
+    yakuless: n 923 declared  83.1%, riichi later   5.4%

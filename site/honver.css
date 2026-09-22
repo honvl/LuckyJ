@@ -1,0 +1,337 @@
+/* Honver's Playbook: additions on top of styles.css. */
+
+.guide-data {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+.guide-data th,
+.guide-data td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.guide-data th:first-child,
+.guide-data td:first-child {
+  text-align: left;
+  white-space: normal;
+}
+
+.guide-data thead th {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.guide-data td.gap {
+  color: var(--red);
+  font-weight: 800;
+}
+
+.guide-data small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.guide-data-scroll {
+  overflow-x: auto;
+}
+
+.metric small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.guide-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+  margin: 14px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.guide-legend .swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  border-radius: 50%;
+  vertical-align: -1px;
+}
+
+.swatch.you {
+  background: var(--red);
+}
+
+.swatch.better {
+  background: var(--green);
+}
+
+.guide-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.guide-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--green);
+}
+
+/* Marked tiles in your hand: red is the tile you cut, green the better cut. */
+.mahjong-table .tile-threat-cell.guide-drawn {
+  margin-left: 0.55em;
+}
+
+.mahjong-table .tile-threat-cell.guide-cut,
+.mahjong-table .tile-threat-cell.guide-better {
+  position: relative;
+}
+
+.mahjong-table .tile-threat-cell.guide-cut .tiles {
+  transform: translateY(-0.12em);
+  filter: drop-shadow(0 0 0.05em rgba(185, 65, 58, 1)) drop-shadow(0 0 0.05em rgba(185, 65, 58, 1));
+}
+
+.mahjong-table .tile-threat-cell.guide-better .tiles {
+  transform: translateY(-0.12em);
+  filter: drop-shadow(0 0 0.05em rgba(23, 107, 84, 1)) drop-shadow(0 0 0.05em rgba(23, 107, 84, 1));
+}
+
+.mahjong-table .tile-threat-cell.guide-cut::after,
+.mahjong-table .tile-threat-cell.guide-better::after {
+  position: absolute;
+  bottom: -0.2em;
+  left: 12%;
+  right: 12%;
+  height: 0.22em;
+  border-radius: 999px;
+  background: var(--red);
+  content: "";
+}
+
+.mahjong-table .tile-threat-cell.guide-better::after {
+  background: var(--green);
+}
+
+body.hide-opponent-hands .mahjong-table .player-hand:not(.player-current) .hand-contents {
+  filter: blur(0.32em);
+  opacity: 0.5;
+}
+
+.guide-frame-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.guide-frame-tabs button {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 750;
+  padding: 5px 12px;
+}
+
+.guide-frame-tabs button.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+}
+
+.guide-comparison {
+  margin-top: 4px;
+}
+
+.guide-comparison .decision.guide-you {
+  border-left: 4px solid var(--red);
+}
+
+.guide-comparison .decision.guide-better {
+  border-left: 4px solid var(--green);
+}
+
+.guide-comparison .decision.guide-you b {
+  color: var(--red);
+}
+
+.guide-safety {
+  margin-top: 6px;
+}
+
+.decision .guide-safety span {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.safety-chip {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 750;
+  line-height: 1.35;
+  padding: 0 7px;
+  white-space: nowrap;
+}
+
+.safety-chip.safe {
+  background: var(--soft-green);
+  border-color: rgba(23, 107, 84, 0.25);
+  color: var(--green);
+}
+
+.safety-chip.mostly {
+  background: #eef3e4;
+  color: #4b6a2c;
+}
+
+.safety-chip.live {
+  background: var(--soft-gold);
+  color: #7a5a1c;
+}
+
+.safety-chip.danger {
+  background: var(--soft-red);
+  color: var(--red);
+}
+
+.guide-options {
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 8px 12px;
+}
+
+.guide-options summary {
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.guide-options-scroll {
+  margin-top: 8px;
+  overflow-x: auto;
+}
+
+.guide-options table {
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  width: 100%;
+}
+
+.guide-options th,
+.guide-options td {
+  border-bottom: 1px solid var(--line);
+  padding: 3px 8px;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.guide-options thead th {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.guide-options tr.is-you {
+  background: var(--soft-red);
+}
+
+.guide-options tr.is-better {
+  background: var(--soft-green);
+}
+
+.guide-options tbody th small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  margin-left: 6px;
+  text-transform: uppercase;
+}
+
+.guide-options .inline-tile {
+  font-size: 1.55em;
+}
+
+.point .guide-options-note {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 8px 0 2px;
+}
+
+.guide-frame-note {
+  background: #eef3f5;
+  border-left: 4px solid var(--blue);
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.point .guide-result {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.example-head small.guide-game {
+  display: block;
+  margin-top: 4px;
+}
+
+.guide-error {
+  color: var(--red);
+}
+
+@media (max-width: 640px) {
+  .guide-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-data {
+    font-size: 13px;
+  }
+
+  .guide-data th,
+  .guide-data td {
+    padding: 6px 8px;
+  }
+}
+
+/* styles.css makes every span in a .decision a small block; tiles inside the guide's
+   decisions stay inline at tile size. */
+.guide-comparison .decision .tiles.inline-tile {
+  display: inline-block;
+  font-size: 1.9em;
+  margin-top: 0;
+  vertical-align: middle;
+}
+
+.guide-comparison .decision .discard-line em {
+  font-size: 12px;
+}

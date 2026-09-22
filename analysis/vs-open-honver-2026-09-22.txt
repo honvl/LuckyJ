@@ -1,0 +1,45 @@
+== Honver: 80 games, 830 hands
+-- hands by pressure (opponents opened by your 8th discard) x dora in the deal
+    nobody opened by T8, dora 0 n   209  opened  38.3%  riichi  17.2%  tenpai  52.2%  win  24.9%  deal-in   7.7%  win value  5563
+    nobody opened by T8, dora 1 n   127  opened  37.0%  riichi  22.0%  tenpai  56.7%  win  17.3%  deal-in  10.2%  win value  5273
+    nobody opened by T8, dora 2+ n    53  opened  34.0%  riichi  17.0%  tenpai  62.3%  win  24.5%  deal-in  11.3%  win value  6654
+    one opponent opened, dora 0 n   153  opened  35.9%  riichi  19.0%  tenpai  52.3%  win  22.9%  deal-in  10.5%  win value  4700
+    one opponent opened, dora 1 n   127  opened  39.4%  riichi  17.3%  tenpai  49.6%  win  21.3%  deal-in  19.7%  win value  5974
+    one opponent opened, dora 2+ n    55  opened  32.7%  riichi  10.9%  tenpai  43.6%  win  20.0%  deal-in  18.2%  win value  7500
+    two+ opponents opened, dora 0 n    57  opened  31.6%  riichi  15.8%  tenpai  49.1%  win  21.1%  deal-in  10.5%  win value  4775
+    two+ opponents opened, dora 1 n    38  opened  26.3%  riichi  13.2%  tenpai  36.8%  win  10.5%  deal-in  15.8%  win value  5025
+    two+ opponents opened, dora 2+ n    11  opened  45.5%  riichi  18.2%  tenpai  54.5%  win   9.1%  deal-in   0.0%  win value 12000
+-- your own first call when an opponent has already opened vs quiet table, by dora in the deal
+    dora 0   opponent opened first      n    47  call turn  8.5  shanten after call 1.04  landed <=1-shanten  68.1%  win  29.8%  value  4036
+    dora 0   you opened first / quiet   n   106  call turn  5.4  shanten after call 1.61  landed <=1-shanten  42.5%  win  31.1%  value  4082
+    dora 1   opponent opened first      n    45  call turn  8.8  shanten after call 1.00  landed <=1-shanten  75.6%  win  26.7%  value  4608
+    dora 1   you opened first / quiet   n    62  call turn  5.4  shanten after call 1.42  landed <=1-shanten  59.7%  win  25.8%  value  4088
+    dora 2+  opponent opened first      n    18  call turn  9.9  shanten after call 1.06  landed <=1-shanten  72.2%  win  16.7%  value  5500
+    dora 2+  you opened first / quiet   n    23  call turn  5.6  shanten after call 1.61  landed <=1-shanten  47.8%  win  34.8%  value  5625
+-- what the reaction call is (opponent opened first), by dora in the deal
+    dora 0   n    47  yakuhai pon  36.2%  chi  25.5%  dora pon   2.1%  other pon  36.2%  tenpai at the call  36.2%
+    dora 1   n    45  yakuhai pon  28.9%  chi  37.8%  dora pon   2.2%  other pon  31.1%  tenpai at the call  28.9%
+    dora 2+  n    18  yakuhai pon  11.1%  chi  33.3%  dora pon   5.6%  other pon  50.0%  tenpai at the call  22.2%
+    dora 0   closed when an opponent opened by T6: n   160  then opened  25.0%  riichi  21.9%  win  21.2%  deal-in   9.4%
+    dora 1   closed when an opponent opened by T6: n   124  then opened  28.2%  riichi  18.5%  win  18.5%  deal-in  16.1%
+    dora 2+  closed when an opponent opened by T6: n    52  then opened  28.8%  riichi  11.5%  win  17.3%  deal-in   9.6%
+-- discards against opened opponents (no riichi on the table): live tile / dropped shanten / deal-in to them per 100
+    vs 1  meld , you 0 -shanten:  dora 0: n    94 live 70.2% drop  2.1% in/100 4.26 |  dora 1: n    97 live 64.9% drop  0.0% in/100 3.09 |  dora 2+: n    99 live 59.6% drop  1.0% in/100 3.03 |
+    vs 1  meld , you 1 -shanten:  dora 0: n   264 live 66.7% drop  6.1% in/100 0.76 |  dora 1: n   233 live 68.2% drop  3.9% in/100 2.58 |  dora 2+: n   215 live 67.9% drop  3.7% in/100 1.40 |
+    vs 1  meld , you 2+-shanten:  dora 0: n   357 live 74.8% drop  4.2% in/100 0.00 |  dora 1: n   353 live 76.2% drop  3.1% in/100 1.42 |  dora 2+: n   188 live 74.5% drop  1.1% in/100 0.53 |
+    vs 2  melds, you 0 -shanten:  dora 0: n    67 live 59.7% drop  0.0% in/100 2.99 |  dora 1: n    77 live 54.5% drop  9.1% in/100 3.90 |  dora 2+: n    49 live 61.2% drop  6.1% in/100 10.20 |
+    vs 2  melds, you 1 -shanten:  dora 0: n   137 live 62.0% drop 10.9% in/100 1.46 |  dora 1: n   126 live 59.5% drop  3.2% in/100 0.79 |  dora 2+: n    91 live 59.3% drop 14.3% in/100 3.30 |
+    vs 2  melds, you 2+-shanten:  dora 0: n   137 live 46.7% drop 10.2% in/100 0.73 |  dora 1: n   126 live 50.8% drop  8.7% in/100 0.79 |  dora 2+: n    70 live 58.6% drop  4.3% in/100 0.00 |
+    vs 3+ melds, you 0 -shanten:  dora 0: n    14 live 35.7% drop  7.1% in/100 0.00 |  dora 1: n    13 live 84.6% drop  0.0% in/100 7.69 |  dora 2+: n     7 live 85.7% drop  0.0% in/100 0.00 |
+    vs 3+ melds, you 1 -shanten:  dora 0: n    18 live 38.9% drop 11.1% in/100 5.56 |  dora 1: n    30 live 36.7% drop 13.3% in/100 0.00 |  dora 2+: n    10 live 40.0% drop 40.0% in/100 0.00 |
+    vs 3+ melds, you 2+-shanten:  dora 0: n    12 live 25.0% drop  8.3% in/100 0.00 |  dora 1: n    26 live 19.2% drop 26.9% in/100 0.00 |  dora 2+: n    29 live 37.9% drop  6.9% in/100 0.00 |
+-- same, late (turn 9+) and only when a safe tile kept the best shanten (the real choice)
+    vs 1  meld , you 0 -shanten:  dora 0: n    26 live 15.4% |  dora 1: n    30 live 20.0% |  dora 2+: n    38 live  5.3% |
+    vs 1  meld , you 1 -shanten:  dora 0: n    81 live 38.3% |  dora 1: n    86 live 41.9% |  dora 2+: n    75 live 45.3% |
+    vs 1  meld , you 2+-shanten:  dora 0: n    52 live 28.8% |  dora 1: n    43 live 37.2% |  dora 2+: n    27 live 40.7% |
+    vs 2  melds, you 0 -shanten:  dora 0: n    23 live 17.4% |  dora 1: n    32 live  6.2% |  dora 2+: n    17 live 11.8% |
+    vs 2  melds, you 1 -shanten:  dora 0: n    55 live 38.2% |  dora 1: n    62 live 38.7% |  dora 2+: n    27 live 25.9% |
+    vs 2  melds, you 2+-shanten:  dora 0: n    41 live 17.1% |  dora 1: n    49 live 36.7% |  dora 2+: n    22 live 27.3% |
+    vs 3+ melds, you 0 -shanten:  dora 0: n     8 live 12.5% |  dora 1: n     3 live 33.3% |  dora 2+: n     1 live  0.0% |
+    vs 3+ melds, you 1 -shanten:  dora 0: n    12 live 33.3% |  dora 1: n    17 live 35.3% |  dora 2+: n     4 live  0.0% |
+    vs 3+ melds, you 2+-shanten:  dora 0: n     7 live 28.6% |  dora 1: n    15 live  6.7% |  dora 2+: n    21 live 38.1% |

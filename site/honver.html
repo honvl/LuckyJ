@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Honver's Playbook</title>
+    <meta name="description" content="A personal guide to playing closer to LuckyJ, built from 80 Jade South games with the tables of the turns to play differently." />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css?v=20260907-simplify" />
+    <link rel="stylesheet" href="honver.css?v=20260922-guide-1" />
+  </head>
+  <body data-app="table-only" data-self-name="Honver">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">LuckyJ digital mahjong, personal guide</p>
+        <h1>Honver's Playbook</h1>
+      </div>
+      <nav class="toplinks" aria-label="Page links">
+        <a href="index.html">Home</a>
+        <a href="points.html">Main playbook</a>
+        <a href="#standing">Start</a>
+        <a href="#value">Value</a>
+        <a href="#open-table">Open tables</a>
+        <a href="#calls">Calls</a>
+        <a href="#folds">Folds</a>
+        <a href="#push">Push</a>
+        <a href="#method">Method</a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <article class="book">
+        <section class="intro" id="standing">
+          <div class="intro-text">
+            <p class="kicker">Personal edition</p>
+            <h2>Where your points go against LuckyJ.</h2>
+            <p>
+              This guide measures 80 of your Jade South games since January 2026, 830 hands, with the same code that
+              measured 1,255 LuckyJ games. It keeps the lessons from our reviews and shows your own table at each turn
+              where a different tile, call or declaration would have played closer to LuckyJ.
+            </p>
+            <p>
+              Most of your game already matches. Tenpai speed, tile efficiency, call rate and honor timing are
+              LuckyJ's numbers, and you fold against a riichi at least as well as LuckyJ does. The gap is in which
+              hands you finish and what they are worth, plus a small set of tile choices once someone has called.
+            </p>
+            <p>
+              Your first rate since January, 23.8%, sits within one standard error of your career 26.3% over 3,877
+              games. The Jade players at your tables win, deal in and score like LuckyJ's Tokujou opponents. The
+              difference that is real is LuckyJ's 31.7% firsts against your career 26.3%, and it lives in the value
+              of your wins.
+            </p>
+          </div>
+          <div class="intro-panel" aria-label="Your numbers against LuckyJ">
+            <p class="panel-kicker">You against LuckyJ, same code</p>
+            <div class="metrics-grid">
+              <div class="metric"><b>&minus;15</b><span>points per hand</span><small>LuckyJ +373</small></div>
+              <div class="metric"><b>5,590</b><span>points per win</span><small>LuckyJ 6,836</small></div>
+              <div class="metric"><b>18%</b><span>of wins at mangan or more</span><small>LuckyJ 28%</small></div>
+              <div class="metric"><b>21.3%</b><span>win rate per hand</span><small>LuckyJ 22.9%</small></div>
+              <div class="metric"><b>11.8%</b><span>deal-in rate per hand</span><small>LuckyJ 10.0%</small></div>
+              <div class="metric"><b>2.45</b><span>average placement since January</span><small>career 2.42, LuckyJ 2.26</small></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="how-to-read">
+          <p class="kicker">How to read the tables</p>
+          <h2>Your seat is at the bottom.</h2>
+          <p>
+            Each table is rebuilt from the game record at the moment you had drawn and were about to discard. The tile
+            you drew sits apart at the right end of your hand. Every example lists the tile you cut, the better cut,
+            and every other discard with the shanten it leaves, how many tiles improve it, and how safe it was against
+            each player who had declared riichi or called.
+          </p>
+          <div class="guide-legend">
+            <span><i class="swatch you"></i>Red: the tile you cut</span>
+            <span><i class="swatch better"></i>Green: the better cut</span>
+            <label class="guide-toggle"><input type="checkbox" id="showOpponentHands" checked /> Show opponents' hands</label>
+          </div>
+          <p>
+            Safety labels read from your seat at that turn. <i class="safety-chip safe">genbutsu</i> is in that
+            player's river, or was discarded by anyone after their riichi without being ronned.
+            <i class="safety-chip mostly">suji</i> rules out a two-sided wait only, and LuckyJ's suji cuts against a
+            riichi still dealt in about 4 times per 100. An honor with two other copies showing can only be hit by a
+            tanki. Everything else is live, and a live number tile from 2 to 8 is the most dangerous.
+          </p>
+        </section>
+
+        <section class="point" id="value">
+          <div class="point-number">01</div>
+          <div class="point-body">
+            <h3>Count the dora before you pick the plan</h3>
+            <p>
+              LuckyJ wins about as many hands as you do. The difference is what it does with a hand that has dora.
+              Sorted by the dora and red fives in the deal, your win rate stays flat while LuckyJ's climbs:
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Dora in the deal</th><th>Your win rate</th><th>LuckyJ</th><th>Your mangan per 100 hands</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>None</td><td>23.6%</td><td>21.4%</td><td>3.8</td><td>4.1</td></tr>
+                  <tr><td>One</td><td class="gap">18.2%</td><td>23.3%</td><td class="gap">3.4</td><td>7.1</td></tr>
+                  <tr><td>Two</td><td class="gap">21.0%</td><td>26.6%</td><td class="gap">3.8</td><td>11.9</td></tr>
+                  <tr><td>Three or more</td><td class="gap">21.4%</td><td>33.9%</td><td class="gap">14.3</td><td>23.1</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              On hands with no dora you already play like LuckyJ, and you win them slightly more often. On deals with
+              one dora or more, LuckyJ makes 8.8 mangan per 100 hands and you make 3.9; on deals with none, 4.1 and
+              3.8. Dora reach your hand at the same rate and you both cut about a fifth of them, so the gap comes from
+              three habits.
+            </p>
+            <p>
+              <b>Riichi at the first closed tenpai.</b> With nobody in riichi, LuckyJ declares 51% of first tenpais on
+              3 or fewer live tiles, 82% on 4 to 7 and 93% on 8 or more. You declare 41%, 76% and 89%. Your 20 dama
+              wins average 5,880 and 20% reach mangan; LuckyJ's average 7,667 and 36% reach mangan, because it keeps
+              dama mostly for hands that are already big.
+            </p>
+            <p>
+              <b>Shape yaku on top of the dora.</b> LuckyJ wins 5.0 tanyao hands per 100 and you win 3.0; honitsu 2.1
+              against 1.3. In deals with lone honors and isolated terminals, LuckyJ has cleared every terminal and honor
+              by turn 6 in 35% of hands and wins 28% of those deals. You clear 22% and win 17%. Junk goes first:
+              guest winds and isolated terminals on turn 1, the lone value honor by turn 3 or 4.
+            </p>
+            <p>
+              <b>A yakuhai pon needs something behind it.</b> When your first call is a yakuhai pon, 47% of the time
+              the hand has no dora (LuckyJ 41%). Your pon hands with two or more dora win 28% of the time against
+              LuckyJ's 43%, though that is only 18 of your hands. A bare yakuhai pon from 3-shanten earns LuckyJ about 16 points per hand, which is nothing.
+              Let the first copy go when the pon would leave you 3-shanten with no dora, unless you lead or the hand
+              has a second plan such as toitoi or honitsu.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> Count the dora and red fives on turn 1. None: a cheap hand to finish if it comes
+              and fold first when someone attacks. One: a mangan candidate, so riichi at the first tenpai and build
+              tanyao when the deal allows. Two or more: the hand of the game, so call when the call lands you at
+              1-shanten or tenpai, riichi at the first closed tenpai and push it at tenpai.
+            </div>
+            <div class="exception">
+              <strong>Exception:</strong> Dama is right when the hand is already mangan without riichi and the wait is
+              poor, or on a tenpai from turn 11 on when you lead in the South round. Ask again every draw: LuckyJ
+              declares later in 17% of the tenpais it first passes on, you in 10%.
+            </div>
+            <p class="evidence-note">
+              <b>Evidence:</b> 80 of your games (830 hands) against 1,255 LuckyJ games (13,054 hands), same code. On
+              deals with one dora or more, the mangan gap is more than three standard errors and the win-rate gap
+              about two and a half. The three-dora row holds 14 of your hands and is noise.
+            </p>
+            <div data-guide-examples="value"></div>
+          </div>
+        </section>
+
+        <section class="point" id="open-table">
+          <div class="point-number">02</div>
+          <div class="point-body">
+            <h3>When someone opens, slow the cheap hand</h3>
+            <p>
+              An opponent's early call slows LuckyJ's cheap hands and leaves its valuable ones alone. Yours react the
+              other way round. Hands where one opponent had called by your 8th discard, with the quiet-table rate in
+              brackets:
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th></th><th>LuckyJ, no dora</th><th>LuckyJ, 2+ dora</th><th>You, no dora</th><th>You, 2+ dora</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Reached tenpai</td><td>43.5% <small>(51.4)</small></td><td>54.8% <small>(57.6)</small></td><td>52.3% <small>(52.2)</small></td><td class="gap">43.6% <small>(62.3)</small></td></tr>
+                  <tr><td>Declared riichi</td><td>18.4%</td><td>18.9%</td><td>19.0%</td><td class="gap">10.9%</td></tr>
+                  <tr><td>Opened the hand</td><td>33.0%</td><td>40.5%</td><td>35.9%</td><td class="gap">32.7%</td></tr>
+                  <tr><td>Won</td><td>19.9%</td><td>26.5%</td><td>22.9%</td><td class="gap">20.0%</td></tr>
+                  <tr><td>Dealt in</td><td>9.9%</td><td>12.0%</td><td>10.5%</td><td class="gap">18.2%</td></tr>
+                  <tr><td>Points per win</td><td>5,661</td><td>9,105</td><td>4,700</td><td>7,500</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              LuckyJ keeps its valuable hand moving with a call of its own. When an opponent opens first, LuckyJ
+              answers around turn 9, and 70% of those calls land it at 1-shanten or tenpai. Almost half are chis, which
+              keep the dora and the tanyao shape. It later opens 31% of the two-dora hands that were still closed when
+              someone called by turn 6, and 22% of the hands with no dora. Yours open at 25 to 29% whatever the dora.
+            </p>
+            <p>
+              The deal-in row is the cost of doing it your way. With one dora and an opponent open, you deal in on
+              19.7% of hands against LuckyJ's 11.2%. The hand stays closed for a riichi that does not come, and it
+              deals in more while it waits.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> When someone opens, count your dora before anything else. Two or more: keep the
+              plan, take a chi or pon that lands you at 1-shanten or tenpai by about turn 9, and riichi at the first
+              closed tenpai. None: slow down, fold from 2-shanten and hand the caller your safe tiles.
+            </div>
+            <div class="exception">
+              <strong>Exception:</strong> Your two-dora cells hold about 55 hands each, so the tenpai and riichi gaps
+              there are one and a half to two standard errors: a direction, not a measurement. The one-dora deal-in
+              gap, over 127 hands and three standard errors, is the solid part.
+            </div>
+          </div>
+        </section>
+
+        <section class="point" id="calls">
+          <div class="point-number">03</div>
+          <div class="point-body">
+            <h3>Against a call, take the safe tile that costs nothing</h3>
+            <p>
+              Folding against one call does not mean destroying the hand, and your choices there already match LuckyJ's.
+              When a safe tile is also the most efficient tile, you take it 61% of the time and LuckyJ 56%. You pay
+              acceptance for safety 14% of the time and break a shanten for it about 3% of the time, the same as
+              LuckyJ.
+            </p>
+            <p>
+              LuckyJ's pattern: at tenpai it takes a free safe tile 93% of the time, and from turn 13 on it takes one
+              79 to 97% of the time at any shanten. It pays one or two tiles of acceptance for safety 26% of the time,
+              rising to 35% once the caller has cut three or more tiles from hand since the call and 42% from turn 13.
+              Those are the moments live tiles start to hit: in LuckyJ's games a live tile hit a caller with three such
+              cuts behind them 1.9 times per 100, against about 0.5 before that, and 2.4 times from six turns after the
+              call against 0.25 right after it. It breaks a shanten only from 1- or 2-shanten after turn 12, and then
+              21 to 24% of the time. Against two calls it is stricter: from turn 9 it cuts a live tile only about 30%
+              of the time when a safe tile keeps its shanten.
+            </p>
+            <p>
+              Your live tiles still get hit more than twice as often against a single call, 1.4% of live cuts against
+              LuckyJ's 0.64%, and most of those were pushes LuckyJ would also make. The examples below are the ones
+              that were not: the safe tile cost nothing, cost a tile or two against a two-call hand, or the river had
+              already said what the hand was.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> Against one call, play for efficiency and cut the safe tile whenever two tiles are
+              equal. Once the caller has cut three or more tiles from hand since the call, or from turn 13, a tile or
+              two of acceptance for a safe tile is often worth paying. Break a shanten for safety only from 1- or
+              2-shanten after turn 12.
+            </div>
+            <div class="exception">
+              <strong>Exception:</strong> Against two calls, a value pon with a second call, or a river that has named
+              its suit, pay more. Those hands are close to tenpai and their waits are easier to guess.
+            </div>
+            <p class="evidence-note">
+              <b>Evidence:</b> 1,594 of your discards and 24,618 of LuckyJ's where exactly one opponent had exactly one
+              open meld and nobody was in riichi.
+            </p>
+            <div data-guide-examples="calls"></div>
+          </div>
+        </section>
+
+        <section class="point" id="folds">
+          <div class="point-number">04</div>
+          <div class="point-body">
+            <h3>Fold with the right tile</h3>
+            <p>
+              Folding is one of your strengths. Against a riichi you cut a live tile less often than LuckyJ at every
+              shanten, and you pick the fold tile as well: when a genbutsu kept the same shanten, you cut it 93.5% of
+              the time and LuckyJ 92.6%.
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Cut a live tile against a riichi</th><th>You</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>At tenpai</td><td>40.6%</td><td>45.2%</td></tr>
+                  <tr><td>At 1-shanten</td><td>18.9%</td><td>22.2%</td></tr>
+                  <tr><td>At 2-shanten</td><td>7.5%</td><td>11.4%</td></tr>
+                  <tr><td>At 3-shanten or worse</td><td>6.5%</td><td>7.0%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              A tile counts as safe against a riichi player when it is in their river, when anyone discarded it after
+              the declaration without being ronned, when it is suji, or when it is an honor with two other copies
+              showing. Counting only the declarer's own river would call furiten-safe tiles pushes and overstate every
+              rate in this table.
+            </p>
+            <p>
+              So folding is not where your points go. The examples below are the occasional turns where a better
+              fold tile was on the table, and they come with the rules that decide them. Spend genbutsu against every
+              threat before genbutsu against one. Put an honor with two other copies showing ahead of suji: against
+              one riichi, LuckyJ's suji cuts dealt in 3.9 times per 100 and its honors with two other copies showing
+              0.2 times, the same as genbutsu. From 2-shanten on turn 13 or later a shanten is not worth a live tile:
+              LuckyJ pushes there 6.6% of the time. From 1-shanten on turn 13 or later it pushes 10 to 20% of the
+              time, the high end with three or more dora.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> Rank the safe tiles before you cut: genbutsu against every threat, then genbutsu
+              against the riichi, then an honor with two other copies showing, then suji. If a safe tile leaves the
+              same shanten and acceptance, it is the only cut.
+            </div>
+            <div class="exception">
+              <strong>Exception:</strong> A safe tile that costs a shanten is still right from 2-shanten on turn 13 or
+              later, and from 1-shanten late in four hands out of five, dora or not.
+            </div>
+            <p class="evidence-note">
+              <b>Evidence:</b> 1,574 of your discards and 24,560 of LuckyJ's made while an opponent was in riichi and
+              you were not.
+            </p>
+            <div data-guide-examples="folds"></div>
+          </div>
+        </section>
+
+        <section class="point" id="push">
+          <div class="point-number">05</div>
+          <div class="point-body">
+            <h3>Push the tenpai that can win</h3>
+            <p>
+              At tenpai against a riichi you push 41% of the time and LuckyJ 45%; from turn 13 on, 28% against 38%.
+              The clearest gap is the open tenpai whose wait can only be kept with a dangerous tile: LuckyJ pushes it
+              84% of the time and you 72%, over 65 of your hands. LuckyJ pushes 94% of those with 8 or more live
+              tiles and 76% with 3 or fewer.
+            </p>
+            <p>
+              The yaku decides the push more than the wait width does. With a yaku on the wait, LuckyJ pushes an open
+              tenpai 68% of the time even on 2 live tiles and 95% on 8 or more. With no yaku on any wait it pushes
+              57% of them, since such a hand cannot win by ron. A closed tenpai with no yaku can only win by
+              tsumo, and on one live tile that almost never happens.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> Push a tenpai that has a yaku, even on a narrow wait, and keep an 8-tile wait even
+              when it costs a red five. Play a tenpai with no yaku the way you would play 1-shanten.
+            </div>
+            <div class="exception">
+              <strong>Exception:</strong> The closest call in LuckyJ's data is an open tenpai with no yaku on any wait,
+              pushed 57% of the time. With a yaku and a live wait it pushes at least 68% of the time, and 95% with 8
+              or more live tiles.
+            </div>
+            <div data-guide-examples="push"></div>
+          </div>
+        </section>
+
+        <section class="section sources" id="method">
+          <p class="kicker">Method</p>
+          <h2>How this guide was built.</h2>
+          <ul>
+            <li>Your games: 80 Jade South hanchan since 1 January 2026, fetched from the Mahjong Soul client and amae-koromo. LuckyJ: 1,255 Tenhou games rebuilt from the cached NAGA reports. Both run through the same replay and metric code.</li>
+            <li>Each table is rebuilt from the record at the start of your turn. Opponents' hands are shown as they really were; the switch at the top hides them.</li>
+            <li>Acceptance counts the unseen copies of every improving tile from your seat, with a called tile counted once. Safety includes tiles passed after a riichi and honors with other copies showing. Yaku and value are checked only where the text says so.</li>
+            <li>Generated data: <code>site/honver-guide.json</code> from <code>scripts/build_personal_guide.py</code> and <code>data/personal_guide_spots.json</code>. Chapter numbers come from <code>scripts/mine_riichi_folds.py</code>, <code>mine_open_tenpai_push.py</code>, <code>mine_single_call.py</code>, <code>mine_vs_open.py</code>, <code>mine_win_value.py</code> and <code>mine_value_choice.py</code>, each run on your games and on LuckyJ's with the same code.</li>
+            <li><a href="points.html">The main LuckyJ playbook</a> has the general rules these chapters build on.</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+
+    <script src="app.js?v=20260922-guide-1"></script>
+    <script src="honver.js?v=20260922-guide-1"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+== Honver: 80 games; open tenpai against a riichi where every tenpai-keeping tile is unsafe: 65 hands
+  all                            n    65  push  72.3%  push: win  23.4% deal-in  25.5%
+  no yaku on any wait            n     5  push  40.0%  push: win   0.0% deal-in  50.0%
+  waits <=3                      n    16  push  56.2%  push: win  11.1% deal-in  33.3%
+  waits <=3 1-2 han              n     3  push  33.3%  push: win   0.0% deal-in   0.0%
+  waits <=3 3-4 han              n    10  push  70.0%  push: win  14.3% deal-in  42.9%
+  waits <=3 5+ han               n     1  push   0.0%  push: win     - deal-in     -
+  waits 4-7                      n    39  push  79.5%  push: win  25.8% deal-in  22.6%
+  waits 4-7 1-2 han              n    18  push  66.7%  push: win  33.3% deal-in  25.0%
+  waits 4-7 3-4 han              n    19  push  89.5%  push: win  23.5% deal-in  17.6%
+  waits 4-7 5+ han               n     1  push 100.0%  push: win   0.0% deal-in   0.0%
+  waits 8+                       n    10  push  70.0%  push: win  28.6% deal-in  28.6%
+  waits 8+ 1-2 han               n     5  push  80.0%  push: win  50.0% deal-in   0.0%
+  waits 8+ 3-4 han               n     3  push 100.0%  push: win   0.0% deal-in  66.7%
+  turn <=8                       n    13  push  84.6%  push: win  18.2% deal-in  36.4%
+  turn 9-12                      n    23  push  73.9%  push: win  29.4% deal-in  17.6%
+  turn 13+                       n    29  push  65.5%  push: win  21.1% deal-in  26.3%

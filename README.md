@@ -17,6 +17,10 @@ Japanese translation: https://honvl.github.io/LuckyJ/ja.html
 - `scripts/build_mortal_analysis.py` - locally replays the selected examples through Mortal/libriichi and writes `site/mortal-analysis.json`.
 - `scripts/mine_model_patterns.py` - mines LuckyJ/NAGA mismatch families and optionally cross-checks a deterministic sample through Mortal.
 - `scripts/validate_points.py` - maps every numbered point to statistical proxies and writes validation artifacts.
+- `scripts/fetch_majsoul_games.py` - syncs your Mahjong Soul records into `data/self_games/majsoul/` through the patched tensoul in `tools/tensoul/`.
+- `scripts/review_win_speed.py` - speed, efficiency and tenpai-conversion review of your games against LuckyJ under the same code (or the opponents at the same tables).
+- `scripts/naga_to_tenhou.py` - rebuilds the cached NAGA reports as tenhou.net/6 logs so LuckyJ can be reviewed by the same replay code.
+- `scripts/build_personal_guide.py` - builds `site/honver-guide.json`, the tables behind the personal guide page `site/honver.html`, from `data/personal_guide_spots.json`.
 - `analysis/model-patterns-2026-06-30.md` - readable summary of the model-mined candidate points.
 - `analysis/point-evidence-2026-07-09.md` - readable proxy-evidence audit for all numbered points.
 - `site/model-patterns.json` - machine-readable output from the model-pattern mining run.
@@ -112,6 +116,118 @@ fixture and checks that the replay still reconciles to that game's real final sc
 The flags are review prompts, not verdicts. Every rate is descriptive over the
 reviewed corpus, and the LuckyJ figures beside them are non-dealer rounds from the
 mixed Tenhou sample.
+
+### Scraping Mahjong Soul games
+
+`scripts/fetch_majsoul_games.py` pulls your own Mahjong Soul records straight into
+`data/self_games/majsoul/` as tenhou.net/6 logs, using a patched checkout of
+[tensoul](https://github.com/Equim-chan/tensoul) under `tmp/tensoul` (local-only). The
+patch and the two helper scripts live in `tools/tensoul/`; `sh tools/tensoul/install.sh`
+clones, patches and installs it. Stock tensoul no longer logs in because the web client
+became a Unity WebGL build in 2025: the server answers every request on a bare
+connection with error 151 ("game version is outdated") until the client sends the
+`Route.requestConnection` handshake and a type-22 `oauth2Login` with the WebGL version
+strings. `tools/tensoul/README.md` records what was captured and changed.
+
+Credentials go in `tmp/tensoul/.env` (see `tools/tensoul/env.example`): the access
+token from the `oauth2Login` websocket frame, the server base, and the Unity resource
+version, which has to be bumped by hand when the game updates.
+
+```bash
+sh tools/tensoul/install.sh                                   # once
+.venv/bin/python scripts/fetch_majsoul_games.py --since 2026-01-01
+```
+
+Game ids come from two sources. The client's own record list only keeps the last 30
+games. `data/self_games/majsoul/amae-koromo-records.json` is an export of the player
+page on [amae-koromo](https://amae-koromo.sapk.ch/player/120182062/12/2026-01-01), whose
+archive reaches back years; its API is CAPTCHA-gated against crawlers, so the export
+was taken from the site's own page loads in a browser rather than from scripts, and
+covers the 150 most recent Jade-South games. `--since` keeps the corpus to the games
+played since the current style settled (January 2026). The record server throttles
+bursts of conversions (error 540); the batch script backs off and retries.
+
+The manifest `data/self_games/majsoul/index.json` records the seat you sat in for each
+game, so both review scripts can run across the whole corpus:
+
+```bash
+.venv/bin/python scripts/review_self_game.py --manifest data/self_games/majsoul/index.json --since 2026-01-01
+.venv/bin/python scripts/review_win_speed.py --since 2026-01-01 --all-seats-efficiency --json analysis/win-speed-<date>.json
+```
+
+`scripts/review_win_speed.py` answers "why are my wins slow": for you and for the three
+opponents in the same games it measures tenpai turn and tenpai rate, acceptance lost
+per discard against the widest same-shanten discard (pre-tenpai, with no riichi on the
+table, and yaku-blind), conversion from tenpai to a win split by riichi, dama and open
+hands with the live wait count at tenpai, riichi timing and wait width, what calls buy in
+speed and value, how long lone value honors are held and whether they pay off, the riichi or
+dama choice at the first closed tenpai (by wait width, threat, and whether a ron even has a
+yaku, using the `mahjong` hand calculator), and the han of each win split into dora, the
+riichi family and other yaku. `data/self_games/majsoul/amae-koromo-window.json` holds the
+site's own summary for the same window as an external cross-check; the two agree to a
+tenth of a point on win rate, deal-in rate, riichi rate, draw rate and win turn.
+`tests/test_win_speed.py` pins the metrics on the 2026-09-07 fixture and covers the replay
+cases the two corpora exposed: an open kan called from the right-hand player, a riichi tile
+that is ronned (no stick is paid), a kan followed by a rinshan win, and a discard that matches
+both a pending chi and a pending pon token (only one can be the real call; the replay keeps
+whichever reading reconciles).
+
+LuckyJ is the baseline for these reviews, under the same code. `scripts/naga_to_tenhou.py`
+rebuilds every cached NAGA report as a tenhou.net/6 log (the reports carry the full event
+stream for all four seats) into `data/local_sources/luckyj_tenhou/` with a manifest, and
+verifies each game by replay and score reconciliation. Both review scripts take that manifest,
+and `review_win_speed.py --baseline` prints a saved LuckyJ summary as the comparison column:
+
+```bash
+.venv/bin/python scripts/naga_to_tenhou.py
+.venv/bin/python scripts/review_win_speed.py --manifest data/local_sources/luckyj_tenhou/index.json --json analysis/win-speed-luckyj-<date>.json
+.venv/bin/python scripts/review_win_speed.py --since 2026-01-01 --baseline analysis/win-speed-luckyj-<date>.json
+```
+
+The same-code LuckyJ numbers land on the NAGA-side miners where the definitions coincide
+(yakuhai pon 75.0% against 73.6%, closed chi 7.3% against 6.7%, riichi at first tenpai on
+4-7 waits 79.1% against 78.3%), which is the check that the conversion is faithful.
+
+### Personal guide
+
+`site/honver.html` is a personal off-shoot of the playbook: five chapters measured on your
+games against LuckyJ, with the table at each turn where a different tile, call or declaration
+would have played closer to LuckyJ. It reuses the playbook's table renderer from `site/app.js`
+(the page sets `data-app="table-only"` so the playbook data is not fetched) and adds
+`site/honver.js` and `site/honver.css`.
+
+The turns and their commentary live in `data/personal_guide_spots.json` (game uuid prefix,
+round, your turn number, the tile you cut and the better tile). The builder replays each game
+and writes the table states to `site/honver-guide.json`; it stops if a recorded cut does not
+match the replay:
+
+```bash
+.venv/bin/python scripts/build_personal_guide.py --show   # print every frame for review
+.venv/bin/python scripts/build_personal_guide.py          # write site/honver-guide.json
+```
+
+Safety in the guide and in `scripts/mine_riichi_folds.py` counts a tile as safe against a
+riichi when anyone discarded it after the declaration without being ronned (riichi furiten),
+and counts a called tile once when measuring acceptance. The older review scripts only read
+the declarer's own river, which counts furiten-safe tiles as pushes. The chapter numbers come
+from these miners, each run on your games and on the LuckyJ conversion (split the LuckyJ
+manifest into chunks and pass every rows file to `report`):
+
+```bash
+.venv/bin/python scripts/mine_riichi_folds.py compute data/self_games/majsoul/index.json 2026-01-01 rows-you.json
+.venv/bin/python scripts/mine_riichi_folds.py report You rows-you.json --examples
+.venv/bin/python scripts/mine_open_tenpai_push.py compute data/self_games/majsoul/index.json 2026-01-01 open-you.json
+.venv/bin/python scripts/mine_single_call.py compute data/self_games/majsoul/index.json 2026-01-01 calls-you.json
+.venv/bin/python scripts/mine_vs_open.py compute data/self_games/majsoul/index.json 2026-01-01 table-you.json
+.venv/bin/python scripts/mine_win_value.py data/self_games/majsoul/index.json 2026-01-01 You
+.venv/bin/python scripts/mine_value_choice.py data/self_games/majsoul/index.json 2026-01-01 You
+```
+
+The call and open-tenpai miners use the same safety rule, and the win-value miner counts a
+Mahjong Soul mangan head written without a han count ("満貫8000点"). Saved reports for the
+current guide, one per player: `analysis/riichi-folds-*-2026-09-22.txt`,
+`analysis/open-tenpai-push-*-2026-09-22.txt`, `analysis/single-call-*-2026-09-22.txt`,
+`analysis/vs-open-*-2026-09-22.txt` and `analysis/win-value-*-2026-09-22.txt`.
 
 The mined summaries behind the published numbers are archived under
 `analysis/rx3-*-2026-07-05.json`. The older `analysis/rx-*-2026-07-03.json` files are kept

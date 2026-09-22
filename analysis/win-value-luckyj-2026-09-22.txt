@@ -1,0 +1,42 @@
+== LuckyJ: 1255 games, 13054 hands, 2995 wins (22.9% of hands), mangan+ 28.1% of wins = 6.5 per 100 hands
+  han per win 3.37; actual points per win 6836
+  han distribution: 1: 11.5%  2: 20.6%  3: 25.6%  4: 20.4%  5: 21.9% (5 = 5 or more)
+  han per win by source: dora 0.62  aka 0.52  ura 0.18  riichi 0.43  ippatsu 0.08  tsumo 0.22  yakuhai 0.42  shape 0.89
+  share of wins carrying: dora 40%  aka 44%  ura 14%  riichi 43%  ippatsu 8%  tsumo 22%  yakuhai 36%  shape 55%
+  by hand type:
+    riichi  n  1297 (43.3% of wins)  points  8190  han 3.94  dora+aka 1.04  ura 0.43  shape 0.77  yakuhai 0.08  tsumo 45%  mangan+ 40%  | han sure at declaration 2.89, riichi-only 12%, luck han after 1.05
+    dama    n   286 ( 9.5% of wins)  points  7667  han 3.62  dora+aka 1.39  ura 0.00  shape 1.77  yakuhai 0.17  tsumo 30%  mangan+ 36%
+    open    n  1412 (47.1% of wins)  points  5424  han 2.79  dora+aka 1.17  ura 0.00  shape 0.82  yakuhai 0.79  tsumo 31%  mangan+ 16%
+  open wins by first call:
+    yakuhai pon  n   665 (47.1% of open wins)  points  5307  han 2.73  dora+aka 1.09  one-han 21%  no dora 37%
+    chi          n   363 (25.7% of open wins)  points  5051  han 2.65  dora+aka 1.29  one-han 20%  no dora 29%
+    other pon    n   384 (27.2% of open wins)  points  5978  han 3.01  dora+aka 1.19  one-han 16%  no dora 37%
+  shape yaku, share of wins: 断幺九 21.8%  平和 18.2%  混一色 8.1%  一盃口 3.8%  七対子 3.5%  三色同順 3.4%  対々和 1.8%  混全帯幺九 1.4%  一気通貫 1.1%  清一色 1.0%  三暗刻 0.7%  河底撈魚 0.4%
+  fu of closed ron wins: 25: 8%  30: 34%  40: 52%  50: 7%
+  dora at deal, wins: 0.73; dora that entered the hand, wins: 1.36; dora+aka han at win: 1.13
+  dora flow, all hands: entered 1.28 per hand; cut 0.27 per hand = 20.9% of entered; of cuts: under a riichi 24%, quiet table 76%
+    quiet cuts per 100 hands 20.3: turn<=6 35%  at tenpai 33%  1-sh 33%  2-sh 22%  3+ 12%  red fives 28%  honor dora 28%
+DONE
+== LuckyJ: 1255 games, 13054 hands; wins 22.9%, mangan+ 28.1% of wins = 6.46 per 100 hands
+  4-han win heads: {'30符4飜7700点': 149, '40符4飜8000点': 118, '30符4飜7900点': 86, '30符4飜11600点': 58, '30符4飜11700点': 43, '40符4飜12000点': 41}
+  by dora at the deal (dora + red)
+    0          n  6423 (49.2%)  tenpai 46.2%  riichi 18.7%  opened 34.2%  win 21.4%  deal-in  9.1%  win value  5626  han 2.85  mangan+/100 hands 4.1  share of all wins 45.9%
+    1          n  4898 (37.5%)  tenpai 50.1%  riichi 20.2%  opened 35.8%  win 23.3%  deal-in 10.5%  win value  7351  han 3.58  mangan+/100 hands 7.1  share of all wins 38.1%
+    2          n  1491 (11.4%)  tenpai 53.8%  riichi 17.0%  opened 40.9%  win 26.6%  deal-in 11.6%  win value  8883  han 4.22  mangan+/100 hands 11.9  share of all wins 13.3%
+    3+         n   242 ( 1.9%)  tenpai 62.4%  riichi 19.0%  opened 47.1%  win 33.9%  deal-in 12.0%  win value 10061  han 4.90  mangan+/100 hands 23.1  share of all wins  2.7%
+    no dora at the deal            n  6423  mangan+ wins  263 = 4.09 per 100 of these hands  win 21.4%
+    one or more dora at the deal   n  6631  mangan+ wins  580 = 8.75 per 100 of these hands  win 24.4%
+  by dora in hand by the 6th draw
+    0          n  4499 (34.5%)  tenpai 45.3%  riichi 17.8%  opened 34.3%  win 21.1%  deal-in  8.9%  win value  5133  han 2.63  mangan+/100 hands 3.4  share of all wins 31.7%
+    1          n  5305 (40.6%)  tenpai 48.3%  riichi 20.5%  opened 34.2%  win 22.2%  deal-in  9.2%  win value  6633  han 3.30  mangan+/100 hands 5.6  share of all wins 39.4%
+    2          n  2545 (19.5%)  tenpai 52.8%  riichi 19.1%  opened 38.2%  win 25.5%  deal-in 12.9%  win value  8532  han 4.06  mangan+/100 hands 9.8  share of all wins 21.7%
+    3+         n   705 ( 5.4%)  tenpai 61.3%  riichi 16.2%  opened 49.1%  win 30.8%  deal-in 11.6%  win value 10315  han 4.86  mangan+/100 hands 20.3  share of all wins  7.2%
+  honitsu-shaped deal (one suit + honors >= 9 of 13)
+    yes        n  3092 (23.7%)  tenpai 51.2%  riichi 12.8%  opened 49.3%  win 25.1%  deal-in  9.5%  win value  7239  han 3.48  mangan+/100 hands 7.7  share of all wins 25.9%
+    no         n  9962 (76.3%)  tenpai 48.1%  riichi 21.0%  opened 31.6%  win 22.3%  deal-in 10.1%  win value  6694  han 3.33  mangan+/100 hands 6.1  share of all wins 74.1%
+    honitsu-shaped deals won with honitsu/chinitsu: 6.8% of those deals; all honitsu wins per 100 hands 2.08; tanyao wins per 100 hands 5.00
+  first call = yakuhai pon: 1779 hands (13.6% of hands)
+    dora at the pon 0   n   738 (41.5%)  win 37.3%  deal-in  9.3%  win value  4138  han 2.09
+    dora at the pon 1   n   694 (39.0%)  win 34.6%  deal-in  9.9%  win value  5225  han 2.80
+    dora at the pon 2+  n   347 (19.5%)  win 43.2%  deal-in 15.9%  win value  7580  han 3.79
+DONE
