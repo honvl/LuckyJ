@@ -1,0 +1,4479 @@
+{
+  "hero": null,
+  "games": 58,
+  "hands": 577,
+  "score_delta": 38400,
+  "push_vs_riichi": {
+    "0": 50.9,
+    "1": 19.6,
+    "2": 19.5,
+    "3+": 21.8
+  },
+  "luckyj_push_vs_riichi": {
+    "0": 58.9,
+    "1": 31.7,
+    "2": 19.6,
+    "3+": 14.1
+  },
+  "declare_by_waits": {
+    "<=3": 32.6,
+    "4-7": 69.3,
+    "8+": 92.3
+  },
+  "yakuhai_pon_rate": 73.4,
+  "chi_closed_rate": 6.5,
+  "findings": [
+    {
+      "kind": "loose-chi",
+      "round": "East 3-0",
+      "turn": 5,
+      "text": "chi on 3s opened the hand at 3-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260920-90933d"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-0",
+      "turn": 15,
+      "text": "cut live 2s while holding a genbutsu for every threat (p0: 0m 5m)",
+      "game": "260920-90933d"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 4-1",
+      "turn": 17,
+      "text": "dealt 7s into p2 for -8300 at 0-shanten",
+      "game": "260920-90933d"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-1",
+      "turn": 13,
+      "text": "cut live 4p while holding a genbutsu for every threat (p2: 8m)",
+      "game": "260920-90933d"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-1",
+      "turn": 15,
+      "text": "cut live 8s at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-90933d"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-1",
+      "turn": 15,
+      "text": "cut live 8s while holding a genbutsu for every threat (p2: 3p)",
+      "game": "260920-90933d"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-1",
+      "turn": 16,
+      "text": "cut live 5s at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-90933d"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-1",
+      "turn": 16,
+      "text": "cut live 5s while holding a genbutsu for every threat (p2: 3p)",
+      "game": "260920-90933d"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 1-0",
+      "turn": 10,
+      "text": "dealt 4s into p2 for -1000 at 1-shanten",
+      "game": "260920-192cc9"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 11,
+      "text": "cut live 9s at 3-shanten against riichi from p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260920-192cc9"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 11,
+      "text": "cut live 9s while holding a genbutsu for every threat (p2: W hatsu)",
+      "game": "260920-192cc9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 8,
+      "text": "carried a lone chun to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-192cc9"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-0",
+      "turn": 9,
+      "text": "cut live 1m while holding a genbutsu for every threat (p1: 2m)",
+      "game": "260920-192cc9"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-0",
+      "turn": 10,
+      "text": "cut live 1s while holding a genbutsu for every threat (p1: 2m)",
+      "game": "260920-192cc9"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 3-0",
+      "turn": 10,
+      "text": "dealt 1s into p1 for -3900 at 0-shanten",
+      "game": "260920-192cc9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 8,
+      "text": "carried a lone W to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-192cc9"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "South 2-0",
+      "turn": 9,
+      "text": "riichi on E with only 3 live tile(s); LuckyJ declares a <=3 wait 33.7% of the time",
+      "game": "260920-192cc9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-1",
+      "turn": 14,
+      "text": "carried a lone S to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-192cc9"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 4-0",
+      "turn": 15,
+      "text": "dealt 4s into p1 for -1000 at 0-shanten",
+      "game": "260920-192cc9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 9,
+      "text": "carried a lone E to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 2-2",
+      "turn": 16,
+      "text": "chi on 9p opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-2",
+      "turn": 18,
+      "text": "carried a lone hatsu to turn 18 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-3",
+      "turn": 14,
+      "text": "carried a lone hatsu to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 9,
+      "text": "carried a lone haku to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 4-0",
+      "turn": 11,
+      "text": "dealt 7s into p3 for -2000 at 3-shanten",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-1",
+      "turn": 7,
+      "text": "carried a lone E to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-1",
+      "turn": 12,
+      "text": "carried a lone haku to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 2-1",
+      "turn": 16,
+      "text": "chi on 6s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-1",
+      "turn": 16,
+      "text": "carried a lone hatsu to turn 16 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-2",
+      "turn": 12,
+      "text": "carried a lone chun to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-2",
+      "turn": 13,
+      "text": "carried a lone S to turn 13 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 7,
+      "text": "carried a lone haku to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 3-0",
+      "turn": 9,
+      "text": "dealt 0s into p0 for -3900 at 1-shanten",
+      "game": "260920-a3b39b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-1",
+      "turn": 8,
+      "text": "carried a lone hatsu to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-41fcf9"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-1",
+      "turn": 10,
+      "text": "cut live 4p at 2-shanten against riichi from p0, p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-41fcf9"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-1",
+      "turn": 11,
+      "text": "cut live 4p at 2-shanten against riichi from p0, p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-41fcf9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-1",
+      "turn": 12,
+      "text": "carried a lone chun to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-41fcf9"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-1",
+      "turn": 14,
+      "text": "cut live 6s at 2-shanten against riichi from p0, p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-41fcf9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 8,
+      "text": "carried a lone haku to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-9d6675"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 3-0",
+      "turn": 7,
+      "text": "cut live 8s at 3-shanten against riichi from p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260920-9d6675"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-1",
+      "turn": 11,
+      "text": "carried a lone hatsu to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-9d6675"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-2",
+      "turn": 8,
+      "text": "cut live 4p at 2-shanten against riichi from p0 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-9d6675"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-2",
+      "turn": 8,
+      "text": "cut live 4p while holding a genbutsu for every threat (p0: 1p 2p)",
+      "game": "260920-9d6675"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-2",
+      "turn": 12,
+      "text": "carried a lone haku to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-9d6675"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 1-0",
+      "turn": 6,
+      "text": "passed a pon on hatsu at 2-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 7,
+      "text": "carried a lone E to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 1-0",
+      "turn": 11,
+      "text": "dealt 4m into p2 for -12000 at 0-shanten",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 11,
+      "text": "cut live 9p at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 11,
+      "text": "cut live 9p while holding a genbutsu for every threat (p1: 3m 6s)",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 12,
+      "text": "cut live 9p at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 12,
+      "text": "cut live 9p while holding a genbutsu for every threat (p1: 3m 6s)",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-1",
+      "turn": 14,
+      "text": "cut live 2s while holding a genbutsu for every threat (p0: 4s)",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-1",
+      "turn": 16,
+      "text": "cut live 8s while holding a genbutsu for every threat (p0: 4s)",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "East 4-0",
+      "turn": 13,
+      "text": "riichi on 2m/5p with only 3 live tile(s); LuckyJ declares a <=3 wait 41.9% of the time as dealer",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "South 1-0",
+      "turn": 13,
+      "text": "riichi on 4p/9s with only 2 live tile(s); LuckyJ declares a <=3 wait 33.7% of the time",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-0",
+      "turn": 17,
+      "text": "dealt 6s into p1 for -7700 at 0-shanten",
+      "game": "260920-93675d"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-2",
+      "turn": 12,
+      "text": "carried a lone E to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-3d2eda"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 14,
+      "text": "carried a lone chun to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-3d2eda"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 2-0",
+      "turn": 17,
+      "text": "dealt 1m into p2 for -2600 at 0-shanten",
+      "game": "260920-3d2eda"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 7,
+      "text": "carried a lone haku to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-3d2eda"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 10,
+      "text": "carried a lone S to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-3d2eda"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 2-0",
+      "turn": 11,
+      "text": "cut live 1m at 4-shanten against riichi from p1 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260920-3d2eda"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-0",
+      "turn": 11,
+      "text": "cut live 1m while holding a genbutsu for every threat (p1: 8s S)",
+      "game": "260920-3d2eda"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 14,
+      "text": "carried a lone S to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-3d2eda"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 3-0",
+      "turn": 11,
+      "text": "dealt 6m into p3 for -3900 at 0-shanten",
+      "game": "260920-3d2eda"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 4-0",
+      "turn": 14,
+      "text": "passed a pon on chun at 0-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260920-3d2eda"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-0",
+      "turn": 15,
+      "text": "cut live 9m while holding a genbutsu for every threat (p2: chun)",
+      "game": "260920-3d2eda"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 3-1",
+      "turn": 9,
+      "text": "chi on 3s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-1",
+      "turn": 11,
+      "text": "carried a lone chun to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-0",
+      "turn": 12,
+      "text": "cut live 9s at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 12,
+      "text": "cut live 9s while holding a genbutsu for every threat (p0: 8s)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-1",
+      "turn": 6,
+      "text": "cut live 8p at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-1",
+      "turn": 6,
+      "text": "cut live 8p while holding a genbutsu for every threat (p0: 9s)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-1",
+      "turn": 8,
+      "text": "carried a lone E to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-1",
+      "turn": 9,
+      "text": "carried a lone chun to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-1",
+      "turn": 10,
+      "text": "cut live 5p at 2-shanten against riichi from p0 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-1",
+      "turn": 11,
+      "text": "cut live 0p at 2-shanten against riichi from p0 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-1",
+      "turn": 13,
+      "text": "cut live 4m at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-1",
+      "turn": 14,
+      "text": "cut live 4m at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 1-0",
+      "turn": 6,
+      "text": "chi on 6m opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 8,
+      "text": "carried a lone haku to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-0",
+      "turn": 17,
+      "text": "dealt 2p into p0 for -2900 at 0-shanten",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-1",
+      "turn": 7,
+      "text": "carried a lone S to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 12,
+      "text": "carried a lone haku to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-3",
+      "turn": 8,
+      "text": "carried a lone hatsu to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 3-3",
+      "turn": 9,
+      "text": "chi on 7p opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 4-0",
+      "turn": 6,
+      "text": "chi on 4s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260920-27f977"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 9,
+      "text": "carried a lone hatsu to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 11,
+      "text": "cut live 9m at 2-shanten against riichi from p0, p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 11,
+      "text": "cut live 9m while holding a genbutsu for every threat (p0: 4m 6m; p2: 8p)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 12,
+      "text": "cut live 9m at 2-shanten against riichi from p0, p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 12,
+      "text": "cut live 9m while holding a genbutsu for every threat (p0: 4m 6m; p2: 8p)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 3-0",
+      "turn": 6,
+      "text": "cut live 1p at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-0",
+      "turn": 6,
+      "text": "cut live 1p while holding a genbutsu for every threat (p1: 2p 9s)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 13,
+      "text": "cut live 7m while holding a genbutsu for every threat (p1: 2m)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 14,
+      "text": "cut live 5p while holding a genbutsu for every threat (p1: 2m; p2: 9p)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 15,
+      "text": "cut live 8s while holding a genbutsu for every threat (p1: 2m 0s; p2: 9p 6s)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-1",
+      "turn": 10,
+      "text": "cut live 1s while holding a genbutsu for every threat (p1: 3p 5p 6s)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-2",
+      "turn": 7,
+      "text": "cut live 1s at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-2",
+      "turn": 7,
+      "text": "cut live 1s while holding a genbutsu for every threat (p2: 6s)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-2",
+      "turn": 8,
+      "text": "cut live 1s at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-2",
+      "turn": 8,
+      "text": "cut live 1s while holding a genbutsu for every threat (p2: 6s)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-2",
+      "turn": 10,
+      "text": "cut live 7s at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-2",
+      "turn": 14,
+      "text": "cut live 7m at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-2",
+      "turn": 14,
+      "text": "cut live 7m while holding a genbutsu for every threat (p2: 8p W)",
+      "game": "260920-7c650e"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "East 1-0",
+      "turn": 13,
+      "text": "riichi on 4m with only 3 live tile(s); LuckyJ declares a <=3 wait 33.7% of the time",
+      "game": "260920-900a11"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 13,
+      "text": "cut live 5s while holding a genbutsu for every threat (p1: 7m 4p 3s)",
+      "game": "260920-900a11"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 12,
+      "text": "carried a lone haku to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-900a11"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 4-0",
+      "turn": 11,
+      "text": "passed a pon on hatsu at 2-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260920-900a11"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 15,
+      "text": "carried a lone hatsu to turn 15 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-900a11"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 16,
+      "text": "carried a lone chun to turn 16 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-900a11"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-1",
+      "turn": 11,
+      "text": "dealt 2m into p1 for -2300 at 1-shanten",
+      "game": "260920-900a11"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 1-0",
+      "turn": 7,
+      "text": "dealt 4m into p3 for -8000 at 2-shanten",
+      "game": "260920-58550b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 10,
+      "text": "carried a lone hatsu to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260920-58550b"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-0",
+      "turn": 17,
+      "text": "cut live 9p at 2-shanten against riichi from p2, p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260920-58550b"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 17,
+      "text": "cut live 9p while holding a genbutsu for every threat (p2: 2m 4s; p3: 7m)",
+      "game": "260920-58550b"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 1-0",
+      "turn": 15,
+      "text": "passed a pon on haku at 1-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260920-58550b"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-1",
+      "turn": 10,
+      "text": "cut live 2s while holding a genbutsu for every threat (p2: 8p)",
+      "game": "260920-58550b"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-1",
+      "turn": 12,
+      "text": "cut live 5p while holding a genbutsu for every threat (p2: 6p)",
+      "game": "260920-58550b"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-1",
+      "turn": 12,
+      "text": "dealt 5p into p2 for -8000 at 0-shanten",
+      "game": "260920-58550b"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 3-0",
+      "turn": 8,
+      "text": "passed a pon on hatsu at 2-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260920-58550b"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 9,
+      "text": "cut live 8m at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 9,
+      "text": "cut live 8m while holding a genbutsu for every threat (p0: 6m 6p)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 10,
+      "text": "cut live 1p at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 10,
+      "text": "cut live 1p while holding a genbutsu for every threat (p0: 0m 6m 6p 4s)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 3-0",
+      "turn": 4,
+      "text": "chi on 6p opened the hand at 3-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 3-1",
+      "turn": 6,
+      "text": "cut live 1s at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 3-1",
+      "turn": 7,
+      "text": "cut live 1s at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-1",
+      "turn": 7,
+      "text": "cut live 1s while holding a genbutsu for every threat (p2: 7p)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-1",
+      "turn": 8,
+      "text": "cut live 9m while holding a genbutsu for every threat (p2: 7p)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-1",
+      "turn": 9,
+      "text": "cut live 7s while holding a genbutsu for every threat (p2: 7p 3s)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 14,
+      "text": "carried a lone S to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-0",
+      "turn": 15,
+      "text": "cut live 9m while holding a genbutsu for every threat (p2: 7s)",
+      "game": "260919-cec501"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-0",
+      "turn": 7,
+      "text": "cut live 1m while holding a genbutsu for every threat (p2: 5p)",
+      "game": "260919-3ae032"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-1",
+      "turn": 7,
+      "text": "carried a lone hatsu to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-3ae032"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-0",
+      "turn": 8,
+      "text": "cut live 3p while holding a genbutsu for every threat (p0: 2s)",
+      "game": "260919-1bba63"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 3-0",
+      "turn": 5,
+      "text": "chi on 3p opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260919-1bba63"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-0",
+      "turn": 7,
+      "text": "cut live 9s at 2-shanten against riichi from p0 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260919-1bba63"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 3-1",
+      "turn": 5,
+      "text": "dealt 9s into p0 for -2300 at 2-shanten",
+      "game": "260919-1bba63"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 10,
+      "text": "carried a lone haku to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 1-0",
+      "turn": 12,
+      "text": "cut live 3p at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 9,
+      "text": "carried a lone hatsu to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 3-1",
+      "turn": 15,
+      "text": "dealt 3p into p3 for -8300 at 0-shanten",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 7,
+      "text": "carried a lone haku to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 13,
+      "text": "carried a lone S to turn 13 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 2-0",
+      "turn": 3,
+      "text": "passed a pon on chun at 3-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 2-1",
+      "turn": 4,
+      "text": "cut live 9p at 4-shanten against riichi from p1 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-1",
+      "turn": 4,
+      "text": "cut live 9p while holding a genbutsu for every threat (p1: 0m)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 2-1",
+      "turn": 5,
+      "text": "cut live 9p at 3-shanten against riichi from p1 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-1",
+      "turn": 5,
+      "text": "cut live 9p while holding a genbutsu for every threat (p1: 0m)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-1",
+      "turn": 8,
+      "text": "carried a lone S to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 2-1",
+      "turn": 9,
+      "text": "cut live 2s at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-1",
+      "turn": 9,
+      "text": "cut live 2s while holding a genbutsu for every threat (p1: 4m 0m 8s)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 2-1",
+      "turn": 10,
+      "text": "cut live 2s at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-1",
+      "turn": 10,
+      "text": "cut live 2s while holding a genbutsu for every threat (p1: 4m 0m 8s)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 2-1",
+      "turn": 15,
+      "text": "passed a pon on N at 2-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-1",
+      "turn": 17,
+      "text": "carried a lone N to turn 17 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 2-2",
+      "turn": 4,
+      "text": "passed a pon on hatsu at 3-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 2-2",
+      "turn": 5,
+      "text": "cut live chun at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-2",
+      "turn": 5,
+      "text": "cut live chun while holding a genbutsu for every threat (p3: hatsu)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-2",
+      "turn": 6,
+      "text": "cut live 8s while holding a genbutsu for every threat (p3: hatsu)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-2",
+      "turn": 8,
+      "text": "cut live 2p while holding a genbutsu for every threat (p3: hatsu)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-2",
+      "turn": 10,
+      "text": "cut live 6s while holding a genbutsu for every threat (p3: 0m 5m hatsu)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 3-4",
+      "turn": 3,
+      "text": "chi on 2p opened the hand at 3-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260919-bd7daa"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 1-0",
+      "turn": 9,
+      "text": "chi on 1p opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260919-5e7aab"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 8,
+      "text": "carried a lone hatsu to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-5e7aab"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "East 3-0",
+      "turn": 9,
+      "text": "riichi on 8m with only 3 live tile(s); LuckyJ declares a <=3 wait 41.9% of the time as dealer",
+      "game": "260919-5e7aab"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 4-0",
+      "turn": 6,
+      "text": "chi on 6m opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260919-5e7aab"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 11,
+      "text": "carried a lone chun to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-5e7aab"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-2",
+      "turn": 14,
+      "text": "cut live 6s at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260919-5e7aab"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-2",
+      "turn": 14,
+      "text": "cut live 6s while holding a genbutsu for every threat (p3: 6p)",
+      "game": "260919-5e7aab"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 8,
+      "text": "carried a lone N to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-5e7aab"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 2-0",
+      "turn": 8,
+      "text": "chi on 4s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260919-41b36c"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 2-0",
+      "turn": 15,
+      "text": "dealt 8s into p0 for -3900 at 0-shanten",
+      "game": "260919-41b36c"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 4-0",
+      "turn": 6,
+      "text": "chi on 3s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260919-41b36c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-1",
+      "turn": 7,
+      "text": "carried a lone E to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-41b36c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-1",
+      "turn": 15,
+      "text": "carried a lone W to turn 15 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-41b36c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 10,
+      "text": "carried a lone haku to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-41b36c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 13,
+      "text": "carried a lone hatsu to turn 13 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-41b36c"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-1",
+      "turn": 6,
+      "text": "cut live 4m at 3-shanten against riichi from p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260919-41b36c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-2",
+      "turn": 15,
+      "text": "carried a lone chun to turn 15 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-41b36c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 7,
+      "text": "carried a lone W to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-41b36c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 8,
+      "text": "carried a lone hatsu to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-6e1481"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-0",
+      "turn": 9,
+      "text": "cut live 8p while holding a genbutsu for every threat (p3: 1s 2s 3s 6s)",
+      "game": "260919-6e1481"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-0",
+      "turn": 6,
+      "text": "cut live S at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260919-6e1481"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 7,
+      "text": "carried a lone chun to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-6e1481"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 2-0",
+      "turn": 9,
+      "text": "passed a pon on haku at 3-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260919-6e1481"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 10,
+      "text": "carried a lone S to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-6e1481"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 10,
+      "text": "carried a lone S to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-6e1481"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 4-0",
+      "turn": 7,
+      "text": "chi on 2p opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260919-6e1481"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 1-1",
+      "turn": 10,
+      "text": "cut live 4p at 2-shanten against riichi from p2, p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260919-80611c"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-1",
+      "turn": 10,
+      "text": "cut live 4p while holding a genbutsu for every threat (p2: 2p; p3: 2s 9s)",
+      "game": "260919-80611c"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 1-1",
+      "turn": 11,
+      "text": "cut live 2p at 2-shanten against riichi from p2, p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260919-80611c"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-1",
+      "turn": 11,
+      "text": "cut live 2p while holding a genbutsu for every threat (p2: N; p3: 2s 9s)",
+      "game": "260919-80611c"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 4-0",
+      "turn": 9,
+      "text": "passed a pon on chun at 3-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260919-80611c"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 2-0",
+      "turn": 8,
+      "text": "dealt 4m into p2 for -3200 at 1-shanten",
+      "game": "260919-80611c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-1",
+      "turn": 15,
+      "text": "carried a lone haku to turn 15 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-80611c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-2",
+      "turn": 14,
+      "text": "carried a lone S to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-80611c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 9,
+      "text": "carried a lone W to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-80611c"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 1-1",
+      "turn": 3,
+      "text": "chi on 6s opened the hand at 4-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260919-363fd9"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 2-0",
+      "turn": 4,
+      "text": "chi on 6m opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260919-363fd9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 14,
+      "text": "carried a lone hatsu to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-363fd9"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 10,
+      "text": "cut live 5s while holding a genbutsu for every threat (p1: 1m)",
+      "game": "260919-363fd9"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 2-3",
+      "turn": 5,
+      "text": "passed a pon on hatsu at 3-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260919-363fd9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-3",
+      "turn": 15,
+      "text": "carried a lone hatsu to turn 15 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-363fd9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 8,
+      "text": "carried a lone hatsu to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-363fd9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-1",
+      "turn": 10,
+      "text": "carried a lone chun to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-363fd9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 7,
+      "text": "carried a lone N to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260919-96c5dc"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "East 2-1",
+      "turn": 9,
+      "text": "riichi on 1p/8p with only 3 live tile(s); LuckyJ declares a <=3 wait 33.7% of the time",
+      "game": "260919-96c5dc"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 8,
+      "text": "carried a lone haku to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 11,
+      "text": "carried a lone hatsu to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 1-1",
+      "turn": 13,
+      "text": "dealt 5p into p0 for -6100 at 0-shanten",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 2-0",
+      "turn": 7,
+      "text": "passed a pon on hatsu at 2-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 9,
+      "text": "cut live 8p at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 9,
+      "text": "cut live 8p while holding a genbutsu for every threat (p1: 4p hatsu)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 2-0",
+      "turn": 9,
+      "text": "passed a pon on hatsu at 2-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 10,
+      "text": "cut live 8s at 3-shanten against riichi from p1, p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 10,
+      "text": "cut live 8s while holding a genbutsu for every threat (p1: 4p hatsu; p2: 3p)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 11,
+      "text": "cut live 8s at 3-shanten against riichi from p1, p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 11,
+      "text": "cut live 8s while holding a genbutsu for every threat (p1: 4p hatsu; p2: 3p 8p)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 12,
+      "text": "cut live 1s at 3-shanten against riichi from p1, p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 12,
+      "text": "cut live 1s while holding a genbutsu for every threat (p1: 4p 6p hatsu; p2: 3p 8p)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 13,
+      "text": "cut live 5m at 3-shanten against riichi from p1, p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 13,
+      "text": "cut live 5m while holding a genbutsu for every threat (p1: 4p 6p hatsu; p2: 3p 8p haku)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 14,
+      "text": "carried a lone haku to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 16,
+      "text": "carried a lone hatsu to turn 16 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 17,
+      "text": "cut live 7s at 2-shanten against riichi from p1, p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 17,
+      "text": "cut live 7s while holding a genbutsu for every threat (p1: 4p 5p 6p 8p; p2: 1p 3p 8p)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 4-0",
+      "turn": 12,
+      "text": "chi on 4m opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 7,
+      "text": "carried a lone N to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-0",
+      "turn": 15,
+      "text": "dealt 2m into p1 for -2000 at 1-shanten",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 3-0",
+      "turn": 7,
+      "text": "passed a pon on chun at 0-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 8,
+      "text": "carried a lone E to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 4-0",
+      "turn": 13,
+      "text": "cut live 6s at 3-shanten against riichi from p1 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260914-862d39"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "East 1-0",
+      "turn": 5,
+      "text": "riichi on N with only 2 live tile(s); LuckyJ declares a <=3 wait 41.9% of the time as dealer",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-1",
+      "turn": 8,
+      "text": "carried a lone chun to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 8,
+      "text": "carried a lone S to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 12,
+      "text": "carried a lone chun to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 4-0",
+      "turn": 13,
+      "text": "chi on 2p opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 1-0",
+      "turn": 3,
+      "text": "passed a pon on S at 1-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 10,
+      "text": "carried a lone S to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 10,
+      "text": "carried a lone hatsu to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 2-0",
+      "turn": 11,
+      "text": "cut live 8p at 4-shanten against riichi from p1 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-0",
+      "turn": 11,
+      "text": "cut live 8p while holding a genbutsu for every threat (p1: 1p)",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 2-0",
+      "turn": 11,
+      "text": "dealt 8p into p3 for -8000 at 4-shanten",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 11,
+      "text": "carried a lone hatsu to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-0",
+      "turn": 12,
+      "text": "cut live 4m while holding a genbutsu for every threat (p1: 4s)",
+      "game": "260907-0f2f66"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 7,
+      "text": "carried a lone chun to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 8,
+      "text": "carried a lone haku to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 1-0",
+      "turn": 13,
+      "text": "cut live 1s at 5-shanten against riichi from p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 13,
+      "text": "cut live 1s while holding a genbutsu for every threat (p2: 2p)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 1-0",
+      "turn": 15,
+      "text": "cut live 8m at 3-shanten against riichi from p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 15,
+      "text": "cut live 8m while holding a genbutsu for every threat (p2: 2p)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 1-0",
+      "turn": 16,
+      "text": "cut live 0m at 4-shanten against riichi from p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 16,
+      "text": "cut live 0m while holding a genbutsu for every threat (p2: 9m 2p)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 18,
+      "text": "carried a lone E to turn 18 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-1",
+      "turn": 13,
+      "text": "cut live 4s while holding a genbutsu for every threat (p3: 7m 2p 2s)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 2-1",
+      "turn": 13,
+      "text": "dealt 4s into p3 for -8300 at 0-shanten",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 4-0",
+      "turn": 8,
+      "text": "dealt 2m into p1 for -2000 at 1-shanten",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "South 2-0",
+      "turn": 5,
+      "text": "riichi on 4s/9s with only 3 live tile(s); LuckyJ declares a <=3 wait 33.7% of the time",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-0",
+      "turn": 6,
+      "text": "cut live 0s at 3-shanten against riichi from p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-0",
+      "turn": 6,
+      "text": "cut live 0s while holding a genbutsu for every threat (p3: 8s)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-0",
+      "turn": 10,
+      "text": "cut live 7s at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-0",
+      "turn": 15,
+      "text": "cut live 7p at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-0",
+      "turn": 17,
+      "text": "cut live 1m at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-0",
+      "turn": 17,
+      "text": "cut live 1m while holding a genbutsu for every threat (p3: 6m)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-0",
+      "turn": 18,
+      "text": "cut live 1m at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-0",
+      "turn": 18,
+      "text": "cut live 1m while holding a genbutsu for every threat (p3: 6m)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-1",
+      "turn": 8,
+      "text": "carried a lone S to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-1",
+      "turn": 12,
+      "text": "cut live 9p at 2-shanten against riichi from p2, p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-1",
+      "turn": 12,
+      "text": "cut live 9p while holding a genbutsu for every threat (p2: 8s; p3: 6p)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 3-2",
+      "turn": 3,
+      "text": "passed a pon on haku at 2-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-2",
+      "turn": 13,
+      "text": "cut live 8s while holding a genbutsu for every threat (p1: 1p 3p 1s haku; p3: 1p 9p)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-2",
+      "turn": 14,
+      "text": "cut live 9s at 2-shanten against riichi from p1, p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-2",
+      "turn": 14,
+      "text": "cut live 9s while holding a genbutsu for every threat (p1: 1p 3p 1s haku; p3: 1p 9p)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-2",
+      "turn": 15,
+      "text": "cut live 9s at 2-shanten against riichi from p1, p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-2",
+      "turn": 15,
+      "text": "cut live 9s while holding a genbutsu for every threat (p1: 1p 3p 1s 3s haku; p3: 1p 9p)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 3-2",
+      "turn": 15,
+      "text": "passed a pon on haku at 2-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260907-0d1131"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 8,
+      "text": "carried a lone chun to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-1",
+      "turn": 16,
+      "text": "cut live 6p while holding a genbutsu for every threat (p2: 4p)",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-2",
+      "turn": 6,
+      "text": "cut live 4p while holding a genbutsu for every threat (p3: 8m)",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-2",
+      "turn": 7,
+      "text": "carried a lone hatsu to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 2-4",
+      "turn": 18,
+      "text": "dealt 8s into p2 for -3200 at 0-shanten",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 3-0",
+      "turn": 12,
+      "text": "passed a pon on E at 0-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 10,
+      "text": "carried a lone hatsu to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 11,
+      "text": "carried a lone S to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-0",
+      "turn": 12,
+      "text": "cut live 4p at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-0",
+      "turn": 13,
+      "text": "cut live 5s at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-0",
+      "turn": 14,
+      "text": "cut live 5s at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-0",
+      "turn": 17,
+      "text": "cut live 5p at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260907-5bb867"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 10,
+      "text": "carried a lone S to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 11,
+      "text": "cut live 1s while holding a genbutsu for every threat (p2: 8p 3s)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 2-2",
+      "turn": 7,
+      "text": "passed a pon on hatsu at 1-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-2",
+      "turn": 10,
+      "text": "cut live 2s at 3-shanten against riichi from p0, p2, p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-2",
+      "turn": 11,
+      "text": "cut live 7s at 3-shanten against riichi from p0, p2, p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-2",
+      "turn": 12,
+      "text": "carried a lone hatsu to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-2",
+      "turn": 13,
+      "text": "cut live 4s at 3-shanten against riichi from p0, p2, p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-2",
+      "turn": 13,
+      "text": "cut live 4s while holding a genbutsu for every threat (p0: 9p S W; p2: W; p3: S)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 3-0",
+      "turn": 10,
+      "text": "dealt 5p into p0 for -3900 at 1-shanten",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 7,
+      "text": "carried a lone hatsu to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 7,
+      "text": "carried a lone S to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 7,
+      "text": "carried a lone chun to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 2-0",
+      "turn": 7,
+      "text": "dealt chun into p3 for -8000 at 0-shanten",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 3-0",
+      "turn": 7,
+      "text": "dealt 4p into p0 for -1300 at 0-shanten",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 9,
+      "text": "carried a lone S to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 10,
+      "text": "carried a lone chun to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260730-e6900a"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 8,
+      "text": "carried a lone S to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-f75da6"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 11,
+      "text": "carried a lone E to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-f75da6"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 10,
+      "text": "carried a lone N to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-f75da6"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 12,
+      "text": "cut live 8s while holding a genbutsu for every threat (p1: chun)",
+      "game": "260708-f75da6"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 14,
+      "text": "cut live 5s while holding a genbutsu for every threat (p1: chun)",
+      "game": "260708-f75da6"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 7,
+      "text": "carried a lone hatsu to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-f75da6"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 8,
+      "text": "carried a lone haku to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-f75da6"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 3-0",
+      "turn": 8,
+      "text": "passed a pon on haku at 1-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260708-f75da6"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 7,
+      "text": "carried a lone chun to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-f75da6"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-1",
+      "turn": 12,
+      "text": "carried a lone haku to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-aa3460"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-2",
+      "turn": 10,
+      "text": "cut live 1m while holding a genbutsu for every threat (p2: 0m)",
+      "game": "260708-aa3460"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-2",
+      "turn": 11,
+      "text": "carried a lone hatsu to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-aa3460"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-2",
+      "turn": 12,
+      "text": "cut live 1p while holding a genbutsu for every threat (p2: 0m)",
+      "game": "260708-aa3460"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 17,
+      "text": "carried a lone S to turn 17 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-aa3460"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 2-1",
+      "turn": 11,
+      "text": "passed a pon on hatsu at 2-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260708-aa3460"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-2",
+      "turn": 12,
+      "text": "carried a lone hatsu to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-aa3460"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-1",
+      "turn": 15,
+      "text": "carried a lone haku to turn 15 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-aa3460"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 9,
+      "text": "carried a lone E to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-cffa4c"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 2-0",
+      "turn": 9,
+      "text": "dealt E into p0 for -1600 at 1-shanten",
+      "game": "260708-cffa4c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 12,
+      "text": "carried a lone chun to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-cffa4c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 13,
+      "text": "carried a lone haku to turn 13 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-cffa4c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 7,
+      "text": "carried a lone haku to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-cffa4c"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-0",
+      "turn": 10,
+      "text": "cut live 9p at 3-shanten against riichi from p0, p1 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260708-cffa4c"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 4-0",
+      "turn": 8,
+      "text": "chi on 4m opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260708-cffa4c"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 4-0",
+      "turn": 9,
+      "text": "dealt 9m into p3 for -1500 at 1-shanten",
+      "game": "260708-cffa4c"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 1-0",
+      "turn": 11,
+      "text": "passed a pon on chun at 0-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260708-46687f"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 12,
+      "text": "cut live 6s while holding a genbutsu for every threat (p1: 1m 7p)",
+      "game": "260708-46687f"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 3-1",
+      "turn": 16,
+      "text": "dealt 4s into p0 for -2300 at 0-shanten",
+      "game": "260708-46687f"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 14,
+      "text": "cut live 7m while holding a genbutsu for every threat (p1: 7s; p2: 9s)",
+      "game": "260708-46687f"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-1",
+      "turn": 8,
+      "text": "dealt haku into p1 for -1600 at 3-shanten",
+      "game": "260708-46687f"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "South 2-0",
+      "turn": 3,
+      "text": "riichi on S with only 3 live tile(s); LuckyJ declares a <=3 wait 33.7% of the time",
+      "game": "260708-46687f"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 8,
+      "text": "carried a lone chun to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-38b2dc"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 9,
+      "text": "cut live 6s while holding a genbutsu for every threat (p1: 3p S)",
+      "game": "260708-38b2dc"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 10,
+      "text": "carried a lone W to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-38b2dc"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-1",
+      "turn": 7,
+      "text": "carried a lone E to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-38b2dc"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 9,
+      "text": "carried a lone hatsu to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260708-38b2dc"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-0",
+      "turn": 10,
+      "text": "cut live 1m while holding a genbutsu for every threat (p0: 4p)",
+      "game": "260708-38b2dc"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-0",
+      "turn": 11,
+      "text": "cut live 2m while holding a genbutsu for every threat (p0: 4p)",
+      "game": "260708-38b2dc"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-0",
+      "turn": 12,
+      "text": "cut live 8p while holding a genbutsu for every threat (p0: 4p)",
+      "game": "260708-38b2dc"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 2-0",
+      "turn": 6,
+      "text": "dealt 7s into p1 for -2900 at 0-shanten",
+      "game": "260627-cbce14"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-1",
+      "turn": 12,
+      "text": "cut live 4p at 3-shanten against riichi from p0, p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260627-cbce14"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-1",
+      "turn": 12,
+      "text": "cut live 4p while holding a genbutsu for every threat (p0: 6m 8m; p3: 3m 8m)",
+      "game": "260627-cbce14"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-1",
+      "turn": 12,
+      "text": "carried a lone chun to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260627-cbce14"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-1",
+      "turn": 17,
+      "text": "cut live 1p while holding a genbutsu for every threat (p1: 3s; p3: 5m 8m 9m)",
+      "game": "260627-cbce14"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-1",
+      "turn": 16,
+      "text": "dealt 5p into p1 for -8300 at 0-shanten",
+      "game": "260627-cbce14"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 2-1",
+      "turn": 8,
+      "text": "chi on 4s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260622-f5717c"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 3-0",
+      "turn": 4,
+      "text": "chi on 0p opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260622-f5717c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 13,
+      "text": "carried a lone chun to turn 13 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f5717c"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-0",
+      "turn": 7,
+      "text": "cut live 1m at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260622-f5717c"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-0",
+      "turn": 9,
+      "text": "cut live 2m at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260622-f5717c"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 9,
+      "text": "cut live 2m while holding a genbutsu for every threat (p1: 2s)",
+      "game": "260622-f5717c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 11,
+      "text": "carried a lone hatsu to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f5717c"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 16,
+      "text": "cut live 2s while holding a genbutsu for every threat (p0: 6m 7m 8m 9m; p1: 8m 0s)",
+      "game": "260622-f5717c"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-0",
+      "turn": 14,
+      "text": "dealt chun into p0 for -18000 at 3-shanten",
+      "game": "260622-f5717c"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 1-1",
+      "turn": 7,
+      "text": "chi on 4s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260622-f5717c"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 2-0",
+      "turn": 8,
+      "text": "dealt 8m into p1 for -2900 at 3-shanten",
+      "game": "260622-f5717c"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 16,
+      "text": "carried a lone S to turn 16 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-dfae19"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 3-0",
+      "turn": 4,
+      "text": "passed a pon on hatsu at 5-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260622-dfae19"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 8,
+      "text": "carried a lone S to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-dfae19"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 8,
+      "text": "carried a lone hatsu to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 9,
+      "text": "cut live 9p while holding a genbutsu for every threat (p2: 6m 7p)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 10,
+      "text": "cut live 5s while holding a genbutsu for every threat (p0: 7m; p2: 6m 7p)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 11,
+      "text": "cut live 1p while holding a genbutsu for every threat (p0: 7m; p2: 6m 7p)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 12,
+      "text": "cut live 4p while holding a genbutsu for every threat (p0: 7m; p2: 6m 7p)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 7,
+      "text": "carried a lone chun to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 8,
+      "text": "carried a lone E to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 10,
+      "text": "carried a lone haku to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 2-1",
+      "turn": 7,
+      "text": "dealt 8s into p2 for -1300 at 1-shanten",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 9,
+      "text": "carried a lone haku to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "West 2-0",
+      "turn": 10,
+      "text": "cut live 6m while holding a genbutsu for every threat (p2: 6p)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "late-honor",
+      "round": "West 2-0",
+      "turn": 11,
+      "text": "carried a lone W to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "West 2-0",
+      "turn": 12,
+      "text": "cut live 1p while holding a genbutsu for every threat (p2: 6m 6p)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "West 2-0",
+      "turn": 15,
+      "text": "cut live 3s while holding a genbutsu for every threat (p0: 2p; p2: 6m)",
+      "game": "260622-721ef9"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 4-0",
+      "turn": 4,
+      "text": "chi on 5m opened the hand at 3-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260622-f15e4b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 8,
+      "text": "carried a lone chun to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f15e4b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 11,
+      "text": "carried a lone haku to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f15e4b"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-0",
+      "turn": 13,
+      "text": "dealt 7m into p2 for -3900 at 1-shanten",
+      "game": "260622-f15e4b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 11,
+      "text": "carried a lone haku to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f15e4b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 14,
+      "text": "carried a lone S to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f15e4b"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 4-1",
+      "turn": 12,
+      "text": "passed a pon on chun at 1-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260622-f15e4b"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 15,
+      "text": "carried a lone haku to turn 15 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 3-0",
+      "turn": 9,
+      "text": "passed a pon on hatsu at 1-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 10,
+      "text": "carried a lone hatsu to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 4-0",
+      "turn": 13,
+      "text": "dealt 3s into p2 for -1000 at 0-shanten",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-1",
+      "turn": 10,
+      "text": "carried a lone N to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-1",
+      "turn": 9,
+      "text": "carried a lone W to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 2-1",
+      "turn": 11,
+      "text": "cut live 1p at 3-shanten against riichi from p0, p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-1",
+      "turn": 11,
+      "text": "cut live 1p while holding a genbutsu for every threat (p0: 3m hatsu; p2: 1m hatsu)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 2-1",
+      "turn": 12,
+      "text": "cut live 1p at 3-shanten against riichi from p0, p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-1",
+      "turn": 12,
+      "text": "cut live 1p while holding a genbutsu for every threat (p0: 3m hatsu; p2: 1m 8m hatsu)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 2-1",
+      "turn": 13,
+      "text": "cut live 1m at 3-shanten against riichi from p0, p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-1",
+      "turn": 13,
+      "text": "cut live 1m while holding a genbutsu for every threat (p0: 3m hatsu; p2: 8m hatsu)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-1",
+      "turn": 14,
+      "text": "carried a lone hatsu to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-1",
+      "turn": 15,
+      "text": "cut live 8p while holding a genbutsu for every threat (p0: 3m; p2: 8m 4s)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-1",
+      "turn": 16,
+      "text": "cut live 8m while holding a genbutsu for every threat (p0: 3m 6m; p2: 4s)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-1",
+      "turn": 10,
+      "text": "carried a lone E to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 13,
+      "text": "cut live 4m while holding a genbutsu for every threat (p2: 3p 4p)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 16,
+      "text": "cut live 3m while holding a genbutsu for every threat (p2: 3p 4p 4s)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 17,
+      "text": "cut live 4m while holding a genbutsu for every threat (p2: 3p 4p 4s)",
+      "game": "260622-f5e3fd"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 2-1",
+      "turn": 3,
+      "text": "chi on 9s opened the hand at 3-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-1",
+      "turn": 8,
+      "text": "cut live 3p at 4-shanten against riichi from p1, p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-1",
+      "turn": 8,
+      "text": "cut live 3p while holding a genbutsu for every threat (p1: E hatsu; p2: 9s)",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 4-0",
+      "turn": 11,
+      "text": "dealt 4p into p2 for -5200 at 0-shanten",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 9,
+      "text": "carried a lone haku to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-0",
+      "turn": 14,
+      "text": "cut live 3s at 2-shanten against riichi from p1, p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-0",
+      "turn": 14,
+      "text": "cut live 3s while holding a genbutsu for every threat (p1: 2m 8m 2p; p3: 6p)",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-0",
+      "turn": 15,
+      "text": "cut live 6p at 2-shanten against riichi from p1, p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-0",
+      "turn": 16,
+      "text": "cut live 5s at 2-shanten against riichi from p1, p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-0",
+      "turn": 16,
+      "text": "cut live 5s while holding a genbutsu for every threat (p1: 2m 8m 2p E; p3: E)",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 18,
+      "text": "carried a lone E to turn 18 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-1",
+      "turn": 7,
+      "text": "carried a lone hatsu to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260622-6bfd31"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 1-0",
+      "turn": 8,
+      "text": "dealt 3p into p2 for -2600 at 1-shanten",
+      "game": "260620-06c9f8"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 2-0",
+      "turn": 7,
+      "text": "chi on 6p opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260620-06c9f8"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 9,
+      "text": "carried a lone S to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260620-06c9f8"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 10,
+      "text": "carried a lone haku to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260620-06c9f8"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 14,
+      "text": "carried a lone E to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260620-06c9f8"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "East 4-1",
+      "turn": 8,
+      "text": "riichi on 3m with only 3 live tile(s); LuckyJ declares a <=3 wait 33.7% of the time",
+      "game": "260620-06c9f8"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 4-1",
+      "turn": 11,
+      "text": "dealt 6s into p2 for -2900 at 0-shanten",
+      "game": "260620-06c9f8"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 10,
+      "text": "carried a lone N to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260620-06c9f8"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 3-1",
+      "turn": 2,
+      "text": "chi on 2m opened the hand at 3-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260620-06c9f8"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-0",
+      "turn": 12,
+      "text": "cut live 5p while holding a genbutsu for every threat (p1: 1p)",
+      "game": "260620-06c9f8"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 1-1",
+      "turn": 7,
+      "text": "passed a pon on haku at 1-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260620-c940fe"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-1",
+      "turn": 12,
+      "text": "carried a lone hatsu to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260620-c940fe"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-0",
+      "turn": 13,
+      "text": "cut live 6p at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260620-c940fe"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 8,
+      "text": "carried a lone haku to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260620-c940fe"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 3-0",
+      "turn": 12,
+      "text": "cut live 8p at 3-shanten against riichi from p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260620-c940fe"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-0",
+      "turn": 12,
+      "text": "cut live 8p while holding a genbutsu for every threat (p2: W hatsu)",
+      "game": "260620-c940fe"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 3-1",
+      "turn": 9,
+      "text": "dealt 9m into p2 for -6100 at 1-shanten",
+      "game": "260620-c940fe"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-3",
+      "turn": 10,
+      "text": "cut live 2p while holding a genbutsu for every threat (p2: 8p)",
+      "game": "260620-c940fe"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-3",
+      "turn": 11,
+      "text": "cut live 4m while holding a genbutsu for every threat (p2: 8p)",
+      "game": "260620-c940fe"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 13,
+      "text": "carried a lone E to turn 13 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260620-8ba1a3"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-1",
+      "turn": 9,
+      "text": "cut live 1s while holding a genbutsu for every threat (p0: 3p)",
+      "game": "260620-8ba1a3"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-1",
+      "turn": 10,
+      "text": "cut live 1s at 2-shanten against riichi from p0 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260620-8ba1a3"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-1",
+      "turn": 10,
+      "text": "cut live 1s while holding a genbutsu for every threat (p0: 3p 3s)",
+      "game": "260620-8ba1a3"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 16,
+      "text": "carried a lone E to turn 16 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260620-8ba1a3"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 4-1",
+      "turn": 18,
+      "text": "dealt 5m into p0 for -2300 at 0-shanten",
+      "game": "260620-8ba1a3"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 2-0",
+      "turn": 14,
+      "text": "dealt 4m into p2 for -7700 at 0-shanten",
+      "game": "260620-c57a20"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 11,
+      "text": "carried a lone haku to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260620-c57a20"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 3-0",
+      "turn": 12,
+      "text": "dealt 6s into p2 for -5800 at 0-shanten",
+      "game": "260620-c57a20"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 3-1",
+      "turn": 5,
+      "text": "cut live S at 2-shanten against riichi from p0 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260620-c57a20"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-1",
+      "turn": 5,
+      "text": "cut live S while holding a genbutsu for every threat (p0: 7p)",
+      "game": "260620-c57a20"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-1",
+      "turn": 10,
+      "text": "cut live 8m while holding a genbutsu for every threat (p0: 7p)",
+      "game": "260620-c57a20"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-1",
+      "turn": 12,
+      "text": "cut live 6p while holding a genbutsu for every threat (p0: 7p)",
+      "game": "260620-c57a20"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 3-1",
+      "turn": 14,
+      "text": "dealt 5s into p0 for -8300 at 0-shanten",
+      "game": "260620-c57a20"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-0",
+      "turn": 12,
+      "text": "dealt 7p into p0 for -5800 at 1-shanten",
+      "game": "260620-c57a20"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 12,
+      "text": "carried a lone chun to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 13,
+      "text": "cut live 5m while holding a genbutsu for every threat (p2: 6p)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 15,
+      "text": "cut live 6m while holding a genbutsu for every threat (p2: 6p 4s)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 17,
+      "text": "cut live 2s while holding a genbutsu for every threat (p2: 3p 6p 4s)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 7,
+      "text": "carried a lone S to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 10,
+      "text": "carried a lone hatsu to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-0",
+      "turn": 11,
+      "text": "cut live 3s while holding a genbutsu for every threat (p2: 8p 4s)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-0",
+      "turn": 12,
+      "text": "cut live 2s while holding a genbutsu for every threat (p2: 8p 4s)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-0",
+      "turn": 13,
+      "text": "cut live 6p while holding a genbutsu for every threat (p2: 8p 4s 5s 0s)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 10,
+      "text": "carried a lone hatsu to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 2-0",
+      "turn": 14,
+      "text": "passed a pon on chun at 1-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-0",
+      "turn": 14,
+      "text": "cut live 9p while holding a genbutsu for every threat (p1: chun; p2: 3m 7m 2s 4s 6s)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-0",
+      "turn": 16,
+      "text": "carried a lone chun to turn 16 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-1",
+      "turn": 11,
+      "text": "carried a lone chun to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-1",
+      "turn": 12,
+      "text": "carried a lone hatsu to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-2f0cfc"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 9,
+      "text": "carried a lone haku to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 8,
+      "text": "carried a lone haku to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 12,
+      "text": "cut live 5p while holding a genbutsu for every threat (p0: 7m 7s)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 15,
+      "text": "carried a lone E to turn 15 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 2-0",
+      "turn": 10,
+      "text": "cut live 8m at 3-shanten against riichi from p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 12,
+      "text": "carried a lone N to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-0",
+      "turn": 14,
+      "text": "cut live 4s at 2-shanten against riichi from p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-0",
+      "turn": 15,
+      "text": "cut live 0s at 3-shanten against riichi from p0, p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-0",
+      "turn": 16,
+      "text": "cut live 4s at 3-shanten against riichi from p0, p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-0",
+      "turn": 16,
+      "text": "cut live 4s while holding a genbutsu for every threat (p0: 8m 3p chun; p3: 3s)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 3-0",
+      "turn": 17,
+      "text": "cut live 4s at 4-shanten against riichi from p0, p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-0",
+      "turn": 17,
+      "text": "cut live 4s while holding a genbutsu for every threat (p0: 7m 8m 3p chun; p3: 3s)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-1",
+      "turn": 11,
+      "text": "carried a lone W to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-1",
+      "turn": 17,
+      "text": "carried a lone hatsu to turn 17 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-49c15f"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 12,
+      "text": "carried a lone S to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-17caf7"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-1",
+      "turn": 17,
+      "text": "carried a lone haku to turn 17 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-17caf7"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 7,
+      "text": "carried a lone hatsu to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 2-0",
+      "turn": 15,
+      "text": "dealt 3m into p2 for -1300 at 1-shanten",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 7,
+      "text": "carried a lone S to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-1",
+      "turn": 13,
+      "text": "carried a lone hatsu to turn 13 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 4-0",
+      "turn": 8,
+      "text": "chi on 4s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-0",
+      "turn": 9,
+      "text": "cut live 8p at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 9,
+      "text": "cut live 8p while holding a genbutsu for every threat (p2: 9p)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 12,
+      "text": "cut live 8p while holding a genbutsu for every threat (p2: 0s)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-0",
+      "turn": 14,
+      "text": "cut live 4p at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 14,
+      "text": "cut live 4p while holding a genbutsu for every threat (p2: 0s)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 1-1",
+      "turn": 8,
+      "text": "chi on 5p opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-1",
+      "turn": 13,
+      "text": "carried a lone S to turn 13 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-1",
+      "turn": 14,
+      "text": "cut live 6p at 2-shanten against riichi from p1, p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-1",
+      "turn": 14,
+      "text": "cut live 6p while holding a genbutsu for every threat (p1: 2m; p2: 9m 5p)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-1",
+      "turn": 15,
+      "text": "cut live 4p at 3-shanten against riichi from p1, p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-1",
+      "turn": 15,
+      "text": "cut live 4p while holding a genbutsu for every threat (p1: 2m; p2: 9m 5p)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-1",
+      "turn": 17,
+      "text": "cut live 9s at 3-shanten against riichi from p1, p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-1",
+      "turn": 17,
+      "text": "cut live 9s while holding a genbutsu for every threat (p1: 2m N; p2: 9m)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-2",
+      "turn": 7,
+      "text": "carried a lone haku to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-2",
+      "turn": 8,
+      "text": "carried a lone chun to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-2",
+      "turn": 9,
+      "text": "carried a lone hatsu to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 9,
+      "text": "carried a lone haku to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-0ad432"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 3-0",
+      "turn": 12,
+      "text": "dealt 9s into p0 for -3900 at 0-shanten",
+      "game": "260619-cb2586"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 14,
+      "text": "carried a lone E to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-cb2586"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-0",
+      "turn": 15,
+      "text": "cut live 9p at 2-shanten against riichi from p0, p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260619-cb2586"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 2-0",
+      "turn": 4,
+      "text": "chi on 4s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260619-cb2586"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "East 1-0",
+      "turn": 11,
+      "text": "riichi on 4m with only 3 live tile(s); LuckyJ declares a <=3 wait 33.7% of the time",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-1",
+      "turn": 7,
+      "text": "carried a lone chun to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-2",
+      "turn": 13,
+      "text": "cut live 4p while holding a genbutsu for every threat (p3: 9m)",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-2",
+      "turn": 14,
+      "text": "carried a lone chun to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-2",
+      "turn": 15,
+      "text": "cut live 7m while holding a genbutsu for every threat (p3: 9m)",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 4-2",
+      "turn": 15,
+      "text": "dealt 7m into p0 for -5800 at 0-shanten",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 4-0",
+      "turn": 8,
+      "text": "passed a pon on N at 3-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 9,
+      "text": "carried a lone N to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 4-0",
+      "turn": 10,
+      "text": "cut live 9p at 3-shanten against riichi from p0, p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 4-0",
+      "turn": 11,
+      "text": "cut live 9p at 4-shanten against riichi from p0, p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 4-0",
+      "turn": 12,
+      "text": "cut live 9p at 3-shanten against riichi from p0, p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-0",
+      "turn": 12,
+      "text": "cut live 9p while holding a genbutsu for every threat (p0: 8s; p3: 2m)",
+      "game": "260619-d29c21"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-0",
+      "turn": 13,
+      "text": "cut live 6m while holding a genbutsu for every threat (p1: 5p)",
+      "game": "260619-0cce2e"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 12,
+      "text": "carried a lone hatsu to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-0cce2e"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 4-0",
+      "turn": 4,
+      "text": "chi on 2m opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260619-0cce2e"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-0",
+      "turn": 11,
+      "text": "cut live 1p while holding a genbutsu for every threat (p1: 7p 7s)",
+      "game": "260619-0cce2e"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 12,
+      "text": "carried a lone hatsu to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260619-0cce2e"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "East 2-2",
+      "turn": 12,
+      "text": "riichi on 3p/9p with only 3 live tile(s); LuckyJ declares a <=3 wait 33.7% of the time",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-1",
+      "turn": 9,
+      "text": "dealt 4s into p1 for -2900 at 1-shanten",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 4-1",
+      "turn": 9,
+      "text": "cut live 4m at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 9,
+      "text": "cut live 4m while holding a genbutsu for every threat (p2: 6p)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 4-1",
+      "turn": 10,
+      "text": "cut live 9s at 2-shanten against riichi from p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 10,
+      "text": "cut live 9s while holding a genbutsu for every threat (p2: 6p)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 11,
+      "text": "cut live 7p while holding a genbutsu for every threat (p2: 5p 6p)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 12,
+      "text": "cut live 5m while holding a genbutsu for every threat (p2: 5p 6p)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 13,
+      "text": "cut live 2m while holding a genbutsu for every threat (p2: 5p 6p)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 15,
+      "text": "cut live 9s while holding a genbutsu for every threat (p2: 5p 6p)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 16,
+      "text": "cut live 2m while holding a genbutsu for every threat (p2: 5p 6p)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 17,
+      "text": "cut live 4s while holding a genbutsu for every threat (p2: 5p 6p)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-1",
+      "turn": 18,
+      "text": "carried a lone chun to turn 18 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-1",
+      "turn": 19,
+      "text": "cut live 7s while holding a genbutsu for every threat (p2: 5p 6p)",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 4-1",
+      "turn": 19,
+      "text": "dealt 7s into p2 for -8300 at 0-shanten",
+      "game": "260617-c66bae"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 9,
+      "text": "cut live 1p while holding a genbutsu for every threat (p1: 2p)",
+      "game": "260617-b21e53"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 1-0",
+      "turn": 9,
+      "text": "dealt 1p into p1 for -1300 at 1-shanten",
+      "game": "260617-b21e53"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-0",
+      "turn": 10,
+      "text": "cut live 2s while holding a genbutsu for every threat (p0: 2p)",
+      "game": "260617-b21e53"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 4-0",
+      "turn": 12,
+      "text": "cut live 4p while holding a genbutsu for every threat (p0: 2p 6p)",
+      "game": "260617-b21e53"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 4-0",
+      "turn": 12,
+      "text": "dealt 4p into p0 for -2600 at 0-shanten",
+      "game": "260617-b21e53"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "West 1-0",
+      "turn": 3,
+      "text": "chi on 8m opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260617-b21e53"
+    },
+    {
+      "kind": "late-honor",
+      "round": "West 2-0",
+      "turn": 12,
+      "text": "carried a lone haku to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260617-b21e53"
+    },
+    {
+      "kind": "far-push",
+      "round": "West 2-0",
+      "turn": 16,
+      "text": "cut live 7p at 3-shanten against riichi from p1 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260617-b21e53"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "West 2-0",
+      "turn": 16,
+      "text": "cut live 7p while holding a genbutsu for every threat (p1: 9p 8s)",
+      "game": "260617-b21e53"
+    },
+    {
+      "kind": "late-honor",
+      "round": "West 2-0",
+      "turn": 17,
+      "text": "carried a lone hatsu to turn 17 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260617-b21e53"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "West 2-1",
+      "turn": 9,
+      "text": "cut live 5m while holding a genbutsu for every threat (p3: 0p)",
+      "game": "260617-b21e53"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 12,
+      "text": "carried a lone chun to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260617-f2e8ed"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 1-0",
+      "turn": 14,
+      "text": "cut live 9p at 2-shanten against riichi from p1, p2 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260617-f2e8ed"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "East 3-0",
+      "turn": 6,
+      "text": "riichi on 3s with only 3 live tile(s); LuckyJ declares a <=3 wait 33.7% of the time",
+      "game": "260617-f2e8ed"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 11,
+      "text": "carried a lone haku to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260617-f2e8ed"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 2-0",
+      "turn": 2,
+      "text": "chi on 7s opened the hand at 3-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260617-f2e8ed"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-1",
+      "turn": 8,
+      "text": "carried a lone W to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260617-f2e8ed"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 4-0",
+      "turn": 14,
+      "text": "chi on 4s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260617-f2e8ed"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 14,
+      "text": "carried a lone chun to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 7,
+      "text": "carried a lone N to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 8,
+      "text": "carried a lone haku to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 10,
+      "text": "carried a lone hatsu to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 13,
+      "text": "carried a lone E to turn 13 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 15,
+      "text": "carried a lone chun to turn 15 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-0",
+      "turn": 16,
+      "text": "cut live 1s at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 4-0",
+      "turn": 17,
+      "text": "cut live 1s at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "South 1-1",
+      "turn": 2,
+      "text": "passed a pon on W at 2-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-1",
+      "turn": 10,
+      "text": "carried a lone W to turn 10 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-1",
+      "turn": 16,
+      "text": "carried a lone hatsu to turn 16 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-2",
+      "turn": 9,
+      "text": "dealt 6m into p0 for -3500 at 2-shanten",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-3",
+      "turn": 8,
+      "text": "carried a lone hatsu to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-3",
+      "turn": 11,
+      "text": "carried a lone S to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f80413"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 11,
+      "text": "carried a lone chun to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f7e048"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 3-0",
+      "turn": 12,
+      "text": "cut live 2p at 4-shanten against riichi from p3 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260616-f7e048"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 3-0",
+      "turn": 12,
+      "text": "cut live 2p while holding a genbutsu for every threat (p3: 2m 1p 6p 9s)",
+      "game": "260616-f7e048"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 7,
+      "text": "carried a lone S to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f7e048"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-0",
+      "turn": 11,
+      "text": "cut live 9m at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260616-f7e048"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-0",
+      "turn": 11,
+      "text": "cut live 9m while holding a genbutsu for every threat (p0: chun)",
+      "game": "260616-f7e048"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-0",
+      "turn": 12,
+      "text": "carried a lone chun to turn 12 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f7e048"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-1",
+      "turn": 5,
+      "text": "cut live 1s at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260616-f7e048"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 1-1",
+      "turn": 6,
+      "text": "cut live 1s at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260616-f7e048"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 1-1",
+      "turn": 6,
+      "text": "cut live 1s while holding a genbutsu for every threat (p0: 1p)",
+      "game": "260616-f7e048"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-2",
+      "turn": 11,
+      "text": "carried a lone S to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260616-f7e048"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 1-1",
+      "turn": 7,
+      "text": "chi on 2m opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 2-0",
+      "turn": 12,
+      "text": "chi on 7s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 2-0",
+      "turn": 15,
+      "text": "dealt 5p into p1 for -2900 at 1-shanten",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-1",
+      "turn": 9,
+      "text": "cut live 1s at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-1",
+      "turn": 9,
+      "text": "cut live 1s while holding a genbutsu for every threat (p1: 2p 3p)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-1",
+      "turn": 10,
+      "text": "cut live 1s at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-1",
+      "turn": 10,
+      "text": "cut live 1s while holding a genbutsu for every threat (p1: 2p 3p)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 2-1",
+      "turn": 12,
+      "text": "cut live 0s at 2-shanten against riichi from p1 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 2-1",
+      "turn": 12,
+      "text": "cut live 0s while holding a genbutsu for every threat (p1: 2p 3p)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 14,
+      "text": "cut live 3m while holding a genbutsu for every threat (p0: 3p 8p)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 15,
+      "text": "cut live 3m while holding a genbutsu for every threat (p0: 3p 8p)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 4-0",
+      "turn": 16,
+      "text": "cut live 3m while holding a genbutsu for every threat (p0: 3p 8p)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 1-0",
+      "turn": 10,
+      "text": "chi on 5m opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 2-1",
+      "turn": 12,
+      "text": "dealt 3m into p2 for -3500 at 1-shanten",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 4-0",
+      "turn": 2,
+      "text": "cut live S at 4-shanten against riichi from p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "far-push",
+      "round": "South 4-0",
+      "turn": 3,
+      "text": "cut live hatsu at 3-shanten against riichi from p2 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260126-32fee1"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 7,
+      "text": "carried a lone chun to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 9,
+      "text": "carried a lone S to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 1-1",
+      "turn": 10,
+      "text": "cut live 2p at 3-shanten against riichi from p0 (LuckyJ takes a dangerous discard 14.1% of the time this far out)",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-1",
+      "turn": 10,
+      "text": "cut live 2p while holding a genbutsu for every threat (p0: 9p)",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 3-0",
+      "turn": 7,
+      "text": "carried a lone haku to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "thin-riichi",
+      "round": "South 1-0",
+      "turn": 8,
+      "text": "riichi on 7s with only 3 live tile(s); LuckyJ declares a <=3 wait 33.7% of the time",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "South 1-1",
+      "turn": 3,
+      "text": "chi on 3p opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 1-1",
+      "turn": 8,
+      "text": "carried a lone S to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-1",
+      "turn": 10,
+      "text": "dealt 7p into p0 for -4200 at 0-shanten",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-1",
+      "turn": 8,
+      "text": "carried a lone E to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 3-0",
+      "turn": 9,
+      "text": "cut live 5m while holding a genbutsu for every threat (p2: 1p 7p 8p)",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 7,
+      "text": "carried a lone S to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 4-0",
+      "turn": 11,
+      "text": "dealt 2p into p3 for -2900 at 2-shanten",
+      "game": "260125-bc1902"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 1-0",
+      "turn": 8,
+      "text": "chi on 4s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260125-c5deb3"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 1-2",
+      "turn": 7,
+      "text": "chi on 2s opened the hand at 2-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260125-c5deb3"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 1-3",
+      "turn": 1,
+      "text": "passed a pon on hatsu at 4-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260125-c5deb3"
+    },
+    {
+      "kind": "loose-chi",
+      "round": "East 1-3",
+      "turn": 14,
+      "text": "chi on 2m opened the hand at 3-shanten (LuckyJ's first chi from closed is 6.7%, and only 2.4% when the call does not reach 1-shanten)",
+      "game": "260125-c5deb3"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-3",
+      "turn": 16,
+      "text": "carried a lone hatsu to turn 16 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-c5deb3"
+    },
+    {
+      "kind": "far-push",
+      "round": "East 1-3",
+      "turn": 17,
+      "text": "cut live 5m at 2-shanten against riichi from p1, p3 (LuckyJ takes a dangerous discard 19.6% of the time this far out)",
+      "game": "260125-c5deb3"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 8,
+      "text": "carried a lone chun to turn 8 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-c5deb3"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 9,
+      "text": "carried a lone haku to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-c5deb3"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 2-0",
+      "turn": 16,
+      "text": "carried a lone hatsu to turn 16 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-c5deb3"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 3-1",
+      "turn": 13,
+      "text": "passed a pon on E at 0-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260125-c5deb3"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 4-0",
+      "turn": 6,
+      "text": "passed a pon on E at 2-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260125-c5deb3"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 1-0",
+      "turn": 7,
+      "text": "carried a lone haku to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 7,
+      "text": "cut live haku while holding a genbutsu for every threat (p2: 2p)",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "East 1-0",
+      "turn": 8,
+      "text": "cut live 4m while holding a genbutsu for every threat (p2: 2p)",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "passed-yakuhai-pon",
+      "round": "East 4-0",
+      "turn": 2,
+      "text": "passed a pon on chun at 4-shanten (LuckyJ pons the first copy 75.9% of the time)",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "late-honor",
+      "round": "East 4-0",
+      "turn": 18,
+      "text": "carried a lone chun to turn 18 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "deal-in",
+      "round": "East 4-2",
+      "turn": 10,
+      "text": "dealt 6m into p2 for -1600 at 0-shanten",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "deal-in",
+      "round": "South 1-0",
+      "turn": 10,
+      "text": "dealt 7p into p2 for -3900 at 1-shanten",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-0",
+      "turn": 9,
+      "text": "cut live 9s while holding a genbutsu for every threat (p2: 5s)",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "unnamed-safety",
+      "round": "South 2-0",
+      "turn": 10,
+      "text": "cut live 1s while holding a genbutsu for every threat (p2: 5s)",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 2-1",
+      "turn": 9,
+      "text": "carried a lone E to turn 9 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 7,
+      "text": "carried a lone S to turn 7 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 3-0",
+      "turn": 11,
+      "text": "carried a lone haku to turn 11 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-c59bed"
+    },
+    {
+      "kind": "late-honor",
+      "round": "South 4-0",
+      "turn": 14,
+      "text": "carried a lone hatsu to turn 14 and spent it with a threat already on the table (LuckyJ's median for a lone value honor is turn 4, turn 6 once someone has opened)",
+      "game": "260125-c59bed"
+    }
+  ]
+}

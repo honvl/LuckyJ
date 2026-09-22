@@ -123,11 +123,14 @@ def parse_meld(token: str) -> dict:
     pre, letter, post = m.group(1), m.group(2), m.group(3)
     pre_tiles = [int(pre[i:i + 2]) for i in range(0, len(pre), 2)]
     post_tiles = [int(post[i:i + 2]) for i in range(0, len(post), 2)]
+    # Tiles before the letter say who fed the call: none is the left player,
+    # one is across, and the rest (two for a pon, three for an open kan) is the
+    # right player.
     return {
         "kind": letter,
         "called": post_tiles[0],
         "tiles": pre_tiles + post_tiles,
-        "from_offset": 3 - len(pre_tiles),
+        "from_offset": 3 - min(len(pre_tiles), 2),
     }
 
 
@@ -173,7 +176,35 @@ def replay(log: list) -> dict:
     Each event records the acting seat, the tile released, the hand and melds
     left afterwards, and every player's river and threat state at that moment,
     which is what the review script needs to price the decision.
+
+    When a discard matches both the next seat's pending chi token and another
+    seat's pending pon or kan token, one of the two belongs to a later copy of
+    the same tile. The pon is tried first; if the hand then fails to reconcile,
+    the other reading is used.
     """
+    ambiguous: list[int] = []
+    game = _replay(log, [], ambiguous)
+    if _consistent(game) or not ambiguous:
+        return game
+    n = len(ambiguous)
+    for mask in range(1, 2 ** n):
+        choices = [bool(mask >> k & 1) for k in range(n)]
+        seen: list[int] = []
+        try:
+            candidate = _replay(log, choices, seen)
+        except ValueError:
+            continue
+        if _consistent(candidate):
+            return candidate
+    return game
+
+
+def _consistent(game: dict) -> bool:
+    return all(p["ci"] == len(p["discards"]) and p["di"] >= len(p["draws"]) - 1 and len(p["hand"]) <= 13
+               for p in game["players"])
+
+
+def _replay(log: list, prefer_chi: list[bool], ambiguous: list[int]) -> dict:
     kyoku, honba, sticks = log[0]
     dealer = kyoku % 4
     players = []
@@ -214,7 +245,11 @@ def replay(log: list) -> dict:
                 p["melds"].append({**meld, "src": src})
                 p["meld_tiles"].extend(meld["tiles"][:3])
                 called = {"kind": meld["kind"], "tile": meld["called"], "src": src}
-                if meld["kind"] == "m":  # daiminkan draws a replacement tile
+                if meld["kind"] == "m":
+                    # daiminkan: the discard stream holds a 0 placeholder for the
+                    # turn with no discard, then a replacement tile is drawn
+                    if p["ci"] < len(p["discards"]) and p["discards"][p["ci"]] == 0:
+                        p["ci"] += 1
                     continue
                 break
             drawn = entry
@@ -223,7 +258,12 @@ def replay(log: list) -> dict:
 
         turn[cur] += 1
         riichi = False
+        ended = False
         while True:
+            if p["ci"] >= len(p["discards"]):
+                # a kan was the last action: rinshan win or abortive end
+                ended = True
+                break
             entry = p["discards"][p["ci"]]
             p["ci"] += 1
             if isinstance(entry, str) and entry.startswith("r"):
@@ -246,9 +286,15 @@ def replay(log: list) -> dict:
                         p["hand"].remove(t)
                 p["melds"].append({**meld, "src": cur})
                 p["meld_tiles"].extend(meld["tiles"][:3])
+            if p["ci"] >= len(p["discards"]):
+                # the replacement draw ends the hand; keep the hand at 13 like any tsumo win
+                ended = True
+                break
             drawn = p["draws"][p["di"]]
             p["di"] += 1
             p["hand"].append(drawn)
+        if ended:
+            break
 
         tile = drawn if entry == TSUMOGIRI else entry
         p["hand"].remove(tile)
@@ -275,14 +321,24 @@ def replay(log: list) -> dict:
         if riichi:
             p["riichi_event"] = len(events) - 1
 
-        nxt = None
+        # who takes the discard: at most one seat can really call it now; a
+        # second matching token belongs to a later copy of the same tile
+        chi_caller = pon_caller = None
         for offset in (1, 2, 3):
             q = players[(cur + offset) % 4]
             if q["di"] < len(q["draws"]) and isinstance(q["draws"][q["di"]], str):
                 meld = parse_meld(q["draws"][q["di"]])
                 if meld["called"] == tile and (q["seat"] + meld["from_offset"]) % 4 == cur:
-                    nxt = q["seat"]
-                    break
+                    if meld["kind"] == "c":
+                        chi_caller = q["seat"]
+                    else:
+                        pon_caller = q["seat"]
+        if chi_caller is not None and pon_caller is not None:
+            k = len(ambiguous)
+            ambiguous.append(len(events))
+            nxt = chi_caller if (k < len(prefer_chi) and prefer_chi[k]) else pon_caller
+        else:
+            nxt = pon_caller if pon_caller is not None else chi_caller
         cur = nxt if nxt is not None else (cur + 1) % 4
 
     return {
@@ -324,6 +380,28 @@ def result_deltas(result: list) -> list[int]:
         for i in range(4):
             total[i] += result[1][i]
     return total
+
+
+def riichi_sticks_paid(log: list) -> list[int]:
+    """Riichi sticks each seat actually paid in this hand.
+
+    The result deltas carry the sticks a winner collects but not the 1000 a
+    declarer puts down, so reconciling scores needs this. A riichi whose
+    declaration tile is ronned is not established and costs nothing.
+    """
+    paid = [0, 0, 0, 0]
+    ronned_declarers = set()
+    for _, detail in result_blocks(log[-1]):
+        winner, source = detail[0], detail[1]
+        if winner != source:
+            discards = log[6 + 3 * source]
+            if discards and isinstance(discards[-1], str) and discards[-1].startswith("r"):
+                ronned_declarers.add(source)
+    for seat in range(4):
+        declared = any(isinstance(d, str) and d.startswith("r") for d in log[6 + 3 * seat])
+        if declared and seat not in ronned_declarers:
+            paid[seat] = 1
+    return paid
 
 
 def seat_wind(seat: int, kyoku: int) -> int:

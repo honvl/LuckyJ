@@ -1,0 +1,940 @@
+{
+ "games": 1255,
+ "since": null,
+ "hero": {
+  "hands": 13054,
+  "tenpai_conversion": {
+   "riichi": {
+    "n": 2489,
+    "share_of_tenpai_pct": 39.0,
+    "win_rate_pct": 52.1,
+    "deal_in_rate_pct": 13.2,
+    "avg_live_waits_at_tenpai": 5.35,
+    "narrow_wait_pct": 20.5,
+    "avg_tenpai_turn": 8.74,
+    "avg_win_value": 9190.0
+   },
+   "dama": {
+    "n": 726,
+    "share_of_tenpai_pct": 11.4,
+    "win_rate_pct": 38.7,
+    "deal_in_rate_pct": 13.2,
+    "avg_live_waits_at_tenpai": 3.82,
+    "narrow_wait_pct": 50.3,
+    "avg_tenpai_turn": 10.66,
+    "avg_win_value": 7563.0
+   },
+   "open": {
+    "n": 3163,
+    "share_of_tenpai_pct": 49.6,
+    "win_rate_pct": 44.8,
+    "deal_in_rate_pct": 11.4,
+    "avg_live_waits_at_tenpai": 4.83,
+    "narrow_wait_pct": 28.1,
+    "avg_tenpai_turn": 10.06,
+    "avg_win_value": 5452.0
+   }
+  },
+  "eff_closed_events": 95844,
+  "eff_closed_by_turn": {
+   "1-3": {
+    "n": 36318,
+    "lost_per_100": 207.8,
+    "aware_lost_per_100": 59.8
+   },
+   "4-6": {
+    "n": 29253,
+    "lost_per_100": 176.0,
+    "aware_lost_per_100": 70.0
+   },
+   "7-9": {
+    "n": 18311,
+    "lost_per_100": 137.4,
+    "aware_lost_per_100": 66.5
+   },
+   "10+": {
+    "n": 11962,
+    "lost_per_100": 115.3,
+    "aware_lost_per_100": 68.9
+   }
+  },
+  "eff_closed_kept": {
+   "kept value honor, cut simple": {
+    "n": 6114,
+    "share_pct": 20.3
+   },
+   "kept value honor, cut terminal": {
+    "n": 5547,
+    "share_pct": 18.4
+   },
+   "kept simple, cut terminal": {
+    "n": 2589,
+    "share_pct": 8.6
+   },
+   "kept terminal, cut simple": {
+    "n": 2029,
+    "share_pct": 6.7
+   },
+   "kept guest wind, cut simple": {
+    "n": 1939,
+    "share_pct": 6.4
+   },
+   "kept guest wind, cut terminal": {
+    "n": 1609,
+    "share_pct": 5.3
+   },
+   "kept value honor, cut guest wind": {
+    "n": 1022,
+    "share_pct": 3.4
+   },
+   "kept simple, cut value honor": {
+    "n": 610,
+    "share_pct": 2.0
+   },
+   "kept guest wind, cut value honor": {
+    "n": 518,
+    "share_pct": 1.7
+   },
+   "kept simple, cut guest wind": {
+    "n": 437,
+    "share_pct": 1.4
+   },
+   "kept terminal, cut value honor": {
+    "n": 335,
+    "share_pct": 1.1
+   },
+   "kept terminal, cut guest wind": {
+    "n": 238,
+    "share_pct": 0.8
+   }
+  },
+  "eff_aware": {
+   "ukeire_lost_per_100": 65.3,
+   "narrower_pct": 13.5,
+   "shanten_loss_pct": 2.5,
+   "explained_share_pct": 47.6
+  },
+  "tanyao": {
+   "wins_n": 653,
+   "share_of_wins_pct": 21.8,
+   "open_pct": 55.0,
+   "avg_dora_han": 1.47,
+   "avg_han": 3.46,
+   "avg_value": 7427.0,
+   "avg_win_turn": 12.85,
+   "first_call_chi_pct": 57.2,
+   "avg_haipai_yaochuu_of_tanyao_wins": 3.49,
+   "avg_haipai_dora_of_tanyao_wins": 0.85,
+   "cleaned_pct": 22.4,
+   "clean_avg_turn": 7.47,
+   "honors_gone_avg_turn": 5.07,
+   "terminals_gone_avg_turn": 5.14,
+   "cleaned_win_rate_pct": 25.9,
+   "cleaned_tanyao_win_pct": 22.3,
+   "pair_cell_n": 410,
+   "pair_cell_tanyao_win_pct": 0.5,
+   "pair_cell_yakuhai_win_pct": 31.2,
+   "pair_cell_win_rate_pct": 37.8,
+   "by_deal": {
+    "0-2": {
+     "n": 847,
+     "share_pct": 6.5,
+     "tanyao_win_pct": 17.7,
+     "win_rate_pct": 31.8,
+     "clean_pct": 65.4,
+     "clean_by_6_pct": 56.0,
+     "avg_win_value": 8231.0
+    },
+    "3-4": {
+     "n": 4292,
+     "share_pct": 32.9,
+     "tanyao_win_pct": 8.2,
+     "win_rate_pct": 26.0,
+     "clean_pct": 36.1,
+     "clean_by_6_pct": 18.5,
+     "avg_win_value": 7374.0
+    },
+    "5-6": {
+     "n": 5536,
+     "share_pct": 42.4,
+     "tanyao_win_pct": 2.5,
+     "win_rate_pct": 20.9,
+     "clean_pct": 13.5,
+     "clean_by_6_pct": 1.8,
+     "avg_win_value": 7063.0
+    },
+    "7+": {
+     "n": 2379,
+     "share_pct": 18.2,
+     "tanyao_win_pct": 0.4,
+     "win_rate_pct": 19.1,
+     "clean_pct": 3.3,
+     "clean_by_6_pct": 0.0,
+     "avg_win_value": 6963.0
+    }
+   },
+   "deal_shapes": {
+    "all 3-4 yaochuu deals": {
+     "n": 4292,
+     "share_pct": 100.0,
+     "clean_by_6_pct": 18.5,
+     "tanyao_win_pct": 8.2,
+     "win_rate_pct": 26.0
+    },
+    "has an honor pair": {
+     "n": 597,
+     "share_pct": 13.9,
+     "clean_by_6_pct": 3.7,
+     "tanyao_win_pct": 2.0,
+     "win_rate_pct": 32.8
+    },
+    "lone honors, some 12/89 terminal": {
+     "n": 2821,
+     "share_pct": 65.7,
+     "clean_by_6_pct": 16.4,
+     "tanyao_win_pct": 7.9,
+     "win_rate_pct": 24.0
+    },
+    "lone honors, isolated terminals": {
+     "n": 874,
+     "share_pct": 20.4,
+     "clean_by_6_pct": 35.2,
+     "tanyao_win_pct": 13.5,
+     "win_rate_pct": 27.8
+    },
+    "  with a lone value honor": {
+     "n": 822,
+     "share_pct": 19.2,
+     "clean_by_6_pct": 34.8,
+     "tanyao_win_pct": 13.7,
+     "win_rate_pct": 27.9
+    },
+    "  with no value honor": {
+     "n": 52,
+     "share_pct": 1.2,
+     "clean_by_6_pct": 42.3,
+     "tanyao_win_pct": 9.6,
+     "win_rate_pct": 26.9
+    },
+    "  and shanten 3 or better": {
+     "n": 225,
+     "share_pct": 5.2,
+     "clean_by_6_pct": 49.8,
+     "tanyao_win_pct": 19.1,
+     "win_rate_pct": 34.2
+    },
+    "  and dora 0": {
+     "n": 403,
+     "share_pct": 9.4,
+     "clean_by_6_pct": 34.5,
+     "tanyao_win_pct": 12.2,
+     "win_rate_pct": 26.3
+    },
+    "  and dora 2+": {
+     "n": 127,
+     "share_pct": 3.0,
+     "clean_by_6_pct": 46.5,
+     "tanyao_win_pct": 19.7,
+     "win_rate_pct": 33.9
+    }
+   }
+  },
+  "deal_in_into": {
+   "riichi": {
+    "n": 476,
+    "per_100_hands": 3.6
+   },
+   "open hand": {
+    "n": 599,
+    "per_100_hands": 4.6
+   },
+   "dama": {
+    "n": 225,
+    "per_100_hands": 1.7
+   }
+  },
+  "early_lone_honors": {
+   "n": 20117,
+   "median_cut_turn": 4.0,
+   "cut_by_turn_3_pct": 35.2,
+   "cut_by_turn_6_pct": 63.6,
+   "paired_pct": 11.2,
+   "held_to_end_pct": 7.9,
+   "cut_under_threat_pct": 8.3
+  },
+  "riichi_decision": {
+   "<=3": {
+    "n": 705,
+    "declared_pct": 50.5,
+    "win_declared_pct": 48.9,
+    "win_declined_pct": 41.0,
+    "deal_in_declared_pct": 12.1,
+    "deal_in_declined_pct": 11.5
+   },
+   "<=3 threat": {
+    "n": 178,
+    "declared_pct": 30.3,
+    "win_declared_pct": 18.5,
+    "win_declined_pct": 19.4,
+    "deal_in_declared_pct": 27.8,
+    "deal_in_declined_pct": 17.7
+   },
+   "4-7": {
+    "n": 1511,
+    "declared_pct": 81.7,
+    "win_declared_pct": 54.8,
+    "win_declined_pct": 48.6,
+    "deal_in_declared_pct": 12.1,
+    "deal_in_declined_pct": 11.6
+   },
+   "4-7 threat": {
+    "n": 356,
+    "declared_pct": 67.7,
+    "win_declared_pct": 38.6,
+    "win_declined_pct": 32.2,
+    "deal_in_declared_pct": 21.6,
+    "deal_in_declined_pct": 16.5
+   },
+   "8+": {
+    "n": 396,
+    "declared_pct": 93.4,
+    "win_declared_pct": 60.3,
+    "win_declined_pct": 65.4,
+    "deal_in_declared_pct": 10.0,
+    "deal_in_declined_pct": 7.7
+   },
+   "8+ threat": {
+    "n": 62,
+    "declared_pct": 90.3,
+    "win_declared_pct": 53.6,
+    "win_declined_pct": 83.3,
+    "deal_in_declared_pct": 17.9,
+    "deal_in_declined_pct": 16.7
+   }
+  },
+  "riichi_after_first_tenpai_n": 149,
+  "dama_decision": {
+   "declined_n": 896,
+   "declined_yakuless_pct": 22.7,
+   "declined_yakuless_win_pct": 28.1,
+   "declined_yakuless_tsumo_pct": 13.3,
+   "declined_with_yaku_win_pct": 43.7,
+   "stayed_dama_pct": 83.4,
+   "declined_avg_turn": 10.14,
+   "declined_late_pct": 35.4
+  },
+  "first_call": {
+   "n": 4672,
+   "yakuhai_pon_pct": 38.1,
+   "chi_pct": 32.2,
+   "from_3plus_shanten_pct": 28.8,
+   "from_2_shanten_pct": 42.1,
+   "reaches_1sh_or_tenpai_pct": 53.6,
+   "avg_turn": 6.81,
+   "under_threat_pct": 10.0
+  },
+  "open_win_by_call_shanten": {
+   "0-1": {
+    "n": 1360,
+    "win_rate_pct": 39.6,
+    "avg_win_value": 5302.0
+   },
+   "2": {
+    "n": 1968,
+    "win_rate_pct": 28.3,
+    "avg_win_value": 5251.0
+   },
+   "3+": {
+    "n": 1344,
+    "win_rate_pct": 23.6,
+    "avg_win_value": 5933.0
+   }
+  },
+  "tenpai_no_win": {
+   "opponent ron elsewhere": {
+    "n": 820,
+    "share_pct": 12.9
+   },
+   "draw": {
+    "n": 918,
+    "share_pct": 14.4
+   },
+   "opponent tsumo": {
+    "n": 861,
+    "share_pct": 13.5
+   },
+   "dealt in": {
+    "n": 784,
+    "share_pct": 12.3
+   }
+  },
+  "eff_closed_ukeire_loss_pct": 31.5,
+  "eff_closed_ukeire_lost_per_100": 173.1,
+  "win_rate_pct": 22.9,
+  "tsumo_share_pct": 36.8,
+  "deal_in_rate_pct": 10.0,
+  "avg_win_turn": 12.09,
+  "avg_win_value": 7269.0,
+  "avg_win_han": 3.37,
+  "avg_win_han_dora": 1.32,
+  "avg_win_han_riichi": 0.51,
+  "avg_win_han_yaku": 1.54,
+  "wins_with_no_dora_pct": 28.3,
+  "mangan_plus_share_pct": 21.9,
+  "one_han_share_pct": 11.5,
+  "yaku_share_pct": {
+   "赤ドラ": 43.6,
+   "立直": 43.2,
+   "ドラ": 40.2,
+   "門前清自摸和": 22.2,
+   "断幺九": 21.8,
+   "平和": 18.2,
+   "裏ドラ": 13.7,
+   "役牌:場風牌": 9.2,
+   "役牌:自風牌": 9.1,
+   "役牌 白": 8.3,
+   "混一色": 8.1,
+   "役牌 發": 8.0,
+   "一発": 7.8,
+   "役牌 中": 7.7,
+   "一盃口": 3.8,
+   "七対子": 3.5,
+   "三色同順": 3.4,
+   "対々和": 1.8,
+   "混全帯幺九": 1.4,
+   "一気通貫": 1.1,
+   "清一色": 1.0,
+   "三暗刻": 0.7,
+   "河底撈魚": 0.4,
+   "海底摸月": 0.4,
+   "嶺上開花": 0.2,
+   "純全帯幺九": 0.2,
+   "ダブル立直": 0.1,
+   "小三元": 0.1,
+   "yaku39": 0.0,
+   "三色同刻": 0.0,
+   "混老頭": 0.0,
+   "yaku40": 0.0
+  },
+  "draw_rate_pct": 13.5,
+  "draw_tenpai_rate_pct": 46.8,
+  "haipai_shanten": 3.58,
+  "tenpai_rate_pct": 48.9,
+  "tenpai_by_turn_6_pct": 9.4,
+  "tenpai_by_turn_9_pct": 25.3,
+  "tenpai_by_turn_12_pct": 39.1,
+  "avg_tenpai_turn": 9.61,
+  "median_tenpai_turn": 9.0,
+  "avg_first_1sh_turn": 6.53,
+  "avg_turns_in_1sh_before_tenpai": 3.68,
+  "avg_turns_stuck_1sh_no_tenpai": 2.22,
+  "win_rate_given_tenpai_pct": 47.0,
+  "avg_turns_in_tenpai": 2.99,
+  "tenpai_first_rate_pct": 53.3,
+  "tenpai_after_opp_riichi_pct": 20.5,
+  "win_rate_tenpai_first_pct": 59.6,
+  "win_rate_tenpai_second_pct": 32.5,
+  "riichi_rate_pct": 19.1,
+  "avg_riichi_turn": 8.86,
+  "riichi_at_first_tenpai_pct": 93.9,
+  "riichi_win_rate_pct": 52.1,
+  "riichi_deal_in_rate_pct": 13.2,
+  "avg_riichi_live_waits": 5.44,
+  "riichi_by_waits": {
+   "<=3": {
+    "n": 471,
+    "win_rate_pct": 46.1,
+    "deal_in_rate_pct": 13.8
+   },
+   "4-7": {
+    "n": 1565,
+    "win_rate_pct": 51.9,
+    "deal_in_rate_pct": 13.7
+   },
+   "8+": {
+    "n": 453,
+    "win_rate_pct": 58.9,
+    "deal_in_rate_pct": 10.8
+   }
+  },
+  "closed_tenpai_dama_pct": 23.0,
+  "dama_win_rate_pct": 38.7,
+  "open_rate_pct": 36.8,
+  "avg_first_call_turn": 6.81,
+  "open_tenpai_rate_pct": 67.2,
+  "open_avg_tenpai_turn": 10.03,
+  "closed_avg_tenpai_turn": 9.18,
+  "open_win_rate_pct": 30.1,
+  "closed_win_rate_pct": 18.8,
+  "open_avg_win_value": 5582.0,
+  "closed_avg_win_value": 8841.0,
+  "open_deal_in_rate_pct": 10.7,
+  "eff_events": 115576,
+  "eff_shanten_loss_pct": 4.2,
+  "eff_ukeire_loss_pct": 31.3,
+  "eff_ukeire_lost_per_100": 179.3
+ },
+ "opponents": {
+  "hands": 39162,
+  "tenpai_conversion": {
+   "riichi": {
+    "n": 7251,
+    "share_of_tenpai_pct": 39.0,
+    "win_rate_pct": 47.9,
+    "deal_in_rate_pct": 14.9,
+    "avg_live_waits_at_tenpai": 5.19,
+    "narrow_wait_pct": 23.3,
+    "avg_tenpai_turn": 8.86,
+    "avg_win_value": 9103.0
+   },
+   "dama": {
+    "n": 2965,
+    "share_of_tenpai_pct": 15.9,
+    "win_rate_pct": 37.3,
+    "deal_in_rate_pct": 13.1,
+    "avg_live_waits_at_tenpai": 4.08,
+    "narrow_wait_pct": 43.7,
+    "avg_tenpai_turn": 10.59,
+    "avg_win_value": 5738.0
+   },
+   "open": {
+    "n": 8383,
+    "share_of_tenpai_pct": 45.1,
+    "win_rate_pct": 43.6,
+    "deal_in_rate_pct": 13.3,
+    "avg_live_waits_at_tenpai": 4.81,
+    "narrow_wait_pct": 26.8,
+    "avg_tenpai_turn": 10.1,
+    "avg_win_value": 5057.0
+   }
+  },
+  "eff_closed_events": null,
+  "eff_closed_by_turn": {
+   "1-3": {
+    "n": 0,
+    "lost_per_100": null,
+    "aware_lost_per_100": null
+   },
+   "4-6": {
+    "n": 0,
+    "lost_per_100": null,
+    "aware_lost_per_100": null
+   },
+   "7-9": {
+    "n": 0,
+    "lost_per_100": null,
+    "aware_lost_per_100": null
+   },
+   "10+": {
+    "n": 0,
+    "lost_per_100": null,
+    "aware_lost_per_100": null
+   }
+  },
+  "eff_closed_kept": {},
+  "eff_aware": {
+   "ukeire_lost_per_100": null,
+   "narrower_pct": null,
+   "shanten_loss_pct": null,
+   "explained_share_pct": null
+  },
+  "tanyao": {
+   "wins_n": 1764,
+   "share_of_wins_pct": 21.4,
+   "open_pct": 54.0,
+   "avg_dora_han": 1.35,
+   "avg_han": 3.27,
+   "avg_value": 6794.0,
+   "avg_win_turn": 12.82,
+   "first_call_chi_pct": 61.3,
+   "avg_haipai_yaochuu_of_tanyao_wins": 3.52,
+   "avg_haipai_dora_of_tanyao_wins": 0.75,
+   "cleaned_pct": 22.2,
+   "clean_avg_turn": 7.53,
+   "honors_gone_avg_turn": 4.64,
+   "terminals_gone_avg_turn": 5.69,
+   "cleaned_win_rate_pct": 23.8,
+   "cleaned_tanyao_win_pct": 20.3,
+   "pair_cell_n": 1320,
+   "pair_cell_tanyao_win_pct": 1.4,
+   "pair_cell_yakuhai_win_pct": 28.2,
+   "pair_cell_win_rate_pct": 36.2,
+   "by_deal": {
+    "0-2": {
+     "n": 2472,
+     "share_pct": 6.3,
+     "tanyao_win_pct": 17.1,
+     "win_rate_pct": 32.2,
+     "clean_pct": 66.4,
+     "clean_by_6_pct": 56.3,
+     "avg_win_value": 7483.0
+    },
+    "3-4": {
+     "n": 12905,
+     "share_pct": 33.0,
+     "tanyao_win_pct": 7.1,
+     "win_rate_pct": 23.5,
+     "clean_pct": 34.3,
+     "clean_by_6_pct": 17.0,
+     "avg_win_value": 6909.0
+    },
+    "5-6": {
+     "n": 16767,
+     "share_pct": 42.8,
+     "tanyao_win_pct": 2.3,
+     "win_rate_pct": 19.0,
+     "clean_pct": 14.2,
+     "clean_by_6_pct": 1.9,
+     "avg_win_value": 6692.0
+    },
+    "7+": {
+     "n": 7018,
+     "share_pct": 17.9,
+     "tanyao_win_pct": 0.5,
+     "win_rate_pct": 17.2,
+     "clean_pct": 3.8,
+     "clean_by_6_pct": 0.0,
+     "avg_win_value": 6735.0
+    }
+   },
+   "deal_shapes": {
+    "all 3-4 yaochuu deals": {
+     "n": 12905,
+     "share_pct": 100.0,
+     "clean_by_6_pct": 17.0,
+     "tanyao_win_pct": 7.1,
+     "win_rate_pct": 23.5
+    },
+    "has an honor pair": {
+     "n": 1863,
+     "share_pct": 14.4,
+     "clean_by_6_pct": 4.1,
+     "tanyao_win_pct": 2.4,
+     "win_rate_pct": 31.0
+    },
+    "lone honors, some 12/89 terminal": {
+     "n": 8516,
+     "share_pct": 66.0,
+     "clean_by_6_pct": 14.7,
+     "tanyao_win_pct": 7.0,
+     "win_rate_pct": 22.2
+    },
+    "lone honors, isolated terminals": {
+     "n": 2526,
+     "share_pct": 19.6,
+     "clean_by_6_pct": 34.3,
+     "tanyao_win_pct": 11.1,
+     "win_rate_pct": 22.3
+    },
+    "  with a lone value honor": {
+     "n": 2386,
+     "share_pct": 18.5,
+     "clean_by_6_pct": 34.1,
+     "tanyao_win_pct": 10.9,
+     "win_rate_pct": 22.3
+    },
+    "  with no value honor": {
+     "n": 140,
+     "share_pct": 1.1,
+     "clean_by_6_pct": 37.1,
+     "tanyao_win_pct": 14.3,
+     "win_rate_pct": 22.9
+    },
+    "  and shanten 3 or better": {
+     "n": 690,
+     "share_pct": 5.3,
+     "clean_by_6_pct": 42.2,
+     "tanyao_win_pct": 14.1,
+     "win_rate_pct": 27.4
+    },
+    "  and dora 0": {
+     "n": 1097,
+     "share_pct": 8.5,
+     "clean_by_6_pct": 33.6,
+     "tanyao_win_pct": 10.5,
+     "win_rate_pct": 23.2
+    },
+    "  and dora 2+": {
+     "n": 412,
+     "share_pct": 3.2,
+     "clean_by_6_pct": 34.2,
+     "tanyao_win_pct": 11.4,
+     "win_rate_pct": 21.8
+    }
+   }
+  },
+  "deal_in_into": {
+   "riichi": {
+    "n": 2057,
+    "per_100_hands": 5.3
+   },
+   "open hand": {
+    "n": 2761,
+    "per_100_hands": 7.1
+   },
+   "dama": {
+    "n": 709,
+    "per_100_hands": 1.8
+   }
+  },
+  "early_lone_honors": {
+   "n": 59368,
+   "median_cut_turn": 3,
+   "cut_by_turn_3_pct": 47.9,
+   "cut_by_turn_6_pct": 72.7,
+   "paired_pct": 9.3,
+   "held_to_end_pct": 7.1,
+   "cut_under_threat_pct": 5.9
+  },
+  "riichi_decision": {
+   "<=3": {
+    "n": 2307,
+    "declared_pct": 44.3,
+    "win_declared_pct": 40.5,
+    "win_declined_pct": 36.7,
+    "deal_in_declared_pct": 13.8,
+    "deal_in_declined_pct": 14.0
+   },
+   "<=3 threat": {
+    "n": 691,
+    "declared_pct": 37.2,
+    "win_declared_pct": 34.6,
+    "win_declined_pct": 17.7,
+    "deal_in_declared_pct": 21.8,
+    "deal_in_declined_pct": 18.9
+   },
+   "4-7": {
+    "n": 4739,
+    "declared_pct": 68.1,
+    "win_declared_pct": 51.9,
+    "win_declined_pct": 44.8,
+    "deal_in_declared_pct": 12.8,
+    "deal_in_declined_pct": 12.6
+   },
+   "4-7 threat": {
+    "n": 1253,
+    "declared_pct": 62.5,
+    "win_declared_pct": 34.1,
+    "win_declined_pct": 29.6,
+    "deal_in_declared_pct": 23.0,
+    "deal_in_declined_pct": 16.6
+   },
+   "8+": {
+    "n": 971,
+    "declared_pct": 83.8,
+    "win_declared_pct": 65.8,
+    "win_declined_pct": 72.6,
+    "deal_in_declared_pct": 10.1,
+    "deal_in_declined_pct": 7.6
+   },
+   "8+ threat": {
+    "n": 230,
+    "declared_pct": 83.5,
+    "win_declared_pct": 40.6,
+    "win_declined_pct": 34.2,
+    "deal_in_declared_pct": 20.8,
+    "deal_in_declined_pct": 21.1
+   }
+  },
+  "riichi_after_first_tenpai_n": 842,
+  "dama_decision": {
+   "declined_n": 3897,
+   "declined_yakuless_pct": 27.1,
+   "declined_yakuless_win_pct": 26.6,
+   "declined_yakuless_tsumo_pct": 15.3,
+   "declined_with_yaku_win_pct": 42.6,
+   "stayed_dama_pct": 78.4,
+   "declined_avg_turn": 10.01,
+   "declined_late_pct": 33.6
+  },
+  "first_call": {
+   "n": 12329,
+   "yakuhai_pon_pct": 40.8,
+   "chi_pct": 35.4,
+   "from_3plus_shanten_pct": 28.2,
+   "from_2_shanten_pct": 41.4,
+   "reaches_1sh_or_tenpai_pct": 55.0,
+   "avg_turn": 6.79,
+   "under_threat_pct": 12.0
+  },
+  "open_win_by_call_shanten": {
+   "0-1": {
+    "n": 3748,
+    "win_rate_pct": 35.9,
+    "avg_win_value": 5034.0
+   },
+   "2": {
+    "n": 5108,
+    "win_rate_pct": 28.5,
+    "avg_win_value": 5101.0
+   },
+   "3+": {
+    "n": 3473,
+    "win_rate_pct": 24.3,
+    "avg_win_value": 4924.0
+   }
+  },
+  "tenpai_no_win": {
+   "draw": {
+    "n": 2861,
+    "share_pct": 15.4
+   },
+   "opponent ron elsewhere": {
+    "n": 2250,
+    "share_pct": 12.1
+   },
+   "dealt in": {
+    "n": 2587,
+    "share_pct": 13.9
+   },
+   "opponent tsumo": {
+    "n": 2667,
+    "share_pct": 14.3
+   }
+  },
+  "eff_closed_ukeire_loss_pct": null,
+  "eff_closed_ukeire_lost_per_100": null,
+  "win_rate_pct": 21.0,
+  "tsumo_share_pct": 39.0,
+  "deal_in_rate_pct": 14.1,
+  "avg_win_turn": 12.09,
+  "avg_win_value": 6855.0,
+  "avg_win_han": 3.23,
+  "avg_win_han_dora": 1.26,
+  "avg_win_han_riichi": 0.51,
+  "avg_win_han_yaku": 1.47,
+  "wins_with_no_dora_pct": 30.3,
+  "mangan_plus_share_pct": 20.8,
+  "one_han_share_pct": 14.1,
+  "yaku_share_pct": {
+   "赤ドラ": 42.0,
+   "立直": 42.0,
+   "ドラ": 39.0,
+   "門前清自摸和": 24.1,
+   "断幺九": 21.4,
+   "平和": 19.8,
+   "裏ドラ": 13.9,
+   "一発": 8.7,
+   "役牌 白": 8.1,
+   "役牌 發": 8.1,
+   "役牌:自風牌": 8.0,
+   "役牌:場風牌": 7.9,
+   "役牌 中": 7.1,
+   "混一色": 5.0,
+   "一盃口": 3.9,
+   "三色同順": 3.8,
+   "七対子": 3.1,
+   "対々和": 1.9,
+   "一気通貫": 1.6,
+   "混全帯幺九": 1.0,
+   "三暗刻": 0.8,
+   "清一色": 0.5,
+   "河底撈魚": 0.5,
+   "海底摸月": 0.4,
+   "嶺上開花": 0.3,
+   "純全帯幺九": 0.2,
+   "ダブル立直": 0.1,
+   "yaku40": 0.1,
+   "小三元": 0.0,
+   "yaku39": 0.0,
+   "三色同刻": 0.0,
+   "混老頭": 0.0,
+   "yaku47": 0.0,
+   "yaku50": 0.0,
+   "yaku42": 0.0,
+   "二盃口": 0.0
+  },
+  "draw_rate_pct": 13.5,
+  "draw_tenpai_rate_pct": 48.0,
+  "haipai_shanten": 3.58,
+  "tenpai_rate_pct": 47.5,
+  "tenpai_by_turn_6_pct": 8.9,
+  "tenpai_by_turn_9_pct": 24.2,
+  "tenpai_by_turn_12_pct": 37.3,
+  "avg_tenpai_turn": 9.69,
+  "median_tenpai_turn": 9,
+  "avg_first_1sh_turn": 6.58,
+  "avg_turns_in_1sh_before_tenpai": 3.72,
+  "avg_turns_stuck_1sh_no_tenpai": 2.29,
+  "win_rate_given_tenpai_pct": 44.3,
+  "avg_turns_in_tenpai": 3.05,
+  "tenpai_first_rate_pct": 51.0,
+  "tenpai_after_opp_riichi_pct": 22.1,
+  "win_rate_tenpai_first_pct": 57.2,
+  "win_rate_tenpai_second_pct": 30.8,
+  "riichi_rate_pct": 18.5,
+  "avg_riichi_turn": 9.11,
+  "riichi_at_first_tenpai_pct": 88.3,
+  "riichi_win_rate_pct": 47.9,
+  "riichi_deal_in_rate_pct": 14.9,
+  "avg_riichi_live_waits": 5.29,
+  "riichi_by_waits": {
+   "<=3": {
+    "n": 1585,
+    "win_rate_pct": 40.1,
+    "deal_in_rate_pct": 16.0
+   },
+   "4-7": {
+    "n": 4541,
+    "win_rate_pct": 47.6,
+    "deal_in_rate_pct": 15.3
+   },
+   "8+": {
+    "n": 1125,
+    "win_rate_pct": 60.1,
+    "deal_in_rate_pct": 12.0
+   }
+  },
+  "closed_tenpai_dama_pct": 29.6,
+  "dama_win_rate_pct": 37.3,
+  "open_rate_pct": 32.4,
+  "avg_first_call_turn": 6.79,
+  "open_tenpai_rate_pct": 67.8,
+  "open_avg_tenpai_turn": 10.07,
+  "closed_avg_tenpai_turn": 9.37,
+  "open_win_rate_pct": 29.6,
+  "closed_win_rate_pct": 16.9,
+  "open_avg_win_value": 5220.0,
+  "closed_avg_win_value": 8221.0,
+  "open_deal_in_rate_pct": 14.4,
+  "eff_events": null,
+  "eff_shanten_loss_pct": null,
+  "eff_ukeire_loss_pct": null,
+  "eff_ukeire_lost_per_100": null
+ },
+ "baseline_label": null,
+ "amae_koromo_reference": {
+  "source": "https://amae-koromo.sapk.ch/player/120182062/12/2026-01-01",
+  "captured": "2026-09-20",
+  "window": "2026-01-01 ~ 2026-09-20, jade-south, 58 games",
+  "note": "Basic tab as displayed. tsumo_share_pct and dama_share_pct are shares of wins.",
+  "values": {
+   "win_rate_pct": 21.84,
+   "deal_in_rate_pct": 10.57,
+   "tsumo_share_pct": 38.1,
+   "dama_share_pct": 14.29,
+   "draw_rate_pct": 13.86,
+   "draw_tenpai_rate_pct": 53.75,
+   "call_rate_pct": 35.88,
+   "riichi_rate_pct": 17.85,
+   "avg_win_turn": 12.258,
+   "avg_win_value": 5365,
+   "avg_deal_in_value": 4403,
+   "avg_rank": 2.414,
+   "bust_rate_pct": 6.9
+  }
+ },
+ "luckyj_reference": {
+  "riichi_win_rate_pct": 52.1,
+  "riichi_deal_in_rate_pct": 13.2,
+  "riichi_n": 2489,
+  "declare_by_waits_child": {
+   "8+": 95.3,
+   "4-7": 78.3,
+   "<=3": 33.7,
+   "unknown": 0.0
+  }
+ },
+ "costly_discards": [],
+ "note": "costly_discards (19190 LuckyJ examples, 5 MB) omitted from the repo; regenerate with review_win_speed.py --manifest data/local_sources/luckyj_tenhou/index.json --json <file>. --baseline reads only 'games' and 'hero'."
+}

@@ -1,0 +1,202 @@
+diff --git a/client.js b/client.js
+index 50ad093..ceec828 100644
+--- a/client.js
++++ b/client.js
+@@ -13,6 +13,21 @@ const ServerConfig = require("./server_config.js");
+ const process = require("process");
+ const EventEmitter = require("events");
+ 
++// English column of the client's error sheet (res/config/lqc.lqbin), plus
++// the codes the mjsoul library makes up itself.
++const ERROR_TEXT = {
++  108: "Login failed. Please try again.",
++  151: "Your current game version is outdated (set MJS_RES_VERSION to the client's current res_version).",
++  1002: "Account does not exist.",
++  1003: "Wrong password.",
++  9997: "Request timed out.",
++  9998: "Wrong api name.",
++  9999: "Socket not connected.",
++};
++function describeError(code) {
++  return ERROR_TEXT[code] || "no description; the text is in the client's res/config/lqc.lqbin";
++}
++
+ class Client {
+   constructor(config) {
+     this._config = config;
+@@ -27,16 +42,32 @@ class Client {
+       this._config.mjsoul.base,
+       this._config.mjsoul.timeout,
+     );
+-    console.error(scfg);
++    console.error(`server version ${scfg.version}, liqi ${scfg.liqiVersion}`);
+ 
+     this._serverVersion = scfg.version;
+-    this._clientVersionString =
+-      "web-" + this._serverVersion.replace(/\.w$/, "");
++    // The page exposes the Unity package version in its Build filename; the
++    // resource version has to come from config (see config.js).
++    const pkg = await this._serverConfig.getPackageVersion(this._config.mjsoul.base);
++    if (pkg && pkg !== this._config.packageVersion) {
++      console.error(`page package version ${pkg} (config had ${this._config.packageVersion})`);
++      this._config.packageVersion = pkg;
++      this._config.login.client_version.package = pkg;
++    }
++    this._clientVersionString = this._config.login.client_version_string;
+ 
++    // The live client sends an extra string field on the handshake that the
++    // published liqi.json does not declare yet.
++    const reqConn = scfg.liqi.nested.lq.nested.ReqRequestConnection;
++    if (reqConn && !Object.values(reqConn.fields).some((f) => f.id === 6)) {
++      reqConn.fields.platform = { type: "string", id: 6 };
++    }
+     const root = pb.Root.fromJSON(scfg.liqi);
+     const wrapper = root.lookupType("Wrapper");
+ 
+     let gateway = this._config.mjsoul.gateway;
++    if (gateway == null && scfg.directGateways.length > 0) {
++      gateway = scfg.directGateways[0];
++    }
+     if (gateway == null) {
+       const endpoint = await this._serverConfig.chooseFastestServer(
+         scfg.serviceDiscoveryServers,
+@@ -96,30 +127,74 @@ class Client {
+     }
+   }
+ 
++  // Route.* calls share the socket but live in a different service.
++  async sendRoute(name, data) {
++    const mj = this._mjsoul;
++    const saved = mj.service;
++    mj.service = ".lq.Route.";
++    try {
++      return await mj.sendAsync(name, data);
++    } finally {
++      mj.service = saved;
++    }
++  }
++
++  _startHeartbeat() {
++    if (this._heartbeat) clearInterval(this._heartbeat);
++    this._heartbeat = setInterval(() => {
++      if (this._mjsoul.status !== "connected") return;
++      this.sendRoute("heartbeat", {
++        delay: 8,
++        no_operation_counter: 0,
++        platform: 11,
++        network_quality: 8,
++      }).catch(() => {});
++    }, this._config.heartbeatMs || 5000);
++    this._heartbeat.unref();
++  }
++
+   async login() {
+     try {
+       this._is_logged_in = false;
+       console.error("login triggered");
+ 
+-      const login = {
+-        client_version_string: this._clientVersionString,
+-        client_version: {
+-          resource: this._serverVersion,
+-        },
+-        ...this._config.login,
+-      };
+-      const res = await this._mjsoul.sendAsync("oauth2Login", login);
+-      console.error("login done");
++      // The v4 client opens every connection with this handshake; without it
++      // the server answers every request with 151 (client version outdated).
++      const conn = await this.sendRoute("requestConnection", {
++        type: this._config.route.type,
++        route_id: this._config.route.route_id,
++        timestamp: Math.floor(Date.now() / 1000),
++        platform: this._config.route.platform,
++      });
++      if (conn.result !== 1) {
++        console.error("requestConnection result", conn.result);
++      }
++      this._startHeartbeat();
++
++      const res = await this._mjsoul.sendAsync("oauth2Login", this._config.login);
++      console.error(`login done (account ${res.account_id})`);
++      this.account_id = res.account_id;
+       this._is_logged_in = true;
+       this._condvar.emit("logged_in");
+ 
+       return res;
+     } catch (err) {
+-      console.error(err.stack || err);
++      const code = err && err.error && err.error.code;
++      if (code !== undefined) {
++        console.error(`login failed with error ${code}: ${describeError(code)}`);
++      } else {
++        console.error(err.stack || err);
++      }
+       process.exit(1);
+     }
+   }
+ 
++  async waitForLogin() {
++    while (!this._is_logged_in) {
++      await new Promise((resolve) => this._condvar.once("logged_in", resolve));
++    }
++  }
++
+   async tenhouLogFromMjsoulID(id) {
+     const seps = id.split("_");
+     let logID = seps[0];
+@@ -137,9 +212,7 @@ class Client {
+       }
+     }
+ 
+-    while (!this._is_logged_in) {
+-      await new Promise((resolve) => this._condvar.once("logged_in", resolve));
+-    }
++    await this.waitForLogin();
+ 
+     const log = await this._mjsoul.sendAsync("fetchGameRecord", {
+       game_uuid: logID,
+diff --git a/server_config.js b/server_config.js
+index 270f1f1..4cd090d 100644
+--- a/server_config.js
++++ b/server_config.js
+@@ -33,17 +33,37 @@ class Server {
+       .get(base + `/v${version}/config.json`)
+       .set("User-Agent", this._userAgent);
+     // .proxy(process.env.https_proxy)
+-    const serviceDiscoveryServers =
+-      getServiceDiscoveryServers.body.ip[0].region_urls.map((o) => o.url);
++    // Since 2025 config.json lists direct gateway hosts under `gateways`
++    // instead of service-discovery URLs under `region_urls`.
++    const entry = getServiceDiscoveryServers.body.ip[0];
++    const serviceDiscoveryServers = entry.region_urls
++      ? entry.region_urls.map((o) => o.url)
++      : [];
++    const directGateways = entry.gateways
++      ? entry.gateways.map((o) => "wss://" + new URL(o.url).host + "/gateway")
++      : [];
+ 
+     return {
+       version,
+       liqiVersion,
+       liqi,
+       serviceDiscoveryServers,
++      directGateways,
+     };
+   }
+ 
++  // The Unity web client's package version is only visible in the page's
++  // Build/<region>-WebGL-release-<version>(<build>).loader.js filename.
++  async getPackageVersion(base) {
++    try {
++      const page = await superagent.get(base + "/").set("User-Agent", this._userAgent);
++      const m = String(page.text).match(/WebGL-release-(\d+\.\d+\.\d+)/);
++      return m ? m[1] : null;
++    } catch (e) {
++      return null;
++    }
++  }
++
+   async chooseFastestServer(urls) {
+     return await Promise.any(
+       urls.map(async (url) => {

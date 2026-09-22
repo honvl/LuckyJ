@@ -8,6 +8,7 @@ section of the book publishes.
 
     .venv/bin/python scripts/review_self_game.py data/self_games/<file>.json
     .venv/bin/python scripts/review_self_game.py links.txt --hero 0 --json out.json
+    .venv/bin/python scripts/review_self_game.py --manifest data/self_games/majsoul/index.json --since 2026-01-01
 
 Every rate printed beside a LuckyJ figure is a descriptive rate over this
 corpus, not a correctness score. The flags are review prompts, not verdicts.
@@ -20,13 +21,14 @@ import json
 import statistics
 import sys
 from collections import Counter, defaultdict
+from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from tenhou_replay import (  # noqa: E402
     DRAGONS, base, is_honor, load_logs, name, names, replay,
-    result_blocks, result_deltas, round_wind, seat_wind, shanten, waits, yakuhai_for,
+    result_blocks, result_deltas, riichi_sticks_paid, round_wind, seat_wind, shanten, waits, yakuhai_for,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -138,8 +140,7 @@ def review_hand(log, hero, stats, findings):
     my_riichi = g["players"][hero]["riichi_event"]
     rnd = g["round_name"]
     delta = result_deltas(g["result"])[hero]
-    if my_riichi is not None:
-        delta -= 1000  # the declarer's own stick is not in the result deltas
+    delta -= 1000 * riichi_sticks_paid(log)[hero]  # the declarer's stick is not in the deltas
     stats["score_delta"] += delta
 
     def unseen(tile, event, hand):
@@ -293,10 +294,9 @@ def review_hand(log, hero, stats, findings):
     return g
 
 
-def build_report(logs, hero):
-    bl = load_baselines()
-    stats = {
-        "bl": bl, "score_delta": 0,
+def new_stats() -> dict:
+    return {
+        "bl": load_baselines(), "score_delta": 0,
         "push_chances": Counter(), "push_taken": Counter(),
         "first_answer": {}, "first_answer_bucket": Counter(), "first_answer_genbutsu": Counter(),
         "declare_chances": Counter(), "declare_taken": Counter(),
@@ -305,7 +305,12 @@ def build_report(logs, hero):
         "open_push_chances": 0, "open_push_taken": 0,
         "honor_cut_turns": [],
     }
-    findings: list[dict] = []
+
+
+def build_report(logs, hero, stats=None, findings=None):
+    """Review one game; pass ``stats``/``findings`` to keep accumulating across games."""
+    stats = new_stats() if stats is None else stats
+    findings = [] if findings is None else findings
     hands = [review_hand(log, hero, stats, findings) for log in logs]
     return hands, stats, findings
 
@@ -314,13 +319,15 @@ def pct(num, den):
     return None if not den else round(100 * num / den, 1)
 
 
-def print_report(hands, stats, findings, hero):
+def print_report(hands, stats, findings, hero, title=None, score_line=None):
     bl = stats["bl"]
     print("=" * 78)
-    print(f"SELF-GAME REVIEW vs LuckyJ baselines   seat p{hero}   {len(hands)} hands")
+    print(title or f"SELF-GAME REVIEW vs LuckyJ baselines   seat p{hero}   {len(hands)} hands")
     print("=" * 78)
-    start = hands[0]["start_scores"][hero]
-    print(f"score {start:+d} -> {start + stats['score_delta']:+d}   net {stats['score_delta']:+d}")
+    if score_line is None:
+        start = hands[0]["start_scores"][hero]
+        score_line = f"score {start:+d} -> {start + stats['score_delta']:+d}   net {stats['score_delta']:+d}"
+    print(score_line)
     print()
 
     print("Push rate against a live riichi (dangerous discard, by your shanten)")
@@ -369,24 +376,51 @@ def print_report(hands, stats, findings, hero):
         print("  nothing flagged")
     for kind in order:
         for f in grouped.get(kind, []):
-            print(f"  [{kind}] {f['round']} T{f['turn']}: {f['text']}")
+            where = f"{f['game']} {f['round']}" if f.get("game") else f["round"]
+            print(f"  [{kind}] {where} T{f['turn']}: {f['text']}")
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("source", help="path to a log JSON file, or a text file of tenhou.net/5 links")
+    ap.add_argument("source", nargs="?", help="path to a log JSON file, or a text file of tenhou.net/5 links")
     ap.add_argument("--hero", type=int, default=0, help="seat to review (default 0)")
+    ap.add_argument("--manifest", type=Path,
+                    help="review every game in a fetch_majsoul_games.py manifest, each with its own hero seat")
+    ap.add_argument("--since", help="with --manifest: only games starting on or after YYYY-MM-DD")
     ap.add_argument("--json", dest="json_out", help="also write the findings to this path")
     args = ap.parse_args()
 
-    logs = load_logs(args.source)
-    hands, stats, findings = build_report(logs, args.hero)
-    print_report(hands, stats, findings, args.hero)
+    if args.manifest:
+        games = json.loads(args.manifest.read_text(encoding="utf-8"))
+        if args.since:
+            cutoff = datetime.strptime(args.since, "%Y-%m-%dT%H:%M" if "T" in args.since else "%Y-%m-%d").timestamp()
+            games = [g for g in games if g["start_time"] >= cutoff]
+        if not games:
+            sys.exit("no games selected")
+        stats, findings, hands = None, None, []
+        for game in games:
+            logs = load_logs(ROOT / game["file"])
+            seen = len(findings) if findings else 0
+            game_hands, stats, findings = build_report(logs, game["hero_seat"], stats, findings)
+            for f in findings[seen:]:
+                f["game"] = game["uuid"][:13]
+            hands.extend(game_hands)
+        hero_name = games[0].get("hero_name") or "hero"
+        title = f"SELF-GAME REVIEW vs LuckyJ baselines   {hero_name}   {len(games)} games   {len(hands)} hands"
+        score_line = f"net {stats['score_delta']:+d} over {len(games)} games ({stats['score_delta'] // len(games):+d} per game)"
+        print_report(hands, stats, findings, None, title=title, score_line=score_line)
+    elif args.source:
+        logs = load_logs(args.source)
+        hands, stats, findings = build_report(logs, args.hero)
+        print_report(hands, stats, findings, args.hero)
+    else:
+        ap.error("give a log source or --manifest")
 
     if args.json_out:
         payload = {
-            "hero": args.hero,
+            "hero": args.hero if not args.manifest else None,
+            "games": len(games) if args.manifest else 1,
             "hands": len(hands),
             "score_delta": stats["score_delta"],
             "push_vs_riichi": {b: pct(stats["push_taken"][b], stats["push_chances"][b])
