@@ -19,6 +19,7 @@ import tenhou_replay as tr  # noqa: E402
 
 FIXTURES = ROOT / "tests" / "fixtures"
 GAME = ROOT / "data/self_games/2026-09-07-hanchan.json"
+GAME_2 = ROOT / "data/self_games/2026-09-07-hanchan-2.txt"
 
 
 def fixture(name):
@@ -104,6 +105,30 @@ class AcceptanceTests(unittest.TestCase):
         self.assertEqual(best["shanten"], 0)
         self.assertEqual(best["ukeire"], 7)
         self.assertEqual(best["by_tile"][31][0], 0)
+
+
+class VisibleCounterTests(unittest.TestCase):
+    @staticmethod
+    def seen_at(game, e):
+        melds_now = ws.meld_snapshots(game, e["index"])
+        return ws.visible_counter(e["hand_before"], e["rivers"], melds_now, game["dora_indicators"][:1],
+                                  game["players"])
+
+    def test_called_tile_counts_once(self):
+        # seat 0 releases 5m twice: seat 3 pons the first (0m 5m 5m) and seat 1 chis the
+        # second (3m 4m 5m). Both copies stay in seat 0's river as well as in the melds.
+        game = tr.replay(fixture("pon-over-chi"))
+        e = next(x for x in game["events"] if x["seat"] == 0 and x["index"] > 30)
+        self.assertEqual(self.seen_at(game, e)[15], 4)
+
+    def test_no_tile_is_seen_more_than_four_times(self):
+        logs = tr.load_logs(GAME) + tr.load_logs(GAME_2) + [
+            fixture(n) for n in ("daiminkan", "pon-over-chi", "riichi_ronned")]
+        for log in logs:
+            game = tr.replay(log)
+            for e in game["events"]:
+                seen = self.seen_at(game, e)
+                self.assertLessEqual(max(seen.values()), 4, f"{game['round_name']} event {e['index']}")
 
 
 class WinSpeedRecordTests(unittest.TestCase):

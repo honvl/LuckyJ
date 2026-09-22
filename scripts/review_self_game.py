@@ -26,6 +26,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from review_win_speed import meld_snapshots, visible_counter  # noqa: E402
 from tenhou_replay import (  # noqa: E402
     DRAGONS, base, is_honor, load_logs, name, names, replay,
     result_blocks, result_deltas, riichi_sticks_paid, round_wind, seat_wind, shanten, waits, yakuhai_for,
@@ -81,12 +82,15 @@ def load_baselines() -> dict:
 
 # ---------------------------------------------------------------- safety
 
-def visible_count(tile, event, players, extra=()):
-    b = base(tile)
-    n = sum(1 for s in range(4) for t in event["rivers"][s] if base(t) == b)
-    n += sum(1 for p in players for t in p["meld_tiles"] if base(t) == b)
-    n += sum(1 for t in extra if base(t) == b)
-    return n
+def visible_count(tile, event, game, extra=()):
+    """Copies of ``tile`` showing at ``event``, plus any in ``extra`` (the hero's own tiles).
+
+    Every river, the melds as they stood at that moment with a called tile counted
+    once, and the dora indicator, as ``review_win_speed.visible_counter`` counts them.
+    """
+    melds_now = meld_snapshots(game, event["index"])
+    seen = visible_counter(extra, event["rivers"], melds_now, game["dora_indicators"][:1], game["players"])
+    return seen[base(tile)]
 
 
 def suji(tile, river):
@@ -102,16 +106,26 @@ def suji(tile, river):
     return (suit * 10 + num - 3 in seen) and (suit * 10 + num + 3 in seen)
 
 
-def tile_safety(tile, seat, event, players, hand=()):
-    """genbutsu / dead / suji / live-*, from the hero's point of view."""
+def tile_safety(tile, seat, event, game, hand=()):
+    """genbutsu / dead / suji / quiet-honor / live-*, from the hero's point of view.
+
+    Against a riichi, a tile anyone released after the declaration without being
+    ronned is genbutsu too: the declarer is furiten on it. An honor is graded by the
+    other copies showing at that moment; ``hand`` is the hero's tiles, ``tile`` included.
+    """
     b = base(tile)
     if any(base(x) == b for x in event["rivers"][seat]):
         return "genbutsu"
+    r = event["riichi_seats"][seat]
+    if r is not None and any(base(ev["tile"]) == b for ev in game["events"][r + 1:event["index"]]):
+        return "genbutsu"
     if is_honor(tile):
-        seen = visible_count(tile, event, players, hand)
-        if seen >= 4:
+        others = visible_count(tile, event, game, hand)
+        if any(base(x) == b for x in hand):
+            others -= 1  # the copy being released
+        if others >= 3:
             return "dead"
-        if seen >= 2:
+        if others == 2:
             return "quiet-honor"
         return "live-honor"
     if suji(tile, event["rivers"][seat]):
@@ -144,7 +158,7 @@ def review_hand(log, hero, stats, findings):
     stats["score_delta"] += delta
 
     def unseen(tile, event, hand):
-        return max(0, 4 - visible_count(tile, event, g["players"], hand))
+        return max(0, 4 - visible_count(tile, event, g, hand))
 
     declared = False
     honor_first_seen, honor_cut_turn = {}, {}
@@ -218,7 +232,7 @@ def review_hand(log, hero, stats, findings):
         # riichi declaration
         if e["closed"] and not locked and sh == 0 and not declared:
             w = waits(e["hand_after"], (), True)
-            live = sum(unseen(t, e, e["hand_after"]) for t in w)
+            live = sum(unseen(t, e, e["hand_before"]) for t in w)  # the tile just cut is showing too
             bucket = wait_bucket(live)
             stats["declare_chances"][bucket] += 1
             stats["declare_taken"][bucket] += e["riichi"]
@@ -238,7 +252,7 @@ def review_hand(log, hero, stats, findings):
 
         # push / fold against a live riichi
         if threats:
-            kinds = [tile_safety(e["tile"], s, e, g["players"], e["hand_before"]) for s in threats]
+            kinds = [tile_safety(e["tile"], s, e, g, e["hand_before"]) for s in threats]
             pushed = not all(k in NOT_A_PUSH for k in kinds)
             b = shanten_bucket(sh)
             stats["push_chances"][b] += 1
@@ -252,7 +266,7 @@ def review_hand(log, hero, stats, findings):
                 for s in threats:
                     safe_tiles = [t for t in e["hand_before"]
                                   if t != e["tile"]
-                                  and tile_safety(t, s, e, g["players"], e["hand_before"]) == "genbutsu"]
+                                  and tile_safety(t, s, e, g, e["hand_before"]) == "genbutsu"]
                     if safe_tiles:
                         held_safe[s] = safe_tiles
                 if sh >= 2:
@@ -272,7 +286,7 @@ def review_hand(log, hero, stats, findings):
 
         # feeding an open hand while far from tenpai
         if opens and not threats and sh >= 2:
-            kinds = [tile_safety(e["tile"], s, e, g["players"], e["hand_before"]) for s in opens]
+            kinds = [tile_safety(e["tile"], s, e, g, e["hand_before"]) for s in opens]
             if not all(k in NOT_A_PUSH for k in kinds):
                 stats["open_push_chances"] += 1
                 stats["open_push_taken"] += 1

@@ -19,6 +19,19 @@ FIXTURE = ROOT / "data/self_games/2026-09-07-hanchan.json"
 FIXTURE_LINKS = ROOT / "data/self_games/2026-09-07-hanchan-2.txt"
 
 
+def table(discards, riichi=None, indicator=11):
+    """What the safety grading reads, at the discard that follows ``discards``.
+
+    ``discards`` lists every earlier discard in order as (seat, tile); ``riichi``
+    maps a seat to the position of its declaring discard.
+    """
+    events = [{"index": i, "seat": s, "tile": t, "melds": []} for i, (s, t) in enumerate(discards)]
+    game = {"events": events, "players": [{"melds": []} for _ in range(4)], "dora_indicators": [indicator]}
+    rivers = {s: [t for seat, t in discards if seat == s] for s in range(4)}
+    riichi_seats = {s: (riichi or {}).get(s) for s in range(4)}
+    return game, {"index": len(events), "rivers": rivers, "riichi_seats": riichi_seats}
+
+
 class TenhouReplayTests(unittest.TestCase):
     def test_meld_tokens_decode_caller_and_tile(self):
         chi = tr.parse_meld("c212223")
@@ -71,25 +84,10 @@ class SelfReviewTests(unittest.TestCase):
     def test_push_curve_is_measured_against_luckyj(self):
         push = {b: review.pct(self.stats["push_taken"][b], self.stats["push_chances"][b])
                 for b in self.stats["push_chances"]}
-        self.assertEqual(push["0"], 62.5)
+        # 4 of 8: the 8m on East 2-1 turn 11 had been passed after p3's riichi
+        self.assertEqual(push["0"], 50.0)
         self.assertEqual(push["2"], 0.0)
         self.assertEqual(push["3+"], 10.0)
-
-    def test_quiet_honors_are_folds_not_pushes(self):
-        """A lone honor with two copies showing sits under the 5% danger line."""
-        logs = tr.load_logs(FIXTURE_LINKS)
-        game = tr.replay(logs[0])
-        mine = [e for e in game["events"] if e["seat"] == 0]
-        turn7 = next(e for e in mine if e["turn"] == 7)          # lone chun, 2 seen
-        self.assertEqual(
-            review.tile_safety(turn7["tile"], 2, turn7, game["players"], turn7["hand_before"]),
-            "quiet-honor")
-        turn16 = next(e for e in mine if e["turn"] == 16)        # red 5m into a riichi
-        self.assertEqual(
-            review.tile_safety(turn16["tile"], 2, turn16, game["players"], turn16["hand_before"]),
-            "live-middle")
-        self.assertIn("quiet-honor", review.NOT_A_PUSH)
-        self.assertNotIn("live-honor", review.NOT_A_PUSH)
 
     def test_the_expensive_hand_is_flagged(self):
         kinds = {(f["kind"], f["round"]) for f in self.findings}
@@ -108,6 +106,61 @@ class SelfReviewTests(unittest.TestCase):
             if f["kind"] != "unnamed-safety":
                 continue
             self.assertRegex(f["text"], r"holding a genbutsu for every threat \(p\d: ")
+
+
+class SafetyRuleTests(unittest.TestCase):
+    def test_tile_passed_after_a_riichi_is_genbutsu(self):
+        # p1 declares with N; p2 then throws 9m and p1 does not ron, so p1 is furiten on it
+        game, e = table([(0, 13), (1, 44), (2, 19), (3, 41)], riichi={1: 1})
+        self.assertEqual(review.tile_safety(19, 1, e, game, [19]), "genbutsu")
+
+    def test_tile_passed_before_the_riichi_is_not_genbutsu(self):
+        game, e = table([(0, 13), (1, 44), (2, 19), (3, 41)], riichi={1: 1})
+        self.assertEqual(review.tile_safety(13, 1, e, game, [13]), "live-outer")
+
+    def test_passed_tiles_prove_nothing_against_a_hand_without_riichi(self):
+        game, e = table([(0, 13), (1, 44), (2, 19), (3, 41)])
+        self.assertEqual(review.tile_safety(19, 1, e, game, [19]), "live-terminal")
+
+    def test_quiet_honors_are_folds_not_pushes(self):
+        """A lone honor with two other copies showing sits under the 5% danger line."""
+        # every chun below was thrown before p1's riichi, so riichi furiten does not apply
+        game, e = table([(2, 47), (3, 47), (0, 12), (1, 44)], riichi={1: 3})
+        self.assertEqual(review.tile_safety(47, 1, e, game, [47]), "quiet-honor")
+        game, e = table([(2, 47), (3, 11), (0, 12), (1, 44)], riichi={1: 3})
+        self.assertEqual(review.tile_safety(47, 1, e, game, [47]), "live-honor")
+        self.assertEqual(review.tile_safety(47, 1, e, game, [47, 47]), "quiet-honor")  # own second copy
+        game, e = table([(2, 47), (3, 11), (0, 12), (1, 44)], riichi={1: 3}, indicator=47)
+        self.assertEqual(review.tile_safety(47, 1, e, game, [47]), "quiet-honor")  # the indicator shows one
+        game, e = table([(2, 47), (3, 47), (0, 47), (1, 44)], riichi={1: 3})
+        self.assertEqual(review.tile_safety(47, 1, e, game, [47]), "dead")
+        self.assertIn("quiet-honor", review.NOT_A_PUSH)
+        self.assertNotIn("live-honor", review.NOT_A_PUSH)
+
+
+class RiichiFuritenTests(unittest.TestCase):
+    """East 1 of the second hanchan: p2 declares on turn 3 and the hero keeps discarding."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.game = tr.replay(tr.load_logs(FIXTURE_LINKS)[0])
+        cls.mine = {e["turn"]: e for e in cls.game["events"] if e["seat"] == 0}
+
+    def safety(self, turn):
+        e = self.mine[turn]
+        return review.tile_safety(e["tile"], 2, e, self.game, e["hand_before"])
+
+    def test_tiles_passed_after_the_riichi_are_genbutsu(self):
+        self.assertEqual(self.safety(7), "genbutsu")   # chun: p1 threw one after the declaration
+        self.assertEqual(self.safety(16), "genbutsu")  # red 5m: p1 threw a 5m the turn before
+
+    def test_an_honor_pair_with_nothing_else_showing_is_live(self):
+        self.assertEqual(self.safety(9), "live-honor")  # South from a pair, no other copy out yet
+
+    def test_melds_count_from_the_turn_they_are_declared(self):
+        # p1 declares a closed kan of 4p between the hero's turns 12 and 13
+        self.assertEqual(review.visible_count(24, self.mine[12], self.game), 0)
+        self.assertEqual(review.visible_count(24, self.mine[13], self.game), 4)
 
 
 class KanAndMultiWinnerTests(unittest.TestCase):
