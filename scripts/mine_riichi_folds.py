@@ -102,6 +102,12 @@ def compute(manifest: str, since: str | None, out: str) -> None:
                     acc_gap = min(gaps)
                 dora = sum(1 for t in list(e["hand_before"]) + list(e["meld_tiles"]) if base(t) in dset or is_red(t))
                 dealt = loser.get(hero) is not None and e["index"] == last
+                into_riichi = dealt and loser.get(hero) in reached
+                honor_seen = None
+                if base(e["tile"]) >= 41:
+                    seen_cut = visible.copy()
+                    seen_cut[base(e["tile"])] -= 1
+                    honor_seen = seen_cut[base(e["tile"])]
                 rows.append({
                     "game": g["uuid"], "date": g["date"], "round": game["round_name"], "turn": e["turn"],
                     "best": best, "a_s": a_s, "push": not a_safe, "keep_safe": bool(keep_safe), "any_safe": bool(any_safe),
@@ -109,6 +115,7 @@ def compute(manifest: str, since: str | None, out: str) -> None:
                     "dealt": dealt, "riichis": len(reached), "tile": name(e["tile"]), "labels": a_labels,
                     "safe_keep_tiles": [name(t) for t in keep_safe], "hand": names(e["hand_before"]),
                     "cut_class": worst_class(a_labels), "best_keep_class": best_keep_class,
+                    "into_riichi": into_riichi, "honor_seen": honor_seen,
                 })
     Path(out + ".tmp").write_text(json.dumps({"games": len(games), "hands": hands, "rows": rows, "tenpai": tenpai_rows}))
     os.replace(out + ".tmp", out)
@@ -151,11 +158,17 @@ def report(label: str, files: list[str], examples: bool) -> None:
             cells.append(f"{t}: {pct(sum(r['push'] for r in ss), len(ss))} n {len(ss):4d} [{pct(sum(r['push'] for r in dd), len(dd))} n {len(dd)}]")
         print(f"    dora {lab:<3} " + "  ".join(cells))
     one = [r for r in rows if r["riichis"] == 1 and "cut_class" in r]
-    print("  deal-ins per 100 cuts against a single riichi, by the class of the tile cut (a deal-in to anyone)")
+    print("  deal-ins per 100 cuts against a single riichi, by the class of the tile cut")
     for cls in CLASS_ORDER:
         ss = [r for r in one if r["cut_class"] == cls]
         if ss:
-            print(f"    {cls:<14} n {len(ss):6d}  deal-in per 100 {100 * sum(r['dealt'] for r in ss) / len(ss):5.2f}")
+            print(f"    {cls:<14} n {len(ss):6d}  into the riichi {100 * sum(r['into_riichi'] for r in ss) / len(ss):5.2f}"
+                  f"   to anyone {100 * sum(r['dealt'] for r in ss) / len(ss):5.2f}")
+    for k in (0, 1, 2, 3):
+        ss = [r for r in one if r.get("honor_seen") == k]
+        if ss:
+            print(f"    honor, {k} other seen  n {len(ss):5d}  into the riichi {100 * sum(r['into_riichi'] for r in ss) / len(ss):5.2f}"
+                  f"   to anyone {100 * sum(r['dealt'] for r in ss) / len(ss):5.2f}")
     print("  what was cut when a tile of the safest class kept the same shanten")
     for keep in ("genbutsu", "honor 2 seen", "suji"):
         ss = [r for r in rows if r.get("best_keep_class") == keep]

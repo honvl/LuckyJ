@@ -19,13 +19,17 @@
     dora 1   <=8:  39.4% n  660 [ 47.1% n 157]  9-12:  21.8% n 1580 [ 29.7% n 435]  13+:  11.3% n 1313 [ 11.9% n 370]
     dora 2   <=8:  38.1% n  307 [ 52.8% n 53]  9-12:  27.3% n  755 [ 33.6% n 214]  13+:  17.5% n  731 [ 22.9% n 231]
     dora 3+  <=8:  41.9% n  105 [ 45.5% n 22]  9-12:  33.0% n  282 [ 37.7% n 69]  13+:  20.1% n  313 [ 20.0% n 70]
-  deal-ins per 100 cuts against a single riichi, by the class of the tile cut (a deal-in to anyone)
-    genbutsu       n  15462  deal-in per 100  0.27
-    honor 2 seen   n    905  deal-in per 100  0.22
-    suji           n   1272  deal-in per 100  3.85
-    live honor     n   1204  deal-in per 100  2.57
-    live terminal  n   1040  deal-in per 100  5.48
-    live 2-8       n   2424  deal-in per 100  8.54
+  deal-ins per 100 cuts against a single riichi, by the class of the tile cut
+    genbutsu       n  15462  into the riichi  0.00   to anyone  0.27
+    honor 2 seen   n    905  into the riichi  0.22   to anyone  0.22
+    suji           n   1272  into the riichi  2.83   to anyone  3.85
+    live honor     n   1204  into the riichi  2.41   to anyone  2.57
+    live terminal  n   1040  into the riichi  4.90   to anyone  5.48
+    live 2-8       n   2424  into the riichi  7.14   to anyone  8.54
+    honor, 0 other seen  n   348  into the riichi  3.16   to anyone  3.16
+    honor, 1 other seen  n  1639  into the riichi  1.10   to anyone  1.28
+    honor, 2 other seen  n  2859  into the riichi  0.07   to anyone  0.07
+    honor, 3 other seen  n  2154  into the riichi  0.00   to anyone  0.00
   what was cut when a tile of the safest class kept the same shanten
     safest keeping tile genbutsu      n  15580: genbutsu  92.6%  honor 2 seen   1.7%  suji   1.9%  live honor   0.9%  live terminal   0.9%  live 2-8   1.9%
     safest keeping tile honor 2 seen  n    834: genbutsu  17.7%  honor 2 seen  77.6%  suji   2.8%  live honor   0.6%  live terminal   0.4%  live 2-8   1.0%
