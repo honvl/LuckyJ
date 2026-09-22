@@ -89,6 +89,14 @@ class SelfReviewTests(unittest.TestCase):
         self.assertEqual(push["2"], 0.0)
         self.assertEqual(push["3+"], 10.0)
 
+    def test_first_answers_count_in_every_game_of_a_manifest(self):
+        # games share round names such as "East 1-0"; each hand still has its own first answer
+        _, stats, findings = review.build_report(self.logs, hero=0)
+        answers = sum(stats["first_answer_bucket"].values())
+        self.assertGreater(answers, 0)
+        review.build_report(self.logs, 0, stats, findings)
+        self.assertEqual(sum(stats["first_answer_bucket"].values()), 2 * answers)
+
     def test_the_expensive_hand_is_flagged(self):
         kinds = {(f["kind"], f["round"]) for f in self.findings}
         self.assertIn(("deal-in", "South 2-0"), kinds)
