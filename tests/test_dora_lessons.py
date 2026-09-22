@@ -107,5 +107,23 @@ class FlushCountTests(unittest.TestCase):
         self.assertEqual(flush.flush_count([11, 12, 21, 22, 45]), (3, 1))
 
 
+class ShapePlanTests(unittest.TestCase):
+    def test_terminals_and_honors_count_tiles(self):
+        import mine_shape_plans as shape
+        self.assertEqual(shape.yaochuu([11, 19, 19, 25, 41, 45, 52]), 5)  # 1m, two 9m, East, haku; red 5p is a simple
+
+    def test_flush_fit_and_main_suit(self):
+        import mine_shape_plans as shape
+        deal = [21, 22, 23, 25, 27, 29, 45, 45, 41, 13, 17, 34, 38]
+        self.assertEqual(shape.flush_fit(deal), 9)  # six pinzu plus three honors
+        self.assertEqual(shape.main_suit(deal), 2)
+        self.assertEqual(shape.main_suit([11, 21]), 1)  # a tie goes to the lower suit
+
+    def test_is_flush_ignores_honors(self):
+        import mine_shape_plans as shape
+        self.assertTrue(shape.is_flush([21, 25, 29, 41, 41, 47]))
+        self.assertFalse(shape.is_flush([21, 25, 31]))
+
+
 if __name__ == "__main__":
     unittest.main()

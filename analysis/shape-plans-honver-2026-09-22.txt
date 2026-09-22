@@ -1,0 +1,55 @@
+== Honver since 2026-01-01: 80 games, 830 hands
+-- all hands: 830 hands; tanyao wins per 100 hands 3.01, flush wins per 100 hands 1.33
+-- no dora in the deal: 419 hands; tanyao wins per 100 hands 2.63, flush wins per 100 hands 2.39
+-- dora in the deal: 411 hands; tanyao wins per 100 hands 3.41, flush wins per 100 hands 0.24
+-- tanyao, by terminals and honors in the deal: share of hands with none left by turn 3, 6, 9
+   [all hands]
+   0-2 in the deal        n    52 (  6.3%)  by turn 3  29.4%  turn 6  31.4%  turn 9  37.8%  won with it  15.4% (value  7700)  won  28.8%  net per hand   1637
+   3                      n   111 ( 13.4%)  by turn 3   2.7%  turn 6  25.0%  turn 9  34.1%  won with it   6.3% (value  5786)  won  20.7%  net per hand    313
+   4                      n   176 ( 21.2%)  by turn 3   0.0%  turn 6   5.5%  turn 9  15.7%  won with it   1.7% (value  4467)  won  26.1%  net per hand   1024
+   5                      n   192 ( 23.1%)  by turn 3   0.0%  turn 6   1.6%  turn 9   5.1%  won with it   2.1% (value  6850)  won  15.6%  net per hand    373
+   6-7                    n   237 ( 28.6%)  by turn 3   0.0%  turn 6   0.0%  turn 9   2.1%  won with it   1.3% (value  3667)  won  21.9%  net per hand    602
+   8 or more              n    62 (  7.5%)  by turn 3   0.0%  turn 6   0.0%  turn 9   0.0%  won with it   0.0% (value     0)  won  17.7%  net per hand    644
+   [no dora]
+   0-2 in the deal        n    26 (  3.1%)  by turn 3  44.0%  turn 6  40.0%  turn 9  43.5%  won with it  19.2% (value  7280)  won  30.8%  net per hand   1592
+   3                      n    46 (  5.5%)  by turn 3   2.2%  turn 6  22.2%  turn 9  33.3%  won with it   2.2% (value  7700)  won  13.0%  net per hand   -333
+   4                      n    82 (  9.9%)  by turn 3   0.0%  turn 6   2.6%  turn 9  13.8%  won with it   1.2% (value  2800)  won  29.3%  net per hand    945
+   5                      n    90 ( 10.8%)  by turn 3   0.0%  turn 6   0.0%  turn 9   2.6%  won with it   3.3% (value  4933)  won  18.9%  net per hand    598
+   6-7                    n   137 ( 16.5%)  by turn 3   0.0%  turn 6   0.0%  turn 9   1.8%  won with it   0.7% (value  6000)  won  26.3%  net per hand    977
+   8 or more              n    38 (  4.6%)  by turn 3   0.0%  turn 6   0.0%  turn 9   0.0%  won with it   0.0% (value     0)  won  21.1%  net per hand    966
+-- tanyao pace: terminals and honors among the first three discards, and left in hand after turns 3 and 6
+   0-2 in the deal        first three discards: 2.08 terminals/honors  left after turn 3 1.14  after turn 6 1.04
+   3                      first three discards: 2.28 terminals/honors  left after turn 3 1.87  after turn 6 1.55
+   4                      first three discards: 2.26 terminals/honors  left after turn 3 2.97  after turn 6 2.73
+   5                      first three discards: 2.28 terminals/honors  left after turn 3 3.90  after turn 6 3.58
+   6-7                    first three discards: 2.35 terminals/honors  left after turn 3 5.17  after turn 6 4.43
+-- flush, by tiles fitting one suit plus honors in the deal: share of hands in one suit by turn 3, 6, 9
+   [all hands]
+   7 or fewer             n   407 ( 49.0%)  by turn 3   0.0%  turn 6   0.0%  turn 9   0.0%  won with it   0.0% (value     0)  won  21.1%  net per hand    676
+   8                      n   228 ( 27.5%)  by turn 3   0.0%  turn 6   0.9%  turn 9   1.6%  won with it   1.3% (value  5967)  won  23.2%  net per hand    879
+   9                      n   145 ( 17.5%)  by turn 3   0.0%  turn 6   6.4%  turn 9   7.1%  won with it   2.1% (value  8567)  won  19.3%  net per hand    435
+   10                     n    38 (  4.6%)  by turn 3  10.8%  turn 6  25.0%  turn 9  34.4%  won with it   7.9% (value 12233)  won  21.1%  net per hand    171
+   11 or more             n    12 (  1.4%)  by turn 3  33.3%  turn 6  58.3%  turn 9  40.0%  won with it  16.7% (value  9250)  won  16.7%  net per hand    775
+   [no dora]
+   7 or fewer             n   192 ( 23.1%)  by turn 3   0.0%  turn 6   0.0%  turn 9   0.0%  won with it   0.0% (value     0)  won  23.4%  net per hand    606
+   8                      n   117 ( 14.1%)  by turn 3   0.0%  turn 6   1.8%  turn 9   3.3%  won with it   2.6% (value  5967)  won  26.5%  net per hand   1197
+   9                      n    83 ( 10.0%)  by turn 3   0.0%  turn 6   8.8%  turn 9   7.9%  won with it   3.6% (value  8567)  won  21.7%  net per hand    631
+   10                     n    17 (  2.0%)  by turn 3  12.5%  turn 6  33.3%  turn 9  46.7%  won with it  11.8% (value 12350)  won  17.6%  net per hand    588
+   11 or more             n    10 (  1.2%)  by turn 3  40.0%  turn 6  60.0%  turn 9  33.3%  won with it  20.0% (value  9250)  won  20.0%  net per hand    930
+   [flush pace: off-suit number tiles in the deal, among the first three discards, left after turns 3 and 6]
+   8                      off-suit in the deal 5.00  among the first three discards 1.28  left after turn 3 5.33  after turn 6 5.49
+   9                      off-suit in the deal 4.00  among the first three discards 1.20  left after turn 3 4.41  after turn 6 4.51
+   10                     off-suit in the deal 3.00  among the first three discards 1.57  left after turn 3 2.95  after turn 6 2.78
+   11 or more             off-suit in the deal 1.83  among the first three discards 2.42  left after turn 3 1.25  after turn 6 1.08
+   [8 or more fitting, by a value-honor pair in the deal]
+   value pair, 8          n    51 (  6.1%)  by turn 3   0.0%  turn 6   2.0%  turn 9   2.5%  won with it   2.0% (value  3900)  won  37.3%  net per hand   1124
+   value pair, 9          n    47 (  5.7%)  by turn 3   0.0%  turn 6  10.9%  turn 9   8.3%  won with it   2.1% (value  8100)  won  29.8%  net per hand    949
+   value pair, 10+        n    25 (  3.0%)  by turn 3  16.0%  turn 6  25.0%  turn 9  30.0%  won with it   4.0% (value  5200)  won  24.0%  net per hand   -920
+   no value pair, 8       n   177 ( 21.3%)  by turn 3   0.0%  turn 6   0.6%  turn 9   1.4%  won with it   1.1% (value  7000)  won  19.2%  net per hand    808
+   no value pair, 9       n    98 ( 11.8%)  by turn 3   0.0%  turn 6   4.3%  turn 9   6.6%  won with it   2.0% (value  8800)  won  14.3%  net per hand    189
+   no value pair, 10+     n    25 (  3.0%)  by turn 3  16.7%  turn 6  41.7%  turn 9  40.9%  won with it  16.0% (value 12500)  won  16.0%  net per hand   1552
+-- first calls
+   deal with 0-3 terminals/honors   opened  30.7%  first call all simples  82.0%  first call on turn  7.4  tanyao wins among opened  16.0%
+   deal with 4-5                    opened  34.2%  first call all simples  43.7%  first call on turn  6.8  tanyao wins among opened   4.0%
+   deal with 6 or more              opened  41.8%  first call all simples  23.2%  first call on turn  6.3  tanyao wins among opened   2.4%
+   all first calls: n 301  already one suit after the call   5.0%
