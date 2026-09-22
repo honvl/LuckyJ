@@ -80,10 +80,13 @@
           </div>
           <p>
             Safety labels read from your seat at that turn. <i class="safety-chip safe">genbutsu</i> is in that
-            player's river, or was discarded by anyone after their riichi without being ronned.
-            <i class="safety-chip mostly">suji</i> rules out a two-sided wait only, and LuckyJ's suji cuts against a
-            riichi still dealt into it about 3 times per 100. An honor with two other copies showing can only be hit by a
-            tanki. Everything else is live, and a live number tile from 2 to 8 is the most dangerous.
+            player's river, or was discarded by anyone after their riichi without being ronned; those tiles also
+            anchor suji. <i class="safety-chip mostly">suji</i> is a 1, 2 or 3 (or 7, 8 or 9) whose partner three
+            away is anchored. <i class="safety-chip mostly">nakasuji</i> is a 4, 5 or 6 with both partners anchored;
+            with only one it is <i class="safety-chip danger">half suji</i>, and still mostly live. A 4 whose 1 is
+            anchored, or a 6 whose 9 is, reads as <i class="safety-chip live">virtual nakasuji</i> when that player
+            also cut the 5 early: the early 5 is the sotogawa read that covers the other side. An honor with two other
+            copies showing can only be hit by a tanki. Everything else is live.
           </p>
         </section>
 
@@ -267,36 +270,61 @@
                   <tr><th>Cut a live tile against a riichi</th><th>You</th><th>LuckyJ</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>At tenpai</td><td>40.6%</td><td>45.2%</td></tr>
-                  <tr><td>At 1-shanten</td><td>18.9%</td><td>22.2%</td></tr>
-                  <tr><td>At 2-shanten</td><td>7.5%</td><td>11.4%</td></tr>
-                  <tr><td>At 3-shanten or worse</td><td>6.5%</td><td>7.0%</td></tr>
+                  <tr><td>At tenpai</td><td>38.2%</td><td>42.5%</td></tr>
+                  <tr><td>At 1-shanten</td><td>17.1%</td><td>20.4%</td></tr>
+                  <tr><td>At 2-shanten</td><td>6.5%</td><td>10.1%</td></tr>
+                  <tr><td>At 3-shanten or worse</td><td>6.0%</td><td>6.2%</td></tr>
                 </tbody>
               </table>
             </div>
             <p>
-              A tile counts as safe against a riichi player when it is in their river, when anyone discarded it after
-              the declaration without being ronned, when it is suji, or when it is an honor with two other copies
-              showing. Counting only the declarer's own river would call furiten-safe tiles pushes and overstate every
-              rate in this table.
+              Here a tile counts as safe against a riichi player when it is genbutsu, suji or nakasuji, or an honor
+              with two other copies showing. Genbutsu includes every tile discarded after the declaration without being
+              ronned, and those tiles anchor suji too. Counting only the declarer's own river would call furiten-safe
+              tiles pushes and overstate every rate in this table.
             </p>
             <p>
               So folding is not where your points go. The examples below are the occasional turns where a better
-              fold tile was on the table, and they come with the rules that decide them. Spend genbutsu against every
-              threat before genbutsu against one. Put an honor with two other copies showing ahead of suji: against
-              one riichi, LuckyJ's suji cuts dealt into the riichi 2.8 times per 100 and its honors with two other
-              copies showing 0.2 times. An honor with one other copy showing, at 2.1, is no riskier than suji. From 2-shanten on turn 13 or later a shanten is not worth a live tile:
-              LuckyJ pushes there 6.6% of the time. From 1-shanten on turn 13 or later it pushes 10 to 20% of the
-              time, the high end with three or more dora.
+              fold tile was on the table, and they come with the order that decides them. Suji is not one class.
+              Against one riichi, LuckyJ's cuts dealt into it this often:
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Tile cut against one riichi</th><th>LuckyJ's cuts</th><th>Deal-ins into the riichi per 100</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Genbutsu, including tiles passed after the riichi</td><td>15,462</td><td>0</td></tr>
+                  <tr><td>Honor with two other copies showing</td><td>905</td><td>0.2</td></tr>
+                  <tr><td>Suji on a 1 or 9</td><td>478</td><td>1.1</td></tr>
+                  <tr><td>Honor with one other copy showing</td><td>856</td><td>2.1</td></tr>
+                  <tr><td>Nakasuji</td><td>327</td><td>2.8</td></tr>
+                  <tr><td>Honor with no other copy showing</td><td>348</td><td>3.2</td></tr>
+                  <tr><td>Suji on a 2 or 8</td><td>422</td><td>3.3</td></tr>
+                  <tr><td>Suji on a 3 or 7</td><td>379</td><td>4.5</td></tr>
+                  <tr><td>Live 1 or 9</td><td>977</td><td>5.2</td></tr>
+                  <tr><td>Half suji</td><td>530</td><td>6.2</td></tr>
+                  <tr><td>Live 2 to 8</td><td>1,592</td><td>8.2</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              After genbutsu and the honors with two copies showing, a suji 1 or 9 is the next safest tile, and a suji
+              3 or 7 is closer to a live terminal than to genbutsu. A nakasuji sits with the average suji. A half suji,
+              with only one side covered, deals in more than twice as often and belongs with the live tiles. Virtual
+              nakasuji came up only 31 times in LuckyJ's cuts, too few to rate. From 2-shanten on turn 13 or later a
+              shanten is not worth a live tile: LuckyJ pushes there 5.0% of the time. From 1-shanten on turn 13 or later
+              it pushes 8 to 17% of the time, the high end with three or more dora.
             </p>
             <div class="rule">
               <strong>Rule:</strong> Rank the safe tiles before you cut: genbutsu against every threat, then genbutsu
-              against the riichi, then an honor with two other copies showing, then suji. If a safe tile leaves the
-              same shanten and acceptance, it is the only cut.
+              against the riichi, then an honor with two other copies showing, then suji on a 1 or 9, then nakasuji,
+              suji on a 2 or 8 and honors with one copy showing, with suji on a 3 or 7 last. A half suji is a live
+              tile. If a safe tile leaves the same shanten and acceptance, it is the only cut.
             </div>
             <div class="exception">
               <strong>Exception:</strong> A safe tile that costs a shanten is still right from 2-shanten on turn 13 or
-              later, and from 1-shanten late in four hands out of five, dora or not.
+              later, and from 1-shanten late at least four hands out of five, dora or not.
             </div>
             <p class="evidence-note">
               <b>Evidence:</b> 1,574 of your discards and 24,560 of LuckyJ's made while an opponent was in riichi and
@@ -311,15 +339,15 @@
           <div class="point-body">
             <h3>Push the tenpai that can win</h3>
             <p>
-              At tenpai against a riichi you push 41% of the time and LuckyJ 45%; from turn 13 on, 28% against 38%.
+              At tenpai against a riichi you push 38% of the time and LuckyJ 43%; from turn 13 on, 26% against 35%.
               The clearest gap is the open tenpai whose wait can only be kept with a dangerous tile: LuckyJ pushes it
-              84% of the time and you 72%, over 65 of your hands. LuckyJ pushes 94% of those with 8 or more live
+              84% of the time and you 71%, over 63 of your hands. LuckyJ pushes 93% of those with 8 or more live
               tiles and 76% with 3 or fewer.
             </p>
             <p>
               The yaku decides the push more than the wait width does. With a yaku on the wait, LuckyJ pushes an open
               tenpai 68% of the time even on 2 live tiles and 95% on 8 or more. With no yaku on any wait it pushes
-              57% of them, since such a hand cannot win by ron. A closed tenpai with no yaku can only win by
+              55% of them, since such a hand cannot win by ron. A closed tenpai with no yaku can only win by
               tsumo, and on one live tile that almost never happens.
             </p>
             <div class="rule">
@@ -328,7 +356,7 @@
             </div>
             <div class="exception">
               <strong>Exception:</strong> The closest call in LuckyJ's data is an open tenpai with no yaku on any wait,
-              pushed 57% of the time. With a yaku and a live wait it pushes at least 68% of the time, and 95% with 8
+              pushed 55% of the time. With a yaku and a live wait it pushes at least 68% of the time, and 95% with 8
               or more live tiles.
             </div>
             <div data-guide-examples="push"></div>
@@ -341,7 +369,7 @@
           <ul>
             <li>Your games: 80 Jade South hanchan since 1 January 2026, fetched from the Mahjong Soul client and amae-koromo. LuckyJ: 1,255 Tenhou games rebuilt from the cached NAGA reports. Both run through the same replay and metric code.</li>
             <li>Each table is rebuilt from the record at the start of your turn. Opponents' hands are shown as they really were; the switch at the top hides them.</li>
-            <li>Acceptance counts the unseen copies of every improving tile from your seat, with a called tile counted once. Safety includes tiles passed after a riichi and honors with other copies showing. Yaku and value are checked only where the text says so.</li>
+            <li>Acceptance counts the unseen copies of every improving tile from your seat, with a called tile counted once. Against a riichi, tiles passed after the declaration count as genbutsu and anchor suji; a 4, 5 or 6 needs both partners for nakasuji, and an early 5 can cover one side of a 4 or 6 (virtual nakasuji, following the main playbook's sotogawa rule). Honors are read by how many other copies show. Yaku and value are checked only where the text says so.</li>
             <li>Generated data: <code>site/honver-guide.json</code> from <code>scripts/build_personal_guide.py</code> and <code>data/personal_guide_spots.json</code>. Chapter numbers come from <code>scripts/mine_riichi_folds.py</code>, <code>mine_open_tenpai_push.py</code>, <code>mine_single_call.py</code>, <code>mine_vs_open.py</code>, <code>mine_win_value.py</code> and <code>mine_value_choice.py</code>, each run on your games and on LuckyJ's with the same code.</li>
             <li><a href="points.html">The main LuckyJ playbook</a> has the general rules these chapters build on.</li>
           </ul>

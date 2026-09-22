@@ -105,7 +105,7 @@
    ],
    "title": "8,000 from a tile that was not even the most efficient",
    "situation": "East 1, turn 7. Toimen ponned [[N]], their seat wind, then added the fourth [[N]] as a kan, and has kept cutting tiles from hand since. You are 2-shanten with a pair of [[F]] and two dora.",
-   "did": "You cut [[4m]], live, leaving 20 tiles of acceptance, and dealt in for 8,000.",
+   "did": "You cut [[4m]], only half suji against the kan because just the [[7m]] side was covered, leaving 20 tiles of acceptance, and dealt in for 8,000.",
    "luckyj": "Against a single call, LuckyJ pays one or two tiles of acceptance for a safe tile about a quarter of the time. Here the safe tile cost nothing against the tile you chose.",
    "fix": "[[F]] leaves 21 tiles, one more than [[4m]]. With your other [[F]] and the one in kamicha's river, only a tanki on the last copy can hit it. [[8m]] and [[2p]] leave 22 but are live too. A kan of a value wind is a hand with its yaku done: take the honor."
   },
@@ -185,8 +185,8 @@
    "title": "The tile that was safe against both players",
    "situation": "East 4, one honba. You lead with 40,800. Shimocha declared riichi on turn 4 and kamicha has ponned haku [[P]]. You are folding at 2-shanten.",
    "did": "You cut [[3s]] on turn 12 and [[1s]] on turn 13. The [[1s]] completed shimocha's shanpon for 1,600.",
-   "luckyj": "At 2-shanten against a riichi, LuckyJ keeps a safe tile 95% of the time when one holds its shanten. You already fold that often. The leak here is which safe tile.",
-   "fix": "Rank the safe tiles before you cut: genbutsu against every threat, then genbutsu against the riichi, then an honor with two other copies showing, then suji. Suji only rules out a two-sided wait; shanpon, tanki and kanchan still hit it. [[2p]] topped that list for two turns and cost two or three tiles of acceptance in a hand that was folding anyway."
+   "luckyj": "At 2-shanten against a riichi, LuckyJ keeps a safe tile 96% of the time when one holds its shanten. You already fold that often. The leak here is which safe tile.",
+   "fix": "Rank the safe tiles before you cut: genbutsu against every threat, then genbutsu against the riichi, then an honor with two other copies showing, then suji, with a 1 or 9 on suji the safest of those. Suji only rules out a two-sided wait; shanpon, tanki and kanchan still hit it. [[2p]] topped that list for two turns and cost two or three tiles of acceptance in a hand that was folding anyway."
   },
   {
    "id": "north-or-two-m",
@@ -221,44 +221,8 @@
    "title": "2-shanten on turn 13 against a riichi",
    "situation": "East 2, one honba, turn 13 with 23 tiles left. You are the dealer and lead with 34,700. Toimen declared riichi on turn 6 and kamicha has ponned [[F]]. You are 2-shanten.",
    "did": "You cut [[8p]], live against both players, to keep 2-shanten.",
-   "luckyj": "At 2-shanten on turn 13 or later, LuckyJ cuts a live tile against a riichi 6.6% of the time.",
+   "luckyj": "At 2-shanten on turn 13 or later, LuckyJ cuts a live tile against a riichi 5.0% of the time.",
    "fix": "Fold with [[7s]], suji against both players, or [[3p]], genbutsu against both. Either costs a shanten. From 2-shanten with about five draws left the hand rarely reaches tenpai at all, so that shanten was worth little, and a leading dealer has more to lose from a deal-in than from a folded hand."
-  },
-  {
-   "id": "dealer-one-shanten-turn-fifteen",
-   "chapter": "folds",
-   "game": "260922-dad15d2f",
-   "round": "East 2-0",
-   "frames": [
-    {
-     "turn": 15,
-     "expect_cut": "6m",
-     "better": "6s"
-    }
-   ],
-   "title": "1-shanten with three dora on turn 15",
-   "situation": "East 2, turn 15 with 15 tiles left. You are the dealer at 25,000, open with a [[2s]] pon that is three dora, 1-shanten toward tanyao. Shimocha declared riichi on turn 8.",
-   "did": "You pushed [[6m]], a live middle tile, and dealt in for 2,600.",
-   "luckyj": "LuckyJ pushes a 1-shanten hand against a riichi on turn 13 or later 20% of the time even with three or more dora, as dealer or not.",
-   "fix": "Fold with [[6s]] or [[7s]], both genbutsu. The dora make the hand worth 11,600, which is why the push is tempting. With about four draws left it still has to reach tenpai and then win, and every live tile on the way is another chance to pay."
-  },
-  {
-   "id": "south-one-four-t15",
-   "chapter": "folds",
-   "game": "260922-4ebf19e7",
-   "round": "South 1-4",
-   "frames": [
-    {
-     "turn": 15,
-     "expect_cut": "4p",
-     "better": "3p"
-    }
-   ],
-   "title": "Same hand either way, and one tile was suji",
-   "situation": "South 1, four honba, turn 15 with 11 tiles left. You are fourth at 18,800. The dealer declared riichi on turn 5. You are 1-shanten.",
-   "did": "You cut [[4p]], a live middle tile.",
-   "luckyj": "When a safe tile leaves exactly the same shanten and acceptance, LuckyJ pushes past it about 2% of the time at 1-shanten.",
-   "fix": "[[3p]] is suji and leaves the same 1-shanten with the same 7 tiles."
   },
   {
    "id": "three-threats-five-s",
@@ -272,11 +236,11 @@
      "better": "3p"
     }
    ],
-   "title": "A tile live against all three players",
+   "title": "Genbutsu against the riichi that also kept more tiles",
    "situation": "South 1, one honba, turn 16 with 6 tiles left. Kamicha declared riichi on turn 11, shimocha has two calls and toimen one. You are third at 20,100 and 2-shanten.",
-   "did": "You cut [[5s]], live against all three players.",
-   "luckyj": "At 2-shanten on turn 13 or later, LuckyJ cuts a live tile against a riichi 6.6% of the time.",
-   "fix": "[[3p]] is genbutsu against the riichi and leaves more acceptance, 32 tiles against 26. [[8p]] is suji against the riichi and genbutsu against toimen. Both open hands hold sou melds, which makes a middle sou the worst tile on the table for them too."
+   "did": "You cut [[5s]]: nakasuji against the riichi, and only half suji against the two open hands, which both hold sou melds.",
+   "luckyj": "Against one riichi, LuckyJ's nakasuji cuts dealt into it 2.8 times per 100 and its genbutsu never did.",
+   "fix": "[[3p]] is genbutsu against the riichi and leaves more acceptance, 32 tiles against 26. Neither tile is safe against the open hands. [[7p]] is suji against all three players, but it is a 3-7 suji, the weakest kind, against the riichi."
   },
   {
    "id": "two-riichis-eight-m",
@@ -311,7 +275,7 @@
    "title": "An 8-tile open tenpai, folded",
    "situation": "South 3, turn 10. Kamicha declared riichi on turn 4. You are third at 24,500, open with two chis and a concealed [[F]] triplet, and you draw the red [[5sr]].",
    "did": "You cut [[6m]], genbutsu, and gave up the tenpai.",
-   "luckyj": "With an open tenpai against a riichi, where keeping it needs a dangerous tile, LuckyJ pushes 94% of the time with 8 or more live tiles, and 92% of the time when such a hand is only 1 or 2 han.",
+   "luckyj": "With an open tenpai against a riichi, where keeping it needs a dangerous tile, LuckyJ pushes 93% of the time with 8 or more live tiles, and 91% of the time when such a hand is only 1 or 2 han.",
    "fix": "Cut the red [[5sr]] and wait on [[5m]]-[[8m]] with 8 tiles. It costs a han and leaves [[F]] and the red [[5pr]], about 2,000 points. An 8-tile wait with a yaku is the tenpai you push."
   },
   {
@@ -329,7 +293,7 @@
    "title": "A tenpai that could not win by ron",
    "situation": "South 2, turn 14 with 14 tiles left. Kamicha has just declared riichi and shimocha has ponned [[4s]]. You are fourth at 20,800 and draw [[3p]] into tenpai.",
    "did": "You cut [[2s]], live against the riichi, to wait on [[4s]]. The hand has no yaku, so it could only win by tsumo, and three [[4s]] were already in shimocha's pon: one tile in the whole game could complete it. The [[2s]] dealt in for 8,000.",
-   "luckyj": "LuckyJ pushes 45% of its tenpai hands against a riichi, you 41%. What decides the push is the yaku: LuckyJ pushes 87% of its open tenpais that have a yaku on the wait, and 57% of those with none.",
+   "luckyj": "LuckyJ pushes 43% of its tenpai hands against a riichi, you 38%. What decides the push is the yaku: LuckyJ pushes 86% of its open tenpais that have a yaku on the wait, and 55% of those with none.",
    "fix": "Fold with [[2p]], genbutsu against the riichi and suji against shimocha. Cutting the red [[5sr]] for a [[1s]]-[[4s]] wait does not help: all four [[1s]] are gone. A yakuless dama with one live tile is worth about as much as a 1-shanten hand."
   }
  ]

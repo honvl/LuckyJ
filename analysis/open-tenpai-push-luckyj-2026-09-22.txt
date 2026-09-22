@@ -1,18 +1,18 @@
-== LuckyJ: 1255 games; open tenpai against a riichi where every tenpai-keeping tile is unsafe: 973 hands
-  all                            n   973  push  84.1%  push: win  29.8% deal-in  20.2%
-  no yaku on any wait            n    79  push  57.0%  push: win  11.1% deal-in  20.0%
-  waits <=3                      n   254  push  76.0%  push: win  16.6% deal-in  19.7%
-  waits <=3 1-2 han              n   107  push  71.0%  push: win  11.8% deal-in  21.1%
-  waits <=3 3-4 han              n    94  push  86.2%  push: win  21.0% deal-in  18.5%
-  waits <=3 5+ han               n    23  push  87.0%  push: win  20.0% deal-in  25.0%
-  waits 4-7                      n   595  push  85.5%  push: win  32.6% deal-in  21.4%
-  waits 4-7 1-2 han              n   253  push  79.4%  push: win  35.3% deal-in  16.4%
-  waits 4-7 3-4 han              n   223  push  93.3%  push: win  33.2% deal-in  22.1%
-  waits 4-7 5+ han               n    75  push  98.7%  push: win  31.1% deal-in  31.1%
-  waits 8+                       n   124  push  93.5%  push: win  39.7% deal-in  15.5%
-  waits 8+ 1-2 han               n    59  push  91.5%  push: win  40.7% deal-in  13.0%
-  waits 8+ 3-4 han               n    48  push  97.9%  push: win  36.2% deal-in  21.3%
-  waits 8+ 5+ han                n    12  push 100.0%  push: win  58.3% deal-in   8.3%
+== LuckyJ: 1255 games; open tenpai against a riichi where every tenpai-keeping tile is unsafe: 953 hands
+  all                            n   953  push  83.9%  push: win  30.0% deal-in  20.1%
+  no yaku on any wait            n    74  push  55.4%  push: win  12.2% deal-in  19.5%
+  waits <=3                      n   249  push  75.9%  push: win  16.9% deal-in  19.6%
+  waits <=3 1-2 han              n   108  push  71.3%  push: win  11.7% deal-in  20.8%
+  waits <=3 3-4 han              n    92  push  87.0%  push: win  21.2% deal-in  18.8%
+  waits <=3 5+ han               n    22  push  86.4%  push: win  21.1% deal-in  26.3%
+  waits 4-7                      n   585  push  85.5%  push: win  32.8% deal-in  21.6%
+  waits 4-7 1-2 han              n   249  push  79.1%  push: win  35.0% deal-in  16.8%
+  waits 4-7 3-4 han              n   220  push  93.2%  push: win  33.7% deal-in  22.0%
+  waits 4-7 5+ han               n    74  push  98.6%  push: win  31.5% deal-in  31.5%
+  waits 8+                       n   119  push  93.3%  push: win  39.6% deal-in  14.4%
+  waits 8+ 1-2 han               n    58  push  91.4%  push: win  41.5% deal-in  11.3%
+  waits 8+ 3-4 han               n    45  push  97.8%  push: win  36.4% deal-in  20.5%
+  waits 8+ 5+ han                n    11  push 100.0%  push: win  54.5% deal-in   9.1%
   turn <=8                       n   128  push  89.8%  push: win  33.9% deal-in  22.6%
-  turn 9-12                      n   423  push  87.5%  push: win  35.9% deal-in  19.5%
-  turn 13+                       n   422  push  78.9%  push: win  21.6% deal-in  20.1%
+  turn 9-12                      n   415  push  87.2%  push: win  35.9% deal-in  19.1%
+  turn 13+                       n   410  push  78.8%  push: win  22.0% deal-in  20.4%

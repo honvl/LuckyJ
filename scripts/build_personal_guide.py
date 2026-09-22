@@ -49,9 +49,12 @@ WIND = {41: "E", 42: "S", 43: "W", 44: "N"}
 SITE_HONOR = {41: "E", 42: "S", 43: "W", 44: "N", 45: "P", 46: "F", 47: "C"}
 MELD_KIND = {"c": "chi", "p": "pon", "m": "daiminkan", "k": "pon", "a": "ankan"}
 DANGER = {
-    "genbutsu": 0, "dead": 0, "suji": 1, "honor, 2 seen": 1,
-    "live honor": 2, "live terminal": 2, "live 2-3-7-8": 3, "live 4-5-6": 4,
+    "genbutsu": 0, "dead": 0, "suji": 1, "nakasuji": 1, "honor, 2 seen": 1,
+    "virtual nakasuji": 2, "live honor": 2, "live terminal": 2,
+    "half suji": 3, "live 2-3-7-8": 3, "live 4-5-6": 4,
 }
+# Early discards (the first six in a river) that make a sotogawa read, as in analyze_luckyj.
+SOTOGAWA_EARLY = 6
 YAKU_EN = {
     "立直": "riichi", "ダブル立直": "double riichi", "一発": "ippatsu", "門前清自摸和": "menzen tsumo",
     "断幺九": "tanyao", "平和": "pinfu", "一盃口": "iipeikou", "二盃口": "ryanpeikou",
@@ -166,34 +169,55 @@ def visible_counter(hand, e, players, snap, indicators) -> Counter:
 
 
 def safety(tile: int, q: int, e: dict, game: dict, seen: Counter) -> str:
-    """How safe ``tile`` is against seat ``q`` at event ``e``; ``seen`` excludes the tile itself."""
+    """How safe ``tile`` is against seat ``q`` at event ``e``; ``seen`` excludes the tile itself.
+
+    Against a riichi, a tile anyone discarded after the declaration without being ronned is
+    as good as genbutsu (riichi furiten), and it anchors suji like a river tile does.
+    """
     b = base(tile)
-    if any(base(x) == b for x in e["rivers"][q]):
-        return "genbutsu"
+    river = e["rivers"][q]
+    ref = {base(x) for x in river}
     r = e["riichi_seats"][q]
-    if r is not None and any(base(ev["tile"]) == b for ev in game["events"][r + 1: e["index"]]):
+    if r is not None and r < e["index"]:
+        ref |= {base(ev["tile"]) for ev in game["events"][r + 1: e["index"]]}
+    if b in ref:
         return "genbutsu"
     if is_honor(tile):
         others = seen[b]
         if others >= 3:
             return "dead"
         return "honor, 2 seen" if others == 2 else "live honor"
-    if tr_suji(tile, e["rivers"][q]):
-        return "suji"
+    label = suji_label(tile, ref, {base(x) for x in river[:SOTOGAWA_EARLY]})
+    if label:
+        return label
     if is_terminal(tile):
         return "live terminal"
     return "live 2-3-7-8" if b % 10 in (2, 3, 7, 8) else "live 4-5-6"
 
 
-def tr_suji(tile, river) -> bool:
+def suji_label(tile, ref, early) -> str | None:
+    """Suji reading of a number tile against the genbutsu set ``ref``.
+
+    A 1-3 or 7-9 is suji when its partner three away is in ``ref``. A 4, 5 or 6 needs both
+    partners (nakasuji); with one partner it is half suji. A 4 whose 1 is in ``ref`` and a 6
+    whose 9 is in ``ref`` count as virtual nakasuji when that player also cut the 5 early
+    (``early``): the early 5 is the sotogawa read that covers the 5-6 or 4-5 shape.
+    """
     b = base(tile)
     suit, num = divmod(b, 10)
-    seen = {base(x) for x in river}
+    low, high = b - 3, b + 3
     if num <= 3:
-        return suit * 10 + num + 3 in seen
+        return "suji" if high in ref else None
     if num >= 7:
-        return suit * 10 + num - 3 in seen
-    return suit * 10 + num - 3 in seen and suit * 10 + num + 3 in seen
+        return "suji" if low in ref else None
+    if low in ref and high in ref:
+        return "nakasuji"
+    five = suit * 10 + 5
+    if (num == 4 and low in ref or num == 6 and high in ref) and five in early:
+        return "virtual nakasuji"
+    if low in ref or high in ref:
+        return "half suji"
+    return None
 
 
 def site_melds(game: dict, seat: int, snap_tiles: list[list[int]]) -> list[dict]:

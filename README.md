@@ -208,7 +208,10 @@ match the replay:
 
 Safety in the guide and in `scripts/mine_riichi_folds.py` counts a tile as safe against a
 riichi when anyone discarded it after the declaration without being ronned (riichi furiten),
-and counts a called tile once when measuring acceptance. The older review scripts only read
+and those passed tiles anchor suji like river tiles do. A 4, 5 or 6 is nakasuji only with both
+partners anchored and half suji with one; a 4 with its 1 anchored or a 6 with its 9 anchored
+is virtual nakasuji when that player cut the 5 among their first six discards (the sotogawa
+rule in `scripts/analyze_luckyj.py`). A called tile counts once when measuring acceptance. The older review scripts only read
 the declarer's own river, which counts furiten-safe tiles as pushes. The chapter numbers come
 from these miners, each run on your games and on the LuckyJ conversion (split the LuckyJ
 manifest into chunks and pass every rows file to `report`):

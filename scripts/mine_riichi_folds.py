@@ -22,11 +22,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-SAFE = {"genbutsu", "dead", "suji", "honor, 2 seen"}
+SAFE = {"genbutsu", "dead", "suji", "nakasuji", "honor, 2 seen"}
 # Safety classes from safest to most dangerous; a tile's class is its worst label over the riichi players.
 CLASS_OF = {"genbutsu": "genbutsu", "dead": "genbutsu", "honor, 2 seen": "honor 2 seen", "suji": "suji",
-            "live honor": "live honor", "live terminal": "live terminal", "live 2-3-7-8": "live 2-8", "live 4-5-6": "live 2-8"}
-CLASS_ORDER = ["genbutsu", "honor 2 seen", "suji", "live honor", "live terminal", "live 2-8"]
+            "nakasuji": "nakasuji", "virtual nakasuji": "virtual nakasuji", "live honor": "live honor",
+            "live terminal": "live terminal", "half suji": "half suji", "live 2-3-7-8": "live 2-8", "live 4-5-6": "live 2-8"}
+CLASS_ORDER = ["genbutsu", "honor 2 seen", "suji", "nakasuji", "virtual nakasuji", "live honor", "live terminal",
+               "half suji", "live 2-8"]
 
 
 def worst_class(labels):
@@ -116,6 +118,7 @@ def compute(manifest: str, since: str | None, out: str) -> None:
                     "safe_keep_tiles": [name(t) for t in keep_safe], "hand": names(e["hand_before"]),
                     "cut_class": worst_class(a_labels), "best_keep_class": best_keep_class,
                     "into_riichi": into_riichi, "honor_seen": honor_seen,
+                    "cut_num": 0 if base(e["tile"]) >= 41 else base(e["tile"]) % 10,
                 })
     Path(out + ".tmp").write_text(json.dumps({"games": len(games), "hands": hands, "rows": rows, "tenpai": tenpai_rows}))
     os.replace(out + ".tmp", out)
@@ -163,6 +166,11 @@ def report(label: str, files: list[str], examples: bool) -> None:
         ss = [r for r in one if r["cut_class"] == cls]
         if ss:
             print(f"    {cls:<14} n {len(ss):6d}  into the riichi {100 * sum(r['into_riichi'] for r in ss) / len(ss):5.2f}"
+                  f"   to anyone {100 * sum(r['dealt'] for r in ss) / len(ss):5.2f}")
+    for nums, lab in (((1, 9), "suji on 1 or 9"), ((2, 8), "suji on 2 or 8"), ((3, 7), "suji on 3 or 7")):
+        ss = [r for r in one if r["cut_class"] == "suji" and r.get("cut_num") in nums]
+        if ss:
+            print(f"    {lab:<14} n {len(ss):6d}  into the riichi {100 * sum(r['into_riichi'] for r in ss) / len(ss):5.2f}"
                   f"   to anyone {100 * sum(r['dealt'] for r in ss) / len(ss):5.2f}")
     for k in (0, 1, 2, 3):
         ss = [r for r in one if r.get("honor_seen") == k]

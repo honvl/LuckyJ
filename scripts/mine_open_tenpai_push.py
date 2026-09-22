@@ -22,7 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-SAFE = {"genbutsu", "dead", "suji", "honor, 2 seen"}
+SAFE = {"genbutsu", "dead", "suji", "nakasuji", "honor, 2 seen"}
 
 
 def to136(codes, used):

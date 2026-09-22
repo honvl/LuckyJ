@@ -60,8 +60,28 @@ class SafetyTests(unittest.TestCase):
         game = {"events": []}
         one_side = event(0, {0: [], 1: [32], 2: [], 3: []}, {0: None, 1: None, 2: None, 3: None})
         both = event(0, {0: [], 1: [32, 38], 2: [], 3: []}, {0: None, 1: None, 2: None, 3: None})
-        self.assertEqual(guide.safety(35, 1, one_side, game, Counter()), "live 4-5-6")
-        self.assertEqual(guide.safety(35, 1, both, game, Counter()), "suji")
+        self.assertEqual(guide.safety(35, 1, one_side, game, Counter()), "half suji")
+        self.assertEqual(guide.safety(35, 1, both, game, Counter()), "nakasuji")
+
+    def test_tile_passed_after_riichi_anchors_suji(self):
+        # Seat 1 has 7p in the river and declares at event 1; seat 2 later passes 1p, so 4p is nakasuji.
+        game = {"events": [{"tile": 27}, {"tile": 27}, {"tile": 21}]}
+        e = event(3, {0: [], 1: [27], 2: [21], 3: []}, {0: None, 1: 1, 2: None, 3: None})
+        self.assertEqual(guide.safety(24, 1, e, game, Counter()), "nakasuji")
+        before = event(3, {0: [21], 1: [27], 2: [], 3: []}, {0: None, 1: None, 2: None, 3: None})
+        self.assertEqual(guide.safety(24, 1, before, game, Counter()), "half suji")
+
+    def test_virtual_nakasuji_needs_the_outer_suji_and_an_early_five(self):
+        game = {"events": []}
+        riichi = {0: None, 1: None, 2: None, 3: None}
+        four = event(0, {0: [], 1: [25, 21], 2: [], 3: []}, riichi)  # early 5p, 1p: 4p
+        six = event(0, {0: [], 1: [25, 29], 2: [], 3: []}, riichi)  # early 5p, 9p: 6p
+        late_five = event(0, {0: [], 1: [21, 41, 42, 43, 44, 45, 25], 2: [], 3: []}, riichi)
+        inner = event(0, {0: [], 1: [25, 27], 2: [], 3: []}, riichi)  # 7p covers the same side as the 5p
+        self.assertEqual(guide.safety(24, 1, four, game, Counter()), "virtual nakasuji")
+        self.assertEqual(guide.safety(26, 1, six, game, Counter()), "virtual nakasuji")
+        self.assertEqual(guide.safety(24, 1, late_five, game, Counter()), "half suji")
+        self.assertEqual(guide.safety(24, 1, inner, game, Counter()), "half suji")
 
 
 class VisibleCounterTests(unittest.TestCase):

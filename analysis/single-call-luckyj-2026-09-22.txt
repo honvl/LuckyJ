@@ -1,51 +1,51 @@
 == LuckyJ: 1255 games, 13054 hands; hero discards vs a lone single-meld caller, no riichi: 24618
 -- by hero shanten (best reachable)
-  0                              n  3147  cut: full-efficiency  90.4% (safe tile  33.9% live  56.4%)  paid acceptance   2.0%  dropped shanten   2.1%  other loss   5.5%  live tile  63.1%  deal-in to caller/100 0.95  avg cost  3560
-  1                              n  8782  cut: full-efficiency  79.1% (safe tile  28.6% live  50.5%)  paid acceptance   5.5%  dropped shanten   1.5%  other loss  13.9%  live tile  65.3%  deal-in to caller/100 0.64  avg cost  4141
-  2                              n  8037  cut: full-efficiency  64.9% (safe tile  19.1% live  45.8%)  paid acceptance   6.2%  dropped shanten   0.7%  other loss  28.2%  live tile  73.3%  deal-in to caller/100 0.35  avg cost  3739
-  3+                             n  4652  cut: full-efficiency  38.3% (safe tile   9.5% live  28.8%)  paid acceptance   4.9%  dropped shanten   0.4%  other loss  56.4%  live tile  81.4%  deal-in to caller/100 0.09  avg cost  2275
+  0                              n  3147  cut: full-efficiency  90.4% (safe tile  33.9% live  56.4%)  paid acceptance   2.0%  dropped shanten   2.0%  other loss   5.6%  live tile  63.1%  deal-in to caller/100 0.95  avg cost  3560
+  1                              n  8782  cut: full-efficiency  79.1% (safe tile  28.6% live  50.5%)  paid acceptance   5.2%  dropped shanten   1.5%  other loss  14.2%  live tile  65.3%  deal-in to caller/100 0.64  avg cost  4141
+  2                              n  8037  cut: full-efficiency  64.9% (safe tile  19.1% live  45.8%)  paid acceptance   6.1%  dropped shanten   0.7%  other loss  28.4%  live tile  73.3%  deal-in to caller/100 0.35  avg cost  3739
+  3+                             n  4652  cut: full-efficiency  38.3% (safe tile   9.5% live  28.8%)  paid acceptance   4.7%  dropped shanten   0.4%  other loss  56.6%  live tile  81.4%  deal-in to caller/100 0.09  avg cost  2275
 -- by turn
-  <=8                            n 16867  cut: full-efficiency  64.6% (safe tile  15.6% live  49.0%)  paid acceptance   5.0%  dropped shanten   0.8%  other loss  29.6%  live tile  79.7%  deal-in to caller/100 0.27  avg cost  3237
-  9-12                           n  5709  cut: full-efficiency  75.1% (safe tile  34.7% live  40.4%)  paid acceptance   5.4%  dropped shanten   1.6%  other loss  17.9%  live tile  54.5%  deal-in to caller/100 0.95  avg cost  4454
+  <=8                            n 16867  cut: full-efficiency  64.6% (safe tile  15.6% live  49.0%)  paid acceptance   4.7%  dropped shanten   0.8%  other loss  29.9%  live tile  79.7%  deal-in to caller/100 0.27  avg cost  3237
+  9-12                           n  5709  cut: full-efficiency  75.1% (safe tile  34.7% live  40.4%)  paid acceptance   5.3%  dropped shanten   1.6%  other loss  18.0%  live tile  54.5%  deal-in to caller/100 0.95  avg cost  4454
   13+                            n  2042  cut: full-efficiency  78.5% (safe tile  46.5% live  32.0%)  paid acceptance   5.8%  dropped shanten   2.5%  other loss  13.2%  live tile  41.1%  deal-in to caller/100 0.88  avg cost  3506
 -- by hero shanten x turn
-  0-shanten turn <=8             n   979  cut: full-efficiency  88.5% (safe tile  21.9% live  66.6%)  paid acceptance   1.6%  dropped shanten   3.2%  other loss   6.7%  live tile  76.2%  deal-in to caller/100 0.41  avg cost  2500
-  0-shanten turn 9-12            n  1316  cut: full-efficiency  91.4% (safe tile  36.4% live  55.0%)  paid acceptance   1.7%  dropped shanten   1.7%  other loss   5.1%  live tile  61.0%  deal-in to caller/100 1.14  avg cost  4133
-  0-shanten turn 13+             n   852  cut: full-efficiency  91.0% (safe tile  44.0% live  46.9%)  paid acceptance   2.9%  dropped shanten   1.5%  other loss   4.6%  live tile  51.3%  deal-in to caller/100 1.29  avg cost  3164
-  1-shanten turn <=8             n  5064  cut: full-efficiency  79.6% (safe tile  20.5% live  59.2%)  paid acceptance   4.8%  dropped shanten   1.1%  other loss  14.5%  live tile  76.1%  deal-in to caller/100 0.41  avg cost  3076
-  1-shanten turn 9-12            n  2837  cut: full-efficiency  79.4% (safe tile  36.7% live  42.8%)  paid acceptance   6.1%  dropped shanten   1.6%  other loss  12.9%  live tile  54.9%  deal-in to caller/100 1.02  avg cost  5014
-  1-shanten turn 13+             n   881  cut: full-efficiency  75.3% (safe tile  49.6% live  25.7%)  paid acceptance   7.5%  dropped shanten   3.5%  other loss  13.7%  live tile  36.4%  deal-in to caller/100 0.68  avg cost  3650
-  2-shanten turn <=8             n  6542  cut: full-efficiency  66.2% (safe tile  15.6% live  50.6%)  paid acceptance   6.0%  dropped shanten   0.5%  other loss  27.2%  live tile  79.5%  deal-in to caller/100 0.26  avg cost  3835
-  2-shanten turn 9-12            n  1248  cut: full-efficiency  59.0% (safe tile  31.7% live  27.3%)  paid acceptance   6.8%  dropped shanten   1.4%  other loss  32.8%  live tile  50.6%  deal-in to caller/100 0.80  avg cost  3310
+  0-shanten turn <=8             n   979  cut: full-efficiency  88.5% (safe tile  21.9% live  66.6%)  paid acceptance   1.6%  dropped shanten   3.0%  other loss   6.9%  live tile  76.2%  deal-in to caller/100 0.41  avg cost  2500
+  0-shanten turn 9-12            n  1316  cut: full-efficiency  91.4% (safe tile  36.4% live  55.0%)  paid acceptance   1.8%  dropped shanten   1.7%  other loss   5.1%  live tile  61.0%  deal-in to caller/100 1.14  avg cost  4133
+  0-shanten turn 13+             n   852  cut: full-efficiency  91.0% (safe tile  44.0% live  46.9%)  paid acceptance   2.6%  dropped shanten   1.5%  other loss   4.9%  live tile  51.3%  deal-in to caller/100 1.29  avg cost  3164
+  1-shanten turn <=8             n  5064  cut: full-efficiency  79.6% (safe tile  20.5% live  59.2%)  paid acceptance   4.3%  dropped shanten   1.1%  other loss  15.0%  live tile  76.1%  deal-in to caller/100 0.41  avg cost  3076
+  1-shanten turn 9-12            n  2837  cut: full-efficiency  79.4% (safe tile  36.7% live  42.8%)  paid acceptance   5.9%  dropped shanten   1.6%  other loss  13.1%  live tile  54.9%  deal-in to caller/100 1.02  avg cost  5014
+  1-shanten turn 13+             n   881  cut: full-efficiency  75.3% (safe tile  49.6% live  25.7%)  paid acceptance   7.8%  dropped shanten   3.5%  other loss  13.4%  live tile  36.4%  deal-in to caller/100 0.68  avg cost  3650
+  2-shanten turn <=8             n  6542  cut: full-efficiency  66.2% (safe tile  15.6% live  50.6%)  paid acceptance   5.9%  dropped shanten   0.5%  other loss  27.4%  live tile  79.5%  deal-in to caller/100 0.26  avg cost  3835
+  2-shanten turn 9-12            n  1248  cut: full-efficiency  59.0% (safe tile  31.7% live  27.3%)  paid acceptance   6.6%  dropped shanten   1.4%  other loss  33.0%  live tile  50.6%  deal-in to caller/100 0.80  avg cost  3310
   2-shanten turn 13+             n   247  cut: full-efficiency  57.5% (safe tile  47.4% live  10.1%)  paid acceptance   8.9%  dropped shanten   2.4%  other loss  31.2%  live tile  25.5%  deal-in to caller/100 0.40  avg cost  6400
-  3+-shanten turn <=8            n  4282  cut: full-efficiency  38.9% (safe tile   8.2% live  30.7%)  paid acceptance   4.4%  dropped shanten   0.3%  other loss  56.4%  live tile  85.2%  deal-in to caller/100 0.09  avg cost  2275
-  3+-shanten turn 9-12           n   308  cut: full-efficiency  30.8% (safe tile  22.1% live   8.8%)  paid acceptance  10.1%  dropped shanten   1.6%  other loss  57.5%  live tile  38.3%  deal-in to caller/100 0.00  avg cost     0
+  3+-shanten turn <=8            n  4282  cut: full-efficiency  38.9% (safe tile   8.2% live  30.7%)  paid acceptance   4.3%  dropped shanten   0.3%  other loss  56.6%  live tile  85.2%  deal-in to caller/100 0.09  avg cost  2275
+  3+-shanten turn 9-12           n   308  cut: full-efficiency  30.8% (safe tile  22.1% live   8.8%)  paid acceptance   9.7%  dropped shanten   1.6%  other loss  57.8%  live tile  38.3%  deal-in to caller/100 0.00  avg cost     0
   3+-shanten turn 13+            n    62  cut: full-efficiency  37.1% (safe tile  33.9% live   3.2%)  paid acceptance   9.7%  dropped shanten   1.6%  other loss  51.6%  live tile  29.0%  deal-in to caller/100 0.00  avg cost     0
 -- by caller's meld
-  yakuhai pon                    n 14014  cut: full-efficiency  66.9% (safe tile  20.7% live  46.2%)  paid acceptance   5.2%  dropped shanten   1.2%  other loss  26.7%  live tile  72.6%  deal-in to caller/100 0.43  avg cost  3613
+  yakuhai pon                    n 14014  cut: full-efficiency  66.9% (safe tile  20.7% live  46.2%)  paid acceptance   5.0%  dropped shanten   1.2%  other loss  26.9%  live tile  72.6%  deal-in to caller/100 0.43  avg cost  3613
   dora pon                       n   295  cut: full-efficiency  72.9% (safe tile  31.2% live  41.7%)  paid acceptance   6.8%  dropped shanten   3.1%  other loss  17.3%  live tile  58.6%  deal-in to caller/100 0.00  avg cost     0
-  other meld                     n 10309  cut: full-efficiency  69.8% (safe tile  24.9% live  44.9%)  paid acceptance   5.1%  dropped shanten   0.9%  other loss  24.1%  live tile  68.3%  deal-in to caller/100 0.56  avg cost  4064
+  other meld                     n 10309  cut: full-efficiency  69.8% (safe tile  24.9% live  44.9%)  paid acceptance   4.9%  dropped shanten   0.9%  other loss  24.4%  live tile  68.3%  deal-in to caller/100 0.56  avg cost  4064
 -- by caller's tedashi after the call
-  tedashi 0                      n 11592  cut: full-efficiency  67.7% (safe tile  20.3% live  47.4%)  paid acceptance   4.7%  dropped shanten   0.8%  other loss  26.8%  live tile  74.6%  deal-in to caller/100 0.43  avg cost  3886
-  tedashi 1                      n  6403  cut: full-efficiency  66.7% (safe tile  21.2% live  45.5%)  paid acceptance   5.2%  dropped shanten   1.1%  other loss  27.0%  live tile  71.9%  deal-in to caller/100 0.31  avg cost  3165
-  tedashi 2+                     n  6623  cut: full-efficiency  70.5% (safe tile  27.9% live  42.7%)  paid acceptance   6.0%  dropped shanten   1.7%  other loss  21.8%  live tile  62.6%  deal-in to caller/100 0.72  avg cost  4060
+  tedashi 0                      n 11592  cut: full-efficiency  67.7% (safe tile  20.3% live  47.4%)  paid acceptance   4.5%  dropped shanten   0.8%  other loss  27.0%  live tile  74.6%  deal-in to caller/100 0.43  avg cost  3886
+  tedashi 1                      n  6403  cut: full-efficiency  66.7% (safe tile  21.2% live  45.5%)  paid acceptance   5.0%  dropped shanten   1.1%  other loss  27.2%  live tile  71.9%  deal-in to caller/100 0.31  avg cost  3165
+  tedashi 2+                     n  6623  cut: full-efficiency  70.5% (safe tile  27.9% live  42.7%)  paid acceptance   5.8%  dropped shanten   1.6%  other loss  22.1%  live tile  62.6%  deal-in to caller/100 0.72  avg cost  4060
 -- by inside tedashi (3-7 from hand after the call)
-  inside tedashi                 n  7125  cut: full-efficiency  69.4% (safe tile  27.3% live  42.1%)  paid acceptance   6.1%  dropped shanten   1.7%  other loss  22.8%  live tile  62.5%  deal-in to caller/100 0.73  avg cost  3965
-  no inside tedashi              n 17493  cut: full-efficiency  67.7% (safe tile  20.7% live  47.1%)  paid acceptance   4.8%  dropped shanten   0.9%  other loss  26.6%  live tile  74.0%  deal-in to caller/100 0.38  avg cost  3732
+  inside tedashi                 n  7125  cut: full-efficiency  69.4% (safe tile  27.3% live  42.1%)  paid acceptance   6.0%  dropped shanten   1.6%  other loss  23.0%  live tile  62.5%  deal-in to caller/100 0.73  avg cost  3965
+  no inside tedashi              n 17493  cut: full-efficiency  67.7% (safe tile  20.7% live  47.1%)  paid acceptance   4.5%  dropped shanten   0.9%  other loss  26.9%  live tile  74.0%  deal-in to caller/100 0.38  avg cost  3732
 -- yakuhai pon x tedashi
-  yaku ted0                      n  5893  cut: full-efficiency  65.7% (safe tile  17.6% live  48.2%)  paid acceptance   4.6%  dropped shanten   0.9%  other loss  28.8%  live tile  78.1%  deal-in to caller/100 0.31  avg cost  3722
-  yaku ted1                      n  3730  cut: full-efficiency  65.0% (safe tile  18.6% live  46.4%)  paid acceptance   5.2%  dropped shanten   0.9%  other loss  28.9%  live tile  74.6%  deal-in to caller/100 0.27  avg cost  3250
-  yaku ted2+                     n  4391  cut: full-efficiency  70.1% (safe tile  26.7% live  43.4%)  paid acceptance   5.9%  dropped shanten   1.8%  other loss  22.2%  live tile  63.7%  deal-in to caller/100 0.73  avg cost  3666
-  no-yaku ted0                   n  5699  cut: full-efficiency  69.7% (safe tile  23.2% live  46.5%)  paid acceptance   4.7%  dropped shanten   0.7%  other loss  24.9%  live tile  70.9%  deal-in to caller/100 0.56  avg cost  3978
-  no-yaku ted1                   n  2673  cut: full-efficiency  69.1% (safe tile  24.8% live  44.3%)  paid acceptance   5.3%  dropped shanten   1.3%  other loss  24.3%  live tile  68.2%  deal-in to caller/100 0.37  avg cost  3080
-  no-yaku ted2+                  n  2232  cut: full-efficiency  71.3% (safe tile  30.1% live  41.2%)  paid acceptance   6.1%  dropped shanten   1.4%  other loss  21.1%  live tile  60.5%  deal-in to caller/100 0.72  avg cost  4850
+  yaku ted0                      n  5893  cut: full-efficiency  65.7% (safe tile  17.6% live  48.2%)  paid acceptance   4.4%  dropped shanten   1.0%  other loss  28.9%  live tile  78.1%  deal-in to caller/100 0.31  avg cost  3722
+  yaku ted1                      n  3730  cut: full-efficiency  65.0% (safe tile  18.6% live  46.4%)  paid acceptance   4.9%  dropped shanten   0.9%  other loss  29.1%  live tile  74.6%  deal-in to caller/100 0.27  avg cost  3250
+  yaku ted2+                     n  4391  cut: full-efficiency  70.1% (safe tile  26.7% live  43.4%)  paid acceptance   5.7%  dropped shanten   1.8%  other loss  22.4%  live tile  63.7%  deal-in to caller/100 0.73  avg cost  3666
+  no-yaku ted0                   n  5699  cut: full-efficiency  69.7% (safe tile  23.2% live  46.5%)  paid acceptance   4.6%  dropped shanten   0.6%  other loss  25.1%  live tile  70.9%  deal-in to caller/100 0.56  avg cost  3978
+  no-yaku ted1                   n  2673  cut: full-efficiency  69.1% (safe tile  24.8% live  44.3%)  paid acceptance   5.1%  dropped shanten   1.3%  other loss  24.5%  live tile  68.2%  deal-in to caller/100 0.37  avg cost  3080
+  no-yaku ted2+                  n  2232  cut: full-efficiency  71.3% (safe tile  30.1% live  41.2%)  paid acceptance   5.9%  dropped shanten   1.3%  other loss  21.5%  live tile  60.5%  deal-in to caller/100 0.72  avg cost  4850
 -- hero closed / open
-  hero closed                    n 18706  cut: full-efficiency  66.4% (safe tile  20.7% live  45.7%)  paid acceptance   5.8%  dropped shanten   1.1%  other loss  26.7%  live tile  72.3%  deal-in to caller/100 0.41  avg cost  3741
-  hero open                      n  5912  cut: full-efficiency  73.9% (safe tile  28.6% live  45.3%)  paid acceptance   3.3%  dropped shanten   1.1%  other loss  21.7%  live tile  65.5%  deal-in to caller/100 0.71  avg cost  4005
+  hero closed                    n 18706  cut: full-efficiency  66.4% (safe tile  20.7% live  45.7%)  paid acceptance   5.5%  dropped shanten   1.1%  other loss  27.0%  live tile  72.3%  deal-in to caller/100 0.41  avg cost  3741
+  hero open                      n  5912  cut: full-efficiency  73.9% (safe tile  28.6% live  45.3%)  paid acceptance   3.1%  dropped shanten   1.1%  other loss  21.9%  live tile  65.5%  deal-in to caller/100 0.71  avg cost  4005
 -- hero dora
-  dora 0                         n  9215  cut: full-efficiency  65.4% (safe tile  22.2% live  43.2%)  paid acceptance   5.3%  dropped shanten   1.3%  other loss  28.1%  live tile  70.6%  deal-in to caller/100 0.47  avg cost  3833
-  dora 1                         n  9693  cut: full-efficiency  68.5% (safe tile  21.9% live  46.6%)  paid acceptance   5.1%  dropped shanten   0.9%  other loss  25.5%  live tile  71.5%  deal-in to caller/100 0.33  avg cost  4622
-  dora 2+                        n  5710  cut: full-efficiency  72.2% (safe tile  24.4% live  47.8%)  paid acceptance   5.2%  dropped shanten   1.2%  other loss  21.4%  live tile  69.4%  deal-in to caller/100 0.75  avg cost  3251
+  dora 0                         n  9215  cut: full-efficiency  65.4% (safe tile  22.2% live  43.2%)  paid acceptance   5.1%  dropped shanten   1.2%  other loss  28.3%  live tile  70.6%  deal-in to caller/100 0.47  avg cost  3833
+  dora 1                         n  9693  cut: full-efficiency  68.5% (safe tile  21.9% live  46.6%)  paid acceptance   4.9%  dropped shanten   0.9%  other loss  25.7%  live tile  71.5%  deal-in to caller/100 0.33  avg cost  4622
+  dora 2+                        n  5710  cut: full-efficiency  72.2% (safe tile  24.4% live  47.8%)  paid acceptance   4.9%  dropped shanten   1.2%  other loss  21.8%  live tile  69.4%  deal-in to caller/100 0.75  avg cost  3251
 -- what a safe tile would cost, and whether it was taken
   free           n 11518 ( 46.8%)  took a safe tile  56.0%  deal-in to caller/100 0.32
       0-shanten     n  1179  took safe  93.0%  by turn: <=8  85.3%  9-12  94.0%  13+  96.8%
@@ -106,6 +106,6 @@
 -- deal-in to the caller per 100 discards by tile class
   genbutsu/dead        n  5292  deal-in/100 0.00   turn 13+: n  907 deal-in/100 0.00   inside tedashi: n 1883 deal-in/100 0.00
   suji/quiet honor     n  1929  deal-in/100 0.31   turn 13+: n  296 deal-in/100 0.34   inside tedashi: n  787 deal-in/100 0.38
-  live honor/terminal  n  8338  deal-in/100 0.24   turn 13+: n  251 deal-in/100 1.59   inside tedashi: n 1981 deal-in/100 0.50
-  live 2378            n  5853  deal-in/100 0.91   turn 13+: n  340 deal-in/100 2.06   inside tedashi: n 1579 deal-in/100 1.46
-  live 456             n  3206  deal-in/100 1.22   turn 13+: n  248 deal-in/100 2.42   inside tedashi: n  895 deal-in/100 1.79
+  live honor/terminal  n  8360  deal-in/100 0.24   turn 13+: n  254 deal-in/100 1.57   inside tedashi: n 1991 deal-in/100 0.50
+  live 2378            n  6833  deal-in/100 0.94   turn 13+: n  481 deal-in/100 2.08   inside tedashi: n 1863 deal-in/100 1.45
+  live 456             n  2204  deal-in/100 1.27   turn 13+: n  104 deal-in/100 2.88   inside tedashi: n  601 deal-in/100 2.00

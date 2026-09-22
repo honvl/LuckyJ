@@ -1,39 +1,44 @@
 == Honver: 80 games, 830 hands, 1574 discards facing a riichi (not in riichi yourself)
   push = the cut was not safe against every riichi player; free fold = a safe tile kept the same shanten
-   0-shanten n   288  push  40.6%  | free fold existed  48.3%, pushed anyway   3.6%  | by turn <=8:  75.0% (n 28)  9-12:  51.5% (n 97)  13+:  28.2% (n 163)
-   1-shanten n   561  push  18.9%  | free fold existed  69.2%, pushed anyway   7.0%  | by turn <=8:  32.5% (n 123)  9-12:  18.3% (n 230)  13+:  11.5% (n 208)
-   2-shanten n   509  push   7.5%  | free fold existed  85.3%, pushed anyway   1.8%  | by turn <=8:  16.8% (n 137)  9-12:   5.3% (n 208)  13+:   2.4% (n 164)
-  3+-shanten n   216  push   6.5%  | free fold existed  93.5%, pushed anyway   3.5%  | by turn <=8:   7.7% (n 78)  9-12:   5.1% (n 79)  13+:   6.8% (n 59)
+   0-shanten n   288  push  38.2%  | free fold existed  50.7%, pushed anyway   2.7%  | by turn <=8:  71.4% (n 28)  9-12:  48.5% (n 97)  13+:  26.4% (n 163)
+   1-shanten n   561  push  17.1%  | free fold existed  73.3%, pushed anyway   6.8%  | by turn <=8:  31.7% (n 123)  9-12:  17.4% (n 230)  13+:   8.2% (n 208)
+   2-shanten n   509  push   6.5%  | free fold existed  86.1%, pushed anyway   1.1%  | by turn <=8:  16.1% (n 137)  9-12:   4.3% (n 208)  13+:   1.2% (n 164)
+  3+-shanten n   216  push   6.0%  | free fold existed  94.4%, pushed anyway   2.9%  | by turn <=8:   7.7% (n 78)  9-12:   3.8% (n 79)  13+:   6.8% (n 59)
   pushed anyway although a safe tile kept the shanten, by what the safe tile cost in acceptance
-     1-shanten, safe tile cost nothing or gained pushed   1.8% of 388
-     1-shanten, safe tile cost 1-3               pushed   1.3% of 388
-     1-shanten, safe tile cost 4+                pushed   3.9% of 388
-     2-shanten, safe tile cost nothing or gained pushed   0.5% of 434
-     2-shanten, safe tile cost 1-3               pushed   0.0% of 434
-     2-shanten, safe tile cost 4+                pushed   1.4% of 434
-    3+-shanten, safe tile cost nothing or gained pushed   1.0% of 202
-    3+-shanten, safe tile cost 1-3               pushed   0.0% of 202
-    3+-shanten, safe tile cost 4+                pushed   2.5% of 202
+     1-shanten, safe tile cost nothing or gained pushed   1.5% of 411
+     1-shanten, safe tile cost 1-3               pushed   1.2% of 411
+     1-shanten, safe tile cost 4+                pushed   4.1% of 411
+     2-shanten, safe tile cost nothing or gained pushed   0.0% of 438
+     2-shanten, safe tile cost 1-3               pushed   0.0% of 438
+     2-shanten, safe tile cost 4+                pushed   1.1% of 438
+    3+-shanten, safe tile cost nothing or gained pushed   1.0% of 204
+    3+-shanten, safe tile cost 1-3               pushed   0.0% of 204
+    3+-shanten, safe tile cost 4+                pushed   2.0% of 204
   1-shanten pushes by dora in hand and turn (dealer in brackets)
-    dora 0   <=8:  28.6% n   35 [  0.0% n 5]  9-12:  21.8% n   78 [ 21.1% n 19]  13+:  15.7% n   70 [ 16.7% n 24]
-    dora 1   <=8:  29.8% n   57 [ 55.6% n 9]  9-12:  13.6% n   81 [ 26.7% n 15]  13+:   7.1% n   84 [  5.9% n 17]
-    dora 2   <=8:  38.1% n   21 [  0.0% n 5]  9-12:  17.3% n   52 [ 14.3% n 21]  13+:  14.6% n   41 [ 11.8% n 17]
-    dora 3+  <=8:  50.0% n   10 [ 50.0% n 4]  9-12:  26.3% n   19 [ 42.9% n 7]  13+:   7.7% n   13 [ 25.0% n 4]
+    dora 0   <=8:  25.7% n   35 [  0.0% n 5]  9-12:  20.5% n   78 [ 21.1% n 19]  13+:  11.4% n   70 [ 12.5% n 24]
+    dora 1   <=8:  29.8% n   57 [ 55.6% n 9]  9-12:  12.3% n   81 [ 26.7% n 15]  13+:   4.8% n   84 [  5.9% n 17]
+    dora 2   <=8:  38.1% n   21 [  0.0% n 5]  9-12:  17.3% n   52 [ 14.3% n 21]  13+:  12.2% n   41 [  5.9% n 17]
+    dora 3+  <=8:  50.0% n   10 [ 50.0% n 4]  9-12:  26.3% n   19 [ 42.9% n 7]  13+:   0.0% n   13 [  0.0% n 4]
   deal-ins per 100 cuts against a single riichi, by the class of the tile cut
     genbutsu       n   1005  into the riichi  0.00   to anyone  0.20
     honor 2 seen   n     59  into the riichi  0.00   to anyone  0.00
-    suji           n     85  into the riichi  3.53   to anyone  4.71
+    suji           n     71  into the riichi  4.23   to anyone  7.04
+    nakasuji       n     30  into the riichi  6.67   to anyone  6.67
     live honor     n     72  into the riichi  2.78   to anyone  2.78
-    live terminal  n     49  into the riichi  8.16   to anyone  8.16
-    live 2-8       n    122  into the riichi 10.66   to anyone 13.11
+    live terminal  n     48  into the riichi  8.33   to anyone  8.33
+    half suji      n     30  into the riichi 10.00   to anyone 10.00
+    live 2-8       n     77  into the riichi 10.39   to anyone 12.99
+    suji on 1 or 9 n     27  into the riichi  3.70   to anyone  3.70
+    suji on 2 or 8 n     28  into the riichi  0.00   to anyone  3.57
+    suji on 3 or 7 n     16  into the riichi 12.50   to anyone 18.75
     honor, 0 other seen  n    16  into the riichi  0.00   to anyone  0.00
     honor, 1 other seen  n   112  into the riichi  1.79   to anyone  1.79
     honor, 2 other seen  n   193  into the riichi  0.00   to anyone  0.00
     honor, 3 other seen  n   136  into the riichi  0.00   to anyone  0.00
   what was cut when a tile of the safest class kept the same shanten
-    safest keeping tile genbutsu      n   1001: genbutsu  93.5%  honor 2 seen   1.5%  suji   2.0%  live honor   0.9%  live terminal   0.4%  live 2-8   1.7%
-    safest keeping tile honor 2 seen  n     47: genbutsu  14.9%  honor 2 seen  80.9%  suji   2.1%  live honor   2.1%  live terminal   0.0%  live 2-8   0.0%
-    safest keeping tile suji          n    115: genbutsu  30.4%  honor 2 seen   5.2%  suji  50.4%  live honor   6.1%  live terminal   3.5%  live 2-8   4.3%
+    safest keeping tile genbutsu      n   1001: genbutsu  93.5%  honor 2 seen   1.5%  suji   1.9%  nakasuji   0.6%  virtual nakasuji   0.0%  live honor   0.9%  live terminal   0.3%  half suji   0.4%  live 2-8   0.9%
+    safest keeping tile honor 2 seen  n     47: genbutsu  14.9%  honor 2 seen  80.9%  suji   2.1%  nakasuji   0.0%  virtual nakasuji   0.0%  live honor   2.1%  live terminal   0.0%  half suji   0.0%  live 2-8   0.0%
+    safest keeping tile suji          n    120: genbutsu  39.2%  honor 2 seen   4.2%  suji  45.0%  nakasuji   1.7%  virtual nakasuji   0.0%  live honor   5.0%  live terminal   2.5%  half suji   1.7%  live 2-8   0.8%
   deal-ins per 100 discards facing a riichi, by shanten: 0: 6.94  1: 0.89  2: 0.59  3+: 0.93
   first closed tenpai with no riichi out: 167; declared  69.5%
     waits <=3  n   42 declared  40.5%  (turn <=10:  54.2% n 24)
@@ -43,27 +48,21 @@
   -- 2+ shanten pushes while a safe tile kept the shanten
     2026-06-16 23:51 260617-c66baed5 South 4-1 T10: cut 9s ['live terminal'] at 2-shanten; safe keep ['2s', '6p'] (acceptance gap 5); dora 1
     2026-06-19 02:08 260619-49c15f08 South 2-0 T10: cut 8m ['live 2-3-7-8'] at 3-shanten; safe keep ['7m'] (acceptance gap 33); dora 0
-    2026-06-19 02:08 260619-49c15f08 South 3-0 T16: cut 4s ['live 4-5-6', 'genbutsu'] at 3-shanten; safe keep ['3s'] (acceptance gap -8); dora 1
+    2026-06-19 02:08 260619-49c15f08 South 3-0 T16: cut 4s ['half suji', 'genbutsu'] at 3-shanten; safe keep ['3s', '8s', '4m', '3p', '9p'] (acceptance gap -11); dora 1
     2026-06-22 01:42 260622-f5717c58 South 1-0 T14: cut chun ['live honor'] at 3-shanten; safe keep ['1s'] (acceptance gap 6); dora 0 DEALT IN
     2026-09-07 09:56 260907-0d113184 East 1-0 T9: cut S ['live honor'] at 3-shanten; safe keep ['5p'] (acceptance gap -4); dora 2
-    2026-09-07 09:56 260907-0d113184 South 3-1 T12: cut 9p ['live terminal', 'genbutsu'] at 2-shanten; safe keep ['8s'] (acceptance gap 9); dora 0
-    2026-09-07 10:34 260907-0f2f66ab South 2-0 T11: cut 8p ['live 2-3-7-8'] at 3-shanten; safe keep ['3m', '1p', '4p'] (acceptance gap 24); dora 0 DEALT IN
     2026-09-19 10:17 260919-bd7daa16 South 2-2 T5: cut chun ['live honor'] at 2-shanten; safe keep ['hatsu'] (acceptance gap 21); dora 2
     2026-09-19 22:29 260920-a3b39b2d East 4-1 T7: cut E ['live honor'] at 2-shanten; safe keep ['3m', 'haku'] (acceptance gap 19); dora 1
-    2026-09-19 23:49 260920-90933d91 South 1-1 T16: cut 5s ['live 4-5-6'] at 2-shanten; safe keep ['3s', '3p', '8p'] (acceptance gap -6); dora 0
     2026-09-20 21:23 260921-2250fff8 South 1-0 T4: cut S ['live honor'] at 4-shanten; safe keep ['3s'] (acceptance gap 54); dora 2
-    2026-09-20 22:01 260921-6faea687 East 3-0 T12: cut 5p ['live 4-5-6'] at 2-shanten; safe keep ['7p'] (acceptance gap 22); dora 0
     2026-09-20 23:52 260921-8c944457 East 3-3 T17: cut 1s ['live terminal'] at 3-shanten; safe keep ['3m', '8m'] (acceptance gap 8); dora 0
-    2026-09-21 00:40 260921-dc312996 East 1-0 T16: cut 8p ['live 2-3-7-8'] at 2-shanten; safe keep ['7s'] (acceptance gap 0); dora 1
     2026-09-21 16:26 260922-4ebf19e7 South 1-3 T9: cut haku ['live honor'] at 2-shanten; safe keep ['5p'] (acceptance gap 7); dora 1
+    2026-09-21 16:26 260922-4ebf19e7 South 1-4 T9: cut chun ['live honor'] at 2-shanten; safe keep ['4p'] (acceptance gap 14); dora 0
   -- 1-shanten pushes turn 13+ while a safe tile kept the shanten
-    2026-06-16 23:51 260617-c66baed5 South 4-1 T13: cut 2m ['live 2-3-7-8']; safe keep ['6p'] (gap -2); dora 0
-    2026-06-16 23:51 260617-c66baed5 South 4-1 T17: cut 4s ['live 4-5-6']; safe keep ['5p'] (gap 8); dora 0
-    2026-06-21 23:33 260622-f5e3fdd3 South 2-1 T16: cut 8m ['live 2-3-7-8', 'genbutsu']; safe keep ['2m', '6m'] (gap 0); dora 2
-    2026-06-21 23:33 260622-f5e3fdd3 South 4-1 T13: cut 4m ['live 4-5-6']; safe keep ['7p'] (gap 7); dora 0
+    2026-06-16 23:51 260617-c66baed5 South 4-1 T17: cut 4s ['half suji']; safe keep ['5p'] (gap 8); dora 0
+    2026-06-19 02:08 260619-49c15f08 South 3-0 T14: cut 4s ['half suji']; safe keep ['3p', '9p'] (gap 22); dora 2
+    2026-06-21 23:33 260622-f5e3fdd3 South 2-1 T16: cut 8m ['live 2-3-7-8', 'genbutsu']; safe keep ['2m', '3m', '6m'] (gap 0); dora 2
+    2026-06-21 23:33 260622-f5e3fdd3 South 4-1 T13: cut 4m ['half suji']; safe keep ['7p'] (gap 7); dora 0
     2026-09-19 03:45 260919-5e7aab5c South 3-0 T17: cut E ['live honor']; safe keep ['W'] (gap 0); dora 2
-    2026-09-21 14:02 260922-26e46225 South 1-1 T13: cut 9m ['live terminal']; safe keep ['6m'] (gap 4); dora 1
-    2026-09-21 16:26 260922-4ebf19e7 South 1-4 T15: cut 4p ['live 4-5-6']; safe keep ['3p'] (gap 0); dora 0
   -- first closed tenpai kept dama with no riichi out, 4+ live, turn <= 10
     2026-01-25 04:45 260125-c59bed98 East 4-0 T6: live 4 yakuless False dora 1 dealer False riichi later False won False
     2026-06-16 22:43 260617-f2e8ed41 South 4-1 T5: live 7 yakuless False dora 2 dealer False riichi later False won True
