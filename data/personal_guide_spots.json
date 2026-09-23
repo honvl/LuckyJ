@@ -356,6 +356,96 @@
    "did": "You cut the [[3p]] you drew, live against both callers. Nobody won, and the hand ended in a draw.",
    "luckyj": "At 1-shanten with dora in hand and all three tells showing, LuckyJ cuts a live tile 32% of the time when it holds a safe one. When the safe tile keeps the same shanten and acceptance, it is the only cut.",
    "fix": "Cut [[8s]]. It is genbutsu against both callers and leaves the same 1-shanten and 20 tiles of acceptance as [[3p]]."
+  },
+  {
+   "id": "all-last-chun-riichi",
+   "chapter": "recent-games",
+   "game": "260923-e1062a86",
+   "round": "South 4-0",
+   "frames": [
+    {
+     "turn": 9,
+     "expect_cut": "C",
+     "better": "2s"
+    }
+   ],
+   "title": "Third in the last hand, a live chun into the dealer's flush",
+   "situation": "South 4, the last hand, turn 9. You are third on 19,800: 5,500 behind second and 7,800 ahead of the dealer, kamicha, in fourth. The dealer has ponned [[1p]] and chied [[6p]]-[[7p]]-[[8p]], a pinzu half flush in the making, and toimen has two calls. You draw [[6s]] into tenpai on [[1m]]-[[4m]] with riichi, pinfu and the [[2m]] dora, but the tile you must cut is a live [[C]].",
+   "did": "You declared riichi with [[C]]. The dealer was waiting on it and won 5,800 with the half flush and chun, plus your riichi stick. That left the dealer on 18,800 and you on 13,000, in fourth, and you finished the game there.",
+   "luckyj": "Going into a game's final hand in third, LuckyJ drops to fourth through its own deal-in 3.2% of the time, over 251 such hands.",
+   "fix": "Cut [[2s]], genbutsu against both callers, and stay at 1-shanten with the chun kept. A win here moves you from third to second, worth about 75 rank points at your level. This deal-in moved you to fourth, which costs about 265 more than third. A live dragon into a two-call half flush that has to win is too big a risk for that trade."
+  },
+  {
+   "id": "seven-pairs-honor",
+   "chapter": "recent-games",
+   "verdict": "unlucky",
+   "game": "260923-6a7da299",
+   "round": "East 2-0",
+   "frames": [
+    {
+     "turn": 8,
+     "expect_cut": "hatsu"
+    }
+   ],
+   "title": "An 18,000 fold that was the right fold",
+   "situation": "East 2, turn 8. You lead with 33,000 and are 2-shanten with an open [[3p]]-[[4p]]-[[5p]] chi. The dealer, toimen, has just declared riichi, and kamicha has chied twice in souzu.",
+   "did": "You cut [[F]]. Two other copies were showing, so only a single-tile wait could hit it, and it was genbutsu against kamicha. The dealer's seven pairs was waiting on exactly that tile: 18,000 with the half flush, riichi and ippatsu.",
+   "luckyj": "Against one riichi, LuckyJ's cuts of an honor with two other copies showing deal in 0.2 times per 100.",
+   "fix": "No mistake. [[3s]] and [[5s]] were genbutsu against the dealer, but live against kamicha's souzu hand, and they cost a shanten. The one read that could have saved it is the dealer's river: pinzu, souzu and a single manzu, the pattern of a manzu half flush, where honors are the tiles that hit."
+  },
+  {
+   "id": "straight-push-fourth",
+   "chapter": "recent-games",
+   "verdict": "close",
+   "game": "260923-e1062a86",
+   "round": "South 4-2",
+   "frames": [
+    {
+     "turn": 18,
+     "expect_cut": "7s"
+    }
+   ],
+   "title": "Fourth, tenpai for third, one live tile",
+   "situation": "South 4, two honba, turn 18, five tiles left. You are fourth on 12,400. The dealer, kamicha, declared riichi on turn 7 and is third on 19,600, and shimocha has three calls. Your open hand waits on [[3p]] with a pinzu straight and three dora, about 7,700, enough to take third.",
+   "did": "You pushed the [[7s]] you drew, live against both, and dealt in to the dealer for 12,200. That left you 200 points, and a tsumo in the next hand put you below zero.",
+   "luckyj": "With 3 or more han on 3 or fewer live tiles, LuckyJ pushes an open tenpai against a riichi 87% of the time.",
+   "fix": "A close call, not a mistake. Folding with [[1p]], genbutsu against both, kept you alive in fourth for the next hand. Pushing was the only way to take third in this one. From fourth a deal-in cannot cost you a place, which is why this push is defensible and the chun riichi in the first example was not."
+  },
+  {
+   "id": "tanyao-push-one-pin",
+   "chapter": "recent-games",
+   "verdict": "fine",
+   "game": "260923-a491b5cf",
+   "round": "East 3-0",
+   "frames": [
+    {
+     "turn": 14,
+     "expect_cut": "1p"
+    }
+   ],
+   "title": "A 3-han open tenpai pushed against a riichi",
+   "situation": "East 3, turn 14. You are second on 25,300. Kamicha declared riichi on turn 11, and shimocha and toimen have a call each. Your open tanyao with two dora is tenpai on [[7p]] with 4 live tiles, and you draw [[1p]], live against all three.",
+   "did": "You pushed it and dealt in to the riichi for 5,200.",
+   "luckyj": "With 3 or more han and 4 or more live tiles, LuckyJ pushes an open tenpai against a riichi 95% of the time.",
+   "fix": "No mistake. Every other cut broke the tenpai, and a 3-han hand with a live wait is one to push. Your pushes of these hands deal in 23% of the time, as LuckyJ's do, and this was one of them."
+  },
+  {
+   "id": "riichi-then-three-man",
+   "chapter": "recent-games",
+   "verdict": "fine",
+   "game": "260923-a491b5cf",
+   "round": "South 2-1",
+   "frames": [
+    {
+     "turn": 12,
+     "expect_cut": "6p"
+    }
+   ],
+   "title": "A riichi that drew the winning tile",
+   "situation": "South 2, one honba, turn 12. You are fourth on 14,000, and toimen has one call. You hold a closed chun triplet and draw into tenpai on [[4m]]-[[7m]] with 8 live tiles.",
+   "did": "You declared riichi with [[6p]]. The next turn you drew [[3m]], toimen's winning tile, and had to cut it: 4,200 and your stick.",
+   "luckyj": "With nobody in riichi, LuckyJ declares 93% of first closed tenpais with 8 or more live tiles.",
+   "fix": "No mistake. From fourth the hand needed riichi's value, since dama with the chun alone wins 1,300. Once you are in riichi the drawn tile goes out, and this one hit."
   }
  ]
 }

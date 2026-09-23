@@ -190,7 +190,7 @@ The same-code LuckyJ numbers land on the NAGA-side miners where the definitions 
 
 ### Personal guide
 
-`site/honver.html` is a personal off-shoot of the playbook: nine chapters measured on your
+`site/honver.html` is a personal off-shoot of the playbook: ten chapters measured on your
 games against LuckyJ, with the table at each turn where a different tile, call or declaration
 would have played closer to LuckyJ. It reuses the playbook's table renderer from `site/app.js`
 (the page sets `data-app="table-only"` so the playbook data is not fetched) and adds
@@ -256,6 +256,13 @@ Chapter 9 (when to start tanyao and a flush) comes from `mine_shape_plans.py`, w
 hand by its deal (terminals and honors; tiles fitting one suit plus honors; a value-honor pair)
 and follows how fast the hand clears them and what it wins with. Reports:
 `analysis/shape-plans-*-2026-09-22.txt`.
+
+Chapter 10 reviews the newest games. `review_recent_games.py blocks` compares the last N games
+with the ones before them from the dora-hand and open-tenpai rows, and `review_recent_games.py
+ranks` reads rank points by placement from the amae-koromo export. `mine_late_placement.py`
+follows every hand from South 3 on: the place going in, and whether the player's own deal-in
+dropped it. Reports: `analysis/recent-games-honver-2026-09-23.txt` and
+`analysis/late-placement-*-2026-09-23.txt`.
 
 The mined summaries behind the published numbers are archived under
 `analysis/rx3-*-2026-07-05.json`. The older `analysis/rx-*-2026-07-03.json` files are kept

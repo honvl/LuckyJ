@@ -125,5 +125,30 @@ class ShapePlanTests(unittest.TestCase):
         self.assertFalse(shape.is_flush([21, 25, 31]))
 
 
+class RecentGamesTests(unittest.TestCase):
+    def test_placement_by_score_with_seat_order_for_ties(self):
+        import review_recent_games as recent
+        players = [[1, "a", 0, 25000, 0], [2, "b", 0, 30000, 0], [3, "c", 0, 25000, 0], [4, "d", 0, 20000, 0]]
+        self.assertEqual(recent.placement(players, 2), 1)
+        self.assertEqual(recent.placement(players, 1), 2)  # tied with seat 3, earlier in the list
+        self.assertEqual(recent.placement(players, 3), 3)
+        self.assertEqual(recent.placement(players, 4), 4)
+
+    def test_break_even_fourths(self):
+        import review_recent_games as recent
+        means = {1: 140.0, 2: 66.0, 3: -10.0, 4: -273.0}
+        shares = {1: 0.25, 2: 0.25, 3: 0.25, 4: 0.25}
+        expected = sum(shares[p] * means[p] for p in means)  # -19.25 per game
+        target = recent.break_even_fourths(shares, means)
+        self.assertAlmostEqual(target, 0.25 + expected / 263.0)
+        moved = {**shares, 3: shares[3] + shares[4] - target, 4: target}
+        self.assertAlmostEqual(sum(moved[p] * means[p] for p in means), 0.0)
+
+    def test_late_place_ties_go_to_the_first_dealer_side(self):
+        import mine_late_placement as late
+        self.assertEqual(late.place([25000, 25000, 30000, 20000], 0), 2)
+        self.assertEqual(late.place([25000, 25000, 30000, 20000], 1), 3)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -380,3 +380,17 @@ mark.guide-changed {
   padding: 0 2px;
   scroll-margin-top: 90px;
 }
+
+/* Example cards that are not mistakes: a fair push that lost, or a fold that met a rare wait. */
+.guide-card .guide-verdict {
+  display: inline-block;
+  margin: 6px 0 0;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: var(--soft-green);
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

@@ -156,7 +156,7 @@ class PageChapterTests(unittest.TestCase):
 
     def test_new_chapters_are_listed_at_the_top(self):
         page = (ROOT / "site/honver.html").read_text(encoding="utf-8")
-        for anchor in ("dora-points", "dora-shape", "dora-tells", "shape-start"):
+        for anchor in ("dora-points", "dora-shape", "dora-tells", "shape-start", "recent-games"):
             self.assertIn(f'id="{anchor}"', page)
             self.assertIn(f'href="#{anchor}"', page)
 

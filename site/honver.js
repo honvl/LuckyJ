@@ -7,7 +7,7 @@
  * and setupRetractingTopbar.
  */
 (function () {
-  const guideAsset = "honver-guide.json?v=20260922-guide-2";
+  const guideAsset = "honver-guide.json?v=20260923-guide-5";
   const hideHandsKey = "luckyj:honver-guide:hide-hands";
   const SAFETY_CLASS = {
     genbutsu: "safe",
@@ -200,6 +200,9 @@
     applyTileCompatibility(noteHost);
   }
 
+  // Cards that are not mistakes carry a verdict label, and their last step is "The verdict".
+  const VERDICT_LABELS = { fine: "No mistake", unlucky: "Bad luck", close: "Close call" };
+
   function renderCard(example, index, total) {
     const card = document.createElement("article");
     card.className = "point-example-card guide-card";
@@ -211,6 +214,7 @@
         <div>
           <p class="kicker">Your turn ${index + 1}/${total}</p>
           <h4>${escapeHtml(example.title)}</h4>
+          ${VERDICT_LABELS[example.verdict] ? `<p class="guide-verdict">${escapeHtml(VERDICT_LABELS[example.verdict])}</p>` : ""}
         </div>
         <span>${escapeHtml(roundText(example.round))}, turn ${first.turn}, ${first.left} tiles left<small class="guide-game">${escapeHtml(
           game.date || ""
@@ -261,7 +265,7 @@
       noteHost,
       analysisStep("What you did", example.text.did),
       analysisStep("What LuckyJ does", example.text.luckyj),
-      analysisStep("The fix", example.text.fix),
+      analysisStep(VERDICT_LABELS[example.verdict] ? "The verdict" : "The fix", example.text.fix),
     ].filter(Boolean);
     analysis.append(...steps);
     const result = document.createElement("p");

@@ -7,7 +7,7 @@
     <meta name="description" content="A personal guide to playing closer to LuckyJ, built from 80 Jade South games with the tables of the turns to play differently." />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="stylesheet" href="styles.css?v=20260907-simplify" />
-    <link rel="stylesheet" href="honver.css?v=20260922-guide-4" />
+    <link rel="stylesheet" href="honver.css?v=20260923-guide-5" />
   </head>
   <body data-app="table-only" data-self-name="Honver">
     <header class="topbar">
@@ -26,6 +26,7 @@
         <a href="#push">Push</a>
         <a href="#dora-points">Dora hands (new)</a>
         <a href="#shape-start">Tanyao and flush (new)</a>
+        <a href="#recent-games">Recent games (new)</a>
         <a href="#method">Method</a>
       </nav>
     </header>
@@ -33,8 +34,11 @@
     <main class="layout">
       <article class="book">
         <aside class="guide-new" aria-label="What is new">
-          <strong>Latest:</strong> <a href="#shape-start">chapter 9, when to start tanyao and a flush</a>, answers your
-          follow-up question. Chapters 1 to 8 have not changed since the correction below.
+          <strong>Latest, 23 September:</strong> <a href="#recent-games">chapter 10 reviews your 22 September games</a>
+          and where your rank points went. Chapters 1 to 9 have not changed.
+          <br />
+          <strong>Before that:</strong> <a href="#shape-start">chapter 9, when to start tanyao and a flush</a>, answers
+          your follow-up question.
           <br />
           <strong>New on 22 September:</strong> chapters 6 to 8 answer your question about hands dealt dora:
           <a href="#dora-points">where those hands lose their points</a>, <a href="#dora-shape">the hand under the
@@ -679,6 +683,63 @@
           </div>
         </section>
 
+        <section class="point" id="recent-games">
+          <div class="point-number">10</div>
+          <div class="point-body">
+            <p class="guide-new-tag">New</p>
+            <h3>Your 22 September games, reviewed</h3>
+            <p>
+              You felt your tenpais had stopped converting and your deal-ins had jumped, with your rank points falling
+              toward 4,500. Here are your last 20 games against the 64 before them:
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Your games since January</th><th>First 64 games</th><th>Last 20 games</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Tenpai hands that won</td><td>40.8%</td><td>42.7%</td></tr>
+                  <tr><td>Hands won</td><td>21.4%</td><td>21.9%</td></tr>
+                  <tr><td>Average win</td><td>5,407</td><td>6,118</td></tr>
+                  <tr><td>Hands dealt in</td><td>11.1%</td><td class="gap">14.0%</td></tr>
+                  <tr><td>Average deal-in</td><td>4,446</td><td class="gap">5,141</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Your tenpais win as often as before, and your wins are bigger. Deal-ins rose by about one standard error,
+              so the rise is not settled. It comes from pushing open tenpais more since chapter 5: 81% of the time when
+              no safe tile keeps the tenpai against a riichi, up from 69%. Over all your games, your pushes with 3 or
+              more han and 4 or more live tiles dealt in 23% of the time, the same as LuckyJ's. Seven deal-ins in your
+              last 17 pushes is a bad run.
+            </p>
+            <p>
+              Rank points follow fourth place. Since January a first has paid you about +140, a second +66, a third
+              &minus;10 and a fourth &minus;273. Three of your last eight games were fourths, where about two is normal
+              for you. You have lost 12 points a game since January, and with fourths at 18% instead of 23% you would
+              break even.
+            </p>
+            <p>
+              The four new games hold one decision to change and four hands that went wrong without a mistake. Those
+              five hands are the examples below.
+            </p>
+            <div class="rule">
+              <strong>Rule:</strong> In the last two hands, work out who passes you if you deal in. When a deal-in to
+              the player just below you would swap your places, do not cut a live tile to climb one place: a climb from
+              third to second is worth about 75 rank points, and a drop to fourth costs about 265.
+            </div>
+            <div class="exception">
+              <strong>Exception:</strong> From fourth, a deal-in cannot cost you a place, so push the tenpai that can
+              lift you one, as in the third example.
+            </div>
+            <p class="evidence-note">
+              <b>Evidence:</b> 84 of your games since January, 228 hands in the last 20. Rank points from your
+              amae-koromo record. Final hands of a game: 67 of yours and 1,007 of LuckyJ's.
+            </p>
+            <div data-guide-examples="recent-games"></div>
+          </div>
+        </section>
+
         <section class="section sources" id="method">
           <p class="kicker">Method</p>
           <h2>How this guide was built.</h2>
@@ -686,7 +747,7 @@
             <li>Your games: 80 Jade South hanchan since 1 January 2026, fetched from the Mahjong Soul client and amae-koromo. LuckyJ: 1,255 Tenhou games rebuilt from the cached NAGA reports. Both run through the same replay and metric code.</li>
             <li>Each table is rebuilt from the record at the start of your turn. Opponents' hands are shown as they really were; the switch at the top hides them.</li>
             <li>Acceptance counts the unseen copies of every improving tile from your seat, with a called tile counted once. Against a riichi, tiles passed after the declaration count as genbutsu and anchor suji; a 4, 5 or 6 needs both partners for nakasuji, and an early 5 can cover one side of a 4 or 6 (virtual nakasuji, following the main playbook's sotogawa rule). Honors are read by how many other copies show. Yaku and value are checked only where the text says so.</li>
-            <li>Generated data: <code>site/honver-guide.json</code> from <code>scripts/build_personal_guide.py</code> and <code>data/personal_guide_spots.json</code>. Chapter numbers come from <code>scripts/mine_riichi_folds.py</code>, <code>mine_open_tenpai_push.py</code>, <code>mine_single_call.py</code>, <code>mine_vs_open.py</code>, <code>mine_win_value.py</code> and <code>mine_value_choice.py</code>, for chapters 6 to 8 from <code>mine_dora_hands.py</code>, <code>mine_flush_calls.py</code> and <code>mine_caller_tells.py</code>, and for chapter 9 from <code>mine_shape_plans.py</code>, each run on your games and on LuckyJ's with the same code.</li>
+            <li>Generated data: <code>site/honver-guide.json</code> from <code>scripts/build_personal_guide.py</code> and <code>data/personal_guide_spots.json</code>. Chapter numbers come from <code>scripts/mine_riichi_folds.py</code>, <code>mine_open_tenpai_push.py</code>, <code>mine_single_call.py</code>, <code>mine_vs_open.py</code>, <code>mine_win_value.py</code> and <code>mine_value_choice.py</code>, for chapters 6 to 8 from <code>mine_dora_hands.py</code>, <code>mine_flush_calls.py</code> and <code>mine_caller_tells.py</code>, for chapter 9 from <code>mine_shape_plans.py</code>, and for chapter 10 from <code>review_recent_games.py</code> and <code>mine_late_placement.py</code>, each run on your games and on LuckyJ's with the same code.</li>
             <li><a href="points.html">The main LuckyJ playbook</a> has the general rules these chapters build on.</li>
           </ul>
         </section>
@@ -694,6 +755,6 @@
     </main>
 
     <script src="app.js?v=20260922-guide-2"></script>
-    <script src="honver.js?v=20260922-guide-2"></script>
+    <script src="honver.js?v=20260923-guide-5"></script>
   </body>
 </html>
