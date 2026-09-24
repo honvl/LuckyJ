@@ -1,0 +1,82 @@
+== Honver: 94 games, 995 hands
+-- how the hand was played
+  open     36.3% of hands  won  29.6%  average win   4479  dealt in  14.7%  net per hand    +81 (se 207)
+  riichi   18.2% of hands  won  48.1%  average win   7217  dealt in  10.5%  net per hand  +2207 (se 439)
+  closed   45.5% of hands  won   5.1%  average win   6109  dealt in   9.7%  net per hand   -877 (se 129)
+-- your hand open, another player open, no riichi, every tile that keeps the hand unsafe
+-- tenpai
+  all                                  n   121  push  96.7%  pushed: won  36.8%  dealt in  16.2% (into a caller  14.5%)  net    725 | folded: n    4 won  25.0% dealt  25.0% net   -775
+  no tells                             n    33  push  97.0%  pushed: won  56.2%  dealt in  18.8% (into a caller  12.5%)  net   1544 | folded: n    1 won 100.0% dealt   0.0% net   2800
+  1 tell                               n    53  push  98.1%  pushed: won  25.0%  dealt in  15.4% (into a caller  15.4%)  net    100 | folded: n    1 won   0.0% dealt 100.0% net  -3900
+  2-3 tells                            n    35  push  94.3%  pushed: won  36.4%  dealt in  15.2% (into a caller  15.2%)  net    915 | folded: n    2 won   0.0% dealt   0.0% net  -1000
+  turn 9 or earlier                    n    50  push  96.0%  pushed: won  47.9%  dealt in  14.6% (into a caller  10.4%)  net   1048 | folded: n    2 won  50.0% dealt  50.0% net   -550
+  turn 10-12                           n    35  push  97.1%  pushed: won  38.2%  dealt in   8.8% (into a caller   8.8%)  net    712 | folded: n    1 won   0.0% dealt   0.0% net  -1000
+  turn 13+                             n    36  push  97.2%  pushed: won  20.0%  dealt in  25.7% (into a caller  25.7%)  net    294 | folded: n    1 won   0.0% dealt   0.0% net  -1000
+  caller shows dora in a meld          n    20  push 100.0%  pushed: won  50.0%  dealt in  30.0% (into a caller  30.0%)  net    245 | folded: n    0 won     - dealt     - net      0
+  caller shows a yakuhai triplet       n    74  push  95.9%  pushed: won  39.4%  dealt in  12.7% (into a caller  11.3%)  net    815 | folded: n    3 won  33.3% dealt  33.3% net   -700
+-- 1-shanten
+  all                                  n    89  push  88.8%  pushed: won  21.5%  dealt in  20.3% (into a caller  15.2%)  net   -461 | folded: n   10 won  20.0% dealt  10.0% net   1270
+  no tells                             n    50  push  90.0%  pushed: won  28.9%  dealt in  20.0% (into a caller  13.3%)  net   -427 | folded: n    5 won  40.0% dealt  20.0% net   3160
+  1 tell                               n    29  push  86.2%  pushed: won  12.0%  dealt in  24.0% (into a caller  20.0%)  net   -376 | folded: n    4 won   0.0% dealt   0.0% net   -400
+  2-3 tells                            n    10  push  90.0%  pushed: won  11.1%  dealt in  11.1% (into a caller  11.1%)  net   -867 | folded: n    1 won   0.0% dealt   0.0% net  -1500
+  turn 9 or earlier                    n    69  push  87.0%  pushed: won  26.7%  dealt in  18.3% (into a caller  13.3%)  net   -213 | folded: n    9 won  22.2% dealt  11.1% net   1578
+  turn 10-12                           n     8  push 100.0%  pushed: won   0.0%  dealt in  37.5% (into a caller  25.0%)  net  -1812 | folded: n    0 won     - dealt     - net      0
+  turn 13+                             n    12  push  91.7%  pushed: won   9.1%  dealt in  18.2% (into a caller  18.2%)  net   -827 | folded: n    1 won   0.0% dealt   0.0% net  -1500
+  caller shows dora in a meld          n    18  push  88.9%  pushed: won   6.2%  dealt in  31.2% (into a caller  25.0%)  net  -1512 | folded: n    2 won   0.0% dealt   0.0% net   -750
+  caller shows a yakuhai triplet       n    52  push  90.4%  pushed: won  19.1%  dealt in  21.3% (into a caller  14.9%)  net   -840 | folded: n    5 won  20.0% dealt  20.0% net   1820
+  your dora 0                          n    34  push  85.3%  pushed: won  27.6%  dealt in  10.3% (into a caller   6.9%)  net    138 | folded: n    5 won  40.0% dealt   0.0% net   3560
+  your dora 1                          n    28  push  92.9%  pushed: won  23.1%  dealt in  23.1% (into a caller  15.4%)  net   -604 | folded: n    2 won   0.0% dealt   0.0% net  -1100
+  your dora 2+                         n    27  push  88.9%  pushed: won  12.5%  dealt in  29.2% (into a caller  25.0%)  net  -1029 | folded: n    3 won   0.0% dealt  33.3% net   -967
+-- tenpai, by your value and the callers' tells
+  no yaku                              n    11  push  72.7%  pushed: won  12.5%  dealt in  25.0% (into a caller  25.0%)  net   -638 | folded: n    3 won  33.3% dealt  33.3% net   -700
+     no tells                          n     1  push   0.0%  pushed: won     -  dealt in     - (into a caller     -)  net      0 | folded: n    1 won 100.0% dealt   0.0% net   2800
+     1 tell                            n     7  push  85.7%  pushed: won  16.7%  dealt in  16.7% (into a caller  16.7%)  net   -633 | folded: n    1 won   0.0% dealt 100.0% net  -3900
+     2-3 tells                         n     3  push  66.7%  pushed: won   0.0%  dealt in  50.0% (into a caller  50.0%)  net   -650 | folded: n    1 won   0.0% dealt   0.0% net  -1000
+  1 han                                n    28  push  96.4%  pushed: won  37.0%  dealt in  18.5% (into a caller  14.8%)  net   -281 | folded: n    1 won   0.0% dealt   0.0% net  -1000
+     no tells                          n     8  push 100.0%  pushed: won  62.5%  dealt in  12.5% (into a caller   0.0%)  net    438 | folded: n    0 won     - dealt     - net      0
+     1 tell                            n     9  push 100.0%  pushed: won  11.1%  dealt in  33.3% (into a caller  33.3%)  net  -1222 | folded: n    0 won     - dealt     - net      0
+     2-3 tells                         n    11  push  90.9%  pushed: won  40.0%  dealt in  10.0% (into a caller  10.0%)  net    -10 | folded: n    1 won   0.0% dealt   0.0% net  -1000
+  2 han                                n    34  push 100.0%  pushed: won  50.0%  dealt in  17.6% (into a caller  17.6%)  net    918 | folded: n    0 won     - dealt     - net      0
+     no tells                          n     9  push 100.0%  pushed: won  55.6%  dealt in  33.3% (into a caller  33.3%)  net    589 | folded: n    0 won     - dealt     - net      0
+     1 tell                            n    18  push 100.0%  pushed: won  44.4%  dealt in  11.1% (into a caller  11.1%)  net   1056 | folded: n    0 won     - dealt     - net      0
+     2-3 tells                         n     7  push 100.0%  pushed: won  57.1%  dealt in  14.3% (into a caller  14.3%)  net    986 | folded: n    0 won     - dealt     - net      0
+  3+ han                               n    48  push 100.0%  pushed: won  31.2%  dealt in  12.5% (into a caller  10.4%)  net   1381 | folded: n    0 won     - dealt     - net      0
+     no tells                          n    15  push 100.0%  pushed: won  53.3%  dealt in  13.3% (into a caller   6.7%)  net   2707 | folded: n    0 won     - dealt     - net      0
+     1 tell                            n    19  push 100.0%  pushed: won  15.8%  dealt in  10.5% (into a caller  10.5%)  net     53 | folded: n    0 won     - dealt     - net      0
+     2-3 tells                         n    14  push 100.0%  pushed: won  28.6%  dealt in  14.3% (into a caller  14.3%)  net   1764 | folded: n    0 won     - dealt     - net      0
+-- tenpai with 1-2 han, by turn and by live tiles
+  turn 9 or earlier                    n    26  push 100.0%  pushed: won  53.8%  dealt in  19.2% (into a caller  15.4%)  net    581 | folded: n    0 won     - dealt     - net      0
+  turn 10-12                           n    20  push 100.0%  pushed: won  50.0%  dealt in  10.0% (into a caller  10.0%)  net    690 | folded: n    0 won     - dealt     - net      0
+  turn 13+                             n    16  push  93.8%  pushed: won  20.0%  dealt in  26.7% (into a caller  26.7%)  net   -353 | folded: n    1 won   0.0% dealt   0.0% net  -1000
+  live 0-3                             n    15  push  93.3%  pushed: won  14.3%  dealt in  21.4% (into a caller  21.4%)  net   -629 | folded: n    1 won   0.0% dealt   0.0% net  -1000
+  live 4-7                             n    39  push 100.0%  pushed: won  48.7%  dealt in  20.5% (into a caller  17.9%)  net    515 | folded: n    0 won     - dealt     - net      0
+  live 8-30                            n     8  push 100.0%  pushed: won  75.0%  dealt in   0.0% (into a caller   0.0%)  net   1538 | folded: n    0 won     - dealt     - net      0
+-- the truth behind the tells: a caller was tenpai, and the pushed tile was on a caller's wait
+  tenpai     no tells   n    33  caller tenpai  21.2%  pushed tile on a wait   0.0%
+  tenpai     1 tell     n    53  caller tenpai  49.1%  pushed tile on a wait   7.7%
+  tenpai     2-3 tells  n    35  caller tenpai  71.4%  pushed tile on a wait   9.1%
+  1-shanten  no tells   n    50  caller tenpai  12.0%  pushed tile on a wait   2.2%
+  1-shanten  1 tell     n    29  caller tenpai  58.6%  pushed tile on a wait   0.0%
+  1-shanten  2-3 tells  n    10  caller tenpai  80.0%  pushed tile on a wait   0.0%
+-- the tile pushed, where the tiles that keep the hand differ in danger
+  tenpai     pushes   117, with a choice   26: cut the least dangerous  57.7%  kept the most live tiles  76.9%
+   live honor or terminal  25.6% (into a caller  10.0%)  live 2-3-7-8 or half suji  50.4% (into a caller  11.9%)  live 4-5-6  23.9% (into a caller  25.0%)
+  1-shanten  pushes    79, with a choice   63: cut the least dangerous  63.5%  kept the most acceptance  71.4%
+   live honor or terminal  41.8% (into a caller  12.1%)  live 2-3-7-8 or half suji  39.2% (into a caller  22.6%)  live 4-5-6  19.0% (into a caller   6.7%)
+-- honors cut while a caller is open and nobody is in riichi (not genbutsu, 0 or 1 other copy showing)
+  the player       dealt into a caller yakuhai, 0 showing:   2.6% of   192  yakuhai, 1 showing:   0.6% of   159  guest wind, 0 showing:   0.0% of    67  guest wind, 1 showing:   0.0% of    61
+  the other seats  dealt into a caller yakuhai, 0 showing:   1.7% of   634  yakuhai, 1 showing:   0.4% of   497  guest wind, 0 showing:   0.5% of   203  guest wind, 1 showing:   0.8% of   245
+== Honver: deal-ins per 100 hands, by the kind of hand dealt into and your state at the deal-in
+-- hands you opened: n 361, dealt in  14.7%
+   into open      8.9%   tenpai   5.5%  1-shanten   2.8%  2+ shanten   0.6%  in riichi   0.0%
+   into riichi    5.0%   tenpai   4.2%  1-shanten   0.6%  2+ shanten   0.3%  in riichi   0.0%
+   into dama      0.8%   tenpai   0.3%  1-shanten   0.6%  2+ shanten   0.0%  in riichi   0.0%
+   average deal-in into an open hand   3972
+-- hands kept closed: n 629, dealt in  10.0%
+   into open      5.9%   tenpai   0.6%  1-shanten   1.9%  2+ shanten   1.6%  in riichi   1.7%
+   into riichi    3.2%   tenpai   0.8%  1-shanten   0.6%  2+ shanten   0.5%  in riichi   1.3%
+   into dama      1.0%   tenpai   0.0%  1-shanten   0.6%  2+ shanten   0.3%  in riichi   0.0%
+   average deal-in into an open hand   3789
+== Honver: 107 open wins, average   4479 points, 2.47 han
+   han per win by source: aka 0.43, dora 0.58, shape 0.66, yakuhai 0.79
+   1 han  18.7%  2 han  40.2%  3 han or more  41.1%

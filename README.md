@@ -190,7 +190,7 @@ The same-code LuckyJ numbers land on the NAGA-side miners where the definitions 
 
 ### Personal guide
 
-`site/honver.html` is a personal off-shoot of the playbook: eleven chapters measured on your
+`site/honver.html` is a personal off-shoot of the playbook: twelve chapters measured on your
 games against LuckyJ, with the table at each turn where a different tile, call or declaration
 would have played closer to LuckyJ. It reuses the playbook's table renderer from `site/app.js`
 (the page sets `data-app="table-only"` so the playbook data is not fetched) and adds
@@ -269,6 +269,23 @@ turn where the player is tenpai against a riichi and every tenpai-keeping tile i
 closed, with the hand's value, live tiles, turn, the choice and the result. Reports:
 `analysis/tenpai-push-*-2026-09-24.txt` (all games, and the 23 September games alone) and
 `analysis/recent-games-honver-2026-09-24.txt`.
+
+Chapter 12 (open hands) comes from two miners. `mine_open_vs_open.py` finds, for each hand the
+player opened, the first turn where keeping the tenpai (or the 1-shanten) needs a tile that is
+unsafe against another caller with nobody in riichi, and records the callers' tells, the value,
+the choice and the result; the same pass records how every hand was played and every honor cut
+while a caller is open. Its `leak` and `wins` modes split the deal-ins and the open wins from
+`mine_dora_hands.py` rows. `mine_call_chances.py` records every chance to chi or pon from a closed
+1-shanten into a tenpai with a yaku, and from a closed 2-shanten into a 1-shanten that can still
+reach one, with the closed hand's acceptance, the dora and whether the player called:
+
+```bash
+.venv/bin/python scripts/mine_open_vs_open.py compute data/self_games/majsoul/index.json 2026-01-01 open-you.json
+.venv/bin/python scripts/mine_open_vs_open.py leak You dora-you.json
+.venv/bin/python scripts/mine_call_chances.py compute data/self_games/majsoul/index.json 2026-01-01 chances-you.json
+```
+
+Reports: `analysis/open-vs-open-*-2026-09-24.txt` and `analysis/call-chances-*-2026-09-24.txt`.
 
 The mined summaries behind the published numbers are archived under
 `analysis/rx3-*-2026-07-05.json`. The older `analysis/rx-*-2026-07-03.json` files are kept

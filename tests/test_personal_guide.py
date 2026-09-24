@@ -12,7 +12,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import build_personal_guide as guide  # noqa: E402
 
 MANIFEST = ROOT / "data/self_games/majsoul/index.json"
-PUSH_EXAMPLES = {"keep-eight-tiles", "last-discard-tenpai"}
+PUSH_EXAMPLES = {"keep-eight-tiles", "last-discard-tenpai", "cheap-tenpai-folded"}
 SPOTS = ROOT / "data/personal_guide_spots.json"
 
 
@@ -158,7 +158,8 @@ class PageChapterTests(unittest.TestCase):
 
     def test_new_chapters_are_listed_at_the_top(self):
         page = (ROOT / "site/honver.html").read_text(encoding="utf-8")
-        for anchor in ("dora-points", "dora-shape", "dora-tells", "shape-start", "recent-games", "push-calibration"):
+        for anchor in ("dora-points", "dora-shape", "dora-tells", "shape-start", "recent-games", "push-calibration",
+                       "open-hands"):
             self.assertIn(f'id="{anchor}"', page)
             self.assertIn(f'href="#{anchor}"', page)
 

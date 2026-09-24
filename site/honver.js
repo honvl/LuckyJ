@@ -7,7 +7,7 @@
  * and setupRetractingTopbar.
  */
 (function () {
-  const guideAsset = "honver-guide.json?v=20260924-guide-6";
+  const guideAsset = "honver-guide.json?v=20260924-guide-7";
   const hideHandsKey = "luckyj:honver-guide:hide-hands";
   const SAFETY_CLASS = {
     genbutsu: "safe",
@@ -79,9 +79,34 @@
     `;
   }
 
+  // A call frame shows the hand before the call: what the call left, against passing.
+  function callBlocks(frame) {
+    const you = frame.you;
+    const action = you.action ? you.action[0].toUpperCase() + you.action.slice(1) : "Call";
+    const meld = (you.meld || []).map((t) => tileIcon(t, "inline-tile")).join("");
+    const from = REL[frame.call_from] || frame.call_from || "";
+    return `
+      <div class="decision guide-you">
+        <b>You</b>
+        <span class="discard-line">${escapeHtml(action)} ${tileIcon(you.tile, "discard-tile")} <em>off ${escapeHtml(from)}</em></span>
+        <span>Meld ${meld}, then cut ${tileIcon(you.then_cut, "inline-tile")}</span>
+        <span>Leaves ${shantenText(you.shanten)}, open</span>
+      </div>
+      <div class="decision guide-better">
+        <b>Better</b>
+        <span class="discard-line">Pass</span>
+        <span>Stays ${shantenText(frame.better.shanten)} and closed, ${frame.better.accept} tiles improve it</span>
+      </div>
+    `;
+  }
+
   function comparisonBlock(frame) {
     const wrap = document.createElement("div");
     wrap.className = "comparison guide-comparison";
+    if (frame.kind === "call") {
+      wrap.innerHTML = callBlocks(frame);
+      return wrap;
+    }
     if (frame.kind === "riichi") {
       const yakuNote = frame.ron_yaku_without_riichi
         ? "Has a yaku without riichi, so dama can ron."

@@ -518,6 +518,101 @@
    "did": "You cut [[8p]] and dealt in for 7,700.",
    "luckyj": "With 3 or 4 han and 3 or fewer live tiles, LuckyJ pushes 82% of these tenpais and nets 293 points per push: a win about one time in five pays for the deal-ins.",
    "fix": "No mistake, and the closest of these pushes. From fourth you need the win, and LuckyJ makes this push four times in five. This was the one in five that deals in."
+  },
+  {
+   "id": "cheap-tenpai-folded",
+   "chapter": "open-hands",
+   "game": "260924-546dc69b",
+   "round": "South 2-0",
+   "frames": [
+    {
+     "turn": 16,
+     "expect_cut": "8s",
+     "better": "F"
+    }
+   ],
+   "title": "A 1-han tenpai folded two draws from the end",
+   "situation": "South 2, turn 16, 11 tiles left. You are third on 15,800, 600 behind toimen and 3,000 ahead of the dealer. Your [[N]] pon is your seat wind, so the hand has a yaku, and the [[3m]] you drew makes tenpai if you cut [[F]]: a kanchan on [[6m]] with 3 live tiles. Toimen has a sou chi and a [[C]] pon and has thrown two drawn tiles in a row, two of chapter 8's three tells.",
+   "did": "You cut [[8s]], genbutsu against toimen, and gave up the tenpai. Nobody won, toimen was the only player tenpai, and you paid 1,000. Toimen was waiting on [[7m]], and kamicha held the other two [[F]].",
+   "luckyj": "With a 1-han open tenpai against a caller showing two or three tells, when every tile that keeps it is unsafe, LuckyJ keeps it 90% of the time. From turn 13 on, the 1- and 2-han open tenpais it keeps against a caller gain 128 points a hand on average, and the ones it folds lose 1,785.",
+   "fix": "Cut [[F]] and stay tenpai. With two draws left the hand will most likely reach the draw, where tenpai is worth 2,500 here: +1,500 instead of −1,000. A live dragon against a [[C]] pon is the riskiest kind of honor to push, and LuckyJ still keeps this tenpai nine times in ten."
+  },
+  {
+   "id": "chun-tenpai-kept",
+   "chapter": "open-hands",
+   "game": "260924-a941a150",
+   "round": "East 2-0",
+   "frames": [
+    {
+     "turn": 15,
+     "expect_cut": "3m"
+    }
+   ],
+   "title": "A 1-han dealer tenpai kept against two tells",
+   "verdict": "fine",
+   "situation": "East 2, turn 15, 17 tiles left. You are the dealer and first on 28,300. After your [[C]] pon and [[7p]]-[[8p]]-[[9p]] chi, you chi kamicha's [[4p]] with [[3p]]-[[5p]] and hold [[3m]] [[2s]] [[2s]] [[6s]] [[8s]]. Cutting [[3m]] makes tenpai on [[7s]] with 4 live tiles, worth 1 han. Kamicha called on their 12th discard and has thrown two drawn tiles since, two tells, and [[3m]] is live against them.",
+   "did": "You cut [[3m]] and kept the tenpai. Toimen let go of [[7s]] and you won 1,500.",
+   "luckyj": "LuckyJ keeps a 1-han open tenpai against a caller showing two or three tells 90% of the time. As the dealer the tenpai is worth more still: at the draw it keeps the deal.",
+   "fix": "Right push. This is the tenpai to keep, and you kept it."
+  },
+  {
+   "id": "tanyao-tenpai-dealt",
+   "chapter": "open-hands",
+   "game": "260920-3d2edaa5",
+   "round": "South 3-0",
+   "frames": [
+    {
+     "turn": 11,
+     "expect_cut": "6m"
+    }
+   ],
+   "title": "A 2-han tenpai kept into a hatsu pon",
+   "verdict": "fine",
+   "situation": "South 3, turn 11, 32 tiles left. You are first on 35,500, 6,200 ahead of kamicha. Shimocha's [[2s]] lets you pon from a closed 1-shanten into tenpai: [[3m]] [[3m]] [[6m]] [[8m]] [[8m]] [[3p]] [[4p]] [[5p]] [[5sr]] [[6s]] [[7s]] with the pon is tanyao with a red five, 2 han. Cutting [[6m]] or [[8m]] keeps tenpai, both on 4 live tiles, and both are unsafe against kamicha's [[F]] pon. Kamicha has thrown two drawn tiles in a row, one tell.",
+   "did": "You ponned and cut [[6m]], half suji, for a [[3m]]-[[8m]] shanpon. Kamicha was waiting on it and won 3,900 with hatsu, a dora and a red five.",
+   "luckyj": "From a closed 1-shanten in the second row, LuckyJ makes a call to a 2-han open tenpai about half the time. Once the open tenpai has 2 han and the caller shows one tell, it keeps the tenpai 96% of the time, and the hands it keeps average +796.",
+   "fix": "Right push, bad result. The two tiles that keep tenpai were equally unsafe, and folding would have thrown away a 2-han tenpai to protect a lead the hand could have added to."
+  },
+  {
+   "id": "early-tanyao-chi",
+   "chapter": "open-hands",
+   "game": "260924-546dc69b",
+   "round": "South 3-1",
+   "frames": [
+    {
+     "turn": 3,
+     "kind": "call"
+    }
+   ],
+   "title": "A tanyao chi on turn 3 from a well-connected hand",
+   "situation": "South 3, 1 honba, turn 3, 62 tiles left. You are third on 14,800, 3,000 ahead of fourth. Your closed hand is 2-shanten, and 56 tiles improve it. Kamicha throws the red [[5mr]], and your [[3m]]-[[4m]] can chi it for tanyao with a red five.",
+   "did": "You chied and cut [[1s]], leaving an open 1-shanten. Two turns later the [[8p]] you drew went into kamicha's dama pinfu for 2,300.",
+   "luckyj": "From a 2-shanten in the first two rows, LuckyJ makes a tanyao call 6 to 9% of the time when the closed hand has 40 or more tiles of acceptance, and 38 to 47% when it has fewer than 24. Your 46 early calls without a yakuhai won 13% of their hands and dealt in 33%; LuckyJ's won 31% and dealt in 12%.",
+   "fix": "Pass. A hand this well connected reaches tenpai quickly on its own and keeps riichi, pinfu and tanyao for later; the chi adds one red five and gives the rest up. Take a chi like this from a slow closed hand, or with two or more dora."
+  },
+  {
+   "id": "all-last-yakuless-south",
+   "chapter": "open-hands",
+   "game": "260924-f741b6f0",
+   "round": "South 4-1",
+   "frames": [
+    {
+     "turn": 12,
+     "kind": "call",
+     "note": "The pon of toimen's [[9p]] leaves a 1-shanten whose only realistic yaku is a triplet of [[S]]."
+    },
+    {
+     "turn": 13,
+     "expect_cut": "S",
+     "better": "7s",
+     "note": "After the chi, [[S]] is the only cut that keeps tenpai, on [[3m]] with no yaku. [[7s]] is suji against toimen and keeps the south."
+    }
+   ],
+   "title": "Two calls to a tenpai with no yaku, in the last hand",
+   "situation": "South 4, the last hand, 1 honba. You are third on 23,600: 5,700 behind kamicha in second and 8,200 ahead of the dealer, toimen, in fourth. Toimen chied [[5m]]-[[6m]]-[[7m]] on their 8th discard, shows no yaku and has thrown every drawn tile since. You hold a lone [[S]], the round wind, and no other copy of it is showing.",
+   "did": "You ponned toimen's [[9p]] on turn 12 and chied [[3s]] on turn 13, which made tenpai on a [[3m]] kanchan with no yaku, and cut the [[S]] for it. Toimen held [[S]] [[S]] and [[5p]] [[5p]], and the south was their only yaku. It cost 6,100 and dropped you to fourth, where you finished.",
+   "luckyj": "Against a caller, LuckyJ keeps an open tenpai with no yaku only 62% of the time, against 93% or more with a yaku. In the last hand, chapter 10's placement rule comes first.",
+   "fix": "Skip both calls, or after the chi keep the [[S]] and cut [[7s]], suji against toimen. A tenpai with no yaku cannot win by ron and only pays at the draw, and here the draw payment could not change your place: second was 5,700 away, and fourth could only pass you by winning. A live round wind is the likeliest yaku for a caller who shows none."
   }
  ]
 }

@@ -1,0 +1,97 @@
+== LuckyJ: 1255 games; chances to call from a closed hand, no riichi on the table unless stated
+-- from 1-shanten, the call gives a tenpai with a yaku
+  all                                            n  1109  called  57.5%
+  row 1                                          n   251  called  54.2%
+  row 2                                          n   710  called  55.6%
+  row 3                                          n   148  called  72.3%
+  closed acceptance under 12 tiles               n   419  called  76.4%
+     row 1                                       n    93  called  75.3%
+     row 2                                       n   253  called  75.1%
+     row 3                                       n    73  called  82.2%
+  closed acceptance 12-19 tiles                  n   503  called  56.3%
+     row 1                                       n   119  called  50.4%
+     row 2                                       n   330  called  55.8%
+     row 3                                       n    54  called  72.2%
+  closed acceptance 20+ tiles                    n   187  called  18.7%
+     row 1                                       n    39  called  15.4%
+     row 2                                       n   127  called  16.5%
+     row 3                                       n    21  called  38.1%
+  open tenpai 1 han                              n   356  called  48.0%
+     row 1                                       n    82  called  45.1%
+     row 2                                       n   225  called  45.3%
+     row 3                                       n    49  called  65.3%
+  open tenpai 2 han                              n   430  called  50.5%
+     row 1                                       n    96  called  44.8%
+     row 2                                       n   287  called  49.8%
+     row 3                                       n    47  called  66.0%
+  open tenpai 3+ han                             n   323  called  77.4%
+     row 1                                       n    73  called  76.7%
+     row 2                                       n   198  called  75.8%
+     row 3                                       n    52  called  84.6%
+  riichi on the table                            n   211  called  64.9%
+   first chance in the hand, called or passed:
+  under 12 tiles, 1-2 han            called  n  183  reached tenpai  96.7% (turn  9.5)  won  44.3%  dealt in   7.1%  net   +381
+  under 12 tiles, 1-2 han            passed  n   80  reached tenpai  65.0% (turn 11.0)  won  15.0%  dealt in  13.8%  net   -328  riichi later  21.2%
+  under 12 tiles, 3+ han             called  n  109  reached tenpai  98.2% (turn  9.1)  won  55.0%  dealt in  11.0%  net  +3408
+  under 12 tiles, 3+ han             passed  n    5  reached tenpai  80.0% (turn 13.2)  won  20.0%  dealt in  20.0%  net   +400  riichi later  40.0%
+  12-19 tiles, 1-2 han               called  n  149  reached tenpai 100.0% (turn  8.8)  won  58.4%  dealt in   4.7%  net  +1217
+  12-19 tiles, 1-2 han               passed  n  158  reached tenpai  74.7% (turn 10.4)  won  34.8%  dealt in  14.6%  net   +904  riichi later  47.5%
+  12-19 tiles, 3+ han                called  n  113  reached tenpai  99.1% (turn  9.0)  won  58.4%  dealt in   8.8%  net  +3556
+  12-19 tiles, 3+ han                passed  n   38  reached tenpai  76.3% (turn 10.2)  won  36.8%  dealt in  13.2%  net  +3224  riichi later  44.7%
+  20+ tiles, 1-2 han                 called  n   10  reached tenpai 100.0% (turn  9.3)  won  40.0%  dealt in  10.0%  net   -250
+  20+ tiles, 1-2 han                 passed  n   97  reached tenpai  77.3% (turn  9.9)  won  36.1%  dealt in  12.4%  net  +1967  riichi later  57.7%
+  20+ tiles, 3+ han                  called  n   17  reached tenpai 100.0% (turn  9.3)  won  52.9%  dealt in  23.5%  net  +1524
+  20+ tiles, 3+ han                  passed  n   16  reached tenpai  93.8% (turn 10.7)  won  25.0%  dealt in  18.8%  net    -19  riichi later  37.5%
+-- from 2-shanten, the call gives a 1-shanten that can still reach a yaku
+  all                                            n  2614  called  46.4%
+  row 1                                          n  1281  called  46.3%
+  row 2                                          n  1199  called  45.6%
+  row 3                                          n   134  called  54.5%
+  yakuhai pon                                    n   496  called  93.3%
+     row 1                                       n   339  called  95.0%
+     row 2                                       n   148  called  93.2%
+     row 3                                       n     9  called  33.3%
+  tanyao                                         n  1092  called  33.8%
+     row 1                                       n   381  called  23.1%
+     row 2                                       n   625  called  37.6%
+     row 3                                       n    86  called  53.5%
+  flush                                          n    51  called  76.5%
+     row 1                                       n    17  called  82.4%
+     row 2                                       n    32  called  75.0%
+     row 3                                       n     2  called  50.0%
+  other                                          n   975  called  35.1%
+     row 1                                       n   544  called  31.1%
+     row 2                                       n   394  called  38.1%
+     row 3                                       n    37  called  62.2%
+   tanyao in rows 1-2:
+  no dora                                        n   385  called  21.3%
+     closed acceptance under 24 tiles            n   154  called  38.3%
+     closed acceptance 24-39 tiles               n   135  called  12.6%
+     closed acceptance 40+ tiles                 n    96  called   6.2%
+  1 dora                                         n   405  called  27.9%
+     closed acceptance under 24 tiles            n   157  called  47.1%
+     closed acceptance 24-39 tiles               n   157  called  19.7%
+     closed acceptance 40+ tiles                 n    91  called   8.8%
+  2+ dora                                        n   216  called  59.3%
+     closed acceptance under 24 tiles            n    90  called  67.8%
+     closed acceptance 24-39 tiles               n    82  called  57.3%
+     closed acceptance 40+ tiles                 n    44  called  45.5%
+   first chance in the hand, rows 1-2, called or passed:
+  yakuhai pon, no dora               called  n  162  reached tenpai  79.6% (turn  8.0)  won  48.1%  dealt in   9.3%  net   +556
+  yakuhai pon, no dora               passed  n   12  reached tenpai  58.3% (turn  9.3)  won  33.3%  dealt in  16.7%  net   +625  riichi later  33.3%
+  yakuhai pon, 1 dora                called  n  170  reached tenpai  77.1% (turn  8.5)  won  43.5%  dealt in   5.9%  net  +1449
+  yakuhai pon, 1 dora                passed  n    7  reached tenpai  57.1% (turn 10.5)  won  14.3%  dealt in   0.0%  net    -71  riichi later  28.6%
+  yakuhai pon, 2+ dora               called  n   95  reached tenpai  81.1% (turn  8.9)  won  47.4%  dealt in  13.7%  net  +2400
+  yakuhai pon, 2+ dora               passed  n    1  reached tenpai   0.0% (turn  0.0)  won   0.0%  dealt in   0.0%  net  -3000  riichi later   0.0%
+  tanyao, no dora                    called  n   67  reached tenpai  59.7% (turn 10.2)  won  28.4%  dealt in  10.4%  net   -563
+  tanyao, no dora                    passed  n  229  reached tenpai  53.7% (turn 11.2)  won  23.1%  dealt in  11.8%  net    +14  riichi later  29.3%
+  tanyao, 1 dora                     called  n   98  reached tenpai  67.3% (turn 10.2)  won  33.7%  dealt in   6.1%  net   +228
+  tanyao, 1 dora                     passed  n  218  reached tenpai  48.2% (turn 10.9)  won  19.3%  dealt in  16.1%  net    +97  riichi later  23.9%
+  tanyao, 2+ dora                    called  n  117  reached tenpai  69.2% (turn 10.2)  won  28.2%  dealt in  19.7%  net   +740
+  tanyao, 2+ dora                    passed  n   73  reached tenpai  54.8% (turn 11.3)  won  28.8%  dealt in   9.6%  net  +1137  riichi later  17.8%
+  other, no dora                     called  n  121  reached tenpai  67.8% (turn  8.7)  won  28.9%  dealt in  10.7%  net   -153
+  other, no dora                     passed  n  216  reached tenpai  50.0% (turn  9.7)  won  20.8%  dealt in   7.4%  net    +36  riichi later  21.8%
+  other, 1 dora                      called  n   86  reached tenpai  65.1% (turn  9.8)  won  34.9%  dealt in   7.0%  net   +913
+  other, 1 dora                      passed  n  222  reached tenpai  45.9% (turn 10.4)  won  18.5%  dealt in  10.8%  net    -74  riichi later  18.5%
+  other, 2+ dora                     called  n   76  reached tenpai  63.2% (turn  9.6)  won  31.6%  dealt in  18.4%  net  +1251
+  other, 2+ dora                     passed  n   83  reached tenpai  57.8% (turn  9.8)  won  30.1%  dealt in  13.3%  net  +1552  riichi later  22.9%
