@@ -22,51 +22,13 @@ const siteCommitFallback = {
   sha: "a372172cb67ff60654aaef37f7f7696239735e76",
   date: "2026-07-01T14:02:11-04:00",
 };
-const pointRailFallbackLabels = {
-  en: [
-    "Put Placement Before Ukeire",
-    "Do Not Choose the Hand Too Early",
-    "Call Only When the Call Changes the Hand",
-    "Keep Brakes on Open Hands",
-    "Cut the Tile That Will Get Worse",
-    "Buy Value While It Is Cheap",
-    "Make Riichi Tax the Table",
-    "Reprice the Whole Push Every Draw",
-    "The Third Row Is a Counting Drill",
-    "Treat Keiten as Attack",
-    "Make Engine Splits Prove Their Case",
-    "Price the Missing Yakuhai",
-    "Name Who Your Safe Tile Defends",
-    "Spend Safety When Its Opponent Disappears",
-    "The Edge Tile Can Be the Attack",
-    "Label Every Honor Before You Move It",
-  ],
-};
-const pointRailFallbackIds = [
-  "point-01",
-  "point-02",
-  "point-03",
-  "point-04",
-  "point-05",
-  "point-06",
-  "point-08",
-  "point-09",
-  "point-10",
-  "point-11",
-  "point-12",
-  "point-13",
-  "point-14",
-  "point-15",
-  "point-16",
-  "point-18",
-];
 const pointExampleControllers = new Map();
 const pointExampleSelections = new Map();
 const pointExampleSelectionsKey = "luckyj:point-example-selections:v1";
 let pointExampleSelectionsLoaded = false;
 
 function setupRetractingTopbar() {
-  const topbar = document.querySelector(".topbar");
+  const topbar = document.querySelector(".running-head, .topbar");
   if (!topbar || !window.matchMedia) return;
 
   const touchQuery = window.matchMedia("(hover: none), (pointer: coarse), (max-width: 900px)");
@@ -87,7 +49,8 @@ function setupRetractingTopbar() {
     const scrollY = Math.max(window.scrollY || window.pageYOffset || 0, 0);
     const delta = scrollY - lastScrollY;
 
-    if (scrollY <= revealAtTop || topbar.matches(":focus-within")) {
+    // The head stays while its contents panel is open, since the panel hangs from it.
+    if (scrollY <= revealAtTop || topbar.matches(":focus-within") || topbar.querySelector('[aria-expanded="true"]')) {
       setRetracted(false);
     } else if (Math.abs(delta) >= minScrollDelta) {
       setRetracted(delta > 0);
@@ -124,6 +87,50 @@ function setupRetractingTopbar() {
   }
 
   syncMode();
+}
+
+// The web fonts and the example tables change the page's height after the browser has jumped to a
+// link's anchor, so the page goes to the anchor again once both are in place, unless the reader has
+// already started scrolling.
+let readerHasScrolled = false;
+for (const type of ["wheel", "touchstart", "keydown", "pointerdown"]) {
+  window.addEventListener(type, () => { readerHasScrolled = true; }, { once: true, passive: true });
+}
+
+function returnToHashTarget() {
+  let id = "";
+  try {
+    id = decodeURIComponent(window.location.hash.slice(1));
+  } catch {
+    return;
+  }
+  if (!id || readerHasScrolled) return;
+  document.getElementById(id)?.scrollIntoView({ block: "start", behavior: "instant" });
+}
+
+// The text faces come from a stylesheet that loads without blocking the page. This resolves once
+// that stylesheet applies (or fails, or takes too long), when the faces it declares start loading.
+function fontStylesheetApplied() {
+  const link = document.querySelector("link[data-font-css]");
+  if (!link || link.media === "all") return Promise.resolve();
+  return new Promise((resolve) => {
+    const done = () => {
+      // Its inline onload handler has switched it on by now; laying out the page starts the font loads.
+      void document.body.offsetHeight;
+      resolve();
+    };
+    link.addEventListener("load", done, { once: true });
+    link.addEventListener("error", done, { once: true });
+    setTimeout(resolve, 3000);
+  });
+}
+
+function settleHashScroll(ready) {
+  Promise.resolve(ready)
+    .catch(() => {})
+    .then(fontStylesheetApplied)
+    .then(() => document.fonts?.ready)
+    .then(() => requestAnimationFrame(returnToHashTarget));
 }
 
 function normalizePointKey(value) {
@@ -193,13 +200,13 @@ function pointExampleProgressText(count, total) {
 function updatePointRailProgress(pointKey, index, total) {
   if (!pointKey || total <= 0) return;
   const count = clampExampleIndex(index, total) + 1;
-  const percent = `${Math.round((count / total) * 100)}%`;
-  for (const link of document.querySelectorAll(`.point-rail a[data-point="${pointKey}"]`)) {
+  // The contents list marks only the points where the reader has moved past the first replay.
+  const shown = total > 1 && count > 1;
+  for (const link of document.querySelectorAll(`.contents-panel a[data-point="${pointKey}"]`)) {
     const baseLabel = [link.dataset.number, link.dataset.label].filter(Boolean).join(" ");
-    link.classList.toggle("has-example-progress", total > 1);
-    link.style.setProperty("--example-progress", percent);
-    link.dataset.exampleProgress = `${count}/${total}`;
-    link.setAttribute("aria-label", total > 1 ? `${baseLabel}, ${pointExampleProgressText(count, total)}` : baseLabel);
+    const progress = link.querySelector("small");
+    if (progress) progress.textContent = shown ? `${count}/${total}` : "";
+    link.setAttribute("aria-label", shown ? `${baseLabel}, ${pointExampleProgressText(count, total)}` : baseLabel);
   }
 }
 
@@ -226,12 +233,12 @@ function syncPointExamplesFromLocation({ scroll = false } = {}) {
     target.exampleIndex === null
       ? clampExampleIndex(pointExampleSelections.get(target.pointKey) ?? controller.index, controller.total)
       : clampExampleIndex(target.exampleIndex, controller.total);
-  controller.show(index, { updateLocation: false });
+  controller.show(index, { updateLocation: false, reveal: target.exampleIndex !== null });
   if (!scroll) return;
   requestAnimationFrame(() => {
     const anchor = target.exampleIndex === null ? target.pointKey : exampleAnchorId(target.pointKey, index);
     const element = document.getElementById(anchor) || document.getElementById(target.pointKey);
-    element?.scrollIntoView({ block: "start" });
+    element?.scrollIntoView({ block: "start", behavior: "instant" });
   });
 }
 
@@ -241,137 +248,167 @@ function modelName(keyOrLabel) {
   return modelNames[pageLang]?.[key] || modelNames.en[key] || raw;
 }
 
-function renderPointRail() {
-  if (document.querySelector(".point-rail")) return;
-  const sections = Array.from(document.querySelectorAll(".point[id^='point-']")).filter((section) =>
-    /^point-\d{2}$/.test(section.id)
+// The running head: where the reader is in the book, a reading-progress line, and a contents panel
+// built from the page's own sections. On a page without chapters (the home page) the Contents link
+// keeps its href and goes to the contents list on that page.
+function setupRunningHead() {
+  const head = document.querySelector(".running-head");
+  if (!head || head.dataset.ready) return;
+  head.dataset.ready = "1";
+  const location = head.querySelector("[data-running-location]");
+  const progress = head.querySelector(".reading-progress");
+  const fill = progress?.querySelector("span");
+  const cover = document.querySelector(".cover");
+  const isGuide = document.body?.dataset.book === "guide";
+  const words = isJa
+    ? { point: "ポイント", before: "前付け", points: "ポイント", after: "後付け", contents: "目次" }
+    : isGuide
+      ? { point: "Chapter", before: "Before the chapters", points: "Chapters", after: "After the chapters", contents: "Contents" }
+      : { point: "Point", before: "Before the points", points: "The points", after: "After the points", contents: "Contents" };
+
+  const points = Array.from(document.querySelectorAll(".point[id]"));
+  const sections = Array.from(document.querySelectorAll("section.section[id], section.cover[id]")).filter(
+    (section) => !section.classList.contains("concept-divider")
   );
-  const hasLocalPoints = sections.length > 0;
-  const prescriptionsSection = document.getElementById("prescriptions");
-  const prescriptionsPoint = {
-    href: prescriptionsSection ? "#prescriptions" : "points.html#prescriptions",
-    id: "prescriptions",
-    number: "P",
-    title: isJa ? "処方箋" : "Prescriptions",
-    section: prescriptionsSection || null,
-  };
-  const points = hasLocalPoints
-    ? [
-        prescriptionsPoint,
-        ...sections.map((section) => {
-          const number = section.querySelector(".point-number")?.textContent.trim() || section.id.replace("point-", "");
-          const heading = section.querySelector("h3")?.textContent.trim() || "";
-          return { href: `#${section.id}`, id: section.id, number, title: heading, section };
-        }),
-      ]
-    : [
-        prescriptionsPoint,
-        ...pointRailFallbackIds.map((id, index) => {
-          const number = String(index + 1).padStart(2, "0");
-          return {
-            href: `points.html#${id}`,
-            id,
-            number,
-            title: pointRailFallbackLabels[pageLang]?.[index] || "",
-            section: null,
-          };
-        }),
-      ];
-
-  if (!points.length) return;
-
-  const rail = document.createElement("nav");
-  rail.className = "point-rail";
-  rail.setAttribute("aria-label", isJa ? "ポイント索引" : "Point index");
-  rail.setAttribute("aria-controls", "point-rail-panel");
-
-  const panel = document.createElement("div");
-  panel.className = "point-rail-panel";
-  panel.id = "point-rail-panel";
-  panel.setAttribute("aria-label", isJa ? "ポイント一覧" : "Point list");
-  const panelList = document.createElement("ol");
-  panel.append(panelList);
-
-  const railLinks = points.map((point) => {
-    const link = document.createElement("a");
-    const number = document.createElement("span");
-    const progress = document.createElement("span");
-    const fill = document.createElement("span");
-
-    link.href = point.href;
-    link.dataset.point = point.id;
-    link.dataset.number = point.number;
-    number.className = "point-rail-number";
-    number.textContent = point.number;
-    progress.className = "point-rail-progress";
-    progress.setAttribute("aria-hidden", "true");
-    fill.className = "point-rail-progress-fill";
-    progress.append(fill);
-    if (point.title) {
-      link.setAttribute("aria-label", `${point.number} ${point.title}`);
-      link.dataset.label = point.title;
+  const itemFor = (element) => {
+    if (element.classList.contains("point")) {
+      const number = element.querySelector(".point-number")?.textContent.trim() || "";
+      const title = element.querySelector("h3")?.textContent.trim() || "";
+      return { element, id: element.id, number, title, location: `${words.point} ${number} · ${title}`, isPoint: true };
     }
-    link.append(number, progress);
-    rail.append(link);
-    return link;
-  });
+    const label =
+      element.dataset.contentsLabel ||
+      element.querySelector(":scope > .kicker")?.textContent.trim() ||
+      element.querySelector("h2, h1")?.textContent.trim() ||
+      element.id;
+    return { element, id: element.id, number: "", title: label, location: label, isPoint: false };
+  };
+  const items = [...points, ...sections]
+    .sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1))
+    .map(itemFor);
 
-  const panelLinks = points.map((point) => {
-    const item = document.createElement("li");
-    const link = document.createElement("a");
-    const number = document.createElement("b");
-    const label = document.createElement("span");
+  // The contents panel, when the page holds chapters.
+  let toggle = head.querySelector(".contents-toggle");
+  let panel = null;
+  const links = [];
+  if (points.length && toggle) {
+    panel = document.createElement("div");
+    panel.className = "contents-panel";
+    panel.id = "contents-panel";
+    panel.hidden = true;
+    panel.setAttribute("role", "dialog");
+    panel.setAttribute("aria-label", words.contents);
+    const groups = [
+      [words.before, items.filter((item) => !item.isPoint && item.element.compareDocumentPosition(points[0]) & Node.DOCUMENT_POSITION_FOLLOWING)],
+      [words.points, items.filter((item) => item.isPoint)],
+      [words.after, items.filter((item) => !item.isPoint && points[points.length - 1].compareDocumentPosition(item.element) & Node.DOCUMENT_POSITION_FOLLOWING)],
+    ];
+    for (const [label, group] of groups) {
+      if (!group.length) continue;
+      const heading = document.createElement("p");
+      heading.className = "label";
+      heading.textContent = label;
+      const list = document.createElement("ol");
+      for (const item of group) {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = `#${item.id}`;
+        link.dataset.point = item.id;
+        link.dataset.number = item.number;
+        link.dataset.label = item.title;
+        const number = document.createElement("b");
+        number.textContent = item.number;
+        const title = document.createElement("span");
+        title.textContent = item.title;
+        const progressText = document.createElement("small");
+        link.append(number, title, progressText);
+        li.append(link);
+        list.append(li);
+        links.push(link);
+      }
+      panel.append(heading, list);
+    }
+    document.body.append(panel);
 
-    link.href = point.href;
-    link.dataset.point = point.id;
-    number.textContent = point.number;
-    label.textContent = point.title || point.number;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = toggle.className;
+    button.innerHTML = toggle.innerHTML;
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-controls", panel.id);
+    toggle.replaceWith(button);
+    toggle = button;
 
-    link.append(number, label);
-    item.append(link);
-    panelList.append(item);
-    return link;
-  });
-
-  const links = [...railLinks, ...panelLinks];
-
-  document.body.append(rail, panel);
-
-  if (!hasLocalPoints) return;
+    const close = ({ focus = false } = {}) => {
+      panel.hidden = true;
+      toggle.setAttribute("aria-expanded", "false");
+      if (focus) toggle.focus();
+    };
+    toggle.addEventListener("click", () => {
+      const open = panel.hidden;
+      panel.hidden = !open;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) (panel.querySelector("a.is-active") || panel.querySelector("a"))?.focus({ preventScroll: true });
+    });
+    panel.addEventListener("click", (event) => {
+      if (event.target.closest("a")) close();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !panel.hidden) close({ focus: true });
+    });
+    document.addEventListener("click", (event) => {
+      if (!panel.hidden && !panel.contains(event.target) && !toggle.contains(event.target)) close();
+    });
+  }
 
   function setActive(id) {
     for (const link of links) {
       const selected = link.dataset.point === id;
       link.classList.toggle("is-active", selected);
-      if (selected) {
-        link.setAttribute("aria-current", "location");
-      } else {
-        link.removeAttribute("aria-current");
+      if (selected) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    }
+  }
+
+  let frame = null;
+  function update() {
+    frame = null;
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    if (fill) fill.style.setProperty("--progress", `${Math.min(100, Math.max(0, (scrollY / max) * 100)).toFixed(2)}%`);
+    if (cover && head.dataset.felt !== "never") {
+      const overFelt = cover.getBoundingClientRect().bottom > head.offsetHeight;
+      head.classList.toggle("on-felt", overFelt);
+    }
+    const readingLine = window.innerHeight * 0.38;
+    let active = null;
+    for (const item of items) {
+      if (item.element.getBoundingClientRect().top <= readingLine) active = item;
+    }
+    const coverVisible = cover && cover.getBoundingClientRect().bottom > readingLine;
+    if (location) {
+      const text = active && !coverVisible ? active.location : "";
+      if (location.dataset.text !== text) {
+        location.dataset.text = text;
+        location.replaceChildren();
+        if (text) {
+          const span = document.createElement("span");
+          span.textContent = text;
+          location.append(span);
+        }
       }
     }
+    progress?.classList.toggle("is-live", points.length > 0 && !coverVisible);
+    setActive(active?.id || "");
   }
-
-  const readingSections = points.map((point) => point.section).filter(Boolean);
-  let frame = null;
-  function updateActive() {
-    frame = null;
-    const readingLine = window.innerHeight * 0.38;
-    let active = readingSections[0]?.id;
-    for (const section of readingSections) {
-      if (section.getBoundingClientRect().top <= readingLine) active = section.id;
-    }
-    if (active) setActive(active);
-  }
-
-  function scheduleActiveUpdate() {
+  function schedule() {
     if (frame !== null) return;
-    frame = requestAnimationFrame(updateActive);
+    frame = requestAnimationFrame(update);
   }
-
-  window.addEventListener("scroll", scheduleActiveUpdate, { passive: true });
-  window.addEventListener("resize", scheduleActiveUpdate);
-  window.addEventListener("hashchange", scheduleActiveUpdate);
-  updateActive();
+  window.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", schedule);
+  window.addEventListener("hashchange", schedule);
+  update();
 }
 
 const copy = {
@@ -436,6 +473,15 @@ const copy = {
     mismatch: "mismatch",
     bad: "Nishiki severe",
     dataLoadFailed: "Data load failed",
+    yourCall: "Your call",
+    showAnswer: "Show the answer",
+    askAgain: "Ask me again",
+    cut: "Cut",
+    pass: "Pass",
+    tenpaiWord: "Tenpai",
+    replaysLabel: "Replays",
+    replaysTitle: "Replays from LuckyJ's games",
+    replaysNote: "Make the call before you read the answer.",
   },
   ja: {
     none: "なし",
@@ -498,6 +544,15 @@ const copy = {
     mismatch: "不一致",
     bad: "ニシキ重度不一致",
     dataLoadFailed: "データ読み込み失敗",
+    yourCall: "あなたの判断",
+    showAnswer: "答えを見る",
+    askAgain: "もう一度考える",
+    cut: "打",
+    pass: "鳴かない",
+    tenpaiWord: "テンパイ",
+    replaysLabel: "実戦例",
+    replaysTitle: "LuckyJ の実戦から",
+    replaysNote: "答えを読む前に、自分の打牌を選ぶ。",
   },
 };
 
@@ -530,14 +585,19 @@ function updateCommitStamp(element, commit) {
 }
 
 async function renderCommitStamp() {
-  if (document.querySelector(".commit-stamp")) return;
+  const placeholder = document.querySelector("[data-commit-stamp]");
+  if (!placeholder && document.querySelector(".commit-stamp")) return;
+  if (placeholder?.dataset.ready) return;
 
-  const stamp = document.createElement("a");
-  stamp.className = "commit-stamp";
+  // Pages with a colophon hold the stamp there; older pages get the floating one.
+  const stamp = placeholder || document.createElement("a");
+  if (placeholder) placeholder.dataset.ready = "1";
+  stamp.classList.add("commit-stamp");
+  if (!placeholder) stamp.classList.add("is-floating");
   stamp.target = "_blank";
   stamp.rel = "noopener noreferrer";
   updateCommitStamp(stamp, siteCommitFallback);
-  document.body.append(stamp);
+  if (!placeholder) document.body.append(stamp);
 
   try {
     const response = await fetch(
@@ -1168,7 +1228,7 @@ function tileRunWithThreats(items, threats = [], className = "", emptyLabel = t(
     .map((tile, index) => {
       const threat = threats[index]?.tile === tile ? threats[index] : threats[index] || {};
       const title = threat?.bars?.length ? `${tileName(tile)}: ${threat.bars.map(tileThreatBarLabel).join(", ")}` : tileName(tile);
-      return `<span class="tile-threat-cell" title="${escapeHtml(title)}" aria-label="${escapeHtml(title)}">${tileThreatBars(
+      return `<span class="tile-threat-cell" data-tile="${escapeHtml(tile)}" title="${escapeHtml(title)}" aria-label="${escapeHtml(title)}">${tileThreatBars(
         tile,
         threat
       )}<span class="tiles ${tileClass}" aria-hidden="true">${escapeHtml(tileCode(tile))}</span></span>`;
@@ -1444,74 +1504,6 @@ function prescriptionTurnLabel(item, index) {
   return String(item?.label || (item?.turn !== undefined ? `T${item.turn}` : index + 1)).slice(0, 8);
 }
 
-function setupPrescriptionScrubber(block) {
-  const turns = Array.from(block.querySelectorAll(":scope > .rx-stage .rx-turn"));
-  if (turns.length <= 1) return;
-  if (block._rxScrubberTimer) window.clearInterval(block._rxScrubberTimer);
-  block.classList.add("rx-scrubbable");
-  let scrubber = block.querySelector(".rx-scrubber");
-  if (!scrubber) {
-    scrubber = document.createElement("div");
-    scrubber.className = "rx-scrubber";
-    scrubber.innerHTML = `
-      <input class="rx-scrub-range" type="range" min="0" step="1" value="0" aria-label="Select turn">
-      <div class="rx-scrub-meta">
-        <span class="rx-scrub-current"></span>
-        <span class="rx-scrub-count"></span>
-      </div>
-    `;
-    block.append(scrubber);
-  }
-  const range = scrubber.querySelector(".rx-scrub-range");
-  const current = scrubber.querySelector(".rx-scrub-current");
-  const count = scrubber.querySelector(".rx-scrub-count");
-  range.max = String(turns.length - 1);
-  const labels = turns.map((turn, index) => turn.querySelector(".rx-turn-label")?.textContent?.trim() || String(index + 1));
-  const autoplayIndices = String(block.dataset.rxAutoplayIndices || "")
-    .split(",")
-    .map((item) => Number(item))
-    .filter((item) => Number.isInteger(item) && item >= 0 && item < turns.length);
-  let selected = 0;
-  let userHoldUntil = 0;
-
-  const selectTurn = (index) => {
-    selected = Math.max(0, Math.min(turns.length - 1, Number(index) || 0));
-    turns.forEach((turn, turnIndex) => {
-      const active = turnIndex === selected;
-      turn.classList.toggle("is-active", active);
-      turn.setAttribute("aria-hidden", active ? "false" : "true");
-    });
-    range.value = String(selected);
-    const percent = turns.length <= 1 ? 0 : (selected / (turns.length - 1)) * 100;
-    range.style.setProperty("--rx-progress", `${percent}%`);
-    current.textContent = labels[selected] || "";
-    count.textContent = `${selected + 1}/${turns.length}`;
-  };
-
-  const holdForUser = () => {
-    userHoldUntil = Date.now() + 6000;
-  };
-
-  range.addEventListener("input", () => {
-    holdForUser();
-    selectTurn(range.value);
-  });
-  range.addEventListener("pointerdown", holdForUser);
-  range.addEventListener("keydown", holdForUser);
-  range.addEventListener("focus", holdForUser);
-
-  selectTurn(0);
-  block._rxScrubberTimer = window.setInterval(() => {
-    if (Date.now() < userHoldUntil || block.matches(":hover, :focus-within")) return;
-    if (autoplayIndices.length) {
-      const currentAutoIndex = autoplayIndices.indexOf(selected);
-      selectTurn(autoplayIndices[currentAutoIndex >= 0 ? (currentAutoIndex + 1) % autoplayIndices.length : 0]);
-      return;
-    }
-    selectTurn((selected + 1) % turns.length);
-  }, 3200);
-}
-
 function prescriptionSummaryText(item) {
   if (item?.turns) {
     const focal = prescriptionFocalTurn(item);
@@ -1541,25 +1533,25 @@ function prescriptionSummaryText(item) {
 
 const PRESCRIPTION_EXAMPLE_KEYS = new Set(["value_honor_cleanup", "value_honor_cleanup_animation"]);
 
-function prescriptionSequence(sequence, index) {
+function prescriptionSequence(sequence, index, { folded = false } = {}) {
   const turns = Array.isArray(sequence?.turns) ? sequence.turns : [];
-  const autoplay = Array.isArray(sequence?.autoplay_indices) ? sequence.autoplay_indices.join(",") : "";
   const contextText = [`Game ${sequence.game}`, sequence.round].filter(Boolean).join(", ");
   const focusText = sequence.focus_honor
     ? `<span class="rx-focus-tile">Honor ${tileIcon(sequence.focus_honor, "inline-tile")} ${escapeHtml(tileName(sequence.focus_honor))}</span>`
     : "";
-  return `
-    <div class="rx-sequence" data-rx-autoplay-indices="${escapeHtml(autoplay)}">
-      <div class="rx-sequence-head">
-        <b>${escapeHtml(sequence.title || `Example ${index + 1}`)}</b>
-        <span>${escapeHtml(contextText)}${focusText ? `; ${focusText}` : ""}</span>
-      </div>
+  const head = `
+      <b>${escapeHtml(sequence.title || `Example ${index + 1}`)}</b>
+      <span>${escapeHtml(contextText)}${focusText ? `; ${focusText}` : ""}</span>`;
+  const body = `
       <div class="rx-stage">
         ${turns.map(prescriptionExampleLine).join("")}
       </div>
-      ${sequence.note ? `<p class="rx-sequence-note">${escapeHtml(sequence.note)}</p>` : ""}
-    </div>
-  `;
+      ${sequence.note ? `<p class="rx-sequence-note">${escapeHtml(sequence.note)}</p>` : ""}`;
+  // Further examples of the same habit fold away, so the first hand carries the section.
+  if (folded) {
+    return `<details class="rx-sequence rx-sequence-more"><summary class="rx-sequence-head">${head}</summary>${body}</details>`;
+  }
+  return `<div class="rx-sequence"><div class="rx-sequence-head">${head}</div>${body}</div>`;
 }
 
 function renderPrescriptionExamples(rxExamples) {
@@ -1586,8 +1578,11 @@ function renderPrescriptionExamples(rxExamples) {
     }
     const head = block.querySelector(".rx-anim-head")?.outerHTML || "";
     block.classList.remove("rx-lines", "rx-animation-long");
-    block.innerHTML = `${head}<div class="rx-sequence-list">${examples.map(prescriptionSequence).join("")}</div>`;
-    for (const sequence of block.querySelectorAll(".rx-sequence")) setupPrescriptionScrubber(sequence);
+    // Every turn stays on screen, one row each, so the reader can compare them without waiting.
+    const folded = Boolean(block.dataset.rxKey);
+    block.innerHTML = `${head}<div class="rx-sequence-list">${examples
+      .map((sequence, index) => prescriptionSequence(sequence, index, { folded }))
+      .join("")}</div>`;
   }
 }
 
@@ -1677,7 +1672,7 @@ function renderMahjongTable(table) {
       const score = scoreFor(table, seats[position]);
       return `
         <div class="player-score player-${position}">
-          <div class="wind">${escapeHtml(score.wind || "?")}</div>
+          <div class="wind${score.wind === "E" ? " is-dealer" : ""}">${escapeHtml(score.wind || "?")}</div>
           <div class="score">${whole.format(score.score || 0)}</div>
         </div>
       `;
@@ -1691,7 +1686,9 @@ function renderMahjongTable(table) {
       const name = `${seatLabel(player.seat)}${score.rank ? ` / ${rankText(score.rank)}` : ""}`;
       const handTiles = (player.hand || "").split(" ").filter(Boolean);
       const handRun =
-        player.seat === "self" ? tileRunWithThreats(handTiles, player.tile_threats || []) : tileRun(handTiles);
+        player.seat === "self"
+          ? tileRunWithThreats(handTiles, player.tile_threats || [])
+          : `${tileRun(handTiles)}<span class="tile-backs" aria-hidden="true">${"<i></i>".repeat(handTiles.length)}</span>`;
       const playerMelds = meldsWithAddedKanStacks(player.melds || []);
       const melds = playerMelds.length
         ? `<div class="table-melds">${playerMelds.map(tableMeld).join("")}</div>`
@@ -2060,85 +2057,308 @@ function renderCallModelBlock(example) {
   return block;
 }
 
+// Examples the reader has answered (or opened from a link) during this visit, and what they picked.
+const replayPicks = new Map();
+
+function plainCallHeadName(head) {
+  return isJa ? head.label_ja || modelName(head.key || head.label) : head.label || modelName(head.key);
+}
+
+function shantenNote(evalItem) {
+  if (!evalItem) return "";
+  const shanten = Number(evalItem.shanten);
+  const ukeire = Number(evalItem.ukeire);
+  const state =
+    shanten === 0 ? t("tenpaiWord") : Number.isFinite(shanten) ? (isJa ? `${shanten}シャンテン` : `${shanten}-shanten`) : "";
+  const count = Number.isFinite(ukeire)
+    ? isJa
+      ? `受け入れ${whole.format(ukeire)}枚`
+      : `${whole.format(ukeire)} tile${ukeire === 1 ? "" : "s"}`
+    : "";
+  return [state, count].filter(Boolean).join(" · ");
+}
+
+function discardActionText(tile, declares) {
+  const name = escapeHtml(tileName(tile));
+  if (isJa) return `${declares ? "リーチ、" : ""}打${name}`;
+  return `${declares ? `${t("reach")}, ${t("cut").toLowerCase()}` : t("cut")} ${name}`;
+}
+
+// The two lines the reader chooses between: LuckyJ's and Nishiki's. Each carries the engines that
+// chose it, which the answer names once the reader has picked.
+function quizChoices(example, mortal) {
+  if (example.kind === "call") {
+    const heads = example.call_model_heads || [];
+    const callers = heads.filter((head) => head.supports_call).map(plainCallHeadName);
+    const passers = heads
+      .filter((head) => Number(head.top_kind) === 0 || String(head.top_action || "").toLowerCase() === "pass")
+      .map(plainCallHeadName);
+    const label = callActionLabel(example.call);
+    const tile = tileIcon(example.called_tile, "inline-tile");
+    return [
+      {
+        id: "luckyj",
+        tile: example.called_tile,
+        action: isJa ? `${label}` : `${label}`,
+        html: isJa ? `${tile}を${label}` : `${label} on ${tile}`,
+        note: isJa ? `${escapeHtml(seatLabel(example.called_from))}の捨て牌` : `from ${escapeHtml(seatLabel(example.called_from))}`,
+        owners: ["LuckyJ", ...callers, ...(mortal?.mortal_agrees_luckyj ? ["Mortal"] : [])],
+      },
+      {
+        id: "model",
+        tile: null,
+        action: t("pass"),
+        html: t("pass"),
+        note: isJa ? "門前のまま" : "stay closed",
+        owners: [...passers, ...(mortal && mortal.mortal_agrees_luckyj === false ? ["Mortal"] : [])],
+      },
+    ];
+  }
+  const heads = example.model_heads || [];
+  const headsFor = (tile) => heads.filter((head) => head.top === tile).map((head) => modelName(head.key || head.label));
+  const lines = [
+    {
+      id: "luckyj",
+      tile: example.actual,
+      declares: Boolean(example.actual_eval?.declares_reach),
+      note: shantenNote(example.actual_eval),
+      owners: ["LuckyJ", ...headsFor(example.actual), ...(mortal?.mortal_agrees_luckyj ? ["Mortal"] : [])],
+    },
+    {
+      id: "model",
+      tile: example.naga,
+      declares: Boolean(example.naga_eval?.declares_reach),
+      note: shantenNote(example.naga_eval),
+      owners: [...headsFor(example.naga), ...(mortal?.mortal_agrees_naga ? ["Mortal"] : [])],
+    },
+  ];
+  for (const line of lines) {
+    line.action = discardActionText(line.tile, line.declares);
+    line.html = `${line.declares ? `${t("reach")}${isJa ? "、" : ", "}` : ""}${tileIcon(line.tile, "inline-tile")}`;
+  }
+  // Tile order, so LuckyJ's line is not always the first button.
+  return lines.sort((a, b) => prescriptionTileSortKey(a.tile) - prescriptionTileSortKey(b.tile));
+}
+
+function quizResultHtml(choices, pickedId) {
+  const luckyj = choices.find((choice) => choice.id === "luckyj");
+  const model = choices.find((choice) => choice.id === "model");
+  const list = (owners) => readableList(owners.map(escapeHtml));
+  if (!pickedId) {
+    return isJa
+      ? `LuckyJ は ${luckyj.html}${model.owners.length ? `、${list(model.owners)}は ${model.html}` : ""}。`
+      : `LuckyJ: ${luckyj.html}.${model.owners.length ? ` ${list(model.owners)}: ${model.html}.` : ""}`;
+  }
+  const picked = pickedId === "luckyj" ? luckyj : model;
+  const other = pickedId === "luckyj" ? model : luckyj;
+  if (isJa) {
+    const same = picked.owners.length ? `で、${list(picked.owners)}と同じ` : "";
+    const rest = other.owners.length ? `${list(other.owners)}は ${other.html} を選んだ。` : "";
+    return `あなたの選択は ${picked.html}${same}。${rest}`;
+  }
+  const same = picked.owners.length ? `, the same as ${list(picked.owners)}` : "";
+  const rest = other.owners.length ? ` ${list(other.owners)} chose ${other.html}.` : "";
+  return `You picked ${picked.html}${same}.${rest}`;
+}
+
+function replayCaption(example) {
+  const round = roundText(example.round);
+  const left = tilesLeftText(example.left);
+  const standing = example.current_rank
+    ? isJa
+      ? `LuckyJ は${whole.format(example.score || 0)}点で現在${rankText(example.current_rank)}`
+      : `LuckyJ is ${rankText(example.current_rank)} on ${whole.format(example.score || 0)}`
+    : "";
+  if (example.kind === "call") {
+    return isJa
+      ? `${round}、${left}。${standing}。${seatLabel(example.called_from)}が[[${example.called_tile}]]を切った。`
+      : `${round}, ${left}. ${standing}; ${seatLabel(example.called_from)} has just discarded the [[${example.called_tile}]].`;
+  }
+  if (example.draw) {
+    return isJa
+      ? `${round}、${left}。${standing}、[[${example.draw}]]をツモった。`
+      : `${round}, ${left}. ${standing} and has just drawn the [[${example.draw}]].`;
+  }
+  return isJa ? `${round}、${left}。${standing}。` : `${round}, ${left}. ${standing}.`;
+}
+
+function handCellFor(cells, tile, preferLast) {
+  const exact = (cell) => cell.dataset.tile === tile;
+  const base = (cell) => sameBaseTile(cell.dataset.tile, tile);
+  if (preferLast && cells.length && (exact(cells[cells.length - 1]) || base(cells[cells.length - 1]))) {
+    return cells[cells.length - 1];
+  }
+  return cells.find(exact) || cells.find(base) || null;
+}
+
+function markReplayHand(card, example, revealed) {
+  const cells = Array.from(card.querySelectorAll(".player-hand.player-current .tile-threat-cell"));
+  if (!cells.length) return;
+  const last = cells[cells.length - 1];
+  if (example.draw && sameBaseTile(last.dataset.tile, example.draw)) last.classList.add("is-drawn");
+  for (const cell of cells) {
+    cell.classList.remove("is-luckyj-cut", "is-model-cut");
+    delete cell.dataset.mark;
+  }
+  if (!revealed || example.kind === "call") return;
+  const drewActual = example.draw && sameBaseTile(example.draw, example.actual);
+  const drewModel = example.draw && sameBaseTile(example.draw, example.naga);
+  const model = handCellFor(cells, example.naga, drewModel);
+  const luckyj = handCellFor(cells, example.actual, drewActual);
+  if (model) {
+    model.classList.add("is-model-cut");
+    model.dataset.mark = modelName("nishiki");
+  }
+  if (luckyj) {
+    luckyj.classList.add("is-luckyj-cut");
+    luckyj.dataset.mark = "LuckyJ";
+  }
+}
+
 function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCopy, index, total) {
   const exampleGuide = (isJa ? example.guide_ja || example.guide : example.guide) || guide || {};
   const exampleMortal = example.mortal || pointMortalForExample(mortalPoints, pointKey, example, index);
+  const anchorId = exampleAnchorId(pointKey, index);
+  const choices = quizChoices(example, exampleMortal);
   const card = document.createElement("article");
-  card.className = "point-example-card";
-  card.id = exampleAnchorId(pointKey, index);
+  card.className = "point-example-card conceal-hands";
+  card.id = anchorId;
+  const replayLabel = isJa ? `実戦例 ${index + 1}/${total}` : `Replay ${index + 1} of ${total}`;
+  const buttons = choices
+    .map(
+      (choice) => `
+        <button type="button" class="quiz-choice" data-choice="${choice.id}" aria-pressed="false">
+          ${choice.tile ? tileIcon(choice.tile, "quiz-tile") : ""}
+          <span class="quiz-choice-text">
+            <span class="quiz-choice-action">${choice.action}</span>
+            <span class="quiz-choice-note">${choice.note || ""}</span>
+          </span>
+        </button>`
+    )
+    .join("");
   card.innerHTML = `
-    <div class="example-head">
-      <div>
-        <p class="kicker">${t("replayExample")} ${index + 1}/${total}</p>
-        <h4>${escapeHtml(exampleGuide.caption || example.title)}</h4>
+    <figure class="replay-figure" aria-label="${escapeHtml(replayLabel)}">
+      <div class="replay-table"></div>
+      <div class="replay-panel">
+        <div class="replay-panel-head"><span class="figure-label">${escapeHtml(replayLabel)}</span></div>
+        <p class="replay-caption"></p>
+        <div class="replay-rule" aria-hidden="true"></div>
+        <div class="replay-quiz">
+          <p class="quiz-label">${t("yourCall")}</p>
+          <p class="quiz-prompt"></p>
+          <div class="quiz-choices" role="group" aria-label="${escapeHtml(t("yourCall"))}">${buttons}</div>
+          <button type="button" class="quiz-skip">${t("showAnswer")}</button>
+        </div>
+        <div class="replay-answer" hidden>
+          <p class="quiz-result" aria-live="polite"></p>
+        </div>
       </div>
-      <span>${escapeHtml(roundText(example.round))}, ${tilesLeftText(example.left)}<small class="evidence-tier ${escapeHtml(example.evidence_tier || "")}">${escapeHtml(pointEvidenceTierText(example))}</small></span>
-    </div>
-    <p class="case-meta">${escapeHtml(stageText(example.stage))} / ${escapeHtml(scoreBandText(example.score_band))} / ${t("finalRank")} ${rankText(example.rank)}</p>
+    </figure>
+    <div class="replay-notes" hidden></div>
   `;
-  const layout = document.createElement("div");
-  layout.className = "point-example-layout";
-  const replay = document.createElement("div");
-  replay.className = "point-example-replay";
-  const explanation = document.createElement("div");
-  explanation.className = "point-example-explanation";
+  card.querySelector(".replay-caption").append(richText(replayCaption(example)));
+  card.querySelector(".quiz-prompt").append(richText(exampleGuide.prompt || example.prompt || ""));
+  card.querySelector(".replay-table").append(renderMahjongTable(example.table));
 
-  replay.append(renderMahjongTable(example.table));
-
+  const answer = card.querySelector(".replay-answer");
   if (example.kind === "call") {
     const line = document.createElement("div");
     line.className = "call-line";
     line.innerHTML = `
-      <span>${t("call")} ${escapeHtml(example.call)} ${tileIcon(example.called_tile, "discard-tile")} ${isJa ? "を" : "on"} ${escapeHtml(seatLabel(example.called_from))}${isJa ? "から" : ""}</span>
+      <span>${t("call")} ${escapeHtml(callActionLabel(example.call))} ${tileIcon(example.called_tile, "discard-tile")} ${isJa ? "を" : "from"} ${escapeHtml(seatLabel(example.called_from))}${isJa ? "から" : ""}</span>
       <span>${t("meld")} ${callMeldForExample(example)}</span>
       <span>${t("discardAfterCall")} ${tileIcon(example.discard_after_call, "discard-tile")}</span>
     `;
-    replay.append(line);
-    replay.append(renderCallModelBlock(example));
+    answer.append(line, renderCallModelBlock(example));
   } else {
-    const choices = document.createElement("div");
-    choices.className = "comparison";
+    const compare = document.createElement("div");
+    compare.className = "comparison";
     if (example.actual_eval && example.naga_eval) {
-      choices.append(
+      compare.append(
         comparison(t("luckyj"), example.actual_eval, example.actual_danger, example.actual_prob, t("nagaThreat")),
         comparison(t("nagaTop"), example.naga_eval, example.naga_danger, example.naga_prob, t("nagaThreat"))
       );
     } else {
-      choices.innerHTML = `
+      compare.innerHTML = `
         <div class="decision"><b>${t("luckyj")}</b>${probabilityChip(t("nagaWeight"), example.actual_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.actual, "discard-tile")} <em>${escapeHtml(tileName(example.actual))}</em></span><span>${t("nagaThreat")} ${dangerText(example.actual_danger)}</span></div>
         <div class="decision"><b>${t("nagaTop")}</b>${probabilityChip(t("nagaWeight"), example.naga_prob)}<span class="discard-line">${t("discard")} ${tileIcon(example.naga, "discard-tile")} <em>${escapeHtml(tileName(example.naga))}</em></span><span>${t("nagaThreat")} ${dangerText(example.naga_danger)}</span></div>
       `;
     }
-    replay.append(choices);
-    replay.append(safetyPanel(example.kept_tile_safety));
+    answer.append(compare, safetyPanel(example.kept_tile_safety));
   }
+  const footer = document.createElement("div");
+  footer.className = "replay-footer";
+  footer.innerHTML = `
+    <span class="evidence-tier ${escapeHtml(example.evidence_tier || "")}">${escapeHtml(pointEvidenceTierText(example))}</span>
+    <button type="button" class="quiz-again">${t("askAgain")}</button>
+  `;
+  answer.append(footer);
+
+  // The commentary, on paper under the figure, opens with the answer.
+  const notes = card.querySelector(".replay-notes");
+  notes.append(renderGuideBlock(exampleGuide));
+  notes.append(renderMortalBlock(exampleMortal, pointKey, mortalCopy, index));
+  notes.append(renderYakuhaiCleanupNote(example));
+  const drill = document.createElement("div");
+  drill.className = "example-drill";
+  const drillAnswer = document.createElement("p");
+  drillAnswer.innerHTML = `<b>${t("answer")}</b> `;
+  drillAnswer.append(richText(exampleGuide.answer || example.answer || ""));
+  drill.append(drillAnswer);
   const evidenceNote = document.createElement("p");
   evidenceNote.className = `example-evidence-note ${escapeHtml(example.evidence_tier || "")}`;
   evidenceNote.textContent = isJa
     ? `証拠区分: ${pointEvidenceTierText(example)}。${["contested", "unverified", "unsupported"].includes(example.evidence_tier) ? "通常線を先に採用し、この例は条件が説明できる時だけ使う。" : "支持はこの局面に限られ、一般ルールの証明ではない。"}`
     : `Evidence tier: ${pointEvidenceTierText(example)}. ${["contested", "unverified", "unsupported"].includes(example.evidence_tier) ? "Use the ordinary line first and adopt this only when its condition is explicit." : "Support is local to this frame, not proof of a universal rule."}`;
-  explanation.append(evidenceNote);
-  explanation.append(renderYakuhaiCleanupNote(example));
-  explanation.append(renderGuideBlock(exampleGuide));
-  explanation.append(renderMortalBlock(exampleMortal, pointKey, mortalCopy, index));
-
-  const drill = document.createElement("div");
-  drill.className = "example-drill";
-  const drillPrompt = document.createElement("p");
-  const drillAnswer = document.createElement("p");
-  drillPrompt.innerHTML = `<b>${t("drill")}:</b> `;
-  drillAnswer.innerHTML = `<b>${t("answer")}:</b> `;
-  drillPrompt.append(richText(exampleGuide.prompt || example.prompt || ""));
-  drillAnswer.append(richText(exampleGuide.answer || example.answer || ""));
-  drill.append(drillPrompt, drillAnswer);
-
   const links = document.createElement("p");
   links.className = "case-links";
-  links.innerHTML = sourceLinks(example);
+  links.innerHTML = `<span>${escapeHtml(stageText(example.stage))} · ${escapeHtml(scoreBandText(example.score_band))} · ${t("finalRank")} ${escapeHtml(rankText(example.rank))}</span> ${sourceLinks(example)}`;
+  notes.append(drill, evidenceNote, links);
 
-  explanation.append(drill, links);
-  layout.append(replay, explanation);
-  card.append(layout);
+  const choiceButtons = Array.from(card.querySelectorAll(".quiz-choice"));
+  const skip = card.querySelector(".quiz-skip");
+  const result = card.querySelector(".quiz-result");
+
+  function paint(pickedId, revealed) {
+    card.classList.toggle("is-revealed", revealed);
+    card.classList.toggle("conceal-hands", !revealed);
+    answer.hidden = !revealed;
+    notes.hidden = !revealed;
+    skip.hidden = revealed;
+    for (const button of choiceButtons) {
+      const choice = choices.find((item) => item.id === button.dataset.choice);
+      button.setAttribute("aria-pressed", revealed && pickedId === choice.id ? "true" : "false");
+      const note = button.querySelector(".quiz-choice-note");
+      if (revealed) {
+        const owners = choice.owners.length ? choice.owners : [isJa ? "該当なし" : "no engine"];
+        note.innerHTML = `<span class="quiz-owner${choice.id === "model" ? " is-model" : ""}">${escapeHtml(readableList(owners))}</span>`;
+      } else {
+        note.innerHTML = choice.note || "";
+      }
+    }
+    result.innerHTML = revealed ? quizResultHtml(choices, pickedId) : "";
+    markReplayHand(card, example, revealed);
+    applyTileCompatibility(card);
+  }
+
+  for (const button of choiceButtons) {
+    button.addEventListener("click", () => {
+      replayPicks.set(anchorId, button.dataset.choice);
+      paint(button.dataset.choice, true);
+    });
+  }
+  skip.addEventListener("click", () => {
+    replayPicks.set(anchorId, "");
+    paint("", true);
+  });
+  footer.querySelector(".quiz-again").addEventListener("click", () => {
+    replayPicks.delete(anchorId);
+    paint("", false);
+    choiceButtons[0]?.focus();
+  });
+
+  const remembered = replayPicks.get(anchorId);
+  paint(remembered || "", remembered !== undefined);
   return card;
 }
 
@@ -2158,6 +2378,9 @@ function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
     tablist.setAttribute("aria-label", `${t("replayExample")} ${pointKey}`);
     const body = document.createElement("div");
     body.className = "example-tab-body";
+    const head = document.createElement("div");
+    head.className = "example-tab-head";
+    head.innerHTML = `<p class="label">${t("replaysLabel")}</p><div class="example-tab-heading"><h4>${t("replaysTitle")}</h4><p>${t("replaysNote")}</p></div>`;
     const buttons = items.map((example, index) => {
       const button = document.createElement("button");
       button.type = "button";
@@ -2170,8 +2393,11 @@ function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
     });
     let selectedIndex = 0;
 
-    function showExample(index, { updateLocation = false } = {}) {
+    function showExample(index, { updateLocation = false, reveal = false } = {}) {
       selectedIndex = clampExampleIndex(index, items.length);
+      // A link to one example opens it answered: the reader came for that frame.
+      const anchorId = exampleAnchorId(pointKey, selectedIndex);
+      if (reveal && !replayPicks.has(anchorId)) replayPicks.set(anchorId, "");
       pointExampleSelections.set(pointKey, selectedIndex);
       savePointExampleSelections();
       updatePointRailProgress(pointKey, selectedIndex, items.length);
@@ -2212,14 +2438,13 @@ function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
       buttons[next].focus();
     });
 
-    shell.append(tablist, body);
+    head.append(tablist);
+    shell.append(head, body);
     placeholder.replaceChildren(shell);
     const target = parsePointExampleLocation();
-    const initialIndex =
-      target.pointKey === pointKey && target.exampleIndex !== null
-        ? target.exampleIndex
-        : (pointExampleSelections.get(pointKey) ?? 0);
-    showExample(initialIndex);
+    const linked = target.pointKey === pointKey && target.exampleIndex !== null;
+    const initialIndex = linked ? target.exampleIndex : (pointExampleSelections.get(pointKey) ?? 0);
+    showExample(initialIndex, { reveal: linked });
   }
 }
 
@@ -2439,11 +2664,10 @@ function renderCases(data) {
       const head = document.createElement("div");
       head.className = "case-head";
       head.innerHTML = `
-        <div>
-          <p class="kicker">${stageText(item.stage)} / ${scoreBandText(item.score_band)}</p>
-          <h3>${caseLabelText(item.label)}</h3>
-        </div>
-        <span>${roundText(item.round)}, ${tilesLeftText(item.left)}<small class="evidence-tier ${escapeHtml(item.evidence_tier || "")}">${escapeHtml(caseEvidenceText(item))}</small></span>
+        <p class="kicker">${stageText(item.stage)} / ${scoreBandText(item.score_band)}</p>
+        <span class="case-where">${roundText(item.round)}, ${tilesLeftText(item.left)}</span>
+        <h3>${caseLabelText(item.label)}</h3>
+        <small class="evidence-tier ${escapeHtml(item.evidence_tier || "")}">${escapeHtml(caseEvidenceText(item))}</small>
       `;
 
       const body = document.createElement("div");
@@ -2592,7 +2816,7 @@ function renderPointValidation(validation) {
 async function main() {
   renderCommitStamp();
   setupRetractingTopbar();
-  renderPointRail();
+  setupRunningHead();
   convertStaticTileMarkup();
   applyTileCompatibility();
   const guidePath = isJa ? "strategy-guides.ja.json" : "strategy-guides.json";
@@ -2653,12 +2877,22 @@ async function main() {
 }
 
 // Pages marked data-app="table-only" load app.js for its tile and table renderers
-// and run their own script, so the playbook data is not fetched there.
-if (document.body?.dataset.app !== "table-only") {
+// and run their own script, so the playbook data is not fetched there. The home page
+// (data-app="home") only needs the running head, the tiles and the commit stamp.
+if (document.body?.dataset.app === "home") {
+  renderCommitStamp();
+  setupRetractingTopbar();
+  setupRunningHead();
+  convertStaticTileMarkup();
+  applyTileCompatibility();
+  settleHashScroll();
+} else if (document.body?.dataset.app !== "table-only") {
   window.addEventListener("hashchange", () => syncPointExamplesFromLocation({ scroll: true }));
   window.addEventListener("popstate", () => syncPointExamplesFromLocation({ scroll: true }));
 
-  main().catch((error) => {
+  const loaded = main();
+  settleHashScroll(loaded);
+  loaded.catch((error) => {
     const metrics = document.querySelector("#metrics");
     if (metrics) {
       metrics.innerHTML = `<div class="metric"><b>${t("dataLoadFailed")}</b><span>${error.message}</span></div>`;

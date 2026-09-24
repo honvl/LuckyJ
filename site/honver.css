@@ -1,396 +1,966 @@
-/* Honver's Playbook: additions on top of styles.css. */
+/* Honver's Guide: additions on top of styles.css. The chapters use the playbook's book grid; this file
+   holds the masthead, the What's new list, the scoreboard, the guide's tables and its turn cards. */
+
+/* ------------------------------------------------------------------ masthead and What's new */
+
+.guide-masthead {
+  display: grid;
+  grid-template-columns: minmax(0, 700px) minmax(0, 1fr);
+  column-gap: 72px;
+  align-items: start;
+  padding-top: 88px;
+}
+
+.guide-masthead-text {
+  display: grid;
+  gap: 22px;
+  min-width: 0;
+}
+
+.guide-eyebrow {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+.guide-masthead h1 {
+  font-size: clamp(44px, 5vw, 70px);
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.guide-masthead .standfirst {
+  font-size: 22px;
+  line-height: 1.52;
+  text-wrap: pretty;
+}
+
+.guide-masthead-text > p:not(.standfirst):not(.guide-eyebrow) {
+  color: var(--ink-2);
+  text-wrap: pretty;
+}
+
+.guide-news {
+  padding: 26px 28px 10px;
+  border: 1px solid var(--hair);
+  background: var(--plate);
+  box-shadow: 0 18px 40px -30px rgba(30, 26, 20, 0.35);
+}
+
+.guide-news h2 {
+  padding-bottom: 14px;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.guide-news ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-news li {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  column-gap: 14px;
+  padding: 13px 0;
+  border-top: 1px solid var(--hair);
+}
+
+.guide-news-date {
+  padding-top: 3px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.guide-news li p {
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.guide-news li.is-latest .guide-news-date {
+  color: var(--ink);
+}
+
+.guide-news li.is-latest p {
+  color: var(--ink);
+  font-size: 17px;
+}
+
+.guide-news .new-tag,
+.guide-news-tag {
+  margin-right: 6px;
+  vertical-align: 2px;
+}
+
+.guide-news-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 7px;
+  border-radius: 2px;
+  background: var(--highlight);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ scoreboard */
+
+.scoreboard-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  color: var(--ink-2);
+  font-family: var(--sans);
+  font-size: 13.5px;
+}
+
+.scoreboard-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scoreboard-key span::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--verm-mark);
+  content: "";
+}
+
+.scoreboard-key .key-luckyj::before {
+  background: var(--jade-mark);
+}
+
+.section > .guide-metrics {
+  grid-column: 2 / 4;
+}
+
+.guide-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+
+.guide-metrics .metric {
+  gap: 10px;
+  padding: 22px 22px 24px 0;
+  border-top: 1px solid var(--hair);
+}
+
+.guide-metrics .metric:nth-child(-n + 3) {
+  border-top: 0;
+}
+
+.guide-metrics .metric span {
+  order: -1;
+  color: var(--ink-2);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.guide-metrics .metric b {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 44px;
+}
+
+.guide-metrics .metric b::before {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--verm-mark);
+  content: "";
+}
+
+.guide-metrics .metric small {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.guide-metrics .metric small::before {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--jade-mark);
+  content: "";
+}
+
+/* ------------------------------------------------------------------ chapter list */
+
+.guide-chapters > .contents-list {
+  grid-column: 2 / 4;
+  margin-top: 30px;
+}
+
+.guide-chapters-note {
+  color: var(--ink-2);
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.guide-chapter-list .contents-sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+
+/* ------------------------------------------------------------------ reading the tables */
+
+.guide-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 28px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14.5px;
+}
+
+.guide-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guide-legend .swatch {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 2px;
+  background: var(--verm-felt);
+  color: var(--felt-deep);
+  font-size: 12.5px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.guide-legend .swatch.better {
+  background: var(--jade-felt);
+}
+
+.guide-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.guide-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--felt);
+}
+
+.safety-chip {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 2px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: 1px;
+}
+
+.safety-chip.safe {
+  background: var(--jade-soft);
+  color: var(--jade);
+}
+
+.safety-chip.mostly {
+  background: #e9e6d4;
+  color: #4a5a26;
+}
+
+.safety-chip.live {
+  background: var(--highlight);
+  color: #5e4610;
+}
+
+.safety-chip.danger {
+  background: var(--verm-soft);
+  color: var(--verm);
+}
+
+/* ------------------------------------------------------------------ the guide's data tables */
+
+.guide-data-scroll {
+  overflow-x: auto;
+}
 
 .guide-data {
   width: 100%;
   border-collapse: collapse;
-  margin: 16px 0 20px;
-  background: var(--panel);
-  border: 1px solid var(--line);
-  font-size: 15px;
-  font-variant-numeric: tabular-nums;
+  font-size: 16.5px;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .guide-data th,
 .guide-data td {
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--line);
+  padding: 10px 0 10px 16px;
+  border-bottom: 1px solid var(--hair);
   text-align: right;
   white-space: nowrap;
 }
 
 .guide-data th:first-child,
 .guide-data td:first-child {
+  padding-left: 0;
   text-align: left;
   white-space: normal;
 }
 
 .guide-data thead th {
+  border-bottom: 1px solid var(--ink);
   color: var(--muted);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  vertical-align: bottom;
+  white-space: normal;
 }
 
 .guide-data td.gap {
-  color: var(--red);
-  font-weight: 800;
+  color: var(--verm);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
 }
 
 .guide-data small {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 12.5px;
 }
 
-.guide-data-scroll {
-  overflow-x: auto;
+.point .guide-list {
+  display: grid;
+  gap: 8px;
+  padding-left: 1.2em;
 }
 
-.metric small {
-  display: block;
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 12px;
+.point .guide-list li::marker {
+  color: var(--verm);
 }
 
-.guide-legend {
+/* Chapter 1's chart: your rate against LuckyJ's, as two small line charts. */
+.guide-chart {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 18px;
+  margin: 36px 0 0;
+  padding: 24px 26px 18px;
+  border: 1px solid var(--hair);
+  background: var(--plate);
+}
+
+.guide-chart-legend {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 22px;
-  margin: 14px 0;
-  color: var(--muted);
-  font-size: 14px;
+  gap: 8px 22px;
+  font-family: var(--sans);
+  font-size: 13.5px;
 }
 
-.guide-legend .swatch {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 6px;
-  border-radius: 50%;
-  vertical-align: -1px;
-}
-
-.swatch.you {
-  background: var(--red);
-}
-
-.swatch.better {
-  background: var(--green);
-}
-
-.guide-toggle {
+.guide-chart-legend .key {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--ink);
-  font-weight: 750;
-  cursor: pointer;
 }
 
-.guide-toggle input {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--green);
-}
-
-/* Marked tiles in your hand: red is the tile you cut, green the better cut. */
-.mahjong-table .tile-threat-cell.guide-drawn {
-  margin-left: 0.55em;
-}
-
-.mahjong-table .tile-threat-cell.guide-cut,
-.mahjong-table .tile-threat-cell.guide-better {
-  position: relative;
-}
-
-.mahjong-table .tile-threat-cell.guide-cut .tiles {
-  transform: translateY(-0.12em);
-  filter: drop-shadow(0 0 0.05em rgba(185, 65, 58, 1)) drop-shadow(0 0 0.05em rgba(185, 65, 58, 1));
-}
-
-.mahjong-table .tile-threat-cell.guide-better .tiles {
-  transform: translateY(-0.12em);
-  filter: drop-shadow(0 0 0.05em rgba(23, 107, 84, 1)) drop-shadow(0 0 0.05em rgba(23, 107, 84, 1));
-}
-
-.mahjong-table .tile-threat-cell.guide-cut::after,
-.mahjong-table .tile-threat-cell.guide-better::after {
-  position: absolute;
-  bottom: -0.2em;
-  left: 12%;
-  right: 12%;
-  height: 0.22em;
-  border-radius: 999px;
-  background: var(--red);
+.guide-chart-legend .key::before {
+  width: 22px;
+  height: 2px;
+  background: var(--verm-mark);
+  box-shadow: 0 0 0 0 transparent;
   content: "";
 }
 
-.mahjong-table .tile-threat-cell.guide-better::after {
-  background: var(--green);
+.guide-chart-legend .key.lj::before {
+  background: var(--jade-mark);
 }
 
-body.hide-opponent-hands .mahjong-table .player-hand:not(.player-current) .hand-contents {
-  filter: blur(0.32em);
-  opacity: 0.5;
+.guide-chart-legend .key.hollow {
+  color: var(--ink-2);
 }
+
+.guide-chart-legend .key.hollow::before {
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--verm-mark);
+  border-radius: 50%;
+  background: var(--plate);
+}
+
+.guide-chart-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 40px;
+}
+
+.guide-chart-head {
+  display: grid;
+  gap: 2px;
+}
+
+.guide-chart-head b {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.guide-chart-head span {
+  color: var(--ink-2);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+
+.guide-chart-plot {
+  position: relative;
+  margin-top: 8px;
+}
+
+.guide-chart-plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.guide-chart .grid {
+  stroke: var(--hair-2);
+  stroke-width: 1;
+}
+
+.guide-chart .tick,
+.guide-chart .cat {
+  fill: var(--muted);
+  font-family: var(--sans);
+  font-size: 12px;
+}
+
+.guide-chart .tick {
+  text-anchor: end;
+}
+
+.guide-chart .cat {
+  fill: var(--ink-2);
+  text-anchor: middle;
+}
+
+.guide-chart .line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.guide-chart .line.you {
+  stroke: var(--verm-mark);
+}
+
+.guide-chart .line.lj {
+  stroke: var(--jade-mark);
+}
+
+.guide-chart .dot {
+  stroke: var(--plate);
+  stroke-width: 2;
+}
+
+.guide-chart .dot.you {
+  fill: var(--verm-mark);
+}
+
+.guide-chart .dot.lj {
+  fill: var(--jade-mark);
+}
+
+.guide-chart .dot.hollow {
+  fill: var(--plate);
+  stroke: var(--verm-mark);
+}
+
+.guide-chart .end {
+  fill: var(--ink);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.guide-chart .note {
+  fill: var(--muted);
+  font-family: var(--sans);
+  font-size: 11.5px;
+}
+
+.guide-chart .cross {
+  stroke: var(--ink);
+  stroke-opacity: 0;
+  stroke-width: 1;
+}
+
+.guide-chart .cross.is-on {
+  stroke-opacity: 0.35;
+}
+
+.guide-chart .hit {
+  fill: transparent;
+  cursor: crosshair;
+  outline: none;
+}
+
+.guide-chart-tip {
+  position: absolute;
+  top: 6px;
+  z-index: 3;
+  display: grid;
+  gap: 5px;
+  min-width: 150px;
+  padding: 9px 11px;
+  border-radius: 3px;
+  background: var(--ink);
+  color: var(--plate);
+  font-family: var(--sans);
+  pointer-events: none;
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.45);
+}
+
+.guide-chart-tip[hidden] {
+  display: none;
+}
+
+.guide-chart-tip span {
+  color: var(--hair);
+  font-size: 12px;
+}
+
+.guide-chart-tip b {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.guide-chart-tip b::before {
+  width: 12px;
+  height: 2px;
+  background: var(--verm-mark);
+  content: "";
+}
+
+.guide-chart-tip b.lj::before {
+  background: #5fc49a;
+}
+
+.guide-chart-tip small {
+  color: var(--hair);
+  font-size: 12.5px;
+  font-weight: 400;
+}
+
+.guide-chart figcaption {
+  color: var(--ink-2);
+  font-size: 15.5px;
+  font-style: italic;
+}
+
+.guide-chart-table {
+  grid-column: 1;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+
+.guide-chart-table > summary {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.guide-chart-table .guide-data {
+  margin-bottom: 12px;
+}
+
+/* ------------------------------------------------------------------ turn cards */
 
 .guide-frame-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  margin-bottom: 12px;
 }
 
 .guide-frame-tabs button {
-  border: 1px solid var(--line);
-  background: #fff;
-  color: var(--muted);
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 750;
-  padding: 5px 12px;
+  min-height: 40px;
+  border-color: var(--felt-line);
+  background: transparent;
+  color: var(--cream-2);
 }
 
 .guide-frame-tabs button.active {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: #fff;
+  border-color: var(--cream);
+  background: var(--cream);
+  color: var(--felt);
 }
 
-.guide-comparison {
-  margin-top: 4px;
+.guide-card-title {
+  color: var(--cream);
+  font-size: 29px;
+  line-height: 1.15;
+  text-wrap: balance;
 }
 
-.guide-comparison .decision.guide-you {
-  border-left: 4px solid var(--red);
+.guide-verdict {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 2px;
+  background: var(--jade-felt);
+  color: var(--felt-deep);
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.guide-comparison .decision.guide-better {
-  border-left: 4px solid var(--green);
+.guide-card-meta {
+  margin-top: -8px;
+  color: var(--cream-3);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.45;
 }
 
-.guide-comparison .decision.guide-you b {
-  color: var(--red);
+.guide-situation {
+  color: var(--cream);
+  font-size: 18px;
+  line-height: 1.55;
+  text-wrap: pretty;
 }
 
-.guide-safety {
-  margin-top: 6px;
+.guide-situation .inline-tile {
+  font-size: 1.5em;
 }
 
-.decision .guide-safety span {
-  color: var(--muted);
+.replay-panel .guide-comparison .decision.guide-you {
+  border-top-color: var(--verm-felt);
+}
+
+.replay-panel .guide-comparison .decision.guide-better {
+  border-top-color: var(--jade-felt);
+}
+
+.replay-panel .guide-comparison .decision.guide-you b {
+  color: var(--verm-felt);
+}
+
+.replay-panel .guide-comparison .decision.guide-better b {
+  color: var(--jade-felt);
+}
+
+.replay-panel .guide-comparison .decision .discard-tile {
+  display: inline-block;
+  margin-top: 0;
+  font-size: 1.9em;
+  vertical-align: middle;
+}
+
+.replay-panel .guide-comparison .decision .tiles.inline-tile {
+  display: inline;
+  top: 0;
+  font-size: 1.45em;
+  line-height: 0;
+  vertical-align: -0.22em;
+}
+
+.replay-panel .guide-safety {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.replay-panel .guide-safety span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--cream-3);
   font-size: 12.5px;
 }
 
-.safety-chip {
-  display: inline-block;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 750;
-  line-height: 1.35;
-  padding: 0 7px;
-  white-space: nowrap;
+.guide-game-link a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration-color: rgba(244, 240, 230, 0.45);
+  text-underline-offset: 4px;
 }
 
-.safety-chip.safe {
-  background: var(--soft-green);
-  border-color: rgba(23, 107, 84, 0.25);
-  color: var(--green);
+.guide-game-link a:hover {
+  color: #fff;
 }
 
-.safety-chip.mostly {
-  background: #eef3e4;
-  color: #4b6a2c;
+.guide-note-host:empty,
+.guide-options-host:empty {
+  display: none;
 }
 
-.safety-chip.live {
-  background: var(--soft-gold);
-  color: #7a5a1c;
+.replay-notes > .guide-note-host,
+.replay-notes > .guide-result,
+.replay-notes > .guide-options-host {
+  grid-column: 2;
 }
 
-.safety-chip.danger {
-  background: var(--soft-red);
-  color: var(--red);
+.guide-frame-note {
+  padding: 14px 16px;
+  border-left: 0;
+  background: var(--plate);
+}
+
+.guide-frame-note h5 {
+  color: var(--verm);
+}
+
+.replay-notes .guide-note-host .analysis-step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+}
+
+.guide-result {
+  padding-top: 14px;
+  border-top: 1px solid var(--hair);
+  color: var(--ink-2);
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.guide-result b {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .guide-options {
-  margin-top: 12px;
-  border: 1px solid var(--line);
-  background: #fff;
-  padding: 8px 12px;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
 }
 
 .guide-options summary {
-  color: var(--blue);
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  color: var(--ink);
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 750;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .guide-options-scroll {
-  margin-top: 8px;
   overflow-x: auto;
 }
 
 .guide-options table {
-  border-collapse: collapse;
-  font-size: 13px;
-  font-variant-numeric: tabular-nums;
   width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  font-variant-numeric: tabular-nums;
 }
 
 .guide-options th,
 .guide-options td {
-  border-bottom: 1px solid var(--line);
-  padding: 3px 8px;
+  padding: 7px 14px 7px 0;
+  border-bottom: 1px solid var(--hair);
   text-align: left;
   vertical-align: middle;
   white-space: nowrap;
 }
 
 .guide-options thead th {
+  border-bottom: 1px solid var(--ink);
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 600;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
+}
+
+.guide-options tbody th {
+  font-weight: 500;
 }
 
 .guide-options tr.is-you {
-  background: var(--soft-red);
+  background: var(--verm-soft);
 }
 
 .guide-options tr.is-better {
-  background: var(--soft-green);
+  background: var(--jade-soft);
 }
 
 .guide-options tbody th small {
-  color: var(--muted);
-  font-size: 10px;
-  font-weight: 800;
-  margin-left: 6px;
+  margin-left: 8px;
+  color: var(--ink-2);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .guide-options .inline-tile {
-  font-size: 1.55em;
+  font-size: 1.6em;
 }
 
-.point .guide-options-note {
+.guide-options-note {
+  margin: 10px 0 16px;
   color: var(--muted);
-  font-size: 12px;
-  margin: 8px 0 2px;
-}
-
-.guide-frame-note {
-  background: #eef3f5;
-  border-left: 4px solid var(--blue);
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-}
-
-.point .guide-result {
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 14px;
-  margin-top: 10px;
-  padding-top: 10px;
-}
-
-.example-head small.guide-game {
-  display: block;
-  margin-top: 4px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.5;
 }
 
 .guide-error {
-  color: var(--red);
+  color: var(--verm);
+  font-family: var(--sans);
+}
+
+/* ------------------------------------------------------------------ what changed since the last read */
+
+mark.guide-changed {
+  padding: 0 2px;
+  background: var(--highlight);
+  box-shadow: inset 0 -2px 0 #c9a13b;
+  color: inherit;
+  /* a corrected sentence lands with a few lines of its paragraph above it */
+  scroll-margin-top: 96px;
+}
+
+/* ------------------------------------------------------------------ narrow screens */
+
+@media (max-width: 1179px) {
+  .guide-masthead {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .guide-news {
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .guide-chapters > .contents-list,
+  .replay-notes > .guide-note-host,
+  .replay-notes > .guide-result,
+  .replay-notes > .guide-options-host {
+    grid-column: 1;
+  }
+
+  .guide-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .guide-metrics .metric:nth-child(3) {
+    border-top: 1px solid var(--hair);
+  }
+
+  .guide-chart-panels {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
-  .guide-comparison {
-    grid-template-columns: 1fr;
+  .guide-masthead {
+    padding-top: 44px;
+  }
+
+  .guide-masthead h1 {
+    font-size: 40px;
+  }
+
+  .guide-masthead .standfirst {
+    font-size: 19px;
+  }
+
+  .guide-news {
+    padding: 18px 16px 6px;
+  }
+
+  .guide-news li {
+    grid-template-columns: 52px minmax(0, 1fr);
+    column-gap: 10px;
+  }
+
+  .guide-metrics .metric b {
+    font-size: 34px;
+  }
+
+  .guide-chart {
+    padding: 18px 14px 14px;
+  }
+
+  .guide-card-title {
+    font-size: 24px;
+  }
+
+  .guide-situation {
+    font-size: 16.5px;
   }
 
   .guide-data {
-    font-size: 13px;
+    font-size: 14.5px;
   }
 
   .guide-data th,
   .guide-data td {
-    padding: 6px 8px;
+    padding-left: 10px;
   }
-}
-
-/* styles.css makes every span in a .decision a small block; tiles inside the guide's
-   decisions stay inline at tile size. */
-.guide-comparison .decision .tiles.inline-tile {
-  display: inline-block;
-  font-size: 1.9em;
-  margin-top: 0;
-  vertical-align: middle;
-}
-
-.guide-comparison .decision .discard-line em {
-  font-size: 12px;
-}
-
-/* What changed since the last read: a notice at the top and a tag on each new chapter. */
-.guide-new {
-  border: 1px solid var(--line);
-  border-left: 5px solid var(--blue);
-  background: var(--panel);
-  margin: 18px 0;
-  padding: 14px 18px;
-  line-height: 1.55;
-}
-
-.guide-new a {
-  color: var(--blue);
-}
-
-.point .guide-new-tag {
-  display: inline-block;
-  margin: 0 0 6px;
-  padding: 2px 8px;
-  border-radius: 3px;
-  background: var(--blue);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.point .guide-list {
-  margin: 8px 0 14px;
-  padding-left: 22px;
-}
-
-.point .guide-list li {
-  margin: 4px 0;
-}
-
-/* Sentences corrected after the reader has seen them, listed in the notice at the top. */
-mark.guide-changed {
-  background: var(--soft-gold);
-  border-bottom: 2px solid var(--gold);
-  color: inherit;
-  padding: 0 2px;
-  scroll-margin-top: 90px;
-}
-
-/* Example cards that are not mistakes: a fair push that lost, or a fold that met a rare wait. */
-.guide-card .guide-verdict {
-  display: inline-block;
-  margin: 6px 0 0;
-  padding: 2px 8px;
-  border-radius: 3px;
-  background: var(--soft-green);
-  color: var(--green);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }

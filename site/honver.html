@@ -3,95 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Honver's Playbook</title>
+    <title>Honver&#x27;s Guide: where your points go against LuckyJ</title>
     <meta name="description" content="A personal guide to playing closer to LuckyJ, built from 80 Jade South games with the tables of the turns to play differently." />
+    <meta name="theme-color" content="#134834" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260924-table-fill" />
-    <link rel="stylesheet" href="honver.css?v=20260924-guide-6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- The text faces load without holding up the page; until they arrive it reads in the fallback faces. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" media="print" onload="this.media='all'" data-font-css />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" /></noscript>
+    <link rel="stylesheet" href="styles.css?v=20260924-book" />
+    <link rel="stylesheet" href="honver.css?v=20260924-book" />
   </head>
-  <body data-app="table-only" data-self-name="Honver">
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">LuckyJ digital mahjong, personal guide</p>
-        <h1>Honver's Playbook</h1>
-      </div>
-      <nav class="toplinks" aria-label="Page links">
-        <a href="index.html">Home</a>
-        <a href="points.html">Main playbook</a>
-        <a href="#standing">Start</a>
-        <a href="#value">Value</a>
-        <a href="#open-table">Open tables</a>
-        <a href="#calls">Calls</a>
-        <a href="#folds">Folds</a>
-        <a href="#push">Push</a>
-        <a href="#dora-points">Dora hands (new)</a>
-        <a href="#shape-start">Tanyao and flush (new)</a>
-        <a href="#recent-games">Recent games (new)</a>
-        <a href="#push-calibration">Push calibration (new)</a>
-        <a href="#open-hands">Open hands (new)</a>
-        <a href="#method">Method</a>
+  <body data-app="table-only" data-self-name="Honver" data-book="guide">
+    <a class="skip-link" href="#chapters">Skip to the chapters</a>
+    <header class="running-head">
+      <a class="book-mark" href="honver.html"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect class="mark-outer" width="64" height="64" rx="14" /><rect class="mark-face" x="7" y="6" width="50" height="52" rx="10" /><path class="mark-stroke" d="M24 17h18M38 17v22c0 9-6 15-15 15-6 0-11-3-14-7" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" /><circle class="mark-dot" cx="48" cy="18" r="6" /></svg><span class="book-title">Honver&#8217;s Guide</span></a><span class="edition-tag">Personal edition</span>
+      <p class="running-location" data-running-location></p>
+      <nav class="running-nav" aria-label="Book">
+        <a class="contents-toggle" href="#chapters"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M3 5h12M3 9h12M3 13h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>Contents</a>
+        <a class="nav-secondary" href="#whats-new">What&#8217;s new</a>
+        <a class="nav-secondary" href="#how-to-read">Reading the tables</a>
+        <a class="nav-tertiary" href="points.html">The playbook</a>
       </nav>
+      <div class="reading-progress" aria-hidden="true"><span></span></div>
     </header>
 
-    <main class="layout">
+    <main class="layout" id="main">
       <article class="book">
-        <aside class="guide-new" aria-label="What is new">
-          <strong>Latest, 24 September:</strong> <a href="#open-hands">chapter 12 answers your question about cheap
-          open tenpais</a>: keep them against callers, and open fewer cheap hands. Chapters 1 to 11 have not changed.
-          <br />
-          <strong>Earlier on 24 September:</strong> <a href="#push-calibration">chapter 11 calibrates your tenpai
-          pushes</a> against a riichi, with your 23 September games.
-          <br />
-          <strong>23 September:</strong> <a href="#recent-games">chapter 10 reviews your 22 September games</a> and
-          where your rank points went.
-          <br />
-          <strong>Before that:</strong> <a href="#shape-start">chapter 9, when to start tanyao and a flush</a>, answers
-          your follow-up question.
-          <br />
-          <strong>New on 22 September:</strong> chapters 6 to 8 answer your question about hands dealt dora:
-          <a href="#dora-points">where those hands lose their points</a>, <a href="#dora-shape">the hand under the
-          dora</a> and <a href="#dora-tells">the caller's tells at 1-shanten</a>. Chapters 1 to 5 have not changed.
-          <br />
-          <strong>Corrected on 22 September:</strong> three sentences in chapters 6 and 7 said LuckyJ plays a dora
-          hand the way it plays any other hand. It keeps its dora and plays those hands faster. Only the shape it
-          builds around them stays the same. The corrected sentences are <mark class="guide-changed">highlighted</mark>:
-          <a href="#fix-6-rule">the rule in chapter 6</a>, <a href="#fix-7-opening">the first paragraph of chapter
-          7</a> and <a href="#fix-7-rule">the start of its rule</a>.
-        </aside>
 
-        <section class="intro" id="standing">
-          <div class="intro-text">
-            <p class="kicker">Personal edition</p>
-            <h2>Where your points go against LuckyJ.</h2>
-            <p>
-              This guide measures 80 of your Jade South games since January 2026, 830 hands, with the same code that
-              measured 1,255 LuckyJ games. It keeps the lessons from our reviews and shows your own table at each turn
-              where a different tile, call or declaration would have played closer to LuckyJ.
-            </p>
-            <p>
-              Most of your game already matches. Tenpai speed, tile efficiency, call rate and honor timing are
-              LuckyJ's numbers, and you fold against a riichi at least as well as LuckyJ does. The gap is in which
-              hands you finish and what they are worth, plus a small set of tile choices once someone has called.
-            </p>
-            <p>
-              Your first rate since January, 23.8%, sits within one standard error of your career 26.3% over 3,877
-              games. The Jade players at your tables win, deal in and score like LuckyJ's Tokujou opponents. The
-              difference that is real is LuckyJ's 31.7% firsts against your career 26.3%, and it lives in the value
-              of your wins.
-            </p>
+        <section class="guide-masthead" id="standing" data-contents-label="Where your points go">
+          <div class="guide-masthead-text">
+            <p class="guide-eyebrow">Personal edition &#183; 80 Jade South games since January 2026 &#183; 830 hands</p>
+            <h1>Where your points go against LuckyJ.</h1>
+            <p class="standfirst">This guide measures 80 of your Jade South games since January 2026, 830 hands, with the same code that measured 1,255 LuckyJ games. It keeps the lessons from our reviews and shows your own table at each turn where a different tile, call or declaration would have played closer to LuckyJ.</p>
+            <p>Most of your game already matches. Tenpai speed, tile efficiency, call rate and honor timing are LuckyJ's numbers, and you fold against a riichi at least as well as LuckyJ does. The gap is in which hands you finish and what they are worth, plus a small set of tile choices once someone has called.</p>
+            <p>Your first rate since January, 23.8%, sits within one standard error of your career 26.3% over 3,877 games. The Jade players at your tables win, deal in and score like LuckyJ's Tokujou opponents. The difference that is real is LuckyJ's 31.7% firsts against your career 26.3%, and it lives in the value of your wins.</p>
           </div>
-          <div class="intro-panel" aria-label="Your numbers against LuckyJ">
-            <p class="panel-kicker">You against LuckyJ, same code</p>
-            <div class="metrics-grid">
+          <aside class="guide-news" id="whats-new" aria-labelledby="whats-new-title">
+            <h2 id="whats-new-title">What&#8217;s new</h2>
+            <ol>
+              <li class="is-latest"><span class="guide-news-date">24 Sep</span><p><span class="new-tag">Latest</span> <a href="#open-hands">Chapter 12 answers your question about cheap open tenpais</a>: keep them against callers, and open fewer cheap hands. Chapters 1 to 11 have not changed.</p></li>
+              <li><span class="guide-news-date">24 Sep</span><p><a href="#push-calibration">Chapter 11 calibrates your tenpai pushes</a> against a riichi, with your 23 September games.</p></li>
+              <li><span class="guide-news-date">23 Sep</span><p><a href="#recent-games">Chapter 10 reviews your 22 September games</a> and where your rank points went.</p></li>
+              <li><span class="guide-news-date">22 Sep</span><p><a href="#shape-start">Chapter 9, when to start tanyao and a flush</a>, answers your follow-up question.</p></li>
+              <li><span class="guide-news-date">22 Sep</span><p>Chapters 6 to 8 answer your question about hands dealt dora: <a href="#dora-points">where those hands lose their points</a>, <a href="#dora-shape">the hand under the dora</a> and <a href="#dora-tells">the caller's tells at 1-shanten</a>. Chapters 1 to 5 have not changed.</p></li>
+              <li class="is-correction"><span class="guide-news-date">22 Sep</span><p><span class="guide-news-tag">Corrected</span> Three sentences in chapters 6 and 7 said LuckyJ plays a dora hand the way it plays any other hand. It keeps its dora and plays those hands faster. Only the shape it builds around them stays the same. The corrected sentences are <mark class="guide-changed">highlighted</mark>: <a href="#fix-6-rule">the rule in chapter 6</a>, <a href="#fix-7-opening">the first paragraph of chapter 7</a> and <a href="#fix-7-rule">the start of its rule</a>.</p></li>
+            </ol>
+          </aside>
+        </section>
+
+        <section class="section guide-scoreboard" id="scoreboard">
+          <p class="kicker">Scoreboard</p>
+          <h2>You against LuckyJ, same code</h2>
+          <p class="scoreboard-key"><span class="key-you">You, 830 hands</span><span class="key-luckyj">LuckyJ, 13,054 hands</span></p>
+          <div class="metrics-grid guide-metrics">
               <div class="metric"><b>&minus;15</b><span>points per hand</span><small>LuckyJ +373</small></div>
               <div class="metric"><b>5,590</b><span>points per win</span><small>LuckyJ 6,836</small></div>
               <div class="metric"><b>18%</b><span>of wins at mangan or more</span><small>LuckyJ 28%</small></div>
               <div class="metric"><b>21.3%</b><span>win rate per hand</span><small>LuckyJ 22.9%</small></div>
               <div class="metric"><b>11.8%</b><span>deal-in rate per hand</span><small>LuckyJ 10.0%</small></div>
               <div class="metric"><b>2.45</b><span>average placement since January</span><small>career 2.42, LuckyJ 2.26</small></div>
-            </div>
           </div>
         </section>
+
+        <nav class="section guide-chapters" id="chapters" aria-labelledby="chapters-title">
+          <p class="kicker">Chapters</p>
+          <h2 id="chapters-title">Twelve chapters</h2>
+          <p class="guide-chapters-note">New lessons arrive as new chapters at the end. Chapters you have read stay as they are, apart from marked corrections.</p>
+          <ol class="contents-list is-points guide-chapter-list">
+            <li><a href="#value"><span class="contents-num">01</span><span class="contents-title">Count the dora before you pick the plan</span><span class="contents-sub">Value &#183; added 22 September</span></a></li>
+            <li><a href="#open-table"><span class="contents-num">02</span><span class="contents-title">When someone opens, slow the cheap hand</span><span class="contents-sub">Open tables &#183; added 22 September</span></a></li>
+            <li><a href="#calls"><span class="contents-num">03</span><span class="contents-title">Against a call, take the safe tile that costs nothing</span><span class="contents-sub">Calls &#183; added 22 September</span></a></li>
+            <li><a href="#folds"><span class="contents-num">04</span><span class="contents-title">Fold with the right tile</span><span class="contents-sub">Folds &#183; added 22 September</span></a></li>
+            <li><a href="#push"><span class="contents-num">05</span><span class="contents-title">Push the tenpai that can win</span><span class="contents-sub">Push &#183; added 22 September</span></a></li>
+            <li><a href="#dora-points"><span class="contents-num">06</span><span class="contents-title">Your dora hands lose their points on the win side</span><span class="contents-sub"><span class="new-tag">New</span> Dora hands &#183; added 22 September</span></a></li>
+            <li><a href="#dora-shape"><span class="contents-num">07</span><span class="contents-title">Build the hand under the dora</span><span class="contents-sub"><span class="new-tag">New</span> Dora hands &#183; added 22 September</span></a></li>
+            <li><a href="#dora-tells"><span class="contents-num">08</span><span class="contents-title">At 1-shanten, count the caller&#x27;s tells</span><span class="contents-sub"><span class="new-tag">New</span> Dora hands &#183; added 22 September</span></a></li>
+            <li><a href="#shape-start"><span class="contents-num">09</span><span class="contents-title">When to start tanyao and a flush</span><span class="contents-sub"><span class="new-tag">New</span> Tanyao and flush &#183; added 22 September</span></a></li>
+            <li><a href="#recent-games"><span class="contents-num">10</span><span class="contents-title">Your 22 September games, reviewed</span><span class="contents-sub"><span class="new-tag">New</span> Recent games &#183; added 23 September</span></a></li>
+            <li><a href="#push-calibration"><span class="contents-num">11</span><span class="contents-title">Calibrate your tenpai pushes</span><span class="contents-sub"><span class="new-tag">New</span> Push calibration &#183; added 24 September</span></a></li>
+            <li><a href="#open-hands"><span class="contents-num">12</span><span class="contents-title">Keep the open tenpai, and open for value</span><span class="contents-sub"><span class="new-tag">New</span> Open hands &#183; added 24 September</span></a></li>
+          </ol>
+        </nav>
 
         <section class="section" id="how-to-read">
           <p class="kicker">How to read the tables</p>
@@ -103,8 +97,8 @@
             each player who had declared riichi or called.
           </p>
           <div class="guide-legend">
-            <span><i class="swatch you"></i>Red: the tile you cut</span>
-            <span><i class="swatch better"></i>Green: the better cut</span>
+            <span><i class="swatch you">Your cut</i> the tile you cut</span>
+            <span><i class="swatch better">Better</i> the better cut</span>
             <label class="guide-toggle"><input type="checkbox" id="showOpponentHands" checked /> Show opponents' hands</label>
           </div>
           <p>
@@ -122,13 +116,14 @@
         <section class="point" id="value">
           <div class="point-number">01</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter one &#183; Value &#183; added 22 September</p>
             <h3>Count the dora before you pick the plan</h3>
             <p>
               LuckyJ wins about as many hands as you do. The difference is what it does with a hand that has dora.
               Sorted by the dora and red fives in the deal, your win rate stays flat while LuckyJ's climbs:
             </p>
             <div class="guide-data-scroll">
-              <table class="guide-data">
+              <table class="guide-data" data-chart="dora-deal">
                 <thead>
                   <tr><th>Dora in the deal</th><th>Your win rate</th><th>LuckyJ</th><th>Your mangan per 100 hands</th><th>LuckyJ</th></tr>
                 </thead>
@@ -166,28 +161,30 @@
               has a second plan such as toitoi or honitsu.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> Count the dora and red fives on turn 1. None: a cheap hand to finish if it comes
+              <strong>Rule</strong> Count the dora and red fives on turn 1. None: a cheap hand to finish if it comes
               and fold first when someone attacks. One: a mangan candidate, so riichi at the first tenpai and build
               tanyao when the deal allows. Two or more: the hand of the game, so call when the call lands you at
               1-shanten or tenpai, riichi at the first closed tenpai and push it at tenpai.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> Dama is right when the hand is already mangan without riichi and the wait is
+              <strong>Exception</strong> Dama is right when the hand is already mangan without riichi and the wait is
               poor, or on a tenpai from turn 11 on when you lead in the South round. Ask again every draw: LuckyJ
               declares later in 17% of the tenpais it first passes on, you in 10%.
             </div>
             <p class="evidence-note">
-              <b>Evidence:</b> 80 of your games (830 hands) against 1,255 LuckyJ games (13,054 hands), same code. On
+              <b>Evidence</b> 80 of your games (830 hands) against 1,255 LuckyJ games (13,054 hands), same code. On
               deals with one dora or more, the mangan gap is more than three standard errors and the win-rate gap
               about two and a half. The three-dora row holds 14 of your hands and is noise.
             </p>
             <div data-guide-examples="value"></div>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#open-table"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>02</i>When someone opens, slow the cheap hand</span></a></nav>
         </section>
 
         <section class="point" id="open-table">
           <div class="point-number">02</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter two &#183; Open tables &#183; added 22 September</p>
             <h3>When someone opens, slow the cheap hand</h3>
             <p>
               An opponent's early call slows LuckyJ's hands with little or no dora and barely touches its hands with
@@ -226,23 +223,25 @@
               62% on a quiet table, and declares riichi 11% of the time against LuckyJ's 19%.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> When someone opens, count your dora before anything else. Two or more: keep the
+              <strong>Rule</strong> When someone opens, count your dora before anything else. Two or more: keep the
               plan, take a chi or pon that lands you at 1-shanten or tenpai by about turn 9, and riichi at the first
               closed tenpai. None: slow down, fold from 2-shanten and hand the caller your safe tiles. With any dora,
               you already push as often as LuckyJ; read the caller's tells from chapter 3 before you pick the live
               tile.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> Your two-dora column holds 55 hands, so its tenpai and riichi gaps are one
+              <strong>Exception</strong> Your two-dora column holds 55 hands, so its tenpai and riichi gaps are one
               and a half to two standard errors: a direction, not a measurement. The deal-in gap on hands with dora,
               over 182 hands and more than three standard errors, is the solid part.
             </div>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#calls"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>03</i>Against a call, take the safe tile that costs nothing</span></a></nav>
         </section>
 
         <section class="point" id="calls">
           <div class="point-number">03</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter three &#183; Calls &#183; added 22 September</p>
             <h3>Against a call, take the safe tile that costs nothing</h3>
             <p>
               Folding against one call does not mean destroying the hand, and your choices there already match LuckyJ's.
@@ -267,26 +266,28 @@
               already said what the hand was.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> Against one call, play for efficiency and cut the safe tile whenever two tiles are
+              <strong>Rule</strong> Against one call, play for efficiency and cut the safe tile whenever two tiles are
               equal. Once the caller has cut three or more tiles from hand since the call, or from turn 13, a tile or
               two of acceptance for a safe tile is often worth paying. Break a shanten for safety only from 1- or
               2-shanten after turn 12.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> Against two calls, a value pon with a second call, or a river that has named
+              <strong>Exception</strong> Against two calls, a value pon with a second call, or a river that has named
               its suit, pay more. Those hands are close to tenpai and their waits are easier to guess.
             </div>
             <p class="evidence-note">
-              <b>Evidence:</b> 1,594 of your discards and 24,618 of LuckyJ's where exactly one opponent had exactly one
+              <b>Evidence</b> 1,594 of your discards and 24,618 of LuckyJ's where exactly one opponent had exactly one
               open meld and nobody was in riichi.
             </p>
             <div data-guide-examples="calls"></div>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#folds"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>04</i>Fold with the right tile</span></a></nav>
         </section>
 
         <section class="point" id="folds">
           <div class="point-number">04</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter four &#183; Folds &#183; added 22 September</p>
             <h3>Fold with the right tile</h3>
             <p>
               Folding is one of your strengths. Against a riichi you cut a live tile less often than LuckyJ at every
@@ -346,26 +347,28 @@
               it pushes 8 to 17% of the time, the high end with three or more dora.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> Rank the safe tiles before you cut: genbutsu against every threat, then genbutsu
+              <strong>Rule</strong> Rank the safe tiles before you cut: genbutsu against every threat, then genbutsu
               against the riichi, then an honor with two other copies showing, then suji on a 1 or 9, then nakasuji,
               suji on a 2 or 8 and honors with one copy showing, with suji on a 3 or 7 last. A half suji is a live
               tile. If a safe tile leaves the same shanten and acceptance, it is the only cut.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> A safe tile that costs a shanten is still right from 2-shanten on turn 13 or
+              <strong>Exception</strong> A safe tile that costs a shanten is still right from 2-shanten on turn 13 or
               later, and from 1-shanten late at least four hands out of five, dora or not.
             </div>
             <p class="evidence-note">
-              <b>Evidence:</b> 1,574 of your discards and 24,560 of LuckyJ's made while an opponent was in riichi and
+              <b>Evidence</b> 1,574 of your discards and 24,560 of LuckyJ's made while an opponent was in riichi and
               you were not.
             </p>
             <div data-guide-examples="folds"></div>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#push"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>05</i>Push the tenpai that can win</span></a></nav>
         </section>
 
         <section class="point" id="push">
           <div class="point-number">05</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter five &#183; Push &#183; added 22 September</p>
             <h3>Push the tenpai that can win</h3>
             <p>
               At tenpai against a riichi you push 38% of the time and LuckyJ 43%; from turn 13 on, 26% against 35%.
@@ -380,21 +383,23 @@
               tsumo, and on one live tile that almost never happens.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> Push a tenpai that has a yaku, even on a narrow wait, and keep an 8-tile wait even
+              <strong>Rule</strong> Push a tenpai that has a yaku, even on a narrow wait, and keep an 8-tile wait even
               when it costs a red five. Play a tenpai with no yaku the way you would play 1-shanten.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> The closest call in LuckyJ's data is an open tenpai with no yaku on any wait,
+              <strong>Exception</strong> The closest call in LuckyJ's data is an open tenpai with no yaku on any wait,
               pushed 55% of the time. With a yaku and a live wait it pushes at least 68% of the time, and 95% with 8
               or more live tiles.
             </div>
             <div data-guide-examples="push"></div>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#dora-points"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>06</i>Your dora hands lose their points on the win side</span></a></nav>
         </section>
 
         <section class="point" id="dora-points">
           <div class="point-number">06</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter six &#183; Dora hands &#183; added 22 September</p>
             <p class="guide-new-tag">New</p>
             <h3>Your dora hands lose their points on the win side</h3>
             <p>
@@ -439,27 +444,29 @@
               The larger leak is the size of your dora wins, which chapter 7 covers.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> <mark id="fix-6-rule" class="guide-changed">Keep the dora and push the hand toward tenpai harder
+              <strong>Rule</strong> <mark id="fix-6-rule" class="guide-changed">Keep the dora and push the hand toward tenpai harder
               than a cheap one, as LuckyJ does, but build it the way you build a hand without dora: the same shapes,
               the same timing on a flush call and the same respect for a caller who looks ready.</mark> The dora add
               their han at the end.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> Your dora riichis won 27 times where 37 were predicted, more than two
+              <strong>Exception</strong> Your dora riichis won 27 times where 37 were predicted, more than two
               standard deviations low. Nothing in those hands was yours to change after the declaration, so keep
               declaring at the rates in chapter 1.
             </div>
             <p class="evidence-note">
-              <b>Evidence:</b> 410 of your hands dealt dora and 6,577 of LuckyJ's; 212 and 3,409 of them reached
+              <b>Evidence</b> 410 of your hands dealt dora and 6,577 of LuckyJ's; 212 and 3,409 of them reached
               tenpai. Your 78 wins against 100 predicted is about three standard deviations. The shape-yaku gap covers
               78 of your dora wins and 1,619 of LuckyJ's, about two and a half standard errors.
             </p>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#dora-shape"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>07</i>Build the hand under the dora</span></a></nav>
         </section>
 
         <section class="point" id="dora-shape">
           <div class="point-number">07</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter seven &#183; Dora hands &#183; added 22 September</p>
             <p class="guide-new-tag">New</p>
             <h3>Build the hand under the dora</h3>
             <p>
@@ -512,27 +519,29 @@
               sample, so read the size of that gap loosely. It points the same way as the open-win yaku above.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> <mark id="fix-7-rule" class="guide-changed">Keep the dora, and build around them the hand you would
+              <strong>Rule</strong> <mark id="fix-7-rule" class="guide-changed">Keep the dora, and build around them the hand you would
               build without them.</mark> Keep two-sided shapes toward
               pinfu and simples toward tanyao. When every dora you hold sits in your main suit or is an honor, make the
               first call on the flush hand as early as you would without dora, and cut the off-suit tiles first
               whenever that costs no acceptance.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> A dora in another suit changes the plan, because the flush would throw it
+              <strong>Exception</strong> A dora in another suit changes the plan, because the flush would throw it
               away. LuckyJ gives up those flushes 41% of the time, against 24% when the dora sits in the suit.
             </div>
             <p class="evidence-note">
-              <b>Evidence:</b> 78 of your wins in hands dealt dora and 99 without, against 1,619 and 1,376 of
+              <b>Evidence</b> 78 of your wins in hands dealt dora and 99 without, against 1,619 and 1,376 of
               LuckyJ's. The flush table counts first calls where every meld fits the flush.
             </p>
             <div data-guide-examples="dora-shape"></div>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#dora-tells"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>08</i>At 1-shanten, count the caller&#x27;s tells</span></a></nav>
         </section>
 
         <section class="point" id="dora-tells">
           <div class="point-number">08</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter eight &#183; Dora hands &#183; added 22 September</p>
             <p class="guide-new-tag">New</p>
             <h3>At 1-shanten, count the caller's tells</h3>
             <p>
@@ -589,27 +598,29 @@
               does, so those reads do not explain that part, and this chapter sticks to the tells.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> At 1-shanten against a caller, count the three tells before every cut. With none
+              <strong>Rule</strong> At 1-shanten against a caller, count the three tells before every cut. With none
               showing, play for speed. With each tell, take the safe tile more often. With all three, take it at least
               two times in three, as LuckyJ does.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> At tenpai the tells matter less. With two or more showing, LuckyJ still cuts
+              <strong>Exception</strong> At tenpai the tells matter less. With two or more showing, LuckyJ still cuts
               a live tile about half the time, and chapter 5's rule on pushing a tenpai with a yaku still applies.
             </div>
             <p class="evidence-note">
-              <b>Evidence:</b> 2,939 of your discards and 46,086 of LuckyJ's made against a caller while nobody was in
+              <b>Evidence</b> 2,939 of your discards and 46,086 of LuckyJ's made against a caller while nobody was in
               riichi, with the other three players' discards from the same games for the lobby comparison. The
               all-three-tells row at 1-shanten holds 40 of your cuts, about three standard errors from LuckyJ's rate.
               The other rows differ by one to two.
             </p>
             <div data-guide-examples="dora-tells"></div>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#shape-start"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>09</i>When to start tanyao and a flush</span></a></nav>
         </section>
 
         <section class="point" id="shape-start">
           <div class="point-number">09</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter nine &#183; Tanyao and flush &#183; added 22 September</p>
             <p class="guide-new-tag">New</p>
             <h3>When to start tanyao and a flush</h3>
             <p>
@@ -673,27 +684,29 @@
               already play ten or more like LuckyJ, and at nine or fewer neither of you commits often.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> Count the deal before your first discard. With four or fewer terminals and
+              <strong>Rule</strong> Count the deal before your first discard. With four or fewer terminals and
               honors, plan tanyao: cut them before the middle tiles, and keep cutting them after turn 3. With nine or
               more tiles in one suit plus honors and a value pair, plan the flush: pon the pair and cut the off-suit
               tiles first. With ten or more and no pair, the flush is on as well.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> With five or more terminals and honors, or eight or fewer flush tiles, play
+              <strong>Exception</strong> With five or more terminals and honors, or eight or fewer flush tiles, play
               for speed and riichi instead. LuckyJ wins tanyao in 3.5% of the five-count deals, and the flush in 2.4%
               of the eight-tile deals even with a value pair.
             </div>
             <p class="evidence-note">
-              <b>Evidence:</b> all 830 of your hands since January and 13,054 of LuckyJ's, sorted by the deal. Your
+              <b>Evidence</b> all 830 of your hands since January and 13,054 of LuckyJ's, sorted by the deal. Your
               three- and four-count deals hold 287 hands and 10 tanyao wins, where LuckyJ's rates predict about 24.
               The value-pair flush rows hold 72 of your hands. Treat the other rows as directions.
             </p>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#recent-games"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>10</i>Your 22 September games, reviewed</span></a></nav>
         </section>
 
         <section class="point" id="recent-games">
           <div class="point-number">10</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter ten &#183; Recent games &#183; added 23 September</p>
             <p class="guide-new-tag">New</p>
             <h3>Your 22 September games, reviewed</h3>
             <p>
@@ -732,25 +745,27 @@
               five hands are the examples below.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> In the last two hands, work out who passes you if you deal in. When a deal-in to
+              <strong>Rule</strong> In the last two hands, work out who passes you if you deal in. When a deal-in to
               the player just below you would swap your places, do not cut a live tile to climb one place: a climb from
               third to second is worth about 75 rank points, and a drop to fourth costs about 265.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> From fourth, a deal-in cannot cost you a place, so push the tenpai that can
+              <strong>Exception</strong> From fourth, a deal-in cannot cost you a place, so push the tenpai that can
               lift you one, as in the third example.
             </div>
             <p class="evidence-note">
-              <b>Evidence:</b> 84 of your games since January, 228 hands in the last 20. Rank points from your
+              <b>Evidence</b> 84 of your games since January, 228 hands in the last 20. Rank points from your
               amae-koromo record. Final hands of a game: 67 of yours and 1,007 of LuckyJ's.
             </p>
             <div data-guide-examples="recent-games"></div>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#push-calibration"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>11</i>Calibrate your tenpai pushes</span></a></nav>
         </section>
 
         <section class="point" id="push-calibration">
           <div class="point-number">11</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter eleven &#183; Push calibration &#183; added 24 September</p>
             <p class="guide-new-tag">New</p>
             <h3>Calibrate your tenpai pushes</h3>
             <p>
@@ -813,27 +828,29 @@
               on average, and the ones it pushes lose 306.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> When keeping tenpai against a riichi needs an unsafe tile, count your han first.
+              <strong>Rule</strong> When keeping tenpai against a riichi needs an unsafe tile, count your han first.
               With 3 or more, push. With 1 or 2, fold a narrow wait of 3 or fewer live tiles. Push a wider cheap tenpai
               late in the hand, when tenpai also pays at the draw, and fold it early.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> In the last hand, chapter 10's placement rule comes first. On the last
+              <strong>Exception</strong> In the last hand, chapter 10's placement rule comes first. On the last
               discard, even a cheap or narrow tenpai is worth pushing a live tile, because the draw payment alone is
               worth 2,500 to 3,000, as in the first example.
             </div>
             <p class="evidence-note">
-              <b>Evidence:</b> 130 of your tenpais against a riichi where every tenpai-keeping tile was unsafe, and
+              <b>Evidence</b> 130 of your tenpais against a riichi where every tenpai-keeping tile was unsafe, and
               1,505 of LuckyJ's, each hand counted at its first such turn. Your own cells hold 2 to 39 hands, so read
               your rates loosely; LuckyJ's table is the calibration.
             </p>
             <div data-guide-examples="push-calibration"></div>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#open-hands"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>12</i>Keep the open tenpai, and open for value</span></a></nav>
         </section>
 
         <section class="point" id="open-hands">
           <div class="point-number">12</div>
           <div class="point-body">
+            <p class="chapter-kicker">Chapter twelve &#183; Open hands &#183; added 24 September</p>
             <p class="guide-new-tag">New</p>
             <h3>Keep the open tenpai, and open for value</h3>
             <p>
@@ -962,18 +979,18 @@
               against 46% from 2-shanten and 62% against 58% from 1-shanten. The shape is what you do not use yet.
             </p>
             <div class="rule">
-              <strong>Rule:</strong> Keep an open tenpai that has a yaku against a caller, even at 1 han and even
+              <strong>Rule</strong> Keep an open tenpai that has a yaku against a caller, even at 1 han and even
               against two or three tells. Make fewer cheap open hands instead: from a 2-shanten, call a yakuhai pon,
               call for tanyao with two or more dora or from a slow closed hand, and keep a well-connected hand without
               dora closed.
             </div>
             <div class="exception">
-              <strong>Exception:</strong> A tenpai with no yaku can only pay at the draw, so play it like a
+              <strong>Exception</strong> A tenpai with no yaku can only pay at the draw, so play it like a
               1-shanten, and in the last hand chapter 10's placement rule comes first. Against a caller, a live
               yakuhai with no other copy showing is the riskiest honor to cut.
             </div>
             <p class="evidence-note">
-              <b>Evidence:</b> 995 of your hands and 13,054 of LuckyJ's. The tenpai table counts 121 of your open
+              <b>Evidence</b> 995 of your hands and 13,054 of LuckyJ's. The tenpai table counts 121 of your open
               tenpais and 1,375 of LuckyJ's where every tile that kept tenpai was unsafe against another caller and
               nobody was in riichi, each hand at its first such turn; your own cells hold 1 to 53 hands, so LuckyJ's
               table is the calibration. The call tables count 314 of your chances to call from a closed hand and 3,723
@@ -983,6 +1000,7 @@
             </p>
             <div data-guide-examples="open-hands"></div>
           </div>
+          <nav class="chapter-next" aria-label="After the chapters"><a href="#method"><span class="chapter-next-label">After the chapters <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title">How this guide was built</span></a></nav>
         </section>
 
         <section class="section sources" id="method">
@@ -999,7 +1017,20 @@
       </article>
     </main>
 
-    <script src="app.js?v=20260922-guide-2"></script>
-    <script src="honver.js?v=20260924-guide-8"></script>
+    <footer class="colophon">
+      <div class="colophon-inner">
+        <div class="colophon-sources">
+          <p class="label">Honver&#8217;s Guide</p>
+          <p>A personal edition of the <a href="points.html">LuckyJ playbook</a>. How it was measured is in <a href="#method">How this guide was built</a>.</p>
+        </div>
+        <div class="colophon-meta">
+          <p>Updated 24 September 2026</p>
+          <a data-commit-stamp href="https://github.com/honvl/LuckyJ">Source on GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="app.js?v=20260924-book"></script>
+    <script src="honver.js?v=20260924-book"></script>
   </body>
 </html>

@@ -3,202 +3,170 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LuckyJ Digital Playbook</title>
+    <title>The LuckyJ Playbook: Digital Points for Playing Like LuckyJ</title>
+    <meta name="description" content="A riichi strategy book built from 1,255 NAGA-reviewed games of LuckyJ, Tencent&#x27;s self-play mahjong AI: sixteen points, each with ten replays." />
+    <meta name="theme-color" content="#134834" />
     <link rel="alternate" hreflang="en" href="index.html" />
     <link rel="alternate" hreflang="ja" href="ja.html" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="styles.css?v=20260924-table-fill" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- The text faces load without holding up the page; until they arrive it reads in the fallback faces. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" media="print" onload="this.media='all'" data-font-css />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" /></noscript>
+    <link rel="stylesheet" href="styles.css?v=20260924-book" />
   </head>
-  <body>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">LuckyJ digital mahjong</p>
-        <h1>Digital Points for Playing Like LuckyJ</h1>
-      </div>
-      <nav class="toplinks" aria-label="Page links">
-        <a href="#evidence">Start</a>
-        <a href="points.html#point-01">Concepts</a>
-        <a href="points.html#prescriptions">Prescriptions</a>
-        <a href="#safe-tiles">Safe Tiles</a>
-        <a href="points.html">Full Playbook</a>
-        <a href="points.html#case-studies">Cases</a>
-        <a href="honver.html">Honver's Guide</a>
-        <a class="lang-link" href="ja.html" hreflang="ja">日本語</a>
+  <body data-app="home" data-book="playbook">
+    <a class="skip-link" href="#contents">Skip to the contents</a>
+    <header class="running-head on-felt">
+      <a class="book-mark" href="index.html"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect class="mark-outer" width="64" height="64" rx="14" /><rect class="mark-face" x="7" y="6" width="50" height="52" rx="10" /><path class="mark-stroke" d="M24 17h18M38 17v22c0 9-6 15-15 15-6 0-11-3-14-7" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" /><circle class="mark-dot" cx="48" cy="18" r="6" /></svg><span class="book-title">The LuckyJ Playbook</span></a>
+      <p class="running-location" data-running-location></p>
+      <nav class="running-nav" aria-label="Book">
+        <a class="contents-toggle" href="#contents" aria-current="page"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M3 5h12M3 9h12M3 13h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>Contents</a>
+        <a class="nav-secondary" href="points.html#prescriptions">Prescriptions</a>
+        <a class="nav-secondary" href="points.html#case-studies">Cases</a>
+        <a class="nav-secondary" href="points.html#drills">Drills</a>
+        <a class="nav-tertiary" href="honver.html">Honver&#8217;s guide</a>
+        <a class="lang-link" href="ja.html" hreflang="ja" lang="ja">日本語</a>
       </nav>
+      <div class="reading-progress" aria-hidden="true"><span></span></div>
     </header>
 
-    <main class="layout overview-layout">
-      <aside class="side">
-        <div class="side-inner">
-          <p class="side-title">Playbook Index</p>
-          <ol>
-            <li><a href="#evidence">What this book is</a></li>
-            <li><a href="points.html#point-01">First point</a></li>
-            <li><a href="#safe-tiles">Safe tiles correction</a></li>
-            <li><a href="points.html#point-01">Numbered points</a></li>
-            <li><a href="points.html#prescriptions">Prescriptions</a></li>
-            <li><a href="points.html#case-studies">Replay cases</a></li>
-            <li><a href="points.html#drills">Practice drills</a></li>
-          </ol>
-        </div>
-      </aside>
-
-      <article class="book">
-        <section class="intro" id="evidence">
-          <div class="intro-text">
-            <p class="kicker">What this book is</p>
-            <h2>What LuckyJ teaches.</h2>
-            <p>
+    <main id="main">
+      <section class="cover" aria-labelledby="cover-title">
+        <div class="cover-inner">
+          <div class="cover-text">
+            <p class="cover-eyebrow">A riichi strategy book &#183; Edition of 24 September 2026</p>
+            <h1 class="cover-title" id="cover-title"><span class="cover-lead">Digital points for</span> <span class="cover-main">Playing Like LuckyJ</span></h1>
+            <p class="cover-standfirst">
               LuckyJ is the self-play-trained AI this book studies. Its live Tokujou games show a riichi style that
               layers table judgment on top of tile efficiency. This book groups its recurring habits into things you
               can use mid-hand: value, shape, safe tiles, calls, pressure, and placement.
             </p>
-            <p>
-              NAGA is the review lens. Its model heads, Nishiki, Hibakari, and Kagashi, show strong candidate
-              lines and mark the moments where LuckyJ chose another plan. Those disagreements are review prompts,
-              not automatic improvements on ordinary efficient play. LuckyJ still matches Nishiki's top discard about
-              73% of the time.
+            <p class="cover-actions">
+              <a class="button-link on-felt" href="points.html#point-01">Begin with point 01 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></a>
+              <a class="text-link on-felt" href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-evidence-2026-07-09.md">Read the evidence audit</a>
             </p>
-            <div class="teacher-grid" aria-label="LuckyJ teaching frame">
-              <article>
-                <span>LuckyJ</span>
-                <p>A self-play-trained policy, observed making the same kinds of choices under score pressure, opponent pressure, and awkward shapes.</p>
-              </article>
-              <article>
-                <span>NAGA</span>
-                <p>A strong riichi AI review system used here as a comparison partner and calibration tool.</p>
-              </article>
-              <article>
-                <span>Teacher</span>
-                <p>Each split is a question: what the model values, what LuckyJ may be buying, and whether a human can check the condition before copying it.</p>
-              </article>
+          </div>
+          <figure class="cover-plate">
+            <p class="figure-label">From point 01 &#183; Put Placement Before Ukeire</p>
+            <div class="cover-hand" role="img" aria-label="LuckyJ&#x27;s hand: 4m, 1p, 1p, 1p, 2p, 3p, 4p, 4p, 5p, 6p, 6s, 6s, 6s; it drew 8s and cuts it">
+              <span class="tiles" aria-hidden="true">rzzzxcvvbnhhh</span>
+              <span class="cover-drawn" aria-hidden="true"><span class="tiles">k</span><span class="cover-tag">LuckyJ cuts</span></span>
             </div>
-            <p>
-              Start with point 01, then use the full playbook for point-by-point examples with the hand,
-              table context, and review prompt shown together.
+            <figcaption>South 3, 26 tiles left. First on 35,300, LuckyJ throws the [[8s]] it just drew and keeps the [[4m]], a safe tile against the dealer. NAGA&#8217;s Nishiki cuts the [[4m]] for a wider wait.</figcaption>
+          </figure>
+        </div>
+        <div class="cover-stats">
+          <div><b>1,255</b><span>hanchan of LuckyJ&#8217;s, each reviewed by NAGA</span></div>
+          <div><b>13,054</b><span>hands</span></div>
+          <div><b>147,337</b><span>LuckyJ discard decisions</span></div>
+          <div><b>73%</b><span>match NAGA Nishiki&#8217;s top discard. This book is about the other 27%.</span></div>
+        </div>
+      </section>
+
+      <nav class="contents" id="contents" aria-labelledby="contents-title">
+        <div class="contents-intro">
+          <h2 id="contents-title">Contents</h2>
+          <p>Sixteen points in reading order. Each states a rule, names its exception, and ends with ten replays from LuckyJ&#8217;s games.</p>
+        </div>
+        <div class="contents-body">
+          <div class="contents-group">
+            <p class="label">Before the points</p>
+          <ol class="contents-list">
+            <li><a href="points.html#evidence"><span class="contents-title">What this book is</span><span class="contents-sub">A table-first LuckyJ playbook</span></a></li>
+            <li><a href="points.html#scope"><span class="contents-title">Scope before style</span><span class="contents-sub">Start with ordinary efficient play</span></a></li>
+            <li><a href="points.html#method"><span class="contents-title">How to read every discard</span><span class="contents-sub">Job, routes, table texture, future danger, point of no return, human override</span></a></li>
+            <li><a href="points.html#prescriptions"><span class="contents-title">Prescriptions</span><span class="contents-sub">Eight switches, with the numbers behind them</span></a></li>
+            <li><a href="points.html#pattern-synthesis"><span class="contents-title">Pattern synthesis</span><span class="contents-sub">What the supporting hand reviews add</span></a></li>
+          </ol>
+          </div>
+          <div class="contents-group">
+            <p class="label is-rubric">The sixteen points</p>
+          <ol class="contents-list is-points">
+            <li><a href="points.html#point-01"><span class="contents-num">01</span><span class="contents-title">Put Placement Before Ukeire</span><span class="contents-sub">Before counting ukeire, decide what this hanchan needs from the hand: a cheap finish, a bigger hand, or a fold.</span></a></li>
+            <li><a href="points.html#point-02"><span class="contents-num">02</span><span class="contents-title">Do Not Choose the Hand Too Early</span><span class="contents-sub">Early, prefer the tile with two jobs, shape plus yaku, value, a call, or safety, over the tile that only improves one narrow version of the hand.</span></a></li>
+            <li><a href="points.html#point-03"><span class="contents-num">03</span><span class="contents-title">Call Only When the Call Changes the Hand</span><span class="contents-sub">Call when the call gives you a yaku, tenpai, a real one-shanten, a denied draw, or a safe path to keiten, and that is worth more than the closed premium you give up.</span></a></li>
+            <li><a href="points.html#point-04"><span class="contents-num">04</span><span class="contents-title">Keep Brakes on Open Hands</span><span class="contents-sub">After every call, know which tile lets the open hand stop or keep going safely.</span></a></li>
+            <li><a href="points.html#point-05"><span class="contents-num">05</span><span class="contents-title">Cut the Tile That Will Get Worse</span><span class="contents-sub">In a slow hand, discard the floater whose danger will rise fastest, unless it is needed for value, yaku, or your best one-shanten shape.</span></a></li>
+            <li><a href="points.html#point-06"><span class="contents-num">06</span><span class="contents-title">Buy Value While It Is Cheap</span><span class="contents-sub">Keep dora, red-five, and yakuhai value early while it still improves a real winning line.</span></a></li>
+            <li><a href="points.html#point-08"><span class="contents-num">07</span><span class="contents-title">Make Riichi Tax the Table</span><span class="contents-sub">Declare riichi when the added value and the forced reactions change what the hand is worth.</span></a></li>
+            <li><a href="points.html#point-09"><span class="contents-num">08</span><span class="contents-title">Reprice the Whole Push Every Draw</span><span class="contents-sub">After every draw, call, riichi, and new safe tile, count the dangerous discards still ahead.</span></a></li>
+            <li><a href="points.html#point-10"><span class="contents-num">09</span><span class="contents-title">The Third Row Is a Counting Drill</span><span class="contents-sub">In the third row, choose among three outcomes only: winning tenpai, safe tenpai for the draw, or a real fold.</span></a></li>
+            <li><a href="points.html#point-11"><span class="contents-num">10</span><span class="contents-title">Treat Keiten as Attack</span><span class="contents-sub">In late hands, chase keiten while safe tiles keep you tenpai.</span></a></li>
+            <li><a href="points.html#point-12"><span class="contents-num">11</span><span class="contents-title">Make Engine Splits Prove Their Case</span><span class="contents-sub">When LuckyJ and an engine split, sort the hand as blunder, style trade-off, or genuine insight.</span></a></li>
+            <li><a href="points.html#point-13"><span class="contents-num">12</span><span class="contents-title">Price the Missing Yakuhai</span><span class="contents-sub">After an unclear call, mark live dragons, the round wind, and that player&#x27;s seat wind as possible yaku tiles.</span></a></li>
+            <li><a href="points.html#point-14"><span class="contents-num">13</span><span class="contents-title">Name Who Your Safe Tile Defends</span><span class="contents-sub">Keep a genbutsu or credible suji only when you can say which opponent it answers and which bad turn it covers.</span></a></li>
+            <li><a href="points.html#point-15"><span class="contents-num">14</span><span class="contents-title">Spend Safety When Its Opponent Disappears</span><span class="contents-sub">Whenever the main danger changes, ask who the safe tile still protects you from.</span></a></li>
+            <li><a href="points.html#point-16"><span class="contents-num">15</span><span class="contents-title">The Edge Tile Can Be the Attack</span><span class="contents-sub">When choosing between an outside tile and a middle connector, keep the connector if it is the tile that makes your real tenpai or win possible.</span></a></li>
+            <li><a href="points.html#point-18"><span class="contents-num">16</span><span class="contents-title">Label Every Honor Before You Move It</span><span class="contents-sub">Before cutting or keeping an honor, label it: self value, opponent&#x27;s yaku, dead tile, or defense.</span></a></li>
+          </ol>
+          </div>
+          <div class="contents-group">
+            <p class="label">After the points</p>
+          <ol class="contents-list is-three">
+            <li><a href="points.html#case-studies"><span class="contents-title">Engine-disagreement stress tests</span><span class="contents-sub">Possible insights, and possible LuckyJ mistakes</span></a></li>
+            <li><a href="points.html#drills"><span class="contents-title">Practice drills</span><span class="contents-sub">How to train this style</span></a></li>
+            <li><a href="points.html#sources"><span class="contents-title">Method notes</span><span class="contents-sub">How to read the examples, and the sources</span></a></li>
+          </ol>
+          </div>
+          <div class="contents-group" aria-labelledby="book-method-title">
+            <p class="label" id="book-method-title">How the book reads a hand</p>
+            <p class="contents-sub">
+              NAGA is the review lens. Its model heads, Nishiki, Hibakari, and Kagashi, show strong candidate lines and
+              mark the moments where LuckyJ chose another plan. Those disagreements are review prompts, not automatic
+              improvements on ordinary efficient play. LuckyJ still matches Nishiki&#8217;s top discard about 73% of the
+              time.
             </p>
-            <p class="hero-actions">
-              <a class="button-link primary" href="points.html#point-01">Start with point 01</a>
-              <a class="button-link" href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-evidence-2026-07-09.md">Read the evidence audit</a>
-            </p>
+            <div class="book-method">
+              <div><b>LuckyJ</b><p>A self-play-trained policy, observed making the same kinds of choices under score pressure, opponent pressure, and awkward shapes.</p></div>
+              <div><b>NAGA</b><p>A strong riichi AI review system used here as a comparison partner and calibration tool.</p></div>
+              <div><b>Teacher</b><p>Each split is a question: what the model values, what LuckyJ may be buying, and whether a human can check the condition before copying it.</p></div>
+            </div>
+            <div class="book-method">
+              <div><b>See the table</b><p>Start from score, row, dora, calls, riichi, and the tiles that become dangerous later.</p></div>
+              <div><b>Compare the plans</b><p>NAGA gives the strong model line; LuckyJ&#8217;s choice shows what table condition changed the price.</p></div>
+              <div><b>Copy the condition</b><p>Learn when value, shape, safety, or placement should take priority.</p></div>
+            </div>
           </div>
-          <div class="intro-panel" aria-label="How LuckyJ teaches">
-            <p class="panel-kicker">Why it teaches</p>
-            <h3>The lesson is the decision loop.</h3>
-            <ol class="lesson-steps">
-              <li>
-                <b>See the table.</b>
-                <span>Start from score, row, dora, calls, riichi, and the tiles that become dangerous later.</span>
-              </li>
-              <li>
-                <b>Compare the plans.</b>
-                <span>NAGA gives the strong model line; LuckyJ's choice shows what table condition changed the price.</span>
-              </li>
-              <li>
-                <b>Copy the condition.</b>
-                <span>Learn when value, shape, safety, or placement should take priority.</span>
-              </li>
-            </ol>
-          </div>
-          <div class="tile-row" aria-label="Mahjong tile motif">
-            <span class="tiles" aria-label="1m 4m 7m 5p 8p East White Red">qruz,157</span>
-          </div>
-        </section>
-
-        <section class="section source-scope" id="scope">
-          <p class="kicker">Source scope</p>
-          <h2>Tokujou was the test, not the training data.</h2>
-          <div class="source-scope-card">
-            <p>LuckyJ learned by self-play. This book analyzes a mixed Tenhou review corpus of 1,079 Tokujou, 127 Upper, and 49 General games, with no Houou or Mahjong Soul sample. The full playbook uses Tokujou-only teaching examples and labels the room beside each source.</p>
-            <p>Copy the portable mechanics first. Recalibrate calling, riichi, keiten, safety inventory, and placement thresholds for your room and rank-point system.</p>
-            <p>For Saint 3 four-player South, a nominal fourth at even score is about -255 points while first is about +125 in Jade or +135 in Throne. Avoiding fourth is worth a lot there. That argues for target-specific exits, not for hoarding safety against opponents who give you fewer free turns. <a href="points.html#scope">Read the calibration and limits</a>.</p>
-          </div>
-        </section>
-
-        <section class="section" id="safe-tiles">
-          <p class="kicker">Safe tiles and timing</p>
-          <h2>The correction is narrower defense.</h2>
-          <p>
-            The follow-up review narrowed an ordinary riichi idea: genbutsu and suji matter most when they
-            answer a real threat. A safe tile with no target is too vague. LuckyJ's habit is timed, aimed at a
-            specific player, and tied to hand value.
-          </p>
-          <div class="model-point-grid concept-point-grid">
-            <article>
-              <span>Safe tiles</span>
-              <h3>Safe tiles expire.</h3>
-              <p>A genbutsu tile loses value when it no longer defends the live danger or when keeping it steals the hand's route.</p>
-              <a href="points.html#point-15">Read point 14</a>
-            </article>
-            <article>
-              <span>Shape</span>
-              <h3>Late outside cuts can preserve route.</h3>
-              <p>Under pressure, cutting the edge tile can keep an inner winning path while holding immediate danger down.</p>
-              <a href="points.html#point-16">Read point 15</a>
-            </article>
-            <article>
-              <span>Defense</span>
-              <h3>Defense is target-specific.</h3>
-              <p>Kept genbutsu and suji matter most when they answer a live riichi or open threat in the middle or late row.</p>
-              <a href="points.html#point-14">Read point 13</a>
-            </article>
-            <article>
-              <span>Honors</span>
-              <h3>Honors need role labels.</h3>
-              <p>Self value, opponent yaku-condition tile, dead honor, and safe tile are different honor jobs.</p>
-              <a href="points.html#point-18">Read point 16</a>
-            </article>
-            <article>
-              <span>Placement</span>
-              <h3>Leader safety is a qualifier.</h3>
-              <p>With a lead, reduced ambition is only good when the discard also avoids extra danger and preserves a clean next turn.</p>
-              <a href="points.html#point-01">Read point 01</a>
-            </article>
-            <article>
-              <span>Defense</span>
-              <h3>Danger labels need live context.</h3>
-              <p>Safe-looking labels are only priors; update them with visible blockers, opponent routes, and suit constraints.</p>
-              <a href="points.html#pattern-synthesis">Read synthesis</a>
-            </article>
-            <article>
-              <span>Shape</span>
-              <h3>Route value beats surface shape.</h3>
-              <p>Wait shape is one input. Value, yaku certainty, ron likelihood, and fallback defense can change the best route.</p>
-              <a href="points.html#pattern-synthesis">Read synthesis</a>
-            </article>
-            <article>
-              <span>Commitment</span>
-              <h3>Inventory comes before commitment.</h3>
-              <p>Riichi freezes the hand, so price the leftover tiles before declaring; after calls or pushes, keep updating their jobs.</p>
-              <a href="points.html#pattern-synthesis">Read synthesis</a>
-            </article>
-          </div>
-          <div class="rule">
-            <strong>Revision to point 14:</strong> Keep safe tiles when they defend the next real threat, then spend them when that job expires.
-            The evidence audit adds one more check: before calling a tile safe, test the label against live table context.
-          </div>
-        </section>
-
-        <section class="section sources" id="sources">
-          <p class="kicker">Method notes</p>
-          <h2>How to read the examples.</h2>
-          <p>
-            The examples come from LuckyJ's games and the AI review output, but the page is written for play. Use
-            the numbers to find interesting hands, then judge each spot with ordinary riichi ideas: value, shape,
-            safe tiles, opponent yaku conditions, and placement.
-          </p>
-          <ul>
-            <li><a href="points.html">Full LuckyJ playbook.</a></li>
-            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/model-patterns-2026-06-30.md">Method notes.</a></li>
-            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-evidence-2026-07-09.md">Detailed proxy-evidence audit.</a></li>
-            <li><a href="https://www.tencent.com/en-us/articles/2201746.html">Tencent: LuckyJ learned through self-play.</a></li>
-            <li><a href="https://docs.google.com/spreadsheets/d/1jV-fi6E-z8BFdbS_LPfvpktSw8qc68PSZj9iEgdUC9U/edit?usp=drivesdk">Original game list.</a></li>
-            <li><a href="https://natsuai.com/mahjong/digital">Format reference: Natsu AI digital mahjong points.</a></li>
-          </ul>
-        </section>
-      </article>
+          <a class="guide-insert" href="honver.html">
+            <div class="guide-insert-text">
+              <span class="label">Personal edition</span>
+              <span class="guide-insert-title">Honver&#8217;s Guide</span>
+              <p>Where your points go against LuckyJ. Twelve chapters from 80 of your Jade South games, measured with the same code as LuckyJ&#8217;s 1,255.</p>
+              <span class="guide-insert-news"><span class="new-tag">New</span>24 September: chapter 12, keep the open tenpai, and open for value</span>
+            </div>
+            <span class="button-link">Open the guide <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          </a>
+        </div>
+      </nav>
     </main>
 
-    <script src="app.js?v=20260709-accuracy-audit-5"></script>
+    <footer class="colophon">
+      <div class="colophon-inner">
+        <div class="colophon-sources">
+          <p class="label">Sources</p>
+          <p>
+            LuckyJ learned by self-play. This book analyzes a mixed Tenhou review corpus of 1,079 Tokujou, 127 Upper,
+            and 49 General games, with no Houou or Mahjong Soul sample. The full playbook uses Tokujou-only teaching
+            examples and labels the room beside each source. <a href="points.html#scope">Read the calibration and limits</a>.
+          </p>
+          <ul class="colophon-links">
+            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/model-patterns-2026-06-30.md">Method notes</a></li>
+            <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-evidence-2026-07-09.md">Detailed proxy-evidence audit</a></li>
+            <li><a href="https://www.tencent.com/en-us/articles/2201746.html">Tencent: LuckyJ learned through self-play</a></li>
+            <li><a href="https://docs.google.com/spreadsheets/d/1jV-fi6E-z8BFdbS_LPfvpktSw8qc68PSZj9iEgdUC9U/edit?usp=drivesdk">Original game list</a></li>
+            <li><a href="https://natsuai.com/mahjong/digital">Format reference: Natsu AI digital mahjong points</a></li>
+          </ul>
+        </div>
+        <div class="colophon-meta">
+          <a class="lang-alt" href="ja.html" hreflang="ja" lang="ja">日本語版で読む</a>
+          <p>Edition of 24 September 2026</p>
+          <a data-commit-stamp href="https://github.com/honvl/LuckyJ">Source on GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="app.js?v=20260924-book"></script>
   </body>
 </html>
