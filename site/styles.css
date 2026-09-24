@@ -2292,10 +2292,11 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
     "hand-prev    discards-prev   discards-current discards-current hand-next"
     "hand-current hand-current    hand-current     hand-current   hand-current";
   grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
-  grid-template-rows: 1fr 3fr 3fr 3fr 1.35fr;
-  height: calc(36.75 * var(--display-base));
+  /* The hand rows take the height of what they hold, since a hand with calls is taller, and the
+     three middle rows keep room for three river rows. A fixed table height let a tall hand squeeze
+     the river under it until the river ran into the hand. */
+  grid-template-rows: auto repeat(3, calc(9.7 * var(--display-base))) auto;
   margin: 0 auto;
-  max-height: 34em;
   max-width: 34em;
   width: calc(36 * var(--display-base));
 }
@@ -3101,7 +3102,10 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   }
 
   .mahjong-table {
-    --display-base: calc((100vw - 72px) / 36);
+    /* Fill a phone's width, but stop at the desktop size: past about 620px the table's max-width
+       and max-height would cap the grid while the tiles kept growing, and the rivers ran into
+       the hands (tablets, the inner screen of a foldable). */
+    --display-base: min(calc((100vw - 72px) / 36), 0.9rem);
   }
 
   .analysis-step p {
