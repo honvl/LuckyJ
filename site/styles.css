@@ -2292,10 +2292,12 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
     "hand-prev    discards-prev   discards-current discards-current hand-next"
     "hand-current hand-current    hand-current     hand-current   hand-current";
   grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
-  /* The hand rows take the height of what they hold, since a hand with calls is taller, and the
-     three middle rows keep room for three river rows. A fixed table height let a tall hand squeeze
-     the river under it until the river ran into the hand. */
-  grid-template-rows: auto repeat(3, calc(9.7 * var(--display-base))) auto;
+  /* The hand rows take the height of what they hold, since a hand with calls is taller. The river
+     rows hold three rows of tiles (7.8) and the middle row the centre box (9), each with a small gap.
+     A fixed table height let a tall hand squeeze the river under it until the river ran into it. */
+  grid-template-rows:
+    auto calc(8.1 * var(--display-base)) calc(9.2 * var(--display-base)) calc(8.1 * var(--display-base))
+    auto;
   margin: 0 auto;
   max-width: 34em;
   width: calc(36 * var(--display-base));
@@ -3175,4 +3177,19 @@ html:lang(ja) .mortal-block[open] .mortal-summary::after {
   margin: 6px 0;
   font-size: 16px;
   color: #30332f;
+}
+
+/* Where the browser can measure the table's own column, the tiles grow to fill it, up to the size at
+   which a table with calls on both sides (about 40 bases tall) still fits on the screen. The table is
+   36 bases wide, inside 24px of padding and border. The base uses cqw, not cqi: the side players'
+   hands and rivers are written vertically, and cqi there would read the column's height. */
+@supports (container-type: inline-size) {
+  .lucky-table-wrap {
+    container-type: inline-size;
+  }
+
+  .mahjong-table {
+    --display-base: max(0.35rem, min(calc((100cqw - 24px) / 36), calc((100svh - 32px) / 40)));
+    max-width: none;
+  }
 }
