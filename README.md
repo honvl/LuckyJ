@@ -190,7 +190,7 @@ The same-code LuckyJ numbers land on the NAGA-side miners where the definitions 
 
 ### Personal guide
 
-`site/honver.html` is a personal off-shoot of the playbook: ten chapters measured on your
+`site/honver.html` is a personal off-shoot of the playbook: eleven chapters measured on your
 games against LuckyJ, with the table at each turn where a different tile, call or declaration
 would have played closer to LuckyJ. It reuses the playbook's table renderer from `site/app.js`
 (the page sets `data-app="table-only"` so the playbook data is not fetched) and adds
@@ -263,6 +263,12 @@ ranks` reads rank points by placement from the amae-koromo export. `mine_late_pl
 follows every hand from South 3 on: the place going in, and whether the player's own deal-in
 dropped it. Reports: `analysis/recent-games-honver-2026-09-23.txt` and
 `analysis/late-placement-*-2026-09-23.txt`.
+
+Chapter 11 (tenpai push calibration) comes from `mine_tenpai_push.py`: for each hand, the first
+turn where the player is tenpai against a riichi and every tenpai-keeping tile is unsafe, open or
+closed, with the hand's value, live tiles, turn, the choice and the result. Reports:
+`analysis/tenpai-push-*-2026-09-24.txt` (all games, and the 23 September games alone) and
+`analysis/recent-games-honver-2026-09-24.txt`.
 
 The mined summaries behind the published numbers are archived under
 `analysis/rx3-*-2026-07-05.json`. The older `analysis/rx-*-2026-07-03.json` files are kept

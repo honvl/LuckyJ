@@ -7,7 +7,7 @@
  * and setupRetractingTopbar.
  */
 (function () {
-  const guideAsset = "honver-guide.json?v=20260923-guide-5";
+  const guideAsset = "honver-guide.json?v=20260924-guide-6";
   const hideHandsKey = "luckyj:honver-guide:hide-hands";
   const SAFETY_CLASS = {
     genbutsu: "safe",
@@ -216,7 +216,7 @@
           <h4>${escapeHtml(example.title)}</h4>
           ${VERDICT_LABELS[example.verdict] ? `<p class="guide-verdict">${escapeHtml(VERDICT_LABELS[example.verdict])}</p>` : ""}
         </div>
-        <span>${escapeHtml(roundText(example.round))}, turn ${first.turn}, ${first.left} tiles left<small class="guide-game">${escapeHtml(
+        <span>${escapeHtml(roundText(example.round))}, turn ${first.turn}, ${first.left} tile${first.left === 1 ? "" : "s"} left<small class="guide-game">${escapeHtml(
           game.date || ""
         )}, ${escapeHtml(placementText(game.placement))}</small></span>
       </div>

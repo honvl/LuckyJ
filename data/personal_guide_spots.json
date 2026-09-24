@@ -446,6 +446,78 @@
    "did": "You declared riichi with [[6p]]. The next turn you drew [[3m]], toimen's winning tile, and had to cut it: 4,200 and your stick.",
    "luckyj": "With nobody in riichi, LuckyJ declares 93% of first closed tenpais with 8 or more live tiles.",
    "fix": "No mistake. From fourth the hand needed riichi's value, since dama with the chun alone wins 1,300. Once you are in riichi the drawn tile goes out, and this one hit."
+  },
+  {
+   "id": "last-discard-tenpai",
+   "chapter": "push-calibration",
+   "game": "260924-d22d9b1e",
+   "round": "East 1-0",
+   "frames": [
+    {
+     "turn": 17,
+     "expect_cut": "S",
+     "better": "3s"
+    }
+   ],
+   "title": "The last discard: tenpai is worth a 2,500 swing",
+   "situation": "East 1, turn 17, one tile left in the wall. Everyone is near 25,000. Toimen declared riichi on turn 16, and shimocha and kamicha have a call each. You hold seven pairs with two dora, and the [[3s]] you just drew is your third [[3s]]: cutting it keeps tenpai on [[6p]].",
+   "did": "You folded with [[S]], genbutsu against everyone, and paid 1,500 at the draw for being noten.",
+   "luckyj": "Against one riichi, LuckyJ's cuts of a live 2-to-8 tile deal in 8.2 times per 100.",
+   "fix": "Cut [[3s]]. Tenpai at this draw would have earned you 1,000 instead of costing 1,500, a swing of 2,500. The live [[3s]] risks about one deal-in in twelve against the riichi and a few per hundred against the two callers, so its expected cost is far below the swing."
+  },
+  {
+   "id": "cheap-narrow-fold",
+   "chapter": "push-calibration",
+   "verdict": "fine",
+   "game": "260924-546dc69b",
+   "round": "South 4-0",
+   "frames": [
+    {
+     "turn": 6,
+     "expect_cut": "1m"
+    }
+   ],
+   "title": "Folding a cheap, narrow tenpai without giving up the hand",
+   "situation": "South 4, the last hand, turn 6. You are third on 12,500, only 700 above fourth. The dealer, kamicha, leads with 55,300 and has just declared riichi. You are tenpai with a hatsu triplet but only two winning tiles left, and you draw [[4p]], live against the riichi. Cutting it keeps the tenpai.",
+   "did": "You cut [[1m]], genbutsu, dropping to 1-shanten with 33 tiles that improve the hand. The dealer won 12,000 off shimocha, and you finished third.",
+   "luckyj": "With 1 or 2 han and 3 or fewer live tiles, LuckyJ's pushes against a riichi lose 1,374 points per hand, and it folds a third of these tenpais.",
+   "fix": "No mistake. A cheap tenpai on two tiles is the push that loses even for LuckyJ, and here a deal-in to the dealer would also have dropped you to fourth. The [[1m]] fold kept a good hand that could come back to tenpai safely."
+  },
+  {
+   "id": "three-han-push-won",
+   "chapter": "push-calibration",
+   "verdict": "fine",
+   "game": "260924-3974ff3f",
+   "round": "South 2-0",
+   "frames": [
+    {
+     "turn": 11,
+     "expect_cut": "7m"
+    }
+   ],
+   "title": "A 3-han tenpai pushed into a riichi, and it paid",
+   "situation": "South 2, turn 11. You are the dealer and lead with 50,900. Shimocha declared riichi on turn 8. You draw [[3s]] into tenpai with tanyao, pinfu and a dora, and both tiles that keep it are live 2-to-8 tiles.",
+   "did": "You declared riichi with [[7m]] and won 11,600 off shimocha on [[4p]]-[[7p]], plus the riichi sticks.",
+   "luckyj": "With 3 or 4 han and 4 to 7 live tiles, LuckyJ pushes 92% of these tenpais and nets 890 points per push.",
+   "fix": "No mistake. This is the push the table is for: with 3 han and a live wait, every cell of LuckyJ's table earns."
+  },
+  {
+   "id": "three-han-tanki-dealt",
+   "chapter": "push-calibration",
+   "verdict": "fine",
+   "game": "260924-0e508d5e",
+   "round": "South 2-0",
+   "frames": [
+    {
+     "turn": 11,
+     "expect_cut": "8p"
+    }
+   ],
+   "title": "A 3-han single-tile wait pushed into a riichi, and it lost",
+   "situation": "South 2, turn 11. You are fourth on 19,600 with three calls: [[1m]]-[[2m]]-[[3m]], a double-wind [[S]] pon and [[6m]]-[[7m]]-[[8m]]. Shimocha declared riichi on turn 6. You hold [[4m]][[5m]][[6m]] [[3p]] [[8p]]: either pin keeps a single-tile wait on the other, and both are live.",
+   "did": "You cut [[8p]] and dealt in for 7,700.",
+   "luckyj": "With 3 or 4 han and 3 or fewer live tiles, LuckyJ pushes 82% of these tenpais and nets 293 points per push: a win about one time in five pays for the deal-ins.",
+   "fix": "No mistake, and the closest of these pushes. From fourth you need the win, and LuckyJ makes this push four times in five. This was the one in five that deals in."
   }
  ]
 }

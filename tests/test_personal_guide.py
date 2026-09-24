@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import build_personal_guide as guide  # noqa: E402
 
 MANIFEST = ROOT / "data/self_games/majsoul/index.json"
+PUSH_EXAMPLES = {"keep-eight-tiles", "last-discard-tenpai"}
 SPOTS = ROOT / "data/personal_guide_spots.json"
 
 
@@ -117,7 +118,8 @@ class GuideSpotTests(unittest.TestCase):
         rank = guide.DANGER
         for ex in self.examples():
             for frame in ex["frames"]:
-                if frame["kind"] != "discard" or not frame.get("better") or ex["id"] == "keep-eight-tiles":
+                # push examples recommend a riskier tile on purpose
+                if frame["kind"] != "discard" or not frame.get("better") or ex["id"] in PUSH_EXAMPLES:
                     continue
                 # a turn with nobody in riichi or open has no safety to compare
                 you = max((rank[label] for label in frame["you"]["safety"]), default=0)
@@ -156,7 +158,7 @@ class PageChapterTests(unittest.TestCase):
 
     def test_new_chapters_are_listed_at_the_top(self):
         page = (ROOT / "site/honver.html").read_text(encoding="utf-8")
-        for anchor in ("dora-points", "dora-shape", "dora-tells", "shape-start", "recent-games"):
+        for anchor in ("dora-points", "dora-shape", "dora-tells", "shape-start", "recent-games", "push-calibration"):
             self.assertIn(f'id="{anchor}"', page)
             self.assertIn(f'href="#{anchor}"', page)
 

@@ -1,0 +1,36 @@
+== Honver since 2026-01-01: 94 games; tenpai against a riichi where every tenpai-keeping tile is unsafe: 130 hands
+  all                                n   130  push  77.7%  pushed: won  25.7% (avg   6569)  dealt in  23.8% (avg   -5996)  net   -578  | folded: n   29 net  -1979
+  open hands                         n    78  push  75.6%  pushed: won  27.1% (avg   5931)  dealt in  27.1% (avg   -5931)  net   -702  | folded: n   19 net  -1879
+  closed hands                       n    52  push  80.8%  pushed: won  23.8% (avg   7590)  dealt in  19.0% (avg   -6125)  net   -405  | folded: n   10 net  -2170
+  no yaku                            n     5  push  20.0%  pushed: won   0.0% (avg      0)  dealt in   0.0% (avg       0)  net   1000  | folded: n    4 net  -2000
+  1-2 han                            n    40  push  57.5%  pushed: won  43.5% (avg   4500)  dealt in  17.4% (avg   -5850)  net    265  | folded: n   17 net  -1359
+  3-4 han                            n    66  push  90.9%  pushed: won  23.3% (avg   7993)  dealt in  25.0% (avg   -6253)  net   -838  | folded: n    6 net  -2600
+  5+ han                             n    19  push  89.5%  pushed: won  11.8% (avg   6950)  dealt in  29.4% (avg   -5340)  net   -894  | folded: n    2 net  -5350
+  live tiles 3 or fewer              n    41  push  63.4%  pushed: won   3.8% (avg   7800)  dealt in  30.8% (avg   -7338)  net  -3019  | folded: n   15 net  -2500
+  live tiles 4-7                     n    71  push  85.9%  pushed: won  32.8% (avg   6510)  dealt in  21.3% (avg   -4762)  net    351  | folded: n   10 net  -1490
+  live tiles 8+                      n    18  push  77.8%  pushed: won  35.7% (avg   6560)  dealt in  21.4% (avg   -7767)  net    -93  | folded: n    4 net  -1250
+  turn 9 or earlier                  n    43  push  81.4%  pushed: won  25.7% (avg   5589)  dealt in  20.0% (avg   -5443)  net   -809  | folded: n    8 net  -2825
+  turn 10-12                         n    39  push  82.1%  pushed: won  31.2% (avg   7700)  dealt in  25.0% (avg   -6238)  net   -228  | folded: n    7 net  -1800
+  turn 13+                           n    48  push  70.8%  pushed: won  20.6% (avg   6214)  dealt in  26.5% (avg   -6211)  net   -671  | folded: n   14 net  -1586
+  -- value and wait
+  1-2 han, 3 or fewer live           n    10  push  20.0%  pushed: won   0.0% (avg      0)  dealt in   0.0% (avg       0)  net  -2550  | folded: n    8 net  -1712
+  1-2 han, 4-7 live                  n    24  push  70.8%  pushed: won  41.2% (avg   4243)  dealt in  23.5% (avg   -5850)  net     -6  | folded: n    7 net  -1343
+  1-2 han, 8+ live                   n     6  push  66.7%  pushed: won  75.0% (avg   5100)  dealt in   0.0% (avg       0)  net   2825  | folded: n    2 net      0
+  3-4 han, 3 or fewer live           n    19  push  84.2%  pushed: won   6.2% (avg   7800)  dealt in  37.5% (avg   -7967)  net  -3931  | folded: n    3 net  -3367
+  3-4 han, 4-7 live                  n    39  push  92.3%  pushed: won  30.6% (avg   7873)  dealt in  16.7% (avg   -3783)  net    742  | folded: n    3 net  -1833
+  3-4 han, 8+ live                   n     8  push 100.0%  pushed: won  25.0% (avg   8750)  dealt in  37.5% (avg   -7767)  net  -1762  | folded: n    0 net      0
+  5+ han, 3 or fewer live            n     9  push  77.8%  pushed: won   0.0% (avg      0)  dealt in  28.6% (avg   -5450)  net  -1643  | folded: n    2 net  -5350
+  5+ han, 4-7 live                   n     8  push 100.0%  pushed: won  25.0% (avg   6950)  dealt in  37.5% (avg   -5267)  net   -650  | folded: n    0 net      0
+  5+ han, 8+ live                    n     2  push 100.0%  pushed: won   0.0% (avg      0)  dealt in   0.0% (avg       0)  net    750  | folded: n    0 net      0
+  -- value and turn
+  1-2 han, turn 9 or earlier         n    16  push  62.5%  pushed: won  40.0% (avg   4550)  dealt in  10.0% (avg   -1300)  net    600  | folded: n    6 net   -900
+  1-2 han, turn 10-12                n     9  push  66.7%  pushed: won  50.0% (avg   5233)  dealt in  16.7% (avg   -8000)  net    267  | folded: n    3 net  -1700
+  1-2 han, turn 13+                  n    15  push  46.7%  pushed: won  42.9% (avg   3700)  dealt in  28.6% (avg   -7050)  net   -214  | folded: n    8 net  -1575
+  3+ han, turn 9 or earlier          n    27  push  92.6%  pushed: won  20.0% (avg   6420)  dealt in  24.0% (avg   -6133)  net  -1372  | folded: n    2 net  -8600
+  3+ han, turn 10-12                 n    27  push  96.3%  pushed: won  26.9% (avg   8757)  dealt in  26.9% (avg   -5986)  net   -342  | folded: n    1 net  -1000
+  3+ han, turn 13+                   n    31  push  83.9%  pushed: won  15.4% (avg   8100)  dealt in  26.9% (avg   -5971)  net   -858  | folded: n    5 net  -1620
+  -- pushes on 3 or fewer live tiles: n 26  live tiles 2.77 on average  turn 11.8  han 3.9  won   3.8%  dealt in  30.8%
+  -- the tile pushed
+  live honor or terminal             n    20  dealt in  15.0%
+  live 2-3-7-8 or half suji          n    64  dealt in  28.1%
+  live 4-5-6                         n    17  dealt in  17.6%
