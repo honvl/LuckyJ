@@ -350,7 +350,6 @@
     const wanted = decodeURIComponent(location.hash.replace(/^#guide-/, ""));
     const start = Math.max(0, examples.findIndex((e) => e.id === wanted));
     show(start);
-    return start > 0 || examples[0]?.id === wanted;
   }
 
   function setupHandToggle() {
@@ -391,13 +390,24 @@
       }
       return;
     }
-    let targetFound = false;
     for (const placeholder of document.querySelectorAll("[data-guide-examples]")) {
       const examples = data.chapters?.[placeholder.dataset.guideExamples] || [];
       if (!examples.length) continue;
-      if (renderChapter(placeholder, examples)) targetFound = true;
+      renderChapter(placeholder, examples);
     }
-    if (targetFound) document.querySelector(location.hash)?.scrollIntoView({ block: "start" });
+    returnToAnchor();
+  }
+
+  // The browser jumps to a link's anchor before the example tables load, and the tables then add
+  // height above most chapters, so the page has to go to the anchor again once they are in place.
+  function returnToAnchor() {
+    let id = "";
+    try {
+      id = decodeURIComponent(location.hash.slice(1));
+    } catch {
+      return;
+    }
+    if (id) document.getElementById(id)?.scrollIntoView({ block: "start" });
   }
 
   main();
