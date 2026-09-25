@@ -36,8 +36,10 @@ SEAT_LABELS_JA = {
 }
 WINDS = ["E", "S", "W", "N"]
 DRAGONS = {"P", "F", "C"}
-EXAMPLES_PER_POINT = 10
-POOL_PER_POINT = 120
+# Each point shows a few replays that differ from one another, not ten of the same spot.
+EXAMPLES_PER_POINT = 6
+MIN_EXAMPLES_PER_POINT = 4
+POOL_PER_POINT = 400
 SHANTEN = Shanten()
 MODEL_KEYS = ["nishiki", "hibakari", "kagashi"]
 MODEL_LABELS = {"nishiki": "Nishiki", "hibakari": "Hibakari", "kagashi": "Kagashi"}
@@ -223,10 +225,6 @@ def meld_tiles(meld):
     if isinstance(meld, dict):
         return [tile for tile in meld.get("tiles", []) if tile and tile != "+"]
     return [tile for tile in str(meld).split() if tile and tile != "+"]
-
-
-def meld_text(meld):
-    return " ".join(meld_tiles(meld))
 
 
 def meld_shows_yakuhai_yaku(meld, start, seat):
@@ -670,10 +668,6 @@ def common_case(
     text = POINT_TEXT[point_key]
     return {
         "point": point_key,
-        "title": text["title"],
-        "lesson": text["lesson"],
-        "prompt": text["prompt"],
-        "answer": text["answer"],
         "game": row["idx"],
         "rank": row["rank"],
         "round": round_name(start),
@@ -844,6 +838,13 @@ def make_simple_discard_case(
         return None
     naga = rows[0][0]
     open_counts = [len(player_melds) for player_melds in melds]
+    try:
+        visible = visible_counter(discards, melds, dora_markers)
+        safety_context = (target, discards, reached, open_counts)
+        actual_eval = ukeire_after_discard(hands[target], actual, visible, safety_context)
+        naga_eval = ukeire_after_discard(hands[target], naga, visible, safety_context)
+    except (KeyError, ValueError):
+        actual_eval = naga_eval = None
     case = common_case(
         row,
         kyoku_index,
@@ -865,6 +866,8 @@ def make_simple_discard_case(
             "draw": msg.get("pai"),
             "actual": actual,
             "naga": naga,
+            "actual_eval": actual_eval,
+            "naga_eval": naga_eval,
             "actual_danger": discard_threat_value(state, target, actual),
             "naga_danger": discard_threat_value(state, target, naga),
             "actual_threat": discard_threat_profile(state, target, actual),
@@ -1047,267 +1050,6 @@ def make_call_case(
     return case
 
 
-def tile_token(tile):
-    return f"[[{tile}]]" if tile else "the tile"
-
-
-def tile_plain(tile):
-    return str(tile or "?")
-
-
-def tile_plain_english(tile):
-    if not tile:
-        return "?"
-    mapping = {
-        "E": "East",
-        "S": "South",
-        "W": "West",
-        "N": "North",
-        "P": "White Dragon",
-        "F": "Green Dragon",
-        "C": "Red Dragon"
-    }
-    return mapping.get(tile, tile)
-
-
-def format_percent(value):
-    if value is None:
-        return "n/a"
-    try:
-        return f"{float(value) * 100:.1f}%"
-    except (TypeError, ValueError):
-        return "n/a"
-
-
-def format_int(value):
-    if value is None:
-        return "n/a"
-    try:
-        return str(int(value))
-    except (TypeError, ValueError):
-        return str(value)
-
-
-def seat_label(seat, lang):
-    labels = SEAT_LABELS_JA if lang == "ja" else SEAT_LABELS_EN
-    return labels.get(seat, seat or "unknown")
-
-
-def danger_gap_phrase(case, lang):
-    actual = case.get("actual_danger")
-    naga = case.get("naga_danger")
-    if actual is None or naga is None:
-        return "NAGA危険度指標を比べにくい。" if lang == "ja" else "The NAGA danger-proxy comparison is unclear."
-    gap = actual - naga
-    if lang == "ja":
-        if abs(gap) < 0.03:
-            return f"NAGA危険度指標は近い。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
-        if gap < 0:
-            return f"LuckyJ はNAGA危険度指標を下げている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
-        return f"LuckyJ はより高いNAGA危険度指標を受け入れている。LuckyJ {format_percent(actual)}、ニシキ {format_percent(naga)}。"
-    if abs(gap) < 0.03:
-        return f"The NAGA danger-proxy values are close: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
-    if gap < 0:
-        return f"LuckyJ lowers the NAGA danger proxy: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
-    return f"LuckyJ accepts a higher NAGA danger proxy now: LuckyJ {format_percent(actual)}, Nishiki {format_percent(naga)}."
-
-
-def threat_peak_text(profile, lang):
-    if not profile or profile.get("max") is None:
-        return "n/a"
-    value = format_percent(profile.get("max"))
-    if lang == "ja":
-        return f"NAGA最大危険度指標 {value}"
-    return f"a peak NAGA danger proxy of {value}"
-
-
-def threat_case_sentence(case, lang):
-    actual_profile = case.get("actual_threat") or {}
-    naga_profile = case.get("naga_threat") or {}
-    actual_max = actual_profile.get("max")
-    naga_max = naga_profile.get("max")
-    if actual_max is None or naga_max is None:
-        return ""
-    actual = tile_token(case.get("actual"))
-    naga = tile_token(case.get("naga"))
-    gap = actual_max - naga_max
-    actual_detail = f"{actual} has {threat_peak_text(actual_profile, lang)}"
-    naga_detail = f"{naga} has {threat_peak_text(naga_profile, lang)}"
-    if lang == "ja":
-        actual_detail = f"{actual} の{threat_peak_text(actual_profile, lang)}"
-        naga_detail = f"{naga} の{threat_peak_text(naga_profile, lang)}"
-        if abs(gap) < 0.03:
-            if max(actual_max, naga_max) < 0.08:
-                return f"NAGA危険度指標では両候補とも静かである。{actual_detail}、{naga_detail}。この例は危険差ではなく、形、役割、着順で読む。"
-            return f"NAGA危険度指標では両候補が近い。{actual_detail}、{naga_detail}。危険差だけでは説明できない分岐である。"
-        if gap < 0:
-            return f"NAGA危険度指標ではニシキ候補の方が熱い。{actual_detail}、{naga_detail}。LuckyJ は熱い候補を避け、別の仕事を持つ牌を残している。"
-        return f"NAGA危険度指標ではLuckyJの打牌の方が熱い。{actual_detail}、{naga_detail}。LuckyJ は追加の危険を払っているので、形、打点、着順の理由がそれに見合うかを見る。"
-    if abs(gap) < 0.03:
-        if max(actual_max, naga_max) < 0.08:
-            return f"Both candidates are quiet on the NAGA danger proxy: {actual_detail}; {naga_detail}. Read this example through shape, role, and placement, not danger."
-        return f"The two candidates are close on the NAGA danger proxy: {actual_detail}; {naga_detail}. Danger alone does not explain the split."
-    if gap < 0:
-        return f"Nishiki's candidate is the hotter tile: {actual_detail}; {naga_detail}. LuckyJ avoids it and keeps a tile with a different job."
-    return f"LuckyJ's discard is the hotter tile: {actual_detail}; {naga_detail}. LuckyJ is paying extra danger here, so the shape, value, or placement reason has to be worth it."
-
-
-def eval_summary(item, lang):
-    if not item:
-        return "形の数値は薄い。" if lang == "ja" else "There is no detailed shape count for this branch."
-    effective = item.get("effective") or []
-    waits = ", ".join(tile_token(tile) for tile in effective[:5])
-    if not waits:
-        waits = "なし" if lang == "ja" else "none listed"
-    if lang == "ja":
-        return f"{format_int(item.get('shanten'))}シャンテン、見えている受け入れ{format_int(item.get('ukeire'))}枚、主な受け {waits}"
-    return f"{format_int(item.get('shanten'))}-shanten, {format_int(item.get('ukeire'))} visible ukeire, main accepts {waits}"
-
-
-def sotogawa_is_weak(target):
-    if target_has_genbutsu(target):
-        return False
-    sources = (target or {}).get("sotogawa_sources") or []
-    return bool(sources) and not any((source.get("position") or 0) <= 4 for source in sources)
-
-
-def target_has_genbutsu(target):
-    return bool((target or {}).get("genbutsu_sources"))
-
-
-def target_has_display_sotogawa(target):
-    return bool((target or {}).get("sotogawa_sources")) and not target_has_genbutsu(target)
-
-
-def safety_target(read):
-    against = read.get("against") or []
-    if not against:
-        return {}
-    live_targets = [
-        item
-        for item in against
-        if (item.get("genbutsu_sources") or item.get("suji_sources") or target_has_display_sotogawa(item))
-        and (item.get("reached") or item.get("open_melds"))
-    ]
-    return live_targets[0] if live_targets else against[0]
-
-
-def safety_read_sentence(read, lang):
-    if not read or not (read.get("kind") or read.get("has_sotogawa")):
-        return ""
-    target = safety_target(read)
-    kind = target.get("kind") if target else read.get("kind")
-    parts = []
-    if lang == "ja":
-        if kind:
-            parts.append({"genbutsu": "現物", "suji": "筋"}.get(kind, kind))
-        if target_has_display_sotogawa(target):
-            parts.append("弱い外側牌（ソト側）" if sotogawa_is_weak(target) else "外側牌（ソト側）")
-        threat = "リーチ" if target.get("reached") else f"{target.get('open_melds')}副露" if target.get("open_melds") else "静かな相手"
-        return f"残る {tile_token(read.get('tile'))} は {seat_label(target.get('seat_label'), lang)} に対して{'かつ'.join(parts)}で、相手の状態は{threat}。"
-    if kind:
-        parts.append({"genbutsu": "genbutsu", "suji": "suji"}.get(kind, kind))
-    if target_has_display_sotogawa(target):
-        parts.append("a weak outside tile (sotogawa)" if sotogawa_is_weak(target) else "an outside tile (sotogawa)")
-    threat = "riichi" if target.get("reached") else f"{target.get('open_melds')} calls" if target.get("open_melds") else "no called threat"
-    return f"The kept {tile_token(read.get('tile'))} is {' and '.join(parts)} against the {seat_label(target.get('seat_label'), lang)} ({threat})."
-
-
-def call_model_sentence(case, lang):
-    heads = case.get("call_model_heads") or []
-    if not heads:
-        if lang == "ja":
-            return "この鳴き例は手牌進行と鳴き後の打牌を中心に読む。"
-        return "This call example is read through hand progress and the planned post-call discard."
-    post_heads = case.get("post_call_model_heads") or []
-    nishiki_post = model_head(post_heads, "nishiki")
-    post_discard = tile_token(case.get("discard_after_call"))
-    post_naga = tile_token((nishiki_post or {}).get("top"))
-    post_model_discard = post_naga if nishiki_post and nishiki_post.get("top") else post_discard
-    called = tile_token(case.get("called_tile"))
-    if all(head.get("supports_call") for head in heads):
-        actual = case.get("call", "call")
-        if nishiki_post and not nishiki_post.get("matches_luckyj"):
-            if lang == "ja":
-                labels = "、".join(head.get("label") or head.get("key") for head in heads)
-                return f"{labels} は全員 {called} を {actual} する。ただし鳴いた後、ニシキは {post_discard} ではなく {post_naga} を切る。"
-            labels = ", ".join(head.get("label") or head.get("key") for head in heads)
-            return f"{labels} all choose {actual} on {called}. The split is after the call: Nishiki would discard {post_naga} instead of LuckyJ's {post_discard}."
-        if lang == "ja":
-            labels = "、".join(head.get("label") or head.get("key") for head in heads)
-            return f"{labels} は全員 {called} を {actual} し、鳴いた後に {post_model_discard} を切る。"
-        labels = ", ".join(head.get("label") or head.get("key") for head in heads)
-        return f"{labels} all choose {actual} on {called}, then discard {post_model_discard}."
-    nishiki = model_head(heads, "nishiki")
-    hibakari = model_head(heads, "hibakari")
-    kagashi = model_head(heads, "kagashi")
-    actual = case.get("call", "call")
-    if lang == "ja":
-        parts = []
-        if nishiki:
-            if nishiki.get("supports_call"):
-                parts.append(f"ニシキは {called} を {actual} するライン")
-            elif nishiki.get("prefers_pass"):
-                parts.append("ニシキは鳴かない")
-            elif nishiki.get("top_action") == actual:
-                parts.append(f"ニシキは同じ {actual} でも別の取り方")
-            else:
-                parts.append(f"ニシキは実戦とは別の {nishiki['top_action']} 寄り")
-        if hibakari:
-            if hibakari.get("supports_call"):
-                parts.append("ヒバカリもこの鳴き")
-            elif hibakari.get("prefers_pass"):
-                parts.append("ヒバカリは鳴かない")
-            elif hibakari.get("top_action") == actual:
-                parts.append(f"ヒバカリは同じ {actual} でも別の取り方")
-            else:
-                parts.append(f"ヒバカリは別の {hibakari['top_action']} 寄り")
-        if kagashi:
-            if kagashi.get("supports_call"):
-                parts.append("カガシもこの鳴き")
-            elif kagashi.get("prefers_pass"):
-                parts.append("カガシは鳴かない")
-            elif kagashi.get("top_action") == actual:
-                parts.append(f"カガシは同じ {actual} でも別の取り方")
-            else:
-                parts.append(f"カガシは別の {kagashi['top_action']} 寄り")
-        return "。".join(parts) + "。"
-    parts = []
-    if nishiki:
-        if nishiki.get("supports_call"):
-            parts.append(f"Nishiki chooses {actual} on {called}")
-        elif nishiki.get("prefers_pass"):
-            parts.append("Nishiki would not call")
-        elif nishiki.get("top_action") == actual:
-            parts.append(f"Nishiki has a nearby {actual} variant")
-        else:
-            parts.append(f"Nishiki prefers {nishiki['top_action']} instead")
-    if hibakari:
-        if hibakari.get("supports_call"):
-            parts.append("Hibakari also takes this call")
-        elif hibakari.get("prefers_pass"):
-            parts.append("Hibakari would not call")
-        elif hibakari.get("top_action") == actual:
-            parts.append(f"Hibakari has a nearby {actual} variant")
-        else:
-            parts.append(f"Hibakari prefers {hibakari['top_action']} instead")
-    if kagashi:
-        if kagashi.get("supports_call"):
-            parts.append("Kagashi also takes this call")
-        elif kagashi.get("prefers_pass"):
-            parts.append("Kagashi would not call")
-        elif kagashi.get("top_action") == actual:
-            parts.append(f"Kagashi has a nearby {actual} variant")
-        else:
-            parts.append(f"Kagashi prefers {kagashi['top_action']} instead")
-    return ". ".join(parts) + "."
-
-
-def call_heads_all_support(case):
-    heads = case.get("call_model_heads") or []
-    return bool(heads) and all(head.get("supports_call") for head in heads)
-
-
 def call_has_naga_discrepancy(case):
     nishiki = model_head((case or {}).get("call_model_heads") or [], "nishiki")
     if not nishiki:
@@ -1334,376 +1076,6 @@ def case_model_head(case, key):
     return next((head for head in case.get("model_heads") or [] if head.get("key") == key), None)
 
 
-def hibakari_read_sentence(case, lang):
-    head = case_model_head(case, "hibakari")
-    if not head:
-        return ""
-    top = tile_token(head.get("top"))
-    actual = tile_token(case.get("actual"))
-    nishiki = tile_token(case.get("naga"))
-    if lang == "ja":
-        if head.get("matches_luckyj"):
-            return f"ヒバカリも {actual} を第一候補にしており、この例は LuckyJ/ヒバカリ対ニシキの分岐として読む。"
-        if head.get("matches_nishiki"):
-            return f"ヒバカリもニシキと同じ {nishiki} 寄りなので、これは守備寄り基準にも逆らう例。条件がそろう時だけ真似する。"
-        return f"ヒバカリは第三候補の {top} を選ぶ。表面の牌より、三者が何を守ろうとしているかを見る。"
-    if head.get("matches_luckyj"):
-        return f"Hibakari also chooses {actual}, so this is LuckyJ and Hibakari against Nishiki rather than LuckyJ against every NAGA head."
-    if head.get("matches_nishiki"):
-        return f"Hibakari also leans to Nishiki's {nishiki}, so this is a harder example. LuckyJ's line holds up only if the local condition is exact."
-    return f"Hibakari chooses a third line, {top}. Treat this as a three-way split and look for the reason behind each choice."
-
-
-def yakuhai_threat_sentence(case, lang):
-    threats = case.get("yakuhai_cleanup", {}).get("threats") or []
-    if not threats:
-        return ""
-    rows = []
-    for threat in threats:
-        melds = "; ".join(meld_text(meld) for meld in (threat.get("melds") or []))
-        wind = tile_token(threat.get("wind"))
-        if lang == "ja":
-            actual = base_tile(case.get("actual"))
-            round_wind = "E" if str(case.get("round", "")).startswith("East") else "S"
-            roles = []
-            if actual in {"P", "F", "C"}:
-                roles.append("三元牌")
-            if actual == round_wind:
-                roles.append("場風")
-            if actual == base_tile(threat.get("wind")):
-                roles.append("相手の自風")
-            role = "・".join(roles) or "役牌候補"
-            rows.append(
-                f"{seat_label(threat.get('seat'), lang)} "
-                f"(自風 {wind}, この牌は{role}, 副露 {melds or 'なし'})"
-            )
-        else:
-            rows.append(f"{seat_label(threat.get('seat'), lang)} ({wind} seat wind, melds {melds or 'none'})")
-    if lang == "ja":
-        return f"{tile_token(case.get('actual'))} は {'、'.join(rows)} に対してまだ役牌条件になり得る。"
-    return f"{tile_token(case.get('actual'))} is still a yaku condition against {', '.join(rows)}."
-
-
-def point_focus_en(point_key, case):
-    actual = tile_token(case.get("actual"))
-    naga = tile_token(case.get("naga"))
-    kept = tile_token(case.get("naga"))
-    score_band_text = case.get("score_band", "the current score band")
-    if point_key == "point-01":
-        rank = ordinal_en(case.get("current_rank")) if case.get("current_rank") else "a protected seat"
-        score = format_int(case.get("score"))
-        return f"On {score} points and currently {rank}, this hand does not need to chase extra points. LuckyJ lets it become a controlled fold unless the next draw makes pushing clearly worth it."
-    if point_key == "point-02":
-        return f"Cutting {actual} keeps {kept} as a branch point. The hand stays able to choose value, safety, or a different yaku route after the table gives more information."
-    if point_key == "point-05":
-        return f"{actual} is the liability LuckyJ is willing to remove now. Waiting can force the same tile out after riichi or another call, when it costs more."
-    if point_key == "point-06":
-        return f"LuckyJ gives up some easy acceptance to keep the hand worth playing. The score situation asks for more than a cheap hand."
-    if point_key == "point-08":
-        return f"Riichi is part of the value here. With a declaration probability of {format_percent(case.get('reach_prob'))}, LuckyJ counts the pressure as part of what the discard buys."
-    if point_key == "point-09":
-        return f"The next required discard matters more than this turn alone. LuckyJ chooses {actual} because the route through {naga} can become expensive on the following draw."
-    if point_key == "point-10":
-        return f"This late, vague improvement is worth little. Read LuckyJ's {actual} cut as a win attempt, a safe tenpai, or a controlled fold."
-    if point_key == "point-11":
-        return f"The result was {case.get('outcome')}. LuckyJ is playing for draw-tenpai value as well as a direct win."
-    if point_key == "point-12":
-        return f"The disagreement is the review prompt. First decide whether {actual} buys safety, value, route count, pressure, or placement before calling it right or wrong."
-    if point_key == "point-13":
-        threat = yakuhai_threat_sentence(case, "en")
-        return f"{threat} LuckyJ releases it while no yaku or clear advancement is visible, accepting the current pon risk instead of carrying a potentially worse live tile later.".strip()
-    if point_key == "point-14":
-        return f"By cutting {actual}, LuckyJ keeps {kept} as a defensive tile aimed at a specific opponent."
-    if point_key == "point-15":
-        return f"{actual} looks safe, but LuckyJ treats that safety as stale or aimed at the wrong player once the live route needs the space."
-    if point_key == "point-16":
-        return f"Cutting the outside {actual} preserves the middle connection around {naga}. It looks defensive, but its job is keeping the real route alive."
-    if point_key == "point-18":
-        return f"Honors get roles. Here {actual} is treated as loose material or as an opponent's yaku condition."
-    return f"LuckyJ cuts {actual} and Nishiki prefers {naga}. Compare the futures each tile leaves behind."
-
-
-def point_focus_ja(point_key, case):
-    actual = tile_token(case.get("actual"))
-    naga = tile_token(case.get("naga"))
-    score_band_text = case.get("score_band", "この点数状況")
-    if point_key == "point-01":
-        rank = f"現在{case.get('current_rank')}着" if case.get("current_rank") else "守る着順"
-        return f"{format_int(case.get('score'))}点で {rank} なので、加点を追いすぎる局面ではない。次のツモで押す価値がはっきり出なければ、LuckyJ はこの手を無理せず降りやすい形へ寄せている。"
-    if point_key == "point-02":
-        return f"{actual} を切ることで {naga} を分岐点として残す。価値、安全、別ルートをまだ選べる形にしている。"
-    if point_key == "point-05":
-        return f"{actual} は後で切らされると高くつく負債。リーチや副露が入る前に先に処理している。"
-    if point_key == "point-06":
-        return "LuckyJ は受け入れを少し払って、手の価値を残している。安すぎる未来を避ける判断である。"
-    if point_key == "point-08":
-        return f"リーチ自体が価値になる局面。宣言確率 {format_percent(case.get('reach_prob'))} を含めて、圧力を打牌の成果として見ている。"
-    if point_key == "point-09":
-        return f"今の一打と次に切る牌まで読む。{naga} 経由の道が次巡に高くつくため、LuckyJ は {actual} を選んでいる。"
-    if point_key == "point-10":
-        return f"終盤なので曖昧な改良はかなり小さい。{actual} は和了、安全テンパイ、撤退のどれかとして読む。"
-    if point_key == "point-11":
-        return f"結果は {case.get('outcome')}。直撃の和了に加えて、流局テンパイの価値を取りに行っている。"
-    if point_key == "point-12":
-        return f"この不一致そのものが復習点。{actual} が安全、価値、ルート数、圧力、着順のどれを買っているかを先に言う。"
-    if point_key == "point-13":
-        threat = yakuhai_threat_sentence(case, "ja")
-        return f"{threat} LuckyJ は役も明確な進行も見えないうちに切り、今のポンリスクと後でさらに危険になるコストを比較している。".strip()
-    if point_key == "point-14":
-        return f"{actual} を切って {naga} を明確な守備牌として残す。対象のある安全牌として扱っている。"
-    if point_key == "point-15":
-        return f"安全牌を使う例。{actual} は安全に見えても、守る相手がずれたら手順の邪魔になる。"
-    if point_key == "point-16":
-        return f"外側の {actual} 切りは、中の {naga} 周りのルートを残す攻めの支払いとして読む。"
-    if point_key == "point-18":
-        return f"字牌には役割がある。ここでの {actual} は浮き牌か相手条件として扱われている。"
-    return f"LuckyJ は {actual}、ニシキは {naga}。どちらがどの未来を残すかを見る。"
-
-
-def copy_rule_en(point_key, case):
-    actual = tile_token(case.get("actual"))
-    naga = tile_token(case.get("naga"))
-    if point_key == "point-01":
-        return "Copy this when your position is already good enough: lower the ambition, keep safe tiles, and let the hand fold unless a later draw makes it worth pushing."
-    if point_key == "point-13":
-        return f"Copy the timing, not the tile: release {actual} only while no yaku or clear advancement is visible; once advancement is visible, choke it unless placement makes feeding acceptable."
-    if point_key == "point-14":
-        return f"Keep {naga} when it answers a specific opponent on a believable future bad draw."
-    if point_key == "point-15":
-        return f"Copy this only after naming why the safe-looking {actual} has expired and what later safe tile remains."
-    if point_key == "point-18":
-        return f"Cut {actual} when its main job is completing someone else's hand."
-    if point_key == "point-08":
-        return "Copy the pressure only when riichi changes opponent behavior and the wait is good enough to make that pressure matter."
-    if point_key == "point-11":
-        return "Copy this when a safe path to tenpai has measurable value even if the hand is unlikely to win outright."
-    return f"Copy this when cutting {actual} keeps the hand's job clearer than the Nishiki line through {naga}."
-
-
-def copy_rule_ja(point_key, case):
-    actual = tile_token(case.get("actual"))
-    naga = tile_token(case.get("naga"))
-    if point_key == "point-01":
-        return "点数状況を真似する。今の着順を守れば十分なら、目標を下げて安全牌を残し、次のツモで押す価値が出るまで無理しない。"
-    if point_key == "point-13":
-        return f"牌そのものではなく時機を真似する。役も明確な進行も見えない時だけ {actual} を先切りし、進行が見えた後は着順上の理由がない限り絞る。"
-    if point_key == "point-14":
-        return f"対象を真似する。{naga} が次の悪いツモで誰に効くかを言える時だけ残す。"
-    if point_key == "point-15":
-        return f"安全そうな {actual} がなぜ期限切れか、次の安全牌が何かを言えた時だけ真似する。"
-    if point_key == "point-18":
-        return f"役割ラベルを真似する。{actual} が自分の価値でなく相手条件に近いなら切る。"
-    if point_key == "point-08":
-        return "リーチで相手の行動が変わり、待ちも最低限ある時だけ圧力を真似する。"
-    if point_key == "point-11":
-        return "和了が薄くても、安全にテンパイへ行ける価値がある時に真似する。"
-    return f"{actual} 切りが {naga} 経由より手の仕事をはっきり残すなら、その理由を真似できる。"
-
-
-def limit_rule_en(point_key, case):
-    actual = tile_token(case.get("actual"))
-    naga = tile_token(case.get("naga"))
-    if point_key == "point-01":
-        return "Do not copy the fold posture when you actually need points, when the hand is already worth pushing, or when the safer line has no real safe tile."
-    if point_key == "point-13":
-        return "Clean honors by role. Your pair, your value tile, and a dead caller tile use different rules."
-    if point_key == "point-08":
-        return "Declare with a reason. Bad waits, huge placement punishment, or a clear upgrade can still make damaten correct."
-    if point_key == "point-14":
-        return f"Keep {naga} when it actually covers a live threat."
-    if point_key == "point-15":
-        return f"Spend {actual} only when another real answer to the active threat remains."
-    if point_key == "point-16":
-        return f"If {actual} is the only safe tile or the inside route is not real, the outside cut is just a fold."
-    return "Copy the exact tile only when the score situation, the threat, and the next discard match."
-
-
-def limit_rule_ja(point_key, case):
-    actual = tile_token(case.get("actual"))
-    naga = tile_token(case.get("naga"))
-    if point_key == "point-01":
-        return "加点が必要な時、すでに押す価値がある手、または安全牌のない安全寄せでは真似しない。"
-    if point_key == "point-13":
-        return "字牌は役割で分ける。対子、自分の役、相手にもう生きていない牌は別判断である。"
-    if point_key == "point-08":
-        return "リーチには理由を持たせる。悪形、着順罰、明確な改良があればダマも残る。"
-    if point_key == "point-14":
-        return f"{naga} が生きた脅威に通る時に残す。"
-    if point_key == "point-15":
-        return f"{actual} が現役の脅威への唯一の答えなら、安全牌として残す。"
-    if point_key == "point-16":
-        return f"{actual} が唯一の安全牌、または中のルートが幻想なら、防御寄りの打牌として扱う。"
-    return "表面の牌を真似する条件は、点数状況、脅威、次に切る牌がそろう時である。"
-
-
-def why_naga_tempting_en(case):
-    actual = tile_token(case.get("actual"))
-    naga = tile_token(case.get("naga"))
-    actual_eval = case.get("actual_eval")
-    naga_eval = case.get("naga_eval")
-    if actual_eval and naga_eval:
-        if case.get("point") == "point-01":
-            return f"The Nishiki line through {naga} is the efficiency line because it leaves {eval_summary(naga_eval, 'en')}. LuckyJ's {actual} line leaves {eval_summary(actual_eval, 'en')}. That extra acceptance matters less when the job is protecting the current position rather than making more points. {danger_gap_phrase(case, 'en')}"
-        return f"The Nishiki line through {naga} is tempting because it leaves {eval_summary(naga_eval, 'en')}. LuckyJ's {actual} line leaves {eval_summary(actual_eval, 'en')}. {danger_gap_phrase(case, 'en')}"
-    if case.get("point") == "point-01":
-        return f"Nishiki's top line {naga} is tempting because it has the highest model weight here: Nishiki {format_percent(case.get('naga_prob'))}, LuckyJ {format_percent(case.get('actual_prob'))}. In this score spot, model weight is not enough on its own. The hand first has to justify risking the lead. {danger_gap_phrase(case, 'en')}"
-    return f"Nishiki's top line {naga} is tempting because it has the highest model weight here: Nishiki {format_percent(case.get('naga_prob'))}, LuckyJ {format_percent(case.get('actual_prob'))}. {danger_gap_phrase(case, 'en')}"
-
-
-def why_naga_tempting_ja(case):
-    actual = tile_token(case.get("actual"))
-    naga = tile_token(case.get("naga"))
-    actual_eval = case.get("actual_eval")
-    naga_eval = case.get("naga_eval")
-    if actual_eval and naga_eval:
-        if case.get("point") == "point-01":
-            return f"ニシキの {naga} は {eval_summary(naga_eval, 'ja')} を残すので、効率面では魅力がある。LuckyJ の {actual} は {eval_summary(actual_eval, 'ja')}。ただしこの点数状況では、加点を作ることより今の着順を守ることが先に来る。{danger_gap_phrase(case, 'ja')}"
-        return f"ニシキの {naga} は {eval_summary(naga_eval, 'ja')} を残すので魅力がある。LuckyJ の {actual} は {eval_summary(actual_eval, 'ja')}。{danger_gap_phrase(case, 'ja')}"
-    if case.get("point") == "point-01":
-        return f"ニシキ第一候補の {naga} はこの局面で重みが高い ({format_percent(case.get('naga_prob'))}、LuckyJ は {format_percent(case.get('actual_prob'))})。ただしこの点数状況では、その重みだけでリードを危険にさらす理由にはならない。{danger_gap_phrase(case, 'ja')}"
-    return f"ニシキ第一候補の {naga} はこの局面で重みが高い ({format_percent(case.get('naga_prob'))}、LuckyJ は {format_percent(case.get('actual_prob'))})。{danger_gap_phrase(case, 'ja')}"
-
-
-def build_discard_guide(case, lang):
-    point_key = case["point"]
-    actual = tile_token(case.get("actual"))
-    naga = tile_token(case.get("naga"))
-    draw = tile_token(case.get("draw"))
-    rank = case.get("current_rank") or case.get("rank")
-    safety = safety_read_sentence(case.get("kept_tile_safety"), lang)
-    hibakari = hibakari_read_sentence(case, lang)
-    threat = threat_case_sentence(case, lang)
-    if lang == "ja":
-        focus = point_focus_ja(point_key, case)
-        read = " ".join(part for part in [focus, threat, safety, hibakari] if part).strip()
-        rank_text = f"現在{rank}着" if rank else "現在着順不明"
-        prompt = (
-            f"残り{case.get('left')}枚で {actual} と {naga} のどちらを切るか。先に加点が必要か、今の着順を守れば十分かを言う。"
-            if point_key == "point-01"
-            else f"残り{case.get('left')}枚で {actual} と {naga} のどちらを切るか。先に {naga} が何を残しているかを言う。"
-        )
-        return {
-            "caption": f"LuckyJ {tile_plain(case.get('actual'))}、ニシキ {tile_plain(case.get('naga'))}",
-            "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、{rank_text}。LuckyJ は {draw} ツモから {actual} を切り、ニシキ第一候補は {naga}。結果: {case.get('outcome')}",
-            "read": read,
-            "whyNot": why_naga_tempting_ja(case),
-            "copy": copy_rule_ja(point_key, case),
-            "limit": limit_rule_ja(point_key, case),
-            "prompt": prompt,
-            "answer": f"LuckyJ は {actual} を選ぶ。{focus}",
-        }
-    focus = point_focus_en(point_key, case)
-    read = " ".join(part for part in [focus, threat, safety, hibakari] if part).strip()
-    rank_text = f"currently {ordinal_en(rank)}" if rank else "current rank unknown"
-    prompt = (
-        f"With {case.get('left')} tiles left, would you cut {actual} or {naga}? First say whether you need more points or can protect the current position."
-        if point_key == "point-01"
-        else f"With {case.get('left')} tiles left, would you cut {actual} or {naga}? First name what {naga} is preserving."
-    )
-    return {
-        "caption": f"LuckyJ {tile_plain_english(case.get('actual'))}, Nishiki {tile_plain_english(case.get('naga'))}",
-        "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ has {format_int(case.get('score'))} points ({case.get('score_band')}), {rank_text}. After drawing {draw}, LuckyJ cuts {actual}; Nishiki's top line is {naga}. Result: {case.get('outcome')}",
-        "read": read,
-        "whyNot": why_naga_tempting_en(case),
-        "copy": copy_rule_en(point_key, case),
-        "limit": limit_rule_en(point_key, case),
-        "prompt": prompt,
-        "answer": f"LuckyJ chooses {actual}. {focus}",
-    }
-
-
-def build_call_guide(case, lang):
-    point_key = case["point"]
-    called = tile_token(case.get("called_tile"))
-    discard = tile_token(case.get("discard_after_call"))
-    call = case.get("call", "call")
-    from_seat = seat_label(case.get("called_from"), lang)
-    meld = " ".join(case.get("consumed") or [])
-    shape = case.get("post_call_eval") or {}
-    reserve_tiles = shape.get("targeted_reserve_tiles") or []
-    reserve = tile_token(reserve_tiles[0]) if reserve_tiles else None
-    primary = shape.get("primary_threat") or {}
-    primary_seat = seat_label(primary.get("seat"), lang)
-    if lang == "ja":
-        primary_label = (
-            f"{primary_seat}のリーチ"
-            if primary.get("kind") == "riichi"
-            else f"{primary_seat}の{primary.get('open_melds', 0)}副露手"
-        )
-    else:
-        primary_label = (
-            f"the {primary_seat}'s riichi"
-            if primary.get("kind") == "riichi"
-            else f"the {primary_seat}'s {primary.get('open_melds', 0)}-meld open hand"
-        )
-    post_shape = shanten_text(shape.get("shanten"), lang)
-    model_read = call_model_sentence(case, lang)
-    consensus_call = call_heads_all_support(case)
-    nishiki_call = model_head(case.get("call_model_heads") or [], "nishiki")
-    nishiki_post = model_head(case.get("post_call_model_heads") or [], "nishiki")
-    nishiki_same_call_label = bool(nishiki_call) and nishiki_call.get("top_action") == call
-    post_call_split = bool(nishiki_post) and not nishiki_post.get("matches_luckyj")
-    rank = case.get("current_rank") or case.get("rank")
-    if lang == "ja":
-        if point_key == "point-04":
-            focus = f"副露後の {discard} まで先に見え、さらに主脅威である{primary_label}に対する {reserve} を残している。"
-        elif shape.get("shanten") is not None and shape.get("shanten") > 0 and (case.get("left") or 0) <= 1:
-            focus = f"これは手牌完成の鳴きではなく、終局直前のテンポ鳴き。{discard} を切った後も {post_shape} なので、普通の和了形に近づいた例としては読まない。"
-        elif shape.get("shanten") is not None and shape.get("shanten") <= 0:
-            focus = f"閉じた手が間に合いにくい局面で、{call} 後の {discard} まで決めると {post_shape} になる。"
-        else:
-            focus = f"閉じた手が間に合いにくい局面で、{call} 後の {discard} まで決めると {post_shape} まで進む。"
-        rank_text = f"現在{rank}着" if rank else "現在着順不明"
-        if nishiki_call and nishiki_call.get("supports_call") and post_call_split:
-            why_not = f"ニシキも {call} するが、鳴いた後は {discard} ではなく {tile_token(nishiki_post.get('top'))} を切る。比較点は鳴かない選択ではなく鳴き後打牌。"
-        elif nishiki_same_call_label and not nishiki_call.get("supports_call") and not nishiki_call.get("prefers_pass"):
-            why_not = f"ニシキも {call} を選ぶが、違いは副露形だけ。この種のケースは単独の教材にはしない。"
-        elif consensus_call:
-            why_not = f"鳴かない選択は守備的な代案ではあるが、この局面で表示されている NAGA 各ヘッドは鳴きを選んでいる。残り{case.get('left')}枚では、役ありテンパイを取る鳴きが現実的なルートになる。"
-        else:
-            why_not = f"門前維持は自然な選択。ただしこの局面では残り枚数と手牌 {meld or 'なし'} から、門前の理想形を待つ余裕が薄い。"
-        return {
-            "caption": f"{call} して {tile_plain(case.get('discard_after_call'))}",
-            "situation": f"{case.get('round')}、{case.get('stage')}、残り{case.get('left')}枚。{case.get('score_band')}、{format_int(case.get('score'))}点、{rank_text}。LuckyJ は {from_seat} から {called} を {call} し、{discard} を切る。結果: {case.get('outcome')}",
-            "read": f"{focus} {model_read}".strip(),
-            "whyNot": why_not,
-            "copy": f"{call} が役、速度、テンパイ、または相手への圧力を作る時だけ真似する。鳴いた後の最初の打牌 {discard} まで先に決める。",
-            "limit": "鳴いた後の打牌と次の方針まで言える時に、LuckyJ 型のテンポになる。",
-            "prompt": f"{called} を {call} するか。答える前に、鳴いた後に何を切るかを言う。",
-            "answer": f"まず鳴いた後の打牌を見る。この例では {discard} である。{focus} {model_read}",
-        }
-    if point_key == "point-04":
-        focus = f"The post-call {discard} is already chosen, and the shortened hand still holds {reserve} as a checked exit against {primary_label}."
-    elif shape.get("shanten") is not None and shape.get("shanten") > 0 and (case.get("left") or 0) <= 1:
-        focus = f"This is a last-turn tempo call, not a hand-completion call. After {discard}, the hand is still {post_shape}, so do not read this as a normal pon that makes a winning shape."
-    elif shape.get("shanten") is not None and shape.get("shanten") <= 0:
-        focus = f"The closed route is running out of turns. After the {call} and {discard}, the hand is {post_shape}."
-    else:
-        focus = f"The closed route is running out of turns. After the {call} and {discard}, the hand is {post_shape}."
-    rank_text = f"currently {ordinal_en(rank)}" if rank else "current rank unknown"
-    if nishiki_call and nishiki_call.get("supports_call") and post_call_split:
-        why_not = f"Nishiki also chooses {call}, but after the call it would discard {tile_token(nishiki_post.get('top'))} instead of {discard}. The comparison is the post-call discard, not call versus no-call."
-    elif nishiki_same_call_label and not nishiki_call.get("supports_call") and not nishiki_call.get("prefers_pass"):
-        why_not = f"Nishiki also chooses {call}; the remaining split is only the exact call shape, so this case should not stand alone as a teaching example."
-    elif consensus_call:
-        why_not = f"Passing is the defensive alternative, but the listed NAGA heads do not prefer it here. With {case.get('left')} tiles left, the open yaku tenpai is the practical route."
-    else:
-        why_not = f"Passing is tempting because it keeps the hand closed. With {case.get('left')} tiles left, the closed ideal may run out of useful turns."
-    return {
-        "caption": f"{call.capitalize()} on {tile_plain_english(case.get('called_tile'))}, discard {tile_plain_english(case.get('discard_after_call'))}",
-        "situation": f"{case.get('round')}, {case.get('stage')} hand, {case.get('left')} tiles left. LuckyJ has {format_int(case.get('score'))} points ({case.get('score_band')}), {rank_text}. LuckyJ calls {call} on {called} from the {from_seat}, then cuts {discard}. Result: {case.get('outcome')}",
-        "read": f"{focus} {model_read}".strip(),
-        "whyNot": why_not,
-        "copy": f"Copy the {call} only when it creates yaku, speed, tenpai pressure, or denial, and when the first post-call discard {discard} is already planned.",
-        "limit": "The call needs a chosen post-call discard and a concrete next plan. Without those it is exposure, not tempo.",
-        "prompt": f"Would you {call} on {called}? Before answering, name the discard after the call.",
-        "answer": f"First check the post-call discard. Here it is {discard}. {focus} {model_read}",
-    }
-
-
-LLM_CACHE_PATH = Path("data/llm_guides_cache.json")
-LLM_PROMPT_VERSION = "pro-voice-v3"
-LLM_CACHE = None
 FALSE_PASS_WHEN_CALLING_PATTERNS = [
     re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:passes|passed)\b", re.I),
     re.compile(r"\bnishiki\b[^.。]{0,120}\b(?:opts|chooses|prefers|would)\s+to\s+pass\b", re.I),
@@ -1937,22 +1309,6 @@ def cached_guide_has_asymmetric_shared_route_claim(case, text):
     return any(text_claims_asymmetric_shared_route(text, actual, naga, family) for family in shared)
 
 
-def load_llm_cache():
-    global LLM_CACHE
-    if LLM_CACHE is not None:
-        return LLM_CACHE
-    if LLM_CACHE_PATH.exists():
-        try:
-            with open(LLM_CACHE_PATH, "r", encoding="utf-8") as f:
-                LLM_CACHE = json.load(f)
-        except Exception as e:
-            print(f"Warning: Failed to load LLM cache: {e}")
-            LLM_CACHE = {}
-    else:
-        LLM_CACHE = {}
-    return LLM_CACHE
-
-
 def cached_call_guide_conflicts(case, cached_entry):
     if case.get("kind") != "call":
         return False
@@ -2135,33 +1491,37 @@ def cached_guide_conflicts(case, cached_entry):
     return cached_call_guide_conflicts(case, cached_entry)
 
 
-def cached_llm_guide_current(cached_entry):
-    return (cached_entry or {}).get("meta", {}).get("prompt_version") == LLM_PROMPT_VERSION
+COMMENTARY_PATH = Path("data/replay_commentary.json")
+_COMMENTARY = None
+MISSING_COMMENTARY = []
+
+
+def load_commentary():
+    """The written commentary for each replay: question, read, and the case for the other line."""
+    global _COMMENTARY
+    if _COMMENTARY is None:
+        try:
+            _COMMENTARY = json.loads(COMMENTARY_PATH.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            _COMMENTARY = {}
+    return _COMMENTARY
+
+
+def commentary_key(case):
+    return f"{case.get('point')}_{case.get('game')}_{case.get('kyoku_index')}_{case.get('position')}"
 
 
 def attach_example_guides(case):
     attach_shape_facts(case)
-    if case.get("kind") == "call":
-        case["guide"] = build_call_guide(case, "en")
-        case["guide_ja"] = build_call_guide(case, "ja")
-    else:
-        case["guide"] = build_discard_guide(case, "en")
-        case["guide_ja"] = build_discard_guide(case, "ja")
-        
-    cache = load_llm_cache()
-    key = f"{case.get('point')}_{case.get('game')}_{case.get('kyoku_index')}_{case.get('position')}"
-    if key in cache:
-        cached_entry = cache[key]
-        use_cached = cached_llm_guide_current(cached_entry) and not cached_guide_conflicts(case, cached_entry)
-        if use_cached and "guide" in cached_entry:
-            case["guide"]["read"] = cached_entry["guide"].get("read", case["guide"]["read"])
-            case["guide"]["prompt"] = cached_entry["guide"].get("prompt", case["guide"]["prompt"])
-            case["guide"]["answer"] = cached_entry["guide"].get("answer", case["guide"]["answer"])
-        if use_cached and "guide_ja" in cached_entry:
-            case["guide_ja"]["read"] = cached_entry["guide_ja"].get("read", case["guide_ja"]["read"])
-            case["guide_ja"]["prompt"] = cached_entry["guide_ja"].get("prompt", case["guide_ja"]["prompt"])
-            case["guide_ja"]["answer"] = cached_entry["guide_ja"].get("answer", case["guide_ja"]["answer"])
-            
+    written = load_commentary().get(commentary_key(case))
+    if not written:
+        MISSING_COMMENTARY.append(commentary_key(case))
+        case["guide"], case["guide_ja"] = {}, {}
+        return case
+    for field, lang in (("guide", "en"), ("guide_ja", "ja")):
+        part = written.get(lang) or {}
+        case[field] = {"prompt": part.get("question", ""), "read": part.get("read", ""), "whyNot": part.get("other", "")}
+    case["reading_order"] = written.get("order")
     return case
 
 
@@ -2376,6 +1736,156 @@ def case_has_hibakari_split(case):
     return bool(hibakari) and not hibakari.get("matches_luckyj")
 
 
+NEXT_DORA = {**{f"{n}{s}": f"{n % 9 + 1}{s}" for s in "mps" for n in range(1, 10)},
+             "E": "S", "S": "W", "W": "N", "N": "E", "P": "F", "F": "C", "C": "P"}
+
+
+def case_round_wind(case):
+    return "S" if str(case.get("round", "")).startswith("South") else "E"
+
+
+def case_round_number(case):
+    match = re.match(r"^\w+ (\d)", str(case.get("round", "")))
+    return int(match.group(1)) if match else None
+
+
+def case_is_all_last(case):
+    return case_round_wind(case) == "S" and case_round_number(case) == 4
+
+
+def case_is_late_game(case):
+    # South rounds, or East 4 when the half-game turns.
+    return case_round_wind(case) == "S" or case_round_number(case) == 4
+
+
+def case_is_dealer(case):
+    return (case.get("table") or {}).get("dealer") == "self"
+
+
+def case_value_units(tiles, case):
+    """Dora, red fives, and yakuhai pairs in a hand: the material a hand keeps for points."""
+    table = case.get("table") or {}
+    dora = Counter(NEXT_DORA.get(base_tile(marker)) for marker in table.get("dora_markers") or [])
+    self_wind = next((row.get("wind") for row in table.get("scores") or [] if row.get("seat") == "self"), None)
+    yakuhai = DRAGONS | {case_round_wind(case), self_wind}
+    counts = Counter(base_tile(tile) for tile in tiles)
+    value = sum(dora.get(base_tile(tile), 0) + (1 if str(tile).endswith("r") else 0) for tile in tiles)
+    value += sum(1 for tile, count in counts.items() if tile in yakuhai and count >= 2)
+    return value
+
+
+def case_unseen_counts(case):
+    """Copies of each tile LuckyJ cannot see: not in its hand, a river, a meld or the dora indicators."""
+    table = case.get("table") or {}
+    seen = Counter(base_tile(tile) for tile in str(case.get("hand") or "").split())
+    for player in table.get("players") or []:
+        for tile in player.get("discards") or []:
+            tile = tile if isinstance(tile, str) else (tile or {}).get("tile")
+            if tile:
+                seen[base_tile(tile)] += 1
+        for meld in player.get("melds") or []:
+            seen.update(base_tile(tile) for tile in meld_tiles(meld))
+    seen.update(base_tile(marker) for marker in table.get("dora_markers") or [])
+    return Counter({tile: max(0, 4 - count) for tile, count in seen.items()})
+
+
+def case_value_potential(tiles, case):
+    """Dora, red fives and yakuhai a hand can still turn into points. A yakuhai single counts only while
+    it can still pair: two or more copies unseen. A singleton with one copy left is not value."""
+    table = case.get("table") or {}
+    dora = Counter(NEXT_DORA.get(base_tile(marker)) for marker in table.get("dora_markers") or [])
+    self_wind = next((row.get("wind") for row in table.get("scores") or [] if row.get("seat") == "self"), None)
+    yakuhai = DRAGONS | {case_round_wind(case), self_wind}
+    held = Counter(base_tile(tile) for tile in tiles)
+    unseen = case_unseen_counts(case)
+    value = sum(dora.get(base_tile(tile), 0) + (1 if str(tile).endswith("r") else 0) for tile in tiles)
+    value += sum(count for tile, count in held.items() if tile in yakuhai and (count >= 2 or unseen.get(tile, 4) >= 2))
+    return value
+
+
+def line_delta(case):
+    """How LuckyJ's line differs from Nishiki's: positive means LuckyJ's line has more of it."""
+    actual_eval = case.get("actual_eval") or {}
+    naga_eval = case.get("naga_eval") or {}
+    actual_d = numeric(case.get("actual_danger"))
+    naga_d = numeric(case.get("naga_danger"))
+    shanten_a = actual_eval.get("shanten")
+    shanten_n = naga_eval.get("shanten")
+    return {
+        "ukeire": (actual_eval.get("ukeire") or 0) - (naga_eval.get("ukeire") or 0),
+        "shanten": (shanten_a - shanten_n) if shanten_a is not None and shanten_n is not None else 0,
+        "danger": round(actual_d - naga_d, 4) if actual_d is not None and naga_d is not None else 0.0,
+        "safety": retained_safety_count(actual_eval, "against_threat") - retained_safety_count(naga_eval, "against_threat"),
+        "value": case_value_units(eval_hand_tiles(actual_eval), case) - case_value_units(eval_hand_tiles(naga_eval), case),
+        "accepts_differ": set(actual_eval.get("effective") or []) != set(naga_eval.get("effective") or []),
+        "honors": tile_class_count_delta(actual_eval, naga_eval, "kept_honors"),
+        "terminals": tile_class_count_delta(actual_eval, naga_eval, "kept_terminals"),
+    }
+
+
+def placement_job(case):
+    """The score job a Point 01 frame shows, or None when the two lines do not show one.
+
+    protect: LuckyJ leads and takes the safer line at a real cost in shape.
+    value:   LuckyJ is behind late and keeps dora, red fives or a yakuhai pair at a cost.
+    push:    LuckyJ is behind late and takes the faster line although it is the hotter tile.
+    """
+    if case.get("kind") != "discard":
+        return None
+    rank = case.get("current_rank")
+    delta = line_delta(case)
+    cost = delta["ukeire"] < 0 or delta["shanten"] > 0
+    if rank == 1 and (case.get("score") or 0) >= 33000:
+        safer = delta["danger"] <= -0.03 or delta["safety"] > 0
+        return "protect" if safer and cost and delta["danger"] <= 0.02 else None
+    behind = rank in {3, 4} or (rank == 2 and case_is_all_last(case))
+    if not (behind and case_is_late_game(case)):
+        return None
+    if delta["value"] > 0 and (cost or delta["danger"] >= 0.03):
+        return "value"
+    if delta["danger"] >= 0.03 and (delta["ukeire"] > 0 or delta["shanten"] < 0):
+        return "push"
+    return None
+
+
+def has_named_difference(point_key, case):
+    """A replay earns its place only when the two lines differ in something the reader can see:
+    speed, safety, or value. Lines that only swap which tiles they accept teach little."""
+    if case.get("kind") not in {"discard", "draw-tenpai"}:
+        return True
+    if case.get("kind") == "draw-tenpai" and not (case.get("actual_eval") and case.get("naga_eval")):
+        return False
+    delta = line_delta(case)
+    strong = (
+        abs(delta["ukeire"]) >= 2
+        or delta["shanten"] != 0
+        or abs(delta["danger"]) >= 0.03
+        or delta["safety"] != 0
+        or delta["value"] != 0
+    )
+    if point_key == "point-02":
+        # The branch point is only a lesson when keeping it costs something now.
+        return (delta["ukeire"] < 0 or delta["shanten"] > 0) and (delta["honors"] > 0 or delta["terminals"] > 0 or delta["accepts_differ"])
+    if point_key == "point-16":
+        return strong or delta["accepts_differ"]
+    if point_key == "point-06":
+        # Buying value means LuckyJ's line keeps more dora, red fives or yakuhai than Nishiki's.
+        actual_tiles = eval_hand_tiles(case.get("actual_eval"))
+        naga_tiles = eval_hand_tiles(case.get("naga_eval"))
+        return case_value_potential(actual_tiles, case) > case_value_potential(naga_tiles, case)
+    return strong
+
+
+def threat_kind(case):
+    players = (case.get("table") or {}).get("players") or []
+    others = [player for player in players if player.get("seat") != "self"]
+    if any(player.get("reached") for player in others):
+        return "riichi"
+    if any(player.get("melds") for player in others):
+        return "open"
+    return "quiet"
+
+
 def point_candidate_eligible(point_key, case):
     if not case:
         return False
@@ -2401,17 +1911,14 @@ def point_candidate_eligible(point_key, case):
             return False
     if point_key in HIBAKARI_SPLIT_POINTS and not case_has_hibakari_split(case):
         return False
+    if not has_named_difference(point_key, case):
+        return False
 
     if point_key == "point-01":
-        return (
-            kind == "discard"
-            and rank == 1
-            and score >= 35000
-            and actual_d is not None
-            and naga_d is not None
-            and actual_d <= naga_d + 0.02
-            and (naga_d - actual_d >= 0.05 or retained_safety_count(actual_eval, "against_threat") >= retained_safety_count(naga_eval, "against_threat"))
-        )
+        job = placement_job(case)
+        if job:
+            case["placement_job"] = job
+        return job is not None
     if point_key == "point-02":
         return (
             kind == "discard"
@@ -2467,7 +1974,7 @@ def point_candidate_eligible(point_key, case):
         return (
             kind == "discard"
             and case_has_naga_split(case)
-            and (stage in {"middle", "late"} or active_threat_count(case) > 0)
+            and active_threat_count(case) > 0
             and actual_d is not None
             and naga_d is not None
             and actual_d < 0.02
@@ -2674,43 +2181,86 @@ def add_best(selected, used, scores, point_key, candidate, score):
     add(selected, used, point_key, candidate, score)
 
 
-def diversity_key(case):
-    return (case.get("stage"), case.get("score_band"))
+def situation_features(case):
+    return {
+        "rank": case.get("current_rank"),
+        "stage": case.get("stage"),
+        "threat": threat_kind(case),
+        "job": case.get("placement_job"),
+        "dealer": case_is_dealer(case),
+        "wind": case_round_wind(case),
+        "all_last": case_is_all_last(case),
+        "tiles": (base_tile(case.get("actual")), base_tile(case.get("naga"))),
+        "classes": (safe_tile_class(case.get("actual")), safe_tile_class(case.get("naga"))),
+        "call": case.get("call") if case.get("kind") == "call" else None,
+    }
 
 
-def pick_diverse(rows, seen_source_frames, per_point):
-    """Greedy pick by score with a soft diversity cap: at most 4 examples sharing the same
-    (stage, score_band) cell and at most 2 from the same game, so one recurring table
-    situation cannot fill a point's whole tab strip. Backfills by raw score if the caps
-    leave slots empty."""
+# How much a repeat costs, per feature. The same pair of tiles twice is the worst repeat;
+# the same placement, threat and stage are next.
+VARIETY_WEIGHTS = {
+    "tiles": 1.5,
+    "rank": 0.9,
+    "job": 0.8,
+    "threat": 0.6,
+    "stage": 0.5,
+    "call": 0.4,
+    "all_last": 0.3,
+    "dealer": 0.25,
+    "wind": 0.2,
+    "classes": 0.15,
+}
+VARIETY_PRICE = 0.35
+# Below this, the best remaining replay mostly repeats ones already chosen, so the point stops early.
+VARIETY_STOP = -0.5
+
+
+def pick_varied(rows, seen_source_frames, point_key):
+    """Choose a few replays that each show a different table: greedy by model score, with a price
+    on every feature an earlier pick already showed. One replay per game. Stops early, once it has
+    MIN_EXAMPLES_PER_POINT, when the best remaining replay would mostly repeat the earlier ones."""
+    ordered = [
+        row
+        for row in sorted(rows, key=lambda row: row["score"], reverse=True)
+        if candidate_signature(row["case"]) not in seen_source_frames
+        and ("hand", row["case"].get("game"), row["case"].get("kyoku_index")) not in seen_source_frames
+    ][:200]
+    if not ordered:
+        return []
+    quality = {id(row): 1.0 - index / max(1, len(ordered) - 1) for index, row in enumerate(ordered)}
+    features = {id(row): situation_features(row["case"]) for row in ordered}
+    # A feature that every candidate shares (Point 02 is always early) cannot vary, so it costs nothing.
+    varying = {
+        key for key in VARIETY_WEIGHTS
+        if len({repr(features[id(row)][key]) for row in ordered}) > 1
+    }
     picked = []
-    cell_counts = Counter()
-    game_counts = Counter()
-
-    def try_take(row, enforce_caps):
-        case = row["case"]
-        sig = candidate_signature(case)
-        if sig in seen_source_frames or any(candidate_signature(p["case"]) == sig for p in picked):
-            return False
-        if enforce_caps:
-            if cell_counts[diversity_key(case)] >= 4:
-                return False
-            if game_counts[case.get("game")] >= 2:
-                return False
-        picked.append(row)
-        cell_counts[diversity_key(case)] += 1
-        game_counts[case.get("game")] += 1
-        return True
-
-    for row in rows:
-        if len(picked) >= per_point:
+    games = set()
+    situations = set()
+    seen = {key: Counter() for key in VARIETY_WEIGHTS}
+    while len(picked) < EXAMPLES_PER_POINT:
+        best = None
+        best_value = None
+        for row in ordered:
+            if row in picked or row["case"].get("game") in games:
+                continue
+            feats = features[id(row)]
+            # Two replays in one chapter never show the same seat, stage and threat.
+            if (feats["rank"], feats["stage"], feats["threat"]) in situations:
+                continue
+            penalty = sum(VARIETY_WEIGHTS[key] * seen[key][repr(feats[key])] for key in varying)
+            value = quality[id(row)] - VARIETY_PRICE * penalty
+            if best_value is None or value > best_value:
+                best, best_value = row, value
+        if best is None:
             break
-        try_take(row, enforce_caps=True)
-    if len(picked) < per_point:
-        for row in rows:
-            if len(picked) >= per_point:
-                break
-            try_take(row, enforce_caps=False)
+        if len(picked) >= MIN_EXAMPLES_PER_POINT and best_value < VARIETY_STOP:
+            break
+        picked.append(best)
+        games.add(best["case"].get("game"))
+        situations.add((features[id(best)]["rank"], features[id(best)]["stage"], features[id(best)]["threat"]))
+        for key in VARIETY_WEIGHTS:
+            seen[key][repr(features[id(best)][key])] += 1
     return picked
 
 
@@ -2735,7 +2285,7 @@ def finalize_examples(selected):
         ]
         rows = sorted(rows, key=lambda row: row["score"], reverse=True)
         examples = []
-        for row in pick_diverse(rows, seen_source_frames, EXAMPLES_PER_POINT):
+        for row in pick_varied(rows, seen_source_frames, point_key):
             case = row["case"]
             index = len(examples) + 1
             case["example_index"] = index
@@ -2743,6 +2293,14 @@ def finalize_examples(selected):
             attach_example_guides(case)
             examples.append(case)
             seen_source_frames.add(candidate_signature(case))
+            # A hand appears once in the book, even at a different turn.
+            seen_source_frames.add(("hand", case.get("game"), case.get("kyoku_index")))
+        if examples and all(case.get("reading_order") for case in examples):
+            examples.sort(key=lambda case: case["reading_order"])
+            for index, case in enumerate(examples, 1):
+                case["example_index"] = index
+        for case in examples:
+            case.pop("reading_order", None)
         if examples:
             output[point_key] = examples
     return output
@@ -2769,17 +2327,6 @@ def tile_count(hand, tile):
     return sum(1 for item in hand if tile_id(item) == idx)
 
 
-def ordinal_en(value):
-    if value is None:
-        return "unknown"
-    value = int(value)
-    if 10 <= value % 100 <= 20:
-        suffix = "th"
-    else:
-        suffix = {1: "st", 2: "nd", 3: "rd"}.get(value % 10, "th")
-    return f"{value}{suffix}"
-
-
 def post_call_eval(hand, consumed, discard_after_call):
     concealed = list(hand)
     for tile in consumed or []:
@@ -2795,22 +2342,6 @@ def post_call_eval(hand, consumed, discard_after_call):
         "hand_after": hand_string(concealed),
         "pair_like_tiles": sum(1 for count in Counter(tile_id(tile) for tile in concealed).values() if count >= 2),
     }
-
-
-def shanten_text(value, lang):
-    if value is None:
-        return "shape unclear" if lang == "en" else "形は判定しにくい"
-    if lang == "ja":
-        if value < 0:
-            return "和了形"
-        if value == 0:
-            return "テンパイ"
-        return f"{value}シャンテン"
-    if value < 0:
-        return "a complete hand"
-    if value == 0:
-        return "tenpai"
-    return f"{value}-shanten"
 
 
 def call_score_adjustment(case):
@@ -2894,8 +2425,16 @@ def try_discard_points(
                 score_value,
             )
 
-    if score >= 35000 and actual_d is not None and naga_d is not None and actual_d <= naga_d:
-        score_value = gap + max(0.0, naga_d - actual_d) + (0.2 if stage in {"middle", "late"} else 0.0)
+    rank_now = current_rank(start, target)
+    late_game = start.get("bakaze") == "S" or start.get("kyoku") == 4
+    all_last = start.get("bakaze") == "S" and start.get("kyoku") == 4
+    placement_seat = (
+        (rank_now == 1 and score >= 33000)
+        or (rank_now in {3, 4} and late_game)
+        or (rank_now == 2 and all_last)
+    )
+    if placement_seat and actual_d is not None and naga_d is not None:
+        score_value = gap + abs(naga_d - actual_d) + (0.2 if stage in {"middle", "late"} else 0.0)
         if wants_candidate(selected, "point-01", score_value):
             add(
                 selected,
@@ -3419,6 +2958,23 @@ def refresh_evidence_tiers():
     print(f"refreshed evidence tiers in {OUT}; changed={changed}")
 
 
+def refresh_commentary():
+    """Attach data/replay_commentary.json to the selected replays, in its reading order, without reselecting."""
+    data = json.loads(OUT.read_text(encoding="utf-8"))
+    for point_key, rows in data.items():
+        for case in rows:
+            attach_example_guides(case)
+        if rows and all(case.get("reading_order") for case in rows):
+            rows.sort(key=lambda case: case["reading_order"])
+        for index, case in enumerate(rows, 1):
+            case["example_index"] = index
+            case.pop("reading_order", None)
+    OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"attached commentary in {OUT}; replays without it: {len(MISSING_COMMENTARY)}")
+    for key in MISSING_COMMENTARY:
+        print(f"  missing: {key}")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -3426,9 +2982,17 @@ def main():
         action="store_true",
         help="update evidence badges from the final Mortal artifact without reselecting frames",
     )
+    parser.add_argument(
+        "--refresh-commentary",
+        action="store_true",
+        help="attach the written replay commentary without reselecting frames",
+    )
     args = parser.parse_args()
     if args.refresh_evidence_only:
         refresh_evidence_tiers()
+        return
+    if args.refresh_commentary:
+        refresh_commentary()
         return
     OUT.parent.mkdir(parents=True, exist_ok=True)
     data = finalize_examples(collect_examples())
@@ -3436,6 +3000,8 @@ def main():
     missing = [key for key in sorted(POINT_TEXT) if key not in data]
     counts = {key: len(value) for key, value in data.items()}
     print(f"wrote {OUT}; points={len(data)} examples={sum(counts.values())} missing={missing}")
+    if MISSING_COMMENTARY:
+        print(f"replays without written commentary ({len(MISSING_COMMENTARY)}): {', '.join(MISSING_COMMENTARY)}")
 
 
 if __name__ == "__main__":

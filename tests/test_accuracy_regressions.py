@@ -48,7 +48,7 @@ class AccuracyRegressionTests(unittest.TestCase):
     def test_showcases_are_tokujou_and_model_aligned(self):
         examples = read_json("site/point-examples.json")
         mortal_rows = mortal.existing_mortal_cache(ROOT / "site/mortal-analysis.json")
-        self.assertEqual(sum(len(rows) for rows in examples.values()), 160)
+        self.assertEqual(sum(len(rows) for rows in examples.values()), 74)
         for point, rows in examples.items():
             for case in rows:
                 self.assertEqual(case["room"], "Tokujou")
@@ -56,12 +56,6 @@ class AccuracyRegressionTests(unittest.TestCase):
                 self.assertIn(mortal.example_signature(point, case), mortal_rows)
                 if point != "point-12":
                     self.assertNotIn(case["evidence_tier"], {"unsupported", "unverified"})
-
-        cases = read_json("site/case-studies.json")
-        for rows in cases.values():
-            for case in rows:
-                self.assertEqual(case["room"], "Tokujou")
-                self.assertEqual(case["room_code"], "0029")
 
         prescriptions = read_json("site/rx-prescription-examples.json")
         for rows in prescriptions.values():

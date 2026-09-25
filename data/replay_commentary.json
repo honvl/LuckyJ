@@ -1,0 +1,964 @@
+{
+  "point-01_1094_2_55": {
+    "order": 1,
+    "en": {
+      "question": "East 2. You lead Toimen by 3,600 and nobody has called or declared. Your two-shanten hand holds pairs of [[P]] and [[C]]. Cut the [[8m]] you drew, or the [[3m]]?",
+      "read": "Toimen, 3,600 behind, is the only player close enough to take the lead. LuckyJ throws the [[8m]] it drew and keeps [[3m]], a tile Toimen has already discarded, so the hand still has an answer if Toimen declares. The price is shape: 14 improving tiles against 26 for Nishiki's line. Hibakari and Kagashi make the same cut; Mortal puts 97% on the [[3m]]. Toimen won the hand, LuckyJ paid 3,000, and it finished the game 2nd.",
+      "other": "Nishiki breaks the [[1m]]-[[3m]] kanchan and keeps [[7m]]-[[8m]]-[[8m]], a shape that accepts 26 tiles. With no one threatening yet, a spare safe tile looks cheap next to that, and Mortal takes the same line."
+    },
+    "ja": {
+      "question": "東2局、対面に3,600点差のトップ。鳴きもリーチもまだない。手は2シャンテンで[[P]]と[[C]]が対子。ツモった[[8m]]を切るか、[[3m]]を切るか。",
+      "read": "トップを脅かせるのは3,600点差の対面だけである。LuckyJはツモった[[8m]]をそのまま切り、対面の現物[[3m]]を手に残した。対面がリーチしても答えが残る形である。代償は形で、受け入れは14枚、ニシキのラインは26枚。ヒバカリとカガシはLuckyJと同じ打牌だが、Mortalは97%で[[3m]]を切る。この局は対面の和了で、LuckyJは3,000点を払い、最終2着で終えた。",
+      "other": "ニシキは[[1m]][[3m]]のカンチャンを外し、[[7m]][[8m]][[8m]]を残して受け入れ26枚。まだ誰も攻めていない局面では、余分な安全牌より形の方が値打ちがあると見る線で、Mortalも同じ選択をした。"
+    }
+  },
+  "point-01_906_13_39": {
+    "order": 2,
+    "en": {
+      "question": "All Last. You are 2nd, 500 ahead of 3rd and 14,000 behind 1st. Cutting the red [[5mr]] gives tenpai on a [[7p]] penchan. Do you take it, or cut [[8p]]?",
+      "read": "Any win ends the game with LuckyJ in 2nd. Nishiki's tenpai waits on a [[7p]] penchan with no yaku, so it can win by ron only after a riichi, and the riichi stick alone would put LuckyJ 500 points below Kamicha. Cutting [[8p]] steps back to one-shanten, but 25 tiles now improve the hand and the red [[5mr]] stays. Hibakari, Kagashi and Mortal all cut [[8p]]. LuckyJ won 2,300 later in the hand, which ended the game in 2nd.",
+      "other": "Nishiki takes the tenpai while it is there. Four [[7p]] are still out, a self-draw wins without riichi, and each turn at one-shanten gives Kamicha and the dealer more time. Nishiki is the only engine that cuts the red five."
+    },
+    "ja": {
+      "question": "オーラス、あなたは2着。3着とは500点差、トップとは14,000点差。赤[[5mr]]を切れば[[7p]]のペンチャンでテンパイ。取るか、[[8p]]を切るか。",
+      "read": "どの和了でもLuckyJの2着で終局する。ニシキのテンパイは役なしの[[7p]]ペンチャン待ちで、ロン和了にはリーチが要り、リーチ棒だけで上家より500点下になる。[[8p]]切りは1シャンテンに戻るが、受け入れは25枚に広がり、赤[[5mr]]も残る。ヒバカリ、カガシ、Mortalはそろって[[8p]]。LuckyJはこの局を2,300点で和了し、2着で終局した。",
+      "other": "ニシキはあるうちにテンパイを取る。[[7p]]はまだ4枚見えておらず、ツモならリーチなしでも和了れる。1シャンテンで回る間に、上家と親に時間を与えることにもなる。赤五を切るのはニシキだけである。"
+    }
+  },
+  "point-01_1055_4_75": {
+    "order": 3,
+    "en": {
+      "question": "South 1: you are the dealer in 3rd, 10,300 behind 1st, holding the dora [[S]]. Shimocha, in last place, has declared riichi. Cut [[1s]] or [[2s]]?",
+      "read": "South 1 is LuckyJ's last turn as dealer, and 3rd place is 10,300 behind the leader. Cutting [[1s]] keeps two-shanten and the dora [[S]], and it saves [[2s]], genbutsu against Shimocha's riichi, for a later turn. The [[1s]] is live against the riichi, and NAGA's danger proxy rates it far hotter than the [[2s]]. LuckyJ pays that price now rather than fold away its last dealership. Mortal and Hibakari make the same cut. Shimocha won the hand, and LuckyJ paid 6,000 as dealer.",
+      "other": "Nishiki cuts the [[2s]], which Shimocha cannot win on, and plays this turn without risk. The hand falls back to three-shanten, and the live [[1s]] stays in hand for later. Nishiki and Kagashi both prefer this line."
+    },
+    "ja": {
+      "question": "南1局、あなたは親で3着。トップまで10,300点差で、ドラの[[S]]を持っている。ラス目の下家がリーチ。[[1s]]と[[2s]]、どちらを切るか。",
+      "read": "南1局はLuckyJ最後の親番で、3着からトップまでは10,300点ある。[[1s]]を切れば2シャンテンとドラの[[S]]が残り、下家リーチの現物[[2s]]は後の巡目の安全牌として手に残る。[[1s]]は下家に通っておらず、NAGAの危険度指標も[[2s]]よりはるかに高い。それでもLuckyJは、オリて最後の親番を流すより、この危険を今払う方を選んだ。MortalとヒバカリもLuckyJと同じ[[1s]]。この局は下家の和了で、LuckyJは親として6,000点を払った。",
+      "other": "ニシキは下家が和了れない現物の[[2s]]を切り、この巡を危険なしで過ごす。代わりに手は3シャンテンに戻り、通っていない[[1s]]が手に残る。ニシキとカガシがこちらを選んだ。"
+    }
+  },
+  "point-01_471_5_45": {
+    "order": 4,
+    "en": {
+      "question": "East 4, last place, 3,700 behind 3rd. Kamicha has pon'd [[1m]], [[1p]] and [[1s]]. Cut the [[W]] you just drew, or [[8p]], which Kamicha has discarded?",
+      "read": "At the end of East in last place, a turn spent folding costs more than it saves. Cutting the [[W]] keeps one-shanten on [[4p]] and [[7p]], 8 tiles; the safe [[8p]] would drop the hand to two-shanten. The [[W]] is Toimen's genbutsu but live against Kamicha's three pons, and NAGA's danger proxy rates it the hotter tile. Mortal, Hibakari and Kagashi all cut it. Kamicha won the hand off another player, and LuckyJ paid nothing.",
+      "other": "[[8p]] is genbutsu against Kamicha, the hand with three pons, and NAGA's danger proxy rates it close to zero. Nishiki's line gives up a step but accepts 31 tiles and keeps the seat wind [[W]]. Nishiki is the only engine on this side."
+    },
+    "ja": {
+      "question": "東4局、ラス目で3着まで3,700点差。上家は[[1m]][[1p]][[1s]]をポンしている。ツモった[[W]]を切るか、上家の現物[[8p]]を切るか。",
+      "read": "東場の最後にラス目なら、オリて1巡を使う損の方が大きい。[[W]]を切れば1シャンテンを保ち、受け入れは[[4p]][[7p]]の8枚。安全な[[8p]]を切ると2シャンテンに戻る。[[W]]は対面の現物だが、3つポンしている上家には通っておらず、NAGAの危険度指標も[[W]]の方が高い。Mortal、ヒバカリ、カガシはそろって[[W]]を切った。この局は上家が他家から和了し、LuckyJの失点はなかった。",
+      "other": "[[8p]]は3副露の上家の現物で、NAGAの危険度指標はほぼゼロ。ニシキのラインは1歩下がるが、受け入れは31枚になり、自風の[[W]]も手に残る。この線を選んだのはニシキだけである。"
+    }
+  },
+  "point-02_308_13_17": {
+    "order": 1,
+    "en": {
+      "question": "All Last, third discard: you are the dealer in 3rd, 4,900 behind 2nd. With three [[N]] and a lone [[P]] in hand, and [[4m]] as dora, cut [[2m]] or [[P]]?",
+      "read": "For the East seat in the South round, [[N]] is no yakuhai, so the triplet brings no yaku. The realistic yaku are riichi or a triplet of [[E]] or [[P]], and no copy of either has been discarded. The lone [[P]] is one of those chances; paired, it would also let the dealer call. The [[2m]] only connects from [[1m]] to [[4m]]. Throwing it drops acceptance from 66 to 56 and gives up the dora [[4m]] draw. The other three engines, Hibakari, Kagashi and Mortal, all throw the [[2m]]. LuckyJ won the hand, +13,000, and finished 2nd.",
+      "other": "Nishiki throws the [[P]] and keeps the [[2m]], which can still grow toward the dora [[4m]]. That line takes 66 tiles, 10 more, and the hand keeps [[E]] and riichi as routes to a yaku."
+    },
+    "ja": {
+      "question": "オーラス、3巡目の打牌。あなたは親の3着で、2着まで4,900点差。[[N]]の暗刻と孤立した[[P]]があり、ドラは[[4m]]。[[2m]]と[[P]]、どちらを切るか。",
+      "read": "南場の東家にとって[[N]]は役牌ではなく、暗刻でも役はつかない。現実的な役はリーチか、[[E]]か[[P]]の刻子で、どちらもまだ1枚も切られていない。孤立の[[P]]はその候補の一つで、重なれば親が鳴いて進めることもできる。[[2m]]がつながるのは[[1m]]から[[4m]]まで。これを切ると受け入れは66枚から56枚に減り、ドラ[[4m]]を引く受けもなくなる。ほかの3エンジン、ヒバカリ、カガシ、Mortalはそろって[[2m]]を切る。LuckyJはこの局を和了して13,000点を加え、2着で終えた。",
+      "other": "ニシキは[[P]]を切って[[2m]]を残す。[[2m]]はドラ[[4m]]に向かって伸びる牌で、受け入れは10枚多い66枚。役は[[E]]とリーチでもまだ作れる、という判断である。"
+    }
+  },
+  "point-02_539_8_39": {
+    "order": 2,
+    "en": {
+      "question": "First place by 14,500 over the dealer in South 2. Two-shanten with a [[F]] pair, a [[2p]][[4p]][[4p]] shape and a lone [[N]], your seat wind. Cut [[2p]] or [[N]]?",
+      "read": "A leader in South 2 needs a hand that can win quickly or step aside cleanly. The [[2p]] helps with neither: beside the [[4p]] pair it adds only [[3p]], 4 tiles. [[N]] is LuckyJ's seat wind, so a second one is another yaku, and Toimen's first discard makes it genbutsu there. Cutting the [[2p]] leaves 12 accepted tiles instead of 16, with the [[F]] pair still ready to pon. Hibakari and Kagashi agree, both narrowly. Toimen won the hand without LuckyJ paying, and LuckyJ kept 1st to the end.",
+      "other": "Mortal, at 62%, sides with Nishiki: throw the [[N]], which adds nothing to the count, and keep [[2p]][[4p]][[4p]] for [[3p]] as well, 16 tiles. The hand still has three genbutsu tiles after that cut, [[9s]] against Toimen among them."
+    },
+    "ja": {
+      "question": "南2局、親に14,500点差のトップ。手は[[F]]対子を含む2シャンテンで、[[2p]][[4p]][[4p]]の形と、自風の[[N]]が1枚。[[2p]]と[[N]]、どちらを切るか。",
+      "read": "南2局のトップに必要なのは、早く和了れる手か、きれいに降りられる手である。[[2p]]はそのどちらにも役立たない。[[4p]]対子の横で増える受けは[[3p]]の4枚だけ。[[N]]は自風なので重なればもう一つの役になり、対面の第一打で対面には現物にもなっている。[[2p]]を切ると受け入れは16枚から12枚に減るが、[[F]]対子でポンできる形は残る。ヒバカリとカガシも[[2p]]を選ぶが、どちらも僅差である。この局は対面の和了でLuckyJの失点はなく、最後までトップを守った。",
+      "other": "Mortal(62%)はニシキと同じく[[N]]を切る。今の受け入れには数えられない牌で、[[2p]][[4p]][[4p]]を残せば[[3p]]も受けて16枚になる。この切りでも現物は3枚残り、対面に通る[[9s]]もその一つである。"
+    }
+  },
+  "point-02_644_9_25": {
+    "order": 3,
+    "en": {
+      "question": "West 2, and you are the dealer with all four players within 6,600. Three [[7s]] and a [[C]] pair in hand; [[4p]] arrives. Let go of [[4p]] or [[9s]]?",
+      "read": "Nobody has called or declared, and the scores are close. The [[9s]] has two uses. Beside the [[7s]] triplet it turns [[8s]] or another [[9s]] into progress, and it is genbutsu against Kamicha. The [[4p]] only widens the pinzu with [[2p]], [[3p]] and [[4p]] draws. Sending it straight back costs 4 tiles, 47 against 51, and leaves 3 safe tiles in hand instead of 2. Hibakari, Kagashi and Mortal line up behind the cut, Mortal at only 41%. The hand cost LuckyJ 3,900 when Shimocha won it.",
+      "other": "Keeping the [[4p]] and letting the [[9s]] go, Nishiki's line accepts 51 tiles, with the pinzu open from [[2p]] to [[9p]]. With nobody calling, a third genbutsu has little work yet, and NAGA's danger proxy reads the [[9s]] near zero, so now is the cheapest time to throw it."
+    },
+    "ja": {
+      "question": "西2局まで延びた半荘。あなたは親で、4人は6,600点差以内。[[7s]]の暗刻と[[C]]対子を持つ手に[[4p]]が来た。[[4p]]と[[9s]]、どちらを手放すか。",
+      "read": "まだ誰も鳴いておらずリーチもなく、点差も詰まっている。[[9s]]には二つの使い道がある。[[7s]]暗刻の横で[[8s]]や[[9s]]を有効牌にし、しかも上家の現物である。[[4p]]は筒子を広げるだけで、増えるのは[[2p]][[3p]][[4p]]のツモ。ツモ切りの代償は4枚で、受け入れは47枚対51枚だが、手の安全牌は2枚から3枚になる。ヒバカリ、カガシ、Mortalもこの切りに並ぶが、Mortalは41%にとどまる。この局は下家が和了し、LuckyJは3,900点を失った。",
+      "other": "[[4p]]を残して[[9s]]を切るニシキのラインは受け入れ51枚で、筒子は[[2p]]から[[9p]]まで広がる。誰も鳴いていない今は3枚目の現物に仕事がなく、NAGAの危険度指標がほぼゼロのうちに[[9s]]を切るのがいちばん安い、という見方である。"
+    }
+  },
+  "point-02_698_9_37": {
+    "order": 4,
+    "en": {
+      "question": "Your [[1m]] triplet is three dora, but the hand has no yaku yet. All Last, you lead by 14,700, and [[6m]] has arrived: cut it, or the round wind [[S]]?",
+      "read": "The value is already in hand: three dora. With a 14,700 lead in All Last, the hand wants speed more than size, and calling for speed needs a yaku. [[S]] is the round wind, with all three other copies still out, which makes it the best yaku ticket here: one [[C]] remains unseen, and [[N]] is a guest wind for this seat. The [[6m]] adds only manzu shape. Keeping [[S]] costs 4 tiles, 22 against 26. Hibakari and Kagashi cut the [[6m]], and Mortal leans the same way, weakly, at 28%.",
+      "other": "Nishiki spends the [[S]] and keeps [[6m]] beside [[2m]] and [[4m]], so [[3m]] and [[5m]] both fill a gap: 26 tiles. Riichi remains a yaku, and three dora already make a closed hand expensive. NAGA's danger proxy also rates the [[S]] the cooler discard."
+    },
+    "ja": {
+      "question": "[[1m]]の暗刻はドラ3枚だが、手にはまだ役がない。オーラスで2着に14,700点差のトップ。ツモった[[6m]]を切るか、場風の[[S]]を切るか。",
+      "read": "打点はすでにある。ドラ3枚である。オーラスに14,700点のリードがあれば、欲しいのは打点より速度で、鳴いて速度を取るには役が要る。[[S]]は場風で、ほかの3枚はどこにも見えていない。この手でいちばん現実的な役の候補である。[[C]]は見えていない残りが1枚だけ、[[N]]はこの席にとってただの客風である。[[6m]]が増やすのは萬子の形だけ。[[S]]を残す代償は4枚で、受け入れは22枚対26枚。ヒバカリとカガシは[[6m]]を切り、Mortalも同じ側だが28%と弱い。",
+      "other": "ニシキは[[S]]を切り、[[6m]]を[[2m]][[4m]]の横に残す。[[3m]]でも[[5m]]でも嵌張が埋まり、受け入れは26枚。リーチも役になり、ドラ3枚なら面前でも十分に高い。NAGAの危険度指標も[[S]]の方を低く見ている。"
+    }
+  },
+  "point-02_224_0_33": {
+    "order": 5,
+    "en": {
+      "question": "East 1, all on 25,000, and the dealer has already pon'd [[P]] and [[E]]. Your four-shanten hand holds two pairs and the dora [[1m]]. Cut [[4m]] or [[W]]?",
+      "read": "Every tile either line accepts would pair a single, so this is a seven-pairs count, four steps from tenpai. For that plan an honor single is at least as good as a [[4m]], and [[W]] also works as genbutsu against Kamicha. The [[4m]] is live against everyone, and the dealer already holds two yakuhai pons. Keeping [[W]] costs 1 tile, 25 against 26, and keeps all four honors, with [[N]], [[F]] and [[C]] still yakuhai if they pair. Mortal backs the [[4m]] cut at 69%, with Hibakari and Kagashi.",
+      "other": "For seven pairs, a [[4m]] with 3 copies unseen beats a [[W]] with 2, and [[W]] gives the North seat no yaku; that is Nishiki's case for cutting it. A regular hand can use the [[4m]] in a run as well. Nishiki's lean is a mild 54%."
+    },
+    "ja": {
+      "question": "東1局、全員25,000点。親はすでに[[P]]と[[E]]をポンしている。4シャンテンの手に対子が二つとドラ[[1m]]。[[4m]]と[[W]]、どちらを切るか。",
+      "read": "どちらのラインも、受け入れる牌はすべて孤立牌を対子にする牌である。つまり七対子で数えた4シャンテンで、この形なら字牌の孤立牌は[[4m]]に劣らない。しかも[[W]]は上家の現物として守備にも使える。[[4m]]は誰にも通っておらず、親はもう役牌を二つポンしている。[[W]]を残しても失うのは1枚だけで、受け入れは25枚対26枚。字牌4枚もすべて残り、[[N]][[F]][[C]]は重なれば役牌になる。Mortalは69%で[[4m]]切りを支持し、ヒバカリとカガシも同じ。",
+      "other": "七対子なら、見えていない牌が3枚ある[[4m]]の方が2枚の[[W]]より重なりやすく、[[W]]は北家には役にもならない。これがニシキの[[W]]切りの理由である。普通の手になれば[[4m]]は順子にも使える。ニシキの傾きは54%と小さい。"
+    }
+  },
+  "point-03_1266_1_81": {
+    "order": 1,
+    "en": {
+      "question": "Shimocha is in riichi and has just thrown [[S]], your seat wind. You hold the pair, a red [[5pr]] and a closed one-shanten. Pon, or keep the hand closed?",
+      "read": "One call brings both a yaku and tenpai: the [[S]] pon scores 1 han, the red [[5pr]] another, and the hand waits on a [[2p]] kanchan with all 4 still unseen. The cost is the discard that tenpai requires. [[3s]] is live against the riichi, and with the pair melded, the only cover left in hand is [[4m]], suji against Shimocha through both [[1m]] and [[7m]]. Mortal pons at 99% and Kagashi agrees; after the call every engine throws [[3s]]. Shimocha won the hand, and LuckyJ paid nothing.",
+      "other": "Passing keeps the [[S]] pair, and Shimocha, having thrown one after declaring, can never win on it: two turns of folding already in hand. Staying closed also leaves LuckyJ its own riichi if the hand gets there. That is the line Nishiki and Hibakari take."
+    },
+    "ja": {
+      "question": "下家はリーチ中で、いまあなたの自風[[S]]を切った。手には[[S]]の対子と赤[[5pr]]があり、面前の1シャンテン。ポンか、面前のままスルーか。",
+      "read": "一度の鳴きで役とテンパイが同時に入る。[[S]]のポンで1翻、赤[[5pr]]でもう1翻、待ちは4枚とも見えていない[[2p]]のカンチャンである。代償はテンパイに取るための打牌で、[[3s]]は下家のリーチに通っていない。対子を晒すと、下家に対して手に残る備えは、[[1m]]と[[7m]]の両方から筋になる[[4m]]だけになる。Mortalは99%でポン、カガシも同じ判断で、鳴いた後はどのエンジンも[[3s]]を切る。この局は下家が和了り、LuckyJの失点はなかった。",
+      "other": "スルーすれば[[S]]の対子が残る。下家はリーチ後に[[S]]を切っているので、この牌では和了れない。オリに回っても2巡分の備えが最初からある。面前なら、テンパイした時に自分でリーチをかける道も残る。ニシキとヒバカリはこちらを選んだ。"
+    }
+  },
+  "point-03_326_6_128": {
+    "order": 2,
+    "en": {
+      "question": "South 1, 11 tiles left. You are the dealer, already open with a [[1s]] pon, and Kamicha's [[3p]] would make you tenpai. Chi, or stay at one-shanten?",
+      "read": "Count the pinzu before anything else. With this [[3p]], 3 [[3p]] and 3 [[6p]] are visible, so the [[4p]][[5p]] would have 2 tiles left if LuckyJ passed. The chi makes tenpai on [[4s]] and [[S]] instead. Only the [[S]], the round wind, wins with a yaku, but any tenpai at the draw keeps the dealer's seat. The hand also keeps [[2m]][[3m]][[4m]], and Shimocha's river covers all three against its [[C]] kan hand. Kagashi calls, and Mortal puts 99.6% on the chi. The hand ran to an exhaustive draw, and LuckyJ paid 1,500.",
+      "other": "The tenpai the chi buys wins on just 2 tiles: a [[4s]] completes the hand with no yaku, and only 2 [[S]] remain unseen. With 11 tiles left, that is a thin return for a second meld. Nishiki and Hibakari both pass on it, Hibakari at 73%."
+    },
+    "ja": {
+      "question": "南1局、残り11枚。あなたは親で、[[1s]]をポン済み。上家の[[3p]]をチーすればテンパイになる。チーか、1シャンテンのまま進めるか。",
+      "read": "まず筒子を数える。この[[3p]]を含めて[[3p]]も[[6p]]も3枚ずつ見えており、スルーすれば[[4p]][[5p]]の受けは残り2枚しかない。チーすれば[[4s]]と[[S]]のシャンポンでテンパイ。役が付くのは場風の[[S]]での和了だけだが、流局時にテンパイなら親は連荘できる。手に残る[[2m]][[3m]][[4m]]は、[[C]]を槓した下家に対して3枚とも下家自身の捨て牌で守られている。カガシはチーを選び、Mortalは99.6%でチー。局は流局となり、LuckyJは1,500点を失った。",
+      "other": "チーで取るテンパイの和了牌は2枚だけである。[[4s]]で和了っても役がなく、見えていない[[S]]は2枚しかない。残り11枚で2つ目の副露を晒す見返りとしては薄い。ニシキとヒバカリはスルーで、ヒバカリは73%。"
+    }
+  },
+  "point-03_929_4_11": {
+    "order": 3,
+    "en": {
+      "question": "East 4, your second turn, and you lead the dealer by 4,000. Kamicha's [[1p]] fits your [[2p]][[3p]], and [[E]] and [[P]] are both paired. Chi now, or stay closed?",
+      "read": "Both honor pairs are yakuhai: [[E]] as the round wind, [[P]] as a dragon. After the chi and the [[3m]] cut, every tenpai the hand can reach carries a yaku. A [[6p]] or [[9p]] leaves a shanpon on the two pairs; an [[E]] or [[P]], drawn or called, completes a triplet and leaves [[7p]][[8p]] waiting. Two-shanten becomes one-shanten on turn two, and a quick win for the leader also ends Kamicha's dealership. Hibakari and Kagashi both take the chi. LuckyJ won the hand at 1 han for 2,300.",
+      "other": "On turn two, two ryanmen and two honor pairs already make a good closed two-shanten, and the pairs can still be pon'd whenever speed matters. Staying closed keeps riichi and more value in reserve; after the chi, only [[2s]] in the hand is genbutsu against anyone. Nishiki and Mortal pass."
+    },
+    "ja": {
+      "question": "東4局、2巡目。あなたはトップで、親とは4,000点差。上家の[[1p]]は[[2p]][[3p]]に付き、[[E]]と[[P]]はどちらも対子。今チーするか、面前で進めるか。",
+      "read": "二つの字牌対子はどちらも役牌である。[[E]]は場風、[[P]]は三元牌。チーして[[3m]]を切れば、この手が届くテンパイはすべて役付きになる。[[6p]]か[[9p]]を引けば二つの対子のシャンポン、[[E]]か[[P]]をツモるかポンすれば刻子ができて[[7p]][[8p]]の両面待ち。2巡目で2シャンテンが1シャンテンに進み、トップ目の早い和了は上家の親番も終わらせる。ヒバカリとカガシはチーを選んだ。LuckyJはこの局を1翻で和了り、2,300点を得た。",
+      "other": "2巡目で両面が二つ、役牌の対子が二つあり、面前の2シャンテンとして形は十分に良い。対子は速さが必要になった時点でポンすればよい。面前ならリーチと打点を残せるが、チー後の手で誰かの現物になっているのは[[2s]]だけである。ニシキとMortalはスルー。"
+    }
+  },
+  "point-03_211_1_105": {
+    "order": 4,
+    "en": {
+      "question": "You are 4th, Toimen is in riichi with 21 tiles left, and your hand has been open since the [[6s]][[7s]][[8s]] chi. Chi Kamicha's [[4s]] with [[2s]][[3s]], or pass?",
+      "read": "Nothing closed is at stake: the hand opened with the first chi, and the one yaku in reach is a souzu flush, still blocked by [[1m]] and [[4p]]. What this chi buys is speed with cover. It moves the hand from two-shanten to one-shanten, one step from a formal tenpai, which counts at the draw even without a yaku, and the [[6s]][[7s]][[8s]] left in hand holds [[6s]] and [[8s]], both genbutsu against Toimen. Mortal leans to the chi at 63%, with Kagashi, and every engine then cuts [[W]].",
+      "other": "Getting to that tenpai still means pushing [[1m]] or [[4p]], both live against the riichi, from last place in a hand that has no yaku. Passing keeps the hand longer for folding, and [[W]] already has 3 copies in view. Nishiki and Hibakari stay out."
+    },
+    "ja": {
+      "question": "あなたはラス目、対面がリーチして残り21枚。手は[[6s]][[7s]][[8s]]のチーですでに開いている。上家の[[4s]]を[[2s]][[3s]]でチーするか、スルーするか。",
+      "read": "失う面前の価値はない。最初のチーで手は開いており、届く役は索子の染め手だけで、それも[[1m]]と[[4p]]がふさいでいる。このチーが買うのは速さと守りである。2シャンテンから1シャンテンに進み、役がなくても流局時に認められる形式テンパイまであと1歩。しかも手に残る[[6s]][[7s]][[8s]]のうち[[6s]]と[[8s]]は、どちらも対面リーチの現物。Mortalは63%でチーに傾き、カガシも同じ。鳴いた後はどのエンジンも[[W]]を切る。",
+      "other": "そのテンパイに届くには、対面リーチに通っていない[[1m]]か[[4p]]を押す必要がある。しかもラス目で、まだ役のない手である。スルーなら手牌を長く保ってオリに回れ、[[W]]もすでに3枚見えている。ニシキとヒバカリはスルー。"
+    }
+  },
+  "point-03_982_11_68": {
+    "order": 5,
+    "en": {
+      "question": "All Last. You are the dealer in 3rd, already tenpai on a [[7m]] penchan with a [[C]] kan for the yaku. Shimocha throws [[6m]]. Pon it, or keep this tenpai?",
+      "read": "The pon adds no han and no speed: the [[C]] kan already scores, and all 4 [[7m]] are unseen. What it changes is the table and the shape. Toimen and Kamicha lose this turn, and Toimen, 2nd with an [[S]] pon, is one of three players whose win would end the game. The wait turns into a [[9m]] tanki, 1 tile fewer but free to move on any draw, and with three triplets on board, counting the kan, toitoi is two useful draws away. Kagashi and Mortal both take the tile. LuckyJ won 9,900 later in the hand.",
+      "other": "Nishiki and Hibakari leave the [[6m]] alone, each at 77%. The penchan already has 4 unseen tiles, 1 more than the tanki, and passing keeps 10 tiles in hand instead of 7 while Shimocha's chi and Toimen's [[S]] pon are on the table."
+    },
+    "ja": {
+      "question": "オーラス、あなたは3着の親。[[C]]の槓で役があり、すでに[[7m]]のペンチャンでテンパイしている。下家が[[6m]]を切った。ポンするか、このテンパイを保つか。",
+      "read": "このポンは翻も速さも足さない。[[C]]の槓で役はあり、[[7m]]は4枚とも見えていない。変わるのは卓と手の形である。対面と上家はこの巡のツモが飛び、[[S]]をポンしている2着の対面は、和了れば対局を終わらせる3人の一人である。待ちは[[9m]]の単騎になって1枚減るが、単騎はツモのたびに待ちを変えられる。槓子を含めて刻子が三つ並び、対々和のテンパイまで有効牌2枚。カガシとMortalはどちらもポン。LuckyJはその後この局を9,900点で和了った。",
+      "other": "ニシキとヒバカリはともに77%で[[6m]]を見送る。ペンチャンには見えていない牌が4枚あり、単騎より1枚多い。スルーなら、下家のチーと対面の[[S]]ポンを前にしても、手牌は7枚ではなく10枚のまま残る。"
+    }
+  },
+  "point-04_1124_4_51": {
+    "order": 1,
+    "en": {
+      "question": "4th in East 3, the dealer in riichi, and your [[1s]] pon still has no yaku. Shimocha discards the [[F]] you have paired. Pon, or pass?",
+      "read": "Taking the [[F]] from Shimocha skips the riichi dealer's turn, gives the open hand its first yaku, and moves it from two-shanten to one-shanten. The discard costs nothing: the [[S]] is the fourth copy, with the other 3 already in the rivers. Two stops remain against the dealer: [[9s]], the riichi tile itself and genbutsu, and [[8p]], suji through [[5p]]. Only the [[7m]] is live. Mortal is at 99% for the pon, Kagashi at 79%.",
+      "other": "Passing leaves a hand with no yaku, but one well stocked for folding: the fourth [[S]], a [[F]] pair with 1 copy left unseen, [[9s]] and [[8p]]. From 4th against a dealer riichi, several quiet turns may be worth more than a 1-han open hand. Nishiki and Hibakari pass, Hibakari at 93%."
+    },
+    "ja": {
+      "question": "東3局、あなたはラス目で、親がリーチしている。[[1s]]のポンにはまだ役がない。下家が、あなたが対子で持つ[[F]]を切った。ポンか、スルーか。",
+      "read": "下家から[[F]]を鳴けば、リーチした親のツモ番が一つ飛び、鳴き手に初めて役が付き、2シャンテンが1シャンテンに進む。打牌にも痛みはない。[[S]]は4枚目で、残りの3枚はすでに河にある。手に残る親への備えは二つ。親のリーチ宣言牌で現物の[[9s]]と、[[5p]]の筋になる[[8p]]である。通っていないのは[[7m]]だけ。Mortalは99%、カガシは79%でポンを選ぶ。",
+      "other": "スルーした手に役はないが、オリの材料は多い。4枚目の[[S]]、見えていないのが1枚だけの[[F]]の対子、[[9s]]と[[8p]]。ラス目で親リーチを受けているなら、1翻の鳴き手より数巡の静かなオリの方が価値があるかもしれない。ニシキとヒバカリはスルーで、ヒバカリは93%。"
+    }
+  },
+  "point-04_226_11_61": {
+    "order": 2,
+    "en": {
+      "question": "All Last, you are the dealer, 13,200 behind Toimen, and Kamicha shows pons of [[P]] and [[9m]]. Pon Toimen's [[8m]] for an open tanyao, or keep the hand closed?",
+      "read": "Catching Toimen takes more hands, and the dealer gets them only by winning or by being tenpai at the draw. This pon reaches a tanyao one-shanten at once and skips Kamicha's turn. The tile that matters afterwards is [[8p]], genbutsu against both Kamicha's two-pon hand and Toimen. [[4p]] and [[3m]] cover only Toimen, who has not called or declared. The [[C]] the pon forces out is live against Kamicha. Kagashi alone takes the tile. LuckyJ won 3,800 here, kept the deal, and finished the game 1st.",
+      "other": "Nishiki and Hibakari both pass at over 90%, and Mortal passes too. The closed hand holds four pairs, so seven pairs and a dealer riichi are both still possible, and passing keeps the [[C]] in hand instead of offering it to the player with the [[P]] pon. The pon settles for a 1-han hand."
+    },
+    "ja": {
+      "question": "オーラス、あなたは親で、トップの対面と13,200点差。上家は[[P]]と[[9m]]をポンしている。対面の[[8m]]をポンして喰いタンに向かうか、面前を保つか。",
+      "read": "対面に追いつくには局数が要り、親がそれを得るには和了るか、流局時にテンパイしているしかない。このポンで一気に喰いタンの1シャンテンになり、上家のツモ番も飛ぶ。鳴いた後に大事なのは[[8p]]で、2副露の上家にもトップの対面にも現物である。[[4p]]と[[3m]]は、鳴きもリーチもない対面にしか効かない。ポンで押し出される[[C]]は上家に通っていない。この鳴きを選んだのはカガシだけである。LuckyJはこの局を3,800点で和了って親を続け、最終的にトップで終えた。",
+      "other": "ニシキとヒバカリはともに90%以上でスルーし、Mortalもスルー。面前の手には対子が四つあり、七対子も親リーチもまだ残る。スルーなら[[C]]を手に残し、[[P]]をポンしている上家に差し出さずに済む。ポンはそれを1翻の手と引き換えにする。"
+    }
+  },
+  "point-04_674_0_109": {
+    "order": 3,
+    "en": {
+      "question": "First hand of the game, 18 tiles left, and Kamicha and Shimocha have both declared. You are the dealer at two-shanten. Chi Kamicha's [[5p]], or pass?",
+      "read": "A win here would collect both riichi sticks on top of the hand's value, and the chi gets it one step closer: an open tanyao one-shanten with the red [[5mr]], while the [[C]] it must then discard has only 1 copy unseen. The cover left behind is thin. [[7m]], genbutsu against Shimocha, is the only tile in hand that either declarer has discarded; [[8m]], [[2s]] and [[5mr]] cover only Toimen, who is quiet. Against Kamicha, nothing in hand is genbutsu or suji. Mortal, at 78%, and Kagashi make the call.",
+      "other": "Passing keeps 13 tiles to fold with against two riichi, the [[C]] among them, and gives up only a 2-han open hand that is still a step from tenpai. Hibakari passes firmly, at 89%, and Nishiki joins it."
+    },
+    "ja": {
+      "question": "開局の東1局、残り18枚で上家と下家がともにリーチ。あなたは親で2シャンテン。上家の[[5p]]をチーするか、スルーするか。",
+      "read": "ここで和了れば手の打点に加えてリーチ棒2本も手に入る。チーで手は1歩進み、赤[[5mr]]入りの喰いタン1シャンテンになる。押し出される[[C]]は、見えていないのが1枚だけ。ただし残る守りは薄い。リーチ者のどちらかが捨てている牌は、下家の現物[[7m]]一枚だけ。[[8m]]、[[2s]]、[[5mr]]はリーチしていない対面にしか効かない。上家に対しては、手の中に現物も筋もない。Mortalは78%でチーを選び、カガシも鳴く。",
+      "other": "スルーすれば2本のリーチに対して13枚の面前手でオリられ、[[C]]もその中に残る。手放すのは、テンパイまでまだ1歩ある2翻の鳴き手だけである。ヒバカリは89%とはっきりスルーで、ニシキも同じ。"
+    }
+  },
+  "point-04_210_6_27": {
+    "order": 4,
+    "en": {
+      "question": "South 2, early. The dealer leads you by 15,000 with pons of [[1m]] and [[C]], then throws [[S]], the round wind you hold a pair of. Call it, or pass?",
+      "read": "With 60 tiles left, the dealer already has two pons, one of them a dragon. The [[S]] pon gets the hand a yaku and a one-shanten at once, and it skips Toimen and Kamicha. After it, [[4p]] is the only tile in hand the dealer has discarded, and it sits inside [[2p]][[3p]][[4p]]. The engines split on the next cut. LuckyJ, Hibakari, Kagashi and Mortal throw [[9s]], which only Toimen has discarded, and keep [[P]], which can still pair into a second yakuhai; Nishiki would throw the [[P]]. LuckyJ won the hand for 2,300.",
+      "other": "Passing keeps the [[S]] pair, which the dealer has just thrown, next to the [[4p]]: 3 tiles that match the dealer's own discards instead of 1, with 60 tiles still to play against a hand showing two pons. Nishiki and Hibakari both pass, Nishiki narrowly at 55%."
+    },
+    "ja": {
+      "question": "南2局、序盤。親は[[1m]]と[[C]]をポンして、あなたより15,000点上。その親が、あなたが対子で持つ場風の[[S]]を切った。ポンか、スルーか。",
+      "read": "残り60枚で、親はすでに2副露、うち一つは三元牌である。[[S]]のポンで手に役が付いて1シャンテンに進み、対面と上家のツモ番も飛ぶ。鳴いた後、手の中で親の捨て牌と同じ牌は[[4p]]だけで、それも[[2p]][[3p]][[4p]]の面子の中にある。エンジンが割れるのは次の打牌である。LuckyJ、ヒバカリ、カガシ、Mortalは、対面しか捨てていない[[9s]]を切り、二つ目の役牌になりうる[[P]]を残す。ニシキは[[P]]を切る。LuckyJはこの手を和了って2,300点を得た。",
+      "other": "スルーすれば、親が今切った[[S]]の対子が[[4p]]と並んで手に残る。親の捨て牌と一致する牌が1枚ではなく3枚になり、2副露の親を相手にまだ60枚も残っている。ニシキとヒバカリはスルーで、ニシキは55%と僅差。"
+    }
+  },
+  "point-05_484_4_73": {
+    "order": 1,
+    "en": {
+      "question": "Dealer in East 3 with 33 tiles left, and still no call or riichi. One-shanten with the red [[5pr]] and a [[6s]] dora pair, and [[9p]] arrives. [[7p]] or [[9p]]?",
+      "read": "With 33 tiles left, no one has called or declared. [[7p]] is live against all three players; [[9p]] is genbutsu against Toimen and against Kamicha, who leads at 40,700. LuckyJ pays for the [[7p]] now and keeps the [[9p]] in hand. The hand stays one-shanten: [[3m]] fills the edge, and [[6p]] or [[8p]] fills a gap in [[5pr]]-[[7p]]-[[9p]], 10 tiles against 11. The red five and the dora pair stay either way. NAGA's danger proxy reads the [[7p]] at 24%, so the cost is real. Mortal gives the cut 81%, and Kagashi agrees.",
+      "other": "Nishiki throws the [[9p]] it just drew: genbutsu twice over, and NAGA's danger proxy reads zero. Keeping the [[7p]] pair means [[7p]] and the dora [[6s]] also bring tenpai, 11 tiles, and a third [[6s]] among them would add a dora. Hibakari prefers a different tile, the red [[5pr]]."
+    },
+    "ja": {
+      "question": "東3局の親、残り33枚で鳴きもリーチもまだない。赤[[5pr]]とドラ[[6s]]対子を持つ1シャンテンに[[9p]]が来た。[[7p]]と[[9p]]、どちらを切るか。",
+      "read": "残りは33枚、鳴きもリーチもまだ出ていない。[[7p]]は3人の誰にも通っていない。[[9p]]は対面と、40,700点でトップの上家に対して現物である。LuckyJは[[7p]]を先に払い、[[9p]]を手に残した。1シャンテンは変わらず、[[3m]]でペンチャンが埋まり、[[6p]]か[[8p]]で[[5pr]][[7p]][[9p]]の嵌張が埋まる。受け入れは10枚対11枚。赤五とドラ対子はどちらでも残る。NAGAの危険度指標は[[7p]]を24%と読んでおり、この代償は小さくない。Mortalはこの切りに81%を与え、カガシも同じ。",
+      "other": "ニシキはツモった[[9p]]をそのまま切る。[[9p]]は2人に現物で、危険度指標はゼロ。[[7p]]対子を残せば[[7p]]とドラ[[6s]]でもテンパイし、受け入れは11枚。[[6s]]を引けばドラの暗刻になる。ヒバカリは別の牌、赤[[5pr]]を選ぶ。"
+    }
+  },
+  "point-05_180_4_71": {
+    "order": 2,
+    "en": {
+      "question": "Last place on 12,400, and Kamicha, the dealer, has pon'd [[E]]. Either cut leaves the same two-shanten and the same 13 tiles. [[2p]], just drawn, or [[W]]?",
+      "read": "Shape settles nothing: either way the hand improves on [[4p]], [[7p]], [[2s]] and [[5s]], and both lines keep the [[P]] pair and every shape around the dora [[2s]]. The difference is the tile that stays. Every opponent has discarded a [[W]], so it is genbutsu against all three for the rest of the hand. The [[2p]] is live against a dealer whose [[E]] pon is already 2 han, and every draw brings that hand closer. LuckyJ lets the [[2p]] go at once. Kagashi and Mortal, at 75%, pick the same tile.",
+      "other": "Nishiki and Hibakari spend the safe [[W]] this turn. The [[2p]] they keep can still become a block with [[3p]] or [[4p]] if a souzu shape stalls. The [[W]] cannot grow at all: the other three are gone, so it can never pair."
+    },
+    "ja": {
+      "question": "12,400点のラス目。親の上家が[[E]]をポンしている。どちらを切っても2シャンテンで、受け入れは同じ13枚。ツモった[[2p]]か、[[W]]か。",
+      "read": "形の差はない。どちらを切っても2シャンテンで、受け入れは[[4p]][[7p]][[2s]][[5s]]の13枚。[[P]]対子もドラ[[2s]]まわりの形も両方のラインに残る。違うのは手に残る牌である。[[W]]は3人全員が1枚ずつ切っているので、この局の終わりまで全員に現物。[[2p]]は親に通っておらず、親の[[E]]ポンはそれだけで2翻ある。ツモが進むほど親の手は近づく。LuckyJはすぐに[[2p]]を手放した。カガシとMortal(75%)も同じ牌を選ぶ。",
+      "other": "ニシキとヒバカリは、この巡に安全な[[W]]を先に使う。残した[[2p]]は、索子の形が伸び悩んだとき[[3p]]か[[4p]]でブロックになれる。[[W]]はこれ以上伸びない。残りの3枚はもう河にあり、対子にはならない。"
+    }
+  },
+  "point-05_1175_7_35": {
+    "order": 3,
+    "en": {
+      "question": "South 3, fifth discard. You are 2nd, 11,200 behind Shimocha, holding a [[C]] pair and the dora [[8p]]. Which goes, [[3p]] or [[9m]]?",
+      "read": "Either tile is cheap this turn: 52 tiles remain and nobody has called. Later they will not be equal. [[9m]] is genbutsu against Kamicha, the dealer, and will stay so; [[3p]] is live against all three. LuckyJ throws the [[3p]] first. By the tile count the cut costs nothing: 71 accepted tiles against 63, with the dora [[8p]] and the [[C]] pair kept either way. Of the four engines, just Kagashi joins LuckyJ here, at 48%.",
+      "other": "Mortal is emphatic, 97% on the [[9m]], and Nishiki agrees. Spending a genbutsu [[9m]] on a quiet table costs almost nothing, and the [[3p]] kept instead can still grow into a two-sided shape with [[2p]] or [[4p]]. Hibakari goes its own way with the [[S]]."
+    },
+    "ja": {
+      "question": "南3局、5巡目。あなたは2着で、トップの下家まで11,200点差。[[C]]対子とドラ[[8p]]がある。[[3p]]と[[9m]]、どちらを切るか。",
+      "read": "この巡はどちらを切っても安い。残りは52枚で、誰も鳴いていない。二つの牌の差が出るのは後である。[[9m]]は親の上家の現物で、それはこの局のあいだ変わらない。[[3p]]は3人のうち誰に対しても安全ではない。LuckyJは[[3p]]から先に切った。枚数で見れば損はなく、受け入れは71枚対63枚。ドラ[[8p]]と[[C]]対子はどちらでも残る。4つのエンジンのうち、LuckyJにつくのはカガシだけで、それも48%である。",
+      "other": "Mortalは97%で[[9m]]を推し、ニシキも同じ。静かな場で現物の[[9m]]を使ってもほとんど損はなく、代わりに残る[[3p]]は[[2p]]か[[4p]]で両面になれる。ヒバカリは[[S]]を切る独自の選択。"
+    }
+  },
+  "point-05_988_7_71": {
+    "order": 4,
+    "en": {
+      "question": "South 1, you lead Shimocha by 2,500, and the dealer pon'd your [[S]]. Both [[2s]] and [[E]] are genbutsu against the dealer. Which one do you spend?",
+      "read": "Both tiles pass the dealer, so the choice turns on the rest of the hand. The [[E]] is the fourth copy; the other three are in the rivers, so no ordinary hand can be waiting on it. The [[2s]] is safe against the dealer alone. Against Shimocha, 2,500 behind, and Toimen it is live, and it will be no easier to cut as the hand goes on. LuckyJ uses up the [[2s]] at a cost of 6 tiles, 18 against 24: the [[1s]], [[2s]] and [[4s]] draws around the [[3s]] triplet. Kagashi is the one engine on this side.",
+      "other": "Nishiki and Mortal, at 52%, throw the [[E]]. It adds nothing to the count and can never pair, while [[2s]] beside the [[3s]] triplet brings in [[1s]], [[2s]] and [[4s]] for 24 tiles. Either line keeps 3 tiles that pass the dealer. Hibakari's top choice is [[6m]]."
+    },
+    "ja": {
+      "question": "南1局、下家に2,500点差のトップ。親の上家があなたの[[S]]をポンした。[[2s]]も[[E]]も親には現物。どちらを使うか。",
+      "read": "どちらも親には通るので、決め手はこの局の残りである。[[E]]は4枚目で、ほかの3枚はすでに河にあるから、普通の手がこの牌を待つことはない。[[2s]]が通るのは親だけで、2,500点差の下家と対面には通っていない。局が進んでも切りやすくはならない。LuckyJはここで[[2s]]を使い切り、代わりに6枚を払った。受け入れは18枚対24枚で、[[3s]]暗刻まわりの[[1s]][[2s]][[4s]]が消える。この側につくエンジンはカガシだけである。",
+      "other": "ニシキとMortal(52%)は[[E]]を切る。受け入れにならず、もう対子にもならない牌で、[[2s]]を残せば[[3s]]暗刻の横で[[1s]][[2s]][[4s]]を受けて24枚になる。親に通る牌はどちらのラインでも3枚残る。ヒバカリの第一候補は[[6m]]。"
+    }
+  },
+  "point-06_200_3_5": {
+    "order": 1,
+    "en": {
+      "question": "Your first discard of East 3: level with the dealer on 22,000, 15,000 behind Shimocha, with [[5mr]] and [[5pr]] already in hand. Cut [[1s]] or [[C]]?",
+      "read": "Two red fives are 2 han already. It lacks a yaku: the [[1m]] and the [[9m]] triplet rule out all simples, so its yaku will come from riichi or from a yakuhai. [[C]] is that yakuhai, with all three other copies unseen; once it pairs, a pon of [[C]] with the two red fives is 3 han. The [[1s]] adds [[1s]], [[2s]] and [[3s]] draws, which build at best an edge or closed shape. Keeping [[C]] costs 8 tiles on the first turn, 37 against 45. Hibakari and Kagashi put 96% and 98% on the [[1s]], and Mortal 66%.",
+      "other": "Keeping the [[1s]] instead of the [[C]] gives Nishiki 45 tiles, 8 more. Two red fives already make a riichi hand worth something, and a lone dragon needs one of 3 copies before it does anything. Nishiki is outvoted three to one."
+    },
+    "ja": {
+      "question": "東3局、あなたの第一打。親とは22,000点で並び、下家まで15,000点差。手にはすでに[[5mr]]と[[5pr]]がある。[[1s]]と[[C]]、どちらを切るか。",
+      "read": "赤五2枚で、すでに2翻ある。足りないのは役である。[[1m]]と[[9m]]の暗刻があるので断么九はなく、役はリーチか役牌で作ることになる。[[C]]がその役牌で、ほかの3枚はまだ1枚も見えていない。重なった後に[[C]]をポンすれば、赤五2枚と合わせて3翻。[[1s]]が加えるのは[[1s]][[2s]][[3s]]のツモで、できても良くてペンチャンかカンチャンである。[[C]]を残す代償は第一打で8枚、受け入れは37枚対45枚。ヒバカリは96%、カガシは98%で[[1s]]を切り、Mortalも66%で同じ。",
+      "other": "[[C]]ではなく[[1s]]を残すニシキのラインは、受け入れが8枚多い45枚。赤五2枚があればリーチだけでも手に値打ちがあり、孤立した三元牌は残り3枚のどれかを引くまで何もしない。ここではニシキが1対3の少数派である。"
+    }
+  },
+  "point-06_831_7_31": {
+    "order": 2,
+    "en": {
+      "question": "South 2, last place on 14,900, 2,000 behind Toimen. The red [[5mr]] you drew completes a second manzu run, and Kamicha has pon'd [[P]]. Cut [[9p]] or [[F]]?",
+      "read": "In last place the hand has to be worth something. The red [[5mr]] has just made two manzu runs, and [[5s]]-[[7s]] waits on the dora [[6s]]. [[F]] adds a yaku route: Toimen has discarded one, so it is genbutsu there, and 2 copies are still unseen. Once it pairs, a pon gives the hand a yaku to call with, and the red five makes that 2 han. The [[9p]] adds only [[8p]] and [[9p]] draws beside the [[7p]] pair. That trade costs 4 tiles, 55 against 59. Hibakari and Kagashi cut the [[9p]].",
+      "other": "Mortal agrees with Nishiki at 80%: cut the [[F]] and keep [[7p]][[7p]][[9p]] for [[8p]] and [[9p]], 59 tiles. With two finished runs and a red five, the hand can reach riichi without a dragon, and Toimen has already let one [[F]] go."
+    },
+    "ja": {
+      "question": "南2局、14,900点のラス目で、3着の対面まで2,000点差。ツモった赤[[5mr]]で萬子の順子が二つそろい、上家は[[P]]をポンしている。[[9p]]と[[F]]、どちらを切るか。",
+      "read": "ラス目の手には打点が要る。ツモった赤[[5mr]]で萬子の順子が二つでき、[[5s]][[7s]]はドラ[[6s]]を待つ形。[[F]]は役の道を足す牌で、対面が1枚切っているので対面には現物、見えていない残りは2枚ある。重なってポンできれば鳴ける役になり、赤五と合わせて2翻。[[9p]]が加えるのは[[7p]]対子の横の[[8p]]と[[9p]]のツモだけである。この交換の代償は4枚で、受け入れは55枚対59枚。ヒバカリとカガシは[[9p]]を切る。",
+      "other": "Mortalは80%でニシキに同意し、[[F]]を切る。[[7p]][[7p]][[9p]]を残せば[[8p]]と[[9p]]も受けて59枚。順子が二つと赤五があれば三元牌なしでもリーチで戦え、[[F]]は対面がすでに1枚手放している。"
+    }
+  },
+  "point-06_539_0_33": {
+    "order": 3,
+    "en": {
+      "question": "East 1, the opening hand, and you are the dealer. The dora is [[N]] and you hold one. Two-shanten with no pair yet. Cut [[8p]] or [[N]]?",
+      "read": "The [[N]] is the dora, and in this hand it has a job to do. There is no pair yet, so one of the singles has to become the head, and if that single is [[N]], the head alone carries 2 han in a dealer hand. Two copies remain unseen, and Shimocha's latest discard makes it genbutsu there. The price is the [[6p]]-[[8p]] kanchan: 36 tiles instead of 41, with [[7p]] and [[8p]] no longer counted. Hibakari, Kagashi and Mortal all hold on to the [[N]] as well. LuckyJ won this hand, +12,700.",
+      "other": "Nishiki cuts the [[N]] and keeps the [[6p]]-[[8p]] kanchan, 41 tiles to 36. An honor dora can only pay off by pairing, with 2 copies left to draw, and any other single can serve as the head just as well."
+    },
+    "ja": {
+      "question": "東1局、半荘の最初の局で、あなたは親。ドラは[[N]]で、手に1枚ある。2シャンテンで対子はまだない。[[8p]]と[[N]]、どちらを切るか。",
+      "read": "[[N]]はドラで、この手ではちゃんと仕事がある。対子がないので孤立牌のどれかが雀頭になり、それが[[N]]なら雀頭だけで2翻、しかも親の手である。[[N]]は見えていない残りが2枚で、下家の直近の打牌なので下家には現物。代償は[[6p]][[8p]]の嵌張で、受け入れは41枚から36枚になり、[[7p]]と[[8p]]が数えられなくなる。ヒバカリ、カガシ、Mortalもそろって[[N]]を残す。この局はLuckyJが和了し、12,700点を加えた。",
+      "other": "ニシキは[[N]]を切って[[6p]][[8p]]の嵌張を残し、受け入れは41枚対36枚。字牌のドラは重なるしか使い道がなく、引ける残りは2枚。雀頭ならほかの孤立牌でも作れる、という考え方である。"
+    }
+  },
+  "point-06_437_9_35": {
+    "order": 4,
+    "en": {
+      "question": "South 1, and you are 3rd, 9,000 behind Toimen, who has called [[S]]. Four pairs in hand, none of them yakuhai, and [[1p]] arrives. Cut [[1p]] or [[F]]?",
+      "read": "With [[7m]], [[2p]], [[3s]] and [[W]] already paired, the count here is seven pairs, two steps from tenpai. [[F]] is the only yakuhai in the hand, with 2 copies unseen, and it is genbutsu against Shimocha, the dealer. If it pairs, the hand can pon for a yaku instead of relying on seven pairs alone. The [[1p]] offers one more pairing chance, 3 copies against 2. Keeping [[F]] costs that 1 tile, 12 against 13. Hibakari and Kagashi side with the [[1p]] cut. Mortal picks neither: it cuts [[6p]] at 84%, which keeps the [[F]] as well.",
+      "other": "For Nishiki the [[1p]] is the better single to hold: 3 copies left to pair against 2, 13 tiles. Seven pairs needs no other yaku, and even without [[F]] the hand keeps [[1s]], genbutsu against the dealer."
+    },
+    "ja": {
+      "question": "南1局、あなたは3着で、2着の対面まで9,000点差。対面は[[S]]をポンしている。手には対子が四つあるが役牌はなく、そこへ[[1p]]が来た。[[1p]]と[[F]]、どちらを切るか。",
+      "read": "[[7m]]、[[2p]]、[[3s]]、[[W]]がすでに対子なので、ここは七対子で数えて2シャンテン。手の中で唯一の役牌が[[F]]で、見えていない残りは2枚、しかも親の下家の現物である。重なれば七対子だけに頼らず、ポンして役を作る道もできる。[[1p]]は対子の候補をもう一つ増やす牌で、残りは3枚対2枚。[[F]]を残す代償はその1枚で、受け入れは12枚対13枚。ヒバカリとカガシは[[1p]]切りを選ぶ。Mortalはどちらも選ばず、84%で[[6p]]を切る。これなら[[F]]も手に残る。",
+      "other": "ニシキにとって残すべき孤立牌は[[1p]]で、対子になる残りは3枚対2枚、受け入れは13枚。七対子ならほかの役は要らず、[[F]]がなくても親に現物の[[1s]]は手に残る。"
+    }
+  },
+  "point-08_702_2_9": {
+    "order": 1,
+    "en": {
+      "question": "East 1, turn two: you are the dealer, 21,000 clear, and the [[E]] you drew makes seven-pairs tenpai. Riichi cutting [[9s]] or [[3p]]? The tile you keep is your wait.",
+      "read": "Seven pairs alone is 2,400 for the dealer; riichi makes it 4,800 before ura, and a dealer riichi on turn two makes the other three choose at once between folding and fighting. The wait is the closer call. Both singles have 3 tiles left, and both declaration tiles read under 1% on NAGA's danger proxy. LuckyJ throws the [[9s]] and waits on [[3p]], as Hibakari and Kagashi do. Mortal's 99% covers the declaration only. The hand won at 3 han 25 fu, riichi and seven pairs with nothing extra; with the stick back and two honba, LuckyJ collected 6,400.",
+      "other": "A terminal is the usual seven-pairs wait because opponents let go of it sooner than a [[3p]], and that is Nishiki's choice at 88%: cut the [[3p]] and wait on the [[9s]], with the same 3 tiles left."
+    },
+    "ja": {
+      "question": "東1局の2巡目。あなたは親で21,000点のリード、ツモった[[E]]で七対子のテンパイ。リーチの宣言牌は[[9s]]か[[3p]]か。残した方が待ちになる。",
+      "read": "七対子だけなら親で2,400点、リーチをかければ裏ドラなしでも4,800点になる。しかも2巡目の親リーチは、他家3人にオリるか戦うかをいきなり選ばせる。際どいのは待ちの方である。どちらの単騎も残り3枚で、宣言牌はどちらもNAGAの危険度指標で1%未満。LuckyJは[[9s]]を切って[[3p]]で待ち、ヒバカリとカガシも同じ選択。Mortalの99%は宣言についての評価である。和了はリーチと七対子だけの3翻25符で、供託の戻りと2本場を合わせて6,400点の収入。",
+      "other": "七対子の単騎は端牌が定番である。他家が[[3p]]より早く手放しやすいからで、ニシキも88%でその線を取る。[[3p]]を切って[[9s]]で待っても、残りは同じ3枚。"
+    }
+  },
+  "point-08_990_0_119": {
+    "order": 2,
+    "en": {
+      "question": "East 1, 10 tiles left, no calls or riichi yet. The [[6s]] you drew gives a [[5s]] and [[8s]] wait whichever tile you cut. Riichi on [[7s]] or on [[4s]]?",
+      "read": "Ten tiles from the end, a declaration is expensive: the stick costs 1,000 and buys only a few more draws. Once the [[7s]] goes, though, the hand has no yaku, so only the declaration lets it win by ron, and ura can join the red [[5sr]]. The wait is the same 4 tiles either way, so the choice comes down to the declaration tile. [[7s]] is genbutsu against Shimocha, the dealer, and reads 11% on NAGA's danger proxy against 22% for [[4s]]. Hibakari and Kagashi also cut [[7s]]; Mortal favors declaring at 90%.",
+      "other": "Cutting [[4s]] keeps [[5sr]][[6s]][[7s]] next to [[6s]][[7s]], so a [[5s]] win adds iipeikou, a han the [[7s]] cut cannot reach. Nishiki takes that line at a narrow 52%, accepting a declaration tile NAGA's danger proxy reads twice as hot."
+    },
+    "ja": {
+      "question": "東1局、残り10枚。まだ誰も鳴かず、リーチもない。ツモった[[6s]]で、どちらを切っても[[5s]][[8s]]待ち。宣言牌は[[7s]]か[[4s]]か。",
+      "read": "流局まで残り10枚では、リーチは高くつく。1,000点を供託して、あと数回のツモに賭けることになる。それでも[[7s]]を切ると手に役がなく、ロン和了にはリーチが要る。宣言すれば誰からでも和了れ、赤[[5sr]]に裏ドラも乗りうる。待ちはどちらも同じ4枚なので、選ぶのは宣言牌である。[[7s]]は親である下家の現物で、NAGAの危険度指標は11%、[[4s]]は22%。ヒバカリとカガシも[[7s]]を切り、Mortalは90%で宣言を支持する。",
+      "other": "[[4s]]を切ると[[5sr]][[6s]][[7s]]と[[6s]][[7s]]が並び、[[5s]]で和了れば一盃口が付く。[[7s]]切りでは届かない1翻である。ニシキは52%の僅差でこちらを選び、危険度指標が倍の宣言牌を受け入れる。"
+    }
+  },
+  "point-08_921_7_51": {
+    "order": 3,
+    "en": {
+      "question": "South 2, 2nd place, 3,900 behind Shimocha, and your hand is seven-pairs tenpai after the [[C]]. Keep [[9p]] (2 left) or [[P]] (3 left) as the riichi wait?",
+      "read": "At 3,900 behind the leader, the value riichi adds is real: 1,600 becomes 3,200, and any ura that lands on a pair adds two more han. The wait is the harder choice. LuckyJ keeps the [[9p]] with only 2 left, a terminal Kamicha threw on the first turn. No [[P]] has appeared by the middle of the hand, and a dragon held that long may be sitting in someone's hand as a pair. Two NAGA models, Hibakari and Kagashi, pick the same wait; Mortal's 97% is for declaring, whatever the tile. LuckyJ won at 4 han and, with the stick back and two honba, collected 8,000.",
+      "other": "The count favors Nishiki: 3 [[P]] against 2 [[9p]], and the [[9p]] it throws reads only slightly hotter on NAGA's danger proxy. Nishiki goes this way at 70%, and a win on the dragon pays the same seven pairs."
+    },
+    "ja": {
+      "question": "南2局、あなたは2着で下家と3,900点差。[[C]]を引いて七対子のテンパイ。リーチの待ちに残すのは[[9p]](残り2枚)か、[[P]](残り3枚)か。",
+      "read": "トップと3,900点差の2着にとって、リーチの打点は大きい。1,600点が3,200点になり、裏ドラが対子に乗れば2翻増える。難しいのは待ちの選択である。LuckyJは残り2枚の[[9p]]を残した。上家が1巡目に切っている端牌である。一方[[P]]は中盤まで1枚も出ておらず、ここまで出ない三元牌は誰かが対子で持っていることもある。NAGAのヒバカリとカガシも[[9p]]待ちを選ぶ。Mortalの97%は宣言そのものの評価で、牌の選択は含まない。LuckyJは4翻で和了り、供託の戻りと2本場を合わせて8,000点の収入。",
+      "other": "枚数ならニシキが有利で、[[P]]3枚に対して[[9p]]は2枚。ニシキが切る[[9p]]も、危険度指標ではわずかに高いだけである。ニシキは70%でこの線を選び、[[P]]で和了っても七対子の打点は変わらない。"
+    }
+  },
+  "point-08_276_4_41": {
+    "order": 4,
+    "en": {
+      "question": "The dealer declared on turn three and Kamicha, 1st, has a [[W]] pon. You hold a kanchan tenpai and a [[P]] pair, both dora. Chase on [[7s]] or [[3s]]?",
+      "read": "Two hands are already live, and the wait is a kanchan, so value has to carry the declaration. Without riichi the hand has no yaku and can win only by self-draw; with it, the two [[P]] dora make 3 han. Both kanchan hold 4 tiles, so the lines differ only in which hot tile goes out: NAGA's danger proxy reads 71% on the [[7s]] LuckyJ just drew and 64% on the [[3s]]. Hibakari and Kagashi make the same cut, and Mortal backs the chase itself at 98%. LuckyJ later dealt into the dealer for 4,200.",
+      "other": "Nishiki cuts the [[3s]] and waits on the [[6s]], the same 4 tiles, while throwing the tile NAGA's danger proxy reads cooler. With the waits equal, a cooler declaration tile into a dealer riichi is worth having; this is Nishiki's line at 70%."
+    },
+    "ja": {
+      "question": "親が3巡目にリーチし、トップの上家は[[W]]をポンしている。あなたはカンチャン待ちのテンパイで、ドラの[[P]]が対子。追っかけリーチの宣言牌は[[7s]]か[[3s]]か。",
+      "read": "すでに二人が前に出ており、待ちはカンチャン。宣言を支えるのは打点である。リーチがなければこの手は役なしでツモ和了しかないが、宣言すればドラの[[P]]2枚と合わせて3翻になる。どちらのカンチャンも4枚なので、違いはどちらの危険牌を出すかだけ。NAGAの危険度指標は、ツモってきた[[7s]]が71%、[[3s]]が64%。ヒバカリとカガシも同じ[[7s]]切りで、Mortalは98%で追っかけそのものを支持する。LuckyJは後に親へ4,200点を放銃した。",
+      "other": "ニシキは[[3s]]を切って[[6s]]で待つ。枚数は同じ4枚のまま、危険度指標の低い方を宣言牌にできる。待ちが同じなら、親リーチに対して少しでも低い牌を切る価値はあり、ニシキは70%でこの線を取る。"
+    }
+  },
+  "point-08_1296_4_62": {
+    "order": 5,
+    "en": {
+      "question": "East 4, dealer in 3rd. Toimen shows an [[E]] pon and a [[6p]] kan, and your [[P]] triplet already scores. Riichi: cut the dora [[1p]], or the [[3p]]?",
+      "read": "With the [[P]] triplet, this hand could win dama, and NAGA puts only 60% on declaring; Mortal is at 96% for it. LuckyJ declares and pays for the wait with the dora. Cutting [[1p]] leaves a [[3p]] and [[N]] shanpon on 4 tiles; keeping it means a [[2p]] kanchan on 3. Both pinzu tiles are hot against Toimen's [[6p]] kan and a river of only manzu and honors: NAGA's danger proxy reads 39% on [[1p]] and 50% on [[3p]]. Locked in, LuckyJ later dealt 12,000 into Kamicha.",
+      "other": "Nishiki keeps the dora and waits on the [[2p]] kanchan: 1 tile fewer, one han more, 4 han against 3. It throws the [[3p]], the hotter of the two pinzu, and still prefers that line at 61%; it is the only NAGA model that keeps the dora."
+    },
+    "ja": {
+      "question": "東4局、あなたは3着の親。対面は[[E]]ポンと[[6p]]の槓。[[P]]の暗刻で役はすでにある。リーチの宣言牌はドラの[[1p]]か、[[3p]]か。",
+      "read": "[[P]]の暗刻があるのでダマでも和了れ、NAGAのリーチ評価は60%にとどまる。Mortalは96%でリーチ。LuckyJは宣言し、待ちの代金をドラで払った。[[1p]]を切れば[[3p]]と[[N]]のシャンポンで4枚、残せば[[2p]]のカンチャンで3枚。どちらの筒子も、[[6p]]を槓して河に萬子と字牌しかない対面には危ない。NAGAの危険度指標は[[1p]]が39%、[[3p]]が50%。リーチで手が固定され、LuckyJは後に上家へ12,000点を放銃した。",
+      "other": "ニシキはドラを残して[[2p]]のカンチャンで待つ。1枚少なく1翻多い、4翻対3翻の比較である。切るのは二つの筒子のうち危険度の高い[[3p]]だが、それでも61%でこの線を選ぶ。NAGAの中でドラを残すのはニシキだけである。"
+    }
+  },
+  "point-09_180_6_37": {
+    "order": 1,
+    "en": {
+      "question": "South 1, your last deal: you are the dealer in 4th on 15,000, 27,600 behind Kamicha, who has pon'd [[8m]]. Two-shanten with the red [[5pr]]. Cut [[1m]] or [[4s]]?",
+      "read": "South 1 is LuckyJ's last deal, and 4th place on 15,000 has to push; the question is which version of the hand. After the [[7m]] draw, the [[1m]] is the only tile that is not a simple. Cutting it makes tanyao, so LuckyJ can call to race Kamicha's open hand, and it reads near 2% on NAGA's danger proxy against 11% for the [[4s]]. The price is 15 accepted tiles against 20, and the [[4s]] stays in hand, still to be discarded. Kagashi and Mortal (39%) agree. LuckyJ won 2 han 40 fu; its score rose by 3,900.",
+      "other": "Nishiki cuts the [[4s]] now, the loose middle tile with the hotter reading, while it is early and Kamicha has only one call. Keeping [[1m]][[2m]][[3m]] leaves 20 tiles to move the hand, and a closed hand can still win with riichi. Hibakari throws back the [[7m]] it drew."
+    },
+    "ja": {
+      "question": "南1局、最後の親番。あなたは15,000点の4着で、[[8m]]をポンしている上家とは27,600点差。赤[[5pr]]入りの2シャンテン。[[1m]]か[[4s]]か。",
+      "read": "南1局はLuckyJ最後の親番で、15,000点の4着なら押すしかない。問題はどの形で押すかである。[[7m]]を引いた今、中張牌でないのは[[1m]]だけ。これを切ればタンヤオになり、鳴いて上家の仕掛けと速度を競える。NAGAの危険度指標も[[1m]]は2%ほど、[[4s]]は11%。代償は受け入れ15枚対20枚で、[[4s]]はまだ切るべき牌として手に残る。カガシとMortal(39%)も[[1m]]。LuckyJはこの局を2翻40符で和了し、点数は3,900点増えた。",
+      "other": "ニシキは今[[4s]]を切る。危険度指標の高い浮いた中張牌を、まだ序盤で上家の仕掛けが1つのうちに処理する線である。[[1m]][[2m]][[3m]]を残せば受け入れは20枚で、門前ならリーチで和了れる。ヒバカリはツモった[[7m]]をそのまま切る。"
+    }
+  },
+  "point-09_604_7_99": {
+    "order": 2,
+    "en": {
+      "question": "The dealer is in riichi and both other players have pon'd. You are 3rd in South 3, 600 above the dealer, two-shanten, 23 tiles left. [[4s]] or [[E]]?",
+      "read": "Three hands threaten LuckyJ, and each candidate answers a different one. The [[4s]] is genbutsu against the dealer's riichi but live against both pon hands, and NAGA's danger proxy rates it far hotter than the [[E]]. The [[E]] is genbutsu against both callers, and only one copy is still unseen. LuckyJ throws the [[E]] and keeps the [[4s]] in hand for a later turn against the riichi. The shape gain is large: 35 tiles move the hand forward against 9. Kagashi agrees, and Mortal backs the [[E]] at 94%. The dealer won the hand, and LuckyJ's score fell by 4,100.",
+      "other": "Nishiki and Hibakari cut the [[4s]], a tile the dealer's riichi cannot win on, and hold the [[E]], the dealer's own seat wind. Late in South 3, answering the dealer first is the standard defense; what it costs is shape, 9 tiles instead of 35."
+    },
+    "ja": {
+      "question": "親がリーチ、他の2人はポンしている。あなたは南3局の3着で、親とは600点差。2シャンテンで残り23枚。[[4s]]か[[E]]か。",
+      "read": "脅威は3人いて、候補の2枚はそれぞれ別の相手への答えになる。[[4s]]は親リーチの現物だが、ポンした2人には通っておらず、NAGAの危険度指標は[[E]]よりはるかに高い。[[E]]はポンした2人の現物で、見えていないのはあと1枚。LuckyJは[[E]]を切り、リーチの現物[[4s]]を後の巡のために手に残した。形の差も大きく、受け入れは35枚対9枚。カガシも同じ[[E]]を切り、Mortalも94%でこれを支持する。この局は親の和了で、LuckyJの点数は4,100点減った。",
+      "other": "ニシキとヒバカリは、親リーチに当たらない[[4s]]を切り、親の自風の[[E]]を手に残す。南3局の終盤なら、まず親に答えるのが標準の守りである。その代償が形で、受け入れは35枚から9枚に減る。"
+    }
+  },
+  "point-09_762_8_65": {
+    "order": 3,
+    "en": {
+      "question": "South 1, you are the dealer, 28,200 ahead of 2nd. Two-shanten with four pairs and a lone dora [[1m]], and Shimocha has called chi. Cut the dora or the [[9p]]?",
+      "read": "Toimen's last discard was a [[1m]], and that changed the price of the dora in LuckyJ's hand: it is now genbutsu against the player in 2nd, and NAGA's danger proxy barely registers it. The [[9p]] is live against Shimocha's chi hand and rates far hotter. LuckyJ spends the dora while it is cheap. The shape does not suffer: two-shanten either way, 15 tiles here against 14. What goes is value, and a dealer 28,200 in front can spare it. Mortal, at 76%, and Kagashi make the same cut.",
+      "other": "Nishiki keeps the dora and gives up nothing against Toimen, since a [[1m]] in hand stays genbutsu against him for as long as it is needed. With four pairs already, a second [[1m]] would make a dora pair, and 2 are still unseen. Nishiki alone cuts the [[9p]]; Hibakari picks [[6s]]."
+    },
+    "ja": {
+      "question": "南1局、あなたは親で2着に28,200点差。手は対子4つの2シャンテンで、ドラの[[1m]]が1枚浮いている。下家はチーしている。ドラを切るか、[[9p]]を切るか。",
+      "read": "対面の直前の捨て牌が[[1m]]で、これが手の中のドラの値段を変えた。2着の対面には現物になり、NAGAの危険度指標もほとんど反応しない。一方の[[9p]]は下家のチー手に通っておらず、指標ははるかに高い。LuckyJは安いうちにドラを手放した。形は損なわない。どちらも2シャンテンで、受け入れはこちらが15枚、ニシキの線が14枚。失うのは打点だけで、28,200点リードの親ならそれを払える。Mortal(76%)とカガシも同じ打牌。",
+      "other": "ニシキはドラを残す。[[1m]]は手にある限り対面の現物のままなので、対面への守りは何も失わない。すでに対子が4つあり、見えていない2枚の[[1m]]を引けばドラの対子になる。[[9p]]を切るのはニシキだけで、ヒバカリは[[6s]]を選んだ。"
+    }
+  },
+  "point-09_496_1_38": {
+    "order": 4,
+    "en": {
+      "question": "Your fifth discard, East 2. The dealer has a closed kan of [[3m]] and Toimen has called chi. Three-shanten, you hold a lone [[E]] and a lone [[S]]. Which goes?",
+      "read": "The [[S]] is LuckyJ's seat wind and the last one: two lie in the rivers and the kan turned up the third as a dora indicator. It can never pair, and NAGA gives it a zero danger reading. The [[E]] is the round wind, so a pair would give LuckyJ a yakuhai to call; it is also the dealer's double wind, 3 copies unseen. LuckyJ throws the dead [[S]] and takes 60 tiles against 57. The cost comes later: an [[E]] that never pairs still has to go, perhaps once the dealer is ready. Mortal (76%) agrees.",
+      "other": "On turn 5 the dealer's double wind is as cheap as it will get, so Nishiki and Kagashi let the [[E]] go and save the [[S]], which no one can pair, for the turn a riichi arrives. Giving up 3 accepted tiles is a small price for that. Hibakari cuts [[2p]]."
+    },
+    "ja": {
+      "question": "東2局、あなたの5打目。親は[[3m]]を暗槓し、対面はチーしている。手は3シャンテンで、[[E]]と[[S]]が1枚ずつ浮いている。どちらを切るか。",
+      "read": "[[S]]はLuckyJの自風だが、最後の1枚である。2枚は河にあり、もう1枚は槓で開いたドラ表示牌になっている。もう対子にはならず、NAGAの危険度指標もゼロ。[[E]]は場風で、重なれば役牌として鳴ける。同時に親のダブ東でもあり、見えていない[[E]]は3枚。LuckyJは死んだ[[S]]を切り、受け入れは60枚対57枚。代償は後に来る。重ならなかった[[E]]もいずれは切ることになり、そのころには親がテンパイしているかもしれない。Mortal(76%)も[[S]]切り。",
+      "other": "5巡目なら、親のダブ東がいちばん安く切れるのは今である。ニシキとカガシはここで[[E]]を手放し、誰も対子にできない[[S]]を、リーチが来た巡のために残す。受け入れ3枚はその代金として小さい。ヒバカリは[[2p]]を選んだ。"
+    }
+  },
+  "point-10_1033_2_109": {
+    "order": 1,
+    "en": {
+      "question": "East 2, 17 tiles left, you in 4th and the leader Shimocha in riichi. Throwing [[4p]] makes tenpai on [[5s]]-[[8s]]; throwing [[E]] stays one-shanten. Which?",
+      "read": "Nishiki's tenpai would cost a [[4p]] with a 90% danger reading, live against Shimocha's riichi, and the hand it buys has no yaku: the [[7p]] triplet and the [[E]] pair rule out tanyao and pinfu, so it could win only by riichi or self-draw. LuckyJ cuts an [[E]], genbutsu against the riichi, and stays one-shanten on 8 tiles. If a [[4p]] arrives, the same [[5s]]-[[8s]] wait becomes an all-simples tenpai. Hibakari, Kagashi and Mortal (97%) all cut the [[E]]. LuckyJ won the hand with 3 han 40 fu, and its score rose by 6,200.",
+      "other": "A [[5s]]-[[8s]] wait with 4 tiles left, the red [[5mr]] and the dora [[7s]]: that is the tenpai Nishiki takes, and riichi would bring it to 3 han. Tenpai also pays at the draw, and the [[E]] pair stays in hand. Every other engine cuts the [[E]]."
+    },
+    "ja": {
+      "question": "東2局、残り17枚。あなたは4着で、トップの下家がリーチ。[[4p]]を切れば[[5s]][[8s]]待ちのテンパイ、[[E]]を切れば1シャンテンのまま。どちらを切るか。",
+      "read": "ニシキの線のテンパイには、危険度指標90%の[[4p]]がかかる。下家リーチに通っていない牌で、しかも手に入るのは役のないテンパイである。[[7p]]の暗刻と[[E]]の対子があるのでタンヤオも平和もつかず、和了はリーチかツモに限られる。LuckyJはリーチの現物[[E]]を切り、受け入れ8枚の1シャンテンに残った。[[4p]]を引けば、同じ[[5s]][[8s]]待ちがタンヤオのテンパイになる。ヒバカリ、カガシ、Mortal(97%)もそろって[[E]]。LuckyJはこの局を3翻40符で和了し、点数は6,200点増えた。",
+      "other": "残り4枚の[[5s]][[8s]]待ちに、赤[[5mr]]とドラの[[7s]]。ニシキが取るのはこのテンパイで、リーチをかければ3翻になる。流局してもテンパイ料が入り、[[E]]の対子も残る。ほかのエンジンはすべて[[E]]を切った。"
+    }
+  },
+  "point-10_282_1_123": {
+    "order": 2,
+    "en": {
+      "question": "You are the dealer at two-shanten in East 1 with 13 tiles left. Kamicha is in riichi, and Shimocha and Toimen have two calls each. Cut [[5s]] or [[9s]]?",
+      "read": "Only 13 tiles remain, about three more draws for LuckyJ, and a two-shanten hand needs two of them to hit just for tenpai at the draw. The count says fold; the question is which safe tile to spend first. The [[9s]] is the only tile in hand with a safety read against all three opponents: genbutsu against both callers, suji against the riichi. LuckyJ throws the [[5s]], which NAGA's danger proxy reads near zero, and saves the [[9s]]. Hibakari and Mortal (96%) agree. At the draw only one player was tenpai, and LuckyJ paid 1,000.",
+      "other": "Both tiles read close to zero, so Nishiki plays for shape: throwing the [[9s]] it just drew keeps 25 tiles against 21, and the [[5s]] left in hand is still genbutsu against Shimocha. For the dealer, reaching tenpai by the draw would also keep the seat. Kagashi agrees."
+    },
+    "ja": {
+      "question": "あなたは親で2シャンテン、東1局の残り13枚。上家がリーチ、下家と対面はそれぞれ2副露。[[5s]]か[[9s]]か。",
+      "read": "残りは13枚、LuckyJのツモはあと3回ほどで、2シャンテンの手が流局テンパイに届くには、そのうち2回の有効牌が要る。数えれば降りで、問題はどの安全牌から使うかになる。3人全員に対して根拠があるのは、手の中で[[9s]]だけである。下家と対面の現物で、上家リーチには筋。LuckyJはNAGAの危険度指標がほぼゼロの[[5s]]を切り、[[9s]]を残した。ヒバカリとMortal(96%)も同じ。流局時にテンパイだったのは1人だけで、LuckyJは1,000点を払った。",
+      "other": "どちらの牌も危険度指標はほぼゼロなので、ニシキは形を取る。ツモった[[9s]]をそのまま切れば受け入れは25枚対21枚で、手に残る[[5s]]も下家の現物のまま。親は流局時にテンパイなら親番も続く。カガシもニシキと同じ。"
+    }
+  },
+  "point-10_497_14_103": {
+    "order": 3,
+    "en": {
+      "question": "All Last: you are the dealer with a 23,500 lead, three-shanten, 20 tiles left. Kamicha has pon'd [[W]], the dora, and [[F]]. The red [[5pr]] or the [[E]]?",
+      "read": "LuckyJ can finish 1st without winning this hand, and a three-shanten hand with 20 tiles left has little chance of winning or reaching tenpai. That leaves a fold, and the only choice is the order of the safe tiles. Kamicha's pons show three dora and a yaku. The red [[5pr]] is suji against him, a low reading on NAGA's danger proxy; the [[E]] is genbutsu against him and Shimocha. LuckyJ spends the weaker tile first and keeps the [[E]]. Hibakari and Kagashi make the same cut. Kamicha won the hand; LuckyJ paid 6,000 as dealer and finished 1st.",
+      "other": "Nishiki throws the [[E]] now, while it reads almost zero, and keeps the red [[5pr]] with 51 accepted tiles against 38; the [[5pr]] would still be suji against Kamicha later. Mortal backs that line at 99.8%."
+    },
+    "ja": {
+      "question": "オーラス、あなたは親で23,500点差のトップだが、手は3シャンテンで残り20枚。上家はドラの[[W]]と[[F]]をポンしている。赤[[5pr]]か[[E]]か。",
+      "read": "この局を和了らなくても、LuckyJはトップで終われる。残り20枚の3シャンテンでは、和了どころかテンパイも遠い。残るのは降りで、選べるのは安全牌を切る順番だけである。上家のポンで、ドラ3と役がすでに見えている。赤[[5pr]]は上家に筋で、NAGAの危険度指標も低い。[[E]]は上家と下家の現物。LuckyJは弱い方を先に使い、[[E]]を残した。ヒバカリとカガシも同じ打牌。この局は上家の和了で、LuckyJは親として6,000点を払ったが、トップで終えた。",
+      "other": "ニシキは危険度指標がほぼゼロのうちに[[E]]を切り、赤[[5pr]]と受け入れ51枚(こちらは38枚)を残す。[[5pr]]は後の巡でも上家に筋のままである。Mortalは99.8%でこの線を選んだ。"
+    }
+  },
+  "point-10_1199_11_93": {
+    "order": 4,
+    "en": {
+      "question": "No riichi yet in South 3, 23 tiles left. The dealer leads on 43,300; you are 2nd, one-shanten with two red fives. The [[8m]] or the [[W]] you drew?",
+      "read": "Nobody has declared, but NAGA's danger proxy already reads the [[8m]] at 46% with the dealer on 43,300. LuckyJ throws it and keeps the [[W]], genbutsu against the dealer. What changes is the discard after this one: on [[3m]] through [[7m]], this line makes tenpai by cutting the [[W]], while Nishiki's line would usually have to let go of a [[5m]] or [[8m]] that is live against the dealer, a few draws later. The price is 16 tiles against 21. Every engine but Nishiki makes the same cut, Mortal at 94%. LuckyJ later dealt into the dealer and lost 12,000.",
+      "other": "The [[W]] Nishiki throws is the tile LuckyJ just drew, genbutsu against the dealer, and the shape stays full: 21 tiles, all simples for tanyao, both red fives. Nothing forces a hot tile out while nobody has declared. Nishiki is the only engine on this line."
+    },
+    "ja": {
+      "question": "南3局、残り23枚、まだリーチはない。親が43,300点でトップ、あなたは2着で赤五2枚の1シャンテン。[[8m]]か、ツモった[[W]]か。",
+      "read": "まだ誰も宣言していないが、親は43,300点、NAGAの危険度指標はすでに[[8m]]を46%と読んでいる。それでもLuckyJは[[8m]]を切り、親の現物[[W]]を残した。変わるのは次の打牌である。[[3m]]から[[7m]]のどれを引いても、この線は[[W]]切りでテンパイする。ニシキの線ではそのとき、たいてい親に通っていない[[5m]]か[[8m]]を切ることになり、それは数巡先の話になる。代償は受け入れ16枚対21枚。ニシキ以外のエンジンはすべて[[8m]]で、Mortalは94%。LuckyJはこの後、親に放銃して12,000点を失った。",
+      "other": "ニシキが切る[[W]]はツモったばかりの牌で、親の現物でもある。形は目いっぱいに残り、受け入れ21枚、すべて中張牌でタンヤオがつき、赤五も2枚。誰も宣言していないうちに熱い牌を出す理由はない、という線で、これを選んだのはニシキだけである。"
+    }
+  },
+  "point-10_1168_9_97": {
+    "order": 5,
+    "en": {
+      "question": "Kamicha, 4th place, has declared riichi at All Last. You are 2nd, 10,800 above the dealer, two-shanten with a pair of [[S]] and two dora [[1s]]. [[9m]] or [[E]]?",
+      "read": "Second place is what this hand protects: LuckyJ sits 10,800 above the dealer and 17,700 above Kamicha's riichi. The hand has value, a pair of the dora [[1s]], the red [[5mr]] and a pair of [[S]], yet it is two-shanten with 22 tiles left, so the next discards weigh like the shape. The [[E]] is the fourth copy, with the other three in the rivers, and genbutsu against Toimen and the riichi. LuckyJ spends the [[9m]], genbutsu against the riichi, and holds the [[E]]. Hibakari and Kagashi agree. Kamicha won off another player, and LuckyJ kept 2nd.",
+      "other": "Nishiki and Mortal get rid of the [[E]] now: it can never help the hand, while the [[9m]] still works with [[8m]][[8m]] and lifts the count from 10 tiles to 14. The [[9m]] is safe only against the riichi, with a 12% reading on NAGA's danger proxy; the [[E]] reads zero."
+    },
+    "ja": {
+      "question": "4着の上家がオーラスにリーチ。あなたは2着で親とは10,800点差、[[S]]の対子とドラの[[1s]]2枚を持つ2シャンテン。[[9m]]か[[E]]か。",
+      "read": "この局で守るのは2着である。LuckyJは親に10,800点、リーチの上家に17,700点の差をつけている。ドラ[[1s]]の対子、赤[[5mr]]、[[S]]の対子と打点はあるが、残り22枚で2シャンテンなので、この先の打牌が形と同じくらい重い。[[E]]は4枚目で、残り3枚はすべて河にあり、対面と上家リーチの現物でもある。LuckyJはリーチの現物[[9m]]を先に使い、[[E]]を手に残した。ヒバカリとカガシも[[9m]]を選んだ。この局は上家が他家から和了し、LuckyJは2着を守った。",
+      "other": "ニシキとMortalは今[[E]]を切る。[[E]]はもう手の役に立たず、[[9m]]は[[8m]][[8m]]とつながって、受け入れは10枚から14枚に増える。[[9m]]が安全なのはリーチに対してだけで、NAGAの危険度指標は12%、[[E]]はゼロである。"
+    }
+  },
+  "point-10_200_6_115": {
+    "order": 6,
+    "en": {
+      "question": "Dealer, 3rd place, South 1, 16 tiles left. An [[8m]] cut gives tenpai on [[2s]]-[[5s]], both already in your own river. Tenpai now, or [[7m]] and one-shanten?",
+      "read": "Cutting [[8m]] would give tenpai on [[2s]]-[[5s]], but both tiles already sit in LuckyJ's river, so the wait is furiten: it wins only by self-draw, on 3 tiles. LuckyJ, the dealer in 3rd, turns it down. The [[7m]] cut keeps one-shanten on 19 tiles, and a [[3s]] or [[4s]] would bring a [[6m]]-[[9m]] wait that is not furiten. It also means throwing the tile NAGA's danger proxy rates hotter. Hibakari sides with LuckyJ, and so does Mortal at 84%. The hand never got there: LuckyJ was the only player without tenpai at the draw, paid 3,000 and lost the deal.",
+      "other": "For Nishiki and Kagashi the furiten does not matter: with 16 tiles left, a dealer who is tenpai at the draw keeps the seat and collects instead of paying. The [[8m]] is also suji against Toimen and reads cooler than the [[7m]]."
+    },
+    "ja": {
+      "question": "南1局、あなたは親で3着、残り16枚。[[8m]]を切れば[[2s]][[5s]]待ちのテンパイになるが、その2枚はどちらも自分の河にある。今テンパイを取るか、[[7m]]を切って1シャンテンか。",
+      "read": "[[8m]]を切れば[[2s]][[5s]]待ちのテンパイになるが、LuckyJはその両方をすでに切っている。フリテンなので和了はツモだけで、残りは3枚。3着の親であるLuckyJはこのテンパイを取らなかった。[[7m]]切りは受け入れ19枚の1シャンテンで、[[3s]]か[[4s]]を引けばフリテンでない[[6m]][[9m]]待ちになる。その代わり、NAGAの危険度指標が高い方の牌を切ることになる。ヒバカリも[[7m]]で、Mortalも84%で同じ。テンパイには届かず、LuckyJはただ一人のノーテンとして3,000点を払い、親も流れた。",
+      "other": "ニシキとカガシにとってフリテンは問題ではない。残り16枚、親が流局時にテンパイなら親番が続き、点棒を払う側にも回らない。[[8m]]は対面に筋で、危険度指標も[[7m]]より低い。"
+    }
+  },
+  "point-11_1110_9_111": {
+    "order": 1,
+    "en": {
+      "question": "You lead by 13,000 in South 2, the dealer is in riichi and 15 tiles remain. One-shanten, with two cheap tiles to spend. Which goes first, [[2s]] or [[F]]?",
+      "read": "The wall is down to 15 tiles and the dealer, 13,000 behind, is in riichi. LuckyJ's one-shanten holds two tiles that cost almost nothing: the [[F]], genbutsu against the dealer, and a [[2s]] whose other three copies are already in the rivers. The [[F]] is the one it keeps. Whichever of [[3m]], [[6m]] or [[4p]] arrives, LuckyJ can reach tenpai by cutting the [[F]], so the discard that makes tenpai is a genbutsu too. Hibakari, Kagashi and Mortal (67%) also cut the [[2s]]. LuckyJ was tenpai at the draw and collected 1,500.",
+      "other": "Nishiki throws the [[F]] at 97%: answering a riichi with its genbutsu is the textbook move, and the [[2s]] kept in hand is the fourth copy, which NAGA's danger proxy also reads at zero. The tenpai draws and waits are the same in both orders."
+    },
+    "ja": {
+      "question": "南2局、あなたは13,000点差のトップで、親がリーチ、残り15枚。手は1シャンテンで、ほとんどただで切れる牌が2枚ある。先に切るのは[[2s]]か[[F]]か。",
+      "read": "山は残り15枚、13,000点差で追う親がリーチしている。LuckyJの1シャンテンには、ほとんど代償のない牌が2枚ある。親の現物[[F]]と、残り3枚がすでに河に出ている[[2s]]である。手に残すのは[[F]]の方。[[3m]]、[[6m]]、[[4p]]のどれを引いても[[F]]を切ってテンパイできるので、テンパイを取る打牌も現物になる。ヒバカリ、カガシ、Mortal(67%)も[[2s]]を切った。LuckyJは流局時にテンパイで、1,500点を受け取った。",
+      "other": "ニシキは97%で親の現物[[F]]を切る。リーチにまず現物を合わせるのは基本の打ち方で、手に残る[[2s]]は4枚目、NAGAの危険度指標もゼロである。どちらの順でも、テンパイになるツモと待ちは同じ。"
+    }
+  },
+  "point-11_952_0_114": {
+    "order": 2,
+    "en": {
+      "question": "First hand of the game, everyone on 25,000, 17 tiles left. The dealer has two chis, Kamicha a pon and a kan. One-shanten: [[7s]] or [[F]]?",
+      "read": "Open hands give no warning when they are ready, and there are two here: the dealer has chi'd twice, and Kamicha holds a pon of [[P]] and a kan of [[9s]]. The [[7s]] is genbutsu against Toimen only, and it reads near 1% on NAGA's danger proxy, so LuckyJ spends it now. The [[F]] is the fourth copy and genbutsu against the dealer; it will be as safe on the turn tenpai arrives, and both lines reach tenpai on the same draws. Hibakari and Mortal (91%) agree.",
+      "other": "The [[F]] reads zero and does nothing for the hand, so Nishiki and Kagashi cut it and keep the souzu block whole; the tenpai discard later can be the [[7s]] itself or a [[4s]]. Same draws, same waits."
+    },
+    "ja": {
+      "question": "半荘の最初の局、4人とも25,000点で残り17枚。親は2回チー、上家はポンとカン。あなたは1シャンテン。[[7s]]か[[F]]か。",
+      "read": "仕掛けた手は、テンパイしても知らせてくれない。場にはそれが2軒ある。親は2回チーし、上家は[[P]]をポン、[[9s]]をカンしている。[[7s]]は対面の現物にすぎないが、NAGAの危険度指標は1%ほどで、LuckyJは今のうちにこれを使った。[[F]]は4枚目で、親の現物でもある。テンパイが来た巡でも同じように安全で、テンパイになるツモはどちらの線でも変わらない。ヒバカリとMortal(91%)も[[7s]]。",
+      "other": "[[F]]は危険度指標がゼロで、手の役にも立たない。ニシキとカガシはこれを切り、[[7s]]を残して索子のブロックを崩さない。後のテンパイ打牌は[[7s]]自身か[[4s]]で済み、テンパイになるツモも待ちも同じである。"
+    }
+  },
+  "point-11_1229_5_103": {
+    "order": 3,
+    "en": {
+      "question": "South 1, dealer in 4th, 20 tiles left, and Kamicha has declared riichi. Either cut leaves one-shanten on the same draws. Cut [[2p]] or [[S]]?",
+      "read": "Tenpai comes on [[3p]], [[6p]] or [[7p]] in both lines, 10 tiles, so the only question is which live tile goes before tenpai exists. Neither the [[S]] nor the [[2p]] has a safety read against Kamicha's riichi; each is genbutsu only against Shimocha's open hand. LuckyJ pays the [[S]] now, at a reading under 1% against 4% for the [[2p]], and holds the [[2p]] for the turn a tenpai draw arrives. Until then it does not have to pass the riichi at all. Hibakari and Kagashi agree. The wall ran out with LuckyJ tenpai, so the deal stayed with it.",
+      "other": "Nishiki and Mortal, at 97%, throw the [[2p]] first and keep the [[S]] for the tenpai turn: its reading is close to zero, so the discard that makes tenpai would cost almost nothing, and the draws and waits are the same."
+    },
+    "ja": {
+      "question": "南1局、あなたは4着の親で残り20枚。上家がリーチしている。どちらを切っても同じツモ待ちの1シャンテン。[[2p]]か[[S]]か。",
+      "read": "どちらの線も[[3p]][[6p]][[7p]]の10枚でテンパイする。問題は、テンパイ前にどちらの通っていない牌を払うかだけである。[[S]]も[[2p]]も上家のリーチには通っておらず、どちらも仕掛けた下家の現物にすぎない。LuckyJは危険度指標1%未満の[[S]]を今払い、4%の[[2p]]はテンパイを引いた巡まで持っておく。それまでは、リーチに通っていない牌を切らずに済む。ヒバカリとカガシも同じ。山が尽きたときLuckyJはテンパイで、親番が続いた。",
+      "other": "ニシキとMortal(97%)は[[2p]]を先に切り、[[S]]をテンパイの巡のために残す。[[S]]の危険度指標はほぼゼロなので、テンパイを取る打牌にほとんど代償がかからない。テンパイになるツモと待ちはどちらも同じである。"
+    }
+  },
+  "point-11_587_6_95": {
+    "order": 4,
+    "en": {
+      "question": "East 4, 22 tiles left, nobody has called or declared. You lead the dealer by 5,900, three-shanten with dora [[6m]] and red [[5pr]]. The [[9p]] you drew, or [[N]]?",
+      "read": "With 22 tiles left a three-shanten hand is mostly a draw-tenpai project, and each of its next improvements will need a discard. LuckyJ's line keeps two honors for those turns: the [[N]], genbutsu against Kamicha, and the [[P]], whose other three copies are already in the rivers. Every useful draw can be paid for with one of them. The [[9p]] goes now instead, suji against Toimen but carrying a 16% reading, and with it 9 accepted tiles, 41 against 50. Hibakari, Kagashi and Mortal (70%) agree. LuckyJ reached tenpai by the draw, +1,500.",
+      "other": "Nishiki throws the [[N]] now, while it reads almost zero, and keeps the [[9p]] with [[6p]][[7p]]: 50 tiles against 41 at three-shanten, where speed decides whether tenpai arrives at all. The [[P]] still stays as a free discard in that line too. Nishiki is alone on this, at 47%."
+    },
+    "ja": {
+      "question": "東4局、残り22枚、鳴きもリーチもない。あなたは親に5,900点差のトップで、ドラ[[6m]]と赤[[5pr]]がある3シャンテン。ツモった[[9p]]か、[[N]]か。",
+      "read": "残り22枚の3シャンテンは、ほぼ流局テンパイを目指す手であり、この先の有効牌のたびに何かを切ることになる。LuckyJの線はそのための字牌を2枚残す。上家の現物[[N]]と、残り3枚がすでに河にある[[P]]である。どの有効牌を引いても、このどちらかを切って進める。今切るのは[[9p]]の方で、対面には筋だが危険度指標は16%。受け入れも9枚減って41枚対50枚になる。ヒバカリ、カガシ、Mortal(70%)も[[9p]]。LuckyJは流局までにテンパイし、+1,500点。",
+      "other": "ニシキは危険度指標がほぼゼロのうちに[[N]]を切り、[[6p]][[7p]][[9p]]の形を残す。3シャンテンではテンパイに届くかどうかを速度が決めるので、受け入れ50枚対41枚の差は大きい。この線でも[[P]]はただで切れる牌として残る。ニシキだけの選択で、47%。"
+    }
+  },
+  "point-11_704_7_95": {
+    "order": 5,
+    "en": {
+      "question": "As dealer in South 3 you trail 1st by 6,800, one-shanten with 23 tiles left. Kamicha has pon'd [[P]]; nobody has declared. Cut [[5p]] or [[W]]?",
+      "read": "For a dealer 6,800 behind 1st, tenpai at the draw is worth more than the payment: it buys another dealer hand. The only caller is Kamicha, with a pon of [[P]], and the [[W]] is genbutsu against him. LuckyJ throws a [[5p]] now, suji against Toimen, and gives up [[3p]] and [[5p]] as tenpai draws. Every tenpai left, on [[4p]], [[7p]], [[3s]] or [[6s]], sends the [[W]] out and waits on a two-sided shape; Nishiki's line would cut a [[5p]] or a [[6p]] at that point. Hibakari and Kagashi take the same line. It reached the draw tenpai and kept the deal.",
+      "other": "Mortal (93%) and Nishiki both throw the [[W]], which reads almost zero, and keep [[3p]] and [[5p]] as tenpai draws too, 15 tiles against 11. The [[5p]] LuckyJ throws is live against Kamicha and carries a 12% reading on NAGA's danger proxy, a real price with 23 tiles still to go."
+    },
+    "ja": {
+      "question": "南3局の親で、トップとは6,800点差、1シャンテンで残り23枚。上家が[[P]]をポン、宣言はまだない。[[5p]]と[[W]]、どちらを切るか。",
+      "read": "トップと6,800点差の親にとって、流局時のテンパイは点棒以上の価値がある。親番がもう1局続くからである。仕掛けているのは[[P]]をポンした上家だけで、[[W]]はその上家の現物。LuckyJは今、対面に筋の[[5p]]を切り、[[3p]]と[[5p]]でのテンパイを手放した。残るテンパイは[[4p]][[7p]][[3s]][[6s]]のどれを引いても[[W]]切りで、待ちは両面になる。ニシキの線ではそのとき[[5p]]か[[6p]]を切ることになる。ヒバカリとカガシも[[5p]]。流局時にLuckyJはテンパイで、親番を続けた。",
+      "other": "Mortal(93%)とニシキはそろって、危険度指標がほぼゼロの[[W]]を切り、[[3p]]と[[5p]]でのテンパイも残して、受け入れは15枚対11枚。LuckyJが切る[[5p]]は上家に通っておらず、危険度指標は12%。残り23枚の時点で払うには小さくない代償である。"
+    }
+  },
+  "point-12_237_4_47": {
+    "order": 1,
+    "en": {
+      "question": "East 4, last place, 2,600 behind 3rd. Kamicha declared riichi with its very first discard. Your hand is 3-shanten and holds the red dora [[5sr]]. Cut [[8p]] or [[W]]?",
+      "read": "Cutting the [[W]] keeps every block and leaves 74 tiles that improve the hand; cutting the [[8p]] breaks the [[6p]]-[[7p]]-[[8p]] run and leaves 21. That gap is the whole case for LuckyJ's line. Set against it, the [[W]] is live against a riichi declared on the first discard, with a 21% reading on NAGA's danger proxy, and a 3-shanten hand needs three useful draws, each paid for with another discard into that riichi, before it is even tenpai. Hibakari is the only engine on LuckyJ's side. The hand went to an exhaustive draw, and LuckyJ paid 1,500.",
+      "other": "The [[8p]] is a tile the dealer has discarded, and NAGA's proxy puts it under 2%. Nishiki throws it and keeps the [[W]], LuckyJ's seat wind, as a pair candidate, though the hand falls to 21 accepted tiles. Nishiki at 98%, Kagashi at 95% and Mortal at 72% all accept that price."
+    },
+    "ja": {
+      "question": "東4局、ラス目で3着まで2,600点差。上家が第一打でリーチしている。手は3シャンテンで、赤ドラの[[5sr]]がある。[[8p]]と[[W]]、どちらを切るか。",
+      "read": "[[W]]を切ればブロックはすべて残り、受け入れは74枚。[[8p]]を切ると[[6p]][[7p]][[8p]]の順子が崩れ、21枚まで減る。LuckyJの線を支える材料はこの差だけである。一方で[[W]]は第一打リーチに対して生牌で、NAGAの危険度指標は21%。3シャンテンの手はテンパイまでに有効牌を3回引く必要があり、そのたびにリーチへもう1枚押すことになる。同じ打牌を選んだエンジンはヒバカリだけ。この局は流局で、LuckyJは1,500点を払った。",
+      "other": "親の現物[[8p]]は、NAGAの危険度指標でも2%未満。ニシキはこれを切り、LuckyJの自風[[W]]を対子候補として残す。受け入れは21枚に落ちるが、ニシキ(98%)、カガシ(95%)、Mortal(72%)はそろってその代償を払う。"
+    }
+  },
+  "point-12_204_9_37": {
+    "order": 2,
+    "en": {
+      "question": "All Last. You are the dealer in 3rd, and the top three are within 700 points. You hold a [[C]] pair and the dora [[4m]]. Cut [[6m]] or [[5s]]?",
+      "read": "Any win in this dealership would put LuckyJ in 1st, and a deal-in would end the game. LuckyJ cuts the second [[6m]], leaving [[3m]] through [[7m]] as a five-tile block, and keeps the [[3s]]-[[5s]] kanchan. That discard reads 4% on NAGA's danger proxy; the [[5s]] reads 12%. The price is 9 accepted tiles, 20 against 29. Hibakari and Kagashi make the same cut, Nishiki cuts the [[5s]], and Mortal picks a third tile, [[3s]], so no line has a majority. LuckyJ later dealt into Kamicha for 2,600 and finished 3rd.",
+      "other": "Nishiki cuts the [[5s]] and keeps both [[6m]], so the manzu block takes every tile from [[2m]] to [[8m]]: 29 tiles in all. For a dealer who stays in the game only by winning or reaching tenpai, that width is the argument, bought with a discard NAGA's proxy reads three times hotter."
+    },
+    "ja": {
+      "question": "オーラス、あなたは親で3着。上位3人は700点差の中にいる。手には[[C]]の対子とドラの[[4m]]。[[6m]]と[[5s]]、どちらを切るか。",
+      "read": "この親番で和了すればLuckyJはトップに立ち、放銃すればそこで終局する。LuckyJは2枚目の[[6m]]を切って[[3m]]から[[7m]]の5枚形を作り、[[3s]][[5s]]のカンチャンを残した。NAGAの危険度指標は[[6m]]が4%、[[5s]]が12%。代償は受け入れ9枚で、20枚対29枚。[[6m]]切りはヒバカリとカガシ、[[5s]]切りはニシキ、Mortalは第三の打牌[[3s]]を選び、どの線にも過半数がない。LuckyJはこの後上家に2,600点を放銃し、3着で終えた。",
+      "other": "ニシキは[[5s]]を切って[[6m]]を2枚とも残し、萬子は[[2m]]から[[8m]]まですべて受ける形になる。受け入れは29枚。和了かテンパイでしか続かない親にとってはこの広さが論拠で、その代わりに危険度指標が3倍の牌を今切ることになる。"
+    }
+  },
+  "point-12_190_7_49": {
+    "order": 3,
+    "en": {
+      "question": "South 1, one honba. As dealer in 2nd, 5,500 behind Kamicha, you already hold a [[P]] pair. You just drew [[F]] beside a lone [[C]]. Which dragon goes?",
+      "read": "The two dragons do different jobs. Shimocha and Kamicha have each thrown an [[F]], so LuckyJ's copy can pair only with the last one unseen, and it is genbutsu against both, Kamicha being the leader. No [[C]] has appeared. LuckyJ throws the [[C]] and keeps the [[F]] for a later turn, at a cost of 2 accepted tiles, 64 against 66, and a live dragon on the table that a player holding two could pon. With no calls and no riichi yet, Nishiki (97%), Mortal (85%) and Kagashi (83%) all decline that price; only Hibakari agrees.",
+      "other": "With only one [[F]] unseen, nobody can pon it, so Nishiki throws it and keeps the [[C]], which has three copies out and can still pair into a second yakuhai pair beside the [[P]]. That line takes 66 tiles. Kagashi and Mortal side with Nishiki."
+    },
+    "ja": {
+      "question": "南1局1本場、あなたは親で2着、トップの上家まで5,500点差。[[P]]はすでに対子。ツモった[[F]]と孤立の[[C]]、どちらの三元牌を切るか。",
+      "read": "2枚の三元牌は役割が違う。[[F]]は下家と上家が1枚ずつ切っており、LuckyJの1枚が対子になるには見えていない最後の1枚を引くしかない。その代わり、トップの上家を含む2人に対する現物である。[[C]]はまだ1枚も見えていない。LuckyJは[[C]]を切って[[F]]を後の巡目に残した。代償は受け入れ2枚(64枚対66枚)と、対子を持つ他家ならポンできる生牌の三元牌を場に出すこと。鳴きもリーチもないこの局面で、ニシキ(97%)、Mortal(85%)、カガシ(83%)はその代償を払わない。同意はヒバカリだけである。",
+      "other": "ニシキの打牌は[[F]]。見えていないのは残り1枚なので、誰もポンできない牌である。[[C]]は3枚が見えておらず、[[P]]に並ぶ2つ目の役牌の対子になり得る。受け入れは66枚。カガシとMortalもニシキ側。"
+    }
+  },
+  "point-12_277_10_5": {
+    "order": 4,
+    "en": {
+      "question": "Your first discard of All Last, with a 12,800 lead. Toimen is the dealer, and [[E]] is Toimen's seat wind. Cutting it leaves 2-shanten; cutting [[1p]] leaves 3-shanten. Which goes?",
+      "read": "Toimen, the dealer, is the one player whose win does not end the game, and LuckyJ leads by 12,800. LuckyJ keeps the dealer's seat wind [[E]] off the table on the first turn and breaks the [[1p]]-[[2p]] penchan instead. The hand stays wide, 59 tiles, but at 3-shanten it is a step behind the 2-shanten Nishiki line. Hibakari agrees; Nishiki at 99%, Mortal at 95% and Kagashi at 92% throw the [[E]], the firmest engine verdict against LuckyJ in these replays. LuckyJ later dealt 24,000 into the dealer, a result too far from this turn to judge the cut by.",
+      "other": "Throwing the [[E]] reaches 2-shanten at once, while the table shows no calls and one discard each from Toimen and Kamicha. [[2m]], [[3p]] and [[7s]] each fill a gap, 12 tiles in all. The price of that speed is a first-turn pon chance for the dealer. Mortal and Kagashi agree."
+    },
+    "ja": {
+      "question": "オーラス、あなたの第一打。12,800点差のトップで、親は対面。[[E]]は対面の自風で、これを切れば2シャンテン、[[1p]]を切ると3シャンテン。どちらを切るか。",
+      "read": "親の対面は、和了しても終局しない唯一の相手で、LuckyJは12,800点差のトップ。LuckyJは第一打で親の自風[[E]]を止め、[[1p]][[2p]]のペンチャンを崩した。受け入れは59枚と広いが、3シャンテンで、ニシキの線の2シャンテンより1歩遅い。同意はヒバカリだけで、ニシキ(99%)、Mortal(95%)、カガシ(92%)は[[E]]を切る。この章の分岐の中で、エンジンがLuckyJに最も強くそろって反対した手である。LuckyJはこの後親に24,000点を放銃したが、第一打からは遠すぎて、この結果で打牌を裁くことはできない。",
+      "other": "[[E]]を切れば一気に2シャンテンになる。場には対面と上家の捨て牌が1枚ずつあるだけで、鳴きもない。[[2m]][[3p]][[7s]]がそれぞれカンチャンやペンチャンを埋め、受け入れは12枚。親に第一打からポンの機会を与えるのが、その速度の代償である。MortalとカガシもLuckyJに反対している。"
+    }
+  },
+  "point-12_666_1_41": {
+    "order": 5,
+    "en": {
+      "question": "The dealer, Kamicha, has pon'd [[E]] in East 2, and you lead by 4,900. Either cut keeps 2-shanten with the same acceptance. Cut [[7p]] or [[8s]]?",
+      "read": "With 22 tiles either way, the only question is when LuckyJ takes its risk. The dealer's [[E]] pon is round wind and seat wind at once, two han already on the table. Throwing the [[7p]] now puts out a live tile that NAGA's proxy reads at 27%; in return LuckyJ holds two of the dealer's genbutsu, [[7m]] and the [[8s]] Kamicha just threw, for later turns. The [[8s]] cut is free now and leaves one. Hibakari alone sides with LuckyJ, and Nishiki gives the [[8s]] 98%. Shimocha won the hand, and LuckyJ paid nothing.",
+      "other": "Nishiki's [[8s]] reads zero on NAGA's proxy, and keeping the [[7p]] pair adds [[7p]] and [[3s]] to the accepted tiles; the [[7m]] still answers the dealer. Kagashi (77%) and Mortal (94%) take the same line. A spare answer for later is a real benefit; three engines this sure still make LuckyJ's cut the one to doubt."
+    },
+    "ja": {
+      "question": "親の上家が[[E]]をポンしている東2局、あなたは4,900点差のトップ。どちらを切っても2シャンテンで受け入れは同じ。[[7p]]と[[8s]]、どちらを切るか。",
+      "read": "受け入れはどちらも22枚で、違いは危険をいつ払うかだけである。親の[[E]]ポンは場風と自風を兼ね、すでに2翻が見えている。今[[7p]]を切れば、NAGAの危険度指標で27%の生牌を押すことになる。その見返りに、親の現物である[[7m]]と、上家が直前に切った[[8s]]の2枚を後の巡目に残せる。[[8s]]切りなら今の危険はゼロだが、残る現物は1枚になる。LuckyJと同じ打牌はヒバカリだけで、ニシキは98%で[[8s]]を選ぶ。この局は下家の和了で、LuckyJの失点はなかった。",
+      "other": "ニシキは危険度ゼロの[[8s]]を切り、[[7p]]の対子を残す。これで[[7p]]と[[3s]]も受け入れに入り、親への答えとして[[7m]]も手に残る。カガシ(77%)とMortal(94%)も同じ選択である。後の巡目の予備には確かに価値があるが、3つのエンジンがここまで揃う以上、疑ってかかるべきはLuckyJの打牌の方である。"
+    }
+  },
+  "point-13_910_1_17": {
+    "order": 1,
+    "en": {
+      "question": "Dealer and tied for 1st in East 2. Toimen has pon'd [[9m]] and shows no yaku. Your lone [[E]] is the round wind. Cut it, or [[1p]]?",
+      "read": "Toimen's [[9m]] pon brings no yaku with it, and the [[E]] is the round wind, so throwing it now means taking the pon risk: one call would give Toimen a yaku. For LuckyJ the same tile is a double wind as dealer, so the cut gives up value as well. What it buys is speed at 1-shanten, 23 tiles against 19, with the [[1p]]-[[3p]] kanchan kept. Mortal backs the cut at 93%, Hibakari too; Nishiki and Kagashi hold the [[E]]. LuckyJ later dealt into Shimocha for 8,300.",
+      "other": "Holding the [[E]] costs Nishiki 4 tiles. In return, a second copy would give the dealer a double-wind pair that can grow into a two-han triplet, and Toimen gets no shot at the round wind this turn. Kagashi agrees, at 53% to Nishiki's 61%."
+    },
+    "ja": {
+      "question": "東2局1本場、あなたは親で同点のトップ。対面が[[9m]]をポンしたが、役は見えない。孤立の[[E]]は場風。これを切るか、[[1p]]を切るか。",
+      "read": "対面の[[9m]]ポンには役がなく、[[E]]は場風である。今これを切れば、1回のポンで対面に役ができる。そのポンリスクを受け入れる打牌になる。しかも親のLuckyJにとって[[E]]はダブ東で、打点の種も手放す。得るものは1シャンテンの速度で、受け入れは23枚対19枚、[[1p]][[3p]]のカンチャンも残る。Mortalは93%でこの[[E]]切りを支持し、ヒバカリも同じ。ニシキとカガシは[[E]]を残す。LuckyJはこの後、下家に8,300点を放銃した。",
+      "other": "[[E]]を残す代償は受け入れ4枚。見返りに、2枚目が来ればダブ東の対子になり、刻子になれば2翻。この巡目に対面が場風を鳴く機会もない。ニシキ(61%)とカガシ(53%)がこの線だが、どちらの支持も強くはない。"
+    }
+  },
+  "point-13_454_2_19": {
+    "order": 2,
+    "en": {
+      "question": "East 3, last place, 1,000 behind 3rd. Kamicha, the leader, has pon'd [[S]], which is no yaku for that seat. You hold [[P]] and [[F]]. Cut [[9p]] or [[P]]?",
+      "read": "In last place early in East 3, speed counts. A West seat gets no yaku from [[S]] in the East round, so either live dragon could supply one; throwing the [[P]] puts that pon risk on the table now, while Kamicha shows one call and three discards. In return the hand keeps 65 improving tiles against 58 and holds [[9p]], the dealer's genbutsu. NAGA's proxy also puts the [[P]] at 1%, lower than the [[9p]]. Only Hibakari agrees; Nishiki, Kagashi and Mortal throw the [[9p]]. LuckyJ won the hand, +9,000.",
+      "other": "Nishiki throws the [[9p]] and keeps both dragons. Each is a yakuhai pair candidate for a last-place hand, and neither is on offer to the leader. That costs 7 tiles. Kagashi (79%) and Mortal (66%) take the same line."
+    },
+    "ja": {
+      "question": "東3局、ラス目で3着まで1,000点差。トップの上家が[[S]]をポンしたが、上家の役にはならない。手には[[P]]と[[F]]。[[9p]]と[[P]]、どちらを切るか。",
+      "read": "東3局の序盤でラス目なら速度が欲しい。東場の西家にとって[[S]]は役にならず、生牌の三元牌はどちらも上家に役を与え得る。[[P]]を切れば、上家の鳴きが1つ、捨て牌が3枚のこの段階でポンリスクを負う。見返りに受け入れは65枚対58枚、親の現物[[9p]]も手に残る。NAGAの危険度指標でも[[P]]は1%で、[[9p]]より低い。同意はヒバカリだけで、ニシキ、カガシ、Mortalは[[9p]]を切る。LuckyJはこの局を和了し、+9,000点だった。",
+      "other": "ニシキは[[9p]]を切り、三元牌を2枚とも残す。ラス目の手にとってどちらも役牌の対子候補で、トップ目に差し出す牌にもならない。代償は受け入れ7枚。カガシ(79%)とMortal(66%)も同じ線である。"
+    }
+  },
+  "point-13_317_1_25": {
+    "order": 3,
+    "en": {
+      "question": "You are the dealer in 2nd with a pair of [[E]], and Toimen, 3,900 ahead, has chi'd [[1s]]-[[2s]]-[[3s]] with no yaku in sight. Cut [[3m]] or [[P]]?",
+      "read": "Both cuts leave 40 tiles, and LuckyJ already owns a double-wind pair in [[E]], so the [[P]] adds little to this hand. To Toimen a dragon pon would give the chi hand a yaku, and that is the pon risk of throwing it. The other candidate, the [[3m]], reads 10% on NAGA's danger proxy against 2% for the [[P]]. Three engines still throw the [[3m]], so whatever they charge the [[P]] for, pon risk or pair value, the danger number does not show it. Hibakari alone backs LuckyJ. Toimen won; LuckyJ paid 500.",
+      "other": "To hold the [[P]], Nishiki throws the [[3m]] at five times the danger reading. The dragon is a second yakuhai pair candidate beside the [[E]] pair, and the leader has one tile fewer to call. Kagashi gives LuckyJ's [[P]] just 1%; Mortal sides with Nishiki at 72%."
+    },
+    "ja": {
+      "question": "あなたは親で2着、[[E]]が対子。3,900点差でトップの対面が[[1s]][[2s]][[3s]]をチーしたが、役は見えない。[[3m]]と[[P]]、どちらを切るか。",
+      "read": "どちらを切っても受け入れは40枚で、LuckyJはすでにダブ東の[[E]]対子を持つ。[[P]]がこの手に足すものは少ない。対面にとっては、三元牌のポンがチーだけの手に役を与える。[[P]]切りのポンリスクはそこにある。もう一方の[[3m]]は、NAGAの危険度指標で10%、[[P]]は2%。それでも3つのエンジンが[[3m]]を切る。ポンリスクか対子の価値か、エンジンが[[P]]に付けている値段は危険度の数字には表れていない。同意はヒバカリだけ。この局は対面の和了で、LuckyJは500点を払った。",
+      "other": "[[P]]を残すために、ニシキは危険度が5倍の[[3m]]を切る。[[E]]の対子に並ぶ2つ目の役牌候補であり、トップ目が鳴ける牌も1枚減る。カガシはLuckyJの[[P]]切りに1%しか与えず、Mortalも72%でニシキ側。"
+    }
+  },
+  "point-13_1280_1_25": {
+    "order": 4,
+    "en": {
+      "question": "Toimen, the dealer and leader, has pon'd [[S]] and [[8m]], neither a yaku for that seat. You hold two red fives and a dora. Cut [[3m]] or [[F]]?",
+      "read": "Two red fives and the dora [[7s]] make this hand worth playing, and both cuts leave it identical: 2-shanten, 17 tiles, the same six kinds. The only difference is what the dealer is offered. After two pons with no yaku, the [[F]] carries an obvious pon risk: a third meld would come with a yaku attached. The [[3m]] has no yakuhai value, but NAGA's proxy reads it hotter, 15% against 10%. LuckyJ throws the dragon, with Mortal (51%) and Hibakari behind it. Kamicha won the hand, and LuckyJ paid nothing.",
+      "other": "For Nishiki the [[F]] hold is free in shape. The dealer already has two calls, and a dragon pon would give the leader's hand a yaku at once; the higher danger reading on the [[3m]] is the whole price. Kagashi agrees at 88%."
+    },
+    "ja": {
+      "question": "親でトップの対面が[[S]]と[[8m]]をポンしたが、どちらも対面の役にはならない。手には赤五が2枚とドラ。[[3m]]と[[F]]、どちらを切るか。",
+      "read": "赤五2枚とドラ[[7s]]があり、押す価値のある手である。どちらを切っても2シャンテン、受け入れ17枚で、受ける牌の種類まで同じ。違いは親に何を差し出すかだけになる。役のない2つのポンを持つ親に対し、[[F]]のポンリスクははっきりしている。鳴かれれば3つ目の副露に役が付いてくる。[[3m]]は役牌ではないが、NAGAの危険度指標は[[3m]]が15%、[[F]]が10%。LuckyJは三元牌の方を切り、Mortal(51%)とヒバカリが同意した。この局は上家の和了で、LuckyJの失点はなかった。",
+      "other": "ニシキにとって[[F]]を止める形の損はない。親はすでに2副露で、三元牌のポンはトップ目の手にすぐ役を与える。[[3m]]の高い危険度が代償のすべてである。カガシも88%で同じ選択。"
+    }
+  },
+  "point-14_1068_5_17": {
+    "order": 1,
+    "en": {
+      "question": "East 4, you are the dealer, 10,300 ahead. Shimocha has pon'd [[E]] and Kamicha [[N]], each a yaku. Cut [[4m]] or [[9p]]?",
+      "read": "The [[9p]] is Shimocha's first discard and the only genbutsu anywhere in LuckyJ's hand. Holding it costs no shape: cutting the [[4m]] leaves 38 accepted tiles, cutting the [[9p]] leaves 34, because [[7p]]-[[9p]] still takes [[8p]]. The price is this turn's discard, a [[4m]] that NAGA's proxy reads at 8% against 2% for the [[9p]]. Kagashi makes the same cut. Neither line holds anything for Kamicha's [[N]] pon, so the answer LuckyJ keeps has one name on it: Shimocha, the caller in last place.",
+      "other": "Spending the [[9p]] now is cheap: 2% on NAGA's proxy, early in the hand, with LuckyJ well ahead. Nishiki's line loses only the [[8p]] draws, 4 tiles. Mortal goes its own way with the dora [[9m]]."
+    },
+    "ja": {
+      "question": "東4局、あなたは親で10,300点差のトップ。下家が[[E]]、上家が[[N]]をポンし、どちらも役がある。[[4m]]と[[9p]]、どちらを切るか。",
+      "read": "[[9p]]は下家の第一打で、LuckyJの手にある唯一の現物である。これを残しても形の損はない。[[4m]]を切れば受け入れは38枚、[[9p]]を切れば34枚で、[[7p]][[9p]]が[[8p]]を受ける分だけ[[4m]]切りの方が広い。代償は今切る牌の危険度で、NAGAの危険度指標は[[4m]]が8%、[[9p]]が2%。同じ打牌はカガシ。上家の[[N]]ポンにはどちらの線も答えを持たないので、LuckyJが残す答えの宛先はラス目の下家ひとりになる。",
+      "other": "[[9p]]を今使う理由は安さにある。危険度指標は2%、局の序盤で、LuckyJは大きくリードしている。ニシキの線で失うのは[[8p]]の受け入れ4枚だけである。Mortalは独自にドラの[[9m]]を選ぶ。"
+    }
+  },
+  "point-14_669_8_71": {
+    "order": 2,
+    "en": {
+      "question": "South 2, you are 3rd. Kamicha leads with 51,500 and has declared riichi; Toimen is the dealer. [[1m]] is Toimen's genbutsu, [[3p]] is Kamicha's. Which do you cut?",
+      "read": "LuckyJ keeps the [[3p]], the riichi's genbutsu, and spends the [[1m]], which answers Toimen, the dealer, who has neither called nor declared; against Kamicha the [[1m]] is live. The keep is cheap in shape: spending the [[1m]] holds 2-shanten, while taking out the [[3p]] breaks [[1p]]-[[2p]]-[[3p]] and drops to 3-shanten. NAGA's proxy even reads the [[1m]] cooler, 6% against 14% for the [[3p]]. Kagashi cuts the [[1m]] as well. Kamicha won the hand; LuckyJ lost 1,000.",
+      "other": "Nishiki at 90% and Mortal at 70% throw the [[3p]] and keep the [[1m]], so the hand still holds an answer to Toimen, the dealer in 2nd. The line widens to 43 tiles, 2 more, although it steps back to 3-shanten and keeps nothing for Kamicha. Hibakari's pick is [[1p]]."
+    },
+    "ja": {
+      "question": "南2局、あなたは3着。51,500点持ちのトップ上家がリーチ、親は対面。[[1m]]は対面の現物、[[3p]]は上家の現物。どちらを切るか。",
+      "read": "LuckyJはリーチの現物[[3p]]を残し、[[1m]]を使った。[[1m]]が答えるのは鳴きもリーチもない親の対面で、上家には通っていない。残す負担は形の上でも軽い。[[1m]]切りなら2シャンテンのまま、[[3p]]を抜くと[[1p]][[2p]][[3p]]が崩れて3シャンテンに戻る。NAGAの危険度指標はむしろ[[1m]]を低く見ており、[[1m]]が6%、[[3p]]が14%。カガシも[[1m]]を切る。この局は上家の和了で、LuckyJは1,000点を失った。",
+      "other": "ニシキ(90%)とMortal(70%)は[[3p]]を切って[[1m]]を残し、2着の親である対面への答えを手に置く。受け入れは2枚増えて43枚になるが、3シャンテンに下がり、上家のリーチに答える牌は1枚もなくなる。ヒバカリの第一候補は[[1p]]。"
+    }
+  },
+  "point-14_336_2_73": {
+    "order": 3,
+    "en": {
+      "question": "Three dora [[7s]] in a dealer hand, 1st place, East 3. Toimen has pon'd [[C]] and Kamicha [[P]]. Break your [[9s]] pair, or cut the lone [[1s]]?",
+      "read": "A dealer hand with three dora is worth a lot, but this one is still 2-shanten in the middle of the hand, and two players hold dragon pons. The [[5s]] already answers Kamicha. For Toimen there is one answer, the [[1s]], Toimen's genbutsu. LuckyJ keeps it and breaks the [[9s]] pair, paying 6 tiles, 19 against 25, and a discard NAGA's proxy reads at 20% against 3% for the [[1s]]. Kagashi and Mortal cut the [[9s]] as well. Toimen won the hand off another player.",
+      "other": "Nishiki's case is speed for a dealer holding three dora: the [[1s]] goes at 3%, the [[9s]] pair stays, and [[5s]] through [[9s]] join the accepted tiles for 25 in all. Hibakari goes for a third tile, [[3s]]."
+    },
+    "ja": {
+      "question": "東3局、親でトップ、手にはドラの[[7s]]が3枚。対面が[[C]]、上家が[[P]]をポンしている。[[9s]]の対子を崩すか、孤立の[[1s]]を切るか。",
+      "read": "親のドラ3は大きな手だが、局の中盤でまだ2シャンテン、しかも2人が三元牌をポンしている。上家には[[5s]]が答えになる。対面に答えられる牌は、対面の現物[[1s]]の1枚だけである。LuckyJはそれを残して[[9s]]の対子を崩し、受け入れ6枚(19枚対25枚)と、危険度指標20%の打牌を代償に払った。[[1s]]なら3%だった。カガシとMortalも[[9s]]を切る。この局は対面が他家から和了した。",
+      "other": "ドラ3の親なら2枚目の答えより速度に値打ちがある、とニシキは見る。危険度3%の[[1s]]を切って[[9s]]の対子を残し、受け入れは[[5s]]から[[9s]]まで広がって25枚。ヒバカリは第三の打牌[[3s]]を選ぶ。"
+    }
+  },
+  "point-14_965_10_93": {
+    "order": 4,
+    "en": {
+      "question": "All Last, 24 tiles left. You are 2nd, 2,900 behind Kamicha and 6,200 ahead of Shimocha, who has called a chi. Cut [[6m]] or [[9p]]?",
+      "read": "Shimocha is the only caller and the player best placed to take 2nd: a 3,900 deal-in to Shimocha would do it. Every opponent has discarded a [[9p]], and with [[4p]] it gives LuckyJ two genbutsu against the chi. To keep it, LuckyJ throws the [[6m]], a live tile NAGA's proxy reads at 27%, and gives up 2 accepted tiles, 23 against 25. Kagashi agrees. LuckyJ won the hand for 1,000, short of catching Kamicha, and finished 2nd.",
+      "other": "Nishiki lets the [[9p]] go and keeps [[5m]]-[[6m]]-[[6m]], which also takes [[6m]]: 25 tiles in all. The [[4p]] still covers Shimocha in that line, so Nishiki gives up a spare answer to avoid a 27% discard in the final hand. Mortal agrees."
+    },
+    "ja": {
+      "question": "オーラス、残り24枚。あなたは2着で、トップの上家まで2,900点差、チーしている3着の下家とは6,200点差。[[6m]]と[[9p]]、どちらを切るか。",
+      "read": "鳴いているのは下家だけで、LuckyJから2着を奪える位置にいるのも下家である。下家に3,900点を放銃すれば順位が入れ替わる。[[9p]]は3人全員が捨てている牌で、[[4p]]と合わせて下家のチーへの現物が2枚になる。それを残すためにLuckyJは、危険度指標27%の生牌[[6m]]を切り、受け入れも2枚減らした(23枚対25枚)。同意はカガシ。LuckyJはこの局を1,000点で和了したが上家には届かず、2着で終えた。",
+      "other": "ニシキは[[9p]]を手放し、[[5m]][[6m]][[6m]]を残して[[6m]]も受ける形にする。受け入れは25枚。その線でも[[4p]]が下家への答えとして残るので、予備の1枚を手放す代わりに、最終局で27%の打牌を避ける判断である。Mortalも同じ。"
+    }
+  },
+  "point-14_187_0_125": {
+    "order": 5,
+    "en": {
+      "question": "The first hand of the game, nine tiles left. Toimen has declared riichi, and the dealer, Kamicha, has chi'd [[7m]]-[[8m]]-[[9m]]. You are 4-shanten. Cut [[9m]] or [[C]]?",
+      "read": "At 4-shanten with nine tiles left, the hand is out of the race, and both lines keep seven safe tiles, so the question is whom the next discard stops covering. The [[9m]] is genbutsu against Toimen's riichi and against Shimocha; the dealer has not thrown one. The [[C]] is the dealer's genbutsu, the fourth copy after three in Kamicha's river. LuckyJ spends the [[9m]] and keeps [[2p]] and [[N]] for Toimen, [[9s]], [[P]] and [[C]] for the dealer. Mortal and Kagashi agree. The hand ended in a draw; LuckyJ paid 1,000.",
+      "other": "The [[C]] reads zero on NAGA's proxy, and Nishiki throws it to keep the [[9m]], a third genbutsu against the declared player. Accepted tiles jump from 14 to 42, which matters little at 4-shanten this late. Hibakari prefers [[8s]]."
+    },
+    "ja": {
+      "question": "開局の東1局、残り9枚。対面がリーチ、親の上家は[[7m]][[8m]][[9m]]をチーしている。手は4シャンテン。[[9m]]と[[C]]、どちらを切るか。",
+      "read": "残り9枚で4シャンテンなら、この手はもう勝負に加われない。どちらの線も安全牌を7枚残すので、問題は次の打牌でどの相手への備えを1枚減らすかである。[[9m]]は対面のリーチと下家への現物だが、親は一度も切っていない。[[C]]は親の現物で、上家の河に3枚あるのでこれが4枚目になる。LuckyJは[[9m]]を使い、対面には[[2p]]と[[N]]、親には[[9s]][[P]][[C]]を残した。MortalとカガシもLuckyJと同じ。この局は流局で、LuckyJは1,000点を払った。",
+      "other": "[[C]]はNAGAの危険度指標でゼロ。ニシキはこれを切り、[[9m]]をリーチ者への3枚目の現物として残す。受け入れは14枚から42枚に増えるが、この巡目の4シャンテンではほとんど意味がない。ヒバカリだけは[[8s]]を推す。"
+    }
+  },
+  "point-15_190_5_67": {
+    "order": 1,
+    "en": {
+      "question": "Toimen has called twice in pinzu, and both cuts leave the same 12 tiles. Spend the [[1p]] that Shimocha and the dealer discarded, or one of your two dora [[7s]]?",
+      "read": "Toimen, level with LuckyJ on 16,600, is the only player with calls on the table. The [[1p]] is genbutsu against Shimocha and the dealer, who have neither called nor declared, and it is live against Toimen. The [[8p]], genbutsu against Toimen, stays inside the hand in either line. So LuckyJ spends the [[1p]], keeps the [[7s]] pair and loses nothing in shape: 12 tiles either way. NAGA's danger proxy also rates the [[7s]] far hotter than the [[1p]] this turn. Mortal (82%) and Kagashi make the same cut. LuckyJ went on to win the hand, +13,000.",
+      "other": "Nishiki keeps the [[1p]] and gives up a dora instead. The shape is identical, and the [[1p]] is genbutsu against two players, one of them the dealer on 42,100, so if the dealer declares later it cannot deal in to that riichi. Hibakari also cuts the [[7s]]."
+    },
+    "ja": {
+      "question": "対面が筒子を2回チーしている。どちらを切っても受け入れは同じ12枚。下家と親が捨てている[[1p]]を使うか、2枚あるドラ[[7s]]の1枚を切るか。",
+      "read": "鳴いているのは、LuckyJと同じ16,600点の対面だけである。[[1p]]は下家と親の現物だが、その2人は鳴きもリーチもしておらず、対面には通っていない。対面の現物[[8p]]は、どちらの線でも手の中に残る。そこでLuckyJは[[1p]]を使い、[[7s]]の対子を残した。形の損はなく、受け入れはどちらも12枚。この巡の打牌としても、NAGAの危険度指標は[[7s]]を[[1p]]よりはるかに高く見ている。Mortal(82%)とカガシも[[1p]]を選んだ。LuckyJはこの局を和了し、13,000点を加えた。",
+      "other": "ニシキは[[1p]]を残し、ドラを1枚切る。形はまったく同じで、[[1p]]は42,100点の親を含む2人への現物。後から親がリーチをかけても、そのリーチには放銃しない。ヒバカリも[[7s]]を切る。"
+    }
+  },
+  "point-15_942_8_67": {
+    "order": 2,
+    "en": {
+      "question": "Dealer in 3rd, and Kamicha has declared riichi. Your [[W]] pair is genbutsu only for Shimocha. Cutting the [[4s]] keeps one-shanten, but it is live against Kamicha. Which goes?",
+      "read": "Before the riichi, the [[W]] pair was a head and two turns of genbutsu against Shimocha. Once Kamicha declares, the question is how the [[W]] fares against the riichi: it is live, but 3 of its 4 copies are in sight, and NAGA's danger proxy rates the [[4s]] far hotter. The one genbutsu against the riichi, the [[3s]], sits in a triplet and stays in both lines. LuckyJ spends one [[W]], keeps the [[4s]] inside the hand, and takes two-shanten on 36 tiles over one-shanten on 13. Only Kagashi agrees. Kamicha won the hand; LuckyJ paid 2,600.",
+      "other": "Pushing the [[4s]] once keeps one-shanten and the [[W]] pair as a head. A dealer's win pays half again as much, and stepping back with 38 tiles left gives up time the hand may not get back. Nishiki, Hibakari and Mortal (68%) all cut the [[4s]]."
+    },
+    "ja": {
+      "question": "あなたは3着目の親で、上家がリーチ。[[W]]の対子は下家だけの現物。[[4s]]を切れば1シャンテンが残るが、上家には通っていない。どちらを切るか。",
+      "read": "リーチの前、[[W]]の対子は雀頭であり、下家への現物2枚でもあった。上家がリーチした今、問うべきは[[W]]がリーチに対してどうかである。[[W]]は上家に通っていないが、4枚中3枚が見えており、NAGAの危険度指標は[[4s]]の方をはるかに高く見る。リーチへの唯一の現物[[3s]]は刻子の中にあり、どちらの線でも残る。LuckyJは[[W]]を1枚使い、[[4s]]を手の中に残して、1シャンテン13枚より2シャンテン36枚を選んだ。同じ打牌はカガシだけ。この局は上家の和了で、LuckyJは2,600点を払った。",
+      "other": "[[4s]]を一度押せば1シャンテンが残り、[[W]]の対子も雀頭として残る。親の和了は子の1.5倍で、残り38枚で1歩下がれば、その時間は取り戻せないかもしれない。ニシキ、ヒバカリ、Mortal(68%)はそろって[[4s]]を切る。"
+    }
+  },
+  "point-15_302_8_20": {
+    "order": 3,
+    "en": {
+      "question": "South 1, you are the dealer in 2nd and Kamicha has a closed kan of [[F]]. You just drew the dora [[N]], Shimocha's genbutsu. Keep it, or the lone [[C]]?",
+      "read": "It is LuckyJ's third discard. Against Kamicha's kan the hand already holds the [[1m]], genbutsu for Kamicha, in both lines. The [[N]] answers only Shimocha, who has made two discards and nothing else. What the [[N]] offers is dora, and only if it pairs: 2 copies are unseen. The [[C]] has 3 unseen, and once paired it can be ponned for a yaku. LuckyJ cuts the dora, and its line accepts 20 tiles to Nishiki's 19. The hand ended with LuckyJ dealing into Shimocha for 5,500.",
+      "other": "Paired, the [[N]] is two dora, and until then it stays genbutsu against Shimocha, so Nishiki's line holds 2 safe tiles to LuckyJ's 1. The acceptance gap is one tile. Hibakari and Mortal (71%) cut the [[C]] as well."
+    },
+    "ja": {
+      "question": "南1局、あなたは2着目の親で、上家が[[F]]を暗槓している。ツモったドラの[[N]]は下家の現物。これを残すか、孤立した[[C]]を残すか。",
+      "read": "LuckyJの3打目である。上家の暗槓に対しては、上家の現物[[1m]]がどちらの線でも手に残る。[[N]]が守るのは下家だけで、その下家はまだ2枚を切っただけ。[[N]]のドラとしての価値は対子になって初めて生まれ、見えていないのは2枚。[[C]]は3枚残っていて、対子になればポンで役がつく。LuckyJはドラを切り、受け入れは20枚対19枚。この局はLuckyJが後に下家へ5,500点を放銃して終わった。",
+      "other": "[[N]]を残せば、対子になったときドラ2枚、それまでは下家への現物として持っておける。安全牌は2枚対1枚。受け入れの差は1枚にすぎない。ヒバカリとMortal(71%)も[[C]]を切る。"
+    }
+  },
+  "point-15_373_2_31": {
+    "order": 4,
+    "en": {
+      "question": "East 2, fourth discard. Toimen has a chi and a pon of [[S]]. Your [[9m]] pair is genbutsu against Kamicha only. Break it, or cut the [[6m]]?",
+      "read": "That [[S]] is Toimen's own seat wind, so the open hand already has its yaku. Against Toimen, LuckyJ holds the [[1s]] and [[4s]], both genbutsu, and both stay in either line. The [[9m]] pair covers only Kamicha, a player with no call and no riichi. LuckyJ breaks it, keeps one [[9m]] back, and holds the middle [[6m]] instead. The cost is 5 tiles, 13 against 18, and all 5 are draws that would turn a pair into a triplet. Kagashi is the only engine on LuckyJ's side. Toimen took the hand; it cost LuckyJ 2,000.",
+      "other": "The pair is worth keeping for Nishiki: it gives the hand a head and a second [[9m]] that is genbutsu against Kamicha. [[9m]], [[3s]] and [[6s]] all become useful draws. The [[6m]] it cuts reads no hotter on NAGA's danger proxy. Mortal (63%) takes Nishiki's side; Hibakari prefers the [[6s]]."
+    },
+    "ja": {
+      "question": "東2局、4打目。対面はチーと[[S]]のポンをしている。[[9m]]の対子は上家だけの現物。対子を崩すか、[[6m]]を切るか。",
+      "read": "その[[S]]は対面の自風で、この副露手にはもう役がある。対面に対しては[[1s]]と[[4s]]が現物で、どちらの線でも手に残る。[[9m]]の対子が守るのは上家だけで、上家はまだ何の動きも見せていない。LuckyJは対子を崩して[[9m]]を1枚残し、中ほどの[[6m]]を持った。代償は受け入れ5枚、13枚対18枚で、その5枚はすべて対子を刻子にするツモである。カガシだけがLuckyJ側にいる。和了したのは対面で、LuckyJの支払いは2,000点。",
+      "other": "対子を残すのがニシキの線である。雀頭ができ、上家への現物として[[9m]]が2枚手に残る。[[9m]]、[[3s]]、[[6s]]もすべて有効牌になる。切る[[6m]]はNAGAの危険度指標で見ても[[9m]]より高くない。Mortal(63%)はニシキと同じで、ヒバカリの第一候補は[[6s]]。"
+    }
+  },
+  "point-16_320_2_95": {
+    "order": 1,
+    "en": {
+      "question": "24 tiles left, you are last, and the dealer Toimen has pon'd [[F]]. Cutting [[4m]] makes tenpai on the [[7p]][[9p]] kanchan. Take it, or cut [[9p]]?",
+      "read": "All four [[8p]] are already in the rivers: three from Shimocha, one from Kamicha. The tenpai on offer waits on a tile with no copies left. The [[9p]] is the edge of that dead kanchan, and it is also suji against the dealer, who has discarded two [[6p]]. Cutting it keeps one-shanten on 24 tiles with the dora [[3s]] still in its run, and NAGA's danger proxy rates it at less than half the [[4m]]. Mortal puts 96% on the [[9p]]. LuckyJ lost 1,600 when Toimen won the hand.",
+      "other": "Nishiki cuts the [[4m]] and is tenpai at once, keeping the [[9p]] as one more safe tile against the dealer: 11 in hand to LuckyJ's 10. From tenpai, a single draw can move the wait onto live tiles. Hibakari prefers the [[2p]], and Kagashi makes LuckyJ's cut."
+    },
+    "ja": {
+      "question": "残り24枚、あなたはラス目。親の対面は[[F]]をポンしている。[[4m]]を切れば[[7p]][[9p]]のカンチャンでテンパイ。取るか、[[9p]]を切るか。",
+      "read": "[[8p]]はすでに4枚とも河にある。下家に3枚、上家に1枚。カンチャンのテンパイを取っても、和了牌は1枚も残っていない。[[9p]]はその死んだ形の端の牌で、親の対面が[[6p]]を2枚切っているので筋にもなる。これを切れば1シャンテンで受け入れ24枚、ドラ[[3s]]も順子の中に残る。NAGAの危険度指標でも、打牌の危なさは[[9p]]の方がずっと低い。Mortalは96%で[[9p]]を選んだ。和了は対面で、LuckyJは1,600点を失った。",
+      "other": "ニシキは[[4m]]を切ってすぐにテンパイを取り、親への安全牌として[[9p]]を手に残す。手に残る安全牌は11枚、LuckyJの線は10枚。テンパイからなら、1枚のツモで生きた待ちに移れることもある。ヒバカリの第一候補は[[2p]]で、LuckyJと同じなのはカガシ。"
+    }
+  },
+  "point-16_311_2_123": {
+    "order": 2,
+    "en": {
+      "question": "You are the dealer, 700 behind 1st, and Kamicha has declared riichi with 9 tiles left. Your manzu half-flush stays tenpai whether you cut [[1m]] or [[6m]]. Which?",
+      "read": "Both cuts keep the half-flush tenpai, so the choice comes down to the wait and to the tile handed to Kamicha. NAGA's danger proxy puts the [[6m]] at the very top of its scale; the [[1m]] is live too but reads 15%. LuckyJ gives up the edge tile and keeps the [[6m]] pair as part of a wait on [[6m]] and [[9m]]. That wait is thin, with 2 [[6m]] and 1 [[9m]] left. Kagashi is the only engine to cut the [[1m]]. Shimocha won the hand, and LuckyJ paid 4,000 as dealer.",
+      "other": "Nishiki and Hibakari cut the [[6m]] for twice the wait: [[1m]], [[4m]] and [[5m]], 6 tiles to LuckyJ's 3. A dealer half-flush pays enough that doubling the winning tiles can justify one hot discard. Mortal's top action here is a riichi declaration (99%)."
+    },
+    "ja": {
+      "question": "あなたはトップと700点差の親で、残り9枚で上家がリーチ。萬子の混一色は、[[1m]]を切っても[[6m]]を切ってもテンパイのまま。どちらを切るか。",
+      "read": "どちらを切っても混一色のテンパイは崩れない。違いは待ちと、上家に渡す1枚である。NAGAの危険度指標では[[6m]]が目盛りの最上端にあり、[[1m]]も通ってはいないが15%にとどまる。LuckyJは端の[[1m]]を手放し、[[6m]]の対子を[[6m]]と[[9m]]の待ちに使った。残りは[[6m]]が2枚、[[9m]]が1枚だけの細い待ちである。[[1m]]を切るエンジンはカガシだけ。この局は下家の和了で、LuckyJは親として4,000点を払った。",
+      "other": "ニシキとヒバカリは[[6m]]を切り、[[1m]][[4m]][[5m]]の6枚待ちを取る。LuckyJの3枚の倍である。親の混一色なら、和了牌を倍にするために危ない1枚を通す理由は立つ。Mortalの第一候補はリーチ宣言(99%)。"
+    }
+  },
+  "point-16_577_1_41": {
+    "order": 3,
+    "en": {
+      "question": "East 2, a quiet table, and you are the dealer in 1st. You just drew a second dora [[2m]]. Break the [[9m]] pair, or give back a [[2m]]?",
+      "read": "With no calls or riichi on the table, and both candidates cold on NAGA's danger proxy, this turn is only about the hand. Two of its three pairs are in play: [[2m]][[2m]], 2 han as dora, and [[9m]][[9m]], worth nothing. LuckyJ breaks the terminal pair and keeps both dora, giving up 8 tiles of acceptance, 18 against 26, at two-shanten. Two dora turn a dealer's plain riichi into a 3-han hand; the [[9m]] pair adds only width. Kagashi agrees, and so does Mortal at 63%. LuckyJ won the hand, +14,000.",
+      "other": "Giving back one [[2m]] still leaves a dora, and the [[9m]] pair stays. That line takes 26 tiles, 8 more, and at two-shanten the wider count usually means reaching tenpai sooner. Nishiki (95%) and Hibakari (91%) are close to certain about it."
+    },
+    "ja": {
+      "question": "東2局、場は静か。あなたはトップ目の親で、2枚目のドラ[[2m]]を引いた。[[9m]]の対子を崩すか、[[2m]]を1枚戻すか。",
+      "read": "鳴きもリーチもなく、どちらの候補もNAGAの危険度指標は低い。この巡は自分の手だけの問題である。3組ある対子のうち、問われているのは2組。[[2m]][[2m]]はドラで2翻、[[9m]][[9m]]には打点がない。LuckyJは端の対子を崩してドラ2枚を残し、2シャンテンのまま受け入れを18枚対26枚と8枚減らした。ドラ2枚があれば、親の平凡なリーチが3翻になる。カガシも同じ打牌で、Mortalも63%で支持する。この局はLuckyJが和了し、14,000点を加えた。",
+      "other": "[[2m]]を1枚戻してもドラは1枚残り、[[9m]]の対子も残る。受け入れは26枚で8枚多く、2シャンテンなら広い方がテンパイも早くなりやすい。ニシキ(95%)とヒバカリ(91%)はほぼ迷わずこちらを選ぶ。"
+    }
+  },
+  "point-16_1018_11_63": {
+    "order": 4,
+    "en": {
+      "question": "South 3: the dealer, 2,300 behind you, has declared riichi, and nothing you hold is genbutsu or suji against it. Cut a [[3m]], or the [[1m]] from your finished run?",
+      "read": "Toimen's river holds no manzu at all, so both candidates are live and the only question is the price. NAGA's danger proxy reads the [[1m]] at 32% and the [[3m]] at 58%. Cutting the [[1m]] breaks a finished run and drops to two-shanten, but the hand then accepts 21 tiles against 9, and Nishiki's 9 include a [[1p]] with a single copy left. Mortal backs the [[1m]] at 92%. The hand went to Shimocha at no cost to LuckyJ.",
+      "other": "Nishiki keeps the run and stays one-shanten. For a leader only 2,300 clear of the dealer, winning the hand ends the danger, and [[8m]] or [[4p]], 8 tiles, would make tenpai at once. Kagashi alone backs LuckyJ; Hibakari goes its own way with the [[2p]]."
+    },
+    "ja": {
+      "question": "南3局、2,300点差で追う親がリーチ。手の中にはそのリーチへの現物も筋もない。[[3m]]を切るか、完成した順子から[[1m]]を切るか。",
+      "read": "対面の河には萬子が1枚もなく、どちらの候補も通っていない。問題は値段だけで、NAGAの危険度指標は[[1m]]が32%、[[3m]]が58%。[[1m]]を切ると完成した順子が崩れて2シャンテンに下がるが、受け入れは21枚対9枚になる。しかもニシキの9枚には、残り1枚しかない[[1p]]が含まれる。Mortalは92%で[[1m]]。下家が和了し、LuckyJに失点はなかった。",
+      "other": "ニシキは順子を残して1シャンテンを保つ。親と2,300点差のトップなら、自分の和了で局を終わらせるのが一番の守りで、[[8m]]か[[4p]]の8枚でそのままテンパイになる。LuckyJと同じなのはカガシだけで、ヒバカリは[[2p]]を選ぶ。"
+    }
+  },
+  "point-16_184_15_77": {
+    "order": 5,
+    "en": {
+      "question": "All Last, 3 honba. You are 3rd, 2,700 behind 2nd, with both red fives and the dora [[6s]]. The dealer has a chi. Cut the [[6m]] or the [[9p]]?",
+      "read": "Apart from the [[9p]] pair, every tile is a simple, and the hand already carries 3 han in red fives and dora. Cutting one [[9p]], genbutsu against the dealer, keeps every middle tile: [[5m]][[6m]][[6m]][[7m]] stays as two ryanmen, and the hand takes 42 tiles at two-shanten against 11 at one-shanten. The second [[9p]] is another genbutsu for next turn. Of the four engines, only Kagashi cuts the [[9p]]. LuckyJ won 9,800 and finished the game 2nd.",
+      "other": "The spare [[6m]] is Nishiki's cut: it leaves [[5m]][[6m]][[7m]] complete and the hand one-shanten, with both [[9p]] still in hand. With 32 tiles left in All Last, one-shanten now is faster than a wide two-shanten. Mortal puts 99% on the [[6m]], and Hibakari agrees."
+    },
+    "ja": {
+      "question": "オーラス3本場。あなたは3着目で2着と2,700点差、赤五2枚とドラ[[6s]]を持っている。親はチーを1つ。[[6m]]と[[9p]]のどちらを外すか。",
+      "read": "[[9p]]の対子を除けば手はすべて中張牌で、赤五とドラですでに3翻ある。親の現物である[[9p]]を1枚切れば中の牌はすべて残り、[[5m]][[6m]][[6m]][[7m]]は両面2つになる。受け入れは2シャンテンで42枚、ニシキの1シャンテンは11枚。もう1枚の[[9p]]も次の巡の現物として残る。4つのエンジンのうち[[9p]]を切るのはカガシだけ。LuckyJは9,800点を和了し、2着で終局した。",
+      "other": "ニシキの打牌は余った[[6m]]で、[[5m]][[6m]][[7m]]が完成して1シャンテンに進む。[[9p]]は2枚とも手に残る。残り32枚のオーラスなら、今の1シャンテンは広い2シャンテンより速い。Mortalは99%で[[6m]]、ヒバカリも同じ。"
+    }
+  },
+  "point-18_342_5_25": {
+    "order": 1,
+    "en": {
+      "question": "Dealer, 700 ahead of Kamicha, who has an early chi. Your lone honors are the dora [[W]] and a [[C]] nobody has discarded. [[C]] or [[5m]]? Both leave 18 tiles.",
+      "read": "The [[W]] is dora, and Kamicha has discarded one, so it is also genbutsu against the only player with a call; both lines keep it. The [[C]] has no copy in sight and no partner in hand: it becomes value only if one of the 3 unseen copies arrives. With the shape unchanged at 18 tiles, LuckyJ releases it on its fourth discard, while NAGA's danger proxy reads it lower than the [[5m]] and Kamicha has made only one call. Mortal (52%) and Hibakari agree. Kamicha won the hand from another player.",
+      "other": "Nishiki cuts the [[5m]], a middle tile that adds nothing to acceptance here, and holds the [[C]] a while longer in case it pairs. If Kamicha's chi is headed for all simples, a dragon is a tile that hand cannot use. Nishiki (92%) and Kagashi (96%) both lean hard toward the [[5m]]."
+    },
+    "ja": {
+      "question": "あなたは親で、早い段階でチーした上家に700点差のトップ。浮いた字牌はドラの[[W]]と、誰も切っていない[[C]]。[[C]]か[[5m]]か。受け入れはどちらも18枚。",
+      "read": "[[W]]はドラで、上家が1枚切っているので、唯一鳴いている上家への現物でもある。どちらの線でも手に残る。[[C]]は場に1枚も見えず、手の中に相方もいない。打点になるのは、見えていない3枚のうち1枚を引いたときだけである。形は18枚で変わらないため、LuckyJは4打目で[[C]]を手放した。NAGAの危険度指標は[[5m]]より低く、上家の鳴きもまだ1つ。Mortal(52%)とヒバカリも同じ打牌。上家はこの局を他家から和了した。",
+      "other": "ニシキは[[5m]]を切る。ここでは受け入れに何も足さない中張牌で、[[C]]は対子になる可能性に賭けてもう少し持つ。上家のチーがタンヤオに向かっているなら、三元牌はその手には使えない。ニシキ(92%)とカガシ(96%)はそろって[[5m]]に大きく傾く。"
+    }
+  },
+  "point-18_270_3_59": {
+    "order": 2,
+    "en": {
+      "question": "East 4: you are the dealer in 3rd, and Kamicha, 1,000 ahead of you, has declared riichi. Your [[E]] pair is a double wind. Cut the lone [[P]] or the [[3s]]?",
+      "read": "Label both tiles against the riichi. The [[3s]] is suji against Kamicha, who threw [[6s]]: real defense for a later turn. The [[P]] is genbutsu only for Toimen, who has not called or declared; against the riichi it is live, with 2 copies unseen, and it adds nothing to the tile count. Both cuts leave two-shanten on the same 8 tiles, so LuckyJ spends the [[P]] while its danger reading is still close to the [[3s]]'s. The [[E]] pair, the red [[5mr]] and the dora [[8m]] stay either way. Hibakari, Kagashi and Mortal agree. The hand ran to a draw with LuckyJ tenpai, +1,000, and the deal stayed with LuckyJ.",
+      "other": "Nishiki cuts the suji [[3s]] and keeps the [[P]], a dragon that can still pair toward a second yakuhai, and NAGA's danger proxy reads the [[3s]] a little cooler this turn. Nishiki is alone on this line."
+    },
+    "ja": {
+      "question": "東4局、あなたは親で3着。1,000点上の上家がリーチ。[[E]]の対子はダブ東。孤立の[[P]]と[[3s]]、どちらを切るか。",
+      "read": "まずリーチに対する二つの牌の役割を分ける。上家は[[6s]]を切っているので[[3s]]は筋になり、この[[3s]]が後の巡目の守備牌になる。[[P]]は仕掛けもリーチもない対面にだけ現物で、リーチには通っておらず、見えていない残りは2枚、受け入れの枚数にも関わらない。どちらを切っても2シャンテンで同じ8枚なので、LuckyJは[[P]]の危険度指標がまだ[[3s]]に近いうちに[[P]]を使う。[[E]]の対子、赤[[5mr]]、ドラ[[8m]]はどちらでも残る。ヒバカリ、カガシ、Mortalも同じ打牌。この局は流局でLuckyJはテンパイ、1,000点を受け取り、親を続けた。",
+      "other": "ニシキは筋の[[3s]]を切って[[P]]を残す。三元牌はまだ重なる可能性があり、2つ目の役牌の候補になる。NAGAの危険度指標もこの巡は[[3s]]の方がわずかに低い。この線はニシキだけである。"
+    }
+  },
+  "point-18_711_8_23": {
+    "order": 3,
+    "en": {
+      "question": "South 3, last place on 6,200. Kamicha has pon'd [[E]] and [[W]]. You hold a [[C]] pair and a lone [[P]] and [[F]]. Cut the [[P]], or Kamicha's genbutsu [[8s]]?",
+      "read": "Kamicha sits South in the South round, so neither the [[E]] nor the [[W]] pon is a yaku; that open hand needs one from somewhere, and a dragon pon would supply it. The [[C]] pair is LuckyJ's own value and stays. LuckyJ lets the lone [[P]] go on its fourth discard, with no copy yet on the table and a low reading on NAGA's danger proxy. The [[8s]], genbutsu against Kamicha, stays in hand, and the line takes 62 tiles to 60. Hibakari and Kagashi cut the [[P]] too. The hand went to Toimen, at a cost of 2,000 to LuckyJ.",
+      "other": "Cutting the [[8s]] uses the one tile in hand Kamicha cannot win on and keeps every dragon. LuckyJ is 13,800 short of 3rd, and each dragon that pairs is one more chance at a yakuhai pon. Mortal (82%) takes this line with Nishiki."
+    },
+    "ja": {
+      "question": "南3局、6,200点のラス目。上家は[[E]]と[[W]]をポンしている。手には[[C]]の対子と、浮いた[[P]]と[[F]]。[[P]]を切るか、上家の現物[[8s]]を切るか。",
+      "read": "上家は南家で、今は南場。[[E]]も[[W]]も上家には役にならず、この副露手はどこかで役を作る必要がある。三元牌のポンならそれになる。[[C]]の対子はLuckyJ自身の打点なので残す。まだ場に1枚も見えていない[[P]]は、NAGAの危険度指標が低いうちに、4打目で手放した。上家の現物[[8s]]は手に残り、受け入れも62枚対60枚と2枚増える。ヒバカリとカガシも[[P]]を切る。和了ったのは対面で、LuckyJは2,000点を失った。",
+      "other": "[[8s]]を切れば、上家に和了られない手の中で唯一の牌を使い、三元牌はすべて残る。LuckyJは3着まで13,800点足りず、対子になる三元牌が増えるほど役牌ポンの機会も増える。Mortal(82%)もニシキと同じ線を選ぶ。"
+    }
+  },
+  "point-18_209_2_95": {
+    "order": 4,
+    "en": {
+      "question": "Against Kamicha's riichi, with 23 tiles left, either cut keeps the same 11 tiles. The [[E]] is Shimocha's genbutsu; the [[8m]] is suji against the riichi. Which goes first?",
+      "read": "Of the two defense labels, only the [[8m]]'s answers Kamicha. The [[E]] is genbutsu for Shimocha alone; against the riichi it is live, with 2 copies unseen, and it is the round wind and the dealer's double wind. NAGA's danger proxy still reads it cooler than the [[8m]] this turn. LuckyJ spends the [[E]] while that holds and keeps the [[8m]], which stays suji for the rest of the hand. LuckyJ's line keeps 6 tile types that answer the riichi, Nishiki's 5. Mortal backs the [[E]] at 95%. The hand ran to an exhaustive draw, with LuckyJ 1,500 up.",
+      "other": "The suji [[8m]] goes first in Nishiki's line, and the [[E]] stays in reserve: it remains genbutsu against Shimocha, the leader on 35,900, in case a second player pushes, and it is LuckyJ's own yakuhai as well. Hibakari and Kagashi both cut the [[E]]; Nishiki is alone."
+    },
+    "ja": {
+      "question": "上家のリーチに対し、残り23枚。どちらを切っても受け入れは同じ11枚。[[E]]は下家の現物、[[8m]]はリーチに対する筋。どちらを先に使うか。",
+      "read": "上家に答えているのは[[8m]]の方である。[[E]]は下家だけの現物で、リーチには通っていない。見えていないのは2枚、しかも場風で、親にとってはダブ東でもある。それでもこの巡、NAGAの危険度指標は[[E]]を[[8m]]より低く見ている。LuckyJはその間に[[E]]を使い、この局の間ずっと筋のままの[[8m]]を残した。リーチに答える牌はLuckyJの線で6種類、ニシキの線で5種類。Mortalも95%で[[E]]を切る。この局は流局し、LuckyJは1,500点を加えた。",
+      "other": "ニシキの線では筋の[[8m]]が先に出て、[[E]]が手に残る。[[E]]は35,900点のトップの下家が押してきたときの現物になり、LuckyJ自身の役牌でもある。ヒバカリとカガシはLuckyJと同じ[[E]]切りで、ニシキだけが違う。"
+    }
+  },
+  "point-18_963_11_59": {
+    "order": 5,
+    "en": {
+      "question": "All Last, last place, 10,100 behind 3rd, and nobody has called. Your lone [[S]] is your double wind. Cut it, or the [[4p]]? Either way the hand takes 42 tiles.",
+      "read": "Seat and round wind both, the [[S]] is LuckyJ's double wind, worth 2 han as a triplet. It is also a yakuhai for all three opponents, and no copy has appeared in any river. For LuckyJ it pays only after two of the 3 unseen copies arrive; for an opponent, one pair is a single pon away from a yaku. With the acceptance tied at 42, LuckyJ gives up that value and hands the table the [[S]], which NAGA's danger proxy reads well below the [[4p]]. Hibakari, Kagashi and Mortal (79%) cut it too.",
+      "other": "Nishiki keeps the [[S]] for exactly that value: once paired, a pon of it is 2 han in one call, and last place needs han. The [[4p]] it cuts is a lone tile, and without it the hand still takes 42 tiles."
+    },
+    "ja": {
+      "question": "オーラス、3着まで10,100点差のラス目で、まだ誰も鳴いていない。浮いた[[S]]はあなたのダブ南。これを切るか、[[4p]]を切るか。受け入れはどちらでも42枚。",
+      "read": "[[S]]はLuckyJにとって自風と場風が重なるダブ南で、刻子になれば2翻ある。同時に他の3人にとっても場風の役牌で、どの河にもまだ1枚も出ていない。LuckyJにとって値打ちが出るのは、見えていない3枚のうち2枚が来てから。相手にとっては、対子が1組あればポン1回で役になる。受け入れが42枚で並ぶなか、LuckyJはこの打点を手放し、NAGAの危険度指標でも[[4p]]よりずっと低い[[S]]を場に出した。ヒバカリ、カガシ、Mortal(79%)も[[S]]を切る。",
+      "other": "ニシキはまさにその打点のために[[S]]を残す。対子になれば、ポン1回で2翻が付く。ラス目には翻が要る。代わりに切る[[4p]]は孤立した牌で、なくても受け入れは42枚のまま。"
+    }
+  }
+}

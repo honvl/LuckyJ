@@ -4,7 +4,7 @@ const locale = isJa ? "ja-JP" : "en-US";
 const fmt = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
 const whole = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
 const pct = (v) => `${fmt.format(v * 100)}%`;
-const dataAssetVersion = "20260709-accuracy-audit-5";
+const dataAssetVersion = "20260924-replays";
 const dataAsset = (path) => `${path}${String(path).includes("?") ? "&" : "?"}v=${dataAssetVersion}`;
 const chromiumTileEngine = /Chrome|Chromium|Edg|Opera|OPR|OPE|MSIE/.test(navigator.userAgent);
 const useColrTiles = chromiumTileEngine && globalThis.CSS?.supports?.("font-tech(color-COLRv1)");
@@ -416,11 +416,8 @@ const copy = {
     none: "none",
     dora: "Ind.",
     doraFull: "Dora indicators",
-    situation: "Situation",
     seeing: "What LuckyJ Is Seeing",
     whyTempting: "Why the Other Line Is Tempting",
-    copyIt: "How to Copy It",
-    limit: "Use This When",
     noModelAction: "No model action",
     discard: "Discard",
     reach: "Reach",
@@ -436,7 +433,6 @@ const copy = {
     mortalCrossCheck: "Mortal cross-check",
     mortalTop: "Mortal top",
     modelCandidates: "Model Candidates",
-    readingSplit: "Reading the Split",
 	    replayExample: "Replay example",
 	    example: "Example",
 	    examples: "examples",
@@ -449,7 +445,6 @@ const copy = {
     danger: "NAGA danger proxy",
     nagaThreat: "NAGA danger proxy",
     drill: "Drill",
-    answer: "Answer",
     nagaReport: "Review page",
     tenhouLog: "Tenhou log",
     immediateDanger: "NAGA danger proxy",
@@ -487,11 +482,8 @@ const copy = {
     none: "なし",
     dora: "表示",
     doraFull: "ドラ表示牌",
-    situation: "局面",
     seeing: "LuckyJ が見ているもの",
     whyTempting: "別ラインが魅力的に見える理由",
-    copyIt: "自分の対局に移す方法",
-    limit: "使う条件",
     noModelAction: "モデル行動なし",
     discard: "打",
     reach: "リーチ",
@@ -507,7 +499,6 @@ const copy = {
     mortalCrossCheck: "Mortal クロスチェック",
     mortalTop: "Mortal 最上位",
     modelCandidates: "モデル候補",
-    readingSplit: "分岐の読み方",
 	    replayExample: "実戦例",
 	    example: "例",
 	    examples: "例",
@@ -520,7 +511,6 @@ const copy = {
     danger: "NAGA危険度指標",
     nagaThreat: "NAGA危険度指標",
     drill: "ドリル",
-    answer: "答え",
     nagaReport: "検討ページ",
     tenhouLog: "天鳳牌譜",
     immediateDanger: "NAGA危険度指標",
@@ -697,14 +687,6 @@ function stageText(value) {
   return labelFrom(stageLabels, value);
 }
 
-function scoreBandText(value) {
-  return labelFrom(scoreBandLabels, value);
-}
-
-function tileClassText(value) {
-  return labelFrom(tileClassLabels, value);
-}
-
 function roundText(round) {
   const value = String(round || "");
   if (!isJa) return value;
@@ -723,26 +705,6 @@ function rankText(rank) {
 
 function tilesLeftText(left) {
   return isJa ? `残り${left}枚` : `${left} tiles left`;
-}
-
-function gameLine(rank, score) {
-  if (isJa) return `最終順位 ${rankText(rank)}、持ち点 ${whole.format(score)}`;
-  return `Final rank ${rank}, score ${whole.format(score)}`;
-}
-
-function caseLabelText(label) {
-  if (!isJa) return label;
-  return (
-    {
-      "Early safety hedge": "序盤の安全保留",
-      "Middle route hedge": "中盤のルート保留",
-      "Kept genbutsu tile": "現物牌をキープ",
-      "Kept suji tile": "筋牌をキープ",
-      "Safer than Nishiki": "ニシキより安全",
-      "Riskier than Nishiki": "ニシキよりリスクあり",
-      "Late tightening": "終盤の引き締め",
-    }[label] || label
-  );
 }
 
 function fetchJson(path, fallback = {}) {
@@ -1049,16 +1011,6 @@ function hasDisplaySotogawa(read) {
   return (read?.against || []).some(hasDisplaySotogawaItem);
 }
 
-function safetyTarget(read) {
-  const against = read?.against || [];
-  const liveTargets = against.filter(
-    (item) =>
-      (item.genbutsu_sources?.length || item.suji_sources?.length || hasDisplaySotogawaItem(item)) &&
-      (item.reached || item.open_melds)
-  );
-  return liveTargets[0] || against[0] || {};
-}
-
 function safetyKindLabel(kind, options = {}) {
   if (isJa) {
     if (kind === "genbutsu") return "現物";
@@ -1079,29 +1031,6 @@ function safetyReadLabel(read, target = null) {
   const showSotogawa = target ? hasDisplaySotogawaItem(target) : hasDisplaySotogawa(read);
   if (showSotogawa) labels.push(safetyKindLabel("sotogawa", { weak: target ? isWeakSotogawaItem(target) : hasWeakSotogawa(read) }));
   return labels.length ? labels.join(isJa ? " / " : " / ") : safetyKindLabel("none");
-}
-
-function safetySourceText(source) {
-  return isJa ? `${tileName(source.tile)} 河${source.position}枚目` : `${tileName(source.tile)} at river slot ${source.position}`;
-}
-
-function safetyReadLine(read) {
-  if (!read || !(read.kind || read.has_sotogawa)) return "";
-  const target = safetyTarget(read);
-  const sourceList = target?.genbutsu_sources?.length ? [] : target?.suji_sources || [];
-  const sourceText = sourceList.length ? (isJa ? `、見え方 ${sourceList.map(safetySourceText).join("、")}` : ` via ${sourceList.map(safetySourceText).join(", ")}`) : "";
-  const threatText = target?.reached
-    ? isJa
-      ? " / リーチ"
-      : " / riichi"
-    : target?.open_melds
-      ? isJa
-        ? ` / ${target.open_melds}副露`
-        : ` / ${target.open_melds} call${target.open_melds === 1 ? "" : "s"}`
-      : "";
-  return isJa
-    ? `${tileName(read.tile)} は ${seatLabel(target?.seat_label)} に対して ${safetyReadLabel(read, target)}${threatText}${sourceText}`
-    : `${tileName(read.tile)} is ${safetyReadLabel(read, target)} to ${seatLabel(target?.seat_label)}${threatText}${sourceText}`;
 }
 
 function safetySummary(safety) {
@@ -1500,10 +1429,6 @@ function prescriptionExampleLine(item) {
   `;
 }
 
-function prescriptionTurnLabel(item, index) {
-  return String(item?.label || (item?.turn !== undefined ? `T${item.turn}` : index + 1)).slice(0, 8);
-}
-
 function prescriptionSummaryText(item) {
   if (item?.turns) {
     const focal = prescriptionFocalTurn(item);
@@ -1742,11 +1667,8 @@ function renderGuideBlock(guide) {
   const block = document.createElement("div");
   block.className = "natsu-analysis";
   const rows = [
-    [t("situation"), guide?.situation],
     [t("seeing"), guide?.read],
     [t("whyTempting"), guide?.whyNot],
-    [t("copyIt"), guide?.copy],
-    [t("limit"), guide?.limit],
   ];
   for (const [title, text] of rows) {
     if (!text) continue;
@@ -1826,12 +1748,6 @@ function sameSignature(left, right) {
   return Array.isArray(left) && Array.isArray(right) && left.length === right.length && left.every((value, index) => value === right[index]);
 }
 
-function mortalCopyForExample(mortalCopy, pointKey, index) {
-  const value = mortalCopy?.[pointKey];
-  if (Array.isArray(value)) return value[index] || {};
-  return value || {};
-}
-
 function pointMortalForExample(mortalPoints, pointKey, example, index) {
   const list = mortalPoints?.[pointKey];
   if (!Array.isArray(list)) return list || null;
@@ -1868,47 +1784,25 @@ function pointMortalForExample(mortalPoints, pointKey, example, index) {
   return list[index] || null;
 }
 
-function renderMortalBlock(mortal, pointKey, mortalCopy, index) {
+function renderMortalBlock(mortal) {
   if (!mortal) return document.createDocumentFragment();
-  const localMortal = mortalCopyForExample(mortalCopy, pointKey, index);
-  const readText = isJa ? mortal.read_ja || localMortal.read || mortal.read : localMortal.read || mortal.read;
-  const useText = isJa ? mortal.how_to_use_ja || localMortal.how_to_use || mortal.how_to_use : localMortal.how_to_use || mortal.how_to_use;
-  const block = document.createElement("details");
+  const block = document.createElement("div");
   block.className = "mortal-block";
   const topCandidate = mortal.top_candidates?.[0];
-  const branch =
-    mortal.post_call_mortal
-      ? `
-        <div class="mortal-branch">
-          <h5>${t("afterCall")}</h5>
-          <p>${
-            isJa ? "Mortal の条件付き打牌は" : "Mortal's conditional discard is"
-          } ${modelActionLine(mortal.post_call_mortal)} ${agreementBadge(t("postCallDiscard"), mortal.post_call_agrees_luckyj)}</p>
-        </div>
-      `
-      : "";
+  const branch = mortal.post_call_mortal
+    ? `<p class="mortal-branch"><b>${t("afterCall")}</b> ${modelActionLine(mortal.post_call_mortal)} ${agreementBadge(t("postCallDiscard"), mortal.post_call_agrees_luckyj)}</p>`
+    : "";
   block.innerHTML = `
-    <summary class="mortal-summary">
-      <span class="kicker">${t("mortalCrossCheck")}</span>
-      <span class="mortal-summary-line">
-        <b>${t("mortalTop")}</b>
-        ${probabilityChip(t("mortalWeight"), topCandidate?.probability)}
-        <span class="discard-line">${modelActionLine(mortal.mortal)}</span>
-        ${agreementBadge("LuckyJ", mortal.mortal_agrees_luckyj)}
-        ${agreementBadge(modelName("nishiki"), mortal.mortal_agrees_naga)}
-      </span>
-    </summary>
-    <div class="mortal-details">
-      <div class="mortal-read">
-        <h5>${t("readingSplit")}</h5>
-        <p data-mortal-read></p>
-        <p data-mortal-use></p>
-      </div>
-      ${branch}
-    </div>
+    <p class="kicker">${t("mortalCrossCheck")}</p>
+    <p class="mortal-summary-line">
+      <b>${t("mortalTop")}</b>
+      ${probabilityChip(t("mortalWeight"), topCandidate?.probability)}
+      <span class="discard-line">${modelActionLine(mortal.mortal)}</span>
+      ${agreementBadge("LuckyJ", mortal.mortal_agrees_luckyj)}
+      ${agreementBadge(modelName("nishiki"), mortal.mortal_agrees_naga)}
+    </p>
+    ${branch}
   `;
-  block.querySelector("[data-mortal-read]")?.append(richText(readText || ""));
-  block.querySelector("[data-mortal-use]")?.append(richText(useText || ""));
   return block;
 }
 
@@ -1917,10 +1811,7 @@ function renderYakuhaiCleanupNote(example) {
   if (!threats.length) return document.createDocumentFragment();
   const block = document.createElement("div");
   block.className = "yaku-condition-read";
-  const heading = isJa ? "役牌読み" : "Yaku-Condition Read";
-  const body = isJa
-    ? `${tileIcon(example.actual, "inline-tile")} <b>${escapeHtml(tileName(example.actual))}</b> は、まだ役を見せていない副露手への生きた役牌です。LuckyJ は今のポンリスクを受け入れて先切りしています。切ること自体は阻止ではありません。`
-    : `${tileIcon(example.actual, "inline-tile")} <b>${escapeHtml(tileName(example.actual))}</b> is live yakuhai against an open hand with an unclear yaku. LuckyJ releases it now and accepts the current pon risk; discarding is not denial.`;
+  const heading = isJa ? "役がまだ見えない副露" : "Open hands with no yaku showing";
   const windLabel = isJa ? "風" : "wind";
   const threatRows = threats
     .map(
@@ -1935,7 +1826,6 @@ function renderYakuhaiCleanupNote(example) {
     .join("");
   block.innerHTML = `
     <h5>${heading}</h5>
-    <p>${body}</p>
     <div class="yaku-condition-threats">${threatRows}</div>
   `;
   return block;
@@ -2015,9 +1905,8 @@ function callModelActionLine(example, head) {
 function callModelNote(example, head) {
   const action = String(head?.top_action || "").toLowerCase();
   if (head?.supports_call && action === String(example.call || "").toLowerCase()) return "";
-  if (Number(head?.top_kind) === 0 || action === "pass") {
-    return isJa ? "実戦の鳴きは選ばない読み。" : "This head would leave the tile alone instead of taking LuckyJ's call.";
-  }
+  // A head that passes already reads "Do not call"; it needs no note.
+  if (Number(head?.top_kind) === 0 || action === "pass") return "";
   if (action === String(example.call || "").toLowerCase()) {
     return isJa ? "同じ鳴き種類だが、実戦とは別の鳴き方。" : "Same call type, but a different call line from LuckyJ.";
   }
@@ -2116,6 +2005,8 @@ function quizChoices(example, mortal) {
   }
   const heads = example.model_heads || [];
   const headsFor = (tile) => heads.filter((head) => head.top === tile).map((head) => modelName(head.key || head.label));
+  // Mortal's verdict on a riichi covers the declaration, not the tile, so it is not credited to either cut.
+  if (example.kind === "reach") mortal = null;
   const lines = [
     {
       id: "luckyj",
@@ -2215,7 +2106,25 @@ function markReplayHand(card, example, revealed) {
   }
 }
 
-function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCopy, index, total) {
+// The hand's result, from the build's "draw, self delta +1500" shorthand.
+function outcomeText(outcome) {
+  const text = String(outcome || "");
+  const signed = (value) => `${Number(value) > 0 ? "+" : ""}${whole.format(Number(value))}`;
+  // A result that cost or paid nothing needs no number after it.
+  const change = (value) => (Number(value) === 0 ? "" : ` (${signed(value)})`);
+  const seat = (name) => seatLabel(name);
+  let m = text.match(/^draw, self delta ([+-]?\d+)/);
+  if (m) return isJa ? `流局${change(m[1])}` : `Hand ended in a draw${change(m[1])}`;
+  m = text.match(/^self won (.*), delta ([+-]?\d+)/);
+  if (m) return isJa ? `LuckyJ の和了${change(m[2])}` : `LuckyJ won the hand${change(m[2])}`;
+  m = text.match(/^self dealt into (\w+), delta ([+-]?\d+)/);
+  if (m) return isJa ? `LuckyJ が${seat(m[1])}に放銃${change(m[2])}` : `LuckyJ dealt into ${seat(m[1])}${change(m[2])}`;
+  m = text.match(/^(\w+) won, self delta ([+-]?\d+)/);
+  if (m) return isJa ? `${seat(m[1])}の和了${change(m[2])}` : `${seat(m[1])} won the hand${change(m[2])}`;
+  return "";
+}
+
+function renderPointExampleCard(pointKey, example, guide, mortalPoints, index, total) {
   const exampleGuide = (isJa ? example.guide_ja || example.guide : example.guide) || guide || {};
   const exampleMortal = example.mortal || pointMortalForExample(mortalPoints, pointKey, example, index);
   const anchorId = exampleAnchorId(pointKey, index);
@@ -2257,7 +2166,7 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
     <div class="replay-notes" hidden></div>
   `;
   card.querySelector(".replay-caption").append(richText(replayCaption(example)));
-  card.querySelector(".quiz-prompt").append(richText(exampleGuide.prompt || example.prompt || ""));
+  card.querySelector(".quiz-prompt").append(richText(exampleGuide.prompt || ""));
   card.querySelector(".replay-table").append(renderMahjongTable(example.table));
 
   const answer = card.querySelector(".replay-answer");
@@ -2297,23 +2206,13 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
   // The commentary, on paper under the figure, opens with the answer.
   const notes = card.querySelector(".replay-notes");
   notes.append(renderGuideBlock(exampleGuide));
-  notes.append(renderMortalBlock(exampleMortal, pointKey, mortalCopy, index));
+  notes.append(renderMortalBlock(exampleMortal));
   notes.append(renderYakuhaiCleanupNote(example));
-  const drill = document.createElement("div");
-  drill.className = "example-drill";
-  const drillAnswer = document.createElement("p");
-  drillAnswer.innerHTML = `<b>${t("answer")}</b> `;
-  drillAnswer.append(richText(exampleGuide.answer || example.answer || ""));
-  drill.append(drillAnswer);
-  const evidenceNote = document.createElement("p");
-  evidenceNote.className = `example-evidence-note ${escapeHtml(example.evidence_tier || "")}`;
-  evidenceNote.textContent = isJa
-    ? `証拠区分: ${pointEvidenceTierText(example)}。${["contested", "unverified", "unsupported"].includes(example.evidence_tier) ? "通常線を先に採用し、この例は条件が説明できる時だけ使う。" : "支持はこの局面に限られ、一般ルールの証明ではない。"}`
-    : `Evidence tier: ${pointEvidenceTierText(example)}. ${["contested", "unverified", "unsupported"].includes(example.evidence_tier) ? "Use the ordinary line first and adopt this only when its condition is explicit." : "Support is local to this frame, not proof of a universal rule."}`;
   const links = document.createElement("p");
   links.className = "case-links";
-  links.innerHTML = `<span>${escapeHtml(stageText(example.stage))} · ${escapeHtml(scoreBandText(example.score_band))} · ${t("finalRank")} ${escapeHtml(rankText(example.rank))}</span> ${sourceLinks(example)}`;
-  notes.append(drill, evidenceNote, links);
+  const handResult = outcomeText(example.outcome);
+  links.innerHTML = `<span>${handResult ? `${escapeHtml(handResult)} · ` : ""}${t("finalRank")} ${escapeHtml(rankText(example.rank))}</span> ${sourceLinks(example)}`;
+  notes.append(links);
 
   const choiceButtons = Array.from(card.querySelectorAll(".quiz-choice"));
   const skip = card.querySelector(".quiz-skip");
@@ -2362,7 +2261,7 @@ function renderPointExampleCard(pointKey, example, guide, mortalPoints, mortalCo
   return card;
 }
 
-function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
+function renderPointExamples(examples, guides, mortalPoints) {
   pointExampleControllers.clear();
   loadPointExampleSelections();
   for (const placeholder of document.querySelectorAll("[data-example]")) {
@@ -2407,7 +2306,7 @@ function renderPointExamples(examples, guides, mortalPoints, mortalCopy) {
         button.setAttribute("aria-selected", selected ? "true" : "false");
         button.tabIndex = selected ? 0 : -1;
       });
-      body.replaceChildren(renderPointExampleCard(pointKey, items[selectedIndex], guide, mortalPoints, mortalCopy, selectedIndex, items.length));
+      body.replaceChildren(renderPointExampleCard(pointKey, items[selectedIndex], guide, mortalPoints, selectedIndex, items.length));
       applyTileCompatibility(body);
       if (updateLocation) writeExampleLocation(pointKey, selectedIndex);
     }
@@ -2455,149 +2354,11 @@ function tileClass(tile) {
   return "middle";
 }
 
-function parseTiles(text) {
-  return String(text || "").split(" ").filter(Boolean);
-}
-
-function handTexture(hand) {
-  const tiles = parseTiles(hand);
-  const suits = { m: 0, p: 0, s: 0, honor: 0 };
-  const counts = {};
-  for (const tile of tiles) {
-    const base = tile.replace("r", "");
-    counts[base] = (counts[base] || 0) + 1;
-    if (["E", "S", "W", "N", "P", "F", "C"].includes(base)) suits.honor += 1;
-    else suits[base[1]] += 1;
-  }
-  const pairs = Object.values(counts).filter((count) => count >= 2).length;
-  const dominant = Object.entries(suits)
-    .filter(([key]) => key !== "honor")
-    .sort((a, b) => b[1] - a[1])[0];
-  const red = tiles.filter((tile) => tile.includes("r")).length;
-  const fragments = [];
-  if (isJa) {
-    const suitNames = { m: "萬子", p: "筒子", s: "索子" };
-    if (dominant && dominant[1] >= 6) fragments.push(`${suitNames[dominant[0]]}が厚い形`);
-    if (pairs >= 3) fragments.push(`${pairs}組の対子候補`);
-    if (suits.honor >= 2) fragments.push(`字牌${suits.honor}枚`);
-    if (red) fragments.push(`赤ドラ${red}枚`);
-    return fragments.length ? fragments.join("、") : "普通の混合形";
-  }
-  if (dominant && dominant[1] >= 6) fragments.push(`heavy ${dominant[0]}-suit shape`);
-  if (pairs >= 3) fragments.push(`${pairs} pair-like anchors`);
-  if (suits.honor >= 2) fragments.push(`${suits.honor} honors`);
-  if (red) fragments.push(`${red} red five${red === 1 ? "" : "s"}`);
-  return fragments.length ? fragments.join(", ") : "mixed ordinary blocks";
-}
-
-function dangerRead(actual, naga) {
-  if (isJa) {
-    if (actual == null || naga == null) return "NAGA危険度指標を比べにくい局面なので、ルートと点数状況を中心に読む。";
-    const gap = actual - naga;
-    if (Math.abs(gap) < 0.03) return "NAGA危険度指標は近く、この不一致は単純な安全牌比較よりもルート選択の問題に近い。この指標は放銃確率ではない。";
-    if (gap < 0) return `LuckyJ の打牌はNAGA危険度指標が約 ${fmt.format(Math.abs(gap) * 100)} ポイント低い。相対的な安全方向の手掛かりであり、放銃確率の差ではない。`;
-    return `LuckyJ の打牌はNAGA危険度指標が約 ${fmt.format(gap * 100)} ポイント高いため、価値、圧力、着順価値の具体的な見返りが必要になる。これは放銃確率の差ではない。`;
-  }
-  if (actual == null || naga == null) return "There is no clean NAGA danger-proxy comparison here, so read the hand through route and score logic.";
-  const gap = actual - naga;
-  if (Math.abs(gap) < 0.03) return "The NAGA danger-proxy values are close, so the disagreement is mostly about route selection. They are not deal-in probabilities.";
-  if (gap < 0) return `LuckyJ's discard scores about ${fmt.format(Math.abs(gap) * 100)} points lower on NAGA's danger proxy. That suggests a safer direction; it is not a deal-in probability gap.`;
-  return `LuckyJ's discard scores about ${fmt.format(gap * 100)} points higher on NAGA's danger proxy, so the hand needs concrete value, pressure, or placement equity in return. This is not a deal-in probability gap.`;
-}
-
-function categoryRead(key, item) {
-  const actualClass = tileClass(item.actual);
-  const nagaClass = tileClass(item.naga);
-  const actualName = tileName(item.actual);
-  const nagaName = tileName(item.naga);
-  if (isJa) {
-    if (key === "early_safety_hedge") {
-      return `検証仮説: ${actualName} が未来の選択肢を最も壊しにくく、安全・価値・ルートを残しているか。`;
-    }
-    if (key === "middle_route_hedge") {
-      return `検証仮説: ${actualName} 切りは、ニシキ線より点数状況と河に合う複数ルートを残しているか。`;
-    }
-    if (key === "kept_river_safe") {
-      return `検証仮説: 残した ${nagaName} の現物価値が、ニシキ線の形を上回るか。`;
-    }
-    if (key === "kept_suji_exit") {
-      return `検証仮説: 残した ${nagaName} の筋価値が、ニシキ線の形を上回るか。`;
-    }
-    if (key === "safer_than_naga") {
-      return "検証仮説: 安全側へ寄せる支払いが、手を生かしたまま危険なニシキ牌を後回しにできているか。";
-    }
-    if (key === "riskier_than_naga") {
-      return "検証仮説: 今払う追加危険に対して、残すルートが安全な代替より本当に優れているか。";
-    }
-    if (key === "late_tightening") {
-      return "検証仮説: この終盤打牌は、和了・安全テンパイ・オリの正確な比較を通るか。";
-    }
-    return `検証仮説: ${actualName} と ${nagaName} のどちらが、実際の未来を守っているか。`;
-  }
-  if (key === "early_safety_hedge") {
-    return `Hypothesis to test: does ${actualName} damage the future menu less while preserving useful safety, value, or routes?`;
-  }
-  if (key === "middle_route_hedge") {
-    return `Hypothesis to test: does ${actualName} preserve a route better suited to the score and rivers than Nishiki's line?`;
-  }
-  if (key === "kept_river_safe") {
-    return `Hypothesis to test: is the retained genbutsu ${nagaName} worth more than the shape Nishiki preserves?`;
-  }
-  if (key === "kept_suji_exit") {
-    return `Hypothesis to test: is the timed suji value of ${nagaName} worth more than the shape Nishiki preserves?`;
-  }
-  if (key === "safer_than_naga") {
-    return `Hypothesis to test: does the safety purchase keep the hand alive while postponing the more dangerous Nishiki tile?`;
-  }
-  if (key === "riskier_than_naga") {
-    return `Hypothesis to test: is the retained route clearly worth the extra danger paid now?`;
-  }
-  if (key === "late_tightening") {
-    return `Hypothesis to test: does this late discard win the exact comparison among winning, safe tenpai, and folding?`;
-  }
-  return `Hypothesis to test: which real future is protected by ${actualName} versus ${nagaName}?`;
-}
-
-function caseEvidenceText(item) {
-  const labels = isJa
-    ? { head_supported: "別NAGAヘッド支持", plausible_split: "ニシキ内に候補重みあり", stress_test: "極端な不一致・ミス候補" }
-    : { head_supported: "another NAGA head supports LuckyJ", plausible_split: "non-trivial Nishiki alternative", stress_test: "extreme split / possible mistake" };
-  return labels[item.evidence_tier] || (isJa ? "未分類" : "unclassified");
-}
-
 function pointEvidenceTierText(item) {
   const labels = isJa
     ? { corroborated: "複数系統支持", split_supported: "分岐支持", contested: "対立例", unverified: "第二確認なし", unsupported: "支持なし" }
     : { corroborated: "corroborated", split_supported: "split-supported", contested: "contested", unverified: "second-check unavailable", unsupported: "unsupported" };
   return labels[item.evidence_tier] || (isJa ? "証拠区分未設定" : "evidence tier unavailable");
-}
-
-function caseLesson(key, item) {
-  const actualClass = tileClass(item.actual);
-  const nagaClass = tileClass(item.naga);
-  const actualName = tileName(item.actual);
-  const nagaName = tileName(item.naga);
-  const safetyLine = safetyReadLine(item.kept_safety);
-  if (isJa) {
-    const lines = [
-      `${roundText(item.round)}、残り${item.left}枚、${scoreBandText(item.score_band)}。手牌の質: ${handTexture(item.hand)}。LuckyJ は ${actualName} (${tileClassText(actualClass)}) を切り、ニシキは ${nagaName} (${tileClassText(nagaClass)}) を切る。`,
-      categoryRead(key, item),
-      dangerRead(item.actual_danger, item.naga_danger),
-      "復習ドリル: 診断を見る前に、LuckyJ が何を残そうとしているかを書く。安全、価値、ルート数、圧力、着順のどれかを言える打牌だけ自分の形にする。",
-    ];
-    lines.splice(1, 0, `証拠区分: ${caseEvidenceText(item)}。${item.evidence_tier === "stress_test" ? "これは推奨ではなく、まずLuckyJのミス候補として扱う。" : "通常のニシキ線を先に最強の形で説明する。"}`);
-    if (safetyLine) lines.splice(2, 0, safetyLine);
-    return lines;
-  }
-  const lines = [
-    `${item.round}, ${item.left} tiles left, ${item.score_band}. Hand texture: ${handTexture(item.hand)}. LuckyJ cuts ${actualName} (${actualClass}); Nishiki cuts ${nagaName} (${nagaClass}).`,
-    categoryRead(key, item),
-    dangerRead(item.actual_danger, item.naga_danger),
-    `Review drill: before looking at the diagnostics, write what LuckyJ is buying: safety, value, route count, pressure, or placement. Copy the move after the purchase is clear.`,
-  ];
-  lines.splice(1, 0, `Evidence tier: ${caseEvidenceText(item)}. ${item.evidence_tier === "stress_test" ? "This is not a recommendation; begin by treating it as a possible LuckyJ mistake." : "Make the strongest case for the ordinary Nishiki line first."}`);
-  if (safetyLine) lines.splice(2, 0, safetyLine);
-  return lines;
 }
 
 function comparison(label, item, danger, probability, dangerLabel = t("immediateDanger")) {
@@ -2622,95 +2383,6 @@ function comparison(label, item, danger, probability, dangerLabel = t("immediate
     </details>
   `;
   return el;
-}
-
-function renderCases(data) {
-  const tabs = document.querySelector("#caseTabs");
-  const grid = document.querySelector("#caseGrid");
-  if (!tabs || !grid) return;
-
-  const labels = isJa
-    ? {
-        early_safety_hedge: "序盤の保留",
-        middle_route_hedge: "中盤のルート保留",
-        kept_river_safe: "現物キープ",
-        kept_suji_exit: "筋キープ",
-        safer_than_naga: "安全寄せ",
-        riskier_than_naga: "押し返し",
-        late_tightening: "終盤の読み",
-      }
-    : {
-        early_safety_hedge: "Early Hedges",
-        middle_route_hedge: "Middle Hedges",
-        kept_river_safe: "River-Safe Keeps",
-        kept_suji_exit: "Suji Keeps",
-        safer_than_naga: "Safety Buys",
-        riskier_than_naga: "Risk Buys",
-        late_tightening: "Late Precision",
-      };
-  const keys = Object.keys(labels).filter((key) => data[key]?.length);
-  let active = keys[0];
-
-  function paint(key) {
-    active = key;
-    tabs.querySelectorAll("button").forEach((button) => {
-      button.classList.toggle("active", button.dataset.key === key);
-    });
-    grid.innerHTML = "";
-    for (const item of data[key]) {
-      const card = document.createElement("article");
-      card.className = "case-card";
-
-      const head = document.createElement("div");
-      head.className = "case-head";
-      head.innerHTML = `
-        <p class="kicker">${stageText(item.stage)} / ${scoreBandText(item.score_band)}</p>
-        <span class="case-where">${roundText(item.round)}, ${tilesLeftText(item.left)}</span>
-        <h3>${caseLabelText(item.label)}</h3>
-        <small class="evidence-tier ${escapeHtml(item.evidence_tier || "")}">${escapeHtml(caseEvidenceText(item))}</small>
-      `;
-
-      const body = document.createElement("div");
-      body.className = "case-body";
-      const handTitle = document.createElement("p");
-      handTitle.className = "case-meta";
-      handTitle.textContent = gameLine(item.rank, item.score);
-      body.append(handTitle, tiles(item.hand));
-      body.append(safetyPanel(item.kept_safety));
-
-      const choices = document.createElement("div");
-      choices.className = "comparison";
-      choices.append(
-        comparison(t("luckyj"), item.actual_eval, item.actual_danger, item.nishiki_actual_prob),
-        comparison(t("nagaTop"), item.naga_eval, item.naga_danger, item.nishiki_top_prob)
-      );
-
-      const lesson = document.createElement("div");
-      lesson.className = "case-lesson";
-      for (const paragraph of caseLesson(key, item)) {
-        const p = document.createElement("p");
-        p.textContent = paragraph;
-        lesson.append(p);
-      }
-
-      const links = document.createElement("p");
-      links.className = "case-links";
-      links.innerHTML = sourceLinks(item);
-
-      card.append(head, body, choices, lesson, links);
-      grid.append(card);
-    }
-  }
-
-  for (const key of keys) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.dataset.key = key;
-    button.textContent = `${labels[key]} (${data[key].length})`;
-    button.addEventListener("click", () => paint(key));
-    tabs.append(button);
-  }
-  paint(active);
 }
 
 function renderEngineConsensus(mortalPoints) {
@@ -2820,18 +2492,15 @@ async function main() {
   convertStaticTileMarkup();
   applyTileCompatibility();
   const guidePath = isJa ? "strategy-guides.ja.json" : "strategy-guides.json";
-  const [bookResponse, caseResponse, exampleResponse, guideResponse, mortalResponse, mortalCopy, validation, rxExamples] = await Promise.all([
+  const [bookResponse, exampleResponse, guideResponse, mortalResponse, validation, rxExamples] = await Promise.all([
     fetch(dataAsset("book-data.json")),
-    fetch(dataAsset("case-studies.json")),
     fetch(dataAsset("point-examples.json")),
     fetch(dataAsset(guidePath)),
     fetch(dataAsset("mortal-analysis.json")),
-    isJa ? fetchJson("mortal-analysis.ja.json", {}) : Promise.resolve({}),
     fetchJson("point-validation.json", {}),
     fetchJson("rx-prescription-examples.json", {}),
   ]);
   const data = await bookResponse.json();
-  const caseData = await caseResponse.json();
   const examples = await exampleResponse.json();
   const guides = await guideResponse.json();
   const mortal = await mortalResponse.json();
@@ -2870,9 +2539,8 @@ async function main() {
   renderPrescriptionExamples(rxExamples);
   renderPointValidation(validation);
   renderEngineConsensus(mortal.points);
-  renderPointExamples(examples, guides, mortal.points, mortalCopy);
+  renderPointExamples(examples, guides, mortal.points);
   syncPointExamplesFromLocation({ scroll: true });
-  renderCases(caseData);
   applyTileCompatibility();
 }
 

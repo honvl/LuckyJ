@@ -676,7 +676,7 @@ html:lang(ja) .book-title {
   text-wrap: pretty;
 }
 
-.section > :is(.method-grid, .insight-grid, .rx-grid, .rx-ledger, .case-browser, .drill-list, .source-scope-card,
+.section > :is(.method-grid, .insight-grid, .rx-grid, .rx-ledger, .drill-list, .source-scope-card,
   .model-point-grid, .evidence-grid, .validation-grid, .audit-details, .teacher-grid) {
   grid-column: 2 / 4;
 }
@@ -1253,20 +1253,8 @@ html:lang(ja) .chapter-next-title {
   line-height: 1.4;
 }
 
-/* ------------------------------------------------------------------ case studies */
+/* ------------------------------------------------------------------ tab buttons */
 
-.case-browser {
-  display: grid;
-  gap: 22px;
-}
-
-.case-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.case-tabs button,
 .example-tab-list button,
 .guide-frame-tabs button {
   display: inline-flex;
@@ -1288,13 +1276,11 @@ html:lang(ja) .chapter-next-title {
   text-align: left;
 }
 
-.case-tabs button:hover,
 .example-tab-list button:hover,
 .guide-frame-tabs button:hover {
   border-color: var(--muted);
 }
 
-.case-tabs button.active,
 .example-tab-list button.active,
 .guide-frame-tabs button.active {
   border-color: var(--felt);
@@ -1302,47 +1288,12 @@ html:lang(ja) .chapter-next-title {
   color: var(--cream);
 }
 
-.case-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
 
-.case-card {
-  display: grid;
-  align-content: start;
-  gap: 14px;
-  min-width: 0;
-  padding: 22px 24px 20px;
-  border: 1px solid var(--hair);
-  background: var(--plate);
-}
 
-.case-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: baseline;
-  column-gap: 16px;
-}
 
-.case-head .kicker {
-  margin: 0;
-}
 
-.case-head h3 {
-  grid-column: 1 / -1;
-  margin-top: 6px;
-  font-size: 22px;
-  line-height: 1.2;
-}
 
-.case-head > .evidence-tier {
-  grid-column: 1 / -1;
-  justify-self: start;
-  margin: 10px 0 0;
-}
 
-.case-head > .case-where,
 .example-head > span {
   color: var(--muted);
   font-family: var(--sans);
@@ -1351,29 +1302,9 @@ html:lang(ja) .chapter-next-title {
   text-align: right;
 }
 
-.case-body {
-  display: grid;
-  gap: 6px;
-}
 
-.case-meta {
-  color: var(--muted);
-  font-family: var(--sans);
-  font-size: 13.5px;
-}
 
-.case-lesson {
-  display: grid;
-  gap: 8px;
-  padding-top: 12px;
-  border-top: 2px solid var(--ink);
-  font-size: 16.5px;
-  line-height: 1.55;
-}
 
-.case-lesson p + p {
-  color: var(--ink-2);
-}
 
 .case-links {
   display: flex;
@@ -2217,43 +2148,18 @@ html:lang(ja) .analysis-step p {
 }
 
 .replay-notes > .mortal-block {
-  grid-row: 1 / span 4;
+  grid-row: 1 / span 2;
   grid-column: 3;
+  align-self: start;
 }
 
-.replay-notes > .example-drill,
-.replay-notes > .yaku-condition-read,
-.replay-notes > .example-evidence-note {
+.replay-notes > .yaku-condition-read {
   display: grid;
   grid-column: 2 / 3;
 }
 
 .replay-notes > .case-links {
   grid-column: 2 / 3;
-}
-
-.example-drill {
-  gap: 8px;
-  padding-top: 16px;
-  border-top: 2px solid var(--jade);
-  font-size: 18.5px;
-  line-height: 1.55;
-}
-
-.example-drill b {
-  color: var(--jade);
-  font-family: var(--sans);
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.example-evidence-note {
-  color: var(--ink-2);
-  font-family: var(--sans);
-  font-size: 13.5px;
-  line-height: 1.45;
 }
 
 .yaku-condition-read {
@@ -2270,11 +2176,6 @@ html:lang(ja) .analysis-step p {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-.yaku-condition-read p {
-  font-size: 17px;
-  line-height: 1.55;
 }
 
 .yaku-condition-threats {
@@ -2297,81 +2198,38 @@ html:lang(ja) .analysis-step p {
 }
 
 .mortal-block {
-  border-top: 1px solid var(--hair);
-}
-
-.mortal-block > summary {
   display: grid;
   gap: 8px;
-  padding: 14px 0 12px;
-  cursor: pointer;
-  list-style: none;
+  padding: 14px 0;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
 }
 
-.mortal-block > summary::-webkit-details-marker {
-  display: none;
-}
-
-.mortal-summary .kicker {
+.mortal-block .kicker {
+  margin: 0;
   font-size: 11.5px;
 }
 
-.mortal-summary-line {
+.mortal-summary-line,
+.mortal-branch {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 6px 8px;
+  margin: 0;
   font-family: var(--sans);
   font-size: 14px;
 }
 
-.mortal-summary-line b {
+.mortal-summary-line b,
+.mortal-branch b {
   font-weight: 600;
 }
 
-.mortal-summary .discard-line {
+.mortal-block .discard-line {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-}
-
-.mortal-block > summary::after {
-  color: var(--jade);
-  content: "Show the reading";
-  font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-html:lang(ja) .mortal-block > summary::after {
-  content: "読み方を開く";
-}
-
-.mortal-block[open] > summary::after {
-  content: "Hide";
-}
-
-html:lang(ja) .mortal-block[open] > summary::after {
-  content: "閉じる";
-}
-
-.mortal-details {
-  display: grid;
-  gap: 10px;
-  padding-bottom: 14px;
-  color: var(--ink-2);
-  font-size: 15.5px;
-  line-height: 1.52;
-}
-
-.mortal-details h5,
-.mortal-branch h5 {
-  color: var(--muted);
-  font-family: var(--sans);
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
 .model-badges {
@@ -4381,7 +4239,7 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   }
 
   .section > *,
-  .section > :is(.method-grid, .insight-grid, .rx-grid, .rx-ledger, .case-browser, .drill-list, .source-scope-card,
+  .section > :is(.method-grid, .insight-grid, .rx-grid, .rx-ledger, .drill-list, .source-scope-card,
     .model-point-grid, .evidence-grid, .validation-grid, .audit-details, .teacher-grid),
   .section > .rule,
   .point-body > *,
@@ -4392,9 +4250,7 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   .replay-notes > *,
   .replay-notes .analysis-step,
   .replay-notes > .mortal-block,
-  .replay-notes > .example-drill,
   .replay-notes > .yaku-condition-read,
-  .replay-notes > .example-evidence-note,
   .replay-notes > .case-links,
   .example-tab-list {
     grid-row: auto;
@@ -4510,7 +4366,6 @@ html:lang(ja) .contents-list.is-points .contents-sub {
     gap: 20px;
   }
 
-  .case-grid,
   .validation-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -4822,9 +4677,6 @@ html:lang(ja) .contents-list.is-points .contents-sub {
     font-size: 30px;
   }
 
-  .case-card {
-    padding: 18px 16px;
-  }
 
   .consensus-grid {
     grid-template-columns: minmax(0, 1fr);

@@ -14,7 +14,7 @@
     <!-- The text faces load without holding up the page; until they arrive it reads in the fallback faces. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Serif+JP:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'" data-font-css />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Serif+JP:wght@400;500;600;700&amp;display=swap" /></noscript>
-    <link rel="stylesheet" href="styles.css?v=20260924-book" />
+    <link rel="stylesheet" href="styles.css?v=20260924-replays" />
   </head>
   <body data-book="playbook">
     <a class="skip-link" href="#contents">目次へ移動</a>
@@ -24,7 +24,6 @@
       <nav class="running-nav" aria-label="本の案内">
         <a class="contents-toggle" href="#contents"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M3 5h12M3 9h12M3 13h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>目次</a>
         <a class="nav-secondary" href="#prescriptions">処方箋</a>
-        <a class="nav-secondary" href="#case-studies">実例</a>
         <a class="nav-secondary" href="#drills">練習</a>
         <a class="nav-tertiary" href="honver.html" hreflang="en">Honverのガイド（英語）</a>
         <a class="lang-link" href="index.html" hreflang="en" lang="en">English</a>
@@ -59,7 +58,7 @@
       <nav class="contents" id="contents" aria-labelledby="contents-title">
         <div class="contents-intro">
           <h2 id="contents-title">目次</h2>
-          <p>16のポイントを読む順に並べた。各ポイントはルールと例外を示し、LuckyJ の実戦10例で終わる。</p>
+          <p>16のポイントを読む順に並べた。各ポイントはルールと例外を示し、LuckyJ の実戦4〜6例で終わる。</p>
         </div>
         <div class="contents-body">
           <div class="contents-group">
@@ -96,7 +95,6 @@
           <div class="contents-group">
             <p class="label">本編の後</p>
           <ol class="contents-list is-three">
-            <li><a href="#case-studies"><span class="contents-title">エンジン不一致のストレステスト</span><span class="contents-sub">発見候補とLuckyJのミス候補</span></a></li>
             <li><a href="#drills"><span class="contents-title">練習システム</span><span class="contents-sub">このスタイルを鍛える方法</span></a></li>
             <li><a href="#sources"><span class="contents-title">作り方メモ</span><span class="contents-sub">このページの読み方と出典</span></a></li>
           </ol>
@@ -509,7 +507,7 @@
             <div class="exception">
               <strong>例外</strong> 点棒が平らで、危険度に差がなく、形として一枚が明らかに優れているなら形を取る。5,200や8,000でなければ着順が動かないなら、弱気な1,000点ルートでは足りない。
             </div>
-            <p class="evidence-note"><b>根拠</b> 1,255半荘、13,054局で、LuckyJの平均順位は約2.27、和了率は約23%、放銃率は約10%。上位半分の半荘は1半荘あたり平均3.09回和了、0.75回放銃、下位半分は1.39回と1.48回。トップ目の決め方は5,000強のトップ目局面に現れる。下のトップ目の例はすべて少なくとも1つのNAGAヘッドがLuckyJ側で、Mortalの支持は割れている。</p>
+            <p class="evidence-note"><b>根拠</b> 1,255半荘、13,054局で、LuckyJの平均順位は約2.27、和了率は約23%、放銃率は約10%。上位半分の半荘は1半荘あたり平均3.09回和了、0.75回放銃、下位半分は1.39回と1.48回。トップ目の決め方は5,000強のトップ目局面に現れる。下の例はすべて少なくとも1つのNAGAヘッドがLuckyJ側にある。Mortalは点数が必要だった3例ではLuckyJを支持し、トップ目の1例では反対している。</p>
             <div data-example="point-01"></div>
           </div>
           <nav class="chapter-next" aria-label="次のポイント"><a href="#point-02"><span class="chapter-next-label">次のポイント <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>02</i>序盤に手を決めつけるな</span></a></nav>
@@ -593,7 +591,7 @@
             <div class="exception">
               <strong>例外</strong> ドラ、赤五、いちばん強いブロック、手を押せる手にする牌を捨てる理由にしない。場がすでに危険で、その浮き牌が今の他の候補より安全なときも見送る。
             </div>
-            <p class="evidence-note"><b>根拠</b> LuckyJがニシキより危険度の低い牌を選んだ3,700超の局面で、その選択は平均的な分岐より厳しい不一致が少なかった。Mortalはこれらの切りの一部を支持し、別の一部では純粋な効率を好む。</p>
+            <p class="evidence-note"><b>根拠</b> LuckyJがニシキより危険度の低い牌を選んだ3,700超の局面で、その選択は平均的な分岐より厳しい不一致が少なかった。下の4例では、MortalはすべてLuckyJを支持する。</p>
             <div data-example="point-05"></div>
           </div>
           <nav class="chapter-next" aria-label="次のポイント"><a href="#point-06"><span class="chapter-next-label">次のポイント <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>06</i>打点は安いうちに買え</span></a></nav>
@@ -613,7 +611,7 @@
             <div class="exception">
               <strong>例外</strong> 打点の牌に支えがないとき、すでに危険すぎるとき、残すと手のいちばん良い形が壊れるときは切る。負けていれば必要な打点は上がるが、すべての危険な打牌が儲かるようになるわけではない。
             </div>
-            <p class="evidence-note"><b>根拠</b> 600超のドラ・赤五保持局面で、LuckyJはまだ手に属している打点材料を残し、その選択はニシキに対してよく持ちこたえた。負けているから危険を買うという広い考えは同じ支持を得ていない。掲載した打点トレードにはそれぞれNAGAヘッドがLuckyJ側についているが、Mortalはより素直な効率線を好むことが多い。</p>
+            <p class="evidence-note"><b>根拠</b> 600超のドラ・赤五保持局面で、LuckyJはまだ手に属している打点材料を残し、その選択はニシキに対してよく持ちこたえた。負けているから危険を買うという広い考えは同じ支持を得ていない。下の打点トレードにはそれぞれNAGAヘッドが2つLuckyJ側についており、Mortalは4例中2例でLuckyJを支持し、1例ではニシキの素直な線を、残る1例では第三の牌を選ぶ。</p>
             <div data-example="point-06"></div>
           </div>
           <nav class="chapter-next" aria-label="次のポイント"><a href="#point-08"><span class="chapter-next-label">次のポイント <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>07</i>リーチで卓に税をかけろ</span></a></nav>
@@ -633,7 +631,7 @@
             <div class="exception">
               <strong>例外</strong> ボタンがあるからと立直しない。着順の入れ替えがすでにダマで足りるとき、特定の一人を直撃する必要があるとき、複数の生きた脅威が安い悪形待ちを高くしすぎるときはダマの方が良い。
             </div>
-            <p class="evidence-note"><b>根拠</b> LuckyJの立直は1半荘あたり約1.9回で、上位半分の半荘は約2.11回、下位半分は1.67回。下の圧力の立直では、Mortalはたいてい宣言に同意する。その判定は宣言だけを対象とし、LuckyJの宣言打牌や待ちには及ばない。</p>
+            <p class="evidence-note"><b>根拠</b> LuckyJの立直は1半荘あたり約1.9回で、上位半分の半荘は約2.11回、下位半分は1.67回。下の圧力の立直5例すべてで、Mortalは宣言に同意する。その判定は宣言だけを対象とし、LuckyJの宣言打牌や待ちには及ばない。</p>
             <div data-example="point-08"></div>
           </div>
           <nav class="chapter-next" aria-label="次のポイント"><a href="#point-09"><span class="chapter-next-label">次のポイント <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>08</i>ツモるたびに押し全体を値付けし直せ</span></a></nav>
@@ -745,7 +743,7 @@
             <div class="exception">
               <strong>例外</strong> 自分の打点や守備に役立つとき、より大きな立直に対する唯一の安全牌になるとき、南4局でその相手の安いアガリが望む結果そのものであるときは、役牌を残す、あるいはあえて差し出す。
             </div>
-            <p class="evidence-note"><b>根拠</b> 役不明の副露手に対して最終的に切られた牌は8巡目前後、タンヤオ気配の副露には10巡目前後、役がすでに見えていた場合は7巡目前後に出ていた。各数字はその文脈まで牌が生き残ったことを条件にしており、鳴きがLuckyJを待たせたことの証明ではない。掲載例はエンジンの見解が割れており、Mortalはたいていニシキか別の線を好む。</p>
+            <p class="evidence-note"><b>根拠</b> 役不明の副露手に対して最終的に切られた牌は8巡目前後、タンヤオ気配の副露には10巡目前後、役がすでに見えていた場合は7巡目前後に出ていた。各数字はその文脈まで牌が生き残ったことを条件にしており、鳴きがLuckyJを待たせたことの証明ではない。下の例はいずれもNAGAヘッド1つがLuckyJ側で、Mortalは4例中2例でLuckyJを、残る2例ではニシキを支持する。</p>
             <div data-example="point-13"></div>
           </div>
           <nav class="chapter-next" aria-label="次のポイント"><a href="#point-14"><span class="chapter-next-label">次のポイント <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>13</i>安全牌は誰に安全かを名指しせよ</span></a></nav>
@@ -849,26 +847,9 @@
             <p class="evidence-note"><b>根拠</b> 周りに副露のない孤立した自分の役牌は中央値4巡目で整理され、タンヤオ気配の副露がある文脈では10巡目前後まで待っていた。矛盾ではなく役割の変化である。</p>
             <div data-example="point-18"></div>
           </div>
-          <nav class="chapter-next" aria-label="本編の後"><a href="#case-studies"><span class="chapter-next-label">本編の後 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title">エンジン不一致のストレステスト</span></a></nav>
+          <nav class="chapter-next" aria-label="本編の後"><a href="#drills"><span class="chapter-next-label">本編の後 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title">このスタイルを鍛える方法</span></a></nav>
         </section>
 
-        <section class="section" id="case-studies">
-          <p class="kicker">エンジン不一致のストレステスト</p>
-          <h2>発見候補とLuckyJのミス候補。</h2>
-          <p>
-            これは代表的なLuckyJ打牌ではない。別のNAGAヘッドが支持する例、またはニシキ内でLuckyJ打牌に
-            無視できない重みがある例を優先し、足りない部分だけ極端な不一致で補う。まず通常のニシキ線を最も強く説明する。
-            LuckyJ打牌が買うものを結果を見る前に示し、形・役・危険度・着順・第二エンジンの確認を通った時だけ教材へ昇格する。
-            通らなければLuckyJのミス候補として記録する。
-          </p>
-          <div class="case-browser">
-            <div class="case-tabs" id="caseTabs" aria-label="実例カテゴリ"></div>
-            <div class="case-grid" id="caseGrid"></div>
-          </div>
-          <div class="rule">
-            <strong>読み方</strong> 牌をコピーせず仮説を検証する。通常線を超えた条件だけを自分の打ち方へ移す。
-          </div>
-        </section>
 
         <section class="section" id="drills">
           <p class="kicker">練習システム</p>
@@ -939,7 +920,7 @@
             <li><a href="https://github.com/honvl/LuckyJ/blob/main/analysis/point-evidence-2026-07-09.md">proxy根拠の詳細監査。</a></li>
             <li><a href="https://www.tencent.com/en-us/articles/2201746.html">Tencent: LuckyJ は自己対戦で学習。</a></li>
             <li>牌フォント: Gutenberg Labo の GL-MahjongTile。`site/fonts/` に同梱。</li>
-            <li>生成データ: `site/book-data.json`, `site/point-validation.json`, `site/case-studies.json`, `site/point-examples.json`, `data/luckyj_analysis.json`。元リンク修正は `data/source_corrections.json` に記録。</li>
+            <li>生成データ: `site/book-data.json`, `site/point-validation.json`, `site/point-examples.json`, `data/luckyj_analysis.json`。元リンク修正は `data/source_corrections.json` に記録。</li>
           </ul>
         </section>
       </article>
@@ -959,6 +940,6 @@
       </div>
     </footer>
 
-    <script src="app.js?v=20260924-book"></script>
+    <script src="app.js?v=20260924-replays"></script>
   </body>
 </html>
