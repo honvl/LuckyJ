@@ -1328,27 +1328,6 @@ function convertStaticTileMarkup(root = document) {
   }
 }
 
-function prescriptionExampleTitle(item) {
-  const bits = [
-    item?.game !== undefined ? `Game ${item.game}` : "",
-    item?.round || "",
-    item?.turn !== undefined ? `turn ${item.turn}` : "",
-    item?.left !== undefined && item?.left !== null ? tilesLeftText(item.left) : "",
-    item?.call ? item.call.toUpperCase() : "",
-  ].filter(Boolean);
-  return bits.join(", ");
-}
-
-function prescriptionFocalTurn(sequence) {
-  const turns = Array.isArray(sequence?.turns) ? sequence.turns : [];
-  if (!turns.length) return null;
-  return turns.find((turn) => turn.discard_focus_honor) || turns[sequence.autoplay_indices?.[1]] || turns[sequence.autoplay_indices?.[0]] || turns[0];
-}
-
-function prescriptionTileSpan(tile, className = "") {
-  return `<span class="rx-tile${className ? ` ${className}` : ""}">${tileIcon(tile, "inline-tile")}</span>`;
-}
-
 function prescriptionTileSortKey(tile) {
   const base = String(tile || "").replace("r", "");
   const honorOrder = { E: 27, S: 28, W: 29, N: 30, P: 31, F: 32, C: 33 };
@@ -1365,150 +1344,6 @@ function sortedPrescriptionHand(hand) {
     .map((tile, index) => ({ tile, index }))
     .sort((a, b) => prescriptionTileSortKey(a.tile) - prescriptionTileSortKey(b.tile) || a.index - b.index)
     .map((item) => item.tile);
-}
-
-function prescriptionHonorSeen(item) {
-  const counts = Array.isArray(item?.honor_counts) ? item.honor_counts : [];
-  if (!counts.length) return "";
-  const badges = counts
-    .map((honor) => {
-      const title = `${tileName(honor.tile)}: ${honor.seen}/4 seen; ${honor.in_hand} in hand, ${honor.table} already visible`;
-      return `<span class="rx-honor-count" title="${escapeHtml(title)}">${tileIcon(honor.tile, "inline-tile")}<b>${escapeHtml(
-        String(honor.seen)
-      )}</b><em>/4</em></span>`;
-    })
-    .join("");
-  return `<span class="rx-honor-counts"><span>honors seen</span>${badges}</span>`;
-}
-
-function prescriptionOpenContext(item) {
-  const context = item?.open_context;
-  if (!context) return "";
-  const riichi = context.riichi_active ? "; riichi active" : "";
-  if (!context.someone_opened) return `<span class="rx-table-context">No one opened${riichi}.</span>`;
-  const meldText = `${context.opponent_melds || 0} open meld${context.opponent_melds === 1 ? "" : "s"}`;
-  return `<span class="rx-table-context">Someone opened: ${escapeHtml(meldText)}; ${escapeHtml(
-    context.visible_yaku_text || "yaku status unknown"
-  )}${riichi}.</span>`;
-}
-
-function prescriptionExampleLine(item) {
-  const hand = sortedPrescriptionHand(item?.hand);
-  let discardMarked = false;
-  let holdMarked = false;
-  const handTiles = hand
-    .map((tile) => {
-      const classes = [];
-      if (!discardMarked && sameBaseTile(tile, item.discard)) {
-        classes.push("rx-discard");
-        discardMarked = true;
-      }
-      if (item.hold && !holdMarked && sameBaseTile(tile, item.hold) && !sameBaseTile(tile, item.discard)) {
-        classes.push("rx-hold");
-        holdMarked = true;
-      }
-      return prescriptionTileSpan(tile, classes.join(" "));
-    })
-    .join("");
-  const drawClasses = ["rx-draw"];
-  if (!discardMarked && sameBaseTile(item.draw, item.discard)) drawClasses.push("rx-discard");
-  if (item.hold && !holdMarked && sameBaseTile(item.draw, item.hold)) drawClasses.push("rx-hold");
-  const title = prescriptionExampleTitle(item);
-  const label = String(item?.label || item?.game || "").slice(0, 5);
-  return `
-    <div class="rx-turn" title="${escapeHtml(title)}" aria-label="${escapeHtml(title)}">
-      <div class="rx-turn-main">
-        <span class="rx-turn-label">${escapeHtml(label)}</span>
-        <span class="rx-hand-line">${handTiles}${prescriptionTileSpan(item.draw, drawClasses.join(" "))}</span>
-      </div>
-      <div class="rx-turn-context">
-        ${prescriptionHonorSeen(item)}
-        ${prescriptionOpenContext(item)}
-      </div>
-    </div>
-  `;
-}
-
-function prescriptionSummaryText(item) {
-  if (item?.turns) {
-    const focal = prescriptionFocalTurn(item);
-    if (!focal) return "";
-    const hand = tileRun(sortedPrescriptionHand(focal.hand), "rx-summary-tiles");
-    const accepted = tileIcon(focal.draw, "inline-tile");
-    const discard = tileIcon(focal.discard, "inline-tile");
-    return `
-      <p><b>Actual LuckyJ:</b> Game ${escapeHtml(String(item.game))}, ${escapeHtml(item.round || "")}, turn ${escapeHtml(
-        String(focal.turn)
-      )}. ${hand}<span class="rx-summary-draw">${accepted}</span></p>
-      <p><b>${escapeHtml(focal.call ? `${focal.call.toUpperCase()} accepted` : "Draw")}:</b> ${accepted}; <b>${
-        isJa ? "打牌" : "discard"
-      }:</b> ${discard}</p>
-    `;
-  }
-  const action = item.call ? `${item.call.toUpperCase()} accepted` : "Draw";
-  const context = prescriptionExampleTitle(item);
-  const hand = tileRun(sortedPrescriptionHand(item.hand), "rx-summary-tiles");
-  const accepted = tileIcon(item.draw, "inline-tile");
-  const discard = tileIcon(item.discard, "inline-tile");
-  return `
-    <p><b>Actual LuckyJ:</b> ${escapeHtml(context)}. ${hand}<span class="rx-summary-draw">${accepted}</span></p>
-    <p><b>${escapeHtml(action)}:</b> ${accepted}; <b>${isJa ? "打牌" : "discard"}:</b> ${discard}</p>
-  `;
-}
-
-const PRESCRIPTION_EXAMPLE_KEYS = new Set(["value_honor_cleanup", "value_honor_cleanup_animation"]);
-
-function prescriptionSequence(sequence, index, { folded = false } = {}) {
-  const turns = Array.isArray(sequence?.turns) ? sequence.turns : [];
-  const contextText = [`Game ${sequence.game}`, sequence.round].filter(Boolean).join(", ");
-  const focusText = sequence.focus_honor
-    ? `<span class="rx-focus-tile">Honor ${tileIcon(sequence.focus_honor, "inline-tile")} ${escapeHtml(tileName(sequence.focus_honor))}</span>`
-    : "";
-  const head = `
-      <b>${escapeHtml(sequence.title || `Example ${index + 1}`)}</b>
-      <span>${escapeHtml(contextText)}${focusText ? `; ${focusText}` : ""}</span>`;
-  const body = `
-      <div class="rx-stage">
-        ${turns.map(prescriptionExampleLine).join("")}
-      </div>
-      ${sequence.note ? `<p class="rx-sequence-note">${escapeHtml(sequence.note)}</p>` : ""}`;
-  // Further examples of the same habit fold away, so the first hand carries the section.
-  if (folded) {
-    return `<details class="rx-sequence rx-sequence-more"><summary class="rx-sequence-head">${head}</summary>${body}</details>`;
-  }
-  return `<div class="rx-sequence"><div class="rx-sequence-head">${head}</div>${body}</div>`;
-}
-
-function renderPrescriptionExamples(rxExamples) {
-  if (!rxExamples || typeof rxExamples !== "object") return;
-  for (const summary of document.querySelectorAll(".rx-example[data-rx-summary-key]")) {
-    if (!PRESCRIPTION_EXAMPLE_KEYS.has(summary.dataset.rxSummaryKey)) {
-      summary.remove();
-      continue;
-    }
-    const examples = rxExamples[summary.dataset.rxSummaryKey];
-    if (!Array.isArray(examples) || !examples.length) continue;
-    summary.innerHTML = prescriptionSummaryText(examples[0]);
-  }
-  for (const block of document.querySelectorAll(".rx-animation[data-rx-key], .rx-animation[data-rx-animate-key]")) {
-    const key = block.dataset.rxKey || block.dataset.rxAnimateKey;
-    if (!PRESCRIPTION_EXAMPLE_KEYS.has(key)) {
-      block.remove();
-      continue;
-    }
-    const examples = rxExamples[key];
-    if (!Array.isArray(examples) || !examples.length || !examples[0]?.turns) {
-      block.remove();
-      continue;
-    }
-    const head = block.querySelector(".rx-anim-head")?.outerHTML || "";
-    block.classList.remove("rx-lines", "rx-animation-long");
-    // Every turn stays on screen, one row each, so the reader can compare them without waiting.
-    const folded = Boolean(block.dataset.rxKey);
-    block.innerHTML = `${head}<div class="rx-sequence-list">${examples
-      .map((sequence, index) => prescriptionSequence(sequence, index, { folded }))
-      .join("")}</div>`;
-  }
 }
 
 function selfSeatLabel() {
@@ -2492,13 +2327,12 @@ async function main() {
   convertStaticTileMarkup();
   applyTileCompatibility();
   const guidePath = isJa ? "strategy-guides.ja.json" : "strategy-guides.json";
-  const [bookResponse, exampleResponse, guideResponse, mortalResponse, validation, rxExamples] = await Promise.all([
+  const [bookResponse, exampleResponse, guideResponse, mortalResponse, validation] = await Promise.all([
     fetch(dataAsset("book-data.json")),
     fetch(dataAsset("point-examples.json")),
     fetch(dataAsset(guidePath)),
     fetch(dataAsset("mortal-analysis.json")),
     fetchJson("point-validation.json", {}),
-    fetchJson("rx-prescription-examples.json", {}),
   ]);
   const data = await bookResponse.json();
   const examples = await exampleResponse.json();
@@ -2536,7 +2370,6 @@ async function main() {
   renderYakuhaiPressure(data.decision_counters.yakuhai_pressure);
   renderDefenseTargets(data.decision_counters.defense_targets);
 
-  renderPrescriptionExamples(rxExamples);
   renderPointValidation(validation);
   renderEngineConsensus(mortal.points);
   renderPointExamples(examples, guides, mortal.points);

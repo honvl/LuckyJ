@@ -14,7 +14,7 @@
     <!-- The text faces load without holding up the page; until they arrive it reads in the fallback faces. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" media="print" onload="this.media='all'" data-font-css />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" /></noscript>
-    <link rel="stylesheet" href="styles.css?v=20260924-replays" />
+    <link rel="stylesheet" href="styles.css?v=20260925-prescriptions" />
   </head>
   <body data-book="playbook">
     <a class="skip-link" href="#point-01">Skip to point 01</a>
@@ -106,442 +106,84 @@
         <section class="section" id="prescriptions">
   <p class="kicker">Prescriptions</p>
   <h2>Simple switches to remember.</h2>
-  <p>Read these as LuckyJ's default habits rather than rules: what it does first, what changes the answer, and when a tile stops being ordinary. The numeric baselines use non-dealer rounds from the full mixed Tenhou corpus (General, Upper, and Tokujou), while the replay examples are Tokujou-only. The percentages are this corpus's observed rates, not universal thresholds. As dealer, LuckyJ moves closer to the NAGA line (top-discard match 76.4% as dealer against 72.5% as child), so play more textbook-efficient and more aggressive from the dealer seat. The spread from game to game is large. These are tendencies driven by context, not a fixed personality.</p>
+  <p>These are the habits worth copying first: what LuckyJ does with a tile or a call before anything special happens, and what makes it change its mind. They come from its non-dealer hands across the whole review, so they describe how it usually plays, and the table can always overrule them. As dealer it plays a little closer to the textbook line, faster and more willing to push.</p>
   <div class="rx-ledger" aria-label="The eight switches at a glance">
-    <div class="rx-ledger-head" aria-hidden="true"><span></span><span>Switch</span><span>LuckyJ&#8217;s default</span><span>Read with</span></div>
-    <a href="#rx-1"><span class="rx-ledger-num">1</span><span class="rx-ledger-title">Single value honors leave early</span><span class="rx-ledger-default">A lone dragon or value wind leaves around turn 3, and around turn 6 once someone has opened.</span><span class="rx-ledger-see">Point 12</span></a>
-    <a href="#rx-2"><span class="rx-ledger-num">2</span><span class="rx-ledger-title">Guest winds are cheap until they defend</span><span class="rx-ledger-default">The starting guest wind goes on turn 2. Against riichi on turns 7 to 9, a live one with no copies seen is cut 12.9% of the time.</span><span class="rx-ledger-see">Point 16</span></a>
-    <a href="#rx-3"><span class="rx-ledger-num">3</span><span class="rx-ledger-title">Pon value pairs by default</span><span class="rx-ledger-default">Pons the first copy 75.9% of the time, and 36.2% once the table already has a threat.</span><span class="rx-ledger-see">Point 03</span></a>
-    <a href="#rx-4"><span class="rx-ledger-num">4</span><span class="rx-ledger-title">The first call has to earn its price</span><span class="rx-ledger-default">A first chi from a closed hand: 6.7%. Once the hand is already open: 26.6%.</span><span class="rx-ledger-see">Points 03, 04</span></a>
-    <a href="#rx-5"><span class="rx-ledger-num">5</span><span class="rx-ledger-title">Riichi wants a real wait</span><span class="rx-ledger-default">Declares at the first chance on 95.3% of waits of 8 or more tiles, 78.3% of 4 to 7, and 33.7% of 3 or fewer.</span><span class="rx-ledger-see">Point 07</span></a>
-    <a href="#rx-6"><span class="rx-ledger-num">6</span><span class="rx-ledger-title">Cross danger mainly with a real hand</span><span class="rx-ledger-default">Against riichi, a discard above 5% danger: 58.9% from tenpai, 31.7% from 1-shanten, 19.6% from 2-shanten, 14.1% from further.</span><span class="rx-ledger-see">Points 08, 09</span></a>
-    <a href="#rx-7"><span class="rx-ledger-num">7</span><span class="rx-ledger-title">Open hands ask for tile control</span><span class="rx-ledger-default">Against two open sets, discards above 5% danger fall from 52.7% early to 37.6% late.</span><span class="rx-ledger-see">Points 04, 14</span></a>
-    <a href="#rx-8"><span class="rx-ledger-num">8</span><span class="rx-ledger-title">Endgame tenpai has a price</span><span class="rx-ledger-default">In the last 12 tiles it calls from 1-shanten 30.8% of the time, from 2 or more away 20.1%, and when already tenpai 4.5%.</span><span class="rx-ledger-see">Points 10, 11</span></a>
+    <div class="rx-ledger-head" aria-hidden="true"><span></span><span>Switch</span><span>LuckyJ&#8217;s habit</span><span>Read with</span></div>
+    <a href="#rx-1"><span class="rx-ledger-num">1</span><span class="rx-ledger-title">Single value honors leave early</span><span class="rx-ledger-default">A lone dragon or value wind goes around turn 3, later once someone has called.</span><span class="rx-ledger-see">Point 12</span></a>
+    <a href="#rx-2"><span class="rx-ledger-num">2</span><span class="rx-ledger-title">Guest winds are cheap until they defend</span><span class="rx-ledger-default">Out by turn 2. Against a riichi, a live one mostly stays in hand.</span><span class="rx-ledger-see">Point 16</span></a>
+    <a href="#rx-3"><span class="rx-ledger-num">3</span><span class="rx-ledger-title">Pon value pairs by default</span><span class="rx-ledger-default">Calls the first copy three times in four; far less once someone is threatening.</span><span class="rx-ledger-see">Point 03</span></a>
+    <a href="#rx-4"><span class="rx-ledger-num">4</span><span class="rx-ledger-title">The first call has to earn its price</span><span class="rx-ledger-default">Rarely opens a closed hand with a chi; calls far more freely once already open.</span><span class="rx-ledger-see">Points 03, 04</span></a>
+    <a href="#rx-5"><span class="rx-ledger-num">5</span><span class="rx-ledger-title">Riichi wants a real wait</span><span class="rx-ledger-default">Declares almost every good wait at once, and only one thin wait in three.</span><span class="rx-ledger-see">Point 07</span></a>
+    <a href="#rx-6"><span class="rx-ledger-num">6</span><span class="rx-ledger-title">Cross danger mainly with a real hand</span><span class="rx-ledger-default">Pushes a dangerous tile into a riichi mostly from tenpai, rarely from further back.</span><span class="rx-ledger-see">Points 08, 09</span></a>
+    <a href="#rx-7"><span class="rx-ledger-num">7</span><span class="rx-ledger-title">Open hands ask for tile control</span><span class="rx-ledger-default">Against two open hands, it tightens as the hand goes on.</span><span class="rx-ledger-see">Points 04, 13</span></a>
+    <a href="#rx-8"><span class="rx-ledger-num">8</span><span class="rx-ledger-title">Endgame tenpai has a price</span><span class="rx-ledger-default">In the last 12 tiles, calls for tenpai from one-shanten about one time in three.</span><span class="rx-ledger-see">Points 09, 10</span></a>
   </div>
   <div class="rx-grid">
     <div class="rx-card" id="rx-1">
-      <div class="rx-example" data-rx-summary-key="value_honor_cleanup">
-        <p><b>Quiet hand:</b> [[2m]][[3m]][[4m]][[5m]][[5p]][[6p]][[7p]][[2s]][[3s]][[4s]][[6s]][[7s]][[8s]][[P]]</p>
-        <p><b>Default:</b> cut the lone [[P]]; keep it once it becomes [[P]][[P]] or your only yaku.</p>
-      </div>
-      <div class="rx-animation" data-rx-animate-key="value_honor_cleanup_animation" aria-label="Animated example: the hand takes three draws before throwing the lone white dragon honor.">
-        <div class="rx-anim-head">
-          <b>Quiet value honor cleanup</b>
-          <span>draw on right; marked discard</span>
-        </div>
-        <div class="rx-stage">
-          <div class="rx-turn">
-            <span class="rx-turn-label">T1</span>
-            <span class="rx-hand-line">
-              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile rx-discard">[[9s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile rx-draw">[[8m]]</span>
-            </span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">T2</span>
-            <span class="rx-hand-line">
-              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile">[[P]]</span><span class="rx-tile rx-draw rx-discard">[[1m]]</span>
-            </span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">T3</span>
-            <span class="rx-hand-line">
-              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile rx-discard">[[P]]</span><span class="rx-tile rx-draw">[[8s]]</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="rx-animation rx-lines" data-rx-key="value_honor_cleanup" aria-label="More animated honor cleanup example lines.">
-        <div class="rx-anim-head">
-          <b>More cleanup lines</b>
-          <span>multiple examples</span>
-        </div>
-        <div class="rx-stage">
-          <div class="rx-turn">
-            <span class="rx-turn-label">D</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile rx-discard">[[P]]</span><span class="rx-tile rx-draw">[[8s]]</span></span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">W</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[2p]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[8s]]</span><span class="rx-tile rx-discard">[[E]]</span><span class="rx-tile rx-draw">[[5s]]</span></span>
-          </div>
-        </div>
-      </div>
       <h3>Single value honors leave early</h3>
-      <p class="rx-rule">A lone dragon or value wind with no job yet usually leaves around turn 3. When someone had already opened before the tile was cut, the child-only median was turn 6. Read that as a description of timing, not an instruction to feed the tile on turn 6. Release it while no yaku or clear advancement is visible, and choke it once advancement shows. Do not cut it by reflex on turn 1 either: about one in eight of these singletons paired before LuckyJ released them.</p>
-      <table>
-        <thead>
-          <tr><th>Tile</th><th>Quiet hand</th><th>Someone opened</th><th>Pairs first</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>[[P]][[F]][[C]] Dragon</td><td>Turn 3</td><td>Turn 6</td><td>12%</td></tr>
-          <tr><td>Value wind</td><td>Turn 3</td><td>Turn 6</td><td>11%</td></tr>
-        </tbody>
-      </table>
-      <p class="rx-rule">When the hand starts with several singleton value honors, LuckyJ still sheds one early but does not clear them all on the same clock. In 4,235 child hands with two or more singleton value honors, the first left at a median of turn 3 and was gone by turn 6 in 84.8% of eligible hands. The second was slower, with a median of turn 5 and 53.3% gone by turn 6. In 26.1% of those hands at least one value honor paired before it was cut, so the extra honors are not interchangeable throwaways.</p>
-      <table>
-        <thead>
-          <tr><th>Starting singleton value honors</th><th>Hands</th><th>Tile median</th><th>Cut by T6</th><th>Pairs first</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td>3,737</td><td>Turn 3</td><td>74.8%</td><td>10.8%</td></tr>
-          <tr><td>2+</td><td>4,235</td><td>Turn 4</td><td>69.0%</td><td>12.1%</td></tr>
-        </tbody>
-      </table>
-      <p class="rx-basis">Basis: lone value-honor cleanup timing. Dragon starts n=8,461; value-wind starts n=5,248. Quiet/open discard contexts n=4,813/2,132 and n=3,001/1,380; non-dealer rounds only.</p>
-      <p class="rx-basis">Multiple-value-honor basis: child starts with one singleton value honor n=3,737 hands; with 2+ n=4,235 hands and 9,972 tracked singleton value honors. In 2+ hands, first/second tracked discard n=4,018/3,240; first/second by-turn-6 eligibility n=4,149/4,086; all still-single value honors gone by turn 6 in 51.6% of eligible hands.</p>
-      <div class="rx-mods">
-        <p class="rx-up"><b>Raise it</b> your hand is ≤2 shanten on turn 3 → cut by turn 6 rises to 84.3% vs 61.5% at 3+ shanten (Δ+22.8pp, n=4,732/7,102); the tile is round wind → 78.1% vs 69.0% otherwise (Δ+9.1pp, n=2,065/9,769).</p>
-        <p class="rx-down"><b>Lower it</b> your hand is 3+ shanten on turn 3 → 61.5% vs 84.3% at ≤2 shanten (Δ-22.8pp, n=7,102/4,732); the tile is double wind → 52.4% vs 71.2% otherwise (Δ-18.8pp, n=395/11,439); the tile is seat wind only → 66.8% vs 71.4% otherwise (Δ-4.6pp, n=2,090/9,744).</p>
-        <p class="rx-down">As dealer, the cut-by-turn-6 rate across this base rises to 76.6% and LuckyJ sits closer to the engine line. Dealer rounds are excluded from this table.</p>
-      </div>
-      <p class="rx-except">Keep it once it has paired, when it is your only realistic yaku, or when the open player may still need that exact tile. See <a href="#point-13">Point 12</a>.</p>
+      <p class="rx-rule">A lone dragon or value wind is the first tile in a new hand that LuckyJ questions. If nothing needs it and nobody has called, it usually goes on the third discard: late enough to see whether it pairs, which it does about one time in eight, and early enough that giving it away costs little.</p>
+      <p class="rx-rule">Picture your third turn at a quiet table, with [[3m]][[4m]][[5m]], [[5p]][[6p]][[7p]], a few loose souzu and a lone [[C]]. The [[C]] is your only honor and it does no work. LuckyJ lets a tile like that go now, before an opponent has a hand that wants to pon it.</p>
+      <p class="rx-rule">Once someone has called, the same tile tends to stay until around the sixth discard. Treat that as timing, not a schedule: let it go while the caller shows no yaku and no progress, and hold it once their hand starts moving. It goes sooner when your own hand is already two-shanten or better by turn 3 or the tile is the round wind, and it stays longer when it is your double wind. With two such honors, the first goes early and the second a couple of turns later.</p>
+      <p class="rx-except">Keep it once it pairs, when it is your only realistic yaku, or when an open hand may still need that exact tile. <a href="#point-13">Point 12</a> prices that last case.</p>
+      <p class="rx-basis"><b>Evidence</b> 8,461 dragon and 5,248 value-wind starts in LuckyJ&#8217;s non-dealer hands. Median cut: turn 3 on a quiet table, turn 6 once someone had called; about 12% paired first. As dealer, 76.6% were gone by turn 6.</p>
     </div>
     <div class="rx-card" id="rx-2">
-      <div class="rx-example" data-rx-summary-key="guest_wind_defense">
-        <p><b>Quiet hand:</b> [[2m]][[3m]][[5m]][[6m]][[3p]][[4p]][[6p]][[7p]][[2s]][[5s]][[6s]][[9s]][[W]][[8m]]</p>
-        <p><b>Default:</b> cut guest [[W]] early; after riichi, spend genbutsu [[9s]] before a live honor.</p>
-      </div>
-      <div class="rx-animation rx-animation-long" data-rx-animate-key="guest_wind_animation" aria-label="Animated example: before riichi the guest wind can be thrown; after riichi the wind stays unchanged as a defensive tile.">
-        <div class="rx-anim-head">
-          <b>Guest wind changes job</b>
-          <span>same honor, different table</span>
-        </div>
-        <div class="rx-stage">
-          <div class="rx-turn">
-            <span class="rx-turn-label">T2</span>
-            <span class="rx-hand-line">
-              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile">[[9s]]</span><span class="rx-tile rx-discard">[[W]]</span><span class="rx-tile rx-draw">[[8m]]</span>
-            </span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">R1</span>
-            <span class="rx-hand-line">
-              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile rx-discard">[[9s]]</span><span class="rx-tile rx-hold">[[W]]</span><span class="rx-tile rx-draw">[[1p]]</span>
-            </span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">R2</span>
-            <span class="rx-hand-line">
-              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile rx-discard">[[8m]]</span><span class="rx-tile">[[1p]]</span><span class="rx-tile rx-hold">[[W]]</span><span class="rx-tile rx-draw">[[4s]]</span>
-            </span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">R3</span>
-            <span class="rx-hand-line">
-              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile rx-discard">[[1p]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile rx-hold">[[W]]</span><span class="rx-tile rx-draw">[[7m]]</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="rx-animation rx-lines" data-rx-key="guest_wind_defense" aria-label="More animated guest wind example lines.">
-        <div class="rx-anim-head">
-          <b>Early cut vs defensive hold</b>
-          <span>multiple examples</span>
-        </div>
-        <div class="rx-stage">
-          <div class="rx-turn">
-            <span class="rx-turn-label">T</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile">[[9s]]</span><span class="rx-tile rx-discard">[[W]]</span><span class="rx-tile rx-draw">[[8m]]</span></span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">R</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile rx-discard">[[9s]]</span><span class="rx-tile rx-hold">[[W]]</span><span class="rx-tile rx-draw">[[1p]]</span></span>
-          </div>
-        </div>
-      </div>
       <h3>Guest winds are cheap until they defend</h3>
-      <p class="rx-rule">A wind that is neither your seat wind nor the round wind usually leaves very early. Across child rounds the starting guest-wind median is turn 2. Against riichi, do not assume every live honor is safe. Honors with no copies visible usually stay in hand, honors with one copy visible get thrown more often, and a live honor drawn late is held slightly more often than cut.</p>
-      <table>
-        <thead>
-          <tr><th>Spot</th><th>No copies seen</th><th>One copy seen</th><th>Late live draw</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Starting guest wind</td><td>Cut turn 2</td><td>Usually gone by turn 3</td><td>17% kept past turn 6</td></tr>
-          <tr><td>Turns 7-9 vs riichi</td><td>12.9% cut</td><td>32.5% cut</td><td></td></tr>
-          <tr><td>Turn 13+ vs riichi</td><td>8.2% cut</td><td>34.4% cut</td><td>52.5% hold</td></tr>
-        </tbody>
-      </table>
-      <p class="rx-basis">Basis: guest-wind cleanup n=6,027 starts. Riichi turns 7-9 visible-0/1 matching cells n=1,163/1,630. Late live-honor draws under riichi n=673; non-dealer rounds only.</p>
-      <div class="rx-mods">
-        <p class="rx-up"><b>Raise it</b> your hand is 0-1 shanten → cut the live honor 29.2% vs 4.9% at 2+ shanten (Δ+24.3pp, n=840/2,494); you have 0 genbutsu vs the riichi → 20.0% vs 8.0% with at least one (Δ+11.9pp, n=821/2,513).</p>
-        <p class="rx-down"><b>Lower it</b> your hand is 2+ shanten → cut only 4.9% vs 29.2% at 0-1 shanten (Δ-24.3pp, n=2,494/840), so holding a live honor against riichi is mostly a folding behavior; you have 2+ genbutsu → 6.4% vs 14.7% with fewer outs (Δ-8.4pp, n=1,503/1,831).</p>
-      </div>
-      <p class="rx-except">Keep it when that wind is your safest answer to a specific opponent, or when every cleaner exit is gone. See <a href="#point-18">Point 16</a>.</p>
+      <p class="rx-rule">A wind that is neither your seat wind nor the round wind does almost nothing for your hand, so it is usually the first tile out. LuckyJ&#8217;s median is the second discard.</p>
+      <p class="rx-rule">Its value changes when someone declares. Now make it turn 8, with Shimocha in riichi and a [[N]] in your hand that nobody has discarded. It looks like a free tile, but a live honor is as good a tanki or shanpon wait as any, and LuckyJ threw one like that only about one time in eight. Once a copy had shown up in a river, it went about one time in three.</p>
+      <p class="rx-rule">Distance from tenpai decides most of it. From one-shanten or better, LuckyJ spends the live honor about three times in ten; from two-shanten or worse almost never, because holding it is part of folding. It lets go sooner when it has no genbutsu at all against the riichi, and a live honor drawn late is held a little more often than cut.</p>
+      <p class="rx-except">Keep the wind when it is your safest answer to a specific opponent, or when every cleaner exit is gone. <a href="#point-18">Point 16</a> labels each honor by the job it is doing.</p>
+      <p class="rx-basis"><b>Evidence</b> 6,027 guest-wind starts in non-dealer hands, median cut turn 2. Against a riichi on turns 7 to 9, a live honor went 12.9% of the time with no copy seen and 32.5% with one; 29.2% from one-shanten or better, 4.9% from further back.</p>
     </div>
     <div class="rx-card" id="rx-3">
-      <div class="rx-example" data-rx-summary-key="yakuhai_pon">
-        <p><b>Before call:</b> [[2m]][[3m]][[5m]][[6m]][[7p]][[8p]][[2s]][[3s]][[5s]][[7s]][[9s]][[C]][[C]]; opponent discards [[C]].</p>
-        <p><b>Default:</b> pon [[C]] unless the closed route is already faster, safer, and worth more.</p>
-      </div>
-      <div class="rx-animation rx-lines" data-rx-key="yakuhai_pon" aria-label="Animated value-pair call example lines.">
-        <div class="rx-anim-head">
-          <b>Accepted value tiles</b>
-          <span>multiple examples</span>
-        </div>
-        <div class="rx-stage">
-          <div class="rx-turn">
-            <span class="rx-turn-label">PON</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile rx-discard">[[9s]]</span><span class="rx-tile">[[C]]</span><span class="rx-tile">[[C]]</span><span class="rx-tile rx-draw">[[C]]</span></span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">DORA</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[7m]]</span><span class="rx-tile">[[2p]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile rx-discard">[[P]]</span><span class="rx-tile">[[E]]</span><span class="rx-tile">[[E]]</span><span class="rx-tile rx-draw">[[E]]</span></span>
-          </div>
-        </div>
-      </div>
       <h3>Pon value pairs by default</h3>
-      <p class="rx-rule">With a pair of dragons, round wind, or seat wind in hand, pon is the default. The first visible copy is the best chance you will get. If the table is already threatening, or the hand is already close by the middle row, check whether opening ruins a better closed path. Dora in hand argues for taking the pon.</p>
-      <table>
-        <thead>
-          <tr><th>Question</th><th>Usually yes</th><th>More cautious</th><th>Overall</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Which copy?</td><td>First copy 75.9%</td><td>Later copy 55.8%</td><td>73.6%</td></tr>
-          <tr><td>Timing/distance</td><td>T1-6, 2-3 away 86.4%</td><td>T7-12, 2-3 away 60.0%</td><td>T7-12, 0-1 away 60.9%</td></tr>
-          <tr><td>Dora count</td><td>2 dora 82.0%</td><td>No dora 69.7%</td><td>1 dora 74.4%</td></tr>
-        </tbody>
-      </table>
-      <p class="rx-basis">Basis: yakuhai pon opportunities n=2,220. First/later copy n=1,969/251. Timing-distance cells n=959/345/271. Dora cells n=983/833/322; non-dealer rounds only.</p>
-      <div class="rx-mods">
-        <p class="rx-up"><b>Raise it</b> no existing table threat → pon 82.3% vs 36.2% with a threat (Δ+46.0pp, n=1,803/417); turns 1-6 at 2-3 shanten → 86.4% vs 63.8% otherwise (Δ+22.6pp, n=959/1,261); 2 dora → 82.0% vs 72.2% without that bucket (Δ+9.8pp, n=322/1,898); a second yakuhai pair is in hand → 78.1% vs 72.8% without one (Δ+5.3pp, n=320/1,900).</p>
-        <p class="rx-down"><b>Lower it</b> existing table threat → 36.2% vs 82.3% without one (Δ-46.0pp, n=417/1,803); turns 7-12 at 0-1 shanten → 60.9% vs 75.4% otherwise (Δ-14.5pp, n=271/1,949); turns 7-12 at 2-3 shanten → 60.0% vs 76.1% otherwise (Δ-16.1pp, n=345/1,875); 0 dora → 69.7% vs 76.7% with dora (Δ-7.0pp, n=983/1,237).</p>
-      </div>
-      <p class="rx-except">Skip the pon when it leaves a cheap, still-far open hand with no safe next discard, or when your closed line is already better. See <a href="#point-03">Point 03</a>.</p>
+      <p class="rx-rule">With a pair of dragons, the round wind or your seat wind, the pon is the default, and the first copy is the one to take. LuckyJ called it three times in four. A later copy was called only about half the time.</p>
+      <p class="rx-rule">Take [[F]][[F]] with a dora in hand and a two-shanten shape on turn 4. The pon gives the hand its yaku and a step toward tenpai for the price of one open meld. That is the easiest call in the game, and this early LuckyJ makes it nearly nine times in ten.</p>
+      <p class="rx-rule">The brake is the table. When an opponent is already threatening, the same pon drops to about one time in three, because opening leaves fewer safe tiles for the turns that matter. It also cools in the middle of the hand, when a closed path may already be worth more than a cheap open one. Dora in hand pushes the other way.</p>
+      <p class="rx-except">Skip the pon when it leaves a cheap, still-distant open hand with no safe next discard, or when your closed line is already better. <a href="#point-03">Point 03</a> is about calls that change the hand.</p>
+      <p class="rx-basis"><b>Evidence</b> 2,220 yakuhai pon chances in non-dealer hands: 75.9% on the first copy, 55.8% on a later one; 82.3% on a quiet table against 36.2% with a threat.</p>
     </div>
     <div class="rx-card" id="rx-4">
-      <div class="rx-example" data-rx-summary-key="first_call_price">
-        <p><b>Before call:</b> [[1m]][[3m]][[6p]][[8p]][[2s]][[4s]][[7s]][[8s]][[P]][[P]][[E]][[S]][[W]].</p>
-        <p><b>Default:</b> pass a loose chi on [[7p]]; pon [[P]] because it gives the hand a yaku.</p>
-      </div>
-      <div class="rx-animation rx-lines" data-rx-key="first_call_price" aria-label="Animated first-call price example lines.">
-        <div class="rx-anim-head">
-          <b>Call price checks</b>
-          <span>multiple examples</span>
-        </div>
-        <div class="rx-stage">
-          <div class="rx-turn">
-            <span class="rx-turn-label">YAKU</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[1m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile">[[8s]]</span><span class="rx-tile rx-discard">[[W]]</span><span class="rx-tile">[[E]]</span><span class="rx-tile">[[S]]</span><span class="rx-tile">[[P]]</span><span class="rx-tile">[[P]]</span><span class="rx-tile rx-draw">[[P]]</span></span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">CHI</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[1m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile">[[8s]]</span><span class="rx-tile">[[P]]</span><span class="rx-tile">[[P]]</span><span class="rx-tile rx-discard">[[E]]</span><span class="rx-tile">[[S]]</span><span class="rx-tile">[[W]]</span><span class="rx-tile rx-draw">[[7p]]</span></span>
-          </div>
-        </div>
-      </div>
       <h3>The first call has to earn its price</h3>
-      <p class="rx-rule">Do not open a closed hand because a chi is available. The call has to give yaku, tenpai, a real one-shanten, denial, or a safer path. LuckyJ takes a first chi from a closed hand only 6.7% of the time. Once the hand is already open, the chi rate rises to 26.6%.</p>
-      <table>
-        <thead>
-          <tr><th>Spot</th><th>LuckyJ habit</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>First chi from closed</td><td>Only 6.7%</td></tr>
-          <tr><td>Chi after already open</td><td>26.6%</td></tr>
-          <tr><td>Junk call opportunity</td><td>Passes 86.5%</td></tr>
-          <tr><td>Junk hand with value pair</td><td>Pons 70.4%</td></tr>
-        </tbody>
-      </table>
-      <p class="rx-basis">Basis: chi opportunities n=19,131. Closed-to-open chi n=16,284; already-open chi n=2,847. Junk call opportunities n=1,401; junk yakuhai pon opportunities n=179; non-dealer rounds only.</p>
-      <div class="rx-mods">
-        <p class="rx-up"><b>Raise it</b> the chi reaches ≤1 shanten → 17.0% vs 2.4% otherwise (Δ+14.6pp, n=4,811/11,473); ≤12 tiles remain → 18.2% vs 6.2% earlier (Δ+12.0pp, n=665/15,619); turn 13+ → 14.6% vs 5.7% earlier (Δ+8.9pp, n=1,882/14,402); called tile is dora → 10.0% vs 6.6% otherwise (Δ+3.4pp, n=440/15,844).</p>
-        <p class="rx-down"><b>Lower it</b> the chi does not reach ≤1 shanten → 2.4% vs 17.0% when it does (Δ-14.6pp, n=11,473/4,811); more than 12 tiles remain → 6.2% vs 18.2% in the last 12 (Δ-12.0pp, n=15,619/665); turns 1-6 → 4.4% vs 8.6% later (Δ-4.2pp, n=7,359/8,925); called tile is not dora → 6.6% vs 10.0% when it is dora (Δ-3.4pp, n=15,844/440).</p>
-      </div>
-      <p class="rx-except">Take the call when it gives yaku, tenpai, a real one-shanten, denial, or safe-tile structure. See <a href="#point-03">Point 03</a> and <a href="#point-04">Point 04</a>.</p>
+      <p class="rx-rule">Opening a closed hand gives up riichi, much of the hand&#8217;s value and several defensive tiles, so LuckyJ&#8217;s first chi has to buy something specific. From a closed hand it took about one chance in fifteen. Once the hand was already open that price was paid, and it called about one in four.</p>
+      <p class="rx-rule">Kamicha throws [[4p]] and you hold [[2p]][[3p]] in a closed three-shanten hand with no yaku in sight. The chi moves you from three steps away to two and leaves a cheap open hand to defend with. LuckyJ passes that call almost every time. When the same chi reaches one-shanten, it calls seven times as often.</p>
+      <p class="rx-rule">Late in the hand the price drops. With 12 tiles or fewer left, a first chi from a closed hand is about three times as common, because a tenpai at the draw is worth having even without a win. Junk calls it mostly passes, but a junk hand holding a value pair still takes the pon, since the pair brings its own yaku.</p>
+      <p class="rx-except">Take the call when it gives a yaku, tenpai, a real one-shanten, denial, or a safer path. Points <a href="#point-03">03</a> and <a href="#point-04">04</a> follow what happens after the call.</p>
+      <p class="rx-basis"><b>Evidence</b> 19,131 chi chances in non-dealer hands: 6.7% of 16,284 from a closed hand, 26.6% of 2,847 once open; 17.0% when the chi reached one-shanten against 2.4% when it did not.</p>
     </div>
     <div class="rx-card" id="rx-5">
-      <div class="rx-example" data-rx-summary-key="riichi_wait">
-        <p><b>Wide tenpai:</b> [[2m]][[3m]][[4m]][[5m]][[6m]][[7m]][[3p]][[4p]][[6s]][[7s]][[8s]][[E]][[E]] waits [[2p]][[5p]].</p>
-        <p><b>Default:</b> riichi. With the same value on a thin [[1s]][[2s]] edge, dama becomes normal.</p>
-      </div>
-      <div class="rx-animation rx-lines" data-rx-key="riichi_wait" aria-label="Animated riichi wait example lines.">
-        <div class="rx-anim-head">
-          <b>Wait quality lines</b>
-          <span>multiple examples</span>
-        </div>
-        <div class="rx-stage">
-          <div class="rx-turn">
-            <span class="rx-turn-label">WIDE</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[7m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile">[[8s]]</span><span class="rx-tile rx-discard">[[E]]</span><span class="rx-tile">[[E]]</span><span class="rx-tile rx-draw">[[5p]]</span></span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">THIN</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[7m]]</span><span class="rx-tile">[[8m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[1s]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile rx-discard">[[9m]]</span><span class="rx-tile">[[E]]</span><span class="rx-tile rx-draw">[[3s]]</span></span>
-          </div>
-        </div>
-      </div>
       <h3>Riichi wants a real wait</h3>
-      <p class="rx-rule">With a wide wait, declare at once. With a thin wait, especially while protecting a big lead, damaten is the normal line. If someone is already threatening, remember that riichi begins with one more discard that has to pass right now.</p>
-      <table>
-        <thead>
-          <tr><th>Spot</th><th>Declare now</th><th>If skipped</th><th>Warning</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>8+ waits</td><td>95.3% riichi</td><td></td><td></td></tr>
-          <tr><td>4-7 waits</td><td>78.3% riichi</td><td></td><td></td></tr>
-          <tr><td>≤3 waits</td><td>33.7% riichi</td><td></td><td></td></tr>
-          <tr><td>Bad wait, +10k lead</td><td>32.5% riichi</td><td></td><td></td></tr>
-          <tr><td>Declined first chance</td><td>21.6% later riichi</td><td>58.1% stays dama</td><td>20.3% breaks/folds</td></tr>
-          <tr><td>Riichi into threat</td><td></td><td></td><td>43.2% had a &gt;10% stick discard</td></tr>
-        </tbody>
-      </table>
-      <p class="rx-basis">Basis: first riichi opportunities n=2,381. Wait buckets n=298/1,287/795, plus one unknown-wait record. Bad wait with +10k lead n=83, small sample. Declined first chance n=821. Existing-threat declaration danger n=590; non-dealer rounds only.</p>
-      <div class="rx-mods">
-        <p class="rx-up"><b>Raise it</b> with ≤3 unseen winning tiles, the wait has 2+ winning tile types → 63.6% vs 40.9% for single-type waits (Δ+22.7pp, n=140/438); at 4-7 waits, 2+ winning tile types → 84.0% vs 57.9% for single-type waits (Δ+26.2pp, n=1,007/280); at 4-7 waits, starting 4th → 88.2% vs 74.7% otherwise (Δ+13.4pp, n=346/941).</p>
-        <p class="rx-down"><b>Lower it</b> ≤3 unseen into an existing riichi → 17.6% vs 38.3% otherwise (Δ-20.7pp, n=176/619); 4-7 waits into an existing riichi → 69.4% vs 80.4% otherwise (Δ-11.0pp, n=245/1,042); 4-7 waits with 2+ dora → 70.8% vs 81.0% otherwise (Δ-10.2pp, n=343/944).</p>
-        <p>As dealer, first-chance declares rise to 70.2% overall and declares on three or fewer waits rise to 41.9%. Dealer bad-wait cells are excluded from this child-only table.</p>
-      </div>
-      <p class="rx-except">Do not riichi by reflex when the wait is bad, the hand is cheap, the declaration discard is the danger, or your lead already has enough value. See <a href="#point-08">Point 07</a>.</p>
+      <p class="rx-rule">With a wide wait, LuckyJ declares at once: 95 times in 100 when eight or more winning tiles are left, and about four times in five with four to seven. With three or fewer it declares only one time in three.</p>
+      <p class="rx-rule">Your tenpai waits on a [[3s]] kanchan with two copies left, and you lead by 10,000. A riichi pays 1,000 to announce a two-tile wait to three players who are free to fold. LuckyJ stays quiet about two times in three there, and a riichi it passes up usually stays a dama tenpai instead of turning into a declaration later.</p>
+      <p class="rx-rule">Two things push it back toward declaring: a thin wait on two tile types instead of one, and sitting in fourth. Two things hold it back: a riichi already on the table, since the declaration starts with one more tile that has to pass right now, and a hand that already carries two dora. As dealer it declares more often everywhere, thin waits included.</p>
+      <p class="rx-except">Do not riichi by reflex when the wait is bad, the hand is cheap, the declaration tile is the danger, or your lead already has enough value. <a href="#point-08">Point 07</a> covers the pressure a riichi puts on the table.</p>
+      <p class="rx-basis"><b>Evidence</b> 2,381 first riichi chances in non-dealer hands: declared 95.3% with 8 or more tiles, 78.3% with 4 to 7, 33.7% with 3 or fewer. Of 821 declined first chances, 58.1% stayed dama.</p>
     </div>
     <div class="rx-card" id="rx-6">
-      <div class="rx-example" data-rx-summary-key="riichi_defense">
-        <p><b>Riichi against you:</b> [[2m]][[3m]][[5m]][[6m]][[3p]][[5p]][[6p]][[2s]][[4s]][[5s]][[8s]][[9s]][[E]][[E]].</p>
-        <p><b>Default:</b> if this is still far from tenpai, answer with genbutsu [[9s]] before pushing [[5s]].</p>
-      </div>
-      <div class="rx-animation rx-lines" data-rx-key="riichi_defense" aria-label="Animated riichi defense example lines.">
-        <div class="rx-anim-head">
-          <b>Hand distance lines</b>
-          <span>multiple examples</span>
-        </div>
-        <div class="rx-stage">
-          <div class="rx-turn">
-            <span class="rx-turn-label">FOLD</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[6m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile">[[8s]]</span><span class="rx-tile rx-discard">[[9s]]</span><span class="rx-tile">[[E]]</span><span class="rx-tile rx-draw">[[1p]]</span></span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">PUSH</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile rx-discard">[[5s]]</span><span class="rx-tile">[[E]]</span><span class="rx-tile rx-draw">[[6p]]</span></span>
-          </div>
-        </div>
-      </div>
       <h3>Cross danger mainly with a real hand</h3>
-      <p class="rx-rule">This table is a danger-taking proxy, not a true push-fold rate. It counts how often LuckyJ's actual discard had more than 5% maximum NAGA danger. Against riichi that happened most often from tenpai, less from one-shanten, and least from two-shanten or worse. In the last 20 tiles it fell again. Read the first-genbutsu response as a separate signal.</p>
-      <table>
-        <thead>
-          <tr><th>Hand</th><th>&gt;5% danger discard</th><th>Last 20 tiles</th><th>First answer: genbutsu</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Tenpai</td><td>58.9%</td><td>52.6%</td><td>35.3%</td></tr>
-          <tr><td>1-shanten</td><td>31.7%</td><td>21.6%</td><td>56.9%</td></tr>
-          <tr><td>2-shanten</td><td>19.6%</td><td>13.8%</td><td>65.1%</td></tr>
-          <tr><td>3+ shanten</td><td>14.1%</td><td>8.1%</td><td>68.7%</td></tr>
-        </tbody>
-      </table>
-      <p class="rx-basis">Basis: closed-hand decisions vs riichi by shanten n=986/4,361/4,810/2,889. Last-20 cells n=407/1,325/1,381/708. First-discard genbutsu cells n=278/1,275/1,136/559; non-dealer rounds only.</p>
-      <div class="rx-mods">
-        <p class="rx-up"><b>More &gt;5% danger</b> 1-shanten with 0 genbutsu → 53.3% vs 27.5% with any genbutsu (Δ+25.8pp, n=700/3,661), a sign of forced discards more than aggression; 1-shanten with more than 20 tiles left → 36.1% vs 21.6% in the last 20 (Δ+14.5pp, n=3,036/1,325); tenpai with 0 genbutsu → 70.4% vs 56.8% with any genbutsu (Δ+13.6pp, n=152/834); tenpai with 2 dora → 65.6% vs 57.1% otherwise (Δ+8.5pp, n=212/774).</p>
-        <p class="rx-down"><b>Less &gt;5% danger</b> tenpai with 2+ genbutsu in hand → 53.7% vs 67.8% with fewer genbutsu (Δ-14.1pp, n=620/366), usually by choice rather than necessity; tenpai with ≤20 tiles left → 52.6% vs 63.4% earlier (Δ-10.8pp, n=407/579); 1-shanten with ≤20 tiles left → 21.6% vs 36.1% earlier (Δ-14.5pp, n=1,325/3,036).</p>
-        <p>As dealer these danger-proxy rates rise to 67.8% from tenpai and 38.6% from one-shanten. Dealer rounds are excluded from this table.</p>
-      </div>
-      <p class="rx-except">Do not fold when your hand is a tenpai with value, or when the safe tile destroys your only winning route. Reprice every draw. See <a href="#point-09">Point 08</a> and <a href="#point-10">Point 09</a>.</p>
+      <p class="rx-rule">Against a riichi, what decides a push is the hand you are pushing with. From tenpai LuckyJ still threw a dangerous tile more often than not. From one-shanten it did so about one time in three, from two-shanten one time in five, and from further back one in seven.</p>
+      <p class="rx-rule">Its first answer to a riichi runs the same way in reverse. From tenpai the next discard was genbutsu only about a third of the time; from three-shanten or worse, more than two times in three. Late in the hand everything tightens: with 20 tiles or fewer left, a tenpai crossed danger 52.6% of the time against 63.4% earlier, and a one-shanten dropped to about one time in five.</p>
+      <p class="rx-rule">Some of that danger is forced. A one-shanten with no genbutsu in hand crosses danger about half the time, simply because it has nothing safe to throw, which is a good reason to keep genbutsu while you can. As dealer the rates climb, to about two in three from tenpai.</p>
+      <p class="rx-except">Do not fold a tenpai that has value, and do not throw a safe tile that destroys your only winning route. Price the push again on every draw; Points <a href="#point-09">08</a> and <a href="#point-10">09</a> walk through it.</p>
+      <p class="rx-basis"><b>Evidence</b> Closed-hand decisions against a riichi in non-dealer hands (986 tenpai, 4,361 one-shanten, 4,810 two-shanten, 2,889 further): a discard above 5% on NAGA&#8217;s danger proxy 58.9%, 31.7%, 19.6% and 14.1% of the time. The proxy shows risk taken, not intent.</p>
     </div>
     <div class="rx-card" id="rx-7">
-      <div class="rx-example" data-rx-summary-key="open_hand_control">
-        <p><b>Opponent open:</b> [[7m]][[8m]][[9m]]. Your hand: [[2m]][[3m]][[4m]][[5p]][[6p]][[7p]][[2s]][[2s]][[5s]][[6s]][[8s]][[9s]][[P]][[E]].</p>
-        <p><b>Default:</b> do not feed live [[P]] casually; choose the discard that answers that opponent.</p>
-      </div>
-      <div class="rx-animation rx-lines" data-rx-key="open_hand_control" aria-label="Animated open-hand control example lines.">
-        <div class="rx-anim-head">
-          <b>Open-hand control lines</b>
-          <span>multiple examples</span>
-        </div>
-        <div class="rx-stage">
-          <div class="rx-turn">
-            <span class="rx-turn-label">HOLD</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[5s]]</span><span class="rx-tile">[[6s]]</span><span class="rx-tile rx-discard">[[8s]]</span><span class="rx-tile">[[9s]]</span><span class="rx-tile rx-hold">[[P]]</span><span class="rx-tile rx-draw">[[4s]]</span></span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">PRICE</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5m]]</span><span class="rx-tile">[[2p]]</span><span class="rx-tile">[[3p]]</span><span class="rx-tile">[[4p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile rx-discard">[[5s]]</span><span class="rx-tile">[[8s]]</span><span class="rx-tile rx-hold">[[C]]</span><span class="rx-tile rx-draw">[[9p]]</span></span>
-          </div>
-        </div>
-      </div>
       <h3>Open hands ask for tile control</h3>
-      <p class="rx-rule">Do not fold to every open hand, and do not ignore one either. These percentages count actual discards above 5% NAGA danger, not true pushes. Two open sets by the middle row and three open sets later both lower that proxy. The right action still depends on whether the chosen tile advances the hand or only survives the threat.</p>
-      <table>
-        <thead>
-          <tr><th>Opponent shape</th><th>Early &gt;5%</th><th>Middle &gt;5%</th><th>Late &gt;5%</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>2 open sets</td><td>52.7%</td><td>42.6%</td><td>37.6%</td></tr>
-          <tr><td>3+ open sets</td><td>51.2% <small>(n=86)</small></td><td>40.9%</td><td>32.7%</td></tr>
-        </tbody>
-      </table>
-      <p class="rx-basis">Basis: open-hand danger proxy by meld count and turn. Two-meld cells n=1,228/6,497/3,478. Three-plus-meld cells n=86/1,125/1,036; early three-plus cell is a small sample; non-dealer rounds only.</p>
-      <div class="rx-mods">
-        <p class="rx-up"><b>More &gt;5% danger</b> your hand is ≤1 shanten → 47.4% vs 26.9% at 2+ shanten (Δ+20.5pp, n=7,849/4,287).</p>
-        <p class="rx-down"><b>Less &gt;5% danger</b> your hand is 2+ shanten → 26.9% vs 47.4% at ≤1 shanten (Δ-20.5pp, n=4,287/7,849).</p>
-      </div>
-      <p class="rx-except">Do not push when your hand is cheap and far and the next discard has no safety against a specific player. Defend by choosing the tile that answers that player. See <a href="#point-04">Point 04</a> and <a href="#point-14">Point 14</a>.</p>
+      <p class="rx-rule">An open hand never announces that it is ready, so LuckyJ neither folds to one nor ignores it. Against two open sets it kept throwing tiles NAGA rates as dangerous about half the time early in the hand, and a little over a third of the time late. Three open sets tightened it further.</p>
+      <p class="rx-rule">Suppose Toimen has chi&#8217;d twice in manzu, and you hold a live [[5m]] and a [[9p]] that Toimen has already discarded. If your hand is one-shanten, the [[5m]] may be the tile that moves it, and LuckyJ often pays for it. If you are two-shanten or worse, the [[9p]] is the answer and the [[5m]] waits.</p>
+      <p class="rx-except">Answer the specific player. A tile that is safe only against someone else does not count, and a cheap, distant hand has no business pushing a tile the caller could want. Points <a href="#point-04">04</a> and <a href="#point-14">13</a> are about keeping that answer in hand.</p>
+      <p class="rx-basis"><b>Evidence</b> Discards against two open sets in non-dealer hands (1,228 early, 6,497 middle, 3,478 late): above 5% on NAGA&#8217;s danger proxy 52.7%, 42.6% and 37.6% of the time; 47.4% from one-shanten or better against 26.9% from further back.</p>
     </div>
     <div class="rx-card" id="rx-8">
-      <div class="rx-example" data-rx-summary-key="endgame_price">
-        <p><b>Last 12 tiles:</b> [[2m]][[3m]][[4m]][[6p]][[6p]][[7p]][[8p]][[2s]][[3s]][[4s]][[7s]][[8s]][[E]][[9m]].</p>
-        <p><b>Default:</b> chase tenpai if one-away; if still far, spend safe [[9m]] and let the hand go.</p>
-      </div>
-      <div class="rx-animation" data-rx-animate-key="endgame_animation" aria-label="Animated example: a late hand accepts a draw on the right, folds safe tiles, and keeps East unchanged as the defensive tile.">
-        <div class="rx-anim-head">
-          <b>Late fold, then reprice</b>
-          <span>the honor stays after the fold</span>
-        </div>
-        <div class="rx-stage">
-          <div class="rx-turn">
-            <span class="rx-turn-label">L1</span>
-            <span class="rx-hand-line">
-              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile">[[8s]]</span><span class="rx-tile rx-hold">[[E]]</span><span class="rx-tile rx-draw rx-discard">[[9m]]</span>
-            </span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">L2</span>
-            <span class="rx-hand-line">
-              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile rx-discard">[[4s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile">[[8s]]</span><span class="rx-tile rx-hold">[[E]]</span><span class="rx-tile rx-draw">[[5p]]</span>
-            </span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">L3</span>
-            <span class="rx-hand-line">
-              <span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile rx-discard">[[8s]]</span><span class="rx-tile rx-hold">[[E]]</span><span class="rx-tile rx-draw">[[6m]]</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="rx-animation rx-lines" data-rx-key="endgame_price" aria-label="More animated endgame price example lines.">
-        <div class="rx-anim-head">
-          <b>Endgame price lines</b>
-          <span>multiple examples</span>
-        </div>
-        <div class="rx-stage">
-          <div class="rx-turn">
-            <span class="rx-turn-label">SAFE</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[4s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile">[[8s]]</span><span class="rx-tile rx-hold">[[E]]</span><span class="rx-tile rx-draw rx-discard">[[9m]]</span></span>
-          </div>
-          <div class="rx-turn">
-            <span class="rx-turn-label">TEN</span>
-            <span class="rx-hand-line"><span class="rx-tile">[[2m]]</span><span class="rx-tile">[[3m]]</span><span class="rx-tile">[[4m]]</span><span class="rx-tile">[[5p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[6p]]</span><span class="rx-tile">[[7p]]</span><span class="rx-tile">[[8p]]</span><span class="rx-tile">[[2s]]</span><span class="rx-tile">[[3s]]</span><span class="rx-tile">[[7s]]</span><span class="rx-tile rx-discard">[[8s]]</span><span class="rx-tile rx-hold">[[E]]</span><span class="rx-tile rx-draw">[[6m]]</span></span>
-          </div>
-        </div>
-      </div>
       <h3>Endgame tenpai has a price</h3>
-      <p class="rx-rule">In the last 12 tiles, call for tenpai more often from one-shanten than from farther away. The riichi rows below are again a danger proxy. They count a discard above 5% NAGA danger, not whether the hand deliberately pushed. After two very safe discards, a later discard above 5% followed 47.0% of the time. On its own that does not show the hand reopened.</p>
-      <table>
-        <thead>
-          <tr><th>Endgame spot</th><th>LuckyJ habit</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Call in last 12 tiles</td><td>1-away 30.8%; 2+ away 20.1%; already tenpai 4.5%</td></tr>
-          <tr><td>Tenpai: &gt;5% danger vs riichi</td><td>20-11 tiles 66.9%; 10-6 tiles 67.2%; 5-0 tiles 60.4%</td></tr>
-          <tr><td>2+ away: &gt;5% danger vs riichi</td><td>20-11 tiles 26.3%; 10-6 tiles 23.7%; 5-0 tiles 24.8%</td></tr>
-          <tr><td>After two &lt;1% danger discards</td><td>Later &gt;5% discard 47.0%; none 53.0%</td></tr>
-        </tbody>
-      </table>
-      <p class="rx-basis">Basis: last-12 call opportunities n=465/670/335. Riichi danger-proxy cells: tenpai n=727/287/270, 2+ shanten n=2,034/730/666. Two-safe-discard sequence n=954; non-dealer rounds only.</p>
-      <div class="rx-mods">
-        <p class="rx-up"><b>Thin coverage</b> endgame call data is only a proxy. ≤12 tiles left makes a first chi from closed 18.2% vs 6.2% earlier (Δ+12.0pp, n=665/15,619); tenpai vs riichi with ≤20 tiles left lowers dangerous pushes to 52.6% vs 63.4% earlier (Δ-10.8pp, n=407/579).</p>
-      </div>
-      <p class="rx-except">Skip the keiten fight when the payment cannot change placement, when the tile is too dangerous for the draw value, or when a safe fold keeps more. See <a href="#point-11">Point 10</a> and <a href="#point-12">Point 11</a>.</p>
+      <p class="rx-rule">In the last 12 tiles a tenpai is worth something even if it never wins, because it collects at the draw instead of paying. LuckyJ calls for it accordingly: about one time in three from one-shanten, one in five from further back, and almost never once it is already tenpai.</p>
+      <p class="rx-rule">Nine tiles are left, your hand is one-shanten, and Kamicha throws the [[6s]] that fills your [[5s]][[7s]]. If the discard after the chi is safe, the call can turn a noten payment into a tenpai receipt. That is the kind of call LuckyJ makes.</p>
+      <p class="rx-rule">Against a riichi, a tenpai hand in the last 20 tiles kept crossing danger about two times in three, and still three in five over the last five tiles. A hand two steps away crossed it only about one time in four and mostly stayed safe.</p>
+      <p class="rx-except">Skip the tenpai fight when the payment cannot change your placement, when the tile is too dangerous for what a draw pays, or when a safe fold keeps more. Points <a href="#point-10">09</a> and <a href="#point-11">10</a> work through the late count and keiten.</p>
+      <p class="rx-basis"><b>Evidence</b> Last-12-tile call chances in non-dealer hands: 30.8% of 465 from one-shanten, 20.1% of 670 from two or more away, 4.5% of 335 already tenpai. Against a riichi, tenpai discards above 5% on NAGA&#8217;s danger proxy ran 60 to 67% in every stretch of the last 20 tiles.</p>
     </div>
   </div>
-</section>
+        </section>
 
         <section class="section" id="pattern-synthesis">
           <p class="kicker">Pattern synthesis</p>
@@ -1095,6 +737,6 @@
       </div>
     </footer>
 
-    <script src="app.js?v=20260924-replays"></script>
+    <script src="app.js?v=20260925-prescriptions"></script>
   </body>
 </html>

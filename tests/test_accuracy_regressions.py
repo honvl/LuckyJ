@@ -57,11 +57,6 @@ class AccuracyRegressionTests(unittest.TestCase):
                 if point != "point-12":
                     self.assertNotIn(case["evidence_tier"], {"unsupported", "unverified"})
 
-        prescriptions = read_json("site/rx-prescription-examples.json")
-        for rows in prescriptions.values():
-            for case in rows:
-                self.assertEqual(case["room"], "Tokujou")
-                self.assertEqual(case["room_code"], "0029")
 
     def test_point_specific_guards(self):
         examples = read_json("site/point-examples.json")
@@ -189,10 +184,21 @@ class AccuracyRegressionTests(unittest.TestCase):
     def test_reader_copy_matches_current_prescription_artifacts(self):
         points = (ROOT / "site/points.html").read_text(encoding="utf-8")
         ja = (ROOT / "site/ja.html").read_text(encoding="utf-8")
+        defense = read_json("analysis/rx3-defense-2026-07-05.json")
+        honors = read_json("analysis/rx3-honors-2026-07-05.json")
+        riichi = read_json("analysis/rx3-riichi-2026-07-05.json")
+        push = defense["child_only_baselines"]["vs_riichi_push_by_closed_shanten"]
+        tenpai_late = defense["condition_effects_child_only"]["vs_riichi_closed_shanten"]["0"]["conditions"]["tiles_left_le20"]
+        waits = riichi["child_dealer_baselines"]["child"]["riichi_first_opportunity"]["by_unseen_waits"]
+        figures = [push[key]["child"]["push_rate_pct"] for key in push]
+        figures += [row["push_rate_pct"] for row in tenpai_late["values_sorted_by_abs_delta_pp"] if row["push_rate_pct"] is not None]
+        figures.append(honors["dealer_only_condition_effects_for_comparison"]["condition_effects_lone_yakuhai_cut_by_turn6"]["baseline"]["cut_by_turn6_rate_pct"])
+        figures += [waits[key]["declare_rate_pct"] for key in ("8+", "4-7", "<=3")]
         for text in (points, ja):
-            self.assertIn("76.6%", text)
-            self.assertIn("63.4%", text)
-            self.assertIn("Δ-10.8pp", text)
+            section = text[text.index('id="prescriptions"'):]
+            section = section[:section.index("</section>")]
+            for value in figures:
+                self.assertIn(f"{value:.1f}%", section)
             self.assertNotIn("still looks incomplete", text)
             self.assertNotIn("相手がまだ遠い", text)
         self.assertIn("字牌整理が4,135件", ja)

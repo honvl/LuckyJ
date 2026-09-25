@@ -95,7 +95,6 @@ html {
   }
 }
 
-
 body {
   margin: 0;
   background: var(--paper);
@@ -890,7 +889,7 @@ html:lang(ja) .evidence-note {
   line-height: 1.85;
 }
 
-.evidence-note > b:first-child {
+:is(.evidence-note, .rx-basis) > b:first-child {
   display: block;
   margin-bottom: 8px;
   color: var(--muted);
@@ -1288,12 +1287,6 @@ html:lang(ja) .chapter-next-title {
   color: var(--cream);
 }
 
-
-
-
-
-
-
 .example-head > span {
   color: var(--muted);
   font-family: var(--sans);
@@ -1301,10 +1294,6 @@ html:lang(ja) .chapter-next-title {
   line-height: 1.4;
   text-align: right;
 }
-
-
-
-
 
 .case-links {
   display: flex;
@@ -2528,40 +2517,13 @@ html:lang(ja) .rx-card > p.rx-rule:first-of-type {
   text-wrap: pretty;
 }
 
-.rx-card > table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 16.5px;
-}
-
-.rx-card th,
-.rx-card td {
-  padding: 10px 14px 10px 0;
-  border-bottom: 1px solid var(--hair);
-  text-align: left;
-  vertical-align: top;
-}
-
-.rx-card thead th {
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--ink);
-  color: var(--muted);
-  font-family: var(--sans);
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
-
-.rx-card td {
-  font-variant-numeric: lining-nums tabular-nums;
-}
-
-.rx-card td .inline-tile {
-  font-size: 1.5em;
-}
-
+/* The evidence sits in the side column, level with the lead, like a chapter's Evidence note. */
 .rx-card > .rx-basis {
+  grid-row: 2 / span 4;
   grid-column: 3;
+  align-self: start;
+  padding-top: 14px;
+  border-top: 1px solid var(--hair);
   color: var(--ink-2);
   font-size: 15px;
   line-height: 1.5;
@@ -2576,53 +2538,6 @@ html:lang(ja) .rx-card > .rx-basis {
   margin-top: 14px;
 }
 
-.rx-card > .rx-mods {
-  display: grid;
-  grid-column: 2 / 4;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px var(--gutter);
-  margin-top: 36px;
-}
-
-.rx-mods p {
-  padding-top: 12px;
-  border-top: 2px solid var(--jade);
-  color: var(--ink-2);
-  font-size: 16px;
-  line-height: 1.55;
-}
-
-.rx-mods p.rx-down {
-  border-top-color: var(--verm);
-}
-
-.rx-mods p b {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--jade);
-  font-family: var(--sans);
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.rx-mods p.rx-down b {
-  color: var(--verm);
-}
-
-.rx-mods p.rx-up b::before,
-.rx-mods p.rx-down b::before {
-  display: inline-block;
-  margin-right: 6px;
-  content: "↑";
-  font-family: var(--sans);
-}
-
-.rx-mods p.rx-down b::before {
-  content: "↓";
-}
-
 .rx-card > .rx-except {
   margin-top: 36px;
   padding-top: 16px;
@@ -2634,241 +2549,6 @@ html:lang(ja) .rx-card > .rx-basis {
 html:lang(ja) .rx-card > .rx-except {
   font-size: 16px;
   line-height: 1.9;
-}
-
-.rx-example {
-  display: grid;
-  gap: 6px;
-  color: var(--ink-2);
-  font-family: var(--sans);
-  font-size: 14.5px;
-  line-height: 1.5;
-}
-
-.rx-example p {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px 6px;
-}
-
-.rx-example b {
-  color: var(--ink);
-}
-
-.rx-example .rx-summary-tiles {
-  font-size: 1.9em;
-}
-
-.rx-example .inline-tile {
-  font-size: 1.7em;
-}
-
-.rx-summary-draw {
-  margin-left: 0.3em;
-}
-
-/* Prescription sequences: every turn of a real hand stacked on felt, the cut tile lifted. */
-.rx-animation {
-  display: grid;
-  gap: 4px;
-  padding: 22px 26px 12px;
-  border-radius: 4px;
-  background: var(--felt-bg);
-  color: var(--cream);
-}
-
-.rx-anim-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 4px 16px;
-  padding-bottom: 8px;
-}
-
-.rx-anim-head b {
-  color: var(--cream);
-  font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.rx-anim-head span {
-  color: var(--cream-3);
-  font-family: var(--sans);
-  font-size: 13px;
-}
-
-.rx-sequence-list {
-  display: grid;
-  gap: 18px;
-}
-
-.rx-sequence {
-  display: grid;
-  gap: 4px;
-}
-
-.rx-sequence + .rx-sequence {
-  padding-top: 14px;
-  border-top: 1px solid var(--felt-line);
-}
-
-.rx-sequence-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 12px;
-  font-family: var(--sans);
-}
-
-.rx-sequence-head b {
-  color: var(--cream);
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.rx-sequence-head span {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px;
-  color: var(--cream-3);
-  font-size: 13px;
-}
-
-.rx-stage {
-  display: grid;
-}
-
-.rx-turn {
-  display: grid;
-  grid-template-columns: 64px minmax(0, 1fr);
-  align-items: end;
-  column-gap: 12px;
-  padding: 10px 0 12px;
-  border-top: 1px solid var(--felt-line);
-}
-
-.rx-turn-main {
-  display: contents;
-}
-
-.rx-turn-label {
-  align-self: end;
-  padding-bottom: 6px;
-  color: var(--cream);
-  font-family: var(--sans);
-  font-size: 13.5px;
-  font-weight: 700;
-}
-
-.rx-hand-line {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-end;
-  min-width: 0;
-  padding-top: 14px;
-  padding-bottom: 9px;
-  overflow-x: auto;
-  overflow-y: visible;
-}
-
-.rx-tile {
-  position: relative;
-  display: block;
-  flex: 0 0 auto;
-}
-
-.rx-tile .inline-tile {
-  display: block;
-  font-size: clamp(26px, 3.1vw, 40px);
-  line-height: 1;
-}
-
-.rx-draw {
-  margin-left: 0.5em;
-}
-
-.rx-discard .inline-tile {
-  transform: translateY(-0.24em);
-}
-
-.rx-discard::after {
-  position: absolute;
-  right: 14%;
-  bottom: -5px;
-  left: 14%;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--verm-felt);
-  content: "";
-}
-
-.rx-hold::after {
-  position: absolute;
-  right: 14%;
-  bottom: -5px;
-  left: 14%;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--jade-felt);
-  content: "";
-}
-
-.rx-turn-context {
-  display: flex;
-  flex-wrap: wrap;
-  grid-column: 2;
-  align-items: center;
-  gap: 4px 14px;
-  margin-top: 8px;
-  color: var(--cream-3);
-  font-family: var(--sans);
-  font-size: 12.5px;
-}
-
-.rx-honor-counts {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px 10px;
-}
-
-.rx-honor-counts > span,
-.rx-honor-count {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.rx-honor-count .inline-tile,
-.rx-focus-tile .inline-tile,
-.rx-turn-context .inline-tile {
-  font-size: 1.6em;
-}
-
-.rx-honor-count b {
-  color: var(--cream);
-}
-
-.rx-sequence-note {
-  padding-top: 8px;
-  color: var(--cream-2);
-  font-size: 16px;
-  font-style: italic;
-  line-height: 1.5;
-}
-
-html:lang(ja) .rx-sequence-note {
-  font-style: normal;
-}
-
-.rx-scrubber {
-  display: none;
 }
 
 /* ------------------------------------------------------------------ cover (home, and the top of each book) */
@@ -3518,14 +3198,12 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   font-size: 12px;
 }
 
-
 .meld {
   border: 1px solid var(--hair);
   display: inline-block;
   margin-right: 5px;
   padding: 1px 4px 2px;
 }
-
 
 /* ------------------------------------------------------------------ the mahjong table (layout tuned in 48fc544 and ea26a49; only colours changed) */
 
@@ -4246,7 +3924,6 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   .point-body > .evidence-note,
   .rx-card > *,
   .rx-card > .rx-basis,
-  .rx-card > .rx-mods,
   .replay-notes > *,
   .replay-notes .analysis-step,
   .replay-notes > .mortal-block,
@@ -4498,8 +4175,7 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   }
 
   /* Figures run to the screen edges. */
-  .replay-figure,
-  .rx-animation {
+  .replay-figure {
     margin-right: calc(-1 * var(--page-pad));
     margin-left: calc(-1 * var(--page-pad));
     border-radius: 0;
@@ -4541,15 +4217,6 @@ html:lang(ja) .contents-list.is-points .contents-sub {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .rx-animation {
-    padding: 16px 16px 8px;
-  }
-
-  .rx-turn {
-    grid-template-columns: 40px minmax(0, 1fr);
-    column-gap: 6px;
-  }
-
   .rx-ledger-head {
     display: none;
   }
@@ -4563,10 +4230,6 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   .rx-ledger-see {
     grid-column: 2;
     margin-top: 0;
-  }
-
-  .rx-card > .rx-mods {
-    grid-template-columns: minmax(0, 1fr);
   }
 
   .method-grid,
@@ -4677,7 +4340,6 @@ html:lang(ja) .contents-list.is-points .contents-sub {
     font-size: 30px;
   }
 
-
   .consensus-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -4706,13 +4368,6 @@ html:lang(ja) .contents-list.is-points .contents-sub {
 @media (max-width: 380px) {
   .quiz-choices {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  /* The widest prescription tables scroll inside their card instead of widening the page. */
-  .rx-card table {
-    display: block;
-    max-width: 100%;
-    overflow-x: auto;
   }
 }
 
@@ -4750,35 +4405,6 @@ html:lang(ja) .contents-list.is-points .contents-sub {
 }
 
 :is(.audit-details, .guide-chart-table, .guide-options)[open] > summary::before {
-  transform: rotate(90deg);
-}
-
-/* Further prescription hands fold into one line each until opened. */
-.rx-sequence-more > summary {
-  display: flex;
-  min-height: 44px;
-  align-items: center;
-  cursor: pointer;
-  list-style: none;
-}
-
-.rx-sequence-more > summary::-webkit-details-marker {
-  display: none;
-}
-
-.rx-sequence-more > summary::before {
-  flex: 0 0 auto;
-  width: 0;
-  height: 0;
-  margin-right: 10px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 7px solid var(--cream-2);
-  content: "";
-  transition: transform 120ms ease;
-}
-
-.rx-sequence-more[open] > summary::before {
   transform: rotate(90deg);
 }
 
