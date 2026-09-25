@@ -4,7 +4,7 @@ const locale = isJa ? "ja-JP" : "en-US";
 const fmt = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
 const whole = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
 const pct = (v) => `${fmt.format(v * 100)}%`;
-const dataAssetVersion = "20260924-replays";
+const dataAssetVersion = "20260925-fold-prep";
 const dataAsset = (path) => `${path}${String(path).includes("?") ? "&" : "?"}v=${dataAssetVersion}`;
 const chromiumTileEngine = /Chrome|Chromium|Edg|Opera|OPR|OPE|MSIE/.test(navigator.userAgent);
 const useColrTiles = chromiumTileEngine && globalThis.CSS?.supports?.("font-tech(color-COLRv1)");

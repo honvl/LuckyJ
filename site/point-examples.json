@@ -8069,14 +8069,14 @@
         "notes": []
       },
       "guide": {
-        "prompt": "East 1, all on 25,000, and the dealer has already pon'd [[P]] and [[E]]. Your four-shanten hand holds two pairs and the dora [[1m]]. Cut [[4m]] or [[W]]?",
-        "read": "Every tile either line accepts would pair a single, so this is a seven-pairs count, four steps from tenpai. For that plan an honor single is at least as good as a [[4m]], and [[W]] also works as genbutsu against Kamicha. The [[4m]] is live against everyone, and the dealer already holds two yakuhai pons. Keeping [[W]] costs 1 tile, 25 against 26, and keeps all four honors, with [[N]], [[F]] and [[C]] still yakuhai if they pair. Mortal backs the [[4m]] cut at 69%, with Hibakari and Kagashi.",
-        "whyNot": "For seven pairs, a [[4m]] with 3 copies unseen beats a [[W]] with 2, and [[W]] gives the North seat no yaku; that is Nishiki's case for cutting it. A regular hand can use the [[4m]] in a run as well. Nishiki's lean is a mild 54%."
+        "prompt": "East 1, everyone on 25,000. The dealer has pon'd [[P]] and [[E]], 3 han already on the table, and your hand is four steps from tenpai. Cut [[4m]] or [[W]]?",
+        "read": "Against a dealer showing 3 han this early, a hand four steps from tenpai cannot win the race; the job is to get ready to fold. The [[4m]] is live against every player and will only get harder to throw once the dealer is ready, so LuckyJ throws it now. The honors stay as later discards: the [[W]], genbutsu against Kamicha, and the dragons [[F]] and [[C]], which LuckyJ would rather not hand to a dealer who already has a [[P]] pon. Keeping them costs a single tile, 25 against 26. Mortal backs the [[4m]] cut at 69%, with Hibakari and Kagashi. The dealer won off another player; LuckyJ paid nothing.",
+        "whyNot": "Nishiki throws the [[W]] now, the cooler tile on NAGA's danger proxy this turn, and keeps the [[4m]], which leaves one more tile that improves the hand, 26 against 25. Nishiki is alone on this, at 54%."
       },
       "guide_ja": {
-        "prompt": "東1局、全員25,000点。親はすでに[[P]]と[[E]]をポンしている。4シャンテンの手に対子が二つとドラ[[1m]]。[[4m]]と[[W]]、どちらを切るか。",
-        "read": "どちらのラインも、受け入れる牌はすべて孤立牌を対子にする牌である。つまり七対子で数えた4シャンテンで、この形なら字牌の孤立牌は[[4m]]に劣らない。しかも[[W]]は上家の現物として守備にも使える。[[4m]]は誰にも通っておらず、親はもう役牌を二つポンしている。[[W]]を残しても失うのは1枚だけで、受け入れは25枚対26枚。字牌4枚もすべて残り、[[N]][[F]][[C]]は重なれば役牌になる。Mortalは69%で[[4m]]切りを支持し、ヒバカリとカガシも同じ。",
-        "whyNot": "七対子なら、見えていない牌が3枚ある[[4m]]の方が2枚の[[W]]より重なりやすく、[[W]]は北家には役にもならない。これがニシキの[[W]]切りの理由である。普通の手になれば[[4m]]は順子にも使える。ニシキの傾きは54%と小さい。"
+        "prompt": "東1局、全員25,000点。親が[[P]]と[[E]]をポンして、すでに3翻が見えている。あなたの手はテンパイまで4歩。[[4m]]と[[W]]、どちらを切るか。",
+        "read": "序盤から3翻を見せている親に対して、テンパイまで4歩の手では勝負にならない。やることはオリの準備である。[[4m]]は誰にも通っておらず、親がテンパイすればますます切りにくくなるので、LuckyJは今切る。字牌は後で切る牌として残す。上家の現物[[W]]と、[[P]]をポンしている親には渡したくない三元牌の[[F]]と[[C]]である。残す代償は1枚だけで、受け入れは25枚対26枚。Mortalは69%で[[4m]]切りを支持し、ヒバカリとカガシも同じ打牌。この局は親が他家から和了し、LuckyJの失点はなかった。",
+        "whyNot": "ニシキはこの巡で危険度指標の低い[[W]]を先に切り、[[4m]]を残す。手を進める牌は1枚多く、26枚対25枚になる。この線はニシキだけで、54%。"
       }
     }
   ],
