@@ -3119,9 +3119,14 @@ html:lang(ja) .contents-list.is-points .contents-sub {
 
 /* ------------------------------------------------------------------ tiles */
 
+/* The tile font has one upright face. In italic or bold text (a replay caption, the cover caption) the
+   browser would otherwise slant or thicken the tile pictures, so tiles never inherit either. */
 .tiles {
   font-family: "mahjongtile-clr", "mahjongtile";
   font-size: var(--tile-size);
+  font-style: normal;
+  font-weight: normal;
+  font-synthesis: none;
   letter-spacing: -0.112em;
   line-height: 1;
   position: relative;
