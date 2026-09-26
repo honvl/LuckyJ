@@ -872,17 +872,6 @@
   font-family: var(--sans);
 }
 
-/* ------------------------------------------------------------------ what changed since the last read */
-
-mark.guide-changed {
-  padding: 0 2px;
-  background: var(--highlight);
-  box-shadow: inset 0 -2px 0 #c9a13b;
-  color: inherit;
-  /* a corrected sentence lands with a few lines of its paragraph above it */
-  scroll-margin-top: 96px;
-}
-
 /* ------------------------------------------------------------------ narrow screens */
 
 @media (max-width: 1179px) {

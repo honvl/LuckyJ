@@ -105,6 +105,28 @@ class StructureTests(unittest.TestCase):
         self.assertIn('href="#table-contrast"', ja)
 
 
+class CorrectionTests(unittest.TestCase):
+    def test_prescription_five_no_longer_holds_back_cheap_hands(self):
+        for name, old in (("points.html", "the hand is cheap"), ("ja.html", "手が安い時")):
+            text = (ROOT / "site" / name).read_text(encoding="utf-8")
+            card = text[text.index('<div class="rx-card" id="rx-5">'):]
+            card = card[:card.index("</div>")]
+            with self.subTest(page=name):
+                self.assertNotIn(old, card)
+                self.assertIn('<mark id="fix-rx5" class="guide-changed">', card)
+                self.assertIn('href="#tc-3"', card)
+                self.assertIn('href="#fix-rx5"', section(name))
+
+    def test_contents_flag_the_correction(self):
+        for name in ("index.html", "ja.html"):
+            text = (ROOT / "site" / name).read_text(encoding="utf-8")
+            entry = text[text.index('prescriptions"><span class="contents-title">'):]
+            entry = entry[:entry.index("</li>")]
+            with self.subTest(page=name):
+                self.assertIn('<span class="changed-tag">Corrected</span>', entry)
+                self.assertIn("26", entry)
+
+
 class VoiceTests(unittest.TestCase):
     def test_voice_rules(self):
         for name in PAGES:

@@ -14,7 +14,7 @@
     <!-- The text faces load without holding up the page; until they arrive it reads in the fallback faces. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Serif+JP:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'" data-font-css />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Serif+JP:wght@400;500;600;700&amp;display=swap" /></noscript>
-    <link rel="stylesheet" href="styles.css?v=20260926-table-contrast" />
+    <link rel="stylesheet" href="styles.css?v=20260926-rx5-fix" />
   </head>
   <body data-book="playbook">
     <a class="skip-link" href="#contents">目次へ移動</a>
@@ -67,7 +67,7 @@
             <li><a href="#evidence"><span class="contents-title">この本について</span><span class="contents-sub">卓上で使うLuckyJ戦術</span></a></li>
             <li><a href="#scope"><span class="contents-title">型より先に範囲</span><span class="contents-sub">まず普通の牌効率から始める</span></a></li>
             <li><a href="#method"><span class="contents-title">判断方法</span><span class="contents-sub">すべての打牌を読む順序</span></a></li>
-            <li><a href="#prescriptions"><span class="contents-title">処方箋</span><span class="contents-sub">最初に真似したい8つの習慣と、それを変える条件</span></a></li>
+            <li><a href="#prescriptions"><span class="contents-title">処方箋 <span class="changed-tag">Corrected</span></span><span class="contents-sub">最初に真似したい8つの習慣と、それを変える条件。9月26日、切り替え5の最後の一文を訂正した。</span></a></li>
             <li><a href="#table-contrast"><span class="contents-title">人間との差 <span class="new-tag">New</span></span><span class="contents-sub">LuckyJ が同卓の強い人間に勝つ5つの場面</span></a></li>
             <li><a href="#pattern-synthesis"><span class="contents-title">パターン総合</span><span class="contents-sub">追加の牌譜検討から見えるもの</span></a></li>
           </ol>
@@ -224,7 +224,7 @@
       <p class="rx-rule">待ちが広ければ、LuckyJはすぐにリーチする。和了牌が8枚以上残っていれば100回に95回、4〜7枚なら5回に4回ほど。3枚以下では3回に1回しか宣言しない。</p>
       <p class="rx-rule">テンパイが[[3s]]のカンチャン待ちで残り2枚、しかも10,000点リードしているとする。リーチは1,000点を払って、オリる自由のある3人に2枚待ちを知らせる行為になる。LuckyJはこの場面で3回に2回ほど黙っていて、見送ったリーチは後から宣言されるより、たいていダマのまま残る。</p>
       <p class="rx-rule">宣言に引き戻す要因は二つある。薄くても2種類の牌で待っていること、そして4着にいること。逆に引き止める要因も二つある。すでに場にリーチがあること（宣言牌がもう1枚、今すぐ通る必要がある）、そして手にドラが2枚あることだ。親番ではどの待ちでも宣言が増え、薄い待ちでも同じである。</p>
-      <p class="rx-except">待ちが悪い時、手が安い時、宣言牌そのものが危険な時、リードがすでに十分な時は、反射でリーチしない。リーチが卓にかける圧力は<a href="#point-08">ポイント07</a>で扱う。</p>
+      <p class="rx-except"><mark id="fix-rx5" class="guide-changed">待ちが悪い時、宣言牌そのものが危険な時、リードがすでに十分な時は、反射でリーチしない。待ちの良い安い手は、LuckyJ がいちばんよくリーチする手である（<a href="#tc-3">人間との差の3</a>）。</mark>リーチが卓にかける圧力は<a href="#point-08">ポイント07</a>で扱う。</p>
       <p class="rx-basis"><b>根拠</b> 子番の最初のリーチ機会2,381件。待ち8枚以上で95.3%、4〜7枚で78.3%、3枚以下で33.7%を宣言した。最初の機会を見送った821件のうち58.1%はダマのままだった。</p>
     </div>
     <div class="rx-card" id="rx-6">
@@ -319,7 +319,7 @@
       <p class="rx-rule">リーチなしで1,000点か2,000点の門前テンパイこそ、いちばんリーチを必要とする手である。リーチで打点はおよそ倍になり、人間自身の対局でも、リーチした手はダマの手と同じか、それ以上に和了していた。LuckyJ はこうしたテンパイの約5回に4回でリーチした。人間はどちらの卓でも約3分の1をダマにした。</p>
       <p class="rx-rule">8巡目、誰も鳴いていない。手は[[2m]][[3m]][[4m]] [[5p]][[6p]][[7p]] [[6s]][[7s]][[8s]] [[3s]][[4s]] [[5m]][[5m]]、タンヤオ・ピンフで[[2s]]と[[5s]]の待ち。ダマなら2,000点。リーチならロンで3,900点、ツモで1,300/2,600点になり、裏ドラはその上に乗る。LuckyJ はこういう手でほぼ毎回リーチした。</p>
       <p class="rx-rule">ダマは逃げ道を残すが、人間自身の結果がその値段を示している。こうした手では、どの待ちの広さでも、ダマの手はリーチした手より1局あたり900〜1,700点少なく終わった。LuckyJ がダマにしたのは別の種類の手で、3翻以上で待ちが3枚以下の時は、リーチは5回に1回ほどだった。</p>
-      <p class="rx-except">薄い待ちは今も LuckyJ を引き止める。これは上の<a href="#rx-5">処方箋5</a>のとおりである。安さは引き止めない。薄い待ちですでに3,900点ある手と、広くない待ちの満貫はダマにする。</p>
+      <p class="rx-except">薄い待ちは今も LuckyJ を引き止める。これは上の<a href="#rx-5">処方箋5</a>のとおりである。安さは引き止めない。処方箋5の最後の一文も、これに合わせて<a href="#fix-rx5">訂正した</a>。薄い待ちですでに3,900点ある手と、広くない待ちの満貫はダマにする。</p>
       <p class="rx-basis"><b>根拠</b> 1翻か2翻で、すべての待ちに役がある最初の門前テンパイ（子、リーチ者なし）。生きた待ち牌3枚以下でのリーチは特上34.0%、鳳凰41.5%、LuckyJ 52.9%。4〜6枚で62.3%、64.5%、82.6%。7枚以上で78.9%、82.9%、95.8%。人間のリーチはダマを、この三つの区分で1局あたり1,094点、895点、1,730点上回った。同じ人間の局面で Mortal がリーチを選んだのは76.7%。</p>
     </div>
     <div class="rx-card" id="tc-4">

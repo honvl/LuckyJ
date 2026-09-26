@@ -2551,6 +2551,35 @@ html:lang(ja) .rx-card > .rx-except {
   line-height: 1.9;
 }
 
+/* ------------------------------------------------------------------ corrections (book and guide) */
+
+/* A corrected sentence is highlighted where it stands, and a Corrected tag points readers to it. */
+mark.guide-changed {
+  padding: 0 2px;
+  background: var(--highlight);
+  box-shadow: inset 0 -2px 0 #c9a13b;
+  color: inherit;
+  /* a corrected sentence lands with a few lines of its paragraph above it */
+  scroll-margin-top: 96px;
+}
+
+.changed-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  margin: 0;
+  padding: 0 7px;
+  border-radius: 2px;
+  background: var(--highlight);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 /* ------------------------------------------------------------------ against the humans */
 
 /* The section's evidence note hangs in the side column beside the three intro paragraphs. */
