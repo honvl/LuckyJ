@@ -2551,6 +2551,200 @@ html:lang(ja) .rx-card > .rx-except {
   line-height: 1.9;
 }
 
+/* ------------------------------------------------------------------ against the humans */
+
+/* The section's evidence note hangs in the side column beside the three intro paragraphs. */
+.section > .contrast-note {
+  grid-row: 3 / span 3;
+  grid-column: 3;
+  align-self: start;
+  margin-top: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--hair);
+}
+
+.section > .contrast-figure {
+  grid-column: 2 / 4;
+  margin: 48px 0 0;
+}
+
+.contrast-panels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* Each panel is a small printed plate: one decision, three groups, two conditions. */
+.contrast-panel {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 18px 18px 16px;
+  border: 1px solid var(--hair);
+  border-radius: 3px;
+  background: var(--plate);
+  --tc-tok: var(--muted);
+  --tc-hou: var(--gold);
+  --tc-lj: var(--jade-mark);
+}
+
+.contrast-panel p {
+  margin: 0;
+}
+
+.contrast-panel-title {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.contrast-panel-sub {
+  margin-bottom: 6px !important;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+.dumbbell {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) 62px;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+}
+
+.dumbbell-who {
+  color: var(--ink-2);
+}
+
+.dumbbell-change {
+  color: var(--ink-2);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.dumbbell.is-lj :is(.dumbbell-who, .dumbbell-change) {
+  color: var(--jade);
+  font-weight: 650;
+}
+
+.dumbbell-track {
+  position: relative;
+  height: 30px;
+}
+
+.dumbbell-track::before {
+  position: absolute;
+  top: 14px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--hair);
+  content: "";
+}
+
+.dumbbell-bar {
+  position: absolute;
+  top: 13px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.dumbbell-dot {
+  position: absolute;
+  top: 9px;
+  width: 11px;
+  height: 11px;
+  margin-left: -5.5px;
+  border: 2px solid;
+  border-radius: 50%;
+  background: var(--plate);
+}
+
+.dumbbell-bar.is-tok { background: var(--tc-tok); }
+.dumbbell-bar.is-hou { background: var(--tc-hou); }
+.dumbbell-bar.is-lj { background: var(--tc-lj); }
+.dumbbell-dot.is-tok { border-color: var(--tc-tok); }
+.dumbbell-dot.is-hou { border-color: var(--tc-hou); }
+.dumbbell-dot.is-lj { border-color: var(--tc-lj); }
+.dumbbell-dot.is-tok.is-end { background: var(--tc-tok); }
+.dumbbell-dot.is-hou.is-end { background: var(--tc-hou); }
+.dumbbell-dot.is-lj.is-end { background: var(--tc-lj); }
+
+.contrast-panel-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+  margin-top: 4px !important;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 12px;
+}
+
+.contrast-panel-key :is(.key-open, .key-filled) {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--muted);
+  border-radius: 50%;
+}
+
+.contrast-panel-key .key-filled {
+  margin-left: 8px;
+  background: var(--muted);
+}
+
+.contrast-figure figcaption {
+  max-width: var(--text-w);
+  margin-top: 14px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+html:lang(ja) :is(.contrast-panel-title, .contrast-panel-sub, .dumbbell, .contrast-panel-key, .contrast-figure figcaption) {
+  letter-spacing: 0.02em;
+}
+
+.section > .contrast-subhead {
+  margin-top: 104px;
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: 500;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.section > .contrast-subhead + .insight-grid {
+  margin-top: 18px;
+}
+
+@media (max-width: 1023px) {
+  .section > .contrast-note,
+  .section > .contrast-figure {
+    grid-row: auto;
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .contrast-panels {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section > .contrast-subhead {
+    margin-top: 72px;
+  }
+}
+
 /* ------------------------------------------------------------------ cover (home, and the top of each book) */
 
 .cover {

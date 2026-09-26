@@ -1,0 +1,211 @@
+{
+ "groups": [
+  "Tokujou",
+  "Houou",
+  "LuckyJ"
+ ],
+ "source": "scripts/contrast/report/export_figures.py; method in analysis/table-contrast-2026-09-25.md",
+ "ledger": {
+  "hands": {
+   "Tokujou": 33816,
+   "Houou": 115304,
+   "LuckyJ": 11272
+  },
+  "dealin_tenpai_per100": [
+   6.5,
+   6.2,
+   6.0
+  ],
+  "dealin_not_tenpai_per100": [
+   7.4,
+   6.0,
+   4.3
+  ],
+  "win_rate_pct": [
+   21.0,
+   21.0,
+   22.9
+  ],
+  "net_gap_luckyj_over_tablemates": 484,
+  "points_lost_not_tenpai_into_riichi": [
+   157,
+   109,
+   66
+  ],
+  "points_lost_not_tenpai_into_open": [
+   172,
+   126,
+   90
+  ],
+  "riichi_win_pct": [
+   47.7,
+   48.0,
+   51.8
+  ]
+ },
+ "pairs": {
+  "human_into_luckyj_per100": 4.77,
+  "human_into_human_per100": 4.67,
+  "luckyj_ron_value": 6592,
+  "human_ron_value": 6147
+ },
+ "callers": {
+  "live_cut_2sh_no_dora": {
+   "Tokujou": {
+    "no_tells": 70.7,
+    "two_plus": 42.8
+   },
+   "Houou": {
+    "no_tells": 70.4,
+    "two_plus": 37.3
+   },
+   "LuckyJ": {
+    "no_tells": 74.5,
+    "two_plus": 33.1
+   }
+  },
+  "caller_tenpai_pct": {
+   "Houou tables": {
+    "0": 14.3,
+    "1": 41.8,
+    "2": 70.2,
+    "3": 87.1
+   },
+   "Tokujou tables": {
+    "0": 13.5,
+    "1": 39.2,
+    "2": 66.1,
+    "3": 85.4
+   }
+  }
+ },
+ "far": {
+  "unsafe_tenpai_pct": [
+   41.0,
+   39.4,
+   42.4
+  ],
+  "unsafe_2sh_pct": [
+   16.2,
+   13.0,
+   10.3
+  ],
+  "unsafe_3sh_pct": [
+   13.0,
+   9.4,
+   6.4
+  ],
+  "dealin_3sh_per100": [
+   1.11,
+   0.47,
+   0.21
+  ],
+  "unsafe_far_by_turn8_pct": [
+   25.4,
+   21.5,
+   16.1
+  ]
+ },
+ "riichi": {
+  "declare_pct": {
+   "3 or fewer": [
+    34.0,
+    41.5,
+    52.9
+   ],
+   "4 to 6": [
+    62.3,
+    64.5,
+    82.6
+   ],
+   "7 or more": [
+    78.9,
+    82.9,
+    95.8
+   ]
+  },
+  "riichi_minus_dama": {
+   "3 or fewer": [
+    1094,
+    265
+   ],
+   "4 to 6": [
+    895,
+    178
+   ],
+   "7 or more": [
+    1730,
+    196
+   ]
+  },
+  "mortal_prefers_riichi_pct": 76.7,
+  "mortal_spots": 1510
+ },
+ "dora": {
+  "tanyao_call_pct": {
+   "no dora": [
+    24.3,
+    27.6,
+    22.9
+   ],
+   "two or more": [
+    48.7,
+    50.1,
+    59.2
+   ]
+  },
+  "value_pair_pon_2sh_pct": [
+   83.3,
+   87.3,
+   93.4
+  ],
+  "three_plus_dora_any_route_pct": {
+   "Tokujou": 55.7,
+   "Houou": 59.6,
+   "LuckyJ": 83.6
+  },
+  "humans_call_minus_pass": {
+   "no dora": [
+    -91,
+    136
+   ],
+   "one dora": [
+    -185,
+    141
+   ],
+   "two or more": [
+    1047,
+    219
+   ]
+  }
+ },
+ "flush": {
+  "flush_wins_per100": [
+   1.17,
+   1.08,
+   2.09
+  ],
+  "fast_start_pct": {
+   "nine with a value pair": [
+    39.1,
+    37.9,
+    52.2
+   ],
+   "ten or more with a value pair": [
+    55.8,
+    52.0,
+    63.3
+   ]
+  },
+  "humans_fast_minus_slow": {
+   "nine with a value pair": [
+    372,
+    98
+   ],
+   "ten or more with a value pair": [
+    413,
+    138
+   ]
+  }
+ }
+}
