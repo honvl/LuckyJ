@@ -396,130 +396,199 @@
  },
  "half_wait": {
   "dilemmas": {
-   "Tokujou": 622,
-   "Houou": 1907,
-   "LuckyJ": 160
+   "Tokujou": 740,
+   "Houou": 2269,
+   "LuckyJ": 202
   },
   "tenpai_decisions": {
-   "Tokujou": 18234,
-   "Houou": 64868,
-   "LuckyJ": 5444
+   "Tokujou": 21232,
+   "Houou": 74700,
+   "LuckyJ": 6429
   },
   "safe_pct_by_row": {
    "Tokujou": [
-    9.5,
-    27.8,
-    37.5
+    7.7,
+    25.2,
+    35.3
    ],
    "Houou": [
-    26.5,
-    26.6,
-    39.7
+    22.7,
+    24.9,
+    38.0
    ],
    "LuckyJ": [
-    16.7,
-    41.9,
-    50.0
+    11.1,
+    36.8,
+    47.4
    ]
   },
   "n_by_row": {
    "Tokujou": [
-    21,
-    334,
-    267
+    39,
+    412,
+    289
    ],
    "Houou": [
-    68,
-    927,
-    912
+    110,
+    1167,
+    992
    ],
    "LuckyJ": [
-    6,
-    86,
-    68
+    9,
+    117,
+    76
    ]
   },
   "safe_pct_by_keep": {
    "Tokujou": [
-    19.1,
-    30.3,
-    50.8
+    17.5,
+    27.9,
+    45.5
    ],
    "Houou": [
-    18.5,
-    32.2,
-    50.8
+    17.2,
+    29.1,
+    48.6
    ],
    "LuckyJ": [
-    24.2,
-    48.3,
-    59.4
+    21.6,
+    41.4,
+    57.5
    ]
   },
   "safe_pct_by_value": {
    "Tokujou": [
-    22.5,
-    30.3,
-    55.9
+    20.8,
+    27.4,
+    48.7
    ],
    "Houou": [
-    19.9,
-    30.7,
-    63.2
+    19.3,
+    28.6,
+    52.8
    ],
    "LuckyJ": [
-    33.8,
-    49.1,
-    67.9
+    32.5,
+    44.8,
+    50.0
    ]
   },
   "n_by_value_luckyj": [
-   71,
-   55,
-   28
+   80,
+   67,
+   46
   ],
-  "dama_safe_pct": {
-   "Tokujou": 28.7,
-   "Houou": 28.1,
-   "LuckyJ": 33.3
+  "closed_safe_pct": {
+   "Tokujou": 22.7,
+   "Houou": 23.6,
+   "LuckyJ": 26.7
   },
-  "dama_n_luckyj": 21,
+  "closed_n_luckyj": 60,
   "open_safe_pct_luckyj": 47.4,
-  "third_row_two_tells_safe_pct_luckyj": 54.8,
+  "third_row_two_tells_safe_pct_luckyj": 50.0,
   "live_tile_on_wait_pct_by_row": [
-   3.2,
-   5.0,
-   10.5
+   1.9,
+   4.6,
+   10.7
   ],
-  "live_tile_on_wait_pct_third_row_two_tells": 13.6,
+  "live_tile_on_wait_pct_third_row_two_tells": 13.8,
   "humans_net_by_row": {
    "wide": [
-    2709,
-    1959,
-    1216
+    3419,
+    2130,
+    1206
    ],
    "safe": [
-    500,
-    911,
-    684
+    1979,
+    1029,
+    717
    ]
   },
   "humans_third_row_two_tells_pct": {
-   "wide": 47.5,
-   "safe": 55.0
+   "wide": 47.1,
+   "safe": 54.3
   },
   "mortal_safe_pct_by_row": [
-   14.8,
-   32.1,
-   42.1
+   6.2,
+   25.9,
+   34.2
   ],
   "mortal_n_by_row": [
-   27,
-   420,
-   335
+   48,
+   529,
+   365
   ],
-  "mortal_dama_with_yaku_safe_pct": 21.4,
-  "mortal_dama_with_yaku_n": 126,
-  "mortal_agrees_with_luckyj_pct": 81.2
+  "mortal_closed_with_yaku_safe_pct": 15.4,
+  "mortal_closed_with_yaku_n": 214,
+  "mortal_agrees_with_luckyj_pct": 78.2,
+  "closed_with_yaku_safe_pct_luckyj": 29.7,
+  "closed_with_yaku_n_luckyj": 37
+ },
+ "riichi_open": {
+  "spots": {
+   "Tokujou": 133,
+   "Houou": 419,
+   "LuckyJ": 44
+  },
+  "declared_pct": {
+   "Tokujou": 62.4,
+   "Houou": 68.5,
+   "LuckyJ": 75.0
+  },
+  "declared_wide_pct": {
+   "Tokujou": 86.6,
+   "Houou": 82.3,
+   "LuckyJ": 77.4
+  },
+  "declared_n": {
+   "Tokujou": 82,
+   "Houou": 277,
+   "LuckyJ": 31
+  },
+  "share_pct": {
+   "Tokujou": {
+    "wide riichi": 53.4,
+    "wide dama": 28.6,
+    "safe riichi": 8.3,
+    "safe dama": 8.3
+   },
+   "Houou": {
+    "wide riichi": 54.4,
+    "wide dama": 19.6,
+    "safe riichi": 11.7,
+    "safe dama": 10.0
+   },
+   "LuckyJ": {
+    "wide riichi": 54.5,
+    "wide dama": 13.6,
+    "safe riichi": 15.9,
+    "safe dama": 11.4
+   }
+  },
+  "riichi_pct_widest_live": {
+   "Tokujou": 59.4,
+   "Houou": 61.2,
+   "LuckyJ": 70.0
+  },
+  "riichi_pct_widest_safe": {
+   "Tokujou": 59.7,
+   "Houou": 61.4,
+   "LuckyJ": 66.6
+  },
+  "humans_net": {
+   "wide riichi": 2458,
+   "wide dama": 1906,
+   "safe riichi": 2332,
+   "safe dama": 1128
+  },
+  "mortal_n": 596,
+  "mortal_declared_pct": 77.5,
+  "mortal_declared_wide_pct": 83.5,
+  "mortal_declared_safe_pct_by_keep": [
+   1.7,
+   12.5,
+   32.8
+  ],
+  "live_tile_on_wait_pct": 5.5
  }
 }

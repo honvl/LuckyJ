@@ -1,7 +1,10 @@
 """Recompute every figure the book's "When to fold to open callers" section cites and write them to one JSON.
 
 Run from the working directory that holds the vs_callers.py outputs (callers_lj.* from man/lj_all.json with
-GROUP lj, callers_hou.* from man/houou_games.json), mortal_disc.parquet and the man/ manifests:
+GROUP lj, callers_hou.* from man/houou_games.json), mortal_disc.parquet, mortal_halfwait.jsonl (mortal_spots.py
+run on every half-wait dilemma in callers_lj.tenpai.jsonl), riichi_open_lj.jsonl and riichi_open_hou.jsonl
+(riichi_danger.py on the same two manifests), mortal_riichi_open.jsonl (mortal_spots.py on their riichi dilemmas in
+LuckyJ's and the Houou games) and the man/ manifests:
 
     python export_open_callers.py OUT.json
 
@@ -185,8 +188,8 @@ def half_wait():
     out["safe_pct_by_keep"] = {g: [pct(late[(late.who == g) & (late.keep == k)].safe) for k in ("a third or less", "about half", "two thirds or more")] for g in GROUPS}
     out["safe_pct_by_value"] = {g: [pct(late[(late.who == g) & (late.value == v)].safe) for v in ("three han or more", "one or two han", "no yaku")] for g in GROUPS}
     out["n_by_value_luckyj"] = [int(((late.who == "LuckyJ") & (late.value == v)).sum()) for v in ("three han or more", "one or two han", "no yaku")]
-    out["dama_safe_pct"] = {g: pct(late[(late.who == g) & late.closed].safe) for g in GROUPS}
-    out["dama_n_luckyj"] = int(((late.who == "LuckyJ") & late.closed).sum())
+    out["closed_safe_pct"] = {g: pct(late[(late.who == g) & late.closed].safe) for g in GROUPS}
+    out["closed_n_luckyj"] = int(((late.who == "LuckyJ") & late.closed).sum())
     out["open_safe_pct_luckyj"] = pct(late[(late.who == "LuckyJ") & ~late.closed].safe)
     out["third_row_two_tells_safe_pct_luckyj"] = pct(d[(d.who == "LuckyJ") & (d.row == "third") & (d.tells_main >= 2)].safe)
     out["live_tile_on_wait_pct_by_row"] = [pct(d[d.row == r].wide_on_wait) for r in ROWS]
@@ -195,21 +198,92 @@ def half_wait():
     out["humans_net_by_row"] = {ch: [round(float(h[(h.row == r) & (h.chose == ch)].net.mean())) for r in ROWS] for ch in ("wide", "safe")}
     h3 = h[h.row == "third"]
     out["humans_third_row_two_tells_pct"] = {ch: pct(h3[h3.chose == ch].tells_main >= 2) for ch in ("wide", "safe")}
-    mo = pd.read_parquet("mortal_disc.parquet", columns=["g", "li", "s", "t", "m_dist"])
-    m = d[d.who != "Houou"].merge(mo, on=["g", "li", "s", "t"], how="inner")
+    # Mortal's own choice at the same spots of LuckyJ's games (mortal_spots.py): its top action, and when that
+    # is riichi, the tile it declares with
+    mh = pd.DataFrame([json.loads(line) for line in open("mortal_halfwait.jsonl")])
+    m = d[d.who != "Houou"].merge(mh, on=["g", "li", "s", "t"], how="inner")
 
-    def prefers_safe(r):
-        dist = {int(k): v for k, v in json.loads(r.m_dist).items()}
-        return sum(dist.get(k, 0) for k in r.safe_tiles) > sum(dist.get(k, 0) for k in r.wide_tiles)
+    def top_tile(r):
+        tiles = {int(k): v for k, v in r.act.items() if k != "reach"}
+        top = max(tiles, key=tiles.get)
+        if r.act.get("reach", 0) > tiles[top] and isinstance(r.reach_tile, dict):
+            declare = {int(k): v for k, v in r.reach_tile.items()}
+            top = max(declare, key=declare.get)
+        return top
 
-    m["m_safe"] = m.apply(prefers_safe, axis=1)
+    m["m_tile"] = m.apply(top_tile, axis=1)
+    m["m_safe"] = [t in tiles for t, tiles in zip(m.m_tile, m.safe_tiles)]
+    m["m_class"] = np.select([m.m_safe, [t in tiles for t, tiles in zip(m.m_tile, m.wide_tiles)]], ["safe", "wide"], "other")
     out["mortal_safe_pct_by_row"] = [pct(m[m.row == r].m_safe) for r in ROWS]
     out["mortal_n_by_row"] = [int((m.row == r).sum()) for r in ROWS]
     ml = m[m.row != "first"]
-    out["mortal_dama_with_yaku_safe_pct"] = pct(ml[ml.closed & (ml.value != "no yaku")].m_safe)
-    out["mortal_dama_with_yaku_n"] = int((ml.closed & (ml.value != "no yaku")).sum())
+    out["mortal_closed_with_yaku_safe_pct"] = pct(ml[ml.closed & (ml.value != "no yaku")].m_safe)
+    out["mortal_closed_with_yaku_n"] = int((ml.closed & (ml.value != "no yaku")).sum())
     lj = m[m.who == "LuckyJ"]
-    out["mortal_agrees_with_luckyj_pct"] = pct(lj.m_safe == lj.safe)
+    out["mortal_agrees_with_luckyj_pct"] = pct(lj.m_class == np.where(lj.chose.isin(["wide", "safe"]), lj.chose, "other"))
+    lc = late[(late.who == "LuckyJ") & late.closed & (late.value != "no yaku")]
+    out["closed_with_yaku_safe_pct_luckyj"] = pct(lc.safe)
+    out["closed_with_yaku_n_luckyj"] = int(len(lc))
+    return out
+
+
+def riichi_open():
+    """Closed first tenpais that may declare, facing callers with nobody in riichi (riichi_danger.py rows), where every
+    widest-wait discard is live against a caller and a safe discard keeps a narrower, non-furiten tenpai."""
+    rows = [json.loads(line) for name in ("riichi_open_lj.jsonl", "riichi_open_hou.jsonl") for line in open(name)]
+    spots, fresh_live = [], []
+    for r in rows:
+        if r["nr"] or not r["nc"] or not r["riichi_ok"] or r["was_tenpai"]:
+            continue
+        ok = [o for o in r["opts"] if not o["fur"]]
+        widest = max((o["live"] for o in ok), default=0)
+        if widest == 0:
+            continue
+        wide = [o for o in ok if o["live"] == widest]
+        live = all(o["dc"] >= 2 for o in wide)
+        fresh_live.append({"who": r["who"], "live": live, "riichi": r["riichi"]})
+        safe = [o for o in ok if o["dc"] <= 1 and 1 <= o["live"] < widest]
+        if not live or not safe:
+            continue
+        wb, sb = {o["b"] for o in wide}, {o["b"] for o in safe}
+        chose = "wide" if r["cut"] in wb else "safe" if r["cut"] in sb else "other"
+        spots.append({"g": r["g"], "li": r["li"], "s": r["s"], "t": r["t"], "who": r["who"], "chose": chose, "riichi": r["riichi"],
+                      "keep": max(o["live"] for o in safe) / widest, "wide_tiles": wb, "safe_tiles": sb, "net": r["net"],
+                      "wide_on": any(o["on_c"] for o in wide)})
+    d = pd.DataFrame(spots)
+    fl = pd.DataFrame(fresh_live)
+    out = {"spots": {g: int((d.who == g).sum()) for g in GROUPS}}
+    out["declared_pct"] = {g: pct(d[d.who == g].riichi) for g in GROUPS}
+    decl = d[d.riichi & d.chose.isin(["wide", "safe"])]
+    out["declared_wide_pct"] = {g: pct(decl[decl.who == g].chose == "wide") for g in GROUPS}
+    out["declared_n"] = {g: int((decl.who == g).sum()) for g in GROUPS}
+    out["share_pct"] = {g: {f"{c} {'riichi' if r else 'dama'}": pct((d[d.who == g].chose == c) & (d[d.who == g].riichi == r))
+                            for c in ("wide", "safe") for r in (True, False)} for g in GROUPS}
+    out["riichi_pct_widest_live"] = {g: pct(fl[(fl.who == g) & fl.live].riichi) for g in GROUPS}
+    out["riichi_pct_widest_safe"] = {g: pct(fl[(fl.who == g) & ~fl.live].riichi) for g in GROUPS}
+    h = d[d.who != "LuckyJ"]
+    out["humans_net"] = {f"{c} {'riichi' if r else 'dama'}": round(float(h[(h.chose == c) & (h.riichi == r)].net.mean()))
+                         for c in ("wide", "safe") for r in (True, False)}
+    mo = pd.DataFrame([json.loads(line) for line in open("mortal_riichi_open.jsonl")])
+    m = d.merge(mo, on=["g", "li", "s", "t"], how="inner")
+
+    def mortal_choice(r):
+        tiles = {int(k): v for k, v in r.act.items() if k != "reach"}
+        top = max(tiles, key=tiles.get)
+        declares = r.act.get("reach", 0) > tiles[top]
+        if declares:
+            declare = {int(k): v for k, v in r.reach_tile.items()}
+            top = max(declare, key=declare.get)
+        return declares, "wide" if top in r.wide_tiles else "safe" if top in r.safe_tiles else "other"
+
+    m[["m_riichi", "m_chose"]] = m.apply(mortal_choice, axis=1, result_type="expand")
+    out["mortal_n"] = int(len(m))
+    out["mortal_declared_pct"] = pct(m.m_riichi)
+    md = m[m.m_riichi & m.m_chose.isin(["wide", "safe"])]
+    out["mortal_declared_wide_pct"] = pct(md.m_chose == "wide")
+    keep = np.select([md.keep <= 0.34, md.keep <= 0.67], ["a third or less", "about half"], "two thirds or more")
+    out["mortal_declared_safe_pct_by_keep"] = [pct(md[keep == k].m_chose == "safe") for k in ("a third or less", "about half", "two thirds or more")]
+    out["live_tile_on_wait_pct"] = pct(d.wide_on)
     return out
 
 
@@ -226,6 +300,7 @@ def main():
         "dora_pon": dora_pon(c, f),
         "passed": passed(c),
         "half_wait": half_wait(),
+        "riichi_open": riichi_open(),
     }
     Path(sys.argv[1]).write_text(json.dumps(figures, indent=1, ensure_ascii=False) + "\n")
     print(json.dumps(figures, indent=1, ensure_ascii=False))

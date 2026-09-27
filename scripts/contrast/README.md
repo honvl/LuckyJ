@@ -58,5 +58,20 @@ one more extractor and one exporter:
    last discard), and `PREFIX.tenpai.jsonl`, every tenpai decision against callers with the
    half-wait dilemmas marked. Run it as `vs_callers.py man/lj_all.json lj callers_lj` and
    `vs_callers.py man/houou_games.json houou callers_hou` (about 7 and 20 seconds on 14 processes).
-2. `report/export_open_callers.py OUT.json`, run in the same directory with `mortal_disc.parquet`
-   beside it, writes `analysis/open-callers-2026-09-27.json`, which `tests/test_open_callers.py` pins.
+2. `riichi_danger.py MANIFEST GROUP OUT.jsonl` writes every closed tenpai decision made under a threat
+   (an opponent in riichi or with an open meld): each tenpai discard's live tiles, furiten, han with and
+   without riichi, and danger against the riichi players and the callers. Run it on the same two
+   manifests as `riichi_open_lj.jsonl` and `riichi_open_hou.jsonl`.
+3. `mortal_spots.py SPOTS.json OUT.jsonl` asks the local Mortal policy about chosen spots. It replays the
+   seat's mjai log up to the draw or call, records the action probabilities (riichi included), and when
+   riichi is legal injects a declaration to record the tile Mortal would declare with. Run it on the
+   half-wait dilemmas of LuckyJ's games (`mortal_halfwait.jsonl`) and on the riichi dilemmas of both
+   corpora (`mortal_riichi_open.jsonl`).
+4. `report/export_open_callers.py OUT.json`, run in the same directory with those files and
+   `mortal_disc.parquet` beside it, writes `analysis/open-callers-2026-09-27.json`, which
+   `tests/test_open_callers.py` pins.
+
+The first run of `vs_callers.py` dropped every discard that was itself a riichi declaration, which left
+closed hands that declared out of the half-wait dilemmas. The cut rows still leave declarations out (they
+describe discards made with nobody in riichi, and a declaration is always made from tenpai); the tenpai
+rows keep them and record `riichi`.

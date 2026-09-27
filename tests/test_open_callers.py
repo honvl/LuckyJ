@@ -57,7 +57,12 @@ class FigureTests(unittest.TestCase):
         out += [pct(v) for g in GROUPS for v in wait["safe_pct_by_row"][g]]
         out += [pct(v) for v in wait["mortal_safe_pct_by_row"] + wait["safe_pct_by_keep"]["LuckyJ"] + wait["live_tile_on_wait_pct_by_row"]]
         out += [pct(wait["safe_pct_by_value"]["LuckyJ"][0]), pct(wait["safe_pct_by_value"]["LuckyJ"][2])]
-        out += [f"+{wait['humans_net_by_row']['wide'][2]:,}", f"+{wait['humans_net_by_row']['safe'][2]:,}", str(wait["dama_n_luckyj"])]
+        out += [f"+{wait['humans_net_by_row']['wide'][2]:,}", f"+{wait['humans_net_by_row']['safe'][2]:,}"]
+        out += [str(wait["closed_with_yaku_n_luckyj"]), pct(wait["closed_with_yaku_safe_pct_luckyj"]), pct(wait["mortal_closed_with_yaku_safe_pct"])]
+        declare = f["riichi_open"]
+        out += [str(declare["spots"][g]) for g in GROUPS]
+        out += [pct(declare[key][g]) for key in ("declared_pct", "declared_wide_pct") for g in GROUPS]
+        out += [pct(declare["mortal_declared_pct"]), pct(declare["mortal_declared_wide_pct"])]
         return out
 
     def test_every_figure_matches_the_artifact_in_both_editions(self):
@@ -113,6 +118,33 @@ class StructureTests(unittest.TestCase):
         for name in PAGES:
             self.assertIn("analysis/open-callers-2026-09-27.md", page(name))
         self.assertTrue((ROOT / "analysis/open-callers-2026-09-27.md").exists())
+
+
+class CorrectionTests(unittest.TestCase):
+    """Answer 4 first left out every discard that was itself a riichi declaration; the corrected card says so."""
+
+    def card(self, name):
+        text = section(name)
+        start = text.index('<div class="rx-card" id="oc-4">')
+        return text[start:text.index("</div>", start)]
+
+    def test_answer_four_is_marked_and_the_old_rates_are_gone(self):
+        for name, old in (("points.html", ("kept the wide wait five times in six", "about four times in ten", "one in three of its 21")),
+                          ("ja.html", ("6回に5回広い待ちを残し", "約10回に4回", "21局面で3回に1回"))):
+            card = self.card(name)
+            with self.subTest(page=name):
+                self.assertIn('<mark id="fix-oc4" class="guide-changed">', card)
+                for phrase in old:
+                    self.assertNotIn(phrase, card)
+
+    def test_contents_flag_the_correction(self):
+        for name, href in (("index.html", 'href="points.html#open-callers"'), ("ja.html", 'href="#open-callers"')):
+            text = page(name)
+            entry = text[text.index(href):]
+            entry = entry[:entry.index("</li>")]
+            with self.subTest(page=name):
+                self.assertIn('<span class="changed-tag">Corrected</span>', entry)
+                self.assertIn("27", entry)
 
 
 class VoiceTests(unittest.TestCase):

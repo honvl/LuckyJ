@@ -91,7 +91,7 @@ def work(g):
         seat_events = {q: [] for q in range(4)}
         for e in events:
             s = e['seat']; i = e['index']
-            riichi_out = any(v is not None for v in e['riichi_seats'].values()) or e['riichi']
+            riichi_out = any(v is not None for v in e['riichi_seats'].values())
             if not riichi_out:
                 melds = {q: [m for m in players[q]['melds'][:e['meld_counts'][q]] if m['kind'] != 'a'] for q in range(4) if q != s}
                 callers = [q for q, v in melds.items() if v and seat_events[q]]
@@ -146,7 +146,9 @@ def work(g):
                             if cand_sh[base(tt)] == best_sh:
                                 dmin_keep = min(dmin_keep, dg)
                         safe_info[q] = (dmin_all, dmin_keep)
-                    for q in callers:
+                    # the cut rows describe discards made with nobody in riichi, so a riichi declaration is left
+                    # out of them; it stays in the tenpai rows, where declaring is one of the answers
+                    for q in (callers if not e['riichi'] else []):
                         ci = cinfo[q]
                         lab = safety(t, q, e, game, seen)
                         cuts.append({
@@ -217,7 +219,7 @@ def work(g):
                                 'ts_run_main': max(cinfo[q]['ts_run'] for q in callers if len(melds[q]) == mx),
                                 'main_tenpai': any(cinfo[q]['tenpai'] for q in callers if len(melds[q]) == mx),
                                 'opts_live': {str(k): [o['live'], o['danger']] for k, o in opts.items()},
-                                'won': s in winners, 'dealt': s in ron_by, 'net': deltas[s] - 1000 * paid[s],
+                                'riichi': e['riichi'], 'won': s in winners, 'dealt': s in ron_by, 'net': deltas[s] - 1000 * paid[s],
                             }
                             if dilemma:
                                 row['wide_han'] = max(han(k) for k in wide)

@@ -120,45 +120,83 @@ tiles cut against a caller in all three groups, none dealt in, as the furiten ru
 
 ## 5. Tenpai: the narrower safe wait
 
-Half-wait dilemmas: 622 Tokujou, 1,907 Houou, 160 LuckyJ, about 3% of the tenpai decisions made
+**Corrected later on 27 September.** The first version of this section left out every tenpai decision
+whose discard was itself a riichi declaration (`vs_callers.py` skipped the declaring discard along with
+discards made while someone was already in riichi), so closed hands that declared were missing. The
+figures below include them. Sections 1 to 4 do not change: a riichi declaration is always made from
+tenpai, and those sections use one-shanten or worse. Mortal's figures now come from its own top choice
+at each spot (`mortal_spots.py`), including the tile it would declare with, instead of comparing the
+probability it gave the safe and the wide discards.
+
+Half-wait dilemmas: 740 Tokujou, 2,269 Houou, 202 LuckyJ, about 3% of the tenpai decisions made
 against callers. Share taking the safe, narrower tenpai:
 
 | row | Tokujou | Houou | LuckyJ | Mortal (LuckyJ's games) |
 |---|---|---|---|---|
-| first (1 to 6) | 9.5% (21) | 26.5% (68) | 16.7% (6) | 14.8% (27) |
-| second (7 to 12) | 27.8% (334) | 26.6% (927) | 41.9% (86) | 32.1% (420) |
-| third (13+) | 37.5% (267) | 39.7% (912) | 50.0% (68) | 42.1% (335) |
+| first (1 to 6) | 7.7% (39) | 22.7% (110) | 11.1% (9) | 6.2% (48) |
+| second (7 to 12) | 25.2% (412) | 24.9% (1,167) | 36.8% (117) | 25.9% (529) |
+| third (13+) | 35.3% (289) | 38.0% (992) | 47.4% (76) | 34.2% (365) |
+
+Mortal goes safe about as often as the humans, so LuckyJ's later switch is its own habit rather than an
+engine consensus.
 
 Second and third rows together:
 
 | | Tokujou | Houou | LuckyJ |
 |---|---|---|---|
-| safe discard keeps a third of the wait or less | 19.1% | 18.5% | 24.2% |
-| keeps about half | 30.3% | 32.2% | 48.3% |
-| keeps two thirds or more | 50.8% | 50.8% | 59.4% |
-| wide wait worth three han or more | 22.5% | 19.9% | 33.8% (71) |
-| one or two han | 30.3% | 30.7% | 49.1% (55) |
-| no yaku for a ron on the wide wait | 55.9% | 63.2% | 67.9% (28) |
-| closed hand (dama) | 28.7% | 28.1% | 33.3% (21) |
+| safe discard keeps a third of the wait or less | 17.5% | 17.2% | 21.6% |
+| keeps about half | 27.9% | 29.1% | 41.4% |
+| keeps two thirds or more | 45.5% | 48.6% | 57.5% |
+| wide wait worth three han or more | 20.8% | 19.3% | 32.5% (80) |
+| one or two han | 27.4% | 28.6% | 44.8% (67) |
+| no yaku for a ron on the wide wait | 48.7% | 52.8% | 50.0% (46) |
+| closed hand, riichi or dama | 22.7% | 23.6% | 26.7% (60) |
 
-In the second and third rows LuckyJ went safe 47.4% of the time from an open hand, and in the third row
-54.8% of the time against a caller with two or more tells. In the third row with about half the wait kept, it went safe 63.9% of the time (36
-spots); Mortal 46%. In a closed dama hand with a yaku, Mortal preferred the safe tenpai only 21.4% of
-the time in the second and third rows (126 spots). Mortal and LuckyJ agreed on 81.2% of LuckyJ's
-dilemmas.
+In the second and third rows LuckyJ went safe 47.4% of the time from an open hand and 29.7% from a
+closed hand with a yaku (37 spots; Mortal 15.4% of 214). In the third row it went safe 50.0% of the time
+against a caller with two or more tells, and 57.1% when the safe tenpai kept about half the wait (42
+spots; Mortal 36.2% of 196). Mortal and LuckyJ made the same choice (wide, safe or other) at 78.2% of
+LuckyJ's dilemmas.
 
-How often the live tile was really on a caller's wait: 3.2%, 5.0% and 10.5% by row; 13.6% in the third
+How often the live tile was really on a caller's wait: 1.9%, 4.6% and 10.7% by row; 13.8% in the third
 row against a caller with two tells.
 
-The humans' own outcomes favour the wide wait in every row (net per hand, wide against safe: +2,709
-and +500, +1,959 and +911, +1,216 and +684; third-row win rate 29.0% against 14.9%, deal-in rate 12.5%
-against 6.9%). That comparison is confounded: in the third row the players who went safe faced a caller
-with two tells 55.0% of the time, those who kept the wide wait 47.5%.
+The humans' own outcomes favour the wide wait in every row (net per hand, wide against safe: +3,419
+and +1,979, +2,130 and +1,029, +1,206 and +717; third-row win rate 28.6% against 15.7%, deal-in rate
+13.6% against 6.7%). That comparison is confounded: in the third row the players who went safe faced a
+caller with two tells 54.3% of the time, those who kept the wide wait 47.1%.
+
+## 6. Riichi against a caller
+
+`riichi_danger.py` records every closed tenpai decision made while an opponent threatens, with each
+tenpai discard's live tiles, furiten, value with and without riichi, and danger against the riichi
+players and the callers. Here: nobody in riichi, at least one caller, riichi allowed, the hand's first
+tenpai (not a dama tenpai carried from an earlier turn), every widest-wait discard live against a
+caller, and a safe discard that keeps a narrower tenpai with at least one live tile and no furiten.
+Spots: 133 Tokujou, 419 Houou, 44 LuckyJ. Mortal was asked at all 596 (`mortal_spots.py`, which replays
+the seat's mjai log to the draw and then injects a riichi declaration to get the tile it would declare
+with).
+
+| | Tokujou | Houou | LuckyJ | Mortal |
+|---|---|---|---|---|
+| wide wait, riichi | 53.4% | 54.4% | 54.5% | 62.9% |
+| wide wait, dama | 28.6% | 19.6% | 13.6% | 15.8% |
+| safe narrower wait, riichi | 8.3% | 11.7% | 15.9% | 12.4% |
+| safe narrower wait, dama | 8.3% | 10.0% | 11.4% | 6.2% |
+| declared at all | 62.4% | 68.5% | 75.0% | 77.5% |
+| when declaring, the live tile for the wide wait | 86.6% (82) | 82.3% (277) | 77.4% (31) | 83.5% |
+
+When Mortal declared, it took the safe narrower wait 1.7%, 12.5% and 32.8% of the time as the safe
+tenpai kept a third of the wait or less, about half, and two thirds or more. In all first tenpais that
+could declare against a caller, LuckyJ declared 70.0% of the time when its widest discard was live and
+66.6% when it was safe; the Tokujou humans 59.4% and 59.7%, the Houou players 61.2% and 61.4%. The
+live declaration tile was on a caller's wait 5.5% of the time across these spots. The humans' net per
+hand by choice: wide riichi +2,458, safe riichi +2,332, wide dama +1,906, safe dama +1,128.
 
 ## Caveats
 
-- LuckyJ's half-wait sample is small (160 spots, 6 in the first row, 21 closed), so the row pattern
-  leans on Mortal's 782 spots from the same games for support.
+- LuckyJ's half-wait sample is small (202 spots, 9 in the first row, 60 closed), and its riichi sample
+  smaller (44 first tenpais, 31 declarations), so both lean on Mortal's answers at the same spots.
 - The clock uses the caller's tenpai rate pooled over all groups. LuckyJ's own callers are humans,
   and the Tokujou humans' callers include LuckyJ.
 - Safety labels come from the caller's river and suji only; kabe, the passed tile and reads of the
