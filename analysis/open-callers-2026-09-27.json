@@ -1,0 +1,525 @@
+{
+ "groups": [
+  "Tokujou",
+  "Houou",
+  "LuckyJ"
+ ],
+ "source": "scripts/contrast/report/export_open_callers.py; method in analysis/open-callers-2026-09-27.md",
+ "cuts": {
+  "Tokujou": 156902,
+  "Houou": 541197,
+  "LuckyJ": 49282
+ },
+ "discards": {
+  "Tokujou": 122582,
+  "Houou": 416744,
+  "LuckyJ": 38553
+ },
+ "fold_line": {
+  "bands": [
+   "1-6",
+   "7-9",
+   "10-12",
+   "13+"
+  ],
+  "caller_tenpai_pct": {
+   "1": [
+    6.7,
+    23.5,
+    39.5,
+    53.6
+   ],
+   "2": [
+    23.8,
+    45.9,
+    62.1,
+    71.8
+   ],
+   "3": [
+    63.7,
+    79.9,
+    88.2,
+    89.8
+   ]
+  },
+  "far": {
+   "1": {
+    "LuckyJ": [
+     76.7,
+     57.7,
+     38.4,
+     17.6
+    ],
+    "humans": [
+     66.5,
+     57.8,
+     41.8,
+     26.0
+    ],
+    "Tokujou": [
+     67.1,
+     58.1,
+     45.4,
+     30.7
+    ],
+    "Houou": [
+     66.3,
+     57.7,
+     40.7,
+     24.7
+    ],
+    "n": {
+     "LuckyJ": [
+      4871,
+      2018,
+      711,
+      222
+     ],
+     "humans": [
+      63924,
+      25590,
+      8048,
+      2564
+     ]
+    }
+   },
+   "2": {
+    "LuckyJ": [
+     67.7,
+     44.4,
+     31.1,
+     22.4
+    ],
+    "humans": [
+     63.5,
+     48.8,
+     34.4,
+     21.6
+    ],
+    "Tokujou": [
+     63.6,
+     51.7,
+     36.6,
+     22.2
+    ],
+    "Houou": [
+     63.5,
+     47.9,
+     33.7,
+     21.4
+    ],
+    "n": {
+     "LuckyJ": [
+      992,
+      914,
+      408,
+      170
+     ],
+     "humans": [
+      11780,
+      11001,
+      5109,
+      2580
+     ]
+    }
+   },
+   "3": {
+    "LuckyJ": [
+     53.6,
+     30.4,
+     24.2,
+     4.9
+    ],
+    "humans": [
+     47.0,
+     37.9,
+     34.3,
+     21.1
+    ],
+    "Tokujou": [
+     50.2,
+     39.1,
+     34.6,
+     27.7
+    ],
+    "Houou": [
+     45.9,
+     37.5,
+     34.2,
+     19.3
+    ],
+    "n": {
+     "LuckyJ": [
+      69,
+      125,
+      91,
+      41
+     ],
+     "humans": [
+      972,
+      1812,
+      1090,
+      870
+     ]
+    }
+   }
+  },
+  "one_shanten": {
+   "1": {
+    "LuckyJ": [
+     59.4,
+     49.1,
+     39.9,
+     25.8
+    ],
+    "humans": [
+     55.7,
+     50.8,
+     42.0,
+     28.6
+    ],
+    "Tokujou": [
+     56.4,
+     50.4,
+     41.7,
+     29.8
+    ],
+    "Houou": [
+     55.5,
+     50.9,
+     42.0,
+     28.3
+    ],
+    "n": {
+     "LuckyJ": [
+      1248,
+      1903,
+      1145,
+      543
+     ],
+     "humans": [
+      15714,
+      23445,
+      15192,
+      7029
+     ]
+    }
+   },
+   "2": {
+    "LuckyJ": [
+     52.9,
+     41.2,
+     36.5,
+     22.0
+    ],
+    "humans": [
+     53.8,
+     46.8,
+     37.1,
+     24.5
+    ],
+    "Tokujou": [
+     54.2,
+     48.8,
+     39.2,
+     26.3
+    ],
+    "Houou": [
+     53.7,
+     46.1,
+     36.4,
+     23.9
+    ],
+    "n": {
+     "LuckyJ": [
+      278,
+      799,
+      614,
+      396
+     ],
+     "humans": [
+      3949,
+      10105,
+      8292,
+      4781
+     ]
+    }
+   },
+   "3": {
+    "LuckyJ": [
+     54.5,
+     37.8,
+     23.2,
+     21.2
+    ],
+    "humans": [
+     52.1,
+     39.3,
+     32.6,
+     23.3
+    ],
+    "Tokujou": [
+     63.5,
+     41.2,
+     35.8,
+     21.4
+    ],
+    "Houou": [
+     48.5,
+     38.7,
+     31.5,
+     23.9
+    ],
+    "n": {
+     "LuckyJ": [
+      33,
+      119,
+      112,
+      85
+     ],
+     "humans": [
+      305,
+      1447,
+      1492,
+      1177
+     ]
+    }
+   }
+  }
+ },
+ "mortal_fold_line": {
+  "far": {
+   "under 15%": {
+    "Mortal": 69.3,
+    "LuckyJ": 76.7,
+    "Tokujou": 67.1,
+    "n": 19618
+   },
+   "over 75%": {
+    "Mortal": 23.2,
+    "LuckyJ": 23.9,
+    "Tokujou": 35.6,
+    "n": 1152
+   }
+  },
+  "one_shanten": {
+   "under 15%": {
+    "Mortal": 59.8,
+    "LuckyJ": 59.4,
+    "Tokujou": 56.4,
+    "n": 4802
+   },
+   "over 75%": {
+    "Mortal": 24.9,
+    "LuckyJ": 27.7,
+    "Tokujou": 33.3,
+    "n": 1348
+   }
+  }
+ },
+ "dora_pon": {
+  "live_cut_pct": {
+   "Tokujou": [
+    59.2,
+    55.7
+   ],
+   "Houou": [
+    58.5,
+    49.3
+   ],
+   "LuckyJ": [
+    62.2,
+    44.1
+   ]
+  },
+  "n": {
+   "Tokujou": [
+    39138,
+    709
+   ],
+   "Houou": [
+    127306,
+    2964
+   ],
+   "LuckyJ": [
+    13131,
+    245
+   ]
+  },
+  "far_live_cut_pct": {
+   "Tokujou": [
+    62.7,
+    56.4
+   ],
+   "Houou": [
+    61.9,
+    53.4
+   ],
+   "LuckyJ": [
+    67.7,
+    45.5
+   ]
+  },
+  "caller_tenpai_pct": [
+   20.1,
+   27.2
+  ],
+  "mortal_live_cut_pct": [
+   59.7,
+   48.8
+  ],
+  "caller_win_value": [
+   4716,
+   10377
+  ],
+  "deal_in_cost": [
+   3988,
+   9653
+  ],
+  "dora_pon_share_pct": 98.4
+ },
+ "passed": {
+  "cut_pct": {
+   "Tokujou": 34.3,
+   "Houou": 37.9,
+   "LuckyJ": 59.2
+  },
+  "n": {
+   "Tokujou": 1270,
+   "Houou": 3896,
+   "LuckyJ": 397
+  },
+  "mortal_cut_pct": 50.3,
+  "mortal_n": 1667,
+  "cuts": 24095,
+  "deal_ins": 0
+ },
+ "half_wait": {
+  "dilemmas": {
+   "Tokujou": 622,
+   "Houou": 1907,
+   "LuckyJ": 160
+  },
+  "tenpai_decisions": {
+   "Tokujou": 18234,
+   "Houou": 64868,
+   "LuckyJ": 5444
+  },
+  "safe_pct_by_row": {
+   "Tokujou": [
+    9.5,
+    27.8,
+    37.5
+   ],
+   "Houou": [
+    26.5,
+    26.6,
+    39.7
+   ],
+   "LuckyJ": [
+    16.7,
+    41.9,
+    50.0
+   ]
+  },
+  "n_by_row": {
+   "Tokujou": [
+    21,
+    334,
+    267
+   ],
+   "Houou": [
+    68,
+    927,
+    912
+   ],
+   "LuckyJ": [
+    6,
+    86,
+    68
+   ]
+  },
+  "safe_pct_by_keep": {
+   "Tokujou": [
+    19.1,
+    30.3,
+    50.8
+   ],
+   "Houou": [
+    18.5,
+    32.2,
+    50.8
+   ],
+   "LuckyJ": [
+    24.2,
+    48.3,
+    59.4
+   ]
+  },
+  "safe_pct_by_value": {
+   "Tokujou": [
+    22.5,
+    30.3,
+    55.9
+   ],
+   "Houou": [
+    19.9,
+    30.7,
+    63.2
+   ],
+   "LuckyJ": [
+    33.8,
+    49.1,
+    67.9
+   ]
+  },
+  "n_by_value_luckyj": [
+   71,
+   55,
+   28
+  ],
+  "dama_safe_pct": {
+   "Tokujou": 28.7,
+   "Houou": 28.1,
+   "LuckyJ": 33.3
+  },
+  "dama_n_luckyj": 21,
+  "open_safe_pct_luckyj": 47.4,
+  "third_row_two_tells_safe_pct_luckyj": 54.8,
+  "live_tile_on_wait_pct_by_row": [
+   3.2,
+   5.0,
+   10.5
+  ],
+  "live_tile_on_wait_pct_third_row_two_tells": 13.6,
+  "humans_net_by_row": {
+   "wide": [
+    2709,
+    1959,
+    1216
+   ],
+   "safe": [
+    500,
+    911,
+    684
+   ]
+  },
+  "humans_third_row_two_tells_pct": {
+   "wide": 47.5,
+   "safe": 55.0
+  },
+  "mortal_safe_pct_by_row": [
+   14.8,
+   32.1,
+   42.1
+  ],
+  "mortal_n_by_row": [
+   27,
+   420,
+   335
+  ],
+  "mortal_dama_with_yaku_safe_pct": 21.4,
+  "mortal_dama_with_yaku_n": 126,
+  "mortal_agrees_with_luckyj_pct": 81.2
+ }
+}

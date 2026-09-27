@@ -46,3 +46,17 @@ manifest; they then measure the humans with the same code that measured LuckyJ.
 `pairs.py` counts rons per ordered pair of players (human into LuckyJ, human into human), which is how
 the opponent-pool effect on win rates was separated from LuckyJ's own play. `flushwins.py` counts
 half and full flush wins from the winners' final hands, since the Houou mjai logs carry no yaku list.
+
+## Open callers (27 September 2026)
+
+`analysis/open-callers-2026-09-27.md` (the book's "When to fold to open callers" section) comes from
+one more extractor and one exporter:
+
+1. `vs_callers.py MANIFEST GROUP PREFIX` writes `PREFIX.cuts.jsonl`, one row per discard and caller
+   while nobody is in riichi (the tile's safety label, whether it was on the caller's real wait, the
+   caller's calls, discards so far, tsumogiri run, visible dora and the tiles they passed since their
+   last discard), and `PREFIX.tenpai.jsonl`, every tenpai decision against callers with the
+   half-wait dilemmas marked. Run it as `vs_callers.py man/lj_all.json lj callers_lj` and
+   `vs_callers.py man/houou_games.json houou callers_hou` (about 7 and 20 seconds on 14 processes).
+2. `report/export_open_callers.py OUT.json`, run in the same directory with `mortal_disc.parquet`
+   beside it, writes `analysis/open-callers-2026-09-27.json`, which `tests/test_open_callers.py` pins.
