@@ -613,6 +613,100 @@
    "did": "You ponned toimen's [[9p]] on turn 12 and chied [[3s]] on turn 13, which made tenpai on a [[3m]] kanchan with no yaku, and cut the [[S]] for it. Toimen held [[S]] [[S]] and [[5p]] [[5p]], and the south was their only yaku. It cost 6,100 and dropped you to fourth, where you finished.",
    "luckyj": "Against a caller, LuckyJ keeps an open tenpai with no yaku only 62% of the time, against 93% or more with a yaku. In the last hand, chapter 10's placement rule comes first.",
    "fix": "Skip both calls, or after the chi keep the [[S]] and cut [[7s]], suji against toimen. A tenpai with no yaku cannot win by ron and only pays at the draw, and here the draw payment could not change your place: second was 5,700 away, and fourth could only pass you by winning. A live round wind is the likeliest yaku for a caller who shows none."
+  },
+  {
+   "id": "paid-for-genbutsu",
+   "chapter": "caller-defense",
+   "verdict": "fine",
+   "game": "260925-0d8e7a00",
+   "round": "East 3-2",
+   "frames": [
+    {
+     "turn": 8,
+     "expect_cut": "5p"
+    },
+    {
+     "turn": 9,
+     "expect_cut": "8s"
+    }
+   ],
+   "title": "Genbutsu twice, and the caller's winning tile stays home",
+   "situation": "East 3, 2 honba. You are third on 22,700; shimocha, the dealer, leads on 32,100. Toimen has chied [[1p]]-[[2p]]-[[3p]] and [[2s]]-[[3s]]-[[4s]] and has just thrown two drawn tiles in a row: two of chapter 8's three tells, at toimen's 8th discard. You are 2-shanten and draw a live [[F]].",
+   "did": "You cut the genbutsu [[5p]] and kept the [[F]], though cutting the [[F]] kept more tiles: 45 against 36. On the next turn you did it again with the genbutsu [[8s]]. Toimen was tenpai on [[8p]] and [[F]]. You declared riichi four turns later with the [[F]] still in hand, and the hand went to a draw with you tenpai: +500 after your stick.",
+   "luckyj": "With two tells showing, LuckyJ cuts a live tile from a 2-shanten hand about one time in three, and against two calls it throws the safe tile first from the caller's 7th discard.",
+   "fix": "This is chapter 8's fold, paid for with acceptance. Two calls and two tells put toimen past the line, the [[F]] was live, and a genbutsu kept your shanten. The [[F]] would have dealt in on either turn."
+  },
+  {
+   "id": "three-calls-seven-pin",
+   "chapter": "caller-defense",
+   "game": "260925-0d8e7a00",
+   "round": "East 2-0",
+   "frames": [
+    {
+     "turn": 10,
+     "expect_cut": "7p",
+     "better": "3p"
+    }
+   ],
+   "title": "Three calls, and a safe tile three tiles short",
+   "situation": "East 2, and you are the dealer on 24,300. Toimen leads on 27,700 with three calls, [[1p]]-[[2p]]-[[3p]], a [[C]] pon and [[6s]]-[[7s]]-[[8s]], and ten discards; shimocha has ponned [[P]]. You are 2-shanten and draw a second [[7s]].",
+   "did": "You cut [[7p]], live against both callers, and toimen ronned it for chun, 1,000. [[3p]] kept the same 2-shanten with 28 tiles against the [[7p]]'s 31. It was genbutsu against shimocha and suji against toimen, who had thrown a [[6p]].",
+   "luckyj": "Against three calls from the caller's 10th to 12th discard, LuckyJ cut a live tile from a 2-shanten or worse hand only one time in four when a safe tile kept its shanten. The caller was tenpai 88% of the time.",
+   "fix": "Cut [[3p]]. Three calls at the caller's 10th discard are well past the line, so the safe tile goes first, and this one cost three tiles of acceptance."
+  },
+  {
+   "id": "safe-against-both",
+   "chapter": "caller-defense",
+   "game": "260928-e154b24e",
+   "round": "South 2-3",
+   "frames": [
+    {
+     "turn": 10,
+     "expect_cut": "9m",
+     "better": "9p"
+    }
+   ],
+   "title": "Suji against the riichi, live against the pon",
+   "situation": "South 2, 3 honba. You lead on 40,200. Shimocha, second on 29,500, declared riichi on their 8th turn, and toimen, the dealer, has ponned [[P]] and has ten discards. You are 2-shanten and draw an [[8s]].",
+   "did": "You cut [[9m]], suji against the riichi but a live terminal against toimen, and it also cost you a shanten. Toimen ronned it for haku and a red five, 3,800 with the honba. [[9p]] was suji against both players and kept your 2-shanten.",
+   "luckyj": "With a riichi and a caller out at once, when a tile safe against both kept its shanten, LuckyJ cut one 68% of the time. Over all your games you do it 75% of the time, so this one was a slip.",
+   "fix": "Check each candidate against both threats. [[9p]] was safe twice over and kept the hand, and as the leader in South 2 you had no reason to give either player a chance."
+  },
+  {
+   "id": "far-hand-dealer-riichi",
+   "chapter": "caller-defense",
+   "game": "260927-33c90769",
+   "round": "South 1-0",
+   "frames": [
+    {
+     "turn": 12,
+     "expect_cut": "9m",
+     "better": "N"
+    }
+   ],
+   "title": "A drawn terminal into the dealer's riichi",
+   "situation": "South 1. Toimen, the dealer, is last on 5,300 and declared riichi on their 11th turn; shimocha has chied [[3p]]-[[4p]]-[[5pr]]. You are second on 29,200 and 4-shanten, and you draw a [[9m]].",
+   "did": "You threw the [[9m]] straight back, a live terminal against both players, and toimen ronned it: riichi and ura dora, 4,800. [[N]] was genbutsu against both and kept your 4-shanten.",
+   "luckyj": "From three-shanten or worse against a riichi, LuckyJ cut an unsafe tile 6.4% of the time.",
+   "fix": "Cut the [[N]]. A 4-shanten hand is not racing a dealer's riichi. Your own river held a [[9m]] from turn 8, but that only matters for your own wait, and toimen had not thrown one."
+  },
+  {
+   "id": "dealer-double-east",
+   "chapter": "caller-defense",
+   "verdict": "close",
+   "game": "260925-0d8e7a00",
+   "round": "East 4-0",
+   "frames": [
+    {
+     "turn": 10,
+     "expect_cut": "8p"
+    }
+   ],
+   "title": "The 11,600 push from 1-shanten",
+   "situation": "East 4. Toimen, the dealer, ponned [[E]], their double wind, after their 8th discard and now has ten discards; nobody else has called or declared. You are third on 22,500 and 1-shanten with the red [[5sr]] and a [[C]] pair, and you draw a third [[9m]].",
+   "did": "You cut [[8p]], live, and kept your 1-shanten. Toimen was waiting on [[5p]] and [[8p]] with two dora: 11,600.",
+   "luckyj": "At 1-shanten against a single caller in their 10th to 12th discard, when only a shanten-losing tile was safe, LuckyJ broke the hand 8% of the time, and 9% against a dealer.",
+   "fix": "Pushing was right. The only safe tile, a [[C]] with two copies out, would have broken your 1-shanten and your chun pair. Among the live tiles, the [[9m]] kept 8 tiles against the [[8p]]'s 6 and, as a terminal, was a little safer; it would have missed. A close call, and mostly the dealer's luck."
   }
  ]
 }
