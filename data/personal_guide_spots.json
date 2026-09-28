@@ -743,33 +743,86 @@
     },
     {
      "turn": 10,
-     "expect_cut": "W",
-     "better": "9s"
+     "expect_cut": "W"
     }
    ],
    "title": "A second West, kept for one turn too many",
    "situation": "South 2. You are fourth on 14,600; shimocha, the dealer, has ponned [[P]]. You cut a [[W]] on your first turn, and on turn 9 you draw the second one. [[W]] is a guest wind for you and kamicha's seat wind.",
    "did": "You cut [[7p]] from [[5p]][[6p]][[7p]][[7p]] and kept the [[W]], though the [[W]] was the better cut by a tile of acceptance, 22 against 21. Kamicha declared riichi before your next turn, and you cut the [[W]] to keep your 1-shanten: riichi, ippatsu, seat wind and red five, 8,000.",
    "luckyj": "Against one riichi, LuckyJ's cuts of an honor with one other copy showing dealt in 2.1 times per 100, and its genbutsu never did (chapter 4).",
-   "fix": "Cut the [[W]] on turn 9, while nobody had declared and it did nothing for your hand. On turn 10, [[9s]] was genbutsu against the riichi and kept the same 1-shanten for three tiles of acceptance. A copy in your own river is one copy showing, and kamicha held the other two."
+   "fix": "Cut the [[W]] on turn 9, while nobody had declared and it did nothing for your hand. Kamicha was still 1-shanten then, so at worst they would have ponned it. On turn 10 the [[W]] was the right push: Mortal cut it 93% of the time. The genbutsu [[9s]] cost three tiles of acceptance and was still live against the dealer's open hand. The mistake was the turn before.",
+   "corrected": {
+    "date": "28 September",
+    "fields": [
+     "fix"
+    ]
+   }
   },
   {
    "id": "dealer-dama-tsumogiri",
    "chapter": "three-calls",
-   "verdict": "unlucky",
    "game": "260928-7c1ee667",
    "round": "East 4-2",
    "frames": [
     {
      "turn": 12,
-     "expect_cut": "7p"
+     "expect_cut": "7p",
+     "better": "2m"
     }
    ],
    "title": "The dealer's dama after two tsumogiri",
    "situation": "East 4, 2 honba. Kamicha, the dealer, leads on 39,100 with no call and no riichi. On their 10th discard they cut a [[7s]] from hand, then threw their next two draws, [[9p]] and [[8s]], straight out. You are third on 18,800 and 2-shanten.",
-   "did": "You cut [[7p]], live against the dealer, while [[2s]], [[7s]] and [[8s]] were genbutsu against them and kept the same shanten. The dealer was dama on [[4p]] and [[7p]] with tanyao, pinfu, sanshoku, a dora and a red five: a haneman, 18,600.",
+   "did": "You cut [[7p]], live against the dealer. [[2s]], [[7s]] and [[8s]] were genbutsu against them and kept 2-shanten, but each cost at least ten tiles of acceptance. The dealer was dama on [[4p]] and [[7p]] with tanyao, pinfu, sanshoku, a dora and a red five: a haneman, 18,600.",
    "luckyj": "A silent closed dealer at their 10th to 12th discard was tenpai 8.5% of the time after two tsumogiri, against 6.7% without, and LuckyJ cut live tiles against such a player about as often either way.",
-   "fix": "Your read was right this time, but before the third row the tell is weak, because a closed tenpai usually declares. Against a silent hand, two tsumogiri in the third row lift the tenpai rate to about one in four. Before that, the cut that is best for your own hand stands."
+   "fix": "Cut [[2m]]. At 2-shanten against a silent dealer this hand plays on, and Mortal played on too: it cut [[2m]] 97% of the time and [[7p]] 2%. [[2m]] took one more tile of acceptance, kept [[7p]] beside your red [[5pr]], and was not in the dealer's wait. Two tsumogiri this early are a weak tell, so the cost came from the tile you chose to push.",
+   "corrected": {
+    "date": "28 September",
+    "fields": [
+     "did",
+     "fix"
+    ]
+   }
+  },
+  {
+   "id": "nine-man-pon",
+   "chapter": "mortal-review",
+   "game": "260928-50d32e06",
+   "round": "East 1-1",
+   "frames": [
+    {
+     "turn": 6,
+     "kind": "call"
+    }
+   ],
+   "title": "A 9m pon that took the hand's only pair",
+   "situation": "East 1, 1 honba, turn 6, the three-call hand from chapter 14. You have ponned [[W]], your seat wind, and hold [[9m]][[9m]], [[4p]][[6p]] around the dora, the run [[1s]][[2s]][[3s]][[4s]] with the red [[5sr]], and a lone [[P]]. The [[9m]] pair is the only pair you have. Shimocha throws a [[9m]].",
+   "did": "You ponned and cut [[P]]. The hand stayed 1-shanten and now had no pair, so its tenpai could only be a tanki. Two turns later you chied into a tanki on the dora [[6p]], and chapter 14 picks up from there.",
+   "luckyj": "When a pon of a number tile would not bring an open hand closer to tenpai, LuckyJ passes 86% of the time (325 of 378 chances with nobody in riichi). You pass 81% (29 of 36). The pons LuckyJ does make there won 26 of 53 hands; yours since January won 1 of 7.",
+   "fix": "Pass. Mortal passed this pon 99% of the time. The [[W]] already gave the hand its yaku, the [[9m]] pair was its head, and the rest was already 1-shanten. Trading the head for a triplet leaves the same shanten with fewer ways to finish, and a hand of four tiles that has to wait on a single tile."
+  },
+  {
+   "id": "yakuless-chase-riichi",
+   "chapter": "mortal-review",
+   "game": "260928-50d32e06",
+   "round": "South 2-0",
+   "frames": [
+    {
+     "turn": 9,
+     "expect_cut": "6p",
+     "better": "2m"
+    },
+    {
+     "turn": 11,
+     "expect_cut": "2m",
+     "better": "7p",
+     "note": "Kamicha, the dealer, has just declared riichi with [[1p]]. [[7p]] is genbutsu against them."
+    }
+   ],
+   "title": "A riichi on a kanchan with no yaku, into the dealer's riichi",
+   "situation": "South 2. You lead on 37,100, 13,400 ahead of second. The dora is [[3s]] and you hold it with the red [[5sr]], but your [[1m]][[1m]][[2m]] keeps the hand from tanyao. On turn 9 you draw a second [[6p]].",
+   "did": "You threw the [[6p]] back and kept [[2m]], then cut [[3m]] over the [[1m]] on turn 10. On turn 11 the dealer declared, you drew [[4s]] into tenpai on a [[6s]] kanchan with no yaku, and you declared with [[2m]]. Shimocha declared next, and on turn 15 the [[9s]] you had to throw dealt into them.",
+   "luckyj": "With a first tenpai that has no yaku and 4 live tiles or fewer, against one riichi, LuckyJ declared 58 times in 141 and lost 584 points a hand when it did. Leading by 8,000 or more in the South it declared 3 times in 9, too few hands to say more.",
+   "fix": "Fold with the genbutsu [[7p]], as Mortal did 68% of the time; it declared 8%. A kanchan with no yaku can win only through the riichi, and a deal-in to the dealer could cost you first place. The better fix came earlier. Mortal would have chied the dealer's [[4s]] after your 8th discard (83%), and in the line you played it cut [[2m]] on turn 9 (98%) and a [[1m]] on turn 10 (59%), heading for tanyao with the dora and the red five. A hand with a yaku can stay dama or fold without a riichi stick on the table."
   }
  ]
 }

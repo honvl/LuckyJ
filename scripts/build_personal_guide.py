@@ -361,7 +361,7 @@ def build_frame(spot: dict, fspec: dict, row: dict, log: list, game: dict) -> di
             "you": {"action": MELD_KIND[meld["kind"]], "tile": site_tile(meld["called"]),
                     "meld": [site_tile(t) for t in meld["tiles"]], "then_cut": site_tile(e["tile"]),
                     "shanten": s_call},
-            "better": {"action": "pass", "shanten": s_pass, "accept": acc_pass},
+            "better": {"action": "pass", "shanten": s_pass, "accept": acc_pass, "closed": not melds_before},
             "dora_in_hand": sum(1 for t in hand13 + meld_tiles_before if base(t) in dora_set or is_red(t)),
         })
         frame["left"] = 70 - draws_so_far(game, e["index"] - 1)
@@ -427,6 +427,8 @@ def build(spec: dict, manifest: list[dict]) -> dict:
             "result": result_summary(log, game, row["hero_seat"]),
             "verdict": spot.get("verdict", "mistake"),
         }
+        if spot.get("corrected"):
+            example["corrected"] = spot["corrected"]
         out["chapters"].setdefault(spot["chapter"], []).append(example)
     return out
 

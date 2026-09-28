@@ -365,6 +365,18 @@
   font-size: 12.5px;
 }
 
+/* A table of words rather than figures wraps and reads left to right. */
+.guide-data.is-text th,
+.guide-data.is-text td {
+  text-align: left;
+  white-space: normal;
+  vertical-align: top;
+}
+
+.guide-data.is-text td:first-child {
+  width: 40%;
+}
+
 .point .guide-list {
   display: grid;
   gap: 8px;
@@ -952,4 +964,10 @@
   .guide-data td {
     padding-left: 10px;
   }
+}
+
+/* A corrected example card carries a Corrected tag under its title. */
+.guide-card-corrected {
+  justify-self: start;
+  align-self: flex-start;
 }

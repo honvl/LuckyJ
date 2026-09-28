@@ -10,7 +10,7 @@
  * the better one; the commentary and every discard of the hand follow on paper.
  */
 (function () {
-  const guideAsset = "honver-guide.json?v=20260924-guide-7";
+  const guideAsset = "honver-guide.json?v=20260928-guide-8";
   const hideHandsKey = "luckyj:honver-guide:hide-hands";
   const SAFETY_CLASS = {
     genbutsu: "safe",
@@ -70,7 +70,7 @@
     const action =
       frame.kind === "riichi"
         ? `${option.action === "riichi" ? "Riichi" : "Dama"}, cut ${tileIcon(tile, "discard-tile")}`
-        : `Cut ${tileIcon(tile, "discard-tile")} <em>${escapeHtml(tileName(tile))}</em>`;
+        : `${option?.riichi ? "Riichi, cut" : "Cut"} ${tileIcon(tile, "discard-tile")} <em>${escapeHtml(tileName(tile))}</em>`;
     return `
       <div class="decision guide-${kind}">
         <b>${escapeHtml(title)}</b>
@@ -98,7 +98,7 @@
       <div class="decision guide-better">
         <b>Better</b>
         <span class="discard-line">Pass</span>
-        <span>Stays ${shantenText(frame.better.shanten)} and closed, ${frame.better.accept} tiles improve it</span>
+        <span>Stays ${shantenText(frame.better.shanten)}${frame.better.closed === false ? "" : " and closed"}, ${frame.better.accept} tiles improve it</span>
       </div>
     `;
   }
@@ -179,7 +179,7 @@
     const cut = Number.isInteger(frame.cut_index) ? cells[frame.cut_index] : null;
     if (cut) {
       cut.classList.add("guide-cut");
-      cut.dataset.mark = "Your cut";
+      cut.dataset.mark = frame.you?.riichi ? "Your riichi" : "Your cut";
     }
     if (Number.isInteger(frame.better_index) && frame.better_index !== frame.cut_index) {
       const better = cells[frame.better_index];
@@ -207,14 +207,22 @@
     return v > 0 ? `+${whole.format(v)}` : v < 0 ? `−${whole.format(-v)}` : "0";
   }
 
-  function analysisStep(title, text) {
+  // A corrected step is highlighted the way corrected chapter sentences are.
+  function analysisStep(title, text, changed = false) {
     if (!text) return null;
     const section = document.createElement("section");
     section.className = "analysis-step";
     const heading = document.createElement("h5");
     heading.textContent = title;
     const para = document.createElement("p");
-    para.append(richText(text));
+    if (changed) {
+      const mark = document.createElement("mark");
+      mark.className = "guide-changed";
+      mark.append(richText(text));
+      para.append(mark);
+    } else {
+      para.append(richText(text));
+    }
     section.append(heading, para);
     return section;
   }
@@ -277,6 +285,7 @@
           </div>
           <h4 class="guide-card-title">${escapeHtml(keepNumberHyphens(example.title))}</h4>
           ${verdict ? `<p class="guide-verdict">${escapeHtml(verdict)}</p>` : ""}
+          ${example.corrected ? `<p class="changed-tag guide-card-corrected">Corrected ${escapeHtml(example.corrected.date)}</p>` : ""}
           <p class="guide-card-meta">${meta}</p>
           <p class="guide-situation"></p>
           <div class="guide-compare-host"></div>
@@ -329,10 +338,11 @@
     const notes = card.querySelector(".replay-notes");
     const analysis = document.createElement("div");
     analysis.className = "natsu-analysis";
+    const changed = new Set(example.corrected?.fields || []);
     const steps = [
-      analysisStep("What you did", example.text.did),
-      analysisStep("What LuckyJ does", example.text.luckyj),
-      analysisStep(verdict ? "The verdict" : "The fix", example.text.fix),
+      analysisStep("What you did", example.text.did, changed.has("did")),
+      analysisStep("What LuckyJ does", example.text.luckyj, changed.has("luckyj")),
+      analysisStep(verdict ? "The verdict" : "The fix", example.text.fix, changed.has("fix")),
     ].filter(Boolean);
     analysis.append(...steps);
     const result = document.createElement("p");
@@ -392,6 +402,19 @@
     const wanted = decodeURIComponent(location.hash.replace(/^#guide-/, ""));
     const start = Math.max(0, examples.findIndex((e) => e.id === wanted));
     show(start);
+    // A link to #guide-<id> elsewhere on the page (the What's new notices) opens that card.
+    window.addEventListener("hashchange", () => {
+      let id = "";
+      try {
+        id = decodeURIComponent(location.hash.replace(/^#guide-/, ""));
+      } catch {
+        return;
+      }
+      const index = examples.findIndex((e) => e.id === id);
+      if (index < 0) return;
+      show(index);
+      document.getElementById(`guide-${id}`)?.scrollIntoView({ block: "start", behavior: "instant" });
+    });
   }
 
   // Opponents' hands: the checkbox under "Reading the tables" and the button on each figure are one

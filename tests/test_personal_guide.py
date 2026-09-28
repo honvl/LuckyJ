@@ -126,6 +126,16 @@ class GuideSpotTests(unittest.TestCase):
                 better = max((rank[label] for label in frame["better"]["safety"]), default=0)
                 self.assertLessEqual(better, you, f"{ex['id']} turn {frame['turn']}")
 
+    def test_corrected_cards_are_marked_and_linked(self):
+        page = (ROOT / "site/honver.html").read_text(encoding="utf-8")
+        corrected = [ex for ex in self.examples() if ex.get("corrected")]
+        self.assertTrue(corrected)
+        for ex in corrected:
+            self.assertTrue(ex["corrected"]["date"], ex["id"])
+            self.assertLessEqual(set(ex["corrected"]["fields"]), {"did", "luckyj", "fix"}, ex["id"])
+            # the dated correction notice points readers at the card
+            self.assertIn(f'href="#guide-{ex["id"]}"', page)
+
     def test_furiten_safe_tile_is_labelled_genbutsu(self):
         ex = next(e for e in self.examples() if e["id"] == "two-p-three-turns")
         frame = ex["frames"][0]
@@ -159,9 +169,34 @@ class PageChapterTests(unittest.TestCase):
     def test_new_chapters_are_listed_at_the_top(self):
         page = (ROOT / "site/honver.html").read_text(encoding="utf-8")
         for anchor in ("dora-points", "dora-shape", "dora-tells", "shape-start", "recent-games", "push-calibration",
-                       "open-hands", "caller-defense", "three-calls"):
+                       "open-hands", "caller-defense", "three-calls", "mortal-review"):
             self.assertIn(f'id="{anchor}"', page)
             self.assertIn(f'href="#{anchor}"', page)
+
+
+@unittest.skipUnless(MANIFEST.exists(), "self-game records are local only")
+class MjaiConversionTests(unittest.TestCase):
+    """The Mahjong Soul games convert to mjai with every discard in its place, so Mortal can replay them."""
+
+    def test_every_discard_becomes_a_dahai(self):
+        from tenhou6_to_mjai import convert
+
+        manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+        for g in sorted(manifest, key=lambda x: x["start_time"])[-7:]:
+            game = json.loads((ROOT / g["file"]).read_text(encoding="utf-8") if not Path(g["file"]).is_absolute()
+                              else Path(g["file"]).read_text(encoding="utf-8"))
+            events = convert(game)
+            starts = [i for i, e in enumerate(events) if e["type"] == "start_kyoku"]
+            self.assertEqual(len(starts), len(game["log"]), g["uuid"])
+            for log, begin, end in zip(game["log"], starts, starts[1:] + [len(events)]):
+                hand = [e for e in events[begin:end] if e["type"] != "end_game"]
+                self.assertEqual(hand[-1]["type"], "end_kyoku", g["uuid"])
+                self.assertIn(hand[-2]["type"], ("hora", "ryukyoku"), g["uuid"])
+                for seat in range(4):
+                    # a discard entry is a tile or a riichi declaration; kans are strings and 0 marks a kan draw
+                    want = sum(1 for d in log[6 + 3 * seat] if (isinstance(d, int) and d) or str(d).startswith("r"))
+                    got = sum(1 for e in hand if e["type"] == "dahai" and e["actor"] == seat)
+                    self.assertEqual(got, want, f"{g['uuid']} hand {log[0]} seat {seat}")
 
 
 class OpenTenpaiHanTests(unittest.TestCase):

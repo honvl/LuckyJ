@@ -26,14 +26,16 @@ At 1-shanten against two or more tells, with a safe tile in hand: live cuts 40.0
 
 ## The six deal-ins
 
+Corrected on 28 September after Mortal's replay; see `analysis/mortal-review-2026-09-28.md`.
+
 | game, hand | into | points | verdict |
 |---|---|---|---|
-| 260928-7c1ee667 East 4-2 | dealer's dama | 18,600 | unlucky: tenpai since their 10th discard, then two tsumogiri (example) |
+| 260928-7c1ee667 East 4-2 | dealer's dama | 18,600 | ~~unlucky~~ corrected: 2m was the better cut, Mortal 97% against 7p 2% (example) |
 | 260928-5a0260b7 East 2-0 | riichi | 2,600 | 1-han open tenpai push at turn 6 |
 | 260928-90620418 South 1-0 | open hand | 8,000 | lone chun cut on the 5th discard against an early pon |
-| 260928-90620418 South 2-0 | riichi | 8,000 | slip: West kept on turn 9, cut on turn 10 with genbutsu 9s keeping the shanten (example) |
+| 260928-90620418 South 2-0 | riichi | 8,000 | slip: West kept on turn 9 (Mortal W 97%); the turn 10 West was right (Mortal 93%), ~~not the genbutsu 9s~~ (example) |
 | 260928-90620418 South 4-0 | riichi | 3,900 | 4-han open tenpai push from fourth in the last hand |
-| 260928-50d32e06 South 2-0 | riichi | 2,000 | closed tenpai with no yaku pushed with 12 tiles left |
+| 260928-50d32e06 South 2-0 | riichi | 2,000 | ~~closed tenpai with no yaku pushed~~ corrected: a riichi on a yakuless 6s kanchan into the dealer's riichi (Mortal 8%, fold 68%); the 9s into the second riichi was forced |
 
 The three-call hand is 260928-50d32e06 East 1-1: turn 9, tenpai on a dora tanki (7,700), [[7p]] suji kept it;
 the player cut genbutsu [[3s]], then a live [[8s]] on turn 10 to stay 1-shanten. Kamicha waited on 6m-9m and

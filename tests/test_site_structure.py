@@ -1,5 +1,6 @@
 """The book's pages hold together: every contents list reaches every chapter, and every link lands."""
 
+import json
 import re
 import unittest
 from html.parser import HTMLParser
@@ -10,6 +11,8 @@ SITE = ROOT / "site"
 PAGES = ("index.html", "points.html", "ja.html", "honver.html")
 # Anchors that app.js creates when it renders the replays, so they are not in the static page.
 RENDERED_ANCHOR = re.compile(r"^point-\d{2}-example-\d{2}$")
+# honver.js gives each example card the id guide-<spot id>.
+GUIDE_CARDS = {f"guide-{s['id']}" for s in json.loads((ROOT / "data/personal_guide_spots.json").read_text(encoding="utf-8"))["spots"]}
 
 
 class Page(HTMLParser):
@@ -148,7 +151,7 @@ class LinkTests(unittest.TestCase):
                     continue
                 target_page = f"{match.group(1)}.html" if match.group(1) else name
                 anchor = match.group(2)
-                if RENDERED_ANCHOR.match(anchor):
+                if RENDERED_ANCHOR.match(anchor) or (target_page == "honver.html" and anchor in GUIDE_CARDS):
                     continue
                 with self.subTest(page=name, href=href):
                     self.assertIn(anchor, page(target_page).ids)
