@@ -14,7 +14,7 @@
     <!-- The text faces load without holding up the page; until they arrive it reads in the fallback faces. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" media="print" onload="this.media='all'" data-font-css />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" /></noscript>
-    <link rel="stylesheet" href="styles.css?v=20260928-replays" />
+    <link rel="stylesheet" href="styles.css?v=20260928-timing-charts" />
   </head>
   <body data-book="playbook">
     <a class="skip-link" href="#point-01">Skip to point 01</a>
@@ -363,38 +363,286 @@
         <section class="section" id="safe-tile-timing">
   <p class="kicker">Safe-tile timing</p>
   <h2>When LuckyJ starts keeping safe tiles.</h2>
-  <p>At three quarters of the riichi declarations against it, LuckyJ already held a tile from the declarer&#8217;s river (<a href="#point-14">Point 13</a>). This section asks when that collecting starts. The test is a turn where the hand holds two leftover tiles of the same kind, one already in an opponent&#8217;s river and one in no river, and LuckyJ throws one of them. A leftover here is a single tile with no pair and no tile of its suit within two ranks. The two differ mainly in safety, so the one LuckyJ keeps shows what a safe tile is worth to it on that turn.</p>
-  <p>The answer depends on the tile. Terminals and middle tiles are kept from the first discard. On LuckyJ&#8217;s first two discards, when it threw one of two leftover terminals it was the live one three times in four, and with two leftover middle tiles more than four times in five. A live tile costs almost nothing to throw while nobody can be ready, and the tile already in a river will still be safe against that player when it matters. NAGA also threw the live terminal first, a little less often, and was indifferent between two middle tiles until the sixth discard.</p>
-  <p>Guest winds run the other way for two discards. Of two single guest winds, LuckyJ first threw the one someone had already discarded, three times in four. From its third discard it switched, and through its eighth it threw the live wind seven times in ten. NAGA threw the live wind first six times in ten from the start, so the early switch is LuckyJ&#8217;s own. The discarded wind has one copy fewer left to pair, and a live guest wind stays cheap to throw for a few more turns.</p>
-  <figure class="fold-figure" aria-labelledby="timing-figure-caption">
-    <div class="fold-plate">
-      <p class="fold-title">Which leftover LuckyJ throws first</p>
-      <p class="fold-sub">Two single leftovers of the same kind on a quiet table, one already in an opponent&#8217;s river and one in none: how often the one LuckyJ threw was the live tile, in percent</p>
-      <div class="fold-scroll">
-        <table class="fold-grid">
-          <thead>
-            <tr><th scope="col" rowspan="2" class="fold-corner">Leftover</th><th scope="colgroup" colspan="4" class="fold-span">LuckyJ&#8217;s own discards so far</th></tr>
-            <tr><th scope="col">1 and 2</th><th scope="col">3 to 5</th><th scope="col">6 to 8</th><th scope="col">9 to 12</th></tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">Guest winds</th><td class="is-hold"><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>24</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>59</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>70</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>68</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>72</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>74</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>50</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>50</span></td></tr>
-            <tr><th scope="row">Terminals</th><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>74</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>63</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>71</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>67</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>61</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>59</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>55</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>53</span></td></tr>
-            <tr><th scope="row">Middle tiles</th><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>85</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>48</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>62</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>48</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>50</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>43</span></td><td class="is-hold"><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>37</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>36</span></td></tr>
-          </tbody>
-        </table>
+  <p>When an opponent declares riichi, LuckyJ usually already holds a tile from that player&#8217;s river (<a href="#point-14">Point 13</a>). This section asks when it starts keeping such tiles.</p>
+  <p>The test is a choice between two leftovers of the same kind, single tiles with nothing nearby. Say the hand holds a [[9p]] that Kamicha has already discarded and a [[1s]] that nobody has. Neither tile helps the hand, so the one LuckyJ keeps shows whether it is saving the safe one.</p>
+  <!-- timing-figure:keep -->
+  <figure class="timing-figure" id="timing-keep" aria-labelledby="timing-keep-caption">
+    <div class="timing-plate">
+      <p class="timing-title">How often LuckyJ kept the safe leftover</p>
+      <p class="timing-sub">Two leftovers of the same kind, one already in an opponent&#8217;s river: the share of choices where LuckyJ kept that one and threw the other.</p>
+      <p class="timing-legend"><span class="timing-key lj">LuckyJ</span><span class="timing-key naga">NAGA at the same spot</span><span class="timing-key hollow">fewer than 50 choices</span><span class="timing-key wash">below 50%, the safe tile goes first</span></p>
+      <div class="timing-panels">
+        <div class="timing-panel" data-panel="quiet-honor">
+          <p class="timing-panel-title"><b>Guest winds</b><span>Quiet table</span></p>
+          <div class="timing-plot">
+            <svg viewBox="0 0 340 224" role="img" aria-label="Guest winds: LuckyJ kept the safe leftover 24% on discards 1-2, 70% on discards 3-5, 72% on discards 6-8.">
+            <rect class="timing-wash" x="40" y="96" width="286" height="80" />
+            <line class="timing-grid" x1="40" x2="326" y1="176" y2="176" />
+            <text class="timing-tick" x="32" y="180">0%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="136" y2="136" />
+            <line class="timing-mid" x1="40" x2="326" y1="96" y2="96" />
+            <text class="timing-tick" x="32" y="100">50%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="56" y2="56" />
+            <line class="timing-grid" x1="40" x2="326" y1="16" y2="16" />
+            <text class="timing-tick" x="32" y="20">100%</text>
+            <text class="timing-cat" x="68.6" y="194">1-2</text>
+            <text class="timing-cat" x="125.8" y="194">3-5</text>
+            <text class="timing-cat" x="183" y="194">6-8</text>
+            <text class="timing-cat" x="240.2" y="194">9-12</text>
+            <text class="timing-cat" x="297.4" y="194">13-18</text>
+            <text class="timing-axis" x="183" y="218">LuckyJ&#8217;s own discards</text>
+            <line class="timing-cross" x1="0" x2="0" y1="16" y2="176" />
+            <polyline class="timing-line naga" points="68.6,81.6 125.8,67 183,58.2" />
+            <polyline class="timing-line lj" points="68.6,137.1 125.8,64 183,61.3" />
+            <circle class="timing-dot naga" cx="68.6" cy="81.6" r="4" data-band="1-2" data-pct="59.0" />
+            <circle class="timing-dot naga" cx="125.8" cy="67" r="4" data-band="3-5" data-pct="68.1" />
+            <circle class="timing-dot naga" cx="183" cy="58.2" r="4" data-band="6-8" data-pct="73.6" />
+            <circle class="timing-dot lj" cx="68.6" cy="137.1" r="4.5" data-band="1-2" data-pct="24.3" />
+            <circle class="timing-dot lj" cx="125.8" cy="64" r="4.5" data-band="3-5" data-pct="70.0" />
+            <circle class="timing-dot lj" cx="183" cy="61.3" r="4.5" data-band="6-8" data-pct="71.7" />
+            <text class="timing-label" x="68.6" y="157.1">24%</text>
+            <text class="timing-label" x="183" y="81.3">72%</text>
+            <rect class="timing-hit" x="40" y="16" width="57.2" height="184" tabindex="0" data-x="68.6" data-tip="{&quot;head&quot;: &quot;Discards 1-2&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;24.3%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;59.0%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;395 choices&quot;}" aria-label="Discards 1-2: LuckyJ 24.3%, NAGA 59.0%, 395 choices" />
+            <rect class="timing-hit" x="97.2" y="16" width="57.2" height="184" tabindex="0" data-x="125.8" data-tip="{&quot;head&quot;: &quot;Discards 3-5&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;70.0%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;68.1%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;100 choices&quot;}" aria-label="Discards 3-5: LuckyJ 70.0%, NAGA 68.1%, 100 choices" />
+            <rect class="timing-hit" x="154.4" y="16" width="57.2" height="184" tabindex="0" data-x="183" data-tip="{&quot;head&quot;: &quot;Discards 6-8&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;71.7%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;73.6%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;53 choices&quot;}" aria-label="Discards 6-8: LuckyJ 71.7%, NAGA 73.6%, 53 choices" />
+            </svg>
+          </div>
+        </div>
+        <div class="timing-panel" data-panel="quiet-terminal">
+          <p class="timing-panel-title"><b>Terminals</b><span>Quiet table, 1s and 9s</span></p>
+          <div class="timing-plot">
+            <svg viewBox="0 0 340 224" role="img" aria-label="Terminals: LuckyJ kept the safe leftover 74% on discards 1-2, 71% on discards 3-5, 61% on discards 6-8.">
+            <rect class="timing-wash" x="40" y="96" width="286" height="80" />
+            <line class="timing-grid" x1="40" x2="326" y1="176" y2="176" />
+            <text class="timing-tick" x="32" y="180">0%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="136" y2="136" />
+            <line class="timing-mid" x1="40" x2="326" y1="96" y2="96" />
+            <text class="timing-tick" x="32" y="100">50%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="56" y2="56" />
+            <line class="timing-grid" x1="40" x2="326" y1="16" y2="16" />
+            <text class="timing-tick" x="32" y="20">100%</text>
+            <text class="timing-cat" x="68.6" y="194">1-2</text>
+            <text class="timing-cat" x="125.8" y="194">3-5</text>
+            <text class="timing-cat" x="183" y="194">6-8</text>
+            <text class="timing-cat" x="240.2" y="194">9-12</text>
+            <text class="timing-cat" x="297.4" y="194">13-18</text>
+            <text class="timing-axis" x="183" y="218">LuckyJ&#8217;s own discards</text>
+            <line class="timing-cross" x1="0" x2="0" y1="16" y2="176" />
+            <polyline class="timing-line naga" points="68.6,75.2 125.8,69.1 183,81.9" />
+            <polyline class="timing-line lj" points="68.6,57.8 125.8,63.2 183,78.6" />
+            <circle class="timing-dot naga" cx="68.6" cy="75.2" r="4" data-band="1-2" data-pct="63.0" />
+            <circle class="timing-dot naga" cx="125.8" cy="69.1" r="4" data-band="3-5" data-pct="66.8" />
+            <circle class="timing-dot naga" cx="183" cy="81.9" r="4" data-band="6-8" data-pct="58.8" />
+            <circle class="timing-dot lj" cx="68.6" cy="57.8" r="4.5" data-band="1-2" data-pct="73.9" />
+            <circle class="timing-dot lj" cx="125.8" cy="63.2" r="4.5" data-band="3-5" data-pct="70.5" />
+            <circle class="timing-dot lj" cx="183" cy="78.6" r="4.5" data-band="6-8" data-pct="60.9" />
+            <text class="timing-label" x="68.6" y="46.8">74%</text>
+            <text class="timing-label" x="183" y="67.6">61%</text>
+            <rect class="timing-hit" x="40" y="16" width="57.2" height="184" tabindex="0" data-x="68.6" data-tip="{&quot;head&quot;: &quot;Discards 1-2&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;73.9%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;63.0%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;449 choices&quot;}" aria-label="Discards 1-2: LuckyJ 73.9%, NAGA 63.0%, 449 choices" />
+            <rect class="timing-hit" x="97.2" y="16" width="57.2" height="184" tabindex="0" data-x="125.8" data-tip="{&quot;head&quot;: &quot;Discards 3-5&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;70.5%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;66.8%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;190 choices&quot;}" aria-label="Discards 3-5: LuckyJ 70.5%, NAGA 66.8%, 190 choices" />
+            <rect class="timing-hit" x="154.4" y="16" width="57.2" height="184" tabindex="0" data-x="183" data-tip="{&quot;head&quot;: &quot;Discards 6-8&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;60.9%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;58.8%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;69 choices&quot;}" aria-label="Discards 6-8: LuckyJ 60.9%, NAGA 58.8%, 69 choices" />
+            </svg>
+          </div>
+        </div>
+        <div class="timing-panel" data-panel="quiet-middle">
+          <p class="timing-panel-title"><b>Middle tiles</b><span>Quiet table, 2 to 8</span></p>
+          <div class="timing-plot">
+            <svg viewBox="0 0 340 224" role="img" aria-label="Middle tiles: LuckyJ kept the safe leftover 85% on discards 1-2, 62% on discards 3-5, 50% on discards 6-8, 37% on discards 9-12, 8% on discards 13-18.">
+            <rect class="timing-wash" x="40" y="96" width="286" height="80" />
+            <line class="timing-grid" x1="40" x2="326" y1="176" y2="176" />
+            <text class="timing-tick" x="32" y="180">0%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="136" y2="136" />
+            <line class="timing-mid" x1="40" x2="326" y1="96" y2="96" />
+            <text class="timing-tick" x="32" y="100">50%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="56" y2="56" />
+            <line class="timing-grid" x1="40" x2="326" y1="16" y2="16" />
+            <text class="timing-tick" x="32" y="20">100%</text>
+            <text class="timing-cat" x="68.6" y="194">1-2</text>
+            <text class="timing-cat" x="125.8" y="194">3-5</text>
+            <text class="timing-cat" x="183" y="194">6-8</text>
+            <text class="timing-cat" x="240.2" y="194">9-12</text>
+            <text class="timing-cat" x="297.4" y="194">13-18</text>
+            <text class="timing-axis" x="183" y="218">LuckyJ&#8217;s own discards</text>
+            <line class="timing-cross" x1="0" x2="0" y1="16" y2="176" />
+            <polyline class="timing-line naga" points="68.6,99.4 125.8,99 183,107.5 240.2,118.1 297.4,156" />
+            <polyline class="timing-line lj" points="68.6,40.5 125.8,77.4 183,96.5 240.2,116.2 297.4,164" />
+            <circle class="timing-dot naga" cx="68.6" cy="99.4" r="4" data-band="1-2" data-pct="47.9" />
+            <circle class="timing-dot naga" cx="125.8" cy="99" r="4" data-band="3-5" data-pct="48.1" />
+            <circle class="timing-dot naga" cx="183" cy="107.5" r="4" data-band="6-8" data-pct="42.8" />
+            <circle class="timing-dot naga" cx="240.2" cy="118.1" r="4" data-band="9-12" data-pct="36.2" />
+            <circle class="timing-dot naga hollow" cx="297.4" cy="156" r="4" data-band="13-18" data-pct="12.5" />
+            <circle class="timing-dot lj" cx="68.6" cy="40.5" r="4.5" data-band="1-2" data-pct="84.7" />
+            <circle class="timing-dot lj" cx="125.8" cy="77.4" r="4.5" data-band="3-5" data-pct="61.6" />
+            <circle class="timing-dot lj" cx="183" cy="96.5" r="4.5" data-band="6-8" data-pct="49.7" />
+            <circle class="timing-dot lj" cx="240.2" cy="116.2" r="4.5" data-band="9-12" data-pct="37.4" />
+            <circle class="timing-dot lj hollow" cx="297.4" cy="164" r="4.5" data-band="13-18" data-pct="7.5" />
+            <text class="timing-label" x="68.6" y="29.5">85%</text>
+            <text class="timing-label" x="240.2" y="105.2">37%</text>
+            <rect class="timing-hit" x="40" y="16" width="57.2" height="184" tabindex="0" data-x="68.6" data-tip="{&quot;head&quot;: &quot;Discards 1-2&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;84.7%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;47.9%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;59 choices&quot;}" aria-label="Discards 1-2: LuckyJ 84.7%, NAGA 47.9%, 59 choices" />
+            <rect class="timing-hit" x="97.2" y="16" width="57.2" height="184" tabindex="0" data-x="125.8" data-tip="{&quot;head&quot;: &quot;Discards 3-5&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;61.6%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;48.1%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;372 choices&quot;}" aria-label="Discards 3-5: LuckyJ 61.6%, NAGA 48.1%, 372 choices" />
+            <rect class="timing-hit" x="154.4" y="16" width="57.2" height="184" tabindex="0" data-x="183" data-tip="{&quot;head&quot;: &quot;Discards 6-8&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;49.7%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;42.8%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;294 choices&quot;}" aria-label="Discards 6-8: LuckyJ 49.7%, NAGA 42.8%, 294 choices" />
+            <rect class="timing-hit" x="211.6" y="16" width="57.2" height="184" tabindex="0" data-x="240.2" data-tip="{&quot;head&quot;: &quot;Discards 9-12&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;37.4%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;36.2%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;99 choices&quot;}" aria-label="Discards 9-12: LuckyJ 37.4%, NAGA 36.2%, 99 choices" />
+            <rect class="timing-hit" x="268.8" y="16" width="57.2" height="184" tabindex="0" data-x="297.4" data-tip="{&quot;head&quot;: &quot;Discards 13-18&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;7.5%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;12.5%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;40 choices&quot;}" aria-label="Discards 13-18: LuckyJ 7.5%, NAGA 12.5%, 40 choices" />
+            </svg>
+          </div>
+        </div>
+        <div class="timing-panel" data-panel="threat-any">
+          <p class="timing-panel-title"><b>Once someone threatens</b><span>After a riichi or a second call, any kind</span></p>
+          <div class="timing-plot">
+            <svg viewBox="0 0 340 224" role="img" aria-label="Once someone threatens: LuckyJ kept the safe leftover 28% on discards 3-5, 19% on discards 6-8, 11% on discards 9-12, 5% on discards 13-18.">
+            <rect class="timing-wash" x="40" y="96" width="286" height="80" />
+            <line class="timing-grid" x1="40" x2="326" y1="176" y2="176" />
+            <text class="timing-tick" x="32" y="180">0%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="136" y2="136" />
+            <line class="timing-mid" x1="40" x2="326" y1="96" y2="96" />
+            <text class="timing-tick" x="32" y="100">50%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="56" y2="56" />
+            <line class="timing-grid" x1="40" x2="326" y1="16" y2="16" />
+            <text class="timing-tick" x="32" y="20">100%</text>
+            <text class="timing-cat" x="68.6" y="194">1-2</text>
+            <text class="timing-cat" x="125.8" y="194">3-5</text>
+            <text class="timing-cat" x="183" y="194">6-8</text>
+            <text class="timing-cat" x="240.2" y="194">9-12</text>
+            <text class="timing-cat" x="297.4" y="194">13-18</text>
+            <text class="timing-axis" x="183" y="218">LuckyJ&#8217;s own discards</text>
+            <line class="timing-cross" x1="0" x2="0" y1="16" y2="176" />
+            <polyline class="timing-line naga" points="125.8,141.8 183,144.2 240.2,158.4 297.4,168.5" />
+            <polyline class="timing-line lj" points="125.8,131.4 183,145.1 240.2,159 297.4,168.8" />
+            <circle class="timing-dot naga" cx="125.8" cy="141.8" r="4" data-band="3-5" data-pct="21.4" />
+            <circle class="timing-dot naga" cx="183" cy="144.2" r="4" data-band="6-8" data-pct="19.9" />
+            <circle class="timing-dot naga" cx="240.2" cy="158.4" r="4" data-band="9-12" data-pct="11.0" />
+            <circle class="timing-dot naga" cx="297.4" cy="168.5" r="4" data-band="13-18" data-pct="4.7" />
+            <circle class="timing-dot lj" cx="125.8" cy="131.4" r="4.5" data-band="3-5" data-pct="27.9" />
+            <circle class="timing-dot lj" cx="183" cy="145.1" r="4.5" data-band="6-8" data-pct="19.3" />
+            <circle class="timing-dot lj" cx="240.2" cy="159" r="4.5" data-band="9-12" data-pct="10.6" />
+            <circle class="timing-dot lj" cx="297.4" cy="168.8" r="4.5" data-band="13-18" data-pct="4.5" />
+            <text class="timing-label" x="125.8" y="120.4">28%</text>
+            <text class="timing-label" x="297.4" y="157.8">5%</text>
+            <rect class="timing-hit" x="97.2" y="16" width="57.2" height="184" tabindex="0" data-x="125.8" data-tip="{&quot;head&quot;: &quot;Discards 3-5&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;27.9%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;21.4%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;233 choices&quot;}" aria-label="Discards 3-5: LuckyJ 27.9%, NAGA 21.4%, 233 choices" />
+            <rect class="timing-hit" x="154.4" y="16" width="57.2" height="184" tabindex="0" data-x="183" data-tip="{&quot;head&quot;: &quot;Discards 6-8&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;19.3%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;19.9%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;555 choices&quot;}" aria-label="Discards 6-8: LuckyJ 19.3%, NAGA 19.9%, 555 choices" />
+            <rect class="timing-hit" x="211.6" y="16" width="57.2" height="184" tabindex="0" data-x="240.2" data-tip="{&quot;head&quot;: &quot;Discards 9-12&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;10.6%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;11.0%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;915 choices&quot;}" aria-label="Discards 9-12: LuckyJ 10.6%, NAGA 11.0%, 915 choices" />
+            <rect class="timing-hit" x="268.8" y="16" width="57.2" height="184" tabindex="0" data-x="297.4" data-tip="{&quot;head&quot;: &quot;Discards 13-18&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;4.5%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;4.7%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;800 choices&quot;}" aria-label="Discards 13-18: LuckyJ 4.5%, NAGA 4.7%, 800 choices" />
+            </svg>
+          </div>
+        </div>
       </div>
-      <p class="fold-key" aria-hidden="true"><span class="fold-key-item"><span class="fold-key-lj">74</span>LuckyJ</span> <span class="fold-key-item"><span class="fold-key-h">63</span>NAGA&#8217;s choice at the same spot</span> <span class="fold-key-item"><span class="fold-key-hold"></span>the safe tile went first more often than not</span></p>
     </div>
-    <figcaption id="timing-figure-caption">Terminals and middle tiles are kept from the first discard, guest winds from the third. The two shaded cells are where the safe tile went first: guest winds on the first two discards, and middle tiles from the ninth.</figcaption>
+    <figcaption id="timing-keep-caption">Terminals and middle tiles are saved from the first discard, guest winds from the third. From the ninth discard the safe middle tile starts to go first, and once someone threatens, every safe leftover does.</figcaption>
+      <details class="timing-table">
+        <summary>The numbers as a table</summary>
+        <p>Each cell: LuckyJ, then NAGA, then the number of choices.</p>
+        <div class="timing-table-scroll">
+          <table>
+            <thead><tr><th scope="col">Leftover</th><th scope="col">Discards 1-2</th><th scope="col">Discards 3-5</th><th scope="col">Discards 6-8</th><th scope="col">Discards 9-12</th><th scope="col">Discards 13-18</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Guest winds</th><td><b>24.3%</b><span>59.0%</span><small>395 choices</small></td><td><b>70.0%</b><span>68.1%</span><small>100 choices</small></td><td><b>71.7%</b><span>73.6%</span><small>53 choices</small></td><td><b>50.0%</b><span>50.0%</span><small>16 choices</small></td><td><b>0.0%</b><span>0.0%</span><small>2 choices</small></td></tr>
+              <tr><th scope="row">Terminals</th><td><b>73.9%</b><span>63.0%</span><small>449 choices</small></td><td><b>70.5%</b><span>66.8%</span><small>190 choices</small></td><td><b>60.9%</b><span>58.8%</span><small>69 choices</small></td><td><b>55.2%</b><span>53.3%</span><small>29 choices</small></td><td><b>20.0%</b><span>20.0%</span><small>5 choices</small></td></tr>
+              <tr><th scope="row">Middle tiles</th><td><b>84.7%</b><span>47.9%</span><small>59 choices</small></td><td><b>61.6%</b><span>48.1%</span><small>372 choices</small></td><td><b>49.7%</b><span>42.8%</span><small>294 choices</small></td><td><b>37.4%</b><span>36.2%</span><small>99 choices</small></td><td><b>7.5%</b><span>12.5%</span><small>40 choices</small></td></tr>
+              <tr><th scope="row">Once someone threatens</th><td><b>44.8%</b><span>21.2%</span><small>29 choices</small></td><td><b>27.9%</b><span>21.4%</span><small>233 choices</small></td><td><b>19.3%</b><span>19.9%</span><small>555 choices</small></td><td><b>10.6%</b><span>11.0%</span><small>915 choices</small></td><td><b>4.5%</b><span>4.7%</span><small>800 choices</small></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
   </figure>
-  <p>The collecting ends in two ways. The first is a threat. At LuckyJ&#8217;s fourth discard 8% of its decisions faced a riichi or a hand with two calls, at its seventh 30%, and from its tenth more than half. Once one did, the safe leftover went first: the live one was thrown 28% of the time on the third to fifth discards and 11% on the ninth to twelfth. The second comes with nobody declared. From its ninth discard LuckyJ threw the safe middle tile first about six times in ten, since a live middle tile is the kind a silent tenpai is most often waiting on. With terminals and guest winds it was about even by then.</p>
+  <!-- /timing-figure:keep -->
+  <p>Terminals and middle tiles are saved from the first discard. In the example, LuckyJ usually throws the [[1s]] and keeps the [[9p]]. NAGA does the same with terminals, a little less firmly, and has no preference between two middle tiles until the sixth discard.</p>
+  <p>Guest winds are the exception. Given a [[W]] that someone has discarded and a [[N]] that nobody has, LuckyJ usually throws the [[W]] on its first two discards, while NAGA leans the other way. From the third discard LuckyJ keeps the safe wind as well. The discarded wind has one copy fewer left to make a pair, and a live guest wind stays cheap to throw for a few more turns.</p>
+  <p>The saving stops in two ways. The first is a threat, and threats arrive in the middle of the hand, as the chart below shows. Once someone has declared riichi or called twice, the safe leftover goes first whatever its kind, and NAGA agrees. The second needs no threat. From the ninth discard LuckyJ throws the safe middle tile first more often than not, since a live middle tile is what a silent tenpai most often waits on.</p>
+  <!-- timing-figure:threat -->
+  <figure class="timing-figure is-single" id="timing-threat" aria-labelledby="timing-threat-caption">
+    <div class="timing-plate">
+      <p class="timing-title">When threats arrive</p>
+      <p class="timing-sub">Share of LuckyJ&#8217;s decisions facing a riichi or a hand with two calls, by its own discard</p>
+      <div class="timing-panels">
+        <div class="timing-panel" data-panel="threat-share">
+          <div class="timing-plot">
+            <svg viewBox="0 0 340 224" role="img" aria-label="When threats arrive: 0% at discard 1, 8% at discard 4, 30% at discard 7, 52% at discard 10, 79% at discard 18.">
+            <line class="timing-grid" x1="40" x2="326" y1="96" y2="96" />
+            <line class="timing-grid" x1="40" x2="326" y1="176" y2="176" />
+            <text class="timing-tick" x="32" y="180">0%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="136" y2="136" />
+            <text class="timing-tick" x="32" y="100">50%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="56" y2="56" />
+            <line class="timing-grid" x1="40" x2="326" y1="16" y2="16" />
+            <text class="timing-tick" x="32" y="20">100%</text>
+            <text class="timing-cat" x="40" y="194">1</text>
+            <text class="timing-cat" x="73.6" y="194">3</text>
+            <text class="timing-cat" x="124.1" y="194">6</text>
+            <text class="timing-cat" x="174.6" y="194">9</text>
+            <text class="timing-cat" x="225.1" y="194">12</text>
+            <text class="timing-cat" x="275.5" y="194">15</text>
+            <text class="timing-cat" x="326" y="194">18</text>
+            <text class="timing-axis" x="183" y="218">LuckyJ&#8217;s own discard</text>
+            <path class="timing-area" d="M40,176 L40,175.7 L56.8,173.9 L73.6,169.8 L90.5,163 L107.3,153.8 L124.1,141.8 L140.9,128.3 L157.8,115.8 L174.6,104 L191.4,92.2 L208.2,80.2 L225.1,73.8 L241.9,65.6 L258.7,58.9 L275.5,53.6 L292.4,49.9 L309.2,46.1 L326,49.4 L326,176 Z" />
+            <line class="timing-cross" x1="0" x2="0" y1="16" y2="176" />
+            <polyline class="timing-line threat" points="40,175.7 56.8,173.9 73.6,169.8 90.5,163 107.3,153.8 124.1,141.8 140.9,128.3 157.8,115.8 174.6,104 191.4,92.2 208.2,80.2 225.1,73.8 241.9,65.6 258.7,58.9 275.5,53.6 292.4,49.9 309.2,46.1 326,49.4" />
+            <circle class="timing-dot threat" cx="90.5" cy="163" r="4.5" data-turn="4" data-pct="8.1" />
+            <text class="timing-label is-end" x="84.5" y="152">8%</text>
+            <circle class="timing-dot threat" cx="140.9" cy="128.3" r="4.5" data-turn="7" data-pct="29.8" />
+            <text class="timing-label is-end" x="134.9" y="117.3">30%</text>
+            <circle class="timing-dot threat" cx="191.4" cy="92.2" r="4.5" data-turn="10" data-pct="52.4" />
+            <text class="timing-label is-end" x="185.4" y="81.2">52%</text>
+            <rect class="timing-hit" x="32" y="16" width="16.4" height="184" tabindex="0" data-x="40" data-tip="{&quot;head&quot;: &quot;Discard 1&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;0.2%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;9,449 decisions&quot;}" aria-label="Discard 1: 0.2% faced a threat, 9,449 decisions" />
+            <rect class="timing-hit" x="48.4" y="16" width="16.8" height="184" tabindex="0" data-x="56.8" data-tip="{&quot;head&quot;: &quot;Discard 2&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;1.3%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;9,250 decisions&quot;}" aria-label="Discard 2: 1.3% faced a threat, 9,250 decisions" />
+            <rect class="timing-hit" x="65.2" y="16" width="16.8" height="184" tabindex="0" data-x="73.6" data-tip="{&quot;head&quot;: &quot;Discard 3&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;3.9%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;9,128 decisions&quot;}" aria-label="Discard 3: 3.9% faced a threat, 9,128 decisions" />
+            <rect class="timing-hit" x="82.1" y="16" width="16.8" height="184" tabindex="0" data-x="90.5" data-tip="{&quot;head&quot;: &quot;Discard 4&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;8.1%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;9,042 decisions&quot;}" aria-label="Discard 4: 8.1% faced a threat, 9,042 decisions" />
+            <rect class="timing-hit" x="98.9" y="16" width="16.8" height="184" tabindex="0" data-x="107.3" data-tip="{&quot;head&quot;: &quot;Discard 5&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;13.9%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;8,835 decisions&quot;}" aria-label="Discard 5: 13.9% faced a threat, 8,835 decisions" />
+            <rect class="timing-hit" x="115.7" y="16" width="16.8" height="184" tabindex="0" data-x="124.1" data-tip="{&quot;head&quot;: &quot;Discard 6&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;21.4%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;8,556 decisions&quot;}" aria-label="Discard 6: 21.4% faced a threat, 8,556 decisions" />
+            <rect class="timing-hit" x="132.5" y="16" width="16.8" height="184" tabindex="0" data-x="140.9" data-tip="{&quot;head&quot;: &quot;Discard 7&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;29.8%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;8,062 decisions&quot;}" aria-label="Discard 7: 29.8% faced a threat, 8,062 decisions" />
+            <rect class="timing-hit" x="149.4" y="16" width="16.8" height="184" tabindex="0" data-x="157.8" data-tip="{&quot;head&quot;: &quot;Discard 8&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;37.6%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;7,413 decisions&quot;}" aria-label="Discard 8: 37.6% faced a threat, 7,413 decisions" />
+            <rect class="timing-hit" x="166.2" y="16" width="16.8" height="184" tabindex="0" data-x="174.6" data-tip="{&quot;head&quot;: &quot;Discard 9&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;45.0%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;6,669 decisions&quot;}" aria-label="Discard 9: 45.0% faced a threat, 6,669 decisions" />
+            <rect class="timing-hit" x="183" y="16" width="16.8" height="184" tabindex="0" data-x="191.4" data-tip="{&quot;head&quot;: &quot;Discard 10&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;52.4%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;5,816 decisions&quot;}" aria-label="Discard 10: 52.4% faced a threat, 5,816 decisions" />
+            <rect class="timing-hit" x="199.8" y="16" width="16.8" height="184" tabindex="0" data-x="208.2" data-tip="{&quot;head&quot;: &quot;Discard 11&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;59.9%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;4,974 decisions&quot;}" aria-label="Discard 11: 59.9% faced a threat, 4,974 decisions" />
+            <rect class="timing-hit" x="216.6" y="16" width="16.8" height="184" tabindex="0" data-x="225.1" data-tip="{&quot;head&quot;: &quot;Discard 12&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;63.9%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;4,192 decisions&quot;}" aria-label="Discard 12: 63.9% faced a threat, 4,192 decisions" />
+            <rect class="timing-hit" x="233.5" y="16" width="16.8" height="184" tabindex="0" data-x="241.9" data-tip="{&quot;head&quot;: &quot;Discard 13&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;69.0%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;3,451 decisions&quot;}" aria-label="Discard 13: 69.0% faced a threat, 3,451 decisions" />
+            <rect class="timing-hit" x="250.3" y="16" width="16.8" height="184" tabindex="0" data-x="258.7" data-tip="{&quot;head&quot;: &quot;Discard 14&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;73.2%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;2,822 decisions&quot;}" aria-label="Discard 14: 73.2% faced a threat, 2,822 decisions" />
+            <rect class="timing-hit" x="267.1" y="16" width="16.8" height="184" tabindex="0" data-x="275.5" data-tip="{&quot;head&quot;: &quot;Discard 15&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;76.5%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;2,246 decisions&quot;}" aria-label="Discard 15: 76.5% faced a threat, 2,246 decisions" />
+            <rect class="timing-hit" x="283.9" y="16" width="16.8" height="184" tabindex="0" data-x="292.4" data-tip="{&quot;head&quot;: &quot;Discard 16&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;78.8%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;1,768 decisions&quot;}" aria-label="Discard 16: 78.8% faced a threat, 1,768 decisions" />
+            <rect class="timing-hit" x="300.8" y="16" width="16.8" height="184" tabindex="0" data-x="309.2" data-tip="{&quot;head&quot;: &quot;Discard 17&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;81.2%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;1,415 decisions&quot;}" aria-label="Discard 17: 81.2% faced a threat, 1,415 decisions" />
+            <rect class="timing-hit" x="317.6" y="16" width="16.4" height="184" tabindex="0" data-x="326" data-tip="{&quot;head&quot;: &quot;Discard 18&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;79.1%&quot;, &quot;faced a threat&quot;]], &quot;foot&quot;: &quot;851 decisions&quot;}" aria-label="Discard 18: 79.1% faced a threat, 851 decisions" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <figcaption id="timing-threat-caption">At its fourth discard, 8% of LuckyJ&#8217;s decisions face a threat. By its tenth, more than half do.</figcaption>
+      <details class="timing-table">
+        <summary>The numbers as a table</summary>
+        <div class="timing-table-scroll">
+          <table class="is-narrow">
+            <thead><tr><th scope="col">Discard</th><th scope="col">Facing a threat</th><th scope="col">Decisions</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">1</th><td>0.2%</td><td>9,449</td></tr>
+              <tr><th scope="row">2</th><td>1.3%</td><td>9,250</td></tr>
+              <tr><th scope="row">3</th><td>3.9%</td><td>9,128</td></tr>
+              <tr><th scope="row">4</th><td>8.1%</td><td>9,042</td></tr>
+              <tr><th scope="row">5</th><td>13.9%</td><td>8,835</td></tr>
+              <tr><th scope="row">6</th><td>21.4%</td><td>8,556</td></tr>
+              <tr><th scope="row">7</th><td>29.8%</td><td>8,062</td></tr>
+              <tr><th scope="row">8</th><td>37.6%</td><td>7,413</td></tr>
+              <tr><th scope="row">9</th><td>45.0%</td><td>6,669</td></tr>
+              <tr><th scope="row">10</th><td>52.4%</td><td>5,816</td></tr>
+              <tr><th scope="row">11</th><td>59.9%</td><td>4,974</td></tr>
+              <tr><th scope="row">12</th><td>63.9%</td><td>4,192</td></tr>
+              <tr><th scope="row">13</th><td>69.0%</td><td>3,451</td></tr>
+              <tr><th scope="row">14</th><td>73.2%</td><td>2,822</td></tr>
+              <tr><th scope="row">15</th><td>76.5%</td><td>2,246</td></tr>
+              <tr><th scope="row">16</th><td>78.8%</td><td>1,768</td></tr>
+              <tr><th scope="row">17</th><td>81.2%</td><td>1,415</td></tr>
+              <tr><th scope="row">18</th><td>79.1%</td><td>851</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+  </figure>
+  <!-- /timing-figure:threat -->
   <div class="rule">
-    <strong>Rule</strong> Between two leftovers, throw the live one and keep the one already in a river: from your first discard with terminals and middle tiles, from your third with guest winds. Once someone declares riichi or calls twice, the safe one goes first. From your ninth discard, let a safe middle tile go first even when nobody has declared.
+    <strong>Rule</strong> Between two leftovers of the same kind, throw the live one and keep the one already in a river: from your first discard with terminals and middle tiles, from your third with guest winds. Once someone declares riichi or calls twice, throw the safe one first. From your ninth discard, start throwing a safe middle tile first even when nobody has.
   </div>
   <div class="exception">
-    <strong>Exception</strong> This is for leftovers with no other job. A tile next to the dora, a guest wind you want for seven pairs, or a tile that would finish a block outranks either label. Which opponent the kept tile answers is the question of <a href="#point-14">Point 13</a>.
+    <strong>Exception</strong> This is only for leftovers with no other job. A tile next to the dora, a guest wind you want for seven pairs, or a tile that would finish a block outranks either label. Which opponent the kept tile answers is the question of <a href="#point-14">Point 13</a>.
   </div>
-  <p class="evidence-note"><b>Evidence</b> LuckyJ&#8217;s 9,745 hands as a child in the 1,255 NAGA-reviewed games, its own discards one to eighteen, with its own riichi left out. Guest winds are the honors that are neither dragons, the seat wind nor the round wind. Safe means already in at least one opponent&#8217;s river. Quiet means nobody in riichi and no opponent with two calls. Cuts of either leftover in the figure&#8217;s four bands: guest winds 395, 100, 53, 16; terminals 449, 190, 69, 29; middle tiles 59, 372, 294, 99. After a threat, every kind pooled, the live leftover went first 27.9%, 19.3%, 10.6% and 4.5% of the time on discards 3 to 5, 6 to 8, 9 to 12 and 13 to 18 (233, 555, 915 and 800 cuts); NAGA 21.4%, 19.9%, 11.0% and 4.7%. Decisions facing a riichi or a two-call hand: 8.1% at the fourth discard, 29.8% at the seventh, 52.4% at the tenth.</p>
+  <p class="evidence-note"><b>Evidence</b> LuckyJ&#8217;s 9,745 hands as a child in the 1,255 NAGA-reviewed games, its own discards 1 to 18, before any riichi of its own. A leftover is a single tile with no pair and nothing of its suit within two ranks. Guest winds leave out the dragons, the seat wind and the round wind. Safe means already in at least one opponent&#8217;s river. The three tile panels of the first chart count quiet tables only, with nobody in riichi and no opponent on two calls. Each point pools a range of discards. A hollow point rests on fewer than 50 choices, and a range with fewer than 30 is left off the chart. The tables under the charts and the <a href="#sources">method notes</a> give every rate with its sample.</p>
         </section>
 
         <section class="section" id="pattern-synthesis">
@@ -952,6 +1200,6 @@
       </div>
     </footer>
 
-    <script src="app.js?v=20260928-replays"></script>
+    <script src="app.js?v=20260928-timing-charts"></script>
   </body>
 </html>

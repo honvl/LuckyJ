@@ -2949,6 +2949,443 @@ html:lang(ja) :is(.fold-title, .fold-sub, .fold-grid, .fold-key, .fold-figure fi
   }
 }
 
+/* ------------------------------------------------------------------ safe-tile timing */
+
+/* Small line charts on one plate, drawn like the personal guide's: LuckyJ in jade, NAGA in a
+   recessive gray, and the half below 50% washed vermilion, where the safe tile goes first. The SVG
+   is static, written by scripts/build_safe_tile_timing_figures.py; app.js adds the crosshair and
+   the tooltip. */
+.section > .timing-figure {
+  grid-column: 2 / 4;
+  margin: 48px 0 0;
+}
+
+.section > .timing-figure.is-single {
+  grid-column: 2;
+}
+
+.timing-plate {
+  display: grid;
+  gap: 8px;
+  padding: 22px 24px 18px;
+  border: 1px solid var(--hair);
+  border-radius: 3px;
+  background: var(--plate);
+  --timing-lj: var(--jade-mark);
+  --timing-naga: #948d82;
+  --timing-threat: var(--verm-mark);
+}
+
+.timing-figure.is-single .timing-plate {
+  max-width: 480px;
+}
+
+.timing-plate p {
+  margin: 0;
+}
+
+.timing-title {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.timing-sub {
+  max-width: 640px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.timing-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 6px !important;
+  color: var(--ink-2);
+  font-family: var(--sans);
+  font-size: 13px;
+}
+
+.timing-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timing-key::before {
+  flex: none;
+  content: "";
+}
+
+.timing-key.lj::before,
+.timing-key.naga::before {
+  width: 22px;
+  height: 2px;
+  background: var(--timing-lj);
+}
+
+.timing-key.naga::before {
+  background: var(--timing-naga);
+}
+
+.timing-key.hollow::before {
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--timing-lj);
+  border-radius: 50%;
+  background: var(--plate);
+}
+
+.timing-key.wash::before {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--hair);
+  background: var(--verm-soft);
+}
+
+.timing-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 400px));
+  gap: 28px 40px;
+  margin-top: 12px;
+}
+
+.timing-figure.is-single .timing-panels {
+  grid-template-columns: minmax(0, 420px);
+  margin-top: 4px;
+}
+
+.timing-panel {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+}
+
+.timing-panel-title {
+  display: grid;
+  gap: 2px;
+}
+
+.timing-panel-title b {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.timing-panel-title span {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 12.5px;
+}
+
+.timing-plot {
+  position: relative;
+}
+
+.timing-plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.timing-plate .timing-wash {
+  fill: var(--verm-soft);
+  opacity: 0.6;
+}
+
+.timing-plate .timing-grid {
+  stroke: var(--hair-2);
+  stroke-width: 1;
+}
+
+.timing-plate .timing-mid {
+  stroke: var(--hair);
+  stroke-width: 1;
+}
+
+.timing-plate :is(.timing-tick, .timing-cat, .timing-axis, .timing-label) {
+  font-family: var(--sans);
+}
+
+.timing-plate .timing-tick {
+  fill: var(--muted);
+  font-size: 11px;
+  text-anchor: end;
+}
+
+.timing-plate .timing-cat {
+  fill: var(--ink-2);
+  font-size: 11px;
+  text-anchor: middle;
+}
+
+.timing-plate .timing-axis {
+  fill: var(--muted);
+  font-size: 11px;
+  text-anchor: middle;
+}
+
+.timing-plate .timing-label {
+  fill: var(--ink);
+  font-size: 12.5px;
+  font-weight: 650;
+  text-anchor: middle;
+}
+
+.timing-plate .timing-label.is-end {
+  text-anchor: end;
+}
+
+.timing-plate .timing-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.timing-plate .timing-line.lj {
+  stroke: var(--timing-lj);
+}
+
+.timing-plate .timing-line.naga {
+  stroke: var(--timing-naga);
+}
+
+.timing-plate .timing-line.threat {
+  stroke: var(--timing-threat);
+}
+
+.timing-plate .timing-area {
+  fill: var(--timing-threat);
+  opacity: 0.1;
+}
+
+.timing-plate .timing-dot {
+  stroke: var(--plate);
+  stroke-width: 2;
+}
+
+.timing-plate .timing-dot.lj {
+  fill: var(--timing-lj);
+}
+
+.timing-plate .timing-dot.naga {
+  fill: var(--timing-naga);
+}
+
+.timing-plate .timing-dot.threat {
+  fill: var(--timing-threat);
+}
+
+.timing-plate .timing-dot.hollow {
+  fill: var(--plate);
+}
+
+.timing-plate .timing-dot.lj.hollow {
+  stroke: var(--timing-lj);
+}
+
+.timing-plate .timing-dot.naga.hollow {
+  stroke: var(--timing-naga);
+}
+
+.timing-plate .timing-cross {
+  stroke: var(--ink);
+  stroke-opacity: 0;
+  stroke-width: 1;
+}
+
+.timing-plate .timing-cross.is-on {
+  stroke-opacity: 0.3;
+}
+
+.timing-plate .timing-hit {
+  fill: transparent;
+  cursor: crosshair;
+  outline: none;
+}
+
+.timing-tip {
+  position: absolute;
+  top: 4px;
+  z-index: 3;
+  display: grid;
+  gap: 4px;
+  min-width: 132px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  background: var(--ink);
+  color: var(--plate);
+  font-family: var(--sans);
+  pointer-events: none;
+  box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.45);
+}
+
+.timing-tip[hidden] {
+  display: none;
+}
+
+.timing-tip span {
+  color: var(--hair);
+  font-size: 12px;
+}
+
+.timing-tip b {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.timing-tip b::before {
+  width: 12px;
+  height: 2px;
+  background: var(--hair);
+  content: "";
+}
+
+.timing-tip b.lj::before {
+  background: #5fc49a;
+}
+
+.timing-tip b.naga::before {
+  background: #c9c2b6;
+}
+
+.timing-tip b.threat::before {
+  background: var(--verm-felt);
+}
+
+.timing-tip small {
+  color: var(--hair);
+  font-size: 12.5px;
+  font-weight: 400;
+}
+
+.timing-figure figcaption {
+  max-width: var(--text-w);
+  margin-top: 14px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.timing-table {
+  max-width: var(--text-w);
+  margin-top: 12px;
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+
+.timing-table > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+  color: var(--ink-2);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.timing-table > p {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 12.5px;
+}
+
+.timing-table-scroll {
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.timing-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 12.5px;
+}
+
+.timing-table table.is-narrow {
+  width: auto;
+  min-width: 300px;
+}
+
+.timing-table :is(th, td) {
+  padding: 7px 10px 7px 0;
+  border-top: 1px solid var(--hair-2);
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.timing-table thead th {
+  border-top: 0;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.timing-table tbody th {
+  color: var(--ink-2);
+  font-weight: 600;
+}
+
+.timing-table td :is(b, span, small) {
+  display: block;
+}
+
+.timing-table td b {
+  color: var(--jade);
+  font-weight: 650;
+}
+
+.timing-table td span {
+  color: var(--ink-2);
+}
+
+.timing-table td small {
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+html:lang(ja) :is(.timing-title, .timing-sub, .timing-legend, .timing-panel-title span, .timing-figure figcaption, .timing-table) {
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 1023px) {
+  .section > .timing-figure,
+  .section > .timing-figure.is-single {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .timing-panels {
+    grid-template-columns: minmax(0, 440px);
+  }
+}
+
+@media (max-width: 640px) {
+  .timing-plate {
+    padding: 16px 14px 14px;
+  }
+
+  .timing-plate :is(.timing-tick, .timing-cat, .timing-axis) {
+    font-size: 13px;
+  }
+
+  .timing-plate .timing-label {
+    font-size: 14.5px;
+  }
+}
+
 /* ------------------------------------------------------------------ cover (home, and the top of each book) */
 
 .cover {
@@ -4795,15 +5232,15 @@ html:lang(ja) .contents-list.is-points .contents-sub {
 }
 
 /* Folded sections show a small chevron that turns when they open. */
-:is(.audit-details, .guide-chart-table, .guide-options) > summary {
+:is(.audit-details, .guide-chart-table, .guide-options, .timing-table) > summary {
   list-style: none;
 }
 
-:is(.audit-details, .guide-chart-table, .guide-options) > summary::-webkit-details-marker {
+:is(.audit-details, .guide-chart-table, .guide-options, .timing-table) > summary::-webkit-details-marker {
   display: none;
 }
 
-:is(.audit-details, .guide-chart-table, .guide-options) > summary::before {
+:is(.audit-details, .guide-chart-table, .guide-options, .timing-table) > summary::before {
   flex: 0 0 auto;
   width: 0;
   height: 0;
@@ -4815,7 +5252,7 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   transition: transform 120ms ease;
 }
 
-:is(.audit-details, .guide-chart-table, .guide-options)[open] > summary::before {
+:is(.audit-details, .guide-chart-table, .guide-options, .timing-table)[open] > summary::before {
   transform: rotate(90deg);
 }
 

@@ -1328,6 +1328,71 @@ function convertStaticTileMarkup(root = document) {
   }
 }
 
+// The safe-tile timing charts are static SVG written by scripts/build_safe_tile_timing_figures.py.
+// This adds the crosshair and a tooltip read from each hit column's data-tip: values first, then
+// the series name. A tap keeps the tooltip open until the reader taps elsewhere.
+function setupTimingCharts() {
+  for (const plot of document.querySelectorAll(".timing-plot")) {
+    const svg = plot.querySelector("svg");
+    const cross = svg?.querySelector(".timing-cross");
+    if (!svg || !cross || plot.dataset.ready) continue;
+    plot.dataset.ready = "1";
+    const tip = document.createElement("div");
+    tip.className = "timing-tip";
+    tip.hidden = true;
+    plot.append(tip);
+    const width = svg.viewBox?.baseVal?.width || 1;
+    const hide = () => {
+      cross.classList.remove("is-on");
+      tip.hidden = true;
+    };
+    for (const hit of svg.querySelectorAll(".timing-hit")) {
+      let data = null;
+      try {
+        data = JSON.parse(hit.dataset.tip || "null");
+      } catch {
+        data = null;
+      }
+      if (!data) continue;
+      const x = Number(hit.dataset.x) || 0;
+      const show = () => {
+        cross.setAttribute("x1", x);
+        cross.setAttribute("x2", x);
+        cross.classList.add("is-on");
+        const head = document.createElement("span");
+        head.textContent = data.head || "";
+        const rows = (data.rows || []).map(([key, value, label]) => {
+          const row = document.createElement("b");
+          row.className = key;
+          row.append(document.createTextNode(`${value} `));
+          const small = document.createElement("small");
+          small.textContent = label || "";
+          row.append(small);
+          return row;
+        });
+        const foot = document.createElement("span");
+        foot.textContent = data.foot || "";
+        tip.replaceChildren(head, ...rows, foot);
+        tip.hidden = false;
+        const px = (x / width) * 100;
+        const flip = px > 55;
+        tip.style.left = flip ? "auto" : `calc(${px}% + 12px)`;
+        tip.style.right = flip ? `calc(${100 - px}% + 12px)` : "auto";
+      };
+      hit.addEventListener("pointerenter", show);
+      hit.addEventListener("pointerdown", show);
+      hit.addEventListener("focus", show);
+      hit.addEventListener("pointerleave", (event) => {
+        if (event.pointerType !== "touch") hide();
+      });
+      hit.addEventListener("blur", hide);
+    }
+    document.addEventListener("pointerdown", (event) => {
+      if (!plot.contains(event.target)) hide();
+    });
+  }
+}
+
 function prescriptionTileSortKey(tile) {
   const base = String(tile || "").replace("r", "");
   const honorOrder = { E: 27, S: 28, W: 29, N: 30, P: 31, F: 32, C: 33 };
@@ -2328,6 +2393,7 @@ async function main() {
   setupRunningHead();
   convertStaticTileMarkup();
   applyTileCompatibility();
+  setupTimingCharts();
   const guidePath = isJa ? "strategy-guides.ja.json" : "strategy-guides.json";
   const [bookResponse, exampleResponse, guideResponse, mortalResponse, validation] = await Promise.all([
     fetch(dataAsset("book-data.json")),

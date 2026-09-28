@@ -93,6 +93,13 @@ which leftover LuckyJ and NAGA throw first when one is already in a river; the r
 .venv/bin/python scripts/mine_safe_tile_timing.py  # writes analysis/safe-tile-timing-<date>.json
 ```
 
+The section's charts and tables are static SVG and HTML drawn from that JSON; redraw them after a rerun:
+
+```bash
+.venv/bin/python scripts/build_safe_tile_timing_figures.py          # rewrites the two figures in points.html and ja.html
+.venv/bin/python scripts/build_safe_tile_timing_figures.py --check  # exits 1 if the pages are stale
+```
+
 ## Reviewing your own games
 
 `scripts/review_self_game.py` replays a Tenhou-format log and reports where a seat

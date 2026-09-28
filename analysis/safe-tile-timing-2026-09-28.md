@@ -73,6 +73,14 @@ Share of LuckyJ's decisions facing a riichi or a two-call opponent, by its own d
 On quiet tables the hand holds 1.65 tile types that are already in some opponent's river at
 the third discard, 3.03 at the sixth and 4.04 at the ninth.
 
+## Charts
+
+The book section draws these figures as charts with `scripts/build_safe_tile_timing_figures.py`:
+four small line charts (the three quiet-table kinds and "once someone threatens") on the share of
+choices where LuckyJ kept the safe leftover, with NAGA as a gray line, and an area chart of the share
+of decisions facing a threat by discard. A band with fewer than 30 choices is left off the charts
+and stays in the tables under them; a plotted band with fewer than 50 choices gets a hollow point.
+
 ## Limits
 
 - Child kyoku only; LuckyJ's dealer hands are not in the sample.

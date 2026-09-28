@@ -14,7 +14,7 @@
     <!-- The text faces load without holding up the page; until they arrive it reads in the fallback faces. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Serif+JP:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'" data-font-css />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Serif+JP:wght@400;500;600;700&amp;display=swap" /></noscript>
-    <link rel="stylesheet" href="styles.css?v=20260928-replays" />
+    <link rel="stylesheet" href="styles.css?v=20260928-timing-charts" />
   </head>
   <body data-book="playbook">
     <a class="skip-link" href="#contents">目次へ移動</a>
@@ -433,38 +433,286 @@
         <section class="section" id="safe-tile-timing">
   <p class="kicker">安全牌の時期</p>
   <h2>LuckyJ が安全牌を残し始める巡目。</h2>
-  <p>相手のリーチの4分の3で、LuckyJ はその時点ですでにリーチ者の河にある牌を持っていた（<a href="#point-14">ポイント13</a>）。この節では、その収集がいつ始まるかを見る。調べるのは、同じ種類の浮き牌を2枚持ち、1枚はすでに相手の河にあり、もう1枚はどの河にもない巡目で、LuckyJ がそのどちらかを切った場面である。ここでの浮き牌は、対子がなく、同じ色の2つ以内に牌のない単独の牌を指す。2枚の違いは主に安全度なので、LuckyJ がどちらを残すかで、その巡目の安全牌の値段がわかる。</p>
-  <p>答えは牌の種類で変わる。端牌と中張牌は1打目から残す。最初の2打で、浮いた端牌2枚のどちらかを切ったとき、それが生牌の方だったのは4回に3回、浮いた中張牌2枚では5回に4回を超えた。誰もテンパイできないうちは生牌を切ってもほとんど損がなく、河にある方の牌は、必要になったときもその相手には安全なままである。NAGA も端牌では生牌を先に切ったがやや少なく、中張牌2枚では6打目まで差をつけなかった。</p>
-  <p>客風は最初の2打だけ逆になる。浮いた客風2枚では、LuckyJ はまず誰かがすでに切った方を4回に3回切った。3打目から入れ替わり、8打目までは生牌の客風を10回に7回切った。NAGA は最初から生牌の客風を10回に6回先に切っていたので、序盤の切り替えは LuckyJ 独自の選択である。切られた客風は対子にできる残り枚数が1枚少なく、生牌の客風もあと数巡は安く切れる。</p>
-  <figure class="fold-figure" aria-labelledby="timing-figure-caption">
-    <div class="fold-plate">
-      <p class="fold-title">LuckyJ が先に切る浮き牌</p>
-      <p class="fold-sub">静かな場で同じ種類の浮き牌が2枚、1枚は相手の河にあり、もう1枚はどの河にもないとき、LuckyJ が切った方が生牌だった割合（%）</p>
-      <div class="fold-scroll">
-        <table class="fold-grid">
-          <thead>
-            <tr><th scope="col" rowspan="2" class="fold-corner">浮き牌</th><th scope="colgroup" colspan="4" class="fold-span">LuckyJ 自身のこれまでの打牌数</th></tr>
-            <tr><th scope="col">1〜2</th><th scope="col">3〜5</th><th scope="col">6〜8</th><th scope="col">9〜12</th></tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">客風</th><td class="is-hold"><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>24</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>59</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>70</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>68</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>72</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>74</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>50</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>50</span></td></tr>
-            <tr><th scope="row">端牌</th><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>74</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>63</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>71</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>67</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>61</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>59</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>55</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>53</span></td></tr>
-            <tr><th scope="row">中張牌</th><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>85</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>48</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>62</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>48</span></td><td><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>50</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>43</span></td><td class="is-hold"><b class="fold-lj"><span class="visually-hidden">LuckyJ </span>37</b> <span class="fold-h"><span class="visually-hidden">NAGA </span>36</span></td></tr>
-          </tbody>
-        </table>
+  <p>相手がリーチをかけたとき、LuckyJ はたいてい、その相手の河にある牌をすでに持っている（<a href="#point-14">ポイント13</a>）。この節では、そうした牌をいつから残し始めるかを見る。</p>
+  <p>調べるのは、同じ種類の浮き牌2枚のどちらを切るかである。浮き牌とは、近くに牌のない単独の牌を指す。たとえば手に、上家がすでに切った[[9p]]と、誰も切っていない[[1s]]があるとする。どちらも手には役立たないので、LuckyJ がどちらを残すかで、安全な方を取っておいているかがわかる。</p>
+  <!-- timing-figure:keep -->
+  <figure class="timing-figure" id="timing-keep" aria-labelledby="timing-keep-caption">
+    <div class="timing-plate">
+      <p class="timing-title">LuckyJ が安全な浮き牌を残した割合</p>
+      <p class="timing-sub">同じ種類の浮き牌が2枚あり、1枚はすでに相手の河にあるとき、LuckyJ がその牌を残してもう1枚を切った割合。</p>
+      <p class="timing-legend"><span class="timing-key lj">LuckyJ</span><span class="timing-key naga">同じ局面の NAGA</span><span class="timing-key hollow">選択が50回未満</span><span class="timing-key wash">50%未満は安全な方が先に出る</span></p>
+      <div class="timing-panels">
+        <div class="timing-panel" data-panel="quiet-honor">
+          <p class="timing-panel-title"><b>客風</b><span>静かな場</span></p>
+          <div class="timing-plot">
+            <svg viewBox="0 0 340 224" role="img" aria-label="客風：LuckyJ が安全な浮き牌を残した割合は1〜2打目で24%, 3〜5打目で70%, 6〜8打目で72%。">
+            <rect class="timing-wash" x="40" y="96" width="286" height="80" />
+            <line class="timing-grid" x1="40" x2="326" y1="176" y2="176" />
+            <text class="timing-tick" x="32" y="180">0%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="136" y2="136" />
+            <line class="timing-mid" x1="40" x2="326" y1="96" y2="96" />
+            <text class="timing-tick" x="32" y="100">50%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="56" y2="56" />
+            <line class="timing-grid" x1="40" x2="326" y1="16" y2="16" />
+            <text class="timing-tick" x="32" y="20">100%</text>
+            <text class="timing-cat" x="68.6" y="194">1〜2</text>
+            <text class="timing-cat" x="125.8" y="194">3〜5</text>
+            <text class="timing-cat" x="183" y="194">6〜8</text>
+            <text class="timing-cat" x="240.2" y="194">9〜12</text>
+            <text class="timing-cat" x="297.4" y="194">13〜18</text>
+            <text class="timing-axis" x="183" y="218">LuckyJ 自身の打牌数</text>
+            <line class="timing-cross" x1="0" x2="0" y1="16" y2="176" />
+            <polyline class="timing-line naga" points="68.6,81.6 125.8,67 183,58.2" />
+            <polyline class="timing-line lj" points="68.6,137.1 125.8,64 183,61.3" />
+            <circle class="timing-dot naga" cx="68.6" cy="81.6" r="4" data-band="1-2" data-pct="59.0" />
+            <circle class="timing-dot naga" cx="125.8" cy="67" r="4" data-band="3-5" data-pct="68.1" />
+            <circle class="timing-dot naga" cx="183" cy="58.2" r="4" data-band="6-8" data-pct="73.6" />
+            <circle class="timing-dot lj" cx="68.6" cy="137.1" r="4.5" data-band="1-2" data-pct="24.3" />
+            <circle class="timing-dot lj" cx="125.8" cy="64" r="4.5" data-band="3-5" data-pct="70.0" />
+            <circle class="timing-dot lj" cx="183" cy="61.3" r="4.5" data-band="6-8" data-pct="71.7" />
+            <text class="timing-label" x="68.6" y="157.1">24%</text>
+            <text class="timing-label" x="183" y="81.3">72%</text>
+            <rect class="timing-hit" x="40" y="16" width="57.2" height="184" tabindex="0" data-x="68.6" data-tip="{&quot;head&quot;: &quot;1〜2打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;24.3%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;59.0%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択395回&quot;}" aria-label="1〜2打目: LuckyJ 24.3%, NAGA 59.0%, 選択395回" />
+            <rect class="timing-hit" x="97.2" y="16" width="57.2" height="184" tabindex="0" data-x="125.8" data-tip="{&quot;head&quot;: &quot;3〜5打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;70.0%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;68.1%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択100回&quot;}" aria-label="3〜5打目: LuckyJ 70.0%, NAGA 68.1%, 選択100回" />
+            <rect class="timing-hit" x="154.4" y="16" width="57.2" height="184" tabindex="0" data-x="183" data-tip="{&quot;head&quot;: &quot;6〜8打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;71.7%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;73.6%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択53回&quot;}" aria-label="6〜8打目: LuckyJ 71.7%, NAGA 73.6%, 選択53回" />
+            </svg>
+          </div>
+        </div>
+        <div class="timing-panel" data-panel="quiet-terminal">
+          <p class="timing-panel-title"><b>端牌</b><span>静かな場、1と9</span></p>
+          <div class="timing-plot">
+            <svg viewBox="0 0 340 224" role="img" aria-label="端牌：LuckyJ が安全な浮き牌を残した割合は1〜2打目で74%, 3〜5打目で71%, 6〜8打目で61%。">
+            <rect class="timing-wash" x="40" y="96" width="286" height="80" />
+            <line class="timing-grid" x1="40" x2="326" y1="176" y2="176" />
+            <text class="timing-tick" x="32" y="180">0%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="136" y2="136" />
+            <line class="timing-mid" x1="40" x2="326" y1="96" y2="96" />
+            <text class="timing-tick" x="32" y="100">50%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="56" y2="56" />
+            <line class="timing-grid" x1="40" x2="326" y1="16" y2="16" />
+            <text class="timing-tick" x="32" y="20">100%</text>
+            <text class="timing-cat" x="68.6" y="194">1〜2</text>
+            <text class="timing-cat" x="125.8" y="194">3〜5</text>
+            <text class="timing-cat" x="183" y="194">6〜8</text>
+            <text class="timing-cat" x="240.2" y="194">9〜12</text>
+            <text class="timing-cat" x="297.4" y="194">13〜18</text>
+            <text class="timing-axis" x="183" y="218">LuckyJ 自身の打牌数</text>
+            <line class="timing-cross" x1="0" x2="0" y1="16" y2="176" />
+            <polyline class="timing-line naga" points="68.6,75.2 125.8,69.1 183,81.9" />
+            <polyline class="timing-line lj" points="68.6,57.8 125.8,63.2 183,78.6" />
+            <circle class="timing-dot naga" cx="68.6" cy="75.2" r="4" data-band="1-2" data-pct="63.0" />
+            <circle class="timing-dot naga" cx="125.8" cy="69.1" r="4" data-band="3-5" data-pct="66.8" />
+            <circle class="timing-dot naga" cx="183" cy="81.9" r="4" data-band="6-8" data-pct="58.8" />
+            <circle class="timing-dot lj" cx="68.6" cy="57.8" r="4.5" data-band="1-2" data-pct="73.9" />
+            <circle class="timing-dot lj" cx="125.8" cy="63.2" r="4.5" data-band="3-5" data-pct="70.5" />
+            <circle class="timing-dot lj" cx="183" cy="78.6" r="4.5" data-band="6-8" data-pct="60.9" />
+            <text class="timing-label" x="68.6" y="46.8">74%</text>
+            <text class="timing-label" x="183" y="67.6">61%</text>
+            <rect class="timing-hit" x="40" y="16" width="57.2" height="184" tabindex="0" data-x="68.6" data-tip="{&quot;head&quot;: &quot;1〜2打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;73.9%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;63.0%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択449回&quot;}" aria-label="1〜2打目: LuckyJ 73.9%, NAGA 63.0%, 選択449回" />
+            <rect class="timing-hit" x="97.2" y="16" width="57.2" height="184" tabindex="0" data-x="125.8" data-tip="{&quot;head&quot;: &quot;3〜5打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;70.5%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;66.8%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択190回&quot;}" aria-label="3〜5打目: LuckyJ 70.5%, NAGA 66.8%, 選択190回" />
+            <rect class="timing-hit" x="154.4" y="16" width="57.2" height="184" tabindex="0" data-x="183" data-tip="{&quot;head&quot;: &quot;6〜8打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;60.9%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;58.8%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択69回&quot;}" aria-label="6〜8打目: LuckyJ 60.9%, NAGA 58.8%, 選択69回" />
+            </svg>
+          </div>
+        </div>
+        <div class="timing-panel" data-panel="quiet-middle">
+          <p class="timing-panel-title"><b>中張牌</b><span>静かな場、2〜8</span></p>
+          <div class="timing-plot">
+            <svg viewBox="0 0 340 224" role="img" aria-label="中張牌：LuckyJ が安全な浮き牌を残した割合は1〜2打目で85%, 3〜5打目で62%, 6〜8打目で50%, 9〜12打目で37%, 13〜18打目で8%。">
+            <rect class="timing-wash" x="40" y="96" width="286" height="80" />
+            <line class="timing-grid" x1="40" x2="326" y1="176" y2="176" />
+            <text class="timing-tick" x="32" y="180">0%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="136" y2="136" />
+            <line class="timing-mid" x1="40" x2="326" y1="96" y2="96" />
+            <text class="timing-tick" x="32" y="100">50%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="56" y2="56" />
+            <line class="timing-grid" x1="40" x2="326" y1="16" y2="16" />
+            <text class="timing-tick" x="32" y="20">100%</text>
+            <text class="timing-cat" x="68.6" y="194">1〜2</text>
+            <text class="timing-cat" x="125.8" y="194">3〜5</text>
+            <text class="timing-cat" x="183" y="194">6〜8</text>
+            <text class="timing-cat" x="240.2" y="194">9〜12</text>
+            <text class="timing-cat" x="297.4" y="194">13〜18</text>
+            <text class="timing-axis" x="183" y="218">LuckyJ 自身の打牌数</text>
+            <line class="timing-cross" x1="0" x2="0" y1="16" y2="176" />
+            <polyline class="timing-line naga" points="68.6,99.4 125.8,99 183,107.5 240.2,118.1 297.4,156" />
+            <polyline class="timing-line lj" points="68.6,40.5 125.8,77.4 183,96.5 240.2,116.2 297.4,164" />
+            <circle class="timing-dot naga" cx="68.6" cy="99.4" r="4" data-band="1-2" data-pct="47.9" />
+            <circle class="timing-dot naga" cx="125.8" cy="99" r="4" data-band="3-5" data-pct="48.1" />
+            <circle class="timing-dot naga" cx="183" cy="107.5" r="4" data-band="6-8" data-pct="42.8" />
+            <circle class="timing-dot naga" cx="240.2" cy="118.1" r="4" data-band="9-12" data-pct="36.2" />
+            <circle class="timing-dot naga hollow" cx="297.4" cy="156" r="4" data-band="13-18" data-pct="12.5" />
+            <circle class="timing-dot lj" cx="68.6" cy="40.5" r="4.5" data-band="1-2" data-pct="84.7" />
+            <circle class="timing-dot lj" cx="125.8" cy="77.4" r="4.5" data-band="3-5" data-pct="61.6" />
+            <circle class="timing-dot lj" cx="183" cy="96.5" r="4.5" data-band="6-8" data-pct="49.7" />
+            <circle class="timing-dot lj" cx="240.2" cy="116.2" r="4.5" data-band="9-12" data-pct="37.4" />
+            <circle class="timing-dot lj hollow" cx="297.4" cy="164" r="4.5" data-band="13-18" data-pct="7.5" />
+            <text class="timing-label" x="68.6" y="29.5">85%</text>
+            <text class="timing-label" x="240.2" y="105.2">37%</text>
+            <rect class="timing-hit" x="40" y="16" width="57.2" height="184" tabindex="0" data-x="68.6" data-tip="{&quot;head&quot;: &quot;1〜2打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;84.7%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;47.9%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択59回&quot;}" aria-label="1〜2打目: LuckyJ 84.7%, NAGA 47.9%, 選択59回" />
+            <rect class="timing-hit" x="97.2" y="16" width="57.2" height="184" tabindex="0" data-x="125.8" data-tip="{&quot;head&quot;: &quot;3〜5打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;61.6%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;48.1%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択372回&quot;}" aria-label="3〜5打目: LuckyJ 61.6%, NAGA 48.1%, 選択372回" />
+            <rect class="timing-hit" x="154.4" y="16" width="57.2" height="184" tabindex="0" data-x="183" data-tip="{&quot;head&quot;: &quot;6〜8打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;49.7%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;42.8%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択294回&quot;}" aria-label="6〜8打目: LuckyJ 49.7%, NAGA 42.8%, 選択294回" />
+            <rect class="timing-hit" x="211.6" y="16" width="57.2" height="184" tabindex="0" data-x="240.2" data-tip="{&quot;head&quot;: &quot;9〜12打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;37.4%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;36.2%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択99回&quot;}" aria-label="9〜12打目: LuckyJ 37.4%, NAGA 36.2%, 選択99回" />
+            <rect class="timing-hit" x="268.8" y="16" width="57.2" height="184" tabindex="0" data-x="297.4" data-tip="{&quot;head&quot;: &quot;13〜18打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;7.5%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;12.5%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択40回&quot;}" aria-label="13〜18打目: LuckyJ 7.5%, NAGA 12.5%, 選択40回" />
+            </svg>
+          </div>
+        </div>
+        <div class="timing-panel" data-panel="threat-any">
+          <p class="timing-panel-title"><b>脅威が出た後</b><span>リーチか2副露の後、すべての種類</span></p>
+          <div class="timing-plot">
+            <svg viewBox="0 0 340 224" role="img" aria-label="脅威が出た後：LuckyJ が安全な浮き牌を残した割合は3〜5打目で28%, 6〜8打目で19%, 9〜12打目で11%, 13〜18打目で5%。">
+            <rect class="timing-wash" x="40" y="96" width="286" height="80" />
+            <line class="timing-grid" x1="40" x2="326" y1="176" y2="176" />
+            <text class="timing-tick" x="32" y="180">0%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="136" y2="136" />
+            <line class="timing-mid" x1="40" x2="326" y1="96" y2="96" />
+            <text class="timing-tick" x="32" y="100">50%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="56" y2="56" />
+            <line class="timing-grid" x1="40" x2="326" y1="16" y2="16" />
+            <text class="timing-tick" x="32" y="20">100%</text>
+            <text class="timing-cat" x="68.6" y="194">1〜2</text>
+            <text class="timing-cat" x="125.8" y="194">3〜5</text>
+            <text class="timing-cat" x="183" y="194">6〜8</text>
+            <text class="timing-cat" x="240.2" y="194">9〜12</text>
+            <text class="timing-cat" x="297.4" y="194">13〜18</text>
+            <text class="timing-axis" x="183" y="218">LuckyJ 自身の打牌数</text>
+            <line class="timing-cross" x1="0" x2="0" y1="16" y2="176" />
+            <polyline class="timing-line naga" points="125.8,141.8 183,144.2 240.2,158.4 297.4,168.5" />
+            <polyline class="timing-line lj" points="125.8,131.4 183,145.1 240.2,159 297.4,168.8" />
+            <circle class="timing-dot naga" cx="125.8" cy="141.8" r="4" data-band="3-5" data-pct="21.4" />
+            <circle class="timing-dot naga" cx="183" cy="144.2" r="4" data-band="6-8" data-pct="19.9" />
+            <circle class="timing-dot naga" cx="240.2" cy="158.4" r="4" data-band="9-12" data-pct="11.0" />
+            <circle class="timing-dot naga" cx="297.4" cy="168.5" r="4" data-band="13-18" data-pct="4.7" />
+            <circle class="timing-dot lj" cx="125.8" cy="131.4" r="4.5" data-band="3-5" data-pct="27.9" />
+            <circle class="timing-dot lj" cx="183" cy="145.1" r="4.5" data-band="6-8" data-pct="19.3" />
+            <circle class="timing-dot lj" cx="240.2" cy="159" r="4.5" data-band="9-12" data-pct="10.6" />
+            <circle class="timing-dot lj" cx="297.4" cy="168.8" r="4.5" data-band="13-18" data-pct="4.5" />
+            <text class="timing-label" x="125.8" y="120.4">28%</text>
+            <text class="timing-label" x="297.4" y="157.8">5%</text>
+            <rect class="timing-hit" x="97.2" y="16" width="57.2" height="184" tabindex="0" data-x="125.8" data-tip="{&quot;head&quot;: &quot;3〜5打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;27.9%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;21.4%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択233回&quot;}" aria-label="3〜5打目: LuckyJ 27.9%, NAGA 21.4%, 選択233回" />
+            <rect class="timing-hit" x="154.4" y="16" width="57.2" height="184" tabindex="0" data-x="183" data-tip="{&quot;head&quot;: &quot;6〜8打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;19.3%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;19.9%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択555回&quot;}" aria-label="6〜8打目: LuckyJ 19.3%, NAGA 19.9%, 選択555回" />
+            <rect class="timing-hit" x="211.6" y="16" width="57.2" height="184" tabindex="0" data-x="240.2" data-tip="{&quot;head&quot;: &quot;9〜12打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;10.6%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;11.0%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択915回&quot;}" aria-label="9〜12打目: LuckyJ 10.6%, NAGA 11.0%, 選択915回" />
+            <rect class="timing-hit" x="268.8" y="16" width="57.2" height="184" tabindex="0" data-x="297.4" data-tip="{&quot;head&quot;: &quot;13〜18打目&quot;, &quot;rows&quot;: [[&quot;lj&quot;, &quot;4.5%&quot;, &quot;LuckyJ&quot;], [&quot;naga&quot;, &quot;4.7%&quot;, &quot;NAGA&quot;]], &quot;foot&quot;: &quot;選択800回&quot;}" aria-label="13〜18打目: LuckyJ 4.5%, NAGA 4.7%, 選択800回" />
+            </svg>
+          </div>
+        </div>
       </div>
-      <p class="fold-key" aria-hidden="true"><span class="fold-key-item"><span class="fold-key-lj">74</span>LuckyJ</span> <span class="fold-key-item"><span class="fold-key-h">63</span>同じ局面での NAGA の選択</span> <span class="fold-key-item"><span class="fold-key-hold"></span>安全な方を先に切ることが多かった</span></p>
     </div>
-    <figcaption id="timing-figure-caption">端牌と中張牌は1打目から、客風は3打目から残す。網掛けの2マスは安全な方が先に出たところで、最初の2打の客風と、9打目以降の中張牌である。</figcaption>
+    <figcaption id="timing-keep-caption">端牌と中張牌は1打目から、客風は3打目から取っておく。9打目からは安全な中張牌が先に出始め、誰かが脅威になると、どの安全な浮き牌も先に出る。</figcaption>
+      <details class="timing-table">
+        <summary>数字を表で見る</summary>
+        <p>各マスは LuckyJ、NAGA、選択の回数の順。</p>
+        <div class="timing-table-scroll">
+          <table>
+            <thead><tr><th scope="col">浮き牌</th><th scope="col">1〜2打目</th><th scope="col">3〜5打目</th><th scope="col">6〜8打目</th><th scope="col">9〜12打目</th><th scope="col">13〜18打目</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">客風</th><td><b>24.3%</b><span>59.0%</span><small>選択395回</small></td><td><b>70.0%</b><span>68.1%</span><small>選択100回</small></td><td><b>71.7%</b><span>73.6%</span><small>選択53回</small></td><td><b>50.0%</b><span>50.0%</span><small>選択16回</small></td><td><b>0.0%</b><span>0.0%</span><small>選択2回</small></td></tr>
+              <tr><th scope="row">端牌</th><td><b>73.9%</b><span>63.0%</span><small>選択449回</small></td><td><b>70.5%</b><span>66.8%</span><small>選択190回</small></td><td><b>60.9%</b><span>58.8%</span><small>選択69回</small></td><td><b>55.2%</b><span>53.3%</span><small>選択29回</small></td><td><b>20.0%</b><span>20.0%</span><small>選択5回</small></td></tr>
+              <tr><th scope="row">中張牌</th><td><b>84.7%</b><span>47.9%</span><small>選択59回</small></td><td><b>61.6%</b><span>48.1%</span><small>選択372回</small></td><td><b>49.7%</b><span>42.8%</span><small>選択294回</small></td><td><b>37.4%</b><span>36.2%</span><small>選択99回</small></td><td><b>7.5%</b><span>12.5%</span><small>選択40回</small></td></tr>
+              <tr><th scope="row">脅威が出た後</th><td><b>44.8%</b><span>21.2%</span><small>選択29回</small></td><td><b>27.9%</b><span>21.4%</span><small>選択233回</small></td><td><b>19.3%</b><span>19.9%</span><small>選択555回</small></td><td><b>10.6%</b><span>11.0%</span><small>選択915回</small></td><td><b>4.5%</b><span>4.7%</span><small>選択800回</small></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
   </figure>
-  <p>収集は2つの形で終わる。1つは脅威である。LuckyJ の4打目では判断の8%がリーチか2副露の相手に直面しており、7打目では30%、10打目以降は半分を超えた。脅威が出ると、安全な浮き牌が先に出る。生牌の方を切ったのは3〜5打目で28%、9〜12打目で11%だった。もう1つは、誰も宣言していなくても起きる。9打目以降、LuckyJ は河にある中張牌を先に切ることが10回に6回ほどになった。黙ったテンパイが待っているのは生牌の中張牌であることが多いからである。端牌と客風では、その頃にはほぼ五分だった。</p>
+  <!-- /timing-figure:keep -->
+  <p>端牌と中張牌は1打目から取っておく。この例なら、LuckyJ はたいてい[[1s]]を切って[[9p]]を残す。NAGA も端牌では同じだがやや控えめで、中張牌2枚では6打目まで好みがない。</p>
+  <p>客風は例外である。誰かが切った[[W]]と、誰も切っていない[[N]]があると、LuckyJ は最初の2打ではたいてい[[W]]を切り、NAGA は逆に傾く。3打目からは LuckyJ も安全な客風を残す。切られた客風は対子にできる残り枚数が1枚少なく、生牌の客風もあと数巡は安く切れる。</p>
+  <p>取っておくのは2つの形で終わる。1つは脅威で、下の図のとおり、脅威は局の中盤に出てくる。誰かがリーチか2副露をしたら、種類にかかわらず安全な浮き牌が先に出て、NAGA も同じである。もう1つは脅威がなくても起きる。9打目からは、LuckyJ は河にある中張牌を先に切ることの方が多くなる。黙ったテンパイが待っているのは、生牌の中張牌であることが多いからである。</p>
+  <!-- timing-figure:threat -->
+  <figure class="timing-figure is-single" id="timing-threat" aria-labelledby="timing-threat-caption">
+    <div class="timing-plate">
+      <p class="timing-title">脅威が出てくる時期</p>
+      <p class="timing-sub">リーチか2副露の相手に直面した LuckyJ の判断の割合（自身の打牌数別）</p>
+      <div class="timing-panels">
+        <div class="timing-panel" data-panel="threat-share">
+          <div class="timing-plot">
+            <svg viewBox="0 0 340 224" role="img" aria-label="脅威が出てくる時期：1打目で0%, 4打目で8%, 7打目で30%, 10打目で52%, 18打目で79%。">
+            <line class="timing-grid" x1="40" x2="326" y1="96" y2="96" />
+            <line class="timing-grid" x1="40" x2="326" y1="176" y2="176" />
+            <text class="timing-tick" x="32" y="180">0%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="136" y2="136" />
+            <text class="timing-tick" x="32" y="100">50%</text>
+            <line class="timing-grid" x1="40" x2="326" y1="56" y2="56" />
+            <line class="timing-grid" x1="40" x2="326" y1="16" y2="16" />
+            <text class="timing-tick" x="32" y="20">100%</text>
+            <text class="timing-cat" x="40" y="194">1</text>
+            <text class="timing-cat" x="73.6" y="194">3</text>
+            <text class="timing-cat" x="124.1" y="194">6</text>
+            <text class="timing-cat" x="174.6" y="194">9</text>
+            <text class="timing-cat" x="225.1" y="194">12</text>
+            <text class="timing-cat" x="275.5" y="194">15</text>
+            <text class="timing-cat" x="326" y="194">18</text>
+            <text class="timing-axis" x="183" y="218">LuckyJ 自身の打牌数</text>
+            <path class="timing-area" d="M40,176 L40,175.7 L56.8,173.9 L73.6,169.8 L90.5,163 L107.3,153.8 L124.1,141.8 L140.9,128.3 L157.8,115.8 L174.6,104 L191.4,92.2 L208.2,80.2 L225.1,73.8 L241.9,65.6 L258.7,58.9 L275.5,53.6 L292.4,49.9 L309.2,46.1 L326,49.4 L326,176 Z" />
+            <line class="timing-cross" x1="0" x2="0" y1="16" y2="176" />
+            <polyline class="timing-line threat" points="40,175.7 56.8,173.9 73.6,169.8 90.5,163 107.3,153.8 124.1,141.8 140.9,128.3 157.8,115.8 174.6,104 191.4,92.2 208.2,80.2 225.1,73.8 241.9,65.6 258.7,58.9 275.5,53.6 292.4,49.9 309.2,46.1 326,49.4" />
+            <circle class="timing-dot threat" cx="90.5" cy="163" r="4.5" data-turn="4" data-pct="8.1" />
+            <text class="timing-label is-end" x="84.5" y="152">8%</text>
+            <circle class="timing-dot threat" cx="140.9" cy="128.3" r="4.5" data-turn="7" data-pct="29.8" />
+            <text class="timing-label is-end" x="134.9" y="117.3">30%</text>
+            <circle class="timing-dot threat" cx="191.4" cy="92.2" r="4.5" data-turn="10" data-pct="52.4" />
+            <text class="timing-label is-end" x="185.4" y="81.2">52%</text>
+            <rect class="timing-hit" x="32" y="16" width="16.4" height="184" tabindex="0" data-x="40" data-tip="{&quot;head&quot;: &quot;1打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;0.2%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断9,449回&quot;}" aria-label="1打目: 0.2% 脅威に直面, 判断9,449回" />
+            <rect class="timing-hit" x="48.4" y="16" width="16.8" height="184" tabindex="0" data-x="56.8" data-tip="{&quot;head&quot;: &quot;2打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;1.3%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断9,250回&quot;}" aria-label="2打目: 1.3% 脅威に直面, 判断9,250回" />
+            <rect class="timing-hit" x="65.2" y="16" width="16.8" height="184" tabindex="0" data-x="73.6" data-tip="{&quot;head&quot;: &quot;3打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;3.9%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断9,128回&quot;}" aria-label="3打目: 3.9% 脅威に直面, 判断9,128回" />
+            <rect class="timing-hit" x="82.1" y="16" width="16.8" height="184" tabindex="0" data-x="90.5" data-tip="{&quot;head&quot;: &quot;4打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;8.1%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断9,042回&quot;}" aria-label="4打目: 8.1% 脅威に直面, 判断9,042回" />
+            <rect class="timing-hit" x="98.9" y="16" width="16.8" height="184" tabindex="0" data-x="107.3" data-tip="{&quot;head&quot;: &quot;5打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;13.9%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断8,835回&quot;}" aria-label="5打目: 13.9% 脅威に直面, 判断8,835回" />
+            <rect class="timing-hit" x="115.7" y="16" width="16.8" height="184" tabindex="0" data-x="124.1" data-tip="{&quot;head&quot;: &quot;6打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;21.4%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断8,556回&quot;}" aria-label="6打目: 21.4% 脅威に直面, 判断8,556回" />
+            <rect class="timing-hit" x="132.5" y="16" width="16.8" height="184" tabindex="0" data-x="140.9" data-tip="{&quot;head&quot;: &quot;7打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;29.8%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断8,062回&quot;}" aria-label="7打目: 29.8% 脅威に直面, 判断8,062回" />
+            <rect class="timing-hit" x="149.4" y="16" width="16.8" height="184" tabindex="0" data-x="157.8" data-tip="{&quot;head&quot;: &quot;8打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;37.6%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断7,413回&quot;}" aria-label="8打目: 37.6% 脅威に直面, 判断7,413回" />
+            <rect class="timing-hit" x="166.2" y="16" width="16.8" height="184" tabindex="0" data-x="174.6" data-tip="{&quot;head&quot;: &quot;9打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;45.0%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断6,669回&quot;}" aria-label="9打目: 45.0% 脅威に直面, 判断6,669回" />
+            <rect class="timing-hit" x="183" y="16" width="16.8" height="184" tabindex="0" data-x="191.4" data-tip="{&quot;head&quot;: &quot;10打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;52.4%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断5,816回&quot;}" aria-label="10打目: 52.4% 脅威に直面, 判断5,816回" />
+            <rect class="timing-hit" x="199.8" y="16" width="16.8" height="184" tabindex="0" data-x="208.2" data-tip="{&quot;head&quot;: &quot;11打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;59.9%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断4,974回&quot;}" aria-label="11打目: 59.9% 脅威に直面, 判断4,974回" />
+            <rect class="timing-hit" x="216.6" y="16" width="16.8" height="184" tabindex="0" data-x="225.1" data-tip="{&quot;head&quot;: &quot;12打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;63.9%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断4,192回&quot;}" aria-label="12打目: 63.9% 脅威に直面, 判断4,192回" />
+            <rect class="timing-hit" x="233.5" y="16" width="16.8" height="184" tabindex="0" data-x="241.9" data-tip="{&quot;head&quot;: &quot;13打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;69.0%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断3,451回&quot;}" aria-label="13打目: 69.0% 脅威に直面, 判断3,451回" />
+            <rect class="timing-hit" x="250.3" y="16" width="16.8" height="184" tabindex="0" data-x="258.7" data-tip="{&quot;head&quot;: &quot;14打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;73.2%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断2,822回&quot;}" aria-label="14打目: 73.2% 脅威に直面, 判断2,822回" />
+            <rect class="timing-hit" x="267.1" y="16" width="16.8" height="184" tabindex="0" data-x="275.5" data-tip="{&quot;head&quot;: &quot;15打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;76.5%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断2,246回&quot;}" aria-label="15打目: 76.5% 脅威に直面, 判断2,246回" />
+            <rect class="timing-hit" x="283.9" y="16" width="16.8" height="184" tabindex="0" data-x="292.4" data-tip="{&quot;head&quot;: &quot;16打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;78.8%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断1,768回&quot;}" aria-label="16打目: 78.8% 脅威に直面, 判断1,768回" />
+            <rect class="timing-hit" x="300.8" y="16" width="16.8" height="184" tabindex="0" data-x="309.2" data-tip="{&quot;head&quot;: &quot;17打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;81.2%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断1,415回&quot;}" aria-label="17打目: 81.2% 脅威に直面, 判断1,415回" />
+            <rect class="timing-hit" x="317.6" y="16" width="16.4" height="184" tabindex="0" data-x="326" data-tip="{&quot;head&quot;: &quot;18打目&quot;, &quot;rows&quot;: [[&quot;threat&quot;, &quot;79.1%&quot;, &quot;脅威に直面&quot;]], &quot;foot&quot;: &quot;判断851回&quot;}" aria-label="18打目: 79.1% 脅威に直面, 判断851回" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <figcaption id="timing-threat-caption">4打目では LuckyJ の判断の8%が脅威に直面し、10打目では半分を超える。</figcaption>
+      <details class="timing-table">
+        <summary>数字を表で見る</summary>
+        <div class="timing-table-scroll">
+          <table class="is-narrow">
+            <thead><tr><th scope="col">打牌</th><th scope="col">脅威あり</th><th scope="col">判断の数</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">1</th><td>0.2%</td><td>9,449</td></tr>
+              <tr><th scope="row">2</th><td>1.3%</td><td>9,250</td></tr>
+              <tr><th scope="row">3</th><td>3.9%</td><td>9,128</td></tr>
+              <tr><th scope="row">4</th><td>8.1%</td><td>9,042</td></tr>
+              <tr><th scope="row">5</th><td>13.9%</td><td>8,835</td></tr>
+              <tr><th scope="row">6</th><td>21.4%</td><td>8,556</td></tr>
+              <tr><th scope="row">7</th><td>29.8%</td><td>8,062</td></tr>
+              <tr><th scope="row">8</th><td>37.6%</td><td>7,413</td></tr>
+              <tr><th scope="row">9</th><td>45.0%</td><td>6,669</td></tr>
+              <tr><th scope="row">10</th><td>52.4%</td><td>5,816</td></tr>
+              <tr><th scope="row">11</th><td>59.9%</td><td>4,974</td></tr>
+              <tr><th scope="row">12</th><td>63.9%</td><td>4,192</td></tr>
+              <tr><th scope="row">13</th><td>69.0%</td><td>3,451</td></tr>
+              <tr><th scope="row">14</th><td>73.2%</td><td>2,822</td></tr>
+              <tr><th scope="row">15</th><td>76.5%</td><td>2,246</td></tr>
+              <tr><th scope="row">16</th><td>78.8%</td><td>1,768</td></tr>
+              <tr><th scope="row">17</th><td>81.2%</td><td>1,415</td></tr>
+              <tr><th scope="row">18</th><td>79.1%</td><td>851</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+  </figure>
+  <!-- /timing-figure:threat -->
   <div class="rule">
-    <strong>ルール</strong> 浮き牌が2枚なら、生牌を切り、すでに河にある方を残す。端牌と中張牌は1打目から、客風は3打目から。誰かがリーチか2副露をしたら、安全な方を先に切る。9打目からは、誰も宣言していなくても、河にある中張牌を先に切り始める。
+    <strong>ルール</strong> 同じ種類の浮き牌が2枚なら、生牌を切り、すでに河にある方を残す。端牌と中張牌は1打目から、客風は3打目から。誰かがリーチか2副露をしたら、安全な方を先に切る。9打目からは、誰も宣言していなくても、河にある中張牌を先に切り始める。
   </div>
   <div class="exception">
     <strong>例外</strong> これはほかに役目のない浮き牌の話である。ドラの隣の牌、七対子に使いたい客風、ブロックを完成させる牌は、どちらのラベルより優先する。残した牌がどの相手に答えるかは<a href="#point-14">ポイント13</a>の問いである。
   </div>
-  <p class="evidence-note"><b>根拠</b> 1,255半荘の NAGA 検討譜のうち、LuckyJ が子だった9,745局。自身の1打目から18打目まで、自分のリーチ後は除く。客風は、三元牌でも自風でも場風でもない字牌。安全とは、少なくとも1人の相手の河にすでにあること。静かな場とは、リーチ者がおらず2副露の相手もいない状態。図の4つの区間で浮き牌のどちらかを切った数は、客風395、100、53、16、端牌449、190、69、29、中張牌59、372、294、99。脅威が出た後は、種類をまとめて、生牌の方が先に出たのが3〜5打目、6〜8打目、9〜12打目、13〜18打目でそれぞれ27.9%、19.3%、10.6%、4.5%（233、555、915、800打）、NAGA は21.4%、19.9%、11.0%、4.7%。リーチか2副露の相手に直面した判断は、4打目で8.1%、7打目で29.8%、10打目で52.4%。</p>
+  <p class="evidence-note"><b>根拠</b> 1,255半荘の NAGA 検討譜のうち、LuckyJ が子だった9,745局。自身の1打目から18打目まで、自分のリーチ後は除く。浮き牌は、対子がなく、同じ色の2つ以内に牌のない単独の牌。客風は、三元牌でも自風でも場風でもない字牌。安全とは、少なくとも1人の相手の河にすでにあること。最初の図の3種類の牌のパネルは、リーチ者がおらず2副露の相手もいない静かな場だけを数えている。各点は数巡分をまとめたもので、白抜きの点は選択が50回未満。選択が30回未満の区間は図から外している。すべての割合と標本数は、図の下の表と<a href="#sources">作り方メモ</a>にある。</p>
         </section>
 
         <section class="section" id="pattern-synthesis">
@@ -1012,6 +1260,6 @@
       </div>
     </footer>
 
-    <script src="app.js?v=20260928-replays"></script>
+    <script src="app.js?v=20260928-timing-charts"></script>
   </body>
 </html>
