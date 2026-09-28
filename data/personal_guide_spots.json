@@ -848,7 +848,7 @@
    "title": "A genbutsu that cost five tiles in shimocha's first row",
    "situation": "South 2. You are third on 19,000. Shimocha, first on 39,000, has ponned [[8p]] and the round wind [[S]] and has discarded six tiles, still their first row. You are 1-shanten and draw [[7m]].",
    "did": "You cut the genbutsu [[7s]], which kept 12 tiles, and declared riichi on the next turn.",
-   "luckyj": "Against a two-call opponent still in their first six discards, LuckyJ pays acceptance or a shanten for a safe tile 15% of the time and you 28%, 43% since 24 September. From their seventh discard on you are close to it, 28% and 26%.",
+   "luckyj": "While a two-call opponent is still in their first six discards, LuckyJ pays tiles or a shanten for a safe tile about one time in seven. You pay about one time in four, and since 24 September nearly one in two. From their seventh discard on, the two of you play alike.",
    "fix": "Cut [[6m]]. It kept the same 1-shanten on 17 tiles, and Mortal cut it 98% of the time. Your riichi a turn later gave the safety up anyway, so the five tiles bought nothing."
   },
   {
@@ -866,7 +866,7 @@
    "title": "A West pair broken for a genbutsu",
    "situation": "East 2. You are third on 25,000 and hold a pair of [[W]]. Shimocha has ponned [[N]] and [[2m]] and has discarded six tiles, one of them a [[W]]. You are 2-shanten and draw [[9m]].",
    "did": "You cut a [[W]] from the pair, genbutsu against shimocha, and dropped to 3-shanten.",
-   "luckyj": "Against a two-call opponent still in their first six discards, LuckyJ pays acceptance or a shanten for a safe tile 15% of the time and you 28%, 43% since 24 September. From their seventh discard on you are close to it, 28% and 26%.",
+   "luckyj": "While a two-call opponent is still in their first six discards, LuckyJ pays tiles or a shanten for a safe tile about one time in seven. You pay about one time in four, and since 24 September nearly one in two. From their seventh discard on, the two of you play alike.",
    "fix": "Cut [[9m]], a live terminal that keeps 2-shanten on 18 tiles; Mortal cut it 90% of the time. The [[W]] pair was your head and two genbutsu to fold with later. Breaking it in shimocha's first row spent a shanten and a safe tile before you needed either."
   },
   {
@@ -884,7 +884,7 @@
    "title": "Genbutsu or a live 4s, the same 19 tiles",
    "situation": "South 2, 1 honba. You lead on 36,400. Shimocha has ponned [[9p]] and [[C]] and discarded six tiles, a [[F]] among them; kamicha has one chi. You are 2-shanten with a red five and the dora [[4p]], and draw [[9s]].",
    "did": "You cut the [[F]], genbutsu against both callers. The live [[4s]] left the same 2-shanten on the same 19 tiles.",
-   "luckyj": "When a safe tile ties with a live one against a two-call opponent in their first six discards, LuckyJ cuts the safe tile 37% of the time and you 61%. From their seventh discard on it is 64% and 70%.",
+   "luckyj": "When a safe tile ties with a live one against a two-call opponent in their first six discards, LuckyJ keeps the safe tile about two times in three. You cut it about two times in three. From their seventh discard on, both of you cut it.",
    "fix": "Cut [[4s]] and keep the [[F]], as Mortal did 80% of the time. A live tile is cheapest while the caller is in their first row, and the genbutsu will still be genbutsu when they are closer."
   },
   {
@@ -902,7 +902,7 @@
    "title": "Three concealed triplets broken on turn 12",
    "situation": "East 4. You are the dealer and first on 33,300. Shimocha declared riichi on turn 9. On turn 12 you draw a third [[5m]]: with [[3p]][[3p]][[3p]] and [[F]][[F]][[F]] that is three concealed triplets, a red five and the dora [[9p]], and the hand is 1-shanten.",
    "did": "You cut an [[F]] from the triplet, genbutsu, and dropped to 2-shanten. You cut the other two over the next turns, and the hand ended in a draw.",
-   "luckyj": "Against a riichi before turn 13, at 1-shanten with two dora or more, when only a shanten buys the safest tile, LuckyJ keeps the hand 63% of the time: 48% with a live tile and 15% with a suji or an honor with two copies showing. You keep it 45%.",
+   "luckyj": "Against a riichi before turn 13, at 1-shanten with two dora or more, when only a shanten buys the safest tile, LuckyJ keeps the hand about two times in three, mostly with a live tile. You keep it less than half the time.",
    "fix": "Cut [[4m]], nakasuji against shimocha, and keep 1-shanten on 20 tiles, as Mortal did 97% of the time. Sanankou and hatsu make any win a dealer mangan, and if the next draws go badly the [[F]] triplet still gives you three genbutsu to fold with."
   },
   {
@@ -920,7 +920,7 @@
    "title": "Three red fives in fourth place, folded on turn 9",
    "situation": "East 3, 1 honba. You are fourth on 11,500, 17,300 behind third. Shimocha declared riichi on turn 4. On turn 9 you draw [[5pr]], your third red five, and the hand is 1-shanten.",
    "did": "You cut the genbutsu [[6m]] and dropped to 2-shanten. On the next turn you cut the [[8m]] anyway, then declared riichi on turn 12 and dealt into shimocha.",
-   "luckyj": "Against a riichi before turn 13, at 1-shanten with two dora or more, when only a shanten buys the safest tile, LuckyJ keeps the hand 63% of the time: 48% with a live tile and 15% with a suji or an honor with two copies showing. You keep it 45%.",
+   "luckyj": "Against a riichi before turn 13, at 1-shanten with two dora or more, when only a shanten buys the safest tile, LuckyJ keeps the hand about two times in three, mostly with a live tile. You keep it less than half the time.",
    "fix": "Cut [[8m]] and keep the 1-shanten, as Mortal did 89% of the time. Three red fives in fourth place is the hand that climbs a place, and you pushed it three turns later anyway, so the fold on turn 9 only cost you tempo."
   }
  ]
