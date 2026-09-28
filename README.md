@@ -84,6 +84,14 @@ pre-declaration genbutsu, quiet-table retention, and early-river tells:
 .venv/bin/python scripts/mine_pre_threat_safety.py  # writes analysis/pre-threat-safety-<date>.json
 ```
 
+The "Safe-tile timing" section (`#safe-tile-timing`) is backed by a turn-by-turn child-only replay of
+which leftover LuckyJ and NAGA throw first when one is already in a river; the report is
+`analysis/safe-tile-timing-2026-09-28.md`:
+
+```bash
+.venv/bin/python scripts/mine_safe_tile_timing.py  # writes analysis/safe-tile-timing-<date>.json
+```
+
 ## Reviewing your own games
 
 `scripts/review_self_game.py` replays a Tenhou-format log and reports where a seat
