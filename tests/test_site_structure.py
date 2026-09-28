@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
-PAGES = ("index.html", "points.html", "ja.html", "honver.html")
+PAGES = ("index.html", "points.html", "ja.html", "honver.html", "replay.html")
 # Anchors that app.js creates when it renders the replays, so they are not in the static page.
 RENDERED_ANCHOR = re.compile(r"^point-\d{2}-example-\d{2}$")
 # honver.js gives each example card the id guide-<spot id>.

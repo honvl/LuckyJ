@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Replays: Honver&#x27;s games</title>
+    <meta name="description" content="Honver's Mahjong Soul games played back on this site, with all four hands and Mortal's rating of every choice." />
+    <meta name="theme-color" content="#134834" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- The text faces load without holding up the page; until they arrive it reads in the fallback faces. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" media="print" onload="this.media='all'" data-font-css />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" /></noscript>
+    <link rel="stylesheet" href="styles.css?v=20260928-replays" />
+    <link rel="stylesheet" href="replay.css?v=20260928-replays" />
+  </head>
+  <body data-app="table-only" data-self-name="Honver" data-book="replays">
+    <a class="skip-link" href="#main">Skip to the replay</a>
+    <header class="running-head">
+      <a class="book-mark" href="honver.html"><svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect class="mark-outer" width="64" height="64" rx="14" /><rect class="mark-face" x="7" y="6" width="50" height="52" rx="10" /><path class="mark-stroke" d="M24 17h18M38 17v22c0 9-6 15-15 15-6 0-11-3-14-7" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" /><circle class="mark-dot" cx="48" cy="18" r="6" /></svg><span class="book-title">Honver&#8217;s Guide</span></a><span class="edition-tag">Replays</span>
+      <p class="running-location" data-running-location></p>
+      <nav class="running-nav" aria-label="Book">
+        <a href="replay.html" aria-current="page">All games</a>
+        <a class="nav-secondary" href="honver.html">The guide</a>
+        <a class="nav-tertiary" href="points.html">The playbook</a>
+      </nav>
+      <div class="reading-progress" aria-hidden="true"><span></span></div>
+    </header>
+
+    <main class="layout" id="main">
+      <article class="book replay-book">
+        <div data-replay-app>
+          <p class="replay-loading">Loading the replay&#8230;</p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="colophon">
+      <div class="colophon-inner">
+        <div class="colophon-sources">
+          <p class="label">Replays</p>
+          <p>Your Mahjong Soul games, rebuilt from their records by <code>scripts/build_replays.py</code>, with the local Mortal policy model rating each of your choices. Opponents appear by seat only. The lessons are in <a href="honver.html">Honver&#8217;s Guide</a>.</p>
+        </div>
+        <div class="colophon-meta">
+          <p>Updated 28 September 2026</p>
+          <a data-commit-stamp href="https://github.com/honvl/LuckyJ">Source on GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="app.js?v=20260928-replays"></script>
+    <script src="replay.js?v=20260928-replays"></script>
+  </body>
+</html>

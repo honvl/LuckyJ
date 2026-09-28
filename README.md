@@ -21,6 +21,7 @@ Japanese translation: https://honvl.github.io/LuckyJ/ja.html
 - `scripts/review_win_speed.py` - speed, efficiency and tenpai-conversion review of your games against LuckyJ under the same code (or the opponents at the same tables).
 - `scripts/naga_to_tenhou.py` - rebuilds the cached NAGA reports as tenhou.net/6 logs so LuckyJ can be reviewed by the same replay code.
 - `scripts/build_personal_guide.py` - builds `site/honver-guide.json`, the tables behind the personal guide page `site/honver.html`, from `data/personal_guide_spots.json`.
+- `scripts/build_replays.py` - builds `site/replays/`, the site's own replays of your Mahjong Soul games (`site/replay.html`), with the local Mortal policy's probability for each of your decisions.
 - `analysis/model-patterns-2026-06-30.md` - readable summary of the model-mined candidate points.
 - `analysis/point-evidence-2026-07-09.md` - readable proxy-evidence audit for all numbered points.
 - `site/model-patterns.json` - machine-readable output from the model-pattern mining run.
@@ -212,6 +213,19 @@ match the replay:
 ```bash
 .venv/bin/python scripts/build_personal_guide.py --show   # print every frame for review
 .venv/bin/python scripts/build_personal_guide.py          # write site/honver-guide.json
+```
+
+Each card's "Replay this hand" link opens `site/replay.html` at that hand and turn. The replay
+page plays your games back on the site from `site/replays/<uuid>.json`: each hand as an event
+stream, all four hands face up, and at each of your decisions the local Mortal policy's
+probability for every legal action (choices it gives under 5% are flagged). Opponents appear by
+seat and rank only. The builder checks every hand against its record (each draw and discard
+column used up, every cut tile in hand, scores carried to the next hand) and Mortal's libriichi
+state replays your seat. After fetching new games (about 1.5 seconds a game):
+
+```bash
+.venv/bin/python scripts/build_replays.py                     # every game since 1 January
+.venv/bin/python scripts/build_replays.py --only 260928-50d32e06   # one game, index updated
 ```
 
 Safety in the guide and in `scripts/mine_riichi_folds.py` counts a tile as safe against a

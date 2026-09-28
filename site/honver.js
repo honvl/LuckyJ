@@ -252,6 +252,14 @@
     return String(text || "").replace(/(\d)-(?=\p{L})/gu, "$1\u2011");
   }
 
+  // The site's own replay of the game (replay.html), opened at this hand and turn: a call frame on the
+  // discard you called, any other frame on your draw or call, where your discard is decided.
+  function replayHref(example, frame) {
+    const params = new URLSearchParams({ g: example.game.uuid, r: example.round, t: String(frame.turn) });
+    if (frame.kind === "call") params.set("at", "call");
+    return `replay.html?${params}`;
+  }
+
   // Cards that are not mistakes carry a verdict label, and their last step is "The verdict".
   const VERDICT_LABELS = { fine: "No mistake", unlucky: "Bad luck", close: "Close call" };
 
@@ -290,8 +298,8 @@
           <p class="guide-situation"></p>
           <div class="guide-compare-host"></div>
           ${
-            game.url
-              ? `<p class="guide-game-link"><a href="${escapeHtml(game.url)}" target="_blank" rel="noopener noreferrer">Open the game in Mahjong Soul</a></p>`
+            game.uuid
+              ? `<p class="guide-game-link"><a href="${escapeHtml(replayHref(example, first))}" target="_blank" rel="noopener">Replay this hand</a></p>`
               : ""
           }
         </div>
@@ -328,6 +336,8 @@
           b.setAttribute("aria-selected", i === j ? "true" : "false");
         });
         renderFrame(hosts, example, example.frames[i]);
+        const link = card.querySelector(".guide-game-link a");
+        if (link) link.href = replayHref(example, example.frames[i]);
       }
       card.querySelector(".guide-frame-host").append(strip);
       select(0);

@@ -4236,9 +4236,17 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   color: var(--felt-deep);
 }
 
-/* Room under the bottom hand for the labels. */
+/* Room under the bottom hand for the labels, or between the hand and its calls when it has any. */
 .mahjong-table .player-hand.player-current:has(.tile-threat-cell[data-mark]) {
   padding-bottom: 1.5em;
+}
+
+.mahjong-table .player-hand.player-current:has(.tile-threat-cell[data-mark]):has(.table-melds) {
+  padding-bottom: 0;
+}
+
+.mahjong-table .player-hand.player-current:has(.tile-threat-cell[data-mark]) .table-melds {
+  margin-top: 1.5em;
 }
 
 /* The player name above your own hand stays quiet on the felt. */

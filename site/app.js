@@ -1394,8 +1394,10 @@ function clamp01(value) {
 function discardRows(discards) {
   const rows = [];
   const list = discards || [];
+  // Six tiles to a row; past eighteen the third row runs on, as it does at a real table.
   for (let i = 0; i < 18; i += 6) {
-    rows.push(list.slice(i, i + 6).map((tile, offset) => ({ tile, index: i + offset })));
+    const end = i === 12 ? list.length : i + 6;
+    rows.push(list.slice(i, end).map((tile, offset) => ({ tile, index: i + offset })));
   }
   return rows;
 }
