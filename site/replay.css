@@ -347,6 +347,29 @@
   transform: translateX(-50%);
 }
 
+/* Your hand holds still from step to step. replay.js pads it to fourteen places (the empty ones are
+   invisible) and gives every tile a bar slot; here marked tiles stay level instead of lifting, and the
+   room for their labels is kept whether or not a tile is marked. */
+.replay-viewer .mahjong-table .tile-threat-cell.is-ghost {
+  visibility: hidden;
+}
+
+.replay-viewer .mahjong-table .tile-threat-cell[data-mark] > .tiles {
+  transform: none;
+}
+
+.replay-viewer .mahjong-table .player-hand.player-current {
+  padding-bottom: 1.5em;
+}
+
+.replay-viewer .mahjong-table .player-hand.player-current:has(.table-melds) {
+  padding-bottom: 0;
+}
+
+.replay-viewer .mahjong-table .player-hand.player-current .table-melds {
+  margin-top: 1.5em;
+}
+
 /* Mortal's weight on each tile in your hand, as a bar above it (scaled to its first choice). */
 .mahjong-table .replay-prob {
   display: flex;

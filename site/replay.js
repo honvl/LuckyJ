@@ -374,27 +374,31 @@
   function markHand(wrap, state, decision, winTiles) {
     const hero = view.game.hero;
     const cells = Array.from(wrap.querySelectorAll(".player-hand.player-current .tile-threat-cell"));
+    if (!cells.length) return;
     const { drawn } = handTiles(state, hero, winTiles?.[hero]);
-    if (drawn && cells.length) cells[cells.length - 1].classList.add("is-drawn");
-    if (!decision || !cells.length) return;
-    const probs = new Map(decision.p.filter(([a]) => /^[1-9][mps]r?$|^[ESWNPFC]$/.test(a)));
-    if (!probs.size) return;
-    const top = decision.p[0][0];
-    const best = decision.p[0][1];
+    if (drawn) cells[cells.length - 1].classList.add("is-drawn");
+    const probs = new Map((decision?.p || []).filter(([a]) => /^[1-9][mps]r?$|^[ESWNPFC]$/.test(a)));
+    const top = decision?.p[0][0];
+    const best = decision?.p[0][1] || 1;
+    // Every tile has a bar slot, empty when there is nothing to rate, so bars never push the hand down.
     for (const cell of cells) {
       const tile = cell.dataset.tile;
-      const p = probs.get(tile) || 0;
       const bar = document.createElement("span");
       bar.className = "replay-prob";
       bar.setAttribute("aria-hidden", "true");
       const fill = document.createElement("i");
-      fill.style.setProperty("--p", String(Math.max(p / (best || 1), p > 0 ? 0.04 : 0)));
-      if (tile === top) fill.className = "is-top";
-      else if (tile === decision.you) fill.className = "is-you";
+      if (probs.size) {
+        const p = probs.get(tile) || 0;
+        fill.style.setProperty("--p", String(Math.max(p / best, p > 0 ? 0.04 : 0)));
+        if (tile === top) fill.className = "is-top";
+        else if (tile === decision.you) fill.className = "is-you";
+        cell.title = `${tileName(tile)}: Mortal ${pctText(p)}`;
+      }
       bar.append(fill);
       cell.prepend(bar);
-      cell.title = `${tileName(tile)}: Mortal ${pctText(p)}`;
     }
+    steadyHand(cells, Boolean(drawn));
+    if (!probs.size) return;
     // Label one copy of each marked tile: your cut (the drawn copy when you cut the tile you drew).
     const pick = (tile, preferDrawn) => {
       const matches = cells.filter((cell) => cell.dataset.tile === tile);
@@ -418,6 +422,20 @@
     if (topCell) {
       topCell.classList.add("guide-better");
       topCell.dataset.mark = "Mortal";
+    }
+  }
+
+  // Your hand keeps fourteen places at every step: after the tiles you hold come invisible places,
+  // with the drawn tile's gap before the first when you have not drawn. The hand is centred on the
+  // table, so a constant width keeps every tile where it was when you draw, cut or a choice is marked.
+  function steadyHand(cells, drawn) {
+    const run = cells[0].parentElement;
+    for (let k = cells.length; k < 14; k += 1) {
+      const ghost = cells[0].cloneNode(true);
+      ghost.className = `tile-threat-cell is-ghost${k === cells.length && !drawn ? " is-drawn" : ""}`;
+      for (const name of ["data-tile", "data-mark", "title", "aria-label"]) ghost.removeAttribute(name);
+      ghost.setAttribute("aria-hidden", "true");
+      run.append(ghost);
     }
   }
 
