@@ -707,6 +707,69 @@
    "did": "You cut [[8p]], live, and kept your 1-shanten. Toimen was waiting on [[5p]] and [[8p]] with two dora: 11,600.",
    "luckyj": "At 1-shanten against a single caller in their 10th to 12th discard, when only a shanten-losing tile was safe, LuckyJ broke the hand 8% of the time, and 9% against a dealer.",
    "fix": "Pushing was right. The only safe tile, a [[C]] with two copies out, would have broken your 1-shanten and your chun pair. Among the live tiles, the [[9m]] kept 8 tiles against the [[8p]]'s 6 and, as a terminal, was a little safer; it would have missed. A close call, and mostly the dealer's luck."
+  },
+  {
+   "id": "three-calls-dora-tanki",
+   "chapter": "three-calls",
+   "game": "260928-50d32e06",
+   "round": "East 1-1",
+   "frames": [
+    {
+     "turn": 9,
+     "expect_cut": "3s",
+     "better": "7p"
+    },
+    {
+     "turn": 10,
+     "expect_cut": "8s"
+    }
+   ],
+   "title": "Three calls, and the tenpai folded for one turn",
+   "situation": "East 1, 1 honba. Kamicha declared riichi on their 6th turn with a [[3s]]. You had ponned [[W]], your seat wind, and [[9m]], and you chied that [[3s]] with [[4s]] and the red [[5sr]] to reach tenpai on a tanki [[6p]], the dora. On turn 9 you draw [[7p]] and hold five tiles.",
+   "did": "You cut the genbutsu [[3s]] and broke the tenpai. On the next turn you drew [[8s]] and cut it, a live tile, just to stay 1-shanten. Kamicha tsumoed a mangan and you paid 2,100.",
+   "luckyj": "With three calls against a riichi, LuckyJ kept its tenpai on 345 of 352 turns, and on every one of the 198 turns where a safe tile kept it.",
+   "fix": "Cut the [[7p]]. It was suji, since your own [[4p]] had gone past kamicha after the declaration, and it kept a tanki on the dora worth 7,700. With five tiles you cannot fold for long, so a safe tile that keeps the tenpai is the one to cut. Kamicha was waiting on [[6m]] and [[9m]], so the [[7p]] was safe."
+  },
+  {
+   "id": "once-cut-west",
+   "chapter": "three-calls",
+   "game": "260928-90620418",
+   "round": "South 2-0",
+   "frames": [
+    {
+     "turn": 9,
+     "expect_cut": "7p",
+     "better": "W"
+    },
+    {
+     "turn": 10,
+     "expect_cut": "W",
+     "better": "9s"
+    }
+   ],
+   "title": "A second West, kept for one turn too many",
+   "situation": "South 2. You are fourth on 14,600; shimocha, the dealer, has ponned [[P]]. You cut a [[W]] on your first turn, and on turn 9 you draw the second one. [[W]] is a guest wind for you and kamicha's seat wind.",
+   "did": "You cut [[7p]] from [[5p]][[6p]][[7p]][[7p]] and kept the [[W]], though the [[W]] was the better cut by a tile of acceptance, 22 against 21. Kamicha declared riichi before your next turn, and you cut the [[W]] to keep your 1-shanten: riichi, ippatsu, seat wind and red five, 8,000.",
+   "luckyj": "Against one riichi, LuckyJ's cuts of an honor with one other copy showing dealt in 2.1 times per 100, and its genbutsu never did (chapter 4).",
+   "fix": "Cut the [[W]] on turn 9, while nobody had declared and it did nothing for your hand. On turn 10, [[9s]] was genbutsu against the riichi and kept the same 1-shanten for three tiles of acceptance. A copy in your own river is one copy showing, and kamicha held the other two."
+  },
+  {
+   "id": "dealer-dama-tsumogiri",
+   "chapter": "three-calls",
+   "verdict": "unlucky",
+   "game": "260928-7c1ee667",
+   "round": "East 4-2",
+   "frames": [
+    {
+     "turn": 12,
+     "expect_cut": "7p"
+    }
+   ],
+   "title": "The dealer's dama after two tsumogiri",
+   "situation": "East 4, 2 honba. Kamicha, the dealer, leads on 39,100 with no call and no riichi. On their 10th discard they cut a [[7s]] from hand, then threw their next two draws, [[9p]] and [[8s]], straight out. You are third on 18,800 and 2-shanten.",
+   "did": "You cut [[7p]], live against the dealer, while [[2s]], [[7s]] and [[8s]] were genbutsu against them and kept the same shanten. The dealer was dama on [[4p]] and [[7p]] with tanyao, pinfu, sanshoku, a dora and a red five: a haneman, 18,600.",
+   "luckyj": "A silent closed dealer at their 10th to 12th discard was tenpai 8.5% of the time after two tsumogiri, against 6.7% without, and LuckyJ cut live tiles against such a player about as often either way.",
+   "fix": "Your read was right this time, but before the third row the tell is weak, because a closed tenpai usually declares. Against a silent hand, two tsumogiri in the third row lift the tenpai rate to about one in four. Before that, the cut that is best for your own hand stands."
   }
  ]
 }
