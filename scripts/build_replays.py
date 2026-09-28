@@ -24,7 +24,8 @@ Event encoding (one short array per event, seats are absolute 0-3 with 0 the fir
     ["a", seat, tiles]                closed kan
     ["k", seat, tile, pon_tiles]      added kan onto a pon
     ["dora", indicator]               a new dora indicator is turned (after a closed kan at once,
-                                      after an open or added kan with the next discard)
+                                      after an open or added kan with the next discard, or
+                                      after the same seat's next kan if that comes first)
 
 The same streams feed Mortal as mjai (``mjai_events``), and ``tenhou6_to_mjai.convert`` wraps
 them for ``mortal_hand_review.py``, so the site and the guide read the games one way.
@@ -175,15 +176,14 @@ def _simulate(log: list, plan: list[int], branches: list[int]) -> list[list]:
             if not isinstance(entry, str):
                 break
             meld = tr.parse_meld(entry)
-            flush_pending()
             if meld["kind"] == "k":
                 added = meld["called"]
                 pon = list(meld["tiles"])
                 pon.remove(added)
                 _take(p["hand"], added)
                 events.append(["k", cur, site_tile(added), [site_tile(t) for t in pon]])
-                pending += 1
             elif meld["kind"] == "a":
+                flush_pending()
                 for t in meld["tiles"]:
                     _take(p["hand"], t)
                 events.append(["a", cur, [site_tile(t) for t in meld["tiles"]]])
@@ -193,6 +193,10 @@ def _simulate(log: list, plan: list[int], branches: list[int]) -> list[list]:
             if p["di"] >= len(p["draws"]):
                 ended = True  # robbed kan, or the hand ended on the kan
                 break
+            # An earlier open kan's dora waits until no one robs the added kan (Tenhou and Mahjong Soul).
+            flush_pending()
+            if meld["kind"] == "k":
+                pending += 1
             drawn = p["draws"][p["di"]]
             p["di"] += 1
             if isinstance(drawn, str):
@@ -467,10 +471,11 @@ def mjai_event(e: list) -> dict:
 def mjai_order(events: list[list]) -> list[int]:
     """Event indices in mjai order: a dora turned after a discard is announced just before it.
 
-    Mahjong Soul turns an open or added kan's indicator with the discard that follows the kan.
-    Tenhou's mjai logs, which Mortal learned from, and libriichi's arena put it between the
-    replacement tsumo and that dahai: the kan caller has already chosen the discard on the tsumo,
-    and the other seats see the new dora when they decide whether to call or ron it.
+    Mahjong Soul turns kan dora as Tenhou does: an open or added kan's indicator comes with the
+    discard that follows the kan. Tenhou's mjai logs, which Mortal learned from, and libriichi's
+    arena put it between the replacement tsumo and that dahai: the kan caller has already chosen
+    the discard on the tsumo, and the other seats see the new dora when they decide whether to
+    call or ron it.
     """
     order: list[int] = []
     i = 0

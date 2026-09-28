@@ -82,6 +82,15 @@ class ConverterTests(unittest.TestCase):
         kan = next(i for i, e in enumerate(events) if e["type"] == "daiminkan")
         self.assertEqual([e["type"] for e in events[kan:kan + 4]], ["daiminkan", "tsumo", "dora", "dahai"])
 
+    def test_second_added_kan_turns_the_first_kans_dora_after_it(self):
+        # Tenhou (and Mahjong Soul, which turns kan dora the same way): the first kan's dora waits until no one
+        # robs the second, and the second kan's dora comes with the discard.
+        hands = br.build_hands({"log": [fixture_hand("kakan-after-kakan-hand")]})
+        events = [ev for _, _, ev in br.mjai_events({"hands": hands})]
+        first = next(i for i, e in enumerate(events) if e["type"] == "kakan")
+        self.assertEqual([e["type"] for e in events[first:first + 7]],
+                         ["kakan", "tsumo", "kakan", "dora", "tsumo", "dora", "dahai"])
+
     def test_mortal_review_reads_the_games_like_the_replays(self):
         from tenhou6_to_mjai import convert
 
