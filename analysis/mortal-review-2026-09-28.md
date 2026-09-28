@@ -66,3 +66,16 @@ Mortal kept the dora tanki at turn 9 (7p 100%), as chapter 14 said, and preferre
   was turn 9 only.
 
 `analysis/recent-games-2026-09-28.md` carries the same corrections.
+
+## Correction (28 September): the 9m pon
+
+The user said they ponned the 9m to aim for a tanki on the dora. The chapter had said the pon left "fewer ways to
+finish" and only tanki waits. `scripts/contrast/report/idle_pons.py` counts the tiles that give tenpai on each side:
+10 without the pon and 28 with it, and 10 of the 28 lead to a 7,700 wait (a drawn 6p makes a dora pair with a 3s-6s
+wait). Every tenpai without the pon was worth 3,900. Kamicha held one 6p, so the dora tanki had only two tiles left.
+
+LuckyJ, at 1-shanten with one call and nobody in riichi, where a pon of a number tile keeps the shanten but adds 10 or
+more tenpai tiles: pons 21 of 74; with two or more dora in hand 3 of 19; when the pon multiplies the tenpai tiles by
+2.5 or more, 14 of 26. Pons won 38% and dealt in 10% (+557 a hand), passes 36% and 8% (+966). Honver's own such
+chances: 4, ponned 2. The pon is a close call that Mortal (99% pass) and LuckyJ lean against, and the costly turn in
+the hand was the broken tenpai on turn 9. Chapter 15's paragraph, rule, evidence and first example are corrected.

@@ -796,9 +796,18 @@
    ],
    "title": "A 9m pon that took the hand's only pair",
    "situation": "East 1, 1 honba, turn 6, the three-call hand from chapter 14. You have ponned [[W]], your seat wind, and hold [[9m]][[9m]], [[4p]][[6p]] around the dora, the run [[1s]][[2s]][[3s]][[4s]] with the red [[5sr]], and a lone [[P]]. The [[9m]] pair is the only pair you have. Shimocha throws a [[9m]].",
-   "did": "You ponned and cut [[P]]. The hand stayed 1-shanten and now had no pair, so its tenpai could only be a tanki. Two turns later you chied into a tanki on the dora [[6p]], and chapter 14 picks up from there.",
-   "luckyj": "When a pon of a number tile would not bring an open hand closer to tenpai, LuckyJ passes 86% of the time (325 of 378 chances with nobody in riichi). You pass 81% (29 of 36). The pons LuckyJ does make there won 26 of 53 hands; yours since January won 1 of 7.",
-   "fix": "Pass. Mortal passed this pon 99% of the time. The [[W]] already gave the hand its yaku, the [[9m]] pair was its head, and the rest was already 1-shanten. Trading the head for a triplet leaves the same shanten with fewer ways to finish, and a hand of four tiles that has to wait on a single tile."
+   "did": "You ponned and cut [[P]]. The hand stayed 1-shanten with no pair, and 28 unseen tiles would now give tenpai instead of 10. Two turns later you chied into a tanki on the dora [[6p]], and chapter 14 picks up from there.",
+   "luckyj": "When a pon keeps an open hand at 1-shanten but adds 10 or more tenpai tiles, LuckyJ pons 21 times in 74, and 3 times in 19 with two dora or more in hand. Its pons and passes there end about the same: they won 38% and 36% of their hands and dealt in 10% and 8%.",
+   "fix": "Mortal passed this pon 99% of the time, but the pon was faster: 28 tenpai tiles against 10, and 10 of the 28 led to a 7,700 wait, such as a drawn [[6p]] making a dora pair with a [[3s]]-[[6s]] wait. Every tenpai without the pon was worth 3,900. The dora tanki you aimed at was the thinnest of those waits: three [[6p]] unseen, and only two really left, since kamicha held one. What passing keeps is ten tiles to fold with; after the pon and the chi you had four, and kamicha declared the next time around.",
+   "verdict": "close",
+   "corrected": {
+    "date": "28 September",
+    "fields": [
+     "did",
+     "luckyj",
+     "fix"
+    ]
+   }
   },
   {
    "id": "yakuless-chase-riichi",
