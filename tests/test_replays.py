@@ -16,10 +16,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_replays as br  # noqa: E402
+import tenhou_replay as tr  # noqa: E402
 
 SITE = ROOT / "site"
 REPLAYS = SITE / "replays"
 FIXTURES = ROOT / "tests" / "fixtures"
+MANIFEST = ROOT / "data/self_games/majsoul/index.json"
 
 
 def load(path):
@@ -178,6 +180,30 @@ class ReplayFileTests(unittest.TestCase):
         script = (SITE / "replay.js").read_text(encoding="utf-8")
         match = re.search(r"const FLAG_BELOW = ([0-9.]+);", script)
         self.assertEqual(float(match.group(1)), br.FLAG_BELOW)
+
+
+class TurnCountTests(unittest.TestCase):
+    """replay.js labels every player's turn (labelTurns): a draw from the wall or a call adds one."""
+
+    @unittest.skipUnless(MANIFEST.exists(), "needs the Mahjong Soul records in data/self_games/majsoul")
+    def test_every_players_turn_matches_the_guides_count(self):
+        rows = {row["uuid"]: row for row in load(MANIFEST)}
+        for entry, game in games():
+            logs = load(ROOT / rows[entry["id"]]["file"])["log"]
+            self.assertEqual(len(logs), len(game["hands"]))
+            for log, hand in zip(logs, game["hands"]):
+                with self.subTest(game=entry["id"], hand=hand["round"]):
+                    turns, cut, ours = [0, 0, 0, 0], [0, 0, 0, 0], []
+                    for e in hand["ev"]:
+                        if (e[0] == "t" and len(e) < 4) or e[0] in ("c", "p", "m"):
+                            turns[e[1]] += 1
+                        elif e[0] == "d":
+                            cut[e[1]] += 1
+                            ours.append((e[1], turns[e[1]], e[2]))
+                            # After a cut, the turn is the tiles cut: the pond plus tiles called out of it.
+                            self.assertEqual(cut[e[1]], turns[e[1]])
+                    theirs = [(ev["seat"], ev["turn"], br.site_tile(ev["tile"])) for ev in tr.replay(log)["events"]]
+                    self.assertEqual(ours, theirs)
 
 
 class GuideLinkTests(unittest.TestCase):

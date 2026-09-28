@@ -370,6 +370,19 @@
   margin-top: 1.5em;
 }
 
+/* Your name and turn never widen the hand's block, however long the label grows. */
+.replay-viewer .mahjong-table .player-hand.player-current .player-name {
+  width: 0;
+  min-width: 100%;
+  white-space: nowrap;
+}
+
+/* Each player's turn, after their name, a shade brighter than the name so the counts scan. */
+.mahjong-table .player-name .player-turn {
+  color: var(--cream-2);
+  font-weight: 600;
+}
+
 /* Mortal's weight on each tile in your hand, as a bar above it (scaled to its first choice). */
 .mahjong-table .replay-prob {
   display: flex;
@@ -604,6 +617,10 @@
   gap: 16px;
   max-width: 820px;
   margin-top: 64px;
+}
+
+.replay-counting {
+  margin-top: 48px;
 }
 
 .replay-review h2 {

@@ -187,6 +187,10 @@
       dora: [hand.dora],
       left: 70,
       last: null,
+      // Each player's turn, counted as the guide counts yours: a draw from the wall or a call.
+      turns: [0, 0, 0, 0],
+      // Tiles other players called out of each pond; they leave the pond but still count as turns.
+      calledAway: [0, 0, 0, 0],
     };
   }
 
@@ -197,6 +201,7 @@
         state.hands[seat].push(e[2]);
         state.drawn[seat] = e[2];
         state.left -= 1;
+        if (!e[3]) state.turns[seat] += 1;
         break;
       case "d":
         removeTile(state.hands[seat], e[2]);
@@ -220,6 +225,8 @@
         consumed.forEach((t) => removeTile(state.hands[seat], t));
         const river = state.rivers[from];
         if (river.length) river[river.length - 1].called = true;
+        state.calledAway[from] += 1;
+        state.turns[seat] += 1;
         state.melds[seat].push({
           kind: { c: "chi", p: "pon", m: "daiminkan" }[kind],
           tiles: sortTiles([tile, ...consumed]),
@@ -439,6 +446,20 @@
     }
   }
 
+  // Each name on the table carries that player's turn, and how many tiles were called out of their
+  // pond, since those still count: pond tiles plus called tiles is the turn once they have cut.
+  function labelTurns(wrap, state) {
+    for (let s = 0; s < 4; s += 1) {
+      const name = wrap.querySelector(`.player-hand.player-${POSITION[relOf(s)]} .player-name`);
+      if (!name || !state.turns[s]) continue;
+      const turn = document.createElement("span");
+      turn.className = "player-turn";
+      const called = state.calledAway[s];
+      turn.textContent = ` \u00b7 turn ${state.turns[s]}${called ? ` (${called} called from pond)` : ""}`;
+      name.append(turn);
+    }
+  }
+
   function nextDiscardIsTsumogiri() {
     const hand = view.game.hands[view.hand];
     const stop = view.stops[view.stop];
@@ -477,7 +498,11 @@
       case "p":
       case "m": {
         const verb = { c: "chi", p: "pon", m: "an open kan" }[e[0]];
-        return `${who} called ${verb} on ${inlineTile(e[3])} from ${objectName(e[2])}.`;
+        const skipped = skippedBy(e[2], e[1]).map(objectName);
+        const skipText = skipped.length
+          ? ` That skips ${skipped.join(" and ")}, ${skipped.length > 1 ? "who fall" : skipped[0] === "you" ? "and you fall" : "who falls"} a turn behind.`
+          : "";
+        return `${who} called ${verb} on ${inlineTile(e[3])} from ${objectName(e[2])}.${skipText}`;
       }
       case "a":
         return `${who} declared a closed kan of ${inlineTile(e[2][0])}.`;
@@ -486,6 +511,13 @@
       default:
         return "";
     }
+  }
+
+  // The players between the discarder and the caller, in turn order, whose turn a call skips.
+  function skippedBy(from, caller) {
+    const skipped = [];
+    for (let s = (from + 1) % 4; s !== caller; s = (s + 1) % 4) skipped.push(s);
+    return skipped;
   }
 
   function chiTiles(tile, kind) {
@@ -678,6 +710,10 @@
         <p class="replay-review-note">Mortal is an open-source mahjong AI. These numbers come from the Mortal weights the playbook uses for its cross-checks, run over each of your games. A percentage is how often Mortal would make that play at that moment, and a flagged choice is one it gives under 5%. Use it to find turns worth a second look. The guide's chapters measure you against LuckyJ.</p>
         <ol class="replay-review-list"></ol>
       </section>
+      <section class="replay-review replay-counting" aria-labelledby="replay-counting-title">
+        <h2 id="replay-counting-title">Counting turns</h2>
+        <p class="replay-review-note">Each name on the table carries that player's turn, counted the way the guide counts yours: one for each draw from the wall and one for each call. Once a player has cut, their turn is the tiles they have cut: their pond, six tiles to a row, plus any tile another player called out of it, which leaves the pond. A chi takes the next turn in order, but a pon or kan skips the players between the discarder and the caller, so they fall a turn behind the rest. The replay says so at each call that skips someone.</p>
+      </section>
       <p class="replay-keys">Keys: <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> step, <kbd>Shift</kbd> + arrows for your choices, <kbd>[</kbd> <kbd>]</kbd> for hands, <kbd>F</kbd> for the next flagged choice.</p>
     `;
     renderReviewList(game);
@@ -788,12 +824,17 @@
     const decision = stop.kind === "event" ? view.decisions.get(stop.i) : null;
     const table = renderMahjongTable(tableFor(hand, state, winTiles));
     markRivers(table, state);
+    labelTurns(table, state);
     markHand(table, state, decision && hand.ev[stop.i][1] === game.hero ? decision : null, winTiles);
     applyTileCompatibility(table);
     app.querySelector(".replay-table-host").replaceChildren(table);
 
     const where = [hand.round, `${state.left} tiles left`];
-    if (stop.kind === "event" && hand.ev[stop.i][1] === game.hero && view.turns[stop.i]) where.splice(1, 0, `your turn ${view.turns[stop.i]}`);
+    if (stop.kind === "event") {
+      const actor = hand.ev[stop.i][1];
+      const turn = state.turns[actor];
+      if (turn) where.splice(1, 0, actor === game.hero ? `your turn ${turn}` : `${nameOf(actor)}'s turn ${turn}`);
+    }
     if (state.sticks) where.push(`${state.sticks} riichi stick${state.sticks === 1 ? "" : "s"}`);
     app.querySelector(".replay-where").textContent = where.join(" · ");
 
