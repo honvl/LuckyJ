@@ -15,8 +15,9 @@ terminals or isolated middle tiles), one already in an opponent's river and one 
 LuckyJ cut and which one NAGA's Nishiki head picked. The same-kind restriction removes tile-type
 composition: early safe floaters are mostly guest winds, which LuckyJ cuts first regardless.
 
-Outputs analysis/safe-tile-timing-<date>.json, with the banded figures the book cites under
-"summary_bands". Rebuild the bands from an existing file with --summarize PATH.
+Outputs analysis/safe-tile-timing-<date>.json. "summary_turns" holds the per-discard counts and the
+fitted curves the book's charts draw; "summary_bands" pools the same counts into turn bands for the
+method report. Rebuild both from an existing file with --summarize PATH.
 """
 
 from __future__ import annotations
@@ -203,11 +204,205 @@ def summarize(out: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+
+# ----------------------------------------------------------------------------- per-discard fit
+#
+# The book's charts plot one point per discard and a fitted curve through them, so noisy late
+# discards do not decide the shape. The fit is a binomial logistic regression of "kept the safe
+# leftover" on a natural cubic spline of the discard number (Hastie, Tibshirani and Friedman, The
+# Elements of Statistical Learning, eq. 5.4), with 1, 2 or 3 degrees of freedom chosen by AIC. It
+# runs over the longest run of discards that each have at least FIT_MIN_CHOICES choices. The 95%
+# band scales the covariance by the Pearson dispersion when it exceeds 1. Plain Python: the data is
+# at most 18 points per series.
+
+FIT_MIN_CHOICES = 10
+FIT_DFS = (1, 2, 3)
+PANEL_KEYS = (("quiet", "honor"), ("quiet", "terminal"), ("quiet", "middle"), ("threat", "any"))
+
+
+def _solve(a: list[list[float]], b: list[float]) -> list[float]:
+    n = len(a)
+    m = [list(map(float, row)) + [float(b[i])] for i, row in enumerate(a)]
+    for col in range(n):
+        piv = max(range(col, n), key=lambda r: abs(m[r][col]))
+        if abs(m[piv][col]) < 1e-12:
+            raise ValueError("singular system")
+        m[col], m[piv] = m[piv], m[col]
+        for r in range(n):
+            if r != col and m[r][col]:
+                f = m[r][col] / m[col][col]
+                for c in range(col, n + 1):
+                    m[r][c] -= f * m[col][c]
+    return [m[i][n] / m[i][i] for i in range(n)]
+
+
+def _inverse(a: list[list[float]]) -> list[list[float]]:
+    n = len(a)
+    cols = [_solve(a, [1.0 if i == j else 0.0 for i in range(n)]) for j in range(n)]
+    return [[cols[j][i] for j in range(n)] for i in range(n)]
+
+
+def _expit(x: float) -> float:
+    if x >= 0:
+        return 1.0 / (1.0 + math.exp(-x))
+    e = math.exp(x)
+    return e / (1.0 + e)
+
+
+def _ns_row(x: float, knots: list[float]) -> list[float]:
+    """Intercept plus a natural cubic spline basis in x: linear beyond the boundary knots."""
+    row = [1.0, x]
+    if len(knots) > 2:
+        last = knots[-1]
+
+        def d(k: int) -> float:
+            return (max(x - knots[k], 0.0) ** 3 - max(x - last, 0.0) ** 3) / (last - knots[k])
+
+        tail = d(len(knots) - 2)
+        row += [d(k) - tail for k in range(len(knots) - 2)]
+    return row
+
+
+def _logit_fit(rows: list[list[float]], k: list[int], n: list[int]) -> dict[str, Any]:
+    p = len(rows[0])
+    pooled = min(max(sum(k) / sum(n), 1e-3), 1 - 1e-3)
+    beta = [math.log(pooled / (1 - pooled))] + [0.0] * (p - 1)
+    for _ in range(200):
+        eta = [sum(r[j] * beta[j] for j in range(p)) for r in rows]
+        mu = [min(max(_expit(e), 1e-9), 1 - 1e-9) for e in eta]
+        w = [ni * m * (1 - m) for ni, m in zip(n, mu)]
+        z = [e + (ki / ni - m) / (m * (1 - m)) for e, ki, ni, m in zip(eta, k, n, mu)]
+        xtwx = [[sum(w[i] * rows[i][a] * rows[i][b] for i in range(len(rows))) for b in range(p)] for a in range(p)]
+        xtwz = [sum(w[i] * rows[i][a] * z[i] for i in range(len(rows))) for a in range(p)]
+        new = _solve(xtwx, xtwz)
+        done = max(abs(x - y) for x, y in zip(new, beta)) < 1e-10
+        beta = new
+        if done:
+            break
+    eta = [sum(r[j] * beta[j] for j in range(p)) for r in rows]
+    mu = [min(max(_expit(e), 1e-9), 1 - 1e-9) for e in eta]
+    w = [ni * m * (1 - m) for ni, m in zip(n, mu)]
+    xtwx = [[sum(w[i] * rows[i][a] * rows[i][b] for i in range(len(rows))) for b in range(p)] for a in range(p)]
+    deviance = 0.0
+    pearson = 0.0
+    for ki, ni, m in zip(k, n, mu):
+        if ki:
+            deviance += 2 * ki * math.log(ki / (ni * m))
+        if ni - ki:
+            deviance += 2 * (ni - ki) * math.log((ni - ki) / (ni * (1 - m)))
+        pearson += (ki - ni * m) ** 2 / (ni * m * (1 - m))
+    return {"beta": beta, "xtwx": xtwx, "deviance": deviance, "pearson": pearson, "aic": deviance + 2 * p}
+
+
+def _longest_run(turns: list[int], n_by_turn: dict[int, int], minimum: int) -> tuple[int, int] | None:
+    best, run = None, []
+    for t in turns:
+        if n_by_turn.get(t, 0) >= minimum:
+            run.append(t)
+            if best is None or len(run) > best[1] - best[0] + 1:
+                best = (run[0], run[-1])
+        else:
+            run = []
+    return best
+
+
+def fit_series(turn_rows: list[dict[str, int]], key: str, lo: int, hi: int) -> dict[str, Any]:
+    """Fit one series (LuckyJ or NAGA) over discards lo..hi; key is "lj" or "naga"."""
+    pts = [r for r in turn_rows if lo <= r["turn"] <= hi and r[f"{key}_n"] > 0]
+    span = hi - lo
+    xs = [(r["turn"] - lo) / span for r in pts]
+    k = [r[f"{key}_k"] for r in pts]
+    n = [r[f"{key}_n"] for r in pts]
+    unique = sorted(set(xs))
+    fits = {}
+    for df in FIT_DFS:
+        if len(pts) - (df + 1) < 2:
+            continue
+        interior = [unique[round(q * (len(unique) - 1))] for q in [(i + 1) / df for i in range(df - 1)]]
+        interior = sorted({x for x in interior if 0.0 < x < 1.0})
+        if len(interior) != df - 1:
+            continue
+        knots = [0.0] + interior + [1.0]
+        rows = [_ns_row(x, knots) for x in xs]
+        try:
+            fit = _logit_fit(rows, k, n)
+        except ValueError:
+            continue
+        fit["knots"] = knots
+        fits[df] = fit
+    df = min(fits, key=lambda d: fits[d]["aic"])
+    fit = fits[df]
+    p = len(fit["beta"])
+    dispersion = max(1.0, fit["pearson"] / (len(pts) - p))
+    cov = [[dispersion * v for v in row] for row in _inverse(fit["xtwx"])]
+
+    def at(turn: float) -> tuple[float, float]:
+        row = _ns_row((turn - lo) / span, fit["knots"])
+        eta = sum(row[j] * fit["beta"][j] for j in range(p))
+        var = sum(row[a] * cov[a][b] * row[b] for a in range(p) for b in range(p))
+        return eta, math.sqrt(max(var, 0.0))
+
+    grid = []
+    steps = int(round(span * 10))
+    for i in range(steps + 1):
+        turn = lo + i / 10
+        eta, se = at(turn)
+        grid.append([round(turn, 1), round(100 * _expit(eta), 2), round(100 * _expit(eta - 1.96 * se), 2), round(100 * _expit(eta + 1.96 * se), 2)])
+    crossings = []
+    previous = at(lo)[0]
+    for i in range(1, span * 100 + 1):
+        turn = lo + i / 100
+        eta = at(turn)[0]
+        if (previous < 0) != (eta < 0):
+            crossings.append({"turn": round(turn, 2), "direction": "up" if eta > previous else "down"})
+        previous = eta
+    return {
+        "df": df,
+        "knots_turn": [round(lo + x * span, 3) for x in fit["knots"]],
+        "aic_by_df": {str(d): round(f["aic"], 3) for d, f in fits.items()},
+        "dispersion": round(dispersion, 3),
+        "points": len(pts),
+        "crossings_50": crossings,
+        "grid": grid,
+    }
+
+
+def summarize_turns(out: dict[str, Any]) -> dict[str, Any]:
+    by_turn = out["by_turn"]
+    panels = {}
+    for split, kind in PANEL_KEYS:
+        rows = []
+        for turn in range(1, MAX_TURN + 1):
+            fc = by_turn[split][str(turn)]["floater_choice"]
+            if kind == "any":
+                safe, live = fc["picked_safe_floater"]["hits"], fc["picked_live_floater"]["hits"]
+                nsafe, nlive = fc["naga_picked_safe_floater"]["hits"], fc["naga_picked_live_floater"]["hits"]
+            else:
+                block = fc["by_kind"][kind]
+                safe, live = block["picked_safe"]["hits"], block["picked_live"]["hits"]
+                nsafe, nlive = block["naga_picked_safe"]["hits"], block["naga_picked_live"]["hits"]
+            rows.append({"turn": turn, "lj_k": live, "lj_n": safe + live, "naga_k": nlive, "naga_n": nsafe + nlive})
+        span = _longest_run(list(range(1, MAX_TURN + 1)), {r["turn"]: r["lj_n"] for r in rows}, FIT_MIN_CHOICES)
+        lo, hi = span
+        panels[f"{split}-{kind}"] = {
+            "turns": rows,
+            "range": [lo, hi],
+            "fits": {"LuckyJ": fit_series(rows, "lj", lo, hi), "NAGA": fit_series(rows, "naga", lo, hi)},
+        }
+    return {
+        "definition": "per discard: k = choices where the live leftover was thrown (the safe one kept), n = choices of either leftover; percentages are 100 k / n",
+        "method": "binomial logistic regression on a natural cubic spline of the discard number, 1 to 3 degrees of freedom chosen by AIC, fitted over the longest run of discards with at least 10 choices each; the 95% band uses the covariance scaled by max(1, Pearson dispersion)",
+        "min_choices": FIT_MIN_CHOICES,
+        "panels": panels,
+    }
+
+
 def main() -> None:
     if len(sys.argv) == 3 and sys.argv[1] == "--summarize":
         path = Path(sys.argv[2])
         out = json.loads(path.read_text())
         out["summary_bands"] = summarize(out)
+        out["summary_turns"] = summarize_turns(out)
         path.write_text(json.dumps(out, indent=2))
         print("summarized", path)
         return
@@ -402,6 +597,7 @@ def main() -> None:
         },
     }
     out["summary_bands"] = summarize(out)
+    out["summary_turns"] = summarize_turns(out)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(out, indent=2))
     print("wrote", OUT)

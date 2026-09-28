@@ -2951,10 +2951,10 @@ html:lang(ja) :is(.fold-title, .fold-sub, .fold-grid, .fold-key, .fold-figure fi
 
 /* ------------------------------------------------------------------ safe-tile timing */
 
-/* Small line charts on one plate, drawn like the personal guide's: LuckyJ in jade, NAGA in a
-   recessive gray, and the half below 50% washed vermilion, where the safe tile goes first. The SVG
-   is static, written by scripts/build_safe_tile_timing_figures.py; app.js adds the crosshair and
-   the tooltip. */
+/* Small charts on one plate, drawn like the personal guide's: one jade dot per discard (sized by its
+   choices) under LuckyJ's fitted curve and its 95% band, NAGA's fitted curve in a recessive gray, and
+   the half below 50% washed vermilion, where the safe tile goes first. The SVG is static, written by
+   scripts/build_safe_tile_timing_figures.py; app.js adds the crosshair and the tooltip. */
 .section > .timing-figure {
   grid-column: 2 / 4;
   margin: 48px 0 0;
@@ -3020,23 +3020,25 @@ html:lang(ja) :is(.fold-title, .fold-sub, .fold-grid, .fold-key, .fold-figure fi
   content: "";
 }
 
-.timing-key.lj::before,
+.timing-key.lj::before {
+  width: 22px;
+  height: 10px;
+  background:
+    radial-gradient(circle, var(--timing-lj) 0 3.5px, transparent 4px) center / 10px 10px no-repeat,
+    linear-gradient(var(--timing-lj), var(--timing-lj)) center / 22px 2px no-repeat;
+}
+
 .timing-key.naga::before {
   width: 22px;
   height: 2px;
-  background: var(--timing-lj);
-}
-
-.timing-key.naga::before {
   background: var(--timing-naga);
 }
 
-.timing-key.hollow::before {
-  width: 8px;
-  height: 8px;
-  border: 2px solid var(--timing-lj);
-  border-radius: 50%;
-  background: var(--plate);
+.timing-key.band::before {
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--hair);
+  background: color-mix(in srgb, var(--timing-lj) 16%, var(--plate));
 }
 
 .timing-key.wash::before {
@@ -3095,7 +3097,12 @@ html:lang(ja) :is(.fold-title, .fold-sub, .fold-grid, .fold-key, .fold-figure fi
 
 .timing-plate .timing-wash {
   fill: var(--verm-soft);
-  opacity: 0.6;
+  opacity: 0.5;
+}
+
+.timing-plate .timing-band {
+  fill: var(--timing-lj);
+  opacity: 0.14;
 }
 
 .timing-plate .timing-grid {
@@ -3108,7 +3115,7 @@ html:lang(ja) :is(.fold-title, .fold-sub, .fold-grid, .fold-key, .fold-figure fi
   stroke-width: 1;
 }
 
-.timing-plate :is(.timing-tick, .timing-cat, .timing-axis, .timing-label) {
+.timing-plate :is(.timing-tick, .timing-cat, .timing-axis, .timing-label, .timing-note) {
   font-family: var(--sans);
 }
 
@@ -3137,22 +3144,34 @@ html:lang(ja) :is(.fold-title, .fold-sub, .fold-grid, .fold-key, .fold-figure fi
   text-anchor: middle;
 }
 
-.timing-plate .timing-label.is-end {
+.timing-plate .timing-label.is-start,
+.timing-plate .timing-note.is-start {
+  text-anchor: start;
+}
+
+.timing-plate .timing-label.is-end,
+.timing-plate .timing-note.is-end {
   text-anchor: end;
 }
 
-.timing-plate .timing-line {
+.timing-plate .timing-note {
+  fill: var(--ink-2);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.timing-plate :is(.timing-line, .timing-fit) {
   fill: none;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.timing-plate .timing-line.lj {
+.timing-plate .timing-fit.lj {
   stroke: var(--timing-lj);
 }
 
-.timing-plate .timing-line.naga {
+.timing-plate .timing-fit.naga {
   stroke: var(--timing-naga);
 }
 
@@ -3172,26 +3191,18 @@ html:lang(ja) :is(.fold-title, .fold-sub, .fold-grid, .fold-key, .fold-figure fi
 
 .timing-plate .timing-dot.lj {
   fill: var(--timing-lj);
-}
-
-.timing-plate .timing-dot.naga {
-  fill: var(--timing-naga);
+  fill-opacity: 0.8;
+  stroke-width: 1.5;
 }
 
 .timing-plate .timing-dot.threat {
   fill: var(--timing-threat);
 }
 
-.timing-plate .timing-dot.hollow {
+.timing-plate .timing-switch {
   fill: var(--plate);
-}
-
-.timing-plate .timing-dot.lj.hollow {
-  stroke: var(--timing-lj);
-}
-
-.timing-plate .timing-dot.naga.hollow {
-  stroke: var(--timing-naga);
+  stroke: var(--ink);
+  stroke-width: 1.5;
 }
 
 .timing-plate .timing-cross {
@@ -3383,6 +3394,10 @@ html:lang(ja) :is(.timing-title, .timing-sub, .timing-legend, .timing-panel-titl
 
   .timing-plate .timing-label {
     font-size: 14.5px;
+  }
+
+  .timing-plate .timing-note {
+    font-size: 12.5px;
   }
 }
 

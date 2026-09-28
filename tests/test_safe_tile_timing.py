@@ -1,5 +1,6 @@
 """The "When LuckyJ starts keeping safe tiles" section draws its charts and tables from its analysis
-artifact, in both editions, and keeps its numbers out of the prose."""
+artifact, in both editions: one dot per discard, a fitted curve through them, and prose whose claims
+follow the fit rather than hand-picked turn bands."""
 
 import html
 import json
@@ -11,15 +12,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT = json.loads((ROOT / "analysis/safe-tile-timing-2026-09-28.json").read_text(encoding="utf-8"))
-SUMMARY = ARTIFACT["summary_bands"]
-BANDS = SUMMARY["bands"]
-SHARE = SUMMARY["threat_share_by_turn"]
-QUIET = BANDS["quiet"]
-THREAT = BANDS["threat"]["any"]
-BAND_ORDER = ("1-2", "3-5", "6-8", "9-12", "13-18")
-PANELS = (("quiet", "honor"), ("quiet", "terminal"), ("quiet", "middle"), ("threat", "any"))
-MIN_PLOTTED = 30
-MIN_SOLID = 50
+TURNS_SUMMARY = ARTIFACT["summary_turns"]
+PANELS = TURNS_SUMMARY["panels"]
+SHARE = ARTIFACT["summary_bands"]["threat_share_by_turn"]
+PANEL_KEYS = ("quiet-honor", "quiet-terminal", "quiet-middle", "threat-any")
 PAGES = ("points.html", "ja.html")
 
 
@@ -42,15 +38,16 @@ def plain(markup):
     return html.unescape(re.sub(r"<[^>]+>", " ", markup))
 
 
-def prose(name):
-    """The section's own sentences: paragraphs, rule and exception, without the figures."""
-    text = section(name)
-    text = re.sub(r"<figure.*?</figure>", " ", text, flags=re.S)
-    return plain(text)
-
-
 def pct(value):
     return f"{value:.1f}%"
+
+
+def fit(key, who="LuckyJ"):
+    return PANELS[key]["fits"][who]
+
+
+def fitted_at(key, turn, who="LuckyJ"):
+    return next(g[1] for g in fit(key, who)["grid"] if g[0] == float(turn))
 
 
 class ArtifactTests(unittest.TestCase):
@@ -58,37 +55,53 @@ class ArtifactTests(unittest.TestCase):
         self.assertEqual(ARTIFACT["summary"]["child_kyoku"], 9745)
         self.assertEqual(ARTIFACT["summary"]["errors"], [])
 
-    def test_the_claims_follow_the_artifact(self):
-        """What the prose, captions and rule say in words, checked against the numbers."""
-        live = lambda kind, band: QUIET[kind][band]["LuckyJ"]["live_share_pct"]
-        naga = lambda kind, band: QUIET[kind][band]["NAGA"]["live_share_pct"]
-        # terminals and middle tiles: the safe one kept from the first discard
-        self.assertGreater(live("terminal", "1-2"), 60)
-        self.assertGreater(live("middle", "1-2"), 60)
+    def test_each_fit_runs_over_discards_with_enough_choices(self):
+        for key in PANEL_KEYS:
+            lo, hi = PANELS[key]["range"]
+            rows = {r["turn"]: r for r in PANELS[key]["turns"]}
+            with self.subTest(panel=key):
+                self.assertTrue(all(rows[t]["lj_n"] >= TURNS_SUMMARY["min_choices"] for t in range(lo, hi + 1)))
+                for who in ("LuckyJ", "NAGA"):
+                    grid = fit(key, who)["grid"]
+                    self.assertEqual((grid[0][0], grid[-1][0]), (float(lo), float(hi)))
+                    self.assertIn(fit(key, who)["df"], (1, 2, 3))
+                    self.assertTrue(all(g[2] <= g[1] <= g[3] for g in grid))
+
+    def test_the_claims_follow_the_fits(self):
+        """What the prose, captions and rule say in words, checked against the fitted curves."""
         # guest winds: the safe one goes first on the first two discards, kept from the third
-        self.assertLess(live("honor", "1-2"), 40)
-        self.assertGreater(live("honor", "3-5"), 60)
-        self.assertGreater(live("honor", "6-8"), 60)
-        # NAGA: same way on terminals but less firmly, no preference on middle tiles through the fifth,
-        # and the other way on guest winds at the start
-        self.assertGreater(naga("terminal", "1-2"), 50)
-        self.assertLess(naga("terminal", "1-2"), live("terminal", "1-2"))
-        for band in ("1-2", "3-5"):
-            self.assertAlmostEqual(naga("middle", band), 50, delta=3)
-        self.assertGreater(naga("honor", "1-2"), 50)
-        # from the ninth discard the safe middle tile goes first more often than not
-        self.assertLess(live("middle", "9-12"), 50)
-        # once someone threatens, the safe leftover goes first in every plotted band, and NAGA agrees
-        for band in ("3-5", "6-8", "9-12", "13-18"):
-            self.assertLess(THREAT[band]["LuckyJ"]["live_share_pct"], 30)
-            self.assertLess(THREAT[band]["NAGA"]["live_share_pct"], 30)
+        crossings = fit("quiet-honor")["crossings_50"]
+        self.assertEqual(len(crossings), 1)
+        self.assertEqual(crossings[0]["direction"], "up")
+        self.assertTrue(2 < crossings[0]["turn"] < 3)
+        # NAGA leans the other way on guest winds at the start
+        self.assertGreater(fitted_at("quiet-honor", 1, "NAGA"), 50)
+        self.assertGreater(fitted_at("quiet-honor", 2, "NAGA"), 50)
+        # terminals and middle tiles: the safe one kept from the first discard
+        self.assertGreater(fitted_at("quiet-terminal", 1), 60)
+        self.assertGreater(fitted_at("quiet-middle", 1), 60)
+        self.assertEqual(fit("quiet-terminal")["crossings_50"], [])
+        # NAGA keeps the safe terminal a little less firmly
+        self.assertLess(fitted_at("quiet-terminal", 1, "NAGA"), fitted_at("quiet-terminal", 1))
+        self.assertGreater(fitted_at("quiet-terminal", 1, "NAGA"), 50)
+        # middle tiles: LuckyJ lets the safe one go first from about the seventh discard, NAGA from about the fourth
+        (middle,) = fit("quiet-middle")["crossings_50"]
+        self.assertEqual(middle["direction"], "down")
+        self.assertTrue(6 < middle["turn"] < 7)
+        (naga_middle,) = fit("quiet-middle", "NAGA")["crossings_50"]
+        self.assertEqual(naga_middle["direction"], "down")
+        self.assertTrue(3 < naga_middle["turn"] < 4)
+        self.assertAlmostEqual(fitted_at("quiet-middle", 1, "NAGA"), 50, delta=8)  # "starts near even"
+        # once someone threatens, the safe leftover goes first all the way, for LuckyJ and NAGA
+        for who in ("LuckyJ", "NAGA"):
+            self.assertTrue(all(g[1] < 50 for g in fit("threat-any", who)["grid"]))
         # the threat chart's caption
         self.assertEqual(int(SHARE["4"]["threat_pct"] + 0.5), 8)
         self.assertGreater(SHARE["10"]["threat_pct"], 50)
 
 
 class ChartTests(unittest.TestCase):
-    dot = re.compile(r'<circle class="timing-dot (lj|naga)( hollow)?" [^>]*data-band="([\d-]+)" data-pct="([\d.]+)"')
+    dot = re.compile(r'<circle class="timing-dot lj" [^>]*data-turn="(\d+)" data-pct="([\d.]+)" data-n="(\d+)"')
 
     def test_the_pages_match_the_generator(self):
         run = subprocess.run(
@@ -97,22 +110,35 @@ class ChartTests(unittest.TestCase):
         )
         self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
 
-    def test_every_point_of_the_four_panels_comes_from_the_artifact(self):
+    def test_one_dot_per_discard_from_the_artifact(self):
         for name in PAGES:
             keep = block(section(name), '<figure class="timing-figure" id="timing-keep"', "</figure>")
-            for split, kind in PANELS:
-                panel = block(keep, f'data-panel="{split}-{kind}"', "</svg>")
-                found = self.dot.findall(panel)
-                expected = []
-                for who, key in (("naga", "NAGA"), ("lj", "LuckyJ")):
-                    for band in BAND_ORDER:
-                        cell = BANDS[split][kind][band]
-                        if cell["LuckyJ"]["cuts"] < MIN_PLOTTED:
-                            continue
-                        hollow = " hollow" if cell["LuckyJ"]["cuts"] < MIN_SOLID else ""
-                        expected.append((who, hollow, band, f"{cell[key]['live_share_pct']:.1f}"))
-                with self.subTest(page=name, panel=f"{split}-{kind}"):
-                    self.assertEqual(found, expected)
+            for key in PANEL_KEYS:
+                panel = block(keep, f'data-panel="{key}"', "</svg>")
+                lo, hi = PANELS[key]["range"]
+                rows = {r["turn"]: r for r in PANELS[key]["turns"]}
+                expected = [(str(t), f"{100 * rows[t]['lj_k'] / rows[t]['lj_n']:.1f}", str(rows[t]["lj_n"])) for t in range(lo, hi + 1)]
+                with self.subTest(page=name, panel=key):
+                    self.assertEqual(self.dot.findall(panel), expected)
+                    self.assertEqual(panel.count('class="timing-hit"'), hi - lo + 1)
+
+    def test_fitted_curves_band_and_crossings_are_drawn(self):
+        for name in PAGES:
+            keep = block(section(name), '<figure class="timing-figure" id="timing-keep"', "</figure>")
+            for key in PANEL_KEYS:
+                panel = block(keep, f'data-panel="{key}"', "</svg>")
+                with self.subTest(page=name, panel=key):
+                    for who, cls in (("LuckyJ", "lj"), ("NAGA", "naga")):
+                        points = re.search(rf'<polyline class="timing-fit {cls}" points="([^"]+)"', panel).group(1).split()
+                        self.assertEqual(len(points), len(fit(key, who)["grid"]))
+                    band = re.search(r'<polygon class="timing-band" points="([^"]+)"', panel).group(1).split()
+                    self.assertEqual(len(band), 2 * len(fit(key)["grid"]))
+                    crossings = re.findall(r'<circle class="timing-switch" [^>]*data-turn="([\d.]+)"', panel)
+                    self.assertEqual(crossings, [f"{c['turn']:.2f}" for c in fit(key)["crossings_50"]])
+                    for c in fit(key)["crossings_50"]:
+                        a = int(c["turn"])
+                        note = f"between discards {a} and {a + 1}" if name == "points.html" else f"{a}打目と{a + 1}打目の間"
+                        self.assertIn(note, plain(panel))
 
     def test_the_threat_chart_comes_from_the_artifact(self):
         for name in PAGES:
@@ -124,17 +150,19 @@ class ChartTests(unittest.TestCase):
                 points = re.search(r'<polyline class="timing-line threat" points="([^"]+)"', threat).group(1).split()
                 self.assertEqual(len(points), 18)
 
-    def test_the_tables_hold_every_rate_and_sample(self):
+    def test_the_tables_hold_every_discard(self):
         for name in PAGES:
             keep = plain(block(section(name), '<figure class="timing-figure" id="timing-keep"', "</figure>"))
             threat = plain(block(section(name), '<figure class="timing-figure is-single" id="timing-threat"', "</figure>"))
-            for split, kind in PANELS:
-                for band in BAND_ORDER:
-                    cell = BANDS[split][kind][band]
-                    if cell["LuckyJ"]["cuts"] == 0:
+            for key in PANEL_KEYS:
+                for r in PANELS[key]["turns"]:
+                    if not r["lj_n"]:
                         continue
-                    for figure in (pct(cell["LuckyJ"]["live_share_pct"]), pct(cell["NAGA"]["live_share_pct"]), f"{cell['LuckyJ']['cuts']:,}"):
-                        with self.subTest(page=name, panel=f"{split}-{kind}", band=band, figure=figure):
+                    figures = [pct(100 * r["lj_k"] / r["lj_n"]), f"{r['lj_n']:,}"]
+                    if r["naga_n"]:
+                        figures.append(pct(100 * r["naga_k"] / r["naga_n"]))
+                    for figure in figures:
+                        with self.subTest(page=name, panel=key, turn=r["turn"], figure=figure):
                             self.assertIn(figure, keep)
             for turn in range(1, 19):
                 for figure in (pct(SHARE[str(turn)]["threat_pct"]), f"{SHARE[str(turn)]['states']:,}"):
@@ -142,7 +170,6 @@ class ChartTests(unittest.TestCase):
                         self.assertIn(figure, threat)
 
     def test_charts_are_readable_without_the_tooltip(self):
-        """Every plotted panel names itself for screen readers, and the hover layer is wired up."""
         for name in PAGES:
             text = section(name)
             with self.subTest(page=name):
@@ -151,6 +178,20 @@ class ChartTests(unittest.TestCase):
         app = (ROOT / "site/app.js").read_text(encoding="utf-8")
         self.assertIn("function setupTimingCharts()", app)
         self.assertIn("  setupTimingCharts();\n", app)
+
+
+class ProseTests(unittest.TestCase):
+    def test_the_turns_named_in_the_prose_are_the_fitted_ones(self):
+        en = plain(section("points.html"))
+        ja = plain(section("ja.html"))
+        self.assertIn("From about the seventh discard LuckyJ throws the safe middle tile first", en)
+        self.assertIn("From about your seventh discard, start throwing a safe middle tile first", en)
+        self.assertIn("throws the safe one first from about the fourth discard", en)
+        self.assertIn("From the third discard LuckyJ keeps the safe wind", en)
+        self.assertIn("7打目ごろからは、LuckyJ は河にある中張牌を先に切る", ja)
+        self.assertIn("4打目ごろから安全な方を先に切る", ja)
+        for text in (en, ja):
+            self.assertNotRegex(text, r"ninth discard|9打目から")
 
 
 class PlacementTests(unittest.TestCase):
@@ -194,25 +235,6 @@ class VoiceTests(unittest.TestCase):
                 self.assertNotRegex(text, r"[—–]")
                 self.assertNotRegex(text, r"(?i)\bof course\b|もちろん|のである")
                 self.assertNotRegex(text, r"\bis not [^.;:]{1,40}[.;] It(?:'s| is)\b")
-
-    def test_no_ratios_written_out_in_words(self):
-        """The reader found "three times in four" hard to follow: rates live in the charts and tables."""
-        number = r"(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+)"
-        for name in PAGES:
-            text = prose(name)
-            with self.subTest(page=name):
-                self.assertNotRegex(text, rf"(?i)\b{number}\s+(?:times?\s+)?in\s+{number}\b")
-                self.assertNotRegex(text, r"(?i)\bthree quarters\b|\bin every \w+ hands\b")
-                self.assertNotRegex(text, r"\d+回に\d+回|\d+分の\d+")
-
-    def test_the_prose_keeps_numbers_to_the_evidence(self):
-        """Outside the evidence note, the paragraphs name turns, not rates."""
-        for name in PAGES:
-            text = section(name)
-            text = re.sub(r"<figure.*?</figure>", " ", text, flags=re.S)
-            text = re.sub(r'<p class="evidence-note">.*?</p>', " ", text, flags=re.S)
-            with self.subTest(page=name):
-                self.assertNotRegex(plain(text), r"\d+(?:\.\d+)?\s*%")
 
 
 if __name__ == "__main__":

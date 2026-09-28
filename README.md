@@ -93,7 +93,9 @@ which leftover LuckyJ and NAGA throw first when one is already in a river; the r
 .venv/bin/python scripts/mine_safe_tile_timing.py  # writes analysis/safe-tile-timing-<date>.json
 ```
 
-The section's charts and tables are static SVG and HTML drawn from that JSON; redraw them after a rerun:
+The section's charts and tables are static SVG and HTML drawn from that JSON: one point per discard,
+with a logistic fit on a natural spline of the discard number and its 95% band (method in the report).
+Redraw them after a rerun:
 
 ```bash
 .venv/bin/python scripts/build_safe_tile_timing_figures.py          # rewrites the two figures in points.html and ja.html

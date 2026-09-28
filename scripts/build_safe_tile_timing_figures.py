@@ -4,9 +4,11 @@
 The section in site/points.html and site/ja.html carries two figures, each written between
 marker comments that this script fills:
 
-  <!-- timing-figure:keep -->   four small line charts: how often LuckyJ kept the safe leftover,
-                                by its own discards, for guest winds, terminals and middle tiles on
-                                a quiet table, and for any leftover once someone threatens
+  <!-- timing-figure:keep -->   four small charts: how often LuckyJ kept the safe leftover at each
+                                of its own discards (one dot per discard, sized by its choices),
+                                with a fitted curve and its 95% band, for guest winds, terminals and
+                                middle tiles on a quiet table, and for any leftover once someone
+                                threatens; NAGA's fitted curve in gray
   <!-- timing-figure:threat --> one area chart: how often a riichi or a two-call hand is on the
                                 table, by LuckyJ's own discard
 
@@ -28,10 +30,9 @@ ROOT = Path(__file__).resolve().parents[1]
 ARTIFACT = ROOT / "analysis/safe-tile-timing-2026-09-28.json"
 PAGES = {"en": ROOT / "site/points.html", "ja": ROOT / "site/ja.html"}
 
-BANDS = ("1-2", "3-5", "6-8", "9-12", "13-18")
 PANELS = (("quiet", "honor"), ("quiet", "terminal"), ("quiet", "middle"), ("threat", "any"))
-MIN_PLOTTED = 30  # a band with fewer choices is left off the chart (it stays in the table)
-MIN_SOLID = 50  # a plotted band with fewer choices gets a hollow point
+TURNS = tuple(range(1, 19))
+X_TICKS = (1, 3, 6, 9, 12, 15, 18)
 
 # One panel's drawing box, in SVG user units. The panels render at roughly this width on a phone
 # and a little wider on a desktop, so the text stays near its set size on both.
@@ -42,10 +43,10 @@ PW, PH = W - M["l"] - M["r"], H - M["t"] - M["b"]
 TEXT = {
     "en": {
         "keep_title": "How often LuckyJ kept the safe leftover",
-        "keep_sub": "Two leftovers of the same kind, one already in an opponent&#8217;s river: the share of choices where LuckyJ kept that one and threw the other.",
-        "legend_lj": "LuckyJ",
-        "legend_naga": "NAGA at the same spot",
-        "legend_hollow": "fewer than 50 choices",
+        "keep_sub": "Two leftovers of the same kind, one already in an opponent&#8217;s river: the share of choices where LuckyJ kept that one and threw the other. Each dot is one discard, sized by its number of choices; the line is a fitted curve.",
+        "legend_lj": "LuckyJ, per discard and fitted",
+        "legend_band": "95% range of the fit",
+        "legend_naga": "NAGA, fitted",
         "legend_wash": "below 50%, the safe tile goes first",
         "panels": {
             "honor": ("Guest winds", "Quiet table"),
@@ -53,36 +54,35 @@ TEXT = {
             "middle": ("Middle tiles", "Quiet table, 2 to 8"),
             "any": ("Once someone threatens", "After a riichi or a second call, any kind"),
         },
-        "bands": {b: b for b in BANDS},
-        "axis_keep": "LuckyJ&#8217;s own discards",
-        "keep_caption": "Terminals and middle tiles are saved from the first discard, guest winds from the third. From the ninth discard the safe middle tile starts to go first, and once someone threatens, every safe leftover does.",
+        "axis_keep": "LuckyJ&#8217;s own discard",
+        "cross": "50% between discards {a} and {b}",
+        "keep_caption": "Terminals and middle tiles are saved from the first discard, guest winds from the third. From about the seventh discard the safe middle tile starts to go first, and once someone threatens, every safe leftover does.",
         "table_summary": "The numbers as a table",
-        "table_keep_note": "Each cell: LuckyJ, then NAGA, then the number of choices.",
-        "table_leftover": "Leftover",
-        "table_band_head": "Discards {band}",
+        "table_keep_note": "Each cell: LuckyJ, then NAGA, then the number of choices. Discards with no choices are blank.",
+        "table_discard": "Discard",
         "choices": "{n} choices",
-        "tip_band": "Discards {band}",
+        "tip_turn": "Discard {turn}",
+        "tip_fit": "fitted {pct}",
         "threat_title": "When threats arrive",
         "threat_sub": "Share of LuckyJ&#8217;s decisions facing a riichi or a hand with two calls, by its own discard",
         "axis_threat": "LuckyJ&#8217;s own discard",
         "threat_caption": "At its fourth discard, 8% of LuckyJ&#8217;s decisions face a threat. By its tenth, more than half do.",
-        "threat_table_discard": "Discard",
         "threat_table_share": "Facing a threat",
         "threat_table_states": "Decisions",
-        "tip_turn": "Discard {turn}",
         "tip_threat": "faced a threat",
         "tip_states": "{n} decisions",
-        "keep_aria": "{title}: LuckyJ kept the safe leftover {points}.",
-        "keep_aria_point": "{pct} on discards {band}",
+        "keep_aria": "{title}: LuckyJ&#8217;s fitted rate of keeping the safe leftover is {points}.{cross}",
+        "keep_aria_point": "{pct} at discard {turn}",
+        "keep_aria_cross": " It crosses 50% between discards {a} and {b}.",
         "threat_aria": "When threats arrive: {points}.",
         "threat_aria_point": "{pct} at discard {turn}",
     },
     "ja": {
         "keep_title": "LuckyJ が安全な浮き牌を残した割合",
-        "keep_sub": "同じ種類の浮き牌が2枚あり、1枚はすでに相手の河にあるとき、LuckyJ がその牌を残してもう1枚を切った割合。",
-        "legend_lj": "LuckyJ",
-        "legend_naga": "同じ局面の NAGA",
-        "legend_hollow": "選択が50回未満",
+        "keep_sub": "同じ種類の浮き牌が2枚あり、1枚はすでに相手の河にあるとき、LuckyJ がその牌を残してもう1枚を切った割合。点は1打ごとの値で、大きさは選択の回数を表す。線は当てはめた曲線。",
+        "legend_lj": "LuckyJ（1打ごとの値と曲線）",
+        "legend_band": "曲線の95%範囲",
+        "legend_naga": "NAGA（曲線）",
         "legend_wash": "50%未満は安全な方が先に出る",
         "panels": {
             "honor": ("客風", "静かな場"),
@@ -90,27 +90,26 @@ TEXT = {
             "middle": ("中張牌", "静かな場、2〜8"),
             "any": ("脅威が出た後", "リーチか2副露の後、すべての種類"),
         },
-        "bands": {b: b.replace("-", "〜") for b in BANDS},
         "axis_keep": "LuckyJ 自身の打牌数",
-        "keep_caption": "端牌と中張牌は1打目から、客風は3打目から取っておく。9打目からは安全な中張牌が先に出始め、誰かが脅威になると、どの安全な浮き牌も先に出る。",
+        "cross": "{a}打目と{b}打目の間で50%",
+        "keep_caption": "端牌と中張牌は1打目から、客風は3打目から取っておく。7打目ごろからは安全な中張牌が先に出始め、誰かが脅威になると、どの安全な浮き牌も先に出る。",
         "table_summary": "数字を表で見る",
-        "table_keep_note": "各マスは LuckyJ、NAGA、選択の回数の順。",
-        "table_leftover": "浮き牌",
-        "table_band_head": "{band}打目",
+        "table_keep_note": "各マスは LuckyJ、NAGA、選択の回数の順。選択がない打牌は空欄。",
+        "table_discard": "打牌",
         "choices": "選択{n}回",
-        "tip_band": "{band}打目",
+        "tip_turn": "{turn}打目",
+        "tip_fit": "曲線 {pct}",
         "threat_title": "脅威が出てくる時期",
         "threat_sub": "リーチか2副露の相手に直面した LuckyJ の判断の割合（自身の打牌数別）",
         "axis_threat": "LuckyJ 自身の打牌数",
         "threat_caption": "4打目では LuckyJ の判断の8%が脅威に直面し、10打目では半分を超える。",
-        "threat_table_discard": "打牌",
         "threat_table_share": "脅威あり",
         "threat_table_states": "判断の数",
-        "tip_turn": "{turn}打目",
         "tip_threat": "脅威に直面",
         "tip_states": "判断{n}回",
-        "keep_aria": "{title}：LuckyJ が安全な浮き牌を残した割合は{points}。",
-        "keep_aria_point": "{band}打目で{pct}",
+        "keep_aria": "{title}：LuckyJ が安全な浮き牌を残した割合の曲線は、{points}。{cross}",
+        "keep_aria_point": "{turn}打目で{pct}",
+        "keep_aria_cross": "{a}打目と{b}打目の間で50%を横切る。",
         "threat_aria": "脅威が出てくる時期：{points}。",
         "threat_aria_point": "{turn}打目で{pct}",
     },
@@ -120,8 +119,7 @@ THREAT_LABELED_TURNS = ("4", "7", "10")
 
 
 def load() -> dict:
-    artifact = json.loads(ARTIFACT.read_text(encoding="utf-8"))
-    return artifact["summary_bands"]
+    return json.loads(ARTIFACT.read_text(encoding="utf-8"))
 
 
 def half_up(value: float) -> int:
@@ -132,8 +130,13 @@ def fmt_pct(value: float) -> str:
     return f"{value:.1f}%"
 
 
-def x_band(i: int) -> float:
-    return M["l"] + PW * (i + 0.5) / len(BANDS)
+def x_turn(turn: float) -> float:
+    return M["l"] + PW * (turn - TURNS[0]) / (TURNS[-1] - TURNS[0])
+
+
+def dot_radius(n: int) -> float:
+    """Dot area grows with the number of choices behind it."""
+    return round(min(6.5, max(2.5, 1.6 + 0.3 * n ** 0.5)), 2)
 
 
 def y_pct(value: float) -> float:
@@ -162,63 +165,86 @@ def frame(axis_title: str, tick_x: list[tuple[float, str]]) -> list[str]:
     return out
 
 
-def keep_panel(lang: str, bands: dict, split: str, kind: str) -> str:
+def crossing_pair(turn: float) -> tuple[int, int]:
+    lower = int(turn)
+    return lower, lower + 1
+
+
+def keep_panel(lang: str, panel: dict, split: str, kind: str) -> str:
     t = TEXT[lang]
     title, sub = t["panels"][kind]
-    data = bands[split][kind]
-    rows = []
-    for i, band in enumerate(BANDS):
-        lj, naga = data[band]["LuckyJ"], data[band]["NAGA"]
-        rows.append({
-            "i": i,
-            "band": band,
-            "n": lj["cuts"],
-            "lj": lj["live_share_pct"],
-            "naga": naga["live_share_pct"],
-            "plotted": lj["cuts"] >= MIN_PLOTTED,
-            "solid": lj["cuts"] >= MIN_SOLID,
-        })
-    plotted = [r for r in rows if r["plotted"]]
-    svg = frame(t["axis_keep"], [(x_band(r["i"]), t["bands"][r["band"]]) for r in rows])
+    lo, hi = panel["range"]
+    rows = {r["turn"]: r for r in panel["turns"]}
+    lj_fit, naga_fit = panel["fits"]["LuckyJ"], panel["fits"]["NAGA"]
+    fitted = {round(g[0], 1): g for g in lj_fit["grid"]}
+    svg = frame(t["axis_keep"], [(x_turn(n), str(n)) for n in X_TICKS])
+    # the fit's 95% band, then NAGA's curve, then LuckyJ's curve and its dots on top
+    upper = [f"{r2(x_turn(g[0]))},{r2(y_pct(g[3]))}" for g in lj_fit["grid"]]
+    lower = [f"{r2(x_turn(g[0]))},{r2(y_pct(g[2]))}" for g in reversed(lj_fit["grid"])]
+    svg.append(f'<polygon class="timing-band" points="{" ".join(upper + lower)}" />')
     svg.append(f'<line class="timing-cross" x1="0" x2="0" y1="{M["t"]}" y2="{M["t"] + PH}" />')
-    for key in ("naga", "lj"):
-        points = " ".join(f'{r2(x_band(r["i"]))},{r2(y_pct(r[key]))}' for r in plotted)
-        svg.append(f'<polyline class="timing-line {key}" points="{points}" />')
-    for key in ("naga", "lj"):
-        for r in plotted:
-            radius = 4.5 if key == "lj" else 4
-            hollow = "" if r["solid"] else " hollow"
-            svg.append(
-                f'<circle class="timing-dot {key}{hollow}" cx="{r2(x_band(r["i"]))}" cy="{r2(y_pct(r[key]))}" r="{radius}" '
-                f'data-band="{r["band"]}" data-pct="{r[key]:.1f}" />'
-            )
-    # Direct labels on LuckyJ's first and last solid points only; the table and the tooltip carry the rest.
-    solid = [r for r in plotted if r["solid"]]
-    for r in {id(solid[0]): solid[0], id(solid[-1]): solid[-1]}.values():
-        value = r["lj"]
-        above = value >= r["naga"]
-        if value > 88:
-            above = False
-        if value < 12:
-            above = True
-        y = y_pct(value) - 11 if above else y_pct(value) + 20
-        svg.append(f'<text class="timing-label" x="{r2(x_band(r["i"]))}" y="{r2(y)}">{half_up(value)}%</text>')
-    slot = PW / len(BANDS)
-    for r in plotted:
-        payload = {
-            "head": t["tip_band"].format(band=t["bands"][r["band"]]),
-            "rows": [["lj", fmt_pct(r["lj"]), "LuckyJ"], ["naga", fmt_pct(r["naga"]), "NAGA"]],
-            "foot": t["choices"].format(n=f"{r['n']:,}"),
-        }
-        label = f'{t["tip_band"].format(band=t["bands"][r["band"]])}: LuckyJ {fmt_pct(r["lj"])}, NAGA {fmt_pct(r["naga"])}, {t["choices"].format(n=f"{r["n"]:,}")}'
+    for key, fit in (("naga", naga_fit), ("lj", lj_fit)):
+        points = " ".join(f"{r2(x_turn(g[0]))},{r2(y_pct(g[1]))}" for g in fit["grid"])
+        svg.append(f'<polyline class="timing-fit {key}" points="{points}" />')
+    for turn in range(lo, hi + 1):
+        r = rows[turn]
+        pct = 100 * r["lj_k"] / r["lj_n"]
         svg.append(
-            f'<rect class="timing-hit" x="{r2(M["l"] + slot * r["i"])}" y="{M["t"]}" width="{r2(slot)}" height="{PH + 24}" '
-            f'tabindex="0" data-x="{r2(x_band(r["i"]))}" data-tip="{tip_attr(payload)}" aria-label="{html.escape(label, quote=True)}" />'
+            f'<circle class="timing-dot lj" cx="{r2(x_turn(turn))}" cy="{r2(y_pct(pct))}" r="{dot_radius(r["lj_n"])}" '
+            f'data-turn="{turn}" data-pct="{pct:.1f}" data-n="{r["lj_n"]}" />'
+        )
+    # where LuckyJ's curve crosses 50%, and its value at each end
+    cross_aria = ""
+    for c in lj_fit["crossings_50"]:
+        a, b = crossing_pair(c["turn"])
+        x = x_turn(c["turn"])
+        svg.append(f'<circle class="timing-switch" cx="{r2(x)}" cy="{r2(y_pct(50))}" r="4" data-turn="{c["turn"]:.2f}" />')
+        # the curve leaves the crossing upward (note goes below, to the right) or downward (above, to the right,
+        # high enough to clear the dots that scatter around 50%)
+        y = y_pct(50) + 18 if c["direction"] == "up" else y_pct(50) - 26
+        svg.append(f'<text class="timing-note is-start" x="{r2(x + 7)}" y="{r2(y)}">{t["cross"].format(a=a, b=b)}</text>')
+        cross_aria += t["keep_aria_cross"].format(a=a, b=b)
+
+    def end_label(turn: int, value: float, neighbour: float, at_start: bool) -> str:
+        r = rows[turn]
+        dot = 100 * r["lj_k"] / r["lj_n"]
+        radius = dot_radius(r["lj_n"])
+        # below the curve when it moves away upward from this end, above when it moves away downward
+        below = neighbour > value
+        top, bottom = min(y_pct(value), y_pct(dot)), max(y_pct(value), y_pct(dot))
+        y = bottom + radius + 14 if below else top - radius - 6
+        if y > M["t"] + PH - 4:
+            y = top - radius - 6
+        if y < M["t"] + 10:
+            y = bottom + radius + 14
+        if at_start:
+            return f'<text class="timing-label is-start" x="{r2(x_turn(turn) + 6)}" y="{r2(y)}">{half_up(value)}%</text>'
+        return f'<text class="timing-label is-end" x="{r2(x_turn(turn) - 6)}" y="{r2(y)}">{half_up(value)}%</text>'
+
+    svg.append(end_label(lo, fitted[float(lo)][1], fitted[round(lo + 1.0, 1)][1], True))
+    svg.append(end_label(hi, fitted[float(hi)][1], fitted[round(hi - 1.0, 1)][1], False))
+    step = PW / (TURNS[-1] - TURNS[0])
+    naga_rows = {r["turn"]: r for r in panel["turns"]}
+    for turn in range(lo, hi + 1):
+        r = naga_rows[turn]
+        lj_pct = 100 * r["lj_k"] / r["lj_n"]
+        naga_pct = 100 * r["naga_k"] / r["naga_n"] if r["naga_n"] else None
+        rows_tip = [["lj", fmt_pct(lj_pct), "LuckyJ"]]
+        if naga_pct is not None:
+            rows_tip.append(["naga", fmt_pct(naga_pct), "NAGA"])
+        fit_pct = f"{half_up(fitted[float(turn)][1])}%"
+        foot = f'{t["choices"].format(n=f"{r["lj_n"]:,}")} · {t["tip_fit"].format(pct=fit_pct)}'
+        payload = {"head": t["tip_turn"].format(turn=turn), "rows": rows_tip, "foot": foot}
+        label = f'{t["tip_turn"].format(turn=turn)}: LuckyJ {fmt_pct(lj_pct)}' + (f", NAGA {fmt_pct(naga_pct)}" if naga_pct is not None else "") + f", {foot}"
+        left = x_turn(turn) - step / 2
+        svg.append(
+            f'<rect class="timing-hit" x="{r2(left)}" y="{M["t"]}" width="{r2(step)}" height="{PH + 24}" '
+            f'tabindex="0" data-x="{r2(x_turn(turn))}" data-tip="{tip_attr(payload)}" aria-label="{html.escape(label, quote=True)}" />'
         )
     aria_points = ", ".join(
-        t["keep_aria_point"].format(pct=f"{half_up(r['lj'])}%", band=t["bands"][r["band"]]) for r in plotted
+        t["keep_aria_point"].format(pct=f"{half_up(fitted[float(n)][1])}%", turn=n) for n in range(lo, hi + 1)
     )
-    aria = t["keep_aria"].format(title=title, points=aria_points)
+    aria = t["keep_aria"].format(title=title, points=aria_points, cross=cross_aria)
     body = "\n            ".join(svg)
     return f'''        <div class="timing-panel" data-panel="{split}-{kind}">
           <p class="timing-panel-title"><b>{title}</b><span>{sub}</span></p>
@@ -230,30 +256,30 @@ def keep_panel(lang: str, bands: dict, split: str, kind: str) -> str:
         </div>'''
 
 
-def keep_table(lang: str, bands: dict) -> str:
+def keep_table(lang: str, panels: dict) -> str:
     t = TEXT[lang]
-    head = "".join(f'<th scope="col">{t["table_band_head"].format(band=t["bands"][b])}</th>' for b in BANDS)
+    head = "".join(f'<th scope="col">{t["panels"][kind][0]}</th>' for _, kind in PANELS)
     body = []
-    for split, kind in PANELS:
+    for turn in TURNS:
         cells = []
-        for band in BANDS:
-            lj = bands[split][kind][band]["LuckyJ"]
-            naga = bands[split][kind][band]["NAGA"]
-            if lj["cuts"] == 0:
+        for split, kind in PANELS:
+            r = next(x for x in panels[f"{split}-{kind}"]["turns"] if x["turn"] == turn)
+            if not r["lj_n"]:
                 cells.append("<td></td>")
                 continue
+            naga = fmt_pct(100 * r["naga_k"] / r["naga_n"]) if r["naga_n"] else ""
             cells.append(
-                f'<td><b>{fmt_pct(lj["live_share_pct"])}</b><span>{fmt_pct(naga["live_share_pct"])}</span>'
-                f'<small>{t["choices"].format(n=f"{lj["cuts"]:,}")}</small></td>'
+                f'<td><b>{fmt_pct(100 * r["lj_k"] / r["lj_n"])}</b><span>{naga}</span>'
+                f'<small>{t["choices"].format(n=f"{r["lj_n"]:,}")}</small></td>'
             )
-        body.append(f'<tr><th scope="row">{t["panels"][kind][0]}</th>{"".join(cells)}</tr>')
+        body.append(f'<tr><th scope="row">{turn}</th>{"".join(cells)}</tr>')
     rows = "\n              ".join(body)
     return f'''      <details class="timing-table">
         <summary>{t["table_summary"]}</summary>
         <p>{t["table_keep_note"]}</p>
         <div class="timing-table-scroll">
           <table>
-            <thead><tr><th scope="col">{t["table_leftover"]}</th>{head}</tr></thead>
+            <thead><tr><th scope="col">{t["table_discard"]}</th>{head}</tr></thead>
             <tbody>
               {rows}
             </tbody>
@@ -262,20 +288,20 @@ def keep_table(lang: str, bands: dict) -> str:
       </details>'''
 
 
-def keep_figure(lang: str, bands: dict) -> str:
+def keep_figure(lang: str, panels: dict) -> str:
     t = TEXT[lang]
-    panels = "\n".join(keep_panel(lang, bands, split, kind) for split, kind in PANELS)
+    drawn = "\n".join(keep_panel(lang, panels[f"{split}-{kind}"], split, kind) for split, kind in PANELS)
     return f'''  <figure class="timing-figure" id="timing-keep" aria-labelledby="timing-keep-caption">
     <div class="timing-plate">
       <p class="timing-title">{t["keep_title"]}</p>
       <p class="timing-sub">{t["keep_sub"]}</p>
-      <p class="timing-legend"><span class="timing-key lj">{t["legend_lj"]}</span><span class="timing-key naga">{t["legend_naga"]}</span><span class="timing-key hollow">{t["legend_hollow"]}</span><span class="timing-key wash">{t["legend_wash"]}</span></p>
+      <p class="timing-legend"><span class="timing-key lj">{t["legend_lj"]}</span><span class="timing-key band">{t["legend_band"]}</span><span class="timing-key naga">{t["legend_naga"]}</span><span class="timing-key wash">{t["legend_wash"]}</span></p>
       <div class="timing-panels">
-{panels}
+{drawn}
       </div>
     </div>
     <figcaption id="timing-keep-caption">{t["keep_caption"]}</figcaption>
-{keep_table(lang, bands)}
+{keep_table(lang, panels)}
   </figure>'''
 
 
@@ -344,7 +370,7 @@ def threat_figure(lang: str, share: dict) -> str:
         <summary>{t["table_summary"]}</summary>
         <div class="timing-table-scroll">
           <table class="is-narrow">
-            <thead><tr><th scope="col">{t["threat_table_discard"]}</th><th scope="col">{t["threat_table_share"]}</th><th scope="col">{t["threat_table_states"]}</th></tr></thead>
+            <thead><tr><th scope="col">{t["table_discard"]}</th><th scope="col">{t["threat_table_share"]}</th><th scope="col">{t["threat_table_states"]}</th></tr></thead>
             <tbody>
               {table_rows}
             </tbody>
@@ -364,12 +390,14 @@ def replace_block(text: str, name: str, block: str) -> str:
 
 def main() -> int:
     check = "--check" in sys.argv[1:]
-    summary = load()
+    artifact = load()
+    panels = artifact["summary_turns"]["panels"]
+    share = artifact["summary_bands"]["threat_share_by_turn"]
     stale = []
     for lang, path in PAGES.items():
         text = path.read_text(encoding="utf-8")
-        new = replace_block(text, "keep", keep_figure(lang, summary["bands"]))
-        new = replace_block(new, "threat", threat_figure(lang, summary["threat_share_by_turn"]))
+        new = replace_block(text, "keep", keep_figure(lang, panels))
+        new = replace_block(new, "threat", threat_figure(lang, share))
         if new != text:
             stale.append(path.name)
             if not check:
