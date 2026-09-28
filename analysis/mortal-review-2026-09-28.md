@@ -8,7 +8,9 @@ marked corrections to chapter 14.
 
 `scripts/tenhou6_to_mjai.py` converts the tensoul (tenhou.net/6) records of the Mahjong Soul games to mjai, with
 draws, calls, kan draws and dora flips, riichi declarations and results; it reproduced 300 of 300 Houou games exactly
-and every discard of the latest 7 games (`MjaiConversionTests`). `scripts/mortal_hand_review.py GAME [HANDS]
+and every discard of the latest 7 games (`MjaiConversionTests`). Later on 28 September it became a wrapper around
+`build_replays`' conversion (the site replays); its events for all 115 games, and the review below, stayed the same.
+`scripts/mortal_hand_review.py GAME [HANDS]
 [--json OUT]` feeds those events to the local Mortal policy (`scripts/contrast/mortal_run.py`) as Honver's seat and
 records Mortal's three most likely actions at every discard and call chance, with the probability it gave the play.
 `scripts/contrast/report/mortal_review.py` turns the per-game JSON into the figures below, alongside baselines from

@@ -21,7 +21,7 @@ Japanese translation: https://honvl.github.io/LuckyJ/ja.html
 - `scripts/review_win_speed.py` - speed, efficiency and tenpai-conversion review of your games against LuckyJ under the same code (or the opponents at the same tables).
 - `scripts/naga_to_tenhou.py` - rebuilds the cached NAGA reports as tenhou.net/6 logs so LuckyJ can be reviewed by the same replay code.
 - `scripts/build_personal_guide.py` - builds `site/honver-guide.json`, the tables behind the personal guide page `site/honver.html`, from `data/personal_guide_spots.json`.
-- `scripts/build_replays.py` - builds `site/replays/`, the site's own replays of your Mahjong Soul games (`site/replay.html`), with the local Mortal policy's probability for each of your decisions.
+- `scripts/build_replays.py` - builds `site/replays/`, the site's own replays of your Mahjong Soul games (`site/replay.html`), with the local Mortal policy's probability for each of your decisions. Its conversion to mjai is the only one: `scripts/tenhou6_to_mjai.py` (used by `scripts/mortal_hand_review.py`) wraps it.
 - `analysis/model-patterns-2026-06-30.md` - readable summary of the model-mined candidate points.
 - `analysis/point-evidence-2026-07-09.md` - readable proxy-evidence audit for all numbered points.
 - `site/model-patterns.json` - machine-readable output from the model-pattern mining run.

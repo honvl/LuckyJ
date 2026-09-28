@@ -72,6 +72,24 @@ class ConverterTests(unittest.TestCase):
         self.assertNotIn(["ra", 2], events)
         self.assertIn(["ra", 0], events)
 
+    def test_mjai_announces_an_open_kan_dora_before_the_discard(self):
+        # Mahjong Soul turns it with the discard and libriichi's arena announces it before the dahai: the kan
+        # caller chose the discard on the tsumo, and the other seats see the new dora when they decide to call.
+        hands = br.build_hands({"log": [fixture_hand("daiminkan-hand")]})
+        events = [ev for _, _, ev in br.mjai_events({"hands": hands})]
+        kan = next(i for i, e in enumerate(events) if e["type"] == "daiminkan")
+        self.assertEqual([e["type"] for e in events[kan:kan + 4]], ["daiminkan", "tsumo", "dora", "dahai"])
+
+    def test_mortal_review_reads_the_games_like_the_replays(self):
+        from tenhou6_to_mjai import convert
+
+        events = convert({"log": [fixture_hand("riichi_ronned-hand")]})
+        self.assertIn({"type": "reach", "actor": 2}, events)
+        self.assertNotIn({"type": "reach_accepted", "actor": 2}, events)
+        calls = [e for e in convert({"log": [fixture_hand("pon-over-chi-hand")]}) if e["type"] in ("chi", "pon")]
+        self.assertEqual(calls[0], {"type": "pon", "actor": 3, "target": 0, "pai": "5m", "consumed": ["5mr", "5m"]})
+        self.assertEqual([calls[1]["type"], calls[1]["actor"], calls[1]["target"]], ["chi", 1, 0])
+
     def test_point_text(self):
         self.assertEqual(br.points_text("30符3飜3900点∀"), "30 fu 3 han, 3,900 all")
         self.assertEqual(br.points_text("満貫2000-4000点"), "mangan, 2,000/4,000")

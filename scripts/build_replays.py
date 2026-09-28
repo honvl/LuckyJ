@@ -23,7 +23,11 @@ Event encoding (one short array per event, seats are absolute 0-3 with 0 the fir
     ["c"|"p"|"m", seat, from, tile, consumed]   chi, pon, open kan of another seat's discard
     ["a", seat, tiles]                closed kan
     ["k", seat, tile, pon_tiles]      added kan onto a pon
-    ["dora", indicator]               a new dora indicator is turned
+    ["dora", indicator]               a new dora indicator is turned (after a closed kan at once,
+                                      after an open or added kan with the next discard)
+
+The same streams feed Mortal as mjai (``mjai_events``), and ``tenhou6_to_mjai.convert`` wraps
+them for ``mortal_hand_review.py``, so the site and the guide read the games one way.
 
 Usage::
 
@@ -307,7 +311,7 @@ def hand_end(log: list, events: list[list]) -> dict:
                 "seat": winner,
                 "from": source,
                 "deltas": deltas,
-                "value": points_text(d[3]),
+                "value": points_text(d[3]) if d[3] else "",  # logs rebuilt from mjai carry no points text
                 "yaku": yaku_list(d[4:]),
             })
         return {"kind": "win", "wins": wins, "ura": [site_tile(t) for t in log[3]]}
@@ -379,9 +383,8 @@ def round_name(kyoku: int, honba: int) -> str:
     return f"{tr.ROUND_NAMES[kyoku]}-{honba}"
 
 
-def build_game(row: dict) -> dict:
-    game = json.loads((ROOT / row["file"]).read_text(encoding="utf-8"))
-    hero = row["hero_seat"]
+def build_hands(game: dict) -> list[dict]:
+    """Every hand of a tenhou.net/6 game as a checked event stream, with the scores after it."""
     hands = []
     for log in game["log"]:
         kyoku, honba, sticks = log[0]
@@ -406,6 +409,13 @@ def build_game(row: dict) -> dict:
             raise Inconsistent(f"{a['round']}: scores after {after} but {b['round']} starts with {b['scores']}")
         a["after"] = after
     hands[-1]["after"] = scores_after(hands[-1]["scores"], hands[-1]["ev"], hands[-1]["end"])
+    return hands
+
+
+def build_game(row: dict) -> dict:
+    game = json.loads((ROOT / row["file"]).read_text(encoding="utf-8"))
+    hero = row["hero_seat"]
+    hands = build_hands(game)
 
     sc = game["sc"]
     final = [sc[2 * s] for s in range(4)]
@@ -432,8 +442,51 @@ def build_game(row: dict) -> dict:
 
 # ---------------------------------------------------------------- Mortal
 
+def mjai_event(e: list) -> dict:
+    kind = e[0]
+    if kind == "t":
+        return {"type": "tsumo", "actor": e[1], "pai": e[2]}
+    if kind == "d":
+        return {"type": "dahai", "actor": e[1], "pai": e[2], "tsumogiri": bool(e[3])}
+    if kind == "r":
+        return {"type": "reach", "actor": e[1]}
+    if kind == "ra":
+        return {"type": "reach_accepted", "actor": e[1]}
+    if kind in ("c", "p", "m"):
+        return {"type": {"c": "chi", "p": "pon", "m": "daiminkan"}[kind], "actor": e[1], "target": e[2],
+                "pai": e[3], "consumed": e[4]}
+    if kind == "a":
+        return {"type": "ankan", "actor": e[1], "consumed": e[2]}
+    if kind == "k":
+        return {"type": "kakan", "actor": e[1], "pai": e[2], "consumed": e[3]}
+    if kind == "dora":
+        return {"type": "dora", "dora_marker": e[1]}
+    raise ValueError(kind)
+
+
+def mjai_order(events: list[list]) -> list[int]:
+    """Event indices in mjai order: a dora turned after a discard is announced just before it.
+
+    Mahjong Soul turns an open or added kan's indicator with the discard that follows the kan.
+    Tenhou's mjai logs, which Mortal learned from, and libriichi's arena put it between the
+    replacement tsumo and that dahai: the kan caller has already chosen the discard on the tsumo,
+    and the other seats see the new dora when they decide whether to call or ron it.
+    """
+    order: list[int] = []
+    i = 0
+    while i < len(events):
+        j = i + 1
+        if events[i][0] == "d":
+            while j < len(events) and events[j][0] == "dora":
+                j += 1
+            order += list(range(i + 1, j))
+        order.append(i)
+        i = j
+    return order
+
+
 def mjai_events(game: dict) -> list[tuple[int | None, int | None, dict]]:
-    """``(hand index, event index, mjai event)`` for the whole game, in order."""
+    """``(hand index, event index, mjai event)`` for the whole game, in mjai order (see ``mjai_order``)."""
     out: list[tuple[int | None, int | None, dict]] = [(None, None, {"type": "start_game", "names": ["", "", "", ""]})]
     for h, hand in enumerate(game["hands"]):
         kyoku = hand["kyoku"]
@@ -442,28 +495,8 @@ def mjai_events(game: dict) -> list[tuple[int | None, int | None, dict]]:
             "kyoku": kyoku % 4 + 1, "honba": hand["honba"], "kyotaku": hand["sticks"], "oya": kyoku % 4,
             "scores": hand["scores"], "tehais": hand["haipai"],
         }))
-        for i, e in enumerate(hand["ev"]):
-            kind = e[0]
-            if kind == "t":
-                ev = {"type": "tsumo", "actor": e[1], "pai": e[2]}
-            elif kind == "d":
-                ev = {"type": "dahai", "actor": e[1], "pai": e[2], "tsumogiri": bool(e[3])}
-            elif kind == "r":
-                ev = {"type": "reach", "actor": e[1]}
-            elif kind == "ra":
-                ev = {"type": "reach_accepted", "actor": e[1]}
-            elif kind in ("c", "p", "m"):
-                ev = {"type": {"c": "chi", "p": "pon", "m": "daiminkan"}[kind], "actor": e[1], "target": e[2],
-                      "pai": e[3], "consumed": e[4]}
-            elif kind == "a":
-                ev = {"type": "ankan", "actor": e[1], "consumed": e[2]}
-            elif kind == "k":
-                ev = {"type": "kakan", "actor": e[1], "pai": e[2], "consumed": e[3]}
-            elif kind == "dora":
-                ev = {"type": "dora", "dora_marker": e[1]}
-            else:
-                raise ValueError(kind)
-            out.append((h, i, ev))
+        for i in mjai_order(hand["ev"]):
+            out.append((h, i, mjai_event(hand["ev"][i])))
         end = hand["end"]
         if end["kind"] == "win":
             for w in end["wins"]:
