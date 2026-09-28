@@ -191,6 +191,52 @@ class GuideLinkTests(unittest.TestCase):
                         cut = next(e for e in hand["ev"][start:] if e[0] == "d" and e[1] == hero)
                         self.assertEqual(cut[2], frame["you"]["tile"])
 
+    def test_chapter_links_land_on_the_turn_they_name(self):
+        """Links in the guide's prose: t= opens your turn (at=call on the discard you called), e= opens one
+        event, and data-you is what you played there."""
+        from html.parser import HTMLParser
+        from urllib.parse import parse_qs, urlsplit
+
+        class Links(HTMLParser):
+            def __init__(self):
+                super().__init__(convert_charrefs=True)
+                self.found = []
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if tag == "a" and attrs.get("href", "").startswith("replay.html?"):
+                    self.found.append(attrs)
+
+        parser = Links()
+        parser.feed((SITE / "honver.html").read_text(encoding="utf-8"))
+        self.assertGreater(len(parser.found), 20)
+        for attrs in parser.found:
+            href = attrs["href"]
+            with self.subTest(href=href):
+                q = {k: v[0] for k, v in parse_qs(urlsplit(href).query).items()}
+                path = REPLAYS / f"{q['g']}.json"
+                self.assertTrue(path.exists())
+                game = load(path)
+                hero = game["hero"]
+                hand = next((h for h in game["hands"] if h["round"] == q["r"]), None)
+                self.assertIsNotNone(hand)
+                you = attrs.get("data-you")
+                if "e" in q:
+                    self.assertEqual(hand["ev"][int(q["e"])][0], "d")
+                    continue
+                if "t" not in q:
+                    continue
+                turns = hero_turns(hand, hero)
+                start = next(i for i, e in enumerate(hand["ev"])
+                             if turns[i] == int(q["t"]) and e[1] == hero and e[0] in ("t", "c", "p", "m"))
+                if q.get("at") == "call":
+                    self.assertIn(hand["ev"][start][0], ("c", "p", "m"))
+                    if you:
+                        self.assertEqual(hand["ev"][start][3].replace("r", ""), you)
+                elif you:
+                    cut = next(e for e in hand["ev"][start:] if e[0] == "d" and e[1] == hero)
+                    self.assertEqual(cut[2], you)
+
     def test_guide_cards_link_to_the_replays(self):
         script = (SITE / "honver.js").read_text(encoding="utf-8")
         self.assertIn("replay.html?", script)
