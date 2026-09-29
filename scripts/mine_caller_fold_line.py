@@ -7,10 +7,11 @@ keeps LuckyJ's own discards against a single caller while nobody is in riichi. A
 or less (the caller's genbutsu, a full suji, an honor with two showing) and live from 2.
 
 Only real choices count: a safe tile keeps the best shanten, and so does a live tile with at least as
-much acceptance as the best such safe tile. LuckyJ folded when it threw a safe tile. The main book's
-fold-line spots (its "Open callers" section) also counted the turns where the safe tile was the best tile
-for the hand anyway and the turns where only safe tiles kept the shanten; throwing the safe tile there
-is shape, not defense, and those turns are counted here only to say how many there were.
+much acceptance as the best such safe tile. LuckyJ folded when it threw a safe tile. The first count of
+the main book's fold line (its "Open callers" section, corrected on 29 September) also counted the turns
+where the safe tile was the best tile for the hand anyway and the turns where only safe tiles kept the
+shanten; throwing the safe tile there is shape, not defense, and those turns are counted here only to say
+how many there were.
 
 For each of LuckyJ's hands (two-shanten or worse, one-shanten, tenpai) the share of live cuts is fitted
 over the caller's discards with ``fit_series`` (``scripts/mine_safe_tile_timing.py``), once against one

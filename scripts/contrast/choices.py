@@ -1,17 +1,22 @@
 """Every discard decision of the manifest's hero, with the features of each tile it could have cut.
 
-usage: choices.py MANIFEST OUT.jsonl [--procs P]
+usage: choices.py MANIFEST OUT.jsonl [--procs P] [--callers]
 
-One row per discard (after a draw or a call), keyed (g, li, t) like the guide's turns. Each candidate tile
-carries the shanten and acceptance it leaves, its class (value or guest honor, terminal, 2/8, middle), dora and
-red flags, whether it is isolated, and its safety against the riichi players (worst label) or, with no riichi,
-against the opponents with the most calls; ``pond`` is how many tiles the most advanced of those threats has
-discarded. Joined to the local Mortal policy's probabilities, these rows sort
-disagreements with Mortal into kinds, for the hero and for LuckyJ alike.
+--callers keeps only the discards made while an opponent has an open meld and nobody else is in riichi,
+the discards scripts/contrast/vs_callers.py describes; their rows are the same as without it.
+
+One row per discard (after a draw or a call), keyed (g, li, t) like the guide's turns, or (g, li, s, t) when
+the manifest lists more than one seat of a game. Each candidate tile carries the shanten and acceptance it
+leaves, its class (value or guest honor, terminal, 2/8, middle), dora and red flags, whether it is
+isolated, and its safety against the riichi players (worst label) or, with no riichi, against the opponents
+with the most calls; ``pond`` is how many tiles the most advanced of those threats has discarded. Joined to
+the local Mortal policy's probabilities, these rows sort disagreements with Mortal into kinds, for the hero
+and for LuckyJ alike.
 """
 import json
 import sys
 from collections import Counter
+from functools import partial
 from multiprocessing import Pool
 from pathlib import Path
 
@@ -24,7 +29,7 @@ from discards import CLASS_OF, isolated, rank_of, tclass  # noqa: E402
 from tenhou_replay import base, is_red  # noqa: E402
 
 
-def work(g):
+def work(g, callers=False):
     rows = []
     d = json.load(open(g["file"]))
     uuid = g["uuid"].split("#")[0]
@@ -48,6 +53,8 @@ def work(g):
             opens = {q: sum(1 for m in players[q]["melds"][:e["meld_counts"][q]] if m["kind"] != "a")
                      for q in range(4) if q != s}
             mo = max(opens.values())
+            if callers and (rseats or not mo):
+                continue
             threats = rseats or ([q for q, v in opens.items() if v == mo] if mo else [])
             # how far along the threat is: the most discards any of them has made (their pond, called tiles included)
             pond = max((sum(1 for x in game["events"] if x["seat"] == q and x["index"] < i) for q in threats), default=0)
@@ -66,7 +73,7 @@ def work(g):
                               "safe": max((CLASS_OF[x] for x in labs), default=None)})
             best_s = min(c["sh"] for c in cands)
             rows.append({
-                "g": uuid, "li": li, "t": e["turn"], "i": i, "k": kyoku, "dl": hero == game["dealer"],
+                "g": uuid, "s": s, "li": li, "t": e["turn"], "i": i, "k": kyoku, "dl": hero == game["dealer"],
                 "rk": rank_of(scores, s), "sc": scores[s], "left": 70 - draws_so_far(game, i),
                 "closed": e["closed"], "nm": len(e["melds"]), "called": e["called"]["kind"] if e["called"] else None,
                 "bs": best_s, "hd": sum(1 for t in list(hb) + list(e["meld_tiles"]) if base(t) in dset or is_red(t)),
@@ -82,7 +89,7 @@ if __name__ == "__main__":
     procs = int(sys.argv[sys.argv.index("--procs") + 1]) if "--procs" in sys.argv else 12
     with Pool(procs) as pool, open(sys.argv[2], "w") as out:
         n = 0
-        for rows in pool.imap_unordered(work, manifest, chunksize=2):
+        for rows in pool.imap_unordered(partial(work, callers="--callers" in sys.argv), manifest, chunksize=2):
             for r in rows:
                 out.write(json.dumps(r) + "\n")
                 n += 1

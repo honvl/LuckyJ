@@ -67,11 +67,25 @@ one more extractor and one exporter:
    riichi is legal injects a declaration to record the tile Mortal would declare with. Run it on the
    half-wait dilemmas of LuckyJ's games (`mortal_halfwait.jsonl`) and on the riichi dilemmas of both
    corpora (`mortal_riichi_open.jsonl`).
-4. `report/export_open_callers.py OUT.json`, run in the same directory with those files and
+4. `choices.py MANIFEST OUT.jsonl` on `man/lj_all.json`, `man/opp_all.json` (the same games with each
+   human seat as hero) and `man/houou_all.json` (every Houou seat, with `--callers`, which keeps only the
+   discards made against callers with nobody in riichi and so cuts the run to a third), written as
+   `choices_lj.jsonl`, `choices_opp.jsonl` and `choices_hou.jsonl`: every candidate's acceptance, which
+   sorts the fold-line turns into real choices, ties and costly turns (added 29 September; about 1.5, 8
+   and 5 minutes on 14 processes).
+5. `report/export_open_callers.py OUT.json`, run in the same directory with those files and
    `mortal_disc.parquet` beside it, writes `analysis/open-callers-2026-09-27.json`, which
-   `tests/test_open_callers.py` pins.
+   `tests/test_open_callers.py` pins. `scripts/build_open_callers_figure.py` draws the fold-line chart
+   into the book from its `real_choices` block.
 
 The first run of `vs_callers.py` dropped every discard that was itself a riichi declaration, which left
 closed hands that declared out of the half-wait dilemmas. The cut rows still leave declarations out (they
 describe discards made with nobody in riichi, and a declaration is always made from tenpai); the tenpai
 rows keep them and record `riichi`.
+
+The fold line first counted every turn against a single caller where a safe tile kept the best shanten.
+That mixed in turns where throwing the safe tile was shape, not defense: the safe tile was the best tile
+for the hand anyway, or only safe tiles kept the shanten. The exporter's `real_choices` block joins each
+turn to `choices.py` (on `(g, li, s, t)`) and keeps real choices only, where a live tile keeps the
+shanten with at least as much acceptance as the best safe tile (`mine_caller_fold_line.kind`), with ties
+and costly turns apart; the curves are fitted per discard with `fit_series`.

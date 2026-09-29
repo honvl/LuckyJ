@@ -170,4 +170,6 @@ about 4 points of folding a tile near half). At tenpai the run effect in the old
 came from the forced turns; on the 248 real choices it is −0.23 ± 0.16. Chapter 18's caption and chapter
 19's line, run, rule and evidence are corrected and marked in both editions; the tenpai button is gone.
 
-The main book's "Open callers" fold line uses the old count too.
+The main book's "Open callers" fold line used the old count too. It was corrected the same day on real
+choices for LuckyJ, the Tokujou humans, the Houou players and Mortal; see section 2 of
+`analysis/open-callers-2026-09-27.md`.
