@@ -145,6 +145,25 @@ class CallerGridTests(unittest.TestCase):
         self.assertEqual((round(rows("call")["could_win"]), round(rows("call")["by_run"][0])), (35, 29))
         self.assertEqual((round(rows("hand_after_three")["could_win"]), round(rows("hand_after_three")["by_run"][0])), (42, 38))
 
+    def test_chapter_14_rule_uses_the_corrected_line(self):
+        # real choices fold from the 12th and 9th (two-shanten or worse) and the 14th and 12th (one-shanten);
+        # the 10th and 7th are the line only when the safe tile leaves the same hand
+        self.assertEqual(build.fold_lines(FOLD, "far"), {1: 12, 2: 9, 3: 9})
+        self.assertEqual(build.fold_lines(FOLD, "one"), {1: 14, 2: 12, 3: 12})
+        ties = FOLD["shanten"]["far"]["ties"]
+        self.assertEqual((ties["1"]["line"], ties["2+"]["line"]), (10, 7))
+        want = {"honver.html": ["(their 12th discard)", "(their 9th)", "(14th)", "(12th)", "(10th)", "(7th)"],
+                "honver-ja.html": ["（12打目）", "（9打目）", "（14打目）", "（12打目）", "（10打目）", "（7打目）"]}
+        for path in build.PAGES.values():
+            with self.subTest(page=path.name):
+                page = path.read_text(encoding="utf-8")
+                chapter = page[page.index('<section class="point" id="three-calls">'):]
+                rule = chapter[chapter.index('<mark id="fix-14-rule"'):]
+                rule = rule[: rule.index("</mark>")]
+                at = -1
+                for word in want[path.name]:  # each figure in order, the next found after the last
+                    at = rule.index(word, at + 1)
+
     def test_buckets_and_colours(self):
         self.assertEqual([surface.run_bucket(r) for r in (0, 1, 2, 3, 7)], [0, 1, 2, 3, 3])
         self.assertEqual([surface.calls_bucket(c) for c in (1, 2, 3, 4)], [1, 2, 3, 3])
