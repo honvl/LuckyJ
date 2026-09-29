@@ -21,7 +21,10 @@ that at least one of them can. From the costly turns of each of LuckyJ's hands (
 two-shanten or worse in reach), the share it broke is fitted over that threat, one point per whole percent, with
 ``fit_series`` (``scripts/mine_safe_tile_timing.py``) between the 2nd and 98th percentiles of the
 threat. The same spots in your games are set against that
-curve. Riichi spots give the reference, and a regression adds what the hands are worth.
+curve. Riichi spots give the reference, and a regression adds what the hands are worth. For chapter 21,
+your costly turns on quiet squares (under 40%) are split by the caller's row and your own turn and set
+against LuckyJ's rate in the same cell, and, from the directory ``data/self_games/majsoul/index.json``
+sits in, split at the week the reviews of your games began.
 
 Your break spots are also read against Mortal's policy in the site's replays (``site/replays``), and
 with LuckyJ's manifest the script adds what a ron cost the discarder, by the winner's hand (run it from
@@ -32,6 +35,7 @@ usage: mine_break_folds.py LJ_CUTS.jsonl YOUR_CUTS.jsonl LJ_RIICHI.json YOUR_RII
 
 from __future__ import annotations
 
+import datetime
 import json
 import math
 import sys
@@ -95,8 +99,11 @@ def caller_spots(path: str, who: str, data: dict) -> list[dict]:
         if all(v is not None for v in squares):
             threat = 100 * (1 - math.prod(1 - v / 100 for v in squares))
         main = max(rows, key=lambda r: (r["n_melds"], r["q_turn"]))
+        push = [t for t in after if after[t] == best]
         spots.append({
             "g": key[0], "li": key[1], "t": key[3], "hand": hand_of(best), "kind": kind,
+            "first_row": max(r["q_turn"] for r in rows) <= 6, "honor_push": any(t >= 41 for t in push),
+            "cut_honor": first["tile"] >= 41, "genbutsu": all(r["label"] in ("genbutsu", "dead") for r in rows),
             "safe": danger[first["tile"]] <= 1, "went_back": first["my_sh"] > prev, "callers": len(rows),
             "threat": threat, "calls": main["n_melds"], "discard": main["q_turn"],
             "dora_pon": any(r["q_meld_dora"] >= 3 for r in rows), "dealer_caller": any(r["q_dealer"] for r in rows),
@@ -219,6 +226,7 @@ def mortal_view(spots: list[dict], cuts: str) -> dict:
     for s in spots:
         if not costly(s) or s["threat"] is None:
             continue
+        s["mortal_safe"] = None
         path = Path(__file__).resolve().parents[1] / "site" / "replays" / f"{s['g']}.json"
         if not path.exists():
             continue
@@ -234,9 +242,62 @@ def mortal_view(spots: list[dict], cuts: str) -> dict:
             continue
         safe = {replay_name(t) for t, d in danger[(s["g"], s["li"], s["t"])].items() if d <= 1}
         weight = sum(p for t, p in cuts_here[-1]["p"] if t.replace("r", "") in safe)
+        s["mortal_safe"] = weight
         weights[(s["hand"], s["threat"] >= 40)].append(weight)
     return {f"{hand} {'40+' if hot else 'under 40'}": {"spots": len(w), "safe_weight": round(100 * sum(w) / len(w), 1)}
             for (hand, hot), w in sorted(weights.items())}
+
+
+QUIET = 40  # a square under this is a quiet one
+SELF_INDEX = Path("data/self_games/majsoul/index.json")  # your games' start times, read from the main checkout
+SINCE = "2026-09-20"  # the week the reviews of your games began
+
+
+def quiet_view(lj: list[dict], you: list[dict], starts: dict) -> dict:
+    """Chapter 21: your costly turns on quiet squares against LuckyJ's rate in the same cell, 1-shanten or worse."""
+    def pick(spots, cell):
+        return [s for s in spots if costly(s) and s["hand"] != "tenpai" and s["threat"] is not None
+                and s["threat"] < QUIET and cell(s)]
+
+    cells = {
+        "all": lambda s: True,
+        "caller first row": lambda s: s["first_row"],
+        "caller past first row": lambda s: not s["first_row"],
+        "turns 1-6": lambda s: s["t"] <= 6,
+        "turns 7-11": lambda s: 7 <= s["t"] <= 11,
+        "turns 12+": lambda s: s["t"] >= 12,
+        "first row, a live honor keeps the hand": lambda s: s["first_row"] and s["honor_push"],
+        "first row, no honor keeps the hand": lambda s: s["first_row"] and not s["honor_push"],
+    }
+    out = {}
+    for name, cell in cells.items():
+        a, b = pick(lj, cell), pick(you, cell)
+        lj_rate = sum(s["safe"] for s in a) / len(a)
+        out[name] = {"LuckyJ": rate(a), "You": rate(b), "expected": round(lj_rate * len(b), 1)}
+    kept = lambda spots: [s for s in pick(spots, lambda s: s["first_row"] and s["honor_push"]) if not s["safe"]]
+    out["kept, cut the honor"] = {who: round(100 * sum(s["cut_honor"] for s in k) / len(k), 1)
+                                  for who, k in (("LuckyJ", kept(lj)), ("You", kept(you)))}
+    breaks = [s for s in pick(you, lambda s: s["first_row"]) if s["safe"]]
+    out["your first-row breaks"] = {
+        "breaks": len(breaks), "genbutsu": sum(s["genbutsu"] for s in breaks),
+        "mortal_safe_mean": round(100 * sum(s["mortal_safe"] for s in breaks) / len(breaks), 1),
+        "mortal_under_10": sum(s["mortal_safe"] < 0.1 for s in breaks),
+    }
+    first_row = [s for s in pick(you, lambda s: s["first_row"]) if s.get("mortal_safe") is not None]
+    out["mortal first row"] = {"spots": len(first_row), "safe_weight": round(100 * sum(s["mortal_safe"] for s in first_row) / len(first_row), 1)}
+    late = [s for s in pick(you, lambda s: s["t"] >= 12) if s["safe"]]
+    out["your late breaks"] = {"breaks": len(late), "mortal_agrees": sum(s["mortal_safe"] >= 0.5 for s in late)}
+    out["your first-row breaks by calls"] = dict(Counter(s["calls"] for s in breaks))
+    if starts:
+        cutoff = datetime.datetime.strptime(SINCE, "%Y-%m-%d").timestamp()
+        split = {}
+        for when in ("before", "since"):
+            for row, cell in (("first row", lambda s: s["first_row"]), ("past first row", lambda s: not s["first_row"])):
+                b = pick(you, lambda s, cell=cell: cell(s) and (starts[s["g"]] >= cutoff) == (when == "since"))
+                a = pick(lj, cell)
+                split[f"{when} {SINCE}, {row}"] = {"You": rate(b), "expected": round(sum(s["safe"] for s in a) / len(a) * len(b), 1)}
+        out["by date"] = split
+    return out
 
 
 def ron_values(manifest: str) -> dict:
@@ -293,6 +354,10 @@ def main(lj_cuts: str, your_cuts: str, lj_riichi: str, your_riichi: str, out: st
             by_turn[min(s["turn"], 18)][1] += 1
         result["riichi_by_turn"][hand] = {str(t): v for t, v in sorted(by_turn.items())}
     result["mortal"] = mortal_view(you, your_cuts)
+    starts = {g["uuid"]: g["start_time"] for g in json.loads(SELF_INDEX.read_text())} if SELF_INDEX.exists() else {}
+    result["quiet"] = quiet_view(lj, you, starts)
+    if not starts and Path(out).exists():
+        result["quiet"]["by date"] = json.loads(Path(out).read_text())["quiet"]["by date"]
     if lj_manifest:
         result["ron_paid"] = ron_values(lj_manifest)
     elif Path(out).exists():
@@ -329,6 +394,9 @@ def report(result: dict) -> None:
     print("  kept the hand with:", result["kept_with"])
     print("  Mortal's weight on the safe tiles at your break spots:", result["mortal"])
     print("  a ron cost the discarder:", result.get("ron_paid"))
+    print("  quiet squares (chapter 21):")
+    for name, v in result["quiet"].items():
+        print(f"    {name}: {v}")
 
 
 if __name__ == "__main__":

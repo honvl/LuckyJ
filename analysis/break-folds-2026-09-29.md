@@ -80,3 +80,30 @@ where it expects 12.5. Mortal's weight on the safe tiles on your costly turns (s
 Examples in the chapter: 260927-33c90769 East 2-0 turn 13 (square 35%, broke with 1s; Mortal 3m or 8s),
 260928-90620418 East 2-0 turn 8 (78%, broke with S holding two red fives; Mortal 6s 98.7%),
 260928-697dfc0f East 2-0 turn 11 (two callers, 60%; broke with N; Mortal N 99.3%).
+
+## Chapter 21: your extra breaks on quiet squares
+
+Costly turns (every safe tile a shanten short of the best hand), 1-shanten or worse in reach, square under
+40%, set against LuckyJ's break rate in the same cell (`quiet` in the JSON; the date split needs
+`data/self_games/majsoul/index.json`, so run the miner from the main checkout).
+
+| Cell | Your turns | You broke | LuckyJ's rate | Predicted |
+|---|---|---|---|---|
+| All | 462 | 24 | 2.4% of 3,680 | 11.2 |
+| Caller in their first row (discards 1-6) | 309 | 12 | 1.1% of 2,440 | 3.3 |
+| Caller past their first row | 153 | 12 | 5.1% of 1,240 | 7.8 |
+| Your turns 1-6 / 7-11 / 12+ | 284 / 160 / 18 | 12 / 6 / 6 | 1.2% / 4.0% / 14.8% | 3.3 / 6.5 / 2.7 |
+| Before 20 Sep, first row / past it | 104 / 65 | 1 / 2 | | 1.1 / 3.3 |
+| Since 20 Sep, first row / past it | 205 / 88 | 11 / 10 | | 2.2 / 4.5 |
+
+Honors do not explain it: in the first row with a live honor that keeps the hand, 3.8% against 0.8%; with
+none, 4.1% against 1.5%; when the hand was kept with an honor on offer, the honor was cut 51% (you) and
+55% (LuckyJ) of the time. Of your 12 first-row breaks, 7 were against two calls, 9 threw the caller's
+genbutsu, and on 8 Mortal put under 10% on the safe tiles (2.1% across all 309 first-row turns). Of your 6
+breaks from turn 12 on, Mortal backs 3. A scratch join to `contrast/choices.py` also found no acceptance
+difference that explains it.
+
+Examples (all 27 September, two-call callers in their first row, not ready): 260927-d8570927 South 4-1
+turn 3 (square 14%, threw 1s keeping lone E P C; Mortal E 90%), 260928-e154b24e South 2-1 turn 5 (21%,
+genbutsu 2s while leading by 9,700; Mortal 6m 65%), 260928-00109693 East 2-0 turn 6 (21%, split a dead
+hatsu pair; Mortal 3s or 1p).

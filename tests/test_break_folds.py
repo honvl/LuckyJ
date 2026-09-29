@@ -149,5 +149,50 @@ class ProseFigureTests(unittest.TestCase):
         self.assertEqual(round(100 * (1 - (1 - square(1, 0, 11) / 100) * (1 - square(1, 3, 10) / 100))), 60)
 
 
+def quiet_chapter(page: str) -> str:
+    text = page[page.index('<section class="point" id="quiet-breaks">'):]
+    return text[: text.index("</section>")]
+
+
+class QuietSquareTests(unittest.TestCase):
+    """Chapter 21: your extra breaks on quiet squares."""
+
+    Q = DATA["quiet"]
+
+    def test_the_date_table(self):
+        rows = [("before", "first row"), ("before", "past first row"), ("since", "first row"), ("since", "past first row")]
+        cells = [self.Q["by date"][f"{when} 2026-09-20, {row}"] for when, row in rows]
+        want = [[str(c["You"]["spots"]), str(c["You"]["safe"]), f'{c["expected"]:.1f}'] for c in cells]
+        self.assertEqual(want, [["104", "1", "1.1"], ["65", "2", "3.3"], ["205", "11", "2.2"], ["88", "10", "4.5"]])
+        for path in figure.PAGES.values():
+            with self.subTest(page=path.name):
+                got = table_cells(quiet_chapter(path.read_text(encoding="utf-8")), 0)
+                self.assertEqual([row[1:] for row in got], want)
+
+    def test_the_first_row(self):
+        self.assertEqual(self.Q["caller first row"]["LuckyJ"]["pct"], 1.1)
+        self.assertEqual(self.Q["by date"]["since 2026-09-20, first row"]["You"]["pct"], 5.4)
+        self.assertEqual(self.Q["your first-row breaks by calls"], {"2": 7, "1": 5})
+        self.assertEqual((self.Q["all"]["You"]["safe"], self.Q["all"]["LuckyJ"]["spots"]), (24, 3680))
+        self.assertEqual([(self.Q[k]["LuckyJ"]["spots"], self.Q[k]["LuckyJ"]["safe"]) for k in ("caller first row", "caller past first row")],
+                         [(2440, 26), (1240, 63)])
+
+    def test_not_the_honors(self):
+        honor, none = self.Q["first row, a live honor keeps the hand"], self.Q["first row, no honor keeps the hand"]
+        self.assertEqual((honor["You"]["pct"], honor["LuckyJ"]["pct"], none["You"]["pct"], none["LuckyJ"]["pct"]), (3.8, 0.8, 4.1, 1.5))
+        self.assertEqual({k: round(v) for k, v in self.Q["kept, cut the honor"].items()}, {"LuckyJ": 55, "You": 51})
+
+    def test_what_you_throw_and_mortal(self):
+        breaks = self.Q["your first-row breaks"]
+        self.assertEqual((breaks["breaks"], breaks["genbutsu"], breaks["mortal_under_10"]), (12, 9, 8))
+        self.assertEqual((self.Q["mortal first row"]["spots"], round(self.Q["mortal first row"]["safe_weight"])), (309, 2))
+        late = self.Q["your late breaks"]
+        self.assertEqual((late["breaks"], late["mortal_agrees"], round(self.Q["turns 12+"]["expected"])), (6, 3, 3))
+
+    def test_the_example_squares(self):
+        data = json.loads(miner.grid.DATA.read_text())
+        self.assertEqual([round(miner.square(2, 0, d, data)) for d in (4, 5)], [14, 21])
+
+
 if __name__ == "__main__":
     unittest.main()

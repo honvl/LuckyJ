@@ -19784,6 +19784,168 @@
    "safe_weight": 1.8
   }
  },
+ "quiet": {
+  "all": {
+   "LuckyJ": {
+    "spots": 3680,
+    "safe": 89,
+    "pct": 2.4
+   },
+   "You": {
+    "spots": 462,
+    "safe": 24,
+    "pct": 5.2
+   },
+   "expected": 11.2
+  },
+  "caller first row": {
+   "LuckyJ": {
+    "spots": 2440,
+    "safe": 26,
+    "pct": 1.1
+   },
+   "You": {
+    "spots": 309,
+    "safe": 12,
+    "pct": 3.9
+   },
+   "expected": 3.3
+  },
+  "caller past first row": {
+   "LuckyJ": {
+    "spots": 1240,
+    "safe": 63,
+    "pct": 5.1
+   },
+   "You": {
+    "spots": 153,
+    "safe": 12,
+    "pct": 7.8
+   },
+   "expected": 7.8
+  },
+  "turns 1-6": {
+   "LuckyJ": {
+    "spots": 2305,
+    "safe": 27,
+    "pct": 1.2
+   },
+   "You": {
+    "spots": 284,
+    "safe": 12,
+    "pct": 4.2
+   },
+   "expected": 3.3
+  },
+  "turns 7-11": {
+   "LuckyJ": {
+    "spots": 1314,
+    "safe": 53,
+    "pct": 4.0
+   },
+   "You": {
+    "spots": 160,
+    "safe": 6,
+    "pct": 3.8
+   },
+   "expected": 6.5
+  },
+  "turns 12+": {
+   "LuckyJ": {
+    "spots": 61,
+    "safe": 9,
+    "pct": 14.8
+   },
+   "You": {
+    "spots": 18,
+    "safe": 6,
+    "pct": 33.3
+   },
+   "expected": 2.7
+  },
+  "first row, a live honor keeps the hand": {
+   "LuckyJ": {
+    "spots": 1460,
+    "safe": 11,
+    "pct": 0.8
+   },
+   "You": {
+    "spots": 186,
+    "safe": 7,
+    "pct": 3.8
+   },
+   "expected": 1.4
+  },
+  "first row, no honor keeps the hand": {
+   "LuckyJ": {
+    "spots": 980,
+    "safe": 15,
+    "pct": 1.5
+   },
+   "You": {
+    "spots": 123,
+    "safe": 5,
+    "pct": 4.1
+   },
+   "expected": 1.9
+  },
+  "kept, cut the honor": {
+   "LuckyJ": 54.9,
+   "You": 50.8
+  },
+  "your first-row breaks": {
+   "breaks": 12,
+   "genbutsu": 9,
+   "mortal_safe_mean": 21.6,
+   "mortal_under_10": 8
+  },
+  "mortal first row": {
+   "spots": 309,
+   "safe_weight": 2.1
+  },
+  "your late breaks": {
+   "breaks": 6,
+   "mortal_agrees": 3
+  },
+  "your first-row breaks by calls": {
+   "2": 7,
+   "1": 5
+  },
+  "by date": {
+   "before 2026-09-20, first row": {
+    "You": {
+     "spots": 104,
+     "safe": 1,
+     "pct": 1.0
+    },
+    "expected": 1.1
+   },
+   "before 2026-09-20, past first row": {
+    "You": {
+     "spots": 65,
+     "safe": 2,
+     "pct": 3.1
+    },
+    "expected": 3.3
+   },
+   "since 2026-09-20, first row": {
+    "You": {
+     "spots": 205,
+     "safe": 11,
+     "pct": 5.4
+    },
+    "expected": 2.2
+   },
+   "since 2026-09-20, past first row": {
+    "You": {
+     "spots": 88,
+     "safe": 10,
+     "pct": 11.4
+    },
+    "expected": 4.5
+   }
+  }
+ },
  "ron_paid": {
   "open": {
    "wins": 2944,
