@@ -327,13 +327,14 @@ html:lang(ja) :is(.kicker, .eyebrow, .side-title, .panel-kicker, .label) {
   color: inherit;
 }
 
+/* The mark is the favicon's tile: a felt-green back under an ivory face with a vermilion J. */
 .book-mark svg {
   display: block;
-  width: 28px;
+  width: 21px;
   height: 28px;
 }
 
-.book-mark .mark-outer {
+.book-mark .mark-back {
   fill: var(--felt);
 }
 
@@ -341,28 +342,13 @@ html:lang(ja) :is(.kicker, .eyebrow, .side-title, .panel-kicker, .label) {
   fill: var(--plate);
 }
 
-.book-mark .mark-stroke {
-  stroke: var(--felt);
+.book-mark .mark-letter {
+  fill: var(--verm);
 }
 
-.book-mark .mark-dot {
-  fill: var(--verm-mark);
-}
-
-.on-felt .book-mark .mark-outer {
-  fill: var(--cream);
-}
-
-.on-felt .book-mark .mark-face {
-  fill: var(--felt);
-}
-
-.on-felt .book-mark .mark-stroke {
-  stroke: var(--cream);
-}
-
-.on-felt .book-mark .mark-dot {
-  fill: var(--verm-felt);
+/* On the felt a green back would vanish, so the tile shows a pale bone back instead. */
+.on-felt .book-mark .mark-back {
+  fill: var(--cream-2);
 }
 
 .book-title {

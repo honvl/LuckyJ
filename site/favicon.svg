@@ -1,13 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LuckyJ favicon">
-  <rect width="64" height="64" rx="14" fill="#134834" />
-  <rect x="7" y="6" width="50" height="52" rx="10" fill="#f9f6f1" />
-  <path
-    d="M24 17h18M38 17v22c0 9-6 15-15 15-6 0-11-3-14-7"
-    fill="none"
-    stroke="#134834"
-    stroke-width="8"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
-  <circle cx="48" cy="18" r="6" fill="#e16a3e" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="The LuckyJ Playbook">
+  <!-- A mahjong tile standing on its felt-green back, its face printed with a vermilion J like a rubricated initial. -->
+  <rect x="8" width="48" height="64" rx="10" fill="#134834" />
+  <rect x="12" y="4" width="40" height="49" rx="7" fill="#f9f6f1" />
+  <g fill="#b23b20">
+    <path d="M24 10H47V15H45Q42 15.4 42 18.5V35.5C42 44 36.6 48.6 29.5 48.6C23.6 48.6 18.6 45.4 18.6 40.6L27.6 41.4C31.2 42 33 39.8 33 35.5V18.5Q33 15.4 30 15H24Z" />
+    <circle cx="23.6" cy="40.4" r="5.8" />
+  </g>
 </svg>
