@@ -44,43 +44,52 @@ class CallerGridTests(unittest.TestCase):
         self.assertEqual(DATA["readings"], 88588)
 
     def test_the_fold_line(self):
-        self.assertEqual(build.fold_lines(FOLD), {1: 9, 2: 7, 3: 7})
+        # real choices only: a safe tile keeps the shanten and so does a live tile with at least as much acceptance
+        self.assertEqual(build.fold_lines(FOLD), {1: 12, 2: 9, 3: 9})
         one, more = FOLD["shanten"]["far"]["blocks"]["1"], FOLD["shanten"]["far"]["blocks"]["2+"]
         fit = lambda block, d: round(block["cells"][str(d)]["fit"])
-        self.assertEqual((one["spots"], more["spots"]), (7821, 2812))
-        self.assertEqual((min(fit(one, d) for d in range(1, 7)), max(fit(one, d) for d in range(1, 7))), (72, 80))
-        self.assertEqual([fit(one, d) for d in (8, 9, 10)], [57, 48, 40])
-        self.assertEqual([fit(more, d) for d in (6, 7, 8)], [56, 47, 40])
-        # the run does not move the far-hand line; it does move LuckyJ's choice at tenpai against one call
-        for block in ("1", "2+"):
-            far = FOLD["run_slope"]["far"][block]
-            self.assertLess(abs(far["slope"]), 2 * far["se"])
-        self.assertEqual({b: (round(v["slope"], 2), round(v["se"], 2)) for b, v in FOLD["run_slope"]["far"].items()},
-                         {"1": (0.03, 0.03), "2+": (-0.06, 0.04)})
-        tenpai = FOLD["run_slope"]["tenpai"]["1"]
-        self.assertEqual((round(tenpai["slope"], 2), round(tenpai["se"], 2), tenpai["spots"]), (-0.36, 0.11, 939))
-        self.assertEqual([round(FOLD["tenpai_by_run"][r]["live"]) for r in "0123"], [17, 11, 5, 7])
+        self.assertEqual((one["spots"], more["spots"]), (4500, 1591))
+        self.assertEqual((min(fit(one, d) for d in range(1, 7)), max(fit(one, d) for d in range(1, 7))), (80, 94))
+        self.assertEqual([fit(one, d) for d in (9, 11, 12)], [66, 53, 47])
+        self.assertEqual([fit(more, d) for d in (6, 8, 9)], [67, 53, 48])
+        # chapters 13 and 14's tenth and seventh discards are the ties' line
+        ties = FOLD["shanten"]["far"]["ties"]
+        self.assertEqual((ties["1"]["line"], ties["2+"]["line"], ties["1"]["spots"] + ties["2+"]["spots"]), (10, 7, 2798))
+        kinds = FOLD["kinds"]["far"]
+        self.assertEqual((kinds["safe tile is the best tile"]["spots"], kinds["only safe tiles keep shanten"]["spots"]), (4454, 88))
+        # the run does not move the line against one call, and does against two or more
+        far = FOLD["run_slope"]["far"]
+        self.assertLess(abs(far["1"]["slope"]), 2 * far["1"]["se"])
+        self.assertLess(far["2+"]["slope"], -2 * far["2+"]["se"])
+        self.assertEqual({b: (round(v["slope"], 2), round(v["se"], 2)) for b, v in far.items()}, {"1": (-0.02, 0.05), "2+": (-0.15, 0.06)})
+        # about 4 points of folding a tile from the wall, near half: 0.25 of the log-odds slope
+        self.assertEqual(round(-25 * far["2+"]["slope"]), 4)
+        self.assertEqual(FOLD["shanten"]["tenpai"]["folded"]["spots"], 248)
 
     def test_the_fold_views(self):
-        # one-shanten tips a discard earlier against one call; at tenpai the safe tile goes first from the start
-        self.assertEqual(build.fold_lines(FOLD, "one"), {1: 8, 2: 7, 3: 7})
-        self.assertEqual(build.fold_lines(FOLD, "tenpai"), {1: None, 2: None, 3: None})
+        # from one-shanten LuckyJ folds later than from a far hand, and at tenpai there are too few real choices
+        self.assertEqual(build.fold_lines(FOLD, "one"), {1: 14, 2: 12, 3: 12})
         hands = FOLD["shanten"]
-        self.assertEqual([(hands[h]["folded"]["spots"], hands[h]["costly"]["spots"]) for h in build.HANDS], [(10633, 1682), (7292, 2663), (1599, 1521)])
-        self.assertEqual([hands[h]["costly"]["folded"] for h in build.HANDS], [4.0, 4.8, 3.5])
-        self.assertEqual(hands["tenpai"]["folded"]["folded"], 89.3)
+        self.assertEqual([(hands[h]["folded"]["spots"], hands[h]["costly"]["spots"]) for h in ("far", "one", "tenpai")],
+                         [(6091, 1682), (4310, 2663), (248, 1521)])
+        self.assertEqual([hands[h]["costly"]["folded"] for h in ("far", "one", "tenpai")], [4.0, 4.8, 3.5])
+        self.assertEqual(round(hands["tenpai"]["folded"]["folded"]), 55)
+        self.assertNotIn("tenpai", build.HANDS)
         square = lambda hand, row, d: build.fold_value(hands[hand]["grid"][row]["cells"][str(d)], FOLD["grid_max_half_band"])
-        self.assertEqual([round(square("far", "1-0", d)) for d in (8, 9, 10)], [44, 53, 62])
-        self.assertEqual(round(square("one", "1-0", 8)), 52)
-        self.assertGreaterEqual(min(square("tenpai", "1-0", d) for d in range(7, 14)), 75)
-        # a square is drawn only where its band is tight; the three-call block has no tenpai square at all
+        for d in range(9, 14):
+            self.assertLess(square("one", "1-0", d), square("far", "1-0", d))
+        # the one-shanten view starts higher because its early ties go to the safe tile more often
+        folded_ties = lambda hand, d: 100 - hands[hand]["ties"]["1"]["cells"][str(d)]["fit"]
+        for d in range(4, 9):
+            self.assertLess(folded_ties("far", d), folded_ties("one", d))
+        # a square is drawn only where its band is tight
         for hand in build.HANDS:
             for row in hands[hand]["grid"].values():
                 for cell in row["cells"].values():
                     if build.fold_value(cell, FOLD["grid_max_half_band"]) is not None:
                         self.assertLessEqual(cell["hi"] - cell["lo"], 2 * FOLD["grid_max_half_band"])
-        self.assertEqual(build.blank_blocks(FOLD, "tenpai"), [3])
-        self.assertEqual(build.blank_blocks(FOLD, "far"), [])
+        self.assertEqual(build.blank_blocks(FOLD, "far"), [3])
+        self.assertEqual(build.blank_blocks(FOLD, "one"), [3])
 
     def test_the_switches_show_one_view_at_a_time(self):
         views = ["win"] + [f"fold-{h}" for h in build.HANDS]
@@ -147,11 +156,14 @@ class CallerGridTests(unittest.TestCase):
         for path in build.PAGES.values():
             page = path.read_text(encoding="utf-8")
             figure = page[page.index(build.START):page.index(build.END)]
-            for view, colour in (("win", "#f5a583"), ("fold-far", "#8edbb8")):
+            for view, ramp in (("win", "win"), ("fold-far", "fold"), ("fold-one", "fold")):
                 table = re.search(rf'<table class="cs-grid" data-view="{view}".*?</table>', figure, flags=re.S).group(0)
-                self.assertIn(f"background:{colour}", table)
-                self.assertNotIn("background:#8edbb8" if view == "win" else "background:#f5a583", table)
-            self.assertEqual(len(re.findall(r'<span class="cs-legend">', figure)), 4)
+                shown = re.findall(r'background:(#[0-9a-f]{6});color:[^"]*">(\d+)<', table)
+                self.assertTrue(shown)
+                # every square sits on its own ramp, within a rounding step of its printed value
+                for colour, printed in shown:
+                    self.assertIn(colour, {build.shade(int(printed) + d / 100, ramp) for d in range(-50, 51)})
+            self.assertEqual(len(re.findall(r'<span class="cs-legend">', figure)), 1 + len(build.HANDS))
 
 
 if __name__ == "__main__":

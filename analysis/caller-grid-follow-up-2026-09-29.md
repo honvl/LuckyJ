@@ -137,3 +137,37 @@ against one call in the caller's first six discards, 40% of LuckyJ's safe cuts a
 (far hand 50%), and 43% of its live cuts were 3 to 7 (far hand 22%), so the early choice there is about
 shape as much as safety. Later the one-shanten squares sit below the far hand's (a one-call caller's 12th
 discard: 67% against 74%).
+
+## 7. Correction: count only real choices
+
+The user saw that the one-shanten view showed LuckyJ folding earlier than from two-shanten or worse.
+The count behind the fold views, the green line and chapter 19 (the main book's fold-line spots: a
+safe tile in hand that keeps the shanten) mixed in turns where throwing the safe tile was shape, not
+defense. Joined to every candidate's acceptance (`scripts/contrast/choices.py` over the same 1,079
+games), LuckyJ's turns against a single caller split like this:
+
+| LuckyJ's hand | tie | safe tile costs acceptance | safe tile is the best tile | only safe tiles keep shanten | safe tile costs shanten |
+|---|---|---|---|---|---|
+| two-shanten or worse | 2,798 (folded 36.7%) | 3,293 (16.3%) | 4,454 (54.5%) | 88 (98.9%) | 1,682 (4.0%) |
+| one-shanten | 2,353 (48.2%) | 1,957 (21.8%) | 2,384 (82.7%) | 598 (98.7%) | 2,663 (4.8%) |
+| tenpai | 128 (65.6%) | 120 (43.3%) | 262 (82.4%) | 1,089 (98.8%) | 1,521 (3.5%) |
+
+The old count was the first four columns. A third of the one-shanten turns were ones where the safe tile
+was the best tile for the hand, thrown 83% of the time, and two thirds of the tenpai turns (the "89%")
+were ones where only safe tiles kept the tenpai. The fold views, the line and chapter 19 now count real
+choices only, the first two columns: a live tile keeps the shanten with at least as much acceptance as the
+best safe tile.
+
+| LuckyJ's hand | real choices | line, one call | line, two or more | ties alone: one call, two or more | costly alone |
+|---|---|---|---|---|---|
+| two-shanten or worse | 6,091 | 12th (11.55) | 9th (8.53) | 10th (9.83), 7th (6.78) | never half: 28% at a one-call caller's 10th, 31 to 40% at two calls' 7th to 10th |
+| one-shanten | 4,310 | 14th (13.62) | 12th (11.92) | 12th (11.64), above half from the 6th | never half: 34% at a one-call caller's 13th |
+| tenpai | 248 | too few | too few | | |
+
+Chapters 13 and 14's tenth and seventh discards are the ties' line, so they stand. Against one call the
+run does not move the line (−0.02 ± 0.05 log-odds a tile); against two or more it does (−0.15 ± 0.06,
+about 4 points of folding a tile near half). At tenpai the run effect in the old count (−0.36 ± 0.11)
+came from the forced turns; on the 248 real choices it is −0.23 ± 0.16. Chapter 18's caption and chapter
+19's line, run, rule and evidence are corrected and marked in both editions; the tenpai button is gone.
+
+The main book's "Open callers" fold line uses the old count too.

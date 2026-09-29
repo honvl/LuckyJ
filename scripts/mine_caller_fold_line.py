@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 """Where LuckyJ stops cutting live tiles against a caller, on the axes of chapter 18's caller grid.
 
-Reads the cut rows that ``scripts/contrast/vs_callers.py`` writes for LuckyJ's Tokujou games and keeps
-the main book's fold-line spots (its "Open callers" section): LuckyJ's own discards against a single
-caller while nobody is in riichi, holding a safe tile (danger 1 or less) that keeps its best shanten. A
-cut is live when its danger is 2 or more; LuckyJ folded when it threw the safe tile instead.
+Reads the cut rows that ``scripts/contrast/vs_callers.py`` writes for LuckyJ's Tokujou games, joined to
+the acceptance of every tile it could have cut (``scripts/contrast/choices.py`` over the same games), and
+keeps LuckyJ's own discards against a single caller while nobody is in riichi. A tile is safe at danger 1
+or less (the caller's genbutsu, a full suji, an honor with two showing) and live from 2.
+
+Only real choices count: a safe tile keeps the best shanten, and so does a live tile with at least as
+much acceptance as the best such safe tile. LuckyJ folded when it threw a safe tile. The main book's
+fold-line spots (its "Open callers" section) also counted the turns where the safe tile was the best tile
+for the hand anyway and the turns where only safe tiles kept the shanten; throwing the safe tile there
+is shape, not defense, and those turns are counted here only to say how many there were.
 
 For each of LuckyJ's hands (two-shanten or worse, one-shanten, tenpai) the share of live cuts is fitted
 over the caller's discards with ``fit_series`` (``scripts/mine_safe_tile_timing.py``), once against one
@@ -18,7 +24,7 @@ It also asks whether the caller's run of tiles from the wall moves the live shar
 of the live cut on the same kind of discard curve plus the run, for each block and each hand), and how
 often LuckyJ threw a safe tile when that cost it shanten. Everything is written as JSON.
 
-usage: mine_caller_fold_line.py CUTS.jsonl OUT.json
+usage: mine_caller_fold_line.py CUTS.jsonl CHOICES.jsonl OUT.json
 """
 
 from __future__ import annotations
@@ -45,17 +51,43 @@ def honors_and_terminals(tiles: list[int]) -> bool:
     return all(t >= 41 or t % 10 in (1, 9) for t in tiles)
 
 
-def load(path: str) -> list[dict]:
-    """Every discard LuckyJ made against a single caller, with what its safest tiles would have cost."""
+def kind(options: list[tuple[int, int, int]]) -> str:
+    """What throwing a safe tile meant on this turn, from every candidate's (danger, shanten, acceptance)."""
+    if all(danger > 1 for danger, _, _ in options):
+        return "no safe tile"
+    best = min(sh for _, sh, _ in options)
+    safe = [uk for danger, sh, uk in options if sh == best and danger <= 1]
+    live = [uk for danger, sh, uk in options if sh == best and danger > 1]
+    if not safe:
+        return "safe tile costs shanten"
+    if not live:
+        return "only safe tiles keep shanten"
+    if max(safe) > max(live):
+        return "safe tile is the best tile"
+    return "tie" if max(safe) == max(live) else "safe tile costs acceptance"
+
+
+CHOICE = ("tie", "safe tile costs acceptance")
+
+
+def load(cuts: str, choices: str) -> list[dict]:
+    """Every discard LuckyJ made against a single caller, with what a safe tile would have cost it."""
+    acceptance = {}
+    with open(choices) as f:
+        for line in f:
+            r = json.loads(line)
+            acceptance[(r["g"], r["li"], r["t"])] = {c["b"]: (c["sh"], c["uk"]) for c in r["cands"]}
     spots = []
-    with open(path) as f:
+    with open(cuts) as f:
         for line in f:
             r = json.loads(line)
             if r["who"] != "LuckyJ" or r["n_callers"] != 1 or not 1 <= r["q_turn"] <= MAX_DISCARD:
                 continue
+            cands = acceptance[(r["g"], r["li"], r["t"])]
+            # a single caller is the one with the most calls, so its row carries every candidate's danger
+            options = [(danger, sh, cands[b][1]) for b, danger, sh, _ in r["opts"]]
             spots.append({"calls": r["n_melds"], "discard": r["q_turn"], "run": r["ts_run"], "run_tiles": r["run_tiles"],
-                          "shanten": r["best_sh"], "live": int(r["danger"] >= 2), "free": r["keep_safe"] <= 1,
-                          "held": r["held_safe"] <= 1})
+                          "shanten": r["best_sh"], "live": int(r["danger"] >= 2), "kind": kind(options)})
     return spots
 
 
@@ -130,29 +162,37 @@ def share(spots: list[dict]) -> dict:
     return {"spots": len(spots), "folded": round(100 * sum(1 - s["live"] for s in spots) / len(spots), 1) if spots else None}
 
 
-def main(cuts: str, out: str) -> None:
-    every = load(cuts)
-    spots = [s for s in every if s["free"]]
+def main(cuts: str, choices: str, out: str) -> None:
+    every = load(cuts, choices)
+    spots = [s for s in every if s["kind"] in CHOICE]
     result = {
-        "definition": "LuckyJ's discards against a single caller with nobody in riichi, holding a safe tile (danger 1 "
-                      "or less) that keeps its best shanten; a cut is live at danger 2 or more, and LuckyJ folded when "
-                      "it threw a safe tile. Each block's line is the first caller discard whose fitted live share is "
-                      "below half; each grid row is the fitted share of turns LuckyJ folded",
+        "definition": "LuckyJ's discards against a single caller with nobody in riichi where a safe tile (danger 1 or "
+                      "less) keeps its best shanten and so does a live tile with at least as much acceptance; LuckyJ "
+                      "folded when it threw a safe tile. Each block's line is the first caller discard whose fitted "
+                      "live share is below half; each grid row is the fitted share of turns LuckyJ folded",
         "min_spots": MIN_SPOTS,
         "grid_min_spots": GRID_MIN_SPOTS,
         "grid_max_half_band": GRID_MAX_HALF_BAND,
         "shanten": {},
+        "kinds": {},
         "run_slope": {},
         "tenpai_by_run": {},
         "far_by_run_tiles": {},
     }
     for shanten, keep in SHANTEN.items():
         hand = [s for s in spots if keep(s["shanten"])]
-        costly = [s for s in every if keep(s["shanten"]) and s["held"] and not s["free"]]
+        costly = [s for s in every if keep(s["shanten"]) and s["kind"] == "safe tile costs shanten"]
         entry = {"folded": share(hand), "costly": share(costly), "blocks": {}, "grid": {}}
+        for k in ("tie", "safe tile costs acceptance", "safe tile is the best tile", "only safe tiles keep shanten",
+                  "safe tile costs shanten", "no safe tile"):
+            result["kinds"].setdefault(shanten, {})[k] = share([s for s in every if keep(s["shanten"]) and s["kind"] == k])
+        entry["ties"], entry["paid"] = {}, {}
         for name, calls in BLOCKS.items():
             block = [s for s in hand if s["calls"] in calls]
             entry["blocks"][name] = fold_curve(block)
+            # the two halves: the safe tile and the live one exactly as good for the hand, and the safe tile costing acceptance
+            entry["ties"][name] = fold_curve([s for s in block if s["kind"] == "tie"])
+            entry["paid"][name] = fold_curve([s for s in block if s["kind"] == "safe tile costs acceptance"])
             result["run_slope"].setdefault(shanten, {})[name] = run_slope(block)
         for c in (1, 2, 3):
             for run in (0, 1, 2, 3):
@@ -170,13 +210,16 @@ def main(cuts: str, out: str) -> None:
         c = [s for s in spots if s["calls"] == 1 and s["shanten"] == 0 and min(s["run"], 3) == run]
         result["tenpai_by_run"][str(run)] = {"spots": len(c), "live": round(100 * sum(s["live"] for s in c) / len(c), 1)}
     Path(out).write_text(json.dumps(result, indent=1))
-    print(f"{out}: {len(spots)} spots with a safe tile that keeps the shanten")
+    print(f"{out}: {len(spots)} real choices between a safe tile and a live one as good for the hand")
+    for shanten, kinds in result["kinds"].items():
+        print(f"  {shanten}: " + "; ".join(f"{k} {v['spots']} (folded {v['folded']}%)" for k, v in kinds.items()))
     for shanten, entry in result["shanten"].items():
         print(f"== {shanten}: folded {entry['folded']['folded']}% of {entry['folded']['spots']};"
               f" when the safe tile cost shanten {entry['costly']['folded']}% of {entry['costly']['spots']}")
         for name, curve in entry["blocks"].items():
             cells = curve["cells"]
-            print(f"  {name} call(s): {curve['spots']} spots, line at discard {curve['line']} (crossings {curve['crossings_50']})")
+            print(f"  {name} call(s): {curve['spots']} spots, line at discard {curve['line']} (crossings {curve['crossings_50']});"
+                  f" ties alone {entry['ties'][name]['spots']}, line {entry['ties'][name]['line']} {entry['ties'][name]['crossings_50']}")
             print("    live " + " ".join(f"{d}:{cells[d]['fit']:.0f}" for d in range(1, MAX_DISCARD + 1) if "fit" in cells[d]))
         for key, row in entry["grid"].items():
             cells = row["cells"]
@@ -189,4 +232,4 @@ def main(cuts: str, out: str) -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], sys.argv[3])

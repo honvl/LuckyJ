@@ -1208,8 +1208,7 @@
 #cs-view-win:checked ~ .cs-switch label[for="cs-view-win"],
 #cs-view-fold:checked ~ .cs-switch label[for="cs-view-fold"],
 #cs-hand-far:checked ~ .cs-switch label[for="cs-hand-far"],
-#cs-hand-one:checked ~ .cs-switch label[for="cs-hand-one"],
-#cs-hand-tenpai:checked ~ .cs-switch label[for="cs-hand-tenpai"] {
+#cs-hand-one:checked ~ .cs-switch label[for="cs-hand-one"] {
   border-color: var(--felt);
   background: var(--felt);
   color: var(--cream);
@@ -1218,8 +1217,7 @@
 #cs-view-win:focus-visible ~ .cs-switch label[for="cs-view-win"],
 #cs-view-fold:focus-visible ~ .cs-switch label[for="cs-view-fold"],
 #cs-hand-far:focus-visible ~ .cs-switch label[for="cs-hand-far"],
-#cs-hand-one:focus-visible ~ .cs-switch label[for="cs-hand-one"],
-#cs-hand-tenpai:focus-visible ~ .cs-switch label[for="cs-hand-tenpai"] {
+#cs-hand-one:focus-visible ~ .cs-switch label[for="cs-hand-one"] {
   outline: 2px solid var(--jade-mark);
   outline-offset: 2px;
 }
@@ -1229,11 +1227,7 @@
 #cs-view-win:checked ~ * [data-view^="fold"],
 #cs-view-fold:checked ~ * [data-view="win"],
 #cs-hand-far:checked ~ * [data-view="fold-one"],
-#cs-hand-far:checked ~ * [data-view="fold-tenpai"],
-#cs-hand-one:checked ~ * [data-view="fold-far"],
-#cs-hand-one:checked ~ * [data-view="fold-tenpai"],
-#cs-hand-tenpai:checked ~ * [data-view="fold-far"],
-#cs-hand-tenpai:checked ~ * [data-view="fold-one"] {
+#cs-hand-one:checked ~ * [data-view="fold-far"] {
   display: none;
 }
 

@@ -5,13 +5,14 @@ The grid is a heat table: one row per number of calls and run of tiles drawn and
 discard the caller has made, each cell the fitted share of those callers who could win off a discard
 (tenpai with a yaku). A green line in each block of rows marks LuckyJ's fold line from
 ``analysis/caller-fold-line-2026-09-29.json`` (``scripts/mine_caller_fold_line.py``): the first caller
-discard at which LuckyJ, from two-shanten or worse, cut a live tile less than half the time.
+discard at which LuckyJ, from two-shanten or worse and choosing between a safe tile and a live one at least
+as good for its hand, cut the live tile less than half the time.
 
-Two switches above the grid, radio buttons that need no script, turn it into the share of turns LuckyJ
-folded in each square, for each of LuckyJ's own hands (two-shanten or worse, one-shanten, tenpai), with
-that hand's line. It is written into ``site/honver.html``, and with Japanese labels into
-``site/honver-ja.html``, between the ``caller-surface`` markers; ``--check`` exits non-zero when a page
-and the data disagree.
+Two switches above the grid, radio buttons that need no script, turn it into the share of LuckyJ's real
+choices, a safe tile against a live one at least as good for its hand, on which it folded in each
+square, from two-shanten or worse or from one-shanten, with that hand's line. It is written into
+``site/honver.html``, and with Japanese labels into ``site/honver-ja.html``, between the ``caller-surface``
+markers; ``--check`` exits non-zero when a page and the data disagree.
 
 usage: build_caller_surface.py [--check]
 """
@@ -30,8 +31,9 @@ START = "<!-- caller-surface -->"
 END = "<!-- /caller-surface -->"
 MAX_DISCARD = 18
 ROW_START = ' class="cs-row-start"'
-HANDS = ("far", "one", "tenpai")
-ORDINALS = {5: "fifth", 6: "sixth", 7: "seventh", 8: "eighth", 9: "ninth", 10: "tenth", 11: "eleventh", 12: "twelfth"}
+HANDS = ("far", "one")
+ORDINALS = {5: "fifth", 6: "sixth", 7: "seventh", 8: "eighth", 9: "ninth", 10: "tenth", 11: "eleventh", 12: "twelfth",
+            13: "thirteenth", 14: "fourteenth", 15: "fifteenth", 16: "sixteenth"}
 # paper to deep vermilion for the callers who could win, paper to deep jade for LuckyJ's folds: the site's tokens
 LOW = (0xF4, 0xF0, 0xE6)
 MID = (0xF5, 0xA5, 0x83)
@@ -94,61 +96,54 @@ def blank_blocks(fold: dict, hand: str) -> list[int]:
 def _fold_caption_en(fold: dict, hand: str) -> str:
     entry, lines, blank = fold["shanten"][hand], fold_lines(fold, hand), blank_blocks(fold, hand)
     costly, band = entry["costly"], fold["grid_max_half_band"]
-    safe = "a safe tile (the caller&#8217;s genbutsu, a full suji, or an honor with two showing)"
-    where = "against a single caller with nobody in riichi, in its 1,079 Tokujou games"
     if hand == "far":
-        text = f"Share of LuckyJ&#8217;s turns on which it folded, from two-shanten or worse: it threw {safe} while one kept its shanten, {where}."
-    elif hand == "one":
-        text = (f"Share of LuckyJ&#8217;s turns on which it folded, from one-shanten: it threw {safe} while one kept the "
-                f"one-shanten, {where}. The first squares sit above the far hand&#8217;s, because early on a one-shanten "
-                "hand&#8217;s spare tile is often a safe honor it has no use for, and the later ones below them, because "
-                "a hand this close is worth pushing longer.")
+        text = ("Share of LuckyJ&#8217;s real choices on which it folded, from two-shanten or worse, against a single caller "
+                "with nobody in riichi, in its 1,079 Tokujou games: a safe tile (the caller&#8217;s genbutsu, a full suji, or "
+                "an honor with two showing) kept its shanten, and so did a live tile with at least as much acceptance, and "
+                "it threw the safe tile. Turns where the safe tile was the best tile for the hand anyway, or the only one "
+                "that kept the shanten, are left out.")
     else:
-        text = (f"Share of LuckyJ&#8217;s turns at tenpai on which it threw {safe} that kept the tenpai rather than a live "
-                f"tile, {where}: {round(entry['folded']['folded'])}% of {entry['folded']['spots']:,} such turns.")
+        text = ("Share of LuckyJ&#8217;s real choices on which it folded from one-shanten, counted the same way as from "
+                "two-shanten or worse. It starts a little higher, because early ties between two equally good tiles go to "
+                "the safe one more often from one-shanten, then rises more slowly than the far hand&#8217;s and passes half "
+                "later.")
     text += f" A blank square is one LuckyJ met too rarely to pin the share within {band} points either way"
     text += f"; against {('two', 'three')[min(blank) - 2]} or more calls, that is every square." if blank else "."
-    if lines[1] and lines[2]:
-        text += (f" The green line is where the share passes half, all runs together: the {ORDINALS[lines[1]]} discard "
-                 f"against one call and the {ORDINALS[lines[2]]} against two or more.")
-    else:
-        text += " It took the safe tile more often than not from the first of these turns, so there is no line."
-    if hand == "tenpai":
-        text += (f" When every safe tile would have broken the tenpai, LuckyJ broke it for one on {costly['folded']}% of "
-                 f"{costly['spots']:,} turns.")
-    else:
-        cost = "a shanten" if hand == "far" else "the one-shanten"
-        text += f" When every safe tile would have cost {cost}, LuckyJ threw one on {costly['folded']}% of {costly['spots']:,} turns."
+    text += (f" The green line is where the share passes half, all runs together: the {ORDINALS[lines[1]]} discard "
+             f"against one call and the {ORDINALS[lines[2]]} against two or more.")
+    cost = "a shanten" if hand == "far" else "the one-shanten"
+    text += f" When every safe tile would have cost {cost}, LuckyJ threw one on {costly['folded']}% of {costly['spots']:,} turns."
+    if hand == "one":
+        tenpai = fold["shanten"]["tenpai"]
+        text += (f" At tenpai LuckyJ met a real choice only {tenpai['folded']['spots']} times against a single caller, too "
+                 f"few for the grid; it took the safe tile on {round(tenpai['folded']['folded'])}% of them, and broke a "
+                 f"tenpai for safety on {tenpai['costly']['folded']}% of the {tenpai['costly']['spots']:,} turns where "
+                 "every safe tile would have broken it.")
     return text
 
 
 def _fold_caption_ja(fold: dict, hand: str) -> str:
     entry, lines, blank = fold["shanten"][hand], fold_lines(fold, hand), blank_blocks(fold, hand)
     costly, band = entry["costly"], fold["grid_max_half_band"]
-    safe = "安全牌（副露者の現物、筋、2枚見えの字牌）"
-    where = "副露者が1人だけで誰もリーチしていないとき"
-    games = "LuckyJの特上卓1,079半荘で測った"
     if hand == "far":
-        text = f"2シャンテン以上のLuckyJがオリた割合。{where}、シャンテン数を落とさない{safe}があれば、それを切った割合を{games}。"
-    elif hand == "one":
-        text = (f"1シャンテンのLuckyJがオリた割合。{where}、1シャンテンを保つ{safe}があれば、それを切った割合を{games}。"
-                "序盤のマスが2シャンテン以上より高いのは、1シャンテンの手で余る牌が、使い道のない安全な字牌であることが多いため。"
-                "終盤のマスが低いのは、ここまで近い手なら長く押す価値があるため。")
+        text = ("2シャンテン以上のLuckyJが、本当に選べた場面でオリた割合。副露者が1人だけで誰もリーチしていないとき、"
+                "シャンテン数を保つ安全牌（副露者の現物、筋、2枚見えの字牌）があり、受け入れが同じか広い生牌もシャンテン数を"
+                "保てる場面で、安全牌を切った割合を、LuckyJの特上卓1,079半荘で測った。安全牌がもともと手に一番いい牌だった場面と、"
+                "安全牌しかシャンテン数を保てない場面は除いた。")
     else:
-        text = (f"テンパイのLuckyJが、生牌ではなくテンパイを保つ{safe}を切った割合。{where}の場面を{games}。"
-                f"全体では{entry['folded']['spots']:,}回中{round(entry['folded']['folded'])}%。")
+        text = ("1シャンテンのLuckyJが、本当に選べた場面でオリた割合。数え方は2シャンテン以上と同じ。序盤は、同じ価値の2枚から"
+                "安全牌を選ぶことが1シャンテンのほうが多いので少し高いが、その後は2シャンテン以上よりゆっくり上がり、半分を超えるのも遅い。")
     text += f"空欄は、LuckyJがその場面に出会った回数が少なく、割合を上下{band}ポイント以内に絞れないマス"
     text += f"で、{min(blank)}副露以上ではすべてのマスが空欄になる。" if blank else "。"
-    if lines[1] and lines[2]:
-        text += (f"緑の線は、ツモ切りの連続をまとめて割合が半分を超える位置で、1副露に対して{lines[1]}打目、"
-                 f"2副露以上に対して{lines[2]}打目。")
-    else:
-        text += "最初の場面から半分を超えて安全牌を選んでいるので、線はない。"
-    if hand == "tenpai":
-        text += f"安全牌を切るとテンパイが崩れる場面で、LuckyJがテンパイを崩したのは{costly['spots']:,}回中{costly['folded']}%。"
-    else:
-        cost = "シャンテン数が落ちる" if hand == "far" else "1シャンテンが崩れる"
-        text += f"安全牌を切ると{cost}場面で、LuckyJが安全牌を切ったのは{costly['spots']:,}回中{costly['folded']}%。"
+    text += (f"緑の線は、ツモ切りの連続をまとめて割合が半分を超える位置で、1副露に対して{lines[1]}打目、"
+             f"2副露以上に対して{lines[2]}打目。")
+    cost = "シャンテン数が落ちる" if hand == "far" else "1シャンテンが崩れる"
+    text += f"安全牌を切ると{cost}場面で、LuckyJが安全牌を切ったのは{costly['spots']:,}回中{costly['folded']}%。"
+    if hand == "one":
+        tenpai = fold["shanten"]["tenpai"]
+        text += (f"テンパイで本当に選べた場面は、副露者が1人のとき{tenpai['folded']['spots']}回しかなく、表にするには少ない。"
+                 f"安全牌を選んだのはその{round(tenpai['folded']['folded'])}%で、安全牌を切るとテンパイが崩れる"
+                 f"{tenpai['costly']['spots']:,}回では、テンパイを崩したのは{tenpai['costly']['folded']}%だった。")
     return text
 
 
@@ -163,16 +158,16 @@ WORDS = {
         "caption": (
             "Share of callers who could win off your discard (tenpai with a yaku), after their discard number at "
             "the top, in LuckyJ&#8217;s games. A blank square has fewer than {minimum} readings. "
-            "<span class=\"cs-fold-key\">The green line</span> is LuckyJ&#8217;s fold line: from two-shanten or "
-            "worse, holding a safe tile that keeps its shanten, it cut a live tile less than half the time from "
-            "the {one} discard against one call and from the {more} against two or more "
-            "(<a href=\"#fold-line\">chapter 19</a>)."
+            "<mark id=\"fix-18-line\" class=\"guide-changed\"><span class=\"cs-fold-key\">The green line</span> is "
+            "LuckyJ&#8217;s fold line: from two-shanten or worse, choosing between a safe tile and a live one at least as "
+            "good for its hand, it cut the live tile less than half the time from the {one} discard against one call "
+            "and from the {more} against two or more</mark> (<a href=\"#fold-line\">chapter 19</a>)."
         ),
         "discard": lambda n: ORDINALS[n],
         "show": "Squares show",
         "views": {"win": "Callers who could win", "fold": "LuckyJ folded"},
         "hand": "LuckyJ&#8217;s hand",
-        "hands": {"far": "Two-shanten or worse", "one": "One-shanten", "tenpai": "Tenpai"},
+        "hands": {"far": "Two-shanten or worse", "one": "One-shanten"},
         "win_label": "Share of callers who could win off your discard",
         "fold_label": lambda hand: f"Share of turns LuckyJ folded, {hand.lower()}",
         "fold_caption": _fold_caption_en,
@@ -185,15 +180,16 @@ WORDS = {
         "folds": "ここからLuckyJはオリる",
         "caption": (
             "あなたの打牌でアガれる副露者（役ありのテンパイ）の割合を、上に並べた副露者の打牌数ごとに、LuckyJの対局で"
-            "測った。空欄は観測が{minimum}回未満。<span class=\"cs-fold-key\">緑の線</span>はLuckyJのオリライン。"
-            "2シャンテン以上でシャンテン数を落とさない安全牌を持つとき、生牌を切った割合が半分を下回ったのは、"
-            "1副露に対して{one}から、2副露以上に対して{more}からである（<a href=\"#fold-line\">第19章</a>）。"
+            "測った。空欄は観測が{minimum}回未満。<mark id=\"fix-18-line\" class=\"guide-changed\"><span "
+            "class=\"cs-fold-key\">緑の線</span>はLuckyJのオリライン。2シャンテン以上で、安全牌と、手にとって同じか"
+            "より良い生牌のどちらも選べるとき、生牌を切った割合が半分を下回ったのは、1副露に対して{one}から、"
+            "2副露以上に対して{more}からである</mark>（<a href=\"#fold-line\">第19章</a>）。"
         ),
         "discard": lambda n: f"{n}打目",
         "show": "マスの表示",
         "views": {"win": "アガれる副露者", "fold": "LuckyJがオリた割合"},
         "hand": "LuckyJの手",
-        "hands": {"far": "2シャンテン以上", "one": "1シャンテン", "tenpai": "テンパイ"},
+        "hands": {"far": "2シャンテン以上", "one": "1シャンテン"},
         "win_label": "あなたの打牌でアガれる副露者の割合",
         "fold_label": lambda hand: f"LuckyJがオリた割合（{hand}）",
         "fold_caption": _fold_caption_ja,
