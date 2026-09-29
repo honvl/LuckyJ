@@ -164,6 +164,19 @@ class CallerGridTests(unittest.TestCase):
                 for word in want[path.name]:  # each figure in order, the next found after the last
                     at = rule.index(word, at + 1)
 
+    def test_chapter_13_rule_uses_the_corrected_line(self):
+        want = {"honver.html": ["tenth discard", "seventh", "12th", "9th", "14th", "12th"],
+                "honver-ja.html": ["10打目", "7打目", "12打目", "9打目", "14打目", "12打目"]}
+        for path in build.PAGES.values():
+            with self.subTest(page=path.name):
+                page = path.read_text(encoding="utf-8")
+                chapter = page[page.index('<section class="point" id="caller-defense">'):]
+                rule = chapter[chapter.index('<mark id="fix-13-rule"'):]
+                rule = rule[: rule.index("</mark>")]
+                at = -1
+                for word in want[path.name]:  # ties first, then real choices from two-shanten or worse and one-shanten
+                    at = rule.index(word, at + 1)
+
     def test_buckets_and_colours(self):
         self.assertEqual([surface.run_bucket(r) for r in (0, 1, 2, 3, 7)], [0, 1, 2, 3, 3])
         self.assertEqual([surface.calls_bucket(c) for c in (1, 2, 3, 4)], [1, 2, 3, 3])
