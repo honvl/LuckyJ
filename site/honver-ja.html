@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Honverのガイド：LuckyJと比べた点数の行方</title>
+    <meta name="description" content="玉の間の南風戦（半荘戦）80半荘から作った、LuckyJに近い打ち方を目指す個人向けガイド。別の打ち方をすべき巡目の表を載せている。" />
+    <meta name="theme-color" content="#134834" />
+    <link rel="alternate" hreflang="en" href="honver.html" />
+    <link rel="alternate" hreflang="ja" href="honver-ja.html" />
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- The text faces load without holding up the page; until they arrive it reads in the fallback faces. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Serif+JP:wght@400;500;600;700&amp;display=swap" media="print" onload="this.media='all'" data-font-css />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;family=Noto+Sans+JP:wght@400;500;700&amp;family=Noto+Serif+JP:wght@400;500;600;700&amp;display=swap" /></noscript>
+    <link rel="stylesheet" href="styles.css?v=20260929-tile-mark" />
+    <link rel="stylesheet" href="honver.css?v=20260929-guide-ja" />
+  </head>
+  <body data-app="table-only" data-self-name="Honver" data-book="guide">
+    <a class="skip-link" href="#chapters">章へ移動</a>
+    <header class="running-head">
+      <a class="book-mark" href="honver-ja.html"><svg viewBox="8 0 48 64" aria-hidden="true" focusable="false"><rect class="mark-back" x="8" width="48" height="64" rx="10" /><rect class="mark-face" x="12" y="4" width="40" height="49" rx="7" /><g class="mark-letter"><path d="M24 10H47V15H45Q42 15.4 42 18.5V35.5C42 44 36.6 48.6 29.5 48.6C23.6 48.6 18.6 45.4 18.6 40.6L27.6 41.4C31.2 42 33 39.8 33 35.5V18.5Q33 15.4 30 15H24Z" /><circle cx="23.6" cy="40.4" r="5.8" /></g></svg><span class="book-title">Honverのガイド</span></a><span class="edition-tag">個人版</span>
+      <p class="running-location" data-running-location></p>
+      <nav class="running-nav" aria-label="本の案内">
+        <a class="contents-toggle" href="#chapters"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M3 5h12M3 9h12M3 13h8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>目次</a>
+        <a class="nav-secondary" href="#whats-new">更新情報</a>
+        <a class="nav-secondary" href="#how-to-read">表の読み方</a>
+        <a class="nav-secondary" href="replay.html">牌譜再生</a>
+        <a class="nav-tertiary" href="ja.html">LuckyJ戦術書</a>
+        <a class="lang-link" href="honver.html" hreflang="en" lang="en">English</a>
+      </nav>
+      <div class="reading-progress" aria-hidden="true"><span></span></div>
+    </header>
+
+    <main class="layout" id="main">
+      <article class="book">
+
+        <section class="guide-masthead" id="standing" data-contents-label="点数の行方">
+          <div class="guide-masthead-text">
+            <p class="guide-eyebrow">個人版 &#183; 2026年1月以降の玉の間の南風戦（半荘戦）80半荘 &#183; 830局</p>
+            <h1>LuckyJと比べた、あなたの点数の行方。</h1>
+            <p class="standfirst">このガイドは、2026年1月以降にあなたが玉の間の南風戦（半荘戦）で打った80半荘、830局を、LuckyJの1,255半荘を測ったのと同じコードで測定している。これまでの検討で得た教訓を残し、別の打牌、鳴き、リーチを選んでいればLuckyJに近い打ち方になった巡目ごとに、そのときのあなたの卓を表で示す。</p>
+            <p>打ち方の大部分は、すでにLuckyJと一致している。テンパイ速度、牌効率、副露率、字牌の切り時はLuckyJと同じ数字で、リーチに対するオリはLuckyJと同等以上である。差があるのは、どの手をアガりきるか、その手がいくらになるか、そして誰かが鳴いた後のいくつかの牌選択である。</p>
+            <p>1月以降のトップ率23.8%は、通算3,877半荘のトップ率26.3%から標準誤差1つ分の範囲に収まる。あなたと同卓する玉の間の打ち手は、アガリ、放銃、打点のどれを見ても、LuckyJが特上卓で戦う相手と変わらない。本当にある差は、LuckyJのトップ率31.7%とあなたの通算26.3%の差であり、その差はアガリの打点から生まれている。</p>
+          </div>
+          <aside class="guide-news" id="whats-new" aria-labelledby="whats-new-title">
+            <h2 id="whats-new-title">更新情報</h2>
+            <ol>
+              <li class="is-latest"><span class="guide-news-date">9月29日</span><p><span class="new-tag">Latest</span> このガイドの日本語版。<a href="honver.html" hreflang="en">英語版</a>のすべての章、表、例を日本語にした。英語版の章は変わっていない。</p></li>
+              <li><span class="guide-news-date">9月29日</span><p><a href="#caller-grid">第18章の表にLuckyJのオリラインを描き加えた</a>。<a href="#fold-line">第19章</a>ではこの線を解説し、副露者の手出しとツモ切りの混ざり方から何が分かるか、副露者がツモ切りした字牌と端牌をツモ切りの連続に数えるかどうかも扱う。この線とその説明文を除き、第1章から第18章は変わっていない。</p></li>
+              <li><span class="guide-news-date">9月29日</span><p><a href="#caller-grid">第18章は、どの副露者も読める1枚の表である</a>。副露者があなたの打牌でアガれる頻度を、その副露者の打牌数、副露数、ツモ切りの連続の長さで分けて示す。第1章から第17章は変わっていない。</p></li>
+              <li class="is-correction"><span class="guide-news-date">9月29日</span><p><span class="guide-news-tag">Corrected</span> 第17章の例外は、3打目に何を切るかを書いていなかった。手に生きた客風があれば、それを先に切る。なければ、すでに場に出ている客風をそれでも切り、役牌は4打目まで残す。訂正した文には、<a href="#fix-17-honors">例外</a>と<a href="#fix-17-honor-evidence">根拠の注記</a>で<mark class="guide-changed">マーカー</mark>を引いた。</p></li>
+              <li><span class="guide-news-date">9月29日</span><p><a href="#early-safe-tiles">第17章は9月24日以降の対局を振り返り</a>、安全牌を早くから残すことへのあなたの心配を取り上げる。安全牌はAIと同じように残している。痛手になるのは早いリーチである。第1章から第16章は変わっていない。</p></li>
+              <li><span class="guide-news-date">9月28日</span><p><a href="#fold-later">第16章はMortalであなたの全115半荘を検討し</a>、LuckyJがしないミスだけを残した。どちらも守備のミスである。河がまだ一段目の2副露の手に対して安全牌を使ってしまうこと、そして13巡目より前に、リーチに対してドラ2枚の1シャンテンからオリてしまうことである。第1章から第15章は変わっていない。</p></li>
+              <li class="is-correction"><span class="guide-news-date">9月28日</span><p><span class="guide-news-tag">Corrected</span> 第15章は、[[9m]]のポンで手を仕上げる道が減り、単騎待ちしか残らなかったと書いていた。実際は逆で、テンパイになる牌は10枚ではなく28枚になり、そのうち10枚は7,700点につながった。このポンは際どい判断で、MortalとLuckyJは守備を考えて鳴かない方に傾く。高くついたのは、9巡目にテンパイを崩したことである。訂正箇所には、<a href="#fix-15-pon">ポンの段落</a>、同章のルール、<a href="#guide-nine-man-pon">最初の例</a>で<mark class="guide-changed">マーカー</mark>を引いた。</p></li>
+              <li><span class="guide-news-date">9月28日</span><p><a href="#mortal-review">第15章</a>では、取り上げたすべての局がどの半荘のものかを明記し、各局と各巡目から牌譜再生へリンクするようにした。<a href="#fix-14-deal-ins">第14章</a>の放銃一覧も同様である。第14章の文面は変わっていない。</p></li>
+              <li><span class="guide-news-date">9月28日</span><p><a href="replay.html">あなたの対局をこのサイトで再生できるようになった。</a>各表の下のリンクから、その局のその巡目を開ける。4人全員の手牌と、あなたの各選択に対するMortalの評価が表示され、雀魂のクライアントを読み込む必要はない。各章は変わっていない。</p></li>
+              <li><span class="guide-news-date">9月28日</span><p><a href="#mortal-review">第15章では、あなたの放銃をMortalで再検討する</a>。7半荘を通じて、あなたがMortalと一致した頻度はLuckyJと同じで、放銃の半分は3つの判断で説明できる。第14章の印を付けた訂正を除き、第1章から第14章は変わっていない。</p></li>
+              <li class="is-correction"><span class="guide-news-date">9月28日</span><p><span class="guide-news-tag">Corrected</span> Mortalによる再検討で、第14章の3点を訂正した。第14章が役なしの門前テンパイからとしていた南2局の放銃は、あなたが宣言したリーチから生じたものだった。親の跳満への放銃は、結局ミスだった。[[2m]]を切るのが良かった。西の例では、9巡目がミスで、10巡目の打牌は正しかった。変更箇所には、<a href="#fix-14-deal-ins">第14章の第2段落</a>と2つの例（<a href="#guide-dealer-dama-tsumogiri">親のダマ</a>と<a href="#guide-once-cut-west">西</a>）で<mark class="guide-changed">マーカー</mark>を引いた。</p></li>
+              <li><span class="guide-news-date">9月28日</span><p><a href="#three-calls">第14章は9月27日と28日の対局を扱う</a>。守備は持ちこたえており、失点は3つの局で説明がつく。3副露の手、1枚切れの西、副露者を段で数える方法を取り上げる。第1章から第13章は変わっていない。</p></li>
+              <li><span class="guide-news-date">9月27日</span><p><a href="#caller-defense">第13章は9月24日から27日の対局を振り返る</a>。副露者への守備は、LuckyJに追いついた。第3章で訂正したルール1つを除き、第1章から第12章は変わっていない。</p></li>
+              <li class="is-correction"><span class="guide-news-date">9月27日</span><p><span class="guide-news-tag">Corrected</span> 第3章のルールは、2枚の牌が同等ならいつでも安全牌を切ると書いていた。副露者が1人で、まだ序盤のうちは、LuckyJはたいてい逆のことをする。同等の生きた字牌か無筋の端牌を切り、安全牌は後のために残す。訂正した文には、<a href="#fix-3-rule">第3章のルール</a>で<mark class="guide-changed">マーカー</mark>を引いた。</p></li>
+              <li><span class="guide-news-date">9月24日</span><p><a href="#open-hands">第12章は、安い副露テンパイについてのあなたの質問に答える</a>。副露者に対してもテンパイは保ち、安い手で鳴く回数は減らす。第1章から第11章は変わっていない。</p></li>
+              <li><span class="guide-news-date">9月24日</span><p>9月23日の対局をもとに、<a href="#push-calibration">第11章でリーチに対するテンパイの押しを調整する</a>。</p></li>
+              <li><span class="guide-news-date">9月23日</span><p><a href="#recent-games">第10章は9月22日の対局を振り返り</a>、段位ポイントの行方を追う。</p></li>
+              <li><span class="guide-news-date">9月22日</span><p><a href="#shape-start">第9章「タンヤオと染め手はいつ始めるか」</a>で、あなたの追加の質問に答える。</p></li>
+              <li><span class="guide-news-date">9月22日</span><p>第6章から第8章は、配牌にドラがある手についての質問に答える。内容は、<a href="#dora-points">その手がどこで点を失うか</a>、<a href="#dora-shape">ドラの下に組む手</a>、<a href="#dora-tells">1シャンテンでの副露者のサイン</a>である。第1章から第5章は変わっていない。</p></li>
+              <li class="is-correction"><span class="guide-news-date">9月22日</span><p><span class="guide-news-tag">Corrected</span> 第6章と第7章の3つの文は、LuckyJがドラのある手をほかの手と同じように打つと書いていた。LuckyJはドラを残し、その手をより速く進める。変わらないのは、ドラの周りに組む形だけである。訂正した文には<mark class="guide-changed">マーカー</mark>を引いた。<a href="#fix-6-rule">第6章のルール</a>、<a href="#fix-7-opening">第7章の第1段落</a>、<a href="#fix-7-rule">同章のルールの冒頭</a>である。</p></li>
+            </ol>
+          </aside>
+        </section>
+
+        <section class="section guide-scoreboard" id="scoreboard">
+          <p class="kicker">成績比較</p>
+          <h2>あなたとLuckyJ、同じコードで測定</h2>
+          <p class="scoreboard-key"><span class="key-you">あなた、830局</span><span class="key-luckyj">LuckyJ、13,054局</span></p>
+          <div class="metrics-grid guide-metrics">
+              <div class="metric"><b>&minus;15</b><span>局あたりの点数収支</span><small>LuckyJ +373</small></div>
+              <div class="metric"><b>5,590</b><span>アガリあたりの点数</span><small>LuckyJ 6,836</small></div>
+              <div class="metric"><b>18%</b><span>満貫以上のアガリの割合</span><small>LuckyJ 28%</small></div>
+              <div class="metric"><b>21.3%</b><span>局あたりの和了率</span><small>LuckyJ 22.9%</small></div>
+              <div class="metric"><b>11.8%</b><span>局あたりの放銃率</span><small>LuckyJ 10.0%</small></div>
+              <div class="metric"><b>2.45</b><span>平均着順（1月以降）</span><small>通算2.42、LuckyJ 2.26</small></div>
+          </div>
+        </section>
+
+        <nav class="section guide-chapters" id="chapters" aria-labelledby="chapters-title">
+          <p class="kicker">章</p>
+          <h2 id="chapters-title">19の章</h2>
+          <p class="guide-chapters-note">新しい教訓は、末尾に新しい章として加える。読んだ章は、印を付けた訂正を除いてそのまま残す。</p>
+          <ol class="contents-list is-points guide-chapter-list">
+            <li><a href="#value"><span class="contents-num">01</span><span class="contents-title">手の方針を決める前にドラを数える</span><span class="contents-sub">打点 &#183; 9月22日追加</span></a></li>
+            <li><a href="#open-table"><span class="contents-num">02</span><span class="contents-title">誰かが鳴いたら安手を急がない</span><span class="contents-sub">鳴きが入った卓 &#183; 9月22日追加</span></a></li>
+            <li><a href="#calls"><span class="contents-num">03</span><span class="contents-title">鳴きには、損のない安全牌を切る</span><span class="contents-sub">鳴き &#183; 9月22日追加</span></a></li>
+            <li><a href="#folds"><span class="contents-num">04</span><span class="contents-title">正しい牌でオリる</span><span class="contents-sub">オリ &#183; 9月22日追加</span></a></li>
+            <li><a href="#push"><span class="contents-num">05</span><span class="contents-title">アガれるテンパイを押す</span><span class="contents-sub">押し &#183; 9月22日追加</span></a></li>
+            <li><a href="#dora-points"><span class="contents-num">06</span><span class="contents-title">ドラのある手は、アガリの側で点を失っている</span><span class="contents-sub"><span class="new-tag">New</span> ドラのある手 &#183; 9月22日追加</span></a></li>
+            <li><a href="#dora-shape"><span class="contents-num">07</span><span class="contents-title">ドラの下に手を組む</span><span class="contents-sub"><span class="new-tag">New</span> ドラのある手 &#183; 9月22日追加</span></a></li>
+            <li><a href="#dora-tells"><span class="contents-num">08</span><span class="contents-title">1シャンテンでは副露者のサインを数える</span><span class="contents-sub"><span class="new-tag">New</span> ドラのある手 &#183; 9月22日追加</span></a></li>
+            <li><a href="#shape-start"><span class="contents-num">09</span><span class="contents-title">タンヤオと染め手はいつ始めるか</span><span class="contents-sub"><span class="new-tag">New</span> タンヤオと染め手 &#183; 9月22日追加</span></a></li>
+            <li><a href="#recent-games"><span class="contents-num">10</span><span class="contents-title">9月22日の対局を振り返る</span><span class="contents-sub"><span class="new-tag">New</span> 最近の対局 &#183; 9月23日追加</span></a></li>
+            <li><a href="#push-calibration"><span class="contents-num">11</span><span class="contents-title">テンパイの押しを調整する</span><span class="contents-sub"><span class="new-tag">New</span> 押しの調整 &#183; 9月24日追加</span></a></li>
+            <li><a href="#open-hands"><span class="contents-num">12</span><span class="contents-title">副露テンパイは保ち、鳴くなら打点のために</span><span class="contents-sub"><span class="new-tag">New</span> 副露手 &#183; 9月24日追加</span></a></li>
+            <li><a href="#caller-defense"><span class="contents-num">13</span><span class="contents-title">副露者への守備は追いついた</span><span class="contents-sub"><span class="new-tag">New</span> 最近の対局 &#183; 9月27日追加</span></a></li>
+            <li><a href="#three-calls"><span class="contents-num">14</span><span class="contents-title">副露者は段で数え、3副露のテンパイは保つ</span><span class="contents-sub"><span class="new-tag">New</span> 最近の対局 &#183; 9月28日追加</span></a></li>
+            <li><a href="#mortal-review"><span class="contents-num">15</span><span class="contents-title">必要な対子を残し、役のない手では追わずにオリる</span><span class="contents-sub"><span class="new-tag">New</span> Mortalの検討 &#183; 9月28日追加</span></a></li>
+            <li><a href="#fold-later"><span class="contents-num">16</span><span class="contents-title">安全牌は必要になるまで取っておく</span><span class="contents-sub"><span class="new-tag">New</span> 全対局のMortal検討 &#183; 9月28日追加</span></a></li>
+            <li><a href="#early-safe-tiles"><span class="contents-num">17</span><span class="contents-title">安全牌の残し方は正しい。早いリーチに気をつける</span><span class="contents-sub"><span class="new-tag">New</span> 最近の対局 &#183; 9月29日追加</span></a></li>
+            <li><a href="#caller-grid"><span class="contents-num">18</span><span class="contents-title">どの副露者も1枚の表で読む</span><span class="contents-sub"><span class="new-tag">New</span> 副露者を読む &#183; 9月29日追加</span></a></li>
+            <li><a href="#fold-line"><span class="contents-num">19</span><span class="contents-title">表の上でLuckyJがオリる位置と、ツモ切りの連続の数え方</span><span class="contents-sub"><span class="new-tag">New</span> 副露者を読む &#183; 9月29日追加</span></a></li>
+          </ol>
+        </nav>
+
+        <section class="section" id="how-to-read">
+          <p class="kicker">表の読み方</p>
+          <h2>あなたの席は下側である。</h2>
+          <p>各表は、あなたがツモって打牌する直前の局面を牌譜から再現したものである。ツモった牌は、手牌の右端に離して置いてある。どの例にも、あなたが切った牌、より良い打牌、そのほかのすべての打牌候補を載せ、それぞれについて、切った後のシャンテン数、有効牌の枚数、リーチまたは副露した各プレイヤーに対する安全度を示す。</p>
+          <div class="guide-legend">
+            <span><i class="swatch you">あなた</i> あなたが切った牌</span>
+            <span><i class="swatch better">推奨</i> より良い打牌</span>
+            <label class="guide-toggle"><input type="checkbox" id="showOpponentHands" checked /> 相手の手牌を表示</label>
+          </div>
+          <p>安全度の表示は、その巡目のあなたの席から見たものである。<i class="safety-chip safe">現物</i>は、その相手の河にある牌か、その相手のリーチ後に誰かが切ってロンされなかった牌で、筋の根拠にもなる。<i class="safety-chip mostly">筋</i>は、3つ離れた牌（4、5、6）が通っている1、2、3（または7、8、9）である。<i class="safety-chip mostly">中筋</i>は、両側の筋が通っている4、5、6で、片側だけなら<i class="safety-chip danger">片筋</i>となり、まだほぼ生牌と変わらない。1が通っている4、または9が通っている6は、その相手が5も早く切っていれば<i class="safety-chip live">疑似中筋</i>と読む。早い5が外側読みとなり、もう片側を覆う。2枚見えの字牌に当たるのは単騎待ちだけである。それ以外はすべて生牌である。</p>
+        </section>
+        <section class="point" id="value">
+          <div class="point-number">01</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第1章 &#183; 打点 &#183; 9月22日追加</p>
+            <h3>手の方針を決める前にドラを数える</h3>
+            <p>
+              LuckyJがアガる局の数は、あなたとほぼ変わらない。差が出るのは、ドラのある手の扱いである。配牌のドラと赤5の枚数で分けると、あなたの和了率は横ばいのままで、LuckyJの和了率は上がっていく。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data" data-chart="dora-deal">
+                <thead>
+                  <tr><th>配牌のドラ</th><th>あなたの和了率</th><th>LuckyJ</th><th>あなたの満貫（100局あたり）</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>なし</td><td>23.6%</td><td>21.4%</td><td>3.8</td><td>4.1</td></tr>
+                  <tr><td>1枚</td><td class="gap">18.2%</td><td>23.3%</td><td class="gap">3.4</td><td>7.1</td></tr>
+                  <tr><td>2枚</td><td class="gap">21.0%</td><td>26.6%</td><td class="gap">3.8</td><td>11.9</td></tr>
+                  <tr><td>3枚以上</td><td class="gap">21.4%</td><td>33.9%</td><td class="gap">14.3</td><td>23.1</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>ドラのない手では、すでにLuckyJと同じように打てていて、アガる回数はわずかに多い。配牌にドラが1枚以上ある局では、LuckyJの満貫は100局あたり8.8回、あなたは3.9回。ドラのない局では4.1回と3.8回である。ドラが手に来る割合は同じで、どちらもその約5分の1を切っている。したがって差は三つの習慣から生まれている。</p>
+            <p>
+              <b>最初の門前テンパイでリーチする。</b>誰もリーチしていない場面で、LuckyJは最初のテンパイのうち、残り3枚以下の待ちで51%、4〜7枚で82%、8枚以上で93%をリーチする。あなたは41%、76%、89%。あなたのダマのアガリ20回は平均5,880点で、満貫に届いたのは20%。LuckyJのダマのアガリは平均7,667点で、36%が満貫に届く。ダマをおもに、すでに大きい手のために取っておくからである。</p>
+            <p>
+              <b>ドラに形の役を重ねる。</b>タンヤオのアガリは100局あたりLuckyJが5.0回、あなたが3.0回。混一色は2.1回と1.3回。孤立した字牌と端牌がある配牌では、LuckyJは35%の局で6巡目までに端牌と字牌をすべて切り終え、そうした配牌の局の28%でアガる。あなたは切り終えるのが22%、アガリが17%。不要牌から先に切る。客風と孤立した端牌は1巡目、孤立した役牌は3巡目か4巡目までに切る。</p>
+            <p>
+              <b>役牌ポンには裏付けがいる。</b>最初の鳴きが役牌ポンのとき、あなたの手は47%でドラがない（LuckyJは41%）。ドラ2枚以上のポン手の和了率は、あなたが28%、LuckyJが43%。ただし、あなたの手は18局しかない。3シャンテンからの素の役牌ポンがLuckyJにもたらすのは1局あたり約16点で、ないに等しい。ポンしてもドラなしの3シャンテンにとどまるなら、1枚目は見送る。ただし、トップ目のとき、あるいは対々和や混一色のような二つ目の狙いがあるときは別である。</p>
+            <div class="rule">
+              <strong>ルール</strong> 1巡目にドラと赤5を数える。なしなら、形になればアガり切る安手で、誰かが攻めてきたら真っ先にオリる。1枚なら満貫候補なので、最初のテンパイでリーチし、配牌が許せばタンヤオに組む。2枚以上ならこの半荘の勝負手なので、1シャンテンかテンパイになる鳴きは鳴き、最初の門前テンパイでリーチし、テンパイしたら押す。</div>
+            <div class="exception">
+              <strong>例外</strong> リーチなしですでに満貫があり待ちが悪い手、あるいは南場でトップ目のときの11巡目以降のテンパイは、ダマが正しい。ツモのたびに判断し直す。LuckyJは最初に見送ったテンパイの17%で後からリーチし、あなたは10%である。</div>
+            <p class="evidence-note">
+              <b>根拠</b> あなたの80半荘（830局）とLuckyJの1,255半荘（13,054局）を、同じコードで数えた。ドラ1枚以上の局では、満貫の差は標準誤差の3倍を超え、和了率の差は標準誤差の約2.5倍。3枚以上の行はあなたの手が14局しかなく、ノイズである。</p>
+            <div data-guide-examples="value"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#open-table"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>02</i>誰かが鳴いたら安手を急がない</span></a></nav>
+        </section>
+
+        <section class="point" id="open-table">
+          <div class="point-number">02</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第2章 &#183; 鳴きが入った卓 &#183; 9月22日追加</p>
+            <h3>誰かが鳴いたら安手を急がない</h3>
+            <p>相手に早い鳴きが入ると、LuckyJのドラが少ない手やない手は遅くなるが、ドラ2枚以上の手はほとんど影響を受けない。あなたの手の反応は違う。安手は全速のままで、ドラのある手ははるかに多く放銃する。以下は、自分の8打目までに相手の1人が鳴いていた局の数字で、括弧内は鳴きのない静かな卓での値である。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>配牌のドラ</th><th>LuckyJ・なし</th><th>LuckyJ・1枚</th><th>LuckyJ・2枚以上</th><th>あなた・なし</th><th>あなた・1枚</th><th>あなた・2枚以上</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>局数</td><td>2,685</td><td>2,027</td><td>694</td><td>153</td><td>127</td><td>55</td></tr>
+                  <tr><td>テンパイした</td><td>43.5% <small>（51.4）</small></td><td>47.5% <small>（54.4）</small></td><td>54.8% <small>（57.6）</small></td><td>52.3% <small>（52.2）</small></td><td>49.6% <small>（56.7）</small></td><td class="gap">43.6% <small>（62.3）</small></td></tr>
+                  <tr><td>リーチした</td><td>18.4%</td><td>19.6%</td><td>18.9%</td><td>19.0%</td><td>17.3%</td><td class="gap">10.9%</td></tr>
+                  <tr><td>鳴いた</td><td>33.0%</td><td>34.7%</td><td>40.5%</td><td>35.9%</td><td>39.4%</td><td class="gap">32.7%</td></tr>
+                  <tr><td>アガった</td><td>19.9%</td><td>22.3%</td><td>26.5%</td><td>22.9%</td><td>21.3%</td><td class="gap">20.0%</td></tr>
+                  <tr><td>放銃した</td><td>9.9% <small>（8.0）</small></td><td>11.2% <small>（9.5）</small></td><td>12.0% <small>（10.6）</small></td><td>10.5% <small>（7.7）</small></td><td class="gap">19.7% <small>（10.2）</small></td><td class="gap">18.2% <small>（11.3）</small></td></tr>
+                  <tr><td>アガリ1回の平均点</td><td>5,661</td><td>7,155</td><td>9,105</td><td>4,700</td><td>5,974</td><td>7,500</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              LuckyJは価値のある手を、自分も鳴くことで前に進める。相手が先に鳴くと、LuckyJは9巡目前後に鳴きで応じ、その鳴きの70%で1シャンテンかテンパイになる。ほぼ半分はチーで、ドラとタンヤオの形を保つ。6巡目までに誰かが鳴いた時点でまだ門前だった手のうち、LuckyJはドラ2枚の手の31%、ドラなしの手の22%を後から鳴く。あなたの手はドラの枚数に関係なく25〜29%で鳴いている。</p>
+            <p>確かな結果は放銃の行である。ドラ1枚以上で相手が鳴いているとき、あなたは19%の局で放銃し、LuckyJは11%。あなたの182局での数字である。静かな卓では、同じ手の放銃率はLuckyJと変わらない。押す回数が多いわけではない。1副露に対して、ドラを持った1シャンテンのとき、生牌を切るのは68%で、LuckyJと同じである。選んだ生牌のほうが当たりやすく、その読みを第3章で扱う。ドラ2枚以上では手も止まる。テンパイ率は静かな卓の62%に対して44%、リーチはLuckyJの19%に対して11%である。</p>
+            <div class="rule">
+              <strong>ルール</strong> 誰かが鳴いたら、何より先に自分のドラを数える。2枚以上なら方針を変えず、9巡目ごろまでに1シャンテンかテンパイになるチーやポンは取り、最初の門前テンパイでリーチする。なしなら手を緩め、2シャンテンからはオリて、副露者には安全牌を切る。ドラが1枚でもあれば、押す頻度はすでにLuckyJと同じである。生牌を選ぶ前に、第3章の副露者のサインを読む。</div>
+            <div class="exception">
+              <strong>例外</strong> あなたのドラ2枚以上の列は55局しかなく、テンパイとリーチの差は標準誤差の1.5〜2倍にとどまる。傾向を示すだけで、測定値とは言えない。確かなのはドラのある手の放銃の差で、182局、標準誤差の3倍を超える。</div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#calls"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>03</i>鳴きには、損のない安全牌を切る</span></a></nav>
+        </section>
+
+        <section class="point" id="calls">
+          <div class="point-number">03</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第3章 &#183; 鳴き &#183; 9月22日追加</p>
+            <h3>鳴きには、損のない安全牌を切る</h3>
+            <p>
+              1副露に対してオリることは、手を壊すことと同じではない。ここでのあなたの選択は、すでにLuckyJと一致している。安全牌が最も効率の良い牌でもあるとき、それを切るのはあなたが61%、LuckyJが56%。安全のために受け入れを犠牲にするのは14%、シャンテンを落とすのは約3%で、LuckyJと同じである。</p>
+            <p>
+              LuckyJの型はこうである。テンパイでは損のない安全牌を93%で切り、13巡目以降はどのシャンテンでも79〜97%で切る。安全のために受け入れを1〜2枚犠牲にするのは26%で、副露者が鳴いた後に3枚以上手出ししていれば35%、13巡目以降は42%に上がる。生牌が当たり始めるのは、まさにその時期である。LuckyJの対局では、鳴いた後に3回手出しした副露者に生牌が当たったのは100回あたり1.9回で、それより前は約0.5回。鳴きから6巡後以降は2.4回で、鳴いた直後は0.25回だった。シャンテンを落とすのは12巡目より後の1シャンテンか2シャンテンからだけで、その場合も21〜24%である。2副露に対してはさらに厳しく、9巡目以降は、シャンテンを保てる安全牌があれば生牌を切るのは約30%にとどまる。</p>
+            <p>それでも1副露に対して、あなたの生牌はLuckyJの2倍以上当たっている。生牌の打牌の1.4%で、LuckyJは0.64%。その多くはLuckyJも押す場面だった。下の例はそうでなかった場面である。安全牌に損がなかった、2副露の手に対して1〜2枚の損で済んだ、あるいは河がすでに手の中身を語っていた。</p>
+            <div class="rule">
+              <strong>ルール</strong> 1副露に対しては効率で打つ。<mark id="fix-3-rule" class="guide-changed">2枚が同等なら、副露者がテンパイしていてもおかしくない時期、つまりその人の10打目前後からは安全な方を切る。それより前は、同等の生きた字牌か無筋の端牌を切って安全牌を残す。理由は第13章で説明している。</mark>副露者が鳴いた後に3枚以上手出ししたら、あるいは13巡目以降は、安全牌のために受け入れを1〜2枚犠牲にする価値があることが多い。安全のためにシャンテンを落とすのは、12巡目より後の1シャンテンか2シャンテンからだけにする。</div>
+            <div class="exception">
+              <strong>例外</strong> 2副露、役牌ポンにもう1つ鳴きが加わった手、河が染める色を示している手に対しては、もっと多く犠牲にする。こうした手はテンパイに近く、待ちも読みやすい。</div>
+            <p class="evidence-note">
+              <b>根拠</b> 相手のちょうど1人がちょうど1副露していて、誰もリーチしていなかった場面での、あなたの打牌1,594件とLuckyJの打牌24,618件。</p>
+            <div data-guide-examples="calls"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#folds"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>04</i>正しい牌でオリる</span></a></nav>
+        </section>
+
+        <section class="point" id="folds">
+          <div class="point-number">04</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第4章 &#183; オリ &#183; 9月22日追加</p>
+            <h3>正しい牌でオリる</h3>
+            <p>オリはあなたの強みの一つである。リーチに対して生牌を切る頻度は、どのシャンテンでもLuckyJより低く、オリる牌の選び方もLuckyJと変わらない。現物で同じシャンテンを保てるとき、それを切ったのはあなたが93.5%、LuckyJが92.6%。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>リーチに生牌を切った割合</th><th>あなた</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>テンパイ</td><td>38.2%</td><td>42.5%</td></tr>
+                  <tr><td>1シャンテン</td><td>17.1%</td><td>20.4%</td></tr>
+                  <tr><td>2シャンテン</td><td>6.5%</td><td>10.1%</td></tr>
+                  <tr><td>3シャンテン以上</td><td>6.0%</td><td>6.2%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>ここでは、現物、筋、中筋、2枚見えの字牌を、リーチ者に対する安全牌として数える。現物には、リーチ後に切られてロンされなかった牌をすべて含め、そうした牌は筋の根拠にもなる。リーチ者自身の河だけで数えると、フリテンで通る牌まで押しと見なすことになり、この表の割合はすべて過大になる。</p>
+            <p>つまり、あなたの点が出ていくのはオリの場面ではない。下の例は、手の中により良いオリ牌があった数少ない場面で、それを決める順序も添えてある。筋はひとくくりにできない。1件のリーチに対して、LuckyJの打牌がそのリーチに放銃した頻度は次の通りである。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>1件のリーチに切った牌</th><th>LuckyJの打牌数</th><th>リーチへの放銃（100回あたり）</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>現物（リーチ後に通った牌を含む）</td><td>15,462</td><td>0</td></tr>
+                  <tr><td>2枚見えの字牌</td><td>905</td><td>0.2</td></tr>
+                  <tr><td>筋の1・9</td><td>478</td><td>1.1</td></tr>
+                  <tr><td>1枚見えの字牌</td><td>856</td><td>2.1</td></tr>
+                  <tr><td>中筋</td><td>327</td><td>2.8</td></tr>
+                  <tr><td>1枚も見えていない字牌</td><td>348</td><td>3.2</td></tr>
+                  <tr><td>筋の2・8</td><td>422</td><td>3.3</td></tr>
+                  <tr><td>筋の3・7</td><td>379</td><td>4.5</td></tr>
+                  <tr><td>無筋の1・9</td><td>977</td><td>5.2</td></tr>
+                  <tr><td>片筋</td><td>530</td><td>6.2</td></tr>
+                  <tr><td>無筋の2〜8</td><td>1,592</td><td>8.2</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>現物と2枚見えの字牌の次に安全なのは筋の1・9で、筋の3・7は現物よりも無筋の端牌に近い。中筋は筋の平均と同じくらいである。片側しか通っていない片筋は2倍以上放銃しやすく、生牌の側に入れる。疑似中筋はLuckyJの打牌で31回しか出てこず、評価するには少なすぎる。13巡目以降の2シャンテンでは、シャンテンを保つために生牌を切る価値はない。LuckyJがそこで押すのは5.0%である。13巡目以降の1シャンテンでは8〜17%で押し、高い方はドラ3枚以上のときである。</p>
+            <div class="rule">
+              <strong>ルール</strong> 切る前に安全牌に順位をつける。攻めている相手全員への現物、次にリーチへの現物、次に2枚見えの字牌、次に筋の1・9、その次が中筋、筋の2・8、1枚見えの字牌で、筋の3・7が最後。片筋は生牌である。同じシャンテンと受け入れを保てる安全牌があれば、切るのはそれしかない。</div>
+            <div class="exception">
+              <strong>例外</strong> シャンテンを落とす安全牌でも、13巡目以降の2シャンテンなら正しい。終盤の1シャンテンでも、ドラの有無にかかわらず少なくとも5局に4局は正しい。</div>
+            <p class="evidence-note">
+              <b>根拠</b> 相手がリーチしていて自分はリーチしていない場面での、あなたの打牌1,574件とLuckyJの打牌24,560件。</p>
+            <div data-guide-examples="folds"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#push"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>05</i>アガれるテンパイを押す</span></a></nav>
+        </section>
+
+        <section class="point" id="push">
+          <div class="point-number">05</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第5章 &#183; 押し &#183; 9月22日追加</p>
+            <h3>アガれるテンパイを押す</h3>
+            <p>リーチを受けたテンパイで、あなたが押すのは38%、LuckyJは43%。13巡目以降では26%と35%である。最も差がはっきりしているのは、危険牌を切らなければ待ちを保てない副露テンパイで、LuckyJは84%で押し、あなたは71%（対象はあなたの63局）。そのうちLuckyJは、残り8枚以上の待ちなら93%、3枚以下なら76%で押す。</p>
+            <p>押すかどうかを決めるのは、待ちの広さよりも役である。待ちに役があれば、LuckyJは残り2枚でも副露テンパイを68%で押し、8枚以上なら95%で押す。どの待ちにも役がなければ、押すのは55%にとどまる。そうした手はロンでアガれないからである。役のない門前テンパイはツモでしかアガれず、残り1枚の待ちではそれもまず起こらない。</p>
+            <div class="rule">
+              <strong>ルール</strong> 役のあるテンパイは、狭い待ちでも押す。残り8枚の待ちは、赤5を失ってでも保つ。役のないテンパイは、1シャンテンと同じように打つ。</div>
+            <div class="exception">
+              <strong>例外</strong> LuckyJのデータで最も判断が分かれるのは、どの待ちにも役のない副露テンパイで、押すのは55%。役があって待ちが生きていれば少なくとも68%で押し、残り8枚以上なら95%で押す。</div>
+            <div data-guide-examples="push"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#dora-points"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>06</i>ドラのある手は、アガリの側で点を失っている</span></a></nav>
+        </section>
+        <section class="point" id="dora-points">
+          <div class="point-number">06</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第6章 &#183; ドラのある手 &#183; 9月22日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>ドラのある手は、アガリの側で点を失っている</h3>
+            <p>質問は2つあった。配られたドラでもっとアガるにはどうすればよいか。そして、そうした手を何とかアガろうとするせいで放銃が増えているのではないか。第6章から第8章でその両方に答える。対象は、ドラか赤5を1枚以上配られたあなたの410局とLuckyJの6,577局で、同じコードで測った。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>ドラを配られた局</th><th>あなた</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1局あたりの獲得点</td><td class="gap">1,167</td><td>1,936</td></tr>
+                  <tr><td>1局あたりの放銃による失点</td><td>615</td><td>566</td></tr>
+                  <tr><td>テンパイ到達</td><td>51.7%</td><td>51.8%</td></tr>
+                  <tr><td>最初のテンパイの巡目</td><td>9.4</td><td>9.5</td></tr>
+                  <tr><td>テンパイからのアガリ</td><td class="gap">36.8%</td><td>47.5%</td></tr>
+                  <tr><td>平均アガリ点</td><td class="gap">6,133</td><td>7,864</td></tr>
+                  <tr><td>手役のないアガリ</td><td class="gap">60.3%</td><td>45.3%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>余分な放銃による損は、ドラのある手1局あたり49点。逃したアガリによる損は769点である。テンパイに届く頻度も速さもLuckyJと同じなので、差はテンパイの後に開く。テンパイがアガリになる頻度と、そのアガリの打点である。ドラのない手では、テンパイからのアガリはあなたが45.6%、LuckyJが46.3%。</p>
+            <p>この差の一部は運である。ドラのあるテンパイそれぞれについて、同じ場面でのLuckyJ自身の和了率から、何回アガれるはずかがわかる。同じ打ち方（リーチ、ダマ、副露）、同じ卓の状況（静か、鳴きあり、リーチあり）、同じ和了牌の残り枚数、同じ巡目で比べる。その率から見込まれるアガリは、212回のドラのあるテンパイで100回。実際は78回だった。足りない22回のうち10回はリーチした手である。リーチをかけた後は決めることが何も残らず、ドラは誰にも見えないので、この10回は不運と考えてよい。ドラのないテンパイは、見込み103回に対して99回アガっている。</p>
+            <p>あなたの予感が当たっている所が1つある。ドラのある手での余分な放銃はすべて鳴いていた相手へのもので、すべて生牌だった。副露者への放銃は、ドラのある手100局あたりであなたが9.3回、LuckyJが5.0回。副露者に生牌を切る頻度はLuckyJと同じで、打牌の65%。巡目も、相手の副露数も同じである。違うのは、副露者がテンパイらしく見えた後の1シャンテンでの打ち方で、これは第8章で測る。より大きな損はドラのあるアガリの打点で、第7章で扱う。</p>
+            <div class="rule">
+              <strong>ルール</strong> <mark id="fix-6-rule" class="guide-changed">LuckyJと同じく、ドラは残し、安い手よりも強くテンパイを目指す。ただし、手はドラのない手と同じように組む。同じ形、同じ染め手の鳴きのタイミング、テンパイらしい副露者への同じ警戒である。</mark>ドラの翻は最後に乗ってくる。</div>
+            <div class="exception">
+              <strong>例外</strong> ドラのあるリーチは、見込み37回に対してアガリ27回。標準偏差の2倍を超える下振れである。宣言した後の手には、あなたが変えられることは何もなかった。第1章の率どおりにリーチを続ける。</div>
+            <p class="evidence-note">
+              <b>根拠</b> ドラを配られた局は、あなた410局、LuckyJ 6,577局。そのうちテンパイに届いたのは212局と3,409局。見込み100回に対してアガリ78回は、標準偏差のおよそ3倍の差である。手役の差は、あなたのドラのあるアガリ78回とLuckyJの1,619回によるもので、標準誤差の約2.5倍。</p>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#dora-shape"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>07</i>ドラの下に手を組む</span></a></nav>
+        </section>
+
+        <section class="point" id="dora-shape">
+          <div class="point-number">07</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第7章 &#183; ドラのある手 &#183; 9月22日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>ドラの下に手を組む</h3>
+            <p>
+              <mark id="fix-7-opening" class="guide-changed">LuckyJはドラを残し、その手を速く進める。テンパイ率は、ドラのない配牌で46.6%、ドラ2枚以上の配牌で55.3%。ドラがあっても変わらないのは、その周りに組む手の形である。</mark>LuckyJのアガリに手役（平和、タンヤオ、一盃口、染め手、対々和など）がつく割合は、ドラがあってもなくても変わらない。あなたのアガリは、ドラを持つと手役が減る。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>手役のあるアガリ</th><th>あなた、ドラなし</th><th>あなた、ドラあり</th><th>LuckyJ、ドラなし</th><th>LuckyJ、ドラあり</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>最初のテンパイでリーチ</td><td>50.0%</td><td class="gap">33.3%</td><td>54.3%</td><td>53.5%</td></tr>
+                  <tr><td>副露手</td><td>44.7%</td><td class="gap">30.0%</td><td>51.6%</td><td>48.1%</td></tr>
+                  <tr><td>全アガリ</td><td>50.5%</td><td class="gap">39.7%</td><td>55.4%</td><td>54.7%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>リーチのアガリで欠けている役は平和とタンヤオである。LuckyJのドラのあるリーチのアガリには平和が39%、タンヤオが16%つく。あなたは平和26%、タンヤオ4%。副露のアガリで欠けているのは染め手である。LuckyJのドラのある副露のアガリは100回中13回が混一色か清一色だが、あなたの40回には1回もない。役牌とドラ1枚なら2翻で2,000点。そこに副露の混一色が加われば、同じ手が4翻で7,700点になる。</p>
+            <p>この癖が一番はっきり出るのは染め手である。最初の鳴きの後、14枚のうち11枚以上が一色と字牌で、染め手がまだ可能な手を取り出す。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>染め手が見える最初の鳴き</th><th>あなた、鳴いた時点でドラなし</th><th>あなた、ドラが染め色</th><th>LuckyJ、鳴いた時点でドラなし</th><th>LuckyJ、ドラが染め色</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>局数</td><td>36</td><td>15</td><td>533</td><td>373</td></tr>
+                  <tr><td>最初の鳴きの巡目</td><td>5.4</td><td class="gap">7.9</td><td>5.4</td><td>5.8</td></tr>
+                  <tr><td>染め手の完成</td><td>63.9%</td><td class="gap">33.3%</td><td>64.9%</td><td>59.0%</td></tr>
+                  <tr><td>染め手でアガリ</td><td>22.2%</td><td class="gap">0%</td><td>22.1%</td><td>19.8%</td></tr>
+                  <tr><td>放銃を差し引いた1局あたりの点</td><td>1,842</td><td class="gap">&minus;153</td><td>1,383</td><td>2,125</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>「ドラが染め色」は、手の中のドラと赤5がすべて染める色か字牌であることを指す。ドラがなければ、あなたはこうした手をLuckyJと同じように打ち、LuckyJより多く稼いでいる。ドラが染め色にあると、LuckyJは同じくらい早く鳴き、ほぼ同じ頻度で染め手を完成させ、染め手のアガリは平均約10,000点になる。あなたは2巡遅く鳴き、完成は3分の1、15局のうち染め手でアガれた局は1つもない。15局は小さな標本なので、差の大きさは大まかに読むこと。向きは上の副露のアガリの役と同じである。</p>
+            <div class="rule">
+              <strong>ルール</strong> <mark id="fix-7-rule" class="guide-changed">ドラは残し、その周りには、ドラがなくても組む手を組む。</mark>平和に向けて両面の形を、タンヤオに向けて中張牌を残す。持っているドラがすべて主な色か字牌なら、染め手の最初の鳴きはドラがない時と同じだけ早く入れ、受け入れが減らない限り他の色の牌から先に切る。</div>
+            <div class="exception">
+              <strong>例外</strong> ドラが別の色にあると方針が変わる。染め手にすればそのドラを捨てることになるからである。LuckyJはそうした染め手を41%で諦める。ドラが染め色にある時は24%である。</div>
+            <p class="evidence-note">
+              <b>根拠</b> あなたのアガリはドラを配られた局で78回、ドラなしで99回。LuckyJは1,619回と1,376回。染め手の表は、すべての副露が染め手に合う最初の鳴きを数えている。</p>
+            <div data-guide-examples="dora-shape"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#dora-tells"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>08</i>1シャンテンでは副露者のサインを数える</span></a></nav>
+        </section>
+
+        <section class="point" id="dora-tells">
+          <div class="point-number">08</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第8章 &#183; ドラのある手 &#183; 9月22日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>1シャンテンでは副露者のサインを数える</h3>
+            <p>ドラのある手での副露者への放銃は、100局あたりあなたが9.3回、LuckyJが5.0回。対戦相手の層では説明がつかない。あなた自身の半荘で、他の3人がドラのある手から切った生牌は、100回あたり2.1回副露者に当たっている。あなたは2.9回、LuckyJは1.3回である。</p>
+            <p>副露者が見せる3つのことが、テンパイをよく予測する。どれも卓上で簡単に数えられる。</p>
+            <ul class="guide-list">
+              <li>直近の鳴きが、副露者の9打目以降だった</li>
+              <li>副露者が2副露している</li>
+              <li>鳴いた後の副露者の直近2打が、どちらもツモ切りだった</li>
+            </ul>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>見えているサイン</th><th>副露者のテンパイ率、LuckyJの半荘</th><th>副露者のテンパイ率、あなたの半荘</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>なし</td><td>13.4%</td><td>15.8%</td></tr>
+                  <tr><td>1つ</td><td>38.8%</td><td>43.4%</td></tr>
+                  <tr><td>2つ</td><td>64.8%</td><td>69.9%</td></tr>
+                  <tr><td>3つすべて</td><td>84.0%</td><td>89.5%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>第3章で使ったサイン、鳴いた後の手出し3回以上は、予測する力が弱い。このサインを見せる副露者のテンパイ率は43%で、見せない時は33%である。</p>
+            <p>
+              LuckyJは、どのシャンテン数でも、サインが1つ増えるごとに生牌を切る割合を下げる。あなたも2シャンテン以上では同じである。1シャンテンとテンパイでは、あなたの割合の動きはずっと小さい。ドラを持ち、切れる安全牌があった場面：</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>生牌を切った割合（見えているサイン別）</th><th>あなた、1シャンテン</th><th>LuckyJ</th><th>あなた、テンパイ</th><th>LuckyJ</th><th>あなた、2シャンテン以上</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>なし</td><td>62.6%</td><td>66.2%</td><td>58.0%</td><td>64.0%</td><td>72.1%</td><td>75.5%</td></tr>
+                  <tr><td>1つ</td><td>60.3%</td><td>57.0%</td><td>56.2%</td><td>56.7%</td><td>46.8%</td><td>56.1%</td></tr>
+                  <tr><td>2つか3つ</td><td class="gap">51.0%</td><td>42.3%</td><td>55.0%</td><td>49.9%</td><td>34.1%</td><td>36.1%</td></tr>
+                  <tr><td>3つすべて</td><td class="gap">55.0%</td><td>32.3%</td><td>54.5%</td><td>47.4%</td><td>36.8%</td><td>33.1%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              1シャンテンで3つのサインがすべて見えている時、LuckyJが生牌を切るのは3回に1回で、あなたは40回の打牌で半分以上である。あなたの予感が当たっているのはここである。ドラを持ってテンパイに近いと、副露者がテンパイを見せた後も押し続けている。副露者が本当にテンパイだった場面で、あなたの生牌が当たり牌だったのは9.4%、LuckyJは5.4%。副露者の集めている色の牌、ドラの隣の牌、壁の牌、副露者の最後の打牌以降に通った牌を切る頻度はLuckyJと同じなので、これらの読みではこの差は説明できない。そのため、この章はサインに絞る。</p>
+            <div class="rule">
+              <strong>ルール</strong> 副露者がいる時の1シャンテンでは、打牌のたびに3つのサインを数える。1つも見えなければスピードを優先する。サインが1つ増えるごとに、安全牌を選ぶ回数を増やす。3つすべて見えたら、LuckyJと同じく少なくとも3回に2回は安全牌を切る。</div>
+            <div class="exception">
+              <strong>例外</strong> テンパイではサインの重みが小さい。2つ以上見えていても、LuckyJはおよそ半分の場面で生牌を切る。役のあるテンパイを押すという第5章のルールは、ここでもそのまま当てはまる。</div>
+            <p class="evidence-note">
+              <b>根拠</b> リーチ者がいない場面で副露者に対して切った、あなたの2,939打とLuckyJの46,086打。対戦相手の層との比較には、同じ半荘の他の3人の打牌を使った。1シャンテンで3つのサインがすべて見えている行はあなたの打牌40回で、LuckyJの率から標準誤差の約3倍離れている。他の行の差は標準誤差の1〜2倍である。</p>
+            <div data-guide-examples="dora-tells"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#shape-start"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>09</i>タンヤオと染め手はいつ始めるか</span></a></nav>
+        </section>
+
+        <section class="point" id="shape-start">
+          <div class="point-number">09</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第9章 &#183; タンヤオと染め手 &#183; 9月22日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>タンヤオと染め手はいつ始めるか</h3>
+            <p>ドラがなくてもLuckyJよりタンヤオと染め手を作る回数が少ないので、いつ始めればよいか、という質問だった。ドラのない手では、100局あたりのタンヤオのアガリはあなたが2.6回、LuckyJが4.1回。染め手は100局あたりあなたが2.4回、LuckyJが2.5回。つまり、ドラなしの差はタンヤオにある。染め手の差の大部分は第7章で見たドラの問題で、ほかに下で扱う1種類の配牌がある。どちらの答えも、配られた13枚から始まる。</p>
+            <p>タンヤオは、配牌の端牌と字牌を数える。対子は2枚と数える。この枚数で、タンヤオを方針にするかどうかが決まる。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>配牌の端牌と字牌（枚）</th><th>あなたの配牌に占める割合</th><th>9巡目までに0枚、あなた</th><th>LuckyJ</th><th>タンヤオでアガリ、あなた</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>0〜2</td><td>6.3%</td><td>37.8%</td><td>49.5%</td><td>15.4%</td><td>17.7%</td></tr>
+                  <tr><td>3</td><td>13.4%</td><td>34.1%</td><td>33.4%</td><td class="gap">6.3%</td><td>12.2%</td></tr>
+                  <tr><td>4</td><td>21.2%</td><td>15.7%</td><td>20.5%</td><td class="gap">1.7%</td><td>5.9%</td></tr>
+                  <tr><td>5</td><td>23.1%</td><td>5.1%</td><td>9.3%</td><td>2.1%</td><td>3.5%</td></tr>
+                  <tr><td>6か7</td><td>28.6%</td><td>2.1%</td><td>2.5%</td><td>1.3%</td><td>1.1%</td></tr>
+                  <tr><td>8以上</td><td>7.5%</td><td>0%</td><td>0%</td><td>0%</td><td>0.2%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              2枚以下なら、タンヤオが基本の方針である。3枚と4枚でも、LuckyJはそれぞれ12%と6%の配牌でタンヤオをアガっているが、あなたはその半分と、3分の1未満である。5枚以上になると、LuckyJでもめったに届かない。</p>
+            <p>最初の3打はLuckyJと変わらない。どの枚数の配牌でも、二人とも平均で2枚以上が端牌か字牌である。差はその後に開く。4枚の配牌では、6巡目を過ぎた時点でLuckyJはそのうち2.4枚、あなたは2.7枚を持っている。差が一番出るのはリーチである。ドラのないリーチのアガリに平和がつく割合はLuckyJと同じ34%だが、タンヤオは8%で、LuckyJは17%である。</p>
+            <p>染め手は、一色と字牌に合う牌を数える。その枚数で足りるかどうかは、役牌（三元牌、自風、場風）の対子があるかで決まる。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>一色と字牌の枚数</th><th>9巡目までに一色、あなた</th><th>LuckyJ</th><th>染め手でアガリ、あなた</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>8枚、役牌の対子あり</td><td>2.5%</td><td>5.3%</td><td>2.0%</td><td>2.4%</td></tr>
+                  <tr><td>9枚、役牌の対子あり</td><td class="gap">8.3%</td><td>18.2%</td><td class="gap">2.1%</td><td>5.8%</td></tr>
+                  <tr><td>10枚以上、役牌の対子あり</td><td class="gap">30.0%</td><td>43.2%</td><td class="gap">4.0%</td><td>14.8%</td></tr>
+                  <tr><td>8枚、役牌の対子なし</td><td>1.4%</td><td>2.3%</td><td>1.1%</td><td>1.0%</td></tr>
+                  <tr><td>9枚、役牌の対子なし</td><td>6.6%</td><td>10.1%</td><td>2.0%</td><td>3.6%</td></tr>
+                  <tr><td>10枚以上、役牌の対子なし</td><td>40.9%</td><td>33.3%</td><td>16.0%</td><td>10.7%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>役牌の対子があれば、LuckyJは9枚から染め手を始める。ポンで役と最初の鳴きが手に入り、染め手がその1翻を3翻にする。役牌の対子と合う牌9枚以上があったあなたの72の配牌で、染め手のアガリは2回。LuckyJの率なら約6回が見込まれる。役牌の対子がない場合、10枚以上ではすでにLuckyJと同じように打っていて、9枚以下では二人ともめったに染め手に決めない。</p>
+            <div class="rule">
+              <strong>ルール</strong> 第1打の前に配牌を数える。端牌と字牌が4枚以下ならタンヤオを方針にする。中張牌より先にそれらを切り、3巡目を過ぎても切り続ける。一色と字牌が9枚以上で役牌の対子があれば、染め手を方針にする。対子をポンし、他の色の牌から先に切る。対子がなくても10枚以上あれば、染め手を狙ってよい。</div>
+            <div class="exception">
+              <strong>例外</strong> 端牌と字牌が5枚以上、または染め手に合う牌が8枚以下なら、代わりにスピードとリーチを優先する。LuckyJでも、5枚の配牌でタンヤオをアガるのは3.5%、8枚の配牌で染め手をアガるのは役牌の対子があっても2.4%である。</div>
+            <p class="evidence-note">
+              <b>根拠</b> 1月以降のあなたの全830局と、LuckyJの13,054局を配牌で分類した。あなたの3枚と4枚の配牌は287局で、タンヤオのアガリは10回。LuckyJの率なら約24回が見込まれる。役牌の対子がある染め手の行は、あなたの72局である。他の行は傾向として読むこと。</p>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#recent-games"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>10</i>9月22日の対局を振り返る</span></a></nav>
+        </section>
+
+        <section class="point" id="recent-games">
+          <div class="point-number">10</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第10章 &#183; 最近の対局 &#183; 9月23日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>9月22日の対局を振り返る</h3>
+            <p>テンパイがアガリに結びつかなくなり、放銃が急に増え、段位ポイントが4,500に向かって下がっている、という実感だった。直近20半荘を、その前の64半荘と比べる。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>1月以降のあなたの半荘</th><th>最初の64半荘</th><th>直近20半荘</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>テンパイからのアガリ</td><td>40.8%</td><td>42.7%</td></tr>
+                  <tr><td>和了率</td><td>21.4%</td><td>21.9%</td></tr>
+                  <tr><td>平均アガリ点</td><td>5,407</td><td>6,118</td></tr>
+                  <tr><td>放銃率</td><td>11.1%</td><td class="gap">14.0%</td></tr>
+                  <tr><td>平均放銃点</td><td>4,446</td><td class="gap">5,141</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>テンパイがアガリになる頻度は以前と同じで、アガリは大きくなっている。放銃の増加は標準誤差1つ分ほどで、確かな増加とはまだ言えない。増えた分は、第5章が出てから副露テンパイを押す回数が増えたことによる。リーチに対して、テンパイを保てる安全牌がない場面で押す割合は69%から81%に上がった。全半荘で見ると、3翻以上・残り4枚以上の押しの放銃率は23%で、LuckyJと同じである。直近17回の押しで放銃7回は、悪い巡り合わせである。</p>
+            <p>段位ポイントを左右するのは4位である。1月以降、1位で約+140、2位で+66、3位で&minus;10、4位で&minus;273だった。直近8半荘のうち3回が4位で、あなたの普段なら2回ほどである。1月以降、1半荘あたり12ポイント失っている。4位率が23%から18%に下がれば、収支はプラスマイナスゼロになる。</p>
+            <p>新しい4半荘には、変えるべき判断が1つと、ミスなしで裏目に出た局が4つある。下の例はその5局である。</p>
+            <div class="rule">
+              <strong>ルール</strong> 半荘の最後の2局では、放銃したら誰に抜かれるかを確かめる。すぐ下の相手への放銃で順位が入れ替わるなら、順位を1つ上げるために生牌は切らない。3位から2位への浮上は約75段位ポイントの価値で、4位への転落は約265ポイントの損である。</div>
+            <div class="exception">
+              <strong>例外</strong> 4位からは、放銃しても順位は下がらない。3つ目の例のように、順位を1つ上げられるテンパイは押す。</div>
+            <p class="evidence-note">
+              <b>根拠</b> 1月以降のあなたの84半荘、直近20半荘で228局。段位ポイントはamae-koromoの記録による。半荘の最終局はあなた67局、LuckyJ 1,007局。</p>
+            <div data-guide-examples="recent-games"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#push-calibration"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>11</i>テンパイの押しを調整する</span></a></nav>
+        </section>
+        <section class="point" id="push-calibration">
+          <div class="point-number">11</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第11章 &#183; 押しの調整 &#183; 9月24日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>テンパイの押しを調整する</h3>
+            <p>アガリも失点も増えていて、テンパイからオリずに押せば危ないのだから、アガリを取るぶん放銃もしている。そう感じていたという。9月23日の10半荘を、その前の84半荘と比べる。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>1月以降のあなたの半荘</th><th>それ以前の84半荘</th><th>9月23日</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>テンパイした局の和了率</td><td>41.3%</td><td>49.2%</td></tr>
+                  <tr><td>和了率</td><td>21.5%</td><td>25.0%</td></tr>
+                  <tr><td>アガリの平均点</td><td>5,596</td><td>6,741</td></tr>
+                  <tr><td>放銃率</td><td>11.9%</td><td>10.3%</td></tr>
+                  <tr><td>テンパイからの放銃（100局あたり）</td><td>4.7</td><td>3.4</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>これが、あなたの最も良い10半荘だった。アガリは多く、大きく、放銃は少なく、1位3回、4位2回で段位ポイントは+42。10半荘ではどの率もノイズにすぎないが、押しすぎを示すものはどこにもない。</p>
+            <p>問題になる押しは、リーチを受けていて、テンパイを保つ牌がどれも安全牌でないときである。このテンパイをあなたは78%押し、LuckyJは82%押す。9月23日は19回中17回押した。6回アガって平均7,117点、3回放銃して平均5,367点で、押し1回あたり+1,329点である。この押しがLuckyJにとってどれだけの価値を持つかを、手の打点と和了牌の残り枚数で分けて示す。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>LuckyJ、リーチに対するテンパイ</th><th>残り3枚以下</th><th>4〜7</th><th>8枚以上</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1〜2翻</td><td class="gap">押す割合66%、1回あたり&minus;1,374点</td><td>74%、&minus;181</td><td>89%、&minus;126</td></tr>
+                  <tr><td>3〜4翻</td><td>82%、+293</td><td>92%、+890</td><td>99%、+1,799</td></tr>
+                  <tr><td>5翻以上</td><td>86%、+1,336</td><td>99%、+1,730</td><td>100%、+4,565</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>各マスの点数は、LuckyJが押した局の平均収支で、アガリも放銃も、それ以外の終わり方もすべて含む。表はまず翻数で読む。3翻以上なら、どの待ちでも押しが得になる。1〜2翻なら、どの待ちでも損になり、損は広い待ちで最も小さく、狭い待ちで最も大きい。安くて狭いテンパイは、あなたはすでに5分の4をオリている。ほかのマスでは、あなたの押し率はLuckyJに近い。</p>
+            <p>押しが最も多い場面では、結果もLuckyJと変わらない。残り4〜7枚では、あなたの押しは33%アガって21%放銃し、LuckyJは33%アガって22%放銃した。弱いのは狭い待ちで、あなたは26回押して1回しかアガれず、LuckyJは5回に1回アガる。狭いテンパイの中身はLuckyJと同じで、12巡目前後に残り約2.8枚なので、この差の大部分は運である。運でない部分もある。押す牌が無筋の2〜8か片筋のとき、あなたの局は28%が放銃で終わり、LuckyJは21%である。第8章で見た読みの差である。</p>
+            <p>終盤は数字が変わる。流局でもテンパイには点が入るからである。流局時にノーテンからテンパイになれば、2,500〜3,000点の差になる。13巡目以降、LuckyJの安いテンパイは、オリたものが平均1,447点を失い、押したものは306点を失う。</p>
+            <div class="rule">
+              <strong>ルール</strong> リーチを受けてテンパイを保つのに安全牌でない牌が必要なら、まず翻数を数える。3翻以上なら押す。1〜2翻なら、残り3枚以下の狭い待ちはオリる。それより広い安いテンパイは、流局でもテンパイに点が入る終盤なら押し、序盤ならオリる。</div>
+            <div class="exception">
+              <strong>例外</strong> オーラスでは、第10章の着順のルールが優先する。最後の打牌では、安い手や狭い待ちのテンパイでも、生牌を押す価値がある。1つ目の例のように、流局時の精算だけで2,500〜3,000点になるからである。</div>
+            <p class="evidence-note">
+              <b>根拠</b> リーチを受け、テンパイを保つ牌がどれも安全牌でなかったあなたのテンパイ130局と、LuckyJの1,505局。各局はそうなった最初の巡で数えた。あなたのマスは各2〜39局なので、あなたの率は幅をもって読むこと。基準はLuckyJの表である。</p>
+            <div data-guide-examples="push-calibration"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#open-hands"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>12</i>副露テンパイは保ち、鳴くなら打点のために</span></a></nav>
+        </section>
+
+        <section class="point" id="open-hands">
+          <div class="point-number">12</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第12章 &#183; 副露手 &#183; 9月24日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>副露テンパイは保ち、鳴くなら打点のために</h3>
+            <p>安い副露テンパイはやめるべきか、という質問だった。やめずに保つ。副露テンパイで別の副露者とぶつかったとき、あなたはすでにLuckyJと同じように打っていて、オリる方が押すより損が大きい。たしかにあなたの副露手はLuckyJより1局あたり約500点少ないが、その大部分はもっと前、手を作る鳴きの段階で生じている。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>副露した局</th><th>あなた</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>全局に占める割合</td><td>36.3%</td><td>35.8%</td></tr>
+                  <tr><td>和了率</td><td>29.6%</td><td>30.2%</td></tr>
+                  <tr><td>アガリの平均点</td><td class="gap">4,479</td><td>5,424</td></tr>
+                  <tr><td>放銃率</td><td class="gap">14.7%</td><td>10.6%</td></tr>
+                  <tr><td>ほかの副露手への放銃</td><td class="gap">8.9%</td><td>4.5%</td></tr>
+                  <tr><td>リーチへの放銃</td><td>5.0%</td><td>4.2%</td></tr>
+                  <tr><td>1局あたりの収支</td><td class="gap">+81</td><td>+576</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>鳴く頻度もアガる頻度も、LuckyJと同じである。アガリは約950点小さく、副露でのアガリの翻数はあなたが2.47翻、LuckyJが2.79翻。役牌はアガリ1回あたり0.79翻で同じだが、形の役（0.66対0.82）、ドラ（0.58対0.66）、赤5（0.43対0.51）で少なく、そのため副露でのアガリの40%が2翻止まりで、LuckyJは27%である。増えた放銃の行き先はほかの副露者で、鳴いた100局あたりあなたは8.9回、LuckyJは4.5回。うちテンパイからの放銃は5.5回と2.8回だった。リーチに対しては、あなたの副露手の放銃はLuckyJとほぼ同じ頻度である。</p>
+            <p>リーチ者がいない場面で、副露テンパイを保つには別の副露者に対して安全牌でない牌を切るしかないとき、LuckyJは93%でテンパイを保つ。下の表は、テンパイの打点と第8章のサインの数ごとに、保った割合と、保った局の平均収支を示す。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>LuckyJ、副露者に対する副露テンパイ</th><th>サインなし</th><th>サイン1つ</th><th>2つか3つ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1翻</td><td>保つ割合98%、+673</td><td>92%、&minus;255</td><td>90%、&minus;28</td></tr>
+                  <tr><td>2翻</td><td>98%、+1,324</td><td>96%、+796</td><td>93%、+291</td></tr>
+                  <tr><td>3翻以上</td><td>98%、+3,666</td><td>99%、+2,108</td><td>96%、+1,173</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>第8章では、手に安全牌があるときの打牌をすべて数えた。安全牌でテンパイを保てる場合も含む。この表は、テンパイを保てる安全牌がない巡だけを数える。サインの出ている相手に対する安いテンパイは、保てば収支がほぼゼロで、LuckyJが数少なくオリた局はそれより悪く、1翻で1局あたり&minus;565、2翻で&minus;825だった。終盤は流局の精算が押しの側へさらに傾ける。13巡目以降、LuckyJが保った1〜2翻の副露テンパイは平均128点の得、オリたものは1,785点の損だった。例外は役のないテンパイである。ロンでアガれないので、LuckyJが保つのは62%にとどまる。</p>
+            <p>あなたはこのテンパイを121局中117局、97%で保ち、切る牌の選び方もLuckyJと同じである。テンパイを保つ牌のうち最も危険の少ない牌を選んだのが58%（LuckyJは59%）、待ちの残り枚数が最も多くなる牌を選んだのが77%（LuckyJは79%）。違うのは結果である。保ったテンパイが副露者に放銃したのは、あなたが14.5%、LuckyJが8.2%。副露者がテンパイしていた割合はあなたの対局でも同じで（サインなし、1つ、2つか3つでそれぞれ21%、49%、71%、LuckyJは20%、48%、74%）、押した牌が相手の待ちに当たる割合があなたの方が高かった。サイン1つで7.7%対4.1%、2つか3つで9.1%対6.2%である。117回の押しでは、これは標準誤差の約2.5倍なので、一部は運である。残りは第8章の読みの差で、これまでに測った読みのうち、その差が出るのは1つだけ、字牌である。</p>
+            <p>副露者に当たる字牌は、ほかに1枚も見えていない役牌である。副露者がいる場面でLuckyJがこの牌を切ると1.1%で当たり、同じ卓のほかのプレイヤーでは1.3%だった。1枚見えると0.4〜0.6%に下がり、客風が当たるのは0.2〜0.8%である。あなたが切ったこの字牌は2.6%、192回中5回当たった。この章の最後の例の南と、第3章で2つのポンに切った中は、そのうちの2回である。</p>
+            <p>差の大きい方はテンパイより前、門前を崩す最初の鳴きから始まる。二段目までに門前の2シャンテンから、役牌の裏付けのない鳴き（タンヤオのチーや、速度のためのポン）をする頻度は、あなたとLuckyJでほぼ同じである。違うのは、その手がどうなるかである。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>2シャンテンからの最初の鳴き（一段目と二段目、役牌なし）</th><th>あなた</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>局数</td><td>46</td><td>565</td></tr>
+                  <tr><td>テンパイ到達</td><td>72%</td><td>66%</td></tr>
+                  <tr><td>テンパイした局の和了率</td><td class="gap">18%</td><td>47%</td></tr>
+                  <tr><td>放銃率</td><td class="gap">33%</td><td>12%</td></tr>
+                  <tr><td>1局あたりの収支</td><td class="gap">&minus;1,657</td><td>+401</td></tr>
+                  <tr><td>鳴いた時点の門前での受け入れ</td><td>28枚</td><td>22枚</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>鳴けばたしかに速くなる。だがそうしてできたテンパイの和了率はLuckyJの半分に届かず、局の3分の1は放銃で終わる。同じ場面でも、別の打ち方ならうまくいっている。二段目までに2シャンテンから役牌をポンした局は、60%アガって1局あたり平均+1,604（LuckyJは46%、+1,322）、こうした鳴きを見送った局は平均+233（LuckyJは+218）だった。また、あなたはLuckyJより良い門前手からこの鳴きをしている。受け入れは平均28枚対22枚で、あなたが鳴いているのは、自力でリーチまで届く見込みが最も高い手である。</p>
+            <p>LuckyJは、鳴きで何が加わるかと、門前の手がどれだけ遅いかで、この鳴きを決める。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>LuckyJの門前手からの鳴き</th><th>一段目</th><th>二段目</th><th>三段目</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>2シャンテン、役牌のポン</td><td>95%</td><td>93%</td><td>（9局）</td></tr>
+                  <tr><td>2シャンテン、タンヤオの鳴き</td><td>23%</td><td>38%</td><td>54%</td></tr>
+                  <tr><td>1シャンテンからテンパイ、門前の受け入れ12枚未満</td><td>75%</td><td>75%</td><td>82%</td></tr>
+                  <tr><td>1シャンテンからテンパイ、12〜19枚</td><td>50%</td><td>56%</td><td>72%</td></tr>
+                  <tr><td>1シャンテンからテンパイ、20枚以上</td><td>15%</td><td>17%</td><td>38%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>二段目までの2シャンテンからのタンヤオの鳴きは、ドラと形で決まる。ドラが2枚以上ならLuckyJは59%鳴く。0枚か1枚なら、受け入れ24枚未満の遅い門前手からは38〜47%、40枚以上のつながりの良い手からは6〜9%である。おおまかに言えば、遅い手はカンチャン、ペンチャン、浮き牌でできていて、つながりの良い手は両面の形でできている。1シャンテンでは、受け入れ12枚未満の門前手はたいていカンチャン、ペンチャン、シャンポンのどれかの受けを含み、20枚以上の手は良形を3つ以上持つ。副露テンパイが3翻以上になるなら、LuckyJは一段目でも77%鳴く。あなたの鳴き率は全体ではこれに近く、2シャンテンからは42%対46%、1シャンテンからは62%対58%である。まだ使えていないのは形の判断である。</p>
+            <div class="rule">
+              <strong>ルール</strong> 役のある副露テンパイは、副露者に対して保つ。1翻でも、サインが2つか3つあっても同じである。その代わり、安い副露手を減らす。2シャンテンからは役牌をポンし、タンヤオの鳴きはドラが2枚以上あるときか門前手が遅いときにし、ドラのないつながりの良い手は門前で進める。</div>
+            <div class="exception">
+              <strong>例外</strong> 役のないテンパイは流局時にしか点にならないので、1シャンテンと同じように打つ。オーラスでは第10章の着順のルールが優先する。副露者に対しては、ほかに1枚も見えていない生きた役牌が、切って最も危ない字牌である。</div>
+            <p class="evidence-note">
+              <b>根拠</b> あなたの995局とLuckyJの13,054局。テンパイの表は、リーチ者がおらず、テンパイを保つ牌がどれも別の副露者に対して安全牌でなかった副露テンパイを、あなたの121局、LuckyJの1,375局数えた。各局はそうなった最初の巡で数えている。あなたのマスは各1〜53局なので、基準はLuckyJの表である。鳴きの表は、リーチ者がいない場面で門前手から鳴けた機会を、あなたの314回、LuckyJの3,723回数えた。あなたの早い鳴き46回は、放銃率でLuckyJから標準誤差の約4倍、和了率で約2.5倍離れている。字牌の率は、あなたの卓の字牌の打牌2,058回と、LuckyJの卓の27,510回から出した。</p>
+            <div data-guide-examples="open-hands"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#caller-defense"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>13</i>副露者への守備は追いついた</span></a></nav>
+        </section>
+        <section class="point" id="caller-defense">
+          <div class="point-number">13</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第13章 &#183; 最近の対局 &#183; 9月27日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>副露者への守備は追いついた</h3>
+            <p>副露手への守備が良くなったと感じていた。9月24日から27日までの14半荘も同じことを示している。下の指標はどれも、LuckyJの数字に並ぶか、それを超えた。14半荘ではどの行も結論を出すには少ないが、すべて同じ方向を向いている。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>副露者への守備</th><th>以前の94半荘</th><th>新しい14半荘</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>副露手への放銃（100局あたり）</td><td class="gap">6.9</td><td>5.3</td><td>4.8</td></tr>
+                  <tr><td>副露手に失った点（1局あたり）</td><td class="gap">269</td><td>191</td><td>211</td></tr>
+                  <tr><td>1シャンテンで安全牌を持ちながら生牌を切った割合（サイン2つ以上）</td><td class="gap">50.2%</td><td>42.2%</td><td>41.7%</td></tr>
+                  <tr><td>同じ場面で、サイン3つすべて</td><td class="gap">51.0%</td><td>30.8%</td><td>32.1%</td></tr>
+                  <tr><td>テンパイ率30〜60%の副露者に、2シャンテン以上から生牌を切った割合（安全牌でシャンテン数を保てた場面）</td><td>39.0%</td><td>17.4%</td><td>38.9%</td></tr>
+                  <tr><td>副露者への放銃（生牌100打あたり）</td><td class="gap">2.25</td><td>1.04</td><td>1.26</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>第8章が見つけた漏れは1シャンテンにあった。副露者のサインが三つすべて見えていても、あなたは半分ほどの場面で生牌を切り、LuckyJは3回に1回だった。新しい半荘では、そうした13回のうち4回で生牌を切り、サインが2つ以上の場面では42%で、これはLuckyJと同じ割合である。生牌が副露者に当たったのは383打中4回。副露者がテンパイしていたとき、切った牌がその待ちだったのは3.6%で、以前は7.7%、LuckyJは5.2%である。下の最初の例は、このオリの最も良い形である。2巡続けて受け入れを犠牲にして現物を切り、副露者のアガリ牌だった生牌の[[F]]を手に残した。</p>
+            <p>結果もついてきた。1位3回、2位5回、3位6回、4位なし。平均着順は以前の2.46に対して2.21、1局あたりの点は以前の+31に対して+330（LuckyJは+363）。一部は運である。以前の4位率なら、14半荘で一度も4位にならないのは34回に1回ほどしか起きない。アガリは小さいままで、平均5,331点。第1章、第6章、第7章で見た打点の差はまだ埋まっていない。</p>
+            <p>
+              152局で13回放銃した。そのうち10回は不運か際どい判断だった。当たった筋、リーチの宣言牌とリーチ後に切るしかなかった1枚、テンパイからの押し、そして親のダブ東に1シャンテンから押した11,600点（最後の例）である。このうちリーチの3回は、LuckyJも同じように打つ。副露者がいて、最も広い待ちを取るには生牌を切る必要がある最初の門前テンパイで、あなたは16回中14回リーチし、LuckyJは70%だった。残る3回はミスで、ほかの例がそれにあたる。安全牌なら受け入れが3枚減るだけだったのに3副露の相手に生牌を切ったもの、両方に安全な牌があるのに、リーチには安全でもポンした相手には生牌になる牌を切ったもの、そして現物を持った4シャンテンの手から、ツモった端牌を親リーチにそのまま切ったものである。</p>
+            <p>気をつけたい点が一つ、オリラインの手前にある。現物と、生きた字牌または無筋の端牌が手にとって同じ価値で、副露者がまだ早い段階なら、LuckyJは4回に3回ほど生牌を切って現物を残す。危険が増していくだけの牌を先に使っている。第3章のルールは、2枚が同じ価値なら常に安全牌を切るとしていたが、これは広すぎたので、その一文は訂正した。以前の半荘では、こうした効率が同じ場面をLuckyJに近い形で打っていた。新しい半荘では24回中12回で安全牌を切った。変化と呼ぶには少なすぎる。その後、副露者がテンパイに見えたときに、シャンテン数を保てる安全牌が手にない場面が少し増えた。そうした場面の23%で、以前は20%、LuckyJは17%である。</p>
+            <div class="rule">
+              <strong>ルール</strong> オリライン（1副露の副露者なら10打目、2副露か3副露なら7打目）を越えたら、今回の半荘と同じようにオリを続ける。安全牌を先に切り、脅威になっている全員に対して確かめる。オリラインの手前で、現物と生きた字牌または無筋の端牌が同じ価値なら、生牌を切って現物を残す。</div>
+            <div class="exception">
+              <strong>例外</strong> 1シャンテンを保てる安全牌がないときは、オリラインを越えても押すのがLuckyJの打ち方である。最後の例のとおり、1副露の副露者に対して手を崩すのは11回に1回ほどにすぎない。ドラポンがあれば、オリラインは序盤の数巡まで早まる。</div>
+            <p class="evidence-note">
+              <b>根拠</b> 1月以降のあなたの108半荘。9月24日より前の94半荘（995局、副露者がいる場面での打牌3,464打）と、9月24日から27日の14半荘（152局、打牌593打）。LuckyJ：特上1,079半荘。新しい半荘の行は、1シャンテンの打牌が45回と13回、30〜60%の行が23回、効率が同じ場面が24回、遅い巡目が103回で、どれも以前の数字との差は標準誤差の1〜3倍である。生牌が当たった割合（383打中4回と、以前の2,264打中51回）の差は標準誤差の約2倍。オリラインと副露者のテンパイ率は、LuckyJ戦術書の<a href="ja.html#open-callers">副露者にいつオリるか</a>による。</p>
+            <div data-guide-examples="caller-defense"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#three-calls"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>14</i>副露者は段で数え、3副露のテンパイは保つ</span></a></nav>
+        </section>
+
+        <section class="point" id="three-calls">
+          <div class="point-number">14</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第14章 &#183; 最近の対局 &#183; 9月28日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>副露者は段で数え、3副露のテンパイは保つ</h3>
+            <p>調子を崩していると感じていた。第13章の後、9月27日と28日の7半荘は厳しかった。1位2回、2位1回、3位2回、4位2回で、1局あたり平均&minus;482点。それでも、第13章で測った守備は保たれていた。放銃は8.8%の局で、前の14半荘と同じ水準。副露手への放銃は1回だけだった。サイン2つ以上の副露者に対して1シャンテンで生牌を切ったのは40%で、LuckyJと同じ割合である。変わったのは、放銃の大きさとアガリの回数である。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>あなたの半荘</th><th>9月24日より前の94半荘</th><th>9月24日〜27日の14半荘</th><th>9月27日・28日の7半荘</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>和了率</td><td>21.8%</td><td>25.7%</td><td class="gap">17.6%</td><td>22.9%</td></tr>
+                  <tr><td>放銃率</td><td>11.7%</td><td>8.6%</td><td>8.8%</td><td>10.3%</td></tr>
+                  <tr><td>副露手への放銃（100局あたり）</td><td>6.9</td><td>5.3</td><td>1.5</td><td>4.8</td></tr>
+                  <tr><td>リーチへの放銃（100局あたり）</td><td>3.8</td><td>2.0</td><td class="gap">5.9</td><td>3.8</td></tr>
+                  <tr><td>平均放銃点</td><td>4,687</td><td>3,685</td><td class="gap">7,183</td><td>5,308</td></tr>
+                  <tr><td>1局あたりの点</td><td>+31</td><td>+330</td><td class="gap">&minus;482</td><td>+363</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              7半荘は68局で、アガリ12回、放銃6回。まだ傾向と言える数ではない。<mark id="fix-14-deal-ins" class="guide-changed">6回の放銃のうち2回はテンパイからの押しだった。<a href="replay.html?g=260928-5a0260b7-1cac-4ecd-81d7-102a1d432557&amp;r=East+2-0&amp;t=6" target="_blank" rel="noopener" data-you="6m">局の序盤の1翻の副露テンパイ</a>と、<a href="replay.html?g=260928-90620418-4aff-43d9-8a70-412f6bbf34ad&amp;r=South+4-0&amp;t=16" target="_blank" rel="noopener" data-you="9s">オーラスに4位から押した4翻のテンパイ</a>で、後者は放銃しても着順が下がらない場面だった。3回目は、親リーチの後に<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=South+2-0&amp;t=11" target="_blank" rel="noopener" data-you="2m">役なしのカンチャンでかけたリーチ</a>から生まれた。さらに別の相手もリーチし、<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=South+2-0&amp;t=15" target="_blank" rel="noopener" data-you="9s">その後に切るしかなかった牌</a>が放銃になった。</mark>1回は、早いポンに対して<a href="replay.html?g=260928-90620418-4aff-43d9-8a70-412f6bbf34ad&amp;r=South+1-0&amp;t=5" target="_blank" rel="noopener" data-you="C">5打目に切った孤立の[[C]]</a>で、誰かが鳴いた後にLuckyJが孤立した三元牌を手放すのとほぼ同じ時期である。残る2回がこの章の例である。<a href="replay.html?g=260928-90620418-4aff-43d9-8a70-412f6bbf34ad&amp;r=South+2-0&amp;t=10" target="_blank" rel="noopener" data-you="W">西</a>と、<a href="replay.html?g=260928-7c1ee667-5f64-4163-9a24-64e5b7e733ba&amp;r=East+4-2&amp;t=12" target="_blank" rel="noopener" data-you="7p">親の跳満</a>で、<mark class="guide-changed">後者は押した牌の選び方がミスだった</mark>。<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=East+1-1&amp;t=9" target="_blank" rel="noopener" data-you="3s">3副露の手</a>と合わせて、この三つがあなたの尋ねた点である。</p>
+            <p>
+              <b>副露者の数え方。</b>1副露の副露者は9巡目を過ぎると追えなくなり、そのツモ切りも見失うと言っていた。巡目を数えるのはやめて、その河の段を数える。1段は6枚で、他家に鳴かれて河から消えた牌があれば1枚ずつ足す。第13章のオリラインは、1副露なら二段目の4枚目、2副露か3副露なら二段目の1枚目にある。1副露の副露者がテンパイしていた割合は次のとおり。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>1副露の副露者の河</th><th>テンパイ</th><th>2回続けてツモ切りした後</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>一段目</td><td>6.5%</td><td>9.5%</td></tr>
+                  <tr><td>二段目の最初の3枚</td><td>22.4%</td><td>27.7%</td></tr>
+                  <tr><td>二段目の最後の3枚</td><td>35.6%</td><td>47.3%</td></tr>
+                  <tr><td>三段目</td><td>43.9%</td><td>68.7%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>ほとんどは段で決まる。ツモ切りが意味を持つのはオリラインを越えてからで、三段目では1副露の副露者のテンパイ率を4割ほどから3分の2まで引き上げる。第8章のもう一つのサイン、9打目以降の鳴きは、段を数えればほとんど何も加えない（二段目の後半で38%対42%）ので、数えなくてよい。ツモ切りを見分けるには、打牌が手牌の右端にあるツモ牌から出たかどうかを見る。</p>
+            <p>
+              <b>3副露なら手牌は4枚。</b>リーチが入った後、LuckyJは3副露のテンパイを352巡中345巡（98%）で保ち、安全牌でテンパイを保てた198巡ではすべて保った。3副露になれば長くはオリられないので、まだ自分のために働いているのはテンパイだけである。最初の例では、筋の牌でテンパイを保てたのにドラ待ちのテンパイを崩し、次の巡では1シャンテンを保つために結局は生牌を切った。3副露目の鳴き自体は問題なかった。テンパイになる3副露目の鳴きを、LuckyJは誰もリーチしていないときに94%で鳴き、リーチに対しても3翻以上のテンパイなら93%で鳴いた。リーチに対して1翻か2翻なら約60%、役なしなら24%だった。</p>
+            <p>
+              <b>1枚切れの西。</b>自分の河に1枚あっても、それは1枚見えているだけである。第4章では、リーチに対してこれを切ると100打あたり2.1回放銃し、現物なら放銃はない。西はあなたにとって客風で、上家の自風だった。[[7p]]を切って西を残した巡では、西を切るほうが効率も良かった。あなたの直感は正しい。役に立たない孤立の字牌は、誰もリーチしていないうちに切る。</p>
+            <div class="rule">
+              <strong>ルール</strong> 副露者は河の段で数える。1副露なら二段目の4枚目、2副露か3副露なら二段目の1枚目を過ぎたら安全牌を先に切り、そこから2回続けてツモ切りしたらテンパイの可能性が高いと見る。3副露でリーチが入っていれば、テンパイを保てる牌のうち最も安全な牌を切ってテンパイを保つ。使い道のない孤立の字牌は、誰かがリーチする前に切る。</div>
+            <div class="exception">
+              <strong>例外</strong> リーチに対しては、役なしのテンパイになる3副露目の鳴きは見送る。鳴きもリーチもない門前の相手なら、2回続けてのツモ切りは三段目より前にはほとんど意味がない。門前でテンパイすればたいていリーチするからである。鳴きもリーチもない親が10〜12打目でテンパイしていたのは、2回続けてツモ切りした後で8.5%、そうでないときで6.7%だった。</div>
+            <p class="evidence-note">
+              <b>根拠</b> 9月27日と28日のあなたの7半荘（68局）を、その前の14半荘（152局）、さらにその前の94半荘（995局）と比べた。LuckyJ：特上1,079半荘。リーチ後にテンパイを取れた3副露の巡は、LuckyJが352、あなたが28。あなたは24巡でテンパイを保ち、安全牌でテンパイを保てた10巡のうち9巡で保った。テンパイになる3副露目の鳴きの機会は、LuckyJで誰もリーチしていないときが230回、リーチが入っているときが85回。段の表は、LuckyJの対局と鳳凰の対局で1副露の副露者に対して切られた522,000打を数えたもので、LuckyJ戦術書の<a href="ja.html#open-callers">副露者にいつオリるか</a>と同じ集計である。</p>
+            <div data-guide-examples="three-calls"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#mortal-review"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>15</i>必要な対子を残し、役のない手では追わずにオリる</span></a></nav>
+        </section>
+        <section class="point" id="mortal-review">
+          <div class="point-number">15</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第15章 &#183; Mortalの検討 &#183; 9月28日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>必要な対子を残し、役のない手では追わずにオリる</h3>
+            <p>放銃した局のどこが悪かったのか、という質問だった。LuckyJ戦術書がセカンドオピニオンに使うオープンソースの麻雀AI、Mortalが、<a href="replay.html" target="_blank" rel="noopener">9月27日と28日のあなたの7半荘</a>の全68局を再生し、あなたの選択をすべて評価した。打牌762回と、鳴ける場面201回である。Mortalの第一候補とあなたの選択は、打牌の73%、鳴ける場面の93%で一致した。同じ数え方で、LuckyJの打牌はMortalと72.6%、同卓した特上の人間の打牌は68.3%一致する。つまりこの7半荘では、あなたの打ち方はLuckyJ自身と同じくらいMortalに近かった。離れたのは放銃した6局である。その6局の打牌60回のうち一致は63%で、13回はMortalが10%未満しか付けなかった選択だった。</p>
+            <p>この章で挙げる局と巡目は、すべて牌譜にリンクしている。リンク先ではその時点の卓が開き、選べるすべての手にMortalの評価が付いている。放銃した6局のうち3局は、Mortalもあなたと同じように打っていた。残りの3局は、それぞれ一つの判断に行き着く。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data is-text">
+                <thead>
+                  <tr><th>局と放銃</th><th>放銃牌へのMortalの評価</th><th>どこで間違えたか</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><a href="replay.html?g=260928-7c1ee667-5f64-4163-9a24-64e5b7e733ba&amp;r=East+4-2&amp;t=12" target="_blank" rel="noopener" data-you="7p">東4局2本場、9月27日 17:07</a><br />親のダマに放銃、18,600点</td><td class="gap">12巡目：[[7p]] 2%、[[2m]] 97%</td><td>押した牌</td></tr>
+                  <tr><td><a href="replay.html?g=260928-90620418-4aff-43d9-8a70-412f6bbf34ad&amp;r=South+2-0&amp;t=10" target="_blank" rel="noopener" data-you="W">南2局、9月27日 18:06</a><br />リーチに西で放銃、8,000点</td><td>10巡目：[[W]] 93%</td><td><a href="replay.html?g=260928-90620418-4aff-43d9-8a70-412f6bbf34ad&amp;r=South+2-0&amp;t=9" target="_blank" rel="noopener" data-you="7p">9巡目</a>。Mortalは97%で[[W]]を切り、あなたは[[7p]]を切った</td></tr>
+                  <tr><td><a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=South+2-0&amp;t=15" target="_blank" rel="noopener" data-you="9s">南2局、9月28日 01:38</a><br />親リーチに追っかけリーチ、その後2軒目のリーチに[[9s]]を切らされて放銃。2,000点とリーチ棒</td><td>15巡目：リーチ後のため選択の余地なし</td><td><a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=South+2-0&amp;t=11" target="_blank" rel="noopener" data-you="2m">11巡目のリーチ</a>（Mortalのリーチは8%、オリは68%）と、<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=South+2-0&amp;e=65" target="_blank" rel="noopener">その前の、タンヤオに向かえた巡目</a></td></tr>
+                  <tr><td><a href="replay.html?g=260928-5a0260b7-1cac-4ecd-81d7-102a1d432557&amp;r=East+2-0&amp;t=6" target="_blank" rel="noopener" data-you="6m">東2局、9月27日 17:38</a><br />リーチに1翻の副露テンパイから放銃、2,600点</td><td>6巡目：[[6m]] 99%</td><td>なし</td></tr>
+                  <tr><td><a href="replay.html?g=260928-90620418-4aff-43d9-8a70-412f6bbf34ad&amp;r=South+1-0&amp;t=5" target="_blank" rel="noopener" data-you="C">南1局、9月27日 18:06</a><br />孤立した[[C]]を早いポンに放銃、8,000点</td><td>5巡目：[[C]] 92%</td><td>なし</td></tr>
+                  <tr><td><a href="replay.html?g=260928-90620418-4aff-43d9-8a70-412f6bbf34ad&amp;r=South+4-0&amp;t=16" target="_blank" rel="noopener" data-you="9s">南4局、9月27日 18:06</a><br />オーラス、4位からの4翻の副露テンパイで放銃、3,900点</td><td>16巡目：[[9s]] 100%</td><td>なし</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <b>対子を鳴いたポン。</b>第14章の3副露の手は、<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=East+1-1" target="_blank" rel="noopener">9月28日 01:38の半荘の東1局1本場</a>である。<mark class="guide-changed">この手が3つ目の鳴きをする前に、Mortalはすでに疑問を示していた。</mark>[[W]]をポンしていて、対子は[[9m]][[9m]]しかない手で、<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=East+1-1&amp;t=6&amp;at=call" target="_blank" rel="noopener" data-you="9m">6巡目</a>に下家の[[9m]]をポンした。Mortalは99%でこれを見送った。<mark id="fix-15-pon" class="guide-changed">ポンしても1シャンテンのままだったが、アガリへの道が減ったわけではない。テンパイになる見えていない牌は10枚から28枚に増え、その28枚のうち10枚はドラを使った7,700点の待ちにつながった。たとえば[[6p]]を引けばドラの対子ができ、[[3s]]-[[6s]]待ちになる。見送った側のテンパイは、どれも3,900点だった。攻撃面では方針は正しかった。ポンで手放したのは守備である。手牌は7枚、チーの後は4枚になり、その次の巡で上家がリーチした。それでも両AIとも、ポンしない方に傾いている。副露手が1シャンテンのままでもテンパイ牌が10枚以上増えるポンを、LuckyJは74回中21回ポンし、あなたのようにドラを2枚以上持っているときは19回中3回である。その場面でポンした局と見送った局の和了率はほぼ同じだった（38%と36%）。つまりこのポンは際どい判断で、この局で高くついたのは、9巡目にテンパイを崩したことである。</mark>もっと広く見ると、副露手をテンパイに近づけないポンを、LuckyJは86%見送り、あなたは81%見送っている。習慣としては近い。その場面でLuckyJが実際にポンした局は53局中26局でアガったが、1月以降のあなたのポンは7局中1局しかアガれていない。今回の対局にも、あと2回あった。<a href="replay.html?g=260928-cc7d275a-7a2c-46ce-a3a4-dfa610e0ea74&amp;r=East+1-0&amp;t=12&amp;at=call" target="_blank" rel="noopener" data-you="4m">23:01の半荘の東1局での[[4m]]ポン</a>はMortalなら見送り（100%）、<a href="replay.html?g=260928-90620418-4aff-43d9-8a70-412f6bbf34ad&amp;r=East+4-1&amp;t=6&amp;at=call" target="_blank" rel="noopener" data-you="4p">18:06の半荘の東4局での[[4p]]ポン</a>はMortalもポンした。</p>
+            <p>
+              <b>役なしのリーチ。</b><a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=South+2-0" target="_blank" rel="noopener">同じ01:38の半荘の南2局</a>が、最後に放銃した局である。13,400点リードしていて、ドラの[[3s]]と赤の[[5sr]]を持っていたが、[[1m]]の対子がタンヤオを妨げていた。Mortalはタンヤオに向かった。Mortalなら<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=South+2-0&amp;e=65" target="_blank" rel="noopener">あなたの8打目の後に親が切った[[4s]]</a>をチーし（83%）、実際の進行でも、<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=South+2-0&amp;t=9" target="_blank" rel="noopener" data-you="6p">9巡目</a>に[[2m]]（98%）、<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=South+2-0&amp;t=10" target="_blank" rel="noopener" data-you="3m">10巡目</a>に[[1m]]（59%）を切っていた。あなたは対子を残し、<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=South+2-0&amp;t=11" target="_blank" rel="noopener" data-you="2m">11巡目</a>、親がリーチした直後に役なしの[[6s]]カンチャンでテンパイし、そのまま追っかけリーチをかけた。Mortalはこのテンパイで68%は現物の[[7p]]を切ってオリ、リーチは8%だった。続いて下家もリーチし、<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=South+2-0&amp;t=15" target="_blank" rel="noopener" data-you="9s">15巡目</a>に切るしかなかった[[9s]]が放銃になった。LuckyJはこの場面を際どいものとして扱っている。リーチ1軒に対し、役なしで残り4枚以下の最初のテンパイでは、141回中58回リーチし、その局は1局あたり584点を失った。あなたの手で判断を分けるのはリードである。このリーチは、3,900点の手のために1位を危険にさらした。</p>
+            <p>
+              <b>押す牌。</b>親の跳満に放銃した<a href="replay.html?g=260928-7c1ee667-5f64-4163-9a24-64e5b7e733ba&amp;r=East+4-2" target="_blank" rel="noopener">9月27日 17:07の半荘の東4局2本場</a>で、Mortalは<a href="replay.html?g=260928-7c1ee667-5f64-4163-9a24-64e5b7e733ba&amp;r=East+4-2&amp;t=12" target="_blank" rel="noopener" data-you="7p">12巡目</a>にあなたと同じく、ダマの親に対して2シャンテンから押した。押した牌は[[2m]]が97%、[[7p]]が2%である。[[2m]]なら有効牌が1枚多く、[[7p]]を赤の[[5pr]]の隣に残せる。ダマの相手に押すときは、手にいちばん要らない牌を押す。第14章ではこの局を不運としていたが、その判定は第14章のほうで訂正した。</p>
+            <p>
+              <b>Mortalが支持したもの。</b>第14章の3副露テンパイを、Mortalは<a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=East+1-1&amp;t=9" target="_blank" rel="noopener" data-you="3s">9巡目</a>に毎回保った。また<a href="replay.html?g=260928-90620418-4aff-43d9-8a70-412f6bbf34ad&amp;r=South+2-0" target="_blank" rel="noopener">18:06の半荘の南2局</a>では、まだ誰もリーチしていない<a href="replay.html?g=260928-90620418-4aff-43d9-8a70-412f6bbf34ad&amp;r=South+2-0&amp;t=9" target="_blank" rel="noopener" data-you="7p">9巡目</a>に、2枚目の[[W]]を97%で切った。リーチが入った後も、<a href="replay.html?g=260928-90620418-4aff-43d9-8a70-412f6bbf34ad&amp;r=South+2-0&amp;t=10" target="_blank" rel="noopener" data-you="W">10巡目</a>にもう一度[[W]]を押している（93%）。第14章が誤りとした10巡目の打牌は正しかったことになり、その例も訂正した。</p>
+            <div class="rule">
+              <strong>ルール</strong> <mark class="guide-changed">副露手のシャンテン数が変わらないポンは見送る。テンパイ牌が大きく増えるなら別だが、それでも際どく、ドラをすでに2枚持っていれば、LuckyJはたいてい対子と手牌を守備のために残す。</mark>端牌の対子がドラのある手のタンヤオを妨げているなら、早めにタンヤオへ向けて切り、テンパイに役を付ける。南場でリードしているなら、役なしで狭い待ちのテンパイは親リーチに対してオリる。ダマの相手に押すときは、手にいちばん要らない牌を押す。</div>
+            <div class="exception">
+              <strong>例外</strong> ドラをポンするなら、手が進まなくても価値がある場合がある。LuckyJは15回中9回ポンした。大きくリードしていないなら、役なしの狭いテンパイでのリーチは際どい判断のままで、LuckyJは121回中49回リーチした。</div>
+            <p class="evidence-note">
+              <b>根拠</b> LuckyJ戦術書がローカルで動かしている方策モデル、Mortalが、9月27日と28日の7半荘を判断ごとに再生した。68局、打牌762回、鳴ける場面201回である。LuckyJの特上1,079半荘では、LuckyJの打牌127,059回と、同卓した人間の打牌382,042回を評価した。ポン：誰もリーチしていない場面で数牌をポンでき、すでに鳴いている手のシャンテン数をそのポンが下げない機会。LuckyJが378回、1月以降のあなたが36回<mark class="guide-changed">。LuckyJの分のうち74回は1シャンテンで、ポンによってテンパイになる牌が10枚以上増える場面だった</mark>。リーチ：リーチ1軒に対し、役なしで残り4枚以下の、LuckyJの最初のテンパイ141回。そのうち121回は8,000点のリードがない場面である。</p>
+            <div data-guide-examples="mortal-review"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#fold-later"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>16</i>安全牌は必要になるまで取っておく</span></a></nav>
+        </section>
+
+        <section class="point" id="fold-later">
+          <div class="point-number">16</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第16章 &#183; 全対局のMortal検討 &#183; 9月28日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>安全牌は必要になるまで取っておく</h3>
+            <p>もっと多くの対局をMortalで見て、LuckyJならしないミスだけを残してほしい、という依頼だった。そこでMortalが<a href="replay.html" target="_blank" rel="noopener">1月以降のあなたの115半荘</a>の打牌をすべて評価し、LuckyJの打牌も同じ方法ですべて評価した。Mortalがあなたの対局で異を唱える打牌の大半は、LuckyJの対局でも同じように異を唱えている。Mortalの第一候補と一致するのはあなたもLuckyJも10回に7回ほどで、残りは二人に共通する打ち方の好みである。牌効率、字牌を切る順番、鳴き、リーチへの押しは、どれもLuckyJと差がない。差が出る習慣が一つだけある。</p>
+            <p>不一致を卓の状況で分けると、傾向が見えてくる。誰も脅威になっていないとき、または相手の1人が1副露のときは、Mortalがあなたに異を唱える頻度はLuckyJに対するのとまったく同じである。リーチが入っているとき、または2副露以上の相手がいるときは、あなたへの異論のほうが多く、その中身はほぼいつも同じである。手に安全牌があり、Mortalは手を進めたかったが、あなたはオリた。LuckyJがオリる場面であなたが押すことはない。LuckyJなら押す場面であなたはオリており、その頻度はLuckyJ自身の約2倍である。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>卓の状況</th><th>Mortalが低く評価したあなたの打牌の割合</th><th>LuckyJの割合</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>脅威なし</td><td>1/9</td><td>1/9</td></tr>
+                  <tr><td>1副露の相手が1人</td><td>1/8</td><td>1/8</td></tr>
+                  <tr><td>リーチあり</td><td class="gap">1/8</td><td>1/9</td></tr>
+                  <tr><td>2副露以上の相手あり</td><td class="gap">1/5</td><td>1/8</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <b>2副露、一段目。</b>第14章では、2副露と3副露に対して守備に回る線を、副露者の二段目の1枚目に引いた。あなたはそれより前に守りに入っている。2副露の相手がまだ最初の6打以内にいる間、安全牌のために受け入れ枚数やシャンテン数を犠牲にする頻度はLuckyJの約2倍で、安全牌と生牌のどちらを切っても同じ手が残るとき、あなたは安全牌を切り、LuckyJは残す。相手の7打目以降は、あなたとLuckyJの打ち方は変わらない。これは新しい傾向である。第13章と第14章で副露者への守備がLuckyJ寄りになった9月24日以降の数週間で、一段目でのオリは倍になった。2副露に対しては、その修正が行き過ぎた。副露者が一段目にいる間は生牌を切るコストが最も小さく、いま残した現物は、相手がアガリに近づいたときにも現物のままである。</p>
+            <p>
+              <b>リーチ、ドラ2枚、1シャンテン。</b>第4章の例外は変わらない。13巡目以降は、1シャンテンはリーチに対してたいていオリる。それより前なら、ドラを2枚以上持つ手は残す価値がある。13巡目より前に、唯一の安全牌を切ると1シャンテンが崩れる場面では、LuckyJは3回に2回ほど手を残す。多くは生牌を切り、ときには筋や2枚見えの字牌を切る。あなたが手を残すのは半分未満である。ドラが少なければ二人のオリ方は同じで、差はドラのある手、つまりリスクを取る価値のある手にある。</p>
+            <p>小さな習慣をもう一つだけ書いておく。Mortalなら迷わずリーチするテンパイのうち、8回に1回ほどをダマにしており、これはLuckyJの2倍の割合である。115半荘で21回なので、一つの章にはせず、ここに書き留めるだけにする。</p>
+            <div class="rule">
+              <strong>ルール</strong> 2副露の相手でも、その河の最初の6枚の間はまだあなたの時間である。効率が同じ場面では現物を残し、相手が7打目を切るまでは、安全牌のために受け入れ枚数もシャンテン数も犠牲にしない。13巡目より前のリーチに対しては、シャンテン数を落とさないと安全牌が切れないとき、ドラ2枚以上の1シャンテンは残す。</div>
+            <div class="exception">
+              <strong>例外</strong> 第13章で見たとおり、ドラのポンがあれば副露者に対する線は序盤の巡目まで早まる。13巡目以降のリーチに対しては第4章のルールのとおりで、1シャンテンはたいていオリる。</div>
+            <p class="evidence-note">
+              <b>根拠</b> LuckyJ戦術書がローカルで動かしている方策モデル、Mortalが、1月以降の115半荘のあなたの打牌13,101回と、特上1,079半荘のLuckyJの打牌124,887回を評価した（リーチ宣言は除く）。Mortalの第一候補との一致は、あなたが71.8%、LuckyJが72.6%。表は、Mortalが10%未満とした打牌を数えている。行の順に、あなたは100打あたり11.5、11.9、12.5、19.2、LuckyJは11.4、12.7、10.7、12.4。Mortalならオリる場面でのリーチへの押し：リーチを受けたあなたの打牌100回あたり3.6回、LuckyJは4.1回。Mortalが1枚に60%以上を付け、手にそれより安全な牌があった場面で、Mortalが10%未満としたより安全な牌を選んだ割合は、リーチに対して18.4%（LuckyJ 9.3%）、2副露以上に対して15.2%（8.6%）、1副露に対して7.8%（8.0%）。2副露の相手の一段目、行動だけで数えた場合：受け入れかシャンテン数を失う安全牌を選んだのは27.6%（170回中47回）でLuckyJは14.6%、9月24日より前は21.8%、以降は43.5%。効率が同じ場面で安全牌を切ったのは60.9%（64回中39回）でLuckyJは36.7%。7打目以降は27.8%対25.6%、70.0%対63.5%。13巡目より前のリーチ、1シャンテン、ドラ2枚以上で、最も安全な牌を切るとシャンテン数が落ちる場面：LuckyJは451回の63%で手を残し（生牌で48%、筋か2枚見えの字牌で15%）、あなたは69回の45%。ドラ0枚か1枚では49%と42%。誰もリーチしていない場面でMortalが90%以上でリーチを選んだテンパイでのダマ：あなたは該当する176回中21回、LuckyJは1,482回中86回。下の各例は、その局を牌譜で開く。</p>
+            <div data-guide-examples="fold-later"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#early-safe-tiles"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>17</i>安全牌の残し方は正しい。早いリーチに気をつける</span></a></nav>
+        </section>
+
+        <section class="point" id="early-safe-tiles">
+          <div class="point-number">17</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第17章 &#183; 最近の対局 &#183; 9月29日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>安全牌の残し方は正しい。早いリーチに気をつける</h3>
+            <p>アガリが増えて失点が減った手応えがあり、その一方で、局の序盤に安全牌を残せていないのではないかと気にしていた。前者は9月24日以降の29半荘で裏付けられる。後者は対局には表れていない。安全牌の残し方はAIと同じで、気になっていた序盤の放銃は、まだ誰の手にも安全牌がほとんどないうちにかかったリーチによるものだった。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>あなたの対局</th><th>9月24日より前の94半荘</th><th>それ以降の29半荘</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>4位率</td><td>22%</td><td>7%</td><td>17%</td></tr>
+                  <tr><td>平均着順</td><td>2.46</td><td>2.17</td><td>2.26</td></tr>
+                  <tr><td>1半荘あたりの段位ポイント</td><td>&minus;10</td><td>+39</td><td></td></tr>
+                  <tr><td>和了率</td><td>21.8%</td><td>24.0%</td><td>22.9%</td></tr>
+                  <tr><td>平均打点</td><td>6,150</td><td class="gap">6,093</td><td>7,317</td></tr>
+                  <tr><td>放銃率</td><td>11.7%</td><td>9.7%</td><td>10.3%</td></tr>
+                  <tr><td>1局あたりの放銃による失点</td><td>546</td><td>444</td><td>546</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              9月28日の夜に打った直近の8半荘は、3位、1位、2位、2位、2位、1位、2位、1位で、段位ポイントは+683。80局で10回放銃し、普段より多いが、そのうち7回はMortalでも同じ牌を切る場面で、2回は自分のリーチ後だった。ミスは1回で、下の最初の例である。その夜のアガリは平均7,967点。29半荘を通すと、アガリの平均はまだLuckyJより約1,200点低い。第6章と第7章で扱った差である。</p>
+            <p>
+              <b>浮き牌。</b>本編の戦術書の<a href="ja.html#safe-tile-timing">安全牌の時期の節</a>は、一つの選択を数えている。同じ種類の浮き牌が2枚あり、1枚はすでに相手の河にあるとき、どちらを先に切るか。123半荘を同じ方法で測ると、誰も攻めていない場面で、無筋の端牌を切って河に出ている方を残すのが71%で、同じ打牌数のLuckyJも71%。中張牌では無筋の方を切るのが39%で、LuckyJの48%とは誤差の範囲内である。リーチが来たときに持っている安全牌もLuckyJと変わらない。局の同じ時点で現物は平均1.84枚（LuckyJは1.90枚）、1枚もないのは17.8%（LuckyJは18.1%）。</p>
+            <p>
+              <b>字牌。</b>ここではあなたとLuckyJの打ち方が分かれ、Mortalはあなたの側につく。客風が2枚のとき、LuckyJは1打目と2打目では河に出ている方を切り、3打目からはそちらを残す。あなたはどの時点でも、生きた方を切るのが半分弱である。生きた役牌（三元牌、自風、場風）と河に出ている客風が並んでいるとき、LuckyJは役牌を3打ほど残し、その後は役牌を先に切る。あなたはそれより1打ほど長く残す。同じ手番のMortalは、あなたと同じ打ち方をする。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>生きた役牌を先に切った割合（あなたの打牌数別）</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>LuckyJ</td><td>2%</td><td>11%</td><td>35%</td><td>60%</td><td>71%</td><td>72%</td></tr>
+                  <tr><td>あなた</td><td>0%</td><td>3%</td><td class="gap">14%</td><td class="gap">35%</td><td>54%</td><td>66%</td></tr>
+                  <tr><td>Mortal（あなたの手番で）</td><td>5%</td><td>10%</td><td>15%</td><td>20%</td><td>32%</td><td>36%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>この203回の手番全体で、役牌を切ったのはあなたが14%、Mortalが13%、同じ場面のLuckyJが25%。客風2枚では、Mortalが生きた方を切った頻度はあなたとほぼ同じだった。強いAI同士で意見が分かれるのだから、字牌の順番は失点につながる癖ではなく、選べるスタイルである。</p>
+            <p>
+              <b>早いリーチ。</b>リーチ者の4打目までにかかったリーチでは、現物が1枚もない場面が43%あり、LuckyJも同じである。そこで問題になるのは、どの生牌を切るかである。LuckyJが自分の6打目までに受けたリーチに対して、他に1枚も見えていない生きた字牌を切ると100回あたり3.8回放銃し、1枚見えている字牌なら1.1回だった。<a href="replay.html?g=260929-8e871836-9167-4ae8-863f-02e3f70620f5&amp;r=East+1-0&amp;t=4" target="_blank" rel="noopener" data-you="E">9月28日21:54の半荘、東1局</a>では、上家が3打目でリーチし、あなたは3シャンテンから、1枚も出ていない場風の東を切った。上家は東を対子で持ち、それが待ちになっていた。Mortalは上家の1打目の筋になる7sを67%で切り、東は1%だった。<a href="replay.html?g=260929-68b62fbc-a679-4763-986c-cc4fbcccd6bc&amp;r=East+2-0&amp;t=4" target="_blank"
+              rel="noopener" data-you="S">18:16の半荘、東2局</a>では、対面の対子に当たった南は、Mortal自身の第一候補だった。</p>
+            <div class="rule">
+              <strong>ルール</strong> 浮き牌の残し方は今のままでよい。無筋の端牌や中張牌を先に切り、河に出ている方を残す。現物ができる前にリーチが来て、切れる牌にほかの差がほとんどないときは、1枚も見えていない字牌より先に、リーチ者の捨て牌の筋か、1枚見えている字牌を切る。</div>
+            <div class="exception">
+              <strong>例外</strong> 字牌の順番はスタイルの問題である。<mark id="fix-17-honors"
+              class="guide-changed">LuckyJの順番に合わせるなら、1打目と2打目では河に出ている客風を切る。3打目では、生きた客風があればそれを切り、なければ河に出ている客風をまだ切って、役牌はもう1巡残す。4打目からは、生きた字牌を2枚とも河に出ている客風より先に切り、河に出ている客風の方を残す。</mark>Mortalは、あなたと同じく役牌を長く残す。</div>
+            <p class="evidence-note">
+              <b>根拠</b> 1月以降のあなたの123半荘と、LuckyJの1,255半荘。浮き牌の選択は、本編の節と同じく、子の局で、自分のリーチ前、リーチ者も2副露の相手もいない場面で測った。同じコードをLuckyJの対局に走らせると、その節の数字がそのまま再現される。各打牌数でのLuckyJの割合は、その節と同じ方法で当てはめたロジスティック曲線で、あなたの割合はそれと1打ずつ比べている。端牌：80回の選択のうち57回で無筋の方を切った（同じ打牌数のLuckyJは71.3%）。中張牌：71回中28回（48.2%）。客風2枚：1打目と2打目で32回中14回（23.2%）、3打目以降で13回中6回（67.9%）。生きた役牌と河に出ている客風：203回中29回（25.3%、標準誤差の約4.5倍の差）。<mark id="fix-17-honor-evidence"
+              class="guide-changed">誰も攻めていない場面で、持っていた浮きの字牌の組み合わせ別に見たLuckyJの順番：3打目で生きた客風が先に出たのは、河に出ている客風との組で59%（22回）、生きた役牌との組で79%（327回）、3枚すべてがあるとき55%（33回）。生きた役牌との組で河に出ている客風が先に出たのは、3打目で63%（285回）、4打目で40%（225回）。</mark>
+              Mortalの割合は、このサイトのリプレイで、2枚のうち生きた方に置いた重みである。客風は46%と39%、役牌は13%。自分がテンパイしていない間にかかったリーチ：あなたは490回、LuckyJは同じリーチ者の打牌数で6,668回。リーチ者の4打目までのリーチで現物なしは42.9%（LuckyJは42.6%）。LuckyJ自身の6打目までに受けた1人のリーチに対する打牌：1枚も見えていない生きた字牌が105回、1枚見えている字牌が180回。冒頭の表は、あなたの995局と300局、特上卓1,079半荘でのLuckyJの11,272局を数えている。</p>
+            <div data-guide-examples="early-safe-tiles"></div>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#caller-grid"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>18</i>どの副露者も1枚の表で読む</span></a></nav>
+        </section>
+
+        <section class="point" id="caller-grid">
+          <div class="point-number">18</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第18章 &#183; 副露者を読む &#183; 9月29日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>どの副露者も1枚の表で読む</h3>
+            <p>全体像が知りたい、という質問だった。副露者がテンパイしている確率が、捨て牌の数と見せているものによってどう動くか。下の表がその全体像である。LuckyJの対局から88,588の場面を読んでいて、誰もリーチしていない間、副露者が打牌するたびに1回ずつ数えた。各マスは、そうした副露者のうち、あなたの次の打牌でアガれる状態にあった割合である。アガれる状態とは、少なくとも1つの待ちで役のあるテンパイを指す。</p>
+            <!-- caller-surface -->
+            <figure class="caller-surface">
+              <div class="guide-data-scroll">
+                <table class="cs-grid"><thead><tr><th class="cs-corner" rowspan="2" scope="col">副露数と直近の捨て牌</th><th class="cs-group" colspan="6" scope="colgroup">一段目</th><th class="cs-group" colspan="6" scope="colgroup">二段目</th><th class="cs-group" colspan="6" scope="colgroup">三段目</th></tr><tr><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th><th scope="col" class="cs-row-start">7</th><th scope="col">8</th><th scope="col">9</th><th scope="col">10</th><th scope="col">11</th><th scope="col">12</th><th scope="col" class="cs-row-start">13</th><th scope="col">14</th><th scope="col">15</th><th scope="col">16</th><th scope="col">17</th><th scope="col">18</th></tr></thead><tbody><tr class="cs-calls"><th scope="rowgroup">1副露</th><td colspan="8"></td><td class="cs-fold cs-fold-label" colspan="10">ここからLuckyJはオリる</td></tr><tr><th scope="row">最後は手出し</th><td style="background:#f4efe5;color:var(--ink)">1</td><td style="background:#f4eee4;color:var(--ink)">1</td><td style="background:#f4ede1;color:var(--ink)">2</td><td style="background:#f4eade;color:var(--ink)">4</td><td style="background:#f4e6d8;color:var(--ink)">7</td><td style="background:#f4e0d0;color:var(--ink)">11</td><td class="cs-row-start" style="background:#f4d8c7;color:var(--ink)">16</td><td style="background:#f4d1bc;color:var(--ink)">21</td><td class="cs-fold" style="background:#f5c9b3;color:var(--ink)">26</td><td style="background:#f5c4ac;color:var(--ink)">30</td><td style="background:#f5c0a6;color:var(--ink)">32</td><td style="background:#f5bda3;color:var(--ink)">34</td><td class="cs-row-start" style="background:#f5bca2;color:var(--ink)">35</td><td style="background:#f5bda2;color:var(--ink)">34</td><td style="background:#f5bea4;color:var(--ink)">33</td><td style="background:#f5c0a7;color:var(--ink)">32</td><td style="background:#f5c3ab;color:var(--ink)">30</td><td style="background:#f5c6af;color:var(--ink)">28</td></tr><tr><th scope="row">最後の1枚がツモ切り</th><td class="cs-empty"></td><td style="background:#f4eee3;color:var(--ink)">1</td><td style="background:#f4ece1;color:var(--ink)">3</td><td style="background:#f4e9dd;color:var(--ink)">5</td><td style="background:#f4e4d7;color:var(--ink)">8</td><td style="background:#f4dece;color:var(--ink)">12</td><td class="cs-row-start" style="background:#f4d5c3;color:var(--ink)">18</td><td style="background:#f4ccb7;color:var(--ink)">24</td><td class="cs-fold" style="background:#f5c4ab;color:var(--ink)">30</td><td style="background:#f5bca1;color:var(--ink)">35</td><td style="background:#f5b599;color:var(--ink)">39</td><td style="background:#f5b092;color:var(--ink)">42</td><td class="cs-row-start" style="background:#f5ad8d;color:var(--ink)">45</td><td style="background:#f5ab8a;color:var(--ink)">46</td><td style="background:#f5a989;color:var(--ink)">47</td><td style="background:#f5a988;color:var(--ink)">47</td><td style="background:#f5a988;color:var(--ink)">47</td><td style="background:#f5aa89;color:var(--ink)">47</td></tr><tr><th scope="row">ツモ切りが2回続く</th><td class="cs-empty"></td><td class="cs-empty"></td><td style="background:#f4ede2;color:var(--ink)">2</td><td style="background:#f4eade;color:var(--ink)">4</td><td style="background:#f4e5d8;color:var(--ink)">7</td><td style="background:#f4decf;color:var(--ink)">12</td><td class="cs-row-start" style="background:#f4d5c2;color:var(--ink)">18</td><td style="background:#f5cab4;color:var(--ink)">25</td><td class="cs-fold" style="background:#f5c0a6;color:var(--ink)">32</td><td style="background:#f5b69a;color:var(--ink)">38</td><td style="background:#f5af90;color:var(--ink)">44</td><td style="background:#f5a888;color:var(--ink)">48</td><td class="cs-row-start" style="background:#f2a280;color:var(--ink)">51</td><td style="background:#ec9a79;color:var(--ink)">55</td><td style="background:#e59272;color:var(--ink)">58</td><td style="background:#df8b6b;color:var(--ink)">61</td><td style="background:#d98465;color:var(--ink)">64</td><td style="background:#d47d5f;color:var(--ink)">66</td></tr><tr><th scope="row">ツモ切りが3回以上続く</th><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td style="background:#f4e5d7;color:var(--ink)">8</td><td style="background:#f4dfcf;color:var(--ink)">11</td><td class="cs-row-start" style="background:#f4d7c4;color:var(--ink)">17</td><td style="background:#f4ccb7;color:var(--ink)">24</td><td class="cs-fold" style="background:#f5c0a6;color:var(--ink)">32</td><td style="background:#f5b395;color:var(--ink)">41</td><td style="background:#f5a786;color:var(--ink)">49</td><td style="background:#ea9777;color:var(--ink)">55</td><td class="cs-row-start" style="background:#de8a6b;color:var(--ink)">61</td><td style="background:#d68062;color:var(--ink)">65</td><td style="background:#cf775a;color:var(--ink)">69</td><td style="background:#c97154;color:var(--ink)">71</td><td style="background:#c56b4f;color:var(--ink)">74</td><td style="background:#c0664b;color:var(--ink)">76</td></tr><tr class="cs-calls"><th scope="rowgroup">2副露</th><td colspan="6"></td><td class="cs-fold cs-fold-label" colspan="12">ここからLuckyJはオリる</td></tr><tr><th scope="row">最後は手出し</th><td class="cs-empty"></td><td style="background:#f4e7da;color:var(--ink)">6</td><td style="background:#f4e2d4;color:var(--ink)">9</td><td style="background:#f4dac9;color:var(--ink)">14</td><td style="background:#f4d0bc;color:var(--ink)">21</td><td style="background:#f5c5ad;color:var(--ink)">29</td><td class="cs-row-start cs-fold" style="background:#f5ba9e;color:var(--ink)">36</td><td style="background:#f5b092;color:var(--ink)">42</td><td style="background:#f5a988;color:var(--ink)">47</td><td style="background:#f4a482;color:var(--ink)">51</td><td style="background:#f09f7e;color:var(--ink)">52</td><td style="background:#ef9e7d;color:var(--ink)">53</td><td class="cs-row-start" style="background:#f09f7d;color:var(--ink)">53</td><td style="background:#f2a280;color:var(--ink)">51</td><td style="background:#f5a684;color:var(--ink)">50</td><td style="background:#f5a988;color:var(--ink)">47</td><td style="background:#f5ad8e;color:var(--ink)">45</td><td style="background:#f5b193;color:var(--ink)">42</td></tr><tr><th scope="row">最後の1枚がツモ切り</th><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td style="background:#f4d9c8;color:var(--ink)">15</td><td style="background:#f4d0bc;color:var(--ink)">21</td><td style="background:#f5c5ad;color:var(--ink)">29</td><td class="cs-row-start cs-fold" style="background:#f5b99d;color:var(--ink)">37</td><td style="background:#f5ae8e;color:var(--ink)">44</td><td style="background:#f3a381;color:var(--ink)">51</td><td style="background:#ea9877;color:var(--ink)">55</td><td style="background:#e49071;color:var(--ink)">58</td><td style="background:#e08c6d;color:var(--ink)">60</td><td class="cs-row-start" style="background:#df8a6b;color:var(--ink)">61</td><td style="background:#df8a6b;color:var(--ink)">61</td><td style="background:#e08c6c;color:var(--ink)">60</td><td style="background:#e28e6e;color:var(--ink)">59</td><td style="background:#e49171;color:var(--ink)">58</td><td style="background:#e79574;color:var(--ink)">57</td></tr><tr><th scope="row">ツモ切りが2回続く</th><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td style="background:#f4d2be;color:var(--ink)">20</td><td style="background:#f5c8b1;color:var(--ink)">27</td><td class="cs-row-start cs-fold" style="background:#f5bca1;color:var(--ink)">35</td><td style="background:#f5b091;color:var(--ink)">43</td><td style="background:#f4a381;color:var(--ink)">51</td><td style="background:#e69373;color:var(--ink)">57</td><td style="background:#db8667;color:var(--ink)">63</td><td style="background:#d47e60;color:var(--ink)">66</td><td class="cs-row-start" style="background:#d0785b;color:var(--ink)">68</td><td style="background:#ce7659;color:var(--ink)">69</td><td style="background:#cd7659;color:var(--ink)">69</td><td style="background:#ce775a;color:var(--ink)">69</td><td style="background:#d0795c;color:var(--ink)">68</td><td style="background:#d27c5e;color:var(--ink)">67</td></tr><tr><th scope="row">ツモ切りが3回以上続く</th><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td style="background:#f5c6af;color:var(--ink)">28</td><td class="cs-row-start cs-fold" style="background:#f5bca1;color:var(--ink)">35</td><td style="background:#f5b092;color:var(--ink)">42</td><td style="background:#f5a583;color:var(--ink)">50</td><td style="background:#e69373;color:var(--ink)">57</td><td style="background:#d98465;color:var(--ink)">63</td><td style="background:#cf775a;color:var(--ink)">69</td><td class="cs-row-start" style="background:#c66d51;color:var(--ink)">73</td><td style="background:#c0664a;color:var(--ink)">76</td><td style="background:#bb6045;color:#fff">78</td><td style="background:#b75b41;color:#fff">80</td><td style="background:#b4573d;color:#fff">82</td><td style="background:#b1533a;color:#fff">83</td></tr><tr class="cs-calls"><th scope="rowgroup">3〜4副露</th><td colspan="6"></td><td class="cs-fold cs-fold-label" colspan="12">ここからLuckyJはオリる</td></tr><tr><th scope="row">最後は手出し</th><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td style="background:#e69373;color:var(--ink)">57</td><td style="background:#d57e60;color:var(--ink)">66</td><td class="cs-row-start cs-fold" style="background:#c66d51;color:var(--ink)">73</td><td style="background:#bb5f45;color:#fff">78</td><td style="background:#b4573d;color:#fff">82</td><td style="background:#b05239;color:#fff">84</td><td style="background:#af5238;color:#fff">84</td><td style="background:#b1543b;color:#fff">83</td><td class="cs-row-start" style="background:#b6593f;color:#fff">81</td><td style="background:#bc6146;color:#fff">78</td><td style="background:#c46b4f;color:var(--ink)">74</td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td></tr><tr><th scope="row">最後の1枚がツモ切り</th><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td style="background:#dd8869;color:var(--ink)">62</td><td class="cs-row-start cs-fold" style="background:#ca7255;color:var(--ink)">71</td><td style="background:#bc6146;color:#fff">78</td><td style="background:#b2553b;color:#fff">83</td><td style="background:#ac4e35;color:#fff">85</td><td style="background:#aa4c33;color:#fff">86</td><td style="background:#ab4c34;color:#fff">86</td><td class="cs-row-start" style="background:#ad4f36;color:#fff">85</td><td style="background:#b05239;color:#fff">84</td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td></tr><tr><th scope="row">ツモ切りが2回続く</th><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-row-start cs-fold cs-empty"></td><td style="background:#b85c42;color:#fff">80</td><td style="background:#b3563d;color:#fff">82</td><td style="background:#af5138;color:#fff">84</td><td style="background:#ab4c34;color:#fff">86</td><td style="background:#a74830;color:#fff">88</td><td class="cs-row-start" style="background:#a4442c;color:#fff">89</td><td style="background:#a14129;color:#fff">91</td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td></tr><tr><th scope="row">ツモ切りが3回以上続く</th><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-empty"></td><td class="cs-row-start cs-fold cs-empty"></td><td class="cs-empty"></td><td style="background:#b65a40;color:#fff">80</td><td style="background:#b1543b;color:#fff">83</td><td style="background:#ad4f36;color:#fff">85</td><td style="background:#a94a32;color:#fff">87</td><td class="cs-row-start" style="background:#a6462e;color:#fff">89</td><td style="background:#a2422b;color:#fff">90</td><td style="background:#a03f28;color:#fff">91</td><td style="background:#9d3c25;color:#fff">93</td><td style="background:#9b3a23;color:#fff">94</td><td style="background:#993821;color:#fff">94</td></tr></tbody></table>
+              </div>
+              <figcaption><span class="cs-legend"><span style="background:#f4f0e6;color:var(--ink)">0%</span><span style="background:#f4e1d2;color:var(--ink)">10%</span><span style="background:#f4cab4;color:var(--ink)">25%</span><span style="background:#f5a583;color:var(--ink)">50%</span><span style="background:#c2684c;color:var(--ink)">75%</span><span style="background:#a3432b;color:#fff">90%</span></span> あなたの打牌でアガれる副露者（役ありのテンパイ）の割合を、上に並べた副露者の打牌数ごとに、LuckyJの対局で測った。空欄は観測が40回未満。<span class="cs-fold-key">緑の線</span>はLuckyJのオリライン。2シャンテン以上でシャンテン数を落とさない安全牌を持つとき、生牌を切った割合が半分を下回ったのは、1副露に対して9打目から、2副露以上に対して7打目からである（<a href="#fold-line">第19章</a>）。</figcaption>
+            </figure>
+            <!-- /caller-surface -->
+            <p>横には副露者の捨て牌を、河に並ぶ6枚ずつの段で読む。縦には見せているものを読む。鳴きが1つ増えるごとに行全体が上がり、最後の鳴きの後のツモ切りが1枚増えるごとにも上がる。第14章の段と第8章のサインは、この表を切り分けて見たものである。</p>
+            <p>
+              <b>目安。</b>1副露の副露者は、一段目の間は何を切っていてもアガれる割合が12%以下。二段目の終わりには、1副露の手は最後が手出しで34%、ツモ切りが3回以上続いた後なら55%アガれる。2副露は、最後が手出しでも10打目までに50%に達し、ツモ切りが2回以上続いた後なら9打目までに達する。3副露は、表で読める最初の打牌ですでに57%アガれ、9打目からはおよそ80%以上である。</p>
+            <p>この表はあなたの卓にも当てはまる。あなたの123半荘で、他の3人がアガれる状態だったのは6,472回の観測のうち32.2%で、対応するマスの予測は31.6%だった。玉の間で目にするものは、LuckyJが特上卓で目にするものと同じである。</p>
+            <div class="rule">
+              <strong>ルール</strong> 副露者に生牌を切る前に、その副露者のマスを探す。鳴きの数を数え、捨て牌を6枚ずつの段で数え、直近の捨て牌で何回ツモ切りが続いているかを数える。第13章、第14章、第16章のオリラインは、この同じ表の上に引かれている。</div>
+            <div class="exception">
+              <strong>例外</strong> 局の終盤の、最後が手出しの1副露。この副露者の多くは役なしのテンパイで、形式テンパイで流局を狙っているので、アガれる割合はテンパイの割合より低い。テンパイだけを数えると、この行は18打目までに46%まで上がり続けるが、アガれる割合は28%まで下がる。</div>
+            <p class="evidence-note">
+              <b>根拠</b> LuckyJの1,255半荘の副露者（LuckyJ自身も同卓者も含む）を、誰もリーチしていない間、自分の打牌のたびに1回ずつ、実際の手牌で読んだ。テンパイか、役のあるテンパイか。表の各行は打牌数に対するロジスティック曲線で、本編の戦術書の安全牌の時期の節と同じ方法で、観測が40回以上ある打牌数だけに当てはめた。空白のマスは観測がそれより少ない。行ごとの観測数は、1副露：最後は手出しが34,774、ツモ切りの連続が1回、2回、3回以上でそれぞれ13,841、6,258、6,031。2副露：10,538、5,527、3,112、4,194。3〜4副露：1,512、950、618、1,233。1副露の一段目は1打目から6打目で6.5%で、第14章と一致する。あなたの卓では、対戦相手の6,472回の観測で表のマスの平均が31.6%、実際にアガれる状態だったのは32.2%。</p>
+          </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#fold-line"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>19</i>表の上でLuckyJがオリる位置と、ツモ切りの連続の数え方</span></a></nav>
+        </section>
+
+        <section class="point" id="fold-line">
+          <div class="point-number">19</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第19章 &#183; 副露者を読む &#183; 9月29日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>表の上でLuckyJがオリる位置と、ツモ切りの連続の数え方</h3>
+            <p>第18章の表について、3つの質問があった。LuckyJはどこで押すのをやめるか。副露者が手出しとツモ切りを混ぜるのは何を意味するか。副露者がツモ切りした客風や端牌も、ツモ切りの連続に数えるのか。<a href="#caller-grid">表</a>には、そのラインを書き加えた。残りの2つの答えでは数え方はそのままで、追加は1つだけ。鳴きそのものを1枚のツモ切りとして数える。</p>
+            <p>
+              <b>ライン。</b>本編の戦術書のオリラインと同じ場面で引いた。LuckyJが2シャンテン以上、副露者が1人、リーチ者なし、手にシャンテン数を保てる安全牌がある場面である。1副露の副露者の6打目までは、LuckyJはそれでも生牌を切る方を72〜80%で選んだ。その後は下がり、8打目で57%、9打目で48%、10打目で40%。2副露以上に対しては、6打目で56%、7打目で47%、8打目で40%だった。緑の線は、この割合が初めて半分を下回る位置にあり、1副露なら9打目の前、2副露以上なら7打目の前である。第13章と第14章は捨て牌を3枚ずつまとめて読み、1副露のラインを10打目からとしていた。1枚ずつ見ると、9打目ですでに五分五分である。</p>
+            <p>このラインは、ツモ切りの連続では動かない。同じ打牌数なら、LuckyJが生牌を切った頻度は、ツモ切りが3回以上続いている副露者に対しても、最後が手出しの副露者に対しても変わらなかった。ツモ切りの連続が効いてくるのは、自分の手がテンパイしてからである。1副露に対してLuckyJがテンパイで、安全牌を切ってもテンパイが保てるとき、それでも生牌を切った割合は、副露者の最後が手出しなら17%、ツモ切りが2回以上続いた後なら5〜7%だった。</p>
+            <p>
+              <b>手出しとツモ切りが交互。</b>手出し、ツモ切り、手出しと交互に切る副露者には、それ自体のサインはない。直近4枚の捨て牌が交互だった副露者は、ツモ切りの後で35%がアガれる状態で、対応するマスは36%。手出しの後では29%で、マスは31%だった。表と同じく、最後の捨て牌で読めばよい。</p>
+            <p>副露者を表の値からずらすのは、最後の手出しの1枚前の牌である。副露数ごとの各ブロックの1行目には、状況のかなり違う副露者が入っている。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>最後の手出しの前</th><th>アガれる状態</th><th>1行目の値</th><th>2行目の値</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>なし（その手出しは鳴きと同時に切った牌）</td><td>33%</td><td>29%</td><td>33%</td></tr>
+                  <tr><td>ツモ切りが3回以上</td><td>41%</td><td>37%</td><td>44%</td></tr>
+                  <tr><td>ツモ切りがちょうど2回</td><td>31%</td><td>31%</td><td>36%</td></tr>
+                  <tr><td>ツモ切りがちょうど1回</td><td>25%</td><td>27%</td><td>32%</td></tr>
+                  <tr><td>別の手出し、または鳴きと同時に切った牌</td><td>20%</td><td>25%</td><td>29%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>鳴いた直後の副露者は、最後の牌がツモ切りだったかのように2行目で読め、その後ツモ切りが1枚増えるごとに1行ずつ下へ移る。3回以上のツモ切りを手出しで止めても、上へ戻るのは途中までで、1行目と2行目の間で読める。手出しの後にまた手出しをした副露者は、1行目より5ポイントほど低い。</p>
+            <p>
+              <b>字牌と端牌のツモ切り。</b>数えるし、数えるべきである。表は副露者がツモ切りした牌をすべて数えていて、客風と端牌を飛ばした表は実際の手牌への当てはまりが悪くなる。ツモ切り1枚は、牌の種類に関係なく副露者をほぼ同じだけ動かし、2枚でも同じである。効き目が足りないのは、字牌と端牌だけでできた3回以上の連続だけである。これはツモ切り1枚と同じ程度にしか読めず、3回以上の連続のうち5%にあたる。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>ツモ切りした牌</th><th>アガれる状態</th><th>マスの値</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1枚、役牌</td><td>36%</td><td>34%</td></tr>
+                  <tr><td>1枚、客風</td><td>33%</td><td>31%</td></tr>
+                  <tr><td>1枚、端牌</td><td>30%</td><td>32%</td></tr>
+                  <tr><td>1枚、2か8</td><td>30%</td><td>32%</td></tr>
+                  <tr><td>1枚、3〜7</td><td>35%</td><td>34%</td></tr>
+                  <tr><td>2枚、どちらも字牌か端牌</td><td>40%</td><td>40%</td></tr>
+                  <tr><td>2枚、うち1枚以上が2〜8</td><td>43%</td><td>42%</td></tr>
+                  <tr><td>3枚以上、すべて字牌か端牌</td><td class="gap">40%</td><td>50%</td></tr>
+                  <tr><td>3枚以上、うち1枚以上が2〜8</td><td>60%</td><td>60%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="rule">
+              <strong>ルール</strong> 緑の線を越えたら（1副露なら9打目、2副露以上なら7打目）、2シャンテン以上の手ではツモ切りの連続に関係なく安全牌を先に切る。副露者のツモ切りは客風も端牌も含めてすべて数え、鳴いた直後は鳴きをその1枚として数える。最後が手出しなら、その1枚前を確かめる。ツモ切りが3回以上続いた後なら1行目と2行目の間、その前も手出しなら1行目より少し下で読む。</div>
+            <div class="exception">
+              <strong>例外</strong> 字牌と端牌だけでできた3回以上のツモ切りの連続は、ツモ切り1枚と同じに読む。また、鳴きをツモ切りとして数えるのは、手出しが出るまでである。鳴いた後の最初の打牌が手出しなら、鳴きと同時に切った牌も手出しとして数え、その副露者は1行目より少し下に来る。</div>
+            <p class="evidence-note">
+              <b>根拠</b> ライン：特上卓1,079半荘でのLuckyJ自身の打牌のうち、副露者が1人でリーチ者がおらず、2シャンテン以上で、シャンテン数を保てる安全牌が手にある場面。1副露に対して7,821回、2副露以上に対して2,812回。各割合は副露者の打牌数に対するロジスティック曲線で、場面が40回以上ある打牌数だけに当てはめた。この曲線にツモ切りの連続を加えると、生牌を切る対数オッズは1枚あたり、1副露に対して+0.03 &#177; 0.03、2副露以上に対して&#8722;0.06 &#177; 0.04動いた。1副露に対するテンパイからでは、939場面で&#8722;0.36 &#177; 0.11。パターンは表の88,588回の観測から取り、それぞれをその観測が属するマスの値と比べた。最初の表は、ブロックのすべての行が読めるマスだけを数えている。鳴いた直後が14,033回、続いて1,722、2,120、4,793、11,874回。ツモ切りの連続から客風と端牌を外した表は、同じ観測での対数尤度が25低い。あなたの卓では、対戦相手の6,472回の観測で、鳴いた直後にアガれる状態だったのは35%で1行目の値は29%、3回以上のツモ切りを手出しで止めた後は42%で、1行目の値は38%だった。</p>
+          </div>
+          <nav class="chapter-next" aria-label="本編の後"><a href="#method"><span class="chapter-next-label">本編の後 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title">このガイドの作り方</span></a></nav>
+        </section>
+        <section class="section sources" id="method">
+          <p class="kicker">方法</p>
+          <h2>このガイドの作り方。</h2>
+          <ul>
+            <li>あなたの対局：2026年1月1日以降の玉の間の南風戦（半荘戦）80半荘。雀魂のクライアントとamae-koromoから取得した。LuckyJ：天鳳の1,255半荘。キャッシュしたNAGAの解析レポートから再構築した。どちらも同じ牌譜再生コードと指標計算コードで処理している。</li>
+            <li>各表は、あなたの手番の開始時点を牌譜から再現したものである。相手の手牌は実際のとおりに表示し、上部のスイッチで隠せる。</li>
+            <li>受け入れ枚数は、あなたの席から見えていない有効牌をすべて数え、鳴かれた牌は1回だけ数える。リーチに対しては、宣言後に通った牌を現物として扱い、筋の根拠にもする。4、5、6を中筋とするには両側の筋が通っている必要があり、早い5は4または6の片側を補える（疑似中筋。本編の戦術書の外側読みのルールに従う）。字牌は、ほかに何枚見えているかで読む。役と打点は、本文にそう書いた箇所でだけ確認している。</li>
+            <li>生成データ：<code>site/honver-guide.json</code>は<code>scripts/build_personal_guide.py</code>と<code>data/personal_guide_spots.json</code>から作る。各章の数字は<code>scripts/mine_riichi_folds.py</code>、<code>mine_open_tenpai_push.py</code>、<code>mine_single_call.py</code>、<code>mine_vs_open.py</code>、<code>mine_win_value.py</code>、<code>mine_value_choice.py</code>から出している。第6章から第8章は<code>mine_dora_hands.py</code>、<code>mine_flush_calls.py</code>、<code>mine_caller_tells.py</code>、第9章は<code>mine_shape_plans.py</code>、第10章は<code>review_recent_games.py</code>と<code>mine_late_placement.py</code>、第11章は<code>mine_tenpai_push.py</code>、第12章は<code>mine_open_vs_open.py</code>と<code>mine_call_chances.py</code>（副露手のアガリと放銃は<code>mine_dora_hands.py</code>）、第17章は<code>mine_early_safe_tiles.py</code>と<code>contrast/hands_all.py</code>（Mortalの評価はサイトの牌譜再生から）、第18章は<code>mine_caller_surface.py</code>（図の描画は<code>build_caller_surface.py</code>）、第19章は<code>contrast/vs_callers.py</code>と<code>mine_caller_surface.py patterns</code>を土台にした<code>mine_caller_fold_line.py</code>による。どれも、あなたの対局とLuckyJの対局に同じコードで実行している。</li>
+            <li>これらの章の土台となる一般的なルールは、<a href="ja.html">本編のLuckyJ戦術書</a>にある。</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+
+    <footer class="colophon">
+      <div class="colophon-inner">
+        <div class="colophon-sources">
+          <p class="label">Honverのガイド</p>
+          <p><a href="ja.html">LuckyJ戦術書</a>の個人版。測定の方法は<a href="#method">このガイドの作り方</a>にまとめている。</p>
+        </div>
+        <div class="colophon-meta">
+          <p>2026年9月24日更新</p>
+          <a data-commit-stamp href="https://github.com/honvl/LuckyJ">GitHubのソース</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="app.js?v=20260929-guide-ja"></script>
+    <script src="honver.js?v=20260929-guide-ja"></script>
+  </body>
+</html>

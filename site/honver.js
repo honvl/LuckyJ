@@ -8,9 +8,13 @@
  *
  * Each turn is a felt figure: the table, then a panel with the situation and your line against
  * the better one; the commentary and every discard of the hand follow on paper.
+ *
+ * The Japanese edition (honver-ja.html, <html lang="ja">) renders the same tables with app.js's isJa
+ * words and swaps in each card's Japanese text from honver-guide-ja.json.
  */
 (function () {
-  const guideAsset = "honver-guide.json?v=20260929-guide-10";
+  const guideAsset = "honver-guide.json?v=20260929-guide-ja";
+  const guideJaAsset = "honver-guide-ja.json?v=20260929-guide-ja";
   const hideHandsKey = "luckyj:honver-guide:hide-hands";
   const SAFETY_CLASS = {
     genbutsu: "safe",
@@ -25,32 +29,73 @@
     "live 2-3-7-8": "danger",
     "live 4-5-6": "danger",
   };
-  const SAFETY_TEXT = {
-    genbutsu: "genbutsu",
-    dead: "dead honor",
-    suji: "suji",
-    nakasuji: "nakasuji",
-    "virtual nakasuji": "virtual nakasuji",
-    "half suji": "half suji",
-    "honor, 2 seen": "honor, 2 others seen",
-    "live honor": "live honor",
-    "live terminal": "live terminal",
-    "live 2-3-7-8": "live 2-3-7-8",
-    "live 4-5-6": "live 4-5-6",
+  const SAFETY_TEXT = isJa
+    ? {
+        genbutsu: "現物",
+        dead: "3枚見えの字牌",
+        suji: "筋",
+        nakasuji: "中筋",
+        "virtual nakasuji": "疑似中筋",
+        "half suji": "片筋",
+        "honor, 2 seen": "2枚見えの字牌",
+        "live honor": "生きた字牌",
+        "live terminal": "無筋の端牌",
+        "live 2-3-7-8": "無筋の2・3・7・8",
+        "live 4-5-6": "無筋の4・5・6",
+      }
+    : {
+        genbutsu: "genbutsu",
+        dead: "dead honor",
+        suji: "suji",
+        nakasuji: "nakasuji",
+        "virtual nakasuji": "virtual nakasuji",
+        "half suji": "half suji",
+        "honor, 2 seen": "honor, 2 others seen",
+        "live honor": "live honor",
+        "live terminal": "live terminal",
+        "live 2-3-7-8": "live 2-3-7-8",
+        "live 4-5-6": "live 4-5-6",
+      };
+  const REL = isJa
+    ? { self: "あなた", shimocha: "下家", toimen: "対面", kamicha: "上家" }
+    : { self: "You", shimocha: "Shimocha", toimen: "Toimen", kamicha: "Kamicha" };
+  const YOU = isJa ? "あなた" : "You";
+  const BETTER = isJa ? "推奨" : "Better";
+  // honver-guide.json keeps the English yaku names; the Japanese edition shows the usual ones.
+  const YAKU_JA = {
+    riichi: "リーチ", "double riichi": "ダブルリーチ", ippatsu: "一発", "menzen tsumo": "門前清自摸和",
+    tanyao: "断幺九", pinfu: "平和", iipeikou: "一盃口", ryanpeikou: "二盃口", haku: "白", hatsu: "發", chun: "中",
+    "seat wind": "自風牌", "round wind": "場風牌", honitsu: "混一色", chinitsu: "清一色", toitoi: "対々和",
+    chiitoitsu: "七対子", sanshoku: "三色同順", ittsu: "一気通貫", chanta: "混全帯幺九", junchan: "純全帯幺九",
+    sanankou: "三暗刻", shousangen: "小三元", honroutou: "混老頭", sankantsu: "三槓子", "sanshoku doukou": "三色同刻",
+    haitei: "海底摸月", houtei: "河底撈魚", rinshan: "嶺上開花", chankan: "槍槓", dora: "ドラ", "red five": "赤ドラ",
+    "ura dora": "裏ドラ",
   };
-  const REL = { self: "You", shimocha: "Shimocha", toimen: "Toimen", kamicha: "Kamicha" };
   const whole = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 
   function shantenText(s) {
+    if (isJa) return s === 0 ? "テンパイ" : `${s}シャンテン`;
     return s === 0 ? "tenpai" : `${s}-shanten`;
   }
 
   function acceptText(option) {
     if (option.shanten === 0) {
       const waits = (option.waits || []).map((w) => tileIcon(w, "inline-tile")).join("");
+      if (isJa) return `${waits ? `${waits}待ち、` : ""}残り${option.accept}枚`;
       return `${option.accept} live tile${option.accept === 1 ? "" : "s"}${waits ? ` on ${waits}` : ""}`;
     }
-    return `${option.accept} tiles improve it`;
+    return isJa ? `有効牌${option.accept}枚` : `${option.accept} tiles improve it`;
+  }
+
+  // "Kamicha riichi (turn 3)" or "Toimen 2 calls", from the threat's seat, kind and count.
+  function threatLabel(threat) {
+    if (!isJa) return threat.label;
+    const seat = REL[threat.rel] || threat.rel;
+    return threat.kind === "riichi" ? `${seat}リーチ（${threat.turn}巡目）` : `${seat}${threat.calls}副露`;
+  }
+
+  function versus(threat) {
+    return isJa ? `対${threatLabel(threat)}` : `vs ${threat.label}`;
   }
 
   function safetyChip(label) {
@@ -61,21 +106,28 @@
   function safetyLines(option, threats) {
     if (!threats?.length) return "";
     return `<span class="guide-safety">${threats
-      .map((threat, i) => `<span>vs ${escapeHtml(threat.label)}: ${safetyChip(option.safety?.[i])}</span>`)
+      .map((threat, i) => `<span>${escapeHtml(versus(threat))}: ${safetyChip(option.safety?.[i])}</span>`)
       .join("")}</span>`;
   }
 
   function decisionBlock(kind, title, option, frame, extra = "") {
     const tile = option?.tile;
-    const action =
-      frame.kind === "riichi"
-        ? `${option.action === "riichi" ? "Riichi" : "Dama"}, cut ${tileIcon(tile, "discard-tile")}`
+    const declared = option.action === "riichi";
+    const action = isJa
+      ? frame.kind === "riichi"
+        ? `${declared ? "リーチ" : "ダマ"}、打${tileIcon(tile, "discard-tile")}`
+        : `${option?.riichi ? "リーチ、打" : "打"}${tileIcon(tile, "discard-tile")} <em>${escapeHtml(tileName(tile))}</em>`
+      : frame.kind === "riichi"
+        ? `${declared ? "Riichi" : "Dama"}, cut ${tileIcon(tile, "discard-tile")}`
         : `${option?.riichi ? "Riichi, cut" : "Cut"} ${tileIcon(tile, "discard-tile")} <em>${escapeHtml(tileName(tile))}</em>`;
+    const leaves = isJa
+      ? `${shantenText(option.shanten)}、${acceptText(option)}`
+      : `Leaves ${shantenText(option.shanten)}, ${acceptText(option)}`;
     return `
       <div class="decision guide-${kind}">
         <b>${escapeHtml(title)}</b>
         <span class="discard-line">${action}</span>
-        <span>Leaves ${shantenText(option.shanten)}, ${acceptText(option)}</span>
+        <span>${leaves}</span>
         ${frame.kind === "riichi" ? "" : safetyLines(option, frame.threats)}
         ${extra}
       </div>
@@ -85,9 +137,26 @@
   // A call frame shows the hand before the call: what the call left, against passing.
   function callBlocks(frame) {
     const you = frame.you;
-    const action = you.action ? you.action[0].toUpperCase() + you.action.slice(1) : "Call";
     const meld = (you.meld || []).map((t) => tileIcon(t, "inline-tile")).join("");
     const from = REL[frame.call_from] || frame.call_from || "";
+    const better = frame.better;
+    if (isJa) {
+      const action = { chi: "チー", pon: "ポン" }[you.action] || "鳴き";
+      return `
+      <div class="decision guide-you">
+        <b>${YOU}</b>
+        <span class="discard-line">${tileIcon(you.tile, "discard-tile")}を${escapeHtml(action)} <em>${escapeHtml(from)}の捨て牌</em></span>
+        <span>副露${meld}、打${tileIcon(you.then_cut, "inline-tile")}</span>
+        <span>${shantenText(you.shanten)}（副露）</span>
+      </div>
+      <div class="decision guide-better">
+        <b>${BETTER}</b>
+        <span class="discard-line">鳴かない</span>
+        <span>${shantenText(better.shanten)}のまま${better.closed === false ? "" : "門前"}、有効牌${better.accept}枚</span>
+      </div>
+    `;
+    }
+    const action = you.action ? you.action[0].toUpperCase() + you.action.slice(1) : "Call";
     return `
       <div class="decision guide-you">
         <b>You</b>
@@ -98,7 +167,7 @@
       <div class="decision guide-better">
         <b>Better</b>
         <span class="discard-line">Pass</span>
-        <span>Stays ${shantenText(frame.better.shanten)}${frame.better.closed === false ? "" : " and closed"}, ${frame.better.accept} tiles improve it</span>
+        <span>Stays ${shantenText(better.shanten)}${better.closed === false ? "" : " and closed"}, ${better.accept} tiles improve it</span>
       </div>
     `;
   }
@@ -111,21 +180,26 @@
       return wrap;
     }
     if (frame.kind === "riichi") {
-      const yakuNote = frame.ron_yaku_without_riichi
-        ? "Has a yaku without riichi, so dama can ron."
-        : "No yaku without riichi: dama can only win by tsumo.";
+      const yakuNote = isJa
+        ? frame.ron_yaku_without_riichi
+          ? "リーチなしでも役があり、ダマでロンできる。"
+          : "リーチなしでは役がなく、ダマではツモでしかアガれない。"
+        : frame.ron_yaku_without_riichi
+          ? "Has a yaku without riichi, so dama can ron."
+          : "No yaku without riichi: dama can only win by tsumo.";
+      const sameTile = isJa ? "同じ牌でリーチ。" : "Same tile, declared.";
       wrap.innerHTML =
-        decisionBlock("you", "You", frame.you, frame, `<small>${escapeHtml(yakuNote)}</small>`) +
-        decisionBlock("better", "Better", frame.better, frame, "<small>Same tile, declared.</small>");
+        decisionBlock("you", YOU, frame.you, frame, `<small>${escapeHtml(yakuNote)}</small>`) +
+        decisionBlock("better", BETTER, frame.better, frame, `<small>${escapeHtml(sameTile)}</small>`);
       return wrap;
     }
     const you = decisionBlock(
       "you",
-      frame.you.tsumogiri ? "You (cut the tile you drew)" : "You",
+      frame.you.tsumogiri ? (isJa ? "あなた（ツモ切り）" : "You (cut the tile you drew)") : YOU,
       frame.you,
       frame
     );
-    const better = frame.better ? decisionBlock("better", "Better", frame.better, frame) : "";
+    const better = frame.better ? decisionBlock("better", BETTER, frame.better, frame) : "";
     wrap.innerHTML = you + better;
     return wrap;
   }
@@ -134,7 +208,7 @@
     if (!frame.options?.length) return null;
     const details = document.createElement("details");
     details.className = "guide-options";
-    const threatHeads = (frame.threats || []).map((t) => `<th scope="col">vs ${escapeHtml(t.label)}</th>`).join("");
+    const threatHeads = (frame.threats || []).map((t) => `<th scope="col">${escapeHtml(versus(t))}</th>`).join("");
     const rows = frame.options
       .map((option) => {
         const classes = [
@@ -144,22 +218,37 @@
           .filter(Boolean)
           .join(" ");
         const tag =
-          option.tile === frame.you?.tile ? "<small>you</small>" : frame.better && option.tile === frame.better.tile ? "<small>better</small>" : "";
+          option.tile === frame.you?.tile
+            ? `<small>${isJa ? YOU : "you"}</small>`
+            : frame.better && option.tile === frame.better.tile
+              ? `<small>${isJa ? BETTER : "better"}</small>`
+              : "";
         const safety = (frame.threats || []).map((_, i) => `<td>${safetyChip(option.safety?.[i])}</td>`).join("");
         return `<tr class="${classes}"><th scope="row">${tileIcon(option.tile, "inline-tile")}${tag}</th><td>${shantenText(
           option.shanten
         )}</td><td>${acceptText(option)}</td>${safety}</tr>`;
       })
       .join("");
+    const words = isJa
+      ? {
+          summary: "この手のすべての打牌",
+          heads: ["打牌", "残る形", "受け入れ"],
+          note: "受け入れは、手を進める牌それぞれについて、卓上から見えていない枚数を数えたもの。テンパイでは役を問わず、生きているアガリ牌を数える。",
+        }
+      : {
+          summary: "Every discard from this hand",
+          heads: ["Cut", "Leaves", "Acceptance"],
+          note: "Acceptance counts the unseen copies of every tile that would improve the hand, from what you could see at the table. At tenpai it counts live winning tiles, before yaku.",
+        };
     details.innerHTML = `
-      <summary>Every discard from this hand</summary>
+      <summary>${words.summary}</summary>
       <div class="guide-options-scroll">
         <table>
-          <thead><tr><th scope="col">Cut</th><th scope="col">Leaves</th><th scope="col">Acceptance</th>${threatHeads}</tr></thead>
+          <thead><tr>${words.heads.map((head) => `<th scope="col">${head}</th>`).join("")}${threatHeads}</tr></thead>
           <tbody>${rows}</tbody>
         </table>
       </div>
-      <p class="guide-options-note">Acceptance counts the unseen copies of every tile that would improve the hand, from what you could see at the table. At tenpai it counts live winning tiles, before yaku.</p>
+      <p class="guide-options-note">${words.note}</p>
     `;
     return details;
   }
@@ -172,26 +261,37 @@
       const cell = cells[frame.cut_index];
       if (cell) {
         cell.classList.add("guide-better", "guide-riichi");
-        cell.dataset.mark = "Riichi";
+        cell.dataset.mark = isJa ? "リーチ" : "Riichi";
       }
       return;
     }
     const cut = Number.isInteger(frame.cut_index) ? cells[frame.cut_index] : null;
     if (cut) {
       cut.classList.add("guide-cut");
-      cut.dataset.mark = frame.you?.riichi ? "Your riichi" : "Your cut";
+      cut.dataset.mark = isJa ? (frame.you?.riichi ? "あなたのリーチ" : YOU) : frame.you?.riichi ? "Your riichi" : "Your cut";
     }
     if (Number.isInteger(frame.better_index) && frame.better_index !== frame.cut_index) {
       const better = cells[frame.better_index];
       if (better) {
         better.classList.add("guide-better");
-        better.dataset.mark = "Better";
+        better.dataset.mark = BETTER;
       }
     }
   }
 
   function resultText(example) {
     const r = example.result || {};
+    if (isJa) {
+      const total = `この局のあなたの収支: ${signed(r.hero_delta)}。`;
+      if (r.draw || !r.wins?.length) return `流局。${total}`;
+      const parts = r.wins.map((win) => {
+        const who = win.winner === "self" ? "あなた" : REL[win.winner];
+        const how = win.tsumo ? "ツモ" : `${win.from === "self" ? "あなた" : REL[win.from]}からロン`;
+        const yaku = win.yaku?.length ? `（${win.yaku.map((y) => YAKU_JA[y] || y).join("、")}）` : "";
+        return `${who}が${how}、${whole.format(win.points)}点${yaku}。`;
+      });
+      return `${parts.join("")}${total}`;
+    }
     if (r.draw || !r.wins?.length) return `Hand ended in a draw. Your score for the hand: ${signed(r.hero_delta)}.`;
     const parts = r.wins.map((win) => {
       const who = win.winner === "self" ? "You" : REL[win.winner];
@@ -228,7 +328,29 @@
   }
 
   function placementText(n) {
-    return rankText(n) ? `finished ${rankText(n)}` : "";
+    if (!rankText(n)) return "";
+    return isJa ? `${rankText(n)}で終了` : `finished ${rankText(n)}`;
+  }
+
+  function turnText(turn) {
+    return isJa ? `${turn}巡目` : `Turn ${turn}`;
+  }
+
+  // The Japanese edition drops a zero honba: "East 2-0" is 東2局, "South 2-2" is 南2局2本場.
+  function roundLabel(round) {
+    return isJa ? roundText(round).replace(/0本場$/, "") : roundText(round);
+  }
+
+  function roundShort(round) {
+    return isJa ? roundText(round).replace(/\d+本場$/, "") : roundText(round).replace(/-\d+$/, "");
+  }
+
+  // Correction dates are written "28 September" in the spots file.
+  function dateLabel(text) {
+    if (!isJa) return text;
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const m = String(text || "").match(/^(\d{1,2}) ([A-Z][a-z]+)$/);
+    return m && months.includes(m[2]) ? `${months.indexOf(m[2]) + 1}月${m[1]}日` : text;
   }
 
   function renderFrame(hosts, example, frame) {
@@ -239,7 +361,7 @@
     const options = optionsBlock(frame);
     hosts.options.replaceChildren(...(options ? [options] : []));
     hosts.note.replaceChildren();
-    const note = analysisStep(`Turn ${frame.turn}`, frame.note);
+    const note = analysisStep(turnText(frame.turn), frame.note);
     if (note) {
       note.classList.add("guide-frame-note");
       hosts.note.append(note);
@@ -261,7 +383,9 @@
   }
 
   // Cards that are not mistakes carry a verdict label, and their last step is "The verdict".
-  const VERDICT_LABELS = { fine: "No mistake", unlucky: "Bad luck", close: "Close call" };
+  const VERDICT_LABELS = isJa
+    ? { fine: "ミスなし", unlucky: "不運", close: "際どい判断" }
+    : { fine: "No mistake", unlucky: "Bad luck", close: "Close call" };
 
   function renderCard(example, index, total) {
     const card = document.createElement("article");
@@ -270,12 +394,12 @@
     const first = example.frames[0];
     const game = example.game || {};
     const verdict = VERDICT_LABELS[example.verdict];
-    const label = `Your turn ${index + 1} of ${total}`;
+    const label = isJa ? `局面 ${index + 1} / ${total}` : `Your turn ${index + 1} of ${total}`;
     const meta = [
-      roundText(example.round),
-      `turn ${first.turn}`,
-      `${first.left} tile${first.left === 1 ? "" : "s"} left`,
-      [game.date, placementText(game.placement)].filter(Boolean).join(", "),
+      roundLabel(example.round),
+      isJa ? turnText(first.turn) : `turn ${first.turn}`,
+      isJa ? tilesLeftText(first.left) : `${first.left} tile${first.left === 1 ? "" : "s"} left`,
+      [game.date, placementText(game.placement)].filter(Boolean).join(isJa ? "、" : ", "),
     ]
       .filter(Boolean)
       .map(escapeHtml)
@@ -293,13 +417,13 @@
           </div>
           <h4 class="guide-card-title">${escapeHtml(keepNumberHyphens(example.title))}</h4>
           ${verdict ? `<p class="guide-verdict">${escapeHtml(verdict)}</p>` : ""}
-          ${example.corrected ? `<p class="changed-tag guide-card-corrected">Corrected ${escapeHtml(example.corrected.date)}</p>` : ""}
+          ${example.corrected ? `<p class="changed-tag guide-card-corrected">${isJa ? `${escapeHtml(dateLabel(example.corrected.date))}に訂正` : `Corrected ${escapeHtml(example.corrected.date)}`}</p>` : ""}
           <p class="guide-card-meta">${meta}</p>
           <p class="guide-situation"></p>
           <div class="guide-compare-host"></div>
           ${
             game.uuid
-              ? `<p class="guide-game-link"><a href="${escapeHtml(replayHref(example, first))}" target="_blank" rel="noopener">Replay this hand</a></p>`
+              ? `<p class="guide-game-link"><a href="${escapeHtml(replayHref(example, first))}" target="_blank" rel="noopener">${isJa ? "この局を再生（英語）" : "Replay this hand"}</a></p>`
               : ""
           }
         </div>
@@ -320,12 +444,12 @@
       const strip = document.createElement("div");
       strip.className = "guide-frame-tabs";
       strip.setAttribute("role", "tablist");
-      strip.setAttribute("aria-label", "Turns in this hand");
+      strip.setAttribute("aria-label", isJa ? "この局の巡目" : "Turns in this hand");
       const buttons = example.frames.map((frame, i) => {
         const button = document.createElement("button");
         button.type = "button";
         button.setAttribute("role", "tab");
-        button.textContent = `Turn ${frame.turn}`;
+        button.textContent = turnText(frame.turn);
         button.addEventListener("click", () => select(i));
         strip.append(button);
         return button;
@@ -350,14 +474,14 @@
     analysis.className = "natsu-analysis";
     const changed = new Set(example.corrected?.fields || []);
     const steps = [
-      analysisStep("What you did", example.text.did, changed.has("did")),
-      analysisStep("What LuckyJ does", example.text.luckyj, changed.has("luckyj")),
-      analysisStep(verdict ? "The verdict" : "The fix", example.text.fix, changed.has("fix")),
+      analysisStep(isJa ? "あなたの選択" : "What you did", example.text.did, changed.has("did")),
+      analysisStep(isJa ? "LuckyJの選択" : "What LuckyJ does", example.text.luckyj, changed.has("luckyj")),
+      analysisStep(verdict ? (isJa ? "判定" : "The verdict") : isJa ? "修正点" : "The fix", example.text.fix, changed.has("fix")),
     ].filter(Boolean);
     analysis.append(...steps);
     const result = document.createElement("p");
     result.className = "guide-result";
-    result.innerHTML = `<b>How the hand ended</b> ${escapeHtml(resultText(example))}`;
+    result.innerHTML = `<b>${isJa ? "局の結果" : "How the hand ended"}</b> ${escapeHtml(resultText(example))}`;
     notes.append(hosts.note, analysis, result, hosts.options);
     applyTileCompatibility(card);
     return card;
@@ -368,9 +492,10 @@
     shell.className = "point-example-tabs";
     const head = document.createElement("div");
     head.className = "example-tab-head";
-    head.innerHTML = `<p class="label">Your turns</p><div class="example-tab-heading"><h4>${
-      examples.length === 1 ? "A turn from your games" : "Turns from your games"
-    }</h4></div>`;
+    const heading = isJa
+      ? examples.length === 1 ? "実戦からの1局面" : "実戦からの局面"
+      : examples.length === 1 ? "A turn from your games" : "Turns from your games";
+    head.innerHTML = `<p class="label">${isJa ? "あなたの局面" : "Your turns"}</p><div class="example-tab-heading"><h4>${heading}</h4></div>`;
     const tablist = document.createElement("div");
     tablist.className = "example-tab-list";
     tablist.setAttribute("role", "tablist");
@@ -381,7 +506,7 @@
       button.type = "button";
       button.setAttribute("role", "tab");
       button.dataset.index = String(index);
-      button.innerHTML = `<b>${index + 1}</b><span>${escapeHtml(roundText(example.round).replace(/-\d+$/, ""))}</span>`;
+      button.innerHTML = `<b>${index + 1}</b><span>${escapeHtml(roundShort(example.round))}</span>`;
       button.title = example.title;
       tablist.append(button);
       return button;
@@ -434,7 +559,7 @@
   }
 
   function handsToggleHtml() {
-    return `<button type="button" class="hands-toggle" aria-pressed="${handsVisible() ? "true" : "false"}">Show all hands</button>`;
+    return `<button type="button" class="hands-toggle" aria-pressed="${handsVisible() ? "true" : "false"}">${isJa ? "全員の手牌を表示" : "Show all hands"}</button>`;
   }
 
   function setHandsVisible(visible) {
@@ -473,17 +598,34 @@
   // Chapter tables marked data-chart get a pair of small line charts above them: your rate against
   // LuckyJ's across the rows. The table stays as the exact numbers, folded under the charts.
   const CHARTS = {
-    "dora-deal": {
-      caption: "Your win rate stays flat as the dora in the deal go up; LuckyJ's climbs.",
-      short: ["None", "One", "Two", "Three+"],
-      panels: [
-        { title: "Win rate", sub: "Hands won, by dora and red fives in the deal", you: 1, lj: 2, min: 15, max: 35, ticks: [15, 20, 25, 30, 35], unit: "%" },
-        { title: "Mangan per 100 hands", sub: "Wins of mangan or more, per 100 hands dealt", you: 3, lj: 4, min: 0, max: 25, ticks: [0, 5, 10, 15, 20, 25], unit: "" },
-      ],
-      // The three-dora row holds 14 of your hands, which the chapter calls noise.
-      noiseRow: 3,
-      noiseNote: "14 hands, noise",
-    },
+    "dora-deal": isJa
+      ? {
+          caption: "配牌のドラが増えても、あなたの和了率は横ばいのまま。LuckyJの和了率は上がっていく。",
+          short: ["なし", "1枚", "2枚", "3枚以上"],
+          panels: [
+            { title: "和了率", sub: "配牌のドラと赤5の枚数別、アガった局の割合", you: 1, lj: 2, min: 15, max: 35, ticks: [15, 20, 25, 30, 35], unit: "%" },
+            { title: "100局あたりの満貫", sub: "配牌100局あたりの満貫以上のアガリ", you: 3, lj: 4, min: 0, max: 25, ticks: [0, 5, 10, 15, 20, 25], unit: "" },
+          ],
+          noiseRow: 3,
+          noiseNote: "14局、誤差の範囲",
+          legend: ["あなた、80半荘", "LuckyJ、1,255半荘", "局数が少なく読めない"],
+          byDora: "配牌のドラ",
+          table: "数値の表",
+        }
+      : {
+          caption: "Your win rate stays flat as the dora in the deal go up; LuckyJ's climbs.",
+          short: ["None", "One", "Two", "Three+"],
+          panels: [
+            { title: "Win rate", sub: "Hands won, by dora and red fives in the deal", you: 1, lj: 2, min: 15, max: 35, ticks: [15, 20, 25, 30, 35], unit: "%" },
+            { title: "Mangan per 100 hands", sub: "Wins of mangan or more, per 100 hands dealt", you: 3, lj: 4, min: 0, max: 25, ticks: [0, 5, 10, 15, 20, 25], unit: "" },
+          ],
+          // The three-dora row holds 14 of your hands, which the chapter calls noise.
+          noiseRow: 3,
+          noiseNote: "14 hands, noise",
+          legend: ["You, 80 games", "LuckyJ, 1,255 games", "too few hands to read"],
+          byDora: "by dora in the deal",
+          table: "The numbers as a table",
+        },
   };
   const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -518,7 +660,11 @@
     head.innerHTML = `<b>${escapeHtml(panel.title)}</b><span>${escapeHtml(panel.sub)}</span>`;
     const plot = document.createElement("div");
     plot.className = "guide-chart-plot";
-    const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": `${panel.title}, you against LuckyJ, by dora in the deal` });
+    const svg = svgEl("svg", {
+      viewBox: `0 0 ${W} ${H}`,
+      role: "img",
+      "aria-label": isJa ? `${panel.title}、あなたとLuckyJ、${spec.byDora}別` : `${panel.title}, you against LuckyJ, ${spec.byDora}`,
+    });
     for (const tick of panel.ticks) {
       svg.append(svgEl("line", { x1: m.l, x2: m.l + pw, y1: y(tick), y2: y(tick), class: "grid" }));
       svg.append(svgEl("text", { x: m.l - 10, y: y(tick) + 4, class: "tick" }, `${tick}${panel.unit}`));
@@ -528,7 +674,7 @@
     svg.append(cross);
     const series = [
       { key: "lj", values: lj, name: "LuckyJ" },
-      { key: "you", values: you, name: "You" },
+      { key: "you", values: you, name: YOU },
     ];
     for (const line of series) {
       svg.append(svgEl("polyline", { points: line.values.map((v, i) => `${x(i)},${y(v)}`).join(" "), class: `line ${line.key}` }));
@@ -557,14 +703,17 @@
         height: ph + 30,
         class: "hit",
         tabindex: 0,
-        "aria-label": `${row.label}: you ${fmt(you[i])}, LuckyJ ${fmt(lj[i])}`,
+        "aria-label": isJa
+          ? `${spec.byDora} ${row.label}: あなた ${fmt(you[i])}、LuckyJ ${fmt(lj[i])}`
+          : `${row.label}: you ${fmt(you[i])}, LuckyJ ${fmt(lj[i])}`,
       });
       const show = () => {
         cross.setAttribute("x1", x(i));
         cross.setAttribute("x2", x(i));
         cross.classList.add("is-on");
         tip.hidden = false;
-        tip.innerHTML = `<span>${escapeHtml(row.label)} dora in the deal</span><b class="you">${fmt(you[i])} <small>you</small></b><b class="lj">${fmt(lj[i])} <small>LuckyJ</small></b>`;
+        const place = isJa ? `${spec.byDora}: ${row.label}` : `${row.label} dora in the deal`;
+        tip.innerHTML = `<span>${escapeHtml(place)}</span><b class="you">${fmt(you[i])} <small>${isJa ? YOU : "you"}</small></b><b class="lj">${fmt(lj[i])} <small>LuckyJ</small></b>`;
         const px = (x(i) / W) * 100;
         tip.style.left = i === rows.length - 1 ? "auto" : `calc(${px}% + 12px)`;
         tip.style.right = i === rows.length - 1 ? `calc(${100 - px}% + 12px)` : "auto";
@@ -596,8 +745,8 @@
     figure.className = "guide-chart";
     const legend = document.createElement("div");
     legend.className = "guide-chart-legend";
-    legend.innerHTML = `<span class="key you">You, 80 games</span><span class="key lj">LuckyJ, 1,255 games</span>${
-      spec.noiseNote ? '<span class="key hollow">too few hands to read</span>' : ""
+    legend.innerHTML = `<span class="key you">${spec.legend[0]}</span><span class="key lj">${spec.legend[1]}</span>${
+      spec.noiseNote ? `<span class="key hollow">${spec.legend[2]}</span>` : ""
     }`;
     const panels = document.createElement("div");
     panels.className = "guide-chart-panels";
@@ -609,10 +758,26 @@
     const details = document.createElement("details");
     details.className = "guide-chart-table";
     const summary = document.createElement("summary");
-    summary.textContent = "The numbers as a table";
+    summary.textContent = spec.table;
     scroll.replaceWith(details);
     details.append(summary, scroll);
     details.before(figure);
+  }
+
+  // Each card keeps its tables and swaps in its Japanese title, commentary and turn notes.
+  function inJapanese(data, ja) {
+    for (const examples of Object.values(data.chapters || {})) {
+      for (const example of examples) {
+        const text = ja.examples?.[example.id];
+        if (!text) continue;
+        example.title = text.title || example.title;
+        example.text = { ...example.text, ...text.text };
+        example.frames.forEach((frame, i) => {
+          frame.note = text.notes?.[i] || frame.note;
+        });
+      }
+    }
+    return data;
   }
 
   async function main() {
@@ -625,12 +790,18 @@
     for (const table of document.querySelectorAll("table.guide-data[data-chart]")) renderGuideChart(table);
     let data;
     try {
-      const response = await fetch(guideAsset);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      data = await response.json();
+      const load = async (asset) => {
+        const response = await fetch(asset);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      };
+      const [tables, ja] = await Promise.all([load(guideAsset), isJa ? load(guideJaAsset) : null]);
+      data = ja ? inJapanese(tables, ja) : tables;
     } catch (error) {
       for (const placeholder of document.querySelectorAll("[data-guide-examples]")) {
-        placeholder.innerHTML = `<p class="guide-error">The example tables could not load (${escapeHtml(error.message)}).</p>`;
+        placeholder.innerHTML = isJa
+          ? `<p class="guide-error">例の表を読み込めなかった（${escapeHtml(error.message)}）。</p>`
+          : `<p class="guide-error">The example tables could not load (${escapeHtml(error.message)}).</p>`;
       }
       return;
     }

@@ -17,7 +17,14 @@
    "situation": "East 2, turn 8. You are the dealer, fourth at 22,700. You draw [[4p]] into tenpai: cut [[7s]] and you wait on [[5m]]-[[8m]] with 8 tiles live. The hand is tanyao with three [[2m]] as dora. Nobody has declared. Kamicha has ponned [[C]] and [[F]].",
    "did": "You cut [[7s]] and stayed dama. The hand won by tsumo for 12,000.",
    "luckyj": "LuckyJ declares 95% of first closed tenpais with 8 or more live tiles before turn 10. Two dragon pons across the table do not stop it: in the 22 hands where an opponent already showed two dragon pons, it still declared 16 times, including all 3 with 8 or more live tiles. That sample is small.",
-   "fix": "Declare. Dama caps this hand at a dealer mangan, 12,000, on ron or tsumo. Riichi makes the same tsumo a haneman, 18,000, and gives a ron the same chance through ura dora and ippatsu. The cost is having to cut a drawn haku [[P]] into the two dragon pons. LuckyJ wins about 60% of its riichi hands with 8 or more live tiles."
+   "fix": "Declare. Dama caps this hand at a dealer mangan, 12,000, on ron or tsumo. Riichi makes the same tsumo a haneman, 18,000, and gives a ron the same chance through ura dora and ippatsu. The cost is having to cut a drawn haku [[P]] into the two dragon pons. LuckyJ wins about 60% of its riichi hands with 8 or more live tiles.",
+   "ja": {
+    "title": "ドラ3、残り8枚の待ちでダマ",
+    "situation": "東2局、8巡目。親で4位、22,700点。[[4p]]を引いてテンパイ。[[7s]]を切れば[[5m]]-[[8m]]待ちで、残り8枚。手はタンヤオで、ドラの[[2m]]が3枚。リーチはまだない。上家が[[C]]と[[F]]をポンしている。",
+    "did": "[[7s]]を切ってダマにした。ツモアガリで12,000点。",
+    "luckyj": "10巡目より前の最初の門前テンパイで、残り8枚以上の待ちなら、LuckyJは95%でリーチする。三元牌のポンが2つ見えていても止まらない。相手がすでに三元牌を2つポンしていた22局で、LuckyJはそれでも16回リーチし、残り8枚以上の3局ではすべてリーチした。ただし標本は小さい。",
+    "fix": "リーチする。ダマではロンでもツモでも親満の12,000点が上限である。リーチすれば同じツモが跳満の18,000点になり、ロンでも裏ドラと一発で同じように跳満の目がある。代償は、引いた白[[P]]を三元牌2つのポンに向けて切らなければならないことである。LuckyJは残り8枚以上の待ちでリーチした手の約60%をアガっている。"
+   }
   },
   {
    "id": "pinfu-dama-eight-tiles",
@@ -35,7 +42,14 @@
    "situation": "South 2, two honba, turn 6. You are third at 19,100. You draw [[1s]] and reach tenpai: cut [[7p]] and you wait on [[5s]]-[[8s]], 8 tiles live. The hand is pinfu and nothing else. The dealer has ponned [[S]]; nobody has declared.",
    "did": "You stayed dama. The hand won by tsumo for 2,100.",
    "luckyj": "LuckyJ declares 95% of first closed tenpais with 8 or more live tiles before turn 10.",
-   "fix": "Riichi. Before the honba, dama pays 1,000 on a ron and 1,500 on a tsumo. Riichi pays 2,000 and 2,700, before ura dora. A one-han hand on a two-sided wait at turn 6 is the hand riichi exists for."
+   "fix": "Riichi. Before the honba, dama pays 1,000 on a ron and 1,500 on a tsumo. Riichi pays 2,000 and 2,700, before ura dora. A one-han hand on a two-sided wait at turn 6 is the hand riichi exists for.",
+   "ja": {
+    "title": "6巡目、残り8枚の平和でダマ",
+    "situation": "南2局2本場、6巡目。3位、19,100点。[[1s]]を引いてテンパイ。[[7p]]を切れば[[5s]]-[[8s]]待ちで、残り8枚。手は平和のみ。親が[[S]]をポンしていて、リーチはまだない。",
+    "did": "ダマにした。ツモアガリで2,100点。",
+    "luckyj": "10巡目より前の最初の門前テンパイで、残り8枚以上の待ちなら、LuckyJは95%でリーチする。",
+    "fix": "リーチする。本場を除くと、ダマはロンで1,000点、ツモで1,500点。リーチなら裏ドラを除いて2,000点と2,700点。6巡目、両面待ちの1翻の手は、まさにリーチのためにある手である。"
+   }
   },
   {
    "id": "south-free",
@@ -53,7 +67,13 @@
    "situation": "South 1, turn 6. Kamicha, leading with 46,000, has ponned haku [[P]]. You are third at 21,500, 3-shanten with two dora, and draw [[2m]].",
    "did": "You cut the [[2m]] you drew. It left 36 tiles of acceptance and was live against the pon. It dealt in for 1,000.",
    "luckyj": "",
-   "fix": "[[S]] leaves 38 tiles and has two other copies showing, so only a tanki can hit it. When the safer tile is also the more efficient one, it is the only cut."
+   "fix": "[[S]] leaves 38 tiles and has two other copies showing, so only a tanki can hit it. When the safer tile is also the more efficient one, it is the only cut.",
+   "ja": {
+    "title": "効率の良い牌が、より安全な牌でもあった",
+    "situation": "南1局、6巡目。46,000点でトップの上家が白[[P]]をポンしている。3位、21,500点で、ドラ2枚の3シャンテン。[[2m]]を引く。",
+    "did": "引いた[[2m]]をそのまま切った。受け入れは36枚で、ポンに対しては生牌だった。1,000点の放銃。",
+    "fix": "[[S]]なら受け入れは38枚で、2枚見えているので当たるのは単騎だけである。より安全な牌が効率でも上回るなら、切るのはそれしかない。"
+   }
   },
   {
    "id": "chun-free",
@@ -71,7 +91,14 @@
    "situation": "South 1, turn 13 with 18 tiles left. Kamicha, leading with 36,700, has ponned [[3p]]. You are third at 18,300 and 1-shanten after a closed kan of [[1p]].",
    "did": "You cut the [[7m]] you drew, live against the pon, and dealt in for 3,900.",
    "luckyj": "When a safe tile keeps the same shanten and acceptance against a single call, LuckyJ takes it 83% of the time at 1-shanten from turn 13 on.",
-   "fix": "[[C]] leaves the same 12 tiles and has two other copies showing. Take it."
+   "fix": "[[C]] leaves the same 12 tiles and has two other copies showing. Take it.",
+   "ja": {
+    "title": "13巡目、損のない字牌が手にある",
+    "situation": "南1局、13巡目、残り18枚。36,700点でトップの上家が[[3p]]をポンしている。3位、18,300点で、[[1p]]を暗槓した後の1シャンテン。",
+    "did": "引いた[[7m]]をそのまま切った。ポンに対しては生牌で、3,900点の放銃。",
+    "luckyj": "1副露に対して、同じシャンテンと受け入れを保てる安全牌があるとき、13巡目以降の1シャンテンでは、LuckyJは83%でそれを切る。",
+    "fix": "[[C]]なら受け入れは同じ12枚で、2枚見えている。これを切る。"
+   }
   },
   {
    "id": "north-free",
@@ -89,7 +116,14 @@
    "situation": "South 4, turn 9. You and toimen are tied for first at 33,600. The dealer, third at 23,500, has ponned haku [[P]]. You are 1-shanten with a chi and two red fives.",
    "did": "You cut the [[9m]] you drew, live against the dealer, and paid 1,500. The dealer's win also kept the game going.",
    "luckyj": "Against a single call LuckyJ takes a free safe tile 69% of the time at 1-shanten on turns 9 to 12.",
-   "fix": "[[N]] leaves the same 6 tiles and has two other copies showing. In all last with first place on the line, a free safe tile is never optional."
+   "fix": "[[N]] leaves the same 6 tiles and has two other copies showing. In all last with first place on the line, a free safe tile is never optional.",
+   "ja": {
+    "title": "オーラス、トップ同点",
+    "situation": "南4局、9巡目。あなたと対面が33,600点でトップに並んでいる。3位、23,500点の親が白[[P]]をポンしている。自分はチーを1つ入れ、赤5が2枚の1シャンテン。",
+    "did": "引いた[[9m]]をそのまま切った。親に対して生牌で、1,500点の放銃。親のアガリで半荘も終わらなかった。",
+    "luckyj": "1副露に対して、9〜12巡目の1シャンテンでは、LuckyJは損のない安全牌を69%で切る。",
+    "fix": "[[N]]なら受け入れは同じ6枚で、2枚見えている。トップがかかったオーラスで、損のない安全牌を切らない理由はない。"
+   }
   },
   {
    "id": "hatsu-for-one-tile",
@@ -107,7 +141,14 @@
    "situation": "East 1, turn 7. Toimen ponned [[N]], their seat wind, then added the fourth [[N]] as a kan, and has kept cutting tiles from hand since. You are 2-shanten with a pair of [[F]] and two dora.",
    "did": "You cut [[4m]], only half suji against the kan because just the [[7m]] side was covered, leaving 20 tiles of acceptance, and dealt in for 8,000.",
    "luckyj": "Against a single call, LuckyJ pays one or two tiles of acceptance for a safe tile about a quarter of the time. Here the safe tile cost nothing against the tile you chose.",
-   "fix": "[[F]] leaves 21 tiles, one more than [[4m]]. With your other [[F]] and the one in kamicha's river, only a tanki on the last copy can hit it. [[8m]] and [[2p]] leave 22 but are live too. A kan of a value wind is a hand with its yaku done: take the honor."
+   "fix": "[[F]] leaves 21 tiles, one more than [[4m]]. With your other [[F]] and the one in kamicha's river, only a tanki on the last copy can hit it. [[8m]] and [[2p]] leave 22 but are live too. A kan of a value wind is a hand with its yaku done: take the honor.",
+   "ja": {
+    "title": "最も効率的でもない牌で8,000点",
+    "situation": "東1局、7巡目。対面は自風の[[N]]をポンし、4枚目の[[N]]を加槓して、その後も手出しを続けている。自分は[[F]]の対子とドラ2枚を持つ2シャンテン。",
+    "did": "[[4m]]を切った。[[7m]]の側しか通っておらず、カンに対しては片筋にすぎない。受け入れは20枚で、8,000点の放銃。",
+    "luckyj": "1副露に対して、LuckyJが安全牌のために受け入れを1〜2枚犠牲にするのは約4分の1である。この場面では、あなたの選んだ牌と比べて安全牌に損はなかった。",
+    "fix": "[[F]]なら受け入れは21枚で、[[4m]]より1枚多い。手に残るもう1枚の[[F]]と上家の河の1枚があるので、当たるのは最後の1枚での単騎だけである。[[8m]]と[[2p]]は22枚残るが、どちらも生牌である。役風のカンは役が完成した手なので、字牌を切る。"
+   }
   },
   {
    "id": "four-s-best-and-safe",
@@ -125,7 +166,13 @@
    "situation": "South 3, one honba, turn 11. The dealer has ponned [[3m]]. You are fourth at 19,300, 2-shanten, with a [[2s]] pon and the dora, haku [[P]].",
    "did": "You cut [[3p]], live, leaving 10 tiles. On the next turn no safe tile kept the hand, and [[2p]] dealt in for 1,800.",
    "luckyj": "",
-   "fix": "[[4s]] is genbutsu and leaves 14 tiles, because three [[2s]] sit in your own pon and the fourth is in the dealer's river, so [[3s]][[4s]] can only take [[5s]]. [[E]] is genbutsu with 14 as well. Count a shape's live tiles before you protect it."
+   "fix": "[[4s]] is genbutsu and leaves 14 tiles, because three [[2s]] sit in your own pon and the fourth is in the dealer's river, so [[3s]][[4s]] can only take [[5s]]. [[E]] is genbutsu with 14 as well. Count a shape's live tiles before you protect it.",
+   "ja": {
+    "title": "受け入れが4枚多く、しかも現物",
+    "situation": "南3局1本場、11巡目。親が[[3m]]をポンしている。4位、19,300点の2シャンテンで、[[2s]]をポンしていて、ドラの白[[P]]を持っている。",
+    "did": "生牌の[[3p]]を切り、受け入れは10枚。次巡には手を保てる安全牌がなく、[[2p]]で1,800点の放銃。",
+    "fix": "[[4s]]は現物で、受け入れは14枚残る。[[2s]]は3枚が自分のポンにあり、4枚目は親の河にあるので、[[3s]][[4s]]は[[5s]]しか受けられないからである。[[E]]も現物で、同じく14枚。形を守る前に、その形の残り枚数を数える。"
+   }
   },
   {
    "id": "chun-into-two-pons",
@@ -143,7 +190,14 @@
    "situation": "South 1, turn 8. You are the dealer, second at 21,500, and you have just ponned haku [[P]]. Toimen has ponned [[S]], the round wind, and [[5m]] with the red five.",
    "did": "After the pon you cut [[C]], an honor with no other copy showing, and dealt in for 2,000. Toimen was waiting on it alone.",
    "luckyj": "Against two calls LuckyJ cuts a live tile only about 30% of the time from turn 9 on when a safe tile keeps its shanten.",
-   "fix": "[[8p]] is genbutsu and leaves 41 tiles against 43. A hand built from pons often ends on a tanki or a shanpon, so a live honor is one of the likeliest tiles to hit it. Pay the two tiles."
+   "fix": "[[8p]] is genbutsu and leaves 41 tiles against 43. A hand built from pons often ends on a tanki or a shanpon, so a live honor is one of the likeliest tiles to hit it. Pay the two tiles.",
+   "ja": {
+    "title": "対面の2つのポンと生きた字牌",
+    "situation": "南1局、8巡目。親で2位、21,500点。白[[P]]をポンしたところである。対面は場風の[[S]]と、赤5入りの[[5m]]をポンしている。",
+    "did": "ポンの後、1枚も見えていない字牌の[[C]]を切り、2,000点の放銃。対面はその単騎待ちだった。",
+    "luckyj": "2副露に対しては、シャンテンを保てる安全牌があれば、9巡目以降にLuckyJが生牌を切るのは約30%だけである。",
+    "fix": "[[8p]]は現物で、受け入れは43枚に対して41枚。ポンで作った手は単騎やシャンポンで終わることが多く、生きた字牌は最も当たりやすい牌の一つである。受け入れ2枚を犠牲にする。"
+   }
   },
   {
    "id": "sou-honitsu",
@@ -161,7 +215,13 @@
    "situation": "South 2, turn 12. You lead with 43,300. Shimocha, last at 6,300, has ponned [[F]] and chied [[2s]][[3s]][[4s]], and has discarded twelve tiles without a single sou. You are open tenpai on a [[6m]] kanchan and draw [[9s]].",
    "did": "You cut the [[9s]] and dealt in for 7,700 to a sou honitsu.",
    "luckyj": "",
-   "fix": "A dragon pon, a sou chi and a river with no sou is a honitsu, and its waits are sou. Fold with the red [[5mr]], genbutsu. It costs the tenpai and a red five from a 3-han hand. With an 11,000-point lead, the deal-in costs more."
+   "fix": "A dragon pon, a sou chi and a river with no sou is a honitsu, and its waits are sou. Fold with the red [[5mr]], genbutsu. It costs the tenpai and a red five from a 3-han hand. With an 11,000-point lead, the deal-in costs more.",
+   "ja": {
+    "title": "12枚切って索子が1枚もない",
+    "situation": "南2局、12巡目。43,300点でトップ。6,300点でラスの下家が[[F]]をポンし、[[2s]][[3s]][[4s]]をチーしていて、12枚切って索子が1枚もない。自分は[[6m]]のカンチャン待ちの副露テンパイで、[[9s]]を引く。",
+    "did": "[[9s]]を切り、索子の混一色に7,700点の放銃。",
+    "fix": "三元牌のポン、索子のチー、索子のない河がそろえば混一色で、待ちは索子である。現物の赤[[5mr]]でオリる。3翻の手からテンパイと赤5を手放すことになるが、11,000点リードしているなら、放銃の方が高くつく。"
+   }
   },
   {
    "id": "two-p-three-turns",
@@ -173,20 +233,29 @@
      "turn": 12,
      "expect_cut": "3s",
      "better": "2p",
-     "note": "Kamicha has just discarded [[2p]], so [[2p]] is now genbutsu against both players. [[3s]] is safe against the riichi, because toimen passed it after the declaration, and live against kamicha's pon."
+     "note": "Kamicha has just discarded [[2p]], so [[2p]] is now genbutsu against both players. [[3s]] is safe against the riichi, because toimen passed it after the declaration, and live against kamicha's pon.",
+     "note_ja": "上家が[[2p]]を切ったばかりで、[[2p]]は2人どちらにも現物になった。[[3s]]は、リーチ後に対面が通しているのでリーチには安全だが、上家のポンには生牌である。"
     },
     {
      "turn": 13,
      "expect_cut": "1s",
      "better": "2p",
-     "note": "[[1s]] is genbutsu against kamicha and only suji against the riichi. [[2p]] is still genbutsu against both."
+     "note": "[[1s]] is genbutsu against kamicha and only suji against the riichi. [[2p]] is still genbutsu against both.",
+     "note_ja": "[[1s]]は上家には現物だが、リーチには筋にすぎない。[[2p]]はまだ2人どちらにも現物である。"
     }
    ],
    "title": "The tile that was safe against both players",
    "situation": "East 4, one honba. You lead with 40,800. Shimocha declared riichi on turn 4 and kamicha has ponned haku [[P]]. You are folding at 2-shanten.",
    "did": "You cut [[3s]] on turn 12 and [[1s]] on turn 13. The [[1s]] completed shimocha's shanpon for 1,600.",
    "luckyj": "At 2-shanten against a riichi, LuckyJ keeps a safe tile 96% of the time when one holds its shanten. You already fold that often. The leak here is which safe tile.",
-   "fix": "Rank the safe tiles before you cut: genbutsu against every threat, then genbutsu against the riichi, then an honor with two other copies showing, then suji, with a 1 or 9 on suji the safest of those. Suji only rules out a two-sided wait; shanpon, tanki and kanchan still hit it. [[2p]] topped that list for two turns and cost two or three tiles of acceptance in a hand that was folding anyway."
+   "fix": "Rank the safe tiles before you cut: genbutsu against every threat, then genbutsu against the riichi, then an honor with two other copies showing, then suji, with a 1 or 9 on suji the safest of those. Suji only rules out a two-sided wait; shanpon, tanki and kanchan still hit it. [[2p]] topped that list for two turns and cost two or three tiles of acceptance in a hand that was folding anyway.",
+   "ja": {
+    "title": "2人どちらにも安全だった牌",
+    "situation": "東4局1本場。40,800点でトップ。下家が4巡目にリーチし、上家が白[[P]]をポンしている。自分は2シャンテンからオリている。",
+    "did": "12巡目に[[3s]]、13巡目に[[1s]]を切った。[[1s]]が下家のシャンポンに当たり、1,600点の放銃。",
+    "luckyj": "リーチに対する2シャンテンで、シャンテンを保てる安全牌があれば、LuckyJは96%で安全牌を選ぶ。あなたもすでにそれだけオリている。ここでの損は、どの安全牌を選ぶかにある。",
+    "fix": "切る前に安全牌に順位をつける。攻めている相手全員への現物、次にリーチへの現物、次に2枚見えの字牌、次に筋で、筋の中では1・9が最も安全である。筋が消すのは両面待ちだけで、シャンポン、単騎、カンチャンには当たる。[[2p]]は2巡続けてこの順位の最上位にあり、どうせオリている手で受け入れを2〜3枚失うだけだった。"
+   }
   },
   {
    "id": "north-or-two-m",
@@ -204,7 +273,13 @@
    "situation": "East 1, turn 10. Shimocha declared riichi on the turn before. You are second at 25,000, 2-shanten with two dora ([[F]] and the red [[5pr]]) and a pair of [[N]].",
    "did": "You broke the [[N]] pair. No other [[N]] is showing, so a shanpon or tanki on it is still possible, and it left 20 tiles of acceptance.",
    "luckyj": "",
-   "fix": "[[2m]] is genbutsu and leaves 43 tiles. When a safe tile is also the better tile for the hand, there is nothing to weigh."
+   "fix": "[[2m]] is genbutsu and leaves 43 tiles. When a safe tile is also the better tile for the hand, there is nothing to weigh.",
+   "ja": {
+    "title": "より良い手も残す安全牌",
+    "situation": "東1局、10巡目。下家が前巡にリーチしている。2位、25,000点で、ドラ2枚（[[F]]と赤[[5pr]]）と[[N]]の対子を持つ2シャンテン。",
+    "did": "[[N]]の対子を崩した。ほかの[[N]]は1枚も見えていないので、シャンポンや単騎で当たる可能性はまだあり、受け入れは20枚だった。",
+    "fix": "[[2m]]は現物で、受け入れは43枚残る。安全牌が手にとっても良い牌なら、比べるものは何もない。"
+   }
   },
   {
    "id": "dealer-eight-p",
@@ -222,7 +297,14 @@
    "situation": "East 2, one honba, turn 13 with 23 tiles left. You are the dealer and lead with 34,700. Toimen declared riichi on turn 6 and kamicha has ponned [[F]]. You are 2-shanten.",
    "did": "You cut [[8p]], live against both players, to keep 2-shanten.",
    "luckyj": "At 2-shanten on turn 13 or later, LuckyJ cuts a live tile against a riichi 5.0% of the time.",
-   "fix": "Fold with [[7s]], suji against both players, or [[3p]], genbutsu against both. Either costs a shanten. From 2-shanten with about five draws left the hand rarely reaches tenpai at all, so that shanten was worth little, and a leading dealer has more to lose from a deal-in than from a folded hand."
+   "fix": "Fold with [[7s]], suji against both players, or [[3p]], genbutsu against both. Either costs a shanten. From 2-shanten with about five draws left the hand rarely reaches tenpai at all, so that shanten was worth little, and a leading dealer has more to lose from a deal-in than from a folded hand.",
+   "ja": {
+    "title": "リーチを受けた13巡目の2シャンテン",
+    "situation": "東2局1本場、13巡目、残り23枚。親で、34,700点のトップ。対面が6巡目にリーチし、上家が[[F]]をポンしている。自分は2シャンテン。",
+    "did": "2シャンテンを保つため、2人どちらにも生牌の[[8p]]を切った。",
+    "luckyj": "13巡目以降の2シャンテンで、LuckyJがリーチに生牌を切るのは5.0%である。",
+    "fix": "2人どちらにも筋の[[7s]]か、2人どちらにも現物の[[3p]]でオリる。どちらもシャンテンを落とす。ツモが残り5回ほどの2シャンテンではテンパイすることすらまれで、そのシャンテンにはほとんど価値がなかった。トップ目の親にとっては、オリた手よりも放銃で失うものの方が大きい。"
+   }
   },
   {
    "id": "three-threats-five-s",
@@ -240,7 +322,14 @@
    "situation": "South 1, one honba, turn 16 with 6 tiles left. Kamicha declared riichi on turn 11, shimocha has two calls and toimen one. You are third at 20,100 and 2-shanten.",
    "did": "You cut [[5s]]: nakasuji against the riichi, and only half suji against the two open hands, which both hold sou melds.",
    "luckyj": "Against one riichi, LuckyJ's nakasuji cuts dealt into it 2.8 times per 100 and its genbutsu never did.",
-   "fix": "[[3p]] is genbutsu against the riichi and leaves more acceptance, 32 tiles against 26. Neither tile is safe against the open hands. [[7p]] is suji against all three players, but it is a 3-7 suji, the weakest kind, against the riichi."
+   "fix": "[[3p]] is genbutsu against the riichi and leaves more acceptance, 32 tiles against 26. Neither tile is safe against the open hands. [[7p]] is suji against all three players, but it is a 3-7 suji, the weakest kind, against the riichi.",
+   "ja": {
+    "title": "受け入れも多く残るリーチへの現物",
+    "situation": "南1局1本場、16巡目、残り6枚。上家が11巡目にリーチし、下家は2副露、対面は1副露。3位、20,100点の2シャンテン。",
+    "did": "[[5s]]を切った。リーチには中筋だが、2人の副露手には片筋にすぎず、2人とも索子を鳴いている。",
+    "luckyj": "1件のリーチに対して、LuckyJの中筋の打牌は100回あたり2.8回放銃し、現物では一度も放銃しなかった。",
+    "fix": "[[3p]]はリーチへの現物で、受け入れも26枚に対して32枚と多く残る。副露手に対しては、どちらの牌も安全ではない。[[7p]]は3人全員に筋だが、リーチに対しては最も弱い3・7の筋である。"
+   }
   },
   {
    "id": "two-riichis-eight-m",
@@ -258,7 +347,14 @@
    "situation": "South 2, one honba, turn 16 with 7 tiles left. Shimocha and kamicha are both in riichi. You are second at 23,400 and 1-shanten.",
    "did": "You cut [[8m]]: genbutsu against kamicha, live against shimocha.",
    "luckyj": "When a safe tile leaves exactly the same shanten and acceptance, LuckyJ pushes past it about 2% of the time at 1-shanten.",
-   "fix": "[[6m]] is genbutsu against both riichis and leaves the same 10 tiles. With two riichis, check every tile against each river separately."
+   "fix": "[[6m]] is genbutsu against both riichis and leaves the same 10 tiles. With two riichis, check every tile against each river separately.",
+   "ja": {
+    "title": "2件リーチ：両方に対して牌を確かめる",
+    "situation": "南2局1本場、16巡目、残り7枚。下家と上家がともにリーチしている。2位、23,400点の1シャンテン。",
+    "did": "[[8m]]を切った。上家には現物だが、下家には生牌である。",
+    "luckyj": "シャンテンも受け入れもまったく同じになる安全牌があるとき、1シャンテンのLuckyJがそれを切らずに押すのは約2%である。",
+    "fix": "[[6m]]は両方のリーチに現物で、受け入れも同じ10枚。リーチが2件あるときは、どの牌もそれぞれの河に対して別々に確かめる。"
+   }
   },
   {
    "id": "keep-eight-tiles",
@@ -276,7 +372,14 @@
    "situation": "South 3, turn 10. Kamicha declared riichi on turn 4. You are third at 24,500, open with two chis and a concealed [[F]] triplet, and you draw the red [[5sr]].",
    "did": "You cut [[6m]], genbutsu, and gave up the tenpai.",
    "luckyj": "With an open tenpai against a riichi, where keeping it needs a dangerous tile, LuckyJ pushes 93% of the time with 8 or more live tiles, and 91% of the time when such a hand is only 1 or 2 han.",
-   "fix": "Cut the red [[5sr]] and wait on [[5m]]-[[8m]] with 8 tiles. It costs a han and leaves [[F]] and the red [[5pr]], about 2,000 points. An 8-tile wait with a yaku is the tenpai you push."
+   "fix": "Cut the red [[5sr]] and wait on [[5m]]-[[8m]] with 8 tiles. It costs a han and leaves [[F]] and the red [[5pr]], about 2,000 points. An 8-tile wait with a yaku is the tenpai you push.",
+   "ja": {
+    "title": "残り8枚の副露テンパイをオリた",
+    "situation": "南3局、10巡目。上家が4巡目にリーチしている。3位、24,500点。チーが2つと[[F]]の暗刻がある副露手で、赤[[5sr]]を引く。",
+    "did": "現物の[[6m]]を切り、テンパイを崩した。",
+    "luckyj": "リーチに対する副露テンパイで、保つには危険牌を切る必要があるとき、LuckyJは残り8枚以上の待ちなら93%で押す。そうした手が1翻か2翻しかなくても91%で押す。",
+    "fix": "赤[[5sr]]を切り、[[5m]]-[[8m]]待ちで残り8枚に取る。1翻を失い、残るのは[[F]]と赤[[5pr]]で、約2,000点。役のある残り8枚の待ちは、押すべきテンパイである。"
+   }
   },
   {
    "id": "yakuless-one-tile-tenpai",
@@ -294,7 +397,14 @@
    "situation": "South 2, turn 14 with 14 tiles left. Kamicha has just declared riichi and shimocha has ponned [[4s]]. You are fourth at 20,800 and draw [[3p]] into tenpai.",
    "did": "You cut [[2s]], live against the riichi, to wait on [[4s]]. The hand has no yaku, so it could only win by tsumo, and three [[4s]] were already in shimocha's pon: one tile in the whole game could complete it. The [[2s]] dealt in for 8,000.",
    "luckyj": "LuckyJ pushes 43% of its tenpai hands against a riichi, you 38%. What decides the push is the yaku: LuckyJ pushes 86% of its open tenpais that have a yaku on the wait, and 55% of those with none.",
-   "fix": "Fold with [[2p]], genbutsu against the riichi and suji against shimocha. Cutting the red [[5sr]] for a [[1s]]-[[4s]] wait does not help: all four [[1s]] are gone. A yakuless dama with one live tile is worth about as much as a 1-shanten hand."
+   "fix": "Fold with [[2p]], genbutsu against the riichi and suji against shimocha. Cutting the red [[5sr]] for a [[1s]]-[[4s]] wait does not help: all four [[1s]] are gone. A yakuless dama with one live tile is worth about as much as a 1-shanten hand.",
+   "ja": {
+    "title": "ロンでアガれないテンパイ",
+    "situation": "南2局、14巡目、残り14枚。上家がリーチしたばかりで、下家は[[4s]]をポンしている。4位、20,800点で、[[3p]]を引いてテンパイ。",
+    "did": "リーチに生牌の[[2s]]を切って[[4s]]待ちに取った。役がないのでツモでしかアガれず、しかも[[4s]]は3枚が下家のポンにあった。この局でアガれる牌は1枚しかなかった。[[2s]]は8,000点の放銃になった。",
+    "luckyj": "リーチに対してLuckyJはテンパイの43%で押し、あなたは38%。押すかどうかを決めるのは役である。LuckyJは待ちに役のある副露テンパイの86%を押し、役のないものは55%である。",
+    "fix": "リーチに現物で下家に筋の[[2p]]でオリる。赤[[5sr]]を切って[[1s]]-[[4s]]待ちにしても助けにならない。[[1s]]は4枚とも見えている。残り1枚の役なしダマは、1シャンテンの手とほぼ同じ価値しかない。"
+   }
   },
   {
    "id": "flush-double-south",
@@ -312,7 +422,14 @@
    "situation": "South 3, turn 5. You lead with 29,500. On turn 4 you ponned [[S]], the round wind and your seat wind, for 2 han. Your one dora is the red [[5sr]], and eleven of your fourteen tiles are souzu or honors. You draw [[5m]].",
    "did": "You cut [[2s]] and kept [[4m]]-[[5m]] and the lone [[4p]]. More souzu followed it out over the next turns, and the hand was still 1-shanten at the draw.",
    "luckyj": "When a first call leaves eleven or more of the fourteen tiles in one suit plus honors, and every dora in hand fits that suit, LuckyJ finishes the flush 59% of the time and wins one hand in five with it, for about 10,000.",
-   "fix": "Cut [[4p]]. It leaves the same 2-shanten and the same 15 tiles of acceptance as [[2s]], and it keeps the flush open. Double South, honitsu and the red five are 5 han, a mangan. Without the flush the hand is 3 han."
+   "fix": "Cut [[4p]]. It leaves the same 2-shanten and the same 15 tiles of acceptance as [[2s]], and it keeps the flush open. Double South, honitsu and the red five are 5 han, a mangan. Without the flush the hand is 3 han.",
+   "ja": {
+    "title": "満貫の目を残す、損のない一打",
+    "situation": "南3局、5巡目。29,500点でトップ。4巡目に場風で自風の[[S]]をポンして2翻。ドラは赤の[[5sr]]1枚で、14枚のうち11枚がソーズか字牌。[[5m]]を引いた。",
+    "did": "[[2s]]を切り、[[4m]]-[[5m]]と孤立した[[4p]]を残した。その後の数巡でさらにソーズが出ていき、流局の時点でも手は1シャンテンのままだった。",
+    "luckyj": "最初の鳴きの後、14枚のうち11枚以上が一色と字牌で、手の中のドラがすべてその色に合う時、LuckyJは59%で染め手を完成させ、5局に1局はそれでアガる。打点は約10,000点。",
+    "fix": "[[4p]]を切る。[[2s]]と同じ2シャンテン、同じ受け入れ15枚のままで、染め手の道も残る。ダブ南、混一色、赤5で5翻の満貫。染め手がなければ3翻である。"
+   }
   },
   {
    "id": "three-tells-late-chi",
@@ -324,20 +441,29 @@
      "turn": 16,
      "expect_cut": "7m",
      "better": "S",
-     "note": "Shimocha shows all three tells: two calls, the second one late, and five draws in a row thrown straight from the wall since. [[S]] is the tile you just drew."
+     "note": "Shimocha shows all three tells: two calls, the second one late, and five draws in a row thrown straight from the wall since. [[S]] is the tile you just drew.",
+     "note_ja": "下家は3つのサインをすべて見せている。2副露、2回目の鳴きが遅い、その後5回続けてツモ切り。[[S]]は今引いた牌。"
     },
     {
      "turn": 17,
      "expect_cut": "6m",
      "better": "S",
-     "note": "Shimocha has thrown a sixth straight draw from the wall. [[S]] is still the safest tile and keeps the most acceptance."
+     "note": "Shimocha has thrown a sixth straight draw from the wall. [[S]] is still the safest tile and keeps the most acceptance.",
+     "note_ja": "下家は6回続けてツモ切りした。[[S]]は今も一番安全な牌で、受け入れも一番多く残る。"
     }
    ],
    "title": "Two live cuts into a caller showing all three tells",
    "situation": "East 1, turn 16, all four players on 25,000. Your two [[1p]] are dora, and you ponned [[9s]] on turn 5. Shimocha ponned [[C]], then chied your red [[5sr]] on turn 10, and has thrown every draw since straight from the wall. You are 1-shanten and draw [[S]].",
    "did": "You cut [[7m]], then [[6m]] on turn 17, both live against shimocha. You reached tenpai with a [[F]] pon on turn 18 and dealt in to shimocha with [[4m]] on turn 19 for 3,900.",
    "luckyj": "With all three tells showing, the caller is tenpai 84% of the time in LuckyJ's games. At 1-shanten with a safe tile in hand, LuckyJ then cuts a live tile 32% of the time.",
-   "fix": "Cut [[S]] both turns. On turn 16 it keeps 1-shanten with 10 tiles of acceptance, twice what [[7m]] keeps, and with two other copies showing only a tanki can hit it. The hand still improves on [[5m]], [[8m]], [[1p]] and [[F]] without handing shimocha a live tile."
+   "fix": "Cut [[S]] both turns. On turn 16 it keeps 1-shanten with 10 tiles of acceptance, twice what [[7m]] keeps, and with two other copies showing only a tanki can hit it. The hand still improves on [[5m]], [[8m]], [[1p]] and [[F]] without handing shimocha a live tile.",
+   "ja": {
+    "title": "3つのサインを見せる副露者に、生牌を2枚",
+    "situation": "東1局、16巡目。4人とも25,000点。手の[[1p]]2枚がドラで、5巡目に[[9s]]をポンしている。下家は[[C]]をポンし、10巡目にあなたの赤[[5sr]]をチーして、それからはすべてツモ切り。1シャンテンで[[S]]を引いた。",
+    "did": "[[7m]]を切り、17巡目に[[6m]]を切った。どちらも下家に生牌。18巡目に[[F]]をポンしてテンパイし、19巡目に[[4m]]で下家に3,900点を放銃した。",
+    "luckyj": "3つのサインがすべて見えている時、LuckyJの半荘では副露者の84%がテンパイしている。その場面の1シャンテンで安全牌を持っていれば、LuckyJが生牌を切るのは32%。",
+    "fix": "2巡とも[[S]]を切る。16巡目なら1シャンテンのまま受け入れ10枚で、[[7m]]切りの2倍。2枚見えなので、当たるのは単騎だけである。[[5m]]、[[8m]]、[[1p]]、[[F]]で手が進み、下家に生牌を渡さずに済む。"
+   }
   },
   {
    "id": "dealer-genbutsu-three-tells",
@@ -355,7 +481,14 @@
    "situation": "East 4, one honba, turn 14. You are the dealer, second on 23,100, 1-shanten with the [[8p]] dora and a [[3s]]-[[4s]]-[[5s]] chi. Shimocha ponned [[1m]], chied your [[7m]] on turn 8 for a second call, and has thrown five straight draws from the wall since. Kamicha has one chi. You draw [[3p]].",
    "did": "You cut the [[3p]] you drew, live against both callers. Nobody won, and the hand ended in a draw.",
    "luckyj": "At 1-shanten with dora in hand and all three tells showing, LuckyJ cuts a live tile 32% of the time when it holds a safe one. When the safe tile keeps the same shanten and acceptance, it is the only cut.",
-   "fix": "Cut [[8s]]. It is genbutsu against both callers and leaves the same 1-shanten and 20 tiles of acceptance as [[3p]]."
+   "fix": "Cut [[8s]]. It is genbutsu against both callers and leaves the same 1-shanten and 20 tiles of acceptance as [[3p]].",
+   "ja": {
+    "title": "3つのサインを見せる副露者に、損のない現物",
+    "situation": "東4局1本場、14巡目。親で2位、23,100点。ドラの[[8p]]と[[3s]]-[[4s]]-[[5s]]のチーで1シャンテン。下家は[[1m]]をポンし、8巡目にあなたの[[7m]]をチーして2副露、その後5回続けてツモ切り。上家はチーが1つ。[[3p]]を引いた。",
+    "did": "引いた[[3p]]をそのまま切った。2人の副露者のどちらにも生牌。誰もアガらず、流局した。",
+    "luckyj": "ドラを持った1シャンテンで3つのサインがすべて見えている時、安全牌を持っていれば、LuckyJが生牌を切るのは32%。安全牌を切っても同じシャンテン数と受け入れが残るなら、切る牌はそれしかない。",
+    "fix": "[[8s]]を切る。2人の副露者のどちらにも現物で、[[3p]]と同じ1シャンテン、受け入れ20枚が残る。"
+   }
   },
   {
    "id": "all-last-chun-riichi",
@@ -373,7 +506,14 @@
    "situation": "South 4, the last hand, turn 9. You are third on 19,800: 5,500 behind second and 7,800 ahead of the dealer, kamicha, in fourth. The dealer has ponned [[1p]] and chied [[6p]]-[[7p]]-[[8p]], a pinzu half flush in the making, and toimen has two calls. You draw [[6s]] into tenpai on [[1m]]-[[4m]] with riichi, pinfu and the [[2m]] dora, but the tile you must cut is a live [[C]].",
    "did": "You declared riichi with [[C]]. The dealer was waiting on it and won 5,800 with the half flush and chun, plus your riichi stick. That left the dealer on 18,800 and you on 13,000, in fourth, and you finished the game there.",
    "luckyj": "Going into a game's final hand in third, LuckyJ drops to fourth through its own deal-in 3.2% of the time, over 251 such hands.",
-   "fix": "Cut [[2s]], genbutsu against both callers, and stay at 1-shanten with the chun kept. A win here moves you from third to second, worth about 75 rank points at your level. This deal-in moved you to fourth, which costs about 265 more than third. A live dragon into a two-call half flush that has to win is too big a risk for that trade."
+   "fix": "Cut [[2s]], genbutsu against both callers, and stay at 1-shanten with the chun kept. A win here moves you from third to second, worth about 75 rank points at your level. This deal-in moved you to fourth, which costs about 265 more than third. A live dragon into a two-call half flush that has to win is too big a risk for that trade.",
+   "ja": {
+    "title": "オーラス3位、親の染め手に生牌の中",
+    "situation": "南4局オーラス、9巡目。19,800点で3位。2位を5,500点差で追い、4位の親（上家）を7,800点リードしている。親は[[1p]]をポンし、[[6p]]-[[7p]]-[[8p]]をチーしていて、ピンズの混一色に向かっている。対面も2副露。[[6s]]を引いて[[1m]]-[[4m]]待ちのテンパイ。リーチ、平和、ドラの[[2m]]があるが、切らなければならないのは生牌の[[C]]である。",
+    "did": "[[C]]でリーチした。親の待ちはその牌で、混一色と中の5,800点に、あなたのリーチ棒が加わった。親は18,800点、あなたは13,000点で4位になり、そのまま4位で半荘を終えた。",
+    "luckyj": "3位でオーラスを迎えた251局で、LuckyJが自分の放銃で4位に落ちたのは3.2%。",
+    "fix": "2人の副露者のどちらにも現物の[[2s]]を切り、中を残して1シャンテンにとどまる。ここでアガれば3位から2位に上がり、あなたの段位では約75段位ポイントの価値がある。この放銃で4位に落ち、3位より約265ポイント多く失った。アガるしかない2副露の混一色に生牌の三元牌を切るのは、その取引には危険が大きすぎる。"
+   }
   },
   {
    "id": "seven-pairs-honor",
@@ -391,7 +531,14 @@
    "situation": "East 2, turn 8. You lead with 33,000 and are 2-shanten with an open [[3p]]-[[4p]]-[[5p]] chi. The dealer, toimen, has just declared riichi, and kamicha has chied twice in souzu.",
    "did": "You cut [[F]]. Two other copies were showing, so only a single-tile wait could hit it, and it was genbutsu against kamicha. The dealer's seven pairs was waiting on exactly that tile: 18,000 with the half flush, riichi and ippatsu.",
    "luckyj": "Against one riichi, LuckyJ's cuts of an honor with two other copies showing deal in 0.2 times per 100.",
-   "fix": "No mistake. [[3s]] and [[5s]] were genbutsu against the dealer, but live against kamicha's souzu hand, and they cost a shanten. The one read that could have saved it is the dealer's river: pinzu, souzu and a single manzu, the pattern of a manzu half flush, where honors are the tiles that hit."
+   "fix": "No mistake. [[3s]] and [[5s]] were genbutsu against the dealer, but live against kamicha's souzu hand, and they cost a shanten. The one read that could have saved it is the dealer's river: pinzu, souzu and a single manzu, the pattern of a manzu half flush, where honors are the tiles that hit.",
+   "ja": {
+    "title": "18,000点を払った、正しいオリ",
+    "situation": "東2局、8巡目。33,000点でトップ。[[3p]]-[[4p]]-[[5p]]をチーしていて2シャンテン。親の対面がリーチしたところで、上家はソーズで2回チーしている。",
+    "did": "[[F]]を切った。2枚見えなので当たるのは単騎待ちだけで、上家には現物だった。親の七対子の待ちがまさにその牌で、混一色、リーチ、一発つきの18,000点。",
+    "luckyj": "リーチ1人に対して、LuckyJが2枚見えの字牌を切った時の放銃は100回あたり0.2回。",
+    "fix": "ミスではない。[[3s]]と[[5s]]は親には現物だったが、上家のソーズの手には生牌で、しかもシャンテン数が1つ下がる。防げたとすれば、親の河の読みだけである。ピンズとソーズに、マンズが1枚だけ。これはマンズの混一色の形で、当たるのは字牌である。"
+   }
   },
   {
    "id": "straight-push-fourth",
@@ -409,7 +556,14 @@
    "situation": "South 4, two honba, turn 18, five tiles left. You are fourth on 12,400. The dealer, kamicha, declared riichi on turn 7 and is third on 19,600, and shimocha has three calls. Your open hand waits on [[3p]] with a pinzu straight and three dora, about 7,700, enough to take third.",
    "did": "You pushed the [[7s]] you drew, live against both, and dealt in to the dealer for 12,200. That left you 200 points, and a tsumo in the next hand put you below zero.",
    "luckyj": "With 3 or more han on 3 or fewer live tiles, LuckyJ pushes an open tenpai against a riichi 87% of the time.",
-   "fix": "A close call, not a mistake. Folding with [[1p]], genbutsu against both, kept you alive in fourth for the next hand. Pushing was the only way to take third in this one. From fourth a deal-in cannot cost you a place, which is why this push is defensible and the chun riichi in the first example was not."
+   "fix": "A close call, not a mistake. Folding with [[1p]], genbutsu against both, kept you alive in fourth for the next hand. Pushing was the only way to take third in this one. From fourth a deal-in cannot cost you a place, which is why this push is defensible and the chun riichi in the first example was not.",
+   "ja": {
+    "title": "4位、3位に届くテンパイ、生牌1枚",
+    "situation": "南4局2本場、18巡目、山は残り5枚。12,400点で4位。親の上家が7巡目にリーチしていて、19,600点で3位。下家は3副露。あなたの副露手は[[3p]]待ちで、ピンズの一気通貫とドラ3、約7,700点。3位に上がれる。",
+    "did": "引いた[[7s]]を押した。2人のどちらにも生牌で、親に12,200点を放銃。残りは200点になり、次の局のツモで持ち点がマイナスになった。",
+    "luckyj": "3翻以上で残り3枚以下の待ちなら、LuckyJはリーチに対して副露テンパイを87%押す。",
+    "fix": "きわどい判断で、ミスとは言えない。2人のどちらにも現物の[[1p]]でオリれば、4位のまま次の局に進めた。この局で3位を取るには押すしかなかった。4位からは放銃しても順位は下がらない。だからこの押しは弁護できるが、最初の例の、中を切ってのリーチは弁護できない。"
+   }
   },
   {
    "id": "tanyao-push-one-pin",
@@ -427,7 +581,14 @@
    "situation": "East 3, turn 14. You are second on 25,300. Kamicha declared riichi on turn 11, and shimocha and toimen have a call each. Your open tanyao with two dora is tenpai on [[7p]] with 4 live tiles, and you draw [[1p]], live against all three.",
    "did": "You pushed it and dealt in to the riichi for 5,200.",
    "luckyj": "With 3 or more han and 4 or more live tiles, LuckyJ pushes an open tenpai against a riichi 95% of the time.",
-   "fix": "No mistake. Every other cut broke the tenpai, and a 3-han hand with a live wait is one to push. Your pushes of these hands deal in 23% of the time, as LuckyJ's do, and this was one of them."
+   "fix": "No mistake. Every other cut broke the tenpai, and a 3-han hand with a live wait is one to push. Your pushes of these hands deal in 23% of the time, as LuckyJ's do, and this was one of them.",
+   "ja": {
+    "title": "リーチに押した3翻の副露テンパイ",
+    "situation": "東3局、14巡目。25,300点で2位。上家が11巡目にリーチ、下家と対面は1副露ずつ。ドラ2枚の副露タンヤオが[[7p]]待ち、残り4枚でテンパイしていて、[[1p]]を引いた。3人全員に生牌。",
+    "did": "押して、リーチに5,200点を放銃した。",
+    "luckyj": "3翻以上で残り4枚以上なら、LuckyJはリーチに対して副露テンパイを95%押す。",
+    "fix": "ミスではない。他のどの牌を切ってもテンパイが崩れる。残り枚数のある待ちの3翻は押す手である。こうした手の押しで放銃するのはLuckyJと同じく23%で、今回がその1回だった。"
+   }
   },
   {
    "id": "riichi-then-three-man",
@@ -445,7 +606,14 @@
    "situation": "South 2, one honba, turn 12. You are fourth on 14,000, and toimen has one call. You hold a closed chun triplet and draw into tenpai on [[4m]]-[[7m]] with 8 live tiles.",
    "did": "You declared riichi with [[6p]]. The next turn you drew [[3m]], toimen's winning tile, and had to cut it: 4,200 and your stick.",
    "luckyj": "With nobody in riichi, LuckyJ declares 93% of first closed tenpais with 8 or more live tiles.",
-   "fix": "No mistake. From fourth the hand needed riichi's value, since dama with the chun alone wins 1,300. Once you are in riichi the drawn tile goes out, and this one hit."
+   "fix": "No mistake. From fourth the hand needed riichi's value, since dama with the chun alone wins 1,300. Once you are in riichi the drawn tile goes out, and this one hit.",
+   "ja": {
+    "title": "当たり牌を引いたリーチ",
+    "situation": "南2局1本場、12巡目。14,000点で4位。対面が1副露。中の暗刻を持ち、[[4m]]-[[7m]]待ち、残り8枚のテンパイを引いた。",
+    "did": "[[6p]]でリーチした。次の巡目に対面の当たり牌[[3m]]を引き、切るしかなかった。4,200点とリーチ棒を失った。",
+    "luckyj": "リーチ者がいない時、残り8枚以上の最初の門前テンパイを、LuckyJは93%リーチする。",
+    "fix": "ミスではない。ダマでは中のみの1,300点なので、4位からはリーチの打点が必要だった。リーチをかければ引いた牌は切るしかなく、今回はそれが当たった。"
+   }
   },
   {
    "id": "last-discard-tenpai",
@@ -463,7 +631,14 @@
    "situation": "East 1, turn 17, one tile left in the wall. Everyone is near 25,000. Toimen declared riichi on turn 16, and shimocha and kamicha have a call each. You hold seven pairs with two dora, and the [[3s]] you just drew is your third [[3s]]: cutting it keeps tenpai on [[6p]].",
    "did": "You folded with [[S]], genbutsu against everyone, and paid 1,500 at the draw for being noten.",
    "luckyj": "Against one riichi, LuckyJ's cuts of a live 2-to-8 tile deal in 8.2 times per 100.",
-   "fix": "Cut [[3s]]. Tenpai at this draw would have earned you 1,000 instead of costing 1,500, a swing of 2,500. The live [[3s]] risks about one deal-in in twelve against the riichi and a few per hundred against the two callers, so its expected cost is far below the swing."
+   "fix": "Cut [[3s]]. Tenpai at this draw would have earned you 1,000 instead of costing 1,500, a swing of 2,500. The live [[3s]] risks about one deal-in in twelve against the riichi and a few per hundred against the two callers, so its expected cost is far below the swing.",
+   "ja": {
+    "title": "最後の打牌、テンパイで2,500点の差",
+    "situation": "東1局、17巡目、山は残り1枚。全員25,000点前後。対面が16巡目にリーチし、下家と上家は1副露ずつしている。手は七対子でドラ2枚。いま引いた[[3s]]は3枚目の[[3s]]で、これを切れば[[6p]]待ちのテンパイを保てる。",
+    "did": "全員に対して現物の[[S]]を切ってオリ、流局でノーテン罰符1,500点を払った。",
+    "luckyj": "リーチ1人に対してLuckyJが無筋の2〜8を切ると、100回に8.2回放銃する。",
+    "fix": "[[3s]]を切る。この流局でテンパイなら、1,500点を払う代わりに1,000点を受け取れた。差は2,500点である。無筋の[[3s]]がリーチに当たるのは12回に1回ほど、2人の副露者に当たるのは100回に数回なので、見込まれる損はこの差よりはるかに小さい。"
+   }
   },
   {
    "id": "cheap-narrow-fold",
@@ -481,7 +656,14 @@
    "situation": "South 4, the last hand, turn 6. You are third on 12,500, only 700 above fourth. The dealer, kamicha, leads with 55,300 and has just declared riichi. You are tenpai with a hatsu triplet but only two winning tiles left, and you draw [[4p]], live against the riichi. Cutting it keeps the tenpai.",
    "did": "You cut [[1m]], genbutsu, dropping to 1-shanten with 33 tiles that improve the hand. The dealer won 12,000 off shimocha, and you finished third.",
    "luckyj": "With 1 or 2 han and 3 or fewer live tiles, LuckyJ's pushes against a riichi lose 1,374 points per hand, and it folds a third of these tenpais.",
-   "fix": "No mistake. A cheap tenpai on two tiles is the push that loses even for LuckyJ, and here a deal-in to the dealer would also have dropped you to fourth. The [[1m]] fold kept a good hand that could come back to tenpai safely."
+   "fix": "No mistake. A cheap tenpai on two tiles is the push that loses even for LuckyJ, and here a deal-in to the dealer would also have dropped you to fourth. The [[1m]] fold kept a good hand that could come back to tenpai safely.",
+   "ja": {
+    "title": "安く狭いテンパイから、手を捨てずにオリる",
+    "situation": "南4局（オーラス）、6巡目。3位で12,500点、4位とは700点差しかない。親の上家が55,300点のトップで、いまリーチした。手は發の刻子があるテンパイだが、和了牌は残り2枚しかない。そこへ引いた[[4p]]はリーチに対して無筋で、これを切ればテンパイを保てる。",
+    "did": "現物の[[1m]]を切って1シャンテンに戻した。有効牌は33枚。親が下家から12,000点をアガり、あなたは3位で終えた。",
+    "luckyj": "1〜2翻で残り3枚以下のとき、LuckyJのリーチへの押しは1局あたり1,374点の損で、このテンパイの3分の1はオリる。",
+    "fix": "ミスではない。残り2枚の安いテンパイは、LuckyJでも押すと損になる押しである。しかもここで親に放銃すれば4位に落ちていた。[[1m]]でのオリは、安全にテンパイへ戻れる良い手を残した。"
+   }
   },
   {
    "id": "three-han-push-won",
@@ -499,7 +681,14 @@
    "situation": "South 2, turn 11. You are the dealer and lead with 50,900. Shimocha declared riichi on turn 8. You draw [[3s]] into tenpai with tanyao, pinfu and a dora, and both tiles that keep it are live 2-to-8 tiles.",
    "did": "You declared riichi with [[7m]] and won 11,600 off shimocha on [[4p]]-[[7p]], plus the riichi sticks.",
    "luckyj": "With 3 or 4 han and 4 to 7 live tiles, LuckyJ pushes 92% of these tenpais and nets 890 points per push.",
-   "fix": "No mistake. This is the push the table is for: with 3 han and a live wait, every cell of LuckyJ's table earns."
+   "fix": "No mistake. This is the push the table is for: with 3 han and a live wait, every cell of LuckyJ's table earns.",
+   "ja": {
+    "title": "3翻のテンパイでリーチに押し、報われた",
+    "situation": "南2局、11巡目。親で50,900点のトップ。下家が8巡目にリーチしている。[[3s]]を引いてタンヤオ、平和、ドラ1のテンパイになり、テンパイを保つ2枚はどちらも無筋の2〜8である。",
+    "did": "[[7m]]でリーチし、[[4p]]-[[7p]]待ちで下家から11,600点をアガった。リーチ棒も加わった。",
+    "luckyj": "3〜4翻で残り4〜7枚なら、LuckyJはこのテンパイの92%を押し、押し1回あたり890点のプラスである。",
+    "fix": "ミスではない。表が扱っているのはまさにこの押しである。3翻あって待ちが生きていれば、LuckyJの表のどのマスもプラスになる。"
+   }
   },
   {
    "id": "three-han-tanki-dealt",
@@ -517,7 +706,14 @@
    "situation": "South 2, turn 11. You are fourth on 19,600 with three calls: [[1m]]-[[2m]]-[[3m]], a double-wind [[S]] pon and [[6m]]-[[7m]]-[[8m]]. Shimocha declared riichi on turn 6. You hold [[4m]][[5m]][[6m]] [[3p]] [[8p]]: either pin keeps a single-tile wait on the other, and both are live.",
    "did": "You cut [[8p]] and dealt in for 7,700.",
    "luckyj": "With 3 or 4 han and 3 or fewer live tiles, LuckyJ pushes 82% of these tenpais and nets 293 points per push: a win about one time in five pays for the deal-ins.",
-   "fix": "No mistake, and the closest of these pushes. From fourth you need the win, and LuckyJ makes this push four times in five. This was the one in five that deals in."
+   "fix": "No mistake, and the closest of these pushes. From fourth you need the win, and LuckyJ makes this push four times in five. This was the one in five that deals in.",
+   "ja": {
+    "title": "3翻の単騎待ちでリーチに押し、放銃した",
+    "situation": "南2局、11巡目。4位で19,600点、3副露している：[[1m]]-[[2m]]-[[3m]]、ダブ南の[[S]]のポン、[[6m]]-[[7m]]-[[8m]]。下家が6巡目にリーチ。手は[[4m]][[5m]][[6m]] [[3p]] [[8p]]で、どちらの筒子を切っても残る方の単騎待ちになり、2枚とも無筋である。",
+    "did": "[[8p]]を切り、7,700点の放銃。",
+    "luckyj": "3〜4翻で残り3枚以下なら、LuckyJはこのテンパイの82%を押し、押し1回あたり293点のプラスである。5回に1回ほどのアガリで放銃分をまかなえる。",
+    "fix": "ミスではないが、これらの押しの中で最もきわどい。4位からはアガリが必要で、LuckyJはこの押しを5回に4回する。今回は、放銃する5回に1回の方だった。"
+   }
   },
   {
    "id": "cheap-tenpai-folded",
@@ -535,7 +731,14 @@
    "situation": "South 2, turn 16, 11 tiles left. You are third on 15,800, 600 behind toimen and 3,000 ahead of the dealer. Your [[N]] pon is your seat wind, so the hand has a yaku, and the [[3m]] you drew makes tenpai if you cut [[F]]: a kanchan on [[6m]] with 3 live tiles. Toimen has a sou chi and a [[C]] pon and has thrown two drawn tiles in a row, two of chapter 8's three tells.",
    "did": "You cut [[8s]], genbutsu against toimen, and gave up the tenpai. Nobody won, toimen was the only player tenpai, and you paid 1,000. Toimen was waiting on [[7m]], and kamicha held the other two [[F]].",
    "luckyj": "With a 1-han open tenpai against a caller showing two or three tells, when every tile that keeps it is unsafe, LuckyJ keeps it 90% of the time. From turn 13 on, the 1- and 2-han open tenpais it keeps against a caller gain 128 points a hand on average, and the ones it folds lose 1,785.",
-   "fix": "Cut [[F]] and stay tenpai. With two draws left the hand will most likely reach the draw, where tenpai is worth 2,500 here: +1,500 instead of −1,000. A live dragon against a [[C]] pon is the riskiest kind of honor to push, and LuckyJ still keeps this tenpai nine times in ten."
+   "fix": "Cut [[F]] and stay tenpai. With two draws left the hand will most likely reach the draw, where tenpai is worth 2,500 here: +1,500 instead of −1,000. A live dragon against a [[C]] pon is the riskiest kind of honor to push, and LuckyJ still keeps this tenpai nine times in ten.",
+   "ja": {
+    "title": "残りツモ2回で、1翻のテンパイをオリた",
+    "situation": "南2局、16巡目、山は残り11枚。3位で15,800点、対面まで600点、親には3,000点リード。[[N]]のポンは自風なので役があり、引いた[[3m]]で[[F]]を切ればテンパイになる。[[6m]]のカンチャン待ちで、残り3枚。対面は索子のチーと[[C]]のポンをしていて、2回続けてツモ切りしている。第8章の3つのサインのうち2つである。",
+    "did": "対面の現物[[8s]]を切ってテンパイを崩した。誰もアガらず、テンパイは対面だけで、あなたは1,000点を払った。対面の待ちは[[7m]]で、残り2枚の[[F]]は上家が持っていた。",
+    "luckyj": "サインが2つか3つ出ている副露者に対し、1翻の副露テンパイを保つ牌がどれも安全牌でないとき、LuckyJは90%テンパイを保つ。13巡目以降、副露者に対して保った1〜2翻の副露テンパイは1局あたり平均128点の得、オリたものは1,785点の損である。",
+    "fix": "[[F]]を切ってテンパイを保つ。残りツモ2回なら、この局は流局まで行く可能性が高く、ここではテンパイに2,500点の価値がある。−1,000ではなく+1,500になる。[[C]]をポンした相手に生きた三元牌を押すのは字牌の押しで最も危険な部類だが、それでもLuckyJはこのテンパイを10回に9回保つ。"
+   }
   },
   {
    "id": "chun-tenpai-kept",
@@ -553,7 +756,14 @@
    "situation": "East 2, turn 15, 17 tiles left. You are the dealer and first on 28,300. After your [[C]] pon and [[7p]]-[[8p]]-[[9p]] chi, you chi kamicha's [[4p]] with [[3p]]-[[5p]] and hold [[3m]] [[2s]] [[2s]] [[6s]] [[8s]]. Cutting [[3m]] makes tenpai on [[7s]] with 4 live tiles, worth 1 han. Kamicha called on their 12th discard and has thrown two drawn tiles since, two tells, and [[3m]] is live against them.",
    "did": "You cut [[3m]] and kept the tenpai. Toimen let go of [[7s]] and you won 1,500.",
    "luckyj": "LuckyJ keeps a 1-han open tenpai against a caller showing two or three tells 90% of the time. As the dealer the tenpai is worth more still: at the draw it keeps the deal.",
-   "fix": "Right push. This is the tenpai to keep, and you kept it."
+   "fix": "Right push. This is the tenpai to keep, and you kept it.",
+   "ja": {
+    "title": "サイン2つに対して、親の1翻テンパイを保つ",
+    "situation": "東2局、15巡目、山は残り17枚。親で1位、28,300点。[[C]]のポンと[[7p]]-[[8p]]-[[9p]]のチーの後、上家の[[4p]]を[[3p]]-[[5p]]でチーし、手は[[3m]] [[2s]] [[2s]] [[6s]] [[8s]]。[[3m]]を切れば[[7s]]待ちのテンパイで、残り4枚、1翻。上家は12打目で鳴き、その後2回ツモ切りしている。サインは2つで、[[3m]]は上家に対して無筋である。",
+    "did": "[[3m]]を切ってテンパイを保った。対面が[[7s]]を切り、1,500点をアガった。",
+    "luckyj": "サインが2つか3つ出ている副露者に対し、LuckyJは1翻の副露テンパイを90%保つ。親ならテンパイの価値はさらに高い。流局しても親が続くからである。",
+    "fix": "正しい押し。保つべきテンパイで、実際に保った。"
+   }
   },
   {
    "id": "tanyao-tenpai-dealt",
@@ -571,7 +781,14 @@
    "situation": "South 3, turn 11, 32 tiles left. You are first on 35,500, 6,200 ahead of kamicha. Shimocha's [[2s]] lets you pon from a closed 1-shanten into tenpai: [[3m]] [[3m]] [[6m]] [[8m]] [[8m]] [[3p]] [[4p]] [[5p]] [[5sr]] [[6s]] [[7s]] with the pon is tanyao with a red five, 2 han. Cutting [[6m]] or [[8m]] keeps tenpai, both on 4 live tiles, and both are unsafe against kamicha's [[F]] pon. Kamicha has thrown two drawn tiles in a row, one tell.",
    "did": "You ponned and cut [[6m]], half suji, for a [[3m]]-[[8m]] shanpon. Kamicha was waiting on it and won 3,900 with hatsu, a dora and a red five.",
    "luckyj": "From a closed 1-shanten in the second row, LuckyJ makes a call to a 2-han open tenpai about half the time. Once the open tenpai has 2 han and the caller shows one tell, it keeps the tenpai 96% of the time, and the hands it keeps average +796.",
-   "fix": "Right push, bad result. The two tiles that keep tenpai were equally unsafe, and folding would have thrown away a 2-han tenpai to protect a lead the hand could have added to."
+   "fix": "Right push, bad result. The two tiles that keep tenpai were equally unsafe, and folding would have thrown away a 2-han tenpai to protect a lead the hand could have added to.",
+   "ja": {
+    "title": "發ポンに対して2翻のテンパイを保つ",
+    "situation": "南3局、11巡目、山は残り32枚。1位で35,500点、上家に6,200点リード。下家の[[2s]]をポンすれば、門前の1シャンテンからテンパイになる。[[3m]] [[3m]] [[6m]] [[8m]] [[8m]] [[3p]] [[4p]] [[5p]] [[5sr]] [[6s]] [[7s]]にポンを加えて、タンヤオ赤1の2翻。[[6m]]と[[8m]]のどちらを切ってもテンパイで、どちらも残り4枚、どちらも上家の[[F]]ポンに対して安全牌でない。上家は2回続けてツモ切りしていて、サインは1つ。",
+    "did": "ポンして片筋の[[6m]]を切り、[[3m]]-[[8m]]のシャンポン待ち。上家の待ちがその牌で、發、ドラ1、赤1の3,900点をアガられた。",
+    "luckyj": "二段目の門前1シャンテンから、2翻の副露テンパイになる鳴きを、LuckyJはおよそ半分の場面でする。副露テンパイが2翻で副露者のサインが1つなら、96%テンパイを保ち、保った局の平均は+796である。",
+    "fix": "押しは正しく、結果が悪かった。テンパイを保つ2枚は同じくらい危険で、オリれば、この手でさらに広げられたはずのリードを守るために、2翻のテンパイを捨てることになった。"
+   }
   },
   {
    "id": "early-tanyao-chi",
@@ -588,7 +805,14 @@
    "situation": "South 3, 1 honba, turn 3, 62 tiles left. You are third on 14,800, 3,000 ahead of fourth. Your closed hand is 2-shanten, and 56 tiles improve it. Kamicha throws the red [[5mr]], and your [[3m]]-[[4m]] can chi it for tanyao with a red five.",
    "did": "You chied and cut [[1s]], leaving an open 1-shanten. Two turns later the [[8p]] you drew went into kamicha's dama pinfu for 2,300.",
    "luckyj": "From a 2-shanten in the first two rows, LuckyJ makes a tanyao call 6 to 9% of the time when the closed hand has 40 or more tiles of acceptance, and 38 to 47% when it has fewer than 24. Your 46 early calls without a yakuhai won 13% of their hands and dealt in 33%; LuckyJ's won 31% and dealt in 12%.",
-   "fix": "Pass. A hand this well connected reaches tenpai quickly on its own and keeps riichi, pinfu and tanyao for later; the chi adds one red five and gives the rest up. Take a chi like this from a slow closed hand, or with two or more dora."
+   "fix": "Pass. A hand this well connected reaches tenpai quickly on its own and keeps riichi, pinfu and tanyao for later; the chi adds one red five and gives the rest up. Take a chi like this from a slow closed hand, or with two or more dora.",
+   "ja": {
+    "title": "つながりの良い手から、3巡目のタンヤオのチー",
+    "situation": "南3局1本場、3巡目、山は残り62枚。3位で14,800点、4位に3,000点リード。門前の2シャンテンで、有効牌は56枚。上家が赤の[[5mr]]を切り、[[3m]]-[[4m]]でチーすればタンヤオ赤1になる。",
+    "did": "チーして[[1s]]を切り、副露の1シャンテン。2巡後、引いた[[8p]]が上家のダマの平和に当たり、2,300点の放銃。",
+    "luckyj": "二段目までの2シャンテンからLuckyJがタンヤオの鳴きをするのは、門前の受け入れが40枚以上なら6〜9%、24枚未満なら38〜47%である。役牌のないあなたの早い鳴き46回は、13%の局でアガり、33%で放銃した。LuckyJは31%アガり、12%放銃した。",
+    "fix": "見送る。ここまでつながりの良い手は自力で早くテンパイし、リーチ、平和、タンヤオを後に残せる。チーで加わるのは赤5の1枚だけで、ほかはすべて手放すことになる。このチーは、遅い門前手のときか、ドラが2枚以上あるときにする。"
+   }
   },
   {
    "id": "all-last-yakuless-south",
@@ -599,20 +823,29 @@
     {
      "turn": 12,
      "kind": "call",
-     "note": "The pon of toimen's [[9p]] leaves a 1-shanten whose only realistic yaku is a triplet of [[S]]."
+     "note": "The pon of toimen's [[9p]] leaves a 1-shanten whose only realistic yaku is a triplet of [[S]].",
+     "note_ja": "対面の[[9p]]をポンすると1シャンテンになるが、現実的な役は[[S]]の刻子しかない。"
     },
     {
      "turn": 13,
      "expect_cut": "S",
      "better": "7s",
-     "note": "After the chi, [[S]] is the only cut that keeps tenpai, on [[3m]] with no yaku. [[7s]] is suji against toimen and keeps the south."
+     "note": "After the chi, [[S]] is the only cut that keeps tenpai, on [[3m]] with no yaku. [[7s]] is suji against toimen and keeps the south.",
+     "note_ja": "チーの後、テンパイを保つ打牌は[[S]]だけで、役なしの[[3m]]待ちになる。[[7s]]は対面に筋で、南を残せる。"
     }
    ],
    "title": "Two calls to a tenpai with no yaku, in the last hand",
    "situation": "South 4, the last hand, 1 honba. You are third on 23,600: 5,700 behind kamicha in second and 8,200 ahead of the dealer, toimen, in fourth. Toimen chied [[5m]]-[[6m]]-[[7m]] on their 8th discard, shows no yaku and has thrown every drawn tile since. You hold a lone [[S]], the round wind, and no other copy of it is showing.",
    "did": "You ponned toimen's [[9p]] on turn 12 and chied [[3s]] on turn 13, which made tenpai on a [[3m]] kanchan with no yaku, and cut the [[S]] for it. Toimen held [[S]] [[S]] and [[5p]] [[5p]], and the south was their only yaku. It cost 6,100 and dropped you to fourth, where you finished.",
    "luckyj": "Against a caller, LuckyJ keeps an open tenpai with no yaku only 62% of the time, against 93% or more with a yaku. In the last hand, chapter 10's placement rule comes first.",
-   "fix": "Skip both calls, or after the chi keep the [[S]] and cut [[7s]], suji against toimen. A tenpai with no yaku cannot win by ron and only pays at the draw, and here the draw payment could not change your place: second was 5,700 away, and fourth could only pass you by winning. A live round wind is the likeliest yaku for a caller who shows none."
+   "fix": "Skip both calls, or after the chi keep the [[S]] and cut [[7s]], suji against toimen. A tenpai with no yaku cannot win by ron and only pays at the draw, and here the draw payment could not change your place: second was 5,700 away, and fourth could only pass you by winning. A live round wind is the likeliest yaku for a caller who shows none.",
+   "ja": {
+    "title": "オーラス、2回鳴いて役なしのテンパイ",
+    "situation": "南4局1本場（オーラス）。3位で23,600点。2位の上家まで5,700点、4位の親（対面）には8,200点リード。対面は8打目で[[5m]]-[[6m]]-[[7m]]をチーし、役は見えず、その後はすべてツモ切りしている。手には場風の[[S]]が1枚あり、ほかに1枚も見えていない。",
+    "did": "12巡目に対面の[[9p]]をポンし、13巡目に[[3s]]をチーして、役なしの[[3m]]カンチャン待ちでテンパイを取り、そのために[[S]]を切った。対面は[[S]] [[S]]と[[5p]] [[5p]]を持っていて、南が唯一の役だった。6,100点の放銃で4位に落ち、そのまま4位で終えた。",
+    "luckyj": "副露者に対して、LuckyJが役のない副露テンパイを保つのは62%だけで、役があれば93%以上である。オーラスでは第10章の着順のルールが優先する。",
+    "fix": "2回とも鳴かないか、チーの後は[[S]]を残して、対面に筋の[[7s]]を切る。役のないテンパイはロンでアガれず、点になるのは流局時だけで、ここでは流局の精算で着順は変わらなかった。2位までは5,700点あり、4位はアガらなければあなたを抜けない。役の見えない副露者にとって、生きた場風は最もありそうな役である。"
+   }
   },
   {
    "id": "paid-for-genbutsu",
@@ -634,7 +867,14 @@
    "situation": "East 3, 2 honba. You are third on 22,700; shimocha, the dealer, leads on 32,100. Toimen has chied [[1p]]-[[2p]]-[[3p]] and [[2s]]-[[3s]]-[[4s]] and has just thrown two drawn tiles in a row: two of chapter 8's three tells, at toimen's 8th discard. You are 2-shanten and draw a live [[F]].",
    "did": "You cut the genbutsu [[5p]] and kept the [[F]], though cutting the [[F]] kept more tiles: 45 against 36. On the next turn you did it again with the genbutsu [[8s]]. Toimen was tenpai on [[8p]] and [[F]]. You declared riichi four turns later with the [[F]] still in hand, and the hand went to a draw with you tenpai: +500 after your stick.",
    "luckyj": "With two tells showing, LuckyJ cuts a live tile from a 2-shanten hand about one time in three, and against two calls it throws the safe tile first from the caller's 7th discard.",
-   "fix": "This is chapter 8's fold, paid for with acceptance. Two calls and two tells put toimen past the line, the [[F]] was live, and a genbutsu kept your shanten. The [[F]] would have dealt in on either turn."
+   "fix": "This is chapter 8's fold, paid for with acceptance. Two calls and two tells put toimen past the line, the [[F]] was live, and a genbutsu kept your shanten. The [[F]] would have dealt in on either turn.",
+   "ja": {
+    "title": "現物を2巡続けて切り、副露者のアガリ牌を止める",
+    "situation": "東3局2本場。3位で22,700点。親の下家が32,100点でトップ。対面は[[1p]]-[[2p]]-[[3p]]と[[2s]]-[[3s]]-[[4s]]をチーし、直前に2回続けてツモ切りした。対面の8打目で、第8章の三つのサインのうち二つが出ている。2シャンテンで、生牌の[[F]]を引く。",
+    "did": "現物の[[5p]]を切って[[F]]を残した。受け入れは[[F]]を切るほうが多く、45枚対36枚だった。次の巡も現物の[[8s]]で同じようにした。対面は[[8p]]と[[F]]待ちのテンパイだった。4巡後、[[F]]を持ったままリーチし、局はテンパイで流局。リーチ棒を差し引いて+500点だった。",
+    "luckyj": "サインが二つ見えているとき、LuckyJが2シャンテンの手から生牌を切るのは3回に1回ほどで、2副露の相手には副露者の7打目から安全牌を先に切る。",
+    "fix": "受け入れを犠牲にした、第8章のオリである。2副露とサイン二つで対面はオリラインを越えていて、[[F]]は生牌、現物でシャンテン数を保てた。[[F]]はどちらの巡に切っても放銃だった。"
+   }
   },
   {
    "id": "three-calls-seven-pin",
@@ -652,7 +892,14 @@
    "situation": "East 2, and you are the dealer on 24,300. Toimen leads on 27,700 with three calls, [[1p]]-[[2p]]-[[3p]], a [[C]] pon and [[6s]]-[[7s]]-[[8s]], and ten discards; shimocha has ponned [[P]]. You are 2-shanten and draw a second [[7s]].",
    "did": "You cut [[7p]], live against both callers, and toimen ronned it for chun, 1,000. [[3p]] kept the same 2-shanten with 28 tiles against the [[7p]]'s 31. It was genbutsu against shimocha and suji against toimen, who had thrown a [[6p]].",
    "luckyj": "Against three calls from the caller's 10th to 12th discard, LuckyJ cut a live tile from a 2-shanten or worse hand only one time in four when a safe tile kept its shanten. The caller was tenpai 88% of the time.",
-   "fix": "Cut [[3p]]. Three calls at the caller's 10th discard are well past the line, so the safe tile goes first, and this one cost three tiles of acceptance."
+   "fix": "Cut [[3p]]. Three calls at the caller's 10th discard are well past the line, so the safe tile goes first, and this one cost three tiles of acceptance.",
+   "ja": {
+    "title": "3副露と、受け入れ3枚差の安全牌",
+    "situation": "東2局、親で24,300点。対面が27,700点でトップ。[[1p]]-[[2p]]-[[3p]]、[[C]]のポン、[[6s]]-[[7s]]-[[8s]]の3副露で、河には10枚。下家は[[P]]をポンしている。2シャンテンで、2枚目の[[7s]]を引く。",
+    "did": "副露者2人のどちらにも生牌の[[7p]]を切り、対面に中の1,000点で放銃した。[[3p]]なら同じ2シャンテンで受け入れは28枚、[[7p]]切りは31枚。こちらは下家の現物で、[[6p]]を切っていた対面には筋だった。",
+    "luckyj": "副露者の10〜12打目に3副露の相手に対し、安全牌でシャンテン数を保てるとき、LuckyJが2シャンテン以上の手から生牌を切ったのは4回に1回だけだった。その副露者は88%でテンパイしていた。",
+    "fix": "[[3p]]を切る。副露者の10打目で3副露ならオリラインを大きく越えているので安全牌が先で、この安全牌の代償は受け入れ3枚だった。"
+   }
   },
   {
    "id": "safe-against-both",
@@ -670,7 +917,14 @@
    "situation": "South 2, 3 honba. You lead on 40,200. Shimocha, second on 29,500, declared riichi on their 8th turn, and toimen, the dealer, has ponned [[P]] and has ten discards. You are 2-shanten and draw an [[8s]].",
    "did": "You cut [[9m]], suji against the riichi but a live terminal against toimen, and it also cost you a shanten. Toimen ronned it for haku and a red five, 3,800 with the honba. [[9p]] was suji against both players and kept your 2-shanten.",
    "luckyj": "With a riichi and a caller out at once, when a tile safe against both kept its shanten, LuckyJ cut one 68% of the time. Over all your games you do it 75% of the time, so this one was a slip.",
-   "fix": "Check each candidate against both threats. [[9p]] was safe twice over and kept the hand, and as the leader in South 2 you had no reason to give either player a chance."
+   "fix": "Check each candidate against both threats. [[9p]] was safe twice over and kept the hand, and as the leader in South 2 you had no reason to give either player a chance.",
+   "ja": {
+    "title": "リーチには筋、ポンには生牌",
+    "situation": "南2局3本場。40,200点でトップ。2位の下家（29,500点）が8巡目にリーチし、親の対面は[[P]]をポンしていて河に10枚。2シャンテンで[[8s]]を引く。",
+    "did": "[[9m]]を切った。リーチには筋だが対面には無筋の端牌で、しかもシャンテン数も一つ落とした。対面に白・赤5の3,800点（本場込み）で放銃した。[[9p]]なら2人のどちらにも筋で、2シャンテンも保てた。",
+    "luckyj": "リーチと副露者が同時にいて、両方に安全な牌でシャンテン数を保てるとき、LuckyJがそれを切ったのは68%。あなたは全対局で75%切っているので、この局はうっかりしたミスである。",
+    "fix": "候補の牌はそれぞれ、二つの脅威の両方に対して確かめる。[[9p]]は2人に安全で手も保てた。南2局のトップなら、どちらにもアガリの機会を与える理由はなかった。"
+   }
   },
   {
    "id": "far-hand-dealer-riichi",
@@ -688,7 +942,14 @@
    "situation": "South 1. Toimen, the dealer, is last on 5,300 and declared riichi on their 11th turn; shimocha has chied [[3p]]-[[4p]]-[[5pr]]. You are second on 29,200 and 4-shanten, and you draw a [[9m]].",
    "did": "You threw the [[9m]] straight back, a live terminal against both players, and toimen ronned it: riichi and ura dora, 4,800. [[N]] was genbutsu against both and kept your 4-shanten.",
    "luckyj": "From three-shanten or worse against a riichi, LuckyJ cut an unsafe tile 6.4% of the time.",
-   "fix": "Cut the [[N]]. A 4-shanten hand is not racing a dealer's riichi. Your own river held a [[9m]] from turn 8, but that only matters for your own wait, and toimen had not thrown one."
+   "fix": "Cut the [[N]]. A 4-shanten hand is not racing a dealer's riichi. Your own river held a [[9m]] from turn 8, but that only matters for your own wait, and toimen had not thrown one.",
+   "ja": {
+    "title": "ツモった端牌を親リーチに",
+    "situation": "南1局。親の対面は5,300点でラス、11巡目にリーチしている。下家は[[3p]]-[[4p]]-[[5pr]]をチーしている。2位で29,200点、4シャンテンで[[9m]]を引く。",
+    "did": "[[9m]]をそのままツモ切りした。2人のどちらにも無筋の端牌で、対面にリーチ・裏ドラの4,800点で放銃した。[[N]]なら2人の現物で、4シャンテンも保てた。",
+    "luckyj": "リーチに対して3シャンテン以上の手から、LuckyJが安全でない牌を切ったのは6.4%だった。",
+    "fix": "[[N]]を切る。4シャンテンの手は親リーチとアガリを競う手ではない。自分の河には8巡目に切った[[9m]]があったが、それが意味を持つのは自分の待ちだけで、対面自身は切っていなかった。"
+   }
   },
   {
    "id": "dealer-double-east",
@@ -706,7 +967,14 @@
    "situation": "East 4. Toimen, the dealer, ponned [[E]], their double wind, after their 8th discard and now has ten discards; nobody else has called or declared. You are third on 22,500 and 1-shanten with the red [[5sr]] and a [[C]] pair, and you draw a third [[9m]].",
    "did": "You cut [[8p]], live, and kept your 1-shanten. Toimen was waiting on [[5p]] and [[8p]] with two dora: 11,600.",
    "luckyj": "At 1-shanten against a single caller in their 10th to 12th discard, when only a shanten-losing tile was safe, LuckyJ broke the hand 8% of the time, and 9% against a dealer.",
-   "fix": "Pushing was right. The only safe tile, a [[C]] with two copies out, would have broken your 1-shanten and your chun pair. Among the live tiles, the [[9m]] kept 8 tiles against the [[8p]]'s 6 and, as a terminal, was a little safer; it would have missed. A close call, and mostly the dealer's luck."
+   "fix": "Pushing was right. The only safe tile, a [[C]] with two copies out, would have broken your 1-shanten and your chun pair. Among the live tiles, the [[9m]] kept 8 tiles against the [[8p]]'s 6 and, as a terminal, was a little safer; it would have missed. A close call, and mostly the dealer's luck.",
+   "ja": {
+    "title": "1シャンテンから押した11,600点",
+    "situation": "東4局。親の対面が8打目の後にダブ東の[[E]]をポンし、いま河に10枚。ほかに鳴きもリーチもない。3位で22,500点、赤の[[5sr]]と[[C]]の対子を持つ1シャンテンで、3枚目の[[9m]]を引く。",
+    "did": "生牌の[[8p]]を切って1シャンテンを保った。対面はドラ2枚で[[5p]]と[[8p]]待ち、11,600点だった。",
+    "luckyj": "10〜12打目の1副露の副露者に対して1シャンテンで、安全な牌がシャンテン数を落とす牌しかないとき、LuckyJが手を崩したのは8%、相手が親なら9%だった。",
+    "fix": "押しは正しかった。唯一の安全牌は2枚見えの[[C]]で、切れば1シャンテンも中の対子も崩れた。生牌の中では[[9m]]のほうが受け入れ8枚で[[8p]]の6枚より多く、端牌なので少し安全でもあり、こちらなら当たらなかった。際どい判断で、大半は親の運である。"
+   }
   },
   {
    "id": "three-calls-dora-tanki",
@@ -728,7 +996,14 @@
    "situation": "East 1, 1 honba. Kamicha declared riichi on their 6th turn with a [[3s]]. You had ponned [[W]], your seat wind, and [[9m]], and you chied that [[3s]] with [[4s]] and the red [[5sr]] to reach tenpai on a tanki [[6p]], the dora. On turn 9 you draw [[7p]] and hold five tiles.",
    "did": "You cut the genbutsu [[3s]] and broke the tenpai. On the next turn you drew [[8s]] and cut it, a live tile, just to stay 1-shanten. Kamicha tsumoed a mangan and you paid 2,100.",
    "luckyj": "With three calls against a riichi, LuckyJ kept its tenpai on 345 of 352 turns, and on every one of the 198 turns where a safe tile kept it.",
-   "fix": "Cut the [[7p]]. It was suji, since your own [[4p]] had gone past kamicha after the declaration, and it kept a tanki on the dora worth 7,700. With five tiles you cannot fold for long, so a safe tile that keeps the tenpai is the one to cut. Kamicha was waiting on [[6m]] and [[9m]], so the [[7p]] was safe."
+   "fix": "Cut the [[7p]]. It was suji, since your own [[4p]] had gone past kamicha after the declaration, and it kept a tanki on the dora worth 7,700. With five tiles you cannot fold for long, so a safe tile that keeps the tenpai is the one to cut. Kamicha was waiting on [[6m]] and [[9m]], so the [[7p]] was safe.",
+   "ja": {
+    "title": "3副露で、1巡だけオリて崩したテンパイ",
+    "situation": "東1局1本場。上家が6巡目に[[3s]]でリーチした。あなたは自風の[[W]]と[[9m]]をポンしていて、その[[3s]]を[[4s]]と赤の[[5sr]]でチーし、ドラの[[6p]]単騎でテンパイした。9巡目に[[7p]]を引き、手牌は5枚。",
+    "did": "現物の[[3s]]を切ってテンパイを崩した。次の巡は[[8s]]を引き、1シャンテンを保つためだけに、その生牌を切った。上家が満貫をツモり、2,100点を払った。",
+    "luckyj": "リーチに対して3副露のとき、LuckyJは352巡中345巡でテンパイを保ち、安全牌でテンパイを保てた198巡ではすべて保った。",
+    "fix": "[[7p]]を切る。リーチ宣言後にあなたが切った[[4p]]が上家に通っていたので筋であり、7,700点のドラ単騎も保てた。手牌5枚では長くオリられないので、テンパイを保てる安全な牌を切る。上家の待ちは[[6m]]と[[9m]]で、[[7p]]は安全だった。"
+   }
   },
   {
    "id": "once-cut-west",
@@ -756,6 +1031,13 @@
     "fields": [
      "fix"
     ]
+   },
+   "ja": {
+    "title": "2枚目の西を1巡長く持ちすぎた",
+    "situation": "南2局。4位で14,600点。親の下家が[[P]]をポンしている。1巡目に[[W]]を切っていて、9巡目に2枚目を引く。[[W]]はあなたには客風で、上家の自風である。",
+    "did": "[[5p]][[6p]][[7p]][[7p]]から[[7p]]を切って[[W]]を残した。受け入れは[[W]]切りのほうが1枚多く、22枚対21枚だった。次の巡までに上家がリーチし、1シャンテンを保つために[[W]]を切って、リーチ・一発・自風・赤5の8,000点に放銃した。",
+    "luckyj": "リーチ1軒に対し、LuckyJが1枚見えの字牌を切って放銃したのは100打あたり2.1回で、現物では一度もなかった（第4章）。",
+    "fix": "9巡目、誰もリーチしておらず手の役にも立たないうちに[[W]]を切る。上家はその時点でまだ1シャンテンだったので、悪くてもポンされる程度だった。10巡目には[[W]]を押すのが正しく、Mortalも93%でそれを切った。現物の[[9s]]は受け入れが3枚減り、親の副露手にはまだ生牌だった。ミスはその前の巡にあった。"
    }
   },
   {
@@ -781,6 +1063,13 @@
      "did",
      "fix"
     ]
+   },
+   "ja": {
+    "title": "2回続けてツモ切りした親のダマ",
+    "situation": "東4局2本場。親の上家が39,100点でトップ、鳴きもリーチもない。上家は10打目に[[7s]]を手出しし、続く2回のツモ、[[9p]]と[[8s]]をそのままツモ切りした。3位で18,800点、2シャンテン。",
+    "did": "親に生牌の[[7p]]を切った。[[2s]]、[[7s]]、[[8s]]は親の現物で2シャンテンも保てたが、どれも受け入れが10枚以上減った。親は[[4p]]と[[7p]]待ちのダマで、タンヤオ・平和・三色・ドラ1・赤5の跳満、18,600点だった。",
+    "luckyj": "鳴きもリーチもない門前の親が10〜12打目でテンパイしていたのは、2回続けてツモ切りした後で8.5%、そうでないときで6.7%。LuckyJがこうした相手に生牌を切る割合は、どちらの場合もほぼ同じだった。",
+    "fix": "[[2m]]を切る。鳴きもリーチもない親に対して2シャンテンなら、この手は前に進める。Mortalも前に進め、[[2m]]を97%、[[7p]]を2%で切った。[[2m]]は受け入れが1枚多く、赤の[[5pr]]の横の[[7p]]も残せ、親の待ちでもなかった。この早さでの2回続けてのツモ切りは弱いサインなので、損は押す牌の選び方から生まれた。"
    }
   },
   {
@@ -807,6 +1096,13 @@
      "luckyj",
      "fix"
     ]
+   },
+   "ja": {
+    "title": "唯一の対子を鳴いた9萬のポン",
+    "situation": "東1局1本場、6巡目。第14章の3副露の手である。自風の[[W]]をポンしていて、手には[[9m]][[9m]]、ドラ絡みの[[4p]][[6p]]、赤の[[5sr]]まで続く[[1s]][[2s]][[3s]][[4s]]、孤立した[[P]]がある。対子は[[9m]]の1組だけである。下家が[[9m]]を切る。",
+    "did": "ポンして[[P]]を切った。手は対子のない1シャンテンのままで、テンパイになる見えていない牌は10枚から28枚になった。2巡後にチーしてドラの[[6p]]単騎にとり、そこから先は第14章で扱っている。",
+    "luckyj": "副露手が1シャンテンのままでも、テンパイ牌が10枚以上増えるポンを、LuckyJは74回中21回ポンする。ドラを2枚以上持っているときは19回中3回である。そこでのポンと見送りの結果はほぼ同じで、和了率は38%と36%、放銃率は10%と8%だった。",
+    "fix": "Mortalは99%でこのポンを見送ったが、速さではポンが上だった。テンパイ牌は28枚対10枚で、28枚のうち10枚は7,700点の待ちにつながる。たとえば[[6p]]を引けばドラの対子ができ、[[3s]]-[[6s]]待ちになる。ポンしなければ、どのテンパイも3,900点だった。狙ったドラ単騎は、その中で最も薄い待ちだった。見えていない[[6p]]は3枚で、上家が1枚持っていたので、実際に残っていたのは2枚だけである。見送れば、オリに使える牌が10枚残る。ポンとチーの後は4枚になり、その次の巡で上家がリーチした。"
    }
   },
   {
@@ -824,14 +1120,22 @@
      "turn": 11,
      "expect_cut": "2m",
      "better": "7p",
-     "note": "Kamicha, the dealer, has just declared riichi with [[1p]]. [[7p]] is genbutsu against them."
+     "note": "Kamicha, the dealer, has just declared riichi with [[1p]]. [[7p]] is genbutsu against them.",
+     "note_ja": "上家の親が[[1p]]でリーチしたところ。[[7p]]はその現物である。"
     }
    ],
    "title": "A riichi on a kanchan with no yaku, into the dealer's riichi",
    "situation": "South 2. You lead on 37,100, 13,400 ahead of second. The dora is [[3s]] and you hold it with the red [[5sr]], but your [[1m]][[1m]][[2m]] keeps the hand from tanyao. On turn 9 you draw a second [[6p]].",
    "did": "You threw the [[6p]] back and kept [[2m]], then cut [[3m]] over the [[1m]] on turn 10. On turn 11 the dealer declared, you drew [[4s]] into tenpai on a [[6s]] kanchan with no yaku, and you declared with [[2m]]. Shimocha declared next, and on turn 15 the [[9s]] you had to throw dealt into them.",
    "luckyj": "With a first tenpai that has no yaku and 4 live tiles or fewer, against one riichi, LuckyJ declared 58 times in 141 and lost 584 points a hand when it did. Leading by 8,000 or more in the South it declared 3 times in 9, too few hands to say more.",
-   "fix": "Fold with the genbutsu [[7p]], as Mortal did 68% of the time; it declared 8%. A kanchan with no yaku can win only through the riichi, and a deal-in to the dealer could cost you first place. The better fix came earlier. Mortal would have chied the dealer's [[4s]] after your 8th discard (83%), and in the line you played it cut [[2m]] on turn 9 (98%) and a [[1m]] on turn 10 (59%), heading for tanyao with the dora and the red five. A hand with a yaku can stay dama or fold without a riichi stick on the table."
+   "fix": "Fold with the genbutsu [[7p]], as Mortal did 68% of the time; it declared 8%. A kanchan with no yaku can win only through the riichi, and a deal-in to the dealer could cost you first place. The better fix came earlier. Mortal would have chied the dealer's [[4s]] after your 8th discard (83%), and in the line you played it cut [[2m]] on turn 9 (98%) and a [[1m]] on turn 10 (59%), heading for tanyao with the dora and the red five. A hand with a yaku can stay dama or fold without a riichi stick on the table.",
+   "ja": {
+    "title": "親リーチに、役なしカンチャンで追っかけリーチ",
+    "situation": "南2局。37,100点でトップ、2位とは13,400点差。ドラは[[3s]]で、それを赤の[[5sr]]と一緒に持っているが、[[1m]][[1m]][[2m]]があるためタンヤオにならない。9巡目に2枚目の[[6p]]を引く。",
+    "did": "[[6p]]をツモ切りして[[2m]]を残し、10巡目には[[1m]]を残して[[3m]]を切った。11巡目に親がリーチし、あなたは[[4s]]を引いて役なしの[[6s]]カンチャンでテンパイし、[[2m]]を切ってリーチした。続いて下家もリーチし、15巡目に切るしかなかった[[9s]]が下家への放銃になった。",
+    "luckyj": "リーチ1軒に対して、役なしで残り4枚以下の最初のテンパイでは、LuckyJは141回中58回リーチし、リーチした局は1局あたり584点を失った。南場で8,000点以上リードしているときは9回中3回で、それ以上のことを言うには局数が少なすぎる。",
+    "fix": "Mortalが68%で選んだように、現物の[[7p]]でオリる。Mortalのリーチは8%だった。役なしのカンチャンはリーチでしかアガれず、親に放銃すれば1位を失いかねない。より良い修正はもっと前にあった。Mortalならあなたの8打目の後に親の[[4s]]をチーし（83%）、実際の進行でも9巡目に[[2m]]（98%）、10巡目に[[1m]]（59%）を切って、ドラと赤5を使ったタンヤオに向かっていた。役のある手なら、リーチ棒を出さずにダマにもオリにもできる。"
+   }
   },
   {
    "id": "first-row-genbutsu",
@@ -849,7 +1153,14 @@
    "situation": "South 2. You are third on 19,000. Shimocha, first on 39,000, has ponned [[8p]] and the round wind [[S]] and has discarded six tiles, still their first row. You are 1-shanten and draw [[7m]].",
    "did": "You cut the genbutsu [[7s]], which kept 12 tiles, and declared riichi on the next turn.",
    "luckyj": "While a two-call opponent is still in their first six discards, LuckyJ pays tiles or a shanten for a safe tile about one time in seven. You pay about one time in four, and since 24 September nearly one in two. From their seventh discard on, the two of you play alike.",
-   "fix": "Cut [[6m]]. It kept the same 1-shanten on 17 tiles, and Mortal cut it 98% of the time. Your riichi a turn later gave the safety up anyway, so the five tiles bought nothing."
+   "fix": "Cut [[6m]]. It kept the same 1-shanten on 17 tiles, and Mortal cut it 98% of the time. Your riichi a turn later gave the safety up anyway, so the five tiles bought nothing.",
+   "ja": {
+    "title": "下家の一段目で、受け入れ5枚を犠牲にした現物",
+    "situation": "南2局。19,000点で3位。39,000点でトップの下家が[[8p]]と場風の[[S]]をポンしていて、河は6枚、まだ一段目である。1シャンテンで[[7m]]を引く。",
+    "did": "現物の[[7s]]を切って受け入れ12枚を残し、次の巡でリーチした。",
+    "luckyj": "2副露の相手がまだ最初の6打以内にいる間、LuckyJが安全牌のために受け入れ枚数かシャンテン数を犠牲にするのは7回に1回ほどである。あなたは4回に1回ほどで、9月24日以降は半数近くの場面で犠牲にしている。相手の7打目以降は、二人の打ち方は変わらない。",
+    "fix": "[[6m]]を切る。同じ1シャンテンで受け入れ17枚が残り、Mortalは98%でこれを切った。次の巡のリーチで結局その安全を手放したので、犠牲にした5枚は何の役にも立たなかった。"
+   }
   },
   {
    "id": "first-row-west-pair",
@@ -867,7 +1178,14 @@
    "situation": "East 2. You are third on 25,000 and hold a pair of [[W]]. Shimocha has ponned [[N]] and [[2m]] and has discarded six tiles, one of them a [[W]]. You are 2-shanten and draw [[9m]].",
    "did": "You cut a [[W]] from the pair, genbutsu against shimocha, and dropped to 3-shanten.",
    "luckyj": "While a two-call opponent is still in their first six discards, LuckyJ pays tiles or a shanten for a safe tile about one time in seven. You pay about one time in four, and since 24 September nearly one in two. From their seventh discard on, the two of you play alike.",
-   "fix": "Cut [[9m]], a live terminal that keeps 2-shanten on 18 tiles; Mortal cut it 90% of the time. The [[W]] pair was your head and two genbutsu to fold with later. Breaking it in shimocha's first row spent a shanten and a safe tile before you needed either."
+   "fix": "Cut [[9m]], a live terminal that keeps 2-shanten on 18 tiles; Mortal cut it 90% of the time. The [[W]] pair was your head and two genbutsu to fold with later. Breaking it in shimocha's first row spent a shanten and a safe tile before you needed either.",
+   "ja": {
+    "title": "現物のために崩した西の対子",
+    "situation": "東2局。25,000点で3位、[[W]]の対子を持っている。下家は[[N]]と[[2m]]をポンしていて、河は6枚、その中に[[W]]が1枚ある。2シャンテンで[[9m]]を引く。",
+    "did": "下家の現物である[[W]]を対子から1枚切り、3シャンテンに落とした。",
+    "luckyj": "2副露の相手がまだ最初の6打以内にいる間、LuckyJが安全牌のために受け入れ枚数かシャンテン数を犠牲にするのは7回に1回ほどである。あなたは4回に1回ほどで、9月24日以降は半数近くの場面で犠牲にしている。相手の7打目以降は、二人の打ち方は変わらない。",
+    "fix": "[[9m]]を切る。無筋の端牌だが、2シャンテンのまま受け入れ18枚を残せる。Mortalは90%でこれを切った。[[W]]の対子は雀頭であり、後でオリるときの現物2枚でもあった。下家の一段目でそれを崩すと、どちらも必要になる前に、シャンテン数と安全牌を使ってしまう。"
+   }
   },
   {
    "id": "first-row-tie",
@@ -885,7 +1203,14 @@
    "situation": "South 2, 1 honba. You lead on 36,400. Shimocha has ponned [[9p]] and [[C]] and discarded six tiles, a [[F]] among them; kamicha has one chi. You are 2-shanten with a red five and the dora [[4p]], and draw [[9s]].",
    "did": "You cut the [[F]], genbutsu against both callers. The live [[4s]] left the same 2-shanten on the same 19 tiles.",
    "luckyj": "When a safe tile ties with a live one against a two-call opponent in their first six discards, LuckyJ keeps the safe tile about two times in three. You cut it about two times in three. From their seventh discard on, both of you cut it.",
-   "fix": "Cut [[4s]] and keep the [[F]], as Mortal did 80% of the time. A live tile is cheapest while the caller is in their first row, and the genbutsu will still be genbutsu when they are closer."
+   "fix": "Cut [[4s]] and keep the [[F]], as Mortal did 80% of the time. A live tile is cheapest while the caller is in their first row, and the genbutsu will still be genbutsu when they are closer.",
+   "ja": {
+    "title": "現物か無筋の4索か、受け入れは同じ19枚",
+    "situation": "南2局1本場。36,400点でトップ。下家は[[9p]]と[[C]]をポンしていて、河の6枚の中に[[F]]がある。上家は1回チーしている。赤5とドラの[[4p]]を持つ2シャンテンで、[[9s]]を引く。",
+    "did": "2人の副露者どちらにも現物の[[F]]を切った。無筋の[[4s]]を切っても、同じ19枚の受け入れで同じ2シャンテンが残っていた。",
+    "luckyj": "2副露の相手が最初の6打以内にいるとき、安全牌と生牌の効率が同じなら、LuckyJは3回に2回ほど安全牌を残す。あなたは3回に2回ほどそれを切る。相手の7打目以降は、二人とも安全牌を切る。",
+    "fix": "Mortalが80%で選んだように、[[4s]]を切って[[F]]を残す。副露者が一段目にいる間は生牌を切るコストが最も小さく、現物は相手がアガリに近づいたときにも現物のままである。"
+   }
   },
   {
    "id": "three-triplets-folded",
@@ -903,7 +1228,14 @@
    "situation": "East 4. You are the dealer and first on 33,300. Shimocha declared riichi on turn 9. On turn 12 you draw a third [[5m]]: with [[3p]][[3p]][[3p]] and [[F]][[F]][[F]] that is three concealed triplets, a red five and the dora [[9p]], and the hand is 1-shanten.",
    "did": "You cut an [[F]] from the triplet, genbutsu, and dropped to 2-shanten. You cut the other two over the next turns, and the hand ended in a draw.",
    "luckyj": "Against a riichi before turn 13, at 1-shanten with two dora or more, when only a shanten buys the safest tile, LuckyJ keeps the hand about two times in three, mostly with a live tile. You keep it less than half the time.",
-   "fix": "Cut [[4m]], nakasuji against shimocha, and keep 1-shanten on 20 tiles, as Mortal did 97% of the time. Sanankou and hatsu make any win a dealer mangan, and if the next draws go badly the [[F]] triplet still gives you three genbutsu to fold with."
+   "fix": "Cut [[4m]], nakasuji against shimocha, and keep 1-shanten on 20 tiles, as Mortal did 97% of the time. Sanankou and hatsu make any win a dealer mangan, and if the next draws go badly the [[F]] triplet still gives you three genbutsu to fold with.",
+   "ja": {
+    "title": "12巡目に崩した三暗刻の形",
+    "situation": "東4局。親で、33,300点のトップ。下家が9巡目にリーチしている。12巡目に3枚目の[[5m]]を引く。[[3p]][[3p]][[3p]]と[[F]][[F]][[F]]と合わせて暗刻が3つになり、赤5とドラの[[9p]]もある。手は1シャンテンである。",
+    "did": "現物の[[F]]を暗刻から1枚切り、2シャンテンに落とした。残りの2枚も続く巡で切り、局は流局した。",
+    "luckyj": "13巡目より前のリーチに対し、ドラ2枚以上の1シャンテンで、シャンテン数を落とさないと最も安全な牌が切れないとき、LuckyJは3回に2回ほど手を残し、多くは生牌を切る。あなたが手を残すのは半分未満である。",
+    "fix": "Mortalが97%で選んだように、下家に中筋の[[4m]]を切って、受け入れ20枚の1シャンテンを残す。三暗刻と發で、どのアガリも親満になる。次のツモが悪ければ、[[F]]の暗刻がそのままオリに使える現物3枚になる。"
+   }
   },
   {
    "id": "three-red-fives",
@@ -921,7 +1253,14 @@
    "situation": "East 3, 1 honba. You are fourth on 11,500, 17,300 behind third. Shimocha declared riichi on turn 4. On turn 9 you draw [[5pr]], your third red five, and the hand is 1-shanten.",
    "did": "You cut the genbutsu [[6m]] and dropped to 2-shanten. On the next turn you cut the [[8m]] anyway, then declared riichi on turn 12 and dealt into shimocha.",
    "luckyj": "Against a riichi before turn 13, at 1-shanten with two dora or more, when only a shanten buys the safest tile, LuckyJ keeps the hand about two times in three, mostly with a live tile. You keep it less than half the time.",
-   "fix": "Cut [[8m]] and keep the 1-shanten, as Mortal did 89% of the time. Three red fives in fourth place is the hand that climbs a place, and you pushed it three turns later anyway, so the fold on turn 9 only cost you tempo."
+   "fix": "Cut [[8m]] and keep the 1-shanten, as Mortal did 89% of the time. Three red fives in fourth place is the hand that climbs a place, and you pushed it three turns later anyway, so the fold on turn 9 only cost you tempo.",
+   "ja": {
+    "title": "4位で赤5が3枚、9巡目にオリ",
+    "situation": "東3局1本場。11,500点で4位、3位とは17,300点差。下家が4巡目にリーチしている。9巡目に3枚目の赤5となる[[5pr]]を引き、手は1シャンテン。",
+    "did": "現物の[[6m]]を切って2シャンテンに落とした。次の巡には結局[[8m]]を切り、12巡目にリーチして下家に放銃した。",
+    "luckyj": "13巡目より前のリーチに対し、ドラ2枚以上の1シャンテンで、シャンテン数を落とさないと最も安全な牌が切れないとき、LuckyJは3回に2回ほど手を残し、多くは生牌を切る。あなたが手を残すのは半分未満である。",
+    "fix": "Mortalが89%で選んだように、[[8m]]を切って1シャンテンを保つ。4位で赤5が3枚ある手こそ、順位を一つ上げる手である。しかも3巡後には結局押しているので、9巡目のオリは手の速度を落としただけだった。"
+   }
   },
   {
    "id": "early-riichi-east",
@@ -939,7 +1278,14 @@
    "situation": "East 1, turn 4, 55 tiles left, everyone near 25,000. Kamicha declared riichi on their third discard, with [[4s]] [[4m]] [[5m]] in the river and a [[2p]] thrown since. You are 3-shanten and draw [[7s]], with no genbutsu in hand. Your honors are a lone [[E]], the round wind, and a lone [[C]], and no other copy of either is showing.",
    "did": "You cut [[E]]. Kamicha held [[E]] [[E]] and waited on it with [[7m]] [[7m]]: 5,200 with the round wind, riichi and a dora.",
    "luckyj": "A riichi by the declarer's fourth discard leaves LuckyJ without a genbutsu 43% of the time, as it did you. Against a riichi met within its own first six discards, LuckyJ's cuts of a live honor with no other copy showing dealt in 3.8 times per 100, and with one copy showing 1.1.",
-   "fix": "Cut [[7s]], suji of their first discard. It costs 11 tiles of acceptance in a 3-shanten hand that is unlikely to win against this riichi anyway. Mortal cut [[7s]] 67% of the time, [[C]] 30% and [[E]] 1%."
+   "fix": "Cut [[7s]], suji of their first discard. It costs 11 tiles of acceptance in a 3-shanten hand that is unlikely to win against this riichi anyway. Mortal cut [[7s]] 67% of the time, [[C]] 30% and [[E]] 1%.",
+   "ja": {
+    "title": "3打目リーチに、1枚も出ていない東",
+    "situation": "東1局、4巡目、山の残り55枚、全員25,000点前後。上家が3打目でリーチ。河には[[4s]] [[4m]] [[5m]]があり、その後に[[2p]]を切っている。あなたは3シャンテンで[[7s]]を引き、手に現物はない。字牌は場風の[[E]]と[[C]]が1枚ずつ浮いていて、どちらも他に1枚も見えていない。",
+    "did": "[[E]]を切った。上家は[[E]] [[E]]と[[7m]] [[7m]]のシャンポン待ちで、場風、リーチ、ドラ1の5,200点。",
+    "luckyj": "リーチ者の4打目までのリーチでは、LuckyJも43%の場面で現物がなく、このときのあなたと同じ状態になる。LuckyJが自分の6打目までに受けたリーチに対して、他に1枚も見えていない生きた字牌を切ると100回あたり3.8回放銃し、1枚見えている字牌なら1.1回だった。",
+    "fix": "上家の1打目の筋になる[[7s]]を切る。受け入れは11枚減るが、どのみちこのリーチを相手にアガれる見込みの薄い3シャンテンである。Mortalは[[7s]]を67%、[[C]]を30%、[[E]]を1%で切った。"
+   }
   },
   {
    "id": "early-riichi-south",
@@ -957,7 +1303,14 @@
    "situation": "East 2, turn 4, 58 tiles left. You lead on 33,400. Toimen declared riichi on their third discard, with [[N]] [[8p]] [[5m]] in the river, and kamicha, the dealer, has chied [[5m]]-[[6m]]-[[7m]]. You are 2-shanten after a [[7p]]-[[8p]]-[[9p]] chi and draw [[9s]]. Nothing in your hand is genbutsu against the riichi.",
    "did": "You cut [[S]], a lone honor with no copy showing. Toimen held [[S]] [[S]] and won 1,300 on riichi alone.",
    "luckyj": "Mortal cut [[S]] 70% of the time and [[9p]] 28%. The [[S]] kept the 2-shanten on 55 tiles; the honor was the tile the hand needed least.",
-   "fix": "No mistake. With nothing safe against an early riichi and the choices close, a lone honor is a normal cut, and this one met the pair."
+   "fix": "No mistake. With nothing safe against an early riichi and the choices close, a lone honor is a normal cut, and this one met the pair.",
+   "ja": {
+    "title": "早いリーチに南、Mortalも切る牌",
+    "situation": "東2局、4巡目、山の残り58枚。33,400点でトップ。対面が3打目でリーチし、河には[[N]] [[8p]] [[5m]]。親の上家は[[5m]]-[[6m]]-[[7m]]をチーしている。あなたは[[7p]]-[[8p]]-[[9p]]をチーした2シャンテンで、[[9s]]を引いた。手にリーチへの現物はない。",
+    "did": "1枚も見えていない浮きの字牌、[[S]]を切った。対面は[[S]] [[S]]を持っていて、リーチのみの1,300点でアガった。",
+    "luckyj": "Mortalは[[S]]を70%、[[9p]]を28%で切った。[[S]]を切れば2シャンテンのまま受け入れは55枚。この字牌が、手に最も要らない牌だった。",
+    "fix": "ミスではない。早いリーチに安全な牌がなく、選択肢に大差がないなら、浮きの字牌を切るのは普通の選択で、今回はそれが対子に当たった。"
+   }
   }
  ]
 }

@@ -1103,3 +1103,25 @@
   color: var(--jade);
   font-weight: 600;
 }
+
+/* ------------------------------------------------------------------ Japanese edition */
+
+/* Slanted and tracked Japanese reads as broken type: upright faces, open leading, light tracking. */
+html:lang(ja) .guide-masthead h1 {
+  font-size: clamp(34px, 4.2vw, 54px);
+  letter-spacing: 0;
+  line-height: 1.22;
+}
+
+html:lang(ja) :is(.guide-news h2, .guide-chart figcaption, .cs-grid .cs-group) {
+  font-style: normal;
+}
+
+/* Capitals would print LuckyJ as LUCKYJ in the step headings. */
+html:lang(ja) .guide-card .analysis-step h5 {
+  text-transform: none;
+}
+
+html:lang(ja) :is(.guide-news-tag, .guide-data thead th, .guide-verdict, .guide-result b, .guide-options thead th, .guide-options tbody th small) {
+  letter-spacing: 0.04em;
+}

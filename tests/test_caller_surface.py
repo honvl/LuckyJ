@@ -24,9 +24,11 @@ def square(calls, run, discard, key="can_win"):
 
 class CallerGridTests(unittest.TestCase):
     def test_the_page_draws_the_data(self):
-        page = build.PAGE.read_text(encoding="utf-8")
-        start, end = page.index(build.START), page.index(build.END) + len(build.END)
-        self.assertEqual(page[start:end], build.render(DATA, FOLD))
+        for lang, path in build.PAGES.items():
+            with self.subTest(page=path.name):
+                page = path.read_text(encoding="utf-8")
+                start, end = page.index(build.START), page.index(build.END) + len(build.END)
+                self.assertEqual(page[start:end], build.render(DATA, FOLD, lang))
 
     def test_the_landmarks_the_prose_cites(self):
         self.assertLessEqual(max(square(1, r, d) for r in (0, 1, 2, 3) for d in range(1, 7)
@@ -60,7 +62,11 @@ class CallerGridTests(unittest.TestCase):
         self.assertEqual([round(FOLD["tenpai_by_run"][r]["live"]) for r in "0123"], [17, 11, 5, 7])
 
     def test_chapter_19_tables_show_the_patterns(self):
-        page = build.PAGE.read_text(encoding="utf-8")
+        for path in build.PAGES.values():
+            with self.subTest(page=path.name):
+                self.check_chapter_19_tables(path.read_text(encoding="utf-8"))
+
+    def check_chapter_19_tables(self, page):
         chapter = page[page.index('<section class="point" id="fold-line">'):]
         chapter = chapter[: chapter.index("</section>")]
         tables = re.findall(r"<tbody>(.*?)</tbody>", chapter, flags=re.S)

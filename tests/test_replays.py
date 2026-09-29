@@ -261,8 +261,9 @@ class GuideLinkTests(unittest.TestCase):
                     self.found.append(attrs)
 
         parser = Links()
-        parser.feed((SITE / "honver.html").read_text(encoding="utf-8"))
-        self.assertGreater(len(parser.found), 20)
+        for name in ("honver.html", "honver-ja.html"):
+            parser.feed((SITE / name).read_text(encoding="utf-8"))
+        self.assertGreater(len(parser.found), 40)
         for attrs in parser.found:
             href = attrs["href"]
             with self.subTest(href=href):

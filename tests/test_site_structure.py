@@ -8,7 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
-PAGES = ("index.html", "points.html", "ja.html", "honver.html", "replay.html")
+PAGES = ("index.html", "points.html", "ja.html", "honver.html", "honver-ja.html", "replay.html")
+GUIDES = ("honver.html", "honver-ja.html")
 # Anchors that app.js creates when it renders the replays, so they are not in the static page.
 RENDERED_ANCHOR = re.compile(r"^point-\d{2}-example-\d{2}$")
 # honver.js gives each example card the id guide-<spot id>.
@@ -95,22 +96,72 @@ class ContentsTests(unittest.TestCase):
         self.assertEqual(listed, points)
 
     def test_guide_chapter_list_reaches_every_chapter_in_order(self):
-        guide = page("honver.html")
-        listed = [href[1:] for href in guide.links_inside("nav", "chapters")]
-        self.assertEqual(listed, guide.chapter_ids())
+        for name in GUIDES:
+            with self.subTest(page=name):
+                guide = page(name)
+                listed = [href[1:] for href in guide.links_inside("nav", "chapters")]
+                self.assertEqual(listed, guide.chapter_ids())
 
     def test_newest_guide_notice_is_marked(self):
-        guide = page("honver.html")
-        items = [attrs for attrs, ancestors in guide.find("li")
-                 if any(t == "aside" and a.get("id") == "whats-new" for t, a in ancestors)]
-        self.assertTrue(items)
-        self.assertIn("is-latest", items[0].get("class", "").split())
-        self.assertEqual(sum("is-latest" in item.get("class", "").split() for item in items), 1)
+        for name in GUIDES:
+            with self.subTest(page=name):
+                items = notices(name)
+                self.assertTrue(items)
+                self.assertIn("is-latest", items[0].get("class", "").split())
+                self.assertEqual(sum("is-latest" in item.get("class", "").split() for item in items), 1)
+
+
+def notices(name):
+    return [attrs for attrs, ancestors in page(name).find("li")
+            if any(t == "aside" and a.get("id") == "whats-new" for t, a in ancestors)]
+
+
+class JapaneseGuideTests(unittest.TestCase):
+    """honver-ja.html is the whole guide in Japanese: every chapter, notice, anchor and link of honver.html."""
+
+    @staticmethod
+    def english_href(href):
+        # The Japanese edition sends readers to the Japanese playbook, and each edition names the other.
+        swap = {"ja.html": "points.html", "honver-ja.html": "honver.html", "honver.html": "honver-ja.html"}
+        return swap.get(href.split("#")[0], href.split("#")[0]) + (
+            "#" + href.split("#", 1)[1] if "#" in href else "")
+
+    def test_same_chapters_in_the_same_order(self):
+        self.assertEqual(page("honver-ja.html").chapter_ids(), page("honver.html").chapter_ids())
+
+    def test_same_anchors(self):
+        self.assertEqual(sorted(page("honver-ja.html").ids), sorted(page("honver.html").ids))
+
+    def test_same_notices(self):
+        self.assertEqual([n.get("class") for n in notices("honver-ja.html")], [n.get("class") for n in notices("honver.html")])
+
+    def test_same_links(self):
+        def links(name):
+            langs = {a.get("href") for a, _ in page(name).find("a", cls="lang-link")}
+            return sorted(href for href, _ in page(name).links if href not in langs)
+        english = links("honver.html")
+        # the nav's link to the other edition is its lang-link; every other link matches
+        self.assertEqual(sorted(self.english_href(h) for h in links("honver-ja.html")), english)
+
+    def test_same_example_placeholders_and_corrections(self):
+        for tag, cls in (("div", None), ("mark", "guide-changed")):
+            found = {}
+            for name in GUIDES:
+                found[name] = [(a.get("id"), a.get("data-guide-examples")) for a, _ in page(name).find(tag, cls=cls)
+                               if tag == "mark" or a.get("data-guide-examples")]
+            self.assertEqual(found["honver-ja.html"], found["honver.html"], tag)
+
+    def test_editions_link_to_each_other(self):
+        for name, other in (("honver.html", "honver-ja.html"), ("honver-ja.html", "honver.html")):
+            with self.subTest(page=name):
+                langs = [a.get("href") for a, _ in page(name).find("a", cls="lang-link")]
+                self.assertEqual(langs, [other])
+        self.assertIn("honver-ja.html", [href for href, _ in page("ja.html").links])
 
 
 class ChapterTests(unittest.TestCase):
     def test_every_chapter_has_a_kicker_and_a_next_link(self):
-        for name in ("points.html", "ja.html", "honver.html"):
+        for name in ("points.html", "ja.html") + GUIDES:
             with self.subTest(page=name):
                 book = page(name)
                 chapters = book.chapter_ids()
@@ -118,7 +169,7 @@ class ChapterTests(unittest.TestCase):
                 self.assertEqual(book.chapters_containing("nav", "chapter-next"), chapters)
 
     def test_next_links_follow_the_chapter_order(self):
-        for name in ("points.html", "ja.html", "honver.html"):
+        for name in ("points.html", "ja.html") + GUIDES:
             with self.subTest(page=name):
                 book = page(name)
                 chapters = book.chapter_ids()
@@ -146,12 +197,12 @@ class LinkTests(unittest.TestCase):
     def test_every_link_within_the_site_lands(self):
         for name in PAGES:
             for href, _ in page(name).links:
-                match = re.match(r"^(?:(index|points|ja|honver)\.html)?#(.+)$", href)
+                match = re.match(r"^(?:(index|points|ja|honver|honver-ja)\.html)?#(.+)$", href)
                 if not match:
                     continue
                 target_page = f"{match.group(1)}.html" if match.group(1) else name
                 anchor = match.group(2)
-                if RENDERED_ANCHOR.match(anchor) or (target_page == "honver.html" and anchor in GUIDE_CARDS):
+                if RENDERED_ANCHOR.match(anchor) or (target_page in GUIDES and anchor in GUIDE_CARDS):
                     continue
                 with self.subTest(page=name, href=href):
                     self.assertIn(anchor, page(target_page).ids)

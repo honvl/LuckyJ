@@ -16,9 +16,13 @@ Two details differ from the older review scripts on purpose:
 - safety uses the table as it stood at that turn, including tiles passed after a
   riichi, and a lone honor with all three other copies showing is labelled dead.
 
+The Japanese edition (``site/honver-ja.html``) draws the same tables and reads each card's words
+from ``site/honver-guide-ja.json``, built from every spot's ``ja`` block and each frame's
+``note_ja``. The build stops when a spot has English text without its Japanese.
+
 Usage::
 
-    .venv/bin/python scripts/build_personal_guide.py          # write the JSON
+    .venv/bin/python scripts/build_personal_guide.py          # write both JSON files
     .venv/bin/python scripts/build_personal_guide.py --show   # print every frame for review
 """
 
@@ -41,6 +45,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SPOTS = ROOT / "data/personal_guide_spots.json"
 MANIFEST = ROOT / "data/self_games/majsoul/index.json"
 OUT = ROOT / "site/honver-guide.json"
+JA_OUT = ROOT / "site/honver-guide-ja.json"
+TEXT_FIELDS = ("situation", "did", "luckyj", "fix")
 PAIFU_URL = "https://mahjongsoul.game.yo-star.com/?paipu={uuid}"
 
 REL = {0: "self", 1: "shimocha", 2: "toimen", 3: "kamicha"}
@@ -304,9 +310,10 @@ def threats_at(game: dict, e: dict, hero: int, snap) -> list[dict]:
         calls = sum(1 for m in game["players"][q]["melds"][: len(snap[q])] if m["kind"] != "a")
         if r is not None and r < e["index"]:
             turn = game["events"][r]["turn"]
-            out.append({"seat": q, "rel": REL[(q - hero) % 4], "kind": "riichi", "label": f"{REL_NAME[REL[(q - hero) % 4]]} riichi (turn {turn})"})
+            out.append({"seat": q, "rel": REL[(q - hero) % 4], "kind": "riichi", "turn": turn,
+                        "label": f"{REL_NAME[REL[(q - hero) % 4]]} riichi (turn {turn})"})
         elif calls:
-            out.append({"seat": q, "rel": REL[(q - hero) % 4], "kind": "open",
+            out.append({"seat": q, "rel": REL[(q - hero) % 4], "kind": "open", "calls": calls,
                         "label": f"{REL_NAME[REL[(q - hero) % 4]]} {calls} call{'s' if calls > 1 else ''}"})
     return out
 
@@ -413,7 +420,7 @@ def build_frame(spot: dict, fspec: dict, row: dict, log: list, game: dict) -> di
         i for i, t in enumerate(shown) if site_tile(t) == actual)
     better_index = next((i for i, t in enumerate(shown) if site_tile(t) == better), None) if better else None
     frame.update({
-        "table": table, "threats": [{"rel": t["rel"], "kind": t["kind"], "label": t["label"]} for t in threats],
+        "table": table, "threats": [{k: t[k] for k in ("rel", "kind", "turn", "calls", "label") if k in t} for t in threats],
         "drawn": site_tile(drawn) if drawn is not None else None,
         "you": {**by_tile[actual], "tsumogiri": e["tsumogiri"], "riichi": e["riichi"]},
         "better": dict(by_tile[better]) if better else None,
@@ -445,7 +452,7 @@ def build(spec: dict, manifest: list[dict]) -> dict:
             "game": {"date": row["date"], "uuid": row["uuid"], "placement": row["placement"],
                      "final_score": row["final_scores"][row["hero_seat"]], "url": PAIFU_URL.format(uuid=row["uuid"])},
             "round": game["round_name"], "frames": frames,
-            "text": {k: spot.get(k, "") for k in ("situation", "did", "luckyj", "fix")},
+            "text": {k: spot.get(k, "") for k in TEXT_FIELDS},
             "result": result_summary(log, game, row["hero_seat"]),
             "verdict": spot.get("verdict", "mistake"),
         }
@@ -453,6 +460,29 @@ def build(spec: dict, manifest: list[dict]) -> dict:
             example["corrected"] = spot["corrected"]
         out["chapters"].setdefault(spot["chapter"], []).append(example)
     return out
+
+
+def japanese(spec: dict) -> dict:
+    """The Japanese edition's words for each card: a spot's ``ja`` block (title and commentary) and each
+    frame's ``note_ja``. Every English field that has text needs its Japanese."""
+    out = {}
+    missing = []
+    for spot in spec["spots"]:
+        ja = spot.get("ja", {})
+        for field in ("title",) + TEXT_FIELDS:
+            if spot.get(field) and not ja.get(field):
+                missing.append(f"{spot['id']}.ja.{field}")
+        for fspec in spot["frames"]:
+            if fspec.get("note") and not fspec.get("note_ja"):
+                missing.append(f"{spot['id']} turn {fspec['turn']} note_ja")
+        out[spot["id"]] = {
+            "title": ja.get("title", ""),
+            "text": {k: ja.get(k, "") for k in TEXT_FIELDS},
+            "notes": [fspec.get("note_ja", "") for fspec in spot["frames"]],
+        }
+    if missing:
+        raise SystemExit("the Japanese edition needs: " + ", ".join(missing))
+    return {"examples": out}
 
 
 def show(data: dict) -> None:
@@ -490,19 +520,23 @@ def main() -> None:
     ap.add_argument("--spots", type=Path, default=SPOTS)
     ap.add_argument("--manifest", type=Path, default=MANIFEST)
     ap.add_argument("--out", type=Path, default=OUT)
+    ap.add_argument("--ja-out", type=Path, default=JA_OUT)
     ap.add_argument("--show", action="store_true", help="print every frame instead of writing the JSON")
     args = ap.parse_args()
     spec = json.loads(args.spots.read_text(encoding="utf-8"))
     manifest = json.loads(args.manifest.read_text(encoding="utf-8"))
+    ja = japanese(spec)
     data = build(spec, manifest)
     if args.show:
         show(data)
         return
     args.out.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    args.ja_out.write_text(json.dumps(ja, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     n = sum(len(v) for v in data["chapters"].values())
-    shown = args.out.resolve()
-    shown = shown.relative_to(ROOT) if shown.is_relative_to(ROOT) else shown
-    print(f"wrote {shown}: {n} examples in {len(data['chapters'])} chapters")
+    for path in (args.out, args.ja_out):
+        shown = path.resolve()
+        shown = shown.relative_to(ROOT) if shown.is_relative_to(ROOT) else shown
+        print(f"wrote {shown}: {n} examples in {len(data['chapters'])} chapters")
 
 
 if __name__ == "__main__":

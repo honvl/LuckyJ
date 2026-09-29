@@ -15,6 +15,7 @@ MANIFEST = ROOT / "data/self_games/majsoul/index.json"
 PUSH_EXAMPLES = {"keep-eight-tiles", "last-discard-tenpai", "cheap-tenpai-folded", "three-calls-dora-tanki",
                  "first-row-genbutsu", "first-row-west-pair", "first-row-tie", "three-triplets-folded", "three-red-fives"}
 SPOTS = ROOT / "data/personal_guide_spots.json"
+GUIDE_PAGES = ("honver.html", "honver-ja.html")
 
 
 def event(index, rivers, riichi_seats):
@@ -146,14 +147,25 @@ class GuideSpotTests(unittest.TestCase):
                 self.assertLessEqual(better, you, f"{ex['id']} turn {frame['turn']}")
 
     def test_corrected_cards_are_marked_and_linked(self):
-        page = (ROOT / "site/honver.html").read_text(encoding="utf-8")
         corrected = [ex for ex in self.examples() if ex.get("corrected")]
         self.assertTrue(corrected)
-        for ex in corrected:
-            self.assertTrue(ex["corrected"]["date"], ex["id"])
-            self.assertLessEqual(set(ex["corrected"]["fields"]), {"did", "luckyj", "fix"}, ex["id"])
-            # the dated correction notice points readers at the card
-            self.assertIn(f'href="#guide-{ex["id"]}"', page)
+        for name in GUIDE_PAGES:
+            page = (ROOT / "site" / name).read_text(encoding="utf-8")
+            for ex in corrected:
+                self.assertTrue(ex["corrected"]["date"], ex["id"])
+                self.assertLessEqual(set(ex["corrected"]["fields"]), {"did", "luckyj", "fix"}, ex["id"])
+                # the dated correction notice points readers at the card
+                self.assertIn(f'href="#guide-{ex["id"]}"', page, name)
+
+    def test_threats_carry_their_turn_or_calls(self):
+        # the Japanese edition labels a threat from these, not from the English label
+        for ex in self.examples():
+            for frame in ex["frames"]:
+                for threat in frame.get("threats", []):
+                    if threat["kind"] == "riichi":
+                        self.assertIn(f"(turn {threat['turn']})", threat["label"])
+                    else:
+                        self.assertTrue(threat["label"].endswith(f"{threat['calls']} call{'s' if threat['calls'] > 1 else ''}"))
 
     def test_furiten_safe_tile_is_labelled_genbutsu(self):
         ex = next(e for e in self.examples() if e["id"] == "two-p-three-turns")
@@ -197,16 +209,42 @@ class GuideSpotTests(unittest.TestCase):
         self.assertIn(("chi", "5m", "kamicha"), [(m["kind"], m["called_tile"], m["called_from"]) for m in players["kamicha"]["melds"]])
 
 
+class JapaneseTextTests(unittest.TestCase):
+    """Every card has its Japanese words, and the site's honver-guide-ja.json is built from them."""
+
+    def test_every_card_is_in_japanese(self):
+        spec = json.loads(SPOTS.read_text(encoding="utf-8"))
+        ja = guide.japanese(spec)  # stops on any English text without its Japanese
+        self.assertEqual(ja, json.loads((ROOT / "site/honver-guide-ja.json").read_text(encoding="utf-8")))
+
+    def test_japanese_keeps_the_tiles_and_numbers(self):
+        import re
+
+        tile = re.compile(r"\[\[[^\]]+\]\]")
+        number = re.compile(r"\d[\d,]*(?:\.\d+)?")
+        for spot in json.loads(SPOTS.read_text(encoding="utf-8"))["spots"]:
+            pairs = [(spot.get(k, ""), spot.get("ja", {}).get(k, "")) for k in ("title", "situation", "did", "luckyj", "fix")]
+            pairs += [(f.get("note", ""), f.get("note_ja", "")) for f in spot["frames"]]
+            for en, ja in pairs:
+                with self.subTest(spot=spot["id"], text=en[:40]):
+                    self.assertEqual(sorted(tile.findall(en)), sorted(tile.findall(ja)))
+                    # every figure in the English is in the Japanese (which may add dates and counts written as words)
+                    figures = lambda text: Counter(n.replace(",", "") for n in number.findall(tile.sub(" ", text)))
+                    missing = figures(en) - figures(ja)
+                    self.assertFalse(missing, dict(missing))
+
+
 class PageChapterTests(unittest.TestCase):
     """Every chapter with examples has a place on the page, and every placeholder has examples."""
 
     def test_spot_chapters_match_the_page_placeholders(self):
         import re
 
-        page = (ROOT / "site/honver.html").read_text(encoding="utf-8")
-        placeholders = set(re.findall(r'data-guide-examples="([^"]+)"', page))
         chapters = {s["chapter"] for s in json.loads(SPOTS.read_text(encoding="utf-8"))["spots"]}
-        self.assertEqual(placeholders, chapters)
+        for name in GUIDE_PAGES:
+            page = (ROOT / "site" / name).read_text(encoding="utf-8")
+            placeholders = set(re.findall(r'data-guide-examples="([^"]+)"', page))
+            self.assertEqual(placeholders, chapters, name)
 
     def test_new_chapters_are_listed_at_the_top(self):
         page = (ROOT / "site/honver.html").read_text(encoding="utf-8")

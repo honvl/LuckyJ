@@ -268,7 +268,9 @@ function setupRunningHead() {
   const cover = document.querySelector(".cover");
   const isGuide = document.body?.dataset.book === "guide";
   const words = isJa
-    ? { point: "ポイント", before: "前付け", points: "ポイント", after: "後付け", contents: "目次" }
+    ? isGuide
+      ? { point: "章", before: "本編の前", points: "章", after: "本編の後", contents: "目次" }
+      : { point: "ポイント", before: "前付け", points: "ポイント", after: "後付け", contents: "目次" }
     : isGuide
       ? { point: "Chapter", before: "Before the chapters", points: "Chapters", after: "After the chapters", contents: "Contents" }
       : { point: "Point", before: "Before the points", points: "The points", after: "After the points", contents: "Contents" };
@@ -281,7 +283,8 @@ function setupRunningHead() {
     if (element.classList.contains("point")) {
       const number = element.querySelector(".point-number")?.textContent.trim() || "";
       const title = element.querySelector("h3")?.textContent.trim() || "";
-      return { element, id: element.id, number, title, location: `${words.point} ${number} · ${title}`, isPoint: true };
+      const place = isJa && isGuide ? `第${Number(number)}章` : `${words.point} ${number}`;
+      return { element, id: element.id, number, title, location: `${place} · ${title}`, isPoint: true };
     }
     const label =
       element.dataset.contentsLabel ||
