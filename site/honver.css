@@ -377,6 +377,31 @@
   width: 40%;
 }
 
+/* Chapter 19's worked river: short discard and tile columns, the counting column takes the room. */
+.guide-data.is-river th:first-child,
+.guide-data.is-river td:first-child {
+  width: auto;
+  white-space: nowrap;
+}
+
+.guide-data.is-river {
+  min-width: 560px;
+}
+
+.guide-data.is-river td:nth-child(2) {
+  white-space: nowrap;
+}
+
+.guide-data.is-river th:nth-child(3),
+.guide-data.is-river td:nth-child(3) {
+  width: 42%;
+}
+
+.guide-data.is-river td:nth-child(4),
+.guide-data.is-river td:nth-child(5) {
+  word-break: keep-all;
+}
+
 .point .guide-list {
   display: grid;
   gap: 8px;

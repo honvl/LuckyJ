@@ -108,13 +108,13 @@ class CallerGridTests(unittest.TestCase):
     def check_chapter_19_tables(self, page):
         chapter = page[page.index('<section class="point" id="fold-line">'):]
         chapter = chapter[: chapter.index("</section>")]
-        tables = re.findall(r"<tbody>(.*?)</tbody>", chapter, flags=re.S)
-        cells = [[re.sub(r"<[^>]+>", "", c) for c in re.findall(r"<td[^>]*>(.*?)</td>", row)] for row in re.findall(r"<tr>(.*?)</tr>", tables[0])]
+        tables = re.findall(r"<tbody>(.*?)</tbody>", chapter, flags=re.S)  # the worked river comes first; the two pattern tables close the chapter
+        cells = [[re.sub(r"<[^>]+>", "", c) for c in re.findall(r"<td[^>]*>(.*?)</td>", row)] for row in re.findall(r"<tr>(.*?)</tr>", tables[-2])]
         pct = lambda v: f"{round(v)}%"
         before = ["call", "hand_after_three", "hand_after_two", "hand_after_one", "hand_after_hand"]
         self.assertEqual([c[1:] for c in cells], [[pct(PATTERNS["patterns"][k]["rows"]["could_win"])] + [pct(v) for v in PATTERNS["patterns"][k]["rows"]["by_run"][:2]] for k in before])
         self.assertEqual([PATTERNS["patterns"][k]["rows"]["n"] for k in before], [14033, 1722, 2120, 4793, 11874])
-        cells = [[re.sub(r"<[^>]+>", "", c) for c in re.findall(r"<td[^>]*>(.*?)</td>", row)] for row in re.findall(r"<tr>(.*?)</tr>", tables[1])]
+        cells = [[re.sub(r"<[^>]+>", "", c) for c in re.findall(r"<td[^>]*>(.*?)</td>", row)] for row in re.findall(r"<tr>(.*?)</tr>", tables[-1])]
         kinds = ["one_value_honor", "one_guest_wind", "one_terminal", "one_two_or_eight", "one_middle", "two_honors_terminals",
                  "two_with_number", "three_honors_terminals", "three_with_number"]
         self.assertEqual([c[1:] for c in cells], [[pct(PATTERNS["patterns"][k]["own"]["could_win"]), pct(PATTERNS["patterns"][k]["own"]["square"])] for k in kinds])
