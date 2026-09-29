@@ -922,6 +922,42 @@
    "did": "You cut the genbutsu [[6m]] and dropped to 2-shanten. On the next turn you cut the [[8m]] anyway, then declared riichi on turn 12 and dealt into shimocha.",
    "luckyj": "Against a riichi before turn 13, at 1-shanten with two dora or more, when only a shanten buys the safest tile, LuckyJ keeps the hand about two times in three, mostly with a live tile. You keep it less than half the time.",
    "fix": "Cut [[8m]] and keep the 1-shanten, as Mortal did 89% of the time. Three red fives in fourth place is the hand that climbs a place, and you pushed it three turns later anyway, so the fold on turn 9 only cost you tempo."
+  },
+  {
+   "id": "early-riichi-east",
+   "chapter": "early-safe-tiles",
+   "game": "260929-8e871836",
+   "round": "East 1-0",
+   "frames": [
+    {
+     "turn": 4,
+     "expect_cut": "E",
+     "better": "7s"
+    }
+   ],
+   "title": "An East with no copy out, into a riichi from the third discard",
+   "situation": "East 1, turn 4, 55 tiles left, everyone near 25,000. Kamicha declared riichi on their third discard, with [[4s]] [[4m]] [[5m]] in the river and a [[2p]] thrown since. You are 3-shanten and draw [[7s]], with no genbutsu in hand. Your honors are a lone [[E]], the round wind, and a lone [[C]], and no other copy of either is showing.",
+   "did": "You cut [[E]]. Kamicha held [[E]] [[E]] and waited on it with [[7m]] [[7m]]: 5,200 with the round wind, riichi and a dora.",
+   "luckyj": "A riichi by the declarer's fourth discard leaves LuckyJ without a genbutsu 43% of the time, as it did you. Against a riichi met within its own first six discards, LuckyJ's cuts of a live honor with no other copy showing dealt in 3.8 times per 100, and with one copy showing 1.1.",
+   "fix": "Cut [[7s]], suji of their first discard. It costs 11 tiles of acceptance in a 3-shanten hand that is unlikely to win against this riichi anyway. Mortal cut [[7s]] 67% of the time, [[C]] 30% and [[E]] 1%."
+  },
+  {
+   "id": "early-riichi-south",
+   "chapter": "early-safe-tiles",
+   "game": "260929-68b62fbc",
+   "round": "East 2-0",
+   "frames": [
+    {
+     "turn": 4,
+     "expect_cut": "S"
+    }
+   ],
+   "title": "A South into an early riichi that Mortal would cut too",
+   "verdict": "fine",
+   "situation": "East 2, turn 4, 58 tiles left. You lead on 33,400. Toimen declared riichi on their third discard, with [[N]] [[8p]] [[5m]] in the river, and kamicha, the dealer, has chied [[5m]]-[[6m]]-[[7m]]. You are 2-shanten after a [[7p]]-[[8p]]-[[9p]] chi and draw [[9s]]. Nothing in your hand is genbutsu against the riichi.",
+   "did": "You cut [[S]], a lone honor with no copy showing. Toimen held [[S]] [[S]] and won 1,300 on riichi alone.",
+   "luckyj": "Mortal cut [[S]] 70% of the time and [[9p]] 28%. The [[S]] kept the 2-shanten on 55 tiles; the honor was the tile the hand needed least.",
+   "fix": "No mistake. With nothing safe against an early riichi and the choices close, a lone honor is a normal cut, and this one met the pair."
   }
  ]
 }

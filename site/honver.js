@@ -10,7 +10,7 @@
  * the better one; the commentary and every discard of the hand follow on paper.
  */
 (function () {
-  const guideAsset = "honver-guide.json?v=20260928-guide-8";
+  const guideAsset = "honver-guide.json?v=20260929-guide-9";
   const hideHandsKey = "luckyj:honver-guide:hide-hands";
   const SAFETY_CLASS = {
     genbutsu: "safe",
