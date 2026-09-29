@@ -333,9 +333,21 @@ def discard_threat_profile(state, target, tile):
     }
 
 
-def table_context(start, target, hands, discards, melds, reached, dora_markers, state=None, riichi_discard_indices=None):
+def table_context(
+    start,
+    target,
+    hands,
+    discards,
+    melds,
+    reached,
+    dora_markers,
+    state=None,
+    riichi_discard_indices=None,
+    called_discard_indices=None,
+):
     rendered_hands = [sorted(hand, key=lambda tile: (tile_id(tile), tile)) for hand in hands]
     riichi_discard_indices = riichi_discard_indices or [None, None, None, None]
+    called_discard_indices = called_discard_indices or [[], [], [], []]
     return {
         "round": round_name(start),
         "dealer": rel_seat(start.get("oya"), target),
@@ -348,6 +360,7 @@ def table_context(start, target, hands, discards, melds, reached, dora_markers, 
                 "hand": hand_string(rendered_hands[seat]),
                 "tile_threats": hand_tile_threats(state, target, rendered_hands[seat]) if seat == target else [],
                 "discards": discards[seat][:],
+                "called_discard_indexes": called_discard_indices[seat][:],
                 "melds": melds[seat][:],
                 "reached": bool(reached[seat]),
                 "riichi_discard_index": riichi_discard_indices[seat] if seat < len(riichi_discard_indices) else None,
@@ -661,6 +674,7 @@ def common_case(
     dora_markers,
     point_key,
     riichi_discard_indices=None,
+    called_discard_indices=None,
 ):
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
@@ -682,7 +696,9 @@ def common_case(
         "paifu": row["paifu"],
         "room": row.get("room"),
         "room_code": row.get("room_code"),
-        "table": table_context(start, target, hands, discards, melds, reached, dora_markers, state, riichi_discard_indices),
+        "table": table_context(
+            start, target, hands, discards, melds, reached, dora_markers, state, riichi_discard_indices, called_discard_indices
+        ),
         "outcome": end_summary(start, target),
     }
 
@@ -700,6 +716,7 @@ def make_discard_case(
     dora_markers,
     point_key,
     riichi_discard_indices=None,
+    called_discard_indices=None,
 ):
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
@@ -746,6 +763,7 @@ def make_discard_case(
         dora_markers,
         point_key,
         riichi_discard_indices,
+        called_discard_indices,
     )
     case.update(
         {
@@ -784,6 +802,7 @@ def make_yakuhai_cleanup_case(
     dora_markers,
     threats,
     riichi_discard_indices=None,
+    called_discard_indices=None,
 ):
     case = make_discard_case(
         row,
@@ -798,6 +817,7 @@ def make_yakuhai_cleanup_case(
         dora_markers,
         "point-13",
         riichi_discard_indices,
+        called_discard_indices,
     )
     if not case:
         return None
@@ -828,6 +848,7 @@ def make_simple_discard_case(
     dora_markers,
     point_key,
     riichi_discard_indices=None,
+    called_discard_indices=None,
 ):
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
@@ -858,6 +879,7 @@ def make_simple_discard_case(
         dora_markers,
         point_key,
         riichi_discard_indices,
+        called_discard_indices,
     )
     case.update(
         {
@@ -895,7 +917,20 @@ def make_simple_discard_case(
     return case
 
 
-def make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds, reached, dora_markers, riichi_discard_indices=None):
+def make_reach_case(
+    row,
+    kyoku_index,
+    pos,
+    start,
+    state,
+    hands,
+    discards,
+    melds,
+    reached,
+    dora_markers,
+    riichi_discard_indices=None,
+    called_discard_indices=None,
+):
     reach_prob = max((p / 10000.0 for p in state.get("reach", [])), default=0.0)
     if reach_prob < 0.5:
         return None
@@ -912,6 +947,7 @@ def make_reach_case(row, kyoku_index, pos, start, state, hands, discards, melds,
         dora_markers,
         "point-08",
         riichi_discard_indices,
+        called_discard_indices,
     )
     if case:
         case["kind"] = "reach"
@@ -939,6 +975,7 @@ def make_call_case(
     point_key,
     previous_state=None,
     riichi_discard_indices=None,
+    called_discard_indices=None,
 ):
     msg = state.get("info", {}).get("msg", {})
     target = row["actor"]
@@ -957,6 +994,7 @@ def make_call_case(
         dora_markers,
         point_key,
         riichi_discard_indices,
+        called_discard_indices,
     )
     consumed = msg.get("consumed", [])
     shape = post_call_eval(hands[target], consumed, msg.get("real_dahai"))
@@ -2375,6 +2413,7 @@ def try_discard_points(
     dora_markers,
     open_melds,
     riichi_discard_indices=None,
+    called_discard_indices=None,
     actual_declares_reach=False,
 ):
     msg = state.get("info", {}).get("msg", {})
@@ -2421,6 +2460,7 @@ def try_discard_points(
                     reached,
                     dora_markers,
                     riichi_discard_indices,
+                    called_discard_indices,
                 ),
                 score_value,
             )
@@ -2453,6 +2493,7 @@ def try_discard_points(
                     dora_markers,
                     "point-01",
                     riichi_discard_indices,
+                    called_discard_indices,
                 ),
                 score_value,
             )
@@ -2477,6 +2518,7 @@ def try_discard_points(
                     dora_markers,
                     "point-02",
                     riichi_discard_indices,
+                    called_discard_indices,
                 ),
                 score_value,
             )
@@ -2503,6 +2545,7 @@ def try_discard_points(
                     dora_markers,
                     "point-05",
                     riichi_discard_indices,
+                    called_discard_indices,
                 ),
                 score_value,
             )
@@ -2523,6 +2566,7 @@ def try_discard_points(
                 dora_markers,
                 "point-06",
                 riichi_discard_indices,
+                called_discard_indices,
             )
             if case and case["actual_eval"]["ukeire"] < case["naga_eval"]["ukeire"] and case["actual_eval"]["kept_honors"] >= case["naga_eval"]["kept_honors"]:
                 add(selected, used, "point-06", case, score_value)
@@ -2547,6 +2591,7 @@ def try_discard_points(
                     dora_markers,
                     "point-09",
                     riichi_discard_indices,
+                    called_discard_indices,
                 ),
                 score_value,
             )
@@ -2574,6 +2619,7 @@ def try_discard_points(
                     dora_markers,
                     "point-14",
                     riichi_discard_indices,
+                    called_discard_indices,
                 ),
                 score_value,
             )
@@ -2598,6 +2644,7 @@ def try_discard_points(
                 dora_markers,
                 "point-15",
                 riichi_discard_indices,
+                called_discard_indices,
             )
             add_best(selected, used, scores, "point-15", case, score_value)
 
@@ -2621,6 +2668,7 @@ def try_discard_points(
                 dora_markers,
                 "point-16",
                 riichi_discard_indices,
+                called_discard_indices,
             )
             add_best(selected, used, scores, "point-16", case, score_value)
 
@@ -2644,6 +2692,7 @@ def try_discard_points(
                 dora_markers,
                 "point-18",
                 riichi_discard_indices,
+                called_discard_indices,
             )
             add_best(selected, used, scores, "point-18", case, score_value)
 
@@ -2669,6 +2718,7 @@ def try_discard_points(
                     dora_markers,
                     "point-10",
                     riichi_discard_indices,
+                    called_discard_indices,
                 ),
                 score_value,
             )
@@ -2695,6 +2745,7 @@ def try_discard_points(
                     dora_markers,
                     "point-12",
                     riichi_discard_indices,
+                    called_discard_indices,
                 ),
                 score_value,
             )
@@ -2722,6 +2773,7 @@ def try_discard_points(
                     dora_markers,
                     threats,
                     riichi_discard_indices,
+                    called_discard_indices,
                 )
                 add_best(selected, used, scores, "point-13", case, score_value)
 
@@ -2747,6 +2799,7 @@ def try_discard_points(
                         dora_markers,
                         "point-11",
                         riichi_discard_indices,
+                        called_discard_indices,
                     ),
                     score_value,
                 )
@@ -2767,6 +2820,7 @@ def try_call_points(
     dora_markers,
     previous_state=None,
     riichi_discard_indices=None,
+    called_discard_indices=None,
 ):
     msg = state.get("info", {}).get("msg", {})
     if msg.get("actor") != row["actor"] or msg.get("type") not in base.HURO_TYPES:
@@ -2790,6 +2844,7 @@ def try_call_points(
         "point-03",
         previous_state,
         riichi_discard_indices,
+        called_discard_indices,
     )
 
     score_value = exposed_bonus + max(0.0, (70 - left) / 100) + call_score_adjustment(call_case or {})
@@ -2817,6 +2872,7 @@ def try_call_points(
             "point-04",
             previous_state,
             riichi_discard_indices,
+            called_discard_indices,
         )
         score_value = 0.4 + 0.2 * active_threats + (0.2 if terminal_or_honor_exit else 0.0) + call_score_adjustment(call_case or {})
         if call_has_teaching_disagreement(call_case) and wants_candidate(selected, "point-04", score_value):
@@ -2827,6 +2883,13 @@ def try_call_points(
                 call_case,
                 score_value,
             )
+
+
+def mark_called_discard(called_discard_indices, discards, msg):
+    """A chi, pon or open kan takes the discarder's last pond tile; note its place so the table draws it faint."""
+    source = msg.get("target")
+    if source is not None and discards[source]:
+        called_discard_indices[source].append(len(discards[source]) - 1)
 
 
 def collect_examples():
@@ -2850,6 +2913,7 @@ def collect_examples():
             reached = [False, False, False, False]
             pending_riichi_discard = [False, False, False, False]
             riichi_discard_indices = [None, None, None, None]
+            called_discard_indices = [[], [], [], []]
             dora_markers = [start.get("dora_marker")] if start.get("dora_marker") else []
 
             for pos, state in enumerate(kyoku):
@@ -2881,6 +2945,7 @@ def collect_examples():
                             dora_markers,
                             open_melds,
                             riichi_discard_indices,
+                            called_discard_indices,
                             actual_declares_reach=actual_declares_reach,
                         )
                     discard = msg.get("real_dahai")
@@ -2904,7 +2969,10 @@ def collect_examples():
                         dora_markers,
                         previous_state,
                         riichi_discard_indices,
+                        called_discard_indices,
                     )
+                    # Marked only now: the call frame above shows the tile still live, as the decision stood.
+                    mark_called_discard(called_discard_indices, discards, msg)
                     consumed = msg.get("consumed", [])
                     call_tiles = consumed + ([msg.get("pai")] if msg.get("pai") else [])
                     melds[actor].append(make_meld(call_tiles, msg.get("pai"), rel_seat(msg.get("target"), actor), msg_type))
@@ -2975,6 +3043,54 @@ def refresh_commentary():
         print(f"  missing: {key}")
 
 
+def ponds_before(kyoku, position):
+    """Each seat's pond before event ``position``, and the places in it of the tiles another player called.
+
+    Only earlier events count, as in collect_examples: a call frame stands before its own call, so the tile
+    being decided on is still live.
+    """
+    discards = [[], [], [], []]
+    called_discard_indices = [[], [], [], []]
+    for state in kyoku[:position]:
+        msg = state.get("info", {}).get("msg", {})
+        if msg.get("type") == "dahai" and msg.get("actor") is not None and msg.get("pai"):
+            discards[msg["actor"]].append(msg["pai"])
+        elif msg.get("type") in base.HURO_TYPES:
+            mark_called_discard(called_discard_indices, discards, msg)
+    return discards, called_discard_indices
+
+
+def refresh_called_tiles():
+    """Mark the pond tiles another player called on the selected replays' tables, without reselecting."""
+    data = json.loads(OUT.read_text(encoding="utf-8"))
+    rows = {row["idx"]: row for row in base.parse_rows()}
+    marked = 0
+    for point_key, cases in data.items():
+        for case in cases:
+            row = rows[case["game"]]
+            report = base.fetch_report(row["report_id"])
+            base.normalize_report(report)
+            kyoku = report["pred"][case["kyoku_index"]]
+            msg = kyoku[case["position"]].get("info", {}).get("msg", {})
+            decision = base.HURO_TYPES if case["kind"] == "call" else {"tsumo"}
+            where = f"{point_key} example {case['example_index']} (game {case['game']})"
+            if msg.get("actor") != row["actor"] or msg.get("type") not in decision:
+                raise SystemExit(f"{where}: event {case['position']} is not LuckyJ's decision")
+            discards, called = ponds_before(kyoku, case["position"])
+            players = case["table"]["players"]
+            for index, player in enumerate(players):
+                seat = (SEAT_NAMES.index(player["seat"]) + row["actor"]) % 4
+                if player["discards"] != discards[seat]:
+                    raise SystemExit(f"{where}: the replayed pond of {player['seat']} differs from the table")
+                # the same key order as table_context, so a full rebuild changes nothing here
+                items = [(key, value) for key, value in player.items() if key != "called_discard_indexes"]
+                at = [key for key, _ in items].index("discards") + 1
+                players[index] = dict(items[:at] + [("called_discard_indexes", called[seat])] + items[at:])
+                marked += len(called[seat])
+    OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"marked {marked} called pond tiles on the tables in {OUT}")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -2987,12 +3103,20 @@ def main():
         action="store_true",
         help="attach the written replay commentary without reselecting frames",
     )
+    parser.add_argument(
+        "--refresh-called-tiles",
+        action="store_true",
+        help="mark the pond tiles other players called on the tables without reselecting frames",
+    )
     args = parser.parse_args()
     if args.refresh_evidence_only:
         refresh_evidence_tiers()
         return
     if args.refresh_commentary:
         refresh_commentary()
+        return
+    if args.refresh_called_tiles:
+        refresh_called_tiles()
         return
     OUT.parent.mkdir(parents=True, exist_ok=True)
     data = finalize_examples(collect_examples())

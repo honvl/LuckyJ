@@ -347,6 +347,7 @@
               "2s",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -365,6 +366,7 @@
               "7m",
               "7m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -383,6 +385,7 @@
               "1p",
               "2m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -401,6 +404,7 @@
               "4p",
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -1133,6 +1137,9 @@
               "8p",
               "F"
             ],
+            "called_discard_indexes": [
+              2
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -1149,6 +1156,7 @@
               "9s",
               "8s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -1456,6 +1464,7 @@
               "2p",
               "7s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -1472,6 +1481,7 @@
               "1p",
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -2478,6 +2488,7 @@
               "1p",
               "P"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -2498,6 +2509,7 @@
               "4p",
               "7m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 6
@@ -2518,6 +2530,7 @@
               "7s",
               "7m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -2538,6 +2551,7 @@
               "9m",
               "P"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -3242,6 +3256,7 @@
               "C",
               "9s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -3571,6 +3586,11 @@
               "1s",
               "8p"
             ],
+            "called_discard_indexes": [
+              1,
+              3,
+              4
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -3586,6 +3606,7 @@
               "N",
               "1m"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -3612,6 +3633,9 @@
               "9s",
               "9s",
               "F"
+            ],
+            "called_discard_indexes": [
+              1
             ],
             "melds": [],
             "reached": false,
@@ -4295,6 +4319,7 @@
               "9p",
               "9p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -4308,6 +4333,7 @@
               "1m",
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -4321,6 +4347,7 @@
               "9s",
               "9s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -4615,6 +4642,7 @@
               "1s",
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -5235,6 +5263,7 @@
               "S",
               "8p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -5251,6 +5280,7 @@
               "5m",
               "1s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -5266,6 +5296,9 @@
               "9s",
               "2m",
               "7m"
+            ],
+            "called_discard_indexes": [
+              4
             ],
             "melds": [],
             "reached": false,
@@ -5283,6 +5316,7 @@
               "P",
               "9p"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -5773,6 +5807,7 @@
               "9s",
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -6068,6 +6103,7 @@
               "4m",
               "N"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -6082,6 +6118,7 @@
               "S",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -6096,6 +6133,7 @@
               "P",
               "1s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -6519,6 +6557,7 @@
               "5m",
               "5m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -6815,6 +6854,7 @@
               "6m",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -6830,6 +6870,7 @@
               "1m",
               "8s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -6846,6 +6887,7 @@
               "2p",
               "C"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -7446,6 +7488,7 @@
               "7m",
               "8m"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -7483,6 +7526,9 @@
               "9p",
               "S"
             ],
+            "called_discard_indexes": [
+              2
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -7497,6 +7543,9 @@
               "P",
               "8m",
               "7p"
+            ],
+            "called_discard_indexes": [
+              1
             ],
             "melds": [],
             "reached": false,
@@ -7792,6 +7841,7 @@
               "S",
               "7m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -8150,6 +8200,7 @@
               "6s",
               "7m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -8171,6 +8222,7 @@
               "6s",
               "8p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -8453,6 +8505,7 @@
               "E",
               "8p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -8474,6 +8527,7 @@
               "7p",
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 8
@@ -9026,6 +9080,9 @@
               "W",
               "F"
             ],
+            "called_discard_indexes": [
+              2
+            ],
             "melds": [
               {
                 "tiles": [
@@ -9063,6 +9120,9 @@
               "3p",
               "8s",
               "5mr"
+            ],
+            "called_discard_indexes": [
+              3
             ],
             "melds": [
               {
@@ -9118,6 +9178,9 @@
               "8s",
               "5m"
             ],
+            "called_discard_indexes": [
+              2
+            ],
             "melds": [
               {
                 "tiles": [
@@ -9154,6 +9217,9 @@
               "8p",
               "1m",
               "3p"
+            ],
+            "called_discard_indexes": [
+              0
             ],
             "melds": [],
             "reached": false,
@@ -9896,6 +9962,7 @@
             "discards": [
               "9m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -9908,6 +9975,7 @@
             "discards": [
               "9m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -9920,6 +9988,7 @@
             "discards": [
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -9933,6 +10002,7 @@
               "S",
               "1p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -10156,6 +10226,7 @@
               "9p",
               "8m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -10180,6 +10251,9 @@
               "9p",
               "C"
             ],
+            "called_discard_indexes": [
+              10
+            ],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 7
@@ -10203,6 +10277,9 @@
               "5p",
               "N",
               "4s"
+            ],
+            "called_discard_indexes": [
+              6
             ],
             "melds": [
               {
@@ -10439,6 +10516,7 @@
               "S",
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -10870,6 +10948,10 @@
               "2p",
               "6m"
             ],
+            "called_discard_indexes": [
+              1,
+              5
+            ],
             "melds": [
               {
                 "tiles": [
@@ -10899,6 +10981,7 @@
               "2m",
               "6s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -10928,6 +11011,7 @@
               "4s",
               "7p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -11148,6 +11232,9 @@
               "E",
               "8p",
               "2m"
+            ],
+            "called_discard_indexes": [
+              7
             ],
             "melds": [
               {
@@ -11699,6 +11786,7 @@
               "7p",
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -11727,6 +11815,7 @@
               "7p",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -11744,6 +11833,7 @@
               "1m",
               "9s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 5
@@ -11760,6 +11850,9 @@
               "C",
               "1s",
               "N"
+            ],
+            "called_discard_indexes": [
+              4
             ],
             "melds": [],
             "reached": false,
@@ -12095,6 +12188,9 @@
               "W",
               "3p"
             ],
+            "called_discard_indexes": [
+              5
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -12112,6 +12208,9 @@
               "4p",
               "6m",
               "8m"
+            ],
+            "called_discard_indexes": [
+              1
             ],
             "melds": [],
             "reached": false,
@@ -12131,6 +12230,7 @@
               "2p",
               "8p"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -12432,6 +12532,7 @@
               "S",
               "5s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -13025,6 +13126,7 @@
               "S",
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -13049,6 +13151,7 @@
               "7m",
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 11
@@ -13073,6 +13176,7 @@
               "F",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -13097,6 +13201,7 @@
               "1s",
               "5p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 8
@@ -13715,6 +13820,7 @@
               "N",
               "N"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -13730,6 +13836,9 @@
               "1p",
               "4p",
               "S"
+            ],
+            "called_discard_indexes": [
+              0
             ],
             "melds": [
               {
@@ -13766,6 +13875,9 @@
               "1p",
               "9s"
             ],
+            "called_discard_indexes": [
+              0
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -13779,6 +13891,9 @@
               "N",
               "1s",
               "C"
+            ],
+            "called_discard_indexes": [
+              2
             ],
             "melds": [
               {
@@ -14045,6 +14160,7 @@
               "1p",
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -14065,6 +14181,7 @@
               "8p",
               "9p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -14366,6 +14483,7 @@
               "1s",
               "7m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -14386,6 +14504,7 @@
               "3m",
               "7s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -15214,6 +15333,9 @@
               "S",
               "N"
             ],
+            "called_discard_indexes": [
+              4
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -15233,6 +15355,7 @@
               "W",
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -15252,6 +15375,7 @@
               "F",
               "7p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -15273,6 +15397,7 @@
               "4m",
               "5m"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -15707,6 +15832,7 @@
               "W",
               "5m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -15722,6 +15848,7 @@
               "P",
               "8m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -15738,6 +15865,7 @@
               "2s",
               "P"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -16034,6 +16162,7 @@
               "W",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -16405,6 +16534,7 @@
               "2s",
               "N"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -16717,6 +16847,9 @@
               "P",
               "2m"
             ],
+            "called_discard_indexes": [
+              4
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -16736,6 +16869,7 @@
               "7p",
               "4s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -16755,6 +16889,7 @@
               "8p",
               "7p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -17629,6 +17764,7 @@
               }
             ],
             "discards": [],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -17639,6 +17775,7 @@
             "hand": "1m 5m 8m 1p 3p 4p 4p 8p 9p 9p 1s 6s C",
             "tile_threats": [],
             "discards": [],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -17651,6 +17788,7 @@
             "discards": [
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -17663,6 +17801,7 @@
             "discards": [
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -18211,6 +18350,7 @@
               "E",
               "1p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -18226,6 +18366,7 @@
               "8p",
               "4m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -18240,6 +18381,9 @@
               "N",
               "F",
               "P"
+            ],
+            "called_discard_indexes": [
+              3
             ],
             "melds": [],
             "reached": false,
@@ -18256,6 +18400,7 @@
               "9m",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -18984,6 +19129,7 @@
               "1s",
               "2p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -18999,6 +19145,7 @@
               "C",
               "N"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -19014,6 +19161,7 @@
               "P",
               "9m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -19029,6 +19177,7 @@
               "E",
               "C"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -19476,6 +19625,7 @@
               "C",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -19492,6 +19642,7 @@
               "7s",
               "N"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -19518,6 +19669,9 @@
               "C",
               "3s",
               "W"
+            ],
+            "called_discard_indexes": [
+              1
             ],
             "melds": [],
             "reached": false,
@@ -19814,6 +19968,7 @@
               "8s",
               "C"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -20603,6 +20758,7 @@
             "discards": [
               "4p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -20615,6 +20771,7 @@
             "discards": [
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -20627,6 +20784,7 @@
             "discards": [
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -20639,6 +20797,7 @@
             "discards": [
               "9p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -20907,6 +21066,7 @@
               "4p",
               "2p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -20933,6 +21093,7 @@
               "N",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -20959,6 +21120,7 @@
               "8s",
               "1p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -21265,6 +21427,7 @@
               "5m",
               "1s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -22151,6 +22314,7 @@
               "W",
               "2m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -22169,6 +22333,7 @@
               "N",
               "3p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -22467,6 +22632,7 @@
               "6p",
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -22484,6 +22650,7 @@
               "1s",
               "4m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -22971,6 +23138,7 @@
               "1m",
               "9p"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -23278,6 +23446,7 @@
               "9m",
               "8m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -23294,6 +23463,7 @@
               "6m",
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 2
@@ -23309,6 +23479,9 @@
               "F",
               "S",
               "S"
+            ],
+            "called_discard_indexes": [
+              1
             ],
             "melds": [],
             "reached": false,
@@ -23670,6 +23843,7 @@
               "2s",
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -23689,6 +23863,7 @@
               "8m",
               "7m"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -23734,6 +23909,9 @@
               "F",
               "C",
               "5p"
+            ],
+            "called_discard_indexes": [
+              0
             ],
             "melds": [],
             "reached": false,
@@ -24033,6 +24211,9 @@
               "3m",
               "6m",
               "5p"
+            ],
+            "called_discard_indexes": [
+              2
             ],
             "melds": [],
             "reached": false,
@@ -24942,6 +25123,9 @@
               "S",
               "8m"
             ],
+            "called_discard_indexes": [
+              4
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -24957,6 +25141,7 @@
               "2m",
               "3p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -24972,6 +25157,7 @@
               "F",
               "P"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -24988,6 +25174,7 @@
               "P",
               "9m"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -25701,6 +25888,7 @@
               "3p",
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -25723,6 +25911,9 @@
               "9s",
               "1m",
               "4p"
+            ],
+            "called_discard_indexes": [
+              7
             ],
             "melds": [
               {
@@ -25758,6 +25949,7 @@
               "1m",
               "9m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 9
@@ -25781,6 +25973,9 @@
               "8s",
               "2s",
               "P"
+            ],
+            "called_discard_indexes": [
+              2
             ],
             "melds": [
               {
@@ -27200,6 +27395,9 @@
               "N",
               "C"
             ],
+            "called_discard_indexes": [
+              3
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -27219,6 +27417,7 @@
               "8p",
               "5s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -27249,6 +27448,7 @@
               "7p",
               "1m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -27268,6 +27468,7 @@
               "C",
               "4p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -27865,6 +28066,7 @@
               "7p",
               "N"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -27892,6 +28094,7 @@
               "8m",
               "1s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -28198,6 +28401,7 @@
               "S",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -28212,6 +28416,9 @@
               "C",
               "1s",
               "1m"
+            ],
+            "called_discard_indexes": [
+              2
             ],
             "melds": [],
             "reached": false,
@@ -28692,6 +28899,9 @@
               "9p",
               "9p"
             ],
+            "called_discard_indexes": [
+              6
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -28717,6 +28927,7 @@
               "N",
               "1p"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -29033,6 +29244,7 @@
               "F",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -29057,6 +29269,7 @@
               "E",
               "2p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 8
@@ -29882,6 +30095,10 @@
               "E",
               "7s"
             ],
+            "called_discard_indexes": [
+              7,
+              8
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -29907,6 +30124,7 @@
               "1p",
               "5s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -29955,6 +30173,7 @@
               "C",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -30002,6 +30221,10 @@
               "1m",
               "6m",
               "6s"
+            ],
+            "called_discard_indexes": [
+              1,
+              14
             ],
             "melds": [],
             "reached": true,
@@ -31118,6 +31341,9 @@
               "8p",
               "9m"
             ],
+            "called_discard_indexes": [
+              7
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -31140,6 +31366,9 @@
               "1p",
               "9p",
               "2p"
+            ],
+            "called_discard_indexes": [
+              7
             ],
             "melds": [],
             "reached": false,
@@ -31165,6 +31394,7 @@
               "9p",
               "9s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -31491,6 +31721,7 @@
               "4p",
               "9s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -32441,6 +32672,7 @@
               "1s",
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -32463,6 +32695,7 @@
               "5p",
               "6s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -32486,6 +32719,7 @@
               "2m",
               "9s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -32509,6 +32743,7 @@
               "P",
               "1p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -33352,6 +33587,7 @@
               "W",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -33375,6 +33611,7 @@
               "3s",
               "3m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 10
@@ -33678,6 +33915,7 @@
               "1m",
               "P"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -33701,6 +33939,7 @@
               "7p",
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -34570,6 +34809,11 @@
               "E",
               "7p"
             ],
+            "called_discard_indexes": [
+              0,
+              7,
+              14
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -34594,6 +34838,9 @@
               "7m",
               "2p",
               "2s"
+            ],
+            "called_discard_indexes": [
+              8
             ],
             "melds": [
               {
@@ -34640,6 +34887,7 @@
               "4p",
               "2m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -34666,6 +34914,7 @@
               "8p",
               "6s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -35650,6 +35899,7 @@
               "3m",
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -35675,6 +35925,7 @@
               "1s",
               "C"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 10
@@ -35700,6 +35951,7 @@
               "6m",
               "9m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -36005,6 +36257,7 @@
               "E",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -36882,6 +37135,7 @@
               "8s",
               "1p"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -36928,6 +37182,10 @@
               "8m",
               "7s"
             ],
+            "called_discard_indexes": [
+              0,
+              4
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -36953,6 +37211,7 @@
               "1p",
               "9m"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -37284,6 +37543,10 @@
               "8m",
               "8m",
               "E"
+            ],
+            "called_discard_indexes": [
+              4,
+              5
             ],
             "melds": [],
             "reached": false,
@@ -38157,6 +38420,7 @@
               "6s",
               "3s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -38181,6 +38445,7 @@
               "6m",
               "5m"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -38216,6 +38481,9 @@
               "E",
               "3m"
             ],
+            "called_discard_indexes": [
+              9
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -38239,6 +38507,7 @@
               "5s",
               "8m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 5
@@ -38807,6 +39076,7 @@
               "E",
               "9m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -38830,6 +39100,7 @@
               "7p",
               "7s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -39133,6 +39404,7 @@
               "P",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -39156,6 +39428,7 @@
               "W",
               "1m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -39971,6 +40244,7 @@
               "2p",
               "8p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -39994,6 +40268,7 @@
               "6s",
               "7s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -40309,6 +40584,7 @@
               "1p",
               "1m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -40331,6 +40607,9 @@
               "8s",
               "P",
               "N"
+            ],
+            "called_discard_indexes": [
+              10
             ],
             "melds": [],
             "reached": false,
@@ -41080,6 +41359,7 @@
               "1s",
               "7s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 0
@@ -41377,6 +41657,7 @@
               "9s",
               "3p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -41393,6 +41674,7 @@
               "S",
               "1p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -41410,6 +41692,7 @@
               "8s",
               "9m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -41730,6 +42013,7 @@
               "F",
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -41746,6 +42030,7 @@
               "7p",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -41772,6 +42057,9 @@
               "N",
               "1s",
               "1m"
+            ],
+            "called_discard_indexes": [
+              2
             ],
             "melds": [],
             "reached": false,
@@ -42069,6 +42357,7 @@
               "6p",
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -42625,6 +42914,7 @@
               "1p",
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -42642,6 +42932,7 @@
               "2s",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -42659,6 +42950,7 @@
               "2p",
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -42676,6 +42968,7 @@
               "S",
               "9p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -43130,6 +43423,7 @@
             "discards": [
               "1s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -43421,6 +43715,7 @@
               }
             ],
             "discards": [],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -43431,6 +43726,7 @@
             "hand": "2m 4m 1p 6p 8p 9p 4s 5s 7s N P F C",
             "tile_threats": [],
             "discards": [],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -43443,6 +43739,7 @@
             "discards": [
               "P"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -43713,6 +44010,7 @@
               "W",
               "8m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -43730,6 +44028,7 @@
               "8p",
               "8s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -44038,6 +44337,7 @@
               "C",
               "9p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -44053,6 +44353,9 @@
               "E",
               "W",
               "1m"
+            ],
+            "called_discard_indexes": [
+              2
             ],
             "melds": [],
             "reached": false,
@@ -44522,6 +44825,7 @@
               "S",
               "8m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -44816,6 +45120,7 @@
               "S",
               "8p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -44828,6 +45133,9 @@
             "discards": [
               "W",
               "9m"
+            ],
+            "called_discard_indexes": [
+              1
             ],
             "melds": [],
             "reached": false,
@@ -44842,6 +45150,7 @@
               "S",
               "8p"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -45133,6 +45442,7 @@
               "8m",
               "3m"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -45438,6 +45748,9 @@
               "S",
               "W"
             ],
+            "called_discard_indexes": [
+              0
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -45451,6 +45764,7 @@
               "9p",
               "N"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -45464,6 +45778,7 @@
               "E",
               "5m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -45854,6 +46169,7 @@
               "9s",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -46149,6 +46465,7 @@
               "1p",
               "4s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -46162,6 +46479,9 @@
               "C",
               "8m",
               "2s"
+            ],
+            "called_discard_indexes": [
+              2
             ],
             "melds": [],
             "reached": false,
@@ -46177,6 +46497,7 @@
               "1m",
               "7s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -46707,6 +47028,7 @@
             "discards": [
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -46722,6 +47044,7 @@
               "9s",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -46758,6 +47081,7 @@
               "8p",
               "9s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -47053,6 +47377,10 @@
               "E",
               "8m"
             ],
+            "called_discard_indexes": [
+              0,
+              2
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -47343,6 +47671,7 @@
               "9p",
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -47367,6 +47696,9 @@
               "E",
               "F"
             ],
+            "called_discard_indexes": [
+              0
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -47380,6 +47712,7 @@
               "1s",
               "C"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -47684,6 +48017,9 @@
             "discards": [
               "N",
               "F"
+            ],
+            "called_discard_indexes": [
+              0
             ],
             "melds": [],
             "reached": false,
@@ -48003,6 +48339,7 @@
               "5m",
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -48023,6 +48360,7 @@
               "E",
               "1m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -48043,6 +48381,7 @@
               "2m",
               "7s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 8
@@ -48343,6 +48682,7 @@
               "3s",
               "1m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -48996,6 +49336,7 @@
               "F",
               "8m"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -49027,6 +49368,9 @@
               "F",
               "C",
               "9p"
+            ],
+            "called_discard_indexes": [
+              8
             ],
             "melds": [
               {
@@ -49340,6 +49684,9 @@
               "1s",
               "8p"
             ],
+            "called_discard_indexes": [
+              6
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -49359,6 +49706,7 @@
               "P",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -49947,6 +50295,7 @@
               "3s",
               "1s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -50250,6 +50599,9 @@
               "8s",
               "1s"
             ],
+            "called_discard_indexes": [
+              6
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -50272,6 +50624,7 @@
               "9p",
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -50306,6 +50659,7 @@
               "4p",
               "5p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -51094,6 +51448,7 @@
               "6p",
               "3p"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -51412,6 +51767,7 @@
               "6p",
               "6p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -51438,6 +51794,7 @@
               "2s",
               "9m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -51463,6 +51820,9 @@
               "6p",
               "2p",
               "3s"
+            ],
+            "called_discard_indexes": [
+              5
             ],
             "melds": [],
             "reached": true,
@@ -52698,6 +53058,7 @@
               "3p",
               "2m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -52716,6 +53077,10 @@
               "2p",
               "9p",
               "6p"
+            ],
+            "called_discard_indexes": [
+              5,
+              7
             ],
             "melds": [],
             "reached": false,
@@ -52736,6 +53101,7 @@
               "2m",
               "1m"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -52777,6 +53143,7 @@
               "2m",
               "9s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -53559,6 +53926,9 @@
               "S",
               "2s"
             ],
+            "called_discard_indexes": [
+              5
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -53578,6 +53948,7 @@
               "8s",
               "1p"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -53608,6 +53979,7 @@
               "3s",
               "P"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 4
@@ -53908,6 +54280,7 @@
               "1s",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -54570,6 +54943,7 @@
               "W",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -54583,6 +54957,7 @@
               "2s",
               "N"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -54596,6 +54971,7 @@
               "W",
               "1p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -54609,6 +54985,7 @@
               "9m",
               "1m"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -55244,6 +55621,7 @@
               "F",
               "2m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -55258,6 +55636,10 @@
               "W",
               "S",
               "E"
+            ],
+            "called_discard_indexes": [
+              0,
+              2
             ],
             "melds": [],
             "reached": false,
@@ -55274,6 +55656,7 @@
               "4s",
               "8s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -55310,6 +55693,7 @@
               "W",
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -56062,6 +56446,7 @@
               "6m",
               "C"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -56084,6 +56469,7 @@
               "8p",
               "3p"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -56119,6 +56505,7 @@
               "6p",
               "2p"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -56153,6 +56540,10 @@
               "9m",
               "9m",
               "P"
+            ],
+            "called_discard_indexes": [
+              5,
+              7
             ],
             "melds": [],
             "reached": false,
@@ -57099,6 +57490,7 @@
               "9p",
               "5m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -57125,6 +57517,7 @@
               "9p",
               "4s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 13
@@ -57432,6 +57825,7 @@
               "5s",
               "1s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -57458,6 +57852,7 @@
               "1p",
               "C"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -58278,6 +58673,7 @@
               "7p",
               "4p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -58575,6 +58971,7 @@
               "3p",
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -58591,6 +58988,7 @@
               "2p",
               "2s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -58607,6 +59005,7 @@
               "3p",
               "3p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -59290,6 +59689,7 @@
               "N",
               "N"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -59308,6 +59708,7 @@
               "1p",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -59327,6 +59728,7 @@
               "2s",
               "F"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 4
@@ -59346,6 +59748,7 @@
               "2s",
               "C"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -60200,6 +60603,7 @@
               "8p",
               "7m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -60501,6 +60905,7 @@
               "1m",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -60520,6 +60925,9 @@
               "1s",
               "5m",
               "3p"
+            ],
+            "called_discard_indexes": [
+              8
             ],
             "melds": [],
             "reached": false,
@@ -60542,6 +60950,7 @@
               "7s",
               "9s"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -61316,6 +61725,7 @@
               "9p",
               "1s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -61329,6 +61739,9 @@
               "5s",
               "4p",
               "6m"
+            ],
+            "called_discard_indexes": [
+              2
             ],
             "melds": [],
             "reached": false,
@@ -61344,6 +61757,7 @@
               "N",
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -61650,6 +62064,7 @@
               "1m",
               "P"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -62133,6 +62548,7 @@
               "7s",
               "8s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -62151,6 +62567,7 @@
               "7s",
               "2p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -62169,6 +62586,7 @@
               "N",
               "4p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 6
@@ -62468,6 +62886,7 @@
               "8p",
               "9s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -63388,6 +63807,9 @@
               "2m",
               "1m"
             ],
+            "called_discard_indexes": [
+              0
+            ],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -63400,6 +63822,9 @@
             "discards": [
               "W",
               "N"
+            ],
+            "called_discard_indexes": [
+              0
             ],
             "melds": [],
             "reached": false,
@@ -63414,6 +63839,7 @@
               "9s",
               "S"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -63429,6 +63855,7 @@
               "8s",
               "9p"
             ],
+            "called_discard_indexes": [],
             "melds": [
               {
                 "tiles": [
@@ -64002,6 +64429,7 @@
               "2p",
               "9p"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -64025,6 +64453,7 @@
               "P",
               "5sr"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -64048,6 +64477,7 @@
               "5s",
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": true,
             "riichi_discard_index": 8
@@ -64351,6 +64781,7 @@
               "9s",
               "1s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -65567,6 +65998,7 @@
               "8p",
               "W"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -65585,6 +66017,7 @@
               "8m",
               "E"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -65603,6 +66036,7 @@
               "4m",
               "5s"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
@@ -65622,6 +66056,7 @@
               "F",
               "5m"
             ],
+            "called_discard_indexes": [],
             "melds": [],
             "reached": false,
             "riichi_discard_index": null
