@@ -402,6 +402,31 @@
   word-break: keep-all;
 }
 
+/* Chapter 18's three squares: the river and the counts share the room, the figures stay whole. */
+.guide-data.is-moments {
+  min-width: 560px;
+}
+
+.guide-data.is-moments th:first-child,
+.guide-data.is-moments td:first-child {
+  width: auto;
+  white-space: nowrap;
+}
+
+.guide-data.is-moments td:nth-child(2) {
+  width: 30%;
+}
+
+.guide-data.is-moments td:nth-child(3) {
+  width: 26%;
+}
+
+.guide-data.is-moments td:nth-child(4),
+.guide-data.is-moments td:nth-child(5),
+.guide-data.is-moments td:nth-child(6) {
+  word-break: keep-all;
+}
+
 .point .guide-list {
   display: grid;
   gap: 8px;

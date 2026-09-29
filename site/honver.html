@@ -49,7 +49,7 @@
           <aside class="guide-news" id="whats-new" aria-labelledby="whats-new-title">
             <h2 id="whats-new-title">What&#8217;s new</h2>
             <ol>
-              <li class="is-latest"><span class="guide-news-date">29 Sep</span><p><span class="new-tag">Latest</span> <a href="#fold-line">Chapter 19 is rewritten in plainer words</a>. It now defines its terms, walks one river from your 28 September game square by square, and says outright what the call counts as. Its numbers have not changed, and neither have chapters 1 to 18.</p></li>
+              <li class="is-latest"><span class="guide-news-date">29 Sep</span><p><span class="new-tag">Latest</span> <a href="#caller-grid">Chapters 18 and 19 are rewritten in plainer words</a>. Each now defines its terms and walks a caller from your 28 September games square by square, chapter 18 explains its switches, and chapter 19 says outright what the call counts as. No number changed, and chapters 1 to 17 have not changed.</p></li>
               <li><span class="guide-news-date">29 Sep</span><p><a href="#caller-grid">Chapter 18&#8217;s grid now has switches</a> above it: it can show how often LuckyJ folded in each square instead of how often the caller could win, for each of LuckyJ&#8217;s own hands, two-shanten or worse, one-shanten or tenpai, each with its own fold line. Nothing else changed.</p></li>
               <li><span class="guide-news-date">29 Sep</span><p><a href="honver-ja.html" hreflang="ja">The guide now has a Japanese edition</a>, with every chapter, table and example. The English chapters have not changed.</p></li>
               <li><span class="guide-news-date">29 Sep</span><p><a href="#caller-grid">Chapter 18&#8217;s grid now draws LuckyJ&#8217;s fold line</a>, and <a href="#fold-line">chapter 19</a> explains it, with what a caller&#8217;s mix of hand and wall discards tells you and whether the honors and terminals they throw from the wall count. Apart from the line and its caption, chapters 1 to 18 have not changed.</p></li>
@@ -1541,9 +1541,11 @@
             <h3>One grid to read any caller</h3>
             <p>
               You asked for the whole picture: how the chance that a caller is ready moves with their discards and
-              what they show. The grid below is that picture. It reads 88,588 moments in LuckyJ&#8217;s games, each
-              caller once after every discard they made while nobody was in riichi. Each square is the share of those
-              callers who could win off your next discard, which means tenpai with a yaku on at least one wait.
+              with what they show. The grid below is that picture. For any caller at your table it gives one number:
+              of the callers in LuckyJ&#8217;s games who were in the same spot, the share who could win off your next
+              discard, meaning tenpai with a yaku on at least one wait. It reads 88,588 such moments, each caller once
+              after every discard they made while nobody was in riichi. Three counts find the spot, and the switches
+              above the grid turn it into what LuckyJ did there.
             </p>
             <!-- caller-surface -->
             <figure class="caller-surface">
@@ -1560,16 +1562,72 @@
             </figure>
             <!-- /caller-surface -->
             <p>
-              Read across by the caller&#8217;s discards, in the rows of six their river is laid out in. Read down by
-              what they show: each call lifts the whole row, and so does each tile they threw straight from the wall
-              since their last call. Chapter 14&#8217;s rows and chapter 8&#8217;s tells are this grid seen in slices.
+              <b>The words.</b> A call is a pon, a chi or an open kan. A tile <i>from the wall</i> is the tile a caller
+              has just drawn, thrown at once. A tile <i>from hand</i> is one they held before the draw. Their <i>run</i>
+              is how many tiles from the wall they have thrown in a row, counting back from their newest discard and
+              stopping at a tile from hand or at their last call. <a href="#fold-line">Chapter 19</a> has the fine
+              print, including the tile thrown with a call.
+            </p>
+            <p><b>Finding the square.</b> Three counts:</p>
+            <ul class="guide-list">
+              <li>Their calls: one, two, or three and four. That picks the block of four rows.</li>
+              <li>Their discards, the tiles thrown with calls and the ones other players took included. That picks the
+                column. The river lays them out six to a row, and the headings across the top follow those rows: the
+                first row is discards 1 to 6, the second 7 to 12, the third 13 to 18.</li>
+              <li>Their run: none, one, two, or three or more. That picks the row inside the block.</li>
+            </ul>
+            <p>
+              The square where the row meets the column is the share who could win. <span class="cs-fold-key">The green
+              line</span> is LuckyJ&#8217;s fold line: from that discard on, LuckyJ at two-shanten or worse threw a
+              safe tile more often than a live one.
             </p>
             <p>
-              <b>The landmarks.</b> One call in its first row can win 12% of the time or less, whatever it throws. By
-              the end of its second row a one-call hand can win 34% of the time with its last tile from hand, and 55%
-              after three or more straight from the wall. Two calls reach 50% by the tenth discard even with the last
-              tile from hand, and by the ninth after two or more from the wall. Three calls can win 57% of the time at
-              the first discard the grid can read, and about 80% or more from the ninth.
+              <b>One caller, three squares.</b> In your game of 28 September, East 4, toimen ponned [[P]] on their
+              fifth discard and threw [[2m]] with it. Here are three of your turns against them, the counts, the
+              square, the same square with the switch set to LuckyJ folded from two-shanten or worse, and what they
+              really held.
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data is-text is-moments">
+                <thead>
+                  <tr><th>Your turn</th><th>Their river since the pon</th><th>The counts</th><th>Could win</th><th>LuckyJ folded</th><th>What they held</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>6th</td><td>[[2m]] with the call, then [[3s]] and [[8m]] from the wall</td><td>One call, 7th discard, two in a row from the wall</td><td>18%</td><td>35%</td><td>1-shanten</td></tr>
+                  <tr><td>8th</td><td>then [[5p]] and [[1p]] from hand</td><td>One call, 9th discard, last tile from hand</td><td>26%</td><td>53%</td><td>Ready on [[F]] or [[C]], a mangan</td></tr>
+                  <tr><td>10th</td><td>then [[5s]] and [[8p]] from the wall</td><td>One call, 11th discard, two in a row from the wall</td><td>44%</td><td>64%</td><td>Ready</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              At your eighth turn you were two-shanten. You ponned that [[1p]] and cut [[8s]], which nothing in their
+              river covered. Toimen was already waiting on [[F]] and [[C]] with the [[P]] pon, a small three dragons,
+              and drew it two turns later for a mangan. The square said 26%, one caller in four, and the fold view
+              said LuckyJ takes the safe tile there on 53% of its turns from two-shanten or worse. That square is where
+              chapter 19&#8217;s line comes from. Open the hand at
+              <a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=East+4-0&amp;t=6" target="_blank" rel="noopener" data-you="6s">your sixth turn</a>,
+              <a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=East+4-0&amp;t=8" target="_blank" rel="noopener" data-you="8s">your eighth</a> or
+              <a href="replay.html?g=260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52&amp;r=East+4-0&amp;t=10" target="_blank" rel="noopener" data-you="2s">your tenth</a>.
+            </p>
+            <p>
+              <b>The switches.</b> The upper switch changes what the squares show. Callers who could win is the
+              reading above. LuckyJ folded shows, for the same square, the share of LuckyJ&#8217;s turns on which it
+              threw a safe tile instead of a live one, counting only the turns where it held a safe tile that kept its
+              shanten, against a single caller with nobody in riichi. The lower switch picks LuckyJ&#8217;s own hand,
+              because the answer depends on it: from two-shanten or worse LuckyJ folded on 38% of those turns, from
+              one-shanten on 57%, and at tenpai it kept the safe tile that kept its tenpai on 89%. Each hand draws its
+              own green line where folding passes half: the ninth discard against one call and the seventh against two
+              or more from two-shanten or worse, the eighth and the seventh from one-shanten, and no line at tenpai,
+              where the safe tile goes first from the start. At toimen&#8217;s ninth discard above, the fold squares
+              read 53% from two-shanten or worse, 56% from one-shanten and 85% at tenpai. A blank fold square is one
+              LuckyJ met too rarely to read; at tenpai against three or more calls, that is every square.
+            </p>
+            <p>
+              <b>Landmarks.</b> One call in its first row can win 12% of the time or less, whatever it throws. At the
+              end of its second row, a one-call hand can win 34% of the time with its last tile from hand and 55%
+              after three or more from the wall. Two calls pass half by their tenth discard even with the last tile
+              from hand, and by their ninth after two or more from the wall. Three calls can win 57% of the time at
+              the first discard the grid can read, and about 80% or more from their ninth.
             </p>
             <p>
               The grid fits your own tables. The other three players in your 123 games could win 32.2% of the time
@@ -1577,15 +1635,16 @@
               Tokujou.
             </p>
             <div class="rule">
-              <strong>Rule</strong> Before you cut a live tile against a caller, find their square: count their
-              calls, count their discards in rows of six, and count how many of their latest discards came straight
-              from the wall. The fold lines of chapters 13, 14 and 16 are drawn on this same grid.
+              <strong>Rule</strong> Before you cut a live tile against a caller, find their square with the three
+              counts: calls, discards, run. Then set LuckyJ&#8217;s hand to your own shanten and see how often it
+              folded there. The fold lines of chapters 13, 14 and 16 are drawn on this same grid.
             </div>
             <div class="exception">
-              <strong>Exception</strong> One call with the last tile from hand, late in the hand: many of these
-              callers are tenpai without a yaku, playing for the draw, so fewer can win than are ready. Counting plain
-              tenpai, that row keeps climbing to 46% by the eighteenth discard, while the share who can win falls back
-              to 28%.
+              <strong>Exception</strong> One call with the last tile from hand, late in the hand. Many of these
+              callers are tenpai without a yaku, playing for the draw payment, so they are ready but cannot win off
+              your tile. Counting plain tenpai, that row keeps climbing to 46% by the eighteenth discard, while the
+              share who can win falls back to 28%. The grid shows the share who can win, which is what a live tile
+              costs you.
             </div>
             <p class="evidence-note">
               <b>Evidence</b> Callers in LuckyJ&#8217;s 1,255 games, LuckyJ and its tablemates alike, read once after
@@ -1596,7 +1655,9 @@
               6,031 for runs of one, two, and three or more; two calls: 10,538, 5,527, 3,112 and 4,194; three or four
               calls: 1,512, 950, 618 and 1,233. A single call&#8217;s first row, 6.5% over discards 1 to 6, matches
               chapter 14. At your tables the grid&#8217;s squares average 31.6% over the 6,472 readings of your
-              opponents, and they could win 32.2%.
+              opponents, and they could win 32.2%. The fold views are LuckyJ&#8217;s own turns in its 1,079 Tokujou
+              games, 10,633 from two-shanten or worse, 7,292 from one-shanten and 1,599 at tenpai; the worked hand is
+              East 4 of your game of 28 September, 01:38.
             </p>
           </div>
           <nav class="chapter-next" aria-label="Next chapter"><a href="#fold-line"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>19</i>Where LuckyJ folds on the grid, and what counts as a run</span></a></nav>
