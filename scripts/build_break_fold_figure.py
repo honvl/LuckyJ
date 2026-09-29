@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Draw the personal guide's chapter 20 chart from ``analysis/break-folds-2026-09-29.json``.
 
-One chart: from each of LuckyJ's hands (tenpai, one-shanten, two-shanten or worse), the share of break
-spots on which it broke its hand to throw a safe tile, over the callers' threat read from chapter 18's
+One chart: for each best hand the draw allows LuckyJ (tenpai, one-shanten, two-shanten or worse), the
+share of costly turns on which it broke its hand to throw a safe tile, over the callers' threat read from chapter 18's
 grid. One dot per whole percent of threat, sized by its spots, under each hand's fitted curve and its 95%
 band; at the right, the same hands against one riichi. It is static SVG in the book's safe-tile timing
 style (app.js adds the crosshair and the tooltip from each hit column's data-tip), with a folded table of
@@ -35,8 +35,9 @@ TABLE_STEPS = (10, 20, 30, 40, 50, 60, 70, 80, 90)
 TEXT = {
     "en": {
         "title": "How often LuckyJ broke its hand to fold",
-        "sub": "Turns where every safe tile would leave LuckyJ&#8217;s hand further from tenpai than it stood before the draw. "
-               "Each dot is one whole percent of the callers&#8217; square, sized by its turns; the lines are fitted curves.",
+        "sub": "Turns where every safe tile would leave LuckyJ&#8217;s hand a shanten short of the best this draw allows, "
+               "filed under that best hand. Each dot is one whole percent of the callers&#8217; square, sized by its turns; "
+               "the lines are fitted curves.",
         "hands": {"far": "2-shanten or worse", "one": "1-shanten", "tenpai": "Tenpai"},
         "legend_band": "95% range of each fit",
         "legend_riichi": "the same hands against one riichi",
@@ -62,8 +63,8 @@ TEXT = {
     },
     "ja": {
         "title": "LuckyJが手を崩してオリた割合",
-        "sub": "どの安全牌を切っても、ツモの前より手がテンパイから遠くなる巡目だけを数えた。点は副露者のマスの値1%ごとで、"
-               "巡目の数に合わせた大きさ。線は当てはめ曲線。",
+        "sub": "どの安全牌を切っても、このツモで届く最良の手より1シャンテン遠くなる巡目だけを数え、その最良の手で分けた。"
+               "点は副露者のマスの値1%ごとで、巡目の数に合わせた大きさ。線は当てはめ曲線。",
         "hands": {"far": "2シャンテン以上", "one": "1シャンテン", "tenpai": "テンパイ"},
         "legend_band": "各当てはめの95%範囲",
         "legend_riichi": "同じ手でリーチ1人を相手にしたとき",
@@ -115,7 +116,7 @@ def fitted_at(curve: dict, x: int) -> float | None:
 
 
 def riichi_rate(data: dict, hand: str) -> tuple[float, int]:
-    cell = data["kinds"]["LuckyJ"]["one riichi"][hand]["break"]
+    cell = data["kinds"]["LuckyJ"]["one riichi"][hand]["costly"]
     return cell["pct"], cell["spots"]
 
 

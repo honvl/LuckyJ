@@ -1,23 +1,24 @@
 #!/usr/bin/env python3
-"""When LuckyJ breaks its hand to fold: a safe tile that leaves the hand further from tenpai than it stood.
+"""When LuckyJ breaks its hand to fold: a safe tile that leaves the hand a shanten short of the best the draw allows.
 
-A fold only breaks the hand when it goes backward. On a draw turn, throwing the drawn tile back leaves the
-hand exactly as it stood before the draw, so the shanten of that hand (``prev_sh`` in the cut rows of
-``scripts/contrast/vs_callers.py``, ``prev`` in the rows of ``scripts/mine_riichi_folds.py``) is the mark.
-Each draw turn facing a threat falls into one of four kinds:
+The mark is the best hand this draw allows: the lowest shanten any discard reaches (``best_sh`` in the cut
+rows of ``scripts/contrast/vs_callers.py``, ``best`` in the rows of ``scripts/mine_riichi_folds.py``). A
+safe tile (danger 1 or less: genbutsu, a full suji, an honor with two showing) that reaches it is a free
+fold; throwing back a safe draw that does nothing for the hand is one. When every safe tile falls short of
+it, throwing one breaks the hand, in one of two forms that are the same choice on the table:
 
-- free: a safe tile (danger 1 or less: genbutsu, a full suji, an honor with two showing) keeps the hand
-  where it stood, and it also reaches the best shanten the draw allows. Throwing back a safe draw is one;
-- step: a safe tile keeps the hand where it stood, but only a live tile takes the step forward the draw
-  offers. Throwing the safe tile passes up the step; it does not go backward;
-- break: every safe tile leaves the hand further from tenpai than it stood. Throwing one breaks the hand;
-- none: no safe tile at all.
+- back: every safe tile leaves the hand further from tenpai than it stood before the draw (``prev_sh`` /
+  ``prev``, the hand with the drawn tile thrown back);
+- step: a safe tile keeps the hand where it stood, but only a live tile takes the step the draw offers.
+
+Each draw turn facing a threat is free, costly (back or step) or none (no safe tile at all), and it is
+filed under the best hand the draw allows: tenpai, one-shanten, two-shanten or worse.
 
 Against callers a tile is safe only when it is safe against every caller at the table, and the threat is
 read from chapter 18's grid (``analysis/caller-surface-2026-09-29.json``): each caller's square is the share
 of callers in that spot who could win off a discard, and with two or more callers the threat is the chance
-that at least one of them can. From the break spots of each of LuckyJ's hands (tenpai, one-shanten,
-two-shanten or worse), the share it broke is fitted over that threat, one point per whole percent, with
+that at least one of them can. From the costly turns of each of LuckyJ's hands (tenpai, one-shanten,
+two-shanten or worse in reach), the share it broke is fitted over that threat, one point per whole percent, with
 ``fit_series`` (``scripts/mine_safe_tile_timing.py``) between the 2nd and 98th percentiles of the
 threat. The same spots in your games are set against that
 curve. Riichi spots give the reference, and a regression adds what the hands are worth.
@@ -43,7 +44,7 @@ import build_caller_surface as grid  # noqa: E402
 import mine_safe_tile_timing as timing  # noqa: E402
 
 HANDS = {"tenpai": 0, "one": 1, "far": 2}
-KINDS = ("free", "step", "break", "none")
+KINDS = ("free", "costly", "back", "step", "none")
 EDGE = 2  # each hand's fit spans the threats between these percentiles of its spots, where the data lies
 
 
@@ -52,11 +53,16 @@ def hand_of(shanten: int) -> str:
 
 
 def kind_of(prev: int, best: int, safe_shanten: list[int]) -> str:
+    """free, back or step (the two forms of a costly turn), or none, against the best hand the draw allows."""
     if not safe_shanten:
         return "none"
-    if min(safe_shanten) > prev:
-        return "break"
-    return "step" if best < prev and min(safe_shanten) > best else "free"
+    if min(safe_shanten) <= best:
+        return "free"
+    return "back" if min(safe_shanten) > prev else "step"
+
+
+def costly(spot: dict) -> bool:
+    return spot["kind"] in ("back", "step")
 
 
 def square(calls: int, run: int, discard: int, data: dict) -> float | None:
@@ -90,7 +96,7 @@ def caller_spots(path: str, who: str, data: dict) -> list[dict]:
             threat = 100 * (1 - math.prod(1 - v / 100 for v in squares))
         main = max(rows, key=lambda r: (r["n_melds"], r["q_turn"]))
         spots.append({
-            "g": key[0], "li": key[1], "t": key[3], "hand": hand_of(prev), "kind": kind,
+            "g": key[0], "li": key[1], "t": key[3], "hand": hand_of(best), "kind": kind,
             "safe": danger[first["tile"]] <= 1, "went_back": first["my_sh"] > prev, "callers": len(rows),
             "threat": threat, "calls": main["n_melds"], "discard": main["q_turn"],
             "dora_pon": any(r["q_meld_dora"] >= 3 for r in rows), "dealer_caller": any(r["q_dealer"] for r in rows),
@@ -107,7 +113,7 @@ def riichi_spots(path: str) -> list[dict]:
         if r["prev"] is None or r["riichis"] != 1:
             continue
         safe_best = r["safe_best"]
-        spots.append({"hand": hand_of(r["prev"]), "kind": kind_of(r["prev"], r["best"], [] if safe_best is None else [safe_best]),
+        spots.append({"hand": hand_of(r["best"]), "kind": kind_of(r["prev"], r["best"], [] if safe_best is None else [safe_best]),
                       "safe": not r["push"], "turn": r["turn"]})
     return spots
 
@@ -121,12 +127,13 @@ def rate(spots: list[dict]) -> dict:
 def kinds_table(spots: list[dict]) -> dict:
     out = {}
     for hand in HANDS:
-        out[hand] = {kind: rate([s for s in spots if s["hand"] == hand and s["kind"] == kind]) for kind in KINDS}
+        mine = [s for s in spots if s["hand"] == hand]
+        out[hand] = {kind: rate([s for s in mine if (costly(s) if kind == "costly" else s["kind"] == kind)]) for kind in KINDS}
     return out
 
 
 def curve(spots: list[dict]) -> dict:
-    """The share of break spots LuckyJ broke, one point per whole percent of threat, and its fitted curve."""
+    """The share of costly turns LuckyJ broke, one point per whole percent of threat, and its fitted curve."""
     points = []
     for x in range(0, 100):
         c = [s for s in spots if int(s["threat"]) == x]
@@ -199,7 +206,7 @@ def replay_name(tile: int) -> str:
 
 
 def mortal_view(spots: list[dict], cuts: str) -> dict:
-    """Mortal's policy at your break spots, from the site's replays: the weight it put on the safe tiles."""
+    """Mortal's policy on your costly turns, from the site's replays: the weight it put on the safe tiles."""
     danger = defaultdict(lambda: defaultdict(int))
     with open(cuts) as f:
         for line in f:
@@ -210,7 +217,7 @@ def mortal_view(spots: list[dict], cuts: str) -> dict:
                     danger[key][tile] = max(danger[key][tile], d)
     weights = defaultdict(list)
     for s in spots:
-        if s["kind"] != "break" or s["threat"] is None:
+        if not costly(s) or s["threat"] is None:
             continue
         path = Path(__file__).resolve().parents[1] / "site" / "replays" / f"{s['g']}.json"
         if not path.exists():
@@ -268,10 +275,10 @@ def main(lj_cuts: str, your_cuts: str, lj_riichi: str, your_riichi: str, out: st
         "riichi_by_turn": {},
     }
     for hand in HANDS:
-        breaks = [s for s in lj if s["hand"] == hand and s["kind"] == "break" and s["threat"] is not None]
+        breaks = [s for s in lj if s["hand"] == hand and costly(s) and s["threat"] is not None]
         c = curve(breaks)
         result["curves"][hand] = c
-        mine = [s for s in you if s["hand"] == hand and s["kind"] == "break" and s["threat"] is not None]
+        mine = [s for s in you if s["hand"] == hand and costly(s) and s["threat"] is not None]
         result["yours"][hand] = {"spots": len(mine), "broke": sum(s["safe"] for s in mine),
                                  "expected": round(sum(fitted(c, s["threat"]) for s in mine), 1),
                                  "low_threat": rate([s for s in mine if s["threat"] < 40]),
@@ -279,7 +286,7 @@ def main(lj_cuts: str, your_cuts: str, lj_riichi: str, your_riichi: str, out: st
         if hand != "tenpai":
             result["hot"][hand] = split_rates(breaks, 50)
             result["model"][hand] = value_model(breaks)
-        riichi = [s for s in lj_r if s["hand"] == hand and s["kind"] == "break"]
+        riichi = [s for s in lj_r if s["hand"] == hand and costly(s)]
         by_turn = defaultdict(lambda: [0, 0])
         for s in riichi:
             by_turn[min(s["turn"], 18)][0] += s["safe"]
@@ -293,7 +300,7 @@ def main(lj_cuts: str, your_cuts: str, lj_riichi: str, your_riichi: str, out: st
     # what was cut when LuckyJ kept a broken-spot hand: the kind of live tile
     result["kept_with"] = dict(Counter(
         ("honor" if s["tile"] >= 41 else "terminal" if s["tile"] % 10 in (1, 9) else "2 to 8")
-        for s in lj if s["kind"] == "break" and not s["safe"] and s["hand"] != "tenpai"))
+        for s in lj if costly(s) and not s["safe"] and s["hand"] != "tenpai"))
     Path(out).write_text(json.dumps(result, indent=1))
     report(result)
 
@@ -305,8 +312,9 @@ def report(result: dict) -> None:
             cells = []
             for hand in HANDS:
                 row = table[hand]
-                cells.append(f"{hand}: free {row['free']['pct']}% of {row['free']['spots']}, step {row['step']['pct']}% of "
-                             f"{row['step']['spots']}, break {row['break']['pct']}% of {row['break']['spots']}")
+                cells.append(f"{hand}: free {row['free']['pct']}% of {row['free']['spots']}, broke {row['costly']['pct']}% of "
+                             f"{row['costly']['spots']} (back {row['back']['pct']}% of {row['back']['spots']}, step "
+                             f"{row['step']['pct']}% of {row['step']['spots']})")
             print(f"  {threat:20s} " + " | ".join(cells))
     for hand, c in result["curves"].items():
         at = c["at"]

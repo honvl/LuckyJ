@@ -319,8 +319,10 @@ reach one, with the closed hand's acceptance, the dora and whether the player ca
 Reports: `analysis/open-vs-open-*-2026-09-24.txt` and `analysis/call-chances-*-2026-09-24.txt`.
 
 Chapter 20 (when LuckyJ breaks its hand to fold) comes from `mine_break_folds.py`. It reads the cut
-rows of `scripts/contrast/vs_callers.py` and the rows of `mine_riichi_folds.py`, both of which record
-the shanten before each draw, so a safe draw thrown back never counts as breaking the hand. It reads
+rows of `scripts/contrast/vs_callers.py` and the rows of `mine_riichi_folds.py` and counts a break when
+every safe tile falls a shanten short of the best hand the draw allows, so a safe draw that does nothing
+for the hand never counts; both scripts record the shanten before each draw, which splits a break into
+going back and passing up a step. It reads
 the callers' threat from chapter 18's grid, fits LuckyJ's break share over it, sets your turns against
 that curve and Mortal's policy in the site's replays, and writes
 `analysis/break-folds-2026-09-29.json`; `build_break_fold_figure.py` draws the chart into both
