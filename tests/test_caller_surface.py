@@ -45,7 +45,7 @@ class CallerGridTests(unittest.TestCase):
 
     def test_the_fold_line(self):
         self.assertEqual(build.fold_lines(FOLD), {1: 9, 2: 7, 3: 7})
-        one, more = FOLD["blocks"]["1"], FOLD["blocks"]["2+"]
+        one, more = FOLD["shanten"]["far"]["blocks"]["1"], FOLD["shanten"]["far"]["blocks"]["2+"]
         fit = lambda block, d: round(block["cells"][str(d)]["fit"])
         self.assertEqual((one["spots"], more["spots"]), (7821, 2812))
         self.assertEqual((min(fit(one, d) for d in range(1, 7)), max(fit(one, d) for d in range(1, 7))), (72, 80))
@@ -60,6 +60,45 @@ class CallerGridTests(unittest.TestCase):
         tenpai = FOLD["run_slope"]["tenpai"]["1"]
         self.assertEqual((round(tenpai["slope"], 2), round(tenpai["se"], 2), tenpai["spots"]), (-0.36, 0.11, 939))
         self.assertEqual([round(FOLD["tenpai_by_run"][r]["live"]) for r in "0123"], [17, 11, 5, 7])
+
+    def test_the_fold_views(self):
+        # one-shanten tips a discard earlier against one call; at tenpai the safe tile goes first from the start
+        self.assertEqual(build.fold_lines(FOLD, "one"), {1: 8, 2: 7, 3: 7})
+        self.assertEqual(build.fold_lines(FOLD, "tenpai"), {1: None, 2: None, 3: None})
+        hands = FOLD["shanten"]
+        self.assertEqual([(hands[h]["folded"]["spots"], hands[h]["costly"]["spots"]) for h in build.HANDS], [(10633, 1682), (7292, 2663), (1599, 1521)])
+        self.assertEqual([hands[h]["costly"]["folded"] for h in build.HANDS], [4.0, 4.8, 3.5])
+        self.assertEqual(hands["tenpai"]["folded"]["folded"], 89.3)
+        square = lambda hand, row, d: build.fold_value(hands[hand]["grid"][row]["cells"][str(d)], FOLD["grid_max_half_band"])
+        self.assertEqual([round(square("far", "1-0", d)) for d in (8, 9, 10)], [44, 53, 62])
+        self.assertEqual(round(square("one", "1-0", 8)), 52)
+        self.assertGreaterEqual(min(square("tenpai", "1-0", d) for d in range(7, 14)), 75)
+        # a square is drawn only where its band is tight; the three-call block has no tenpai square at all
+        for hand in build.HANDS:
+            for row in hands[hand]["grid"].values():
+                for cell in row["cells"].values():
+                    if build.fold_value(cell, FOLD["grid_max_half_band"]) is not None:
+                        self.assertLessEqual(cell["hi"] - cell["lo"], 2 * FOLD["grid_max_half_band"])
+        self.assertEqual(build.blank_blocks(FOLD, "tenpai"), [3])
+        self.assertEqual(build.blank_blocks(FOLD, "far"), [])
+
+    def test_the_switches_show_one_view_at_a_time(self):
+        views = ["win"] + [f"fold-{h}" for h in build.HANDS]
+        for path in build.PAGES.values():
+            with self.subTest(page=path.name):
+                page = path.read_text(encoding="utf-8")
+                figure = page[page.index(build.START):page.index(build.END)]
+                self.assertEqual(re.findall(r'<table class="cs-grid" data-view="([^"]+)"', figure), views)
+                self.assertEqual(re.findall(r'<span data-view="([^"]+)"', figure), views)
+                self.assertEqual(re.findall(r'<input class="cs-switch-input" type="radio" name="[^"]+" id="([^"]+)"', figure),
+                                 ["cs-view-win", "cs-view-fold"] + [f"cs-hand-{h}" for h in build.HANDS])
+                self.assertEqual(re.findall(r'<label for="([^"]+)"', figure),
+                                 ["cs-view-win", "cs-view-fold"] + [f"cs-hand-{h}" for h in build.HANDS])
+        css = re.sub(r"\s+", " ", (ROOT / "site" / "honver.css").read_text(encoding="utf-8"))
+        hides = ['#cs-view-win:checked ~ .cs-hands', '#cs-view-win:checked ~ * [data-view^="fold"]', '#cs-view-fold:checked ~ * [data-view="win"]']
+        hides += [f'#cs-hand-{h}:checked ~ * [data-view="fold-{o}"]' for h in build.HANDS for o in build.HANDS if o != h]
+        for selector in hides:
+            self.assertIn(selector, css)
 
     def test_chapter_19_tables_show_the_patterns(self):
         for path in build.PAGES.values():

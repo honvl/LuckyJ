@@ -116,3 +116,24 @@ where the first row said 28.6% and the second 32.4% (978 readings where all rows
 discard that ended three or more from the wall 42.1% where the first row said 37.9% and the second
 45.3% (121); hand after hand 19.4% where the first row said 23.4% (855); runs of three or more all
 honors or terminals 39.0% where the fourth row said 45.6% (41).
+
+## 6. The grid's fold views, by LuckyJ's hand
+
+Added the same day at the user's request: chapter 18's grid switches between the callers who could win
+and the share of turns LuckyJ folded, with a second switch for LuckyJ's own hand. `mine_caller_fold_line.py`
+now writes, for each hand, the block curves and lines and a grid of fold shares per calls-and-run row
+(`shanten.<hand>.grid`), each row fitted with `fit_series` over the discards with at least 10 of LuckyJ's
+turns; `build_caller_surface.py` draws a square only where its 95% band lies within 12 points of the fit.
+
+| LuckyJ's hand | turns | folded | line, one call | line, two or more | safe tile would cost shanten: threw it |
+|---|---|---|---|---|---|
+| two-shanten or worse | 10,633 | 38.4% | 9th (8.82) | 7th (6.60) | 4.0% of 1,682 |
+| one-shanten | 7,292 | 56.5% | 8th (7.79) | 7th (6.19) | 4.8% of 2,663 |
+| tenpai | 1,599 | 89.3% | none | none | 3.5% of 1,521 |
+
+At tenpai the live share is below half from the first discard the block curve reads (19% at a one-call
+caller's 6th discard), so there is no line. From one-shanten the early squares sit above the far hand's:
+against one call in the caller's first six discards, 40% of LuckyJ's safe cuts at one-shanten were honors
+(far hand 50%), and 43% of its live cuts were 3 to 7 (far hand 22%), so the early choice there is about
+shape as much as safety. Later the one-shanten squares sit below the far hand's (a one-call caller's 12th
+discard: 67% against 74%).

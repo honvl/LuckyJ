@@ -5,9 +5,13 @@ The grid is a heat table: one row per number of calls and run of tiles drawn and
 discard the caller has made, each cell the fitted share of those callers who could win off a discard
 (tenpai with a yaku). A green line in each block of rows marks LuckyJ's fold line from
 ``analysis/caller-fold-line-2026-09-29.json`` (``scripts/mine_caller_fold_line.py``): the first caller
-discard at which LuckyJ, from two-shanten or worse, cut a live tile less than half the time. It is
-written into ``site/honver.html``, and with Japanese labels into ``site/honver-ja.html``, between the
-``caller-surface`` markers; ``--check`` exits non-zero when a page and the data disagree.
+discard at which LuckyJ, from two-shanten or worse, cut a live tile less than half the time.
+
+Two switches above the grid, radio buttons that need no script, turn it into the share of turns LuckyJ
+folded in each square, for each of LuckyJ's own hands (two-shanten or worse, one-shanten, tenpai), with
+that hand's line. It is written into ``site/honver.html``, and with Japanese labels into
+``site/honver-ja.html``, between the ``caller-surface`` markers; ``--check`` exits non-zero when a page
+and the data disagree.
 
 usage: build_caller_surface.py [--check]
 """
@@ -26,40 +30,8 @@ START = "<!-- caller-surface -->"
 END = "<!-- /caller-surface -->"
 MAX_DISCARD = 18
 ROW_START = ' class="cs-row-start"'
+HANDS = ("far", "one", "tenpai")
 ORDINALS = {5: "fifth", 6: "sixth", 7: "seventh", 8: "eighth", 9: "ninth", 10: "tenth", 11: "eleventh", 12: "twelfth"}
-WORDS = {
-    "en": {
-        "corner": "Calls, and their latest discards",
-        "rows": ("First row", "Second row", "Third row"),
-        "calls": {1: "One call", 2: "Two calls", 3: "Three or four calls"},
-        "runs": {0: "last tile from hand", 1: "last one from the wall", 2: "two in a row from the wall",
-                 3: "three or more from the wall"},
-        "folds": "LuckyJ folds from here",
-        "caption": (
-            "Share of callers who could win off your discard (tenpai with a yaku), after their discard number at "
-            "the top, in LuckyJ&#8217;s games. A blank square has fewer than {minimum} readings. "
-            "<span class=\"cs-fold-key\">The green line</span> is LuckyJ&#8217;s fold line: from two-shanten or "
-            "worse, holding a safe tile that keeps its shanten, it cut a live tile less than half the time from "
-            "the {one} discard against one call and from the {more} against two or more "
-            "(<a href=\"#fold-line\">chapter 19</a>)."
-        ),
-        "discard": lambda n: ORDINALS[n],
-    },
-    "ja": {
-        "corner": "副露数と直近の捨て牌",
-        "rows": ("一段目", "二段目", "三段目"),
-        "calls": {1: "1副露", 2: "2副露", 3: "3〜4副露"},
-        "runs": {0: "最後は手出し", 1: "最後の1枚がツモ切り", 2: "ツモ切りが2回続く", 3: "ツモ切りが3回以上続く"},
-        "folds": "ここからLuckyJはオリる",
-        "caption": (
-            "あなたの打牌でアガれる副露者（役ありのテンパイ）の割合を、上に並べた副露者の打牌数ごとに、LuckyJの対局で"
-            "測った。空欄は観測が{minimum}回未満。<span class=\"cs-fold-key\">緑の線</span>はLuckyJのオリライン。"
-            "2シャンテン以上でシャンテン数を落とさない安全牌を持つとき、生牌を切った割合が半分を下回ったのは、"
-            "1副露に対して{one}から、2副露以上に対して{more}からである（<a href=\"#fold-line\">第19章</a>）。"
-        ),
-        "discard": lambda n: f"{n}打目",
-    },
-}
 # paper to deep vermilion, the site's tokens
 LOW = (0xF4, 0xF0, 0xE6)
 MID = (0xF5, 0xA5, 0x83)
@@ -96,16 +68,137 @@ def value(cell: dict, minimum: int) -> float | None:
     return None
 
 
-def fold_lines(fold: dict) -> dict[int, int]:
-    """The discard each block of the grid (1, 2, 3 calls) draws LuckyJ's fold line at."""
-    return {1: fold["blocks"]["1"]["line"], 2: fold["blocks"]["2+"]["line"], 3: fold["blocks"]["2+"]["line"]}
+def fold_value(cell: dict, max_half_band: float) -> float | None:
+    """A fold square is shown where its fit's 95% band lies within max_half_band points of the fit."""
+    if "fit" not in cell or (cell["hi"] - cell["lo"]) / 2 > max_half_band:
+        return None
+    return cell["fit"]
 
 
-def render(data: dict, fold: dict, lang: str = "en") -> str:
-    words = WORDS[lang]
-    grid = data["grid"]["can_win"]
-    minimum = data["min_readings"]
-    lines = fold_lines(fold)
+def fold_lines(fold: dict, hand: str = "far") -> dict[int, int | None]:
+    """The discard each block of the grid (1, 2, 3 calls) draws LuckyJ's fold line at, for one of its hands."""
+    blocks = fold["shanten"][hand]["blocks"]
+    return {1: blocks["1"]["line"], 2: blocks["2+"]["line"], 3: blocks["2+"]["line"]}
+
+
+def blank_blocks(fold: dict, hand: str) -> list[int]:
+    """The blocks of a fold view with no square at all."""
+    grid, band = fold["shanten"][hand]["grid"], fold["grid_max_half_band"]
+    return [c for c in (1, 2, 3)
+            if all(fold_value(cell, band) is None for r in (0, 1, 2, 3) for cell in grid[f"{c}-{r}"]["cells"].values())]
+
+
+def _fold_caption_en(fold: dict, hand: str) -> str:
+    entry, lines, blank = fold["shanten"][hand], fold_lines(fold, hand), blank_blocks(fold, hand)
+    costly, band = entry["costly"], fold["grid_max_half_band"]
+    safe = "a safe tile (the caller&#8217;s genbutsu, a full suji, or an honor with two showing)"
+    where = "against a single caller with nobody in riichi, in its 1,079 Tokujou games"
+    if hand == "far":
+        text = f"Share of LuckyJ&#8217;s turns on which it folded, from two-shanten or worse: it threw {safe} while one kept its shanten, {where}."
+    elif hand == "one":
+        text = (f"Share of LuckyJ&#8217;s turns on which it folded, from one-shanten: it threw {safe} while one kept the "
+                f"one-shanten, {where}. The first squares sit above the far hand&#8217;s, because early on a one-shanten "
+                "hand&#8217;s spare tile is often a safe honor it has no use for, and the later ones below them, because "
+                "a hand this close is worth pushing longer.")
+    else:
+        text = (f"Share of LuckyJ&#8217;s turns at tenpai on which it threw {safe} that kept the tenpai rather than a live "
+                f"tile, {where}: {round(entry['folded']['folded'])}% of {entry['folded']['spots']:,} such turns.")
+    text += f" A blank square is one LuckyJ met too rarely to pin the share within {band} points either way"
+    text += f"; against {('two', 'three')[min(blank) - 2]} or more calls, that is every square." if blank else "."
+    if lines[1] and lines[2]:
+        text += (f" The green line is where the share passes half, all runs together: the {ORDINALS[lines[1]]} discard "
+                 f"against one call and the {ORDINALS[lines[2]]} against two or more.")
+    else:
+        text += " It took the safe tile more often than not from the first of these turns, so there is no line."
+    if hand == "tenpai":
+        text += (f" When every safe tile would have broken the tenpai, LuckyJ broke it for one on {costly['folded']}% of "
+                 f"{costly['spots']:,} turns.")
+    else:
+        cost = "a shanten" if hand == "far" else "the one-shanten"
+        text += f" When every safe tile would have cost {cost}, LuckyJ threw one on {costly['folded']}% of {costly['spots']:,} turns."
+    return text
+
+
+def _fold_caption_ja(fold: dict, hand: str) -> str:
+    entry, lines, blank = fold["shanten"][hand], fold_lines(fold, hand), blank_blocks(fold, hand)
+    costly, band = entry["costly"], fold["grid_max_half_band"]
+    safe = "安全牌（副露者の現物、筋、2枚見えの字牌）"
+    where = "副露者が1人だけで誰もリーチしていないとき"
+    games = "LuckyJの特上卓1,079半荘で測った"
+    if hand == "far":
+        text = f"2シャンテン以上のLuckyJがオリた割合。{where}、シャンテン数を落とさない{safe}があれば、それを切った割合を{games}。"
+    elif hand == "one":
+        text = (f"1シャンテンのLuckyJがオリた割合。{where}、1シャンテンを保つ{safe}があれば、それを切った割合を{games}。"
+                "序盤のマスが2シャンテン以上より高いのは、1シャンテンの手で余る牌が、使い道のない安全な字牌であることが多いため。"
+                "終盤のマスが低いのは、ここまで近い手なら長く押す価値があるため。")
+    else:
+        text = (f"テンパイのLuckyJが、生牌ではなくテンパイを保つ{safe}を切った割合。{where}の場面を{games}。"
+                f"全体では{entry['folded']['spots']:,}回中{round(entry['folded']['folded'])}%。")
+    text += f"空欄は、LuckyJがその場面に出会った回数が少なく、割合を上下{band}ポイント以内に絞れないマス"
+    text += f"で、{min(blank)}副露以上ではすべてのマスが空欄になる。" if blank else "。"
+    if lines[1] and lines[2]:
+        text += (f"緑の線は、ツモ切りの連続をまとめて割合が半分を超える位置で、1副露に対して{lines[1]}打目、"
+                 f"2副露以上に対して{lines[2]}打目。")
+    else:
+        text += "最初の場面から半分を超えて安全牌を選んでいるので、線はない。"
+    if hand == "tenpai":
+        text += f"安全牌を切るとテンパイが崩れる場面で、LuckyJがテンパイを崩したのは{costly['spots']:,}回中{costly['folded']}%。"
+    else:
+        cost = "シャンテン数が落ちる" if hand == "far" else "1シャンテンが崩れる"
+        text += f"安全牌を切ると{cost}場面で、LuckyJが安全牌を切ったのは{costly['spots']:,}回中{costly['folded']}%。"
+    return text
+
+
+WORDS = {
+    "en": {
+        "corner": "Calls, and their latest discards",
+        "rows": ("First row", "Second row", "Third row"),
+        "calls": {1: "One call", 2: "Two calls", 3: "Three or four calls"},
+        "runs": {0: "last tile from hand", 1: "last one from the wall", 2: "two in a row from the wall",
+                 3: "three or more from the wall"},
+        "folds": "LuckyJ folds from here",
+        "caption": (
+            "Share of callers who could win off your discard (tenpai with a yaku), after their discard number at "
+            "the top, in LuckyJ&#8217;s games. A blank square has fewer than {minimum} readings. "
+            "<span class=\"cs-fold-key\">The green line</span> is LuckyJ&#8217;s fold line: from two-shanten or "
+            "worse, holding a safe tile that keeps its shanten, it cut a live tile less than half the time from "
+            "the {one} discard against one call and from the {more} against two or more "
+            "(<a href=\"#fold-line\">chapter 19</a>)."
+        ),
+        "discard": lambda n: ORDINALS[n],
+        "show": "Squares show",
+        "views": {"win": "Callers who could win", "fold": "LuckyJ folded"},
+        "hand": "LuckyJ&#8217;s hand",
+        "hands": {"far": "Two-shanten or worse", "one": "One-shanten", "tenpai": "Tenpai"},
+        "win_label": "Share of callers who could win off your discard",
+        "fold_label": lambda hand: f"Share of turns LuckyJ folded, {hand.lower()}",
+        "fold_caption": _fold_caption_en,
+    },
+    "ja": {
+        "corner": "副露数と直近の捨て牌",
+        "rows": ("一段目", "二段目", "三段目"),
+        "calls": {1: "1副露", 2: "2副露", 3: "3〜4副露"},
+        "runs": {0: "最後は手出し", 1: "最後の1枚がツモ切り", 2: "ツモ切りが2回続く", 3: "ツモ切りが3回以上続く"},
+        "folds": "ここからLuckyJはオリる",
+        "caption": (
+            "あなたの打牌でアガれる副露者（役ありのテンパイ）の割合を、上に並べた副露者の打牌数ごとに、LuckyJの対局で"
+            "測った。空欄は観測が{minimum}回未満。<span class=\"cs-fold-key\">緑の線</span>はLuckyJのオリライン。"
+            "2シャンテン以上でシャンテン数を落とさない安全牌を持つとき、生牌を切った割合が半分を下回ったのは、"
+            "1副露に対して{one}から、2副露以上に対して{more}からである（<a href=\"#fold-line\">第19章</a>）。"
+        ),
+        "discard": lambda n: f"{n}打目",
+        "show": "マスの表示",
+        "views": {"win": "アガれる副露者", "fold": "LuckyJがオリた割合"},
+        "hand": "LuckyJの手",
+        "hands": {"far": "2シャンテン以上", "one": "1シャンテン", "tenpai": "テンパイ"},
+        "win_label": "あなたの打牌でアガれる副露者の割合",
+        "fold_label": lambda hand: f"LuckyJがオリた割合（{hand}）",
+        "fold_caption": _fold_caption_ja,
+    },
+}
+
+
+def _table(words: dict, view: str, label: str, cells_for, pick, lines: dict) -> str:
     head_rows = (
         f'<tr><th class="cs-corner" rowspan="2" scope="col">{words["corner"]}</th>'
         + "".join(f'<th class="cs-group" colspan="6" scope="colgroup">{row}</th>' for row in words["rows"])
@@ -115,13 +208,16 @@ def render(data: dict, fold: dict, lang: str = "en") -> str:
     body = []
     for calls in (1, 2, 3):
         line = lines[calls]
-        body.append(f'<tr class="cs-calls"><th scope="rowgroup">{words["calls"][calls]}</th><td colspan="{line - 1}"></td>'
-                    f'<td class="cs-fold cs-fold-label" colspan="{MAX_DISCARD - line + 1}">{words["folds"]}</td></tr>')
+        if line:
+            body.append(f'<tr class="cs-calls"><th scope="rowgroup">{words["calls"][calls]}</th><td colspan="{line - 1}"></td>'
+                        f'<td class="cs-fold cs-fold-label" colspan="{MAX_DISCARD - line + 1}">{words["folds"]}</td></tr>')
+        else:
+            body.append(f'<tr class="cs-calls"><th scope="rowgroup">{words["calls"][calls]}</th><td colspan="{MAX_DISCARD}"></td></tr>')
         for run in (0, 1, 2, 3):
-            cells = grid[f"{calls}-{run}"]["cells"]
+            cells = cells_for(calls, run)
             tds = []
             for d in range(1, MAX_DISCARD + 1):
-                v = value(cells[str(d)], minimum)
+                v = pick(cells[str(d)])
                 classes = (["cs-row-start"] if d in (7, 13) else []) + (["cs-fold"] if d == line else []) + (["cs-empty"] if v is None else [])
                 attr = f' class="{" ".join(classes)}"' if classes else ""
                 if v is None:
@@ -129,16 +225,44 @@ def render(data: dict, fold: dict, lang: str = "en") -> str:
                     continue
                 tds.append(f'<td{attr} style="background:{shade(v)};color:{text_for(shade(v))}">{round(v)}</td>')
             body.append(f'<tr><th scope="row">{words["runs"][run]}</th>{"".join(tds)}</tr>')
+    return f'<table class="cs-grid" data-view="{view}" aria-label="{label}"><thead>{head_rows}</thead><tbody>{"".join(body)}</tbody></table>'
+
+
+def render(data: dict, fold: dict, lang: str = "en") -> str:
+    words = WORDS[lang]
+    win_lines = fold_lines(fold)
+    minimum = data["min_readings"]
+    tables = [_table(words, "win", words["win_label"], lambda c, r: data["grid"]["can_win"][f"{c}-{r}"]["cells"],
+                     lambda cell: value(cell, minimum), win_lines)]
+    for hand in HANDS:
+        tables.append(_table(words, f"fold-{hand}", words["fold_label"](words["hands"][hand]),
+                             lambda c, r, hand=hand: fold["shanten"][hand]["grid"][f"{c}-{r}"]["cells"],
+                             lambda cell: fold_value(cell, fold["grid_max_half_band"]), fold_lines(fold, hand)))
     legend = "".join(f'<span style="background:{shade(p)};color:{text_for(shade(p))}">{p}%</span>' for p in (0, 10, 25, 50, 75, 90))
+    win_caption = words["caption"].format(minimum=minimum, one=words["discard"](win_lines[1]), more=words["discard"](win_lines[2]))
+    captions = f'<span data-view="win">{win_caption}</span>' + "".join(
+        f'<span data-view="fold-{hand}">{words["fold_caption"](fold, hand)}</span>' for hand in HANDS)
+    inputs = (
+        '<input class="cs-switch-input" type="radio" name="cs-view" id="cs-view-win" checked />'
+        '<input class="cs-switch-input" type="radio" name="cs-view" id="cs-view-fold" />'
+        + "".join(f'<input class="cs-switch-input" type="radio" name="cs-hand" id="cs-hand-{hand}"{" checked" if hand == "far" else ""} />'
+                  for hand in HANDS)
+    )
+    switches = (
+        f'<div class="cs-switch"><span class="cs-switch-label">{words["show"]}</span>'
+        + "".join(f'<label for="cs-view-{view}">{name}</label>' for view, name in words["views"].items()) + "</div>\n"
+        f'              <div class="cs-switch cs-hands"><span class="cs-switch-label">{words["hand"]}</span>'
+        + "".join(f'<label for="cs-hand-{hand}">{words["hands"][hand]}</label>' for hand in HANDS) + "</div>"
+    )
     return (
         f"{START}\n"
         '            <figure class="caller-surface">\n'
+        f"              {inputs}\n"
+        f"              {switches}\n"
         '              <div class="guide-data-scroll">\n'
-        f'                <table class="cs-grid"><thead>{head_rows}</thead><tbody>{"".join(body)}</tbody></table>\n'
-        "              </div>\n"
-        f'              <figcaption><span class="cs-legend">{legend}</span> '
-        + words["caption"].format(minimum=minimum, one=words["discard"](lines[1]), more=words["discard"](lines[2]))
-        + "</figcaption>\n"
+        + "".join(f"                {t}\n" for t in tables)
+        + "              </div>\n"
+        f'              <figcaption><span class="cs-legend">{legend}</span> {captions}</figcaption>\n'
         "            </figure>\n"
         f"            {END}"
     )

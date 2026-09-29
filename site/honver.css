@@ -1104,6 +1104,96 @@
   font-weight: 600;
 }
 
+/* The grid's two switches: radio buttons ahead of the tables, drawn as buttons, so no script is needed. */
+.caller-surface {
+  position: relative;
+}
+
+.cs-switch-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cs-switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px;
+}
+
+/* Sentence case: capitals would print LuckyJ as LUCKYJ. */
+.cs-switch-label {
+  min-width: 118px;
+  margin-right: 4px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cs-switch label {
+  padding: 7px 12px;
+  border: 1px solid var(--hair);
+  border-radius: 2px;
+  background: var(--plate);
+  color: var(--ink);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.cs-switch label:hover {
+  border-color: var(--muted);
+}
+
+#cs-view-win:checked ~ .cs-switch label[for="cs-view-win"],
+#cs-view-fold:checked ~ .cs-switch label[for="cs-view-fold"],
+#cs-hand-far:checked ~ .cs-switch label[for="cs-hand-far"],
+#cs-hand-one:checked ~ .cs-switch label[for="cs-hand-one"],
+#cs-hand-tenpai:checked ~ .cs-switch label[for="cs-hand-tenpai"] {
+  border-color: var(--felt);
+  background: var(--felt);
+  color: var(--cream);
+}
+
+#cs-view-win:focus-visible ~ .cs-switch label[for="cs-view-win"],
+#cs-view-fold:focus-visible ~ .cs-switch label[for="cs-view-fold"],
+#cs-hand-far:focus-visible ~ .cs-switch label[for="cs-hand-far"],
+#cs-hand-one:focus-visible ~ .cs-switch label[for="cs-hand-one"],
+#cs-hand-tenpai:focus-visible ~ .cs-switch label[for="cs-hand-tenpai"] {
+  outline: 2px solid var(--jade-mark);
+  outline-offset: 2px;
+}
+
+/* Show the chosen table and its caption and hide the rest; the hand switch only applies to LuckyJ's folds. */
+#cs-view-win:checked ~ .cs-hands,
+#cs-view-win:checked ~ * [data-view^="fold"],
+#cs-view-fold:checked ~ * [data-view="win"],
+#cs-hand-far:checked ~ * [data-view="fold-one"],
+#cs-hand-far:checked ~ * [data-view="fold-tenpai"],
+#cs-hand-one:checked ~ * [data-view="fold-far"],
+#cs-hand-one:checked ~ * [data-view="fold-tenpai"],
+#cs-hand-tenpai:checked ~ * [data-view="fold-far"],
+#cs-hand-tenpai:checked ~ * [data-view="fold-one"] {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .cs-switch-label {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+}
+
 /* ------------------------------------------------------------------ Japanese edition */
 
 /* Slanted and tracked Japanese reads as broken type: upright faces, open leading, light tracking. */
@@ -1124,4 +1214,3 @@ html:lang(ja) .guide-card .analysis-step h5 {
 
 html:lang(ja) :is(.guide-news-tag, .guide-data thead th, .guide-verdict, .guide-result b, .guide-options thead th, .guide-options tbody th small) {
   letter-spacing: 0.04em;
-}
