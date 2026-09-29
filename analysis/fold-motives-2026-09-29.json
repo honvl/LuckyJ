@@ -1,0 +1,972 @@
+{
+ "definition": "The turns are chapter 20's costly turns: draw turns facing exactly one riichi (or callers with nobody in\nriichi) where every safe tile (genbutsu, a full suji, an honor with two showing) leaves the hand a shanten\nshort of the best hand the draw allows. On each one the hand either folds (throws a safe tile) or keeps\ngoing. The benchmark is Mortal's policy on the same turn: its weight on the safe tiles is how often it\nwould fold there. Your turns read Mortal from the site's replays (``site/replays``); LuckyJ's from the\nlocal Mortal run over its Tokujou games (``scripts/contrast/mortal_run.py``). \"Extra folds\" are the folds\nbeyond Mortal's weight, per 100 turns.",
+ "games": {
+  "You": 123,
+  "LuckyJ": 1079
+ },
+ "joined": {
+  "You": [
+   1273,
+   1274
+  ],
+  "LuckyJ": [
+   10997,
+   10997
+  ]
+ },
+ "mortal_cut_match": {
+  "You": 99.9,
+  "LuckyJ": 100.0
+ },
+ "overall": {
+  "riichi": {
+   "You": {
+    "turns": 383,
+    "folded": 53.8,
+    "mortal": 45.9,
+    "extra": 7.9
+   },
+   "LuckyJ": {
+    "turns": 3565,
+    "folded": 45.4,
+    "mortal": 47.2,
+    "extra": -1.8
+   }
+  },
+  "callers": {
+   "You": {
+    "turns": 890,
+    "folded": 6.9,
+    "mortal": 4.6,
+    "extra": 2.2
+   },
+   "LuckyJ": {
+    "turns": 7432,
+    "folded": 6.1,
+    "mortal": 5.8,
+    "extra": 0.3
+   }
+  }
+ },
+ "by_hand": {
+  "riichi": {
+   "tenpai": {
+    "You": {
+     "turns": 148,
+     "folded": 28.4,
+     "mortal": 19.0,
+     "extra": 9.4
+    },
+    "LuckyJ": {
+     "turns": 1310,
+     "folded": 18.3,
+     "mortal": 20.1,
+     "extra": -1.8
+    }
+   },
+   "one": {
+    "You": {
+     "turns": 170,
+     "folded": 64.7,
+     "mortal": 58.1,
+     "extra": 6.6
+    },
+    "LuckyJ": {
+     "turns": 1583,
+     "folded": 53.4,
+     "mortal": 57.7,
+     "extra": -4.3
+    }
+   },
+   "far": {
+    "You": {
+     "turns": 65,
+     "folded": 83.1,
+     "mortal": 74.9,
+     "extra": 8.1
+    },
+    "LuckyJ": {
+     "turns": 672,
+     "folded": 79.5,
+     "mortal": 75.3,
+     "extra": 4.1
+    }
+   }
+  },
+  "callers": {
+   "tenpai": {
+    "You": {
+     "turns": 220,
+     "folded": 1.8,
+     "mortal": 2.1,
+     "extra": -0.3
+    },
+    "LuckyJ": {
+     "turns": 1844,
+     "folded": 3.5,
+     "mortal": 3.2,
+     "extra": 0.3
+    }
+   },
+   "one": {
+    "You": {
+     "turns": 417,
+     "folded": 8.2,
+     "mortal": 5.4,
+     "extra": 2.8
+    },
+    "LuckyJ": {
+     "turns": 3501,
+     "folded": 6.6,
+     "mortal": 6.4,
+     "extra": 0.2
+    }
+   },
+   "far": {
+    "You": {
+     "turns": 253,
+     "folded": 9.1,
+     "mortal": 5.5,
+     "extra": 3.6
+    },
+    "LuckyJ": {
+     "turns": 2087,
+     "folded": 7.4,
+     "mortal": 7.1,
+     "extra": 0.3
+    }
+   }
+  }
+ },
+ "tests": {
+  "riichi": {
+   "threat_dealer": {
+    "label": "the other hand is the dealer's",
+    "You": {
+     "a": {
+      "turns": 84,
+      "folded": 70.2,
+      "mortal": 60.6,
+      "extra": 9.6
+     },
+     "b": {
+      "turns": 299,
+      "folded": 49.2,
+      "mortal": 41.7,
+      "extra": 7.5
+     },
+     "contrast": 2.2,
+     "se": 4.0
+    },
+    "LuckyJ": {
+     "a": {
+      "turns": 1094,
+      "folded": 50.7,
+      "mortal": 48.4,
+      "extra": 2.3
+     },
+     "b": {
+      "turns": 2471,
+      "folded": 43.1,
+      "mortal": 46.7,
+      "extra": -3.6
+     },
+     "contrast": 5.9,
+     "se": 1.3
+    },
+    "difference": -3.7,
+    "difference_se": 4.2
+   },
+   "prev_dealt": {
+    "label": "you dealt in on the hand before",
+    "You": {
+     "a": {
+      "turns": 41,
+      "folded": 53.7,
+      "mortal": 46.5,
+      "extra": 7.2
+     },
+     "b": {
+      "turns": 342,
+      "folded": 53.8,
+      "mortal": 45.8,
+      "extra": 8.0
+     },
+     "contrast": -0.8,
+     "se": 7.4
+    },
+    "LuckyJ": {
+     "a": {
+      "turns": 328,
+      "folded": 44.2,
+      "mortal": 41.6,
+      "extra": 2.6
+     },
+     "b": {
+      "turns": 3237,
+      "folded": 45.6,
+      "mortal": 47.8,
+      "extra": -2.2
+     },
+     "contrast": 4.8,
+     "se": 1.9
+    },
+    "difference": -5.6,
+    "difference_se": 7.6
+   },
+   "south": {
+    "label": "the South round",
+    "You": {
+     "a": {
+      "turns": 176,
+      "folded": 52.8,
+      "mortal": 41.5,
+      "extra": 11.3
+     },
+     "b": {
+      "turns": 207,
+      "folded": 54.6,
+      "mortal": 49.5,
+      "extra": 5.1
+     },
+     "contrast": 6.3,
+     "se": 4.0
+    },
+    "LuckyJ": {
+     "a": {
+      "turns": 1544,
+      "folded": 44.0,
+      "mortal": 48.0,
+      "extra": -4.0
+     },
+     "b": {
+      "turns": 2021,
+      "folded": 46.5,
+      "mortal": 46.6,
+      "extra": -0.1
+     },
+     "contrast": -3.9,
+     "se": 1.3
+    },
+    "difference": 10.2,
+    "difference_se": 4.2
+   },
+   "dora": {
+    "label": "two or more dora in your hand, against none",
+    "You": {
+     "a": {
+      "turns": 166,
+      "folded": 42.2,
+      "mortal": 31.0,
+      "extra": 11.1
+     },
+     "b": {
+      "turns": 98,
+      "folded": 64.3,
+      "mortal": 59.5,
+      "extra": 4.8
+     },
+     "contrast": 6.4,
+     "se": 4.5
+    },
+    "LuckyJ": {
+     "a": {
+      "turns": 999,
+      "folded": 33.5,
+      "mortal": 35.8,
+      "extra": -2.3
+     },
+     "b": {
+      "turns": 1183,
+      "folded": 51.7,
+      "mortal": 53.2,
+      "extra": -1.4
+     },
+     "contrast": -0.9,
+     "se": 1.4
+    },
+    "difference": 7.3,
+    "difference_se": 4.7
+   },
+   "me_dealer": {
+    "label": "you are the dealer",
+    "You": {
+     "a": {
+      "turns": 127,
+      "folded": 49.6,
+      "mortal": 41.6,
+      "extra": 8.0
+     },
+     "b": {
+      "turns": 256,
+      "folded": 55.9,
+      "mortal": 47.9,
+      "extra": 7.9
+     },
+     "contrast": 0.0,
+     "se": 4.2
+    },
+    "LuckyJ": {
+     "a": {
+      "turns": 952,
+      "folded": 33.7,
+      "mortal": 39.4,
+      "extra": -5.7
+     },
+     "b": {
+      "turns": 2613,
+      "folded": 49.7,
+      "mortal": 50.1,
+      "extra": -0.4
+     },
+     "contrast": -5.4,
+     "se": 1.4
+    },
+    "difference": 5.4,
+    "difference_se": 4.4
+   }
+  },
+  "callers": {
+   "threat_dealer": {
+    "label": "the other hand is the dealer's",
+    "You": {
+     "a": {
+      "turns": 318,
+      "folded": 8.2,
+      "mortal": 5.7,
+      "extra": 2.4
+     },
+     "b": {
+      "turns": 572,
+      "folded": 6.1,
+      "mortal": 4.0,
+      "extra": 2.1
+     },
+     "contrast": 0.3,
+     "se": 1.5
+    },
+    "LuckyJ": {
+     "a": {
+      "turns": 2546,
+      "folded": 10.2,
+      "mortal": 8.3,
+      "extra": 1.9
+     },
+     "b": {
+      "turns": 4886,
+      "folded": 3.9,
+      "mortal": 4.5,
+      "extra": -0.6
+     },
+     "contrast": 2.5,
+     "se": 0.5
+    },
+    "difference": -2.2,
+    "difference_se": 1.6
+   },
+   "prev_dealt": {
+    "label": "you dealt in on the hand before",
+    "You": {
+     "a": {
+      "turns": 103,
+      "folded": 9.7,
+      "mortal": 6.8,
+      "extra": 2.9
+     },
+     "b": {
+      "turns": 787,
+      "folded": 6.5,
+      "mortal": 4.3,
+      "extra": 2.2
+     },
+     "contrast": 0.8,
+     "se": 1.7
+    },
+    "LuckyJ": {
+     "a": {
+      "turns": 757,
+      "folded": 5.3,
+      "mortal": 5.2,
+      "extra": 0.1
+     },
+     "b": {
+      "turns": 6675,
+      "folded": 6.2,
+      "mortal": 5.9,
+      "extra": 0.3
+     },
+     "contrast": -0.2,
+     "se": 0.7
+    },
+    "difference": 1.0,
+    "difference_se": 1.8
+   },
+   "south": {
+    "label": "the South round",
+    "You": {
+     "a": {
+      "turns": 411,
+      "folded": 7.3,
+      "mortal": 5.2,
+      "extra": 2.1
+     },
+     "b": {
+      "turns": 479,
+      "folded": 6.5,
+      "mortal": 4.1,
+      "extra": 2.4
+     },
+     "contrast": -0.2,
+     "se": 1.5
+    },
+    "LuckyJ": {
+     "a": {
+      "turns": 3547,
+      "folded": 6.3,
+      "mortal": 5.8,
+      "extra": 0.5
+     },
+     "b": {
+      "turns": 3885,
+      "folded": 5.8,
+      "mortal": 5.8,
+      "extra": 0.1
+     },
+     "contrast": 0.4,
+     "se": 0.5
+    },
+    "difference": -0.6,
+    "difference_se": 1.6
+   },
+   "dora": {
+    "label": "two or more dora in your hand, against none",
+    "You": {
+     "a": {
+      "turns": 241,
+      "folded": 6.6,
+      "mortal": 3.0,
+      "extra": 3.6
+     },
+     "b": {
+      "turns": 343,
+      "folded": 6.7,
+      "mortal": 5.4,
+      "extra": 1.3
+     },
+     "contrast": 2.3,
+     "se": 1.6
+    },
+    "LuckyJ": {
+     "a": {
+      "turns": 1835,
+      "folded": 4.3,
+      "mortal": 3.5,
+      "extra": 0.8
+     },
+     "b": {
+      "turns": 2572,
+      "folded": 7.4,
+      "mortal": 7.2,
+      "extra": 0.2
+     },
+     "contrast": 0.6,
+     "se": 0.6
+    },
+    "difference": 1.7,
+    "difference_se": 1.7
+   },
+   "me_dealer": {
+    "label": "you are the dealer",
+    "You": {
+     "a": {
+      "turns": 223,
+      "folded": 4.9,
+      "mortal": 3.9,
+      "extra": 1.0
+     },
+     "b": {
+      "turns": 667,
+      "folded": 7.5,
+      "mortal": 4.9,
+      "extra": 2.6
+     },
+     "contrast": -1.6,
+     "se": 1.6
+    },
+    "LuckyJ": {
+     "a": {
+      "turns": 1961,
+      "folded": 3.4,
+      "mortal": 4.1,
+      "extra": -0.7
+     },
+     "b": {
+      "turns": 5471,
+      "folded": 7.0,
+      "mortal": 6.4,
+      "extra": 0.6
+     },
+     "contrast": -1.3,
+     "se": 0.4
+    },
+    "difference": -0.3,
+    "difference_se": 1.6
+   }
+  }
+ },
+ "before_after": {
+  "riichi": {
+   "before": {
+    "turns": 160,
+    "folded": 56.9,
+    "mortal": 45.8,
+    "extra": 11.1
+   },
+   "since": {
+    "turns": 223,
+    "folded": 51.6,
+    "mortal": 45.9,
+    "extra": 5.7
+   },
+   "contrast": -5.4,
+   "se": 4.4
+  },
+  "callers": {
+   "before": {
+    "turns": 387,
+    "folded": 6.2,
+    "mortal": 3.9,
+    "extra": 2.3
+   },
+   "since": {
+    "turns": 503,
+    "folded": 7.4,
+    "mortal": 5.2,
+    "extra": 2.2
+   },
+   "contrast": -0.1,
+   "se": 1.3
+  }
+ },
+ "one_shanten": {
+  "You": {
+   "by_dora": {
+    "0": {
+     "turns": 43,
+     "folded": 65.1,
+     "mortal": 61.4,
+     "extra": 3.7
+    },
+    "1": {
+     "turns": 54,
+     "folded": 66.7,
+     "mortal": 62.8,
+     "extra": 3.9
+    },
+    "2+": {
+     "turns": 73,
+     "folded": 63.0,
+     "mortal": 52.7,
+     "extra": 10.3
+    }
+   },
+   "two_dora_by_turn": {
+    "1-9": {
+     "turns": 20,
+     "folded": 40.0,
+     "mortal": 21.1,
+     "extra": 18.9
+    },
+    "10-12": {
+     "turns": 29,
+     "folded": 58.6,
+     "mortal": 54.0,
+     "extra": 4.6
+    },
+    "13+": {
+     "turns": 24,
+     "folded": 87.5,
+     "mortal": 77.4,
+     "extra": 10.1
+    }
+   }
+  },
+  "LuckyJ": {
+   "by_dora": {
+    "0": {
+     "turns": 527,
+     "folded": 56.5,
+     "mortal": 59.8,
+     "extra": -3.2
+    },
+    "1": {
+     "turns": 651,
+     "folded": 56.7,
+     "mortal": 60.0,
+     "extra": -3.3
+    },
+    "2+": {
+     "turns": 405,
+     "folded": 44.2,
+     "mortal": 51.4,
+     "extra": -7.2
+    }
+   },
+   "two_dora_by_turn": {
+    "1-9": {
+     "turns": 150,
+     "folded": 32.7,
+     "mortal": 43.0,
+     "extra": -10.4
+    },
+    "10-12": {
+     "turns": 115,
+     "folded": 40.0,
+     "mortal": 46.2,
+     "extra": -6.2
+    },
+    "13+": {
+     "turns": 140,
+     "folded": 60.0,
+     "mortal": 64.6,
+     "extra": -4.6
+    }
+   }
+  }
+ },
+ "tenpai_two_dora": {
+  "You": {
+   "turns": 73,
+   "folded": 11.0,
+   "mortal": 3.0,
+   "extra": 7.9
+  },
+  "LuckyJ": {
+   "turns": 446,
+   "folded": 10.5,
+   "mortal": 11.4,
+   "extra": -0.8
+  }
+ },
+ "south_by_rank": {
+  "You": {
+   "1": {
+    "East": {
+     "turns": 66,
+     "folded": 54.5,
+     "mortal": 54.6,
+     "extra": -0.1
+    },
+    "South": {
+     "turns": 32,
+     "folded": 65.6,
+     "mortal": 57.3,
+     "extra": 8.3
+    }
+   },
+   "2": {
+    "East": {
+     "turns": 46,
+     "folded": 50.0,
+     "mortal": 42.8,
+     "extra": 7.2
+    },
+    "South": {
+     "turns": 47,
+     "folded": 44.7,
+     "mortal": 34.7,
+     "extra": 10.0
+    }
+   },
+   "3": {
+    "East": {
+     "turns": 59,
+     "folded": 64.4,
+     "mortal": 56.4,
+     "extra": 8.1
+    },
+    "South": {
+     "turns": 65,
+     "folded": 60.0,
+     "mortal": 44.7,
+     "extra": 15.3
+    }
+   },
+   "4": {
+    "East": {
+     "turns": 36,
+     "folded": 44.4,
+     "mortal": 37.6,
+     "extra": 6.8
+    },
+    "South": {
+     "turns": 32,
+     "folded": 37.5,
+     "mortal": 29.2,
+     "extra": 8.3
+    }
+   }
+  },
+  "LuckyJ": {
+   "1": {
+    "East": {
+     "turns": 613,
+     "folded": 42.7,
+     "mortal": 46.7,
+     "extra": -4.0
+    },
+    "South": {
+     "turns": 515,
+     "folded": 47.4,
+     "mortal": 57.9,
+     "extra": -10.6
+    }
+   },
+   "2": {
+    "East": {
+     "turns": 474,
+     "folded": 47.3,
+     "mortal": 49.3,
+     "extra": -2.1
+    },
+    "South": {
+     "turns": 396,
+     "folded": 46.7,
+     "mortal": 52.0,
+     "extra": -5.3
+    }
+   },
+   "3": {
+    "East": {
+     "turns": 532,
+     "folded": 47.9,
+     "mortal": 46.8,
+     "extra": 1.1
+    },
+    "South": {
+     "turns": 360,
+     "folded": 43.1,
+     "mortal": 45.7,
+     "extra": -2.6
+    }
+   },
+   "4": {
+    "East": {
+     "turns": 402,
+     "folded": 49.5,
+     "mortal": 43.1,
+     "extra": 6.4
+    },
+    "South": {
+     "turns": 273,
+     "folded": 35.2,
+     "mortal": 26.6,
+     "extra": 8.6
+    }
+   }
+  }
+ },
+ "riichi_or_dama": {
+  "You": {
+   "all": {
+    "tenpais": 321,
+    "declared": 72.0,
+    "mortal": 69.7
+   },
+   "East": {
+    "tenpais": 173,
+    "declared": 80.9,
+    "mortal": 74.5
+   },
+   "South": {
+    "tenpais": 148,
+    "declared": 61.5,
+    "mortal": 64.0
+   }
+  },
+  "LuckyJ": {
+   "all": {
+    "tenpais": 2661,
+    "declared": 73.4,
+    "mortal": 70.8
+   },
+   "East": {
+    "tenpais": 1513,
+    "declared": 78.2,
+    "mortal": 75.9
+   },
+   "South": {
+    "tenpais": 1148,
+    "declared": 67.2,
+    "mortal": 64.0
+   }
+  },
+  "aligned": 99.4,
+  "south_test": {
+   "You": {
+    "contrast": -8.9,
+    "se": 4.0
+   },
+   "LuckyJ": {
+    "contrast": 0.9,
+    "se": 1.4
+   },
+   "difference": -9.8,
+   "difference_se": 4.2
+  }
+ },
+ "examples": [
+  {
+   "g": "260923-275bb855-c2db-43a4-b555-b1c52a836ccd",
+   "li": 12,
+   "t": 4,
+   "round": "South 3-0",
+   "date": "2026-09-22 17:38",
+   "scores": [
+    900,
+    28200,
+    26400,
+    44500
+   ],
+   "you": 44500,
+   "rank": 1,
+   "riichi_from": "toimen",
+   "riichi_on_discard": 3,
+   "dealer": false,
+   "hand": "one",
+   "dora": 3,
+   "you_threw": "8s",
+   "mortal_top": "3s",
+   "mortal_top_weight": 88.5,
+   "mortal_safe": 10.2,
+   "result": {
+    "kind": "draw",
+    "label": "Exhaustive draw",
+    "deltas": [
+     -1500,
+     1500,
+     1500,
+     -1500
+    ]
+   }
+  },
+  {
+   "g": "260920-9d667586-3125-40f9-9989-9b14743d5967",
+   "li": 8,
+   "t": 7,
+   "round": "South 3-2",
+   "date": "2026-09-19 18:11",
+   "scores": [
+    8200,
+    19600,
+    20700,
+    50500
+   ],
+   "you": 20700,
+   "rank": 2,
+   "riichi_from": "toimen",
+   "riichi_on_discard": 6,
+   "dealer": true,
+   "hand": "one",
+   "dora": 2,
+   "you_threw": "3p",
+   "mortal_top": "9s",
+   "mortal_top_weight": 79.3,
+   "mortal_safe": 18.6,
+   "result": {
+    "kind": "win",
+    "wins": [
+     {
+      "seat": 0,
+      "from": 1,
+      "deltas": [
+       10600,
+       -8600,
+       0,
+       0
+      ],
+      "value": "mangan, 8,000",
+      "yaku": [
+       [
+        "sanshoku",
+        2
+       ],
+       [
+        "riichi",
+        1
+       ],
+       [
+        "red five",
+        1
+       ]
+      ]
+     }
+    ],
+    "ura": [
+     "S"
+    ]
+   }
+  },
+  {
+   "g": "260921-7b8a8c7c-94f0-47c6-84ba-1638af253b8d",
+   "li": 11,
+   "t": 13,
+   "round": "South 2-0",
+   "date": "2026-09-20 22:43",
+   "scores": [
+    49200,
+    22300,
+    13800,
+    14700
+   ],
+   "you": 22300,
+   "rank": 2,
+   "riichi_from": "toimen",
+   "riichi_on_discard": 11,
+   "dealer": true,
+   "hand": "tenpai",
+   "dora": 2,
+   "you_threw": "2p",
+   "mortal_top": "3m",
+   "mortal_top_weight": 98.2,
+   "mortal_safe": 0.2,
+   "result": {
+    "kind": "win",
+    "wins": [
+     {
+      "seat": 3,
+      "from": 3,
+      "deltas": [
+       -2000,
+       -4000,
+       -2000,
+       9000
+      ],
+      "value": "mangan, 2,000/4,000",
+      "yaku": [
+       [
+        "menzen tsumo",
+        1
+       ],
+       [
+        "riichi",
+        1
+       ],
+       [
+        "haitei",
+        1
+       ],
+       [
+        "red five",
+        2
+       ]
+      ]
+     }
+    ],
+    "ura": [
+     "E"
+    ]
+   }
+  }
+ ]
+}

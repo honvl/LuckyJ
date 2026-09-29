@@ -71,6 +71,9 @@ new chapters read like the old ones.
 | 17 | early-safe-tiles | 安全牌の残し方は正しい。早いリーチに気をつける | 最近の対局 |
 | 18 | caller-grid | どの副露者も1枚の表で読む | 副露者を読む |
 | 19 | fold-line | 表の上でLuckyJがオリる位置と、ツモ切りの連続の数え方 | 副露者を読む |
+| 20 | break-folds | リーチには手を崩してオリ、副露者にはまず崩さない | 副露者を読む |
+| 21 | quiet-breaks | 副露者の一段目には手を崩さない | 副露者を読む |
+| 22 | own-hand | オリは場ではなく、自分の手で決める | 恐れと自信 |
 
 - Chapter kicker "Chapter one · Value · added 22 September" → 「第1章 &#183; 打点 &#183; 9月22日追加」.
 - Chapter list sub "Value · added 22 September" → 「打点 &#183; 9月22日追加」.
@@ -196,6 +199,10 @@ from site/honver.js.
 | loose tiles | 浮き牌 |
 | draw payment / noten payment | 流局の精算 / ノーテン罰符 |
 | "tanyao with a red five" | タンヤオ赤1 |
+| costly turn (every safe tile costs a shanten) | 損な巡目 |
+| extra folds (beyond Mortal's rate) | 余分なオリ |
+| Mortal's rate (its weight on the safe tiles) | Mortalの割合 |
+| the first / second situation (a figure's split) | 前の状況 / 後の状況 |
 
 Chapter 18's table labels live in `scripts/build_caller_surface.py` (`WORDS["ja"]`); the prose uses the same
 words (最後は手出し, 最後の1枚がツモ切り, ツモ切りが2回続く, ツモ切りが3回以上続く, ここからLuckyJはオリる, 緑の線).
