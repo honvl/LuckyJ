@@ -43,3 +43,14 @@ chun 30%, East 1%).
   fourth discard: none 42.9% vs 42.6%.
 - LuckyJ's cuts against one riichi within its first six discards (`mine_riichi_folds.py` rows, 1,079 Tokujou games):
   live honor with no other copy showing 3.81 per 100 (105 cuts), with one copy showing 1.11 (180).
+
+## Correction: the honor order on the third discard (`analysis/honor-order-2026-09-29.txt`)
+
+The user asked what to throw on the third discard, since chapter 17's exception said to keep the guest wind that
+is out "from the third" and to let a live value honor go "from your fourth". LuckyJ, by the lone honors held
+(quiet, non-dealer, `mine_early_safe_tiles.py honors`): on the third discard a live guest wind goes first against
+one already out 59.1% (22), against a live value honor 78.9% (327), with all three 54.5% (33); with only a guest
+wind already out and a live value honor, the guest wind goes first 63.2% (285) on the third and 40.0% (225) on
+the fourth. From the fourth both live honors go before the guest wind that is out (all three held: it goes first
+11.1% on the fourth, 0% on the fifth). Chapter 17's exception and evidence note were corrected and marked
+(`mark#fix-17-honors`, `mark#fix-17-honor-evidence`).

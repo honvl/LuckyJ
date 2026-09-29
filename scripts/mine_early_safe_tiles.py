@@ -17,6 +17,11 @@ honor went first and the discarded guest wind was kept.
 (``scripts/contrast/riichi_response.py``): genbutsu, other safe tiles, shanten, the label of the
 first reply, and whether the player dealt in to that riichi.
 
+``honors`` records, over the first eight discards with nobody threatening, every draw where the hand
+holds at least two of three kinds of lone honor (a guest wind already in an opponent's river, a live
+guest wind, a live value honor) and one of them was cut; ``honor-order`` prints which kind went first
+by discard number and by the set held.
+
 ``report`` compares the player with LuckyJ in the same spots: for leftovers, LuckyJ's rate at the
 same discard and kind, from a curve fitted to LuckyJ's own leftover rows the way the book's safe-tile
 section fits them (``fit_series`` in ``scripts/mine_safe_tile_timing.py``); for riichi, LuckyJ's
@@ -24,6 +29,8 @@ average at the same declarer discard, from LuckyJ's own riichi rows.
 
 usage: mine_early_safe_tiles.py leftovers MANIFEST SINCE|- ROWS_OUT.json
        mine_early_safe_tiles.py riichi MANIFEST SINCE|- ROWS_OUT.json
+       mine_early_safe_tiles.py honors MANIFEST SINCE|- ROWS_OUT.json
+       mine_early_safe_tiles.py honor-order LABEL HONORS.json
        mine_early_safe_tiles.py report LABEL LEFTOVERS.json RIICHI.json LUCKYJ_LEFTOVERS.json LUCKYJ_RIICHI.json [--from YYYY-MM-DD]
 """
 
@@ -111,6 +118,70 @@ def _leftover_work(g: dict) -> list:
                     rows.append({"game": g["uuid"], "hand": li, "round": game["round_name"], "turn": own_turn,
                                  "split": split, "kind": kind, "live_cut": cut in live})
     return rows
+
+
+HONOR_KINDS = {"DG": "guest wind already out", "LG": "live guest wind", "LV": "live value honor"}
+
+
+def _honor_work(g: dict) -> list:
+    import tenhou_replay as tr
+    from tenhou_replay import base
+
+    rows = []
+    hero = g["hero_seat"]
+    for li, log in enumerate(tr.load_logs(g["file"])):
+        game = tr.replay(log)
+        if game["dealer"] == hero:
+            continue
+        value = {45, 46, 47, tr.seat_wind(hero, game["kyoku"]), tr.round_wind(game["kyoku"])}
+        river: set[int] = set()
+        own_turn = 0
+        for e in game["events"]:
+            if e["seat"] != hero:
+                river.add(base(e["tile"]))
+                continue
+            own_turn += 1
+            if e["called"] is not None or own_turn > 8:
+                continue
+            if e["riichi_seats"][hero] is not None and e["riichi_seats"][hero] < e["index"]:
+                continue
+            opponents = [q for q in range(4) if q != hero]
+            if any(e["riichi_seats"][q] is not None and e["riichi_seats"][q] < e["index"] for q in opponents):
+                continue
+            if max(len(game["players"][q]["melds"][: e["meld_counts"][q]]) for q in opponents) >= 2:
+                continue
+            counts: dict[int, int] = {}
+            for t in e["hand_before"]:
+                counts[base(t)] = counts.get(base(t), 0) + 1
+            lone = [b for b, n in counts.items() if n == 1 and b >= 41]
+            kinds = {"DG": {b for b in lone if b not in value and b in river},
+                     "LG": {b for b in lone if b not in value and b not in river},
+                     "LV": {b for b in lone if b in value and b not in river}}
+            held = sorted(k for k, v in kinds.items() if v)
+            cut = next((k for k, v in kinds.items() if base(e["tile"]) in v), None)
+            if len(held) >= 2 and cut:
+                rows.append({"game": g["uuid"], "round": game["round_name"], "turn": own_turn, "held": "+".join(held), "cut": cut})
+    return rows
+
+
+def honors(manifest: str, since: str | None, out: str) -> None:
+    games = _games(manifest, since)
+    with Pool(8) as pool:
+        rows = [r for chunk in pool.map(_honor_work, games, chunksize=4) for r in chunk]
+    _write(out, {"games": len(games), "rows": rows})
+    print(f"{out}: {len(games)} games, {len(rows)} honor choices")
+
+
+def honor_order(label: str, files: list[str]) -> None:
+    rows = [r for f in files for r in json.loads(Path(f).read_text())["rows"]]
+    print(f"== {label}: which lone honor went first, nobody threatening, by discard and by the kinds held")
+    for held in ("DG+LG", "DG+LV", "LG+LV", "DG+LG+LV"):
+        print(f"  holding {' and '.join(HONOR_KINDS[k] for k in held.split('+'))}")
+        for turn in range(1, 9):
+            c = [r for r in rows if r["held"] == held and r["turn"] == turn]
+            if c:
+                shares = "  ".join(f"{HONOR_KINDS[k]} {100 * sum(r['cut'] == k for r in c) / len(c):5.1f}%" for k in held.split("+"))
+                print(f"    discard {turn}: n {len(c):5d}  {shares}")
 
 
 def _games(manifest: str, since: str | None) -> list[dict]:
@@ -241,8 +312,10 @@ def report(label: str, leftover_file: str, riichi_file: str, luckyj_leftover_fil
 
 if __name__ == "__main__":
     mode = sys.argv[1]
-    if mode in ("leftovers", "riichi"):
-        (leftovers if mode == "leftovers" else riichi)(sys.argv[2], None if sys.argv[3] == "-" else sys.argv[3], sys.argv[4])
+    if mode in ("leftovers", "riichi", "honors"):
+        {"leftovers": leftovers, "riichi": riichi, "honors": honors}[mode](sys.argv[2], None if sys.argv[3] == "-" else sys.argv[3], sys.argv[4])
+    elif mode == "honor-order":
+        honor_order(sys.argv[2], sys.argv[3:])
     else:
         since = sys.argv[sys.argv.index("--from") + 1] if "--from" in sys.argv else None
         args = [a for i, a in enumerate(sys.argv[2:], 2) if a != "--from" and sys.argv[i - 1] != "--from"]
