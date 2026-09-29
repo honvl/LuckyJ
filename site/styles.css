@@ -4383,6 +4383,11 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   width: var(--tile-size);
 }
 
+/* Another player called this tile out of the pond: it keeps its place, faint. */
+.called-discard-slot {
+  opacity: 0.32;
+}
+
 .riichi-discard-tile {
   --riichi-align-shift: calc(0.086 * var(--tile-size));
   display: inline-block;

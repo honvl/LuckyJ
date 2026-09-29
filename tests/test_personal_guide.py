@@ -86,6 +86,24 @@ class SafetyTests(unittest.TestCase):
         self.assertEqual(guide.safety(24, 1, inner, game, Counter()), "half suji")
 
 
+class CalledAwayTests(unittest.TestCase):
+    # Seat 0 cuts 5m, seat 1 chis it and cuts, then seats 2 and 3 cut.
+    GAME = {"events": [
+        {"seat": 0, "called": None},
+        {"seat": 1, "called": {"kind": "c", "tile": 15, "src": 0}},
+        {"seat": 2, "called": None},
+        {"seat": 3, "called": None},
+    ]}
+
+    def test_a_call_marks_the_pond_tile_it_took(self):
+        self.assertEqual(guide.called_away(self.GAME, 3), {0: [0], 1: [], 2: [], 3: []})
+        # the caller's own discard right after the call already shows the tile gone
+        self.assertEqual(guide.called_away(self.GAME, 1), {0: [0], 1: [], 2: [], 3: []})
+
+    def test_the_tile_under_a_call_decision_is_still_in_the_pond(self):
+        self.assertEqual(guide.called_away(self.GAME, 0), {0: [], 1: [], 2: [], 3: []})
+
+
 class VisibleCounterTests(unittest.TestCase):
     def test_called_tile_counts_once(self):
         # Seat 2 discarded 5s (35) and seat 3 ponned it: it sits in the river and in the meld.
@@ -154,6 +172,29 @@ class GuideSpotTests(unittest.TestCase):
                 meld_tiles = sum(len(m["tiles"]) for m in me["melds"] if m["kind"] != "kakan")
                 expected = 13 if frame["kind"] == "call" else 14
                 self.assertEqual(len(tiles) + meld_tiles - sum(1 for m in me["melds"] if len(m["tiles"]) == 4), expected, ex["id"])
+
+
+    def test_called_pond_tiles_match_the_calls(self):
+        # Every tile called out of a pond is marked, and nothing else; on a call decision the
+        # tile being decided on is still in its pond and is not yet a meld.
+        for ex in self.examples():
+            for frame in ex["frames"]:
+                players = frame["table"]["players"]
+                marked = sorted(p["discards"][i].rstrip("r") for p in players for i in p["called_discard_indexes"])
+                called = sorted(m["called_tile"].rstrip("r") for p in players for m in p["melds"]
+                                if m["kind"] in ("chi", "pon", "daiminkan"))
+                self.assertEqual(marked, called, f"{ex['id']} turn {frame['turn']}")
+
+    def test_riichi_tile_called_by_kamicha_is_marked(self):
+        # Chapter 17, example 2: toimen's riichi 5m went into kamicha's 5m-6m-7m chi.
+        ex = next(e for e in self.examples() if e["id"] == "early-riichi-south")
+        players = {p["seat"]: p for p in ex["frames"][0]["table"]["players"]}
+        toimen = players["toimen"]
+        self.assertEqual(toimen["discards"], ["N", "8p", "5m"])
+        self.assertEqual(toimen["riichi_discard_index"], 2)
+        self.assertEqual(toimen["called_discard_indexes"], [2])
+        # a meld's called_from is seen from its caller, and toimen sits on kamicha's left
+        self.assertIn(("chi", "5m", "kamicha"), [(m["kind"], m["called_tile"], m["called_from"]) for m in players["kamicha"]["melds"]])
 
 
 class PageChapterTests(unittest.TestCase):

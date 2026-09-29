@@ -423,6 +423,7 @@ const copy = {
     none: "none",
     dora: "Ind.",
     doraFull: "Dora indicators",
+    calledAway: "called",
     seeing: "What LuckyJ Is Seeing",
     whyTempting: "Why the Other Line Is Tempting",
     noModelAction: "No model action",
@@ -489,6 +490,7 @@ const copy = {
     none: "なし",
     dora: "表示",
     doraFull: "ドラ表示牌",
+    calledAway: "鳴かれた牌",
     seeing: "LuckyJ が見ているもの",
     whyTempting: "別ラインが魅力的に見える理由",
     noModelAction: "モデル行動なし",
@@ -1474,14 +1476,18 @@ function discardRows(discards) {
   return rows;
 }
 
-function discardTileRun(items, riichiIndex, emptyLabel = "") {
+// A tile another player called out of the pond stays in its place, drawn faint, so the rows keep their count.
+function discardTileRun(items, riichiIndex, emptyLabel = "", calledIndexes = []) {
   const list = (items || []).filter((item) => item?.tile);
   if (!list.length) return emptyLabel ? `<span class="empty">${escapeHtml(emptyLabel)}</span>` : "";
-  const label = tileNamesText(list.map((item) => item.tile));
+  const called = new Set(calledIndexes || []);
+  const label = list
+    .map((item) => `${tileName(item.tile)}${called.has(item.index) ? ` (${t("calledAway")})` : ""}`)
+    .join(", ");
   return `<span class="discard-tiles" aria-label="${escapeHtml(label)}" title="${escapeHtml(label)}">${list
     .map((item) => {
       const isRiichiDiscard = Number.isInteger(riichiIndex) && item.index === riichiIndex;
-      const slotClass = `discard-tile-slot${isRiichiDiscard ? " riichi-discard-slot" : ""}`;
+      const slotClass = `discard-tile-slot${isRiichiDiscard ? " riichi-discard-slot" : ""}${called.has(item.index) ? " called-discard-slot" : ""}`;
       const tileClass = `discard-tile${isRiichiDiscard ? " riichi-discard-tile" : ""}`;
       return `<span class="${slotClass}">${tileIcon(item.tile, tileClass)}</span>`;
     })
@@ -1545,7 +1551,7 @@ function renderMahjongTable(table) {
       return `
         <div class="player-discards player-${position}">
           ${discardRows(player.discards)
-            .map((row) => `<div class="discard-row">${discardTileRun(row, player.riichi_discard_index)}</div>`)
+            .map((row) => `<div class="discard-row">${discardTileRun(row, player.riichi_discard_index, "", player.called_discard_indexes)}</div>`)
             .join("")}
         </div>
       `;

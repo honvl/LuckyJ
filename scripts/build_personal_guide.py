@@ -237,12 +237,33 @@ def site_melds(game: dict, seat: int, snap_tiles: list[list[int]]) -> list[dict]
     return out
 
 
-def build_table(row: dict, log: list, game: dict, e: dict, hero_hand: list[int], hero_melds: list[list[int]]) -> dict:
+def called_away(game: dict, upto: int) -> dict[int, list[int]]:
+    """Each seat's river positions whose tile another seat called before event ``upto``.
+
+    A call is the caller's next event, straight after the discard it took, so a discard at
+    ``upto - 1`` counts when the frame's own event is that call.
+    """
+    out = {s: [] for s in range(4)}
+    count = [0, 0, 0, 0]
+    events = game["events"]
+    for j in range(upto):
+        s = events[j]["seat"]
+        called = events[j + 1]["called"]
+        if called is not None and called["src"] == s:
+            out[s].append(count[s])
+        count[s] += 1
+    return out
+
+
+def build_table(row: dict, log: list, game: dict, e: dict, hero_hand: list[int], hero_melds: list[list[int]],
+                calling: bool = False) -> dict:
+    """The table at event ``e``; with ``calling`` it stands just before the hero's call, the tile still in its pond."""
     hero = row["hero_seat"]
     kyoku = game["kyoku"]
     snap = meld_snapshots(game, e["index"] - 1)
     snap[hero] = hero_melds
     hands = concealed_hands(game, e["index"])
+    called = called_away(game, e["index"] - 1 if calling else e["index"])
     kans = sum(1 for s in range(4) for tiles in snap[s] if len(tiles) == 4)
     indicators = game["dora_indicators"][: 1 + kans]
     scores = []
@@ -266,6 +287,7 @@ def build_table(row: dict, log: list, game: dict, e: dict, hero_hand: list[int],
         players.append({
             "seat": rel, "wind": wind, "hand": hand_string(concealed), "tile_threats": [],
             "discards": [site_tile(t) for t in river],
+            "called_discard_indexes": called[s],
             "melds": site_melds(game, s, snap[s]),
             "reached": riichi_index is not None, "riichi_discard_index": riichi_index,
         })
@@ -349,7 +371,7 @@ def build_frame(spot: dict, fspec: dict, row: dict, log: list, game: dict) -> di
         rest.remove(meld["called"])
         hand13 = sorted(list(e["hand_before"]) + rest, key=sort_key)
         melds_before = e["melds"][:-1]
-        table, snap, indicators = build_table(row, log, game, e, hand13, melds_before)
+        table, snap, indicators = build_table(row, log, game, e, hand13, melds_before, calling=True)
         dora_set = frozenset(ws.dora_from_indicator(t) for t in indicators)
         meld_tiles_before = [t for tiles in melds_before for t in tiles[:3]]
         visible = visible_counter(hand13, e, game["players"], snap, indicators)
@@ -449,7 +471,7 @@ def show(data: dict) -> None:
                     if p["seat"] == "self":
                         continue
                     ms = " / ".join(" ".join(m["tiles"]) for m in p["melds"])
-                    print(f"    {p['seat']:<8} {'RIICHI@' + str(p['riichi_discard_index']) if p['reached'] else '':<9} river {' '.join(p['discards'])}{'  melds ' + ms if ms else ''}  | hand {p['hand']}")
+                    print(f"    {p['seat']:<8} {'RIICHI@' + str(p['riichi_discard_index']) if p['reached'] else '':<9} river {' '.join(t + ('(called)' if i in p['called_discard_indexes'] else '') for i, t in enumerate(p['discards']))}{'  melds ' + ms if ms else ''}  | hand {p['hand']}")
                 if f["kind"] == "call":
                     print(f"    YOU {f['you']}  BETTER {f['better']}  from {f['call_from']}")
                     continue
