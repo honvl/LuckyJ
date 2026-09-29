@@ -1,0 +1,339 @@
+{
+ "readings": 6472,
+ "patterns": {
+  "call": {
+   "label": "the discard right after the call",
+   "own": {
+    "n": 1585,
+    "could_win": 25.6,
+    "square": 21.4
+   },
+   "rows": {
+    "n": 978,
+    "could_win": 35.3,
+    "by_run": [
+     28.6,
+     32.4,
+     34.2,
+     35.8
+    ]
+   }
+  },
+  "hand_after_hand": {
+   "label": "from hand, after another from hand or the call's own discard",
+   "own": {
+    "n": 1136,
+    "could_win": 15.6,
+    "square": 18.9
+   },
+   "rows": {
+    "n": 855,
+    "could_win": 19.4,
+    "by_run": [
+     23.4,
+     27.5,
+     29.7,
+     31.3
+    ]
+   }
+  },
+  "hand_after_one": {
+   "label": "from hand, after exactly one from the wall",
+   "own": {
+    "n": 418,
+    "could_win": 24.4,
+    "square": 25.8
+   },
+   "rows": {
+    "n": 379,
+    "could_win": 25.9,
+    "by_run": [
+     27.3,
+     31.7,
+     34.2,
+     36.1
+    ]
+   }
+  },
+  "hand_after_two": {
+   "label": "from hand, after exactly two from the wall",
+   "own": {
+    "n": 164,
+    "could_win": 29.9,
+    "square": 29.1
+   },
+   "rows": {
+    "n": 158,
+    "could_win": 30.4,
+    "by_run": [
+     29.5,
+     35.3,
+     38.9,
+     42.0
+    ]
+   }
+  },
+  "hand_after_three": {
+   "label": "from hand, after three or more from the wall",
+   "own": {
+    "n": 121,
+    "could_win": 42.1,
+    "square": 37.9
+   },
+   "rows": {
+    "n": 121,
+    "could_win": 42.1,
+    "by_run": [
+     37.9,
+     45.3,
+     50.7,
+     54.7
+    ]
+   }
+  },
+  "alternating_hand": {
+   "label": "the last four alternated, the last from hand",
+   "own": {
+    "n": 92,
+    "could_win": 35.9,
+    "square": 32.5
+   },
+   "rows": {
+    "n": 92,
+    "could_win": 35.9,
+    "by_run": [
+     32.5,
+     38.9,
+     43.2,
+     46.9
+    ]
+   }
+  },
+  "alternating_wall": {
+   "label": "the last four alternated, the last from the wall",
+   "own": {
+    "n": 119,
+    "could_win": 32.8,
+    "square": 36.6
+   },
+   "rows": {
+    "n": 119,
+    "could_win": 32.8,
+    "by_run": [
+     30.7,
+     36.6,
+     40.4,
+     43.7
+    ]
+   }
+  },
+  "one_value_honor": {
+   "label": "one from the wall, a value honor",
+   "own": {
+    "n": 205,
+    "could_win": 38.0,
+    "square": 34.0
+   },
+   "rows": {
+    "n": 180,
+    "could_win": 40.0,
+    "by_run": [
+     31.2,
+     36.3,
+     39.4,
+     42.0
+    ]
+   }
+  },
+  "one_guest_wind": {
+   "label": "one from the wall, a guest wind",
+   "own": {
+    "n": 127,
+    "could_win": 26.8,
+    "square": 30.0
+   },
+   "rows": {
+    "n": 109,
+    "could_win": 31.2,
+    "by_run": [
+     28.7,
+     33.2,
+     35.7,
+     37.7
+    ]
+   }
+  },
+  "one_terminal": {
+   "label": "one from the wall, a terminal",
+   "own": {
+    "n": 328,
+    "could_win": 29.6,
+    "square": 30.1
+   },
+   "rows": {
+    "n": 286,
+    "could_win": 32.2,
+    "by_run": [
+     28.6,
+     33.1,
+     35.8,
+     37.7
+    ]
+   }
+  },
+  "one_two_or_eight": {
+   "label": "one from the wall, a 2 or 8",
+   "own": {
+    "n": 277,
+    "could_win": 31.0,
+    "square": 32.8
+   },
+   "rows": {
+    "n": 245,
+    "could_win": 31.8,
+    "by_run": [
+     29.7,
+     34.7,
+     37.8,
+     40.2
+    ]
+   }
+  },
+  "one_middle": {
+   "label": "one from the wall, a 3 to 7",
+   "own": {
+    "n": 553,
+    "could_win": 36.0,
+    "square": 33.5
+   },
+   "rows": {
+    "n": 484,
+    "could_win": 39.3,
+    "by_run": [
+     31.7,
+     36.3,
+     38.8,
+     40.8
+    ]
+   }
+  },
+  "two_honors_terminals": {
+   "label": "two from the wall, both honors or terminals",
+   "own": {
+    "n": 133,
+    "could_win": 33.8,
+    "square": 36.6
+   },
+   "rows": {
+    "n": 129,
+    "could_win": 34.9,
+    "by_run": [
+     29.9,
+     34.7,
+     37.7,
+     39.8
+    ]
+   }
+  },
+  "two_with_number": {
+   "label": "two from the wall, with a 2 to 8",
+   "own": {
+    "n": 555,
+    "could_win": 44.3,
+    "square": 43.2
+   },
+   "rows": {
+    "n": 529,
+    "could_win": 45.4,
+    "by_run": [
+     34.8,
+     40.7,
+     44.5,
+     47.5
+    ]
+   }
+  },
+  "three_honors_terminals": {
+   "label": "three or more from the wall, all honors or terminals",
+   "own": {
+    "n": 42,
+    "could_win": 40.5,
+    "square": 46.7
+   },
+   "rows": {
+    "n": 41,
+    "could_win": 39.0,
+    "by_run": [
+     32.0,
+     38.2,
+     42.6,
+     45.6
+    ]
+   }
+  },
+  "three_guests_terminals": {
+   "label": "three or more from the wall, all guest winds or terminals",
+   "own": {
+    "n": 10,
+    "could_win": 30.0,
+    "square": 45.8
+   },
+   "rows": {
+    "n": 10,
+    "could_win": 30.0,
+    "by_run": [
+     34.6,
+     40.0,
+     43.2,
+     45.8
+    ]
+   }
+  },
+  "three_with_number": {
+   "label": "three or more from the wall, with a 2 to 8",
+   "own": {
+    "n": 795,
+    "could_win": 60.5,
+    "square": 59.7
+   },
+   "rows": {
+    "n": 768,
+    "could_win": 59.9,
+    "by_run": [
+     40.2,
+     48.1,
+     53.8,
+     58.5
+    ]
+   }
+  }
+ },
+ "counts": {
+  "grid": {
+   "label": "every tile from the wall since the last call, in a row (the grid)",
+   "log_likelihood": -3157.4,
+   "parameters": 10
+  },
+  "skip_guests_terminals": {
+   "label": "the same, passing over guest winds and terminals",
+   "log_likelihood": -3158.4,
+   "parameters": 12
+  },
+  "last_four": {
+   "label": "tiles from the wall among the last four since the call",
+   "log_likelihood": -3165.0,
+   "parameters": 16
+  },
+  "call_as_wall": {
+   "label": "the call itself counted as one tile from the wall",
+   "log_likelihood": -3147.7,
+   "parameters": 14
+  },
+  "call_and_streak": {
+   "label": "that, and a hand discard ending three or more from the wall read as one",
+   "log_likelihood": -3145.1,
+   "parameters": 14
+  }
+ },
+ "three_or_more_all_honors_terminals": 5.1
+}

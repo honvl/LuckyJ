@@ -7,9 +7,10 @@ or anything else for a four-seat human baseline such as the Houou manifest.
 
 Writes OUT_PREFIX.cuts.jsonl    one row per (discard, caller) pair: the tile's safety label against that
                                 caller, whether it was on the caller's wait, the caller's calls, discards
-                                and tsumogiri run, visible dora, the tiles the caller passed since their
-                                last discard, and (for the caller with the most calls) every candidate
-                                tile as [tile, danger, shanten after, passed]
+                                and tsumogiri run (with the H/T pattern of their discards since their
+                                last call and the tiles of the run), visible dora, the tiles the caller
+                                passed since their last discard, and (for the caller with the most
+                                calls) every candidate tile as [tile, danger, shanten after, passed]
        OUT_PREFIX.tenpai.jsonl  one row per tenpai decision against callers; ``dilemma`` marks the spots
                                 where every widest-wait discard is a live tile and a safe discard keeps a
                                 narrower tenpai
@@ -114,6 +115,8 @@ def work(g):
                                 ts_run += 1
                             else:
                                 break
+                        pattern = ''.join('T' if x['tsumogiri'] else 'H' for x in since)
+                        run_tiles = [base(x['tile']) for x in since[len(since) - ts_run:]]
                         qlast = qe[-1]
                         q_tenpai = ws.hand_shanten(qlast['hand_after'], qlast['meld_tiles'], qlast['closed']) == 0
                         waits = tr.waits(qlast['hand_after'], qlast['meld_tiles'], qlast['closed']) if q_tenpai else []
@@ -121,6 +124,7 @@ def work(g):
                         passed = {base(ev['tile']) for ev in events[qe[-1]['index'] + 1: i] if ev['seat'] != q}
                         meld_dora = sum(1 for m in melds[q] for tt in m['tiles'] if base(tt) in dset or is_red(tt))
                         cinfo[q] = dict(tells=tells, last_call=last_call, since=len(since), ts_run=ts_run, q_turn=len(qe),
+                                        pattern=pattern, run_tiles=run_tiles,
                                         passed=passed, meld_dora=meld_dora,
                                         tenpai=q_tenpai, waits={base(w) for w in waits},
                                         shape=(wait_shape(qlast['hand_after'], waits) if q_tenpai else None), prof=prof,
@@ -159,6 +163,7 @@ def work(g):
                             'near_dora': b < 41 and any(x < 41 and x // 10 == b // 10 and abs(x - b) <= 2 for x in dset),
                             'in_q_suit': b < 41 and ci['prof']['suit'] is not None and b // 10 == ci['prof']['suit'],
                             'n_melds': ci['n_melds'], 'last_call': ci['last_call'], 'since': ci['since'], 'ts_run': ci['ts_run'],
+                            'q_pattern': ci['pattern'], 'run_tiles': ci['run_tiles'],
                             'q_turn': ci['q_turn'], 'late_call': ci['tells']['late_call'], 'two_calls': ci['tells']['two_calls'],
                             'tsumogiri2': ci['tells']['tsumogiri2'], 'q_tenpai': ci['tenpai'], 'on_wait': b in ci['waits'],
                             'shape': ci['shape'], 'yakuhai_pon': ci['prof']['yakuhai_pon'], 'all_simples': ci['prof']['all_simples'],

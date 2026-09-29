@@ -1076,3 +1076,30 @@
   font-size: 11.5px;
   font-weight: 600;
 }
+
+/* LuckyJ's fold line: a jade rule down each block of rows, named in the block's heading row. */
+.cs-grid .cs-fold {
+  border-left: 3px solid var(--jade);
+}
+
+.cs-grid .cs-calls td {
+  padding: 16px 0 6px;
+  border-bottom: 0;
+  vertical-align: bottom;
+}
+
+.cs-grid .cs-calls .cs-fold-label {
+  padding-left: 7px;
+  color: var(--jade);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.cs-fold-key {
+  padding-left: 6px;
+  border-left: 3px solid var(--jade);
+  color: var(--jade);
+  font-weight: 600;
+}
