@@ -142,6 +142,16 @@ class CallerGridTests(unittest.TestCase):
         self.assertEqual(build.shade(0), "#f4f0e6")
         self.assertEqual(build.shade(50), "#f5a583")
         self.assertEqual(build.shade(100), "#8e2a15")
+        # the fold views shade in jade, so a folded square never reads as a caller's tenpai
+        self.assertEqual([build.shade(p, "fold") for p in (0, 50, 100)], ["#f4f0e6", "#8edbb8", "#0c2f22"])
+        for path in build.PAGES.values():
+            page = path.read_text(encoding="utf-8")
+            figure = page[page.index(build.START):page.index(build.END)]
+            for view, colour in (("win", "#f5a583"), ("fold-far", "#8edbb8")):
+                table = re.search(rf'<table class="cs-grid" data-view="{view}".*?</table>', figure, flags=re.S).group(0)
+                self.assertIn(f"background:{colour}", table)
+                self.assertNotIn("background:#8edbb8" if view == "win" else "background:#f5a583", table)
+            self.assertEqual(len(re.findall(r'<span class="cs-legend">', figure)), 4)
 
 
 if __name__ == "__main__":

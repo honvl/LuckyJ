@@ -32,16 +32,19 @@ MAX_DISCARD = 18
 ROW_START = ' class="cs-row-start"'
 HANDS = ("far", "one", "tenpai")
 ORDINALS = {5: "fifth", 6: "sixth", 7: "seventh", 8: "eighth", 9: "ninth", 10: "tenth", 11: "eleventh", 12: "twelfth"}
-# paper to deep vermilion, the site's tokens
+# paper to deep vermilion for the callers who could win, paper to deep jade for LuckyJ's folds: the site's tokens
 LOW = (0xF4, 0xF0, 0xE6)
 MID = (0xF5, 0xA5, 0x83)
 HIGH = (0x8E, 0x2A, 0x15)
+RAMPS = {"win": (LOW, MID, HIGH), "fold": (LOW, (0x8E, 0xDB, 0xB8), (0x0C, 0x2F, 0x22))}
 
 
-def shade(pct: float) -> str:
-    """Background colour for a share: paper at 0, the vermilion felt at 50, deep vermilion at 100."""
+def shade(pct: float, ramp: str = "win") -> str:
+    """Background colour for a share: paper at 0, the vermilion felt at 50, deep vermilion at 100; the fold
+    views run paper, jade felt, deep felt, so a square never reads as a caller's tenpai."""
+    low, mid, high = RAMPS[ramp]
     x = max(0.0, min(1.0, pct / 100))
-    a, b, t = (LOW, MID, x / 0.5) if x <= 0.5 else (MID, HIGH, (x - 0.5) / 0.5)
+    a, b, t = (low, mid, x / 0.5) if x <= 0.5 else (mid, high, (x - 0.5) / 0.5)
     rgb = tuple(round(a[i] + (b[i] - a[i]) * t) for i in range(3))
     return "#%02x%02x%02x" % rgb
 
@@ -198,7 +201,7 @@ WORDS = {
 }
 
 
-def _table(words: dict, view: str, label: str, cells_for, pick, lines: dict) -> str:
+def _table(words: dict, view: str, label: str, cells_for, pick, lines: dict, ramp: str = "win") -> str:
     head_rows = (
         f'<tr><th class="cs-corner" rowspan="2" scope="col">{words["corner"]}</th>'
         + "".join(f'<th class="cs-group" colspan="6" scope="colgroup">{row}</th>' for row in words["rows"])
@@ -223,7 +226,7 @@ def _table(words: dict, view: str, label: str, cells_for, pick, lines: dict) -> 
                 if v is None:
                     tds.append(f"<td{attr}></td>")
                     continue
-                tds.append(f'<td{attr} style="background:{shade(v)};color:{text_for(shade(v))}">{round(v)}</td>')
+                tds.append(f'<td{attr} style="background:{shade(v, ramp)};color:{text_for(shade(v, ramp))}">{round(v)}</td>')
             body.append(f'<tr><th scope="row">{words["runs"][run]}</th>{"".join(tds)}</tr>')
     return f'<table class="cs-grid" data-view="{view}" aria-label="{label}"><thead>{head_rows}</thead><tbody>{"".join(body)}</tbody></table>'
 
@@ -237,11 +240,12 @@ def render(data: dict, fold: dict, lang: str = "en") -> str:
     for hand in HANDS:
         tables.append(_table(words, f"fold-{hand}", words["fold_label"](words["hands"][hand]),
                              lambda c, r, hand=hand: fold["shanten"][hand]["grid"][f"{c}-{r}"]["cells"],
-                             lambda cell: fold_value(cell, fold["grid_max_half_band"]), fold_lines(fold, hand)))
-    legend = "".join(f'<span style="background:{shade(p)};color:{text_for(shade(p))}">{p}%</span>' for p in (0, 10, 25, 50, 75, 90))
+                             lambda cell: fold_value(cell, fold["grid_max_half_band"]), fold_lines(fold, hand), "fold"))
+    legend = lambda ramp: '<span class="cs-legend">' + "".join(
+        f'<span style="background:{shade(p, ramp)};color:{text_for(shade(p, ramp))}">{p}%</span>' for p in (0, 10, 25, 50, 75, 90)) + "</span> "
     win_caption = words["caption"].format(minimum=minimum, one=words["discard"](win_lines[1]), more=words["discard"](win_lines[2]))
-    captions = f'<span data-view="win">{win_caption}</span>' + "".join(
-        f'<span data-view="fold-{hand}">{words["fold_caption"](fold, hand)}</span>' for hand in HANDS)
+    captions = f'<span data-view="win">{legend("win")}{win_caption}</span>' + "".join(
+        f'<span data-view="fold-{hand}">{legend("fold")}{words["fold_caption"](fold, hand)}</span>' for hand in HANDS)
     inputs = (
         '<input class="cs-switch-input" type="radio" name="cs-view" id="cs-view-win" checked />'
         '<input class="cs-switch-input" type="radio" name="cs-view" id="cs-view-fold" />'
@@ -262,7 +266,7 @@ def render(data: dict, fold: dict, lang: str = "en") -> str:
         '              <div class="guide-data-scroll">\n'
         + "".join(f"                {t}\n" for t in tables)
         + "              </div>\n"
-        f'              <figcaption><span class="cs-legend">{legend}</span> {captions}</figcaption>\n'
+        f'              <figcaption>{captions}</figcaption>\n'
         "            </figure>\n"
         f"            {END}"
     )
