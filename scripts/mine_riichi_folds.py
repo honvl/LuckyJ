@@ -91,6 +91,8 @@ def compute(manifest: str, since: str | None, out: str) -> None:
                 keep_classes = {worst_class(c[2]) for c in cands.values() if c[0] == best}
                 best_keep_class = min(keep_classes, key=CLASS_ORDER.index)
                 any_safe = [t for t, c in cands.items() if c[1]]
+                # on a draw turn, throwing the drawn tile back leaves the hand as it stood before the draw
+                prev = cands[e["drawn"]][0] if e["drawn"] is not None and e["called"] is None else None
                 acc_gap = None
                 if not a_safe and keep_safe:
                     rest = list(e["hand_before"])
@@ -113,6 +115,7 @@ def compute(manifest: str, since: str | None, out: str) -> None:
                 rows.append({
                     "game": g["uuid"], "date": g["date"], "round": game["round_name"], "turn": e["turn"],
                     "best": best, "a_s": a_s, "push": not a_safe, "keep_safe": bool(keep_safe), "any_safe": bool(any_safe),
+                    "prev": prev, "safe_best": min((c[0] for c in cands.values() if c[1]), default=None),
                     "acc_gap": acc_gap, "open": not e["closed"], "dora": dora, "dealer": game["dealer"] == hero,
                     "dealt": dealt, "riichis": len(reached), "tile": name(e["tile"]), "labels": a_labels,
                     "safe_keep_tiles": [name(t) for t in keep_safe], "hand": names(e["hand_before"]),

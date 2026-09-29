@@ -1258,3 +1258,99 @@ html:lang(ja) .guide-card .analysis-step h5 {
 
 html:lang(ja) :is(.guide-news-tag, .guide-data thead th, .guide-verdict, .guide-result b, .guide-options thead th, .guide-options tbody th small) {
   letter-spacing: 0.04em;
+}
+
+/* Chapter 20's three turns: the callers take the room, the square stays whole. */
+.guide-data.is-turns {
+  min-width: 560px;
+}
+
+.guide-data.is-turns td:first-child {
+  width: 18%;
+}
+
+.guide-data.is-turns td:nth-child(2) {
+  width: 36%;
+}
+
+.guide-data.is-turns td:nth-child(3) {
+  white-space: nowrap;
+}
+
+.guide-data.is-turns td:nth-child(4) {
+  width: 16%;
+}
+
+/* Chapter 20's chart: how often LuckyJ broke its hand, drawn in the book's safe-tile timing style
+   (scripts/build_break_fold_figure.py). One shade of jade per hand, darkest for the hand furthest from
+   tenpai; the riichi column on the right repeats the same hands as diamonds. */
+.point .break-figure {
+  margin: 28px 0 8px;
+  --bf-far: var(--jade-mark);
+  --bf-one: #4f9c7b;
+  --bf-tenpai: #9a9388;
+}
+
+.point .break-figure .timing-plate {
+  max-width: none;
+}
+
+.break-figure .bf-far { --bf: var(--bf-far); --bf-tip: #5fc49a; }
+.break-figure .bf-one { --bf: var(--bf-one); --bf-tip: #a9dcc4; }
+.break-figure .bf-tenpai { --bf: var(--bf-tenpai); --bf-tip: #c9c2b6; }
+
+.break-figure .bf-fit {
+  fill: none;
+  stroke: var(--bf);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.break-figure .bf-band {
+  fill: var(--bf);
+  fill-opacity: 0.13;
+}
+
+.break-figure .bf-dot {
+  fill: var(--bf);
+  fill-opacity: 0.45;
+}
+
+.break-figure .bf-riichi {
+  fill: var(--bf);
+  stroke: var(--plate);
+  stroke-width: 1.5;
+}
+
+.break-figure .bf-end {
+  fill: var(--bf);
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.break-figure .bf-divider {
+  stroke: var(--hair);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.break-figure .timing-key:is(.bf-far, .bf-one, .bf-tenpai)::before {
+  width: 22px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--bf);
+}
+
+.break-figure .timing-key.bf-riichi-key::before {
+  width: 8px;
+  height: 8px;
+  margin: 0 3px;
+  background: var(--ink-2);
+  transform: rotate(45deg);
+}
+
+.break-figure .timing-tip b:is(.bf-far, .bf-one, .bf-tenpai)::before {
+  background: var(--bf-tip);
+}

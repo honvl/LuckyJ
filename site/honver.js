@@ -786,6 +786,7 @@
     setupRunningHead();
     convertStaticTileMarkup();
     applyTileCompatibility();
+    setupTimingCharts();
     setupHandToggle();
     for (const table of document.querySelectorAll("table.guide-data[data-chart]")) renderGuideChart(table);
     let data;

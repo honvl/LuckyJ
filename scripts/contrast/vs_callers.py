@@ -2,15 +2,18 @@
 
 usage: vs_callers.py MANIFEST GROUP OUT_PREFIX [--procs N] [--limit N]
 
-GROUP is "lj" for LuckyJ's games (the hero seat is LuckyJ, the other seats are its Tokujou tablemates)
-or anything else for a four-seat human baseline such as the Houou manifest.
+GROUP is "lj" for LuckyJ's games (the hero seat is LuckyJ, the other seats are its Tokujou tablemates),
+"self" for your Mahjong Soul games (the hero seat is You, the others Jade), or anything else for a
+four-seat human baseline such as the Houou manifest.
 
 Writes OUT_PREFIX.cuts.jsonl    one row per (discard, caller) pair: the tile's safety label against that
                                 caller, whether it was on the caller's wait, the caller's calls, discards
                                 and tsumogiri run (with the H/T pattern of their discards since their
-                                last call and the tiles of the run), visible dora, the tiles the caller
-                                passed since their last discard, and (for the caller with the most
-                                calls) every candidate tile as [tile, danger, shanten after, passed]
+                                last call and the tiles of the run), the discarder's shanten before
+                                this turn's draw (``prev_sh``: the hand with the drawn tile thrown
+                                back) and the tile drawn, visible dora, the tiles the caller
+                                passed since their last discard, and every candidate tile as [tile,
+                                danger against that caller, shanten after, passed]
        OUT_PREFIX.tenpai.jsonl  one row per tenpai decision against callers; ``dilemma`` marks the spots
                                 where every widest-wait discard is a live tile and a safe discard keeps a
                                 narrower tenpai
@@ -75,7 +78,8 @@ def work(g):
     cuts, tenpai_rows = [], []
     d = json.load(open(g['file']))
     uuid = g['uuid'].split('#')[0]
-    hero = g['hero_seat'] if g.get('grp') == 'lj' else None
+    hero = g['hero_seat'] if g.get('grp') in ('lj', 'self') else None
+    names = {'lj': ('LuckyJ', 'Tokujou'), 'self': ('You', 'Jade')}.get(g.get('grp'))
     for li, log in enumerate(d['log']):
         game = tr.replay(log)
         players = game['players']; events = game['events']; kyoku = game['kyoku']
@@ -100,7 +104,7 @@ def work(g):
                     snap = meld_snapshots(game, i - 1); snap[s] = e['melds']
                     vis = visible_counter(e['hand_before'], e, players, snap, inds)
                     mx = max(len(melds[q]) for q in callers)
-                    who = ('LuckyJ' if s == hero else 'Tokujou') if g.get('grp') == 'lj' else 'Houou'
+                    who = (names[0] if s == hero else names[1]) if names else 'Houou'
                     my_sh = ws.hand_shanten(e['hand_after'], e['meld_tiles'], e['closed'])
                     my_dora = sum(1 for t in list(e['hand_before']) + list(e['meld_tiles']) if base(t) in dset or is_red(t))
                     cinfo = {}
@@ -137,6 +141,9 @@ def work(g):
                         rest = list(e['hand_before']); rest.remove(tt)
                         cand_sh[base(tt)] = ws.hand_shanten(rest, e['meld_tiles'], e['closed'])
                     best_sh = min(cand_sh.values())
+                    # on a draw turn, throwing the drawn tile back leaves the hand as it stood before the draw
+                    drew = base(e['drawn']) if e['drawn'] is not None and e['called'] is None else None
+                    prev_sh = cand_sh[drew] if drew is not None else None
                     safe_info = {}
                     per_tile = {}
                     for q in callers:
@@ -170,11 +177,12 @@ def work(g):
                             'one_suit': ci['prof']['suit'] is not None, 'pons': ci['prof']['pons'],
                             'dealt': i == last and q in ron_by.get(s, set()), 'my_sh': my_sh, 'my_dora': my_dora,
                             'best_sh': best_sh, 'held_safe': safe_info[q][0], 'keep_safe': safe_info[q][1],
+                            'drew': drew, 'prev_sh': prev_sh, 'tsumogiri': e['tsumogiri'], 'call_turn': e['called'] is not None,
+                            'closed': e['closed'],
                             'q_dealer': ci['q_dealer'], 'me_dealer': s == game['dealer'], 'q_meld_dora': ci['meld_dora'],
                             'passed': b in ci['passed'] and DANGER[lab] > 0,
                             'n_callers': len(callers), 'q_ron_value': None, 'q_won': q in winners, 'q_gain': deltas[q], 'my_net': deltas[s] - 1000 * paid[s],
-                            'opts': ([[k, per_tile[q][k], cand_sh[k], k in ci['passed']] for k in sorted(per_tile[q])]
-                                     if len(melds[q]) == mx else None),
+                            'opts': [[k, per_tile[q][k], cand_sh[k], k in ci['passed']] for k in sorted(per_tile[q])],
                             'kyoku': kyoku, 'scores': log[1],
                         })
                     # tenpai dilemmas: can the discarder keep tenpai, and at what price in safety

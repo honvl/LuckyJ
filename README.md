@@ -318,6 +318,14 @@ reach one, with the closed hand's acceptance, the dora and whether the player ca
 
 Reports: `analysis/open-vs-open-*-2026-09-24.txt` and `analysis/call-chances-*-2026-09-24.txt`.
 
+Chapter 20 (when LuckyJ breaks its hand to fold) comes from `mine_break_folds.py`. It reads the cut
+rows of `scripts/contrast/vs_callers.py` and the rows of `mine_riichi_folds.py`, both of which record
+the shanten before each draw, so a safe draw thrown back never counts as breaking the hand. It reads
+the callers' threat from chapter 18's grid, fits LuckyJ's break share over it, sets your turns against
+that curve and Mortal's policy in the site's replays, and writes
+`analysis/break-folds-2026-09-29.json`; `build_break_fold_figure.py` draws the chart into both
+editions. The commands are in `analysis/break-folds-2026-09-29.md`.
+
 The mined summaries behind the published numbers are archived under
 `analysis/rx3-*-2026-07-05.json`. The older `analysis/rx-*-2026-07-03.json` files are kept
 as first-pass all-seat references, not as the current prescription source.
