@@ -370,7 +370,13 @@ def table_context(
     }
 
 
+def meld_called_tile(meld):
+    """The tile a chi, pon or open kan took from another player's pond, where it still lies."""
+    return meld.get("called_tile") if isinstance(meld, dict) else None
+
+
 def visible_counter(discards, melds, dora_markers):
+    """Copies of each tile in the dora indicators, the ponds and the melds, with a called tile counted once."""
     visible = Counter()
     for marker in dora_markers:
         visible[tile_id(marker)] += 1
@@ -381,6 +387,9 @@ def visible_counter(discards, melds, dora_markers):
         for meld in player_melds:
             for tile in meld_tiles(meld):
                 visible[tile_id(tile)] += 1
+            called = meld_called_tile(meld)
+            if called:
+                visible[tile_id(called)] -= 1
     return visible
 
 
@@ -1813,7 +1822,8 @@ def case_value_units(tiles, case):
 
 
 def case_unseen_counts(case):
-    """Copies of each tile LuckyJ cannot see: not in its hand, a river, a meld or the dora indicators."""
+    """Copies of each tile LuckyJ cannot see: not in its hand, a river, a meld or the dora indicators.
+    A called tile lies in a river and a meld, and counts once."""
     table = case.get("table") or {}
     seen = Counter(base_tile(tile) for tile in str(case.get("hand") or "").split())
     for player in table.get("players") or []:
@@ -1823,6 +1833,9 @@ def case_unseen_counts(case):
                 seen[base_tile(tile)] += 1
         for meld in player.get("melds") or []:
             seen.update(base_tile(tile) for tile in meld_tiles(meld))
+            called = meld_called_tile(meld)
+            if called:
+                seen[base_tile(called)] -= 1
     seen.update(base_tile(marker) for marker in table.get("dora_markers") or [])
     return Counter({tile: max(0, 4 - count) for tile, count in seen.items()})
 
@@ -3043,21 +3056,69 @@ def refresh_commentary():
         print(f"  missing: {key}")
 
 
-def ponds_before(kyoku, position):
-    """Each seat's pond before event ``position``, and the places in it of the tiles another player called.
+def table_before(kyoku, position):
+    """The table at event ``position`` as collect_examples holds it: each seat's concealed hand, pond and melds,
+    the places in each pond of the tiles another player called, the riichi flags and the dora indicators.
 
-    Only earlier events count, as in collect_examples: a call frame stands before its own call, so the tile
-    being decided on is still live.
+    Only earlier events count: a call frame stands before its own call, so the tile being decided on is still
+    live. A draw at ``position`` is already in the drawer's hand, as it is when LuckyJ decides its discard.
     """
+    start = kyoku[0].get("info", {}).get("msg", {})
+    hands = [list(hand) for hand in start.get("tehais", [[], [], [], []])]
     discards = [[], [], [], []]
     called_discard_indices = [[], [], [], []]
+    melds = [[], [], [], []]
+    reached = [False, False, False, False]
+    dora_markers = [start.get("dora_marker")] if start.get("dora_marker") else []
     for state in kyoku[:position]:
         msg = state.get("info", {}).get("msg", {})
-        if msg.get("type") == "dahai" and msg.get("actor") is not None and msg.get("pai"):
-            discards[msg["actor"]].append(msg["pai"])
-        elif msg.get("type") in base.HURO_TYPES:
+        actor = msg.get("actor")
+        msg_type = msg.get("type")
+        discard = msg.get("real_dahai")
+        if msg_type == "dora" and msg.get("dora_marker"):
+            dora_markers.append(msg["dora_marker"])
+        elif msg_type == "tsumo":
+            hands[actor].append(msg["pai"])
+            if discard and discard != "?":
+                remove_tile(hands[actor], discard)
+        elif msg_type in base.HURO_TYPES:
             mark_called_discard(called_discard_indices, discards, msg)
-    return discards, called_discard_indices
+            consumed = msg.get("consumed", [])
+            call_tiles = consumed + ([msg.get("pai")] if msg.get("pai") else [])
+            melds[actor].append(make_meld(call_tiles, msg.get("pai"), rel_seat(msg.get("target"), actor), msg_type))
+            for tile in consumed:
+                remove_tile(hands[actor], tile)
+            if discard and discard != "?":
+                remove_tile(hands[actor], discard)
+        elif msg_type == "ankan":
+            consumed = msg.get("consumed", [])
+            melds[actor].append(make_meld(consumed, kind=msg_type))
+            for tile in consumed:
+                remove_tile(hands[actor], tile)
+        elif msg_type == "kakan" and msg.get("pai"):
+            melds[actor].append(make_meld([msg["pai"]], kind=msg_type))
+            remove_tile(hands[actor], msg["pai"])
+        elif msg_type == "reach" and actor is not None:
+            reached[actor] = True
+        elif msg_type == "dahai" and actor is not None and msg.get("pai"):
+            discards[actor].append(msg["pai"])
+    msg = kyoku[position].get("info", {}).get("msg", {}) if position < len(kyoku) else {}
+    if msg.get("type") == "tsumo":
+        hands[msg["actor"]].append(msg["pai"])
+    return {
+        "hands": hands,
+        "discards": discards,
+        "called_discard_indices": called_discard_indices,
+        "melds": melds,
+        "reached": reached,
+        "dora_markers": dora_markers,
+    }
+
+
+def ponds_before(kyoku, position):
+    """Each seat's pond before event ``position``, and the places in it of the tiles another player called."""
+    table = table_before(kyoku, position)
+    return table["discards"], table["called_discard_indices"]
 
 
 def refresh_called_tiles():
@@ -3091,6 +3152,71 @@ def refresh_called_tiles():
     print(f"marked {marked} called pond tiles on the tables in {OUT}")
 
 
+def refresh_line_evals():
+    """Recount both lines' ukeire on the selected replays, without reselecting.
+
+    Each discard frame's table is replayed from the NAGA report and checked against the stored one. Only the
+    counts may change; a difference anywhere else means the replay is not the stored frame.
+    """
+    data = json.loads(OUT.read_text(encoding="utf-8"))
+    rows = {row["idx"]: row for row in base.parse_rows()}
+    changes = []
+    ineligible = []
+    for point_key, cases in data.items():
+        for case in cases:
+            if not is_discard_case(case):
+                continue
+            row = rows[case["game"]]
+            target = row["actor"]
+            report = base.fetch_report(row["report_id"])
+            base.normalize_report(report)
+            kyoku = report["pred"][case["kyoku_index"]]
+            msg = kyoku[case["position"]].get("info", {}).get("msg", {})
+            where = f"{point_key} example {case['example_index']} (game {case['game']})"
+            if msg.get("actor") != target or msg.get("type") != "tsumo":
+                raise SystemExit(f"{where}: event {case['position']} is not LuckyJ's draw")
+            table = table_before(kyoku, case["position"])
+            for player in case["table"]["players"]:
+                seat = (SEAT_NAMES.index(player["seat"]) + target) % 4
+                replayed = {
+                    "hand": hand_string(table["hands"][seat]),
+                    "discards": table["discards"][seat],
+                    "melds": table["melds"][seat],
+                    "reached": table["reached"][seat],
+                }
+                if any(player[key] != value for key, value in replayed.items()):
+                    raise SystemExit(f"{where}: the replayed table of {player['seat']} differs from the stored one")
+            if table["dora_markers"] != case["table"]["dora_markers"]:
+                raise SystemExit(f"{where}: the replayed dora indicators differ from the table")
+            hand = table["hands"][target]
+            visible = visible_counter(table["discards"], table["melds"], table["dora_markers"])
+            open_counts = [len(player_melds) for player_melds in table["melds"]]
+            safety_context = (target, table["discards"], table["reached"], open_counts)
+            for key, tile in (("actual_eval", case["actual"]), ("naga_eval", case["naga"])):
+                stored = case.get(key)
+                if not stored:
+                    continue
+                fresh = ukeire_after_discard(hand, tile, visible, safety_context)
+                if any(fresh[field] != stored.get(field) for field in fresh if field not in {"ukeire", "effective"}):
+                    raise SystemExit(f"{where}: the replayed {key} differs from the stored one beyond its counts")
+                if (fresh["ukeire"], fresh["effective"]) != (stored["ukeire"], stored["effective"]):
+                    changes.append(f"{where}: {key} cut {tile}: ukeire {stored['ukeire']} -> {fresh['ukeire']}")
+                    stored["ukeire"] = fresh["ukeire"]
+                    stored["effective"] = fresh["effective"]
+            job = case.get("placement_job")
+            # A replay a fresh selection would now reject stays, but is named. For Point 01 this also refreshes the job.
+            if not point_candidate_eligible(point_key, case):
+                ineligible.append(where)
+            if case.get("placement_job") != job:
+                changes.append(f"{where}: placement job {job} -> {case.get('placement_job')}")
+    OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"recounted the line evaluations in {OUT}; changes={len(changes)}")
+    for line in changes:
+        print(f"  {line}")
+    for where in ineligible:
+        print(f"  no longer eligible for its point: {where}")
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -3108,6 +3234,11 @@ def main():
         action="store_true",
         help="mark the pond tiles other players called on the tables without reselecting frames",
     )
+    parser.add_argument(
+        "--refresh-line-evals",
+        action="store_true",
+        help="recount both lines' ukeire on the selected replays without reselecting frames",
+    )
     args = parser.parse_args()
     if args.refresh_evidence_only:
         refresh_evidence_tiers()
@@ -3117,6 +3248,9 @@ def main():
         return
     if args.refresh_called_tiles:
         refresh_called_tiles()
+        return
+    if args.refresh_line_evals:
+        refresh_line_evals()
         return
     OUT.parent.mkdir(parents=True, exist_ok=True)
     data = finalize_examples(collect_examples())

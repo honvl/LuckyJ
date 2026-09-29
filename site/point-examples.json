@@ -61017,7 +61017,7 @@
       "actual_eval": {
         "discard": "9p",
         "shanten": 2,
-        "ukeire": 42,
+        "ukeire": 43,
         "effective": [
           "4m",
           "5m",
@@ -61651,12 +61651,12 @@
       },
       "guide": {
         "prompt": "All Last, 3 honba. You are 3rd, 2,700 behind 2nd, with both red fives and the dora [[6s]]. The dealer has a chi. Cut the [[6m]] or the [[9p]]?",
-        "read": "Apart from the [[9p]] pair, every tile is a simple, and the hand already carries 3 han in red fives and dora. Cutting one [[9p]], genbutsu against the dealer, keeps every middle tile: [[5m]][[6m]][[6m]][[7m]] stays as two ryanmen, and the hand takes 42 tiles at two-shanten against 11 at one-shanten. The second [[9p]] is another genbutsu for next turn. Of the four engines, only Kagashi cuts the [[9p]]. LuckyJ won 9,800 and finished the game 2nd.",
+        "read": "Apart from the [[9p]] pair, every tile is a simple, and the hand already carries 3 han in red fives and dora. Cutting one [[9p]], genbutsu against the dealer, keeps every middle tile: [[5m]][[6m]][[6m]][[7m]] stays as two ryanmen, and the hand takes 43 tiles at two-shanten against 11 at one-shanten. The second [[9p]] is another genbutsu for next turn. Of the four engines, only Kagashi cuts the [[9p]]. LuckyJ won 9,800 and finished the game 2nd.",
         "whyNot": "The spare [[6m]] is Nishiki's cut: it leaves [[5m]][[6m]][[7m]] complete and the hand one-shanten, with both [[9p]] still in hand. With 32 tiles left in All Last, one-shanten now is faster than a wide two-shanten. Mortal puts 99% on the [[6m]], and Hibakari agrees."
       },
       "guide_ja": {
         "prompt": "オーラス3本場。あなたは3着目で2着と2,700点差、赤五2枚とドラ[[6s]]を持っている。親はチーを1つ。[[6m]]と[[9p]]のどちらを外すか。",
-        "read": "[[9p]]の対子を除けば手はすべて中張牌で、赤五とドラですでに3翻ある。親の現物である[[9p]]を1枚切れば中の牌はすべて残り、[[5m]][[6m]][[6m]][[7m]]は両面2つになる。受け入れは2シャンテンで42枚、ニシキの1シャンテンは11枚。もう1枚の[[9p]]も次の巡の現物として残る。4つのエンジンのうち[[9p]]を切るのはカガシだけ。LuckyJは9,800点を和了し、2着で終局した。",
+        "read": "[[9p]]の対子を除けば手はすべて中張牌で、赤五とドラですでに3翻ある。親の現物である[[9p]]を1枚切れば中の牌はすべて残り、[[5m]][[6m]][[6m]][[7m]]は両面2つになる。受け入れは2シャンテンで43枚、ニシキの1シャンテンは11枚。もう1枚の[[9p]]も次の巡の現物として残る。4つのエンジンのうち[[9p]]を切るのはカガシだけ。LuckyJは9,800点を和了し、2着で終局した。",
         "whyNot": "ニシキの打牌は余った[[6m]]で、[[5m]][[6m]][[7m]]が完成して1シャンテンに進む。[[9p]]は2枚とも手に残る。残り32枚のオーラスなら、今の1シャンテンは広い2シャンテンより速い。Mortalは99%で[[6m]]、ヒバカリも同じ。"
       }
     }
@@ -62120,7 +62120,7 @@
       "actual_eval": {
         "discard": "C",
         "shanten": 3,
-        "ukeire": 18,
+        "ukeire": 19,
         "effective": [
           "6m",
           "9m",
@@ -62253,7 +62253,7 @@
       "naga_eval": {
         "discard": "5m",
         "shanten": 3,
-        "ukeire": 18,
+        "ukeire": 19,
         "effective": [
           "6m",
           "9m",
@@ -62471,13 +62471,13 @@
         ]
       },
       "guide": {
-        "prompt": "Dealer, 700 ahead of Kamicha, who has an early chi. Your lone honors are the dora [[W]] and a [[C]] nobody has discarded. [[C]] or [[5m]]? Both leave 18 tiles.",
-        "read": "The [[W]] is dora, and Kamicha has discarded one, so it is also genbutsu against the only player with a call; both lines keep it. The [[C]] has no copy in sight and no partner in hand: it becomes value only if one of the 3 unseen copies arrives. With the shape unchanged at 18 tiles, LuckyJ releases it on its fourth discard, while NAGA's danger proxy reads it lower than the [[5m]] and Kamicha has made only one call. Mortal (52%) and Hibakari agree. Kamicha won the hand from another player.",
+        "prompt": "Dealer, 700 ahead of Kamicha, who has an early chi. Your lone honors are the dora [[W]] and a [[C]] nobody has discarded. [[C]] or [[5m]]? Both leave 19 tiles.",
+        "read": "The [[W]] is dora, and Kamicha has discarded one, so it is also genbutsu against the only player with a call; both lines keep it. The [[C]] has no copy in sight and no partner in hand: it becomes value only if one of the 3 unseen copies arrives. With the shape unchanged at 19 tiles, LuckyJ releases it on its fourth discard, while NAGA's danger proxy reads it lower than the [[5m]] and Kamicha has made only one call. Mortal (52%) and Hibakari agree. Kamicha won the hand from another player.",
         "whyNot": "Nishiki cuts the [[5m]], a middle tile that adds nothing to acceptance here, and holds the [[C]] a while longer in case it pairs. If Kamicha's chi is headed for all simples, a dragon is a tile that hand cannot use. Nishiki (92%) and Kagashi (96%) both lean hard toward the [[5m]]."
       },
       "guide_ja": {
-        "prompt": "あなたは親で、早い段階でチーした上家に700点差のトップ。浮いた字牌はドラの[[W]]と、誰も切っていない[[C]]。[[C]]か[[5m]]か。受け入れはどちらも18枚。",
-        "read": "[[W]]はドラで、上家が1枚切っているので、唯一鳴いている上家への現物でもある。どちらの線でも手に残る。[[C]]は場に1枚も見えず、手の中に相方もいない。打点になるのは、見えていない3枚のうち1枚を引いたときだけである。形は18枚で変わらないため、LuckyJは4打目で[[C]]を手放した。NAGAの危険度指標は[[5m]]より低く、上家の鳴きもまだ1つ。Mortal(52%)とヒバカリも同じ打牌。上家はこの局を他家から和了した。",
+        "prompt": "あなたは親で、早い段階でチーした上家に700点差のトップ。浮いた字牌はドラの[[W]]と、誰も切っていない[[C]]。[[C]]か[[5m]]か。受け入れはどちらも19枚。",
+        "read": "[[W]]はドラで、上家が1枚切っているので、唯一鳴いている上家への現物でもある。どちらの線でも手に残る。[[C]]は場に1枚も見えず、手の中に相方もいない。打点になるのは、見えていない3枚のうち1枚を引いたときだけである。形は19枚で変わらないため、LuckyJは4打目で[[C]]を手放した。NAGAの危険度指標は[[5m]]より低く、上家の鳴きもまだ1つ。Mortal(52%)とヒバカリも同じ打牌。上家はこの局を他家から和了した。",
         "whyNot": "ニシキは[[5m]]を切る。ここでは受け入れに何も足さない中張牌で、[[C]]は対子になる可能性に賭けてもう少し持つ。上家のチーがタンヤオに向かっているなら、三元牌はその手には使えない。ニシキ(92%)とカガシ(96%)はそろって[[5m]]に大きく傾く。"
       }
     },

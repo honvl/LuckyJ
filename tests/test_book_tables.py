@@ -1,4 +1,5 @@
-"""The book's example tables show each pond as it stood: a tile another player called keeps its place, marked."""
+"""The book's example tables show each pond as it stood: a tile another player called keeps its place, marked,
+and counts once."""
 
 import json
 import sys
@@ -38,6 +39,24 @@ class PondTests(unittest.TestCase):
         self.assertEqual(points.ponds_before(self.KYOKU, 2), ([["5m"], [], [], []], [[], [], [], []]))
 
 
+class VisibleCounterTests(unittest.TestCase):
+    TABLE = points.table_before(PondTests.KYOKU, len(PondTests.KYOKU))
+
+    def test_called_tile_counts_once(self):
+        # The 5m and the 1s each sit in a pond and in the meld that called them.
+        seen = points.visible_counter(self.TABLE["discards"], self.TABLE["melds"], [])
+        self.assertEqual((seen[points.tile_id("5m")], seen[points.tile_id("1s")]), (1, 3))
+        players = [{"discards": d, "melds": m} for d, m in zip(self.TABLE["discards"], self.TABLE["melds"])]
+        unseen = points.case_unseen_counts({"hand": "", "table": {"players": players, "dora_markers": []}})
+        self.assertEqual((unseen["5m"], unseen["1s"]), (3, 1))
+
+    def test_a_wait_on_a_called_tile_keeps_three_copies(self):
+        # A kanchan on 5m after the chi of it: three copies are left to draw, not two.
+        seen = points.visible_counter(self.TABLE["discards"], self.TABLE["melds"], [])
+        line = points.ukeire_after_discard("1m 2m 3m 4m 6m 7m 8m 9m 1p 2p 3p E E N".split(), "N", seen)
+        self.assertEqual((line["shanten"], line["effective"], line["ukeire"]), (0, ["5m"], 3))
+
+
 class ExampleTableTests(unittest.TestCase):
     def test_called_pond_tiles_match_the_calls(self):
         # Every tile called out of a pond is marked in that pond, and nothing else. A meld's called_from
@@ -55,6 +74,21 @@ class ExampleTableTests(unittest.TestCase):
                     with self.subTest(point=point, game=case["game"], seat=player["seat"]):
                         marked = [player["discards"][i] for i in player["called_discard_indexes"]]
                         self.assertEqual(sorted(marked), sorted(taken[player["seat"]]))
+
+    def test_line_evals_count_a_called_tile_once(self):
+        # Recounted from the table as shown, both lines' ukeire match the stored ones.
+        for point, rows in EXAMPLES.items():
+            for case in rows:
+                if not points.is_discard_case(case):
+                    continue
+                players = case["table"]["players"]
+                seen = points.visible_counter(
+                    [p["discards"] for p in players], [p["melds"] for p in players], case["table"]["dora_markers"]
+                )
+                for key, tile in (("actual_eval", case["actual"]), ("naga_eval", case["naga"])):
+                    with self.subTest(point=point, game=case["game"], line=key):
+                        line = points.ukeire_after_discard(case["hand"].split(), tile, seen)
+                        self.assertEqual((line["ukeire"], line["effective"]), (case[key]["ukeire"], case[key]["effective"]))
 
     def test_a_call_decision_leaves_its_tile_in_the_pond(self):
         # The table stands before the call: the tile ends its pond, unmarked and in no meld yet.
