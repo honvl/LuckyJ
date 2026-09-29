@@ -125,12 +125,19 @@ function fontStylesheetApplied() {
   });
 }
 
+// The page scrolls instantly until it has settled: the settle's own scroll ends the browser's
+// returns to the anchor, and only then does styles.css let in-page links glide.
 function settleHashScroll(ready) {
   Promise.resolve(ready)
     .catch(() => {})
     .then(fontStylesheetApplied)
     .then(() => document.fonts?.ready)
-    .then(() => requestAnimationFrame(returnToHashTarget));
+    .then(() =>
+      requestAnimationFrame(() => {
+        returnToHashTarget();
+        document.documentElement.classList.add("anchor-settled");
+      }),
+    );
 }
 
 function normalizePointKey(value) {

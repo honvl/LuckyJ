@@ -156,6 +156,14 @@ class LinkTests(unittest.TestCase):
                 with self.subTest(page=name, href=href):
                     self.assertIn(anchor, page(target_page).ids)
 
+    def test_links_glide_only_after_the_page_settles_on_its_anchor(self):
+        # A glide while the page loads crosses most of the book and is cut short by the settle,
+        # which left the screen blank until the reader scrolled.
+        css = (SITE / "styles.css").read_text(encoding="utf-8")
+        smooth = re.findall(r"([^{}]*)\{[^{}]*scroll-behavior:\s*smooth", css)
+        self.assertEqual([s.strip() for s in smooth], ["html.anchor-settled"])
+        self.assertIn('classList.add("anchor-settled")', (SITE / "app.js").read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()

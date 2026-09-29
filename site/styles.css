@@ -83,15 +83,18 @@ html:lang(ja) {
 }
 
 html {
-  scroll-behavior: smooth;
   /* Anchors land just under the running head, which stays on screen. */
   scroll-padding-top: calc(var(--head-h) + 20px);
   -webkit-text-size-adjust: 100%;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+/* In-page links glide only once app.js has settled the page on its anchor. While the page loads,
+   the browser goes back to a link's anchor after every change in layout; gliding there crosses most
+   of the book, the settle cuts the glide short, and Chromium can then leave the screen blank until
+   the reader scrolls. */
+@media (prefers-reduced-motion: no-preference) {
+  html.anchor-settled {
+    scroll-behavior: smooth;
   }
 }
 
