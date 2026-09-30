@@ -55,3 +55,13 @@ tenpais that already had a yaku were declared where Mortal kept dama: 260930-ce1
 (3 han dama, riichi 5%) and 260930-f5119e21 South 2-0 turn 11 (5 han dama, riichi 2%); both paid (+500 and
 +12,000). 260930-f5119e21 East 4-0 (5 han) stayed dama with Mortal (riichi 4%), and 260930-22b377c9 South 4-0
 (2 han) stayed dama where Mortal was even (50%).
+
+## Added for chapter 23
+
+Declare rates by turn band, first decision of each hand, callers only (turn 10–12 / 13+): LuckyJ 280 of 402
+(70%) and 131 of 241 (54%); the user before these games 33 of 47 (70%) and 7 of 22 (32%); the 12 new games
+5 of 6 and 1 of 2.
+
+Chasing a riichi with a closed tenpai (`mine_tenpai_push.py` rows, closed pushes, han counted with the
+riichi): LuckyJ by its 9th turn declared 76% of 98 pushes at 3 han or less and 43% of 61 at 4 han or more;
+from its 10th turn 54% of 130 and 31% of 144. The 260930-e1e10294 East 4-1 chase was a 4-han push at turn 7.

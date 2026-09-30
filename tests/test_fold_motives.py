@@ -241,9 +241,10 @@ class PageTests(unittest.TestCase):
             page = path.read_text(encoding="utf-8")
             with self.subTest(page=path.name):
                 self.assertIn("Chapter twenty-two" if lang == "en" else "第22章", PAGES[lang])
-                latest = page[page.index('<li class="is-latest">'):]
-                latest = latest[: latest.index("</li>")]
-                self.assertIn('href="#own-hand"', latest)
+                # the chapter's notice stays in What's new once a later chapter takes the latest place
+                news = page[page.index('<aside class="guide-news" id="whats-new"'):]
+                news = news[: news.index("</aside>")]
+                self.assertIn('<p><a href="#own-hand">', news)
                 self.assertIn('href="#own-hand"><span class="contents-num">22</span>', page)
                 self.assertIn("honver.css?v=20260929-fold-motives", page)
 
