@@ -20,17 +20,32 @@ Inputs: `scripts/contrast/tenpai.py` on the user's 140 games and on LuckyJ's 1,0
 | Mortal's riichi weight on the same turns | | 72.0% | 87.0% | |
 
 First tenpais worth 3 han or more on every winning tile, nobody in riichi: before, 25 of 53 declared against
-27.3 expected from LuckyJ's rates; since 29 September, 5 of 7 against 3.1 (Mortal 1.9). The five newest
+27.0 expected from LuckyJ's rates; since 29 September, 5 of 7 against 2.9 (Mortal 1.9). The five newest
 games' 14 riichis won 4, dealt in 3 (two of them riichis Mortal makes at 99%+) and lost the stick 7 times.
 
 ## LuckyJ's riichi share (first closed tenpai, nobody in riichi, value on every winning tile)
 
-No yaku 85% (780); yaku on only some winning tiles 91% (139); 1-2 han 83% (727); 3 han two-sided 84% (185),
-other waits 26% (109); 4 han two-sided 56% (71), other 27% (93); 5+ han two-sided 27% (30), other 12% (43).
+No yaku 85% (780); yaku on only some winning tiles 91% (139); 1-2 han 83% (727); other waits: 3 han 26% (109),
+4 han 27% (93), 5+ han 12% (43).
 
-By turn, two-sided (`fit_series`; series under 100 hands fitted as a straight logit line): 3 han stays at 80%
-or more through turn 12 and crosses half near 15; 4 han is 86% at turn 4, crosses half at 10.65, 41% at 12;
-5+ han is 75% at turn 6, crosses half at 8.11, 18% at 11.
+Correction the same day, after the user said to tell pinfu 4 han from other 4 han: a closed ron scores 30 fu
+with pinfu and 40 or more without it (seven pairs, 25 fu, aside), so two-sided hands are now sorted by the points
+of their cheapest ron (`dama_han`/`dama_fu` from `contrast/tenpai.py`):
+
+| two-sided, cheapest ron pays | hands | declared |
+|---|---|---|
+| 3,900 (3 han pinfu) | 160 | 88% |
+| 5,200 or 6,400 (3 han, 40-50 fu) | 25 | 56% |
+| 7,700 (4 han pinfu) | 60 | 58%, by turn below |
+| a mangan or more (5 han, or 4 han at 40+ fu) | 41 | 32%, by turn below |
+
+Of the 71 two-sided 4-han hands, 60 are pinfu and 11 at 40 fu. On other waits, 57 of the 93 four-han hands are
+seven pairs at 25 fu (6,400), so those rows stay counted by han.
+
+By turn (`fit_series`; series under 100 hands fitted as a straight logit line): 3,900 stays at 80% or more
+through turn 13 and crosses half at 15.4; 7,700 is 86% at turn 4, crosses half at 10.75, 42% at 12; a mangan is
+79% at turn 6, crosses half at 8.59, 23% at 11. The first version, by han alone, had 4 han crossing at 10.65 and
+5+ han at 8.11. The chart now runs to turn 18.
 
 ## The riichi's boost at turn 11 (two-sided, non-dealer, six live tiles)
 
@@ -43,7 +58,8 @@ two-sided tenpais worth 4+ han kept dama, with the turn as a spline and live til
 | tsumo | 16.3% | 20.9% |
 | hand not won, average | -2,177 | -2,632 |
 | 5 han, all told | 4,832 | 5,018 (+186; 95% -958 to +1,562) |
-| 4 han at 30 fu, all told | 4,041 | 4,002 (-40; 95% -1,097 to +1,197) |
+| 4 han at 40 fu, all told | 4,180 | 4,002 (-178; 95% -1,244 to +1,072) |
+| 4 han pinfu, all told | 4,041 | 4,002 (-40; 95% -1,097 to +1,197) |
 
 Win values use the non-dealer table, with the ura dora and ippatsu spread of 4,126 riichi wins (rons: no extra
 han 55.9%, one 31.8%, two 8.9%, three or more 3.4%). With 3-han dama hands in the comparison the riichi leads

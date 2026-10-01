@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Draw the personal guide's chapter 24 chart from ``analysis/dama-value-2026-10-01.json``.
 
-One chart: how often LuckyJ declared a two-sided first tenpai worth 3, 4, and 5 or more han without
-riichi, by its own turn. One dot per turn, sized by its hands, under each value's fitted curve and its 95%
+One chart: how often LuckyJ declared a two-sided first tenpai whose cheapest ron pays 3,900 (3 han pinfu),
+7,700 (4 han pinfu), or a mangan or more, by its own turn, out to the 18th, the last a player draws. One dot per turn, sized by its hands, under each value's fitted curve and its 95%
 band. It is static SVG in the book's safe-tile timing style (app.js adds the crosshair and the tooltip from
 each hit column's data-tip), with a folded table of the fitted shares, written into ``site/honver.html``
 and, with Japanese labels, ``site/honver-ja.html`` between the ``dama-value-figure`` markers. ``--check``
@@ -24,7 +24,7 @@ PAGES = {"en": ROOT / "site" / "honver.html", "ja": ROOT / "site" / "honver-ja.h
 START = "<!-- dama-value-figure -->"
 END = "<!-- /dama-value-figure -->"
 SERIES = ("3", "4", "5")  # drawn in this order, the made mangan on top
-X_MIN, X_MAX = 3, 16
+X_MIN, X_MAX = 3, 18
 W, H = 470, 280
 M = {"l": 40, "r": 16, "t": 14, "b": 50}
 PW, PH = W - M["l"] - M["r"], H - M["t"] - M["b"]
@@ -34,8 +34,9 @@ TEXT = {
     "en": {
         "title": "How often LuckyJ declares a big two-sided tenpai",
         "sub": "Its first closed tenpais with a two-sided wait and a yaku on every winning tile, with nobody in riichi, "
-               "by its own turn. Each dot is one turn, sized by its hands; the lines are fitted curves.",
-        "series": {"3": "3 han", "4": "4 han", "5": "5 han or more"},
+               "by what the cheapest ron pays without riichi and by its own turn. Each dot is one turn, sized by its "
+               "hands; the lines are fitted curves.",
+        "series": {"3": "3,900: 3 han pinfu", "4": "7,700: 4 han pinfu", "5": "A mangan or more"},
         "legend_band": "95% range of each fit",
         "axis": "LuckyJ&#8217;s turn when it reached tenpai",
         "tip_head": "Turn {x}",
@@ -43,19 +44,20 @@ TEXT = {
         "aria": "{title}. Fitted share of riichi on turns 6, 9 and 12: {rows}.",
         "aria_row": "{name} {a}, {b} and {c}",
         "aria_join": "; ",
-        "caption": "LuckyJ&#8217;s 1,079 Tokujou games: {n3} such tenpais worth 3 han, {n4} worth 4 and {n5} worth 5 or "
-                   "more. A hand&#8217;s han are what a ron pays without riichi on every one of its winning tiles, dora and "
-                   "red fives included. Each curve is fitted between the 5th and 95th percentiles of its turns; with fewer "
-                   "than 100 hands, as for 4 han and for 5 or more, the fit is a straight line on the logit scale.",
+        "caption": "LuckyJ&#8217;s 1,079 Tokujou games: {n3} such tenpais whose ron pays 3,900, {n4} paying 7,700 and {n5} "
+                   "paying a mangan or more, that is 5 han, or 4 han at 40 fu or more. Each hand counts at its cheapest "
+                   "winning tile, without riichi, dora and red fives included, at non-dealer prices. Each curve is fitted "
+                   "between the 5th and 95th percentiles of its turns; with fewer than 100 hands, as for 7,700 and for a "
+                   "mangan, the fit is a straight line on the logit scale.",
         "table_summary": "The fitted shares in a table",
         "table_turn": "Turn",
         "pct": "{v}%",
     },
     "ja": {
         "title": "LuckyJが大きな両面テンパイでリーチする割合",
-        "sub": "誰もリーチしていない場面で、両面待ちかつ、どの和了牌にも役がある最初の門前テンパイを、LuckyJ自身の巡目で分けた。"
-               "点は巡目ごとで、手の数に合わせた大きさ。線は当てはめ曲線。",
-        "series": {"3": "3翻", "4": "4翻", "5": "5翻以上"},
+        "sub": "誰もリーチしていない場面で、両面待ちかつ、どの和了牌にも役がある最初の門前テンパイを、リーチなしで最も安いロンの点数と"
+               "LuckyJ自身の巡目で分けた。点は巡目ごとで、手の数に合わせた大きさ。線は当てはめ曲線。",
+        "series": {"3": "3,900点：3翻平和", "4": "7,700点：4翻平和", "5": "満貫以上"},
         "legend_band": "各当てはめの95%範囲",
         "axis": "テンパイしたときのLuckyJの巡目",
         "tip_head": "{x}巡目",
@@ -63,9 +65,9 @@ TEXT = {
         "aria": "{title}。6巡目、9巡目、12巡目での当てはめ：{rows}。",
         "aria_row": "{name}は{a}、{b}、{c}",
         "aria_join": "。",
-        "caption": "LuckyJの特上卓1,079半荘。3翻のテンパイが{n3}回、4翻が{n4}回、5翻以上が{n5}回。翻は、リーチなしでどの和了牌で"
-                   "ロンしても付く翻で、ドラと赤5を含む。各曲線は、その巡目の5パーセンタイルから95パーセンタイルの範囲で当てはめた。"
-                   "手が100回に満たない4翻と5翻以上は、ロジット上の直線で当てはめた。",
+        "caption": "LuckyJの特上卓1,079半荘。ロンで3,900点のテンパイが{n3}回、7,700点が{n4}回、満貫以上（5翻か、40符以上の4翻）が"
+                   "{n5}回。どの手も、リーチなしで最も安い和了牌で数え、ドラと赤5を含み、子の点数で見た。各曲線は、その巡目の"
+                   "5パーセンタイルから95パーセンタイルの範囲で当てはめた。手が100回に満たない7,700点と満貫以上は、ロジット上の直線で当てはめた。",
         "table_summary": "当てはめた割合の表",
         "table_turn": "巡目",
         "pct": "{v}%",

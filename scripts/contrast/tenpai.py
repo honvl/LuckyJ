@@ -86,11 +86,13 @@ def work(g):
                 waits = tr.waits(rest, e['meld_tiles'], True)
                 live = sum(max(0, 4 - vis[base(w)]) for w in waits)
                 fur = any(base(w) in river or base(w) == b for w in waits)
-                dama = [ron_value(rest, my_melds, w, s, kyoku, dset, riichi=False) or 0 for w in waits]
+                dama_hf = [ron_value(rest, my_melds, w, s, kyoku, dset, riichi=False, fu=True) or (0, 0) for w in waits]
+                dama = [h for h, _ in dama_hf]
                 rich = [ron_value(rest, my_melds, w, s, kyoku, dset, riichi=True) or 0 for w in waits]
                 out_opts.append({'b': b, 'live': live, 'kinds': len({base(w) for w in waits}), 'fur': fur,
                                  'dama_max': max(dama) if dama else 0, 'dama_min': min(dama) if dama else 0,
                                  'riichi_max': max(rich) if rich else 0, 'shape': wait_shape(rest, waits),
+                                 'dama_han': dama, 'dama_fu': [f for _, f in dama_hf],
                                  'waits': sorted({base(w) for w in waits})})
             cb = base(e['tile'])
             rseats = [q for q in range(4) if q != s and e['riichi_seats'][q] is not None and e['riichi_seats'][q] < i]

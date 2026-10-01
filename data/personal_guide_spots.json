@@ -1325,15 +1325,21 @@
     }
    ],
    "title": "A made mangan, declared at your 11th turn",
+   "corrected": {
+    "date": "1 October",
+    "fields": [
+     "luckyj"
+    ]
+   },
    "situation": "East 2, three honba, turn 11. You are third at 17,800; kamicha, the dealer, leads at 46,300. You draw the red [[5pr]] into tenpai: cut [[7p]] and you wait on [[5s]]-[[8s]] with 7 tiles live. Without riichi the hand is tanyao, pinfu and iipeikou with the [[6s]] dora and the red five, 5 han on either tile: a mangan. Nobody has called or declared.",
    "did": "You declared with [[7p]]. Before your next draw the dealer threw [[5m]] into shimocha's 2,000, and your stick went with it.",
-   "luckyj": "LuckyJ's fitted share of riichi on a two-sided made mangan is 75% at its 6th turn and 18% at its 11th. Mortal put 94% on the same [[7p]] without the riichi, and 5.5% on the riichi.",
+   "luckyj": "LuckyJ's fitted share of riichi on a two-sided hand that already pays a mangan is 79% at its 6th turn and 23% at its 11th. Mortal put 94% on the same [[7p]] without the riichi, and 5.5% on the riichi.",
    "fix": "Dama. This late, a riichi on a two-sided wait wins by ron 28% of the time against dama's 46%, so the haneman it makes of a ron comes with fewer rons, and a tsumo was a haneman already. Keep a made mangan dama from your 9th turn.",
    "ja": {
     "title": "11巡目、できている満貫でリーチ",
     "situation": "東2局3本場、11巡目。17,800点で3位、親の上家が46,300点でトップ。赤[[5pr]]を引いてテンパイ。[[7p]]を切れば[[5s]]-[[8s]]待ちで、残り7枚。リーチなしでタンヤオ、平和、一盃口にドラの[[6s]]と赤5が付き、どちらの牌でも5翻の満貫。鳴きもリーチもまだない。",
     "did": "[[7p]]でリーチした。次のツモの前に親が[[5m]]で下家に2,000点を放銃し、リーチ棒もそちらに渡った。",
-    "luckyj": "両面待ちのできている満貫でLuckyJがリーチする割合は、当てはめた曲線で6巡目75%、11巡目18%。Mortalは同じ[[7p]]をリーチなしで94%、リーチは5.5%だった。",
+    "luckyj": "両面待ちですでに満貫ある手でLuckyJがリーチする割合は、当てはめた曲線で6巡目79%、11巡目23%。Mortalは同じ[[7p]]をリーチなしで94%、リーチは5.5%だった。",
     "fix": "ダマ。この巡目では、両面待ちでリーチするとロンでアガれるのは28%で、ダマなら46%ある。リーチでロンが跳満になっても、そのロン自体が減る。ツモならリーチなしでも跳満である。できている満貫は9巡目からダマにする。"
    }
   },
@@ -1350,16 +1356,22 @@
     }
    ],
    "title": "The haneman a riichi made",
+   "corrected": {
+    "date": "1 October",
+    "fields": [
+     "luckyj"
+    ]
+   },
    "verdict": "close",
    "situation": "South 2, turn 11. You lead at 55,400, 28,800 ahead of kamicha. Shimocha, the dealer, is last at 1,600; both have one call. You draw [[6s]] into tenpai: cut [[8p]] and you wait on [[3s]]-[[6s]] with 5 tiles live. Without riichi, [[3s]] pays 4 han, pinfu with two [[4s]] dora and the red [[5mr]], 7,700; [[6s]] adds iipeikou for a mangan.",
    "did": "You declared with [[8p]]. A go-around later shimocha drew [[6s]] and threw it, and the riichi made the mangan a haneman, 12,000.",
-   "luckyj": "On a two-sided 4-han tenpai at its 11th turn, LuckyJ's fitted share of riichi is 48%, a coin flip. Mortal put 98% on the same [[8p]] without the riichi.",
+   "luckyj": "On a two-sided 4-han pinfu, 7,700 by ron, at its 11th turn, LuckyJ's fitted share of riichi is 48%, a coin flip. Mortal put 98% on the same [[8p]] without the riichi.",
    "fix": "Close. The riichi paid 4,000 more this time. At this turn the boost about pays for its cost over many hands, so LuckyJ is split; Mortal, with a big lead in the South, keeps dama, which wins the hand more often.",
    "ja": {
     "title": "リーチで跳満になった手",
     "situation": "南2局、11巡目。55,400点でトップ、2位の上家と28,800点差。親の下家は1,600点で4位。2人とも1副露。[[6s]]を引いてテンパイ。[[8p]]を切れば[[3s]]-[[6s]]待ちで、残り5枚。リーチなしで[[3s]]なら平和にドラの[[4s]]2枚と赤[[5mr]]で4翻7,700点、[[6s]]なら一盃口が付いて満貫。",
     "did": "[[8p]]でリーチした。1巡後、下家が[[6s]]をツモ切りし、リーチで満貫が跳満12,000点になった。",
-    "luckyj": "両面待ちの4翻テンパイが11巡目なら、LuckyJのリーチは当てはめた曲線で48%、五分五分である。Mortalは同じ[[8p]]をリーチなしで98%だった。",
+    "luckyj": "両面待ちの4翻平和、ロンで7,700点の手が11巡目なら、LuckyJのリーチは当てはめた曲線で48%、五分五分である。Mortalは同じ[[8p]]をリーチなしで98%だった。",
     "fix": "際どい判断。今回はリーチで4,000点多く取れた。この巡目では、多くの手を通せばリーチの上乗せとその代償はほぼ釣り合うので、LuckyJも分かれる。南場で大きくリードしているMortalは、アガる回数の多いダマを取る。"
    }
   },

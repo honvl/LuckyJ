@@ -5,15 +5,20 @@ Every figure comes from first closed tenpais: the first turn of a hand where a c
 tenpai and did, with riichi legal (four or more tiles left in the wall, 1,000 points to put down) and a
 wait that is not furiten. A hand's value is the han a ron pays without riichi on EVERY winning tile, dora
 and red fives included (``dama_min`` in ``scripts/contrast/tenpai.py``); a hand whose yaku covers only some
-of its winning tiles is counted apart. A two-sided wait is a ryanmen or a wait on three or more kinds.
+of its winning tiles is counted apart. A two-sided wait is a ryanmen or a wait on three or more kinds. A
+two-sided hand of 3 han or more is also sorted by the points its cheapest ron pays as a non-dealer
+(``dama_han`` and ``dama_fu``): 3,900 is 3 han pinfu, 5,200 or 6,400 is 3 han at 40 or 50 fu, 7,700 is 4 han
+pinfu, and 8,000 or more is a mangan already (5 han, or 4 han at 40 fu or more).
 
 - ``cells``: how often LuckyJ declared, with nobody in riichi, by value and wait.
-- ``curves``: LuckyJ's riichi share for two-sided tenpais worth 3, 4 and 5+ han, one point per turn of
-  its own and a fitted curve (``fit_series``), with the turn where the fit crosses one half.
+- ``curves``: LuckyJ's riichi share for two-sided tenpais whose ron pays 3,900, 7,700, and a mangan or
+  more, one point per turn of its own and a fitted curve (``fit_series``), with the turn where the fit
+  crosses one half.
 - ``you``: the same decisions in your games, split at 29 September 16:00 (``RECENT_FROM``), with what
   LuckyJ's rates and Mortal's weights (``site/replays``) expect from the same hands; your riichis per 100
   hands; and what became of the riichis in the five newest games.
-- ``trade``: what a riichi does to a two-sided 4 or 5 han hand at one turn. Win rates by ron and by tsumo
+- ``trade``: what a riichi does to a two-sided 5-han hand, a 4-han hand at 40 fu and a pinfu 4-han hand at
+  one turn. Win rates by ron and by tsumo
   and the average result of a hand that does not win are fitted over all four seats of LuckyJ's games
   (riichi: every declared tenpai with a yaku; dama: tenpais worth 4 han or more kept dama), with the turn
   as a natural spline, the live tiles and the dealer as terms, and read at a non-dealer with six live
@@ -75,6 +80,22 @@ EXAMPLES = [
 
 # --- first closed tenpais ------------------------------------------------------------------------------
 
+def ron_points(han: int, fu: int) -> int:
+    """A non-dealer ron: the limits from 5 han, a mangan from 4 han at 40 fu or 3 han at 70."""
+    if han >= 13:
+        return 32000
+    if han >= 11:
+        return 24000
+    if han >= 8:
+        return 16000
+    if han >= 6:
+        return 12000
+    if han <= 0:
+        return 0
+    base = fu * 2 ** (han + 2)
+    return 8000 if han >= 5 or base >= 2000 else int(math.ceil(base * 4 / 100) * 100)
+
+
 def first_tenpais(path: str, hero_only: bool = True) -> list[dict]:
     out = []
     with open(path) as f:
@@ -90,7 +111,7 @@ def first_tenpais(path: str, hero_only: bool = True) -> list[dict]:
             out.append({"g": r["g"], "li": r["li"], "t": r["t"], "dl": r["dl"], "nr": r["nr"], "no": r["no"],
                         "riichi": bool(r["riichi"]), "v": opt["dama_min"], "vmax": opt["dama_max"], "live": opt["live"],
                         "two": opt["shape"] in TWO_SIDED, "won": r["won"], "tsumo": r["tsumo"], "dealt": r["dealt"],
-                        "net": r["net"]})
+                        "net": r["net"], "points": min(ron_points(h, f) for h, f in zip(opt["dama_han"], opt["dama_fu"]))})
     return out
 
 
@@ -99,12 +120,18 @@ def cell(r: dict) -> str:
         return "some waits" if r["vmax"] > 0 else "no yaku"
     if r["v"] <= 2:
         return "1-2"
-    level = "5+" if r["v"] >= 5 else str(r["v"])
-    return f"{level} {'two-sided' if r['two'] else 'other'}"
+    if not r["two"]:
+        return f"{'5+' if r['v'] >= 5 else r['v']} other"
+    if r["points"] >= 8000:
+        return "two-sided mangan"
+    if r["points"] >= 7700:
+        return "two-sided 7,700"
+    return "two-sided 3,900" if r["points"] < 5200 else "two-sided 5,200"
 
 
-CELLS = ["no yaku", "some waits", "1-2", "3 two-sided", "3 other", "4 two-sided", "4 other", "5+ two-sided", "5+ other"]
-CURVE_CELLS = {"3": "3 two-sided", "4": "4 two-sided", "5": "5+ two-sided"}
+CELLS = ["no yaku", "some waits", "1-2", "two-sided 3,900", "two-sided 5,200", "two-sided 7,700", "two-sided mangan",
+         "3 other", "4 other", "5+ other"]
+CURVE_CELLS = {"3": "two-sided 3,900", "4": "two-sided 7,700", "5": "two-sided mangan"}
 
 
 def rate(rows: list[dict]) -> dict:
@@ -184,10 +211,13 @@ def pts(han: int, tsumo: bool) -> int:
     return {(4, False): 7700, (4, True): 7900, (3, False): 3900, (3, True): 4000}[(han, tsumo)]
 
 
-def win_values(han: int, extra: dict) -> dict:
-    """A ron and a tsumo, dama and riichi; menzen tsumo adds a han either way, a riichi win its ura and ippatsu."""
+def win_values(han: int, extra: dict, mangan_ron: bool = False) -> dict:
+    """A ron and a tsumo, dama and riichi; menzen tsumo adds a han either way, a riichi win its ura and ippatsu.
+
+    With ``mangan_ron`` the hand is 4 han at 40 fu: its dama ron is a mangan already.
+    """
     return {
-        "dama_ron": pts(han, False),
+        "dama_ron": 8000 if mangan_ron else pts(han, False),
         "dama_tsumo": pts(han + 1, True),
         "riichi_ron": round(sum(p * pts(han + 1 + x, False) for x, p in enumerate(extra["ron"]))),
         "riichi_tsumo": round(sum(p * pts(han + 2 + x, True) for x, p in enumerate(extra["tsumo"]))),
@@ -275,21 +305,20 @@ def trade(rows: list[dict], extra: dict, dama_from: int) -> dict:
         by_game[r["g"]].append(r)
     games = sorted(by_game)
     rng = np.random.default_rng(SEED)
-    boots = {4: [], 5: []}
+    hands = {"5": win_values(5, extra), "4 at 40 fu": win_values(4, extra, mangan_ron=True), "4 pinfu": win_values(4, extra)}
+    boots = {key: [] for key in hands}
     for _ in range(BOOT):
         pick = rng.integers(0, len(games), len(games))
         sample = [r for i in pick for r in by_game[games[i]]]
         br = Group([r for r in sample if r["riichi"]], dict(gr.dfs)).at(TRADE_TURN)
         bd = Group([r for r in sample if not r["riichi"] and r["v"] >= dama_from], dict(gd.dfs)).at(TRADE_TURN)
-        for han in (4, 5):
-            values = win_values(han, extra)
-            boots[han].append(expected(br, values, "riichi") - expected(bd, values, "dama"))
-    for han in (4, 5):
-        values = win_values(han, extra)
+        for key, values in hands.items():
+            boots[key].append(expected(br, values, "riichi") - expected(bd, values, "dama"))
+    for key, values in hands.items():
         er, ed = expected(rr, values, "riichi"), expected(rd, values, "dama")
-        lo, hi = np.percentile(boots[han], [2.5, 97.5])
-        out["hands"][str(han)] = {"values": values, "riichi": round(er), "dama": round(ed), "difference": round(er - ed),
-                                  "band": [round(float(lo)), round(float(hi))]}
+        lo, hi = np.percentile(boots[key], [2.5, 97.5])
+        out["hands"][key] = {"values": values, "riichi": round(er), "dama": round(ed), "difference": round(er - ed),
+                             "band": [round(float(lo)), round(float(hi))]}
     return out
 
 

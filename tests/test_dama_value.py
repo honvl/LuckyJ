@@ -53,6 +53,9 @@ class ChartTests(unittest.TestCase):
             with self.subTest(lang=lang):
                 self.assertEqual(page[start:end], figure.render(DATA, lang))
 
+    def test_the_axis_runs_to_the_last_draws(self):
+        self.assertEqual(figure.X_MAX, 18)
+
     def test_thin_series_are_straight_lines(self):
         for key, curve in DATA["curves"].items():
             with self.subTest(key=key):
@@ -87,25 +90,32 @@ class ProseTests(unittest.TestCase):
 
     def test_luckyj_by_value(self):
         cells = DATA["cells"]
-        expected = {"no yaku": 85, "some waits": 91, "1-2": 83, "3 two-sided": 84, "3 other": 26, "4 other": 27, "5+ other": 12}
+        expected = {"no yaku": 85, "some waits": 91, "1-2": 83, "two-sided 3,900": 88, "two-sided 5,200": 56,
+                    "3 other": 26, "4 other": 27, "5+ other": 12}
         self.assertEqual({k: half_up(share(cells[k])) for k in expected}, expected)
+
+    def test_four_han_splits_by_fu(self):
+        # Of the 71 two-sided 4-han hands, 60 are pinfu at 7,700; the other 11 are 40 fu, a mangan by ron already,
+        # and join the 30 of 5 han or more.
+        cells = DATA["cells"]
+        self.assertEqual((cells["two-sided 7,700"]["n"], cells["two-sided mangan"]["n"]), (60, 41))
+        self.assertEqual([DATA["curves"][k]["hands"] for k in ("3", "4", "5")], [160, 60, 41])
         self.assertEqual(DATA["luckyj_first_tenpais_quiet"], 2177)
 
     def test_where_the_curves_cross_half(self):
-        self.assertGreaterEqual(min(fitted("3", t) for t in range(5, 13)), 80)
-        self.assertEqual(half_up(fitted("3", 7)), 90)
-        self.assertEqual([half_up(fitted("4", t)) for t in (4, 12)], [86, 41])
+        self.assertGreaterEqual(min(fitted("3", t) for t in range(5, 14)), 80)
+        self.assertEqual(half_up(fitted("3", 7)), 93)
+        self.assertEqual([half_up(fitted("4", t)) for t in (4, 12)], [86, 42])
         four = [c["turn"] for c in DATA["curves"]["4"]["crossings_50"] if c["direction"] == "down"]
         self.assertTrue(len(four) == 1 and 10 < four[0] < 11, four)
-        self.assertEqual([half_up(fitted("5", t)) for t in (6, 11)], [75, 18])
+        self.assertEqual([half_up(fitted("5", t)) for t in (6, 11)], [79, 23])
         five = [c["turn"] for c in DATA["curves"]["5"]["crossings_50"] if c["direction"] == "down"]
         self.assertTrue(len(five) == 1 and 8 < five[0] < 9, five)
-        # the rule: declare through the 10th and the 7th, either way on the 8th, dama from the 11th and the 9th
+        # the rule: declare through the 10th and the 8th, dama from the 11th and the 9th
         self.assertGreater(fitted("4", 10), 50)
         self.assertLess(fitted("4", 11), 50)
-        self.assertGreater(fitted("5", 7), 50)
+        self.assertGreater(fitted("5", 8), 50)
         self.assertLess(fitted("5", 9), 50)
-        self.assertLess(abs(fitted("5", 8) - 50), 5)
 
     def test_the_trade_at_the_eleventh_turn(self):
         trade = DATA["trade"]
@@ -117,22 +127,27 @@ class ProseTests(unittest.TestCase):
         self.assertEqual(half_up(100 * (dama["ron"] + dama["tsumo"])), 62)
         self.assertEqual(half_up(100 * (riichi["ron"] + riichi["tsumo"])), 49)
         self.assertAlmostEqual(1 - riichi["ron"] / dama["ron"], 0.4, delta=0.05)  # "two in five of your rons"
-        five, four = main["hands"]["5"], main["hands"]["4"]
+        hands = main["hands"]
+        five = hands["5"]
         self.assertEqual([round(five["values"][k], -2) for k in ("riichi_ron", "riichi_tsumo")], [12500, 13900])
-        self.assertEqual([round(x, -1) for x in (five["dama"], five["riichi"], four["dama"], four["riichi"])], [4830, 5020, 4040, 4000])
-        self.assertLessEqual(max(abs(five["difference"]), abs(four["difference"])), 200)
-        self.assertTrue(-1150 <= min(five["band"][0], four["band"][0]) <= -900)
-        self.assertTrue(1400 <= max(five["band"][1], four["band"][1]) <= 1600)
+        self.assertEqual(hands["4 at 40 fu"]["values"]["dama_ron"], 8000)
+        self.assertEqual(hands["4 pinfu"]["values"]["dama_ron"], 7700)
+        told = [round(hands[k][c], -1) for k in ("5", "4 at 40 fu", "4 pinfu") for c in ("dama", "riichi")]
+        self.assertEqual(told, [4830, 5020, 4180, 4000, 4040, 4000])
+        self.assertLessEqual(max(abs(h["difference"]) for h in hands.values()), 200)
+        self.assertEqual(round(min(h["band"][0] for h in hands.values()), -2), -1200)
+        self.assertEqual(round(max(h["band"][1] for h in hands.values()), -2), 1600)
         self.assertEqual((main["riichi_hands"], main["dama_hands"]), (2289, 208))
         wider = trade["dama 3+"]["hands"]
-        self.assertLessEqual(max(wider[h]["difference"] for h in ("4", "5")), 750)
-        self.assertTrue(all(wider[h]["band"][0] < 0 < wider[h]["band"][1] for h in ("4", "5")))
+        self.assertLessEqual(max(h["difference"] for h in wider.values()), 750)
+        self.assertTrue(all(h["band"][0] < 0 < h["band"][1] for h in wider.values()))
         extra = DATA["extra_han"]
         self.assertEqual(half_up(100 * (1 - extra["ron"][0])), 44)
         self.assertEqual(extra["ron_wins"] + extra["tsumo_wins"], 4126)
         text = chapter()
-        for phrase in ("4,830", "5,020", "4,040", "4,000", "about 12,500", "about 13,900", "62% against 49%", "within 200 points",
-                       "44% of riichi rons", "two in five of your rons"):
+        for phrase in ("4,830", "5,020", "4,180", "4,040", "4,000", "about 12,500", "about 13,900", "62% against 49%",
+                       "within 200 points", "−1,200 to +1,600", "44% of riichi rons", "two in five of your rons",
+                       "56% of those against 88%", "93% of the time that early"):
             self.assertIn(phrase, text)
 
     def test_chasing_a_riichi(self):
@@ -156,7 +171,7 @@ class CardTests(unittest.TestCase):
         self.assertEqual(made["mortal_first"][0], "7p")
         self.assertEqual(half_up(100 * made["mortal_first"][1]), 94)
         self.assertEqual(made["mortal_riichi"], 0.055)
-        self.assertIn("75% at its 6th turn and 18% at its 11th", spot("made-mangan-turn-eleven")["luckyj"])
+        self.assertIn("79% at its 6th turn and 23% at its 11th", spot("made-mangan-turn-eleven")["luckyj"])
         haneman = example("South 2-0")
         self.assertEqual((haneman["mortal_first"][0], half_up(100 * haneman["mortal_first"][1])), ("8p", 98))
         self.assertEqual(half_up(fitted("4", 11)), 48)

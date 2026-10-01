@@ -28,10 +28,11 @@ SAFE = {"genbutsu", "dead", "suji", "nakasuji", "honor, 2 seen"}
 _CALC = None
 
 
-def ron_value(hand13, melds, win, seat, kyoku, dora_set, riichi=False):
+def ron_value(hand13, melds, win, seat, kyoku, dora_set, riichi=False, fu=False):
     """Han of a ron on ``win`` (indicator dora added; red fives counted by the library).
 
-    Returns 0 when the hand has no yaku, None when the calculator cannot read it.
+    Returns 0 when the hand has no yaku, None when the calculator cannot read it. With ``fu``, returns
+    ``(han, fu)`` instead, ``(0, 0)`` without a yaku.
     """
     global _CALC
     from collections import Counter
@@ -60,9 +61,9 @@ def ron_value(hand13, melds, win, seat, kyoku, dora_set, riichi=False):
     except Exception:
         return None
     if res.error:
-        return 0
+        return (0, 0) if fu else 0
     dora = sum(1 for t in list(hand13) + [win] + [t for m in melds for t in m["tiles"]] if base(t) in dora_set)
-    return res.han + dora
+    return (res.han + dora, res.fu) if fu else res.han + dora
 
 
 def to136(codes, used):

@@ -13,8 +13,8 @@
  * words and swaps in each card's Japanese text from honver-guide-ja.json.
  */
 (function () {
-  const guideAsset = "honver-guide.json?v=20261001-big-hands";
-  const guideJaAsset = "honver-guide-ja.json?v=20261001-big-hands";
+  const guideAsset = "honver-guide.json?v=20261001-big-hands-fu";
+  const guideJaAsset = "honver-guide-ja.json?v=20261001-big-hands-fu";
   const hideHandsKey = "luckyj:honver-guide:hide-hands";
   const SAFETY_CLASS = {
     genbutsu: "safe",
