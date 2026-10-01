@@ -28,24 +28,27 @@ games' 14 riichis won 4, dealt in 3 (two of them riichis Mortal makes at 99%+) a
 No yaku 85% (780); yaku on only some winning tiles 91% (139); 1-2 han 83% (727); other waits: 3 han 26% (109),
 4 han 27% (93), 5+ han 12% (43).
 
-Correction the same day, after the user said to tell pinfu 4 han from other 4 han: a closed ron scores 30 fu
-with pinfu and 40 or more without it (seven pairs, 25 fu, aside), so two-sided hands are now sorted by the points
-of their cheapest ron (`dama_han`/`dama_fu` from `contrast/tenpai.py`):
+Corrections the same day. The user first said to tell pinfu 4 han from other 4 han, and the chapter briefly put
+4 han at 40 fu (a mangan by ron) with the made mangans. The user then pointed out that a riichi tsumo lifts a 40-fu
+4-han hand just as it lifts a pinfu one. The final grouping follows what the riichi adds:
 
-| two-sided, cheapest ron pays | hands | declared |
-|---|---|---|
-| 3,900 (3 han pinfu) | 160 | 88% |
-| 5,200 or 6,400 (3 han, 40-50 fu) | 25 | 56% |
-| 7,700 (4 han pinfu) | 60 | 58%, by turn below |
-| a mangan or more (5 han, or 4 han at 40+ fu) | 41 | 32%, by turn below |
+| two-sided hand | hands | LuckyJ declared | riichi adds on a ron / a tsumo |
+|---|---|---|---|
+| 3 han pinfu (3,900 by ron) | 160 | 88% | +4,400 / +4,800 |
+| 3 han at 40-50 fu (5,200 or 6,400) | 25 | 56% | less, and its dama tsumo is a mangan already |
+| 4 han, pinfu (60) or 40 fu (11) | 71 | 56%, by turn below | +2,200 or +1,900 / +4,500 |
+| 5 han or more | 30 | 27%, by turn below | +4,500 / +1,900 |
 
-Of the 71 two-sided 4-han hands, 60 are pinfu and 11 at 40 fu. On other waits, 57 of the 93 four-han hands are
-seven pairs at 25 fu (6,400), so those rows stay counted by han.
+At the same turn, in one logistic model with a common slope (-0.255 +- 0.076 a turn), 4 han at 40 fu sits
+-0.56 +- 0.72 from 4-han pinfu, which is no difference, and 5+ han sits -1.20 +- 0.52. On other waits, 57 of the 93
+four-han hands are seven pairs at 25 fu (6,400), so those rows stay counted by han.
 
-By turn (`fit_series`; series under 100 hands fitted as a straight logit line): 3,900 stays at 80% or more
-through turn 13 and crosses half at 15.4; 7,700 is 86% at turn 4, crosses half at 10.75, 42% at 12; a mangan is
-79% at turn 6, crosses half at 8.59, 23% at 11. The first version, by han alone, had 4 han crossing at 10.65 and
-5+ han at 8.11. The chart now runs to turn 18.
+By turn (`fit_series`; series under 100 hands fitted as a straight logit line): 3-han pinfu stays at 80% or more
+through turn 13 and crosses half at 15.4; 4 han is 86% at turn 4, crosses half at 10.65, 41% at 12; 5+ han is
+75% at turn 6, crosses half at 8.11, 18% at 11. The riichi's own wins come more by tsumo early: 35% tsumo and 30%
+ron at turn 5, 21% and 28% at turn 11, which is why the 4-han riichi, whose lift is on the tsumo, lasts longer than
+the 5-han one, whose lift is on the ron. In points at turn 11 the two come out about even. The chart runs to
+turn 18.
 
 ## The riichi's boost at turn 11 (two-sided, non-dealer, six live tiles)
 

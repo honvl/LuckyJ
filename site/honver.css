@@ -1355,7 +1355,7 @@ html:lang(ja) :is(.guide-news-tag, .guide-data thead th, .guide-verdict, .guide-
   background: var(--bf-tip);
 }
 
-/* Chapter 24's chart: how often LuckyJ declares a two-sided tenpai whose ron pays 3,900, 7,700 or a mangan, by its turn
+/* Chapter 24's chart: how often LuckyJ declares a two-sided tenpai of 3 han pinfu, 4 han or 5+ han, by its turn
    (scripts/build_dama_value_figure.py). One shade of jade per value, darkest for the mangan; the
    chapter reads where each curve crosses the half line, which the book's charts already draw firmer. */
 .point .dama-figure {

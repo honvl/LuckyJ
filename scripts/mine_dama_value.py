@@ -6,14 +6,14 @@ tenpai and did, with riichi legal (four or more tiles left in the wall, 1,000 po
 wait that is not furiten. A hand's value is the han a ron pays without riichi on EVERY winning tile, dora
 and red fives included (``dama_min`` in ``scripts/contrast/tenpai.py``); a hand whose yaku covers only some
 of its winning tiles is counted apart. A two-sided wait is a ryanmen or a wait on three or more kinds. A
-two-sided hand of 3 han or more is also sorted by the points its cheapest ron pays as a non-dealer
-(``dama_han`` and ``dama_fu``): 3,900 is 3 han pinfu, 5,200 or 6,400 is 3 han at 40 or 50 fu, 7,700 is 4 han
-pinfu, and 8,000 or more is a mangan already (5 han, or 4 han at 40 fu or more).
+two-sided 3-han hand is also sorted by the points its cheapest ron pays as a non-dealer (``dama_han`` and
+``dama_fu``): 3,900 is pinfu, 5,200 or 6,400 is 40 or 50 fu, already a mangan by tsumo. At 4 han the fu move only
+the dama ron (7,700 or 8,000); the riichi adds the same 5 han and the same haneman tsumo either way, so 4-han
+hands stay together (``turn_offsets`` checks that LuckyJ treats them alike).
 
 - ``cells``: how often LuckyJ declared, with nobody in riichi, by value and wait.
-- ``curves``: LuckyJ's riichi share for two-sided tenpais whose ron pays 3,900, 7,700, and a mangan or
-  more, one point per turn of its own and a fitted curve (``fit_series``), with the turn where the fit
-  crosses one half.
+- ``curves``: LuckyJ's riichi share for two-sided tenpais of 3 han pinfu, 4 han and 5 han or more, one
+  point per turn of its own and a fitted curve (``fit_series``), with the turn where the fit crosses one half.
 - ``you``: the same decisions in your games, split at 29 September 16:00 (``RECENT_FROM``), with what
   LuckyJ's rates and Mortal's weights (``site/replays``) expect from the same hands; your riichis per 100
   hands; and what became of the riichis in the five newest games.
@@ -122,16 +122,38 @@ def cell(r: dict) -> str:
         return "1-2"
     if not r["two"]:
         return f"{'5+' if r['v'] >= 5 else r['v']} other"
-    if r["points"] >= 8000:
-        return "two-sided mangan"
-    if r["points"] >= 7700:
-        return "two-sided 7,700"
+    if r["v"] >= 5:
+        return "5+ two-sided"
+    if r["v"] == 4:
+        return "4 two-sided"
     return "two-sided 3,900" if r["points"] < 5200 else "two-sided 5,200"
 
 
-CELLS = ["no yaku", "some waits", "1-2", "two-sided 3,900", "two-sided 5,200", "two-sided 7,700", "two-sided mangan",
+CELLS = ["no yaku", "some waits", "1-2", "two-sided 3,900", "two-sided 5,200", "4 two-sided", "5+ two-sided",
          "3 other", "4 other", "5+ other"]
-CURVE_CELLS = {"3": "two-sided 3,900", "4": "two-sided 7,700", "5": "two-sided mangan"}
+CURVE_CELLS = {"3": "two-sided 3,900", "4": "4 two-sided", "5": "5+ two-sided"}
+
+
+def turn_offsets(rows: list[dict]) -> dict:
+    """LuckyJ's two-sided 4+ han tenpais in one logistic model with a common turn slope: does a 4-han hand at
+    40 fu (a mangan by ron) or a hand of 5 han or more get declared less than a 4-han pinfu at the same turn?"""
+    keep = [r for r in rows if r["nr"] == 0 and r["two"] and r["v"] >= 4]
+    x = np.array([[1.0, r["t"] - 9.0, float(r["v"] == 4 and r["points"] >= 8000), float(r["v"] >= 5)] for r in keep])
+    y = np.array([float(r["riichi"]) for r in keep])
+    beta = np.zeros(4)
+    for _ in range(100):
+        mu = 1 / (1 + np.exp(-(x @ beta)))
+        step = np.linalg.solve((x.T * (mu * (1 - mu))) @ x, x.T @ (y - mu))
+        beta = beta + step
+        if np.max(np.abs(step)) < 1e-10:
+            break
+    mu = 1 / (1 + np.exp(-(x @ beta)))
+    se = np.sqrt(np.diag(np.linalg.inv((x.T * (mu * (1 - mu))) @ x)))
+    counts = {"4 pinfu": [r for r in keep if r["v"] == 4 and r["points"] < 8000],
+              "4 at 40 fu": [r for r in keep if r["v"] == 4 and r["points"] >= 8000], "5+": [r for r in keep if r["v"] >= 5]}
+    return {"hands": len(keep), "per_turn": [round(float(beta[1]), 3), round(float(se[1]), 3)],
+            "4 at 40 fu": [round(float(beta[2]), 3), round(float(se[2]), 3)], "5+": [round(float(beta[3]), 3), round(float(se[3]), 3)],
+            "declared": {k: [sum(r["riichi"] for r in v), len(v)] for k, v in counts.items()}}
 
 
 def rate(rows: list[dict]) -> dict:
@@ -299,7 +321,8 @@ def trade(rows: list[dict], extra: dict, dama_from: int) -> dict:
     gr, gd = Group(riichi), Group(dama, None)
     rr, rd = gr.at(TRADE_TURN), gd.at(TRADE_TURN)
     out = {"riichi_hands": len(riichi), "dama_hands": len(dama), "dfs": {"riichi": gr.dfs, "dama": gd.dfs},
-           "riichi": {k: round(v, 4) for k, v in rr.items()}, "dama": {k: round(v, 4) for k, v in rd.items()}, "hands": {}}
+           "riichi": {k: round(v, 4) for k, v in rr.items()}, "dama": {k: round(v, 4) for k, v in rd.items()}, "hands": {},
+           "riichi_by_turn": {str(t): {k: round(v, 4) for k, v in gr.at(t).items()} for t in (5, 7, 9, 11, 13)}}
     by_game = defaultdict(list)
     for r in pool:
         by_game[r["g"]].append(r)
@@ -456,6 +479,7 @@ def main() -> None:
         "luckyj_first_tenpais_quiet": len(quiet),
         "cells": cells,
         "curves": curves,
+        "turn_offsets": turn_offsets(lj),
         "you": {"big": your_big, "per_100": per100, "newest_riichis": newest_out},
         "extra_han": extra,
         "trade": {"turn": TRADE_TURN, "live": TRADE_LIVE, **trades},
