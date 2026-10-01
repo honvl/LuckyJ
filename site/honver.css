@@ -1355,6 +1355,53 @@ html:lang(ja) :is(.guide-news-tag, .guide-data thead th, .guide-verdict, .guide-
   background: var(--bf-tip);
 }
 
+/* Chapter 24's chart: how often LuckyJ declares a two-sided tenpai worth 3, 4 and 5+ han, by its turn
+   (scripts/build_dama_value_figure.py). One shade of jade per value, darkest for the made mangan; the
+   chapter reads where each curve crosses the half line, which the book's charts already draw firmer. */
+.point .dama-figure {
+  margin: 28px 0 8px;
+  --dv-3: #9a9388;
+  --dv-4: #4f9c7b;
+  --dv-5: var(--jade-mark);
+}
+
+.point .dama-figure .timing-plate {
+  max-width: none;
+}
+
+.dama-figure .dv-3 { --dv: var(--dv-3); --dv-tip: #c9c2b6; }
+.dama-figure .dv-4 { --dv: var(--dv-4); --dv-tip: #a9dcc4; }
+.dama-figure .dv-5 { --dv: var(--dv-5); --dv-tip: #5fc49a; }
+
+.dama-figure .dv-fit {
+  fill: none;
+  stroke: var(--dv);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dama-figure .dv-band {
+  fill: var(--dv);
+  fill-opacity: 0.12;
+}
+
+.dama-figure .dv-dot {
+  fill: var(--dv);
+  fill-opacity: 0.45;
+}
+
+.dama-figure .timing-key:is(.dv-3, .dv-4, .dv-5)::before {
+  width: 22px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--dv);
+}
+
+.dama-figure .timing-tip b:is(.dv-3, .dv-4, .dv-5)::before {
+  background: var(--dv-tip);
+}
+
 /* Chapter 22's figure: the book's dumbbells (styles.css, "Against the humans"), one panel per split of your
    costly turns against a riichi, you in vermilion and LuckyJ in jade (scripts/build_fold_motives_figure.py).
    The thin mark on each track is zero, where a player folds exactly as often as Mortal on the same turns. */

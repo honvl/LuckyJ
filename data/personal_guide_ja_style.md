@@ -74,6 +74,8 @@ new chapters read like the old ones.
 | 20 | break-folds | リーチには手を崩してオリ、副露者にはまず崩さない | 副露者を読む |
 | 21 | quiet-breaks | 副露者の一段目には手を崩さない | 副露者を読む |
 | 22 | own-hand | オリは場ではなく、自分の手で決める | 恐れと自信 |
+| 23 | pushes-pay | 安い副露テンパイは押し、出来上がった手はダマに | 最近の対局 |
+| 24 | big-hands | 大きな手をダマにするとき | リーチかダマか |
 
 - Chapter kicker "Chapter one · Value · added 22 September" → 「第1章 &#183; 打点 &#183; 9月22日追加」.
 - Chapter list sub "Value · added 22 September" → 「打点 &#183; 9月22日追加」.

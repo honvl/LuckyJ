@@ -246,7 +246,11 @@ class PageTests(unittest.TestCase):
                 news = news[: news.index("</aside>")]
                 self.assertIn('<p><a href="#own-hand">', news)
                 self.assertIn('href="#own-hand"><span class="contents-num">22</span>', page)
-                self.assertIn("honver.css?v=20260929-fold-motives", page)
+                # the stylesheet that draws the figure is linked with a version from that day on
+                version = re.search(r"honver\.css\?v=(\d{8})", page)
+                self.assertIsNotNone(version)
+                self.assertGreaterEqual(version.group(1), "20260929")
+                self.assertIn(".point .motive-figure", (ROOT / "site" / "honver.css").read_text(encoding="utf-8"))
 
     def test_voice_rules(self):
         for lang, text in PAGES.items():

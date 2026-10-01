@@ -13,8 +13,8 @@
  * words and swaps in each card's Japanese text from honver-guide-ja.json.
  */
 (function () {
-  const guideAsset = "honver-guide.json?v=20260929-guide-ja";
-  const guideJaAsset = "honver-guide-ja.json?v=20260929-guide-ja";
+  const guideAsset = "honver-guide.json?v=20261001-big-hands";
+  const guideJaAsset = "honver-guide-ja.json?v=20261001-big-hands";
   const hideHandsKey = "luckyj:honver-guide:hide-hands";
   const SAFETY_CLASS = {
     genbutsu: "safe",
@@ -187,7 +187,10 @@
         : frame.ron_yaku_without_riichi
           ? "Has a yaku without riichi, so dama can ron."
           : "No yaku without riichi: dama can only win by tsumo.";
-      const sameTile = isJa ? "同じ牌でリーチ。" : "Same tile, declared.";
+      const betterDama = frame.better?.action === "dama";
+      const sameTile = isJa
+        ? betterDama ? "同じ牌でリーチしない。" : "同じ牌でリーチ。"
+        : betterDama ? "Same tile, no riichi." : "Same tile, declared.";
       wrap.innerHTML =
         decisionBlock("you", YOU, frame.you, frame, `<small>${escapeHtml(yakuNote)}</small>`) +
         decisionBlock("better", BETTER, frame.better, frame, `<small>${escapeHtml(sameTile)}</small>`);
@@ -258,10 +261,12 @@
     if (!cells.length) return;
     if (frame.drawn) cells[cells.length - 1].classList.add("guide-drawn");
     if (frame.kind === "riichi") {
+      // The cut is the same either way; the mark names the better choice with it.
       const cell = cells[frame.cut_index];
       if (cell) {
+        const dama = frame.better?.action === "dama";
         cell.classList.add("guide-better", "guide-riichi");
-        cell.dataset.mark = isJa ? "リーチ" : "Riichi";
+        cell.dataset.mark = isJa ? (dama ? "ダマ" : "リーチ") : dama ? "Dama" : "Riichi";
       }
       return;
     }
