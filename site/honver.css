@@ -1231,6 +1231,70 @@
   display: none;
 }
 
+/* Chapter 25's surface: a canvas on a plate above the grid (honver.js drawSurface). Its buttons are the grid
+   switch's, as real buttons; the canvas lets a vertical swipe scroll the page and turns on a sideways drag. */
+.rp-3d {
+  margin: 0 0 22px;
+  padding: 14px 14px 10px;
+  border: 1px solid var(--hair);
+  background: var(--plate);
+}
+
+.rp-3d .cs-switch button {
+  padding: 7px 12px;
+  border: 1px solid var(--hair);
+  border-radius: 2px;
+  background: var(--plate);
+  color: var(--ink);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.rp-3d .cs-switch button:hover {
+  border-color: var(--muted);
+}
+
+.rp-3d .cs-switch button[aria-pressed="true"] {
+  border-color: var(--felt);
+  background: var(--felt);
+  color: var(--cream);
+}
+
+.rp-3d .cs-switch button:focus-visible {
+  outline: 2px solid var(--jade-mark);
+  outline-offset: 2px;
+}
+
+.rp-3d-canvas {
+  display: block;
+  width: 100%;
+  height: 340px;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.rp-3d-canvas:active {
+  cursor: grabbing;
+}
+
+.rp-3d-readout {
+  min-height: 1.5em;
+  margin-top: 6px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.rp-3d-hint {
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 12.5px;
+}
+
 /* Chapter 25's grid uses the same switch for the stage of the game, one table at a time
    (scripts/build_riichi_placement_figure.py). */
 #rp-stage-east:checked ~ .cs-switch label[for="rp-stage-east"],

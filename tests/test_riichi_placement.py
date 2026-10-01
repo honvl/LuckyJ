@@ -46,11 +46,28 @@ class GridTests(unittest.TestCase):
 
     def test_one_table_per_stage_with_a_switch(self):
         page = figure.render(DATA, "en")
-        self.assertEqual(re.findall(r'data-stage="([^"]+)"', page), ["East", "South", "All-last"])
+        self.assertEqual(re.findall(r'<table [^>]*data-stage="([^"]+)"', page), ["East", "South", "All-last"])
         self.assertEqual(len(re.findall(r'name="rp-stage"', page)), 3)
         css = (ROOT / "site" / "honver.css").read_text(encoding="utf-8")
         for stage in ("east", "south", "all-last"):
             self.assertIn(f"#rp-stage-{stage}:checked", css)
+
+
+    def test_the_surface_carries_the_same_numbers(self):
+        for lang in ("en", "ja"):
+            page = figure.render(DATA, lang)
+            payload = json.loads(re.search(r'<script type="application/json" class="rp-3d-data">(.*?)</script>', page).group(1))
+            self.assertEqual(payload, figure.surface_data(DATA, lang))
+            cols = figure.turns(DATA)
+            for cls in figure.CLASSES:
+                for stage in figure.STAGES:
+                    for r in (1, 2, 3, 4):
+                        self.assertEqual(payload["grid"][f"{cls}|{stage}"][r - 1],
+                                         [DATA["grid"][f"{cls}|{r} {stage}"].get(str(t)) for t in cols])
+            self.assertEqual(len(re.findall(r'<button type="button" data-hand=', page)), len(figure.CLASSES))
+            self.assertEqual(len(re.findall(r'<button type="button" data-stage=', page)), len(figure.STAGES))
+        js = (ROOT / "site" / "honver.js").read_text(encoding="utf-8")
+        self.assertIn("setupSurfaces();", js)
 
 
 class ProseTests(unittest.TestCase):

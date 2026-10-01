@@ -792,6 +792,7 @@
     convertStaticTileMarkup();
     applyTileCompatibility();
     setupTimingCharts();
+    setupSurfaces();
     setupHandToggle();
     for (const table of document.querySelectorAll("table.guide-data[data-chart]")) renderGuideChart(table);
     let data;
@@ -817,6 +818,372 @@
       renderChapter(placeholder, examples);
     }
     returnToAnchor();
+  }
+
+  // Chapter 25's surface: LuckyJ's share of riichi over your turn and your place, drawn on a canvas from the JSON
+  // that scripts/build_riichi_placement_figure.py writes beside it. A sideways drag turns it (a vertical swipe
+  // still scrolls the page on a phone; a mouse can also tilt it), a tap reads out the nearest point, and the
+  // buttons pick the hand value and the stage of the game. The surface is shaded on the grid's jade ramp, a
+  // translucent plane stands at one half, and a vermilion line marks where the surface crosses it.
+  const SURFACE_RAMP = [[244, 240, 230], [142, 219, 184], [12, 47, 34]];
+  const SURFACE_HEIGHT = 0.8;
+
+  function surfaceColour(pct, alpha = 1) {
+    const x = Math.max(0, Math.min(1, pct / 100));
+    const [a, b, t] = x <= 0.5 ? [SURFACE_RAMP[0], SURFACE_RAMP[1], x / 0.5] : [SURFACE_RAMP[1], SURFACE_RAMP[2], (x - 0.5) / 0.5];
+    const c = a.map((v, i) => Math.round(v + (b[i] - v) * t));
+    return `rgba(${c[0]}, ${c[1]}, ${c[2]}, ${alpha})`;
+  }
+
+  function setupSurfaces() {
+    for (const box of document.querySelectorAll(".rp-3d")) {
+      try {
+        drawSurface(box);
+      } catch (error) {
+        box.querySelector(".rp-3d-readout").textContent = error.message;
+      }
+    }
+  }
+
+  function drawSurface(box) {
+    const data = JSON.parse(box.querySelector(".rp-3d-data").textContent);
+    const words = data.words;
+    const canvas = box.querySelector(".rp-3d-canvas");
+    const readout = box.querySelector(".rp-3d-readout");
+    const ctx = canvas.getContext("2d");
+    const css = getComputedStyle(document.documentElement);
+    const token = (name, fallback) => css.getPropertyValue(name).trim() || fallback;
+    const ink = token("--ink", "#1e1a14");
+    const muted = token("--muted", "#68625a");
+    const hair = token("--hair", "#d6d0c4");
+    const verm = token("--verm", "#b23b20");
+    const sans = token("--sans", "sans-serif");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const [t0, t1] = data.turns;
+    const nT = t1 - t0 + 1;
+    const HALF_X = 0.8;
+    const HALF_Y = 0.45;
+    let hand = data.default.hand;
+    let stage = data.default.stage;
+    let yaw = -0.72;
+    let pitch = 0.46;
+    let shown = target();
+    let picked = null;
+    let width = 0;
+    let height = 0;
+    let scale = 1;
+    let centre = [0, 0];
+
+    function target() {
+      return data.grid[`${hand}|${stage}`].map((row) => row.slice());
+    }
+
+    // The floor runs along the turns (x) and the places (y, 1st at the front); the height is the share.
+    function point(r, c, v) {
+      return [(c / (nT - 1) - 0.5) * 2 * HALF_X, (r / 3 - 0.5) * 2 * HALF_Y, (v / 100) * SURFACE_HEIGHT];
+    }
+
+    function project([x, y, z]) {
+      const x1 = x * Math.cos(yaw) - y * Math.sin(yaw);
+      const y1 = x * Math.sin(yaw) + y * Math.cos(yaw);
+      const up = z * Math.cos(pitch) + y1 * Math.sin(pitch);
+      const depth = y1 * Math.cos(pitch) - z * Math.sin(pitch);
+      const f = 1 / (1 + depth * 0.28);
+      return { x: centre[0] + x1 * scale * f, y: centre[1] - up * scale * f, d: depth };
+    }
+
+    function fit() {
+      const r = Math.hypot(HALF_X, HALF_Y);
+      const extent = SURFACE_HEIGHT * Math.cos(pitch) + 2 * r * Math.sin(pitch);
+      scale = Math.min((width - 36) / (2 * r), (height - 58) / extent) * 0.93;
+      centre = [width / 2, 30 + (SURFACE_HEIGHT * Math.cos(pitch) + r * Math.sin(pitch)) * scale * 1.02];
+    }
+
+    function polygon(points, fill, stroke, lineWidth = 0.7) {
+      ctx.beginPath();
+      points.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
+      ctx.closePath();
+      if (fill) {
+        ctx.fillStyle = fill;
+        ctx.fill();
+      }
+      if (stroke) {
+        ctx.strokeStyle = stroke;
+        ctx.lineWidth = lineWidth;
+        ctx.stroke();
+      }
+    }
+
+    function line(a, b, colour, lineWidth = 1, dash = []) {
+      ctx.beginPath();
+      ctx.setLineDash(dash);
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.strokeStyle = colour;
+      ctx.lineWidth = lineWidth;
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    function label(text, p, align = "center", colour = muted, size = 11, weight = 500) {
+      ctx.font = `${weight} ${size}px ${sans}`;
+      ctx.fillStyle = colour;
+      ctx.textAlign = align;
+      ctx.textBaseline = "middle";
+      ctx.fillText(text, p.x, p.y);
+    }
+
+    // Where the surface crosses one half inside a cell, as a segment between two edge crossings.
+    function halfSegment(corners) {
+      const cut = [];
+      for (let i = 0; i < 4; i += 1) {
+        const [a, b] = [corners[i], corners[(i + 1) % 4]];
+        if ((a.v - 50) * (b.v - 50) < 0) {
+          const t = (50 - a.v) / (b.v - a.v);
+          cut.push(project(point(a.r + (b.r - a.r) * t, a.c + (b.c - a.c) * t, 50)));
+        }
+      }
+      return cut.length >= 2 ? cut.slice(0, 2) : null;
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      fit();
+      const corners = [[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([sx, sy]) => [sx * HALF_X, sy * HALF_Y]);
+      const floor = corners.map(([x, y]) => project([x, y, 0]));
+      polygon(floor, "rgba(214, 208, 196, 0.22)", hair, 1);
+      for (let c = 0; c < nT; c += 1) line(project(point(0, c, 0)), project(point(3, c, 0)), "rgba(214, 208, 196, 0.7)", 0.6);
+      for (let r = 0; r < 4; r += 1) line(project(point(r, 0, 0)), project(point(r, nT - 1, 0)), "rgba(214, 208, 196, 0.7)", 0.6);
+      // the height axis stands at the floor corner furthest left on the screen, its labels outside the surface
+      const side = corners.map(([x, y]) => ({ x, y, sx: project([x, y, 0]).x })).sort((a, b) => a.sx - b.sx)[0];
+      line(project([side.x, side.y, 0]), project([side.x, side.y, SURFACE_HEIGHT]), hair, 1);
+      // the floor is 0%; its label would sit on the first turn's
+      for (const pct of [50, 100]) {
+        const p = project([side.x, side.y, (pct / 100) * SURFACE_HEIGHT]);
+        line({ x: p.x - 4, y: p.y }, p, pct === 50 ? verm : hair, 1);
+        label(`${pct}%`, { x: p.x - 7, y: p.y }, "right", pct === 50 ? verm : muted, 10.5);
+      }
+      const head = project([side.x, side.y, SURFACE_HEIGHT]);
+      label(words.share, { x: head.x, y: head.y - 14 }, "center", ink, 11.5, 600);
+
+      const items = [];
+      for (let r = 0; r < 3; r += 1) {
+        for (let c = 0; c < nT - 1; c += 1) {
+          const plane = [[r, c], [r, c + 1], [r + 1, c + 1], [r + 1, c]].map(([rr, cc]) => project(point(rr, cc, 50)));
+          items.push({ d: plane.reduce((s, p) => s + p.d, 0) / 4 + 1e-4, paint: () => polygon(plane, "rgba(178, 59, 32, 0.15)", null) });
+          const cells = [[r, c], [r, c + 1], [r + 1, c + 1], [r + 1, c]].map(([rr, cc]) => ({ r: rr, c: cc, v: shown[rr][cc] }));
+          if (cells.some((cell) => cell.v === null || cell.v === undefined)) continue;
+          const quad = cells.map((cell) => project(point(cell.r, cell.c, cell.v)));
+          const mean = cells.reduce((s, cell) => s + cell.v, 0) / 4;
+          const segment = halfSegment(cells);
+          items.push({
+            d: quad.reduce((s, p) => s + p.d, 0) / 4,
+            paint: () => {
+              polygon(quad, surfaceColour(mean, 0.96), "rgba(244, 240, 230, 0.55)", 0.6);
+              if (segment) line(segment[0], segment[1], verm, 2.2);
+            },
+          });
+        }
+      }
+      // the plane's rim, each edge drawn in its place among the cells
+      for (let i = 0; i < 4; i += 1) {
+        const [a, b] = [corners[i], corners[(i + 1) % 4]].map(([x, y]) => project([x, y, SURFACE_HEIGHT / 2]));
+        items.push({ d: (a.d + b.d) / 2, paint: () => line(a, b, "rgba(178, 59, 32, 0.55)", 1, [4, 3]) });
+      }
+      items.sort((a, b) => b.d - a.d).forEach((item) => item.paint());
+
+      // turn labels on the floor edge nearest the reader, place labels on the nearer side edge
+      const frontRow = project(point(0, (nT - 1) / 2, 0)).d < project(point(3, (nT - 1) / 2, 0)).d ? 0 : 3;
+      const sideCol = project(point(1.5, 0, 0)).d < project(point(1.5, nT - 1, 0)).d ? 0 : nT - 1;
+      const step = width < 520 ? 2 : 1;
+      for (let c = 0; c < nT; c += step) {
+        const out = point(frontRow === 0 ? -0.55 : 3.55, c, 0);
+        label(String(t0 + c), project(out), "center", muted, 10.5);
+      }
+      label(words.turn, project(point(frontRow === 0 ? -1.6 : 4.6, (nT - 1) / 2, 0)), "center", ink, 11.5, 600);
+      for (let r = 0; r < 4; r += 1) {
+        const out = point(r, sideCol === 0 ? -1.2 : nT + 0.2, 0);
+        label(words.places[r], project(out), "center", muted, 10.5);
+      }
+
+      if (picked) {
+        const [r, c] = picked;
+        const v = shown[r][c];
+        if (v !== null && v !== undefined) {
+          const top = project(point(r, c, v));
+          line(project(point(r, c, 0)), top, ink, 1, [3, 3]);
+          ctx.beginPath();
+          ctx.arc(top.x, top.y, 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = ink;
+          ctx.fill();
+          ctx.strokeStyle = "#f4f0e6";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+      }
+      // the plane's key, top right
+      label(words.half, { x: width - 6, y: 12 }, "right", verm, 10.5, 600);
+      const keyRight = width - 12 - ctx.measureText(words.half).width;
+      ctx.beginPath();
+      ctx.rect(keyRight - 12, 7, 10, 10);
+      ctx.fillStyle = "rgba(178, 59, 32, 0.18)";
+      ctx.fill();
+      ctx.setLineDash([3, 2]);
+      ctx.strokeStyle = verm;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    function describe() {
+      if (!picked) {
+        readout.textContent = "";
+        return;
+      }
+      const [r, c] = picked;
+      const v = target()[r][c];
+      if (v === null || v === undefined) {
+        readout.textContent = "";
+        return;
+      }
+      readout.textContent = words.readout
+        .replace("{stage}", words.stages[stage])
+        .replace("{hand}", words.classes[hand])
+        .replace("{place}", words.places[r])
+        .replace("{turn}", String(t0 + c))
+        .replace("{value}", String(Math.round(v)));
+    }
+
+    function nearest(event) {
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      let best = null;
+      for (let r = 0; r < 4; r += 1) {
+        for (let c = 0; c < nT; c += 1) {
+          const v = shown[r][c];
+          if (v === null || v === undefined) continue;
+          const p = project(point(r, c, v));
+          const dist = Math.hypot(p.x - x, p.y - y);
+          if (dist < 30 && (!best || dist < best.dist)) best = { dist, at: [r, c] };
+        }
+      }
+      return best ? best.at : null;
+    }
+
+    function resize() {
+      const ratio = window.devicePixelRatio || 1;
+      width = canvas.clientWidth;
+      height = Math.round(Math.min(Math.max(width * 0.86, 300), 480));
+      canvas.style.height = `${height}px`;
+      canvas.width = Math.round(width * ratio);
+      canvas.height = Math.round(height * ratio);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      draw();
+    }
+
+    let tween = 0;
+    function show(next) {
+      const from = shown.map((row) => row.slice());
+      const to = next;
+      cancelAnimationFrame(tween);
+      if (reduce) {
+        shown = to;
+        draw();
+        return;
+      }
+      const start = performance.now();
+      const frame = (now) => {
+        const k = Math.min(1, (now - start) / 380);
+        const ease = 1 - (1 - k) ** 3;
+        shown = to.map((row, r) => row.map((v, c) => {
+          const a = from[r][c];
+          return v === null || a === null || a === undefined ? v : a + (v - a) * ease;
+        }));
+        draw();
+        if (k < 1) tween = requestAnimationFrame(frame);
+      };
+      tween = requestAnimationFrame(frame);
+    }
+
+    function choose(group, attribute, value) {
+      for (const button of box.querySelectorAll(`${group} button`)) {
+        button.setAttribute("aria-pressed", button.dataset[attribute] === value ? "true" : "false");
+      }
+    }
+    for (const button of box.querySelectorAll(".rp-3d-hands button")) {
+      button.addEventListener("click", () => {
+        hand = button.dataset.hand;
+        choose(".rp-3d-hands", "hand", hand);
+        show(target());
+        describe();
+      });
+    }
+    for (const button of box.querySelectorAll(".rp-3d-stages button")) {
+      button.addEventListener("click", () => {
+        stage = button.dataset.stage;
+        choose(".rp-3d-stages", "stage", stage);
+        show(target());
+        describe();
+      });
+    }
+
+    let drag = null;
+    canvas.addEventListener("pointerdown", (event) => {
+      drag = { x: event.clientX, y: event.clientY, yaw, pitch, moved: false, mouse: event.pointerType === "mouse" };
+      canvas.setPointerCapture(event.pointerId);
+    });
+    canvas.addEventListener("pointermove", (event) => {
+      if (!drag) {
+        if (event.pointerType === "mouse") {
+          const at = nearest(event);
+          if (String(at) !== String(picked)) {
+            picked = at;
+            describe();
+            draw();
+          }
+        }
+        return;
+      }
+      const dx = event.clientX - drag.x;
+      const dy = event.clientY - drag.y;
+      if (Math.abs(dx) + Math.abs(dy) > 4) drag.moved = true;
+      yaw = drag.yaw + dx * 0.011;
+      if (drag.mouse) pitch = Math.max(0.15, Math.min(1.25, drag.pitch + dy * 0.006));
+      draw();
+    });
+    const release = (event) => {
+      if (drag && !drag.moved) {
+        picked = nearest(event);
+        describe();
+        draw();
+      }
+      drag = null;
+    };
+    canvas.addEventListener("pointerup", release);
+    canvas.addEventListener("pointercancel", () => {
+      drag = null;
+    });
+
+    new ResizeObserver(resize).observe(canvas);
+    resize();
+    // A small turn the first time the surface comes into view, so it reads as something to drag.
+    if (!reduce && "IntersectionObserver" in window) {
+      const seen = new IntersectionObserver((entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        seen.disconnect();
+        const from = yaw - 0.45;
+        const start = performance.now();
+        const frame = (now) => {
+          const k = Math.min(1, (now - start) / 1100);
+          yaw = from + 0.45 * (1 - (1 - k) ** 3);
+          draw();
+          if (k < 1) requestAnimationFrame(frame);
+        };
+        requestAnimationFrame(frame);
+      }, { threshold: 0.4 });
+      seen.observe(canvas);
+    }
   }
 
   // The browser jumps to a link's anchor before the example tables load, and the tables then add
