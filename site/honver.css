@@ -1231,6 +1231,29 @@
   display: none;
 }
 
+/* Chapter 25's grid uses the same switch for the stage of the game, one table at a time
+   (scripts/build_riichi_placement_figure.py). */
+#rp-stage-east:checked ~ .cs-switch label[for="rp-stage-east"],
+#rp-stage-south:checked ~ .cs-switch label[for="rp-stage-south"],
+#rp-stage-all-last:checked ~ .cs-switch label[for="rp-stage-all-last"] {
+  border-color: var(--felt);
+  background: var(--felt);
+  color: var(--cream);
+}
+
+#rp-stage-east:focus-visible ~ .cs-switch label[for="rp-stage-east"],
+#rp-stage-south:focus-visible ~ .cs-switch label[for="rp-stage-south"],
+#rp-stage-all-last:focus-visible ~ .cs-switch label[for="rp-stage-all-last"] {
+  outline: 2px solid var(--jade-mark);
+  outline-offset: 2px;
+}
+
+#rp-stage-east:checked ~ * .rp-grid:not([data-stage="East"]),
+#rp-stage-south:checked ~ * .rp-grid:not([data-stage="South"]),
+#rp-stage-all-last:checked ~ * .rp-grid:not([data-stage="All-last"]) {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .cs-switch-label {
     flex-basis: 100%;

@@ -76,6 +76,7 @@ new chapters read like the old ones.
 | 22 | own-hand | オリは場ではなく、自分の手で決める | 恐れと自信 |
 | 23 | pushes-pay | 安い副露テンパイは押し、出来上がった手はダマに | 最近の対局 |
 | 24 | big-hands | 大きな手をダマにするとき | リーチかダマか |
+| 25 | riichi-place | 着順がリーチを動かす | リーチかダマか |
 
 - Chapter kicker "Chapter one · Value · added 22 September" → 「第1章 &#183; 打点 &#183; 9月22日追加」.
 - Chapter list sub "Value · added 22 September" → 「打点 &#183; 9月22日追加」.
