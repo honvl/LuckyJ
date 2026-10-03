@@ -1412,6 +1412,31 @@
     "luckyj": "リーチに追いかけるとき、残り3枚以下で役のある手なら、LuckyJのリーチは1〜2翻で26%。Mortalは同じ[[7m]]をリーチなしで97%だった。",
     "fix": "ダマ。同じ[[7m]]を押し、次の牌の選択を残す。これほど遅く残り3枚でリーチしても、安い手に1翻足すだけで、オリる道がなくなる。"
    }
+  },
+  {
+   "id": "two-riichi-2s",
+   "chapter": "plateau",
+   "game": "261004-3d4685b3",
+   "round": "South 1-1",
+   "frames": [
+    {
+     "turn": 8,
+     "expect_cut": "9m",
+     "better": "2s"
+    }
+   ],
+   "title": "Two riichis, and nothing safe against both",
+   "situation": "South 1, one honba, turn 8, 42 tiles left. You are second with 21,900, 500 above toimen, the dealer; kamicha leads with 46,700 and shimocha is last with 10,000. Since your last turn shimocha declared riichi with [[3m]] and toimen with [[1s]]. You ponned [[P]] and are two-shanten, and you just drew a second [[7m]], the dora. No tile in your hand is safe against both declarers.",
+   "did": "You cut [[9m]]. Shimocha waited on [[6m]]-[[9m]] with [[7m]] [[8m]]: riichi, ippatsu, pinfu, two dora and a red five, a haneman for 12,300, and you finished the game fourth.",
+   "luckyj": "By the kind of tile alone the terminal looks like the safer push: against one riichi, LuckyJ's cuts of a live terminal dealt in 5.2 times per 100 and of a live 2 to 8 8.2 times. This river says otherwise. Shimocha threw [[3s]] as their third tile, which makes a wait on [[2s]] less likely for them, and nothing in their river covered [[9m]]. Toimen was waiting on [[4s]], so the [[2s]] was on neither wait.",
+   "fix": "Cut [[2s]], as Mortal did at 92%; it gave the [[9m]] 5%. It costs 4 of the 25 tiles that improve your hand, little for a two-shanten facing two riichis. With two riichis and nothing safe against both, read each river before you trust the kind of tile: a tile outside one declarer's early discard, here [[2s]] outside shimocha's [[3s]], is the better push.",
+   "ja": {
+    "title": "リーチが2つ、どちらにも通る牌がない",
+    "situation": "南1局1本場、8巡目、山の残り42枚。あなたは21,900点の2位で、親の対面より500点上。上家が46,700点でトップ、下家は10,000点でラス。前の巡目のあと、下家が[[3m]]で、対面が[[1s]]でリーチした。あなたは[[P]]をポンしていて2シャンテン、ちょうど2枚目のドラ[[7m]]を引いた。手牌に、2人のリーチ者のどちらにも通る牌はない。",
+    "did": "[[9m]]を切った。下家は[[7m]] [[8m]]の[[6m]]-[[9m]]待ちで、リーチ、一発、平和、ドラ2、赤1の跳満、12,300点の放銃になり、この半荘は4位で終わった。",
+    "luckyj": "牌の種類だけを見れば、端牌のほうが押しやすく見える。リーチ1人に対して、LuckyJが無筋の端牌を切ると100回あたり5.2回、無筋の2〜8なら8.2回放銃した。この河は逆を示している。下家は3打目に[[3s]]を切っていて、[[2s]]で待つ形は下家には少ない。下家の河には[[9m]]を通す牌が何もなかった。対面は[[4s]]待ちで、[[2s]]はどちらの待ちにも当たらなかった。",
+    "fix": "Mortalと同じく[[2s]]を切る。Mortalはこの牌に92%、[[9m]]に5%を置いた。手を進める牌は25枚から21枚に減るが、リーチ2つを相手にした2シャンテンには小さな差である。リーチが2つあってどちらにも通る牌がないときは、牌の種類より先にそれぞれの河を読む。リーチ者の早い捨て牌の外側、ここでは下家の[[3s]]の外側にある[[2s]]のほうが押しやすい。"
+   }
   }
  ]
 }

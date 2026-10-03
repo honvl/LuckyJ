@@ -13,7 +13,8 @@ import build_personal_guide as guide  # noqa: E402
 
 MANIFEST = ROOT / "data/self_games/majsoul/index.json"
 PUSH_EXAMPLES = {"keep-eight-tiles", "last-discard-tenpai", "cheap-tenpai-folded", "three-calls-dora-tanki",
-                 "first-row-genbutsu", "first-row-west-pair", "first-row-tie", "three-triplets-folded", "three-red-fives"}
+                 "first-row-genbutsu", "first-row-west-pair", "first-row-tie", "three-triplets-folded", "three-red-fives",
+                 "two-riichi-2s"}  # two riichis: the river read beats the kind of tile
 SPOTS = ROOT / "data/personal_guide_spots.json"
 GUIDE_PAGES = ("honver.html", "honver-ja.html")
 
