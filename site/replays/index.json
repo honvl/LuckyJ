@@ -1,9 +1,24 @@
 {
  "v": 1,
- "generated": "2026-10-03",
+ "generated": "2026-10-04",
  "player": "Honver",
  "model": "Mortal policy model (local weights)",
  "games": [
+  {
+   "id": "261004-663f0de9-cfe1-4fa3-b8b2-48153236dc62",
+   "date": "2026-10-03 23:38",
+   "room": "Jade South",
+   "placement": 4,
+   "score": -3200,
+   "points": -43.2,
+   "hands": 8,
+   "rank": "Saint 3",
+   "turns": 112,
+   "turns_matched": 81,
+   "calls": 33,
+   "calls_matched": 33,
+   "flagged": 11
+  },
   {
    "id": "261004-3d4685b3-96b5-421f-9f25-7f7459b95553",
    "date": "2026-10-03 14:11",

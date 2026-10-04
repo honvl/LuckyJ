@@ -1545,3 +1545,26 @@ html:lang(ja) :is(.guide-news-tag, .guide-data thead th, .guide-verdict, .guide-
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* Chapter 28's chart: LuckyJ's live cuts against the dealer's one call (jade) and anyone else's (gray), two hands
+   side by side (scripts/build_dealer_caller_figure.py), and the dealer's river walked square by square. */
+.point .dealer-figure {
+  margin: 28px 0 8px;
+}
+
+.point .dealer-figure .timing-plate {
+  max-width: none;
+}
+
+.point .dealer-figure .timing-panels {
+  grid-template-columns: minmax(0, 480px);
+}
+
+.guide-data.is-river.is-dealer-river th:nth-child(3),
+.guide-data.is-river.is-dealer-river td:nth-child(3) {
+  width: auto;
+}
+
+.guide-data.is-dealer-river td:nth-child(6) {
+  min-width: 9em;
+}

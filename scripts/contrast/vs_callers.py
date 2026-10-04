@@ -132,7 +132,8 @@ def work(g):
                                         passed=passed, meld_dora=meld_dora,
                                         tenpai=q_tenpai, waits={base(w) for w in waits},
                                         shape=(wait_shape(qlast['hand_after'], waits) if q_tenpai else None), prof=prof,
-                                        n_melds=len(melds[q]), q_dealer=q == game['dealer'])
+                                        n_melds=len(melds[q]), q_dealer=q == game['dealer'],
+                                        river=[sum(1 for x in qe if base(x['tile']) // 10 == k) for k in (1, 2, 3, 4)])
                     # one row per caller for the tile actually cut
                     t = e['tile']; b = base(t)
                     seen = vis.copy(); seen[b] -= 1
@@ -180,6 +181,7 @@ def work(g):
                             'drew': drew, 'prev_sh': prev_sh, 'tsumogiri': e['tsumogiri'], 'call_turn': e['called'] is not None,
                             'closed': e['closed'],
                             'q_dealer': ci['q_dealer'], 'me_dealer': s == game['dealer'], 'q_meld_dora': ci['meld_dora'],
+                            'q_river': ci['river'], 'q_meld_suits': sorted({base(tt) // 10 for m in melds[q] for tt in m['tiles']}),
                             'passed': b in ci['passed'] and DANGER[lab] > 0,
                             'n_callers': len(callers), 'q_ron_value': None, 'q_won': q in winners, 'q_gain': deltas[q], 'my_net': deltas[s] - 1000 * paid[s],
                             'opts': [[k, per_tile[q][k], cand_sh[k], k in ci['passed']] for k in sorted(per_tile[q])],
