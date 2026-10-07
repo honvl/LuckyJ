@@ -1,0 +1,307 @@
+{
+ "window": {
+  "first": "2026-10-03 14:11",
+  "last": "2026-10-07 15:27",
+  "games": 10
+ },
+ "places": {
+  "before": {
+   "games": 163,
+   "places": [
+    44,
+    46,
+    46,
+    27
+   ],
+   "average": 2.3435582822085887,
+   "fourth_rate": 0.1656441717791411
+  },
+  "recent": {
+   "games": 10,
+   "places": [
+    3,
+    1,
+    1,
+    5
+   ],
+   "average": 2.8,
+   "fourth_rate": 0.5
+  }
+ },
+ "hands": {
+  "before": {
+   "hands": 1690,
+   "won": 381,
+   "won_rate": 0.2254437869822485,
+   "avg_win": 6419.685039370079,
+   "dealt_in": 184,
+   "deal_in_rate": 0.10887573964497041,
+   "avg_deal_in": -4769.021739130435,
+   "big_deal_ins": 44,
+   "big_deal_in_rate": 0.02603550295857988,
+   "points_a_hand": 175.9171597633136
+  },
+  "recent": {
+   "hands": 110,
+   "won": 26,
+   "won_rate": 0.23636363636363636,
+   "avg_win": 5776.923076923077,
+   "dealt_in": 19,
+   "deal_in_rate": 0.17272727272727273,
+   "avg_deal_in": -6921.0526315789475,
+   "big_deal_ins": 10,
+   "big_deal_in_rate": 0.09090909090909091,
+   "points_a_hand": -510.90909090909093
+  },
+  "luckyj": {
+   "hands": 11272,
+   "won": 2584,
+   "won_rate": 0.22924059616749468,
+   "avg_win": 7316.950464396285,
+   "dealt_in": 1160,
+   "deal_in_rate": 0.10290986515259049,
+   "avg_deal_in": -5308.362068965517,
+   "big_deal_ins": 384,
+   "big_deal_in_rate": 0.034066713981547196,
+   "points_a_hand": 362.5532292405962
+  }
+ },
+ "mortal": {
+  "before": {
+   "discards": 19486,
+   "matched": 14284,
+   "calls": 5431,
+   "calls_matched": 5048
+  },
+  "recent": {
+   "discards": 1241,
+   "matched": 927,
+   "calls": 345,
+   "calls_matched": 322
+  }
+ },
+ "deal_ins": [
+  {
+   "game": "261004-3d4685b3-96b5-421f-9f25-7f7459b95553",
+   "date": "2026-10-03 14:11",
+   "round": "East 2-0",
+   "kind": "cut",
+   "tile": "3s",
+   "paid": 1000,
+   "value": "30 fu 1 han, 1,000",
+   "mortal": 0.876
+  },
+  {
+   "game": "261004-3d4685b3-96b5-421f-9f25-7f7459b95553",
+   "date": "2026-10-03 14:11",
+   "round": "South 1-1",
+   "kind": "cut",
+   "tile": "9m",
+   "paid": 12300,
+   "value": "haneman, 12,000",
+   "mortal": 0.051
+  },
+  {
+   "game": "261004-663f0de9-cfe1-4fa3-b8b2-48153236dc62",
+   "date": "2026-10-03 23:38",
+   "round": "East 3-0",
+   "kind": "cut",
+   "tile": "6m",
+   "paid": 5200,
+   "value": "40 fu 3 han, 5,200",
+   "mortal": 0.999
+  },
+  {
+   "game": "261004-663f0de9-cfe1-4fa3-b8b2-48153236dc62",
+   "date": "2026-10-03 23:38",
+   "round": "East 4-1",
+   "kind": "cut",
+   "tile": "3p",
+   "paid": 12300,
+   "value": "mangan, 12,000",
+   "mortal": 0.972
+  },
+  {
+   "game": "261004-663f0de9-cfe1-4fa3-b8b2-48153236dc62",
+   "date": "2026-10-03 23:38",
+   "round": "South 1-0",
+   "kind": "riichi",
+   "tile": "7s",
+   "paid": 5200,
+   "value": "40 fu 3 han, 5,200",
+   "mortal": 0.997
+  },
+  {
+   "game": "261006-6ecce496-8d0c-4666-9cd8-5ccbdb0ff30b",
+   "date": "2026-10-05 21:08",
+   "round": "East 4-1",
+   "kind": "cut",
+   "tile": "C",
+   "paid": 2900,
+   "value": "40 fu 2 han, 2,600",
+   "mortal": 0.003
+  },
+  {
+   "game": "261006-6ecce496-8d0c-4666-9cd8-5ccbdb0ff30b",
+   "date": "2026-10-05 21:08",
+   "round": "South 1-0",
+   "kind": "cut",
+   "tile": "7m",
+   "paid": 7700,
+   "value": "30 fu 4 han, 7,700",
+   "mortal": 0.562
+  },
+  {
+   "game": "261007-f82acd52-ec99-4032-b878-5031df628571",
+   "date": "2026-10-06 18:57",
+   "round": "East 2-0",
+   "kind": "cut",
+   "tile": "4s",
+   "paid": 1000,
+   "value": "30 fu 1 han, 1,000",
+   "mortal": 0.275
+  },
+  {
+   "game": "261007-778211d0-ecbb-4ec3-a5cf-c7eaa531ea87",
+   "date": "2026-10-06 19:32",
+   "round": "East 1-0",
+   "kind": "riichi",
+   "tile": "7s",
+   "paid": 8000,
+   "value": "mangan, 8,000",
+   "mortal": 0.999
+  },
+  {
+   "game": "261007-778211d0-ecbb-4ec3-a5cf-c7eaa531ea87",
+   "date": "2026-10-06 19:32",
+   "round": "South 1-1",
+   "kind": "riichi",
+   "tile": "6p",
+   "paid": 2900,
+   "value": "40 fu 2 han, 2,600",
+   "mortal": 0.915
+  },
+  {
+   "game": "261007-778211d0-ecbb-4ec3-a5cf-c7eaa531ea87",
+   "date": "2026-10-06 19:32",
+   "round": "South 4-0",
+   "kind": "cut",
+   "tile": "9m",
+   "paid": 7700,
+   "value": "40 fu 3 han, 7,700",
+   "mortal": 0.98
+  },
+  {
+   "game": "261007-ed7230e1-3f82-4352-a0a5-9966e5e85214",
+   "date": "2026-10-06 20:13",
+   "round": "East 1-0",
+   "kind": "cut",
+   "tile": "3m",
+   "paid": 2000,
+   "value": "30 fu 2 han, 2,000",
+   "mortal": 0.999
+  },
+  {
+   "game": "261007-ed7230e1-3f82-4352-a0a5-9966e5e85214",
+   "date": "2026-10-06 20:13",
+   "round": "East 4-4",
+   "kind": "cut",
+   "tile": "6s",
+   "paid": 8900,
+   "value": "30 fu 4 han, 7,700",
+   "mortal": 0.978
+  },
+  {
+   "game": "261007-ed7230e1-3f82-4352-a0a5-9966e5e85214",
+   "date": "2026-10-06 20:13",
+   "round": "South 1-1",
+   "kind": "cut",
+   "tile": "2s",
+   "paid": 4200,
+   "value": "30 fu 3 han, 3,900",
+   "mortal": 0.943
+  },
+  {
+   "game": "261007-c265c423-64d7-4171-ae24-ea000701511e",
+   "date": "2026-10-06 21:07",
+   "round": "South 4-0",
+   "kind": "cut",
+   "tile": "P",
+   "paid": 12000,
+   "value": "mangan, 12,000",
+   "mortal": 0.124
+  },
+  {
+   "game": "261008-6c28a9cb-7fd0-48ff-a4f0-18b3bcf51dde",
+   "date": "2026-10-07 14:42",
+   "round": "South 2-0",
+   "kind": "cut",
+   "tile": "7s",
+   "paid": 11600,
+   "value": "30 fu 4 han, 11,600",
+   "mortal": 0.0
+  },
+  {
+   "game": "261008-6c28a9cb-7fd0-48ff-a4f0-18b3bcf51dde",
+   "date": "2026-10-07 14:42",
+   "round": "South 4-0",
+   "kind": "cut",
+   "tile": "7m",
+   "paid": 2000,
+   "value": "30 fu 2 han, 2,000",
+   "mortal": 0.993
+  },
+  {
+   "game": "261008-ce956cd8-7f83-4165-97aa-e5be24fff49c",
+   "date": "2026-10-07 15:27",
+   "round": "East 1-1",
+   "kind": "riichi",
+   "tile": "4s",
+   "paid": 12300,
+   "value": "mangan, 12,000",
+   "mortal": 0.064
+  },
+  {
+   "game": "261008-ce956cd8-7f83-4165-97aa-e5be24fff49c",
+   "date": "2026-10-07 15:27",
+   "round": "South 2-1",
+   "kind": "riichi",
+   "tile": "7m",
+   "paid": 12300,
+   "value": "mangan, 12,000",
+   "mortal": 0.042
+  }
+ ],
+ "deal_in_summary": {
+  "total": 19,
+  "mortal_half": 12,
+  "mortal_low": 6,
+  "low_paid": 63400,
+  "big": 10,
+  "big_mortal_half": 5,
+  "big_mortal_low": 5,
+  "big_low_paid": 60500,
+  "big_paid": 105100
+ },
+ "riichi_outcomes_since_january": {
+  "mortal_low": {
+   "riichis": 32,
+   "won": 5,
+   "dealt": 9,
+   "into_a_riichi": 14,
+   "average_turn": 9.90625
+  },
+  "mortal_agreed": {
+   "riichis": 322,
+   "won": 163,
+   "dealt": 35,
+   "into_a_riichi": 46,
+   "average_turn": 8.403726708074535
+  }
+ },
+ "riichis": {
+  "count": 24,
+  "mortal_low": 2,
+  "lowest_agreed": 0.915
+ }
+}

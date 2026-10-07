@@ -1513,6 +1513,108 @@
     "luckyj": "誰もリーチしていない場面で副露者がいるとき、LuckyJは最も広い待ちに生牌が要る場合でも最初のテンパイの75%でリーチし、リーチするときはその生牌を77%で切る。Mortalは84%。",
     "fix": "ミスではない。Mortalも100%で[[7s]]リーチを選んだ。2,000点のラスから抜け出すにはアガるしかなく、広い待ちのリーチがいちばんアガリに近かった。"
    }
+  },
+  {
+   "id": "dealer-riichi-haku",
+   "chapter": "costly-run",
+   "game": "261007-c265c423",
+   "round": "South 4-0",
+   "frames": [
+    {
+     "turn": 12,
+     "expect_cut": "P",
+     "better": "7s"
+    }
+   ],
+   "title": "A live haku against the dealer's riichi",
+   "situation": "South 4, turn 12, 25 tiles left. You are last on 13,400, and kamicha, the dealer, is third on 22,700 and declared riichi on their 8th turn. Shimocha has one call. You are two-shanten and draw [[P]]. Cutting it leaves 28 tiles to improve your hand. The genbutsu [[7s]] leaves 23, the red [[5s]] 25 and the [[3s]] 10, and all three are safe against the riichi.",
+   "did": "You cut the [[P]]. Kamicha held [[P]][[P]] and [[2p]][[2p]] beside a [[C]] triplet: haku, chun, riichi, dora and ura dora, 12,000 for the dealer.",
+   "luckyj": "Facing a riichi with a safe tile in hand, LuckyJ cuts a live tile from two-shanten on 6.2% of turns and from three-shanten on 2.9% (chapter 26).",
+   "fix": "Cut a safe tile. Mortal chose the [[7s]] 52%, the [[3s]] 33% and the [[P]] 12%. Each safe tile left you two-shanten, and the [[P]] bought 5 more tiles of improvement than the [[7s]] at the price of a dealer mangan. Chapter 26's rule covers this turn as it stands.",
+   "ja": {
+    "title": "親のリーチに生牌の白",
+    "situation": "南4局、12巡目、残り25枚。13,400点でラス。上家の親は22,700点で3位で、8巡目にリーチしている。下家は1副露。2シャンテンで[[P]]を引いた。これを切ると有効牌は28枚。現物の[[7s]]を切れば23枚、赤の[[5s]]なら25枚、[[3s]]なら10枚で、この3枚はどれもリーチに対して安全である。",
+    "did": "[[P]]を切った。上家は[[P]][[P]]と[[2p]][[2p]]のシャンポン待ちで、[[C]]の暗刻があり、白・中・リーチ・ドラ・裏ドラで親の12,000点。",
+    "luckyj": "安全牌を持ってリーチを受けたとき、LuckyJは2シャンテンで生牌を切るのが6.2%、3シャンテンで2.9%である（第26章）。",
+    "fix": "安全牌を切る。Mortalは[[7s]]を52%、[[3s]]を33%、[[P]]を12%で選んだ。どの安全牌でも2シャンテンは保て、[[P]]を切って増えるのは[[7s]]より5枚多い有効牌だけで、その代わりに親の満貫を打つ危険がある。この巡目は第26章のルールがそのまま当てはまる。"
+   }
+  },
+  {
+   "id": "dealer-call-7s",
+   "chapter": "costly-run",
+   "game": "261008-6c28a9cb",
+   "round": "South 2-0",
+   "frames": [
+    {
+     "turn": 15,
+     "expect_cut": "7s",
+     "better": "7p"
+    }
+   ],
+   "title": "A one-shanten push into the dealer's call",
+   "situation": "South 2, turn 15, 13 tiles left. You lead on 40,300, and kamicha, the dealer, is last on 12,100 with a [[2m]][[3m]] chi of [[4m]]; they have made 15 discards. You are one-shanten with three [[7p]] and draw [[7s]]. Cutting it leaves 4 tiles to improve your hand. A [[7p]], which kamicha threw, leaves 5.",
+   "did": "You cut the [[7s]]. Kamicha was ready on [[4s]] and [[7s]] with tanyao, a dora and two red fives: 11,600. The game ended third.",
+   "luckyj": "Against the dealer's one call, LuckyJ's one-shanten hands fold from the dealer's 12th discard (chapter 28). This was their 15th.",
+   "fix": "Cut the [[7p]], as Mortal did at 82%; it gave the [[7s]] 0%, less than the [[1m]] that breaks the hand back to two-shanten. The genbutsu left one more tile to improve, and you led the table, so the live tile had nothing to win.",
+   "ja": {
+    "title": "親の副露に1シャンテンで押す",
+    "situation": "南2局、15巡目、残り13枚。40,300点でトップ。上家の親は12,100点でラスで、[[4m]]を[[2m]][[3m]]でチーしていて、15打を切っている。あなたは[[7p]]3枚を持つ1シャンテンで、[[7s]]を引いた。これを切ると有効牌は4枚。上家が切っている[[7p]]を切れば5枚である。",
+    "did": "[[7s]]を切った。上家は[[4s]]と[[7s]]待ちでテンパイしていて、タンヤオ・ドラ1・赤2で11,600点。この半荘は3位で終わった。",
+    "luckyj": "親の1副露に対して、LuckyJの1シャンテンは親の12打目からオリる（第28章）。ここは15打目だった。",
+    "fix": "[[7p]]を切る。Mortalも82%でそうし、[[7s]]は0%で、2シャンテンに戻る[[1m]]よりも低かった。現物を切れば有効牌が1枚多く残り、トップ目だったので、生牌を切って得るものはなかった。"
+   }
+  },
+  {
+   "id": "dama-1p-4p",
+   "chapter": "costly-run",
+   "verdict": "close",
+   "game": "261008-ce956cd8",
+   "round": "East 1-1",
+   "frames": [
+    {
+     "turn": 13,
+     "kind": "riichi",
+     "expect_cut": "7m"
+    }
+   ],
+   "title": "A two-sided tenpai at turn 13 with nobody out",
+   "situation": "East 1, one honba, turn 13, 18 tiles left. You are third on 25,000, and shimocha, the dealer, leads on 32,700. Nobody has called or declared. You draw [[3p]] into tenpai: cut [[7m]] and you wait on [[1p]]-[[4p]], 5 tiles live, with a red [[5m]] and the dora [[2p]]. Dama it pays 7,700 on the [[4p]] (tanyao, pinfu, dora and a red five) and 3,900 on the [[1p]] (pinfu, dora and a red five). Riichi adds a han to each.",
+   "did": "You declared with [[7m]]. A hand in riichi cuts what it draws, and your next three cuts were [[3p]], [[8s]] and [[4s]]. The dealer, who was not ready when you declared, took the [[4s]] with tanyao, three dora and a red five: 12,000 and the honba.",
+   "luckyj": "LuckyJ declares 88% of two-sided pinfu hands worth 3 han on their cheapest winning tile, and still 80% or more at its 13th turn (chapter 24).",
+   "fix": "Close. A hand chapter 24's table would declare and Mortal would not: it cut the [[7m]] and kept the hand dama 89%, cut the [[4m]] and kept it dama 4%, and declared 6%. The table measures LuckyJ, not Mortal, so this turn is where the two part, and the result followed Mortal, though one hand cannot settle it. A dama hand chooses again at every draw; a riichi hand cuts its draw, and this one cut the dealer's winning tile on its third.",
+   "ja": {
+    "title": "誰も動いていない13巡目の両面テンパイ",
+    "situation": "東1局1本場、13巡目、残り18枚。25,000点で3位。下家の親が32,700点でトップ。誰も鳴いておらず、リーチもない。[[3p]]を引いてテンパイ。[[7m]]を切れば[[1p]]-[[4p]]待ちで残り5枚、赤[[5m]]とドラの[[2p]]がある。ダマなら[[4p]]で7,700点（タンヤオ・平和・ドラ・赤）、[[1p]]で3,900点（平和・ドラ・赤）。リーチはどちらにも1翻足す。",
+    "did": "[[7m]]でリーチした。リーチした手はツモった牌を切るしかなく、続く3打は[[3p]]、[[8s]]、[[4s]]だった。リーチしたとき親はまだテンパイしておらず、3打目の[[4s]]がタンヤオ・ドラ3・赤1に当たった。12,000点と1本場である。",
+    "luckyj": "LuckyJは、両面待ちで最も安い和了牌でも3翻になる平和の手の88%でリーチし、13巡目でもまだ80%以上でリーチする（第24章）。",
+    "fix": "際どい判断。第24章の表なら宣言する手で、Mortalは宣言しない。[[7m]]を切ってダマが89%、[[4m]]を切ってダマが4%で、リーチは6%だった。この表が測ったのはMortalではなくLuckyJなので、この巡目は表とMortalの意見が分かれる場面である。結果はMortalの側に出たが、1局では決められない。ダマの手はツモのたびにもう一度選べる。リーチの手はツモ切りで、この手は3回目のツモ切りで親の当たり牌を切った。"
+   }
+  },
+  {
+   "id": "riichi-three-callers",
+   "chapter": "costly-run",
+   "verdict": "close",
+   "game": "261008-ce956cd8",
+   "round": "South 2-1",
+   "frames": [
+    {
+     "turn": 6,
+     "expect_cut": "3m",
+     "better": "8p"
+    }
+   ],
+   "title": "A riichi into three callers",
+   "situation": "South 2, one honba, turn 6, 49 tiles left. You are third on 7,400; shimocha leads on 59,600 and toimen, the dealer, is second on 31,000. All three have called: shimocha ponned [[P]], toimen ponned [[1p]] and chied [[5p]], and kamicha ponned [[S]]. You draw [[8p]]. Cut [[3m]] and you are tenpai on [[6p]]-[[9p]], 5 tiles, pinfu with a red five: 3,900 on the [[6p]], which adds tanyao, and 2,000 on the [[9p]]. Cut [[8p]] and you stay one-shanten with 32 tiles to improve your hand.",
+   "did": "You declared riichi with the [[3m]], then cut your draws, [[1m]], [[3s]], [[2m]], [[4p]] and [[7m]]. The [[7m]] on your 11th turn dealt in to toimen, the dealer: chun, three dora and a red five, 12,000 and the honba.",
+   "luckyj": "LuckyJ declares 83% of tenpais whose cheapest winning tile is worth 1 or 2 han (chapter 24).",
+   "fix": "Close. Mortal cut the [[8p]] 89%, staying one-shanten, and gave the riichi 4% and the dama tenpai 2%; chapter 24 would have you declare. The riichi swapped 32 tiles for 5 and, against three open hands, left you nothing to cut but your draws. Nobody was ready on turn 6, so the cost came over the next five turns, when toimen got there.",
+   "ja": {
+    "title": "3人の副露者に向かうリーチ",
+    "situation": "南2局1本場、6巡目、残り49枚。7,400点で3位。下家が59,600点でトップ、親の対面が31,000点で2位。3人とも鳴いていて、下家は[[P]]をポン、対面は[[1p]]をポンして[[5p]]をチー、上家は[[S]]をポンしている。[[8p]]を引いた。[[3m]]を切れば[[6p]]-[[9p]]待ちでテンパイ、残り5枚で、平和と赤があり、[[6p]]はタンヤオがついて3,900点、[[9p]]は2,000点。[[8p]]を切れば1シャンテンのままで、有効牌は32枚。",
+    "did": "[[3m]]でリーチし、続くツモ切りは[[1m]]、[[3s]]、[[2m]]、[[4p]]、[[7m]]だった。11巡目の[[7m]]が親の対面に当たった。中・ドラ3・赤1で12,000点と1本場である。",
+    "luckyj": "LuckyJは、最も安い和了牌が1翻か2翻のテンパイの83%でリーチする（第24章）。",
+    "fix": "際どい判断。Mortalは[[8p]]を89%で切って1シャンテンを保ち、リーチは4%、ダマテンパイは2%だった。第24章ならリーチする手である。リーチは有効牌32枚を5枚に替え、副露した3人を前に、ツモ切り以外の選択を残さなかった。6巡目にはまだ誰もテンパイしておらず、損は続く5巡で、対面が追いついたところに出た。"
+   }
   }
  ]
 }
