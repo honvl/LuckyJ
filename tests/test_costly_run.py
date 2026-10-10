@@ -81,14 +81,15 @@ class TheRunTests(unittest.TestCase):
 class TheCardsTests(unittest.TestCase):
     cards = [s for s in SPOTS if s["chapter"] == "costly-run"]
 
-    def test_four_cards_in_game_order(self):
-        self.assertEqual([c["id"] for c in self.cards],
-                         ["dealer-riichi-haku", "dealer-call-7s", "dama-1p-4p", "riichi-three-callers"])
+    def test_three_cards_in_game_order(self):
+        # the fourth, a furiten riichi first shown here and described wrongly, moved to chapter 31
+        self.assertEqual([c["id"] for c in self.cards], ["dealer-riichi-haku", "dealer-call-7s", "dama-1p-4p"])
+        self.assertIn("furiten-riichi-9p", [s["id"] for s in SPOTS if s["chapter"] == "declined-riichis"])
 
-    def test_the_two_discards_have_a_safe_tile_and_the_riichis_are_close_calls(self):
+    def test_the_two_discards_have_a_safe_tile_and_the_riichi_is_a_close_call(self):
         verdicts = {c["id"]: c.get("verdict", "mistake") for c in self.cards}
         self.assertEqual(verdicts, {"dealer-riichi-haku": "mistake", "dealer-call-7s": "mistake",
-                                    "dama-1p-4p": "close", "riichi-three-callers": "close"})
+                                    "dama-1p-4p": "close"})
         for c in self.cards[:2]:
             self.assertTrue(c["frames"][0]["better"])
 
@@ -105,7 +106,10 @@ class TheCardsTests(unittest.TestCase):
     def test_the_chapter_is_listed_and_announced(self):
         for lang, page in PAGES.items():
             text = page.read_text(encoding="utf-8")
-            self.assertEqual(len(re.findall(r'href="#costly-run"', text)), 3, lang)  # news, list, previous chapter's next link
+            # news, list, previous chapter's next link, and the pointer back from chapter 31
+            self.assertEqual(len(re.findall(r'href="#costly-run"', text)), 4, lang)
+            for fix in ("fix-29-riichis", "fix-29-count", "fix-29-declined", "fix-29-rule"):
+                self.assertEqual(text.count(f'id="{fix}"'), 1, (lang, fix))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,6813 @@
+{
+ "all": {
+  "riichis": 354,
+  "mortal_low": 32,
+  "won": 168,
+  "dealt": 44,
+  "paid": 91,
+  "draw": 51
+ },
+ "screens": {
+  "furiten": {
+   "riichis": 4,
+   "mortal_low": 1,
+   "won": 0,
+   "dealt": 1,
+   "paid": 2,
+   "draw": 1
+  },
+  "late": {
+   "riichis": 30,
+   "mortal_low": 6,
+   "won": 2,
+   "dealt": 7,
+   "paid": 11,
+   "draw": 10
+  },
+  "thin_with_yaku": {
+   "riichis": 29,
+   "mortal_low": 9,
+   "won": 12,
+   "dealt": 5,
+   "paid": 3,
+   "draw": 9
+  },
+  "into_a_riichi": {
+   "riichis": 10,
+   "mortal_low": 8,
+   "won": 1,
+   "dealt": 3,
+   "paid": 4,
+   "draw": 2
+  }
+ },
+ "any_screen": {
+  "riichis": 64,
+  "mortal_low": 18,
+  "won": 14,
+  "dealt": 13,
+  "paid": 17,
+  "draw": 20
+ },
+ "no_screen": {
+  "riichis": 290,
+  "mortal_low": 14,
+  "won": 154,
+  "dealt": 31,
+  "paid": 74,
+  "draw": 31
+ },
+ "furiten_riichis": [
+  {
+   "date": "2026-06-19 02:42",
+   "round": "East 3-1",
+   "turn": 11,
+   "waits": [
+    "1p",
+    "4p",
+    "7p"
+   ],
+   "furiten": [
+    "1p"
+   ],
+   "live": 8,
+   "mortal": 0.978,
+   "result": "draw"
+  },
+  {
+   "date": "2026-09-30 18:46",
+   "round": "South 4-0",
+   "turn": 15,
+   "waits": [
+    "1s",
+    "4s",
+    "7s"
+   ],
+   "furiten": [
+    "7s"
+   ],
+   "live": 8,
+   "mortal": 0.865,
+   "result": "paid"
+  },
+  {
+   "date": "2026-10-03 00:07",
+   "round": "East 2-1",
+   "turn": 9,
+   "waits": [
+    "5p",
+    "8p"
+   ],
+   "furiten": [
+    "8p"
+   ],
+   "live": 5,
+   "mortal": 0.966,
+   "result": "paid"
+  },
+  {
+   "date": "2026-10-07 15:27",
+   "round": "South 2-1",
+   "turn": 6,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [
+    "9p"
+   ],
+   "live": 5,
+   "mortal": 0.042,
+   "result": "dealt"
+  }
+ ],
+ "riichis": [
+  {
+   "game": "260125-c59bed98-fe96-49ee-8605-ec527d2e4054",
+   "date": "2026-01-25 04:45",
+   "round": "East 1-0",
+   "turn": 8,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 2,
+   "left": 40,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260125-bc190204-2c51-4438-9e26-667f5c206f30",
+   "date": "2026-01-25 05:47",
+   "round": "South 1-0",
+   "turn": 8,
+   "waits": [
+    "7s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 40,
+   "mortal": 0.5,
+   "result": "draw"
+  },
+  {
+   "game": "260125-bc190204-2c51-4438-9e26-667f5c206f30",
+   "date": "2026-01-25 05:47",
+   "round": "South 2-0",
+   "turn": 7,
+   "waits": [
+    "5m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 46,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260125-bc190204-2c51-4438-9e26-667f5c206f30",
+   "date": "2026-01-25 05:47",
+   "round": "South 3-0",
+   "turn": 9,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 4,
+   "left": 34,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260126-32fee13b-0444-47d1-9321-a0fa7e6f985a",
+   "date": "2026-01-26 07:50",
+   "round": "East 1-0",
+   "turn": 11,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 3,
+   "left": 26,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260126-32fee13b-0444-47d1-9321-a0fa7e6f985a",
+   "date": "2026-01-26 07:50",
+   "round": "East 3-0",
+   "turn": 11,
+   "waits": [
+    "2m",
+    "S"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 3,
+   "rank": 3,
+   "left": 33,
+   "mortal": 0.918,
+   "result": "won"
+  },
+  {
+   "game": "260616-f7e048ca-bdbe-426d-b683-afee5631117e",
+   "date": "2026-06-15 23:05",
+   "round": "East 2-1",
+   "turn": 9,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 35,
+   "mortal": 0.991,
+   "result": "paid"
+  },
+  {
+   "game": "260616-f7e048ca-bdbe-426d-b683-afee5631117e",
+   "date": "2026-06-15 23:05",
+   "round": "South 2-0",
+   "turn": 12,
+   "waits": [
+    "3s",
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 25,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260616-f7e048ca-bdbe-426d-b683-afee5631117e",
+   "date": "2026-06-15 23:05",
+   "round": "South 3-0",
+   "turn": 8,
+   "waits": [
+    "7s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 37,
+   "mortal": 0.989,
+   "result": "won"
+  },
+  {
+   "game": "260616-f7e048ca-bdbe-426d-b683-afee5631117e",
+   "date": "2026-06-15 23:05",
+   "round": "South 4-0",
+   "turn": 9,
+   "waits": [
+    "2p",
+    "3p",
+    "5p",
+    "8p"
+   ],
+   "furiten": [],
+   "live": 9,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 35,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260616-f8041361-c866-473e-9584-c10aa47a0686",
+   "date": "2026-06-15 23:44",
+   "round": "South 4-0",
+   "turn": 11,
+   "waits": [
+    "3m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 28,
+   "mortal": 0.971,
+   "result": "draw"
+  },
+  {
+   "game": "260617-f2e8ed41-7fb5-40b7-b6f7-103a48ecfd31",
+   "date": "2026-06-16 22:43",
+   "round": "East 2-0",
+   "turn": 9,
+   "waits": [
+    "3p",
+    "6p",
+    "C"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 34,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260617-f2e8ed41-7fb5-40b7-b6f7-103a48ecfd31",
+   "date": "2026-06-16 22:43",
+   "round": "East 3-0",
+   "turn": 6,
+   "waits": [
+    "3s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 2,
+   "left": 50,
+   "mortal": 0.204,
+   "result": "paid"
+  },
+  {
+   "game": "260617-b21e532e-aa28-4b58-8b94-d32df8b047fa",
+   "date": "2026-06-16 23:12",
+   "round": "West 2-1",
+   "turn": 9,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 2,
+   "left": 37,
+   "mortal": 0.994,
+   "result": "won"
+  },
+  {
+   "game": "260617-c66baed5-14c8-4cfb-aa5d-af25289387d8",
+   "date": "2026-06-16 23:51",
+   "round": "East 2-2",
+   "turn": 12,
+   "waits": [
+    "3p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 23,
+   "mortal": 0.744,
+   "result": "draw"
+  },
+  {
+   "game": "260617-c66baed5-14c8-4cfb-aa5d-af25289387d8",
+   "date": "2026-06-16 23:51",
+   "round": "South 2-0",
+   "turn": 8,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 45,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260619-0cce2e2c-69c1-4e8d-8e74-b2fdee3be282",
+   "date": "2026-06-18 23:42",
+   "round": "East 1-0",
+   "turn": 11,
+   "waits": [
+    "3s",
+    "6s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 27,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260619-0cce2e2c-69c1-4e8d-8e74-b2fdee3be282",
+   "date": "2026-06-18 23:42",
+   "round": "East 2-1",
+   "turn": 6,
+   "waits": [
+    "1s",
+    "4s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 48,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260619-0cce2e2c-69c1-4e8d-8e74-b2fdee3be282",
+   "date": "2026-06-18 23:42",
+   "round": "South 1-1",
+   "turn": 3,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 59,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260619-d29c2140-2008-4a5a-8bc5-5f12b220eebf",
+   "date": "2026-06-19 00:09",
+   "round": "East 1-0",
+   "turn": 11,
+   "waits": [
+    "4m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 31,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260619-d29c2140-2008-4a5a-8bc5-5f12b220eebf",
+   "date": "2026-06-19 00:09",
+   "round": "South 2-1",
+   "turn": 9,
+   "waits": [
+    "1s",
+    "4s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 1,
+   "left": 38,
+   "mortal": 0.987,
+   "result": "won"
+  },
+  {
+   "game": "260619-cb258633-3e08-48e4-bddd-8abc1b71fb62",
+   "date": "2026-06-19 00:50",
+   "round": "East 2-0",
+   "turn": 6,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 2,
+   "left": 45,
+   "mortal": 0.988,
+   "result": "won"
+  },
+  {
+   "game": "260619-cb258633-3e08-48e4-bddd-8abc1b71fb62",
+   "date": "2026-06-19 00:50",
+   "round": "East 3-0",
+   "turn": 7,
+   "waits": [
+    "2p",
+    "2s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 45,
+   "mortal": 0.881,
+   "result": "dealt"
+  },
+  {
+   "game": "260619-0ad4321b-7c2b-4544-802e-4ea4e63692ef",
+   "date": "2026-06-19 01:25",
+   "round": "East 1-0",
+   "turn": 7,
+   "waits": [
+    "7s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 49,
+   "mortal": 0.962,
+   "result": "won"
+  },
+  {
+   "game": "260619-49c15f08-82d6-45b0-9011-a2fe0cc90b2d",
+   "date": "2026-06-19 02:08",
+   "round": "East 2-1",
+   "turn": 9,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 39,
+   "mortal": 0.998,
+   "result": "draw"
+  },
+  {
+   "game": "260619-49c15f08-82d6-45b0-9011-a2fe0cc90b2d",
+   "date": "2026-06-19 02:08",
+   "round": "East 3-0",
+   "turn": 4,
+   "waits": [
+    "2s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 54,
+   "mortal": 0.74,
+   "result": "won"
+  },
+  {
+   "game": "260619-2f0cfc5e-a267-4cc7-9746-161e18524ee3",
+   "date": "2026-06-19 02:42",
+   "round": "East 3-1",
+   "turn": 11,
+   "waits": [
+    "1p",
+    "4p",
+    "7p"
+   ],
+   "furiten": [
+    "1p"
+   ],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 2,
+   "left": 30,
+   "mortal": 0.978,
+   "result": "draw"
+  },
+  {
+   "game": "260619-2f0cfc5e-a267-4cc7-9746-161e18524ee3",
+   "date": "2026-06-19 02:42",
+   "round": "East 4-0",
+   "turn": 7,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 45,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260620-c57a2076-99af-4e3b-91b4-bc22f12aea59",
+   "date": "2026-06-19 16:31",
+   "round": "East 3-0",
+   "turn": 12,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 28,
+   "mortal": 0.999,
+   "result": "dealt"
+  },
+  {
+   "game": "260620-c57a2076-99af-4e3b-91b4-bc22f12aea59",
+   "date": "2026-06-19 16:31",
+   "round": "East 3-1",
+   "turn": 12,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 4,
+   "left": 24,
+   "mortal": 0.997,
+   "result": "dealt"
+  },
+  {
+   "game": "260620-c57a2076-99af-4e3b-91b4-bc22f12aea59",
+   "date": "2026-06-19 16:31",
+   "round": "East 4-0",
+   "turn": 8,
+   "waits": [
+    "7s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 3,
+   "rank": 4,
+   "left": 43,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260620-8ba1a38d-9188-4c8c-90ea-d78dc0d91eea",
+   "date": "2026-06-19 17:09",
+   "round": "East 3-0",
+   "turn": 4,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 56,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260620-c940fe4e-2a46-45d6-8919-173b1d9a482c",
+   "date": "2026-06-19 17:45",
+   "round": "East 1-0",
+   "turn": 7,
+   "waits": [
+    "7m",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 45,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260620-c940fe4e-2a46-45d6-8919-173b1d9a482c",
+   "date": "2026-06-19 17:45",
+   "round": "East 1-3",
+   "turn": 15,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 15,
+   "mortal": 0.985,
+   "result": "draw"
+  },
+  {
+   "game": "260620-c940fe4e-2a46-45d6-8919-173b1d9a482c",
+   "date": "2026-06-19 17:45",
+   "round": "South 1-0",
+   "turn": 5,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 53,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260620-06c9f8e2-6df1-461c-aeec-6d908a276d8b",
+   "date": "2026-06-19 18:19",
+   "round": "East 4-1",
+   "turn": 8,
+   "waits": [
+    "3m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 41,
+   "mortal": 0.984,
+   "result": "dealt"
+  },
+  {
+   "game": "260620-06c9f8e2-6df1-461c-aeec-6d908a276d8b",
+   "date": "2026-06-19 18:19",
+   "round": "South 4-0",
+   "turn": 12,
+   "waits": [
+    "5m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 4,
+   "left": 24,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260622-6bfd312f-b996-452c-a9b1-0a5d3b8ab2cc",
+   "date": "2026-06-21 22:54",
+   "round": "South 4-0",
+   "turn": 9,
+   "waits": [
+    "1s",
+    "4s"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 35,
+   "mortal": 0.993,
+   "result": "won"
+  },
+  {
+   "game": "260622-f5e3fdd3-d43d-4fe7-8077-671e07f13454",
+   "date": "2026-06-21 23:33",
+   "round": "East 1-0",
+   "turn": 5,
+   "waits": [
+    "2s",
+    "5s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 50,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260622-f5e3fdd3-d43d-4fe7-8077-671e07f13454",
+   "date": "2026-06-21 23:33",
+   "round": "South 3-0",
+   "turn": 12,
+   "waits": [
+    "1s",
+    "4s"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 24,
+   "mortal": 0.935,
+   "result": "draw"
+  },
+  {
+   "game": "260622-721ef965-6024-4569-b6a3-58ece6b77303",
+   "date": "2026-06-22 00:38",
+   "round": "South 1-0",
+   "turn": 6,
+   "waits": [
+    "6m",
+    "9m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 50,
+   "mortal": 0.998,
+   "result": "draw"
+  },
+  {
+   "game": "260622-dfae19b9-f7a0-4b2d-8c99-c0f3e619b714",
+   "date": "2026-06-22 01:18",
+   "round": "South 1-0",
+   "turn": 3,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 61,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260622-f5717c58-e9a6-4839-8a57-8d0cc28c0f8e",
+   "date": "2026-06-22 01:42",
+   "round": "East 1-0",
+   "turn": 12,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 23,
+   "mortal": 0.996,
+   "result": "draw"
+  },
+  {
+   "game": "260627-cbce14e3-6c51-4c75-83d6-b833a01a892c",
+   "date": "2026-06-26 20:33",
+   "round": "East 2-0",
+   "turn": 5,
+   "waits": [
+    "8p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 55,
+   "mortal": 0.399,
+   "result": "dealt"
+  },
+  {
+   "game": "260627-cbce14e3-6c51-4c75-83d6-b833a01a892c",
+   "date": "2026-06-26 20:33",
+   "round": "East 4-0",
+   "turn": 7,
+   "waits": [
+    "7m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 4,
+   "left": 43,
+   "mortal": 0.985,
+   "result": "paid"
+  },
+  {
+   "game": "260708-38b2dc9f-e161-404e-b44d-eaa862f61363",
+   "date": "2026-07-07 19:18",
+   "round": "East 3-0",
+   "turn": 4,
+   "waits": [
+    "6p",
+    "P"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 59,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260708-38b2dc9f-e161-404e-b44d-eaa862f61363",
+   "date": "2026-07-07 19:18",
+   "round": "East 3-1",
+   "turn": 12,
+   "waits": [
+    "6m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 27,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260708-46687fcf-0499-4efa-97e5-4257913fa9e7",
+   "date": "2026-07-07 19:36",
+   "round": "East 2-0",
+   "turn": 12,
+   "waits": [
+    "5m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 1,
+   "left": 24,
+   "mortal": 0.994,
+   "result": "won"
+  },
+  {
+   "game": "260708-46687fcf-0499-4efa-97e5-4257913fa9e7",
+   "date": "2026-07-07 19:36",
+   "round": "South 2-0",
+   "turn": 3,
+   "waits": [
+    "S"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 59,
+   "mortal": 0.736,
+   "result": "won"
+  },
+  {
+   "game": "260708-cffa4cd3-ba31-40c8-936c-d1fd02d302b1",
+   "date": "2026-07-07 20:11",
+   "round": "South 2-1",
+   "turn": 8,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 40,
+   "mortal": 0.812,
+   "result": "won"
+  },
+  {
+   "game": "260708-aa346099-dbf4-41a0-a846-d963dfb2c2a5",
+   "date": "2026-07-07 20:39",
+   "round": "East 3-0",
+   "turn": 11,
+   "waits": [
+    "6m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 28,
+   "mortal": 0.99,
+   "result": "draw"
+  },
+  {
+   "game": "260708-aa346099-dbf4-41a0-a846-d963dfb2c2a5",
+   "date": "2026-07-07 20:39",
+   "round": "South 1-0",
+   "turn": 8,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 38,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260730-e6900abd-3ce3-482d-95a1-9df1f5885f32",
+   "date": "2026-07-29 18:20",
+   "round": "East 1-0",
+   "turn": 11,
+   "waits": [
+    "4p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 2,
+   "left": 28,
+   "mortal": 0.995,
+   "result": "draw"
+  },
+  {
+   "game": "260730-e6900abd-3ce3-482d-95a1-9df1f5885f32",
+   "date": "2026-07-29 18:20",
+   "round": "East 4-0",
+   "turn": 10,
+   "waits": [
+    "5m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 2,
+   "left": 36,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260730-e6900abd-3ce3-482d-95a1-9df1f5885f32",
+   "date": "2026-07-29 18:20",
+   "round": "South 3-0",
+   "turn": 7,
+   "waits": [
+    "6m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 4,
+   "left": 42,
+   "mortal": 0.996,
+   "result": "dealt"
+  },
+  {
+   "game": "260907-5bb86780-71a7-4a71-a75d-8ae72dcb5d16",
+   "date": "2026-09-07 09:24",
+   "round": "East 2-0",
+   "turn": 8,
+   "waits": [
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 41,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260907-5bb86780-71a7-4a71-a75d-8ae72dcb5d16",
+   "date": "2026-09-07 09:24",
+   "round": "East 2-3",
+   "turn": 6,
+   "waits": [
+    "1s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 51,
+   "mortal": 0.039,
+   "result": "won"
+  },
+  {
+   "game": "260907-5bb86780-71a7-4a71-a75d-8ae72dcb5d16",
+   "date": "2026-09-07 09:24",
+   "round": "East 4-0",
+   "turn": 12,
+   "waits": [
+    "7s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 3,
+   "rank": 1,
+   "left": 24,
+   "mortal": 0.06,
+   "result": "won"
+  },
+  {
+   "game": "260907-0d113184-0a72-4f2f-af25-b4ac7444007f",
+   "date": "2026-09-07 09:56",
+   "round": "South 2-0",
+   "turn": 5,
+   "waits": [
+    "4s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 53,
+   "mortal": 0.996,
+   "result": "won"
+  },
+  {
+   "game": "260907-0f2f66ab-512a-4295-a1d8-242a389889df",
+   "date": "2026-09-07 10:34",
+   "round": "East 1-0",
+   "turn": 5,
+   "waits": [
+    "N"
+   ],
+   "furiten": [],
+   "live": 2,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 53,
+   "mortal": 0.996,
+   "result": "paid"
+  },
+  {
+   "game": "260907-0f2f66ab-512a-4295-a1d8-242a389889df",
+   "date": "2026-09-07 10:34",
+   "round": "East 3-0",
+   "turn": 5,
+   "waits": [
+    "6m",
+    "8m",
+    "9m"
+   ],
+   "furiten": [],
+   "live": 10,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 54,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260907-0f2f66ab-512a-4295-a1d8-242a389889df",
+   "date": "2026-09-07 10:34",
+   "round": "East 4-1",
+   "turn": 7,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 44,
+   "mortal": 0.933,
+   "result": "won"
+  },
+  {
+   "game": "260914-862d3939-9c41-4d92-a24a-f03f2fa4c235",
+   "date": "2026-09-13 18:06",
+   "round": "East 1-1",
+   "turn": 6,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 46,
+   "mortal": 0.998,
+   "result": "dealt"
+  },
+  {
+   "game": "260914-862d3939-9c41-4d92-a24a-f03f2fa4c235",
+   "date": "2026-09-13 18:06",
+   "round": "East 1-2",
+   "turn": 7,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 43,
+   "mortal": 1.0,
+   "result": "won"
+  },
+  {
+   "game": "260914-862d3939-9c41-4d92-a24a-f03f2fa4c235",
+   "date": "2026-09-13 18:06",
+   "round": "South 2-0",
+   "turn": 7,
+   "waits": [
+    "2p",
+    "5p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 43,
+   "mortal": 0.997,
+   "result": "won"
+  },
+  {
+   "game": "260919-96c5dc02-fdbb-496e-9037-be1126cf1fc7",
+   "date": "2026-09-18 22:43",
+   "round": "East 2-1",
+   "turn": 9,
+   "waits": [
+    "1p",
+    "8p"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 34,
+   "mortal": 0.983,
+   "result": "draw"
+  },
+  {
+   "game": "260919-363fd973-c039-442c-b385-bcdf5ac5e983",
+   "date": "2026-09-18 23:10",
+   "round": "East 1-0",
+   "turn": 5,
+   "waits": [
+    "5p",
+    "8p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 53,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260919-363fd973-c039-442c-b385-bcdf5ac5e983",
+   "date": "2026-09-18 23:10",
+   "round": "East 4-0",
+   "turn": 10,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 32,
+   "mortal": 0.997,
+   "result": "paid"
+  },
+  {
+   "game": "260919-6e14811e-4664-4a84-a977-89c8e9f50fe8",
+   "date": "2026-09-19 02:24",
+   "round": "East 2-0",
+   "turn": 4,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 56,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260919-6e14811e-4664-4a84-a977-89c8e9f50fe8",
+   "date": "2026-09-19 02:24",
+   "round": "East 3-0",
+   "turn": 9,
+   "waits": [
+    "7s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 2,
+   "left": 37,
+   "mortal": 0.996,
+   "result": "paid"
+  },
+  {
+   "game": "260919-6e14811e-4664-4a84-a977-89c8e9f50fe8",
+   "date": "2026-09-19 02:24",
+   "round": "South 2-0",
+   "turn": 10,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 37,
+   "mortal": 0.997,
+   "result": "won"
+  },
+  {
+   "game": "260919-41b36c17-16b1-4d98-a15f-9f23f37df52b",
+   "date": "2026-09-19 02:56",
+   "round": "East 1-0",
+   "turn": 4,
+   "waits": [
+    "3m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 56,
+   "mortal": 0.582,
+   "result": "paid"
+  },
+  {
+   "game": "260919-5e7aab5c-26ab-4778-ad4b-52bb0a5271f0",
+   "date": "2026-09-19 03:45",
+   "round": "East 2-1",
+   "turn": 10,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 35,
+   "mortal": 0.966,
+   "result": "won"
+  },
+  {
+   "game": "260919-5e7aab5c-26ab-4778-ad4b-52bb0a5271f0",
+   "date": "2026-09-19 03:45",
+   "round": "East 3-0",
+   "turn": 9,
+   "waits": [
+    "8m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 37,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260919-bd7daa16-430f-454d-86bb-3e7c88db8b4d",
+   "date": "2026-09-19 10:17",
+   "round": "East 3-1",
+   "turn": 9,
+   "waits": [
+    "7m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 35,
+   "mortal": 0.995,
+   "result": "dealt"
+  },
+  {
+   "game": "260919-bd7daa16-430f-454d-86bb-3e7c88db8b4d",
+   "date": "2026-09-19 10:17",
+   "round": "East 4-0",
+   "turn": 7,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 47,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260919-1bba6359-d494-443c-bc47-cf4af06611cf",
+   "date": "2026-09-19 10:59",
+   "round": "East 1-0",
+   "turn": 13,
+   "waits": [
+    "5m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 20,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260919-1bba6359-d494-443c-bc47-cf4af06611cf",
+   "date": "2026-09-19 10:59",
+   "round": "South 4-0",
+   "turn": 3,
+   "waits": [
+    "3p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 59,
+   "mortal": 0.997,
+   "result": "won"
+  },
+  {
+   "game": "260919-3ae032e2-3edc-48bd-a26e-8d0dbead534a",
+   "date": "2026-09-19 11:25",
+   "round": "East 3-2",
+   "turn": 7,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 43,
+   "mortal": 0.997,
+   "result": "paid"
+  },
+  {
+   "game": "260919-cec5015c-d1b3-41ef-a04d-5d09d88c6358",
+   "date": "2026-09-19 11:38",
+   "round": "East 1-0",
+   "turn": 9,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 37,
+   "mortal": 0.966,
+   "result": "won"
+  },
+  {
+   "game": "260919-cec5015c-d1b3-41ef-a04d-5d09d88c6358",
+   "date": "2026-09-19 11:38",
+   "round": "East 3-1",
+   "turn": 9,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 1,
+   "left": 36,
+   "mortal": 0.997,
+   "result": "won"
+  },
+  {
+   "game": "260920-58550bc6-10b0-4950-ac8b-aae76bb8664d",
+   "date": "2026-09-19 12:10",
+   "round": "East 2-0",
+   "turn": 9,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 37,
+   "mortal": 0.997,
+   "result": "paid"
+  },
+  {
+   "game": "260920-58550bc6-10b0-4950-ac8b-aae76bb8664d",
+   "date": "2026-09-19 12:10",
+   "round": "South 3-0",
+   "turn": 10,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 30,
+   "mortal": 0.996,
+   "result": "won"
+  },
+  {
+   "game": "260920-900a1166-f9e0-4cc7-900a-a54c6b93dda4",
+   "date": "2026-09-19 12:42",
+   "round": "East 1-0",
+   "turn": 13,
+   "waits": [
+    "4m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 3,
+   "left": 18,
+   "mortal": 0.228,
+   "result": "paid"
+  },
+  {
+   "game": "260920-900a1166-f9e0-4cc7-900a-a54c6b93dda4",
+   "date": "2026-09-19 12:42",
+   "round": "South 3-1",
+   "turn": 12,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 25,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260920-7c650e5f-c501-4f9e-bfec-b68822317631",
+   "date": "2026-09-19 13:16",
+   "round": "East 4-1",
+   "turn": 10,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 2,
+   "left": 32,
+   "mortal": 0.989,
+   "result": "won"
+  },
+  {
+   "game": "260920-27f977f3-c9e0-41ce-b8c1-faaee5f1dedc",
+   "date": "2026-09-19 13:36",
+   "round": "East 1-0",
+   "turn": 10,
+   "waits": [
+    "2m",
+    "5m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 32,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260920-27f977f3-c9e0-41ce-b8c1-faaee5f1dedc",
+   "date": "2026-09-19 13:36",
+   "round": "East 2-0",
+   "turn": 4,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 58,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260920-27f977f3-c9e0-41ce-b8c1-faaee5f1dedc",
+   "date": "2026-09-19 13:36",
+   "round": "East 3-0",
+   "turn": 11,
+   "waits": [
+    "6p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 28,
+   "mortal": 0.964,
+   "result": "paid"
+  },
+  {
+   "game": "260920-3d2edaa5-5a07-4526-ab85-cf9cac0ca24a",
+   "date": "2026-09-19 17:08",
+   "round": "East 1-0",
+   "turn": 9,
+   "waits": [
+    "5m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 37,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260920-3d2edaa5-5a07-4526-ab85-cf9cac0ca24a",
+   "date": "2026-09-19 17:08",
+   "round": "East 1-1",
+   "turn": 8,
+   "waits": [
+    "4m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 41,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260920-3d2edaa5-5a07-4526-ab85-cf9cac0ca24a",
+   "date": "2026-09-19 17:08",
+   "round": "East 3-0",
+   "turn": 6,
+   "waits": [
+    "7p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 47,
+   "mortal": 0.985,
+   "result": "won"
+  },
+  {
+   "game": "260920-93675d6c-5a3f-4041-aca0-d6cf8bd16f95",
+   "date": "2026-09-19 17:46",
+   "round": "East 1-0",
+   "turn": 8,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 3,
+   "left": 38,
+   "mortal": 0.998,
+   "result": "dealt"
+  },
+  {
+   "game": "260920-93675d6c-5a3f-4041-aca0-d6cf8bd16f95",
+   "date": "2026-09-19 17:46",
+   "round": "East 4-0",
+   "turn": 13,
+   "waits": [
+    "2m",
+    "5p"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 22,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260920-93675d6c-5a3f-4041-aca0-d6cf8bd16f95",
+   "date": "2026-09-19 17:46",
+   "round": "South 1-0",
+   "turn": 13,
+   "waits": [
+    "4p",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 18,
+   "mortal": 0.999,
+   "result": "dealt"
+  },
+  {
+   "game": "260920-9d667586-3125-40f9-9989-9b14743d5967",
+   "date": "2026-09-19 18:11",
+   "round": "East 4-1",
+   "turn": 6,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 45,
+   "mortal": 0.947,
+   "result": "paid"
+  },
+  {
+   "game": "260920-9d667586-3125-40f9-9989-9b14743d5967",
+   "date": "2026-09-19 18:11",
+   "round": "South 2-1",
+   "turn": 13,
+   "waits": [
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 24,
+   "mortal": 0.994,
+   "result": "draw"
+  },
+  {
+   "game": "260920-a3b39b2d-e995-4229-9a27-dc46d5286ce7",
+   "date": "2026-09-19 22:29",
+   "round": "East 1-0",
+   "turn": 12,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 3,
+   "left": 23,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260920-192cc940-6217-4d71-8ff3-c64b165d3673",
+   "date": "2026-09-19 23:17",
+   "round": "East 4-0",
+   "turn": 7,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 45,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260920-192cc940-6217-4d71-8ff3-c64b165d3673",
+   "date": "2026-09-19 23:17",
+   "round": "South 2-0",
+   "turn": 9,
+   "waits": [
+    "E"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 38,
+   "mortal": 0.892,
+   "result": "draw"
+  },
+  {
+   "game": "260920-90933d91-3ea5-4b2d-b0e4-bd9e625ae52a",
+   "date": "2026-09-19 23:49",
+   "round": "East 4-0",
+   "turn": 9,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 36,
+   "mortal": 1.0,
+   "result": "won"
+  },
+  {
+   "game": "260920-90933d91-3ea5-4b2d-b0e4-bd9e625ae52a",
+   "date": "2026-09-19 23:49",
+   "round": "South 3-0",
+   "turn": 16,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 8,
+   "mortal": 0.993,
+   "result": "draw"
+  },
+  {
+   "game": "260920-90933d91-3ea5-4b2d-b0e4-bd9e625ae52a",
+   "date": "2026-09-19 23:49",
+   "round": "South 4-1",
+   "turn": 8,
+   "waits": [
+    "2s",
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 43,
+   "mortal": 0.997,
+   "result": "won"
+  },
+  {
+   "game": "260921-accd073a-10e2-4b1d-a823-85433a792a61",
+   "date": "2026-09-20 20:53",
+   "round": "East 2-0",
+   "turn": 5,
+   "waits": [
+    "8s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 51,
+   "mortal": 0.95,
+   "result": "won"
+  },
+  {
+   "game": "260921-accd073a-10e2-4b1d-a823-85433a792a61",
+   "date": "2026-09-20 20:53",
+   "round": "South 1-0",
+   "turn": 8,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 38,
+   "mortal": 0.996,
+   "result": "dealt"
+  },
+  {
+   "game": "260921-accd073a-10e2-4b1d-a823-85433a792a61",
+   "date": "2026-09-20 20:53",
+   "round": "South 1-2",
+   "turn": 9,
+   "waits": [
+    "5m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 3,
+   "rank": 3,
+   "left": 35,
+   "mortal": 0.999,
+   "result": "draw"
+  },
+  {
+   "game": "260921-2250fff8-4c97-4c7b-993d-9ab4316d0471",
+   "date": "2026-09-20 21:23",
+   "round": "South 3-0",
+   "turn": 8,
+   "waits": [
+    "2s",
+    "5s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 36,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260921-2250fff8-4c97-4c7b-993d-9ab4316d0471",
+   "date": "2026-09-20 21:23",
+   "round": "South 4-1",
+   "turn": 4,
+   "waits": [
+    "2p",
+    "5p",
+    "8p"
+   ],
+   "furiten": [],
+   "live": 10,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 57,
+   "mortal": 0.985,
+   "result": "won"
+  },
+  {
+   "game": "260921-6faea687-eb5d-4d91-b5db-2f4ab9c98a5b",
+   "date": "2026-09-20 22:01",
+   "round": "South 1-1",
+   "turn": 7,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 4,
+   "left": 40,
+   "mortal": 0.981,
+   "result": "paid"
+  },
+  {
+   "game": "260921-6faea687-eb5d-4d91-b5db-2f4ab9c98a5b",
+   "date": "2026-09-20 22:01",
+   "round": "South 2-0",
+   "turn": 11,
+   "waits": [
+    "6m",
+    "9m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 3,
+   "rank": 3,
+   "left": 29,
+   "mortal": 0.999,
+   "result": "dealt"
+  },
+  {
+   "game": "260921-7b8a8c7c-94f0-47c6-84ba-1638af253b8d",
+   "date": "2026-09-20 22:43",
+   "round": "East 3-0",
+   "turn": 11,
+   "waits": [
+    "7p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 27,
+   "mortal": 0.662,
+   "result": "dealt"
+  },
+  {
+   "game": "260921-7b8a8c7c-94f0-47c6-84ba-1638af253b8d",
+   "date": "2026-09-20 22:43",
+   "round": "South 1-4",
+   "turn": 11,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 28,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260921-8c944457-0aef-4d65-81b0-b1f83b9852a0",
+   "date": "2026-09-20 23:52",
+   "round": "East 1-0",
+   "turn": 11,
+   "waits": [
+    "4p",
+    "5p",
+    "7p",
+    "8p"
+   ],
+   "furiten": [],
+   "live": 10,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 27,
+   "mortal": 0.99,
+   "result": "won"
+  },
+  {
+   "game": "260921-dc312996-ff7f-4710-80f7-7cf52700efe1",
+   "date": "2026-09-21 00:40",
+   "round": "East 4-0",
+   "turn": 11,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 25,
+   "mortal": 0.999,
+   "result": "draw"
+  },
+  {
+   "game": "260921-8a7c028b-61c0-4a86-a6e4-74e6c4d07e82",
+   "date": "2026-09-21 02:13",
+   "round": "South 3-1",
+   "turn": 9,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 34,
+   "mortal": 0.981,
+   "result": "paid"
+  },
+  {
+   "game": "260921-4ddf2bb3-cfc0-4b87-84d7-c493e719e180",
+   "date": "2026-09-21 02:51",
+   "round": "East 2-0",
+   "turn": 4,
+   "waits": [
+    "7s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 55,
+   "mortal": 0.92,
+   "result": "draw"
+  },
+  {
+   "game": "260921-4ddf2bb3-cfc0-4b87-84d7-c493e719e180",
+   "date": "2026-09-21 02:51",
+   "round": "East 3-2",
+   "turn": 8,
+   "waits": [
+    "1s",
+    "4s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 2,
+   "left": 40,
+   "mortal": 0.89,
+   "result": "won"
+  },
+  {
+   "game": "260921-131330a2-6409-4e0c-bca3-3c4cc9cc7917",
+   "date": "2026-09-21 03:22",
+   "round": "South 3-0",
+   "turn": 10,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 33,
+   "mortal": 0.904,
+   "result": "won"
+  },
+  {
+   "game": "260921-131330a2-6409-4e0c-bca3-3c4cc9cc7917",
+   "date": "2026-09-21 03:22",
+   "round": "South 4-0",
+   "turn": 6,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 50,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260921-abcdff84-054a-4384-a479-681e3e156b8d",
+   "date": "2026-09-21 03:44",
+   "round": "East 2-0",
+   "turn": 4,
+   "waits": [
+    "2s",
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 11,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 57,
+   "mortal": 0.999,
+   "result": "draw"
+  },
+  {
+   "game": "260921-abcdff84-054a-4384-a479-681e3e156b8d",
+   "date": "2026-09-21 03:44",
+   "round": "East 2-1",
+   "turn": 10,
+   "waits": [
+    "5m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 35,
+   "mortal": 0.996,
+   "result": "won"
+  },
+  {
+   "game": "260921-abcdff84-054a-4384-a479-681e3e156b8d",
+   "date": "2026-09-21 03:44",
+   "round": "East 4-0",
+   "turn": 8,
+   "waits": [
+    "3m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 39,
+   "mortal": 0.038,
+   "result": "dealt"
+  },
+  {
+   "game": "260921-abcdff84-054a-4384-a479-681e3e156b8d",
+   "date": "2026-09-21 03:44",
+   "round": "South 3-1",
+   "turn": 8,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 38,
+   "mortal": 0.035,
+   "result": "draw"
+  },
+  {
+   "game": "260921-610ba96e-37d7-4767-9b1b-82038161788a",
+   "date": "2026-09-21 04:27",
+   "round": "East 3-0",
+   "turn": 6,
+   "waits": [
+    "1s",
+    "4s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 50,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260921-610ba96e-37d7-4767-9b1b-82038161788a",
+   "date": "2026-09-21 04:27",
+   "round": "East 3-1",
+   "turn": 5,
+   "waits": [
+    "3m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 2,
+   "rank": 1,
+   "left": 52,
+   "mortal": 0.066,
+   "result": "paid"
+  },
+  {
+   "game": "260921-610ba96e-37d7-4767-9b1b-82038161788a",
+   "date": "2026-09-21 04:27",
+   "round": "East 4-0",
+   "turn": 10,
+   "waits": [
+    "E",
+    "S"
+   ],
+   "furiten": [],
+   "live": 2,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 31,
+   "mortal": 0.033,
+   "result": "won"
+  },
+  {
+   "game": "260921-c1ce96b0-3815-49bb-935a-bcfd430fc942",
+   "date": "2026-09-21 11:53",
+   "round": "South 2-1",
+   "turn": 9,
+   "waits": [
+    "8p"
+   ],
+   "furiten": [],
+   "live": 2,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 37,
+   "mortal": 0.989,
+   "result": "won"
+  },
+  {
+   "game": "260922-2641e5b2-f104-4bc1-b8d9-6d0c69995256",
+   "date": "2026-09-21 12:30",
+   "round": "East 2-0",
+   "turn": 12,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 4,
+   "left": 23,
+   "mortal": 0.495,
+   "result": "won"
+  },
+  {
+   "game": "260922-2641e5b2-f104-4bc1-b8d9-6d0c69995256",
+   "date": "2026-09-21 12:30",
+   "round": "East 4-0",
+   "turn": 7,
+   "waits": [
+    "2p",
+    "5p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 45,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260922-26e46225-7c1b-4eef-b4a5-c2ae4482ba31",
+   "date": "2026-09-21 14:02",
+   "round": "South 3-1",
+   "turn": 10,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 27,
+   "mortal": 0.996,
+   "result": "won"
+  },
+  {
+   "game": "260922-5cb0e231-a2ac-4800-b727-c0ae3720c137",
+   "date": "2026-09-21 15:40",
+   "round": "East 2-0",
+   "turn": 5,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 55,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260922-5cb0e231-a2ac-4800-b727-c0ae3720c137",
+   "date": "2026-09-21 15:40",
+   "round": "East 2-1",
+   "turn": 12,
+   "waits": [
+    "5p",
+    "8p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 25,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260922-4ebf19e7-89c5-469e-b2eb-90ee1c185965",
+   "date": "2026-09-21 16:26",
+   "round": "East 4-0",
+   "turn": 6,
+   "waits": [
+    "3s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 46,
+   "mortal": 0.95,
+   "result": "draw"
+  },
+  {
+   "game": "260922-4ebf19e7-89c5-469e-b2eb-90ee1c185965",
+   "date": "2026-09-21 16:26",
+   "round": "South 1-1",
+   "turn": 14,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 14,
+   "mortal": 0.996,
+   "result": "draw"
+  },
+  {
+   "game": "260922-4ebf19e7-89c5-469e-b2eb-90ee1c185965",
+   "date": "2026-09-21 16:26",
+   "round": "South 3-0",
+   "turn": 14,
+   "waits": [
+    "5m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 15,
+   "mortal": 0.999,
+   "result": "draw"
+  },
+  {
+   "game": "260922-4ebf19e7-89c5-469e-b2eb-90ee1c185965",
+   "date": "2026-09-21 16:26",
+   "round": "South 4-0",
+   "turn": 7,
+   "waits": [
+    "3p"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 46,
+   "mortal": 0.637,
+   "result": "paid"
+  },
+  {
+   "game": "260922-dad15d2f-09fb-4845-b33a-bcb55de50b07",
+   "date": "2026-09-21 17:35",
+   "round": "East 3-0",
+   "turn": 6,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 47,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260922-dad15d2f-09fb-4845-b33a-bcb55de50b07",
+   "date": "2026-09-21 17:35",
+   "round": "South 1-2",
+   "turn": 7,
+   "waits": [
+    "3s",
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 9,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 47,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260922-be9c6da9-b126-424b-ba7c-45b8f1d985f7",
+   "date": "2026-09-21 18:17",
+   "round": "East 2-0",
+   "turn": 4,
+   "waits": [
+    "P"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 56,
+   "mortal": 0.994,
+   "result": "won"
+  },
+  {
+   "game": "260922-be9c6da9-b126-424b-ba7c-45b8f1d985f7",
+   "date": "2026-09-21 18:17",
+   "round": "South 1-0",
+   "turn": 9,
+   "waits": [
+    "3m",
+    "6m",
+    "9m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 2,
+   "left": 35,
+   "mortal": 0.057,
+   "result": "paid"
+  },
+  {
+   "game": "260922-be9c6da9-b126-424b-ba7c-45b8f1d985f7",
+   "date": "2026-09-21 18:17",
+   "round": "South 1-3",
+   "turn": 5,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 51,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260922-be9c6da9-b126-424b-ba7c-45b8f1d985f7",
+   "date": "2026-09-21 18:17",
+   "round": "South 2-0",
+   "turn": 6,
+   "waits": [
+    "1m",
+    "W"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 49,
+   "mortal": 0.993,
+   "result": "won"
+  },
+  {
+   "game": "260922-3b348dc7-6f4b-4b7a-a9b6-2c6d8a7ba6d2",
+   "date": "2026-09-21 19:00",
+   "round": "East 1-0",
+   "turn": 7,
+   "waits": [
+    "2m",
+    "5m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 44,
+   "mortal": 0.999,
+   "result": "dealt"
+  },
+  {
+   "game": "260922-c61d1cbf-dd78-4f90-a76b-6c3f9cbe999f",
+   "date": "2026-09-21 19:29",
+   "round": "East 4-0",
+   "turn": 11,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 28,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260922-c61d1cbf-dd78-4f90-a76b-6c3f9cbe999f",
+   "date": "2026-09-21 19:29",
+   "round": "South 1-0",
+   "turn": 9,
+   "waits": [
+    "8m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 38,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260922-c61d1cbf-dd78-4f90-a76b-6c3f9cbe999f",
+   "date": "2026-09-21 19:29",
+   "round": "South 1-1",
+   "turn": 6,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 48,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260923-a491b5cf-3ee0-4c63-aab4-659468e2378c",
+   "date": "2026-09-22 17:06",
+   "round": "East 2-1",
+   "turn": 6,
+   "waits": [
+    "5p",
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 47,
+   "mortal": 0.941,
+   "result": "won"
+  },
+  {
+   "game": "260923-a491b5cf-3ee0-4c63-aab4-659468e2378c",
+   "date": "2026-09-22 17:06",
+   "round": "South 2-1",
+   "turn": 12,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 23,
+   "mortal": 0.999,
+   "result": "dealt"
+  },
+  {
+   "game": "260923-275bb855-c2db-43a4-b555-b1c52a836ccd",
+   "date": "2026-09-22 17:38",
+   "round": "East 3-0",
+   "turn": 9,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 39,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260923-275bb855-c2db-43a4-b555-b1c52a836ccd",
+   "date": "2026-09-22 17:38",
+   "round": "East 4-0",
+   "turn": 11,
+   "waits": [
+    "3m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 3,
+   "rank": 2,
+   "left": 35,
+   "mortal": 0.029,
+   "result": "draw"
+  },
+  {
+   "game": "260923-275bb855-c2db-43a4-b555-b1c52a836ccd",
+   "date": "2026-09-22 17:38",
+   "round": "South 1-1",
+   "turn": 8,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 38,
+   "mortal": 0.997,
+   "result": "won"
+  },
+  {
+   "game": "260923-275bb855-c2db-43a4-b555-b1c52a836ccd",
+   "date": "2026-09-22 17:38",
+   "round": "South 2-3",
+   "turn": 10,
+   "waits": [
+    "2m",
+    "5m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 28,
+   "mortal": 0.662,
+   "result": "won"
+  },
+  {
+   "game": "260923-6a7da299-07eb-4750-a4b3-3fe9ef54d524",
+   "date": "2026-09-22 18:24",
+   "round": "East 3-0",
+   "turn": 2,
+   "waits": [
+    "2p",
+    "5p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 64,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260923-6a7da299-07eb-4750-a4b3-3fe9ef54d524",
+   "date": "2026-09-22 18:24",
+   "round": "East 4-1",
+   "turn": 15,
+   "waits": [
+    "1p",
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 13,
+   "mortal": 0.603,
+   "result": "paid"
+  },
+  {
+   "game": "260923-6a7da299-07eb-4750-a4b3-3fe9ef54d524",
+   "date": "2026-09-22 18:24",
+   "round": "South 1-0",
+   "turn": 10,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 33,
+   "mortal": 0.988,
+   "result": "won"
+  },
+  {
+   "game": "260923-e1062a86-fac4-4882-8667-f3abf380f70a",
+   "date": "2026-09-22 19:01",
+   "round": "South 4-0",
+   "turn": 9,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 38,
+   "mortal": 0.245,
+   "result": "dealt"
+  },
+  {
+   "game": "260923-e1062a86-fac4-4882-8667-f3abf380f70a",
+   "date": "2026-09-22 19:01",
+   "round": "South 4-1",
+   "turn": 8,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 40,
+   "mortal": 0.984,
+   "result": "paid"
+  },
+  {
+   "game": "260924-07f4adf4-bcd7-4ed0-b6f1-e583cf5b4590",
+   "date": "2026-09-23 13:31",
+   "round": "East 1-0",
+   "turn": 11,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 28,
+   "mortal": 0.992,
+   "result": "paid"
+  },
+  {
+   "game": "260924-07f4adf4-bcd7-4ed0-b6f1-e583cf5b4590",
+   "date": "2026-09-23 13:31",
+   "round": "East 2-0",
+   "turn": 9,
+   "waits": [
+    "3p",
+    "2s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 41,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260924-07f4adf4-bcd7-4ed0-b6f1-e583cf5b4590",
+   "date": "2026-09-23 13:31",
+   "round": "East 3-0",
+   "turn": 8,
+   "waits": [
+    "2s",
+    "5s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 3,
+   "left": 38,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260924-b908280e-c53f-485b-8c81-9ecd7b678231",
+   "date": "2026-09-23 18:01",
+   "round": "East 1-0",
+   "turn": 5,
+   "waits": [
+    "6m",
+    "9m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 53,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260924-0e508d5e-4b31-49ac-b77d-dab1c05ab4ae",
+   "date": "2026-09-23 18:40",
+   "round": "East 2-1",
+   "turn": 7,
+   "waits": [
+    "2p",
+    "5p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 44,
+   "mortal": 1.0,
+   "result": "won"
+  },
+  {
+   "game": "260924-0e508d5e-4b31-49ac-b77d-dab1c05ab4ae",
+   "date": "2026-09-23 18:40",
+   "round": "East 3-0",
+   "turn": 8,
+   "waits": [
+    "3s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 41,
+   "mortal": 0.976,
+   "result": "paid"
+  },
+  {
+   "game": "260924-0e508d5e-4b31-49ac-b77d-dab1c05ab4ae",
+   "date": "2026-09-23 18:40",
+   "round": "South 3-1",
+   "turn": 5,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 4,
+   "left": 52,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260924-0e508d5e-4b31-49ac-b77d-dab1c05ab4ae",
+   "date": "2026-09-23 18:40",
+   "round": "West 1-1",
+   "turn": 7,
+   "waits": [
+    "6m",
+    "9m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 45,
+   "mortal": 0.458,
+   "result": "won"
+  },
+  {
+   "game": "260924-3974ff3f-7827-46fc-b3d0-1f3fd81a2ca1",
+   "date": "2026-09-23 19:11",
+   "round": "East 4-0",
+   "turn": 9,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 1,
+   "left": 39,
+   "mortal": 0.995,
+   "result": "won"
+  },
+  {
+   "game": "260924-3974ff3f-7827-46fc-b3d0-1f3fd81a2ca1",
+   "date": "2026-09-23 19:11",
+   "round": "South 2-0",
+   "turn": 11,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 29,
+   "mortal": 0.045,
+   "result": "won"
+  },
+  {
+   "game": "260924-3974ff3f-7827-46fc-b3d0-1f3fd81a2ca1",
+   "date": "2026-09-23 19:11",
+   "round": "South 2-1",
+   "turn": 7,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 45,
+   "mortal": 0.955,
+   "result": "won"
+  },
+  {
+   "game": "260924-f741b6f0-9139-47d4-a65a-dd552b52ff81",
+   "date": "2026-09-23 19:47",
+   "round": "South 2-0",
+   "turn": 8,
+   "waits": [
+    "3s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 41,
+   "mortal": 0.987,
+   "result": "paid"
+  },
+  {
+   "game": "260924-f741b6f0-9139-47d4-a65a-dd552b52ff81",
+   "date": "2026-09-23 19:47",
+   "round": "South 3-0",
+   "turn": 14,
+   "waits": [
+    "2s",
+    "5s"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 15,
+   "mortal": 0.601,
+   "result": "dealt"
+  },
+  {
+   "game": "260924-d2ba9391-5047-4a09-89da-38bc4bd1845b",
+   "date": "2026-09-23 20:32",
+   "round": "East 4-0",
+   "turn": 12,
+   "waits": [
+    "4m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 1,
+   "left": 23,
+   "mortal": 0.034,
+   "result": "paid"
+  },
+  {
+   "game": "260924-546dc69b-5194-46c6-b91c-ca9b4891c62f",
+   "date": "2026-09-23 21:14",
+   "round": "East 4-0",
+   "turn": 9,
+   "waits": [
+    "3m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 4,
+   "left": 36,
+   "mortal": 0.099,
+   "result": "draw"
+  },
+  {
+   "game": "260924-ca82b01d-96b9-45b0-a388-5f6bd51d9bb8",
+   "date": "2026-09-23 21:49",
+   "round": "East 1-0",
+   "turn": 13,
+   "waits": [
+    "4p",
+    "1s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 2,
+   "left": 22,
+   "mortal": 0.142,
+   "result": "draw"
+  },
+  {
+   "game": "260924-ca82b01d-96b9-45b0-a388-5f6bd51d9bb8",
+   "date": "2026-09-23 21:49",
+   "round": "East 3-0",
+   "turn": 7,
+   "waits": [
+    "7m",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 1,
+   "left": 45,
+   "mortal": 0.129,
+   "result": "paid"
+  },
+  {
+   "game": "260924-ca82b01d-96b9-45b0-a388-5f6bd51d9bb8",
+   "date": "2026-09-23 21:49",
+   "round": "East 3-2",
+   "turn": 4,
+   "waits": [
+    "4m",
+    "7m",
+    "W"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 54,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260924-ca82b01d-96b9-45b0-a388-5f6bd51d9bb8",
+   "date": "2026-09-23 21:49",
+   "round": "South 3-0",
+   "turn": 10,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 31,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260924-a941a150-7a4c-43ae-bfc8-6a6241d9b90f",
+   "date": "2026-09-23 22:30",
+   "round": "East 2-1",
+   "turn": 8,
+   "waits": [
+    "2s",
+    "5s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 41,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260924-a941a150-7a4c-43ae-bfc8-6a6241d9b90f",
+   "date": "2026-09-23 22:30",
+   "round": "East 3-0",
+   "turn": 5,
+   "waits": [
+    "1s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 51,
+   "mortal": 0.535,
+   "result": "paid"
+  },
+  {
+   "game": "260924-a941a150-7a4c-43ae-bfc8-6a6241d9b90f",
+   "date": "2026-09-23 22:30",
+   "round": "East 4-0",
+   "turn": 5,
+   "waits": [
+    "8s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 52,
+   "mortal": 0.998,
+   "result": "dealt"
+  },
+  {
+   "game": "260924-a941a150-7a4c-43ae-bfc8-6a6241d9b90f",
+   "date": "2026-09-23 22:30",
+   "round": "South 2-3",
+   "turn": 11,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 30,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260924-a941a150-7a4c-43ae-bfc8-6a6241d9b90f",
+   "date": "2026-09-23 22:30",
+   "round": "South 3-0",
+   "turn": 6,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 46,
+   "mortal": 0.996,
+   "result": "won"
+  },
+  {
+   "game": "260925-01f573ba-3f5a-487b-a698-6aad082db74b",
+   "date": "2026-09-24 19:36",
+   "round": "East 1-0",
+   "turn": 5,
+   "waits": [
+    "5m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 51,
+   "mortal": 0.116,
+   "result": "draw"
+  },
+  {
+   "game": "260925-01f573ba-3f5a-487b-a698-6aad082db74b",
+   "date": "2026-09-24 19:36",
+   "round": "South 3-0",
+   "turn": 7,
+   "waits": [
+    "2m",
+    "5m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 2,
+   "left": 49,
+   "mortal": 0.995,
+   "result": "won"
+  },
+  {
+   "game": "260925-01f573ba-3f5a-487b-a698-6aad082db74b",
+   "date": "2026-09-24 19:36",
+   "round": "South 3-1",
+   "turn": 7,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 2,
+   "left": 44,
+   "mortal": 0.293,
+   "result": "dealt"
+  },
+  {
+   "game": "260925-ab37b976-6900-4ec5-b503-cad132860ff0",
+   "date": "2026-09-24 20:28",
+   "round": "East 2-0",
+   "turn": 10,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 35,
+   "mortal": 0.168,
+   "result": "dealt"
+  },
+  {
+   "game": "260925-0d8e7a00-4e7b-4249-85fc-87b371176691",
+   "date": "2026-09-24 20:53",
+   "round": "East 3-2",
+   "turn": 12,
+   "waits": [
+    "2s",
+    "F"
+   ],
+   "furiten": [],
+   "live": 2,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 24,
+   "mortal": 0.713,
+   "result": "draw"
+  },
+  {
+   "game": "260925-97b9cfb4-b15e-41fb-856b-1a1a4bcce8fa",
+   "date": "2026-09-24 21:59",
+   "round": "East 2-0",
+   "turn": 9,
+   "waits": [
+    "3m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 37,
+   "mortal": 0.851,
+   "result": "won"
+  },
+  {
+   "game": "260925-97b9cfb4-b15e-41fb-856b-1a1a4bcce8fa",
+   "date": "2026-09-24 21:59",
+   "round": "East 3-0",
+   "turn": 5,
+   "waits": [
+    "2m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 50,
+   "mortal": 0.958,
+   "result": "won"
+  },
+  {
+   "game": "260927-33c90769-b176-4d84-887e-a0570b689191",
+   "date": "2026-09-26 17:47",
+   "round": "East 1-0",
+   "turn": 7,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 45,
+   "mortal": 0.993,
+   "result": "paid"
+  },
+  {
+   "game": "260927-33c90769-b176-4d84-887e-a0570b689191",
+   "date": "2026-09-26 17:47",
+   "round": "East 4-1",
+   "turn": 5,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 2,
+   "rank": 3,
+   "left": 47,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260927-33c90769-b176-4d84-887e-a0570b689191",
+   "date": "2026-09-26 17:47",
+   "round": "South 2-3",
+   "turn": 10,
+   "waits": [
+    "2m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 33,
+   "mortal": 0.997,
+   "result": "paid"
+  },
+  {
+   "game": "260927-d8570927-994f-4a15-aba1-054159a4045c",
+   "date": "2026-09-27 00:21",
+   "round": "East 1-0",
+   "turn": 3,
+   "waits": [
+    "8m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 58,
+   "mortal": 0.589,
+   "result": "won"
+  },
+  {
+   "game": "260927-d8570927-994f-4a15-aba1-054159a4045c",
+   "date": "2026-09-27 00:21",
+   "round": "East 3-0",
+   "turn": 9,
+   "waits": [
+    "3s",
+    "6s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 2,
+   "left": 38,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260927-1a030971-9ad6-4172-a578-9a918a2ea59e",
+   "date": "2026-09-27 00:55",
+   "round": "East 1-0",
+   "turn": 7,
+   "waits": [
+    "3s",
+    "6s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 42,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260927-1a030971-9ad6-4172-a578-9a918a2ea59e",
+   "date": "2026-09-27 00:55",
+   "round": "East 2-0",
+   "turn": 15,
+   "waits": [
+    "1s",
+    "4s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 11,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260927-1a030971-9ad6-4172-a578-9a918a2ea59e",
+   "date": "2026-09-27 00:55",
+   "round": "East 3-0",
+   "turn": 8,
+   "waits": [
+    "2m",
+    "3m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 40,
+   "mortal": 0.978,
+   "result": "won"
+  },
+  {
+   "game": "260927-1a030971-9ad6-4172-a578-9a918a2ea59e",
+   "date": "2026-09-27 00:55",
+   "round": "East 4-1",
+   "turn": 9,
+   "waits": [
+    "1p",
+    "E"
+   ],
+   "furiten": [],
+   "live": 2,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 1,
+   "left": 41,
+   "mortal": 0.982,
+   "result": "dealt"
+  },
+  {
+   "game": "260927-1a030971-9ad6-4172-a578-9a918a2ea59e",
+   "date": "2026-09-27 00:55",
+   "round": "South 3-0",
+   "turn": 13,
+   "waits": [
+    "1s",
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 1,
+   "left": 19,
+   "mortal": 0.024,
+   "result": "paid"
+  },
+  {
+   "game": "260927-04d7d3c9-fd03-4a20-b2c8-3813d0c773b9",
+   "date": "2026-09-27 01:25",
+   "round": "East 4-1",
+   "turn": 13,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 4,
+   "left": 18,
+   "mortal": 0.993,
+   "result": "draw"
+  },
+  {
+   "game": "260927-04d7d3c9-fd03-4a20-b2c8-3813d0c773b9",
+   "date": "2026-09-27 01:25",
+   "round": "South 2-0",
+   "turn": 7,
+   "waits": [
+    "2p"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 47,
+   "mortal": 0.974,
+   "result": "won"
+  },
+  {
+   "game": "260927-04d7d3c9-fd03-4a20-b2c8-3813d0c773b9",
+   "date": "2026-09-27 01:25",
+   "round": "South 3-0",
+   "turn": 9,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 2,
+   "left": 38,
+   "mortal": 0.889,
+   "result": "won"
+  },
+  {
+   "game": "260927-f8df2a9c-abf1-40d7-bd5f-41af6fa495a9",
+   "date": "2026-09-27 01:58",
+   "round": "East 2-1",
+   "turn": 11,
+   "waits": [
+    "7s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 30,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260927-f8df2a9c-abf1-40d7-bd5f-41af6fa495a9",
+   "date": "2026-09-27 01:58",
+   "round": "East 4-0",
+   "turn": 9,
+   "waits": [
+    "2m",
+    "5m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 37,
+   "mortal": 0.914,
+   "result": "paid"
+  },
+  {
+   "game": "260928-95743bf4-cbb9-437a-ae70-3673929f5761",
+   "date": "2026-09-27 12:17",
+   "round": "South 2-0",
+   "turn": 6,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 45,
+   "mortal": 0.999,
+   "result": "dealt"
+  },
+  {
+   "game": "260928-95743bf4-cbb9-437a-ae70-3673929f5761",
+   "date": "2026-09-27 12:17",
+   "round": "South 3-0",
+   "turn": 3,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 61,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260928-e4fb5c17-6faa-4adc-ba60-01f253613771",
+   "date": "2026-09-27 12:43",
+   "round": "East 1-0",
+   "turn": 11,
+   "waits": [
+    "4s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 31,
+   "mortal": 0.052,
+   "result": "paid"
+  },
+  {
+   "game": "260928-e4fb5c17-6faa-4adc-ba60-01f253613771",
+   "date": "2026-09-27 12:43",
+   "round": "South 2-1",
+   "turn": 10,
+   "waits": [
+    "2m",
+    "5m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 33,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260928-7bc0990a-d9f4-40ae-ae7f-2f83a8a6e6ca",
+   "date": "2026-09-27 13:12",
+   "round": "East 1-0",
+   "turn": 3,
+   "waits": [
+    "1s",
+    "4s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 58,
+   "mortal": 0.994,
+   "result": "won"
+  },
+  {
+   "game": "260928-7bc0990a-d9f4-40ae-ae7f-2f83a8a6e6ca",
+   "date": "2026-09-27 13:12",
+   "round": "South 1-0",
+   "turn": 5,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 50,
+   "mortal": 0.951,
+   "result": "won"
+  },
+  {
+   "game": "260928-697dfc0f-74a7-44d8-bb1e-5d697db36b62",
+   "date": "2026-09-27 13:35",
+   "round": "East 1-0",
+   "turn": 10,
+   "waits": [
+    "6m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 36,
+   "mortal": 0.743,
+   "result": "paid"
+  },
+  {
+   "game": "260928-697dfc0f-74a7-44d8-bb1e-5d697db36b62",
+   "date": "2026-09-27 13:35",
+   "round": "South 1-0",
+   "turn": 9,
+   "waits": [
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 1,
+   "left": 37,
+   "mortal": 0.999,
+   "result": "draw"
+  },
+  {
+   "game": "260928-697dfc0f-74a7-44d8-bb1e-5d697db36b62",
+   "date": "2026-09-27 13:35",
+   "round": "South 2-0",
+   "turn": 8,
+   "waits": [
+    "1m"
+   ],
+   "furiten": [],
+   "live": 2,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 40,
+   "mortal": 0.084,
+   "result": "draw"
+  },
+  {
+   "game": "260928-697dfc0f-74a7-44d8-bb1e-5d697db36b62",
+   "date": "2026-09-27 13:35",
+   "round": "South 3-0",
+   "turn": 8,
+   "waits": [
+    "2m",
+    "4m",
+    "5m",
+    "7m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 17,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 40,
+   "mortal": 0.996,
+   "result": "won"
+  },
+  {
+   "game": "260928-e154b24e-d5df-41e7-86d9-623a25e9b56a",
+   "date": "2026-09-27 14:11",
+   "round": "East 3-0",
+   "turn": 14,
+   "waits": [
+    "2s",
+    "5s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 3,
+   "left": 17,
+   "mortal": 0.995,
+   "result": "won"
+  },
+  {
+   "game": "260928-e154b24e-d5df-41e7-86d9-623a25e9b56a",
+   "date": "2026-09-27 14:11",
+   "round": "South 3-0",
+   "turn": 7,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 44,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260928-2af44c95-bbf0-4744-bc62-089b56614f6d",
+   "date": "2026-09-27 16:01",
+   "round": "South 2-0",
+   "turn": 9,
+   "waits": [
+    "3s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 32,
+   "mortal": 0.058,
+   "result": "paid"
+  },
+  {
+   "game": "260928-2af44c95-bbf0-4744-bc62-089b56614f6d",
+   "date": "2026-09-27 16:01",
+   "round": "South 4-0",
+   "turn": 4,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 54,
+   "mortal": 0.702,
+   "result": "won"
+  },
+  {
+   "game": "260928-00109693-c795-432b-b185-6924030f75ea",
+   "date": "2026-09-27 16:33",
+   "round": "East 2-1",
+   "turn": 3,
+   "waits": [
+    "4m",
+    "9m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 56,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260928-00109693-c795-432b-b185-6924030f75ea",
+   "date": "2026-09-27 16:33",
+   "round": "East 3-0",
+   "turn": 6,
+   "waits": [
+    "2m",
+    "E"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 47,
+   "mortal": 0.996,
+   "result": "won"
+  },
+  {
+   "game": "260928-00109693-c795-432b-b185-6924030f75ea",
+   "date": "2026-09-27 16:33",
+   "round": "South 1-0",
+   "turn": 8,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 41,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260928-7c1ee667-5f64-4163-9a24-64e5b7e733ba",
+   "date": "2026-09-27 17:07",
+   "round": "East 2-0",
+   "turn": 14,
+   "waits": [
+    "6s",
+    "P"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 14,
+   "mortal": 0.984,
+   "result": "paid"
+  },
+  {
+   "game": "260928-5a0260b7-1cac-4ecd-81d7-102a1d432557",
+   "date": "2026-09-27 17:38",
+   "round": "South 1-0",
+   "turn": 13,
+   "waits": [
+    "5m",
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 4,
+   "left": 22,
+   "mortal": 0.991,
+   "result": "paid"
+  },
+  {
+   "game": "260928-5a0260b7-1cac-4ecd-81d7-102a1d432557",
+   "date": "2026-09-27 17:38",
+   "round": "South 2-0",
+   "turn": 10,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 4,
+   "left": 30,
+   "mortal": 0.997,
+   "result": "draw"
+  },
+  {
+   "game": "260928-5a0260b7-1cac-4ecd-81d7-102a1d432557",
+   "date": "2026-09-27 17:38",
+   "round": "South 3-0",
+   "turn": 10,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 31,
+   "mortal": 0.922,
+   "result": "paid"
+  },
+  {
+   "game": "260928-90620418-4aff-43d9-8a70-412f6bbf34ad",
+   "date": "2026-09-27 18:06",
+   "round": "South 3-0",
+   "turn": 8,
+   "waits": [
+    "S"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 39,
+   "mortal": 0.98,
+   "result": "draw"
+  },
+  {
+   "game": "260928-cc7d275a-7a2c-46ce-a3a4-dfa610e0ea74",
+   "date": "2026-09-27 23:01",
+   "round": "East 3-1",
+   "turn": 15,
+   "waits": [
+    "7p",
+    "8p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 8,
+   "mortal": 0.253,
+   "result": "draw"
+  },
+  {
+   "game": "260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52",
+   "date": "2026-09-28 01:38",
+   "round": "East 2-0",
+   "turn": 7,
+   "waits": [
+    "S"
+   ],
+   "furiten": [],
+   "live": 2,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 44,
+   "mortal": 0.988,
+   "result": "won"
+  },
+  {
+   "game": "260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52",
+   "date": "2026-09-28 01:38",
+   "round": "South 2-0",
+   "turn": 11,
+   "waits": [
+    "6s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 28,
+   "mortal": 0.075,
+   "result": "dealt"
+  },
+  {
+   "game": "260929-d9d4c79b-8b64-4d08-bd19-d2a761e16573",
+   "date": "2026-09-28 17:00",
+   "round": "South 1-0",
+   "turn": 12,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 26,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260929-ebf6ca95-abfd-45df-9ff9-993ccb24ff1c",
+   "date": "2026-09-28 17:22",
+   "round": "East 1-0",
+   "turn": 9,
+   "waits": [
+    "5m",
+    "C"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 38,
+   "mortal": 0.996,
+   "result": "won"
+  },
+  {
+   "game": "260929-ebf6ca95-abfd-45df-9ff9-993ccb24ff1c",
+   "date": "2026-09-28 17:22",
+   "round": "East 1-1",
+   "turn": 9,
+   "waits": [
+    "5p",
+    "8p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 37,
+   "mortal": 0.998,
+   "result": "dealt"
+  },
+  {
+   "game": "260929-68b62fbc-a679-4763-986c-cc4fbcccd6bc",
+   "date": "2026-09-28 18:16",
+   "round": "East 1-1",
+   "turn": 7,
+   "waits": [
+    "2s",
+    "5s"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 43,
+   "mortal": 0.996,
+   "result": "won"
+  },
+  {
+   "game": "260929-68b62fbc-a679-4763-986c-cc4fbcccd6bc",
+   "date": "2026-09-28 18:16",
+   "round": "South 2-0",
+   "turn": 8,
+   "waits": [
+    "7p",
+    "S"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 3,
+   "left": 41,
+   "mortal": 0.985,
+   "result": "won"
+  },
+  {
+   "game": "260929-68b62fbc-a679-4763-986c-cc4fbcccd6bc",
+   "date": "2026-09-28 18:16",
+   "round": "South 4-0",
+   "turn": 7,
+   "waits": [
+    "3s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 42,
+   "mortal": 0.474,
+   "result": "paid"
+  },
+  {
+   "game": "260929-6cfccc52-c90e-403d-98a0-7a8629b0bcbb",
+   "date": "2026-09-28 18:47",
+   "round": "East 2-0",
+   "turn": 11,
+   "waits": [
+    "5m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 30,
+   "mortal": 0.974,
+   "result": "paid"
+  },
+  {
+   "game": "260929-6cfccc52-c90e-403d-98a0-7a8629b0bcbb",
+   "date": "2026-09-28 18:47",
+   "round": "East 3-0",
+   "turn": 7,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 44,
+   "mortal": 0.445,
+   "result": "won"
+  },
+  {
+   "game": "260929-e1b91cab-985a-47ef-9476-666eb9bd12b8",
+   "date": "2026-09-28 20:59",
+   "round": "East 1-2",
+   "turn": 10,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 31,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260929-e1b91cab-985a-47ef-9476-666eb9bd12b8",
+   "date": "2026-09-28 20:59",
+   "round": "East 2-1",
+   "turn": 5,
+   "waits": [
+    "3p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 52,
+   "mortal": 0.985,
+   "result": "draw"
+  },
+  {
+   "game": "260929-e1b91cab-985a-47ef-9476-666eb9bd12b8",
+   "date": "2026-09-28 20:59",
+   "round": "South 2-1",
+   "turn": 11,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 28,
+   "mortal": 0.941,
+   "result": "draw"
+  },
+  {
+   "game": "260929-e1b91cab-985a-47ef-9476-666eb9bd12b8",
+   "date": "2026-09-28 20:59",
+   "round": "South 3-2",
+   "turn": 9,
+   "waits": [
+    "3s",
+    "6s"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 37,
+   "mortal": 0.748,
+   "result": "won"
+  },
+  {
+   "game": "260929-e1b91cab-985a-47ef-9476-666eb9bd12b8",
+   "date": "2026-09-28 20:59",
+   "round": "South 4-1",
+   "turn": 7,
+   "waits": [
+    "5p",
+    "8p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 42,
+   "mortal": 0.89,
+   "result": "won"
+  },
+  {
+   "game": "260929-8e871836-9167-4ae8-863f-02e3f70620f5",
+   "date": "2026-09-28 21:54",
+   "round": "East 3-1",
+   "turn": 7,
+   "waits": [
+    "S",
+    "P"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 45,
+   "mortal": 0.993,
+   "result": "won"
+  },
+  {
+   "game": "260929-8e871836-9167-4ae8-863f-02e3f70620f5",
+   "date": "2026-09-28 21:54",
+   "round": "East 3-2",
+   "turn": 4,
+   "waits": [
+    "1p",
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 10,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 58,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260929-8e871836-9167-4ae8-863f-02e3f70620f5",
+   "date": "2026-09-28 21:54",
+   "round": "East 4-4",
+   "turn": 6,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 46,
+   "mortal": 0.82,
+   "result": "won"
+  },
+  {
+   "game": "260929-f97fbc75-672e-439d-a414-fb47a1cf4c03",
+   "date": "2026-09-28 22:25",
+   "round": "South 1-0",
+   "turn": 13,
+   "waits": [
+    "3s",
+    "6s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 18,
+   "mortal": 0.346,
+   "result": "dealt"
+  },
+  {
+   "game": "260929-dc197253-5488-4186-acaa-afeb4c4857a5",
+   "date": "2026-09-28 23:30",
+   "round": "South 1-0",
+   "turn": 10,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 36,
+   "mortal": 0.884,
+   "result": "won"
+  },
+  {
+   "game": "260930-f21e479a-7436-4d2e-b544-2fc39a293ab0",
+   "date": "2026-09-29 17:25",
+   "round": "East 1-2",
+   "turn": 4,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 55,
+   "mortal": 0.998,
+   "result": "dealt"
+  },
+  {
+   "game": "260930-af991ffc-4efc-4062-918a-8f7457002c0f",
+   "date": "2026-09-29 17:47",
+   "round": "East 2-0",
+   "turn": 10,
+   "waits": [
+    "5s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 32,
+   "mortal": 0.719,
+   "result": "draw"
+  },
+  {
+   "game": "260930-af991ffc-4efc-4062-918a-8f7457002c0f",
+   "date": "2026-09-29 17:47",
+   "round": "South 4-0",
+   "turn": 10,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 4,
+   "left": 34,
+   "mortal": 0.996,
+   "result": "paid"
+  },
+  {
+   "game": "260930-f5119e21-21f2-4600-9de2-d28bb0a16427",
+   "date": "2026-09-29 19:04",
+   "round": "East 1-0",
+   "turn": 7,
+   "waits": [
+    "3s",
+    "6s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 45,
+   "mortal": 0.682,
+   "result": "draw"
+  },
+  {
+   "game": "260930-f5119e21-21f2-4600-9de2-d28bb0a16427",
+   "date": "2026-09-29 19:04",
+   "round": "East 2-0",
+   "turn": 9,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 34,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "260930-f5119e21-21f2-4600-9de2-d28bb0a16427",
+   "date": "2026-09-29 19:04",
+   "round": "East 3-0",
+   "turn": 6,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 47,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260930-f5119e21-21f2-4600-9de2-d28bb0a16427",
+   "date": "2026-09-29 19:04",
+   "round": "South 1-0",
+   "turn": 8,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 42,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260930-f5119e21-21f2-4600-9de2-d28bb0a16427",
+   "date": "2026-09-29 19:04",
+   "round": "South 2-0",
+   "turn": 11,
+   "waits": [
+    "3s",
+    "6s"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 1,
+   "left": 30,
+   "mortal": 0.017,
+   "result": "won"
+  },
+  {
+   "game": "260930-3f714fda-6ddb-4a09-9c86-dd6652f9318b",
+   "date": "2026-09-29 19:32",
+   "round": "East 1-0",
+   "turn": 12,
+   "waits": [
+    "2s",
+    "5s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 3,
+   "left": 22,
+   "mortal": 0.995,
+   "result": "won"
+  },
+  {
+   "game": "260930-2fd7e496-3891-41c8-a758-4b78ab6f7bbd",
+   "date": "2026-09-29 20:08",
+   "round": "East 3-0",
+   "turn": 7,
+   "waits": [
+    "2m",
+    "5m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 2,
+   "left": 43,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "260930-2fd7e496-3891-41c8-a758-4b78ab6f7bbd",
+   "date": "2026-09-29 20:08",
+   "round": "East 4-1",
+   "turn": 10,
+   "waits": [
+    "4m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 33,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "260930-6ab24ddd-af6b-4240-84fa-4b02f3e38b65",
+   "date": "2026-09-29 22:32",
+   "round": "East 1-0",
+   "turn": 9,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 2,
+   "rank": 3,
+   "left": 35,
+   "mortal": 0.988,
+   "result": "won"
+  },
+  {
+   "game": "260930-6ab24ddd-af6b-4240-84fa-4b02f3e38b65",
+   "date": "2026-09-29 22:32",
+   "round": "East 3-0",
+   "turn": 10,
+   "waits": [
+    "3p",
+    "1s",
+    "4s"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 1,
+   "left": 34,
+   "mortal": 0.941,
+   "result": "won"
+  },
+  {
+   "game": "260930-6ab24ddd-af6b-4240-84fa-4b02f3e38b65",
+   "date": "2026-09-29 22:32",
+   "round": "East 4-0",
+   "turn": 10,
+   "waits": [
+    "3m",
+    "6m",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 1,
+   "left": 39,
+   "mortal": 0.991,
+   "result": "won"
+  },
+  {
+   "game": "260930-6ab24ddd-af6b-4240-84fa-4b02f3e38b65",
+   "date": "2026-09-29 22:32",
+   "round": "South 2-0",
+   "turn": 9,
+   "waits": [
+    "6s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 36,
+   "mortal": 0.252,
+   "result": "dealt"
+  },
+  {
+   "game": "260930-cffc8980-e3e7-4677-9882-8cae896041d3",
+   "date": "2026-09-29 23:30",
+   "round": "South 1-0",
+   "turn": 7,
+   "waits": [
+    "3p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 43,
+   "mortal": 0.988,
+   "result": "won"
+  },
+  {
+   "game": "260930-cffc8980-e3e7-4677-9882-8cae896041d3",
+   "date": "2026-09-29 23:30",
+   "round": "West 2-0",
+   "turn": 9,
+   "waits": [
+    "8m",
+    "2p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 38,
+   "mortal": 0.979,
+   "result": "won"
+  },
+  {
+   "game": "260930-ce150fc2-e87e-4953-8ee4-76b25f7a61c6",
+   "date": "2026-09-30 00:04",
+   "round": "East 1-1",
+   "turn": 14,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 13,
+   "mortal": 0.988,
+   "result": "draw"
+  },
+  {
+   "game": "260930-ce150fc2-e87e-4953-8ee4-76b25f7a61c6",
+   "date": "2026-09-30 00:04",
+   "round": "South 4-0",
+   "turn": 12,
+   "waits": [
+    "5s",
+    "W"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 26,
+   "mortal": 0.046,
+   "result": "draw"
+  },
+  {
+   "game": "260930-e4bd6f17-1c8e-4a44-8698-eb00ccbee370",
+   "date": "2026-09-30 00:48",
+   "round": "East 1-2",
+   "turn": 8,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 40,
+   "mortal": 0.532,
+   "result": "won"
+  },
+  {
+   "game": "260930-e4bd6f17-1c8e-4a44-8698-eb00ccbee370",
+   "date": "2026-09-30 00:48",
+   "round": "South 2-0",
+   "turn": 9,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 38,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "260930-e1e10294-47de-4a88-946f-78e8129ee6c7",
+   "date": "2026-09-30 01:12",
+   "round": "East 4-1",
+   "turn": 7,
+   "waits": [
+    "7m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 44,
+   "mortal": 0.123,
+   "result": "dealt"
+  },
+  {
+   "game": "260930-e1e10294-47de-4a88-946f-78e8129ee6c7",
+   "date": "2026-09-30 01:12",
+   "round": "East 4-2",
+   "turn": 12,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 3,
+   "left": 26,
+   "mortal": 0.917,
+   "result": "paid"
+  },
+  {
+   "game": "261001-8fda859e-f1f4-41c5-9a5c-1b6b037689ab",
+   "date": "2026-09-30 15:23",
+   "round": "East 1-0",
+   "turn": 5,
+   "waits": [
+    "8p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 53,
+   "mortal": 0.998,
+   "result": "paid"
+  },
+  {
+   "game": "261001-8fda859e-f1f4-41c5-9a5c-1b6b037689ab",
+   "date": "2026-09-30 15:23",
+   "round": "South 2-0",
+   "turn": 6,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 46,
+   "mortal": 0.934,
+   "result": "won"
+  },
+  {
+   "game": "261001-d251c2a0-2a09-466b-91f1-19b0b951a9e0",
+   "date": "2026-09-30 18:46",
+   "round": "East 1-0",
+   "turn": 10,
+   "waits": [
+    "5s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 2,
+   "left": 34,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "261001-d251c2a0-2a09-466b-91f1-19b0b951a9e0",
+   "date": "2026-09-30 18:46",
+   "round": "South 4-0",
+   "turn": 15,
+   "waits": [
+    "1s",
+    "4s",
+    "7s"
+   ],
+   "furiten": [
+    "7s"
+   ],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 4,
+   "left": 16,
+   "mortal": 0.865,
+   "result": "paid"
+  },
+  {
+   "game": "261001-4652f6b3-78fd-4815-b0ea-fcf7dd866007",
+   "date": "2026-09-30 19:38",
+   "round": "East 1-1",
+   "turn": 7,
+   "waits": [
+    "6m",
+    "9m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 43,
+   "mortal": 0.997,
+   "result": "won"
+  },
+  {
+   "game": "261001-4652f6b3-78fd-4815-b0ea-fcf7dd866007",
+   "date": "2026-09-30 19:38",
+   "round": "East 3-0",
+   "turn": 5,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 53,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "261001-4bedcd30-dc34-4301-91ff-c37b83d0a576",
+   "date": "2026-09-30 20:00",
+   "round": "East 2-0",
+   "turn": 9,
+   "waits": [
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 37,
+   "mortal": 0.999,
+   "result": "draw"
+  },
+  {
+   "game": "261001-e54fc15b-92d2-4286-b911-41ba6d0629ca",
+   "date": "2026-09-30 20:33",
+   "round": "East 1-0",
+   "turn": 13,
+   "waits": [
+    "2m",
+    "5m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 2,
+   "left": 17,
+   "mortal": 0.023,
+   "result": "dealt"
+  },
+  {
+   "game": "261001-e54fc15b-92d2-4286-b911-41ba6d0629ca",
+   "date": "2026-09-30 20:33",
+   "round": "South 1-0",
+   "turn": 9,
+   "waits": [
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 35,
+   "mortal": 0.998,
+   "result": "draw"
+  },
+  {
+   "game": "261001-e54fc15b-92d2-4286-b911-41ba6d0629ca",
+   "date": "2026-09-30 20:33",
+   "round": "South 3-0",
+   "turn": 6,
+   "waits": [
+    "3s",
+    "6s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 50,
+   "mortal": 0.993,
+   "result": "draw"
+  },
+  {
+   "game": "261001-45a82545-fd6f-4c20-8bb0-63b7c10ec22b",
+   "date": "2026-10-01 11:57",
+   "round": "East 1-0",
+   "turn": 4,
+   "waits": [
+    "1p",
+    "3p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 3,
+   "left": 58,
+   "mortal": 0.986,
+   "result": "won"
+  },
+  {
+   "game": "261001-45a82545-fd6f-4c20-8bb0-63b7c10ec22b",
+   "date": "2026-10-01 11:57",
+   "round": "East 2-0",
+   "turn": 10,
+   "waits": [
+    "3p",
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 9,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 32,
+   "mortal": 0.999,
+   "result": "dealt"
+  },
+  {
+   "game": "261001-45a82545-fd6f-4c20-8bb0-63b7c10ec22b",
+   "date": "2026-10-01 11:57",
+   "round": "East 2-3",
+   "turn": 11,
+   "waits": [
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 28,
+   "mortal": 0.055,
+   "result": "paid"
+  },
+  {
+   "game": "261001-45a82545-fd6f-4c20-8bb0-63b7c10ec22b",
+   "date": "2026-10-01 11:57",
+   "round": "East 3-0",
+   "turn": 11,
+   "waits": [
+    "7p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 30,
+   "mortal": 0.997,
+   "result": "dealt"
+  },
+  {
+   "game": "261001-45a82545-fd6f-4c20-8bb0-63b7c10ec22b",
+   "date": "2026-10-01 11:57",
+   "round": "South 1-0",
+   "turn": 7,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 43,
+   "mortal": 0.988,
+   "result": "won"
+  },
+  {
+   "game": "261001-45a82545-fd6f-4c20-8bb0-63b7c10ec22b",
+   "date": "2026-10-01 11:57",
+   "round": "South 2-0",
+   "turn": 11,
+   "waits": [
+    "5p",
+    "8p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 26,
+   "mortal": 0.997,
+   "result": "paid"
+  },
+  {
+   "game": "261002-990b6d58-cd27-4af6-86b4-c8f6c976c60f",
+   "date": "2026-10-01 17:56",
+   "round": "South 2-0",
+   "turn": 15,
+   "waits": [
+    "5m",
+    "W"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 14,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "261002-990b6d58-cd27-4af6-86b4-c8f6c976c60f",
+   "date": "2026-10-01 17:56",
+   "round": "South 3-0",
+   "turn": 5,
+   "waits": [
+    "6m",
+    "9m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 53,
+   "mortal": 0.997,
+   "result": "won"
+  },
+  {
+   "game": "261002-fc3b2f83-39d9-48c2-99de-5d2bd2893cf0",
+   "date": "2026-10-01 18:27",
+   "round": "East 1-0",
+   "turn": 5,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 53,
+   "mortal": 0.97,
+   "result": "won"
+  },
+  {
+   "game": "261002-fc3b2f83-39d9-48c2-99de-5d2bd2893cf0",
+   "date": "2026-10-01 18:27",
+   "round": "East 2-0",
+   "turn": 10,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 35,
+   "mortal": 0.999,
+   "result": "dealt"
+  },
+  {
+   "game": "261002-fc3b2f83-39d9-48c2-99de-5d2bd2893cf0",
+   "date": "2026-10-01 18:27",
+   "round": "South 1-0",
+   "turn": 5,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 3,
+   "left": 54,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261002-fc3b2f83-39d9-48c2-99de-5d2bd2893cf0",
+   "date": "2026-10-01 18:27",
+   "round": "South 2-0",
+   "turn": 15,
+   "waits": [
+    "5m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 1,
+   "left": 18,
+   "mortal": 0.292,
+   "result": "won"
+  },
+  {
+   "game": "261002-77e27882-3d77-4a09-bd92-0fbf95732702",
+   "date": "2026-10-01 19:05",
+   "round": "East 2-0",
+   "turn": 8,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 39,
+   "mortal": 0.998,
+   "result": "draw"
+  },
+  {
+   "game": "261002-77e27882-3d77-4a09-bd92-0fbf95732702",
+   "date": "2026-10-01 19:05",
+   "round": "East 2-2",
+   "turn": 7,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 2,
+   "rank": 4,
+   "left": 44,
+   "mortal": 0.924,
+   "result": "paid"
+  },
+  {
+   "game": "261002-8524b920-c1d3-4064-baf2-00160a3c655b",
+   "date": "2026-10-01 20:28",
+   "round": "East 4-0",
+   "turn": 8,
+   "waits": [
+    "2p",
+    "5p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 38,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "261002-8524b920-c1d3-4064-baf2-00160a3c655b",
+   "date": "2026-10-01 20:28",
+   "round": "South 1-0",
+   "turn": 11,
+   "waits": [
+    "C"
+   ],
+   "furiten": [],
+   "live": 2,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 4,
+   "left": 30,
+   "mortal": 0.99,
+   "result": "won"
+  },
+  {
+   "game": "261002-8524b920-c1d3-4064-baf2-00160a3c655b",
+   "date": "2026-10-01 20:28",
+   "round": "South 2-0",
+   "turn": 10,
+   "waits": [
+    "2m",
+    "5m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 1,
+   "left": 34,
+   "mortal": 0.597,
+   "result": "paid"
+  },
+  {
+   "game": "261002-97af122b-732a-47ae-b70b-644c27d77e03",
+   "date": "2026-10-01 21:02",
+   "round": "East 1-0",
+   "turn": 8,
+   "waits": [
+    "2s",
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 9,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 2,
+   "left": 36,
+   "mortal": 1.0,
+   "result": "won"
+  },
+  {
+   "game": "261002-97af122b-732a-47ae-b70b-644c27d77e03",
+   "date": "2026-10-01 21:02",
+   "round": "East 3-1",
+   "turn": 5,
+   "waits": [
+    "8m",
+    "P"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 53,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261002-36f450db-ac8a-4e68-aed9-44741d0e6cc1",
+   "date": "2026-10-01 21:48",
+   "round": "East 3-0",
+   "turn": 9,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 38,
+   "mortal": 0.991,
+   "result": "dealt"
+  },
+  {
+   "game": "261002-36f450db-ac8a-4e68-aed9-44741d0e6cc1",
+   "date": "2026-10-01 21:48",
+   "round": "South 1-0",
+   "turn": 10,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 33,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "261002-36f450db-ac8a-4e68-aed9-44741d0e6cc1",
+   "date": "2026-10-01 21:48",
+   "round": "South 2-0",
+   "turn": 10,
+   "waits": [
+    "4s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 4,
+   "left": 37,
+   "mortal": 0.486,
+   "result": "won"
+  },
+  {
+   "game": "261002-b0ec9f2d-52a2-4578-b351-df6475cc8b35",
+   "date": "2026-10-01 22:59",
+   "round": "East 3-0",
+   "turn": 8,
+   "waits": [
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 4,
+   "left": 45,
+   "mortal": 0.988,
+   "result": "dealt"
+  },
+  {
+   "game": "261002-b0ec9f2d-52a2-4578-b351-df6475cc8b35",
+   "date": "2026-10-01 22:59",
+   "round": "East 4-1",
+   "turn": 9,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 2,
+   "left": 38,
+   "mortal": 0.999,
+   "result": "dealt"
+  },
+  {
+   "game": "261003-9f797d54-017c-48cf-adde-e17f61db61e0",
+   "date": "2026-10-02 14:37",
+   "round": "East 2-0",
+   "turn": 10,
+   "waits": [
+    "3m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 31,
+   "mortal": 0.621,
+   "result": "paid"
+  },
+  {
+   "game": "261003-9f797d54-017c-48cf-adde-e17f61db61e0",
+   "date": "2026-10-02 14:37",
+   "round": "South 2-0",
+   "turn": 10,
+   "waits": [
+    "6m",
+    "6s"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 30,
+   "mortal": 0.993,
+   "result": "draw"
+  },
+  {
+   "game": "261003-5f11307b-34d4-41e8-be82-0805b4a94ae3",
+   "date": "2026-10-02 20:52",
+   "round": "East 4-0",
+   "turn": 11,
+   "waits": [
+    "2m",
+    "5m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 2,
+   "left": 29,
+   "mortal": 0.845,
+   "result": "won"
+  },
+  {
+   "game": "261003-a2261800-30b4-480a-95e4-2d04e2b94064",
+   "date": "2026-10-02 21:18",
+   "round": "East 1-0",
+   "turn": 12,
+   "waits": [
+    "2p",
+    "5p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 24,
+   "mortal": 0.997,
+   "result": "won"
+  },
+  {
+   "game": "261003-a2261800-30b4-480a-95e4-2d04e2b94064",
+   "date": "2026-10-02 21:18",
+   "round": "East 1-1",
+   "turn": 6,
+   "waits": [
+    "2s",
+    "5s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 49,
+   "mortal": 0.952,
+   "result": "won"
+  },
+  {
+   "game": "261003-3b706dd7-3be6-47bf-84c3-7268814bc5aa",
+   "date": "2026-10-02 21:23",
+   "round": "East 3-0",
+   "turn": 12,
+   "waits": [
+    "2m",
+    "5m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 4,
+   "left": 29,
+   "mortal": 0.996,
+   "result": "paid"
+  },
+  {
+   "game": "261003-5792c141-83fb-43cf-bb64-bfc0b195f357",
+   "date": "2026-10-02 21:58",
+   "round": "East 1-0",
+   "turn": 9,
+   "waits": [
+    "5m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 34,
+   "mortal": 0.995,
+   "result": "paid"
+  },
+  {
+   "game": "261003-8d7d08a9-c956-4577-8c9b-06dc210706bc",
+   "date": "2026-10-02 22:29",
+   "round": "East 2-0",
+   "turn": 2,
+   "waits": [
+    "1s",
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 10,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 64,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261003-8d7d08a9-c956-4577-8c9b-06dc210706bc",
+   "date": "2026-10-02 22:29",
+   "round": "East 3-0",
+   "turn": 7,
+   "waits": [
+    "6p",
+    "7p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 45,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261003-8d7d08a9-c956-4577-8c9b-06dc210706bc",
+   "date": "2026-10-02 22:29",
+   "round": "East 3-1",
+   "turn": 12,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 1,
+   "left": 25,
+   "mortal": 0.202,
+   "result": "dealt"
+  },
+  {
+   "game": "261003-8d7d08a9-c956-4577-8c9b-06dc210706bc",
+   "date": "2026-10-02 22:29",
+   "round": "South 2-1",
+   "turn": 6,
+   "waits": [
+    "6m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 48,
+   "mortal": 0.995,
+   "result": "dealt"
+  },
+  {
+   "game": "261003-01d8a14c-4f93-437f-b687-b55348c2f179",
+   "date": "2026-10-02 23:06",
+   "round": "East 1-0",
+   "turn": 3,
+   "waits": [
+    "6p"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 58,
+   "mortal": 0.54,
+   "result": "won"
+  },
+  {
+   "game": "261003-01d8a14c-4f93-437f-b687-b55348c2f179",
+   "date": "2026-10-02 23:06",
+   "round": "South 2-0",
+   "turn": 8,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 40,
+   "mortal": 0.988,
+   "result": "won"
+  },
+  {
+   "game": "261003-16253cbc-103f-4132-98e3-a330223cabbd",
+   "date": "2026-10-02 23:33",
+   "round": "East 2-1",
+   "turn": 11,
+   "waits": [
+    "3p"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 27,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261003-16253cbc-103f-4132-98e3-a330223cabbd",
+   "date": "2026-10-02 23:33",
+   "round": "East 4-0",
+   "turn": 14,
+   "waits": [
+    "5m",
+    "6m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 1,
+   "left": 17,
+   "mortal": 0.848,
+   "result": "dealt"
+  },
+  {
+   "game": "261003-16253cbc-103f-4132-98e3-a330223cabbd",
+   "date": "2026-10-02 23:33",
+   "round": "South 2-0",
+   "turn": 5,
+   "waits": [
+    "5m",
+    "8m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 49,
+   "mortal": 0.865,
+   "result": "won"
+  },
+  {
+   "game": "261003-d9683a26-30d8-4712-b52c-17797ebfe3e2",
+   "date": "2026-10-03 00:07",
+   "round": "East 2-1",
+   "turn": 9,
+   "waits": [
+    "5p",
+    "8p"
+   ],
+   "furiten": [
+    "8p"
+   ],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 37,
+   "mortal": 0.966,
+   "result": "paid"
+  },
+  {
+   "game": "261003-d9683a26-30d8-4712-b52c-17797ebfe3e2",
+   "date": "2026-10-03 00:07",
+   "round": "South 1-0",
+   "turn": 7,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 44,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261003-d9683a26-30d8-4712-b52c-17797ebfe3e2",
+   "date": "2026-10-03 00:07",
+   "round": "South 2-0",
+   "turn": 9,
+   "waits": [
+    "2m",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 37,
+   "mortal": 0.998,
+   "result": "draw"
+  },
+  {
+   "game": "261003-d9683a26-30d8-4712-b52c-17797ebfe3e2",
+   "date": "2026-10-03 00:07",
+   "round": "South 4-0",
+   "turn": 15,
+   "waits": [
+    "7m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 10,
+   "mortal": 0.018,
+   "result": "draw"
+  },
+  {
+   "game": "261003-d572619f-5c11-420e-9945-86d4da039fe7",
+   "date": "2026-10-03 00:43",
+   "round": "South 1-2",
+   "turn": 10,
+   "waits": [
+    "1p"
+   ],
+   "furiten": [],
+   "live": 2,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 35,
+   "mortal": 0.64,
+   "result": "won"
+  },
+  {
+   "game": "261003-2f0295b7-044b-4ac9-9a21-72ddd43f9ad5",
+   "date": "2026-10-03 11:25",
+   "round": "East 1-1",
+   "turn": 7,
+   "waits": [
+    "1s",
+    "4s"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 42,
+   "mortal": 0.996,
+   "result": "won"
+  },
+  {
+   "game": "261003-2f0295b7-044b-4ac9-9a21-72ddd43f9ad5",
+   "date": "2026-10-03 11:25",
+   "round": "East 3-3",
+   "turn": 6,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 49,
+   "mortal": 0.989,
+   "result": "paid"
+  },
+  {
+   "game": "261004-0919202e-3037-4472-a90c-73fadb4a4cf6",
+   "date": "2026-10-03 13:05",
+   "round": "East 3-0",
+   "turn": 10,
+   "waits": [
+    "7m"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 33,
+   "mortal": 0.985,
+   "result": "won"
+  },
+  {
+   "game": "261004-0919202e-3037-4472-a90c-73fadb4a4cf6",
+   "date": "2026-10-03 13:05",
+   "round": "South 4-0",
+   "turn": 11,
+   "waits": [
+    "1m",
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 26,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261004-01255a0b-1cd6-4674-907b-44ea50c1a9ca",
+   "date": "2026-10-03 13:47",
+   "round": "East 3-0",
+   "turn": 7,
+   "waits": [
+    "7m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 45,
+   "mortal": 0.99,
+   "result": "paid"
+  },
+  {
+   "game": "261004-01255a0b-1cd6-4674-907b-44ea50c1a9ca",
+   "date": "2026-10-03 13:47",
+   "round": "South 4-2",
+   "turn": 5,
+   "waits": [
+    "5p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 50,
+   "mortal": 0.969,
+   "result": "won"
+  },
+  {
+   "game": "261004-3d4685b3-96b5-421f-9f25-7f7459b95553",
+   "date": "2026-10-03 14:11",
+   "round": "East 4-0",
+   "turn": 4,
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 4,
+   "left": 54,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "261004-3d4685b3-96b5-421f-9f25-7f7459b95553",
+   "date": "2026-10-03 14:11",
+   "round": "South 3-0",
+   "turn": 7,
+   "waits": [
+    "7m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 0,
+   "rank": 4,
+   "left": 45,
+   "mortal": 0.999,
+   "result": "paid"
+  },
+  {
+   "game": "261004-663f0de9-cfe1-4fa3-b8b2-48153236dc62",
+   "date": "2026-10-03 23:38",
+   "round": "South 1-0",
+   "turn": 13,
+   "waits": [
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 2,
+   "rank": 4,
+   "left": 21,
+   "mortal": 0.997,
+   "result": "dealt"
+  },
+  {
+   "game": "261006-6ecce496-8d0c-4666-9cd8-5ccbdb0ff30b",
+   "date": "2026-10-05 21:08",
+   "round": "East 4-0",
+   "turn": 11,
+   "waits": [
+    "3p",
+    "6p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 26,
+   "mortal": 0.997,
+   "result": "paid"
+  },
+  {
+   "game": "261006-6ecce496-8d0c-4666-9cd8-5ccbdb0ff30b",
+   "date": "2026-10-05 21:08",
+   "round": "South 3-0",
+   "turn": 8,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 40,
+   "mortal": 0.997,
+   "result": "paid"
+  },
+  {
+   "game": "261006-865253c9-a19b-486a-8034-77d91b6fb4fe",
+   "date": "2026-10-05 22:03",
+   "round": "East 1-0",
+   "turn": 8,
+   "waits": [
+    "4p",
+    "7p"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 41,
+   "mortal": 0.997,
+   "result": "draw"
+  },
+  {
+   "game": "261006-865253c9-a19b-486a-8034-77d91b6fb4fe",
+   "date": "2026-10-05 22:03",
+   "round": "East 1-1",
+   "turn": 9,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 37,
+   "mortal": 0.993,
+   "result": "won"
+  },
+  {
+   "game": "261007-f82acd52-ec99-4032-b878-5031df628571",
+   "date": "2026-10-06 18:57",
+   "round": "East 4-0",
+   "turn": 5,
+   "waits": [
+    "1m",
+    "4m"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 53,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261007-f82acd52-ec99-4032-b878-5031df628571",
+   "date": "2026-10-06 18:57",
+   "round": "South 3-1",
+   "turn": 13,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 22,
+   "mortal": 0.993,
+   "result": "paid"
+  },
+  {
+   "game": "261007-778211d0-ecbb-4ec3-a5cf-c7eaa531ea87",
+   "date": "2026-10-06 19:32",
+   "round": "East 1-0",
+   "turn": 8,
+   "waits": [
+    "2m",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 41,
+   "mortal": 0.999,
+   "result": "dealt"
+  },
+  {
+   "game": "261007-778211d0-ecbb-4ec3-a5cf-c7eaa531ea87",
+   "date": "2026-10-06 19:32",
+   "round": "East 2-0",
+   "turn": 7,
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 4,
+   "left": 44,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261007-778211d0-ecbb-4ec3-a5cf-c7eaa531ea87",
+   "date": "2026-10-06 19:32",
+   "round": "East 4-0",
+   "turn": 6,
+   "waits": [
+    "5m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 48,
+   "mortal": 0.986,
+   "result": "won"
+  },
+  {
+   "game": "261007-778211d0-ecbb-4ec3-a5cf-c7eaa531ea87",
+   "date": "2026-10-06 19:32",
+   "round": "South 1-1",
+   "turn": 7,
+   "waits": [
+    "3m"
+   ],
+   "furiten": [],
+   "live": 4,
+   "yaku": false,
+   "into_a_riichi": true,
+   "callers": 1,
+   "rank": 1,
+   "left": 46,
+   "mortal": 0.915,
+   "result": "dealt"
+  },
+  {
+   "game": "261007-778211d0-ecbb-4ec3-a5cf-c7eaa531ea87",
+   "date": "2026-10-06 19:32",
+   "round": "South 3-2",
+   "turn": 10,
+   "waits": [
+    "6s",
+    "9s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 2,
+   "left": 32,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261007-778211d0-ecbb-4ec3-a5cf-c7eaa531ea87",
+   "date": "2026-10-06 19:32",
+   "round": "South 4-1",
+   "turn": 11,
+   "waits": [
+    "7s"
+   ],
+   "furiten": [],
+   "live": 3,
+   "yaku": false,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 3,
+   "left": 29,
+   "mortal": 0.987,
+   "result": "draw"
+  },
+  {
+   "game": "261007-ed7230e1-3f82-4352-a0a5-9966e5e85214",
+   "date": "2026-10-06 20:13",
+   "round": "East 3-1",
+   "turn": 11,
+   "waits": [
+    "6m",
+    "9m"
+   ],
+   "furiten": [],
+   "live": 6,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 28,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261007-ed7230e1-3f82-4352-a0a5-9966e5e85214",
+   "date": "2026-10-06 20:13",
+   "round": "East 4-0",
+   "turn": 10,
+   "waits": [
+    "3p",
+    "5p",
+    "6p",
+    "8p",
+    "9p"
+   ],
+   "furiten": [],
+   "live": 15,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 33,
+   "mortal": 0.999,
+   "result": "won"
+  },
+  {
+   "game": "261007-ed7230e1-3f82-4352-a0a5-9966e5e85214",
+   "date": "2026-10-06 20:13",
+   "round": "East 4-2",
+   "turn": 6,
+   "waits": [
+    "3s",
+    "6s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 1,
+   "left": 49,
+   "mortal": 0.974,
+   "result": "draw"
+  },
+  {
+   "game": "261007-ed7230e1-3f82-4352-a0a5-9966e5e85214",
+   "date": "2026-10-06 20:13",
+   "round": "South 2-0",
+   "turn": 7,
+   "waits": [
+    "1m",
+    "4m",
+    "7m"
+   ],
+   "furiten": [],
+   "live": 9,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 44,
+   "mortal": 0.96,
+   "result": "paid"
+  },
+  {
+   "game": "261008-6c28a9cb-7fd0-48ff-a4f0-18b3bcf51dde",
+   "date": "2026-10-07 14:42",
+   "round": "East 1-0",
+   "turn": 6,
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 47,
+   "mortal": 0.99,
+   "result": "draw"
+  },
+  {
+   "game": "261008-6c28a9cb-7fd0-48ff-a4f0-18b3bcf51dde",
+   "date": "2026-10-07 14:42",
+   "round": "East 1-1",
+   "turn": 7,
+   "waits": [
+    "1s",
+    "4s"
+   ],
+   "furiten": [],
+   "live": 8,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 2,
+   "left": 43,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "261008-6c28a9cb-7fd0-48ff-a4f0-18b3bcf51dde",
+   "date": "2026-10-07 14:42",
+   "round": "East 3-0",
+   "turn": 4,
+   "waits": [
+    "5s",
+    "8s"
+   ],
+   "furiten": [],
+   "live": 7,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 1,
+   "rank": 1,
+   "left": 60,
+   "mortal": 0.998,
+   "result": "won"
+  },
+  {
+   "game": "261008-ce956cd8-7f83-4165-97aa-e5be24fff49c",
+   "date": "2026-10-07 15:27",
+   "round": "East 1-1",
+   "turn": 13,
+   "waits": [
+    "1p",
+    "4p"
+   ],
+   "furiten": [],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 0,
+   "rank": 3,
+   "left": 18,
+   "mortal": 0.064,
+   "result": "dealt"
+  },
+  {
+   "game": "261008-ce956cd8-7f83-4165-97aa-e5be24fff49c",
+   "date": "2026-10-07 15:27",
+   "round": "South 2-1",
+   "turn": 6,
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "furiten": [
+    "9p"
+   ],
+   "live": 5,
+   "yaku": true,
+   "into_a_riichi": false,
+   "callers": 3,
+   "rank": 3,
+   "left": 49,
+   "mortal": 0.042,
+   "result": "dealt"
+  }
+ ]
+}

@@ -1591,9 +1591,83 @@
    }
   },
   {
-   "id": "riichi-three-callers",
-   "chapter": "costly-run",
-   "verdict": "close",
+   "id": "chiitoi-dora-tanki",
+   "chapter": "declined-riichis",
+   "game": "260928-697dfc0f",
+   "round": "South 2-0",
+   "frames": [
+    {
+     "turn": 8,
+     "expect_cut": "5p",
+     "better": "1m"
+    }
+   ],
+   "title": "Two live tiles on the wrong chiitoitsu wait",
+   "situation": "South 2, turn 8, 40 tiles left. You lead on 37,700 and nobody has called or declared. You hold six pairs, [[2m]], [[2s]], [[3s]], [[7s]], [[P]] and [[F]], a single [[1m]] and the dora [[5p]]; toimen has thrown a [[1m]]. Cut the [[5p]] and you wait on the [[1m]] with 2 live tiles. Cut the [[1m]] and you wait on the dora [[5p]] with 3.",
+   "did": "You cut the dora [[5p]] and declared riichi on the [[1m]]: chiitoitsu and riichi, 3 han for 3,200. The hand ended in a draw.",
+   "luckyj": "",
+   "fix": "Cut the [[1m]] and stay dama on the [[5p]], as Mortal did at 83%; it gave the riichi 8%. The same chiitoitsu has 3 live tiles instead of 2, and winning on the dora pair makes it 4 han, 6,400, without the stick. You gave up the dora to declare.",
+   "ja": {
+    "title": "七対子の悪い待ちで残り2枚",
+    "situation": "南2局、8巡目、残り40枚。37,700点でトップ。誰も鳴いておらず、リーチもない。[[2m]]、[[2s]]、[[3s]]、[[7s]]、[[P]]、[[F]]の対子が6つあり、[[1m]]が1枚とドラの[[5p]]が1枚。対面が[[1m]]を切っている。[[5p]]を切れば[[1m]]待ちで残り2枚。[[1m]]を切れば、ドラの[[5p]]待ちで残り3枚である。",
+    "did": "ドラの[[5p]]を切り、[[1m]]待ちでリーチした。七対子とリーチで3翻、3,200点。この局は流局になった。",
+    "luckyj": "",
+    "fix": "[[1m]]を切って、[[5p]]待ちのダマにする。Mortalも83%でそうし、リーチは8%だった。同じ七対子で、残りは2枚ではなく3枚になり、ドラの対子でアガれば4翻の6,400点で、供託の1,000点もいらない。リーチするためにドラを手放した。"
+   }
+  },
+  {
+   "id": "riichi-into-riichi-8s",
+   "chapter": "declined-riichis",
+   "game": "260921-abcdff84",
+   "round": "East 4-0",
+   "frames": [
+    {
+     "turn": 8,
+     "kind": "riichi",
+     "expect_cut": "8s"
+    }
+   ],
+   "title": "A three-tile chiitoitsu into a riichi, from the lead",
+   "situation": "East 4, turn 8, 39 tiles left. You lead on 32,500, and kamicha declared riichi on their 5th turn. You draw [[7m]] into tenpai. Cut the genbutsu [[8s]] and you hold six pairs and a single [[3m]], with 3 live tiles. Chiitoitsu and a red five make 3 han dama, and 4 with the riichi.",
+   "did": "You declared with the [[8s]] and cut your next draws, [[9p]], [[8m]], [[3s]], [[6s]] and, on your 13th turn, the [[C]]. Kamicha was waiting on the [[C]] for chiitoitsu and riichi: 3,200, which cost you 4,200 with your stick.",
+   "luckyj": "",
+   "fix": "Stay dama. Mortal cut the [[3m]] or the [[8s]] without declaring 95% of the time and gave the riichi 4%. It is chapter 24's exception: chasing a riichi on three live tiles or fewer with a yaku, stay dama and push the same tile. Chiitoitsu and a red five were a yaku without the riichi. In riichi your draws are cut as they come, the [[C]] included.",
+   "ja": {
+    "title": "リーチに向かう、残り3枚の七対子（トップ目から）",
+    "situation": "東4局、8巡目、残り39枚。32,500点でトップ。上家が5巡目にリーチしている。[[7m]]を引いてテンパイ。現物の[[8s]]を切れば、対子が6つと[[3m]]が1枚で、残り3枚の待ちになる。七対子と赤1でダマ3翻、リーチをかければ4翻である。",
+    "did": "[[8s]]でリーチし、続くツモ切りは[[9p]]、[[8m]]、[[3s]]、[[6s]]、13巡目の[[C]]だった。上家は[[C]]待ちの七対子で、リーチ・七対子の3,200点。供託も合わせて4,200点を失った。",
+    "luckyj": "",
+    "fix": "ダマにする。Mortalは[[3m]]か[[8s]]を、リーチせずに95%で切り、リーチは4%だった。第24章の例外のとおりである。リーチに追っかけるとき、残り3枚以下で役があるなら、ダマにして同じ牌を押す。七対子と赤1はリーチなしでも役になっていた。リーチをかけると、引いた牌は引いたまま切ることになり、[[C]]もその1枚だった。"
+   }
+  },
+  {
+   "id": "late-riichi-7m",
+   "chapter": "declined-riichis",
+   "game": "260927-1a030971",
+   "round": "South 3-0",
+   "frames": [
+    {
+     "turn": 13,
+     "kind": "riichi",
+     "expect_cut": "7m"
+    }
+   ],
+   "title": "Six live tiles, on the 13th turn",
+   "situation": "South 3, turn 13, 19 tiles left. You lead on 38,900, and toimen declared riichi on their 13th turn; shimocha has two calls. You draw the red [[5m]] into tenpai. Cut [[7m]] and you wait on [[1s]], [[4s]] and [[7s]] with 6 live tiles, with tanyao and the red five already making 2 han dama.",
+   "did": "You declared with the [[7m]] and cut your next draw, [[2p]]. Toimen won by tsumo on their next turn, a haneman, 3,000 and 6,000: you paid 3,000, and the 1,000 stick went with it.",
+   "luckyj": "",
+   "fix": "Stay dama. Mortal cut the [[4m]] or the [[7m]] without declaring 96% of the time and gave the riichi 2%. Tenpai on six tiles was not the question; the 13th turn was. From your 13th turn your riichis won 2 times in 30 and dealt in 7 times. Toimen's tsumo cost you 3,000 either way, and the riichi added the stick.",
+   "ja": {
+    "title": "残り6枚の待ちでも13巡目",
+    "situation": "南3局、13巡目、残り19枚。38,900点でトップ。対面が13巡目にリーチしていて、下家は2副露している。赤[[5m]]を引いてテンパイ。[[7m]]を切れば[[1s]]、[[4s]]、[[7s]]待ちで残り6枚。タンヤオと赤1でダマでも2翻ある。",
+    "did": "[[7m]]でリーチし、次のツモ切りは[[2p]]だった。対面は次の巡目にツモアガリし、跳満の3,000-6,000点。3,000点を払い、供託の1,000点も失った。",
+    "luckyj": "",
+    "fix": "ダマにする。Mortalは[[4m]]か[[7m]]を、リーチせずに96%で切り、リーチは2%だった。6枚待ちのテンパイは問題ではなく、問題は13巡目だったことである。13巡目以降のあなたのリーチは、30回で2回アガり、7回放銃した。対面のツモは、どちらでも3,000点払うことになり、リーチはそこに供託を足した。"
+   }
+  },
+  {
+   "id": "furiten-riichi-9p",
+   "chapter": "declined-riichis",
    "game": "261008-ce956cd8",
    "round": "South 2-1",
    "frames": [
@@ -1603,17 +1677,17 @@
      "better": "8p"
     }
    ],
-   "title": "A riichi into three callers",
-   "situation": "South 2, one honba, turn 6, 49 tiles left. You are third on 7,400; shimocha leads on 59,600 and toimen, the dealer, is second on 31,000. All three have called: shimocha ponned [[P]], toimen ponned [[1p]] and chied [[5p]], and kamicha ponned [[S]]. You draw [[8p]]. Cut [[3m]] and you are tenpai on [[6p]]-[[9p]], 5 tiles, pinfu with a red five: 3,900 on the [[6p]], which adds tanyao, and 2,000 on the [[9p]]. Cut [[8p]] and you stay one-shanten with 32 tiles to improve your hand.",
-   "did": "You declared riichi with the [[3m]], then cut your draws, [[1m]], [[3s]], [[2m]], [[4p]] and [[7m]]. The [[7m]] on your 11th turn dealt in to toimen, the dealer: chun, three dora and a red five, 12,000 and the honba.",
-   "luckyj": "LuckyJ declares 83% of tenpais whose cheapest winning tile is worth 1 or 2 han (chapter 24).",
-   "fix": "Close. Mortal cut the [[8p]] 89%, staying one-shanten, and gave the riichi 4% and the dama tenpai 2%; chapter 24 would have you declare. The riichi swapped 32 tiles for 5 and, against three open hands, left you nothing to cut but your draws. Nobody was ready on turn 6, so the cost came over the next five turns, when toimen got there.",
+   "title": "A riichi on a furiten wait",
+   "situation": "South 2, one honba, turn 6, 49 tiles left. You are third on 7,400; shimocha leads on 59,600 and toimen, the dealer, is second on 31,000. All three have called: shimocha ponned [[P]], toimen ponned [[1p]] and chied [[5p]], and kamicha ponned [[S]]. You draw [[8p]]. Cut [[3m]] and you are tenpai on [[6p]]-[[9p]] with 5 live tiles and a red five, but your own river holds a [[9p]] from your 3rd turn. That makes the hand furiten: it can win only by tsumo. Cut [[8p]] and you stay one-shanten with 32 tiles to improve your hand.",
+   "did": "You declared riichi with the [[3m]], then cut your draws, [[1m]], [[3s]], [[2m]], [[4p]] and [[7m]]. The [[7m]] on your 11th turn dealt in to toimen, the dealer: chun, three dora and a red five, 12,000 and the honba. The [[9p]] you threw on your 3rd turn had already taken ron away from the hand.",
+   "luckyj": "",
+   "fix": "Look at your river before you declare. Mortal cut the [[8p]] 89%, staying one-shanten with a hand that could still ron, and gave the riichi 4% and the dama tenpai 2%. Four of your riichis since January were furiten, and none won. Mortal declared the other three, at 87% to 98%, so furiten alone is not what it objected to here; but this hand could win only on its own draw, into three callers, from a hand you could not fold.",
    "ja": {
-    "title": "3人の副露者に向かうリーチ",
-    "situation": "南2局1本場、6巡目、残り49枚。7,400点で3位。下家が59,600点でトップ、親の対面が31,000点で2位。3人とも鳴いていて、下家は[[P]]をポン、対面は[[1p]]をポンして[[5p]]をチー、上家は[[S]]をポンしている。[[8p]]を引いた。[[3m]]を切れば[[6p]]-[[9p]]待ちでテンパイ、残り5枚で、平和と赤があり、[[6p]]はタンヤオがついて3,900点、[[9p]]は2,000点。[[8p]]を切れば1シャンテンのままで、有効牌は32枚。",
-    "did": "[[3m]]でリーチし、続くツモ切りは[[1m]]、[[3s]]、[[2m]]、[[4p]]、[[7m]]だった。11巡目の[[7m]]が親の対面に当たった。中・ドラ3・赤1で12,000点と1本場である。",
-    "luckyj": "LuckyJは、最も安い和了牌が1翻か2翻のテンパイの83%でリーチする（第24章）。",
-    "fix": "際どい判断。Mortalは[[8p]]を89%で切って1シャンテンを保ち、リーチは4%、ダマテンパイは2%だった。第24章ならリーチする手である。リーチは有効牌32枚を5枚に替え、副露した3人を前に、ツモ切り以外の選択を残さなかった。6巡目にはまだ誰もテンパイしておらず、損は続く5巡で、対面が追いついたところに出た。"
+    "title": "フリテンの待ちでかけたリーチ",
+    "situation": "南2局1本場、6巡目、残り49枚。7,400点で3位。下家が59,600点でトップ、親の対面が31,000点で2位。3人とも鳴いていて、下家は[[P]]をポン、対面は[[1p]]をポンして[[5p]]をチー、上家は[[S]]をポンしている。[[8p]]を引いた。[[3m]]を切れば[[6p]]-[[9p]]待ちでテンパイ、残り5枚で赤もある。ただし自分の河に、3巡目に切った[[9p]]がある。そのためフリテンで、アガれるのはツモだけになる。[[8p]]を切れば1シャンテンのままで、有効牌は32枚。",
+    "did": "[[3m]]でリーチし、続くツモ切りは[[1m]]、[[3s]]、[[2m]]、[[4p]]、[[7m]]だった。11巡目の[[7m]]が親の対面に当たった。中・ドラ3・赤1で12,000点と1本場である。3巡目に切った[[9p]]が、この手からロンを奪っていた。",
+    "luckyj": "",
+    "fix": "リーチの前に自分の河を見る。Mortalは[[8p]]を89%で切って、ロンのできる1シャンテンを保ち、リーチは4%、ダマテンパイは2%だった。1月以降のあなたのリーチのうちフリテンは4回で、1回もアガれなかった。残りの3回はMortalも87〜98%でリーチしているので、Mortalが嫌ったのはフリテンだけではない。ただしこの手は、アガれるのが自分のツモだけで、副露者3人に向かい、オリることもできなかった。"
    }
   },
   {
