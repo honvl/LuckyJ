@@ -59,22 +59,37 @@ class TheFiguresTests(unittest.TestCase):
         self.assertEqual((keeps["choices"], keeps["you_threw_safe"], round(keeps["luckyj_would"]), keeps["wind_vs_value"],
                           keeps["safe_at_a_later_riichi"], keeps["two_or_fewer_held"]), (245, 92, 75, 39, 34, 7))
 
-    def test_the_four_cards(self):
+    def test_closed_hands(self):
+        c = DATA["closed_hands"]
+        self.assertEqual((c["share_you"], c["share_luckyj"]), (91, 90))
+        self.assertEqual((c["wind_vs_value"]["choices"], c["wind_vs_value"]["you"], c["wind_vs_value"]["luckyj"], c["wind_vs_value"]["sd"]),
+                         (277, 16.2, 25.1, -4.3))
+        self.assertEqual((c["open_wind_vs_value"]["you_choices"], c["open_wind_vs_value"]["luckyj_choices"],
+                          c["open_wind_vs_value"]["luckyj_live_first"]), (15, 141, 49.6))
+        k = c["luckyj_keeps"]
+        self.assertEqual((k["choices"], k["you_threw_safe"], round(k["luckyj_would"]), k["safe_at_a_later_riichi"]), (225, 79, 66, 28))
+
+    def test_the_four_cards_are_closed_hands(self):
         cards = [s for s in SPOTS if s["chapter"] == "no-safe-tile"]
-        self.assertEqual([c["id"] for c in cards], ["west-before-chun", "kamicha-1m-kept-9p", "north-before-west", "east-north-before-hatsu"])
+        self.assertEqual([c["id"] for c in cards],
+                         ["west-before-chun-closed", "north-before-west", "east-before-hatsu-closed", "kamicha-1m-before-9s"])
         examples = {(e["game"][:15], e["round"], e["turn"]): e for e in DATA["examples"]}
+        rates = []
         for c in cards:
             first = c["frames"][0]
             e = examples[(c["game"], c["round"], first["turn"])]
-            # the card's cut is the safe tile you threw, and its better tile is the live one LuckyJ throws first
-            self.assertEqual((first["expect_cut"], [first["better"]]), (e["cut"], e["live"]), c["id"])
+            self.assertTrue(e["closed"], c["id"])
+            # the card's cut is the safe tile you threw, and its better tile is a live one LuckyJ throws first
+            self.assertEqual(first["expect_cut"], e["cut"], c["id"])
+            self.assertIn(first["better"], e["live"], c["id"])
             self.assertFalse(e["live_cut"])
-            self.assertGreaterEqual(e["luckyj_live_first"], 0.6)
+            self.assertGreaterEqual(e["luckyj_closed_live_first"], 0.6)
             self.assertIn(e["riichi_later"]["labels"][e["cut"]], ("genbutsu", "dead", "suji", "honor, 2 seen"))
             self.assertEqual(c["frames"][-1]["turn"], e["riichi_later"]["your_turn"])
             self.assertNotIn("Mortal", json.dumps(c, ensure_ascii=False))
-        rates = [half_up(100 * examples[k]["luckyj_live_first"]) for k in sorted(examples)]
-        self.assertEqual(sorted(rates), [61, 62, 70, 72, 72])
+            rates.append(half_up(100 * e["luckyj_closed_live_first"]))
+            self.assertIn(f"{rates[-1]}%", c["luckyj"], c["id"])
+        self.assertEqual(rates, [63, 74, 63, 72])
 
 
 class TheChapterTests(unittest.TestCase):
@@ -86,7 +101,8 @@ class TheChapterTests(unittest.TestCase):
         text = prose("en")
         for phrase in ("14 of the 107 riichis", "8.5%", "98% of the time", "11 of 92", "7.8%", "five of the 14", "588",
                        "five standard deviations", "92 of 245", "give 75", "39 of the 92", "34 of the 92", "7 of those",
-                       "77% of the time", "189 games", "1,255", "771"):
+                       "77% of the time", "189 games", "1,255", "771", "91% of yours and 90%", "16.2%", "25.1%",
+                       "4.3 standard deviations", "49.6% of 141", "only 15 times", "79 of 225", "give 66", "28 of those"):
             self.assertIn(phrase, text, phrase)
 
     def test_the_japanese_keeps_every_number(self):

@@ -27,6 +27,7 @@
      "F"
     ],
     "live_cut": false,
+    "closed": true,
     "riichi_later": {
      "declarer": "shimocha",
      "your_turn": 10,
@@ -38,7 +39,8 @@
      },
      "safe_held": 0
     },
-    "luckyj_live_first": 0.024
+    "luckyj_live_first": 0.024,
+    "luckyj_closed_live_first": 0.022
    }
   ]
  },
@@ -86,13 +88,35 @@
   "safe_at_a_later_riichi": 34,
   "two_or_fewer_held": 7
  },
+ "closed_hands": {
+  "share_you": 91,
+  "share_luckyj": 90,
+  "wind_vs_value": {
+   "choices": 277,
+   "you": 16.2,
+   "luckyj": 25.1,
+   "sd": -4.3
+  },
+  "open_wind_vs_value": {
+   "you_choices": 15,
+   "luckyj_choices": 141,
+   "luckyj_live_first": 49.6
+  },
+  "luckyj_keeps": {
+   "choices": 225,
+   "you_threw_safe": 79,
+   "luckyj_would": 66.3,
+   "safe_at_a_later_riichi": 28,
+   "two_or_fewer_held": 4
+  }
+ },
  "examples": [
   {
-   "game": "260924-0e508d5e-4b31-49ac-b77d-dab1c05ab4ae",
-   "date": "2026-09-23 18:40",
-   "hand": 6,
-   "round": "South 2-0",
-   "turn": 6,
+   "game": "260924-07f4adf4-bcd7-4ed0-b6f1-e583cf5b4590",
+   "date": "2026-09-23 13:31",
+   "hand": 8,
+   "round": "South 3-2",
+   "turn": 4,
    "split": "quiet",
    "kind": "wind-vs-value",
    "cut": "W",
@@ -100,48 +124,24 @@
     "W"
    ],
    "live": [
-    "C"
+    "C",
+    "F"
    ],
    "live_cut": false,
-   "riichi_later": {
-    "declarer": "shimocha",
-    "your_turn": 7,
-    "your_cut": "F",
-    "labels": {
-     "W": "genbutsu",
-     "C": "live honor"
-    },
-    "safe_held": 1
-   },
-   "luckyj_live_first": 0.721
-  },
-  {
-   "game": "260928-5a0260b7-1cac-4ecd-81d7-102a1d432557",
-   "date": "2026-09-27 17:38",
-   "hand": 1,
-   "round": "East 2-0",
-   "turn": 4,
-   "split": "quiet",
-   "kind": "terminal",
-   "cut": "1m",
-   "safe": [
-    "1m"
-   ],
-   "live": [
-    "9p"
-   ],
-   "live_cut": false,
+   "closed": true,
    "riichi_later": {
     "declarer": "kamicha",
-    "your_turn": 6,
-    "your_cut": "6m",
+    "your_turn": 5,
+    "your_cut": "8s",
     "labels": {
-     "1m": "genbutsu",
-     "9p": "live terminal"
+     "W": "genbutsu",
+     "F": "live honor",
+     "C": "honor, 2 seen"
     },
-    "safe_held": 0
+    "safe_held": 3
    },
-   "luckyj_live_first": 0.697
+   "luckyj_live_first": 0.602,
+   "luckyj_closed_live_first": 0.628
   },
   {
    "game": "261002-990b6d58-cd27-4af6-86b4-c8f6c976c60f",
@@ -159,6 +159,7 @@
     "W"
    ],
    "live_cut": false,
+   "closed": true,
    "riichi_later": {
     "declarer": "shimocha",
     "your_turn": 11,
@@ -169,14 +170,15 @@
     },
     "safe_held": 2
    },
-   "luckyj_live_first": 0.721
+   "luckyj_live_first": 0.721,
+   "luckyj_closed_live_first": 0.738
   },
   {
-   "game": "261010-165003cb-bf9c-49f9-ae39-ac95a879ae5c",
-   "date": "2026-10-10 00:59",
-   "hand": 9,
-   "round": "South 2-1",
-   "turn": 10,
+   "game": "261007-c265c423-64d7-4171-ae24-ea000701511e",
+   "date": "2026-10-06 21:07",
+   "hand": 7,
+   "round": "South 3-0",
+   "turn": 4,
    "split": "quiet",
    "kind": "wind-vs-value",
    "cut": "E",
@@ -184,48 +186,54 @@
     "E"
    ],
    "live": [
-    "F"
+    "F",
+    "S"
    ],
    "live_cut": false,
+   "closed": true,
    "riichi_later": {
-    "declarer": "toimen",
-    "your_turn": 16,
-    "your_cut": "S",
+    "declarer": "shimocha",
+    "your_turn": 14,
+    "your_cut": "5p",
     "labels": {
      "E": "genbutsu",
-     "F": "honor, 2 seen"
+     "S": "genbutsu",
+     "F": "dead"
     },
-    "safe_held": 7
+    "safe_held": 5
    },
-   "luckyj_live_first": 0.607
+   "luckyj_live_first": 0.602,
+   "luckyj_closed_live_first": 0.628
   },
   {
-   "game": "261010-165003cb-bf9c-49f9-ae39-ac95a879ae5c",
-   "date": "2026-10-10 00:59",
-   "hand": 9,
-   "round": "South 2-1",
-   "turn": 11,
+   "game": "260921-131330a2-6409-4e0c-bca3-3c4cc9cc7917",
+   "date": "2026-09-21 03:22",
+   "hand": 0,
+   "round": "East 1-0",
+   "turn": 3,
    "split": "quiet",
-   "kind": "wind-vs-value",
-   "cut": "N",
+   "kind": "terminal",
+   "cut": "1m",
    "safe": [
-    "N"
+    "1m"
    ],
    "live": [
-    "F"
+    "9s"
    ],
    "live_cut": false,
+   "closed": true,
    "riichi_later": {
     "declarer": "toimen",
-    "your_turn": 16,
-    "your_cut": "S",
+    "your_turn": 7,
+    "your_cut": "N",
     "labels": {
-     "N": "genbutsu",
-     "F": "honor, 2 seen"
+     "1m": "genbutsu",
+     "9s": "live terminal"
     },
-    "safe_held": 7
+    "safe_held": 1
    },
-   "luckyj_live_first": 0.617
+   "luckyj_live_first": 0.713,
+   "luckyj_closed_live_first": 0.72
   }
  ]
 }

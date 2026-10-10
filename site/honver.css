@@ -1568,3 +1568,21 @@ html:lang(ja) :is(.guide-news-tag, .guide-data thead th, .guide-verdict, .guide-
 .guide-data.is-dealer-river td:nth-child(6) {
   min-width: 9em;
 }
+
+/* Two marked tiles side by side in your hand (your cut next to the better tile): their labels are wider than a
+   tile, so the second one drops a line and the hand makes room for it. */
+.mahjong-table .tile-threat-cell[data-mark] + .tile-threat-cell[data-mark]::after {
+  top: calc(100% + 1.55em);
+}
+
+.mahjong-table .player-hand.player-current:has(.tile-threat-cell[data-mark] + .tile-threat-cell[data-mark]) {
+  padding-bottom: 2.6em;
+}
+
+.mahjong-table .player-hand.player-current:has(.tile-threat-cell[data-mark] + .tile-threat-cell[data-mark]):has(.table-melds) {
+  padding-bottom: 0;
+}
+
+.mahjong-table .player-hand.player-current:has(.tile-threat-cell[data-mark] + .tile-threat-cell[data-mark]) .table-melds {
+  margin-top: 2.6em;
+}

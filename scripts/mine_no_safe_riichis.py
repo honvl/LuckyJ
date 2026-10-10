@@ -14,9 +14,11 @@ discards is ``fitted_rates`` over its 1,255 games.
 - the user's leftover choices since January, kind by kind, against LuckyJ in the same spots;
 - the turns where LuckyJ keeps the safe tile at least 60% of the time and the user threw it, and of those, the turns
   where a later riichi in the hand found that tile safe, with the safe tiles the user still held then;
+- the same for closed hands alone, against LuckyJ's rates fitted over its closed hands (the cards are all closed hands);
 - the example turns the chapter shows as cards.
 
 usage: mine_no_safe_riichis.py ESR_YOU ESR_LJ LEFTOVERS_LJ OUT.json
+  LEFTOVERS_LJ: ``mine_early_safe_tiles.py leftovers`` over LuckyJ's games, rows with the ``closed`` flag
 """
 
 from __future__ import annotations
@@ -47,8 +49,8 @@ KINDS = (("guest winds, discards 1-2", lambda c: c["kind"] == "honor" and c["tur
          ("guest winds, discard 3 on", lambda c: c["kind"] == "honor" and c["turn"] >= 3),
          ("terminals", lambda c: c["kind"] == "terminal"), ("middle tiles", lambda c: c["kind"] == "middle"),
          ("value honor vs discarded wind", lambda c: c["kind"] == "wind-vs-value"))
-EXAMPLES = (("260924-0e508d5e", "South 2-0", 6), ("260928-5a0260b7", "East 2-0", 4), ("261002-990b6d58", "South 1-0", 6),
-            ("261010-165003cb", "South 2-1", 10), ("261010-165003cb", "South 2-1", 11))
+EXAMPLES = (("260924-07f4adf4", "South 3-2", 4), ("261002-990b6d58", "South 1-0", 6), ("261007-c265c423", "South 3-0", 4),
+            ("260921-131330a2", "East 1-0", 3))
 
 
 def leftover_choices(g: dict) -> list[dict]:
@@ -105,7 +107,7 @@ def leftover_choices(g: dict) -> list[dict]:
                 out.append({"game": g["uuid"], "date": g["date"], "hand": li, "round": game["round_name"], "turn": own_turn,
                             "split": split, "kind": kind, "cut": site_tile(e["tile"]),
                             "safe": sorted(site_tile(tile(b)) for b in safe), "live": sorted(site_tile(tile(b)) for b in live),
-                            "live_cut": cut in live, "riichi_later": later})
+                            "live_cut": cut in live, "closed": e["closed"], "riichi_later": later})
     return out
 
 
@@ -120,9 +122,12 @@ def main(esr_you: str, esr_lj: str, lo_lj: str, out: str) -> None:
 
     lj_rows = json.loads(Path(lo_lj).read_text())["rows"]
     rates = {(s, k): est.fitted_rates(lj_rows, s, k)[0] for s in ("quiet", "threat") for k in ("honor", "terminal", "middle", "wind-vs-value")}
+    closed_rates = {(s, k): est.fitted_rates([r for r in lj_rows if r["closed"]], s, k)[0]
+                    for s in ("quiet", "threat") for k in ("honor", "terminal", "middle", "wind-vs-value")}
     choices = [c for g in games for c in leftover_choices(g)]
     for c in choices:
         c["luckyj_live_first"] = round(rates[(c["split"], c["kind"])][c["turn"]], 3)
+        c["luckyj_closed_live_first"] = round(closed_rates[(c["split"], c["kind"])][c["turn"]], 3)
 
     # the 14 riichis
     rows = [r for r in json.loads(Path(esr_you).read_text())["rows"] if r["lj_X"] and r["game"] in window]
@@ -153,6 +158,27 @@ def main(esr_you: str, esr_lj: str, lo_lj: str, out: str) -> None:
         kinds[name] = {"choices": len(cs), "you": round(100 * live / len(cs), 1), "luckyj": round(100 * exp / len(cs), 1),
                        "sd": round((live - exp) / math.sqrt(var), 1)}
 
+    shut = [c for c in quiet if c["closed"] and c["kind"] == "wind-vs-value"]
+    p = [c["luckyj_closed_live_first"] for c in shut]
+    live = sum(c["live_cut"] for c in shut)
+    lj_quiet = [r for r in lj_rows if r["split"] == "quiet"]
+    open_lj = [r for r in lj_quiet if not r["closed"] and r["kind"] == "wind-vs-value"]
+    closed_keep = [c for c in choices if c["closed"] and c["luckyj_closed_live_first"] >= KEEP]
+    closed_thrown = [c for c in closed_keep if not c["live_cut"]]
+    closed_costly = [c for c in closed_thrown if c["riichi_later"] and c["riichi_later"]["labels"].get(c["cut"]) in SAFE]
+    closed = {
+        "share_you": round(100 * sum(c["closed"] for c in quiet) / len(quiet)),
+        "share_luckyj": round(100 * sum(r["closed"] for r in lj_quiet) / len(lj_quiet)),
+        "wind_vs_value": {"choices": len(shut), "you": round(100 * live / len(shut), 1), "luckyj": round(100 * sum(p) / len(shut), 1),
+                          "sd": round((live - sum(p)) / math.sqrt(sum(q * (1 - q) for q in p)), 1)},
+        "open_wind_vs_value": {"you_choices": sum(1 for c in quiet if not c["closed"] and c["kind"] == "wind-vs-value"),
+                               "luckyj_choices": len(open_lj),
+                               "luckyj_live_first": round(100 * sum(r["live_cut"] for r in open_lj) / len(open_lj), 1)},
+        "luckyj_keeps": {"choices": len(closed_keep), "you_threw_safe": len(closed_thrown),
+                         "luckyj_would": round(sum(1 - c["luckyj_closed_live_first"] for c in closed_keep), 1),
+                         "safe_at_a_later_riichi": len(closed_costly),
+                         "two_or_fewer_held": sum(1 for c in closed_costly if c["riichi_later"]["safe_held"] <= 2)},
+    }
     keep = [c for c in choices if c["luckyj_live_first"] >= KEEP]
     thrown = [c for c in keep if not c["live_cut"]]
     costly = [c for c in thrown if c["riichi_later"] and c["riichi_later"]["labels"].get(c["cut"]) in SAFE]
@@ -169,13 +195,15 @@ def main(esr_you: str, esr_lj: str, lo_lj: str, out: str) -> None:
                          "wind_vs_value": sum(1 for c in thrown if c["kind"] == "wind-vs-value"),
                          "safe_at_a_later_riichi": len(costly),
                          "two_or_fewer_held": sum(1 for c in costly if c["riichi_later"]["safe_held"] <= 2)},
+        "closed_hands": closed,
         "examples": [find(*x) for x in EXAMPLES],
     }
     Path(out + ".tmp").write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     os.replace(out + ".tmp", out)
     print(json.dumps({k: v for k, v in result.items() if k != "examples"}, ensure_ascii=False)[:2500])
     for c in result["examples"]:
-        print(c["date"], c["game"][:15], c["round"], c["turn"], c["kind"], c["cut"], c["safe"], c["live"], c["luckyj_live_first"], c["riichi_later"])
+        print(c["date"], c["game"][:15], c["round"], c["turn"], c["kind"], c["closed"], c["cut"], c["safe"], c["live"],
+              c["luckyj_closed_live_first"], c["riichi_later"])
 
 
 if __name__ == "__main__":

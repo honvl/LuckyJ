@@ -4,7 +4,7 @@
 ``leftovers`` reads tenhou.net/6 logs and records the book's safe-tile timing choice
 (``scripts/mine_safe_tile_timing.py``, which reads LuckyJ's NAGA reports) for any player: in a hand
 the player does not deal, at each draw before their own riichi, by their own discard number
-(discards after calls count), when the hand holds a leftover already in an opponent's river and a
+(discards after calls count, and whether the hand is still closed), when the hand holds a leftover already in an opponent's river and a
 live leftover of the same kind (guest wind, terminal, middle tile), which of the two was cut. A
 leftover is a lone tile with no same-suit tile within two ranks; dragons, the seat wind and the
 round wind are left out. Quiet = no opponent in riichi and none with two calls or more. Run on
@@ -116,7 +116,7 @@ def _leftover_work(g: dict) -> list:
             for kind, safe, live in choices:
                 if safe and live and (cut in safe or cut in live):
                     rows.append({"game": g["uuid"], "hand": li, "round": game["round_name"], "turn": own_turn,
-                                 "split": split, "kind": kind, "live_cut": cut in live})
+                                 "split": split, "kind": kind, "live_cut": cut in live, "closed": e["closed"]})
     return rows
 
 
