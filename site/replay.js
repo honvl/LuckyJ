@@ -160,7 +160,7 @@
 
   // ------------------------------------------------------------------ one game: state
 
-  const view = { game: null, hand: 0, stop: 0, stops: [], decisions: new Map(), turns: [] };
+  const view = { game: null, hand: 0, stop: 0, stops: [], decisions: new Map(), turns: [], heldWidth: 0 };
 
   function relOf(seat) {
     return REL[(seat - view.game.hero + 4) % 4];
@@ -847,6 +847,7 @@
     if (stop.kind === "end") blocks.push(resultBlock(hand));
     detail.replaceChildren(...blocks);
     applyTileCompatibility(app.querySelector(".replay-panel"));
+    holdHeights();
 
     const slider = app.querySelector(".replay-slider");
     slider.value = String(view.stop);
@@ -860,6 +861,23 @@
     app.querySelector('[data-go="prev"]').disabled = view.stop === 0 && view.hand === 0;
     app.querySelector('[data-go="next"]').disabled = view.stop === view.stops.length - 1 && view.hand === game.hands.length - 1;
     writeLocation();
+  }
+
+  // The table and the panel never shrink while you step. Mortal's bars come and go with your turns
+  // and a call adds a row to the table; when they grew and shrank with them, everything below moved,
+  // and scrolled down to the bars, the browser scrolled the page up and down to keep what was under
+  // the top of the screen in place. Each keeps the tallest height it has reached at this window
+  // width; replay.css reserves room for the bars from the start.
+  function holdHeights() {
+    const held = app.querySelectorAll(".replay-table-host, .replay-panel");
+    if (view.heldWidth !== window.innerWidth) {
+      view.heldWidth = window.innerWidth;
+      for (const element of held) element.style.minHeight = "";
+    }
+    const heights = Array.from(held, (element) => Math.ceil(element.getBoundingClientRect().height));
+    held.forEach((element, k) => {
+      if (heights[k] > (Number.parseFloat(element.style.minHeight) || 0)) element.style.minHeight = `${heights[k]}px`;
+    });
   }
 
   function writeLocation() {

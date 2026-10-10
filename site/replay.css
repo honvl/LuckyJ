@@ -208,8 +208,11 @@
   grid-area: table;
 }
 
+/* Room for Mortal's bars at every step, so the page under the panel stays put when they come and go
+   (replay.js raises it if a panel needs more). */
 .replay-viewer .replay-panel {
   grid-area: panel;
+  min-height: 500px;
 }
 
 .replay-controls {
