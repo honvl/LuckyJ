@@ -1,551 +1,231 @@
 {
  "window": {
-  "first": "2026-10-07 18:25",
-  "last": "2026-10-10 14:43",
-  "games": 16
- },
- "riichis": 107,
- "no_safe_tile": 14,
- "not_tenpai": {
-  "riichis": 92,
-  "no_safe_tile": 11,
-  "luckyj_expected": 7.1,
-  "luckyj_rate": 7.8
- },
- "groups": {
-  "early": 1,
-  "same": 5,
-  "kept": 3,
-  "ended": 3,
-  "tenpai": 2
- },
- "most_in_one_game": 5,
- "terminal_leftovers": {
-  "choices": 120,
-  "you_live_first": 88,
-  "you_rate": 73.3,
-  "luckyj_rate": 71.6
- },
- "riichis_with_no_safe_tile": [
-  {
-   "game": "261011-285cf167-7464-42ec-993d-ffac72ff2bb5",
-   "date": "2026-10-10 14:43",
-   "round": "East 4-0",
-   "declarer": "toimen",
-   "declarer_discard": 5,
-   "shanten": 4,
-   "open": false,
-   "your_next_turn": 3,
-   "dealt": false,
-   "cuts": [],
-   "group": "early"
+  "games": 16,
+  "riichis": 107,
+  "no_safe_tile": 14,
+  "not_tenpai": {
+   "riichis": 92,
+   "no_safe_tile": 11,
+   "luckyj_rate": 7.8
   },
-  {
-   "game": "261011-99feaaaa-a1e4-4bef-9f4c-d08173ab122a",
-   "date": "2026-10-10 14:24",
-   "round": "East 1-0",
-   "declarer": "kamicha",
-   "declarer_discard": 4,
-   "shanten": 2,
-   "open": false,
-   "your_next_turn": 4,
-   "dealt": false,
-   "cuts": [
-    {
-     "turn": 1,
-     "tile": "2s",
-     "label": "genbutsu",
-     "mortal": 0.706,
-     "mortal_top": "2s",
-     "mortal_top_p": 0.706
+  "most_in_one_game": 5,
+  "choices_before": [
+   {
+    "game": "261010-201c40e5-64e7-42a9-b924-a127a6d2059f",
+    "date": "2026-10-09 20:50",
+    "hand": 0,
+    "round": "East 1-0",
+    "turn": 1,
+    "split": "quiet",
+    "kind": "wind-vs-value",
+    "cut": "N",
+    "safe": [
+     "N"
+    ],
+    "live": [
+     "E",
+     "F"
+    ],
+    "live_cut": false,
+    "riichi_later": {
+     "declarer": "shimocha",
+     "your_turn": 10,
+     "your_cut": "3s",
+     "labels": {
+      "E": "genbutsu",
+      "N": "honor, 2 seen",
+      "F": "genbutsu"
+     },
+     "safe_held": 0
     },
-    {
-     "turn": 3,
-     "tile": "8s",
-     "label": "genbutsu",
-     "mortal": 0.951,
-     "mortal_top": "8s",
-     "mortal_top_p": 0.951
-    }
+    "luckyj_live_first": 0.024
+   }
+  ]
+ },
+ "since_january": {
+  "games": 189,
+  "choices": 771,
+  "kinds": {
+   "guest winds, discards 1-2": {
+    "choices": 45,
+    "you": 46.7,
+    "luckyj": 23.5,
+    "sd": 3.8
+   },
+   "guest winds, discard 3 on": {
+    "choices": 19,
+    "you": 52.6,
+    "luckyj": 68.4,
+    "sd": -1.5
+   },
+   "terminals": {
+    "choices": 120,
+    "you": 73.3,
+    "luckyj": 71.7,
+    "sd": 0.4
+   },
+   "middle tiles": {
+    "choices": 112,
+    "you": 43.8,
+    "luckyj": 49.8,
+    "sd": -1.4
+   },
+   "value honor vs discarded wind": {
+    "choices": 292,
+    "you": 16.1,
+    "luckyj": 26.4,
+    "sd": -5.0
+   }
+  }
+ },
+ "luckyj_keeps": {
+  "choices": 245,
+  "you_threw_safe": 92,
+  "luckyj_would": 74.9,
+  "wind_vs_value": 39,
+  "safe_at_a_later_riichi": 34,
+  "two_or_fewer_held": 7
+ },
+ "examples": [
+  {
+   "game": "260924-0e508d5e-4b31-49ac-b77d-dab1c05ab4ae",
+   "date": "2026-09-23 18:40",
+   "hand": 6,
+   "round": "South 2-0",
+   "turn": 6,
+   "split": "quiet",
+   "kind": "wind-vs-value",
+   "cut": "W",
+   "safe": [
+    "W"
    ],
-   "group": "same"
+   "live": [
+    "C"
+   ],
+   "live_cut": false,
+   "riichi_later": {
+    "declarer": "shimocha",
+    "your_turn": 7,
+    "your_cut": "F",
+    "labels": {
+     "W": "genbutsu",
+     "C": "live honor"
+    },
+    "safe_held": 1
+   },
+   "luckyj_live_first": 0.721
   },
   {
-   "game": "261011-99feaaaa-a1e4-4bef-9f4c-d08173ab122a",
-   "date": "2026-10-10 14:24",
+   "game": "260928-5a0260b7-1cac-4ecd-81d7-102a1d432557",
+   "date": "2026-09-27 17:38",
+   "hand": 1,
    "round": "East 2-0",
-   "declarer": "toimen",
-   "declarer_discard": 8,
-   "shanten": 2,
-   "open": false,
-   "your_next_turn": 8,
-   "dealt": true,
-   "cuts": [
-    {
-     "turn": 1,
-     "tile": "N",
-     "label": "genbutsu",
-     "mortal": 0.391,
-     "mortal_top": "9m",
-     "mortal_top_p": 0.556
-    },
-    {
-     "turn": 3,
-     "tile": "E",
-     "label": "genbutsu",
-     "mortal": 0.92,
-     "mortal_top": "E",
-     "mortal_top_p": 0.92
-    },
-    {
-     "turn": 6,
-     "tile": "P",
-     "label": "genbutsu",
-     "mortal": 0.989,
-     "mortal_top": "P",
-     "mortal_top_p": 0.989
-    }
+   "turn": 4,
+   "split": "quiet",
+   "kind": "terminal",
+   "cut": "1m",
+   "safe": [
+    "1m"
    ],
-   "group": "kept"
+   "live": [
+    "9p"
+   ],
+   "live_cut": false,
+   "riichi_later": {
+    "declarer": "kamicha",
+    "your_turn": 6,
+    "your_cut": "6m",
+    "labels": {
+     "1m": "genbutsu",
+     "9p": "live terminal"
+    },
+    "safe_held": 0
+   },
+   "luckyj_live_first": 0.697
   },
   {
-   "game": "261011-99feaaaa-a1e4-4bef-9f4c-d08173ab122a",
-   "date": "2026-10-10 14:24",
-   "round": "East 2-4",
-   "declarer": "kamicha",
-   "declarer_discard": 7,
-   "shanten": 1,
-   "open": false,
-   "your_next_turn": 7,
-   "dealt": false,
-   "cuts": [
-    {
-     "turn": 2,
-     "tile": "C",
-     "label": "honor, 2 seen",
-     "mortal": 0.529,
-     "mortal_top": "C",
-     "mortal_top_p": 0.529
-    },
-    {
-     "turn": 3,
-     "tile": "P",
-     "label": "genbutsu",
-     "mortal": 0.903,
-     "mortal_top": "P",
-     "mortal_top_p": 0.903
-    }
-   ],
-   "group": "same"
-  },
-  {
-   "game": "261011-99feaaaa-a1e4-4bef-9f4c-d08173ab122a",
-   "date": "2026-10-10 14:24",
+   "game": "261002-990b6d58-cd27-4af6-86b4-c8f6c976c60f",
+   "date": "2026-10-01 17:56",
+   "hand": 4,
    "round": "South 1-0",
-   "declarer": "shimocha",
-   "declarer_discard": 9,
-   "shanten": 2,
-   "open": false,
-   "your_next_turn": 9,
-   "dealt": false,
-   "cuts": [
-    {
-     "turn": 1,
-     "tile": "9p",
-     "label": "genbutsu",
-     "mortal": 0.203,
-     "mortal_top": "9m",
-     "mortal_top_p": 0.323
-    },
-    {
-     "turn": 5,
-     "tile": "P",
-     "label": "genbutsu",
-     "mortal": 0.525,
-     "mortal_top": "P",
-     "mortal_top_p": 0.525
-    }
+   "turn": 6,
+   "split": "quiet",
+   "kind": "wind-vs-value",
+   "cut": "N",
+   "safe": [
+    "N"
    ],
-   "group": "kept"
-  },
-  {
-   "game": "261011-99feaaaa-a1e4-4bef-9f4c-d08173ab122a",
-   "date": "2026-10-10 14:24",
-   "round": "South 1-0",
-   "declarer": "toimen",
-   "declarer_discard": 11,
-   "shanten": 2,
-   "open": false,
-   "your_next_turn": null,
-   "dealt": false,
-   "cuts": [],
-   "group": "ended"
-  },
-  {
-   "game": "261010-23b5165e-9075-4dbf-89f7-f84739f0b9c8",
-   "date": "2026-10-10 02:22",
-   "round": "East 2-2",
-   "declarer": "toimen",
-   "declarer_discard": 13,
-   "shanten": 1,
-   "open": false,
-   "your_next_turn": 13,
-   "dealt": false,
-   "cuts": [
-    {
-     "turn": 1,
-     "tile": "S",
-     "label": "genbutsu",
-     "mortal": 0.911,
-     "mortal_top": "S",
-     "mortal_top_p": 0.911
-    },
-    {
-     "turn": 2,
-     "tile": "3p",
-     "label": "genbutsu",
-     "mortal": 0.505,
-     "mortal_top": "3p",
-     "mortal_top_p": 0.505
-    },
-    {
-     "turn": 3,
-     "tile": "9m",
-     "label": "genbutsu",
-     "mortal": 0.988,
-     "mortal_top": "9m",
-     "mortal_top_p": 0.988
-    },
-    {
-     "turn": 4,
-     "tile": "9m",
-     "label": "genbutsu",
-     "mortal": 0.996,
-     "mortal_top": "9m",
-     "mortal_top_p": 0.996
-    },
-    {
-     "turn": 5,
-     "tile": "E",
-     "label": "genbutsu",
-     "mortal": 0.993,
-     "mortal_top": "E",
-     "mortal_top_p": 0.993
-    },
-    {
-     "turn": 6,
-     "tile": "1m",
-     "label": "genbutsu",
-     "mortal": 0.932,
-     "mortal_top": "1m",
-     "mortal_top_p": 0.932
-    },
-    {
-     "turn": 7,
-     "tile": "1p",
-     "label": "genbutsu",
-     "mortal": 0.995,
-     "mortal_top": "1p",
-     "mortal_top_p": 0.995
-    },
-    {
-     "turn": 10,
-     "tile": "S",
-     "label": "genbutsu",
-     "mortal": 0.991,
-     "mortal_top": "S",
-     "mortal_top_p": 0.991
-    },
-    {
-     "turn": 12,
-     "tile": "C",
-     "label": "dead",
-     "mortal": 0.97,
-     "mortal_top": "C",
-     "mortal_top_p": 0.97
-    }
+   "live": [
+    "W"
    ],
-   "group": "same"
-  },
-  {
-   "game": "261010-23b5165e-9075-4dbf-89f7-f84739f0b9c8",
-   "date": "2026-10-10 02:22",
-   "round": "South 3-0",
-   "declarer": "shimocha",
-   "declarer_discard": 5,
-   "shanten": 1,
-   "open": false,
-   "your_next_turn": 6,
-   "dealt": false,
-   "cuts": [
-    {
-     "turn": 2,
-     "tile": "1p",
-     "label": "genbutsu",
-     "mortal": 0.978,
-     "mortal_top": "1p",
-     "mortal_top_p": 0.978
-    }
-   ],
-   "group": "same"
+   "live_cut": false,
+   "riichi_later": {
+    "declarer": "shimocha",
+    "your_turn": 11,
+    "your_cut": "9s",
+    "labels": {
+     "W": "dead",
+     "N": "genbutsu"
+    },
+    "safe_held": 2
+   },
+   "luckyj_live_first": 0.721
   },
   {
    "game": "261010-165003cb-bf9c-49f9-ae39-ac95a879ae5c",
    "date": "2026-10-10 00:59",
-   "round": "East 2-1",
-   "declarer": "toimen",
-   "declarer_discard": 6,
-   "shanten": 2,
-   "open": false,
-   "your_next_turn": null,
-   "dealt": false,
-   "cuts": [],
-   "group": "ended"
-  },
-  {
-   "game": "261010-201c40e5-64e7-42a9-b924-a127a6d2059f",
-   "date": "2026-10-09 20:50",
-   "round": "East 1-0",
-   "declarer": "shimocha",
-   "declarer_discard": 9,
-   "shanten": 2,
-   "open": false,
-   "your_next_turn": 10,
-   "dealt": false,
-   "cuts": [
-    {
-     "turn": 1,
-     "tile": "N",
-     "label": "honor, 2 seen",
-     "mortal": 0.89,
-     "mortal_top": "N",
-     "mortal_top_p": 0.89
-    },
-    {
-     "turn": 3,
-     "tile": "E",
-     "label": "genbutsu",
-     "mortal": 0.125,
-     "mortal_top": "P",
-     "mortal_top_p": 0.752
-    },
-    {
-     "turn": 7,
-     "tile": "C",
-     "label": "honor, 2 seen",
-     "mortal": 0.436,
-     "mortal_top": "C",
-     "mortal_top_p": 0.436
-    },
-    {
-     "turn": 8,
-     "tile": "F",
-     "label": "genbutsu",
-     "mortal": 0.756,
-     "mortal_top": "F",
-     "mortal_top_p": 0.756
-    },
-    {
-     "turn": 9,
-     "tile": "P",
-     "label": "genbutsu",
-     "mortal": 0.981,
-     "mortal_top": "P",
-     "mortal_top_p": 0.981
-    }
-   ],
-   "group": "kept"
-  },
-  {
-   "game": "261010-201c40e5-64e7-42a9-b924-a127a6d2059f",
-   "date": "2026-10-09 20:50",
+   "hand": 9,
    "round": "South 2-1",
-   "declarer": "shimocha",
-   "declarer_discard": 13,
-   "shanten": 0,
-   "open": true,
-   "your_next_turn": 14,
-   "dealt": false,
-   "cuts": [
-    {
-     "turn": 1,
-     "tile": "E",
-     "label": "genbutsu",
-     "mortal": 0.832,
-     "mortal_top": "E",
-     "mortal_top_p": 0.832
-    },
-    {
-     "turn": 3,
-     "tile": "2p",
-     "label": "genbutsu",
-     "mortal": 0.009,
-     "mortal_top": "4s",
-     "mortal_top_p": 0.516
-    },
-    {
-     "turn": 4,
-     "tile": "F",
-     "label": "dead",
-     "mortal": 0.704,
-     "mortal_top": "F",
-     "mortal_top_p": 0.704
-    },
-    {
-     "turn": 5,
-     "tile": "4p",
-     "label": "nakasuji",
-     "mortal": 0.549,
-     "mortal_top": "4p",
-     "mortal_top_p": 0.549
-    },
-    {
-     "turn": 10,
-     "tile": "3s",
-     "label": "genbutsu",
-     "mortal": 0.997,
-     "mortal_top": "3s",
-     "mortal_top_p": 0.997
-    },
-    {
-     "turn": 12,
-     "tile": "7p",
-     "label": "genbutsu",
-     "mortal": 0.999,
-     "mortal_top": "7p",
-     "mortal_top_p": 0.999
-    }
+   "turn": 10,
+   "split": "quiet",
+   "kind": "wind-vs-value",
+   "cut": "E",
+   "safe": [
+    "E"
    ],
-   "group": "tenpai"
+   "live": [
+    "F"
+   ],
+   "live_cut": false,
+   "riichi_later": {
+    "declarer": "toimen",
+    "your_turn": 16,
+    "your_cut": "S",
+    "labels": {
+     "E": "genbutsu",
+     "F": "honor, 2 seen"
+    },
+    "safe_held": 7
+   },
+   "luckyj_live_first": 0.607
   },
   {
-   "game": "261010-896f29d4-1c7c-4533-916c-2a8ac59b73c7",
-   "date": "2026-10-09 18:11",
-   "round": "East 4-1",
-   "declarer": "toimen",
-   "declarer_discard": 13,
-   "shanten": 0,
-   "open": true,
-   "your_next_turn": 15,
-   "dealt": false,
-   "cuts": [
-    {
-     "turn": 1,
-     "tile": "9m",
-     "label": "suji",
-     "mortal": 0.93,
-     "mortal_top": "9m",
-     "mortal_top_p": 0.93
-    },
-    {
-     "turn": 3,
-     "tile": "9m",
-     "label": "suji",
-     "mortal": 0.245,
-     "mortal_top": "3p",
-     "mortal_top_p": 0.74
-    },
-    {
-     "turn": 5,
-     "tile": "W",
-     "label": "dead",
-     "mortal": 0.208,
-     "mortal_top": "2p",
-     "mortal_top_p": 0.418
-    },
-    {
-     "turn": 7,
-     "tile": "1m",
-     "label": "genbutsu",
-     "mortal": 0.937,
-     "mortal_top": "1m",
-     "mortal_top_p": 0.937
-    },
-    {
-     "turn": 9,
-     "tile": "5s",
-     "label": "nakasuji",
-     "mortal": 0.963,
-     "mortal_top": "5s",
-     "mortal_top_p": 0.963
-    },
-    {
-     "turn": 11,
-     "tile": "3m",
-     "label": "genbutsu",
-     "mortal": 0.999,
-     "mortal_top": "3m",
-     "mortal_top_p": 0.999
-    },
-    {
-     "turn": 12,
-     "tile": "N",
-     "label": "genbutsu",
-     "mortal": 0.999,
-     "mortal_top": "N",
-     "mortal_top_p": 0.999
-    }
+   "game": "261010-165003cb-bf9c-49f9-ae39-ac95a879ae5c",
+   "date": "2026-10-10 00:59",
+   "hand": 9,
+   "round": "South 2-1",
+   "turn": 11,
+   "split": "quiet",
+   "kind": "wind-vs-value",
+   "cut": "N",
+   "safe": [
+    "N"
    ],
-   "group": "tenpai"
-  },
-  {
-   "game": "261010-896f29d4-1c7c-4533-916c-2a8ac59b73c7",
-   "date": "2026-10-09 18:11",
-   "round": "South 2-0",
-   "declarer": "toimen",
-   "declarer_discard": 16,
-   "shanten": 0,
-   "open": true,
-   "your_next_turn": null,
-   "dealt": false,
-   "cuts": [],
-   "group": "ended"
-  },
-  {
-   "game": "261008-b7993d87-28bd-46d2-a579-407367c56cea",
-   "date": "2026-10-07 18:58",
-   "round": "South 4-0",
-   "declarer": "kamicha",
-   "declarer_discard": 8,
-   "shanten": 1,
-   "open": false,
-   "your_next_turn": 8,
-   "dealt": false,
-   "cuts": [
-    {
-     "turn": 1,
-     "tile": "N",
-     "label": "genbutsu",
-     "mortal": 0.43,
-     "mortal_top": "N",
-     "mortal_top_p": 0.43
-    },
-    {
-     "turn": 5,
-     "tile": "F",
-     "label": "honor, 2 seen",
-     "mortal": 0.985,
-     "mortal_top": "F",
-     "mortal_top_p": 0.985
-    },
-    {
-     "turn": 6,
-     "tile": "F",
-     "label": "honor, 2 seen",
-     "mortal": 0.975,
-     "mortal_top": "F",
-     "mortal_top_p": 0.975
-    },
-    {
-     "turn": 7,
-     "tile": "9p",
-     "label": "genbutsu",
-     "mortal": 0.82,
-     "mortal_top": "9p",
-     "mortal_top_p": 0.82
-    }
+   "live": [
+    "F"
    ],
-   "group": "same"
+   "live_cut": false,
+   "riichi_later": {
+    "declarer": "toimen",
+    "your_turn": 16,
+    "your_cut": "S",
+    "labels": {
+     "N": "genbutsu",
+     "F": "honor, 2 seen"
+    },
+    "safe_held": 7
+   },
+   "luckyj_live_first": 0.617
   }
  ]
 }

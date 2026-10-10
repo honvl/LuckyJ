@@ -1766,66 +1766,132 @@
    }
   },
   {
-   "id": "dealer-9p-first-turn",
+   "id": "west-before-chun",
    "chapter": "no-safe-tile",
-   "game": "261011-99feaaaa",
-   "round": "South 1-0",
+   "game": "260924-0e508d5e",
+   "round": "South 2-0",
    "frames": [
     {
-     "turn": 1,
-     "expect_cut": "9p",
-     "better": "P"
+     "turn": 6,
+     "expect_cut": "W",
+     "better": "C"
     },
     {
-     "turn": 9,
-     "expect_cut": "W",
-     "note": "Shimocha, the dealer, has just declared riichi on their 9th discard. Nothing in your hand is safe against them; the [[9p]] from your first turn would be genbutsu.",
-     "note_ja": "親の下家が9打目でリーチしたところ。手の中に下家への安全牌は1枚もない。1巡目の[[9p]]を残していれば現物だった。"
+     "turn": 7,
+     "expect_cut": "F",
+     "note": "Shimocha has just declared riichi on their 6th discard. Your one safe tile is the [[F]]; the [[W]] you threw last turn would be genbutsu too.",
+     "note_ja": "下家が6打目でリーチしたところ。安全牌は[[F]]の1枚だけ。前の巡目に切った[[W]]も残していれば現物だった。"
     }
    ],
-   "title": "The dealer's first discard, thrown on your first turn",
-   "situation": "South 1, turn 1, 66 tiles left. You are third on 16,400, and shimocha, the dealer, is second on 39,900 and has just thrown [[9p]] as their first discard. You are three-shanten and draw [[8m]]. Cutting the [[9p]], the [[P]], the [[4p]] or the [[4s]] leaves 24 tiles to improve your hand; cutting the [[9m]] leaves 20.",
-   "did": "You cut the [[9p]], and the [[P]] four turns later. When shimocha declared at their 9th discard you held no safe tile against them and cut a live [[W]]. Toimen declared two turns later, and shimocha won off kamicha for 12,000.",
-   "luckyj": "Over your games since January, holding a terminal already in an opponent's river and a live one with nobody threatening, you threw the live one first 73% of the time, and LuckyJ 72% in the same spots.",
-   "fix": "Cut the [[P]], which leaves the same 24 tiles, or the [[9m]], as Mortal did at 30% and 32%; it gave the [[9p]] 20%. A tile the dealer has thrown stays genbutsu against them for the whole hand, so when another cut leaves the same hand, keep it.",
+   "title": "A West already out, thrown before a live chun",
+   "situation": "South 2, turn 6, 51 tiles left. You are fourth on 19,600, with a [[1m]][[2m]][[3m]] chi and a pon of [[S]], your double wind. Your lone honors are [[W]], [[F]] and the [[C]] you just drew. Toimen and shimocha have both thrown [[W]]; the [[C]] is live. Cutting the [[W]] leaves 7 tiles to improve your hand, cutting the [[C]] 5.",
+   "did": "You cut the [[W]]. Shimocha declared riichi on their 6th discard, and your only safe tile against them was the [[F]], which you threw; the [[W]] would have been a second. Four turns later you pushed a tenpai into the riichi for 7,700, the hand of chapter 11's card.",
+   "luckyj": "Holding a guest wind already in an opponent's river and a live value honor, LuckyJ throws the value honor first 72% of the time at its 6th discard. Since January you have done it 16% of the time, against its 26% in the same spots.",
+   "fix": "Cut the [[C]] and keep the [[W]]. It costs 2 of your 7 tiles, and from its 4th discard on LuckyJ pays that to keep a guest wind that is already safe.",
    "ja": {
-    "title": "親の1打目を、自分の1巡目に切る",
-    "situation": "南1局、1巡目、残り66枚。16,400点で3位。親の下家は39,900点で2位で、1打目に[[9p]]を切ったところ。3シャンテンで[[8m]]を引いた。[[9p]]、[[P]]、[[4p]]、[[4s]]のどれを切っても有効牌は24枚残り、[[9m]]を切ると20枚になる。",
-    "did": "[[9p]]を切り、4巡後に[[P]]も切った。下家が9打目でリーチしたとき、下家への安全牌は手に1枚もなく、生牌の[[W]]を切った。2巡後に対面もリーチし、下家が上家から12,000点をアガった。",
-    "luckyj": "1月以降のあなたの対局で、誰も攻めていないときに、相手の河にある端牌と生牌の端牌を持っていた場面では、あなたは73%で生牌を先に切り、同じ場面のLuckyJは72%だった。",
-    "fix": "有効牌が同じ24枚残る[[P]]か、[[9m]]を切る。Mortalはそれぞれ30%と32%で、[[9p]]は20%だった。親が切った牌は、その局のあいだずっと親への現物である。同じ手が残る別の牌があるなら、親の牌を残す。"
+    "title": "生牌の中より先に、場に出た西を切る",
+    "situation": "南2局、6巡目、残り51枚。19,600点で4位。[[1m]][[2m]][[3m]]をチーし、ダブ南の[[S]]をポンしている。浮いている字牌は[[W]]、[[F]]、引いたばかりの[[C]]。対面と下家が[[W]]を切っていて、[[C]]は生牌。[[W]]を切れば有効牌は7枚、[[C]]を切れば5枚になる。",
+    "did": "[[W]]を切った。下家が6打目でリーチし、下家への安全牌は[[F]]だけで、それを切った。[[W]]を残していれば2枚目の安全牌だった。4巡後、テンパイを押してリーチに7,700点を放銃した。第11章のカードの局である。",
+    "luckyj": "相手の河にある客風と生牌の役牌を持っているとき、LuckyJは6打目で役牌を先に切るのが72%。1月以降のあなたは16%で、同じ場面のLuckyJは26%である。",
+    "fix": "[[C]]を切って[[W]]を残す。有効牌は7枚のうち2枚減るが、LuckyJは4打目以降、すでに安全な客風を残すためにその分を払う。"
    }
   },
   {
-   "id": "north-over-9m",
+   "id": "kamicha-1m-kept-9p",
    "chapter": "no-safe-tile",
-   "verdict": "close",
-   "game": "261011-99feaaaa",
+   "game": "260928-5a0260b7",
    "round": "East 2-0",
    "frames": [
     {
-     "turn": 1,
-     "expect_cut": "N",
-     "better": "9m"
+     "turn": 4,
+     "expect_cut": "1m",
+     "better": "9p"
     },
     {
-     "turn": 8,
-     "expect_cut": "1m",
-     "note": "Toimen, the dealer, has just declared riichi with [[E]]. They threw [[N]] after your first turn: kept, it would be genbutsu now. Nothing in your hand is safe against them.",
-     "note_ja": "親の対面が[[E]]でリーチしたところ。あなたの1巡目のあとで[[N]]を切っていて、残していれば今は現物だった。手の中に対面への安全牌はない。"
+     "turn": 6,
+     "expect_cut": "6m",
+     "note": "Kamicha has just declared riichi. Nothing in your hand is safe against them; the [[1m]] you threw on turn 4 would be genbutsu.",
+     "note_ja": "上家がリーチしたところ。手の中に上家への安全牌は1枚もない。4巡目に切った[[1m]]を残していれば現物だった。"
     }
    ],
-   "title": "A North or a 9m on the first turn",
-   "situation": "East 2, turn 1, 67 tiles left. You are third on 25,000, and toimen is the dealer. You hold two red fives and draw [[3p]], four-shanten. Your loose tiles are [[9m]], [[E]], [[N]] and [[P]]: cutting the [[9m]] leaves 70 tiles to improve your hand, and each honor 69.",
-   "did": "You cut the [[N]], then the [[E]] and the [[P]]. When toimen declared at their 8th discard you held no safe tile, pushed a live [[1m]] and dealt in: riichi, dora and a red five, 7,700.",
-   "luckyj": "While you were not tenpai, a riichi found you with no safe tile on 11 of 92 declarations in these 16 games, against LuckyJ's 7.8% at the same declarer discard.",
-   "fix": "Close. Mortal cut the [[9m]] 56% and the [[N]] 39%, so it would have kept the [[N]] that toimen threw later. It threw your [[E]] and [[P]] too, and on the riichi turn it still pushed the [[1m]] at 98%, so the [[N]] would have given you a choice, not a sure fold.",
+   "title": "Two terminals, and the one kamicha had thrown",
+   "situation": "East 2, turn 4, 58 tiles left. You are fourth on 19,000, with a pon of [[N]], your seat wind, and a [[1m]][[2m]][[3m]] chi of kamicha's [[1m]]. You draw another [[1m]]. Cutting it or the lone [[9p]] leaves the same 12 tiles to improve your one-shanten.",
+   "did": "You threw the [[1m]] back. Kamicha declared riichi on their 5th discard, you held no tile safe against them, and the [[6m]] you cut for tenpai was their winning tile: riichi and ippatsu, 2,600.",
+   "luckyj": "With two lone terminals, one already in an opponent's river, LuckyJ throws the live one first 70% of the time at its 4th discard. Over all your games since January you do the same, 73% against its 72%, so this turn is a slip and not a habit.",
+   "fix": "Cut the [[9p]]. It leaves the same 12 tiles, and the [[1m]] stays genbutsu against kamicha for the rest of the hand.",
    "ja": {
-    "title": "1巡目に北か9mか",
-    "situation": "東2局、1巡目、残り67枚。25,000点で3位、親は対面。赤5を2枚持っていて、[[3p]]を引いて4シャンテン。浮いているのは[[9m]]、[[E]]、[[N]]、[[P]]で、[[9m]]を切ると有効牌は70枚、字牌を切ると69枚になる。",
-    "did": "[[N]]を切り、続いて[[E]]と[[P]]も切った。対面が8打目でリーチしたとき安全牌は1枚もなく、生牌の[[1m]]を押して放銃した。リーチ・ドラ・赤1の7,700点。",
-    "luckyj": "この16半荘で、テンパイしていないときにリーチを受け、手に安全牌が1枚もなかったのは92回のうち11回で、同じ打牌の位置のLuckyJは7.8%だった。",
-    "fix": "際どい判断。Mortalは[[9m]]に56%、[[N]]に39%で、対面があとで切る[[N]]を残していた。あなたの[[E]]と[[P]]はMortalも切り、リーチの巡目には[[1m]]を98%で押したので、[[N]]があっても選べる道が増えただけで、確実にオリられたわけではない。"
+    "title": "2枚の端牌と、上家が切った1枚",
+    "situation": "東2局、4巡目、残り58枚。19,000点で4位。自風の[[N]]をポンし、上家の[[1m]]をチーして[[1m]][[2m]][[3m]]にしている。もう1枚[[1m]]を引いた。これを切っても、浮いている[[9p]]を切っても、1シャンテンの有効牌は同じ12枚である。",
+    "did": "[[1m]]をツモ切りした。上家が5打目でリーチし、上家への安全牌は1枚もなく、テンパイを取るために切った[[6m]]が当たり牌だった。リーチ・一発で2,600点。",
+    "luckyj": "浮いた端牌が2枚あり、1枚が相手の河にあるとき、LuckyJは4打目で生牌のほうを先に切るのが70%。1月以降の全対局ではあなたも同じで、73%に対してLuckyJは72%なので、この巡目は癖ではなくミスである。",
+    "fix": "[[9p]]を切る。有効牌は同じ12枚残り、[[1m]]はその局のあいだ上家への現物のままである。"
+   }
+  },
+  {
+   "id": "north-before-west",
+   "chapter": "no-safe-tile",
+   "game": "261002-990b6d58",
+   "round": "South 1-0",
+   "frames": [
+    {
+     "turn": 6,
+     "expect_cut": "N",
+     "better": "W"
+    },
+    {
+     "turn": 11,
+     "expect_cut": "9s",
+     "note": "Shimocha has just declared riichi. You hold two safe tiles; the [[N]] you threw on turn 6, shimocha's first discard, would be a third.",
+     "note_ja": "下家がリーチしたところ。安全牌は2枚。6巡目に切った[[N]]は下家の1打目で、残していれば3枚目だった。"
+    }
+   ],
+   "title": "A North already out, thrown before your seat wind",
+   "situation": "South 1, turn 6, 48 tiles left. You are fourth on 15,100, and kamicha has a [[7p]][[8p]][[9p]] chi. You hold a pair of [[S]], the round wind, a lone [[W]], your seat wind, and you draw [[N]], which shimocha threw as their first discard. Cutting the [[N]] leaves 12 tiles to improve your hand, cutting the [[W]] 10.",
+   "did": "You threw the [[N]] back. When shimocha declared riichi on their 10th discard you held two safe tiles, and kamicha's flush took shimocha's tile for 8,000.",
+   "luckyj": "Holding a guest wind already in an opponent's river and a live value honor, LuckyJ throws the value honor first 72% of the time at its 6th discard.",
+   "fix": "Cut the [[W]] and keep the [[N]]. It costs 2 of your 12 tiles, and your [[S]] pair already gives the hand a value honor to pon.",
+   "ja": {
+    "title": "自風より先に、場に出た北を切る",
+    "situation": "南1局、6巡目、残り48枚。15,100点で4位。上家が[[7p]][[8p]][[9p]]をチーしている。場風の[[S]]の対子と、自風の[[W]]が1枚。[[N]]を引いた。下家が1打目に切った牌である。[[N]]を切れば有効牌は12枚、[[W]]を切れば10枚になる。",
+    "did": "[[N]]をツモ切りした。下家が10打目でリーチしたとき安全牌は2枚あり、上家の染め手が下家から8,000点をアガった。",
+    "luckyj": "相手の河にある客風と生牌の役牌を持っているとき、LuckyJは6打目で役牌を先に切るのが72%である。",
+    "fix": "[[W]]を切って[[N]]を残す。有効牌は12枚のうち2枚減るが、[[S]]の対子で、ポンできる役牌はすでにある。"
+   }
+  },
+  {
+   "id": "east-north-before-hatsu",
+   "chapter": "no-safe-tile",
+   "game": "261010-165003cb",
+   "round": "South 2-1",
+   "frames": [
+    {
+     "turn": 10,
+     "expect_cut": "E",
+     "better": "F"
+    },
+    {
+     "turn": 11,
+     "expect_cut": "N",
+     "better": "F"
+    },
+    {
+     "turn": 16,
+     "expect_cut": "S",
+     "note": "Toimen has just declared riichi. The [[E]] and the [[N]] you threw on turns 10 and 11 would both be genbutsu; this time you still hold seven safe tiles.",
+     "note_ja": "対面がリーチしたところ。10巡目と11巡目に切った[[E]]と[[N]]は、どちらも残していれば現物だった。今回は安全牌がまだ7枚ある。"
+    }
+   ],
+   "title": "Two guest winds already out, thrown before a lone hatsu",
+   "situation": "South 2, one honba, turn 10, 35 tiles left. You lead on 34,000, with pons of [[W]] and [[6s]], and hold [[2m]][[2m]][[2m]], a pair of [[1p]], a lone [[S]] and a lone [[F]]. You draw [[E]], which shimocha has thrown. Cutting it leaves 7 tiles to improve your hand, cutting the [[F]] 6. Next turn you draw [[N]], which toimen and kamicha have thrown, with the same choice.",
+   "did": "You threw the [[E]] back, then the [[N]], and kept the [[F]]. When toimen declared riichi late in the hand you still held seven safe tiles, and it ended in a draw.",
+   "luckyj": "At its 10th and 11th discards, holding a guest wind already in an opponent's river and a live value honor, LuckyJ throws the value honor first 61% and 62% of the time.",
+   "fix": "Cut the [[F]] and keep the guest winds. It costs a tile or two, and here it cost you nothing, but it is the same habit as the first card.",
+   "ja": {
+    "title": "場に出た客風2枚を、生牌の發より先に切る",
+    "situation": "南2局1本場、10巡目、残り35枚。34,000点でトップ。[[W]]と[[6s]]をポンし、[[2m]][[2m]][[2m]]、[[1p]]の対子、[[S]]と[[F]]が1枚ずつ。下家が切っている[[E]]を引いた。これを切れば有効牌は7枚、[[F]]を切れば6枚になる。次の巡目には、対面と上家が切っている[[N]]を引き、同じ選択になる。",
+    "did": "[[E]]をツモ切りし、次に[[N]]も切って、[[F]]を残した。終盤に対面がリーチしたとき安全牌はまだ7枚あり、局は流局した。",
+    "luckyj": "相手の河にある客風と生牌の役牌を持っているとき、LuckyJは10打目と11打目で役牌を先に切るのが61%と62%である。",
+    "fix": "[[F]]を切って客風を残す。有効牌が1、2枚減り、今回は何も失わなかったが、1枚目のカードと同じ癖である。"
    }
   }
  ]

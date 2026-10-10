@@ -49,7 +49,7 @@
           <aside class="guide-news" id="whats-new" aria-labelledby="whats-new-title">
             <h2 id="whats-new-title">更新情報</h2>
             <ol>
-              <li class="is-latest"><span class="guide-news-date">10月10日</span><p><span class="new-tag">Latest</span> <a href="#no-safe-tile">第32章は、安全牌が1枚もないときに来た14回のリーチを見る</a>。テンパイ前の手で、あとで安全になる牌をMortalなら残したのは3回だけで、そのうち2回はどちらも今日の14:24の半荘の1巡目の打牌なので、カードにした。第1章から第31章は変わっていない。</p></li>
+              <li class="is-latest"><span class="guide-news-date">10月10日</span><p><span class="new-tag">Latest</span> <a href="#no-safe-tile">第32章は、あなたの安全牌をLuckyJと比べる</a>。安全牌が1枚もないときに来た14回のリーチに、LuckyJの打ち方から見た落ち度はない。ただ1月以降、場に出た客風を生牌の役牌より先に切る回数がLuckyJよりずっと多く、4枚のカードでそれを示す。同じ日に、LuckyJだけを基準に書き直した。第1章から第31章は変わっていない。</p></li>
               <li><span class="guide-news-date">10月10日</span><p><a href="#declined-riichis">第31章は、Mortalが宣言しないリーチの共通点を調べる</a>。1月以降の354回のリーチのうち64回が、卓で確かめられる4つのチェック（フリテンの待ち、13巡目以降、残り3枚以下ですでに役があるか、リーチに向かうか）のどれかに当たり、アガれたのは22%で、残りの53%を下回った。第1章から第30章は、下の訂正を除いて変わっていない。</p></li>
               <li class="is-correction"><span class="guide-news-date">10月10日</span><p><span class="guide-news-tag">Corrected</span> 第29章の4枚目のカードは、15:27の半荘の南2局のリーチを、[[6p]]-[[9p]]待ちで3,900点と2,000点、第24章ならリーチする手として示していた。この待ちはフリテンだった。3巡目に[[9p]]を切っていて、アガれるのはツモだけになる。第24章の表はフリテンでない待ちだけを数えている。このカードは第31章の4枚目になり、第29章にもそう書いた。訂正した文は<a href="#fix-29-riichis">リーチ</a>、<a href="#fix-29-count">回数</a>、<a href="#fix-29-declined">リーチの数字</a>、<a href="#fix-29-rule">ルール</a>で<mark class="guide-changed">強調</mark>している。</p></li>
               <li><span class="guide-news-date">10月10日</span><p><a href="#defense-check">第30章は、LuckyJより安全牌を使わなくなっていないかを調べる</a>。第29章のあとの16半荘では、そうなっていない。放銃率は10.6%でLuckyJは10.3%、リーチにも副露者にも同じ場面のLuckyJと同じようにオリている。小さなミス2つと、今日の際どい[[F]]をカードにした。第1章から第29章は変わっていない。</p></li>
@@ -145,7 +145,7 @@
             <li><a href="#costly-run"><span class="contents-num">29</span><span class="contents-title">また負けが続いた、5つの選択で60,500点</span><span class="contents-sub"><span class="new-tag">New</span> 最近の対局 &#183; 10月7日追加</span></a></li>
             <li><a href="#defense-check"><span class="contents-num">30</span><span class="contents-title">安全牌の使い方はLuckyJの線に戻った</span><span class="contents-sub"><span class="new-tag">New</span> 最近の対局 &#183; 10月10日追加</span></a></li>
             <li><a href="#declined-riichis"><span class="contents-num">31</span><span class="contents-title">リーチの前に確かめる4つのこと</span><span class="contents-sub"><span class="new-tag">New</span> リーチかダマか &#183; 10月10日追加</span></a></li>
-            <li><a href="#no-safe-tile"><span class="contents-num">32</span><span class="contents-title">安全牌が1枚もないときに来たリーチ</span><span class="contents-sub"><span class="new-tag">New</span> 安全牌 &#183; 10月10日追加</span></a></li>
+            <li><a href="#no-safe-tile"><span class="contents-num">32</span><span class="contents-title">LuckyJが残す安全牌を、あなたが切る場面</span><span class="contents-sub"><span class="new-tag">New</span> 安全牌 &#183; 10月10日追加</span></a></li>
           </ol>
         </nav>
 
@@ -2440,7 +2440,7 @@
             </div>
             <p class="evidence-note"><b>根拠</b> 1月から10月7日までの173半荘で、あなたの354回のリーチ。<code>mine_declined_riichis.py</code>による。Mortalの宣言の確率はサイトの牌譜再生の評価で、25%未満としたリーチをMortalが宣言しないリーチとした。残り枚数は、宣言したときに自分の席から見えていない和了牌の枚数。すでに役があるとは、リーチなしでも、どれかの和了牌のロンに役がつくこと。待ちがフリテンとは、自分の河に和了牌があること。リーチに向かうとは、ほかの人がすでに宣言していたことである。</p>
           </div>
-          <nav class="chapter-next" aria-label="次の章"><a href="#no-safe-tile"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>32</i>安全牌が1枚もないときに来たリーチ</span></a></nav>
+          <nav class="chapter-next" aria-label="次の章"><a href="#no-safe-tile"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>32</i>LuckyJが残す安全牌を、あなたが切る場面</span></a></nav>
         </section>
 
         <section class="point" id="no-safe-tile">
@@ -2448,42 +2448,34 @@
           <div class="point-body">
             <p class="chapter-kicker">第32章 &#183; 安全牌 &#183; 10月10日追加</p>
             <p class="guide-new-tag">New</p>
-            <h3>安全牌が1枚もないときに来たリーチ</h3>
-            <p>第30章には見ておく数字が1つ残っていた。第29章のあとの16半荘で受けた107回のリーチのうち14回で、手に宣言者への安全牌が1枚もなく、同じ時点のLuckyJは8.5%だった。LuckyJならそうした手を作ったのか、安全牌を残したのか、残したならどこでか、という質問である。ほとんどの場合、LuckyJも同じ手を作っていた。同じ巡目にあなたの席で打つMortalが、あとで安全になる牌をあなたの代わりに残したのは、テンパイ前の手では14回のうち3回だけで、そのうち2回を下のカードにした。14回のうち5回は、リーチが早く何度も来た今日の14:24の1半荘に集まっている。</p>
-            <p><b>読み方。</b>リーチごとに、その前にあなたが切った牌をすべて、次の巡目の宣言者に対して調べた。残していれば、現物、筋、ほかに2枚見えの字牌のどれかになったか。なった牌は、同じ巡目のMortalの選択と並べた。</p>
+            <h3>LuckyJが残す安全牌を、あなたが切る場面</h3>
+            <p>第30章には見ておく数字が1つ残っていた。第29章のあとの16半荘で受けた107回のリーチのうち14回で、手に宣言者への安全牌が1枚もなく、同じ時点のLuckyJは8.5%だった。この章はそれをLuckyJだけと比べる。LuckyJの打ち方から見て、その14局に落ち度は見つからない。ただ1月以降の対局全体では、LuckyJが安全牌を残し、あなたが切る場面が1つある。相手の河にある客風を、生牌の役牌より先に切る場面である。4枚のカードは、LuckyJなら残す安全牌をあなたが切り、その局のあとでリーチが来た巡目である。</p>
+            <p><b>用語。</b>浮き牌とは、第17章と同じく、同じ色で2つ以内に牌がない孤立した牌のこと。安全な浮き牌とは、すでに相手の河にある浮き牌で、その局のあいだその相手への現物になり、ほかの相手にも安全になることが多い。LuckyJの選択は、安全な浮き牌と同じ種類の生牌の浮き牌（客風2枚、端牌2枚、中張牌2枚）か、場に出た客風と生牌の役牌（三元牌、場風、自風）を持っていて、誰もリーチしておらず2副露の人もいない卓で、どちらを先に切ったかを、自分の打牌ごとに数えた。</p>
+            <p><b>14回のリーチ。</b>そのリーチの前にこの選択があったのは1回だけで、10月9日20:50の半荘の東1局、1打目だった。場に出た[[N]]と、生牌の[[E]]と[[F]]である。LuckyJはそこで客風を先に切るのが98%で、あなたもそうした。残り13回はリーチの前にこうした選択がなく、LuckyJの数字では何を残したかは言えない。テンパイしていないときにリーチを受け、安全牌が1枚もなかったのは92回のうち11回で、LuckyJは7.8%。そして14回のうち5回は、今日の14:24の1半荘に集まっていた。</p>
+            <p><b>LuckyJが多く残す場面。</b>1月以降、誰も攻めていないときのこうした選択588回を、同じ場面のLuckyJと比べる。</p>
             <div class="guide-data-scroll">
-              <table class="guide-data is-text">
+              <table class="guide-data">
                 <thead>
-                  <tr><th>リーチ</th><th>あなたの手</th><th>あとで安全になる牌で、切ったもの</th><th>その巡目のMortal</th></tr>
+                  <tr><th>安全な浮き牌と生牌の浮き牌</th><th>回数</th><th>あなたが生牌を先に切った</th><th>同じ場面のLuckyJ</th></tr>
                 </thead>
                 <tbody>
-                  <tr><td>10月7日18:58、南4局：上家の8打目</td><td>1シャンテン</td><td>[[N]]、[[F]]、[[F]]、[[9p]]</td><td>同じ</td></tr>
-                  <tr><td>10月9日18:11、東4局1本場：対面の13打目</td><td>副露テンパイ</td><td>7枚</td><td>そのうち2枚を先に残した。あなたはテンパイだった</td></tr>
-                  <tr><td>10月9日18:11、南2局：対面の16打目</td><td>副露テンパイ</td><td>調べていない</td><td>次の巡目の前に局が終わった</td></tr>
-                  <tr><td>10月9日20:50、東1局：下家の9打目</td><td>2シャンテン</td><td>[[N]]、[[E]]、[[C]]、[[F]]、[[P]]</td><td>3巡目にあなたの[[E]]を残し、同じく安全になる[[P]]を切った</td></tr>
-                  <tr><td>10月9日20:50、南2局1本場：下家の13打目</td><td>副露テンパイ</td><td>6枚</td><td>3巡目にあなたの[[2p]]を残した。あなたはテンパイだった</td></tr>
-                  <tr><td>10月10日00:59、東2局1本場：対面の6打目</td><td>2シャンテン</td><td>調べていない</td><td>次の巡目の前に局が終わった</td></tr>
-                  <tr><td>10月10日02:22、東2局2本場：対面の13打目</td><td>1シャンテン</td><td>9枚</td><td>同じ</td></tr>
-                  <tr><td>10月10日02:22、南3局：下家の5打目</td><td>1シャンテン</td><td>[[1p]]</td><td>同じ</td></tr>
-                  <tr><td>10月10日14:24、東1局：上家の4打目</td><td>2シャンテン</td><td>[[2s]]、[[8s]]</td><td>同じ</td></tr>
-                  <tr><td>10月10日14:24、東2局：対面の8打目</td><td>2シャンテン</td><td>[[N]]、[[E]]、[[P]]</td><td class="gap">1巡目にあなたの[[N]]を残した（2枚目のカード）</td></tr>
-                  <tr><td>10月10日14:24、東2局4本場：上家の7打目</td><td>1シャンテン</td><td>[[C]]、[[P]]</td><td>同じ</td></tr>
-                  <tr><td>10月10日14:24、南1局：下家の9打目</td><td>2シャンテン</td><td>[[9p]]、[[P]]</td><td class="gap">1巡目にあなたの[[9p]]を残した（1枚目のカード）</td></tr>
-                  <tr><td>10月10日14:24、南1局：対面の11打目</td><td>2シャンテン</td><td>調べていない</td><td>次の巡目の前に局が終わった</td></tr>
-                  <tr><td>10月10日14:43、東4局：対面の5打目</td><td>4シャンテン、あなたの3巡目</td><td>なし</td><td>残す牌がまだなかった</td></tr>
+                  <tr><td>客風2枚、1打目か2打目</td><td>45</td><td>46.7%</td><td>23.5%</td></tr>
+                  <tr><td>客風2枚、3打目以降</td><td>19</td><td>52.6%</td><td>68.4%</td></tr>
+                  <tr><td>端牌2枚</td><td>120</td><td>73.3%</td><td>71.7%</td></tr>
+                  <tr><td>中張牌2枚</td><td>112</td><td>43.8%</td><td>49.8%</td></tr>
+                  <tr><td>場に出た客風と生牌の役牌</td><td>292</td><td class="gap">16.1%</td><td>26.4%</td></tr>
                 </tbody>
               </table>
             </div>
-            <p>3回は次に切る前に局が終わり、1回はあなたの3巡目で残す牌がまだなく、2回は副露テンパイで、どのみち押す場面だった。5回は、あとで安全になる牌をMortalも同じ巡目にすべて切っていて、残せる安全牌はなかった。残りは3回である。10月9日20:50の半荘の東1局では、Mortalは3巡目に、すでに2枚出ていた白を切ってあなたの東を残した。あなたは白を残し、リーチの1巡前の9巡目に切った。そこではMortalも切っていた。あとの2回はどちらも今日の14:24の半荘で、どちらも1巡目の打牌である。</p>
-            <p>どちらも癖ではない。1月以降の全対局で、誰も攻めていないときに、相手の河にある端牌と生牌の端牌を持っていた場面では、あなたは73%で生牌を先に切り、同じ場面のLuckyJは72%だった。テンパイしていないときにリーチを受け、手に安全牌が1枚もなかったのは、この16半荘で92回のうち11回で、LuckyJは7.8%。そして14回のうち5回はあの1半荘だった。</p>
+            <p>端牌と中張牌は、LuckyJと同じように残している。客風は、1打目と2打目にはLuckyJより長く残し、そのあとは早く切る。はっきりした差は役牌である。LuckyJは4打目から、生牌の役牌を場に出た客風より先に切り、あなたは役牌を残す。LuckyJの割合から標準誤差の5倍離れている。第17章も同じ差を見つけて打ち方の好みとしたが、LuckyJだけで測ると、あなたの安全牌はここで出ていく。LuckyJが60%以上で安全牌を残す巡目で、あなたが安全牌を切ったのは245回のうち92回で、LuckyJの割合なら75回。92回のうち39回は、生牌の役牌より先に場に出た客風を切ったものだった。92回のうち34回で、その局のあとでリーチが来て、切った牌がそのリーチに安全だった。うち7回は、リーチが来たとき手の安全牌が2枚以下だった。</p>
             <div data-guide-examples="no-safe-tile"></div>
             <div class="rule">
-              <strong>ルール</strong> 親がすでに切った牌を持っていて、別の牌を切っても同じ手が残るなら、別の牌を切る。親の牌はその局のあいだずっと親への現物である。それ以外は今の手の作り方を続ける。安全牌が問題になった8回の手のうち5回で、Mortalはあなたと同じ牌を切っていた。
+              <strong>ルール</strong> 4打目からは、対子になっていない生牌の役牌を、相手の河にある客風より先に切る。3打目からは、生牌の客風を、場に出た客風より先に切る。LuckyJはその安全牌を残すために、有効牌を1、2枚払う。
             </div>
             <div class="exception">
-              <strong>例外</strong> 有効牌を減らしてまで残す安全牌は、傾向であって決まりではない。東2局でMortalが[[9m]]より[[N]]を残したのは56%対39%で、リーチの巡目にはそれでも[[1m]]を押した。
+              <strong>例外</strong> 1打目と2打目は、LuckyJは逆に、場に出た客風を先に切る。その割合は77%である。
             </div>
-            <p class="evidence-note"><b>根拠</b> 10月7日18:25から10月10日14:43までの16半荘。<code>mine_early_safe_tiles.py</code>のリーチの行をもとに<code>mine_no_safe_riichis.py</code>で集計した。リーチは107回、手に安全牌がなかったのは14回、テンパイしていなかったのは92回。LuckyJの割合は、1,255半荘で同じ打牌の位置の平均。Mortalの選択はサイトの牌譜再生の評価。端牌の選択は第17章と同じく<code>mine_early_safe_tiles.py</code>のleftoversによるもので、1月以降のあなたの120回である。</p>
+            <p class="evidence-note"><b>根拠</b> 1月以降のあなたの189半荘とLuckyJの1,255半荘。<code>mine_early_safe_tiles.py</code>の浮き牌とリーチの行をもとに、<code>mine_no_safe_riichis.py</code>で集計した。LuckyJの打牌ごとの割合は、第17章と同じく自分の選択に当てはめた曲線で、親でない局だけを数え、あなたの側も同じ。選択は全部で771回、誰も攻めていないときが588回。第30章の範囲は16半荘、リーチ107回、安全牌がなかったのは14回、テンパイしていなかったのは92回で、同じ打牌の位置のLuckyJと比べた。</p>
           </div>
           <nav class="chapter-next" aria-label="本編の後"><a href="#method"><span class="chapter-next-label">本編の後 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title">このガイドの作り方</span></a></nav>
         </section>
