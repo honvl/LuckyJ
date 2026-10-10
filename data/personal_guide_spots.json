@@ -1764,6 +1764,69 @@
     "luckyj": "リーチに対して1シャンテンで、安全牌がシャンテン数を保てるとき、LuckyJが生牌を切るのは7.8%。この16半荘のあなたは6.6%。リーチ1人に対して、1枚見えの字牌の放銃は100回あたり2.1回である。",
     "fix": "際どい判断。Mortalはあなたの[[F]]に58%、[[8s]]に41%と分かれた。LuckyJの平均ならオリる場面だが、1枚見えの字牌は生牌の中では安全なほうである。引いた1枚の發に単騎で待たれていたのが不運だった。"
    }
+  },
+  {
+   "id": "dealer-9p-first-turn",
+   "chapter": "no-safe-tile",
+   "game": "261011-99feaaaa",
+   "round": "South 1-0",
+   "frames": [
+    {
+     "turn": 1,
+     "expect_cut": "9p",
+     "better": "P"
+    },
+    {
+     "turn": 9,
+     "expect_cut": "W",
+     "note": "Shimocha, the dealer, has just declared riichi on their 9th discard. Nothing in your hand is safe against them; the [[9p]] from your first turn would be genbutsu.",
+     "note_ja": "親の下家が9打目でリーチしたところ。手の中に下家への安全牌は1枚もない。1巡目の[[9p]]を残していれば現物だった。"
+    }
+   ],
+   "title": "The dealer's first discard, thrown on your first turn",
+   "situation": "South 1, turn 1, 66 tiles left. You are third on 16,400, and shimocha, the dealer, is second on 39,900 and has just thrown [[9p]] as their first discard. You are three-shanten and draw [[8m]]. Cutting the [[9p]], the [[P]], the [[4p]] or the [[4s]] leaves 24 tiles to improve your hand; cutting the [[9m]] leaves 20.",
+   "did": "You cut the [[9p]], and the [[P]] four turns later. When shimocha declared at their 9th discard you held no safe tile against them and cut a live [[W]]. Toimen declared two turns later, and shimocha won off kamicha for 12,000.",
+   "luckyj": "Over your games since January, holding a terminal already in an opponent's river and a live one with nobody threatening, you threw the live one first 73% of the time, and LuckyJ 72% in the same spots.",
+   "fix": "Cut the [[P]], which leaves the same 24 tiles, or the [[9m]], as Mortal did at 30% and 32%; it gave the [[9p]] 20%. A tile the dealer has thrown stays genbutsu against them for the whole hand, so when another cut leaves the same hand, keep it.",
+   "ja": {
+    "title": "親の1打目を、自分の1巡目に切る",
+    "situation": "南1局、1巡目、残り66枚。16,400点で3位。親の下家は39,900点で2位で、1打目に[[9p]]を切ったところ。3シャンテンで[[8m]]を引いた。[[9p]]、[[P]]、[[4p]]、[[4s]]のどれを切っても有効牌は24枚残り、[[9m]]を切ると20枚になる。",
+    "did": "[[9p]]を切り、4巡後に[[P]]も切った。下家が9打目でリーチしたとき、下家への安全牌は手に1枚もなく、生牌の[[W]]を切った。2巡後に対面もリーチし、下家が上家から12,000点をアガった。",
+    "luckyj": "1月以降のあなたの対局で、誰も攻めていないときに、相手の河にある端牌と生牌の端牌を持っていた場面では、あなたは73%で生牌を先に切り、同じ場面のLuckyJは72%だった。",
+    "fix": "有効牌が同じ24枚残る[[P]]か、[[9m]]を切る。Mortalはそれぞれ30%と32%で、[[9p]]は20%だった。親が切った牌は、その局のあいだずっと親への現物である。同じ手が残る別の牌があるなら、親の牌を残す。"
+   }
+  },
+  {
+   "id": "north-over-9m",
+   "chapter": "no-safe-tile",
+   "verdict": "close",
+   "game": "261011-99feaaaa",
+   "round": "East 2-0",
+   "frames": [
+    {
+     "turn": 1,
+     "expect_cut": "N",
+     "better": "9m"
+    },
+    {
+     "turn": 8,
+     "expect_cut": "1m",
+     "note": "Toimen, the dealer, has just declared riichi with [[E]]. They threw [[N]] after your first turn: kept, it would be genbutsu now. Nothing in your hand is safe against them.",
+     "note_ja": "親の対面が[[E]]でリーチしたところ。あなたの1巡目のあとで[[N]]を切っていて、残していれば今は現物だった。手の中に対面への安全牌はない。"
+    }
+   ],
+   "title": "A North or a 9m on the first turn",
+   "situation": "East 2, turn 1, 67 tiles left. You are third on 25,000, and toimen is the dealer. You hold two red fives and draw [[3p]], four-shanten. Your loose tiles are [[9m]], [[E]], [[N]] and [[P]]: cutting the [[9m]] leaves 70 tiles to improve your hand, and each honor 69.",
+   "did": "You cut the [[N]], then the [[E]] and the [[P]]. When toimen declared at their 8th discard you held no safe tile, pushed a live [[1m]] and dealt in: riichi, dora and a red five, 7,700.",
+   "luckyj": "While you were not tenpai, a riichi found you with no safe tile on 11 of 92 declarations in these 16 games, against LuckyJ's 7.8% at the same declarer discard.",
+   "fix": "Close. Mortal cut the [[9m]] 56% and the [[N]] 39%, so it would have kept the [[N]] that toimen threw later. It threw your [[E]] and [[P]] too, and on the riichi turn it still pushed the [[1m]] at 98%, so the [[N]] would have given you a choice, not a sure fold.",
+   "ja": {
+    "title": "1巡目に北か9mか",
+    "situation": "東2局、1巡目、残り67枚。25,000点で3位、親は対面。赤5を2枚持っていて、[[3p]]を引いて4シャンテン。浮いているのは[[9m]]、[[E]]、[[N]]、[[P]]で、[[9m]]を切ると有効牌は70枚、字牌を切ると69枚になる。",
+    "did": "[[N]]を切り、続いて[[E]]と[[P]]も切った。対面が8打目でリーチしたとき安全牌は1枚もなく、生牌の[[1m]]を押して放銃した。リーチ・ドラ・赤1の7,700点。",
+    "luckyj": "この16半荘で、テンパイしていないときにリーチを受け、手に安全牌が1枚もなかったのは92回のうち11回で、同じ打牌の位置のLuckyJは7.8%だった。",
+    "fix": "際どい判断。Mortalは[[9m]]に56%、[[N]]に39%で、対面があとで切る[[N]]を残していた。あなたの[[E]]と[[P]]はMortalも切り、リーチの巡目には[[1m]]を98%で押したので、[[N]]があっても選べる道が増えただけで、確実にオリられたわけではない。"
+   }
   }
  ]
 }
