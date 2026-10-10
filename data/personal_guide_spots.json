@@ -1615,6 +1615,81 @@
     "luckyj": "LuckyJは、最も安い和了牌が1翻か2翻のテンパイの83%でリーチする（第24章）。",
     "fix": "際どい判断。Mortalは[[8p]]を89%で切って1シャンテンを保ち、リーチは4%、ダマテンパイは2%だった。第24章ならリーチする手である。リーチは有効牌32枚を5枚に替え、副露した3人を前に、ツモ切り以外の選択を残さなかった。6巡目にはまだ誰もテンパイしておらず、損は続く5巡で、対面が追いついたところに出た。"
    }
+  },
+  {
+   "id": "suji-over-genbutsu-1m",
+   "chapter": "defense-check",
+   "game": "261008-d9f44c77",
+   "round": "East 3-0",
+   "frames": [
+    {
+     "turn": 9,
+     "expect_cut": "1m",
+     "better": "1s"
+    }
+   ],
+   "title": "A suji where a genbutsu kept the same hand",
+   "situation": "East 3, turn 9, 37 tiles left. You lead on 32,000. Shimocha declared riichi on their 4th turn and toimen has one call. You are two-shanten and draw [[1s]], shimocha's genbutsu. Cutting it or the [[1m]], suji against shimocha's [[4m]], leaves the same 17 tiles to improve your hand, and [[3p]] and [[6p]] are safe against the riichi too.",
+   "did": "You cut the [[1m]]. Shimocha was waiting on [[1m]] and [[4p]] with two pairs: riichi and a red five, 2,600.",
+   "luckyj": "When LuckyJ folds against a riichi with a safe tile that keeps its hand, it throws a weaker kind of safe tile than the best one kept on 4.0% of those turns, most often a suji where a genbutsu was there; you did on 5.0% in these games. Against one riichi, LuckyJ's suji terminals dealt in 1.1 times per 100 cuts and its genbutsu never.",
+   "fix": "Cut the [[1s]], as Mortal did at 46%, or another genbutsu; it gave the [[1m]] 0.4%. Suji covers only a two-sided wait, and a shanpon or a tanki can still take it. With a genbutsu that leaves the same hand, there is nothing to weigh.",
+   "ja": {
+    "title": "現物で同じ手が残るのに筋を切る",
+    "situation": "東3局、9巡目、残り37枚。32,000点でトップ。下家が4巡目にリーチし、対面が1副露している。2シャンテンで、下家の現物の[[1s]]を引いた。これを切っても、下家の[[4m]]の筋の[[1m]]を切っても、有効牌は同じ17枚残る。[[3p]]と[[6p]]もリーチには安全である。",
+    "did": "[[1m]]を切った。下家は[[1m]]と[[4p]]のシャンポン待ちで、リーチ・赤1の2,600点。",
+    "luckyj": "リーチに対して、手を保てる安全牌でオリるとき、LuckyJが保てる安全牌のうち最も安全な種類より弱いものを切るのは4.0%で、多くは現物があるのに筋を切る場合である。この16半荘のあなたは5.0%。リーチ1人に対して、LuckyJの筋の端牌の放銃は100回あたり1.1回で、現物は0回である。",
+    "fix": "[[1s]]を切る。Mortalも46%でそうし、ほかの現物も選んだ。[[1m]]は0.4%だった。筋が防ぐのは両面待ちだけで、シャンポンや単騎には当たる。同じ手が残る現物があるなら、比べるものはない。"
+   }
+  },
+  {
+   "id": "late-north-7s",
+   "chapter": "defense-check",
+   "game": "261010-6323aa6f",
+   "round": "South 1-0",
+   "frames": [
+    {
+     "turn": 19,
+     "expect_cut": "N",
+     "better": "7s"
+    }
+   ],
+   "title": "A live North two tiles from the end",
+   "situation": "South 1, turn 19, 2 tiles left. You are third on 24,800. Toimen has three calls and kamicha two, and both are far past chapter 19's line. You have three calls of your own and hold [[7s]], a pair of [[N]], your seat wind, and a [[P]], and you draw the dora [[3m]]. Cut the [[7s]], suji against both callers, and you stay one-shanten.",
+   "did": "You cut a [[N]], live against both. Kamicha's chun hand was waiting on [[N]] and [[P]]: 2,000.",
+   "luckyj": "Against two or more calls, LuckyJ's line from one-shanten is the caller's 12th discard (chapter 19). Past it, the safe tile that keeps the hand is the one it cuts.",
+   "fix": "Cut the [[7s]], as Mortal did at 96.5%. The [[N]] was live, and it was half of the pair that could still give your three calls a yaku.",
+   "ja": {
+    "title": "流局2枚前の生牌の北",
+    "situation": "南1局、19巡目、残り2枚。24,800点で3位。対面が3副露、上家が2副露で、どちらも第19章のオリラインをとうに過ぎている。こちらも3副露で、手は[[7s]]、自風の[[N]]の対子、[[P]]。ドラの[[3m]]を引いた。両方の副露者に筋の[[7s]]を切れば、1シャンテンのままである。",
+    "did": "両方に生牌の[[N]]を切った。上家の中の手が[[N]]と[[P]]のシャンポン待ちで、2,000点。",
+    "luckyj": "2副露以上に対して、1シャンテンのLuckyJのオリラインは副露者の12打目である（第19章）。それを過ぎたら、手を保てる安全牌を切る。",
+    "fix": "[[7s]]を切る。Mortalも96.5%でそうした。[[N]]は生牌で、しかも3副露の手に役をつけられる対子の片方だった。"
+   }
+  },
+  {
+   "id": "lone-hatsu-8s",
+   "chapter": "defense-check",
+   "verdict": "close",
+   "game": "261011-285cf167",
+   "round": "East 4-2",
+   "frames": [
+    {
+     "turn": 10,
+     "expect_cut": "F"
+    }
+   ],
+   "title": "A lone hatsu, or a genbutsu that costs two tiles",
+   "situation": "East 4, two honba, turn 10, 30 tiles left. You are third on 27,500, and toimen, last on 6,200, declared riichi on their 7th turn. You are one-shanten with 11 tiles to improve your hand and draw [[F]], with one other copy out. Cutting the [[8s]], genbutsu, keeps the one-shanten with 9.",
+   "did": "You threw the [[F]] back. Toimen's chiitoitsu was waiting on it alone, and with ura dora it was a mangan: 8,600.",
+   "luckyj": "At one-shanten against a riichi, when a safe tile keeps the shanten, LuckyJ cuts a live tile 7.8% of the time; you did 6.6% in these 16 games. Against one riichi, its live honors with one copy showing dealt in 2.1 times per 100.",
+   "fix": "Close. Mortal split 58% for your [[F]] and 41% for the [[8s]]. By LuckyJ's average this is a fold, and a lone honor is still among the safer live tiles. A tanki on the one dragon you drew is the unlucky part.",
+   "ja": {
+    "title": "1枚見えの發か、有効牌が2枚減る現物か",
+    "situation": "東4局2本場、10巡目、残り30枚。27,500点で3位。6,200点でラスの対面が7巡目にリーチしている。1シャンテンで有効牌は11枚、[[F]]を引いた。ほかに1枚見えている。現物の[[8s]]を切っても1シャンテンは保て、有効牌は9枚になる。",
+    "did": "[[F]]をツモ切りした。対面の七対子がその牌の単騎待ちで、裏ドラで満貫になり8,600点。",
+    "luckyj": "リーチに対して1シャンテンで、安全牌がシャンテン数を保てるとき、LuckyJが生牌を切るのは7.8%。この16半荘のあなたは6.6%。リーチ1人に対して、1枚見えの字牌の放銃は100回あたり2.1回である。",
+    "fix": "際どい判断。Mortalはあなたの[[F]]に58%、[[8s]]に41%と分かれた。LuckyJの平均ならオリる場面だが、1枚見えの字牌は生牌の中では安全なほうである。引いた1枚の發に単騎で待たれていたのが不運だった。"
+   }
   }
  ]
 }

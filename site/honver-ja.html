@@ -49,7 +49,8 @@
           <aside class="guide-news" id="whats-new" aria-labelledby="whats-new-title">
             <h2 id="whats-new-title">更新情報</h2>
             <ol>
-              <li class="is-latest"><span class="guide-news-date">10月7日</span><p><span class="new-tag">Latest</span> <a href="#costly-run">第29章は最新の10半荘を振り返る</a>。うち5回が4位だった。攻めの内容もMortalとの一致も保たれていて、崩れたのは放銃である。7,000点以上の放銃10回のうち5回はMortalなら選ばない選択で、合わせて60,500点、うち2回は第24章が認めるリーチだった。第1章から第28章は変わっていない。</p></li>
+              <li class="is-latest"><span class="guide-news-date">10月10日</span><p><span class="new-tag">Latest</span> <a href="#defense-check">第30章は、LuckyJより安全牌を使わなくなっていないかを調べる</a>。第29章のあとの16半荘では、そうなっていない。放銃率は10.6%でLuckyJは10.3%、リーチにも副露者にも同じ場面のLuckyJと同じようにオリている。小さなミス2つと、今日の際どい[[F]]をカードにした。第1章から第29章は変わっていない。</p></li>
+              <li><span class="guide-news-date">10月7日</span><p><a href="#costly-run">第29章は最新の10半荘を振り返る</a>。うち5回が4位だった。攻めの内容もMortalとの一致も保たれていて、崩れたのは放銃である。7,000点以上の放銃10回のうち5回はMortalなら選ばない選択で、合わせて60,500点、うち2回は第24章が認めるリーチだった。第1章から第28章は変わっていない。</p></li>
               <li><span class="guide-news-date">10月4日</span><p><a href="#dealer-call">第28章は、10月3日23:38の半荘の3つの放銃を振り返る</a>。親の1副露に対して、LuckyJは子の1副露より3打ほど早くオリ、ツモ切りの連続ではオリラインが動かない。東4局の[[3p]]はLuckyJでも分かれる巡目で、ミスは東3局でテンパイを崩したことだった。第1章から第27章は変わっていない。</p></li>
               <li><span class="guide-news-date">10月3日</span><p><a href="#plateau">第27章は、3位、染め手、足踏みの質問に答える</a>。3位は避けた4位で、ほかの色にドラがあるときはLuckyJと同じく染め手を控えていて、6,700点前後の停滞はよくある振れである。Mortalが[[2s]]を押した、リーチ2つの巡目も示す。第1章から第26章は変わっていない。</p></li>
               <li><span class="guide-news-date">10月3日</span><p><a href="#losing-run">第26章は最近の負けを振り返る</a>。手牌の結果も判断も崩れておらず、4位の半荘の放銃はすべてMortal自身の打ち方で、直すべきはリーチに対する遠い手の1局である。第1章から第25章は変わっていない。</p></li>
@@ -107,7 +108,7 @@
 
         <nav class="section guide-chapters" id="chapters" aria-labelledby="chapters-title">
           <p class="kicker">章</p>
-          <h2 id="chapters-title">29の章</h2>
+          <h2 id="chapters-title">30の章</h2>
           <p class="guide-chapters-note">新しい教訓は、末尾に新しい章として加える。読んだ章は、印を付けた訂正を除いてそのまま残す。</p>
           <ol class="contents-list is-points guide-chapter-list">
             <li><a href="#value"><span class="contents-num">01</span><span class="contents-title">手の方針を決める前にドラを数える</span><span class="contents-sub">打点 &#183; 9月22日追加</span></a></li>
@@ -139,6 +140,7 @@
             <li><a href="#plateau"><span class="contents-num">27</span><span class="contents-title">3位は救った4位、染め手よりドラ</span><span class="contents-sub"><span class="new-tag">New</span> 最近の対局 &#183; 10月3日追加</span></a></li>
             <li><a href="#dealer-call"><span class="contents-num">28</span><span class="contents-title">親の鳴きには、3打早くオリる</span><span class="contents-sub"><span class="new-tag">New</span> 親の鳴き &#183; 10月4日追加</span></a></li>
             <li><a href="#costly-run"><span class="contents-num">29</span><span class="contents-title">また負けが続いた、5つの選択で60,500点</span><span class="contents-sub"><span class="new-tag">New</span> 最近の対局 &#183; 10月7日追加</span></a></li>
+            <li><a href="#defense-check"><span class="contents-num">30</span><span class="contents-title">安全牌の使い方はLuckyJの線に戻った</span><span class="contents-sub"><span class="new-tag">New</span> 最近の対局 &#183; 10月10日追加</span></a></li>
           </ol>
         </nav>
 
@@ -2328,6 +2330,72 @@
             </div>
             <p class="evidence-note"><b>根拠</b> 10月3日14:11から10月7日15:27までの10半荘を、その前の163半荘とLuckyJの特上卓1,079半荘と比べた。<code>contrast/hands_all.py</code>を土台にした<code>mine_costly_run.py</code>による。局数は、10半荘で110局、その前が1,690局、LuckyJが11,272局。Mortalの選択はサイトの牌譜再生にある評価で、10半荘で打牌1,241回と鳴き345回、その前が19,486回と5,431回。リーチの評価は、リーチ宣言にMortalがかけた確率である。相手の待ちは実際の手牌から読んでいて、カードでは手牌のスイッチで見られる。リーチは10半荘で24回、1月以降の173半荘で354回。</p>
           </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#defense-check"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>30</i>安全牌の使い方はLuckyJの線に戻った</span></a></nav>
+        </section>
+
+        <section class="point" id="defense-check">
+          <div class="point-number">30</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第30章 &#183; 最近の対局 &#183; 10月10日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>安全牌の使い方はLuckyJの線に戻った</h3>
+            <p>調子はどうか、そしてLuckyJより安全牌を使わなくなったせいで放銃が増えていないか、という質問だった。第29章のあとの16半荘、10月7日18:25から10月10日14:43までを見ると、そうはなっていない。放銃率は10.6%で、第29章の負けが続く前の10.9%やLuckyJの10.3%と変わらず、下の安全牌の検査もすべてLuckyJの数字に収まっている。着順は1位4回、2位3回、3位7回、4位2回で、段位ポイントは約+190、約5,800点から6,000点に戻した。感じていたのは今日のことである。14:24と14:43の2半荘で5回放銃して28,900点を失ったが、どれもMortalの第一候補だった。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>あなたの局</th><th>10月3日より前の163半荘</th><th>第29章の10半荘</th><th>最新の16半荘</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>4位</td><td>16.6%</td><td>50%</td><td>12.5%</td><td>16.3%</td></tr>
+                  <tr><td>和了率</td><td>22.5%</td><td>23.6%</td><td>20.7%</td><td>22.9%</td></tr>
+                  <tr><td>平均打点</td><td>6,420</td><td>5,777</td><td>6,719</td><td>7,317</td></tr>
+                  <tr><td>放銃率</td><td>10.9%</td><td>17.3%</td><td>10.6%</td><td>10.3%</td></tr>
+                  <tr><td>平均放銃点</td><td>&#8722;4,769</td><td>&#8722;6,921</td><td>&#8722;4,705</td><td>&#8722;5,308</td></tr>
+                  <tr><td>7,000点以上の放銃（100局あたり）</td><td>2.6</td><td>9.1</td><td>2.8</td><td>3.4</td></tr>
+                  <tr><td>1局あたりの収支</td><td>+176</td><td>&#8722;511</td><td>+273</td><td>+363</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>Mortalの第一候補と打牌が一致したのは2,101巡のうち73.0%で、第29章の負けが続く前の73.3%と同じ。鳴きは591回の機会のうち556回で一致した。和了率は20.7%に下がった。LuckyJの和了率なら約41回のところ37回で、179局なら偶然の範囲である。平均打点は6,719点に上がった。</p>
+            <p><b>3つの検査。</b>まずリーチに対して、安全牌で手が保てた巡目を見る。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>リーチに対して</th><th>10月3日より前</th><th>第29章の10半荘</th><th>最新の16半荘</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1シャンテンから生牌を切った</td><td>6.8%</td><td>5.2%</td><td>6.6%</td><td>7.8%</td></tr>
+                  <tr><td>2シャンテン以上から生牌を切った</td><td>2.9%</td><td class="gap">8.6%</td><td>3.3%</td><td>3.6%</td></tr>
+                  <tr><td>保てる安全牌のうち最も安全な種類より弱いものでオリた</td><td>3.9%</td><td class="gap">9.5%</td><td>5.0%</td><td>4.0%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>次に、第28章の実際の選択での副露者1人に対する打牌と、リーチを受けたときの手の中の安全牌を、同じ場面のLuckyJと並べる。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>あなた / 同じ場面のLuckyJ</th><th>10月3日より前</th><th>第29章の10半荘</th><th>最新の16半荘</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>副露者1人に対して、2シャンテン以上から生牌を切った</td><td>68% / 75%</td><td class="gap">87% / 78%</td><td>71% / 74%</td></tr>
+                  <tr><td>副露者1人に対して、1シャンテンから生牌を切った</td><td>65% / 66%</td><td class="gap">73% / 65%</td><td>67% / 67%</td></tr>
+                  <tr><td>リーチを受けたときの手の中の安全牌</td><td>2.96 / 3.00</td><td>2.72 / 2.87</td><td>2.95 / 3.03</td></tr>
+                  <tr><td>リーチを受けたとき安全牌が1枚もない</td><td>9.4% / 9.0%</td><td>8.7% / 9.4%</td><td class="gap">13.1% / 8.5%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>あなたの感覚に当てはまるのは、第29章の10半荘である。2シャンテン以上からリーチに生牌を切ったのはそうした巡目の8.6%で、LuckyJの2倍を超え、副露者に対しては同じ場面のLuckyJより8ポイントほど多く生牌を切っていた。その後の16半荘では、どの数字もLuckyJの線に戻り、副露者1人への放銃は373打のうち2回だった。逆に動いたのは最後の行だけである。リーチを受けたとき手に安全牌が1枚もなかったのは107回のうち14回、13%で、同じ時点のLuckyJは8.5%だった。標準誤差の2倍に届かない差で、手の中の安全牌の数は2.95枚と3.03枚で変わっていない。</p>
+            <p><b>放銃をMortalで分ける。</b>19回の放銃のうち13回は、Mortalが50%以上で選ぶ打牌だった。テンパイの押し、Mortalもかけるリーチ、押す価値のある手でのリーチへの押しである。25%未満は6回で、安全牌の問題はそのうち2回だった。現物で同じ手が残るのに筋を切ったものと、流局2枚前に、筋で1シャンテンが保てるのに生牌の[[N]]を切ったものである。2回で4,600点、最初の2枚のカードにした。もう1回は近い。10月9日20:50の半荘の東3局、<a href="replay.html?g=261010-201c40e5-64e7-42a9-b924-a127a6d2059f&amp;r=East+3-1&amp;t=4" target="_blank" rel="noopener" data-you="4m">4巡目</a>に生牌の[[4m]]を切った。筋の[[8p]]は下家の[[P]]ポンに安全で、有効牌も多く残った（Mortalは72%、あなたの牌は3%）。この[[4m]]が対面の見えない平和に当たり、2,300点。残り3回は、Mortalの牌もあなたの牌と同じく生牌で、差は手の組み方にあった。どの字牌を先に切るかが2回と、意味のない対子崩しが1回である。</p>
+            <p><b>今日。</b>14:24の半荘で2回、14:43の半荘で3回放銃し、合わせて28,900点。どれもMortalの第一候補だった。14:24の東2局では、<a href="replay.html?g=261011-99feaaaa-a1e4-4bef-9f4c-d08173ab122a&amp;r=East+2-0&amp;t=8" target="_blank" rel="noopener" data-you="1m">8巡目</a>に2シャンテンから生牌の[[1m]]を親リーチに押し、7,700点。赤5を2枚持っていて、現物を切れば有効牌がほぼ半分になり、Mortalも98%で押した。東4局ではリーチして放銃し8,000点。Mortalも96%でリーチしていた。14:43の東4局2本場の[[F]]は16半荘でいちばん際どい判断で、3枚目のカードにした。</p>
+            <div data-guide-examples="defense-check"></div>
+            <div class="rule">
+              <strong>ルール</strong> 第29章のあとと同じオリ方を続ける。安全牌の使い方はLuckyJと同じである。オリるとき、現物と筋のどちらでも同じ手が残るなら現物を切る。副露者のオリラインを過ぎたら、手を崩す生牌ではなく、手が保てる安全牌を切る。
+            </div>
+            <div class="exception">
+              <strong>例外</strong> 見ておく数字が1つある。リーチを受けたとき手に安全牌が1枚もなかったのは107回のうち14回で、同じ時点のLuckyJは8.5%だった。次の半荘でもこれが続くなら、まず第17章の安全牌の残し方を見直す。
+            </div>
+            <p class="evidence-note"><b>根拠</b> 10月7日18:25から10月10日14:43までの16半荘を、第29章の10半荘、その前の163半荘、LuckyJと比べた。集計は<code>mine_defense_check.py</code>による。局の数字は<code>contrast/hands_all.py</code>で、16半荘で179局。ほかの列は第29章のもの。リーチに対する巡目は<code>mine_riichi_folds.py</code>で、16半荘で389巡、LuckyJの1,255半荘で24,560巡。副露者1人に対する実際の選択は<code>contrast/vs_callers.py</code>と<code>contrast/choices.py</code>で、16半荘で2シャンテン以上が78巡、1シャンテンが43巡。1副露には第28章、2副露以上には第19章の曲線を当てた。手の中の安全牌は<code>mine_early_safe_tiles.py</code>で、16半荘で107回のリーチ、LuckyJの対局で6,668回。Mortalの選択はサイトの牌譜再生の評価。段位ポイントはamae-koromoの記録から取り、第27章と同じ基準に合わせた。</p>
+          </div>
           <nav class="chapter-next" aria-label="本編の後"><a href="#method"><span class="chapter-next-label">本編の後 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title">このガイドの作り方</span></a></nav>
         </section>
 
@@ -2338,7 +2406,7 @@
             <li>あなたの対局：2026年1月1日以降の玉の間の南風戦（半荘戦）80半荘。雀魂のクライアントとamae-koromoから取得した。LuckyJ：天鳳の1,255半荘。キャッシュしたNAGAの解析レポートから再構築した。どちらも同じ牌譜再生コードと指標計算コードで処理している。</li>
             <li>各表は、あなたの手番の開始時点を牌譜から再現したものである。相手の手牌は実際のとおりに表示し、上部のスイッチで隠せる。</li>
             <li>受け入れ枚数は、あなたの席から見えていない有効牌をすべて数え、鳴かれた牌は1回だけ数える。リーチに対しては、宣言後に通った牌を現物として扱い、筋の根拠にもする。4、5、6を中筋とするには両側の筋が通っている必要があり、早い5は4または6の片側を補える（疑似中筋。本編の戦術書の外側読みのルールに従う）。字牌は、ほかに何枚見えているかで読む。役と打点は、本文にそう書いた箇所でだけ確認している。</li>
-            <li>生成データ：<code>site/honver-guide.json</code>は<code>scripts/build_personal_guide.py</code>と<code>data/personal_guide_spots.json</code>から作る。各章の数字は<code>scripts/mine_riichi_folds.py</code>、<code>mine_open_tenpai_push.py</code>、<code>mine_single_call.py</code>、<code>mine_vs_open.py</code>、<code>mine_win_value.py</code>、<code>mine_value_choice.py</code>から出している。第6章から第8章は<code>mine_dora_hands.py</code>、<code>mine_flush_calls.py</code>、<code>mine_caller_tells.py</code>、第9章は<code>mine_shape_plans.py</code>、第10章は<code>review_recent_games.py</code>と<code>mine_late_placement.py</code>、第11章は<code>mine_tenpai_push.py</code>、第12章は<code>mine_open_vs_open.py</code>と<code>mine_call_chances.py</code>（副露手のアガリと放銃は<code>mine_dora_hands.py</code>）、第17章は<code>mine_early_safe_tiles.py</code>と<code>contrast/hands_all.py</code>（Mortalの評価はサイトの牌譜再生から）、第18章は<code>mine_caller_surface.py</code>（図の描画は<code>build_caller_surface.py</code>）、第19章は<code>contrast/vs_callers.py</code>と<code>mine_caller_surface.py patterns</code>を土台にした<code>mine_caller_fold_line.py</code>による。第20章と第21章は<code>contrast/vs_callers.py</code>と<code>mine_riichi_folds.py</code>を土台にした<code>mine_break_folds.py</code>により、図は<code>build_break_fold_figure.py</code>で描いた。第23章は<code>mine_tenpai_push.py</code>と<code>contrast/riichi_danger.py</code>による。第26章は<code>contrast/hands_all.py</code>と<code>mine_riichi_folds.py</code>、牌譜再生にあるMortalの評価による。第27章は<code>contrast/hands_all.py</code>と牌譜の順位、amae-koromoの記録による。第28章は<code>contrast/vs_callers.py</code>と<code>contrast/choices.py</code>を土台にした<code>mine_dealer_callers.py</code>により、図は<code>build_dealer_caller_figure.py</code>で描いた。第29章は<code>contrast/hands_all.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_costly_run.py</code>による。どれも、あなたの対局とLuckyJの対局に同じコードで実行している。</li>
+            <li>生成データ：<code>site/honver-guide.json</code>は<code>scripts/build_personal_guide.py</code>と<code>data/personal_guide_spots.json</code>から作る。各章の数字は<code>scripts/mine_riichi_folds.py</code>、<code>mine_open_tenpai_push.py</code>、<code>mine_single_call.py</code>、<code>mine_vs_open.py</code>、<code>mine_win_value.py</code>、<code>mine_value_choice.py</code>から出している。第6章から第8章は<code>mine_dora_hands.py</code>、<code>mine_flush_calls.py</code>、<code>mine_caller_tells.py</code>、第9章は<code>mine_shape_plans.py</code>、第10章は<code>review_recent_games.py</code>と<code>mine_late_placement.py</code>、第11章は<code>mine_tenpai_push.py</code>、第12章は<code>mine_open_vs_open.py</code>と<code>mine_call_chances.py</code>（副露手のアガリと放銃は<code>mine_dora_hands.py</code>）、第17章は<code>mine_early_safe_tiles.py</code>と<code>contrast/hands_all.py</code>（Mortalの評価はサイトの牌譜再生から）、第18章は<code>mine_caller_surface.py</code>（図の描画は<code>build_caller_surface.py</code>）、第19章は<code>contrast/vs_callers.py</code>と<code>mine_caller_surface.py patterns</code>を土台にした<code>mine_caller_fold_line.py</code>による。第20章と第21章は<code>contrast/vs_callers.py</code>と<code>mine_riichi_folds.py</code>を土台にした<code>mine_break_folds.py</code>により、図は<code>build_break_fold_figure.py</code>で描いた。第23章は<code>mine_tenpai_push.py</code>と<code>contrast/riichi_danger.py</code>による。第26章は<code>contrast/hands_all.py</code>と<code>mine_riichi_folds.py</code>、牌譜再生にあるMortalの評価による。第27章は<code>contrast/hands_all.py</code>と牌譜の順位、amae-koromoの記録による。第28章は<code>contrast/vs_callers.py</code>と<code>contrast/choices.py</code>を土台にした<code>mine_dealer_callers.py</code>により、図は<code>build_dealer_caller_figure.py</code>で描いた。第29章は<code>contrast/hands_all.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_costly_run.py</code>による。第30章は<code>contrast/hands_all.py</code>、<code>mine_riichi_folds.py</code>、<code>contrast/vs_callers.py</code>、<code>contrast/choices.py</code>、<code>mine_early_safe_tiles.py</code>を土台にした<code>mine_defense_check.py</code>による。どれも、あなたの対局とLuckyJの対局に同じコードで実行している。</li>
             <li>これらの章の土台となる一般的なルールは、<a href="ja.html">本編のLuckyJ戦術書</a>にある。</li>
           </ul>
         </section>
