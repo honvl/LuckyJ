@@ -1,0 +1,1573 @@
+{
+ "pool_hands": 2082,
+ "start_ev": [
+  -17.4,
+  -17.1,
+  -18.0,
+  -13.7
+ ],
+ "sims": 4000,
+ "you": {
+  "thin": {
+   "spots": 57,
+   "pushed_pct": 73.7,
+   "pushes": {
+    "hands": 42,
+    "ev_change": -18.6,
+    "se": 8.4,
+    "fourth_change": 4.1,
+    "points": -1655
+   },
+   "folds": {
+    "hands": 15,
+    "ev_change": -6.6,
+    "se": 8.9,
+    "fourth_change": -1.1,
+    "points": -1820
+   },
+   "by_place": {
+    "1": {
+     "spots": 18,
+     "pushed_pct": 77.8,
+     "pushes": {
+      "hands": 14,
+      "ev_change": -15.6,
+      "se": 10.4,
+      "fourth_change": 3.3,
+      "points": -1421
+     },
+     "folds": {
+      "hands": 4,
+      "ev_change": -25.5,
+      "se": 24.4,
+      "fourth_change": 5.2,
+      "points": -2825
+     }
+    },
+    "2": {
+     "spots": 13,
+     "pushed_pct": 76.9,
+     "pushes": {
+      "hands": 10,
+      "ev_change": -42.2,
+      "se": 17.3,
+      "fourth_change": 7.8,
+      "points": -3230
+     },
+     "folds": {
+      "hands": 3,
+      "ev_change": -3.3,
+      "se": 6.2,
+      "fourth_change": 0.9,
+      "points": -1167
+     }
+    },
+    "3": {
+     "spots": 14,
+     "pushed_pct": 57.1,
+     "pushes": {
+      "hands": 8,
+      "ev_change": 8.3,
+      "se": 12.6,
+      "fourth_change": -2.4,
+      "points": 512
+     },
+     "folds": {
+      "hands": 6,
+      "ev_change": 10.0,
+      "se": 13.1,
+      "fourth_change": -8.1,
+      "points": -500
+     }
+    },
+    "4": {
+     "spots": 12,
+     "pushed_pct": 83.3,
+     "pushes": {
+      "hands": 10,
+      "ev_change": -20.6,
+      "se": 24.9,
+      "fourth_change": 6.9,
+      "points": -2140
+     },
+     "folds": {
+      "hands": 2,
+      "ev_change": -23.2,
+      "se": 11.6,
+      "fourth_change": 4.4,
+      "points": -4750
+     }
+    }
+   },
+   "by_stage": {
+    "East": {
+     "spots": 25,
+     "pushed_pct": 80.0,
+     "pushes": {
+      "hands": 20,
+      "ev_change": -6.0,
+      "se": 10.4,
+      "fourth_change": 1.0,
+      "points": -790
+     },
+     "folds": {
+      "hands": 5,
+      "ev_change": -20.5,
+      "se": 19.8,
+      "fourth_change": 4.7,
+      "points": -2140
+     }
+    },
+    "South 1-3": {
+     "spots": 28,
+     "pushed_pct": 64.3,
+     "pushes": {
+      "hands": 18,
+      "ev_change": -24.6,
+      "se": 14.6,
+      "fourth_change": 6.3,
+      "points": -2161
+     },
+     "folds": {
+      "hands": 10,
+      "ev_change": 0.4,
+      "se": 9.0,
+      "fourth_change": -4.0,
+      "points": -1660
+     }
+    },
+    "South 4 on": {
+     "spots": 4,
+     "pushed_pct": 100.0,
+     "pushes": {
+      "hands": 4,
+      "ev_change": -53.9,
+      "se": 25.1,
+      "fourth_change": 10.2,
+      "points": -3700
+     },
+     "folds": {
+      "hands": 0
+     }
+    }
+   }
+  },
+  "all": {
+   "spots": 280,
+   "pushed_pct": 78.2,
+   "pushes": {
+    "hands": 219,
+    "ev_change": -0.4,
+    "se": 4.2,
+    "fourth_change": 0.3,
+    "points": 247
+   },
+   "folds": {
+    "hands": 61,
+    "ev_change": -7.3,
+    "se": 3.8,
+    "fourth_change": 0.1,
+    "points": -1213
+   },
+   "by_place": {
+    "1": {
+     "spots": 82,
+     "pushed_pct": 80.5,
+     "pushes": {
+      "hands": 66,
+      "ev_change": -1.8,
+      "se": 6.0,
+      "fourth_change": 0.4,
+      "points": 417
+     },
+     "folds": {
+      "hands": 16,
+      "ev_change": -18.7,
+      "se": 9.3,
+      "fourth_change": 2.6,
+      "points": -2006
+     }
+    },
+    "2": {
+     "spots": 52,
+     "pushed_pct": 78.8,
+     "pushes": {
+      "hands": 41,
+      "ev_change": -0.1,
+      "se": 9.8,
+      "fourth_change": 0.5,
+      "points": 654
+     },
+     "folds": {
+      "hands": 11,
+      "ev_change": -0.0,
+      "se": 6.1,
+      "fourth_change": -0.1,
+      "points": -691
+     }
+    },
+    "3": {
+     "spots": 78,
+     "pushed_pct": 65.4,
+     "pushes": {
+      "hands": 51,
+      "ev_change": 10.5,
+      "se": 7.9,
+      "fourth_change": -2.8,
+      "points": 1133
+     },
+     "folds": {
+      "hands": 27,
+      "ev_change": -1.7,
+      "se": 5.1,
+      "fourth_change": -2.1,
+      "points": -996
+     }
+    },
+    "4": {
+     "spots": 68,
+     "pushed_pct": 89.7,
+     "pushes": {
+      "hands": 61,
+      "ev_change": -8.3,
+      "se": 9.8,
+      "fourth_change": 2.5,
+      "points": -952
+     },
+     "folds": {
+      "hands": 7,
+      "ev_change": -14.6,
+      "se": 10.4,
+      "fourth_change": 3.2,
+      "points": -1057
+     }
+    }
+   },
+   "by_stage": {
+    "East": {
+     "spots": 158,
+     "pushed_pct": 81.0,
+     "pushes": {
+      "hands": 128,
+      "ev_change": 5.3,
+      "se": 4.9,
+      "fourth_change": -1.2,
+      "points": 679
+     },
+     "folds": {
+      "hands": 30,
+      "ev_change": -12.0,
+      "se": 4.3,
+      "fourth_change": 2.4,
+      "points": -1463
+     }
+    },
+    "South 1-3": {
+     "spots": 101,
+     "pushed_pct": 73.3,
+     "pushes": {
+      "hands": 74,
+      "ev_change": -5.3,
+      "se": 8.0,
+      "fourth_change": 1.7,
+      "points": -108
+     },
+     "folds": {
+      "hands": 27,
+      "ev_change": -4.5,
+      "se": 5.9,
+      "fourth_change": -0.9,
+      "points": -963
+     }
+    },
+    "South 4 on": {
+     "spots": 21,
+     "pushed_pct": 81.0,
+     "pushes": {
+      "hands": 17,
+      "ev_change": -22.1,
+      "se": 16.8,
+      "fourth_change": 4.9,
+      "points": -1465
+     },
+     "folds": {
+      "hands": 4,
+      "ev_change": 8.0,
+      "se": 28.0,
+      "fourth_change": -10.0,
+      "points": -1025
+     }
+    }
+   }
+  }
+ },
+ "luckyj": {
+  "thin": {
+   "spots": 236,
+   "pushed_pct": 83.1,
+   "pushes": {
+    "hands": 196,
+    "ev_change": 3.0,
+    "se": 4.0,
+    "fourth_change": -0.3,
+    "points": 618
+   },
+   "folds": {
+    "hands": 40,
+    "ev_change": -12.9,
+    "se": 8.2,
+    "fourth_change": 3.0,
+    "points": -1488
+   },
+   "by_place": {
+    "1": {
+     "spots": 80,
+     "pushed_pct": 85.0,
+     "pushes": {
+      "hands": 68,
+      "ev_change": -1.4,
+      "se": 4.7,
+      "fourth_change": 0.8,
+      "points": 507
+     },
+     "folds": {
+      "hands": 12,
+      "ev_change": -3.0,
+      "se": 4.6,
+      "fourth_change": 0.3,
+      "points": -1175
+     }
+    },
+    "2": {
+     "spots": 53,
+     "pushed_pct": 77.4,
+     "pushes": {
+      "hands": 41,
+      "ev_change": -2.8,
+      "se": 7.7,
+      "fourth_change": 1.1,
+      "points": 100
+     },
+     "folds": {
+      "hands": 12,
+      "ev_change": -27.5,
+      "se": 24.9,
+      "fourth_change": 6.8,
+      "points": -2033
+     }
+    },
+    "3": {
+     "spots": 54,
+     "pushed_pct": 85.2,
+     "pushes": {
+      "hands": 46,
+      "ev_change": -1.9,
+      "se": 10.2,
+      "fourth_change": 1.8,
+      "points": 154
+     },
+     "folds": {
+      "hands": 8,
+      "ev_change": -5.1,
+      "se": 12.2,
+      "fourth_change": 1.1,
+      "points": -450
+     }
+    },
+    "4": {
+     "spots": 49,
+     "pushed_pct": 83.7,
+     "pushes": {
+      "hands": 41,
+      "ev_change": 21.7,
+      "se": 10.6,
+      "fourth_change": -5.7,
+      "points": 1839
+     },
+     "folds": {
+      "hands": 8,
+      "ev_change": -13.7,
+      "se": 10.7,
+      "fourth_change": 3.4,
+      "points": -2175
+     }
+    }
+   },
+   "by_stage": {
+    "East": {
+     "spots": 130,
+     "pushed_pct": 83.1,
+     "pushes": {
+      "hands": 108,
+      "ev_change": 3.0,
+      "se": 5.1,
+      "fourth_change": -0.0,
+      "points": 611
+     },
+     "folds": {
+      "hands": 22,
+      "ev_change": -5.2,
+      "se": 5.5,
+      "fourth_change": 0.7,
+      "points": -1045
+     }
+    },
+    "South 1-3": {
+     "spots": 90,
+     "pushed_pct": 84.4,
+     "pushes": {
+      "hands": 76,
+      "ev_change": 2.5,
+      "se": 7.2,
+      "fourth_change": -0.9,
+      "points": 712
+     },
+     "folds": {
+      "hands": 14,
+      "ev_change": -4.7,
+      "se": 5.3,
+      "fourth_change": 1.6,
+      "points": -1086
+     }
+    },
+    "South 4 on": {
+     "spots": 16,
+     "pushed_pct": 75.0,
+     "pushes": {
+      "hands": 12,
+      "ev_change": 7.2,
+      "se": 12.8,
+      "fourth_change": 1.5,
+      "points": 83
+     },
+     "folds": {
+      "hands": 4,
+      "ev_change": -83.8,
+      "se": 72.1,
+      "fourth_change": 20.9,
+      "points": -5325
+     }
+    }
+   }
+  },
+  "all": {
+   "spots": 1505,
+   "pushed_pct": 82.3,
+   "pushes": {
+    "hands": 1238,
+    "ev_change": 1.0,
+    "se": 1.6,
+    "fourth_change": 0.4,
+    "points": 518
+   },
+   "folds": {
+    "hands": 267,
+    "ev_change": -8.5,
+    "se": 2.6,
+    "fourth_change": 1.6,
+    "points": -930
+   },
+   "by_place": {
+    "1": {
+     "spots": 492,
+     "pushed_pct": 83.7,
+     "pushes": {
+      "hands": 412,
+      "ev_change": 2.7,
+      "se": 2.1,
+      "fourth_change": -0.4,
+      "points": 955
+     },
+     "folds": {
+      "hands": 80,
+      "ev_change": -4.2,
+      "se": 1.8,
+      "fourth_change": 0.1,
+      "points": -945
+     }
+    },
+    "2": {
+     "spots": 351,
+     "pushed_pct": 80.1,
+     "pushes": {
+      "hands": 281,
+      "ev_change": -1.5,
+      "se": 3.1,
+      "fourth_change": 1.0,
+      "points": 201
+     },
+     "folds": {
+      "hands": 70,
+      "ev_change": -9.0,
+      "se": 6.4,
+      "fourth_change": 1.5,
+      "points": -804
+     }
+    },
+    "3": {
+     "spots": 388,
+     "pushed_pct": 81.7,
+     "pushes": {
+      "hands": 317,
+      "ev_change": -1.8,
+      "se": 4.0,
+      "fourth_change": 2.0,
+      "points": 490
+     },
+     "folds": {
+      "hands": 71,
+      "ev_change": -13.0,
+      "se": 6.5,
+      "fourth_change": 3.1,
+      "points": -845
+     }
+    },
+    "4": {
+     "spots": 274,
+     "pushed_pct": 83.2,
+     "pushes": {
+      "hands": 228,
+      "ev_change": 4.8,
+      "se": 4.5,
+      "fourth_change": -1.2,
+      "points": 157
+     },
+     "folds": {
+      "hands": 46,
+      "ev_change": -8.4,
+      "se": 4.7,
+      "fourth_change": 1.8,
+      "points": -1228
+     }
+    }
+   },
+   "by_stage": {
+    "East": {
+     "spots": 863,
+     "pushed_pct": 83.0,
+     "pushes": {
+      "hands": 716,
+      "ev_change": 3.3,
+      "se": 2.0,
+      "fourth_change": -0.2,
+      "points": 595
+     },
+     "folds": {
+      "hands": 147,
+      "ev_change": -2.8,
+      "se": 2.5,
+      "fourth_change": 0.0,
+      "points": -607
+     }
+    },
+    "South 1-3": {
+     "spots": 526,
+     "pushed_pct": 81.4,
+     "pushes": {
+      "hands": 428,
+      "ev_change": -0.8,
+      "se": 2.9,
+      "fourth_change": 0.6,
+      "points": 327
+     },
+     "folds": {
+      "hands": 98,
+      "ev_change": -11.9,
+      "se": 3.7,
+      "fourth_change": 2.1,
+      "points": -1261
+     }
+    },
+    "South 4 on": {
+     "spots": 116,
+     "pushed_pct": 81.0,
+     "pushes": {
+      "hands": 94,
+      "ev_change": -8.6,
+      "se": 7.5,
+      "fourth_change": 3.9,
+      "points": 798
+     },
+     "folds": {
+      "hands": 22,
+      "ev_change": -31.4,
+      "se": 20.8,
+      "fourth_change": 9.5,
+      "points": -1614
+     }
+    }
+   }
+  }
+ },
+ "your_spots": [
+  {
+   "game": "261012-7b808921-85b8-4758-a22e-194d7051e278",
+   "round": "South 3-0",
+   "turn": 12,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": -2000,
+   "place_before": 2,
+   "stage": "South 1-3",
+   "ev_before": 84.9,
+   "ev_after": 82.3,
+   "ev_change": -2.6,
+   "fourth_change": 0.5,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "261010-23b5165e-9075-4dbf-89f7-f84739f0b9c8",
+   "round": "East 2-1",
+   "turn": 16,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -4100,
+   "place_before": 2,
+   "stage": "East",
+   "ev_before": -19.8,
+   "ev_after": -33.1,
+   "ev_change": -13.3,
+   "fourth_change": 0.5,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "261010-6323aa6f-7123-4acc-8b77-f1e3da50b6e8",
+   "round": "South 2-0",
+   "turn": 13,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": -500,
+   "place_before": 3,
+   "stage": "South 1-3",
+   "ev_before": -45.7,
+   "ev_after": -44.9,
+   "ev_change": 0.8,
+   "fourth_change": -2.7,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "261010-165003cb-bf9c-49f9-ae39-ac95a879ae5c",
+   "round": "East 3-1",
+   "turn": 14,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": 0,
+   "place_before": 1,
+   "stage": "East",
+   "ev_before": 88.4,
+   "ev_after": 88.3,
+   "ev_change": -0.0,
+   "fourth_change": 0.3,
+   "han": 3,
+   "live": 1
+  },
+  {
+   "game": "261010-6ab8e503-8009-4782-a055-20690a2e2cd9",
+   "round": "South 3-0",
+   "turn": 15,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": -1500,
+   "place_before": 3,
+   "stage": "South 1-3",
+   "ev_before": -14.6,
+   "ev_after": -32.1,
+   "ev_change": -17.6,
+   "fourth_change": 5.8,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "261010-201c40e5-64e7-42a9-b924-a127a6d2059f",
+   "round": "South 2-2",
+   "turn": 12,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": 0,
+   "place_before": 3,
+   "stage": "South 1-3",
+   "ev_before": 9.2,
+   "ev_after": -4.0,
+   "ev_change": -13.2,
+   "fourth_change": -11.6,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "261008-f937c8f1-a966-4845-af04-026e0295057b",
+   "round": "South 2-0",
+   "turn": 12,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -1300,
+   "place_before": 3,
+   "stage": "South 1-3",
+   "ev_before": -26.5,
+   "ev_after": -48.6,
+   "ev_change": -22.2,
+   "fourth_change": 5.1,
+   "han": 4,
+   "live": 2
+  },
+  {
+   "game": "261008-f937c8f1-a966-4845-af04-026e0295057b",
+   "round": "South 3-1",
+   "turn": 18,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": 1000,
+   "place_before": 2,
+   "stage": "South 1-3",
+   "ev_before": -29.6,
+   "ev_after": -6.5,
+   "ev_change": 23.2,
+   "fourth_change": -8.6,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "261003-01d8a14c-4f93-437f-b687-b55348c2f179",
+   "round": "East 3-0",
+   "turn": 12,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -2600,
+   "place_before": 1,
+   "stage": "East",
+   "ev_before": 54.7,
+   "ev_after": 36.0,
+   "ev_change": -18.7,
+   "fourth_change": 3.1,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "261003-5792c141-83fb-43cf-bb64-bfc0b195f357",
+   "round": "East 4-0",
+   "turn": 14,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": 0,
+   "place_before": 3,
+   "stage": "East",
+   "ev_before": -35.6,
+   "ev_after": -29.3,
+   "ev_change": 6.3,
+   "fourth_change": -1.5,
+   "han": 6,
+   "live": 3
+  },
+  {
+   "game": "261003-5f11307b-34d4-41e8-be82-0805b4a94ae3",
+   "round": "East 2-0",
+   "turn": 10,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -2000,
+   "place_before": 3,
+   "stage": "East",
+   "ev_before": -11.8,
+   "ev_after": -35.1,
+   "ev_change": -23.2,
+   "fourth_change": 5.9,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "261002-b0ec9f2d-52a2-4578-b351-df6475cc8b35",
+   "round": "East 3-1",
+   "turn": 14,
+   "pushed": true,
+   "won": true,
+   "dealt": false,
+   "delta": 9200,
+   "place_before": 4,
+   "stage": "East",
+   "ev_before": -132.9,
+   "ev_after": -37.6,
+   "ev_change": 95.4,
+   "fourth_change": -25.5,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "261002-b0ec9f2d-52a2-4578-b351-df6475cc8b35",
+   "round": "South 3-0",
+   "turn": 14,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": 0,
+   "place_before": 3,
+   "stage": "South 1-3",
+   "ev_before": -95.3,
+   "ev_after": -25.0,
+   "ev_change": 70.3,
+   "fourth_change": -31.0,
+   "han": 5,
+   "live": 3
+  },
+  {
+   "game": "261002-97af122b-732a-47ae-b70b-644c27d77e03",
+   "round": "South 2-0",
+   "turn": 17,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": 1000,
+   "place_before": 1,
+   "stage": "South 1-3",
+   "ev_before": 117.3,
+   "ev_after": 128.1,
+   "ev_change": 10.8,
+   "fourth_change": -0.3,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "261002-33fd4019-5a58-482d-b9ca-68e1b07fc036",
+   "round": "South 3-0",
+   "turn": 15,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -2000,
+   "place_before": 2,
+   "stage": "South 1-3",
+   "ev_before": 46.8,
+   "ev_after": 23.6,
+   "ev_change": -23.2,
+   "fourth_change": -1.2,
+   "han": 6,
+   "live": 3
+  },
+  {
+   "game": "261002-fc3b2f83-39d9-48c2-99de-5d2bd2893cf0",
+   "round": "East 3-0",
+   "turn": 12,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": 0,
+   "place_before": 2,
+   "stage": "East",
+   "ev_before": -18.8,
+   "ev_after": -11.7,
+   "ev_change": 7.1,
+   "fourth_change": -1.2,
+   "han": 3,
+   "live": 2
+  },
+  {
+   "game": "261001-8fda859e-f1f4-41c5-9a5c-1b6b037689ab",
+   "round": "East 2-0",
+   "turn": 12,
+   "pushed": true,
+   "won": true,
+   "dealt": false,
+   "delta": 9000,
+   "place_before": 4,
+   "stage": "East",
+   "ev_before": -59.2,
+   "ev_after": 39.6,
+   "ev_change": 98.8,
+   "fourth_change": -23.3,
+   "han": 6,
+   "live": 3
+  },
+  {
+   "game": "261001-8fda859e-f1f4-41c5-9a5c-1b6b037689ab",
+   "round": "South 1-0",
+   "turn": 16,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": 1500,
+   "place_before": 1,
+   "stage": "South 1-3",
+   "ev_before": 55.0,
+   "ev_after": 69.6,
+   "ev_change": 14.6,
+   "fourth_change": -2.3,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260930-e1e10294-47de-4a88-946f-78e8129ee6c7",
+   "round": "South 2-0",
+   "turn": 12,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": 0,
+   "place_before": 3,
+   "stage": "South 1-3",
+   "ev_before": -76.5,
+   "ev_after": -57.9,
+   "ev_change": 18.6,
+   "fourth_change": -6.8,
+   "han": 3,
+   "live": 2
+  },
+  {
+   "game": "260929-e1b91cab-985a-47ef-9476-666eb9bd12b8",
+   "round": "South 3-3",
+   "turn": 15,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -8600,
+   "place_before": 1,
+   "stage": "South 1-3",
+   "ev_before": 113.1,
+   "ev_after": 63.3,
+   "ev_change": -49.8,
+   "fourth_change": 0.5,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "260929-6cfccc52-c90e-403d-98a0-7a8629b0bcbb",
+   "round": "South 3-0",
+   "turn": 13,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -2000,
+   "place_before": 2,
+   "stage": "South 1-3",
+   "ev_before": 67.1,
+   "ev_after": 64.2,
+   "ev_change": -2.9,
+   "fourth_change": 0.6,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260929-68b62fbc-a679-4763-986c-cc4fbcccd6bc",
+   "round": "South 2-0",
+   "turn": 8,
+   "pushed": true,
+   "won": true,
+   "dealt": false,
+   "delta": 9000,
+   "place_before": 3,
+   "stage": "South 1-3",
+   "ev_before": -12.7,
+   "ev_after": 68.8,
+   "ev_change": 81.5,
+   "fourth_change": -11.1,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52",
+   "round": "East 1-1",
+   "turn": 8,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -2100,
+   "place_before": 3,
+   "stage": "East",
+   "ev_before": -26.3,
+   "ev_after": -46.7,
+   "ev_change": -20.4,
+   "fourth_change": 3.8,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52",
+   "round": "South 2-0",
+   "turn": 11,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -3000,
+   "place_before": 1,
+   "stage": "South 1-3",
+   "ev_before": 109.5,
+   "ev_after": 102.2,
+   "ev_change": -7.3,
+   "fourth_change": 0.6,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "260927-04d7d3c9-fd03-4a20-b2c8-3813d0c773b9",
+   "round": "East 2-0",
+   "turn": 9,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -3900,
+   "place_before": 2,
+   "stage": "East",
+   "ev_before": -31.8,
+   "ev_after": -80.5,
+   "ev_change": -48.7,
+   "fourth_change": 13.5,
+   "han": 5,
+   "live": 3
+  },
+  {
+   "game": "260927-1a030971-9ad6-4172-a578-9a918a2ea59e",
+   "round": "East 2-0",
+   "turn": 15,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -1000,
+   "place_before": 1,
+   "stage": "East",
+   "ev_before": 10.6,
+   "ev_after": 2.8,
+   "ev_change": -7.8,
+   "fourth_change": 1.8,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "260927-1a030971-9ad6-4172-a578-9a918a2ea59e",
+   "round": "East 4-0",
+   "turn": 11,
+   "pushed": true,
+   "won": true,
+   "dealt": false,
+   "delta": 6800,
+   "place_before": 1,
+   "stage": "East",
+   "ev_before": 55.4,
+   "ev_after": 103.4,
+   "ev_change": 48.0,
+   "fourth_change": -5.6,
+   "han": 4,
+   "live": 2
+  },
+  {
+   "game": "260927-d8570927-994f-4a15-aba1-054159a4045c",
+   "round": "South 1-2",
+   "turn": 15,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": -1500,
+   "place_before": 2,
+   "stage": "South 1-3",
+   "ev_before": -35.9,
+   "ev_after": -50.1,
+   "ev_change": -14.3,
+   "fourth_change": 3.5,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260927-33c90769-b176-4d84-887e-a0570b689191",
+   "round": "South 1-1",
+   "turn": 15,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": -1000,
+   "place_before": 3,
+   "stage": "South 1-3",
+   "ev_before": -1.8,
+   "ev_after": -0.9,
+   "ev_change": 0.9,
+   "fourth_change": -2.5,
+   "han": 3,
+   "live": 2
+  },
+  {
+   "game": "260924-546dc69b-5194-46c6-b91c-ca9b4891c62f",
+   "round": "East 4-0",
+   "turn": 9,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": 500,
+   "place_before": 4,
+   "stage": "East",
+   "ev_before": -90.5,
+   "ev_after": -77.9,
+   "ev_change": 12.7,
+   "fourth_change": -3.9,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260924-d2ba9391-5047-4a09-89da-38bc4bd1845b",
+   "round": "East 4-0",
+   "turn": 12,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -4000,
+   "place_before": 1,
+   "stage": "East",
+   "ev_before": 94.8,
+   "ev_after": 77.2,
+   "ev_change": -17.6,
+   "fourth_change": 2.4,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260924-0e508d5e-4b31-49ac-b77d-dab1c05ab4ae",
+   "round": "South 2-0",
+   "turn": 11,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -7700,
+   "place_before": 4,
+   "stage": "South 1-3",
+   "ev_before": -114.7,
+   "ev_after": -218.3,
+   "ev_change": -103.5,
+   "fourth_change": 31.9,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "260924-d22d9b1e-3c25-4ca4-aab2-1e34b898c132",
+   "round": "East 1-0",
+   "turn": 17,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": -1500,
+   "place_before": 4,
+   "stage": "East",
+   "ev_before": -13.7,
+   "ev_after": -25.3,
+   "ev_change": -11.6,
+   "fourth_change": 2.7,
+   "han": 5,
+   "live": 3
+  },
+  {
+   "game": "260924-d22d9b1e-3c25-4ca4-aab2-1e34b898c132",
+   "round": "South 3-1",
+   "turn": 18,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": 1500,
+   "place_before": 3,
+   "stage": "South 1-3",
+   "ev_before": -27.3,
+   "ev_after": 3.1,
+   "ev_change": 30.4,
+   "fourth_change": -11.0,
+   "han": 6,
+   "live": 2
+  },
+  {
+   "game": "260923-e1062a86-fac4-4882-8667-f3abf380f70a",
+   "round": "South 4-2",
+   "turn": 18,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -12200,
+   "place_before": 4,
+   "stage": "South 4 on",
+   "ev_before": -233.3,
+   "ev_after": -278.7,
+   "ev_change": -45.4,
+   "fourth_change": 12.7,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260922-dad15d2f-09fb-4845-b33a-bcb55de50b07",
+   "round": "South 2-0",
+   "turn": 7,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -8000,
+   "place_before": 2,
+   "stage": "South 1-3",
+   "ev_before": 20.3,
+   "ev_after": -140.3,
+   "ev_change": -160.6,
+   "fourth_change": 44.9,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "260922-dad15d2f-09fb-4845-b33a-bcb55de50b07",
+   "round": "South 3-2",
+   "turn": 8,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -2200,
+   "place_before": 4,
+   "stage": "South 1-3",
+   "ev_before": -166.6,
+   "ev_after": -181.2,
+   "ev_change": -14.6,
+   "fourth_change": 2.9,
+   "han": 4,
+   "live": 2
+  },
+  {
+   "game": "260922-4ebf19e7-89c5-469e-b2eb-90ee1c185965",
+   "round": "South 2-1",
+   "turn": 11,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -8000,
+   "place_before": 4,
+   "stage": "South 1-3",
+   "ev_before": -118.8,
+   "ev_after": -233.8,
+   "ev_change": -115.0,
+   "fourth_change": 38.0,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "260921-610ba96e-37d7-4767-9b1b-82038161788a",
+   "round": "East 3-1",
+   "turn": 5,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -7100,
+   "place_before": 1,
+   "stage": "East",
+   "ev_before": 97.9,
+   "ev_after": 59.6,
+   "ev_change": -38.4,
+   "fourth_change": 3.2,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "260921-8c944457-0aef-4d65-81b0-b1f83b9852a0",
+   "round": "East 3-4",
+   "turn": 9,
+   "pushed": false,
+   "won": false,
+   "dealt": true,
+   "delta": -9200,
+   "place_before": 1,
+   "stage": "East",
+   "ev_before": 62.0,
+   "ev_after": -36.5,
+   "ev_change": -98.6,
+   "fourth_change": 22.1,
+   "han": 6,
+   "live": 3
+  },
+  {
+   "game": "260921-8c944457-0aef-4d65-81b0-b1f83b9852a0",
+   "round": "South 2-0",
+   "turn": 14,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -8000,
+   "place_before": 4,
+   "stage": "South 1-3",
+   "ev_before": -79.4,
+   "ev_after": -197.4,
+   "ev_change": -118.0,
+   "fourth_change": 35.0,
+   "han": 3,
+   "live": 1
+  },
+  {
+   "game": "260921-7b8a8c7c-94f0-47c6-84ba-1638af253b8d",
+   "round": "South 3-0",
+   "turn": 16,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": 0,
+   "place_before": 3,
+   "stage": "South 1-3",
+   "ev_before": -44.6,
+   "ev_after": -26.5,
+   "ev_change": 18.1,
+   "fourth_change": -10.9,
+   "han": 7,
+   "live": 3
+  },
+  {
+   "game": "260921-6faea687-eb5d-4d91-b5db-2f4ab9c98a5b",
+   "round": "East 4-0",
+   "turn": 17,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": 1000,
+   "place_before": 4,
+   "stage": "East",
+   "ev_before": -161.1,
+   "ev_after": -147.8,
+   "ev_change": 13.3,
+   "fourth_change": -4.4,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260921-accd073a-10e2-4b1d-a823-85433a792a61",
+   "round": "East 3-0",
+   "turn": 13,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": 0,
+   "place_before": 1,
+   "stage": "East",
+   "ev_before": 83.2,
+   "ev_after": 83.8,
+   "ev_change": 0.6,
+   "fourth_change": -0.6,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "260920-192cc940-6217-4d71-8ff3-c64b165d3673",
+   "round": "East 3-0",
+   "turn": 10,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -3900,
+   "place_before": 2,
+   "stage": "East",
+   "ev_before": -16.5,
+   "ev_after": -42.5,
+   "ev_change": -26.0,
+   "fourth_change": 4.9,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "260920-3d2edaa5-5a07-4526-ab85-cf9cac0ca24a",
+   "round": "South 2-1",
+   "turn": 13,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": -2100,
+   "place_before": 1,
+   "stage": "South 1-3",
+   "ev_before": 103.7,
+   "ev_after": 99.8,
+   "ev_change": -3.9,
+   "fourth_change": -0.9,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260920-3d2edaa5-5a07-4526-ab85-cf9cac0ca24a",
+   "round": "South 4-0",
+   "turn": 12,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": 0,
+   "place_before": 2,
+   "stage": "South 4 on",
+   "ev_before": 76.4,
+   "ev_after": 2.0,
+   "ev_change": -74.4,
+   "fourth_change": -0.4,
+   "han": 5,
+   "live": 3
+  },
+  {
+   "game": "260920-27f977f3-c9e0-41ce-b8c1-faaee5f1dedc",
+   "round": "South 1-1",
+   "turn": 8,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -1100,
+   "place_before": 2,
+   "stage": "South 1-3",
+   "ev_before": 49.9,
+   "ev_after": 49.4,
+   "ev_change": -0.5,
+   "fourth_change": -1.9,
+   "han": 5,
+   "live": 3
+  },
+  {
+   "game": "260920-900a1166-f9e0-4cc7-900a-a54c6b93dda4",
+   "round": "East 1-0",
+   "turn": 13,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -3000,
+   "place_before": 4,
+   "stage": "East",
+   "ev_before": -13.7,
+   "ev_after": -43.0,
+   "ev_change": -29.2,
+   "fourth_change": 6.0,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260919-cec5015c-d1b3-41ef-a04d-5d09d88c6358",
+   "round": "South 4-0",
+   "turn": 15,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": 0,
+   "place_before": 1,
+   "stage": "South 4 on",
+   "ev_before": 127.6,
+   "ev_after": 139.0,
+   "ev_change": 11.4,
+   "fourth_change": -0.0,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260919-bd7daa16-430f-454d-86bb-3e7c88db8b4d",
+   "round": "South 2-2",
+   "turn": 8,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -1000,
+   "place_before": 3,
+   "stage": "South 1-3",
+   "ev_before": -111.2,
+   "ev_after": -115.0,
+   "ev_change": -3.8,
+   "fourth_change": 0.4,
+   "han": 6,
+   "live": 3
+  },
+  {
+   "game": "260907-0d113184-0a72-4f2f-af25-b4ac7444007f",
+   "round": "East 2-1",
+   "turn": 13,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -8300,
+   "place_before": 2,
+   "stage": "East",
+   "ev_before": -30.0,
+   "ev_after": -125.4,
+   "ev_change": -95.4,
+   "fourth_change": 25.7,
+   "han": 6,
+   "live": 3
+  },
+  {
+   "game": "260708-aa346099-dbf4-41a0-a846-d963dfb2c2a5",
+   "round": "East 4-2",
+   "turn": 9,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -4200,
+   "place_before": 1,
+   "stage": "East",
+   "ev_before": 41.6,
+   "ev_after": -1.3,
+   "ev_change": -42.9,
+   "fourth_change": 7.2,
+   "han": 4,
+   "live": 2
+  },
+  {
+   "game": "260708-46687fcf-0499-4efa-97e5-4257913fa9e7",
+   "round": "East 4-0",
+   "turn": 14,
+   "pushed": true,
+   "won": true,
+   "dealt": false,
+   "delta": 7800,
+   "place_before": 1,
+   "stage": "East",
+   "ev_before": 115.2,
+   "ev_after": 140.2,
+   "ev_change": 25.0,
+   "fourth_change": -1.1,
+   "han": 3,
+   "live": 3
+  },
+  {
+   "game": "260627-cbce14e3-6c51-4c75-83d6-b833a01a892c",
+   "round": "South 1-0",
+   "turn": 9,
+   "pushed": false,
+   "won": false,
+   "dealt": false,
+   "delta": -8000,
+   "place_before": 4,
+   "stage": "South 1-3",
+   "ev_before": -115.3,
+   "ev_after": -150.1,
+   "ev_change": -34.8,
+   "fourth_change": 6.1,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260619-0ad4321b-7c2b-4544-802e-4ea4e63692ef",
+   "round": "East 3-0",
+   "turn": 8,
+   "pushed": true,
+   "won": false,
+   "dealt": false,
+   "delta": -3900,
+   "place_before": 1,
+   "stage": "East",
+   "ev_before": 1.5,
+   "ev_after": -37.2,
+   "ev_change": -38.8,
+   "fourth_change": 7.8,
+   "han": 4,
+   "live": 3
+  },
+  {
+   "game": "260617-b21e532e-aa28-4b58-8b94-d32df8b047fa",
+   "round": "South 4-0",
+   "turn": 12,
+   "pushed": true,
+   "won": false,
+   "dealt": true,
+   "delta": -2600,
+   "place_before": 1,
+   "stage": "South 4 on",
+   "ev_before": 19.7,
+   "ev_after": -87.4,
+   "ev_change": -107.1,
+   "fourth_change": 28.4,
+   "han": 5,
+   "live": 2
+  }
+ ]
+}
