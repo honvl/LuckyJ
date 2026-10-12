@@ -1888,6 +1888,106 @@
     "luckyj": "門前の手で、浮いた端牌が2枚あり、1枚が相手の河にあるとき、LuckyJは3打目で生牌のほうを先に切るのが72%。1月以降の全対局ではあなたも同じで、73%に対してLuckyJは72%なので、この巡目は例外的なミスである。",
     "fix": "[[9s]]を切る。有効牌は21枚のうち1枚減るだけで、[[1m]]は対面がリーチしたときに現物だった。"
    }
+  },
+  {
+   "id": "climb-late-riichi",
+   "chapter": "climb-riichi",
+   "verdict": "fine",
+   "game": "261002-fc3b2f83",
+   "round": "South 2-0",
+   "frames": [
+    {
+     "turn": 15,
+     "expect_cut": "2p"
+    }
+   ],
+   "title": "On the climb: a 15th-turn riichi on 2 han",
+   "situation": "South 2, turn 15, 18 tiles left in the wall. You are the dealer and first on 41,300. You draw [[2m]] into tenpai: cut [[2p]] and you wait on [[5m]]-[[8m]] with 5 live tiles. Without riichi the hand is tanyao and a red five, 2 han. Kamicha has three calls and toimen one. Nobody is in riichi.",
+   "did": "You declared with [[2p]] and drew a winning tile two turns later: riichi, tanyao, tsumo and a red five, 3,900 all, 11,700.",
+   "luckyj": "LuckyJ's rate for this hand, 2 han on 5 live tiles at the 15th turn as the dealer, with three calls across the table, is 74%.",
+   "fix": "No mistake. This is the climb's habit: a cheap tenpai declared late. Dama, the same tsumo pays 2,000 all, 6,000, and the riichi made it 11,700.",
+   "ja": {
+    "title": "上昇期：15巡目、2翻の手でリーチ",
+    "situation": "南2局、15巡目、山の残り18枚。あなたは親で1位、41,300点。[[2m]]を引いてテンパイ。[[2p]]を切れば[[5m]]-[[8m]]待ちで、残り5枚。リーチなしではタンヤオと赤ドラの2翻。上家が3副露、対面が1副露している。リーチはまだない。",
+    "did": "[[2p]]でリーチし、2巡後に和了牌を引いた。リーチ、タンヤオ、ツモ、赤ドラで3,900オール、11,700点。",
+    "luckyj": "15巡目、親で、残り5枚の2翻、相手に3副露がいるこの手で、LuckyJのリーチ率は74%。",
+    "fix": "ミスではない。これが上昇期の習慣で、安いテンパイを遅い巡目でもリーチした。ダマなら同じツモは2,000オールの6,000点で、リーチが11,700点にした。"
+   }
+  },
+  {
+   "id": "no-yaku-dama",
+   "chapter": "climb-riichi",
+   "game": "261003-2f0295b7",
+   "round": "South 1-0",
+   "frames": [
+    {
+     "turn": 12,
+     "kind": "riichi",
+     "expect_cut": "7s"
+    }
+   ],
+   "title": "No yaku, kept dama on the 12th turn",
+   "situation": "South 1, turn 12, 22 tiles left. You are second on 24,600 and kamicha leads on 51,400. You draw [[6s]] into tenpai: cut [[7s]] and you wait on [[3s]] and [[4s]], 4 live tiles. The hand has no yaku. Shimocha, the dealer, has ponned [[E]] and toimen has one chi. Nobody is in riichi.",
+   "did": "You cut [[7s]] and stayed dama. Two turns later shimocha won 1,500 from toimen.",
+   "luckyj": "LuckyJ's rate for a hand with no yaku on 4 live tiles at the 12th turn is 88%.",
+   "fix": "Declare. Dama, a hand with no yaku can win only by its own tsumo; the riichi lets a [[3s]] or [[4s]] from any opponent win as well. Nothing came this time, and the riichi would have cost only the stick.",
+   "ja": {
+    "title": "役なしを12巡目にダマ",
+    "situation": "南1局、12巡目、残り22枚。あなたは2位で24,600点、上家が51,400点でトップ。[[6s]]を引いてテンパイ。[[7s]]を切れば[[3s]]と[[4s]]のシャンポン待ちで、残り4枚。手に役はない。親の下家が[[E]]をポンし、対面が1回チーしている。リーチはまだない。",
+    "did": "[[7s]]を切ってダマにした。2巡後、下家が対面から1,500点をアガった。",
+    "luckyj": "12巡目、残り4枚、役なしの手で、LuckyJのリーチ率は88%。",
+    "fix": "リーチする。役なしのダマは自分のツモでしかアガれない。リーチすれば、誰が切った[[3s]]や[[4s]]でもアガれる。今回は何も来ず、リーチの損は供託だけだった。"
+   }
+  },
+  {
+   "id": "late-pinfu-dama",
+   "chapter": "climb-riichi",
+   "game": "261011-e0215b87",
+   "round": "South 2-0",
+   "frames": [
+    {
+     "turn": 14,
+     "kind": "riichi",
+     "expect_cut": "8p"
+    }
+   ],
+   "title": "A 14th-turn pinfu kept dama",
+   "situation": "South 2, turn 14, 15 tiles left. You are second on 30,200, 1,100 behind kamicha. You draw [[1p]] into tenpai: cut [[8p]] and you wait on [[6p]]-[[9p]] with 5 live tiles, pinfu, 1 han. Toimen, the dealer, has ponned [[5s]] and [[2p]]. Nobody is in riichi. This was your first game after chapter 31 went up.",
+   "did": "You cut [[8p]] and stayed dama. Shimocha threw [[9p]] at once, and you won 1,000.",
+   "luckyj": "LuckyJ's rate here, 1 han on 5 live tiles at the 14th turn with the dealer on two calls, is 74%.",
+   "fix": "Declare. Had shimocha still thrown [[9p]], the riichi would have won 2,000, and more with ura dora. Chapter 31's 13th-turn check said to stay dama here; LuckyJ keeps a late hand dama when it is worth 3 han or more.",
+   "ja": {
+    "title": "14巡目の平和をダマ",
+    "situation": "南2局、14巡目、残り15枚。あなたは2位で30,200点、上家と1,100点差。[[1p]]を引いてテンパイ。[[8p]]を切れば[[6p]]-[[9p]]待ちで残り5枚、平和の1翻。親の対面が[[5s]]と[[2p]]をポンしている。リーチはまだない。第31章が公開された後の最初の半荘だった。",
+    "did": "[[8p]]を切ってダマにした。下家がすぐに[[9p]]を切り、1,000点をアガった。",
+    "luckyj": "14巡目、残り5枚の1翻で、親が2副露しているこの場面で、LuckyJのリーチ率は74%。",
+    "fix": "リーチする。下家がそれでも[[9p]]を切っていれば、リーチで2,000点、裏ドラが乗ればそれ以上だった。第31章の13巡目のチェックはここでダマとしていた。LuckyJが遅い手をダマにするのは、3翻以上のときである。"
+   }
+  },
+  {
+   "id": "dealer-pinfu-dama",
+   "chapter": "climb-riichi",
+   "game": "261011-d33a542c",
+   "round": "South 1-1",
+   "frames": [
+    {
+     "turn": 10,
+     "kind": "riichi",
+     "expect_cut": "3m"
+    }
+   ],
+   "title": "A dealer's 3-han pinfu kept dama",
+   "situation": "South 1, one honba, turn 10, 33 tiles left. You are the dealer and first on 34,500. You draw [[6s]] into tenpai: cut the dora [[3m]] and you wait on [[5s]]-[[8s]] with 7 live tiles. The hand is pinfu, iipeikou and a red five, 3 han, 5,800 on a ron. Nobody has called.",
+   "did": "You cut [[3m]] and stayed dama. On turn 15 toimen threw [[8s]], and you won 5,800 and the honba, 6,100.",
+   "luckyj": "LuckyJ's rate for a two-sided 3-han pinfu on 7 live tiles at the 10th turn, as the dealer, is 96%. Chapter 24's table has it declaring 88% of 3-han pinfu.",
+   "fix": "Declare. The riichi doubles a 3-han pinfu: the same ron pays 11,600 and the honba, and 12,000 with one ura dora.",
+   "ja": {
+    "title": "親の3翻の平和をダマ",
+    "situation": "南1局1本場、10巡目、残り33枚。あなたは親で1位、34,500点。[[6s]]を引いてテンパイ。ドラの[[3m]]を切れば[[5s]]-[[8s]]待ちで、残り7枚。手は平和、一盃口、赤ドラの3翻で、ロンなら5,800点。誰も副露していない。",
+    "did": "[[3m]]を切ってダマにした。15巡目に対面が[[8s]]を切り、5,800点と本場で6,100点をアガった。",
+    "luckyj": "10巡目、親で、残り7枚の両面の3翻の平和で、LuckyJのリーチ率は96%。第24章の表では、LuckyJは3翻の平和を88%リーチする。",
+    "fix": "リーチする。リーチは3翻の平和を倍にする。同じロンが11,600点と本場になり、裏ドラが1枚乗れば12,000点である。"
+   }
   }
  ]
 }

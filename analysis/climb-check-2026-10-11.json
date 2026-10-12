@@ -1,0 +1,1023 @@
+{
+ "rank": {
+  "start": {
+   "game": "260924-0e508d5e-4b31-49ac-b77d-dab1c05ab4ae",
+   "date": "2026-09-23 18:40",
+   "points": 3972
+  },
+  "peak": {
+   "game": "261002-0f4b5ac6-b748-4559-a891-54313dd189ba",
+   "date": "2026-10-01 22:20",
+   "points": 6749
+  },
+  "now": {
+   "date": "2026-10-11 16:40",
+   "points": 6278
+  },
+  "periods": {
+   "before": {
+    "games": 87,
+    "places": [
+     20,
+     25,
+     22,
+     20
+    ],
+    "average": 2.48,
+    "points_a_game": -13.9
+   },
+   "climb": {
+    "games": 62,
+    "places": [
+     20,
+     18,
+     20,
+     4
+    ],
+    "average": 2.13,
+    "points_a_game": 44.8
+   },
+   "since": {
+    "games": 47,
+    "places": [
+     14,
+     9,
+     13,
+     11
+    ],
+    "average": 2.45,
+    "points_a_game": -10.0
+   }
+  }
+ },
+ "hands": {
+  "before": {
+   "hands": 910,
+   "won": 21.1,
+   "avg_win": 6006,
+   "dealt_in": 11.6,
+   "avg_deal_in": 4651,
+   "big_deal_ins_per_100": 2.7,
+   "points_a_hand": -46,
+   "riichis_per_100": 17.7,
+   "riichi_wins_per_100": 8.6,
+   "opened": 37.7
+  },
+  "climb": {
+   "hands": 639,
+   "won": 25.0,
+   "avg_win": 6815,
+   "dealt_in": 9.9,
+   "avg_deal_in": 5163,
+   "big_deal_ins_per_100": 2.7,
+   "points_a_hand": 454,
+   "riichis_per_100": 21.9,
+   "riichi_wins_per_100": 10.2,
+   "opened": 36.9
+  },
+  "since": {
+   "hands": 504,
+   "won": 22.4,
+   "avg_win": 6636,
+   "dealt_in": 11.9,
+   "avg_deal_in": 5532,
+   "big_deal_ins_per_100": 4.4,
+   "points_a_hand": 171,
+   "riichis_per_100": 16.1,
+   "riichi_wins_per_100": 8.5,
+   "opened": 33.1
+  },
+  "luckyj": {
+   "hands": 11272,
+   "won": 22.9,
+   "avg_win": 7317,
+   "dealt_in": 10.3,
+   "avg_deal_in": 5308,
+   "big_deal_ins_per_100": 3.4,
+   "points_a_hand": 363,
+   "riichis_per_100": 19.3,
+   "riichi_wins_per_100": 10.0,
+   "opened": 36.5
+  }
+ },
+ "deal_ins": {
+  "before": {
+   "in your own riichi into open hand": {
+    "deal_ins": 9,
+    "per_100": 1.0
+   },
+   "in your own riichi into riichi": {
+    "deal_ins": 8,
+    "per_100": 0.9
+   },
+   "not tenpai into dama": {
+    "deal_ins": 7,
+    "per_100": 0.8
+   },
+   "not tenpai into open hand": {
+    "deal_ins": 31,
+    "per_100": 3.4
+   },
+   "not tenpai into riichi": {
+    "deal_ins": 8,
+    "per_100": 0.9
+   },
+   "tenpai, no riichi into dama": {
+    "deal_ins": 1,
+    "per_100": 0.1
+   },
+   "tenpai, no riichi into open hand": {
+    "deal_ins": 23,
+    "per_100": 2.5
+   },
+   "tenpai, no riichi into riichi": {
+    "deal_ins": 19,
+    "per_100": 2.1
+   }
+  },
+  "climb": {
+   "in your own riichi into dama": {
+    "deal_ins": 1,
+    "per_100": 0.2
+   },
+   "in your own riichi into open hand": {
+    "deal_ins": 9,
+    "per_100": 1.4
+   },
+   "in your own riichi into riichi": {
+    "deal_ins": 7,
+    "per_100": 1.1
+   },
+   "not tenpai into dama": {
+    "deal_ins": 3,
+    "per_100": 0.5
+   },
+   "not tenpai into open hand": {
+    "deal_ins": 12,
+    "per_100": 1.9
+   },
+   "not tenpai into riichi": {
+    "deal_ins": 11,
+    "per_100": 1.7
+   },
+   "tenpai, no riichi into dama": {
+    "deal_ins": 4,
+    "per_100": 0.6
+   },
+   "tenpai, no riichi into open hand": {
+    "deal_ins": 7,
+    "per_100": 1.1
+   },
+   "tenpai, no riichi into riichi": {
+    "deal_ins": 9,
+    "per_100": 1.4
+   }
+  },
+  "since": {
+   "in your own riichi into dama": {
+    "deal_ins": 1,
+    "per_100": 0.2
+   },
+   "in your own riichi into open hand": {
+    "deal_ins": 7,
+    "per_100": 1.4
+   },
+   "in your own riichi into riichi": {
+    "deal_ins": 7,
+    "per_100": 1.4
+   },
+   "not tenpai into dama": {
+    "deal_ins": 3,
+    "per_100": 0.6
+   },
+   "not tenpai into open hand": {
+    "deal_ins": 15,
+    "per_100": 3.0
+   },
+   "not tenpai into riichi": {
+    "deal_ins": 10,
+    "per_100": 2.0
+   },
+   "tenpai, no riichi into dama": {
+    "deal_ins": 1,
+    "per_100": 0.2
+   },
+   "tenpai, no riichi into open hand": {
+    "deal_ins": 8,
+    "per_100": 1.6
+   },
+   "tenpai, no riichi into riichi": {
+    "deal_ins": 8,
+    "per_100": 1.6
+   }
+  }
+ },
+ "defense": {
+  "riichi": {
+   "before": {
+    "tenpai": {
+     "turns": 173,
+     "live": 2.3
+    },
+    "one": {
+     "turns": 480,
+     "live": 6.9
+    },
+    "two_or_more": {
+     "turns": 734,
+     "live": 1.8
+    },
+    "discards": 1822,
+    "dealt": 35,
+    "dealt_per_100": 1.92
+   },
+   "climb": {
+    "tenpai": {
+     "turns": 123,
+     "live": 3.3
+    },
+    "one": {
+     "turns": 291,
+     "live": 6.2
+    },
+    "two_or_more": {
+     "turns": 436,
+     "live": 4.1
+    },
+    "discards": 1127,
+    "dealt": 22,
+    "dealt_per_100": 1.95
+   },
+   "since": {
+    "tenpai": {
+     "turns": 83,
+     "live": 4.8
+    },
+    "one": {
+     "turns": 274,
+     "live": 6.9
+    },
+    "two_or_more": {
+     "turns": 409,
+     "live": 4.4
+    },
+    "discards": 1009,
+    "dealt": 22,
+    "dealt_per_100": 2.18
+   },
+   "luckyj": {
+    "tenpai": {
+     "turns": 2409,
+     "live": 6.1
+    },
+    "one": {
+     "turns": 6552,
+     "live": 7.8
+    },
+    "two_or_more": {
+     "turns": 9759,
+     "live": 3.6
+    },
+    "discards": 24560,
+    "dealt": 420,
+    "dealt_per_100": 1.71
+   }
+  },
+  "tenpai_push": {
+   "before": {
+    "hands": 121,
+    "pushed": 93,
+    "pushed_pct": 76.9,
+    "pushed_won": 25.0,
+    "pushed_dealt": 25.0,
+    "pushed_avg": -767,
+    "folded_avg": -2050
+   },
+   "climb": {
+    "hands": 85,
+    "pushed": 70,
+    "pushed_pct": 82.4,
+    "pushed_won": 30.0,
+    "pushed_dealt": 17.0,
+    "pushed_avg": 1023,
+    "folded_avg": -333
+   },
+   "since": {
+    "hands": 68,
+    "pushed": 52,
+    "pushed_pct": 76.5,
+    "pushed_won": 33.0,
+    "pushed_dealt": 27.0,
+    "pushed_avg": 1310,
+    "folded_avg": -1188
+   },
+   "luckyj": {
+    "hands": 1505,
+    "pushed": 1238,
+    "pushed_pct": 82.3,
+    "pushed_won": 31.0,
+    "pushed_dealt": 21.0,
+    "pushed_avg": 518,
+    "folded_avg": -930
+   }
+  }
+ },
+ "riichi": {
+  "model": {
+   "tenpais": 2177,
+   "declared_pct": 76.1,
+   "terms": {
+    "constant": [
+     1.842,
+     0.132
+    ],
+    "no yaku": [
+     0.574,
+     0.154
+    ],
+    "some waits": [
+     1.05,
+     0.334
+    ],
+    "two-sided 3,900": [
+     -0.195,
+     0.296
+    ],
+    "two-sided 5,200": [
+     -1.995,
+     0.483
+    ],
+    "4 two-sided": [
+     -2.269,
+     0.318
+    ],
+    "5+ two-sided": [
+     -3.581,
+     0.498
+    ],
+    "3 other": [
+     -1.855,
+     0.256
+    ],
+    "4 other": [
+     -1.504,
+     0.269
+    ],
+    "5+ other": [
+     -2.573,
+     0.499
+    ],
+    "live tiles (to 8), from 5": [
+     0.586,
+     0.052
+    ],
+    "2 live tiles or fewer": [
+     0.095,
+     0.228
+    ],
+    "turn, from 9": [
+     0.067,
+     0.027
+    ],
+    "turns past 12": [
+     -0.391,
+     0.088
+    ],
+    "turn, from 9, for a two-sided hand of 4 han or more": [
+     -0.206,
+     0.085
+    ],
+    "dealer": [
+     0.305,
+     0.138
+    ],
+    "an opponent on 2 calls or more": [
+     -0.344,
+     0.148
+    ]
+   },
+   "calibration": {
+    "turns 1-9": {
+     "tenpais": 1350,
+     "actual": 78.9,
+     "fit": 78.5
+    },
+    "turns 10-12": {
+     "tenpais": 551,
+     "actual": 76.4,
+     "fit": 77.4
+    },
+    "turn 13 on": {
+     "tenpais": 276,
+     "actual": 62.0,
+     "fit": 61.8
+    },
+    "2 live or fewer": {
+     "tenpais": 156,
+     "actual": 42.9,
+     "fit": 42.9
+    },
+    "3 live": {
+     "tenpais": 428,
+     "actual": 56.8,
+     "fit": 56.5
+    },
+    "4-5 live": {
+     "tenpais": 697,
+     "actual": 75.6,
+     "fit": 75.6
+    },
+    "6 live or more": {
+     "tenpais": 896,
+     "actual": 91.5,
+     "fit": 91.6
+    },
+    "an opponent on 2+ calls": {
+     "tenpais": 482,
+     "actual": 69.5,
+     "fit": 69.5
+    }
+   }
+  },
+  "periods": {
+   "before": {
+    "tenpais": 170,
+    "declared": 126,
+    "declared_pct": 74.1,
+    "luckyj": 133.2,
+    "luckyj_pct": 78.4,
+    "sd": -1.7,
+    "by_turn": {
+     "to 12": {
+      "tenpais": 148,
+      "declared": 118,
+      "declared_pct": 79.7,
+      "luckyj": 121.8,
+      "luckyj_pct": 82.3,
+      "sd": -1.0
+     },
+     "13 on": {
+      "tenpais": 22,
+      "declared": 8,
+      "declared_pct": 36.4,
+      "luckyj": 11.5,
+      "luckyj_pct": 52.2,
+      "sd": -2.1
+     }
+    },
+    "cells": {
+     "no yaku": {
+      "tenpais": 70,
+      "declared": 59,
+      "declared_pct": 84.3,
+      "luckyj": 60.2,
+      "luckyj_pct": 86.0,
+      "sd": -0.4
+     },
+     "some waits": {
+      "tenpais": 12,
+      "declared": 12,
+      "declared_pct": 100.0,
+      "luckyj": 11.5,
+      "luckyj_pct": 95.6,
+      "sd": 0.8
+     },
+     "1-2": {
+      "tenpais": 54,
+      "declared": 42,
+      "declared_pct": 77.8,
+      "luckyj": 45.9,
+      "luckyj_pct": 85.0,
+      "sd": -1.6
+     },
+     "two-sided 3,900": {
+      "tenpais": 9,
+      "declared": 7,
+      "declared_pct": 77.8,
+      "luckyj": 7.8,
+      "luckyj_pct": 86.8,
+      "sd": -0.9
+     },
+     "two-sided 5,200": {
+      "tenpais": 2,
+      "declared": 1,
+      "declared_pct": 50.0,
+      "luckyj": 1.3,
+      "luckyj_pct": 67.1,
+      "sd": -0.5
+     },
+     "4 two-sided": {
+      "tenpais": 5,
+      "declared": 1,
+      "declared_pct": 20.0,
+      "luckyj": 2.4,
+      "luckyj_pct": 48.8,
+      "sd": -1.5
+     },
+     "5+ two-sided": {
+      "tenpais": 2,
+      "declared": 0,
+      "declared_pct": 0.0,
+      "luckyj": 0.5,
+      "luckyj_pct": 27.3,
+      "sd": -1.0
+     },
+     "3 other": {
+      "tenpais": 9,
+      "declared": 2,
+      "declared_pct": 22.2,
+      "luckyj": 2.5,
+      "luckyj_pct": 27.6,
+      "sd": -0.4
+     },
+     "4 other": {
+      "tenpais": 4,
+      "declared": 1,
+      "declared_pct": 25.0,
+      "luckyj": 0.8,
+      "luckyj_pct": 20.9,
+      "sd": 0.2
+     },
+     "5+ other": {
+      "tenpais": 3,
+      "declared": 1,
+      "declared_pct": 33.3,
+      "luckyj": 0.2,
+      "luckyj_pct": 8.1,
+      "sd": 1.6
+     }
+    },
+    "cheap": {
+     "tenpais": 136,
+     "declared": 113,
+     "declared_pct": 83.1,
+     "luckyj": 117.5,
+     "luckyj_pct": 86.4,
+     "sd": -1.2
+    },
+    "big": {
+     "tenpais": 34,
+     "declared": 13,
+     "declared_pct": 38.2,
+     "luckyj": 15.7,
+     "luckyj_pct": 46.2,
+     "sd": -1.2
+    }
+   },
+   "climb": {
+    "tenpais": 132,
+    "declared": 107,
+    "declared_pct": 81.1,
+    "luckyj": 104.9,
+    "luckyj_pct": 79.5,
+    "sd": 0.5,
+    "by_turn": {
+     "to 12": {
+      "tenpais": 123,
+      "declared": 101,
+      "declared_pct": 82.1,
+      "luckyj": 98.5,
+      "luckyj_pct": 80.0,
+      "sd": 0.7
+     },
+     "13 on": {
+      "tenpais": 9,
+      "declared": 6,
+      "declared_pct": 66.7,
+      "luckyj": 6.4,
+      "luckyj_pct": 71.4,
+      "sd": -0.3
+     }
+    },
+    "cells": {
+     "no yaku": {
+      "tenpais": 48,
+      "declared": 39,
+      "declared_pct": 81.2,
+      "luckyj": 42.0,
+      "luckyj_pct": 87.5,
+      "sd": -1.4
+     },
+     "some waits": {
+      "tenpais": 13,
+      "declared": 13,
+      "declared_pct": 100.0,
+      "luckyj": 11.8,
+      "luckyj_pct": 90.9,
+      "sd": 1.2
+     },
+     "1-2": {
+      "tenpais": 42,
+      "declared": 36,
+      "declared_pct": 85.7,
+      "luckyj": 35.0,
+      "luckyj_pct": 83.2,
+      "sd": 0.5
+     },
+     "two-sided 3,900": {
+      "tenpais": 12,
+      "declared": 9,
+      "declared_pct": 75.0,
+      "luckyj": 10.6,
+      "luckyj_pct": 88.3,
+      "sd": -1.5
+     },
+     "two-sided 5,200": {
+      "tenpais": 1,
+      "declared": 1,
+      "declared_pct": 100.0,
+      "luckyj": 0.9,
+      "luckyj_pct": 85.5,
+      "sd": 0.4
+     },
+     "4 two-sided": {
+      "tenpais": 2,
+      "declared": 1,
+      "declared_pct": 50.0,
+      "luckyj": 1.0,
+      "luckyj_pct": 48.5,
+      "sd": 0.0
+     },
+     "5+ two-sided": {
+      "tenpais": 2,
+      "declared": 1,
+      "declared_pct": 50.0,
+      "luckyj": 0.4,
+      "luckyj_pct": 20.2,
+      "sd": 1.1
+     },
+     "3 other": {
+      "tenpais": 7,
+      "declared": 3,
+      "declared_pct": 42.9,
+      "luckyj": 2.0,
+      "luckyj_pct": 28.9,
+      "sd": 0.8
+     },
+     "4 other": {
+      "tenpais": 5,
+      "declared": 4,
+      "declared_pct": 80.0,
+      "luckyj": 1.3,
+      "luckyj_pct": 25.1,
+      "sd": 2.8
+     }
+    },
+    "cheap": {
+     "tenpais": 103,
+     "declared": 88,
+     "declared_pct": 85.4,
+     "luckyj": 88.8,
+     "luckyj_pct": 86.2,
+     "sd": -0.2
+    },
+    "big": {
+     "tenpais": 29,
+     "declared": 19,
+     "declared_pct": 65.5,
+     "luckyj": 16.1,
+     "luckyj_pct": 55.5,
+     "sd": 1.4
+    }
+   },
+   "since": {
+    "tenpais": 94,
+    "declared": 60,
+    "declared_pct": 63.8,
+    "luckyj": 70.7,
+    "luckyj_pct": 75.2,
+    "sd": -3.1,
+    "by_turn": {
+     "to 12": {
+      "tenpais": 77,
+      "declared": 55,
+      "declared_pct": 71.4,
+      "luckyj": 60.8,
+      "luckyj_pct": 79.0,
+      "sd": -2.0
+     },
+     "13 on": {
+      "tenpais": 17,
+      "declared": 5,
+      "declared_pct": 29.4,
+      "luckyj": 9.9,
+      "luckyj_pct": 58.1,
+      "sd": -3.0
+     }
+    },
+    "cells": {
+     "no yaku": {
+      "tenpais": 28,
+      "declared": 20,
+      "declared_pct": 71.4,
+      "luckyj": 23.0,
+      "luckyj_pct": 82.1,
+      "sd": -1.5
+     },
+     "some waits": {
+      "tenpais": 5,
+      "declared": 5,
+      "declared_pct": 100.0,
+      "luckyj": 4.9,
+      "luckyj_pct": 98.1,
+      "sd": 0.3
+     },
+     "1-2": {
+      "tenpais": 37,
+      "declared": 27,
+      "declared_pct": 73.0,
+      "luckyj": 30.6,
+      "luckyj_pct": 82.7,
+      "sd": -1.7
+     },
+     "two-sided 3,900": {
+      "tenpais": 11,
+      "declared": 6,
+      "declared_pct": 54.5,
+      "luckyj": 9.5,
+      "luckyj_pct": 86.3,
+      "sd": -3.3
+     },
+     "4 two-sided": {
+      "tenpais": 1,
+      "declared": 1,
+      "declared_pct": 100.0,
+      "luckyj": 0.5,
+      "luckyj_pct": 49.7,
+      "sd": 1.0
+     },
+     "5+ two-sided": {
+      "tenpais": 2,
+      "declared": 0,
+      "declared_pct": 0.0,
+      "luckyj": 0.4,
+      "luckyj_pct": 20.8,
+      "sd": -0.8
+     },
+     "3 other": {
+      "tenpais": 6,
+      "declared": 1,
+      "declared_pct": 16.7,
+      "luckyj": 1.0,
+      "luckyj_pct": 16.5,
+      "sd": 0.0
+     },
+     "4 other": {
+      "tenpais": 2,
+      "declared": 0,
+      "declared_pct": 0.0,
+      "luckyj": 0.6,
+      "luckyj_pct": 31.7,
+      "sd": -1.0
+     },
+     "5+ other": {
+      "tenpais": 2,
+      "declared": 0,
+      "declared_pct": 0.0,
+      "luckyj": 0.2,
+      "luckyj_pct": 8.1,
+      "sd": -0.4
+     }
+    },
+    "cheap": {
+     "tenpais": 70,
+     "declared": 52,
+     "declared_pct": 74.3,
+     "luckyj": 58.5,
+     "luckyj_pct": 83.5,
+     "sd": -2.2
+    },
+    "big": {
+     "tenpais": 24,
+     "declared": 8,
+     "declared_pct": 33.3,
+     "luckyj": 12.2,
+     "luckyj_pct": 50.8,
+     "sd": -2.4
+    }
+   }
+  },
+  "stretches": {
+   "to chapter 24": {
+    "tenpais": 117,
+    "declared": 95,
+    "declared_pct": 81.2,
+    "luckyj": 92.9,
+    "luckyj_pct": 79.4,
+    "sd": 0.6,
+    "games": 50
+   },
+   "chapters 24 to 29": {
+    "tenpais": 68,
+    "declared": 50,
+    "declared_pct": 73.5,
+    "luckyj": 53.2,
+    "luckyj_pct": 78.2,
+    "sd": -1.2,
+    "games": 30
+   },
+   "chapters 29 to 31": {
+    "tenpais": 25,
+    "declared": 14,
+    "declared_pct": 56.0,
+    "luckyj": 17.0,
+    "luckyj_pct": 68.1,
+    "sd": -1.6,
+    "games": 15
+   },
+   "since chapter 31": {
+    "tenpais": 16,
+    "declared": 8,
+    "declared_pct": 50.0,
+    "luckyj": 12.5,
+    "luckyj_pct": 78.2,
+    "sd": -3.0,
+    "games": 7
+   }
+  }
+ },
+ "late": {
+  "tenpais": 276,
+  "declared_pct": 62.0,
+  "cheap": {
+   "tenpais": 183,
+   "declared_pct": 76.0
+  },
+  "big": {
+   "tenpais": 93,
+   "declared_pct": 34.4
+  },
+  "cheap_by_live": {
+   "3 or fewer": {
+    "tenpais": 52,
+    "declared_pct": 55.8
+   },
+   "4-5": {
+    "tenpais": 67,
+    "declared_pct": 80.6
+   },
+   "6 or more": {
+    "tenpais": 64,
+    "declared_pct": 87.5
+   }
+  },
+  "first_tenpais": {
+   "luckyj": {
+    "riichi": {
+     "n": 171,
+     "wins": 56,
+     "won": 33.0,
+     "tsumo": 29,
+     "dealt": 15.0,
+     "net": 1653,
+     "live": 5.11,
+     "turn": 14.1
+    },
+    "dama": {
+     "n": 105,
+     "wins": 27,
+     "won": 26.0,
+     "tsumo": 7,
+     "dealt": 12.0,
+     "net": 1606,
+     "live": 3.87,
+     "turn": 14.6
+    }
+   },
+   "you": {
+    "riichi": {
+     "n": 30,
+     "wins": 2,
+     "won": 7.0,
+     "tsumo": 1,
+     "dealt": 23.0,
+     "net": -1613,
+     "live": 5.13,
+     "turn": 13.8
+    },
+    "dama": {
+     "n": 49,
+     "wins": 7,
+     "won": 14.0,
+     "tsumo": 0,
+     "dealt": 10.0,
+     "net": 404,
+     "live": 3.39,
+     "turn": 14.9
+    }
+   },
+   "luckyj_all": {
+    "riichi": {
+     "n": 242,
+     "wins": 77,
+     "won": 32.0,
+     "tsumo": 37,
+     "dealt": 18.0,
+     "net": 1417,
+     "live": 5.12,
+     "turn": 14.1
+    },
+    "dama": {
+     "n": 174,
+     "wins": 45,
+     "won": 26.0,
+     "tsumo": 11,
+     "dealt": 14.0,
+     "net": 1328,
+     "live": 3.67,
+     "turn": 14.8
+    }
+   }
+  },
+  "riichis": {
+   "you": {
+    "n": 33,
+    "wins": 2,
+    "won": 6.0,
+    "tsumo": 1,
+    "dealt": 24.0,
+    "net": -1648,
+    "live": 5.09,
+    "turn": 13.9,
+    "wall": 16.7
+   },
+   "luckyj": {
+    "n": 276,
+    "wins": 86,
+    "won": 31.0,
+    "tsumo": 39,
+    "dealt": 19.0,
+    "net": 1262,
+    "live": 5.03,
+    "turn": 14.1,
+    "wall": 16.6
+   }
+  }
+ },
+ "examples": [
+  {
+   "game": "261002-fc3b2f83-39d9-48c2-99de-5d2bd2893cf0",
+   "date": "2026-10-01 18:27",
+   "period": "climb",
+   "round": "South 2-0",
+   "turn": 15,
+   "declared": true,
+   "cell": "1-2",
+   "han": 2,
+   "live": 5,
+   "dealer": true,
+   "calls_across": 3,
+   "luckyj": 0.738,
+   "won": true,
+   "net": 11700
+  },
+  {
+   "game": "261003-2f0295b7-044b-4ac9-9a21-72ddd43f9ad5",
+   "date": "2026-10-03 11:25",
+   "period": "since",
+   "round": "South 1-0",
+   "turn": 12,
+   "declared": false,
+   "cell": "no yaku",
+   "han": 0,
+   "live": 4,
+   "dealer": false,
+   "calls_across": 1,
+   "luckyj": 0.884,
+   "won": false,
+   "net": 0
+  },
+  {
+   "game": "261011-e0215b87-e526-4488-84f0-a60713b7f307",
+   "date": "2026-10-10 18:27",
+   "period": "since",
+   "round": "South 2-0",
+   "turn": 14,
+   "declared": false,
+   "cell": "1-2",
+   "han": 1,
+   "live": 5,
+   "dealer": false,
+   "calls_across": 2,
+   "luckyj": 0.741,
+   "won": true,
+   "net": 1000
+  },
+  {
+   "game": "261011-d33a542c-0b96-40a8-9c4f-2edae62a9ae7",
+   "date": "2026-10-11 00:50",
+   "period": "since",
+   "round": "South 1-1",
+   "turn": 10,
+   "declared": false,
+   "cell": "two-sided 3,900",
+   "han": 3,
+   "live": 7,
+   "dealer": true,
+   "calls_across": 0,
+   "luckyj": 0.961,
+   "won": true,
+   "net": 6100
+  }
+ ]
+}
