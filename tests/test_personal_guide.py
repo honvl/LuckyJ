@@ -17,7 +17,9 @@ PUSH_EXAMPLES = {"keep-eight-tiles", "last-discard-tenpai", "cheap-tenpai-folded
                  "two-riichi-2s",  # two riichis: the river read beats the kind of tile
                  "dealer-safe-tenpai-8p",  # the suji tile keeps the tenpai; the genbutsu broke it
                  "north-before-west",  # against one call LuckyJ still throws the live value honor and keeps the guest wind
-                 "live-east-seven-pairs"}  # the danger was the quiet seven pairs, not the two callers
+                 "live-east-seven-pairs",  # the danger was the quiet seven pairs, not the two callers
+                 "lone-haku-wait",  # a lone honor wait wins more than the safer cut's number wait
+                 "folded-dora-tanki"}  # a mangan tenpai LuckyJ and Mortal keep against the riichi
 SPOTS = ROOT / "data/personal_guide_spots.json"
 GUIDE_PAGES = ("honver.html", "honver-ja.html")
 

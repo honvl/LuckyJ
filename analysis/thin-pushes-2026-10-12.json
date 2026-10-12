@@ -1,0 +1,3597 @@
+{
+ "games": {
+  "you": 199,
+  "luckyj": 1255
+ },
+ "rows": {
+  "you": 280,
+  "luckyj": 1505
+ },
+ "you": {
+  "thin": 57,
+  "pushed": 42,
+  "pushed_pct": 73.7,
+  "pushes": {
+   "hands": 42,
+   "won": 11.9,
+   "dealt": 33.3,
+   "points": -1655,
+   "a_win": 8360,
+   "a_deal_in": -5721
+  },
+  "folds": {
+   "hands": 15,
+   "won": 0.0,
+   "dealt": 6.7,
+   "points": -1820,
+   "a_win": null,
+   "a_deal_in": -9200
+  },
+  "deal_ins": {
+   "total": 14,
+   "on_the_push": 9,
+   "later": 5,
+   "into_the_riichi": 14,
+   "into_someone_else": 0,
+   "still_tenpai": 14,
+   "in_own_riichi": 1
+  },
+  "deal_in_rates": {
+   "on_the_push": 21.4,
+   "later_into_the_riichi": 11.9,
+   "later_into_someone_else": 0.0
+  },
+  "left_tenpai_later": 4.8,
+  "unsafe_later": 0.36,
+  "wait_safe": {
+   "share": 42.9,
+   "safe": {
+    "hands": 18,
+    "won": 16.7,
+    "dealt": 38.9,
+    "points": -794,
+    "a_win": 8267,
+    "a_deal_in": -3943
+   },
+   "live": {
+    "hands": 24,
+    "won": 8.3,
+    "dealt": 29.2,
+    "points": -2300,
+    "a_win": 8500,
+    "a_deal_in": -7500
+   }
+  },
+  "by_hand": {
+   "open": {
+    "hands": 22,
+    "won": 18.2,
+    "dealt": 40.9,
+    "points": -1482,
+    "a_win": 8200,
+    "a_deal_in": -6033
+   },
+   "closed dama": {
+    "hands": 13,
+    "won": 0.0,
+    "dealt": 30.8,
+    "points": -2177,
+    "a_win": null,
+    "a_deal_in": -5700
+   },
+   "closed riichi": {
+    "hands": 7,
+    "won": 14.3,
+    "dealt": 14.3,
+    "points": -1229,
+    "a_win": 9000,
+    "a_deal_in": -3000
+   }
+  }
+ },
+ "luckyj": {
+  "thin": 236,
+  "pushed": 196,
+  "pushed_pct": 83.1,
+  "pushes": {
+   "hands": 196,
+   "won": 23.0,
+   "dealt": 19.9,
+   "points": 618,
+   "a_win": 8996,
+   "a_deal_in": -5597
+  },
+  "folds": {
+   "hands": 40,
+   "won": 2.5,
+   "dealt": 5.0,
+   "points": -1488,
+   "a_win": 4900,
+   "a_deal_in": -13150
+  },
+  "deal_ins": {
+   "total": 39,
+   "on_the_push": 21,
+   "later": 18,
+   "into_the_riichi": 35,
+   "into_someone_else": 4,
+   "still_tenpai": 39,
+   "in_own_riichi": 3
+  },
+  "deal_in_rates": {
+   "on_the_push": 10.7,
+   "later_into_the_riichi": 8.2,
+   "later_into_someone_else": 1.0
+  },
+  "left_tenpai_later": 5.6,
+  "unsafe_later": 0.54,
+  "wait_safe": {
+   "share": 41.8,
+   "safe": {
+    "hands": 82,
+    "won": 30.5,
+    "dealt": 19.5,
+    "points": 1422,
+    "a_win": 8848,
+    "a_deal_in": -4919
+   },
+   "live": {
+    "hands": 114,
+    "won": 17.5,
+    "dealt": 20.2,
+    "points": 39,
+    "a_win": 9180,
+    "a_deal_in": -6070
+   }
+  },
+  "by_hand": {
+   "open": {
+    "hands": 99,
+    "won": 21.2,
+    "dealt": 20.2,
+    "points": 389,
+    "a_win": 8705,
+    "a_deal_in": -6035
+   },
+   "closed dama": {
+    "hands": 80,
+    "won": 26.2,
+    "dealt": 17.5,
+    "points": 1099,
+    "a_win": 9276,
+    "a_deal_in": -5807
+   },
+   "closed riichi": {
+    "hands": 17,
+    "won": 17.6,
+    "dealt": 29.4,
+    "points": -312,
+    "a_win": 9067,
+    "a_deal_in": -3260
+   }
+  }
+ },
+ "other_pushes": {
+  "you": {
+   "hands": 177,
+   "won": 31.6,
+   "dealt": 20.9,
+   "points": 698,
+   "a_win": 8245,
+   "a_deal_in": -6132
+  },
+  "luckyj": {
+   "hands": 1042,
+   "won": 32.4,
+   "dealt": 21.0,
+   "points": 499,
+   "a_win": 7387,
+   "a_deal_in": -6513
+  }
+ },
+ "on_push_expected": {
+  "thin": {
+   "pushes": 42,
+   "deal_ins": 9,
+   "luckyj_expects": 5.1
+  },
+  "other": {
+   "pushes": 177,
+   "deal_ins": 18,
+   "luckyj_expects": 15.7
+  }
+ },
+ "wait_kinds": {
+  "you": {
+   "honor": {
+    "hands": 6,
+    "won": 16.7,
+    "dealt": 50.0,
+    "points": -1950,
+    "a_win": 9200,
+    "a_deal_in": -4833
+   },
+   "number": {
+    "hands": 36,
+    "won": 11.1,
+    "dealt": 30.6,
+    "points": -1606,
+    "a_win": 8150,
+    "a_deal_in": -5964
+   }
+  },
+  "luckyj": {
+   "honor": {
+    "hands": 34,
+    "won": 35.3,
+    "dealt": 26.5,
+    "points": 1312,
+    "a_win": 8842,
+    "a_deal_in": -5644
+   },
+   "number": {
+    "hands": 162,
+    "won": 20.4,
+    "dealt": 18.5,
+    "points": 472,
+    "a_win": 9052,
+    "a_deal_in": -5583
+   }
+  }
+ },
+ "tile_choice": {
+  "you": {
+   "with_a_choice": 22,
+   "least_dangerous": 15
+  },
+  "luckyj": {
+   "with_a_choice": 93,
+   "least_dangerous": 63
+  }
+ },
+ "mortal": {
+  "pushes_rated": 42,
+  "keep_tenpai": 0.904,
+  "on_push_deal_ins": 9,
+  "on_push_backed": 9,
+  "other_tile_preferred": 5,
+  "folds_rated": 15,
+  "folds_mortal_keeps": 6
+ },
+ "your_pushes": [
+  {
+   "game": "260617-b21e532e-aa28-4b58-8b94-d32df8b047fa",
+   "round": "South 4-0",
+   "turn": 12,
+   "closed": true,
+   "chased": false,
+   "live": 2,
+   "han": 5,
+   "tile": "4p",
+   "danger": 3,
+   "labels": [
+    "half suji"
+   ],
+   "options": [
+    {
+     "tile": "4p",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 2,
+     "han": 5
+    }
+   ],
+   "waits": [
+    "P"
+   ],
+   "wait_labels": [
+    "genbutsu"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.823,
+    "keep_tenpai": 0.84,
+    "top": [
+     [
+      "4p",
+      0.823
+     ],
+     [
+      "P",
+      0.097
+     ],
+     [
+      "6p",
+      0.031
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 12,
+    "tile": "4p",
+    "on_decision": true,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "half suji"
+   },
+   "delta": -2600
+  },
+  {
+   "game": "260619-0ad4321b-7c2b-4544-802e-4ea4e63692ef",
+   "round": "East 3-0",
+   "turn": 8,
+   "closed": true,
+   "chased": false,
+   "live": 3,
+   "han": 4,
+   "tile": "1m",
+   "danger": 2,
+   "labels": [
+    "live terminal"
+   ],
+   "options": [
+    {
+     "tile": "1m",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 4
+    },
+    {
+     "tile": "5mr",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 2,
+     "han": 2
+    }
+   ],
+   "waits": [
+    "4m"
+   ],
+   "wait_labels": [
+    "live 4-5-6"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.942,
+    "keep_tenpai": 0.998,
+    "top": [
+     [
+      "1m",
+      0.942
+     ],
+     [
+      "riichi",
+      0.056
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -3900
+  },
+  {
+   "game": "260708-46687fcf-0499-4efa-97e5-4257913fa9e7",
+   "round": "East 4-0",
+   "turn": 14,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 3,
+   "tile": "7m",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8",
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "7m",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8",
+      "genbutsu"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "waits": [
+    "8s"
+   ],
+   "wait_labels": [
+    "live 2-3-7-8"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.997,
+    "keep_tenpai": 0.997,
+    "top": [
+     [
+      "7m",
+      0.997
+     ],
+     [
+      "C",
+      0.001
+     ],
+     [
+      "9s",
+      0.001
+     ]
+    ]
+   },
+   "won": true,
+   "dealt": false,
+   "deal": null,
+   "delta": 7800
+  },
+  {
+   "game": "260708-aa346099-dbf4-41a0-a846-d963dfb2c2a5",
+   "round": "East 4-2",
+   "turn": 9,
+   "closed": false,
+   "chased": false,
+   "live": 2,
+   "han": 4,
+   "tile": "1p",
+   "danger": 2,
+   "labels": [
+    "live terminal"
+   ],
+   "options": [
+    {
+     "tile": "1p",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 2,
+     "han": 4
+    },
+    {
+     "tile": "F",
+     "danger": 2,
+     "labels": [
+      "live honor"
+     ],
+     "live": 2,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "F"
+   ],
+   "wait_labels": [
+    "honor, 2 seen"
+   ],
+   "unsafe_later": 2,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.998,
+    "keep_tenpai": 1.0,
+    "top": [
+     [
+      "1p",
+      0.998
+     ],
+     [
+      "F",
+      0.002
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -4200
+  },
+  {
+   "game": "260907-0d113184-0a72-4f2f-af25-b4ac7444007f",
+   "round": "East 2-1",
+   "turn": 13,
+   "closed": true,
+   "chased": false,
+   "live": 3,
+   "han": 6,
+   "tile": "4s",
+   "danger": 4,
+   "labels": [
+    "live 4-5-6"
+   ],
+   "options": [
+    {
+     "tile": "4s",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 3,
+     "han": 6
+    }
+   ],
+   "waits": [
+    "3p"
+   ],
+   "wait_labels": [
+    "live 2-3-7-8"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.871,
+    "keep_tenpai": 0.918,
+    "top": [
+     [
+      "4s",
+      0.871
+     ],
+     [
+      "riichi",
+      0.047
+     ],
+     [
+      "2p",
+      0.032
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 13,
+    "tile": "4s",
+    "on_decision": true,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live 4-5-6"
+   },
+   "delta": -8300
+  },
+  {
+   "game": "260919-bd7daa16-430f-454d-86bb-3e7c88db8b4d",
+   "round": "South 2-2",
+   "turn": 8,
+   "closed": true,
+   "chased": false,
+   "live": 3,
+   "han": 6,
+   "tile": "2p",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "8m",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 6
+    },
+    {
+     "tile": "2p",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 6
+    }
+   ],
+   "waits": [
+    "8m"
+   ],
+   "wait_labels": [
+    "live 2-3-7-8"
+   ],
+   "unsafe_later": 1,
+   "left_tenpai": true,
+   "mortal": {
+    "cut": 0.391,
+    "keep_tenpai": 0.993,
+    "top": [
+     [
+      "8m",
+      0.568
+     ],
+     [
+      "2p",
+      0.391
+     ],
+     [
+      "riichi",
+      0.034
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -1000
+  },
+  {
+   "game": "260919-cec5015c-d1b3-41ef-a04d-5d09d88c6358",
+   "round": "South 4-0",
+   "turn": 15,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 4,
+   "tile": "9m",
+   "danger": 2,
+   "labels": [
+    "live terminal"
+   ],
+   "options": [
+    {
+     "tile": "9m",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "6p",
+    "9p"
+   ],
+   "wait_labels": [
+    "nakasuji",
+    "genbutsu"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.998,
+    "keep_tenpai": 0.998,
+    "top": [
+     [
+      "9m",
+      0.998
+     ],
+     [
+      "S",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": 0
+  },
+  {
+   "game": "260920-192cc940-6217-4d71-8ff3-c64b165d3673",
+   "round": "East 3-0",
+   "turn": 10,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 3,
+   "tile": "1s",
+   "danger": 2,
+   "labels": [
+    "live terminal"
+   ],
+   "options": [
+    {
+     "tile": "1s",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 3
+    },
+    {
+     "tile": "P",
+     "danger": 2,
+     "labels": [
+      "live honor"
+     ],
+     "live": 3,
+     "han": 1
+    }
+   ],
+   "waits": [
+    "P"
+   ],
+   "wait_labels": [
+    "live honor"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.998,
+    "keep_tenpai": 1.0,
+    "top": [
+     [
+      "1s",
+      0.998
+     ],
+     [
+      "P",
+      0.002
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 10,
+    "tile": "1s",
+    "on_decision": true,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live terminal"
+   },
+   "delta": -3900
+  },
+  {
+   "game": "260920-27f977f3-c9e0-41ce-b8c1-faaee5f1dedc",
+   "round": "South 1-1",
+   "turn": 8,
+   "closed": true,
+   "chased": false,
+   "live": 3,
+   "han": 5,
+   "tile": "5p",
+   "danger": 3,
+   "labels": [
+    "half suji"
+   ],
+   "options": [
+    {
+     "tile": "5p",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 5
+    }
+   ],
+   "waits": [
+    "3s"
+   ],
+   "wait_labels": [
+    "live 2-3-7-8"
+   ],
+   "unsafe_later": 1,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.883,
+    "keep_tenpai": 0.907,
+    "top": [
+     [
+      "5p",
+      0.883
+     ],
+     [
+      "2s",
+      0.087
+     ],
+     [
+      "riichi",
+      0.024
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -1100
+  },
+  {
+   "game": "260920-3d2edaa5-5a07-4526-ab85-cf9cac0ca24a",
+   "round": "South 4-0",
+   "turn": 12,
+   "closed": true,
+   "chased": false,
+   "live": 3,
+   "han": 5,
+   "tile": "S",
+   "danger": 2,
+   "labels": [
+    "live honor"
+   ],
+   "options": [
+    {
+     "tile": "6s",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 2,
+     "han": 5
+    },
+    {
+     "tile": "S",
+     "danger": 2,
+     "labels": [
+      "live honor"
+     ],
+     "live": 3,
+     "han": 5
+    }
+   ],
+   "waits": [
+    "6s"
+   ],
+   "wait_labels": [
+    "half suji"
+   ],
+   "unsafe_later": 2,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.961,
+    "keep_tenpai": 0.995,
+    "top": [
+     [
+      "S",
+      0.961
+     ],
+     [
+      "riichi",
+      0.033
+     ],
+     [
+      "C",
+      0.004
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": 0
+  },
+  {
+   "game": "260920-900a1166-f9e0-4cc7-900a-a54c6b93dda4",
+   "round": "East 1-0",
+   "turn": 13,
+   "closed": true,
+   "chased": true,
+   "live": 3,
+   "han": 4,
+   "tile": "5s",
+   "danger": 4,
+   "labels": [
+    "live 4-5-6"
+   ],
+   "options": [
+    {
+     "tile": "4m",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 2
+    },
+    {
+     "tile": "5s",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "4m"
+   ],
+   "wait_labels": [
+    "half suji"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.999,
+    "keep_tenpai": 1.0,
+    "top": [
+     [
+      "5s",
+      0.999
+     ],
+     [
+      "4m",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -3000
+  },
+  {
+   "game": "260921-610ba96e-37d7-4767-9b1b-82038161788a",
+   "round": "East 3-1",
+   "turn": 5,
+   "closed": true,
+   "chased": true,
+   "live": 3,
+   "han": 3,
+   "tile": "5pr",
+   "danger": 3,
+   "labels": [
+    "half suji"
+   ],
+   "options": [
+    {
+     "tile": "5pr",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "waits": [
+    "3m"
+   ],
+   "wait_labels": [
+    "live 2-3-7-8"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.071,
+    "keep_tenpai": 0.071,
+    "top": [
+     [
+      "P",
+      0.566
+     ],
+     [
+      "2m",
+      0.346
+     ],
+     [
+      "riichi",
+      0.066
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -7100
+  },
+  {
+   "game": "260921-6faea687-eb5d-4d91-b5db-2f4ab9c98a5b",
+   "round": "East 4-0",
+   "turn": 17,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 4,
+   "tile": "6s",
+   "danger": 3,
+   "labels": [
+    "half suji"
+   ],
+   "options": [
+    {
+     "tile": "4p",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 4
+    },
+    {
+     "tile": "6s",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 2
+    },
+    {
+     "tile": "9s",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 0
+    }
+   ],
+   "waits": [
+    "4p"
+   ],
+   "wait_labels": [
+    "half suji"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.001,
+    "keep_tenpai": 0.999,
+    "top": [
+     [
+      "4p",
+      0.997
+     ],
+     [
+      "6s",
+      0.001
+     ],
+     [
+      "9s",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": 1000
+  },
+  {
+   "game": "260921-7b8a8c7c-94f0-47c6-84ba-1638af253b8d",
+   "round": "South 3-0",
+   "turn": 16,
+   "closed": true,
+   "chased": false,
+   "live": 3,
+   "han": 7,
+   "tile": "4s",
+   "danger": 4,
+   "labels": [
+    "live 4-5-6"
+   ],
+   "options": [
+    {
+     "tile": "9p",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 7
+    },
+    {
+     "tile": "4s",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 1,
+     "han": 6
+    }
+   ],
+   "waits": [
+    "9p"
+   ],
+   "wait_labels": [
+    "live terminal"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.004,
+    "keep_tenpai": 0.999,
+    "top": [
+     [
+      "9p",
+      0.951
+     ],
+     [
+      "riichi",
+      0.044
+     ],
+     [
+      "4s",
+      0.004
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": 0
+  },
+  {
+   "game": "260921-8c944457-0aef-4d65-81b0-b1f83b9852a0",
+   "round": "South 2-0",
+   "turn": 14,
+   "closed": true,
+   "chased": false,
+   "live": 1,
+   "han": 3,
+   "tile": "2s",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "2s",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 1,
+     "han": 3
+    },
+    {
+     "tile": "5sr",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 1,
+     "han": 2
+    }
+   ],
+   "waits": [
+    "4s"
+   ],
+   "wait_labels": [
+    "half suji"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.761,
+    "keep_tenpai": 0.793,
+    "top": [
+     [
+      "2s",
+      0.761
+     ],
+     [
+      "1p",
+      0.145
+     ],
+     [
+      "2p",
+      0.035
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 14,
+    "tile": "2s",
+    "on_decision": true,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live 2-3-7-8"
+   },
+   "delta": -8000
+  },
+  {
+   "game": "260922-4ebf19e7-89c5-469e-b2eb-90ee1c185965",
+   "round": "South 2-1",
+   "turn": 11,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 3,
+   "tile": "P",
+   "danger": 2,
+   "labels": [
+    "live honor"
+   ],
+   "options": [
+    {
+     "tile": "6m",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 2,
+     "han": 3
+    },
+    {
+     "tile": "P",
+     "danger": 2,
+     "labels": [
+      "live honor"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "waits": [
+    "6m"
+   ],
+   "wait_labels": [
+    "half suji"
+   ],
+   "unsafe_later": 1,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.087,
+    "keep_tenpai": 0.997,
+    "top": [
+     [
+      "6m",
+      0.91
+     ],
+     [
+      "P",
+      0.087
+     ],
+     [
+      "1s",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 13,
+    "tile": "9s",
+    "on_decision": false,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live terminal"
+   },
+   "delta": -8000
+  },
+  {
+   "game": "260922-dad15d2f-09fb-4845-b33a-bcb55de50b07",
+   "round": "South 2-0",
+   "turn": 7,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 3,
+   "tile": "5s",
+   "danger": 4,
+   "labels": [
+    "live 4-5-6"
+   ],
+   "options": [
+    {
+     "tile": "5s",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 3,
+     "han": 3
+    },
+    {
+     "tile": "E",
+     "danger": 2,
+     "labels": [
+      "live honor"
+     ],
+     "live": 2,
+     "han": 1
+    }
+   ],
+   "waits": [
+    "E"
+   ],
+   "wait_labels": [
+    "live honor"
+   ],
+   "unsafe_later": 2,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.997,
+    "keep_tenpai": 0.998,
+    "top": [
+     [
+      "5s",
+      0.997
+     ],
+     [
+      "E",
+      0.001
+     ],
+     [
+      "1s",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 9,
+    "tile": "8m",
+    "on_decision": false,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live 2-3-7-8"
+   },
+   "delta": -8000
+  },
+  {
+   "game": "260922-dad15d2f-09fb-4845-b33a-bcb55de50b07",
+   "round": "South 3-2",
+   "turn": 8,
+   "closed": false,
+   "chased": false,
+   "live": 2,
+   "han": 4,
+   "tile": "3s",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "3s",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 2,
+     "han": 4
+    },
+    {
+     "tile": "F",
+     "danger": 2,
+     "labels": [
+      "live honor"
+     ],
+     "live": 2,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "F"
+   ],
+   "wait_labels": [
+    "honor, 2 seen"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.905,
+    "keep_tenpai": 0.987,
+    "top": [
+     [
+      "3s",
+      0.905
+     ],
+     [
+      "F",
+      0.082
+     ],
+     [
+      "1s",
+      0.004
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -2200
+  },
+  {
+   "game": "260923-e1062a86-fac4-4882-8667-f3abf380f70a",
+   "round": "South 4-2",
+   "turn": 18,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 4,
+   "tile": "7s",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "7s",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "3p"
+   ],
+   "wait_labels": [
+    "suji"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.993,
+    "keep_tenpai": 0.993,
+    "top": [
+     [
+      "7s",
+      0.993
+     ],
+     [
+      "F",
+      0.003
+     ],
+     [
+      "1p",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 18,
+    "tile": "7s",
+    "on_decision": true,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live 2-3-7-8"
+   },
+   "delta": -12200
+  },
+  {
+   "game": "260924-0e508d5e-4b31-49ac-b77d-dab1c05ab4ae",
+   "round": "South 2-0",
+   "turn": 11,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 3,
+   "tile": "8p",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "3p",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 3
+    },
+    {
+     "tile": "8p",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "waits": [
+    "3p"
+   ],
+   "wait_labels": [
+    "live 2-3-7-8"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.479,
+    "keep_tenpai": 0.999,
+    "top": [
+     [
+      "3p",
+      0.52
+     ],
+     [
+      "8p",
+      0.479
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 11,
+    "tile": "8p",
+    "on_decision": true,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live 2-3-7-8"
+   },
+   "delta": -7700
+  },
+  {
+   "game": "260924-546dc69b-5194-46c6-b91c-ca9b4891c62f",
+   "round": "East 4-0",
+   "turn": 9,
+   "closed": true,
+   "chased": true,
+   "live": 3,
+   "han": 4,
+   "tile": "3p",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "3p",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "3m"
+   ],
+   "wait_labels": [
+    "suji"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.995,
+    "keep_tenpai": 0.995,
+    "top": [
+     [
+      "3p",
+      0.896
+     ],
+     [
+      "riichi",
+      0.099
+     ],
+     [
+      "9m",
+      0.003
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": 500
+  },
+  {
+   "game": "260924-d22d9b1e-3c25-4ca4-aab2-1e34b898c132",
+   "round": "South 3-1",
+   "turn": 18,
+   "closed": true,
+   "chased": false,
+   "live": 2,
+   "han": 6,
+   "tile": "4m",
+   "danger": 4,
+   "labels": [
+    "live 4-5-6"
+   ],
+   "options": [
+    {
+     "tile": "4m",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 2,
+     "han": 6
+    }
+   ],
+   "waits": [
+    "4s",
+    "7s"
+   ],
+   "wait_labels": [
+    "genbutsu",
+    "suji"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.966,
+    "keep_tenpai": 0.966,
+    "top": [
+     [
+      "4m",
+      0.966
+     ],
+     [
+      "1p",
+      0.014
+     ],
+     [
+      "5m",
+      0.005
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": 1500
+  },
+  {
+   "game": "260924-d2ba9391-5047-4a09-89da-38bc4bd1845b",
+   "round": "East 4-0",
+   "turn": 12,
+   "closed": true,
+   "chased": true,
+   "live": 3,
+   "han": 4,
+   "tile": "2m",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "2m",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 4
+    },
+    {
+     "tile": "4m",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 2
+    }
+   ],
+   "waits": [
+    "4m"
+   ],
+   "wait_labels": [
+    "half suji"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.988,
+    "keep_tenpai": 1.0,
+    "top": [
+     [
+      "2m",
+      0.988
+     ],
+     [
+      "4m",
+      0.012
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -4000
+  },
+  {
+   "game": "260927-04d7d3c9-fd03-4a20-b2c8-3813d0c773b9",
+   "round": "East 2-0",
+   "turn": 9,
+   "closed": true,
+   "chased": false,
+   "live": 3,
+   "han": 5,
+   "tile": "7p",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "7p",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 5
+    }
+   ],
+   "waits": [
+    "8m"
+   ],
+   "wait_labels": [
+    "genbutsu"
+   ],
+   "unsafe_later": 1,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.829,
+    "keep_tenpai": 0.994,
+    "top": [
+     [
+      "7p",
+      0.829
+     ],
+     [
+      "riichi",
+      0.165
+     ],
+     [
+      "9m",
+      0.002
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 12,
+    "tile": "5p",
+    "on_decision": false,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live 4-5-6"
+   },
+   "delta": -3900
+  },
+  {
+   "game": "260927-1a030971-9ad6-4172-a578-9a918a2ea59e",
+   "round": "East 2-0",
+   "turn": 15,
+   "closed": true,
+   "chased": true,
+   "live": 3,
+   "han": 3,
+   "tile": "2p",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "2p",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "waits": [
+    "1s",
+    "4s"
+   ],
+   "wait_labels": [
+    "genbutsu",
+    "half suji"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.998,
+    "keep_tenpai": 0.998,
+    "top": [
+     [
+      "riichi",
+      0.998
+     ],
+     [
+      "N",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -1000
+  },
+  {
+   "game": "260927-1a030971-9ad6-4172-a578-9a918a2ea59e",
+   "round": "East 4-0",
+   "turn": 11,
+   "closed": false,
+   "chased": false,
+   "live": 2,
+   "han": 4,
+   "tile": "5s",
+   "danger": 4,
+   "labels": [
+    "live 4-5-6"
+   ],
+   "options": [
+    {
+     "tile": "5s",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 2,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "1p",
+    "P"
+   ],
+   "wait_labels": [
+    "genbutsu",
+    "genbutsu"
+   ],
+   "unsafe_later": 1,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.984,
+    "keep_tenpai": 0.984,
+    "top": [
+     [
+      "5s",
+      0.984
+     ],
+     [
+      "1p",
+      0.01
+     ],
+     [
+      "P",
+      0.004
+     ]
+    ]
+   },
+   "won": true,
+   "dealt": false,
+   "deal": null,
+   "delta": 6800
+  },
+  {
+   "game": "260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52",
+   "round": "East 1-1",
+   "turn": 8,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 4,
+   "tile": "4p",
+   "danger": 4,
+   "labels": [
+    "live 4-5-6"
+   ],
+   "options": [
+    {
+     "tile": "4p",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 3,
+     "han": 4
+    },
+    {
+     "tile": "6p",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 2
+    }
+   ],
+   "waits": [
+    "6p"
+   ],
+   "wait_labels": [
+    "half suji"
+   ],
+   "unsafe_later": 1,
+   "left_tenpai": true,
+   "mortal": {
+    "cut": 0.998,
+    "keep_tenpai": 0.999,
+    "top": [
+     [
+      "4p",
+      0.998
+     ],
+     [
+      "1s",
+      0.001
+     ],
+     [
+      "6p",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -2100
+  },
+  {
+   "game": "260928-50d32e06-8fdb-4e70-9ddf-d62f5575eb52",
+   "round": "South 2-0",
+   "turn": 11,
+   "closed": true,
+   "chased": true,
+   "live": 3,
+   "han": 3,
+   "tile": "2m",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "2m",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "waits": [
+    "6s"
+   ],
+   "wait_labels": [
+    "genbutsu"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.078,
+    "keep_tenpai": 0.078,
+    "top": [
+     [
+      "7p",
+      0.676
+     ],
+     [
+      "4s",
+      0.207
+     ],
+     [
+      "riichi",
+      0.075
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 15,
+    "tile": "9s",
+    "on_decision": false,
+    "into_riichi": true,
+    "in_own_riichi": true,
+    "tenpai": true,
+    "label": "live terminal"
+   },
+   "delta": -3000
+  },
+  {
+   "game": "260929-68b62fbc-a679-4763-986c-cc4fbcccd6bc",
+   "round": "South 2-0",
+   "turn": 8,
+   "closed": true,
+   "chased": true,
+   "live": 3,
+   "han": 4,
+   "tile": "5m",
+   "danger": 4,
+   "labels": [
+    "live 4-5-6"
+   ],
+   "options": [
+    {
+     "tile": "5m",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "7p",
+    "S"
+   ],
+   "wait_labels": [
+    "suji",
+    "honor, 2 seen"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.986,
+    "keep_tenpai": 0.986,
+    "top": [
+     [
+      "riichi",
+      0.985
+     ],
+     [
+      "S",
+      0.011
+     ],
+     [
+      "7p",
+      0.003
+     ]
+    ]
+   },
+   "won": true,
+   "dealt": false,
+   "deal": null,
+   "delta": 9000
+  },
+  {
+   "game": "260929-6cfccc52-c90e-403d-98a0-7a8629b0bcbb",
+   "round": "South 3-0",
+   "turn": 13,
+   "closed": true,
+   "chased": false,
+   "live": 3,
+   "han": 4,
+   "tile": "1m",
+   "danger": 2,
+   "labels": [
+    "live terminal"
+   ],
+   "options": [
+    {
+     "tile": "1m",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "7m"
+   ],
+   "wait_labels": [
+    "live 2-3-7-8"
+   ],
+   "unsafe_later": 1,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.974,
+    "keep_tenpai": 0.995,
+    "top": [
+     [
+      "1m",
+      0.974
+     ],
+     [
+      "riichi",
+      0.021
+     ],
+     [
+      "1p",
+      0.003
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -2000
+  },
+  {
+   "game": "260929-e1b91cab-985a-47ef-9476-666eb9bd12b8",
+   "round": "South 3-3",
+   "turn": 15,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 3,
+   "tile": "3m",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "3m",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "waits": [
+    "4s"
+   ],
+   "wait_labels": [
+    "half suji"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.981,
+    "keep_tenpai": 0.981,
+    "top": [
+     [
+      "3m",
+      0.981
+     ],
+     [
+      "8m",
+      0.018
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 15,
+    "tile": "3m",
+    "on_decision": true,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live 2-3-7-8"
+   },
+   "delta": -8600
+  },
+  {
+   "game": "261001-8fda859e-f1f4-41c5-9a5c-1b6b037689ab",
+   "round": "East 2-0",
+   "turn": 12,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 6,
+   "tile": "6p",
+   "danger": 3,
+   "labels": [
+    "half suji"
+   ],
+   "options": [
+    {
+     "tile": "4m",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 3,
+     "han": 6
+    },
+    {
+     "tile": "5mr",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 2,
+     "han": 3
+    },
+    {
+     "tile": "3p",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 6
+    },
+    {
+     "tile": "6p",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 5
+    }
+   ],
+   "waits": [
+    "3m",
+    "6m"
+   ],
+   "wait_labels": [
+    "genbutsu",
+    "genbutsu"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.154,
+    "keep_tenpai": 0.996,
+    "top": [
+     [
+      "3p",
+      0.837
+     ],
+     [
+      "6p",
+      0.154
+     ],
+     [
+      "4m",
+      0.005
+     ]
+    ]
+   },
+   "won": true,
+   "dealt": false,
+   "deal": null,
+   "delta": 9000
+  },
+  {
+   "game": "261001-8fda859e-f1f4-41c5-9a5c-1b6b037689ab",
+   "round": "South 1-0",
+   "turn": 16,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 4,
+   "tile": "2s",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "2s",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 4
+    },
+    {
+     "tile": "5sr",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "waits": [
+    "5m"
+   ],
+   "wait_labels": [
+    "live 4-5-6"
+   ],
+   "unsafe_later": 1,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.798,
+    "keep_tenpai": 0.799,
+    "top": [
+     [
+      "2s",
+      0.798
+     ],
+     [
+      "6p",
+      0.196
+     ],
+     [
+      "3s",
+      0.002
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": 1500
+  },
+  {
+   "game": "261002-33fd4019-5a58-482d-b9ca-68e1b07fc036",
+   "round": "South 3-0",
+   "turn": 15,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 6,
+   "tile": "6m",
+   "danger": 3,
+   "labels": [
+    "half suji"
+   ],
+   "options": [
+    {
+     "tile": "6m",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 6
+    }
+   ],
+   "waits": [
+    "8p",
+    "5s"
+   ],
+   "wait_labels": [
+    "suji",
+    "live 4-5-6"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.676,
+    "keep_tenpai": 0.676,
+    "top": [
+     [
+      "6m",
+      0.676
+     ],
+     [
+      "8p",
+      0.32
+     ],
+     [
+      "6p",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -2000
+  },
+  {
+   "game": "261002-97af122b-732a-47ae-b70b-644c27d77e03",
+   "round": "South 2-0",
+   "turn": 17,
+   "closed": true,
+   "chased": false,
+   "live": 3,
+   "han": 4,
+   "tile": "7s",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8",
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "2s",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8",
+      "live 2-3-7-8"
+     ],
+     "live": 1,
+     "han": 4
+    },
+    {
+     "tile": "7s",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8",
+      "genbutsu"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "2s"
+   ],
+   "wait_labels": [
+    "live 2-3-7-8"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.024,
+    "keep_tenpai": 0.075,
+    "top": [
+     [
+      "9p",
+      0.55
+     ],
+     [
+      "1p",
+      0.289
+     ],
+     [
+      "7p",
+      0.05
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": 1000
+  },
+  {
+   "game": "261002-b0ec9f2d-52a2-4578-b351-df6475cc8b35",
+   "round": "East 3-1",
+   "turn": 14,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 4,
+   "tile": "7p",
+   "danger": 3,
+   "labels": [
+    "live 2-3-7-8"
+   ],
+   "options": [
+    {
+     "tile": "7p",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 4
+    },
+    {
+     "tile": "P",
+     "danger": 2,
+     "labels": [
+      "live honor"
+     ],
+     "live": 3,
+     "han": 0
+    }
+   ],
+   "waits": [
+    "P"
+   ],
+   "wait_labels": [
+    "live honor"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.996,
+    "keep_tenpai": 0.997,
+    "top": [
+     [
+      "7p",
+      0.996
+     ],
+     [
+      "1s",
+      0.001
+     ],
+     [
+      "P",
+      0.001
+     ]
+    ]
+   },
+   "won": true,
+   "dealt": false,
+   "deal": null,
+   "delta": 9200
+  },
+  {
+   "game": "261003-01d8a14c-4f93-437f-b687-b55348c2f179",
+   "round": "East 3-0",
+   "turn": 12,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 3,
+   "tile": "1s",
+   "danger": 2,
+   "labels": [
+    "live terminal"
+   ],
+   "options": [
+    {
+     "tile": "1s",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "waits": [
+    "8p"
+   ],
+   "wait_labels": [
+    "genbutsu"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.999,
+    "keep_tenpai": 0.999,
+    "top": [
+     [
+      "1s",
+      0.999
+     ],
+     [
+      "9p",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 12,
+    "tile": "1s",
+    "on_decision": true,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live terminal"
+   },
+   "delta": -2600
+  },
+  {
+   "game": "261003-5792c141-83fb-43cf-bb64-bfc0b195f357",
+   "round": "East 4-0",
+   "turn": 14,
+   "closed": true,
+   "chased": false,
+   "live": 3,
+   "han": 6,
+   "tile": "1m",
+   "danger": 2,
+   "labels": [
+    "live terminal"
+   ],
+   "options": [
+    {
+     "tile": "1m",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 6
+    },
+    {
+     "tile": "3m",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 1,
+     "han": 5
+    }
+   ],
+   "waits": [
+    "3m"
+   ],
+   "wait_labels": [
+    "live 2-3-7-8"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.847,
+    "keep_tenpai": 0.99,
+    "top": [
+     [
+      "1m",
+      0.847
+     ],
+     [
+      "riichi",
+      0.142
+     ],
+     [
+      "8s",
+      0.007
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": 0
+  },
+  {
+   "game": "261003-5f11307b-34d4-41e8-be82-0805b4a94ae3",
+   "round": "East 2-0",
+   "turn": 10,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 3,
+   "tile": "1p",
+   "danger": 2,
+   "labels": [
+    "live terminal"
+   ],
+   "options": [
+    {
+     "tile": "1p",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "waits": [
+    "5p"
+   ],
+   "wait_labels": [
+    "genbutsu"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 1.0,
+    "keep_tenpai": 1.0,
+    "top": [
+     [
+      "1p",
+      1.0
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 10,
+    "tile": "1p",
+    "on_decision": true,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live terminal"
+   },
+   "delta": -2000
+  },
+  {
+   "game": "261008-f937c8f1-a966-4845-af04-026e0295057b",
+   "round": "South 2-0",
+   "turn": 12,
+   "closed": false,
+   "chased": false,
+   "live": 2,
+   "han": 4,
+   "tile": "9m",
+   "danger": 2,
+   "labels": [
+    "live terminal"
+   ],
+   "options": [
+    {
+     "tile": "9m",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 2,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "7s"
+   ],
+   "wait_labels": [
+    "genbutsu"
+   ],
+   "unsafe_later": 1,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.999,
+    "keep_tenpai": 0.999,
+    "top": [
+     [
+      "9m",
+      0.999
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "deal": {
+    "turn": 13,
+    "tile": "3m",
+    "on_decision": false,
+    "into_riichi": true,
+    "in_own_riichi": false,
+    "tenpai": true,
+    "label": "live 2-3-7-8"
+   },
+   "delta": -1300
+  },
+  {
+   "game": "261008-f937c8f1-a966-4845-af04-026e0295057b",
+   "round": "South 3-1",
+   "turn": 18,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 3,
+   "tile": "9m",
+   "danger": 2,
+   "labels": [
+    "live terminal"
+   ],
+   "options": [
+    {
+     "tile": "9m",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 3
+    },
+    {
+     "tile": "5sr",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 2,
+     "han": 2
+    }
+   ],
+   "waits": [
+    "5s"
+   ],
+   "wait_labels": [
+    "half suji"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 1.0,
+    "keep_tenpai": 1.0,
+    "top": [
+     [
+      "9m",
+      1.0
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": 1000
+  },
+  {
+   "game": "261010-23b5165e-9075-4dbf-89f7-f84739f0b9c8",
+   "round": "East 2-1",
+   "turn": 16,
+   "closed": false,
+   "chased": false,
+   "live": 3,
+   "han": 4,
+   "tile": "9m",
+   "danger": 2,
+   "labels": [
+    "live terminal"
+   ],
+   "options": [
+    {
+     "tile": "9m",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 4
+    },
+    {
+     "tile": "7s",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "waits": [
+    "7s",
+    "8s"
+   ],
+   "wait_labels": [
+    "live 2-3-7-8",
+    "genbutsu"
+   ],
+   "unsafe_later": 0,
+   "left_tenpai": false,
+   "mortal": {
+    "cut": 0.051,
+    "keep_tenpai": 0.999,
+    "top": [
+     [
+      "7s",
+      0.948
+     ],
+     [
+      "9m",
+      0.051
+     ],
+     [
+      "1p",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "deal": null,
+   "delta": -4100
+  }
+ ],
+ "your_folds": [
+  {
+   "game": "260627-cbce14e3-6c51-4c75-83d6-b833a01a892c",
+   "round": "South 1-0",
+   "turn": 9,
+   "closed": true,
+   "live": 3,
+   "han": 4,
+   "tile": "1m",
+   "labels": [
+    "suji"
+   ],
+   "options": [
+    {
+     "tile": "4s",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "mortal": {
+    "cut": 0.109,
+    "keep_tenpai": 0.397,
+    "top": [
+     [
+      "7m",
+      0.444
+     ],
+     [
+      "4s",
+      0.318
+     ],
+     [
+      "1m",
+      0.109
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": -8000
+  },
+  {
+   "game": "260920-3d2edaa5-5a07-4526-ab85-cf9cac0ca24a",
+   "round": "South 2-1",
+   "turn": 13,
+   "closed": false,
+   "live": 3,
+   "han": 4,
+   "tile": "P",
+   "labels": [
+    "honor, 2 seen"
+   ],
+   "options": [
+    {
+     "tile": "6s",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "mortal": {
+    "cut": 0.001,
+    "keep_tenpai": 0.997,
+    "top": [
+     [
+      "6s",
+      0.997
+     ],
+     [
+      "5s",
+      0.001
+     ],
+     [
+      "P",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": -2100
+  },
+  {
+   "game": "260921-8c944457-0aef-4d65-81b0-b1f83b9852a0",
+   "round": "East 3-4",
+   "turn": 9,
+   "closed": false,
+   "live": 3,
+   "han": 6,
+   "tile": "P",
+   "labels": [
+    "dead",
+    "dead"
+   ],
+   "options": [
+    {
+     "tile": "2m",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8",
+      "live 2-3-7-8"
+     ],
+     "live": 2,
+     "han": 4
+    },
+    {
+     "tile": "6p",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6",
+      "nakasuji"
+     ],
+     "live": 3,
+     "han": 6
+    }
+   ],
+   "mortal": {
+    "cut": 0.854,
+    "keep_tenpai": 0.146,
+    "top": [
+     [
+      "P",
+      0.854
+     ],
+     [
+      "6p",
+      0.145
+     ],
+     [
+      "2m",
+      0.001
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": true,
+   "delta": -9200
+  },
+  {
+   "game": "260921-accd073a-10e2-4b1d-a823-85433a792a61",
+   "round": "East 3-0",
+   "turn": 13,
+   "closed": false,
+   "live": 3,
+   "han": 3,
+   "tile": "C",
+   "labels": [
+    "dead"
+   ],
+   "options": [
+    {
+     "tile": "8m",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 3
+    },
+    {
+     "tile": "6p",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "mortal": {
+    "cut": 0.851,
+    "keep_tenpai": 0.003,
+    "top": [
+     [
+      "C",
+      0.851
+     ],
+     [
+      "2s",
+      0.116
+     ],
+     [
+      "1s",
+      0.023
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": 0
+  },
+  {
+   "game": "260924-d22d9b1e-3c25-4ca4-aab2-1e34b898c132",
+   "round": "East 1-0",
+   "turn": 17,
+   "closed": true,
+   "live": 3,
+   "han": 5,
+   "tile": "S",
+   "labels": [
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "3s",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 5
+    }
+   ],
+   "mortal": {
+    "cut": 0.009,
+    "keep_tenpai": 0.966,
+    "top": [
+     [
+      "3s",
+      0.966
+     ],
+     [
+      "P",
+      0.017
+     ],
+     [
+      "S",
+      0.009
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": -1500
+  },
+  {
+   "game": "260927-33c90769-b176-4d84-887e-a0570b689191",
+   "round": "South 1-1",
+   "turn": 15,
+   "closed": true,
+   "live": 2,
+   "han": 3,
+   "tile": "P",
+   "labels": [
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "4p",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 2,
+     "han": 3
+    }
+   ],
+   "mortal": {
+    "cut": 0.957,
+    "keep_tenpai": 0.028,
+    "top": [
+     [
+      "P",
+      0.957
+     ],
+     [
+      "riichi",
+      0.027
+     ],
+     [
+      "9m",
+      0.009
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": -1000
+  },
+  {
+   "game": "260927-d8570927-994f-4a15-aba1-054159a4045c",
+   "round": "South 1-2",
+   "turn": 15,
+   "closed": true,
+   "live": 3,
+   "han": 4,
+   "tile": "2s",
+   "labels": [
+    "genbutsu",
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "7s",
+     "danger": 3,
+     "labels": [
+      "suji",
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "mortal": {
+    "cut": 0.979,
+    "keep_tenpai": 0.015,
+    "top": [
+     [
+      "2s",
+      0.979
+     ],
+     [
+      "riichi",
+      0.015
+     ],
+     [
+      "3s",
+      0.002
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": -1500
+  },
+  {
+   "game": "260930-e1e10294-47de-4a88-946f-78e8129ee6c7",
+   "round": "South 2-0",
+   "turn": 12,
+   "closed": true,
+   "live": 2,
+   "han": 3,
+   "tile": "9p",
+   "labels": [
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "5m",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 2,
+     "han": 3
+    }
+   ],
+   "mortal": {
+    "cut": 0.972,
+    "keep_tenpai": 0.023,
+    "top": [
+     [
+      "9p",
+      0.972
+     ],
+     [
+      "riichi",
+      0.021
+     ],
+     [
+      "5m",
+      0.002
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": 0
+  },
+  {
+   "game": "261002-b0ec9f2d-52a2-4578-b351-df6475cc8b35",
+   "round": "South 3-0",
+   "turn": 14,
+   "closed": false,
+   "live": 3,
+   "han": 5,
+   "tile": "2s",
+   "labels": [
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "2m",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 5
+    },
+    {
+     "tile": "8p",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 2,
+     "han": 3
+    }
+   ],
+   "mortal": {
+    "cut": 0.002,
+    "keep_tenpai": 0.989,
+    "top": [
+     [
+      "2m",
+      0.989
+     ],
+     [
+      "4s",
+      0.003
+     ],
+     [
+      "1m",
+      0.002
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": 0
+  },
+  {
+   "game": "261002-fc3b2f83-39d9-48c2-99de-5d2bd2893cf0",
+   "round": "East 3-0",
+   "turn": 12,
+   "closed": true,
+   "live": 2,
+   "han": 3,
+   "tile": "C",
+   "labels": [
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "S",
+     "danger": 2,
+     "labels": [
+      "live honor"
+     ],
+     "live": 2,
+     "han": 3
+    }
+   ],
+   "mortal": {
+    "cut": 0.417,
+    "keep_tenpai": 0.576,
+    "top": [
+     [
+      "C",
+      0.417
+     ],
+     [
+      "S",
+      0.342
+     ],
+     [
+      "riichi",
+      0.234
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": 0
+  },
+  {
+   "game": "261010-165003cb-bf9c-49f9-ae39-ac95a879ae5c",
+   "round": "East 3-1",
+   "turn": 14,
+   "closed": true,
+   "live": 1,
+   "han": 3,
+   "tile": "1m",
+   "labels": [
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "6s",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 1,
+     "han": 3
+    }
+   ],
+   "mortal": {
+    "cut": 0.794,
+    "keep_tenpai": 0.038,
+    "top": [
+     [
+      "1m",
+      0.794
+     ],
+     [
+      "7p",
+      0.16
+     ],
+     [
+      "riichi",
+      0.038
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": 0
+  },
+  {
+   "game": "261010-201c40e5-64e7-42a9-b924-a127a6d2059f",
+   "round": "South 2-2",
+   "turn": 12,
+   "closed": true,
+   "live": 3,
+   "han": 4,
+   "tile": "4m",
+   "labels": [
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "5p",
+     "danger": 4,
+     "labels": [
+      "live 4-5-6"
+     ],
+     "live": 3,
+     "han": 4
+    },
+    {
+     "tile": "8p",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "mortal": {
+    "cut": 0.881,
+    "keep_tenpai": 0.061,
+    "top": [
+     [
+      "4m",
+      0.881
+     ],
+     [
+      "1s",
+      0.051
+     ],
+     [
+      "riichi",
+      0.033
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": 0
+  },
+  {
+   "game": "261010-6323aa6f-7123-4acc-8b77-f1e3da50b6e8",
+   "round": "South 2-0",
+   "turn": 13,
+   "closed": true,
+   "live": 3,
+   "han": 3,
+   "tile": "1p",
+   "labels": [
+    "suji"
+   ],
+   "options": [
+    {
+     "tile": "3m",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 1,
+     "han": 3
+    },
+    {
+     "tile": "1s",
+     "danger": 2,
+     "labels": [
+      "live terminal"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "mortal": {
+    "cut": 0.277,
+    "keep_tenpai": 0.23,
+    "top": [
+     [
+      "7p",
+      0.317
+     ],
+     [
+      "1p",
+      0.277
+     ],
+     [
+      "1s",
+      0.163
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": -500
+  },
+  {
+   "game": "261010-6ab8e503-8009-4782-a055-20690a2e2cd9",
+   "round": "South 3-0",
+   "turn": 15,
+   "closed": false,
+   "live": 3,
+   "han": 3,
+   "tile": "1s",
+   "labels": [
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "2p",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 3
+    }
+   ],
+   "mortal": {
+    "cut": 0.44,
+    "keep_tenpai": 0.552,
+    "top": [
+     [
+      "2p",
+      0.552
+     ],
+     [
+      "1s",
+      0.44
+     ],
+     [
+      "9p",
+      0.003
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": -1500
+  },
+  {
+   "game": "261012-7b808921-85b8-4758-a22e-194d7051e278",
+   "round": "South 3-0",
+   "turn": 12,
+   "closed": false,
+   "live": 3,
+   "han": 4,
+   "tile": "1m",
+   "labels": [
+    "genbutsu"
+   ],
+   "options": [
+    {
+     "tile": "6p",
+     "danger": 3,
+     "labels": [
+      "half suji"
+     ],
+     "live": 2,
+     "han": 2
+    },
+    {
+     "tile": "8s",
+     "danger": 3,
+     "labels": [
+      "live 2-3-7-8"
+     ],
+     "live": 3,
+     "han": 4
+    }
+   ],
+   "mortal": {
+    "cut": 0.224,
+    "keep_tenpai": 0.54,
+    "top": [
+     [
+      "8s",
+      0.539
+     ],
+     [
+      "1m",
+      0.224
+     ],
+     [
+      "1s",
+      0.16
+     ]
+    ]
+   },
+   "won": false,
+   "dealt": false,
+   "delta": -2000
+  }
+ ],
+ "chance": {
+  "draws": 100000,
+  "on_push_deal_ins": 6.1,
+  "points": 0.3
+ },
+ "luckyj_one_live": {
+  "spots": 5,
+  "pushed": 2
+ }
+}
