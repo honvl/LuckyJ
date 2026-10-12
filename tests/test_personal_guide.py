@@ -19,7 +19,8 @@ PUSH_EXAMPLES = {"keep-eight-tiles", "last-discard-tenpai", "cheap-tenpai-folded
                  "north-before-west",  # against one call LuckyJ still throws the live value honor and keeps the guest wind
                  "live-east-seven-pairs",  # the danger was the quiet seven pairs, not the two callers
                  "lone-haku-wait",  # a lone honor wait wins more than the safer cut's number wait
-                 "folded-dora-tanki"}  # a mangan tenpai LuckyJ and Mortal keep against the riichi
+                 "folded-dora-tanki",  # a mangan tenpai LuckyJ and Mortal keep against the riichi
+                 "newest-fold-8s"}  # the push wins the game more often than it deals in
 SPOTS = ROOT / "data/personal_guide_spots.json"
 GUIDE_PAGES = ("honver.html", "honver-ja.html")
 

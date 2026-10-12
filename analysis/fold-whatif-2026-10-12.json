@@ -1,0 +1,845 @@
+{
+ "folds": [
+  {
+   "game": "260627-cbce14e3-6c51-4c75-83d6-b833a01a892c",
+   "round": "South 1-0",
+   "turn": 9,
+   "fold": "1m",
+   "push": "4s",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.397,
+   "options": [
+    [
+     "4s",
+     3,
+     4
+    ]
+   ],
+   "real_hand_points": -8000,
+   "fold_line": {
+    "rank_points": -99.8,
+    "se": 7.5,
+    "fourth": 45.8,
+    "hand": {
+     "won": 32.2,
+     "dealt in": 15.0,
+     "someone else won": 37.0,
+     "draw": 15.8
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 4,
+     "rank_points": -281
+    }
+   },
+   "push_line": {
+    "rank_points": -76.8,
+    "se": 7.6,
+    "fourth": 40.8,
+    "hand": {
+     "won": 42.6,
+     "dealt in": 15.0,
+     "someone else won": 31.4,
+     "draw": 11.0
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 4,
+     "rank_points": -281
+    }
+   },
+   "push_gain": 23.0,
+   "push_gain_se": 7.5,
+   "fourth_change": -5.0
+  },
+  {
+   "game": "260920-3d2edaa5-5a07-4526-ab85-cf9cac0ca24a",
+   "round": "South 2-1",
+   "turn": 13,
+   "fold": "P",
+   "push": "6s",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.997,
+   "options": [
+    [
+     "6s",
+     3,
+     4
+    ]
+   ],
+   "real_hand_points": -2100,
+   "fold_line": {
+    "rank_points": 104.7,
+    "se": 2.2,
+    "fourth": 0.4,
+    "hand": {
+     "won": 0.8,
+     "dealt in": 3.2,
+     "someone else won": 33.8,
+     "draw": 62.2
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 1,
+     "rank_points": 138
+    }
+   },
+   "push_line": {
+    "rank_points": 103.9,
+    "se": 2.5,
+    "fourth": 0.8,
+    "hand": {
+     "won": 1.6,
+     "dealt in": 5.8,
+     "someone else won": 31.2,
+     "draw": 61.4
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 1,
+     "rank_points": 138
+    }
+   },
+   "push_gain": -0.8,
+   "push_gain_se": 2.2,
+   "fourth_change": 0.4
+  },
+  {
+   "game": "260921-8c944457-0aef-4d65-81b0-b1f83b9852a0",
+   "round": "East 3-4",
+   "turn": 9,
+   "fold": "P",
+   "push": "6p",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.146,
+   "options": [
+    [
+     "2m",
+     2,
+     4
+    ],
+    [
+     "6p",
+     3,
+     6
+    ]
+   ],
+   "real_hand_points": -9200,
+   "fold_line": {
+    "rank_points": 28.8,
+    "se": 5.8,
+    "fourth": 13.4,
+    "hand": {
+     "won": 1.8,
+     "dealt in": 16.0,
+     "someone else won": 81.4,
+     "draw": 0.8
+    },
+    "real_wall": {
+     "hand": "dealt in",
+     "place": 1,
+     "rank_points": 143
+    }
+   },
+   "push_line": {
+    "rank_points": -66.3,
+    "se": 7.7,
+    "fourth": 39.0,
+    "hand": {
+     "won": 0.0,
+     "dealt in": 100.0,
+     "someone else won": 0.0,
+     "draw": 0.0
+    },
+    "real_wall": {
+     "hand": "dealt in",
+     "place": 4,
+     "rank_points": -270
+    }
+   },
+   "push_gain": -95.1,
+   "push_gain_se": 8.7,
+   "fourth_change": 25.6
+  },
+  {
+   "game": "260921-accd073a-10e2-4b1d-a823-85433a792a61",
+   "round": "East 3-0",
+   "turn": 13,
+   "fold": "C",
+   "push": "8m",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.003,
+   "options": [
+    [
+     "8m",
+     3,
+     3
+    ],
+    [
+     "6p",
+     3,
+     3
+    ]
+   ],
+   "real_hand_points": 0,
+   "fold_line": {
+    "rank_points": 72.3,
+    "se": 4.9,
+    "fourth": 7.4,
+    "hand": {
+     "won": 1.0,
+     "dealt in": 0.2,
+     "someone else won": 44.4,
+     "draw": 54.4
+    },
+    "real_wall": {
+     "hand": "draw",
+     "place": 1,
+     "rank_points": 144
+    }
+   },
+   "push_line": {
+    "rank_points": 76.4,
+    "se": 4.9,
+    "fourth": 7.0,
+    "hand": {
+     "won": 12.4,
+     "dealt in": 1.0,
+     "someone else won": 40.6,
+     "draw": 46.0
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 1,
+     "rank_points": 145
+    }
+   },
+   "push_gain": 4.1,
+   "push_gain_se": 4.2,
+   "fourth_change": -0.4
+  },
+  {
+   "game": "260924-d22d9b1e-3c25-4ca4-aab2-1e34b898c132",
+   "round": "East 1-0",
+   "turn": 17,
+   "fold": "S",
+   "push": "3s",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.966,
+   "options": [
+    [
+     "3s",
+     3,
+     5
+    ]
+   ],
+   "real_hand_points": -1500,
+   "fold_line": {
+    "rank_points": -33.9,
+    "se": 7.1,
+    "fourth": 28.4,
+    "hand": {
+     "won": 0.0,
+     "dealt in": 0.0,
+     "someone else won": 0.0,
+     "draw": 100.0
+    },
+    "real_wall": {
+     "hand": "draw",
+     "place": 3,
+     "rank_points": -10
+    }
+   },
+   "push_line": {
+    "rank_points": 2.3,
+    "se": 6.8,
+    "fourth": 20.8,
+    "hand": {
+     "won": 0.0,
+     "dealt in": 0.0,
+     "someone else won": 0.0,
+     "draw": 100.0
+    },
+    "real_wall": {
+     "hand": "draw",
+     "place": 1,
+     "rank_points": 136
+    }
+   },
+   "push_gain": 36.2,
+   "push_gain_se": 7.5,
+   "fourth_change": -7.6
+  },
+  {
+   "game": "260927-33c90769-b176-4d84-887e-a0570b689191",
+   "round": "South 1-1",
+   "turn": 15,
+   "fold": "P",
+   "push": "4p",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.028,
+   "options": [
+    [
+     "4p",
+     2,
+     3
+    ]
+   ],
+   "real_hand_points": -1000,
+   "fold_line": {
+    "rank_points": -6.8,
+    "se": 5.3,
+    "fourth": 14.8,
+    "hand": {
+     "won": 0.0,
+     "dealt in": 0.0,
+     "someone else won": 31.2,
+     "draw": 68.8
+    },
+    "real_wall": {
+     "hand": "draw",
+     "place": 2,
+     "rank_points": 57
+    }
+   },
+   "push_line": {
+    "rank_points": -0.4,
+    "se": 5.1,
+    "fourth": 13.0,
+    "hand": {
+     "won": 0.0,
+     "dealt in": 0.0,
+     "someone else won": 31.0,
+     "draw": 69.0
+    },
+    "real_wall": {
+     "hand": "draw",
+     "place": 2,
+     "rank_points": 57
+    }
+   },
+   "push_gain": 6.4,
+   "push_gain_se": 3.9,
+   "fourth_change": -1.8
+  },
+  {
+   "game": "260927-d8570927-994f-4a15-aba1-054159a4045c",
+   "round": "South 1-2",
+   "turn": 15,
+   "fold": "2s",
+   "push": "7s",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.015,
+   "options": [
+    [
+     "7s",
+     3,
+     4
+    ]
+   ],
+   "real_hand_points": -1500,
+   "fold_line": {
+    "rank_points": -52.8,
+    "se": 6.0,
+    "fourth": 25.8,
+    "hand": {
+     "won": 0.0,
+     "dealt in": 2.0,
+     "someone else won": 0.0,
+     "draw": 98.0
+    },
+    "real_wall": {
+     "hand": "draw",
+     "place": 2,
+     "rank_points": 55
+    }
+   },
+   "push_line": {
+    "rank_points": -73.7,
+    "se": 6.5,
+    "fourth": 33.0,
+    "hand": {
+     "won": 0.0,
+     "dealt in": 100.0,
+     "someone else won": 0.0,
+     "draw": 0.0
+    },
+    "real_wall": {
+     "hand": "dealt in",
+     "place": 2,
+     "rank_points": 56
+    }
+   },
+   "push_gain": -20.9,
+   "push_gain_se": 7.0,
+   "fourth_change": 7.2
+  },
+  {
+   "game": "260930-e1e10294-47de-4a88-946f-78e8129ee6c7",
+   "round": "South 2-0",
+   "turn": 12,
+   "fold": "9p",
+   "push": "5m",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.023,
+   "options": [
+    [
+     "5m",
+     2,
+     3
+    ]
+   ],
+   "real_hand_points": 0,
+   "fold_line": {
+    "rank_points": -129.3,
+    "se": 6.7,
+    "fourth": 51.0,
+    "hand": {
+     "won": 13.2,
+     "dealt in": 18.2,
+     "someone else won": 48.6,
+     "draw": 20.0
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 4,
+     "rank_points": -271
+    }
+   },
+   "push_line": {
+    "rank_points": -127.9,
+    "se": 6.6,
+    "fourth": 49.4,
+    "hand": {
+     "won": 14.4,
+     "dealt in": 25.0,
+     "someone else won": 47.2,
+     "draw": 13.4
+    },
+    "real_wall": {
+     "hand": "dealt in",
+     "place": 4,
+     "rank_points": -282
+    }
+   },
+   "push_gain": 1.4,
+   "push_gain_se": 5.5,
+   "fourth_change": -1.6
+  },
+  {
+   "game": "261002-b0ec9f2d-52a2-4578-b351-df6475cc8b35",
+   "round": "South 3-0",
+   "turn": 14,
+   "fold": "2s",
+   "push": "2m",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.989,
+   "options": [
+    [
+     "2m",
+     3,
+     5
+    ],
+    [
+     "8p",
+     2,
+     3
+    ]
+   ],
+   "real_hand_points": 0,
+   "fold_line": {
+    "rank_points": -102.5,
+    "se": 6.5,
+    "fourth": 41.4,
+    "hand": {
+     "won": 6.8,
+     "dealt in": 19.6,
+     "someone else won": 26.0,
+     "draw": 47.6
+    },
+    "real_wall": {
+     "hand": "draw",
+     "place": 4,
+     "rank_points": -264
+    }
+   },
+   "push_line": {
+    "rank_points": -64.3,
+    "se": 6.4,
+    "fourth": 30.6,
+    "hand": {
+     "won": 24.8,
+     "dealt in": 13.8,
+     "someone else won": 23.6,
+     "draw": 37.8
+    },
+    "real_wall": {
+     "hand": "draw",
+     "place": 3,
+     "rank_points": -12
+    }
+   },
+   "push_gain": 38.2,
+   "push_gain_se": 7.4,
+   "fourth_change": -10.8
+  },
+  {
+   "game": "261002-fc3b2f83-39d9-48c2-99de-5d2bd2893cf0",
+   "round": "East 3-0",
+   "turn": 12,
+   "fold": "C",
+   "push": "S",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.576,
+   "options": [
+    [
+     "S",
+     2,
+     3
+    ]
+   ],
+   "real_hand_points": 0,
+   "fold_line": {
+    "rank_points": -37.9,
+    "se": 6.9,
+    "fourth": 28.0,
+    "hand": {
+     "won": 1.4,
+     "dealt in": 25.6,
+     "someone else won": 34.4,
+     "draw": 38.6
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 4,
+     "rank_points": -266
+    }
+   },
+   "push_line": {
+    "rank_points": -75.0,
+    "se": 7.3,
+    "fourth": 38.6,
+    "hand": {
+     "won": 0.0,
+     "dealt in": 100.0,
+     "someone else won": 0.0,
+     "draw": 0.0
+    },
+    "real_wall": {
+     "hand": "dealt in",
+     "place": 2,
+     "rank_points": 63
+    }
+   },
+   "push_gain": -37.1,
+   "push_gain_se": 7.4,
+   "fourth_change": 10.6
+  },
+  {
+   "game": "261010-165003cb-bf9c-49f9-ae39-ac95a879ae5c",
+   "round": "East 3-1",
+   "turn": 14,
+   "fold": "1m",
+   "push": "6s",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.038,
+   "options": [
+    [
+     "6s",
+     1,
+     3
+    ]
+   ],
+   "real_hand_points": 0,
+   "fold_line": {
+    "rank_points": 65.5,
+    "se": 4.0,
+    "fourth": 4.6,
+    "hand": {
+     "won": 0.0,
+     "dealt in": 0.2,
+     "someone else won": 80.0,
+     "draw": 19.8
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 1,
+     "rank_points": 138
+    }
+   },
+   "push_line": {
+    "rank_points": 63.0,
+    "se": 4.2,
+    "fourth": 5.2,
+    "hand": {
+     "won": 6.0,
+     "dealt in": 7.4,
+     "someone else won": 71.4,
+     "draw": 15.2
+    },
+    "real_wall": {
+     "hand": "draw",
+     "place": 2,
+     "rank_points": 66
+    }
+   },
+   "push_gain": -2.6,
+   "push_gain_se": 3.0,
+   "fourth_change": 0.6
+  },
+  {
+   "game": "261010-201c40e5-64e7-42a9-b924-a127a6d2059f",
+   "round": "South 2-2",
+   "turn": 12,
+   "fold": "4m",
+   "push": "5p",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.061,
+   "options": [
+    [
+     "5p",
+     3,
+     4
+    ],
+    [
+     "8p",
+     3,
+     4
+    ]
+   ],
+   "real_hand_points": 0,
+   "fold_line": {
+    "rank_points": -6.8,
+    "se": 5.1,
+    "fourth": 13.6,
+    "hand": {
+     "won": 2.8,
+     "dealt in": 3.2,
+     "someone else won": 76.8,
+     "draw": 17.2
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 3,
+     "rank_points": -17
+    }
+   },
+   "push_line": {
+    "rank_points": -5.0,
+    "se": 5.7,
+    "fourth": 16.2,
+    "hand": {
+     "won": 22.2,
+     "dealt in": 15.6,
+     "someone else won": 58.6,
+     "draw": 3.6
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 3,
+     "rank_points": -17
+    }
+   },
+   "push_gain": 1.8,
+   "push_gain_se": 6.8,
+   "fourth_change": 2.6
+  },
+  {
+   "game": "261010-6323aa6f-7123-4acc-8b77-f1e3da50b6e8",
+   "round": "South 2-0",
+   "turn": 13,
+   "fold": "1p",
+   "push": "1s",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.23,
+   "options": [
+    [
+     "3m",
+     1,
+     3
+    ],
+    [
+     "1s",
+     3,
+     3
+    ]
+   ],
+   "real_hand_points": -500,
+   "fold_line": {
+    "rank_points": -52.3,
+    "se": 7.2,
+    "fourth": 33.8,
+    "hand": {
+     "won": 0.2,
+     "dealt in": 1.2,
+     "someone else won": 75.6,
+     "draw": 23.0
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 3,
+     "rank_points": -10
+    }
+   },
+   "push_line": {
+    "rank_points": -95.1,
+    "se": 7.4,
+    "fourth": 46.8,
+    "hand": {
+     "won": 0.0,
+     "dealt in": 100.0,
+     "someone else won": 0.0,
+     "draw": 0.0
+    },
+    "real_wall": {
+     "hand": "dealt in",
+     "place": 4,
+     "rank_points": -270
+    }
+   },
+   "push_gain": -42.8,
+   "push_gain_se": 8.2,
+   "fourth_change": 13.0
+  },
+  {
+   "game": "261010-6ab8e503-8009-4782-a055-20690a2e2cd9",
+   "round": "South 3-0",
+   "turn": 15,
+   "fold": "1s",
+   "push": "2p",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.552,
+   "options": [
+    [
+     "2p",
+     3,
+     3
+    ]
+   ],
+   "real_hand_points": -1500,
+   "fold_line": {
+    "rank_points": -6.2,
+    "se": 3.9,
+    "fourth": 8.4,
+    "hand": {
+     "won": 0.4,
+     "dealt in": 2.2,
+     "someone else won": 66.2,
+     "draw": 31.2
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 4,
+     "rank_points": -280
+    }
+   },
+   "push_line": {
+    "rank_points": -4.3,
+    "se": 4.0,
+    "fourth": 8.6,
+    "hand": {
+     "won": 0.0,
+     "dealt in": 10.2,
+     "someone else won": 61.2,
+     "draw": 28.6
+    },
+    "real_wall": {
+     "hand": "draw",
+     "place": 3,
+     "rank_points": -14
+    }
+   },
+   "push_gain": 1.9,
+   "push_gain_se": 3.5,
+   "fourth_change": 0.2
+  },
+  {
+   "game": "261012-7b808921-85b8-4758-a22e-194d7051e278",
+   "round": "South 3-0",
+   "turn": 12,
+   "fold": "1m",
+   "push": "8s",
+   "samples": 500,
+   "errors": 0,
+   "mortal_keep": 0.54,
+   "options": [
+    [
+     "6p",
+     2,
+     2
+    ],
+    [
+     "8s",
+     3,
+     4
+    ]
+   ],
+   "real_hand_points": -2000,
+   "fold_line": {
+    "rank_points": 76.9,
+    "se": 3.2,
+    "fourth": 1.8,
+    "hand": {
+     "won": 2.6,
+     "dealt in": 1.0,
+     "someone else won": 37.4,
+     "draw": 59.0
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 1,
+     "rank_points": 145
+    }
+   },
+   "push_line": {
+    "rank_points": 99.9,
+    "se": 2.9,
+    "fourth": 1.2,
+    "hand": {
+     "won": 36.6,
+     "dealt in": 6.0,
+     "someone else won": 27.4,
+     "draw": 30.0
+    },
+    "real_wall": {
+     "hand": "someone else won",
+     "place": 1,
+     "rank_points": 145
+    }
+   },
+   "push_gain": 23.0,
+   "push_gain_se": 3.4,
+   "fourth_change": -0.6
+  }
+ ],
+ "count": 15,
+ "mean_push_gain": -4.2,
+ "mean_push_gain_se": 1.6,
+ "mean_push_gain_se_across_folds": 8.8,
+ "push_deals_in_every_time": 4,
+ "mean_fourth_change": 2.2,
+ "push_better": 4,
+ "fold_better": 4,
+ "mortal_kept": {
+  "folds": 6,
+  "mean_push_gain": 10.2
+ },
+ "mortal_folded": {
+  "folds": 9,
+  "mean_push_gain": -13.9
+ }
+}

@@ -2196,6 +2196,56 @@
     "luckyj": "テンパイを保つ牌がすべて危険なとき、LuckyJは残り3枚以下の3翻以上のテンパイを、リーチに対して83%保つ。Mortalは98.9%で[[2m]]を切った。",
     "fix": "[[2m]]を切って押す。残り3枚の満貫は危険に見合う。この局面でLuckyJの押しは1局あたり618点を稼ぎ、降りは1,488点を失う。"
    }
+  },
+  {
+   "id": "split-fold-right",
+   "chapter": "fold-whatif",
+   "verdict": "fine",
+   "game": "261002-fc3b2f83",
+   "round": "East 3-0",
+   "frames": [
+    {
+     "turn": 12,
+     "expect_cut": "C"
+    }
+   ],
+   "title": "A fold Mortal split on, and the right one",
+   "situation": "East 3, turn 12, 22 tiles left. You are second on 25,300; toimen leads on 27,600 and declared riichi on turn 8. You draw a second [[C]]. Cut [[S]] and you are tenpai on [[C]] and [[6p]] with 2 live tiles; cut a [[C]], genbutsu, and you stay one-shanten.",
+   "did": "You cut a [[C]] and folded. The [[S]] was toimen's winning tile: they waited on it and [[2m]]. Kamicha later won 3,900 from toimen.",
+   "luckyj": "Mortal was split: it kept the tenpai 58% of the time, with the [[S]] or a riichi on it, and cut the [[C]] 42%. Played out 500 times with the real hands, the push deals in every time and ends the game 37.1 rank points below the fold.",
+   "fix": "No mistake. A turn Mortal splits is yours to call, and this time the tile you held back was the one toimen needed.",
+   "ja": {
+    "title": "Mortalが割れた降り、それが正解だった",
+    "situation": "東3局、12巡目、残り22枚。あなたは2位で25,300点。27,600点でトップの対面が8巡目にリーチしている。2枚目の[[C]]を引いた。[[S]]を切れば[[C]]と[[6p]]のシャンポンで残り2枚のテンパイ。現物の[[C]]を切れば1シャンテンのまま。",
+    "did": "[[C]]を切って降りた。[[S]]は対面の和了牌で、対面はそれと[[2m]]を待っていた。のちに上家が対面から3,900点をアガった。",
+    "luckyj": "Mortalは割れていた。58%は[[S]]を切るかリーチでテンパイを保ち、42%は[[C]]を切った。実際の手牌のまま500回打ち切ると、押しは毎回放銃し、降りより半荘の段位ポイントが37.1低い。",
+    "fix": "ミスではない。Mortalが割れる局面はあなたが決めてよく、今回は残した牌がまさに対面の待ちだった。"
+   }
+  },
+  {
+   "id": "newest-fold-8s",
+   "chapter": "fold-whatif",
+   "game": "261012-7b808921",
+   "round": "South 3-0",
+   "frames": [
+    {
+     "turn": 12,
+     "expect_cut": "1m",
+     "better": "8s"
+    }
+   ],
+   "title": "Your newest fold: a dora tanki against a dealer on zero",
+   "situation": "South 3, turn 12, 25 tiles left. You are second on 35,400, 200 behind shimocha. Kamicha, the dealer, is in riichi with 0 points left after the stick; toimen has 28,000. You have ponned [[S]], double South for you. You draw [[8s]]: cut it and you wait on the dora [[6p]] with 3 live tiles, 4 han; cut [[6p]] and you wait on [[8s]] with 2.",
+   "did": "You cut the genbutsu [[1m]] and folded. Kamicha drew the winning tile, riichi, tsumo and a red five, and you paid 2,000.",
+   "luckyj": "Mortal cut [[8s]] 54% of the time. Played out 500 times, the push wins the hand 36.6% of the time and deals in 6.0%, and ends the game 23.0 rank points ahead of the fold.",
+   "fix": "Push [[8s]]. Kamicha is on 0, so your tsumo, or a ron from kamicha, ends the game with you first, and a 4-han tenpai on 3 live tiles is worth the risk.",
+   "ja": {
+    "title": "最新の降り：0点の親に対するドラ単騎",
+    "situation": "南3局、12巡目、残り25枚。あなたは2位で35,400点、下家と200点差。親の上家がリーチしていて、リーチ棒を出して0点。対面は28,000点。あなたは[[S]]をポンしていて、ダブ南である。[[8s]]を引き、それを切ればドラの[[6p]]単騎で残り3枚、4翻。[[6p]]を切れば[[8s]]単騎で残り2枚。",
+    "did": "現物の[[1m]]を切って降りた。上家がツモアガリし、リーチ、ツモ、赤ドラで、あなたは2,000点を払った。",
+    "luckyj": "Mortalは54%で[[8s]]を切った。500回打ち切ると、押しはその局を36.6%アガり、6.0%放銃し、半荘の段位ポイントは降りより23.0高い。",
+    "fix": "[[8s]]を押す。上家は0点なので、あなたのツモか上家からのロンで半荘が終わり、あなたが1位になる。残り3枚の4翻のテンパイは危険に見合う。"
+   }
   }
  ]
 }
