@@ -1988,6 +1988,106 @@
     "luckyj": "10巡目、親で、残り7枚の両面の3翻の平和で、LuckyJのリーチ率は96%。第24章の表では、LuckyJは3翻の平和を88%リーチする。",
     "fix": "リーチする。リーチは3翻の平和を倍にする。同じロンが11,600点と本場になり、裏ドラが1枚乗れば12,000点である。"
    }
+  },
+  {
+   "id": "dealer-riichi-mangan",
+   "chapter": "three-fourths",
+   "verdict": "unlucky",
+   "game": "261012-1d8ad962",
+   "round": "East 2-0",
+   "frames": [
+    {
+     "turn": 12,
+     "expect_cut": "3p"
+    }
+   ],
+   "title": "A dealer's riichi that drew a mangan",
+   "situation": "East 2, turn 12, 27 tiles left. You are the dealer and first on 28,600. You draw [[3s]] into tenpai: cut [[3p]] and you wait on [[2s]], [[5s]] and [[8s]] with 7 live tiles. Without riichi the hand has no yaku, since the [[P]] pair is only a pair. Toimen has ponned [[E]].",
+   "did": "You declared with [[3p]]. The next turn you drew [[1m]] and, in riichi, had to throw it: toimen's toitoi and half flush with East, 8,000 and your stick.",
+   "luckyj": "LuckyJ's rate for this tenpai, a dealer's 7-tile wait with no yaku at the 12th turn and one call across the table, is 98%. Mortal declared it at 99.9%.",
+   "fix": "No mistake. Dama, this hand can win only by its own tsumo, and the riichi gives it every ron. What a riichi costs is that you throw what you draw, and this time the first draw was toimen's winning tile.",
+   "ja": {
+    "title": "満貫を引いた親のリーチ",
+    "situation": "東2局、12巡目、残り27枚。あなたは親で1位、28,600点。[[3s]]を引いてテンパイ。[[3p]]を切れば[[2s]]、[[5s]]、[[8s]]待ちで、残り7枚。[[P]]は対子なので、リーチなしでは役がない。対面が[[E]]をポンしている。",
+    "did": "[[3p]]でリーチした。次の巡目に[[1m]]を引き、リーチ中なので切るしかなかった。対面の対々和、混一色、東で8,000点と供託。",
+    "luckyj": "12巡目、親で、役なしの残り7枚の待ち、相手に1副露がいるこのテンパイで、LuckyJのリーチ率は98%。Mortalは99.9%でリーチした。",
+    "fix": "ミスではない。ダマでは自分のツモでしかアガれず、リーチすればどのロンでもアガれる。リーチの代償は引いた牌を切ることで、今回はその最初の1枚が対面の和了牌だった。"
+   }
+  },
+  {
+   "id": "chase-riichi-7700",
+   "chapter": "three-fourths",
+   "verdict": "unlucky",
+   "game": "261012-1d8ad962",
+   "round": "South 1-1",
+   "frames": [
+    {
+     "turn": 11,
+     "expect_cut": "4m"
+    }
+   ],
+   "title": "A chase riichi from fourth into the dealer's riichi",
+   "situation": "South 1, one honba, turn 11, 28 tiles left. You are fourth on 18,100. Kamicha, the dealer, is in riichi. You draw [[7s]] into tenpai: cut the dora [[4m]] and you wait on [[3p]]-[[6p]] with 5 live tiles. Your three [[F]] and a red five make the hand 2 han without riichi.",
+   "did": "You declared with [[4m]]. On your 14th turn you drew [[4s]] and had to throw it into kamicha's riichi: 7,700, 8,000 with the honba, and your stick.",
+   "luckyj": "With someone already in riichi, LuckyJ declares a 1- or 2-han tenpai on 4 or 5 live tiles 59% of the time, and 14 of its 16 two-sided ones between the 10th and 12th turns. Mortal declared this one at 99.8%.",
+   "fix": "No mistake. From fourth, a 2-han tenpai on 5 live tiles is a hand to push, and LuckyJ keeps a tenpai against a riichi 82% of the time even when every tile that keeps it is unsafe. Dama or riichi, you were going to meet kamicha's tiles; the riichi made the hand worth meeting them for.",
+   "ja": {
+    "title": "4位から、親のリーチへの追っかけリーチ",
+    "situation": "南1局1本場、11巡目、残り28枚。あなたは4位で18,100点。親の上家がリーチしている。[[7s]]を引いてテンパイ。ドラの[[4m]]を切れば[[3p]]-[[6p]]待ちで、残り5枚。[[F]]の暗刻と赤ドラで、リーチなしでも2翻。",
+    "did": "[[4m]]でリーチした。14巡目に[[4s]]を引き、上家のリーチに切るしかなかった。7,700点、本場込みで8,000点と供託。",
+    "luckyj": "誰かがすでにリーチしているとき、LuckyJは残り4枚か5枚の1翻か2翻のテンパイを59%リーチし、10巡目から12巡目の両面待ちでは16回のうち14回リーチしている。Mortalはこの手を99.8%でリーチした。",
+    "fix": "ミスではない。4位から、残り5枚の2翻のテンパイは押す手で、LuckyJはテンパイを保つ牌がすべて危険なときでも、リーチに対して82%テンパイを保つ。ダマでもリーチでも上家の危険牌には向かうことになり、リーチはその価値のある手にした。"
+   }
+  },
+  {
+   "id": "live-east-seven-pairs",
+   "chapter": "three-fourths",
+   "game": "261012-1d8ad962",
+   "round": "South 2-3",
+   "frames": [
+    {
+     "turn": 11,
+     "expect_cut": "E",
+     "better": "2s"
+    }
+   ],
+   "title": "A live East into a quiet seven pairs",
+   "situation": "South 2, three honba, turn 11, 29 tiles left. You are the dealer and fourth on 11,100. You are one-shanten and draw [[E]], your seat wind, with no copy seen. Kamicha has a chi and shimocha a pon. Toimen has not called, and threw [[4s]], [[7m]], [[4m]] and [[5s]] among its first six tiles.",
+   "did": "You threw the [[E]] at once. Toimen was waiting on it alone in seven pairs: 1,600 and 900 for the honba, 2,500.",
+   "luckyj": "Mortal kept the [[E]] and cut [[2s]] 98.7% of the time, and threw the [[E]] 0.7%. Both cuts leave the same one-shanten with 7 tiles that improve it.",
+   "fix": "Cut [[2s]]. Against the two callers the [[E]] looks the safer tile; the danger was toimen. Late in a hand, a live honor is the wait a seven-pairs hand hopes for, and a quiet player who throws middle tiles early is a common sign of one. The [[E]] is also your seat wind, so a second one would give your hand a yaku.",
+   "ja": {
+    "title": "黙った七対子への生牌の東",
+    "situation": "南2局3本場、11巡目、残り29枚。あなたは親で4位、11,100点。1シャンテンで、自風の[[E]]を引いた。1枚も見えていない。上家が1回チー、下家が1回ポンしている。対面は副露しておらず、最初の6枚のうちに[[4s]]、[[7m]]、[[4m]]、[[5s]]を切っていた。",
+    "did": "[[E]]をそのまま切った。対面は七対子でその単騎待ちだった。1,600点と本場の900点で2,500点。",
+    "luckyj": "Mortalは98.7%で[[E]]を残して[[2s]]を切り、[[E]]を切るのは0.7%だった。どちらを切っても、受け入れ7枚の同じ1シャンテンが残る。",
+    "fix": "[[2s]]を切る。2人の副露者に対しては[[E]]の方が安全に見えるが、危険だったのは対面である。局の終盤、生牌の字牌は七対子が待ちたい牌で、序盤に中張牌を切る黙った相手はその典型的なサインである。[[E]]は自風でもあり、もう1枚来れば手に役がつく。"
+   }
+  },
+  {
+   "id": "all-last-3s",
+   "chapter": "three-fourths",
+   "verdict": "unlucky",
+   "game": "261012-4c37163a",
+   "round": "South 4-0",
+   "frames": [
+    {
+     "turn": 10,
+     "expect_cut": "3s"
+    }
+   ],
+   "title": "All-last: level for third, and the tenpai tile dealt in",
+   "situation": "South 4, all-last, turn 10, 33 tiles left. You are third on 16,900, level with shimocha and ahead of them on the tie; toimen has 33,900 and kamicha, the dealer, 32,300. You draw [[7m]]: cut [[3s]] and you are tenpai on [[4p]]-[[7p]] with 7 live tiles, tanyao. Shimocha has ponned [[3p]] and thrown honors, terminals, an [[8s]] and an [[8p]].",
+   "did": "You cut [[3s]] and stayed dama. Shimocha ronned it, tanyao, dora and a red five, 3,900, and you finished fourth, 7,800 behind third.",
+   "luckyj": "Mortal threw [[3s]] too, 99.9% of the time, and declared riichi with it 95.5% of the time. Every other cut broke the tenpai.",
+   "fix": "No mistake. The tile went out either way; Mortal would have declared with it and been ronned on the declaration, so the stick would have stayed with you. This game started before chapter 33 went up.",
+   "ja": {
+    "title": "オーラス、3位で並び、テンパイ打牌が放銃",
+    "situation": "南4局オーラス、10巡目、残り33枚。あなたは3位で16,900点、下家と同点で、同点の順位では上。対面は33,900点、親の上家は32,300点。[[7m]]を引き、[[3s]]を切れば[[4p]]-[[7p]]待ちで残り7枚、タンヤオのテンパイ。下家は[[3p]]をポンし、字牌、么九牌、[[8s]]、[[8p]]を切っている。",
+    "did": "[[3s]]を切ってダマにした。下家のロンで、タンヤオ、ドラ、赤ドラの3,900点。3位と7,800点差の4位で終わった。",
+    "luckyj": "Mortalも99.9%で[[3s]]を切り、95.5%はそれでリーチした。ほかのどの牌を切ってもテンパイが崩れる。",
+    "fix": "ミスではない。どちらにしてもこの牌は出ていく。Mortalならこの牌でリーチを宣言し、宣言牌でロンされるので、供託は出ずに済んだ。この半荘は第33章の公開前に始まっている。"
+   }
   }
  ]
 }

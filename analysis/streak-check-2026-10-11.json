@@ -1,0 +1,441 @@
+{
+ "games": [
+  {
+   "game": "261012-4c37163a-b276-4c61-8ab8-a593614a1448",
+   "date": "2026-10-11 20:27",
+   "place": 4,
+   "score": 13000,
+   "before": 6278,
+   "after": 6011
+  },
+  {
+   "game": "261012-5dae20fd-fe6a-404a-8ce4-c41c3f600c1b",
+   "date": "2026-10-11 21:09",
+   "place": 4,
+   "score": 15200,
+   "before": 6011,
+   "after": 5747
+  },
+  {
+   "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+   "date": "2026-10-11 21:33",
+   "place": 4,
+   "score": 16200,
+   "before": 5747,
+   "after": 5484
+  }
+ ],
+ "agreement": {
+  "window": {
+   "games": 3,
+   "discards": 74.4,
+   "calls": 94.2
+  },
+  "before": {
+   "games": 196,
+   "discards": 73.2,
+   "calls": 93.1
+  }
+ },
+ "riichis": [
+  {
+   "game": "261012-4c37163a-b276-4c61-8ab8-a593614a1448",
+   "round": "East 1-0",
+   "turn": 8,
+   "wait": "tanki-honor",
+   "live": 2,
+   "han": 3,
+   "into_a_riichi": false,
+   "dealer": true,
+   "mortal": 0.989,
+   "luckyj": null,
+   "won": false,
+   "dealt": false,
+   "net": 0
+  },
+  {
+   "game": "261012-5dae20fd-fe6a-404a-8ce4-c41c3f600c1b",
+   "round": "East 1-0",
+   "turn": 4,
+   "wait": "penchan",
+   "live": 4,
+   "han": 0,
+   "into_a_riichi": false,
+   "dealer": true,
+   "mortal": 0.998,
+   "luckyj": 0.858,
+   "won": false,
+   "dealt": true,
+   "net": -4900
+  },
+  {
+   "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+   "round": "East 1-0",
+   "turn": 4,
+   "wait": "kanchan",
+   "live": 4,
+   "han": 0,
+   "into_a_riichi": false,
+   "dealer": false,
+   "mortal": 0.941,
+   "luckyj": 0.817,
+   "won": true,
+   "dealt": false,
+   "net": 3600
+  },
+  {
+   "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+   "round": "East 2-0",
+   "turn": 12,
+   "wait": "multi",
+   "live": 7,
+   "han": 0,
+   "into_a_riichi": false,
+   "dealer": true,
+   "mortal": 0.999,
+   "luckyj": 0.984,
+   "won": false,
+   "dealt": true,
+   "net": -9000
+  },
+  {
+   "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+   "round": "South 1-1",
+   "turn": 11,
+   "wait": "ryanmen",
+   "live": 5,
+   "han": 2,
+   "into_a_riichi": true,
+   "dealer": false,
+   "mortal": 0.998,
+   "luckyj": null,
+   "won": false,
+   "dealt": true,
+   "net": -9000
+  },
+  {
+   "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+   "round": "South 1-2",
+   "turn": 4,
+   "wait": "ryanmen",
+   "live": 8,
+   "han": 1,
+   "into_a_riichi": false,
+   "dealer": false,
+   "mortal": 0.999,
+   "luckyj": 0.963,
+   "won": false,
+   "dealt": false,
+   "net": 2000
+  },
+  {
+   "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+   "round": "South 3-2",
+   "turn": 9,
+   "wait": "kanchan",
+   "live": 4,
+   "han": 2,
+   "into_a_riichi": true,
+   "dealer": false,
+   "mortal": 0.604,
+   "luckyj": null,
+   "won": true,
+   "dealt": false,
+   "net": 9500
+  },
+  {
+   "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+   "round": "South 4-0",
+   "turn": 8,
+   "wait": "ryanmen",
+   "live": 7,
+   "han": 2,
+   "into_a_riichi": false,
+   "dealer": false,
+   "mortal": 0.999,
+   "luckyj": 0.95,
+   "won": false,
+   "dealt": false,
+   "net": 2000
+  }
+ ],
+ "deal_ins": [
+  {
+   "game": "261012-4c37163a-b276-4c61-8ab8-a593614a1448",
+   "round": "South 2-1",
+   "tile": "6m",
+   "paid": 1900,
+   "value": "50 fu 1 han, 1,600",
+   "winner": "toimen",
+   "in_riichi": false,
+   "mortal_top": [
+    [
+     "6m",
+     0.576
+    ],
+    [
+     "W",
+     0.418
+    ],
+    [
+     "5m",
+     0.002
+    ]
+   ]
+  },
+  {
+   "game": "261012-4c37163a-b276-4c61-8ab8-a593614a1448",
+   "round": "South 4-0",
+   "tile": "3s",
+   "paid": 3900,
+   "value": "30 fu 3 han, 3,900",
+   "winner": "shimocha",
+   "in_riichi": false,
+   "mortal_top": [
+    [
+     "riichi",
+     0.955
+    ],
+    [
+     "3s",
+     0.044
+    ],
+    [
+     "2s",
+     0.001
+    ]
+   ]
+  },
+  {
+   "game": "261012-5dae20fd-fe6a-404a-8ce4-c41c3f600c1b",
+   "round": "East 1-0",
+   "tile": "5s",
+   "paid": 3900,
+   "value": "30 fu 3 han, 3,900",
+   "winner": "toimen",
+   "in_riichi": true,
+   "mortal_top": []
+  },
+  {
+   "game": "261012-5dae20fd-fe6a-404a-8ce4-c41c3f600c1b",
+   "round": "South 2-0",
+   "tile": "8s",
+   "paid": 3900,
+   "value": "30 fu 3 han, 3,900",
+   "winner": "kamicha",
+   "in_riichi": false,
+   "mortal_top": [
+    [
+     "8s",
+     0.517
+    ],
+    [
+     "3s",
+     0.481
+    ],
+    [
+     "4m",
+     0.001
+    ]
+   ]
+  },
+  {
+   "game": "261012-5dae20fd-fe6a-404a-8ce4-c41c3f600c1b",
+   "round": "South 3-0",
+   "tile": "8p",
+   "paid": 1000,
+   "value": "30 fu 1 han, 1,000",
+   "winner": "shimocha",
+   "in_riichi": false,
+   "mortal_top": [
+    [
+     "8p",
+     0.64
+    ],
+    [
+     "W",
+     0.349
+    ],
+    [
+     "F",
+     0.005
+    ]
+   ]
+  },
+  {
+   "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+   "round": "East 2-0",
+   "tile": "1m",
+   "paid": 8000,
+   "value": "mangan, 8,000",
+   "winner": "toimen",
+   "in_riichi": true,
+   "mortal_top": []
+  },
+  {
+   "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+   "round": "South 1-1",
+   "tile": "4s",
+   "paid": 8000,
+   "value": "40 fu 3 han, 7,700",
+   "winner": "kamicha",
+   "in_riichi": true,
+   "mortal_top": []
+  },
+  {
+   "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+   "round": "South 2-3",
+   "tile": "E",
+   "paid": 2500,
+   "value": "25 fu 2 han, 1,600",
+   "winner": "toimen",
+   "in_riichi": false,
+   "mortal_top": [
+    [
+     "2s",
+     0.987
+    ],
+    [
+     "E",
+     0.007
+    ],
+    [
+     "W",
+     0.003
+    ]
+   ]
+  }
+ ],
+ "where": {
+  "your riichi": {
+   "hands": 8,
+   "points": -5800
+  },
+  "tsumo against you": {
+   "hands": 4,
+   "points": -10100
+  },
+  "draw": {
+   "hands": 4,
+   "points": -5000
+  },
+  "others": {
+   "hands": 6,
+   "points": 0
+  },
+  "deal-in": {
+   "hands": 5,
+   "points": -13200
+  },
+  "your win": {
+   "hands": 2,
+   "points": 3500
+  }
+ },
+ "long_run": {
+  "you": {
+   "riichis": 382,
+   "won": 48.7,
+   "dealt": 12.8,
+   "points": 2464,
+   "lost_points": 37.4
+  },
+  "luckyj": {
+   "riichis": 2171,
+   "won": 51.8,
+   "dealt": 13.7,
+   "points": 2941,
+   "lost_points": 34.7
+  },
+  "you_first": {
+   "riichis": 296,
+   "won": 51.7,
+   "dealt": 11.1,
+   "points": 2721,
+   "lost_points": 33.8
+  },
+  "luckyj_first": {
+   "riichis": 1665,
+   "won": 54.7,
+   "dealt": 12.2,
+   "points": 3303,
+   "lost_points": 30.3
+  },
+  "window": {
+   "riichis": 8,
+   "won": 25.0,
+   "dealt": 37.5,
+   "points": -725,
+   "lost_points": 37.5
+  }
+ },
+ "luck": {
+  "riichis": 8,
+  "dealt": 3,
+  "points": -5800,
+  "p_dealt": 8.4,
+  "p_points": 6.2
+ },
+ "streaks": {
+  "games": 1255,
+  "fourth_rate": 16.3,
+  "runs": [
+   3,
+   4,
+   3
+  ],
+  "chance_in_199": 51.3
+ },
+ "chase": {
+  "no yaku, 3 or fewer live": {
+   "tenpais": 54,
+   "declared": 30,
+   "declared_pct": 55.6
+  },
+  "no yaku, 4-5 live": {
+   "tenpais": 63,
+   "declared": 47,
+   "declared_pct": 74.6
+  },
+  "no yaku, 6 or more live": {
+   "tenpais": 60,
+   "declared": 59,
+   "declared_pct": 98.3
+  },
+  "1-2 han, 3 or fewer live": {
+   "tenpais": 34,
+   "declared": 9,
+   "declared_pct": 26.5
+  },
+  "1-2 han, 4-5 live": {
+   "tenpais": 56,
+   "declared": 33,
+   "declared_pct": 58.9
+  },
+  "1-2 han, 6 or more live": {
+   "tenpais": 83,
+   "declared": 72,
+   "declared_pct": 86.7
+  },
+  "3+ han, 3 or fewer live": {
+   "tenpais": 59,
+   "declared": 6,
+   "declared_pct": 10.2
+  },
+  "3+ han, 4-5 live": {
+   "tenpais": 36,
+   "declared": 16,
+   "declared_pct": 44.4
+  },
+  "3+ han, 6 or more live": {
+   "tenpais": 39,
+   "declared": 25,
+   "declared_pct": 64.1
+  },
+  "1-2 han, 4-5 live, two-sided, turns 10-12": {
+   "tenpais": 16,
+   "declared": 14,
+   "declared_pct": 87.5
+  }
+ }
+}
