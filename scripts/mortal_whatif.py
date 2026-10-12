@@ -41,11 +41,12 @@ for _red in ("5m", "5p", "5s"):
 PAISHAN = {"0m": "5mr", "0p": "5pr", "0s": "5sr", "1z": "E", "2z": "S", "3z": "W", "4z": "N", "5z": "P", "6z": "F",
            "7z": "C"}
 # Mahjong Soul's raw wall: the deal is tiles 0-51 and the draws start at 52. The first dora and ura indicators
-# (131, 130) were checked on ten hands; the later indicators and the kan draws are assumed.
+# (131, 130) were checked on ten hands, the first kan dora (129) and the first kan draw (135, the wall's last tile)
+# on 22 kans; the later indicators and kan draws are assumed to follow on.
 LIVE = (52, 122)
 DORA_AT = (131, 129, 127, 125, 123)
 URA_AT = (130, 128, 126, 124, 122)
-RINSHAN_AT = (132, 133, 134, 135)
+RINSHAN_AT = (135, 134, 133, 132)
 UMA = (130, 65, 0, -250)
 ENGINE = None
 
@@ -421,15 +422,16 @@ def recorded_hand(case, bots, shuffle_seed=None):
         last = i == len(prefix) - 1
         got = hand.emit(ev, act=last)
     if shuffle_seed is not None:
-        # everything nobody has seen: the rest of the live wall and the dead wall but its open indicators
+        # everything nobody has seen: the rest of the live wall and the dead wall but its open indicators and the
+        # replacement tiles a kan has already drawn
         rng = random.Random(shuffle_seed)
-        unseen = hand.live[hand.draws:] + hand.dora[hand.ndora:] + hand.ura + hand.rinshan
+        unseen = hand.live[hand.draws:] + hand.dora[hand.ndora:] + hand.ura + hand.rinshan[hand.kans:]
         rng.shuffle(unseen)
         n_live = len(hand.live) - hand.draws
         hand.live[hand.draws:] = unseen[:n_live]
         rest = unseen[n_live:]
         k = 5 - hand.ndora
-        hand.dora[hand.ndora:], hand.ura, hand.rinshan = rest[:k], rest[k:k + 5], rest[k + 5:]
+        hand.dora[hand.ndora:], hand.ura, hand.rinshan[hand.kans:] = rest[:k], rest[k:k + 5], rest[k + 5:]
     return hand, got.get(case["hero"])
 
 
