@@ -11,8 +11,10 @@ selection is the same, so the rows match that miner's one for one; this one adds
   genbutsu, suji, nakasuji, dead or an honor with two copies out is one the players folding against the riichi throw;
 - every later discard of the hand: how many were unsafe against a riichi player, and whether the hand later left
   tenpai (a fold after the push);
-- the deal-in, if any: on the decision's own tile or later, into a riichi or into someone who had not declared, and
-  whether the player was still tenpai when it happened.
+- the deal-in, if any: on the decision's own tile or later, into a riichi or into someone who had not declared (and
+  whether that hand was open), and whether the player was still tenpai when it happened;
+- how many opponents had called and were not in riichi at the decision, and who won the hand: the player, the riichi,
+  a later riichi, an open hand, or a closed hand without riichi.
 
 ``report`` sets the user's pushes of big hands on thin waits (3 han or more counting a closed hand's riichi, 3 live
 tiles or fewer) against LuckyJ's: results, where the deal-ins came, deal-ins on the push tile against LuckyJ's rate
@@ -66,6 +68,9 @@ def game_rows(g: dict) -> list[dict]:
         events = game["events"]
         riichi_turn = {q: next((x["turn"] for x in events if x["seat"] == q and x["riichi"]), None) for q in range(4)}
         riichi_tile = {q: next((x["tile"] for x in events if x["seat"] == q and x["riichi"]), None) for q in range(4)}
+
+        def into_riichi_of(x: dict, w: int) -> bool:
+            return x["riichi_seats"][w] is not None and x["riichi_seats"][w] < x["index"]
 
         def near_riichi_tile(tile: int, seats: list[int]) -> int | None:
             """Ranks between ``tile`` and the nearest riichi declaration tile of its suit (None for an honor or no such tile)."""
@@ -145,12 +150,29 @@ def game_rows(g: dict) -> list[dict]:
                     left_tenpai = True
             won = any(d[0] == hero for _, d in blocks)
             dealt = [d for _, d in blocks if d[1] == hero and d[0] != hero]
+            # the opponents with calls and not in riichi at the decision, and who won the hand
+            open_opponents = [q for q in range(4) if q != hero and q not in reached and snap[q]]
+            final = events[-1]
+            winner_kind = []
+            for _, d in blocks:
+                w = d[0]
+                if w == hero:
+                    winner_kind.append("you")
+                elif w in reached:
+                    winner_kind.append("the riichi")
+                elif final["riichi_seats"][w] is not None:
+                    winner_kind.append("a later riichi")
+                elif game["players"][w]["melds"]:
+                    winner_kind.append("an open hand")
+                else:
+                    winner_kind.append("a closed hand without riichi")
             deal = None
             if dealt:
                 last = ([e] + later)[-1]
                 winner = dealt[0][0]
                 into_riichi = last["riichi_seats"][winner] is not None and last["riichi_seats"][winner] < last["index"]
                 deal = {"turn": last["turn"], "tile": site_tile(last["tile"]), "on_decision": last is e,
+                        "into_open_hand": bool(game["players"][winner]["melds"]) and not into_riichi_of(last, winner),
                         "into_riichi": into_riichi, "in_own_riichi": last["riichi_seats"][hero] is not None and last["riichi_seats"][hero] < last["index"],
                         "tenpai": ws.hand_shanten(last["hand_after"], last["meld_tiles"], last["closed"]) == 0,
                         "label": labels_at(last, last["tile"], [winner], last["hand_before"])[0] if into_riichi else None}
@@ -162,7 +184,8 @@ def game_rows(g: dict) -> list[dict]:
                 "labels": labels(e["tile"]), "options": options, "near_riichi_tile": near_riichi_tile(e["tile"], reached),
                 "waits": [site_tile(w) for w in waits], "wait_labels": wait_labels, "wait_live": wait_live, "dama_han": dama_han,
                 "unsafe_later": unsafe_later, "left_tenpai": left_tenpai,
-                "won": won, "dealt": bool(dealt), "deal": deal,
+                "won": won, "dealt": bool(dealt), "deal": deal, "open_opponents": len(open_opponents),
+                "winners": winner_kind,
                 "delta": tr.result_deltas(log[-1])[hero] - 1000 * tr.riichi_sticks_paid(log)[hero],
                 "south4": log[0][0] >= 7,
             })

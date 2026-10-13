@@ -1,0 +1,484 @@
+{
+ "groups": {
+  "you": {
+   "spots": 280,
+   "pushed": 78.2,
+   "with_a_caller": 45.7,
+   "two_riichis": 6.4,
+   "on_the_push": [
+    27,
+    219,
+    12.3
+   ],
+   "kinds": {
+    "live honor": [
+     1,
+     15,
+     6.7
+    ],
+    "live terminal": [
+     5,
+     41,
+     12.2
+    ],
+    "half suji": [
+     5,
+     45,
+     11.1
+    ],
+    "live 2-3-7-8": [
+     12,
+     82,
+     14.6
+    ],
+    "live 4-5-6": [
+     4,
+     34,
+     11.8
+    ]
+   },
+   "thin_wins": [
+    6,
+    54,
+    11.1
+   ],
+   "won": 27.9,
+   "dealt": 23.3,
+   "later_deal_ins": 11.0,
+   "winners": {
+    "pushes": {
+     "hands": 219,
+     "you": 27.9,
+     "the riichi": 50.2,
+     "a later riichi": 1.8,
+     "an open hand": 6.4,
+     "a closed hand without riichi": 2.7,
+     "draw": 12.8
+    },
+    "folds": {
+     "hands": 61,
+     "you": 3.3,
+     "the riichi": 50.8,
+     "a later riichi": 3.3,
+     "an open hand": 8.2,
+     "a closed hand without riichi": 4.9,
+     "draw": 29.5
+    }
+   },
+   "callers": {
+    "no caller": {
+     "pushes": 120,
+     "won": 28.3,
+     "dealt": 25.8,
+     "on_the_push": [
+      16,
+      13.3
+     ],
+     "into_an_open_hand": 0.0,
+     "an_open_hand_won": 0.8
+    },
+    "a caller": {
+     "pushes": 99,
+     "won": 27.3,
+     "dealt": 20.2,
+     "on_the_push": [
+      11,
+      11.1
+     ],
+     "into_an_open_hand": 4.0,
+     "an_open_hand_won": 13.1
+    }
+   }
+  },
+  "jade_players": {
+   "spots": 719,
+   "pushed": 80.4,
+   "with_a_caller": 48.3,
+   "two_riichis": 6.4,
+   "on_the_push": [
+    64,
+    578,
+    11.1
+   ],
+   "kinds": {
+    "live honor": [
+     4,
+     60,
+     6.7
+    ],
+    "live terminal": [
+     8,
+     91,
+     8.8
+    ],
+    "half suji": [
+     10,
+     89,
+     11.2
+    ],
+    "live 2-3-7-8": [
+     25,
+     255,
+     9.8
+    ],
+    "live 4-5-6": [
+     17,
+     83,
+     20.5
+    ]
+   },
+   "thin_wins": [
+    32,
+    137,
+    23.4
+   ],
+   "won": 29.6,
+   "dealt": 21.1,
+   "later_deal_ins": 10.0,
+   "winners": {
+    "pushes": {
+     "hands": 578,
+     "you": 29.6,
+     "the riichi": 44.1,
+     "a later riichi": 1.9,
+     "an open hand": 7.6,
+     "a closed hand without riichi": 1.7,
+     "draw": 15.6
+    },
+    "folds": {
+     "hands": 141,
+     "you": 2.8,
+     "the riichi": 46.8,
+     "a later riichi": 1.4,
+     "an open hand": 17.0,
+     "a closed hand without riichi": 3.5,
+     "draw": 29.1
+    }
+   },
+   "callers": {
+    "no caller": {
+     "pushes": 299,
+     "won": 29.4,
+     "dealt": 20.1,
+     "on_the_push": [
+      24,
+      8.0
+     ],
+     "into_an_open_hand": 0.0,
+     "an_open_hand_won": 0.7
+    },
+    "a caller": {
+     "pushes": 279,
+     "won": 29.7,
+     "dealt": 22.2,
+     "on_the_push": [
+      40,
+      14.3
+     ],
+     "into_an_open_hand": 5.4,
+     "an_open_hand_won": 15.1
+    }
+   }
+  },
+  "tokujou_humans": {
+   "spots": 4833,
+   "pushed": 78.8,
+   "with_a_caller": 49.5,
+   "two_riichis": 7.1,
+   "on_the_push": [
+    438,
+    3809,
+    11.5
+   ],
+   "kinds": {
+    "live honor": [
+     21,
+     368,
+     5.7
+    ],
+    "live terminal": [
+     63,
+     649,
+     9.7
+    ],
+    "half suji": [
+     76,
+     634,
+     12.0
+    ],
+    "live 2-3-7-8": [
+     185,
+     1569,
+     11.8
+    ],
+    "live 4-5-6": [
+     91,
+     571,
+     15.9
+    ]
+   },
+   "thin_wins": [
+    204,
+    931,
+    21.9
+   ],
+   "won": 29.6,
+   "dealt": 23.0,
+   "later_deal_ins": 11.5,
+   "winners": {
+    "pushes": {
+     "hands": 3809,
+     "you": 29.6,
+     "the riichi": 44.6,
+     "a later riichi": 1.7,
+     "an open hand": 8.2,
+     "a closed hand without riichi": 2.0,
+     "draw": 15.5
+    },
+    "folds": {
+     "hands": 1024,
+     "you": 5.0,
+     "the riichi": 47.8,
+     "a later riichi": 3.7,
+     "an open hand": 11.1,
+     "a closed hand without riichi": 3.6,
+     "draw": 30.0
+    }
+   },
+   "callers": {
+    "no caller": {
+     "pushes": 1989,
+     "won": 30.9,
+     "dealt": 22.1,
+     "on_the_push": [
+      196,
+      9.9
+     ],
+     "into_an_open_hand": 0.2,
+     "an_open_hand_won": 1.2
+    },
+    "a caller": {
+     "pushes": 1820,
+     "won": 28.1,
+     "dealt": 24.0,
+     "on_the_push": [
+      242,
+      13.3
+     ],
+     "into_an_open_hand": 5.5,
+     "an_open_hand_won": 15.8
+    }
+   }
+  },
+  "luckyj": {
+   "spots": 1505,
+   "pushed": 82.3,
+   "with_a_caller": 47.2,
+   "two_riichis": 5.2,
+   "on_the_push": [
+    114,
+    1238,
+    9.2
+   ],
+   "kinds": {
+    "live honor": [
+     7,
+     134,
+     5.2
+    ],
+    "live terminal": [
+     21,
+     215,
+     9.8
+    ],
+    "half suji": [
+     13,
+     200,
+     6.5
+    ],
+    "live 2-3-7-8": [
+     53,
+     524,
+     10.1
+    ],
+    "live 4-5-6": [
+     20,
+     159,
+     12.6
+    ]
+   },
+   "thin_wins": [
+    64,
+    316,
+    20.3
+   ],
+   "won": 30.9,
+   "dealt": 20.8,
+   "later_deal_ins": 11.6,
+   "winners": {
+    "pushes": {
+     "hands": 1238,
+     "you": 30.9,
+     "the riichi": 43.8,
+     "a later riichi": 2.7,
+     "an open hand": 7.0,
+     "a closed hand without riichi": 2.5,
+     "draw": 14.5
+    },
+    "folds": {
+     "hands": 267,
+     "you": 7.1,
+     "the riichi": 41.2,
+     "a later riichi": 3.4,
+     "an open hand": 15.4,
+     "a closed hand without riichi": 1.9,
+     "draw": 31.8
+    }
+   },
+   "callers": {
+    "no caller": {
+     "pushes": 690,
+     "won": 32.5,
+     "dealt": 20.1,
+     "on_the_push": [
+      56,
+      8.1
+     ],
+     "into_an_open_hand": 0.6,
+     "an_open_hand_won": 1.9
+    },
+    "a caller": {
+     "pushes": 548,
+     "won": 29.0,
+     "dealt": 21.7,
+     "on_the_push": [
+      58,
+      10.6
+     ],
+     "into_an_open_hand": 4.0,
+     "an_open_hand_won": 13.5
+    }
+   }
+  }
+ },
+ "chasing": {
+  "you": {
+   "hands": 943,
+   "chased": 17.6,
+   "first_won": 52.9,
+   "chaser_won": 5.9
+  },
+  "luckyj": {
+   "hands": 5026,
+   "chased": 15.5,
+   "first_won": 50.8,
+   "chaser_won": 5.7
+  }
+ },
+ "waits": {
+  "you": {
+   "hero|live honor": [
+    195,
+    8,
+    4.1
+   ],
+   "hero|live terminal": [
+    159,
+    16,
+    10.1
+   ],
+   "hero|half suji": [
+    95,
+    8,
+    8.4
+   ],
+   "hero|live 2-3-7-8": [
+    184,
+    15,
+    8.2
+   ],
+   "hero|live 4-5-6": [
+    59,
+    10,
+    16.9
+   ],
+   "others|live honor": [
+    820,
+    13,
+    1.6
+   ],
+   "others|live terminal": [
+    686,
+    47,
+    6.9
+   ],
+   "others|half suji": [
+    278,
+    27,
+    9.7
+   ],
+   "others|live 2-3-7-8": [
+    934,
+    76,
+    8.1
+   ],
+   "others|live 4-5-6": [
+    174,
+    32,
+    18.4
+   ]
+  },
+  "luckyj": {
+   "hero|live honor": [
+    1075,
+    26,
+    2.4
+   ],
+   "hero|live terminal": [
+    888,
+    50,
+    5.6
+   ],
+   "hero|half suji": [
+    511,
+    33,
+    6.5
+   ],
+   "hero|live 2-3-7-8": [
+    1280,
+    105,
+    8.2
+   ],
+   "hero|live 4-5-6": [
+    259,
+    33,
+    12.7
+   ],
+   "others|live honor": [
+    4092,
+    120,
+    2.9
+   ],
+   "others|live terminal": [
+    3496,
+    243,
+    7.0
+   ],
+   "others|half suji": [
+    1593,
+    153,
+    9.6
+   ],
+   "others|live 2-3-7-8": [
+    4866,
+    419,
+    8.6
+   ],
+   "others|live 4-5-6": [
+    1026,
+    139,
+    13.5
+   ]
+  }
+ }
+}
