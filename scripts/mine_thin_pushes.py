@@ -65,6 +65,16 @@ def game_rows(g: dict) -> list[dict]:
         blocks = tr.result_blocks(log[-1])
         events = game["events"]
         riichi_turn = {q: next((x["turn"] for x in events if x["seat"] == q and x["riichi"]), None) for q in range(4)}
+        riichi_tile = {q: next((x["tile"] for x in events if x["seat"] == q and x["riichi"]), None) for q in range(4)}
+
+        def near_riichi_tile(tile: int, seats: list[int]) -> int | None:
+            """Ranks between ``tile`` and the nearest riichi declaration tile of its suit (None for an honor or no such tile)."""
+            b = base(tile)
+            if b >= 41:
+                return None
+            gaps = [abs(b - base(riichi_tile[q])) for q in seats
+                    if riichi_tile[q] is not None and base(riichi_tile[q]) < 41 and base(riichi_tile[q]) // 10 == b // 10]
+            return min(gaps) if gaps else None
 
         def labels_at(e: dict, tile: int, seats: list[int], hand: list[int]) -> list[str]:
             snap = meld_snapshots(game, e["index"] - 1)
@@ -149,7 +159,7 @@ def game_rows(g: dict) -> list[dict]:
                 "riichi_ago": e["turn"] - min(riichi_turn[q] or e["turn"] for q in reached), "riichis": len(reached),
                 "live": best[0], "han": best[1], "pushed": kept, "chased": bool(e["riichi"]),
                 "tile": site_tile(e["tile"]), "danger": max(DANGER[lab] for lab in labels(e["tile"])),
-                "labels": labels(e["tile"]), "options": options,
+                "labels": labels(e["tile"]), "options": options, "near_riichi_tile": near_riichi_tile(e["tile"], reached),
                 "waits": [site_tile(w) for w in waits], "wait_labels": wait_labels, "wait_live": wait_live, "dama_han": dama_han,
                 "unsafe_later": unsafe_later, "left_tenpai": left_tenpai,
                 "won": won, "dealt": bool(dealt), "deal": deal,

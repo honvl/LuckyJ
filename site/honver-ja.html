@@ -49,7 +49,8 @@
           <aside class="guide-news" id="whats-new" aria-labelledby="whats-new-title">
             <h2 id="whats-new-title">更新情報</h2>
             <ol>
-              <li class="is-latest"><span class="guide-news-date">10月12日</span><p><span class="new-tag">Latest</span> <a href="#fold-whatif">第37章は、15回の降りを両方の打ち方で打ち切る</a>。Mortalが全席を打ち、それぞれ500回。全体では降りは損をしていない（押せば1回あたり&#8722;4.2段位ポイント、&#177; 8.8）。Mortalなら保った6回は押せば1回あたり10.2の価値があり、Mortalも降りる9回は正しかった。第1章から第36章は変わっていない。</p></li>
+              <li class="is-latest"><span class="guide-news-date">10月13日</span><p><span class="new-tag">Latest</span> <a href="#fold-theory">第38章は、LuckyJより少しだけ多く降りるべき理由を説明する</a>。点数の仕組みと相手には理由がなく、理由はあなたの読みにある。押した牌の放銃は、同じ種類の牌でのLuckyJより3.1ポイント多く、押すたびに約2.3段位ポイントの損になる。だから待ちの少ない安い手ではより多く降り、残り4枚以上の大きな手ではLuckyJに合わせる。第1章から第37章は変わっていない。</p></li>
+              <li><span class="guide-news-date">10月12日</span><p><a href="#fold-whatif">第37章は、15回の降りを両方の打ち方で打ち切る</a>。Mortalが全席を打ち、それぞれ500回。全体では降りは損をしていない（押せば1回あたり&#8722;4.2段位ポイント、&#177; 8.8）。Mortalなら保った6回は押せば1回あたり10.2の価値があり、Mortalも降りる9回は正しかった。第1章から第36章は変わっていない。</p></li>
               <li><span class="guide-news-date">10月12日</span><p><a href="#push-ev">第36章は、押しと降りを段位ポイントで測る</a>。依頼どおりEVで測ると、第35章の局面ではあなたの降りの方が押しより損が小さいが、差は標準誤差1つ分ほど。280回の局面すべてでは、押しは降りより約7段位ポイント価値があり、LuckyJはどの順位からでも5回に4回押す。第1章から第35章は、下の訂正を除いて変わっていない。</p></li>
               <li class="is-correction"><span class="guide-news-date">10月12日</span><p><span class="guide-news-tag">Corrected</span> 第35章は、その局面で降りても点は守れなかったと書いていた。これは素点の話で、段位ポイントでは、そこでのあなたの降りは押しより損が小さく、1局あたり6.6と18.6だった。加えた文は<a href="#fix-35-folds">第35章</a>で<mark class="guide-changed">強調</mark>している。</p></li>
               <li><span class="guide-news-date">10月12日</span><p><a href="#thin-pushes">第35章は、リーチに押した残りの少ない大きな手を調べる</a>。あなたの押しの結果がLuckyJに劣る唯一の局面で、42回の押しで5回アガり、14回放銃した。押しはLuckyJもMortalもする押しで、この局面で降りた15回は押した手より点を失っている。変えることは2つ。テンパイを保つ牌が2枚あるときは良い待ちを残し、降りを少し減らす。第1章から第34章は、下の訂正を除いて変わっていない。</p></li>
@@ -119,7 +120,7 @@
 
         <nav class="section guide-chapters" id="chapters" aria-labelledby="chapters-title">
           <p class="kicker">章</p>
-          <h2 id="chapters-title">37の章</h2>
+          <h2 id="chapters-title">38の章</h2>
           <p class="guide-chapters-note">新しい教訓は、末尾に新しい章として加える。読んだ章は、印を付けた訂正を除いてそのまま残す。</p>
           <ol class="contents-list is-points guide-chapter-list">
             <li><a href="#value"><span class="contents-num">01</span><span class="contents-title">手の方針を決める前にドラを数える</span><span class="contents-sub">打点 &#183; 9月22日追加</span></a></li>
@@ -159,6 +160,7 @@
             <li><a href="#thin-pushes"><span class="contents-num">35</span><span class="contents-title">残りの少ない大きな手：押し続け、良い待ちを残す</span><span class="contents-sub"><span class="new-tag">New</span> 押すか降りるか &#183; 10月12日追加</span></a></li>
             <li><a href="#push-ev"><span class="contents-num">36</span><span class="contents-title">押しと降りを段位ポイントで測る</span><span class="contents-sub"><span class="new-tag">New</span> 押すか降りるか &#183; 10月12日追加</span></a></li>
             <li><a href="#fold-whatif"><span class="contents-num">37</span><span class="contents-title">15回の降りを打ち切る</span><span class="contents-sub"><span class="new-tag">New</span> 押すか降りるか &#183; 10月12日追加</span></a></li>
+            <li><a href="#fold-theory"><span class="contents-num">38</span><span class="contents-title">LuckyJより少しだけ多く降りるべき理由</span><span class="contents-sub"><span class="new-tag">New</span> 押すか降りるか &#183; 10月13日追加</span></a></li>
           </ol>
         </nav>
 
@@ -2731,6 +2733,70 @@
             </div>
             <p class="evidence-note"><b>根拠</b> 第35章の15回の降りそれぞれに<code>mortal_whatif.py</code>を500標本ずつ実行し、<code>mine_fold_whatif.py</code>でまとめた。巡目の後はMortalがすべての席を打つので、どちらの打ち方も、Mortalならこう続けるという形で測っている。表の&#177;は並べ替えによる誤差で、降り15回の間で見た平均の誤差は8.8である。この実行中に、シミュレーターの槓の扱いの誤りを2つ直した。雀魂は槓の嶺上牌を山の最後の牌から取ること（22回の槓で確認）と、並べ替えで、すでに引いた嶺上牌を山に戻さないことである。第27章のシミュレーションは、その巡目より前に槓がなかったので、並べ替えは影響を受けていない。</p>
           </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#fold-theory"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>38</i>LuckyJより少しだけ多く降りるべき理由</span></a></nav>
+        </section>
+
+        <section class="point" id="fold-theory">
+          <div class="point-number">38</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第38章 &#183; 押すか降りるか &#183; 10月13日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>LuckyJより少しだけ多く降りるべき理由</h3>
+            <p>LuckyJより少しだけ多く降りるべき理屈と、EVの差を生んでいるものを調べてほしい、という依頼だった。リーチに対する押しが得になるのは、アガれる確率とアガったときに半荘へもたらす価値の積が、放銃する確率とその損の積を上回り、さらに降りたときの損と比べても上回るときである。この比較の数字はすべて、打ち手自身のものだ。あなたの数字がLuckyJと違いうる理由は3つある。打っている点数の仕組み、相手、そして押す牌の読み。実際に違っていたのは最後の1つだけだった。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>違いうるもの</th><th>あなた</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>半荘の点数</td><td>雀聖3の玉の間：+130、+65、0、&#8722;250に（点数 &#8722; 30,000） / 1000</td><td>天鳳特上卓の10段：+75、+30、0、&#8722;180</td></tr>
+                  <tr><td>第37章の降りを押した場合、1回あたり</td><td>&#8722;4.2、380ポイントの幅の1.11%</td><td>&#8722;3.0、255ポイントの幅の1.18%</td></tr>
+                  <tr><td>相手のリーチがアガった割合</td><td>48.3%</td><td>47.7%</td></tr>
+                  <tr><td>その残り枚数、打点、巡目</td><td>5.37、+2,419、9.1</td><td>5.32、+2,384、9.1</td></tr>
+                  <tr><td>リーチに押した牌がその和了牌だった</td><td class="gap">219回のうち27回</td><td>同じ種類の牌でのLuckyJの率なら20.3回</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p><b>点数の仕組みではない。</b>LuckyJの対局がある天鳳は順位だけで点が決まり、4位で失う点は1位で得る点の2.4倍。あなたの玉の間は1.9倍で、それに素点が加わる。天鳳の点で採点し直しても、第37章で打ち切った15回の降りは同じ結果で、幅に対して1.18%と1.11%。素点の項だけでは0.1段位ポイントしか動かない。むしろ、あなたの仕組みはLuckyJの仕組みより少しだけ押しを求めている。</p>
+            <p><b>相手でもない。</b>あなたの卓の相手のリーチは、LuckyJの卓のリーチと同じ割合でアガり、残り枚数も打点も巡目も同じである。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>押した牌</th><th>あなたの押し</th><th>放銃</th><th>LuckyJの押し</th><th>放銃</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>生牌の字牌</td><td>15</td><td>6.7%</td><td>134</td><td>5.2%</td></tr>
+                  <tr><td>生牌の么九牌</td><td>41</td><td>12.2%</td><td>215</td><td>9.8%</td></tr>
+                  <tr><td>片筋</td><td>45</td><td class="gap">11.1%</td><td>200</td><td>6.5%</td></tr>
+                  <tr><td>生牌の2-3-7-8</td><td>82</td><td class="gap">14.6%</td><td>524</td><td>10.1%</td></tr>
+                  <tr><td>生牌の4-5-6</td><td>34</td><td>11.8%</td><td>159</td><td>12.6%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p><b>あなたの読み。</b>読みが必要な牌ほど、あなたは多く放銃している。片筋は11.1%でLuckyJは6.5%、生牌の2-3-7-8は14.6%で10.1%。どう読んでも安全にならない生牌の4-5-6では差がない。全体では、押すたびに放銃が3.1ポイント多い。押した後に残した待ちは、残り4枚から7枚ならLuckyJと同じだけアガり（33.8%と33.1%）、残り3枚以下では少ない（11.1%と20.3%）。押した牌での放銃は段位ポイントの期待値を57.8悪くし、放銃しない押しは18.5よくするので、余分な放銃は押すたびに約2.3段位ポイントの損になる。</p>
+            <p><b>ラベルに見えず、LuckyJに見えているもの。</b>ラベルはすべての片筋を同じ箱に入れるが、LuckyJはリーチ者の河の残りで片筋を区別している。その兆しの1つとして、リーチの宣言牌と同じ色で1つか2つ離れた牌を、あなたはLuckyJと同じくらい押していて（数牌の押しの14.9%と14.4%）、あなたの30回のうち6回、20.0%が放銃したのに、LuckyJは9.5%だった。30回では決まりにするには少ないが、見るべき場所である。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>リーチに対するあなたのテンパイ</th><th>LuckyJが押す</th><th>その押し</th><th>その降り</th><th>あなたが押す</th><th>あなたの押し</th><th>あなたの降り</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1翻か2翻、残り3枚以下</td><td>65.6%</td><td>&#8722;14.0</td><td>&#8722;2.0</td><td>39.3%</td><td>&#8722;15.8</td><td>&#8722;4.4</td></tr>
+                  <tr><td>1翻か2翻、残り4枚から7枚</td><td>73.9%</td><td>&#8722;4.9</td><td>&#8722;11.3</td><td>75.9%</td><td>&#8722;2.8</td><td>&#8722;12.2</td></tr>
+                  <tr><td>3翻以上、残り3枚以下</td><td>83.1%</td><td>+3.0</td><td>&#8722;12.9</td><td>73.7%</td><td>&#8722;18.6</td><td>&#8722;6.6</td></tr>
+                  <tr><td>3翻以上、残り4枚から7枚</td><td>93.7%</td><td>+5.0</td><td>+0.4</td><td>95.0%</td><td>+10.3</td><td>&#8722;15.3</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p><b>多く降りるべき場所。</b>押すたびの約2.3段位ポイントが今の読みの代価なので、LuckyJ自身の押しの得がそれより小さいところで降りる。まず、待ちの少ない安い手。そこではLuckyJの押しでさえ降りより悪く、あなたはすでにLuckyJの65.6%に対して39.3%しか押していない。待ちの広い安い手は際どい。そこでLuckyJの押しが降りを上回るのは6.4で、あなたの読みの代価と大差ないので、最も際どいものは降りる。残り4枚から7枚の大きな手は、LuckyJに合わせる場所で、あなたの押しは1局あたり10.3を得て、降りは15.3を失っている。待ちの少ない大きな手は第37章のとおり、Mortalが降りるところで降りる。この表の数字には3から13段位ポイントの誤差があるので、方向として読むこと。</p>
+            <div class="rule">
+              <strong>ルール</strong> 3翻以上で残り4枚以上なら、LuckyJと同じように押す。1翻か2翻で残り3枚以下なら、今と同じくLuckyJより多く降り、待ちの広い1翻か2翻の手でも最も際どいものは降りる。押した牌の放銃がLuckyJと同じくらい少なくなるまでは、あなたの押しにはLuckyJにない約2段位ポイントの損がついている。
+            </div>
+            <div class="exception">
+              <strong>例外</strong> この差は読みの差で、読みは上達する。片筋と2-3-7-8の押しの放銃がLuckyJと同じくらい少なくなったら、LuckyJの押しの割合に戻す。
+            </div>
+            <p class="evidence-note"><b>根拠</b> 天鳳が公開している段位ポイント（<a href="https://tenhou.net/man/">tenhou.net</a>）の特上卓と鳳凰卓の10段の値と、あなた自身の結果から読み取った玉の間の値（第36章）。第37章の<code>mortal_whatif.py</code>の実行を採点し直し、相手のリーチは、あなたの199半荘とLuckyJの特上卓1,079半荘に対する<code>contrast/tenpai.py</code>から、押すか降りるかの局面は、あなたの199半荘とLuckyJの1,255半荘に対する<code>mine_thin_pushes.py</code>を第36章のモデルで評価したもので、すべて<code>mine_fold_theory.py</code>でまとめた。牌の種類はリーチに対するラベルで、期待される放銃数は種類ごとのLuckyJの率をあなたの押しに当てはめたもの。LuckyJの学習目標は公開されておらず、Tencentはその手法を後悔を最小にする自己対戦とだけ説明している。</p>
+          </div>
           <nav class="chapter-next" aria-label="本編の後"><a href="#method"><span class="chapter-next-label">本編の後 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title">このガイドの作り方</span></a></nav>
         </section>
 
@@ -2741,7 +2807,7 @@
             <li>あなたの対局：2026年1月1日以降の玉の間の南風戦（半荘戦）80半荘。雀魂のクライアントとamae-koromoから取得した。LuckyJ：天鳳の1,255半荘。キャッシュしたNAGAの解析レポートから再構築した。どちらも同じ牌譜再生コードと指標計算コードで処理している。</li>
             <li>各表は、あなたの手番の開始時点を牌譜から再現したものである。相手の手牌は実際のとおりに表示し、上部のスイッチで隠せる。</li>
             <li>受け入れ枚数は、あなたの席から見えていない有効牌をすべて数え、鳴かれた牌は1回だけ数える。リーチに対しては、宣言後に通った牌を現物として扱い、筋の根拠にもする。4、5、6を中筋とするには両側の筋が通っている必要があり、早い5は4または6の片側を補える（疑似中筋。本編の戦術書の外側読みのルールに従う）。字牌は、ほかに何枚見えているかで読む。役と打点は、本文にそう書いた箇所でだけ確認している。</li>
-            <li>生成データ：<code>site/honver-guide.json</code>は<code>scripts/build_personal_guide.py</code>と<code>data/personal_guide_spots.json</code>から作る。各章の数字は<code>scripts/mine_riichi_folds.py</code>、<code>mine_open_tenpai_push.py</code>、<code>mine_single_call.py</code>、<code>mine_vs_open.py</code>、<code>mine_win_value.py</code>、<code>mine_value_choice.py</code>から出している。第6章から第8章は<code>mine_dora_hands.py</code>、<code>mine_flush_calls.py</code>、<code>mine_caller_tells.py</code>、第9章は<code>mine_shape_plans.py</code>、第10章は<code>review_recent_games.py</code>と<code>mine_late_placement.py</code>、第11章は<code>mine_tenpai_push.py</code>、第12章は<code>mine_open_vs_open.py</code>と<code>mine_call_chances.py</code>（副露手のアガリと放銃は<code>mine_dora_hands.py</code>）、第17章は<code>mine_early_safe_tiles.py</code>と<code>contrast/hands_all.py</code>（Mortalの評価はサイトの牌譜再生から）、第18章は<code>mine_caller_surface.py</code>（図の描画は<code>build_caller_surface.py</code>）、第19章は<code>contrast/vs_callers.py</code>と<code>mine_caller_surface.py patterns</code>を土台にした<code>mine_caller_fold_line.py</code>による。第20章と第21章は<code>contrast/vs_callers.py</code>と<code>mine_riichi_folds.py</code>を土台にした<code>mine_break_folds.py</code>により、図は<code>build_break_fold_figure.py</code>で描いた。第23章は<code>mine_tenpai_push.py</code>と<code>contrast/riichi_danger.py</code>による。第26章は<code>contrast/hands_all.py</code>と<code>mine_riichi_folds.py</code>、牌譜再生にあるMortalの評価による。第27章は<code>contrast/hands_all.py</code>と牌譜の順位、amae-koromoの記録による。第28章は<code>contrast/vs_callers.py</code>と<code>contrast/choices.py</code>を土台にした<code>mine_dealer_callers.py</code>により、図は<code>build_dealer_caller_figure.py</code>で描いた。第29章は<code>contrast/hands_all.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_costly_run.py</code>による。第30章は<code>contrast/hands_all.py</code>、<code>mine_riichi_folds.py</code>、<code>contrast/vs_callers.py</code>、<code>contrast/choices.py</code>、<code>mine_early_safe_tiles.py</code>を土台にした<code>mine_defense_check.py</code>による。第31章はサイトの牌譜再生にあるMortalの評価を土台にした<code>mine_declined_riichis.py</code>による。第32章は<code>mine_early_safe_tiles.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_no_safe_riichis.py</code>による。第33章は<code>contrast/tenpai.py</code>とリーチの行を土台にした<code>mine_climb_check.py</code>による。第34章は<code>contrast/tenpai.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_streak_check.py</code>による。第35章は<code>mine_tenpai_push.py</code>の局面と牌譜再生にあるMortalの評価を土台にした<code>mine_thin_pushes.py</code>による。第36章は同じ局面を評価する<code>mine_push_ev.py</code>による。第37章は第35章の降りに対する<code>mortal_whatif.py</code>の実行をまとめる<code>mine_fold_whatif.py</code>による。どれも、あなたの対局とLuckyJの対局に同じコードで実行している。</li>
+            <li>生成データ：<code>site/honver-guide.json</code>は<code>scripts/build_personal_guide.py</code>と<code>data/personal_guide_spots.json</code>から作る。各章の数字は<code>scripts/mine_riichi_folds.py</code>、<code>mine_open_tenpai_push.py</code>、<code>mine_single_call.py</code>、<code>mine_vs_open.py</code>、<code>mine_win_value.py</code>、<code>mine_value_choice.py</code>から出している。第6章から第8章は<code>mine_dora_hands.py</code>、<code>mine_flush_calls.py</code>、<code>mine_caller_tells.py</code>、第9章は<code>mine_shape_plans.py</code>、第10章は<code>review_recent_games.py</code>と<code>mine_late_placement.py</code>、第11章は<code>mine_tenpai_push.py</code>、第12章は<code>mine_open_vs_open.py</code>と<code>mine_call_chances.py</code>（副露手のアガリと放銃は<code>mine_dora_hands.py</code>）、第17章は<code>mine_early_safe_tiles.py</code>と<code>contrast/hands_all.py</code>（Mortalの評価はサイトの牌譜再生から）、第18章は<code>mine_caller_surface.py</code>（図の描画は<code>build_caller_surface.py</code>）、第19章は<code>contrast/vs_callers.py</code>と<code>mine_caller_surface.py patterns</code>を土台にした<code>mine_caller_fold_line.py</code>による。第20章と第21章は<code>contrast/vs_callers.py</code>と<code>mine_riichi_folds.py</code>を土台にした<code>mine_break_folds.py</code>により、図は<code>build_break_fold_figure.py</code>で描いた。第23章は<code>mine_tenpai_push.py</code>と<code>contrast/riichi_danger.py</code>による。第26章は<code>contrast/hands_all.py</code>と<code>mine_riichi_folds.py</code>、牌譜再生にあるMortalの評価による。第27章は<code>contrast/hands_all.py</code>と牌譜の順位、amae-koromoの記録による。第28章は<code>contrast/vs_callers.py</code>と<code>contrast/choices.py</code>を土台にした<code>mine_dealer_callers.py</code>により、図は<code>build_dealer_caller_figure.py</code>で描いた。第29章は<code>contrast/hands_all.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_costly_run.py</code>による。第30章は<code>contrast/hands_all.py</code>、<code>mine_riichi_folds.py</code>、<code>contrast/vs_callers.py</code>、<code>contrast/choices.py</code>、<code>mine_early_safe_tiles.py</code>を土台にした<code>mine_defense_check.py</code>による。第31章はサイトの牌譜再生にあるMortalの評価を土台にした<code>mine_declined_riichis.py</code>による。第32章は<code>mine_early_safe_tiles.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_no_safe_riichis.py</code>による。第33章は<code>contrast/tenpai.py</code>とリーチの行を土台にした<code>mine_climb_check.py</code>による。第34章は<code>contrast/tenpai.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_streak_check.py</code>による。第35章は<code>mine_tenpai_push.py</code>の局面と牌譜再生にあるMortalの評価を土台にした<code>mine_thin_pushes.py</code>による。第36章は同じ局面を評価する<code>mine_push_ev.py</code>による。第37章は第35章の降りに対する<code>mortal_whatif.py</code>の実行をまとめる<code>mine_fold_whatif.py</code>による。第38章はその実行、<code>contrast/tenpai.py</code>、押すか降りるかの局面をまとめる<code>mine_fold_theory.py</code>による。どれも、あなたの対局とLuckyJの対局に同じコードで実行している。</li>
             <li>これらの章の土台となる一般的なルールは、<a href="ja.html">本編のLuckyJ戦術書</a>にある。</li>
           </ul>
         </section>

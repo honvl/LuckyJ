@@ -1,0 +1,439 @@
+{
+ "systems": {
+  "jade": {
+   "folds": 15,
+   "push_gain": -4.2,
+   "se": 8.8,
+   "share_of_range": -1.11
+  },
+  "tenhou_tokujou_10dan": {
+   "folds": 15,
+   "push_gain": -3.0,
+   "se": 5.4,
+   "share_of_range": -1.18
+  },
+  "tenhou_houou_10dan": {
+   "folds": 15,
+   "push_gain": -3.0,
+   "se": 5.8,
+   "share_of_range": -1.11
+  },
+  "jade_placement": {
+   "folds": 15,
+   "push_gain": -4.1,
+   "se": 8.1
+  },
+  "jade_score": {
+   "folds": 15,
+   "push_gain": -0.1,
+   "se": 0.7
+  }
+ },
+ "opponents": {
+  "you": {
+   "riichis": 1192,
+   "won": 48.3,
+   "live": 5.37,
+   "points": 2419,
+   "turn": 9.1
+  },
+  "luckyj": {
+   "riichis": 6296,
+   "won": 47.7,
+   "live": 5.32,
+   "points": 2384,
+   "turn": 9.1
+  }
+ },
+ "read": {
+  "pushes": 219,
+  "on_push_deal_ins": 27,
+  "luckyj_expects": 20.3,
+  "kinds": {
+   "live honor": {
+    "you": [
+     1,
+     15,
+     6.7
+    ],
+    "luckyj": [
+     7,
+     134,
+     5.2
+    ]
+   },
+   "live terminal": {
+    "you": [
+     5,
+     41,
+     12.2
+    ],
+    "luckyj": [
+     21,
+     215,
+     9.8
+    ]
+   },
+   "half suji": {
+    "you": [
+     5,
+     45,
+     11.1
+    ],
+    "luckyj": [
+     13,
+     200,
+     6.5
+    ]
+   },
+   "live 2-3-7-8": {
+    "you": [
+     12,
+     82,
+     14.6
+    ],
+    "luckyj": [
+     53,
+     524,
+     10.1
+    ]
+   },
+   "live 4-5-6": {
+    "you": [
+     4,
+     34,
+     11.8
+    ],
+    "luckyj": [
+     20,
+     159,
+     12.6
+    ]
+   }
+  },
+  "wins_after_pushing": {
+   "3 or fewer": {
+    "you": [
+     6,
+     54,
+     11.1
+    ],
+    "luckyj": [
+     64,
+     316,
+     20.3
+    ]
+   },
+   "4-7": {
+    "you": [
+     47,
+     139,
+     33.8
+    ],
+    "luckyj": [
+     253,
+     765,
+     33.1
+    ]
+   },
+   "8 or more": {
+    "you": [
+     8,
+     26,
+     30.8
+    ],
+    "luckyj": [
+     66,
+     157,
+     42.0
+    ]
+   }
+  },
+  "cost": {
+   "deal_in_on_the_push": -57.8,
+   "no_deal_in": 18.5,
+   "luckyj_deal_in_on_the_push": -72.2,
+   "luckyj_no_deal_in": 18.4,
+   "excess_points": 3.07,
+   "per_push": 2.34
+  },
+  "near_riichi_tile": {
+   "you": {
+    "1-2 ranks from the riichi tile": {
+     "pushes": 30,
+     "share": 14.9,
+     "dealt": 6,
+     "dealt_pct": 20.0
+    },
+    "same suit, further": {
+     "pushes": 28,
+     "share": 13.9,
+     "dealt": 2,
+     "dealt_pct": 7.1
+    },
+    "another suit": {
+     "pushes": 144,
+     "share": 71.3,
+     "dealt": 18,
+     "dealt_pct": 12.5
+    }
+   },
+   "luckyj": {
+    "1-2 ranks from the riichi tile": {
+     "pushes": 158,
+     "share": 14.4,
+     "dealt": 15,
+     "dealt_pct": 9.5
+    },
+    "same suit, further": {
+     "pushes": 141,
+     "share": 12.8,
+     "dealt": 15,
+     "dealt_pct": 10.6
+    },
+    "another suit": {
+     "pushes": 799,
+     "share": 72.8,
+     "dealt": 77,
+     "dealt_pct": 9.6
+    }
+   }
+  }
+ },
+ "cells": {
+  "no yaku, 3 or fewer live": {
+   "you": {
+    "spots": 3,
+    "pushed_pct": 33.3,
+    "push": [
+     29.4,
+     null
+    ],
+    "fold": [
+     -8.3,
+     3.7
+    ]
+   },
+   "luckyj": {
+    "spots": 27,
+    "pushed_pct": 48.1,
+    "push": [
+     2.9,
+     5.8
+    ],
+    "fold": [
+     -11.2,
+     5.0
+    ]
+   }
+  },
+  "no yaku, 4-7 live": {
+   "you": {
+    "spots": 3,
+    "pushed_pct": 0.0,
+    "push": [
+     null,
+     null
+    ],
+    "fold": [
+     -5.2,
+     19.3
+    ]
+   },
+   "luckyj": {
+    "spots": 45,
+    "pushed_pct": 62.2,
+    "push": [
+     -3.1,
+     8.4
+    ],
+    "fold": [
+     -14.5,
+     11.3
+    ]
+   }
+  },
+  "no yaku, 8 or more live": {
+   "you": {
+    "spots": 2,
+    "pushed_pct": 0.0,
+    "push": [
+     null,
+     null
+    ],
+    "fold": [
+     -27.9,
+     16.7
+    ]
+   },
+   "luckyj": {
+    "spots": 5,
+    "pushed_pct": 60.0,
+    "push": [
+     9.9,
+     14.7
+    ],
+    "fold": [
+     -4.8,
+     0.3
+    ]
+   }
+  },
+  "1-2 han, 3 or fewer live": {
+   "you": {
+    "spots": 28,
+    "pushed_pct": 39.3,
+    "push": [
+     -15.8,
+     13.3
+    ],
+    "fold": [
+     -4.4,
+     6.2
+    ]
+   },
+   "luckyj": {
+    "spots": 163,
+    "pushed_pct": 65.6,
+    "push": [
+     -14.0,
+     5.0
+    ],
+    "fold": [
+     -2.0,
+     4.7
+    ]
+   }
+  },
+  "1-2 han, 4-7 live": {
+   "you": {
+    "spots": 58,
+    "pushed_pct": 75.9,
+    "push": [
+     -2.8,
+     6.8
+    ],
+    "fold": [
+     -12.2,
+     9.5
+    ]
+   },
+   "luckyj": {
+    "spots": 375,
+    "pushed_pct": 73.9,
+    "push": [
+     -4.9,
+     3.1
+    ],
+    "fold": [
+     -11.3,
+     4.6
+    ]
+   }
+  },
+  "1-2 han, 8 or more live": {
+   "you": {
+    "spots": 8,
+    "pushed_pct": 62.5,
+    "push": [
+     33.0,
+     16.9
+    ],
+    "fold": [
+     20.4,
+     11.0
+    ]
+   },
+   "luckyj": {
+    "spots": 70,
+    "pushed_pct": 88.6,
+    "push": [
+     -1.3,
+     5.9
+    ],
+    "fold": [
+     -16.0,
+     15.0
+    ]
+   }
+  },
+  "3+ han, 3 or fewer live": {
+   "you": {
+    "spots": 57,
+    "pushed_pct": 73.7,
+    "push": [
+     -18.6,
+     8.4
+    ],
+    "fold": [
+     -6.6,
+     8.9
+    ]
+   },
+   "luckyj": {
+    "spots": 236,
+    "pushed_pct": 83.1,
+    "push": [
+     3.0,
+     4.0
+    ],
+    "fold": [
+     -12.9,
+     8.2
+    ]
+   }
+  },
+  "3+ han, 4-7 live": {
+   "you": {
+    "spots": 100,
+    "pushed_pct": 95.0,
+    "push": [
+     10.3,
+     7.5
+    ],
+    "fold": [
+     -15.3,
+     6.1
+    ]
+   },
+   "luckyj": {
+    "spots": 491,
+    "pushed_pct": 93.7,
+    "push": [
+     5.0,
+     3.0
+    ],
+    "fold": [
+     0.4,
+     7.4
+    ]
+   }
+  },
+  "3+ han, 8 or more live": {
+   "you": {
+    "spots": 21,
+    "pushed_pct": 100.0,
+    "push": [
+     -9.0,
+     12.3
+    ],
+    "fold": [
+     null,
+     null
+    ]
+   },
+   "luckyj": {
+    "spots": 93,
+    "pushed_pct": 98.9,
+    "push": [
+     13.7,
+     6.9
+    ],
+    "fold": [
+     -11.4,
+     null
+    ]
+   }
+  }
+ }
+}
