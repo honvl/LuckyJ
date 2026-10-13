@@ -1,0 +1,199 @@
+{
+ "by_table": {
+  "jade": 2569,
+  "tenhou": 16334
+ },
+ "sides": {
+  "luckyj": {
+   "throws": 566,
+   "hit": 6.7,
+   "contexts": {
+    "kept tenpai": [
+     322,
+     8.4
+    ],
+    "folding, genbutsu in hand": [
+     106,
+     6.6
+    ],
+    "folding, no genbutsu in hand": [
+     138,
+     2.9
+    ]
+   },
+   "choices": {
+    "sets": 412,
+    "thrown_hit": 6.1,
+    "kept": 704,
+    "kept_hit": 10.4,
+    "random_pick": 8.8,
+    "checklist_pick": 8.7
+   }
+  },
+  "tokujou_humans": {
+   "throws": 1913,
+   "hit": 10.2,
+   "contexts": {
+    "kept tenpai": [
+     1038,
+     11.8
+    ],
+    "folding, genbutsu in hand": [
+     547,
+     8.2
+    ],
+    "folding, no genbutsu in hand": [
+     328,
+     8.5
+    ]
+   },
+   "choices": {
+    "sets": 1306,
+    "thrown_hit": 10.7,
+    "kept": 2171,
+    "kept_hit": 9.4,
+    "random_pick": 9.8,
+    "checklist_pick": 8.0
+   }
+  },
+  "jade_players": {
+   "throws": 278,
+   "hit": 9.7,
+   "contexts": {
+    "kept tenpai": [
+     151,
+     10.6
+    ],
+    "folding, genbutsu in hand": [
+     76,
+     7.9
+    ],
+    "folding, no genbutsu in hand": [
+     51,
+     9.8
+    ]
+   },
+   "choices": {
+    "sets": 184,
+    "thrown_hit": 10.9,
+    "kept": 323,
+    "kept_hit": 9.6,
+    "random_pick": 10.2,
+    "checklist_pick": 10.4
+   }
+  },
+  "you": {
+   "throws": 95,
+   "hit": 8.4,
+   "contexts": {
+    "kept tenpai": [
+     63,
+     7.9
+    ],
+    "folding, genbutsu in hand": [
+     16,
+     6.2
+    ],
+    "folding, no genbutsu in hand": [
+     16,
+     12.5
+    ]
+   },
+   "choices": {
+    "sets": 62,
+    "thrown_hit": 8.1,
+    "kept": 90,
+    "kept_hit": 7.8,
+    "random_pick": 9.0,
+    "checklist_pick": 11.0
+   }
+  }
+ },
+ "humans_pooled": {
+  "sets": 1552,
+  "thrown_hit": 10.6,
+  "checklist_pick": 8.4,
+  "random_pick": 9.8
+ },
+ "cues": {
+  "every half-suji": [
+   6140,
+   9.5
+  ],
+  "open two-sided wait impossible (no-chance)": [
+   324,
+   2.8
+  ],
+  "a wall on the open side (3+ copies of a tile it needs)": [
+   1625,
+   7.2
+  ],
+  "no wall on the open side": [
+   4515,
+   10.3
+  ],
+  "riichi threw a tile 1-3 away on the open side, early": [
+   760,
+   5.4
+  ],
+  "riichi threw a tile 1-3 away on the open side, late": [
+   901,
+   7.3
+  ],
+  "nothing thrown 1-3 away on the open side": [
+   4558,
+   10.5
+  ],
+  "covering tile thrown late from the hand": [
+   885,
+   10.6
+  ],
+  "dora 1-2 away": [
+   684,
+   10.5
+  ]
+ },
+ "preferences": {
+  "a wall on the open side": {
+   "luckyj": [
+    289,
+    68.2
+   ],
+   "tokujou_humans": [
+    738,
+    63.0
+   ]
+  },
+  "an early discard on the open side": {
+   "luckyj": [
+    169,
+    68.6
+   ],
+   "tokujou_humans": [
+    431,
+    63.3
+   ]
+  },
+  "fewer open two-sided combinations": {
+   "luckyj": [
+    588,
+    59.4
+   ],
+   "tokujou_humans": [
+    1844,
+    54.7
+   ]
+  }
+ },
+ "model": {
+  "discards": 18903,
+  "held_out": 3753,
+  "auc": 0.6,
+  "half_suji": {
+   "luckyj": 9.3,
+   "tokujou_humans": 9.4,
+   "jade_players": 9.4,
+   "you": 9.4
+  }
+ }
+}
