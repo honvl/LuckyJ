@@ -49,7 +49,9 @@
           <aside class="guide-news" id="whats-new" aria-labelledby="whats-new-title">
             <h2 id="whats-new-title">What&#8217;s new</h2>
             <ol>
-              <li class="is-latest"><span class="guide-news-date">13 Oct</span><p><span class="new-tag">Latest</span> <a href="#half-suji">Chapter 40 finds how LuckyJ reads half-suji</a>: when it holds two or more, it throws the safer one (6.1% against 10.4% for the ones it keeps), where humans, you included, pick at random. Walls and early discards on the open side explain part of it; a checklist built on them gets humans about half of LuckyJ&#8217;s edge. Chapters 1 to 39 have not changed.</p></li>
+              <li class="is-latest"><span class="guide-news-date">13 Oct</span><p><span class="new-tag">Latest</span> <a href="#fold-read">Chapter 41 trains three models on how LuckyJ folds</a>: it folds with the same kinds of tile as humans and picks a safer tile inside each kind (1.28% of its real folds hit, the humans&#8217; 4.09%). The models, TabPFN 3.5 among them, cannot match it; the cues they find, copies seen, the declaration tile&#8217;s suji and early neighbours, take humans a third of the way. Chapters 1 to 40 have not changed, apart from the correction below.</p></li>
+              <li class="is-correction"><span class="guide-news-date">13 Oct</span><p><span class="guide-news-tag">Corrected</span> Chapter 40 guessed that LuckyJ&#8217;s extra read was the order and timing of the whole river. Chapter 41 gave three models the riichi player&#8217;s whole river in order and they did not find it there, so the guess is withdrawn. The corrected sentence is <mark class="guide-changed">highlighted</mark> in <a href="#fix-40-river">chapter 40</a>.</p></li>
+              <li><span class="guide-news-date">13 Oct</span><p><a href="#half-suji">Chapter 40 finds how LuckyJ reads half-suji</a>: when it holds two or more, it throws the safer one (6.1% against 10.4% for the ones it keeps), where humans, you included, pick at random. Walls and early discards on the open side explain part of it; a checklist built on them gets humans about half of LuckyJ&#8217;s edge. Chapters 1 to 39 have not changed.</p></li>
               <li class="is-correction"><span class="guide-news-date">13 Oct</span><p><span class="guide-news-tag">Corrected</span> Chapter 40 described one cue as a tile &#8220;one to three ranks away on the open side&#8221;. The third rank is the other suji partner, and a tile there would make the half-suji nakasuji, so the cue only ever counted the two tiles of the open-side wait: for a [[4p]] whose [[7p]] is safe, a [[2p]] or a [[3p]]. No figure changed. The corrected sentences are <mark class="guide-changed">highlighted</mark> in <a href="#fix-40-open-side">the definition</a>, <a href="#fix-40-cue">the table</a> and <a href="#fix-40-checklist">the checklist</a>.</p></li>
               <li><span class="guide-news-date">13 Oct</span><p><a href="#push-company">Chapter 39 sets your pushes beside the human players at both tables</a>: your pushed tiles deal in like theirs (12.3% against 11.1% and 11.5%), and LuckyJ is the one apart. Chasers, callers and the riichis&#8217; waits are the same at your tables. Your two gaps: live 2-3-7-8 pushes against a lone riichi, and thin waits that rarely win. Chapters 1 to 38 have not changed.</p></li>
               <li><span class="guide-news-date">13 Oct</span><p><a href="#fold-theory">Chapter 38 explains why you should fold a little more than LuckyJ</a>: the point system and your opponents give no reason, your read does. The tiles you push deal in 3.1 points more often than LuckyJ&#8217;s tiles of the same kind, about 2.3 rank points a push, so fold more with cheap hands on thin waits and match LuckyJ with big hands on 4 live tiles or more. Chapters 1 to 37 have not changed.</p></li>
@@ -123,7 +125,7 @@
 
         <nav class="section guide-chapters" id="chapters" aria-labelledby="chapters-title">
           <p class="kicker">Chapters</p>
-          <h2 id="chapters-title">Forty chapters</h2>
+          <h2 id="chapters-title">Forty-one chapters</h2>
           <p class="guide-chapters-note">New lessons arrive as new chapters at the end. Chapters you have read stay as they are, apart from marked corrections.</p>
           <ol class="contents-list is-points guide-chapter-list">
             <li><a href="#value"><span class="contents-num">01</span><span class="contents-title">Count the dora before you pick the plan</span><span class="contents-sub">Value &#183; added 22 September</span></a></li>
@@ -166,6 +168,7 @@
             <li><a href="#fold-theory"><span class="contents-num">38</span><span class="contents-title">Why you should fold a little more than LuckyJ</span><span class="contents-sub"><span class="new-tag">New</span> Push or fold &#183; added 13 October</span></a></li>
             <li><a href="#push-company"><span class="contents-num">39</span><span class="contents-title">Your pushes are a human&#8217;s, and chasers and callers are not the gap</span><span class="contents-sub"><span class="new-tag">New</span> Push or fold &#183; added 13 October</span></a></li>
             <li><a href="#half-suji"><span class="contents-num">40</span><span class="contents-title">How LuckyJ reads a half-suji: it chooses which one</span><span class="contents-sub"><span class="new-tag">New</span> Safe tiles &#183; added 13 October</span></a></li>
+            <li><a href="#fold-read"><span class="contents-num">41</span><span class="contents-title">How LuckyJ picks the tile it folds with</span><span class="contents-sub"><span class="new-tag">New</span> Safe tiles &#183; added 13 October</span></a></li>
           </ol>
         </nav>
 
@@ -4826,8 +4829,9 @@
               humans 63.0%, the one with an early discard on the open side 68.6% against 63.3%, and the one with fewer
               open two-sided combinations 59.4% against 54.7%. A few points do not make its 6.1%. A danger model built
               from these cues and more, over 18,903 live number tiles, rates LuckyJ&#8217;s half-suji as dangerous as the
-              humans&#8217;, 9.3% against 9.4%. LuckyJ reads more of the river than any cue here, the order and timing of
-              the whole river, and that part has no short rule.
+              humans&#8217;, 9.3% against 9.4%. <mark id="fix-40-river" class="guide-changed">LuckyJ reads more than any cue here, and that part has no short
+              rule. Chapter 41 gave three models the riichi player&#8217;s whole river in order, and they did not find it
+              either.</mark>
             </p>
             <p>
               <b>An example from LuckyJ&#8217;s games.</b> East 2 of a game on 12 May 2023, its 15th turn, folding against
@@ -4864,6 +4868,147 @@
               tile above a safe one 60% of the time.
             </p>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#fold-read"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>41</i>How LuckyJ picks the tile it folds with</span></a></nav>
+        </section>
+
+        <section class="point" id="fold-read">
+          <div class="point-number">41</div>
+          <div class="point-body">
+            <p class="chapter-kicker">Chapter forty-one &#183; Safe tiles &#183; added 13 October</p>
+            <p class="guide-new-tag">New</p>
+            <h3>How LuckyJ picks the tile it folds with</h3>
+            <p>
+              You asked how LuckyJ folds so well, so this chapter trains models on it. It counts real folds only: one
+              player is in riichi, the folder holds no genbutsu, and the tile thrown leaves the hand further from tenpai
+              than its best discard would. In 547 real folds LuckyJ&#8217;s tile was the riichi&#8217;s winning tile 7 times,
+              1.28%. The humans at both tables hit 4.09% of the time in 1,857, and you 2.70%, 3 times in 111.
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Real folds by the kind of tile thrown</th><th>LuckyJ</th><th>Humans at both tables</th><th>You</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Suji</td><td class="gap">146, none hit</td><td>503, 3.0% hit</td><td>29, 3.4% hit</td></tr>
+                  <tr><td>Honor with two other copies seen</td><td>90, none hit</td><td>240, 1.2% hit</td><td>15, none hit</td></tr>
+                  <tr><td>Live honor</td><td>112, 1.8% hit</td><td>309, 1.9% hit</td><td>18, none hit</td></tr>
+                  <tr><td>Live terminal</td><td class="gap">74, 2.7% hit</td><td>306, 6.2% hit</td><td>15, none hit</td></tr>
+                  <tr><td>Live 2-3-7-8</td><td class="gap">54, 3.7% hit</td><td>262, 7.6% hit</td><td>11, 9.1% hit</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <b>The same kinds, safer tiles.</b> LuckyJ folds with the same kinds of tile as the humans, in the same
+              shares: a suji in 27% of its real folds and of theirs. The gap is inside each kind. Its 146 suji never hit;
+              the humans&#8217; hit 3.0% of the time. Its live terminals hit 2.7% against 6.2%, and its live 2-3-7-8 3.7%
+              against 7.6%.
+            </p>
+            <p>
+              <b>Three models, and LuckyJ reads more than all three.</b> A small neural network, LightGBM and TabPFN 3.5
+              each learned the danger of 858,565 tiles, every tile held by anyone who discarded while one riichi was out,
+              from what the table shows: the copies seen of the tile and its neighbours, genbutsu, the riichi
+              player&#8217;s discards around it (early or late, from the hand or the draw, the declaration tile), the dora,
+              the timing, and the ways the tile can still be a winning tile. Each scored games it had not learned from.
+              Throwing the tile a model rates safest would have cut the humans&#8217; 4.09% to between 3.07% and 3.72%.
+              In LuckyJ&#8217;s own folds, the models&#8217; safest tiles hit between 1.46% and 1.65%, about what LuckyJ
+              got itself, and LuckyJ got there with tiles LightGBM rated 4.00% dangerous and TabPFN 3.88%. The humans&#8217; tiles it rated
+              4.67%, and they hit 4.09%. Humans read about what the models read; LuckyJ reads more, and giving the models
+              the riichi player&#8217;s whole river in order did not close it. Its opponents are not easier to read either:
+              Tokujou&#8217;s humans folded slightly better against LuckyJ&#8217;s riichis than against each other&#8217;s,
+              4.15% against 4.66% over all their discards with no genbutsu.
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Real folds: throwing this tile would have hit</th><th>LuckyJ&#8217;s folds</th><th>The humans&#8217;</th><th>Yours</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>The tile actually thrown</td><td class="gap">1.28%</td><td>4.09%</td><td>2.70%</td></tr>
+                  <tr><td>The network&#8217;s safest</td><td>1.46%</td><td>3.72%</td><td>1.80%</td></tr>
+                  <tr><td>LightGBM&#8217;s safest</td><td>1.65%</td><td>3.07%</td><td>1.80%</td></tr>
+                  <tr><td>TabPFN 3.5&#8217;s safest</td><td>1.65%</td><td>3.07%</td><td>1.80%</td></tr>
+                  <tr><td>The checklist&#8217;s safest (below)</td><td>1.98%</td><td>3.13%</td><td>1.80%</td></tr>
+                  <tr><td>A tile at random</td><td>8.29%</td><td>8.91%</td><td>9.34%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <b>What you can count.</b> Over the 858,565 tiles, these cues moved the danger most:
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>A tile where</th><th>Tiles</th><th>The winning tile</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>An honor with no other copy seen: a dragon</td><td>10,156</td><td>5.7%</td></tr>
+                  <tr><td>The same, a value wind</td><td>4,843</td><td>4.8%</td></tr>
+                  <tr><td>The same, a guest wind</td><td>4,134</td><td>3.8%</td></tr>
+                  <tr><td>An honor with one other copy seen</td><td>25,651</td><td>2.8% to 3.5%</td></tr>
+                  <tr><td>An honor with two other copies seen</td><td>13,911</td><td>0.6% to 0.9%</td></tr>
+                  <tr><td>A suji with no other copy seen</td><td>34,955</td><td>6.0%</td></tr>
+                  <tr><td>A suji with two other copies seen</td><td>12,056</td><td>2.7%</td></tr>
+                  <tr><td>A 2 or 8 suji made by the declaration tile</td><td>5,657</td><td>9.9%</td></tr>
+                  <tr><td>Any other 2 or 8 suji</td><td>21,133</td><td>4.3%</td></tr>
+                  <tr><td>A 3 or 7 suji made by the declaration tile</td><td>6,367</td><td>8.2%</td></tr>
+                  <tr><td>Any other 3 or 7 suji</td><td>31,720</td><td>5.0%</td></tr>
+                  <tr><td>A 1 or 9 suji made by the declaration tile</td><td>2,309</td><td>1.3%</td></tr>
+                  <tr><td>Any other 1 or 9 suji</td><td>12,933</td><td>2.7%</td></tr>
+                  <tr><td>A live terminal one or two ranks from a tile the riichi player threw in its first six discards</td><td>13,504</td><td>3.6%</td></tr>
+                  <tr><td>Any other live terminal</td><td>68,453</td><td>9.7%</td></tr>
+                  <tr><td>A live 2-3-7-8 one or two ranks from such an early discard</td><td>103,720</td><td>8.8%</td></tr>
+                  <tr><td>Any other live 2-3-7-8</td><td>192,865</td><td>11.1%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <b>The checklist.</b> Fold with the kind you would anyway, then choose inside it: the honor with more
+              copies seen, the suji with more copies seen, not the 2 or 8 or 3 or 7 suji of the declaration tile when
+              another is there, and a terminal next to the riichi player&#8217;s early discards. Fitted on these cues alone
+              and checked on games it had not learned from, picking that way would have taken the humans&#8217; real folds
+              from 4.09% to 3.13%, a third of the way to LuckyJ and as far as LightGBM got. The kind alone gets them to
+              3.77%. In LuckyJ&#8217;s own folds the checklist picks tiles that hit 1.98%, more than LuckyJ&#8217;s 1.28%:
+              the rest of its edge has no rule here.
+            </p>
+            <p>
+              <b>An example from LuckyJ&#8217;s games.</b> South 3 of a game on 17 May 2023, its 8th turn, folding against
+              a riichi from across declared with [[5m]] on its 5th discard. LuckyJ held four suji: [[2m]] and [[8m]], both
+              made by the declaration tile, and [[8s]] and [[9s]], made suji by the [[5s]] and [[6s]] the riichi player discarded
+              after declaring. It threw a [[9s]] from its pair: a 9 suji, with the other copy in its own hand. The riichi waited on
+              [[8m]]-[[8p]].
+            </p>
+            <p>
+              <b>Your folds.</b> Your 111 real folds hit 2.70%, between the humans and LuckyJ, and three hits are too few
+              to place you closer. Two of the three were the tile the models rated safest in your hand: a [[7s]] suji on
+              <a href="replay.html?g=260920-a3b39b2d-e995-4229-9a27-dc46d5286ce7&amp;r=East+4-0&amp;t=11">20 September</a>,
+              which the riichi waited on alone, and an [[8m]] beside the riichi player&#8217;s early [[7m]] on
+              <a href="replay.html?g=261004-0919202e-3037-4472-a90c-73fadb4a4cf6&amp;r=East+3-1&amp;t=7">4 October</a>,
+              into a [[5m]]-[[8m]] wait. The third is worth a look:
+              <a href="replay.html?g=261010-165003cb-bf9c-49f9-ae39-ac95a879ae5c&amp;r=South+3-2&amp;t=9">10 October,
+              South 3, your 9th turn</a>, against a riichi from your right on its 5th discard. You held five pairs and a
+              [[P]], the dora. You broke the [[6p]] pair, a half-suji LightGBM rated 12.5%, and kept the [[P]], with no
+              other copy seen, rated 5.3%; the checklist also throws the [[P]]. Throwing it would have kept your seven
+              pairs at 1-shanten as well. The riichi waited on [[6p]] alone.
+            </p>
+            <div class="rule">
+              <strong>Rule</strong> When you fold with no genbutsu, pick the kind of tile as you do now, then compare the
+              tiles of that kind. Count the copies of each honor and suji, pass over the 2 or 8 and 3 or 7 suji of the
+              declaration tile, and prefer a terminal beside the riichi player&#8217;s early discards. LuckyJ folds with the
+              same kinds as everyone; it picks better tiles inside them.
+            </div>
+            <div class="exception">
+              <strong>Exception</strong> A 1 or 9 suji made by the declaration tile is the safest suji of all, 1.3%: the
+              declaration tile&#8217;s danger lives in its 2 or 8 and 3 or 7 suji.
+            </div>
+            <p class="evidence-note">
+              <b>Evidence</b> Every tile held by any player who discarded into a lone riichi in your 199 games since
+              January and LuckyJ&#8217;s 1,255 Tenhou games, 858,565 tiles in 108,201 discards, checked against the
+              riichi&#8217;s real winning tiles, from <code>mine_fold_model.py</code>. A real fold is a discard with no
+              genbutsu in hand that leaves the hand further from tenpai than its best discard. Each model learned from four
+              fifths of the games and scored the fifth; on discards with no genbutsu in hand LightGBM ranks a winning tile
+              above a safe one 65% of the time, TabPFN 3.5 65% and the checklist 61%.
+            </p>
+          </div>
           <nav class="chapter-next" aria-label="After the chapters"><a href="#method"><span class="chapter-next-label">After the chapters <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title">How this guide was built</span></a></nav>
         </section>
 
@@ -4874,7 +5019,7 @@
             <li>Your games: 80 Jade South hanchan since 1 January 2026, fetched from the Mahjong Soul client and amae-koromo. LuckyJ: 1,255 Tenhou games rebuilt from the cached NAGA reports. Both run through the same replay and metric code.</li>
             <li>Each table is rebuilt from the record at the start of your turn. Opponents' hands are shown as they really were; the switch at the top hides them.</li>
             <li>Acceptance counts the unseen copies of every improving tile from your seat, with a called tile counted once. Against a riichi, tiles passed after the declaration count as genbutsu and anchor suji; a 4, 5 or 6 needs both partners for nakasuji, and an early 5 can cover one side of a 4 or 6 (virtual nakasuji, following the main playbook's sotogawa rule). Honors are read by how many other copies show. Yaku and value are checked only where the text says so.</li>
-            <li>Generated data: <code>site/honver-guide.json</code> from <code>scripts/build_personal_guide.py</code> and <code>data/personal_guide_spots.json</code>. Chapter numbers come from <code>scripts/mine_riichi_folds.py</code>, <code>mine_open_tenpai_push.py</code>, <code>mine_single_call.py</code>, <code>mine_vs_open.py</code>, <code>mine_win_value.py</code> and <code>mine_value_choice.py</code>, for chapters 6 to 8 from <code>mine_dora_hands.py</code>, <code>mine_flush_calls.py</code> and <code>mine_caller_tells.py</code>, for chapter 9 from <code>mine_shape_plans.py</code>, for chapter 10 from <code>review_recent_games.py</code> and <code>mine_late_placement.py</code>, for chapter 11 from <code>mine_tenpai_push.py</code>, for chapter 12 from <code>mine_open_vs_open.py</code> and <code>mine_call_chances.py</code>, with <code>mine_dora_hands.py</code> for the open wins and deal-ins, for chapter 17 from <code>mine_early_safe_tiles.py</code> and <code>contrast/hands_all.py</code>, with Mortal's ratings from the site's replays, for chapter 18 from <code>mine_caller_surface.py</code>, drawn by <code>build_caller_surface.py</code>, for chapter 19 from <code>mine_caller_fold_line.py</code> over <code>contrast/vs_callers.py</code> and <code>mine_caller_surface.py patterns</code>, for chapters 20 and 21 from <code>mine_break_folds.py</code> over <code>contrast/vs_callers.py</code> and <code>mine_riichi_folds.py</code>, drawn by <code>build_break_fold_figure.py</code>, for chapter 23 from <code>mine_tenpai_push.py</code> and <code>contrast/riichi_danger.py</code>, for chapter 26 from <code>contrast/hands_all.py</code> and <code>mine_riichi_folds.py</code> with the replays&#8217; Mortal ratings, for chapter 27 from <code>contrast/hands_all.py</code>, the game logs&#8217; standings and the amae-koromo export, and for chapter 28 from <code>mine_dealer_callers.py</code> over <code>contrast/vs_callers.py</code> and <code>contrast/choices.py</code>, drawn by <code>build_dealer_caller_figure.py</code>, for chapter 29 from <code>mine_costly_run.py</code> over <code>contrast/hands_all.py</code> and the replays&#8217; Mortal ratings, for chapter 30 from <code>mine_defense_check.py</code> over <code>contrast/hands_all.py</code>, <code>mine_riichi_folds.py</code>, <code>contrast/vs_callers.py</code>, <code>contrast/choices.py</code> and <code>mine_early_safe_tiles.py</code>, for chapter 31 from <code>mine_declined_riichis.py</code> over the replays&#8217; Mortal ratings, for chapter 32 from <code>mine_no_safe_riichis.py</code> over <code>mine_early_safe_tiles.py</code> and the replays&#8217; Mortal ratings, for chapter 33 from <code>mine_climb_check.py</code> over <code>contrast/tenpai.py</code> and the riichi rows, for chapter 34 from <code>mine_streak_check.py</code> over <code>contrast/tenpai.py</code> and the replays&#8217; Mortal ratings, for chapter 35 from <code>mine_thin_pushes.py</code> over the spots of <code>mine_tenpai_push.py</code> and the replays&#8217; Mortal ratings, for chapter 36 from <code>mine_push_ev.py</code> over the same spots, for chapter 37 from <code>mine_fold_whatif.py</code> over <code>mortal_whatif.py</code> runs of chapter 35&#8217;s folds, for chapter 38 from <code>mine_fold_theory.py</code> over those runs, <code>contrast/tenpai.py</code> and the push-or-fold spots, for chapter 39 from <code>mine_push_company.py</code> over every seat&#8217;s push-or-fold spots, and for chapter 40 from <code>mine_half_suji.py</code> over every live number tile thrown into a lone riichi, each run on your games and on LuckyJ's with the same code.</li>
+            <li>Generated data: <code>site/honver-guide.json</code> from <code>scripts/build_personal_guide.py</code> and <code>data/personal_guide_spots.json</code>. Chapter numbers come from <code>scripts/mine_riichi_folds.py</code>, <code>mine_open_tenpai_push.py</code>, <code>mine_single_call.py</code>, <code>mine_vs_open.py</code>, <code>mine_win_value.py</code> and <code>mine_value_choice.py</code>, for chapters 6 to 8 from <code>mine_dora_hands.py</code>, <code>mine_flush_calls.py</code> and <code>mine_caller_tells.py</code>, for chapter 9 from <code>mine_shape_plans.py</code>, for chapter 10 from <code>review_recent_games.py</code> and <code>mine_late_placement.py</code>, for chapter 11 from <code>mine_tenpai_push.py</code>, for chapter 12 from <code>mine_open_vs_open.py</code> and <code>mine_call_chances.py</code>, with <code>mine_dora_hands.py</code> for the open wins and deal-ins, for chapter 17 from <code>mine_early_safe_tiles.py</code> and <code>contrast/hands_all.py</code>, with Mortal's ratings from the site's replays, for chapter 18 from <code>mine_caller_surface.py</code>, drawn by <code>build_caller_surface.py</code>, for chapter 19 from <code>mine_caller_fold_line.py</code> over <code>contrast/vs_callers.py</code> and <code>mine_caller_surface.py patterns</code>, for chapters 20 and 21 from <code>mine_break_folds.py</code> over <code>contrast/vs_callers.py</code> and <code>mine_riichi_folds.py</code>, drawn by <code>build_break_fold_figure.py</code>, for chapter 23 from <code>mine_tenpai_push.py</code> and <code>contrast/riichi_danger.py</code>, for chapter 26 from <code>contrast/hands_all.py</code> and <code>mine_riichi_folds.py</code> with the replays&#8217; Mortal ratings, for chapter 27 from <code>contrast/hands_all.py</code>, the game logs&#8217; standings and the amae-koromo export, and for chapter 28 from <code>mine_dealer_callers.py</code> over <code>contrast/vs_callers.py</code> and <code>contrast/choices.py</code>, drawn by <code>build_dealer_caller_figure.py</code>, for chapter 29 from <code>mine_costly_run.py</code> over <code>contrast/hands_all.py</code> and the replays&#8217; Mortal ratings, for chapter 30 from <code>mine_defense_check.py</code> over <code>contrast/hands_all.py</code>, <code>mine_riichi_folds.py</code>, <code>contrast/vs_callers.py</code>, <code>contrast/choices.py</code> and <code>mine_early_safe_tiles.py</code>, for chapter 31 from <code>mine_declined_riichis.py</code> over the replays&#8217; Mortal ratings, for chapter 32 from <code>mine_no_safe_riichis.py</code> over <code>mine_early_safe_tiles.py</code> and the replays&#8217; Mortal ratings, for chapter 33 from <code>mine_climb_check.py</code> over <code>contrast/tenpai.py</code> and the riichi rows, for chapter 34 from <code>mine_streak_check.py</code> over <code>contrast/tenpai.py</code> and the replays&#8217; Mortal ratings, for chapter 35 from <code>mine_thin_pushes.py</code> over the spots of <code>mine_tenpai_push.py</code> and the replays&#8217; Mortal ratings, for chapter 36 from <code>mine_push_ev.py</code> over the same spots, for chapter 37 from <code>mine_fold_whatif.py</code> over <code>mortal_whatif.py</code> runs of chapter 35&#8217;s folds, for chapter 38 from <code>mine_fold_theory.py</code> over those runs, <code>contrast/tenpai.py</code> and the push-or-fold spots, for chapter 39 from <code>mine_push_company.py</code> over every seat&#8217;s push-or-fold spots, for chapter 40 from <code>mine_half_suji.py</code> over every live number tile thrown into a lone riichi, and for chapter 41 from <code>mine_fold_model.py</code> over every tile held by a player discarding into a lone riichi, with LightGBM and TabPFN 3.5 beside its own network, each run on your games and on LuckyJ's with the same code.</li>
             <li><a href="points.html">The main LuckyJ playbook</a> has the general rules these chapters build on.</li>
           </ul>
         </section>

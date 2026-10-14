@@ -1,0 +1,1309 @@
+{
+ "candidates": 858565,
+ "decisions": 108201,
+ "winning_share": 9.46,
+ "games": {
+  "jade": 199,
+  "tenhou": 1254
+ },
+ "auc": {
+  "gbm": 0.646,
+  "net": 0.643,
+  "tabpfn": 0.648,
+  "kind only": 0.599,
+  "checklist": 0.607
+ },
+ "sides": {
+  "luckyj": {
+   "no_genbutsu": {
+    "n": 2098,
+    "thrown": 2.48,
+    "hits": 52,
+    "random": 8.69,
+    "gbm pick": 2.31,
+    "gbm predicted": 4.54,
+    "net pick": 2.19,
+    "net predicted": 4.06,
+    "tabpfn pick": 2.1,
+    "tabpfn predicted": 4.26,
+    "kind only pick": 3.07,
+    "checklist pick": 2.45,
+    "kinds": {
+     "suji": [
+      382,
+      1.6
+     ],
+     "nakasuji": [
+      120,
+      1.7
+     ],
+     "virtual nakasuji": [
+      7,
+      0.0
+     ],
+     "honor, 2 seen": [
+      298,
+      0.0
+     ],
+     "live honor": [
+      506,
+      1.6
+     ],
+     "live terminal": [
+      315,
+      4.8
+     ],
+     "half suji": [
+      138,
+      2.9
+     ],
+     "live 2-3-7-8": [
+      311,
+      5.1
+     ],
+     "live 4-5-6": [
+      21,
+      4.8
+     ]
+    }
+   },
+   "real_folds": {
+    "n": 547,
+    "thrown": 1.28,
+    "hits": 7,
+    "random": 8.29,
+    "gbm pick": 1.65,
+    "gbm predicted": 4.0,
+    "net pick": 1.46,
+    "net predicted": 3.71,
+    "tabpfn pick": 1.65,
+    "tabpfn predicted": 3.88,
+    "kind only pick": 2.78,
+    "checklist pick": 1.98,
+    "kinds": {
+     "suji": [
+      146,
+      0.0
+     ],
+     "nakasuji": [
+      39,
+      0.0
+     ],
+     "virtual nakasuji": [
+      4,
+      0.0
+     ],
+     "honor, 2 seen": [
+      90,
+      0.0
+     ],
+     "live honor": [
+      112,
+      1.8
+     ],
+     "live terminal": [
+      74,
+      2.7
+     ],
+     "half suji": [
+      26,
+      3.8
+     ],
+     "live 2-3-7-8": [
+      54,
+      3.7
+     ],
+     "live 4-5-6": [
+      2,
+      0.0
+     ]
+    }
+   }
+  },
+  "tokujou_humans": {
+   "no_genbutsu": {
+    "n": 6964,
+    "thrown": 4.48,
+    "hits": 312,
+    "random": 8.48,
+    "gbm pick": 2.81,
+    "gbm predicted": 5.21,
+    "net pick": 2.7,
+    "net predicted": 4.73,
+    "tabpfn pick": 2.76,
+    "tabpfn predicted": 4.95,
+    "kind only pick": 3.53,
+    "checklist pick": 2.92,
+    "kinds": {
+     "suji": [
+      1336,
+      3.9
+     ],
+     "nakasuji": [
+      346,
+      2.6
+     ],
+     "virtual nakasuji": [
+      23,
+      0.0
+     ],
+     "honor, 2 seen": [
+      660,
+      0.3
+     ],
+     "live honor": [
+      1611,
+      2.2
+     ],
+     "live terminal": [
+      1203,
+      5.1
+     ],
+     "half suji": [
+      328,
+      8.5
+     ],
+     "live 2-3-7-8": [
+      1300,
+      8.8
+     ],
+     "live 4-5-6": [
+      157,
+      5.7
+     ]
+    }
+   },
+   "real_folds": {
+    "n": 1603,
+    "thrown": 3.87,
+    "hits": 62,
+    "random": 8.73,
+    "gbm pick": 2.93,
+    "gbm predicted": 4.59,
+    "net pick": 3.43,
+    "net predicted": 4.3,
+    "tabpfn pick": 2.81,
+    "tabpfn predicted": 4.46,
+    "kind only pick": 3.66,
+    "checklist pick": 3.04,
+    "kinds": {
+     "suji": [
+      438,
+      2.7
+     ],
+     "nakasuji": [
+      133,
+      3.8
+     ],
+     "virtual nakasuji": [
+      5,
+      0.0
+     ],
+     "honor, 2 seen": [
+      209,
+      1.0
+     ],
+     "live honor": [
+      265,
+      1.9
+     ],
+     "live terminal": [
+      261,
+      5.7
+     ],
+     "half suji": [
+      56,
+      8.9
+     ],
+     "live 2-3-7-8": [
+      220,
+      8.2
+     ],
+     "live 4-5-6": [
+      16,
+      0.0
+     ]
+    }
+   }
+  },
+  "jade_humans": {
+   "no_genbutsu": {
+    "n": 1188,
+    "thrown": 4.21,
+    "hits": 50,
+    "random": 9.58,
+    "gbm pick": 3.11,
+    "gbm predicted": 5.41,
+    "net pick": 3.62,
+    "net predicted": 4.89,
+    "tabpfn pick": 3.37,
+    "tabpfn predicted": 5.15,
+    "kind only pick": 3.03,
+    "checklist pick": 2.67,
+    "kinds": {
+     "suji": [
+      205,
+      2.9
+     ],
+     "nakasuji": [
+      60,
+      1.7
+     ],
+     "virtual nakasuji": [
+      3,
+      0.0
+     ],
+     "honor, 2 seen": [
+      95,
+      1.1
+     ],
+     "live honor": [
+      281,
+      1.4
+     ],
+     "live terminal": [
+      223,
+      5.8
+     ],
+     "half suji": [
+      51,
+      9.8
+     ],
+     "live 2-3-7-8": [
+      253,
+      7.1
+     ],
+     "live 4-5-6": [
+      17,
+      11.8
+     ]
+    }
+   },
+   "real_folds": {
+    "n": 254,
+    "thrown": 5.51,
+    "hits": 14,
+    "random": 10.03,
+    "gbm pick": 3.94,
+    "gbm predicted": 5.15,
+    "net pick": 5.51,
+    "net predicted": 4.75,
+    "tabpfn pick": 4.72,
+    "tabpfn predicted": 4.91,
+    "kind only pick": 4.46,
+    "checklist pick": 3.74,
+    "kinds": {
+     "suji": [
+      65,
+      4.6
+     ],
+     "nakasuji": [
+      18,
+      5.6
+     ],
+     "honor, 2 seen": [
+      31,
+      3.2
+     ],
+     "live honor": [
+      44,
+      2.3
+     ],
+     "live terminal": [
+      45,
+      8.9
+     ],
+     "half suji": [
+      7,
+      28.6
+     ],
+     "live 2-3-7-8": [
+      42,
+      4.8
+     ],
+     "live 4-5-6": [
+      2,
+      0.0
+     ]
+    }
+   }
+  },
+  "humans": {
+   "no_genbutsu": {
+    "n": 8152,
+    "thrown": 4.44,
+    "hits": 362,
+    "random": 8.64,
+    "gbm pick": 2.86,
+    "gbm predicted": 5.24,
+    "net pick": 2.83,
+    "net predicted": 4.75,
+    "tabpfn pick": 2.85,
+    "tabpfn predicted": 4.98,
+    "kind only pick": 3.46,
+    "checklist pick": 2.88,
+    "kinds": {
+     "suji": [
+      1541,
+      3.8
+     ],
+     "nakasuji": [
+      406,
+      2.5
+     ],
+     "virtual nakasuji": [
+      26,
+      0.0
+     ],
+     "honor, 2 seen": [
+      755,
+      0.4
+     ],
+     "live honor": [
+      1892,
+      2.1
+     ],
+     "live terminal": [
+      1426,
+      5.2
+     ],
+     "half suji": [
+      379,
+      8.7
+     ],
+     "live 2-3-7-8": [
+      1553,
+      8.6
+     ],
+     "live 4-5-6": [
+      174,
+      6.3
+     ]
+    }
+   },
+   "real_folds": {
+    "n": 1857,
+    "thrown": 4.09,
+    "hits": 76,
+    "random": 8.91,
+    "gbm pick": 3.07,
+    "gbm predicted": 4.67,
+    "net pick": 3.72,
+    "net predicted": 4.36,
+    "tabpfn pick": 3.07,
+    "tabpfn predicted": 4.52,
+    "kind only pick": 3.77,
+    "checklist pick": 3.13,
+    "kinds": {
+     "suji": [
+      503,
+      3.0
+     ],
+     "nakasuji": [
+      151,
+      4.0
+     ],
+     "virtual nakasuji": [
+      5,
+      0.0
+     ],
+     "honor, 2 seen": [
+      240,
+      1.2
+     ],
+     "live honor": [
+      309,
+      1.9
+     ],
+     "live terminal": [
+      306,
+      6.2
+     ],
+     "half suji": [
+      63,
+      11.1
+     ],
+     "live 2-3-7-8": [
+      262,
+      7.6
+     ],
+     "live 4-5-6": [
+      18,
+      0.0
+     ]
+    }
+   }
+  },
+  "you": {
+   "no_genbutsu": {
+    "n": 388,
+    "thrown": 3.09,
+    "hits": 12,
+    "random": 9.06,
+    "gbm pick": 2.71,
+    "gbm predicted": 4.37,
+    "net pick": 2.84,
+    "net predicted": 3.81,
+    "tabpfn pick": 2.32,
+    "tabpfn predicted": 4.04,
+    "kind only pick": 2.65,
+    "checklist pick": 3.44,
+    "kinds": {
+     "suji": [
+      82,
+      2.4
+     ],
+     "nakasuji": [
+      37,
+      0.0
+     ],
+     "honor, 2 seen": [
+      49,
+      0.0
+     ],
+     "live honor": [
+      99,
+      3.0
+     ],
+     "live terminal": [
+      52,
+      3.8
+     ],
+     "half suji": [
+      16,
+      12.5
+     ],
+     "live 2-3-7-8": [
+      47,
+      4.3
+     ],
+     "live 4-5-6": [
+      6,
+      16.7
+     ]
+    }
+   },
+   "real_folds": {
+    "n": 111,
+    "thrown": 2.7,
+    "hits": 3,
+    "random": 9.34,
+    "gbm pick": 1.8,
+    "gbm predicted": 4.31,
+    "net pick": 1.8,
+    "net predicted": 3.83,
+    "tabpfn pick": 1.8,
+    "tabpfn predicted": 4.04,
+    "kind only pick": 0.45,
+    "checklist pick": 1.8,
+    "kinds": {
+     "suji": [
+      29,
+      3.4
+     ],
+     "nakasuji": [
+      16,
+      0.0
+     ],
+     "honor, 2 seen": [
+      15,
+      0.0
+     ],
+     "live honor": [
+      18,
+      0.0
+     ],
+     "live terminal": [
+      15,
+      0.0
+     ],
+     "half suji": [
+      7,
+      14.3
+     ],
+     "live 2-3-7-8": [
+      11,
+      9.1
+     ]
+    }
+   }
+  }
+ },
+ "checklist_odds": {
+  "kind: nakasuji": 0.58,
+  "kind: virtual nakasuji": 1.26,
+  "kind: honor, 2 seen": 0.26,
+  "kind: live honor": 0.69,
+  "kind: live terminal": 2.94,
+  "kind: half suji": 1.63,
+  "kind: live 2-3-7-8": 1.83,
+  "kind: live 4-5-6": 2.61,
+  "copies seen besides yours (honor)": 0.63,
+  "copies seen besides yours (suji)": 0.76,
+  "copies seen besides yours (nakasuji, half suji)": 1.11,
+  "copies seen besides yours (live number)": 1.08,
+  "suji made by the declaration tile": 1.8,
+  "half suji made by the declaration tile": 0.87,
+  "the riichi threw a tile 1-2 ranks away early": 0.74,
+  "dora": 1.2,
+  "dora 1-2 ranks away": 1.07,
+  "dragon": 1.29,
+  "1 or 9": 0.48
+ },
+ "tokujou_humans_by_riichi": {
+  "against LuckyJ": {
+   "n": 2432,
+   "thrown": 4.15,
+   "hits": 101,
+   "random": 8.35,
+   "gbm pick": 2.57,
+   "gbm predicted": 5.23,
+   "net pick": 2.3,
+   "net predicted": 4.77,
+   "tabpfn pick": 2.34,
+   "tabpfn predicted": 4.95,
+   "kind only pick": 2.99,
+   "checklist pick": 2.44,
+   "kinds": {
+    "suji": [
+     456,
+     3.5
+    ],
+    "nakasuji": [
+     130,
+     3.1
+    ],
+    "virtual nakasuji": [
+     10,
+     0.0
+    ],
+    "honor, 2 seen": [
+     244,
+     0.4
+    ],
+    "live honor": [
+     558,
+     1.3
+    ],
+    "live terminal": [
+     417,
+     4.6
+    ],
+    "half suji": [
+     106,
+     9.4
+    ],
+    "live 2-3-7-8": [
+     453,
+     9.5
+    ],
+    "live 4-5-6": [
+     58,
+     1.7
+    ]
+   }
+  },
+  "against the others": {
+   "n": 4532,
+   "thrown": 4.66,
+   "hits": 211,
+   "random": 8.55,
+   "gbm pick": 2.94,
+   "gbm predicted": 5.2,
+   "net pick": 2.91,
+   "net predicted": 4.71,
+   "tabpfn pick": 2.99,
+   "tabpfn predicted": 4.95,
+   "kind only pick": 3.82,
+   "checklist pick": 3.18,
+   "kinds": {
+    "suji": [
+     880,
+     4.1
+    ],
+    "nakasuji": [
+     216,
+     2.3
+    ],
+    "virtual nakasuji": [
+     13,
+     0.0
+    ],
+    "honor, 2 seen": [
+     416,
+     0.2
+    ],
+    "live honor": [
+     1053,
+     2.8
+    ],
+    "live terminal": [
+     786,
+     5.3
+    ],
+    "half suji": [
+     222,
+     8.1
+    ],
+    "live 2-3-7-8": [
+     847,
+     8.5
+    ],
+    "live 4-5-6": [
+     99,
+     8.1
+    ]
+   }
+  }
+ },
+ "same_danger": {
+  "luckyj": [
+   {
+    "model": [
+     0.0,
+     2.0
+    ],
+    "thrown": [
+     415,
+     0.0
+    ],
+    "kept": [
+     171,
+     0.0
+    ]
+   },
+   {
+    "model": [
+     2.0,
+     4.0
+    ],
+    "thrown": [
+     728,
+     0.96
+    ],
+    "kept": [
+     1302,
+     2.61
+    ]
+   },
+   {
+    "model": [
+     4.0,
+     7.0
+    ],
+    "thrown": [
+     533,
+     3.75
+    ],
+    "kept": [
+     4181,
+     5.57
+    ]
+   },
+   {
+    "model": [
+     7.0,
+     12.0
+    ],
+    "thrown": [
+     357,
+     5.88
+    ],
+    "kept": [
+     8580,
+     9.43
+    ]
+   },
+   {
+    "model": [
+     12.0,
+     101.0
+    ],
+    "thrown": [
+     65,
+     6.15
+    ],
+    "kept": [
+     3877,
+     14.75
+    ]
+   }
+  ],
+  "humans": [
+   {
+    "model": [
+     0.0,
+     2.0
+    ],
+    "thrown": [
+     1089,
+     0.37
+    ],
+    "kept": [
+     841,
+     0.59
+    ]
+   },
+   {
+    "model": [
+     2.0,
+     4.0
+    ],
+    "thrown": [
+     2637,
+     2.16
+    ],
+    "kept": [
+     4576,
+     2.64
+    ]
+   },
+   {
+    "model": [
+     4.0,
+     7.0
+    ],
+    "thrown": [
+     2273,
+     4.8
+    ],
+    "kept": [
+     16031,
+     5.77
+    ]
+   },
+   {
+    "model": [
+     7.0,
+     12.0
+    ],
+    "thrown": [
+     1786,
+     8.85
+    ],
+    "kept": [
+     34062,
+     9.06
+    ]
+   },
+   {
+    "model": [
+     12.0,
+     101.0
+    ],
+    "thrown": [
+     367,
+     9.26
+    ],
+    "kept": [
+     14603,
+     14.59
+    ]
+   }
+  ],
+  "you": [
+   {
+    "model": [
+     0.0,
+     2.0
+    ],
+    "thrown": [
+     72,
+     0.0
+    ],
+    "kept": [
+     39,
+     0.0
+    ]
+   },
+   {
+    "model": [
+     2.0,
+     4.0
+    ],
+    "thrown": [
+     144,
+     1.39
+    ],
+    "kept": [
+     238,
+     4.2
+    ]
+   },
+   {
+    "model": [
+     4.0,
+     7.0
+    ],
+    "thrown": [
+     102,
+     4.9
+    ],
+    "kept": [
+     808,
+     6.19
+    ]
+   },
+   {
+    "model": [
+     7.0,
+     12.0
+    ],
+    "thrown": [
+     61,
+     4.92
+    ],
+    "kept": [
+     1570,
+     9.3
+    ]
+   },
+   {
+    "model": [
+     12.0,
+     101.0
+    ],
+    "thrown": [
+     9,
+     22.22
+    ],
+    "kept": [
+     732,
+     15.16
+    ]
+   }
+  ]
+ },
+ "cues": {
+  "honors: copies seen besides yours": {
+   "0 seen, dragon": [
+    10156,
+    5.7
+   ],
+   "0 seen, guest wind": [
+    4134,
+    3.8
+   ],
+   "0 seen, value wind": [
+    4843,
+    4.8
+   ],
+   "1 seen, dragon": [
+    12387,
+    3.5
+   ],
+   "1 seen, guest wind": [
+    6976,
+    2.9
+   ],
+   "1 seen, value wind": [
+    6288,
+    2.8
+   ],
+   "2 seen, dragon": [
+    5711,
+    0.9
+   ],
+   "2 seen, guest wind": [
+    4791,
+    0.7
+   ],
+   "2 seen, value wind": [
+    3409,
+    0.6
+   ]
+  },
+  "suji: rank, made by the declaration tile": {
+   "1/9": [
+    12933,
+    2.7
+   ],
+   "1/9, declaration tile": [
+    2309,
+    1.3
+   ],
+   "2/8": [
+    21133,
+    4.3
+   ],
+   "2/8, declaration tile": [
+    5657,
+    9.9
+   ],
+   "3/7": [
+    31720,
+    5.0
+   ],
+   "3/7, declaration tile": [
+    6367,
+    8.2
+   ]
+  },
+  "suji: copies seen besides yours": {
+   "0": [
+    34955,
+    6.0
+   ],
+   "1": [
+    30625,
+    4.8
+   ],
+   "2": [
+    12056,
+    2.7
+   ],
+   "3": [
+    2483,
+    2.3
+   ]
+  },
+  "live terminal: the riichi threw a tile 1-2 ranks away early": {
+   "0": [
+    68453,
+    9.7
+   ],
+   "1": [
+    13504,
+    3.6
+   ]
+  },
+  "live 2-3-7-8: the riichi threw a tile 1-2 ranks away early": {
+   "0": [
+    192865,
+    11.1
+   ],
+   "1": [
+    103720,
+    8.8
+   ]
+  },
+  "every candidate by kind": {
+   "half suji": [
+    146039,
+    9.5
+   ],
+   "honor, 2 seen": [
+    13911,
+    0.7
+   ],
+   "live 2-3-7-8": [
+    296585,
+    10.3
+   ],
+   "live 4-5-6": [
+    156428,
+    14.3
+   ],
+   "live honor": [
+    44784,
+    4.0
+   ],
+   "live terminal": [
+    81957,
+    8.7
+   ],
+   "nakasuji": [
+    35264,
+    3.6
+   ],
+   "suji": [
+    80119,
+    4.9
+   ],
+   "virtual nakasuji": [
+    3478,
+    6.3
+   ]
+  }
+ },
+ "your_deal_ins": [
+  {
+   "game": "260622-f5717c58-e9a6-4839-8a57-8d0cc28c0f8e",
+   "round": "South 1-0",
+   "turn": 14,
+   "real_fold": false,
+   "thrown": [
+    "Chun",
+    "live honor",
+    4.7
+   ],
+   "safest": [
+    "5s",
+    "half suji",
+    2.2
+   ],
+   "checklist": [
+    "9s",
+    "suji",
+    2.4,
+    false
+   ],
+   "thrown_rank": 5,
+   "candidates": 12
+  },
+  {
+   "game": "260907-5bb86780-71a7-4a71-a75d-8ae72dcb5d16",
+   "round": "South 1-0",
+   "turn": 12,
+   "real_fold": false,
+   "thrown": [
+    "4p",
+    "half suji",
+    6.5
+   ],
+   "safest": [
+    "4p",
+    "half suji",
+    6.5
+   ],
+   "checklist": [
+    "3s",
+    "live 2-3-7-8",
+    7.8,
+    false
+   ],
+   "thrown_rank": 1,
+   "candidates": 10
+  },
+  {
+   "game": "260919-80611ca6-72b8-44b1-b7a8-38b0a3d909cf",
+   "round": "South 2-0",
+   "turn": 8,
+   "real_fold": false,
+   "thrown": [
+    "4m",
+    "live 4-5-6",
+    12.1
+   ],
+   "safest": [
+    "8p",
+    "live 2-3-7-8",
+    6.2
+   ],
+   "checklist": [
+    "7p",
+    "live 2-3-7-8",
+    8.2,
+    false
+   ],
+   "thrown_rank": 5,
+   "candidates": 7
+  },
+  {
+   "game": "260920-a3b39b2d-e995-4229-9a27-dc46d5286ce7",
+   "round": "East 4-0",
+   "turn": 11,
+   "real_fold": true,
+   "thrown": [
+    "7s",
+    "suji",
+    4.6
+   ],
+   "safest": [
+    "7s",
+    "suji",
+    4.6
+   ],
+   "checklist": [
+    "7s",
+    "suji",
+    3.6,
+    true
+   ],
+   "thrown_rank": 1,
+   "candidates": 10
+  },
+  {
+   "game": "260929-68b62fbc-a679-4763-986c-cc4fbcccd6bc",
+   "round": "East 2-0",
+   "turn": 4,
+   "real_fold": false,
+   "thrown": [
+    "South",
+    "live honor",
+    3.4
+   ],
+   "safest": [
+    "South",
+    "live honor",
+    3.4
+   ],
+   "checklist": [
+    "South",
+    "live honor",
+    4.0,
+    true
+   ],
+   "thrown_rank": 1,
+   "candidates": 8
+  },
+  {
+   "game": "260929-8e871836-9167-4ae8-863f-02e3f70620f5",
+   "round": "East 1-0",
+   "turn": 4,
+   "real_fold": false,
+   "thrown": [
+    "East",
+    "live honor",
+    3.3
+   ],
+   "safest": [
+    "East",
+    "live honor",
+    3.3
+   ],
+   "checklist": [
+    "East",
+    "live honor",
+    4.2,
+    true
+   ],
+   "thrown_rank": 1,
+   "candidates": 12
+  },
+  {
+   "game": "261002-36f450db-ac8a-4e68-aed9-44741d0e6cc1",
+   "round": "East 2-0",
+   "turn": 13,
+   "real_fold": false,
+   "thrown": [
+    "2m",
+    "live 2-3-7-8",
+    8.8
+   ],
+   "safest": [
+    "7s",
+    "live 2-3-7-8",
+    8.0
+   ],
+   "checklist": [
+    "7s",
+    "live 2-3-7-8",
+    8.6,
+    false
+   ],
+   "thrown_rank": 3,
+   "candidates": 5
+  },
+  {
+   "game": "261004-0919202e-3037-4472-a90c-73fadb4a4cf6",
+   "round": "East 3-1",
+   "turn": 7,
+   "real_fold": true,
+   "thrown": [
+    "8m",
+    "live 2-3-7-8",
+    5.9
+   ],
+   "safest": [
+    "8m",
+    "live 2-3-7-8",
+    5.9
+   ],
+   "checklist": [
+    "5m",
+    "half suji",
+    8.0,
+    true
+   ],
+   "thrown_rank": 1,
+   "candidates": 8
+  },
+  {
+   "game": "261007-778211d0-ecbb-4ec3-a5cf-c7eaa531ea87",
+   "round": "South 4-0",
+   "turn": 6,
+   "real_fold": false,
+   "thrown": [
+    "9m",
+    "live terminal",
+    7.2
+   ],
+   "safest": [
+    "2p",
+    "live 2-3-7-8",
+    4.2
+   ],
+   "checklist": [
+    "4p",
+    "half suji",
+    8.0,
+    false
+   ],
+   "thrown_rank": 4,
+   "candidates": 11
+  },
+  {
+   "game": "261008-d9f44c77-d076-4cd7-bc30-5c0495d3624d",
+   "round": "South 2-1",
+   "turn": 14,
+   "real_fold": false,
+   "thrown": [
+    "3p",
+    "suji",
+    8.0
+   ],
+   "safest": [
+    "3p",
+    "suji",
+    8.0
+   ],
+   "checklist": [
+    "3p",
+    "suji",
+    5.6,
+    true
+   ],
+   "thrown_rank": 1,
+   "candidates": 8
+  },
+  {
+   "game": "261010-165003cb-bf9c-49f9-ae39-ac95a879ae5c",
+   "round": "South 3-2",
+   "turn": 9,
+   "real_fold": true,
+   "thrown": [
+    "6p",
+    "half suji",
+    12.5
+   ],
+   "safest": [
+    "Haku",
+    "live honor",
+    5.3
+   ],
+   "checklist": [
+    "Haku",
+    "live honor",
+    6.1,
+    false
+   ],
+   "thrown_rank": 8,
+   "candidates": 9
+  },
+  {
+   "game": "261011-99feaaaa-a1e4-4bef-9f4c-d08173ab122a",
+   "round": "East 2-0",
+   "turn": 8,
+   "real_fold": false,
+   "thrown": [
+    "1m",
+    "live terminal",
+    6.3
+   ],
+   "safest": [
+    "8p",
+    "live 2-3-7-8",
+    5.8
+   ],
+   "checklist": [
+    "3p",
+    "live 2-3-7-8",
+    8.0,
+    false
+   ],
+   "thrown_rank": 3,
+   "candidates": 12
+  }
+ ]
+}
