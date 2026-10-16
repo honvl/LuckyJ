@@ -1,0 +1,530 @@
+{
+ "moments": 4364,
+ "riichi_hands": 509,
+ "riichi": {
+  "dora honor": {
+   "hands": 13,
+   "won": 3,
+   "won_pct": 23.1,
+   "tsumo": 0,
+   "avg_win": 13100,
+   "points_a_hand": 2092,
+   "paid": 5
+  },
+  "dora number": {
+   "hands": 44,
+   "won": 8,
+   "won_pct": 18.2,
+   "tsumo": 6,
+   "avg_win": 15838,
+   "points_a_hand": 1618,
+   "paid": 14
+  },
+  "honor, not dora": {
+   "hands": 180,
+   "won": 101,
+   "won_pct": 56.1,
+   "tsumo": 33,
+   "avg_win": 11117,
+   "points_a_hand": 5579,
+   "paid": 34
+  },
+  "number or terminal, not dora": {
+   "hands": 268,
+   "won": 128,
+   "won_pct": 47.8,
+   "tsumo": 40,
+   "avg_win": 11229,
+   "points_a_hand": 4476,
+   "paid": 62
+  }
+ },
+ "dama": {
+  "dora honor": {
+   "hands": 23,
+   "won": 9,
+   "won_pct": 39.1,
+   "tsumo": 2,
+   "avg_win": 11233,
+   "points_a_hand": 3648,
+   "paid": 7
+  },
+  "dora number": {
+   "hands": 71,
+   "won": 18,
+   "won_pct": 25.4,
+   "tsumo": 9,
+   "avg_win": 11306,
+   "points_a_hand": 1608,
+   "paid": 18
+  },
+  "honor, not dora": {
+   "hands": 58,
+   "won": 26,
+   "won_pct": 44.8,
+   "tsumo": 4,
+   "avg_win": 8265,
+   "points_a_hand": 2612,
+   "paid": 16
+  },
+  "number or terminal, not dora": {
+   "hands": 501,
+   "won": 193,
+   "won_pct": 38.5,
+   "tsumo": 52,
+   "avg_win": 8310,
+   "points_a_hand": 2362,
+   "paid": 119
+  }
+ },
+ "release": {
+  "a wind nobody needs": {
+   "turns": 47,
+   "released": 4,
+   "per_100_turns": 8.5
+  },
+  "an opponent's seat wind": {
+   "turns": 184,
+   "released": 19,
+   "per_100_turns": 10.3
+  },
+  "dora": {
+   "turns": 277,
+   "released": 2,
+   "per_100_turns": 0.7
+  },
+  "dora honor": {
+   "turns": 38,
+   "released": 3,
+   "per_100_turns": 7.9
+  },
+  "dragon or round wind": {
+   "turns": 543,
+   "released": 38,
+   "per_100_turns": 7.0
+  },
+  "number 2-8": {
+   "turns": 847,
+   "released": 54,
+   "per_100_turns": 6.4
+  },
+  "terminal": {
+   "turns": 404,
+   "released": 35,
+   "per_100_turns": 8.7
+  }
+ },
+ "choices": {
+  "hands": {
+   "luckyj": {
+    "hands": 18,
+    "kept_dora": 8,
+    "kept_other": 10
+   },
+   "tokujou_human": {
+    "hands": 49,
+    "kept_dora": 40,
+    "kept_other": 9
+   },
+   "you": {
+    "hands": 5,
+    "kept_dora": 4,
+    "kept_other": 1
+   },
+   "jade_human": {
+    "hands": 2,
+    "kept_dora": 2,
+    "kept_other": 0
+   }
+  },
+  "riichi": {
+   "luckyj": {
+    "declarations": 2,
+    "kept_dora": 0,
+    "kept_other": 2
+   },
+   "tokujou_human": {
+    "declarations": 11,
+    "kept_dora": 7,
+    "kept_other": 4
+   },
+   "you": {
+    "declarations": 0,
+    "kept_dora": 0,
+    "kept_other": 0
+   },
+   "jade_human": {
+    "declarations": 0,
+    "kept_dora": 0,
+    "kept_other": 0
+   }
+  }
+ },
+ "cases": {
+  "seven_pairs": {
+   "East 4-0": {
+    "round": "East 4-0",
+    "dealer": false,
+    "dora": [
+     "6p"
+    ],
+    "end": "win",
+    "turns": {
+     "5": {
+      "thrown": "Hatsu",
+      "stream_index": 34,
+      "options": [
+       {
+        "discard": "6p",
+        "wait": "Hatsu",
+        "dora": false,
+        "unseen": 2
+       },
+       {
+        "discard": "Hatsu",
+        "wait": "6p",
+        "dora": true,
+        "unseen": 3
+       }
+      ],
+      "mortal": {
+       "played": [
+        [
+         "riichi",
+         0.995
+        ],
+        [
+         "F",
+         0.005
+        ],
+        [
+         "6p",
+         0.0
+        ],
+        [
+         "7p",
+         0.0
+        ],
+        [
+         "8s",
+         0.0
+        ]
+       ],
+       "after_riichi": [
+        [
+         "6p",
+         0.771
+        ],
+        [
+         "F",
+         0.229
+        ]
+       ]
+      }
+     }
+    },
+    "right_riichi_after_your_turn": 5,
+    "hatsu_after_turn_5": [
+     {
+      "who": "across",
+      "turn": 6,
+      "kind": "discard"
+     },
+     {
+      "who": "you",
+      "turn": 8,
+      "kind": "your draw"
+     }
+    ],
+    "pushed_discards": 8,
+    "deal_in": {
+     "turn": 13,
+     "tile": "2m",
+     "points": 5200
+    }
+   },
+   "South 1-0": {
+    "round": "South 1-0",
+    "dealer": true,
+    "dora": [
+     "2s"
+    ],
+    "end": "win",
+    "turns": {
+     "5": {
+      "thrown": "3s",
+      "stream_index": 32,
+      "options": [
+       {
+        "discard": "2s",
+        "wait": "3s",
+        "dora": false,
+        "unseen": 3
+       },
+       {
+        "discard": "3s",
+        "wait": "2s",
+        "dora": true,
+        "unseen": 3
+       }
+      ],
+      "mortal": {
+       "played": [
+        [
+         "riichi",
+         0.945
+        ],
+        [
+         "3s",
+         0.053
+        ],
+        [
+         "W",
+         0.001
+        ],
+        [
+         "2s",
+         0.0
+        ],
+        [
+         "9m",
+         0.0
+        ]
+       ],
+       "after_riichi": [
+        [
+         "3s",
+         0.998
+        ],
+        [
+         "2s",
+         0.002
+        ]
+       ]
+      }
+     },
+     "6": {
+      "thrown": "East",
+      "stream_index": 40,
+      "options": [
+       {
+        "discard": "2s",
+        "wait": "East",
+        "dora": false,
+        "unseen": 2
+       },
+       {
+        "discard": "East",
+        "wait": "2s",
+        "dora": true,
+        "unseen": 3
+       }
+      ],
+      "mortal": {
+       "played": [
+        [
+         "riichi",
+         0.99
+        ],
+        [
+         "E",
+         0.009
+        ],
+        [
+         "W",
+         0.001
+        ],
+        [
+         "9m",
+         0.0
+        ],
+        [
+         "2s",
+         0.0
+        ]
+       ],
+       "after_riichi": [
+        [
+         "2s",
+         0.968
+        ],
+        [
+         "E",
+         0.032
+        ]
+       ]
+      }
+     },
+     "7": {
+      "thrown": "Haku",
+      "stream_index": 48,
+      "options": [
+       {
+        "discard": "2s",
+        "wait": "Haku",
+        "dora": false,
+        "unseen": 3
+       },
+       {
+        "discard": "Haku",
+        "wait": "2s",
+        "dora": true,
+        "unseen": 3
+       }
+      ],
+      "mortal": {
+       "played": [
+        [
+         "riichi",
+         0.763
+        ],
+        [
+         "P",
+         0.235
+        ],
+        [
+         "W",
+         0.001
+        ],
+        [
+         "9m",
+         0.0
+        ],
+        [
+         "2s",
+         0.0
+        ]
+       ],
+       "after_riichi": [
+        [
+         "2s",
+         0.715
+        ],
+        [
+         "P",
+         0.285
+        ]
+       ]
+      }
+     }
+    },
+    "east_after_turn_6": [],
+    "win": {
+     "points": 9600,
+     "from": "left",
+     "after_your_turn": 7
+    }
+   }
+  },
+  "all_last": {
+   "round": "South 4-0",
+   "dealer": true,
+   "start_scores": [
+    20600,
+    16100,
+    22400,
+    40900
+   ],
+   "tiles_left_after_your_draw": 6,
+   "options": {
+    "2p": {
+     "waits": [
+      "3p",
+      "4p"
+     ],
+     "live": 3,
+     "ron_han": [
+      0,
+      0
+     ],
+     "thrown_by": [
+      "across",
+      "left"
+     ]
+    },
+    "3p": {
+     "waits": [
+      "2p"
+     ],
+     "live": 1,
+     "ron_han": [
+      0
+     ],
+     "thrown_by": [
+      "right",
+      "across"
+     ]
+    },
+    "5p": {
+     "waits": [
+      "1p",
+      "4p"
+     ],
+     "live": 6,
+     "ron_han": [
+      0,
+      0
+     ],
+     "thrown_by": []
+    }
+   },
+   "winner": {
+    "seat": "right",
+    "calls": 0,
+    "waits": [
+     "2p",
+     "5p"
+    ],
+    "last_discards": [
+     {
+      "tile": "7s",
+      "drawn_and_thrown": true
+     },
+     {
+      "tile": "2s",
+      "drawn_and_thrown": true
+     },
+     {
+      "tile": "6p",
+      "drawn_and_thrown": true
+     },
+     {
+      "tile": "6p",
+      "drawn_and_thrown": true
+     },
+     {
+      "tile": "1m",
+      "drawn_and_thrown": false
+     }
+    ]
+   },
+   "others_calls": {
+    "right": 0,
+    "across": 1,
+    "left": 2
+   },
+   "mortal": [
+    [
+     "2p",
+     0.57
+    ],
+    [
+     "3p",
+     0.36
+    ],
+    [
+     "5p",
+     0.07
+    ]
+   ],
+   "deal_in": {
+    "points": 7700,
+    "tile": "2p",
+    "final": 12900
+   },
+   "dora": [
+    "1p"
+   ]
+  }
+ }
+}
