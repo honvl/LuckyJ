@@ -5,6 +5,21 @@
  "model": "Mortal policy model (local weights)",
  "games": [
   {
+   "id": "261020-cab68a97-96dc-4b97-9353-53ec05899810",
+   "date": "2026-10-19 19:05",
+   "room": "Jade South",
+   "placement": 4,
+   "score": 9000,
+   "points": -31,
+   "hands": 11,
+   "rank": "Saint 3",
+   "turns": 116,
+   "turns_matched": 76,
+   "calls": 25,
+   "calls_matched": 25,
+   "flagged": 11
+  },
+  {
    "id": "261019-05889e9e-397d-4afa-a9b5-b3d83c08636a",
    "date": "2026-10-18 23:19",
    "room": "Jade South",
