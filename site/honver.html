@@ -49,7 +49,8 @@
           <aside class="guide-news" id="whats-new" aria-labelledby="whats-new-title">
             <h2 id="whats-new-title">What&#8217;s new</h2>
             <ol>
-              <li class="is-latest"><span class="guide-news-date">19 Oct</span><p><span class="new-tag">Latest</span> <a href="#thin-riichis">Chapter 44 checks your riichis with 5 or fewer live tiles</a>: from the 8th turn they won 30.1% where the humans&#8217; won 38.5% to 41.3% and LuckyJ&#8217;s 45.3%, but the waits you take and the cuts you make match theirs, so the cause is not the tile. With 6 or more live tiles you are level with LuckyJ. Chapters 1 to 43 have not changed.</p></li>
+              <li class="is-latest"><span class="guide-news-date">19 Oct</span><p><span class="new-tag">Latest</span> <a href="#rank-drain">Chapter 45 looks for why your rank points fall</a>: the game takes 23.6 a game from an average Jade player and you lost 2.6 over 2026, so the climb was the exception. The one number that moved since the peak, your deal-ins of 7,000 or more, is back at the humans&#8217; rate, and the size of your wins is the biggest gap to LuckyJ. Chapters 1 to 44 have not changed.</p></li>
+              <li><span class="guide-news-date">19 Oct</span><p><a href="#thin-riichis">Chapter 44 checks your riichis with 5 or fewer live tiles</a>: from the 8th turn they won 30.1% where the humans&#8217; won 38.5% to 41.3% and LuckyJ&#8217;s 45.3%, but the waits you take and the cuts you make match theirs, so the cause is not the tile. With 6 or more live tiles you are level with LuckyJ. Chapters 1 to 43 have not changed.</p></li>
               <li><span class="guide-news-date">16 Oct</span><p><a href="#honor-wait">Chapter 43 writes up two decisions from your 15 October games</a>: with seven pairs and two singles, a dora wait wins 18% of riichi hands against 56% for an honor, and LuckyJ gives up the dora; and in the all-last tenpai with no yaku, the [[3p]] had been thrown by the only closed hand, so it was the free discard. Chapters 1 to 42 have not changed.</p></li>
               <li><span class="guide-news-date">16 Oct</span><p><a href="#slide-check">Chapter 42 answers &#8220;I&#8217;m folding more but continuing to lose&#8221;</a>: your folds are fine, and most of the slide since the peak is the climb&#8217;s luck with fourths coming back (16 in 54 games against 11.6 expected, after 4 in 62 against 13.3). The part that is yours is the dama: since the peak you declare 62.3% of your first closed tenpais where LuckyJ declares 74.4%. Chapters 1 to 41 have not changed.</p></li>
               <li><span class="guide-news-date">13 Oct</span><p><a href="#fold-read">Chapter 41 trains three models on how LuckyJ folds</a>: it folds with the same kinds of tile as humans and picks a safer tile inside each kind (1.28% of its real folds hit, the humans&#8217; 4.09%). The models, TabPFN 3.5 among them, cannot match it; the cues they find, copies seen, the declaration tile&#8217;s suji and early neighbours, take humans a third of the way. Chapters 1 to 40 have not changed, apart from the correction below.</p></li>
@@ -128,7 +129,7 @@
 
         <nav class="section guide-chapters" id="chapters" aria-labelledby="chapters-title">
           <p class="kicker">Chapters</p>
-          <h2 id="chapters-title">Forty-four chapters</h2>
+          <h2 id="chapters-title">Forty-five chapters</h2>
           <p class="guide-chapters-note">New lessons arrive as new chapters at the end. Chapters you have read stay as they are, apart from marked corrections.</p>
           <ol class="contents-list is-points guide-chapter-list">
             <li><a href="#value"><span class="contents-num">01</span><span class="contents-title">Count the dora before you pick the plan</span><span class="contents-sub">Value &#183; added 22 September</span></a></li>
@@ -175,6 +176,7 @@
             <li><a href="#slide-check"><span class="contents-num">42</span><span class="contents-title">Folding more cannot stop the fourths; declaring your tenpais is the part to fix</span><span class="contents-sub"><span class="new-tag">New</span> Push or fold &#183; added 16 October</span></a></li>
             <li><a href="#honor-wait"><span class="contents-num">43</span><span class="contents-title">Wait on the honor, not the dora, and take the free safe tile</span><span class="contents-sub"><span class="new-tag">New</span> Recent games &#183; added 16 October</span></a></li>
             <li><a href="#thin-riichis"><span class="contents-num">44</span><span class="contents-title">Your thin riichis are not on the wrong tiles</span><span class="contents-sub"><span class="new-tag">New</span> Riichi or dama &#183; added 19 October</span></a></li>
+            <li><a href="#rank-drain"><span class="contents-num">45</span><span class="contents-title">Why the rank points fall: the game drains them, and your wins are the part to build</span><span class="contents-sub"><span class="new-tag">New</span> Recent games &#183; added 19 October</span></a></li>
           </ol>
         </nav>
 
@@ -5341,6 +5343,191 @@
               <code>contrast/tenpai.py</code>, as in chapter 33.
             </p>
           </div>
+          <nav class="chapter-next" aria-label="Next chapter"><a href="#rank-drain"><span class="chapter-next-label">Next chapter <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>45</i>Why the rank points fall: the game drains them, and your wins are the part to build</span></a></nav>
+        </section>
+
+        <section class="point" id="rank-drain">
+          <div class="point-number">45</div>
+          <div class="point-body">
+            <p class="chapter-kicker">Chapter forty-five &#183; Recent games &#183; added 19 October</p>
+            <p class="guide-new-tag">New</p>
+            <h3>Why the rank points fall: the game drains them, and your wins are the part to build</h3>
+            <p>
+              You told me you are losing rank points quickly and that something is wrong. I looked through your 216 games
+              of 2026 for a part of your play that broke after the peak and found none. I found four other things. The
+              game takes 23.6 rank points a game from an average Jade player. Your defense earns most of it back, which
+              leaves you near even. The climb was the exception. And one number did move since the peak, your deal-ins of
+              7,000 or more, back to the rate of the humans. The size of your wins is where you and LuckyJ are farthest
+              apart.
+            </p>
+            <p>
+              <b>What the game takes.</b> A game pays 1 rank point for each 1,000 points of final score above 30,000
+              (and takes them below), rounded up, plus 130, 65, 0 or &#8722;250 for first to fourth. Scored that way, the Jade
+              humans at your tables lose 23.6 a game and Tokujou&#8217;s humans lose 29.8. Over all of 2026 you lost 2.6.
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th></th><th>Games</th><th>1st, 2nd, 3rd, 4th</th><th>Mean score</th><th>Rank points a game</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Before the climb</td><td>87</td><td>23, 29, 25, 23%</td><td>24,528</td><td>&#8722;13.9</td></tr>
+                  <tr><td>The climb</td><td>62</td><td>32, 29, 32, 6%</td><td>29,694</td><td>+44.8</td></tr>
+                  <tr><td>Since the peak</td><td>67</td><td>25, 21, 24, 30%</td><td>25,864</td><td class="gap">&#8722;31.7</td></tr>
+                  <tr><td>All of 2026</td><td>216</td><td>26, 26, 27, 20%</td><td>26,425</td><td>&#8722;2.6</td></tr>
+                  <tr><td>Jade humans at your tables</td><td>648</td><td>25, 25, 24, 27%</td><td>24,525</td><td>&#8722;23.6</td></tr>
+                  <tr><td>LuckyJ</td><td>1,079</td><td>32, 28, 24, 17%</td><td>28,787</td><td>+16.2</td></tr>
+                  <tr><td>Tokujou&#8217;s humans</td><td>3,237</td><td>23, 24, 25, 28%</td><td>23,726</td><td>&#8722;29.8</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              One game spreads 147.6 rank points around its average, so the average of a 67-game stretch moves 18.0 either
+              way. The climb, +44.8, was 2.5 of those steps above your 2026 average. Since the peak, &#8722;31.7 is 1.6 below
+              it and 0.4 below the average Jade player&#8217;s &#8722;23.6. You finished fourth in 20 of the 67 games; your career
+              rate of 21.4% over 4,458 games gives 14.4, so 20 is 1.7 standard deviations over, and the climb&#8217;s 4 in 62
+              was 2.9 under. Your mean score since the peak, 25,864, is 1,339 points above the Jade humans&#8217; 24,525,
+              and your rank points are 8 below theirs.
+            </p>
+            <p>
+              <b>What did not change.</b> Your discards match Mortal&#8217;s first choice 73.2% of the time before the climb,
+              73.4% on it and 73.0% since. Tilt is not in the games. The game after a fourth in the same session was a
+              fourth 5 times in 18 (27.8%), against 26 in 139 after anything else (18.7%), and by place in the session the
+              fourths run 22.0, 20.0, 17.1, 25.9 and 18.0% from the first game to the fifth or later. Your ends of games
+              are sound. From third before the last hand you fell to fourth 8 times in 55 (14.5%), where the Jade humans
+              do 19 in 161 (11.8%) and LuckyJ 19 in 255 (7.5%). From fourth within 3,000 points of third you got out 10
+              times in 12, against 9 in 34 for the Jade humans and 18 in 40 for LuckyJ. These counts are small.
+            </p>
+            <p>
+              <b>What moved.</b> Your deal-ins of 7,000 or more, by stretch:
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Per 100 hands</th><th>Before the climb</th><th>The climb</th><th>Since the peak</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Deal-ins of 7,000 or more</td><td>2.7</td><td>2.7</td><td class="gap">4.9</td></tr>
+                  <tr><td>Tiles or riichis Mortal rated under 25%</td><td>0.3</td><td>0.6</td><td>1.1</td></tr>
+                  <tr><td>The other deal-ins</td><td>2.4</td><td>2.0</td><td>3.7</td></tr>
+                  <tr><td>Hands of 7,000 or more won by the other three</td><td>9.0</td><td>8.8</td><td>10.1</td></tr>
+                  <tr><td>Riichis declared by the other three</td><td>19.9</td><td>18.4</td><td>18.7</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              The Jade humans deal in 4.7 times per 100 hands, Tokujou&#8217;s humans 4.9 and LuckyJ 3.4. You were below the
+              humans for 149 games and are level with them for the last 67. The shift is 2.6 standard deviations (34
+              hits, where the early rate gives 19.0), and it is the one I picked out of about ten numbers, so read it as
+              likely rather than proved. The 15 extra hits cost 2,086 points a game, 17.3 rank points: without them the
+              stretch would be &#8722;14.4 and not &#8722;31.7.
+            </p>
+            <p>
+              Mortal rated the tile you threw, or the riichi you declared, under 25% in 8 of the 34 hits: 92,800 points,
+              1,385 a game, 11.5 rank points. Before the peak it was 7 of 42. Those 8 are mistakes, and they make up 4.8
+              of the 15 extra hits. The other 26 are tiles Mortal throws too, and make up the other 10.2. In 7 hits you
+              were in riichi and dealt into an open hand, 1.0 per 100 hands where the Jade humans have 0.28 and LuckyJ
+              0.38; in 5 of the 7 Mortal rated your riichi at 99% or more, and in 3 the winner had not called yet when you
+              declared. The tables served a few more big hands as well.
+            </p>
+            <p>
+              <b>Where the rank points are.</b> Every point of a game comes from a win, a deal-in, a tsumo paid, or a draw
+              and the riichi sticks. Your edge over the Jade humans at your tables, and LuckyJ&#8217;s over Tokujou&#8217;s
+              humans, in points a game:
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Points a game</th><th>You</th><th>LuckyJ</th><th>Gap</th><th>Gap in rank points</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Wins</td><td>+103</td><td>+2,448</td><td class="gap">2,345</td><td class="gap">19.5</td></tr>
+                  <tr><td>Deal-ins</td><td>+1,798</td><td>+2,440</td><td>642</td><td>5.3</td></tr>
+                  <tr><td>Tsumo paid</td><td>&#8722;163</td><td>+311</td><td>474</td><td>3.9</td></tr>
+                  <tr><td>Draws and sticks</td><td>+165</td><td>&#8722;138</td><td>&#8722;303</td><td>&#8722;2.5</td></tr>
+                  <tr><td>Total</td><td>+1,903</td><td>+5,061</td><td>3,158</td><td>26.2</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              You are 1,903 points a game above the Jade humans, with an error of 1,186. On the 8.3-per-1,000 line that is
+              15.8 rank points, and you earned 21.0 (&#8722;2.6 against &#8722;23.6). LuckyJ is 5,061 above its humans, with an
+              error of 531, and 3,158 above you. Your defense is close to LuckyJ&#8217;s: +1,798 on deal-ins against +2,440,
+              and yours is 3.3 times its error of 541. Your wins are not: +103 against +2,448, with errors of 902 and 419.
+              The wins are 2,345 of the 3,158 points and 19.5 of the 26.2 rank points.
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Your wins</th><th>You</th><th>Jade humans</th><th>LuckyJ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Hands won per 100</td><td>22.6</td><td>21.1</td><td>22.9</td></tr>
+                  <tr><td>Points a win</td><td class="gap">6,395</td><td>6,789</td><td>7,317</td></tr>
+                  <tr><td>Riichi wins</td><td>8,680</td><td>8,994</td><td>9,227</td></tr>
+                  <tr><td>Dama wins</td><td>5,934</td><td>5,575</td><td>7,676</td></tr>
+                  <tr><td>Open wins</td><td>4,629</td><td>4,962</td><td>5,477</td></tr>
+                  <tr><td>Open wins of 4 han or more</td><td>18%</td><td>23%</td><td>27%</td></tr>
+                  <tr><td>Points a hand you open</td><td>+338</td><td>+255</td><td>+578</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              You win as often as LuckyJ and each win is smaller. 6,395 a win against 7,317 is 922 less, with an error of
+              207. LuckyJ&#8217;s wins are bigger in all three kinds: clearly in open hands (5,477 against 4,629, error 242)
+              and in dama (7,676 against 5,934, error 567), and by 547 in riichi (error 323). You open as many hands as
+              LuckyJ, 35.4% against 36.0%, and win as many of them, but 18% of your open wins have 4 han or more where
+              LuckyJ&#8217;s have 27%. At 2.35 wins a game, 100 points on the average win is worth about 2 rank points a
+              game, and the whole 922 would be 18.0.
+            </p>
+            <p>
+              <b>The six cuts.</b> The 8 hits Mortal rated under 25% include 2 riichis you declared on 7 October at 4% and
+              6% (one is chapter 44&#8217;s East 1, 1 honba). The other 6 are tiles you threw, 68,200 points:
+            </p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>Hand</th><th>Your turn</th><th>You threw</th><th>Mortal&#8217;s rating</th><th>Points</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><a href="replay.html?g=261004-3d4685b3-96b5-421f-9f25-7f7459b95553&amp;r=South+1-1&amp;t=8">3 Oct, South 1-1</a></td><td>8</td><td>[[9m]]</td><td>5%</td><td>12,300</td></tr>
+                  <tr><td><a href="replay.html?g=261017-c062d7a5-938e-4e8f-8061-ca646da43a03&amp;r=South+3-1&amp;t=15">16 Oct, South 3-1</a></td><td>15</td><td>[[6m]]</td><td>0%</td><td>12,300</td></tr>
+                  <tr><td><a href="replay.html?g=261007-c265c423-64d7-4171-ae24-ea000701511e&amp;r=South+4-0&amp;t=12">6 Oct, South 4</a></td><td>12</td><td>[[P]]</td><td>12%</td><td>12,000</td></tr>
+                  <tr><td><a href="replay.html?g=261011-10d214ef-4cc3-414b-ab98-38e19ba751e2&amp;r=East+3-0&amp;t=11">11 Oct, East 3</a></td><td>11</td><td>[[8p]]</td><td>1%</td><td>12,000</td></tr>
+                  <tr><td><a href="replay.html?g=261008-6c28a9cb-7fd0-48ff-a4f0-18b3bcf51dde&amp;r=South+2-0&amp;t=15">7 Oct, South 2</a></td><td>15</td><td>[[7s]]</td><td>0%</td><td>11,600</td></tr>
+                  <tr><td><a href="replay.html?g=261018-65bbd1fc-5557-4dc2-a5ce-3baedec8a46b&amp;r=South+2-1&amp;t=11">17 Oct, South 2-1</a></td><td>11</td><td>[[6s]]</td><td>0%</td><td>8,000</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              In South 3, 1 honba, the player on your left was in riichi with pinfu and sanshoku, and Mortal throws a
+              [[1p]] at 99.6%; your [[6m]] was the winning tile. In East 3 the player on your left had two dragon pons,
+              [[P]] and [[C]], and had thrown no pinzu, and you threw an [[8p]] where Mortal throws a [[7m]] at 98.9%: a
+              honitsu haneman. The 7 hits where you were in riichi were different.
+              <a href="replay.html?g=261018-65bbd1fc-5557-4dc2-a5ce-3baedec8a46b&amp;r=East+3-0&amp;t=12">In East 3 of the 17 October game, your 12th turn</a>
+              you declared into another player&#8217;s riichi, which Mortal does at 99.7%, and four turns later threw
+              the [[4s]] to a hand that had not called when you declared and then took a pon of [[8p]]: tanyao, 3 dora and a
+              red five, 8,000. Nothing there is yours to change.
+            </p>
+            <div class="rule">
+              <strong>Rule</strong> Do not tighten your play because of this stretch. Your defense is worth 1,798 points a
+              game over the humans, 14.9 rank points on the line, and it is already near LuckyJ&#8217;s. Put the work into the
+              size of your wins: the open hand that reaches 4 han, and the dama that waits for its value (chapters 6, 7, 12
+              and 24 have the how). An average win 100 points bigger is about 2 rank points a game.
+            </div>
+            <div class="exception">
+              <strong>Exception</strong> Against a riichi or a caller with a flush, take the safe tile before the hand:
+              the 6 cuts above are mistakes, 68,200 points, and are not luck. Look at them first.
+            </div>
+            <p class="evidence-note">
+              <b>Evidence</b> Your 216 Jade games since 1 January, split at chapter 33&#8217;s climb (23 September to 1
+              October), the 648 other seats at your tables, and LuckyJ&#8217;s 1,079 Tokujou games with the 3,237 seats of its
+              humans, from <code>mine_rank_drain.py</code>. Rank points are the Saint 3 Jade formula applied to every seat; it
+              reproduces all 216 of your records. Points by source come from the hand logs, and an error is the standard
+              error of a mean game. Mortal&#8217;s ratings come from the site&#8217;s replays, and a hit is a deal-in of 7,000 or
+              more, as in chapter 42. The line of 8.3 rank points per 1,000 points is chapter 44&#8217;s.
+            </p>
+          </div>
           <nav class="chapter-next" aria-label="After the chapters"><a href="#method"><span class="chapter-next-label">After the chapters <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title">How this guide was built</span></a></nav>
         </section>
 
@@ -5351,7 +5538,7 @@
             <li>Your games: 80 Jade South hanchan since 1 January 2026, fetched from the Mahjong Soul client and amae-koromo. LuckyJ: 1,255 Tenhou games rebuilt from the cached NAGA reports. Both run through the same replay and metric code.</li>
             <li>Each table is rebuilt from the record at the start of your turn. Opponents' hands are shown as they really were; the switch at the top hides them.</li>
             <li>Acceptance counts the unseen copies of every improving tile from your seat, with a called tile counted once. Against a riichi, tiles passed after the declaration count as genbutsu and anchor suji; a 4, 5 or 6 needs both partners for nakasuji, and an early 5 can cover one side of a 4 or 6 (virtual nakasuji, following the main playbook's sotogawa rule). Honors are read by how many other copies show. Yaku and value are checked only where the text says so.</li>
-            <li>Generated data: <code>site/honver-guide.json</code> from <code>scripts/build_personal_guide.py</code> and <code>data/personal_guide_spots.json</code>. Chapter numbers come from <code>scripts/mine_riichi_folds.py</code>, <code>mine_open_tenpai_push.py</code>, <code>mine_single_call.py</code>, <code>mine_vs_open.py</code>, <code>mine_win_value.py</code> and <code>mine_value_choice.py</code>, for chapters 6 to 8 from <code>mine_dora_hands.py</code>, <code>mine_flush_calls.py</code> and <code>mine_caller_tells.py</code>, for chapter 9 from <code>mine_shape_plans.py</code>, for chapter 10 from <code>review_recent_games.py</code> and <code>mine_late_placement.py</code>, for chapter 11 from <code>mine_tenpai_push.py</code>, for chapter 12 from <code>mine_open_vs_open.py</code> and <code>mine_call_chances.py</code>, with <code>mine_dora_hands.py</code> for the open wins and deal-ins, for chapter 17 from <code>mine_early_safe_tiles.py</code> and <code>contrast/hands_all.py</code>, with Mortal's ratings from the site's replays, for chapter 18 from <code>mine_caller_surface.py</code>, drawn by <code>build_caller_surface.py</code>, for chapter 19 from <code>mine_caller_fold_line.py</code> over <code>contrast/vs_callers.py</code> and <code>mine_caller_surface.py patterns</code>, for chapters 20 and 21 from <code>mine_break_folds.py</code> over <code>contrast/vs_callers.py</code> and <code>mine_riichi_folds.py</code>, drawn by <code>build_break_fold_figure.py</code>, for chapter 23 from <code>mine_tenpai_push.py</code> and <code>contrast/riichi_danger.py</code>, for chapter 26 from <code>contrast/hands_all.py</code> and <code>mine_riichi_folds.py</code> with the replays&#8217; Mortal ratings, for chapter 27 from <code>contrast/hands_all.py</code>, the game logs&#8217; standings and the amae-koromo export, and for chapter 28 from <code>mine_dealer_callers.py</code> over <code>contrast/vs_callers.py</code> and <code>contrast/choices.py</code>, drawn by <code>build_dealer_caller_figure.py</code>, for chapter 29 from <code>mine_costly_run.py</code> over <code>contrast/hands_all.py</code> and the replays&#8217; Mortal ratings, for chapter 30 from <code>mine_defense_check.py</code> over <code>contrast/hands_all.py</code>, <code>mine_riichi_folds.py</code>, <code>contrast/vs_callers.py</code>, <code>contrast/choices.py</code> and <code>mine_early_safe_tiles.py</code>, for chapter 31 from <code>mine_declined_riichis.py</code> over the replays&#8217; Mortal ratings, for chapter 32 from <code>mine_no_safe_riichis.py</code> over <code>mine_early_safe_tiles.py</code> and the replays&#8217; Mortal ratings, for chapter 33 from <code>mine_climb_check.py</code> over <code>contrast/tenpai.py</code> and the riichi rows, for chapter 34 from <code>mine_streak_check.py</code> over <code>contrast/tenpai.py</code> and the replays&#8217; Mortal ratings, for chapter 35 from <code>mine_thin_pushes.py</code> over the spots of <code>mine_tenpai_push.py</code> and the replays&#8217; Mortal ratings, for chapter 36 from <code>mine_push_ev.py</code> over the same spots, for chapter 37 from <code>mine_fold_whatif.py</code> over <code>mortal_whatif.py</code> runs of chapter 35&#8217;s folds, for chapter 38 from <code>mine_fold_theory.py</code> over those runs, <code>contrast/tenpai.py</code> and the push-or-fold spots, for chapter 39 from <code>mine_push_company.py</code> over every seat&#8217;s push-or-fold spots, for chapter 40 from <code>mine_half_suji.py</code> over every live number tile thrown into a lone riichi, and for chapter 41 from <code>mine_fold_model.py</code> over every tile held by a player discarding into a lone riichi, with LightGBM and TabPFN 3.5 beside its own network, for chapter 42 from <code>mine_slide_check.py</code> over chapter 33&#8217;s rows and the replays&#8217; Mortal ratings, for chapter 43 from <code>mine_chiitoi_tanki.py</code> over every seven-pairs hand waiting on one tile, and for chapter 44 from <code>mine_thin_riichi.py</code> over every riichi at every seat, each run on your games and on LuckyJ's with the same code.</li>
+            <li>Generated data: <code>site/honver-guide.json</code> from <code>scripts/build_personal_guide.py</code> and <code>data/personal_guide_spots.json</code>. Chapter numbers come from <code>scripts/mine_riichi_folds.py</code>, <code>mine_open_tenpai_push.py</code>, <code>mine_single_call.py</code>, <code>mine_vs_open.py</code>, <code>mine_win_value.py</code> and <code>mine_value_choice.py</code>, for chapters 6 to 8 from <code>mine_dora_hands.py</code>, <code>mine_flush_calls.py</code> and <code>mine_caller_tells.py</code>, for chapter 9 from <code>mine_shape_plans.py</code>, for chapter 10 from <code>review_recent_games.py</code> and <code>mine_late_placement.py</code>, for chapter 11 from <code>mine_tenpai_push.py</code>, for chapter 12 from <code>mine_open_vs_open.py</code> and <code>mine_call_chances.py</code>, with <code>mine_dora_hands.py</code> for the open wins and deal-ins, for chapter 17 from <code>mine_early_safe_tiles.py</code> and <code>contrast/hands_all.py</code>, with Mortal's ratings from the site's replays, for chapter 18 from <code>mine_caller_surface.py</code>, drawn by <code>build_caller_surface.py</code>, for chapter 19 from <code>mine_caller_fold_line.py</code> over <code>contrast/vs_callers.py</code> and <code>mine_caller_surface.py patterns</code>, for chapters 20 and 21 from <code>mine_break_folds.py</code> over <code>contrast/vs_callers.py</code> and <code>mine_riichi_folds.py</code>, drawn by <code>build_break_fold_figure.py</code>, for chapter 23 from <code>mine_tenpai_push.py</code> and <code>contrast/riichi_danger.py</code>, for chapter 26 from <code>contrast/hands_all.py</code> and <code>mine_riichi_folds.py</code> with the replays&#8217; Mortal ratings, for chapter 27 from <code>contrast/hands_all.py</code>, the game logs&#8217; standings and the amae-koromo export, and for chapter 28 from <code>mine_dealer_callers.py</code> over <code>contrast/vs_callers.py</code> and <code>contrast/choices.py</code>, drawn by <code>build_dealer_caller_figure.py</code>, for chapter 29 from <code>mine_costly_run.py</code> over <code>contrast/hands_all.py</code> and the replays&#8217; Mortal ratings, for chapter 30 from <code>mine_defense_check.py</code> over <code>contrast/hands_all.py</code>, <code>mine_riichi_folds.py</code>, <code>contrast/vs_callers.py</code>, <code>contrast/choices.py</code> and <code>mine_early_safe_tiles.py</code>, for chapter 31 from <code>mine_declined_riichis.py</code> over the replays&#8217; Mortal ratings, for chapter 32 from <code>mine_no_safe_riichis.py</code> over <code>mine_early_safe_tiles.py</code> and the replays&#8217; Mortal ratings, for chapter 33 from <code>mine_climb_check.py</code> over <code>contrast/tenpai.py</code> and the riichi rows, for chapter 34 from <code>mine_streak_check.py</code> over <code>contrast/tenpai.py</code> and the replays&#8217; Mortal ratings, for chapter 35 from <code>mine_thin_pushes.py</code> over the spots of <code>mine_tenpai_push.py</code> and the replays&#8217; Mortal ratings, for chapter 36 from <code>mine_push_ev.py</code> over the same spots, for chapter 37 from <code>mine_fold_whatif.py</code> over <code>mortal_whatif.py</code> runs of chapter 35&#8217;s folds, for chapter 38 from <code>mine_fold_theory.py</code> over those runs, <code>contrast/tenpai.py</code> and the push-or-fold spots, for chapter 39 from <code>mine_push_company.py</code> over every seat&#8217;s push-or-fold spots, for chapter 40 from <code>mine_half_suji.py</code> over every live number tile thrown into a lone riichi, and for chapter 41 from <code>mine_fold_model.py</code> over every tile held by a player discarding into a lone riichi, with LightGBM and TabPFN 3.5 beside its own network, for chapter 42 from <code>mine_slide_check.py</code> over chapter 33&#8217;s rows and the replays&#8217; Mortal ratings, for chapter 43 from <code>mine_chiitoi_tanki.py</code> over every seven-pairs hand waiting on one tile, for chapter 44 from <code>mine_thin_riichi.py</code> over every riichi at every seat, and for chapter 45 from <code>mine_rank_drain.py</code> over every hand and every deal-in, each run on your games and on LuckyJ's with the same code.</li>
             <li><a href="points.html">The main LuckyJ playbook</a> has the general rules these chapters build on.</li>
           </ul>
         </section>

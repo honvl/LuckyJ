@@ -1,0 +1,1233 @@
+{
+ "games": 216,
+ "periods": {
+  "before": 87,
+  "climb": 62,
+  "since": 67
+ },
+ "rank_points_per_1000_points": 8.3,
+ "formula_checked_against_the_records": 216,
+ "pace": {
+  "jade_human": {
+   "games": 648,
+   "places": [
+    159,
+    159,
+    158,
+    172
+   ],
+   "fourth_pct": 26.5,
+   "mean_score": 24525,
+   "score_sd": 15137,
+   "rank_points": -23.6
+  },
+  "you": {
+   "games": 216,
+   "places": [
+    57,
+    57,
+    58,
+    44
+   ],
+   "fourth_pct": 20.4,
+   "mean_score": 26425,
+   "score_sd": 15053,
+   "rank_points": -2.6
+  },
+  "before": {
+   "games": 87,
+   "places": [
+    20,
+    25,
+    22,
+    20
+   ],
+   "fourth_pct": 23.0,
+   "mean_score": 24528,
+   "score_sd": 13539,
+   "rank_points": -13.9
+  },
+  "climb": {
+   "games": 62,
+   "places": [
+    20,
+    18,
+    20,
+    4
+   ],
+   "fourth_pct": 6.5,
+   "mean_score": 29694,
+   "score_sd": 15653,
+   "rank_points": 44.8
+  },
+  "since": {
+   "games": 67,
+   "places": [
+    17,
+    14,
+    16,
+    20
+   ],
+   "fourth_pct": 29.9,
+   "mean_score": 25864,
+   "score_sd": 15841,
+   "rank_points": -31.7
+  },
+  "luckyj": {
+   "games": 1079,
+   "places": [
+    342,
+    297,
+    258,
+    182
+   ],
+   "fourth_pct": 16.9,
+   "mean_score": 28787,
+   "score_sd": 14945,
+   "rank_points": 16.2
+  },
+  "tokujou_human": {
+   "games": 3237,
+   "places": [
+    737,
+    782,
+    821,
+    897
+   ],
+   "fourth_pct": 27.7,
+   "mean_score": 23726,
+   "score_sd": 15539,
+   "rank_points": -29.8
+  }
+ },
+ "spread": {
+  "sd_a_game": 147.6,
+  "stretch_se": {
+   "before": 15.8,
+   "climb": 18.7,
+   "since": 18.0
+  },
+  "climb_vs_2026": 2.5,
+  "since_vs_2026": -1.6,
+  "since_vs_humans": -0.4,
+  "career_games": 4458,
+  "career_fourth_pct": 21.4,
+  "fourths": {
+   "before": {
+    "games": 87,
+    "fourths": 20,
+    "expected": 18.7,
+    "sd": 0.4
+   },
+   "climb": {
+    "games": 62,
+    "fourths": 4,
+    "expected": 13.3,
+    "sd": -2.9
+   },
+   "since": {
+    "games": 67,
+    "fourths": 20,
+    "expected": 14.4,
+    "sd": 1.7
+   }
+  }
+ },
+ "components": {
+  "you": {
+   "games": 216,
+   "win": 15011,
+   "win_se": 790,
+   "deal_riichi": -2839,
+   "deal_riichi_se": 321,
+   "deal_dama": -586,
+   "deal_dama_se": 146,
+   "deal_open": -2599,
+   "deal_open_se": 271,
+   "tsumo_paid": -5794,
+   "tsumo_paid_se": 284,
+   "draw": 83,
+   "draw_se": 141,
+   "sticks": -1861,
+   "sticks_se": 85,
+   "net": 1416,
+   "net_se": 1026,
+   "deal_ins": -6024,
+   "other": -1778,
+   "hands": 10.41
+  },
+  "jade_human": {
+   "games": 648,
+   "win": 14908,
+   "win_se": 435,
+   "deal_riichi": -3722,
+   "deal_riichi_se": 228,
+   "deal_dama": -950,
+   "deal_dama_se": 106,
+   "deal_open": -3150,
+   "deal_open_se": 178,
+   "tsumo_paid": -5631,
+   "tsumo_paid_se": 155,
+   "draw": -28,
+   "draw_se": 79,
+   "sticks": -1915,
+   "sticks_se": 50,
+   "net": -487,
+   "net_se": 595,
+   "deal_ins": -7822,
+   "other": -1943,
+   "hands": 10.41
+  },
+  "luckyj": {
+   "games": 1079,
+   "win": 17523,
+   "win_se": 367,
+   "deal_riichi": -2562,
+   "deal_riichi_se": 139,
+   "deal_dama": -943,
+   "deal_dama_se": 83,
+   "deal_open": -2202,
+   "deal_open_se": 123,
+   "tsumo_paid": -6033,
+   "tsumo_paid_se": 135,
+   "draw": -42,
+   "draw_se": 60,
+   "sticks": -1953,
+   "sticks_se": 39,
+   "net": 3787,
+   "net_se": 455,
+   "deal_ins": -5707,
+   "other": -1995,
+   "hands": 10.45
+  },
+  "tokujou_human": {
+   "games": 3237,
+   "win": 15075,
+   "win_se": 203,
+   "deal_riichi": -3647,
+   "deal_riichi_se": 101,
+   "deal_dama": -1084,
+   "deal_dama_se": 55,
+   "deal_open": -3416,
+   "deal_open_se": 91,
+   "tsumo_paid": -6344,
+   "tsumo_paid_se": 81,
+   "draw": 14,
+   "draw_se": 33,
+   "sticks": -1871,
+   "sticks_se": 23,
+   "net": -1274,
+   "net_se": 273,
+   "deal_ins": -8147,
+   "other": -1857,
+   "hands": 10.45
+  },
+  "before": {
+   "games": 87,
+   "win": 13254,
+   "win_se": 1037,
+   "deal_riichi": -2520,
+   "deal_riichi_se": 470,
+   "deal_dama": -387,
+   "deal_dama_se": 148,
+   "deal_open": -2760,
+   "deal_open_se": 405,
+   "tsumo_paid": -6341,
+   "tsumo_paid_se": 491,
+   "draw": 86,
+   "draw_se": 212,
+   "sticks": -1816,
+   "sticks_se": 112,
+   "net": -484,
+   "net_se": 1458,
+   "deal_ins": -5667,
+   "other": -1730,
+   "hands": 10.46
+  },
+  "climb": {
+   "games": 62,
+   "win": 17587,
+   "win_se": 1701,
+   "deal_riichi": -2655,
+   "deal_riichi_se": 550,
+   "deal_dama": -734,
+   "deal_dama_se": 342,
+   "deal_open": -1858,
+   "deal_open_se": 375,
+   "tsumo_paid": -5623,
+   "tsumo_paid_se": 486,
+   "draw": 153,
+   "draw_se": 228,
+   "sticks": -2194,
+   "sticks_se": 169,
+   "net": 4677,
+   "net_se": 2003,
+   "deal_ins": -5247,
+   "other": -2041,
+   "hands": 10.31
+  },
+  "since": {
+   "games": 67,
+   "win": 14907,
+   "win_se": 1453,
+   "deal_riichi": -3424,
+   "deal_riichi_se": 663,
+   "deal_dama": -706,
+   "deal_dama_se": 291,
+   "deal_open": -3075,
+   "deal_open_se": 601,
+   "tsumo_paid": -5242,
+   "tsumo_paid_se": 476,
+   "draw": 15,
+   "draw_se": 296,
+   "sticks": -1612,
+   "sticks_se": 166,
+   "net": 864,
+   "net_se": 1950,
+   "deal_ins": -7205,
+   "other": -1597,
+   "hands": 10.43
+  }
+ },
+ "edges": {
+  "you": {
+   "win": {
+    "points": 103,
+    "rank_points": 0.9,
+    "se": 902
+   },
+   "deal_ins": {
+    "points": 1798,
+    "rank_points": 14.9,
+    "se": 541
+   },
+   "tsumo_paid": {
+    "points": -163,
+    "rank_points": -1.4,
+    "se": 324
+   },
+   "other": {
+    "points": 165,
+    "rank_points": 1.4,
+    "se": 189
+   },
+   "net": {
+    "points": 1903,
+    "rank_points": 15.8,
+    "se": 1186
+   }
+  },
+  "luckyj": {
+   "win": {
+    "points": 2448,
+    "rank_points": 20.3,
+    "se": 419
+   },
+   "deal_ins": {
+    "points": 2440,
+    "rank_points": 20.3,
+    "se": 251
+   },
+   "tsumo_paid": {
+    "points": 311,
+    "rank_points": 2.6,
+    "se": 157
+   },
+   "other": {
+    "points": -138,
+    "rank_points": -1.1,
+    "se": 82
+   },
+   "net": {
+    "points": 5061,
+    "rank_points": 42.0,
+    "se": 531
+   }
+  }
+ },
+ "gap_to_luckyj": {
+  "win": {
+   "points": 2345,
+   "rank_points": 19.5
+  },
+  "deal_ins": {
+   "points": 642,
+   "rank_points": 5.3
+  },
+  "tsumo_paid": {
+   "points": 474,
+   "rank_points": 3.9
+  },
+  "other": {
+   "points": -303,
+   "rank_points": -2.5
+  },
+  "net": {
+   "points": 3158,
+   "rank_points": 26.2
+  }
+ },
+ "wins": {
+  "you": {
+   "hands": 2248,
+   "games": 216,
+   "wins": 507,
+   "wins_per_100": 22.6,
+   "average": 6395,
+   "average_se": 187,
+   "points_a_hand": 1442,
+   "mangan_or_more_pct": 34,
+   "under_3000_pct": 23,
+   "riichi": {
+    "wins": 203,
+    "per_100": 9.0,
+    "average": 8680,
+    "average_se": 297,
+    "points_a_hand": 784
+   },
+   "dama": {
+    "wins": 56,
+    "per_100": 2.5,
+    "average": 5934,
+    "average_se": 477,
+    "points_a_hand": 148
+   },
+   "open": {
+    "wins": 248,
+    "per_100": 11.0,
+    "average": 4629,
+    "average_se": 214,
+    "points_a_hand": 511
+   },
+   "open_hands": {
+    "hands": 796,
+    "share_of_hands": 35.4,
+    "won_pct": 31.2,
+    "dealt_pct": 12.8,
+    "net_a_hand": 338,
+    "four_han_or_more_pct": 18
+   }
+  },
+  "jade_human": {
+   "hands": 6744,
+   "games": 648,
+   "wins": 1423,
+   "wins_per_100": 21.1,
+   "average": 6789,
+   "average_se": 113,
+   "points_a_hand": 1432,
+   "mangan_or_more_pct": 39,
+   "under_3000_pct": 20,
+   "riichi": {
+    "wins": 619,
+    "per_100": 9.2,
+    "average": 8994,
+    "average_se": 163,
+    "points_a_hand": 826
+   },
+   "dama": {
+    "wins": 169,
+    "per_100": 2.5,
+    "average": 5575,
+    "average_se": 281,
+    "points_a_hand": 140
+   },
+   "open": {
+    "wins": 635,
+    "per_100": 9.4,
+    "average": 4962,
+    "average_se": 143,
+    "points_a_hand": 467
+   },
+   "open_hands": {
+    "hands": 2111,
+    "share_of_hands": 31.3,
+    "won_pct": 30.1,
+    "dealt_pct": 14.7,
+    "net_a_hand": 255,
+    "four_han_or_more_pct": 23
+   }
+  },
+  "luckyj": {
+   "hands": 11272,
+   "games": 1079,
+   "wins": 2584,
+   "wins_per_100": 22.9,
+   "average": 7317,
+   "average_se": 89,
+   "points_a_hand": 1677,
+   "mangan_or_more_pct": 42,
+   "under_3000_pct": 16,
+   "riichi": {
+    "wins": 1124,
+    "per_100": 10.0,
+    "average": 9227,
+    "average_se": 126,
+    "points_a_hand": 920
+   },
+   "dama": {
+    "wins": 245,
+    "per_100": 2.2,
+    "average": 7676,
+    "average_se": 307,
+    "points_a_hand": 167
+   },
+   "open": {
+    "wins": 1215,
+    "per_100": 10.8,
+    "average": 5477,
+    "average_se": 112,
+    "points_a_hand": 590
+   },
+   "open_hands": {
+    "hands": 4061,
+    "share_of_hands": 36.0,
+    "won_pct": 29.9,
+    "dealt_pct": 10.7,
+    "net_a_hand": 578,
+    "four_han_or_more_pct": 27
+   }
+  },
+  "tokujou_human": {
+   "hands": 33816,
+   "games": 3237,
+   "wins": 7109,
+   "wins_per_100": 21.0,
+   "average": 6864,
+   "average_se": 54,
+   "points_a_hand": 1443,
+   "mangan_or_more_pct": 39,
+   "under_3000_pct": 21,
+   "riichi": {
+    "wins": 3006,
+    "per_100": 8.9,
+    "average": 9107,
+    "average_se": 79,
+    "points_a_hand": 810
+   },
+   "dama": {
+    "wins": 935,
+    "per_100": 2.8,
+    "average": 5840,
+    "average_se": 139,
+    "points_a_hand": 161
+   },
+   "open": {
+    "wins": 3168,
+    "per_100": 9.4,
+    "average": 5038,
+    "average_se": 67,
+    "points_a_hand": 472
+   },
+   "open_hands": {
+    "hands": 10736,
+    "share_of_hands": 31.7,
+    "won_pct": 29.5,
+    "dealt_pct": 14.3,
+    "net_a_hand": 189,
+    "four_han_or_more_pct": 23
+   }
+  },
+  "before": {
+   "hands": 910,
+   "games": 87,
+   "wins": 192,
+   "wins_per_100": 21.1,
+   "average": 6006,
+   "average_se": 265,
+   "points_a_hand": 1267,
+   "mangan_or_more_pct": 30,
+   "under_3000_pct": 20,
+   "riichi": {
+    "wins": 78,
+    "per_100": 8.6,
+    "average": 7935,
+    "average_se": 433,
+    "points_a_hand": 680
+   },
+   "dama": {
+    "wins": 20,
+    "per_100": 2.2,
+    "average": 5880,
+    "average_se": 750,
+    "points_a_hand": 129
+   },
+   "open": {
+    "wins": 94,
+    "per_100": 10.3,
+    "average": 4432,
+    "average_se": 284,
+    "points_a_hand": 458
+   },
+   "open_hands": {
+    "hands": 338,
+    "share_of_hands": 37.1,
+    "won_pct": 27.8,
+    "dealt_pct": 14.8,
+    "net_a_hand": -47,
+    "four_han_or_more_pct": 13
+   }
+  },
+  "climb": {
+   "hands": 639,
+   "games": 62,
+   "wins": 160,
+   "wins_per_100": 25.0,
+   "average": 6815,
+   "average_se": 344,
+   "points_a_hand": 1706,
+   "mangan_or_more_pct": 38,
+   "under_3000_pct": 21,
+   "riichi": {
+    "wins": 65,
+    "per_100": 10.2,
+    "average": 9048,
+    "average_se": 535,
+    "points_a_hand": 920
+   },
+   "dama": {
+    "wins": 15,
+    "per_100": 2.3,
+    "average": 5400,
+    "average_se": 810,
+    "points_a_hand": 127
+   },
+   "open": {
+    "wins": 80,
+    "per_100": 12.5,
+    "average": 5266,
+    "average_se": 424,
+    "points_a_hand": 659
+   },
+   "open_hands": {
+    "hands": 234,
+    "share_of_hands": 36.6,
+    "won_pct": 34.2,
+    "dealt_pct": 11.1,
+    "net_a_hand": 855,
+    "four_han_or_more_pct": 26
+   }
+  },
+  "since": {
+   "hands": 699,
+   "games": 67,
+   "wins": 155,
+   "wins_per_100": 22.2,
+   "average": 6444,
+   "average_se": 374,
+   "points_a_hand": 1429,
+   "mangan_or_more_pct": 34,
+   "under_3000_pct": 28,
+   "riichi": {
+    "wins": 60,
+    "per_100": 8.6,
+    "average": 9250,
+    "average_se": 588,
+    "points_a_hand": 794
+   },
+   "dama": {
+    "wins": 21,
+    "per_100": 3.0,
+    "average": 6367,
+    "average_se": 902,
+    "points_a_hand": 191
+   },
+   "open": {
+    "wins": 74,
+    "per_100": 10.6,
+    "average": 4191,
+    "average_se": 412,
+    "points_a_hand": 444
+   },
+   "open_hands": {
+    "hands": 224,
+    "share_of_hands": 32.0,
+    "won_pct": 33.0,
+    "dealt_pct": 11.6,
+    "net_a_hand": 379,
+    "four_han_or_more_pct": 16
+   }
+  },
+  "gap_to_luckyj": {
+   "points_a_hand": -235,
+   "from_how_often": -22,
+   "from_how_much": -208,
+   "by_kind": {
+    "riichi": -136,
+    "dama": -19,
+    "open": -79
+   },
+   "average_win": {
+    "points": -922,
+    "se": 207
+   },
+   "average_win_by_kind": {
+    "riichi": {
+     "points": -547,
+     "se": 323
+    },
+    "dama": {
+     "points": -1742,
+     "se": 567
+    },
+    "open": {
+     "points": -848,
+     "se": 242
+    }
+   },
+   "wins_a_game": 2.35,
+   "rank_points_per_100_on_the_average_win": 1.9,
+   "rank_points_for_the_whole_gap": 18.0
+  }
+ },
+ "big_deal_ins": {
+  "you": {
+   "games": 216,
+   "hands": 2248,
+   "big": 76,
+   "per_100": 3.38,
+   "points_a_game": 3371,
+   "average": 9580
+  },
+  "jade_human": {
+   "games": 648,
+   "hands": 6744,
+   "big": 316,
+   "per_100": 4.69,
+   "points_a_game": 4826,
+   "average": 9897
+  },
+  "luckyj": {
+   "games": 1079,
+   "hands": 11272,
+   "big": 384,
+   "per_100": 3.41,
+   "points_a_game": 3460,
+   "average": 9723
+  },
+  "tokujou_human": {
+   "games": 3237,
+   "hands": 33816,
+   "big": 1670,
+   "per_100": 4.94,
+   "points_a_game": 5176,
+   "average": 10032
+  },
+  "before": {
+   "games": 87,
+   "hands": 910,
+   "big": 25,
+   "per_100": 2.75,
+   "points_a_game": 2810,
+   "average": 9780
+  },
+  "climb": {
+   "games": 62,
+   "hands": 639,
+   "big": 17,
+   "per_100": 2.66,
+   "points_a_game": 2706,
+   "average": 9871
+  },
+  "since": {
+   "games": 67,
+   "hands": 699,
+   "big": 34,
+   "per_100": 4.86,
+   "points_a_game": 4713,
+   "average": 9288
+  },
+  "shift": {
+   "before_the_peak_per_100": 2.71,
+   "since_per_100": 4.86,
+   "z": 2.6,
+   "expected_since_at_the_early_rate": 19.0,
+   "points_a_game": 2086,
+   "rank_points_a_game": 17.3
+  }
+ },
+ "tables": {
+  "before": {
+   "player_hands": 2730,
+   "riichi_per_100": 19.9,
+   "big_wins_per_100": 9.01
+  },
+  "climb": {
+   "player_hands": 1917,
+   "riichi_per_100": 18.4,
+   "big_wins_per_100": 8.76
+  },
+  "since": {
+   "player_hands": 2097,
+   "riichi_per_100": 18.7,
+   "big_wins_per_100": 10.11
+  }
+ },
+ "cases": {
+  "since": 34,
+  "mortal_under_25": 8,
+  "mortal_under_25_points": 92800,
+  "own_riichi_into_open": {
+   "count": 7,
+   "declared_at_99_percent": 5,
+   "winner_not_yet_open": 3,
+   "per_100_hands": 1.0,
+   "humans_per_100": 0.28,
+   "luckyj_per_100": 0.38
+  },
+  "low_cases": [
+   {
+    "game": "261004-3d4685b3-96b5-421f-9f25-7f7459b95553",
+    "date": "2026-10-03 14:11",
+    "period": "since",
+    "round": "South 1-1",
+    "kind": "cut",
+    "tile": "9m",
+    "turn": 8,
+    "dealt_turn": 8,
+    "paid": 12300,
+    "value": "haneman, 12,000",
+    "mortal": 0.051,
+    "mortal_riichi": null,
+    "own_riichi": false,
+    "winner_open": false,
+    "winner_calls_at_riichi": null
+   },
+   {
+    "game": "261008-ce956cd8-7f83-4165-97aa-e5be24fff49c",
+    "date": "2026-10-07 15:27",
+    "period": "since",
+    "round": "East 1-1",
+    "kind": "riichi",
+    "tile": "4s",
+    "turn": 13,
+    "dealt_turn": 16,
+    "paid": 12300,
+    "value": "mangan, 12,000",
+    "mortal": 0.064,
+    "mortal_riichi": 0.064,
+    "own_riichi": true,
+    "winner_open": false,
+    "winner_calls_at_riichi": 0
+   },
+   {
+    "game": "261008-ce956cd8-7f83-4165-97aa-e5be24fff49c",
+    "date": "2026-10-07 15:27",
+    "period": "since",
+    "round": "South 2-1",
+    "kind": "riichi",
+    "tile": "7m",
+    "turn": 6,
+    "dealt_turn": 11,
+    "paid": 12300,
+    "value": "mangan, 12,000",
+    "mortal": 0.042,
+    "mortal_riichi": 0.042,
+    "own_riichi": true,
+    "winner_open": true,
+    "winner_calls_at_riichi": 2
+   },
+   {
+    "game": "261017-c062d7a5-938e-4e8f-8061-ca646da43a03",
+    "date": "2026-10-16 22:45",
+    "period": "since",
+    "round": "South 3-1",
+    "kind": "cut",
+    "tile": "6m",
+    "turn": 15,
+    "dealt_turn": 15,
+    "paid": 12300,
+    "value": "mangan, 12,000",
+    "mortal": 0.0,
+    "mortal_riichi": null,
+    "own_riichi": false,
+    "winner_open": false,
+    "winner_calls_at_riichi": null
+   },
+   {
+    "game": "261007-c265c423-64d7-4171-ae24-ea000701511e",
+    "date": "2026-10-06 21:07",
+    "period": "since",
+    "round": "South 4-0",
+    "kind": "cut",
+    "tile": "P",
+    "turn": 12,
+    "dealt_turn": 12,
+    "paid": 12000,
+    "value": "mangan, 12,000",
+    "mortal": 0.124,
+    "mortal_riichi": null,
+    "own_riichi": false,
+    "winner_open": false,
+    "winner_calls_at_riichi": null
+   },
+   {
+    "game": "261011-10d214ef-4cc3-414b-ab98-38e19ba751e2",
+    "date": "2026-10-11 01:16",
+    "period": "since",
+    "round": "East 3-0",
+    "kind": "cut",
+    "tile": "8p",
+    "turn": 11,
+    "dealt_turn": 11,
+    "paid": 12000,
+    "value": "haneman, 12,000",
+    "mortal": 0.006,
+    "mortal_riichi": null,
+    "own_riichi": false,
+    "winner_open": true,
+    "winner_calls_at_riichi": null
+   },
+   {
+    "game": "261008-6c28a9cb-7fd0-48ff-a4f0-18b3bcf51dde",
+    "date": "2026-10-07 14:42",
+    "period": "since",
+    "round": "South 2-0",
+    "kind": "cut",
+    "tile": "7s",
+    "turn": 15,
+    "dealt_turn": 15,
+    "paid": 11600,
+    "value": "30 fu 4 han, 11,600",
+    "mortal": 0.0,
+    "mortal_riichi": null,
+    "own_riichi": false,
+    "winner_open": true,
+    "winner_calls_at_riichi": null
+   },
+   {
+    "game": "261018-65bbd1fc-5557-4dc2-a5ce-3baedec8a46b",
+    "date": "2026-10-17 19:09",
+    "period": "since",
+    "round": "South 2-1",
+    "kind": "cut",
+    "tile": "6s",
+    "turn": 11,
+    "dealt_turn": 11,
+    "paid": 8000,
+    "value": "40 fu 3 han, 7,700",
+    "mortal": 0.002,
+    "mortal_riichi": null,
+    "own_riichi": false,
+    "winner_open": false,
+    "winner_calls_at_riichi": null
+   }
+  ],
+  "open_cases": [
+   {
+    "game": "261007-778211d0-ecbb-4ec3-a5cf-c7eaa531ea87",
+    "date": "2026-10-06 19:32",
+    "period": "since",
+    "round": "East 1-0",
+    "kind": "riichi",
+    "tile": "7s",
+    "turn": 8,
+    "dealt_turn": 12,
+    "paid": 8000,
+    "value": "mangan, 8,000",
+    "mortal": 0.999,
+    "mortal_riichi": 0.999,
+    "own_riichi": true,
+    "winner_open": true,
+    "winner_calls_at_riichi": 0
+   },
+   {
+    "game": "261008-ce956cd8-7f83-4165-97aa-e5be24fff49c",
+    "date": "2026-10-07 15:27",
+    "period": "since",
+    "round": "South 2-1",
+    "kind": "riichi",
+    "tile": "7m",
+    "turn": 6,
+    "dealt_turn": 11,
+    "paid": 12300,
+    "value": "mangan, 12,000",
+    "mortal": 0.042,
+    "mortal_riichi": 0.042,
+    "own_riichi": true,
+    "winner_open": true,
+    "winner_calls_at_riichi": 2
+   },
+   {
+    "game": "261010-896f29d4-1c7c-4533-916c-2a8ac59b73c7",
+    "date": "2026-10-09 18:11",
+    "period": "since",
+    "round": "East 3-1",
+    "kind": "riichi",
+    "tile": "5s",
+    "turn": 8,
+    "dealt_turn": 16,
+    "paid": 8300,
+    "value": "mangan, 8,000",
+    "mortal": 0.997,
+    "mortal_riichi": 0.997,
+    "own_riichi": true,
+    "winner_open": true,
+    "winner_calls_at_riichi": 0
+   },
+   {
+    "game": "261011-a156f329-107e-49a2-be91-99c0adc23cb8",
+    "date": "2026-10-10 23:30",
+    "period": "since",
+    "round": "East 2-1",
+    "kind": "riichi",
+    "tile": "1s",
+    "turn": 14,
+    "dealt_turn": 14,
+    "paid": 8300,
+    "value": "mangan, 8,000",
+    "mortal": 0.319,
+    "mortal_riichi": 0.319,
+    "own_riichi": true,
+    "winner_open": true,
+    "winner_calls_at_riichi": 3
+   },
+   {
+    "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+    "date": "2026-10-11 21:33",
+    "period": "since",
+    "round": "East 2-0",
+    "kind": "riichi",
+    "tile": "1m",
+    "turn": 12,
+    "dealt_turn": 13,
+    "paid": 8000,
+    "value": "mangan, 8,000",
+    "mortal": 0.999,
+    "mortal_riichi": 0.999,
+    "own_riichi": true,
+    "winner_open": true,
+    "winner_calls_at_riichi": 1
+   },
+   {
+    "game": "261017-8ee9d273-beb1-4a9f-9a7b-5f0bb5a26437",
+    "date": "2026-10-16 18:17",
+    "period": "since",
+    "round": "South 1-1",
+    "kind": "riichi",
+    "tile": "4p",
+    "turn": 7,
+    "dealt_turn": 16,
+    "paid": 8300,
+    "value": "mangan, 8,000",
+    "mortal": 0.999,
+    "mortal_riichi": 0.999,
+    "own_riichi": true,
+    "winner_open": true,
+    "winner_calls_at_riichi": 1
+   },
+   {
+    "game": "261018-65bbd1fc-5557-4dc2-a5ce-3baedec8a46b",
+    "date": "2026-10-17 19:09",
+    "period": "since",
+    "round": "East 3-0",
+    "kind": "riichi",
+    "tile": "4s",
+    "turn": 12,
+    "dealt_turn": 16,
+    "paid": 8000,
+    "value": "mangan, 8,000",
+    "mortal": 0.997,
+    "mortal_riichi": 0.997,
+    "own_riichi": true,
+    "winner_open": true,
+    "winner_calls_at_riichi": 0
+   }
+  ],
+  "by_period": {
+   "before": {
+    "big": 25,
+    "flagged": 3,
+    "other": 22,
+    "flagged_per_100": 0.33,
+    "other_per_100": 2.42,
+    "flagged_points_a_game": 391
+   },
+   "climb": {
+    "big": 17,
+    "flagged": 4,
+    "other": 13,
+    "flagged_per_100": 0.63,
+    "other_per_100": 2.03,
+    "flagged_points_a_game": 918
+   },
+   "since": {
+    "big": 34,
+    "flagged": 8,
+    "other": 26,
+    "flagged_per_100": 1.14,
+    "other_per_100": 3.72,
+    "flagged_points_a_game": 1385
+   }
+  },
+  "excess_since": {
+   "flagged": 4.8,
+   "other": 10.2,
+   "flagged_per_100_early": 0.45,
+   "other_per_100_early": 2.26
+  }
+ },
+ "tilt": {
+  "sessions": 59,
+  "games_a_session": 3.7,
+  "after_a_fourth": {
+   "games": 18,
+   "fourths": 5,
+   "fourth_pct": 27.8,
+   "points_a_game": -16.4
+  },
+  "after_a_first_to_third": {
+   "games": 139,
+   "fourths": 26,
+   "fourth_pct": 18.7,
+   "points_a_game": 4.9
+  },
+  "by_place_in_session": {
+   "1": {
+    "games": 59,
+    "fourths": 13,
+    "fourth_pct": 22.0,
+    "points_a_game": -16.0
+   },
+   "2": {
+    "games": 45,
+    "fourths": 9,
+    "fourth_pct": 20.0,
+    "points_a_game": 10.3
+   },
+   "3": {
+    "games": 35,
+    "fourths": 6,
+    "fourth_pct": 17.1,
+    "points_a_game": 10.3
+   },
+   "4": {
+    "games": 27,
+    "fourths": 7,
+    "fourth_pct": 25.9,
+    "points_a_game": -20.4
+   },
+   "5": {
+    "games": 50,
+    "fourths": 9,
+    "fourth_pct": 18.0,
+    "points_a_game": 2.2
+   }
+  },
+  "mortal_agreement": {
+   "before": {
+    "games": 87,
+    "discards": 10579,
+    "matched_pct": 73.2
+   },
+   "climb": {
+    "games": 62,
+    "discards": 7306,
+    "matched_pct": 73.4
+   },
+   "since": {
+    "games": 67,
+    "discards": 8093,
+    "matched_pct": 73.0
+   }
+  }
+ },
+ "last_hand": {
+  "you": {
+   "third": {
+    "n": 55,
+    "fell": 8
+   },
+   "fourth": {
+    "n": 50,
+    "stayed": 36
+   },
+   "fourth_escaped_by_gap_to_third": {
+    "0-3k": {
+     "n": 12,
+     "escaped": 10
+    },
+    "3-8k": {
+     "n": 11,
+     "escaped": 3
+    },
+    "8k+": {
+     "n": 27,
+     "escaped": 1
+    }
+   }
+  },
+  "jade_human": {
+   "third": {
+    "n": 161,
+    "fell": 19
+   },
+   "fourth": {
+    "n": 166,
+    "stayed": 150
+   },
+   "fourth_escaped_by_gap_to_third": {
+    "0-3k": {
+     "n": 34,
+     "escaped": 9
+    },
+    "3-8k": {
+     "n": 35,
+     "escaped": 3
+    },
+    "8k+": {
+     "n": 97,
+     "escaped": 4
+    }
+   }
+  },
+  "luckyj": {
+   "third": {
+    "n": 255,
+    "fell": 19
+   },
+   "fourth": {
+    "n": 196,
+    "stayed": 160
+   },
+   "fourth_escaped_by_gap_to_third": {
+    "0-3k": {
+     "n": 40,
+     "escaped": 18
+    },
+    "3-8k": {
+     "n": 68,
+     "escaped": 12
+    },
+    "8k+": {
+     "n": 88,
+     "escaped": 6
+    }
+   }
+  },
+  "tokujou_human": {
+   "third": {
+    "n": 824,
+    "fell": 95
+   },
+   "fourth": {
+    "n": 883,
+    "stayed": 777
+   },
+   "fourth_escaped_by_gap_to_third": {
+    "0-3k": {
+     "n": 159,
+     "escaped": 42
+    },
+    "3-8k": {
+     "n": 221,
+     "escaped": 44
+    },
+    "8k+": {
+     "n": 503,
+     "escaped": 20
+    }
+   }
+  }
+ }
+}
