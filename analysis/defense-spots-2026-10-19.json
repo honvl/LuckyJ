@@ -1,0 +1,838 @@
+{
+ "one_pin": {
+  "round": "South 3-1",
+  "turn": 15,
+  "hero_seat": 3,
+  "riichi_seats": [
+   2
+  ],
+  "thrown": "6m",
+  "hand": [
+   "6m",
+   "6m",
+   "1p",
+   "1p",
+   "1p",
+   "5p",
+   "5p",
+   "6p",
+   "6p",
+   "6p",
+   "3s",
+   "3s",
+   "4s",
+   "6s"
+  ],
+  "riichi": {
+   "2": {
+    "river": [
+     "W",
+     "2m",
+     "8s",
+     "1s",
+     "1m",
+     "haku",
+     "5m",
+     "7m",
+     "8m",
+     "0s",
+     "2m",
+     "2p",
+     "1m",
+     "N",
+     "9p"
+    ],
+    "wait": [
+     "3m",
+     "6m"
+    ],
+    "passed": [
+     "1m",
+     "1s",
+     "2m",
+     "2p",
+     "2s",
+     "4m",
+     "5m",
+     "5s",
+     "7m",
+     "8m",
+     "8s",
+     "9p",
+     "9s",
+     "E",
+     "N",
+     "S",
+     "chun",
+     "hatsu"
+    ]
+   }
+  },
+  "dora_indicator": [
+   "2m"
+  ],
+  "candidates": [
+   {
+    "tile": "1p",
+    "copies_seen": 4,
+    "labels": [
+     "live terminal"
+    ],
+    "ways": [
+     {
+      "two-sided": 3,
+      "closed": 0,
+      "edge": 0,
+      "pair": 0,
+      "single": 0
+     }
+    ],
+    "total_ways": 3,
+    "furiten_against": [
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "5p",
+    "copies_seen": 2,
+    "labels": [
+     "half suji"
+    ],
+    "ways": [
+     {
+      "two-sided": 4,
+      "closed": 4,
+      "edge": 0,
+      "pair": 1,
+      "single": 2
+     }
+    ],
+    "total_ways": 11,
+    "furiten_against": [
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "3s",
+    "copies_seen": 2,
+    "labels": [
+     "live 2-3-7-8"
+    ],
+    "ways": [
+     {
+      "two-sided": 4,
+      "closed": 6,
+      "edge": 0,
+      "pair": 1,
+      "single": 2
+     }
+    ],
+    "total_ways": 13,
+    "furiten_against": [
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "4s",
+    "copies_seen": 2,
+    "labels": [
+     "half suji"
+    ],
+    "ways": [
+     {
+      "two-sided": 6,
+      "closed": 4,
+      "edge": 0,
+      "pair": 1,
+      "single": 2
+     }
+    ],
+    "total_ways": 13,
+    "furiten_against": [
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "6m",
+    "copies_seen": 2,
+    "labels": [
+     "live 4-5-6"
+    ],
+    "ways": [
+     {
+      "two-sided": 8,
+      "closed": 4,
+      "edge": 0,
+      "pair": 1,
+      "single": 2
+     }
+    ],
+    "total_ways": 15,
+    "furiten_against": [
+     false
+    ],
+    "winning_tile": true,
+    "thrown": true
+   },
+   {
+    "tile": "6p",
+    "copies_seen": 3,
+    "labels": [
+     "half suji"
+    ],
+    "ways": [
+     {
+      "two-sided": 8,
+      "closed": 8,
+      "edge": 0,
+      "pair": 0,
+      "single": 1
+     }
+    ],
+    "total_ways": 17,
+    "furiten_against": [
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "6s",
+    "copies_seen": 1,
+    "labels": [
+     "half suji"
+    ],
+    "ways": [
+     {
+      "two-sided": 4,
+      "closed": 8,
+      "edge": 0,
+      "pair": 3,
+      "single": 3
+     }
+    ],
+    "total_ways": 18,
+    "furiten_against": [
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   }
+  ],
+  "mortal": {
+   "the riichi, as played": [
+    [
+     "1p",
+     0.996
+    ],
+    [
+     "5p",
+     0.003
+    ],
+    [
+     "6s",
+     0.0
+    ],
+    [
+     "4s",
+     0.0
+    ]
+   ],
+   "no riichi": [
+    [
+     "6s",
+     0.925
+    ],
+    [
+     "4s",
+     0.059
+    ],
+    [
+     "1p",
+     0.011
+    ],
+    [
+     "3s",
+     0.004
+    ]
+   ]
+  }
+ },
+ "seven_pin": {
+  "round": "South 2-0",
+  "turn": 15,
+  "thrown": "7s",
+  "hand": [
+   "1m",
+   "1m",
+   "3p",
+   "5p",
+   "5p",
+   "7p",
+   "7p",
+   "7p",
+   "5s",
+   "5s",
+   "0s",
+   "7s",
+   "N",
+   "N"
+  ],
+  "copies_seen": {
+   "1m": 4,
+   "3p": 2,
+   "5p": 2,
+   "7p": 4,
+   "5s": 3,
+   "7s": 1,
+   "N": 4
+  },
+  "mortal": [
+   [
+    "7p",
+    0.818
+   ],
+   [
+    "N",
+    0.119
+   ],
+   [
+    "1m",
+    0.047
+   ],
+   [
+    "3p",
+    0.015
+   ]
+  ]
+ },
+ "two_sou": {
+  "round": "South 1-1",
+  "turn": 8,
+  "hero_seat": 2,
+  "riichi_seats": [
+   0,
+   3
+  ],
+  "thrown": "9m",
+  "hand": [
+   "4m",
+   "5m",
+   "7m",
+   "7m",
+   "9m",
+   "3p",
+   "4p",
+   "2s",
+   "3s",
+   "6s",
+   "6s"
+  ],
+  "riichi": {
+   "0": {
+    "river": [
+     "hatsu",
+     "9p",
+     "E",
+     "8m",
+     "1m",
+     "8p",
+     "1s"
+    ],
+    "wait": [
+     "4s"
+    ],
+    "passed": [
+     "N"
+    ]
+   },
+   "3": {
+    "river": [
+     "2m",
+     "8s",
+     "3s",
+     "haku",
+     "hatsu",
+     "3p",
+     "3m"
+    ],
+    "wait": [
+     "6m",
+     "9m"
+    ],
+    "passed": [
+     "1s",
+     "N"
+    ]
+   }
+  },
+  "dora_indicator": [
+   "6m"
+  ],
+  "candidates": [
+   {
+    "tile": "9m",
+    "copies_seen": 1,
+    "labels": [
+     "live terminal",
+     "live terminal"
+    ],
+    "ways": [
+     {
+      "two-sided": 6,
+      "closed": 0,
+      "edge": 0,
+      "pair": 3,
+      "single": 3
+     },
+     {
+      "two-sided": 6,
+      "closed": 0,
+      "edge": 0,
+      "pair": 3,
+      "single": 3
+     }
+    ],
+    "total_ways": 24,
+    "furiten_against": [
+     false,
+     false
+    ],
+    "winning_tile": true,
+    "thrown": true
+   },
+   {
+    "tile": "3s",
+    "copies_seen": 2,
+    "labels": [
+     "live 2-3-7-8",
+     "genbutsu"
+    ],
+    "ways": [
+     {
+      "two-sided": 8,
+      "closed": 8,
+      "edge": 6,
+      "pair": 1,
+      "single": 2
+     },
+     {}
+    ],
+    "total_ways": 25,
+    "furiten_against": [
+     false,
+     true
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "3p",
+    "copies_seen": 2,
+    "labels": [
+     "live 2-3-7-8",
+     "genbutsu"
+    ],
+    "ways": [
+     {
+      "two-sided": 12,
+      "closed": 12,
+      "edge": 4,
+      "pair": 1,
+      "single": 2
+     },
+     {}
+    ],
+    "total_ways": 31,
+    "furiten_against": [
+     false,
+     true
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "2s",
+    "copies_seen": 2,
+    "labels": [
+     "live 2-3-7-8",
+     "live 2-3-7-8"
+    ],
+    "ways": [
+     {
+      "two-sided": 8,
+      "closed": 6,
+      "edge": 0,
+      "pair": 1,
+      "single": 2
+     },
+     {
+      "two-sided": 8,
+      "closed": 6,
+      "edge": 0,
+      "pair": 1,
+      "single": 2
+     }
+    ],
+    "total_ways": 34,
+    "furiten_against": [
+     false,
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "5m",
+    "copies_seen": 1,
+    "labels": [
+     "half suji",
+     "half suji"
+    ],
+    "ways": [
+     {
+      "two-sided": 9,
+      "closed": 9,
+      "edge": 0,
+      "pair": 3,
+      "single": 3
+     },
+     {
+      "two-sided": 6,
+      "closed": 9,
+      "edge": 0,
+      "pair": 3,
+      "single": 3
+     }
+    ],
+    "total_ways": 45,
+    "furiten_against": [
+     false,
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "6s",
+    "copies_seen": 2,
+    "labels": [
+     "live 4-5-6",
+     "half suji"
+    ],
+    "ways": [
+     {
+      "two-sided": 20,
+      "closed": 8,
+      "edge": 0,
+      "pair": 1,
+      "single": 2
+     },
+     {
+      "two-sided": 12,
+      "closed": 8,
+      "edge": 0,
+      "pair": 1,
+      "single": 2
+     }
+    ],
+    "total_ways": 54,
+    "furiten_against": [
+     false,
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "4m",
+    "copies_seen": 1,
+    "labels": [
+     "half suji",
+     "live 4-5-6"
+    ],
+    "ways": [
+     {
+      "two-sided": 9,
+      "closed": 9,
+      "edge": 0,
+      "pair": 3,
+      "single": 3
+     },
+     {
+      "two-sided": 18,
+      "closed": 9,
+      "edge": 0,
+      "pair": 3,
+      "single": 3
+     }
+    ],
+    "total_ways": 57,
+    "furiten_against": [
+     false,
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "7m",
+    "copies_seen": 2,
+    "labels": [
+     "live 2-3-7-8",
+     "live 2-3-7-8"
+    ],
+    "ways": [
+     {
+      "two-sided": 9,
+      "closed": 9,
+      "edge": 9,
+      "pair": 1,
+      "single": 2
+     },
+     {
+      "two-sided": 9,
+      "closed": 9,
+      "edge": 9,
+      "pair": 1,
+      "single": 2
+     }
+    ],
+    "total_ways": 60,
+    "furiten_against": [
+     false,
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   },
+   {
+    "tile": "4p",
+    "copies_seen": 1,
+    "labels": [
+     "live 4-5-6",
+     "live 4-5-6"
+    ],
+    "ways": [
+     {
+      "two-sided": 24,
+      "closed": 8,
+      "edge": 0,
+      "pair": 3,
+      "single": 3
+     },
+     {
+      "two-sided": 24,
+      "closed": 8,
+      "edge": 0,
+      "pair": 3,
+      "single": 3
+     }
+    ],
+    "total_ways": 76,
+    "furiten_against": [
+     false,
+     false
+    ],
+    "winning_tile": false,
+    "thrown": false
+   }
+  ],
+  "mortal": {
+   "both riichis, as played": [
+    [
+     "2s",
+     0.923
+    ],
+    [
+     "9m",
+     0.051
+    ],
+    [
+     "3s",
+     0.022
+    ],
+    [
+     "3p",
+     0.001
+    ]
+   ],
+   "only the dealer (seat 0) in riichi": [
+    [
+     "9m",
+     0.999
+    ],
+    [
+     "2s",
+     0.0
+    ],
+    [
+     "5m",
+     0.0
+    ],
+    [
+     "7m",
+     0.0
+    ]
+   ],
+   "only seat 3 in riichi": [
+    [
+     "3s",
+     0.984
+    ],
+    [
+     "6s",
+     0.007
+    ],
+    [
+     "9m",
+     0.003
+    ],
+    [
+     "2s",
+     0.003
+    ]
+   ],
+   "no riichi": [
+    [
+     "9m",
+     0.974
+    ],
+    [
+     "6s",
+     0.023
+    ],
+    [
+     "3s",
+     0.001
+    ],
+    [
+     "4m",
+     0.001
+    ]
+   ],
+   "seat 3 never threw the 3s on turn 3": [
+    [
+     "9m",
+     0.981
+    ],
+    [
+     "3p",
+     0.006
+    ],
+    [
+     "2s",
+     0.004
+    ],
+    [
+     "5m",
+     0.003
+    ]
+   ],
+   "the dealer declared on a 5s, not the 1s": [
+    [
+     "2s",
+     0.995
+    ],
+    [
+     "9m",
+     0.002
+    ],
+    [
+     "3s",
+     0.002
+    ],
+    [
+     "3p",
+     0.0
+    ]
+   ],
+   "the dealer declared on a 9m, not the 1s": [
+    [
+     "9m",
+     0.999
+    ],
+    [
+     "2s",
+     0.0
+    ],
+    [
+     "7m",
+     0.0
+    ],
+    [
+     "4m",
+     0.0
+    ]
+   ],
+   "seat 3 declared on a 9m, not the 3m": [
+    [
+     "9m",
+     0.993
+    ],
+    [
+     "2s",
+     0.005
+    ],
+    [
+     "3s",
+     0.001
+    ],
+    [
+     "5m",
+     0.0
+    ]
+   ]
+  }
+ },
+ "dead_tiles": {
+  "games": {
+   "you": 216,
+   "luckyj": 1079
+  },
+  "you": {
+   "decisions": 3295,
+   "dead_no_genbutsu": 67,
+   "threw_dead": 18,
+   "dealt_in_when_dead_no_genbutsu": 2,
+   "dead_and_genbutsu": 501,
+   "threw_genbutsu_when_both": 391,
+   "threw_dead_when_both": 63
+  },
+  "jade_human": {
+   "decisions": 10410,
+   "dead_no_genbutsu": 211,
+   "threw_dead": 71,
+   "dealt_in_when_dead_no_genbutsu": 9,
+   "dead_and_genbutsu": 1392,
+   "threw_genbutsu_when_both": 958,
+   "threw_dead_when_both": 229
+  },
+  "luckyj": {
+   "decisions": 16224,
+   "dead_no_genbutsu": 285,
+   "threw_dead": 126,
+   "dealt_in_when_dead_no_genbutsu": 7,
+   "dead_and_genbutsu": 2268,
+   "threw_genbutsu_when_both": 1674,
+   "threw_dead_when_both": 380
+  },
+  "tokujou_human": {
+   "decisions": 51145,
+   "dead_no_genbutsu": 996,
+   "threw_dead": 342,
+   "dealt_in_when_dead_no_genbutsu": 33,
+   "dead_and_genbutsu": 7704,
+   "threw_genbutsu_when_both": 5459,
+   "threw_dead_when_both": 1029
+  }
+ }
+}

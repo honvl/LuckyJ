@@ -194,14 +194,13 @@ class TheChapterTests(unittest.TestCase):
         self.assertNotIn("Of course", section("en"))
         self.assertLessEqual(len(re.findall(r"\bnot [a-z ]+, it is\b|\bis not [a-z ]+\. It is\b", prose("en"))), 1)
 
-    def test_the_latest_notice_comes_first(self):
+    def test_the_notice_is_in_the_list_and_there_is_one_latest(self):
+        # chapter 45 was the latest notice until chapter 47 went up on the same day
         for lang, label in (("en", "Chapter 45 looks for why your rank points fall"), ("ja", "第45章は、段位ポイントが減る理由を調べる")):
             page = PAGES[lang].read_text(encoding="utf-8")
-            first = page.index('<li class="is-latest">')
-            self.assertEqual(page.index(label) > first, True)
             self.assertEqual(page.count('<li class="is-latest">'), 1)
-            self.assertLess(first, page.index(label))
-            self.assertIn('<a href="#rank-drain">', page[first:first + 400])
+            self.assertIn(label, page)
+            self.assertIn('<a href="#rank-drain">' + label, page)
 
 
 if __name__ == "__main__":
