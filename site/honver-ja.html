@@ -49,7 +49,8 @@
           <aside class="guide-news" id="whats-new" aria-labelledby="whats-new-title">
             <h2 id="whats-new-title">更新情報</h2>
             <ol>
-              <li class="is-latest"><span class="guide-news-date">10月16日</span><p><span class="new-tag">Latest</span> <a href="#honor-wait">第43章は、10月15日の2つの選択を書く</a>。七対子で浮き牌が2枚あるとき、ドラ待ちのリーチは18%しか和了せず、字牌待ちは56%で、LuckyJはドラを手放す。また、役のないオーラスのテンパイでは、[[3p]]は副露のない唯一の手がすでに切っていた牌で、ただで切れる打牌だった。第1章から第42章は変わっていない。</p></li>
+              <li class="is-latest"><span class="guide-news-date">10月19日</span><p><span class="new-tag">Latest</span> <a href="#thin-riichis">第44章は、残り5枚以下のリーチを調べる</a>。8巡目以降は、人間の38.5%から41.3%、LuckyJの45.3%に対して、あなたは30.1%だったが、選ぶ待ちも切り方も彼らと同じで、原因は牌ではない。残り6枚以上のリーチではLuckyJと並んでいる。第1章から第43章は変わっていない。</p></li>
+              <li><span class="guide-news-date">10月16日</span><p><a href="#honor-wait">第43章は、10月15日の2つの選択を書く</a>。七対子で浮き牌が2枚あるとき、ドラ待ちのリーチは18%しか和了せず、字牌待ちは56%で、LuckyJはドラを手放す。また、役のないオーラスのテンパイでは、[[3p]]は副露のない唯一の手がすでに切っていた牌で、ただで切れる打牌だった。第1章から第42章は変わっていない。</p></li>
               <li><span class="guide-news-date">10月16日</span><p><a href="#slide-check">第42章は「降りを増やしているのに負け続けている」に答える</a>。降りは問題なく、ピーク以降の下落の大半は、上昇期の4着の運が戻ってきたものだ（上昇期は62半荘で4回、期待値13.3回。ピーク以降は54半荘で16回、期待値11.6回）。あなたの側にある部分はダマで、ピーク以降の最初の門前テンパイのリーチは62.3%、LuckyJは74.4%。第1章から第41章は変わっていない。</p></li>
               <li><span class="guide-news-date">10月13日</span><p><a href="#fold-read">第41章は、LuckyJの降り方を3つのモデルに学ばせる</a>。LuckyJは人間と同じ種類の牌で降り、その種類の中でより安全な牌を選んでいる（本当の降りで当たったのはLuckyJが1.28%、人間が4.09%）。TabPFN 3.5を含むモデルもLuckyJには届かず、モデルが見つけた手がかり（見えている枚数、宣言牌の筋、早い打牌の隣）で、人間はLuckyJまでの3分の1を得られる。第1章から第40章は、下の訂正を除いて変わっていない。</p></li>
               <li class="is-correction"><span class="guide-news-date">10月13日</span><p><span class="guide-news-tag">Corrected</span> 第40章は、LuckyJが余分に読んでいるのは河全体の順番とタイミングだろうと書いていた。第41章でリーチ者の河全体を順番どおりに3つのモデルに渡したが、そこには見つからなかったので、この推測は取り下げる。訂正した文は<a href="#fix-40-river">第40章</a>で<mark class="guide-changed">強調</mark>している。</p></li>
@@ -127,7 +128,7 @@
 
         <nav class="section guide-chapters" id="chapters" aria-labelledby="chapters-title">
           <p class="kicker">章</p>
-          <h2 id="chapters-title">43の章</h2>
+          <h2 id="chapters-title">44の章</h2>
           <p class="guide-chapters-note">新しい教訓は、末尾に新しい章として加える。読んだ章は、印を付けた訂正を除いてそのまま残す。</p>
           <ol class="contents-list is-points guide-chapter-list">
             <li><a href="#value"><span class="contents-num">01</span><span class="contents-title">手の方針を決める前にドラを数える</span><span class="contents-sub">打点 &#183; 9月22日追加</span></a></li>
@@ -173,6 +174,7 @@
             <li><a href="#fold-read"><span class="contents-num">41</span><span class="contents-title">LuckyJはどの牌で降りているか</span><span class="contents-sub"><span class="new-tag">New</span> 安全牌 &#183; 10月13日追加</span></a></li>
             <li><a href="#slide-check"><span class="contents-num">42</span><span class="contents-title">降りを増やしても4着は止まらない。直すべきはテンパイのリーチ</span><span class="contents-sub"><span class="new-tag">New</span> 押し引き &#183; 10月16日追加</span></a></li>
             <li><a href="#honor-wait"><span class="contents-num">43</span><span class="contents-title">待ちはドラより字牌。安全牌がただで切れるなら切る</span><span class="contents-sub"><span class="new-tag">New</span> 最近の対局 &#183; 10月16日追加</span></a></li>
+            <li><a href="#thin-riichis"><span class="contents-num">44</span><span class="contents-title">薄いリーチは、待ちの牌を間違えているのではない</span><span class="contents-sub"><span class="new-tag">New</span> リーチかダマか &#183; 10月19日追加</span></a></li>
           </ol>
         </nav>
 
@@ -3107,6 +3109,59 @@
             </div>
             <p class="evidence-note"><b>根拠</b> 1月以降のあなたの玉の間203半荘と、LuckyJの特上卓1,255半荘の全席で、6対子と1枚の浮き牌になり、その1枚だけを待つ七対子すべて。テンパイ4,364回、うちリーチ509局、フリテンの待ちは除いた。<code>mine_chiitoi_tanki.py</code>による。待ちが切られたとは、持ち主の次の巡までにほかの打ち手がその牌を切ったことをいう。Mortalの数字はサイトの牌譜再生から、リーチ後の数字は牌譜を入力してからリーチを入れて得た。オーラスの手のロンの翻数はmahjongライブラリによる。</p>
           </div>
+          <nav class="chapter-next" aria-label="次の章"><a href="#thin-riichis"><span class="chapter-next-label">次の章 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title"><i>44</i>薄いリーチは、待ちの牌を間違えているのではない</span></a></nav>
+        </section>
+
+        <section class="point" id="thin-riichis">
+          <div class="point-number">44</div>
+          <div class="point-body">
+            <p class="chapter-kicker">第44章 &#183; リーチかダマか &#183; 10月19日追加</p>
+            <p class="guide-new-tag">New</p>
+            <h3>薄いリーチは、待ちの牌を間違えているのではない</h3>
+            <p>残り5枚以下のリーチがうまくいかない、テンパイが間違った牌になっている気がする、テンパイで間違った牌を切っている気がする、という話だった。それぞれを、LuckyJと両卓の人間と比べて調べた。1月以降のあなたの216半荘と、LuckyJの1,255半荘の全席で、リーチは11,444回ある。あなたが見ている結果は本物である。疑っている原因は、データにはない。</p>
+            <p><b>本物の部分。</b>残り5枚以下のリーチ（ほかにリーチがなく、待ちがフリテンでないもの）は、8巡目以降は誰にとっても弱い手で、あなたのは周りより弱い。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>残り5枚以下、8巡目以降</th><th>リーチ</th><th>和了</th><th>ロン</th><th>ツモ</th><th>放銃</th><th>1リーチあたりの点数</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>あなた</td><td>103</td><td class="gap">30.1%</td><td>16.5%</td><td>13.6%</td><td>14.6%</td><td>+1,081</td></tr>
+                  <tr><td>あなたの卓の玉の間の打ち手</td><td>349</td><td>41.3%</td><td>24.4%</td><td>16.9%</td><td>16.9%</td><td>+1,824</td></tr>
+                  <tr><td>LuckyJ</td><td>686</td><td>45.3%</td><td>25.9%</td><td>19.4%</td><td>13.1%</td><td>+2,602</td></tr>
+                  <tr><td>特上卓の人間</td><td>1,993</td><td>38.5%</td><td>21.9%</td><td>16.6%</td><td>15.7%</td><td>+1,586</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>全部の巡目では、あなたの薄いリーチ164回は41.5%和了し、玉の間の打ち手は44.9%、LuckyJは50.8%だった。残り6枚以上なら、あなたは誰とも並んでいる。175回で62.3%、1リーチあたり+3,796で、LuckyJは59.5%と+3,860。</p>
+            <p><b>そうでないもの。</b>牌についての5つの確認を、人間とLuckyJに対して行った。</p>
+            <div class="guide-data-scroll">
+              <table class="guide-data">
+                <thead>
+                  <tr><th>誰</th><th>最初のテンパイの残り枚数</th><th>残り枚数を手放した切り方</th><th>ダマの待ちを減らした</th><th>待ちの牌がほかの手にあった</th><th>フリテンのリーチ</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>あなた</td><td>5.14</td><td>7.1%</td><td>2.9%</td><td>49.6%</td><td>417回中4回</td></tr>
+                  <tr><td>玉の間の打ち手</td><td>5.02</td><td>7.6%</td><td>2.6%</td><td>48.2%</td><td>1,287回中18回</td></tr>
+                  <tr><td>LuckyJ</td><td>5.05</td><td>10.6%</td><td>2.7%</td><td>46.9%</td><td>2,489回中19回</td></tr>
+                  <tr><td>特上卓の人間</td><td>4.91</td><td>8.9%</td><td>2.8%</td><td>48.2%</td><td>7,251回中85回</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>3列目は、198回、672回、1,252回、3,802回の宣言のうち、テンパイを保つ別の打牌で残り枚数がより多いものがあった割合。4列目は、すでにダマでテンパイしていた411回、1,178回、1,508回、6,703回の判断の割合。5列目は、8巡目以降の薄いリーチの割合である。</p>
+            <p>宣言のとき、残り枚数を手放す頻度はLuckyJより低く、最初のテンパイで選ぶ待ちの残り枚数も、誰とも変わらない。あなたの待ちの牌は、卓から見てやや安全に見えにくく、残り枚数のうち14.7%で、ほかは18.3%から18.5%だが、これをモデルに加えても、あなたの8巡目以降の薄いリーチへの期待は40.4%から40.0%にしか動かない。待ちの隣の牌が切られていることは何も足さない（1枚あたり0.01、誤差0.03）。</p>
+            <p><b>残っているもの。</b>両卓の人間で当てはめたモデル（残り枚数、巡目、親、副露、すでにテンパイしている相手の数）は、あなたの8巡目以降の薄いリーチ103回に41.6回の和了を見込む。あなたは31回で、2.2標準偏差少ない。LuckyJの686回には274.2回を見込み、LuckyJは311回で、2.9標準偏差多く、これは第40章と第41章でもLuckyJがどの牌の特徴も上回ったことに合う。あなたの不足はロンにある。ほかの打ち手があなたの待ちの牌を切ったのは17回で、人間の割合なら24.1回になる。103回では、偶然で起きる範囲の端であり、それを説明する牌は見つからなかった。</p>
+            <p><b>薄いリーチを決めるのは卓である。</b>人間の薄いリーチでは、相手にテンパイがいないと2,300回中51.7%が和了し、1人なら978回中36.2%、2人以上なら278回中20.5%だった。あなたの宣言は62.8%の確率でテンパイの相手がいない卓に出会い、LuckyJは68.8%だった。</p>
+            <p><b>いくらの損か。</b>不足がすべて本物なら、人間に対して1リーチあたり540点、1半荘あたり258点で、1,000点あたり8.3段位ポイント（あなたの308半荘の記録への直線の当てはめ）なら、1半荘あたり約2.1段位ポイントである。LuckyJに対してなら1半荘あたり725点、6.0段位ポイントになる。あなた自身の+1,081の誤差は1リーチあたり595点で、ゼロはその中に入る。第42章は、ピーク以降の下落を、ほとんど4着の運だと見た。ここがその行方ではない。</p>
+            <p><b>あなたの2局。</b><a href="replay.html?g=261008-ce956cd8-7f83-4165-97aa-e5be24fff49c&amp;r=East+1-1&amp;t=13">東1局1本場の13巡目</a>に、残り5枚の[[1p]]と[[4p]]でリーチした。5枚のうち4枚はほかの打ち手の手に、1枚は山にあり、この局は13,300点の損になった。<a href="replay.html?g=261003-d9683a26-30d8-4712-b52c-17797ebfe3e2&amp;r=South+4-0&amp;t=15">南4局の15巡目</a>は、[[7m]]の残りが3枚で、3枚ともほかの手にあり、何も来ようがなかった。流局で、あなたはテンパイで+2,000だった。</p>
+            <div class="rule">
+              <strong>ルール</strong> 残り枚数がいちばん多い切り方を選ぶ今のやり方を続け、切る牌を変えない。LuckyJや人間が切らない牌をあなたが切っている例は見つからなかった。8巡目以降の薄いリーチは、10回に4回ほど和了する手として見込む。
+            </div>
+            <div class="exception">
+              <strong>例外</strong> フリテンのリーチはツモでしか和了できない。あなたは4回で0回、LuckyJは19回で6回だった。テンパイを保つ別の切り方がないときだけかける。
+            </div>
+            <p class="evidence-note"><b>根拠</b> 1月以降のあなたの玉の間216半荘と、LuckyJの特上卓1,255半荘の全席のリーチ、合わせて11,444回。<code>mine_thin_riichi.py</code>による。宣言後の待ち、その残り枚数、牌譜にあるほかの打ち手の手、待ちの牌のその後のすべての打牌を見た。残り枚数は、宣言した人の席から見えていない枚数である。最初のテンパイとダマの行は、第33章と同じ<code>contrast/tenpai.py</code>による。</p>
+          </div>
           <nav class="chapter-next" aria-label="本編の後"><a href="#method"><span class="chapter-next-label">本編の後 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span><span class="chapter-next-title">このガイドの作り方</span></a></nav>
         </section>
 
@@ -3117,7 +3172,7 @@
             <li>あなたの対局：2026年1月1日以降の玉の間の南風戦（半荘戦）80半荘。雀魂のクライアントとamae-koromoから取得した。LuckyJ：天鳳の1,255半荘。キャッシュしたNAGAの解析レポートから再構築した。どちらも同じ牌譜再生コードと指標計算コードで処理している。</li>
             <li>各表は、あなたの手番の開始時点を牌譜から再現したものである。相手の手牌は実際のとおりに表示し、上部のスイッチで隠せる。</li>
             <li>受け入れ枚数は、あなたの席から見えていない有効牌をすべて数え、鳴かれた牌は1回だけ数える。リーチに対しては、宣言後に通った牌を現物として扱い、筋の根拠にもする。4、5、6を中筋とするには両側の筋が通っている必要があり、早い5は4または6の片側を補える（疑似中筋。本編の戦術書の外側読みのルールに従う）。字牌は、ほかに何枚見えているかで読む。役と打点は、本文にそう書いた箇所でだけ確認している。</li>
-            <li>生成データ：<code>site/honver-guide.json</code>は<code>scripts/build_personal_guide.py</code>と<code>data/personal_guide_spots.json</code>から作る。各章の数字は<code>scripts/mine_riichi_folds.py</code>、<code>mine_open_tenpai_push.py</code>、<code>mine_single_call.py</code>、<code>mine_vs_open.py</code>、<code>mine_win_value.py</code>、<code>mine_value_choice.py</code>から出している。第6章から第8章は<code>mine_dora_hands.py</code>、<code>mine_flush_calls.py</code>、<code>mine_caller_tells.py</code>、第9章は<code>mine_shape_plans.py</code>、第10章は<code>review_recent_games.py</code>と<code>mine_late_placement.py</code>、第11章は<code>mine_tenpai_push.py</code>、第12章は<code>mine_open_vs_open.py</code>と<code>mine_call_chances.py</code>（副露手のアガリと放銃は<code>mine_dora_hands.py</code>）、第17章は<code>mine_early_safe_tiles.py</code>と<code>contrast/hands_all.py</code>（Mortalの評価はサイトの牌譜再生から）、第18章は<code>mine_caller_surface.py</code>（図の描画は<code>build_caller_surface.py</code>）、第19章は<code>contrast/vs_callers.py</code>と<code>mine_caller_surface.py patterns</code>を土台にした<code>mine_caller_fold_line.py</code>による。第20章と第21章は<code>contrast/vs_callers.py</code>と<code>mine_riichi_folds.py</code>を土台にした<code>mine_break_folds.py</code>により、図は<code>build_break_fold_figure.py</code>で描いた。第23章は<code>mine_tenpai_push.py</code>と<code>contrast/riichi_danger.py</code>による。第26章は<code>contrast/hands_all.py</code>と<code>mine_riichi_folds.py</code>、牌譜再生にあるMortalの評価による。第27章は<code>contrast/hands_all.py</code>と牌譜の順位、amae-koromoの記録による。第28章は<code>contrast/vs_callers.py</code>と<code>contrast/choices.py</code>を土台にした<code>mine_dealer_callers.py</code>により、図は<code>build_dealer_caller_figure.py</code>で描いた。第29章は<code>contrast/hands_all.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_costly_run.py</code>による。第30章は<code>contrast/hands_all.py</code>、<code>mine_riichi_folds.py</code>、<code>contrast/vs_callers.py</code>、<code>contrast/choices.py</code>、<code>mine_early_safe_tiles.py</code>を土台にした<code>mine_defense_check.py</code>による。第31章はサイトの牌譜再生にあるMortalの評価を土台にした<code>mine_declined_riichis.py</code>による。第32章は<code>mine_early_safe_tiles.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_no_safe_riichis.py</code>による。第33章は<code>contrast/tenpai.py</code>とリーチの行を土台にした<code>mine_climb_check.py</code>による。第34章は<code>contrast/tenpai.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_streak_check.py</code>による。第35章は<code>mine_tenpai_push.py</code>の局面と牌譜再生にあるMortalの評価を土台にした<code>mine_thin_pushes.py</code>による。第36章は同じ局面を評価する<code>mine_push_ev.py</code>による。第37章は第35章の降りに対する<code>mortal_whatif.py</code>の実行をまとめる<code>mine_fold_whatif.py</code>による。第38章はその実行、<code>contrast/tenpai.py</code>、押すか降りるかの局面をまとめる<code>mine_fold_theory.py</code>による。第39章はすべての席の押すか降りるかの局面をまとめる<code>mine_push_company.py</code>による。第40章は1人のリーチに切られた生牌の数牌すべてを調べる<code>mine_half_suji.py</code>、第41章は1人のリーチに打牌した人が持つすべての牌を調べる<code>mine_fold_model.py</code>による（自前のニューラルネットのほかにLightGBMとTabPFN 3.5を使う）。第42章は第33章の集計と牌譜再生のMortalの評価を使う<code>mine_slide_check.py</code>、第43章は1枚待ちの七対子すべてを調べる<code>mine_chiitoi_tanki.py</code>による。どれも、あなたの対局とLuckyJの対局に同じコードで実行している。</li>
+            <li>生成データ：<code>site/honver-guide.json</code>は<code>scripts/build_personal_guide.py</code>と<code>data/personal_guide_spots.json</code>から作る。各章の数字は<code>scripts/mine_riichi_folds.py</code>、<code>mine_open_tenpai_push.py</code>、<code>mine_single_call.py</code>、<code>mine_vs_open.py</code>、<code>mine_win_value.py</code>、<code>mine_value_choice.py</code>から出している。第6章から第8章は<code>mine_dora_hands.py</code>、<code>mine_flush_calls.py</code>、<code>mine_caller_tells.py</code>、第9章は<code>mine_shape_plans.py</code>、第10章は<code>review_recent_games.py</code>と<code>mine_late_placement.py</code>、第11章は<code>mine_tenpai_push.py</code>、第12章は<code>mine_open_vs_open.py</code>と<code>mine_call_chances.py</code>（副露手のアガリと放銃は<code>mine_dora_hands.py</code>）、第17章は<code>mine_early_safe_tiles.py</code>と<code>contrast/hands_all.py</code>（Mortalの評価はサイトの牌譜再生から）、第18章は<code>mine_caller_surface.py</code>（図の描画は<code>build_caller_surface.py</code>）、第19章は<code>contrast/vs_callers.py</code>と<code>mine_caller_surface.py patterns</code>を土台にした<code>mine_caller_fold_line.py</code>による。第20章と第21章は<code>contrast/vs_callers.py</code>と<code>mine_riichi_folds.py</code>を土台にした<code>mine_break_folds.py</code>により、図は<code>build_break_fold_figure.py</code>で描いた。第23章は<code>mine_tenpai_push.py</code>と<code>contrast/riichi_danger.py</code>による。第26章は<code>contrast/hands_all.py</code>と<code>mine_riichi_folds.py</code>、牌譜再生にあるMortalの評価による。第27章は<code>contrast/hands_all.py</code>と牌譜の順位、amae-koromoの記録による。第28章は<code>contrast/vs_callers.py</code>と<code>contrast/choices.py</code>を土台にした<code>mine_dealer_callers.py</code>により、図は<code>build_dealer_caller_figure.py</code>で描いた。第29章は<code>contrast/hands_all.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_costly_run.py</code>による。第30章は<code>contrast/hands_all.py</code>、<code>mine_riichi_folds.py</code>、<code>contrast/vs_callers.py</code>、<code>contrast/choices.py</code>、<code>mine_early_safe_tiles.py</code>を土台にした<code>mine_defense_check.py</code>による。第31章はサイトの牌譜再生にあるMortalの評価を土台にした<code>mine_declined_riichis.py</code>による。第32章は<code>mine_early_safe_tiles.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_no_safe_riichis.py</code>による。第33章は<code>contrast/tenpai.py</code>とリーチの行を土台にした<code>mine_climb_check.py</code>による。第34章は<code>contrast/tenpai.py</code>と牌譜再生にあるMortalの評価を土台にした<code>mine_streak_check.py</code>による。第35章は<code>mine_tenpai_push.py</code>の局面と牌譜再生にあるMortalの評価を土台にした<code>mine_thin_pushes.py</code>による。第36章は同じ局面を評価する<code>mine_push_ev.py</code>による。第37章は第35章の降りに対する<code>mortal_whatif.py</code>の実行をまとめる<code>mine_fold_whatif.py</code>による。第38章はその実行、<code>contrast/tenpai.py</code>、押すか降りるかの局面をまとめる<code>mine_fold_theory.py</code>による。第39章はすべての席の押すか降りるかの局面をまとめる<code>mine_push_company.py</code>による。第40章は1人のリーチに切られた生牌の数牌すべてを調べる<code>mine_half_suji.py</code>、第41章は1人のリーチに打牌した人が持つすべての牌を調べる<code>mine_fold_model.py</code>による（自前のニューラルネットのほかにLightGBMとTabPFN 3.5を使う）。第42章は第33章の集計と牌譜再生のMortalの評価を使う<code>mine_slide_check.py</code>、第43章は1枚待ちの七対子すべてを調べる<code>mine_chiitoi_tanki.py</code>、第44章は全席のリーチすべてを調べる<code>mine_thin_riichi.py</code>による。どれも、あなたの対局とLuckyJの対局に同じコードで実行している。</li>
             <li>これらの章の土台となる一般的なルールは、<a href="ja.html">本編のLuckyJ戦術書</a>にある。</li>
           </ul>
         </section>

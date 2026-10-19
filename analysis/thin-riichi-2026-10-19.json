@@ -1,0 +1,448 @@
+{
+ "riichis": 11444,
+ "games": 216,
+ "alone": {
+  "you": 339,
+  "jade_human": 1013,
+  "luckyj": 2087,
+  "tokujou_human": 5709
+ },
+ "thin": {
+  "you": {
+   "all": {
+    "n": 164,
+    "won": 41.5,
+    "ron": 25.0,
+    "tsumo": 16.5,
+    "dealt": 13.4,
+    "net": 1896
+   },
+   "from_turn_8": {
+    "n": 103,
+    "won": 30.1,
+    "ron": 16.5,
+    "tsumo": 13.6,
+    "dealt": 14.6,
+    "net": 1081
+   }
+  },
+  "jade_human": {
+   "all": {
+    "n": 532,
+    "won": 44.9,
+    "ron": 26.1,
+    "tsumo": 18.8,
+    "dealt": 14.8,
+    "net": 2133
+   },
+   "from_turn_8": {
+    "n": 349,
+    "won": 41.3,
+    "ron": 24.4,
+    "tsumo": 16.9,
+    "dealt": 16.9,
+    "net": 1824
+   }
+  },
+  "luckyj": {
+   "all": {
+    "n": 1067,
+    "won": 50.8,
+    "ron": 29.9,
+    "tsumo": 20.9,
+    "dealt": 11.9,
+    "net": 2944
+   },
+   "from_turn_8": {
+    "n": 686,
+    "won": 45.3,
+    "ron": 25.9,
+    "tsumo": 19.4,
+    "dealt": 13.1,
+    "net": 2602
+   }
+  },
+  "tokujou_human": {
+   "all": {
+    "n": 3024,
+    "won": 45.0,
+    "ron": 25.9,
+    "tsumo": 19.1,
+    "dealt": 14.2,
+    "net": 2085
+   },
+   "from_turn_8": {
+    "n": 1993,
+    "won": 38.5,
+    "ron": 21.9,
+    "tsumo": 16.6,
+    "dealt": 15.7,
+    "net": 1586
+   }
+  }
+ },
+ "wide": {
+  "you": {
+   "n": 175,
+   "won": 62.3,
+   "ron": 33.7,
+   "tsumo": 28.6,
+   "dealt": 8.0,
+   "net": 3796
+  },
+  "jade_human": {
+   "n": 481,
+   "won": 61.3,
+   "ron": 30.1,
+   "tsumo": 31.2,
+   "dealt": 11.4,
+   "net": 3735
+  },
+  "luckyj": {
+   "n": 1020,
+   "won": 59.5,
+   "ron": 30.0,
+   "tsumo": 29.5,
+   "dealt": 10.8,
+   "net": 3860
+  },
+  "tokujou_human": {
+   "n": 2685,
+   "won": 58.5,
+   "ron": 27.6,
+   "tsumo": 30.8,
+   "dealt": 11.3,
+   "net": 3504
+  }
+ },
+ "model": {
+  "fitted_on": 6722,
+  "terms": {
+   "constant": 0.17,
+   "live tiles to 10": 0.14,
+   "live tiles over 10": 0.13,
+   "turn from 9": -0.1,
+   "turns past 12": -0.08,
+   "dealer": -0.0,
+   "a caller": -0.01,
+   "two callers": 0.07,
+   "opponents tenpai": -0.49
+  },
+  "thin": {
+   "you": {
+    "n": 164,
+    "actual": 41.5,
+    "model": 46.1,
+    "sd": -1.2,
+    "wins": 68,
+    "expected_wins": 75.7
+   },
+   "jade_human": {
+    "n": 532,
+    "actual": 44.9,
+    "model": 45.6,
+    "sd": -0.3,
+    "wins": 239,
+    "expected_wins": 242.4
+   },
+   "luckyj": {
+    "n": 1067,
+    "actual": 50.8,
+    "model": 45.9,
+    "sd": 3.3,
+    "wins": 542,
+    "expected_wins": 490.2
+   },
+   "tokujou_human": {
+    "n": 3024,
+    "actual": 45.0,
+    "model": 44.5,
+    "sd": 0.5,
+    "wins": 1360,
+    "expected_wins": 1346.9
+   }
+  },
+  "thin from turn 8": {
+   "you": {
+    "n": 103,
+    "actual": 30.1,
+    "model": 40.4,
+    "sd": -2.2,
+    "wins": 31,
+    "expected_wins": 41.6
+   },
+   "jade_human": {
+    "n": 349,
+    "actual": 41.3,
+    "model": 40.0,
+    "sd": 0.5,
+    "wins": 144,
+    "expected_wins": 139.8
+   },
+   "luckyj": {
+    "n": 686,
+    "actual": 45.3,
+    "model": 40.0,
+    "sd": 2.9,
+    "wins": 311,
+    "expected_wins": 274.2
+   },
+   "tokujou_human": {
+    "n": 1993,
+    "actual": 38.5,
+    "model": 38.3,
+    "sd": 0.2,
+    "wins": 767,
+    "expected_wins": 762.7
+   }
+  },
+  "six or more live": {
+   "you": {
+    "n": 175,
+    "actual": 62.3,
+    "model": 60.8,
+    "sd": 0.4,
+    "wins": 109,
+    "expected_wins": 106.5
+   },
+   "jade_human": {
+    "n": 481,
+    "actual": 61.3,
+    "model": 59.0,
+    "sd": 1.1,
+    "wins": 295,
+    "expected_wins": 284.0
+   },
+   "luckyj": {
+    "n": 1020,
+    "actual": 59.5,
+    "model": 59.1,
+    "sd": 0.3,
+    "wins": 607,
+    "expected_wins": 603.1
+   },
+   "tokujou_human": {
+    "n": 2685,
+    "actual": 58.5,
+    "model": 59.2,
+    "sd": -0.8,
+    "wins": 1570,
+    "expected_wins": 1590.7
+   }
+  },
+  "extra": {
+   "labels": {
+    "you": {
+     "without": 40.4,
+     "with": 40.0
+    },
+    "luckyj": {
+     "without": 40.0,
+     "with": 40.2
+    }
+   },
+   "safe_looking_share_of_live_tiles": {
+    "you": 14.7,
+    "jade_human": 18.3,
+    "luckyj": 18.4,
+    "tokujou_human": 18.5
+   },
+   "near": {
+    "coefficient": 0.012,
+    "se": 0.026,
+    "riichis": 3556
+   }
+  }
+ },
+ "opponents_tenpai": {
+  "humans_thin_win": {
+   "0": {
+    "n": 2300,
+    "won": 51.7
+   },
+   "1": {
+    "n": 978,
+    "won": 36.2
+   },
+   "2": {
+    "n": 278,
+    "won": 20.5
+   }
+  },
+  "none_tenpai_share": {
+   "you": 62.8,
+   "jade_human": 65.8,
+   "luckyj": 68.8,
+   "tokujou_human": 64.5
+  }
+ },
+ "luck": {
+  "you": {
+   "unseen_copies": 393,
+   "held_by_opponents": 195,
+   "held_pct": 49.6,
+   "in_the_wall_per_riichi": 1.92
+  },
+  "jade_human": {
+   "unseen_copies": 1291,
+   "held_by_opponents": 622,
+   "held_pct": 48.2,
+   "in_the_wall_per_riichi": 1.92
+  },
+  "luckyj": {
+   "unseen_copies": 2524,
+   "held_by_opponents": 1183,
+   "held_pct": 46.9,
+   "in_the_wall_per_riichi": 1.95
+  },
+  "tokujou_human": {
+   "unseen_copies": 7244,
+   "held_by_opponents": 3491,
+   "held_pct": 48.2,
+   "in_the_wall_per_riichi": 1.88
+  }
+ },
+ "released": {
+  "you": {
+   "releases": 17,
+   "per_100_held_copy_discards": 0.74
+  },
+  "jade_human": {
+   "releases": 85,
+   "per_100_held_copy_discards": 1.08
+  },
+  "luckyj": {
+   "releases": 179,
+   "per_100_held_copy_discards": 1.26
+  },
+  "tokujou_human": {
+   "releases": 439,
+   "per_100_held_copy_discards": 1.05
+  },
+  "expected_for_you_at_the_humans_rate": 24.1
+ },
+ "choices": {
+  "you": {
+   "first_tenpais": 449,
+   "best_available_live": 5.21,
+   "taken_live": 5.14,
+   "dama_decisions": 411,
+   "kept_wait_pct": 87.1,
+   "to_more_live_pct": 6.8,
+   "to_fewer_live_pct": 2.9
+  },
+  "jade_human": {
+   "first_tenpais": 1312,
+   "best_available_live": 5.1,
+   "taken_live": 5.02,
+   "dama_decisions": 1178,
+   "kept_wait_pct": 89.0,
+   "to_more_live_pct": 5.9,
+   "to_fewer_live_pct": 2.6
+  },
+  "luckyj": {
+   "first_tenpais": 2201,
+   "best_available_live": 5.15,
+   "taken_live": 5.05,
+   "dama_decisions": 1508,
+   "kept_wait_pct": 85.8,
+   "to_more_live_pct": 7.7,
+   "to_fewer_live_pct": 2.7
+  },
+  "tokujou_human": {
+   "first_tenpais": 6775,
+   "best_available_live": 5.01,
+   "taken_live": 4.91,
+   "dama_decisions": 6703,
+   "kept_wait_pct": 88.8,
+   "to_more_live_pct": 6.1,
+   "to_fewer_live_pct": 2.8
+  },
+  "gave_up_live_tiles_at_the_declaration": {
+   "you": {
+    "declarations": 198,
+    "better_cut_existed": 14
+   },
+   "jade_human": {
+    "declarations": 672,
+    "better_cut_existed": 51
+   },
+   "luckyj": {
+    "declarations": 1252,
+    "better_cut_existed": 133
+   },
+   "tokujou_human": {
+    "declarations": 3802,
+    "better_cut_existed": 339
+   }
+  }
+ },
+ "furiten": {
+  "you": {
+   "riichis": 417,
+   "furiten": 4,
+   "won": 0
+  },
+  "jade_human": {
+   "riichis": 1287,
+   "furiten": 18,
+   "won": 3
+  },
+  "luckyj": {
+   "riichis": 2489,
+   "furiten": 19,
+   "won": 6
+  },
+  "tokujou_human": {
+   "riichis": 7251,
+   "furiten": 85,
+   "won": 29
+  }
+ },
+ "cost": {
+  "rank_points_per_1000_points": 8.3,
+  "records_fitted": 308,
+  "your_riichis_per_game": 0.48,
+  "net_per_riichi": {
+   "you": 1081,
+   "humans": 1621,
+   "luckyj": 2602
+  },
+  "standard_error_of_yours": 595,
+  "points_a_game_against_humans": -258,
+  "points_a_game_against_luckyj": -725,
+  "rank_points_a_game_against_humans": -2.1,
+  "rank_points_a_game_against_luckyj": -6.0
+ },
+ "examples": {
+  "wait_held": {
+   "game": "261008-ce956cd8-7f83-4165-97aa-e5be24fff49c",
+   "round": "East 1-1",
+   "turn": 13,
+   "live": 5,
+   "held": 4,
+   "in_the_wall": 1,
+   "won": false,
+   "dealt": true,
+   "net": -13300,
+   "waits": [
+    21,
+    24
+   ]
+  },
+  "wall_empty": {
+   "game": "261003-d9683a26-30d8-4712-b52c-17797ebfe3e2",
+   "round": "South 4-0",
+   "turn": 15,
+   "live": 3,
+   "held": 3,
+   "in_the_wall": 0,
+   "won": false,
+   "dealt": false,
+   "net": 2000,
+   "waits": [
+    17
+   ]
+  }
+ }
+}
