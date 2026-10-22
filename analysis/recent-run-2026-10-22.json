@@ -1,0 +1,781 @@
+{
+ "from": "2026-10-19 20:00",
+ "games": 10,
+ "results": {
+  "new": {
+   "games": 10,
+   "places": [
+    7,
+    2,
+    0,
+    1
+   ],
+   "rank_points": 866,
+   "rank_points_a_game": 86.6,
+   "mean_score": 37200
+  },
+  "before": {
+   "games": 217,
+   "places": [
+    57,
+    57,
+    58,
+    45
+   ],
+   "rank_points": -831,
+   "rank_points_a_game": -3.8,
+   "mean_score": 26345
+  },
+  "peak": {
+   "games": 68,
+   "places": [
+    17,
+    14,
+    16,
+    21
+   ],
+   "rank_points": -2396,
+   "rank_points_a_game": -35.2,
+   "mean_score": 25616
+  },
+  "luck": {
+   "sd_a_game": 148.5,
+   "sd_of_ten": 47.0,
+   "z_vs_before": 1.93,
+   "p_firsts_at_least": 0.0048,
+   "first_rate_before": 26.3,
+   "p_fourths_at_most": 0.354,
+   "fourth_rate_before": 20.7
+  }
+ },
+ "hands": {
+  "new": {
+   "hands": 103,
+   "tenpai": 55,
+   "won": 31,
+   "tsumo_wins": 15,
+   "riichi": 16,
+   "open": 42,
+   "open_wins": 17,
+   "riichi_wins": 9,
+   "dama_wins": 5,
+   "dealt_in": 10,
+   "average_win": 7006,
+   "average_deal_in": 3980,
+   "big_deal_ins": 1,
+   "points_a_hand": 1184,
+   "deal_ins_into": {
+    "riichi": 2,
+    "open hand": 7,
+    "dama": 1
+   }
+  },
+  "peak": {
+   "hands": 710,
+   "tenpai": 340,
+   "won": 155,
+   "tsumo_wins": 56,
+   "riichi": 117,
+   "open": 234,
+   "open_wins": 74,
+   "riichi_wins": 60,
+   "dama_wins": 21,
+   "dealt_in": 88,
+   "average_win": 6444,
+   "average_deal_in": 5622,
+   "big_deal_ins": 35,
+   "points_a_hand": 59,
+   "deal_ins_into": {
+    "riichi": 38,
+    "open hand": 42,
+    "dama": 8
+   }
+  },
+  "before": {
+   "hands": 1549,
+   "tenpai": 808,
+   "won": 352,
+   "tsumo_wins": 120,
+   "riichi": 301,
+   "open": 579,
+   "open_wins": 174,
+   "riichi_wins": 143,
+   "dama_wins": 35,
+   "dealt_in": 169,
+   "average_win": 6374,
+   "average_deal_in": 4842,
+   "big_deal_ins": 42,
+   "points_a_hand": 160,
+   "deal_ins_into": {
+    "riichi": 62,
+    "open hand": 91,
+    "dama": 16
+   }
+  },
+  "old": {
+   "hands": 2259,
+   "tenpai": 1148,
+   "won": 507,
+   "tsumo_wins": 176,
+   "riichi": 418,
+   "open": 813,
+   "open_wins": 248,
+   "riichi_wins": 203,
+   "dama_wins": 56,
+   "dealt_in": 257,
+   "average_win": 6395,
+   "average_deal_in": 5109,
+   "big_deal_ins": 77,
+   "points_a_hand": 128,
+   "deal_ins_into": {
+    "riichi": 100,
+    "open hand": 133,
+    "dama": 24
+   }
+  },
+  "z_new_vs_old": {
+   "tenpai": 0.5,
+   "won": 1.8,
+   "tsumo_wins": 2.5,
+   "riichi": -0.8,
+   "open": 1.0,
+   "open_wins": 1.7,
+   "dama_wins": 1.5,
+   "dealt_in": -0.5
+  },
+  "tsumo_wins_expected": 8.0,
+  "p_tsumo_wins_at_least": 0.0138
+ },
+ "situations": {
+  "riichi by turn 8": {
+   "new": {
+    "hands": 27,
+    "tenpai_pct": 29.6,
+    "won_pct": 14.8,
+    "open_pct": 22.2,
+    "points_a_hand": -152
+   },
+   "peak": {
+    "hands": 174,
+    "tenpai_pct": 26.4,
+    "won_pct": 12.6,
+    "open_pct": 24.1,
+    "points_a_hand": -749
+   },
+   "old": {
+    "hands": 515,
+    "tenpai_pct": 32.4,
+    "won_pct": 11.5,
+    "open_pct": 30.3,
+    "points_a_hand": -993
+   }
+  },
+  "callers only": {
+   "new": {
+    "hands": 44,
+    "tenpai_pct": 68.2,
+    "won_pct": 34.1,
+    "open_pct": 47.7,
+    "points_a_hand": 1670
+   },
+   "peak": {
+    "hands": 280,
+    "tenpai_pct": 51.1,
+    "won_pct": 22.9,
+    "open_pct": 33.9,
+    "points_a_hand": 152
+   },
+   "old": {
+    "hands": 942,
+    "tenpai_pct": 54.2,
+    "won_pct": 24.7,
+    "open_pct": 36.9,
+    "points_a_hand": 425
+   }
+  },
+  "quiet": {
+   "new": {
+    "hands": 12,
+    "tenpai_pct": 83.3,
+    "won_pct": 75.0,
+    "open_pct": 33.3,
+    "points_a_hand": 4708
+   },
+   "peak": {
+    "hands": 78,
+    "tenpai_pct": 66.7,
+    "won_pct": 48.7,
+    "open_pct": 32.1,
+    "points_a_hand": 2459
+   },
+   "old": {
+    "hands": 217,
+    "tenpai_pct": 74.2,
+    "won_pct": 53.5,
+    "open_pct": 36.9,
+    "points_a_hand": 2712
+   }
+  }
+ },
+ "speed": {
+  "you": {
+   "new": {
+    "hands": 103,
+    "haipai_shanten": 3.74,
+    "removed_by_turn_6": 2.04,
+    "removed_by_turn_9": 2.64,
+    "removed_by_turn_12": 2.79,
+    "tenpai_by_turn_10_pct": 38.8
+   },
+   "peak": {
+    "hands": 710,
+    "haipai_shanten": 3.61,
+    "removed_by_turn_6": 1.91,
+    "removed_by_turn_9": 2.34,
+    "removed_by_turn_12": 2.57,
+    "tenpai_by_turn_10_pct": 28.5
+   },
+   "old": {
+    "hands": 2259,
+    "haipai_shanten": 3.59,
+    "removed_by_turn_6": 1.89,
+    "removed_by_turn_9": 2.35,
+    "removed_by_turn_12": 2.58,
+    "tenpai_by_turn_10_pct": 31.2
+   }
+  },
+  "others": {
+   "new": {
+    "hands": 309,
+    "haipai_shanten": 3.61,
+    "removed_by_turn_6": 1.96,
+    "removed_by_turn_9": 2.41,
+    "removed_by_turn_12": 2.57,
+    "tenpai_by_turn_10_pct": 31.1
+   },
+   "peak": {
+    "hands": 2130,
+    "haipai_shanten": 3.57,
+    "removed_by_turn_6": 1.87,
+    "removed_by_turn_9": 2.31,
+    "removed_by_turn_12": 2.52,
+    "tenpai_by_turn_10_pct": 28.7
+   },
+   "old": {
+    "hands": 6777,
+    "haipai_shanten": 3.57,
+    "removed_by_turn_6": 1.88,
+    "removed_by_turn_9": 2.32,
+    "removed_by_turn_12": 2.53,
+    "tenpai_by_turn_10_pct": 29.0
+   }
+  }
+ },
+ "early": {
+  "new": {
+   "games": 10,
+   "by_turn": {
+    "1-3": {
+     "decisions": 295,
+     "matched_pct": 71.9,
+     "flagged_a_game": 1.5
+    },
+    "4-6": {
+     "decisions": 278,
+     "matched_pct": 70.9,
+     "flagged_a_game": 1.6
+    },
+    "7-9": {
+     "decisions": 256,
+     "matched_pct": 79.3,
+     "flagged_a_game": 2.6
+    },
+    "10-12": {
+     "decisions": 176,
+     "matched_pct": 75.6,
+     "flagged_a_game": 1.9
+    },
+    "13+": {
+     "decisions": 146,
+     "matched_pct": 78.1,
+     "flagged_a_game": 1.2
+    }
+   },
+   "matched_pct": 74.6,
+   "flagged_a_game": 8.8,
+   "flagged_turns_1_to_6_a_game": 3.1,
+   "lone_terminals_and_honors_after_discard": {
+    "3": 1.98,
+    "6": 1.27,
+    "9": 1.19
+   },
+   "situations": {
+    "callers, no riichi": {
+     "decisions": 398,
+     "matched_pct": 72.4,
+     "flagged_a_game": 3.8
+    },
+    "quiet": {
+     "decisions": 548,
+     "matched_pct": 74.5,
+     "flagged_a_game": 3.0
+    },
+    "riichi on the table": {
+     "decisions": 198,
+     "matched_pct": 78.8,
+     "flagged_a_game": 2.0
+    },
+    "own riichi": {
+     "decisions": 7,
+     "matched_pct": 100.0,
+     "flagged_a_game": 0.0
+    }
+   },
+   "safe_tile_against_a_riichi": {
+    "decisions": 136,
+    "you_pct": 83.1,
+    "mortal_pct": 84.9,
+    "extra_per_100": -1.8
+   },
+   "safe_tile_against_callers": {
+    "decisions": 194,
+    "you_pct": 34.0,
+    "mortal_pct": 33.3,
+    "extra_per_100": 0.7
+   }
+  },
+  "peak": {
+   "games": 68,
+   "by_turn": {
+    "1-3": {
+     "decisions": 2038,
+     "matched_pct": 69.8,
+     "flagged_a_game": 1.81
+    },
+    "4-6": {
+     "decisions": 1939,
+     "matched_pct": 69.4,
+     "flagged_a_game": 2.81
+    },
+    "7-9": {
+     "decisions": 1635,
+     "matched_pct": 74.2,
+     "flagged_a_game": 2.19
+    },
+    "10-12": {
+     "decisions": 1162,
+     "matched_pct": 76.2,
+     "flagged_a_game": 1.63
+    },
+    "13+": {
+     "decisions": 1036,
+     "matched_pct": 77.5,
+     "flagged_a_game": 1.47
+    }
+   },
+   "matched_pct": 72.6,
+   "flagged_a_game": 9.91,
+   "flagged_turns_1_to_6_a_game": 4.62,
+   "lone_terminals_and_honors_after_discard": {
+    "3": 2.19,
+    "6": 1.48,
+    "9": 1.15
+   },
+   "situations": {
+    "quiet": {
+     "decisions": 4198,
+     "matched_pct": 72.7,
+     "flagged_a_game": 4.59
+    },
+    "riichi on the table": {
+     "decisions": 1442,
+     "matched_pct": 74.8,
+     "flagged_a_game": 2.21
+    },
+    "callers, no riichi": {
+     "decisions": 2141,
+     "matched_pct": 70.6,
+     "flagged_a_game": 3.12
+    },
+    "own riichi": {
+     "decisions": 29,
+     "matched_pct": 100.0,
+     "flagged_a_game": 0.0
+    }
+   },
+   "safe_tile_against_a_riichi": {
+    "decisions": 1092,
+    "you_pct": 81.5,
+    "mortal_pct": 82.1,
+    "extra_per_100": -0.6
+   },
+   "safe_tile_against_callers": {
+    "decisions": 1141,
+    "you_pct": 35.6,
+    "mortal_pct": 35.0,
+    "extra_per_100": 0.6
+   }
+  },
+  "old": {
+   "games": 217,
+   "by_turn": {
+    "1-3": {
+     "decisions": 6495,
+     "matched_pct": 70.0,
+     "flagged_a_game": 1.96
+    },
+    "4-6": {
+     "decisions": 6152,
+     "matched_pct": 69.4,
+     "flagged_a_game": 2.76
+    },
+    "7-9": {
+     "decisions": 5224,
+     "matched_pct": 74.5,
+     "flagged_a_game": 2.21
+    },
+    "10-12": {
+     "decisions": 3661,
+     "matched_pct": 76.7,
+     "flagged_a_game": 1.54
+    },
+    "13+": {
+     "decisions": 3182,
+     "matched_pct": 78.0,
+     "flagged_a_game": 1.41
+    }
+   },
+   "matched_pct": 72.8,
+   "flagged_a_game": 9.88,
+   "flagged_turns_1_to_6_a_game": 4.72,
+   "lone_terminals_and_honors_after_discard": {
+    "3": 2.12,
+    "6": 1.43,
+    "9": 1.12
+   },
+   "situations": {
+    "quiet": {
+     "decisions": 12842,
+     "matched_pct": 72.3,
+     "flagged_a_game": 4.55
+    },
+    "riichi on the table": {
+     "decisions": 4367,
+     "matched_pct": 75.9,
+     "flagged_a_game": 1.92
+    },
+    "callers, no riichi": {
+     "decisions": 7406,
+     "matched_pct": 71.7,
+     "flagged_a_game": 3.41
+    },
+    "own riichi": {
+     "decisions": 99,
+     "matched_pct": 99.0,
+     "flagged_a_game": 0.0
+    }
+   },
+   "safe_tile_against_a_riichi": {
+    "decisions": 3164,
+    "you_pct": 82.7,
+    "mortal_pct": 82.8,
+    "extra_per_100": -0.1
+   },
+   "safe_tile_against_callers": {
+    "decisions": 3714,
+    "you_pct": 36.9,
+    "mortal_pct": 35.7,
+    "extra_per_100": 1.2
+   }
+  }
+ },
+ "folds": {
+  "new": {
+   "decisions": {
+    "n": 135,
+    "safe": 105,
+    "real_fold": 30,
+    "dealt_in": 0
+   },
+   "far": {
+    "n": 90,
+    "safe": 75,
+    "real_fold": 17,
+    "dealt_in": 0
+   },
+   "far_first_discard": {
+    "n": 18,
+    "safe": 15,
+    "real_fold": 6,
+    "dealt_in": 0
+   },
+   "far_later": {
+    "n": 72,
+    "safe": 60,
+    "real_fold": 11,
+    "dealt_in": 0
+   },
+   "one_shanten": {
+    "n": 44,
+    "safe": 30,
+    "real_fold": 12,
+    "dealt_in": 0
+   },
+   "had_genbutsu": 124,
+   "held_a_winning_tile": {
+    "n": 96,
+    "safe": 72,
+    "real_fold": 21,
+    "dealt_in": 0
+   }
+  },
+  "old": {
+   "decisions": {
+    "n": 3311,
+    "safe": 2423,
+    "real_fold": 801,
+    "dealt_in": 30
+   },
+   "far": {
+    "n": 1739,
+    "safe": 1374,
+    "real_fold": 351,
+    "dealt_in": 13
+   },
+   "far_first_discard": {
+    "n": 368,
+    "safe": 261,
+    "real_fold": 63,
+    "dealt_in": 3
+   },
+   "far_later": {
+    "n": 1371,
+    "safe": 1113,
+    "real_fold": 288,
+    "dealt_in": 10
+   },
+   "one_shanten": {
+    "n": 1472,
+    "safe": 977,
+    "real_fold": 350,
+    "dealt_in": 16
+   },
+   "had_genbutsu": 2871,
+   "held_a_winning_tile": {
+    "n": 2455,
+    "safe": 1679,
+    "real_fold": 529,
+    "dealt_in": 0
+   }
+  }
+ },
+ "lone_riichi": {
+  "new": {
+   "hands": 41,
+   "dealt_in": 0,
+   "held_a_winning_tile": 24,
+   "dealt_in_holding_one": 0
+  },
+  "peak": {
+   "hands": 313,
+   "dealt_in": 29,
+   "held_a_winning_tile": 195,
+   "dealt_in_holding_one": 29
+  },
+  "before": {
+   "hands": 634,
+   "dealt_in": 45,
+   "held_a_winning_tile": 414,
+   "dealt_in_holding_one": 45
+  },
+  "old": {
+   "hands": 947,
+   "dealt_in": 74,
+   "held_a_winning_tile": 609,
+   "dealt_in_holding_one": 74
+  },
+  "expected_new_deal_ins": 3.2,
+  "p_no_deal_in": 0.0356,
+  "p_never_threw_it": 0.0446
+ },
+ "poor_deals": {
+  "new": {
+   "0-2": {
+    "hands": 7,
+    "tenpai": 6,
+    "won": 3,
+    "won_pct": 42.9
+   },
+   "3": {
+    "hands": 35,
+    "tenpai": 20,
+    "won": 10,
+    "won_pct": 28.6
+   },
+   "4+": {
+    "hands": 61,
+    "tenpai": 29,
+    "won": 18,
+    "won_pct": 29.5
+   }
+  },
+  "peak": {
+   "0-2": {
+    "hands": 59,
+    "tenpai": 41,
+    "won": 26,
+    "won_pct": 44.1
+   },
+   "3": {
+    "hands": 275,
+    "tenpai": 145,
+    "won": 68,
+    "won_pct": 24.7
+   },
+   "4+": {
+    "hands": 376,
+    "tenpai": 154,
+    "won": 61,
+    "won_pct": 16.2
+   }
+  },
+  "old": {
+   "0-2": {
+    "hands": 213,
+    "tenpai": 149,
+    "won": 82,
+    "won_pct": 38.5
+   },
+   "3": {
+    "hands": 845,
+    "tenpai": 480,
+    "won": 227,
+    "won_pct": 26.9
+   },
+   "4+": {
+    "hands": 1201,
+    "tenpai": 519,
+    "won": 198,
+    "won_pct": 16.5
+   }
+  },
+  "z_4_plus_new_vs_old": 2.6,
+  "share_4_plus": {
+   "new": 59.2,
+   "peak": 53.0,
+   "old": 53.2
+  }
+ },
+ "deal_ins": {
+  "new": {
+   "games": 10,
+   "deal_ins": 10,
+   "points_paid_a_game": 3980,
+   "mortal_under_25": 4,
+   "points_on_those_a_game": 1360
+  },
+  "peak": {
+   "games": 68,
+   "deal_ins": 89,
+   "points_paid_a_game": 7275,
+   "mortal_under_25": 24,
+   "points_on_those_a_game": 2149
+  },
+  "before": {
+   "games": 149,
+   "deal_ins": 169,
+   "points_paid_a_game": 5492,
+   "mortal_under_25": 36,
+   "points_on_those_a_game": 1239
+  },
+  "old": {
+   "games": 217,
+   "deal_ins": 258,
+   "points_paid_a_game": 6051,
+   "mortal_under_25": 60,
+   "points_on_those_a_game": 1524
+  },
+  "list": [
+   {
+    "game": "261020-7c7575f9-71d2-4d10-92c8-fda9177c8933",
+    "round": "East 2-1",
+    "kind": "cut",
+    "tile": "8m",
+    "paid": 3200,
+    "mortal": 0.787
+   },
+   {
+    "game": "261020-43db16b5-e90e-4ea3-b449-f8ea6b3e3b46",
+    "round": "South 4-1",
+    "kind": "cut",
+    "tile": "9p",
+    "paid": 2900,
+    "mortal": 0.772
+   },
+   {
+    "game": "261021-46ffae6a-5780-42e3-a455-278722d4f081",
+    "round": "East 2-0",
+    "kind": "cut",
+    "tile": "3s",
+    "paid": 3900,
+    "mortal": 0.998
+   },
+   {
+    "game": "261021-45cc4dec-31a6-42c6-97df-293d8592db81",
+    "round": "East 2-3",
+    "kind": "cut",
+    "tile": "3m",
+    "paid": 6100,
+    "mortal": 0.0
+   },
+   {
+    "game": "261021-45cc4dec-31a6-42c6-97df-293d8592db81",
+    "round": "South 4-2",
+    "kind": "cut",
+    "tile": "3s",
+    "paid": 1900,
+    "mortal": 0.963
+   },
+   {
+    "game": "261022-6fa946df-55a8-4848-80a8-7852ea94d2e1",
+    "round": "East 3-1",
+    "kind": "riichi",
+    "tile": "5p",
+    "paid": 12300,
+    "mortal": 0.995
+   },
+   {
+    "game": "261022-1eed558c-b273-4ef6-805f-42be158be297",
+    "round": "East 4-0",
+    "kind": "cut",
+    "tile": "6s",
+    "paid": 1000,
+    "mortal": 0.0
+   },
+   {
+    "game": "261022-fd2b87ad-ac61-41fd-b9d5-5c421ffb029e",
+    "round": "East 2-1",
+    "kind": "cut",
+    "tile": "4m",
+    "paid": 2300,
+    "mortal": 0.148
+   },
+   {
+    "game": "261022-fd2b87ad-ac61-41fd-b9d5-5c421ffb029e",
+    "round": "East 3-0",
+    "kind": "cut",
+    "tile": "7m",
+    "paid": 2000,
+    "mortal": 0.396
+   },
+   {
+    "game": "261022-88fceb37-c1c9-47c8-9ebd-1e8055a78685",
+    "round": "South 1-1",
+    "kind": "cut",
+    "tile": "3p",
+    "paid": 4200,
+    "mortal": 0.135
+   }
+  ]
+ }
+}

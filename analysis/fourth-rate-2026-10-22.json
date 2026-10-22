@@ -1,0 +1,294 @@
+{
+ "last": 100,
+ "efficiency": {
+  "last_100": {
+   "hands": 1032,
+   "win_rate_pct": 23.4,
+   "average_win": 6684,
+   "win_efficiency": 1567,
+   "deal_in_rate_pct": 11.2,
+   "average_deal_in": 5590,
+   "deal_in_loss": 628,
+   "net_win_efficiency": 939,
+   "tsumo_paid": -501,
+   "draws_and_sticks": -162,
+   "real_points_a_hand": 276
+  },
+  "all_2026": {
+   "hands": 2362,
+   "win_rate_pct": 22.8,
+   "average_win": 6430,
+   "win_efficiency": 1465,
+   "deal_in_rate_pct": 11.3,
+   "average_deal_in": 5067,
+   "deal_in_loss": 573,
+   "net_win_efficiency": 892,
+   "tsumo_paid": -545,
+   "draws_and_sticks": -172,
+   "real_points_a_hand": 174
+  },
+  "jade_human": {
+   "hands": 7086,
+   "win_rate_pct": 21.0,
+   "average_win": 6764,
+   "win_efficiency": 1421,
+   "deal_in_rate_pct": 14.0,
+   "average_deal_in": 5382,
+   "deal_in_loss": 755,
+   "net_win_efficiency": 666,
+   "tsumo_paid": -541,
+   "draws_and_sticks": -185,
+   "real_points_a_hand": -60
+  },
+  "luckyj": {
+   "hands": 11272,
+   "win_rate_pct": 22.9,
+   "average_win": 7317,
+   "win_efficiency": 1677,
+   "deal_in_rate_pct": 10.3,
+   "average_deal_in": 5308,
+   "deal_in_loss": 546,
+   "net_win_efficiency": 1131,
+   "tsumo_paid": -578,
+   "draws_and_sticks": -191,
+   "real_points_a_hand": 363
+  },
+  "amae_career": {
+   "win_efficiency": 1424,
+   "deal_in_loss": 652,
+   "net_win_efficiency": 772,
+   "hands": 40467
+  }
+ },
+ "places": {
+  "last_100": {
+   "places": [
+    32,
+    22,
+    23,
+    23
+   ],
+   "rank_points": -330,
+   "rank_points_a_game": -3.3,
+   "mean_score": 27851
+  },
+  "all_2026": {
+   "games": 227,
+   "fourth_pct": 20.3
+  },
+  "jade_human_fourth_pct": 26.5,
+  "luckyj_fourth_pct": 16.9,
+  "tokujou_human_fourth_pct": 27.7
+ },
+ "by_place": {
+  "1": {
+   "games": 32,
+   "points_won": 28578,
+   "deal_ins": 3491,
+   "tsumo_paid": 3388,
+   "with_a_big_deal_in": 4,
+   "with_a_big_deal_in_pct": 12
+  },
+  "2": {
+   "games": 22,
+   "points_won": 15018,
+   "deal_ins": 3359,
+   "tsumo_paid": 4632,
+   "with_a_big_deal_in": 3,
+   "with_a_big_deal_in_pct": 14
+  },
+  "3": {
+   "games": 23,
+   "points_won": 10457,
+   "deal_ins": 7052,
+   "tsumo_paid": 6274,
+   "with_a_big_deal_in": 9,
+   "with_a_big_deal_in_pct": 39
+  },
+  "4": {
+   "games": 23,
+   "points_won": 5748,
+   "deal_ins": 13070,
+   "tsumo_paid": 7043,
+   "with_a_big_deal_in": 16,
+   "with_a_big_deal_in_pct": 70
+  }
+ },
+ "big_deal_in_games": {
+  "games_with_one": 32,
+  "fourths_among_them": 16,
+  "games_without": 68,
+  "fourths_among_those": 7
+ },
+ "fourths": {
+  "count": 23,
+  "no_deal_in": 2,
+  "not_fourth_without_the_biggest": 14,
+  "with_a_big_deal_in": 16,
+  "list": [
+   {
+    "game": "261001-d251c2a0-2a09-466b-91f1-19b0b951a9e0",
+    "round": null,
+    "paid": 0,
+    "place_without": 4
+   },
+   {
+    "game": "261002-b0ec9f2d-52a2-4578-b351-df6475cc8b35",
+    "round": "East 3-0",
+    "paid": 5800,
+    "place_without": 3
+   },
+   {
+    "game": "261003-9f797d54-017c-48cf-adde-e17f61db61e0",
+    "round": "East 4-1",
+    "paid": 8300,
+    "place_without": 3
+   },
+   {
+    "game": "261003-3b706dd7-3be6-47bf-84c3-7268814bc5aa",
+    "round": null,
+    "paid": 0,
+    "place_without": 4
+   },
+   {
+    "game": "261004-3d4685b3-96b5-421f-9f25-7f7459b95553",
+    "round": "South 1-1",
+    "paid": 12300,
+    "place_without": 4
+   },
+   {
+    "game": "261004-663f0de9-cfe1-4fa3-b8b2-48153236dc62",
+    "round": "East 4-1",
+    "paid": 12300,
+    "place_without": 4
+   },
+   {
+    "game": "261006-6ecce496-8d0c-4666-9cd8-5ccbdb0ff30b",
+    "round": "South 1-0",
+    "paid": 7700,
+    "place_without": 4
+   },
+   {
+    "game": "261007-c265c423-64d7-4171-ae24-ea000701511e",
+    "round": "South 4-0",
+    "paid": 12000,
+    "place_without": 4
+   },
+   {
+    "game": "261008-ce956cd8-7f83-4165-97aa-e5be24fff49c",
+    "round": "South 2-1",
+    "paid": 12300,
+    "place_without": 3
+   },
+   {
+    "game": "261008-d9f44c77-d076-4cd7-bc30-5c0495d3624d",
+    "round": "South 2-1",
+    "paid": 8000,
+    "place_without": 3
+   },
+   {
+    "game": "261011-285cf167-7464-42ec-993d-ffac72ff2bb5",
+    "round": "East 4-2",
+    "paid": 8600,
+    "place_without": 3
+   },
+   {
+    "game": "261011-10d214ef-4cc3-414b-ab98-38e19ba751e2",
+    "round": "East 3-0",
+    "paid": 12000,
+    "place_without": 3
+   },
+   {
+    "game": "261012-4c37163a-b276-4c61-8ab8-a593614a1448",
+    "round": "South 4-0",
+    "paid": 3900,
+    "place_without": 3
+   },
+   {
+    "game": "261012-5dae20fd-fe6a-404a-8ce4-c41c3f600c1b",
+    "round": "South 2-0",
+    "paid": 3900,
+    "place_without": 3
+   },
+   {
+    "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+    "round": "East 2-0",
+    "paid": 8000,
+    "place_without": 2
+   },
+   {
+    "game": "261016-7cc3ee5d-65fc-4333-a381-7cb5db6923eb",
+    "round": "South 4-0",
+    "paid": 7700,
+    "place_without": 3
+   },
+   {
+    "game": "261016-76fdbc7c-8746-4b3b-97fd-c0b15a1e161f",
+    "round": "South 2-1",
+    "paid": 8300,
+    "place_without": 4
+   },
+   {
+    "game": "261017-8ee9d273-beb1-4a9f-9a7b-5f0bb5a26437",
+    "round": "South 1-1",
+    "paid": 8300,
+    "place_without": 2
+   },
+   {
+    "game": "261017-c062d7a5-938e-4e8f-8061-ca646da43a03",
+    "round": "South 3-1",
+    "paid": 12300,
+    "place_without": 4
+   },
+   {
+    "game": "261018-65bbd1fc-5557-4dc2-a5ce-3baedec8a46b",
+    "round": "East 3-0",
+    "paid": 8000,
+    "place_without": 4
+   },
+   {
+    "game": "261018-77b1829c-b251-4e91-be93-4984e09fd1dd",
+    "round": "East 4-0",
+    "paid": 3900,
+    "place_without": 3
+   },
+   {
+    "game": "261020-cab68a97-96dc-4b97-9353-53ec05899810",
+    "round": "South 4-0",
+    "paid": 12000,
+    "place_without": 3
+   },
+   {
+    "game": "261021-45cc4dec-31a6-42c6-97df-293d8592db81",
+    "round": "East 2-3",
+    "paid": 6100,
+    "place_without": 3
+   }
+  ]
+ },
+ "simulation": {
+  "big_deal_ins": 44,
+  "games_with_one": 32,
+  "avoid_0": {
+   "fourths_of_100": 23.0,
+   "rank_points_a_game": -3.3
+  },
+  "avoid_25": {
+   "fourths_of_100": 19.9,
+   "rank_points_a_game": 7.9
+  },
+  "avoid_50": {
+   "fourths_of_100": 17.2,
+   "rank_points_a_game": 18.4
+  }
+ },
+ "formula": {
+  "rank_points_by_place": {
+   "1": 144,
+   "2": 66,
+   "3": -10,
+   "4": -272
+  },
+  "break_even_fourth_pct": 20.3
+ }
+}

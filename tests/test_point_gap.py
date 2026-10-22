@@ -136,21 +136,20 @@ class TheCorrectionTests(unittest.TestCase):
         for phrase in ("216 games", "80 of them", "22 September", "1,227", "2,448", "1,221", "1,282"):
             self.assertIn(phrase, prose("en", wins), phrase)
 
-    def test_the_news_list_has_one_latest_and_the_correction(self):
-        for lang, latest, correction in (("en", "Chapter 47 answers your question about the point gap", "Chapter 45 named the size of your wins"),
-                                         ("ja", "第47章は、点数の差についての質問に答える", "第45章は、あなたのアガリの大きさをLuckyJとの最大の差とした")):
+    def test_the_news_list_has_the_notice_and_the_correction(self):
+        # chapter 47 was the latest notice until chapter 48 went up on 22 October
+        for lang, notice, correction in (("en", '<a href="#point-gap">Chapter 47 answers your question about the point gap', "Chapter 45 named the size of your wins"),
+                                         ("ja", '<a href="#point-gap">第47章は、点数の差についての質問に答える', "第45章は、あなたのアガリの大きさをLuckyJとの最大の差とした")):
             page = PAGES[lang].read_text(encoding="utf-8")
             self.assertEqual(page.count('<li class="is-latest">'), 1)
-            first = page.index('<li class="is-latest">')
-            self.assertLess(first, page.index(latest))
-            self.assertLess(page.index(latest), page.index(correction))
-            self.assertIn('class="is-correction"', page[page.index(latest):page.index(correction)])
+            self.assertLess(page.index(notice), page.index(correction))
+            self.assertIn('class="is-correction"', page[page.index(notice):page.index(correction)])
 
     def test_the_chapter_list_and_the_chain_of_links(self):
         en = PAGES["en"].read_text(encoding="utf-8")
         ja = PAGES["ja"].read_text(encoding="utf-8")
-        self.assertIn("Forty-seven chapters", en)
-        self.assertIn("47の章", ja)
+        self.assertIn("Forty-nine chapters", en)
+        self.assertIn("49の章", ja)
         for page in (en, ja):
             self.assertEqual(page.count('<span class="contents-num">46</span>'), 1)
             self.assertEqual(page.count('<span class="contents-num">47</span>'), 1)
