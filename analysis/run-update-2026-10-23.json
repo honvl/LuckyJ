@@ -1,0 +1,452 @@
+{
+ "first_from": "2026-10-19 20:00",
+ "second_from": "2026-10-22 12:00",
+ "results": {
+  "before": {
+   "games": 217,
+   "places": [
+    57,
+    57,
+    58,
+    45
+   ],
+   "rank_points": -831,
+   "rank_points_a_game": -3.8
+  },
+  "first": {
+   "games": 10,
+   "places": [
+    7,
+    2,
+    0,
+    1
+   ],
+   "rank_points": 866,
+   "rank_points_a_game": 86.6
+  },
+  "second": {
+   "games": 15,
+   "places": [
+    5,
+    4,
+    4,
+    2
+   ],
+   "rank_points": 473,
+   "rank_points_a_game": 31.5
+  },
+  "run": {
+   "games": 25,
+   "places": [
+    12,
+    6,
+    4,
+    3
+   ],
+   "rank_points": 1339,
+   "rank_points_a_game": 53.6
+  },
+  "since_the_peak": {
+   "games": 93,
+   "rank_points": -1057,
+   "rank_points_a_game": -11.4
+  }
+ },
+ "hands": {
+  "before": {
+   "hands": 2259,
+   "tenpai_pct": 50.8,
+   "won_pct": 22.4,
+   "tsumo_wins": 176,
+   "open_pct": 36.0,
+   "riichi_pct": 18.5,
+   "dealt_in": 257,
+   "dealt_in_pct": 11.4,
+   "big_deal_ins": 77,
+   "big_per_100": 3.4,
+   "points_a_hand": 128,
+   "average_win": 6395,
+   "tenpai_by_turn_10_pct": 31.2
+  },
+  "first": {
+   "hands": 103,
+   "tenpai_pct": 53.4,
+   "won_pct": 30.1,
+   "tsumo_wins": 15,
+   "open_pct": 40.8,
+   "riichi_pct": 15.5,
+   "dealt_in": 10,
+   "dealt_in_pct": 9.7,
+   "big_deal_ins": 1,
+   "big_per_100": 1.0,
+   "points_a_hand": 1184,
+   "average_win": 7006,
+   "tenpai_by_turn_10_pct": 38.8,
+   "z_won_vs_before": 1.8
+  },
+  "second": {
+   "hands": 154,
+   "tenpai_pct": 51.9,
+   "won_pct": 33.1,
+   "tsumo_wins": 19,
+   "open_pct": 40.3,
+   "riichi_pct": 18.8,
+   "dealt_in": 16,
+   "dealt_in_pct": 10.4,
+   "big_deal_ins": 6,
+   "big_per_100": 3.9,
+   "points_a_hand": 853,
+   "average_win": 7063,
+   "tenpai_by_turn_10_pct": 37.0,
+   "z_won_vs_before": 3.1
+  },
+  "run": {
+   "hands": 257,
+   "tenpai_pct": 52.5,
+   "won_pct": 31.9,
+   "tsumo_wins": 34,
+   "open_pct": 40.5,
+   "riichi_pct": 17.5,
+   "dealt_in": 26,
+   "dealt_in_pct": 10.1,
+   "big_deal_ins": 7,
+   "big_per_100": 2.7,
+   "points_a_hand": 986,
+   "average_win": 7041,
+   "tenpai_by_turn_10_pct": 37.7,
+   "z_won_vs_before": 3.4
+  }
+ },
+ "poor_deals": {
+  "before": {
+   "hands": 1201,
+   "won": 198,
+   "won_pct": 16.5,
+   "share_pct": 53.2
+  },
+  "first": {
+   "hands": 61,
+   "won": 18,
+   "won_pct": 29.5,
+   "share_pct": 59.2,
+   "z_vs_before": 2.6
+  },
+  "second": {
+   "hands": 82,
+   "won": 24,
+   "won_pct": 29.3,
+   "share_pct": 53.2,
+   "z_vs_before": 3.0
+  },
+  "run": {
+   "hands": 143,
+   "won": 42,
+   "won_pct": 29.4,
+   "share_pct": 55.6,
+   "z_vs_before": 3.8
+  }
+ },
+ "speed": {
+  "before": {
+   "you_removed_by_turn_9": 2.35,
+   "others_removed_by_turn_9": 2.32
+  },
+  "first": {
+   "you_removed_by_turn_9": 2.64,
+   "others_removed_by_turn_9": 2.41
+  },
+  "second": {
+   "you_removed_by_turn_9": 2.48,
+   "others_removed_by_turn_9": 2.31
+  },
+  "run": {
+   "you_removed_by_turn_9": 2.54,
+   "others_removed_by_turn_9": 2.35
+  }
+ },
+ "lone_riichi": {
+  "before": {
+   "hands": 947,
+   "dealt_in": 74
+  },
+  "first": {
+   "hands": 41,
+   "dealt_in": 0,
+   "expected": 3.2,
+   "p_at_most": 0.036
+  },
+  "second": {
+   "hands": 65,
+   "dealt_in": 4,
+   "expected": 5.1,
+   "p_at_most": 0.419
+  },
+  "run": {
+   "hands": 106,
+   "dealt_in": 4,
+   "expected": 8.3,
+   "p_at_most": 0.076
+  },
+  "usual_pct": 7.8
+ },
+ "mortal": {
+  "before": {
+   "matched_pct": 73.2,
+   "flagged_a_game": 11.44
+  },
+  "first": {
+   "matched_pct": 75.2,
+   "flagged_a_game": 10.4
+  },
+  "second": {
+   "matched_pct": 75.4,
+   "flagged_a_game": 9.33
+  }
+ },
+ "deal_ins": {
+  "count": 17,
+  "mortal_under_25": 7,
+  "list": [
+   {
+    "game": "261023-4cf0729b-b9fd-4f40-9218-4443745a365b",
+    "round": "East 3-0",
+    "kind": "cut",
+    "tile": "7m",
+    "turn": 11,
+    "paid": 5200,
+    "mortal": 0.998
+   },
+   {
+    "game": "261023-3faea795-ec09-4ac3-936e-eb4926dd5477",
+    "round": "South 3-0",
+    "kind": "cut",
+    "tile": "5p",
+    "turn": 13,
+    "paid": 2000,
+    "mortal": 0.241
+   },
+   {
+    "game": "261023-121fa7f6-8abf-4e08-943f-3d129dd2aa34",
+    "round": "South 1-1",
+    "kind": "cut",
+    "tile": "6p",
+    "turn": 11,
+    "paid": 8300,
+    "mortal": 0.999
+   },
+   {
+    "game": "261023-0dd4b0d4-25f1-464d-9735-b54cb785362b",
+    "round": "South 1-1",
+    "kind": "cut",
+    "tile": "8s",
+    "turn": 10,
+    "paid": 2300,
+    "mortal": 0.999
+   },
+   {
+    "game": "261023-0dd4b0d4-25f1-464d-9735-b54cb785362b",
+    "round": "South 2-1",
+    "kind": "cut",
+    "tile": "5s",
+    "turn": 13,
+    "paid": 8000,
+    "mortal": 0.002
+   },
+   {
+    "game": "261023-40608f64-436d-4515-8f45-4b74826ce80c",
+    "round": "East 3-0",
+    "kind": "cut",
+    "tile": "1s",
+    "turn": 17,
+    "paid": 8000,
+    "mortal": 0.999
+   },
+   {
+    "game": "261023-40608f64-436d-4515-8f45-4b74826ce80c",
+    "round": "East 3-0",
+    "kind": "cut",
+    "tile": "1s",
+    "turn": 17,
+    "paid": 1500,
+    "mortal": 0.999
+   },
+   {
+    "game": "261023-40608f64-436d-4515-8f45-4b74826ce80c",
+    "round": "East 4-1",
+    "kind": "riichi",
+    "tile": "1s",
+    "turn": 11,
+    "paid": 8300,
+    "mortal": 0.064
+   },
+   {
+    "game": "261024-2e5edd2b-50b7-4401-bdaf-45caf92ea428",
+    "round": "East 3-0",
+    "kind": "cut",
+    "tile": "2p",
+    "turn": 9,
+    "paid": 2900,
+    "mortal": 0.012
+   },
+   {
+    "game": "261024-2e5edd2b-50b7-4401-bdaf-45caf92ea428",
+    "round": "South 1-0",
+    "kind": "riichi",
+    "tile": "5mr",
+    "turn": 7,
+    "paid": 12000,
+    "mortal": 0.941
+   },
+   {
+    "game": "261024-2e5edd2b-50b7-4401-bdaf-45caf92ea428",
+    "round": "South 4-0",
+    "kind": "cut",
+    "tile": "5sr",
+    "turn": 8,
+    "paid": 3900,
+    "mortal": 0.935
+   },
+   {
+    "game": "261024-a1892da4-29e8-4ae6-bd2d-7a3a16e0b878",
+    "round": "East 3-0",
+    "kind": "riichi",
+    "tile": "8m",
+    "turn": 11,
+    "paid": 2000,
+    "mortal": 0.996
+   },
+   {
+    "game": "261024-a1892da4-29e8-4ae6-bd2d-7a3a16e0b878",
+    "round": "South 1-1",
+    "kind": "cut",
+    "tile": "3m",
+    "turn": 17,
+    "paid": 2900,
+    "mortal": 0.956
+   },
+   {
+    "game": "261024-a1892da4-29e8-4ae6-bd2d-7a3a16e0b878",
+    "round": "South 4-0",
+    "kind": "cut",
+    "tile": "7s",
+    "turn": 8,
+    "paid": 8000,
+    "mortal": 0.007
+   },
+   {
+    "game": "261024-a2a0e15e-65cd-43c3-9053-c8d2b941ac0e",
+    "round": "East 1-0",
+    "kind": "cut",
+    "tile": "1p",
+    "turn": 13,
+    "paid": 3900,
+    "mortal": 0.005
+   },
+   {
+    "game": "261024-a2a0e15e-65cd-43c3-9053-c8d2b941ac0e",
+    "round": "East 4-1",
+    "kind": "riichi",
+    "tile": "8m",
+    "turn": 14,
+    "paid": 2300,
+    "mortal": 0.999
+   },
+   {
+    "game": "261024-c177dc72-a344-4279-8b9a-447d6009ebdb",
+    "round": "South 3-0",
+    "kind": "cut",
+    "tile": "7m",
+    "turn": 13,
+    "paid": 2000,
+    "mortal": 0.215
+   }
+  ],
+  "low": [
+   {
+    "game": "261023-3faea795-ec09-4ac3-936e-eb4926dd5477",
+    "round": "South 3-0",
+    "kind": "cut",
+    "tile": "5p",
+    "turn": 13,
+    "paid": 2000,
+    "mortal": 0.241
+   },
+   {
+    "game": "261023-0dd4b0d4-25f1-464d-9735-b54cb785362b",
+    "round": "South 2-1",
+    "kind": "cut",
+    "tile": "5s",
+    "turn": 13,
+    "paid": 8000,
+    "mortal": 0.002
+   },
+   {
+    "game": "261023-40608f64-436d-4515-8f45-4b74826ce80c",
+    "round": "East 4-1",
+    "kind": "riichi",
+    "tile": "1s",
+    "turn": 11,
+    "paid": 8300,
+    "mortal": 0.064
+   },
+   {
+    "game": "261024-2e5edd2b-50b7-4401-bdaf-45caf92ea428",
+    "round": "East 3-0",
+    "kind": "cut",
+    "tile": "2p",
+    "turn": 9,
+    "paid": 2900,
+    "mortal": 0.012
+   },
+   {
+    "game": "261024-a1892da4-29e8-4ae6-bd2d-7a3a16e0b878",
+    "round": "South 4-0",
+    "kind": "cut",
+    "tile": "7s",
+    "turn": 8,
+    "paid": 8000,
+    "mortal": 0.007
+   },
+   {
+    "game": "261024-a2a0e15e-65cd-43c3-9053-c8d2b941ac0e",
+    "round": "East 1-0",
+    "kind": "cut",
+    "tile": "1p",
+    "turn": 13,
+    "paid": 3900,
+    "mortal": 0.005
+   },
+   {
+    "game": "261024-c177dc72-a344-4279-8b9a-447d6009ebdb",
+    "round": "South 3-0",
+    "kind": "cut",
+    "tile": "7m",
+    "turn": 13,
+    "paid": 2000,
+    "mortal": 0.215
+   }
+  ]
+ },
+ "fourths": [
+  {
+   "game": "261024-a1892da4-29e8-4ae6-bd2d-7a3a16e0b878",
+   "place": 4,
+   "final": 11200,
+   "wins": 1,
+   "win_points": 13000,
+   "deal_in_points": 12900,
+   "tsumo_paid": 12900,
+   "biggest_hand_loss": 8000
+  },
+  {
+   "game": "261024-c177dc72-a344-4279-8b9a-447d6009ebdb",
+   "place": 4,
+   "final": 11900,
+   "wins": 1,
+   "win_points": 3600,
+   "deal_in_points": 2000,
+   "tsumo_paid": 11200,
+   "biggest_hand_loss": 6000
+  }
+ ]
+}

@@ -148,8 +148,8 @@ class TheCorrectionTests(unittest.TestCase):
     def test_the_chapter_list_and_the_chain_of_links(self):
         en = PAGES["en"].read_text(encoding="utf-8")
         ja = PAGES["ja"].read_text(encoding="utf-8")
-        self.assertIn("Forty-nine chapters", en)
-        self.assertIn("49の章", ja)
+        self.assertIn("Fifty chapters", en)
+        self.assertIn("50の章", ja)
         for page in (en, ja):
             self.assertEqual(page.count('<span class="contents-num">46</span>'), 1)
             self.assertEqual(page.count('<span class="contents-num">47</span>'), 1)
