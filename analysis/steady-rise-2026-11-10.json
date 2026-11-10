@@ -1,0 +1,1459 @@
+{
+ "guide": "2026-09-22 14:17",
+ "new_from": "2026-10-23 20:00",
+ "games": {
+  "all": 303,
+  "before": 80,
+  "since": 223,
+  "run": 25,
+  "new": 61
+ },
+ "rank_points_per_1000_points": 8.3,
+ "results": {
+  "new": {
+   "games": 61,
+   "places": [
+    18,
+    17,
+    13,
+    13
+   ],
+   "fourth_pct": 21.3,
+   "rank_points": -72,
+   "rank_points_a_game": -1.2
+  },
+  "new_first": {
+   "games": 30,
+   "places": [
+    8,
+    7,
+    7,
+    8
+   ],
+   "fourth_pct": 26.7,
+   "rank_points": -660,
+   "rank_points_a_game": -22.0
+  },
+  "new_second": {
+   "games": 31,
+   "places": [
+    10,
+    10,
+    6,
+    5
+   ],
+   "fourth_pct": 16.1,
+   "rank_points": 588,
+   "rank_points_a_game": 19.0
+  },
+  "since_the_guide": {
+   "games": 223,
+   "places": [
+    68,
+    57,
+    54,
+    44
+   ],
+   "fourth_pct": 19.7,
+   "rank_points": 1097,
+   "rank_points_a_game": 4.9
+  },
+  "since_the_peak": {
+   "games": 154,
+   "places": [
+    47,
+    37,
+    33,
+    37
+   ],
+   "fourth_pct": 24.0,
+   "rank_points": -1129,
+   "rank_points_a_game": -7.3
+  },
+  "sd_a_game": 148.7,
+  "se_a_game_over_the_new_games": 19.0,
+  "se_over_the_new_games": 1161,
+  "rank": {
+   "now": 5620,
+   "peak": 6749,
+   "below_the_peak": 1129
+  }
+ },
+ "chapter_50_check": {
+  "usual": {
+   "games": 217,
+   "hands": 2259,
+   "dealt_4_shanten_or_worse": 1201,
+   "won": 198,
+   "won_pct": 16.5,
+   "tenpai_by_turn_10_pct": 31.2,
+   "won_pct_all_hands": 22.4,
+   "dealt_in_pct": 11.4
+  },
+  "run": {
+   "games": 25,
+   "hands": 257,
+   "dealt_4_shanten_or_worse": 143,
+   "won": 42,
+   "won_pct": 29.4,
+   "tenpai_by_turn_10_pct": 37.7,
+   "won_pct_all_hands": 31.9,
+   "dealt_in_pct": 10.1
+  },
+  "new": {
+   "games": 61,
+   "hands": 660,
+   "dealt_4_shanten_or_worse": 359,
+   "won": 60,
+   "won_pct": 16.7,
+   "tenpai_by_turn_10_pct": 27.7,
+   "won_pct_all_hands": 21.1,
+   "dealt_in_pct": 9.2
+  }
+ },
+ "pace": {
+  "you": {
+   "seat_games": 223,
+   "places": [
+    68,
+    57,
+    54,
+    44
+   ],
+   "fourth_pct": 19.7,
+   "rank_points_a_game": 4.9
+  },
+  "jade_human": {
+   "seat_games": 669,
+   "places": [
+    155,
+    166,
+    169,
+    179
+   ],
+   "fourth_pct": 26.8,
+   "rank_points_a_game": -26.1
+  },
+  "luckyj": {
+   "seat_games": 1079,
+   "places": [
+    342,
+    297,
+    258,
+    182
+   ],
+   "fourth_pct": 16.9,
+   "rank_points_a_game": 16.2
+  },
+  "tokujou_human": {
+   "seat_games": 3237,
+   "places": [
+    737,
+    782,
+    821,
+    897
+   ],
+   "fourth_pct": 27.7,
+   "rank_points_a_game": -29.8
+  },
+  "above_the_table": {
+   "you": 31.0,
+   "luckyj": 46.0
+  },
+  "luckyj_in_your_seat": 19.9
+ },
+ "climb": [
+  {
+   "pace": 5,
+   "games_per_1000": 200,
+   "ahead_after_50_pct": 59.0,
+   "ahead_after_100_pct": 63.0,
+   "ahead_after_200_pct": 68.0
+  },
+  {
+   "pace": 11,
+   "games_per_1000": 91,
+   "ahead_after_50_pct": 70.0,
+   "ahead_after_100_pct": 77.0,
+   "ahead_after_200_pct": 85.0
+  },
+  {
+   "pace": 17,
+   "games_per_1000": 59,
+   "ahead_after_50_pct": 79.0,
+   "ahead_after_100_pct": 87.0,
+   "ahead_after_200_pct": 95.0
+  },
+  {
+   "pace": 20,
+   "games_per_1000": 50,
+   "ahead_after_50_pct": 83.0,
+   "ahead_after_100_pct": 91.0,
+   "ahead_after_200_pct": 97.0
+  }
+ ],
+ "edges": {
+  "you": {
+   "win": {
+    "points": 1418,
+    "rank_points": 11.8,
+    "se": 971
+   },
+   "deal_ins": {
+    "points": 1947,
+    "rank_points": 16.2,
+    "se": 556
+   },
+   "tsumo_paid": {
+    "points": 245,
+    "rank_points": 2.0,
+    "se": 326
+   },
+   "other": {
+    "points": -210,
+    "rank_points": -1.7,
+    "se": 195
+   },
+   "net": {
+    "points": 3400,
+    "rank_points": 28.2,
+    "se": 1217
+   }
+  },
+  "luckyj": {
+   "win": {
+    "points": 2448,
+    "rank_points": 20.3,
+    "se": 419
+   },
+   "deal_ins": {
+    "points": 2440,
+    "rank_points": 20.3,
+    "se": 251
+   },
+   "tsumo_paid": {
+    "points": 311,
+    "rank_points": 2.6,
+    "se": 157
+   },
+   "other": {
+    "points": -138,
+    "rank_points": -1.1,
+    "se": 82
+   },
+   "net": {
+    "points": 5061,
+    "rank_points": 42.0,
+    "se": 531
+   }
+  },
+  "gap": {
+   "win": {
+    "points": 1030,
+    "rank_points": 8.5
+   },
+   "deal_ins": {
+    "points": 493,
+    "rank_points": 4.1
+   },
+   "tsumo_paid": {
+    "points": 66,
+    "rank_points": 0.6
+   },
+   "other": {
+    "points": 72,
+    "rank_points": 0.6
+   },
+   "net": {
+    "points": 1661,
+    "rank_points": 13.8
+   }
+  }
+ },
+ "live_tiles": {
+  "you": {
+   "seat_games": 223,
+   "not_tenpai_at_a_riichi": {
+    "throws_a_game": 18.21,
+    "live_pct": 27.9,
+    "live": {
+     "throws": 1132,
+     "a_game": 5.08,
+     "deal_ins": 41,
+     "deal_in_pct": 3.62,
+     "points_a_throw": 248,
+     "points_a_game": 1257
+    }
+   },
+   "tenpai_at_a_riichi_live": {
+    "throws": 430,
+    "a_game": 1.93,
+    "deal_ins": 37,
+    "deal_in_pct": 8.6,
+    "points_a_throw": 511,
+    "points_a_game": 986
+   },
+   "not_tenpai_at_two_calls": {
+    "throws": 2306,
+    "a_game": 10.34,
+    "deal_ins": 25,
+    "deal_in_pct": 1.08,
+    "points_a_throw": 42,
+    "points_a_game": 431
+   }
+  },
+  "jade_human": {
+   "seat_games": 669,
+   "not_tenpai_at_a_riichi": {
+    "throws_a_game": 17.99,
+    "live_pct": 35.2,
+    "live": {
+     "throws": 4241,
+     "a_game": 6.34,
+     "deal_ins": 199,
+     "deal_in_pct": 4.69,
+     "points_a_throw": 318,
+     "points_a_game": 2014
+    }
+   },
+   "tenpai_at_a_riichi_live": {
+    "throws": 1233,
+    "a_game": 1.84,
+    "deal_ins": 113,
+    "deal_in_pct": 9.16,
+    "points_a_throw": 583,
+    "points_a_game": 1074
+   },
+   "not_tenpai_at_two_calls": {
+    "throws": 7417,
+    "a_game": 11.09,
+    "deal_ins": 139,
+    "deal_in_pct": 1.87,
+    "points_a_throw": 80,
+    "points_a_game": 887
+   }
+  },
+  "luckyj": {
+   "seat_games": 1079,
+   "not_tenpai_at_a_riichi": {
+    "throws_a_game": 16.64,
+    "live_pct": 27.4,
+    "live": {
+     "throws": 4923,
+     "a_game": 4.56,
+     "deal_ins": 137,
+     "deal_in_pct": 2.78,
+     "points_a_throw": 166,
+     "points_a_game": 756
+    }
+   },
+   "tenpai_at_a_riichi_live": {
+    "throws": 2256,
+    "a_game": 2.09,
+    "deal_ins": 204,
+    "deal_in_pct": 9.04,
+    "points_a_throw": 555,
+    "points_a_game": 1161
+   },
+   "not_tenpai_at_two_calls": {
+    "throws": 11518,
+    "a_game": 10.67,
+    "deal_ins": 136,
+    "deal_in_pct": 1.18,
+    "points_a_throw": 45,
+    "points_a_game": 479
+   }
+  },
+  "tokujou_human": {
+   "seat_games": 3237,
+   "not_tenpai_at_a_riichi": {
+    "throws_a_game": 17.34,
+    "live_pct": 34.0,
+    "live": {
+     "throws": 19105,
+     "a_game": 5.9,
+     "deal_ins": 924,
+     "deal_in_pct": 4.84,
+     "points_a_throw": 309,
+     "points_a_game": 1822
+    }
+   },
+   "tenpai_at_a_riichi_live": {
+    "throws": 6135,
+    "a_game": 1.9,
+    "deal_ins": 599,
+    "deal_in_pct": 9.76,
+    "points_a_throw": 665,
+    "points_a_game": 1260
+   },
+   "not_tenpai_at_two_calls": {
+    "throws": 36445,
+    "a_game": 11.26,
+    "deal_ins": 724,
+    "deal_in_pct": 1.99,
+    "points_a_throw": 89,
+    "points_a_game": 1006
+   }
+  },
+  "gap_to_luckyj": {
+   "points_a_game": 501,
+   "rank_points_a_game": 4.2,
+   "z_deal_in_rate": 1.5
+  }
+ },
+ "mortal_marker": {
+  "not_tenpai": {
+   "disliked": {
+    "throws": 4772,
+    "a_game": 21.4,
+    "deal_ins": 43,
+    "deal_in_pct": 0.9,
+    "points": 250300,
+    "points_a_throw": 52.5
+   },
+   "accepted": {
+    "throws": 19017,
+    "a_game": 85.28,
+    "deal_ins": 64,
+    "deal_in_pct": 0.34,
+    "points": 328500,
+    "points_a_throw": 17.3
+   }
+  },
+  "live_at_a_riichi": {
+   "disliked": {
+    "throws": 367,
+    "a_game": 1.65,
+    "deal_ins": 17,
+    "deal_in_pct": 4.63,
+    "points": 124700,
+    "points_a_throw": 339.8
+   },
+   "accepted": {
+    "throws": 765,
+    "a_game": 3.43,
+    "deal_ins": 24,
+    "deal_in_pct": 3.14,
+    "points": 155700,
+    "points_a_throw": 203.5
+   }
+  },
+  "at_the_accepted_cost": {
+   "points_a_game": 753,
+   "rank_points_a_game": 6.2
+  }
+ },
+ "levers": {
+  "games": 223,
+  "deal_ins": 248,
+  "a_game": 1.11,
+  "points_a_game": 6072,
+  "fourths": 44,
+  "classes": {
+   "cut_disliked": {
+    "deal_ins": 50,
+    "a_game": 0.22,
+    "points": 290200,
+    "points_a_game": 1301,
+    "average": 5804,
+    "fourths_handed_back": 38,
+    "rank_points_a_game_handed_back": 12.1
+   },
+   "cut_accepted": {
+    "deal_ins": 138,
+    "a_game": 0.62,
+    "points": 710200,
+    "points_a_game": 3185,
+    "average": 5146,
+    "fourths_handed_back": 28,
+    "rank_points_a_game_handed_back": 28.4
+   },
+   "riichi_disliked": {
+    "deal_ins": 13,
+    "a_game": 0.06,
+    "points": 92100,
+    "points_a_game": 413,
+    "average": 7085,
+    "fourths_handed_back": 43,
+    "rank_points_a_game_handed_back": 3.0
+   },
+   "riichi_accepted": {
+    "deal_ins": 47,
+    "a_game": 0.21,
+    "points": 261600,
+    "points_a_game": 1173,
+    "average": 5566,
+    "fourths_handed_back": 38,
+    "rank_points_a_game_handed_back": 11.4
+   }
+  }
+ },
+ "cuts": {
+  "since_the_guide": {
+   "count": 50,
+   "points": 290200,
+   "not_tenpai": 43,
+   "one_shanten": 18,
+   "two_shanten_or_worse": 25,
+   "mortal_as_close_or_closer": 42,
+   "mortal_gave_up_distance": 8,
+   "mortal_tile_genbutsu": 18,
+   "held_a_genbutsu": 37,
+   "mortal_tile_deals_in": 3,
+   "into": {
+    "riichi": {
+     "count": 19,
+     "points": 140700
+    },
+    "caller": {
+     "count": 25,
+     "points": 109700
+    },
+    "dama": {
+     "count": 6,
+     "points": 39800
+    }
+   },
+   "late_not_tenpai": {
+    "from_turn": 15,
+    "count": 8,
+    "points": 57600
+   },
+   "average_turn": 10.6
+  },
+  "new_games": {
+   "count": 10,
+   "points": 65100,
+   "not_tenpai": 8,
+   "one_shanten": 5,
+   "two_shanten_or_worse": 3,
+   "mortal_as_close_or_closer": 7,
+   "mortal_gave_up_distance": 3,
+   "mortal_tile_genbutsu": 4,
+   "held_a_genbutsu": 8,
+   "mortal_tile_deals_in": 1,
+   "into": {
+    "riichi": {
+     "count": 5,
+     "points": 37700
+    },
+    "caller": {
+     "count": 4,
+     "points": 19400
+    },
+    "dama": {
+     "count": 1,
+     "points": 8000
+    }
+   },
+   "late_not_tenpai": {
+    "from_turn": 15,
+    "count": 3,
+    "points": 20800
+   },
+   "average_turn": 12.1
+  },
+  "list": [
+   {
+    "game": "260924-0e508d5e-4b31-49ac-b77d-dab1c05ab4ae",
+    "round": "East 4-0",
+    "turn": 7,
+    "tile": "3p",
+    "mortal": 0.043,
+    "mortal_tile": "8p",
+    "mortal_tile_pct": 95.0,
+    "paid": 5200,
+    "value": "40 fu 3 han, 5,200",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "260924-f741b6f0-9139-47d4-a65a-dd552b52ff81",
+    "round": "South 4-1",
+    "turn": 13,
+    "tile": "S",
+    "mortal": 0.118,
+    "mortal_tile": "9m",
+    "mortal_tile_pct": 82.8,
+    "paid": 6100,
+    "value": "30 fu 3 han, 5,800",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 0,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "260924-ca82b01d-96b9-45b0-a388-5f6bd51d9bb8",
+    "round": "South 2-0",
+    "turn": 7,
+    "tile": "9m",
+    "mortal": 0.005,
+    "mortal_tile": "2p",
+    "mortal_tile_pct": 93.7,
+    "paid": 5200,
+    "value": "40 fu 3 han, 5,200",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 3,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "260925-0d8e7a00-4e7b-4249-85fc-87b371176691",
+    "round": "East 2-0",
+    "turn": 10,
+    "tile": "7p",
+    "mortal": 0.002,
+    "mortal_tile": "6p",
+    "mortal_tile_pct": 97.3,
+    "paid": 1000,
+    "value": "30 fu 1 han, 1,000",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "260927-33c90769-b176-4d84-887e-a0570b689191",
+    "round": "South 1-0",
+    "turn": 12,
+    "tile": "9m",
+    "mortal": 0.002,
+    "mortal_tile": "2s",
+    "mortal_tile_pct": 80.3,
+    "paid": 4800,
+    "value": "50 fu 2 han, 4,800",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 5,
+    "shanten_mortal": 5,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "260928-7c1ee667-5f64-4163-9a24-64e5b7e733ba",
+    "round": "East 4-2",
+    "turn": 12,
+    "tile": "7p",
+    "mortal": 0.021,
+    "mortal_tile": "2m",
+    "mortal_tile_pct": 96.8,
+    "paid": 18600,
+    "value": "haneman, 18,000",
+    "into": "dama",
+    "a_riichi_was_out": false,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "260929-8e871836-9167-4ae8-863f-02e3f70620f5",
+    "round": "East 1-0",
+    "turn": 4,
+    "tile": "E",
+    "mortal": 0.013,
+    "mortal_tile": "7s",
+    "mortal_tile_pct": 66.8,
+    "paid": 5200,
+    "value": "40 fu 3 han, 5,200",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 3,
+    "shanten_mortal": 3,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "260930-af991ffc-4efc-4062-918a-8f7457002c0f",
+    "round": "East 1-0",
+    "turn": 5,
+    "tile": "1m",
+    "mortal": 0.005,
+    "mortal_tile": "8s",
+    "mortal_tile_pct": 98.7,
+    "paid": 12000,
+    "value": "haneman, 12,000",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 1,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "260930-3f714fda-6ddb-4a09-9c86-dd6652f9318b",
+    "round": "East 4-0",
+    "turn": 15,
+    "tile": "6s",
+    "mortal": 0.006,
+    "mortal_tile": "9m",
+    "mortal_tile_pct": 94.1,
+    "paid": 8000,
+    "value": "mangan, 8,000",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261003-5792c141-83fb-43cf-bb64-bfc0b195f357",
+    "round": "South 3-0",
+    "turn": 10,
+    "tile": "8s",
+    "mortal": 0.242,
+    "mortal_tile": "W",
+    "mortal_tile_pct": 69.1,
+    "paid": 2900,
+    "value": "30 fu 2 han, 2,900",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261003-8d7d08a9-c956-4577-8c9b-06dc210706bc",
+    "round": "East 1-0",
+    "turn": 5,
+    "tile": "1m",
+    "mortal": 0.106,
+    "mortal_tile": "6p",
+    "mortal_tile_pct": 38.9,
+    "paid": 2600,
+    "value": "40 fu 2 han, 2,600",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 3,
+    "shanten_mortal": 3,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261003-8d7d08a9-c956-4577-8c9b-06dc210706bc",
+    "round": "South 4-0",
+    "turn": 10,
+    "tile": "3m",
+    "mortal": 0.22,
+    "mortal_tile": "N",
+    "mortal_tile_pct": 75.4,
+    "paid": 1000,
+    "value": "30 fu 1 han, 1,000",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261004-3d4685b3-96b5-421f-9f25-7f7459b95553",
+    "round": "South 1-1",
+    "turn": 8,
+    "tile": "9m",
+    "mortal": 0.051,
+    "mortal_tile": "2s",
+    "mortal_tile_pct": 92.3,
+    "paid": 12300,
+    "value": "haneman, 12,000",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261006-6ecce496-8d0c-4666-9cd8-5ccbdb0ff30b",
+    "round": "East 4-1",
+    "turn": 16,
+    "tile": "C",
+    "mortal": 0.003,
+    "mortal_tile": "2s",
+    "mortal_tile_pct": 99.5,
+    "paid": 2900,
+    "value": "40 fu 2 han, 2,600",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": true
+   },
+   {
+    "game": "261007-c265c423-64d7-4171-ae24-ea000701511e",
+    "round": "South 4-0",
+    "turn": 12,
+    "tile": "P",
+    "mortal": 0.124,
+    "mortal_tile": "7s",
+    "mortal_tile_pct": 52.3,
+    "paid": 12000,
+    "value": "mangan, 12,000",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261008-6c28a9cb-7fd0-48ff-a4f0-18b3bcf51dde",
+    "round": "South 2-0",
+    "turn": 15,
+    "tile": "7s",
+    "mortal": 0.0,
+    "mortal_tile": "7p",
+    "mortal_tile_pct": 81.8,
+    "paid": 11600,
+    "value": "30 fu 4 han, 11,600",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261008-d9f44c77-d076-4cd7-bc30-5c0495d3624d",
+    "round": "East 3-0",
+    "turn": 9,
+    "tile": "1m",
+    "mortal": 0.004,
+    "mortal_tile": "1s",
+    "mortal_tile_pct": 46.4,
+    "paid": 2600,
+    "value": "40 fu 2 han, 2,600",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261010-201c40e5-64e7-42a9-b924-a127a6d2059f",
+    "round": "East 3-1",
+    "turn": 4,
+    "tile": "4m",
+    "mortal": 0.03,
+    "mortal_tile": "8p",
+    "mortal_tile_pct": 72.3,
+    "paid": 2300,
+    "value": "30 fu 2 han, 2,000",
+    "into": "dama",
+    "a_riichi_was_out": false,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261010-6ab8e503-8009-4782-a055-20690a2e2cd9",
+    "round": "South 4-0",
+    "turn": 5,
+    "tile": "2p",
+    "mortal": 0.051,
+    "mortal_tile": "C",
+    "mortal_tile_pct": 81.7,
+    "paid": 2900,
+    "value": "30 fu 2 han, 2,900",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 3,
+    "shanten_mortal": 3,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261010-165003cb-bf9c-49f9-ae39-ac95a879ae5c",
+    "round": "South 3-2",
+    "turn": 9,
+    "tile": "6p",
+    "mortal": 0.002,
+    "mortal_tile": "9m",
+    "mortal_tile_pct": 91.8,
+    "paid": 5800,
+    "value": "40 fu 3 han, 5,200",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261010-6323aa6f-7123-4acc-8b77-f1e3da50b6e8",
+    "round": "East 2-0",
+    "turn": 6,
+    "tile": "P",
+    "mortal": 0.03,
+    "mortal_tile": "C",
+    "mortal_tile_pct": 88.3,
+    "paid": 6400,
+    "value": "25 fu 4 han, 6,400",
+    "into": "dama",
+    "a_riichi_was_out": false,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261010-6323aa6f-7123-4acc-8b77-f1e3da50b6e8",
+    "round": "South 1-0",
+    "turn": 19,
+    "tile": "N",
+    "mortal": 0.032,
+    "mortal_tile": "7s",
+    "mortal_tile_pct": 96.5,
+    "paid": 2000,
+    "value": "30 fu 2 han, 2,000",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 2,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261011-10d214ef-4cc3-414b-ab98-38e19ba751e2",
+    "round": "East 3-0",
+    "turn": 11,
+    "tile": "8p",
+    "mortal": 0.006,
+    "mortal_tile": "7m",
+    "mortal_tile_pct": 98.9,
+    "paid": 12000,
+    "value": "haneman, 12,000",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 3,
+    "shanten_mortal": 3,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261012-4c37163a-b276-4c61-8ab8-a593614a1448",
+    "round": "South 4-0",
+    "turn": 10,
+    "tile": "3s",
+    "mortal": 0.044,
+    "mortal_tile": "riichi",
+    "mortal_tile_pct": 95.5,
+    "paid": 3900,
+    "value": "30 fu 3 han, 3,900",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 0,
+    "shanten_mortal": 0,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261012-1d8ad962-8495-4fa7-84e7-6033ef79f82c",
+    "round": "South 2-3",
+    "turn": 11,
+    "tile": "E",
+    "mortal": 0.007,
+    "mortal_tile": "2s",
+    "mortal_tile_pct": 98.7,
+    "paid": 2500,
+    "value": "25 fu 2 han, 1,600",
+    "into": "dama",
+    "a_riichi_was_out": false,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261017-eaa74cb5-6032-489b-9e93-20463ccd0f15",
+    "round": "East 3-2",
+    "turn": 12,
+    "tile": "1m",
+    "mortal": 0.015,
+    "mortal_tile": "5s",
+    "mortal_tile_pct": 73.3,
+    "paid": 5800,
+    "value": "40 fu 3 han, 5,200",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261017-c062d7a5-938e-4e8f-8061-ca646da43a03",
+    "round": "South 3-1",
+    "turn": 15,
+    "tile": "6m",
+    "mortal": 0.0,
+    "mortal_tile": "1p",
+    "mortal_tile_pct": 99.6,
+    "paid": 12300,
+    "value": "mangan, 12,000",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261018-65bbd1fc-5557-4dc2-a5ce-3baedec8a46b",
+    "round": "South 2-1",
+    "turn": 11,
+    "tile": "6s",
+    "mortal": 0.002,
+    "mortal_tile": "7s",
+    "mortal_tile_pct": 92.8,
+    "paid": 8000,
+    "value": "40 fu 3 han, 7,700",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 0,
+    "shanten_mortal": 0,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261018-77b1829c-b251-4e91-be93-4984e09fd1dd",
+    "round": "East 2-0",
+    "turn": 11,
+    "tile": "3s",
+    "mortal": 0.064,
+    "mortal_tile": "6m",
+    "mortal_tile_pct": 64.6,
+    "paid": 3900,
+    "value": "40 fu 2 han, 3,900",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 4,
+    "shanten_mortal": 3,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261019-8d6a8c78-a8d7-4ec2-ba44-5458a69cd739",
+    "round": "East 2-1",
+    "turn": 6,
+    "tile": "8m",
+    "mortal": 0.231,
+    "mortal_tile": "2m",
+    "mortal_tile_pct": 76.7,
+    "paid": 2900,
+    "value": "40 fu 2 han, 2,600",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 1,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261021-45cc4dec-31a6-42c6-97df-293d8592db81",
+    "round": "East 2-3",
+    "turn": 11,
+    "tile": "3m",
+    "mortal": 0.0,
+    "mortal_tile": "N",
+    "mortal_tile_pct": 98.9,
+    "paid": 6100,
+    "value": "40 fu 3 han, 5,200",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261022-1eed558c-b273-4ef6-805f-42be158be297",
+    "round": "East 4-0",
+    "turn": 13,
+    "tile": "6s",
+    "mortal": 0.0,
+    "mortal_tile": "3p",
+    "mortal_tile_pct": 99.5,
+    "paid": 1000,
+    "value": "30 fu 1 han, 1,000",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261022-fd2b87ad-ac61-41fd-b9d5-5c421ffb029e",
+    "round": "East 2-1",
+    "turn": 6,
+    "tile": "4m",
+    "mortal": 0.148,
+    "mortal_tile": "7m",
+    "mortal_tile_pct": 81.7,
+    "paid": 2300,
+    "value": "30 fu 2 han, 2,000",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": true
+   },
+   {
+    "game": "261022-88fceb37-c1c9-47c8-9ebd-1e8055a78685",
+    "round": "South 1-1",
+    "turn": 12,
+    "tile": "3p",
+    "mortal": 0.135,
+    "mortal_tile": "2m",
+    "mortal_tile_pct": 86.0,
+    "paid": 4200,
+    "value": "30 fu 3 han, 3,900",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 0,
+    "shanten_mortal": 0,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261023-3faea795-ec09-4ac3-936e-eb4926dd5477",
+    "round": "South 3-0",
+    "turn": 13,
+    "tile": "5p",
+    "mortal": 0.241,
+    "mortal_tile": "4m",
+    "mortal_tile_pct": 74.2,
+    "paid": 2000,
+    "value": "30 fu 2 han, 2,000",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 0,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261023-0dd4b0d4-25f1-464d-9735-b54cb785362b",
+    "round": "South 2-1",
+    "turn": 13,
+    "tile": "5s",
+    "mortal": 0.002,
+    "mortal_tile": "3s",
+    "mortal_tile_pct": 98.4,
+    "paid": 8000,
+    "value": "30 fu 4 han, 7,700",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261024-2e5edd2b-50b7-4401-bdaf-45caf92ea428",
+    "round": "East 3-0",
+    "turn": 9,
+    "tile": "2p",
+    "mortal": 0.012,
+    "mortal_tile": "3m",
+    "mortal_tile_pct": 94.8,
+    "paid": 2900,
+    "value": "30 fu 2 han, 2,900",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 3,
+    "shanten_mortal": 4,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261024-a1892da4-29e8-4ae6-bd2d-7a3a16e0b878",
+    "round": "South 4-0",
+    "turn": 8,
+    "tile": "7s",
+    "mortal": 0.007,
+    "mortal_tile": "9m",
+    "mortal_tile_pct": 98.4,
+    "paid": 8000,
+    "value": "mangan, 8,000",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261024-a2a0e15e-65cd-43c3-9053-c8d2b941ac0e",
+    "round": "East 1-0",
+    "turn": 13,
+    "tile": "1p",
+    "mortal": 0.005,
+    "mortal_tile": "2m",
+    "mortal_tile_pct": 98.8,
+    "paid": 3900,
+    "value": "30 fu 3 han, 3,900",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261024-c177dc72-a344-4279-8b9a-447d6009ebdb",
+    "round": "South 3-0",
+    "turn": 13,
+    "tile": "7m",
+    "mortal": 0.215,
+    "mortal_tile": "3s",
+    "mortal_tile_pct": 46.9,
+    "paid": 2000,
+    "value": "40 fu 1 han, 2,000",
+    "into": "dama",
+    "a_riichi_was_out": false,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261024-118ce83e-b558-46d2-9f4e-c065f5aa7ac5",
+    "round": "South 2-2",
+    "turn": 15,
+    "tile": "8s",
+    "mortal": 0.003,
+    "mortal_tile": "5pr",
+    "mortal_tile_pct": 97.9,
+    "paid": 4500,
+    "value": "30 fu 3 han, 3,900",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 1,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261025-cdcc1061-cbd2-44e8-b473-e65edc9a682c",
+    "round": "East 2-0",
+    "turn": 11,
+    "tile": "2p",
+    "mortal": 0.014,
+    "mortal_tile": "5p",
+    "mortal_tile_pct": 91.1,
+    "paid": 7700,
+    "value": "30 fu 4 han, 7,700",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 2,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": true
+   },
+   {
+    "game": "261025-a1fd5d06-884e-4f41-afac-af027936f2dc",
+    "round": "South 4-0",
+    "turn": 11,
+    "tile": "4m",
+    "mortal": 0.015,
+    "mortal_tile": "6s",
+    "mortal_tile_pct": 95.9,
+    "paid": 8000,
+    "value": "mangan, 8,000",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 0,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261026-fe735c5e-4625-4620-876a-ce6b1a73ff82",
+    "round": "South 2-0",
+    "turn": 16,
+    "tile": "2s",
+    "mortal": 0.056,
+    "mortal_tile": "5mr",
+    "mortal_tile_pct": 73.8,
+    "paid": 7700,
+    "value": "30 fu 4 han, 7,700",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 0,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261027-98bda76e-0044-4e42-a95d-7df26624d497",
+    "round": "South 1-1",
+    "turn": 7,
+    "tile": "4p",
+    "mortal": 0.233,
+    "mortal_tile": "S",
+    "mortal_tile_pct": 74.3,
+    "paid": 8000,
+    "value": "30 fu 4 han, 7,700",
+    "into": "dama",
+    "a_riichi_was_out": false,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261027-28f3770c-0dac-45a1-8b0c-6803af0a7ddf",
+    "round": "East 3-2",
+    "turn": 18,
+    "tile": "3m",
+    "mortal": 0.001,
+    "mortal_tile": "5m",
+    "mortal_tile_pct": 88.4,
+    "paid": 8600,
+    "value": "mangan, 8,000",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261029-ea85ea87-bf8d-49e4-af7e-cb9f83e9cc2a",
+    "round": "South 4-0",
+    "turn": 17,
+    "tile": "5sr",
+    "mortal": 0.025,
+    "mortal_tile": "4m",
+    "mortal_tile_pct": 89.7,
+    "paid": 7700,
+    "value": "30 fu 4 han, 7,700",
+    "into": "caller",
+    "a_riichi_was_out": true,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261103-2a236e21-57bd-4ed3-994a-b0c9888cfc32",
+    "round": "South 3-3",
+    "turn": 4,
+    "tile": "7p",
+    "mortal": 0.001,
+    "mortal_tile": "F",
+    "mortal_tile_pct": 59.8,
+    "paid": 8900,
+    "value": "mangan, 8,000",
+    "into": "riichi",
+    "a_riichi_was_out": true,
+    "shanten": 3,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261107-5c435428-ea0f-43d5-90da-ed09da830744",
+    "round": "South 4-0",
+    "turn": 13,
+    "tile": "N",
+    "mortal": 0.246,
+    "mortal_tile": "S",
+    "mortal_tile_pct": 74.6,
+    "paid": 2000,
+    "value": "30 fu 2 han, 2,000",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 1,
+    "shanten_mortal": 1,
+    "mortal_tile_genbutsu": false,
+    "held_a_genbutsu": false,
+    "mortal_tile_deals_in": false
+   },
+   {
+    "game": "261110-99398e89-89bb-4f67-ab60-4a724183ed8b",
+    "round": "East 2-0",
+    "turn": 9,
+    "tile": "9p",
+    "mortal": 0.001,
+    "mortal_tile": "2p",
+    "mortal_tile_pct": 96.8,
+    "paid": 2000,
+    "value": "30 fu 2 han, 2,000",
+    "into": "caller",
+    "a_riichi_was_out": false,
+    "shanten": 2,
+    "shanten_mortal": 2,
+    "mortal_tile_genbutsu": true,
+    "held_a_genbutsu": true,
+    "mortal_tile_deals_in": false
+   }
+  ]
+ }
+}
