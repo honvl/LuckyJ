@@ -13,8 +13,9 @@ Vercel with the site.
 - The bar in the header shows the share of this month's spending cap used, in percent.
 - Chapters the coach packs (`chapter-<NN>-<slug>.tar.gz`) list with a Public/Private switch;
   public is the default.
-- Login: Google, Discord or LINE, each enabled by its keys in the environment; sessions are
-  signed cookies. `thread.py link <player> <email>` decides which thread a login opens.
+- Login: Google or Discord, each enabled by its keys in the environment; sessions are signed
+  cookies. `thread.py link <player> <email>` decides which thread a login opens, so only an email
+  the provider has verified is accepted (`lib/verified.mjs`).
 
 ## Run locally
 
@@ -31,9 +32,10 @@ NEXTAUTH_URL=http://localhost:3100
 NEXTAUTH_SECRET=<openssl rand -base64 32>
 DEV_LOGIN=1                      # local only: sign in as a linked email, no password
 SITE_URL=http://localhost:8765   # where replay.html is served (empty when the site is the same origin)
-GOOGLE_CLIENT_ID=... GOOGLE_CLIENT_SECRET=...      # optional, one pair per provider
-DISCORD_CLIENT_ID=... DISCORD_CLIENT_SECRET=...
-LINE_CLIENT_ID=... LINE_CLIENT_SECRET=...
+GOOGLE_CLIENT_ID=...            # optional, one pair per provider
+GOOGLE_CLIENT_SECRET=...
+DISCORD_CLIENT_ID=...
+DISCORD_CLIENT_SECRET=...
 ```
 
 The API key is read from `ANTHROPIC_API_KEY` or `service/.state/api_key`.

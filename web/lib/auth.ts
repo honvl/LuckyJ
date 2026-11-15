@@ -1,4 +1,4 @@
-// Login. Players sign in with Google, Discord or LINE (whichever have keys in the environment);
+// Login. Players sign in with Google or Discord (whichever have keys in the environment);
 // the session lives in a signed cookie, so login needs no database. Which player and thread a
 // login belongs to comes from the emails `thread.py link` records.
 import type { NextAuthOptions } from "next-auth";
@@ -6,8 +6,8 @@ import { getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
-import LineProvider from "next-auth/providers/line";
 import { threadForEmail } from "./server";
+import { emailIsVerified } from "./verified.mjs";
 
 const providers: NextAuthOptions["providers"] = [];
 const env = process.env;
@@ -17,9 +17,6 @@ if (env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET) {
 }
 if (env.DISCORD_CLIENT_ID && env.DISCORD_CLIENT_SECRET) {
   providers.push(DiscordProvider({ clientId: env.DISCORD_CLIENT_ID, clientSecret: env.DISCORD_CLIENT_SECRET }));
-}
-if (env.LINE_CLIENT_ID && env.LINE_CLIENT_SECRET) {
-  providers.push(LineProvider({ clientId: env.LINE_CLIENT_ID, clientSecret: env.LINE_CLIENT_SECRET }));
 }
 
 // Local testing only: sign in as any linked email without a password. Never in production.
@@ -42,6 +39,10 @@ export const authOptions: NextAuthOptions = {
   providers,
   session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
   pages: { signIn: "/login" },
+  callbacks: {
+    // The email decides whose thread opens, so it must be one the provider verified.
+    signIn: ({ account, profile }) => emailIsVerified(account?.provider, profile as Record<string, unknown> | undefined),
+  },
 };
 
 /** The signed-in player's thread, or null (signed out, or no thread linked to this login). */
