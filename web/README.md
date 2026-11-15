@@ -55,9 +55,26 @@ vercel deploy --prod
 Vercel environment variables (`vercel env ls`): the API key, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`,
 and the Google and Discord keys. The test login is off in production.
 
+## Billing
+
+Stripe Managed Payments (Stripe is merchant of record: tax, fraud, disputes, receipts from Link).
+One product, tax code `txcd_10105001` (AI as a service, cloud, personal use), $20 a month plus tax.
+
+- A login without a thread sees the sign-up form (Mahjong Soul or Tenhou, in-game name, publish
+  by default) and goes to Stripe Checkout with `managed_payments.enabled`.
+- `/api/billing/webhook` records the subscription (`subscriptions` table). On each renewal
+  (`invoice.paid`, `subscription_cycle`) it sets the thread's cap to spent + `MONTHLY_ALLOWANCE_CENTS`
+  (1500), so an unused month does not carry over. Messages need an active subscription
+  (`active`, `trialing`, `past_due`) or a free player (`thread.py comp`).
+- `thread.py pending` lists paying players still waiting; fetch their games, then
+  `thread.py new <player> --games <dir> --email <email>` starts the thread with a $15 cap.
+- Players cancel through Link or the customer portal (Manage subscription).
+- `scripts/webhook-smoke.mjs` sends signed test events to a running page and checks the database.
+
+Settings: `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`, `STRIPE_WEBHOOK_SECRET`, `MONTHLY_ALLOWANCE_CENTS`.
+
 ## Not done yet
 
-Billing (Lemon Squeezy or Paddle): creating a player's thread when they subscribe and raising its
-cap once a month; until then `thread.py new` and `link` add players by hand. Chapter previews and
+Fetching a new player's games automatically (today: by hand, after `thread.py pending`). Chapter previews and
 publishing to the site come after that. Vercel Hobby does not allow commercial use: move to Pro
 before charging.

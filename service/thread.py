@@ -291,10 +291,16 @@ def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     names = sorted({row.get("hero_name") for row in index if row.get("hero_name")})
     player["threads"].append({"session_id": session.id, "games_file_id": games_file,
                               "downloaded": [], "intro": intro(args.player, names)})
+    if args.email:
+        emails = player.setdefault("emails", [])
+        if args.email.strip().lower() not in emails:
+            emails.append(args.email.strip().lower())
     save_state(state)
     if db_sync(state):
         print("  recorded in the site's database")
     print(f"thread {session.id} with a ${args.budget:.2f} cap")
+    if args.email:
+        print(f"  {args.email} opens it on the site")
     print(f"talk to it: .venv/bin/python service/thread.py chat {args.player}")
 
 
@@ -440,6 +446,40 @@ def cmd_link(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     print(f"{email} opens {args.player}'s latest thread")
 
 
+def _db():
+    url = database_url()
+    if not url:
+        sys.exit(f"no database: set DATABASE_URL or write it to {DB_URL_FILE.relative_to(ROOT)}")
+    import psycopg
+    return psycopg.connect(url, autocommit=True)
+
+
+def cmd_pending(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
+    """Paying players whose games still need fetching and whose thread does not exist yet."""
+    with _db() as conn:
+        rows = conn.execute(
+            "select s.email, s.platform, s.game_name, s.publish, s.status, s.created_at"
+            " from subscriptions s left join logins l on l.email = s.email"
+            " where l.email is null and s.status in ('active', 'trialing', 'past_due')"
+            " order by s.created_at").fetchall()
+    if not rows:
+        print("nobody is waiting")
+    for email, platform, name, publish, status, created in rows:
+        print(f"{created:%Y-%m-%d %H:%M}  {platform:<8} {name!s:<24} {email}  "
+              f"{'public' if publish else 'private'}  {status}")
+    if rows:
+        print("\nFetch their games, then: thread.py new <player> --games <dir> --email <email>")
+
+
+def cmd_comp(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
+    """Let a player use the tutor without a subscription (or take that away with --off)."""
+    with _db() as conn:
+        n = conn.execute("update players set comp = %s where name = %s", (not args.off, args.player)).rowcount
+    if not n:
+        sys.exit(f"no player {args.player} in the database; run db-sync")
+    print(f"{args.player} {'needs a subscription again' if args.off else 'uses the tutor free'}")
+
+
 def cmd_db_sync(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     """Create the site's tables and copy every player into them."""
     if not db_sync(load_state()):
@@ -492,6 +532,7 @@ def main() -> None:
     p.add_argument("player")
     p.add_argument("--games", required=True, help="folder with the player's games and index.json")
     p.add_argument("--budget", type=float, default=DEFAULT_BUDGET_USD, help="spending cap in USD")
+    p.add_argument("--email", help="the login email that opens this thread on the site")
     p = sub.add_parser("chat", help="talk in a player's thread (the latest one by default)")
     p.add_argument("player")
     p.add_argument("--thread", help="a specific session id")
@@ -499,6 +540,10 @@ def main() -> None:
     p.add_argument("player")
     p.add_argument("email")
     sub.add_parser("db-sync", help="create the site's tables and copy every player into them")
+    sub.add_parser("pending", help="paying players still waiting for their thread")
+    p = sub.add_parser("comp", help="let a player use the tutor without paying")
+    p.add_argument("player")
+    p.add_argument("--off", action="store_true", help="require a subscription again")
     sub.add_parser("list", help="every thread with its status and spend")
     p = sub.add_parser("topup", help="let a thread spend this many more USD")
     p.add_argument("player")
@@ -507,7 +552,7 @@ def main() -> None:
     args = ap.parse_args()
 
     client = anthropic.Anthropic(api_key=api_key())
-    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "db-sync": cmd_db_sync, "list": cmd_list,
+    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "db-sync": cmd_db_sync, "pending": cmd_pending, "comp": cmd_comp, "list": cmd_list,
      "topup": cmd_topup}[args.cmd](client, args)
 
 

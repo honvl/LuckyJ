@@ -23,7 +23,7 @@ if (env.DISCORD_CLIENT_ID && env.DISCORD_CLIENT_SECRET) {
   );
 }
 
-// Local testing only: sign in as any linked email without a password. Never in production.
+// Local testing only: sign in as any email without a password. Never in production.
 export const devLogin = env.DEV_LOGIN === "1" && env.NODE_ENV !== "production";
 if (devLogin) {
   providers.push(
@@ -32,8 +32,9 @@ if (devLogin) {
       name: "Local test login",
       credentials: { email: { label: "Linked email", type: "email" } },
       async authorize(credentials) {
+        // Any address, so the sign-up path can be tried locally too.
         const email = credentials?.email?.trim().toLowerCase();
-        return email && (await threadForEmail(email)) ? { id: email, email } : null;
+        return email ? { id: email, email } : null;
       },
     }),
   );

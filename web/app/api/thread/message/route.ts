@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { currentThread } from "@/lib/auth";
+import { accessFor } from "@/lib/billing";
 import { anthropic } from "@/lib/server";
 import { takeIntro } from "@/lib/store";
 
@@ -8,6 +9,7 @@ const MAX_CHARS = 8000;
 export async function POST(request: Request) {
   const me = await currentThread();
   if (!me) return NextResponse.json({ error: "not signed in" }, { status: 401 });
+  if (!(await accessFor(me.email)).allowed) return NextResponse.json({ error: "subscription" }, { status: 402 });
   const body = await request.json().catch(() => null);
   const text = typeof body?.text === "string" ? body.text.trim() : "";
   if (!text) return NextResponse.json({ error: "empty message" }, { status: 400 });

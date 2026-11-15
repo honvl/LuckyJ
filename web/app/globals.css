@@ -150,6 +150,65 @@ a {
   color: var(--muted);
 }
 
+.login-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.subscribe {
+  display: grid;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.subscribe-price {
+  font: 600 18px var(--sans);
+  margin: 0;
+}
+
+.subscribe-platform {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 18px;
+  font: 15px var(--sans);
+}
+
+.subscribe-platform legend,
+.subscribe-field {
+  font: 14px var(--sans);
+  color: var(--ink-2);
+  margin-bottom: 6px;
+}
+
+.subscribe-platform label,
+.subscribe-check {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font: 15px var(--sans);
+}
+
+.subscribe-field {
+  display: grid;
+  gap: 4px;
+}
+
+.subscribe-field input {
+  font: 16px var(--sans);
+  color: var(--ink);
+  background: var(--plate);
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.subscribe-field .login-note {
+  margin: 0;
+}
+
 .login-error {
   color: var(--verm);
   margin: 0;
