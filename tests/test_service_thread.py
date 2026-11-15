@@ -42,6 +42,18 @@ class ServiceThreadTest(unittest.TestCase):
     def test_model_is_opus_5_5(self):
         self.assertIn('"id": "claude-opus-5-5"', CLIENT)
 
+    def test_chapter_archive_name_matches_the_client(self):
+        name = re.search(r"/mnt/session/outputs/(chapter-<NN>-<slug>\.tar\.gz)", SYSTEM)
+        self.assertIsNotNone(name, "the prompt names the chapter archive")
+        pattern = re.search(r're\.fullmatch\(r"(chapter-[^"]+)"', CLIENT).group(1)
+        self.assertRegex("chapter-52-riichi-rates.tar.gz", "^" + pattern + "$")
+
+    def test_intro_names_the_player(self):
+        import thread
+        text = thread.intro("Akira", ["akira_jp"])
+        self.assertIn("Akira", text)
+        self.assertIn("akira_jp", text)
+
     def test_tar_is_reproducible(self):
         import tempfile
         import thread
@@ -49,6 +61,7 @@ class ServiceThreadTest(unittest.TestCase):
             p = Path(d) / "a.json"
             p.write_text("{}")
             first = thread.tar_gz([("a.json", p)])
+            self.assertEqual(first[4:8], b"\0\0\0\0", "gzip header carries no timestamp")
             p.touch()
             self.assertEqual(thread.sha256(first), thread.sha256(thread.tar_gz([("a.json", p)])))
 

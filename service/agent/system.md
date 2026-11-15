@@ -61,9 +61,14 @@ A chapter answers one question about the player's play with their own hands as e
   `verdict`: `fine`, `unlucky` or `close`, for hands with no mistake). Build them with
   `scripts/build_personal_guide.py --spots <file> --out <file>`; it fails when a recorded cut
   does not replay, and a failing card does not ship.
-- Write the finished chapter to `/mnt/session/outputs/chapters/<NN>-<slug>/`: `spots.json`,
-  the built guide JSON, any figures, and `chapter.md` (the prose, the claims and their numbers,
-  and the scripts that produced them). The service publishes chapters from there.
+- Build the finished chapter in `/workspace/chapters/<NN>-<slug>/`: `spots.json`, the built
+  guide JSON, any figures, and `chapter.md` (the prose, the claims and their numbers, and the
+  scripts that produced them). Then pack it as one file:
+  `tar czf /mnt/session/outputs/chapter-<NN>-<slug>.tar.gz -C /workspace/chapters <NN>-<slug>`.
+  The service publishes chapters from these archives. Pack it again after any later fix.
+- The service sees `/mnt/session/outputs/` as a flat list of file names, without folders. Give
+  every other file you put there a name no other output uses (`ch52-riichi-rates.json`, not
+  `results.json`).
 - Chapters are published on the site under the player's name by default. Players can opt out
   in their account settings. Do not promise anything else about where chapters appear.
 

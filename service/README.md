@@ -31,10 +31,16 @@ policy in `~/Downloads/mortal_model_policy/`, and LuckyJ's logs in
 when the prompt or tools changed. New threads pick up the latest version; running threads keep
 theirs. The first thread compiles libriichi (a few minutes) and `chat` caches the wheel so later
 threads install it directly. Anything the agent writes to `/mnt/session/outputs/` is copied to
-`service/players/<player>/<thread>/` after each turn. IDs live in `service/.state/state.json`.
+`service/players/<player>/<thread>/` after each turn. The API lists outputs by bare file name
+(no folders), so the agent names them uniquely and packs each chapter as
+`chapter-<NN>-<slug>.tar.gz`, which `chat` unpacks into `chapters/<NN>-<slug>/`. IDs live in `service/.state/state.json`.
 Neither folder is committed.
 
 ## Cost
+
+First live run (15 Nov 2026, Honver's 303 games): sandbox build plus a placement and riichi-rate
+answer $0.38; a tenpai split (riichi, dama, open) against LuckyJ $0.67.
+
 
 Tokens are billed at Opus 5.5 rates and sandbox time at $0.08 per running hour (idle time is
 free). Each thread is created with a hard spending cap (`--budget`, US dollars); at the cap it

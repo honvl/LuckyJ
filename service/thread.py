@@ -19,6 +19,7 @@ IDs of everything created live in service/.state/state.json, which is not commit
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
 import io
 import json
@@ -107,13 +108,14 @@ def latest_thread(state: dict, player: str) -> str:
 def tar_gz(members: list[tuple[str, Path]]) -> bytes:
     """A reproducible tar.gz (fixed mtimes) so unchanged inputs hash the same."""
     buf = io.BytesIO()
-    with tarfile.open(fileobj=buf, mode="w:gz", compresslevel=6) as tar:
+    with tarfile.open(fileobj=buf, mode="w") as tar:
         for arcname, path in sorted(members):
             info = tar.gettarinfo(str(path), arcname)
             info.mtime, info.uid, info.gid, info.uname, info.gname = 0, 0, 0, "", ""
             with path.open("rb") as fh:
                 tar.addfile(info, fh)
-    return buf.getvalue()
+    # gzip stamps the current time in its header unless told otherwise.
+    return gzip.compress(buf.getvalue(), compresslevel=6, mtime=0)
 
 
 def upload(client: anthropic.Anthropic, name: str, data: bytes) -> str:
@@ -221,11 +223,20 @@ def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
         budget={"type": "limit", "max_list_cost": {"amount": str(cents), "currency": "USD"}},
         resources=resources,
     )
+    index = json.loads((games_dir / "index.json").read_text(encoding="utf-8"))
+    names = sorted({row.get("hero_name") for row in index if row.get("hero_name")})
     player["threads"].append({"session_id": session.id, "games_file_id": games_file,
-                              "downloaded": []})
+                              "downloaded": [], "intro": intro(args.player, names)})
     save_state(state)
     print(f"thread {session.id} with a ${args.budget:.2f} cap")
     print(f"talk to it: .venv/bin/python service/thread.py chat {args.player}")
+
+
+def intro(player: str, names: list[str]) -> str:
+    """System context sent with a thread's first message: who the player is."""
+    shown = ", ".join(names) or "unknown"
+    return (f"This thread's player is {player}. In their games they play as: {shown} "
+            "(the hero_name in index.json). These games are theirs; analyse them as theirs.")
 
 
 def short(value: object, limit: int = 140) -> str:
@@ -234,14 +245,19 @@ def short(value: object, limit: int = 140) -> str:
     return text if len(text) <= limit else text[: limit - 1] + "…"
 
 
-def run_turn(client: anthropic.Anthropic, session_id: str, text: str) -> str:
-    """Send one message and print the thread's work until it waits for the player again."""
+def run_turn(client: anthropic.Anthropic, session_id: str, text: str,
+             context: str | None = None) -> str:
+    """Send one message and print the thread's work until it waits for the player again.
+
+    `context`, when given, goes with it as a system message (it stays for every later turn).
+    """
     last_cost = None
+    events = [{"type": "user.message", "content": [{"type": "text", "text": text}]}]
+    if context:
+        # The API takes a system message only as the last event of a request.
+        events.append({"type": "system.message", "content": [{"type": "text", "text": context}]})
     with client.beta.sessions.events.stream(session_id=session_id) as stream:
-        client.beta.sessions.events.send(
-            session_id=session_id,
-            events=[{"type": "user.message", "content": [{"type": "text", "text": text}]}],
-        )
+        client.beta.sessions.events.send(session_id=session_id, events=events)
         for ev in stream:
             if ev.type == "agent.message":
                 for block in ev.content:
@@ -290,16 +306,27 @@ def pull_outputs(client: anthropic.Anthropic, state: dict, player: str, session_
     thread = next(t for t in state["players"][player]["threads"] if t["session_id"] == session_id)
     done = set(thread.get("downloaded", []))
     dest = PLAYERS / slug(player) / session_id
-    files = client.beta.files.list(scope_id=session_id, betas=[MA_BETA])
+    # The listing also holds the files we mounted (not downloadable) and gives each output
+    # only its bare filename, so the agent names outputs uniquely and packs each chapter
+    # as chapter-<NN>-<slug>.tar.gz. Oldest first, so a rewritten file ends up newest.
+    files = sorted(client.beta.files.list(scope_id=session_id, betas=[MA_BETA]),
+                   key=lambda f: f.created_at)
     for f in files:
-        if f.id in done:
+        if f.id in done or not f.downloadable:
             continue
-        rel = Path(*[p for p in Path(f.filename).parts if p not in ("", "/", "..")])
+        rel = Path(Path(f.filename).name)
         target = dest / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         client.beta.files.download(f.id, betas=[MA_BETA]).write_to_file(target)
         done.add(f.id)
         print(f"  saved {target.relative_to(ROOT)}")
+        m = re.fullmatch(r"chapter-(\d+-[\w-]+)\.tar\.gz", rel.name)
+        if m:
+            folder = dest / "chapters" / m.group(1)
+            folder.mkdir(parents=True, exist_ok=True)
+            with tarfile.open(target) as tar:
+                tar.extractall(folder, filter="data")
+            print(f"  unpacked {folder.relative_to(ROOT)}")
         if f.filename.endswith(".whl") and "libriichi" in f.filename:
             cached = [m for m in state["shared_files"] if m.startswith("/cache/")]
             if not cached:
@@ -322,8 +349,12 @@ def cmd_chat(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
             break
         if not text:
             break
+        thread = next(t for t in state["players"][args.player]["threads"]
+                      if t["session_id"] == session_id)
         try:
-            run_turn(client, session_id, text)
+            run_turn(client, session_id, text, context=thread.get("intro"))
+            thread.pop("intro", None)
+            save_state(state)
         except anthropic.BadRequestError as e:
             print(f"  ! {e.message}")
             continue
