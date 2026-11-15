@@ -22,6 +22,7 @@ import argparse
 import hashlib
 import io
 import json
+import os
 import re
 import sys
 import tarfile
@@ -32,6 +33,7 @@ import anthropic
 ROOT = Path(__file__).resolve().parents[1]
 SERVICE = ROOT / "service"
 STATE = SERVICE / ".state" / "state.json"
+KEY_FILE = SERVICE / ".state" / "api_key"  # one line, the key; gitignored with .state/
 PLAYERS = SERVICE / "players"
 SYSTEM = SERVICE / "agent" / "system.md"
 SETUP_SH = SERVICE / "sandbox" / "setup.sh"
@@ -351,6 +353,20 @@ def cmd_topup(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     print(f"{session_id}: spent ${spent / 100:.2f}, cap now ${new_cap / 100:.2f}")
 
 
+def api_key() -> str:
+    """The service's key, from ANTHROPIC_API_KEY or service/.state/api_key.
+
+    The key stays out of the shell profile so Claude Code keeps its own login.
+    """
+    key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
+    if not key and KEY_FILE.exists():
+        key = KEY_FILE.read_text(encoding="utf-8").strip()
+    if not key or "..." in key:
+        sys.exit(f"No API key. Paste one into {KEY_FILE.relative_to(ROOT)} "
+                 "(a single line, sk-ant-...) and rerun.")
+    return key
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -369,7 +385,7 @@ def main() -> None:
     p.add_argument("--thread", help="a specific session id")
     args = ap.parse_args()
 
-    client = anthropic.Anthropic()
+    client = anthropic.Anthropic(api_key=api_key())
     {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "list": cmd_list,
      "topup": cmd_topup}[args.cmd](client, args)
 
