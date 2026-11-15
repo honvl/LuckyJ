@@ -10,3 +10,7 @@ tmp/
 # Local virtual environments.
 .venv/
 .venv-nautilus-dev/
+
+# Player-thread service: account IDs and downloaded player outputs.
+service/.state/
+service/players/
