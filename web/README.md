@@ -40,8 +40,24 @@ DISCORD_CLIENT_SECRET=...
 
 The API key is read from `ANTHROPIC_API_KEY` or `service/.state/api_key`.
 
+## Hosting
+
+Live at https://luckyj.vercel.app (Vercel project `luckyj`, root directory `web`, team Honver
+Lam's projects). Deploy from the repository root, so the build can copy `site/` in:
+
+```bash
+vercel deploy --prod
+```
+
+`.vercelignore` uploads only `site/` and `web/`. Player records are in the Neon Postgres database
+`luckyj-db` (Vercel marketplace, free plan), whose address Vercel provides as `DATABASE_URL`;
+`thread.py` reads the same address from `service/.state/database_url`. Production settings are
+Vercel environment variables (`vercel env ls`): the API key, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`,
+and the Google and Discord keys. The test login is off in production.
+
 ## Not done yet
 
-Player records live in `service/.state/` files, which a hosted deployment cannot write: they move
-to a database with the billing step (Lemon Squeezy or Paddle), which also raises each thread's
-cap once a month. Chapter previews and publishing to the site come after that.
+Billing (Lemon Squeezy or Paddle): creating a player's thread when they subscribe and raising its
+cap once a month; until then `thread.py new` and `link` add players by hand. Chapter previews and
+publishing to the site come after that. Vercel Hobby does not allow commercial use: move to Pro
+before charging.

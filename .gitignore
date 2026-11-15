@@ -14,3 +14,7 @@ tmp/
 # Player-thread service: account IDs and downloaded player outputs.
 service/.state/
 service/players/
+
+# Vercel CLI link for the hosted chat page.
+.vercel
+.env*

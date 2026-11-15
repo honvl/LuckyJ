@@ -1,0 +1,10 @@
+# Vercel builds web/ (the chat page), which copies site/ in at build time. Upload nothing else:
+# game data, local state (service/.state holds keys) and caches stay on this Mac.
+/*
+!/site
+!/web
+/web/node_modules
+/web/.next
+/web/public
+/web/.env*
+/web/tsconfig.tsbuildinfo
