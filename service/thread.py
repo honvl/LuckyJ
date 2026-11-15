@@ -35,6 +35,9 @@ ROOT = Path(__file__).resolve().parents[1]
 SERVICE = ROOT / "service"
 STATE = SERVICE / ".state" / "state.json"
 KEY_FILE = SERVICE / ".state" / "api_key"  # one line, the key; gitignored with .state/
+DB_URL_FILE = SERVICE / ".state" / "database_url"  # the hosted site's Postgres, one line
+SCHEMA = SERVICE / "db" / "schema.sql"
+WEB_STATE = SERVICE / ".state" / "web.json"
 PLAYERS = SERVICE / "players"
 SYSTEM = SERVICE / "agent" / "system.md"
 SETUP_SH = SERVICE / "sandbox" / "setup.sh"
@@ -74,6 +77,67 @@ def load_state() -> dict:
     if STATE.exists():
         return json.loads(STATE.read_text(encoding="utf-8"))
     return {"shared_files": {}, "players": {}}
+
+
+def database_url() -> str | None:
+    """The hosted site's database, from DATABASE_URL or service/.state/database_url."""
+    url = os.environ.get("DATABASE_URL", "").strip()
+    if not url and DB_URL_FILE.exists():
+        url = DB_URL_FILE.read_text(encoding="utf-8").strip()
+    return url or None
+
+
+def db_sync(state: dict) -> bool:
+    """Copy players, threads, login emails and private chapters into the site's database.
+
+    Rows already there are kept as they are (a thread's queued intro may have been taken by the
+    site since), so this only adds. Returns False when no database is configured.
+    """
+    url = database_url()
+    if not url:
+        return False
+    import psycopg
+    web = json.loads(WEB_STATE.read_text(encoding="utf-8")) if WEB_STATE.exists() else {}
+    with psycopg.connect(url, autocommit=True) as conn:
+        conn.execute(SCHEMA.read_text(encoding="utf-8"))
+        for name, info in state["players"].items():
+            conn.execute("insert into players (name) values (%s) on conflict do nothing", (name,))
+            threads = info.get("threads", [])
+            for i, t in enumerate(threads):
+                # Oldest first, a second apart, so "latest thread" keeps the file's order.
+                conn.execute(
+                    "insert into threads (session_id, player, created_at, intro)"
+                    " values (%s, %s, now() - make_interval(secs => %s), %s) on conflict do nothing",
+                    (t["session_id"], name, len(threads) - i, t.get("intro")))
+            for email in info.get("emails", []):
+                row = conn.execute("insert into logins (email, player) values (%s, %s)"
+                                   " on conflict (email) do nothing returning player",
+                                   (email, name)).fetchone()
+                if row is None:
+                    owner = conn.execute("select player from logins where email = %s", (email,)).fetchone()
+                    if owner and owner[0] != name:
+                        print(f"  ! {email} belongs to {owner[0]} in the database, not {name}")
+            for chapter in web.get("private_chapters", {}).get(name, []):
+                conn.execute("insert into private_chapters (player, chapter) values (%s, %s)"
+                             " on conflict do nothing", (name, chapter))
+    return True
+
+
+def take_intro(state: dict, player: str, session_id: str) -> str | None:
+    """A thread's queued system context, taken once (from the database when there is one)."""
+    thread = next(t for t in state["players"][player]["threads"] if t["session_id"] == session_id)
+    local = thread.pop("intro", None)
+    save_state(state)
+    url = database_url()
+    if not url:
+        return local
+    import psycopg
+    with psycopg.connect(url, autocommit=True) as conn:
+        row = conn.execute(
+            "update threads t set intro = null from (select session_id, intro from threads"
+            " where session_id = %s for update) old where t.session_id = old.session_id"
+            " and old.intro is not null returning old.intro", (session_id,)).fetchone()
+    return row[0] if row else None
 
 
 def save_state(state: dict) -> None:
@@ -228,6 +292,8 @@ def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     player["threads"].append({"session_id": session.id, "games_file_id": games_file,
                               "downloaded": [], "intro": intro(args.player, names)})
     save_state(state)
+    if db_sync(state):
+        print("  recorded in the site's database")
     print(f"thread {session.id} with a ${args.budget:.2f} cap")
     print(f"talk to it: .venv/bin/python service/thread.py chat {args.player}")
 
@@ -349,12 +415,8 @@ def cmd_chat(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
             break
         if not text:
             break
-        thread = next(t for t in state["players"][args.player]["threads"]
-                      if t["session_id"] == session_id)
         try:
-            run_turn(client, session_id, text, context=thread.get("intro"))
-            thread.pop("intro", None)
-            save_state(state)
+            run_turn(client, session_id, text, context=take_intro(state, args.player, session_id))
         except anthropic.BadRequestError as e:
             print(f"  ! {e.message}")
             continue
@@ -374,7 +436,15 @@ def cmd_link(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     if email not in emails:
         emails.append(email)
     save_state(state)
+    db_sync(state)
     print(f"{email} opens {args.player}'s latest thread")
+
+
+def cmd_db_sync(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
+    """Create the site's tables and copy every player into them."""
+    if not db_sync(load_state()):
+        sys.exit(f"no database: set DATABASE_URL or write it to {DB_URL_FILE.relative_to(ROOT)}")
+    print("the site's database has every player, thread and login")
 
 
 def cmd_list(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
@@ -428,6 +498,7 @@ def main() -> None:
     p = sub.add_parser("link", help="let a login email open this player's thread on the web page")
     p.add_argument("player")
     p.add_argument("email")
+    sub.add_parser("db-sync", help="create the site's tables and copy every player into them")
     sub.add_parser("list", help="every thread with its status and spend")
     p = sub.add_parser("topup", help="let a thread spend this many more USD")
     p.add_argument("player")
@@ -436,7 +507,7 @@ def main() -> None:
     args = ap.parse_args()
 
     client = anthropic.Anthropic(api_key=api_key())
-    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "list": cmd_list,
+    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "db-sync": cmd_db_sync, "list": cmd_list,
      "topup": cmd_topup}[args.cmd](client, args)
 
 

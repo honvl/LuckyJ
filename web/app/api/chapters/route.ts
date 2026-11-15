@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { currentThread } from "@/lib/auth";
-import { setChapterPublic } from "@/lib/server";
+import { setChapterPublic } from "@/lib/store";
 
 export async function POST(request: Request) {
   const me = await currentThread();
@@ -10,6 +10,6 @@ export async function POST(request: Request) {
   if (!/^\d+-[\w-]+$/.test(chapter) || typeof body?.isPublic !== "boolean") {
     return NextResponse.json({ error: "bad request" }, { status: 400 });
   }
-  setChapterPublic(me.player, chapter, body.isPublic);
+  await setChapterPublic(me.player, chapter, body.isPublic);
   return NextResponse.json({ ok: true });
 }

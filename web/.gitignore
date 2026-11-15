@@ -3,6 +3,5 @@ node_modules/
 next-env.d.ts
 .env.local
 # Copied from ../site by scripts/sync-site-assets.mjs.
-public/fonts/
-public/replays.json
+public/
 *.tsbuildinfo

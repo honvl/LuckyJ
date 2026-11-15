@@ -1,8 +1,11 @@
 export type Lang = "en" | "ja";
 
+export const PRODUCT = "LuckyJ AI Mahjong Tutor";
+
 export const STRINGS = {
   en: {
     title: "Your coach",
+    notAffiliated: "An independent project. Not affiliated with Tencent or the makers of LuckyJ.",
     signIn: "Sign in",
     signInWith: (name: string) => `Continue with ${name}`,
     signInLead: "Sign in to talk to your coach about your games.",
@@ -29,6 +32,7 @@ export const STRINGS = {
   },
   ja: {
     title: "コーチ",
+    notAffiliated: "個人による独立したプロジェクトです。TencentおよびLuckyJの開発者とは関係ありません。",
     signIn: "ログイン",
     signInWith: (name: string) => `${name}で続ける`,
     signInLead: "ログインして、自分の対局についてコーチと話しましょう。",

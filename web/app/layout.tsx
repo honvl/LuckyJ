@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { pageLang } from "@/lib/lang";
+import { PRODUCT } from "@/lib/strings";
 
-export const metadata: Metadata = { title: "Coach", robots: { index: false } };
+export const metadata: Metadata = { title: PRODUCT, robots: { index: false } };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const lang = await pageLang();

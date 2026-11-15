@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
-import { threadForEmail } from "./server";
+import { threadForEmail } from "./store";
 import { emailIsVerified } from "./verified.mjs";
 
 const providers: NextAuthOptions["providers"] = [];
@@ -33,7 +33,7 @@ if (devLogin) {
       credentials: { email: { label: "Linked email", type: "email" } },
       async authorize(credentials) {
         const email = credentials?.email?.trim().toLowerCase();
-        return email && threadForEmail(email) ? { id: email, email } : null;
+        return email && (await threadForEmail(email)) ? { id: email, email } : null;
       },
     }),
   );
@@ -53,6 +53,6 @@ export const authOptions: NextAuthOptions = {
 export async function currentThread() {
   const session = await getServerSession(authOptions);
   const email = session?.user?.email;
-  const thread = threadForEmail(email);
+  const thread = await threadForEmail(email);
   return thread ? { ...thread, email: email as string } : null;
 }

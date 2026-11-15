@@ -1,6 +1,7 @@
 import "server-only";
 import { toChatEvent, type ChatEvent } from "./events";
-import { MA_BETA, anthropic, privateChapters } from "./server";
+import { MA_BETA, anthropic } from "./server";
+import { privateChapters } from "./store";
 
 export type Chapter = { file: string; number: number; slug: string; isPublic: boolean };
 
@@ -22,7 +23,7 @@ export async function threadHistory(sessionId: string): Promise<ChatEvent[]> {
 
 /** Chapters the coach packed as chapter-<NN>-<slug>.tar.gz; the newest file of each name wins. */
 export async function threadChapters(player: string, sessionId: string): Promise<Chapter[]> {
-  const hidden = new Set(privateChapters(player));
+  const hidden = new Set(await privateChapters(player));
   const seen = new Map<string, Chapter>();
   for await (const f of anthropic().beta.files.list({ scope_id: sessionId, betas: [MA_BETA] } as any)) {
     const m = (f as any).filename.match(/^chapter-(\d+)-([\w-]+)\.tar\.gz$/);

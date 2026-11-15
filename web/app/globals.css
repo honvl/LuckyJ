@@ -144,6 +144,12 @@ a {
   padding: 10px 12px;
 }
 
+.login-note {
+  margin-top: 32px;
+  font: 13px var(--sans);
+  color: var(--muted);
+}
+
 .login-error {
   color: var(--verm);
   margin: 0;

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { currentThread } from "@/lib/auth";
-import { anthropic, takeIntro } from "@/lib/server";
+import { anthropic } from "@/lib/server";
+import { takeIntro } from "@/lib/store";
 
 const MAX_CHARS = 8000;
 
@@ -13,7 +14,7 @@ export async function POST(request: Request) {
   if (text.length > MAX_CHARS) return NextResponse.json({ error: "message too long" }, { status: 400 });
 
   const events: any[] = [{ type: "user.message", content: [{ type: "text", text }] }];
-  const intro = takeIntro(me.player, me.sessionId);
+  const intro = await takeIntro(me.player, me.sessionId);
   // The API takes a system message only as the last event of a request.
   if (intro) events.push({ type: "system.message", content: [{ type: "text", text: intro }] });
   try {
