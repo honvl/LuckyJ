@@ -1,0 +1,53 @@
+// Login. Players sign in with Google, Discord or LINE (whichever have keys in the environment);
+// the session lives in a signed cookie, so login needs no database. Which player and thread a
+// login belongs to comes from the emails `thread.py link` records.
+import type { NextAuthOptions } from "next-auth";
+import { getServerSession } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import DiscordProvider from "next-auth/providers/discord";
+import GoogleProvider from "next-auth/providers/google";
+import LineProvider from "next-auth/providers/line";
+import { threadForEmail } from "./server";
+
+const providers: NextAuthOptions["providers"] = [];
+const env = process.env;
+
+if (env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET) {
+  providers.push(GoogleProvider({ clientId: env.GOOGLE_CLIENT_ID, clientSecret: env.GOOGLE_CLIENT_SECRET }));
+}
+if (env.DISCORD_CLIENT_ID && env.DISCORD_CLIENT_SECRET) {
+  providers.push(DiscordProvider({ clientId: env.DISCORD_CLIENT_ID, clientSecret: env.DISCORD_CLIENT_SECRET }));
+}
+if (env.LINE_CLIENT_ID && env.LINE_CLIENT_SECRET) {
+  providers.push(LineProvider({ clientId: env.LINE_CLIENT_ID, clientSecret: env.LINE_CLIENT_SECRET }));
+}
+
+// Local testing only: sign in as any linked email without a password. Never in production.
+export const devLogin = env.DEV_LOGIN === "1" && env.NODE_ENV !== "production";
+if (devLogin) {
+  providers.push(
+    CredentialsProvider({
+      id: "dev",
+      name: "Local test login",
+      credentials: { email: { label: "Linked email", type: "email" } },
+      async authorize(credentials) {
+        const email = credentials?.email?.trim().toLowerCase();
+        return email && threadForEmail(email) ? { id: email, email } : null;
+      },
+    }),
+  );
+}
+
+export const authOptions: NextAuthOptions = {
+  providers,
+  session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
+  pages: { signIn: "/login" },
+};
+
+/** The signed-in player's thread, or null (signed out, or no thread linked to this login). */
+export async function currentThread() {
+  const session = await getServerSession(authOptions);
+  const email = session?.user?.email;
+  const thread = threadForEmail(email);
+  return thread ? { ...thread, email: email as string } : null;
+}

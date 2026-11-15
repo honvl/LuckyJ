@@ -54,6 +54,27 @@ class ServiceThreadTest(unittest.TestCase):
         self.assertIn("Akira", text)
         self.assertIn("akira_jp", text)
 
+    def test_link_maps_an_email_to_one_player(self):
+        import argparse
+        import tempfile
+        import thread
+        with tempfile.TemporaryDirectory() as d:
+            old = thread.STATE
+            thread.STATE = Path(d) / "state.json"
+            try:
+                thread.save_state({"players": {"A": {"threads": []}, "B": {"threads": []}}})
+                thread.cmd_link(None, argparse.Namespace(player="A", email=" Me@Example.com "))
+                self.assertEqual(thread.load_state()["players"]["A"]["emails"], ["me@example.com"])
+                with self.assertRaises(SystemExit):
+                    thread.cmd_link(None, argparse.Namespace(player="B", email="me@example.com"))
+            finally:
+                thread.STATE = old
+
+    def test_web_and_agent_agree_on_game_references(self):
+        markup = (ROOT / "web/lib/markup.mjs").read_text(encoding="utf-8")
+        self.assertIn("[[game:<uuid> <round> t<turn>]]", SYSTEM)
+        self.assertIn("game:([0-9]{6}-[0-9a-f-]{8,40}) ((?:East|South|West|North) \\d-\\d+) t(\\d{1,2})( call)?$", markup)
+
     def test_tar_is_reproducible(self):
         import tempfile
         import thread

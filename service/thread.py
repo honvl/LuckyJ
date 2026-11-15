@@ -361,6 +361,22 @@ def cmd_chat(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
         pull_outputs(client, state, args.player, session_id)
 
 
+def cmd_link(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
+    """Let a login email open this player's thread on the web page."""
+    state = load_state()
+    if args.player not in state["players"]:
+        sys.exit(f"no player {args.player}; create a thread with `new` first")
+    email = args.email.strip().lower()
+    for name, info in state["players"].items():
+        if name != args.player and email in info.get("emails", []):
+            sys.exit(f"{email} already belongs to {name}")
+    emails = state["players"][args.player].setdefault("emails", [])
+    if email not in emails:
+        emails.append(email)
+    save_state(state)
+    print(f"{email} opens {args.player}'s latest thread")
+
+
 def cmd_list(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     state = load_state()
     for player, info in state["players"].items():
@@ -409,6 +425,9 @@ def main() -> None:
     p = sub.add_parser("chat", help="talk in a player's thread (the latest one by default)")
     p.add_argument("player")
     p.add_argument("--thread", help="a specific session id")
+    p = sub.add_parser("link", help="let a login email open this player's thread on the web page")
+    p.add_argument("player")
+    p.add_argument("email")
     sub.add_parser("list", help="every thread with its status and spend")
     p = sub.add_parser("topup", help="let a thread spend this many more USD")
     p.add_argument("player")
@@ -417,7 +436,7 @@ def main() -> None:
     args = ap.parse_args()
 
     client = anthropic.Anthropic(api_key=api_key())
-    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "list": cmd_list,
+    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "list": cmd_list,
      "topup": cmd_topup}[args.cmd](client, args)
 
 

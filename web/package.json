@@ -1,0 +1,28 @@
+{
+  "name": "luckyj-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync-site-assets.mjs",
+    "dev": "npm run sync && next dev -p 3100",
+    "build": "npm run sync && next build",
+    "start": "next start -p 3100",
+    "test": "node --test lib/"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.8.0",
+    "next": "16.4.6",
+    "next-auth": "4.24.15",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

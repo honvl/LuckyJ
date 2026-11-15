@@ -1,0 +1,572 @@
+/* The chat page uses the guide's tokens (site/styles.css) so it reads as part of the same book. */
+:root {
+  --paper: #f4f0e6;
+  --plate: #f9f6f1;
+  --ink: #1e1a14;
+  --ink-2: #4c473f;
+  --muted: #68625a;
+  --hair: #d6d0c4;
+  --hair-2: #e2ddd2;
+  --felt: #134834;
+  --jade: #006243;
+  --jade-soft: #dceee3;
+  --verm: #b23b20;
+  --verm-soft: #fbe3d8;
+  --highlight: #f3e5b0;
+
+  --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Sans JP", serif;
+  --sans: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, "Noto Sans JP", sans-serif;
+  --text-w: 720px;
+}
+
+@font-face {
+  font-family: "mahjongtile-clr";
+  src: url("/fonts/GL-MahjongTile-Clr.woff2") format("woff2");
+  font-display: block;
+}
+
+@font-face {
+  font-family: "mahjongtile-colr";
+  src: url("/fonts/GL-MahjongTile-COLRv1.woff2") format("woff2");
+  font-display: block;
+}
+
+@font-face {
+  font-family: "mahjongtile";
+  src: url("/fonts/GL-MahjongTile.otf") format("opentype");
+  font-display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+:lang(ja) body {
+  font-family: "Noto Sans JP", var(--sans);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+a {
+  color: var(--jade);
+}
+
+.button {
+  font: 600 15px/1 var(--sans);
+  color: var(--paper);
+  background: var(--felt);
+  border: 0;
+  border-radius: 6px;
+  padding: 12px 18px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.link-button {
+  font: 500 14px var(--sans);
+  color: var(--muted);
+  background: none;
+  border: 0;
+  padding: 4px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Login */
+.login {
+  max-width: 420px;
+  margin: 12vh auto;
+  padding: 0 16px;
+}
+
+.login-kicker,
+.chat-kicker {
+  font: 700 12px var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--verm);
+}
+
+.login h1 {
+  font-weight: 500;
+  font-size: 40px;
+  margin: 4px 0 8px;
+}
+
+.login-lead {
+  color: var(--ink-2);
+}
+
+.login-buttons {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.login-dev {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hair);
+  font: 14px var(--sans);
+  color: var(--muted);
+}
+
+.login-dev input,
+.composer textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  font: 16px var(--sans);
+  color: var(--ink);
+  background: var(--plate);
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.login-error {
+  color: var(--verm);
+  margin: 0;
+}
+
+/* Chat layout: header, chapters, the thread, the composer pinned at the bottom. */
+.chat {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px max(16px, calc((100vw - var(--text-w)) / 2));
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--hair);
+}
+
+.chat-title {
+  display: grid;
+  line-height: 1.2;
+}
+
+.chat-player {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.spend {
+  margin-left: auto;
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  width: min(260px, 40vw);
+}
+
+.spend-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--hair-2);
+  overflow: hidden;
+}
+
+.spend-bar span {
+  display: block;
+  height: 100%;
+  background: var(--jade);
+}
+
+.spend-text {
+  font: 12px var(--sans);
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chapters {
+  width: 100%;
+  max-width: var(--text-w);
+  margin: 16px auto 0;
+  padding: 0 16px;
+}
+
+.chapters h2 {
+  font: 700 12px var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.chapters ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.chapter-card {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--plate);
+  border: 1px solid var(--hair);
+  border-radius: 8px;
+}
+
+.chapter-num {
+  font: 700 13px var(--sans);
+  color: var(--verm);
+  white-space: nowrap;
+}
+
+.chapter-slug {
+  flex: 1;
+  min-width: 0;
+}
+
+.chapter-slug::first-letter {
+  text-transform: uppercase;
+}
+
+.pill {
+  font: 600 12px var(--sans);
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--hair);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.pill.is-on {
+  background: var(--jade-soft);
+  border-color: var(--jade);
+  color: var(--jade);
+}
+
+.chapters-note {
+  font: 13px var(--sans);
+  color: var(--muted);
+  margin: 6px 0 0;
+}
+
+.thread {
+  flex: 1;
+  width: 100%;
+  max-width: var(--text-w);
+  margin: 0 auto;
+  padding: 24px 16px 140px;
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.msg-user {
+  justify-self: end;
+  max-width: 85%;
+  padding: 10px 14px;
+  background: var(--plate);
+  border: 1px solid var(--hair);
+  border-radius: 12px 12px 2px 12px;
+  white-space: pre-wrap;
+  font-family: var(--sans);
+  font-size: 16px;
+}
+
+.msg-agent {
+  min-width: 0;
+}
+
+.msg-note {
+  font: 14px var(--sans);
+  color: var(--muted);
+  margin: 0;
+}
+
+.msg-note.is-error {
+  color: var(--verm);
+}
+
+.is-live {
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* What the coach did between replies: one line, open for the steps. */
+.work {
+  font: 14px var(--sans);
+  color: var(--muted);
+  border-left: 2px solid var(--hair);
+  padding-left: 12px;
+}
+
+.work summary {
+  cursor: pointer;
+}
+
+.work ol {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 6px;
+}
+
+.work-label {
+  display: block;
+  color: var(--ink-2);
+}
+
+.work-detail {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+/* Markdown */
+.md > :first-child {
+  margin-top: 0;
+}
+
+.md > :last-child {
+  margin-bottom: 0;
+}
+
+.md p,
+.md ul,
+.md ol {
+  margin: 0 0 12px;
+}
+
+.md h1,
+.md h2,
+.md h3 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 20px 0 8px;
+}
+
+.md h1 { font-size: 24px; }
+.md h2 { font-size: 21px; }
+.md h3 { font-size: 18px; }
+
+.md strong {
+  font-weight: 600;
+}
+
+.md code {
+  font-size: 0.85em;
+  background: var(--hair-2);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.md pre {
+  overflow-x: auto;
+  background: var(--plate);
+  border: 1px solid var(--hair);
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.md pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Tables: rates line up, the error is quieter than the value, wide tables scroll inside their box
+   with the row label pinned. */
+.table-figure {
+  margin: 14px 0;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  background: var(--plate);
+}
+
+/* The table takes the width its text wants (a cell wraps after ~15em) and scrolls sideways when
+   that is wider than the screen, instead of squeezing every column into a tall stack. */
+.md table {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+  font: 15px/1.4 var(--sans);
+}
+
+.md td.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.md td.num .sep {
+  font-variant-numeric: proportional-nums;
+}
+
+.md th,
+.md td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--hair-2);
+  vertical-align: baseline;
+  max-width: 15em;
+}
+
+.md th {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink-2);
+  background: var(--paper);
+  border-bottom-color: var(--hair);
+}
+
+.md td.num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.md tr:last-child td {
+  border-bottom: 0;
+}
+
+.md th:first-child,
+.md td:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--plate);
+  z-index: 1;
+}
+
+.md th:first-child {
+  background: var(--paper);
+}
+
+.md .se {
+  color: var(--muted);
+  font-size: 0.86em;
+}
+
+.table-copy {
+  font: 12px var(--sans);
+  color: var(--muted);
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Tiles, as in the guide's prose. */
+.tiles {
+  font-family: "mahjongtile-clr", "mahjongtile";
+  font-style: normal;
+  font-weight: normal;
+  font-synthesis: none;
+  letter-spacing: -0.112em;
+  line-height: 1;
+}
+
+.tiles.otf {
+  font-family: "mahjongtile";
+  letter-spacing: -0.086em;
+}
+
+.tiles.colr {
+  font-family: "mahjongtile-colr";
+}
+
+.inline-tile {
+  display: inline-block;
+  font-size: 1.7em;
+  vertical-align: -0.22em;
+  padding-right: 0.16em;
+}
+
+.md table .inline-tile {
+  font-size: 1.6em;
+}
+
+.game-ref {
+  font: 600 0.82em var(--sans);
+  white-space: nowrap;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--jade-soft);
+  color: var(--jade);
+  text-decoration: none;
+}
+
+.game-ref.is-pending {
+  background: var(--hair-2);
+  color: var(--ink-2);
+  cursor: help;
+}
+
+/* Composer */
+.composer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  padding: 12px max(16px, calc((100vw - var(--text-w)) / 2)) calc(12px + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid var(--hair);
+  z-index: 3; /* above the tables' pinned first column */
+}
+
+.composer textarea {
+  margin: 0;
+  resize: none;
+  max-height: 40vh;
+}
+
+@media (max-width: 560px) {
+  .chat-head {
+    flex-wrap: wrap;
+    gap: 6px 12px;
+  }
+
+  .spend {
+    order: 3;
+    width: 100%;
+  }
+}
