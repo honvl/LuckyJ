@@ -16,7 +16,11 @@ if (env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET) {
   providers.push(GoogleProvider({ clientId: env.GOOGLE_CLIENT_ID, clientSecret: env.GOOGLE_CLIENT_SECRET }));
 }
 if (env.DISCORD_CLIENT_ID && env.DISCORD_CLIENT_SECRET) {
-  providers.push(DiscordProvider({ clientId: env.DISCORD_CLIENT_ID, clientSecret: env.DISCORD_CLIENT_SECRET }));
+  // Discord returns `iss=https://discord.com` with the code (RFC 9207); openid-client rejects the
+  // callback unless the provider names that issuer.
+  providers.push(
+    DiscordProvider({ clientId: env.DISCORD_CLIENT_ID, clientSecret: env.DISCORD_CLIENT_SECRET, issuer: "https://discord.com" }),
+  );
 }
 
 // Local testing only: sign in as any linked email without a password. Never in production.

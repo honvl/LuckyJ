@@ -5,7 +5,7 @@ import LoginButtons from "@/components/LoginButtons";
 
 export const dynamic = "force-dynamic";
 
-export default async function LoginPage() {
+export default async function LoginPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   if (await currentThread()) redirect("/chat");
   const lang = await pageLang();
   const t = STRINGS[lang];
@@ -16,6 +16,7 @@ export default async function LoginPage() {
       <p className="login-kicker">Honver&rsquo;s guide</p>
       <h1>{t.signIn}</h1>
       <p className="login-lead">{t.signInLead}</p>
+      {(await searchParams).error && <p className="login-error">{t.signInFailed}</p>}
       <LoginButtons providers={providers} lang={lang} />
     </main>
   );
