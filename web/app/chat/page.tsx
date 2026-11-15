@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions, currentThread } from "@/lib/auth";
 import { STRINGS, pageLang } from "@/lib/lang";
 import Chat from "@/components/Chat";
+import SignOutButton from "@/components/SignOutButton";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +17,7 @@ export default async function ChatPage() {
       <main className="login">
         <h1>{STRINGS[lang].title}</h1>
         <p className="login-lead">{STRINGS[lang].notLinked}</p>
+        <SignOutButton label={STRINGS[lang].signOut} />
       </main>
     );
   }
