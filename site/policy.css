@@ -1,0 +1,91 @@
+/* The privacy pages: one readable column in the book's paper and type. Tokens come from styles.css. */
+.policy {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 56px 16px 96px;
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+:lang(ja) .policy {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", var(--serif);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.policy-kicker {
+  font: 700 12px var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--verm);
+  margin: 0 0 8px;
+}
+
+.policy-kicker a {
+  color: inherit;
+}
+
+.policy h1 {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+
+.policy-meta {
+  font: 14px var(--sans);
+  color: var(--muted);
+  margin: 0 0 32px;
+}
+
+.policy h2 {
+  font-weight: 600;
+  font-size: 21px;
+  margin: 36px 0 10px;
+}
+
+.policy ul {
+  padding-left: 20px;
+}
+
+.policy li + li {
+  margin-top: 8px;
+}
+
+.policy a {
+  color: var(--jade);
+}
+
+.policy-table {
+  overflow-x: auto;
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  background: var(--plate);
+  margin: 12px 0;
+}
+
+.policy table {
+  border-collapse: collapse;
+  width: 100%;
+  font: 15px/1.4 var(--sans);
+}
+
+.policy th,
+.policy td {
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--hair-2);
+}
+
+.policy th {
+  font-size: 13px;
+  color: var(--ink-2);
+  background: var(--paper);
+}
+
+.policy tr:last-child td {
+  border-bottom: 0;
+}

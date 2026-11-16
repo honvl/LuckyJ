@@ -51,6 +51,9 @@ export default function Subscribe({ lang, ended }: { lang: Lang; ended: boolean 
         <input type="checkbox" checked={publish} onChange={(e) => setPublish(e.target.checked)} />
         {t.publishChoice}
       </label>
+      <p className="login-note">
+        {t.agreeBefore}{lang === "ja" ? "" : " "}<a href={t.privacyHref}>{t.privacy}</a>{t.agreeAfter}
+      </p>
       <button className="button" type="submit" disabled={busy || !gameName.trim()}>
         {busy ? t.subscribing : t.subscribe}
       </button>

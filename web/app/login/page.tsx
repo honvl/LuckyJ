@@ -19,7 +19,9 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       <p className="login-lead">{t.signInLead}</p>
       {(await searchParams).error && <p className="login-error">{t.signInFailed}</p>}
       <LoginButtons providers={providers} lang={lang} />
-      <p className="login-note">{t.notAffiliated}</p>
+      <p className="login-note">
+        {t.notAffiliated} <a href={t.privacyHref}>{t.privacy}</a>
+      </p>
     </main>
   );
 }

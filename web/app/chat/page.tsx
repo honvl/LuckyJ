@@ -53,7 +53,9 @@ export default async function ChatPage() {
         {access.subscription?.customer_id && <ManageButton label={t.manage} />}
         <SignOutButton label={t.signOut} />
       </p>
-      <p className="login-note">{t.notAffiliated}</p>
+      <p className="login-note">
+        {t.notAffiliated} <a href={t.privacyHref}>{t.privacy}</a>
+      </p>
     </main>
   );
 }
