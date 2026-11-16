@@ -4,7 +4,7 @@
 import "server-only";
 import { neon } from "@neondatabase/serverless";
 import Stripe from "stripe";
-import { capAfterRenewal, hasAccess, invoiceSubscriptionId, periodEnd } from "./billing-rules.mjs";
+import { capAfterRenewal, hasAccess, invoiceSubscriptionId, isTutorSubscription, periodEnd } from "./billing-rules.mjs";
 import { anthropic } from "./server";
 import { threadForEmail } from "./store";
 
@@ -94,9 +94,11 @@ async function renewThreadCap(sessionId: string) {
   return cap;
 }
 
-async function upsertFromSubscription(sub: Stripe.Subscription, fallbackEmail?: string) {
+async function upsertFromSubscription(sub: Stripe.Subscription, fallbackEmail?: string): Promise<boolean> {
+  // Other products on the same Stripe account fire these events too.
+  if (!isTutorSubscription(sub, env.STRIPE_PRICE_ID)) return false;
   const email = (sub.metadata?.email || fallbackEmail || "").toLowerCase();
-  if (!email || !sql) return;
+  if (!email || !sql) return false;
   const end = periodEnd(sub);
   const customer = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
   await sql`
@@ -109,6 +111,7 @@ async function upsertFromSubscription(sub: Stripe.Subscription, fallbackEmail?: 
       platform = coalesce(excluded.platform, subscriptions.platform),
       game_name = coalesce(excluded.game_name, subscriptions.game_name),
       publish = excluded.publish, updated_at = now()`;
+  return true;
 }
 
 /** Handle one verified Stripe event. Returns a short note for the log. */
@@ -123,8 +126,9 @@ export async function handleEvent(event: Stripe.Event): Promise<string> {
       if (session.mode === "subscription" && session.subscription) {
         const subId = typeof session.subscription === "string" ? session.subscription : session.subscription.id;
         const sub = await stripe().subscriptions.retrieve(subId);
-        await upsertFromSubscription(sub, session.metadata?.email || session.client_reference_id || undefined);
-        note = `subscribed ${sub.status}`;
+        // Only the tutor's checkout sets metadata.email; client_reference_id alone may be another product's.
+        const ours = session.metadata?.email ? await upsertFromSubscription(sub, session.metadata.email) : false;
+        note = ours ? `subscribed ${sub.status}` : "another product's checkout";
       }
       break;
     }
@@ -132,8 +136,7 @@ export async function handleEvent(event: Stripe.Event): Promise<string> {
     case "customer.subscription.updated":
     case "customer.subscription.deleted": {
       const sub = event.data.object as Stripe.Subscription;
-      await upsertFromSubscription(sub);
-      note = `subscription ${sub.status}`;
+      note = (await upsertFromSubscription(sub)) ? `subscription ${sub.status}` : "another product's subscription";
       break;
     }
     case "invoice.paid": {

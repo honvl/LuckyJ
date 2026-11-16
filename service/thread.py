@@ -465,7 +465,7 @@ def cmd_pending(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     if not rows:
         print("nobody is waiting")
     for email, platform, name, publish, status, created in rows:
-        print(f"{created:%Y-%m-%d %H:%M}  {platform:<8} {name!s:<24} {email}  "
+        print(f"{created:%Y-%m-%d %H:%M}  {platform or '?':<8} {name or '?':<24} {email}  "
               f"{'public' if publish else 'private'}  {status}")
     if rows:
         print("\nFetch their games, then: thread.py new <player> --games <dir> --email <email>")

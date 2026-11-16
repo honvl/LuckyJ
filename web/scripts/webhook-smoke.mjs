@@ -31,8 +31,13 @@ async function send(type, object, id = `evt_smoke_${type}_${Date.now()}_${ids.le
 const subscription = (status) => ({
   id: SUB, object: "subscription", customer: "cus_smoke", status,
   metadata: { email: EMAIL, platform: "majsoul", game_name: "SmokeTest", publish: "false" },
-  items: { data: [{ current_period_end: 1800000000 }] },
+  items: { data: [{ current_period_end: 1800000000, price: { id: env.STRIPE_PRICE_ID } }] },
 });
+const otherProduct = {
+  id: SUB + "_other", object: "subscription", customer: "cus_smoke", status: "active",
+  metadata: { email: "other-product@example.test" },
+  items: { data: [{ current_period_end: 1800000000, price: { id: "price_some_other_product" } }] },
+};
 
 try {
   // A forged signature is refused.
@@ -45,6 +50,10 @@ try {
   assert.equal(row.game_name, "SmokeTest");
   assert.equal(row.publish, false);
   assert.equal(new Date(row.current_period_end).getTime(), 1800000000 * 1000);
+
+  // A subscription to another product on the account is ignored.
+  assert.equal((await send("customer.subscription.created", otherProduct)).status, 200);
+  assert.equal((await sql`select 1 from subscriptions where email = 'other-product@example.test'`).length, 0, "other products ignored");
 
   // The same event again is a no-op; a cancellation flips the status.
   const again = await send("customer.subscription.updated", subscription("past_due"));
@@ -80,6 +89,6 @@ try {
     }
   }
 } finally {
-  await sql`delete from subscriptions where email = ${EMAIL}`;
+  await sql`delete from subscriptions where email = ${EMAIL} or email = 'other-product@example.test'`;
   await sql`delete from billing_events where event_id = any(${ids})`;
 }

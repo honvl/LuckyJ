@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { capAfterRenewal, hasAccess, invoiceSubscriptionId, periodEnd, signupFields } from "./billing-rules.mjs";
+import { capAfterRenewal, hasAccess, invoiceSubscriptionId, isTutorSubscription, periodEnd, signupFields } from "./billing-rules.mjs";
 
 test("access", () => {
   assert.equal(hasAccess({ comp: true }), true);
@@ -24,6 +24,15 @@ test("invoice and subscription shapes", () => {
   assert.equal(invoiceSubscriptionId({}), null);
   assert.equal(periodEnd({ items: { data: [{ current_period_end: 100 }, { current_period_end: 200 }] } }), 200);
   assert.equal(periodEnd({ items: { data: [] } }), null);
+});
+
+test("only the tutor's price counts", () => {
+  const tutor = { items: { data: [{ price: { id: "price_tutor" } }] } };
+  const other = { items: { data: [{ price: { id: "price_lambent" } }] } };
+  assert.equal(isTutorSubscription(tutor, "price_tutor"), true);
+  assert.equal(isTutorSubscription(other, "price_tutor"), false);
+  assert.equal(isTutorSubscription({ items: { data: [] } }, "price_tutor"), false);
+  assert.equal(isTutorSubscription(tutor, undefined), false);
 });
 
 test("sign-up fields", () => {

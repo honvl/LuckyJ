@@ -32,6 +32,16 @@ export function periodEnd(subscription) {
   return subscription?.current_period_end ?? null;
 }
 
+/**
+ * Whether a subscription is for the tutor. The Stripe account sells other products too, and the
+ * webhook hears every event on the account, so anything without the tutor's price is ignored.
+ * @param {any} subscription @param {string | undefined} priceId
+ */
+export function isTutorSubscription(subscription, priceId) {
+  if (!priceId) return false;
+  return (subscription?.items?.data || []).some((item) => (item?.price?.id ?? item?.price) === priceId);
+}
+
 /** The sign-up form's fields, cleaned; null when something required is missing. */
 export function signupFields(body) {
   const platform = body?.platform === "tenhou" ? "tenhou" : body?.platform === "majsoul" ? "majsoul" : null;
