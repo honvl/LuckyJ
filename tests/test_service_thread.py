@@ -59,8 +59,9 @@ class ServiceThreadTest(unittest.TestCase):
         import tempfile
         import thread
         with tempfile.TemporaryDirectory() as d:
-            old = thread.STATE
+            old, old_db = thread.STATE, thread.database_url
             thread.STATE = Path(d) / "state.json"
+            thread.database_url = lambda: None  # never touch the site's real database
             try:
                 thread.save_state({"players": {"A": {"threads": []}, "B": {"threads": []}}})
                 thread.cmd_link(None, argparse.Namespace(player="A", email=" Me@Example.com "))
@@ -68,7 +69,7 @@ class ServiceThreadTest(unittest.TestCase):
                 with self.assertRaises(SystemExit):
                     thread.cmd_link(None, argparse.Namespace(player="B", email="me@example.com"))
             finally:
-                thread.STATE = old
+                thread.STATE, thread.database_url = old, old_db
 
     def test_web_and_agent_agree_on_game_references(self):
         markup = (ROOT / "web/lib/markup.mjs").read_text(encoding="utf-8")
