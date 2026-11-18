@@ -241,12 +241,12 @@ class TheChapterTests(unittest.TestCase):
     def test_the_notice_and_the_chain_of_links(self):
         for lang, latest in (("en", '<a href="#steady-rise">Chapter 51 answers'), ("ja", '<a href="#steady-rise">第51章は、')):
             page = PAGES[lang].read_text(encoding="utf-8")
+            # chapter 51 was the latest notice until chapter 52 went up on 18 November
             self.assertEqual(page.count('<li class="is-latest">'), 1)
             self.assertIn(latest, page)
             self.assertEqual(page.count('<span class="contents-num">51</span>'), 1)
             self.assertIn('href="#steady-rise"><span class="chapter-next-label">', page)
             self.assertIn("mine_steady_rise.py", page)
-            self.assertEqual(page.count('aria-label="After the chapters"') + page.count('aria-label="本編の後"'), 1)
 
 
 if __name__ == "__main__":

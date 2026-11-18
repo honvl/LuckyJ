@@ -1,0 +1,563 @@
+{
+ "windows": {
+  "before": [
+   80,
+   303
+  ],
+  "climb": [
+   303,
+   335
+  ],
+  "recent": [
+   335,
+   361
+  ],
+  "new": [
+   303,
+   361
+  ],
+  "last_10": [
+   351,
+   361
+  ]
+ },
+ "rank_points_per_1000_points": 8.3,
+ "results": {
+  "before": {
+   "games": 223,
+   "places": [
+    68,
+    57,
+    54,
+    44
+   ],
+   "third_pct": 24.2,
+   "rank_points": 1097,
+   "rank_points_a_game": 4.9
+  },
+  "climb": {
+   "games": 32,
+   "places": [
+    13,
+    9,
+    10,
+    0
+   ],
+   "third_pct": 31.2,
+   "rank_points": 2441,
+   "rank_points_a_game": 76.3
+  },
+  "recent": {
+   "games": 26,
+   "places": [
+    7,
+    7,
+    7,
+    5
+   ],
+   "third_pct": 26.9,
+   "rank_points": -3,
+   "rank_points_a_game": -0.1
+  },
+  "new": {
+   "games": 58,
+   "places": [
+    20,
+    16,
+    17,
+    5
+   ],
+   "third_pct": 29.3,
+   "rank_points": 2438,
+   "rank_points_a_game": 42.0
+  },
+  "last_10": {
+   "games": 10,
+   "places": [
+    0,
+    4,
+    5,
+    1
+   ],
+   "third_pct": 50.0,
+   "rank_points": -87,
+   "rank_points_a_game": -8.7
+  },
+  "thirds": {
+   "expected": 14.0,
+   "p_at_least": 0.222
+  },
+  "rank": {
+   "start": 5620,
+   "after_climb": 8061,
+   "now": 8058,
+   "best": 8265
+  }
+ },
+ "sources": {
+  "before": {
+   "won": 16579,
+   "deal_ins": 6072,
+   "tsumo_paid": 5905,
+   "draws": -249,
+   "net": 2541
+  },
+  "climb": {
+   "won": 20619,
+   "deal_ins": 2916,
+   "tsumo_paid": 6225,
+   "draws": -234,
+   "net": 9681
+  },
+  "recent": {
+   "won": 14704,
+   "deal_ins": 6596,
+   "tsumo_paid": 6554,
+   "draws": -385,
+   "net": -23
+  },
+  "new": {
+   "won": 17967,
+   "deal_ins": 4566,
+   "tsumo_paid": 6372,
+   "draws": -302,
+   "net": 5331
+  }
+ },
+ "style": {
+  "before": {
+   "hands": 2346,
+   "open_pct": 35.3,
+   "riichi_pct": 18.2,
+   "won_pct": 23.5,
+   "average_win": 6710,
+   "open_net": 626,
+   "closed_net": 32,
+   "closed_tenpai_pct": 25.1,
+   "with_yaku_declared_pct": 63.5,
+   "with_yaku_closed_tenpais": 375
+  },
+  "climb": {
+   "hands": 332,
+   "open_pct": 37.3,
+   "riichi_pct": 15.4,
+   "won_pct": 28.0,
+   "average_win": 7095,
+   "open_net": 2138,
+   "closed_net": 215,
+   "closed_tenpai_pct": 21.7,
+   "with_yaku_declared_pct": 54.3,
+   "with_yaku_closed_tenpais": 46
+  },
+  "recent": {
+   "hands": 275,
+   "open_pct": 43.3,
+   "riichi_pct": 11.6,
+   "won_pct": 24.0,
+   "average_win": 5792,
+   "open_net": 401,
+   "closed_net": -310,
+   "closed_tenpai_pct": 18.5,
+   "with_yaku_declared_pct": 48.6,
+   "with_yaku_closed_tenpais": 37
+  },
+  "new": {
+   "hands": 607,
+   "open_pct": 40.0,
+   "riichi_pct": 13.7,
+   "won_pct": 26.2,
+   "average_win": 6554,
+   "open_net": 1287,
+   "closed_net": -10,
+   "closed_tenpai_pct": 20.3,
+   "with_yaku_declared_pct": 51.8,
+   "with_yaku_closed_tenpais": 83
+  },
+  "luckyj": {
+   "hands": 11272,
+   "open_pct": 36.5,
+   "riichi_pct": 19.3,
+   "won_pct": 22.9,
+   "average_win": 7317,
+   "open_net": 611,
+   "closed_net": 220,
+   "closed_tenpai_pct": 24.8,
+   "with_yaku_declared_pct": 67.2,
+   "with_yaku_closed_tenpais": 1833
+  },
+  "jade_human": {
+   "hands": 8859,
+   "open_pct": 32.2,
+   "riichi_pct": 19.3,
+   "won_pct": 20.7,
+   "average_win": 6951,
+   "open_net": 217,
+   "closed_net": -251,
+   "closed_tenpai_pct": 25.8,
+   "with_yaku_declared_pct": 61.8,
+   "with_yaku_closed_tenpais": 1455
+  },
+  "tokujou_human": {
+   "hands": 33816,
+   "open_pct": 32.3,
+   "riichi_pct": 18.6,
+   "won_pct": 21.0,
+   "average_win": 6864,
+   "open_net": 242,
+   "closed_net": -295,
+   "closed_tenpai_pct": 26.0,
+   "with_yaku_declared_pct": 56.6,
+   "with_yaku_closed_tenpais": 5576
+  }
+ },
+ "mortal": {
+  "before": {
+   "call_chances_a_game": 32.81,
+   "you_call_pct": 18.2,
+   "mortal_calls_pct": 19.2,
+   "riichi_chances": 619,
+   "you_declare_pct": 62.4,
+   "mortal_declares_pct": 64.7
+  },
+  "climb": {
+   "call_chances_a_game": 32.34,
+   "you_call_pct": 19.5,
+   "mortal_calls_pct": 21.3,
+   "riichi_chances": 78,
+   "you_declare_pct": 53.8,
+   "mortal_declares_pct": 54.7
+  },
+  "recent": {
+   "call_chances_a_game": 34.81,
+   "you_call_pct": 21.2,
+   "mortal_calls_pct": 20.7,
+   "riichi_chances": 55,
+   "you_declare_pct": 50.9,
+   "mortal_declares_pct": 58.3
+  },
+  "new": {
+   "call_chances_a_game": 33.45,
+   "you_call_pct": 20.3,
+   "mortal_calls_pct": 21.0,
+   "riichi_chances": 133,
+   "you_declare_pct": 52.6,
+   "mortal_declares_pct": 56.2
+  }
+ },
+ "safe_tiles": {
+  "before": {
+   "closed_held_pct": 85.3,
+   "open_held_pct": 78.0,
+   "closed_first_discards": 687,
+   "closed_held": 586,
+   "open_first_discards": 177,
+   "open_held": 138,
+   "deal_in_points_under_riichi_a_game": 2330
+  },
+  "climb": {
+   "closed_held_pct": 83.8,
+   "open_held_pct": 60.7,
+   "closed_first_discards": 99,
+   "closed_held": 83,
+   "open_first_discards": 28,
+   "open_held": 17,
+   "deal_in_points_under_riichi_a_game": 938
+  },
+  "recent": {
+   "closed_held_pct": 80.0,
+   "open_held_pct": 80.0,
+   "closed_first_discards": 75,
+   "closed_held": 60,
+   "open_first_discards": 30,
+   "open_held": 24,
+   "deal_in_points_under_riichi_a_game": 3204
+  },
+  "new": {
+   "closed_held_pct": 82.2,
+   "open_held_pct": 70.7,
+   "closed_first_discards": 174,
+   "closed_held": 143,
+   "open_first_discards": 58,
+   "open_held": 41,
+   "deal_in_points_under_riichi_a_game": 1953
+  },
+  "luckyj": {
+   "closed_held_pct": 85.3,
+   "open_held_pct": 80.2,
+   "closed_first_discards": 3012,
+   "closed_held": 2570,
+   "open_first_discards": 894,
+   "open_held": 717,
+   "deal_in_points_under_riichi_a_game": 2097
+  },
+  "jade_human": {
+   "closed_held_pct": 84.8,
+   "open_held_pct": 73.4,
+   "closed_first_discards": 2606,
+   "closed_held": 2209,
+   "open_first_discards": 631,
+   "open_held": 463,
+   "deal_in_points_under_riichi_a_game": 3235
+  },
+  "tokujou_human": {
+   "closed_held_pct": 84.5,
+   "open_held_pct": 73.8,
+   "closed_first_discards": 9946,
+   "closed_held": 8407,
+   "open_first_discards": 2403,
+   "open_held": 1773,
+   "deal_in_points_under_riichi_a_game": 3276
+  },
+  "new_open_without_genbutsu": {
+   "first_discards": 17,
+   "dealt_in_that_hand": 0
+  }
+ },
+ "draws": {
+  "before": {
+   "draws": 320,
+   "tenpai_pct": 43.1,
+   "draw_points_a_game": -249,
+   "riichi_out": {
+    "draws": 175,
+    "tenpai_pct": 24.6
+   },
+   "no_riichi": {
+    "draws": 145,
+    "tenpai_pct": 65.5
+   },
+   "riichi_out_share_pct": 54.7
+  },
+  "climb": {
+   "draws": 49,
+   "tenpai_pct": 40.8,
+   "draw_points_a_game": -234,
+   "riichi_out": {
+    "draws": 28,
+    "tenpai_pct": 17.9
+   },
+   "no_riichi": {
+    "draws": 21,
+    "tenpai_pct": 71.4
+   },
+   "riichi_out_share_pct": 57.1
+  },
+  "recent": {
+   "draws": 31,
+   "tenpai_pct": 32.3,
+   "draw_points_a_game": -385,
+   "riichi_out": {
+    "draws": 22,
+    "tenpai_pct": 22.7
+   },
+   "no_riichi": {
+    "draws": 9,
+    "tenpai_pct": 55.6
+   },
+   "riichi_out_share_pct": 71.0
+  },
+  "new": {
+   "draws": 80,
+   "tenpai_pct": 37.5,
+   "draw_points_a_game": -302,
+   "riichi_out": {
+    "draws": 50,
+    "tenpai_pct": 20.0
+   },
+   "no_riichi": {
+    "draws": 30,
+    "tenpai_pct": 66.7
+   },
+   "riichi_out_share_pct": 62.5
+  },
+  "luckyj": {
+   "draws": 1522,
+   "tenpai_pct": 46.7,
+   "draw_points_a_game": -42,
+   "riichi_out": {
+    "draws": 777,
+    "tenpai_pct": 28.4
+   },
+   "no_riichi": {
+    "draws": 745,
+    "tenpai_pct": 65.8
+   },
+   "riichi_out_share_pct": 51.1
+  },
+  "jade_human": {
+   "draws": 1200,
+   "tenpai_pct": 48.8,
+   "draw_points_a_game": 87,
+   "riichi_out": {
+    "draws": 846,
+    "tenpai_pct": 47.5
+   },
+   "no_riichi": {
+    "draws": 354,
+    "tenpai_pct": 51.7
+   },
+   "riichi_out_share_pct": 70.5
+  },
+  "tokujou_human": {
+   "draws": 4566,
+   "tenpai_pct": 47.7,
+   "draw_points_a_game": 14,
+   "riichi_out": {
+    "draws": 3159,
+    "tenpai_pct": 47.4
+   },
+   "no_riichi": {
+    "draws": 1407,
+    "tenpai_pct": 48.5
+   },
+   "riichi_out_share_pct": 69.2
+  }
+ },
+ "late_calls": {
+  "before": {
+   "a_game": 0.51,
+   "calls": 113,
+   "won_pct": 32.7,
+   "dealt_pct": 16.8,
+   "draw_tenpai_pct": 21.2,
+   "net": 674
+  },
+  "new": {
+   "a_game": 0.6,
+   "calls": 35,
+   "won_pct": 34.3,
+   "dealt_pct": 8.6,
+   "draw_tenpai_pct": 14.3,
+   "net": 1129
+  },
+  "luckyj": {
+   "a_game": 0.41,
+   "calls": 442,
+   "won_pct": 27.4,
+   "dealt_pct": 12.7,
+   "draw_tenpai_pct": 21.0,
+   "net": 714
+  },
+  "jade_human": {
+   "a_game": 0.34,
+   "calls": 286,
+   "won_pct": 30.8,
+   "dealt_pct": 13.3,
+   "draw_tenpai_pct": 22.4,
+   "net": 848
+  }
+ },
+ "late_pushes": {
+  "you": {
+   "games": 281,
+   "pushed": {
+    "hands": 150,
+    "draw_tenpai_pct": 8.7,
+    "won_pct": 6.0,
+    "dealt_in_pct": 12.0,
+    "net": -1323,
+    "a_game": 0.53,
+    "median_outs": 11.0,
+    "few_outs": {
+     "hands": 30,
+     "draw_tenpai_pct": 0.0,
+     "won_pct": 0.0,
+     "dealt_in_pct": 20.0,
+     "net": -2057,
+     "a_game": 0.11
+    },
+    "more_outs": {
+     "hands": 120,
+     "draw_tenpai_pct": 10.8,
+     "won_pct": 7.5,
+     "dealt_in_pct": 10.0,
+     "net": -1139,
+     "a_game": 0.43
+    }
+   },
+   "safe_only": {
+    "hands": 167,
+    "draw_tenpai_pct": 11.4,
+    "won_pct": 4.8,
+    "dealt_in_pct": 3.6,
+    "net": -793,
+    "a_game": 0.59,
+    "median_outs": 10.0,
+    "few_outs": {
+     "hands": 57,
+     "draw_tenpai_pct": 8.8,
+     "won_pct": 1.8,
+     "dealt_in_pct": 1.8,
+     "net": -1049,
+     "a_game": 0.2
+    },
+    "more_outs": {
+     "hands": 110,
+     "draw_tenpai_pct": 12.7,
+     "won_pct": 6.4,
+     "dealt_in_pct": 4.5,
+     "net": -660,
+     "a_game": 0.39
+    }
+   },
+   "mortal": {
+    "rated": 150,
+    "under_25": 48,
+    "at_least_25": 102
+   }
+  },
+  "luckyj": {
+   "games": 1079,
+   "pushed": {
+    "hands": 526,
+    "draw_tenpai_pct": 13.9,
+    "won_pct": 5.7,
+    "dealt_in_pct": 11.0,
+    "net": -870,
+    "a_game": 0.49,
+    "median_outs": 11.0,
+    "few_outs": {
+     "hands": 103,
+     "draw_tenpai_pct": 8.7,
+     "won_pct": 1.0,
+     "dealt_in_pct": 7.8,
+     "net": -1350,
+     "a_game": 0.1
+    },
+    "more_outs": {
+     "hands": 423,
+     "draw_tenpai_pct": 15.1,
+     "won_pct": 6.9,
+     "dealt_in_pct": 11.8,
+     "net": -753,
+     "a_game": 0.39
+    }
+   },
+   "safe_only": {
+    "hands": 570,
+    "draw_tenpai_pct": 11.2,
+    "won_pct": 6.0,
+    "dealt_in_pct": 5.3,
+    "net": -894,
+    "a_game": 0.53,
+    "median_outs": 10.0,
+    "few_outs": {
+     "hands": 152,
+     "draw_tenpai_pct": 4.6,
+     "won_pct": 3.9,
+     "dealt_in_pct": 3.3,
+     "net": -1236,
+     "a_game": 0.14
+    },
+    "more_outs": {
+     "hands": 418,
+     "draw_tenpai_pct": 13.6,
+     "won_pct": 6.7,
+     "dealt_in_pct": 6.0,
+     "net": -770,
+     "a_game": 0.39
+    }
+   }
+  }
+ }
+}
