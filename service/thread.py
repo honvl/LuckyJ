@@ -678,22 +678,27 @@ def cmd_onboard(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     for n, (email, account_id, name, server) in enumerate(rows, 1):
         player = f"ms-{account_id}"
         games_dir = PLAYERS / player / "games"
-        print(f"player {n} of {len(rows)} ({server})" if ci else f"{email}: {name} ({server}, {account_id})")
+        print(f"player {n} of {len(rows)} ({server})" if ci else f"{email}: {name} ({server}, {account_id})", flush=True)
         if args.dry_run:
             continue
-        fetch = subprocess.run(
-            [sys.executable, str(ROOT / "scripts" / "fetch_player_games.py"), "--account", str(account_id),
-             "--out", str(games_dir)], capture_output=True, text=True)
-        last = (fetch.stdout.strip().splitlines() or ["(no output)"])[-1]
-        print("  " + (scrub(last, email, name, account_id) if ci else last))
-        if fetch.returncode != 0:
-            err = fetch.stderr.strip()[-300:]
-            print(f"  ! fetch failed: {scrub(err, email, name, account_id) if ci else err}")
-            failed += 1
-            continue
+        # The fetch's progress goes to the log as it happens (scrubbed in CI). A job killed for time
+        # used to leave no line at all, because the output was held until the fetch returned.
+        fetch = subprocess.Popen(
+            [sys.executable, "-u", str(ROOT / "scripts" / "fetch_player_games.py"), "--account", str(account_id),
+             "--out", str(games_dir)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        for line in fetch.stdout:
+            line = line.rstrip()
+            if line:
+                print("  " + (scrub(line, email, name, account_id) if ci else line)[:300], flush=True)
+        if fetch.wait() != 0:
+            print("  ! fetch failed", flush=True)
+            # Games fetched before the server refused still count: a thread starts at MIN_GAMES.
+            if not (games_dir / "index.json").exists():
+                failed += 1
+                continue
         index = json.loads((games_dir / "index.json").read_text(encoding="utf-8")) if (games_dir / "index.json").exists() else []
         if len(index) < MIN_GAMES:
-            print(f"  waiting: {len(index)} ranked games found, a thread starts at {MIN_GAMES}")
+            print(f"  waiting: {len(index)} ranked games found, a thread starts at {MIN_GAMES}", flush=True)
             continue
         cmd_new(client, argparse.Namespace(player=player, games=str(games_dir), budget=DEFAULT_BUDGET_USD, email=email))
     if failed:

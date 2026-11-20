@@ -14,13 +14,22 @@ with all four players' ranks, scores and rank-point changes) and ``amae-koromo-s
 live rank and points, placement rates and play stats). Its ``file`` paths point where the sandbox unpacks the games
 (``data/self_games/majsoul/<file>``), since this folder is uploaded as is. Rerunning only fetches
 games not already in the folder.
+
+Tile logs are capped at the newest ``--max-games`` of the past year (300 by default), newest first,
+and the download stops at ``--time-limit`` minutes or as soon as the record server refuses the
+fetch account (error 540), keeping what it has. Onboarding runs on a runner whose disk is not
+kept, so a download that outlasts the job loses everything: on 20 Nov 2026 the server answered
+540 to every request, each game spent 75 seconds in retries, and a 283-game sign-up was killed
+at 30 minutes with nothing to show. The index is written after every batch.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import subprocess
 import sys
+import time
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -28,6 +37,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import fetch_majsoul_games as fms  # noqa: E402
 
 SANDBOX_DIR = "data/self_games/majsoul"
+MAX_GAMES = 300
+BATCH = 20            # games per fetch_many.js run (one login each)
+BATCH_SECONDS = 240   # a healthy batch takes about a minute; a refused one retries for 75 s a game
+TIME_LIMIT_MINUTES = 15
+
+
+def newest(records: list[dict], limit: int) -> list[dict]:
+    """The `limit` most recent records, newest first (all of them when limit is 0)."""
+    ordered = sorted(records, key=lambda r: r["start_time"], reverse=True)
+    return ordered[:limit] if limit > 0 else ordered
 
 
 def main() -> None:
@@ -35,6 +54,10 @@ def main() -> None:
     ap.add_argument("--account", type=int, required=True, help="the player's Mahjong Soul account id")
     ap.add_argument("--out", type=Path, required=True, help="folder for the games and index.json")
     ap.add_argument("--since", help="only games from this date (YYYY-MM-DD); default: one year back")
+    ap.add_argument("--max-games", type=int, default=MAX_GAMES,
+                    help=f"tile logs for at most this many of the newest games (default {MAX_GAMES}; 0 for no cap)")
+    ap.add_argument("--time-limit", type=float, default=TIME_LIMIT_MINUTES,
+                    help=f"start no new batch after this many minutes (default {TIME_LIMIT_MINUTES}); the rest waits for the next run")
     ap.add_argument("--dry-run", action="store_true", help="list what would be fetched and stop")
     args = ap.parse_args()
 
@@ -54,39 +77,81 @@ def main() -> None:
         (out / "amae-koromo-stats.json").write_text(json.dumps(stats, ensure_ascii=False, indent=1),
                                                      encoding="utf-8")
     cutoff = datetime.strptime(since, "%Y-%m-%d").timestamp()
-    records = [r for r in fms.amae_records(export) if r["start_time"] >= cutoff]
+    in_window = [r for r in fms.amae_records(export) if r["start_time"] >= cutoff]
+    records = newest(in_window, args.max_games)
     manifest_path = out / "index.json"
     manifest = {row["uuid"]: row for row in json.loads(manifest_path.read_text(encoding="utf-8"))} if manifest_path.exists() else {}
     missing = [r for r in records if r["uuid"] not in manifest or not (out / Path(manifest[r["uuid"]]["file"]).name).exists()]
-    print(f"account {args.account}: {len(records)} ranked games since {since} ({added} new on amae-koromo), "
+    capped = f", newest {len(records)} kept" if len(records) < len(in_window) else ""
+    print(f"account {args.account}: {len(in_window)} ranked games since {since}{capped} ({added} new on amae-koromo), "
           f"{len(records) - len(missing)} already here, {len(missing)} to fetch")
     if args.dry_run or not missing:
         return
 
+    started = time.monotonic()
+    written = errors = tried = 0
+    stopped = ""
+    for at in range(0, len(missing), BATCH):
+        if time.monotonic() - started > args.time_limit * 60:
+            stopped = f"the {args.time_limit:g}-minute limit"
+            break
+        batch = missing[at:at + BATCH]
+        status, cut = fetch_batch([r["uuid"] for r in batch], out)
+        for r in batch:
+            st = status.get(r["uuid"])
+            if st is None:  # the batch was cut off before reaching this game
+                continue
+            tried += 1
+            if st["status"] == "error":
+                errors += 1
+                print(f"  {r['uuid']}: {st.get('error')}")
+                continue
+            written += st["status"] == "written"
+            file = Path(st["file"])
+            # The row's file is where the thread's sandbox unpacks it, wherever this folder is.
+            manifest[r["uuid"]] = fms.manifest_row(r, args.account, fms.ROOT / SANDBOX_DIR / file.name)
+        rows = sorted(manifest.values(), key=lambda row: row["start_time"], reverse=True)
+        manifest_path.write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(f"  fetched {written} of {len(missing)} ({errors} errors, {time.monotonic() - started:.0f} s)", flush=True)
+        if refused(status, cut):
+            stopped = "the record server refusing the fetch account (error 540 or no answer)"
+            break
+    rows = sorted(manifest.values(), key=lambda row: row["start_time"], reverse=True)
+    left = len(missing) - written
+    note = f"; stopped at {stopped}, {left} left for the next run" if stopped else ""
+    print(f"wrote {written} games, {errors} errors{note}; {len(rows)} games in {out}")
+    if not written and (errors or stopped):
+        sys.exit(1)
+
+
+def fetch_batch(ids: list[str], out: Path, seconds: int = BATCH_SECONDS) -> tuple[dict[str, dict], bool]:
+    """One fetch_many.js run: {uuid: its status line} and whether the run was cut off for time."""
+    if not (fms.TENSOUL / "fetch_many.js").exists():
+        sys.exit(f"missing {fms.TENSOUL / 'fetch_many.js'}; clone tensoul into tmp/ first (see README)")
+    try:
+        proc = subprocess.run(["node", "fetch_many.js", "--out", str(out), *ids], cwd=fms.TENSOUL,
+                              capture_output=True, text=True, check=False, timeout=seconds)
+        text, cut = proc.stdout, False
+        if proc.returncode != 0 and not text.strip():
+            sys.exit(f"node fetch_many.js failed:\n{proc.stderr.strip()[-400:]}")
+    except subprocess.TimeoutExpired as late:
+        raw = late.stdout or ""
+        text, cut = raw if isinstance(raw, str) else raw.decode("utf-8", "replace"), True
     status = {}
-    for line in fms.run_node("fetch_many.js", "--out", str(out), *[r["uuid"] for r in missing]).splitlines():
+    for line in text.splitlines():
         line = line.strip()
         if line.startswith("{"):
             row = json.loads(line)
             status[row["uuid"]] = row
+    return status, cut
 
-    written = errors = 0
-    for r in missing:
-        st = status.get(r["uuid"], {"status": "error", "error": "no output from fetch_many.js"})
-        if st["status"] == "error":
-            errors += 1
-            print(f"  {r['uuid']}: {st.get('error')}")
-            continue
-        written += st["status"] == "written"
-        file = Path(st["file"])
-        # The row's file is where the thread's sandbox unpacks it, wherever this folder is.
-        row = fms.manifest_row(r, args.account, fms.ROOT / SANDBOX_DIR / file.name)
-        manifest[r["uuid"]] = row
-    rows = sorted(manifest.values(), key=lambda row: row["start_time"], reverse=True)
-    manifest_path.write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"wrote {written} games, {errors} errors; {len(rows)} games in {out}")
-    if errors and not written:
-        sys.exit(1)
+
+def refused(status: dict[str, dict], cut: bool) -> bool:
+    """True when the record server is turning the fetch account away: a batch that was cut off
+    for time, or one where nothing was written and a game came back with error 540."""
+    wrote = any(row["status"] == "written" for row in status.values())
+    throttled = any(row["status"] == "error" and '"code":540' in str(row.get("error", "")).replace(" ", "") for row in status.values())
+    return cut or (throttled and not wrote)
 
 
 if __name__ == "__main__":

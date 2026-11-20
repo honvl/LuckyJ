@@ -43,7 +43,9 @@ jobs:
     needs: check
     if: needs.check.outputs.ok == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # Each player's download stops itself at 15 minutes (scripts/fetch_player_games.py) and keeps
+    # what it has; this limit is the backstop for several players in one run.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -94,7 +96,7 @@ jobs:
             # stderr names the fetch account's id; the log is public
             node fetch_many.js --out /tmp/check "$game" 2> >(sed -E 's/[0-9]{6,}/<n>/g' >&2) | python -c "import json,sys; r=[json.loads(l) for l in sys.stdin if l.startswith('{')]; s=r[0]['status'] if r else 'no output'; print('fetch account login check:', s, r[0].get('error', '')[:200] if r else ''); sys.exit(s != 'written')"
           else
-            python service/thread.py onboard
+            python -u service/thread.py onboard
           fi
 
       # Players' Mahjong Soul ranks for the Personal Guides library (prints counts only).
