@@ -22,7 +22,7 @@ export async function POST(request: Request) {
   // All of the player's threads share one allowance; give this thread what the others are not holding.
   if (!(await prepareSend(me.player, me.sessionId))) return NextResponse.json({ error: "budget" }, { status: 402 });
 
-  const events: any[] = [{ type: "user.message", content: messageContent(text, files) }];
+  const events: any[] = [{ type: "user.message", content: await messageContent(text, files) }];
   const intro = await takeIntro(me.player, me.sessionId);
   // The API takes a system message only as the last event of a request.
   if (intro) events.push({ type: "system.message", content: [{ type: "text", text: intro }] });

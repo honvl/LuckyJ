@@ -21,7 +21,7 @@ import { STRINGS, type Lang } from "@/lib/strings";
 
 type ThreadRow = { id: string; title: string | null; createdAt: string; archived: boolean };
 type Chapter = { key: string; number: number; title: string; isPublic: boolean };
-type File_ = { fileId: string; kind: "image" | "document"; name?: string; thumb?: string | null };
+type File_ = { fileId: string; kind: "image" | "document" | "download"; name?: string; thumb?: string | null };
 type Local = { id: string; kind: "user"; text: string; local: true; files?: File_[] };
 // serverId: a message sent from this page keeps the id it was drawn with when the server's copy
 // arrives, so the thread does not read the swap as an edit (a "2/2" branch).
@@ -44,8 +44,8 @@ function toMessages(items: Item[], running: boolean, t: (typeof STRINGS)[Lang]):
         role: "user",
         content: ev.text ? [{ type: "text", text: ev.text }] : [],
         attachments: files.map((f) => ({
-          id: f.fileId,
-          type: f.kind,
+          id: f.fileId || `${ev.id}-${f.name}`,
+          type: f.kind === "image" ? "image" : "document",
           name: f.name || (f.kind === "image" ? "image" : "document"),
           status: { type: "complete" as const },
           content: f.kind === "image"

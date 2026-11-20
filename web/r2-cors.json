@@ -1,0 +1,8 @@
+[
+  {
+    "AllowedOrigins": ["https://ai.yui-life.com", "http://localhost:3100"],
+    "AllowedMethods": ["PUT"],
+    "AllowedHeaders": ["content-type"],
+    "MaxAgeSeconds": 3600
+  }
+]

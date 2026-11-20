@@ -2,7 +2,7 @@
 // stream go through the same function, so a reconnect that refetches history dedupes by id.
 
 export type ChatEvent =
-  | { id: string; kind: "user"; text: string; files?: { fileId: string; kind: "image" | "document"; name?: string }[] }
+  | { id: string; kind: "user"; text: string; files?: { fileId: string; kind: "image" | "document" | "download"; name?: string }[] }
   | { id: string; kind: "agent"; text: string }
   | { id: string; kind: "tool"; label: string; detail: string; failed?: boolean }
   | { id: string; kind: "status"; state: "running" | "idle"; stop?: string }
@@ -11,6 +11,9 @@ export type ChatEvent =
   | { id: string; kind: "error"; message: string };
 
 type Raw = { id: string; type: string; [key: string]: any };
+
+/** Same as lib/attachments.ts (kept here because this file also runs in the browser). */
+const DOWNLOAD_MARKER = "[attached file] ";
 
 function textOf(content: any[] | undefined): string {
   return (content || []).filter((b) => b?.type === "text").map((b) => b.text).join("");
@@ -51,12 +54,21 @@ export function toChatEvent(ev: Raw): ChatEvent | null {
   switch (ev.type) {
     case "user.message": {
       // Attached files travel as image and document blocks that point at the Files API.
-      const files = (ev.content || [])
-        .filter((b: any) => (b?.type === "image" || b?.type === "document") && b?.source?.file_id)
-        .map((b: any) => ({ fileId: b.source.file_id as string, kind: b.type as "image" | "document", name: b.title ?? undefined }));
-      return files.length
-        ? { id: ev.id, kind: "user", text: textOf(ev.content), files }
-        : { id: ev.id, kind: "user", text: textOf(ev.content) };
+      // Big files arrive as a download line (lib/attachments.ts DOWNLOAD_MARKER), not as text.
+      const blocks: any[] = ev.content || [];
+      const isDownload = (b: any) => b?.type === "text" && String(b.text).startsWith(DOWNLOAD_MARKER);
+      type Attached = { fileId: string; kind: "image" | "document" | "download"; name?: string };
+      const files = blocks.flatMap((b: any): Attached[] => {
+        if ((b?.type === "image" || b?.type === "document") && b?.source?.file_id)
+          return [{ fileId: b.source.file_id as string, kind: b.type as "image" | "document", name: b.title ?? undefined }];
+        if (isDownload(b)) {
+          const name = String(b.text).slice(DOWNLOAD_MARKER.length).split(" (too big")[0];
+          return [{ fileId: "", kind: "download", name }];
+        }
+        return [];
+      });
+      const text = textOf(blocks.filter((b) => !isDownload(b)));
+      return files.length ? { id: ev.id, kind: "user", text, files } : { id: ev.id, kind: "user", text };
     }
     case "agent.message":
       return { id: ev.id, kind: "agent", text: textOf(ev.content) };

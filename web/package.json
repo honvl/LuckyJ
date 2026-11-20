@@ -15,6 +15,7 @@
     "@assistant-ui/react-markdown": "0.14.26",
     "@neondatabase/serverless": "1.2.1",
     "@tailwindcss/postcss": "4.3.4",
+    "aws4fetch": "1.0.20",
     "class-variance-authority": "0.7.1",
     "cn": "0.5.2",
     "lucide-react": "1.76.0",
