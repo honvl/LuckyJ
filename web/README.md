@@ -42,7 +42,7 @@ The API key is read from `ANTHROPIC_API_KEY` or `service/.state/api_key`.
 
 ## Hosting
 
-Live at https://luckyj.vercel.app (Vercel project `luckyj`, root directory `web`, team Honver
+Live at https://ai.yui-life.com (luckyj.vercel.app forwards there; Vercel project `luckyj`, root directory `web`, team Honver
 Lam's projects). Deploy from the repository root, so the build can copy `site/` in:
 
 ```bash

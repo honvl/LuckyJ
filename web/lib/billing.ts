@@ -85,7 +85,15 @@ let portalConfig: string | null = env.STRIPE_PORTAL_CONFIG || null;
 async function tutorPortalConfig(base: string): Promise<string> {
   if (portalConfig) return portalConfig;
   for await (const c of stripe().billingPortal.configurations.list({ active: true, limit: 100 })) {
-    if (c.metadata?.app === "luckyj-tutor") return (portalConfig = c.id);
+    if (c.metadata?.app !== "luckyj-tutor") continue;
+    if (c.business_profile?.privacy_policy_url !== `${base}/privacy.html` || c.default_return_url !== `${base}/account`) {
+      // The site moved (a new domain): point the portal's links at it.
+      await stripe().billingPortal.configurations.update(c.id, {
+        business_profile: { privacy_policy_url: `${base}/privacy.html`, terms_of_service_url: `${base}/terms.html` },
+        default_return_url: `${base}/account`,
+      });
+    }
+    return (portalConfig = c.id);
   }
   const created = await stripe().billingPortal.configurations.create({
     name: "LuckyJ AI Mahjong Tutor",
