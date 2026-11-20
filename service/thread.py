@@ -25,6 +25,7 @@ import io
 import json
 import os
 import re
+import subprocess
 import sys
 import tarfile
 from pathlib import Path
@@ -458,18 +459,57 @@ def cmd_pending(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     """Paying players whose games still need fetching and whose thread does not exist yet."""
     with _db() as conn:
         rows = conn.execute(
-            "select s.email, s.majsoul_name, s.tenhou_name, s.game_name, s.publish, s.status, s.created_at"
-            " from subscriptions s left join logins l on l.email = s.email"
+            "select s.email, p.majsoul_name, p.majsoul_server, p.majsoul_account_id, p.publish, s.status, s.created_at"
+            " from subscriptions s left join profiles p on p.email = s.email"
+            " left join logins l on l.email = s.email"
             " where l.email is null and s.status in ('active', 'trialing', 'past_due')"
             " order by s.created_at").fetchall()
     if not rows:
         print("nobody is waiting")
-    for email, majsoul, tenhou, old_name, publish, status, created in rows:
-        names = "  ".join(x for x in (majsoul and f"Mahjong Soul: {majsoul}", tenhou and f"Tenhou: {tenhou}") if x)
-        print(f"{created:%Y-%m-%d %H:%M}  {email}  {names or old_name or '?'}  "
-              f"{'public' if publish else 'private'}  {status}")
+    for email, name, server, account_id, publish, status, created in rows:
+        who = f"{name} ({server}, {account_id})" if account_id else "no Mahjong Soul account yet"
+        print(f"{created:%Y-%m-%d %H:%M}  {email}  {who}  {'public' if publish else 'private'}  {status}")
     if rows:
-        print("\nFetch their games, then: thread.py new <player> --games <dir> --email <email>")
+        print("\n`thread.py onboard` fetches their games and starts their threads.")
+
+
+MIN_GAMES = 10  # a thread needs enough games to say anything
+
+
+def cmd_onboard(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
+    """Start a thread for every paying player still waiting: fetch their games, create, link.
+
+    The player is keyed by Mahjong Soul account id (ms-<id>), so two players with the same
+    nickname on different servers never share a thread. Safe to run on a schedule.
+    """
+    with _db() as conn:
+        rows = conn.execute(
+            "select s.email, p.majsoul_account_id, p.majsoul_name, p.majsoul_server"
+            " from subscriptions s join profiles p on p.email = s.email"
+            " left join logins l on l.email = s.email"
+            " where l.email is null and s.status in ('active', 'trialing') and p.majsoul_account_id is not null"
+            " order by s.created_at").fetchall()
+    if not rows:
+        print("nobody is waiting")
+        return
+    for email, account_id, name, server in rows:
+        player = f"ms-{account_id}"
+        games_dir = PLAYERS / player / "games"
+        print(f"{email}: {name} ({server}, {account_id})")
+        if args.dry_run:
+            continue
+        fetch = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "fetch_player_games.py"), "--account", str(account_id),
+             "--out", str(games_dir)], capture_output=True, text=True)
+        print("  " + (fetch.stdout.strip().splitlines() or ["(no output)"])[-1])
+        if fetch.returncode != 0:
+            print(f"  ! fetch failed: {fetch.stderr.strip()[-300:]}")
+            continue
+        index = json.loads((games_dir / "index.json").read_text(encoding="utf-8")) if (games_dir / "index.json").exists() else []
+        if len(index) < MIN_GAMES:
+            print(f"  waiting: {len(index)} ranked games found, a thread starts at {MIN_GAMES}")
+            continue
+        cmd_new(client, argparse.Namespace(player=player, games=str(games_dir), budget=DEFAULT_BUDGET_USD, email=email))
 
 
 def cmd_comp(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
@@ -542,6 +582,8 @@ def main() -> None:
     p.add_argument("email")
     sub.add_parser("db-sync", help="create the site's tables and copy every player into them")
     sub.add_parser("pending", help="paying players still waiting for their thread")
+    p = sub.add_parser("onboard", help="fetch games and start a thread for every paying player waiting")
+    p.add_argument("--dry-run", action="store_true", help="list who would be started and stop")
     p = sub.add_parser("comp", help="let a player use the tutor without paying")
     p.add_argument("player")
     p.add_argument("--off", action="store_true", help="require a subscription again")
@@ -553,7 +595,7 @@ def main() -> None:
     args = ap.parse_args()
 
     client = anthropic.Anthropic(api_key=api_key())
-    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "db-sync": cmd_db_sync, "pending": cmd_pending, "comp": cmd_comp, "list": cmd_list,
+    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "db-sync": cmd_db_sync, "pending": cmd_pending, "onboard": cmd_onboard, "comp": cmd_comp, "list": cmd_list,
      "topup": cmd_topup}[args.cmd](client, args)
 
 

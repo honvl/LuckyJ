@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Starts tutor threads for new subscribers every 15 minutes: `thread.py onboard` fetches their
+     Mahjong Soul games (tensoul, logged in as the operator) and creates the thread. Runs on this
+     Mac only while you are logged in. Install:
+       cp service/launchd/com.luckyj.tutor-onboard.plist ~/Library/LaunchAgents/
+       launchctl load ~/Library/LaunchAgents/com.luckyj.tutor-onboard.plist
+     Stop: launchctl unload ~/Library/LaunchAgents/com.luckyj.tutor-onboard.plist -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.luckyj.tutor-onboard</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/honvl/LuckyJ/.venv/bin/python</string>
+    <string>service/thread.py</string>
+    <string>onboard</string>
+  </array>
+  <key>WorkingDirectory</key><string>/Users/honvl/LuckyJ</string>
+  <key>EnvironmentVariables</key>
+  <dict><key>PATH</key><string>/opt/homebrew/bin:/usr/bin:/bin</string></dict>
+  <key>StartInterval</key><integer>900</integer>
+  <key>StandardOutPath</key><string>/Users/honvl/LuckyJ/service/.state/onboard.log</string>
+  <key>StandardErrorPath</key><string>/Users/honvl/LuckyJ/service/.state/onboard.log</string>
+</dict>
+</plist>

@@ -25,11 +25,10 @@ export type Book = { player: string; name: string; slug: string; chapters: BookC
 /** The name a book is published under, and its URL name (set once, kept stable). */
 async function ensureBookName(player: string): Promise<{ name: string; slug: string }> {
   const [row] = await sql!`select book_name, slug from players where name = ${player}`;
-  const [sub] = await sql!`
-    select s.majsoul_name, s.tenhou_name, s.game_name from subscriptions s
-    join logins l on l.email = s.email where l.player = ${player}
-    order by s.updated_at desc limit 1`;
-  const name = sub?.majsoul_name || sub?.tenhou_name || sub?.game_name || row?.book_name || player;
+  const [prof] = await sql!`
+    select pr.majsoul_name from profiles pr join logins l on l.email = pr.email
+    where l.player = ${player} and pr.majsoul_name is not null order by pr.updated_at desc limit 1`;
+  const name = prof?.majsoul_name || row?.book_name || player;
   if (row?.slug) {
     if (row.book_name !== name) await sql!`update players set book_name = ${name} where name = ${player}`;
     return { name, slug: row.slug };
@@ -47,10 +46,10 @@ async function ensureBookName(player: string): Promise<{ name: string; slug: str
 
 /** Whether a player's new chapters start public (their sign-up choice; free players: yes). */
 async function publishByDefault(player: string): Promise<boolean> {
-  const [sub] = await sql!`
-    select s.publish from subscriptions s join logins l on l.email = s.email
-    where l.player = ${player} order by s.updated_at desc limit 1`;
-  return sub ? Boolean(sub.publish) : true;
+  const [prof] = await sql!`
+    select pr.publish from profiles pr join logins l on l.email = pr.email
+    where l.player = ${player} order by pr.updated_at desc limit 1`;
+  return prof ? Boolean(prof.publish) : true;
 }
 
 /**
@@ -115,8 +114,10 @@ async function chaptersOf(player: string, publicOnly: boolean): Promise<BookChap
     left join private_chapters pc on pc.player = c.player and pc.chapter = c.key
     where c.player = ${player}
     order by c.number, c.key`;
+  const [p] = await sql!`select book_public from players where name = ${player}`;
+  const bookPublic = p ? Boolean(p.book_public) : false;
   return rows
-    .filter((r) => !publicOnly || r.is_public)
+    .filter((r) => !publicOnly || (bookPublic && r.is_public))
     .map((r) => ({
       key: r.key, number: r.number, title: r.title, markdown: r.markdown, spots: r.spots,
       figures: r.figures, isPublic: r.is_public, updatedAt: new Date(r.updated_at).toISOString(),
@@ -124,10 +125,16 @@ async function chaptersOf(player: string, publicOnly: boolean): Promise<BookChap
 }
 
 /** A player's own chapters, public and private (for their chat page). */
-export async function ownChapters(player: string): Promise<{ slug: string | null; chapters: BookChapter[] }> {
-  if (!sql) return { slug: null, chapters: [] };
-  const [p] = await sql`select slug from players where name = ${player}`;
-  return { slug: p?.slug ?? null, chapters: await chaptersOf(player, false) };
+export async function ownChapters(player: string): Promise<{ slug: string | null; bookPublic: boolean; chapters: BookChapter[] }> {
+  if (!sql) return { slug: null, bookPublic: false, chapters: [] };
+  const [p] = await sql`select slug, book_public from players where name = ${player}`;
+  return { slug: p?.slug ?? null, bookPublic: Boolean(p?.book_public), chapters: await chaptersOf(player, false) };
+}
+
+/** Turn a player's whole Personal Guide on or off the site. */
+export async function setBookPublic(player: string, isPublic: boolean) {
+  if (!sql) return;
+  await sql`update players set book_public = ${isPublic} where name = ${player}`;
 }
 
 /** The public book at /books/<slug>, or null. */
@@ -148,7 +155,7 @@ export async function publicBooks(): Promise<{ name: string; slug: string; chapt
     select p.book_name, p.name, p.slug, count(*)::int as chapters, max(c.updated_at) as updated
     from players p join chapters c on c.player = p.name
     left join private_chapters pc on pc.player = c.player and pc.chapter = c.key
-    where pc.chapter is null and p.slug is not null
+    where pc.chapter is null and p.slug is not null and p.book_public
     group by p.name order by max(c.updated_at) desc`;
   return rows.map((r) => ({ name: r.book_name || r.name, slug: r.slug, chapters: r.chapters, updated: new Date(r.updated).toISOString() }));
 }
@@ -159,6 +166,6 @@ export async function figure(slug: string, key: string, name: string) {
   const [row] = await sql`
     select f.mime, f.data from chapter_files f join players p on p.name = f.player
     left join private_chapters pc on pc.player = f.player and pc.chapter = f.key
-    where p.slug = ${slug} and f.key = ${key} and f.name = ${name} and pc.chapter is null`;
+    where p.slug = ${slug} and f.key = ${key} and f.name = ${name} and pc.chapter is null and p.book_public`;
   return row ? { mime: row.mime as string, data: Buffer.from(row.data, "base64") } : null;
 }

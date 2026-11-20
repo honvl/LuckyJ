@@ -3,7 +3,6 @@ import { signOut } from "next-auth/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { ChatEvent } from "@/lib/events";
 import { STRINGS, type Lang } from "@/lib/strings";
-import ManageButton from "./ManageButton";
 import Markdown from "./Markdown";
 
 type Chapter = { key: string; number: number; title: string; isPublic: boolean };
@@ -31,7 +30,7 @@ function toBlocks(items: Item[], t: (typeof STRINGS)[Lang]): Block[] {
   return blocks;
 }
 
-export default function Chat({ lang, player, siteUrl, canManage = false }: { lang: Lang; player: string; siteUrl: string; canManage?: boolean }) {
+export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: string; siteUrl: string }) {
   const t = STRINGS[lang];
   const [items, setItems] = useState<Item[]>([]);
   const [status, setStatus] = useState<string>("idle");
@@ -174,7 +173,7 @@ export default function Chat({ lang, player, siteUrl, canManage = false }: { lan
             <span className="spend-text">{t.used(pct)}</span>
           </div>
         )}
-        {canManage && <ManageButton label={t.manage} />}
+        <a className="link-button" href="/account">{t.accountLink}</a>
         <button type="button" className="link-button" onClick={() => signOut({ callbackUrl: "/login" })}>
           {t.signOut}
         </button>

@@ -764,3 +764,121 @@ a {
 .book-card dd {
   margin: 2px 0 0;
 }
+
+/* Mahjong Soul account picker (sign-up and account page). */
+.picker {
+  border: 1px solid var(--hair);
+  border-radius: 8px;
+  padding: 12px 14px 14px;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  background: var(--plate);
+}
+
+.picker legend {
+  font: 600 14px var(--sans);
+  padding: 0 4px;
+}
+
+.picker select {
+  font: 16px var(--sans);
+  padding: 9px 10px;
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.button-quiet {
+  background: var(--paper);
+  color: var(--felt);
+  border: 1px solid var(--felt);
+  justify-self: start;
+}
+
+.picker-matches {
+  display: grid;
+  gap: 6px;
+}
+
+.picker-match {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  align-items: baseline;
+  padding: 8px 10px;
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.picker-match.is-picked {
+  border-color: var(--jade);
+  background: var(--jade-soft);
+}
+
+.picker-match .login-note {
+  grid-column: 2;
+  margin: 0;
+}
+
+.picker-name {
+  font: 600 16px var(--sans);
+}
+
+/* Account page */
+.account-sections {
+  display: grid;
+  gap: 28px;
+}
+
+.account-sections section {
+  border-top: 1px solid var(--hair);
+  padding-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.account-sections h2 {
+  font: 700 12px var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+
+.account-sections p {
+  margin: 0;
+}
+
+.account-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.account-chapters {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.account-chapters li {
+  padding: 8px 12px;
+  background: var(--plate);
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+}
+
+/* The account page already titles this section, so the picker's own label is for screen readers. */
+.account-sections .picker legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}

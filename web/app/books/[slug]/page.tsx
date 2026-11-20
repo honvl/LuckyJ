@@ -26,7 +26,7 @@ export default async function BookPage({ params }: Params) {
       <p className="book-lead">{t.bookLead}</p>
       <BookChapters lang={lang} slug={book.slug} chapters={book.chapters} />
       <p className="login-note book-foot">
-        {t.notAffiliated} <a href={t.privacyHref}>{t.privacy}</a>
+        {t.notAffiliated} <a href={t.privacyHref}>{t.privacy}</a> · <a href={t.termsHref}>{t.terms}</a>
       </p>
     </main>
   );

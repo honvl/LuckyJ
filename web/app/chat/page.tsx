@@ -5,7 +5,6 @@ import { accessFor, billingEnabled } from "@/lib/billing";
 import { STRINGS, pageLang } from "@/lib/lang";
 import { PRODUCT } from "@/lib/strings";
 import Chat from "@/components/Chat";
-import ManageButton from "@/components/ManageButton";
 import SignOutButton from "@/components/SignOutButton";
 import Subscribe from "@/components/Subscribe";
 
@@ -28,7 +27,6 @@ export default async function ChatPage() {
         lang={lang}
         player={access.thread.player}
         siteUrl={process.env.SITE_URL || ""}
-        canManage={Boolean(access.subscription?.customer_id)}
       />
     );
   }
@@ -50,11 +48,11 @@ export default async function ChatPage() {
       <h1>{title}</h1>
       {body}
       <p className="login-actions">
-        {access.subscription?.customer_id && <ManageButton label={t.manage} />}
+        <a className="link-button" href="/account">{t.accountLink}</a>
         <SignOutButton label={t.signOut} />
       </p>
       <p className="login-note">
-        {t.notAffiliated} <a href={t.privacyHref}>{t.privacy}</a>
+        {t.notAffiliated} <a href={t.privacyHref}>{t.privacy}</a> · <a href={t.termsHref}>{t.terms}</a>
       </p>
     </main>
   );

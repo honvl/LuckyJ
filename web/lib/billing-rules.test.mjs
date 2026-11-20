@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { bookName, capAfterRenewal, hasAccess, invoiceSubscriptionId, isTutorSubscription, periodEnd, signupFields } from "./billing-rules.mjs";
+import { capAfterRenewal, hasAccess, invoiceSubscriptionId, isTutorSubscription, periodEnd, signupFields } from "./billing-rules.mjs";
 
 test("access", () => {
   assert.equal(hasAccess({ comp: true }), true);
@@ -35,13 +35,12 @@ test("only the tutor's price counts", () => {
   assert.equal(isTutorSubscription(tutor, undefined), false);
 });
 
-test("sign-up fields: one Mahjong Soul name and one Tenhou name, at least one", () => {
-  assert.deepEqual(signupFields({ majsoulName: "  Honver ", tenhouName: "", publish: false }), { majsoulName: "Honver", tenhouName: "", publish: false });
-  assert.deepEqual(signupFields({ tenhouName: "ID-Honver" }), { majsoulName: "", tenhouName: "ID-Honver", publish: true });
-  assert.deepEqual(signupFields({ majsoulName: "A", tenhouName: "B" }), { majsoulName: "A", tenhouName: "B", publish: true });
-  assert.equal(signupFields({ majsoulName: " ", tenhouName: "" }), null);
-  assert.equal(signupFields({}), null);
-  assert.equal(signupFields({ majsoulName: "x".repeat(100) }).majsoulName.length, 64);
-  assert.equal(bookName({ majsoulName: "A", tenhouName: "B" }), "A");
-  assert.equal(bookName({ majsoulName: "", tenhouName: "B" }), "B");
+test("sign-up fields: a Mahjong Soul account picked on the player's server", () => {
+  const ok = { majsoulServer: "international", majsoulName: " Honver ", majsoulAccountId: 120182062, publish: false };
+  assert.deepEqual(signupFields(ok), { majsoulServer: "international", majsoulName: "Honver", majsoulAccountId: 120182062, publish: false });
+  assert.equal(signupFields({ ...ok, majsoulServer: "japan" }), null, "account is not on that server");
+  assert.equal(signupFields({ ...ok, majsoulServer: "mars" }), null);
+  assert.equal(signupFields({ ...ok, majsoulName: " " }), null);
+  assert.equal(signupFields({ ...ok, majsoulAccountId: "abc" }), null);
+  assert.equal(signupFields({ ...ok, publish: undefined }).publish, true);
 });

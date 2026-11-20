@@ -87,3 +87,20 @@ create table if not exists chapter_files (
   primary key (player, key, name),
   foreign key (player, key) references chapters(player, key) on delete cascade
 );
+
+-- Who a login plays as. Mahjong Soul is pinned by account id (the same nickname can exist on the
+-- China, Japan and International servers); Tenhou names are unique. publish is the sign-up choice
+-- for new chapters. Written when the player signs up or edits their account page.
+create table if not exists profiles (
+  email              text primary key,
+  majsoul_server     text,
+  majsoul_name       text,
+  majsoul_account_id bigint,
+  tenhou_name        text,
+  publish            boolean not null default true,
+  created_at         timestamptz not null default now(),
+  updated_at         timestamptz not null default now()
+);
+
+-- The whole Personal Guide on or off the site (each chapter also has its own switch).
+alter table players add column if not exists book_public boolean not null default true;

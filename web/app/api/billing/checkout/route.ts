@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { accessFor, billingEnabled, checkoutUrl } from "@/lib/billing";
 import { signupFields } from "@/lib/billing-rules.mjs";
+import { saveProfile } from "@/lib/profile";
 
 export async function POST(request: Request) {
   const email = (await getServerSession(authOptions))?.user?.email;
@@ -14,5 +15,7 @@ export async function POST(request: Request) {
   if (access.allowed || (access.subscription && ["active", "trialing", "past_due"].includes(access.subscription.status))) {
     return NextResponse.json({ error: "already subscribed" }, { status: 409 });
   }
-  return NextResponse.json({ url: await checkoutUrl(access.email, fields) });
+  // Who they play as is kept with the login, not in Stripe.
+  await saveProfile(access.email, fields);
+  return NextResponse.json({ url: await checkoutUrl(access.email) });
 }

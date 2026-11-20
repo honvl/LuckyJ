@@ -20,7 +20,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       {(await searchParams).error && <p className="login-error">{t.signInFailed}</p>}
       <LoginButtons providers={providers} lang={lang} />
       <p className="login-note">
-        {t.notAffiliated} <a href={t.privacyHref}>{t.privacy}</a>
+        {t.notAffiliated} <a href={t.privacyHref}>{t.privacy}</a> · <a href={t.termsHref}>{t.terms}</a>
       </p>
     </main>
   );

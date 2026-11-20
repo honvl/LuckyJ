@@ -25,8 +25,7 @@ export type Subscription = {
   customer_id: string | null;
   subscription_id: string | null;
   status: string;
-  majsoul_name: string | null;
-  tenhou_name: string | null;
+  current_period_end: string | null;
 };
 
 export type Access = {
@@ -60,9 +59,9 @@ export async function accessFor(email: string): Promise<Access> {
   };
 }
 
-export async function checkoutUrl(email: string, fields: { majsoulName: string; tenhouName: string; publish: boolean }) {
+export async function checkoutUrl(email: string) {
   const base = env.NEXTAUTH_URL || "http://localhost:3100";
-  const metadata = { email, majsoul_name: fields.majsoulName, tenhou_name: fields.tenhouName, publish: String(fields.publish) };
+  const metadata = { email };
   const session = await stripe().checkout.sessions.create({
     mode: "subscription",
     line_items: [{ price: env.STRIPE_PRICE_ID!, quantity: 1 }],

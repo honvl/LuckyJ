@@ -1,3 +1,4 @@
+import { SERVERS, accountServer } from "./majsoul.mjs";
 // Billing rules, kept free of I/O so they can be tested. Stripe API version 2026-10-28.endive:
 // an invoice names its subscription under parent.subscription_details, and a subscription's
 // period lives on its items.
@@ -42,23 +43,16 @@ export function isTutorSubscription(subscription, priceId) {
   return (subscription?.items?.data || []).some((item) => (item?.price?.id ?? item?.price) === priceId);
 }
 
-/** One in-game name, trimmed to what the games allow; "" when absent. */
-function cleanName(value) {
-  return typeof value === "string" ? value.trim().slice(0, 64) : "";
-}
-
 /**
- * The sign-up form's fields, cleaned: one Mahjong Soul name and one Tenhou name, at least one of
- * them. Null when both are missing.
+ * The sign-up form's fields, cleaned: the player's Mahjong Soul server, their in-game name and
+ * the account they picked from the exact-name matches on that server. Null when anything is
+ * missing or the account is not on the chosen server.
  */
 export function signupFields(body) {
-  const majsoulName = cleanName(body?.majsoulName);
-  const tenhouName = cleanName(body?.tenhouName);
-  if (!majsoulName && !tenhouName) return null;
-  return { majsoulName, tenhouName, publish: body?.publish !== false };
-}
-
-/** The name a player's book is published under: their Mahjong Soul name, else their Tenhou name. */
-export function bookName(fields) {
-  return fields.majsoulName || fields.tenhouName || "";
+  const server = SERVERS.includes(body?.majsoulServer) ? body.majsoulServer : null;
+  const name = typeof body?.majsoulName === "string" ? body.majsoulName.trim().slice(0, 64) : "";
+  const accountId = Number(body?.majsoulAccountId);
+  if (!server || !name || !Number.isSafeInteger(accountId) || accountId <= 0) return null;
+  if (accountServer(accountId) !== server) return null;
+  return { majsoulServer: server, majsoulName: name, majsoulAccountId: accountId, publish: body?.publish !== false };
 }
