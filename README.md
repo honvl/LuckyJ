@@ -2,8 +2,8 @@
 
 Analysis workspace for LuckyJ's Japanese mahjong games analyzed by NAGA.
 
-Site: https://honvl.github.io/LuckyJ/
-Japanese translation: https://honvl.github.io/LuckyJ/ja.html
+Site: https://ai.yui-life.com/
+Japanese translation: https://ai.yui-life.com/ja.html
 
 ## Contents
 
