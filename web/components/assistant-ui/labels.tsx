@@ -2,7 +2,10 @@
 // Labels the assistant-ui components show, so the Japanese chat page can replace the English ones.
 import { createContext, useContext } from "react";
 
-export type AuiLabels = { placeholder: string; newThread: string; untitled: string; search: string; rename: string; archive: string };
+export type AuiLabels = {
+  placeholder: string; newThread: string; untitled: string; search: string; rename: string; archive: string;
+  archived: string; unarchive: string;
+};
 
 const ENGLISH: AuiLabels = {
   placeholder: "Send a message...",
@@ -11,6 +14,8 @@ const ENGLISH: AuiLabels = {
   search: "Search threads",
   rename: "Rename",
   archive: "Archive",
+  archived: "Archived",
+  unarchive: "Restore",
 };
 
 export const AuiLabelsContext = createContext<AuiLabels>(ENGLISH);

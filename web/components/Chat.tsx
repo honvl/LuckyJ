@@ -11,6 +11,7 @@ import {
 import { MenuIcon, XIcon } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { attachmentAdapter, uploaded } from "@/components/attachments";
 import { MahjongContext } from "@/components/assistant-ui/elements/markdown-text";
 import { Thread } from "@/components/assistant-ui/elements/thread.aui";
 import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
@@ -20,7 +21,8 @@ import { STRINGS, type Lang } from "@/lib/strings";
 
 type ThreadRow = { id: string; title: string | null; createdAt: string; archived: boolean };
 type Chapter = { key: string; number: number; title: string; isPublic: boolean };
-type Local = { id: string; kind: "user"; text: string; local: true };
+type File_ = { fileId: string; kind: "image" | "document"; name?: string; thumb?: string | null };
+type Local = { id: string; kind: "user"; text: string; local: true; files?: File_[] };
 // serverId: a message sent from this page keeps the id it was drawn with when the server's copy
 // arrives, so the thread does not read the swap as an edit (a "2/2" branch).
 type Item = (Extract<ChatEvent, { kind: "user" | "agent" | "tool" | "compacted" | "error" }> & { serverId?: string }) | Local;
@@ -36,7 +38,21 @@ function toMessages(items: Item[], running: boolean, t: (typeof STRINGS)[Lang]):
   for (const ev of items) {
     if (ev.kind === "user") {
       flush();
-      out.push({ id: ev.id, role: "user", content: [{ type: "text", text: ev.text }] });
+      const files = ((ev as any).files || []) as File_[];
+      out.push({
+        id: ev.id,
+        role: "user",
+        content: ev.text ? [{ type: "text", text: ev.text }] : [],
+        attachments: files.map((f) => ({
+          id: f.fileId,
+          type: f.kind,
+          name: f.name || (f.kind === "image" ? "image" : "document"),
+          status: { type: "complete" as const },
+          content: f.kind === "image"
+            ? [{ type: "image" as const, image: f.thumb || `/api/attachments/${encodeURIComponent(f.fileId)}` }]
+            : [{ type: "file" as const, data: "", mimeType: "application/octet-stream", filename: f.name || "document" }],
+        })),
+      });
       continue;
     }
     reply ??= { id: `reply-${ev.id}`, parts: [] };
@@ -63,6 +79,14 @@ function toMessages(items: Item[], running: boolean, t: (typeof STRINGS)[Lang]):
 
 function textOf(message: AppendMessage): string {
   return message.content.map((p) => (p.type === "text" ? p.text : "")).join("").trim();
+}
+
+/** The uploaded files a composed message carries. */
+function filesOf(message: AppendMessage): File_[] {
+  return (message.attachments || []).flatMap((a) => {
+    const up = uploaded.get(a.id);
+    return up ? [{ fileId: up.fileId, kind: up.kind, name: a.name, thumb: up.thumb }] : [];
+  });
 }
 
 function threadFromUrl(): string | null {
@@ -104,8 +128,11 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
         if (ev.kind === "user") {
           // The server's copy of a message sent from this page replaces the local one.
           const i = next.findIndex((e) => "local" in e && e.text === ev.text);
+          const localFiles = i >= 0 ? ((next[i] as Local).files || []) : [];
           if (i >= 0) {
-            next = [...next.slice(0, i), { ...ev, id: next[i].id, serverId: ev.id }, ...next.slice(i + 1)];
+            // Keep this page's thumbnails for files the server copy only names by id.
+            const files = (ev.files || []).map((f) => ({ ...f, thumb: localFiles.find((l) => l.fileId === f.fileId)?.thumb }));
+            next = [...next.slice(0, i), { ...ev, files, id: next[i].id, serverId: ev.id }, ...next.slice(i + 1)];
             continue;
           }
         }
@@ -192,16 +219,16 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
     return () => source.close();
   }, [current, load, merge, listThreads]);
 
-  const send = useCallback(async (text: string) => {
+  const send = useCallback(async (text: string, files: File_[] = []) => {
     const id = currentRef.current;
-    if (!text || !id) return;
+    if ((!text && !files.length) || !id) return;
     setNotice(null);
-    setItems((prev) => [...prev, { id: `local-${Date.now()}`, kind: "user", text, local: true }]);
+    setItems((prev) => [...prev, { id: `local-${Date.now()}`, kind: "user", text, local: true, files }]);
     setStatus("running");
     const res = await fetch("/api/thread/message", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text, thread: id }),
+      body: JSON.stringify({ text, thread: id, attachments: files.map((f) => f.fileId) }),
     });
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
@@ -248,6 +275,7 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
   const running = status === "running";
   const outOfBudget = stop === "budget_reached";
   const messages = useMemo(() => toMessages(items, running, t), [items, running, t]);
+  const attachments = useMemo(() => attachmentAdapter({ tooLarge: t.fileTooLarge, failed: t.uploadFailed }), [t]);
   // Browser speech input, made after the first render so the server's HTML matches.
   const [dictation, setDictation] = useState<WebSpeechDictationAdapter | undefined>();
   useEffect(() => {
@@ -260,9 +288,10 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
     isRunning: running,
     isLoading: loading,
     isDisabled: outOfBudget || creating || !current,
-    onNew: async (message) => send(textOf(message)),
+    onNew: async (message) => send(textOf(message), filesOf(message)),
     adapters: {
       dictation,
+      attachments,
       threadList: {
         threadId: current ?? undefined,
         isLoading: !current && threads.length === 0,
@@ -301,7 +330,10 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
     [player, t.emptyThread],
   );
   const labels = useMemo(
-    () => ({ placeholder: t.placeholder, newThread: t.newThread, untitled: t.untitled, search: t.threads, rename: t.rename, archive: t.archive }),
+    () => ({
+      placeholder: t.placeholder, newThread: t.newThread, untitled: t.untitled, search: t.threads,
+      rename: t.rename, archive: t.archive, archived: t.archived, unarchive: t.unarchive,
+    }),
     [t],
   );
 

@@ -2,7 +2,7 @@
 // stream go through the same function, so a reconnect that refetches history dedupes by id.
 
 export type ChatEvent =
-  | { id: string; kind: "user"; text: string }
+  | { id: string; kind: "user"; text: string; files?: { fileId: string; kind: "image" | "document"; name?: string }[] }
   | { id: string; kind: "agent"; text: string }
   | { id: string; kind: "tool"; label: string; detail: string; failed?: boolean }
   | { id: string; kind: "status"; state: "running" | "idle"; stop?: string }
@@ -49,8 +49,15 @@ function describeTool(name: string, input: any): { label: string; detail: string
 
 export function toChatEvent(ev: Raw): ChatEvent | null {
   switch (ev.type) {
-    case "user.message":
-      return { id: ev.id, kind: "user", text: textOf(ev.content) };
+    case "user.message": {
+      // Attached files travel as image and document blocks that point at the Files API.
+      const files = (ev.content || [])
+        .filter((b: any) => (b?.type === "image" || b?.type === "document") && b?.source?.file_id)
+        .map((b: any) => ({ fileId: b.source.file_id as string, kind: b.type as "image" | "document", name: b.title ?? undefined }));
+      return files.length
+        ? { id: ev.id, kind: "user", text: textOf(ev.content), files }
+        : { id: ev.id, kind: "user", text: textOf(ev.content) };
+    }
     case "agent.message":
       return { id: ev.id, kind: "agent", text: textOf(ev.content) };
     case "agent.tool_use":

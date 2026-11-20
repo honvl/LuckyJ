@@ -44,7 +44,45 @@ export const ThreadList: FC = () => {
         <ThreadListSearch value={search} onValueChange={setSearch} />
       )}
       <ThreadListItems searchQuery={hasThreads ? search : ""} />
+      <ThreadListArchived />
     </ThreadListRoot>
+  );
+};
+
+/** Archived threads, folded under the list; each can be opened or restored. */
+const ThreadListArchived: FC = () => {
+  const labels = useAuiLabels();
+  const count = useAuiState((s) => s.threads.archivedThreadIds.length);
+  const [open, setOpen] = useState(false);
+  if (!count) return null;
+  return (
+    <div data-slot="aui_thread-list-archived" className="mt-3 flex flex-col gap-0.5">
+      <button
+        type="button"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        className="text-muted-foreground hover:text-foreground flex h-7 items-center gap-1.5 rounded-md px-2.5 text-xs font-medium"
+      >
+        <ArchiveIcon className="size-3.5" />
+        {labels.archived} · {count}
+      </button>
+      {open && (
+        <ThreadListPrimitive.Items archived>
+          {() => (
+            <ThreadListItemPrimitive.Root className="group hover:bg-muted data-active:bg-muted flex h-8 items-center gap-1 rounded-md">
+              <ThreadListItemPrimitive.Trigger className="text-muted-foreground min-w-0 flex-1 truncate px-2.5 text-start text-sm outline-none">
+                <ThreadListItemPrimitive.Title fallback={labels.untitled} />
+              </ThreadListItemPrimitive.Trigger>
+              <ThreadListItemPrimitive.Unarchive asChild>
+                <Button variant="ghost" size="sm" className="h-6 px-2 text-xs">
+                  {labels.unarchive}
+                </Button>
+              </ThreadListItemPrimitive.Unarchive>
+            </ThreadListItemPrimitive.Root>
+          )}
+        </ThreadListPrimitive.Items>
+      )}
+    </div>
   );
 };
 

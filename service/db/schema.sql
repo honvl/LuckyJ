@@ -123,3 +123,15 @@ alter table threads add column if not exists archived boolean not null default f
 -- budget): the first month's allowance, plus one allowance at each renewal, plus operator top-ups.
 -- Null until first needed; then it starts at the sum of the threads' own caps.
 alter table players add column if not exists allowance_cents bigint;
+
+-- Files a player attached to a chat message, kept in the Files API (file_id); the message refers
+-- to them by id. thumb: a small JPEG data URL for images, so the thread can show them again.
+create table if not exists attachments (
+  file_id    text primary key,
+  player     text not null references players(name) on delete cascade,
+  name       text not null,
+  mime       text not null,
+  kind       text not null,        -- 'image' or 'document'
+  thumb      text,
+  created_at timestamptz not null default now()
+);
