@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { currentPlayer } from "@/lib/auth";
-import { planFor } from "@/lib/attachments";
+import { planFor, reserveR2Upload } from "@/lib/attachments";
 import { accessFor } from "@/lib/billing";
 import { newKey, r2Enabled, uploadUrl } from "@/lib/r2";
 
@@ -14,6 +14,9 @@ export async function POST(request: Request) {
   const name = String(body?.name || "file").slice(0, 200);
   const plan = planFor(name, String(body?.type || ""), Number(body?.size) || 0, true);
   if ("error" in plan) return NextResponse.json({ error: plan.error }, { status: 400 });
+  // Free-tier caps (lib/attachment-rules.mjs R2_LIMITS), counted before the URL is handed out.
+  const over = await reserveR2Upload(me.player, Number(body?.size) || 0);
+  if (over) return NextResponse.json({ error: over }, { status: 429 });
   const key = newKey(me.player, name);
   return NextResponse.json({ key, url: await uploadUrl(key) });
 }

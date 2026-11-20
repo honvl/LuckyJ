@@ -28,3 +28,29 @@ export function planFor(name, mime, size, viaR2) {
   if (viaR2) return { kind: "download", mime: mime || "application/octet-stream" };
   return { error: isText || mime === "application/pdf" ? "file too large" : "unsupported file type" };
 }
+
+/**
+ * Caps that keep R2 inside Cloudflare's free tier (10 GB-month stored, 1 million uploads and 10
+ * million reads a month). Files expire after a day (bucket lifecycle rule), so what is stored is
+ * at most about two days of uploads.
+ */
+export const R2_LIMITS = {
+  playerFilesPerDay: 50,
+  playerBytesPerDay: 1_000 * MB,
+  allBytesPerDay: 2_000 * MB, // two days of this stored stays well under 10 GB
+  allFilesPerMonth: 100_000, // a tenth of the free uploads
+};
+
+/**
+ * Whether one more upload of `size` bytes fits. `usage`: today's totals for the player and for
+ * everyone, and this month's file count for everyone.
+ * @param {{ playerFiles: number, playerBytes: number, allBytes: number, monthFiles: number }} usage
+ * @param {number} size
+ * @returns {string | null} the reason it does not fit, or null
+ */
+export function r2Quota(usage, size, limits = R2_LIMITS) {
+  if (usage.playerFiles + 1 > limits.playerFilesPerDay) return "daily file limit";
+  if (usage.playerBytes + size > limits.playerBytesPerDay) return "daily size limit";
+  if (usage.allBytes + size > limits.allBytesPerDay || usage.monthFiles + 1 > limits.allFilesPerMonth) return "service upload limit";
+  return null;
+}

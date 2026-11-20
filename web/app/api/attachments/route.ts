@@ -19,7 +19,8 @@ export async function POST(request: Request) {
     if ((request.headers.get("content-type") || "").includes("application/json")) {
       const body = await request.json();
       const thumb = typeof body?.thumb === "string" ? body.thumb : null;
-      return NextResponse.json(await saveFromR2(me.player, String(body?.key || ""), String(body?.name || "file"), String(body?.type || ""), thumb));
+      const declared = Number(body?.size);
+      return NextResponse.json(await saveFromR2(me.player, String(body?.key || ""), String(body?.name || "file"), String(body?.type || ""), thumb, Number.isFinite(declared) && declared > 0 ? declared : null));
     }
     const form = await request.formData().catch(() => null);
     const file = form?.get("file");

@@ -2,7 +2,7 @@
 // - images (shrunk in the browser) and PDFs up to the model's limits, and text files up to 1 MB,
 //   go to the Files API and into the message as image and document blocks;
 // - anything bigger (a long CSV, a zip of game logs) stays in R2, and the message carries a
-//   48-hour download link the coach's sandbox fetches with curl.
+//   24-hour download link the coach's sandbox fetches with curl.
 // A small thumbnail of each image stays in the database so the thread can show it again.
 import "server-only";
 import { toFile } from "@anthropic-ai/sdk";
@@ -12,7 +12,7 @@ import { anthropic } from "./server";
 
 const sql = process.env.DATABASE_URL ? neon(process.env.DATABASE_URL) : null;
 
-import { MAX_VIA_SITE, planFor } from "./attachment-rules.mjs";
+import { MAX_VIA_SITE, planFor, r2Quota } from "./attachment-rules.mjs";
 
 export { MAX_VIA_SITE, planFor };
 export type Kind = "image" | "document" | "download";
@@ -40,11 +40,16 @@ export async function saveUpload(player: string, file: File, thumb: string | nul
 }
 
 /** A file the browser put in R2: into the Files API (then out of R2), or kept there for download. */
-export async function saveFromR2(player: string, key: string, name: string, mime: string, thumb: string | null): Promise<Attached> {
+export async function saveFromR2(player: string, key: string, name: string, mime: string, thumb: string | null, declared: number | null = null): Promise<Attached> {
   if (!r2Enabled || !ownsKey(player, key)) throw new Error("unknown upload");
   const size = await objectSize(key);
   if (size == null) throw new Error("unknown upload");
   const plan = planFor(name, mime, size, true);
+  if (declared != null && size > declared) {
+    // Bigger than the size the upload was counted at: not what the URL was given for.
+    await deleteObject(key);
+    throw new Error("file too large");
+  }
   if ("error" in plan) {
     await deleteObject(key);
     throw new Error(plan.error);
@@ -86,7 +91,7 @@ export async function messageContent(text: string, files: Attached[]): Promise<a
       const target = `/workspace/uploads/${f.name.replace(/[^\w.-]+/g, "_")}`;
       blocks.push({
         type: "text",
-        text: `${DOWNLOAD_MARKER}${f.name} (too big to read in one go; the link works for 48 hours). ` +
+        text: `${DOWNLOAD_MARKER}${f.name} (too big to read in one go; the link works for 24 hours). ` +
           `Fetch it before you use it: mkdir -p /workspace/uploads && curl -fsSL -o "${target}" "${url}"`,
       });
     }
@@ -99,4 +104,27 @@ export async function thumbnail(player: string, fileId: string): Promise<{ thumb
   if (!sql) return null;
   const [row] = await sql`select thumb, name from attachments where player = ${player} and file_id = ${fileId}`;
   return row ? { thumb: row.thumb, name: row.name } : null;
+}
+
+/**
+ * Count an R2 upload against the free-tier caps before handing out its URL. Returns why it does
+ * not fit, or null (and records it). Without a database nothing is counted.
+ */
+export async function reserveR2Upload(player: string, size: number): Promise<string | null> {
+  if (!sql) return null;
+  const [usage] = await sql`
+    select
+      coalesce(sum(files) filter (where day = current_date and player = ${player}), 0)::int as "playerFiles",
+      coalesce(sum(bytes) filter (where day = current_date and player = ${player}), 0)::bigint as "playerBytes",
+      coalesce(sum(bytes) filter (where day = current_date), 0)::bigint as "allBytes",
+      coalesce(sum(files) filter (where day >= date_trunc('month', current_date)), 0)::int as "monthFiles"
+    from r2_usage where day >= date_trunc('month', current_date)`;
+  const reason = r2Quota(
+    { playerFiles: Number(usage.playerFiles), playerBytes: Number(usage.playerBytes), allBytes: Number(usage.allBytes), monthFiles: Number(usage.monthFiles) },
+    size,
+  );
+  if (reason) return reason;
+  await sql`insert into r2_usage (day, player, files, bytes) values (current_date, ${player}, 1, ${size})
+            on conflict (day, player) do update set files = r2_usage.files + 1, bytes = r2_usage.bytes + excluded.bytes`;
+  return null;
 }

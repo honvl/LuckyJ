@@ -275,7 +275,7 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
   const running = status === "running";
   const outOfBudget = stop === "budget_reached";
   const messages = useMemo(() => toMessages(items, running, t), [items, running, t]);
-  const attachments = useMemo(() => attachmentAdapter({ tooLarge: t.fileTooLarge, failed: t.uploadFailed }), [t]);
+  const attachments = useMemo(() => attachmentAdapter({ tooLarge: t.fileTooLarge, failed: t.uploadFailed, limit: t.uploadLimit }), [t]);
   // Browser speech input, made after the first render so the server's HTML matches.
   const [dictation, setDictation] = useState<WebSpeechDictationAdapter | undefined>();
   useEffect(() => {

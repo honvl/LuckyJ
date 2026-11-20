@@ -26,8 +26,9 @@ function put(url: string, body: Blob, onProgress: (fraction: number) => void): P
   });
 }
 
-async function errorOf(res: Response, messages: { tooLarge: string; failed: string }): Promise<Error> {
+async function errorOf(res: Response, messages: { tooLarge: string; failed: string; limit: string }): Promise<Error> {
   const err = await res.json().catch(() => ({}));
+  if (res.status === 429) return new Error(messages.limit);
   return new Error(err.error === "file too large" ? messages.tooLarge : messages.failed);
 }
 
@@ -55,7 +56,7 @@ function isImage(file: File) {
   return /^image\/(jpeg|png|gif|webp)$/.test(file.type);
 }
 
-export function attachmentAdapter(messages: { tooLarge: string; failed: string }): AttachmentAdapter {
+export function attachmentAdapter(messages: { tooLarge: string; failed: string; limit: string }): AttachmentAdapter {
   return {
     accept: "*/*",
     async *add({ file }) {
@@ -111,7 +112,7 @@ export function attachmentAdapter(messages: { tooLarge: string; failed: string }
           const res = await fetch("/api/attachments", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ key, name, type, thumb }),
+            body: JSON.stringify({ key, name, type, thumb, size: body.size }),
           });
           if (!res.ok) throw await errorOf(res, messages);
           saved = await res.json();

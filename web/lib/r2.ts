@@ -51,8 +51,8 @@ async function presign(method: "PUT" | "GET", key: string, seconds: number): Pro
 /** A URL the browser can PUT the file to for the next ten minutes. */
 export const uploadUrl = (key: string) => presign("PUT", key, 600);
 
-/** A URL the coach's sandbox can download the file from for 48 hours. */
-export const downloadUrl = (key: string) => presign("GET", key, 48 * 3600);
+/** A URL the coach's sandbox can download the file from for 24 hours (the bucket deletes files after a day). */
+export const downloadUrl = (key: string) => presign("GET", key, 24 * 3600);
 
 export async function readObject(key: string): Promise<{ bytes: Buffer; size: number } | null> {
   const res = await r2().fetch(objectUrl(key));

@@ -135,3 +135,13 @@ create table if not exists attachments (
   thumb      text,
   created_at timestamptz not null default now()
 );
+
+-- R2 uploads per player per day (UTC), to keep the bucket inside Cloudflare's free tier; the
+-- limits are in web/lib/attachment-rules.mjs (r2Quota).
+create table if not exists r2_usage (
+  day    date   not null,
+  player text   not null,
+  files  int    not null default 0,
+  bytes  bigint not null default 0,
+  primary key (day, player)
+);
