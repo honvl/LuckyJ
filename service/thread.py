@@ -690,13 +690,15 @@ def cmd_onboard(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
             line = line.rstrip()
             if line:
                 print("  " + (scrub(line, email, name, account_id) if ci else line)[:300], flush=True)
-        if fetch.wait() != 0:
-            print("  ! fetch failed", flush=True)
-            # Games fetched before the server refused still count: a thread starts at MIN_GAMES.
-            if not (games_dir / "index.json").exists():
-                failed += 1
-                continue
+        fetch_failed = fetch.wait() != 0
         index = json.loads((games_dir / "index.json").read_text(encoding="utf-8")) if (games_dir / "index.json").exists() else []
+        if fetch_failed:
+            # A failed run is red in the workflow list, which is how the operator learns the fetch
+            # account needs attention. Games fetched before a refusal still count toward MIN_GAMES.
+            print("  ! fetch failed", flush=True)
+            failed += 1
+            if not index:
+                continue
         if len(index) < MIN_GAMES:
             print(f"  waiting: {len(index)} ranked games found, a thread starts at {MIN_GAMES}", flush=True)
             continue
