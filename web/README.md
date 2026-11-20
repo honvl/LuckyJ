@@ -96,7 +96,12 @@ Settings: `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`, `STRIPE_WEBHOOK_SECRET`, `MONT
   Soul limits how many logs one account may retrieve (error 540, "log retrieval limit
   exceeded"), so more fetch accounts can be added as `MJS_ACCESS_TOKEN_2` .. `_8`, each with its
   own `MJS_RANDOM_KEY_<n>`: a run uses one account until it is over its limit, then the next,
-  and its last line says how many logs each gave. Running the workflow with "check_login"
+  and its last line says how many logs each gave (about 20 an account, measured 20 Nov 2026).
+  After onboarding the same run calls `thread.py games`, which tops up players who already have
+  a thread toward their newest 100 games (40 a player a run at most): the new logs go up as one
+  more archive (`/player/games-<n>.tar.gz`), it is mounted in the player's threads, and a note
+  queued for their next message tells the tutor to unpack it. `state.players[...].games` records
+  what each player has been given. Running the workflow with "check_login"
   ticked asks every account for one game and reports which can download. Variables:
   `MJS_BASE`, `MJS_GATEWAY`, `MJS_RES_VERSION` (bump on login error 151). Until the secrets
   exist the run does nothing. The repository is public, so the run prints no emails, names,

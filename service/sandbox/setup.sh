@@ -8,6 +8,7 @@
 #   mortal/model.py, mortal/mortal.pth   the Mortal policy the guide scripts load
 #   luckyj/luckyj_tenhou.tar.gz     LuckyJ's games as tenhou.net/6 logs
 #   player/games.tar.gz             the player's games plus index.json (their seat per game)
+#   player/games-<n>.tar.gz         games added later, with the index.json that lists them all
 #   cache/libriichi-*.whl           optional: a libriichi wheel built by an earlier thread
 set -euo pipefail
 
@@ -68,6 +69,11 @@ fi
 echo "== player games"
 mkdir -p "$REPO/data/self_games/majsoul"
 tar -xzf "$U/player/games.tar.gz" -C "$REPO/data/self_games/majsoul"
+# Later archives (thread.py games tops a player up to their newest 100) hold newer games and a
+# fuller index.json, so they go over the first, oldest first.
+for extra in $(ls "$U"/player/games-*.tar.gz 2>/dev/null | sort -V); do
+  tar -xzf "$extra" -C "$REPO/data/self_games/majsoul"
+done
 
 echo "== check"
 cd "$REPO"

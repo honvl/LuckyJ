@@ -28,6 +28,7 @@ import re
 import subprocess
 import sys
 import tarfile
+import tempfile
 import time
 from pathlib import Path
 
@@ -241,6 +242,60 @@ def queue_intro(state: dict, player: str, session_id: str, text: str) -> None:
             "update threads set intro = concat_ws(E'\\n\\n',"
             " nullif(rtrim(split_part(coalesce(intro, ''), %s, 1)), ''), %s::text) where session_id = %s",
             (UPDATE_MARKER, text, session_id))
+
+
+GAMES_TARGET = 100     # the newest games a player's tutor should hold
+GAMES_PER_RUN = 40     # one player's share of a run, so a small pool of fetch accounts reaches several
+GAMES_MARKER = "New games for this player"
+SANDBOX_GAMES = "/workspace/LuckyJ/data/self_games/majsoul"
+
+
+def archive_mount(k: int) -> str:
+    """Where a player's k-th games archive is mounted. The first keeps the name setup.sh has
+    always read; top-ups (thread.py games) are games-2.tar.gz, games-3.tar.gz and so on."""
+    return "/player/games.tar.gz" if k == 1 else f"/player/games-{k}.tar.gz"
+
+
+def games_files(player: dict) -> list[str]:
+    """A player's games archives, oldest first (file ids)."""
+    files = [a["file_id"] for a in (player.get("games") or {}).get("archives", [])]
+    if not files:  # a player from before deliveries were recorded: the newest thread's upload
+        files = [t["games_file_id"] for t in reversed(player.get("threads", [])) if t.get("games_file_id")][:1]
+    return files
+
+
+def games_note(total: int, archives: int) -> str:
+    """What a running thread is told after a top-up: unpack the added archives over the games folder."""
+    lines = "\n".join(f"tar -xzf /mnt/session/uploads{archive_mount(k)} -C {SANDBOX_GAMES}" for k in range(2, archives + 1))
+    return (f"{GAMES_MARKER}: more of the player's games have been added since this thread began; "
+            f"there are {total} with full hands now. Before you next use their games, unpack the "
+            f"added archives over the games folder, oldest first:\n\n{lines}\n\n"
+            "The newest index.json lists every game, old and new, and the records and stats files "
+            "beside it are refreshed. If setup.sh ever runs again in a fresh sandbox, run these lines "
+            "after it. Do not bring this note up; if the player asks, say how many games you now have.")
+
+
+def with_games_note(intro: str | None, note: str) -> str:
+    """A thread's queued context with the games note in it: after what was queued before, in place
+    of an earlier games note not yet delivered, and before an instructions update (always last)."""
+    head, marker, update = (intro or "").partition(UPDATE_MARKER)
+    head = head.split(GAMES_MARKER)[0].rstrip()
+    return "\n\n".join(x for x in (head, note, (marker + update) if marker else "") if x)
+
+
+def queue_games_note(state: dict, player: str, session_id: str, note: str) -> None:
+    thread = next(t for t in state["players"][player]["threads"] if t["session_id"] == session_id)
+    thread["intro"] = with_games_note(thread.get("intro"), note)
+    save_state(state)
+    url = database_url()
+    if not url:
+        return
+    import psycopg
+    with psycopg.connect(url) as conn:  # one transaction: read what is queued, write it back with the note
+        row = conn.execute("select intro from threads where session_id = %s for update", (session_id,)).fetchone()
+        if row is not None:
+            conn.execute("update threads set intro = %s where session_id = %s",
+                         (with_games_note(row[0], note), session_id))
 
 
 def instructions_update(version: int, system: str) -> str:
@@ -469,6 +524,9 @@ def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     player["hero_names"] = names  # the site's "new thread" writes the same intro
     player["threads"].append({"session_id": session.id, "games_file_id": games_file,
                               "downloaded": [], "intro": intro(args.player, names)})
+    # What this player has been given, so a top-up (thread.py games) fetches only what is missing.
+    player.setdefault("games", {"uuids": [row["uuid"] for row in index if row.get("uuid")],
+                                "archives": [{"file_id": games_file, "games": len(index)}]})
     if args.email:
         emails = player.setdefault("emails", [])
         if args.email.strip().lower() not in emails:
@@ -709,6 +767,148 @@ def cmd_onboard(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
         sys.exit(f"{failed} of {len(rows)} fetches failed")
 
 
+def fetch_games(account_id: int, out: Path, extra: list[str], private: tuple, ci: bool) -> bool:
+    """Run scripts/fetch_player_games.py, passing its lines to the log as they come (scrubbed in
+    CI). True when it exited cleanly."""
+    fetch = subprocess.Popen(
+        [sys.executable, "-u", str(ROOT / "scripts" / "fetch_player_games.py"), "--account", str(account_id),
+         "--out", str(out), *extra], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    for line in fetch.stdout:
+        line = line.rstrip()
+        if line:
+            print("  " + (scrub(line, *private) if ci else line)[:300], flush=True)
+    return fetch.wait() == 0
+
+
+def assume_delivered(client: anthropic.Anthropic, state: dict, spec: str) -> None:
+    """Record that a thread started before deliveries were tracked holds the N newest games it
+    could have had: those played before its first thread was created. `spec` is PLAYER=N."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import fetch_majsoul_games as fms
+    name, _, count = spec.partition("=")
+    info = need_player(state, name)
+    m = re.fullmatch(r"ms-(\d+)", name)
+    if not m or not count.isdigit() or not info.get("threads"):
+        sys.exit("--assume takes PLAYER=N for a player keyed ms-<account id> who has a thread")
+    first = info["threads"][0]
+    created = client.beta.sessions.retrieve(first["session_id"]).created_at.timestamp()
+    with tempfile.TemporaryDirectory() as tmp:
+        export = Path(tmp) / "records.json"
+        fms.amae_api_refresh(int(m.group(1)), None, fms.amae_token(), export)
+        before = sorted((r for r in fms.amae_records(export) if r["start_time"] <= created),
+                        key=lambda r: r["start_time"], reverse=True)
+    info["games"] = {"uuids": [r["uuid"] for r in before[:int(count)]],
+                     "archives": [{"file_id": first["games_file_id"], "games": int(count)}]}
+    save_state(state)
+    print(f"{'player' if in_ci() else name}: recorded {len(info['games']['uuids'])} games as delivered")
+
+
+def attach_games(client: anthropic.Anthropic, state: dict, name: str) -> None:
+    """Mount every top-up archive a thread does not have yet, and queue the note that tells it."""
+    info = state["players"][name]
+    files = games_files(info)
+    total = len(info["games"]["uuids"])
+    for t in info["threads"]:
+        has = t.setdefault("games_archives", [])
+        fresh = [(k, f) for k, f in enumerate(files, 1) if k > 1 and f not in has]
+        if not fresh:
+            continue
+        try:
+            for k, file_id in fresh:
+                client.beta.sessions.resources.add(t["session_id"], type="file", file_id=file_id,
+                                                   mount_path=archive_mount(k))
+                has.append(file_id)
+        except anthropic.APIError as e:  # a thread that has ended, or is mid-turn: the next run tries again
+            print(f"  a thread could not take the new games yet ({type(e).__name__})", flush=True)
+            save_state(state)
+            continue
+        queue_games_note(state, name, t["session_id"], games_note(total, len(files)))
+
+
+def cmd_games(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
+    """Top up the games of players who already have a thread.
+
+    Each paying (or free) player's tutor should hold their newest GAMES_TARGET games. This fetches
+    the ones not delivered yet, newest first and at most GAMES_PER_RUN a player a run, uploads them
+    as one more archive, mounts it in the player's threads and queues a note so each thread unpacks
+    it with the player's next message. Players with the fewest games go first; when the fetch
+    accounts are all over their log retrieval limit the rest wait for the next run. Safe to run
+    on a schedule.
+    """
+    state = load_state()
+    for spec in args.assume or []:
+        assume_delivered(client, state, spec)
+    with _db() as conn:
+        rows = conn.execute(
+            "select p.name, coalesce(p.comp, false), max(pr.majsoul_account_id),"
+            " coalesce(bool_or(s.status in ('active', 'trialing', 'past_due')), false)"
+            " from players p left join logins l on l.player = p.name"
+            " left join profiles pr on pr.email = l.email"
+            " left join subscriptions s on s.email = l.email"
+            " group by p.name, p.comp").fetchall()
+    ci = in_ci()
+    todo = []
+    for name, comp, account, paying in rows:
+        info = state["players"].get(name)
+        if not info or not info.get("threads") or (args.player and name != args.player):
+            continue
+        m = re.fullmatch(r"ms-(\d+)", name)
+        account = account or (int(m.group(1)) if m else None)
+        if not account or not (comp or paying):
+            continue
+        if not info.get("games"):
+            # A thread from before deliveries were recorded: fetching would repeat what it has.
+            print(f"{'a player' if ci else name}: no record of the games delivered; seed it with --assume PLAYER=N")
+            continue
+        todo.append((len(info["games"]["uuids"]), name, int(account)))
+    if not todo:
+        print("no player to top up")
+        return
+    todo.sort()
+    failed = 0
+    for n, (held, name, account) in enumerate(todo, 1):
+        info = state["players"][name]
+        games = info["games"]
+        label = f"player {n} of {len(todo)}" if ci else name
+        print(f"{label}: {held} games held", flush=True)
+        if args.dry_run:
+            continue
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "games"
+            out.mkdir()
+            have = Path(tmp) / "have.json"
+            have.write_text(json.dumps(games["uuids"]), encoding="utf-8")
+            hero = (info.get("hero_names") or [None])[0]
+            fetch_games(account, out, ["--have", str(have), "--max-games", str(GAMES_TARGET),
+                                       "--max-new", str(GAMES_PER_RUN)], (hero, account), ci)
+            summary_file = out / "fetch-summary.json"
+            if not summary_file.exists():
+                print("  ! fetch failed", flush=True)
+                failed += 1
+                continue
+            summary = json.loads(summary_file.read_text(encoding="utf-8"))
+            new = summary["new"]
+            if new:
+                members = [(f.name, f) for f in sorted(out.glob("*.json")) if f.name != summary_file.name]
+                k = len(games["archives"]) + 1
+                file_id = upload(client, f"games-{slug(name)}-{k}.tar.gz", tar_gz(members))
+                games["archives"].append({"file_id": file_id, "games": len(new)})
+                games["uuids"] = list(dict.fromkeys([*games["uuids"], *new]))
+                save_state(state)
+                attach_games(client, state, name)
+                save_state(state)
+                print(f"  {len(new)} games added, {len(games['uuids'])} held now", flush=True)
+            else:
+                # Threads that missed an earlier archive (mid-turn then) get it now.
+                attach_games(client, state, name)
+                print("  nothing new" + (f" ({summary['stopped']})" if summary.get("stopped") else ""), flush=True)
+            if "log retrieval limit" in (summary.get("stopped") or ""):
+                print("the fetch accounts are over their limit; the other players wait for the next run")
+                break
+    if failed:
+        sys.exit(f"{failed} of {len(todo)} top-ups failed")
+
+
 def scrub(text: str, *private: object) -> str:
     """Text for a public log: the player's email, name and account id, game ids and paths removed."""
     for value in private:
@@ -908,6 +1108,11 @@ def main() -> None:
     p.add_argument("--player", help="set one player's rank (with --account)")
     p.add_argument("--account", type=int, help="that player's Mahjong Soul account id")
     sub.add_parser("pending", help="paying players still waiting for their thread")
+    p = sub.add_parser("games", help="top up players' games to their newest 100 and tell their threads")
+    p.add_argument("--player", help="only this player")
+    p.add_argument("--assume", action="append", metavar="PLAYER=N",
+                   help="first record that this player's thread already holds its N newest games")
+    p.add_argument("--dry-run", action="store_true", help="list who would be topped up and stop")
     p = sub.add_parser("onboard", help="fetch games and start a thread for every paying player waiting")
     p.add_argument("--dry-run", action="store_true", help="list who would be started and stop")
     p = sub.add_parser("comp", help="let a player use the tutor without paying")
@@ -924,7 +1129,7 @@ def main() -> None:
     args = ap.parse_args()
 
     client = anthropic.Anthropic(api_key=api_key())
-    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "db-sync": cmd_db_sync, "ranks": cmd_ranks, "pending": cmd_pending, "onboard": cmd_onboard, "comp": cmd_comp, "list": cmd_list,
+    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "db-sync": cmd_db_sync, "ranks": cmd_ranks, "pending": cmd_pending, "onboard": cmd_onboard, "games": cmd_games, "comp": cmd_comp, "list": cmd_list,
      "refresh": cmd_refresh, "topup": cmd_topup}[args.cmd](client, args)
 
 

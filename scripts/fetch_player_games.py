@@ -15,7 +15,7 @@ live rank and points, placement rates and play stats). Its ``file`` paths point 
 (``data/self_games/majsoul/<file>``), since this folder is uploaded as is. Rerunning only fetches
 games not already in the folder.
 
-Tile logs are capped at the newest ``--max-games`` of the past year (300 by default), newest first,
+Tile logs are capped at the newest ``--max-games`` of the past year (100 by default), newest first,
 and the download stops at ``--time-limit`` minutes or as soon as the account's log retrieval
 limit is reached, keeping what it has. Error 540 is the game's "log retrieval limit exceeded": a
 quota on the account that downloads, not a burst throttle, so retrying does not help. Its size
@@ -26,6 +26,13 @@ Several fetch accounts can share the work (``accounts()``): the first is the one
 ``MJS_RANDOM_KEY_<n>`` add more. A run uses one until it is over its limit, then the next, and
 ends by saying how many logs each gave. ``--check-accounts GAME`` asks every account for one
 game and reports which can still download.
+
+A top-up of a player who already has a thread (``thread.py games``) passes ``--have FILE``, the
+ids already delivered: those are listed in index.json but not fetched, so the folder holds only
+the new logs, and ``--max-new`` bounds how much of the pool one player takes in a run.
+``fetch-summary.json`` in the folder says which games this run wrote. Accounts found over their
+limit are remembered for 50 minutes (``MJS_POOL_STATUS``, a file in the temp folder by default),
+so the next player in the same run does not ask them again.
 
 Onboarding runs on a runner whose disk is not kept, so a download that outlasts the job loses
 everything: on 20 Nov 2026 the fetch account was over its limit, fetch_many.js spent 75 seconds
@@ -51,7 +58,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import fetch_majsoul_games as fms  # noqa: E402
 
 SANDBOX_DIR = "data/self_games/majsoul"
-MAX_GAMES = 300
+MAX_GAMES = 100       # "around 100 most recent games" (the operator, 20 Nov 2026)
+POOL_MEMORY_SECONDS = 50 * 60   # how long an account found over its limit is left alone
 BATCH = 20            # games per fetch_many.js run (one login each)
 BATCH_SECONDS = 240   # a healthy batch takes about a minute; over the limit, 75 s of retries a game
 PROBE_SECONDS = 30    # one game: login and download take a few seconds when the account is under its limit
@@ -66,6 +74,41 @@ def newest(records: list[dict], limit: int) -> list[dict]:
     return ordered[:limit] if limit > 0 else ordered
 
 
+def log_name(uuid: str) -> str:
+    """The file fetch_many.js writes for a game."""
+    return uuid.split("_")[0] + ".json"
+
+
+def plan(in_window: list[dict], manifest: dict, have: set[str], out: Path,
+         max_games: int, max_new: int) -> tuple[list[dict], list[dict]]:
+    """The games the player should hold (the newest `max_games`) and those to fetch now: not
+    delivered before (`have`), not already in the folder, at most `max_new` (0 for no bound)."""
+    target = newest(in_window, max_games)
+    missing = [r for r in target if r["uuid"] not in have
+               and (r["uuid"] not in manifest or not (out / Path(manifest[r["uuid"]]["file"]).name).exists())]
+    return target, (missing[:max_new] if max_new > 0 else missing)
+
+
+def delivered_rows(records: list[dict], have: set[str], account_id: int) -> dict[str, dict]:
+    """Index rows for games delivered in an earlier archive: listed, though their logs are not here."""
+    return {r["uuid"]: fms.manifest_row(r, account_id, fms.ROOT / SANDBOX_DIR / log_name(r["uuid"]))
+            for r in records if r["uuid"] in have}
+
+
+def pool_status_path() -> Path:
+    return Path(os.environ.get("MJS_POOL_STATUS") or Path(tempfile.gettempdir()) / "luckyj-fetch-pool.json")
+
+
+def load_spent(path: Path, now: float | None = None) -> dict[str, float]:
+    """Accounts found over their limit (or unusable) recently: {label: when}."""
+    now = time.time() if now is None else now
+    try:
+        seen = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return {str(k): float(v) for k, v in seen.items() if now - float(v) < POOL_MEMORY_SECONDS}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--account", type=int, help="the player's Mahjong Soul account id")
@@ -75,6 +118,10 @@ def main() -> None:
     ap.add_argument("--since", help="only games from this date (YYYY-MM-DD); default: one year back")
     ap.add_argument("--max-games", type=int, default=MAX_GAMES,
                     help=f"tile logs for at most this many of the newest games (default {MAX_GAMES}; 0 for no cap)")
+    ap.add_argument("--have", type=Path, metavar="FILE",
+                    help="a JSON list of game ids delivered before: listed in index.json, not fetched again")
+    ap.add_argument("--max-new", type=int, default=0,
+                    help="fetch at most this many games in this run (default: no bound)")
     ap.add_argument("--time-limit", type=float, default=TIME_LIMIT_MINUTES,
                     help=f"start no new batch after this many minutes (default {TIME_LIMIT_MINUTES}); the rest waits for the next run")
     ap.add_argument("--dry-run", action="store_true", help="list what would be fetched and stop")
@@ -100,21 +147,43 @@ def main() -> None:
         (out / "amae-koromo-stats.json").write_text(json.dumps(stats, ensure_ascii=False, indent=1),
                                                      encoding="utf-8")
     cutoff = datetime.strptime(since, "%Y-%m-%d").timestamp()
-    in_window = [r for r in fms.amae_records(export) if r["start_time"] >= cutoff]
-    records = newest(in_window, args.max_games)
+    everything = fms.amae_records(export)
+    in_window = [r for r in everything if r["start_time"] >= cutoff]
+    have = set(json.loads(args.have.read_text(encoding="utf-8"))) if args.have else set()
     manifest_path = out / "index.json"
     manifest = {row["uuid"]: row for row in json.loads(manifest_path.read_text(encoding="utf-8"))} if manifest_path.exists() else {}
-    missing = [r for r in records if r["uuid"] not in manifest or not (out / Path(manifest[r["uuid"]]["file"]).name).exists()]
+    manifest.update(delivered_rows(everything, have, args.account))
+    records, missing = plan(in_window, manifest, have, out, args.max_games, args.max_new)
     capped = f", newest {len(records)} kept" if len(records) < len(in_window) else ""
+    held = sum(1 for r in records if r["uuid"] in have or r["uuid"] in manifest)
     print(f"account {args.account}: {len(in_window)} ranked games since {since}{capped} ({added} new on amae-koromo), "
-          f"{len(records) - len(missing)} already here, {len(missing)} to fetch")
-    if args.dry_run or not missing:
+          f"{held} already here, {len(missing)} to fetch")
+    if args.dry_run:
+        return
+    before = set(manifest)
+
+    def finish(stopped: str = "", left: int = 0) -> None:
+        rows = sorted(manifest.values(), key=lambda row: row["start_time"], reverse=True)
+        manifest_path.write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
+        summary = {"new": sorted(set(manifest) - before), "left": left, "stopped": stopped}
+        (out / "fetch-summary.json").write_text(json.dumps(summary), encoding="utf-8")
+
+    if not missing:
+        finish()
         return
 
     pool = accounts()
-    written, errors, stopped, gave = download(missing, out, args.account, manifest, manifest_path, pool, args.time_limit)
+    status = pool_status_path()
+    spent = load_spent(status)
+    written, errors, stopped, gave = download(missing, out, args.account, manifest, manifest_path, pool,
+                                              args.time_limit, spent=spent)
+    try:
+        status.write_text(json.dumps(spent), encoding="utf-8")
+    except OSError:
+        pass
     rows = sorted(manifest.values(), key=lambda row: row["start_time"], reverse=True)
     left = len(missing) - written - errors
+    finish(stopped, left)
     note = f"; stopped at {stopped}, {left} left for the next run" if stopped else ""
     shares = ", ".join(f"account {a['label']}: {n}" for a, n in zip(pool, gave))
     print(f"wrote {written} games, {errors} errors{note}; {len(rows)} games in {out} ({shares})")
@@ -123,11 +192,14 @@ def main() -> None:
 
 
 def download(missing: list[dict], out: Path, account_id: int, manifest: dict, manifest_path: Path,
-             pool: list[dict], time_limit: float, fetch=None) -> tuple[int, int, str, list[int]]:
+             pool: list[dict], time_limit: float, fetch=None,
+             spent: dict[str, float] | None = None) -> tuple[int, int, str, list[int]]:
     """Fetch `missing` (newest first) with the pool's accounts in turn, writing the index after
     every batch. Returns games written, games that failed for good, why it stopped early (or ""),
-    and how many logs each account gave."""
+    and how many logs each account gave. `spent` names accounts already found over their limit:
+    they are not asked, and accounts this run finds over theirs are added to it."""
     fetch = fetch or fetch_batch
+    spent = {} if spent is None else spent
     started = time.monotonic()
     written = errors = 0
     stopped = ""
@@ -135,6 +207,9 @@ def download(missing: list[dict], out: Path, account_id: int, manifest: dict, ma
     at, probe = 0, True              # the account in use, and whether its next request is the one-game probe
     gave = [0] * len(pool)           # logs each account gave before its limit
     while queue and at < len(pool):
+        if pool[at]["label"] in spent:   # over its limit a moment ago: not worth a request
+            at += 1
+            continue
         if time.monotonic() - started > time_limit * 60:
             stopped = f"the {time_limit:g}-minute limit"
             break
@@ -175,6 +250,7 @@ def download(missing: list[dict], out: Path, account_id: int, manifest: dict, ma
         elif over:
             print(f"  {who} is over its log retrieval limit after {gave[at]} logs this run", flush=True)
         if failure or over:
+            spent[pool[at]["label"]] = time.time()
             at, probe = at + 1, True
         else:
             probe = False

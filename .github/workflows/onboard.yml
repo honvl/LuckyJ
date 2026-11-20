@@ -3,6 +3,9 @@ name: Onboard tutor players
 # Fetches each new subscriber's ranked Mahjong Soul games and starts their tutor thread
 # (service/thread.py onboard). The site's Stripe webhook starts this right after a purchase;
 # the hourly run picks up anyone still waiting (fewer than 10 games, or a fetch that failed).
+# It then tops up players who already have a thread (service/thread.py games): a fetch account
+# may retrieve only about 20 logs before Mahjong Soul refuses it, so a player's newest 100 games
+# arrive over several runs, and games played later are added the same way.
 #
 # This repository is public, and so are these logs: thread.py prints no emails, names,
 # account ids or game ids when GITHUB_ACTIONS is set.
@@ -112,7 +115,12 @@ jobs:
             # One line per account: ok, over its log retrieval limit, or why it could not log in.
             python -u scripts/fetch_player_games.py --check-accounts "$game"
           else
-            python -u service/thread.py onboard
+            # New subscribers first; then players who already have a thread are topped up toward
+            # their newest 100 games with whatever the fetch accounts still allow.
+            rc=0
+            python -u service/thread.py onboard || rc=$?
+            python -u service/thread.py games || rc=$?
+            exit $rc
           fi
 
       # Players' Mahjong Soul ranks for the Personal Guides library (prints counts only).

@@ -136,6 +136,66 @@ class DownloadTests(unittest.TestCase):
         self.assertNotIn("g003", manifest)
 
 
+class TopUpTests(unittest.TestCase):
+    """A player who already has a thread gets only the games not delivered before."""
+
+    def records(self, n):
+        return [{"uuid": f"g{i:03d}", "start_time": 1000 - i} for i in range(n)]
+
+    def test_delivered_games_are_not_fetched_again(self):
+        have = {f"g{i:03d}" for i in range(19)}
+        target, missing = fpg.plan(self.records(286), {}, have, Path("/nowhere"), 100, 0)
+        self.assertEqual(len(target), 100)
+        self.assertEqual([r["uuid"] for r in missing], [f"g{i:03d}" for i in range(19, 100)])
+
+    def test_a_run_takes_at_most_its_share(self):
+        have = {f"g{i:03d}" for i in range(19)}
+        _, missing = fpg.plan(self.records(286), {}, have, Path("/nowhere"), 100, 40)
+        self.assertEqual([r["uuid"] for r in missing], [f"g{i:03d}" for i in range(19, 59)])
+
+    def test_new_games_come_before_filling_in_older_ones(self):
+        # The player has played 5 games since their newest delivery (g005..g023 delivered).
+        have = {f"g{i:03d}" for i in range(5, 24)}
+        _, missing = fpg.plan(self.records(286), {}, have, Path("/nowhere"), 100, 10)
+        self.assertEqual([r["uuid"] for r in missing], ["g000", "g001", "g002", "g003", "g004", "g024", "g025", "g026", "g027", "g028"])
+
+    def test_nothing_to_fetch_once_the_newest_hundred_are_held(self):
+        have = {f"g{i:03d}" for i in range(100)}
+        _, missing = fpg.plan(self.records(286), {}, have, Path("/nowhere"), 100, 40)
+        self.assertEqual(missing, [])
+
+    def test_the_index_lists_delivered_games_whose_logs_are_elsewhere(self):
+        with mock.patch.object(fpg.fms, "manifest_row", lambda r, account, file: {"uuid": r["uuid"], "file": str(file)}):
+            rows = fpg.delivered_rows(self.records(5), {"g001", "g003"}, 1)
+        self.assertEqual(sorted(rows), ["g001", "g003"])
+        self.assertTrue(rows["g001"]["file"].endswith("data/self_games/majsoul/g001.json"))
+
+    def test_an_account_found_over_its_limit_is_not_asked_again_in_the_same_run(self):
+        server = Server({"first": 0, "second": 999})
+        spent = {}
+        missing = self.records(5)
+        pool = [{"label": "1", "env": {}}, {"label": "2", "env": {"ACCESS_TOKEN": "second"}}]
+        with tempfile.TemporaryDirectory() as tmp, \
+                mock.patch.object(fpg.fms, "manifest_row", lambda r, account, file: {"uuid": r["uuid"], "start_time": r["start_time"], "file": str(file)}), \
+                mock.patch("builtins.print"):
+            fpg.download(missing, Path(tmp), 1, {}, Path(tmp) / "index.json", pool, 15, fetch=server.fetch, spent=spent)
+            self.assertIn("1", spent)
+            server.calls.clear()
+            # The next player in the run starts from what this one learned.
+            fpg.download(self.records(3), Path(tmp), 1, {}, Path(tmp) / "index.json", pool, 15, fetch=server.fetch, spent=spent)
+        self.assertEqual({c[0] for c in server.calls}, {"second"})
+
+    def test_what_was_learned_about_the_pool_expires(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "pool.json"
+            path.write_text(json.dumps({"1": 1000.0, "2": 5000.0}))
+            self.assertEqual(fpg.load_spent(path, now=5000.0 + 60), {"2": 5000.0})
+            self.assertEqual(fpg.load_spent(Path(tmp) / "missing.json"), {})
+
+    def test_the_default_is_about_a_hundred_games(self):
+        self.assertEqual(fpg.MAX_GAMES, 100)
+
+
 class AccountsTests(unittest.TestCase):
     def test_numbered_slots_need_both_a_token_and_a_device_key(self):
         env = {"MJS_ACCESS_TOKEN_2": "t2", "MJS_RANDOM_KEY_2": "k2", "MJS_ACCESS_TOKEN_3": "t3",

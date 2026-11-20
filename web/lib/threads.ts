@@ -2,6 +2,7 @@
 // (sandbox, tools, data) sharing the player's notes and allowance. Threads started here reuse what
 // the operator set up (service/thread.py): the agent, environment, shared files, the player's
 // memory store and their newest games upload.
+import { gamesFiles, gamesResources } from "./games-rules.mjs";
 import "server-only";
 import { neon } from "@neondatabase/serverless";
 import { existsSync, readFileSync, renameSync, writeFileSync } from "node:fs";
@@ -16,7 +17,11 @@ const STATE = join(STATE_DIR, "state.json");
 export type ThreadRow = { id: string; title: string | null; createdAt: string; archived: boolean };
 
 type OperatorThread = { session_id: string; games_file_id?: string; intro?: string; [k: string]: unknown };
-type OperatorPlayer = { memory_store_id?: string; hero_names?: string[]; threads: OperatorThread[]; emails?: string[] };
+type OperatorPlayer = {
+  memory_store_id?: string; hero_names?: string[]; threads: OperatorThread[]; emails?: string[];
+  /** What the player has been given (service/thread.py): game ids and the archives that hold them. */
+  games?: { uuids: string[]; archives: { file_id: string }[] };
+};
 type OperatorState = {
   agent_id?: string;
   environment_id?: string;
@@ -138,13 +143,14 @@ export async function createThread(player: string, cont?: Continuation): Promise
   const state = await operatorState();
   const me = state.players[player];
   if (!state.agent_id || !state.environment_id || !me?.memory_store_id) throw new Error("the operator has not set up this player");
-  const games = [...me.threads].reverse().find((t) => t.games_file_id)?.games_file_id;
-  if (!games) throw new Error("no games upload for this player");
+  // Every games archive, the sign-up one and each top-up since (lib/games-rules.mjs).
+  const archives = gamesFiles(me);
+  if (!archives.length) throw new Error("no games upload for this player");
   const resources: any[] = Object.entries(state.shared_files || {})
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([mount, f]) => ({ type: "file", file_id: f.file_id, mount_path: mount }));
   resources.push(
-    { type: "file", file_id: games, mount_path: "/player/games.tar.gz" },
+    ...gamesResources(me),
     {
       type: "memory_store", memory_store_id: me.memory_store_id, access: "read_write",
       instructions: "This player's notes. Read index.md and player.md first; keep the notes current (see Keeping notes).",
@@ -161,7 +167,8 @@ export async function createThread(player: string, cont?: Continuation): Promise
     vault_ids: state.vault_id ? [state.vault_id] : [],
   } as any);
   const intro = cont?.intro ?? introFor(player, me.hero_names || [player]);
-  const record: OperatorThread = { session_id: session.id, games_file_id: games, downloaded: [], from_site: true };
+  // games_archives: the top-up archives this thread started with, so thread.py games adds only later ones.
+  const record: OperatorThread = { session_id: session.id, games_file_id: archives[0], games_archives: archives.slice(1), downloaded: [], from_site: true };
   if (cont) record.continues = cont.continues;
   if (sql) {
     await sql`

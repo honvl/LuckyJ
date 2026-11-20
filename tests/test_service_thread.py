@@ -26,6 +26,47 @@ class ServiceThreadTest(unittest.TestCase):
             read_as = "/mortal" if mount.startswith("/mortal/") else mount  # linked as a folder
             self.assertIn("$U" + read_as, SETUP, f"setup.sh never reads {mount}")
 
+    def test_setup_unpacks_every_games_archive(self):
+        self.assertIn('"$U"/player/games-*.tar.gz', SETUP)
+        self.assertLess(SETUP.index('"$U/player/games.tar.gz"'), SETUP.index('"$U"/player/games-*.tar.gz'),
+                        "top-up archives go over the first one")
+
+    def test_games_archives_are_mounted_where_setup_looks(self):
+        import thread
+        self.assertEqual(thread.archive_mount(1), "/player/games.tar.gz")
+        self.assertEqual(thread.archive_mount(2), "/player/games-2.tar.gz")
+        player = {"threads": [{"session_id": "s", "games_file_id": "a"}],
+                  "games": {"uuids": [], "archives": [{"file_id": "a"}, {"file_id": "b"}]}}
+        self.assertEqual(thread.games_files(player), ["a", "b"])
+        self.assertEqual(thread.games_files({"threads": [{"session_id": "s", "games_file_id": "a"}]}), ["a"])
+        # The site mounts them under the same names (web/lib/games-rules.mjs).
+        rules = (ROOT / "web/lib/games-rules.mjs").read_text(encoding="utf-8")
+        self.assertIn('"/player/games.tar.gz"', rules)
+        self.assertIn("`/player/games-${k}.tar.gz`", rules)
+
+    def test_the_games_note_names_every_added_archive(self):
+        import thread
+        note = thread.games_note(59, 3)
+        self.assertTrue(note.startswith(thread.GAMES_MARKER))
+        self.assertIn("59 with full hands", note)
+        self.assertIn("tar -xzf /mnt/session/uploads/player/games-2.tar.gz -C /workspace/LuckyJ/data/self_games/majsoul", note)
+        self.assertIn("/player/games-3.tar.gz", note)
+        self.assertNotIn("uploads/player/games.tar.gz", note)
+        self.assertNotIn("—", note)
+
+    def test_a_games_note_replaces_the_last_one_and_stays_ahead_of_an_instructions_update(self):
+        import thread
+        update = thread.instructions_update(16, "the instructions")
+        first = thread.with_games_note("Who the player is.", thread.games_note(40, 2))
+        self.assertTrue(first.startswith("Who the player is."))
+        queued = thread.with_games_note(first + "\n\n" + update, thread.games_note(59, 3))
+        self.assertEqual(queued.count(thread.GAMES_MARKER), 1)
+        self.assertIn("59 with full hands", queued)
+        self.assertNotIn("40 with full hands", queued)
+        self.assertTrue(queued.rstrip().endswith("the instructions"))
+        self.assertLess(queued.index(thread.GAMES_MARKER), queued.index(thread.UPDATE_MARKER))
+        self.assertEqual(thread.with_games_note(None, "note"), "note")
+
     def test_setup_pins_the_local_mortal_commit(self):
         local = ROOT / "tmp/mortal/.git"
         if not local.exists():
