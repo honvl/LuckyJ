@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
     inputs:
       check_login:
-        description: "Only check the fetch account: download one game already public on the site"
+        description: "Only check the fetch accounts: each downloads one game already public on the site"
         type: boolean
         default: false
   schedule:
@@ -79,9 +79,26 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           AMAE_KOROMO_TOKEN: ${{ secrets.AMAE_KOROMO_TOKEN }}
-          # The fetch account (not the operator's playing account) and its own device key.
+          # The fetch accounts (never the operator's playing account), each with its own device
+          # key. Mahjong Soul limits how many logs one account may retrieve (error 540), so a run
+          # uses the first until it is over its limit, then the next (scripts/fetch_player_games.py).
+          # An empty slot is skipped; to add an account, set both of its secrets.
           ACCESS_TOKEN: ${{ secrets.MJS_ACCESS_TOKEN }}
           MJS_RANDOM_KEY: ${{ secrets.MJS_RANDOM_KEY }}
+          MJS_ACCESS_TOKEN_2: ${{ secrets.MJS_ACCESS_TOKEN_2 }}
+          MJS_RANDOM_KEY_2: ${{ secrets.MJS_RANDOM_KEY_2 }}
+          MJS_ACCESS_TOKEN_3: ${{ secrets.MJS_ACCESS_TOKEN_3 }}
+          MJS_RANDOM_KEY_3: ${{ secrets.MJS_RANDOM_KEY_3 }}
+          MJS_ACCESS_TOKEN_4: ${{ secrets.MJS_ACCESS_TOKEN_4 }}
+          MJS_RANDOM_KEY_4: ${{ secrets.MJS_RANDOM_KEY_4 }}
+          MJS_ACCESS_TOKEN_5: ${{ secrets.MJS_ACCESS_TOKEN_5 }}
+          MJS_RANDOM_KEY_5: ${{ secrets.MJS_RANDOM_KEY_5 }}
+          MJS_ACCESS_TOKEN_6: ${{ secrets.MJS_ACCESS_TOKEN_6 }}
+          MJS_RANDOM_KEY_6: ${{ secrets.MJS_RANDOM_KEY_6 }}
+          MJS_ACCESS_TOKEN_7: ${{ secrets.MJS_ACCESS_TOKEN_7 }}
+          MJS_RANDOM_KEY_7: ${{ secrets.MJS_RANDOM_KEY_7 }}
+          MJS_ACCESS_TOKEN_8: ${{ secrets.MJS_ACCESS_TOKEN_8 }}
+          MJS_RANDOM_KEY_8: ${{ secrets.MJS_RANDOM_KEY_8 }}
           MJS_BASE: ${{ vars.MJS_BASE }}
           MJS_GATEWAY: ${{ vars.MJS_GATEWAY }}
           MJS_ROUTE_ID: ${{ vars.MJS_ROUTE_ID }}
@@ -92,9 +109,8 @@ jobs:
         run: |
           if [ "${{ inputs.check_login }}" = true ]; then
             game=$(python -c "import json; print(json.load(open('site/replays/index.json'))['games'][0]['id'])")
-            cd tmp/tensoul
-            # stderr names the fetch account's id; the log is public
-            node fetch_many.js --out /tmp/check "$game" 2> >(sed -E 's/[0-9]{6,}/<n>/g' >&2) | python -c "import json,sys; r=[json.loads(l) for l in sys.stdin if l.startswith('{')]; s=r[0]['status'] if r else 'no output'; print('fetch account login check:', s, r[0].get('error', '')[:200] if r else ''); sys.exit(s != 'written')"
+            # One line per account: ok, over its log retrieval limit, or why it could not log in.
+            python -u scripts/fetch_player_games.py --check-accounts "$game"
           else
             python -u service/thread.py onboard
           fi

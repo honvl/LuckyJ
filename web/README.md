@@ -92,7 +92,12 @@ Settings: `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`, `STRIPE_WEBHOOK_SECRET`, `MONT
   repository with "Actions: read and write"), and it also runs hourly for anyone still waiting.
   It logs in to Mahjong Soul as a separate fetch account, never the operator's playing account.
   Repository secrets: `ANTHROPIC_API_KEY`, `DATABASE_URL`, `AMAE_KOROMO_TOKEN`,
-  `MJS_ACCESS_TOKEN` (the fetch account's token), `MJS_RANDOM_KEY` (its device key). Variables:
+  `MJS_ACCESS_TOKEN` (the fetch account's token), `MJS_RANDOM_KEY` (its device key). Mahjong
+  Soul limits how many logs one account may retrieve (error 540, "log retrieval limit
+  exceeded"), so more fetch accounts can be added as `MJS_ACCESS_TOKEN_2` .. `_8`, each with its
+  own `MJS_RANDOM_KEY_<n>`: a run uses one account until it is over its limit, then the next,
+  and its last line says how many logs each gave. Running the workflow with "check_login"
+  ticked asks every account for one game and reports which can download. Variables:
   `MJS_BASE`, `MJS_GATEWAY`, `MJS_RES_VERSION` (bump on login error 151). Until the secrets
   exist the run does nothing. The repository is public, so the run prints no emails, names,
   account ids or game ids. thread.py's records (agent, environment, file ids, players) live in
