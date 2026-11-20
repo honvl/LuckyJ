@@ -25,7 +25,7 @@ test("reads a chapter archive the way the coach packs it", () => {
   }, key);
   const chapter = readChapter(untarGz(gz), key);
   assert.equal(chapter.number, 52);
-  assert.equal(chapter.title, "Chapter 52: Riichi rates");
+  assert.equal(chapter.title, "Riichi rates"); // the number shows on its own
   assert.match(chapter.markdown, /\[\[5m\]\]/);
   assert.deepEqual(chapter.spots, [{ id: "a", title: "One hand" }]);
   assert.deepEqual(chapter.figures.map((f) => [f.name, f.mime]), [["fig-rates.png", "image/png"]]);
@@ -57,4 +57,49 @@ test("cards come as a list or wrapped the way the guide's spots.json is", () => 
   assert.deepEqual(spotList({ spots: [card] }), [card]);
   assert.equal(spotList({}), null);
   assert.equal(spotList(null), null);
+});
+
+import { chapterLead, chapterTopic, rankLabel } from "./books-rules.mjs";
+import { parseGuide, plain } from "./guide-meta.mjs";
+
+test("a chapter's topic line is read and taken out of the prose", () => {
+  const md = "# Chapter 3: Fold sooner\nTopic: Push or fold\n\nYou fold late.";
+  const { topic, markdown } = chapterTopic(md);
+  assert.equal(topic, "Push or fold");
+  assert.equal(markdown, "# Chapter 3: Fold sooner\n\nYou fold late.");
+  assert.equal(chapterTopic("# A\n\nNo topic here.").topic, null);
+  assert.equal(chapterTopic("# A\n*Topic: Calls*\n").topic, "Calls");
+});
+
+test("titles lose their chapter prefix; the topic is kept", () => {
+  const files = { "3-fold/chapter.md": Buffer.from("# Chapter 3: Fold sooner\nTopic: Folds\n\nText.") };
+  const ch = readChapter(files, "3-fold");
+  assert.equal(ch.title, "Fold sooner");
+  assert.equal(ch.topic, "Folds");
+  assert.ok(!ch.markdown.includes("Topic:"));
+});
+
+test("the lead is the first prose paragraph, plain and clipped", () => {
+  const md = "# Title\n\n![fig](a.png)\n\nYou keep [[2m]] **dama** [[game:260101-abc East 1-0 t9]] when LuckyJ declares.\n\n| a | b |";
+  assert.equal(chapterLead(md), "You keep 2m dama when LuckyJ declares.");
+  assert.ok(chapterLead("# T\n\n" + "word ".repeat(200), 50).endsWith("…"));
+});
+
+test("rank ids read as tiers and steps", () => {
+  assert.deepEqual(rankLabel(10503), { tier: "Saint", label: "Saint 3" });
+  assert.deepEqual(rankLabel(10401, "ja"), { tier: "Master", label: "雀豪1" });
+  assert.deepEqual(rankLabel(10701), { tier: "Celestial", label: "Celestial Lv1" });
+  assert.equal(rankLabel(null), null);
+});
+
+test("the static guide's chapters and news are read from its markup", () => {
+  const html = `<nav class="x" id="chapters"><ol>
+    <li><a href="#value"><span class="contents-num">01</span><span class="contents-title">Count the dora</span><span class="contents-sub">Value &#183; added 22 September</span></a></li>
+    <li><a href="#d"><span class="contents-num">02</span><span class="contents-title">手の方針</span><span class="contents-sub">打点 &#183; 9月22日追加</span></a></li>
+  </ol></nav><aside id="whats-new"><ol><li class="is-latest"><span class="guide-news-date">18 Nov</span><p><span class="new-tag">Latest</span> <a href="#draw">Chapter 52 looks</a> at &#8220;games&#8221;.</p></li></ol></aside>`;
+  const g = parseGuide(html);
+  assert.deepEqual(g.chapters[0], { n: 1, id: "value", title: "Count the dora", topic: "Value", date: "22 September" });
+  assert.equal(g.chapters[1].date, "9月22日");
+  assert.deepEqual(g.news[0], { date: "18 Nov", id: "draw", text: "Chapter 52 looks at “games”." });
+  assert.equal(plain("a&amp;b"), "a&b");
 });

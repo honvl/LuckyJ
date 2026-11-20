@@ -13,6 +13,8 @@ export type BookChapter = {
   key: string;
   number: number;
   title: string;
+  topic: string | null;
+  addedAt: string;
   markdown: string;
   spots: any[] | null;
   figures: string[];
@@ -20,7 +22,12 @@ export type BookChapter = {
   updatedAt: string;
 };
 
-export type Book = { player: string; name: string; slug: string; chapters: BookChapter[] };
+export type Book = { player: string; name: string; slug: string; rankId: number | null; chapters: BookChapter[] };
+
+/** Titles stored before the prefix was dropped still read "Chapter 1: …"; the number shows on its own. */
+function bareTitle(title: string): string {
+  return String(title).replace(/^Chapter\s+\d+:\s*/i, "").replace(/^第\d+章[：:]\s*/, "");
+}
 
 /** The name a book is published under, and its URL name (set once, kept stable). */
 async function ensureBookName(player: string): Promise<{ name: string; slug: string }> {
@@ -85,12 +92,12 @@ export async function syncChapters(player: string, force = false): Promise<strin
     const chapter = readChapter(untarGz(new Uint8Array(await res.arrayBuffer())), key);
     if (!chapter) continue;
     await sql`
-      insert into chapters (player, key, number, title, markdown, spots, source_file_id)
-      values (${player}, ${key}, ${chapter.number}, ${chapter.title}, ${chapter.markdown},
+      insert into chapters (player, key, number, title, topic, markdown, spots, source_file_id)
+      values (${player}, ${key}, ${chapter.number}, ${chapter.title}, ${chapter.topic}, ${chapter.markdown},
               ${chapter.spots ? JSON.stringify(chapter.spots) : null}, ${id})
       on conflict (player, key) do update set number = excluded.number, title = excluded.title,
-        markdown = excluded.markdown, spots = excluded.spots, source_file_id = excluded.source_file_id,
-        updated_at = now()`;
+        topic = excluded.topic, markdown = excluded.markdown, spots = excluded.spots,
+        source_file_id = excluded.source_file_id, updated_at = now()`;
     await sql`delete from chapter_files where player = ${player} and key = ${key}`;
     for (const fig of chapter.figures) {
       await sql`insert into chapter_files (player, key, name, mime, data)
@@ -106,7 +113,7 @@ export async function syncChapters(player: string, force = false): Promise<strin
 
 async function chaptersOf(player: string, publicOnly: boolean): Promise<BookChapter[]> {
   const rows = await sql!`
-    select c.key, c.number, c.title, c.markdown, c.spots, c.updated_at,
+    select c.key, c.number, c.title, c.topic, c.markdown, c.spots, c.created_at, c.updated_at,
            (pc.chapter is null) as is_public,
            coalesce((select array_agg(f.name order by f.name) from chapter_files f
                      where f.player = c.player and f.key = c.key), '{}') as figures
@@ -119,7 +126,8 @@ async function chaptersOf(player: string, publicOnly: boolean): Promise<BookChap
   return rows
     .filter((r) => !publicOnly || (bookPublic && r.is_public))
     .map((r) => ({
-      key: r.key, number: r.number, title: r.title, markdown: r.markdown, spots: spotList(r.spots),
+      key: r.key, number: r.number, title: bareTitle(r.title), topic: r.topic ?? null,
+      addedAt: new Date(r.created_at).toISOString(), markdown: r.markdown, spots: spotList(r.spots),
       figures: r.figures, isPublic: r.is_public, updatedAt: new Date(r.updated_at).toISOString(),
     }));
 }
@@ -140,24 +148,42 @@ export async function setBookPublic(player: string, isPublic: boolean) {
 /** The public book at /books/<slug>, or null. */
 export async function bookBySlug(slug: string): Promise<Book | null> {
   if (!sql) return null;
-  const [p] = await sql`select name, book_name, slug from players where slug = ${slug}`;
+  const [p] = await sql`select name, book_name, slug, rank_id from players where slug = ${slug}`;
   if (!p) return null;
   await syncChapters(p.name).catch(() => []); // throttled; a failure leaves what is stored
   const chapters = await chaptersOf(p.name, true);
   if (!chapters.length) return null;
-  return { player: p.name, name: p.book_name || p.name, slug: p.slug, chapters };
+  return { player: p.name, name: p.book_name || p.name, slug: p.slug, rankId: p.rank_id ?? null, chapters };
 }
 
-/** Every book with at least one public chapter, for /books. */
-export async function publicBooks(): Promise<{ name: string; slug: string; chapters: number; updated: string }[]> {
+export type BookSummary = {
+  player: string; name: string; slug: string; rankId: number | null; chapters: number; updated: string;
+  latest: string; topics: string[];
+};
+
+/** Every book with at least one public chapter, newest first, for /books and the home page. */
+export async function publicBooks(): Promise<BookSummary[]> {
   if (!sql) return [];
   const rows = await sql`
-    select p.book_name, p.name, p.slug, count(*)::int as chapters, max(c.updated_at) as updated
+    select p.name, p.book_name, p.slug, p.rank_id, count(*)::int as chapters, max(c.updated_at) as updated,
+           (array_agg(c.title order by c.number desc))[1] as latest,
+           array_remove(array_agg(distinct c.topic), null) as topics
     from players p join chapters c on c.player = p.name
     left join private_chapters pc on pc.player = c.player and pc.chapter = c.key
     where pc.chapter is null and p.slug is not null and p.book_public
     group by p.name order by max(c.updated_at) desc`;
-  return rows.map((r) => ({ name: r.book_name || r.name, slug: r.slug, chapters: r.chapters, updated: new Date(r.updated).toISOString() }));
+  return rows.map((r) => ({
+    player: r.name, name: r.book_name || r.name, slug: r.slug, rankId: r.rank_id ?? null,
+    chapters: r.chapters, updated: new Date(r.updated).toISOString(), latest: bareTitle(r.latest),
+    topics: r.topics || [],
+  }));
+}
+
+/** A player's rank id (the static guide's owner has no book row of their own to carry it). */
+export async function rankOf(player: string): Promise<number | null> {
+  if (!sql) return null;
+  const [r] = await sql`select rank_id from players where name = ${player}`;
+  return r?.rank_id ?? null;
 }
 
 /** A figure of a public chapter, or null. */

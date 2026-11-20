@@ -74,9 +74,67 @@ export function readChapter(files, key) {
     }
   }
   if (!markdown) return null;
-  const heading = markdown.match(/^#\s+(.+)$/m);
+  const { topic, markdown: body } = chapterTopic(markdown);
+  const heading = body.match(/^#\s+(.+)$/m);
   const number = Number(key.split("-")[0]);
-  return { key, number, title: heading ? heading[1].trim() : key.replace(/^\d+-/, "").replace(/-/g, " "), markdown, spots, figures };
+  const title = heading ? heading[1].trim().replace(/^Chapter\s+\d+:\s*/i, "").replace(/^第\d+章[：:]\s*/, "") : key.replace(/^\d+-/, "").replace(/-/g, " ");
+  return { key, number, title, topic, markdown: body, spots, figures };
+}
+
+/**
+ * A chapter's topic: the coach writes "Topic: Riichi or dama" on its own line just under the
+ * heading (service/agent/system.md). Returns it and the markdown without that line.
+ * @param {string} markdown
+ */
+export function chapterTopic(markdown) {
+  const lines = String(markdown).split("\n");
+  const limit = Math.min(lines.length, 6);
+  for (let i = 0; i < limit; i++) {
+    const m = lines[i].match(/^\s*\*?(?:Topic|トピック)\s*[:：]\s*(.+?)\*?\s*$/i);
+    if (m) {
+      lines.splice(i, 1);
+      return { topic: m[1].trim().slice(0, 40), markdown: lines.join("\n") };
+    }
+  }
+  return { topic: null, markdown: String(markdown) };
+}
+
+/** The first paragraph of a chapter's prose, as plain text, for What's new (at most `limit` characters). */
+export function chapterLead(markdown, limit = 320) {
+  const blocks = String(markdown).split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
+  const para = blocks.find((b) => !/^(#|!\[|\||[-*] |>|```|\d+\. )/.test(b)) || "";
+  const text = para
+    .replace(/\[\[game:[^\]]*\]\]/g, "")
+    .replace(/\[\[([^\]]+)\]\]/g, "$1")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/[*_`]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  return text.length <= limit ? text : `${text.slice(0, limit).replace(/\s+\S*$/, "")}…`;
+}
+
+const TIERS = {
+  1: { en: "Novice", ja: "初心" }, 2: { en: "Adept", ja: "雀士" }, 3: { en: "Expert", ja: "雀傑" },
+  4: { en: "Master", ja: "雀豪" }, 5: { en: "Saint", ja: "雀聖" }, 6: { en: "Celestial", ja: "魂天" },
+  7: { en: "Celestial", ja: "魂天" },
+};
+
+/**
+ * A Mahjong Soul rank id (10xyz: x the tier, z the step) as words: {tier, label}, or null.
+ * 10503 -> Saint 3 (雀聖3); 10701 -> Celestial Lv1 (魂天Lv1).
+ * @param {number|null|undefined} id @param {"en"|"ja"} lang
+ */
+export function rankLabel(id, lang = "en") {
+  const n = Number(id);
+  if (!Number.isFinite(n) || n < 10000) return null;
+  const tier = Math.floor(n / 100) % 10;
+  const step = n % 100;
+  const names = TIERS[tier];
+  if (!names) return null;
+  const celestial = tier >= 6;
+  const label = celestial ? `${names[lang]} Lv${step}` : lang === "ja" ? `${names.ja}${step}` : `${names.en} ${step}`;
+  return { tier: names.en, label };
 }
 
 /** "chapter-52-riichi-rates.tar.gz" -> "52-riichi-rates", else null. */

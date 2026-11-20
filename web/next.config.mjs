@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 export default {
   reactStrictMode: true,
+  // A separate build folder lets a production preview run beside `next dev` (.claude/launch.json).
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   poweredByHeader: false,
   // The site's front page is the playbook (public/index.html, copied from ../site).
   // The site's address is ai.yui-life.com; the old vercel.app address forwards to it. API routes

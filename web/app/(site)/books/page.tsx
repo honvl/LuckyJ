@@ -1,36 +1,34 @@
 import type { Metadata } from "next";
-import { publicBooks } from "@/lib/books";
-import { STRINGS, pageLang } from "@/lib/lang";
-import { PRODUCT } from "@/lib/strings";
+import LibraryGrid from "@/components/LibraryGrid";
+import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
+import { libraryItems } from "@/lib/library";
+import { pageLang } from "@/lib/lang";
+import { SITE } from "@/lib/site-strings";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: `Personal Guides: ${PRODUCT}`, robots: { index: true } };
+export const metadata: Metadata = { title: "Personal Guides: The LuckyJ Playbook", robots: { index: true } };
 
 export default async function BooksPage() {
   const lang = await pageLang();
-  const t = STRINGS[lang];
-  const books = await publicBooks();
-  const fmt = new Intl.DateTimeFormat(lang === "ja" ? "ja-JP" : "en-GB", { day: "numeric", month: "short", year: "numeric" });
+  const s = SITE[lang];
+  const items = await libraryItems(lang);
+  const chapters = items.reduce((sum, it) => sum + it.chapters, 0);
   return (
-    <main className="book">
-      <p className="login-kicker"><a href={lang === "ja" ? "/ja.html" : "/"}>LuckyJ Playbook</a> · {PRODUCT}</p>
-      <h1>{t.books}</h1>
-      <p className="book-lead">{t.booksLead}</p>
-      <ul className="book-list">
-        <li>
-          <a href={lang === "ja" ? "/honver-ja.html" : "/honver.html"}>{t.honverGuide}</a>
-          <span className="login-note">{t.honverGuideNote}</span>
-        </li>
-        {books.map((b) => (
-          <li key={b.slug}>
-            <a href={`/books/${b.slug}`}>{t.bookOf(b.name)}</a>
-            <span className="login-note">{t.chapterCount(b.chapters)} · {fmt.format(new Date(b.updated))}</span>
-          </li>
-        ))}
-      </ul>
-      <p className="login-note book-foot">
-        {t.notAffiliated} <a href={t.privacyHref}>{t.privacy}</a> · <a href={t.termsHref}>{t.terms}</a>
-      </p>
-    </main>
+    <div className="s-page">
+      <SiteHeader lang={lang} current="guides" path="/books" />
+      <main className="s-main">
+        <div className="s-intro">
+          <div>
+            <p className="s-kicker">{s.libraryKicker}</p>
+            <h1 className="s-h1">{s.libraryTitle}</h1>
+            <p className="s-lead">{s.libraryLead}</p>
+          </div>
+          <p className="s-muted">{s.libraryCount(items.length, chapters)}</p>
+        </div>
+        <LibraryGrid lang={lang} items={items} />
+        <p className="s-note">{s.libraryNote} <a href="/tutor">{s.aboutTutor}</a></p>
+      </main>
+      <SiteFooter lang={lang} />
+    </div>
   );
 }

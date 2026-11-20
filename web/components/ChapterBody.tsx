@@ -1,6 +1,6 @@
 "use client";
-// A player's book: chapter prose (the coach's chapter.md) and its cards (spots.json), drawn with
-// the chat's renderer so tiles, tables and game references look the same.
+// A chapter of a player's book: its prose (the coach's chapter.md) and its cards (spots.json),
+// drawn with the chat's renderer so tiles, tables and game references look the same.
 import { useEffect, useMemo, useState } from "react";
 import type { BookChapter } from "@/lib/books";
 import { STRINGS, type Lang } from "@/lib/strings";
@@ -47,38 +47,29 @@ function Card({ spot, lang, ctx }: { spot: Spot; lang: Lang; ctx: any }) {
   );
 }
 
-export default function BookChapters({ lang, slug, chapters }: { lang: Lang; slug: string; chapters: BookChapter[] }) {
+/** One chapter's prose and its cards. The page draws the kicker and the title itself. */
+export default function ChapterBody({ lang, slug, chapter }: { lang: Lang; slug: string; chapter: BookChapter }) {
   const t = STRINGS[lang];
   const [replays, setReplays] = useState<Record<string, string>>({});
   useEffect(() => {
     fetch("/replays.json").then((r) => (r.ok ? r.json() : {})).then(setReplays).catch(() => {});
   }, []);
-  const base = useMemo(() => ({ lang, siteUrl: "", replays }), [lang, replays]);
+  const ctx = useMemo(
+    () => ({ lang, siteUrl: "", replays, assetBase: `/books/${slug}/files/${encodeURIComponent(chapter.key)}` }),
+    [lang, replays, slug, chapter.key],
+  );
+  const spots = Array.isArray(chapter.spots) ? (chapter.spots as Spot[]) : [];
+  // The page shows the title as its own heading.
+  const prose = chapter.markdown.replace(/^\s*#\s+.*\n?/, "");
   return (
-    <>
-      <nav className="book-toc" aria-label={t.contents}>
-        <h2>{t.contents}</h2>
-        <ol>
-          {chapters.map((c) => (
-            <li key={c.key}><a href={`#ch-${c.key}`}>{c.title}</a></li>
-          ))}
-        </ol>
-      </nav>
-      {chapters.map((c) => {
-        const ctx = { ...base, assetBase: `/books/${slug}/files/${encodeURIComponent(c.key)}` };
-        const spots = Array.isArray(c.spots) ? (c.spots as Spot[]) : [];
-        return (
-          <section key={c.key} className="book-chapter" id={`ch-${c.key}`}>
-            <Markdown text={c.markdown} ctx={ctx} />
-            {spots.length > 0 && (
-              <div className="book-cards">
-                <h3>{t.cards}</h3>
-                {spots.map((s, i) => <Card key={s.id || i} spot={s} lang={lang} ctx={ctx} />)}
-              </div>
-            )}
-          </section>
-        );
-      })}
-    </>
+    <div className="book-chapter">
+      <Markdown text={prose} ctx={ctx} />
+      {spots.length > 0 && (
+        <div className="book-cards">
+          <h3>{t.cards}</h3>
+          {spots.map((s, i) => <Card key={s.id || i} spot={s} lang={lang} ctx={ctx} />)}
+        </div>
+      )}
+    </div>
   );
 }

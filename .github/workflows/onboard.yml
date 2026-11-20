@@ -96,3 +96,12 @@ jobs:
           else
             python service/thread.py onboard
           fi
+
+      # Players' Mahjong Soul ranks for the Personal Guides library (prints counts only).
+      - name: Refresh player ranks
+        if: ${{ inputs.check_login != true }}
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          AMAE_KOROMO_TOKEN: ${{ secrets.AMAE_KOROMO_TOKEN }}
+        run: python service/thread.py ranks

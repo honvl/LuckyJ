@@ -5,3 +5,6 @@ next-env.d.ts
 # Copied from ../site by scripts/sync-site-assets.mjs.
 public/
 *.tsbuildinfo
+# Written by scripts/sync-site-assets.mjs from ../site.
+lib/generated/
+.next-prod/

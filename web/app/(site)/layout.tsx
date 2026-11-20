@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../palette.css";
 import "../globals.css";
 import "../markdown.css";
+import "../site.css";
 import { pageLang } from "@/lib/lang";
 import { PRODUCT } from "@/lib/strings";
 

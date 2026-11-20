@@ -3666,6 +3666,72 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   justify-self: start;
 }
 
+/* The home page's Personal Guides insert: a shelf of the newest guides (guides-shelf.js) */
+.guides-insert:hover {
+  border-color: var(--hair);
+}
+
+.guides-shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guides-shelf a {
+  display: grid;
+  gap: 4px;
+  height: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--hair);
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.guides-shelf a:hover .guides-shelf-latest {
+  color: var(--verm);
+}
+
+.guides-shelf-name {
+  font-size: 22px;
+  line-height: 1.1;
+  color: var(--felt);
+}
+
+.guides-shelf-meta {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.guides-shelf-latest {
+  font-size: 16px;
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+
+.guides-insert .guides-tutor-note {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.guides-insert .guides-tutor-note a {
+  color: var(--ink-2);
+}
+
+.running-nav a.nav-quiet {
+  color: var(--ink-2);
+}
+
+.running-head.on-felt .running-nav a.nav-quiet {
+  color: inherit;
+  opacity: 0.82;
+}
+
 /* ------------------------------------------------------------------ colophon */
 
 .colophon {

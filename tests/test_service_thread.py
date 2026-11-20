@@ -73,6 +73,13 @@ class ServiceThreadTest(unittest.TestCase):
         self.assertIn("add column if not exists continues text", schema)
         self.assertIn("add column if not exists continued_by text", schema)
 
+    def test_chapters_carry_a_topic_line(self):
+        flat = " ".join(SYSTEM.split())
+        self.assertIn("on the next line `Topic: <topic>`", flat)
+        rules = (ROOT / "web/lib/books-rules.mjs").read_text(encoding="utf-8")
+        self.assertIn("Topic|トピック", rules)
+        self.assertIn("ranks", CLIENT)
+
     def test_chapter_archive_name_matches_the_client(self):
         name = re.search(r"/mnt/session/outputs/(chapter-<NN>-<slug>\.tar\.gz)", SYSTEM)
         self.assertIsNotNone(name, "the prompt names the chapter archive")

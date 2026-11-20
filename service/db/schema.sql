@@ -151,3 +151,12 @@ create table if not exists r2_usage (
   bytes  bigint not null default 0,
   primary key (day, player)
 );
+
+-- The player's Mahjong Soul rank for the library (rank id 10xyz: tier x, step z; points within
+-- the step), refreshed by `thread.py ranks` on the hourly onboarding run.
+alter table players add column if not exists rank_id integer;
+alter table players add column if not exists rank_points integer;
+alter table players add column if not exists rank_at timestamptz;
+
+-- A chapter's topic, from the "Topic:" line under its heading (web/lib/books-rules.mjs).
+alter table chapters add column if not exists topic text;

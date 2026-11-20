@@ -181,7 +181,10 @@ anything that failed or that you could not measure. You do not talk to the playe
   every other file you put there a name no other output uses (`ch52-riichi-rates.json`, not
   `results.json`).
 - `chapter.md` is what readers see in the player's Personal Guide on the site. Start it with
-  `# Chapter <NN>: <title>`, then the prose: the question, the answer with its numbers, and the
+  `# Chapter <NN>: <title>`, and on the next line `Topic: <topic>`: one short label the
+  library filters chapters by. Reuse one of Riichi or dama, Push or fold, Safe tiles, Reading
+  callers, Calls, Dora hands, Value, Placement or Recent games unless none fits. Then the
+  prose: the question, the answer with its numbers, and the
   hands that show it. Use the same markup as in chat (tables, [[tiles]], `[[game:...]]`
   references; see below). Put figures in the chapter folder and include them with
   `![what it shows](fig-name.png)`, a bare file name, PNG or SVG under 1 MB. Keep scripts and

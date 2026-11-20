@@ -722,6 +722,55 @@ def cmd_comp(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     print(f"{args.player} {'needs a subscription again' if args.off else 'uses the tutor free'}")
 
 
+RANK_REFRESH_HOURS = 6
+
+
+def cmd_ranks(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
+    """Store each player's Mahjong Soul rank for the library (players.rank_id, rank_points).
+
+    The account id comes from the player's sign-up profile, or from a key like ms-<id>; `--player`
+    with `--account` sets one by hand. Ranks younger than RANK_REFRESH_HOURS are left alone.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import fetch_majsoul_games as fms
+    token = fms.amae_token()
+    if not token:
+        sys.exit("no AMAE_KOROMO_TOKEN in the environment or tmp/tensoul/.env")
+    with _db() as conn:
+        conn.execute(SCHEMA.read_text(encoding="utf-8"))
+        if args.player:
+            if not args.account:
+                sys.exit("--player needs --account")
+            todo = [(args.player, args.account)]
+        else:
+            rows = conn.execute(
+                "select p.name, max(pr.majsoul_account_id) from players p"
+                " left join logins l on l.player = p.name"
+                " left join profiles pr on pr.email = l.email"
+                " where p.rank_at is null or p.rank_at < now() - make_interval(hours => %s)"
+                " group by p.name", (RANK_REFRESH_HOURS,)).fetchall()
+            todo = []
+            for name, account in rows:
+                m = re.fullmatch(r"ms-(\d+)", name)
+                account = account or (int(m.group(1)) if m else None)
+                if account:
+                    todo.append((name, account))
+        done = 0
+        for name, account in todo:
+            try:
+                level = (fms.amae_stats(int(account), token).get("player_stats") or {}).get("level") or {}
+            except Exception as e:  # one player's lookup failing leaves the others
+                print(f"  ! rank lookup failed: {type(e).__name__}")
+                continue
+            if not level.get("id"):
+                continue
+            points = (level.get("score") or 0) + (level.get("delta") or 0)
+            conn.execute("update players set rank_id = %s, rank_points = %s, rank_at = now() where name = %s",
+                         (int(level["id"]), int(points), name))
+            done += 1
+    print(f"ranks stored for {done} of {len(todo)} players")
+
+
 def cmd_db_sync(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     """Create the site's tables and copy every player into them."""
     if not db_sync(load_state()):
@@ -847,6 +896,9 @@ def main() -> None:
     p.add_argument("player")
     p.add_argument("email")
     sub.add_parser("db-sync", help="create the site's tables and copy every player into them")
+    p = sub.add_parser("ranks", help="store every player's Mahjong Soul rank for the library")
+    p.add_argument("--player", help="set one player's rank (with --account)")
+    p.add_argument("--account", type=int, help="that player's Mahjong Soul account id")
     sub.add_parser("pending", help="paying players still waiting for their thread")
     p = sub.add_parser("onboard", help="fetch games and start a thread for every paying player waiting")
     p.add_argument("--dry-run", action="store_true", help="list who would be started and stop")
@@ -864,7 +916,7 @@ def main() -> None:
     args = ap.parse_args()
 
     client = anthropic.Anthropic(api_key=api_key())
-    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "db-sync": cmd_db_sync, "pending": cmd_pending, "onboard": cmd_onboard, "comp": cmd_comp, "list": cmd_list,
+    {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "db-sync": cmd_db_sync, "ranks": cmd_ranks, "pending": cmd_pending, "onboard": cmd_onboard, "comp": cmd_comp, "list": cmd_list,
      "refresh": cmd_refresh, "topup": cmd_topup}[args.cmd](client, args)
 
 
