@@ -116,6 +116,15 @@ def notices(name):
             if any(t == "aside" and a.get("id") == "whats-new" for t, a in ancestors)]
 
 
+class NavTests(unittest.TestCase):
+    def test_book_pages_link_the_guides_and_the_tutor(self):
+        for name in ("index.html", "points.html", "ja.html", "honver.html", "honver-ja.html"):
+            html = (SITE / name).read_text(encoding="utf-8")
+            nav = re.search(r'<nav class="running-nav".*?</nav>', html, re.S).group(0)
+            self.assertIn('href="/books"', nav, name)
+            self.assertIn('<a class="nav-tertiary nav-quiet" href="/tutor">', nav, name)
+
+
 class JapaneseGuideTests(unittest.TestCase):
     """honver-ja.html is the whole guide in Japanese: every chapter, notice, anchor and link of honver.html."""
 
