@@ -9,6 +9,11 @@ name: Onboard tutor players
 
 on:
   workflow_dispatch:
+    inputs:
+      check_login:
+        description: "Only check the fetch account: download one game already public on the site"
+        type: boolean
+        default: false
   schedule:
     - cron: "17 * * * *"
 
@@ -81,4 +86,11 @@ jobs:
           # Bump when logins fail with error 151 (the game updated).
           MJS_RES_VERSION: ${{ vars.MJS_RES_VERSION }}
           MJS_PACKAGE_VERSION: ${{ vars.MJS_PACKAGE_VERSION }}
-        run: python service/thread.py onboard
+        run: |
+          if [ "${{ inputs.check_login }}" = true ]; then
+            game=$(python -c "import json; print(json.load(open('site/replays/index.json'))['games'][0]['id'])")
+            cd tmp/tensoul
+            node fetch_many.js --out /tmp/check "$game" | python -c "import json,sys; r=[json.loads(l) for l in sys.stdin if l.startswith('{')]; s=r[0]['status'] if r else 'no output'; print('fetch account login check:', s, r[0].get('error', '')[:200] if r else ''); sys.exit(s != 'written')"
+          else
+            python service/thread.py onboard
+          fi
