@@ -12,12 +12,65 @@ export function hasAccess(who) {
 }
 
 /**
- * A thread's new cap at a renewal: what it has spent so far plus one month's allowance, so an
- * unused allowance does not carry over and an overspent month does not eat into the next.
+ * A player's new allowance at a renewal: what all their threads have spent so far plus one
+ * month's allowance, so an unused allowance does not carry over and an overspent month does not
+ * eat into the next.
  * @param {number} spentCents @param {number} allowanceCents
  */
 export function capAfterRenewal(spentCents, allowanceCents) {
   return Math.ceil(spentCents) + allowanceCents;
+}
+
+/**
+ * @typedef {{ id: string, spentCents: number, capCents: number | null, running: boolean }} ThreadSpend
+ */
+
+/**
+ * A player's allowance before the database held one: what their threads' own caps added up to.
+ * @param {ThreadSpend[]} threads
+ */
+export function initialAllowance(threads) {
+  return threads.reduce((sum, t) => sum + (t.capCents ?? Math.ceil(t.spentCents)), 0);
+}
+
+/**
+ * Spending caps for a message in one thread. All of a player's threads share one allowance:
+ * an idle thread gives back what it has not spent (its cap drops to what it has spent plus one
+ * cent, the lowest the API accepts), a running thread keeps its cap, and the thread the player is
+ * writing in gets the rest. The caps never add up to more than the allowance.
+ * @param {number} allowanceCents @param {ThreadSpend[]} threads @param {string} activeId
+ * @returns {{ updates: { id: string, capCents: number }[], activeCap: number, canSend: boolean }}
+ */
+export function planCaps(allowanceCents, threads, activeId) {
+  const updates = [];
+  let held = 0;
+  for (const t of threads) {
+    if (t.id === activeId) continue;
+    const floor = Math.ceil(t.spentCents) + 1;
+    if (t.running) {
+      held += Math.max(t.capCents ?? floor, floor);
+      continue;
+    }
+    if (t.capCents == null || t.capCents > floor) updates.push({ id: t.id, capCents: floor });
+    held += Math.max(Math.min(t.capCents ?? floor, floor), Math.ceil(t.spentCents));
+  }
+  const active = threads.find((t) => t.id === activeId);
+  const activeCap = allowanceCents - held;
+  const canSend = Boolean(active) && activeCap > Math.ceil(active.spentCents);
+  if (canSend && active.capCents !== activeCap) updates.push({ id: activeId, capCents: activeCap });
+  return { updates, activeCap, canSend };
+}
+
+/**
+ * How much of this month's allowance is used, 0 to 100, for the page's bar. A top-up that leaves
+ * more than a month's allowance shows as unused.
+ * @param {number} allowanceCents @param {number} spentCents @param {number} monthlyCents
+ */
+export function usedPercent(allowanceCents, spentCents, monthlyCents) {
+  const remaining = allowanceCents - spentCents;
+  const base = Math.max(monthlyCents, remaining);
+  if (base <= 0) return 100;
+  return Math.min(100, Math.max(0, Math.round(100 * (1 - remaining / base))));
 }
 
 /** @param {any} invoice */

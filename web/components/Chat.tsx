@@ -1,52 +1,102 @@
 "use client";
+// The chat page: assistant-ui's thread and thread list (components/assistant-ui) fed from the
+// coach's sessions. Each thread is a coach session; the sidebar lists them like Claude Desktop.
+import {
+  AssistantRuntimeProvider,
+  type AppendMessage,
+  type ThreadMessageLike,
+  useExternalStoreRuntime,
+  WebSpeechDictationAdapter,
+} from "@assistant-ui/react";
+import { MenuIcon, XIcon } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { MahjongContext } from "@/components/assistant-ui/elements/markdown-text";
+import { Thread } from "@/components/assistant-ui/elements/thread.aui";
+import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
+import { AuiLabelsContext } from "@/components/assistant-ui/labels";
 import type { ChatEvent } from "@/lib/events";
 import { STRINGS, type Lang } from "@/lib/strings";
-import Markdown from "./Markdown";
 
+type ThreadRow = { id: string; title: string | null; createdAt: string; archived: boolean };
 type Chapter = { key: string; number: number; title: string; isPublic: boolean };
 type Local = { id: string; kind: "user"; text: string; local: true };
-type Item = ChatEvent | Local;
+// serverId: a message sent from this page keeps the id it was drawn with when the server's copy
+// arrives, so the thread does not read the swap as an edit (a "2/2" branch).
+type Item = (Extract<ChatEvent, { kind: "user" | "agent" | "tool" | "compacted" | "error" }> & { serverId?: string }) | Local;
 
-type Block =
-  | { type: "user"; id: string; text: string }
-  | { type: "agent"; id: string; text: string }
-  | { type: "work"; id: string; steps: Extract<ChatEvent, { kind: "tool" }>[] }
-  | { type: "note"; id: string; text: string };
-
-function toBlocks(items: Item[], t: (typeof STRINGS)[Lang]): Block[] {
-  const blocks: Block[] = [];
+/** The coach's events as chat messages: each reply gathers its text and tool steps. */
+function toMessages(items: Item[], running: boolean, t: (typeof STRINGS)[Lang]): ThreadMessageLike[] {
+  const out: ThreadMessageLike[] = [];
+  let reply: { id: string; parts: any[] } | null = null;
+  const flush = () => {
+    if (reply) out.push({ id: reply.id, role: "assistant", content: reply.parts, status: { type: "complete", reason: "unknown" } });
+    reply = null;
+  };
   for (const ev of items) {
-    if (ev.kind === "user") blocks.push({ type: "user", id: ev.id, text: ev.text });
-    else if (ev.kind === "agent") blocks.push({ type: "agent", id: ev.id, text: ev.text });
-    else if (ev.kind === "tool") {
-      const last = blocks[blocks.length - 1];
-      if (last?.type === "work") last.steps.push(ev);
-      else blocks.push({ type: "work", id: ev.id, steps: [ev] });
-    } else if (ev.kind === "compacted") blocks.push({ type: "note", id: ev.id, text: t.compacted });
-    else if (ev.kind === "error") blocks.push({ type: "note", id: ev.id, text: ev.message });
+    if (ev.kind === "user") {
+      flush();
+      out.push({ id: ev.id, role: "user", content: [{ type: "text", text: ev.text }] });
+      continue;
+    }
+    reply ??= { id: `reply-${ev.id}`, parts: [] };
+    if (ev.kind === "agent") reply.parts.push({ type: "text", text: ev.text });
+    else if (ev.kind === "tool")
+      reply.parts.push({
+        type: "tool-call", toolCallId: ev.id, toolName: ev.label, args: { detail: ev.detail }, argsText: ev.detail,
+        result: ev.failed ? "failed" : "done", isError: Boolean(ev.failed),
+      });
+    else if (ev.kind === "compacted") reply.parts.push({ type: "text", text: `*${t.compacted}*` });
+    else if (ev.kind === "error") reply.parts.push({ type: "text", text: `**${ev.message}**` });
   }
-  return blocks;
+  flush();
+  const last = out[out.length - 1];
+  if (running && last?.role === "assistant") {
+    const parts = [...(last.content as any[])];
+    const tool = parts[parts.length - 1];
+    // The step the coach is on has no result yet.
+    if (tool?.type === "tool-call") parts[parts.length - 1] = { ...tool, result: undefined, isError: false };
+    out[out.length - 1] = { ...last, content: parts, status: { type: "running" } };
+  }
+  return out;
+}
+
+function textOf(message: AppendMessage): string {
+  return message.content.map((p) => (p.type === "text" ? p.text : "")).join("").trim();
+}
+
+function threadFromUrl(): string | null {
+  return new URL(window.location.href).searchParams.get("thread");
+}
+
+function showThreadInUrl(id: string) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("thread", id);
+  window.history.replaceState(null, "", url);
 }
 
 export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: string; siteUrl: string }) {
   const t = STRINGS[lang];
+  const [threads, setThreads] = useState<ThreadRow[]>([]);
+  const [current, setCurrent] = useState<string | null>(null);
   const [items, setItems] = useState<Item[]>([]);
-  const [status, setStatus] = useState<string>("idle");
+  const [loading, setLoading] = useState(true);
+  const [status, setStatus] = useState("idle");
   const [stop, setStop] = useState<string | undefined>();
-  const [spent, setSpent] = useState(0);
-  const [cap, setCap] = useState<number | null>(null);
+  const [usedPct, setUsedPct] = useState<number | null>(null);
   const [chapters, setChapters] = useState<Chapter[]>([]);
   const [bookSlug, setBookSlug] = useState<string | null>(null);
   const [replays, setReplays] = useState<Record<string, string>>({});
-  const [draft, setDraft] = useState("");
-  const [failed, setFailed] = useState(false);
-  const stuck = useRef(true);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [creating, setCreating] = useState(false);
+  const [sidebar, setSidebar] = useState(false);
+  const [showChapters, setShowChapters] = useState(false);
+  const currentRef = useRef<string | null>(null);
+  currentRef.current = current;
 
   const merge = useCallback((incoming: ChatEvent[]) => {
     setItems((prev) => {
-      const seen = new Set(prev.map((e) => e.id));
+      const seen = new Set(prev.flatMap((e) => ("serverId" in e && e.serverId ? [e.id, e.serverId] : [e.id])));
       let next = prev;
       for (const ev of incoming) {
         if (seen.has(ev.id)) continue;
@@ -55,7 +105,7 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
           // The server's copy of a message sent from this page replaces the local one.
           const i = next.findIndex((e) => "local" in e && e.text === ev.text);
           if (i >= 0) {
-            next = [...next.slice(0, i), ev, ...next.slice(i + 1)];
+            next = [...next.slice(0, i), { ...ev, id: next[i].id, serverId: ev.id }, ...next.slice(i + 1)];
             continue;
           }
         }
@@ -66,7 +116,6 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
       return next;
     });
     for (const ev of incoming) {
-      if (ev.kind === "usage") setSpent(ev.spentCents);
       if (ev.kind === "status") {
         setStatus(ev.state);
         setStop(ev.stop);
@@ -74,73 +123,159 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
     }
   }, []);
 
-  const load = useCallback(async (sync = false) => {
-    const res = await fetch(sync ? "/api/thread?sync=1" : "/api/thread", { cache: "no-store" });
-    if (!res.ok) return;
+  const listThreads = useCallback(async () => {
+    const res = await fetch("/api/threads", { cache: "no-store" });
+    if (!res.ok) return [] as ThreadRow[];
+    const rows = ((await res.json()).threads || []) as ThreadRow[];
+    setThreads(rows);
+    return rows;
+  }, []);
+
+  const load = useCallback(async (id: string, sync = false) => {
+    const res = await fetch(`/api/thread?thread=${encodeURIComponent(id)}${sync ? "&sync=1" : ""}`, { cache: "no-store" });
+    if (!res.ok || currentRef.current !== id) return;
     const data = await res.json();
     merge(data.events);
     setStatus(data.status);
-    setSpent(data.spentCents);
-    setCap(data.capCents);
+    setUsedPct(data.usedPct ?? null);
     setChapters(data.chapters);
     setBookSlug(data.bookSlug ?? null);
+    setLoading(false);
   }, [merge]);
 
+  const open = useCallback((id: string) => {
+    if (id === currentRef.current) return;
+    currentRef.current = id;
+    setCurrent(id);
+    setItems([]);
+    setStatus("idle");
+    setStop(undefined);
+    setNotice(null);
+    setLoading(true);
+    setSidebar(false);
+    showThreadInUrl(id);
+  }, []);
+
+  // First load: the thread list, then the thread the address names (or the newest open one).
   useEffect(() => {
-    load(true);
     fetch("/replays.json").then((r) => (r.ok ? r.json() : {})).then(setReplays).catch(() => {});
-    const source = new EventSource("/api/thread/stream");
+    listThreads().then((rows) => {
+      const wanted = threadFromUrl();
+      const pick = rows.find((r) => r.id === wanted) ?? rows.find((r) => !r.archived) ?? rows[0];
+      if (pick) open(pick.id);
+    });
+  }, [listThreads, open]);
+
+  // The open thread: its history, then its live events.
+  useEffect(() => {
+    if (!current) return;
+    load(current, true);
+    const source = new EventSource(`/api/thread/stream?thread=${encodeURIComponent(current)}`);
     let dropped = false;
     source.onopen = () => {
-      if (dropped) load(); // fill whatever arrived while disconnected
+      if (dropped) load(current); // fill whatever arrived while disconnected
       dropped = false;
     };
     source.onerror = () => {
       dropped = true;
     };
     source.onmessage = (msg) => {
+      if (currentRef.current !== current) return;
       const ev = JSON.parse(msg.data) as ChatEvent;
       merge([ev]);
-      // Chapters show up in the outputs a moment after the turn ends.
-      if (ev.kind === "status" && ev.state === "idle") setTimeout(() => load(true), 3000);
+      // Chapters show up in the outputs a moment after the turn ends; the title after the first message.
+      if (ev.kind === "status" && ev.state === "idle") {
+        setTimeout(() => load(current, true), 3000);
+        listThreads();
+      }
     };
     return () => source.close();
-  }, [load, merge]);
+  }, [current, load, merge, listThreads]);
 
-  useEffect(() => {
-    const onScroll = () => {
-      stuck.current = window.innerHeight + window.scrollY >= document.body.scrollHeight - 120;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    // To the very bottom: the composer is fixed over the last ~100px of the window.
-    if (stuck.current) window.scrollTo({ top: document.body.scrollHeight });
-  }, [items, status]);
-
-  const send = async () => {
-    const text = draft.trim();
-    if (!text) return;
-    setFailed(false);
-    setDraft("");
-    stuck.current = true;
+  const send = useCallback(async (text: string) => {
+    const id = currentRef.current;
+    if (!text || !id) return;
+    setNotice(null);
     setItems((prev) => [...prev, { id: `local-${Date.now()}`, kind: "user", text, local: true }]);
     setStatus("running");
     const res = await fetch("/api/thread/message", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text }),
+      body: JSON.stringify({ text, thread: id }),
     });
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
       if (body.error === "budget") setStop("budget_reached");
       else if (body.error === "subscription") window.location.reload();
-      else setFailed(true);
+      else setNotice(t.error);
       setStatus("idle");
+      return;
     }
-  };
+    // The first message names the thread.
+    setTimeout(listThreads, 1500);
+  }, [listThreads, t.error]);
+
+  const newThread = useCallback(async () => {
+    setCreating(true);
+    setNotice(null);
+    try {
+      const res = await fetch("/api/threads", { method: "POST" });
+      if (!res.ok) throw new Error(String(res.status));
+      const { id } = await res.json();
+      await listThreads();
+      open(id);
+    } catch {
+      setNotice(t.newThreadFailed);
+    } finally {
+      setCreating(false);
+    }
+  }, [listThreads, open, t.newThreadFailed]);
+
+  const patchThread = useCallback(async (id: string, change: { title?: string; archived?: boolean }) => {
+    setThreads((prev) => prev.map((r) => (r.id === id ? { ...r, ...change } : r)));
+    await fetch(`/api/threads/${encodeURIComponent(id)}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(change),
+    });
+    if (change.archived && id === currentRef.current) {
+      const rows = await listThreads();
+      const next = rows.find((r) => !r.archived && r.id !== id);
+      if (next) open(next.id);
+    }
+  }, [listThreads, open]);
+
+  const running = status === "running";
+  const outOfBudget = stop === "budget_reached";
+  const messages = useMemo(() => toMessages(items, running, t), [items, running, t]);
+  // Browser speech input, made after the first render so the server's HTML matches.
+  const [dictation, setDictation] = useState<WebSpeechDictationAdapter | undefined>();
+  useEffect(() => {
+    if (WebSpeechDictationAdapter.isSupported?.()) setDictation(new WebSpeechDictationAdapter({ language: lang === "ja" ? "ja-JP" : "en-US" }));
+  }, [lang]);
+
+  const runtime = useExternalStoreRuntime<ThreadMessageLike>({
+    messages,
+    convertMessage: (m) => m,
+    isRunning: running,
+    isLoading: loading,
+    isDisabled: outOfBudget || creating || !current,
+    onNew: async (message) => send(textOf(message)),
+    adapters: {
+      dictation,
+      threadList: {
+        threadId: current ?? undefined,
+        isLoading: !current && threads.length === 0,
+        threads: threads.filter((r) => !r.archived).map((r) => ({ status: "regular" as const, id: r.id, title: r.title ?? undefined })),
+        archivedThreads: threads.filter((r) => r.archived).map((r) => ({ status: "archived" as const, id: r.id, title: r.title ?? undefined })),
+        onSwitchToThread: (id) => open(id),
+        onSwitchToNewThread: () => newThread(),
+        onRename: (id, title) => patchThread(id, { title }),
+        onArchive: (id) => patchThread(id, { archived: true }),
+        onUnarchive: (id) => patchThread(id, { archived: false }),
+      },
+    },
+  });
 
   const toggleChapter = async (chapter: Chapter) => {
     const isPublic = !chapter.isPublic;
@@ -152,105 +287,122 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
     });
   };
 
-  const blocks = useMemo(() => toBlocks(items, t), [items, t]);
   const ctx = useMemo(() => ({ lang, siteUrl, replays }), [lang, siteUrl, replays]);
-  const pct = cap ? Math.min(100, Math.round((spent / cap) * 100)) : null;
-  const running = status === "running";
-  const outOfBudget = stop === "budget_reached";
+  const Welcome = useMemo(
+    () =>
+      function Welcome() {
+        return (
+          <div className="mx-auto flex w-full max-w-(--thread-max-width) flex-col gap-2 px-2 pb-6">
+            <p className="font-serif text-2xl">{player}</p>
+            <p className="font-sans text-muted-foreground">{t.emptyThread}</p>
+          </div>
+        );
+      },
+    [player, t.emptyThread],
+  );
+  const labels = useMemo(
+    () => ({ placeholder: t.placeholder, newThread: t.newThread, untitled: t.untitled, search: t.threads, rename: t.rename, archive: t.archive }),
+    [t],
+  );
 
   return (
-    <div className="chat">
-      <header className="chat-head">
-        <div className="chat-title">
-          <span className="chat-kicker">{t.title}</span>
-          <span className="chat-player">{player}</span>
-        </div>
-        {pct != null && (
-          <div className="spend" title={t.used(pct)}>
-            <div className="spend-bar" role="meter" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct} aria-label={t.used(pct)}>
-              <span style={{ width: `${pct}%` }} />
-            </div>
-            <span className="spend-text">{t.used(pct)}</span>
-          </div>
-        )}
-        <a className="link-button" href="/account">{t.accountLink}</a>
-        <button type="button" className="link-button" onClick={() => signOut({ callbackUrl: "/login" })}>
-          {t.signOut}
-        </button>
-      </header>
-
-      {chapters.length > 0 && (
-        <section className="chapters" aria-label={t.chapters}>
-          <h2>{t.chapters}</h2>
-          <ul>
-            {chapters.map((c) => (
-              <li key={c.key} className="chapter-card">
-                <span className="chapter-num">{t.chapter(c.number)}</span>
-                <span className="chapter-slug">
-                  {c.isPublic && bookSlug ? <a href={`/books/${bookSlug}#ch-${c.key}`}>{c.title}</a> : c.title}
-                </span>
-                <button type="button" className={`pill ${c.isPublic ? "is-on" : ""}`} aria-pressed={c.isPublic} onClick={() => toggleChapter(c)}>
-                  {c.isPublic ? t.public : t.private}
+    <AssistantRuntimeProvider runtime={runtime}>
+      <AuiLabelsContext.Provider value={labels}>
+        <MahjongContext.Provider value={ctx}>
+          <div className="flex h-dvh overflow-hidden bg-background">
+            {/* Sidebar: threads, as in Claude Desktop. A drawer on phones. */}
+            <aside
+              className={`fixed inset-y-0 left-0 z-30 flex w-72 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground transition-transform md:static md:translate-x-0 ${sidebar ? "translate-x-0" : "-translate-x-full"}`}
+              aria-label={t.threads}
+            >
+              <div className="flex items-center justify-between px-4 pt-4 pb-2">
+                <div className="grid leading-tight">
+                  <span className="font-sans text-[11px] font-bold tracking-[0.14em] text-muted-foreground uppercase">{t.title}</span>
+                  <span className="font-serif text-lg">{player}</span>
+                </div>
+                <button type="button" className="rounded-md p-1.5 hover:bg-sidebar-accent md:hidden" onClick={() => setSidebar(false)} aria-label="Close">
+                  <XIcon className="size-4" />
                 </button>
-              </li>
-            ))}
-          </ul>
-          <p className="chapters-note">{t.publicNote}</p>
-        </section>
-      )}
+              </div>
+              <div className="min-h-0 flex-1 overflow-y-auto px-2 pb-2">
+                <ThreadList />
+              </div>
+              <div className="grid gap-2 border-t border-sidebar-border px-4 py-3 font-sans text-sm">
+                {usedPct != null && (
+                  <div className="grid gap-1" title={t.used(usedPct)}>
+                    <div className="h-1.5 overflow-hidden rounded-full bg-secondary" role="meter" aria-valuemin={0} aria-valuemax={100} aria-valuenow={usedPct} aria-label={t.used(usedPct)}>
+                      <span className="block h-full bg-primary" style={{ width: `${usedPct}%` }} />
+                    </div>
+                    <span className="text-xs text-muted-foreground">{t.used(usedPct)}</span>
+                  </div>
+                )}
+                <div className="flex gap-3">
+                  <a className="text-muted-foreground hover:text-foreground" href="/account">{t.accountLink}</a>
+                  <button type="button" className="text-muted-foreground hover:text-foreground" onClick={() => signOut({ callbackUrl: "/login" })}>
+                    {t.signOut}
+                  </button>
+                </div>
+              </div>
+            </aside>
+            {sidebar && <div className="fixed inset-0 z-20 bg-black/20 md:hidden" onClick={() => setSidebar(false)} />}
 
-      <main className="thread">
-        {blocks.map((b, i) => {
-          if (b.type === "user") return <div key={b.id} className="msg msg-user">{b.text}</div>;
-          if (b.type === "agent") return <div key={b.id} className="msg msg-agent"><Markdown text={b.text} ctx={ctx} /></div>;
-          if (b.type === "note") return <p key={b.id} className="msg-note">{b.text}</p>;
-          const live = running && i === blocks.length - 1;
-          return (
-            <details key={b.id} className={`work ${live ? "is-live" : ""}`}>
-              <summary>
-                {live ? t.working : b.steps[b.steps.length - 1].label} · {t.steps(b.steps.length)}
-              </summary>
-              <ol>
-                {b.steps.map((s) => (
-                  <li key={s.id}>
-                    <span className="work-label">{s.label}</span>
-                    <code className="work-detail">{s.detail}</code>
-                  </li>
-                ))}
-              </ol>
-            </details>
-          );
-        })}
-        {running && blocks[blocks.length - 1]?.type !== "work" && <p className="msg-note is-live">{t.working}…</p>}
-        {failed && <p className="msg-note is-error">{t.error}</p>}
-        {outOfBudget && <p className="msg-note is-error">{t.budgetReached}</p>}
-      </main>
+            <main className="flex min-w-0 flex-1 flex-col">
+              <header className="flex items-center gap-2 border-b border-border px-3 py-2 font-sans text-sm">
+                <button type="button" className="rounded-md p-1.5 hover:bg-muted md:hidden" onClick={() => setSidebar(true)} aria-label={t.showThreads}>
+                  <MenuIcon className="size-5" />
+                </button>
+                <span className="min-w-0 flex-1 truncate font-medium">
+                  {threads.find((r) => r.id === current)?.title || t.untitled}
+                </span>
+                {chapters.length > 0 && (
+                  <button
+                    type="button"
+                    className={`rounded-full border border-border px-3 py-1 text-xs ${showChapters ? "bg-accent text-accent-foreground" : "hover:bg-muted"}`}
+                    aria-expanded={showChapters}
+                    onClick={() => setShowChapters((v) => !v)}
+                  >
+                    {t.chapters} · {chapters.length}
+                  </button>
+                )}
+              </header>
 
-      <form
-        className="composer"
-        onSubmit={(e) => {
-          e.preventDefault();
-          send();
-        }}
-      >
-        <textarea
-          value={draft}
-          onChange={(e) => setDraft(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
-              e.preventDefault();
-              send();
-            }
-          }}
-          placeholder={t.placeholder}
-          rows={2}
-          maxLength={8000}
-          disabled={outOfBudget}
-        />
-        <button className="button" type="submit" disabled={outOfBudget || !draft.trim()}>
-          {t.send}
-        </button>
-      </form>
-    </div>
+              {showChapters && chapters.length > 0 && (
+                <section className="max-h-[40vh] overflow-y-auto border-b border-border bg-card px-4 py-3" aria-label={t.chapters}>
+                  <ul className="mx-auto grid max-w-176 gap-2">
+                    {chapters.map((c) => (
+                      <li key={c.key} className="flex items-baseline gap-3 rounded-lg border border-border bg-background px-3 py-2">
+                        <span className="font-sans text-xs font-bold whitespace-nowrap text-destructive">{t.chapter(c.number)}</span>
+                        <span className="min-w-0 flex-1 font-serif">
+                          {c.isPublic && bookSlug ? <a className="underline underline-offset-2" href={`/books/${bookSlug}#ch-${c.key}`}>{c.title}</a> : c.title}
+                        </span>
+                        <button
+                          type="button"
+                          className={`rounded-full border px-2.5 py-0.5 font-sans text-xs ${c.isPublic ? "border-primary bg-accent text-primary" : "border-border text-muted-foreground"}`}
+                          aria-pressed={c.isPublic}
+                          onClick={() => toggleChapter(c)}
+                        >
+                          {c.isPublic ? t.public : t.private}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mx-auto mt-2 max-w-176 font-sans text-xs text-muted-foreground">{t.publicNote}</p>
+                </section>
+              )}
+
+              {(notice || outOfBudget || creating) && (
+                <p className={`px-4 py-2 text-center font-sans text-sm ${creating ? "text-muted-foreground" : "text-destructive"}`} role="status">
+                  {creating ? t.startingThread : outOfBudget ? t.budgetReached : notice}
+                </p>
+              )}
+
+              <div className="min-h-0 flex-1">
+                <Thread components={{ Welcome }} />
+              </div>
+            </main>
+          </div>
+        </MahjongContext.Provider>
+      </AuiLabelsContext.Provider>
+    </AssistantRuntimeProvider>
   );
 }

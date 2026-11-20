@@ -39,6 +39,7 @@ class ServiceThreadTest(unittest.TestCase):
         self.assertIn('{"name": "web_fetch", "enabled": True}', CLIENT)
         self.assertIn('{"name": "web_search", "enabled": True}', CLIENT)
         self.assertIn('"networking": {"type": "unrestricted"}', CLIENT)
+        self.assertIn('"permission_policy": {"type": "always_allow"}', CLIENT)
 
     def test_api_key_only_through_the_vault(self):
         import thread

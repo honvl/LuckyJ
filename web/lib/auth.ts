@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
-import { threadForEmail } from "./store";
+import { pickThread, playerForEmail } from "./threads";
 import { emailIsVerified } from "./verified.mjs";
 
 const providers: NextAuthOptions["providers"] = [];
@@ -50,10 +50,20 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-/** The signed-in player's thread, or null (signed out, or no thread linked to this login). */
-export async function currentThread() {
+/** The signed-in player and the thread a request names (their newest open one by default). */
+export async function currentThread(wanted?: string | null) {
   const session = await getServerSession(authOptions);
   const email = session?.user?.email;
-  const thread = await threadForEmail(email);
-  return thread ? { ...thread, email: email as string } : null;
+  const player = await playerForEmail(email);
+  if (!player) return null;
+  const sessionId = await pickThread(player, wanted);
+  return sessionId ? { player, sessionId, email: email as string } : null;
+}
+
+/** The signed-in player, or null. */
+export async function currentPlayer() {
+  const session = await getServerSession(authOptions);
+  const email = session?.user?.email;
+  const player = await playerForEmail(email);
+  return player ? { player, email: email as string } : null;
 }

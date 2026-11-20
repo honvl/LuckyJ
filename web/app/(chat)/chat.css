@@ -1,0 +1,117 @@
+/* The chat page: assistant-ui's components (Tailwind, shadcn tokens) in the guide's palette and type.
+   Loaded only by app/(chat)/layout.tsx, so Tailwind's reset never reaches the guide's pages. */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "tw-shimmer";
+
+@custom-variant dark (&:is(.dark *));
+
+@custom-variant data-open (&:where([data-state="open"], [data-open]:not([data-open="false"])));
+
+@custom-variant data-closed (&:where([data-state="closed"], [data-closed]:not([data-closed="false"])));
+
+@theme inline {
+  @keyframes collapsible-down {
+  from {
+    height: 0;
+    }
+  to {
+    height: var(--radix-collapsible-content-height, var(--collapsible-panel-height, auto));
+    }
+  }
+  @keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height, var(--collapsible-panel-height, auto));
+    }
+  to {
+    height: 0;
+    }
+  }
+}
+/* shadcn tokens in the guide's palette (app/palette.css): paper, plate, ink, jade, vermilion. */
+:root {
+  --radius: 0.75rem;
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: var(--plate);
+  --card-foreground: var(--ink);
+  --popover: var(--plate);
+  --popover-foreground: var(--ink);
+  --primary: var(--jade);
+  --primary-foreground: #f9f6f1;
+  --secondary: var(--hair-2);
+  --secondary-foreground: var(--ink);
+  --surface-muted: #ebe6da; /* shadcn "muted"; the guide's --muted is a text color */
+  --muted-foreground: #68625a;
+  --accent: var(--jade-soft);
+  --accent-foreground: var(--felt);
+  --destructive: var(--verm);
+  --border: var(--hair);
+  --input: var(--hair);
+  --ring: var(--jade);
+  --sidebar: #efe9dc;
+  --sidebar-foreground: var(--ink);
+  --sidebar-accent: #e4ddcd;
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--hair);
+}
+
+@theme inline {
+  --font-sans: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, "Noto Sans JP", sans-serif;
+  --font-serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Sans JP", serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--surface-muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* The coach writes like the guide: serif prose, as Claude Desktop sets its replies. Tailwind's
+   reset strips list markers and heading sizes, so the reply column puts them back. */
+.coach-reply-md {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
+}
+:lang(ja) .coach-reply-md {
+  font-family: "Noto Sans JP", var(--sans);
+  font-size: 15.5px;
+  line-height: 1.8;
+}
+.coach-reply-md ul { list-style: disc; padding-left: 1.4em; }
+.coach-reply-md ol { list-style: decimal; padding-left: 1.4em; }
+.coach-reply-md li + li { margin-top: 0.25em; }
+.coach-reply-md a { color: var(--jade); text-decoration: underline; text-underline-offset: 2px; }
+.coach-reply-md blockquote { border-left: 3px solid var(--hair); padding-left: 0.9em; color: var(--ink-2); }
+.coach-reply-md hr { border-top: 1px solid var(--hair); margin: 1.2em 0; }

@@ -4,15 +4,15 @@
 import "server-only";
 import { neon } from "@neondatabase/serverless";
 import Stripe from "stripe";
-import { capAfterRenewal, hasAccess, invoiceSubscriptionId, isTutorSubscription, periodEnd } from "./billing-rules.mjs";
-import { anthropic } from "./server";
+import { hasAccess, invoiceSubscriptionId, isTutorSubscription, periodEnd } from "./billing-rules.mjs";
+import { renewAllowance } from "./budget";
 import { startOnboarding } from "./onboard";
 import { threadForEmail } from "./store";
 
 const env = process.env;
 const sql = env.DATABASE_URL ? neon(env.DATABASE_URL) : null;
 export const billingEnabled = Boolean(sql && env.STRIPE_SECRET_KEY && env.STRIPE_PRICE_ID);
-export const ALLOWANCE_CENTS = Number(env.MONTHLY_ALLOWANCE_CENTS || 1500);
+export { ALLOWANCE_CENTS } from "./budget";
 
 let client: Stripe | null = null;
 export function stripe(): Stripe {
@@ -123,17 +123,6 @@ export async function portalUrl(customerId: string) {
   return session.url;
 }
 
-/** Raise a thread's cap to what it has spent plus one month's allowance. */
-async function renewThreadCap(sessionId: string) {
-  const s: any = await anthropic().beta.sessions.retrieve(sessionId);
-  const spent = Number(s.usage?.list_cost?.amount ?? 0);
-  const cap = capAfterRenewal(spent, ALLOWANCE_CENTS);
-  await anthropic().beta.sessions.update(sessionId, {
-    budget: { type: "limit", max_list_cost: { amount: String(cap), currency: "USD" } },
-  } as any);
-  return cap;
-}
-
 async function upsertFromSubscription(sub: Stripe.Subscription, fallbackEmail?: string): Promise<boolean> {
   // Other products on the same Stripe account fire these events too.
   if (!isTutorSubscription(sub, env.STRIPE_PRICE_ID)) return false;
@@ -183,11 +172,12 @@ export async function handleEvent(event: Stripe.Event): Promise<string> {
     case "invoice.paid": {
       const invoice = event.data.object as Stripe.Invoice;
       const subId = invoiceSubscriptionId(invoice);
-      // The first invoice is covered by the thread's starting cap (thread.py new); later ones renew it.
+      // The first invoice is covered by the starting allowance (thread.py new); later ones renew it
+      // for all of the player's threads together.
       if (subId && invoice.billing_reason === "subscription_cycle") {
         const [row] = await sql`select email from subscriptions where subscription_id = ${subId}`;
         const thread = row ? await threadForEmail(row.email) : null;
-        note = thread ? `renewed cap to ${await renewThreadCap(thread.sessionId)}` : "renewal without a thread yet";
+        note = thread ? `renewed allowance to ${await renewAllowance(thread.player)}` : "renewal without a thread yet";
       }
       break;
     }

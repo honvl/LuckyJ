@@ -113,3 +113,13 @@ create table if not exists service_state (
   value jsonb not null,
   updated_at timestamptz not null default now()
 );
+
+-- Several chat threads per player, as in Claude Desktop: a title (from the first message, or the
+-- player's rename) and an archive switch (archived threads leave the list but keep their data).
+alter table threads add column if not exists title text;
+alter table threads add column if not exists archived boolean not null default false;
+
+-- What all of a player's threads may spend together, in US cents, lifetime (like a session's own
+-- budget): the first month's allowance, plus one allowance at each renewal, plus operator top-ups.
+-- Null until first needed; then it starts at the sum of the threads' own caps.
+alter table players add column if not exists allowance_cents bigint;

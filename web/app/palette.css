@@ -1,0 +1,20 @@
+/* The guide's palette and type (site/styles.css), shared by every layout. */
+:root {
+  --paper: #f4f0e6;
+  --plate: #f9f6f1;
+  --ink: #1e1a14;
+  --ink-2: #4c473f;
+  --muted: #68625a;
+  --hair: #d6d0c4;
+  --hair-2: #e2ddd2;
+  --felt: #134834;
+  --jade: #006243;
+  --jade-soft: #dceee3;
+  --verm: #b23b20;
+  --verm-soft: #fbe3d8;
+  --highlight: #f3e5b0;
+
+  --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Noto Sans JP", serif;
+  --sans: "Schibsted Grotesk", "Helvetica Neue", Helvetica, Arial, "Noto Sans JP", sans-serif;
+  --text-w: 720px;
+}

@@ -61,7 +61,10 @@ ENV_CONFIG = {
 
 TOOLS = [{
     "type": "agent_toolset_20260401",
-    "default_config": {"enabled": True, "permission_policy": {"type": "auto"}},
+    # Every call approved, as in the operator's own sessions: the "auto" policy's risk check
+    # denied ordinary work (starting setup.sh in the background) and the coach then gave up on
+    # the shell. No secrets live in the sandbox; the records key is a vault placeholder.
+    "default_config": {"enabled": True, "permission_policy": {"type": "always_allow"}},
     "configs": [
         {"name": "web_fetch", "enabled": True},
         {"name": "web_search", "enabled": True},
@@ -431,6 +434,12 @@ def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
          "instructions": "This player's notes. Read them before you start; add to them as you go."},
     ]
     cents = int(round(args.budget * 100))
+    # All of a player's threads share one allowance (web/lib/budget.ts moves it to the thread the
+    # player writes in). The first thread sets it; a later one starts at a cent and gets its share
+    # with the player's first message on the site.
+    first = not player["threads"]
+    if not first:
+        cents = 1
     session = client.beta.sessions.create(
         agent=state["agent_id"],
         environment_id=state["environment_id"],
@@ -442,6 +451,7 @@ def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     )
     index = json.loads((games_dir / "index.json").read_text(encoding="utf-8"))
     names = sorted({row.get("hero_name") for row in index if row.get("hero_name")})
+    player["hero_names"] = names  # the site's "new thread" writes the same intro
     player["threads"].append({"session_id": session.id, "games_file_id": games_file,
                               "downloaded": [], "intro": intro(args.player, names)})
     if args.email:
@@ -451,6 +461,8 @@ def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     save_state(state)
     if db_sync(state):
         print("  recorded in the site's database")
+        if first:
+            set_allowance(args.player, cents, only_if_unset=True)
     if in_ci():
         print(f"  thread started with a ${args.budget:.2f} cap")
         return
@@ -715,12 +727,39 @@ def cmd_list(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
             print(f"  {s.id}  {s.status:<11} ${int(cost) / 100:.2f}{cap_txt}  {s.title or ''}")
 
 
+def set_allowance(player: str, cents: int, only_if_unset: bool = False, add: bool = False) -> int | None:
+    """The player's shared allowance in the site's database (US cents, lifetime). None without one."""
+    url = database_url()
+    if not url:
+        return None
+    import psycopg
+    with psycopg.connect(url, autocommit=True) as conn:
+        if add:
+            row = conn.execute("update players set allowance_cents = coalesce(allowance_cents, 0) + %s"
+                               " where name = %s returning allowance_cents", (cents, player)).fetchone()
+        elif only_if_unset:
+            row = conn.execute("update players set allowance_cents = coalesce(allowance_cents, %s)"
+                               " where name = %s returning allowance_cents", (cents, player)).fetchone()
+        else:
+            row = conn.execute("update players set allowance_cents = %s where name = %s returning allowance_cents",
+                               (cents, player)).fetchone()
+    return row[0] if row else None
+
+
 def cmd_topup(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
+    """Add to the player's shared allowance (every thread draws on it); without the site's
+    database, raise one thread's cap as before."""
     state = load_state()
+    cents = int(round(args.usd * 100))
+    total = None if args.thread else set_allowance(args.player, cents, add=True)
+    if total is not None:
+        print(f"{args.player}: allowance now ${total / 100:.2f}, shared by all threads"
+              " (the site gives it to the thread they write in)")
+        return
     session_id = args.thread or latest_thread(state, args.player)
     s = client.beta.sessions.retrieve(session_id)
     spent = int(s.usage.list_cost.amount) if s.usage and s.usage.list_cost else 0
-    new_cap = spent + int(round(args.usd * 100))
+    new_cap = spent + cents
     client.beta.sessions.update(
         session_id, budget={"type": "limit", "max_list_cost": {"amount": str(new_cap), "currency": "USD"}})
     print(f"{session_id}: spent ${spent / 100:.2f}, cap now ${new_cap / 100:.2f}")

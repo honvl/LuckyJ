@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../palette.css";
+import "../globals.css";
+import "../markdown.css";
 import { pageLang } from "@/lib/lang";
 import { PRODUCT } from "@/lib/strings";
 

@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 300;
 
 export async function GET(request: Request) {
-  const me = await currentThread();
+  const me = await currentThread(new URL(request.url).searchParams.get("thread"));
   if (!me) return new Response("not signed in", { status: 401 });
   const upstream = await anthropic().beta.sessions.events.stream(me.sessionId);
   const encoder = new TextEncoder();

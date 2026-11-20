@@ -7,10 +7,10 @@ import { STRINGS, type Lang } from "@/lib/strings";
 import { TILE_GLYPHS, gameLabel, isNumericCell, replayHref, splitError, splitMarkup, tileName } from "@/lib/markup.mjs";
 
 // assetBase: where a chapter's own figures are served; a relative image src resolves against it.
-type Ctx = { lang: Lang; siteUrl: string; replays: Record<string, string>; assetBase?: string };
+export type Ctx = { lang: Lang; siteUrl: string; replays: Record<string, string>; assetBase?: string };
 
 // remark plugin: split text nodes on the markup into spans the components below draw.
-function remarkMahjong() {
+export function remarkMahjong() {
   const walk = (node: any) => {
     if (!node.children) return;
     const next: any[] = [];
@@ -131,13 +131,18 @@ function Table({ children, lang }: { children?: ReactNode; lang: Lang }) {
   );
 }
 
-export default function Markdown({ text, ctx }: { text: string; ctx: Ctx }) {
-  const components: Components = {
+/** The site's own Markdown parts: tiles, game links, tables with copy, chapter figures, links. */
+export function mahjongComponents(ctx: Ctx): Components {
+  return {
     span: ({ node, children, ...props }: any) => {
+      // From the parsed node (react-markdown) or, where a wrapper drops `node` (assistant-ui's
+      // Markdown), from the rendered attributes.
       const p = node?.properties || {};
-      const cls = ([] as string[]).concat(p.className || []);
-      if (cls.includes("mj-tiles")) return <Tiles tiles={String(p.dataTiles).split(" ")} lang={ctx.lang} />;
-      if (cls.includes("mj-game")) return <GameRef game={JSON.parse(String(p.dataGame))} ctx={ctx} />;
+      const cls = ([] as string[]).concat(p.className || String(props.className || "").split(" "));
+      const tiles = p.dataTiles ?? props["data-tiles"];
+      const game = p.dataGame ?? props["data-game"];
+      if (cls.includes("mj-tiles") && tiles) return <Tiles tiles={String(tiles).split(" ")} lang={ctx.lang} />;
+      if (cls.includes("mj-game") && game) return <GameRef game={JSON.parse(String(game))} ctx={ctx} />;
       return <span {...props}>{children}</span>;
     },
     table: ({ children }) => <Table lang={ctx.lang}>{children}</Table>,
@@ -153,6 +158,10 @@ export default function Markdown({ text, ctx }: { text: string; ctx: Ctx }) {
       return <img className="md-figure" src={`${ctx.assetBase}/${encodeURIComponent(name)}`} alt={alt || ""} loading="lazy" />;
     },
   };
+}
+
+export default function Markdown({ text, ctx }: { text: string; ctx: Ctx }) {
+  const components = mahjongComponents(ctx);
   return (
     <div className="md">
       <ReactMarkdown remarkPlugins={[remarkGfm, remarkMahjong]} components={components}>

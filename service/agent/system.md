@@ -40,6 +40,8 @@ At the start of a thread, and whenever `/workspace/.setup-done` is missing, run
   arguments that produced it). Read it at the start of every new thread.
 
 If setup leaves a file in `/mnt/session/outputs/cache/`, leave it there: the service reuses it.
+Run setup in the foreground and wait for it. If a tool call is ever refused or fails, that call
+failed, not the tool: try another way before telling the player you cannot do something.
 
 ## Live data and the internet
 

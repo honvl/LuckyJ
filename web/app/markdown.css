@@ -1,0 +1,201 @@
+/* Tiles, Markdown and tables: shared by the guide pages (app/(site)) and the chat (app/(chat)).
+   Uses the palette tokens each layout defines (--paper, --ink, --hair, --jade, --verm, --serif, --sans). */
+
+@font-face {
+  font-family: "mahjongtile-clr";
+  src: url("/fonts/GL-MahjongTile-Clr.woff2") format("woff2");
+  font-display: block;
+}
+
+@font-face {
+  font-family: "mahjongtile-colr";
+  src: url("/fonts/GL-MahjongTile-COLRv1.woff2") format("woff2");
+  font-display: block;
+}
+
+@font-face {
+  font-family: "mahjongtile";
+  src: url("/fonts/GL-MahjongTile.otf") format("opentype");
+  font-display: block;
+}
+
+/* Markdown */
+.md > :first-child {
+  margin-top: 0;
+}
+
+.md > :last-child {
+  margin-bottom: 0;
+}
+
+.md p,
+.md ul,
+.md ol {
+  margin: 0 0 12px;
+}
+
+.md h1,
+.md h2,
+.md h3 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 20px 0 8px;
+}
+
+.md h1 { font-size: 24px; }
+.md h2 { font-size: 21px; }
+.md h3 { font-size: 18px; }
+
+.md strong {
+  font-weight: 600;
+}
+
+.md code {
+  font-size: 0.85em;
+  background: var(--hair-2);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.md pre {
+  overflow-x: auto;
+  background: var(--plate);
+  border: 1px solid var(--hair);
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.md pre code {
+  background: none;
+  padding: 0;
+}
+
+/* Tables: rates line up, the error is quieter than the value, wide tables scroll inside their box
+   with the row label pinned. */
+.table-figure {
+  margin: 14px 0;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  background: var(--plate);
+}
+
+/* The table takes the width its text wants (a cell wraps after ~15em) and scrolls sideways when
+   that is wider than the screen, instead of squeezing every column into a tall stack. */
+.md table {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+  font: 15px/1.4 var(--sans);
+}
+
+.md td.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.md td.num .sep {
+  font-variant-numeric: proportional-nums;
+}
+
+.md th,
+.md td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--hair-2);
+  vertical-align: baseline;
+  max-width: 15em;
+}
+
+.md th {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink-2);
+  background: var(--paper);
+  border-bottom-color: var(--hair);
+}
+
+.md td.num {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.md tr:last-child td {
+  border-bottom: 0;
+}
+
+.md th:first-child,
+.md td:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--plate);
+  z-index: 1;
+}
+
+.md th:first-child {
+  background: var(--paper);
+}
+
+.md .se {
+  color: var(--muted);
+  font-size: 0.86em;
+}
+
+.table-copy {
+  font: 12px var(--sans);
+  color: var(--muted);
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Tiles, as in the guide's prose. */
+.tiles {
+  font-family: "mahjongtile-clr", "mahjongtile";
+  font-style: normal;
+  font-weight: normal;
+  font-synthesis: none;
+  letter-spacing: -0.112em;
+  line-height: 1;
+}
+
+.tiles.otf {
+  font-family: "mahjongtile";
+  letter-spacing: -0.086em;
+}
+
+.tiles.colr {
+  font-family: "mahjongtile-colr";
+}
+
+.inline-tile {
+  display: inline-block;
+  font-size: 1.7em;
+  vertical-align: -0.22em;
+  padding-right: 0.16em;
+}
+
+.md table .inline-tile {
+  font-size: 1.6em;
+}
+
+.game-ref {
+  font: 600 0.82em var(--sans);
+  white-space: nowrap;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--jade-soft);
+  color: var(--jade);
+  text-decoration: none;
+}
+
+.game-ref.is-pending {
+  background: var(--hair-2);
+  color: var(--ink-2);
+  cursor: help;
+}
