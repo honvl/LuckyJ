@@ -73,6 +73,22 @@ One product, tax code `txcd_10105001` (AI as a service, cloud, personal use), $2
 
 Settings: `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`, `STRIPE_WEBHOOK_SECRET`, `MONTHLY_ALLOWANCE_CENTS`.
 
+## Players, accounts and onboarding
+
+- Sign-up asks for the Mahjong Soul server and in-game name; the player picks their account from
+  the exact-name matches on that server (`/api/majsoul/lookup`; the server is `account_id >> 23`).
+  The account id goes into `profiles`. Mahjong Soul only: Tenhou was dropped.
+- `/account`: subscription (Stripe portal, using the tutor's own portal configuration), the
+  Mahjong Soul account, the whole Personal Guide on/off (`players.book_public`), the default for
+  new chapters, each chapter's switch, and closing the account.
+- `thread.py onboard` (every 15 minutes via `service/launchd/com.luckyj.tutor-onboard.plist`)
+  fetches each waiting subscriber's games with `scripts/fetch_player_games.py` and starts their
+  thread as player `ms-<account id>` once they have 10 ranked games. It runs on this Mac, which
+  holds the Mahjong Soul login.
+- Going live with Stripe: `web/scripts/stripe-go-live.sh`, then enable the live webhook
+  destination `luckyj-tutor-billing`.
+- Terms of service: `site/terms.html`, `site/terms-ja.html`.
+
 ## Not done yet
 
 Fetching a new player's games automatically (today: by hand, after `thread.py pending`). Chapter previews and
