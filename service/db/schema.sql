@@ -119,6 +119,12 @@ create table if not exists service_state (
 alter table threads add column if not exists title text;
 alter table threads add column if not exists archived boolean not null default false;
 
+-- A thread whose conversation grew too long goes on in a fresh session (web/lib/rollover.ts):
+-- the old row's continued_by names the new session, the new row's continues names the old one.
+-- The list shows only the newest session of a chain; the chat shows the whole chain's history.
+alter table threads add column if not exists continues text;
+alter table threads add column if not exists continued_by text;
+
 -- What all of a player's threads may spend together, in US cents, lifetime (like a session's own
 -- budget): the first month's allowance, plus one allowance at each renewal, plus operator top-ups.
 -- Null until first needed; then it starts at the sum of the threads' own caps.

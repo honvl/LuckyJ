@@ -238,6 +238,22 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
       setStatus("idle");
       return;
     }
+    // A long thread goes on in a fresh session (lib/rollover.ts): follow it without clearing the
+    // page; its history load brings the earlier messages back above the marker.
+    const body = await res.json().catch(() => ({}));
+    if (typeof body.thread === "string" && body.thread !== id && currentRef.current === id) {
+      const marker = { id: `continued-${body.thread}`, kind: "compacted" as const };
+      setItems((prev) => {
+        // The marker goes above the message just sent, which now lives in the fresh session.
+        const i = prev.findLastIndex((e) => "local" in e);
+        return i < 0 ? [...prev, marker] : [...prev.slice(0, i), marker, ...prev.slice(i)];
+      });
+      currentRef.current = body.thread;
+      setCurrent(body.thread);
+      showThreadInUrl(body.thread);
+      listThreads();
+      return;
+    }
     // The first message names the thread.
     setTimeout(listThreads, 1500);
   }, [listThreads, t.error]);

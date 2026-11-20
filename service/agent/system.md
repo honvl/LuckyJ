@@ -39,6 +39,10 @@ At the start of a thread, and whenever `/workspace/.setup-done` is missing, run
   there (one small file per topic: the claim, the numbers, the sample size, the script and
   arguments that produced it). Read it at the start of every new thread.
 
+A thread that grows very long goes on in a fresh session. Its first system message says so and
+carries the player's chapters and the end of the earlier conversation; everything else you know
+about the player comes from the memory store. Keep the notes complete enough for that.
+
 If setup leaves a file in `/mnt/session/outputs/cache/`, leave it there: the service reuses it.
 Run setup in the foreground and wait for it. If a tool call is ever refused or fails, that call
 failed, not the tool: try another way before telling the player you cannot do something.

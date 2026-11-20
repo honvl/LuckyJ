@@ -55,36 +55,86 @@ export async function playerForEmail(email: string | null | undefined): Promise<
   return null;
 }
 
-/** A player's threads, newest first. */
+/** A player's threads, newest first. A thread that went on in a fresh session (lib/rollover.ts)
+ * is listed once, as its newest session. */
 export async function listThreads(player: string): Promise<ThreadRow[]> {
   if (sql) {
     const rows = await sql`
       select session_id, title, created_at, archived from threads
-      where player = ${player} order by created_at desc`;
+      where player = ${player} and continued_by is null order by created_at desc`;
     return rows.map((r) => ({ id: r.session_id, title: r.title, createdAt: new Date(r.created_at).toISOString(), archived: r.archived }));
   }
   const threads = readLocal().players[player]?.threads || [];
   return threads
-    .map((t, i) => ({ id: t.session_id, title: (t.title as string) ?? null, createdAt: new Date(i * 1000).toISOString(), archived: Boolean(t.archived) }))
+    .map((t, i) => ({ t, row: { id: t.session_id, title: (t.title as string) ?? null, createdAt: new Date(i * 1000).toISOString(), archived: Boolean(t.archived) } }))
+    .filter(({ t }) => !t.continued_by)
+    .map(({ row }) => row)
     .reverse();
 }
 
-/** The thread a request asks for if it is the player's, else their newest open thread. */
+type Link = { continues: string | null; continuedBy: string | null };
+
+async function linkOf(player: string, id: string): Promise<Link | null> {
+  if (sql) {
+    const [r] = await sql`select continues, continued_by from threads where session_id = ${id} and player = ${player}`;
+    return r ? { continues: r.continues ?? null, continuedBy: r.continued_by ?? null } : null;
+  }
+  const t = readLocal().players[player]?.threads.find((x) => x.session_id === id);
+  return t ? { continues: (t.continues as string) ?? null, continuedBy: (t.continued_by as string) ?? null } : null;
+}
+
+/** The newest session of the chain `id` belongs to, or null when it is not the player's. */
+async function newestOf(player: string, id: string): Promise<string | null> {
+  let current = id;
+  for (let hops = 0; hops < 100; hops++) {
+    const link = await linkOf(player, current);
+    if (!link) return null;
+    if (!link.continuedBy) return current;
+    current = link.continuedBy;
+  }
+  return current;
+}
+
+/** Every session of the thread that ends in `id`, oldest first. */
+export async function chainOf(player: string, id: string): Promise<string[]> {
+  const chain = [id];
+  for (let hops = 0; hops < 100; hops++) {
+    const link = await linkOf(player, chain[0]);
+    if (!link?.continues) break;
+    chain.unshift(link.continues);
+  }
+  return chain;
+}
+
+/** The thread a request asks for if it is the player's (its newest session), else their newest
+ * open thread. */
 export async function pickThread(player: string, wanted?: string | null): Promise<string | null> {
+  if (wanted) {
+    const newest = await newestOf(player, wanted);
+    if (newest) return newest;
+  }
   const threads = await listThreads(player);
-  if (wanted && threads.some((t) => t.id === wanted)) return wanted;
   return (threads.find((t) => !t.archived) ?? threads[0])?.id ?? null;
 }
 
-function introFor(player: string, names: string[]): string {
+export function introFor(player: string, names: string[]): string {
   // Same words as service/thread.py intro().
   const shown = names.join(", ") || "unknown";
   return (`This thread's player is ${player}. In their games they play as: ${shown} ` +
     "(the hero_name in index.json). These games are theirs; analyse them as theirs.");
 }
 
-/** Start a new coach thread for the player, set up like their newest one. Returns its id. */
-export async function createThread(player: string): Promise<string> {
+/** The player's in-game names, for the intro. */
+export async function heroNames(player: string): Promise<string[]> {
+  const me = (await operatorState()).players[player];
+  return me?.hero_names || [player];
+}
+
+type Continuation = { continues: string; intro: string; title: string | null };
+
+/** Start a new coach thread for the player, set up like their newest one. Returns its id.
+ * With `cont`, the new session carries on an existing thread (lib/rollover.ts). */
+export async function createThread(player: string, cont?: Continuation): Promise<string> {
   const state = await operatorState();
   const me = state.players[player];
   if (!state.agent_id || !state.environment_id || !me?.memory_store_id) throw new Error("the operator has not set up this player");
@@ -110,10 +160,14 @@ export async function createThread(player: string): Promise<string> {
     resources,
     vault_ids: state.vault_id ? [state.vault_id] : [],
   } as any);
-  const intro = introFor(player, me.hero_names || [player]);
+  const intro = cont?.intro ?? introFor(player, me.hero_names || [player]);
   const record: OperatorThread = { session_id: session.id, games_file_id: games, downloaded: [], from_site: true };
+  if (cont) record.continues = cont.continues;
   if (sql) {
-    await sql`insert into threads (session_id, player, intro) values (${session.id}, ${player}, ${intro})`;
+    await sql`
+      insert into threads (session_id, player, intro, title, continues)
+      values (${session.id}, ${player}, ${intro}, ${cont?.title ?? null}, ${cont?.continues ?? null})`;
+    if (cont) await sql`update threads set continued_by = ${session.id} where session_id = ${cont.continues} and player = ${player}`;
     // The operator's records keep every thread too (thread.py refresh, list and chapter copies).
     await sql`
       update service_state set value = jsonb_set(value, array['players', ${player}, 'threads'],
@@ -122,7 +176,11 @@ export async function createThread(player: string): Promise<string> {
       where key = 'operator'`;
   } else {
     const local = readLocal();
-    local.players[player].threads.push({ ...record, intro });
+    local.players[player].threads.push({ ...record, intro, title: cont?.title ?? undefined });
+    if (cont) {
+      const old = local.players[player].threads.find((t) => t.session_id === cont.continues);
+      if (old) old.continued_by = session.id;
+    }
     writeLocal(local);
   }
   return session.id;

@@ -15,7 +15,7 @@ export async function GET(request: Request) {
   await syncChapters(me.player, params.get("sync") === "1").catch((error) => console.error("chapter sync failed", error));
   const [summary, events, own, used] = await Promise.all([
     threadSummary(me.sessionId),
-    threadHistory(me.sessionId),
+    threadHistory(me.player, me.sessionId),
     ownChapters(me.player),
     usedThisMonth(me.player),
   ]);

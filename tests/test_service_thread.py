@@ -66,6 +66,13 @@ class ServiceThreadTest(unittest.TestCase):
         self.assertIn("If you have no way to hand work to a copy (older threads), build the chapter here",
                       " ".join(SYSTEM.split()))
 
+    def test_prompt_explains_thread_rollover(self):
+        flat = " ".join(SYSTEM.split())
+        self.assertIn("A thread that grows very long goes on in a fresh session", flat)
+        schema = (SERVICE / "db/schema.sql").read_text(encoding="utf-8")
+        self.assertIn("add column if not exists continues text", schema)
+        self.assertIn("add column if not exists continued_by text", schema)
+
     def test_chapter_archive_name_matches_the_client(self):
         name = re.search(r"/mnt/session/outputs/(chapter-<NN>-<slug>\.tar\.gz)", SYSTEM)
         self.assertIsNotNone(name, "the prompt names the chapter archive")

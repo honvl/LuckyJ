@@ -3,6 +3,7 @@ import { currentThread } from "@/lib/auth";
 import { messageContent, ownAttachments } from "@/lib/attachments";
 import { accessFor } from "@/lib/billing";
 import { prepareSend } from "@/lib/budget";
+import { sessionForMessage } from "@/lib/rollover";
 import { anthropic } from "@/lib/server";
 import { takeIntro } from "@/lib/store";
 import { titleFromFirstMessage } from "@/lib/threads";
@@ -19,15 +20,22 @@ export async function POST(request: Request) {
   const files = await ownAttachments(me.player, ids);
   if (!text && !files.length) return NextResponse.json({ error: "empty message" }, { status: 400 });
   if (text.length > MAX_CHARS) return NextResponse.json({ error: "message too long" }, { status: 400 });
+  // A thread that grew too long goes on in a fresh session (lib/rollover.ts); the page follows it.
+  let sessionId = me.sessionId;
+  try {
+    sessionId = await sessionForMessage(me.player, me.sessionId);
+  } catch (error) {
+    console.error("rollover failed; sending to the old session", error);
+  }
   // All of the player's threads share one allowance; give this thread what the others are not holding.
-  if (!(await prepareSend(me.player, me.sessionId))) return NextResponse.json({ error: "budget" }, { status: 402 });
+  if (!(await prepareSend(me.player, sessionId))) return NextResponse.json({ error: "budget" }, { status: 402 });
 
   const events: any[] = [{ type: "user.message", content: await messageContent(text, files) }];
-  const intro = await takeIntro(me.player, me.sessionId);
+  const intro = await takeIntro(me.player, sessionId);
   // The API takes a system message only as the last event of a request.
   if (intro) events.push({ type: "system.message", content: [{ type: "text", text: intro }] });
   try {
-    await anthropic().beta.sessions.events.send(me.sessionId, { events } as any);
+    await anthropic().beta.sessions.events.send(sessionId, { events } as any);
   } catch (error: any) {
     const budget = /budget/i.test(String(error?.message));
     return NextResponse.json(
@@ -35,6 +43,6 @@ export async function POST(request: Request) {
       { status: budget ? 402 : 502 },
     );
   }
-  await titleFromFirstMessage(me.player, me.sessionId, text || files.map((f) => f.name).join(", ")).catch(() => {});
-  return NextResponse.json({ ok: true, thread: me.sessionId });
+  await titleFromFirstMessage(me.player, sessionId, text || files.map((f) => f.name).join(", ")).catch(() => {});
+  return NextResponse.json({ ok: true, thread: sessionId });
 }
