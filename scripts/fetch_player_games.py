@@ -9,7 +9,9 @@ operator, and written in tenhou.net/6 format.
     .venv/bin/python scripts/fetch_player_games.py --account 120182062 --out service/players/ms-120182062/games
 
 The folder gets ``index.json`` in the shape ``thread.py new`` expects (hero_seat, hero_name,
-placement, final scores). Its ``file`` paths point where the sandbox unpacks the games
+placement, final scores), ``amae-koromo-records.json`` (every ranked game of the whole history
+with all four players' ranks, scores and rank-point changes) and ``amae-koromo-stats.json`` (the
+live rank and points, placement rates and play stats). Its ``file`` paths point where the sandbox unpacks the games
 (``data/self_games/majsoul/<file>``), since this folder is uploaded as is. Rerunning only fetches
 games not already in the folder.
 """
@@ -43,8 +45,14 @@ def main() -> None:
     if not token:
         sys.exit("no AMAE_KOROMO_TOKEN in the environment or tmp/tensoul/.env")
 
+    # Records (ranks, scores, rank points of all four players) cover the whole history; they are
+    # cheap, and questions about opponents and rank movement need years. Tile logs stay at `since`.
     export = out / "amae-koromo-records.json"
-    added = fms.amae_api_refresh(args.account, since, token, export)
+    added = fms.amae_api_refresh(args.account, None, token, export)
+    if not args.dry_run:
+        stats = fms.amae_stats(args.account, token)
+        (out / "amae-koromo-stats.json").write_text(json.dumps(stats, ensure_ascii=False, indent=1),
+                                                     encoding="utf-8")
     cutoff = datetime.strptime(since, "%Y-%m-%d").timestamp()
     records = [r for r in fms.amae_records(export) if r["start_time"] >= cutoff]
     manifest_path = out / "index.json"

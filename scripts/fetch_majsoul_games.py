@@ -81,49 +81,89 @@ def amae_token() -> str | None:
     return None
 
 
+def _space_amae_requests() -> None:
+    """Wait until ``AMAE_MIN_INTERVAL`` seconds have passed since this machine's last request.
+
+    The time is kept in a locked file, so separate processes (two scripts at once) share it.
+    """
+    import fcntl
+    import tempfile
+    with open(Path(tempfile.gettempdir()) / "amae-koromo-last-request", "a+") as fh:
+        fcntl.flock(fh, fcntl.LOCK_EX)
+        fh.seek(0)
+        try:
+            last = float(fh.read() or 0)
+        except ValueError:
+            last = 0.0
+        wait = AMAE_MIN_INTERVAL - (time.time() - last)
+        if wait > 0:
+            time.sleep(wait)
+        fh.seek(0)
+        fh.truncate()
+        fh.write(repr(time.time()))
+
+
+def amae_get(path: str, token: str):
+    """One GET against the amae-koromo API, at most one per ``AMAE_MIN_INTERVAL`` seconds.
+
+    ``path`` follows ``AMAE_API``, for example ``player_stats/<id>/<start ms>/<end ms>?mode=12``.
+    """
+    _space_amae_requests()
+    req = urllib.request.Request(f"{AMAE_API}/{path}", headers={"Authorization": f"Bearer {token}",
+                                                               "User-Agent": "LuckyJ self-review"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", "replace")[:200]
+        sys.exit(f"amae-koromo API {exc.code}: {body}")
+
+
 def amae_api_refresh(account_id: int, since: str | None, token: str, path: Path) -> int:
     """Pull the player's records from the amae-koromo API into the export file.
 
-    Pages newest-first, one request per ``AMAE_MIN_INTERVAL`` seconds, and merges
-    into the existing export (deduplicated by uuid). Returns the number of new rows.
+    Pages newest-first and merges into the existing export (deduplicated by uuid). Once a pass
+    has reached back to ``since`` (``None`` = the whole history), the file remembers it
+    (``complete_from_ms``) and later passes stop at the first page holding a game already there.
+    Returns the number of new rows.
     """
     start_ms = int(datetime.strptime(since, "%Y-%m-%d").timestamp() * 1000) if since else 0
     end_ms = int(time.time() * 1000)
+    data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"records": [], "stats": []}
+    known = {r[0] for r in data["records"]}
+    complete_from = data.get("complete_from_ms")
+    stop_at_known = complete_from is not None and complete_from <= start_ms
     fetched: list[list] = []
-    last_request = 0.0
     while True:
-        wait = AMAE_MIN_INTERVAL - (time.time() - last_request)
-        if wait > 0:
-            time.sleep(wait)
-        url = f"{AMAE_API}/player_records/{account_id}/{end_ms}/{start_ms}?limit={AMAE_PAGE}&mode={AMAE_MODES}&descending=true"
-        req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}",
-                                                   "User-Agent": "LuckyJ self-review"})
-        last_request = time.time()
-        try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                page = json.loads(resp.read().decode("utf-8"))
-        except urllib.error.HTTPError as exc:
-            body = exc.read().decode("utf-8", "replace")[:200]
-            sys.exit(f"amae-koromo API {exc.code}: {body}")
+        page = amae_get(f"player_records/{account_id}/{end_ms}/{start_ms}"
+                        f"?limit={AMAE_PAGE}&mode={AMAE_MODES}&descending=true", token)
         if not isinstance(page, list):
             sys.exit(f"unexpected amae-koromo response: {str(page)[:200]}")
         for r in page:
             fetched.append([r["uuid"], r["startTime"], r["endTime"], r["modeId"],
                             [[p["accountId"], p["nickname"], p.get("level"), p["score"], p.get("gradingScore")]
                              for p in r["players"]]])
-        if len(page) < AMAE_PAGE:
+        if len(page) < AMAE_PAGE or (stop_at_known and any(r["uuid"] in known for r in page)):
             break
         end_ms = min(r["startTime"] for r in page) * 1000 - 1
 
-    data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {"records": [], "stats": []}
-    known = {r[0] for r in data["records"]}
     new_rows = [r for r in fetched if r[0] not in known]
     data["records"] = sorted(data["records"] + new_rows, key=lambda r: r[1], reverse=True)
+    data["complete_from_ms"] = min(start_ms, complete_from) if complete_from is not None else start_ms
     data["exported_at"] = datetime.now().isoformat(timespec="seconds")
     data["source"] = f"{AMAE_API}/player_records (API key)"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     return len(new_rows)
+
+
+def amae_stats(account_id: int, token: str) -> dict:
+    """The player's live rank and points (``level``), placement rates and play stats, all history."""
+    end_ms = int(time.time() * 1000)
+    span = f"{account_id}/1262304000000/{end_ms}?mode={AMAE_MODES}"
+    return {"fetched_at": datetime.now().isoformat(timespec="seconds"),
+            "player_stats": amae_get(f"player_stats/{span}", token),
+            "player_extended_stats": amae_get(f"player_extended_stats/{span}", token)}
 
 
 def client_records(count: int) -> tuple[int | None, list[dict]]:

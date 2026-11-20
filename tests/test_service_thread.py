@@ -35,12 +35,21 @@ class ServiceThreadTest(unittest.TestCase):
                               capture_output=True, text=True, check=True).stdout.strip()
         self.assertIn(f"MORTAL_COMMIT={head}", SETUP)
 
-    def test_web_search_on_and_fetch_off(self):
-        self.assertIn('{"name": "web_fetch", "enabled": False}', CLIENT)
+    def test_web_tools_and_internet_on(self):
+        self.assertIn('{"name": "web_fetch", "enabled": True}', CLIENT)
         self.assertIn('{"name": "web_search", "enabled": True}', CLIENT)
+        self.assertIn('"networking": {"type": "unrestricted"}', CLIENT)
+
+    def test_api_key_only_through_the_vault(self):
+        import thread
+        self.assertEqual(thread.AMAE_SECRET, "AMAE_KOROMO_TOKEN")
+        self.assertIn("$AMAE_KOROMO_TOKEN", SYSTEM)
+        self.assertIn("Never print, echo or store `$AMAE_KOROMO_TOKEN`", SYSTEM)
+        self.assertIn("at most one request per 1.2 seconds", SYSTEM)
+        self.assertNotIn("secret_value", SETUP)
 
     def test_prompt_keeps_players_out_of_searches(self):
-        self.assertIn("Never put a player's in-game name, account id or game id in a search", SYSTEM)
+        self.assertIn("Never put a player's in-game name, account id or game id in a search query or a URL", " ".join(SYSTEM.split()))
 
     def test_model_is_opus_5_5(self):
         self.assertIn('"id": "claude-opus-5-5"', CLIENT)
@@ -85,8 +94,10 @@ class ServiceThreadTest(unittest.TestCase):
                 thread.save_state({"players": {"A": {"threads": [{"session_id": "s1", "intro": "who"}]}}})
                 note = thread.instructions_update(9, "RULES")
                 thread.queue_intro(thread.load_state(), "A", "s1", note)
+                newer = thread.instructions_update(10, "RULES 2")
+                thread.queue_intro(thread.load_state(), "A", "s1", newer)
                 state = thread.load_state()
-                self.assertEqual(thread.take_intro(state, "A", "s1"), "who\n\n" + note)
+                self.assertEqual(thread.take_intro(state, "A", "s1"), "who\n\n" + newer)
                 self.assertIn("agent version 9", note)
                 self.assertTrue(note.endswith("RULES"))
             finally:

@@ -28,6 +28,7 @@ import re
 import subprocess
 import sys
 import tarfile
+import time
 from pathlib import Path
 
 import anthropic
@@ -53,25 +54,28 @@ DEFAULT_BUDGET_USD = 15
 
 ENV_CONFIG = {
     "type": "cloud",
-    "networking": {
-        "type": "limited",
-        # Package managers cover PyPI, crates.io and github.com (the site repo and Mortal).
-        "allow_package_managers": True,
-        # CPU-only torch wheels; PyPI's default torch pulls gigabytes of CUDA libraries.
-        "allowed_hosts": ["download.pytorch.org", "download-r2.pytorch.org"],
-    },
+    # Open internet, as the operator's own sessions have: the coach downloads data, reads rule
+    # pages and calls the game-records API. No secrets live in the sandbox (see VAULT below).
+    "networking": {"type": "unrestricted"},
 }
 
 TOOLS = [{
     "type": "agent_toolset_20260401",
     "default_config": {"enabled": True, "permission_policy": {"type": "auto"}},
     "configs": [
-        # Web search answers rule questions (rank-point tables, promotion and demotion rules);
-        # fetching pages stays off, and the prompt keeps players' names and ids out of queries.
-        {"name": "web_fetch", "enabled": False},
+        {"name": "web_fetch", "enabled": True},
         {"name": "web_search", "enabled": True},
     ],
 }]
+
+# The game-records API key reaches the sandbox only as a placeholder in $AMAE_KOROMO_TOKEN; the
+# platform swaps in the real key on requests to these hosts, so the coach can query the API
+# without ever seeing the key.
+VAULT_NAME = "mahjong-coach"
+AMAE_SECRET = "AMAE_KOROMO_TOKEN"
+AMAE_HOSTS = ["*.amae-koromo.com"]
+ROOM_SAMPLE = SERVICE / ".state" / "room-sample.json"
+ROOM_SAMPLE_MAX_AGE_DAYS = 7
 
 
 # ------------------------------------------------------------------ state
@@ -199,23 +203,33 @@ def take_intro(state: dict, player: str, session_id: str) -> str | None:
     return row[0] if row else None
 
 
+UPDATE_MARKER = "Your operator has updated your instructions"
+
+
 def queue_intro(state: dict, player: str, session_id: str, text: str) -> None:
-    """Add to a thread's queued system context, which goes out with the player's next message."""
+    """Add to a thread's queued system context, which goes out with the player's next message.
+
+    An instructions update not yet delivered is replaced, not stacked: it always comes last.
+    """
+    def keep(intro: str | None) -> str | None:
+        return (intro or "").split(UPDATE_MARKER)[0].rstrip() or None
     thread = next(t for t in state["players"][player]["threads"] if t["session_id"] == session_id)
-    thread["intro"] = "\n\n".join(x for x in (thread.get("intro"), text) if x)
+    thread["intro"] = "\n\n".join(x for x in (keep(thread.get("intro")), text) if x)
     save_state(state)
     url = database_url()
     if not url:
         return
     import psycopg
     with psycopg.connect(url, autocommit=True) as conn:
-        conn.execute("update threads set intro = concat_ws(E'\\n\\n', intro, %s::text) where session_id = %s",
-                     (text, session_id))
+        conn.execute(
+            "update threads set intro = concat_ws(E'\\n\\n',"
+            " nullif(rtrim(split_part(coalesce(intro, ''), %s, 1)), ''), %s::text) where session_id = %s",
+            (UPDATE_MARKER, text, session_id))
 
 
 def instructions_update(version: int, system: str) -> str:
     """The note that brings an older thread's instructions up to the current agent version."""
-    return (f"Your operator has updated your instructions (agent version {version}). The full current "
+    return (f"{UPDATE_MARKER} (agent version {version}). The full current "
             "instructions follow. Where they differ from the ones you started with, follow these. "
             "Do not mention this update to the player.\n\n" + system)
 
@@ -329,6 +343,16 @@ def cmd_setup(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     sync_shared(client, state, "/luckyj/luckyj_tenhou.tar.gz", "luckyj_tenhou.tar.gz",
                 tar_gz([(f"luckyj_tenhou/{p.name}", p) for p in logs]))
 
+    if not ROOM_SAMPLE.exists() or time.time() - ROOM_SAMPLE.stat().st_mtime > ROOM_SAMPLE_MAX_AGE_DAYS * 86400:
+        print("  refreshing the room sample (a few minutes)")
+        subprocess.run([sys.executable, str(ROOT / "scripts" / "fetch_room_sample.py"), str(ROOM_SAMPLE)],
+                       check=True)
+    sync_shared(client, state, "/room/recent-games.json", "recent-games.json", ROOM_SAMPLE.read_bytes())
+
+    print("vault")
+    setup_vault(client, state)
+    print(f"  {state['vault_id']}")
+
     print("agent")
     system = SYSTEM.read_text(encoding="utf-8")
     config_hash = sha256(json.dumps([MODEL, TOOLS, system], sort_keys=True).encode())
@@ -349,6 +373,34 @@ def cmd_setup(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
 
 
 # ------------------------------------------------------------------ threads
+
+def setup_vault(client: anthropic.Anthropic, state: dict) -> None:
+    """The vault whose credential puts the game-records key on the coach's API requests."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import fetch_majsoul_games as fms
+    token = fms.amae_token()
+    if not token:
+        sys.exit("no AMAE_KOROMO_TOKEN in the environment or tmp/tensoul/.env")
+    if not state.get("vault_id"):
+        state["vault_id"] = client.beta.vaults.create(display_name=VAULT_NAME).id
+        save_state(state)
+    auth = {"type": "environment_variable", "secret_name": AMAE_SECRET, "secret_value": token,
+            "networking": {"type": "limited", "allowed_hosts": AMAE_HOSTS},
+            "injection_location": {"header": True, "body": False}}
+    digest = sha256(json.dumps(auth, sort_keys=True).encode())
+    if state.get("vault_credential_id") and state.get("vault_credential_hash") == digest:
+        return
+    if state.get("vault_credential_id"):
+        update = {k: v for k, v in auth.items() if k != "secret_name"}  # the name is immutable
+        client.beta.vaults.credentials.update(state["vault_credential_id"], vault_id=state["vault_id"],
+                                              auth=update)
+    else:
+        cred = client.beta.vaults.credentials.create(state["vault_id"], auth=auth,
+                                                     display_name="game records API")
+        state["vault_credential_id"] = cred.id
+    state["vault_credential_hash"] = digest
+    save_state(state)
+
 
 def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     state = load_state()
@@ -386,6 +438,7 @@ def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
         metadata={"player": args.player},
         budget={"type": "limit", "max_list_cost": {"amount": str(cents), "currency": "USD"}},
         resources=resources,
+        vault_ids=[state["vault_id"]] if state.get("vault_id") else [],
     )
     index = json.loads((games_dir / "index.json").read_text(encoding="utf-8"))
     names = sorted({row.get("hero_name") for row in index if row.get("hero_name")})
@@ -714,11 +767,15 @@ def cmd_refresh(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
                 print(f"  {label}: {s.status}, left for the next refresh")
                 continue
             if not args.dry_run:
+                # Vaults can only be attached when a thread starts (the API refuses vault_ids
+                # updates), so a thread started before the vault has no live records API.
                 client.beta.sessions.update(sid, agent={"tools": TOOLS})
                 queue_intro(state, name, sid, instructions_update(agent.version, system))
                 t["agent_version"] = agent.version
                 save_state(state)
-            print(f"  {label}: version {have} -> {agent.version} (tools now, instructions with the next message)")
+            no_api = "" if state.get("vault_id") in (getattr(s, "vault_ids", None) or []) else \
+                "; no live records API (needs a new thread)"
+            print(f"  {label}: version {have} -> {agent.version} (tools now, instructions with the next message{no_api})")
 
 
 def main() -> None:

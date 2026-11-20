@@ -41,6 +41,16 @@ A thread keeps the agent version it started with. After `setup` makes a new vers
 and queues the current instructions as system context for the player's next message (the
 system prompt of a running thread cannot be replaced).
 
+What a thread can reach (since 20 Nov 2026): open internet, web search and web fetch; the
+player's whole ranked-game history (`amae-koromo-records.json`) and live rank and points
+(`amae-koromo-stats.json`) from onboarding; a shared sample of recent Jade and Throne games
+(`/mnt/session/uploads/room/recent-games.json`, refreshed by `setup` when a week old, from
+`scripts/fetch_room_sample.py`); and the game-records API live. The API key sits in a vault
+credential (`vlt_...` in the operator state) that the platform substitutes into requests to
+`*.amae-koromo.com`; the sandbox only sees a placeholder in `$AMAE_KOROMO_TOKEN`. A vault can
+be attached only when a thread starts, so threads older than the vault have everything except
+the live API.
+
 ## Cost
 
 First live run (15 Nov 2026, Honver's 303 games): sandbox build plus a placement and riichi-rate
