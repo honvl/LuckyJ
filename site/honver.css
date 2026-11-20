@@ -114,6 +114,52 @@
   text-transform: uppercase;
 }
 
+/* The log keeps every notice, and shows the newest three until the reader asks for the rest. At 69
+   notices it stood 15,000px tall between the opening and the chapter list. honver.js adds the
+   button; without scripts a <noscript> rule in the page shows the whole log. */
+.guide-news:not(.is-open) li:nth-child(n + 4) {
+  display: none;
+}
+
+.guide-news-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid var(--hair);
+  background: none;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.guide-news-more:hover {
+  color: var(--verm);
+}
+
+.guide-news-more::after {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.guide-news.is-open .guide-news-more::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+
 /* ------------------------------------------------------------------ scoreboard */
 
 .scoreboard-key {

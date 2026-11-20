@@ -4,6 +4,8 @@ export default {
   // A separate build folder lets a production preview run beside `next dev` (.claude/launch.json).
   distDir: process.env.NEXT_DIST_DIR || ".next",
   poweredByHeader: false,
+  // app/global-not-found.tsx: the 404 for an address no page matches (the app has two root layouts).
+  experimental: { globalNotFound: true },
   // The site's front page is the playbook (public/index.html, copied from ../site).
   // The site's address is ai.yui-life.com; the old vercel.app address forwards to it. API routes
   // are left alone so a webhook or login callback still pointed at the old address keeps working.

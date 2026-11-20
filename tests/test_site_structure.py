@@ -111,6 +111,18 @@ class ContentsTests(unittest.TestCase):
                 self.assertEqual(sum("is-latest" in item.get("class", "").split() for item in items), 1)
 
 
+    def test_guide_notices_fold_to_the_newest_three(self):
+        # honver.css hides the fourth notice onward until honver.js's button opens the log; a
+        # reader without scripts gets the whole log from the page's own <noscript> rule.
+        css = (SITE / "honver.css").read_text(encoding="utf-8")
+        self.assertIn(".guide-news:not(.is-open) li:nth-child(n + 4)", css)
+        self.assertIn("guide-news-more", (SITE / "honver.js").read_text(encoding="utf-8"))
+        for name in GUIDES:
+            with self.subTest(page=name):
+                html = (SITE / name).read_text(encoding="utf-8")
+                self.assertIn("<noscript><style>.guide-news li:nth-child(n + 4) { display: grid !important; }</style></noscript>", html)
+
+
 def notices(name):
     return [attrs for attrs, ancestors in page(name).find("li")
             if any(t == "aside" and a.get("id") == "whats-new" for t, a in ancestors)]

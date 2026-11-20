@@ -16,7 +16,7 @@
     <!-- The text faces load without holding up the page; until they arrive it reads in the fallback faces. -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" media="print" onload="this.media='all'" data-font-css />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" /></noscript>
-    <link rel="stylesheet" href="styles.css?v=20261120-guide-nav" />
+    <link rel="stylesheet" href="styles.css?v=20261120-head" />
   </head>
   <body data-app="home" data-book="playbook">
     <a class="skip-link" href="#contents">Skip to the contents</a>
@@ -118,14 +118,14 @@
             <p class="label" id="book-method-title">How the book reads a hand</p>
             <p class="contents-sub">
               NAGA is the review lens. Its model heads, Nishiki, Hibakari, and Kagashi, show strong candidate lines and
-              mark the moments where LuckyJ chose another plan. Those disagreements are review prompts, not automatic
-              improvements on ordinary efficient play. LuckyJ still matches Nishiki&#8217;s top discard about 73% of the
-              time.
+              mark the moments where LuckyJ chose another plan. Treat each disagreement as a hand to review.
+              LuckyJ still matches Nishiki&#8217;s top discard about 73% of the time, and ordinary efficient play
+              comes first.
             </p>
             <div class="book-method">
               <div><b>LuckyJ</b><p>A self-play-trained policy, observed making the same kinds of choices under score pressure, opponent pressure, and awkward shapes.</p></div>
               <div><b>NAGA</b><p>A strong riichi AI review system used here as a comparison partner and calibration tool.</p></div>
-              <div><b>Teacher</b><p>Each split is a question: what the model values, what LuckyJ may be buying, and whether a human can check the condition before copying it.</p></div>
+              <div><b>The splits</b><p>Each split is a question: what NAGA values, what LuckyJ may be buying, and whether you can check the condition at the table before copying it.</p></div>
             </div>
             <div class="book-method">
               <div><b>See the table</b><p>Start from score, row, dora, calls, riichi, and the tiles that become dangerous later.</p></div>
@@ -177,7 +177,7 @@
       </div>
     </footer>
 
-    <script src="app.js?v=20260929-book-called-tile-once"></script>
+    <script src="app.js?v=20261120-head"></script>
       <script src="guides-shelf.js" defer></script>
   </body>
 </html>

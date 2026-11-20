@@ -4,7 +4,7 @@ const locale = isJa ? "ja-JP" : "en-US";
 const fmt = new Intl.NumberFormat(locale, { maximumFractionDigits: 1 });
 const whole = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 });
 const pct = (v) => `${fmt.format(v * 100)}%`;
-const dataAssetVersion = "20260929-book-called-tile-once";
+const dataAssetVersion = "20261120-head";
 const dataAsset = (path) => `${path}${String(path).includes("?") ? "&" : "?"}v=${dataAssetVersion}`;
 const chromiumTileEngine = /Chrome|Chromium|Edg|Opera|OPR|OPE|MSIE/.test(navigator.userAgent);
 const useColrTiles = chromiumTileEngine && globalThis.CSS?.supports?.("font-tech(color-COLRv1)");
@@ -389,6 +389,7 @@ function setupRunningHead() {
     if (cover && head.dataset.felt !== "never") {
       const overFelt = cover.getBoundingClientRect().bottom > head.offsetHeight;
       head.classList.toggle("on-felt", overFelt);
+      head.classList.toggle("is-scrolled", scrollY > 4);
     }
     const readingLine = window.innerHeight * 0.38;
     let active = null;

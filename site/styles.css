@@ -313,6 +313,13 @@ html:lang(ja) :is(.kicker, .eyebrow, .side-title, .panel-kicker, .label) {
   backdrop-filter: none;
 }
 
+/* Once the cover starts to scroll under the head, the head needs a ground of its own, or the cover's
+   eyebrow and title show through the book title and the links. */
+.running-head.on-felt.is-scrolled {
+  background: rgba(17, 64, 46, 0.92);
+  backdrop-filter: blur(10px);
+}
+
 .book-mark {
   display: flex;
   flex: 0 0 auto;
@@ -4855,11 +4862,29 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   }
 
   .running-head {
-    gap: 10px;
+    gap: 8px;
   }
 
   .book-title {
     font-size: 18px;
+  }
+
+  /* A long title (the Japanese guide's) shortens with an ellipsis before it pushes the links off
+     the screen. The padding keeps the clipped box from cutting the letters' tops and tails. */
+  .book-mark {
+    flex: 0 1 auto;
+    gap: 9px;
+    min-width: 0;
+  }
+
+  .book-title {
+    overflow: hidden;
+    padding-block: 0.2em;
+    text-overflow: ellipsis;
+  }
+
+  html:lang(ja) .book-title {
+    font-size: 15px;
   }
 
   .edition-tag,
@@ -4868,13 +4893,13 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   }
 
   .running-nav .lang-link {
-    margin-left: 4px;
-    padding: 0 10px;
+    margin-left: 2px;
+    padding: 0 8px;
   }
 
   .running-nav a,
   .running-nav button {
-    padding: 0 10px;
+    padding: 0 8px;
   }
 
   .contents-panel {
@@ -5109,6 +5134,11 @@ html:lang(ja) .contents-list.is-points .contents-sub {
 @media (max-width: 400px) {
   .running-head {
     gap: 8px;
+  }
+
+  /* The word is enough here, and the icon's 26px lets a guide's title show its player's name. */
+  .contents-toggle svg {
+    display: none;
   }
 
   .book-title {

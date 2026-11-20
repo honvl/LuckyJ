@@ -12,15 +12,15 @@ export const metadata: Metadata = { title: "AI Tutor: The LuckyJ Playbook", robo
 const EXAMPLE = {
   en: {
     ask1: "Can you analyze whether players get harder after a win streak and easier after a lose streak (matchmaking)? I have such a feeling",
-    checked: "Checked 4,167 Jade South games since Oct 2020, with every opponent's rank at the time",
-    answer1: "Win streaks don't get you harder opponents, and loss streaks don't get you easier ones.",
-    cols: ["Streak going in", "Games", "Opponents' avg rank"],
+    checked: "Checked 4,167 Jade South games since Oct 2020, with every opponent’s rank at the time",
+    answer1: "Win streaks don’t get you harder opponents, and loss streaks don’t get you easier ones.",
+    cols: ["Streak going in", "Games", "Opponents’ avg rank"],
     rows: [["5+ bad games", "87", "0.99"], ["1 bad game", "1,042", "1.08"], ["1 good game", "1,042", "1.14"], ["5+ good games", "159", "1.09"]],
-    after1: "No trend with streak length (p = 0.23). One real signal: the game right after a 4th, opponents average 0.13 rank steps lower. It's gone by the next game.",
-    ask2: "Games with Saints are definitely harder than games with Masters? That's why people avoid Throne Room. And I feel like I'm noticing more Saints?",
-    answer2a: "You're right on both counts.",
+    after1: "No trend with streak length (p = 0.23). One real signal: the game right after a 4th, opponents average 0.13 rank steps lower. It’s gone by the next game.",
+    ask2: "Games with Saints are definitely harder than games with Masters? That’s why people avoid Throne Room. And I feel like I’m noticing more Saints?",
+    answer2a: "Yes to both.",
     answer2b: "Comparing opponents at the same table, Saints finish 0.14 places better than Masters (± 0.04). Each Saint at your table costs you about 7 rank points a game.",
-    answer2c: "Saints per Jade table rose from about 0.42 in 2021 to 0.72 in October and November 2026. It comes from the room's player pool, not from your own climb.",
+    answer2c: "Saints per Jade table rose from about 0.42 in 2021 to 0.72 in October and November 2026. It comes from the room’s player pool, not from your own climb.",
   },
   ja: {
     ask1: "連勝のあとは相手が強く、連敗のあとは弱くなる（マッチング）か分析できますか？そんな気がします",

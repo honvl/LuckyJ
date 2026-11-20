@@ -1,5 +1,7 @@
-// The running head and colophon of the site's app pages (/books, a guide, /tutor), drawn like the
-// static Playbook's (site/index.html) so moving between them feels like one book.
+// The running head and colophon of the site's app pages (/books, a guide, /tutor). The head copies
+// the static Playbook's (site/index.html, .running-head in site/styles.css): the same tile mark,
+// italic title, links in the same order on the right and the boxed language link, so moving
+// between the two feels like one book.
 import type { Lang } from "@/lib/strings";
 import { SITE } from "@/lib/site-strings";
 
@@ -23,19 +25,15 @@ export function SiteHeader({ lang, current, path }: { lang: Lang; current: Curre
   const here = (which: Current) => (current === which ? { "aria-current": "page" as const } : {});
   return (
     <header className="s-head">
-      <div className="s-head-inner">
-        <a className="s-brand" href={s.playbookHref}><BookMark /><span>{s.bookTitle}</span></a>
-        <nav className="s-nav" aria-label={s.navLabel}>
-          <a href={s.contentsHref}>{s.contents}</a>
-          <a className="s-nav-2" href={s.prescriptionsHref}>{s.prescriptions}</a>
-          <a className="s-nav-2" href={s.drillsHref}>{s.drills}</a>
-          <a href="/books" {...here("guides")}>{s.guides}</a>
-        </nav>
-        <div className="s-head-end">
-          <a href={`/lang?to=${s.otherLangCode}&back=${encodeURIComponent(path)}`} lang={s.otherLangCode} hrefLang={s.otherLangCode}>{s.otherLang}</a>
-          <a className="s-quiet" href="/tutor" {...here("tutor")}>{s.tutor}</a>
-        </div>
-      </div>
+      <a className="s-brand" href={s.playbookHref}><BookMark /><span>{s.bookTitle}</span></a>
+      <nav className="s-nav" aria-label={s.navLabel}>
+        <a href={s.contentsHref}>{s.contents}</a>
+        <a className="s-nav-2" href={s.prescriptionsHref}>{s.prescriptions}</a>
+        <a className="s-nav-2" href={s.drillsHref}>{s.drills}</a>
+        <a href="/books" {...here("guides")}>{s.guides}</a>
+        <a className="s-quiet" href="/tutor" {...here("tutor")}>{s.tutor}</a>
+      </nav>
+      <a className="s-lang" href={`/lang?to=${s.otherLangCode}&back=${encodeURIComponent(path)}`} lang={s.otherLangCode} hrefLang={s.otherLangCode}>{s.otherLang}</a>
     </header>
   );
 }

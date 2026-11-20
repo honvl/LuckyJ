@@ -794,6 +794,7 @@
     setupTimingCharts();
     setupSurfaces();
     setupHandToggle();
+    setupNews();
     for (const table of document.querySelectorAll("table.guide-data[data-chart]")) renderGuideChart(table);
     let data;
     try {
@@ -1184,6 +1185,31 @@
       }, { threshold: 0.4 });
       seen.observe(canvas);
     }
+  }
+
+  // What's new keeps every notice. honver.css shows the newest three; this adds the button that
+  // opens the rest, and closing it returns the reader to the top of the log.
+  function setupNews() {
+    const news = document.getElementById("whats-new");
+    const count = news ? news.querySelectorAll("ol > li").length : 0;
+    if (count <= 3) return;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "guide-news-more";
+    const set = (open) => {
+      news.classList.toggle("is-open", open);
+      button.setAttribute("aria-expanded", String(open));
+      button.textContent = open
+        ? (isJa ? "最新の3件だけ表示" : "Show the newest three only")
+        : (isJa ? `これまでの更新をすべて表示（全${count}件）` : `Show all ${count} updates`);
+    };
+    button.addEventListener("click", () => {
+      const open = !news.classList.contains("is-open");
+      set(open);
+      if (!open) news.scrollIntoView({ block: "start" });
+    });
+    set(false);
+    news.append(button);
   }
 
   // The browser jumps to a link's anchor before the example tables load, and the tables then add

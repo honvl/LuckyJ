@@ -15,34 +15,52 @@
 .s-page a { color: var(--ink); }
 .s-page a:hover { color: var(--verm); }
 
-/* Running head, as on the Playbook's pages */
-.s-head { border-bottom: 1px solid var(--hair); background: var(--paper); }
-.s-head-inner {
-  max-width: 1200px; margin: 0 auto; padding: 10px 24px;
-  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px;
+/* Running head, as on the Playbook's pages (.running-head in site/styles.css): 64px, sticky, the
+   tile mark and italic title on the left, links on the right, the language link boxed. On a phone
+   the links take a second row and the head scrolls away with the page. */
+.s-head {
+  position: sticky; top: 0; z-index: 40;
+  display: flex; align-items: center; gap: 20px; min-height: 64px;
+  padding: 0 max(32px, calc((100% - 1216px) / 2));
+  border-bottom: 1px solid var(--hair);
+  background: rgba(244, 240, 230, 0.95); backdrop-filter: blur(10px);
 }
-.s-brand {
-  display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
-  font: 600 21px/1.1 var(--serif); letter-spacing: -0.01em; min-height: 44px;
+.s-head .s-brand {
+  display: inline-flex; flex: none; align-items: center; gap: 12px; min-height: 44px;
+  color: var(--ink); text-decoration: none;
+  font: italic 400 21px/1 var(--serif); white-space: nowrap;
 }
-.s-mark { width: 22px; height: 30px; flex: none; }
+:lang(ja) .s-head .s-brand { font: 600 17px/1 var(--serif); }
+.s-mark { display: block; width: 21px; height: 28px; flex: none; }
 .s-mark-back { fill: var(--felt); }
-.s-mark-face { fill: var(--paper); }
-.s-mark-letter { fill: var(--felt); }
-.s-nav { display: flex; flex-wrap: wrap; gap: 0 22px; flex: 1 1 auto; font-weight: 500; font-size: 15px; }
-.s-nav a, .s-head-end a { text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
-.s-nav a[aria-current="page"], .s-head-end a[aria-current="page"] { color: var(--verm); }
-.s-head-end { display: flex; gap: 20px; font-size: 15px; }
-.s-quiet { color: var(--ink-2) !important; }
+.s-mark-face { fill: var(--plate); }
+.s-mark-letter { fill: var(--verm); }
+.s-nav { display: flex; align-items: center; gap: 2px; margin-left: auto; }
+.s-head .s-nav a, .s-head .s-lang {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px;
+  color: var(--ink-2); font-size: 15px; font-weight: 500; text-decoration: none; white-space: nowrap;
+}
+.s-head .s-nav a:hover { color: var(--ink); }
+.s-head .s-nav a[aria-current="page"] { color: var(--ink); box-shadow: inset 0 -2px 0 var(--verm); }
+.s-head .s-lang {
+  min-height: 36px; margin-left: -8px; border: 1px solid var(--hair); border-radius: 2px;
+  color: var(--ink); font-size: 14px;
+}
+.s-head .s-lang:hover { border-color: var(--ink); color: var(--ink); }
+@media (max-width: 1023px) { .s-nav-2 { display: none !important; } }
 @media (max-width: 640px) {
-  .s-nav-2 { display: none !important; }
-  .s-head-inner { padding: 6px 16px; gap: 0 18px; }
+  .s-head { position: static; flex-wrap: wrap; gap: 0 10px; padding: 6px 16px 0; backdrop-filter: none; }
+  .s-head .s-brand { flex: 1 1 auto; font-size: 18px; }
+  :lang(ja) .s-head .s-brand { font-size: 16px; }
+  .s-head .s-lang { order: 2; margin-left: 0; padding: 0 10px; }
+  .s-nav { order: 3; flex: 1 0 100%; margin: 0 -10px; gap: 0; }
+  .s-head .s-nav a { padding: 0 10px; }
 }
 
 /* Colophon */
 .s-foot { border-top: 1px solid var(--hair); }
 .s-foot-inner {
-  max-width: 1200px; margin: 0 auto; padding: 28px 24px 44px;
+  max-width: 1280px; margin: 0 auto; padding: 28px 32px 44px;
   display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 14px; color: var(--muted);
 }
 .s-foot-inner a { color: var(--muted); }
@@ -78,7 +96,7 @@
 .s-page .s-btn-line:hover { background: var(--paper); color: var(--felt); }
 
 /* Library */
-.s-main { max-width: 1200px; margin: 0 auto; padding: 48px 24px 64px; display: flex; flex-direction: column; gap: 28px; }
+.s-main { max-width: 1280px; margin: 0 auto; padding: 48px 32px 64px; display: flex; flex-direction: column; gap: 28px; }
 .s-intro { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px; }
 .s-intro > div { display: flex; flex-direction: column; gap: 12px; flex: 1 1 560px; min-width: 0; }
 .s-intro > p { margin: 0; }
@@ -121,7 +139,7 @@
 
 /* A guide's cover band and two columns */
 .s-cover-band { background: var(--felt); color: var(--paper); }
-.s-band-inner { max-width: 1200px; margin: 0 auto; padding: 24px 24px 40px; display: flex; flex-direction: column; gap: 18px; }
+.s-band-inner { max-width: 1280px; margin: 0 auto; padding: 24px 32px 40px; display: flex; flex-direction: column; gap: 18px; }
 .s-crumb { font-size: 14px; color: #d6e7dc; }
 .s-page .s-crumb a { color: #d6e7dc; }
 .s-band-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; }
@@ -132,7 +150,7 @@
 .s-band-meta { margin: 0; font-size: 15px; color: #d6e7dc; }
 .s-band-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .s-columns {
-  max-width: 1200px; margin: 0 auto; padding: 40px 24px 64px;
+  max-width: 1280px; margin: 0 auto; padding: 40px 32px 64px;
   display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;
 }
 .s-col-main { flex: 999 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 40px; }
@@ -165,7 +183,7 @@
 /* Chapter page */
 .s-subbar { border-bottom: 1px solid var(--hair); background: var(--plate); }
 .s-subbar-inner {
-  max-width: 1200px; margin: 0 auto; padding: 8px 24px; display: flex; flex-wrap: wrap;
+  max-width: 1280px; margin: 0 auto; padding: 8px 32px; display: flex; flex-wrap: wrap;
   align-items: center; justify-content: space-between; gap: 6px 24px; font-size: 14px;
 }
 .s-crumb-dark { color: var(--ink-2); }
@@ -177,7 +195,7 @@
 .s-pager-next { text-align: right; margin-left: auto; }
 
 /* Tutor page */
-.s-hero { max-width: 1200px; margin: 0 auto; padding: 64px 24px 56px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; }
+.s-hero { max-width: 1280px; margin: 0 auto; padding: 64px 32px 56px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; }
 .s-hero-text { flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
 .s-actions { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
 .s-example {
@@ -195,7 +213,7 @@
 .s-reply th { font-weight: 600; border-bottom-color: var(--hair); }
 .s-reply .num { text-align: right; }
 .s-band-light { border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); background: var(--plate); }
-.s-wide { max-width: 1200px; margin: 0 auto; padding: 56px 24px; display: flex; flex-direction: column; gap: 28px; }
+.s-wide { max-width: 1280px; margin: 0 auto; padding: 56px 32px; display: flex; flex-direction: column; gap: 28px; }
 .s-three { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; }
 .s-three p { margin: 0; color: var(--ink-2); }
 .s-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px; }
@@ -237,3 +255,14 @@
    "How this was measured" section wrap instead of widening the page on a phone. */
 .s-reading > *, .s-reading .book-chapter, .s-reading .md { min-width: 0; max-width: 100%; }
 .s-reading .md code { overflow-wrap: anywhere; }
+
+/* 404 */
+.s-page-fill { display: flex; flex-direction: column; }
+.s-page-fill > main { flex: 1 0 auto; width: 100%; box-sizing: border-box; }
+.s-lost { gap: 20px; padding-top: 88px; }
+.s-lost .s-h1 { max-width: 760px; text-wrap: balance; }
+.s-lost-links { list-style: none; margin: 20px 0 0; padding: 0; max-width: 640px; border-bottom: 1px solid var(--hair); }
+.s-lost-links li { border-top: 1px solid var(--hair); }
+.s-lost-links a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 16px; padding: 14px 0; text-decoration: none; }
+.s-lost-links strong { flex: 0 0 200px; font: 500 21px/1.3 var(--serif); }
+.s-lost-links span { color: var(--ink-2); font-size: 15px; }

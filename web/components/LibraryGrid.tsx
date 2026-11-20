@@ -1,5 +1,6 @@
 "use client";
 // The library's search, sort and rank and topic filters over the guides the page was given.
+// Sort shows once there are two guides to order, and the rank chips once two ranks are present.
 import { useMemo, useState } from "react";
 import type { LibraryItem } from "@/lib/library";
 import type { Lang } from "@/lib/strings";
@@ -52,16 +53,16 @@ export default function LibraryGrid({ lang, items }: { lang: Lang; items: Librar
             <label htmlFor="lib-q">{s.search}</label>
             <input id="lib-q" type="search" value={query} placeholder={s.searchPlaceholder} onChange={(e) => setQuery(e.target.value)} />
           </div>
-          <div className="s-field">
+          {items.length > 1 && <div className="s-field">
             <label htmlFor="lib-sort">{s.sort}</label>
             <select id="lib-sort" value={sort} onChange={(e) => setSort(e.target.value as typeof sort)}>
               <option value="newest">{s.sortNewest}</option>
               <option value="most">{s.sortMost}</option>
               <option value="rank">{s.sortRank}</option>
             </select>
-          </div>
+          </div>}
         </div>
-        {tiers.length > 0 && (
+        {tiers.length > 1 && (
           <div className="s-chips" role="group" aria-label={s.rank}>
             <span className="s-chips-label">{s.rank}</span>
             {chip(s.all, "All", tier, setTier)}
