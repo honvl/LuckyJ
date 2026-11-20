@@ -18,8 +18,9 @@ class NewestTests(unittest.TestCase):
 
 
 class RefusedTests(unittest.TestCase):
-    """The record server answered 540 to every request on 20 Nov 2026; fetch_many.js retried each
-    game for 75 seconds and the onboarding job died at 30 minutes with nothing kept."""
+    """Error 540 is the game's "log retrieval limit exceeded", a quota on the account. On 20 Nov
+    2026 the fetch account was over it; fetch_many.js retried each game for 75 seconds and the
+    onboarding job died at 30 minutes with nothing kept."""
 
     def row(self, status, error=None):
         return {"uuid": "g", "status": status, **({"error": error} if error else {})}
@@ -27,19 +28,23 @@ class RefusedTests(unittest.TestCase):
     def test_a_batch_cut_off_for_time_counts_as_refused(self):
         self.assertTrue(fpg.refused({"a": self.row("written")}, cut=True))
 
-    def test_only_540s_and_nothing_written_is_refused(self):
+    def test_a_540_means_the_limit_is_in_force(self):
         self.assertTrue(fpg.refused({"a": self.row("error", '{"code":540}')}, cut=False))
         self.assertTrue(fpg.refused({"a": self.row("error", '{"code": 540}')}, cut=False))
 
-    def test_a_540_among_written_games_is_a_blip(self):
+    def test_a_540_after_written_games_stops_the_run_too(self):
+        # The limit was reached partway: what was written is kept, and nothing more is asked for.
         status = {"a": self.row("written"), "b": self.row("error", '{"code":540}')}
-        self.assertFalse(fpg.refused(status, cut=False))
+        self.assertTrue(fpg.refused(status, cut=False))
 
     def test_other_errors_do_not_stop_the_run(self):
         self.assertFalse(fpg.refused({"a": self.row("error", "record not found")}, cut=False))
 
     def test_a_refused_batch_is_given_up_within_the_time_limit(self):
         self.assertLess(fpg.BATCH_SECONDS, fpg.TIME_LIMIT_MINUTES * 60)
+
+    def test_the_first_request_is_one_game_and_short(self):
+        self.assertLess(fpg.PROBE_SECONDS, 60)
 
 
 if __name__ == "__main__":

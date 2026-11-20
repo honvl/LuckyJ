@@ -46,7 +46,8 @@ const Client = require('./client.js')
       } catch (err) {
         lastErr = err
         const code = err && err.error && err.error.code
-        // 540: the record server throttles bursts of fetchGameRecord calls.
+        // 540: "log retrieval limit exceeded", a quota on the account that downloads. The retries
+        // below date from when it was taken for a burst throttle; they do not lift it.
         if (code !== 540) break
         await new Promise((resolve) => setTimeout(resolve, 5000 * (attempt + 1)))
       }

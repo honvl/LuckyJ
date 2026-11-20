@@ -21,7 +21,8 @@ Added scripts:
 - `records.js` lists the logged-in account's record history as JSON (the server
   keeps the last 30 games).
 - `fetch_many.js` converts many ids with one login, writing `<uuid>.json` files.
-  The record server throttles bursts (error 540); the script backs off and
-  retries.
+  Error 540 is the game's "log retrieval limit exceeded": a quota on the account
+  that downloads. The script's retries do not lift it; `scripts/fetch_player_games.py`
+  stops at the first one and keeps what it has.
 
 `sh tools/tensoul/install.sh` clones, patches and installs into `tmp/tensoul`.

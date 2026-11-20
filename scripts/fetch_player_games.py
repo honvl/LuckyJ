@@ -16,11 +16,16 @@ live rank and points, placement rates and play stats). Its ``file`` paths point 
 games not already in the folder.
 
 Tile logs are capped at the newest ``--max-games`` of the past year (300 by default), newest first,
-and the download stops at ``--time-limit`` minutes or as soon as the record server refuses the
-fetch account (error 540), keeping what it has. Onboarding runs on a runner whose disk is not
-kept, so a download that outlasts the job loses everything: on 20 Nov 2026 the server answered
-540 to every request, each game spent 75 seconds in retries, and a 283-game sign-up was killed
-at 30 minutes with nothing to show. The index is written after every batch.
+and the download stops at ``--time-limit`` minutes or as soon as the account's log retrieval
+limit is reached, keeping what it has. Error 540 is the game's "log retrieval limit exceeded": a
+quota on the account that downloads, not a burst throttle, so retrying does not help. Its size
+and reset time are not known yet; the progress lines show how many logs a run got before it.
+
+Onboarding runs on a runner whose disk is not kept, so a download that outlasts the job loses
+everything: on 20 Nov 2026 the fetch account was over its limit, fetch_many.js spent 75 seconds
+retrying each game, and a 283-game sign-up was killed at 30 minutes with nothing to show. A run
+now asks for one game first and stops there if the limit is in force. The index is written
+after every batch.
 """
 
 from __future__ import annotations
@@ -39,7 +44,8 @@ import fetch_majsoul_games as fms  # noqa: E402
 SANDBOX_DIR = "data/self_games/majsoul"
 MAX_GAMES = 300
 BATCH = 20            # games per fetch_many.js run (one login each)
-BATCH_SECONDS = 240   # a healthy batch takes about a minute; a refused one retries for 75 s a game
+BATCH_SECONDS = 240   # a healthy batch takes about a minute; over the limit, 75 s of retries a game
+PROBE_SECONDS = 30    # one game: login and download take a few seconds when the account is under its limit
 TIME_LIMIT_MINUTES = 15
 
 
@@ -91,12 +97,14 @@ def main() -> None:
     started = time.monotonic()
     written = errors = tried = 0
     stopped = ""
-    for at in range(0, len(missing), BATCH):
+    # The first request is a single game with a short limit: when the account is over its log
+    # retrieval limit this costs a few requests, not a batch of them.
+    batches = [missing[:1]] + [missing[at:at + BATCH] for at in range(1, len(missing), BATCH)]
+    for n, batch in enumerate(batches):
         if time.monotonic() - started > args.time_limit * 60:
             stopped = f"the {args.time_limit:g}-minute limit"
             break
-        batch = missing[at:at + BATCH]
-        status, cut = fetch_batch([r["uuid"] for r in batch], out)
+        status, cut = fetch_batch([r["uuid"] for r in batch], out, PROBE_SECONDS if n == 0 else BATCH_SECONDS)
         for r in batch:
             st = status.get(r["uuid"])
             if st is None:  # the batch was cut off before reaching this game
@@ -114,7 +122,7 @@ def main() -> None:
         manifest_path.write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
         print(f"  fetched {written} of {len(missing)} ({errors} errors, {time.monotonic() - started:.0f} s)", flush=True)
         if refused(status, cut):
-            stopped = "the record server refusing the fetch account (error 540 or no answer)"
+            stopped = "the account's log retrieval limit (error 540, or no answer in time)"
             break
     rows = sorted(manifest.values(), key=lambda row: row["start_time"], reverse=True)
     left = len(missing) - written
@@ -147,11 +155,10 @@ def fetch_batch(ids: list[str], out: Path, seconds: int = BATCH_SECONDS) -> tupl
 
 
 def refused(status: dict[str, dict], cut: bool) -> bool:
-    """True when the record server is turning the fetch account away: a batch that was cut off
-    for time, or one where nothing was written and a game came back with error 540."""
-    wrote = any(row["status"] == "written" for row in status.values())
-    throttled = any(row["status"] == "error" and '"code":540' in str(row.get("error", "")).replace(" ", "") for row in status.values())
-    return cut or (throttled and not wrote)
+    """True when the account's log retrieval limit is in force: a game came back with error 540
+    (after fetch_many.js's own retries), or the batch was cut off for time while retrying."""
+    over = any(row["status"] == "error" and '"code":540' in str(row.get("error", "")).replace(" ", "") for row in status.values())
+    return cut or over
 
 
 if __name__ == "__main__":
