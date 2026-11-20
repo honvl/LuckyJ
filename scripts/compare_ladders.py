@@ -1,21 +1,26 @@
 #!/usr/bin/env python3
-"""Is Saint 3 -> Celestial (Jade) harder than 7-dan -> 8-dan (Houou)? One Mortal scale for both rooms.
+"""Is Saint 3 -> Celestial (Jade) harder than 7 -> 8 dan, or 8 -> 9 dan, in Houou? One Mortal scale for both rooms.
 
-Inputs are two ``mine_ladder_skill.py`` outputs: the user's Jade games (every seat) and a sample of recent Houou
-hanchan (every seat). Steps:
+Inputs: two ``mine_ladder_skill.py`` outputs (the user's Jade games and a sample of recent Houou hanchan, every seat)
+and a large Jade room sample from amae-koromo (rank level and final score of every seat, no logs).
 
 1. Skill = mean ln p(taken action) under the local Mortal policy, pooled over a group's decisions. Groups: Jade
-   opponents by rank (Master 1-3, Saint 1-3), the user, the Jade field (all opponents), Houou seats by dan, the Houou
-   field. Standard errors by bootstrapping games.
-2. Places per unit of skill (beta). (a) Mahjong Soul: Saints place 0.1443 better than Masters at the same table
-   (``mine_table_strength.py``, 1,729 mixed tables), divided by the Saint-minus-Master skill gap. (b) Tenhou: the
-   within-table place difference per dan step in this sample, divided by the skill gap per dan step.
-3. A Thurstone placement model: performance = k * skill + N(0, 1), places by performance. k is set so a skill gap
-   moves the expected place by beta, then first-to-fourth rates for any player against any field follow.
-4. The climbs as random walks, one attempt each: Houou 7-dan 1,400 -> 2,800 points, +90/+45/0/-120, demoted below 0;
-   Jade Saint 3 4,500 -> 9,000, +144/+65/-9/-272 (the user's measured Saint 3 Jade South averages), demoted below 0.
+   opponents by rank, the user, the Jade field (all opponents), Houou seats by dan, the Houou field. Bootstrapped SEs.
+2. Places per unit of skill (beta), measured in each room: (a) Jade: the room sample's places per rank step
+   (within table, every seat) over the Mortal skill per rank step at the user's tables; (b) Houou: players seen 4+
+   times, place against their skill in their other games, shrunk by its reliability, clustered by player. The two
+   differ (Mortal agreement separates Houou regulars less than it separates Masters from Saints), so the main result
+   gives each room its own beta; ``one_beta`` repeats everything with their inverse-variance mean. The
+   Saint-minus-Master ratio and the Houou dan ratio are reported only.
+3. A Thurstone placement model: performance = k * skill + N(0, 1); k is set so a skill gap moves the expected place
+   by beta. First-to-fourth rates for any player against a room's field follow.
+4. One attempt at each climb as a random walk: Houou 7-dan 1,400 -> 2,800 (+90/+45/0/-120), 8-dan 1,600 -> 3,200
+   (-135 for 4th; below 0 drops to 7-dan), the chain 7 -> 9 with that drop, Jade Saint 3 4,500 -> 9,000
+   (+144/+65/-9/-272, the user's measured Saint 3 Jade South averages). Per climb: the even-odds skill, the odds of
+   the user, of the room's average player and of a Houou-average player; then the even-odds skills across one shared
+   beta and the beta at which Celestial stops being the harder one.
 
-    .venv/bin/python scripts/compare_ladders.py data/ladder_skill/jade.jsonl data/ladder_skill/houou.jsonl OUT.json
+    .venv/bin/python scripts/compare_ladders.py JADE.jsonl HOUOU.jsonl ROOM_SAMPLE.json OUT.json [--discards]
 """
 
 from __future__ import annotations
@@ -29,10 +34,10 @@ from collections import defaultdict
 import numpy as np
 
 USER = "Honver"
-SAINT_MINUS_MASTER_PLACE = -0.1443  # analysis/table-strength-2026-11-19.json, within_table
-SAINT_MINUS_MASTER_SE = 0.0382
 HOUOU_7DAN = {"start": 1400, "goal": 2800, "pts": [90, 45, 0, -120]}
+HOUOU_8DAN = {"start": 1600, "goal": 3200, "pts": [90, 45, 0, -135]}
 JADE_S3 = {"start": 4500, "goal": 9000, "pts": [144, 65, -9, -272]}
+LEVEL_STEP = {10401: 0, 10402: 1, 10403: 2, 10501: 3, 10502: 4, 10503: 5}  # amae-koromo level ids
 DAN_STEP = {"七段": 7, "八段": 8, "九段": 9, "十段": 10, "天鳳": 11}
 RNG = np.random.default_rng(20261120)
 
@@ -214,24 +219,109 @@ def place_rates(k, s, others, n=400_000):
     return [float(np.mean(place == i)) for i in (1, 2, 3, 4)]
 
 
-def climb(rates, rule, walkers=40_000, max_games=20_000):
-    pts = np.array(rule["pts"], float)
+def climb(rates, levels, walkers=40_000, max_games=30_000):
+    """One attempt up a chain of levels. Falling below 0 on the first level ends the attempt; on a later level it
+    sends the walker to the start of the level below (Tenhou's demotion from 8-dan to 7-dan)."""
     p = np.array(rates) / sum(rates)
-    pos = np.full(walkers, float(rule["start"]))
-    done = np.zeros(walkers, int)  # 1 promoted, -1 demoted
+    pts = np.array([lv["pts"] for lv in levels], float)
+    starts = np.array([lv["start"] for lv in levels], float)
+    goals = np.array([lv["goal"] for lv in levels], float)
+    pos = np.full(walkers, starts[0])
+    lvl = np.zeros(walkers, int)
+    done = np.zeros(walkers, int)  # 1 promoted past the last level, -1 out
     games = np.zeros(walkers, int)
-    for t in range(max_games):
-        live = done == 0
-        if not live.any():
+    for _ in range(max_games):
+        live = np.flatnonzero(done == 0)
+        if not len(live):
             break
-        pos[live] += pts[RNG.choice(4, size=live.sum(), p=p)]
+        pos[live] += pts[lvl[live], RNG.choice(4, size=len(live), p=p)]
         games[live] += 1
-        done[live & (pos >= rule["goal"])] = 1
-        done[live & (pos < 0)] = -1
+        up = live[pos[live] >= goals[lvl[live]]]
+        top = up[lvl[up] == len(levels) - 1]
+        done[top] = 1
+        mid = up[lvl[up] < len(levels) - 1]
+        lvl[mid] += 1
+        pos[mid] = starts[lvl[mid]]
+        down = live[(pos[live] < 0) & (done[live] == 0)]
+        out = down[lvl[down] == 0]
+        done[out] = -1
+        back = down[lvl[down] > 0]
+        lvl[back] -= 1
+        pos[back] = starts[lvl[back]]
     win = done == 1
     return {"p_promote": round(float(win.mean()), 3),
             "median_games_if_promoted": int(np.median(games[win])) if win.any() else None,
-            "ev_per_game": round(float(p @ pts), 2)}
+            "ev_per_game": [round(float(p @ np.array(lv["pts"], float)), 2) for lv in levels]}
+
+
+LADDERS = {  # name: (room, levels)
+    "houou_7to8": ("houou", [HOUOU_7DAN]),
+    "houou_8to9": ("houou", [HOUOU_8DAN]),
+    "houou_7to9": ("houou", [HOUOU_7DAN, HOUOU_8DAN]),
+    "jade_s3_to_celestial": ("jade", [JADE_S3]),
+}
+
+
+def mean_place(rates):
+    return sum((i + 1) * x for i, x in enumerate(rates))
+
+
+def even_odds_skill(k, field, levels, iters=14):
+    lo, hi = field - 0.4, field + 0.6
+    for _ in range(iters):
+        mid = (lo + hi) / 2
+        p = climb(place_rates(k, mid, [field] * 3, n=100_000), levels, walkers=6_000)["p_promote"]
+        lo, hi = (mid, hi) if p < 0.5 else (lo, mid)
+    return (lo + hi) / 2
+
+
+def break_even(k, field, pts):
+    lo, hi = field - 0.6, field + 0.6
+    for _ in range(25):
+        mid = (lo + hi) / 2
+        ev = float(np.dot(place_rates(k, mid, [field] * 3, n=200_000), pts))
+        lo, hi = (mid, hi) if ev < 0 else (lo, mid)
+    r = place_rates(k, mid, [field] * 3)
+    return {"skill": round(mid, 4), "mean_place": round(mean_place(r), 3), "fourth": round(r[3], 3)}
+
+
+def room_sample_beta(path, skill_per_step, skill_per_step_se, sm_gap, sm_gap_se):
+    """Places per rank step and Saint-minus-Master places in a large Jade sample (amae-koromo, every seat), each
+    divided by the matching Mortal skill gap from the user's tables."""
+    games = json.load(open(path))["games"]
+    x, y, tid = [], [], []
+    sm = []
+    for t, (_, seats) in enumerate(games):
+        lv = [LEVEL_STEP.get(s[0]) for s in seats]
+        if any(v is None for v in lv):
+            continue
+        order = sorted(range(4), key=lambda i: (-seats[i][1], i))
+        place = [order.index(i) + 1 for i in range(4)]
+        ml = np.mean(lv)
+        for i in range(4):
+            x.append(lv[i] - ml)
+            y.append(place[i] - 2.5)
+            tid.append(t)
+        s = [place[i] for i in range(4) if lv[i] >= 3]
+        m = [place[i] for i in range(4) if lv[i] < 3]
+        if s and m:
+            sm.append(np.mean(s) - np.mean(m))
+    x, y, tid = np.array(x), np.array(y), np.array(tid)
+    b = float(x @ y / (x @ x))
+    e = y - b * x
+    # clustered by table
+    u = np.bincount(tid, weights=x * e)
+    se = float(np.sqrt(np.sum(u ** 2)) / (x @ x))
+    sm = np.array(sm)
+    smd, smse = float(sm.mean()), float(sm.std(ddof=1) / np.sqrt(len(sm)))
+    beta_step = -b / skill_per_step
+    beta_step_se = abs(beta_step) * math.hypot(se / b, skill_per_step_se / skill_per_step)
+    beta_sm = -smd / sm_gap
+    beta_sm_se = abs(beta_sm) * math.hypot(smse / smd, sm_gap_se / sm_gap)
+    return {"tables": int(len(set(tid.tolist()))), "place_per_rank_step": round(b, 4), "place_per_rank_step_se": round(se, 4),
+            "mixed_tables": len(sm), "saint_minus_master_place": round(smd, 4), "saint_minus_master_place_se": round(smse, 4),
+            "beta_per_step": round(beta_step, 3), "beta_per_step_se": round(beta_step_se, 3),
+            "beta_saint_master": round(beta_sm, 3), "beta_saint_master_se": round(beta_sm_se, 3)}
 
 
 def main():
@@ -241,13 +331,14 @@ def main():
         METRIC = ("logp_d", "nd")
     jade, jbad = load(sys.argv[1])
     hou, hbad = load(sys.argv[2])
+    room_path = sys.argv[3]
+    out_path = sys.argv[4]
     out = {"inputs": {"jade_seats": len(jade), "jade_skipped": jbad, "houou_seats": len(hou), "houou_skipped": hbad,
-                      "jade_games": len(by_game(jade)), "houou_games": len(by_game(hou))}}
+                      "jade_games": len(by_game(jade)), "houou_games": len(by_game(hou)), "room_sample": room_path}}
 
     groups = []
     for t in ["Master 1", "Master 2", "Master 3", "Saint 1", "Saint 2", "Saint 3"]:
-        sel = [r for r in jade if jade_tier(r) == t]
-        if sel:
+        if any(jade_tier(r) == t for r in jade):
             groups.append(group_stats(jade, lambda r, t=t: jade_tier(r) == t, f"Jade {t}"))
     groups.append(group_stats(jade, lambda r: jade_tier(r) not in (None, "user"), "Jade field (your opponents)"))
     groups.append(group_stats(jade, lambda r: jade_tier(r) == "user", "You (Jade)"))
@@ -259,93 +350,100 @@ def main():
     G = {g["group"]: g for g in groups}
 
     # rank-step scale on Mahjong Soul: skill per Master1..Saint3 step, to name the Houou field in Mahjong Soul ranks
-    opp = [r for r in jade if jade_tier(r) not in (None, "user")]
-    xs = np.array([ladder_step(jade_tier(r)) for r in opp], float)
-    ys = np.array([r[METRIC[0]] / r[METRIC[1]] for r in opp])
-    ws = np.array([r[METRIC[1]] for r in opp], float)
-    X = np.column_stack([np.ones_like(xs), xs])
-    a0, a1 = np.linalg.solve((X * ws[:, None]).T @ X, (X * ws[:, None]).T @ ys)
+    def step_fit(rows):
+        opp = [r for r in rows if jade_tier(r) not in (None, "user")]
+        xs = np.array([ladder_step(jade_tier(r)) for r in opp], float)
+        ys = np.array([r[METRIC[0]] / r[METRIC[1]] for r in opp])
+        ws = np.array([r[METRIC[1]] for r in opp], float)
+        X = np.column_stack([np.ones_like(xs), xs])
+        return np.linalg.solve((X * ws[:, None]).T @ X, (X * ws[:, None]).T @ ys)
+    a0, a1 = step_fit(jade)
+    a1_se = boot(by_game(jade), lambda rs: float(step_fit(rs)[1]))
+    steps = lambda s: round(float((s - a0) / a1), 2)  # noqa: E731
     out["msoul_skill_per_rank_step"] = round(float(a1), 4)
-    out["houou_field_in_msoul_steps"] = round(float((G["Houou field"]["skill"] - a0) / a1), 2)
-    out["user_in_msoul_steps"] = round(float((G["You (Jade)"]["skill"] - a0) / a1), 2)
-    out["jade_field_in_msoul_steps"] = round(float((G["Jade field (your opponents)"]["skill"] - a0) / a1), 2)
+    out["msoul_skill_per_rank_step_se"] = round(a1_se, 4)
+    out["houou_field_in_msoul_steps"] = steps(G["Houou field"]["skill"])
+    out["user_in_msoul_steps"] = steps(G["You (Jade)"]["skill"])
+    out["jade_field_in_msoul_steps"] = steps(G["Jade field (your opponents)"]["skill"])
 
     # beta: places per unit of skill
     gap = saint_master_gap(jade)
     gap_se = boot(by_game(jade), saint_master_gap)
-    beta_ms = -SAINT_MINUS_MASTER_PLACE / gap
-    beta_ms_se = beta_ms * math.hypot(SAINT_MINUS_MASTER_SE / SAINT_MINUS_MASTER_PLACE, gap_se / gap)
     place_per_dan, place_per_dan_se = houou_within_table(hou)
     spd = skill_per_dan(hou)
-    beta_th = -place_per_dan / spd if spd else float("nan")
+    room = room_sample_beta(room_path, a1, a1_se, gap, gap_se)
+    players = houou_player_beta(hou)
+    # pooled: the Jade room (per rank step) and the Houou players share no data
+    ests = [(room["beta_per_step"], room["beta_per_step_se"]), (players["beta"], players["beta_se"])]
+    w = [1 / se ** 2 for _, se in ests]
+    beta = sum(b * wi for (b, _), wi in zip(ests, w)) / sum(w)
+    beta_se = 1 / math.sqrt(sum(w))
     out["calibration"] = {
         "saint_minus_master_skill": round(gap, 4), "saint_minus_master_skill_se": round(gap_se, 4),
-        "beta_msoul": round(beta_ms, 3), "beta_msoul_se": round(beta_ms_se, 3),
-        "houou_place_per_dan_step": round(place_per_dan, 4), "houou_place_per_dan_step_se": round(place_per_dan_se, 4),
-        "houou_skill_per_dan_step": round(spd, 4), "beta_tenhou": round(beta_th, 3),
-        "beta_msoul_rank_steps": round(0.0527 / a1, 3),  # 0.0527 places per rank step, table-strength report
-        "beta_houou_players": houou_player_beta(hou)}
+        "jade_room_sample": room, "houou_players": players,
+        "houou_dan_ratio": {"place_per_dan_step": round(place_per_dan, 4), "se": round(place_per_dan_se, 4),
+                            "skill_per_dan_step": round(spd, 4), "beta": round(-place_per_dan / spd, 3),
+                            "note": "not used: dans differ in placement more than in Mortal agreement"},
+        "beta_pooled": round(beta, 3), "beta_pooled_se": round(beta_se, 3)}
 
     fields = {"houou": G["Houou field"]["skill"], "jade": G["Jade field (your opponents)"]["skill"]}
     out["field_gap_houou_minus_jade"] = round(fields["houou"] - fields["jade"], 4)
-    rules = {"houou": HOUOU_7DAN, "jade": JADE_S3}
-    scen = {}
-    for bname, beta in [("msoul", beta_ms), ("tenhou", beta_th)]:
-        if not (beta > 0):
-            continue
-        res = {}
-        k = {room: k_for_beta(beta, f) for room, f in fields.items()}
-        res["k"] = {room: round(v, 2) for room, v in k.items()}
-        # the user, twice: skill as Mortal measures it, and the skill that would give the user's real Jade places
-        su = G["You (Jade)"]["skill"]
-        actual = G["You (Jade)"]["place"]
+
+    su, actual = G["You (Jade)"]["skill"], G["You (Jade)"]["place"]
+
+    def scenario(betas):
+        """Everything that follows from a places-per-skill figure for each room."""
+        k = {r: k_for_beta(betas[r], f) for r, f in fields.items()}
+        res = {"beta": {r: round(v, 3) for r, v in betas.items()}, "k": {r: round(v, 3) for r, v in k.items()}}
+        res["break_even"] = {
+            "houou_7dan": break_even(k["houou"], fields["houou"], HOUOU_7DAN["pts"]),
+            "houou_8dan": break_even(k["houou"], fields["houou"], HOUOU_8DAN["pts"]),
+            "jade_saint3": break_even(k["jade"], fields["jade"], JADE_S3["pts"])}
+        # the skill that reproduces the user's measured Jade place, as a second reading beside the Mortal one
         lo, hi = fields["jade"] - 1, fields["jade"] + 1
         for _ in range(60):
             mid = (lo + hi) / 2
-            if expected_place(k["jade"], mid, [fields["jade"]] * 3) > actual:
-                lo = mid
-            else:
-                hi = mid
+            lo, hi = (mid, hi) if expected_place(k["jade"], mid, [fields["jade"]] * 3) > actual else (lo, mid)
         s_res = (lo + hi) / 2
-        res["you_predicted_jade_place_from_mortal"] = round(expected_place(k["jade"], su, [fields["jade"]] * 3), 3)
-        res["you_actual_jade_place"] = actual
-        res["you_skill_from_results"] = round(s_res, 4)
-        for tag, s in (("mortal", su), ("results", s_res)):
-            for room in ("houou", "jade"):
-                rates = place_rates(k[room], s, [fields[room]] * 3)
-                res[f"you_{tag}_in_{room}"] = {"rates": [round(x, 3) for x in rates],
-                                               "mean_place": round(sum((i + 1) * x for i, x in enumerate(rates)), 3),
-                                               **climb(rates, rules[room])}
-        # a grid of skills: edge over the Jade field in skill units
-        grid = []
-        for edge in np.arange(-0.05, 0.4001, 0.025):
-            s = fields["jade"] + edge
-            row = {"skill": round(float(s), 4), "edge_over_jade_field": round(float(edge), 3)}
-            for room in ("houou", "jade"):
-                rates = place_rates(k[room], s, [fields[room]] * 3, n=200_000)
-                row[room] = {"mean_place": round(sum((i + 1) * x for i, x in enumerate(rates)), 3),
-                             **climb(rates, rules[room], walkers=8_000)}
-            grid.append(row)
-        res["grid"] = grid
-        for room in ("houou", "jade"):
-            xs = [r["skill"] for r in grid]
-            ps = [r[room]["p_promote"] for r in grid]
-            thr = next((xs[i - 1] + (0.5 - ps[i - 1]) * (xs[i] - xs[i - 1]) / (ps[i] - ps[i - 1])
-                        for i in range(1, len(ps)) if ps[i - 1] < 0.5 <= ps[i]), None)
-            res[f"skill_for_even_odds_{room}"] = round(thr, 4) if thr is not None else None
-            res[f"skill_for_even_odds_{room}_msoul_steps"] = round((thr - a0) / a1, 2) if thr is not None else None
-        scen[bname] = res
-    out["scenarios"] = scen
-    json.dump(out, open(sys.argv[3], "w"), ensure_ascii=False, indent=1)
-    print(json.dumps({k: v for k, v in out.items() if k != "scenarios"}, ensure_ascii=False, indent=1))
-    for b, res in scen.items():
-        print(f"\n== beta from {b}: k {res['k']}")
-        print({k: v for k, v in res.items() if k.startswith("skill_for")})
-        print("you:", json.dumps({k: v for k, v in res.items() if k.startswith('you')}, ensure_ascii=False))
-        for row in res["grid"]:
-            print(row["edge_over_jade_field"], row["skill"],
-                  "houou", row["houou"]["mean_place"], row["houou"]["ev_per_game"], row["houou"]["p_promote"],
-                  "| jade", row["jade"]["mean_place"], row["jade"]["ev_per_game"], row["jade"]["p_promote"])
+        res["you"] = {"predicted_jade_place_from_mortal": round(expected_place(k["jade"], su, [fields["jade"]] * 3), 3),
+                      "actual_jade_place": actual, "skill_mortal": su, "skill_from_results": round(s_res, 4)}
+        res["even_odds"], res["field_player"], res["houou_average_player"] = {}, {}, {}
+        for name, (rm, levels) in LADDERS.items():
+            for tag, s in (("mortal", su), ("results", s_res)):
+                rates = place_rates(k[rm], s, [fields[rm]] * 3)
+                res["you"][f"{tag}:{name}"] = {"rates": [round(x, 3) for x in rates],
+                                               "mean_place": round(mean_place(rates), 3), **climb(rates, levels)}
+            t = even_odds_skill(k[rm], fields[rm], levels)
+            res["even_odds"][name] = {"skill": round(t, 4), "msoul_steps": steps(t)}
+            # a player exactly at the room's own average, and one at the Houou average, in this room
+            res["field_player"][name] = climb(place_rates(k[rm], fields[rm], [fields[rm]] * 3), levels)
+            rates = place_rates(k[rm], fields["houou"], [fields[rm]] * 3)
+            res["houou_average_player"][name] = {"mean_place": round(mean_place(rates), 3), **climb(rates, levels)}
+        return res
+
+    # main: each room on its own beta (Houou from its repeat players, Jade from the room sample)
+    out["main"] = scenario({"houou": players["beta"], "jade": room["beta_per_step"]})
+    # for comparison: one pooled beta for both rooms
+    out["one_beta"] = scenario({"houou": beta, "jade": beta})
+
+    # sensitivity: even-odds skill for each ladder across beta, and where Celestial crosses each Houou step
+    sens = []
+    for b in np.round(np.arange(0.4, 1.81, 0.1), 2):
+        kk = {r: k_for_beta(float(b), f) for r, f in fields.items()}
+        row = {"beta": float(b)}
+        for name, (rm, levels) in LADDERS.items():
+            row[name] = round(even_odds_skill(kk[rm], fields[rm], levels, iters=12), 4)
+        sens.append(row)
+    out["sensitivity"] = sens
+    flips = {}
+    for name in ("houou_7to8", "houou_8to9", "houou_7to9"):
+        d = [r["jade_s3_to_celestial"] - r[name] for r in sens]
+        flips[name] = next((round(sens[i - 1]["beta"] + d[i - 1] / (d[i - 1] - d[i]) * 0.1, 2)
+                            for i in range(1, len(d)) if d[i - 1] > 0 >= d[i]), None)
+    out["beta_where_celestial_stops_being_harder"] = flips
+
+    json.dump(out, open(out_path, "w"), ensure_ascii=False, indent=1)
+    print(json.dumps({k: v for k, v in out.items() if k not in ("groups",)}, ensure_ascii=False, indent=1))
 
 
 if __name__ == "__main__":

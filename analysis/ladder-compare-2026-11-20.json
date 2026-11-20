@@ -2,10 +2,11 @@
  "inputs": {
   "jade_seats": 1443,
   "jade_skipped": 1,
-  "houou_seats": 11996,
-  "houou_skipped": 4,
+  "houou_seats": 63675,
+  "houou_skipped": 41,
   "jade_games": 361,
-  "houou_games": 2999
+  "houou_games": 15923,
+  "room_sample": "data/ladder_skill/jade_room_sample.json"
  },
  "groups": [
   {
@@ -106,835 +107,688 @@
   },
   {
    "group": "Houou 七段",
-   "seats": 7251,
-   "decisions": 1134286,
-   "skill": -0.699,
-   "skill_se": 0.0022,
-   "top1": 0.7725,
-   "under10": 0.1028,
-   "place": 2.528,
-   "first": 0.241,
-   "fourth": 0.259
+   "seats": 38448,
+   "decisions": 5993468,
+   "skill": -0.6984,
+   "skill_se": 0.0009,
+   "top1": 0.7729,
+   "under10": 0.1027,
+   "place": 2.513,
+   "first": 0.247,
+   "fourth": 0.256
   },
   {
    "group": "Houou 八段",
-   "seats": 3424,
-   "decisions": 532834,
-   "skill": -0.6616,
-   "skill_se": 0.0025,
-   "top1": 0.7823,
-   "under10": 0.0954,
-   "place": 2.466,
-   "first": 0.263,
-   "fourth": 0.24
+   "seats": 18244,
+   "decisions": 2854401,
+   "skill": -0.663,
+   "skill_se": 0.0012,
+   "top1": 0.7813,
+   "under10": 0.0958,
+   "place": 2.49,
+   "first": 0.252,
+   "fourth": 0.243
   },
   {
    "group": "Houou 九段",
-   "seats": 1130,
-   "decisions": 176295,
-   "skill": -0.6508,
-   "skill_se": 0.0046,
-   "top1": 0.7838,
-   "under10": 0.0933,
-   "place": 2.448,
+   "seats": 6042,
+   "decisions": 939421,
+   "skill": -0.6528,
+   "skill_se": 0.0018,
+   "top1": 0.7836,
+   "under10": 0.0936,
+   "place": 2.447,
    "first": 0.267,
-   "fourth": 0.234
+   "fourth": 0.238
   },
   {
    "group": "Houou 十段",
-   "seats": 178,
-   "decisions": 28041,
-   "skill": -0.6712,
-   "skill_se": 0.0122,
-   "top1": 0.7791,
-   "under10": 0.0976,
-   "place": 2.376,
-   "first": 0.253,
-   "fourth": 0.185
+   "seats": 867,
+   "decisions": 136541,
+   "skill": -0.6733,
+   "skill_se": 0.0056,
+   "top1": 0.78,
+   "under10": 0.0965,
+   "place": 2.505,
+   "first": 0.231,
+   "fourth": 0.227
   },
   {
    "group": "Houou 天鳳",
-   "seats": 13,
-   "decisions": 1755,
-   "skill": -0.6527,
-   "skill_se": 0.0311,
-   "top1": 0.7744,
-   "under10": 0.0957,
-   "place": 2.077,
-   "first": 0.308,
-   "fourth": 0.077
+   "seats": 74,
+   "decisions": 10826,
+   "skill": -0.6409,
+   "skill_se": 0.0159,
+   "top1": 0.7862,
+   "under10": 0.0921,
+   "place": 2.351,
+   "first": 0.311,
+   "fourth": 0.23
   },
   {
    "group": "Houou field",
-   "seats": 11996,
-   "decisions": 1873211,
-   "skill": -0.6834,
-   "skill_se": 0.0015,
+   "seats": 63675,
+   "decisions": 9934657,
+   "skill": -0.6835,
+   "skill_se": 0.0007,
    "top1": 0.7765,
-   "under10": 0.0997,
+   "under10": 0.0998,
    "place": 2.5,
    "first": 0.25,
    "fourth": 0.25
   }
  ],
  "msoul_skill_per_rank_step": 0.0621,
+ "msoul_skill_per_rank_step_se": 0.0046,
  "houou_field_in_msoul_steps": 5.12,
  "user_in_msoul_steps": 5.27,
  "jade_field_in_msoul_steps": 1.35,
  "calibration": {
   "saint_minus_master_skill": 0.1781,
-  "saint_minus_master_skill_se": 0.0157,
-  "beta_msoul": 0.81,
-  "beta_msoul_se": 0.226,
-  "houou_place_per_dan_step": -0.066,
-  "houou_place_per_dan_step_se": 0.0158,
-  "houou_skill_per_dan_step": 0.0241,
-  "beta_tenhou": 2.739,
-  "beta_msoul_rank_steps": 0.848,
-  "beta_houou_players": {
-   "players": 711,
-   "seats": 11516,
-   "per_game_sd": 0.1496,
-   "between_player_sd": 0.0799,
-   "beta": 0.78,
-   "beta_se": 0.167
-  }
+  "saint_minus_master_skill_se": 0.0152,
+  "jade_room_sample": {
+   "tables": 40000,
+   "place_per_rank_step": -0.0452,
+   "place_per_rank_step_se": 0.0025,
+   "mixed_tables": 24071,
+   "saint_minus_master_place": -0.1272,
+   "saint_minus_master_place_se": 0.0092,
+   "beta_per_step": 0.728,
+   "beta_per_step_se": 0.067,
+   "beta_saint_master": 0.714,
+   "beta_saint_master_se": 0.08
+  },
+  "houou_players": {
+   "players": 986,
+   "seats": 63506,
+   "per_game_sd": 0.1564,
+   "between_player_sd": 0.0809,
+   "beta": 0.267,
+   "beta_se": 0.083
+  },
+  "houou_dan_ratio": {
+   "place_per_dan_step": -0.033,
+   "se": 0.007,
+   "skill_per_dan_step": 0.023,
+   "beta": 1.433,
+   "note": "not used: dans differ in placement more than in Mortal agreement"
+  },
+  "beta_pooled": 0.546,
+  "beta_pooled_se": 0.052
  },
- "field_gap_houou_minus_jade": 0.2346,
- "scenarios": {
-  "msoul": {
-   "k": {
-    "houou": 0.72,
-    "jade": 0.72
+ "field_gap_houou_minus_jade": 0.2345,
+ "main": {
+  "beta": {
+   "houou": 0.267,
+   "jade": 0.728
+  },
+  "k": {
+   "houou": 0.237,
+   "jade": 0.645
+  },
+  "break_even": {
+   "houou_7dan": {
+    "skill": -0.9543,
+    "mean_place": 2.556,
+    "fourth": 0.268
    },
-   "you_predicted_jade_place_from_mortal": 2.352,
-   "you_actual_jade_place": 2.324,
-   "you_skill_from_results": -0.6274,
-   "you_mortal_in_houou": {
+   "houou_8dan": {
+    "skill": -0.6935,
+    "mean_place": 2.501,
+    "fourth": 0.251
+   },
+   "jade_saint3": {
+    "skill": -0.6622,
+    "mean_place": 2.359,
+    "fourth": 0.209
+   }
+  },
+  "you": {
+   "predicted_jade_place_from_mortal": 2.367,
+   "actual_jade_place": 2.324,
+   "skill_mortal": -0.6746,
+   "skill_from_results": -0.5945,
+   "mortal:houou_7to8": {
     "rates": [
+     0.251,
+     0.25,
+     0.25,
+     0.249
+    ],
+    "mean_place": 2.497,
+    "p_promote": 0.862,
+    "median_games_if_promoted": 206,
+    "ev_per_game": [
+     3.93
+    ]
+   },
+   "results:houou_7to8": {
+    "rates": [
+     0.254,
+     0.252,
+     0.249,
+     0.245
+    ],
+    "mean_place": 2.485,
+    "p_promote": 0.905,
+    "median_games_if_promoted": 188,
+    "ev_per_game": [
+     4.83
+    ]
+   },
+   "mortal:houou_8to9": {
+    "rates": [
+     0.25,
+     0.249,
+     0.25,
+     0.251
+    ],
+    "mean_place": 2.501,
+    "p_promote": 0.491,
+    "median_games_if_promoted": 293,
+    "ev_per_game": [
+     -0.12
+    ]
+   },
+   "results:houou_8to9": {
+    "rates": [
+     0.256,
      0.253,
+     0.248,
+     0.243
+    ],
+    "mean_place": 2.478,
+    "p_promote": 0.682,
+    "median_games_if_promoted": 280,
+    "ev_per_game": [
+     1.6
+    ]
+   },
+   "mortal:houou_7to9": {
+    "rates": [
+     0.25,
+     0.25,
+     0.251,
+     0.25
+    ],
+    "mean_place": 2.501,
+    "p_promote": 0.739,
+    "median_games_if_promoted": 876,
+    "ev_per_game": [
+     3.71,
+     -0.04
+    ]
+   },
+   "results:houou_7to9": {
+    "rates": [
+     0.255,
      0.251,
      0.249,
+     0.244
+    ],
+    "mean_place": 2.482,
+    "p_promote": 0.867,
+    "median_games_if_promoted": 699,
+    "ev_per_game": [
+     4.98,
+     1.32
+    ]
+   },
+   "mortal:jade_s3_to_celestial": {
+    "rates": [
+     0.293,
+     0.259,
+     0.237,
+     0.211
+    ],
+    "mean_place": 2.367,
+    "p_promote": 0.435,
+    "median_games_if_promoted": 709,
+    "ev_per_game": [
+     -0.69
+    ]
+   },
+   "results:jade_s3_to_celestial": {
+    "rates": [
+     0.307,
+     0.262,
+     0.231,
+     0.199
+    ],
+    "mean_place": 2.323,
+    "p_promote": 0.884,
+    "median_games_if_promoted": 547,
+    "ev_per_game": [
+     4.99
+    ]
+   }
+  },
+  "even_odds": {
+   "houou_7to8": {
+    "skill": -0.963,
+    "msoul_steps": 0.62
+   },
+   "houou_8to9": {
+    "skill": -0.6919,
+    "msoul_steps": 4.99
+   },
+   "houou_7to9": {
+    "skill": -0.7845,
+    "msoul_steps": 3.5
+   },
+   "jade_s3_to_celestial": {
+    "skill": -0.6643,
+    "msoul_steps": 5.43
+   }
+  },
+  "field_player": {
+   "houou_7to8": {
+    "p_promote": 0.845,
+    "median_games_if_promoted": 210,
+    "ev_per_game": [
+     3.64
+    ]
+   },
+   "houou_8to9": {
+    "p_promote": 0.511,
+    "median_games_if_promoted": 291,
+    "ev_per_game": [
+     0.06
+    ]
+   },
+   "houou_7to9": {
+    "p_promote": 0.749,
+    "median_games_if_promoted": 861,
+    "ev_per_game": [
+     3.81,
+     0.06
+    ]
+   },
+   "jade_s3_to_celestial": {
+    "p_promote": 0.001,
+    "median_games_if_promoted": 260,
+    "ev_per_game": [
+     -18.1
+    ]
+   }
+  },
+  "houou_average_player": {
+   "houou_7to8": {
+    "mean_place": 2.497,
+    "p_promote": 0.864,
+    "median_games_if_promoted": 206,
+    "ev_per_game": [
+     3.95
+    ]
+   },
+   "houou_8to9": {
+    "mean_place": 2.5,
+    "p_promote": 0.502,
+    "median_games_if_promoted": 295,
+    "ev_per_game": [
+     -0.01
+    ]
+   },
+   "houou_7to9": {
+    "mean_place": 2.505,
+    "p_promote": 0.696,
+    "median_games_if_promoted": 907,
+    "ev_per_game": [
+     3.42,
+     -0.35
+    ]
+   },
+   "jade_s3_to_celestial": {
+    "mean_place": 2.378,
+    "p_promote": 0.308,
+    "median_games_if_promoted": 670,
+    "ev_per_game": [
+     -2.07
+    ]
+   }
+  }
+ },
+ "one_beta": {
+  "beta": {
+   "houou": 0.546,
+   "jade": 0.546
+  },
+  "k": {
+   "houou": 0.484,
+   "jade": 0.484
+  },
+  "break_even": {
+   "houou_7dan": {
+    "skill": -0.8224,
+    "mean_place": 2.56,
+    "fourth": 0.269
+   },
+   "houou_8dan": {
+    "skill": -0.6851,
+    "mean_place": 2.499,
+    "fourth": 0.249
+   },
+   "jade_saint3": {
+    "skill": -0.5796,
+    "mean_place": 2.359,
+    "fourth": 0.208
+   }
+  },
+  "you": {
+   "predicted_jade_place_from_mortal": 2.4,
+   "actual_jade_place": 2.324,
+   "skill_mortal": -0.6746,
+   "skill_from_results": -0.4867,
+   "mortal:houou_7to8": {
+    "rates": [
+     0.25,
+     0.251,
+     0.25,
+     0.249
+    ],
+    "mean_place": 2.498,
+    "p_promote": 0.863,
+    "median_games_if_promoted": 206,
+    "ev_per_game": [
+     3.95
+    ]
+   },
+   "results:houou_7to8": {
+    "rates": [
+     0.275,
+     0.257,
+     0.242,
+     0.227
+    ],
+    "mean_place": 2.421,
+    "p_promote": 0.985,
+    "median_games_if_promoted": 128,
+    "ev_per_game": [
+     9.05
+    ]
+   },
+   "mortal:houou_8to9": {
+    "rates": [
+     0.25,
+     0.252,
+     0.249,
+     0.249
+    ],
+    "mean_place": 2.496,
+    "p_promote": 0.53,
+    "median_games_if_promoted": 290,
+    "ev_per_game": [
+     0.26
+    ]
+   },
+   "results:houou_8to9": {
+    "rates": [
+     0.276,
+     0.255,
+     0.243,
+     0.226
+    ],
+    "mean_place": 2.419,
+    "p_promote": 0.938,
+    "median_games_if_promoted": 196,
+    "ev_per_game": [
+     5.82
+    ]
+   },
+   "mortal:houou_7to9": {
+    "rates": [
+     0.251,
+     0.25,
+     0.25,
      0.248
     ],
-    "mean_place": 2.491,
-    "p_promote": 0.882,
-    "median_games_if_promoted": 199,
-    "ev_per_game": 4.31
+    "mean_place": 2.496,
+    "p_promote": 0.783,
+    "median_games_if_promoted": 827,
+    "ev_per_game": [
+     4.05,
+     0.33
+    ]
    },
-   "you_mortal_in_jade": {
+   "results:houou_7to9": {
     "rates": [
-     0.297,
-     0.261,
-     0.235,
-     0.207
+     0.276,
+     0.256,
+     0.242,
+     0.226
     ],
-    "mean_place": 2.353,
-    "p_promote": 0.617,
-    "median_games_if_promoted": 690,
-    "ev_per_game": 1.16
+    "mean_place": 2.419,
+    "p_promote": 0.986,
+    "median_games_if_promoted": 366,
+    "ev_per_game": [
+     9.19,
+     5.8
+    ]
    },
-   "you_results_in_houou": {
+   "mortal:jade_s3_to_celestial": {
     "rates": [
-     0.261,
-     0.252,
-     0.247,
-     0.24
+     0.282,
+     0.257,
+     0.24,
+     0.22
     ],
-    "mean_place": 2.466,
-    "p_promote": 0.943,
-    "median_games_if_promoted": 168,
-    "ev_per_game": 6.02
+    "mean_place": 2.398,
+    "p_promote": 0.139,
+    "median_games_if_promoted": 572,
+    "ev_per_game": [
+     -4.58
+    ]
    },
-   "you_results_in_jade": {
+   "results:jade_s3_to_celestial": {
     "rates": [
      0.307,
      0.261,
      0.232,
-     0.2
-    ],
-    "mean_place": 2.325,
-    "p_promote": 0.871,
-    "median_games_if_promoted": 561,
-    "ev_per_game": 4.64
-   },
-   "grid": [
-    {
-     "skill": -0.968,
-     "edge_over_jade_field": -0.05,
-     "houou": {
-      "mean_place": 2.676,
-      "p_promote": 0.02,
-      "median_games_if_promoted": 134,
-      "ev_per_game": -8.36
-     },
-     "jade": {
-      "mean_place": 2.526,
-      "p_promote": 0.0,
-      "median_games_if_promoted": null,
-      "ev_per_game": -21.43
-     }
-    },
-    {
-     "skill": -0.943,
-     "edge_over_jade_field": -0.025,
-     "houou": {
-      "mean_place": 2.652,
-      "p_promote": 0.041,
-      "median_games_if_promoted": 176,
-      "ev_per_game": -6.76
-     },
-     "jade": {
-      "mean_place": 2.511,
-      "p_promote": 0.0,
-      "median_games_if_promoted": 480,
-      "ev_per_game": -19.58
-     }
-    },
-    {
-     "skill": -0.918,
-     "edge_over_jade_field": 0.0,
-     "houou": {
-      "mean_place": 2.641,
-      "p_promote": 0.057,
-      "median_games_if_promoted": 162,
-      "ev_per_game": -5.88
-     },
-     "jade": {
-      "mean_place": 2.501,
-      "p_promote": 0.001,
-      "median_games_if_promoted": 270,
-      "ev_per_game": -18.05
-     }
-    },
-    {
-     "skill": -0.893,
-     "edge_over_jade_field": 0.025,
-     "houou": {
-      "mean_place": 2.627,
-      "p_promote": 0.092,
-      "median_games_if_promoted": 198,
-      "ev_per_game": -4.95
-     },
-     "jade": {
-      "mean_place": 2.491,
-      "p_promote": 0.001,
-      "median_games_if_promoted": 194,
-      "ev_per_game": -16.87
-     }
-    },
-    {
-     "skill": -0.868,
-     "edge_over_jade_field": 0.05,
-     "houou": {
-      "mean_place": 2.614,
-      "p_promote": 0.126,
-      "median_games_if_promoted": 204,
-      "ev_per_game": -4.1
-     },
-     "jade": {
-      "mean_place": 2.466,
-      "p_promote": 0.004,
-      "median_games_if_promoted": 352,
-      "ev_per_game": -13.51
-     }
-    },
-    {
-     "skill": -0.843,
-     "edge_over_jade_field": 0.075,
-     "houou": {
-      "mean_place": 2.596,
-      "p_promote": 0.203,
-      "median_games_if_promoted": 223,
-      "ev_per_game": -2.85
-     },
-     "jade": {
-      "mean_place": 2.452,
-      "p_promote": 0.01,
-      "median_games_if_promoted": 394,
-      "ev_per_game": -11.66
-     }
-    },
-    {
-     "skill": -0.818,
-     "edge_over_jade_field": 0.1,
-     "houou": {
-      "mean_place": 2.582,
-      "p_promote": 0.319,
-      "median_games_if_promoted": 251,
-      "ev_per_game": -1.76
-     },
-     "jade": {
-      "mean_place": 2.44,
-      "p_promote": 0.018,
-      "median_games_if_promoted": 360,
-      "ev_per_game": -9.98
-     }
-    },
-    {
-     "skill": -0.793,
-     "edge_over_jade_field": 0.125,
-     "houou": {
-      "mean_place": 2.566,
-      "p_promote": 0.413,
-      "median_games_if_promoted": 250,
-      "ev_per_game": -0.78
-     },
-     "jade": {
-      "mean_place": 2.425,
-      "p_promote": 0.039,
-      "median_games_if_promoted": 427,
-      "ev_per_game": -8.03
-     }
-    },
-    {
-     "skill": -0.768,
-     "edge_over_jade_field": 0.15,
-     "houou": {
-      "mean_place": 2.55,
-      "p_promote": 0.555,
-      "median_games_if_promoted": 257,
-      "ev_per_game": 0.44
-     },
-     "jade": {
-      "mean_place": 2.407,
-      "p_promote": 0.088,
-      "median_games_if_promoted": 518,
-      "ev_per_game": -5.91
-     }
-    },
-    {
-     "skill": -0.743,
-     "edge_over_jade_field": 0.175,
-     "houou": {
-      "mean_place": 2.539,
-      "p_promote": 0.634,
-      "median_games_if_promoted": 256,
-      "ev_per_game": 1.1
-     },
-     "jade": {
-      "mean_place": 2.398,
-      "p_promote": 0.13,
-      "median_games_if_promoted": 565,
-      "ev_per_game": -4.66
-     }
-    },
-    {
-     "skill": -0.718,
-     "edge_over_jade_field": 0.2,
-     "houou": {
-      "mean_place": 2.52,
-      "p_promote": 0.747,
-      "median_games_if_promoted": 232,
-      "ev_per_game": 2.37
-     },
-     "jade": {
-      "mean_place": 2.381,
-      "p_promote": 0.27,
-      "median_games_if_promoted": 662,
-      "ev_per_game": -2.53
-     }
-    },
-    {
-     "skill": -0.693,
-     "edge_over_jade_field": 0.225,
-     "houou": {
-      "mean_place": 2.503,
-      "p_promote": 0.838,
-      "median_games_if_promoted": 213,
-      "ev_per_game": 3.51
-     },
-     "jade": {
-      "mean_place": 2.364,
-      "p_promote": 0.478,
-      "median_games_if_promoted": 712,
-      "ev_per_game": -0.26
-     }
-    },
-    {
-     "skill": -0.668,
-     "edge_over_jade_field": 0.25,
-     "houou": {
-      "mean_place": 2.494,
-      "p_promote": 0.879,
-      "median_games_if_promoted": 203,
-      "ev_per_game": 4.17
-     },
-     "jade": {
-      "mean_place": 2.348,
-      "p_promote": 0.68,
-      "median_games_if_promoted": 674,
-      "ev_per_game": 1.81
-     }
-    },
-    {
-     "skill": -0.643,
-     "edge_over_jade_field": 0.275,
-     "houou": {
-      "mean_place": 2.471,
-      "p_promote": 0.931,
-      "median_games_if_promoted": 172,
-      "ev_per_game": 5.71
-     },
-     "jade": {
-      "mean_place": 2.336,
-      "p_promote": 0.789,
-      "median_games_if_promoted": 610,
-      "ev_per_game": 3.27
-     }
-    },
-    {
-     "skill": -0.618,
-     "edge_over_jade_field": 0.3,
-     "houou": {
-      "mean_place": 2.464,
-      "p_promote": 0.94,
-      "median_games_if_promoted": 165,
-      "ev_per_game": 6.06
-     },
-     "jade": {
-      "mean_place": 2.315,
-      "p_promote": 0.915,
-      "median_games_if_promoted": 509,
-      "ev_per_game": 5.82
-     }
-    },
-    {
-     "skill": -0.593,
-     "edge_over_jade_field": 0.325,
-     "houou": {
-      "mean_place": 2.446,
-      "p_promote": 0.966,
-      "median_games_if_promoted": 146,
-      "ev_per_game": 7.36
-     },
-     "jade": {
-      "mean_place": 2.308,
-      "p_promote": 0.945,
-      "median_games_if_promoted": 465,
-      "ev_per_game": 6.89
-     }
-    },
-    {
-     "skill": -0.568,
-     "edge_over_jade_field": 0.35,
-     "houou": {
-      "mean_place": 2.436,
-      "p_promote": 0.979,
-      "median_games_if_promoted": 139,
-      "ev_per_game": 8.09
-     },
-     "jade": {
-      "mean_place": 2.29,
-      "p_promote": 0.975,
-      "median_games_if_promoted": 394,
-      "ev_per_game": 9.03
-     }
-    },
-    {
-     "skill": -0.543,
-     "edge_over_jade_field": 0.375,
-     "houou": {
-      "mean_place": 2.411,
-      "p_promote": 0.987,
-      "median_games_if_promoted": 120,
-      "ev_per_game": 9.74
-     },
-     "jade": {
-      "mean_place": 2.275,
-      "p_promote": 0.987,
-      "median_games_if_promoted": 342,
-      "ev_per_game": 10.91
-     }
-    },
-    {
-     "skill": -0.518,
-     "edge_over_jade_field": 0.4,
-     "houou": {
-      "mean_place": 2.401,
-      "p_promote": 0.991,
-      "median_games_if_promoted": 115,
-      "ev_per_game": 10.39
-     },
-     "jade": {
-      "mean_place": 2.257,
-      "p_promote": 0.994,
-      "median_games_if_promoted": 293,
-      "ev_per_game": 13.23
-     }
-    }
-   ],
-   "skill_for_even_odds_houou": -0.7777,
-   "skill_for_even_odds_houou_msoul_steps": 3.61,
-   "skill_for_even_odds_jade": -0.6903,
-   "skill_for_even_odds_jade_msoul_steps": 5.01
-  },
-  "tenhou": {
-   "k": {
-    "houou": 2.43,
-    "jade": 2.43
-   },
-   "you_predicted_jade_place_from_mortal": 2.014,
-   "you_actual_jade_place": 2.324,
-   "you_skill_from_results": -0.832,
-   "you_mortal_in_houou": {
-    "rates": [
-     0.255,
-     0.253,
-     0.248,
-     0.244
-    ],
-    "mean_place": 2.481,
-    "p_promote": 0.914,
-    "median_games_if_promoted": 186,
-    "ev_per_game": 5.06
-   },
-   "you_mortal_in_jade": {
-    "rates": [
-     0.422,
-     0.267,
-     0.188,
-     0.123
-    ],
-    "mean_place": 2.013,
-    "p_promote": 1.0,
-    "median_games_if_promoted": 101,
-    "ev_per_game": 42.86
-   },
-   "you_results_in_houou": {
-    "rates": [
-     0.167,
-     0.215,
-     0.267,
-     0.351
-    ],
-    "mean_place": 2.802,
-    "p_promote": 0.0,
-    "median_games_if_promoted": 71,
-    "ev_per_game": -17.44
-   },
-   "you_results_in_jade": {
-    "rates": [
-     0.305,
-     0.263,
-     0.233,
      0.199
     ],
-    "mean_place": 2.324,
-    "p_promote": 0.885,
-    "median_games_if_promoted": 548,
-    "ev_per_game": 4.98
+    "mean_place": 2.323,
+    "p_promote": 0.881,
+    "median_games_if_promoted": 551,
+    "ev_per_game": [
+     4.91
+    ]
+   }
+  },
+  "even_odds": {
+   "houou_7to8": {
+    "skill": -0.8091,
+    "msoul_steps": 3.1
    },
-   "grid": [
-    {
-     "skill": -0.968,
-     "edge_over_jade_field": -0.05,
-     "houou": {
-      "mean_place": 3.061,
-      "p_promote": 0.0,
-      "median_games_if_promoted": null,
-      "ev_per_game": -36.76
-     },
-     "jade": {
-      "mean_place": 2.602,
-      "p_promote": 0.0,
-      "median_games_if_promoted": null,
-      "ev_per_game": -31.57
-     }
-    },
-    {
-     "skill": -0.943,
-     "edge_over_jade_field": -0.025,
-     "houou": {
-      "mean_place": 3.019,
-      "p_promote": 0.0,
-      "median_games_if_promoted": null,
-      "ev_per_game": -33.49
-     },
-     "jade": {
-      "mean_place": 2.551,
-      "p_promote": 0.0,
-      "median_games_if_promoted": null,
-      "ev_per_game": -24.87
-     }
-    },
-    {
-     "skill": -0.918,
-     "edge_over_jade_field": 0.0,
-     "houou": {
-      "mean_place": 2.967,
-      "p_promote": 0.0,
-      "median_games_if_promoted": null,
-      "ev_per_game": -29.61
-     },
-     "jade": {
-      "mean_place": 2.498,
-      "p_promote": 0.001,
-      "median_games_if_promoted": 288,
-      "ev_per_game": -17.69
-     }
-    },
-    {
-     "skill": -0.893,
-     "edge_over_jade_field": 0.025,
-     "houou": {
-      "mean_place": 2.922,
-      "p_promote": 0.0,
-      "median_games_if_promoted": null,
-      "ev_per_game": -26.14
-     },
-     "jade": {
-      "mean_place": 2.446,
-      "p_promote": 0.01,
-      "median_games_if_promoted": 376,
-      "ev_per_game": -10.96
-     }
-    },
-    {
-     "skill": -0.868,
-     "edge_over_jade_field": 0.05,
-     "houou": {
-      "mean_place": 2.873,
-      "p_promote": 0.0,
-      "median_games_if_promoted": null,
-      "ev_per_game": -22.64
-     },
-     "jade": {
-      "mean_place": 2.401,
-      "p_promote": 0.103,
-      "median_games_if_promoted": 565,
-      "ev_per_game": -5.36
-     }
-    },
-    {
-     "skill": -0.843,
-     "edge_over_jade_field": 0.075,
-     "houou": {
-      "mean_place": 2.818,
-      "p_promote": 0.0,
-      "median_games_if_promoted": 213,
-      "ev_per_game": -18.6
-     },
-     "jade": {
-      "mean_place": 2.345,
-      "p_promote": 0.723,
-      "median_games_if_promoted": 655,
-      "ev_per_game": 2.32
-     }
-    },
-    {
-     "skill": -0.818,
-     "edge_over_jade_field": 0.1,
-     "houou": {
-      "mean_place": 2.778,
-      "p_promote": 0.001,
-      "median_games_if_promoted": 67,
-      "ev_per_game": -15.73
-     },
-     "jade": {
-      "mean_place": 2.295,
-      "p_promote": 0.968,
-      "median_games_if_promoted": 422,
-      "ev_per_game": 8.37
-     }
-    },
-    {
-     "skill": -0.793,
-     "edge_over_jade_field": 0.125,
-     "houou": {
-      "mean_place": 2.722,
-      "p_promote": 0.004,
-      "median_games_if_promoted": 93,
-      "ev_per_game": -11.7
-     },
-     "jade": {
-      "mean_place": 2.245,
-      "p_promote": 0.998,
-      "median_games_if_promoted": 268,
-      "ev_per_game": 14.88
-     }
-    },
-    {
-     "skill": -0.768,
-     "edge_over_jade_field": 0.15,
-     "houou": {
-      "mean_place": 2.676,
-      "p_promote": 0.02,
-      "median_games_if_promoted": 133,
-      "ev_per_game": -8.4
-     },
-     "jade": {
-      "mean_place": 2.194,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 196,
-      "ev_per_game": 20.94
-     }
-    },
-    {
-     "skill": -0.743,
-     "edge_over_jade_field": 0.175,
-     "houou": {
-      "mean_place": 2.622,
-      "p_promote": 0.114,
-      "median_games_if_promoted": 207,
-      "ev_per_game": -4.62
-     },
-     "jade": {
-      "mean_place": 2.15,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 157,
-      "ev_per_game": 26.38
-     }
-    },
-    {
-     "skill": -0.718,
-     "edge_over_jade_field": 0.2,
-     "houou": {
-      "mean_place": 2.569,
-      "p_promote": 0.403,
-      "median_games_if_promoted": 247,
-      "ev_per_game": -0.91
-     },
-     "jade": {
-      "mean_place": 2.094,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 128,
-      "ev_per_game": 33.1
-     }
-    },
-    {
-     "skill": -0.693,
-     "edge_over_jade_field": 0.225,
-     "houou": {
-      "mean_place": 2.521,
-      "p_promote": 0.744,
-      "median_games_if_promoted": 232,
-      "ev_per_game": 2.28
-     },
-     "jade": {
-      "mean_place": 2.045,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 110,
-      "ev_per_game": 39.18
-     }
-    },
-    {
-     "skill": -0.668,
-     "edge_over_jade_field": 0.25,
-     "houou": {
-      "mean_place": 2.466,
-      "p_promote": 0.942,
-      "median_games_if_promoted": 169,
-      "ev_per_game": 6.04
-     },
-     "jade": {
-      "mean_place": 2.003,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 99,
-      "ev_per_game": 43.98
-     }
-    },
-    {
-     "skill": -0.643,
-     "edge_over_jade_field": 0.275,
-     "houou": {
-      "mean_place": 2.415,
-      "p_promote": 0.988,
-      "median_games_if_promoted": 123,
-      "ev_per_game": 9.5
-     },
-     "jade": {
-      "mean_place": 1.952,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 89,
-      "ev_per_game": 49.74
-     }
-    },
-    {
-     "skill": -0.618,
-     "edge_over_jade_field": 0.3,
-     "houou": {
-      "mean_place": 2.363,
-      "p_promote": 0.998,
-      "median_games_if_promoted": 96,
-      "ev_per_game": 12.93
-     },
-     "jade": {
-      "mean_place": 1.909,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 81,
-      "ev_per_game": 54.72
-     }
-    },
-    {
-     "skill": -0.593,
-     "edge_over_jade_field": 0.325,
-     "houou": {
-      "mean_place": 2.317,
-      "p_promote": 0.999,
-      "median_games_if_promoted": 80,
-      "ev_per_game": 15.9
-     },
-     "jade": {
-      "mean_place": 1.863,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 74,
-      "ev_per_game": 59.97
-     }
-    },
-    {
-     "skill": -0.568,
-     "edge_over_jade_field": 0.35,
-     "houou": {
-      "mean_place": 2.262,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 66,
-      "ev_per_game": 19.53
-     },
-     "jade": {
-      "mean_place": 1.821,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 69,
-      "ev_per_game": 64.54
-     }
-    },
-    {
-     "skill": -0.543,
-     "edge_over_jade_field": 0.375,
-     "houou": {
-      "mean_place": 2.214,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 59,
-      "ev_per_game": 22.51
-     },
-     "jade": {
-      "mean_place": 1.777,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 64,
-      "ev_per_game": 69.31
-     }
-    },
-    {
-     "skill": -0.518,
-     "edge_over_jade_field": 0.4,
-     "houou": {
-      "mean_place": 2.162,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 51,
-      "ev_per_game": 25.88
-     },
-     "jade": {
-      "mean_place": 1.739,
-      "p_promote": 1.0,
-      "median_games_if_promoted": 61,
-      "ev_per_game": 73.52
-     }
-    }
-   ],
-   "skill_for_even_odds_houou": -0.7109,
-   "skill_for_even_odds_houou_msoul_steps": 4.68,
-   "skill_for_even_odds_jade": -0.852,
-   "skill_for_even_odds_jade_msoul_steps": 2.41
+   "houou_8to9": {
+    "skill": -0.6751,
+    "msoul_steps": 5.26
+   },
+   "houou_7to9": {
+    "skill": -0.7438,
+    "msoul_steps": 4.15
+   },
+   "jade_s3_to_celestial": {
+    "skill": -0.5797,
+    "msoul_steps": 6.79
+   }
+  },
+  "field_player": {
+   "houou_7to8": {
+    "p_promote": 0.853,
+    "median_games_if_promoted": 209,
+    "ev_per_game": [
+     3.76
+    ]
+   },
+   "houou_8to9": {
+    "p_promote": 0.466,
+    "median_games_if_promoted": 291,
+    "ev_per_game": [
+     -0.32
+    ]
+   },
+   "houou_7to9": {
+    "p_promote": 0.753,
+    "median_games_if_promoted": 856,
+    "ev_per_game": [
+     3.83,
+     0.09
+    ]
+   },
+   "jade_s3_to_celestial": {
+    "p_promote": 0.001,
+    "median_games_if_promoted": 221,
+    "ev_per_game": [
+     -18.04
+    ]
+   }
+  },
+  "houou_average_player": {
+   "houou_7to8": {
+    "mean_place": 2.5,
+    "p_promote": 0.858,
+    "median_games_if_promoted": 209,
+    "ev_per_game": [
+     3.81
+    ]
+   },
+   "houou_8to9": {
+    "mean_place": 2.498,
+    "p_promote": 0.52,
+    "median_games_if_promoted": 290,
+    "ev_per_game": [
+     0.17
+    ]
+   },
+   "houou_7to9": {
+    "mean_place": 2.501,
+    "p_promote": 0.726,
+    "median_games_if_promoted": 885,
+    "ev_per_game": [
+     3.62,
+     -0.15
+    ]
+   },
+   "jade_s3_to_celestial": {
+    "mean_place": 2.406,
+    "p_promote": 0.094,
+    "median_games_if_promoted": 530,
+    "ev_per_game": [
+     -5.67
+    ]
+   }
   }
+ },
+ "sensitivity": [
+  {
+   "beta": 0.4,
+   "houou_7to8": -0.8617,
+   "houou_8to9": -0.693,
+   "houou_7to9": -0.7528,
+   "jade_s3_to_celestial": -0.469
+  },
+  {
+   "beta": 0.5,
+   "houou_7to8": -0.8134,
+   "houou_8to9": -0.6913,
+   "houou_7to9": -0.7401,
+   "jade_s3_to_celestial": -0.5508
+  },
+  {
+   "beta": 0.6,
+   "houou_7to8": -0.819,
+   "houou_8to9": -0.6762,
+   "houou_7to9": -0.736,
+   "jade_s3_to_celestial": -0.6101
+  },
+  {
+   "beta": 0.7,
+   "houou_7to8": -0.7899,
+   "houou_8to9": -0.6854,
+   "houou_7to9": -0.7247,
+   "jade_s3_to_celestial": -0.6624
+  },
+  {
+   "beta": 0.8,
+   "houou_7to8": -0.7811,
+   "houou_8to9": -0.6837,
+   "houou_7to9": -0.7177,
+   "jade_s3_to_celestial": -0.6812
+  },
+  {
+   "beta": 0.9,
+   "houou_7to8": -0.7645,
+   "houou_8to9": -0.6891,
+   "houou_7to9": -0.7172,
+   "jade_s3_to_celestial": -0.7124
+  },
+  {
+   "beta": 1.0,
+   "houou_7to8": -0.757,
+   "houou_8to9": -0.683,
+   "houou_7to9": -0.7113,
+   "jade_s3_to_celestial": -0.7344
+  },
+  {
+   "beta": 1.1,
+   "houou_7to8": -0.7531,
+   "houou_8to9": -0.6771,
+   "houou_7to9": -0.7059,
+   "jade_s3_to_celestial": -0.7556
+  },
+  {
+   "beta": 1.2,
+   "houou_7to8": -0.7467,
+   "houou_8to9": -0.6891,
+   "houou_7to9": -0.7096,
+   "jade_s3_to_celestial": -0.7693
+  },
+  {
+   "beta": 1.3,
+   "houou_7to8": -0.7404,
+   "houou_8to9": -0.6801,
+   "houou_7to9": -0.7006,
+   "jade_s3_to_celestial": -0.7754
+  },
+  {
+   "beta": 1.4,
+   "houou_7to8": -0.7379,
+   "houou_8to9": -0.684,
+   "houou_7to9": -0.7025,
+   "jade_s3_to_celestial": -0.7861
+  },
+  {
+   "beta": 1.5,
+   "houou_7to8": -0.735,
+   "houou_8to9": -0.6818,
+   "houou_7to9": -0.7006,
+   "jade_s3_to_celestial": -0.7964
+  },
+  {
+   "beta": 1.6,
+   "houou_7to8": -0.7318,
+   "houou_8to9": -0.6854,
+   "houou_7to9": -0.7011,
+   "jade_s3_to_celestial": -0.8027
+  },
+  {
+   "beta": 1.7,
+   "houou_7to8": -0.7321,
+   "houou_8to9": -0.6815,
+   "houou_7to9": -0.7013,
+   "jade_s3_to_celestial": -0.8101
+  },
+  {
+   "beta": 1.8,
+   "houou_7to8": -0.722,
+   "houou_8to9": -0.6871,
+   "houou_7to9": -0.7008,
+   "jade_s3_to_celestial": -0.814
+  }
+ ],
+ "beta_where_celestial_stops_being_harder": {
+  "houou_7to8": 1.09,
+  "houou_8to9": 0.81,
+  "houou_7to9": 0.92
  }
 }

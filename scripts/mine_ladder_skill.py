@@ -13,12 +13,20 @@ per seat and game:
 ``logp`` is the sum of ln p(taken) (p floored at 1e-4), ``p`` the sum of p(taken), ``top`` how many times the taken
 action was Mortal's first choice, ``low`` how many times Mortal gave it under 10%. Divide by ``n`` (or ``nd``).
 
-    .venv/bin/python scripts/mine_ladder_skill.py GROUP OUT.jsonl FILE...|@LIST [--procs P]
+With ``--qmodel CHECKPOINT`` a Mortal v4 checkpoint that carries a value head (``current_dqn``) scores the games
+instead, and the row holds what the taken action gave up in that model's Q-values (final-placement points, 2 a place):
+
+    "n", "qloss", "qloss2", "top", "big01", "big03", "big1",   # sum of max Q - Q(taken), its square, counts over a size
+    "lp005", "lp01", "lp02", "lp05",                            # sum of ln softmax(Q / T)(taken), T = 0.05 ... 0.5
+    and the same with a ``_d`` suffix for discards only ("nd" discards)
+
+The engines are built in ``mortal_engines.py`` (checkpoints are read with ``weights_only=True``).
+
+    .venv/bin/python scripts/mine_ladder_skill.py GROUP OUT.jsonl FILE...|@LIST [--procs P] [--qmodel CHECKPOINT]
 """
 
 from __future__ import annotations
 
-import importlib.util
 import json
 import math
 import os
@@ -28,8 +36,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-MODEL = os.path.expanduser("~/Downloads/mortal_model_policy/model.py")
 ENGINE = None
+QMODEL = None  # path of a checkpoint with a value head; None scores with the policy model
+Q_TEMPS = (("lp005", 0.05), ("lp01", 0.1), ("lp02", 0.2), ("lp05", 0.5))
 
 TILES = [f"{n}{s}" for s in "mps" for n in range(1, 10)] + list("ESWNPFC")
 TILE_IDX = {t: i for i, t in enumerate(TILES)}
@@ -40,18 +49,25 @@ def tile_action(pai: str) -> int:
     return RED_IDX.get(pai, TILE_IDX.get(pai, -1))
 
 
-def init():
-    global ENGINE
-    import torch
-    import libriichi
-    torch.set_num_threads(1)
-    for name in ["mjai", "consts", "dataset", "state", "arena", "stat"]:
-        if hasattr(libriichi, name):
-            sys.modules[f"libriichi.{name}"] = getattr(libriichi, name)
-    spec = importlib.util.spec_from_file_location("mortal_policy_model", MODEL)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    ENGINE = mod.get_engine()
+def init(qmodel=None):
+    global ENGINE, QMODEL
+    import mortal_engines
+    QMODEL = qmodel  # workers are spawned, so the choice of model has to be handed over
+    ENGINE = mortal_engines.policy_engine() if QMODEL is None else mortal_engines.q_engine(QMODEL)
+
+
+def decision_stats(p: dict[int, float], a: int) -> dict[str, float]:
+    """Per-decision numbers to add up: policy probabilities, or Q-values when a value model is scoring."""
+    best = max(p.values())
+    if QMODEL is None:
+        pt = p[a]
+        return {"logp": math.log(max(pt, 1e-4)), "p": pt, "top": float(pt == best), "low": float(pt < 0.1)}
+    loss = best - p[a]
+    out = {"qloss": loss, "qloss2": loss * loss, "top": float(loss == 0),
+           "big01": float(loss > 0.1), "big03": float(loss > 0.3), "big1": float(loss > 1)}
+    for key, t in Q_TEMPS:
+        out[key] = -loss / t - math.log(sum(math.exp((q - best) / t) for q in p.values()))
+    return out
 
 
 def probs_of(raw: str) -> dict[int, float]:
@@ -114,7 +130,9 @@ def work(job):
     rows = []
     for seat in range(4):
         bot = Bot(ENGINE, seat)
-        acc = {k: 0.0 for k in ("n", "logp", "p", "top", "low", "nd", "logp_d", "p_d", "top_d", "low_d")}
+        keys = ("logp", "p", "top", "low") if QMODEL is None else (
+            "qloss", "qloss2", "top", "big01", "big03", "big1", *(k for k, _ in Q_TEMPS))
+        acc = {"n": 0.0, **{k: 0.0 for k in keys}, "nd": 0.0, **{k + "_d": 0.0 for k in keys}}
         try:
             for idx, ev in enumerate(events):
                 raw = bot.react(json.dumps(ev, ensure_ascii=False), can_act=True)
@@ -144,13 +162,14 @@ def work(job):
                     continue
                 if a is None or a not in p:
                     continue
-                pt = p[a]
-                lp = math.log(max(pt, 1e-4))
-                top = float(a == max(p, key=p.get))
-                low = float(pt < 0.1)
-                acc["n"] += 1; acc["logp"] += lp; acc["p"] += pt; acc["top"] += top; acc["low"] += low
+                st = decision_stats(p, a)
+                acc["n"] += 1
+                for k, v in st.items():
+                    acc[k] += v
                 if discard:
-                    acc["nd"] += 1; acc["logp_d"] += lp; acc["p_d"] += pt; acc["top_d"] += top; acc["low_d"] += low
+                    acc["nd"] += 1
+                    for k, v in st.items():
+                        acc[k + "_d"] += v
         except Exception as e:  # noqa: BLE001
             rows.append({"file": path, "seat": seat, "error": f"replay: {e}"})
             continue
@@ -169,6 +188,10 @@ if __name__ == "__main__":
         i = args.index("--procs")
         procs = int(args[i + 1])
         del args[i:i + 2]
+    if "--qmodel" in args:
+        i = args.index("--qmodel")
+        QMODEL = os.path.expanduser(args[i + 1])
+        del args[i:i + 2]
     group, outp, files = args[0], args[1], args[2:]
     if len(files) == 1 and files[0].startswith("@"):  # @LIST: one path per line
         files = [l.strip() for l in open(files[0][1:]) if l.strip()]
@@ -177,7 +200,7 @@ if __name__ == "__main__":
         done = {json.loads(l)["file"] for l in open(outp) if l.strip()}
     jobs = [(f, group) for f in files if f not in done]
     n = 0
-    with Pool(procs, initializer=init) as pool, open(outp, "a") as f:
+    with Pool(procs, initializer=init, initargs=(QMODEL,)) as pool, open(outp, "a") as f:
         for rows in pool.imap_unordered(work, jobs, chunksize=1):
             for r in rows:
                 f.write(json.dumps(r, ensure_ascii=False) + "\n")
