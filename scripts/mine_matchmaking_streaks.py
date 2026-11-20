@@ -34,13 +34,12 @@ from __future__ import annotations
 
 import argparse
 import json
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
 
 import numpy as np
 
-HERO = 120182062
 SEED = 20261119
 PERMS = 5000
 
@@ -51,19 +50,29 @@ def ladder(level: int) -> float:
     return (tier - 4) * 3 + (step - 1)
 
 
+def hero_of(records: list) -> int:
+    """The export's own player: the one account in every record."""
+    seen = Counter(p[0] for r in records for p in r[4])
+    account, n = seen.most_common(1)[0]
+    if n != len(records):
+        raise SystemExit(f"no account appears in all {len(records)} records (best: {n})")
+    return account
+
+
 def games(path: Path, mode: int | None, since: str | None) -> list[dict]:
     data = json.loads(path.read_text(encoding="utf-8"))
+    hero = hero_of(data["records"])
     start = datetime.strptime(since, "%Y-%m-%d").timestamp() if since else 0
     out = []
     for uuid, t0, t1, mode_id, players in data["records"]:
         if mode is not None and mode_id != mode or t0 < start:
             continue
         ids = [p[0] for p in players]
-        if HERO not in ids or any(p[2] is None for p in players):
+        if hero not in ids or any(p[2] is None for p in players):
             continue
         order = sorted(range(4), key=lambda i: -players[i][3])  # seat order breaks ties
         place = {i: order.index(i) + 1 for i in range(4)}
-        h = ids.index(HERO)
+        h = ids.index(hero)
         opp = [ladder(players[i][2]) for i in range(4) if i != h]
         out.append({
             "uuid": uuid, "t0": t0, "t1": t1, "place": place[h], "pt": players[h][4] or 0,

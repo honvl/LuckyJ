@@ -66,8 +66,10 @@ TOOLS = [{
     "type": "agent_toolset_20260401",
     "default_config": {"enabled": True, "permission_policy": {"type": "auto"}},
     "configs": [
+        # Web search answers rule questions (rank-point tables, promotion and demotion rules);
+        # fetching pages stays off, and the prompt keeps players' names and ids out of queries.
         {"name": "web_fetch", "enabled": False},
-        {"name": "web_search", "enabled": False},
+        {"name": "web_search", "enabled": True},
     ],
 }]
 
@@ -197,6 +199,27 @@ def take_intro(state: dict, player: str, session_id: str) -> str | None:
     return row[0] if row else None
 
 
+def queue_intro(state: dict, player: str, session_id: str, text: str) -> None:
+    """Add to a thread's queued system context, which goes out with the player's next message."""
+    thread = next(t for t in state["players"][player]["threads"] if t["session_id"] == session_id)
+    thread["intro"] = "\n\n".join(x for x in (thread.get("intro"), text) if x)
+    save_state(state)
+    url = database_url()
+    if not url:
+        return
+    import psycopg
+    with psycopg.connect(url, autocommit=True) as conn:
+        conn.execute("update threads set intro = concat_ws(E'\\n\\n', intro, %s::text) where session_id = %s",
+                     (text, session_id))
+
+
+def instructions_update(version: int, system: str) -> str:
+    """The note that brings an older thread's instructions up to the current agent version."""
+    return (f"Your operator has updated your instructions (agent version {version}). The full current "
+            "instructions follow. Where they differ from the ones you started with, follow these. "
+            "Do not mention this update to the player.\n\n" + system)
+
+
 def write_local_state(state: dict) -> None:
     STATE.parent.mkdir(parents=True, exist_ok=True)
     STATE.write_text(json.dumps(state, indent=1, ensure_ascii=False), encoding="utf-8")
@@ -321,7 +344,8 @@ def cmd_setup(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     state["agent_hash"] = config_hash
     save_state(state)
     print(f"  {agent.id} version {agent.version}")
-    print("New threads use this setup. Existing threads keep the files they started with.")
+    print("New threads use this setup. Existing threads keep the files they started with;"
+          " `thread.py refresh` brings their tools and instructions up to date.")
 
 
 # ------------------------------------------------------------------ threads
@@ -663,6 +687,40 @@ def api_key() -> str:
     return key
 
 
+def cmd_refresh(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
+    """Bring threads started on an older agent version up to date.
+
+    A thread keeps the agent version it was created with. Its tools can be replaced while it is
+    not running; its system prompt cannot, so the current instructions are queued as system
+    context for the player's next message instead.
+    """
+    state = load_state()
+    if not state.get("agent_id"):
+        sys.exit("run `thread.py setup` first")
+    agent = client.beta.agents.retrieve(state["agent_id"])
+    system = SYSTEM.read_text(encoding="utf-8")
+    for name, info in state["players"].items():
+        if args.player and name != args.player:
+            continue
+        for t in info.get("threads", []):
+            sid = t["session_id"]
+            s = client.beta.sessions.retrieve(sid)
+            have = t.get("agent_version") or getattr(s.agent, "version", 0)
+            label = "thread" if in_ci() else f"{name} {sid}"
+            if have >= agent.version:
+                print(f"  {label}: up to date (version {have})")
+                continue
+            if s.status in ("running", "terminated"):
+                print(f"  {label}: {s.status}, left for the next refresh")
+                continue
+            if not args.dry_run:
+                client.beta.sessions.update(sid, agent={"tools": TOOLS})
+                queue_intro(state, name, sid, instructions_update(agent.version, system))
+                t["agent_version"] = agent.version
+                save_state(state)
+            print(f"  {label}: version {have} -> {agent.version} (tools now, instructions with the next message)")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -686,6 +744,9 @@ def main() -> None:
     p.add_argument("player")
     p.add_argument("--off", action="store_true", help="require a subscription again")
     sub.add_parser("list", help="every thread with its status and spend")
+    p = sub.add_parser("refresh", help="bring threads on an older agent version up to date")
+    p.add_argument("player", nargs="?", help="only this player's threads")
+    p.add_argument("--dry-run", action="store_true", help="list what would change and stop")
     p = sub.add_parser("topup", help="let a thread spend this many more USD")
     p.add_argument("player")
     p.add_argument("usd", type=float)
@@ -694,7 +755,7 @@ def main() -> None:
 
     client = anthropic.Anthropic(api_key=api_key())
     {"setup": cmd_setup, "new": cmd_new, "chat": cmd_chat, "link": cmd_link, "db-sync": cmd_db_sync, "pending": cmd_pending, "onboard": cmd_onboard, "comp": cmd_comp, "list": cmd_list,
-     "topup": cmd_topup}[args.cmd](client, args)
+     "refresh": cmd_refresh, "topup": cmd_topup}[args.cmd](client, args)
 
 
 if __name__ == "__main__":

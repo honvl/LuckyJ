@@ -31,21 +31,23 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from mine_matchmaking_streaks import HERO, design, ladder, ols  # noqa: E402
+from mine_matchmaking_streaks import design, hero_of, ladder, ols  # noqa: E402
 
 ROOMS = {9: "gold", 12: "jade", 16: "throne"}
 
 
 def load(path: Path) -> list[dict]:
     out = []
-    for uuid, t0, t1, mode, players in json.loads(path.read_text(encoding="utf-8"))["records"]:
-        if any(p[2] is None for p in players) or HERO not in [p[0] for p in players]:
+    records = json.loads(path.read_text(encoding="utf-8"))["records"]
+    hero_id = hero_of(records)
+    for uuid, t0, t1, mode, players in records:
+        if any(p[2] is None for p in players) or hero_id not in [p[0] for p in players]:
             continue
         order = sorted(range(4), key=lambda i: -players[i][3])
         seats = [{"id": p[0], "lv": ladder(p[2]), "score": p[3], "place": order.index(i) + 1}
                  for i, p in enumerate(players)]
-        hero = next(s for s in seats if s["id"] == HERO)
-        opps = [s for s in seats if s["id"] != HERO]
+        hero = next(s for s in seats if s["id"] == hero_id)
+        opps = [s for s in seats if s["id"] != hero_id]
         out.append({"uuid": uuid, "t0": t0, "dt": datetime.fromtimestamp(t0), "mode": mode, "hero": hero,
                     "opps": opps, "own": hero["lv"], "place": hero["place"], "score": hero["score"],
                     "opp": float(np.mean([o["lv"] for o in opps])), "saints": sum(o["lv"] >= 3 for o in opps)})

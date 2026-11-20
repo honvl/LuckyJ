@@ -35,9 +35,12 @@ class ServiceThreadTest(unittest.TestCase):
                               capture_output=True, text=True, check=True).stdout.strip()
         self.assertIn(f"MORTAL_COMMIT={head}", SETUP)
 
-    def test_web_tools_stay_off(self):
+    def test_web_search_on_and_fetch_off(self):
         self.assertIn('{"name": "web_fetch", "enabled": False}', CLIENT)
-        self.assertIn('{"name": "web_search", "enabled": False}', CLIENT)
+        self.assertIn('{"name": "web_search", "enabled": True}', CLIENT)
+
+    def test_prompt_keeps_players_out_of_searches(self):
+        self.assertIn("Never put a player's in-game name, account id or game id in a search", SYSTEM)
 
     def test_model_is_opus_5_5(self):
         self.assertIn('"id": "claude-opus-5-5"', CLIENT)
@@ -70,6 +73,28 @@ class ServiceThreadTest(unittest.TestCase):
                     thread.cmd_link(None, argparse.Namespace(player="B", email="me@example.com"))
             finally:
                 thread.STATE, thread.database_url = old, old_db
+
+    def test_refresh_queues_instructions_after_a_waiting_intro(self):
+        import tempfile
+        import thread
+        with tempfile.TemporaryDirectory() as d:
+            old, old_db = thread.STATE, thread.database_url
+            thread.STATE = Path(d) / "state.json"
+            thread.database_url = lambda: None  # never touch the site's real database
+            try:
+                thread.save_state({"players": {"A": {"threads": [{"session_id": "s1", "intro": "who"}]}}})
+                note = thread.instructions_update(9, "RULES")
+                thread.queue_intro(thread.load_state(), "A", "s1", note)
+                state = thread.load_state()
+                self.assertEqual(thread.take_intro(state, "A", "s1"), "who\n\n" + note)
+                self.assertIn("agent version 9", note)
+                self.assertTrue(note.endswith("RULES"))
+            finally:
+                thread.STATE, thread.database_url = old, old_db
+
+    def test_prompt_asks_for_its_own_analysis(self):
+        self.assertIn("# Answering a question", SYSTEM)
+        self.assertIn("the repository's scripts are examples, not a menu", SYSTEM)
 
     def test_state_merge_keeps_what_another_run_added(self):
         import thread

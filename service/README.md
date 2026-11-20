@@ -36,6 +36,11 @@ threads install it directly. Anything the agent writes to `/mnt/session/outputs/
 `chapter-<NN>-<slug>.tar.gz`, which `chat` unpacks into `chapters/<NN>-<slug>/`. IDs live in the site's database (table `service_state`, shared with the scheduled onboarding run); `service/.state/state.json` is a local copy.
 Neither folder is committed.
 
+A thread keeps the agent version it started with. After `setup` makes a new version, run
+`.venv/bin/python service/thread.py refresh`: it replaces each older thread's tools at once
+and queues the current instructions as system context for the player's next message (the
+system prompt of a running thread cannot be replaced).
+
 ## Cost
 
 First live run (15 Nov 2026, Honver's 303 games): sandbox build plus a placement and riichi-rate
