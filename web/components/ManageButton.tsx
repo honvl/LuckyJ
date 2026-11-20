@@ -6,7 +6,7 @@ export default function ManageButton({ label }: { label: string }) {
   return (
     <button
       type="button"
-      className="link-button"
+      className="button button-quiet"
       disabled={busy}
       onClick={async () => {
         setBusy(true);

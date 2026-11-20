@@ -31,9 +31,6 @@ export default function Subscribe({ lang, ended }: { lang: Lang; ended: boolean 
       }}
     >
       {ended && <p className="login-error">{t.ended}</p>}
-      <p className="login-lead">{t.subscribeLead}</p>
-      <p className="subscribe-price">{t.price}</p>
-      <p className="login-note">{t.priceNote}</p>
       <MajsoulPicker lang={lang} onChange={setChoice} />
       <label className="subscribe-check">
         <input type="checkbox" checked={publish} onChange={(e) => setPublish(e.target.checked)} />
@@ -42,9 +39,10 @@ export default function Subscribe({ lang, ended }: { lang: Lang; ended: boolean 
       <p className="login-note">
         {t.agreeBefore}{lang === "ja" ? "" : " "}<a href={t.privacyHref}>{t.privacy}</a>{t.agreeMiddle}<a href={t.termsHref}>{t.terms}</a>{t.agreeAfter}
       </p>
-      <button className="button" type="submit" disabled={busy || !choice}>
+      <button className="button button-wide" type="submit" disabled={busy || !choice}>
         {busy ? t.subscribing : t.subscribe}
       </button>
+      <p className="login-note">{t.price}</p>
       {failed && <p className="login-error">{t.error}</p>}
     </form>
   );

@@ -1,6 +1,7 @@
-/* The chat page uses the guide's tokens (site/styles.css) so it reads as part of the same book. */
-/* Palette tokens: app/palette.css. Tiles, Markdown, tables: app/markdown.css. */
-
+/* Base styles for the site's app pages (app/(site)): sign-in, /start, the account page, the
+   library and guide pages. They use the guide's tokens (app/palette.css) so they read as part of
+   the same book. Tiles, Markdown and tables: app/markdown.css. Page layout: app/site.css. The
+   chat page has its own layout and stylesheet (app/(chat)/chat.css) and loads none of this. */
 
 * {
   box-sizing: border-box;
@@ -29,468 +30,203 @@ a {
   color: var(--jade);
 }
 
+/* Buttons: the site's pill (.s-btn in site.css), as a real <button>. */
 .button {
-  font: 600 15px/1 var(--sans);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 22px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
   color: var(--paper);
-  background: var(--felt);
-  border: 0;
-  border-radius: 6px;
-  padding: 12px 18px;
+  font: 600 15px/1 var(--sans);
+  text-decoration: none;
   cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--verm);
+  background: var(--verm);
+  color: var(--paper);
 }
 
 .button:disabled {
-  opacity: 0.45;
+  opacity: 0.4;
   cursor: default;
 }
 
+.button-quiet {
+  justify-self: start;
+  background: transparent;
+  color: var(--ink);
+}
+
+.button-quiet:hover:not(:disabled) {
+  border-color: var(--ink);
+  background: var(--ink);
+}
+
+.button-wide {
+  width: 100%;
+}
+
 .link-button {
-  font: 500 14px var(--sans);
-  color: var(--muted);
-  background: none;
+  min-height: 44px;
+  padding: 0 4px;
   border: 0;
-  padding: 4px;
-  cursor: pointer;
+  background: none;
+  color: var(--ink-2);
+  font: 500 14px var(--sans);
   text-decoration: underline;
   text-underline-offset: 3px;
+  cursor: pointer;
 }
 
-/* Login */
-.login {
-  max-width: 420px;
-  margin: 12vh auto;
-  padding: 0 16px;
+a.link-button {
+  display: inline-flex;
+  align-items: center;
 }
 
-.login-kicker,
-.chat-kicker {
-  font: 700 12px var(--sans);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.link-button:hover {
   color: var(--verm);
 }
 
-.login h1 {
-  font-weight: 500;
-  font-size: 40px;
-  margin: 4px 0 8px;
+:is(.button, .link-button, .provider-button, .switch, .picker-match):focus-visible,
+:is(.picker, .login-dev) :is(input, select):focus-visible {
+  outline: 2px solid var(--jade);
+  outline-offset: 2px;
 }
 
-.login-lead {
-  color: var(--ink-2);
-}
-
-.login-buttons {
-  display: grid;
-  gap: 10px;
-  margin-top: 24px;
-}
-
-.login-dev {
-  display: grid;
-  gap: 8px;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--hair);
-  font: 14px var(--sans);
-  color: var(--muted);
-}
-
-.login-dev input,
-.composer textarea {
-  display: block;
+/* Text fields and selects */
+.subscribe-field input,
+.picker select,
+.login-dev input {
   width: 100%;
-  margin-top: 6px;
-  font: 16px var(--sans);
-  color: var(--ink);
-  background: var(--plate);
-  border: 1px solid var(--hair);
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid #bdb5a6;
   border-radius: 6px;
-  padding: 10px 12px;
+  background: #fffdf8;
+  color: var(--ink);
+  font: 400 16px var(--sans);
+}
+
+.subscribe-field {
+  display: grid;
+  gap: 6px;
+  color: var(--ink-2);
+  font: 600 13px var(--sans);
 }
 
 .login-note {
-  margin-top: 32px;
-  font: 13px var(--sans);
+  margin: 0;
   color: var(--muted);
+  font: 13px/1.5 var(--sans);
+}
+
+.login-error {
+  margin: 0;
+  color: var(--verm);
+  font: 14px/1.5 var(--sans);
 }
 
 .login-actions {
   display: flex;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.subscribe {
-  display: grid;
-  gap: 14px;
-  margin-top: 8px;
-}
-
-.subscribe-price {
-  font: 600 18px var(--sans);
-  margin: 0;
-}
-
-.subscribe-platform {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 18px;
-  font: 15px var(--sans);
-}
-
-.subscribe-platform legend,
-.subscribe-field {
-  font: 14px var(--sans);
-  color: var(--ink-2);
-  margin-bottom: 6px;
-}
-
-.subscribe-platform label,
-.subscribe-check {
-  display: flex;
-  gap: 8px;
-  align-items: baseline;
-  font: 15px var(--sans);
-}
-
-.subscribe-field {
-  display: grid;
-  gap: 4px;
-}
-
-.subscribe-field input {
-  font: 16px var(--sans);
-  color: var(--ink);
-  background: var(--plate);
-  border: 1px solid var(--hair);
-  border-radius: 6px;
-  padding: 10px 12px;
-}
-
-.subscribe-field .login-note {
-  margin: 0;
-}
-
-.login-error {
-  color: var(--verm);
-  margin: 0;
-}
-
-/* Chat layout: header, chapters, the thread, the composer pinned at the bottom. */
-.chat {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.chat-head {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
-  padding: 10px max(16px, calc((100vw - var(--text-w)) / 2));
-  background: color-mix(in srgb, var(--paper) 92%, transparent);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--hair);
-}
-
-.chat-title {
-  display: grid;
-  line-height: 1.2;
-}
-
-.chat-player {
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.spend {
-  margin-left: auto;
-  display: grid;
-  gap: 4px;
-  min-width: 0;
-  width: min(260px, 40vw);
-}
-
-.spend-bar {
-  height: 6px;
-  border-radius: 3px;
-  background: var(--hair-2);
-  overflow: hidden;
-}
-
-.spend-bar span {
-  display: block;
-  height: 100%;
-  background: var(--jade);
-}
-
-.spend-text {
-  font: 12px var(--sans);
-  color: var(--muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.chapters {
-  width: 100%;
-  max-width: var(--text-w);
-  margin: 16px auto 0;
-  padding: 0 16px;
-}
-
-.chapters h2 {
-  font: 700 12px var(--sans);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 8px;
-}
-
-.chapters ul {
-  list-style: none;
+  gap: 8px 14px;
   margin: 0;
-  padding: 0;
+}
+
+/* Sign-in: one button per provider, with the provider's mark. */
+.login-buttons {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
-.chapter-card {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  padding: 10px 14px;
-  background: var(--plate);
-  border: 1px solid var(--hair);
-  border-radius: 8px;
-}
-
-.chapter-num {
-  font: 700 13px var(--sans);
-  color: var(--verm);
-  white-space: nowrap;
-}
-
-.chapter-slug {
-  flex: 1;
-  min-width: 0;
-}
-
-.chapter-slug::first-letter {
-  text-transform: uppercase;
-}
-
-.pill {
-  font: 600 12px var(--sans);
-  padding: 5px 10px;
+.provider-button {
+  display: grid;
+  grid-template-columns: 22px 1fr 22px;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid #bdb5a6;
   border-radius: 999px;
-  border: 1px solid var(--hair);
-  background: transparent;
-  color: var(--muted);
+  background: #fffdf8;
+  color: var(--ink);
+  font: 600 15px/1 var(--sans);
   cursor: pointer;
 }
 
-.pill.is-on {
-  background: var(--jade-soft);
-  border-color: var(--jade);
-  color: var(--jade);
+.provider-button:hover:not(:disabled) {
+  border-color: var(--ink);
 }
 
-.chapters-note {
-  font: 13px var(--sans);
-  color: var(--muted);
-  margin: 6px 0 0;
+.provider-button:disabled {
+  opacity: 0.55;
+  cursor: default;
 }
 
-.thread {
-  flex: 1;
+.provider-mark {
+  display: flex;
+  width: 22px;
+  height: 22px;
+}
+
+.provider-mark svg {
   width: 100%;
-  max-width: var(--text-w);
-  margin: 0 auto;
-  padding: 24px 16px 140px;
+  height: 100%;
+}
+
+.login-dev {
   display: grid;
-  gap: 18px;
-  align-content: start;
+  gap: 10px;
+  margin-top: 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hair);
+  color: var(--ink-2);
+  font: 600 13px var(--sans);
 }
 
-.msg-user {
-  justify-self: end;
-  max-width: 85%;
-  padding: 10px 14px;
-  background: var(--plate);
-  border: 1px solid var(--hair);
-  border-radius: 12px 12px 2px 12px;
-  white-space: pre-wrap;
-  font-family: var(--sans);
-  font-size: 16px;
-}
-
-.msg-agent {
-  min-width: 0;
-}
-
-.msg-note {
-  font: 14px var(--sans);
-  color: var(--muted);
-  margin: 0;
-}
-
-.msg-note.is-error {
-  color: var(--verm);
-}
-
-.is-live {
-  animation: pulse 1.6s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  50% {
-    opacity: 0.55;
-  }
-}
-
-/* What the coach did between replies: one line, open for the steps. */
-.work {
-  font: 14px var(--sans);
-  color: var(--muted);
-  border-left: 2px solid var(--hair);
-  padding-left: 12px;
-}
-
-.work summary {
-  cursor: pointer;
-}
-
-.work ol {
-  margin: 8px 0 0;
-  padding-left: 20px;
+.login-dev label {
   display: grid;
   gap: 6px;
 }
 
-.work-label {
-  display: block;
-  color: var(--ink-2);
+/* The subscribe form (/start) */
+.subscribe {
+  display: grid;
+  gap: 16px;
 }
 
-.work-detail {
-  display: block;
-  font-size: 12px;
-  color: var(--muted);
-  overflow-wrap: anywhere;
-}
-
-
-/* Composer */
-.composer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.subscribe-check {
   display: flex;
+  align-items: flex-start;
   gap: 10px;
-  align-items: flex-end;
-  padding: 12px max(16px, calc((100vw - var(--text-w)) / 2)) calc(12px + env(safe-area-inset-bottom));
-  background: color-mix(in srgb, var(--paper) 94%, transparent);
-  backdrop-filter: blur(6px);
-  border-top: 1px solid var(--hair);
-  z-index: 3; /* above the tables' pinned first column */
+  color: var(--ink);
+  font: 15px/1.45 var(--sans);
+  cursor: pointer;
 }
 
-.composer textarea {
-  margin: 0;
-  resize: none;
-  max-height: 40vh;
+.subscribe-check input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--jade);
 }
 
-@media (max-width: 560px) {
-  .chat-head {
-    flex-wrap: wrap;
-    gap: 6px 12px;
-  }
-
-  .spend {
-    order: 3;
-    width: 100%;
-  }
+/* A chapter's number, on the account page's chapter rows */
+.chapter-num {
+  color: var(--verm);
+  font: 700 13px var(--sans);
+  white-space: nowrap;
 }
 
-/* Player books (/books, /books/<name>): one reading column in the guide's paper and type. */
-.book {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 48px 16px 96px;
-}
-
-.book h1 {
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 1.15;
-  margin: 4px 0 8px;
-}
-
-.book-lead {
-  color: var(--ink-2);
-  margin: 0 0 28px;
-}
-
-.book-list {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  gap: 14px;
-}
-
-.book-list li {
-  display: grid;
-  gap: 2px;
-  padding: 12px 16px;
-  background: var(--plate);
-  border: 1px solid var(--hair);
-  border-radius: 8px;
-}
-
-.book-list a {
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.book-list .login-note,
-.book-foot {
-  margin: 0;
-}
-
-.book-foot {
-  margin-top: 48px;
-}
-
-.book-toc {
-  border-top: 1px solid var(--hair);
-  border-bottom: 1px solid var(--hair);
-  padding: 12px 0;
-  margin-bottom: 32px;
-}
-
-.book-toc h2,
-.book-cards h3 {
-  font: 700 12px var(--sans);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 8px;
-}
-
-.book-toc ol {
-  margin: 0;
-  padding-left: 22px;
-}
-
+/* A guide chapter's body (components/ChapterBody.tsx); the page around it is in site.css. */
 .book-chapter {
   padding: 8px 0 40px;
   border-bottom: 1px solid var(--hair-2);
@@ -552,39 +288,24 @@ a {
 
 /* Mahjong Soul account picker (sign-up and account page). */
 .picker {
-  border: 1px solid var(--hair);
-  border-radius: 8px;
-  padding: 12px 14px 14px;
-  margin: 0;
   display: grid;
-  gap: 10px;
-  background: var(--plate);
+  gap: 14px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 .picker legend {
-  font: 600 14px var(--sans);
-  padding: 0 4px;
-}
-
-.picker select {
-  font: 16px var(--sans);
-  padding: 9px 10px;
-  border: 1px solid var(--hair);
-  border-radius: 6px;
-  background: var(--paper);
+  margin-bottom: 12px;
+  padding: 0;
   color: var(--ink);
-}
-
-.button-quiet {
-  background: var(--paper);
-  color: var(--felt);
-  border: 1px solid var(--felt);
-  justify-self: start;
+  font: 500 22px/1.2 var(--serif);
 }
 
 .picker-matches {
   display: grid;
-  gap: 6px;
+  gap: 8px;
 }
 
 .picker-match {
@@ -592,10 +313,15 @@ a {
   grid-template-columns: auto 1fr;
   column-gap: 10px;
   align-items: baseline;
-  padding: 8px 10px;
-  border: 1px solid var(--hair);
+  padding: 10px 12px;
+  border: 1px solid #bdb5a6;
   border-radius: 6px;
+  background: #fffdf8;
   cursor: pointer;
+}
+
+.picker-match input {
+  accent-color: var(--jade);
 }
 
 .picker-match.is-picked {
@@ -605,58 +331,75 @@ a {
 
 .picker-match .login-note {
   grid-column: 2;
-  margin: 0;
 }
 
 .picker-name {
   font: 600 16px var(--sans);
 }
 
-/* Account page */
+/* Account page: each section is a card. */
 .account-sections {
   display: grid;
-  gap: 28px;
+  gap: 20px;
 }
 
 .account-sections section {
-  border-top: 1px solid var(--hair);
-  padding-top: 16px;
   display: grid;
-  gap: 10px;
+  gap: 12px;
+  padding: 22px 24px 24px;
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  background: var(--plate);
+}
+
+.account-sections section.is-quiet {
+  border-style: dashed;
+  background: transparent;
 }
 
 .account-sections h2 {
-  font: 700 12px var(--sans);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
   margin: 0;
+  font: 500 24px/1.2 var(--serif);
 }
 
 .account-sections p {
   margin: 0;
 }
 
+.account-status {
+  font-size: 17px;
+}
+
+.account-status.is-warning {
+  color: var(--verm);
+}
+
 .account-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 48px;
+}
+
+.account-sections section > .account-row {
+  border-top: 1px solid var(--hair-2);
+}
+
+.account-sections h2 + .account-row {
+  border-top: 0;
 }
 
 .account-chapters {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: grid;
-  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--hair-2);
+  list-style: none;
 }
 
 .account-chapters li {
-  padding: 8px 12px;
-  background: var(--plate);
-  border: 1px solid var(--hair);
-  border-radius: 6px;
+  border-bottom: 1px solid var(--hair-2);
 }
 
 /* The account page already titles this section, so the picker's own label is for screen readers. */
@@ -666,4 +409,59 @@ a {
   height: 1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
+}
+
+/* Public or private: a switch whose track shows the state, with the word beside it. */
+.switch {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  font: 600 14px var(--sans);
+  cursor: pointer;
+}
+
+.switch-track {
+  position: relative;
+  width: 44px;
+  height: 26px;
+  border-radius: 999px;
+  background: #b3ab9c;
+  transition: background-color 140ms ease;
+}
+
+.switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fffdf8;
+  box-shadow: 0 1px 2px rgba(30, 26, 20, 0.3);
+  transition: transform 140ms ease;
+}
+
+.switch[aria-checked="true"] {
+  color: var(--felt);
+}
+
+.switch[aria-checked="true"] .switch-track {
+  background: var(--jade);
+}
+
+.switch[aria-checked="true"] .switch-thumb {
+  transform: translateX(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switch-track,
+  .switch-thumb {
+    transition: none;
+  }
 }

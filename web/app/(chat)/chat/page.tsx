@@ -1,59 +1,20 @@
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { accessFor, billingEnabled } from "@/lib/billing";
-import { STRINGS, pageLang } from "@/lib/lang";
-import { PRODUCT } from "@/lib/strings";
+import { accessFor } from "@/lib/billing";
+import { pageLang } from "@/lib/lang";
 import Chat from "@/components/Chat";
-import SignOutButton from "@/components/SignOutButton";
-import Subscribe from "@/components/Subscribe";
 
 export const dynamic = "force-dynamic";
 
-const PAYING = ["active", "trialing", "past_due"];
-
 export default async function ChatPage() {
   const lang = await pageLang();
-  const t = STRINGS[lang];
   const session = await getServerSession(authOptions);
   const email = session?.user?.email;
   if (!email) redirect("/login");
   const access = await accessFor(email);
-  const paying = PAYING.includes(access.subscription?.status || "");
-
-  if (access.thread && access.allowed) {
-    return (
-      <Chat
-        lang={lang}
-        player={access.thread.player}
-        siteUrl={process.env.SITE_URL || ""}
-      />
-    );
-  }
-
-  let body: React.ReactNode;
-  let title: string = t.title;
-  if (access.thread || !paying) {
-    // No thread and no subscription, or a thread whose subscription ended.
-    title = t.subscribeTitle;
-    body = billingEnabled ? <Subscribe lang={lang} ended={Boolean(access.thread)} /> : <p className="login-lead">{t.notLinked}</p>;
-  } else {
-    // Paid, thread not created yet: the operator fetches the games and starts it.
-    title = t.waitingTitle;
-    body = <p className="login-lead">{t.waitingLead}</p>;
-  }
-  return (
-    <main className="login">
-      <p className="login-kicker">{PRODUCT}</p>
-      <h1>{title}</h1>
-      {body}
-      <p className="login-actions">
-        <a className="link-button" href="/account">{t.accountLink}</a>
-        <SignOutButton label={t.signOut} />
-      </p>
-      <p className="login-note">
-        {t.notAffiliated} <a href={t.privacyHref}>{t.privacy}</a> · <a href={t.termsHref}>{t.terms}</a>
-      </p>
-    </main>
-  );
+  // No tutor to open yet (not subscribed, subscription ended, or games still being fetched): the
+  // subscribe and waiting screens are at /start, under the site's layout and stylesheet.
+  if (!access.thread || !access.allowed) redirect("/start");
+  return <Chat lang={lang} player={access.thread.player} siteUrl={process.env.SITE_URL || ""} />;
 }

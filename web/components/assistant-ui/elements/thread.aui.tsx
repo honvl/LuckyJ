@@ -505,18 +505,20 @@ const ThreadSuggestions: FC = () => {
 const ThreadSuggestionItem: FC = () => {
   return (
     <div className="aui-thread-welcome-suggestion-display fade-in slide-in-from-bottom-2 animate-in fill-mode-both duration-200">
-      <SuggestionPrimitive.Trigger send asChild>
+      {/* No `send`: a click writes the question into the composer, and the player sends it. Each
+          message spends the month's allowance, so nothing goes out on a single click. */}
+      <SuggestionPrimitive.Trigger asChild>
         <button
           type="button"
-          className="aui-thread-welcome-suggestion group hover:bg-foreground/[0.03] focus-visible:ring-ring/50 flex w-full items-baseline gap-2.5 rounded-md px-2 py-2 text-start text-sm transition-colors outline-none focus-visible:ring-1 motion-reduce:transition-none"
+          className="aui-thread-welcome-suggestion group hover:bg-foreground/[0.04] focus-visible:ring-ring/50 border-border flex min-h-11 w-full items-center gap-2.5 border-b px-2 py-2 text-start font-sans text-sm transition-colors outline-none focus-visible:ring-1 motion-reduce:transition-none"
         >
           <span
             aria-hidden
-            className="text-muted-foreground/60 group-hover:text-foreground font-mono text-xs transition-colors motion-reduce:transition-none"
+            className="text-muted-foreground/70 group-hover:text-foreground text-base leading-none transition-colors motion-reduce:transition-none"
           >
-            {">"}
+            {"→"}
           </span>
-          <span className="min-w-0 flex-1 truncate">
+          <span className="min-w-0 flex-1">
             <SuggestionPrimitive.Title className="aui-thread-welcome-suggestion-text-1 text-foreground" />{" "}
             <SuggestionPrimitive.Description className="aui-thread-welcome-suggestion-text-2 text-muted-foreground empty:hidden" />
           </span>

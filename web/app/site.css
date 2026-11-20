@@ -266,3 +266,35 @@
 .s-lost-links a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 16px; padding: 14px 0; text-decoration: none; }
 .s-lost-links strong { flex: 0 0 200px; font: 500 21px/1.3 var(--serif); }
 .s-lost-links span { color: var(--ink-2); font-size: 15px; }
+
+/* Cards and the small pages a signed-in or signing-in player sees: /login, /start, /account. */
+.s-card {
+  background: var(--plate); border: 1px solid var(--hair); border-radius: 12px;
+  box-shadow: 0 18px 40px -30px rgba(30, 26, 20, 0.35);
+}
+.s-gate {
+  flex: 1 0 auto; width: 100%; max-width: 1280px; margin: 0 auto; padding: 72px 32px 88px;
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 40px 64px;
+}
+.s-gate-h1 { font-size: 42px; }
+.s-gate-card { width: 100%; max-width: 440px; padding: 32px; display: grid; gap: 14px; }
+.s-gate-lead { margin: 0 0 6px; color: var(--ink-2); }
+.s-gate-new { padding-top: 14px; border-top: 1px solid var(--hair); }
+.s-gate-text { flex: 0 1 560px; min-width: 0; display: grid; gap: 18px; }
+.s-gate-wide .s-gate-text { flex: 1 1 420px; max-width: 540px; }
+.s-gate-form { flex: 1 1 400px; max-width: 480px; min-width: 0; padding: 28px; }
+.s-gate-plan { display: grid; gap: 10px; padding-top: 18px; border-top: 2px solid var(--ink); }
+.s-gate-plan .s-side-label { margin: 6px 0 0; }
+.s-gate-plan ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; color: var(--ink-2); }
+.s-gate-links { display: flex; align-items: center; gap: 18px; margin: 0; font-size: 14px; }
+.s-page .s-gate-links a { color: var(--ink-2); }
+.s-account { max-width: 884px; gap: 24px; }
+.s-account-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; }
+.s-account-head > div { display: grid; gap: 8px; }
+@media (max-width: 640px) {
+  .s-gate { padding: 40px 16px 56px; }
+  .s-gate-h1 { font-size: 34px; }
+  .s-gate-card, .s-gate-form { padding: 22px 18px; }
+  .account-sections section { padding: 18px 16px 20px; }
+}
+.s-page a.button, .s-page a.button:hover { color: var(--paper); }

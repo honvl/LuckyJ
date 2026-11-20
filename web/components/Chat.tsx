@@ -8,7 +8,7 @@ import {
   useExternalStoreRuntime,
   WebSpeechDictationAdapter,
 } from "@assistant-ui/react";
-import { MenuIcon, XIcon } from "lucide-react";
+import { BookOpenIcon, LibraryIcon, MenuIcon, NotebookTextIcon, XIcon } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { attachmentAdapter, uploaded } from "@/components/attachments";
@@ -17,6 +17,7 @@ import { Thread } from "@/components/assistant-ui/elements/thread.aui";
 import { ThreadList } from "@/components/assistant-ui/elements/thread-list.aui";
 import { AuiLabelsContext } from "@/components/assistant-ui/labels";
 import type { ChatEvent } from "@/lib/events";
+import { SITE } from "@/lib/site-strings";
 import { STRINGS, type Lang } from "@/lib/strings";
 
 type ThreadRow = { id: string; title: string | null; createdAt: string; archived: boolean };
@@ -298,12 +299,18 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
     if (WebSpeechDictationAdapter.isSupported?.()) setDictation(new WebSpeechDictationAdapter({ language: lang === "ja" ? "ja-JP" : "en-US" }));
   }, [lang]);
 
+  // First questions, for an empty thread only (with messages in it they would sit above the
+  // composer as follow-ups). A click writes one into the composer; the player sends it.
+  const empty = messages.length === 0 && !loading;
+  const suggestions = useMemo(() => (empty ? t.starters.map((prompt) => ({ prompt })) : []), [empty, t]);
+
   const runtime = useExternalStoreRuntime<ThreadMessageLike>({
     messages,
     convertMessage: (m) => m,
     isRunning: running,
     isLoading: loading,
     isDisabled: outOfBudget || creating || !current,
+    suggestions,
     onNew: async (message) => send(textOf(message), filesOf(message)),
     adapters: {
       dictation,
@@ -333,6 +340,8 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
   };
 
   const ctx = useMemo(() => ({ lang, siteUrl, replays }), [lang, siteUrl, replays]);
+  const site = SITE[lang];
+  const siteLink = "flex min-h-9 items-center gap-2.5 rounded-md px-2 text-muted-foreground hover:bg-sidebar-accent hover:text-foreground";
   const Welcome = useMemo(
     () =>
       function Welcome() {
@@ -363,10 +372,22 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
               className={`fixed inset-y-0 left-0 z-30 flex w-72 flex-col border-r border-sidebar-border bg-sidebar text-sidebar-foreground transition-transform md:static md:translate-x-0 ${sidebar ? "translate-x-0" : "-translate-x-full"}`}
               aria-label={t.threads}
             >
-              <div className="flex items-center justify-between px-4 pt-4 pb-2">
-                <div className="grid leading-tight">
-                  <span className="font-sans text-[11px] font-bold tracking-[0.14em] text-muted-foreground uppercase">{t.title}</span>
-                  <span className="font-serif text-lg">{player}</span>
+              <div className="flex items-center justify-between gap-3 px-4 pt-4 pb-2">
+                <div className="flex min-w-0 items-center gap-3">
+                  <a href={site.playbookHref} aria-label={site.bookTitle} title={site.bookTitle} className="shrink-0 rounded-sm">
+                    <svg viewBox="8 0 48 64" aria-hidden="true" focusable="false" className="h-8 w-6">
+                      <rect x="8" width="48" height="64" rx="10" fill="var(--felt)" />
+                      <rect x="12" y="4" width="40" height="49" rx="7" fill="var(--plate)" />
+                      <g fill="var(--verm)">
+                        <path d="M24 10H47V15H45Q42 15.4 42 18.5V35.5C42 44 36.6 48.6 29.5 48.6C23.6 48.6 18.6 45.4 18.6 40.6L27.6 41.4C31.2 42 33 39.8 33 35.5V18.5Q33 15.4 30 15H24Z" />
+                        <circle cx="23.6" cy="40.4" r="5.8" />
+                      </g>
+                    </svg>
+                  </a>
+                  <div className="grid min-w-0 leading-tight">
+                    <span className="font-sans text-[11px] font-bold tracking-[0.14em] text-muted-foreground uppercase">{t.title}</span>
+                    <span className="truncate font-serif text-lg">{player}</span>
+                  </div>
                 </div>
                 <button type="button" className="rounded-md p-1.5 hover:bg-sidebar-accent md:hidden" onClick={() => setSidebar(false)} aria-label="Close">
                   <XIcon className="size-4" />
@@ -375,6 +396,13 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
               <div className="min-h-0 flex-1 overflow-y-auto px-2 pb-2">
                 <ThreadList />
               </div>
+              <nav className="grid border-t border-sidebar-border px-2 py-2 font-sans text-sm" aria-label={t.siteLinks}>
+                {bookSlug && chapters.length > 0 && (
+                  <a className={siteLink} href={`/books/${bookSlug}`}><NotebookTextIcon className="size-4 shrink-0" />{t.yourGuide}</a>
+                )}
+                <a className={siteLink} href="/books"><LibraryIcon className="size-4 shrink-0" />{site.guides}</a>
+                <a className={siteLink} href={site.playbookHref}><BookOpenIcon className="size-4 shrink-0" />{site.bookTitle}</a>
+              </nav>
               <div className="grid gap-2 border-t border-sidebar-border px-4 py-3 font-sans text-sm">
                 {usedPct != null && (
                   <div className="grid gap-1" title={t.used(usedPct)}>

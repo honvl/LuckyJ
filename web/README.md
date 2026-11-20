@@ -6,6 +6,10 @@ Vercel with the site.
 - `app/chat`: the thread. History comes from the session's own event list; live events stream in
   over `/api/thread/stream`, and a dropped stream reconnects and refetches history, so a
   10-minute analysis survives a flaky connection. Nothing about the conversation is stored here.
+- `app/(site)/start`: where a signed-in player waits for the chat: the subscribe form, the wait
+  while their games are fetched (it asks again every minute), or a note that the login has no
+  tutor. `/chat` forwards here. It sits under `app/(site)` because the chat page's own layout
+  (Tailwind) does not load the site's stylesheet.
 - `components/Markdown.tsx`: the coach's replies. Tables right-align numbers, grey the `± SE`,
   scroll sideways on a phone with the row label pinned, and copy as CSV. `[[5m]]` draws tiles
   with the guide's tile font. `[[game:<uuid> East 1-0 t9]]` shows a short label, and links to
