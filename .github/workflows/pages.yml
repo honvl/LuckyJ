@@ -1,4 +1,4 @@
-name: Deploy GitHub Pages
+name: Deploy GitHub Pages (redirects to ai.yui-life.com)
 
 on:
   push:
@@ -30,10 +30,13 @@ jobs:
         with:
           enablement: true
 
+      - name: Build redirect pages
+        run: python3 scripts/build_pages_redirects.py --out _pages
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: _pages
 
       - name: Deploy to GitHub Pages
         id: deployment
