@@ -6,7 +6,7 @@ import { STRINGS, type Lang } from "@/lib/strings";
 import ManageButton from "./ManageButton";
 import Markdown from "./Markdown";
 
-type Chapter = { file: string; number: number; slug: string; isPublic: boolean };
+type Chapter = { key: string; number: number; title: string; isPublic: boolean };
 type Local = { id: string; kind: "user"; text: string; local: true };
 type Item = ChatEvent | Local;
 
@@ -39,6 +39,7 @@ export default function Chat({ lang, player, siteUrl, canManage = false }: { lan
   const [spent, setSpent] = useState(0);
   const [cap, setCap] = useState<number | null>(null);
   const [chapters, setChapters] = useState<Chapter[]>([]);
+  const [bookSlug, setBookSlug] = useState<string | null>(null);
   const [replays, setReplays] = useState<Record<string, string>>({});
   const [draft, setDraft] = useState("");
   const [failed, setFailed] = useState(false);
@@ -74,8 +75,8 @@ export default function Chat({ lang, player, siteUrl, canManage = false }: { lan
     }
   }, []);
 
-  const load = useCallback(async () => {
-    const res = await fetch("/api/thread", { cache: "no-store" });
+  const load = useCallback(async (sync = false) => {
+    const res = await fetch(sync ? "/api/thread?sync=1" : "/api/thread", { cache: "no-store" });
     if (!res.ok) return;
     const data = await res.json();
     merge(data.events);
@@ -83,10 +84,11 @@ export default function Chat({ lang, player, siteUrl, canManage = false }: { lan
     setSpent(data.spentCents);
     setCap(data.capCents);
     setChapters(data.chapters);
+    setBookSlug(data.bookSlug ?? null);
   }, [merge]);
 
   useEffect(() => {
-    load();
+    load(true);
     fetch("/replays.json").then((r) => (r.ok ? r.json() : {})).then(setReplays).catch(() => {});
     const source = new EventSource("/api/thread/stream");
     let dropped = false;
@@ -101,7 +103,7 @@ export default function Chat({ lang, player, siteUrl, canManage = false }: { lan
       const ev = JSON.parse(msg.data) as ChatEvent;
       merge([ev]);
       // Chapters show up in the outputs a moment after the turn ends.
-      if (ev.kind === "status" && ev.state === "idle") setTimeout(load, 3000);
+      if (ev.kind === "status" && ev.state === "idle") setTimeout(() => load(true), 3000);
     };
     return () => source.close();
   }, [load, merge]);
@@ -143,11 +145,11 @@ export default function Chat({ lang, player, siteUrl, canManage = false }: { lan
 
   const toggleChapter = async (chapter: Chapter) => {
     const isPublic = !chapter.isPublic;
-    setChapters((prev) => prev.map((c) => (c.file === chapter.file ? { ...c, isPublic } : c)));
+    setChapters((prev) => prev.map((c) => (c.key === chapter.key ? { ...c, isPublic } : c)));
     await fetch("/api/chapters", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chapter: chapter.file, isPublic }),
+      body: JSON.stringify({ chapter: chapter.key, isPublic }),
     });
   };
 
@@ -183,9 +185,11 @@ export default function Chat({ lang, player, siteUrl, canManage = false }: { lan
           <h2>{t.chapters}</h2>
           <ul>
             {chapters.map((c) => (
-              <li key={c.file} className="chapter-card">
+              <li key={c.key} className="chapter-card">
                 <span className="chapter-num">{t.chapter(c.number)}</span>
-                <span className="chapter-slug">{c.slug.replace(/-/g, " ")}</span>
+                <span className="chapter-slug">
+                  {c.isPublic && bookSlug ? <a href={`/books/${bookSlug}#ch-${c.key}`}>{c.title}</a> : c.title}
+                </span>
                 <button type="button" className={`pill ${c.isPublic ? "is-on" : ""}`} aria-pressed={c.isPublic} onClick={() => toggleChapter(c)}>
                   {c.isPublic ? t.public : t.private}
                 </button>

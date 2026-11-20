@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { capAfterRenewal, hasAccess, invoiceSubscriptionId, isTutorSubscription, periodEnd, signupFields } from "./billing-rules.mjs";
+import { bookName, capAfterRenewal, hasAccess, invoiceSubscriptionId, isTutorSubscription, periodEnd, signupFields } from "./billing-rules.mjs";
 
 test("access", () => {
   assert.equal(hasAccess({ comp: true }), true);
@@ -35,9 +35,13 @@ test("only the tutor's price counts", () => {
   assert.equal(isTutorSubscription(tutor, undefined), false);
 });
 
-test("sign-up fields", () => {
-  assert.deepEqual(signupFields({ platform: "majsoul", gameName: "  Honver ", publish: false }), { platform: "majsoul", gameName: "Honver", publish: false });
-  assert.deepEqual(signupFields({ platform: "tenhou", gameName: "ID12345" }), { platform: "tenhou", gameName: "ID12345", publish: true });
-  assert.equal(signupFields({ platform: "riichi city", gameName: "x" }), null);
-  assert.equal(signupFields({ platform: "majsoul", gameName: "  " }), null);
+test("sign-up fields: one Mahjong Soul name and one Tenhou name, at least one", () => {
+  assert.deepEqual(signupFields({ majsoulName: "  Honver ", tenhouName: "", publish: false }), { majsoulName: "Honver", tenhouName: "", publish: false });
+  assert.deepEqual(signupFields({ tenhouName: "ID-Honver" }), { majsoulName: "", tenhouName: "ID-Honver", publish: true });
+  assert.deepEqual(signupFields({ majsoulName: "A", tenhouName: "B" }), { majsoulName: "A", tenhouName: "B", publish: true });
+  assert.equal(signupFields({ majsoulName: " ", tenhouName: "" }), null);
+  assert.equal(signupFields({}), null);
+  assert.equal(signupFields({ majsoulName: "x".repeat(100) }).majsoulName.length, 64);
+  assert.equal(bookName({ majsoulName: "A", tenhouName: "B" }), "A");
+  assert.equal(bookName({ majsoulName: "", tenhouName: "B" }), "B");
 });

@@ -1,12 +1,13 @@
 "use client";
 // The coach's replies: Markdown with GFM tables, plus the site's [[tile]] and [[game:...]] markup.
-import { Children, isValidElement, useRef, useState, type ReactNode } from "react";
+import { Children, isValidElement, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { STRINGS, type Lang } from "@/lib/strings";
 import { TILE_GLYPHS, gameLabel, isNumericCell, replayHref, splitError, splitMarkup, tileName } from "@/lib/markup.mjs";
 
-type Ctx = { lang: Lang; siteUrl: string; replays: Record<string, string> };
+// assetBase: where a chapter's own figures are served; a relative image src resolves against it.
+type Ctx = { lang: Lang; siteUrl: string; replays: Record<string, string>; assetBase?: string };
 
 // remark plugin: split text nodes on the markup into spans the components below draw.
 function remarkMahjong() {
@@ -34,13 +35,21 @@ function remarkMahjong() {
 
 // Chromium draws the SVG tile font blank: it gets the COLRv1 font, or the plain OTF without it.
 // The same check as site/app.js.
-const tileFontClass = (() => {
-  if (typeof navigator === "undefined") return "";
+function browserTileFont(): string {
   if (!/Chrome|Chromium|Edg|Opera|OPR|OPE|MSIE/.test(navigator.userAgent)) return "";
   return globalThis.CSS?.supports?.("font-tech(color-COLRv1)") ? "colr" : "otf";
-})();
+}
+
+const noSubscribe = () => () => {};
+
+// The server cannot know the browser, so it renders the default font and the browser switches
+// after hydration; computing it during render made every tile a hydration mismatch.
+function useTileFontClass(): string {
+  return useSyncExternalStore(noSubscribe, browserTileFont, () => "");
+}
 
 function Tiles({ tiles, lang }: { tiles: string[]; lang: Lang }) {
+  const tileFontClass = useTileFontClass();
   const label = tiles.map((t) => tileName(t, lang)).join(", ");
   return (
     <span className={`tiles inline-tile ${tileFontClass}`} role="img" aria-label={label} title={label}>
@@ -137,6 +146,12 @@ export default function Markdown({ text, ctx }: { text: string; ctx: Ctx }) {
     a: ({ node, href, children, ...props }: any) => (
       <a href={href} target="_blank" rel="noopener noreferrer" {...props}>{children}</a>
     ),
+    img: ({ node, src, alt }: any) => {
+      // Only a chapter's own figures: a bare file name, served from assetBase. Other images are dropped.
+      const name = typeof src === "string" ? src.replace(/^\.\//, "") : "";
+      if (!ctx.assetBase || !/^[\w.-]+\.(png|jpe?g|webp|svg|gif)$/i.test(name)) return null;
+      return <img className="md-figure" src={`${ctx.assetBase}/${encodeURIComponent(name)}`} alt={alt || ""} loading="lazy" />;
+    },
   };
   return (
     <div className="md">

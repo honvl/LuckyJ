@@ -25,8 +25,8 @@ export type Subscription = {
   customer_id: string | null;
   subscription_id: string | null;
   status: string;
-  platform: string | null;
-  game_name: string | null;
+  majsoul_name: string | null;
+  tenhou_name: string | null;
 };
 
 export type Access = {
@@ -60,9 +60,9 @@ export async function accessFor(email: string): Promise<Access> {
   };
 }
 
-export async function checkoutUrl(email: string, fields: { platform: string; gameName: string; publish: boolean }) {
+export async function checkoutUrl(email: string, fields: { majsoulName: string; tenhouName: string; publish: boolean }) {
   const base = env.NEXTAUTH_URL || "http://localhost:3100";
-  const metadata = { email, platform: fields.platform, game_name: fields.gameName, publish: String(fields.publish) };
+  const metadata = { email, majsoul_name: fields.majsoulName, tenhou_name: fields.tenhouName, publish: String(fields.publish) };
   const session = await stripe().checkout.sessions.create({
     mode: "subscription",
     line_items: [{ price: env.STRIPE_PRICE_ID!, quantity: 1 }],
@@ -102,14 +102,14 @@ async function upsertFromSubscription(sub: Stripe.Subscription, fallbackEmail?: 
   const end = periodEnd(sub);
   const customer = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
   await sql`
-    insert into subscriptions (email, customer_id, subscription_id, status, current_period_end, platform, game_name, publish, updated_at)
+    insert into subscriptions (email, customer_id, subscription_id, status, current_period_end, majsoul_name, tenhou_name, publish, updated_at)
     values (${email}, ${customer}, ${sub.id}, ${sub.status}, ${end ? new Date(end * 1000) : null},
-            ${sub.metadata?.platform || null}, ${sub.metadata?.game_name || null}, ${sub.metadata?.publish !== "false"}, now())
+            ${sub.metadata?.majsoul_name || null}, ${sub.metadata?.tenhou_name || null}, ${sub.metadata?.publish !== "false"}, now())
     on conflict (email) do update set
       customer_id = excluded.customer_id, subscription_id = excluded.subscription_id, status = excluded.status,
       current_period_end = excluded.current_period_end,
-      platform = coalesce(excluded.platform, subscriptions.platform),
-      game_name = coalesce(excluded.game_name, subscriptions.game_name),
+      majsoul_name = coalesce(excluded.majsoul_name, subscriptions.majsoul_name),
+      tenhou_name = coalesce(excluded.tenhou_name, subscriptions.tenhou_name),
       publish = excluded.publish, updated_at = now()`;
   return true;
 }

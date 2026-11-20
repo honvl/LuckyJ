@@ -49,3 +49,41 @@ create table if not exists billing_events (
   type        text not null,
   received_at timestamptz not null default now()
 );
+
+-- One Mahjong Soul name and one Tenhou name per player (at least one). platform and game_name
+-- above are from the first sign-up form and kept for old rows.
+alter table subscriptions add column if not exists majsoul_name text;
+alter table subscriptions add column if not exists tenhou_name text;
+
+-- Player books (luckyj.vercel.app/books/<slug>). book_name is what the book is published under
+-- (the Mahjong Soul name, else the Tenhou name, else the player's name); synced_at throttles the
+-- check for new chapter archives.
+alter table players add column if not exists book_name text;
+alter table players add column if not exists slug text unique;
+alter table players add column if not exists synced_at timestamptz;
+
+-- One row per chapter the coach packed (chapter-<NN>-<slug>.tar.gz). key is "<NN>-<slug>".
+-- A newer archive of the same chapter replaces it (source_file_id tells them apart).
+create table if not exists chapters (
+  player         text not null references players(name) on delete cascade,
+  key            text not null,
+  number         int  not null,
+  title          text not null,
+  markdown       text not null,
+  spots          jsonb,
+  source_file_id text not null,
+  created_at     timestamptz not null default now(),
+  updated_at     timestamptz not null default now(),
+  primary key (player, key)
+);
+
+-- Figures shipped with a chapter, stored as base64 (small images only).
+create table if not exists chapter_files (
+  player  text not null,
+  key     text not null,
+  name    text not null,
+  mime    text not null,
+  data    text not null,
+  primary key (player, key, name),
+  foreign key (player, key) references chapters(player, key) on delete cascade
+);

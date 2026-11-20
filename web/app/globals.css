@@ -635,3 +635,132 @@ a {
     width: 100%;
   }
 }
+
+/* Player books (/books, /books/<name>): one reading column in the guide's paper and type. */
+.book {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 16px 96px;
+}
+
+.book h1 {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.15;
+  margin: 4px 0 8px;
+}
+
+.book-lead {
+  color: var(--ink-2);
+  margin: 0 0 28px;
+}
+
+.book-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.book-list li {
+  display: grid;
+  gap: 2px;
+  padding: 12px 16px;
+  background: var(--plate);
+  border: 1px solid var(--hair);
+  border-radius: 8px;
+}
+
+.book-list a {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.book-list .login-note,
+.book-foot {
+  margin: 0;
+}
+
+.book-foot {
+  margin-top: 48px;
+}
+
+.book-toc {
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  padding: 12px 0;
+  margin-bottom: 32px;
+}
+
+.book-toc h2,
+.book-cards h3 {
+  font: 700 12px var(--sans);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.book-toc ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.book-chapter {
+  padding: 8px 0 40px;
+  border-bottom: 1px solid var(--hair-2);
+  margin-bottom: 32px;
+  scroll-margin-top: 16px;
+}
+
+.book-chapter .md h1 {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0 0 16px;
+}
+
+.md-figure {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 16px auto;
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  background: var(--plate);
+}
+
+.book-cards {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.book-card {
+  padding: 16px 18px;
+  background: var(--plate);
+  border: 1px solid var(--hair);
+  border-radius: 8px;
+}
+
+.book-card h4 {
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.book-card dl {
+  margin: 10px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.book-card dt {
+  font: 700 11px var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--verm);
+}
+
+.book-card dd {
+  margin: 2px 0 0;
+}

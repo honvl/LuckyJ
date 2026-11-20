@@ -42,10 +42,23 @@ export function isTutorSubscription(subscription, priceId) {
   return (subscription?.items?.data || []).some((item) => (item?.price?.id ?? item?.price) === priceId);
 }
 
-/** The sign-up form's fields, cleaned; null when something required is missing. */
+/** One in-game name, trimmed to what the games allow; "" when absent. */
+function cleanName(value) {
+  return typeof value === "string" ? value.trim().slice(0, 64) : "";
+}
+
+/**
+ * The sign-up form's fields, cleaned: one Mahjong Soul name and one Tenhou name, at least one of
+ * them. Null when both are missing.
+ */
 export function signupFields(body) {
-  const platform = body?.platform === "tenhou" ? "tenhou" : body?.platform === "majsoul" ? "majsoul" : null;
-  const gameName = typeof body?.gameName === "string" ? body.gameName.trim().slice(0, 64) : "";
-  if (!platform || !gameName) return null;
-  return { platform, gameName, publish: body?.publish !== false };
+  const majsoulName = cleanName(body?.majsoulName);
+  const tenhouName = cleanName(body?.tenhouName);
+  if (!majsoulName && !tenhouName) return null;
+  return { majsoulName, tenhouName, publish: body?.publish !== false };
+}
+
+/** The name a player's book is published under: their Mahjong Soul name, else their Tenhou name. */
+export function bookName(fields) {
+  return fields.majsoulName || fields.tenhouName || "";
 }

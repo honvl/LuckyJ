@@ -458,14 +458,15 @@ def cmd_pending(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     """Paying players whose games still need fetching and whose thread does not exist yet."""
     with _db() as conn:
         rows = conn.execute(
-            "select s.email, s.platform, s.game_name, s.publish, s.status, s.created_at"
+            "select s.email, s.majsoul_name, s.tenhou_name, s.game_name, s.publish, s.status, s.created_at"
             " from subscriptions s left join logins l on l.email = s.email"
             " where l.email is null and s.status in ('active', 'trialing', 'past_due')"
             " order by s.created_at").fetchall()
     if not rows:
         print("nobody is waiting")
-    for email, platform, name, publish, status, created in rows:
-        print(f"{created:%Y-%m-%d %H:%M}  {platform or '?':<8} {name or '?':<24} {email}  "
+    for email, majsoul, tenhou, old_name, publish, status, created in rows:
+        names = "  ".join(x for x in (majsoul and f"Mahjong Soul: {majsoul}", tenhou and f"Tenhou: {tenhou}") if x)
+        print(f"{created:%Y-%m-%d %H:%M}  {email}  {names or old_name or '?'}  "
               f"{'public' if publish else 'private'}  {status}")
     if rows:
         print("\nFetch their games, then: thread.py new <player> --games <dir> --email <email>")

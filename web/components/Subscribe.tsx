@@ -4,8 +4,9 @@ import { STRINGS, type Lang } from "@/lib/strings";
 
 export default function Subscribe({ lang, ended }: { lang: Lang; ended: boolean }) {
   const t = STRINGS[lang];
-  const [platform, setPlatform] = useState("majsoul");
-  const [gameName, setGameName] = useState("");
+  const [majsoulName, setMajsoulName] = useState("");
+  const [tenhouName, setTenhouName] = useState("");
+  const hasName = Boolean(majsoulName.trim() || tenhouName.trim());
   const [publish, setPublish] = useState(true);
   const [busy, setBusy] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -19,7 +20,7 @@ export default function Subscribe({ lang, ended }: { lang: Lang; ended: boolean 
         const res = await fetch("/api/billing/checkout", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ platform, gameName, publish }),
+          body: JSON.stringify({ majsoulName, tenhouName, publish }),
         });
         const body = await res.json().catch(() => ({}));
         if (res.ok && body.url) window.location.href = body.url;
@@ -33,19 +34,14 @@ export default function Subscribe({ lang, ended }: { lang: Lang; ended: boolean 
       <p className="login-lead">{t.subscribeLead}</p>
       <p className="subscribe-price">{t.price}</p>
       <p className="login-note">{t.priceNote}</p>
-      <fieldset className="subscribe-platform">
-        <legend>{t.platform}</legend>
-        {(["majsoul", "tenhou"] as const).map((p) => (
-          <label key={p}>
-            <input type="radio" name="platform" value={p} checked={platform === p} onChange={() => setPlatform(p)} />
-            {t[p]}
-          </label>
-        ))}
-      </fieldset>
+      <p className="login-note">{t.namesLead}</p>
       <label className="subscribe-field">
-        {t.gameName}
-        <input value={gameName} onChange={(e) => setGameName(e.target.value)} maxLength={64} required />
-        <span className="login-note">{t.gameNameHint}</span>
+        {t.majsoulName}
+        <input value={majsoulName} onChange={(e) => setMajsoulName(e.target.value)} maxLength={64} autoComplete="off" />
+      </label>
+      <label className="subscribe-field">
+        {t.tenhouName}
+        <input value={tenhouName} onChange={(e) => setTenhouName(e.target.value)} maxLength={64} autoComplete="off" />
       </label>
       <label className="subscribe-check">
         <input type="checkbox" checked={publish} onChange={(e) => setPublish(e.target.checked)} />
@@ -54,7 +50,7 @@ export default function Subscribe({ lang, ended }: { lang: Lang; ended: boolean 
       <p className="login-note">
         {t.agreeBefore}{lang === "ja" ? "" : " "}<a href={t.privacyHref}>{t.privacy}</a>{t.agreeAfter}
       </p>
-      <button className="button" type="submit" disabled={busy || !gameName.trim()}>
+      <button className="button" type="submit" disabled={busy || !hasName}>
         {busy ? t.subscribing : t.subscribe}
       </button>
       {failed && <p className="login-error">{t.error}</p>}

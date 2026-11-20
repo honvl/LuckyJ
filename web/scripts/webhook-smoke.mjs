@@ -30,7 +30,7 @@ async function send(type, object, id = `evt_smoke_${type}_${Date.now()}_${ids.le
 
 const subscription = (status) => ({
   id: SUB, object: "subscription", customer: "cus_smoke", status,
-  metadata: { email: EMAIL, platform: "majsoul", game_name: "SmokeTest", publish: "false" },
+  metadata: { email: EMAIL, majsoul_name: "SmokeTest", tenhou_name: "SmokeTenhou", publish: "false" },
   items: { data: [{ current_period_end: 1800000000, price: { id: env.STRIPE_PRICE_ID } }] },
 });
 const otherProduct = {
@@ -47,7 +47,8 @@ try {
   assert.equal((await send("customer.subscription.created", subscription("active"))).status, 200);
   let [row] = await sql`select * from subscriptions where email = ${EMAIL}`;
   assert.equal(row.status, "active");
-  assert.equal(row.game_name, "SmokeTest");
+  assert.equal(row.majsoul_name, "SmokeTest");
+  assert.equal(row.tenhou_name, "SmokeTenhou");
   assert.equal(row.publish, false);
   assert.equal(new Date(row.current_period_end).getTime(), 1800000000 * 1000);
 

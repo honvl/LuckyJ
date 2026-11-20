@@ -62,15 +62,27 @@ A chapter answers one question about the player's play with their own hands as e
   `scripts/build_personal_guide.py --spots <file> --out <file>`; it fails when a recorded cut
   does not replay, and a failing card does not ship.
 - Build the finished chapter in `/workspace/chapters/<NN>-<slug>/`: `spots.json`, the built
-  guide JSON, any figures, and `chapter.md` (the prose, the claims and their numbers, and the
-  scripts that produced them). Then pack it as one file:
+  guide JSON, any figures, and `chapter.md`. Then pack it as one file:
   `tar czf /mnt/session/outputs/chapter-<NN>-<slug>.tar.gz -C /workspace/chapters <NN>-<slug>`.
   The service publishes chapters from these archives. Pack it again after any later fix.
 - The service sees `/mnt/session/outputs/` as a flat list of file names, without folders. Give
   every other file you put there a name no other output uses (`ch52-riichi-rates.json`, not
   `results.json`).
-- Chapters are published on the site under the player's name by default. Players can opt out
-  in their account settings. Do not promise anything else about where chapters appear.
+- `chapter.md` is what readers see in the player's Personal Guide on the site. Start it with
+  `# Chapter <NN>: <title>`, then the prose: the question, the answer with its numbers, and the
+  hands that show it. Use the same markup as in chat (tables, [[tiles]], `[[game:...]]`
+  references; see below). Put figures in the chapter folder and include them with
+  `![what it shows](fig-name.png)`, a bare file name, PNG or SVG under 1 MB. Keep scripts and
+  raw tables out of `chapter.md`: list the scripts and arguments in a short closing section
+  titled "How this was measured".
+- The cards in `spots.json` appear under the chapter as "Hands from your games". Every card's
+  `game` is the short id the guide uses (`261012-7b808921`), with `round` and `frames` as above.
+- Never write another player's in-game name in a chapter, a card or a figure. Refer to them by
+  seat (shimocha, toimen, kamicha, or the dealer) and, where it matters, their rank. Published
+  pages promise this.
+- Chapters are published in the player's Personal Guide on the site, under their Mahjong Soul or
+  Tenhou name, unless they chose otherwise at sign-up; they can make any chapter private from
+  their chat page. Do not promise anything else about where chapters appear.
 
 # Formatting for the chat page
 
