@@ -1,0 +1,189 @@
+{
+ "games": 6000,
+ "from": 1794314403,
+ "to": 1795144136,
+ "all_celestial_tables": 1261,
+ "groups": {
+  "S1": {
+   "seat_share": 0.2201,
+   "n": 5283,
+   "place": 2.555,
+   "dist": [
+    0.234,
+    0.245,
+    0.253,
+    0.268
+   ],
+   "pts_per_game": -14.45
+  },
+  "S2": {
+   "seat_share": 0.0842,
+   "n": 2021,
+   "place": 2.476,
+   "dist": [
+    0.256,
+    0.257,
+    0.242,
+    0.245
+   ],
+   "pts_per_game": -7.9
+  },
+  "S3": {
+   "seat_share": 0.0195,
+   "n": 468,
+   "place": 2.568,
+   "dist": [
+    0.235,
+    0.229,
+    0.269,
+    0.267
+   ],
+   "pts_per_game": -22.99
+  },
+  "Cel1": {
+   "seat_share": 0.2702,
+   "n": 6486,
+   "place": 2.498,
+   "dist": [
+    0.248,
+    0.249,
+    0.259,
+    0.243
+   ],
+   "pts_per_game": -0.23
+  },
+  "Cel2-3": {
+   "seat_share": 0.2115,
+   "n": 5077,
+   "place": 2.475,
+   "dist": [
+    0.261,
+    0.249,
+    0.245,
+    0.246
+   ],
+   "pts_per_game": 0.49
+  },
+  "Cel4-7": {
+   "seat_share": 0.1166,
+   "n": 2799,
+   "place": 2.458,
+   "dist": [
+    0.26,
+    0.261,
+    0.239,
+    0.239
+   ],
+   "pts_per_game": 2.32
+  },
+  "Cel8+": {
+   "seat_share": 0.0777,
+   "n": 1866,
+   "place": 2.491,
+   "dist": [
+    0.255,
+    0.251,
+    0.243,
+    0.251
+   ],
+   "pts_per_game": 0.98
+  }
+ },
+ "pairs": {
+  "Cel1 above S3": {
+   "n": 364,
+   "rate": 0.574
+  },
+  "Cel1 above S2": {
+   "n": 1628,
+   "rate": 0.484
+  },
+  "Cel1 above S1": {
+   "n": 4317,
+   "rate": 0.517
+  },
+  "S3 above S1": {
+   "n": 302,
+   "rate": 0.517
+  },
+  "Cel2-3 above Cel1": {
+   "n": 4130,
+   "rate": 0.502
+  },
+  "Cel4-7 above Cel1": {
+   "n": 2275,
+   "rate": 0.515
+  },
+  "Cel8+ above Cel1": {
+   "n": 1524,
+   "rate": 0.512
+  }
+ },
+ "lv1_walk": [
+  {
+   "avg_place": 2.4,
+   "dist": [
+    0.278,
+    0.258,
+    0.248,
+    0.215
+   ],
+   "drift_per_game": 0.0438,
+   "p_demote_before_lv2": 0.035,
+   "p_lv2_first": 0.964,
+   "median_games": 173
+  },
+  {
+   "avg_place": 2.45,
+   "dist": [
+    0.263,
+    0.254,
+    0.254,
+    0.229
+   ],
+   "drift_per_game": 0.0217,
+   "p_demote_before_lv2": 0.152,
+   "p_lv2_first": 0.824,
+   "median_games": 235
+  },
+  {
+   "avg_place": 2.48,
+   "dist": [
+    0.254,
+    0.251,
+    0.257,
+    0.238
+   ],
+   "drift_per_game": 0.0084,
+   "p_demote_before_lv2": 0.336,
+   "p_lv2_first": 0.619,
+   "median_games": 279
+  },
+  {
+   "avg_place": 2.5,
+   "dist": [
+    0.247,
+    0.249,
+    0.26,
+    0.244
+   ],
+   "drift_per_game": -0.0005,
+   "p_demote_before_lv2": 0.49,
+   "p_lv2_first": 0.458,
+   "median_games": 287
+  },
+  {
+   "avg_place": 2.55,
+   "dist": [
+    0.233,
+    0.244,
+    0.265,
+    0.259
+   ],
+   "drift_per_game": -0.0226,
+   "p_demote_before_lv2": 0.822,
+   "p_lv2_first": 0.154,
+   "median_games": 237
+  }
+ ]
+}
