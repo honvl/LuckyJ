@@ -33,7 +33,8 @@ jobs:
       - name: Check the secrets are set
         id: ready
         env:
-          NEED: ${{ secrets.DATABASE_URL != '' && secrets.ANTHROPIC_API_KEY != '' && secrets.MJS_ACCESS_TOKEN != '' && secrets.AMAE_KOROMO_TOKEN != '' && secrets.MJS_RANDOM_KEY != '' }}
+          # The login check needs only the fetch account; onboarding needs everything.
+          NEED: ${{ secrets.MJS_ACCESS_TOKEN != '' && secrets.MJS_RANDOM_KEY != '' && (inputs.check_login || (secrets.DATABASE_URL != '' && secrets.ANTHROPIC_API_KEY != '' && secrets.AMAE_KOROMO_TOKEN != '')) }}
         run: |
           echo "ok=$NEED" >> "$GITHUB_OUTPUT"
           [ "$NEED" = true ] || echo "::notice::Onboarding is not configured yet (repository secrets missing); nothing to do."
