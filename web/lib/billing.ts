@@ -76,9 +76,41 @@ export async function checkoutUrl(email: string) {
   return session.url;
 }
 
+// The Stripe account also sells other products, and the portal's default settings are shared with
+// them, so the tutor uses a portal configuration of its own (found by its metadata, created once):
+// cancel at the end of the paid month, update the card, see invoices, and the tutor's own legal links.
+let portalConfig: string | null = env.STRIPE_PORTAL_CONFIG || null;
+
+async function tutorPortalConfig(base: string): Promise<string> {
+  if (portalConfig) return portalConfig;
+  for await (const c of stripe().billingPortal.configurations.list({ active: true, limit: 100 })) {
+    if (c.metadata?.app === "luckyj-tutor") return (portalConfig = c.id);
+  }
+  const created = await stripe().billingPortal.configurations.create({
+    name: "LuckyJ AI Mahjong Tutor",
+    metadata: { app: "luckyj-tutor" },
+    business_profile: {
+      privacy_policy_url: `${base}/privacy.html`,
+      terms_of_service_url: `${base}/terms.html`,
+    },
+    default_return_url: `${base}/account`,
+    features: {
+      invoice_history: { enabled: true },
+      payment_method_update: { enabled: true },
+      subscription_cancel: {
+        enabled: true,
+        mode: "at_period_end",
+        cancellation_reason: { enabled: true, options: ["too_expensive", "missing_features", "unused", "other"] },
+      },
+    },
+  });
+  return (portalConfig = created.id);
+}
+
 export async function portalUrl(customerId: string) {
   const base = env.NEXTAUTH_URL || "http://localhost:3100";
-  const session = await stripe().billingPortal.sessions.create({ customer: customerId, return_url: `${base}/chat` });
+  const configuration = await tutorPortalConfig(base);
+  const session = await stripe().billingPortal.sessions.create({ customer: customerId, configuration, return_url: `${base}/account` });
   return session.url;
 }
 

@@ -77,6 +77,8 @@ A chapter answers one question about the player's play with their own hands as e
   titled "How this was measured".
 - The cards in `spots.json` appear under the chapter as "Hands from your games". Every card's
   `game` is the short id the guide uses (`261012-7b808921`), with `round` and `frames` as above.
+- Call the player's games "your Mahjong Soul games" or "your game records". Do not name the
+  sites or tools the games were fetched with, in chat or in chapters.
 - Never write another player's in-game name in a chapter, a card or a figure. Refer to them by
   seat (shimocha, toimen, kamicha, or the dealer) and, where it matters, their rank. Published
   pages promise this.
