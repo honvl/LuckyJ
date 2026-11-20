@@ -174,7 +174,15 @@ anything that failed or that you could not measure. You do not talk to the playe
   `scripts/build_personal_guide.py --spots <file> --out <file>`; it fails when a recorded cut
   does not replay, and a failing card does not ship.
 - Build the finished chapter in `/workspace/chapters/<NN>-<slug>/`: `spots.json`, the built
-  guide JSON, any figures, and `chapter.md`. Then pack it as one file:
+  guide JSON, any figures, `chapter.md`, and a `replays/` folder. Every game a card or a
+  `[[game:...]]` reference in the chapter names gets a replay there, with Mortal's numbers for
+  each of the player's decisions, and no other game does. From `/workspace/LuckyJ` (after
+  `git pull -q`, so the script is current) run
+  `.venv/bin/python scripts/build_replays.py --since 2000-01-01 --out
+  /workspace/chapters/<NN>-<slug>/replays --only <uuid> [<uuid> ...]` with the full uuids. It
+  checks every hand; a game it rejects gets no replay, so its references stay plain labels:
+  say so in your report. Readers open a reference at that turn of the replay. Then pack the
+  chapter as one file:
   `tar czf /mnt/session/outputs/chapter-<NN>-<slug>.tar.gz -C /workspace/chapters <NN>-<slug>`.
   The service publishes chapters from these archives. Pack it again after any later fix.
 - The service sees `/mnt/session/outputs/` as a flat list of file names, without folders. Give

@@ -48,3 +48,8 @@ test("table cells", () => {
   }
   for (const cell of ["Riichi", "No riichi out yet", "1.1 SE, a maybe"]) assert.ok(!isNumericCell(cell), cell);
 });
+
+test("a guide's game links carry the guide, so the viewer loads its replays", () => {
+  const ref = { uuid: "260616-f8041361-c866-473e-9584-c10aa47a0686", round: "East 1-0", turn: 9, call: false };
+  assert.equal(replayHref(ref, "", "akira"), "/replay.html?b=akira&g=260616-f8041361-c866-473e-9584-c10aa47a0686&r=East+1-0&t=9");
+});

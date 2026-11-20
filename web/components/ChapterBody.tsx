@@ -1,7 +1,7 @@
 "use client";
 // A chapter of a player's book: its prose (the coach's chapter.md) and its cards (spots.json),
 // drawn with the chat's renderer so tiles, tables and game references look the same.
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import type { BookChapter } from "@/lib/books";
 import { STRINGS, type Lang } from "@/lib/strings";
 import Markdown from "./Markdown";
@@ -48,14 +48,13 @@ function Card({ spot, lang, ctx }: { spot: Spot; lang: Lang; ctx: any }) {
 }
 
 /** One chapter's prose and its cards. The page draws the kicker and the title itself. */
-export default function ChapterBody({ lang, slug, chapter }: { lang: Lang; slug: string; chapter: BookChapter }) {
+export default function ChapterBody({ lang, slug, chapter, replays }: {
+  lang: Lang; slug: string; chapter: BookChapter; replays: Record<string, string>;
+}) {
   const t = STRINGS[lang];
-  const [replays, setReplays] = useState<Record<string, string>>({});
-  useEffect(() => {
-    fetch("/replays.json").then((r) => (r.ok ? r.json() : {})).then(setReplays).catch(() => {});
-  }, []);
+  // The guide's own replays (packed with its chapters): a game reference links to one of them.
   const ctx = useMemo(
-    () => ({ lang, siteUrl: "", replays, assetBase: `/books/${slug}/files/${encodeURIComponent(chapter.key)}` }),
+    () => ({ lang, siteUrl: "", replays, book: slug, assetBase: `/books/${slug}/files/${encodeURIComponent(chapter.key)}` }),
     [lang, replays, slug, chapter.key],
   );
   const spots = Array.isArray(chapter.spots) ? (chapter.spots as Spot[]) : [];

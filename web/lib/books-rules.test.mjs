@@ -103,3 +103,20 @@ test("the static guide's chapters and news are read from its markup", () => {
   assert.deepEqual(g.news[0], { date: "18 Nov", id: "draw", text: "Chapter 52 looks at “games”." });
   assert.equal(plain("a&amp;b"), "a&b");
 });
+
+import { readReplay } from "./books-rules.mjs";
+
+test("a chapter's packed replays are read; anything else in replays/ is skipped", () => {
+  const id = "260616-f8041361-c866-473e-9584-c10aa47a0686";
+  const game = JSON.stringify({ id, date: "2026-06-16", hands: [] });
+  const files = {
+    "4-x/chapter.md": Buffer.from("# Chapter 4: X\n\nText."),
+    [`4-x/replays/${id}.json`]: Buffer.from(game),
+    "4-x/replays/index.json": Buffer.from("{}"),
+    "4-x/replays/260101-00000000-0000-0000-0000-000000000000.json": Buffer.from("not json"),
+  };
+  const ch = readChapter(files, "4-x");
+  assert.deepEqual(ch.replays.map((r) => [r.id, r.date]), [[id, "2026-06-16"]]);
+  assert.deepEqual(ch.figures, []);
+  assert.equal(readReplay(`${id}.json`, Buffer.from(JSON.stringify({ id: "other", hands: [] }))), null);
+});

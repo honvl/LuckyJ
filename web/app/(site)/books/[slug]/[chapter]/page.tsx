@@ -52,7 +52,7 @@ export default async function ChapterPage({ params }: Params) {
         <article className="s-col-main s-reading">
           <p className="s-kicker">{s.chapterKicker(chapter.number, chapter.topic, day.format(new Date(chapter.addedAt)))}</p>
           <h1 className="s-chapter-h1">{chapter.title}</h1>
-          <ChapterBody lang={lang} slug={book.slug} chapter={chapter} />
+          <ChapterBody lang={lang} slug={book.slug} chapter={chapter} replays={book.replays} />
           <nav className="s-pager" aria-label={s.allChapters}>
             {prev ? <a href={href(prev.key)}><span className="s-muted s-small">{s.previous(prev.number)}</span><span className="s-side-title">{prev.title}</span></a> : <span />}
             {next ? <a className="s-pager-next" href={href(next.key)}><span className="s-muted s-small">{s.next(next.number)}</span><span className="s-side-title">{next.title}</span></a>

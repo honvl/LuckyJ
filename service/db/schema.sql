@@ -160,3 +160,15 @@ alter table players add column if not exists rank_at timestamptz;
 
 -- A chapter's topic, from the "Topic:" line under its heading (web/lib/books-rules.mjs).
 alter table chapters add column if not exists topic text;
+
+-- Replays (with Mortal's numbers) of the games a chapter cites, packed with the chapter by the
+-- coach (scripts/build_replays.py) and served at /books/<slug>/replays/<game>.json for
+-- site/replay.html?b=<slug>&g=<game>. Only the chapter's own games, never a whole history.
+create table if not exists chapter_replays (
+  player  text not null references players(name) on delete cascade,
+  key     text not null,
+  game_id text not null,
+  date    text,
+  data    text not null,
+  primary key (player, key, game_id)
+);

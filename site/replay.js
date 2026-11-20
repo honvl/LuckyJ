@@ -1044,10 +1044,26 @@
     return h;
   }
 
-  async function renderGame(id, params) {
+  // A player's Personal Guide keeps its own replays (?b=<slug>): the head then names that guide
+  // and links back to it instead of to the Honver guide.
+  function brandForBook(book, game) {
+    const home = `/books/${encodeURIComponent(book)}`;
+    const name = game.players?.[game.hero]?.name || "";
+    const mark = document.querySelector(".running-head .book-mark");
+    if (mark) mark.setAttribute("href", home);
+    const title = document.querySelector(".running-head .book-title");
+    if (title && name) title.textContent = `Personal Guide: ${name}`;
+    for (const a of document.querySelectorAll(".running-nav a")) {
+      const href = a.getAttribute("href");
+      if (href === "replay.html") a.remove();
+      else if (href === "honver.html") a.setAttribute("href", home);
+    }
+  }
+
+  async function renderGame(id, params, book) {
     let game;
     try {
-      game = await loadJson(`replays/${id}.json`);
+      game = await loadJson(book ? `/books/${encodeURIComponent(book)}/replays/${id}.json` : `replays/${id}.json`);
     } catch (error) {
       app.innerHTML = `<section class="replay-masthead"><h1>Replay not found.</h1><p class="standfirst">This game could not load (${escapeHtml(
         error.message
@@ -1055,6 +1071,7 @@
       return;
     }
     view.game = game;
+    if (book) brandForBook(book, game);
     renderGameShell(game);
     setupHandToggle();
     bindControls();
@@ -1075,8 +1092,9 @@
     setupRunningHead();
     const params = new URLSearchParams(window.location.search);
     const id = params.get("g") || "";
+    const book = /^[a-z0-9-]{2,60}$/.test(params.get("b") || "") ? params.get("b") : null;
     if (/^[0-9a-f-]{8,64}$/.test(id)) {
-      await renderGame(id, params);
+      await renderGame(id, params, book);
       return;
     }
     try {

@@ -7,7 +7,7 @@ import { STRINGS, type Lang } from "@/lib/strings";
 import { TILE_GLYPHS, gameLabel, isNumericCell, replayHref, splitError, splitMarkup, tileName } from "@/lib/markup.mjs";
 
 // assetBase: where a chapter's own figures are served; a relative image src resolves against it.
-export type Ctx = { lang: Lang; siteUrl: string; replays: Record<string, string>; assetBase?: string };
+export type Ctx = { lang: Lang; siteUrl: string; replays: Record<string, string>; assetBase?: string; book?: string };
 
 // remark plugin: split text nodes on the markup into spans the components below draw.
 export function remarkMahjong() {
@@ -66,7 +66,7 @@ function GameRef({ game, ctx }: { game: any; ctx: Ctx }) {
     return <span className="game-ref is-pending" title={STRINGS[ctx.lang].replayLater}>{label}</span>;
   }
   return (
-    <a className="game-ref" href={replayHref(game, ctx.siteUrl)} target="_blank" rel="noopener">
+    <a className="game-ref" href={replayHref(game, ctx.siteUrl, ctx.book)} target="_blank" rel="noopener">
       {label}
     </a>
   );

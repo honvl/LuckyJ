@@ -80,6 +80,15 @@ class ServiceThreadTest(unittest.TestCase):
         self.assertIn("Topic|トピック", rules)
         self.assertIn("ranks", CLIENT)
 
+    def test_chapters_pack_replays_of_their_own_games(self):
+        flat = " ".join(SYSTEM.split())
+        self.assertIn("scripts/build_replays.py --since 2000-01-01 --out /workspace/chapters/<NN>-<slug>/replays --only", flat)
+        self.assertIn("and no other game does", flat)
+        builder = (ROOT / "scripts/build_replays.py").read_text(encoding="utf-8")
+        self.assertIn('ap.add_argument("--only", nargs="+"', builder)
+        rules = (ROOT / "web/lib/books-rules.mjs").read_text(encoding="utf-8")
+        self.assertIn('rel.startsWith("replays/")', rules)
+
     def test_chapter_archive_name_matches_the_client(self):
         name = re.search(r"/mnt/session/outputs/(chapter-<NN>-<slug>\.tar\.gz)", SYSTEM)
         self.assertIsNotNone(name, "the prompt names the chapter archive")

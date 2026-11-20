@@ -35,6 +35,10 @@ Usage::
     .venv/bin/python scripts/build_replays.py              # every game, with Mortal
     .venv/bin/python scripts/build_replays.py --no-mortal  # event streams only
     .venv/bin/python scripts/build_replays.py --only 260928-50d32e06
+    .venv/bin/python scripts/build_replays.py --since 2000-01-01 --out <chapter>/replays --only <uuid> <uuid>
+
+The last form is how the tutor packs the replays of the games a chapter cites
+(service/agent/system.md).
 """
 
 from __future__ import annotations
@@ -645,7 +649,7 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--manifest", type=Path, default=MANIFEST)
     ap.add_argument("--out", type=Path, default=OUT_DIR)
-    ap.add_argument("--only", help="uuid prefix of one game")
+    ap.add_argument("--only", nargs="+", help="uuid prefixes of the games to build (default: all)")
     ap.add_argument("--no-mortal", action="store_true", help="write the event streams without Mortal")
     ap.add_argument("--since", default="2026-01-01", help="first date to include (YYYY-MM-DD)")
     args = ap.parse_args()
@@ -653,7 +657,7 @@ def main() -> None:
     rows = json.loads(args.manifest.read_text(encoding="utf-8"))
     rows = [r for r in rows if r["date"] >= args.since]
     if args.only:
-        rows = [r for r in rows if r["uuid"].startswith(args.only)]
+        rows = [r for r in rows if any(r["uuid"].startswith(p) for p in args.only)]
     rows.sort(key=lambda r: r["start_time"], reverse=True)
     engine = None if args.no_mortal else load_engine()
     args.out.mkdir(parents=True, exist_ok=True)

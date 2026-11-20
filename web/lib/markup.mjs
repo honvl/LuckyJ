@@ -81,8 +81,12 @@ export function gameLabel(ref, lang = "en", date = null) {
 }
 
 /** The site's replay of that moment (site/replay.js reads g, r, t and at). */
-export function replayHref(ref, siteUrl = "") {
-  const params = new URLSearchParams({ g: ref.uuid, r: ref.round, t: String(ref.turn) });
+export function replayHref(ref, siteUrl = "", book = "") {
+  // A player's guide keeps its replays itself: ?b=<slug> tells the viewer where to load them.
+  const params = new URLSearchParams(book ? { b: book } : {});
+  params.set("g", ref.uuid);
+  params.set("r", ref.round);
+  params.set("t", String(ref.turn));
   if (ref.call) params.set("at", "call");
   return `${siteUrl}/replay.html?${params}`;
 }

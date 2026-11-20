@@ -62,12 +62,16 @@ export function readChapter(files, key) {
   let markdown = null;
   let spots = null;
   const figures = [];
+  const replays = [];
   for (const [name, data] of Object.entries(files)) {
     const rel = inside(name);
     if (!rel) continue;
     if (rel === "chapter.md") markdown = data.toString("utf8");
     else if (rel === "spots.json") {
       try { spots = spotList(JSON.parse(data.toString("utf8"))); } catch { spots = null; }
+    } else if (rel.startsWith("replays/")) {
+      const replay = readReplay(rel.slice("replays/".length), data);
+      if (replay) replays.push(replay);
     } else {
       const ext = rel.split(".").pop().toLowerCase();
       if (IMAGE_TYPES[ext] && !rel.includes("/")) figures.push({ name: rel, mime: IMAGE_TYPES[ext], data });
@@ -78,7 +82,27 @@ export function readChapter(files, key) {
   const heading = body.match(/^#\s+(.+)$/m);
   const number = Number(key.split("-")[0]);
   const title = heading ? heading[1].trim().replace(/^Chapter\s+\d+:\s*/i, "").replace(/^第\d+章[：:]\s*/, "") : key.replace(/^\d+-/, "").replace(/-/g, " ");
-  return { key, number, title, topic, markdown: body, spots, figures };
+  return { key, number, title, topic, markdown: body, spots, figures, replays };
+}
+
+const GAME_ID = /^(\d{6}-[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12})\.json$/;
+
+/**
+ * A replay the coach packed with a chapter (replays/<uuid>.json, written by
+ * scripts/build_replays.py): {id, date, json}, or null for anything else (index.json, bad JSON,
+ * a file that is not a replay).
+ * @param {string} name @param {Buffer} data
+ */
+export function readReplay(name, data) {
+  const m = name.match(GAME_ID);
+  if (!m) return null;
+  try {
+    const game = JSON.parse(data.toString("utf8"));
+    if (!game || game.id !== m[1] || !Array.isArray(game.hands)) return null;
+    return { id: m[1], date: String(game.date || ""), json: data.toString("utf8") };
+  } catch {
+    return null;
+  }
 }
 
 /**

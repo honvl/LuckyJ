@@ -22,7 +22,11 @@ export type BookChapter = {
   updatedAt: string;
 };
 
-export type Book = { player: string; name: string; slug: string; rankId: number | null; chapters: BookChapter[] };
+export type Book = {
+  player: string; name: string; slug: string; rankId: number | null; chapters: BookChapter[];
+  /** Games with a replay on the site, by id, with the date the replay shows. */
+  replays: Record<string, string>;
+};
 
 /** Titles stored before the prefix was dropped still read "Chapter 1: …"; the number shows on its own. */
 function bareTitle(title: string): string {
@@ -99,6 +103,11 @@ export async function syncChapters(player: string, force = false): Promise<strin
         topic = excluded.topic, markdown = excluded.markdown, spots = excluded.spots,
         source_file_id = excluded.source_file_id, updated_at = now()`;
     await sql`delete from chapter_files where player = ${player} and key = ${key}`;
+    await sql`delete from chapter_replays where player = ${player} and key = ${key}`;
+    for (const r of chapter.replays) {
+      await sql`insert into chapter_replays (player, key, game_id, date, data)
+                values (${player}, ${key}, ${r.id}, ${r.date}, ${r.json})`;
+    }
     for (const fig of chapter.figures) {
       await sql`insert into chapter_files (player, key, name, mime, data)
                 values (${player}, ${key}, ${fig.name}, ${fig.mime}, ${fig.data.toString("base64")})`;
@@ -153,7 +162,23 @@ export async function bookBySlug(slug: string): Promise<Book | null> {
   await syncChapters(p.name).catch(() => []); // throttled; a failure leaves what is stored
   const chapters = await chaptersOf(p.name, true);
   if (!chapters.length) return null;
-  return { player: p.name, name: p.book_name || p.name, slug: p.slug, rankId: p.rank_id ?? null, chapters };
+  const shown = new Set(chapters.map((c) => c.key));
+  const replays: Record<string, string> = {};
+  for (const r of await sql`select key, game_id, date from chapter_replays where player = ${p.name}`) {
+    if (shown.has(r.key)) replays[r.game_id] = r.date || "";
+  }
+  return { player: p.name, name: p.book_name || p.name, slug: p.slug, rankId: p.rank_id ?? null, chapters, replays };
+}
+
+/** A replay a public chapter of a public book carries, as its JSON text, or null. */
+export async function bookReplay(slug: string, game: string): Promise<string | null> {
+  if (!sql) return null;
+  const [row] = await sql`
+    select r.data from chapter_replays r join players p on p.name = r.player
+    left join private_chapters pc on pc.player = r.player and pc.chapter = r.key
+    where p.slug = ${slug} and r.game_id = ${game} and pc.chapter is null and p.book_public
+    limit 1`;
+  return row ? (row.data as string) : null;
 }
 
 export type BookSummary = {
