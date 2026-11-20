@@ -445,7 +445,7 @@ def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     resources = shared_resources(state) + [
         {"type": "file", "file_id": games_file, "mount_path": "/player/games.tar.gz"},
         {"type": "memory_store", "memory_store_id": player["memory_store_id"], "access": "read_write",
-         "instructions": "This player's notes. Read them before you start; add to them as you go."},
+         "instructions": "This player's notes. Read index.md and player.md first; keep the notes current (see Keeping notes)."},
     ]
     cents = int(round(args.budget * 100))
     # All of a player's threads share one allowance (web/lib/budget.ts moves it to the thread the

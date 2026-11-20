@@ -147,7 +147,7 @@ export async function createThread(player: string, cont?: Continuation): Promise
     { type: "file", file_id: games, mount_path: "/player/games.tar.gz" },
     {
       type: "memory_store", memory_store_id: me.memory_store_id, access: "read_write",
-      instructions: "This player's notes. Read them before you start; add to them as you go.",
+      instructions: "This player's notes. Read index.md and player.md first; keep the notes current (see Keeping notes).",
     },
   );
   const cap = await allowanceCapForNewThread(player);

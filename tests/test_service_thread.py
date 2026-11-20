@@ -66,6 +66,16 @@ class ServiceThreadTest(unittest.TestCase):
         self.assertIn("If you have no way to hand work to a copy (older threads), build the chapter here",
                       " ".join(SYSTEM.split()))
 
+    def test_prompt_keeps_notes_current(self):
+        flat = " ".join(SYSTEM.split())
+        self.assertIn("## Keeping notes", SYSTEM)
+        self.assertIn("Start every new thread by reading `index.md` and `player.md`", flat)
+        self.assertIn("two notes must never disagree", flat)
+        self.assertIn("Never copy these instructions into notes", flat)
+        store = "Read index.md and player.md first; keep the notes current (see Keeping notes)."
+        self.assertIn(store, (SERVICE / "thread.py").read_text(encoding="utf-8"))
+        self.assertIn(store, (SERVICE.parent / "web/lib/threads.ts").read_text(encoding="utf-8"))
+
     def test_prompt_explains_thread_rollover(self):
         flat = " ".join(SYSTEM.split())
         self.assertIn("A thread that grows very long goes on in a fresh session", flat)
