@@ -4832,6 +4832,13 @@ html:lang(ja) .contents-list.is-points .contents-sub {
   }
 }
 
+/* Small laptops: the guide's top bar has one link too many to fit. */
+@media (max-width: 1199px) {
+  .running-nav a.nav-wide {
+    display: none;
+  }
+}
+
 /* Phones and the outer screen of a foldable. */
 @media (max-width: 640px) {
   :root {
