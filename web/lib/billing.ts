@@ -6,6 +6,7 @@ import { neon } from "@neondatabase/serverless";
 import Stripe from "stripe";
 import { capAfterRenewal, hasAccess, invoiceSubscriptionId, isTutorSubscription, periodEnd } from "./billing-rules.mjs";
 import { anthropic } from "./server";
+import { startOnboarding } from "./onboard";
 import { threadForEmail } from "./store";
 
 const env = process.env;
@@ -160,6 +161,7 @@ export async function handleEvent(event: Stripe.Event): Promise<string> {
         // Only the tutor's checkout sets metadata.email; client_reference_id alone may be another product's.
         const ours = session.metadata?.email ? await upsertFromSubscription(sub, session.metadata.email) : false;
         note = ours ? `subscribed ${sub.status}` : "another product's checkout";
+        if (ours && hasAccess({ status: sub.status })) note += `; ${await startOnboarding()}`;
       }
       break;
     }

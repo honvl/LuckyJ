@@ -71,6 +71,31 @@ class ServiceThreadTest(unittest.TestCase):
             finally:
                 thread.STATE, thread.database_url = old, old_db
 
+    def test_state_merge_keeps_what_another_run_added(self):
+        import thread
+        theirs = {"agent_id": "a1", "shared_files": {"/m": {"file_id": "f1"}},
+                  "players": {"A": {"threads": [{"session_id": "s1", "intro": "x"}], "emails": ["a@x"]},
+                              "B": {"threads": [{"session_id": "s2"}]}}}
+        ours = {"agent_id": "a1", "shared_files": {"/c": {"file_id": "f2"}},
+                "players": {"A": {"memory_store_id": "m", "threads": [{"session_id": "s1"}, {"session_id": "s3"}]},
+                            "C": {"threads": [{"session_id": "s4"}]}}}
+        m = thread.merge_state(ours, theirs)
+        self.assertEqual(set(m["players"]), {"A", "B", "C"})
+        self.assertEqual(set(m["shared_files"]), {"/m", "/c"})
+        a = m["players"]["A"]
+        self.assertEqual([t["session_id"] for t in a["threads"]], ["s1", "s3"])
+        self.assertNotIn("intro", a["threads"][0], "our copy took the intro; it must stay taken")
+        self.assertEqual((a["emails"], a["memory_store_id"]), (["a@x"], "m"))
+
+    def test_scrub_hides_players_in_public_logs(self):
+        import thread
+        line = ("account 120182062: wrote 3 games; 251019-0a1b2c3d-1111-2222-3333-444455556666 failed"
+                " for Honver x@y.com in /home/runner/work/LuckyJ/service/players/ms-120182062/games")
+        out = thread.scrub(line, "x@y.com", "Honver", 120182062)
+        for secret in ("120182062", "Honver", "x@y.com", "251019-", "runner"):
+            self.assertNotIn(secret, out)
+        self.assertIn("wrote 3 games", out)
+
     def test_web_and_agent_agree_on_game_references(self):
         markup = (ROOT / "web/lib/markup.mjs").read_text(encoding="utf-8")
         self.assertIn("[[game:<uuid> <round> t<turn>]]", SYSTEM)

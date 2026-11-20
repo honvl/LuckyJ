@@ -33,7 +33,7 @@ theirs. The first thread compiles libriichi (a few minutes) and `chat` caches th
 threads install it directly. Anything the agent writes to `/mnt/session/outputs/` is copied to
 `service/players/<player>/<thread>/` after each turn. The API lists outputs by bare file name
 (no folders), so the agent names them uniquely and packs each chapter as
-`chapter-<NN>-<slug>.tar.gz`, which `chat` unpacks into `chapters/<NN>-<slug>/`. IDs live in `service/.state/state.json`.
+`chapter-<NN>-<slug>.tar.gz`, which `chat` unpacks into `chapters/<NN>-<slug>/`. IDs live in the site's database (table `service_state`, shared with the scheduled onboarding run); `service/.state/state.json` is a local copy.
 Neither folder is committed.
 
 ## Cost

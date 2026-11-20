@@ -1,0 +1,84 @@
+name: Onboard tutor players
+
+# Fetches each new subscriber's ranked Mahjong Soul games and starts their tutor thread
+# (service/thread.py onboard). The site's Stripe webhook starts this right after a purchase;
+# the hourly run picks up anyone still waiting (fewer than 10 games, or a fetch that failed).
+#
+# This repository is public, and so are these logs: thread.py prints no emails, names,
+# account ids or game ids when GITHUB_ACTIONS is set.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: onboard
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      ok: ${{ steps.ready.outputs.ok }}
+    steps:
+      - name: Check the secrets are set
+        id: ready
+        env:
+          NEED: ${{ secrets.DATABASE_URL != '' && secrets.ANTHROPIC_API_KEY != '' && secrets.MJS_ACCESS_TOKEN != '' && secrets.AMAE_KOROMO_TOKEN != '' && secrets.MJS_RANDOM_KEY != '' }}
+        run: |
+          echo "ok=$NEED" >> "$GITHUB_OUTPUT"
+          [ "$NEED" = true ] || echo "::notice::Onboarding is not configured yet (repository secrets missing); nothing to do."
+
+  onboard:
+    needs: check
+    if: needs.check.outputs.ok == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: service/requirements.txt
+
+      - run: pip install -r service/requirements.txt
+
+      - name: Check out tensoul (the Mahjong Soul record fetcher)
+        uses: actions/checkout@v4
+        with:
+          repository: honvl/tensoul
+          ref: 391076d5d934bcb178e7cbf25f447d706d6532e8 # v4-web-client-login
+          path: tmp/tensoul
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install tensoul
+        working-directory: tmp/tensoul
+        run: |
+          npm install --no-audit --no-fund --loglevel=error
+          cp ../../service/fetch/tensoul-config.js config.js
+
+      - name: Onboard waiting players
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          AMAE_KOROMO_TOKEN: ${{ secrets.AMAE_KOROMO_TOKEN }}
+          # The fetch account (not the operator's playing account) and its own device key.
+          ACCESS_TOKEN: ${{ secrets.MJS_ACCESS_TOKEN }}
+          MJS_RANDOM_KEY: ${{ secrets.MJS_RANDOM_KEY }}
+          MJS_BASE: ${{ vars.MJS_BASE }}
+          MJS_GATEWAY: ${{ vars.MJS_GATEWAY }}
+          MJS_ROUTE_ID: ${{ vars.MJS_ROUTE_ID }}
+          MJS_TAG: ${{ vars.MJS_TAG }}
+          # Bump when logins fail with error 151 (the game updated).
+          MJS_RES_VERSION: ${{ vars.MJS_RES_VERSION }}
+          MJS_PACKAGE_VERSION: ${{ vars.MJS_PACKAGE_VERSION }}
+        run: python service/thread.py onboard

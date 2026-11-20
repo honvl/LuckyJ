@@ -74,10 +74,65 @@ TOOLS = [{
 
 # ------------------------------------------------------------------ state
 
+STATE_KEY = "operator"  # the row in service_state that holds this file's contents
+STATE_TABLE = ("create table if not exists service_state (key text primary key, value jsonb not null,"
+               " updated_at timestamptz not null default now())")
+
+
+def in_ci() -> bool:
+    """A GitHub Actions run, whose logs are public: print no emails, names or account ids."""
+    return os.environ.get("GITHUB_ACTIONS") == "true"
+
+
 def load_state() -> dict:
-    if STATE.exists():
-        return json.loads(STATE.read_text(encoding="utf-8"))
-    return {"shared_files": {}, "players": {}}
+    """The operator's records: agent, environment, shared files, players and their threads.
+
+    With a database they live there (so the scheduled cloud run and this Mac share them) and
+    state.json is a local copy; the first run copies an existing state.json up.
+    """
+    local = json.loads(STATE.read_text(encoding="utf-8")) if STATE.exists() else None
+    url = database_url()
+    if not url:
+        return local or {"shared_files": {}, "players": {}}
+    import psycopg
+    from psycopg.types.json import Jsonb
+    with psycopg.connect(url, autocommit=True) as conn:
+        conn.execute(STATE_TABLE)
+        row = conn.execute("select value from service_state where key = %s", (STATE_KEY,)).fetchone()
+        if row is None and local is not None:
+            conn.execute("insert into service_state (key, value) values (%s, %s) on conflict do nothing",
+                         (STATE_KEY, Jsonb(local)))
+            return local
+    state = row[0] if row else {"shared_files": {}, "players": {}}
+    if not in_ci():
+        write_local_state(state)
+    return state
+
+
+def merge_state(ours: dict, theirs: dict) -> dict:
+    """Combine two copies of the records so a run never drops what another run added.
+
+    Ours wins where both have a value; players, shared files, emails and threads are unions
+    (threads by session id, in the order they were made).
+    """
+    merged = {**theirs, **ours}
+    merged["shared_files"] = {**theirs.get("shared_files", {}), **ours.get("shared_files", {})}
+    players = {}
+    for name in [*theirs.get("players", {}), *[n for n in ours.get("players", {}) if n not in theirs.get("players", {})]]:
+        a, b = ours.get("players", {}).get(name), theirs.get("players", {}).get(name)
+        if a is None or b is None:
+            players[name] = a if a is not None else b
+            continue
+        p = {**b, **a}
+        p["emails"] = list(dict.fromkeys([*b.get("emails", []), *a.get("emails", [])]))
+        if not p["emails"]:
+            del p["emails"]
+        mine = {t["session_id"]: t for t in a.get("threads", [])}
+        threads = [mine.pop(t["session_id"], t) for t in b.get("threads", [])]
+        p["threads"] = threads + list(mine.values())
+        players[name] = p
+    merged["players"] = players
+    return merged
 
 
 def database_url() -> str | None:
@@ -117,7 +172,8 @@ def db_sync(state: dict) -> bool:
                 if row is None:
                     owner = conn.execute("select player from logins where email = %s", (email,)).fetchone()
                     if owner and owner[0] != name:
-                        print(f"  ! {email} belongs to {owner[0]} in the database, not {name}")
+                        print("  ! a login email belongs to another player in the database" if in_ci()
+                              else f"  ! {email} belongs to {owner[0]} in the database, not {name}")
             for chapter in web.get("private_chapters", {}).get(name, []):
                 conn.execute("insert into private_chapters (player, chapter) values (%s, %s)"
                              " on conflict do nothing", (name, chapter))
@@ -141,9 +197,28 @@ def take_intro(state: dict, player: str, session_id: str) -> str | None:
     return row[0] if row else None
 
 
-def save_state(state: dict) -> None:
+def write_local_state(state: dict) -> None:
     STATE.parent.mkdir(parents=True, exist_ok=True)
     STATE.write_text(json.dumps(state, indent=1, ensure_ascii=False), encoding="utf-8")
+
+
+def save_state(state: dict) -> None:
+    url = database_url()
+    if url:
+        import psycopg
+        from psycopg.types.json import Jsonb
+        with psycopg.connect(url) as conn:  # one transaction: the row stays locked until written
+            conn.execute(STATE_TABLE)
+            row = conn.execute("select value from service_state where key = %s for update",
+                               (STATE_KEY,)).fetchone()
+            merged = merge_state(state, row[0]) if row else state
+            conn.execute("insert into service_state (key, value, updated_at) values (%s, %s, now())"
+                         " on conflict (key) do update set value = excluded.value, updated_at = now()",
+                         (STATE_KEY, Jsonb(merged)))
+        state.clear()
+        state.update(merged)
+    if not in_ci():
+        write_local_state(state)
 
 
 def sha256(data: bytes) -> str:
@@ -260,7 +335,7 @@ def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
         sys.exit(f"{games_dir} has no index.json (the manifest fetch_majsoul_games.py writes)")
     games = sorted(games_dir.glob("*.json"))
     archive = tar_gz([(p.name, p) for p in games])
-    print(f"{args.player}: {len(games) - 1} game files")
+    print(f"{'player' if in_ci() else args.player}: {len(games) - 1} game files")
 
     player = state["players"].setdefault(args.player, {"threads": []})
     if not player.get("memory_store_id"):
@@ -299,6 +374,9 @@ def cmd_new(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     save_state(state)
     if db_sync(state):
         print("  recorded in the site's database")
+    if in_ci():
+        print(f"  thread started with a ${args.budget:.2f} cap")
+        return
     print(f"thread {session.id} with a ${args.budget:.2f} cap")
     if args.email:
         print(f"  {args.email} opens it on the site")
@@ -492,24 +570,44 @@ def cmd_onboard(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     if not rows:
         print("nobody is waiting")
         return
-    for email, account_id, name, server in rows:
+    ci = in_ci()
+    failed = 0
+    for n, (email, account_id, name, server) in enumerate(rows, 1):
         player = f"ms-{account_id}"
         games_dir = PLAYERS / player / "games"
-        print(f"{email}: {name} ({server}, {account_id})")
+        print(f"player {n} of {len(rows)} ({server})" if ci else f"{email}: {name} ({server}, {account_id})")
         if args.dry_run:
             continue
         fetch = subprocess.run(
             [sys.executable, str(ROOT / "scripts" / "fetch_player_games.py"), "--account", str(account_id),
              "--out", str(games_dir)], capture_output=True, text=True)
-        print("  " + (fetch.stdout.strip().splitlines() or ["(no output)"])[-1])
+        last = (fetch.stdout.strip().splitlines() or ["(no output)"])[-1]
+        print("  " + (scrub(last, email, name, account_id) if ci else last))
         if fetch.returncode != 0:
-            print(f"  ! fetch failed: {fetch.stderr.strip()[-300:]}")
+            err = fetch.stderr.strip()[-300:]
+            print(f"  ! fetch failed: {scrub(err, email, name, account_id) if ci else err}")
+            failed += 1
             continue
         index = json.loads((games_dir / "index.json").read_text(encoding="utf-8")) if (games_dir / "index.json").exists() else []
         if len(index) < MIN_GAMES:
             print(f"  waiting: {len(index)} ranked games found, a thread starts at {MIN_GAMES}")
             continue
         cmd_new(client, argparse.Namespace(player=player, games=str(games_dir), budget=DEFAULT_BUDGET_USD, email=email))
+    if failed:
+        # A failed run is what tells the operator the fetch account's login needs attention.
+        sys.exit(f"{failed} of {len(rows)} fetches failed")
+
+
+def scrub(text: str, *private: object) -> str:
+    """Text for a public log: the player's email, name and account id, game ids and paths removed."""
+    for value in private:
+        if value:
+            text = text.replace(str(value), "…")
+    text = re.sub(r"\b[0-9a-f]{6}-[0-9a-f]{8}-[0-9a-f-]{20,}\b", "<game>", text)  # Mahjong Soul uuids
+    text = re.sub(r"\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b", "<id>", text)
+    text = re.sub(r"\S+@\S+", "<email>", text)
+    text = re.sub(r"\d{6,}", "<n>", text)
+    return re.sub(r"(/[^\s/]+)+/", "", text)
 
 
 def cmd_comp(client: anthropic.Anthropic, args: argparse.Namespace) -> None:

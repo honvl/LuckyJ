@@ -104,3 +104,12 @@ create table if not exists profiles (
 
 -- The whole Personal Guide on or off the site (each chapter also has its own switch).
 alter table players add column if not exists book_public boolean not null default true;
+
+-- The operator's records (agent, environment, shared file ids, players' memory stores and
+-- threads), one JSON document written by service/thread.py, so the scheduled cloud run and the
+-- operator's Mac share them.
+create table if not exists service_state (
+  key text primary key,
+  value jsonb not null,
+  updated_at timestamptz not null default now()
+);

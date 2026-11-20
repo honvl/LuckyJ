@@ -81,16 +81,22 @@ Settings: `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID`, `STRIPE_WEBHOOK_SECRET`, `MONT
 - `/account`: subscription (Stripe portal, using the tutor's own portal configuration), the
   Mahjong Soul account, the whole Personal Guide on/off (`players.book_public`), the default for
   new chapters, each chapter's switch, and closing the account.
-- `thread.py onboard` (every 15 minutes via `service/launchd/com.luckyj.tutor-onboard.plist`)
-  fetches each waiting subscriber's games with `scripts/fetch_player_games.py` and starts their
-  thread as player `ms-<account id>` once they have 10 ranked games. It runs on this Mac, which
-  holds the Mahjong Soul login.
+- `thread.py onboard` fetches each waiting subscriber's games with `scripts/fetch_player_games.py`
+  and starts their thread as player `ms-<account id>` once they have 10 ranked games. It runs on
+  GitHub Actions (`.github/workflows/onboard.yml`): the Stripe webhook starts it after each
+  purchase (`lib/onboard.ts`, env `GITHUB_DISPATCH_TOKEN`, a fine-grained token for this
+  repository with "Actions: read and write"), and it also runs hourly for anyone still waiting.
+  It logs in to Mahjong Soul as a separate fetch account, never the operator's playing account.
+  Repository secrets: `ANTHROPIC_API_KEY`, `DATABASE_URL`, `AMAE_KOROMO_TOKEN`,
+  `MJS_ACCESS_TOKEN` (the fetch account's token), `MJS_RANDOM_KEY` (its device key). Variables:
+  `MJS_BASE`, `MJS_GATEWAY`, `MJS_RES_VERSION` (bump on login error 151). Until the secrets
+  exist the run does nothing. The repository is public, so the run prints no emails, names,
+  account ids or game ids. thread.py's records (agent, environment, file ids, players) live in
+  the database table `service_state`, shared by the cloud run and the operator's Mac.
 - Going live with Stripe: `web/scripts/stripe-go-live.sh`, then enable the live webhook
   destination `luckyj-tutor-billing`.
 - Terms of service: `site/terms.html`, `site/terms-ja.html`.
 
 ## Not done yet
 
-Fetching a new player's games automatically (today: by hand, after `thread.py pending`). Chapter previews and
-publishing to the site come after that. Vercel Hobby does not allow commercial use: move to Pro
-before charging.
+Vercel Hobby does not allow commercial use: move to Pro before charging.
