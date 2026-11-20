@@ -58,7 +58,7 @@ function isImage(file: File) {
 
 export function attachmentAdapter(messages: { tooLarge: string; failed: string; limit: string }): AttachmentAdapter {
   return {
-    accept: "*/*",
+    accept: "*", // any file: assistant-ui matches only the exact "*" (not "*/*"); the server decides what fits
     async *add({ file }) {
       const id = `att-${crypto.randomUUID()}`;
       const image = isImage(file);
