@@ -2,7 +2,7 @@
 // book pages read them from there. A chapter in private_chapters is never shown.
 import "server-only";
 import { neon } from "@neondatabase/serverless";
-import { bookSlug, chapterKey, readChapter, untarGz } from "./books-rules.mjs";
+import { bookSlug, chapterKey, readChapter, spotList, untarGz } from "./books-rules.mjs";
 import { MA_BETA, anthropic } from "./server";
 
 const sql = process.env.DATABASE_URL ? neon(process.env.DATABASE_URL) : null;
@@ -119,7 +119,7 @@ async function chaptersOf(player: string, publicOnly: boolean): Promise<BookChap
   return rows
     .filter((r) => !publicOnly || (bookPublic && r.is_public))
     .map((r) => ({
-      key: r.key, number: r.number, title: r.title, markdown: r.markdown, spots: r.spots,
+      key: r.key, number: r.number, title: r.title, markdown: r.markdown, spots: spotList(r.spots),
       figures: r.figures, isPublic: r.is_public, updatedAt: new Date(r.updated_at).toISOString(),
     }));
 }

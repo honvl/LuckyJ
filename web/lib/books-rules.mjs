@@ -50,6 +50,13 @@ const IMAGE_TYPES = { png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", w
  * under "<NN>-<slug>/". Null when there is no chapter.md.
  * @param {Record<string, Buffer>} files @param {string} key  e.g. "52-riichi-rates"
  */
+/** A chapter's cards: spots.json is either a list or {"spots": [...]}, as the site's own guide writes it. */
+export function spotList(value) {
+  if (Array.isArray(value)) return value;
+  if (value && Array.isArray(value.spots)) return value.spots;
+  return null;
+}
+
 export function readChapter(files, key) {
   const inside = (name) => name.startsWith(`${key}/`) ? name.slice(key.length + 1) : null;
   let markdown = null;
@@ -60,7 +67,7 @@ export function readChapter(files, key) {
     if (!rel) continue;
     if (rel === "chapter.md") markdown = data.toString("utf8");
     else if (rel === "spots.json") {
-      try { spots = JSON.parse(data.toString("utf8")); } catch { spots = null; }
+      try { spots = spotList(JSON.parse(data.toString("utf8"))); } catch { spots = null; }
     } else {
       const ext = rel.split(".").pop().toLowerCase();
       if (IMAGE_TYPES[ext] && !rel.includes("/")) figures.push({ name: rel, mime: IMAGE_TYPES[ext], data });

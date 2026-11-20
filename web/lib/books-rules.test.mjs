@@ -4,7 +4,7 @@ import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
-import { bookSlug, chapterKey, readChapter, untarGz } from "./books-rules.mjs";
+import { bookSlug, chapterKey, readChapter, spotList, untarGz } from "./books-rules.mjs";
 
 function archive(files, key) {
   const dir = mkdtempSync(join(tmpdir(), "chapter-"));
@@ -49,4 +49,12 @@ test("names", () => {
   assert.match(bookSlug("小茸茸"), /^p-[0-9a-f]{8}$/);
   assert.equal(bookSlug("小茸茸"), bookSlug("小茸茸"));
   assert.notEqual(bookSlug("小茸茸"), bookSlug("阿噗噜派丶"));
+});
+
+test("cards come as a list or wrapped the way the guide's spots.json is", () => {
+  const card = { id: "a" };
+  assert.deepEqual(spotList([card]), [card]);
+  assert.deepEqual(spotList({ spots: [card] }), [card]);
+  assert.equal(spotList({}), null);
+  assert.equal(spotList(null), null);
 });
