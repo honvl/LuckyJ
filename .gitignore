@@ -18,3 +18,5 @@ service/players/
 # Vercel CLI link for the hosted chat page.
 .vercel
 .env*
+data/tenhou_houou_2026/
+data/ladder_skill/
