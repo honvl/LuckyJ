@@ -312,7 +312,8 @@ def tar_gz(members: list[tuple[str, Path]]) -> bytes:
 
 
 def upload(client: anthropic.Anthropic, name: str, data: bytes) -> str:
-    print(f"  uploading {name} ({len(data) / 1e6:.1f} MB)")
+    # The file name carries the player's key (ms-<account id>), which a public log must not show.
+    print(f"  uploading {'a file' if in_ci() else name} ({len(data) / 1e6:.1f} MB)")
     meta = client.files.upload(file=(name, data), timeout=1800)
     return meta.id
 
