@@ -4,8 +4,8 @@
 Every ranked game in an amae-koromo export lists all four players with their rank at the time of the game. For
 each of the user's games this takes:
 
-- the opponents' strength: the mean of their three ranks on one ladder (Expert 1 = 0, Expert 2 = 1, ... Saint 3 = 5;
-  Master and Celestial continue the same scale), and the number of Saints among them;
+- the opponents' strength: the mean of their three ranks on one ladder (Master 1 = 0, Master 2 = 1, ... Saint 3 = 5;
+  Expert and Celestial continue the same scale), and the number of Saints among them;
 - the user's form going in: the place in the previous game, the signed streak (+n after n top-two finishes in a row,
   -n after n bottom-two finishes in a row), first places in a row, and the rank points of the previous five games.
 
@@ -46,7 +46,7 @@ PERMS = 5000
 
 
 def ladder(level: int) -> float:
-    """Rank id 10xyz (tier y, step z) on one scale: Expert 1 = 0 ... Saint 3 = 5."""
+    """Rank id 10xyz (tier y, step z) on one scale: Master 1 = 0 ... Saint 3 = 5 (Expert is -3)."""
     tier, step = (level // 100) % 10, level % 100
     return (tier - 4) * 3 + (step - 1)
 

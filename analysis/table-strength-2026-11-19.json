@@ -1,0 +1,548 @@
+{
+ "jade_games": 4167,
+ "within_table": {
+  "opponent_games": 12501,
+  "place_per_rank_step": -0.0527,
+  "se": 0.0083,
+  "mixed_tables": 1729,
+  "saint_minus_master_place": -0.1443,
+  "saint_minus_master_se": 0.0382
+ },
+ "within_table_by_year": {
+  "2020": {
+   "opponent_games": 384,
+   "place_per_rank_step": -0.0718,
+   "se": 0.0487,
+   "mixed_tables": 50,
+   "saint_minus_master_place": -0.19,
+   "saint_minus_master_se": 0.2299
+  },
+  "2021": {
+   "opponent_games": 4599,
+   "place_per_rank_step": -0.0712,
+   "se": 0.0145,
+   "mixed_tables": 557,
+   "saint_minus_master_place": -0.1786,
+   "saint_minus_master_se": 0.0683
+  },
+  "2022": {
+   "opponent_games": 972,
+   "place_per_rank_step": -0.0558,
+   "se": 0.0314,
+   "mixed_tables": 123,
+   "saint_minus_master_place": -0.2154,
+   "saint_minus_master_se": 0.1418
+  },
+  "2023": {
+   "opponent_games": 2175,
+   "place_per_rank_step": 0.0033,
+   "se": 0.02,
+   "mixed_tables": 306,
+   "saint_minus_master_place": -0.0098,
+   "saint_minus_master_se": 0.0917
+  },
+  "2024": {
+   "opponent_games": 2481,
+   "place_per_rank_step": -0.0684,
+   "se": 0.018,
+   "mixed_tables": 383,
+   "saint_minus_master_place": -0.201,
+   "saint_minus_master_se": 0.0798
+  },
+  "2025": {
+   "opponent_games": 780,
+   "place_per_rank_step": -0.0563,
+   "se": 0.0327,
+   "mixed_tables": 114,
+   "saint_minus_master_place": -0.0526,
+   "saint_minus_master_se": 0.151
+  },
+  "2026": {
+   "opponent_games": 1110,
+   "place_per_rank_step": -0.0496,
+   "se": 0.0244,
+   "mixed_tables": 196,
+   "saint_minus_master_place": -0.1429,
+   "saint_minus_master_se": 0.1117
+  }
+ },
+ "hero_by_saints": [
+  {
+   "saints": 0,
+   "n": 2419,
+   "place": 2.404,
+   "place_se": 0.022,
+   "first": 0.273,
+   "fourth": 0.212,
+   "score": 26385
+  },
+  {
+   "saints": 1,
+   "n": 1426,
+   "place": 2.408,
+   "place_se": 0.029,
+   "first": 0.262,
+   "fourth": 0.198,
+   "score": 26131
+  },
+  {
+   "saints": 2,
+   "n": 303,
+   "place": 2.482,
+   "place_se": 0.062,
+   "first": 0.244,
+   "fourth": 0.215,
+   "score": 25354
+  },
+  {
+   "saints": 3,
+   "n": 19,
+   "place": 2.421,
+   "place_se": 0.246,
+   "first": 0.211,
+   "fourth": 0.211,
+   "score": 24932
+  }
+ ],
+ "hero_place_on_saints": {
+  "coef": 0.0356,
+  "se": 0.0258
+ },
+ "hero_place_on_opp": {
+  "coef": 0.0176,
+  "se": 0.0204
+ },
+ "hero_place_by_room_year": {
+  "2020 gold": {
+   "n": 435,
+   "place": 2.526
+  },
+  "2020 jade": {
+   "n": 128,
+   "place": 2.594
+  },
+  "2021 gold": {
+   "n": 45,
+   "place": 2.044
+  },
+  "2021 jade": {
+   "n": 1533,
+   "place": 2.43
+  },
+  "2022 jade": {
+   "n": 324,
+   "place": 2.506
+  },
+  "2022 throne": {
+   "n": 87,
+   "place": 2.483
+  },
+  "2023 jade": {
+   "n": 725,
+   "place": 2.428
+  },
+  "2024 jade": {
+   "n": 827,
+   "place": 2.358
+  },
+  "2025 jade": {
+   "n": 260,
+   "place": 2.358
+  },
+  "2025 throne": {
+   "n": 1,
+   "place": 2.0
+  },
+  "2026 jade": {
+   "n": 370,
+   "place": 2.311
+  }
+ },
+ "trend": {
+  "opp_per_year": {
+   "coef": 0.066,
+   "se": 0.007
+  },
+  "saints_per_year": {
+   "coef": 0.0437,
+   "se": 0.0056
+  },
+  "by_month": [
+   {
+    "month": "2020-10",
+    "n": 74,
+    "opp": 1.104,
+    "saints": 0.473,
+    "own": 0.59
+   },
+   {
+    "month": "2020-11",
+    "n": 54,
+    "opp": 1.068,
+    "saints": 0.519,
+    "own": 0.0
+   },
+   {
+    "month": "2021-01",
+    "n": 70,
+    "opp": 0.976,
+    "saints": 0.357,
+    "own": 0.0
+   },
+   {
+    "month": "2021-02",
+    "n": 225,
+    "opp": 0.966,
+    "saints": 0.396,
+    "own": 0.72
+   },
+   {
+    "month": "2021-03",
+    "n": 142,
+    "opp": 0.972,
+    "saints": 0.43,
+    "own": 0.63
+   },
+   {
+    "month": "2021-04",
+    "n": 59,
+    "opp": 1.062,
+    "saints": 0.458,
+    "own": 0.0
+   },
+   {
+    "month": "2021-05",
+    "n": 103,
+    "opp": 1.019,
+    "saints": 0.476,
+    "own": 0.0
+   },
+   {
+    "month": "2021-06",
+    "n": 111,
+    "opp": 0.988,
+    "saints": 0.414,
+    "own": 1.0
+   },
+   {
+    "month": "2021-07",
+    "n": 188,
+    "opp": 1.053,
+    "saints": 0.452,
+    "own": 1.0
+   },
+   {
+    "month": "2021-08",
+    "n": 211,
+    "opp": 0.983,
+    "saints": 0.393,
+    "own": 1.44
+   },
+   {
+    "month": "2021-09",
+    "n": 152,
+    "opp": 1.011,
+    "saints": 0.408,
+    "own": 2.91
+   },
+   {
+    "month": "2021-10",
+    "n": 82,
+    "opp": 0.967,
+    "saints": 0.451,
+    "own": 3.3
+   },
+   {
+    "month": "2021-11",
+    "n": 97,
+    "opp": 0.907,
+    "saints": 0.351,
+    "own": 4.0
+   },
+   {
+    "month": "2021-12",
+    "n": 93,
+    "opp": 1.065,
+    "saints": 0.473,
+    "own": 4.0
+   },
+   {
+    "month": "2022-01",
+    "n": 232,
+    "opp": 0.967,
+    "saints": 0.427,
+    "own": 4.0
+   },
+   {
+    "month": "2022-02",
+    "n": 62,
+    "opp": 1.032,
+    "saints": 0.484,
+    "own": 4.0
+   },
+   {
+    "month": "2022-03",
+    "n": 6,
+    "opp": 0.778,
+    "saints": 0.167,
+    "own": 4.0
+   },
+   {
+    "month": "2022-04",
+    "n": 2,
+    "opp": 0.167,
+    "saints": 0.0,
+    "own": 4.0
+   },
+   {
+    "month": "2022-05",
+    "n": 2,
+    "opp": 0.5,
+    "saints": 0.0,
+    "own": 4.0
+   },
+   {
+    "month": "2022-09",
+    "n": 20,
+    "opp": 1.017,
+    "saints": 0.45,
+    "own": 4.0
+   },
+   {
+    "month": "2023-01",
+    "n": 11,
+    "opp": 0.909,
+    "saints": 0.273,
+    "own": 4.0
+   },
+   {
+    "month": "2023-02",
+    "n": 4,
+    "opp": 1.083,
+    "saints": 0.5,
+    "own": 4.0
+   },
+   {
+    "month": "2023-03",
+    "n": 4,
+    "opp": 1.333,
+    "saints": 0.5,
+    "own": 4.0
+   },
+   {
+    "month": "2023-07",
+    "n": 77,
+    "opp": 1.017,
+    "saints": 0.429,
+    "own": 3.03
+   },
+   {
+    "month": "2023-08",
+    "n": 237,
+    "opp": 1.186,
+    "saints": 0.586,
+    "own": 3.15
+   },
+   {
+    "month": "2023-09",
+    "n": 79,
+    "opp": 1.089,
+    "saints": 0.481,
+    "own": 4.0
+   },
+   {
+    "month": "2023-10",
+    "n": 36,
+    "opp": 1.148,
+    "saints": 0.472,
+    "own": 4.0
+   },
+   {
+    "month": "2023-11",
+    "n": 18,
+    "opp": 1.296,
+    "saints": 0.444,
+    "own": 4.0
+   },
+   {
+    "month": "2023-12",
+    "n": 259,
+    "opp": 1.199,
+    "saints": 0.544,
+    "own": 4.0
+   },
+   {
+    "month": "2024-01",
+    "n": 39,
+    "opp": 1.128,
+    "saints": 0.538,
+    "own": 4.0
+   },
+   {
+    "month": "2024-02",
+    "n": 2,
+    "opp": 1.0,
+    "saints": 0.0,
+    "own": 4.0
+   },
+   {
+    "month": "2024-03",
+    "n": 52,
+    "opp": 1.231,
+    "saints": 0.558,
+    "own": 4.0
+   },
+   {
+    "month": "2024-04",
+    "n": 68,
+    "opp": 1.147,
+    "saints": 0.515,
+    "own": 4.0
+   },
+   {
+    "month": "2024-05",
+    "n": 21,
+    "opp": 0.905,
+    "saints": 0.429,
+    "own": 4.0
+   },
+   {
+    "month": "2024-06",
+    "n": 22,
+    "opp": 1.106,
+    "saints": 0.636,
+    "own": 4.0
+   },
+   {
+    "month": "2024-07",
+    "n": 29,
+    "opp": 1.253,
+    "saints": 0.655,
+    "own": 4.0
+   },
+   {
+    "month": "2024-08",
+    "n": 188,
+    "opp": 1.254,
+    "saints": 0.596,
+    "own": 4.0
+   },
+   {
+    "month": "2024-09",
+    "n": 117,
+    "opp": 1.208,
+    "saints": 0.556,
+    "own": 4.44
+   },
+   {
+    "month": "2024-10",
+    "n": 225,
+    "opp": 1.246,
+    "saints": 0.582,
+    "own": 5.0
+   },
+   {
+    "month": "2024-11",
+    "n": 54,
+    "opp": 1.216,
+    "saints": 0.519,
+    "own": 5.0
+   },
+   {
+    "month": "2024-12",
+    "n": 10,
+    "opp": 0.8,
+    "saints": 0.3,
+    "own": 5.0
+   },
+   {
+    "month": "2025-01",
+    "n": 62,
+    "opp": 1.172,
+    "saints": 0.613,
+    "own": 5.0
+   },
+   {
+    "month": "2025-02",
+    "n": 29,
+    "opp": 1.184,
+    "saints": 0.552,
+    "own": 5.0
+   },
+   {
+    "month": "2025-06",
+    "n": 21,
+    "opp": 1.413,
+    "saints": 0.714,
+    "own": 5.0
+   },
+   {
+    "month": "2025-07",
+    "n": 32,
+    "opp": 1.188,
+    "saints": 0.469,
+    "own": 5.0
+   },
+   {
+    "month": "2025-08",
+    "n": 50,
+    "opp": 1.293,
+    "saints": 0.6,
+    "own": 5.0
+   },
+   {
+    "month": "2025-10",
+    "n": 66,
+    "opp": 1.258,
+    "saints": 0.515,
+    "own": 5.0
+   },
+   {
+    "month": "2026-01",
+    "n": 4,
+    "opp": 0.75,
+    "saints": 0.25,
+    "own": 5.0
+   },
+   {
+    "month": "2026-06",
+    "n": 23,
+    "opp": 1.174,
+    "saints": 0.565,
+    "own": 5.0
+   },
+   {
+    "month": "2026-07",
+    "n": 6,
+    "opp": 1.056,
+    "saints": 0.5,
+    "own": 5.0
+   },
+   {
+    "month": "2026-09",
+    "n": 106,
+    "opp": 1.261,
+    "saints": 0.594,
+    "own": 5.0
+   },
+   {
+    "month": "2026-10",
+    "n": 133,
+    "opp": 1.419,
+    "saints": 0.729,
+    "own": 5.0
+   },
+   {
+    "month": "2026-11",
+    "n": 98,
+    "opp": 1.439,
+    "saints": 0.724,
+    "own": 5.0
+   }
+  ],
+  "own_rank_effect_within_month": {
+   "coef": 0.0421,
+   "se": 0.0515
+  }
+ }
+}
