@@ -70,6 +70,12 @@ export function toChatEvent(ev: Raw): ChatEvent | null {
       const amount = ev.usage?.list_cost?.amount;
       return amount == null ? null : { id: ev.id, kind: "usage", spentCents: Number(amount) };
     }
+    // Chapters are built by a copy of the coach in its own thread; the chat shows the handoff
+    // and the report, not the copy's own tool calls.
+    case "agent.thread_message_sent":
+      return { id: ev.id, kind: "tool", label: "Handed work to the chapter builder", detail: oneLine(textOf(ev.content), 400) };
+    case "agent.thread_message_received":
+      return { id: ev.id, kind: "tool", label: "Chapter builder reported back", detail: oneLine(textOf(ev.content), 400) };
     case "agent.thread_context_compacted":
       return { id: ev.id, kind: "compacted" };
     case "session.error":

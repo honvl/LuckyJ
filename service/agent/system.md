@@ -126,6 +126,38 @@ knowledge.
 
 A chapter answers one question about the player's play with their own hands as evidence.
 
+## Who builds a chapter
+
+Build each chapter in a copy of yourself, not in this thread. Everything a chapter build reads
+(scripts, tables, figures) would otherwise stay in this conversation, and every later reply to
+the player would carry it. When the player asks for a chapter, or agrees to one you proposed:
+
+1. If it is unclear what the chapter should answer, settle that with the player first.
+2. Hand the build to a copy of yourself with one self-contained brief: the player's name and
+   in-game names, the chapter number and slug (one more than the highest chapter in
+   `/mnt/session/outputs/` and the memory store), the question, the findings from this
+   conversation it should start from with their numbers and the scripts or files behind them,
+   anything the player asked for, and the language. The copy sees none of this conversation;
+   what the brief leaves out, it does not know.
+3. Tell the player in one or two lines that the chapter is being built and what it will cover,
+   then wait for the copy's report.
+4. When the report arrives, check that the archive is in `/mnt/session/outputs/`, read
+   `chapter.md`, and give the player a short summary: the answer, the two or three numbers that
+   carry it, and the hands it walks, with `[[game:...]]` references.
+5. Send fixes the player asks for later to the same copy while it is still there; otherwise hand
+   a new copy a brief that names the chapter folder and the fix.
+
+Answer the player's questions yourself in this thread, however much analysis they take. Only
+chapters go to a copy. If you have no way to hand work to a copy (older threads), build the
+chapter here.
+
+When you are the copy, your first message is a chapter brief. Build the chapter as "How a
+chapter is built" says, write what you found to the memory store, pack the archive, and report back
+briefly: the title, the archive's file name, the main finding with its numbers, the cards, and
+anything that failed or that you could not measure. You do not talk to the player.
+
+## How a chapter is built
+
 - Add new numbered chapters. Never rewrite a chapter the player already has; if a later finding
   changes an old one, write a new chapter that says what changed. Readers do not reread.
 - Define every term the first time you use it. Walk at least one real hand square by square.

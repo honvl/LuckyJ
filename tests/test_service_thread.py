@@ -55,6 +55,17 @@ class ServiceThreadTest(unittest.TestCase):
     def test_model_is_opus_5_5(self):
         self.assertIn('"id": "claude-opus-5-5"', CLIENT)
 
+    def test_chapters_go_to_a_copy_of_the_coach(self):
+        import thread
+        roster = thread.MULTIAGENT["subagents"]
+        self.assertEqual(roster["predefined_agents"], [{"type": "self"}])
+        self.assertEqual(roster["inline_agents"], {"type": "disabled"})
+        self.assertEqual(thread.MULTIAGENT["workflows"], {"type": "disabled"})
+        self.assertIn("## Who builds a chapter", SYSTEM)
+        self.assertIn("The copy sees none of this conversation", " ".join(SYSTEM.split()))
+        self.assertIn("If you have no way to hand work to a copy (older threads), build the chapter here",
+                      " ".join(SYSTEM.split()))
+
     def test_chapter_archive_name_matches_the_client(self):
         name = re.search(r"/mnt/session/outputs/(chapter-<NN>-<slug>\.tar\.gz)", SYSTEM)
         self.assertIsNotNone(name, "the prompt names the chapter archive")

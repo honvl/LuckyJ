@@ -48,6 +48,19 @@ LUCKYJ_LOGS = ROOT / "data" / "local_sources" / "luckyj_tenhou"
 
 MODEL = {"id": "claude-opus-5-5", "effort": "high"}
 AGENT_NAME = "Mahjong coach"
+AGENT_DESCRIPTION = ("Riichi mahjong coach for one player. A copy can be handed one chapter of the "
+                     "player's Personal Guide to build end to end from a self-contained brief.")
+# Chapters are built in a copy of the coach, in its own session thread. A chapter build reads
+# ~170k tokens of code, tables and figures; in the chat thread all of it stayed in the context,
+# so every later reply re-read it (and paid to rewrite it after a 5-minute pause). The copy keeps
+# that in its own thread and the chat thread gets only its report. Workflows stay off: one
+# chapter is one piece of work, and runs would bill extra agents.
+MULTIAGENT = {
+    "type": "multiagent_20261001",
+    "subagents": {"type": "enabled", "predefined_agents": [{"type": "self"}],
+                  "inline_agents": {"type": "disabled"}},
+    "workflows": {"type": "disabled"},
+}
 ENV_NAME = "mahjong-coach"
 MA_BETA = "managed-agents-2026-04-01"
 DEFAULT_BUDGET_USD = 15
@@ -358,14 +371,15 @@ def cmd_setup(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
 
     print("agent")
     system = SYSTEM.read_text(encoding="utf-8")
-    config_hash = sha256(json.dumps([MODEL, TOOLS, system], sort_keys=True).encode())
+    config = dict(model=MODEL, system=system, tools=TOOLS, description=AGENT_DESCRIPTION,
+                  multiagent=MULTIAGENT)
+    config_hash = sha256(json.dumps(config, sort_keys=True).encode())
     if not state.get("agent_id"):
-        agent = client.beta.agents.create(name=AGENT_NAME, model=MODEL, system=system, tools=TOOLS)
+        agent = client.beta.agents.create(name=AGENT_NAME, **config)
         state["agent_id"] = agent.id
     elif state.get("agent_hash") != config_hash:
         current = client.beta.agents.retrieve(state["agent_id"])
-        agent = client.beta.agents.update(state["agent_id"], version=current.version,
-                                          model=MODEL, system=system, tools=TOOLS)
+        agent = client.beta.agents.update(state["agent_id"], version=current.version, **config)
     else:
         agent = client.beta.agents.retrieve(state["agent_id"])
     state["agent_hash"] = config_hash
