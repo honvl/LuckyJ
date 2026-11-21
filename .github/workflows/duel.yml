@@ -24,7 +24,7 @@ permissions:
   contents: read
 
 env:
-  MORTAL_COMMIT: 0cff2b52982be5b1163aa9d624abf8dc7a82b5ab # Equim-chan/Mortal; the local libriichi is built from it
+  MORTAL_COMMIT: 0cff2b52982be5b1163aa9a62fb01f03ce91e0d2 # Equim-chan/Mortal; the local libriichi is built from it
   TORCH_VERSION: "2.12.1"
 
 jobs:
