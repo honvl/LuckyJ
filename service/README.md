@@ -15,8 +15,9 @@ chapter; they are removed only when a player closes their account.
 
 Needs an Anthropic API key, pasted as a single line into `service/.state/api_key` (gitignored;
 `ANTHROPIC_API_KEY` in the environment also works, but keep it out of your shell profile so
-Claude Code keeps its own login), the Mortal
-policy in `~/Downloads/mortal_model_policy/`, and LuckyJ's logs in
+Claude Code keeps its own login), Mortal-S42 in
+`~/Downloads/mortal_q/s42-inference.pth` plus the earlier policy model in
+`~/Downloads/mortal_model_policy/` (its `model.py` is the network code), and LuckyJ's logs in
 `data/local_sources/luckyj_tenhou/` (from `scripts/naga_to_tenhou.py`).
 
 ```bash

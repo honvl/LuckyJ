@@ -19,11 +19,11 @@ class ServiceThreadTest(unittest.TestCase):
         self.assertNotIn("—", SYSTEM, "no em-dashes in the agent prompt")
 
     def test_setup_reads_every_mount_the_client_creates(self):
-        mounts = set(re.findall(r'"(/(?:setup\.sh|mortal/[\w.]+|luckyj/[\w.]+|player/[\w.]+))"', CLIENT))
-        self.assertEqual(mounts, {"/setup.sh", "/mortal/model.py", "/mortal/mortal.pth",
+        mounts = set(re.findall(r'"(/(?:setup\.sh|mortal/[\w.-]+|luckyj/[\w.]+|player/[\w.]+))"', CLIENT))
+        self.assertEqual(mounts, {"/setup.sh", "/mortal/model.py", "/mortal/mortal.pth", "/mortal/s42-inference.pth",
                                   "/luckyj/luckyj_tenhou.tar.gz", "/player/games.tar.gz"})
         for mount in mounts - {"/setup.sh"}:
-            read_as = "/mortal" if mount.startswith("/mortal/") else mount  # linked as a folder
+            read_as = "/mortal" if mount.startswith("/mortal/") and "s42" not in mount else mount  # linked as a folder
             self.assertIn("$U" + read_as, SETUP, f"setup.sh never reads {mount}")
 
     def test_setup_unpacks_every_games_archive(self):

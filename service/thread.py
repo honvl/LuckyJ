@@ -45,6 +45,8 @@ PLAYERS = SERVICE / "players"
 SYSTEM = SERVICE / "agent" / "system.md"
 SETUP_SH = SERVICE / "sandbox" / "setup.sh"
 MORTAL_DIR = Path.home() / "Downloads" / "mortal_model_policy"
+# The coach's Mortal: Mortal-S42 (scripts/mortal_engines.py). MORTAL_DIR still supplies the network code.
+S42_WEIGHTS = Path.home() / "Downloads" / "mortal_q" / "s42-inference.pth"
 LUCKYJ_LOGS = ROOT / "data" / "local_sources" / "luckyj_tenhou"
 
 MODEL = {"id": "claude-opus-5-5", "effort": "high"}
@@ -409,6 +411,9 @@ def cmd_setup(client: anthropic.Anthropic, args: argparse.Namespace) -> None:
     sync_shared(client, state, "/setup.sh", "setup.sh", SETUP_SH.read_bytes())
     sync_shared(client, state, "/mortal/model.py", "model.py", (MORTAL_DIR / "model.py").read_bytes())
     sync_shared(client, state, "/mortal/mortal.pth", "mortal.pth", (MORTAL_DIR / "mortal.pth").read_bytes())
+    if not S42_WEIGHTS.exists():
+        sys.exit(f"missing {S42_WEIGHTS}")
+    sync_shared(client, state, "/mortal/s42-inference.pth", "s42-inference.pth", S42_WEIGHTS.read_bytes())
     logs = sorted(LUCKYJ_LOGS.glob("*.json"))
     if not logs:
         sys.exit(f"no LuckyJ logs in {LUCKYJ_LOGS}; run scripts/naga_to_tenhou.py first")

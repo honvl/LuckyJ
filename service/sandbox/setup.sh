@@ -5,7 +5,8 @@
 #
 # Mounted by service/thread.py (read-only, under /mnt/session/uploads/):
 #   setup.sh                        this script
-#   mortal/model.py, mortal/mortal.pth   the Mortal policy the guide scripts load
+#   mortal/s42-inference.pth        Mortal-S42, the model the guide scripts load
+#   mortal/model.py, mortal/mortal.pth   the earlier policy model (its model.py is the network code)
 #   luckyj/luckyj_tenhou.tar.gz     LuckyJ's games as tenhou.net/6 logs
 #   player/games.tar.gz             the player's games plus index.json (their seat per game)
 #   player/games-<n>.tar.gz         games added later, with the index.json that lists them all
@@ -56,9 +57,13 @@ if ! "$PY" -c "import libriichi" 2>/dev/null; then
   "$PY" -m pip install -q "$WHEEL"
 fi
 
-echo "== Mortal policy weights"
-mkdir -p "$HOME/Downloads"
+echo "== Mortal weights"
+mkdir -p "$HOME/Downloads/mortal_q"
 ln -sfn "$U/mortal" "$HOME/Downloads/mortal_model_policy"
+# Mortal-S42 is where scripts/mortal_engines.py looks for it; without it the scripts use the earlier model.
+if [ -f "$U/mortal/s42-inference.pth" ]; then
+  ln -sfn "$U/mortal/s42-inference.pth" "$HOME/Downloads/mortal_q/s42-inference.pth"
+fi
 
 echo "== LuckyJ games"
 mkdir -p "$REPO/data/local_sources"

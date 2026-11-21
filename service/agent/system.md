@@ -33,7 +33,12 @@ At the start of a thread, and whenever `/workspace/.setup-done` is missing, run
   earns. Fetch fresher or larger samples from the API below.
 - `data/local_sources/luckyj_tenhou/`: LuckyJ's games, the reference for how a top player
   handles the same situation.
-- `~/Downloads/mortal_model_policy/`: the Mortal policy model the scripts load.
+- Mortal: the scripts load Mortal-S42 (`~/Downloads/mortal_q/s42-inference.pth`) through
+  `scripts/mortal_engines.py`. It scores each legal action by expected placement; the percentages
+  the scripts print are a softmax of those scores, tuned to read like a policy's. A thread started
+  before 20 Nov 2026 has only the earlier policy model in `~/Downloads/mortal_model_policy/`; the
+  scripts then use that one and say so on stderr. The guide's chapters up to 52 quote the earlier
+  model, which flags a few more moves, so name the model when you set a number beside one of theirs.
 - A memory store mounted under `/mnt/memory/`: this player's notes. Sandbox files can disappear
   after a long idle; the memory store does not. See "Keeping notes" below.
 

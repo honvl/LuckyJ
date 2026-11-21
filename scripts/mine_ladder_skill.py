@@ -17,7 +17,8 @@ With ``--qmodel CHECKPOINT`` a Mortal v4 checkpoint that carries a value head (`
 instead, and the row holds what the taken action gave up in that model's Q-values (final-placement points, 2 a place):
 
     "n", "qloss", "qloss2", "top", "big01", "big03", "big1",   # sum of max Q - Q(taken), its square, counts over a size
-    "lp005", "lp01", "lp02", "lp05",                            # sum of ln softmax(Q / T)(taken), T = 0.05 ... 0.5
+    "lp005", "lp01", "lp02", "lp05", "lp06", "lp1",             # sum of ln softmax(Q / T)(taken), T = 0.05 ... 1
+    "low",                                                      # times the taken action was under 10% at T = 0.6
     and the same with a ``_d`` suffix for discards only ("nd" discards)
 
 The engines are built in ``mortal_engines.py`` (checkpoints are read with ``weights_only=True``).
@@ -38,7 +39,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 ENGINE = None
 QMODEL = None  # path of a checkpoint with a value head; None scores with the policy model
-Q_TEMPS = (("lp005", 0.05), ("lp01", 0.1), ("lp02", 0.2), ("lp05", 0.5))
+Q_TEMPS = (("lp005", 0.05), ("lp01", 0.1), ("lp02", 0.2), ("lp05", 0.5), ("lp06", 0.6), ("lp1", 1.0))
 
 TILES = [f"{n}{s}" for s in "mps" for n in range(1, 10)] + list("ESWNPFC")
 TILE_IDX = {t: i for i, t in enumerate(TILES)}
@@ -67,6 +68,7 @@ def decision_stats(p: dict[int, float], a: int) -> dict[str, float]:
            "big01": float(loss > 0.1), "big03": float(loss > 0.3), "big1": float(loss > 1)}
     for key, t in Q_TEMPS:
         out[key] = -loss / t - math.log(sum(math.exp((q - best) / t) for q in p.values()))
+    out["low"] = float(out["lp06"] < math.log(0.1))  # under 10% at the project's temperature (mortal_engines)
     return out
 
 
@@ -131,7 +133,7 @@ def work(job):
     for seat in range(4):
         bot = Bot(ENGINE, seat)
         keys = ("logp", "p", "top", "low") if QMODEL is None else (
-            "qloss", "qloss2", "top", "big01", "big03", "big1", *(k for k, _ in Q_TEMPS))
+            "qloss", "qloss2", "top", "big01", "big03", "big1", "low", *(k for k, _ in Q_TEMPS))
         acc = {"n": 0.0, **{k: 0.0 for k in keys}, "nd": 0.0, **{k + "_d": 0.0 for k in keys}}
         try:
             for idx, ev in enumerate(events):
