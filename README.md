@@ -22,6 +22,7 @@ Japanese translation: https://ai.yui-life.com/ja.html
 - `scripts/naga_to_tenhou.py` - rebuilds the cached NAGA reports as tenhou.net/6 logs so LuckyJ can be reviewed by the same replay code.
 - `scripts/build_personal_guide.py` - builds `site/honver-guide.json`, the tables behind the personal guide page `site/honver.html`, from `data/personal_guide_spots.json`.
 - `scripts/build_replays.py` - builds `site/replays/`, the site's own replays of your Mahjong Soul games (`site/replay.html`), with Mortal's probability for each of your decisions (the project's model is Mortal-S42, `scripts/mortal_engines.py`; a game that already has a replay keeps the numbers it was built with, `--rebuild` redoes them). Its conversion to mjai is the only one: `scripts/tenhou6_to_mjai.py` (used by `scripts/mortal_hand_review.py`) wraps it.
+- `scripts/fetch_neji_reviews.py` - fetches Wind-Up Bird (Nejimakidori) reviews of your own games through its API (`NEJI_REPLAY_TOKEN` in `.env.local`, made by hand on the site, 24 reviews a token) into the gitignored `data/neji_reviews/`. `scripts/neji_placement_check.py` asks whether its importance grade says more about a game's place than the two Mortal models' ratings do (`analysis/neji-placement-2026-11-21.md`).
 - `analysis/model-patterns-2026-06-30.md` - readable summary of the model-mined candidate points.
 - `analysis/point-evidence-2026-07-09.md` - readable proxy-evidence audit for all numbered points.
 - `site/model-patterns.json` - machine-readable output from the model-pattern mining run.

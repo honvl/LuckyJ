@@ -21,3 +21,6 @@ service/players/
 data/tenhou_houou_2026/
 data/ladder_skill/
 _pages/
+
+# Wind-Up Bird review cache: holds other players' names and account ids.
+data/neji_reviews/

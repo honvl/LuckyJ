@@ -1,0 +1,243 @@
+{
+ "baseline": {
+  "Mortal policy | Jade, every seat": {
+   "n": 1443,
+   "stats": {
+    "match rate": {
+     "r": -0.0907,
+     "lo": -0.1416,
+     "hi": -0.0393
+    },
+    "mean ln p": {
+     "r": -0.1188,
+     "lo": -0.1693,
+     "hi": -0.0676
+    },
+    "under 10% rate": {
+     "r": -0.0993,
+     "lo": -0.1501,
+     "hi": -0.0479
+    },
+    "under 10% count": {
+     "r": -0.0635,
+     "lo": -0.1148,
+     "hi": -0.012
+    }
+   }
+  },
+  "Mortal policy | Jade, your seat": {
+   "n": 361,
+   "stats": {
+    "match rate": {
+     "r": -0.0989,
+     "lo": -0.2001,
+     "hi": 0.0044
+    },
+    "mean ln p": {
+     "r": -0.0742,
+     "lo": -0.1761,
+     "hi": 0.0292
+    },
+    "under 10% rate": {
+     "r": -0.0225,
+     "lo": -0.1255,
+     "hi": 0.0809
+    },
+    "under 10% count": {
+     "r": -0.0371,
+     "lo": -0.1398,
+     "hi": 0.0663
+    }
+   }
+  },
+  "Mortal policy | Houou, every seat": {
+   "n": 63675,
+   "stats": {
+    "match rate": {
+     "r": 0.0106,
+     "lo": 0.0029,
+     "hi": 0.0184
+    },
+    "mean ln p": {
+     "r": 0.0042,
+     "lo": -0.0036,
+     "hi": 0.0119
+    },
+    "under 10% rate": {
+     "r": 0.0144,
+     "lo": 0.0066,
+     "hi": 0.0222
+    },
+    "under 10% count": {
+     "r": 0.0229,
+     "lo": 0.0151,
+     "hi": 0.0306
+    }
+   }
+  },
+  "Mortal-S42 | Jade, every seat": {
+   "n": 1443,
+   "stats": {
+    "match rate": {
+     "r": -0.1255,
+     "lo": -0.1759,
+     "hi": -0.0744
+    },
+    "mean ln p (T 0.6)": {
+     "r": -0.1458,
+     "lo": -0.1959,
+     "hi": -0.0949
+    },
+    "mean Q loss": {
+     "r": -0.1532,
+     "lo": -0.2032,
+     "hi": -0.1024
+    },
+    "total Q loss": {
+     "r": -0.116,
+     "lo": -0.1666,
+     "hi": -0.0648
+    },
+    "Q loss over 1 count": {
+     "r": -0.1077,
+     "lo": -0.1584,
+     "hi": -0.0564
+    }
+   },
+   "stake_gain": {
+    "diff": -0.0277,
+    "lo": -0.0538,
+    "hi": -0.0021,
+    "between": 0.863
+   }
+  },
+  "Mortal-S42 | Jade, your seat": {
+   "n": 361,
+   "stats": {
+    "match rate": {
+     "r": -0.1556,
+     "lo": -0.2547,
+     "hi": -0.0532
+    },
+    "mean ln p (T 0.6)": {
+     "r": -0.1843,
+     "lo": -0.2821,
+     "hi": -0.0826
+    },
+    "mean Q loss": {
+     "r": -0.1852,
+     "lo": -0.283,
+     "hi": -0.0836
+    },
+    "total Q loss": {
+     "r": -0.1618,
+     "lo": -0.2607,
+     "hi": -0.0596
+    },
+    "Q loss over 1 count": {
+     "r": -0.157,
+     "lo": -0.256,
+     "hi": -0.0546
+    }
+   },
+   "stake_gain": {
+    "diff": -0.0296,
+    "lo": -0.0995,
+    "hi": 0.0343,
+    "between": 0.764
+   }
+  },
+  "Mortal-S42 | Houou, every seat": {
+   "n": 63675,
+   "stats": {
+    "match rate": {
+     "r": -0.0184,
+     "lo": -0.0262,
+     "hi": -0.0107
+    },
+    "mean ln p (T 0.6)": {
+     "r": -0.0283,
+     "lo": -0.0361,
+     "hi": -0.0206
+    },
+    "mean Q loss": {
+     "r": -0.038,
+     "lo": -0.0458,
+     "hi": -0.0303
+    },
+    "total Q loss": {
+     "r": -0.0202,
+     "lo": -0.0279,
+     "hi": -0.0124
+    },
+    "Q loss over 1 count": {
+     "r": -0.0196,
+     "lo": -0.0273,
+     "hi": -0.0118
+    }
+   },
+   "stake_gain": {
+    "diff": -0.0196,
+    "lo": -0.0244,
+    "hi": -0.0149,
+    "between": 0.816
+   }
+  }
+ },
+ "compare": {
+  "reviewed": 0,
+  "n": 0,
+  "stats": {},
+  "note": "too few games for a correlation"
+ },
+ "power": [
+  {
+   "base": -0.15,
+   "new": -0.2,
+   "between": 0.5,
+   "games": 3009
+  },
+  {
+   "base": -0.15,
+   "new": -0.2,
+   "between": 0.7,
+   "games": 1797
+  },
+  {
+   "base": -0.15,
+   "new": -0.25,
+   "between": 0.5,
+   "games": 744
+  },
+  {
+   "base": -0.15,
+   "new": -0.25,
+   "between": 0.7,
+   "games": 445
+  },
+  {
+   "base": -0.15,
+   "new": -0.3,
+   "between": 0.5,
+   "games": 325
+  },
+  {
+   "base": -0.15,
+   "new": -0.3,
+   "between": 0.7,
+   "games": 195
+  },
+  {
+   "base": -0.15,
+   "new": -0.4,
+   "between": 0.5,
+   "games": 111
+  },
+  {
+   "base": -0.15,
+   "new": -0.4,
+   "between": 0.7,
+   "games": 68
+  }
+ ]
+}
