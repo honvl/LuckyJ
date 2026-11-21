@@ -1,5 +1,5 @@
 diff --git a/client.js b/client.js
-index 50ad093..ceec828 100644
+index 50ad093..6df9552 100644
 --- a/client.js
 +++ b/client.js
 @@ -13,6 +13,21 @@ const ServerConfig = require("./server_config.js");
@@ -60,7 +60,7 @@ index 50ad093..ceec828 100644
      if (gateway == null) {
        const endpoint = await this._serverConfig.chooseFastestServer(
          scfg.serviceDiscoveryServers,
-@@ -96,30 +127,74 @@ class Client {
+@@ -96,30 +127,79 @@ class Client {
      }
    }
  
@@ -69,11 +69,16 @@ index 50ad093..ceec828 100644
 +    const mj = this._mjsoul;
 +    const saved = mj.service;
 +    mj.service = ".lq.Route.";
++    // sendAsync looks the method up before it returns, so the name goes back at once. Held across
++    // the await, a log request sent during a heartbeat went out as Route.fetchGameRecord and
++    // failed with 9998 "Wrong api name.".
++    let reply;
 +    try {
-+      return await mj.sendAsync(name, data);
++      reply = mj.sendAsync(name, data);
 +    } finally {
 +      mj.service = saved;
 +    }
++    return reply;
 +  }
 +
 +  _startHeartbeat() {
@@ -145,7 +150,7 @@ index 50ad093..ceec828 100644
    async tenhouLogFromMjsoulID(id) {
      const seps = id.split("_");
      let logID = seps[0];
-@@ -137,9 +212,7 @@ class Client {
+@@ -137,9 +217,7 @@ class Client {
        }
      }
  

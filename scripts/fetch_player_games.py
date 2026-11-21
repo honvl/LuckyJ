@@ -338,8 +338,8 @@ def is_limit(row: dict) -> bool:
 
 
 def refused(status: dict[str, dict], cut: bool) -> bool:
-    """True when the account's log retrieval limit is in force: a game came back with error 540
-    (after fetch_many.js's own retries), or the batch was cut off for time while retrying."""
+    """True when the account's log retrieval limit is in force: a game came back with error 540,
+    or the batch was cut off for time."""
     return cut or any(is_limit(row) for row in status.values())
 
 

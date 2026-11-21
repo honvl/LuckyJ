@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { capAfterRenewal, hasAccess, initialAllowance, planCaps, usedPercent, invoiceSubscriptionId, isTutorSubscription, periodEnd, signupFields } from "./billing-rules.mjs";
+import { capAfterRenewal, hasAccess, initialAllowance, planCaps, usedPercent, invoiceSubscriptionId, isTutorSubscription, periodEnd, signupFields, cancelAt } from "./billing-rules.mjs";
 
 test("access", () => {
   assert.equal(hasAccess({ comp: true }), true);
@@ -88,4 +88,10 @@ test("allowance from old caps, and the bar", () => {
   assert.equal(usedPercent(3000, 1600, 1500), 7); // renewed at 1,500 spent, 100 spent since: 7% of the month
   assert.equal(usedPercent(1500, 1600, 1500), 100);
   assert.equal(usedPercent(5000, 100, 1500), 0);
+});
+
+test("a cancelled subscription stops at cancel_at, or at the period's end", () => {
+  assert.equal(cancelAt({ cancel_at: 300, items: { data: [{ current_period_end: 200 }] } }), 300);
+  assert.equal(cancelAt({ cancel_at: null, cancel_at_period_end: true, items: { data: [{ current_period_end: 200 }] } }), 200);
+  assert.equal(cancelAt({ cancel_at: null, cancel_at_period_end: false, items: { data: [{ current_period_end: 200 }] } }), null);
 });

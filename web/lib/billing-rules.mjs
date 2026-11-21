@@ -87,6 +87,16 @@ export function periodEnd(subscription) {
 }
 
 /**
+ * Unix seconds when a cancelled subscription stops, or null while it renews. The portal cancels at
+ * the period's end by setting cancel_at; older API versions set cancel_at_period_end instead.
+ * @param {any} subscription
+ */
+export function cancelAt(subscription) {
+  if (subscription?.cancel_at) return subscription.cancel_at;
+  return subscription?.cancel_at_period_end ? periodEnd(subscription) : null;
+}
+
+/**
  * Whether a subscription is for the tutor. The Stripe account sells other products too, and the
  * webhook hears every event on the account, so anything without the tutor's price is ignored.
  * @param {any} subscription @param {string | undefined} priceId

@@ -28,7 +28,7 @@ export default function AccountPanel({ lang, email, billing, subscription, profi
   lang: Lang;
   email: string;
   billing: boolean;
-  subscription: { comp: boolean; status: string | null; renews: string | null; canManage: boolean };
+  subscription: { comp: boolean; status: string | null; renews: string | null; ends: string | null; canManage: boolean };
   profile: Profile | null;
   guide: { slug: string | null; isPublic: boolean; chapters: Chapter[] } | null;
 }) {
@@ -40,6 +40,7 @@ export default function AccountPanel({ lang, email, billing, subscription, profi
   const [chapters, setChapters] = useState<Chapter[]>(guide?.chapters ?? []);
 
   const status = subscription.comp ? t.subFree
+    : (subscription.status === "active" || subscription.status === "trialing") && subscription.ends ? t.subEnding(subscription.ends)
     : subscription.status === "active" || subscription.status === "trialing" ? t.subActive(subscription.renews)
     : subscription.status === "past_due" ? t.subPastDue
     : subscription.status ? t.subEnded

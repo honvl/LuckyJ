@@ -64,7 +64,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: honvl/tensoul
-          ref: 391076d5d934bcb178e7cbf25f447d706d6532e8 # v4-web-client-login
+          ref: 17845ee56f89a7e34ecac25a00568e28b6f4a20f # luckyj-fetch (v4-web-client-login plus the 9998 fix)
           path: tmp/tensoul
 
       - uses: actions/setup-node@v4

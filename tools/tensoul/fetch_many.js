@@ -46,10 +46,11 @@ const Client = require('./client.js')
       } catch (err) {
         lastErr = err
         const code = err && err.error && err.error.code
-        // 540: "log retrieval limit exceeded", a quota on the account that downloads. The retries
-        // below date from when it was taken for a burst throttle; they do not lift it.
-        if (code !== 540) break
-        await new Promise((resolve) => setTimeout(resolve, 5000 * (attempt + 1)))
+        // 540 is "log retrieval limit exceeded", a quota on the downloading account: waiting does
+        // not lift it, so the caller hears at once. 9997-9999 are the client's own timeout,
+        // reconnect and lookup errors, which pass: try the game again shortly.
+        if (![9997, 9998, 9999].includes(code)) break
+        await new Promise((resolve) => setTimeout(resolve, 3000 * (attempt + 1)))
       }
     }
     if (lastErr) {

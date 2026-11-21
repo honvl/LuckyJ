@@ -55,6 +55,9 @@ create table if not exists billing_events (
 alter table subscriptions add column if not exists majsoul_name text;
 alter table subscriptions add column if not exists tenhou_name text;
 
+-- When a cancelled subscription stops (Stripe's cancel_at); null while it renews.
+alter table subscriptions add column if not exists cancel_at timestamptz;
+
 -- Player books (ai.yui-life.com/books/<slug>). book_name is what the book is published under
 -- (the Mahjong Soul name, else the Tenhou name, else the player's name); synced_at throttles the
 -- check for new chapter archives.

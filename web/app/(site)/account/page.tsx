@@ -41,6 +41,7 @@ export default async function AccountPage() {
             comp: access.comp && !!access.thread,
             status: sub?.status ?? null,
             renews: sub?.current_period_end ? new Date(sub.current_period_end).toISOString().slice(0, 10) : null,
+            ends: sub?.cancel_at ? new Date(sub.cancel_at).toISOString().slice(0, 10) : null,
             canManage: Boolean(sub?.customer_id),
           }}
           profile={profile}

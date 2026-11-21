@@ -4,7 +4,7 @@
 import "server-only";
 import { neon } from "@neondatabase/serverless";
 import Stripe from "stripe";
-import { hasAccess, invoiceSubscriptionId, isTutorSubscription, periodEnd } from "./billing-rules.mjs";
+import { cancelAt, hasAccess, invoiceSubscriptionId, isTutorSubscription, periodEnd } from "./billing-rules.mjs";
 import { renewAllowance } from "./budget";
 import { startOnboarding } from "./onboard";
 import { threadForEmail } from "./store";
@@ -27,6 +27,7 @@ export type Subscription = {
   subscription_id: string | null;
   status: string;
   current_period_end: string | null;
+  cancel_at: string | null;
 };
 
 export type Access = {
@@ -129,14 +130,15 @@ async function upsertFromSubscription(sub: Stripe.Subscription, fallbackEmail?: 
   const email = (sub.metadata?.email || fallbackEmail || "").toLowerCase();
   if (!email || !sql) return false;
   const end = periodEnd(sub);
+  const stops = cancelAt(sub);
   const customer = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
   await sql`
-    insert into subscriptions (email, customer_id, subscription_id, status, current_period_end, majsoul_name, tenhou_name, publish, updated_at)
-    values (${email}, ${customer}, ${sub.id}, ${sub.status}, ${end ? new Date(end * 1000) : null},
+    insert into subscriptions (email, customer_id, subscription_id, status, current_period_end, cancel_at, majsoul_name, tenhou_name, publish, updated_at)
+    values (${email}, ${customer}, ${sub.id}, ${sub.status}, ${end ? new Date(end * 1000) : null}, ${stops ? new Date(stops * 1000) : null},
             ${sub.metadata?.majsoul_name || null}, ${sub.metadata?.tenhou_name || null}, ${sub.metadata?.publish !== "false"}, now())
     on conflict (email) do update set
       customer_id = excluded.customer_id, subscription_id = excluded.subscription_id, status = excluded.status,
-      current_period_end = excluded.current_period_end,
+      current_period_end = excluded.current_period_end, cancel_at = excluded.cancel_at,
       majsoul_name = coalesce(excluded.majsoul_name, subscriptions.majsoul_name),
       tenhou_name = coalesce(excluded.tenhou_name, subscriptions.tenhou_name),
       publish = excluded.publish, updated_at = now()`;
