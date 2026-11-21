@@ -21,6 +21,11 @@ and a large Jade room sample from amae-koromo (rank level and final score of eve
    beta and the beta at which Celestial stops being the harder one.
 
     .venv/bin/python scripts/compare_ladders.py JADE.jsonl HOUOU.jsonl ROOM_SAMPLE.json OUT.json [--discards]
+        [--metric KEY]
+
+``--metric KEY`` reads another per-seat sum as the skill statistic (its discard version is ``KEY_d``): rows scored with
+a value-head model (``mine_ladder_skill.py --qmodel``) carry ``lp06``, ln p of the taken action at the project's
+softmax temperature.
 """
 
 from __future__ import annotations
@@ -326,9 +331,15 @@ def room_sample_beta(path, skill_per_step, skill_per_step_se, sm_gap, sm_gap_se)
 
 def main():
     global METRIC
+    key = "logp"
+    if "--metric" in sys.argv:
+        i = sys.argv.index("--metric")
+        key = sys.argv[i + 1]
+        del sys.argv[i:i + 2]
+    METRIC = (key, "n")
     if "--discards" in sys.argv:
         sys.argv.remove("--discards")
-        METRIC = ("logp_d", "nd")
+        METRIC = (key + "_d", "nd")
     jade, jbad = load(sys.argv[1])
     hou, hbad = load(sys.argv[2])
     room_path = sys.argv[3]

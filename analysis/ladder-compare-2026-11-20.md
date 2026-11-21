@@ -1,15 +1,72 @@
 # Saint 3 to Celestial (Jade) against 8-dan and 9-dan (Houou), on one Mortal scale
 
-20 November 2026, second version: the full Houou month, a 40,000-table Jade sample, and 9-dan added.
+20 November 2026. Second version: the full Houou month, a 40,000-table Jade sample, and 9-dan added. Third
+version, the same evening: the same games scored again on Mortal-S42.
 Scripts: `scripts/mine_ladder_skill.py` (scores every seat), `scripts/compare_ladders.py` (everything below).
 Outputs: `ladder-compare-2026-11-20.json` (all decisions) and `ladder-compare-discards-2026-11-20.json`
 (discards only, same conclusions).
 
 ## Answer
 
-Celestial is harder than 8-dan, and a little harder than 9-dan. A player at the Houou average is about 86% to go
-from 7-dan to 8-dan, 50% to go from 8-dan to 9-dan, 70% to reach 9-dan starting at 7-dan, and 30 to 40% to go
-from Saint 3 to Celestial.
+Celestial is harder than 8-dan and harder than 9-dan. On Mortal-S42, the project's model since 20 November, a
+player at the Houou average is about 86% to go from 7-dan to 8-dan, 51% to go from 8-dan to 9-dan, 75% to reach
+9-dan starting at 7-dan, and 21% to go from Saint 3 to Celestial. On the earlier policy model the same four
+figures were 86%, 50%, 70% and 31 to 40%, which read as "a little harder than 9-dan".
+
+## Third version: the same games on Mortal-S42
+
+Every game was scored again with Mortal-S42 (`mine_ladder_skill.py --qmodel`, the 361 Jade games and the first
+2,000 Houou games on the Mac, the other 13,929 on GitHub runners through `.github/workflows/ladder-score.yml`;
+6,304 seats scored on both agree exactly). Skill is the mean ln p of the action taken, with p the softmax of
+S42's Q-values at temperature 0.6 (`compare_ladders.py --metric lp06`). Outputs:
+`ladder-compare-s42-2026-11-20.json` and `ladder-compare-s42-discards-2026-11-20.json`.
+
+| | Earlier policy model | Mortal-S42 |
+|---|---|---|
+| Jade Master 1 / 2 / 3 | -1.025 / -0.905 / -0.826 | -0.823 / -0.698 / -0.627 |
+| Jade Saint 1 / 2 / 3 | -0.813 / -0.758 / -0.766 | -0.609 / -0.557 / -0.546 |
+| Houou 七段 / 八段 / 九段 / 十段 / 天鳳 | -0.698 / -0.663 / -0.653 / -0.673 / -0.641 | -0.514 / -0.487 / -0.479 / -0.482 / -0.484 |
+| Skill per Mahjong Soul rank step | 0.0621 ± 0.0046 | 0.0633 ± 0.0042 |
+| Jade field, in rank steps (Master 1 = 0, Saint 3 = 5) | 1.35 | 1.35 |
+| Houou field, in rank steps | 5.12 | 4.70 |
+| The user, in rank steps | 5.27 | 3.99 |
+| Beta, Jade (room sample per rank step) | 0.73 ± 0.07 | 0.71 ± 0.07 |
+| Beta, Houou (986 repeat players) | 0.27 ± 0.08 | 0.19 ± 0.09 |
+| Even-odds skill in rank steps: 7 to 8 / 8 to 9 / 7 to 9 / Celestial | 0.6 / 5.0 / 3.5 / 5.4 | -1.3 / 4.3 / 2.1 / 5.5 |
+| Houou-average player: 7 to 8 / 8 to 9 / 7 to 9 / Celestial | 86 / 50 / 70 / 31% | 86 / 51 / 75 / 21% |
+| The same, discards only | 86 / 50 / 78 / 40% | 86 / 51 / 75 / 22% |
+| The user, skill from Mortal | 86 / 49 / 74 / 44% | 83 / 44 / 66 / 8% |
+| The user, skill from Jade results | 91 / 68 / 87 / 88% | 90 / 65 / 85 / 86% |
+| One shared beta (0.55 / 0.54), Houou-average player | 86 / 52 / 73 / 9% | 85 / 50 / 75 / 7% |
+| Shared beta above which Celestial stops being harder: 7 to 8 / 8 to 9 / 7 to 9 | 1.09 / 0.81 / 0.92 | 1.18 / 0.86 / 0.99 |
+
+What holds on both models: the Houou field plays about like a table of Saint 3s, the Jade field like Master 2
+to 3, the Jade beta is about 0.7, and Celestial is the hardest of the four climbs for a Houou-average player.
+On S42 the rank order is cleaner (Saint 3 is above Saint 2, which the earlier model had reversed) and the
+Celestial gap over 9-dan is wider (5.5 rank steps against 4.3 for even odds).
+
+What moves is the user. The earlier model put the user above the Houou field (5.27 rank steps); S42 puts the
+user at Saint 3 (3.99), below the average Houou 7-dan. In match rate: 78.0% against Houou's 77.7% on the earlier
+model, 80.2% against Houou's 81.3% on S42. The Mortal-based odds for Celestial fall from 44% to 8%. The
+results-based odds do not move (86 to 88%), because they come from the user's Jade placement (2.324) and not
+from either model. S42 predicts a Jade place of 2.411 for the user and the earlier model 2.367, so the earlier
+model is closer to what happened. The guide's chapters were built on the earlier model, so the user's play may
+simply follow that model's preferences more than S42's; this is not tested.
+
+Which statistic predicts placement better, among the 986 Houou repeat players over the full month (place
+against the player's statistic in their other games, shrunk, clustered by player):
+
+| Statistic | Places per SD of skill | t |
+|---|---|---|
+| Earlier policy model: mean ln p | 0.0162 ± 0.0051 | 3.2 |
+| Earlier policy model: match rate | 0.0138 ± 0.0051 | 2.7 |
+| S42: mean ln p at temperature 0.6 | 0.0111 ± 0.0052 | 2.1 |
+| S42: RMS loss per move | 0.0149 ± 0.0051 | 2.9 |
+| S42: match rate | 0.0079 ± 0.0051 | 1.6 |
+
+The two models' statistics correlate 0.93 across players. S42's is the weaker predictor by about one standard
+error, so the difference is not established; used together neither adds to the other (t 1.1 and 0.0). Everything
+below this section is the second version, on the earlier policy model.
 
 ## Data
 
