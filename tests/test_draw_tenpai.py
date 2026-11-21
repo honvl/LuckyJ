@@ -27,7 +27,8 @@ def section(lang: str) -> str:
 
 
 def prose(lang: str) -> str:
-    text = re.sub(r'href="[^"]*"', "", section(lang))
+    text = re.sub(r'<nav class="chapter-next".*?</nav>', "", section(lang), flags=re.S)  # the next chapter's title is not this chapter's prose
+    text = re.sub(r'href="[^"]*"', "", text)
     text = re.sub(r"\[\[[^\]]+\]\]", " ", text)
     text = re.sub(r"<[^>]+>", " ", text)
     return " ".join(re.sub(r"&#\d+;", " ", text).split())
@@ -173,14 +174,13 @@ class TheChapterTests(unittest.TestCase):
         for lang, latest in (("en", '<a href="#draw-tenpai">Chapter 52 looks at your 58 games'), ("ja", '<a href="#draw-tenpai">第52章は、魂天へ向かう58半荘を調べる')):
             page = PAGES[lang].read_text(encoding="utf-8")
             self.assertEqual(page.count('<li class="is-latest">'), 1)
-            first = page.index('<li class="is-latest">')
-            self.assertIn(latest, page[first:first + 300])
+            self.assertEqual(page.count(latest), 1)  # chapter 53 is the latest notice now (tests/test_tier_ranking.py)
             self.assertEqual(page.count('<span class="contents-num">52</span>'), 1)
             self.assertIn('href="#draw-tenpai"><span class="chapter-next-label">', page)
             self.assertIn("mine_draw_tenpai.py", page)
             self.assertEqual(page.count('aria-label="After the chapters"') + page.count('aria-label="本編の後"'), 1)
-        self.assertIn("Fifty-two chapters", PAGES["en"].read_text(encoding="utf-8"))
-        self.assertIn("52の章", PAGES["ja"].read_text(encoding="utf-8"))
+        self.assertIn("Fifty-three chapters", PAGES["en"].read_text(encoding="utf-8"))
+        self.assertIn("53の章", PAGES["ja"].read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

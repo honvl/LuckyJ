@@ -6,7 +6,19 @@ Scripts: `scripts/mine_ladder_skill.py` (scores every seat), `scripts/compare_la
 Outputs: `ladder-compare-2026-11-20.json` (all decisions) and `ladder-compare-discards-2026-11-20.json`
 (discards only, same conclusions).
 
-## Answer
+## Superseded on 21 November
+
+Guide chapter 53 (`tier-ranking-2026-11-20.json`, `scripts/mine_tier_ranking.py`) redoes this comparison from
+results and finds Celestial and 9-dan level: the strength that passes Saint 3 averages 2.49 against three average
+Saint 3s, and the strength that passes 8-dan averages 2.48. The climbs below overstate Celestial for one reason.
+They use a placement model that splits a strength edge evenly between more firsts and fewer fourths, which puts
+the Saint 3 break-even at a mean place of 2.359. Measured on 100,000 Jade tables, a Saint's edge is mostly fewer
+fourths (per 0.10 of strength: firsts +2.0 points, seconds +1.5, thirds +0.5, fourths -4.0), and the break-even
+is 2.377; the average Saint 3 places 2.386 and loses 1.2 rank points a game. The Houou figures are unaffected:
+Houou's split is even. For measuring players the yardstick is the earlier policy model, because Mortal-S42 was
+trained on Houou and Celestial games; S42 stays as a cross-check and as the model for reviewing moves.
+
+## Answer (20 November, before the correction above)
 
 Celestial is harder than 8-dan and harder than 9-dan. On Mortal-S42, the project's model since 20 November, a
 player at the Houou average is about 86% to go from 7-dan to 8-dan, 51% to go from 8-dan to 9-dan, 75% to reach

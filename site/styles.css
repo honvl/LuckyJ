@@ -3228,6 +3228,186 @@ html:lang(ja) :is(.timing-title, .timing-sub, .timing-legend, .timing-panel-titl
   }
 }
 
+/* Chapter 53: Mahjong Soul tiers beside the Houou dans (scripts/build_tier_ranking.py). Jade marks Mahjong Soul and
+   vermilion marks Tenhou; the pair passes the colour-blind check on the plate. Places use one ink ramp. */
+
+.tier-figure .timing-plate {
+  --tier-ms: var(--jade-mark);
+  --tier-th: var(--verm-mark);
+  --tier-p1: #2f2b25;
+  --tier-p2: #6f685e;
+  --tier-p3: #a69e91;
+  --tier-p4: #d2cabc;
+}
+
+.tier-figure .tier-dot {
+  stroke: var(--plate);
+  stroke-width: 2;
+}
+
+.tier-figure .tier-dot.ms {
+  fill: var(--tier-ms);
+}
+
+.tier-figure .tier-dot.th {
+  fill: var(--tier-th);
+}
+
+.tier-figure .tier-dot.field {
+  fill: var(--plate);
+  stroke: var(--tier-th);
+}
+
+.tier-figure .tier-whisker {
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.tier-figure .tier-whisker.ms {
+  stroke: var(--tier-ms);
+}
+
+.tier-figure .tier-whisker.field {
+  stroke: var(--tier-th);
+}
+
+.tier-figure .tier-band {
+  fill: var(--tier-th);
+  opacity: 0.14;
+}
+
+.tier-figure .tier-fit {
+  fill: none;
+  stroke: var(--tier-th);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tier-figure .tier-rank.ms0,
+.tier-figure .tier-rank.th0 {
+  fill: var(--hair-2);
+}
+
+.tier-figure .tier-rank.ms1 { fill: color-mix(in srgb, var(--tier-ms) 30%, var(--plate)); }
+.tier-figure .tier-rank.ms2 { fill: color-mix(in srgb, var(--tier-ms) 58%, var(--plate)); }
+.tier-figure .tier-rank.ms3 { fill: var(--tier-ms); }
+.tier-figure .tier-rank.th1 { fill: color-mix(in srgb, var(--tier-th) 26%, var(--plate)); }
+.tier-figure .tier-rank.th2 { fill: color-mix(in srgb, var(--tier-th) 48%, var(--plate)); }
+.tier-figure .tier-rank.th3 { fill: color-mix(in srgb, var(--tier-th) 72%, var(--plate)); }
+.tier-figure .tier-rank.th4 { fill: var(--tier-th); }
+
+.tier-figure .tier-rank-label {
+  fill: var(--ink);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 650;
+  text-anchor: middle;
+}
+
+.tier-figure .tier-rank-label:is(.ms0, .th0) {
+  fill: var(--muted);
+  font-weight: 500;
+}
+
+.tier-figure .tier-rank-label.ms3 {
+  fill: var(--plate);
+}
+
+.tier-figure .tier-you {
+  fill: var(--plate);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.tier-figure .tier-you-label {
+  fill: var(--plate);
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 650;
+  text-anchor: end;
+}
+
+.timing-key.tier-youkey::before {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--plate);
+}
+
+.tier-figure .tier-cross {
+  stroke: var(--tier-ms);
+  stroke-width: 1;
+}
+
+.tier-figure .tier-quarter {
+  stroke: var(--hair);
+  stroke-width: 1;
+}
+
+.tier-figure .timing-cat.tier-row {
+  text-anchor: end;
+  font-size: 12px;
+}
+
+.tier-figure .tier-seg.p1 { fill: var(--tier-p1); }
+.tier-figure .tier-seg.p2 { fill: var(--tier-p2); }
+.tier-figure .tier-seg.p3 { fill: var(--tier-p3); }
+.tier-figure .tier-seg.p4 { fill: var(--tier-p4); }
+
+.tier-figure .tier-seg-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-anchor: middle;
+}
+
+.tier-figure .tier-seg-label.p1 {
+  fill: var(--plate);
+}
+
+.tier-figure .tier-seg-label.p4 {
+  fill: var(--ink);
+}
+
+.timing-key:is(.tier-ms, .tier-th, .tier-field)::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.timing-key.tier-ms::before {
+  background: var(--jade-mark);
+}
+
+.timing-key.tier-th::before {
+  background: var(--verm-mark);
+}
+
+.timing-key.tier-field::before {
+  border: 2px solid var(--verm-mark);
+  background: var(--plate);
+}
+
+.timing-key.tier-fitkey::before {
+  width: 22px;
+  height: 12px;
+  background:
+    linear-gradient(var(--verm-mark), var(--verm-mark)) center / 22px 2px no-repeat,
+    color-mix(in srgb, var(--verm-mark) 16%, var(--plate));
+}
+
+.timing-key:is(.tier-p1, .tier-p2, .tier-p3, .tier-p4)::before {
+  width: 14px;
+  height: 14px;
+}
+
+.timing-key.tier-p1::before { background: #2f2b25; }
+.timing-key.tier-p2::before { background: #6f685e; }
+.timing-key.tier-p3::before { background: #a69e91; }
+.timing-key.tier-p4::before { background: #d2cabc; }
+
 /* ------------------------------------------------------------------ cover (home, and the top of each book) */
 
 .cover {

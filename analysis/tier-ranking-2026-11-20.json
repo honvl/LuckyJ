@@ -1,0 +1,712 @@
+{
+ "unit": "places a game against three average Jade-room Saint 3s (positive is better)",
+ "bands": {
+  "mahjong_soul": [
+   {
+    "rank": "Saint 2",
+    "from": -0.0342,
+    "to": -0.0062
+   },
+   {
+    "rank": "Saint 3",
+    "from": -0.0062,
+    "to": 0.0123
+   },
+   {
+    "rank": "Celestial",
+    "from": 0.0123,
+    "to": null
+   }
+  ],
+  "tenhou": [
+   {
+    "rank": "七段",
+    "from": null,
+    "to": -0.0331
+   },
+   {
+    "rank": "八段",
+    "from": -0.0331,
+    "to": 0.022
+   },
+   {
+    "rank": "九段",
+    "from": 0.022,
+    "to": 0.0708
+   },
+   {
+    "rank": "十段",
+    "from": 0.0708,
+    "to": 0.1145
+   },
+   {
+    "rank": "天鳳",
+    "from": 0.1145,
+    "to": null
+   }
+  ],
+  "note": "a band is the strength that gains points at the rank below and not at this rank"
+ },
+ "you": {
+  "games": 361,
+  "mean_place": 2.324,
+  "a_from_results": 0.0618,
+  "a_from_results_se": 0.0572,
+  "a_from_mortal": 0.0271,
+  "a_from_mortal_se": 0.0094,
+  "a_from_mortal_s42": -0.0163
+ },
+ "mahjong_soul": {
+  "tables": {
+   "jade": 100000,
+   "jade_of_bridging_players": 29177,
+   "throne": 79867
+  },
+  "bridging_players": 420,
+  "bridging_seats": {
+   "jade": 16741,
+   "throne": 53390
+  },
+  "tiers": {
+   "Master 1": {
+    "a": -0.1655,
+    "se": 0.0078,
+    "seats": 172662
+   },
+   "Master 2": {
+    "a": -0.1123,
+    "se": 0.0082,
+    "seats": 90079
+   },
+   "Master 3": {
+    "a": -0.0567,
+    "se": 0.0084,
+    "seats": 55501
+   },
+   "Saint 1": {
+    "a": -0.046,
+    "se": 0.0092,
+    "seats": 34477
+   },
+   "Saint 2": {
+    "a": -0.0245,
+    "se": 0.0094,
+    "seats": 29836
+   },
+   "Saint 3": {
+    "a": 0.0,
+    "se": 0.0,
+    "seats": 17445
+   },
+   "Saint 1, in the Throne room": {
+    "a": -0.0829,
+    "se": 0.0135,
+    "seats": 68947
+   },
+   "Saint 2, in the Throne room": {
+    "a": -0.063,
+    "se": 0.0137,
+    "seats": 28006
+   },
+   "Saint 3, in the Throne room": {
+    "a": -0.0457,
+    "se": 0.0168,
+    "seats": 7243
+   },
+   "Celestial": {
+    "a": -0.0175,
+    "se": 0.0138,
+    "seats": 215272
+   },
+   "Celestial 1": {
+    "a": -0.0262,
+    "se": 0.0141,
+    "seats": 84358
+   },
+   "Celestial 2+": {
+    "a": -0.0119,
+    "se": 0.0139,
+    "seats": 130914
+   }
+  },
+  "celestial_2plus_minus_1": {
+   "a": 0.0143,
+   "se": 0.0049
+  },
+  "naive_celestial": {
+   "a": 0.0253,
+   "se": 0.0083,
+   "note": "treats a Saint tier as equally strong in both rooms"
+  },
+  "celestial_levels": {
+   "points": [
+    {
+     "level": 1,
+     "vs_level_1": 0.0,
+     "se": 0.0,
+     "seats": 84358
+    },
+    {
+     "level": 2,
+     "vs_level_1": 0.0138,
+     "se": 0.0068,
+     "seats": 39482
+    },
+    {
+     "level": 3,
+     "vs_level_1": 0.0022,
+     "se": 0.0082,
+     "seats": 23834
+    },
+    {
+     "level": 4,
+     "vs_level_1": 0.01,
+     "se": 0.0097,
+     "seats": 15886
+    },
+    {
+     "level": 5,
+     "vs_level_1": -0.0091,
+     "se": 0.0118,
+     "seats": 10009
+    },
+    {
+     "level": 6,
+     "vs_level_1": 0.0232,
+     "se": 0.013,
+     "seats": 7976
+    },
+    {
+     "level": 7,
+     "vs_level_1": 0.0265,
+     "se": 0.0159,
+     "seats": 5297
+    },
+    {
+     "level": 8,
+     "vs_level_1": 0.0095,
+     "se": 0.0166,
+     "seats": 4833
+    },
+    {
+     "level": 9,
+     "vs_level_1": 0.0505,
+     "se": 0.0163,
+     "seats": 4866
+    },
+    {
+     "level": 10,
+     "vs_level_1": 0.0489,
+     "se": 0.0216,
+     "seats": 2786
+    },
+    {
+     "level": 11,
+     "vs_level_1": 0.035,
+     "se": 0.0222,
+     "seats": 2628
+    },
+    {
+     "level": 12,
+     "vs_level_1": 0.0123,
+     "se": 0.0252,
+     "seats": 1983
+    },
+    {
+     "level": 13,
+     "vs_level_1": 0.0441,
+     "se": 0.0377,
+     "seats": 856
+    },
+    {
+     "level": 14,
+     "vs_level_1": 0.0515,
+     "se": 0.0295,
+     "seats": 1443
+    },
+    {
+     "level": 15,
+     "vs_level_1": -0.0423,
+     "se": 0.0312,
+     "seats": 1324
+    },
+    {
+     "level": 16,
+     "vs_level_1": 0.2044,
+     "se": 0.0896,
+     "seats": 174
+    },
+    {
+     "level": 17,
+     "vs_level_1": 0.1312,
+     "se": 0.0485,
+     "seats": 526
+    },
+    {
+     "level": 18,
+     "vs_level_1": 0.0582,
+     "se": 0.0306,
+     "seats": 1292
+    },
+    {
+     "level": 19,
+     "vs_level_1": 0.0392,
+     "se": 0.0312,
+     "seats": 1261
+    },
+    {
+     "level": 20,
+     "vs_level_1": 0.0243,
+     "se": 0.0173,
+     "seats": 4458
+    }
+   ],
+   "per_level": 0.00259,
+   "per_level_se": 0.0005
+  },
+  "places_per_rank_step": {
+   "intercept": -0.1572,
+   "slope": 0.0366
+  },
+  "share_slopes": {
+   "jade": [
+    0.2035,
+    0.1465,
+    0.0536,
+    -0.4037
+   ],
+   "note": "change in the share of 1st, 2nd, 3rd, 4th per place of strength over the table"
+  },
+  "rank_points": {
+   "12": {
+    "Saint 1": [
+     145.0,
+     65.7,
+     -9.2,
+     -243.1
+    ],
+    "Saint 2": [
+     143.7,
+     64.9,
+     -9.7,
+     -258.2
+    ],
+    "Saint 3": [
+     144.0,
+     65.6,
+     -9.9,
+     -272.7
+    ]
+   },
+   "16": {
+    "Saint 1": [
+     153.7,
+     70.5,
+     -9.7,
+     -243.2
+    ],
+    "Saint 2": [
+     153.7,
+     70.5,
+     -9.3,
+     -257.9
+    ],
+    "Saint 3": [
+     153.4,
+     70.0,
+     -8.7,
+     -272.8
+    ]
+   }
+  },
+  "to_pass": {
+   "Saint 1": {
+    "jade": {
+     "opponents": -0.1102,
+     "opponents_se": 0.0073,
+     "gap": 0.076,
+     "a": -0.0342,
+     "se": 0.0073,
+     "mean_place_needed": 2.424
+    },
+    "throne": {
+     "opponents": -0.0364,
+     "opponents_se": 0.0134,
+     "gap": 0.0515,
+     "a": 0.0151,
+     "se": 0.0134,
+     "mean_place_needed": 2.448
+    },
+    "easier": "jade",
+    "a": -0.0342,
+    "se": 0.0073
+   },
+   "Saint 2": {
+    "jade": {
+     "opponents": -0.1103,
+     "opponents_se": 0.0073,
+     "gap": 0.1041,
+     "a": -0.0062,
+     "se": 0.0073,
+     "mean_place_needed": 2.396
+    },
+    "throne": {
+     "opponents": -0.0364,
+     "opponents_se": 0.0134,
+     "gap": 0.074,
+     "a": 0.0376,
+     "se": 0.0134,
+     "mean_place_needed": 2.426
+    },
+    "easier": "jade",
+    "a": -0.0062,
+    "se": 0.0073
+   },
+   "Saint 3": {
+    "jade": {
+     "opponents": -0.1106,
+     "opponents_se": 0.0073,
+     "gap": 0.1229,
+     "a": 0.0123,
+     "se": 0.0073,
+     "mean_place_needed": 2.377
+    },
+    "throne": {
+     "opponents": -0.0363,
+     "opponents_se": 0.0134,
+     "gap": 0.0961,
+     "a": 0.0598,
+     "se": 0.0134,
+     "mean_place_needed": 2.404
+    },
+    "easier": "jade",
+    "a": 0.0123,
+    "se": 0.0073
+   }
+  },
+  "observed": {
+   "Saint 2, Jade room": {
+    "seats": 29836,
+    "mean_place": 2.4113,
+    "shares": [
+     0.2692,
+     0.2628,
+     0.2557,
+     0.2124
+    ]
+   },
+   "Saint 3, Jade room": {
+    "seats": 17445,
+    "mean_place": 2.3859,
+    "shares": [
+     0.2761,
+     0.2672,
+     0.2515,
+     0.2052
+    ]
+   },
+   "Saint 3, Throne room": {
+    "seats": 7243,
+    "mean_place": 2.5135,
+    "shares": [
+     0.2463,
+     0.2458,
+     0.2561,
+     0.2518
+    ]
+   },
+   "Celestial, Throne room": {
+    "seats": 215272,
+    "mean_place": 2.4813,
+    "shares": [
+     0.2549,
+     0.2533,
+     0.2473,
+     0.2444
+    ]
+   }
+  }
+ },
+ "houou": {
+  "tables": 15929,
+  "dans": {
+   "七段": {
+    "vs_field": -0.0131,
+    "se": 0.0036,
+    "seats": 38474,
+    "mean_place": 2.5133,
+    "shares": [
+     0.2468,
+     0.2488,
+     0.2487,
+     0.2557
+    ]
+   },
+   "八段": {
+    "vs_field": 0.01,
+    "se": 0.0069,
+    "seats": 18254,
+    "mean_place": 2.4898,
+    "shares": [
+     0.2518,
+     0.2499,
+     0.2549,
+     0.2433
+    ]
+   },
+   "九段": {
+    "vs_field": 0.0523,
+    "se": 0.0138,
+    "seats": 6046,
+    "mean_place": 2.4474,
+    "shares": [
+     0.267,
+     0.2562,
+     0.2393,
+     0.2375
+    ]
+   },
+   "十段": {
+    "vs_field": -0.0069,
+    "se": 0.0364,
+    "seats": 868,
+    "mean_place": 2.5069,
+    "shares": [
+     0.2304,
+     0.2604,
+     0.2811,
+     0.2281
+    ]
+   },
+   "天鳳": {
+    "vs_field": 0.1475,
+    "se": 0.1328,
+    "seats": 74,
+    "mean_place": 2.3514,
+    "shares": [
+     0.3108,
+     0.2568,
+     0.2027,
+     0.2297
+    ]
+   }
+  },
+  "share_slopes": [
+   0.3016,
+   0.0952,
+   -0.0949,
+   -0.302
+  ],
+  "opponents_vs_field": {
+   "七段": 0.0001,
+   "八段": -0.0002,
+   "九段": -0.0003,
+   "十段": -0.0,
+   "天鳳": -0.0012
+  },
+  "rank_points": {
+   "七段": [
+    90,
+    45,
+    0,
+    -120
+   ],
+   "八段": [
+    90,
+    45,
+    0,
+    -135
+   ],
+   "九段": [
+    90,
+    45,
+    0,
+    -150
+   ],
+   "十段": [
+    90,
+    45,
+    0,
+    -165
+   ]
+  },
+  "line": {
+   "at_7dan": -0.0129,
+   "per_dan": 0.0247,
+   "per_dan_se": 0.006,
+   "fitted": {
+    "七段": {
+     "vs_field": -0.0129,
+     "se": 0.0017
+    },
+    "八段": {
+     "vs_field": 0.0118,
+     "se": 0.0062
+    },
+    "九段": {
+     "vs_field": 0.0365,
+     "se": 0.0122
+    },
+    "十段": {
+     "vs_field": 0.0611,
+     "se": 0.0182
+    },
+    "天鳳": {
+     "vs_field": 0.0858,
+     "se": 0.0242
+    }
+   }
+  },
+  "to_pass": {
+   "七段": {
+    "gap": -0.0554,
+    "mean_place_needed": 2.555,
+    "vs_field": -0.0553,
+    "a": -0.0331,
+    "a_s42_link": -0.047,
+    "se_link": 0.0091
+   },
+   "八段": {
+    "gap": -0.0,
+    "mean_place_needed": 2.5,
+    "vs_field": -0.0002,
+    "a": 0.022,
+    "a_s42_link": 0.0081,
+    "se_link": 0.0091
+   },
+   "九段": {
+    "gap": 0.0489,
+    "mean_place_needed": 2.451,
+    "vs_field": 0.0486,
+    "a": 0.0708,
+    "a_s42_link": 0.0569,
+    "se_link": 0.0091
+   },
+   "十段": {
+    "gap": 0.0923,
+    "mean_place_needed": 2.408,
+    "vs_field": 0.0923,
+    "a": 0.1145,
+    "a_s42_link": 0.1006,
+    "se_link": 0.0091
+   }
+  }
+ },
+ "link": {
+  "policy": {
+   "field_skill": -0.6835,
+   "your_skill": -0.6746,
+   "tier_skill": {
+    "Master 1": -1.0253,
+    "Master 2": -0.9053,
+    "Master 3": -0.8262,
+    "Saint 1": -0.8134,
+    "Saint 2": -0.7578,
+    "Saint 3": -0.7659
+   },
+   "tier_seats": {
+    "Master 1": 466,
+    "Master 2": 233,
+    "Master 3": 145,
+    "Saint 1": 87,
+    "Saint 2": 95,
+    "Saint 3": 56
+   },
+   "places_per_skill": 0.5571,
+   "places_per_skill_se": 0.0402,
+   "tier_on_line": {
+    "Master 1": -0.1682,
+    "Master 2": -0.1014,
+    "Master 3": -0.0573,
+    "Saint 1": -0.0502,
+    "Saint 2": -0.0192,
+    "Saint 3": -0.0237
+   },
+   "field_a": 0.0222,
+   "field_a_se": 0.0091,
+   "you_a": 0.0271,
+   "you_a_se": 0.0094
+  },
+  "s42": {
+   "field_skill": -0.5022,
+   "your_skill": -0.547,
+   "tier_skill": {
+    "Master 1": -0.8231,
+    "Master 2": -0.6983,
+    "Master 3": -0.6273,
+    "Saint 1": -0.6088,
+    "Saint 2": -0.5572,
+    "Saint 3": -0.5455
+   },
+   "tier_seats": {
+    "Master 1": 466,
+    "Master 2": 233,
+    "Master 3": 145,
+    "Saint 1": 87,
+    "Saint 2": 95,
+    "Saint 3": 56
+   },
+   "places_per_skill": 0.551,
+   "places_per_skill_se": 0.0376,
+   "tier_on_line": {
+    "Master 1": -0.1685,
+    "Master 2": -0.0997,
+    "Master 3": -0.0605,
+    "Saint 1": -0.0504,
+    "Saint 2": -0.0219,
+    "Saint 3": -0.0155
+   },
+   "field_a": 0.0083,
+   "field_a_se": 0.0073,
+   "you_a": -0.0163,
+   "you_a_se": 0.0059
+  }
+ },
+ "tenhou_on_the_scale": {
+  "七段": {
+   "a": 0.0091,
+   "se_own": 0.0036,
+   "a_fit": 0.0093,
+   "se_fit": 0.0017,
+   "se_link": 0.0091,
+   "seats": 38474,
+   "a_s42_link": -0.0048
+  },
+  "八段": {
+   "a": 0.0322,
+   "se_own": 0.0069,
+   "a_fit": 0.034,
+   "se_fit": 0.0062,
+   "se_link": 0.0091,
+   "seats": 18254,
+   "a_s42_link": 0.0183
+  },
+  "九段": {
+   "a": 0.0745,
+   "se_own": 0.0138,
+   "a_fit": 0.0587,
+   "se_fit": 0.0122,
+   "se_link": 0.0091,
+   "seats": 6046,
+   "a_s42_link": 0.0606
+  },
+  "十段": {
+   "a": 0.0153,
+   "se_own": 0.0364,
+   "a_fit": 0.0833,
+   "se_fit": 0.0182,
+   "se_link": 0.0091,
+   "seats": 868,
+   "a_s42_link": 0.0014
+  },
+  "天鳳": {
+   "a": 0.1697,
+   "se_own": 0.1328,
+   "a_fit": 0.108,
+   "se_fit": 0.0242,
+   "se_link": 0.0091,
+   "seats": 74,
+   "a_s42_link": 0.1558
+  }
+ }
+}
