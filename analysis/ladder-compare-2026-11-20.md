@@ -92,6 +92,47 @@ pace (+4.9, ch51).
 Celestial is then much the hardest. With one shared beta, Celestial stops being harder than 7 to 8 only above
 1.09, than 7 to 9 above 0.92, and than 8 to 9 above 0.81. Both rooms measure below those.
 
+## Would a different Mortal measure skill better?
+
+The local model has a policy head and no value head, so the skill statistic is agreement with its policy. Three
+public Mortal v4 checkpoints carry a value head (Q-values in final-placement points): `mortal_298k` (VoidShine),
+`mortal_582500` (Yuchen1457) and `s42-inference` (haor/Mortal-S42), all 40 blocks by 192 channels, all trained
+offline with a penalty on rare moves.
+
+**Q statistics against the current one.** 3,000 Houou games (11,996 seats) scored with the 298k model
+(`mine_ladder_skill.py --qmodel`), then each statistic raced on the same seats: place regressed on a player's
+statistic in their other games, 711 players with 4+ games.
+
+| Statistic | Places per SD of skill | t |
+|---|---|---|
+| Current: mean ln p, policy model | 0.047 ± 0.010 | 4.7 |
+| Current model: match rate | 0.051 ± 0.010 | 4.9 |
+| Q model: mean loss per move | 0.035 ± 0.010 | 3.6 |
+| Q model: RMS loss | 0.037 ± 0.010 | 3.8 |
+| Q model: match rate | 0.037 ± 0.011 | 3.6 |
+| Q model: share of moves losing over 1 point | 0.035 ± 0.010 | 3.5 |
+
+Mean Q loss correlates 0.93 with the current statistic across 449 players with ten or more games. With both in
+one regression the current statistic keeps its effect (t 2.2) and the best Q statistic adds nothing (t -0.7).
+
+**Strength by play.** `scripts/mortal_duel.py`: each checkpoint takes one seat against three copies of the local
+policy model, 2,000 seeds dealt four times each (8,000 hanchan per checkpoint, the same deals for all three).
+Seeds 10000 to 10839 and 11400 to 11439 were played on the Mac, the rest on GitHub runners
+(`.github/workflows/duel.yml`). Result file: `mortal-duel-2026-11-20.json`. An average rank of 2.5 is level with
+the local model.
+
+| Checkpoint | Average rank | 95% interval | 1st / 2nd / 3rd / 4th |
+|---|---|---|---|
+| s42-inference | 2.458 | 2.436 to 2.480 | 27.5 / 24.6 / 22.6 / 25.3% |
+| mortal_582500 | 2.477 | 2.456 to 2.497 | 26.6 / 23.8 / 24.9 / 24.7% |
+| mortal_298k | 2.489 | 2.467 to 2.511 | 26.2 / 23.9 / 24.8 / 25.1% |
+
+Paired on the same deals, S42 is ahead of the 298k model by 0.031 places (0.002 to 0.061) and of the 582,500-step
+model by 0.019 (-0.005 to 0.043); the two older checkpoints differ by 0.012 (-0.016 to 0.039). S42 is the
+strongest of the three by a small margin and about 0.04 places ahead of the local model. None is a clear step
+up, and the one Q model tested as a yardstick predicts placement worse than the current statistic, so the skill
+scale stays on the local policy model.
+
 ## Limits
 
 - Mortal agreement is one view of skill. Among Houou regulars it explains little of who places well, and
