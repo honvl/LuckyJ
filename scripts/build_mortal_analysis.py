@@ -3,7 +3,7 @@
 
 The script uses local-only assets:
   - Equim-chan Mortal/libriichi installed in the project venv
-  - downloaded Mortal policy files under ~/Downloads/mortal_model_policy
+  - Mortal-S42 weights under ~/Downloads/mortal_q (scripts/mortal_model.py, scripts/mortal_engines.py)
   - local Mjai logs under ~/Downloads/mjlog_combined_local_mjai
 
 Only the compact model outputs and commentary are written to site/mortal-analysis.json.
@@ -28,7 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_EXAMPLES = ROOT / "site" / "point-examples.json"
 DEFAULT_OUTPUT = ROOT / "site" / "mortal-analysis.json"
 DEFAULT_LOG_DIR = Path.home() / "Downloads" / "mjlog_combined_local_mjai"
-DEFAULT_MODEL = Path.home() / "Downloads" / "mortal_model_policy" / "model.py"
+DEFAULT_MODEL = ROOT / "scripts" / "mortal_model.py"  # Mortal-S42; pass the old model.py to --model for the earlier policy
 
 TILE_BY_ACTION = [
     "1m",

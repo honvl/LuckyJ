@@ -21,7 +21,7 @@ Japanese translation: https://ai.yui-life.com/ja.html
 - `scripts/review_win_speed.py` - speed, efficiency and tenpai-conversion review of your games against LuckyJ under the same code (or the opponents at the same tables).
 - `scripts/naga_to_tenhou.py` - rebuilds the cached NAGA reports as tenhou.net/6 logs so LuckyJ can be reviewed by the same replay code.
 - `scripts/build_personal_guide.py` - builds `site/honver-guide.json`, the tables behind the personal guide page `site/honver.html`, from `data/personal_guide_spots.json`.
-- `scripts/build_replays.py` - builds `site/replays/`, the site's own replays of your Mahjong Soul games (`site/replay.html`), with the local Mortal policy's probability for each of your decisions. Its conversion to mjai is the only one: `scripts/tenhou6_to_mjai.py` (used by `scripts/mortal_hand_review.py`) wraps it.
+- `scripts/build_replays.py` - builds `site/replays/`, the site's own replays of your Mahjong Soul games (`site/replay.html`), with Mortal's probability for each of your decisions (the project's model is Mortal-S42, `scripts/mortal_engines.py`; a game that already has a replay keeps the numbers it was built with, `--rebuild` redoes them). Its conversion to mjai is the only one: `scripts/tenhou6_to_mjai.py` (used by `scripts/mortal_hand_review.py`) wraps it.
 - `analysis/model-patterns-2026-06-30.md` - readable summary of the model-mined candidate points.
 - `analysis/point-evidence-2026-07-09.md` - readable proxy-evidence audit for all numbered points.
 - `site/model-patterns.json` - machine-readable output from the model-pattern mining run.
@@ -226,7 +226,7 @@ match the replay:
 
 Each card's "Replay this hand" link opens `site/replay.html` at that hand and turn. The replay
 page plays your games back on the site from `site/replays/<uuid>.json`: each hand as an event
-stream, all four hands face up, and at each of your decisions the local Mortal policy's
+stream, all four hands face up, and at each of your decisions Mortal's
 probability for every legal action (choices it gives under 5% are flagged). Opponents appear by
 seat and rank only. The builder checks every hand against its record (each draw and discard
 column used up, every cut tile in hand, scores carried to the next hand) and Mortal's libriichi

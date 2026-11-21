@@ -1,4 +1,4 @@
-"""Run the local Mortal policy for every seat of every LuckyJ game and record its action probabilities.
+"""Run the project's Mortal model (scripts/mortal_model.py) for every seat of every LuckyJ game and record its action probabilities.
 
 usage: mortal_run.py MANIFEST OUT.jsonl [--limit N] [--procs P]
 Rows: one per decision the seat faced, keyed (g, li, s, kind, n) where kind is 'discard' (own tsumo or
@@ -8,7 +8,7 @@ import gzip, json, os, sys, importlib.util
 from multiprocessing import Pool
 
 MJAI_DIR = os.path.expanduser('~/Downloads/mjlog_combined_local_mjai')
-MODEL = os.path.expanduser('~/Downloads/mortal_model_policy/model.py')
+MODEL = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'mortal_model.py')  # Mortal-S42
 ENGINE = None
 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """What would have happened after another discard: Mortal plays out the hand and the rest of the game.
 
-One of the hero's discards in a recorded Mahjong Soul game is replaced, and the local Mortal policy plays all four
+One of the hero's discards in a recorded Mahjong Soul game is replaced, and the project's Mortal model (Mortal-S42) plays all four
 seats from there. Each sample plays both the recorded discard and the other one:
 
 - sample 0 finishes the hand on the real wall (the raw record's wall, from tmp/tensoul/fetch_wall.js);

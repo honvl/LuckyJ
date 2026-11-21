@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
-"""Build libriichi engines from Mortal checkpoints: the local policy model, or any v4 checkpoint with a value head.
+"""Build libriichi engines from Mortal checkpoints.
 
-``policy_engine()`` is the local policy model (``~/Downloads/mortal_model_policy``), the one every guide chapter uses.
-``q_engine(path)`` loads a checkpoint that holds ``mortal`` and ``current_dqn`` state dicts (a standard Mortal training
-checkpoint, or an inference-only file with just those two); its reactions carry Q-values in final-placement points
-(6/4/2/0, so 2 a place). Checkpoints are read with ``weights_only=True``, so nothing inside the file can run; the
-network classes come from the local policy model's model.py.
+``default_engine()`` is the project's model: Mortal-S42 (haor/Mortal-S42 on Hugging Face, Apache-2.0 weights, a v4
+network with a value head). Its Q-values are turned into the probabilities every script reads from a reaction
+(``meta.q_values``) with a softmax at ``TEMPERATURE``; the action it plays is the highest Q either way.
+
+``policy_engine()`` is the earlier local policy model (``~/Downloads/mortal_model_policy``), which guide chapters up
+to 52 and the first ladder comparison used. ``q_engine(path)`` loads any checkpoint that holds ``mortal`` and
+``current_dqn`` state dicts and leaves the Q-values raw (final-placement points, 6/4/2/0, so 2 a place).
+Checkpoints are read with ``weights_only=True``, so nothing inside the file can run; the network classes come from
+the local policy model's model.py.
 """
 
 from __future__ import annotations
@@ -17,6 +21,13 @@ import sys
 # the folder holding the local policy model's model.py and mortal.pth; MORTAL_POLICY_DIR moves it (CI runners)
 POLICY_MODEL = os.path.join(os.path.expanduser(os.environ.get("MORTAL_POLICY_DIR", "~/Downloads/mortal_model_policy")),
                             "model.py")
+# the project's model; MORTAL_S42_WEIGHTS moves the file (CI runners, the tutor's sandbox)
+S42_WEIGHTS = os.path.expanduser(os.environ.get("MORTAL_S42_WEIGHTS", "~/Downloads/mortal_q/s42-inference.pth"))
+# Softmax temperature in Q points (2 a place). At 0.6 S42's percentages are as spread out as the earlier policy
+# model's on 168 of the user's Jade games (103,678 decisions): mean top probability 0.854 against 0.862, mean entropy
+# 0.363 against 0.369, and the total variation between the two models' distributions is at its lowest (0.132).
+# See analysis/mortal-s42-switch-2026-11-20.md.
+TEMPERATURE = 0.6
 _MOD = None
 
 
@@ -58,6 +69,41 @@ def q_engine(path: str, name: str = "q", quick_eval: bool = False):
     return mod.MortalEngine(brain, dqn, is_oracle=False, version=version, device=torch.device("cpu"),
                             enable_amp=False, enable_quick_eval=quick_eval, enable_rule_based_agari_guard=True,
                             name=name)
+
+
+def with_probabilities(e, temperature: float = TEMPERATURE):
+    """Make a value-head engine report softmax(Q / temperature) over the legal actions in place of raw Q-values."""
+    import torch
+    raw = e._react_batch
+
+    def _react_batch(obs, masks, invisible_obs):
+        actions, q, masks_out, greedy = raw(obs, masks, invisible_obs)
+        probs = torch.softmax(torch.tensor(q, dtype=torch.float64) / temperature, dim=-1)  # illegal actions are -inf
+        return actions, probs.tolist(), masks_out, greedy
+
+    e._react_batch = _react_batch
+    return e
+
+
+def default_engine(quick_eval: bool = False):
+    """Mortal-S42 with probabilities. Where its weights are not on disk (a tutor thread started before the switch),
+    the earlier policy model answers and a line on stderr says so."""
+    if not os.path.exists(S42_WEIGHTS):
+        print(f"mortal_engines: {S42_WEIGHTS} not found, using the earlier policy model", file=sys.stderr)
+        e = policy_engine()
+        e.enable_quick_eval = quick_eval
+        return e
+    return with_probabilities(q_engine(S42_WEIGHTS, "s42", quick_eval))
+
+
+POLICY_LABEL = "Mortal policy model (local weights)"
+
+
+def default_label() -> str:
+    """What ``default_engine()`` is, for files that record which model made their numbers."""
+    if not os.path.exists(S42_WEIGHTS):
+        return POLICY_LABEL
+    return f"Mortal-S42 (softmax of Q at {TEMPERATURE})"
 
 
 def engine(spec: str, name: str | None = None, quick_eval: bool = False):

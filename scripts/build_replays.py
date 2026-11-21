@@ -3,9 +3,14 @@
 
 Each game in ``data/self_games/majsoul/index.json`` (a tenhou.net/6 log fetched by tensoul)
 becomes ``site/replays/<uuid>.json``: every hand as an ordered event stream that
-``site/replay.js`` steps through, and, for each of Honver's decisions, the local Mortal
-policy's probability for every legal action (the same model and weights as
-``scripts/build_mortal_analysis.py``). ``site/replays/index.json`` lists the games.
+``site/replay.js`` steps through, and, for each of Honver's decisions, Mortal's probability for
+every legal action (the project's model, ``scripts/mortal_engines.py``; the same one as
+``scripts/build_mortal_analysis.py``). ``site/replays/index.json`` lists the games and, per game,
+the model that made its numbers.
+
+A game that already has a replay is left alone, so published numbers do not move when the model
+changes: replays built up to 20 Nov 2026 carry the earlier policy model's numbers. ``--only``
+rebuilds the games it names and ``--rebuild`` rebuilds every game.
 
 Opponents appear by seat and Mahjong Soul rank only; their account names are left out.
 
@@ -576,8 +581,9 @@ def load_engine():
 
     import torch
 
+    engine = bma.load_mortal_engine(bma.DEFAULT_MODEL)
     torch.set_num_threads(2)
-    return bma.load_mortal_engine(bma.DEFAULT_MODEL)
+    return engine
 
 
 def annotate(game: dict, engine) -> None:
@@ -652,6 +658,7 @@ def main() -> None:
     ap.add_argument("--only", nargs="+", help="uuid prefixes of the games to build (default: all)")
     ap.add_argument("--no-mortal", action="store_true", help="write the event streams without Mortal")
     ap.add_argument("--since", default="2026-01-01", help="first date to include (YYYY-MM-DD)")
+    ap.add_argument("--rebuild", action="store_true", help="rebuild games that already have a replay")
     args = ap.parse_args()
 
     rows = json.loads(args.manifest.read_text(encoding="utf-8"))
@@ -659,13 +666,18 @@ def main() -> None:
     if args.only:
         rows = [r for r in rows if any(r["uuid"].startswith(p) for p in args.only)]
     rows.sort(key=lambda r: r["start_time"], reverse=True)
-    engine = None if args.no_mortal else load_engine()
     args.out.mkdir(parents=True, exist_ok=True)
+
+    import mortal_engines
 
     index_path = args.out / "index.json"
     previous = {}
-    if args.only and index_path.exists():
+    if index_path.exists() and (args.only or not args.rebuild):
         previous = {g["id"]: g for g in json.loads(index_path.read_text(encoding="utf-8"))["games"]}
+    if not args.only and not args.rebuild:
+        rows = [r for r in rows if not (r["uuid"] in previous and (args.out / f"{r['uuid']}.json").exists())]
+    engine = None if args.no_mortal or not rows else load_engine()
+    label = None if engine is None else mortal_engines.default_label()
 
     for n, row in enumerate(rows, 1):
         game = build_game(row)
@@ -674,11 +686,15 @@ def main() -> None:
         path = args.out / f"{row['uuid']}.json"
         path.write_text(json.dumps(game, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
         previous[row["uuid"]] = summarise(game)
+        if label:
+            previous[row["uuid"]]["model"] = label
         print(f"[{n}/{len(rows)}] {row['uuid']} {len(game['hands'])} hands", file=sys.stderr)
 
     games = sorted(previous.values(), key=lambda g: g["date"], reverse=True)
+    # games listed before models were recorded per game were all made by the earlier policy model
+    models = sorted({g.get("model", mortal_engines.POLICY_LABEL) for g in games})
     index = {"v": FORMAT_VERSION, "generated": datetime.date.today().isoformat(), "player": "Honver",
-             "model": "Mortal policy model (local weights)", "games": games}
+             "model": "; ".join(models), "games": games}
     index_path.write_text(json.dumps(index, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"wrote {len(rows)} games to {args.out}", file=sys.stderr)
 
