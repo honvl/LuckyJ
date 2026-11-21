@@ -62,9 +62,10 @@ class TokenTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             env_file = Path(d) / ".env.local"
             env_file.write_text('OTHER=1\nNEJI_REPLAY_TOKEN="from-file"\n')
-            self.assertEqual(fetch.read_token({"NEJI_REPLAY_TOKEN": " from-env "}, env_file), "from-env")
-            self.assertEqual(fetch.read_token({}, env_file), "from-file")
-            self.assertIsNone(fetch.read_token({}, Path(d) / "missing"))
+            self.assertEqual(fetch.read_tokens({"NEJI_REPLAY_TOKEN": " from-env "}, env_file), ["from-env"])
+            self.assertEqual(fetch.read_tokens({}, env_file), ["from-file"])
+            self.assertEqual(fetch.read_tokens({}, Path(d) / "missing"), [])
+            self.assertEqual(fetch.read_tokens({"NEJI_REPLAY_TOKEN": "a, b c"}, env_file), ["a", "b", "c"])
 
     def test_the_cache_folder_is_gitignored(self):
         ignore = (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
@@ -114,11 +115,11 @@ class ParseTest(unittest.TestCase):
 
 
 class FetchTest(unittest.TestCase):
-    def run_fetch(self, replies, todo):
+    def run_fetch(self, replies, todo, tokens=TOKEN):
         self.cache_dir = tempfile.TemporaryDirectory()
         self.addCleanup(self.cache_dir.cleanup)
         api, lines = FakeApi(replies), []
-        result = fetch.fetch(todo, TOKEN, Path(self.cache_dir.name), opener=api, out=lines.append)
+        result = fetch.fetch(todo, tokens, Path(self.cache_dir.name), opener=api, out=lines.append)
         return result, api, lines, Path(self.cache_dir.name)
 
     def test_request_carries_the_bare_game_id_and_the_token_only_in_the_header(self):
@@ -151,6 +152,25 @@ class FetchTest(unittest.TestCase):
             self.assertIn(word, result["stopped"])
             self.assertEqual(len(api.requests), 2)  # the third game is not tried
             self.assertNotIn(TOKEN, result["stopped"])
+
+    def test_a_spent_token_hands_the_same_game_to_the_next_one(self):
+        todo = GAMES[:3]
+        replies = [json.dumps(review(todo[0]["seat"])), 429, json.dumps(review(todo[1]["seat"])),
+                   json.dumps(review(todo[2]["seat"]))]
+        result, api, lines, cache = self.run_fetch(replies, todo, ["first", "second"])
+        self.assertEqual(result["fetched"], [g["id"] for g in todo])
+        self.assertIsNone(result["stopped"])
+        used = [r.get_header("Authorization") for r in api.requests]
+        self.assertEqual(used, ["Bearer first", "Bearer first", "Bearer second", "Bearer second"])
+        self.assertEqual(json.loads(api.requests[1].data), json.loads(api.requests[2].data))  # the same game again
+        self.assertFalse(any("first" in line or "second" in line for line in lines))
+
+    def test_the_run_stops_when_every_token_is_spent(self):
+        todo = GAMES[:3]
+        result, api, _, cache = self.run_fetch([429, 401], todo, ["first", "second"])
+        self.assertEqual(result["fetched"], [])
+        self.assertIn("expired", result["stopped"])
+        self.assertEqual(len(api.requests), 2)
 
     def test_one_failed_game_does_not_end_the_run(self):
         todo = GAMES[:3]

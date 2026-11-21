@@ -10,7 +10,8 @@ own choice (severity) times how much the decision matters (importance). Its API 
 
 A token covers 24 single-seat reviews and expires after 24 hours. It is made by hand with the "Generate token"
 button on the site's API tab (the button sits behind reCAPTCHA) and read here from ``NEJI_REPLAY_TOKEN``, either in
-the environment or in the repo's gitignored ``.env.local``. The token is never printed.
+the environment or in the repo's gitignored ``.env.local``. Several tokens, separated by commas, are used one after
+the other: when one is spent the next takes over on the same game. A token is never printed.
 
 Games come from ``site/replays`` (the hero's seat is in each replay file). Only the bare game id is sent, never an
 account id. Each review is stored whole, gzipped, as ``data/neji_reviews/<game id>-s<seat>.json.gz`` with the fetch
@@ -53,17 +54,16 @@ class TokenProblem(Exception):
     """The API refused the token: it is missing, expired (401) or used up (429)."""
 
 
-def read_token(env: dict | None = None, env_file: Path = ENV_FILE) -> str | None:
+def read_tokens(env: dict | None = None, env_file: Path = ENV_FILE) -> list[str]:
+    """The tokens to use, in order: the environment's if set, else the file's. Several are split on commas or spaces."""
     env = os.environ if env is None else env
-    token = (env.get(TOKEN_KEY) or "").strip()
-    if token:
-        return token
-    if env_file.exists():
+    raw = (env.get(TOKEN_KEY) or "").strip()
+    if not raw and env_file.exists():
         for line in env_file.read_text(encoding="utf-8").splitlines():
             key, sep, value = line.partition("=")
             if sep and key.strip() == TOKEN_KEY:
-                return value.strip().strip('"').strip("'") or None
-    return None
+                raw = value.strip().strip('"').strip("'")
+    return [t for t in raw.replace(",", " ").split() if t]
 
 
 def own_games(replays: Path = REPLAYS) -> list[dict]:
@@ -174,19 +174,32 @@ def cached(cache: Path = CACHE) -> list[Path]:
     return sorted(cache.glob("*-s[0-3].json.gz")) if cache.exists() else []
 
 
-def fetch(todo: list[dict], token: str, cache: Path = CACHE, opener=urllib.request.urlopen, out=print) -> dict:
-    """Fetch ``todo`` in order. Stops at the first token problem; a failed game is reported and skipped."""
-    done, failed, stopped = [], [], None
+def fetch(todo: list[dict], tokens: str | list[str], cache: Path = CACHE, opener=urllib.request.urlopen,
+          out=print) -> dict:
+    """Fetch ``todo`` in order. A refused token gives way to the next one and the same game is asked again; the run
+    stops when none is left. A game that fails for another reason is reported and skipped."""
+    tokens = [tokens] if isinstance(tokens, str) else list(tokens)
+    done, failed, stopped, used = [], [], None, 1
     for n, game in enumerate(todo, 1):
         t0 = time.time()
-        try:
-            review = request_review(token, game["id"], game["seat"], opener=opener)
-        except TokenProblem as e:
-            stopped = str(e)
+        review = None
+        while tokens and review is None:
+            try:
+                review = request_review(tokens[0], game["id"], game["seat"], opener=opener)
+            except TokenProblem as e:
+                tokens.pop(0)
+                stopped = str(e)
+                if tokens:
+                    used += 1
+                    out(f"  token {used - 1} is spent, moving to the next ({len(tokens)} left)")
+            except Exception as e:  # noqa: BLE001  one bad game should not end the run
+                failed.append({"id": game["id"], "error": str(e)})
+                out(f"  {n}/{len(todo)} {game['id']} failed: {e}")
+                break
+        if not tokens:
             break
-        except Exception as e:  # noqa: BLE001  one bad game should not end the run
-            failed.append({"id": game["id"], "error": str(e)})
-            out(f"  {n}/{len(todo)} {game['id']} failed: {e}")
+        stopped = None
+        if review is None:
             continue
         store(review, game, cache)
         grade = (review.get("grades") or [{}] * 4)[game["seat"]]
@@ -198,7 +211,7 @@ def fetch(todo: list[dict], token: str, cache: Path = CACHE, opener=urllib.reque
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description="Fetch Wind-Up Bird reviews of your own games into data/neji_reviews.")
-    ap.add_argument("--limit", type=int, default=PER_TOKEN, help="how many to fetch (a token covers 24)")
+    ap.add_argument("--limit", type=int, default=None, help="how many to fetch (default: 24 for each token)")
     ap.add_argument("--order", choices=("newest", "oldest", "spread"), default="newest")
     ap.add_argument("--games", nargs="*", help="game ids to fetch")
     ap.add_argument("--rated", action="store_true", help="only games in data/ladder_skill/jade_s42.jsonl")
@@ -211,7 +224,8 @@ def main(argv: list[str] | None = None) -> int:
         have = cached()
         print(f"{len(have)} reviews cached of {len(games)} replays")
         return 0
-    todo = pick(games, CACHE, args.limit, args.order, args.games, rated_ids() if args.rated else None)
+    limit = args.limit if args.limit is not None else PER_TOKEN * max(1, len(read_tokens()))
+    todo = pick(games, CACHE, limit, args.order, args.games, rated_ids() if args.rated else None)
     if not todo:
         print("nothing to fetch: every asked game is cached")
         return 0
@@ -220,12 +234,12 @@ def main(argv: list[str] | None = None) -> int:
             print(f"{g['id']}  seat {g['seat']}  {g['date']}  {g['room']}  placed {g['placement']}")
         print(f"{len(todo)} to fetch")
         return 0
-    token = read_token()
-    if not token:
+    tokens = read_tokens()
+    if not tokens:
         print(f"no token: put {TOKEN_KEY}=... in .env.local (API tab of https://neji-ai.spark-fly.net)", file=sys.stderr)
         return 2
     print(f"fetching {len(todo)} reviews (about two minutes each)")
-    result = fetch(todo, token)
+    result = fetch(todo, tokens)
     print(f"fetched {len(result['fetched'])}, failed {len(result['failed'])}, cached now {len(cached())}")
     if result["stopped"]:
         print(result["stopped"], file=sys.stderr)
