@@ -1,0 +1,150 @@
+# Score a set of games with a Mortal checkpoint on many runners (scripts/mine_ladder_skill.py --qmodel).
+#
+# The games arrive as one encrypted archive on the `ladder-data` release: a tar.gz of the log files at their
+# repository paths plus a list of them, encrypted with the LADDER_KEY secret
+#   openssl enc -aes-256-cbc -pbkdf2 -md sha256 -iter 100000 -salt -pass env:LADDER_KEY
+# The repository is public, so neither the logs nor the rows (they carry player names) leave a runner unencrypted:
+# every job uploads rows.jsonl.enc. Collect with
+#   gh run download RUN_ID --pattern 'ladder-rows-*' --dir OUT
+# then decrypt each file with the same command and -d.
+name: Ladder scoring
+
+on:
+  workflow_dispatch:
+    inputs:
+      asset:
+        description: Encrypted archive on the ladder-data release
+        default: houou-logs.tar.gz.enc
+      list:
+        description: List of game files inside the archive
+        default: data/ladder_skill/gha_houou_list.txt
+      group:
+        description: Group name written to every row
+        default: houou
+      jobs:
+        description: Number of runner jobs
+        default: "40"
+
+permissions:
+  contents: read
+
+env:
+  MORTAL_COMMIT: 0cff2b52982be5b1163aa9a62fb01f03ce91e0d2 # Equim-chan/Mortal; the local libriichi is built from it
+  TORCH_VERSION: "2.12.1"
+
+jobs:
+  kit:
+    name: Build libriichi, fetch the model
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    outputs:
+      shares: ${{ steps.plan.outputs.shares }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Cached libriichi
+        id: lib
+        uses: actions/cache@v4
+        with:
+          path: kit/libriichi.so
+          key: libriichi-${{ env.MORTAL_COMMIT }}-py312-${{ runner.os }}-${{ runner.arch }}
+      - name: Build libriichi
+        if: steps.lib.outputs.cache-hit != 'true'
+        run: |
+          git clone https://github.com/Equim-chan/Mortal.git mortal-src
+          git -C mortal-src checkout "$MORTAL_COMMIT"
+          cd mortal-src
+          cargo build -p libriichi --lib --release
+          mkdir -p ../kit
+          cp target/release/libriichi.so ../kit/libriichi.so
+      - name: Fetch the model
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p kit/policy kit/q
+          # the earlier policy model's model.py holds the network classes
+          gh release download duel-kit --repo "$GITHUB_REPOSITORY" --pattern model.py --dir kit/policy
+          curl -sSfL -o kit/q/s42-inference.pth https://huggingface.co/haor/Mortal-S42/resolve/main/weights/s42-inference.pth
+          sha256sum -c <<'EOF'
+          becdf99dd756f16c5cce052be423beb0aa1c9217189418901a20c59e42abbc61  kit/policy/model.py
+          e5f6955b6f19007fd65315e53291b36994493046bc118b991b959e9dc596d660  kit/q/s42-inference.pth
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ladder-kit
+          path: kit
+          retention-days: 1
+          compression-level: 0
+      - name: Plan the jobs
+        id: plan
+        env:
+          JOBS: ${{ inputs.jobs }}
+        run: |
+          python - <<'EOF' >> "$GITHUB_OUTPUT"
+          import json, os
+          print("shares=" + json.dumps(list(range(int(os.environ["JOBS"])))))
+          EOF
+
+  score:
+    name: Share ${{ matrix.share }}
+    needs: kit
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        share: ${{ fromJSON(needs.kit.outputs.shares) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install packages
+        run: |
+          pip install --quiet "torch==$TORCH_VERSION" --index-url https://download.pytorch.org/whl/cpu
+          pip install --quiet numpy==2.5.0 mahjong==2.0.0 pillow
+      - uses: actions/download-artifact@v4
+        with:
+          name: ladder-kit
+          path: kit
+      - name: Fetch and unpack the games
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LADDER_KEY: ${{ secrets.LADDER_KEY }}
+          ASSET: ${{ inputs.asset }}
+        run: |
+          gh release download ladder-data --repo "$GITHUB_REPOSITORY" --pattern "$ASSET" --dir "$RUNNER_TEMP"
+          openssl enc -d -aes-256-cbc -pbkdf2 -md sha256 -iter 100000 -pass env:LADDER_KEY \
+            -in "$RUNNER_TEMP/$ASSET" | tar -xzf -
+      - name: Score
+        env:
+          MORTAL_POLICY_DIR: ${{ github.workspace }}/kit/policy
+          PYTHONPATH: ${{ github.workspace }}/kit
+          LIST: ${{ inputs.list }}
+          GROUP: ${{ inputs.group }}
+          JOBS: ${{ inputs.jobs }}
+          SHARE: ${{ matrix.share }}
+        run: |
+          # every JOBS-th game of the list, starting at this job's number
+          awk -v n="$JOBS" -v s="$SHARE" '(NR - 1) % n == s' "$LIST" > share.txt
+          wc -l < share.txt
+          # the scorer's own output names nothing; the rows stay in the file
+          python scripts/mine_ladder_skill.py "$GROUP" rows.jsonl @share.txt --procs "$(nproc)" \
+            --qmodel kit/q/s42-inference.pth | tail -1 | sed 's/.* \([0-9]* games\)$/\1/'
+          wc -l < rows.jsonl
+      - name: Encrypt the rows
+        if: always()
+        env:
+          LADDER_KEY: ${{ secrets.LADDER_KEY }}
+        run: |
+          [ -f rows.jsonl ] || exit 0
+          openssl enc -aes-256-cbc -pbkdf2 -md sha256 -iter 100000 -salt -pass env:LADDER_KEY \
+            -in rows.jsonl -out rows.jsonl.enc
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ladder-rows-${{ matrix.share }}
+          path: rows.jsonl.enc
+          retention-days: 7
+          if-no-files-found: warn
