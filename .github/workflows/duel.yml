@@ -1,0 +1,137 @@
+# Fan a Mortal duel (scripts/mortal_duel.py) out over GitHub runners: every job plays its own stretch of seeds,
+# all challengers on the same deals, and uploads its rows. Collect them with
+#   gh run download RUN_ID --pattern 'duel-rows-*' --dir OUT
+# and concatenate the rows.jsonl files; `scripts/mortal_duel.py MERGED.jsonl --report` reads the result.
+name: Mortal duel
+
+on:
+  workflow_dispatch:
+    inputs:
+      seed_start:
+        description: First seed
+        default: "11000"
+      seeds:
+        description: Number of seeds (each is 4 hanchan per challenger)
+        default: "1000"
+      per_job:
+        description: Seeds per runner job
+        default: "40"
+      chunk:
+        description: Seeds per output row
+        default: "10"
+
+permissions:
+  contents: read
+
+env:
+  MORTAL_COMMIT: 0cff2b52982be5b1163aa9d624abf8dc7a82b5ab # Equim-chan/Mortal; the local libriichi is built from it
+  TORCH_VERSION: "2.12.1"
+
+jobs:
+  kit:
+    name: Build libriichi, fetch the models
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    outputs:
+      starts: ${{ steps.plan.outputs.starts }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Cached libriichi
+        id: lib
+        uses: actions/cache@v4
+        with:
+          path: kit/libriichi.so
+          key: libriichi-${{ env.MORTAL_COMMIT }}-py312-${{ runner.os }}-${{ runner.arch }}
+      - name: Build libriichi
+        if: steps.lib.outputs.cache-hit != 'true'
+        run: |
+          git clone https://github.com/Equim-chan/Mortal.git mortal-src
+          git -C mortal-src checkout "$MORTAL_COMMIT"
+          cd mortal-src
+          cargo build -p libriichi --lib --release
+          mkdir -p ../kit
+          cp target/release/libriichi.so ../kit/libriichi.so
+      - name: Fetch the models
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p kit/policy kit/q
+          gh release download duel-kit --repo "$GITHUB_REPOSITORY" --dir kit/policy
+          curl -sSfL -o kit/q/mortal_298k.pth https://huggingface.co/VoidShine/mortal-298k/resolve/main/mortal_298k.pth
+          curl -sSfL -o kit/q/mortal_582500.pth https://huggingface.co/Yuchen1457/mortal-582500/resolve/main/mortal_582500.pth
+          curl -sSfL -o kit/q/s42-inference.pth https://huggingface.co/haor/Mortal-S42/resolve/main/weights/s42-inference.pth
+          sha256sum -c <<'EOF'
+          0e053d30b8fd4e28be802ee17d48567312216f3c84d2076e810dc922d129487e  kit/policy/mortal.pth
+          becdf99dd756f16c5cce052be423beb0aa1c9217189418901a20c59e42abbc61  kit/policy/model.py
+          bfb3a6c072aa0bfd4171a9cdc77cb6c02ae42cde920843f9e5784394f23447d8  kit/q/mortal_298k.pth
+          738e0d6e3c0ce9671629554ad39abd147d2ffbac676e80b194c83f2acc0fea20  kit/q/mortal_582500.pth
+          e5f6955b6f19007fd65315e53291b36994493046bc118b991b959e9dc596d660  kit/q/s42-inference.pth
+          EOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: duel-kit
+          path: kit
+          retention-days: 1
+          compression-level: 0
+      - name: Plan the jobs
+        id: plan
+        env:
+          SEED_START: ${{ inputs.seed_start }}
+          SEEDS: ${{ inputs.seeds }}
+          PER_JOB: ${{ inputs.per_job }}
+        run: |
+          python - <<'EOF' >> "$GITHUB_OUTPUT"
+          import json, os
+          start, seeds, per = (int(os.environ[k]) for k in ("SEED_START", "SEEDS", "PER_JOB"))
+          print("starts=" + json.dumps(list(range(start, start + seeds, per))))
+          EOF
+
+  duel:
+    name: Seeds from ${{ matrix.start }}
+    needs: kit
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        start: ${{ fromJSON(needs.kit.outputs.starts) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install torch
+        run: pip install --quiet "torch==$TORCH_VERSION" numpy --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple
+      - uses: actions/download-artifact@v4
+        with:
+          name: duel-kit
+          path: kit
+      - name: Play
+        env:
+          MORTAL_POLICY_DIR: ${{ github.workspace }}/kit/policy
+          PYTHONPATH: ${{ github.workspace }}/kit
+          SEED_START: ${{ matrix.start }}
+          SEEDS: ${{ inputs.seeds }}
+          PER_JOB: ${{ inputs.per_job }}
+          CHUNK: ${{ inputs.chunk }}
+          FIRST: ${{ inputs.seed_start }}
+        run: |
+          # the last job may be shorter than the others
+          left=$(( FIRST + SEEDS - SEED_START ))
+          n=$(( left < PER_JOB ? left : PER_JOB ))
+          nproc
+          python scripts/mortal_duel.py rows.jsonl --champion policy \
+            --challenger m298k=kit/q/mortal_298k.pth \
+            --challenger m582k=kit/q/mortal_582500.pth \
+            --challenger s42=kit/q/s42-inference.pth \
+            --seed-start "$SEED_START" --seeds "$n" --chunk "$CHUNK" --procs "$(nproc)"
+          wc -l rows.jsonl
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: duel-rows-${{ matrix.start }}
+          path: rows.jsonl
+          retention-days: 7
+          if-no-files-found: warn

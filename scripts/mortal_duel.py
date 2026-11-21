@@ -10,8 +10,11 @@ Work is cut into chunks of seeds; each chunk and challenger is one row of OUT.js
 A challenger as strong as the champion averages rank 2.5. Rerunning continues where the file stops.
 
     .venv/bin/python scripts/mortal_duel.py OUT.jsonl --champion policy --challenger NAME=CHECKPOINT ... \\
-        [--seeds 2000] [--chunk 10] [--procs 12]
+        [--seeds 2000] [--seed-start 10000] [--chunk 10] [--procs 12]
     .venv/bin/python scripts/mortal_duel.py OUT.jsonl --report
+
+``--seed-start`` lets several machines share one run: each takes its own stretch of seeds (the GitHub workflow
+``.github/workflows/duel.yml`` does this) and the rows are put together afterwards.
 
 ``policy`` in place of a checkpoint path is the local policy model. Engines are built in ``mortal_engines.py``.
 """
@@ -21,6 +24,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import time
 from collections import defaultdict
 from multiprocessing import Pool
 from pathlib import Path
@@ -105,7 +109,7 @@ if __name__ == "__main__":
     if "--report" in args:
         report(out_path)
         sys.exit()
-    opt = {"--seeds": 2000, "--chunk": 10, "--procs": 12}
+    opt = {"--seeds": 2000, "--chunk": 10, "--procs": 12, "--seed-start": SEED_START}
     champion, challengers = "policy", {}
     i = 0
     while i < len(args):
@@ -123,7 +127,7 @@ if __name__ == "__main__":
         done = {(r["challenger"], r["seed"]) for r in map(json.loads, open(out_path))}
     # chunk by chunk, every challenger on the same seeds before moving on
     jobs = [(name, champion, seed, opt["--chunk"])
-            for seed in range(SEED_START, SEED_START + opt["--seeds"], opt["--chunk"])
+            for seed in range(opt["--seed-start"], opt["--seed-start"] + opt["--seeds"], opt["--chunk"])
             for name in challengers if (name, seed) not in done]
     n = 0
     with Pool(opt["--procs"], initializer=init, initargs=(specs,)) as pool, open(out_path, "a") as f:
@@ -131,6 +135,5 @@ if __name__ == "__main__":
             f.write(json.dumps(row) + "\n")
             f.flush()
             n += 1
-            if n % 20 == 0:
-                print(n, "of", len(jobs), "chunks", flush=True)
+            print(n, "of", len(jobs), "chunks", time.strftime("%H:%M:%S"), flush=True)
     print(out_path, n, "chunks")

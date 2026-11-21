@@ -14,7 +14,9 @@ import importlib.util
 import os
 import sys
 
-POLICY_MODEL = os.path.expanduser("~/Downloads/mortal_model_policy/model.py")
+# the folder holding the local policy model's model.py and mortal.pth; MORTAL_POLICY_DIR moves it (CI runners)
+POLICY_MODEL = os.path.join(os.path.expanduser(os.environ.get("MORTAL_POLICY_DIR", "~/Downloads/mortal_model_policy")),
+                            "model.py")
 _MOD = None
 
 
