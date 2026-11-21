@@ -13,7 +13,8 @@ your Jade games, your own seat alone, and the Houou games. It needs no Wind-Up B
 
 ``compare`` takes the games that have a cached Wind-Up Bird review and puts its statistics beside the two Mortal
 models' on those same games: the correlation of each with the place, a bootstrap interval, and the interval of the
-difference to the best Mortal statistic. The grade with importance (``score``) sits beside the same model's grade
+difference to the best Mortal statistic, and what each says about the place once the other is known (a partial
+correlation). The grade with importance (``score``) sits beside the same model's grade
 without it (``flat severity``, ``match rate``), which is the part importance adds.
 
 ``power`` says how many reviewed games a difference of a given size needs.
@@ -85,6 +86,13 @@ def spearman(x, y) -> float:
     if x.std() == 0 or y.std() == 0:
         return float("nan")
     return float(np.corrcoef(x, y)[0, 1])
+
+
+def partial(x, y, z) -> float:
+    """Spearman correlation of x with y after the part of each that z explains is taken out."""
+    rxy, rxz, ryz = spearman(x, y), spearman(x, z), spearman(y, z)
+    den = math.sqrt(max(0.0, (1 - rxz * rxz) * (1 - ryz * ryz)))
+    return (rxy - rxz * ryz) / den if den > 0 else float("nan")
 
 
 def fisher_interval(r: float, n: int) -> tuple[float, float]:
@@ -254,6 +262,14 @@ def compare(games: list[dict], boot: int = 4000, seed: int = 7) -> dict:
             "diff": round(out["stats"][head]["r"] - out["stats"][other]["r"], 3),
             "lo": round(float(np.percentile(d, 2.5)), 3), "hi": round(float(np.percentile(d, 97.5)), 3)}
     out["between"] = {f"{head} with {best}": round(spearman(cols[head], cols[best]), 3)}
+    # what each grade says about the place once the other is known (partial rank correlation)
+    out["partial"] = {}
+    for a, b in ((head, best), (best, head)):
+        r = partial(cols[a], places, cols[b])
+        d = np.array([partial(cols[a][i], places[i], cols[b][i]) for i in idx[:1000]])
+        d = d[np.isfinite(d)]
+        out["partial"][f"{a}, given {b}"] = {"r": round(r, 3), "lo": round(float(np.percentile(d, 2.5)), 3),
+                                              "hi": round(float(np.percentile(d, 97.5)), 3)}
     return out
 
 
@@ -317,6 +333,8 @@ def main(argv: list[str]) -> int:
                 print(f"  {name}: {v['diff']:+.3f}  [{v['lo']:+.3f}, {v['hi']:+.3f}]")
             for name, v in c["between"].items():
                 print(f"  correlation of {name}: {v:+.3f}")
+            for name, v in c["partial"].items():
+                print(f"  {name}: {v['r']:+.3f}  [{v['lo']:+.3f}, {v['hi']:+.3f}]")
         else:
             print(f"  {c.get('note')}")
     if cmd in ("power", "all"):

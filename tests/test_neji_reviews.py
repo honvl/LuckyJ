@@ -220,6 +220,17 @@ class StatsTest(unittest.TestCase):
         self.assertNotIn("Wind-Up Bird: _importance", out["stats"])
         diff = next(v for k, v in out["differences"].items() if out["best_mortal"] in k)
         self.assertLess(diff["hi"], 0)  # the interval of the difference excludes zero
+        # the good grade still tracks the place once the weak one is known; the weak one adds nothing back
+        adds, adds_back = out["partial"].values()
+        self.assertLess(adds["hi"], -0.5)
+        self.assertGreater(adds_back["hi"], 0)
+
+    def test_partial_removes_a_shared_cause(self):
+        rng = np.random.default_rng(1)
+        z = rng.normal(size=400)
+        x, y = z + rng.normal(0, 0.5, 400), z + rng.normal(0, 0.5, 400)
+        self.assertGreater(check.spearman(x, y), 0.6)
+        self.assertLess(abs(check.partial(x, y, z)), 0.12)
 
     def test_compare_declines_a_handful_of_games(self):
         games = [{"id": "x", "seat": 0, "place": 1, "Wind-Up Bird": {"score (severity x importance)": 1.0}}]
