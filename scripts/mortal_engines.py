@@ -25,6 +25,10 @@ def model_module():
         import libriichi
         import torch
         torch.set_num_threads(1)
+        # PyTorch hands convolutions on batches of 16 or more to NNPACK, which is about 37 times slower per sample
+        # for this network (measured on Apple silicon, torch 2.12). The arena plays many games at once, so it
+        # reaches those batches; replays through Bot are batches of one and never did.
+        torch.backends.nnpack.set_flags(False)
         for name in ["mjai", "consts", "dataset", "state", "arena", "stat"]:
             if hasattr(libriichi, name):
                 sys.modules[f"libriichi.{name}"] = getattr(libriichi, name)
