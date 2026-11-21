@@ -107,8 +107,7 @@ class TierRankingTests(unittest.TestCase):
         for lang, latest in (("en", '<a href="#tier-ladder">Chapter 53 ranks Saint 2 to Celestial'), ("ja", '<a href="#tier-ladder">第53章は、雀聖2から魂天までを')):
             page = PAGES[lang].read_text(encoding="utf-8")
             self.assertEqual(page.count('<li class="is-latest">'), 1)
-            first = page.index('<li class="is-latest">')
-            self.assertIn(latest, page[first:first + 300])
+            self.assertEqual(page.count(latest), 1)  # chapter 54 is the latest notice now (tests/test_throne_shift.py)
             self.assertEqual(page.count('<span class="contents-num">53</span>'), 1)
             self.assertIn('href="#tier-ladder"><span class="chapter-next-label">', page)
             self.assertIn("mine_tier_ranking.py", page)

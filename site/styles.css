@@ -3336,6 +3336,38 @@ html:lang(ja) :is(.timing-title, .timing-sub, .timing-legend, .timing-panel-titl
   background: var(--plate);
 }
 
+.tier-figure .tier-rank-label.is-figure {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.tier-figure .tier-dot.throne-s3 {
+  fill: var(--tier-th);
+}
+
+.tier-figure .throne-move {
+  stroke: var(--hair);
+  stroke-width: 2;
+}
+
+.timing-key.throne-even::before {
+  width: 22px;
+  height: 2px;
+  background: var(--ink-2);
+}
+
+.tier-figure #throne-swing-figure .timing-mid,
+#throne-swing-figure .timing-plate .timing-mid {
+  stroke: var(--ink-2);
+}
+
+.timing-key.throne-s3key::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--verm-mark);
+}
+
 .tier-figure .tier-cross {
   stroke: var(--tier-ms);
   stroke-width: 1;

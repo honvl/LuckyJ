@@ -1,0 +1,1169 @@
+{
+ "positions": 3765,
+ "finishes_each": 3000,
+ "pool_hands": 3783,
+ "points": {
+  "saint3": {
+   "seats": 864,
+   "average": [
+    144.0,
+    65.6,
+    -9.9,
+    -272.7
+   ],
+   "step_share_pct": [
+    18.8,
+    18.1,
+    63.1
+   ]
+  },
+  "celestial": {
+   "seats": 13582,
+   "average": [
+    65.3,
+    26.2,
+    -26.3,
+    -66.0
+   ],
+   "step_share_pct": [
+    30.0,
+    40.0,
+    30.0
+   ],
+   "schedule": [
+    50,
+    20,
+    -20,
+    -50
+   ],
+   "at_schedule_pct": 68.7,
+   "at_double_pct": 31.3
+  }
+ },
+ "swings": {
+  "3900": {
+   "all": {
+    "positions": 3765,
+    "saint3": {
+     "win": 38.2,
+     "deal_in": 40.1,
+     "ratio": 1.051,
+     "ratio_se": 0.006
+    },
+    "celestial": {
+     "win": 9.79,
+     "deal_in": 9.53,
+     "ratio": 0.973,
+     "ratio_se": 0.006
+    },
+    "ratio_change": -0.078,
+    "ratio_change_se": 0.004,
+    "fourth_change_pct": {
+     "win": -8.4,
+     "deal_in": 9.7
+    },
+    "first_change_pct": {
+     "win": 8.8,
+     "deal_in": -7.3
+    }
+   },
+   "1": {
+    "positions": 1061,
+    "saint3": {
+     "win": 26.0,
+     "deal_in": 25.8,
+     "ratio": 0.993,
+     "ratio_se": 0.009
+    },
+    "celestial": {
+     "win": 8.08,
+     "deal_in": 7.44,
+     "ratio": 0.921,
+     "ratio_se": 0.009
+    },
+    "ratio_change": -0.072,
+    "ratio_change_se": 0.003,
+    "fourth_change_pct": {
+     "win": -3.4,
+     "deal_in": 4.0
+    },
+    "first_change_pct": {
+     "win": 13.2,
+     "deal_in": -10.2
+    }
+   },
+   "2": {
+    "positions": 934,
+    "saint3": {
+     "win": 36.9,
+     "deal_in": 38.3,
+     "ratio": 1.038,
+     "ratio_se": 0.012
+    },
+    "celestial": {
+     "win": 10.95,
+     "deal_in": 10.52,
+     "ratio": 0.961,
+     "ratio_se": 0.012
+    },
+    "ratio_change": -0.078,
+    "ratio_change_se": 0.007,
+    "fourth_change_pct": {
+     "win": -6.6,
+     "deal_in": 7.9
+    },
+    "first_change_pct": {
+     "win": 10.3,
+     "deal_in": -8.4
+    }
+   },
+   "3": {
+    "positions": 971,
+    "saint3": {
+     "win": 45.5,
+     "deal_in": 49.4,
+     "ratio": 1.085,
+     "ratio_se": 0.013
+    },
+    "celestial": {
+     "win": 11.19,
+     "deal_in": 11.09,
+     "ratio": 0.991,
+     "ratio_se": 0.011
+    },
+    "ratio_change": -0.095,
+    "ratio_change_se": 0.008,
+    "fourth_change_pct": {
+     "win": -11.1,
+     "deal_in": 13.1
+    },
+    "first_change_pct": {
+     "win": 6.2,
+     "deal_in": -6.0
+    }
+   },
+   "4": {
+    "positions": 799,
+    "saint3": {
+     "win": 47.0,
+     "deal_in": 50.1,
+     "ratio": 1.065,
+     "ratio_se": 0.013
+    },
+    "celestial": {
+     "win": 8.99,
+     "deal_in": 9.24,
+     "ratio": 1.028,
+     "ratio_se": 0.011
+    },
+    "ratio_change": -0.037,
+    "ratio_change_se": 0.008,
+    "fourth_change_pct": {
+     "win": -13.7,
+     "deal_in": 15.2
+    },
+    "first_change_pct": {
+     "win": 4.5,
+     "deal_in": -3.7
+    }
+   },
+   "East, 1": {
+    "positions": 593,
+    "saint3": {
+     "win": 28.4,
+     "deal_in": 30.2,
+     "ratio": 1.061,
+     "ratio_se": 0.009
+    },
+    "celestial": {
+     "win": 8.27,
+     "deal_in": 8.19,
+     "ratio": 0.99,
+     "ratio_se": 0.009
+    },
+    "ratio_change": -0.07,
+    "ratio_change_se": 0.003,
+    "fourth_change_pct": {
+     "win": -4.6,
+     "deal_in": 5.5
+    },
+    "first_change_pct": {
+     "win": 10.7,
+     "deal_in": -9.4
+    }
+   },
+   "East, 2": {
+    "positions": 519,
+    "saint3": {
+     "win": 37.1,
+     "deal_in": 39.6,
+     "ratio": 1.069,
+     "ratio_se": 0.008
+    },
+    "celestial": {
+     "win": 9.95,
+     "deal_in": 9.8,
+     "ratio": 0.986,
+     "ratio_se": 0.008
+    },
+    "ratio_change": -0.083,
+    "ratio_change_se": 0.003,
+    "fourth_change_pct": {
+     "win": -7.7,
+     "deal_in": 9.2
+    },
+    "first_change_pct": {
+     "win": 8.9,
+     "deal_in": -7.2
+    }
+   },
+   "East, 3": {
+    "positions": 505,
+    "saint3": {
+     "win": 40.3,
+     "deal_in": 43.0,
+     "ratio": 1.067,
+     "ratio_se": 0.008
+    },
+    "celestial": {
+     "win": 9.83,
+     "deal_in": 9.71,
+     "ratio": 0.988,
+     "ratio_se": 0.009
+    },
+    "ratio_change": -0.079,
+    "ratio_change_se": 0.004,
+    "fourth_change_pct": {
+     "win": -9.5,
+     "deal_in": 11.0
+    },
+    "first_change_pct": {
+     "win": 7.1,
+     "deal_in": -6.3
+    }
+   },
+   "East, 4": {
+    "positions": 420,
+    "saint3": {
+     "win": 42.7,
+     "deal_in": 45.5,
+     "ratio": 1.065,
+     "ratio_se": 0.008
+    },
+    "celestial": {
+     "win": 9.41,
+     "deal_in": 9.29,
+     "ratio": 0.988,
+     "ratio_se": 0.008
+    },
+    "ratio_change": -0.078,
+    "ratio_change_se": 0.003,
+    "fourth_change_pct": {
+     "win": -11.0,
+     "deal_in": 12.8
+    },
+    "first_change_pct": {
+     "win": 6.3,
+     "deal_in": -4.8
+    }
+   },
+   "South 1-3, 1": {
+    "positions": 381,
+    "saint3": {
+     "win": 23.4,
+     "deal_in": 21.2,
+     "ratio": 0.908,
+     "ratio_se": 0.014
+    },
+    "celestial": {
+     "win": 7.88,
+     "deal_in": 6.73,
+     "ratio": 0.854,
+     "ratio_se": 0.014
+    },
+    "ratio_change": -0.054,
+    "ratio_change_se": 0.006,
+    "fourth_change_pct": {
+     "win": -2.0,
+     "deal_in": 2.2
+    },
+    "first_change_pct": {
+     "win": 15.3,
+     "deal_in": -11.1
+    }
+   },
+   "South 1-3, 2": {
+    "positions": 323,
+    "saint3": {
+     "win": 37.2,
+     "deal_in": 37.8,
+     "ratio": 1.016,
+     "ratio_se": 0.016
+    },
+    "celestial": {
+     "win": 11.79,
+     "deal_in": 11.06,
+     "ratio": 0.939,
+     "ratio_se": 0.014
+    },
+    "ratio_change": -0.077,
+    "ratio_change_se": 0.008,
+    "fourth_change_pct": {
+     "win": -6.1,
+     "deal_in": 7.1
+    },
+    "first_change_pct": {
+     "win": 10.5,
+     "deal_in": -9.3
+    }
+   },
+   "South 1-3, 3": {
+    "positions": 380,
+    "saint3": {
+     "win": 49.5,
+     "deal_in": 53.4,
+     "ratio": 1.077,
+     "ratio_se": 0.012
+    },
+    "celestial": {
+     "win": 11.86,
+     "deal_in": 12.03,
+     "ratio": 1.014,
+     "ratio_se": 0.013
+    },
+    "ratio_change": -0.063,
+    "ratio_change_se": 0.008,
+    "fourth_change_pct": {
+     "win": -12.6,
+     "deal_in": 14.4
+    },
+    "first_change_pct": {
+     "win": 5.7,
+     "deal_in": -5.7
+    }
+   },
+   "South 1-3, 4": {
+    "positions": 312,
+    "saint3": {
+     "win": 49.0,
+     "deal_in": 55.0,
+     "ratio": 1.123,
+     "ratio_se": 0.015
+    },
+    "celestial": {
+     "win": 8.36,
+     "deal_in": 9.37,
+     "ratio": 1.12,
+     "ratio_se": 0.015
+    },
+    "ratio_change": -0.002,
+    "ratio_change_se": 0.007,
+    "fourth_change_pct": {
+     "win": -15.3,
+     "deal_in": 17.6
+    },
+    "first_change_pct": {
+     "win": 2.7,
+     "deal_in": -2.7
+    }
+   },
+   "South 4, 1": {
+    "positions": 87,
+    "saint3": {
+     "win": 21.4,
+     "deal_in": 16.8,
+     "ratio": 0.786,
+     "ratio_se": 0.077
+    },
+    "celestial": {
+     "win": 7.61,
+     "deal_in": 5.44,
+     "ratio": 0.715,
+     "ratio_se": 0.086
+    },
+    "ratio_change": -0.071,
+    "ratio_change_se": 0.028,
+    "fourth_change_pct": {
+     "win": -0.8,
+     "deal_in": 1.1
+    },
+    "first_change_pct": {
+     "win": 20.8,
+     "deal_in": -11.7
+    }
+   },
+   "South 4, 2": {
+    "positions": 92,
+    "saint3": {
+     "win": 34.9,
+     "deal_in": 32.8,
+     "ratio": 0.941,
+     "ratio_se": 0.106
+    },
+    "celestial": {
+     "win": 13.68,
+     "deal_in": 12.67,
+     "ratio": 0.926,
+     "ratio_se": 0.086
+    },
+    "ratio_change": -0.015,
+    "ratio_change_se": 0.059,
+    "fourth_change_pct": {
+     "win": -2.9,
+     "deal_in": 3.2
+    },
+    "first_change_pct": {
+     "win": 17.9,
+     "deal_in": -11.8
+    }
+   },
+   "South 4, 3": {
+    "positions": 86,
+    "saint3": {
+     "win": 58.1,
+     "deal_in": 69.0,
+     "ratio": 1.189,
+     "ratio_se": 0.097
+    },
+    "celestial": {
+     "win": 16.22,
+     "deal_in": 15.0,
+     "ratio": 0.925,
+     "ratio_se": 0.067
+    },
+    "ratio_change": -0.264,
+    "ratio_change_se": 0.051,
+    "fourth_change_pct": {
+     "win": -13.5,
+     "deal_in": 19.8
+    },
+    "first_change_pct": {
+     "win": 3.2,
+     "deal_in": -5.0
+    }
+   },
+   "South 4, 4": {
+    "positions": 67,
+    "saint3": {
+     "win": 64.6,
+     "deal_in": 55.6,
+     "ratio": 0.86,
+     "ratio_se": 0.08
+    },
+    "celestial": {
+     "win": 9.31,
+     "deal_in": 8.36,
+     "ratio": 0.898,
+     "ratio_se": 0.084
+    },
+    "ratio_change": 0.038,
+    "ratio_change_se": 0.054,
+    "fourth_change_pct": {
+     "win": -22.5,
+     "deal_in": 18.8
+    },
+    "first_change_pct": {
+     "win": 1.1,
+     "deal_in": -1.8
+    }
+   }
+  },
+  "8000": {
+   "all": {
+    "positions": 3765,
+    "saint3": {
+     "win": 71.2,
+     "deal_in": 82.7,
+     "ratio": 1.162,
+     "ratio_se": 0.008
+    },
+    "celestial": {
+     "win": 18.89,
+     "deal_in": 18.89,
+     "ratio": 1.0,
+     "ratio_se": 0.006
+    },
+    "ratio_change": -0.161,
+    "ratio_change_se": 0.005,
+    "fourth_change_pct": {
+     "win": -14.6,
+     "deal_in": 20.7
+    },
+    "first_change_pct": {
+     "win": 18.1,
+     "deal_in": -13.6
+    }
+   },
+   "1": {
+    "positions": 1061,
+    "saint3": {
+     "win": 43.5,
+     "deal_in": 63.4,
+     "ratio": 1.458,
+     "ratio_se": 0.01
+    },
+    "celestial": {
+     "win": 13.02,
+     "deal_in": 18.43,
+     "ratio": 1.415,
+     "ratio_se": 0.014
+    },
+    "ratio_change": -0.043,
+    "ratio_change_se": 0.008,
+    "fourth_change_pct": {
+     "win": -5.3,
+     "deal_in": 10.6
+    },
+    "first_change_pct": {
+     "win": 21.6,
+     "deal_in": -23.6
+    }
+   },
+   "2": {
+    "positions": 934,
+    "saint3": {
+     "win": 64.9,
+     "deal_in": 86.2,
+     "ratio": 1.329,
+     "ratio_se": 0.015
+    },
+    "celestial": {
+     "win": 19.68,
+     "deal_in": 21.63,
+     "ratio": 1.099,
+     "ratio_se": 0.01
+    },
+    "ratio_change": -0.23,
+    "ratio_change_se": 0.008,
+    "fourth_change_pct": {
+     "win": -10.4,
+     "deal_in": 20.3
+    },
+    "first_change_pct": {
+     "win": 22.9,
+     "deal_in": -13.2
+    }
+   },
+   "3": {
+    "positions": 971,
+    "saint3": {
+     "win": 81.9,
+     "deal_in": 100.4,
+     "ratio": 1.226,
+     "ratio_se": 0.011
+    },
+    "celestial": {
+     "win": 22.89,
+     "deal_in": 20.02,
+     "ratio": 0.874,
+     "ratio_se": 0.008
+    },
+    "ratio_change": -0.351,
+    "ratio_change_se": 0.009,
+    "fourth_change_pct": {
+     "win": -16.9,
+     "deal_in": 29.0
+    },
+    "first_change_pct": {
+     "win": 16.0,
+     "deal_in": -9.3
+    }
+   },
+   "4": {
+    "positions": 799,
+    "saint3": {
+     "win": 102.5,
+     "deal_in": 82.8,
+     "ratio": 0.808,
+     "ratio_se": 0.011
+    },
+    "celestial": {
+     "win": 20.88,
+     "deal_in": 14.95,
+     "ratio": 0.716,
+     "ratio_se": 0.009
+    },
+    "ratio_change": -0.093,
+    "ratio_change_se": 0.004,
+    "fourth_change_pct": {
+     "win": -29.2,
+     "deal_in": 24.7
+    },
+    "first_change_pct": {
+     "win": 10.6,
+     "deal_in": -6.1
+    }
+   },
+   "East, 1": {
+    "positions": 593,
+    "saint3": {
+     "win": 51.0,
+     "deal_in": 68.2,
+     "ratio": 1.338,
+     "ratio_se": 0.006
+    },
+    "celestial": {
+     "win": 14.82,
+     "deal_in": 18.17,
+     "ratio": 1.226,
+     "ratio_se": 0.007
+    },
+    "ratio_change": -0.112,
+    "ratio_change_se": 0.003,
+    "fourth_change_pct": {
+     "win": -7.7,
+     "deal_in": 13.6
+    },
+    "first_change_pct": {
+     "win": 20.4,
+     "deal_in": -19.1
+    }
+   },
+   "East, 2": {
+    "positions": 519,
+    "saint3": {
+     "win": 68.7,
+     "deal_in": 82.9,
+     "ratio": 1.207,
+     "ratio_se": 0.006
+    },
+    "celestial": {
+     "win": 19.13,
+     "deal_in": 19.5,
+     "ratio": 1.019,
+     "ratio_se": 0.005
+    },
+    "ratio_change": -0.188,
+    "ratio_change_se": 0.002,
+    "fourth_change_pct": {
+     "win": -13.1,
+     "deal_in": 20.4
+    },
+    "first_change_pct": {
+     "win": 19.0,
+     "deal_in": -12.9
+    }
+   },
+   "East, 3": {
+    "positions": 505,
+    "saint3": {
+     "win": 76.1,
+     "deal_in": 86.0,
+     "ratio": 1.13,
+     "ratio_se": 0.005
+    },
+    "celestial": {
+     "win": 19.78,
+     "deal_in": 18.45,
+     "ratio": 0.933,
+     "ratio_se": 0.006
+    },
+    "ratio_change": -0.197,
+    "ratio_change_se": 0.003,
+    "fourth_change_pct": {
+     "win": -16.6,
+     "deal_in": 22.9
+    },
+    "first_change_pct": {
+     "win": 15.5,
+     "deal_in": -10.8
+    }
+   },
+   "East, 4": {
+    "positions": 420,
+    "saint3": {
+     "win": 85.0,
+     "deal_in": 85.7,
+     "ratio": 1.009,
+     "ratio_se": 0.007
+    },
+    "celestial": {
+     "win": 19.38,
+     "deal_in": 16.93,
+     "ratio": 0.874,
+     "ratio_se": 0.005
+    },
+    "ratio_change": -0.135,
+    "ratio_change_se": 0.002,
+    "fourth_change_pct": {
+     "win": -21.4,
+     "deal_in": 24.3
+    },
+    "first_change_pct": {
+     "win": 13.6,
+     "deal_in": -8.5
+    }
+   },
+   "South 1-3, 1": {
+    "positions": 381,
+    "saint3": {
+     "win": 35.7,
+     "deal_in": 57.6,
+     "ratio": 1.615,
+     "ratio_se": 0.016
+    },
+    "celestial": {
+     "win": 11.4,
+     "deal_in": 18.42,
+     "ratio": 1.616,
+     "ratio_se": 0.022
+    },
+    "ratio_change": 0.001,
+    "ratio_change_se": 0.016,
+    "fourth_change_pct": {
+     "win": -2.6,
+     "deal_in": 7.5
+    },
+    "first_change_pct": {
+     "win": 23.4,
+     "deal_in": -26.8
+    }
+   },
+   "South 1-3, 2": {
+    "positions": 323,
+    "saint3": {
+     "win": 62.0,
+     "deal_in": 89.4,
+     "ratio": 1.443,
+     "ratio_se": 0.018
+    },
+    "celestial": {
+     "win": 20.4,
+     "deal_in": 23.38,
+     "ratio": 1.146,
+     "ratio_se": 0.013
+    },
+    "ratio_change": -0.296,
+    "ratio_change_se": 0.011,
+    "fourth_change_pct": {
+     "win": -8.3,
+     "deal_in": 20.4
+    },
+    "first_change_pct": {
+     "win": 24.9,
+     "deal_in": -13.9
+    }
+   },
+   "South 1-3, 3": {
+    "positions": 380,
+    "saint3": {
+     "win": 86.8,
+     "deal_in": 108.9,
+     "ratio": 1.254,
+     "ratio_se": 0.014
+    },
+    "celestial": {
+     "win": 24.71,
+     "deal_in": 21.13,
+     "ratio": 0.855,
+     "ratio_se": 0.01
+    },
+    "ratio_change": -0.399,
+    "ratio_change_se": 0.009,
+    "fourth_change_pct": {
+     "win": -17.9,
+     "deal_in": 32.4
+    },
+    "first_change_pct": {
+     "win": 15.9,
+     "deal_in": -8.3
+    }
+   },
+   "South 1-3, 4": {
+    "positions": 312,
+    "saint3": {
+     "win": 115.3,
+     "deal_in": 83.3,
+     "ratio": 0.722,
+     "ratio_se": 0.011
+    },
+    "celestial": {
+     "win": 21.69,
+     "deal_in": 13.57,
+     "ratio": 0.625,
+     "ratio_se": 0.009
+    },
+    "ratio_change": -0.097,
+    "ratio_change_se": 0.004,
+    "fourth_change_pct": {
+     "win": -35.1,
+     "deal_in": 26.2
+    },
+    "first_change_pct": {
+     "win": 7.6,
+     "deal_in": -3.7
+    }
+   },
+   "South 4, 1": {
+    "positions": 87,
+    "saint3": {
+     "win": 26.1,
+     "deal_in": 55.6,
+     "ratio": 2.126,
+     "ratio_se": 0.08
+    },
+    "celestial": {
+     "win": 7.89,
+     "deal_in": 20.27,
+     "ratio": 2.568,
+     "ratio_se": 0.146
+    },
+    "ratio_change": 0.441,
+    "ratio_change_se": 0.115,
+    "fourth_change_pct": {
+     "win": -0.9,
+     "deal_in": 4.1
+    },
+    "first_change_pct": {
+     "win": 21.5,
+     "deal_in": -39.7
+    }
+   },
+   "South 4, 2": {
+    "positions": 92,
+    "saint3": {
+     "win": 53.3,
+     "deal_in": 93.5,
+     "ratio": 1.754,
+     "ratio_se": 0.141
+    },
+    "celestial": {
+     "win": 20.31,
+     "deal_in": 27.5,
+     "ratio": 1.354,
+     "ratio_se": 0.08
+    },
+    "ratio_change": -0.4,
+    "ratio_change_se": 0.084,
+    "fourth_change_pct": {
+     "win": -3.0,
+     "deal_in": 19.2
+    },
+    "first_change_pct": {
+     "win": 37.9,
+     "deal_in": -12.6
+    }
+   },
+   "South 4, 3": {
+    "positions": 86,
+    "saint3": {
+     "win": 94.4,
+     "deal_in": 147.8,
+     "ratio": 1.565,
+     "ratio_se": 0.075
+    },
+    "celestial": {
+     "win": 33.1,
+     "deal_in": 24.31,
+     "ratio": 0.734,
+     "ratio_se": 0.033
+    },
+    "ratio_change": -0.831,
+    "ratio_change_se": 0.049,
+    "fourth_change_pct": {
+     "win": -14.7,
+     "deal_in": 49.4
+    },
+    "first_change_pct": {
+     "win": 19.0,
+     "deal_in": -5.1
+    }
+   },
+   "South 4, 4": {
+    "positions": 67,
+    "saint3": {
+     "win": 153.0,
+     "deal_in": 63.0,
+     "ratio": 0.412,
+     "ratio_se": 0.028
+    },
+    "celestial": {
+     "win": 26.53,
+     "deal_in": 8.91,
+     "ratio": 0.336,
+     "ratio_se": 0.021
+    },
+    "ratio_change": -0.076,
+    "ratio_change_se": 0.013,
+    "fourth_change_pct": {
+     "win": -50.1,
+     "deal_in": 20.0
+    },
+    "first_change_pct": {
+     "win": 5.2,
+     "deal_in": -1.9
+    }
+   }
+  }
+ },
+ "examples": [
+  {
+   "game": "261002-b0ec9f2d-52a2-4578-b351-df6475cc8b35",
+   "date": "2026-10-01 22:59",
+   "round": "South 3-0",
+   "turn": 14,
+   "tile": "2s",
+   "did": "fold",
+   "place": 3,
+   "scores": [
+    27000,
+    14200,
+    42300,
+    16500
+   ],
+   "your_score": 16500,
+   "3900": {
+    "saint3": {
+     "win": 76.7,
+     "deal_in": 85.9,
+     "ratio": 1.12
+    },
+    "celestial": {
+     "win": 10.4,
+     "deal_in": 13.0,
+     "ratio": 1.26
+    },
+    "fourth_pct": {
+     "now": 38.5,
+     "after_win": 11.1,
+     "after_deal_in": 68.6
+    },
+    "first_pct": {
+     "now": 5.2,
+     "after_win": 6.8,
+     "after_deal_in": 2.6
+    }
+   },
+   "8000": {
+    "saint3": {
+     "win": 117.7,
+     "deal_in": 120.3,
+     "ratio": 1.02
+    },
+    "celestial": {
+     "win": 23.3,
+     "deal_in": 18.2,
+     "ratio": 0.78
+    },
+    "fourth_pct": {
+     "now": 38.5,
+     "after_win": 3.4,
+     "after_deal_in": 79.4
+    },
+    "first_pct": {
+     "now": 5.2,
+     "after_win": 11.1,
+     "after_deal_in": 1.2
+    }
+   }
+  }
+ ],
+ "field": {
+  "you_in_jade": {
+   "win": 0.23550631280597784,
+   "deal_in": 0.10435454779695955,
+   "riichi": 0.17469724297861375,
+   "call": 0.357382118010822,
+   "tsumo_share": 0.36980306345733044,
+   "draw": 0.13604741046122135,
+   "tenpai_at_draw": 0.44507575757575757,
+   "dama": 0.10284463894967177,
+   "riichi_win": 0.5176991150442478,
+   "riichi_turn": 9.023598820058996,
+   "average_win": 6182,
+   "average_deal_in": 5145
+  },
+  "your_hands": 3881,
+  "jade": {
+   "players": 45,
+   "win": {
+    "mean": 0.2231,
+    "se": 0.0032
+   },
+   "deal_in": {
+    "mean": 0.1347,
+    "se": 0.0035
+   },
+   "riichi": {
+    "mean": 0.1906,
+    "se": 0.0046
+   },
+   "call": {
+    "mean": 0.3321,
+    "se": 0.009
+   },
+   "tsumo_share": {
+    "mean": 0.36,
+    "se": 0.0061
+   },
+   "draw": {
+    "mean": 0.1256,
+    "se": 0.0026
+   },
+   "tenpai_at_draw": {
+    "mean": 0.465,
+    "se": 0.0127
+   },
+   "dama": {
+    "mean": 0.1207,
+    "se": 0.0059
+   },
+   "riichi_win": {
+    "mean": 0.4961,
+    "se": 0.0071
+   },
+   "riichi_turn": {
+    "mean": 9.6185,
+    "se": 0.0532
+   },
+   "average_win": {
+    "mean": 6559.1549,
+    "se": 89.1226
+   },
+   "average_deal_in": {
+    "mean": 5523.6119,
+    "se": 69.4259
+   }
+  },
+  "throne": {
+   "players": 45,
+   "win": {
+    "mean": 0.2157,
+    "se": 0.0042
+   },
+   "deal_in": {
+    "mean": 0.1246,
+    "se": 0.0043
+   },
+   "riichi": {
+    "mean": 0.1913,
+    "se": 0.0045
+   },
+   "call": {
+    "mean": 0.3254,
+    "se": 0.0058
+   },
+   "tsumo_share": {
+    "mean": 0.3916,
+    "se": 0.0098
+   },
+   "draw": {
+    "mean": 0.1382,
+    "se": 0.0015
+   },
+   "tenpai_at_draw": {
+    "mean": 0.4607,
+    "se": 0.0152
+   },
+   "dama": {
+    "mean": 0.1239,
+    "se": 0.009
+   },
+   "riichi_win": {
+    "mean": 0.4806,
+    "se": 0.0151
+   },
+   "riichi_turn": {
+    "mean": 9.4025,
+    "se": 0.0894
+   },
+   "average_win": {
+    "mean": 6498.5432,
+    "se": 99.4039
+   },
+   "average_deal_in": {
+    "mean": 5431.6132,
+    "se": 57.3098
+   }
+  },
+  "celestial": {
+   "players": 30,
+   "win": {
+    "mean": 0.2165,
+    "se": 0.0026
+   },
+   "deal_in": {
+    "mean": 0.1257,
+    "se": 0.0032
+   },
+   "riichi": {
+    "mean": 0.1849,
+    "se": 0.0031
+   },
+   "call": {
+    "mean": 0.3282,
+    "se": 0.007
+   },
+   "tsumo_share": {
+    "mean": 0.3877,
+    "se": 0.0059
+   },
+   "draw": {
+    "mean": 0.1387,
+    "se": 0.0018
+   },
+   "tenpai_at_draw": {
+    "mean": 0.4568,
+    "se": 0.01
+   },
+   "dama": {
+    "mean": 0.1314,
+    "se": 0.0063
+   },
+   "riichi_win": {
+    "mean": 0.4854,
+    "se": 0.006
+   },
+   "riichi_turn": {
+    "mean": 9.3445,
+    "se": 0.0496
+   },
+   "average_win": {
+    "mean": 6508.6601,
+    "se": 69.1937
+   },
+   "average_deal_in": {
+    "mean": 5395.9104,
+    "se": 80.4357
+   }
+  }
+ },
+ "model_rewards": {
+  "earlier_policy_model": [
+   3.0,
+   1.5,
+   0.0,
+   -4.5
+  ],
+  "mortal_s42": [
+   6.0,
+   4.0,
+   2.0,
+   0.0
+  ]
+ },
+ "you": {
+  "level": "Celestial 1",
+  "since": "2026-11-20",
+  "points": 950,
+  "level_up_at": 2000,
+  "back_to_saint3_at": 0,
+  "throne_games": [
+   {
+    "place": 3,
+    "score": 28500,
+    "points": -20
+   },
+   {
+    "place": 2,
+    "score": 37500,
+    "points": 20
+   },
+   {
+    "place": 4,
+    "score": 20900,
+    "points": -50
+   }
+  ]
+ }
+}
