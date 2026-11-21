@@ -2,7 +2,7 @@
  * Replays: Honver's Mahjong Soul games, played back on this site.
  *
  * replay.html?g=<uuid> steps through site/replays/<uuid>.json (built by scripts/build_replays.py):
- * each hand as an ordered event stream, and at each of Honver's decisions the local Mortal policy's
+ * each hand as an ordered event stream, and at each of Honver's decisions Mortal's (the model is named per game in replays/index.json)
  * probability for every legal action. Without ?g= the page lists site/replays/index.json.
  *
  * Other parameters: h (hand index) and e (the event index of the step), which the page keeps up to

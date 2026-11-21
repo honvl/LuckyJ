@@ -183,7 +183,10 @@ class ReplayFileTests(unittest.TestCase):
     def test_index_counts_match_the_files(self):
         for entry, game in games():
             with self.subTest(game=entry["id"]):
-                self.assertEqual(entry, br.summarise(game))
+                # "model" names the Mortal that rated the game; the builder adds it beside the counts
+                self.assertEqual({k: v for k, v in entry.items() if k != "model"}, br.summarise(game))
+                self.assertIn(entry.get("model", "Mortal policy model (local weights)"),
+                              ("Mortal policy model (local weights)", "Mortal-S42 (softmax of Q at 0.6)"))
 
     def test_flag_threshold_matches_the_viewer(self):
         script = (SITE / "replay.js").read_text(encoding="utf-8")

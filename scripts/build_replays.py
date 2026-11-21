@@ -439,7 +439,8 @@ def build_game(row: dict) -> dict:
         "v": FORMAT_VERSION,
         "id": row["uuid"],
         "date": row["date"],
-        "room": "Jade South" if row.get("mode") == "jade-south" else game.get("rule", {}).get("disp", ""),
+        "room": {"jade-south": "Jade South", "throne-south": "Throne South"}.get(row.get("mode"))
+        or game.get("rule", {}).get("disp", ""),
         "hero": hero,
         "players": [
             {"name": row.get("hero_name", "Honver") if s == hero else None, "rank": rank_en(game["dan"][s])}

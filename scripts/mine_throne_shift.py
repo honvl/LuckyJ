@@ -205,7 +205,8 @@ def main():
         procs = int(args[i + 1])
         del args[i:i + 2]
     out_path = Path(args[0]) if args else OUT
-    manifest = [g for g in json.loads(pe.MANIFEST.read_text()) if g["date"] >= pe.SINCE]
+    # Jade games only: the manifest also holds the user's Throne games from 20 November on
+    manifest = [g for g in json.loads(pe.MANIFEST.read_text()) if g["date"] >= pe.SINCE and g.get("mode") == "jade-south"]
     by_id = {g["uuid"]: g for g in manifest}
     rel, keep = pe.pool(manifest)
     jobs = [(h["k"], h["start"], g["hero_seat"]) for g in manifest for h in pe.game_hands(g) if h["k"] <= 7]
