@@ -679,6 +679,27 @@
   vertical-align: -0.12em;
 }
 
+.replay-review-where {
+  display: grid;
+  justify-items: start;
+  gap: 3px;
+}
+
+.replay-review-moment {
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.replay-review-first {
+  padding: 2px 7px;
+  border-radius: 2px;
+  background: var(--verm);
+  color: var(--paper);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 .replay-review-you {
   color: var(--verm);
 }

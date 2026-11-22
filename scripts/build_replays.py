@@ -5,8 +5,8 @@ Each game in ``data/self_games/majsoul/index.json`` (a tenhou.net/6 log fetched 
 becomes ``site/replays/<uuid>.json``: every hand as an ordered event stream that
 ``site/replay.js`` steps through, and, for each of Honver's decisions, Mortal's probability for
 every legal action (the project's model, ``scripts/mortal_engines.py``; the same one as
-``scripts/build_mortal_analysis.py``). ``site/replays/index.json`` lists the games and, per game,
-the model that made its numbers.
+``scripts/build_mortal_analysis.py``) and how much the moment matters (``add_importance``).
+``site/replays/index.json`` lists the games and, per game, the model that made its numbers.
 
 A game that already has a replay is left alone, so published numbers do not move when the model
 changes: replays built up to 20 Nov 2026 carry the earlier policy model's numbers. ``--only``
@@ -40,6 +40,7 @@ Usage::
     .venv/bin/python scripts/build_replays.py              # every game, with Mortal
     .venv/bin/python scripts/build_replays.py --no-mortal  # event streams only
     .venv/bin/python scripts/build_replays.py --only 260928-50d32e06
+    .venv/bin/python scripts/build_replays.py --importance # weights for replays already built
     .venv/bin/python scripts/build_replays.py --since 2000-01-01 --out <chapter>/replays --only <uuid> <uuid>
 
 The last form is how the tutor packs the replays of the games a chapter cites
@@ -51,6 +52,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import math
 import sys
 from pathlib import Path
 
@@ -613,6 +615,57 @@ def annotate(game: dict, engine) -> None:
         hand["ai"].append({"i": i, "p": kept, "you": you})
 
 
+# ---------------------------------------------------------------- importance
+
+# How much a moment matters, for ordering a game's flagged choices (analysis/importance-2026-11-21.md):
+# ln weight = IMPORTANCE_TURN * your discard number + IMPORTANCE_SHANTEN[shanten] + IMPORTANCE_TENPAI_READ * the
+# chance an opponent is tenpai, read off the table as IMPORTANCE_THREAT (nobody, a seat with two or more calls,
+# a riichi). The numbers are the fit to Wind-Up Bird's importance in ``fit_importance.py``; a test keeps them equal.
+IMPORTANCE_TURN = 0.040
+IMPORTANCE_SHANTEN = (1.569, 1.112, 0.588, 0.0)   # tenpai, one away, two away, three or more away
+IMPORTANCE_TENPAI_READ = 0.816
+IMPORTANCE_THREAT = (0.1, 0.3, 1.0)               # none, open melds, riichi
+
+
+def importance_weight(discard: int, shanten: int, threat: int) -> float:
+    shanten = min(max(shanten, 0), len(IMPORTANCE_SHANTEN) - 1)
+    return math.exp(IMPORTANCE_TURN * discard + IMPORTANCE_SHANTEN[shanten]
+                    + IMPORTANCE_TENPAI_READ * IMPORTANCE_THREAT[threat])
+
+
+def add_importance(game: dict) -> int:
+    """Give each rated choice ``w``: [weight, your discard number, shanten 0-3, threat 0-2]. No model runs.
+
+    The situation is read as ``mine_importance.py`` reads it: the discard you are about to make (for a call
+    chance, your next one), libriichi's shanten of your hand at that moment, and the threat on the table (2 a
+    riichi by another seat, 1 another seat with two or more calls, else 0).
+    """
+    import libriichi
+
+    hero = game["hero"]
+    state = libriichi.state.PlayerState(hero)
+    rated = [{d["i"]: d for d in hand.get("ai", [])} for hand in game["hands"]]
+    discards, riichi, melds, done = 0, set(), [0, 0, 0, 0], 0
+    for h, i, ev in mjai_events(game):
+        state.update(json.dumps(ev, ensure_ascii=False))
+        typ, actor = ev["type"], ev.get("actor")
+        if typ == "start_kyoku":
+            discards, riichi, melds = 0, set(), [0, 0, 0, 0]
+        elif typ == "reach":
+            riichi.add(actor)
+        elif typ in ("chi", "pon", "daiminkan"):
+            melds[actor] += 1
+        d = rated[h].get(i) if h is not None and i is not None else None
+        if d is not None:
+            shanten = min(max(state.shanten, 0), len(IMPORTANCE_SHANTEN) - 1)
+            threat = 2 if riichi - {hero} else (1 if any(m >= 2 for s, m in enumerate(melds) if s != hero) else 0)
+            d["w"] = [round(importance_weight(discards + 1, shanten, threat), 1), discards + 1, shanten, threat]
+            done += 1
+        if typ == "dahai" and actor == hero:
+            discards += 1
+    return done
+
+
 # A choice Mortal gives less than this is flagged in the viewer and counted in the index.
 FLAG_BELOW = 0.05
 
@@ -660,7 +713,19 @@ def main() -> None:
     ap.add_argument("--no-mortal", action="store_true", help="write the event streams without Mortal")
     ap.add_argument("--since", default="2026-01-01", help="first date to include (YYYY-MM-DD)")
     ap.add_argument("--rebuild", action="store_true", help="rebuild games that already have a replay")
+    ap.add_argument("--importance", action="store_true",
+                    help="add the importance weights to the replays already built (no model runs, no other number moves)")
     args = ap.parse_args()
+
+    if args.importance:
+        paths = sorted(p for p in args.out.glob("*.json") if p.name != "index.json"
+                       and (not args.only or any(p.name.startswith(x) for x in args.only)))
+        for path in paths:
+            game = json.loads(path.read_text(encoding="utf-8"))
+            add_importance(game)
+            path.write_text(json.dumps(game, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+        print(f"weighted the choices of {len(paths)} replays in {args.out}", file=sys.stderr)
+        return
 
     rows = json.loads(args.manifest.read_text(encoding="utf-8"))
     rows = [r for r in rows if r["date"] >= args.since]
@@ -684,6 +749,7 @@ def main() -> None:
         game = build_game(row)
         if engine is not None:
             annotate(game, engine)
+            add_importance(game)
         path = args.out / f"{row['uuid']}.json"
         path.write_text(json.dumps(game, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
         previous[row["uuid"]] = summarise(game)

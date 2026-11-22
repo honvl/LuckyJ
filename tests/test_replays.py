@@ -193,6 +193,59 @@ class ReplayFileTests(unittest.TestCase):
         match = re.search(r"const FLAG_BELOW = ([0-9.]+);", script)
         self.assertEqual(float(match.group(1)), br.FLAG_BELOW)
 
+    def test_every_choice_carries_the_weight_of_its_moment(self):
+        """``w`` = [weight, your discard number, shanten, threat], with the table read again from the events."""
+        for entry, game in games():
+            hero = game["hero"]
+            for hand in game["hands"]:
+                for d in hand["ai"]:
+                    with self.subTest(game=entry["id"], hand=hand["round"], event=d["i"]):
+                        weight, discard, shanten, threat = d["w"]
+                        seen = hand["ev"][:d["i"] + 1]
+                        self.assertEqual(discard, 1 + sum(1 for e in seen[:-1] if e[0] == "d" and e[1] == hero))
+                        self.assertIn(shanten, (0, 1, 2, 3))
+                        calls = Counter(e[1] for e in seen if e[0] in ("c", "p", "m") and e[1] != hero)
+                        riichi = any(e[0] == "r" and e[1] != hero for e in seen)
+                        self.assertEqual(threat, 2 if riichi else 1 if calls and max(calls.values()) >= 2 else 0)
+                        self.assertEqual(weight, round(br.importance_weight(discard, shanten, threat), 1))
+
+    def test_weight_grows_with_the_turn_the_hand_and_the_threat(self):
+        self.assertLess(br.importance_weight(3, 2, 0), br.importance_weight(12, 2, 0))
+        self.assertLess(br.importance_weight(8, 3, 0), br.importance_weight(8, 2, 0))
+        self.assertLess(br.importance_weight(8, 1, 0), br.importance_weight(8, 0, 0))
+        self.assertLess(br.importance_weight(8, 1, 0), br.importance_weight(8, 1, 1))
+        self.assertLess(br.importance_weight(8, 1, 1), br.importance_weight(8, 1, 2))
+        self.assertEqual(br.importance_weight(8, 7, 0), br.importance_weight(8, 3, 0))
+
+    def test_weight_is_the_formula_the_analysis_tested(self):
+        import fit_importance as fi
+        self.assertEqual(br.IMPORTANCE_TURN, fi.WUB_THREAT["turn"])
+        self.assertEqual(br.IMPORTANCE_SHANTEN[:3],
+                         (fi.WUB_THREAT["tenpai"], fi.WUB_THREAT["1 away"], fi.WUB_THREAT["2 away"]))
+        self.assertEqual(br.IMPORTANCE_SHANTEN[3], 0.0)
+        self.assertEqual(br.IMPORTANCE_TENPAI_READ, fi.WUB_TENPAI_READ)
+        self.assertEqual(br.IMPORTANCE_THREAT, tuple(fi.ASSUMED_TENPAI[k] for k in (0, 1, 2)))
+
+    def test_weights_come_out_the_same_when_computed_again(self):
+        try:
+            import libriichi  # noqa: F401
+        except ImportError:
+            self.skipTest("needs libriichi")
+        every = games()
+        for entry, game in every[::max(1, len(every) // 12)]:
+            with self.subTest(game=entry["id"]):
+                stored = [d.pop("w") for hand in game["hands"] for d in hand["ai"]]
+                self.assertEqual(br.add_importance(game), len(stored))
+                self.assertEqual([d["w"] for hand in game["hands"] for d in hand["ai"]], stored)
+
+    def test_viewer_lists_the_costliest_flagged_choice_first(self):
+        script = (SITE / "replay.js").read_text(encoding="utf-8")
+        self.assertIn("flagged.sort((a, b) => b.cost - a.cost)", script)
+        shanten = re.search(r"const SHANTEN_WORDS = \[(.*?)\];", script).group(1)
+        threat = re.search(r"const THREAT_WORDS = \[(.*?)\];", script).group(1)
+        self.assertEqual(len(re.findall(r'"[^"]*"', shanten)), len(br.IMPORTANCE_SHANTEN))
+        self.assertEqual(len(re.findall(r'"[^"]*"', threat)), len(br.IMPORTANCE_THREAT))
+
 
 class TurnCountTests(unittest.TestCase):
     """replay.js labels every player's turn (labelTurns): a draw from the wall or a call adds one."""

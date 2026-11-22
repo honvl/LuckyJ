@@ -14,10 +14,14 @@
  * renderCommitStamp, setupRetractingTopbar and setupRunningHead.
  */
 (function () {
-  const assetVersion = "20260928-replays";
+  const assetVersion = "20261121-importance";
   const hideHandsKey = "luckyj:replays:hide-hands";
   // A choice Mortal gives less than this is flagged (scripts/build_replays.py counts the same way).
   const FLAG_BELOW = 0.05;
+  // Mortal's percentages are stored to a tenth of a percent, so a choice it all but rules out reads as 0.
+  const SEVERITY_FLOOR = 0.0005;
+  const SHANTEN_WORDS = ["Tenpai", "One away", "Two away", "Three or more away"];
+  const THREAT_WORDS = ["", "an opponent with two calls", "a riichi out"];
   const REL = ["self", "shimocha", "toimen", "kamicha"];
   const REL_NAME = { self: "You", shimocha: "Shimocha", toimen: "Toimen", kamicha: "Kamicha" };
   const POSITION = { self: "current", shimocha: "next", toimen: "across", kamicha: "prev" };
@@ -106,6 +110,24 @@
   function probOf(decision, action) {
     const hit = decision.p.find(([a]) => a === action);
     return hit ? hit[1] : 0;
+  }
+
+  // What a choice cost: how strongly Mortal prefers its own play, times the weight of the moment
+  // (decision.w = [weight, your discard number, shanten, threat], from scripts/build_replays.py).
+  function costOf(decision) {
+    const severity = Math.log(decision.p[0][1] / Math.max(probOf(decision, decision.you), SEVERITY_FLOOR));
+    return Math.max(0, severity) * (decision.w ? decision.w[0] : 1);
+  }
+
+  function momentWords(decision) {
+    if (!decision.w) return "";
+    const [weight, , shanten, threat] = decision.w;
+    const parts = [SHANTEN_WORDS[shanten], THREAT_WORDS[threat]].filter(Boolean);
+    return `${parts.join(", ")}. Weight ${weight >= 10 ? Math.round(weight) : weight.toFixed(1)}.`;
+  }
+
+  function isWeighted(game) {
+    return game.hands.some((hand) => (hand.ai || []).some((d) => d.w));
   }
 
   // ------------------------------------------------------------------ the list of games
@@ -707,7 +729,11 @@
       </figure>
       <section class="replay-review" aria-labelledby="replay-review-title">
         <h2 id="replay-review-title">Flagged choices in this game</h2>
-        <p class="replay-review-note">Mortal is an open-source mahjong AI. These numbers come from the Mortal weights the playbook uses for its cross-checks, run over each of your games. A percentage is how often Mortal would make that play at that moment, and a flagged choice is one it gives under 5%. Use it to find turns worth a second look. The guide's chapters measure you against LuckyJ.</p>
+        <p class="replay-review-note">Mortal is an open-source mahjong AI. These numbers come from the Mortal weights the playbook uses for its cross-checks, run over each of your games. A percentage is how often Mortal would make that play at that moment, and a flagged choice is one it gives under 5%.${
+          isWeighted(game)
+            ? " The list starts with the costliest: how strongly Mortal prefers its own play, multiplied by a weight for the moment. The weight rises with each discard, as your hand nears tenpai, and when an opponent has called twice or declared riichi."
+            : ""
+        } Use it to find turns worth a second look. The guide's chapters measure you against LuckyJ.</p>
         <ol class="replay-review-list"></ol>
       </section>
       <section class="replay-review replay-counting" aria-labelledby="replay-counting-title">
@@ -748,20 +774,29 @@
 
   function renderReviewList(game) {
     const list = app.querySelector(".replay-review-list");
-    const items = [];
+    const flagged = [];
     game.hands.forEach((hand, h) => {
       const turns = heroTurns(hand);
       for (const d of hand.ai || []) {
-        if (tierOf(d) !== "flag") continue;
-        const own = hand.ev[d.i][1] === game.hero;
-        const where = own ? `your turn ${turns[d.i]}` : `${nameOf(hand.ev[d.i][1])}'s ${inlineTile(hand.ev[d.i][2])}`;
-        items.push(`
+        if (tierOf(d) === "flag") flagged.push({ hand, h, d, turn: turns[d.i], cost: costOf(d) });
+      }
+    });
+    // Costliest first; a game built before the weights existed keeps the order of play.
+    const weighted = isWeighted(game);
+    if (weighted) flagged.sort((a, b) => b.cost - a.cost);
+    const items = flagged.map(({ hand, h, d, turn }, n) => {
+      const own = hand.ev[d.i][1] === game.hero;
+      const where = own ? `your turn ${turn}` : `${nameOf(hand.ev[d.i][1])}'s ${inlineTile(hand.ev[d.i][2])}`;
+      const first = weighted && flagged.length > 3 && n < 3 ? '<span class="replay-review-first">Start here</span>' : "";
+      const moment = momentWords(d);
+      return `
           <li><button type="button" class="replay-review-item" data-hand="${h}" data-event="${d.i}">
-            <span class="replay-review-where">${escapeHtml(hand.round)}, ${where}</span>
+            <span class="replay-review-where">${first}<span>${escapeHtml(hand.round)}, ${where}</span>${
+              moment ? `<span class="replay-review-moment">${escapeHtml(moment)}</span>` : ""
+            }</span>
             <span class="replay-review-you">You: ${actionWords(d.you, d, hand)} ${pctText(probOf(d, d.you))}</span>
             <span class="replay-review-top">Mortal: ${actionWords(d.p[0][0], d, hand)} ${pctText(d.p[0][1])}</span>
-          </button></li>`);
-      }
+          </button></li>`;
     });
     list.innerHTML = items.length ? items.join("") : '<li class="replay-review-empty">No choice in this game fell under 5%.</li>';
     applyTileCompatibility(list);
