@@ -1,0 +1,1380 @@
+{
+ "wind_up_bird_importance": {
+  "games": 287,
+  "discards": 33084,
+  "fits": {
+   "turn": {
+    "r2": 0.644,
+    "coef": {
+     "base": 1.498,
+     "turn": 0.149
+    }
+   },
+   "shanten": {
+    "r2": 0.745,
+    "coef": {
+     "base": 1.587,
+     "tenpai": 2.177,
+     "1 away": 1.498,
+     "2 away": 0.799
+    }
+   },
+   "opponents' tenpai read": {
+    "r2": 0.489,
+    "coef": {
+     "base": 2.08,
+     "tenpai read": 1.39
+    }
+   },
+   "turn + shanten": {
+    "r2": 0.892,
+    "coef": {
+     "base": 1.28,
+     "turn": 0.086,
+     "tenpai": 1.491,
+     "1 away": 1.059,
+     "2 away": 0.556
+    }
+   },
+   "turn + shanten + tenpai read": {
+    "r2": 0.942,
+    "coef": {
+     "base": 1.371,
+     "turn": 0.038,
+     "tenpai": 1.573,
+     "1 away": 1.115,
+     "2 away": 0.585,
+     "tenpai read": 0.658
+    }
+   }
+  }
+ },
+ "Jade, every seat": {
+  "seat_games": 1443,
+  "measures": {
+   "Q loss": {
+    "later turns": {
+     "r": -0.1615,
+     "flat": -0.1532,
+     "diff": -0.0083,
+     "lo": -0.0275,
+     "hi": 0.0118
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.1868,
+     "flat": -0.1532,
+     "diff": -0.0336,
+     "lo": -0.0572,
+     "hi": -0.0093
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.1907,
+     "flat": -0.1532,
+     "diff": -0.0375,
+     "lo": -0.0615,
+     "hi": -0.0118
+    },
+    "fitted (held out)": {
+     "r": -0.2103,
+     "flat": -0.152,
+     "diff": -0.0583,
+     "lo": -0.0766,
+     "hi": -0.0394,
+     "theta": {
+      "turn": 0.035,
+      "tenpai": 1.025,
+      "1 away": -0.2,
+      "2 away": -0.4,
+      "open melds": 0.0,
+      "riichi": 0.325,
+      "answer": 0.4,
+      "South 1-3": 0.0,
+      "South 4+": 0.2
+     },
+     "theta_spread": {
+      "turn": 0.005,
+      "tenpai": 0.143,
+      "1 away": 0.066,
+      "2 away": 0.054,
+      "open melds": 0.049,
+      "riichi": 0.077,
+      "answer": 0.119,
+      "South 1-3": 0.078,
+      "South 4+": 0.124
+     }
+    }
+   },
+   "Q loss adj": {
+    "later turns": {
+     "r": -0.0965,
+     "flat": -0.1054,
+     "diff": 0.009,
+     "lo": -0.0107,
+     "hi": 0.0297
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.1038,
+     "flat": -0.1054,
+     "diff": 0.0016,
+     "lo": -0.0216,
+     "hi": 0.0263
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.1103,
+     "flat": -0.1054,
+     "diff": -0.0048,
+     "lo": -0.0299,
+     "hi": 0.021
+    },
+    "fitted (held out)": {
+     "r": -0.1081,
+     "flat": -0.105,
+     "diff": -0.0031,
+     "lo": -0.0109,
+     "hi": 0.0051,
+     "theta": {
+      "turn": -0.015,
+      "tenpai": -0.05,
+      "1 away": 0.3,
+      "2 away": -0.2,
+      "open melds": 0.0,
+      "riichi": 0.1,
+      "answer": -0.075,
+      "South 1-3": -0.2,
+      "South 4+": 0.15
+     },
+     "theta_spread": {
+      "turn": 0.011,
+      "tenpai": 0.046,
+      "1 away": 0.062,
+      "2 away": 0.058,
+      "open melds": 0.114,
+      "riichi": 0.094,
+      "answer": 0.093,
+      "South 1-3": 0.085,
+      "South 4+": 0.06
+     }
+    }
+   },
+   "Q loss usual": {
+    "later turns": {
+     "r": -0.2905,
+     "flat": -0.29,
+     "diff": -0.0005,
+     "lo": -0.0177,
+     "hi": 0.0163
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.3245,
+     "flat": -0.29,
+     "diff": -0.0345,
+     "lo": -0.0597,
+     "hi": -0.0088
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.3325,
+     "flat": -0.29,
+     "diff": -0.0425,
+     "lo": -0.0696,
+     "hi": -0.0163
+    }
+   },
+   "ln p": {
+    "later turns": {
+     "r": -0.1573,
+     "flat": -0.1458,
+     "diff": -0.0115,
+     "lo": -0.0303,
+     "hi": 0.0073
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.1917,
+     "flat": -0.1458,
+     "diff": -0.0459,
+     "lo": -0.0696,
+     "hi": -0.0225
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.1944,
+     "flat": -0.1458,
+     "diff": -0.0486,
+     "lo": -0.073,
+     "hi": -0.023
+    },
+    "fitted (held out)": {
+     "r": -0.238,
+     "flat": -0.1459,
+     "diff": -0.092,
+     "lo": -0.1153,
+     "hi": -0.0677,
+     "theta": {
+      "turn": 0.037,
+      "tenpai": 1.25,
+      "1 away": -0.325,
+      "2 away": -0.5,
+      "open melds": -0.05,
+      "riichi": 0.35,
+      "answer": 0.6,
+      "South 1-3": -0.1,
+      "South 4+": 0.2
+     },
+     "theta_spread": {
+      "turn": 0.008,
+      "tenpai": 0.08,
+      "1 away": 0.068,
+      "2 away": 0.056,
+      "open melds": 0.071,
+      "riichi": 0.066,
+      "answer": 0.13,
+      "South 1-3": 0.064,
+      "South 4+": 0.086
+     }
+    }
+   },
+   "ln p adj": {
+    "later turns": {
+     "r": -0.0732,
+     "flat": -0.0819,
+     "diff": 0.0087,
+     "lo": -0.0109,
+     "hi": 0.0291
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.0857,
+     "flat": -0.0819,
+     "diff": -0.0037,
+     "lo": -0.0278,
+     "hi": 0.0205
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.0924,
+     "flat": -0.0819,
+     "diff": -0.0104,
+     "lo": -0.036,
+     "hi": 0.016
+    },
+    "fitted (held out)": {
+     "r": -0.0879,
+     "flat": -0.083,
+     "diff": -0.0049,
+     "lo": -0.0129,
+     "hi": 0.0042,
+     "theta": {
+      "turn": -0.013,
+      "tenpai": -0.025,
+      "1 away": 0.425,
+      "2 away": -0.225,
+      "open melds": -0.1,
+      "riichi": 0.1,
+      "answer": 0.0,
+      "South 1-3": -0.25,
+      "South 4+": 0.0
+     },
+     "theta_spread": {
+      "turn": 0.006,
+      "tenpai": 0.012,
+      "1 away": 0.063,
+      "2 away": 0.108,
+      "open melds": 0.075,
+      "riichi": 0.12,
+      "answer": 0.078,
+      "South 1-3": 0.08,
+      "South 4+": 0.024
+     }
+    }
+   },
+   "ln p usual": {
+    "later turns": {
+     "r": -0.2833,
+     "flat": -0.2821,
+     "diff": -0.0012,
+     "lo": -0.0183,
+     "hi": 0.0156
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.3235,
+     "flat": -0.2821,
+     "diff": -0.0415,
+     "lo": -0.0668,
+     "hi": -0.0151
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.3312,
+     "flat": -0.2821,
+     "diff": -0.0491,
+     "lo": -0.0764,
+     "hi": -0.0219
+    }
+   },
+   "miss": {
+    "later turns": {
+     "r": -0.1383,
+     "flat": -0.1255,
+     "diff": -0.0128,
+     "lo": -0.0347,
+     "hi": 0.0098
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.1806,
+     "flat": -0.1255,
+     "diff": -0.0552,
+     "lo": -0.0829,
+     "hi": -0.029
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.183,
+     "flat": -0.1255,
+     "diff": -0.0575,
+     "lo": -0.0867,
+     "hi": -0.0284
+    },
+    "fitted (held out)": {
+     "r": -0.2419,
+     "flat": -0.1243,
+     "diff": -0.1176,
+     "lo": -0.1465,
+     "hi": -0.0879,
+     "theta": {
+      "turn": 0.035,
+      "tenpai": 1.3,
+      "1 away": -0.4,
+      "2 away": -0.4,
+      "open melds": -0.1,
+      "riichi": 0.2,
+      "answer": 0.6,
+      "South 1-3": -0.15,
+      "South 4+": 0.25
+     },
+     "theta_spread": {
+      "turn": 0.008,
+      "tenpai": 0.073,
+      "1 away": 0.068,
+      "2 away": 0.045,
+      "open melds": 0.074,
+      "riichi": 0.075,
+      "answer": 0.117,
+      "South 1-3": 0.08,
+      "South 4+": 0.111
+     }
+    }
+   },
+   "miss adj": {
+    "later turns": {
+     "r": -0.046,
+     "flat": -0.0507,
+     "diff": 0.0047,
+     "lo": -0.018,
+     "hi": 0.0268
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.0596,
+     "flat": -0.0507,
+     "diff": -0.0089,
+     "lo": -0.0358,
+     "hi": 0.0176
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.0632,
+     "flat": -0.0507,
+     "diff": -0.0126,
+     "lo": -0.041,
+     "hi": 0.0173
+    },
+    "fitted (held out)": {
+     "r": -0.0593,
+     "flat": -0.0494,
+     "diff": -0.0099,
+     "lo": -0.0192,
+     "hi": -0.0,
+     "theta": {
+      "turn": -0.015,
+      "tenpai": 0.2,
+      "1 away": 0.2,
+      "2 away": -0.1,
+      "open melds": -0.2,
+      "riichi": 0.05,
+      "answer": -0.1,
+      "South 1-3": -0.45,
+      "South 4+": -0.025
+     },
+     "theta_spread": {
+      "turn": 0.008,
+      "tenpai": 0.06,
+      "1 away": 0.102,
+      "2 away": 0.054,
+      "open melds": 0.063,
+      "riichi": 0.08,
+      "answer": 0.072,
+      "South 1-3": 0.089,
+      "South 4+": 0.1
+     }
+    }
+   },
+   "miss usual": {
+    "later turns": {
+     "r": -0.281,
+     "flat": -0.2788,
+     "diff": -0.0023,
+     "lo": -0.0195,
+     "hi": 0.0145
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.3207,
+     "flat": -0.2788,
+     "diff": -0.0419,
+     "lo": -0.0675,
+     "hi": -0.0152
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.3286,
+     "flat": -0.2788,
+     "diff": -0.0498,
+     "lo": -0.077,
+     "hi": -0.0225
+    }
+   }
+  }
+ },
+ "Jade, your seat": {
+  "seat_games": 361,
+  "measures": {
+   "Q loss": {
+    "later turns": {
+     "r": -0.2034,
+     "flat": -0.1852,
+     "diff": -0.0182,
+     "lo": -0.0712,
+     "hi": 0.035
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.2316,
+     "flat": -0.1852,
+     "diff": -0.0464,
+     "lo": -0.1151,
+     "hi": 0.0222
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.2252,
+     "flat": -0.1852,
+     "diff": -0.0401,
+     "lo": -0.1124,
+     "hi": 0.0323
+    }
+   },
+   "Q loss adj": {
+    "later turns": {
+     "r": -0.0682,
+     "flat": -0.0897,
+     "diff": 0.0214,
+     "lo": -0.0298,
+     "hi": 0.0738
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.0632,
+     "flat": -0.0897,
+     "diff": 0.0264,
+     "lo": -0.038,
+     "hi": 0.0949
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.0807,
+     "flat": -0.0897,
+     "diff": 0.0089,
+     "lo": -0.0666,
+     "hi": 0.0797
+    }
+   },
+   "Q loss usual": {
+    "later turns": {
+     "r": -0.3511,
+     "flat": -0.3528,
+     "diff": 0.0018,
+     "lo": -0.0308,
+     "hi": 0.0347
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.3887,
+     "flat": -0.3528,
+     "diff": -0.0359,
+     "lo": -0.0823,
+     "hi": 0.0089
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.3815,
+     "flat": -0.3528,
+     "diff": -0.0287,
+     "lo": -0.0768,
+     "hi": 0.0174
+    }
+   },
+   "ln p": {
+    "later turns": {
+     "r": -0.2096,
+     "flat": -0.1843,
+     "diff": -0.0254,
+     "lo": -0.0764,
+     "hi": 0.0212
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.2521,
+     "flat": -0.1843,
+     "diff": -0.0678,
+     "lo": -0.1321,
+     "hi": -0.0036
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.2441,
+     "flat": -0.1843,
+     "diff": -0.0598,
+     "lo": -0.1297,
+     "hi": 0.0078
+    }
+   },
+   "ln p adj": {
+    "later turns": {
+     "r": -0.0382,
+     "flat": -0.0548,
+     "diff": 0.0166,
+     "lo": -0.034,
+     "hi": 0.0692
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.0435,
+     "flat": -0.0548,
+     "diff": 0.0114,
+     "lo": -0.0497,
+     "hi": 0.0788
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.0591,
+     "flat": -0.0548,
+     "diff": -0.0043,
+     "lo": -0.0773,
+     "hi": 0.0663
+    }
+   },
+   "ln p usual": {
+    "later turns": {
+     "r": -0.3468,
+     "flat": -0.3472,
+     "diff": 0.0004,
+     "lo": -0.0313,
+     "hi": 0.0312
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.3929,
+     "flat": -0.3472,
+     "diff": -0.0458,
+     "lo": -0.0934,
+     "hi": -0.0011
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.3856,
+     "flat": -0.3472,
+     "diff": -0.0384,
+     "lo": -0.0854,
+     "hi": 0.0082
+    }
+   },
+   "miss": {
+    "later turns": {
+     "r": -0.1588,
+     "flat": -0.1556,
+     "diff": -0.0033,
+     "lo": -0.0537,
+     "hi": 0.0477
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.2107,
+     "flat": -0.1556,
+     "diff": -0.0552,
+     "lo": -0.1213,
+     "hi": 0.0139
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.213,
+     "flat": -0.1556,
+     "diff": -0.0574,
+     "lo": -0.1287,
+     "hi": 0.0161
+    }
+   },
+   "miss adj": {
+    "later turns": {
+     "r": -0.0017,
+     "flat": -0.0233,
+     "diff": 0.0216,
+     "lo": -0.0295,
+     "hi": 0.0732
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.0057,
+     "flat": -0.0233,
+     "diff": 0.0177,
+     "lo": -0.0454,
+     "hi": 0.0849
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.028,
+     "flat": -0.0233,
+     "diff": -0.0047,
+     "lo": -0.073,
+     "hi": 0.0679
+    }
+   },
+   "miss usual": {
+    "later turns": {
+     "r": -0.3496,
+     "flat": -0.3468,
+     "diff": -0.0027,
+     "lo": -0.0346,
+     "hi": 0.0257
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.3958,
+     "flat": -0.3468,
+     "diff": -0.0489,
+     "lo": -0.0944,
+     "hi": -0.0035
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.3885,
+     "flat": -0.3468,
+     "diff": -0.0417,
+     "lo": -0.0889,
+     "hi": 0.0049
+    }
+   }
+  }
+ },
+ "Houou, every seat": {
+  "seat_games": 63675,
+  "measures": {
+   "Q loss": {
+    "later turns": {
+     "r": -0.0461,
+     "flat": -0.038,
+     "diff": -0.008,
+     "lo": -0.0115,
+     "hi": -0.0045
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.077,
+     "flat": -0.038,
+     "diff": -0.039,
+     "lo": -0.0433,
+     "hi": -0.0349
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.0767,
+     "flat": -0.038,
+     "diff": -0.0387,
+     "lo": -0.0435,
+     "hi": -0.0343
+    },
+    "fitted (held out)": {
+     "r": -0.133,
+     "flat": -0.038,
+     "diff": -0.095,
+     "lo": -0.0992,
+     "hi": -0.0914,
+     "theta": {
+      "turn": 0.038,
+      "tenpai": 1.325,
+      "1 away": -0.375,
+      "2 away": -0.35,
+      "open melds": -0.05,
+      "riichi": 0.1,
+      "answer": 0.725,
+      "South 1-3": -0.125,
+      "South 4+": 0.1
+     },
+     "theta_spread": {
+      "turn": 0.003,
+      "tenpai": 0.01,
+      "1 away": 0.016,
+      "2 away": 0.01,
+      "open melds": 0.01,
+      "riichi": 0.01,
+      "answer": 0.02,
+      "South 1-3": 0.012,
+      "South 4+": 0.012
+     }
+    }
+   },
+   "Q loss adj": {
+    "later turns": {
+     "r": 0.011,
+     "flat": 0.0076,
+     "diff": 0.0034,
+     "lo": -0.0001,
+     "hi": 0.0069
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": 0.0043,
+     "flat": 0.0076,
+     "diff": -0.0032,
+     "lo": -0.0074,
+     "hi": 0.0007
+    },
+    "Wind-Up Bird, +threat": {
+     "r": 0.0005,
+     "flat": 0.0076,
+     "diff": -0.0071,
+     "lo": -0.0116,
+     "hi": -0.0029
+    },
+    "fitted (held out)": {
+     "r": 0.0021,
+     "flat": 0.0076,
+     "diff": -0.0055,
+     "lo": -0.0063,
+     "hi": -0.0046,
+     "theta": {
+      "turn": -0.005,
+      "tenpai": 0.05,
+      "1 away": 0.025,
+      "2 away": 0.0,
+      "open melds": -0.1,
+      "riichi": 0.15,
+      "answer": 0.1,
+      "South 1-3": -0.275,
+      "South 4+": -0.15
+     },
+     "theta_spread": {
+      "turn": 0.003,
+      "tenpai": 0.012,
+      "1 away": 0.016,
+      "2 away": 0.016,
+      "open melds": 0.0,
+      "riichi": 0.019,
+      "answer": 0.019,
+      "South 1-3": 0.019,
+      "South 4+": 0.01
+     }
+    }
+   },
+   "Q loss usual": {
+    "later turns": {
+     "r": -0.2134,
+     "flat": -0.2153,
+     "diff": 0.0019,
+     "lo": -0.0006,
+     "hi": 0.0046
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.2775,
+     "flat": -0.2153,
+     "diff": -0.0622,
+     "lo": -0.0663,
+     "hi": -0.0581
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.2861,
+     "flat": -0.2153,
+     "diff": -0.0707,
+     "lo": -0.0748,
+     "hi": -0.0664
+    }
+   },
+   "ln p": {
+    "later turns": {
+     "r": -0.0431,
+     "flat": -0.0283,
+     "diff": -0.0147,
+     "lo": -0.0182,
+     "hi": -0.0112
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.0897,
+     "flat": -0.0283,
+     "diff": -0.0613,
+     "lo": -0.0658,
+     "hi": -0.0571
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.0896,
+     "flat": -0.0283,
+     "diff": -0.0613,
+     "lo": -0.0661,
+     "hi": -0.0568
+    },
+    "fitted (held out)": {
+     "r": -0.1905,
+     "flat": -0.0283,
+     "diff": -0.1621,
+     "lo": -0.1673,
+     "hi": -0.1574,
+     "theta": {
+      "turn": 0.033,
+      "tenpai": 1.55,
+      "1 away": -0.45,
+      "2 away": -0.4,
+      "open melds": -0.05,
+      "riichi": 0.125,
+      "answer": 1.0,
+      "South 1-3": -0.1,
+      "South 4+": 0.125
+     },
+     "theta_spread": {
+      "turn": 0.002,
+      "tenpai": 0.0,
+      "1 away": 0.01,
+      "2 away": 0.0,
+      "open melds": 0.0,
+      "riichi": 0.012,
+      "answer": 0.02,
+      "South 1-3": 0.012,
+      "South 4+": 0.012
+     }
+    }
+   },
+   "ln p adj": {
+    "later turns": {
+     "r": 0.0385,
+     "flat": 0.0392,
+     "diff": -0.0007,
+     "lo": -0.0042,
+     "hi": 0.0028
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": 0.0236,
+     "flat": 0.0392,
+     "diff": -0.0156,
+     "lo": -0.02,
+     "hi": -0.0114
+    },
+    "Wind-Up Bird, +threat": {
+     "r": 0.018,
+     "flat": 0.0392,
+     "diff": -0.0212,
+     "lo": -0.0259,
+     "hi": -0.0168
+    },
+    "fitted (held out)": {
+     "r": 0.0237,
+     "flat": 0.0392,
+     "diff": -0.0155,
+     "lo": -0.0168,
+     "hi": -0.0141,
+     "theta": {
+      "turn": 0.0,
+      "tenpai": 0.1,
+      "1 away": 0.1,
+      "2 away": -0.025,
+      "open melds": -0.125,
+      "riichi": 0.25,
+      "answer": 0.15,
+      "South 1-3": -0.45,
+      "South 4+": -0.3
+     },
+     "theta_spread": {
+      "turn": 0.003,
+      "tenpai": 0.02,
+      "1 away": 0.029,
+      "2 away": 0.025,
+      "open melds": 0.0,
+      "riichi": 0.03,
+      "answer": 0.025,
+      "South 1-3": 0.02,
+      "South 4+": 0.012
+     }
+    }
+   },
+   "ln p usual": {
+    "later turns": {
+     "r": -0.2078,
+     "flat": -0.2119,
+     "diff": 0.0041,
+     "lo": 0.0015,
+     "hi": 0.0068
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.2724,
+     "flat": -0.2119,
+     "diff": -0.0605,
+     "lo": -0.0647,
+     "hi": -0.0563
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.2803,
+     "flat": -0.2119,
+     "diff": -0.0684,
+     "lo": -0.0725,
+     "hi": -0.064
+    }
+   },
+   "miss": {
+    "later turns": {
+     "r": -0.0363,
+     "flat": -0.0184,
+     "diff": -0.0179,
+     "lo": -0.0219,
+     "hi": -0.014
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.086,
+     "flat": -0.0184,
+     "diff": -0.0676,
+     "lo": -0.0724,
+     "hi": -0.0629
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.0845,
+     "flat": -0.0184,
+     "diff": -0.0661,
+     "lo": -0.0713,
+     "hi": -0.0612
+    },
+    "fitted (held out)": {
+     "r": -0.182,
+     "flat": -0.0185,
+     "diff": -0.1635,
+     "lo": -0.1689,
+     "hi": -0.1588,
+     "theta": {
+      "turn": 0.033,
+      "tenpai": 1.5,
+      "1 away": -0.4,
+      "2 away": -0.4,
+      "open melds": -0.025,
+      "riichi": 0.075,
+      "answer": 0.925,
+      "South 1-3": -0.1,
+      "South 4+": 0.1
+     },
+     "theta_spread": {
+      "turn": 0.004,
+      "tenpai": 0.016,
+      "1 away": 0.01,
+      "2 away": 0.0,
+      "open melds": 0.012,
+      "riichi": 0.019,
+      "answer": 0.019,
+      "South 1-3": 0.016,
+      "South 4+": 0.012
+     }
+    }
+   },
+   "miss adj": {
+    "later turns": {
+     "r": 0.0475,
+     "flat": 0.0513,
+     "diff": -0.0038,
+     "lo": -0.0079,
+     "hi": 0.0004
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": 0.03,
+     "flat": 0.0513,
+     "diff": -0.0214,
+     "lo": -0.0261,
+     "hi": -0.0169
+    },
+    "Wind-Up Bird, +threat": {
+     "r": 0.0245,
+     "flat": 0.0513,
+     "diff": -0.0269,
+     "lo": -0.032,
+     "hi": -0.0221
+    },
+    "fitted (held out)": {
+     "r": 0.032,
+     "flat": 0.0513,
+     "diff": -0.0193,
+     "lo": -0.021,
+     "hi": -0.0175,
+     "theta": {
+      "turn": 0.005,
+      "tenpai": 0.15,
+      "1 away": 0.15,
+      "2 away": -0.1,
+      "open melds": -0.125,
+      "riichi": 0.25,
+      "answer": 0.15,
+      "South 1-3": -0.475,
+      "South 4+": -0.325
+     },
+     "theta_spread": {
+      "turn": 0.003,
+      "tenpai": 0.012,
+      "1 away": 0.034,
+      "2 away": 0.04,
+      "open melds": 0.012,
+      "riichi": 0.03,
+      "answer": 0.024,
+      "South 1-3": 0.019,
+      "South 4+": 0.012
+     }
+    }
+   },
+   "miss usual": {
+    "later turns": {
+     "r": -0.2078,
+     "flat": -0.2144,
+     "diff": 0.0066,
+     "lo": 0.0039,
+     "hi": 0.0094
+    },
+    "Wind-Up Bird, turn+shanten": {
+     "r": -0.2695,
+     "flat": -0.2144,
+     "diff": -0.0551,
+     "lo": -0.0591,
+     "hi": -0.0511
+    },
+    "Wind-Up Bird, +threat": {
+     "r": -0.2762,
+     "flat": -0.2144,
+     "diff": -0.0618,
+     "lo": -0.0658,
+     "hi": -0.0574
+    }
+   }
+  }
+ },
+ "Houou regulars, across games": {
+  "Q loss": {
+   "flat": {
+    "players": 715,
+    "r": -0.0743,
+    "flat": -0.0743,
+    "diff": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "places_per_sd": -0.0165
+   },
+   "later turns": {
+    "players": 715,
+    "r": -0.081,
+    "flat": -0.0743,
+    "diff": -0.0066,
+    "lo": -0.0389,
+    "hi": 0.0232,
+    "places_per_sd": -0.018
+   },
+   "Wind-Up Bird, turn+shanten": {
+    "players": 715,
+    "r": -0.0834,
+    "flat": -0.0743,
+    "diff": -0.009,
+    "lo": -0.0477,
+    "hi": 0.0257,
+    "places_per_sd": -0.0184
+   },
+   "Wind-Up Bird, +threat": {
+    "players": 715,
+    "r": -0.0889,
+    "flat": -0.0743,
+    "diff": -0.0146,
+    "lo": -0.0576,
+    "hi": 0.0169,
+    "places_per_sd": -0.0199
+   }
+  },
+  "Q loss adj": {
+   "flat": {
+    "players": 715,
+    "r": -0.0782,
+    "flat": -0.0782,
+    "diff": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "places_per_sd": -0.0172
+   },
+   "later turns": {
+    "players": 715,
+    "r": -0.0883,
+    "flat": -0.0782,
+    "diff": -0.0101,
+    "lo": -0.043,
+    "hi": 0.0188,
+    "places_per_sd": -0.0193
+   },
+   "Wind-Up Bird, turn+shanten": {
+    "players": 715,
+    "r": -0.0894,
+    "flat": -0.0782,
+    "diff": -0.0112,
+    "lo": -0.0522,
+    "hi": 0.0201,
+    "places_per_sd": -0.0196
+   },
+   "Wind-Up Bird, +threat": {
+    "players": 715,
+    "r": -0.0938,
+    "flat": -0.0782,
+    "diff": -0.0156,
+    "lo": -0.0584,
+    "hi": 0.0166,
+    "places_per_sd": -0.0207
+   }
+  },
+  "Q loss usual": {
+   "flat": {
+    "players": 715,
+    "r": 0.0291,
+    "flat": 0.0291,
+    "diff": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "places_per_sd": 0.0045
+   },
+   "later turns": {
+    "players": 715,
+    "r": 0.0377,
+    "flat": 0.0291,
+    "diff": 0.0087,
+    "lo": -0.0279,
+    "hi": 0.0467,
+    "places_per_sd": 0.0065
+   },
+   "Wind-Up Bird, turn+shanten": {
+    "players": 715,
+    "r": 0.0298,
+    "flat": 0.0291,
+    "diff": 0.0008,
+    "lo": -0.0574,
+    "hi": 0.0614,
+    "places_per_sd": 0.0048
+   },
+   "Wind-Up Bird, +threat": {
+    "players": 715,
+    "r": 0.0265,
+    "flat": 0.0291,
+    "diff": -0.0026,
+    "lo": -0.0559,
+    "hi": 0.049,
+    "places_per_sd": 0.0039
+   }
+  },
+  "ln p": {
+   "flat": {
+    "players": 715,
+    "r": -0.0699,
+    "flat": -0.0699,
+    "diff": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "places_per_sd": -0.0156
+   },
+   "later turns": {
+    "players": 715,
+    "r": -0.0757,
+    "flat": -0.0699,
+    "diff": -0.0059,
+    "lo": -0.0412,
+    "hi": 0.0239,
+    "places_per_sd": -0.0169
+   },
+   "Wind-Up Bird, turn+shanten": {
+    "players": 715,
+    "r": -0.08,
+    "flat": -0.0699,
+    "diff": -0.0102,
+    "lo": -0.0503,
+    "hi": 0.0231,
+    "places_per_sd": -0.0178
+   },
+   "Wind-Up Bird, +threat": {
+    "players": 715,
+    "r": -0.0866,
+    "flat": -0.0699,
+    "diff": -0.0168,
+    "lo": -0.0602,
+    "hi": 0.0161,
+    "places_per_sd": -0.0196
+   }
+  },
+  "ln p adj": {
+   "flat": {
+    "players": 715,
+    "r": -0.0755,
+    "flat": -0.0755,
+    "diff": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "places_per_sd": -0.0166
+   },
+   "later turns": {
+    "players": 715,
+    "r": -0.0872,
+    "flat": -0.0755,
+    "diff": -0.0116,
+    "lo": -0.0461,
+    "hi": 0.0155,
+    "places_per_sd": -0.019
+   },
+   "Wind-Up Bird, turn+shanten": {
+    "players": 715,
+    "r": -0.0896,
+    "flat": -0.0755,
+    "diff": -0.0141,
+    "lo": -0.0551,
+    "hi": 0.0155,
+    "places_per_sd": -0.0196
+   },
+   "Wind-Up Bird, +threat": {
+    "players": 715,
+    "r": -0.0944,
+    "flat": -0.0755,
+    "diff": -0.0189,
+    "lo": -0.0646,
+    "hi": 0.0125,
+    "places_per_sd": -0.0209
+   }
+  },
+  "ln p usual": {
+   "flat": {
+    "players": 715,
+    "r": 0.0298,
+    "flat": 0.0298,
+    "diff": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "places_per_sd": 0.0047
+   },
+   "later turns": {
+    "players": 715,
+    "r": 0.0381,
+    "flat": 0.0298,
+    "diff": 0.0083,
+    "lo": -0.0287,
+    "hi": 0.047,
+    "places_per_sd": 0.0066
+   },
+   "Wind-Up Bird, turn+shanten": {
+    "players": 715,
+    "r": 0.0294,
+    "flat": 0.0298,
+    "diff": -0.0004,
+    "lo": -0.0587,
+    "hi": 0.0595,
+    "places_per_sd": 0.0046
+   },
+   "Wind-Up Bird, +threat": {
+    "players": 715,
+    "r": 0.0272,
+    "flat": 0.0298,
+    "diff": -0.0027,
+    "lo": -0.0568,
+    "hi": 0.0495,
+    "places_per_sd": 0.004
+   }
+  },
+  "miss": {
+   "flat": {
+    "players": 715,
+    "r": -0.0579,
+    "flat": -0.0579,
+    "diff": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "places_per_sd": -0.0123
+   },
+   "later turns": {
+    "players": 715,
+    "r": -0.0641,
+    "flat": -0.0579,
+    "diff": -0.0062,
+    "lo": -0.0461,
+    "hi": 0.0277,
+    "places_per_sd": -0.0141
+   },
+   "Wind-Up Bird, turn+shanten": {
+    "players": 715,
+    "r": -0.0679,
+    "flat": -0.0579,
+    "diff": -0.0101,
+    "lo": -0.0581,
+    "hi": 0.0302,
+    "places_per_sd": -0.0151
+   },
+   "Wind-Up Bird, +threat": {
+    "players": 715,
+    "r": -0.0749,
+    "flat": -0.0579,
+    "diff": -0.017,
+    "lo": -0.0718,
+    "hi": 0.023,
+    "places_per_sd": -0.017
+   }
+  },
+  "miss adj": {
+   "flat": {
+    "players": 715,
+    "r": -0.0649,
+    "flat": -0.0649,
+    "diff": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "places_per_sd": -0.0135
+   },
+   "later turns": {
+    "players": 715,
+    "r": -0.0783,
+    "flat": -0.0649,
+    "diff": -0.0135,
+    "lo": -0.0504,
+    "hi": 0.0195,
+    "places_per_sd": -0.0166
+   },
+   "Wind-Up Bird, turn+shanten": {
+    "players": 715,
+    "r": -0.0803,
+    "flat": -0.0649,
+    "diff": -0.0155,
+    "lo": -0.0627,
+    "hi": 0.0222,
+    "places_per_sd": -0.0173
+   },
+   "Wind-Up Bird, +threat": {
+    "players": 715,
+    "r": -0.0865,
+    "flat": -0.0649,
+    "diff": -0.0216,
+    "lo": -0.0765,
+    "hi": 0.0172,
+    "places_per_sd": -0.019
+   }
+  },
+  "miss usual": {
+   "flat": {
+    "players": 715,
+    "r": 0.0291,
+    "flat": 0.0291,
+    "diff": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "places_per_sd": 0.0045
+   },
+   "later turns": {
+    "players": 715,
+    "r": 0.0368,
+    "flat": 0.0291,
+    "diff": 0.0078,
+    "lo": -0.0297,
+    "hi": 0.0471,
+    "places_per_sd": 0.0062
+   },
+   "Wind-Up Bird, turn+shanten": {
+    "players": 715,
+    "r": 0.0278,
+    "flat": 0.0291,
+    "diff": -0.0013,
+    "lo": -0.0571,
+    "hi": 0.0575,
+    "places_per_sd": 0.0042
+   },
+   "Wind-Up Bird, +threat": {
+    "players": 715,
+    "r": 0.0267,
+    "flat": 0.0291,
+    "diff": -0.0024,
+    "lo": -0.0545,
+    "hi": 0.048,
+    "places_per_sd": 0.0038
+   }
+  }
+ }
+}

@@ -62,9 +62,43 @@ rating of decisions. On the player's own part no weighting helps, the fitted one
 Mortal-S42's raw Q loss runs the other way from importance: it is largest on the first discards (0.35 a decision
 at discards 1-2, 0.22 at 17 and later) and far from tenpai (0.37 at three or more away, 0.09 at tenpai).
 
-## Status
+## The same in Houou, every seat (63,675 seat-games)
 
-The same-game place cannot tell a better measure of play from a better detector of lucky hands. The test that
-can is across games: a player's rating in half of their games against their place in the other half (Houou
-regulars, `skill` in `fit_importance.py`). The Houou games are being scored; `fit_importance.py all` adds that
-table when they are done.
+| Part of the rating (Q loss) | flat | Wind-Up Bird's formula | fitted, held out |
+| --- | --- | --- | --- |
+| whole rating | -0.038 | -0.077 | -0.133 |
+| situations only | -0.215 | -0.286 | |
+| the player's own part | +0.008 | +0.001 | +0.002 |
+
+The formula doubles the whole rating's link to the same game's place and a fitted weighting more than triples
+it. The situations alone reach -0.22 to -0.29. The player's own part is at zero under every weighting.
+
+## Across games: Houou regulars (715 players with 20 or more games)
+
+The same-game place cannot tell a better measure of play from a better detector of lucky hands. Across games
+it can: a player's rating in half of their games against their mean place in the other half (`skill` in
+`fit_importance.py`, 20 random splits, intervals from resampling players).
+
+| Weighting | Q loss | ln p | Miss rate |
+| --- | --- | --- | --- |
+| flat | -0.074 | -0.070 | -0.058 |
+| later turns only | -0.081 | -0.076 | -0.064 |
+| Wind-Up Bird's formula | -0.089 | -0.087 | -0.075 |
+| gain of the formula over flat | -0.015 [-0.058, +0.017] | -0.017 [-0.060, +0.016] | -0.017 [-0.072, +0.023] |
+
+| Part of the rating (Q loss) | flat | Wind-Up Bird's formula | gain |
+| --- | --- | --- | --- |
+| situations only | +0.029 | +0.026 | -0.003 [-0.056, +0.049] |
+| the player's own part | -0.078 | -0.094 | -0.016 [-0.058, +0.017] |
+
+## Reading
+
+- The situation mix, which carries the whole same-game gain, says nothing about the player across games
+  (+0.03, the wrong sign). It is the hands dealt, not skill.
+- Across games every weighting points the same way, a gain of 0.006 to 0.022, and every interval spans zero.
+  715 players cannot confirm a gain that small; the later-turns guess alone is worth about 0.007.
+- The player's own part is the cleanest rating across games, slightly ahead of the whole rating under each
+  weighting (-0.078 against -0.074 flat, -0.094 against -0.089 with the formula).
+- For rank analysis: keep the flat rating as the measure of a player. An importance-weighted rating is fair to
+  use for ordering one game's mistakes for review. It should not be read as a better estimate of strength, and
+  its better fit to one game's place is not evidence of that.
