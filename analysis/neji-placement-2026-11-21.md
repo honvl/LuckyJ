@@ -45,8 +45,35 @@ Reviews needed to tell its grade from Mortal-S42's -0.15 on the same games (80% 
 A token covers 24 reviews. One token can only show a very large gap; a gap worth calling "much better" (-0.30 or
 beyond) needs 200 to 330 reviews, which is most of the 361 rated Jade games.
 
-## Status
+## The answer: all 361 rated Jade games, your seat
 
-No Wind-Up Bird review is cached yet (the token is made by hand on the site). `compare` fills in its side once
-reviews are there: its score, its match rate and its severity without importance, beside both Mortal models on the
-same games, with the interval of the difference.
+Every game was reviewed by Wind-Up Bird and both Mortal models. Same Spearman correlation with the place.
+
+| Rating | Correlation with place |
+| --- | --- |
+| Wind-Up Bird: score (severity × importance) | -0.197 [-0.297, -0.093] |
+| Wind-Up Bird: severity without importance | -0.198 [-0.301, -0.094] |
+| Wind-Up Bird: match rate | -0.135 [-0.237, -0.032] |
+| Wind-Up Bird: total EV loss | -0.017 [-0.118, +0.086] |
+| Mortal-S42: mean Q loss | -0.185 [-0.290, -0.079] |
+| Mortal-S42: mean ln p | -0.184 [-0.290, -0.076] |
+| Mortal-S42: match rate | -0.156 [-0.261, -0.051] |
+| Mortal policy: match rate | -0.099 [-0.203, +0.004] |
+
+| Difference | Size |
+| --- | --- |
+| Wind-Up Bird's score minus Mortal-S42's mean Q loss | -0.012 [-0.104, +0.085] |
+| Wind-Up Bird's score minus its own severity without importance | +0.001 [-0.069, +0.073] |
+| Wind-Up Bird's score minus its own match rate | -0.062 [-0.145, +0.026] |
+
+- The importance grade is not more suggestive of the place than Mortal-S42's rating: -0.197 against -0.185.
+  With 361 games a gap of 0.10 or more would have shown; "much better" is ruled out.
+- Importance adds nothing to Wind-Up Bird's own grade on these games (+0.001). What lifts its score above its
+  match rate is severity, the same step as S42's Q loss over S42's match rate.
+- The two reviewers correlate +0.55 and each keeps a little once the other is known (Wind-Up Bird given S42
+  -0.115 [-0.213, -0.013]; S42 given Wind-Up Bird -0.093 [-0.200, +0.010]). Two models' opinions together say
+  slightly more than either alone.
+- The interim reading on the first 63 games (-0.245) was sampling: the interval then was [-0.455, -0.012].
+
+`analysis/importance-2026-11-21.md` has the follow-up: an importance weighting of our own on S42, and the
+across-games test of whether it measures the player.

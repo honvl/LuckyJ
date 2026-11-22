@@ -185,10 +185,113 @@
   }
  },
  "compare": {
-  "reviewed": 0,
-  "n": 0,
-  "stats": {},
-  "note": "too few games for a correlation"
+  "reviewed": 361,
+  "n": 361,
+  "stats": {
+   "Wind-Up Bird: score (severity x importance)": {
+    "r": -0.197,
+    "lo": -0.297,
+    "hi": -0.093
+   },
+   "Wind-Up Bird: match rate": {
+    "r": -0.135,
+    "lo": -0.237,
+    "hi": -0.032
+   },
+   "Wind-Up Bird: total penalty": {
+    "r": -0.133,
+    "lo": -0.237,
+    "hi": -0.027
+   },
+   "Wind-Up Bird: flat severity (no importance)": {
+    "r": -0.198,
+    "lo": -0.301,
+    "hi": -0.094
+   },
+   "Wind-Up Bird: total EV loss": {
+    "r": -0.017,
+    "lo": -0.118,
+    "hi": 0.086
+   },
+   "Mortal-S42: match rate": {
+    "r": -0.156,
+    "lo": -0.261,
+    "hi": -0.051
+   },
+   "Mortal-S42: mean ln p (T 0.6)": {
+    "r": -0.184,
+    "lo": -0.29,
+    "hi": -0.076
+   },
+   "Mortal-S42: mean Q loss": {
+    "r": -0.185,
+    "lo": -0.29,
+    "hi": -0.079
+   },
+   "Mortal-S42: total Q loss": {
+    "r": -0.162,
+    "lo": -0.265,
+    "hi": -0.055
+   },
+   "Mortal-S42: Q loss over 1 count": {
+    "r": -0.157,
+    "lo": -0.26,
+    "hi": -0.051
+   },
+   "Mortal policy: match rate": {
+    "r": -0.099,
+    "lo": -0.203,
+    "hi": 0.004
+   },
+   "Mortal policy: mean ln p": {
+    "r": -0.074,
+    "lo": -0.184,
+    "hi": 0.03
+   },
+   "Mortal policy: under 10% rate": {
+    "r": -0.023,
+    "lo": -0.131,
+    "hi": 0.085
+   },
+   "Mortal policy: under 10% count": {
+    "r": -0.037,
+    "lo": -0.144,
+    "hi": 0.07
+   }
+  },
+  "best_mortal": "Mortal-S42: mean Q loss",
+  "differences": {
+   "Wind-Up Bird: score (severity x importance) minus Mortal-S42: mean Q loss": {
+    "diff": -0.012,
+    "lo": -0.104,
+    "hi": 0.085
+   },
+   "Wind-Up Bird: score (severity x importance) minus Wind-Up Bird: flat severity (no importance)": {
+    "diff": 0.001,
+    "lo": -0.069,
+    "hi": 0.073
+   },
+   "Wind-Up Bird: score (severity x importance) minus Wind-Up Bird: match rate": {
+    "diff": -0.062,
+    "lo": -0.145,
+    "hi": 0.026
+   }
+  },
+  "between": {
+   "Wind-Up Bird: score (severity x importance) with Mortal-S42: mean Q loss": 0.554
+  },
+  "partial": {
+   "Wind-Up Bird: score (severity x importance), given Mortal-S42: mean Q loss": {
+    "r": -0.115,
+    "lo": -0.213,
+    "hi": -0.013
+   },
+   "Mortal-S42: mean Q loss, given Wind-Up Bird: score (severity x importance)": {
+    "r": -0.093,
+    "lo": -0.2,
+    "hi": 0.01
+   }
+  }
  },
  "power": [
   {

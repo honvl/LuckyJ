@@ -39,8 +39,9 @@ Spearman correlation of the rating with the place in the same game; gain is agai
 | fitted to the place, scored on held-out games | -0.210 | -0.238 | -0.242 |
 
 Wind-Up Bird's formula adds 0.04 to 0.06 (every interval excludes zero); the turn alone adds about 0.01 (not
-separable from zero). On the 74 of your games Wind-Up Bird has reviewed, its own score reaches -0.24 and our
-S42 rating under its formula -0.22 to -0.26: the reproduction tracks the place as well as the original.
+separable from zero). On the first 74 of your games Wind-Up Bird reviewed, its own score reached -0.24 and our
+S42 rating under its formula -0.22 to -0.26: the reproduction tracks the place as well as the original. On all
+361 its score settles at -0.197, level with flat S42 at -0.185 (`analysis/neji-placement-2026-11-21.md`).
 
 ## Where the gain comes from
 
