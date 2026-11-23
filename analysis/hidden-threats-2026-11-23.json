@@ -1,0 +1,209 @@
+{
+ "deals": {
+  "jade-south": {
+   "riichi": {
+    "n": 149,
+    "share_pct": 36.5,
+    "avg_paid": 6451,
+    "you_tenpai_pct": 64.4
+   },
+   "dama": {
+    "n": 45,
+    "share_pct": 11.0,
+    "avg_paid": 5136,
+    "you_tenpai_pct": 37.8
+   },
+   "one call": {
+    "n": 122,
+    "share_pct": 29.9,
+    "avg_paid": 4061,
+    "you_tenpai_pct": 50.0
+   },
+   "two calls or more": {
+    "n": 92,
+    "share_pct": 22.5,
+    "avg_paid": 4304,
+    "you_tenpai_pct": 56.5
+   },
+   "total": 408
+  },
+  "throne-south": {
+   "riichi": {
+    "n": 2,
+    "share_pct": 20.0,
+    "avg_paid": 8150,
+    "you_tenpai_pct": 100.0
+   },
+   "dama": {
+    "n": 2,
+    "share_pct": 20.0,
+    "avg_paid": 6750,
+    "you_tenpai_pct": 100.0
+   },
+   "one call": {
+    "n": 4,
+    "share_pct": 40.0,
+    "avg_paid": 5575,
+    "you_tenpai_pct": 50.0
+   },
+   "two calls or more": {
+    "n": 2,
+    "share_pct": 20.0,
+    "avg_paid": 1950,
+    "you_tenpai_pct": 50.0
+   },
+   "total": 10
+  }
+ },
+ "wins_by_ron": {
+  "riichi": {
+   "n": 660,
+   "avg_paid": 6708,
+   "share_7700_plus_pct": 49.4
+  },
+  "dama": {
+   "n": 195,
+   "avg_paid": 5450,
+   "share_7700_plus_pct": 34.9
+  },
+  "one call": {
+   "n": 488,
+   "avg_paid": 4019,
+   "share_7700_plus_pct": 18.2
+  },
+  "two calls or more": {
+   "n": 380,
+   "avg_paid": 4768,
+   "share_7700_plus_pct": 25.5
+  }
+ },
+ "tenpai": {
+  "closed, by turn": {
+   "1-6": {
+    "n": 70209,
+    "pct": 0.5,
+    "se": 0.0
+   },
+   "7-9": {
+    "n": 24003,
+    "pct": 3.1,
+    "se": 0.1
+   },
+   "10-12": {
+    "n": 14676,
+    "pct": 6.8,
+    "se": 0.2
+   },
+   "13+": {
+    "n": 10338,
+    "pct": 11.2,
+    "se": 0.3
+   }
+  },
+  "closed, turn 10+, by tsumogiri streak": {
+   "0": {
+    "n": 14075,
+    "pct": 6.1,
+    "se": 0.2
+   },
+   "1": {
+    "n": 5009,
+    "pct": 10.3,
+    "se": 0.4
+   },
+   "2": {
+    "n": 2578,
+    "pct": 12.8,
+    "se": 0.7
+   },
+   "3": {
+    "n": 3352,
+    "pct": 13.6,
+    "se": 0.6
+   }
+  },
+  "one call, by turn": {
+   "1-6": {
+    "n": 6111,
+    "pct": 6.7,
+    "se": 0.3
+   },
+   "7-9": {
+    "n": 5339,
+    "pct": 22.6,
+    "se": 0.6
+   },
+   "10-12": {
+    "n": 4255,
+    "pct": 35.8,
+    "se": 0.7
+   },
+   "13+": {
+    "n": 4399,
+    "pct": 46.3,
+    "se": 0.8
+   }
+  },
+  "one call, turn 7+, value or dora pon vs other": {
+   "value or dora pon": {
+    "n": 5858,
+    "pct": 34.5,
+    "se": 0.6
+   },
+   "other call": {
+    "n": 8135,
+    "pct": 33.7,
+    "se": 0.5
+   }
+  },
+  "one call, turn 7+, by tsumogiri streak": {
+   "0": {
+    "n": 6921,
+    "pct": 24.9,
+    "se": 0.5
+   },
+   "1": {
+    "n": 3281,
+    "pct": 34.9,
+    "se": 0.8
+   },
+   "2": {
+    "n": 1698,
+    "pct": 42.2,
+    "se": 1.2
+   },
+   "3": {
+    "n": 2093,
+    "pct": 56.3,
+    "se": 1.1
+   }
+  },
+  "one call, by turns since the call": {
+   "0": {
+    "n": 4189,
+    "pct": 19.1,
+    "se": 0.6
+   },
+   "1": {
+    "n": 3419,
+    "pct": 21.5,
+    "se": 0.7
+   },
+   "2": {
+    "n": 2769,
+    "pct": 23.3,
+    "se": 0.8
+   },
+   "3": {
+    "n": 2197,
+    "pct": 24.7,
+    "se": 0.9
+   },
+   "4": {
+    "n": 7227,
+    "pct": 33.8,
+    "se": 0.6
+   }
+  }
+ }
+}
