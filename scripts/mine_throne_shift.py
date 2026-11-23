@@ -34,7 +34,9 @@ import mine_push_ev as pe  # noqa: E402
 
 OUT = ROOT / "analysis" / "throne-shift-2026-11-21.json"
 ROOM_SAMPLE = ROOT / "service" / ".state" / "room-sample.json"
-STYLE = ROOT / "data" / "ladder_skill" / "throne_style_stats.json"
+# 150 random seats per room (fetched 23 Nov 2026); the first version used 45 per room (throne_style_stats.json),
+# which made the Throne field look less likely to deal in
+STYLE = ROOT / "data" / "ladder_skill" / "throne_field_stats_big.json"
 S3 = np.array([130, 65, 0, -250])
 CEL = np.array([50, 20, -20, -50])
 SIZES = (3900, 8000)
@@ -185,7 +187,8 @@ def points():
 
 def field():
     data = json.loads(STYLE.read_text())
-    out = {"you_in_jade": {name: data["me"]["jade"][key] for key, name in STATS.items()}, "your_hands": data["me"]["jade"]["count"]}
+    mine = data["me"]["12"]
+    out = {"you_in_jade": {name: mine[key] for key, name in STATS.items()}, "your_hands": mine["count"]}
     for group, label in (("jade_field", "jade"), ("throne_field", "throne"), ("celestial", "celestial")):
         rows = [g for g in data["groups"][group] if g.get("count", 0) >= 30]
         block = {"players": len(rows)}
@@ -204,7 +207,14 @@ def main():
         i = args.index("--procs")
         procs = int(args[i + 1])
         del args[i:i + 2]
+    args = [a for a in args if a != "--field-only"]
     out_path = Path(args[0]) if args else OUT
+    if "--field-only" in sys.argv:  # refresh the field statistics without rerunning the valuation
+        old = json.loads(out_path.read_text())
+        old["field"] = field()
+        out_path.write_text(json.dumps(old, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        print(out_path, "field refreshed")
+        return
     # Jade games only: the manifest also holds the user's Throne games from 20 November on
     manifest = [g for g in json.loads(pe.MANIFEST.read_text()) if g["date"] >= pe.SINCE and g.get("mode") == "jade-south"]
     by_id = {g["uuid"]: g for g in manifest}

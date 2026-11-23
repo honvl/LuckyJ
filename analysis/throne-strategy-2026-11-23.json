@@ -1,0 +1,810 @@
+{
+ "sources": {
+  "throne_games": 42,
+  "your_games": 379,
+  "spots": {
+   "you": 500,
+   "jade_field": 1322,
+   "throne": 215,
+   "you_throne": 6
+  }
+ },
+ "results": {
+  "throne": {
+   "games": 9,
+   "places": [
+    3,
+    2,
+    4,
+    3,
+    2,
+    1,
+    2,
+    3,
+    2
+   ],
+   "mean": 2.44,
+   "se": 0.29
+  },
+  "jade_60_days": {
+   "games": 276,
+   "mean": 2.26
+  },
+  "jade_since_january": {
+   "games": 370,
+   "mean": 2.31
+  },
+  "forecast": [
+   2.4,
+   2.44
+  ],
+  "opponents_on_ch53_scale": {
+   "jade": 2.61,
+   "throne": 2.54
+  }
+ },
+ "field": {
+  "players": {
+   "jade_field": 149,
+   "jade_saint3": 100,
+   "throne_field": 146,
+   "celestial": 100
+  },
+  "win_turn": {
+   "jade_field": {
+    "mean": 12.1824,
+    "se": 0.0233
+   },
+   "jade_saint3": {
+    "mean": 12.1266,
+    "se": 0.0206
+   },
+   "throne_field": {
+    "mean": 12.1896,
+    "se": 0.0217
+   },
+   "celestial": {
+    "mean": 12.1857,
+    "se": 0.0246
+   },
+   "you_jade": 12.239336492890995,
+   "you_throne": 12.715909090909092
+  },
+  "riichi_turn": {
+   "jade_field": {
+    "mean": 9.4503,
+    "se": 0.0346
+   },
+   "jade_saint3": {
+    "mean": 9.3272,
+    "se": 0.0261
+   },
+   "throne_field": {
+    "mean": 9.3883,
+    "se": 0.0254
+   },
+   "celestial": {
+    "mean": 9.4072,
+    "se": 0.0289
+   },
+   "you_jade": 9.046725239616613,
+   "you_throne": 9.833333333333334
+  },
+  "riichi": {
+   "jade_field": {
+    "mean": 0.1834,
+    "se": 0.0026
+   },
+   "jade_saint3": {
+    "mean": 0.1848,
+    "se": 0.0023
+   },
+   "throne_field": {
+    "mean": 0.1883,
+    "se": 0.0016
+   },
+   "celestial": {
+    "mean": 0.1902,
+    "se": 0.0021
+   },
+   "you_jade": 0.1753501400560224,
+   "you_throne": 0.16666666666666666
+  },
+  "call": {
+   "jade_field": {
+    "mean": 0.3213,
+    "se": 0.0052
+   },
+   "jade_saint3": {
+    "mean": 0.3237,
+    "se": 0.0041
+   },
+   "throne_field": {
+    "mean": 0.3272,
+    "se": 0.0034
+   },
+   "celestial": {
+    "mean": 0.3318,
+    "se": 0.004
+   },
+   "you_jade": 0.3546218487394958,
+   "you_throne": 0.3888888888888889
+  },
+  "dama": {
+   "jade_field": {
+    "mean": 0.132,
+    "se": 0.0038
+   },
+   "jade_saint3": {
+    "mean": 0.1299,
+    "se": 0.0036
+   },
+   "throne_field": {
+    "mean": 0.1298,
+    "se": 0.0032
+   },
+   "celestial": {
+    "mean": 0.1262,
+    "se": 0.0031
+   },
+   "you_jade": 0.10071090047393365,
+   "you_throne": 0.13636363636363635
+  },
+  "win": {
+   "jade_field": {
+    "mean": 0.2199,
+    "se": 0.0016
+   },
+   "jade_saint3": {
+    "mean": 0.2274,
+    "se": 0.0014
+   },
+   "throne_field": {
+    "mean": 0.2168,
+    "se": 0.0014
+   },
+   "celestial": {
+    "mean": 0.2174,
+    "se": 0.0016
+   },
+   "you_jade": 0.23641456582633052,
+   "you_throne": 0.24444444444444444
+  },
+  "deal_in": {
+   "jade_field": {
+    "mean": 0.1274,
+    "se": 0.0018
+   },
+   "jade_saint3": {
+    "mean": 0.1159,
+    "se": 0.0012
+   },
+   "throne_field": {
+    "mean": 0.1285,
+    "se": 0.0013
+   },
+   "celestial": {
+    "mean": 0.1288,
+    "se": 0.0015
+   },
+   "you_jade": 0.10392156862745099,
+   "you_throne": 0.1111111111111111
+  },
+  "riichi_win": {
+   "jade_field": {
+    "mean": 0.5037,
+    "se": 0.0046
+   },
+   "jade_saint3": {
+    "mean": 0.519,
+    "se": 0.0029
+   },
+   "throne_field": {
+    "mean": 0.4824,
+    "se": 0.0036
+   },
+   "celestial": {
+    "mean": 0.4851,
+    "se": 0.0046
+   },
+   "you_jade": 0.5239616613418531,
+   "you_throne": 0.6666666666666666
+  },
+  "draw": {
+   "jade_field": {
+    "mean": 0.1312,
+    "se": 0.0013
+   },
+   "jade_saint3": {
+    "mean": 0.1329,
+    "se": 0.0011
+   },
+   "throne_field": {
+    "mean": 0.1376,
+    "se": 0.0012
+   },
+   "celestial": {
+    "mean": 0.1363,
+    "se": 0.0011
+   },
+   "you_jade": 0.13557422969187674,
+   "you_throne": 0.1111111111111111
+  },
+  "tenpai_at_draw": {
+   "jade_field": {
+    "mean": 0.4422,
+    "se": 0.0079
+   },
+   "jade_saint3": {
+    "mean": 0.4326,
+    "se": 0.0065
+   },
+   "throne_field": {
+    "mean": 0.4653,
+    "se": 0.0058
+   },
+   "celestial": {
+    "mean": 0.4719,
+    "se": 0.0066
+   },
+   "you_jade": 0.4380165289256198,
+   "you_throne": 0.3
+  },
+  "tsumo_share": {
+   "jade_field": {
+    "mean": 0.3701,
+    "se": 0.0035
+   },
+   "jade_saint3": {
+    "mean": 0.3675,
+    "se": 0.0023
+   },
+   "throne_field": {
+    "mean": 0.3916,
+    "se": 0.0036
+   },
+   "celestial": {
+    "mean": 0.3923,
+    "se": 0.0029
+   },
+   "you_jade": 0.3696682464454976,
+   "you_throne": 0.45454545454545453
+  },
+  "your_hands": {
+   "jade": 3570,
+   "throne": 90
+  }
+ },
+ "speed": {
+  "jade_field": {
+   "seat_hands": 11643,
+   "first_riichi_discard": 33.3,
+   "first_riichi_se": 0.16,
+   "tenpai_share": {
+    "n": 11643,
+    "pct": 47.0,
+    "se": 0.5
+   },
+   "tenpai_turn": 9.66,
+   "tenpai_turn_se": 0.05,
+   "riichi_before_tenpai": {
+    "n": 11643,
+    "pct": 39.7,
+    "se": 0.5
+   }
+  },
+  "throne": {
+   "seat_hands": 1700,
+   "first_riichi_discard": 32.5,
+   "first_riichi_se": 0.44,
+   "tenpai_share": {
+    "n": 1700,
+    "pct": 48.6,
+    "se": 1.2
+   },
+   "tenpai_turn": 9.48,
+   "tenpai_turn_se": 0.12,
+   "riichi_before_tenpai": {
+    "n": 1700,
+    "pct": 39.8,
+    "se": 1.2
+   }
+  },
+  "you_throne": {
+   "seat_hands": 90,
+   "first_riichi_discard": 35.8,
+   "first_riichi_se": 1.82,
+   "tenpai_share": {
+    "n": 90,
+    "pct": 46.7,
+    "se": 5.3
+   },
+   "tenpai_turn": 9.86,
+   "tenpai_turn_se": 0.5,
+   "riichi_before_tenpai": {
+    "n": 90,
+    "pct": 35.6,
+    "se": 5.0
+   }
+  }
+ },
+ "callers": {
+  "jade_field": {
+   "call 1": {
+    "n": 3645,
+    "pct": 19.0,
+    "se": 0.6
+   },
+   "call 2": {
+    "n": 1449,
+    "pct": 45.2,
+    "se": 1.3
+   },
+   "call 3": {
+    "n": 278,
+    "pct": 82.7,
+    "se": 2.3
+   },
+   "first call to turn 5": {
+    "n": 1645,
+    "pct": 3.6,
+    "se": 0.5,
+    "median_turns_to_tenpai": 5.0
+   },
+   "first call turns 6-9": {
+    "n": 1150,
+    "pct": 19.2,
+    "se": 1.2,
+    "median_turns_to_tenpai": 2.0
+   },
+   "first call turn 10 on": {
+    "n": 850,
+    "pct": 48.2,
+    "se": 1.7,
+    "median_turns_to_tenpai": 0.0
+   }
+  },
+  "throne": {
+   "call 1": {
+    "n": 558,
+    "pct": 20.4,
+    "se": 1.7
+   },
+   "call 2": {
+    "n": 207,
+    "pct": 46.9,
+    "se": 3.5
+   },
+   "call 3": {
+    "n": 39,
+    "pct": 82.1,
+    "se": 6.1
+   },
+   "first call to turn 5": {
+    "n": 249,
+    "pct": 3.6,
+    "se": 1.2,
+    "median_turns_to_tenpai": 5.0
+   },
+   "first call turns 6-9": {
+    "n": 180,
+    "pct": 21.1,
+    "se": 3.0,
+    "median_turns_to_tenpai": 2.0
+   },
+   "first call turn 10 on": {
+    "n": 129,
+    "pct": 51.9,
+    "se": 4.4,
+    "median_turns_to_tenpai": 0.0
+   }
+  }
+ },
+ "open_wins": {
+  "jade_field": {
+   "wins": 2435,
+   "open_share": {
+    "n": 2435,
+    "pct": 45.9,
+    "se": 1.0
+   },
+   "open_paid": 4792,
+   "open_paid_se": 113,
+   "open_mangan": {
+    "n": 1117,
+    "pct": 26.1,
+    "se": 1.3
+   },
+   "open_dora": 1.15,
+   "closed_paid": 7074
+  },
+  "throne": {
+   "wins": 380,
+   "open_share": {
+    "n": 380,
+    "pct": 45.8,
+    "se": 2.6
+   },
+   "open_paid": 4336,
+   "open_paid_se": 251,
+   "open_mangan": {
+    "n": 174,
+    "pct": 20.7,
+    "se": 3.1
+   },
+   "open_dora": 1.15,
+   "closed_paid": 7518
+  }
+ },
+ "pushes": {
+  "you": {
+   "push": {
+    "n": 500,
+    "pct": 74.2,
+    "se": 2.0
+   },
+   "push_won": {
+    "n": 371,
+    "pct": 30.7,
+    "se": 2.4
+   },
+   "push_dealt": {
+    "n": 371,
+    "pct": 22.1,
+    "se": 2.2
+   }
+  },
+  "jade_field": {
+   "push": {
+    "n": 1322,
+    "pct": 80.6,
+    "se": 1.1
+   },
+   "push_won": {
+    "n": 1066,
+    "pct": 28.7,
+    "se": 1.4
+   },
+   "push_dealt": {
+    "n": 1066,
+    "pct": 23.0,
+    "se": 1.3
+   }
+  },
+  "throne": {
+   "push": {
+    "n": 215,
+    "pct": 81.9,
+    "se": 2.6
+   },
+   "push_won": {
+    "n": 176,
+    "pct": 36.9,
+    "se": 3.6
+   },
+   "push_dealt": {
+    "n": 176,
+    "pct": 20.5,
+    "se": 3.0
+   }
+  },
+  "s42": 77.7,
+  "earlier": 75.9
+ },
+ "cells": [
+  {
+   "cell": "1-2 han, 4+ live",
+   "you": {
+    "n": 150,
+    "pct": 66.0,
+    "se": 3.9
+   },
+   "s42": 75.4,
+   "celestials": {
+    "n": 83,
+    "pct": 75.9,
+    "se": 4.7
+   },
+   "push_right_pct": 26.7,
+   "push_ev": -0.43
+  },
+  {
+   "cell": "1-2 han, 3 or fewer live",
+   "you": {
+    "n": 65,
+    "pct": 38.5,
+    "se": 6.0
+   },
+   "s42": 40.4,
+   "celestials": {
+    "n": 24,
+    "pct": 62.5,
+    "se": 9.9
+   },
+   "push_right_pct": 1.5,
+   "push_ev": -2.16
+  },
+  {
+   "cell": "3 han, 4+ live",
+   "you": {
+    "n": 87,
+    "pct": 90.8,
+    "se": 3.1
+   },
+   "s42": 89.5,
+   "celestials": {
+    "n": 30,
+    "pct": 83.3,
+    "se": 6.8
+   },
+   "push_right_pct": 87.4,
+   "push_ev": 1.47
+  },
+  {
+   "cell": "3 han, 3 or fewer live",
+   "you": {
+    "n": 35,
+    "pct": 62.9,
+    "se": 8.2
+   },
+   "s42": 71.4,
+   "celestials": {
+    "n": 13,
+    "pct": 76.9,
+    "se": 11.7
+   },
+   "push_right_pct": 8.6,
+   "push_ev": -1.2
+  },
+  {
+   "cell": "4+ han, 4+ live",
+   "you": {
+    "n": 103,
+    "pct": 94.2,
+    "se": 2.3
+   },
+   "s42": 93.7,
+   "celestials": {
+    "n": 47,
+    "pct": 97.9,
+    "se": 2.1
+   },
+   "push_right_pct": 93.2,
+   "push_ev": 4.06
+  },
+  {
+   "cell": "4+ han, 3 or fewer live",
+   "you": {
+    "n": 60,
+    "pct": 81.7,
+    "se": 5.0
+   },
+   "s42": 83.2,
+   "celestials": {
+    "n": 18,
+    "pct": 94.4,
+    "se": 5.4
+   },
+   "push_right_pct": 53.3,
+   "push_ev": 0.32
+  }
+ ],
+ "places": {
+  "1": {
+   "you": {
+    "n": 154,
+    "pct": 70.8,
+    "se": 3.7
+   },
+   "s42": 69.2,
+   "celestials": {
+    "n": 46,
+    "pct": 71.7,
+    "se": 6.6
+   },
+   "jade_field": {
+    "n": 333,
+    "pct": 75.7,
+    "se": 2.4
+   }
+  },
+  "2": {
+   "you": {
+    "n": 110,
+    "pct": 81.8,
+    "se": 3.7
+   },
+   "s42": 81.4,
+   "celestials": {
+    "n": 51,
+    "pct": 76.5,
+    "se": 5.9
+   },
+   "jade_field": {
+    "n": 329,
+    "pct": 77.5,
+    "se": 2.3
+   }
+  },
+  "3": {
+   "you": {
+    "n": 132,
+    "pct": 62.9,
+    "se": 4.2
+   },
+   "s42": 75.8,
+   "celestials": {
+    "n": 50,
+    "pct": 86.0,
+    "se": 4.9
+   },
+   "jade_field": {
+    "n": 327,
+    "pct": 81.3,
+    "se": 2.2
+   }
+  },
+  "4": {
+   "you": {
+    "n": 104,
+    "pct": 85.6,
+    "se": 3.4
+   },
+   "s42": 88.8,
+   "celestials": {
+    "n": 68,
+    "pct": 89.7,
+    "se": 3.7
+   },
+   "jade_field": {
+    "n": 333,
+    "pct": 88.0,
+    "se": 1.8
+   }
+  }
+ },
+ "third_big": {
+  "spots": 61,
+  "you": {
+   "n": 61,
+   "pct": 73.8,
+   "se": 5.6
+  },
+  "s42": 86.8,
+  "push_right_pct": 73.8,
+  "push_ev": 2.52
+ },
+ "late_thin_pushes": {
+  "won": {
+   "n": 219,
+   "pct": 14.6,
+   "se": 2.4
+  },
+  "dealt": {
+   "n": 219,
+   "pct": 25.1,
+   "se": 2.9
+  }
+ },
+ "rates": {
+  "3 or fewer | to turn 11": {
+   "won": 26.3,
+   "dealt": 25.8,
+   "pushes": 186
+  },
+  "3 or fewer | turn 12 on": {
+   "won": 14.6,
+   "dealt": 25.1,
+   "pushes": 219
+  },
+  "4-6 | to turn 11": {
+   "won": 32.9,
+   "dealt": 21.1,
+   "pushes": 407
+  },
+  "4-6 | turn 12 on": {
+   "won": 26.3,
+   "dealt": 21.3,
+   "pushes": 380
+  },
+  "7+ | to turn 11": {
+   "won": 45.2,
+   "dealt": 21.6,
+   "pushes": 259
+  },
+  "7+ | turn 12 on": {
+   "won": 32.7,
+   "dealt": 22.8,
+   "pushes": 162
+  }
+ },
+ "folds": {
+  "won": 4.2,
+  "dealt": 7.3,
+  "n": 424
+ },
+ "fold_example": {
+  "game": "261123-47e5a817-2d01-4e44-bf2a-35cbd556a801",
+  "date": "2026-11-22 23:06",
+  "round": "South 4-0",
+  "turn": 15,
+  "scores": [
+   16800,
+   39800,
+   31100,
+   12300
+  ],
+  "hero": 2,
+  "place": 2,
+  "cut": "8s",
+  "keep": [
+   "2m"
+  ],
+  "hand": {
+   "waits": [
+    "4m",
+    "7m"
+   ],
+   "live": 5,
+   "han": [
+    2,
+    1
+   ]
+  },
+  "opponents": [
+   {
+    "seat": 0,
+    "kind": "closed",
+    "tenpai": true,
+    "waits": {
+     "2m": 4,
+     "3m": 4
+    }
+   },
+   {
+    "seat": 1,
+    "kind": "closed",
+    "tenpai": true,
+    "waits": {
+     "2m": 3,
+     "5m": 3
+    }
+   },
+   {
+    "seat": 3,
+    "kind": "open",
+    "tenpai": true,
+    "waits": {
+     "2m": 1
+    }
+   }
+  ]
+ },
+ "draw_tenpai_opponents": {
+  "jade_saint3": 1.3,
+  "celestial": 1.42
+ },
+ "example": {
+  "game": "261103-82cf8c27-9a05-4d52-b545-507700652102",
+  "round": "South 3-2",
+  "turn": 16,
+  "place": 3,
+  "han": 4,
+  "live": 6,
+  "scores": [
+   27800,
+   41500,
+   21600,
+   8100
+  ],
+  "hero": 2,
+  "riichi_seats": [
+   0
+  ],
+  "s42_push": 0.966,
+  "policy_push": 0.959,
+  "ev": 5.38,
+  "gain": 33.95,
+  "cost": 15.09
+ }
+}

@@ -84,15 +84,16 @@ class ThroneShiftTests(unittest.TestCase):
         self.assertEqual((hand["round"], hand["turn"], hand["tile"], hand["place"], hand["your_score"]), ("South 3-0", 14, "2s", 3, 16500))
         self.assertEqual((hand["8000"]["saint3"]["ratio"], hand["8000"]["celestial"]["ratio"]), (1.02, 0.78))
         field = DATA["field"]
-        self.assertEqual((field["jade"]["players"], field["throne"]["players"]), (45, 45))
-        self.assertEqual([f"{field[g]['deal_in']['mean'] * 100:.1f}" for g in ("jade", "throne")], ["13.5", "12.5"])
-        self.assertEqual([f"{field[g]['draw']['mean'] * 100:.1f}" for g in ("jade", "throne")], ["12.6", "13.8"])
+        # corrected on 23 November: 150 seats a room in place of 45; the deal-in difference was noise
+        self.assertEqual((field["jade"]["players"], field["throne"]["players"]), (150, 146))
+        self.assertEqual([f"{field[g]['deal_in']['mean'] * 100:.1f}" for g in ("jade", "throne")], ["12.7", "12.8"])
+        self.assertEqual([f"{field[g]['draw']['mean'] * 100:.1f}" for g in ("jade", "throne")], ["13.1", "13.8"])
         self.assertGreater(field["throne"]["draw"]["mean"] - field["jade"]["draw"]["mean"],
                            2 * (field["throne"]["draw"]["se"] ** 2 + field["jade"]["draw"]["se"] ** 2) ** 0.5)
         self.assertEqual(DATA["model_rewards"], {"earlier_policy_model": [3.0, 1.5, 0.0, -4.5], "mortal_s42": [6.0, 4.0, 2.0, 0.0]})
         for lang in PAGES:
             text = prose(lang)
-            for number in ("16,500", "2,300", "1.02", "0.78", "13.5%", "12.5%", "36.0%", "39.2%", "12.6%", "13.8%", "44.5%", "46.1%"):
+            for number in ("16,500", "2,300", "1.02", "0.78", "12.8%", "12.7%", "37.0%", "39.2%", "13.1%", "13.8%", "43.8%", "46.5%"):
                 self.assertIn(number, text, f"{lang}: {number}")
             self.assertEqual(section(lang).count('data-you="2s"'), 1)
 
@@ -111,14 +112,13 @@ class ThroneShiftTests(unittest.TestCase):
                              ("ja", '<a href="#throne-room">第54章は、魂天になった今の打ち方に答える')):
             page = PAGES[lang].read_text(encoding="utf-8")
             self.assertEqual(page.count('<li class="is-latest">'), 1)
-            first = page.index('<li class="is-latest">')
-            self.assertIn(latest, page[first:first + 300])
+            self.assertEqual(page.count(latest), 1)  # chapter 55 is the latest notice now (tests/test_throne_strategy.py)
             self.assertEqual(page.count('<span class="contents-num">54</span>'), 1)
             self.assertIn('href="#throne-room"><span class="chapter-next-label">', page)
             self.assertIn("mine_throne_shift.py", page)
             self.assertEqual(page.count('aria-label="After the chapters"') + page.count('aria-label="本編の後"'), 1)
-        self.assertIn("Fifty-four chapters", PAGES["en"].read_text(encoding="utf-8"))
-        self.assertIn("54の章", PAGES["ja"].read_text(encoding="utf-8"))
+        self.assertIn("Fifty-five chapters", PAGES["en"].read_text(encoding="utf-8"))
+        self.assertIn("55の章", PAGES["ja"].read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

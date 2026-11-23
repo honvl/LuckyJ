@@ -179,8 +179,8 @@ class TheChapterTests(unittest.TestCase):
             self.assertIn('href="#draw-tenpai"><span class="chapter-next-label">', page)
             self.assertIn("mine_draw_tenpai.py", page)
             self.assertEqual(page.count('aria-label="After the chapters"') + page.count('aria-label="本編の後"'), 1)
-        self.assertIn("Fifty-four chapters", PAGES["en"].read_text(encoding="utf-8"))
-        self.assertIn("54の章", PAGES["ja"].read_text(encoding="utf-8"))
+        self.assertIn("Fifty-five chapters", PAGES["en"].read_text(encoding="utf-8"))
+        self.assertIn("55の章", PAGES["ja"].read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":
