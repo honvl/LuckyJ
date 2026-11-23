@@ -118,14 +118,13 @@ class ThroneStrategyTests(unittest.TestCase):
                              ("ja", '<a href="#throne-strategy">第55章は王座の間を測る</a>')):
             page = PAGES[lang].read_text(encoding="utf-8")
             self.assertEqual(page.count('<li class="is-latest">'), 1)
-            first = page.index('<li class="is-latest">')
-            self.assertIn(latest, page[first:first + 300])
+            self.assertEqual(page.count(latest), 1)  # chapter 56 is the latest notice now (tests/test_edge_split.py)
             self.assertEqual(page.count('<span class="contents-num">55</span>'), 1)
             self.assertIn('href="#throne-strategy"><span class="chapter-next-label">', page)
             self.assertIn("mine_throne_strategy.py", page)
             self.assertEqual(page.count('aria-label="After the chapters"') + page.count('aria-label="本編の後"'), 1)
-        self.assertIn("Fifty-five chapters", PAGES["en"].read_text(encoding="utf-8"))
-        self.assertIn("55の章", PAGES["ja"].read_text(encoding="utf-8"))
+        self.assertIn("Fifty-six chapters", PAGES["en"].read_text(encoding="utf-8"))
+        self.assertIn("56の章", PAGES["ja"].read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

@@ -117,8 +117,8 @@ class ThroneShiftTests(unittest.TestCase):
             self.assertIn('href="#throne-room"><span class="chapter-next-label">', page)
             self.assertIn("mine_throne_shift.py", page)
             self.assertEqual(page.count('aria-label="After the chapters"') + page.count('aria-label="本編の後"'), 1)
-        self.assertIn("Fifty-five chapters", PAGES["en"].read_text(encoding="utf-8"))
-        self.assertIn("55の章", PAGES["ja"].read_text(encoding="utf-8"))
+        self.assertIn("Fifty-six chapters", PAGES["en"].read_text(encoding="utf-8"))
+        self.assertIn("56の章", PAGES["ja"].read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

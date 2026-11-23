@@ -1,0 +1,324 @@
+{
+ "splits": {
+  "jade": [
+   0.2035,
+   0.1465,
+   0.0536,
+   -0.4037
+  ],
+  "houou": [
+   0.3016,
+   0.0952,
+   -0.0949,
+   -0.302
+  ],
+  "throne": [
+   0.2509,
+   0.1781,
+   -0.1395,
+   -0.2895
+  ],
+  "throne_tables": 79867,
+  "fourths_per_first": {
+   "jade": 1.98,
+   "houou": 1.0,
+   "throne": 1.15
+  }
+ },
+ "lines": {
+  "Saint 1": {
+   "points": [
+    145.0,
+    65.7,
+    -9.2,
+    -243.1
+   ],
+   "points_sum": -41.6,
+   "jade_split": {
+    "mean_place_needed": 2.424,
+    "a": -0.0342
+   },
+   "houou_split": {
+    "mean_place_needed": 2.416,
+    "a": -0.0265
+   }
+  },
+  "Saint 2": {
+   "points": [
+    143.7,
+    64.9,
+    -9.7,
+    -258.2
+   ],
+   "points_sum": -59.3,
+   "jade_split": {
+    "mean_place_needed": 2.396,
+    "a": -0.0062
+   },
+   "houou_split": {
+    "mean_place_needed": 2.385,
+    "a": 0.0051
+   }
+  },
+  "Saint 3": {
+   "points": [
+    144.0,
+    65.6,
+    -9.9,
+    -272.7
+   ],
+   "points_sum": -73.0,
+   "jade_split": {
+    "mean_place_needed": 2.377,
+    "a": 0.0123
+   },
+   "houou_split": {
+    "mean_place_needed": 2.363,
+    "a": 0.0266
+   }
+  },
+  "七段": {
+   "points": [
+    90,
+    45,
+    0,
+    -135
+   ],
+   "points_sum": 0,
+   "houou_split": {
+    "mean_place_needed": 2.5,
+    "a": 0.0223
+   },
+   "jade_split": {
+    "mean_place_needed": 2.5,
+    "a": 0.0223
+   }
+  },
+  "八段": {
+   "points": [
+    90,
+    45,
+    0,
+    -150
+   ],
+   "points_sum": -15,
+   "houou_split": {
+    "mean_place_needed": 2.451,
+    "a": 0.0709
+   },
+   "jade_split": {
+    "mean_place_needed": 2.456,
+    "a": 0.0659
+   }
+  },
+  "九段": {
+   "points": [
+    90,
+    45,
+    0,
+    -165
+   ],
+   "points_sum": -30,
+   "houou_split": {
+    "mean_place_needed": 2.408,
+    "a": 0.1142
+   },
+   "jade_split": {
+    "mean_place_needed": 2.418,
+    "a": 0.1039
+   }
+  },
+  "十段": {
+   "points": [
+    90,
+    45,
+    0,
+    -180
+   ],
+   "points_sum": -45,
+   "houou_split": {
+    "mean_place_needed": 2.369,
+    "a": 0.1533
+   },
+   "jade_split": {
+    "mean_place_needed": 2.385,
+    "a": 0.1375
+   }
+  },
+  "Celestial": {
+   "points": [
+    50,
+    20,
+    -20,
+    -50
+   ],
+   "points_sum": 0,
+   "note": "points sum to zero: break-even at 2.50 under any split"
+  }
+ },
+ "worth": {
+  "Saint 3": {
+   "jade_split": 148.5,
+   "houou_split": 133.0,
+   "throne_split": 128.1,
+   "fee": 18.25
+  },
+  "八段": {
+   "jade_split": 85.5,
+   "houou_split": 76.7,
+   "throne_split": 74.0,
+   "fee": 3.75
+  },
+  "Celestial": {
+   "jade_split": 32.2,
+   "houou_split": 34.0,
+   "throne_split": 33.4,
+   "fee": -0.0
+  }
+ },
+ "saint3_pace": [
+  {
+   "scale": 2.5,
+   "jade_split": -1.83,
+   "jade_split_games_per_1000": null,
+   "houou_split": -3.54,
+   "houou_split_games_per_1000": null
+  },
+  {
+   "scale": 2.49,
+   "jade_split": -0.34,
+   "jade_split_games_per_1000": null,
+   "houou_split": -2.21,
+   "houou_split_games_per_1000": null
+  },
+  {
+   "scale": 2.48,
+   "jade_split": 1.14,
+   "jade_split_games_per_1000": 877,
+   "houou_split": -0.88,
+   "houou_split_games_per_1000": null
+  },
+  {
+   "scale": 2.47,
+   "jade_split": 2.63,
+   "jade_split_games_per_1000": 381,
+   "houou_split": 0.45,
+   "houou_split_games_per_1000": 2244
+  },
+  {
+   "scale": 2.46,
+   "jade_split": 4.11,
+   "jade_split_games_per_1000": 243,
+   "houou_split": 1.78,
+   "houou_split_games_per_1000": 563
+  },
+  {
+   "scale": 2.44,
+   "jade_split": 7.08,
+   "jade_split_games_per_1000": 141,
+   "houou_split": 4.43,
+   "houou_split_games_per_1000": 225
+  },
+  {
+   "scale": 2.42,
+   "jade_split": 10.05,
+   "jade_split_games_per_1000": 100,
+   "houou_split": 7.09,
+   "houou_split_games_per_1000": 141
+  },
+  {
+   "scale": 2.4,
+   "jade_split": 13.02,
+   "jade_split_games_per_1000": 77,
+   "houou_split": 9.75,
+   "houou_split_games_per_1000": 103
+  }
+ ],
+ "saint3_jade_opponents": -0.1106,
+ "average_saint3": {
+  "seats": 17445,
+  "mean_place": 2.3859,
+  "shares": [
+   0.2761,
+   0.2672,
+   0.2515,
+   0.2052
+  ],
+  "lambda": 0.21
+ },
+ "you": {
+  "games": 370,
+  "mean_place": 2.311,
+  "edge": 0.1892,
+  "shares": [
+   0.3027,
+   0.2649,
+   0.2514,
+   0.1811
+  ],
+  "shares_se": [
+   0.0239,
+   0.0229,
+   0.0226,
+   0.02
+  ],
+  "if_jade_split": [
+   0.2885,
+   0.2777,
+   0.2601,
+   0.1736
+  ],
+  "if_houou_split": [
+   0.3071,
+   0.268,
+   0.232,
+   0.1929
+  ],
+  "lambda": 0.487,
+  "lambda_se": 0.935,
+  "lambda_95": [
+   -1.667,
+   1.742
+  ]
+ },
+ "luckyj": {
+  "games": 1079,
+  "mean_place": 2.259,
+  "edge": 0.2405,
+  "shares": [
+   0.317,
+   0.2753,
+   0.2391,
+   0.1687
+  ],
+  "shares_se": [
+   0.0142,
+   0.0136,
+   0.013,
+   0.0114
+  ],
+  "if_jade_split": [
+   0.2989,
+   0.2852,
+   0.2629,
+   0.1529
+  ],
+  "if_houou_split": [
+   0.3225,
+   0.2729,
+   0.2272,
+   0.1774
+  ],
+  "lambda": 0.69,
+  "lambda_se": 0.305,
+  "lambda_95": [
+   0.036,
+   1.223
+  ]
+ },
+ "eight_dan_holder_a": 0.034,
+ "you_scale": {
+  "mortal": 2.473,
+  "results": 2.438
+ }
+}

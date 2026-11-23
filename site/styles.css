@@ -3347,6 +3347,49 @@ html:lang(ja) :is(.timing-title, .timing-sub, .timing-legend, .timing-panel-titl
   box-shadow: 0 0 0 1px var(--ink);
 }
 
+/* Chapter 56: where an edge lands among the places (scripts/build_edge_split.py). Jade and vermilion as in chapter 53;
+   the Throne room is a lighter jade. */
+
+.tier-figure .split-bar.jade { fill: var(--tier-ms); }
+.tier-figure .split-bar.throne { fill: color-mix(in srgb, var(--tier-ms) 45%, var(--plate)); }
+.tier-figure .split-bar.houou { fill: var(--tier-th); }
+
+.timing-key.split-throne::before {
+  background: color-mix(in srgb, var(--jade-mark) 45%, var(--plate));
+}
+
+.tier-figure .split-line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.tier-figure .split-line.jade { stroke: var(--tier-ms); }
+.tier-figure .split-line.houou { stroke: var(--tier-th); }
+
+.tier-figure .split-cross {
+  fill: var(--plate);
+  stroke-width: 2;
+}
+
+.tier-figure .split-cross.jade { stroke: var(--tier-ms); }
+.tier-figure .split-cross.houou { stroke: var(--tier-th); }
+
+.tier-figure .split-label {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 650;
+}
+
+.tier-figure .split-label.jade { fill: var(--tier-ms); }
+.tier-figure .split-label.houou { fill: var(--tier-th); }
+
+.tier-figure .split-guide {
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
 .timing-key.tier-youkey::before {
   width: 10px;
   height: 10px;
@@ -3422,7 +3465,7 @@ html:lang(ja) :is(.timing-title, .timing-sub, .timing-legend, .timing-panel-titl
   fill: var(--ink);
 }
 
-.timing-key:is(.tier-ms, .tier-th, .tier-field)::before {
+.timing-key:is(.tier-ms, .tier-th, .tier-field, .split-throne)::before {
   width: 10px;
   height: 10px;
   border-radius: 50%;
