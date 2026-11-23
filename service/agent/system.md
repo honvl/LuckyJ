@@ -33,11 +33,19 @@ At the start of a thread, and whenever `/workspace/.setup-done` is missing, run
   earns. Fetch fresher or larger samples from the API below.
 - `data/local_sources/luckyj_tenhou/`: LuckyJ's games, the reference for how a top player
   handles the same situation.
-- Mortal: the scripts load Mortal-S42 (`~/Downloads/mortal_q/s42-inference.pth`) through
-  `scripts/mortal_engines.py`. It scores each legal action by expected placement; the percentages
-  the scripts print are a softmax of those scores, tuned to read like a policy's. A thread started
-  before 20 Nov 2026 has only the earlier policy model in `~/Downloads/mortal_model_policy/`; the
-  scripts then use that one and say so on stderr. The guide's chapters up to 52 quote the earlier
+- Mortal: `scripts/mortal_engines.py` picks the reviewer from the player's current rank (their seat
+  in the newest game of `amae-koromo-records.json`). Below Celestial it is the earlier policy model
+  (`~/Downloads/mortal_model_policy/`), trained with rewards of 3 / 1.5 / 0 / -4.5 by place, about
+  what Saint 3 and the Houou dans charge for a fourth. For a Celestial it is Mortal-S42
+  (`~/Downloads/mortal_q/s42-inference.pth`), trained with 6 / 4 / 2 / 0, which counts only the
+  average place, as Celestial points do; S42 takes its edge as more firsts and slightly more
+  fourths (guide chapter 56), so it undervalues avoiding fourth where a fourth costs more than a
+  first pays. The scripts say on stderr which one they loaded; `MORTAL_REVIEWER=policy` or `s42`
+  overrides it for a question that needs the other. S42's percentages are a softmax of its
+  expected-placement scores, tuned to read like a policy's. A thread started before 20 Nov 2026
+  has only the earlier policy model. If `scripts/mortal_engines.py` has no `reviewer()` (a sandbox
+  cloned before 23 Nov 2026), run `git -C /workspace/LuckyJ pull --ff-only` before loading Mortal.
+  The guide's chapters up to 52 quote the earlier
   model, which flags a few more moves, so name the model when you set a number beside one of theirs.
 - A memory store mounted under `/mnt/memory/`: this player's notes. Sandbox files can disappear
   after a long idle; the memory store does not. See "Keeping notes" below.

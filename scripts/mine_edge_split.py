@@ -142,9 +142,17 @@ def main():
     x = g * (H - J)
     anchor["lambda"] = round(float(((d - g * J) * x).sum() / (x ** 2).sum()), 3)
 
+    # Mortal-S42 against three copies of the earlier policy Mortal (the 20 November duel, 8,000 hanchan)
+    duel = [json.loads(l) for l in (ROOT / "data" / "ladder_skill" / "mortal_duel_merged.jsonl").open(encoding="utf-8") if l.strip()]
+    counts = np.sum([r["rankings"] for r in duel if r["challenger"] == "s42" and r["champion"] == "policy"], axis=0)
+    you_mix, lj_mix = mix(yours, J, H), mix(lj, J, H)  # drawn first, so their ranges do not depend on the duel
+    s42 = mix(np.repeat([1, 2, 3, 4], counts), J, H)
+    s42["opponents"] = "three copies of the earlier policy Mortal"
+    s42["rewards"] = {"s42": [6, 4, 2, 0], "policy": [3, 1.5, 0, -4.5]}
+
     out = {"splits": splits, "lines": lines, "worth": worth, "saint3_pace": pace,
            "saint3_jade_opponents": opp, "average_saint3": anchor,
-           "you": mix(yours, J, H), "luckyj": mix(lj, J, H),
+           "you": you_mix, "luckyj": lj_mix, "s42": s42,
            "eight_dan_holder_a": ladder["tenhou_on_the_scale"]["八段"]["a_fit"],
            "you_scale": {"mortal": round(2.5 - ladder["you"]["a_from_mortal"], 3),
                          "results": round(2.5 - ladder["you"]["a_from_results"], 3)}}

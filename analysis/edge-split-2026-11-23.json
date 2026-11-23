@@ -416,6 +416,56 @@
    1.223
   ]
  },
+ "s42": {
+  "games": 8000,
+  "mean_place": 2.458,
+  "edge": 0.0419,
+  "shares": [
+   0.2745,
+   0.246,
+   0.2264,
+   0.2531
+  ],
+  "shares_se": [
+   0.005,
+   0.0048,
+   0.0047,
+   0.0049
+  ],
+  "if_jade_split": [
+   0.2585,
+   0.2561,
+   0.2522,
+   0.2331
+  ],
+  "if_houou_split": [
+   0.2626,
+   0.254,
+   0.246,
+   0.2374
+  ],
+  "lambda": 4.261,
+  "lambda_se": 3.712,
+  "lambda_95": [
+   2.717,
+   9.056
+  ],
+  "opponents": "three copies of the earlier policy Mortal",
+  "rewards": {
+   "s42": [
+    6,
+    4,
+    2,
+    0
+   ],
+   "policy": [
+    3,
+    1.5,
+    0,
+    -4.5
+   ]
+  }
+ },
  "eight_dan_holder_a": 0.034,
  "you_scale": {
   "mortal": 2.473,

@@ -85,11 +85,66 @@ def with_probabilities(e, temperature: float = TEMPERATURE):
     return e
 
 
+# The AI Tutor's sandbox: the player's games and their amae-koromo records and stats live here.
+TUTOR_GAMES = os.environ.get("MORTAL_TUTOR_GAMES", "/workspace/LuckyJ/data/self_games/majsoul")
+CELESTIAL = 10701  # Mahjong Soul rank ids: 10701 and up are Celestial levels
+
+
+def tutor_rank() -> int | None:
+    """In a tutor sandbox, the player's latest Mahjong Soul rank id: their seat in the newest game of
+    amae-koromo-records.json, else the rank in amae-koromo-stats.json. None outside a sandbox or with no records."""
+    import json
+    if not (os.path.isdir("/mnt/session") or os.environ.get("MORTAL_TUTOR_GAMES")):
+        return None
+    folder = TUTOR_GAMES
+    try:
+        names = {g.get("hero_name") for g in json.load(open(os.path.join(folder, "index.json"), encoding="utf-8"))}
+    except (OSError, ValueError):
+        names = set()
+    best = None
+    try:
+        for game in json.load(open(os.path.join(folder, "amae-koromo-records.json"), encoding="utf-8")):
+            start, players = game[1], game[4]
+            for p in players:
+                if p[1] in names and (best is None or start > best[0]):
+                    best = (start, int(p[2]))
+    except (OSError, ValueError, IndexError, TypeError):
+        pass
+    if best:
+        return best[1]
+    try:
+        stats = json.load(open(os.path.join(folder, "amae-koromo-stats.json"), encoding="utf-8"))
+        return int(((stats.get("player_stats") or {}).get("level") or {}).get("id") or 0) or None
+    except (OSError, ValueError, TypeError):
+        return None
+
+
+def reviewer() -> str:
+    """Which Mortal reviews: ``policy`` or ``s42``. MORTAL_REVIEWER sets it. In a tutor sandbox it follows the player's
+    rank: below Celestial the earlier policy model, whose reward (3 / 1.5 / 0 / -4.5 by place) prices a fourth about
+    as Saint 3 and the Houou dans do; Celestials get Mortal-S42, whose reward (6 / 4 / 2 / 0) counts only the average
+    place, as Celestial points do (guide chapter 56). Elsewhere, S42."""
+    chosen = os.environ.get("MORTAL_REVIEWER", "").strip().lower()
+    if chosen in ("policy", "s42"):
+        return chosen
+    rank = tutor_rank()
+    if rank is not None and rank < CELESTIAL:
+        return "policy"
+    return "s42"
+
+
 def default_engine(quick_eval: bool = False):
-    """Mortal-S42 with probabilities. Where its weights are not on disk (a tutor thread started before the switch),
-    the earlier policy model answers and a line on stderr says so."""
-    if not os.path.exists(S42_WEIGHTS):
+    """The reviewer (``reviewer()``) with probabilities. Where S42's weights are not on disk (a tutor thread started
+    before the switch), the earlier policy model answers and a line on stderr says so."""
+    pick = reviewer()
+    if pick == "s42" and not os.path.exists(S42_WEIGHTS):
         print(f"mortal_engines: {S42_WEIGHTS} not found, using the earlier policy model", file=sys.stderr)
+        pick = "policy"
+    if pick == "policy":
+        if not os.environ.get("MORTAL_REVIEWER"):
+            rank = tutor_rank()
+            if rank is not None and rank < CELESTIAL:
+                print(f"mortal_engines: rank {rank} is below Celestial, reviewing with the earlier policy model", file=sys.stderr)
         e = policy_engine()
         e.enable_quick_eval = quick_eval
         return e
@@ -101,7 +156,7 @@ POLICY_LABEL = "Mortal policy model (local weights)"
 
 def default_label() -> str:
     """What ``default_engine()`` is, for files that record which model made their numbers."""
-    if not os.path.exists(S42_WEIGHTS):
+    if reviewer() == "policy" or not os.path.exists(S42_WEIGHTS):
         return POLICY_LABEL
     return f"Mortal-S42 (softmax of Q at {TEMPERATURE})"
 

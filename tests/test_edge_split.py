@@ -129,6 +129,19 @@ class EdgeSplitTests(unittest.TestCase):
             for number in ("15", "19%", "15.5", "13.3", "8.9", "7.7", "3.4", "0.9%", "30", "40"):
                 self.assertIn(number, text, f"{lang}: {number}")
 
+    def test_the_two_mortals(self):
+        s42 = DATA["s42"]
+        self.assertEqual((s42["games"], s42["shares"], s42["lambda"], s42["lambda_95"]),
+                         (8000, [0.2745, 0.246, 0.2264, 0.2531], 4.261, [2.717, 9.056]))
+        self.assertGreater(s42["lambda_95"][0], 1)  # past even, not toward fewer fourths
+        for lang in PAGES:
+            page = PAGES[lang].read_text(encoding="utf-8")
+            self.assertEqual(page.count('<mark id="add-56-mortal" class="guide-changed">'), 1)
+            self.assertIn('href="#add-56-mortal"', page)
+            text = prose(lang)
+            for number in ("8,000", "27.5%", "24.6%", "22.6%", "25.3%", "0.04", "4.3", "2.7", "9.1", "−4.5"):
+                self.assertIn(number, text, f"{lang}: {number}")
+
     def test_the_voice(self):
         for lang in PAGES:
             self.assertNotIn("&#8212;", section(lang))

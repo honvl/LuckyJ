@@ -1704,7 +1704,7 @@ section.point {
 #tier-ladder { --ch: 7140; --chm: 8890; }
 #throne-room { --ch: 5470; --chm: 6600; }
 #throne-strategy { --ch: 6200; --chm: 7860; }
-#edge-split { --ch: 5650; --chm: 6750; }
+#edge-split { --ch: 5960; --chm: 7200; }
 
 @media print {
   section.point {
