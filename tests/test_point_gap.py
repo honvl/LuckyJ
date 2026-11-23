@@ -138,8 +138,8 @@ class TheCorrectionTests(unittest.TestCase):
 
     def test_the_news_list_has_the_notice_and_the_correction(self):
         # chapter 47 was the latest notice until chapter 48 went up on 22 October
-        for lang, notice, correction in (("en", '<a href="#point-gap">Chapter 47 answers your question about the point gap', "Chapter 45 named the size of your wins"),
-                                         ("ja", '<a href="#point-gap">第47章は、点数の差についての質問に答える', "第45章は、あなたのアガリの大きさをLuckyJとの最大の差とした")):
+        for lang, notice, correction in (("en", '<a href="#point-gap">Chapter 47 measures the point gap', "Chapter 45 named the size of your wins"),
+                                         ("ja", '<a href="#point-gap">第47章は、点数の差を測る', "第45章は、あなたのアガリの大きさをLuckyJとの最大の差とした")):
             page = PAGES[lang].read_text(encoding="utf-8")
             self.assertEqual(page.count('<li class="is-latest">'), 1)
             self.assertLess(page.index(notice), page.index(correction))

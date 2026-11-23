@@ -371,7 +371,10 @@ function setupRunningHead() {
     });
   }
 
+  let activeId = null;
   function setActive(id) {
+    if (id === activeId) return; // touch the contents links only when the chapter changes, not on every frame
+    activeId = id;
     for (const link of links) {
       const selected = link.dataset.point === id;
       link.classList.toggle("is-active", selected);
@@ -602,6 +605,15 @@ async function renderCommitStamp() {
   updateCommitStamp(stamp, siteCommitFallback);
   if (!placeholder) document.body.append(stamp);
 
+  // One lookup per tab every ten minutes: the stamp does not need a GitHub request on every page view.
+  const cacheKey = "site-commit-stamp";
+  try {
+    const cached = JSON.parse(sessionStorage.getItem(cacheKey) || "null");
+    if (cached && Date.now() - cached.at < 600000) {
+      updateCommitStamp(stamp, cached.commit);
+      return;
+    }
+  } catch {}
   try {
     const response = await fetch(
       `https://api.github.com/repos/${siteCommitFallback.repo}/commits/${siteCommitFallback.branch}`,
@@ -609,10 +621,11 @@ async function renderCommitStamp() {
     );
     if (!response.ok) throw new Error(`GitHub commit lookup failed: ${response.status}`);
     const payload = await response.json();
-    updateCommitStamp(stamp, {
-      sha: payload.sha,
-      date: payload.commit?.committer?.date || payload.commit?.author?.date,
-    });
+    const commit = { sha: payload.sha, date: payload.commit?.committer?.date || payload.commit?.author?.date };
+    updateCommitStamp(stamp, commit);
+    try {
+      sessionStorage.setItem(cacheKey, JSON.stringify({ at: Date.now(), commit }));
+    } catch {}
   } catch {
     stamp.classList.add("is-fallback");
   }

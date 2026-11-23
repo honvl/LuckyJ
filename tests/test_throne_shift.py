@@ -108,8 +108,8 @@ class ThroneShiftTests(unittest.TestCase):
                 self.assertTrue(line.rstrip().endswith("</p>"), line[:60])
 
     def test_the_notice_and_the_chain_of_links(self):
-        for lang, latest in (("en", '<a href="#throne-room">Chapter 54 answers how to play now that you are Celestial'),
-                             ("ja", '<a href="#throne-room">第54章は、魂天になった今の打ち方に答える')):
+        for lang, latest in (("en", '<a href="#throne-room">Chapter 54 measures how to play in the Throne room'),
+                             ("ja", '<a href="#throne-room">第54章は、王座の間での打ち方を測る')):
             page = PAGES[lang].read_text(encoding="utf-8")
             self.assertEqual(page.count('<li class="is-latest">'), 1)
             self.assertEqual(page.count(latest), 1)  # chapter 55 is the latest notice now (tests/test_throne_strategy.py)

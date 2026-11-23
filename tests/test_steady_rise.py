@@ -239,7 +239,7 @@ class TheChapterTests(unittest.TestCase):
         self.assertLessEqual(len(re.findall(r"\bnot [a-z ]+, it is\b|\bis not [a-z ]+\. It is\b", prose("en"))), 1)
 
     def test_the_notice_and_the_chain_of_links(self):
-        for lang, latest in (("en", '<a href="#steady-rise">Chapter 51 answers'), ("ja", '<a href="#steady-rise">第51章は、')):
+        for lang, latest in (("en", '<a href="#steady-rise">Chapter 51 measures'), ("ja", '<a href="#steady-rise">第51章は、')):
             page = PAGES[lang].read_text(encoding="utf-8")
             # chapter 51 was the latest notice until chapter 52 went up on 18 November
             self.assertEqual(page.count('<li class="is-latest">'), 1)

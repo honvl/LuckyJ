@@ -1632,3 +1632,82 @@ html:lang(ja) :is(.guide-news-tag, .guide-data thead th, .guide-verdict, .guide-
 .mahjong-table .player-hand.player-current:has(.tile-threat-cell[data-mark] + .tile-threat-cell[data-mark]) .table-melds {
   margin-top: 2.6em;
 }
+
+/* The guide is one long page (56 chapters, about 20,000 elements). A chapter off screen skips style, layout and
+   paint until it comes near; once drawn, the browser remembers its real height. */
+section.point {
+  content-visibility: auto;
+  contain-intrinsic-size: auto calc(var(--ch, 5000) * 1px);
+}
+
+@media (max-width: 700px) {
+  section.point {
+    contain-intrinsic-size: auto calc(var(--chm, 6500) * 1px);
+  }
+}
+
+/* Each chapter's measured height (1280px and 375px wide windows, 23 November), so a chapter that has not been drawn
+   yet holds about the room it will take and the page does not jump when it appears. A new chapter falls back to the
+   defaults above. */
+#value { --ch: 3970; --chm: 5530; }
+#open-table { --ch: 2120; --chm: 2500; }
+#calls { --ch: 2950; --chm: 4170; }
+#folds { --ch: 4110; --chm: 5530; }
+#push { --ch: 2570; --chm: 3430; }
+#dora-points { --ch: 2190; --chm: 2710; }
+#dora-shape { --ch: 3770; --chm: 5040; }
+#dora-tells { --ch: 4060; --chm: 5410; }
+#shape-start { --ch: 2680; --chm: 3510; }
+#recent-games { --ch: 3300; --chm: 4490; }
+#push-calibration { --ch: 3850; --chm: 5430; }
+#open-hands { --ch: 6390; --chm: 8470; }
+#caller-defense { --ch: 4570; --chm: 6180; }
+#three-calls { --ch: 5320; --chm: 7430; }
+#mortal-review { --ch: 5680; --chm: 7800; }
+#fold-later { --ch: 4550; --chm: 5950; }
+#early-safe-tiles { --ch: 5250; --chm: 6870; }
+#caller-grid { --ch: 4780; --chm: 6030; }
+#fold-line { --ch: 7400; --chm: 9030; }
+#break-folds { --ch: 6040; --chm: 7190; }
+#quiet-breaks { --ch: 2950; --chm: 3720; }
+#own-hand { --ch: 4700; --chm: 6350; }
+#pushes-pay { --ch: 3710; --chm: 4640; }
+#big-hands { --ch: 7790; --chm: 9820; }
+#riichi-place { --ch: 4110; --chm: 4870; }
+#losing-run { --ch: 3100; --chm: 3880; }
+#plateau { --ch: 4780; --chm: 6410; }
+#dealer-call { --ch: 7040; --chm: 8910; }
+#costly-run { --ch: 4810; --chm: 6720; }
+#defense-check { --ch: 5420; --chm: 7660; }
+#declined-riichis { --ch: 4200; --chm: 5820; }
+#no-safe-tile { --ch: 4700; --chm: 6240; }
+#climb-riichi { --ch: 5690; --chm: 7460; }
+#three-fourths { --ch: 4540; --chm: 6010; }
+#thin-pushes { --ch: 4420; --chm: 5810; }
+#push-ev { --ch: 2850; --chm: 4050; }
+#fold-whatif { --ch: 4320; --chm: 5770; }
+#fold-theory { --ch: 4050; --chm: 5100; }
+#push-company { --ch: 3040; --chm: 4070; }
+#half-suji { --ch: 3610; --chm: 4870; }
+#fold-read { --ch: 4670; --chm: 6060; }
+#slide-check { --ch: 3280; --chm: 4270; }
+#honor-wait { --ch: 3590; --chm: 4530; }
+#thin-riichis { --ch: 3420; --chm: 4420; }
+#rank-drain { --ch: 5930; --chm: 7620; }
+#count-copies { --ch: 4200; --chm: 5290; }
+#point-gap { --ch: 3780; --chm: 4690; }
+#ten-games { --ch: 4580; --chm: 6620; }
+#fourth-rate { --ch: 3170; --chm: 4040; }
+#run-update { --ch: 3210; --chm: 3950; }
+#steady-rise { --ch: 8110; --chm: 11340; }
+#draw-tenpai { --ch: 5330; --chm: 6950; }
+#tier-ladder { --ch: 6920; --chm: 8620; }
+#throne-room { --ch: 5470; --chm: 6600; }
+#throne-strategy { --ch: 6100; --chm: 7740; }
+#edge-split { --ch: 4770; --chm: 5650; }
+
+@media print {
+  section.point {
+    content-visibility: visible;
+  }
+}
