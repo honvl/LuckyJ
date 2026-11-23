@@ -112,6 +112,23 @@ class EdgeSplitTests(unittest.TestCase):
                            "0.49", "−1.67", "1.74", "31.7%", "27.5%", "23.9%", "16.9%", "15.3%", "17.7%", "0.69", "0.04", "1.22"):
                 self.assertIn(number, text, f"{lang}: {number}")
 
+    def test_what_fewer_fourths_are_worth(self):
+        w = DATA["worth"]
+        self.assertEqual(w["place_moved"], {"jade": 0.9575, "houou": 1.0007, "throne": 0.9694})
+        self.assertEqual([w[k]["per_place_moved_jade_over_houou_pct"] for k in ("Saint 3", "七段", "八段", "九段", "十段", "Celestial")],
+                         [16.7, 14.9, 16.4, 17.7, 18.9, -0.9])
+        self.assertEqual((w["Saint 3"]["per_place_moved"], w["八段"]["per_place_moved"], w["Celestial"]["per_place_moved"]),
+                         ({"jade": 155.1, "houou": 132.9}, {"jade": 89.3, "houou": 76.7}, {"jade": 33.6, "houou": 34.0}))
+        self.assertEqual(w["Celestial"]["steps"], [30, 40, 30])
+        for lang in PAGES:
+            page = PAGES[lang].read_text(encoding="utf-8")
+            for mark in ("add-56-worth", "add-55-step"):
+                self.assertEqual(page.count(f'<mark id="{mark}" class="guide-changed">'), 1, f"{lang}: {mark}")
+                self.assertIn(f'href="#{mark}"', page)
+            text = prose(lang)
+            for number in ("15", "19%", "15.5", "13.3", "8.9", "7.7", "3.4", "0.9%", "30", "40"):
+                self.assertIn(number, text, f"{lang}: {number}")
+
     def test_the_voice(self):
         for lang in PAGES:
             self.assertNotIn("&#8212;", section(lang))

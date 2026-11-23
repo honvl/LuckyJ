@@ -7,6 +7,7 @@ markers:
 - ``edge-split``: where 0.10 places of strength lands among the four places, in the Jade, Throne and Houou rooms.
 - ``edge-pace``: Saint 3 points a game by strength, with the Jade room's split and with Houou's even split.
 - ``edge-lines``: the strength each rank takes on chapter 53's scale, with each split.
+- ``edge-worth``: rank points a game for 0.10 of average place gained, landing as fewer fourths or evenly, at each table.
 
 ``--check`` exits non-zero when a page and the data disagree.
 
@@ -22,7 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "analysis" / "edge-split-2026-11-23.json"
 PAGES = {"en": ROOT / "site" / "honver.html", "ja": ROOT / "site" / "honver-ja.html"}
-PARTS = ("edge-split", "edge-pace", "edge-lines")
+PARTS = ("edge-split", "edge-pace", "edge-lines", "edge-worth")
 
 WORDS = {
     "en": {
@@ -49,6 +50,9 @@ WORDS = {
         "ranks": {"Saint 1": "Saint 2", "Saint 2": "Saint 3", "Saint 3": "Celestial", "七段": "8-dan", "八段": "9-dan",
                   "九段": "10-dan", "十段": "Tenhou-i"},
         "own": "own room",
+        "worth_th": ["Points of", "Fewer fourths", "Even", "Fewer fourths gain"],
+        "worth_rows": {"Saint 3": "Saint 3 (Jade)", "七段": "Houou 7-dan", "八段": "Houou 8-dan", "九段": "Houou 9-dan",
+                       "十段": "Houou 10-dan", "Celestial": "Celestial"},
     },
     "ja": {
         "split_title": "0.10順位分の強さはどの順位に出るか",
@@ -69,6 +73,9 @@ WORDS = {
         "th": ["届く段位", "玉の間の出方", "均等な出方", "差"],
         "ranks": {"Saint 1": "雀聖2", "Saint 2": "雀聖3", "Saint 3": "魂天", "七段": "八段", "八段": "九段", "九段": "十段", "十段": "天鳳位"},
         "own": "自分の卓",
+        "worth_th": ["ポイント", "4位を減らす", "均等", "4位を減らす得"],
+        "worth_rows": {"Saint 3": "雀聖3（玉の間）", "七段": "鳳凰卓 七段", "八段": "鳳凰卓 八段", "九段": "鳳凰卓 九段",
+                       "十段": "鳳凰卓 十段", "Celestial": "魂天"},
     },
 }
 
@@ -217,7 +224,30 @@ def lines(data: dict, lang: str) -> str:
     ])
 
 
-RENDER = {"edge-split": split, "edge-pace": pace, "edge-lines": lines}
+def worth(data: dict, lang: str) -> str:
+    w = WORDS[lang]
+    body = []
+    for key in ("Saint 3", "七段", "八段", "九段", "十段", "Celestial"):
+        v = data["worth"][key]
+        j, h = v["per_place_moved"]["jade"] / 10, v["per_place_moved"]["houou"] / 10
+        gain = v["per_place_moved_jade_over_houou_pct"]
+        body.append(f'                  <tr><td>{w["worth_rows"][key]}</td><td>{j:.1f}</td><td>{h:.1f}</td>'
+                    f'<td>{f"{gain:+.0f}%".replace("-", "&#8722;") if abs(gain) >= 1 else "0%"}</td></tr>')
+    return "\n".join([
+        '            <div class="guide-data-scroll">',
+        '              <table class="guide-data edge-worth-table">',
+        "                <thead>",
+        "                  <tr>" + "".join(f"<th>{x}</th>" for x in w["worth_th"]) + "</tr>",
+        "                </thead>",
+        "                <tbody>",
+        *body,
+        "                </tbody>",
+        "              </table>",
+        "            </div>",
+    ])
+
+
+RENDER = {"edge-split": split, "edge-pace": pace, "edge-lines": lines, "edge-worth": worth}
 
 
 def render(data: dict, part: str, lang: str = "en") -> str:

@@ -1703,8 +1703,8 @@ section.point {
 #draw-tenpai { --ch: 5330; --chm: 6950; }
 #tier-ladder { --ch: 7140; --chm: 8890; }
 #throne-room { --ch: 5470; --chm: 6600; }
-#throne-strategy { --ch: 6100; --chm: 7740; }
-#edge-split { --ch: 4770; --chm: 5650; }
+#throne-strategy { --ch: 6200; --chm: 7860; }
+#edge-split { --ch: 5650; --chm: 6750; }
 
 @media print {
   section.point {

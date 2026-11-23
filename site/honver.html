@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" media="print" onload="this.media='all'" data-font-css />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&amp;family=Schibsted+Grotesk:wght@400..800&amp;display=swap" /></noscript>
     <link rel="stylesheet" href="styles.css?v=20261123-split" />
-    <link rel="stylesheet" href="honver.css?v=20261123-split" />
+    <link rel="stylesheet" href="honver.css?v=20261123-worth" />
     <noscript><style>.guide-news li:nth-child(n + 4) { display: grid !important; }</style></noscript>
   </head>
   <body data-app="table-only" data-self-name="Honver" data-book="guide">
@@ -53,6 +53,7 @@
             <h2 id="whats-new-title">What&#8217;s new</h2>
             <ol>
               <li class="is-latest"><span class="guide-news-date">23 Nov</span><p><span class="new-tag">Latest</span> <a href="#edge-split">Chapter 56 asks where an edge lands</a>: in the Jade room a stronger player&#8217;s edge turns into fewer fourths, in the Houou room it splits evenly between more firsts and fewer fourths. Saint 3 charges an average player 18 points a game, so the even split moves the line to Celestial from 2.49 to 2.47, where the average 8-dan sits, and an 8-dan who keeps it gains under half a point a game. In the Throne room the split stops mattering. Chapters 1 to 55 have not changed apart from the notes below.</p></li>
+              <li class="is-correction"><span class="guide-news-date">23 Nov</span><p><span class="guide-news-tag">Added</span> Chapter 56 now prices fewer fourths at every table: 15 to 19% more than an even split at Saint 3 and in Houou, nothing at a Celestial table, where the step from third to second weighs most. Chapter 55&#8217;s strategy gets a sentence on that step. The additions are <mark class="guide-changed">highlighted</mark> under <a href="#add-56-worth">what fewer fourths are worth</a> and in <a href="#add-55-step">chapter 55&#8217;s strategy</a>.</p></li>
               <li><span class="guide-news-date">23 Nov</span><p><a href="#throne-strategy">Chapter 55 measures the Throne room</a> from 42 random Throne games: it is stronger, not faster, and its callers and open hands match Jade. Celestials push their tenpais against a riichi as much as Jade players (81.9%); you fold more (74.2%), most of all in third (62.9% against their 86.0%). Keep big tenpais, fold thin late ones and tenpais that cannot change your place. Chapters 1 to 54 have not changed apart from the notes below.</p></li>
               <li class="is-correction"><span class="guide-news-date">23 Nov</span><p><span class="guide-news-tag">Added</span> Chapter 53 now places LuckyJ on the ladder, from its 1,076 Tokujou games: 2.34 on the scale, past 10-dan and level with Tenhou-i. Mortal agreement alone would have put it at 2.46, so it is placed by its results. The new paragraph is <mark class="guide-changed">highlighted</mark> under <a href="#add-53-luckyj">where LuckyJ is</a>.</p></li>
               <li class="is-correction"><span class="guide-news-date">23 Nov</span><p><span class="guide-news-tag">Corrected</span> Chapter 53 used Houou&#8217;s fourth-place costs one dan too low (120 at 7-dan where Tenhou charges 135, and so on up), which made each Tenhou dan look one step easier. With the correct costs Celestial is level with 8-dan, not 9-dan, and Saint 2 and Saint 3 sit in the 7-dan band; the Mahjong Soul lines do not move. The title and the corrected sentences are <mark class="guide-changed">highlighted</mark>, starting with <a href="#fix-53-short">the short answers</a>.</p></li>
@@ -7314,7 +7315,7 @@
             </p>
             <p>
               <b>The strategy.</b> Against a riichi when no safe tile keeps your tenpai: with 3 han or more on 4 live tiles,
-              or 4 han or more on any wait, keep it. In third, play those like fourth. From turn 12 on 3 live tiles or fewer
+              or 4 han or more on any wait, keep it. In third, play those like fourth. <mark id="add-55-step" class="guide-changed">At a Celestial table the step from third to second is the largest of the three, 40 points against 30 and 30 (chapter 56), so third is where keeping a big tenpai pays most.</mark> From turn 12 on 3 live tiles or fewer
               with 3 han or less, fold. With 1 or 2 han on a good wait, push early and fold late. When a win cannot change
               your place, as in all-last with a cheap hand, fold. Read callers by the first call&#8217;s turn as before. Stay
               tenpai to the draw when the tile is free.
@@ -7544,6 +7545,39 @@
               mattering, which is the same finding as chapter 54&#8217;s fourth place that stops being special. Nothing in
               your play needs to change for it. If a bad run takes you back to Saint 3, turn your edge into fewer fourths:
               there it is worth about 0.014 places a game.
+            </p>
+            <p>
+              <mark id="add-56-worth" class="guide-changed"><b>What fewer fourths are worth at each table.</b> The table gives the rank
+              points a game that 0.10 of average place brings under each table&#8217;s points, landing as fewer fourths (the
+              Jade split) or evenly (Houou&#8217;s), each counted per 0.10 of average place it really gains. Wherever a fourth
+              costs more than a first pays, fewer fourths are worth 15 to 19% more: 15.5 points against 13.3 at Saint 3, 8.9
+              against 7.7 at Houou 8-dan, and more at each higher dan as the fourth&#8217;s cost grows. At 7-dan the points add
+              up to zero, so the line to 8-dan does not move with the split, but above it fewer fourths still climb 15%
+              faster.</mark>
+            </p>
+            <!-- edge-worth -->
+            <div class="guide-data-scroll">
+              <table class="guide-data edge-worth-table">
+                <thead>
+                  <tr><th>Points of</th><th>Fewer fourths</th><th>Even</th><th>Fewer fourths gain</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Saint 3 (Jade)</td><td>15.5</td><td>13.3</td><td>+17%</td></tr>
+                  <tr><td>Houou 7-dan</td><td>8.3</td><td>7.2</td><td>+15%</td></tr>
+                  <tr><td>Houou 8-dan</td><td>8.9</td><td>7.7</td><td>+16%</td></tr>
+                  <tr><td>Houou 9-dan</td><td>9.6</td><td>8.1</td><td>+18%</td></tr>
+                  <tr><td>Houou 10-dan</td><td>10.2</td><td>8.6</td><td>+19%</td></tr>
+                  <tr><td>Celestial</td><td>3.4</td><td>3.4</td><td>0%</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /edge-worth -->
+            <p>
+              <mark class="guide-changed"><b>At a Celestial table the split is worth nothing.</b> A fourth costs 50 and a first
+              pays 50, so 0.10 of average place is worth 3.4 Celestial points a game whichever way it lands; the two splits
+              are 0.9% apart. What a Celestial table does weigh is the middle step: from first to fourth the steps are 30,
+              40 and 30 points, so moving from third to second is worth a third more than leaving fourth or reaching first.
+              That is the step chapter 55&#8217;s strategy plays for when it keeps big tenpais from third.</mark>
             </p>
             <div class="exception">
               <strong>Exception</strong> A split is a room&#8217;s average. One player&#8217;s split takes thousands of games

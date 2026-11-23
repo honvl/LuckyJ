@@ -103,11 +103,19 @@ def main():
     lines["Celestial"] = {"points": CELESTIAL, "points_sum": 0, "note": "points sum to zero: break-even at 2.50 under any split"}
 
     # what an edge is worth, per place of strength over the table
-    worth = {}
-    for key, pts in (("Saint 3", ms["rank_points"][tr.JADE]["Saint 3"]), ("八段", th["rank_points"]["八段"]),
-                     ("Celestial", CELESTIAL)):
-        worth[key] = {"jade_split": round(value(pts, J), 1), "houou_split": round(value(pts, H), 1),
-                      "throne_split": round(value(pts, T), 1), "fee": round(-0.25 * sum(pts), 2)}
+    # and per place the average place really moves: a fitted split moves it by 0.96 to 1.00 per place of strength
+    moved = {k: -sum(n * x for n, x in zip((1, 2, 3, 4), c)) for k, c in (("jade", J), ("houou", H), ("throne", T))}
+    worth = {"place_moved": {k: round(float(v), 4) for k, v in moved.items()}}
+    for key, pts in (("Saint 3", ms["rank_points"][tr.JADE]["Saint 3"]), ("七段", th["rank_points"]["七段"]),
+                     ("八段", th["rank_points"]["八段"]), ("九段", th["rank_points"]["九段"]),
+                     ("十段", th["rank_points"]["十段"]), ("Celestial", CELESTIAL)):
+        jv, hv = value(pts, J), value(pts, H)
+        worth[key] = {"points": pts, "jade_split": round(jv, 1), "houou_split": round(hv, 1),
+                      "throne_split": round(value(pts, T), 1), "fee": round(-0.25 * sum(pts), 2),
+                      "jade_over_houou_pct": round(100 * (jv / hv - 1), 1),
+                      "per_place_moved": {"jade": round(jv / moved["jade"], 1), "houou": round(hv / moved["houou"], 1)},
+                      "per_place_moved_jade_over_houou_pct": round(100 * ((jv / moved["jade"]) / (hv / moved["houou"]) - 1), 1)}
+    worth["Celestial"]["steps"] = [CELESTIAL[k] - CELESTIAL[k + 1] for k in range(3)]
 
     # Saint 3 points a game for players at chapter 53 strengths, with each split, at Saint 3's Jade tables
     s3 = ms["rank_points"][tr.JADE]["Saint 3"]

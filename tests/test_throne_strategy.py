@@ -101,7 +101,7 @@ class ThroneStrategyTests(unittest.TestCase):
             self.assertIn('href="#fix-54-field"', page)
             self.assertIn('href="#fix-54-stay"', page)
             self.assertEqual(page.count('<li class="is-correction"><span class="guide-news-date">23 Nov</span>')
-                             + page.count('<li class="is-correction"><span class="guide-news-date">11月23日</span>'), 3)  # 53 corrected and added to, 54
+                             + page.count('<li class="is-correction"><span class="guide-news-date">11月23日</span>'), 4)  # 53 corrected and added to, 54, 55 and 56 added to
 
     def test_the_voice(self):
         for lang in PAGES:

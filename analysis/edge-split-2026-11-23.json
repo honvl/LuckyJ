@@ -157,23 +157,123 @@
   }
  },
  "worth": {
+  "place_moved": {
+   "jade": 0.9575,
+   "houou": 1.0007,
+   "throne": 0.9694
+  },
   "Saint 3": {
+   "points": [
+    144.0,
+    65.6,
+    -9.9,
+    -272.7
+   ],
    "jade_split": 148.5,
    "houou_split": 133.0,
    "throne_split": 128.1,
-   "fee": 18.25
+   "fee": 18.25,
+   "jade_over_houou_pct": 11.7,
+   "per_place_moved": {
+    "jade": 155.1,
+    "houou": 132.9
+   },
+   "per_place_moved_jade_over_houou_pct": 16.7
+  },
+  "七段": {
+   "points": [
+    90,
+    45,
+    0,
+    -135
+   ],
+   "jade_split": 79.4,
+   "houou_split": 72.2,
+   "throne_split": 69.7,
+   "fee": -0.0,
+   "jade_over_houou_pct": 10.0,
+   "per_place_moved": {
+    "jade": 82.9,
+    "houou": 72.1
+   },
+   "per_place_moved_jade_over_houou_pct": 14.9
   },
   "八段": {
+   "points": [
+    90,
+    45,
+    0,
+    -150
+   ],
    "jade_split": 85.5,
    "houou_split": 76.7,
    "throne_split": 74.0,
-   "fee": 3.75
+   "fee": 3.75,
+   "jade_over_houou_pct": 11.4,
+   "per_place_moved": {
+    "jade": 89.3,
+    "houou": 76.7
+   },
+   "per_place_moved_jade_over_houou_pct": 16.4
+  },
+  "九段": {
+   "points": [
+    90,
+    45,
+    0,
+    -165
+   ],
+   "jade_split": 91.5,
+   "houou_split": 81.3,
+   "throne_split": 78.4,
+   "fee": 7.5,
+   "jade_over_houou_pct": 12.6,
+   "per_place_moved": {
+    "jade": 95.6,
+    "houou": 81.2
+   },
+   "per_place_moved_jade_over_houou_pct": 17.7
+  },
+  "十段": {
+   "points": [
+    90,
+    45,
+    0,
+    -180
+   ],
+   "jade_split": 97.6,
+   "houou_split": 85.8,
+   "throne_split": 82.7,
+   "fee": 11.25,
+   "jade_over_houou_pct": 13.7,
+   "per_place_moved": {
+    "jade": 101.9,
+    "houou": 85.7
+   },
+   "per_place_moved_jade_over_houou_pct": 18.9
   },
   "Celestial": {
+   "points": [
+    50,
+    20,
+    -20,
+    -50
+   ],
    "jade_split": 32.2,
    "houou_split": 34.0,
    "throne_split": 33.4,
-   "fee": -0.0
+   "fee": -0.0,
+   "jade_over_houou_pct": -5.2,
+   "per_place_moved": {
+    "jade": 33.6,
+    "houou": 34.0
+   },
+   "per_place_moved_jade_over_houou_pct": -0.9,
+   "steps": [
+    30,
+    40,
+    30
+   ]
   }
  },
  "saint3_pace": [
