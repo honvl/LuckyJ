@@ -1221,3 +1221,95 @@
 
   main();
 })();
+
+// Chapter 53's "What it takes to reach each rank": a slider that redraws both bars for one split of the edge
+// (chapter 56). Each line is base + gap, where gap is the strength over the table at which the rank's points
+// average zero when the four shares move by (1 - s) * Jade + s * Houou per place of strength.
+(function () {
+  const fig = document.getElementById("tier-bands-figure");
+  const dataEl = fig && fig.querySelector(".tier-split-data");
+  if (!dataEl) return;
+  const data = JSON.parse(dataEl.textContent);
+  const svg = fig.querySelector("svg");
+  const range = fig.querySelector(".tier-split-range");
+  const own = fig.querySelector(".tier-split-own");
+  const out = fig.querySelector(".tier-split-readout");
+  const { a0, a1, T, B } = data.frame;
+  const y = (a) => B - ((a - a0) / (a1 - a0)) * (B - T);
+  const num = (v) => String(Math.round(v * 10) / 10);
+  const place = (a) => (2.5 - a).toFixed(2);
+
+  function lines(split) {
+    const res = {};
+    for (const [key, ln] of Object.entries(data.lines)) {
+      const s = split === null ? data.own[ln.side] : split;
+      let sum = 0;
+      let worth = 0;
+      ln.points.forEach((p, k) => {
+        sum += p;
+        worth += ((1 - s) * data.J[k] + s * data.H[k]) * p;
+      });
+      res[key] = ln.base - (0.25 * sum) / worth;
+    }
+    return res;
+  }
+
+  function band(a, side, ln) {
+    const ks = data.bounds[side];
+    for (let n = 0; n < ks.length - 1; n++) {
+      const lo = ks[n] ? ln[ks[n]] : -Infinity;
+      const hi = ks[n + 1] ? ln[ks[n + 1]] : Infinity;
+      if (a >= lo && a < hi) return data.names[side][n];
+    }
+    return data.names[side][ks.length - 2];
+  }
+
+  function draw(split) {
+    const ln = lines(split);
+    const edges = (el) => [el.dataset.lo ? ln[el.dataset.lo] : a0, el.dataset.hi ? ln[el.dataset.hi] : a1];
+    svg.querySelectorAll("rect.tier-rank[data-side]").forEach((el, i) => {
+      const [lo, hi] = edges(el);
+      const top = y(hi);
+      const bot = y(lo);
+      el.setAttribute("y", num(top + 1));
+      el.setAttribute("height", num(Math.max(0, bot - top - 2)));
+      const title = el.querySelector("title");
+      const label = svg.querySelectorAll("text.tier-rank-label[data-side]")[i];
+      if (title && el.dataset.lo) title.textContent = data.reach.replace("{rank}", label.textContent).replace("{v}", place(lo));
+    });
+    svg.querySelectorAll("text.tier-rank-label[data-side]").forEach((el) => {
+      const [lo, hi] = edges(el);
+      el.setAttribute("y", num((y(hi) + y(lo)) / 2 + 4));
+      el.setAttribute("visibility", y(lo) - y(hi) >= 15 ? "visible" : "hidden");
+    });
+    svg.querySelectorAll("[data-line]").forEach((el) => {
+      const a = ln[el.dataset.line];
+      if (el.tagName.toLowerCase() === "line") {
+        el.setAttribute("y1", num(y(a)));
+        el.setAttribute("y2", num(y(a)));
+      } else {
+        el.setAttribute("y", num(y(a) + 4));
+        el.textContent = place(a);
+      }
+    });
+    const w = data.words;
+    const head = split === null ? w.split_own_text : w.split_mix_text.replace("{pct}", String(Math.round(split * 100)));
+    const where = w.split_where
+      .replace("{you}", place(data.you))
+      .replace("{ms}", band(data.you, "ms", ln))
+      .replace("{th}", band(data.you, "th", ln))
+      .replace("{lj}", place(data.lj))
+      .replace("{lj_th}", band(data.lj, "th", ln));
+    out.textContent = head + " " + where;
+  }
+
+  range.addEventListener("input", () => {
+    own.setAttribute("aria-pressed", "false");
+    draw(Number(range.value) / 100);
+  });
+  own.addEventListener("click", () => {
+    own.setAttribute("aria-pressed", "true");
+    range.value = "0";
+    draw(null);
+  });
+})();

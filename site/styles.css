@@ -3390,6 +3390,68 @@ html:lang(ja) :is(.timing-title, .timing-sub, .timing-legend, .timing-panel-titl
   stroke-dasharray: 3 3;
 }
 
+/* Chapter 53's split slider (site/honver.js) */
+
+.tier-figure .tier-split {
+  margin: 0.4rem 0 0.8rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--hair-2);
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: var(--ink);
+}
+
+.tier-figure .tier-split-title {
+  margin: 0 0 0.35rem;
+  font-weight: 650;
+}
+
+.tier-figure .tier-split-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.3rem 0;
+}
+
+.tier-figure .tier-split-range {
+  flex: 1 1 140px;
+  min-width: 0;
+  accent-color: var(--verm-mark);
+}
+
+.tier-figure .tier-split-end {
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
+.tier-figure .tier-split-own {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--hair-2);
+  border-radius: 999px;
+  background: var(--plate);
+  color: var(--ink);
+  font: inherit;
+  font-size: 11.5px;
+  cursor: pointer;
+}
+
+.tier-figure .tier-split-own[aria-pressed="true"] {
+  border-color: var(--ink);
+  font-weight: 650;
+}
+
+.tier-figure .tier-split-readout {
+  flex: 1 1 220px;
+}
+
+.tier-figure .tier-split-hint {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  font-size: 11.5px;
+}
+
 .timing-key.tier-youkey::before {
   width: 10px;
   height: 10px;

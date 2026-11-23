@@ -115,6 +115,25 @@ class TierRankingTests(unittest.TestCase):
             for number in ("1,076", "2.58", "2.259", "2.34", "2.27", "2.40", "2.46", "2.39", "0.13", "2.265", "75", "180"):
                 self.assertIn(number, text, f"{lang}: {number}")
 
+    def test_the_split_slider(self):
+        # each room's own split reproduces the chapter's lines; Houou's split everywhere gives chapter 56's even-split lines
+        own = build.split_lines(DATA, {"ms": 0.0, "th": 1.0})
+        for k, v in own.items():
+            ref = DATA["mahjong_soul"]["to_pass"][k]["jade"]["a"] if v["side"] == "ms" else DATA["houou"]["to_pass"][k]["a"]
+            self.assertAlmostEqual(v["a"], ref, places=4)
+        even = build.split_lines(DATA, {"ms": 1.0, "th": 1.0})
+        self.assertEqual([f"{2.5 - v['a']:.3f}" for v in even.values()], ["2.527", "2.495", "2.473", "2.478", "2.429", "2.386", "2.347"])
+        js = (ROOT / "site" / "honver.js").read_text(encoding="utf-8")
+        self.assertIn(".tier-split-data", js)
+        for lang in PAGES:
+            sec = section(lang)
+            self.assertEqual(sec.count('class="tier-split-range"'), 1)
+            self.assertEqual(sec.count('class="tier-split-data"'), 1)
+            data = json.loads(sec.split('class="tier-split-data">', 1)[1].split("</script>", 1)[0])
+            self.assertEqual(set(data["lines"]), set(own))
+            self.assertNotIn("&#", json.dumps(data["words"], ensure_ascii=False))
+            self.assertEqual(len(re.findall(r'data-lo="[^"]*" data-hi="[^"]*"', sec)), 18)  # nine bands, each a rect and a label
+
     def test_the_voice(self):
         for lang in PAGES:
             self.assertNotIn("&#8212;", section(lang))

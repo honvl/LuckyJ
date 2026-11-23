@@ -17,6 +17,7 @@ markers:
 
 from __future__ import annotations
 
+import html
 import json
 import sys
 from pathlib import Path
@@ -46,6 +47,13 @@ WORDS = {
         "th_reach": "To reach it", "th_holder": "Average holder today", "none": "other room", "you": "You",
         "you_key": "You, by how often you play Mortal&#8217;s move",
         "lj": "LuckyJ", "lj_key": "LuckyJ, from its Tokujou results, with its 95% range",
+        "split_title": "Where the edge lands (chapter 56)",
+        "split_left": "Fewer fourths, as in Jade", "split_right": "Even, as in Houou",
+        "split_own": "Each room&#8217;s own split",
+        "split_own_text": "Each room&#8217;s own split: fewer fourths on the Mahjong Soul bar, even on the Tenhou bar.",
+        "split_mix_text": "Both bars at one split, {pct}% of the way from Jade&#8217;s to Houou&#8217;s.",
+        "split_where": "You, {you}: {ms} and {th}. LuckyJ, {lj}: {lj_th}.",
+        "split_hint": "The dots are measured average places and do not depend on the split; the bands around them move.",
         "ladder_title": "Where the average holder of each rank sits today",
         "ladder_sub": ("The players who hold each rank now, on the same scale: their average placement against three "
                        "average Jade-room Saint 3s. Saint 3 itself is 2.50."),
@@ -84,6 +92,13 @@ WORDS = {
         "th_reach": "届くには", "th_holder": "今の平均的な在籍者", "none": "別の卓", "you": "あなた",
         "you_key": "あなた（Mortalとの一致度から）",
         "lj": "LuckyJ", "lj_key": "LuckyJ（特上卓の成績から、95%範囲つき）",
+        "split_title": "強さがどの順位に出るか（第56章）",
+        "split_left": "4位を減らす（玉の間）", "split_right": "均等（鳳凰卓）",
+        "split_own": "部屋ごとの出方",
+        "split_own_text": "部屋ごとの出方：雀魂の棒は4位を減らす出方、天鳳の棒は均等な出方。",
+        "split_mix_text": "両方の棒を一つの出方で。玉の間の出方から鳳凰卓の出方まで{pct}%の位置。",
+        "split_where": "あなた（{you}）：{ms}、{th}。LuckyJ（{lj}）：{lj_th}。",
+        "split_hint": "点は実際の平均順位なので出方では動かない。動くのはまわりの帯である。",
         "ladder_title": "各段位の今の平均的な在籍者の位置",
         "ladder_sub": "今その段位にいる人たちを同じ目盛りに置いた。玉の間の平均的な雀聖3三人との平均順位で、雀聖3自身は2.50である。",
         "key_ms": "雀魂の段位と95%範囲",
@@ -232,6 +247,8 @@ def bands(data: dict, lang: str) -> str:
     o.append(f'                <text class="timing-note is-end" x="{L - 8}" y="{T - 22}">&#8593; {w["stronger"]}</text>')
     o.append(f'                <text class="timing-label" x="150" y="{T - 22}">{w["ms"]}</text>')
     o.append(f'                <text class="timing-label" x="312" y="{T - 22}">{w["th"].split(",")[0].split(" ")[0]}</text>')
+    bounds = {"ms": [None, "Saint 1", "Saint 2", "Saint 3", None], "th": [None, "七段", "八段", "九段", "十段", None]}
+    band_names = {}
     for side, key in (("ms", "mahjong_soul"), ("th", "tenhou")):
         x0, x1 = cols[side]
         segs = list(b[key])
@@ -244,16 +261,19 @@ def bands(data: dict, lang: str) -> str:
             hi = a1 if seg["to"] is None else seg["to"]
             top, bot = y(hi), y(lo)
             label = name(w, seg["rank"]) if seg["rank"] in w else seg["rank"]
+            band_names.setdefault(side, []).append(label)
             tip = label if seg["from"] is None else w["reach"].format(rank=label, v=place(seg["from"]))
-            o.append(f'                <rect class="tier-rank {side}{n}" x="{x0}" y="{f(top + 1)}" width="{x1 - x0}" height="{f(bot - top - 2)}"><title>{tip}</title></rect>')
-            if bot - top >= 15:
-                o.append(f'                <text class="tier-rank-label {side}{n}" x="{(x0 + x1) // 2}" y="{f((top + bot) / 2 + 4)}">{label}</text>')
+            lo_key, hi_key = bounds[side][n] or "", bounds[side][n + 1] or ""
+            keys = f'data-side="{side}" data-lo="{lo_key}" data-hi="{hi_key}"'
+            o.append(f'                <rect class="tier-rank {side}{n}" {keys} x="{x0}" y="{f(top + 1)}" width="{x1 - x0}" height="{f(bot - top - 2)}"><title>{tip}</title></rect>')
+            hidden = "" if bot - top >= 15 else ' visibility="hidden"'
+            o.append(f'                <text class="tier-rank-label {side}{n}" {keys} x="{(x0 + x1) // 2}" y="{f((top + bot) / 2 + 4)}"{hidden}>{label}</text>')
             if seg["from"] is not None:
                 edge, anchor = (x0 - 6, "is-end") if side == "ms" else (x1 + 6, "is-start")
-                o.append(f'                <text class="timing-note {anchor}" x="{edge}" y="{f(bot + 4)}">{place(seg["from"])}</text>')
+                o.append(f'                <text class="timing-note {anchor}" data-line="{lo_key}" x="{edge}" y="{f(bot + 4)}">{place(seg["from"])}</text>')
                 said.append(w["reach"].format(rank=label, v=place(seg["from"])))
                 if side == "ms":
-                    o.append(f'                <line class="tier-cross" x1="{x1}" x2="{cols["th"][0]}" y1="{f(bot)}" y2="{f(bot)}" />')
+                    o.append(f'                <line class="tier-cross" data-line="{lo_key}" x1="{x1}" x2="{cols["th"][0]}" y1="{f(bot)}" y2="{f(bot)}" />')
     # the user, by Mortal agreement on the same line that places the Houou average
     you = data["you"]["a_from_mortal"]
     x0, x1 = cols["ms"]
@@ -281,6 +301,7 @@ def bands(data: dict, lang: str) -> str:
     o.append(f'                <text class="timing-note" x="{xb}" y="{f(y(hi) - 20)}" text-anchor="middle"><tspan x="{xb}">{lines[0]}</tspan><tspan x="{xb}" dy="12">{lines[1]}</tspan></text>')
     o.append(f'                <text class="timing-axis" x="{(L + R) // 2}" y="{B + 22}">{w["axis"]}</text>')
     head = f'              <svg viewBox="0 0 470 {B + 30}" role="img" aria-label="{w["aria_bands"]}{"; ".join(said)}.">'
+    control = split_control(data, w, bounds, band_names, (a0, a1, T, B))
     return "\n".join([
         '            <figure class="timing-figure is-single tier-figure" id="tier-bands-figure" aria-labelledby="tier-bands-caption">',
         '              <div class="timing-plate">',
@@ -294,10 +315,62 @@ def bands(data: dict, lang: str) -> str:
         *o,
         "              </svg>",
         "                </div>",
+        *control,
         "              </div>",
         f'              <figcaption id="tier-bands-caption">{w["caption_bands"]}</figcaption>',
         "            </figure>",
     ])
+
+
+def split_lines(data: dict, lam: dict) -> dict:
+    """Each rank's line on the scale when an edge splits as ``(1 - lam) * Jade + lam * Houou`` (chapter 56)."""
+    ms, th, link = data["mahjong_soul"], data["houou"], data["link"]["policy"]
+    J, H = ms["share_slopes"]["jade"], th["share_slopes"]
+    out = {}
+    for key, side, base, pts in ([(n, "ms", ms["to_pass"][n]["jade"]["opponents"], ms["rank_points"]["12"][n]) for n in ("Saint 1", "Saint 2", "Saint 3")]
+                                 + [(d, "th", link["field_a"] + th["opponents_vs_field"][d], th["rank_points"][d]) for d in DANS[:4]]):
+        c = [(1 - lam[side]) * j + lam[side] * h for j, h in zip(J, H)]
+        out[key] = {"side": side, "base": base, "points": pts, "a": base - 0.25 * sum(pts) / sum(x * p for x, p in zip(c, pts))}
+    return out
+
+
+def band_of(a: float, side: str, lines: dict, bounds: dict, names: dict) -> str:
+    ks = bounds[side]
+    for n in range(len(ks) - 1):
+        lo = -1e9 if ks[n] is None else lines[ks[n]]["a"]
+        hi = 1e9 if ks[n + 1] is None else lines[ks[n + 1]]["a"]
+        if lo <= a < hi:
+            return names[side][n]
+    return names[side][-1]
+
+
+def split_control(data: dict, w: dict, bounds: dict, names: dict, frame: tuple) -> list[str]:
+    """A slider that redraws the bands for one split on both bars (site/honver.js), with the numbers it needs."""
+    own = split_lines(data, {"ms": 0.0, "th": 1.0})
+    you, lj = data["you"]["a_from_mortal"], data["luckyj"]["a"]
+    where = w["split_where"].format(you=place(you), ms=band_of(you, "ms", own, bounds, names), th=band_of(you, "th", own, bounds, names),
+                                    lj=place(lj), lj_th=band_of(lj, "th", own, bounds, names))
+    ms, th = data["mahjong_soul"], data["houou"]
+    payload = {"J": ms["share_slopes"]["jade"], "H": th["share_slopes"], "own": {"ms": 0, "th": 1},
+               "lines": {k: {"side": v["side"], "base": round(v["base"], 5), "points": v["points"]} for k, v in own.items()},
+               "bounds": bounds, "names": names, "frame": dict(zip(("a0", "a1", "T", "B"), frame)),
+               "you": you, "lj": lj, "reach": w["reach"],
+               "words": {k: w[k] for k in ("split_own_text", "split_mix_text", "split_where")}}
+    payload["words"] = {k: html.unescape(v) for k, v in payload["words"].items()}  # the script sets textContent
+    payload["names"] = {k: [html.unescape(n) for n in v] for k, v in payload["names"].items()}
+    text = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    return [
+        '                <div class="tier-split">',
+        f'                  <p class="tier-split-title">{w["split_title"]}</p>',
+        f'                  <div class="tier-split-row"><span class="tier-split-end">{w["split_left"]}</span>'
+        f'<input class="tier-split-range" type="range" min="0" max="100" step="5" value="0" aria-label="{w["split_title"]}" />'
+        f'<span class="tier-split-end">{w["split_right"]}</span></div>',
+        f'                  <div class="tier-split-row"><button type="button" class="tier-split-own" aria-pressed="true">{w["split_own"]}</button>'
+        f'<output class="tier-split-readout" aria-live="polite">{w["split_own_text"]} {where}</output></div>',
+        f'                  <p class="tier-split-hint">{w["split_hint"]}</p>',
+        f'                  <script type="application/json" class="tier-split-data">{text}</script>',
+        "                </div>",
+    ]
 
 
 def table(data: dict, lang: str) -> str:
