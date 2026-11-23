@@ -33,7 +33,7 @@ def main() -> None:
         minutes = float(args[i + 1])
         del args[i:i + 2]
     ids = [l.strip() for l in Path(args[0]).read_text().split() if l.strip()]
-    out = Path(args[1])
+    out = Path(args[1]).resolve()  # fetch_many.js runs inside tmp/tensoul, so a relative folder would land there
     out.mkdir(parents=True, exist_ok=True)
     deadline = time.time() + minutes * 60
     todo = [u for u in ids if not (out / fpg.log_name(u)).exists()]
