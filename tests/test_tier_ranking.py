@@ -95,6 +95,26 @@ class TierRankingTests(unittest.TestCase):
                            "2.324", "2.33", "2.55", "0.014", "0.005", "868", "74", "0.025", "0.006"):
                 self.assertIn(number, text, f"{lang}: {number}")
 
+    def test_luckyj_from_its_results(self):
+        lj = DATA["luckyj"]
+        self.assertEqual((lj["games"], lj["mean_place"], place(lj["a"]), place(lj["opponents_a"]), place(lj["a_from_mortal"])),
+                         (1076, 2.259, "2.34", "2.58", "2.46"))
+        self.assertEqual((place(lj["a"] + 1.96 * lj["se"]), place(lj["a"] - 1.96 * lj["se"])), ("2.27", "2.40"))
+        self.assertEqual((lj["a_from_mortal_predicts_place"], lj["tokujou_10dan_place_needed"]), (2.387, 2.265))
+        line = DATA["houou"]["to_pass"]  # 九段's entry passes 9-dan and reaches 10-dan; 十段's reaches Tenhou-i
+        # past the 10-dan line, level with Tenhou-i within its range; agreement alone underrates it by four errors
+        self.assertGreater(lj["a"], line["九段"]["a"])
+        self.assertLess(abs(lj["a"] - line["十段"]["a"]), 1.96 * lj["se"])
+        self.assertGreater(lj["a_from_mortal_predicts_place"] - lj["mean_place"], 3 * lj["mean_place_se"])
+        for lang in PAGES:
+            page = PAGES[lang].read_text(encoding="utf-8")
+            self.assertEqual(page.count('<mark id="add-53-luckyj" class="guide-changed">'), 1)
+            self.assertIn('href="#add-53-luckyj"', page)
+            self.assertEqual(section(lang).count('class="tier-lj"'), 1)
+            text = prose(lang)
+            for number in ("1,076", "2.58", "2.259", "2.34", "2.27", "2.40", "2.46", "2.39", "0.13", "2.265", "75", "180"):
+                self.assertIn(number, text, f"{lang}: {number}")
+
     def test_the_voice(self):
         for lang in PAGES:
             self.assertNotIn("&#8212;", section(lang))

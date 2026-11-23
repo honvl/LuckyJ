@@ -56,6 +56,17 @@
   "a_from_mortal_se": 0.0094,
   "a_from_mortal_s42": -0.0163
  },
+ "luckyj": {
+  "games": 1076,
+  "mean_place": 2.259,
+  "mean_place_se": 0.032,
+  "opponents_a": -0.0762,
+  "a_from_mortal": 0.0373,
+  "a_from_mortal_predicts_place": 2.387,
+  "a": 0.1645,
+  "se": 0.0337,
+  "tokujou_10dan_place_needed": 2.265
+ },
  "mahjong_soul": {
   "tables": {
    "jade": 100000,

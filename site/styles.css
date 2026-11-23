@@ -3328,6 +3328,25 @@ html:lang(ja) :is(.timing-title, .timing-sub, .timing-legend, .timing-panel-titl
   text-anchor: end;
 }
 
+.tier-figure .tier-whisker.lj {
+  stroke: var(--plate);
+}
+
+.tier-figure .tier-lj {
+  fill: var(--ink);
+  stroke: var(--plate);
+  stroke-width: 2;
+}
+
+.timing-key.tier-ljkey::before {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--plate);
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
 .timing-key.tier-youkey::before {
   width: 10px;
   height: 10px;

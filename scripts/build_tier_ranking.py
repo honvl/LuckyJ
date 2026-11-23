@@ -45,6 +45,7 @@ WORDS = {
                           "10-dan in the Houou room. The lines carry the Mahjong Soul thresholds across to the Tenhou bar."),
         "th_reach": "To reach it", "th_holder": "Average holder today", "none": "other room", "you": "You",
         "you_key": "You, by how often you play Mortal&#8217;s move",
+        "lj": "LuckyJ", "lj_key": "LuckyJ, from its Tokujou results, with its 95% range",
         "ladder_title": "Where the average holder of each rank sits today",
         "ladder_sub": ("The players who hold each rank now, on the same scale: their average placement against three "
                        "average Jade-room Saint 3s. Saint 3 itself is 2.50."),
@@ -82,6 +83,7 @@ WORDS = {
         "caption_bands": "境目は各段位のポイント配分から求めた。雀聖1、2、3は玉の間、七段から十段は鳳凰卓。線は雀魂の境目を天鳳の棒まで延ばしたもの。",
         "th_reach": "届くには", "th_holder": "今の平均的な在籍者", "none": "別の卓", "you": "あなた",
         "you_key": "あなた（Mortalとの一致度から）",
+        "lj": "LuckyJ", "lj_key": "LuckyJ（特上卓の成績から、95%範囲つき）",
         "ladder_title": "各段位の今の平均的な在籍者の位置",
         "ladder_sub": "今その段位にいる人たちを同じ目盛りに置いた。玉の間の平均的な雀聖3三人との平均順位で、雀聖3自身は2.50である。",
         "key_ms": "雀魂の段位と95%範囲",
@@ -212,8 +214,8 @@ def bands(data: dict, lang: str) -> str:
     w = WORDS[lang]
     b = data["bands"]
     link = data["link"]["policy"]
-    L, R, T, B = 58, 458, 44, 334
-    a0, a1 = -0.08, 0.16
+    L, R, T, B = 58, 458, 44, 374
+    a0, a1 = -0.08, 0.24
     cols = {"ms": (100, 200), "th": (262, 362)}
 
     def y(a: float) -> float:
@@ -257,6 +259,17 @@ def bands(data: dict, lang: str) -> str:
     x0, x1 = cols["ms"]
     o.append(f'                <circle class="tier-you" cx="{x1 - 12}" cy="{f(y(you))}" r="4"><title>{w["you"]}: {place(you)}</title></circle>')
     o.append(f'                <text class="tier-you-label" x="{x1 - 21}" y="{f(y(you) + 4)}">{w["you"]} {place(you)}</text>')
+    # LuckyJ, from its own Tokujou results against opponents Mortal places, on the Tenhou bar
+    lj = data.get("luckyj")
+    if lj:
+        x0, x1 = cols["th"]
+        xl = x1 - 14
+        lo, hi = lj["a"] - Z * lj["se"], lj["a"] + Z * lj["se"]
+        o.append(f'                <line class="tier-whisker lj" x1="{xl}" x2="{xl}" y1="{f(y(lo))}" y2="{f(y(hi))}" />')
+        for v in (lo, hi):
+            o.append(f'                <line class="tier-whisker lj" x1="{xl - 4}" x2="{xl + 4}" y1="{f(y(v))}" y2="{f(y(v))}" />')
+        o.append(f'                <circle class="tier-lj" cx="{xl}" cy="{f(y(lj["a"]))}" r="4.5"><title>{w["lj"]}: {place(lj["a"])} ({place(hi)}&#8211;{place(lo)})</title></circle>')
+        o.append(f'                <text class="tier-you-label" x="{xl - 9}" y="{f(y(lj["a"]) + 4)}">{w["lj"]} {place(lj["a"])}</text>')
     # how far the Tenhou bar can slide: the link's 95% range, drawn at the Houou average
     xb = 414
     lo, hi = link["field_a"] - Z * link["field_a_se"], link["field_a"] + Z * link["field_a_se"]
@@ -274,7 +287,8 @@ def bands(data: dict, lang: str) -> str:
         f'                <p class="timing-title">{w["bands_title"]}</p>',
         f'                <p class="timing-sub">{w["bands_sub"]}</p>',
         f'                <p class="timing-legend"><span class="timing-key tier-ms">{w["ms"]}</span><span class="timing-key tier-th">{w["th"].split(",")[0].split(" ")[0]}</span>'
-        f'<span class="timing-key tier-field">{w["slide"]}</span><span class="timing-key tier-youkey">{w["you_key"]}</span></p>',
+        f'<span class="timing-key tier-field">{w["slide"]}</span><span class="timing-key tier-youkey">{w["you_key"]}</span>'
+        + (f'<span class="timing-key tier-ljkey">{w["lj_key"]}</span>' if data.get("luckyj") else "") + '</p>',
         '                <div class="timing-plot">',
         head,
         *o,

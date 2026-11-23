@@ -21,6 +21,10 @@ Inside each site the strengths come from results alone, one least-squares fit ov
 - Tenhou: every Houou hanchan of 6 Oct to 5 Nov 2026 (``data/ladder_skill/houou.jsonl``), tiers 七段 to 天鳳位, plus a
   straight line through the dans because 十段 and 天鳳位 have few games.
 
+LuckyJ is placed from its own results: its 1,076 Tokujou hanchan (``data/local_sources/luckyj_tenhou``), every seat scored
+with the same earlier policy model (``data/ladder_skill/luckyj_tokujou.jsonl``). Mortal places its opponents and the
+gap to them comes from LuckyJ's placements; Mortal agreement alone underrates LuckyJ and is reported only as a check.
+
 Across the sites the only link is Mortal: the six Jade tiers give six points, results strength against mean ln p
 under the earlier policy model (the user's 361 Jade games, ``data/ladder_skill/jade.jsonl``), and the line through
 them is read at the Houou field's mean ln p. The same
@@ -387,6 +391,38 @@ def mortal_link(jade_file, houou_file, key, strengths, reps=2000):
             "you_a": round(float(at(coef, you)), 4), "you_a_se": round(float(at(boots, you).std(ddof=1)), 4)}
 
 
+def luckyj(base, slopes, reps=2000):
+    """LuckyJ on the scale: its Tokujou opponents placed by Mortal on the policy link, plus what its placements say
+    about the gap to them. The error is a bootstrap over games plus the link's own uncertainty."""
+    path = DATA / "luckyj_tokujou.jsonl"
+    if not path.exists():
+        return None
+    rows, _ = cl.load(path)
+    games = defaultdict(list)
+    for r in rows:
+        games[r["file"]].append(r)
+    G = [g for g in games.values() if len(g) == 4 and sum("LuckyJ" in r["name"] for r in g) == 1]
+    at = lambda s: base["field_a"] + base["places_per_skill"] * (s - base["field_skill"])  # noqa: E731
+
+    def read(gs):
+        lj = [r for g in gs for r in g if "LuckyJ" in r["name"]]
+        op = [r for g in gs for r in g if "LuckyJ" not in r["name"]]
+        s_lj = sum(r["logp"] for r in lj) / sum(r["n"] for r in lj)
+        s_op = sum(r["logp"] for r in op) / sum(r["n"] for r in op)
+        place = float(np.mean([r["place"] for r in lj]))
+        return s_lj, s_op, place, at(s_op) + 2.5 - place
+
+    s_lj, s_op, place, a = read(G)
+    boots = np.array([read([G[i] for i in RNG.integers(0, len(G), len(G))]) for _ in range(reps)])
+    link_se = float(np.hypot(base["field_a_se"], (s_op - base["field_skill"]) * base["places_per_skill_se"]))
+    tokujou = [75, 30, 0, -180]  # a Tokujou 10-dan's points (tenhou.net/man), with the share slopes measured in Houou
+    return {"games": len(G), "mean_place": round(place, 3), "mean_place_se": round(float(boots[:, 2].std(ddof=1)), 3),
+            "opponents_a": round(at(s_op), 4), "a_from_mortal": round(at(s_lj), 4),
+            "a_from_mortal_predicts_place": round(2.5 - (at(s_lj) - at(s_op)), 3),
+            "a": round(a, 4), "se": round(float(np.hypot(boots[:, 3].std(ddof=1), link_se)), 4),
+            "tokujou_10dan_place_needed": round(2.5 - break_even_gap(tokujou, slopes), 3)}
+
+
 def main():
     out_path = Path(sys.argv[1]) if len(sys.argv) > 1 else OUT
     ms = mahjong_soul()
@@ -434,7 +470,9 @@ def main():
                    {"rank": "天鳳", "from": p_th["十段"]["a"], "to": None}],
         "note": "a band is the strength that gains points at the rank below and not at this rank",
     }
+    lj = luckyj(base, slopes)
     out = {"unit": "places a game against three average Jade-room Saint 3s (positive is better)", "bands": bands, "you": you,
+           "luckyj": lj,
            "mahjong_soul": ms, "houou": th, "link": link, "tenhou_on_the_scale": ladder}
     out_path.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(out_path)
