@@ -1,0 +1,60 @@
+{
+ "sample": 92,
+ "looked_up": 100,
+ "note": "Gold, Jade and Throne rooms only; amae-koromo does not record Bronze and Silver",
+ "games_to_saint3": {
+  "players": 92,
+  "median": 1300.0,
+  "q1": 939.5,
+  "q3": 1842.75
+ },
+ "games_to_celestial": {
+  "players": 92,
+  "median": 2190.0,
+  "q1": 1648.0,
+  "q3": 2800.5
+ },
+ "games_to_master": {
+  "players": 92,
+  "median": 99.0,
+  "q1": 79.0,
+  "q3": 187.5
+ },
+ "place_first_500": {
+  "players": 92,
+  "median": 2.368,
+  "q1": 2.325,
+  "q3": 2.425
+ },
+ "place_first_1000": {
+  "players": 92,
+  "median": 2.377,
+  "q1": 2.336,
+  "q3": 2.421
+ },
+ "place_last_500": {
+  "players": 92,
+  "median": 2.406,
+  "q1": 2.353,
+  "q3": 2.456
+ },
+ "you": {
+  "games": 4779,
+  "first_rank": 10301,
+  "first_start": 1593373400,
+  "games_to_master": 290,
+  "games_to_saint3": 3799,
+  "games_to_celestial": 4770,
+  "place_first_500": 2.528,
+  "place_first_1000": 2.497,
+  "place_last_500": 2.3,
+  "level_now": 10701
+ },
+ "faster_than_you_to_celestial_pct": 94.6,
+ "better_first_500_than_you_pct": 97.8,
+ "early_place_vs_games_to_celestial_r": 0.353,
+ "games_to_celestial_by_start": {
+  "best_quarter_first_500": 1881,
+  "worst_quarter_first_500": 2300
+ }
+}

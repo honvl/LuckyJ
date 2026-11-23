@@ -1,0 +1,83 @@
+{
+ "window": "Throne room, 20 July to 20 November 2026; ranks looked up 23 November",
+ "celestials_since_july": {
+  "accounts": 1942,
+  "now": {
+   "Celestial": 1862,
+   "Saint 3": 74,
+   "lower": 6
+  },
+  "still_celestial_pct": 95.9
+ },
+ "by_peak_level": {
+  "1": {
+   "accounts": 933,
+   "still_celestial_pct": 92.8
+  },
+  "2": {
+   "accounts": 419,
+   "still_celestial_pct": 97.1
+  },
+  "3": {
+   "accounts": 218,
+   "still_celestial_pct": 99.5
+  },
+  "4": {
+   "accounts": 117,
+   "still_celestial_pct": 100.0
+  },
+  "5+": {
+   "accounts": 255,
+   "still_celestial_pct": 100.0
+  }
+ },
+ "by_first_seen": {
+  "2026-07": {
+   "accounts": 989,
+   "still_celestial_pct": 95.4
+  },
+  "2026-07, level 1 only": {
+   "accounts": 335,
+   "still_celestial_pct": 89.0
+  },
+  "2026-08": {
+   "accounts": 450,
+   "still_celestial_pct": 96.2
+  },
+  "2026-08, level 1 only": {
+   "accounts": 257,
+   "still_celestial_pct": 94.9
+  },
+  "2026-09": {
+   "accounts": 239,
+   "still_celestial_pct": 94.1
+  },
+  "2026-09, level 1 only": {
+   "accounts": 149,
+   "still_celestial_pct": 91.3
+  },
+  "2026-10": {
+   "accounts": 167,
+   "still_celestial_pct": 98.2
+  },
+  "2026-10, level 1 only": {
+   "accounts": 114,
+   "still_celestial_pct": 97.4
+  },
+  "2026-11": {
+   "accounts": 97,
+   "still_celestial_pct": 99.0
+  },
+  "2026-11, level 1 only": {
+   "accounts": 78,
+   "still_celestial_pct": 98.7
+  }
+ },
+ "saint3_sample": {
+  "accounts": 300,
+  "were_celestial": 24,
+  "were_celestial_pct": 8.0,
+  "still_saint3_pct": 98.7,
+  "now_celestial": 3
+ }
+}
