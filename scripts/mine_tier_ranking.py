@@ -267,8 +267,14 @@ def mahjong_soul():
     jade_naive = [([tier_of(s) for s in seats], places([s[1] for s in seats])) for seats, _ in random_jade]
     strength = {n: tiers[n]["a"] for n in names}
     slopes = share_slopes(jade_naive, strength)
+    # the Throne room splits an edge differently (chapter 56), so its break-evens use its own slopes
+    throne_tiers = {"Saint 1": tiers["Saint 1, in the Throne room"]["a"], "Saint 2": tiers["Saint 2, in the Throne room"]["a"],
+                    "Saint 3": tiers["Saint 3, in the Throne room"]["a"], "Celestial": tiers["Celestial"]["a"]}
+    throne_tabs = [([SAINT.get(s[0]) or "Celestial" for s in seats], places([s[1] for s in seats])) for seats, _ in throne]
+    room_slopes = {JADE: slopes, THRONE: share_slopes(throne_tabs, throne_tiers)}
     pts = rank_points()
-    out["share_slopes"] = {"jade": slopes, "note": "change in the share of 1st, 2nd, 3rd, 4th per place of strength over the table"}
+    out["share_slopes"] = {"jade": slopes, "throne": room_slopes[THRONE],
+                           "note": "change in the share of 1st, 2nd, 3rd, 4th per place of strength over the table"}
     out["rank_points"] = pts
     passes = {}
     for name in SAINT.values():
@@ -284,7 +290,7 @@ def mahjong_soul():
                             if j != i:
                                 c[level(o, r)] += 1 / 3
             opp = rel({k: v / n for k, v in c.items()})
-            gap = break_even_gap(pts[room][name], slopes)
+            gap = break_even_gap(pts[room][name], room_slopes[room])
             row["jade" if room == JADE else "throne"] = {"opponents": opp["a"], "opponents_se": opp["se"], "gap": round(gap, 4),
                                                           "a": round(opp["a"] + gap, 4), "se": opp["se"],
                                                           "mean_place_needed": round(2.5 - gap, 3)}

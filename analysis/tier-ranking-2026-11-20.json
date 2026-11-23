@@ -286,6 +286,12 @@
     0.0536,
     -0.4037
    ],
+   "throne": [
+    0.2509,
+    0.1781,
+    -0.1395,
+    -0.2895
+   ],
    "note": "change in the share of 1st, 2nd, 3rd, 4th per place of strength over the table"
   },
   "rank_points": {
@@ -343,10 +349,10 @@
     "throne": {
      "opponents": -0.0364,
      "opponents_se": 0.0134,
-     "gap": 0.0515,
-     "a": 0.0151,
+     "gap": 0.0584,
+     "a": 0.022,
      "se": 0.0134,
-     "mean_place_needed": 2.448
+     "mean_place_needed": 2.442
     },
     "easier": "jade",
     "a": -0.0342,
@@ -364,10 +370,10 @@
     "throne": {
      "opponents": -0.0364,
      "opponents_se": 0.0134,
-     "gap": 0.074,
-     "a": 0.0376,
+     "gap": 0.0846,
+     "a": 0.0482,
      "se": 0.0134,
-     "mean_place_needed": 2.426
+     "mean_place_needed": 2.415
     },
     "easier": "jade",
     "a": -0.0062,
@@ -385,10 +391,10 @@
     "throne": {
      "opponents": -0.0363,
      "opponents_se": 0.0134,
-     "gap": 0.0961,
-     "a": 0.0598,
+     "gap": 0.1108,
+     "a": 0.0745,
      "se": 0.0134,
-     "mean_place_needed": 2.404
+     "mean_place_needed": 2.389
     },
     "easier": "jade",
     "a": 0.0123,

@@ -50,6 +50,10 @@ class EdgeSplitTests(unittest.TestCase):
         sp = DATA["splits"]
         self.assertEqual(sp["jade"], LADDER["mahjong_soul"]["share_slopes"]["jade"])
         self.assertEqual(sp["houou"], LADDER["houou"]["share_slopes"])
+        self.assertEqual(sp["throne"], LADDER["mahjong_soul"]["share_slopes"]["throne"])  # chapter 53 uses it for Throne climbs
+        # a Saint climbing in the Throne room, with that room's split, still needs more than in Jade: chapter 53's lines stand
+        for name, row in LADDER["mahjong_soul"]["to_pass"].items():
+            self.assertEqual(row["easier"], "jade", name)
         self.assertEqual(sp["fourths_per_first"], {"jade": 1.98, "houou": 1.0, "throne": 1.15})
         # every split moves the average place by one place per place of strength
         for c in (sp["jade"], sp["houou"], sp["throne"]):
