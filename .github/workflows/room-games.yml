@@ -1,0 +1,88 @@
+# Download other players' Mahjong Soul games with the fetch accounts, for room-wide analyses (scripts/fetch_room_games.py).
+#
+# The game list arrives as an encrypted file on the `ladder-data` release (ASSET, encrypted with the LADDER_KEY
+# secret like ladder-score.yml), and the downloaded logs leave the runner only encrypted, because they carry player
+# names and the repository is public. Collect with
+#   gh run download RUN_ID --name room-games --dir OUT
+# and decrypt with openssl enc -d -aes-256-cbc -pbkdf2 -md sha256 -iter 100000 -pass env:LADDER_KEY.
+name: Room games
+
+on:
+  workflow_dispatch:
+    inputs:
+      asset:
+        description: Encrypted game list on the ladder-data release
+        default: throne-pick.txt.enc
+
+permissions:
+  contents: read
+
+concurrency:
+  group: onboard  # the same accounts and the same log limit as onboarding: never at the same time
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check out tensoul (the Mahjong Soul record fetcher)
+        uses: actions/checkout@v4
+        with:
+          repository: honvl/tensoul
+          ref: 17845ee56f89a7e34ecac25a00568e28b6f4a20f # luckyj-fetch (v4-web-client-login plus the 9998 fix)
+          path: tmp/tensoul
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install tensoul
+        working-directory: tmp/tensoul
+        run: |
+          npm install --no-audit --no-fund --loglevel=error
+          cp ../../service/fetch/tensoul-config.js config.js
+      - name: Fetch the list
+        env:
+          GH_TOKEN: ${{ github.token }}
+          LADDER_KEY: ${{ secrets.LADDER_KEY }}
+          ASSET: ${{ inputs.asset }}
+        run: |
+          gh release download ladder-data --repo "$GITHUB_REPOSITORY" --pattern "$ASSET" --dir "$RUNNER_TEMP"
+          openssl enc -d -aes-256-cbc -pbkdf2 -md sha256 -iter 100000 -pass env:LADDER_KEY \
+            -in "$RUNNER_TEMP/$ASSET" -out "$RUNNER_TEMP/ids.txt"
+          wc -l < "$RUNNER_TEMP/ids.txt"
+      - name: Download
+        env:
+          ACCESS_TOKEN: ${{ secrets.MJS_ACCESS_TOKEN }}
+          MJS_RANDOM_KEY: ${{ secrets.MJS_RANDOM_KEY }}
+          MJS_ACCESS_TOKEN_2: ${{ secrets.MJS_ACCESS_TOKEN_2 }}
+          MJS_RANDOM_KEY_2: ${{ secrets.MJS_RANDOM_KEY_2 }}
+          MJS_ACCESS_TOKEN_3: ${{ secrets.MJS_ACCESS_TOKEN_3 }}
+          MJS_RANDOM_KEY_3: ${{ secrets.MJS_RANDOM_KEY_3 }}
+          MJS_ACCESS_TOKEN_4: ${{ secrets.MJS_ACCESS_TOKEN_4 }}
+          MJS_RANDOM_KEY_4: ${{ secrets.MJS_RANDOM_KEY_4 }}
+          MJS_BASE: ${{ vars.MJS_BASE }}
+          MJS_GATEWAY: ${{ vars.MJS_GATEWAY }}
+          MJS_ROUTE_ID: ${{ vars.MJS_ROUTE_ID }}
+          MJS_TAG: ${{ vars.MJS_TAG }}
+          MJS_RES_VERSION: ${{ vars.MJS_RES_VERSION }}
+          MJS_PACKAGE_VERSION: ${{ vars.MJS_PACKAGE_VERSION }}
+        run: python -u scripts/fetch_room_games.py "$RUNNER_TEMP/ids.txt" games --time-limit 55
+      - name: Encrypt
+        if: always()
+        env:
+          LADDER_KEY: ${{ secrets.LADDER_KEY }}
+        run: |
+          mkdir -p games
+          tar -czf games.tar.gz games
+          openssl enc -aes-256-cbc -pbkdf2 -md sha256 -iter 100000 -salt -pass env:LADDER_KEY \
+            -in games.tar.gz -out games.tar.gz.enc
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: room-games
+          path: games.tar.gz.enc
+          retention-days: 7
