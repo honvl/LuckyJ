@@ -6,6 +6,13 @@ Scripts: `scripts/mine_ladder_skill.py` (scores every seat), `scripts/compare_la
 Outputs: `ladder-compare-2026-11-20.json` (all decisions) and `ladder-compare-discards-2026-11-20.json`
 (discards only, same conclusions).
 
+## Corrected on 23 November
+
+The Houou climbs below, and guide chapter 53 until 23 November, used fourth-place costs one dan too low (7-dan -120,
+8-dan -135; Tenhou charges 135 and 150, and 165 / 180 at 9- and 10-dan, tenhou.net/man). With the correct costs the
+strength that passes 7-dan is the Houou average (2.48 on chapter 53's scale), 8-dan 2.43, 9-dan 2.39 and 10-dan 2.35,
+so Celestial (2.49) is level with 8-dan, not 9-dan. The tables below were not rerun.
+
 ## Superseded on 21 November
 
 Guide chapter 53 (`tier-ranking-2026-11-20.json`, `scripts/mine_tier_ranking.py`) redoes this comparison from

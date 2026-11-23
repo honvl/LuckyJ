@@ -58,19 +58,21 @@ class TierRankingTests(unittest.TestCase):
     def test_the_lines_the_prose_cites(self):
         ms, th = DATA["mahjong_soul"]["to_pass"], DATA["houou"]["to_pass"]
         lines = [place(ms[k]["a"]) for k in ("Saint 1", "Saint 2", "Saint 3")] + [place(th[k]["a"]) for k in ("七段", "八段", "九段", "十段")]
-        self.assertEqual(lines, ["2.53", "2.51", "2.49", "2.53", "2.48", "2.43", "2.39"])
+        # corrected 23 November: Houou's fourth-place costs are 135 / 150 / 165 / 180 for 7- to 10-dan
+        self.assertEqual(th["七段"]["gap"], 0.0)
+        self.assertEqual(lines, ["2.53", "2.51", "2.49", "2.48", "2.43", "2.39", "2.35"])
         # the Jade room is the easier road for every Saint tier, so the bands do not lean on the bridge between rooms
         self.assertTrue(all(ms[k]["easier"] == "jade" for k in ms))
         self.assertEqual([f"{ms[k]['jade']['mean_place_needed']:.3f}" for k in ("Saint 1", "Saint 2", "Saint 3")], ["2.424", "2.396", "2.377"])
-        self.assertEqual([f"{th[k]['mean_place_needed']:.3f}" for k in ("七段", "八段", "九段", "十段")], ["2.555", "2.500", "2.451", "2.408"])
-        # Celestial and 9-dan are level within the error; Celestial is clearly past 8-dan
-        gap = th["八段"]["a"] - ms["Saint 3"]["a"]
-        error = (th["八段"]["se_link"] ** 2 + ms["Saint 3"]["se"] ** 2) ** 0.5
+        self.assertEqual([f"{th[k]['mean_place_needed']:.3f}" for k in ("七段", "八段", "九段", "十段")], ["2.500", "2.451", "2.408", "2.369"])
+        # Celestial and 8-dan are level within the error; 9-dan asks clearly more
+        gap = th["七段"]["a"] - ms["Saint 3"]["a"]
+        error = (th["七段"]["se_link"] ** 2 + ms["Saint 3"]["se"] ** 2) ** 0.5
         self.assertLess(abs(gap), 1.96 * error)
-        self.assertGreater(ms["Saint 3"]["a"] - th["七段"]["a"], 1.96 * error)
+        self.assertGreater(th["八段"]["a"] - ms["Saint 3"]["a"], 1.96 * error)
         for lang in PAGES:
             text = prose(lang)
-            for number in lines + ["2.424", "2.396", "2.377", "2.555", "2.500", "2.451", "2.408", "0.123"]:
+            for number in lines + ["2.424", "2.396", "2.377", "2.500", "2.451", "2.408", "2.369", "0.123"]:
                 self.assertIn(number, text, f"{lang}: {number}")
 
     def test_the_link_and_the_holders(self):

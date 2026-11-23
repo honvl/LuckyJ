@@ -338,7 +338,7 @@ def houou():
             cnt[lv[i]] += 1
             opp[lv[i]] += (sum(strength[l] for l in lv) - strength[lv[i]]) / 3
     out["opponents_vs_field"] = {d: round(opp[d] / cnt[d], 4) for d in DANS}
-    out["rank_points"] = {d: [90, 45, 0, p] for d, p in zip(DANS[:4], (-120, -135, -150, -165))}
+    out["rank_points"] = {d: [90, 45, 0, p] for d, p in zip(DANS[:4], (-135, -150, -165, -180))}
     out["line"] = {"at_7dan": round(float(coef[0]), 4), "per_dan": round(float(coef[1]), 4),
                    "per_dan_se": round(float(np.sqrt(cv[1, 1])), 4),
                    "fitted": {d: {"vs_field": round(float(coef[0] + coef[1] * (k - 7)), 4),

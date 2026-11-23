@@ -39,8 +39,8 @@ from collections import defaultdict
 import numpy as np
 
 USER = "Honver"
-HOUOU_7DAN = {"start": 1400, "goal": 2800, "pts": [90, 45, 0, -120]}
-HOUOU_8DAN = {"start": 1600, "goal": 3200, "pts": [90, 45, 0, -135]}
+HOUOU_7DAN = {"start": 1400, "goal": 2800, "pts": [90, 45, 0, -135]}  # corrected 23 Nov 2026 (was -120, the 6-dan cost)
+HOUOU_8DAN = {"start": 1600, "goal": 3200, "pts": [90, 45, 0, -150]}  # corrected 23 Nov 2026 (was -135)
 JADE_S3 = {"start": 4500, "goal": 9000, "pts": [144, 65, -9, -272]}
 LEVEL_STEP = {10401: 0, 10402: 1, 10403: 2, 10501: 3, 10502: 4, 10503: 5}  # amae-koromo level ids
 DAN_STEP = {"七段": 7, "八段": 8, "九段": 9, "十段": 10, "天鳳": 11}
