@@ -92,13 +92,18 @@ def tells(states: list, wins: list) -> None:
         seat_wind = 41 + ((seat - game["dealer"]) % 4)
         value = DRAGONS | {round_wind, seat_wind}
         streak, first_call, value_pon, riichi = 0, None, False, False
+        closed_tenpai = None  # (turn, declared riichi at some point after)
         for e in game["events"]:
             if e["seat"] != seat:
                 continue
             if e["riichi"]:
                 riichi = True
+                if closed_tenpai is None:
+                    closed_tenpai = e["turn"]
             if riichi:
                 break
+            if closed_tenpai is None and e["closed"] and ws.hand_shanten(e["hand_after"], e["meld_tiles"], e["closed"]) == 0:
+                closed_tenpai = e["turn"]
             if e["called"] and first_call is None:
                 first_call = e["turn"]
                 melds = game["players"][seat]["melds"]
@@ -111,10 +116,17 @@ def tells(states: list, wins: list) -> None:
             states.append({"room": g["mode"], "turn": e["turn"], "calls": calls, "streak": streak,
                            "first_call": first_call, "value_pon": value_pon,
                            "tenpai": ws.hand_shanten(e["hand_after"], e["meld_tiles"], e["closed"]) == 0})
+        won = None
         for deltas, det in tr.result_blocks(log[-1]):
             w, frm = det[0], det[1]
+            if w == seat:
+                won = "ron" if frm != w else "tsumo"
             if w == seat and frm != w:
                 wins.append({"room": g["mode"], "kind": kind(game, w, riichi), "paid": -deltas[frm]})
+        if closed_tenpai is not None:
+            stayed_closed = not any(m.get("kind") not in ("a", "ankan") for m in game["players"][seat]["melds"])
+            states.append({"room": g["mode"], "closed_tenpai_turn": closed_tenpai, "riichi": riichi,
+                           "stayed_closed": stayed_closed, "won": won})
 
 
 def rate(xs) -> dict:
@@ -128,7 +140,33 @@ def main(out: str) -> None:
     d, states, wins = [], [], []
     deals(d)
     tells(states, wins)
-    res = {"deals": {}, "wins_by_ron": {}, "tenpai": {}}
+    choices = [s for s in states if "closed_tenpai_turn" in s]
+    states = [s for s in states if "turn" in s]
+    res_rooms = {}
+    for room in ("jade-field", "throne-field"):
+        ch = [c for c in choices if c["room"] == room]
+        st = [s for s in states if s["room"] == room and s["calls"] == 0]
+        wr = [w for w in wins if w["room"] == room]
+        n = len(wr)
+
+        def tb(t):
+            return "1-6" if t <= 6 else "7-9" if t <= 9 else "10-12" if t <= 12 else "13+"
+        res_rooms[room] = {
+            "closed_tenpai_hands": len(ch),
+            "stayed_dama_pct": rate(not c["riichi"] for c in ch),
+            "stayed_dama_by_tenpai_turn": {b: rate(not c["riichi"] for c in ch if tb(c["closed_tenpai_turn"]) == b)
+                                           for b in ("1-6", "7-9", "10-12", "13+")},
+            "dama_hands_won_pct": rate(c["won"] is not None for c in ch if not c["riichi"]),
+            "riichi_hands_won_pct": rate(c["won"] is not None for c in ch if c["riichi"]),
+            "rons": n,
+            "rons_by_kind": {k: {"share_pct": round(100 * sum(w["kind"] == k for w in wr) / max(1, n), 1),
+                                 "avg_paid": round(float(np.mean([w["paid"] for w in wr if w["kind"] == k]))) if any(w["kind"] == k for w in wr) else None,
+                                 "share_7700_plus_pct": round(100 * sum(w["paid"] >= 7700 for w in wr if w["kind"] == k) / max(1, sum(w["kind"] == k for w in wr)), 1)}
+                             for k in ("riichi", "dama", "one call", "two calls or more")},
+            "closed_no_riichi_tenpai_by_turn": {b: rate(x["tenpai"] for x in st if tb(x["turn"]) == b) for b in ("1-6", "7-9", "10-12", "13+")},
+            "closed_turn_10_plus_by_streak": {str(k): rate(x["tenpai"] for x in st if x["turn"] >= 10 and min(x["streak"], 2) == k) for k in (0, 1, 2)},
+        }
+    res = {"deals": {}, "wins_by_ron": {}, "tenpai": {}, "by_room": res_rooms}
     for room in ("jade-south", "throne-south"):
         rows = [r for r in d if r["room"] == room]
         res["deals"][room] = {k: {"n": sum(1 for r in rows if r["kind"] == k),

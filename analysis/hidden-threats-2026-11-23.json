@@ -205,5 +205,211 @@
     "se": 0.6
    }
   }
+ },
+ "by_room": {
+  "jade-field": {
+   "closed_tenpai_hands": 3032,
+   "stayed_dama_pct": {
+    "n": 3032,
+    "pct": 25.8,
+    "se": 0.8
+   },
+   "stayed_dama_by_tenpai_turn": {
+    "1-6": {
+     "n": 665,
+     "pct": 15.5,
+     "se": 1.4
+    },
+    "7-9": {
+     "n": 964,
+     "pct": 23.0,
+     "se": 1.4
+    },
+    "10-12": {
+     "n": 865,
+     "pct": 26.1,
+     "se": 1.5
+    },
+    "13+": {
+     "n": 538,
+     "pct": 42.9,
+     "se": 2.1
+    }
+   },
+   "dama_hands_won_pct": {
+    "n": 782,
+    "pct": 37.0,
+    "se": 1.7
+   },
+   "riichi_hands_won_pct": {
+    "n": 2250,
+    "pct": 47.3,
+    "se": 1.1
+   },
+   "rons": 1480,
+   "rons_by_kind": {
+    "riichi": {
+     "share_pct": 38.4,
+     "avg_paid": 6606,
+     "share_7700_plus_pct": 48.4
+    },
+    "dama": {
+     "share_pct": 11.3,
+     "avg_paid": 5362,
+     "share_7700_plus_pct": 33.5
+    },
+    "one call": {
+     "share_pct": 27.8,
+     "avg_paid": 4073,
+     "share_7700_plus_pct": 19.2
+    },
+    "two calls or more": {
+     "share_pct": 22.6,
+     "avg_paid": 4747,
+     "share_7700_plus_pct": 24.9
+    }
+   },
+   "closed_no_riichi_tenpai_by_turn": {
+    "1-6": {
+     "n": 61341,
+     "pct": 0.5,
+     "se": 0.0
+    },
+    "7-9": {
+     "n": 21106,
+     "pct": 3.1,
+     "se": 0.1
+    },
+    "10-12": {
+     "n": 12973,
+     "pct": 6.7,
+     "se": 0.2
+    },
+    "13+": {
+     "n": 9248,
+     "pct": 10.8,
+     "se": 0.3
+    }
+   },
+   "closed_turn_10_plus_by_streak": {
+    "0": {
+     "n": 12496,
+     "pct": 6.0,
+     "se": 0.2
+    },
+    "1": {
+     "n": 4431,
+     "pct": 10.1,
+     "se": 0.5
+    },
+    "2": {
+     "n": 5294,
+     "pct": 12.8,
+     "se": 0.5
+    }
+   }
+  },
+  "throne-field": {
+   "closed_tenpai_hands": 461,
+   "stayed_dama_pct": {
+    "n": 461,
+    "pct": 26.5,
+    "se": 2.1
+   },
+   "stayed_dama_by_tenpai_turn": {
+    "1-6": {
+     "n": 118,
+     "pct": 21.2,
+     "se": 3.8
+    },
+    "7-9": {
+     "n": 143,
+     "pct": 15.4,
+     "se": 3.0
+    },
+    "10-12": {
+     "n": 118,
+     "pct": 34.7,
+     "se": 4.4
+    },
+    "13+": {
+     "n": 82,
+     "pct": 41.5,
+     "se": 5.4
+    }
+   },
+   "dama_hands_won_pct": {
+    "n": 122,
+    "pct": 36.1,
+    "se": 4.3
+   },
+   "riichi_hands_won_pct": {
+    "n": 339,
+    "pct": 49.3,
+    "se": 2.7
+   },
+   "rons": 243,
+   "rons_by_kind": {
+    "riichi": {
+     "share_pct": 37.9,
+     "avg_paid": 7340,
+     "share_7700_plus_pct": 55.4
+    },
+    "dama": {
+     "share_pct": 11.5,
+     "avg_paid": 5971,
+     "share_7700_plus_pct": 42.9
+    },
+    "one call": {
+     "share_pct": 31.7,
+     "avg_paid": 3730,
+     "share_7700_plus_pct": 13.0
+    },
+    "two calls or more": {
+     "share_pct": 18.9,
+     "avg_paid": 4920,
+     "share_7700_plus_pct": 30.4
+    }
+   },
+   "closed_no_riichi_tenpai_by_turn": {
+    "1-6": {
+     "n": 8868,
+     "pct": 0.7,
+     "se": 0.1
+    },
+    "7-9": {
+     "n": 2897,
+     "pct": 3.3,
+     "se": 0.3
+    },
+    "10-12": {
+     "n": 1703,
+     "pct": 7.9,
+     "se": 0.7
+    },
+    "13+": {
+     "n": 1090,
+     "pct": 14.6,
+     "se": 1.1
+    }
+   },
+   "closed_turn_10_plus_by_streak": {
+    "0": {
+     "n": 1579,
+     "pct": 7.4,
+     "se": 0.7
+    },
+    "1": {
+     "n": 578,
+     "pct": 11.8,
+     "se": 1.3
+    },
+    "2": {
+     "n": 636,
+     "pct": 17.1,
+     "se": 1.5
+    }
+   }
+  }
  }
 }
