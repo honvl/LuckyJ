@@ -118,6 +118,16 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
   const [showChapters, setShowChapters] = useState(false);
   const currentRef = useRef<string | null>(null);
   currentRef.current = current;
+  // True while a message is on its way: a history load answered before the server has it reads
+  // "idle", which must not end the turn this page just started (and close its live stream).
+  const sending = useRef(false);
+  // Whether the page is on screen. A hidden tab keeps no live stream open.
+  const [visible, setVisible] = useState(() => typeof document === "undefined" || document.visibilityState === "visible");
+  useEffect(() => {
+    const onChange = () => setVisible(document.visibilityState === "visible");
+    document.addEventListener("visibilitychange", onChange);
+    return () => document.removeEventListener("visibilitychange", onChange);
+  }, []);
 
   const merge = useCallback((incoming: ChatEvent[]) => {
     setItems((prev) => {
@@ -164,7 +174,7 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
     if (!res.ok || currentRef.current !== id) return;
     const data = await res.json();
     merge(data.events);
-    setStatus(data.status);
+    if (!(sending.current && data.status === "idle")) setStatus(data.status);
     setUsedPct(data.usedPct ?? null);
     setChapters(data.chapters);
     setBookSlug(data.bookSlug ?? null);
@@ -194,19 +204,28 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
     });
   }, [listThreads, open]);
 
-  // The open thread: its history, then its live events.
+  // The open thread's history.
   useEffect(() => {
-    if (!current) return;
-    load(current, true);
+    if (current) load(current, true);
+  }, [current, load]);
+
+  // Back on screen: reload, which also shows a turn that started or ended while the tab was hidden.
+  const wasVisible = useRef(visible);
+  useEffect(() => {
+    if (visible && !wasVisible.current && currentRef.current) load(currentRef.current);
+    wasVisible.current = visible;
+  }, [visible, load]);
+
+  // Live events only while the coach is working and the page is on screen. An open stream holds a
+  // server function (2 GB on Vercel) for up to five minutes whether or not anything arrives, so an
+  // idle or background tab must not keep one. The coach's idle event closes it.
+  // "rescheduling" is the session retrying mid-turn.
+  const live = Boolean(current) && visible && (status === "running" || status === "rescheduling");
+  useEffect(() => {
+    if (!live || !current) return;
     const source = new EventSource(`/api/thread/stream?thread=${encodeURIComponent(current)}`);
-    let dropped = false;
-    source.onopen = () => {
-      if (dropped) load(current); // fill whatever arrived while disconnected
-      dropped = false;
-    };
-    source.onerror = () => {
-      dropped = true;
-    };
+    // Each (re)connection: fill whatever arrived before it, and learn whether the turn already ended.
+    source.onopen = () => load(current);
     source.onmessage = (msg) => {
       if (currentRef.current !== current) return;
       const ev = JSON.parse(msg.data) as ChatEvent;
@@ -218,18 +237,21 @@ export default function Chat({ lang, player, siteUrl }: { lang: Lang; player: st
       }
     };
     return () => source.close();
-  }, [current, load, merge, listThreads]);
+  }, [live, current, load, merge, listThreads]);
 
   const send = useCallback(async (text: string, files: File_[] = []) => {
     const id = currentRef.current;
     if ((!text && !files.length) || !id) return;
     setNotice(null);
     setItems((prev) => [...prev, { id: `local-${Date.now()}`, kind: "user", text, local: true, files }]);
+    sending.current = true;
     setStatus("running");
     const res = await fetch("/api/thread/message", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text, thread: id, attachments: files.map((f) => f.fileId) }),
+    }).finally(() => {
+      sending.current = false;
     });
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
